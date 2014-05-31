@@ -68,7 +68,7 @@ computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
                                                           inVocabularyBDDType.BDDBitCount (),
                                                           C_BDD::kEqual,
                                                           (uint32_t) p.derivationAtIndex (j COMMA_HERE)) ;  
-        rightVocabularyRelation |= C_Relation (vocabulary2, 1, C_BDD::kEqual, (uint64_t) p.derivationAtIndex (j COMMA_HERE) COMMA_HERE) ; 
+        rightVocabularyRelation.orWith (C_Relation (vocabulary2, 1, C_BDD::kEqual, (uint64_t) p.derivationAtIndex (j COMMA_HERE) COMMA_HERE) COMMA_HERE) ; 
         rightVocabulary |= rightSymbol ;
       }
       const C_BDD leftNonterminal = C_BDD::varCompareConst (0,
@@ -76,7 +76,7 @@ computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
                                                             C_BDD::kEqual,
                                                             (uint32_t) p.leftNonTerminalIndex ()) ;  
       const C_Relation leftNonterminalRelation = C_Relation (vocabulary2, 0, C_BDD::kEqual, (uint64_t) p.leftNonTerminalIndex () COMMA_HERE) ; 
-      accessibilityRelation |= leftNonterminalRelation.andOp (rightVocabularyRelation COMMA_HERE) ;
+      accessibilityRelation.orWith (leftNonterminalRelation.andOp (rightVocabularyRelation COMMA_HERE) COMMA_HERE) ;
       accessibility |= leftNonterminal & rightVocabulary ;
       ex_leftNonterminal.initDimension1 (C_BDD::kEqual, (uint16_t) p.leftNonTerminalIndex ()) ;
       ex_accessibility |= ex_leftNonterminal & ex_rightVocabulary ;

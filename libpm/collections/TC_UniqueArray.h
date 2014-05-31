@@ -186,6 +186,11 @@ template <typename TYPE> class TC_UniqueArray {
   public : void removeLastObject (LOCATION_ARGS) ;
   public : void removeLastObjects (const int32_t inCount COMMA_LOCATION_ARGS) ;
 
+//--- Exchange objects at indexes (0 <= index < count, use swap)
+  public : void exchangeObjectAtIndexes (const int32_t inIndex1,
+                                         const int32_t inIndex2
+                                         COMMA_LOCATION_ARGS) ;
+
 //--- Remove objects at index (0 <= index < count)
   public : void removeObjectAtIndex (const int32_t inIndex
                                      COMMA_LOCATION_ARGS) ;
@@ -799,6 +804,26 @@ removeLastObjects (const int32_t inCount COMMA_LOCATION_ARGS) {
       checkIndex (mCount-inCount COMMA_THERE) ;
     #endif
     mCount -= inCount ;
+  }
+}
+
+//-----------------------------------------------------------------------------*
+//                                                                             *
+//   remove object at index (0 <= index < count)                               *
+//                                                                             *
+//-----------------------------------------------------------------------------*
+
+template <typename TYPE>
+void TC_UniqueArray <TYPE>::
+exchangeObjectAtIndexes (const int32_t inIndex1,
+                         const int32_t inIndex2
+                         COMMA_LOCATION_ARGS) {
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkIndex (inIndex1 COMMA_THERE) ;
+    checkIndex (inIndex2 COMMA_THERE) ;
+  #endif
+  if (inIndex1 != inIndex2) {
+    swap (mArray [inIndex1],  mArray [inIndex2]) ;
   }
 }
 

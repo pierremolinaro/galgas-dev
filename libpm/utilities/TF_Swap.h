@@ -4,8 +4,10 @@
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
-//  Copyright (C) 1997-2002 Pierre Molinaro.                                   *
+//  Copyright (C) 1997, ..., 2002 Pierre Molinaro.                             *
+//                                                                             *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                               *
+//                                                                             *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
 //  ECN, École Centrale de Nantes (France)                                     *
 //                                                                             *

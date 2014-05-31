@@ -185,7 +185,7 @@ bool C_FileManager::binaryDataWithContentOfFile (const C_String & inFilePath,
 
 //--- Rewind file
   if (ok) {
-    ok = ::fseek (inputFile, 0L, 0) == 0 ;
+    ok = ::fseek (inputFile, 0, 0) == 0 ;
   }
 
 //--- Read file

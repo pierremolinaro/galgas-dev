@@ -558,6 +558,7 @@ analyzeGrammar (C_Compiler * inCompiler,
 //--- Computing FOLLOW sets ---------------------------------------------------------------
   C_BDD_Set2 EX_FOLLOWsets (vocabularyDescriptorEX, vocabularyDescriptorEX) ;
   TC_UniqueArray <TC_UniqueArray <uint64_t> > FOLLOWarray ;
+  C_Relation FOLLOWsets ;
   if ((errorFlag == kNoError) &&
       (grammarClass != kGrammarClassError) &&
       (grammarClass != kLR1grammar)) { // Follow are not used by LR(1) computations
@@ -568,9 +569,13 @@ analyzeGrammar (C_Compiler * inCompiler,
                          vocabulary,
                          vocabularyDerivingToEmpty_Array,
                          usefulSymbolsEX,
+                         usefulSymbols,
                          EX_FIRSTsets,
+                         FIRSTsets,
                          EX_nonTerminalSymbolsFollowedByEmpty,
+                         nonTerminalSymbolsFollowedByEmpty,
                          EX_FOLLOWsets,
+                         FOLLOWsets,
                          FOLLOWarray,
                          ok,
                          verboseOptionOn) ;

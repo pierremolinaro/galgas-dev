@@ -58,6 +58,21 @@ class cVariablesInRelationConfiguration : public C_SharedObject {
   public : void checkIdenticalTo (const cVariablesInRelationConfiguration * inVariables
                                   COMMA_LOCATION_ARGS) const ;
 
+//--- Operations on 3 set configurations  
+  public : void swap132 (LOCATION_ARGS) ;
+
+  public : void swap213 (LOCATION_ARGS) ;
+
+  public : void swap231 (LOCATION_ARGS) ;
+
+  public : void swap312 (LOCATION_ARGS) ;
+
+  public : void swap321 (LOCATION_ARGS) ;
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    private : void checkConfiguration (LOCATION_ARGS) const ;
+  #endif
+
 //--- Attributes
   private : TC_UniqueArray <uint32_t> mBDDStartIndexArray ;
   private : TC_UniqueArray <C_String> mVariableNameArray ;
@@ -66,7 +81,8 @@ class cVariablesInRelationConfiguration : public C_SharedObject {
 
 //-----------------------------------------------------------------------------*
 
-cVariablesInRelationConfiguration::cVariablesInRelationConfiguration (LOCATION_ARGS) :
+cVariablesInRelationConfiguration::
+cVariablesInRelationConfiguration (LOCATION_ARGS) :
 C_SharedObject (THERE),
 mBDDStartIndexArray (),
 mVariableNameArray (),
@@ -75,8 +91,9 @@ mVariableTypeArray () {
 
 //-----------------------------------------------------------------------------*
 
-cVariablesInRelationConfiguration::cVariablesInRelationConfiguration (cVariablesInRelationConfiguration * inPtr
-                                                 COMMA_LOCATION_ARGS) :
+cVariablesInRelationConfiguration::
+cVariablesInRelationConfiguration (cVariablesInRelationConfiguration * inPtr
+                                   COMMA_LOCATION_ARGS) :
 C_SharedObject (THERE),
 mBDDStartIndexArray (),
 mVariableNameArray (),
@@ -85,7 +102,33 @@ mVariableTypeArray () {
   mBDDStartIndexArray.addObjectsFromArray (inPtr->mBDDStartIndexArray) ;
   mVariableNameArray.addObjectsFromArray (inPtr->mVariableNameArray) ;
   mVariableTypeArray.addObjectsFromArray (inPtr->mVariableTypeArray) ;
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkConfiguration (HERE) ;
+  #endif
 }
+
+//-----------------------------------------------------------------------------*
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  void cVariablesInRelationConfiguration::checkConfiguration (LOCATION_ARGS) const {
+    MF_AssertThere (mBDDStartIndexArray.count () == mVariableNameArray.count (),
+                    "mBDDStartIndexArray.count () == %lld != mVariableNameArray.count () == %lld",
+                    mBDDStartIndexArray.count (),
+                    mVariableNameArray.count ()) ;
+    MF_AssertThere (mBDDStartIndexArray.count () == mVariableTypeArray.count (),
+                    "mBDDStartIndexArray.count () == %lld != mVariableTypeArray.count () == %lld",
+                    mBDDStartIndexArray.count (),
+                    mVariableTypeArray.count ()) ;
+    uint32_t bddIndex = 0 ;
+    for (int32_t i=0 ; i<mBDDStartIndexArray.count () ; i++) {
+      MF_AssertThere (bddIndex == mBDDStartIndexArray (i COMMA_HERE),
+                      "bddIndex == %lld != mBDDStartIndexArray (i COMMA_HERE) == %lld",
+                      bddIndex,
+                      mBDDStartIndexArray (i COMMA_HERE)) ;
+      bddIndex += mVariableTypeArray (i COMMA_HERE).BDDBitCount() ;
+    }  
+  }
+#endif
 
 //-----------------------------------------------------------------------------*
 
@@ -98,6 +141,9 @@ void cVariablesInRelationConfiguration::addVariable (const C_String & inVariable
   }
   mVariableNameArray.addObject (inVariableName) ;
   mVariableTypeArray.addObject (inType) ;
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkConfiguration (HERE) ;
+  #endif
 }
 
 //-----------------------------------------------------------------------------*
@@ -121,17 +167,30 @@ void cVariablesInRelationConfiguration::checkIdenticalTo (const cVariablesInRela
 //-----------------------------------------------------------------------------*
 
 void cVariablesInRelationConfiguration::deleteVariableAtIndex (const int32_t inIndex COMMA_LOCATION_ARGS) {
+  macroUniqueSharedObject (this) ;
+  uint32_t idx = mBDDStartIndexArray (inIndex COMMA_THERE) ;
   mBDDStartIndexArray.removeObjectAtIndex (inIndex COMMA_THERE) ;
   mVariableNameArray.removeObjectAtIndex (inIndex COMMA_THERE) ;
   mVariableTypeArray.removeObjectAtIndex (inIndex COMMA_THERE) ;
+  for (int32_t i=inIndex ; i<mBDDStartIndexArray.count () ; i++) {
+    mBDDStartIndexArray.setObjectAtIndex (idx, i COMMA_HERE) ;
+    idx += mVariableTypeArray (i COMMA_HERE).BDDBitCount () ;
+  }
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkConfiguration (HERE) ;
+  #endif
 }
 
 //-----------------------------------------------------------------------------*
 
 void cVariablesInRelationConfiguration::deleteLastVariable (LOCATION_ARGS) {
+  macroUniqueSharedObject (this) ;
   mBDDStartIndexArray.removeLastObject (THERE) ;
   mVariableNameArray.removeLastObject (THERE) ;
   mVariableTypeArray.removeLastObject (THERE) ;
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkConfiguration (HERE) ;
+  #endif
 }
 
 //-----------------------------------------------------------------------------*
@@ -149,8 +208,8 @@ uint32_t cVariablesInRelationConfiguration::bitCount (void) const {
 //-----------------------------------------------------------------------------*
 
 C_String cVariablesInRelationConfiguration::constantNameForVariableAndValue (const int32_t inIndex,
-                                                                               const uint32_t inValue
-                                                                               COMMA_LOCATION_ARGS) const {
+                                                                             const uint32_t inValue
+                                                                             COMMA_LOCATION_ARGS) const {
   return mVariableTypeArray (inIndex COMMA_THERE).nameForValue(inValue COMMA_THERE) ;
 }
 
@@ -164,6 +223,87 @@ C_String cVariablesInRelationConfiguration::nameForVariable (const int32_t inInd
 
 C_RelationSingleType cVariablesInRelationConfiguration::typeForVariable (const int32_t inIndex COMMA_LOCATION_ARGS) const {
   return mVariableTypeArray (inIndex COMMA_THERE) ;
+}
+
+//-----------------------------------------------------------------------------*
+
+void cVariablesInRelationConfiguration::swap132 (LOCATION_ARGS) {
+  macroUniqueSharedObject (this) ;
+  mVariableNameArray.exchangeObjectAtIndexes (1, 2 COMMA_THERE) ;
+  mVariableTypeArray.exchangeObjectAtIndexes (1, 2 COMMA_THERE) ;
+  uint32_t bitIndex = mVariableTypeArray (0 COMMA_THERE).BDDBitCount() ;
+  mBDDStartIndexArray.setObjectAtIndex (bitIndex, 1 COMMA_THERE) ;
+  bitIndex += mVariableTypeArray (1 COMMA_THERE).BDDBitCount() ;
+  mBDDStartIndexArray.setObjectAtIndex (bitIndex, 2 COMMA_THERE) ;
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkConfiguration (HERE) ;
+  #endif
+}
+
+//-----------------------------------------------------------------------------*
+
+void cVariablesInRelationConfiguration::swap213 (LOCATION_ARGS) {
+  macroUniqueSharedObject (this) ;
+  mVariableNameArray.exchangeObjectAtIndexes (0, 1 COMMA_THERE) ;
+  mVariableTypeArray.exchangeObjectAtIndexes (0, 1 COMMA_THERE) ;
+  mBDDStartIndexArray.setObjectAtIndex (0, 0 COMMA_THERE) ;
+  uint32_t bitIndex = mVariableTypeArray (0 COMMA_THERE).BDDBitCount() ;
+  mBDDStartIndexArray.setObjectAtIndex (bitIndex, 1 COMMA_THERE) ;
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkConfiguration (HERE) ;
+  #endif
+}
+
+//-----------------------------------------------------------------------------*
+
+void cVariablesInRelationConfiguration::swap231 (LOCATION_ARGS) {
+  macroUniqueSharedObject (this) ;
+  mVariableNameArray.exchangeObjectAtIndexes (0, 1 COMMA_THERE) ;
+  mVariableTypeArray.exchangeObjectAtIndexes (0, 1 COMMA_THERE) ;
+  mVariableNameArray.exchangeObjectAtIndexes (1, 2 COMMA_THERE) ;
+  mVariableTypeArray.exchangeObjectAtIndexes (1, 2 COMMA_THERE) ;
+  mBDDStartIndexArray.setObjectAtIndex (0, 0 COMMA_THERE) ;
+  uint32_t bitIndex = mVariableTypeArray (0 COMMA_THERE).BDDBitCount() ;
+  mBDDStartIndexArray.setObjectAtIndex (bitIndex, 1 COMMA_THERE) ;
+  bitIndex += mVariableTypeArray (1 COMMA_THERE).BDDBitCount() ;
+  mBDDStartIndexArray.setObjectAtIndex (bitIndex, 2 COMMA_THERE) ;
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkConfiguration (HERE) ;
+  #endif
+}
+
+//-----------------------------------------------------------------------------*
+
+void cVariablesInRelationConfiguration::swap312 (LOCATION_ARGS) {
+  macroUniqueSharedObject (this) ;
+  mVariableNameArray.exchangeObjectAtIndexes (1, 2 COMMA_THERE) ;
+  mVariableTypeArray.exchangeObjectAtIndexes (1, 2 COMMA_THERE) ;
+  mVariableNameArray.exchangeObjectAtIndexes (0, 1 COMMA_THERE) ;
+  mVariableTypeArray.exchangeObjectAtIndexes (0, 1 COMMA_THERE) ;
+  mBDDStartIndexArray.setObjectAtIndex (0, 0 COMMA_THERE) ;
+  uint32_t bitIndex = mVariableTypeArray (0 COMMA_THERE).BDDBitCount() ;
+  mBDDStartIndexArray.setObjectAtIndex (bitIndex, 1 COMMA_THERE) ;
+  bitIndex += mVariableTypeArray (1 COMMA_THERE).BDDBitCount() ;
+  mBDDStartIndexArray.setObjectAtIndex (bitIndex, 2 COMMA_THERE) ;
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkConfiguration (HERE) ;
+  #endif
+}
+
+//-----------------------------------------------------------------------------*
+
+void cVariablesInRelationConfiguration::swap321 (LOCATION_ARGS) {
+  macroUniqueSharedObject (this) ;
+  mVariableNameArray.exchangeObjectAtIndexes (0, 2 COMMA_THERE) ;
+  mVariableTypeArray.exchangeObjectAtIndexes (0, 2 COMMA_THERE) ;
+  mBDDStartIndexArray.setObjectAtIndex (0, 0 COMMA_THERE) ;
+  uint32_t bitIndex = mVariableTypeArray (0 COMMA_THERE).BDDBitCount() ;
+  mBDDStartIndexArray.setObjectAtIndex (bitIndex, 1 COMMA_THERE) ;
+  bitIndex += mVariableTypeArray (1 COMMA_THERE).BDDBitCount() ;
+  mBDDStartIndexArray.setObjectAtIndex (bitIndex, 2 COMMA_THERE) ;
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkConfiguration (HERE) ;
+  #endif
 }
 
 //-----------------------------------------------------------------------------*
@@ -330,6 +470,56 @@ void C_RelationConfiguration::deleteLastVariable (LOCATION_ARGS) {
   insulate (THERE) ;
   macroValidSharedObjectThere (mVariablesPtr, cVariablesInRelationConfiguration) ;
   return mVariablesPtr->deleteLastVariable (THERE) ;
+}
+
+//-----------------------------------------------------------------------------*
+
+C_RelationConfiguration C_RelationConfiguration::swap132 (LOCATION_ARGS) const {
+  C_RelationConfiguration result = *this ;
+  result.insulate (THERE) ;
+  macroValidSharedObjectThere (result.mVariablesPtr, cVariablesInRelationConfiguration) ;
+  result.mVariablesPtr->swap132 (THERE) ;
+  return result ;
+}
+
+//-----------------------------------------------------------------------------*
+
+C_RelationConfiguration C_RelationConfiguration::swap213 (LOCATION_ARGS) const {
+  C_RelationConfiguration result = *this ;
+  result.insulate (THERE) ;
+  macroValidSharedObjectThere (result.mVariablesPtr, cVariablesInRelationConfiguration) ;
+  result.mVariablesPtr->swap213 (THERE) ;
+  return result ;
+}
+
+//-----------------------------------------------------------------------------*
+
+C_RelationConfiguration C_RelationConfiguration::swap231 (LOCATION_ARGS) const {
+  C_RelationConfiguration result = *this ;
+  result.insulate (THERE) ;
+  macroValidSharedObjectThere (result.mVariablesPtr, cVariablesInRelationConfiguration) ;
+  result.mVariablesPtr->swap231 (THERE) ;
+  return result ;
+}
+
+//-----------------------------------------------------------------------------*
+
+C_RelationConfiguration C_RelationConfiguration::swap312 (LOCATION_ARGS) const {
+  C_RelationConfiguration result = *this ;
+  result.insulate (THERE) ;
+  macroValidSharedObjectThere (result.mVariablesPtr, cVariablesInRelationConfiguration) ;
+  result.mVariablesPtr->swap312 (THERE) ;
+  return result ;
+}
+
+//-----------------------------------------------------------------------------*
+
+C_RelationConfiguration C_RelationConfiguration::swap321 (LOCATION_ARGS) const {
+  C_RelationConfiguration result = *this ;
+  result.insulate (THERE) ;
+  macroValidSharedObjectThere (result.mVariablesPtr, cVariablesInRelationConfiguration) ;
+  result.mVariablesPtr->swap321 (THERE) ;
+  return result ;
 }
 
 //-----------------------------------------------------------------------------*

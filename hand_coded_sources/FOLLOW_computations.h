@@ -1,9 +1,11 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-// Routines for FOLLOWS sets                                                   *
+// Routines for computing FOLLOWS                                              *
 //                                                                             *
 //  Copyright (C) 1999, ..., 2014 Pierre Molinaro.                             *
+//                                                                             *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                      *
+//                                                                             *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
 //  ECN, École Centrale de Nantes (France)                                     *
 //                                                                             *
@@ -24,16 +26,17 @@
 //-----------------------------------------------------------------------------*
 
 #include "collections/TC_UniqueArray.h"
-#include "collections/TC_UniqueArray.h"
 
 //-----------------------------------------------------------------------------*
 
 class cPureBNFproductionsList ;
 class cVocabulary ;
 class C_HTML_FileWrite ;
+class C_Lexique ;
+class C_Relation ;
+
 class C_BDD_Set1 ;
 class C_BDD_Set2 ;
-class C_Lexique ;
 
 //-----------------------------------------------------------------------------*
 
@@ -43,10 +46,14 @@ FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
                      const uint16_t inBDDBitCount,
                      const cVocabulary & inVocabulary,
                      const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
-                     const C_BDD_Set1 & inUsefulSymbols,
-                     const C_BDD_Set2 & inFIRSTsets,
-                     const C_BDD_Set1 & nonTerminauxPouvantEtreSuivisDuVide,
-                     C_BDD_Set2 & outFOLLOWsets,
+                     const C_BDD_Set1 & inUsefulSymbolsEX,
+                     const C_Relation & inUsefulSymbols,
+                     const C_BDD_Set2 & inFIRSTsetsEX,
+                     const C_Relation & inFIRSTsets,
+                     const C_BDD_Set1 & inNonterminalSymbolsFollowedByEmptyEX,
+                     const C_Relation & inNonterminalSymbolsFollowedByEmpty,
+                     C_BDD_Set2 & outFOLLOWsetsEX,
+                     C_Relation & outFOLLOWsets,
                      TC_UniqueArray <TC_UniqueArray <uint64_t> > & outFOLLOWarray,
                      bool & outOk,
                      const bool inVerboseOptionOn) ;

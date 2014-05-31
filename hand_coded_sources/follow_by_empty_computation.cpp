@@ -74,7 +74,7 @@ computeNonterminalFollowedByEmpty (const cPureBNFproductionsList & inProductionR
     if (vocabularyFollowedByEmpty_Array (i COMMA_HERE)) {
       temp.init (C_BDD::kEqual, (uint32_t) i) ;
       outVocabularyFollowedByEmpty_EX |= temp ;
-      outVocabularyFollowedByEmpty |= C_Relation (outVocabularyFollowedByEmpty.configuration (), 0, C_BDD::kEqual, (uint32_t) i COMMA_HERE) ;
+      outVocabularyFollowedByEmpty.orWith (C_Relation (outVocabularyFollowedByEmpty.configuration (), 0, C_BDD::kEqual, (uint32_t) i COMMA_HERE) COMMA_HERE) ;
     }
   }
   if (outVocabularyFollowedByEmpty_EX.bdd () != outVocabularyFollowedByEmpty.bdd ()){
