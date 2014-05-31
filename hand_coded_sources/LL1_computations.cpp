@@ -148,36 +148,36 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
             C_Relation temp (inFOLLOWsets.configuration(), 0, C_BDD::kEqual, (uint32_t) p.leftNonTerminalIndex () COMMA_HERE) ;
             p.mDerivationFirst = temp.andOp (inFOLLOWsets COMMA_HERE).transposedRelation (HERE).relationByDeletingLastVariable (HERE) ;
             tempEX.initDimension1 (C_BDD::kEqual, (uint32_t) p.leftNonTerminalIndex ()) ;
-            p.mDerivationFirstEX = (tempEX & inFOLLOWsetsEx).projeterSurAxe2 () ;
+        /*    p.mDerivationFirstEX = (tempEX & inFOLLOWsetsEx).projeterSurAxe2 () ;
             if (p.mDerivationFirstEX.bdd () != p.mDerivationFirst.bdd ()){
               printf ("\n********* LL1 ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
               exit (1) ;
-            }
+            }*/
           }else{
             const uint32_t elementEnTete = (uint32_t) p.derivationAtIndex (0 COMMA_HERE) ;
             EXt.initDimension1 (C_BDD::kEqual, elementEnTete) ;
             C_Relation t (inFOLLOWsets.configuration(), 0, C_BDD::kEqual, elementEnTete COMMA_HERE) ;
             if (((int32_t) elementEnTete) < terminalSymbolsCount) {
-              p.mDerivationFirstEX = EXt.projeterSurAxe1 () ;
+           //   p.mDerivationFirstEX = EXt.projeterSurAxe1 () ;
               p.mDerivationFirst = t.relationByDeletingLastVariable (HERE) ;
-              if (p.mDerivationFirstEX.bdd () != p.mDerivationFirst.bdd ()){
+           /*   if (p.mDerivationFirstEX.bdd () != p.mDerivationFirst.bdd ()){
                 printf ("\n********* LL1 ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
                 exit (1) ;
-              }
+              } */
             }else{
               p.mDerivationFirst = t.andOp (inFIRSTsets COMMA_HERE).transposedRelation (HERE).relationByDeletingLastVariable (HERE) ;
               if (vocabulaireSeDerivantEnVide ((int32_t) elementEnTete COMMA_HERE)) {
                 p.mDerivationFirst.orWith (t.andOp (inFOLLOWsets COMMA_HERE).transposedRelation (HERE).relationByDeletingLastVariable (HERE) COMMA_HERE) ;
               }
-              p.mDerivationFirstEX = (EXt & inFIRSTsetsEX).projeterSurAxe2 () ;
+          /*    p.mDerivationFirstEX = (EXt & inFIRSTsetsEX).projeterSurAxe2 () ;
               if (vocabulaireSeDerivantEnVide ((int32_t) elementEnTete COMMA_HERE)) {
                 p.mDerivationFirstEX |= (EXt & inFOLLOWsetsEx).projeterSurAxe2 () ;
-              }
+              } */
             }
-            if (p.mDerivationFirstEX.bdd () != p.mDerivationFirst.bdd ()){
+        /*    if (p.mDerivationFirstEX.bdd () != p.mDerivationFirst.bdd ()){
               printf ("\n********* LL1 ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
               exit (1) ;
-            }
+            }*/
           }
           if (inHTMLfile != NULL) {
             TC_UniqueArray <uint64_t> array ;
@@ -205,17 +205,17 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
           const int32_t numeroProductionJ = inPureBNFproductions.tableauIndirectionProduction (pr1 COMMA_HERE) ;
           for (int32_t k=pr1+1 ; k<=derniere ; k++) {
             const int32_t numeroProductionK = inPureBNFproductions.tableauIndirectionProduction (k COMMA_HERE) ;
-            const bool exOk = (inPureBNFproductions (numeroProductionJ COMMA_HERE).derivationFirstEX () &
-                   inPureBNFproductions (numeroProductionK COMMA_HERE).derivationFirstEX ()).isFalse () ;
+//            const bool exOk = (inPureBNFproductions (numeroProductionJ COMMA_HERE).derivationFirstEX () &
+//                   inPureBNFproductions (numeroProductionK COMMA_HERE).derivationFirstEX ()).isFalse () ;
             const C_Relation rJ = inPureBNFproductions (numeroProductionJ COMMA_HERE).derivationFirst (HERE) ;
             const C_Relation rK = inPureBNFproductions (numeroProductionK COMMA_HERE).derivationFirst (HERE) ;
             const bool ok = rJ.andOp (rK COMMA_HERE).isEmpty () ;
-            if (ok != exOk){
+ /*           if (ok != exOk){
               printf ("\n********* LL1 ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
               exit (1) ;
-            }
+            }*/
             
-            if (! exOk) {
+            if (! ok) {
               nombreDeConflits ++ ;
               if (inHTMLfile != NULL) {
                 inHTMLfile->outputRawData ("<tr><td colspan=\"2\"><span class=\"error\">") ;
@@ -497,12 +497,12 @@ printDecisionTable (const cPureBNFproductionsList & inPureBNFproductions,
         inCppFile << "-1, // Choice "
                   << cStringWithSigned ((int32_t)(j - firstProduction + 1))
                   << "\n" ;
-        const int16_t decisionTableIndexEX = (int16_t) (ioDecisionTableIndex + (int16_t) p.derivationFirstEX ().getValuesCount ()) ;
+//        const int16_t decisionTableIndexEX = (int16_t) (ioDecisionTableIndex + (int16_t) p.derivationFirstEX ().getValuesCount ()) ;
         ioDecisionTableIndex = (int16_t) (ioDecisionTableIndex + (int16_t) p.derivationFirst (HERE).value64Count ()) ;
-        if (ioDecisionTableIndex != decisionTableIndexEX) {
+  /*      if (ioDecisionTableIndex != decisionTableIndexEX) {
           printf ("\n********* LL1 ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
           exit (1) ;
-        }
+        }*/
         ioDecisionTableIndex ++ ;
       }
       inCppFile << "  -1,\n" ;
