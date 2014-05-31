@@ -37,8 +37,6 @@ class C_Compiler ;
 class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis ;
 class C_Relation ;
 
-// class C_BDD_Set2 ;
-
 //-----------------------------------------------------------------------------*
 
 void
@@ -47,9 +45,7 @@ LL1_computations (C_Compiler * inCompiler,
                   C_HTML_FileWrite * inHTMLfile,
                   const cVocabulary & inVocabulary,
                   const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
-               //   const C_BDD_Set2 & inFIRSTsetsEX,
                   const C_Relation & inFIRSTsets,
-               //   const C_BDD_Set2 & inFOLLOWsetsEx,
                   const C_Relation & inFOLLOWsets,
                   const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                   const uint32_t inOriginalGrammarStartSymbol,

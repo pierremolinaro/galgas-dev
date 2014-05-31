@@ -2,8 +2,10 @@
 //                                                                             *
 // Routines for computing empty string derivations                             *
 //                                                                             *
-//  Copyright (C) 1999-2002 Pierre Molinaro.                                   *
+//  Copyright (C) 1999, ..., 2014 Pierre Molinaro.                             *
+//                                                                             *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                      *
+//                                                                             *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
 //  ECN, École Centrale de Nantes (France)                                     *
 //                                                                             *
@@ -21,32 +23,12 @@
 #include "files/C_HTML_FileWrite.h"
 #include "bdd/C_Relation.h"
 
-#include "bdd/C_BDD_Set1.h"
-
 //-----------------------------------------------------------------------------*
 
 #include "empty_strings_computations.h"
 #include "cPureBNFproductionsList.h"
 #include "cVocabulary.h"
 
-//-----------------------------------------------------------------------------*
-
-/*static C_BDD_Set1
-EXcomputeNonterminalSymbolsHavingEmptyDerivation (const cPureBNFproductionsList & inProductionRules,
-                                                  const C_BDD_Descriptor & inDescriptor) { 
-  C_BDD_Set1 nonterminalSymbolsHavingEmptyDerivation (inDescriptor) ;
-  C_BDD_Set1 temp (inDescriptor);
-  for (int32_t i=0 ; i<inProductionRules.length () ; i++) {
-    const cProduction & p = inProductionRules (i COMMA_HERE) ;
-    if (p.derivationLength () == 0) {
-      temp.init (C_BDD::kEqual, (uint32_t) p.leftNonTerminalIndex ()) ;
-      nonterminalSymbolsHavingEmptyDerivation |= temp ;
-    }
-  }
-
-  return nonterminalSymbolsHavingEmptyDerivation ;
-}
-*/
 //-----------------------------------------------------------------------------*
 
 static C_Relation
@@ -145,56 +127,6 @@ computeNonterminalDerivingInEmptyString (const cPureBNFproductionsList & inProdu
 
 //-----------------------------------------------------------------------------*
 
-/*static C_BDD_Set1
-computeNonterminalDerivingInEmptyStringEX (const cPureBNFproductionsList & inProductionRules,
-                                         const C_BDD_Descriptor & inDescriptor,
-                                         TC_UniqueArray <bool> & vocabulaireSeDerivantEnVide, 
-                                         const uint32_t inAllSymbolsCount,
-                                         int32_t & outIterationsCount) {
-  { TC_UniqueArray <bool> tempo ((int32_t) inAllSymbolsCount, false COMMA_HERE) ;
-    swap (tempo, vocabulaireSeDerivantEnVide) ;
-  }
-
-  const int32_t nombreDeProductions = inProductionRules.length () ;
-  TC_UniqueArray <bool> productionTraitee (nombreDeProductions, false COMMA_HERE) ;
-
-  outIterationsCount = 0 ;
-  bool onProgresse = true ;
-  while (onProgresse) {
-    onProgresse = false ;
-    outIterationsCount ++ ;
-    for (int32_t i=0 ; i<nombreDeProductions ; i++) {
-      const cProduction & p = inProductionRules (i COMMA_HERE) ;
-      if (! productionTraitee (i COMMA_HERE)) {
-        const int32_t n = p.derivationLength () ;
-        bool estVide = true ;
-        for (int32_t j=0 ; (j<n) && estVide ; j++) {
-          estVide = vocabulaireSeDerivantEnVide (p.derivationAtIndex (j COMMA_HERE) COMMA_HERE) ;
-        }
-        if (estVide) {
-          vocabulaireSeDerivantEnVide (p.leftNonTerminalIndex () COMMA_HERE) = true ;
-          productionTraitee (i COMMA_HERE) = true ;
-          onProgresse = true ;
-        }
-      }
-    }
-  }
-  
-//--- Contruire le bdd
-  C_BDD_Set1 nonTerminauxSeDerivantEnVide (inDescriptor) ;
-  C_BDD_Set1 temp (inDescriptor) ;
-  for (uint32_t i=0 ; i<inAllSymbolsCount ; i++) {
-    if (vocabulaireSeDerivantEnVide ((int32_t) i COMMA_HERE)) {
-      temp.init (C_BDD::kEqual, i) ;
-      nonTerminauxSeDerivantEnVide |= temp ;
-    }
-  }
-
-  return nonTerminauxSeDerivantEnVide ;
-}
-*/
-//-----------------------------------------------------------------------------*
-
 static void
 printNonterminalDerivingInEmptyString (const C_Relation & inVocabularyDerivingToEmpty,
                                        const C_Relation & inNonTerminalHavingEmptyDerivation,
@@ -249,7 +181,6 @@ C_Relation
 empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions,
                             C_HTML_FileWrite * inHTMLfile,
                             TC_UniqueArray <bool> & outVocabularyDerivingToEmpty_Array,
-                      //      C_BDD_Set1 & outVocabularyDerivingToEmpty_BDD,
                             const C_RelationConfiguration & inVocabularyConfiguration,
                             const bool inVerboseOptionOn) {
 //--- Console display
@@ -262,18 +193,9 @@ empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions
     inHTMLfile->appendCppTitleComment ("Searching for nonterminal symbols deriving in empty string", "title") ;
   }
 
-//--- Compute BDD for nonterminal symbols having an empty derivation
-/*  const C_BDD_Set1 nonTerminalHavingEmptyDerivationEX 
-    = EXcomputeNonterminalSymbolsHavingEmptyDerivation (inPureBNFproductions,
-                                                        outVocabularyDerivingToEmpty_BDD.getDescriptor()) ; */
-
   const C_Relation nonTerminalHavingEmptyDerivation
     = computeNonterminalSymbolsHavingEmptyDerivation (inPureBNFproductions,
                                                       inVocabularyConfiguration) ;
-/*  if (nonTerminalHavingEmptyDerivation.bdd () != nonTerminalHavingEmptyDerivationEX.bdd ()) {
-    printf ("*** nonTerminalHavingEmptyDerivation.bdd () != nonTerminalHavingEmptyDerivationEX.bdd () ***\n") ;
-    exit (1) ;
-  }*/
   if (inHTMLfile != NULL) {
     printNonterminalSymbolsHavingEmptyDerivation (nonTerminalHavingEmptyDerivation, *inHTMLfile) ;
   }
@@ -282,23 +204,12 @@ empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions
   const uint32_t allSymbolCount = inVocabularyConfiguration.constantCountForVariable (0 COMMA_HERE) ;
 
   int32_t iterationCount = 0 ;
-/*  outVocabularyDerivingToEmpty_BDD 
-     = computeNonterminalDerivingInEmptyStringEX (inPureBNFproductions,
-                                                outVocabularyDerivingToEmpty_BDD.getDescriptor (),
-                                                outVocabularyDerivingToEmpty_Array,
-                                                allSymbolCount,
-                                                iterationCount) ; */
-
   const C_Relation vocabularyDerivingToEmpty 
      = computeNonterminalDerivingInEmptyString (inPureBNFproductions,
                                                 nonTerminalHavingEmptyDerivation,
                                                 outVocabularyDerivingToEmpty_Array,
                                                 allSymbolCount,
                                                 iterationCount) ;
-/*  if (vocabularyDerivingToEmpty.bdd() != outVocabularyDerivingToEmpty_BDD.bdd()) {
-    printf ("*** outVocabularyDerivingToEmpty.bdd() != outVocabularyDerivingToEmpty_BDD.bdd() ***\n") ;
-    exit (1) ;
-  }*/
 
   printNonterminalDerivingInEmptyString (vocabularyDerivingToEmpty,
                                          nonTerminalHavingEmptyDerivation,
