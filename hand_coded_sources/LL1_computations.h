@@ -1,9 +1,11 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  Routines for checking LL(1) condition                                    *
+//  Routines for checking LL(1) condition                                      *
 //                                                                             *
-//  Copyright (C) 1999-2002 Pierre Molinaro.                                 *
-//  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+//  Copyright (C) 1999, ..., 2014 Pierre Molinaro.                             *
+//                                                                             *
+//  e-mail : molinaro@irccyn.ec-nantes.fr                                      *
+//                                                                             *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
 //  ECN, École Centrale de Nantes (France)                                     *
 //                                                                             *
@@ -30,10 +32,12 @@
 class cPureBNFproductionsList ;
 class C_HTML_FileWrite ;
 class cVocabulary ;
-class C_BDD_Set2 ;
 class C_String ;
 class C_Compiler ;
 class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis ;
+class C_Relation ;
+
+class C_BDD_Set2 ;
 
 //-----------------------------------------------------------------------------*
 
@@ -43,8 +47,10 @@ LL1_computations (C_Compiler * inCompiler,
                   C_HTML_FileWrite * inHTMLfile,
                   const cVocabulary & inVocabulary,
                   const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
-                  const C_BDD_Set2 & inFIRSTsets,
-                  const C_BDD_Set2 & inFOLLOWsets,
+                  const C_BDD_Set2 & inFIRSTsetsEX,
+                  const C_Relation &, // inFIRSTsets,
+                  const C_BDD_Set2 & inFOLLOWsetsEx,
+                  const C_Relation &, // inFOLLOWsets,
                   const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                   const uint32_t inOriginalGrammarStartSymbol,
                   const C_String & inTargetFileName,

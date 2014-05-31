@@ -24,6 +24,8 @@
 #include "files/C_TextFileWrite.h"
 #include "utilities/MF_MemoryControl.h"
 #include "galgas2/C_Compiler.h"
+#include "bdd/C_Relation.h"
+
 #include "bdd/C_BDD_Set2.h"
 
 //-----------------------------------------------------------------------------*
@@ -73,12 +75,23 @@ void cAffichagePremiersProduction::action (const bool tableauDesValeurs [],
 
 static bool
 check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
-                     const C_BDD_Set2 & inFIRSTsets,
-                     const C_BDD_Set2 & inFOLLOWsets,
+                     const C_BDD_Set2 & inFIRSTsetsEX,
+                     const C_Relation & inFIRSTsets,
+                     const C_BDD_Set2 & inFOLLOWsetsEx,
+                     const C_Relation & inFOLLOWsets,
                      const TC_UniqueArray <bool> & vocabulaireSeDerivantEnVide,
                      const cVocabulary & inVocabulary,
                      C_HTML_FileWrite * inHTMLfile,
                      const bool inVerboseOptionOn) {
+  if (inFIRSTsetsEX.bdd () != inFIRSTsets.bdd ()){
+    printf ("\n********* LL1 ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
+    exit (1) ;
+  }
+  if (inFOLLOWsetsEx.bdd () != inFOLLOWsets.bdd ()){
+    printf ("\n********* LL1 ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
+    exit (1) ;
+  }
+
 //--- Pour chaque non-terminal presentant plusieurs inPureBNFproductions, calculer le 'premiers' de chacune d'elle,
 // et verifier l'absence de conflit.
   if (inHTMLfile != NULL) {
@@ -92,11 +105,17 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
                    "for inPureBNFproductions numbering) :\n\n" ;
     inHTMLfile->outputRawData ("</p>") ;
   }
-  C_BDD_Set2 t (inFOLLOWsets) ;
-  t.clear () ;
-  C_BDD_Set1 premierDeProduction (inFOLLOWsets.getDescriptor1 ()) ;
-  C_BDD_Set2 temp (inFOLLOWsets) ;
-  int16_t nombreDeConflits = 0 ;
+  
+  C_Relation t (inFOLLOWsets.configuration(), false) ;
+  C_BDD_Set2 EXt (inFOLLOWsetsEx) ;
+  EXt.clear () ;
+  
+  C_Relation premierDeProduction (inFOLLOWsets.configuration(), false) ;
+  C_BDD_Set1 premierDeProductionEX (inFOLLOWsetsEx.getDescriptor1 ()) ;
+
+  C_BDD_Set2 tempEX (inFOLLOWsetsEx) ;
+  
+  int32_t nombreDeConflits = 0 ;
   const int32_t nombreNonTerminaux = inVocabulary.getNonTerminalSymbolsCount () ;
   const int32_t terminalSymbolsCount = inVocabulary.getTerminalSymbolsCount () ;
   if (inHTMLfile != NULL) {
@@ -104,7 +123,7 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
   }
   for (int32_t i=0 ; i<nombreNonTerminaux ; i++) {
     const int32_t first = inPureBNFproductions.tableauIndicePremiereProduction (i COMMA_HERE) ;
-      if (first >= 0) { // first<0 means the non terminal symbol is unuseful
+      if (first >= 0) { // first<0 means the non terminal symbol is useless
       const int32_t derniere = inPureBNFproductions.tableauIndiceDerniereProduction (i COMMA_HERE) ;
       if (derniere > first) { // Plusieurs inPureBNFproductions d'un meme non-terminal
       //--- Calculer et afficher les premiers
@@ -123,32 +142,61 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
             inHTMLfile->outputRawData ("</a></td><td><code>") ;
           }
           cProduction & p = inPureBNFproductions (numeroProduction COMMA_HERE) ;
-          premierDeProduction.clear () ;
+          premierDeProduction.setToEmpty () ;
+          premierDeProductionEX.clear () ;
           if (p.derivationLength () == 0) {
-            temp.initDimension1 (C_BDD::kEqual, (uint32_t) p.leftNonTerminalIndex ()) ;
-            p.mDerivationFirst = (temp & inFOLLOWsets).projeterSurAxe2 () ;
+            C_Relation temp (inFOLLOWsets.configuration(), 0, C_BDD::kEqual, (uint32_t) p.leftNonTerminalIndex () COMMA_HERE) ;
+            p.mDerivationFirst = temp.andOp (inFOLLOWsets COMMA_HERE).transposedRelation (HERE).relationByDeletingLastVariable (HERE) ;
+            tempEX.initDimension1 (C_BDD::kEqual, (uint32_t) p.leftNonTerminalIndex ()) ;
+            p.mDerivationFirstEX = (tempEX & inFOLLOWsetsEx).projeterSurAxe2 () ;
+            if (p.mDerivationFirstEX.bdd () != p.mDerivationFirst.bdd ()){
+              printf ("\n********* LL1 ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
+              exit (1) ;
+            }
           }else{
             const uint32_t elementEnTete = (uint32_t) p.derivationAtIndex (0 COMMA_HERE) ;
-            t.initDimension1 (C_BDD::kEqual, elementEnTete) ;
+            EXt.initDimension1 (C_BDD::kEqual, elementEnTete) ;
+            C_Relation t (inFOLLOWsets.configuration(), 0, C_BDD::kEqual, elementEnTete COMMA_HERE) ;
             if (((int32_t) elementEnTete) < terminalSymbolsCount) {
-              p.mDerivationFirst = t.projeterSurAxe1 () ;
-            }else{
-              p.mDerivationFirst = (t & inFIRSTsets).projeterSurAxe2 () ;
-              if (vocabulaireSeDerivantEnVide ((int32_t) elementEnTete COMMA_HERE)) {
-                p.mDerivationFirst |= (t & inFOLLOWsets).projeterSurAxe2 () ;
+              p.mDerivationFirstEX = EXt.projeterSurAxe1 () ;
+              p.mDerivationFirst = t.relationByDeletingLastVariable (HERE) ;
+              if (p.mDerivationFirstEX.bdd () != p.mDerivationFirst.bdd ()){
+                printf ("\n********* LL1 ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
+                exit (1) ;
               }
+            }else{
+              p.mDerivationFirst = t.andOp (inFIRSTsets COMMA_HERE).transposedRelation (HERE).relationByDeletingLastVariable (HERE) ;
+              if (vocabulaireSeDerivantEnVide ((int32_t) elementEnTete COMMA_HERE)) {
+                p.mDerivationFirst.orWith (t.andOp (inFOLLOWsets COMMA_HERE).transposedRelation (HERE).relationByDeletingLastVariable (HERE) COMMA_HERE) ;
+              }
+              p.mDerivationFirstEX = (EXt & inFIRSTsetsEX).projeterSurAxe2 () ;
+              if (vocabulaireSeDerivantEnVide ((int32_t) elementEnTete COMMA_HERE)) {
+                p.mDerivationFirstEX |= (EXt & inFOLLOWsetsEx).projeterSurAxe2 () ;
+              }
+            }
+            if (p.mDerivationFirstEX.bdd () != p.mDerivationFirst.bdd ()){
+              printf ("\n********* LL1 ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
+              exit (1) ;
             }
           }
           if (inHTMLfile != NULL) {
-            TC_UniqueArray <bool> array ;
-            p.derivationFirst ().getArray (array) ;
+            TC_UniqueArray <uint64_t> array ;
+            p.derivationFirst (HERE).getValueArray (array) ;
+            for (int32_t i=0 ; i < array.count () ; i++) {
+              const uint64_t symbol = array (i COMMA_HERE) ;
+              inVocabulary.printInFile (*inHTMLfile, (int32_t) symbol COMMA_HERE) ;
+              *inHTMLfile << " " ;
+            }
+
+/*            TC_UniqueArray <bool> arrayEX ;
+            p.derivationFirstEX ().getArray (arrayEX) ;
             const int32_t symbolsCount = inVocabulary.getAllSymbolsCount () ;
             for (int32_t symbol=0 ; symbol < symbolsCount ; symbol++) {
-              if (array (symbol COMMA_HERE)) {
+              if (arrayEX (symbol COMMA_HERE)) {
                 inVocabulary.printInFile (*inHTMLfile, symbol COMMA_HERE) ;
                 *inHTMLfile << " " ;
               }
-            }
+            }*/
             inHTMLfile->outputRawData ("</code></td></tr>") ;
           }
         }
@@ -157,8 +205,8 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
           const int32_t numeroProductionJ = inPureBNFproductions.tableauIndirectionProduction (pr1 COMMA_HERE) ;
           for (int32_t k=pr1+1 ; k<=derniere ; k++) {
             const int32_t numeroProductionK = inPureBNFproductions.tableauIndirectionProduction (k COMMA_HERE) ;
-            if (! (inPureBNFproductions(numeroProductionJ COMMA_HERE).derivationFirst () &
-                  inPureBNFproductions(numeroProductionK COMMA_HERE).derivationFirst ()).isFalse ()) {
+            if (! (inPureBNFproductions (numeroProductionJ COMMA_HERE).derivationFirstEX () &
+                   inPureBNFproductions (numeroProductionK COMMA_HERE).derivationFirstEX ()).isFalse ()) {
               nombreDeConflits ++ ;
               if (inHTMLfile != NULL) {
                 inHTMLfile->outputRawData ("<tr><td colspan=\"2\"><span class=\"error\">") ;
@@ -417,7 +465,7 @@ printDecisionTable (const cPureBNFproductionsList & inPureBNFproductions,
       for (int32_t j=firstProduction ; j<=lastProduction ; j++) {
         cProduction & p = inPureBNFproductions (inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) COMMA_HERE) ;
         TC_UniqueArray <bool> array ;
-        p.derivationFirst ().getArray (array) ;
+        p.derivationFirstEX ().getArray (array) ;
         const int32_t symbolsCount = inVocabulary.getAllSymbolsCount () ;
         for (int32_t symbol=0 ; symbol < symbolsCount ; symbol++) {
           if (array (symbol COMMA_HERE)) {
@@ -430,7 +478,7 @@ printDecisionTable (const cPureBNFproductionsList & inPureBNFproductions,
         inCppFile << "-1, // Choice "
                   << cStringWithSigned ((int32_t)(j - firstProduction + 1))
                   << "\n" ;
-        ioDecisionTableIndex = (int16_t) (ioDecisionTableIndex + (int16_t) p.derivationFirst ().getValuesCount ()) ;
+        ioDecisionTableIndex = (int16_t) (ioDecisionTableIndex + (int16_t) p.derivationFirstEX ().getValuesCount ()) ;
         ioDecisionTableIndex ++ ;
       }
       inCppFile << "  -1,\n" ;
@@ -883,8 +931,10 @@ LL1_computations (C_Compiler * inCompiler,
                   C_HTML_FileWrite * inHTMLfile,
                   const cVocabulary & inVocabulary,
                   const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
-                  const C_BDD_Set2 & inFIRSTsets,
-                  const C_BDD_Set2 & inFOLLOWsets,
+                  const C_BDD_Set2 & inFIRSTsetsEX,
+                  const C_Relation & inFIRSTsets,
+                  const C_BDD_Set2 & inFOLLOWsetsEx,
+                  const C_Relation & inFOLLOWsets,
                   const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                   const uint32_t inOriginalGrammarStartSymbol,
                   const C_String & inTargetFileName,
@@ -906,7 +956,9 @@ LL1_computations (C_Compiler * inCompiler,
 
 //--- Check LL(1) condition
   outOk = check_LL1_condition (inPureBNFproductions,
+                               inFIRSTsetsEX,
                                inFIRSTsets,
+                               inFOLLOWsetsEx,
                                inFOLLOWsets,
                                inVocabularyDerivingToEmpty_Array,
                                inVocabulary,

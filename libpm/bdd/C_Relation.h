@@ -90,6 +90,9 @@ class C_Relation {
 
   public : C_Relation exitsOnVariable (const int32_t inVariableIndex COMMA_LOCATION_ARGS) const ;
 
+//--- Operations on 2 set relations  
+  public : C_Relation transposedRelation (LOCATION_ARGS) const ;
+
 //--- Operations on 3 set relations  
   public : C_Relation swap132 (LOCATION_ARGS) const ;
 

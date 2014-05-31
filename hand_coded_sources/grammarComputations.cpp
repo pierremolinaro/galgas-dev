@@ -63,6 +63,7 @@ mLineDefinition (0),
 mColumnDefinition (0),
 mLeftNonTerminalIndex (0),
 mDerivation (),
+mDerivationFirstEX (),
 mDerivationFirst (),
 mProductionIndex (0) {
 }
@@ -80,6 +81,7 @@ mLineDefinition (inDefinitionLine),
 mColumnDefinition (inColumnDefinition),
 mLeftNonTerminalIndex (inLeftNonTerminalIndex),
 mDerivation (),
+mDerivationFirstEX (),
 mDerivationFirst (),
 mProductionIndex (inProductionIndex) {
   swap (mDerivation, ioDerivation) ;
@@ -96,6 +98,7 @@ mLineDefinition (inDefinitionLine),
 mColumnDefinition (inColumnDefinition),
 mLeftNonTerminalIndex (inLeftNonTerminalIndex),
 mDerivation (),
+mDerivationFirstEX (),
 mDerivationFirst (),
 mProductionIndex (0) {
 }
@@ -137,6 +140,7 @@ void swap (cProduction & ioProduction1, cProduction & ioProduction2) {
   swap (ioProduction1.mColumnDefinition, ioProduction2.mColumnDefinition) ;
   swap (ioProduction1.mLeftNonTerminalIndex, ioProduction2.mLeftNonTerminalIndex) ;
   swap (ioProduction1.mDerivation, ioProduction2.mDerivation) ;
+  swap (ioProduction1.mDerivationFirstEX, ioProduction2.mDerivationFirstEX) ;
   swap (ioProduction1.mDerivationFirst, ioProduction2.mDerivationFirst) ;
   swap (ioProduction1.mProductionIndex, ioProduction2.mProductionIndex) ;
 }
@@ -596,7 +600,9 @@ analyzeGrammar (C_Compiler * inCompiler,
                       vocabulary,
                       vocabularyDerivingToEmpty_Array,
                       EX_FIRSTsets,
+                      FIRSTsets,
                       EX_FOLLOWsets,
+                      FOLLOWsets,
                       inNonTerminalSymbolSortedListForGrammarAnalysis,
                       inOriginalGrammarStartSymbol.uintValue (),
                       inTargetFileName.mAttribute_string.stringValue (),
