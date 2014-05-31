@@ -75,22 +75,22 @@ void cAffichagePremiersProduction::action (const bool tableauDesValeurs [],
 
 static bool
 check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
-                     const C_BDD_Set2 & inFIRSTsetsEX,
+                 //    const C_BDD_Set2 & inFIRSTsetsEX,
                      const C_Relation & inFIRSTsets,
-                     const C_BDD_Set2 & inFOLLOWsetsEx,
+                 //    const C_BDD_Set2 & inFOLLOWsetsEx,
                      const C_Relation & inFOLLOWsets,
                      const TC_UniqueArray <bool> & vocabulaireSeDerivantEnVide,
                      const cVocabulary & inVocabulary,
                      C_HTML_FileWrite * inHTMLfile,
                      const bool inVerboseOptionOn) {
-  if (inFIRSTsetsEX.bdd () != inFIRSTsets.bdd ()){
+/*  if (inFIRSTsetsEX.bdd () != inFIRSTsets.bdd ()){
     printf ("\n********* LL1 ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
     exit (1) ;
   }
   if (inFOLLOWsetsEx.bdd () != inFOLLOWsets.bdd ()){
     printf ("\n********* LL1 ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
     exit (1) ;
-  }
+  }*/
 
 //--- Pour chaque non-terminal presentant plusieurs inPureBNFproductions, calculer le 'premiers' de chacune d'elle,
 // et verifier l'absence de conflit.
@@ -107,13 +107,13 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
   }
   
   C_Relation t (inFOLLOWsets.configuration(), false) ;
-  C_BDD_Set2 EXt (inFOLLOWsetsEx) ;
-  EXt.clear () ;
+//  C_BDD_Set2 EXt (inFOLLOWsetsEx) ;
+//  EXt.clear () ;
   
-  C_Relation premierDeProduction (inFOLLOWsets.configuration(), false) ;
-  C_BDD_Set1 premierDeProductionEX (inFOLLOWsetsEx.getDescriptor1 ()) ;
+//  C_Relation premierDeProduction (inFOLLOWsets.configuration(), false) ;
+//  C_BDD_Set1 premierDeProductionEX (inFOLLOWsetsEx.getDescriptor1 ()) ;
 
-  C_BDD_Set2 tempEX (inFOLLOWsetsEx) ;
+//  C_BDD_Set2 tempEX (inFOLLOWsetsEx) ;
   
   int32_t nombreDeConflits = 0 ;
   const int32_t nombreNonTerminaux = inVocabulary.getNonTerminalSymbolsCount () ;
@@ -142,12 +142,12 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
             inHTMLfile->outputRawData ("</a></td><td><code>") ;
           }
           cProduction & p = inPureBNFproductions (numeroProduction COMMA_HERE) ;
-          premierDeProduction.setToEmpty () ;
-          premierDeProductionEX.clear () ;
+      //    premierDeProduction.setToEmpty () ;
+      //    premierDeProductionEX.clear () ;
           if (p.derivationLength () == 0) {
             C_Relation temp (inFOLLOWsets.configuration(), 0, C_BDD::kEqual, (uint32_t) p.leftNonTerminalIndex () COMMA_HERE) ;
             p.mDerivationFirst = temp.andOp (inFOLLOWsets COMMA_HERE).transposedRelation (HERE).relationByDeletingLastVariable (HERE) ;
-            tempEX.initDimension1 (C_BDD::kEqual, (uint32_t) p.leftNonTerminalIndex ()) ;
+      //      tempEX.initDimension1 (C_BDD::kEqual, (uint32_t) p.leftNonTerminalIndex ()) ;
         /*    p.mDerivationFirstEX = (tempEX & inFOLLOWsetsEx).projeterSurAxe2 () ;
             if (p.mDerivationFirstEX.bdd () != p.mDerivationFirst.bdd ()){
               printf ("\n********* LL1 ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
@@ -155,7 +155,7 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
             }*/
           }else{
             const uint32_t elementEnTete = (uint32_t) p.derivationAtIndex (0 COMMA_HERE) ;
-            EXt.initDimension1 (C_BDD::kEqual, elementEnTete) ;
+        //    EXt.initDimension1 (C_BDD::kEqual, elementEnTete) ;
             C_Relation t (inFOLLOWsets.configuration(), 0, C_BDD::kEqual, elementEnTete COMMA_HERE) ;
             if (((int32_t) elementEnTete) < terminalSymbolsCount) {
            //   p.mDerivationFirstEX = EXt.projeterSurAxe1 () ;
@@ -955,9 +955,9 @@ LL1_computations (C_Compiler * inCompiler,
                   C_HTML_FileWrite * inHTMLfile,
                   const cVocabulary & inVocabulary,
                   const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
-                  const C_BDD_Set2 & inFIRSTsetsEX,
+             //     const C_BDD_Set2 & inFIRSTsetsEX,
                   const C_Relation & inFIRSTsets,
-                  const C_BDD_Set2 & inFOLLOWsetsEx,
+              //    const C_BDD_Set2 & inFOLLOWsetsEx,
                   const C_Relation & inFOLLOWsets,
                   const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                   const uint32_t inOriginalGrammarStartSymbol,
@@ -980,9 +980,9 @@ LL1_computations (C_Compiler * inCompiler,
 
 //--- Check LL(1) condition
   outOk = check_LL1_condition (inPureBNFproductions,
-                               inFIRSTsetsEX,
+                            //   inFIRSTsetsEX,
                                inFIRSTsets,
-                               inFOLLOWsetsEx,
+                           //    inFOLLOWsetsEx,
                                inFOLLOWsets,
                                inVocabularyDerivingToEmpty_Array,
                                inVocabulary,
