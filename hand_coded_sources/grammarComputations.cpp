@@ -492,7 +492,7 @@ analyzeGrammar (C_Compiler * inCompiler,
   #ifdef LOG_GRAMMAR_COMPUTATIONS
     printf ("GETTING USEFUL SYMBOLS\n") ; fflush (stdout) ;
   #endif
-  C_BDD_Set1 usefulSymbolsEX (vocabularyDescriptorEX) ;
+//  C_BDD_Set1 usefulSymbolsEX (vocabularyDescriptorEX) ;
   C_Relation usefulSymbols ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     useful_symbols_computations (inCompiler,
@@ -502,7 +502,7 @@ analyzeGrammar (C_Compiler * inCompiler,
                                  vocabularyBDDType,
                                  vocabulary,
                                  HTMLfile,
-                                 usefulSymbolsEX,
+                             //    usefulSymbolsEX,
                                  usefulSymbols,
                                  warningFlag,
                                  verboseOptionOn) ;
