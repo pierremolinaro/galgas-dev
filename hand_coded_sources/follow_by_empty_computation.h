@@ -1,9 +1,9 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  Routines for computing followed by empty strings symbols                 *
+//  Routines for computing followed by empty strings symbols                   *
 //                                                                             *
-//  Copyright (C) 1999-2002 Pierre Molinaro.                                 *
-//  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+//  Copyright (C) 1999-2002 Pierre Molinaro.                                   *
+//  e-mail : molinaro@irccyn.ec-nantes.fr                                      *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
 //  ECN, École Centrale de Nantes (France)                                     *
 //                                                                             *
@@ -33,7 +33,7 @@ class cVocabulary ;
 class C_Lexique ;
 class C_Relation ;
 
-class C_BDD_Set1 ;
+//class C_BDD_Set1 ;
 
 //-----------------------------------------------------------------------------*
 
@@ -42,7 +42,7 @@ follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductio
                               C_HTML_FileWrite * inHTMLfile,
                               const cVocabulary & inVocabulary,
                               const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
-                              C_BDD_Set1 & outVocabularyFollowedByEmpty_BDD,
+                           //   C_BDD_Set1 & outVocabularyFollowedByEmpty_BDD,
                               C_Relation & outVocabularyFollowedByEmpty,
                               const bool inVerboseOptionOn) ;
 

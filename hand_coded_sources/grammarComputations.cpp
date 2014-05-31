@@ -548,14 +548,14 @@ analyzeGrammar (C_Compiler * inCompiler,
     }
   }
 //--- Calcul de l'ensemble des non-terminaux pouvant etre suivi du vide -------------------------------
-  C_BDD_Set1 EX_nonTerminalSymbolsFollowedByEmpty (vocabularyDescriptorEX) ;
+//  C_BDD_Set1 EX_nonTerminalSymbolsFollowedByEmpty (vocabularyDescriptorEX) ;
   C_Relation nonTerminalSymbolsFollowedByEmpty (usefulSymbols.configuration (), false) ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     follow_by_empty_computations (pureBNFproductions,
                                   HTMLfile,
                                   vocabulary,
                                   vocabularyDerivingToEmpty_Array,
-                                  EX_nonTerminalSymbolsFollowedByEmpty,
+                               //   EX_nonTerminalSymbolsFollowedByEmpty,
                                   nonTerminalSymbolsFollowedByEmpty,
                                   verboseOptionOn) ;
   }
