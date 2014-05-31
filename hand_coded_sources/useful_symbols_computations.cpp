@@ -23,7 +23,7 @@
 #include "files/C_HTML_FileWrite.h"
 #include "bdd/C_Relation.h"
 #include "bdd/C_RelationSingleType.h"
-#include "bdd/C_BDD_Set2.h"
+// #include "bdd/C_BDD_Set2.h"
 #include "utilities/MF_MemoryControl.h"
 #include "galgas2/C_Compiler.h"
 
@@ -39,16 +39,16 @@
 static void
 computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
                       const C_RelationSingleType & inVocabularyBDDType,
-                      C_BDD_Set1 & ex_outUsefulSymbols,
-                      C_Relation & outUsefulSymbolsRelation,
+                 //     C_BDD_Set1 & ex_outUsefulSymbols,
+                      C_Relation & outUsefulSymbols,
                       const uint16_t inStartSymbolIndex,
                       int32_t & outIterationsCount) {
 //--- Traverse all productions for getting direct accessibility
-  C_BDD_Set2 ex_accessibility (ex_outUsefulSymbols.getDescriptor (), ex_outUsefulSymbols.getDescriptor ()) ;
+/*  C_BDD_Set2 ex_accessibility (ex_outUsefulSymbols.getDescriptor (), ex_outUsefulSymbols.getDescriptor ()) ;
   C_BDD_Set2 ex_leftNonterminal (ex_outUsefulSymbols.getDescriptor (), ex_outUsefulSymbols.getDescriptor ()) ;
   C_BDD_Set2 ex_rightVocabulary (ex_outUsefulSymbols.getDescriptor (), ex_outUsefulSymbols.getDescriptor ()) ;
   C_BDD_Set2 ex_rightSymbol (ex_outUsefulSymbols.getDescriptor (), ex_outUsefulSymbols.getDescriptor ()) ;
-  C_BDD accessibility ;
+  C_BDD accessibility ;*/
   C_RelationConfiguration vocabulary ;
   vocabulary.addVariable ("source", inVocabularyBDDType) ;
   C_RelationConfiguration vocabulary2 = vocabulary ;
@@ -57,52 +57,52 @@ computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
   for (int32_t i=0 ; i<inPureBNFproductions.length () ; i++) {
     const cProduction & p = inPureBNFproductions (i COMMA_HERE) ;
     if (p.derivationLength () > 0) {
-      ex_rightVocabulary.clear () ;
-      C_BDD rightVocabulary ;
+   //   ex_rightVocabulary.clear () ;
+   //   C_BDD rightVocabulary ;
       C_Relation rightVocabularyRelation (vocabulary2, false) ;
       rightVocabularyRelation.setToEmpty () ;
       for (int32_t j=0 ; j<p.derivationLength () ; j++) {
-        ex_rightSymbol.initDimension2 (C_BDD::kEqual, (uint16_t) p.derivationAtIndex (j COMMA_HERE)) ;
+    /*    ex_rightSymbol.initDimension2 (C_BDD::kEqual, (uint16_t) p.derivationAtIndex (j COMMA_HERE)) ;
         ex_rightVocabulary |= ex_rightSymbol ;
         const C_BDD rightSymbol = C_BDD::varCompareConst (inVocabularyBDDType.BDDBitCount (),
                                                           inVocabularyBDDType.BDDBitCount (),
                                                           C_BDD::kEqual,
-                                                          (uint32_t) p.derivationAtIndex (j COMMA_HERE)) ;  
+                                                          (uint32_t) p.derivationAtIndex (j COMMA_HERE)) ;  */
         rightVocabularyRelation.orWith (C_Relation (vocabulary2, 1, C_BDD::kEqual, (uint64_t) p.derivationAtIndex (j COMMA_HERE) COMMA_HERE) COMMA_HERE) ; 
-        rightVocabulary |= rightSymbol ;
+    //    rightVocabulary |= rightSymbol ;
       }
-      const C_BDD leftNonterminal = C_BDD::varCompareConst (0,
+   /*   const C_BDD leftNonterminal = C_BDD::varCompareConst (0,
                                                             inVocabularyBDDType.BDDBitCount (),
                                                             C_BDD::kEqual,
-                                                            (uint32_t) p.leftNonTerminalIndex ()) ;  
+                                                            (uint32_t) p.leftNonTerminalIndex ()) ;  */
       const C_Relation leftNonterminalRelation = C_Relation (vocabulary2, 0, C_BDD::kEqual, (uint64_t) p.leftNonTerminalIndex () COMMA_HERE) ; 
       accessibilityRelation.orWith (leftNonterminalRelation.andOp (rightVocabularyRelation COMMA_HERE) COMMA_HERE) ;
-      accessibility |= leftNonterminal & rightVocabulary ;
-      ex_leftNonterminal.initDimension1 (C_BDD::kEqual, (uint16_t) p.leftNonTerminalIndex ()) ;
-      ex_accessibility |= ex_leftNonterminal & ex_rightVocabulary ;
+  //    accessibility |= leftNonterminal & rightVocabulary ;
+   //   ex_leftNonterminal.initDimension1 (C_BDD::kEqual, (uint16_t) p.leftNonTerminalIndex ()) ;
+  //    ex_accessibility |= ex_leftNonterminal & ex_rightVocabulary ;
     }
   } 
 //--- Compute useful vocabulary
-  if (accessibility != (accessibilityRelation.bdd())) {
+ /* if (accessibility != (accessibilityRelation.bdd())) {
     printf ("*** ! accessibility.isEqualToBDD(accessibilityRelation.bdd() ***\n") ;
     exit (1) ;
-  }
+  }*/
   const C_Relation initialValueRelation (vocabulary, 0, C_BDD::kEqual, inStartSymbolIndex COMMA_HERE) ;
-  outUsefulSymbolsRelation = accessibilityRelation.accessibleStatesFrom (initialValueRelation, & outIterationsCount COMMA_HERE) ;
+  outUsefulSymbols = accessibilityRelation.accessibleStatesFrom (initialValueRelation, & outIterationsCount COMMA_HERE) ;
 
-  C_BDD_Set1 ex_initialValue (ex_outUsefulSymbols) ;
+/*  C_BDD_Set1 ex_initialValue (ex_outUsefulSymbols) ;
   ex_initialValue.init (C_BDD::kEqual, inStartSymbolIndex) ;
   ex_outUsefulSymbols = ex_accessibility.getAccessibility (ex_initialValue, outIterationsCount) ;
   const C_BDD initialValue = C_BDD::varCompareConst (0,
                                                      inVocabularyBDDType.BDDBitCount (),
                                                      C_BDD::kEqual,
                                                      (uint32_t) inStartSymbolIndex) ;  
-  C_BDD outUsefulSymbols = accessibility.accessibleStates (initialValue, inVocabularyBDDType.BDDBitCount (), NULL) ;
+  C_BDD outUsefulSymbolsEX = accessibility.accessibleStates (initialValue, inVocabularyBDDType.BDDBitCount (), NULL) ;
 
-  if (outUsefulSymbols != (outUsefulSymbolsRelation.bdd())) {
-    printf ("*** ! outUsefulSymbols.isEqualToBDD (outUsefulSymbolsRelation.bdd() ***\n") ;
+  if (outUsefulSymbolsEX != (outUsefulSymbols.bdd())) {
+    printf ("*** ! outUsefulSymbolsEX.isEqualToBDD (outUsefulSymbols.bdd() ***\n") ;
     exit (1) ;
-  }
+  }*/
 }
 
 //-----------------------------------------------------------------------------*
@@ -285,8 +285,8 @@ void useful_symbols_computations (C_Compiler * inCompiler,
                                   const C_RelationSingleType & inVocabularyBDDType,
                                   const cVocabulary & inVocabulary,
                                   C_HTML_FileWrite * inHTMLfile,
-                                  C_BDD_Set1 & outUsefulSymbols,
-                                  C_Relation & outUsefulSymbolsRelation,
+                             //     C_BDD_Set1 & outUsefulSymbolsEX,
+                                  C_Relation & outUsefulSymbols,
                                   bool & outWarningFlag,
                                   const bool inVerboseOptionOn) {
 //--- Console display
@@ -301,18 +301,18 @@ void useful_symbols_computations (C_Compiler * inCompiler,
   int32_t iterationsCount = 0 ;
   computeUsefulSymbols (inPureBNFproductions,
                         inVocabularyBDDType,
+                      //  outUsefulSymbolsEX,
                         outUsefulSymbols,
-                        outUsefulSymbolsRelation,
                         (uint16_t) inVocabulary.getStartSymbol (),
                         iterationsCount) ;
-  if (outUsefulSymbolsRelation.bdd () != (outUsefulSymbols.bdd())) {
-    printf ("*** ! outUsefulSymbolsRelation.bdd ().isEqualToBDD(outUsefulSymbols.bdd() ***\n") ;
+/*  if (outUsefulSymbols.bdd () != (outUsefulSymbolsEX.bdd())) {
+    printf ("*** ! outUsefulSymbols.bdd ().isEqualToBDD(outUsefulSymbolsEX.bdd() ***\n") ;
     exit (1) ;
-  }
+  }*/
   const bool warning = displayUnusefulSymbols (inCompiler,
                                                inErrorLocation,
                                                inUnusedNonTerminalSymbolsForGrammar,
-                                               outUsefulSymbolsRelation,
+                                               outUsefulSymbols,
                                                inHTMLfile,
                                                inVocabulary,
                                                iterationsCount,
