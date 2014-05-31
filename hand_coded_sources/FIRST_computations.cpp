@@ -52,10 +52,10 @@ computeFIRSTsets (const cPureBNFproductionsList & inProductionRules,
       int32_t j = 0 ;
       C_Relation right (vocabulary2Config, false) ;
       do{
-        right |= C_Relation (vocabulary2Config, 1, C_BDD::kEqual, (uint64_t) p.derivationAtIndex (j COMMA_HERE) COMMA_HERE) ;
+        right.orWith (C_Relation (vocabulary2Config, 1, C_BDD::kEqual, (uint64_t) p.derivationAtIndex (j COMMA_HERE) COMMA_HERE) COMMA_HERE) ;
         j++ ;
       }while ((j<n) && inVocabularyDerivingInEmptyString (p.derivationAtIndex (j-1 COMMA_HERE) COMMA_HERE)) ;
-      directFIRST |= left.andOp (right COMMA_HERE) ;
+      directFIRST.orWith (left.andOp (right COMMA_HERE) COMMA_HERE) ;
     }
   }
   
@@ -187,7 +187,7 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite * inHTMLfile,
   }
 
 //--- FIRST union nt symbols deriring in empty string
-  const C_Relation FIRST_with_empty_relation = nt_x_empty_relation | inFIRSTsets ;
+  const C_Relation FIRST_with_empty_relation = nt_x_empty_relation.orOp (inFIRSTsets COMMA_HERE) ;
   const C_BDD_Set2 ex_FIRST_with_empty = ex_nt_x_empty | inFIRSTsetsEX ;
   const C_BDD FIRST_with_empty = nt_x_empty | inFIRSTsetsEX.bdd () ;
   if (FIRST_with_empty != (ex_FIRST_with_empty.bdd ())) {
@@ -298,7 +298,7 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite * inHTMLfile,
                    " In any way having none: it is an error." ;
     inHTMLfile->outputRawData ("</p>") ;
     inHTMLfile->outputRawData ("<p>") ;
-    if (ntInErrorCount == 0L) {
+    if (ntInErrorCount == 0) {
       inHTMLfile->outputRawData ("<span class=\"success\">") ;
       *inHTMLfile << "All FIRST are correct.\n\n" ;
       inHTMLfile->outputRawData ("</span>") ;

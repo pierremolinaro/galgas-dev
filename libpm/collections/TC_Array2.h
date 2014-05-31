@@ -201,8 +201,8 @@ void TC_Array2<TYPE>::
 reallocArray (const int32_t inRowCount,
               const int32_t inColumnCount COMMA_LOCATION_ARGS) {
   if ((inRowCount != mCurrentRowCount) || (inColumnCount != mCurrentColumnCount)) {
-    MF_AssertThere (inRowCount >= 0L, "inRowCount (%ld) < 0", inRowCount, 0) ;
-    MF_AssertThere (inColumnCount >= 0L, "inColumnCount (%ld) < 0", inColumnCount, 0) ;
+    MF_AssertThere (inRowCount >= 0, "inRowCount (%ld) < 0", inRowCount, 0) ;
+    MF_AssertThere (inColumnCount >= 0, "inColumnCount (%ld) < 0", inColumnCount, 0) ;
     const int32_t newNeededSize = inRowCount * inColumnCount ;
     int32_t newCapacity = (mCapacity > 32) ? mCapacity : 32 ;
     while (newCapacity < newNeededSize) {

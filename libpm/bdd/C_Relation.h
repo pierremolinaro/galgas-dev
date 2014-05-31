@@ -60,10 +60,13 @@ class C_Relation {
   public : void setToFull (void) ;
 
 //--- Operators
+  public : bool operator == (const C_Relation & inRelation) const ;
+  public : bool operator != (const C_Relation & inRelation) const ;
+
   public : void andWith (const C_Relation & inRelation COMMA_LOCATION_ARGS) ;
-  public : void operator |= (const C_Relation & inRelation) ;
+  public : void orWith (const C_Relation & inRelation COMMA_LOCATION_ARGS) ;
   public : C_Relation andOp (const C_Relation & inRelation COMMA_LOCATION_ARGS) const ;
-  public : C_Relation operator | (const C_Relation & inRelation) const ;
+  public : C_Relation orOp (const C_Relation & inRelation COMMA_LOCATION_ARGS) const ;
   public : C_Relation operator ~ (void) const ;
 
   public : C_Relation accessibleStatesFrom (const C_Relation & inStartStates,
@@ -84,7 +87,20 @@ class C_Relation {
                           COMMA_LOCATION_ARGS) const ;
 
   public : C_Relation relationByDeletingLastVariable (LOCATION_ARGS) const ;
-  
+
+  public : C_Relation exitsOnVariable (const int32_t inVariableIndex COMMA_LOCATION_ARGS) const ;
+
+//--- Operations on 3 set relations  
+  public : C_Relation swap132 (LOCATION_ARGS) const ;
+
+  public : C_Relation swap213 (LOCATION_ARGS) const ;
+
+  public : C_Relation swap231 (LOCATION_ARGS) const ;
+
+  public : C_Relation swap312 (LOCATION_ARGS) const ;
+
+  public : C_Relation swap321 (LOCATION_ARGS) const ;
+
 //--- Accessors
   public : inline int32_t variableCount (void) const {
     return mConfiguration.variableCount () ;

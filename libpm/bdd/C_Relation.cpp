@@ -132,8 +132,8 @@ void C_Relation::andWith (const C_Relation & inRelation COMMA_LOCATION_ARGS) {
 
 //-----------------------------------------------------------------------------*
 
-void C_Relation::operator |= (const C_Relation & inRelation) {
-  mConfiguration.checkIdenticalTo (inRelation.mConfiguration COMMA_HERE) ;
+void C_Relation::orWith (const C_Relation & inRelation COMMA_LOCATION_ARGS) {
+  mConfiguration.checkIdenticalTo (inRelation.mConfiguration COMMA_THERE) ;
   mBDD |= inRelation.mBDD ;
 }
 
@@ -147,9 +147,9 @@ C_Relation C_Relation::andOp (const C_Relation & inRelation COMMA_LOCATION_ARGS)
 
 //-----------------------------------------------------------------------------*
 
-C_Relation C_Relation::operator | (const C_Relation & inRelation) const {
+C_Relation C_Relation::orOp (const C_Relation & inRelation COMMA_LOCATION_ARGS) const {
   C_Relation result = *this ;
-  result |= inRelation ;
+  result.orWith (inRelation COMMA_THERE) ;
   return result ;
 }
 
@@ -240,6 +240,111 @@ C_Relation C_Relation::relationByDeletingLastVariable (LOCATION_ARGS) const {
                                               mConfiguration.bddBitCountForVariable (lastVariableIndex COMMA_THERE)) ;
   result.mConfiguration.deleteLastVariable (THERE) ;
   return result ;
+}
+
+//-----------------------------------------------------------------------------*
+
+C_Relation C_Relation::swap132 (LOCATION_ARGS) const {
+  MF_AssertThere (variableCount () == 3,
+                  "C_Relation::getArray error: variableCount () == %lld != 3",
+                  (int64_t) variableCount (),
+                  0) ;
+
+  const uint32_t bitCount0 = mConfiguration.bddBitCountForVariable (0 COMMA_THERE) ;
+  const uint32_t bitCount1 = mConfiguration.bddBitCountForVariable (1 COMMA_THERE) ;
+  const uint32_t bitCount2 = mConfiguration.bddBitCountForVariable (2 COMMA_THERE) ;
+  const C_BDD bdd = mBDD.swap132 (bitCount0, bitCount1, bitCount2) ;
+  const C_RelationConfiguration configuration = mConfiguration.swap132 (THERE) ;
+  return C_Relation (configuration, bdd) ;
+}
+
+//-----------------------------------------------------------------------------*
+
+C_Relation C_Relation::swap213 (LOCATION_ARGS) const {
+  MF_AssertThere (variableCount () == 3,
+                  "C_Relation::getArray error: variableCount () == %lld != 3",
+                  (int64_t) variableCount (),
+                  0) ;
+
+  const uint32_t bitCount0 = mConfiguration.bddBitCountForVariable (0 COMMA_THERE) ;
+  const uint32_t bitCount1 = mConfiguration.bddBitCountForVariable (1 COMMA_THERE) ;
+  const uint32_t bitCount2 = mConfiguration.bddBitCountForVariable (2 COMMA_THERE) ;
+  const C_BDD bdd = mBDD.swap213 (bitCount0, bitCount1, bitCount2) ;
+  const C_RelationConfiguration configuration = mConfiguration.swap213 (THERE) ;
+  return C_Relation (configuration, bdd) ;
+}
+
+//-----------------------------------------------------------------------------*
+
+C_Relation C_Relation::swap231 (LOCATION_ARGS) const {
+  MF_AssertThere (variableCount () == 3,
+                  "C_Relation::getArray error: variableCount () == %lld != 3",
+                  (int64_t) variableCount (),
+                  0) ;
+
+  const uint32_t bitCount0 = mConfiguration.bddBitCountForVariable (0 COMMA_THERE) ;
+  const uint32_t bitCount1 = mConfiguration.bddBitCountForVariable (1 COMMA_THERE) ;
+  const uint32_t bitCount2 = mConfiguration.bddBitCountForVariable (2 COMMA_THERE) ;
+  const C_BDD bdd = mBDD.swap231 (bitCount0, bitCount1, bitCount2) ;
+  const C_RelationConfiguration configuration = mConfiguration.swap231 (THERE) ;
+  return C_Relation (configuration, bdd) ;
+}
+
+//-----------------------------------------------------------------------------*
+
+C_Relation C_Relation::swap312 (LOCATION_ARGS) const {
+  MF_AssertThere (variableCount () == 3,
+                  "C_Relation::getArray error: variableCount () == %lld != 3",
+                  (int64_t) variableCount (),
+                  0) ;
+
+  const uint32_t bitCount0 = mConfiguration.bddBitCountForVariable (0 COMMA_THERE) ;
+  const uint32_t bitCount1 = mConfiguration.bddBitCountForVariable (1 COMMA_THERE) ;
+  const uint32_t bitCount2 = mConfiguration.bddBitCountForVariable (2 COMMA_THERE) ;
+  const C_BDD bdd = mBDD.swap312 (bitCount0, bitCount1, bitCount2) ;
+  const C_RelationConfiguration configuration = mConfiguration.swap312 (THERE) ;
+  return C_Relation (configuration, bdd) ;
+}
+
+//-----------------------------------------------------------------------------*
+
+C_Relation C_Relation::swap321 (LOCATION_ARGS) const {
+  MF_AssertThere (variableCount () == 3,
+                  "C_Relation::getArray error: variableCount () == %lld != 3",
+                  (int64_t) variableCount (),
+                  0) ;
+
+  const uint32_t bitCount0 = mConfiguration.bddBitCountForVariable (0 COMMA_THERE) ;
+  const uint32_t bitCount1 = mConfiguration.bddBitCountForVariable (1 COMMA_THERE) ;
+  const uint32_t bitCount2 = mConfiguration.bddBitCountForVariable (2 COMMA_THERE) ;
+  const C_BDD bdd = mBDD.swap321 (bitCount0, bitCount1, bitCount2) ;
+  const C_RelationConfiguration configuration = mConfiguration.swap321 (THERE) ;
+  return C_Relation (configuration, bdd) ;
+}
+
+//-----------------------------------------------------------------------------*
+
+C_Relation C_Relation::exitsOnVariable (const int32_t inVariableIndex
+                                        COMMA_LOCATION_ARGS) const {
+  C_Relation result = *this ;
+  const uint32_t bitIndex = mConfiguration.bddStartBitIndexForVariable (inVariableIndex COMMA_THERE) ;
+  const uint32_t bitCount = mConfiguration.bddBitCountForVariable (inVariableIndex COMMA_THERE) ;
+  result.mBDD = result.mBDD.existsOnBitRange (bitIndex, bitCount) ;
+  return result ;
+}
+
+//-----------------------------------------------------------------------------*
+
+bool C_Relation::operator == (const C_Relation & inRelation) const {
+  mConfiguration.checkIdenticalTo (inRelation.mConfiguration COMMA_HERE) ;
+  return mBDD == inRelation.mBDD ;
+}
+
+//-----------------------------------------------------------------------------*
+
+bool C_Relation::operator != (const C_Relation & inRelation) const {
+  mConfiguration.checkIdenticalTo (inRelation.mConfiguration COMMA_HERE) ;
+  return mBDD != inRelation.mBDD ;
 }
 
 //-----------------------------------------------------------------------------*

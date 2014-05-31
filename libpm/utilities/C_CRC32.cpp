@@ -58,7 +58,7 @@ cInitTableCRC::cInitTableCRC (void) {
 
 void C_CRC32::addCharToChecksum (const char car, uint32_t & somme) {
   int32_t valeurLong = car ;
-  if (valeurLong < 0L) valeurLong += 256L ;
+  if (valeurLong < 0) valeurLong += 256L ;
   addLongToChecksum (valeurLong, somme) ;
 }
 
@@ -89,7 +89,7 @@ void C_CRC32::addUnsignedLongToChecksum (const uint32_t valeur, uint32_t & somme
 
 void C_CRC32::addStringToChecksum (const char * chaine, uint32_t & somme) {
   if (chaine == NULL) {
-    addLongToChecksum (0L, somme) ;
+    addLongToChecksum (0, somme) ;
   }else{
     const int32_t longueurChaine = (int32_t) ::strlen (chaine) ;
     for (int32_t i=0 ; i<longueurChaine ; i++) {
