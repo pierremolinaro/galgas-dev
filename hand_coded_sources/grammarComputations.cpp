@@ -512,34 +512,34 @@ analyzeGrammar (C_Compiler * inCompiler,
   #endif
 //--- Calculer l'ensemble des non terminaux pouvant se dériver en vide --------------------------------
   TC_UniqueArray <bool> vocabularyDerivingToEmpty_Array ;
-  C_BDD_Set1 vocabularyDerivingToEmpty_BDD (vocabularyDescriptorEX) ;
+  C_BDD_Set1 vocabularyDerivingToEmpty_EX (vocabularyDescriptorEX) ;
   C_Relation vocabularyDerivingToEmpty ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     vocabularyDerivingToEmpty = empty_strings_computations (pureBNFproductions,
                                                             HTMLfile,
                                                             vocabularyDerivingToEmpty_Array,
-                                                            vocabularyDerivingToEmpty_BDD,
+                                                            vocabularyDerivingToEmpty_EX,
                                                             usefulSymbols.configuration (),
                                                             verboseOptionOn) ;
   }
 //--- Computing FIRST sets ---------------------------------------------------------------
-  C_BDD_Set2 EX_FIRSTsets (vocabularyDescriptorEX, vocabularyDescriptorEX) ;
+//  C_BDD_Set2 EX_FIRSTsets (vocabularyDescriptorEX, vocabularyDescriptorEX) ;
   TC_UniqueArray <TC_UniqueArray <uint64_t> > FIRSTarray ;
   C_Relation FIRSTsets ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     bool ok = false ;
     FIRST_computations (pureBNFproductions,
-                        bddBitCount,
+                  //      bddBitCount,
                         HTMLfile,
                         vocabulary,
                         vocabularyDerivingToEmpty_Array,
-                        vocabularyDerivingToEmpty_BDD,
+                  //      vocabularyDerivingToEmpty_EX,
                         vocabularyDerivingToEmpty,
-                        usefulSymbolsEX,
+                   //     usefulSymbolsEX,
                         usefulSymbols,
-                        EX_FIRSTsets,
+                   //     EX_FIRSTsets,
                         FIRSTarray,
-                        vocabularyDescriptorEX,
+                   //     vocabularyDescriptorEX,
                         FIRSTsets,
                         ok,
                         verboseOptionOn) ;
