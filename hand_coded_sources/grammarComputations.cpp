@@ -512,13 +512,13 @@ analyzeGrammar (C_Compiler * inCompiler,
   #endif
 //--- Calculer l'ensemble des non terminaux pouvant se dériver en vide --------------------------------
   TC_UniqueArray <bool> vocabularyDerivingToEmpty_Array ;
-  C_BDD_Set1 vocabularyDerivingToEmpty_EX (vocabularyDescriptorEX) ;
+//  C_BDD_Set1 vocabularyDerivingToEmpty_EX (vocabularyDescriptorEX) ;
   C_Relation vocabularyDerivingToEmpty ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     vocabularyDerivingToEmpty = empty_strings_computations (pureBNFproductions,
                                                             HTMLfile,
                                                             vocabularyDerivingToEmpty_Array,
-                                                            vocabularyDerivingToEmpty_EX,
+                                                         //   vocabularyDerivingToEmpty_EX,
                                                             usefulSymbols.configuration (),
                                                             verboseOptionOn) ;
   }
