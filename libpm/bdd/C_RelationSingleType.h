@@ -46,7 +46,12 @@ class C_RelationSingleType {
 //--- Handling copy
   public : C_RelationSingleType (const C_RelationSingleType & inSource) ;
   public : C_RelationSingleType & operator = (const C_RelationSingleType & inSource) ;
-  
+
+//--- Identical type ?
+  public : inline bool operator == (const C_RelationSingleType & inOperand) const {
+    return mTypePtr == inOperand.mTypePtr ;
+  }
+
 //--- Attribute
   private : cType * mTypePtr ;
 } ;

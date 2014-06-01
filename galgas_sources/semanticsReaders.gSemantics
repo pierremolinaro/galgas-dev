@@ -670,12 +670,12 @@ override method @binarysetPredefinedTypeAST getReaderMap
   enterBaseFinalReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"stringValueListWithNameList" !"uint" !"inBitCount" !"stringlist" !"inNameList" !"stringlist" !true ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"predicateStringValue" !"string" !false ;
   enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"compressedStringValueList" !"uint" !"inBitCount" !"stringlist" !true ;
-  enterBaseFinalReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"swap21" !"uint" !"inBitCount1" !"uint" !"inBitCount2" !"binaryset" !false ;
-  enterBaseFinalReaderWith3Arguments !?outMap !?ioUnifiedTypeMap !"swap132" !"uint" !"inBitCount1" !"uint" !"inBitCount2" !"uint" !"inBitCount3" !"binaryset" !false ;
-  enterBaseFinalReaderWith3Arguments !?outMap !?ioUnifiedTypeMap !"swap213" !"uint" !"inBitCount1" !"uint" !"inBitCount2" !"uint" !"inBitCount3" !"binaryset" !false ;
-  enterBaseFinalReaderWith3Arguments !?outMap !?ioUnifiedTypeMap !"swap231" !"uint" !"inBitCount1" !"uint" !"inBitCount2" !"uint" !"inBitCount3" !"binaryset" !false ;
-  enterBaseFinalReaderWith3Arguments !?outMap !?ioUnifiedTypeMap !"swap312" !"uint" !"inBitCount1" !"uint" !"inBitCount2" !"uint" !"inBitCount3" !"binaryset" !false ;
-  enterBaseFinalReaderWith3Arguments !?outMap !?ioUnifiedTypeMap !"swap321" !"uint" !"inBitCount1" !"uint" !"inBitCount2" !"uint" !"inBitCount3" !"binaryset" !false ;
+  enterBaseFinalReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"swap10" !"uint" !"inBitCount1" !"uint" !"inBitCount2" !"binaryset" !false ;
+  enterBaseFinalReaderWith3Arguments !?outMap !?ioUnifiedTypeMap !"swap021" !"uint" !"inBitCount1" !"uint" !"inBitCount2" !"uint" !"inBitCount3" !"binaryset" !false ;
+  enterBaseFinalReaderWith3Arguments !?outMap !?ioUnifiedTypeMap !"swap102" !"uint" !"inBitCount1" !"uint" !"inBitCount2" !"uint" !"inBitCount3" !"binaryset" !false ;
+  enterBaseFinalReaderWith3Arguments !?outMap !?ioUnifiedTypeMap !"swap120" !"uint" !"inBitCount1" !"uint" !"inBitCount2" !"uint" !"inBitCount3" !"binaryset" !false ;
+  enterBaseFinalReaderWith3Arguments !?outMap !?ioUnifiedTypeMap !"swap201" !"uint" !"inBitCount1" !"uint" !"inBitCount2" !"uint" !"inBitCount3" !"binaryset" !false ;
+  enterBaseFinalReaderWith3Arguments !?outMap !?ioUnifiedTypeMap !"swap210" !"uint" !"inBitCount1" !"uint" !"inBitCount2" !"uint" !"inBitCount3" !"binaryset" !false ;
   enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"transitiveClosure" !"uint" !"inBitCount" !"binaryset" !false ;
   enterBaseFinalReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"accessibleStates" !"binaryset" !"inInitialStateSet" !"uint" !"inBitCount" !"binaryset" !false ;
   enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"implies" !"binaryset" !"inOperand" !"binaryset" !false ;

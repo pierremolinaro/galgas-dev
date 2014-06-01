@@ -97,15 +97,15 @@ class C_Relation {
   public : C_Relation transposedRelation (LOCATION_ARGS) const ;
 
 //--- Operations on 3 set relations  
-  public : C_Relation swap132 (LOCATION_ARGS) const ;
+  public : C_Relation swap021 (LOCATION_ARGS) const ;
 
-  public : C_Relation swap213 (LOCATION_ARGS) const ;
+  public : C_Relation swap102 (LOCATION_ARGS) const ;
 
-  public : C_Relation swap231 (LOCATION_ARGS) const ;
+  public : C_Relation swap120 (LOCATION_ARGS) const ;
 
-  public : C_Relation swap312 (LOCATION_ARGS) const ;
+  public : C_Relation swap201 (LOCATION_ARGS) const ;
 
-  public : C_Relation swap321 (LOCATION_ARGS) const ;
+  public : C_Relation swap210 (LOCATION_ARGS) const ;
 
 //--- Accessors
   public : inline int32_t variableCount (void) const {

@@ -27,6 +27,11 @@ static uint32_t bitCountForCount (const uint32_t inCount) {
 //  C_RelationSingleType::cType                                                *
 //-----------------------------------------------------------------------------*
 
+static C_RelationSingleType::cType * gFirst ;
+static C_RelationSingleType::cType * gLast ;
+
+//-----------------------------------------------------------------------------*
+
 class C_RelationSingleType::cType : public C_SharedObject {
 //--- Constructor
   public : inline cType (const C_String & inTypeName,
@@ -34,8 +39,32 @@ class C_RelationSingleType::cType : public C_SharedObject {
                          COMMA_LOCATION_ARGS) :
   C_SharedObject (THERE),
   mTypeName (inTypeName),
-  mBDDBitCount (inBDDBitCount) {
+  mBDDBitCount (inBDDBitCount),
+  mNextPtr (gFirst),
+  mPreviousPtr (NULL) {
+    if (NULL != gFirst) {
+      gFirst->mPreviousPtr = this ;
+    }
+    gFirst = this ;
   }
+
+//--- Desctructor
+  public : inline virtual ~cType (void) {
+    if (NULL == mNextPtr) {
+      gLast = mPreviousPtr ;
+    }else{
+      mNextPtr->mPreviousPtr = mPreviousPtr ;
+    }
+    if (NULL == mPreviousPtr) {
+      gFirst = mNextPtr ;
+    }else{
+      mPreviousPtr->mNextPtr = mNextPtr ;
+    }
+  }
+
+//--- No copy
+  private : cType (const cType &) ;
+  private : cType & operator = (const cType &) ;
 
 //--- Accessors
   public : virtual uint32_t constantCount (void) const = 0 ;
@@ -45,6 +74,8 @@ class C_RelationSingleType::cType : public C_SharedObject {
 //--- Attribute
   public : const C_String mTypeName ;
   public : const uint32_t mBDDBitCount ;
+  public : cType * mNextPtr ;
+  private : cType * mPreviousPtr ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -67,6 +98,9 @@ class C_EnumeratedTypeInRelation : public C_RelationSingleType::cType {
     return mConstantNameArray ((int32_t) inIndex COMMA_THERE) ;
   }
 
+  public : inline bool isConstantArrayEqualTo (const TC_UniqueArray <C_String> & inConstantNameArray) const {
+    return mConstantNameArray == inConstantNameArray ;
+  }
 
 //--- Attributes
   private : TC_UniqueArray <C_String> mConstantNameArray ;
@@ -87,10 +121,25 @@ mConstantNameArray () {
 
 C_RelationSingleType::
 C_RelationSingleType (const C_String & inTypeName,
-                  const TC_UniqueArray <C_String> & inConstantNameArray
-                  COMMA_LOCATION_ARGS) :
+                      const TC_UniqueArray <C_String> & inConstantNameArray
+                      COMMA_LOCATION_ARGS) :
 mTypePtr (NULL) {
-  macroMyNew (mTypePtr, C_EnumeratedTypeInRelation (inTypeName, inConstantNameArray COMMA_THERE)) ;
+//--- Check type is unique
+  cType * result = NULL ;
+  cType * p = gFirst ;
+  while ((NULL == result) && (NULL != p)) {
+    C_EnumeratedTypeInRelation * ptr = dynamic_cast <C_EnumeratedTypeInRelation *> (p) ;
+    if ((NULL != ptr) && (ptr->mTypeName == inTypeName) && (ptr->isConstantArrayEqualTo (inConstantNameArray))) {
+      result = ptr ;
+    }
+    p = p->mNextPtr ;
+  }
+//---
+  if (NULL == result) {
+    macroMyNew (mTypePtr, C_EnumeratedTypeInRelation (inTypeName, inConstantNameArray COMMA_THERE)) ;
+  }else{
+    macroAssignSharedObject (mTypePtr, result) ;
+  }
 }
 
 //-----------------------------------------------------------------------------*
@@ -131,10 +180,25 @@ mValueCount (inValueCount) {
 
 C_RelationSingleType::
 C_RelationSingleType (const C_String & inTypeName,
-                  const uint32_t inMaxValue
-                  COMMA_LOCATION_ARGS) :
+                      const uint32_t inValueCount
+                      COMMA_LOCATION_ARGS) :
 mTypePtr (NULL) {
-  macroMyNew (mTypePtr, C_UnsignedTypeInRelation (inTypeName, inMaxValue COMMA_THERE)) ;
+//--- Check type is unique
+  cType * result = NULL ;
+  cType * p = gFirst ;
+  while ((NULL == result) && (NULL != p)) {
+    C_UnsignedTypeInRelation * ptr = dynamic_cast <C_UnsignedTypeInRelation *> (p) ;
+    if ((NULL != ptr) && (ptr->mTypeName == inTypeName) && (ptr->constantCount () == inValueCount)) {
+      result = ptr ;
+    }
+    p = p->mNextPtr ;
+  }
+//---
+  if (NULL == result) {
+    macroMyNew (mTypePtr, C_UnsignedTypeInRelation (inTypeName, inValueCount COMMA_THERE)) ;
+  }else{
+    macroAssignSharedObject (mTypePtr, result) ;
+  }
 }
 
 //-----------------------------------------------------------------------------*
@@ -163,7 +227,7 @@ uint32_t C_RelationSingleType::constantCount (void) const {
 //-----------------------------------------------------------------------------*
 
 C_String C_RelationSingleType::nameForValue (const uint32_t inIndex
-                                         COMMA_LOCATION_ARGS) const {
+                                             COMMA_LOCATION_ARGS) const {
   macroValidPointer (mTypePtr) ;
   return mTypePtr->nameForValue (inIndex COMMA_THERE) ;
 }

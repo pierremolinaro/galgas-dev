@@ -1438,7 +1438,7 @@ updateRelation (const uint32_t inRelationBitNeededCount [],
 //-----------------------------------------------------------------------------*
 
 C_BDD C_BDD::
-swap21 (const uint32_t inBitSize1,
+swap10 (const uint32_t inBitSize1,
         const uint32_t inBitSize2) const {
   const uint32_t totalSize = (uint32_t) (inBitSize1 + inBitSize2) ;
   uint32_t * tab = NULL ;
@@ -1465,7 +1465,7 @@ accessibleStates (const C_BDD & inInitialStateSet,
 // accessible [x] += initial [x] | exists y (accessible [y] & edge [y, x]) ;
 //
 //--- Compute edge [y, x]
-  const C_BDD edgeYX = swap21 (inBitSize, inBitSize) ;
+  const C_BDD edgeYX = swap10 (inBitSize, inBitSize) ;
   C_BDD accessible = inInitialStateSet ;
   C_BDD v ;
   C_BDD accessibleY ;
@@ -1498,8 +1498,8 @@ transitiveClosure (const uint32_t inBitSize,
   do{
     v = closure ;
     iterationCount ++ ;
-    XZclosure = closure.swap132 (inBitSize, inBitSize, inBitSize) ;
-    ZYclosure = closure.swap321 (inBitSize, inBitSize, inBitSize) ;
+    XZclosure = closure.swap021 (inBitSize, inBitSize, inBitSize) ;
+    ZYclosure = closure.swap210 (inBitSize, inBitSize, inBitSize) ;
     closure |= (XZclosure & ZYclosure).existsOnBitsAfterNumber (bitCount2) ;
   }while (closure != v) ;
   if (outIterationCount != NULL) {
@@ -1573,7 +1573,7 @@ void C_BDD::getArray2 (TC_UniqueArray <TC_UniqueArray <uint64_t> > & outArray,
 //-----------------------------------------------------------------------------*
 
 C_BDD C_BDD::
-swap132 (const uint32_t inBitSize1,
+swap021 (const uint32_t inBitSize1,
          const uint32_t inBitSize2,
          const uint32_t inBitSize3) const {
   const uint32_t totalSize = (uint32_t) (inBitSize1 + inBitSize2 + inBitSize3) ;
@@ -1596,7 +1596,7 @@ swap132 (const uint32_t inBitSize1,
 //-----------------------------------------------------------------------------*
 
 C_BDD C_BDD::
-swap231 (const uint32_t inBitSize1,
+swap120 (const uint32_t inBitSize1,
          const uint32_t inBitSize2,
          const uint32_t inBitSize3) const {
   const uint32_t totalSize = (uint32_t) (inBitSize1 + inBitSize2 + inBitSize3) ;
@@ -1619,7 +1619,7 @@ swap231 (const uint32_t inBitSize1,
 //-----------------------------------------------------------------------------*
 
 C_BDD C_BDD::
-swap213 (const uint32_t inBitSize1,
+swap102 (const uint32_t inBitSize1,
          const uint32_t inBitSize2,
          const uint32_t inBitSize3) const {
   const uint32_t totalSize = (uint32_t) (inBitSize1 + inBitSize2 + inBitSize3) ;
@@ -1642,7 +1642,7 @@ swap213 (const uint32_t inBitSize1,
 //-----------------------------------------------------------------------------*
 
 C_BDD C_BDD::
-swap321 (const uint32_t inBitSize1,
+swap210 (const uint32_t inBitSize1,
          const uint32_t inBitSize2,
          const uint32_t inBitSize3) const {
   const uint32_t totalSize = (uint32_t) (inBitSize1 + inBitSize2 + inBitSize3) ;
@@ -1665,7 +1665,7 @@ swap321 (const uint32_t inBitSize1,
 //-----------------------------------------------------------------------------*
 
 C_BDD C_BDD::
-swap312 (const uint32_t inBitSize1,
+swap201 (const uint32_t inBitSize1,
          const uint32_t inBitSize2,
          const uint32_t inBitSize3) const {
   const uint32_t totalSize = (uint32_t) (inBitSize1 + inBitSize2 + inBitSize3) ;
@@ -1858,9 +1858,8 @@ internalPrintBDD (const uint32_t inValue,
 
 //-----------------------------------------------------------------------------*
 
-void C_BDD::
-printBDD (const TC_UniqueArray <C_String> & inVariablesNames,
-          const int32_t inLeadingSpacesCount) const {
+void C_BDD::printBDD (const TC_UniqueArray <C_String> & inVariablesNames,
+                      const int32_t inLeadingSpacesCount) const {
   printBDD (inVariablesNames, inVariablesNames.count (), inLeadingSpacesCount) ;
 }
 
