@@ -244,81 +244,81 @@ C_Relation C_Relation::relationByDeletingLastVariable (LOCATION_ARGS) const {
 
 //-----------------------------------------------------------------------------*
 
-C_Relation C_Relation::swap132 (LOCATION_ARGS) const {
+C_Relation C_Relation::swap021 (LOCATION_ARGS) const {
   MF_AssertThere (variableCount () == 3,
-                  "C_Relation::swap132 error: variableCount () == %lld != 3",
+                  "C_Relation::swap021 error: variableCount () == %lld != 3",
                   (int64_t) variableCount (),
                   0) ;
 
   const uint32_t bitCount0 = mConfiguration.bddBitCountForVariable (0 COMMA_THERE) ;
   const uint32_t bitCount1 = mConfiguration.bddBitCountForVariable (1 COMMA_THERE) ;
   const uint32_t bitCount2 = mConfiguration.bddBitCountForVariable (2 COMMA_THERE) ;
-  const C_BDD bdd = mBDD.swap132 (bitCount0, bitCount1, bitCount2) ;
-  const C_RelationConfiguration configuration = mConfiguration.swap132 (THERE) ;
+  const C_BDD bdd = mBDD.swap021 (bitCount0, bitCount1, bitCount2) ;
+  const C_RelationConfiguration configuration = mConfiguration.swap021 (THERE) ;
   return C_Relation (configuration, bdd) ;
 }
 
 //-----------------------------------------------------------------------------*
 
-C_Relation C_Relation::swap213 (LOCATION_ARGS) const {
+C_Relation C_Relation::swap102 (LOCATION_ARGS) const {
   MF_AssertThere (variableCount () == 3,
-                  "C_Relation::swap213 error: variableCount () == %lld != 3",
+                  "C_Relation::swap102 error: variableCount () == %lld != 3",
                   (int64_t) variableCount (),
                   0) ;
 
   const uint32_t bitCount0 = mConfiguration.bddBitCountForVariable (0 COMMA_THERE) ;
   const uint32_t bitCount1 = mConfiguration.bddBitCountForVariable (1 COMMA_THERE) ;
   const uint32_t bitCount2 = mConfiguration.bddBitCountForVariable (2 COMMA_THERE) ;
-  const C_BDD bdd = mBDD.swap213 (bitCount0, bitCount1, bitCount2) ;
-  const C_RelationConfiguration configuration = mConfiguration.swap213 (THERE) ;
+  const C_BDD bdd = mBDD.swap102 (bitCount0, bitCount1, bitCount2) ;
+  const C_RelationConfiguration configuration = mConfiguration.swap102 (THERE) ;
   return C_Relation (configuration, bdd) ;
 }
 
 //-----------------------------------------------------------------------------*
 
-C_Relation C_Relation::swap231 (LOCATION_ARGS) const {
+C_Relation C_Relation::swap120 (LOCATION_ARGS) const {
   MF_AssertThere (variableCount () == 3,
-                  "C_Relation::swap231 error: variableCount () == %lld != 3",
+                  "C_Relation::swap120 error: variableCount () == %lld != 3",
                   (int64_t) variableCount (),
                   0) ;
 
   const uint32_t bitCount0 = mConfiguration.bddBitCountForVariable (0 COMMA_THERE) ;
   const uint32_t bitCount1 = mConfiguration.bddBitCountForVariable (1 COMMA_THERE) ;
   const uint32_t bitCount2 = mConfiguration.bddBitCountForVariable (2 COMMA_THERE) ;
-  const C_BDD bdd = mBDD.swap231 (bitCount0, bitCount1, bitCount2) ;
-  const C_RelationConfiguration configuration = mConfiguration.swap231 (THERE) ;
+  const C_BDD bdd = mBDD.swap120 (bitCount0, bitCount1, bitCount2) ;
+  const C_RelationConfiguration configuration = mConfiguration.swap120 (THERE) ;
   return C_Relation (configuration, bdd) ;
 }
 
 //-----------------------------------------------------------------------------*
 
-C_Relation C_Relation::swap312 (LOCATION_ARGS) const {
+C_Relation C_Relation::swap201 (LOCATION_ARGS) const {
   MF_AssertThere (variableCount () == 3,
-                  "C_Relation::swap312 error: variableCount () == %lld != 3",
+                  "C_Relation::swap201 error: variableCount () == %lld != 3",
                   (int64_t) variableCount (),
                   0) ;
 
   const uint32_t bitCount0 = mConfiguration.bddBitCountForVariable (0 COMMA_THERE) ;
   const uint32_t bitCount1 = mConfiguration.bddBitCountForVariable (1 COMMA_THERE) ;
   const uint32_t bitCount2 = mConfiguration.bddBitCountForVariable (2 COMMA_THERE) ;
-  const C_BDD bdd = mBDD.swap312 (bitCount0, bitCount1, bitCount2) ;
-  const C_RelationConfiguration configuration = mConfiguration.swap312 (THERE) ;
+  const C_BDD bdd = mBDD.swap201 (bitCount0, bitCount1, bitCount2) ;
+  const C_RelationConfiguration configuration = mConfiguration.swap201 (THERE) ;
   return C_Relation (configuration, bdd) ;
 }
 
 //-----------------------------------------------------------------------------*
 
-C_Relation C_Relation::swap321 (LOCATION_ARGS) const {
+C_Relation C_Relation::swap210 (LOCATION_ARGS) const {
   MF_AssertThere (variableCount () == 3,
-                  "C_Relation::swap321 error: variableCount () == %lld != 3",
+                  "C_Relation::swap210 error: variableCount () == %lld != 3",
                   (int64_t) variableCount (),
                   0) ;
 
   const uint32_t bitCount0 = mConfiguration.bddBitCountForVariable (0 COMMA_THERE) ;
   const uint32_t bitCount1 = mConfiguration.bddBitCountForVariable (1 COMMA_THERE) ;
   const uint32_t bitCount2 = mConfiguration.bddBitCountForVariable (2 COMMA_THERE) ;
-  const C_BDD bdd = mBDD.swap321 (bitCount0, bitCount1, bitCount2) ;
-  const C_RelationConfiguration configuration = mConfiguration.swap321 (THERE) ;
+  const C_BDD bdd = mBDD.swap210 (bitCount0, bitCount1, bitCount2) ;
+  const C_RelationConfiguration configuration = mConfiguration.swap210 (THERE) ;
   return C_Relation (configuration, bdd) ;
 }
 

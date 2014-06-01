@@ -198,7 +198,7 @@ class C_BDD {
   public : C_BDD rollUpVariables (const uint32_t var1, const uint32_t var2) const ;
 
 //--- BDD as 2-relations
-  public : C_BDD swap21 (const uint32_t inBitSize1,
+  public : C_BDD swap10 (const uint32_t inBitSize1,
                          const uint32_t inBitSize2) const ;
 
   public : C_BDD accessibleStates (const C_BDD & inInitialStateSet,
@@ -214,23 +214,23 @@ class C_BDD {
                            const uint32_t inBitSize2) const ;
 
 //--- BDD as 3-relations
-  public : C_BDD swap132 (const uint32_t inBitSize1,
+  public : C_BDD swap021 (const uint32_t inBitSize1,
                           const uint32_t inBitSize2,
                           const uint32_t inBitSize3) const ;
 
-  public : C_BDD swap213 (const uint32_t inBitSize1,
+  public : C_BDD swap102 (const uint32_t inBitSize1,
                           const uint32_t inBitSize2,
                           const uint32_t inBitSize3) const ;
 
-  public : C_BDD swap231 (const uint32_t inBitSize1,
+  public : C_BDD swap120 (const uint32_t inBitSize1,
                           const uint32_t inBitSize2,
                           const uint32_t inBitSize3) const ;
 
-  public : C_BDD swap312 (const uint32_t inBitSize1,
+  public : C_BDD swap201 (const uint32_t inBitSize1,
                           const uint32_t inBitSize2,
                           const uint32_t inBitSize3) const ;
 
-  public : C_BDD swap321 (const uint32_t inBitSize1,
+  public : C_BDD swap210 (const uint32_t inBitSize1,
                           const uint32_t inBitSize2,
                           const uint32_t inBitSize3) const ;
 

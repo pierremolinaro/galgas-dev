@@ -53,15 +53,15 @@ class C_RelationConfiguration {
                                   COMMA_LOCATION_ARGS) const ;
 
 //--- Operations on 3 set configurations  
-  public : C_RelationConfiguration swap132 (LOCATION_ARGS) const ;
+  public : C_RelationConfiguration swap021 (LOCATION_ARGS) const ;
 
-  public : C_RelationConfiguration swap213 (LOCATION_ARGS) const ;
+  public : C_RelationConfiguration swap102 (LOCATION_ARGS) const ;
 
-  public : C_RelationConfiguration swap231 (LOCATION_ARGS) const ;
+  public : C_RelationConfiguration swap120 (LOCATION_ARGS) const ;
 
-  public : C_RelationConfiguration swap312 (LOCATION_ARGS) const ;
+  public : C_RelationConfiguration swap201 (LOCATION_ARGS) const ;
 
-  public : C_RelationConfiguration swap321 (LOCATION_ARGS) const ;
+  public : C_RelationConfiguration swap210 (LOCATION_ARGS) const ;
 
 //--- Private method
   private : void insulate (LOCATION_ARGS) ;

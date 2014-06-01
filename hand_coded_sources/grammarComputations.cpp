@@ -290,19 +290,6 @@ static const char k_default_style [] = {
 
 //-----------------------------------------------------------------------------*
 
-static uint16_t bddBitCountForVocabulary (const cVocabulary & inVocabulary) {
-  uint16_t bddBitCount = 0 ;
-  uint32_t temp = (uint32_t) (inVocabulary.getAllSymbolsCount () - 1) ;
-  while (temp != 0) {
-    temp >>= 1 ;
-    bddBitCount ++ ;
-  }
-//  printf ("[%hu bits for %d symbols]\n", bddBitCount, inVocabulary.getAllSymbolsCount ()) ;
-  return bddBitCount ;
-}
-
-//-----------------------------------------------------------------------------*
-
 static void
 analyzeGrammar (C_Compiler * inCompiler,
                 const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
@@ -433,9 +420,6 @@ analyzeGrammar (C_Compiler * inCompiler,
 
 //--- Define vocabulary BDD sets descriptor
   const C_RelationSingleType vocabularyBDDType = vocabulary.getVocabularyBDDType () ;
-
-//--- Compute the BDD bit count
-  const uint16_t bddBitCount = bddBitCountForVocabulary (vocabulary) ;
 //--- Search for identical productions -----------------------------------------------------------
   #ifdef LOG_GRAMMAR_COMPUTATIONS
     printf ("SEARCH FOR IDENTICAL PRODUCTIONS\n") ; fflush (stdout) ;
@@ -551,7 +535,6 @@ analyzeGrammar (C_Compiler * inCompiler,
     bool ok = false ;
     FOLLOW_computations (pureBNFproductions,
                          HTMLfile,
-                         bddBitCount,
                          vocabulary,
                          vocabularyDerivingToEmpty_Array,
                          usefulSymbols,

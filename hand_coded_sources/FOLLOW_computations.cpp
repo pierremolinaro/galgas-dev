@@ -38,7 +38,6 @@
 static void
 computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules,
                    const C_Relation & inNonterminalSymbolsFollowedByEmpty,
-                   const uint16_t inBDDBitCount,
                    const cVocabulary & inVocabulary,
                    const TC_UniqueArray <bool> & inNonterminalSymbolsDerivingInEmpty,
                    const C_Relation & inFIRSTsets,
@@ -56,7 +55,6 @@ computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules,
   //--- Direct follower
     if (derivationLength > 1) { // The right sequence has more than one element (from 0 to derivationLength-1)
       for (int32_t i=1 ; i<derivationLength ; i++) {
-        const C_BDD currentEX = C_BDD::varCompareConst (0, inBDDBitCount, C_BDD::kEqual, (uint32_t) p.derivationAtIndex (i-1 COMMA_HERE)) ;
         const C_Relation current (directFollowers.configuration(), 0, C_BDD::kEqual, (uint32_t) p.derivationAtIndex (i-1 COMMA_HERE) COMMA_HERE) ;
         C_Relation s (directFollowers.configuration(), false) ;
         int32_t j = i ;
@@ -83,13 +81,12 @@ computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules,
   }
 
 //--- Compute constant for FOLLOW calculus
-  const C_Relation temp3 = directFollowers.swap132 (HERE) ;
+  const C_Relation temp3 = directFollowers.swap021 (HERE) ;
 
   C_Relation extendedFIRSTsets = inFIRSTsets ;
   extendedFIRSTsets.addVariable ("last", inFIRSTsets.configuration().typeForVariable(0 COMMA_HERE)) ;
-  const C_Relation temp3_bis = extendedFIRSTsets.swap321 (HERE) ;
+  const C_Relation temp3_bis = extendedFIRSTsets.swap210 (HERE) ;
 
-//  const C_BDD constantEX = directFollowersEX | (temp3EX & temp3_bisEX).existsOnBitsAfterNumber (twoBDDBitCount) ;
   const C_Relation constant = directFollowers.orOp (temp3.andOp (temp3_bis COMMA_HERE).exitsOnVariable (2 COMMA_HERE) COMMA_HERE) ;
 
 //--- Loop for computing FOLLOW
@@ -100,7 +97,7 @@ computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules,
   do{
     v = outFOLLOWsets ; outIterationsCount ++ ;
     outFOLLOWsets = constant ;
-    const C_Relation t = v.swap321 (HERE) ;
+    const C_Relation t = v.swap210 (HERE) ;
     outFOLLOWsets.orWith ((lastOfProduction.andOp (t COMMA_HERE)).exitsOnVariable (2 COMMA_HERE) COMMA_HERE) ;
   }while (v != outFOLLOWsets) ;
   
@@ -242,7 +239,6 @@ checkFOLLOWsets (C_HTML_FileWrite * inHTMLfile,
 void
 FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
                      C_HTML_FileWrite * inHTMLfile,
-                     const uint16_t inBDDBitCount,
                      const cVocabulary & inVocabulary,
                      const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                      const C_Relation & inUsefulSymbols,
@@ -266,7 +262,6 @@ FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
   int32_t iterationsCount = 0 ;
   computeFOLLOWsets (inPureBNFproductions,
                      inNonterminalSymbolsFollowedByEmpty,
-                     inBDDBitCount,
                      inVocabulary,
                      inVocabularyDerivingToEmpty_Array,
                      inFIRSTsets,

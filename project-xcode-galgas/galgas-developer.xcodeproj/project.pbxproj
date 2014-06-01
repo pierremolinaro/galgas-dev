@@ -2622,7 +2622,7 @@
 				);
 				INSTALL_PATH = /usr/local/bin;
 				LD_GENERATE_MAP_FILE = NO;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx;
 				SYMROOT = "build-developer";
 				VALID_ARCHS = x86_64;
 			};

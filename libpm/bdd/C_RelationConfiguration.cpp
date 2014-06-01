@@ -59,15 +59,15 @@ class cVariablesInRelationConfiguration : public C_SharedObject {
                                   COMMA_LOCATION_ARGS) const ;
 
 //--- Operations on 3 set configurations  
-  public : void swap132 (LOCATION_ARGS) ;
+  public : void swap021 (LOCATION_ARGS) ;
 
-  public : void swap213 (LOCATION_ARGS) ;
+  public : void swap102 (LOCATION_ARGS) ;
 
-  public : void swap231 (LOCATION_ARGS) ;
+  public : void swap120 (LOCATION_ARGS) ;
 
-  public : void swap312 (LOCATION_ARGS) ;
+  public : void swap201 (LOCATION_ARGS) ;
 
-  public : void swap321 (LOCATION_ARGS) ;
+  public : void swap210 (LOCATION_ARGS) ;
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
     private : void checkConfiguration (LOCATION_ARGS) const ;
@@ -133,7 +133,7 @@ mVariableTypeArray () {
 //-----------------------------------------------------------------------------*
 
 void cVariablesInRelationConfiguration::addVariable (const C_String & inVariableName,
-                                                       const C_RelationSingleType & inType) {
+                                                     const C_RelationSingleType & inType) {
   if (mBDDStartIndexArray.count () == 0) {
     mBDDStartIndexArray.addObject (0) ;
   }else{
@@ -151,14 +151,16 @@ void cVariablesInRelationConfiguration::addVariable (const C_String & inVariable
 void cVariablesInRelationConfiguration::checkIdenticalTo (const cVariablesInRelationConfiguration * inVariables
                                                           COMMA_LOCATION_ARGS) const {
   macroValidSharedObjectThere (inVariables, cVariablesInRelationConfiguration) ;
-  bool same = mVariableNameArray.count() == inVariables->mVariableNameArray.count() ;
+  bool same = mVariableTypeArray.count() == inVariables->mVariableTypeArray.count() ;
+  for (int32_t i=0 ; (i<mVariableTypeArray.count()) && same ; i++) {
+    same = mVariableTypeArray (i COMMA_HERE) == inVariables->mVariableTypeArray (i COMMA_HERE) ;
+  }
   MF_AssertThere (same,
                   "cVariablesInRelationConfiguration::checkIdenticalTo failure",
-                  (int64_t) mVariableNameArray.count(),
-                  (int64_t) inVariables->mVariableNameArray.count()) ;
-  if (same) {
+                  0,
+                  0) ;
   
-  }else{
+  if (! same) {
     printf ("*** cVariablesInRelationConfiguration::checkIdenticalTo failure ***\n") ;
     exit (1) ;
   }
@@ -227,7 +229,7 @@ C_RelationSingleType cVariablesInRelationConfiguration::typeForVariable (const i
 
 //-----------------------------------------------------------------------------*
 
-void cVariablesInRelationConfiguration::swap132 (LOCATION_ARGS) {
+void cVariablesInRelationConfiguration::swap021 (LOCATION_ARGS) {
   macroUniqueSharedObject (this) ;
   mVariableNameArray.exchangeObjectAtIndexes (1, 2 COMMA_THERE) ;
   mVariableTypeArray.exchangeObjectAtIndexes (1, 2 COMMA_THERE) ;
@@ -242,7 +244,7 @@ void cVariablesInRelationConfiguration::swap132 (LOCATION_ARGS) {
 
 //-----------------------------------------------------------------------------*
 
-void cVariablesInRelationConfiguration::swap213 (LOCATION_ARGS) {
+void cVariablesInRelationConfiguration::swap102 (LOCATION_ARGS) {
   macroUniqueSharedObject (this) ;
   mVariableNameArray.exchangeObjectAtIndexes (0, 1 COMMA_THERE) ;
   mVariableTypeArray.exchangeObjectAtIndexes (0, 1 COMMA_THERE) ;
@@ -256,7 +258,7 @@ void cVariablesInRelationConfiguration::swap213 (LOCATION_ARGS) {
 
 //-----------------------------------------------------------------------------*
 
-void cVariablesInRelationConfiguration::swap231 (LOCATION_ARGS) {
+void cVariablesInRelationConfiguration::swap120 (LOCATION_ARGS) {
   macroUniqueSharedObject (this) ;
   mVariableNameArray.exchangeObjectAtIndexes (0, 1 COMMA_THERE) ;
   mVariableTypeArray.exchangeObjectAtIndexes (0, 1 COMMA_THERE) ;
@@ -274,7 +276,7 @@ void cVariablesInRelationConfiguration::swap231 (LOCATION_ARGS) {
 
 //-----------------------------------------------------------------------------*
 
-void cVariablesInRelationConfiguration::swap312 (LOCATION_ARGS) {
+void cVariablesInRelationConfiguration::swap201 (LOCATION_ARGS) {
   macroUniqueSharedObject (this) ;
   mVariableNameArray.exchangeObjectAtIndexes (1, 2 COMMA_THERE) ;
   mVariableTypeArray.exchangeObjectAtIndexes (1, 2 COMMA_THERE) ;
@@ -292,7 +294,7 @@ void cVariablesInRelationConfiguration::swap312 (LOCATION_ARGS) {
 
 //-----------------------------------------------------------------------------*
 
-void cVariablesInRelationConfiguration::swap321 (LOCATION_ARGS) {
+void cVariablesInRelationConfiguration::swap210 (LOCATION_ARGS) {
   macroUniqueSharedObject (this) ;
   mVariableNameArray.exchangeObjectAtIndexes (0, 2 COMMA_THERE) ;
   mVariableTypeArray.exchangeObjectAtIndexes (0, 2 COMMA_THERE) ;
@@ -474,51 +476,51 @@ void C_RelationConfiguration::deleteLastVariable (LOCATION_ARGS) {
 
 //-----------------------------------------------------------------------------*
 
-C_RelationConfiguration C_RelationConfiguration::swap132 (LOCATION_ARGS) const {
+C_RelationConfiguration C_RelationConfiguration::swap021 (LOCATION_ARGS) const {
   C_RelationConfiguration result = *this ;
   result.insulate (THERE) ;
   macroValidSharedObjectThere (result.mVariablesPtr, cVariablesInRelationConfiguration) ;
-  result.mVariablesPtr->swap132 (THERE) ;
+  result.mVariablesPtr->swap021 (THERE) ;
   return result ;
 }
 
 //-----------------------------------------------------------------------------*
 
-C_RelationConfiguration C_RelationConfiguration::swap213 (LOCATION_ARGS) const {
+C_RelationConfiguration C_RelationConfiguration::swap102 (LOCATION_ARGS) const {
   C_RelationConfiguration result = *this ;
   result.insulate (THERE) ;
   macroValidSharedObjectThere (result.mVariablesPtr, cVariablesInRelationConfiguration) ;
-  result.mVariablesPtr->swap213 (THERE) ;
+  result.mVariablesPtr->swap102 (THERE) ;
   return result ;
 }
 
 //-----------------------------------------------------------------------------*
 
-C_RelationConfiguration C_RelationConfiguration::swap231 (LOCATION_ARGS) const {
+C_RelationConfiguration C_RelationConfiguration::swap120 (LOCATION_ARGS) const {
   C_RelationConfiguration result = *this ;
   result.insulate (THERE) ;
   macroValidSharedObjectThere (result.mVariablesPtr, cVariablesInRelationConfiguration) ;
-  result.mVariablesPtr->swap231 (THERE) ;
+  result.mVariablesPtr->swap120 (THERE) ;
   return result ;
 }
 
 //-----------------------------------------------------------------------------*
 
-C_RelationConfiguration C_RelationConfiguration::swap312 (LOCATION_ARGS) const {
+C_RelationConfiguration C_RelationConfiguration::swap201 (LOCATION_ARGS) const {
   C_RelationConfiguration result = *this ;
   result.insulate (THERE) ;
   macroValidSharedObjectThere (result.mVariablesPtr, cVariablesInRelationConfiguration) ;
-  result.mVariablesPtr->swap312 (THERE) ;
+  result.mVariablesPtr->swap201 (THERE) ;
   return result ;
 }
 
 //-----------------------------------------------------------------------------*
 
-C_RelationConfiguration C_RelationConfiguration::swap321 (LOCATION_ARGS) const {
+C_RelationConfiguration C_RelationConfiguration::swap210 (LOCATION_ARGS) const {
   C_RelationConfiguration result = *this ;
   result.insulate (THERE) ;
   macroValidSharedObjectThere (result.mVariablesPtr, cVariablesInRelationConfiguration) ;
-  result.mVariablesPtr->swap321 (THERE) ;
+  result.mVariablesPtr->swap210 (THERE) ;
   return result ;
 }
 
