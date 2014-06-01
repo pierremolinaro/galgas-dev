@@ -41,7 +41,15 @@ runCommand ("libpm-project/makefile-win32-on-macosx/build.command")
 runCommand ("libpm-project/makefile-macosx/build.command")
 #--- Build for Unix
 runCommand ("libpm-project/makefile-unix/build.command")
-#--- Remove libpm project
+print "****************************************** TEST 1 ****\n"
+runCommand ("cp test/test1.cpp libpm-project/sources/main-for-libpm.cpp")
+runCommand ("libpm-project/makefile-linux32-on-macosx/build.command")
+runCommand ("libpm-project/makefile-linux64-on-macosx/build.command")
+runCommand ("libpm-project/makefile-win32-on-macosx/build.command")
+runCommand ("libpm-project/makefile-macosx/build.command")
+runCommand ("libpm-project/makefile-unix/build.command")
+runCommand ("libpm-project/makefile-macosx/product")
+runCommand ("libpm-project/makefile-macosx/product_debug")
 runCommand ("rm -fr libpm-project")
 
 #------------------------------------------------------------------------------*

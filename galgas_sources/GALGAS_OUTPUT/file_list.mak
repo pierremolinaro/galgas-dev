@@ -129,7 +129,6 @@ SOURCES += C_BoolCommandLineOption.cpp
 SOURCES += C_UIntCommandLineOption.cpp
 SOURCES += C_StringCommandLineOption.cpp
 SOURCES += C_builtin_CLI_Options.cpp
-SOURCES += C_galgas_CLI_Options.cpp
 SOURCES += F_Analyze_CLI_Options.cpp
 
 #--- BDD
@@ -185,6 +184,7 @@ SOURCES += C_DirectedGraph.cpp
 #    G A L G A S    2                                                          *
 #------------------------------------------------------------------------------*
 
+SOURCES += C_galgas_CLI_Options.cpp
 SOURCES += typeComparisonResult.cpp
 SOURCES += C_Compiler.cpp
 SOURCES += C_Lexique.cpp

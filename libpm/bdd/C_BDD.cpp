@@ -1760,18 +1760,18 @@ internalPrintBDD (AC_OutputStream & outputStream,
 
 //-----------------------------------------------------------------------------*
 
-void C_BDD::printBDD (AC_OutputStream & outputStream,
-                      const TC_UniqueArray <C_String> & inVariablesNames,
-                      const int32_t inLeadingSpacesCount) const {
-  printBDD (outputStream, inVariablesNames, inVariablesNames.count (), inLeadingSpacesCount) ;
+void C_BDD::print (AC_OutputStream & outputStream,
+                   const TC_UniqueArray <C_String> & inVariablesNames,
+                   const int32_t inLeadingSpacesCount) const {
+  print (outputStream, inVariablesNames, inVariablesNames.count (), inLeadingSpacesCount) ;
 }
 
 //-----------------------------------------------------------------------------*
 
-void C_BDD::printBDDHeader (AC_OutputStream & outputStream,
-                            const TC_UniqueArray <C_String> & inVariablesNames,
-                            const int32_t inVariableCount,
-                            const int32_t inLeadingSpacesCount) const {
+void C_BDD::printHeader (AC_OutputStream & outputStream,
+                         const TC_UniqueArray <C_String> & inVariablesNames,
+                         const int32_t inVariableCount,
+                         const int32_t inLeadingSpacesCount) const {
 //--- Imprimer les variables
   for (int32_t i=0 ; i<inLeadingSpacesCount ; i++) {
     outputStream << " " ;
@@ -1784,22 +1784,22 @@ void C_BDD::printBDDHeader (AC_OutputStream & outputStream,
 
 //-----------------------------------------------------------------------------*
 
-void C_BDD::printBDD (AC_OutputStream & outputStream,
-                      const TC_UniqueArray <C_String> & inVariablesNames,
-                      const int32_t inVariableCount,
-                      const int32_t inLeadingSpacesCount) const {
+void C_BDD::print (AC_OutputStream & outputStream,
+                   const TC_UniqueArray <C_String> & inVariablesNames,
+                   const int32_t inVariableCount,
+                   const int32_t inLeadingSpacesCount) const {
 //--- Print header
-  printBDDHeader (outputStream, inVariablesNames, inVariableCount, inLeadingSpacesCount) ;
+  printHeader (outputStream, inVariablesNames, inVariableCount, inLeadingSpacesCount) ;
 //--- Print without header
-  printBDDwithoutHeader (outputStream, inVariablesNames, inVariableCount, inLeadingSpacesCount) ;
+  printWithoutHeader (outputStream, inVariablesNames, inVariableCount, inLeadingSpacesCount) ;
 }
 
 //-----------------------------------------------------------------------------*
 
-void C_BDD::printBDDwithoutHeader (AC_OutputStream & outputStream,
-                                   const TC_UniqueArray <C_String> & inVariablesNames,
-                                   const int32_t inVariableCount,
-                                   const int32_t inLeadingSpacesCount) const {
+void C_BDD::printWithoutHeader (AC_OutputStream & outputStream,
+                                const TC_UniqueArray <C_String> & inVariablesNames,
+                                const int32_t inVariableCount,
+                                const int32_t inLeadingSpacesCount) const {
 //--- Compute header size
   TC_UniqueArray <int32_t> nameLengthArray (inVariableCount COMMA_HERE) ;
   for (int32_t i=0 ; i<inVariableCount ; i++) {
@@ -1837,12 +1837,14 @@ void C_BDD::printBDDwithoutHeader (AC_OutputStream & outputStream,
 //-----------------------------------------------------------------------------*
 
 static void
-printBDDlineWithSeparator (AC_OutputStream & outputStream,
-                           const TC_UniqueArray <C_String> & inSeparatorArray,
-                           const TC_UniqueArray <char> & inValueArray) {
-  for (int32_t i=0 ; i<inSeparatorArray.count () ; i++) {
-    outputStream << inSeparatorArray (i COMMA_HERE).cString(HERE)
-                 << inValueArray (i COMMA_HERE) ;
+printLineWithSeparator (AC_OutputStream & outputStream,
+                        const TC_UniqueArray <C_String> & inSeparatorArray,
+                        const TC_UniqueArray <char> & inValueArray) {
+  for (int32_t i=0 ; i<inValueArray.count () ; i++) {
+    if (i < inSeparatorArray.count ()) {
+      outputStream << inSeparatorArray (i COMMA_HERE) ;
+    }
+    outputStream << cStringWithCharacter (inValueArray (i COMMA_HERE)) ;
   }
   outputStream << "\n" ;
 }
@@ -1850,16 +1852,16 @@ printBDDlineWithSeparator (AC_OutputStream & outputStream,
 //-----------------------------------------------------------------------------*
 
 static void
-internalPrintBDDWithSeparator (AC_OutputStream & outputStream,
-                               const uint32_t inValue,
-                               TC_UniqueArray <char> & inDisplayString,
-                               const TC_UniqueArray <C_String> & inSeparatorArray,
-                               uint32_t inVariableIndex) {
+internalPrintWithSeparator (AC_OutputStream & outputStream,
+                            const uint32_t inValue,
+                            TC_UniqueArray <char> & inDisplayString,
+                            const TC_UniqueArray <C_String> & inSeparatorArray,
+                            uint32_t inVariableIndex) {
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   const uint32_t complement = inValue & 1 ;
   if (bothBranches (gNodeArray [nodeIndex]) == 0) {
     if (complement == 1) {
-      printBDDlineWithSeparator (outputStream, inSeparatorArray, inDisplayString) ;
+      printLineWithSeparator (outputStream, inSeparatorArray, inDisplayString) ;
     }
   }else{
     const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
@@ -1875,9 +1877,9 @@ internalPrintBDDWithSeparator (AC_OutputStream & outputStream,
         for (uint32_t i=0 ; i<var ; i++) {
           inDisplayString.setObjectAtIndex ('X', (int32_t) i COMMA_HERE) ;
         }
-        printBDDlineWithSeparator (outputStream, inSeparatorArray, inDisplayString) ;
+        printLineWithSeparator (outputStream, inSeparatorArray, inDisplayString) ;
       }else{
-        internalPrintBDDWithSeparator (outputStream, branche0, inDisplayString, inSeparatorArray, (uint32_t) (inVariableIndex - 1)) ;
+        internalPrintWithSeparator (outputStream, branche0, inDisplayString, inSeparatorArray, (uint32_t) (inVariableIndex - 1)) ;
       }
     }
   //--- Branche 1
@@ -1888,9 +1890,9 @@ internalPrintBDDWithSeparator (AC_OutputStream & outputStream,
         for (uint32_t i=0 ; i<var ; i++) {
           inDisplayString.setObjectAtIndex ('X', (int32_t) i COMMA_HERE) ;
         }
-        printBDDlineWithSeparator (outputStream, inSeparatorArray, inDisplayString) ;
+        printLineWithSeparator (outputStream, inSeparatorArray, inDisplayString) ;
       }else{
-        internalPrintBDDWithSeparator (outputStream, branche1, inDisplayString, inSeparatorArray, (uint32_t) (inVariableIndex - 1)) ;
+        internalPrintWithSeparator (outputStream, branche1, inDisplayString, inSeparatorArray, (uint32_t) (inVariableIndex - 1)) ;
       }
     }
   }
@@ -1898,36 +1900,118 @@ internalPrintBDDWithSeparator (AC_OutputStream & outputStream,
 
 //-----------------------------------------------------------------------------*
 
-void C_BDD::printBDDwithSeparator (AC_OutputStream & outputStream,
+void C_BDD::printWithSeparator (AC_OutputStream & outputStream,
                                    const TC_UniqueArray <C_String> & inSeparatorArray) const {
   const uint32_t variablesCount = (uint32_t) inSeparatorArray.count () ;
 //--- Print BDD
   if (mBDDvalue == 1) {
     TC_UniqueArray <char> displayString ((int32_t) variablesCount, 'X' COMMA_HERE) ;
-    printBDDlineWithSeparator (outputStream, inSeparatorArray, displayString) ;
+    printLineWithSeparator (outputStream, inSeparatorArray, displayString) ;
   }else if (mBDDvalue != 0) {
     const uint32_t nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
     const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
-    if (var >= variablesCount) {
-      outputStream << "** ERROR in "
-         << __FILE__
-         << " at line %"
-         << cStringWithSigned (__LINE__)
-         << ": BDD variable ("
-         << cStringWithUnsigned (var)
-         << ") is greater than variable count ("
-         << cStringWithSigned (variablesCount)
-         << ") **\n" ;
-    }else{
-      TC_UniqueArray <char> displayString ((int32_t) variablesCount, 'X' COMMA_HERE) ;
-      internalPrintBDDWithSeparator (outputStream,
-                                     mBDDvalue,
-                                     displayString,
-                                     inSeparatorArray,
-                                     (uint32_t) ((variablesCount - 1) & UINT16_MAX)) ;
-    }
+    TC_UniqueArray <char> displayString ((int32_t) var + 1, 'X' COMMA_HERE) ;
+    internalPrintWithSeparator (outputStream,
+                                mBDDvalue,
+                                displayString,
+                                inSeparatorArray,
+                                (uint32_t) (variablesCount - 1)) ;
   }
 }
+
+//-----------------------------------------------------------------------------*
+
+void C_BDD::print (AC_OutputStream & outputStream) const {
+  if (mBDDvalue == 0) {
+    outputStream << "(false)\n" ;
+  }else if (mBDDvalue == 1) {
+    outputStream << "(true)\n" ;
+  }else{
+    const uint32_t nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
+    const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
+    TC_UniqueArray <char> displayString ((int32_t) var + 1, 'X' COMMA_HERE) ;
+    TC_UniqueArray <C_String> separatorArray ;
+    internalPrintWithSeparator (outputStream,
+                                mBDDvalue,
+                                displayString,
+                                separatorArray,
+                                var) ;
+  }
+}
+
+//-----------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark String array representation
+#endif
+
+//-----------------------------------------------------------------------------*
+
+static void buildGraphvizRepresentation (C_String & ioString,
+                                         const C_String & inSourceNode,
+                                         const uint32_t inBDDValue) {
+  const uint32_t nodeIndex = nodeIndexForRoot (inBDDValue COMMA_HERE) ;
+  const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
+  const C_String node = C_String ("N") + cStringWithUnsigned (nodeIndex) ;
+  if (! isNodeMarkedThenMark (inBDDValue COMMA_HERE)) {
+    const uint32_t THENbranch = gNodeArray [nodeIndex].mTHEN ;
+    C_String THENlabel ;
+    if (THENbranch == 0) {
+      THENlabel << "F" ;
+    }else if (THENbranch == 1) {
+      THENlabel << "T" ;
+    }else{
+      THENlabel << "<f1>" ;
+    }
+    const uint32_t ELSEbranch = gNodeArray [nodeIndex].mELSE ;
+    C_String ELSElabel ;
+    if (ELSEbranch == 0) {
+      ELSElabel << "F" ;
+    }else if (ELSEbranch == 1) {
+      ELSElabel << "T" ;
+    }else{
+      ELSElabel << "<f0>" ;
+    }
+    ioString << "  " << node << " [label=\"{" << cStringWithUnsigned (var) << "|{" << ELSElabel << "|" << THENlabel << "}}\"]\n" ;
+    if (ELSEbranch > 1) {
+      buildGraphvizRepresentation (ioString, node + ":f0", ELSEbranch) ;
+    }
+    if (THENbranch > 1) {
+      buildGraphvizRepresentation (ioString, node + ":f1", THENbranch) ;
+    }
+  }
+  ioString << "  " << inSourceNode << " -> " << node << "" ;
+  if ((inBDDValue & 1) != 0) {
+    ioString << " [dir=both, arrowtail=dot, tailclip=false]" ;
+  }
+  ioString << " ;\n" ;
+}
+
+//-----------------------------------------------------------------------------*
+
+C_String C_BDD::graphvizRepresentation (void) const {
+  unmarkAllExistingBDDnodes () ;
+  C_String result ;
+  result << "digraph G {\n" ;
+  if (mBDDvalue == 0) {
+    result << "  N [label=\"F\", shape=rectangle]\n" ;
+  }else if (mBDDvalue == 1) {
+    result << "  N [label=\"T\", shape=rectangle]\n" ;
+  }else{
+    result << "  edge [arrowhead=vee]\n"
+           << "  node [fontname=courier, shape=record]\n"
+           << "  N [label=\"\", shape=rectangle]\n" ; // Root node
+    buildGraphvizRepresentation (result, "N", mBDDvalue) ;
+  }
+  result << "}\n" ;
+  return result ;
+}
+
+//-----------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark String array representation
+#endif
 
 //-----------------------------------------------------------------------------*
 

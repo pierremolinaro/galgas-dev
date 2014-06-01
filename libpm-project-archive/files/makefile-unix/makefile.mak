@@ -74,6 +74,6 @@ include ../libpm/included_makefiles/unix_gcc_tools.mak
 #                                                                             *
 #-----------------------------------------------------------------------------*
 
-include ../libpm/included_makefiles/generic-makefile.mak
+include ../libpm/included_makefiles/generic-makefile-wo-download.mak
 
 #-----------------------------------------------------------------------------*
