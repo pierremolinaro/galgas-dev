@@ -33,6 +33,9 @@ runCommand ("cp -r ../libpm " + buildDir + "/libpm-project")
 runCommand ("rm -fr " + buildDir + "/libpm-project/libpm/galgas2")
 runCommand ("rm -fr " + buildDir + "/libpm-project/libpm/cocoa_galgas")
 runCommand ("rm -fr " + buildDir + "/libpm-project/libpm/cocoa_utilities")
+#--- Copy additional files
+runCommand ("cp -r files/ " + buildDir + "/libpm-project")
+runCommand ("mv " + buildDir + "/libpm-project/libpm-file-list.mak " + buildDir + "/libpm-project/libpm")
 #--- Compress archive
 os.chdir (scriptDir + "/" + buildDir)
 runCommand ("tar cf libpm-project.tar libpm-project")
