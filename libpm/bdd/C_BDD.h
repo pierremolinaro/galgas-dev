@@ -39,7 +39,6 @@
 //-----------------------------------------------------------------------------*
 
 class C_bdd_value_traversing ;
-class C_Display_BDD ;
 class C_String ;
 class AC_OutputStream ;
 
@@ -253,13 +252,6 @@ class C_BDD {
   public : void printBDDwithoutHeader (const TC_UniqueArray <C_String> & inVariablesNames,
                                        const int32_t inVariableCount,
                                        const int32_t inLeadingSpacesCount) const ;
-
-  public : void printBDD (AC_OutputStream & inStream,
-                          const uint32_t inVariableCount,
-                          const C_Display_BDD & inVariablesNames) const ;
-
-  public : void printBDDnodes (AC_OutputStream & inStream,
-                               const C_Display_BDD & inVariablesNames) const ;
 
   public : void buildCompressedLittleEndianStringValueArray (TC_UniqueArray <C_String> & outStringArray
                                                              COMMA_LOCATION_ARGS) const ;

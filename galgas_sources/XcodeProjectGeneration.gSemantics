@@ -19,7 +19,6 @@ local routine build_LIBPM_BDD_group
   fileList += !"C_BDD-and-operation.cpp" ;
   fileList += !"C_BDD-single-operand-ops.cpp" ;
   fileList += !"C_BDD-node.h" ;
-  append_cpp_h_files !?fileList !"C_Display_BDD" ;
 #---
   enter_files_in_group
    !?ioXcodeProjectDescription
@@ -39,7 +38,6 @@ local routine build_LIBPM_BDD_source_files_for_sources_build_phase
   fileList += !"C_BDD-find-or-add.cpp" ;
   fileList += !"C_BDD-and-operation.cpp" ;
   fileList += !"C_BDD-single-operand-ops.cpp" ;
-  fileList += !"C_Display_BDD.cpp" ;
   fileList += !"C_RelationSingleType.cpp" ;
   fileList += !"C_RelationConfiguration.cpp" ;
   fileList += !"C_Relation.cpp" ;
