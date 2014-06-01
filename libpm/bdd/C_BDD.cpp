@@ -4,7 +4,7 @@
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
-//  Copyright (C) 1999, ..., 2012 Pierre Molinaro.                             *
+//  Copyright (C) 1999, ..., 2014 Pierre Molinaro.                             *
 //                                                                             *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                               *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
@@ -23,7 +23,6 @@
 //-----------------------------------------------------------------------------*
 
 #include "bdd/C_BDD.h"
-#include "bdd/C_Display_BDD.h"
 #include "utilities/TF_sup.h"
 #include "bdd/C_BDD-node.h"
 
@@ -1693,105 +1692,6 @@ swap201 (const uint32_t inBitSize1,
 
 //-----------------------------------------------------------------------------*
 
-static void
-ecrireLigneBDD (AC_OutputStream & inStream,
-                TC_UniqueArray <char> & chaineAffichage,
-                const C_Display_BDD & inVariablesNames) {
-//--- Ecriture des valeurs booleennes
-  int32_t indiceBDD = 0 ;
-  for (uint32_t i=0 ; i<inVariablesNames.nombreEntrees () ; i++) {
-    const int32_t lg = ::TF_sup (inVariablesNames.longueur (i), (int32_t) inVariablesNames.obtenirDimension (i)) ;
-    const int32_t espaces = 1 + lg - (int32_t) inVariablesNames.obtenirDimension (i) ;
-    inStream.appendSpaces (espaces) ;
-    for (int32_t k=(int32_t) inVariablesNames.obtenirDimension (i) ; k>0 ; k--) {
-      inStream << cStringWithCharacter (chaineAffichage (indiceBDD + k - 1 COMMA_HERE)) ;
-    }
-    indiceBDD += inVariablesNames.obtenirDimension (i) ;
-  }
-//--- Fin
-  inStream << "\n" ;
-}
-
-//-----------------------------------------------------------------------------*
-
-static void
-ecrireBDDinterne (AC_OutputStream & inStream,
-                  const uint32_t inValue,
-                  TC_UniqueArray <char> & chaineAffichage,
-                  uint32_t numeroVariable,
-                  const uint32_t inVariableCount,
-                  const C_Display_BDD & inVariablesNames) {
-  const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
-  const uint32_t complement = inValue & 1 ;
-  if (bothBranches (gNodeArray [nodeIndex]) == 0) {
-    if (complement == 1) {
-      ecrireLigneBDD (inStream, chaineAffichage, inVariablesNames) ;
-    }
-  }else{
-    const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
-    while (numeroVariable > var) {
-      chaineAffichage.setObjectAtIndex ('X', (int32_t) numeroVariable COMMA_HERE) ;
-      numeroVariable -- ;
-    }
-  //--- Branche Zero
-    const uint32_t branche0 = gNodeArray [nodeIndex].mELSE ^ complement ;
-    if (branche0 != 0) {
-      chaineAffichage.setObjectAtIndex ('0', (int32_t) var COMMA_HERE) ;
-      if (branche0 == 1) {
-        for (uint32_t i=0 ; i<var ; i++) {
-          chaineAffichage.setObjectAtIndex ('X', (int32_t) i COMMA_HERE) ;
-        }
-        ecrireLigneBDD (inStream, chaineAffichage, inVariablesNames) ;
-      }else{
-        ecrireBDDinterne (inStream, branche0, chaineAffichage, (uint32_t) (var - 1), inVariableCount,
-                          inVariablesNames) ;
-      }
-    }
-  //--- Branche 1
-    const uint32_t branche1 = gNodeArray [nodeIndex].mTHEN ^ complement ;
-    if (branche1 != 0) {
-      chaineAffichage.setObjectAtIndex ('1', (int32_t) var COMMA_HERE) ;
-      if (branche1 == 1) {
-        for (uint32_t i=0 ; i<var ; i++) {
-          chaineAffichage.setObjectAtIndex ('X', (int32_t) i COMMA_HERE) ;
-        }
-        ecrireLigneBDD (inStream, chaineAffichage, inVariablesNames) ;
-      }else{
-        ecrireBDDinterne (inStream, branche1, chaineAffichage, (uint32_t) (var - 1), inVariableCount,
-                          inVariablesNames) ;
-      }
-    }
-  }
-}
-
-//-----------------------------------------------------------------------------*
-
-void C_BDD::printBDD (AC_OutputStream & inStream,
-                      const uint32_t inVariableCount,
-                      const C_Display_BDD & inVariablesNames) const {
-//--- Imprimer les variables
-  for (uint32_t i=0 ; i<inVariablesNames.nombreEntrees () ; i++) {
-    const int32_t lg = ::TF_sup (inVariablesNames.longueur (i), (int32_t) inVariablesNames.obtenirDimension (i)) ;
-    const int32_t espaces = 1 + lg - inVariablesNames.longueur (i) ;
-    inStream.appendSpaces (espaces) ;
-    inVariablesNames.ecrire (i, inStream) ;
-  }
-  inStream << "\n" ;
-//--- Ecrire le BDD
-  if (mBDDvalue == 0) {
-    inStream << "(false)\n" ;
-  }else if (mBDDvalue == 1) {
-    TC_UniqueArray <char> chaineAffichage ((int32_t) inVariableCount, 'X' COMMA_HERE) ;
-    ecrireLigneBDD (inStream, chaineAffichage, inVariablesNames) ;
-  }else{
-    TC_UniqueArray <char> chaineAffichage ((int32_t) inVariableCount, 'X' COMMA_HERE) ;
-    ecrireBDDinterne (inStream, mBDDvalue, chaineAffichage, inVariableCount - 1, inVariableCount, inVariablesNames) ;
-  }
-}
-
-
-//-----------------------------------------------------------------------------*
-
 static void printBDDline (const TC_UniqueArray <char> & inDisplayString,
                           const TC_UniqueArray <int32_t> & inNameLengthArray,
                           const int32_t inLeadingSpacesCount) {
@@ -2177,56 +2077,6 @@ buildCompressedBigEndianStringValueArray (TC_UniqueArray <C_String> & outStringA
                                           inVariableCount - 1,
                                           inVariableCount - 1,
                                           outStringArray COMMA_THERE) ;
-}
-
-//-----------------------------------------------------------------------------*
-
-static void displayBranchCode (AC_OutputStream & inStream,
-                               const uint32_t inBranchValue) {
-  if (inBranchValue == 0) {
-    inStream << "FALSE" ;
-  }else if (inBranchValue == 1) {
-    inStream << "TRUE" ;
-  }else{
-    if ((inBranchValue & 1) != 0) {
-      inStream << "~ " ;
-    }
-    inStream << "node " << cStringWithUnsigned (inBranchValue >> 1) ;
-  }
-}
-
-//-----------------------------------------------------------------------------*
-
-static void ecrireCompositionBDDrecursif (AC_OutputStream & inStream,
-                                          const uint32_t inValue,
-                                          const C_Display_BDD & inVariablesNames) {
-  const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
-  if ((bothBranches (gNodeArray [nodeIndex]) != 0) && ! isNodeMarkedThenMark (inValue COMMA_HERE)) {
-    inStream << "  node " << cStringWithUnsigned (inValue >> 1) << ": if " ;
-    inVariablesNames.ecrire (gNodeArray [nodeIndex].mVariableIndex, inStream) ;
-    inStream << " (#" << cStringWithUnsigned (gNodeArray [nodeIndex].mVariableIndex)  << ") then " ;
-    displayBranchCode (inStream, gNodeArray [nodeIndex].mTHEN) ;
-    inStream << " else " ;
-    displayBranchCode (inStream, gNodeArray [nodeIndex].mELSE) ;
-    inStream << "\n" ;
-    ecrireCompositionBDDrecursif (inStream, gNodeArray [nodeIndex].mELSE, inVariablesNames) ;
-    ecrireCompositionBDDrecursif (inStream, gNodeArray [nodeIndex].mTHEN, inVariablesNames) ;
-  }
-}
-
-//-----------------------------------------------------------------------------*
-
-void C_BDD::
-printBDDnodes (AC_OutputStream & inStream,
-               const C_Display_BDD & inVariablesNames) const {
-  inStream << "BDD root: " ;
-  displayBranchCode (inStream, mBDDvalue) ;
-  inStream << "\n" ;
-  const uint32_t nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
-  if (bothBranches (gNodeArray [nodeIndex]) != 0) {
-    unmarkAllExistingBDDnodes () ;
-    ecrireCompositionBDDrecursif (inStream, mBDDvalue, inVariablesNames) ;
-  }
 }
 
 //-----------------------------------------------------------------------------*

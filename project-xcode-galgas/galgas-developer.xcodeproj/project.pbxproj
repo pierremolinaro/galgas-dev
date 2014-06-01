@@ -173,7 +173,6 @@
 		CF6DF17709E3F23700506859 /* MF_MemoryControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A7508536B780077AEAF /* MF_MemoryControl.cpp */; };
 		CF6DF17B09E3F23700506859 /* C_builtin_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF9F4E21092A71C60055C8C3 /* C_builtin_CLI_Options.cpp */; };
 		CF6DF18009E3F23700506859 /* C_BDD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF9F4E36092A71F10055C8C3 /* C_BDD.cpp */; };
-		CF6DF18109E3F23700506859 /* C_Display_BDD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF9F4E38092A71F10055C8C3 /* C_Display_BDD.cpp */; };
 		CF6DF1D609E3F30400506859 /* galgas_cli_options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD7E26E059B5B8E00410349 /* galgas_cli_options.cpp */; };
 		CF6DF1DE09E3F30400506859 /* galgas_scanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF253ED07B0CA1E001265A1 /* galgas_scanner.cpp */; };
 		CF6DF1E309E3F30400506859 /* F_Analyze_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF82599808536A5B0077AEAF /* F_Analyze_CLI_Options.cpp */; };
@@ -189,7 +188,6 @@
 		CF6DF1F109E3F30400506859 /* MF_MemoryControl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF825A7508536B780077AEAF /* MF_MemoryControl.cpp */; };
 		CF6DF1F509E3F30400506859 /* C_builtin_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF9F4E21092A71C60055C8C3 /* C_builtin_CLI_Options.cpp */; };
 		CF6DF1FA09E3F30400506859 /* C_BDD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF9F4E36092A71F10055C8C3 /* C_BDD.cpp */; };
-		CF6DF1FB09E3F30400506859 /* C_Display_BDD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF9F4E38092A71F10055C8C3 /* C_Display_BDD.cpp */; };
 		CF6DF22909E3F3A700506859 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 2A37F4B9FDCFA73011CA2CEA /* Credits.rtf */; };
 		CF6DF22A09E3F3A700506859 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165FFE840EACC02AAC07 /* InfoPlist.strings */; };
 		CF6DF22B09E3F3A700506859 /* galgasApplication.icns in Resources */ = {isa = PBXBuildFile; fileRef = CF9BDF6B0585C5C900FC7DD7 /* galgasApplication.icns */; };
@@ -703,8 +701,6 @@
 		CF9F4E21092A71C60055C8C3 /* C_builtin_CLI_Options.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = C_builtin_CLI_Options.cpp; sourceTree = "<group>"; };
 		CF9F4E36092A71F10055C8C3 /* C_BDD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; name = C_BDD.cpp; path = bdd/C_BDD.cpp; sourceTree = "<group>"; };
 		CF9F4E37092A71F10055C8C3 /* C_BDD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = C_BDD.h; path = bdd/C_BDD.h; sourceTree = "<group>"; };
-		CF9F4E38092A71F10055C8C3 /* C_Display_BDD.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; name = C_Display_BDD.cpp; path = bdd/C_Display_BDD.cpp; sourceTree = "<group>"; };
-		CF9F4E39092A71F10055C8C3 /* C_Display_BDD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; name = C_Display_BDD.h; path = bdd/C_Display_BDD.h; sourceTree = "<group>"; };
 		CF9FB041127A0A0200335160 /* C_galgas_class_inspector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = C_galgas_class_inspector.cpp; sourceTree = "<group>"; };
 		CF9FB042127A0A0200335160 /* C_galgas_class_inspector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = C_galgas_class_inspector.h; sourceTree = "<group>"; };
 		CFA2EFEF10D3E8ED0008DA86 /* semanticsTypes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsTypes.cpp; sourceTree = "<group>"; };
@@ -1964,8 +1960,6 @@
 				CFFC0F1611EDC44200C97B85 /* C_BDD-single-operand-ops.cpp */,
 				CF9F4E36092A71F10055C8C3 /* C_BDD.cpp */,
 				CF9F4E37092A71F10055C8C3 /* C_BDD.h */,
-				CF9F4E38092A71F10055C8C3 /* C_Display_BDD.cpp */,
-				CF9F4E39092A71F10055C8C3 /* C_Display_BDD.h */,
 			);
 			name = BDD;
 			sourceTree = "<group>";
@@ -2105,7 +2099,6 @@
 				CF6DF17709E3F23700506859 /* MF_MemoryControl.cpp in Sources */,
 				CF6DF17B09E3F23700506859 /* C_builtin_CLI_Options.cpp in Sources */,
 				CF6DF18009E3F23700506859 /* C_BDD.cpp in Sources */,
-				CF6DF18109E3F23700506859 /* C_Display_BDD.cpp in Sources */,
 				CF69B28E0A31EFF0002AE337 /* C_ErrorOut.cpp in Sources */,
 				CF0CB4030BBFB97A00E6FABE /* lexiqueSemantics.cpp in Sources */,
 				CF0CB79B0BC0130500E6FABE /* optionSemantics.cpp in Sources */,
@@ -2293,7 +2286,6 @@
 				CF6DF1F109E3F30400506859 /* MF_MemoryControl.cpp in Sources */,
 				CF6DF1F509E3F30400506859 /* C_builtin_CLI_Options.cpp in Sources */,
 				CF6DF1FA09E3F30400506859 /* C_BDD.cpp in Sources */,
-				CF6DF1FB09E3F30400506859 /* C_Display_BDD.cpp in Sources */,
 				CF69B2900A31EFF0002AE337 /* C_ErrorOut.cpp in Sources */,
 				CF0CB4050BBFB97A00E6FABE /* lexiqueSemantics.cpp in Sources */,
 				CF0CB79D0BC0130500E6FABE /* optionSemantics.cpp in Sources */,

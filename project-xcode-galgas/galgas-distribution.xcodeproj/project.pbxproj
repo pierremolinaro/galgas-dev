@@ -250,9 +250,7 @@
 		CF9F4E22092A71C60055C8C3 /* C_builtin_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF9F4E21092A71C60055C8C3 /* C_builtin_CLI_Options.cpp */; };
 		CF9F4E23092A71C60055C8C3 /* C_builtin_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF9F4E21092A71C60055C8C3 /* C_builtin_CLI_Options.cpp */; };
 		CF9F4E42092A71F10055C8C3 /* C_BDD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF9F4E36092A71F10055C8C3 /* C_BDD.cpp */; };
-		CF9F4E44092A71F10055C8C3 /* C_Display_BDD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF9F4E38092A71F10055C8C3 /* C_Display_BDD.cpp */; };
 		CF9F4E4E092A71F20055C8C3 /* C_BDD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF9F4E36092A71F10055C8C3 /* C_BDD.cpp */; };
-		CF9F4E50092A71F20055C8C3 /* C_Display_BDD.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF9F4E38092A71F10055C8C3 /* C_Display_BDD.cpp */; };
 		CF9FB043127A0A0200335160 /* C_galgas_class_inspector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF9FB041127A0A0200335160 /* C_galgas_class_inspector.cpp */; };
 		CF9FB044127A0A0200335160 /* C_galgas_class_inspector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF9FB041127A0A0200335160 /* C_galgas_class_inspector.cpp */; };
 		CFA2EFF510D3E8ED0008DA86 /* semanticsTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA2EFEF10D3E8ED0008DA86 /* semanticsTypes.cpp */; };
@@ -686,8 +684,6 @@
 		CF9F4E21092A71C60055C8C3 /* C_builtin_CLI_Options.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_builtin_CLI_Options.cpp; sourceTree = "<group>"; };
 		CF9F4E36092A71F10055C8C3 /* C_BDD.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; name = C_BDD.cpp; path = bdd/C_BDD.cpp; sourceTree = "<group>"; };
 		CF9F4E37092A71F10055C8C3 /* C_BDD.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; name = C_BDD.h; path = bdd/C_BDD.h; sourceTree = "<group>"; };
-		CF9F4E38092A71F10055C8C3 /* C_Display_BDD.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; name = C_Display_BDD.cpp; path = bdd/C_Display_BDD.cpp; sourceTree = "<group>"; };
-		CF9F4E39092A71F10055C8C3 /* C_Display_BDD.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; name = C_Display_BDD.h; path = bdd/C_Display_BDD.h; sourceTree = "<group>"; };
 		CF9FB041127A0A0200335160 /* C_galgas_class_inspector.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_galgas_class_inspector.cpp; sourceTree = "<group>"; };
 		CF9FB042127A0A0200335160 /* C_galgas_class_inspector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_galgas_class_inspector.h; sourceTree = "<group>"; };
 		CFA2EFEF10D3E8ED0008DA86 /* semanticsTypes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsTypes.cpp; sourceTree = "<group>"; };
@@ -1927,8 +1923,6 @@
 				CFFC0F1611EDC44200C97B85 /* C_BDD-single-operand-ops.cpp */,
 				CF9F4E36092A71F10055C8C3 /* C_BDD.cpp */,
 				CF9F4E37092A71F10055C8C3 /* C_BDD.h */,
-				CF9F4E38092A71F10055C8C3 /* C_Display_BDD.cpp */,
-				CF9F4E39092A71F10055C8C3 /* C_Display_BDD.h */,
 			);
 			name = BDD;
 			sourceTree = "<group>";
@@ -2103,7 +2097,6 @@
 				CF825ADB08536B780077AEAF /* MF_MemoryControl.cpp in Sources */,
 				CF9F4E22092A71C60055C8C3 /* C_builtin_CLI_Options.cpp in Sources */,
 				CF9F4E42092A71F10055C8C3 /* C_BDD.cpp in Sources */,
-				CF9F4E44092A71F10055C8C3 /* C_Display_BDD.cpp in Sources */,
 				CF69B2820A31EFF0002AE337 /* C_ErrorOut.cpp in Sources */,
 				CFCB12610D9D74330016BE3F /* galgasTemplateScanner.cpp in Sources */,
 				CF8E30240D9EE03700EF3764 /* projectCreation.cpp in Sources */,
@@ -2289,7 +2282,6 @@
 				CF825ACA08536B780077AEAF /* MF_MemoryControl.cpp in Sources */,
 				CF9F4E23092A71C60055C8C3 /* C_builtin_CLI_Options.cpp in Sources */,
 				CF9F4E4E092A71F20055C8C3 /* C_BDD.cpp in Sources */,
-				CF9F4E50092A71F20055C8C3 /* C_Display_BDD.cpp in Sources */,
 				CF69B2840A31EFF0002AE337 /* C_ErrorOut.cpp in Sources */,
 				CFCB12670D9D74330016BE3F /* galgasTemplateScanner.cpp in Sources */,
 				CF8E30260D9EE03700EF3764 /* projectCreation.cpp in Sources */,
