@@ -236,27 +236,31 @@ class C_BDD {
 
 
 //--- Printing
-  public : void printBDDwithSeparator (AC_OutputStream & outputStream,
-                                       const TC_UniqueArray <C_String> & inSeparatorArray) const ;
+  public : C_String graphvizRepresentation (void) const ;
 
-  public : void printBDD (AC_OutputStream & outputStream,
-                          const TC_UniqueArray <C_String> & inVariablesNames,
-                          const int32_t inLeadingSpacesCount) const ;
+  public : void print (AC_OutputStream & outputStream) const ;
 
-  public : void printBDD (AC_OutputStream & outputStream,
-                          const TC_UniqueArray <C_String> & inVariablesNames,
-                          const int32_t inVariableCount,
-                          const int32_t inLeadingSpacesCount) const ;
+  public : void printWithSeparator (AC_OutputStream & outputStream,
+                                    const TC_UniqueArray <C_String> & inSeparatorArray) const ;
 
-  public : void printBDDHeader (AC_OutputStream & outputStream,
-                                const TC_UniqueArray <C_String> & inVariablesNames,
-                                const int32_t inVariableCount,
-                                const int32_t inLeadingSpacesCount) const ;
+  public : void print (AC_OutputStream & outputStream,
+                       const TC_UniqueArray <C_String> & inVariablesNames,
+                       const int32_t inLeadingSpacesCount) const ;
 
-  public : void printBDDwithoutHeader (AC_OutputStream & outputStream,
-                                       const TC_UniqueArray <C_String> & inVariablesNames,
-                                       const int32_t inVariableCount,
-                                       const int32_t inLeadingSpacesCount) const ;
+  public : void print (AC_OutputStream & outputStream,
+                       const TC_UniqueArray <C_String> & inVariablesNames,
+                       const int32_t inVariableCount,
+                       const int32_t inLeadingSpacesCount) const ;
+
+  public : void printHeader (AC_OutputStream & outputStream,
+                             const TC_UniqueArray <C_String> & inVariablesNames,
+                             const int32_t inVariableCount,
+                             const int32_t inLeadingSpacesCount) const ;
+
+  public : void printWithoutHeader (AC_OutputStream & outputStream,
+                                    const TC_UniqueArray <C_String> & inVariablesNames,
+                                    const int32_t inVariableCount,
+                                    const int32_t inLeadingSpacesCount) const ;
 
 //--- Buid string compressed representation
   public : void buildCompressedLittleEndianStringValueArray (TC_UniqueArray <C_String> & outStringArray
