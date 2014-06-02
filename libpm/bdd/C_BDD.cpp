@@ -1942,7 +1942,7 @@ void C_BDD::print (AC_OutputStream & outputStream) const {
 //-----------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark String array representation
+  #pragma mark Graphviz representation
 #endif
 
 //-----------------------------------------------------------------------------*
@@ -1974,15 +1974,15 @@ static void buildGraphvizRepresentation (C_String & ioString,
     }
     ioString << "  " << node << " [label=\"{" << cStringWithUnsigned (var) << "|{" << ELSElabel << "|" << THENlabel << "}}\"]\n" ;
     if (ELSEbranch > 1) {
-      buildGraphvizRepresentation (ioString, node + ":f0", ELSEbranch) ;
+      buildGraphvizRepresentation (ioString, node + ":f0:c", ELSEbranch) ;
     }
     if (THENbranch > 1) {
-      buildGraphvizRepresentation (ioString, node + ":f1", THENbranch) ;
+      buildGraphvizRepresentation (ioString, node + ":f1:c", THENbranch) ;
     }
   }
   ioString << "  " << inSourceNode << " -> " << node << "" ;
   if ((inBDDValue & 1) != 0) {
-    ioString << " [dir=both, arrowtail=dot, tailclip=false]" ;
+    ioString << " [dir=both, arrowtail=dot]" ;
   }
   ioString << " ;\n" ;
 }
@@ -1998,9 +1998,9 @@ C_String C_BDD::graphvizRepresentation (void) const {
   }else if (mBDDvalue == 1) {
     result << "  N [label=\"T\", shape=rectangle]\n" ;
   }else{
-    result << "  edge [arrowhead=vee]\n"
+    result << "  edge [arrowhead=vee, tailclip=false]\n"
            << "  node [fontname=courier, shape=record]\n"
-           << "  N [label=\"\", shape=rectangle]\n" ; // Root node
+           << "  N [label=\"\", shape=rectangle]\n" ;
     buildGraphvizRepresentation (result, "N", mBDDvalue) ;
   }
   result << "}\n" ;
