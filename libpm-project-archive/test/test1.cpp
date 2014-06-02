@@ -68,9 +68,21 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
   const C_BDD d (3, true) ;
   const C_BDD r = a.equalTo (c) | b.equalTo (d) ;
   r.print (co) ;
-  const C_String dotFile = r.graphvizRepresentation () ;
-  C_TextFileWrite f ("test1.dot") ;
-  f << dotFile ;
+  const C_String dotFileA = r.graphvizRepresentation () ;
+  C_TextFileWrite f ("test1a.dot") ;
+  f << dotFileA ;
+//---
+  const C_BDD B = C_BDD::varCompareVar (0, 4, C_BDD::kEqual, 4) ;
+  B.print (co) ;
+  const C_String dotFileB = B.graphvizRepresentation () ;
+  C_TextFileWrite g ("test1b.dot") ;
+  g << dotFileB ;
+//---
+  const C_BDD C = C_BDD::varCompareVar (0, 4, C_BDD::kLowerOrEqual, 4) ;
+  C.print (co) ;
+  const C_String dotFileC = C.graphvizRepresentation () ;
+  C_TextFileWrite h ("test1c.dot") ;
+  h << dotFileC ;
 //---
   return 0 ;
 }
