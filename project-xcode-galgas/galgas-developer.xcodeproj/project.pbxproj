@@ -740,6 +740,28 @@
 		CFB76EE50E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = baseForXcodeProjectGeneration.cpp; sourceTree = "<group>"; };
 		CFB76EE60E8D7DA300F826A9 /* baseForXcodeProjectGeneration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = baseForXcodeProjectGeneration.h; sourceTree = "<group>"; };
 		CFB7E4B7127F2F7F005B9851 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
+		CFB8152F19430BB500C747AD /* PMApplicationUpdate.h.gTemplate */ = {isa = PBXFileReference; lastKnownFileType = text; path = PMApplicationUpdate.h.gTemplate; sourceTree = "<group>"; };
+		CFB8153019430BB500C747AD /* PMApplicationUpdate.m.gTemplate */ = {isa = PBXFileReference; lastKnownFileType = text; path = PMApplicationUpdate.m.gTemplate; sourceTree = "<group>"; };
+		CFB8153119430BB500C747AD /* PMApplicationUpdate.xib.gTemplate */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = PMApplicationUpdate.xib.gTemplate; sourceTree = "<group>"; };
+		CFB8153219430BB500C747AD /* PMDownloadData.h.gTemplate */ = {isa = PBXFileReference; lastKnownFileType = text; path = PMDownloadData.h.gTemplate; sourceTree = "<group>"; };
+		CFB8153319430BB500C747AD /* PMDownloadData.m.gTemplate */ = {isa = PBXFileReference; lastKnownFileType = text; path = PMDownloadData.m.gTemplate; sourceTree = "<group>"; };
+		CFB8153419430BB500C747AD /* PMDownloadFile.h.gTemplate */ = {isa = PBXFileReference; lastKnownFileType = text; path = PMDownloadFile.h.gTemplate; sourceTree = "<group>"; };
+		CFB8153519430BB500C747AD /* PMDownloadFile.m.gTemplate */ = {isa = PBXFileReference; lastKnownFileType = text; path = PMDownloadFile.m.gTemplate; sourceTree = "<group>"; };
+		CFB8153619430BB500C747AD /* PMSnowLeopardLionCompatibility.h.gTemplate */ = {isa = PBXFileReference; lastKnownFileType = text; path = PMSnowLeopardLionCompatibility.h.gTemplate; sourceTree = "<group>"; };
+		CFB8153819430BB500C747AD /* PMUpdaterAppDelegate.h.gTemplate */ = {isa = PBXFileReference; lastKnownFileType = text; path = PMUpdaterAppDelegate.h.gTemplate; sourceTree = "<group>"; };
+		CFB8153919430BB500C747AD /* PMUpdaterAppDelegate.m.gTemplate */ = {isa = PBXFileReference; lastKnownFileType = text; path = PMUpdaterAppDelegate.m.gTemplate; sourceTree = "<group>"; };
+		CFB8153A19430BB500C747AD /* UpdaterAppCredits.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = UpdaterAppCredits.rtf; sourceTree = "<group>"; };
+		CFB8153B19430BB500C747AD /* UpdaterAppInfoPlist.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = UpdaterAppInfoPlist.strings; sourceTree = "<group>"; };
+		CFB8153C19430BB500C747AD /* UpdaterAppMainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UpdaterAppMainMenu.xib; sourceTree = "<group>"; };
+		CFB8153D19430BB500C747AD /* updater-app-Info.plist.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "updater-app-Info.plist.txt"; sourceTree = "<group>"; };
+		CFB8153E19430BB500C747AD /* updater-app-Prefix.pch.gTemplate */ = {isa = PBXFileReference; lastKnownFileType = text; path = "updater-app-Prefix.pch.gTemplate"; sourceTree = "<group>"; };
+		CFB8153F19430BB500C747AD /* updater-app-main.m.gTemplate */ = {isa = PBXFileReference; lastKnownFileType = text; path = "updater-app-main.m.gTemplate"; sourceTree = "<group>"; };
+		CFB8154119430BB500C747AD /* PMUpdaterServerObject.h.gTemplate */ = {isa = PBXFileReference; lastKnownFileType = text; path = PMUpdaterServerObject.h.gTemplate; sourceTree = "<group>"; };
+		CFB8154219430BB500C747AD /* PMUpdaterServerObject.m.gTemplate */ = {isa = PBXFileReference; lastKnownFileType = text; path = PMUpdaterServerObject.m.gTemplate; sourceTree = "<group>"; };
+		CFB8154319430BB500C747AD /* PMUpdaterServerProtocol.h.gTemplate */ = {isa = PBXFileReference; lastKnownFileType = text; path = PMUpdaterServerProtocol.h.gTemplate; sourceTree = "<group>"; };
+		CFB8154419430BB500C747AD /* updater-tool-Info.plist.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "updater-tool-Info.plist.txt"; sourceTree = "<group>"; };
+		CFB8154519430BB500C747AD /* updater-tool-Launchd.plist.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = "updater-tool-Launchd.plist.txt"; sourceTree = "<group>"; };
+		CFB8154619430BB500C747AD /* updater-tool-main.m.gTemplate */ = {isa = PBXFileReference; lastKnownFileType = text; path = "updater-tool-main.m.gTemplate"; sourceTree = "<group>"; };
 		CFB822110BC2D8DE009B1920 /* semanticsSLRgrammar.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsSLRgrammar.cpp; sourceTree = "<group>"; };
 		CFB822120BC2D8DE009B1920 /* semanticsSLRgrammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = semanticsSLRgrammar.h; sourceTree = "<group>"; };
 		CFB9E4870DF28AC500885084 /* TC_Array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = TC_Array.h; sourceTree = "<group>"; };
@@ -1297,6 +1319,59 @@
 			path = cocoa_galgas;
 			sourceTree = "<group>";
 		};
+		CFB8152D19430BB500C747AD /* cocoa_application_update */ = {
+			isa = PBXGroup;
+			children = (
+				CFB8152E19430BB500C747AD /* application */,
+				CFB8153719430BB500C747AD /* updater-application */,
+				CFB8154019430BB500C747AD /* updater-tool */,
+			);
+			path = cocoa_application_update;
+			sourceTree = "<group>";
+		};
+		CFB8152E19430BB500C747AD /* application */ = {
+			isa = PBXGroup;
+			children = (
+				CFB8152F19430BB500C747AD /* PMApplicationUpdate.h.gTemplate */,
+				CFB8153019430BB500C747AD /* PMApplicationUpdate.m.gTemplate */,
+				CFB8153119430BB500C747AD /* PMApplicationUpdate.xib.gTemplate */,
+				CFB8153219430BB500C747AD /* PMDownloadData.h.gTemplate */,
+				CFB8153319430BB500C747AD /* PMDownloadData.m.gTemplate */,
+				CFB8153419430BB500C747AD /* PMDownloadFile.h.gTemplate */,
+				CFB8153519430BB500C747AD /* PMDownloadFile.m.gTemplate */,
+				CFB8153619430BB500C747AD /* PMSnowLeopardLionCompatibility.h.gTemplate */,
+			);
+			path = application;
+			sourceTree = "<group>";
+		};
+		CFB8153719430BB500C747AD /* updater-application */ = {
+			isa = PBXGroup;
+			children = (
+				CFB8153819430BB500C747AD /* PMUpdaterAppDelegate.h.gTemplate */,
+				CFB8153919430BB500C747AD /* PMUpdaterAppDelegate.m.gTemplate */,
+				CFB8153A19430BB500C747AD /* UpdaterAppCredits.rtf */,
+				CFB8153B19430BB500C747AD /* UpdaterAppInfoPlist.strings */,
+				CFB8153C19430BB500C747AD /* UpdaterAppMainMenu.xib */,
+				CFB8153D19430BB500C747AD /* updater-app-Info.plist.txt */,
+				CFB8153E19430BB500C747AD /* updater-app-Prefix.pch.gTemplate */,
+				CFB8153F19430BB500C747AD /* updater-app-main.m.gTemplate */,
+			);
+			path = "updater-application";
+			sourceTree = "<group>";
+		};
+		CFB8154019430BB500C747AD /* updater-tool */ = {
+			isa = PBXGroup;
+			children = (
+				CFB8154119430BB500C747AD /* PMUpdaterServerObject.h.gTemplate */,
+				CFB8154219430BB500C747AD /* PMUpdaterServerObject.m.gTemplate */,
+				CFB8154319430BB500C747AD /* PMUpdaterServerProtocol.h.gTemplate */,
+				CFB8154419430BB500C747AD /* updater-tool-Info.plist.txt */,
+				CFB8154519430BB500C747AD /* updater-tool-Launchd.plist.txt */,
+				CFB8154619430BB500C747AD /* updater-tool-main.m.gTemplate */,
+			);
+			path = "updater-tool";
+			sourceTree = "<group>";
+		};
 		CFB9E4850DF28AC500885084 /* collections */ = {
 			isa = PBXGroup;
 			children = (
@@ -1314,6 +1389,7 @@
 		CFBDAC40137BD12F008FB334 /* generation_templates */ = {
 			isa = PBXGroup;
 			children = (
+				CFB8152D19430BB500C747AD /* cocoa_application_update */,
 				CFBDAC41137BD12F008FB334 /* grammar_generation */,
 				CFBDAC44137BD12F008FB334 /* gui_generation */,
 				CFBDAC46137BD12F008FB334 /* lexique_generation */,
@@ -2033,7 +2109,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = IRCCyN;
 			};
 			buildConfigurationList = CF0DA6A4085630E800F38E67 /* Build configuration list for PBXProject "galgas-developer" */;
@@ -2562,16 +2638,21 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
+				CLANG_WARN_OBJC_EXPLICIT_OWNERSHIP_TYPE = YES;
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_MISSING_PROPERTY_SYNTHESIS = YES;
+				CLANG_WARN_OBJC_RECEIVER_WEAK = YES;
+				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
 				DEAD_CODE_STRIPPING = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_ASM_KEYWORD = NO;
-				GCC_ENABLE_OBJC_GC = required;
 				GCC_ENABLE_PASCAL_STRINGS = NO;
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PREPROCESSOR_DEFINITIONS = "LIBPM_MULTI_THREADING=1";
@@ -2614,7 +2695,7 @@
 				);
 				INSTALL_PATH = /usr/local/bin;
 				LD_GENERATE_MAP_FILE = NO;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.9;
 				SYMROOT = "build-developer";
 				VALID_ARCHS = x86_64;
 			};

@@ -11,7 +11,12 @@ static PMDebug * gDebugObject ;
 void noteObjectAllocation (NSObject * inObject) {
   if (nil == gDebugObject) {
     gDebugObject = [PMDebug new] ;
-    const BOOL ok = [NSBundle loadNibNamed:@"PMDebug" owner:gDebugObject] ;
+    #if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_8
+      NSArray * objects = nil ;
+      const BOOL ok = [[NSBundle mainBundle] loadNibNamed:@"PMDebug" owner:gDebugObject topLevelObjects:& objects] ;
+    #else
+      const BOOL ok = [NSBundle loadNibNamed:@"PMDebug" owner:gDebugObject] ;
+    #endif
     if (! ok) {
 //      presentErrorWindow (__FILE__, __LINE__, @"Cannot load 'PMDebug' nib file") ;
     }
@@ -48,7 +53,12 @@ void noteObjectDeallocation (NSObject * inObject) {
 void showAllocationStatsWindow (void) {
   if (nil == gDebugObject) {
     gDebugObject = [PMDebug new] ;
-    const BOOL ok = [NSBundle loadNibNamed:@"PMDebug" owner:gDebugObject] ;
+    #if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_8
+      NSArray * objects = nil ;
+      const BOOL ok = [[NSBundle mainBundle] loadNibNamed:@"PMDebug" owner:gDebugObject topLevelObjects:& objects] ;
+    #else
+      const BOOL ok = [NSBundle loadNibNamed:@"PMDebug" owner:gDebugObject] ;
+    #endif
     if (! ok) {
 //      presentErrorWindow (__FILE__, __LINE__, @"Cannot load 'PMDebug' nib file") ;
     }

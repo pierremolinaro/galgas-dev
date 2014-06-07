@@ -43,7 +43,10 @@
     ] ;
   }
 //---
-  [fm release] ; fm = nil ;
+  #if ! __has_feature(objc_arc)
+    [fm release] ;
+  #endif
+  fm = nil ;
   mTerminateHelperTool = YES ;
 //---
   return ok ? nil : error ;

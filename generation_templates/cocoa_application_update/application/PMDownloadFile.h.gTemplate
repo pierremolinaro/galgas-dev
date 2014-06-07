@@ -12,11 +12,20 @@
 
 //---------------------------------------------------------------------------*
 
+@class PMDownloadFile ;
+
+//---------------------------------------------------------------------------*
+
+@protocol PMDownloadDidEndProtocol
+  - (void) downloadDidEnd: (PMDownloadFile *) inDownloader ;
+@end
+
+//---------------------------------------------------------------------------*
+
 @interface PMDownloadFile : NSObject <NSURLDownloadDelegate> {
   @protected NSURL * mURL ;
-  @protected __weak id mDelegate ;
+  @protected __weak id <PMDownloadDidEndProtocol> mDelegate ;
   @protected NSURLDownload  * mDownload ;
-  @protected SEL mDownloadDidEndSelector ;
   @protected NSButton * mCancelButton ;
   @protected NSTextField * mSubTitle ;
   @protected NSProgressIndicator * mProgressIndicator ;
@@ -30,8 +39,7 @@
 
 - (id) initWithURLString: (NSString *) inURLString
        destinationFileName: (NSString *) inDestinationFileName
-       downloadDelegate: (id) inDelegate
-       downloadDidEndSelector: (SEL) inDownloadDidEndSelector // - (void) downloadDidEnd: (PMDownloadFile *) inDownloader
+       downloadDelegate: (id <PMDownloadDidEndProtocol>) inDelegate
        cancelButton: (NSButton *) inCancelButton
        subtitle: (NSTextField *) inSubtitle
        progressIndicator: (NSProgressIndicator *) inProgressIndicator
@@ -40,8 +48,7 @@
 - (id) initWithURLString: (NSString *) inURLString
        postDictionary: (NSDictionary *) inPOSTDictionary
        destinationFileName: (NSString *) inDestinationFileName
-       downloadDelegate: (id) inDelegate
-       downloadDidEndSelector: (SEL) inDownloadDidEndSelector // - (void) downloadDidEnd: (PMDownloadFile *) inDownloader
+       downloadDelegate: (id <PMDownloadDidEndProtocol>) inDelegate
        cancelButton: (NSButton *) inCancelButton
        subtitle: (NSTextField *) inSubtitle
        progressIndicator: (NSProgressIndicator *) inProgressIndicator

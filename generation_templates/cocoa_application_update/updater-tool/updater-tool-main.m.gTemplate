@@ -65,8 +65,10 @@ int main (int argc, const char * argv[]) {
       mach_port_t mp = launch_data_get_machport (machPortData) ;
       NSMachPort * rp = [[NSMachPort alloc] initWithMachPort:mp] ;
       connection = [NSConnection connectionWithReceivePort:rp sendPort:nil] ;
-      [connection retain] ;
-      [rp release] ;
+      #if ! __has_feature(objc_arc)
+        [connection retain] ;
+        [rp release] ;
+      #endif
       rp = nil ;
       ok = nil != connection ;
       #ifdef DEBUG_WITH_SYSLOG
@@ -87,11 +89,15 @@ int main (int argc, const char * argv[]) {
       while (! serverObject.shouldExit) {
         [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]] ;
       }
-      [serverObject release] ;
+      #if ! __has_feature(objc_arc)
+        [serverObject release] ;
+      #endif
     }
   //-8---
     [connection invalidate] ;
-    [connection release] ;
+    #if ! __has_feature(objc_arc)
+      [connection release] ;
+    #endif
     connection = nil ;
   }
 //---

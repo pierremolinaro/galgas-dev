@@ -4,6 +4,14 @@
 
 //-----------------------------------------------------------------------------*
 
+#if __has_feature(objc_arc)
+  #define macroAutoreleasingInARC __autoreleasing
+#else
+  #define macroAutoreleasingInARC
+#endif
+
+//-----------------------------------------------------------------------------*
+
 void showAllocationStatsWindow (void) ;
 void noteObjectAllocation (NSObject * inObject) ;
 void noteObjectDeallocation (NSObject * inObject) ;

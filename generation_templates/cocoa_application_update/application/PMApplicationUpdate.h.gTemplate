@@ -7,7 +7,7 @@
 //
 //--------------------------------------------------------------------------*
 
-#import <Cocoa/Cocoa.h>
+#import "PMDownloadFile.h"
 
 //--------------------------------------------------------------------------*
 
@@ -17,7 +17,7 @@
 
 //--------------------------------------------------------------------------*
 
-@interface PMApplicationUpdate : NSObject {
+@interface PMApplicationUpdate : NSObject <PMDownloadDidEndProtocol> {
 //--- In New Available Panel
   @private IBOutlet NSPanel * mNewAvailableVersionPanel ;
   @private IBOutlet NSButton * mCheckUpdateAtStartUpCheckBox2 ;
