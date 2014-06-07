@@ -342,6 +342,9 @@ routine updateTargets
   availableGenerationFeatures += !"SnowLeopard" ;
   availableGenerationFeatures += !"Lion" ;
   availableGenerationFeatures += !"MountainLion" ;
+  availableGenerationFeatures += !"Mavericks" ;
+  availableGenerationFeatures += !"Yosemite" ;
+  availableGenerationFeatures += !"LatestMacOS" ;
   availableGenerationFeatures += !"multi-threading" ;
   @stringset generationFeatures [emptySet] ;
   @bool multiThreadingEnabled := false ;
@@ -362,22 +365,43 @@ routine updateTargets
     #--- SnowLeopard
       elsif mValue->string == "SnowLeopard" then
         if (SDK != "") then
-          error mValue: "the \"SnowLeopard\", \"Lion\" and \"MountainLion\" are exclusive" ;
+          error mValue: "the \"SnowLeopard\", \"Lion\", \"MountainLion\", \"Mavericks\" and \"Yosemite\", \"LatestMacOS\" are exclusive" ;
         end if ;
         SDK := "macosx10.6" ;
     #--- Lion
       elsif mValue->string == "Lion" then
         if (SDK != "") then
-          error mValue: "the \"SnowLeopard\", \"Lion\" and \"MountainLion\" are exclusive" ;
+          error mValue: "the \"SnowLeopard\", \"Lion\", \"MountainLion\", \"Mavericks\" and \"Yosemite\", \"LatestMacOS\" are exclusive" ;
         end if ;
         SDK := "macosx10.7" ;
         usesARC := true ;
     #--- Mountain Lion
       elsif mValue->string == "MountainLion" then
         if (SDK != "") then
-          error mValue: "the \"SnowLeopard\", \"Lion\" and \"MountainLion\" are exclusive" ;
+          error mValue: "the \"SnowLeopard\", \"Lion\", \"MountainLion\", \"Mavericks\" and \"Yosemite\", \"LatestMacOS\" are exclusive" ;
         end if ;
         SDK := "macosx10.8" ;
+        usesARC := true ;
+    #--- Mavericks
+      elsif mValue->string == "Mavericks" then
+        if (SDK != "") then
+          error mValue: "the \"SnowLeopard\", \"Lion\", \"MountainLion\", \"Mavericks\" and \"Yosemite\", \"LatestMacOS\" are exclusive" ;
+        end if ;
+        SDK := "macosx10.9" ;
+        usesARC := true ;
+    #--- Yosemite
+      elsif mValue->string == "Yosemite" then
+        if (SDK != "") then
+          error mValue: "the \"SnowLeopard\", \"Lion\", \"MountainLion\", \"Mavericks\" and \"Yosemite\", \"LatestMacOS\" are exclusive" ;
+        end if ;
+        SDK := "macosx10.10" ;
+        usesARC := true ;
+    #--- Lastest MacOS
+      elsif mValue->string == "LatestMacOS" then
+        if (SDK != "") then
+          error mValue: "the \"SnowLeopard\", \"Lion\", \"MountainLion\", \"Mavericks\" and \"Yosemite\", \"LatestMacOS\" are exclusive" ;
+        end if ;
+        SDK := "macosx" ;
         usesARC := true ;
       else
         generationFeatures += ![mValue string] ;

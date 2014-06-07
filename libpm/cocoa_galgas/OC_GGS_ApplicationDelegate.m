@@ -806,7 +806,12 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
     NSString * nibName = [entry objectAtIndex:0] ;
     Class mainClass = [entry objectAtIndex:1] ;
     id owner = [mainClass new] ;
-    [NSBundle loadNibNamed:nibName owner:owner] ;
+    #if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_8
+      NSArray * objects = nil ;
+      [[NSBundle mainBundle] loadNibNamed:nibName owner:owner topLevelObjects:& objects] ;
+    #else
+      [NSBundle loadNibNamed:nibName owner:owner] ;
+    #endif
   }
 //--- Get default settings
   NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults] ;

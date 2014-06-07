@@ -723,7 +723,7 @@ scanner_cocoa_routine_enterHexDigitIntoASCIIcharacter (BOOL * ioScanningOk,
       * ioValue = tempo ;
     }
   }else{
-    ioScanningOk = NO ;
+    *ioScanningOk = NO ;
   }
 }
 
@@ -738,12 +738,12 @@ scanner_cocoa_routine_enterDigitIntoASCIIcharacter (BOOL * ioScanningOk,
     tempo *= 10  ;
     tempo += inChar - '0' ;
     if (tempo > 255) {
-      ioScanningOk = NO ;
+      *ioScanningOk = NO ;
     }else{
       * ioValue = tempo ;
     }
   }else{
-    ioScanningOk = NO ;
+    *ioScanningOk = NO ;
   }
 }
 

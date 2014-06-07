@@ -20,13 +20,21 @@
 
 //---------------------------------------------------------------------------*
 
+#if __has_feature(objc_arc)
+  #define macroBridgeInARC __bridge
+#else
+  #define macroBridgeInARC
+#endif
+
+//---------------------------------------------------------------------------*
+
 static NSConnection * installAndLaunchHelperToolWithIdentifier (NSString * inToolIdentifier) {
   #ifdef EASY_BINDINGS_DEBUG
     NSLog (@"\%s", __PRETTY_FUNCTION__) ;
   #endif
 //-1--- Check if tool already installed
   BOOL helperIsAlreadyInstalled = NO;
-  CFDictionaryRef existingJob = SMJobCopyDictionary (kSMDomainSystemLaunchd, (CFStringRef) inToolIdentifier);
+  CFDictionaryRef existingJob = SMJobCopyDictionary (kSMDomainSystemLaunchd, (macroBridgeInARC CFStringRef) inToolIdentifier);
   #ifdef LOGGING_SMJOBBLESS
     NSLog (@"Helper Tool already installed: \%@", NULL != existingJob ? @"yes" : @"no") ;
   #endif
@@ -55,27 +63,29 @@ static NSConnection * installAndLaunchHelperToolWithIdentifier (NSString * inToo
   #endif
 //-4--- Remove Helper Tool
   if (ok && helperIsAlreadyInstalled) {
-    NSError * error = nil ;
-    const Boolean removed = SMJobRemove (kSMDomainSystemLaunchd, (CFStringRef) inToolIdentifier, authRef, YES, (CFErrorRef *) & error) ;
+    CFErrorRef cfError = nil ;
+    const Boolean removed = SMJobRemove (kSMDomainSystemLaunchd, (macroBridgeInARC CFStringRef) inToolIdentifier, authRef, YES, & cfError) ;
     #ifdef LOGGING_SMJOBBLESS
       NSLog (@"SMJobRemove: \%@", removed ? @"removed" : @"error") ;
     #endif
     if (!removed) {
+      NSError * error = (macroBridgeInARC NSError *)(cfError) ;
       [NSApp presentError:error] ;
     }
-    error = nil ;
+    CFRelease (cfError) ;
   }
 //-5--- Install Helper Tool
   if (ok) {
-    NSError * error = nil ;
-  ok = SMJobBless (kSMDomainSystemLaunchd, (CFStringRef) inToolIdentifier, authRef, (CFErrorRef *) & error) ;
+    CFErrorRef cfError = nil ;
+    ok = SMJobBless (kSMDomainSystemLaunchd, (macroBridgeInARC CFStringRef) inToolIdentifier, authRef, & cfError) ;
     #ifdef LOGGING_SMJOBBLESS
       NSLog (@"SMJobBless: \%@", ok ? @"ok" : @"failed") ;
     #endif
     if (!ok) {
+      NSError * error = (macroBridgeInARC NSError *)(cfError) ;
       [NSApp presentError:error] ;
     }
-    error = nil ;
+    CFRelease (cfError) ;
  }
 //-6--- Free Authorization
   if (NULL != authRef) {
@@ -158,7 +168,9 @@ static NSConnection * installAndLaunchHelperToolWithIdentifier (NSString * inToo
         [task setLaunchPath:@"/usr/bin/open"] ;
         [task setArguments:[NSArray arrayWithObject:mCocoaApplicationPath]] ;
         [task launch] ;
-        [task release] ;
+        #if ! __has_feature(objc_arc)
+          [task release] ;
+        #endif
       }
     }
     #ifdef DEBUG_UPDATER
@@ -184,7 +196,10 @@ static NSConnection * installAndLaunchHelperToolWithIdentifier (NSString * inToo
       stillRunning = [applicationPath isEqualToString:mCocoaApplicationPath] ;
     }
   }
-  [runningApplications release] ; runningApplications = nil ;
+  #if ! __has_feature(objc_arc)
+    [runningApplications release] ;
+  #endif
+  runningApplications = nil ;
   return stillRunning ;
 }
 

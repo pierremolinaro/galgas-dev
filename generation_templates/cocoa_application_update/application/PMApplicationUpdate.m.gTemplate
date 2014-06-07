@@ -317,7 +317,6 @@ static PMApplicationUpdate * gApplicationUpdate ;
     mDownloadFile = [[PMDownloadFile alloc] initWithURLString:[self HTTPPathForVersion:mLastAvailableVersion]
        destinationFileName:[self temporaryPathForApplicationArchive]
        downloadDelegate:self
-       downloadDidEndSelector:@selector (downloadNewVersionOfApplicationDidEnd:)
        cancelButton:mCancelButton
        subtitle:mDownloadSubTitle
        progressIndicator:mDownloadProgressIndicator
@@ -400,7 +399,7 @@ static PMApplicationUpdate * gApplicationUpdate ;
 
 //--------------------------------------------------------------------------*
 
-- (void) downloadNewVersionOfApplicationDidEnd: (PMDownloadFile *) inDownloader {
+- (void) downloadDidEnd: (PMDownloadFile *) inDownloader {
   [mCancelButton.window orderOut:nil] ;
   if ([inDownloader downloadHasBeenCancelled]) {
     [self downloadHasBeenCancelled] ;

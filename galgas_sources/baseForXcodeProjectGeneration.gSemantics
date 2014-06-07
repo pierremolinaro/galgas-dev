@@ -1116,6 +1116,7 @@ routine enterProjectDefaultSettings
   outProjectDefaultSettings += !"GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;" ;
   outProjectDefaultSettings += !"GCC_TREAT_WARNINGS_AS_ERRORS = YES;" ;
   outProjectDefaultSettings += !"GCC_WARN_64_TO_32_BIT_CONVERSION = YES;" ;
+  outProjectDefaultSettings += !"GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;" ;
   outProjectDefaultSettings += !"GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = YES;" ;
   outProjectDefaultSettings += !"CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;" ;
   outProjectDefaultSettings += !"GCC_WARN_ABOUT_MISSING_NEWLINE = YES;" ;
