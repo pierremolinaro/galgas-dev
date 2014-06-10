@@ -243,45 +243,73 @@ rule <semantic_instruction>
 :
   $type_name$ ?@lstring typeName ;
   $identifier$ ?@lstring variableName ;
-  select
-    outInstruction := [@localVariableDeclarationAST new ![typeName location] !typeName !variableName !false] ;
-  or
-    $:=$ ;
-    @semanticExpressionAST sourceExpression ;
-    <expression> ? sourceExpression ;
-    outInstruction := [@localVariableOrConstantDeclarationWithAssignmentAST new
-      ![typeName location]
-      !false
-      !typeName
-      !variableName
-      !sourceExpression
-    ] ;
-  or
-    $[$ ;
-    select
-      @lstring constructorName ;
-      $identifier$ ? constructorName ;
-      @semanticExpressionListAST expressionList ;
-      <output_expression_list> ?expressionList ;
-      outInstruction := [@localVariableOrConstantDeclarationWithConstructorCallAST new
-        ![typeName location]
-        !false # Is not Constant
-        !typeName
-        !variableName
-        !constructorName
-        !expressionList
-      ] ;
-    or
-      $default$ ;
-      outInstruction := [@localVariableOrConstantDeclarationWithDefaultConstructorAST new
-        ![typeName location]
-        !false # Is not Constant
-        !typeName
-        !variableName
-      ] ;
-    end select ;
-    $]$ ;
-  end select ;
+  outInstruction := [@localVariableDeclarationAST new ![typeName location] !typeName !variableName !false] ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction
+  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
+:
+  $type_name$ ?@lstring typeName ;
+  $identifier$ ?@lstring variableName ;
+  $:=$ ;
+  @semanticExpressionAST sourceExpression ;
+  <expression> ? sourceExpression ;
+  outInstruction := [@localVariableOrConstantDeclarationWithAssignmentAST new
+    ![typeName location]
+    !false
+    !typeName
+    !variableName
+    !sourceExpression
+  ] ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction
+  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
+:
+  $type_name$ ?@lstring typeName ;
+  $identifier$ ?@lstring variableName ;
+  $[$ ;
+  $default$ ;
+  $]$ ;
+  outInstruction := [@localVariableOrConstantDeclarationWithDefaultConstructorAST new
+    ![typeName location]
+    !false # Is not Constant
+    !typeName
+    !variableName
+  ] ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction
+  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
+:
+  $type_name$ ?@lstring typeName ;
+  $identifier$ ?@lstring variableName ;
+  $[$ ;
+  @lstring constructorName ;
+  $identifier$ ? constructorName ;
+  @semanticExpressionListAST expressionList ;
+  <output_expression_list> ?expressionList ;
+  outInstruction := [@localVariableOrConstantDeclarationWithConstructorCallAST new
+    ![typeName location]
+    !false # Is not Constant
+    !typeName
+    !variableName
+    !constructorName
+    !expressionList
+  ] ;
+  $]$ ;
   $;$ ;
 end rule ;
 
@@ -298,51 +326,71 @@ rule <semantic_instruction>
   $const$ ;
   $type_name$ ?@lstring typeName ;
   $identifier$ ?@lstring variableName ;
-  select
-    $:=$ ;
-    @semanticExpressionAST sourceExpression ;
-    <expression> ? sourceExpression ;
-    outInstruction := [@localVariableOrConstantDeclarationWithAssignmentAST new
-      ![typeName location]
-      !true # Is Constant
-      !typeName
-      !variableName
-      !sourceExpression
-    ] ;
-  or
-    select
-      $[$ ;
-      @lstring constructorName ;
-      $identifier$ ? constructorName ;
-      @semanticExpressionListAST expressionList ;
-      <output_expression_list> ?expressionList ;
-      outInstruction := [@localVariableOrConstantDeclarationWithConstructorCallAST new
-        ![typeName location]
-        !true # is constant
-        !typeName
-        !variableName
-        !constructorName
-        !expressionList
-      ] ;
-      if [option galgas_cli_options.warnsOnOldStyleConstantDeclaration value] then
-        warning variableName : "This construction is deprecated in GALGAS 2.6.0 and above: replace with \"const "
-         . variableName . " := [@" . typeName . " constructor...] ;" ;
-      end if ;
-    or
-      $default$ ;
-      outInstruction := [@localVariableOrConstantDeclarationWithDefaultConstructorAST new
-        ![typeName location]
-        !true # Is Constant
-        !typeName
-        !variableName
-      ] ;
-      if [option galgas_cli_options.warnsOnOldStyleConstantDeclaration value] then
-        warning variableName : "This construction is deprecated in GALGAS 2.6.0 and above: replace with \"const "
-         . variableName . " := [@" . typeName . " default] ;" ;
-      end if ;
-    end select ;
-    $]$ ;
-  end select ;
+  $:=$ ;
+  @semanticExpressionAST sourceExpression ;
+  <expression> ? sourceExpression ;
+  outInstruction := [@localVariableOrConstantDeclarationWithAssignmentAST new
+    ![typeName location]
+    !true # Is Constant
+    !typeName
+    !variableName
+    !sourceExpression
+  ] ;
+ $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction
+  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
+:
+  $const$ ;
+  $type_name$ ?@lstring typeName ;
+  $identifier$ ?@lstring variableName ;
+  $[$ ;
+  @lstring constructorName ;
+  $identifier$ ? constructorName ;
+  @semanticExpressionListAST expressionList ;
+  <output_expression_list> ?expressionList ;
+  $]$ ;
+  outInstruction := [@localVariableOrConstantDeclarationWithConstructorCallAST new
+    ![typeName location]
+    !true # is constant
+    !typeName
+    !variableName
+    !constructorName
+    !expressionList
+  ] ;
+  if [option galgas_cli_options.warnsOnOldStyleConstantDeclaration value] then
+    warning variableName : "This construction is deprecated in GALGAS 2.6.0 and above: replace with \"const "
+     . variableName . " := [@" . typeName . " constructor...] ;" ;
+  end if ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction
+  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
+:
+  $const$ ;
+  $type_name$ ?@lstring typeName ;
+  $identifier$ ?@lstring variableName ;
+  $[$ ;
+  $default$ ;
+  $]$ ;
+  outInstruction := [@localVariableOrConstantDeclarationWithDefaultConstructorAST new
+    ![typeName location]
+    !true # Is Constant
+    !typeName
+    !variableName
+  ] ;
+  if [option galgas_cli_options.warnsOnOldStyleConstantDeclaration value] then
+    warning variableName : "This construction is deprecated in GALGAS 2.6.0 and above: replace with \"const "
+     . variableName . " := [@" . typeName . " default] ;" ;
+  end if ;
   $;$ ;
 end rule ;
 
