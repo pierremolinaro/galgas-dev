@@ -588,7 +588,7 @@ override method @defaultConstructorExpressionAST analyzeSemanticExpression
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  const @unifiedTypeMapProxy type [searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
+  const type := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
 #--- Check type accepts default constructor
   if not [type mIsConcrete] then
     error mTypeName: "an abstract class does not support the default constructor" ;
@@ -670,8 +670,8 @@ override method @readerCallExpressionAST analyzeSemanticExpression
       returnedType := [@unifiedTypeMapProxy null] ;
       kind := [@methodKind definedAsCategory] ;
       foreach [receiverType mCurrentTypedAttributeList] do
-        const @unifiedTypeMapProxy attributeType [searchKey !inAnalysisContext->mSemanticContext->mTypeMap ![@lstring new ![mAttributeTypeProxy key] !here]] ;
-        const @readerMap aMap := [attributeType mReaderMap] ;
+        const attributeType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap ![@lstring new ![mAttributeTypeProxy key] !here]] ;
+        const aMap := [attributeType mReaderMap] ;
         with aMap hasKey ![mReaderName string] do
           matchingReaderCount ++ ;
           readerFormalArgumentTypeList := mArgumentTypeList ;
@@ -1715,7 +1715,7 @@ override method @testDynamicClassInExpressionAST analyzeSemanticExpression
   @semanticExpressionForGeneration expression ;
   [mReceiverExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?expression] ;
 #--- Get type information
-   const @unifiedTypeMapProxy type [searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
+   const type := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
 #--- This type is either a class
   if [[expression mType] mTypeKindEnum] == [@typeKindEnum classType] then
   #--- Check expression type is a descendant of named type
@@ -1759,7 +1759,7 @@ override method @castInExpressionAST analyzeSemanticExpression
     ?@semanticExpressionForGeneration expression
    ] ;
 #--- Get type information
-   const @unifiedTypeMapProxy type [searchKey
+   const type := [@unifiedTypeMapProxy searchKey
      !inAnalysisContext->mSemanticContext->mTypeMap
      !mTypeName
    ] ;

@@ -38,7 +38,7 @@ function generateProcedure
   ??@bool inGenerateResetTemplateString
   ->@string outGeneratedCode
 :
-  const @bool generateCheckValid := [option galgas_cli_options.generateCheckValidInstructions value] ;
+  const @bool generateCheckValid := false ; # [option galgas_cli_options.generateCheckValidInstructions value] ;
 #--- Build unused variable set
   @stringset unusedVariableCppNameSet [emptySet] ;
   if not inGenerateResetTemplateString then
@@ -131,7 +131,7 @@ local function generateFunction
   ??@bool inIsStatic
   ->@string outGeneratedCode
 :
-  const @bool generateCheckValid := [option galgas_cli_options.generateCheckValidInstructions value] ;
+  const @bool generateCheckValid := false ; # [option galgas_cli_options.generateCheckValidInstructions value] ;
   outGeneratedCode := "" ;
 #--- Build unused variable set
   @stringset unusedVariableCppNameSet [emptySet] ;
@@ -207,7 +207,7 @@ local function generateCategoryModifier
   ??@semanticInstructionListForGeneration inInstructionList
   ->@string outGeneratedCode
 :
-  const @bool generateCheckValid := [option galgas_cli_options.generateCheckValidInstructions value] ;
+  const @bool generateCheckValid := false ; #  [option galgas_cli_options.generateCheckValidInstructions value] ;
 #--- Build unused variable set
   @stringset unusedVariableCppNameSet [emptySet] ;
   unusedVariableCppNameSet += !compilerCppName [] ;
@@ -298,7 +298,7 @@ local function generateCategoryMethod
   ??@semanticInstructionListForGeneration inInstructionList
   ->@string outGeneratedCode
 :
-  const @bool generateCheckValid := [option galgas_cli_options.generateCheckValidInstructions value] ;
+  const @bool generateCheckValid := false ; #  [option galgas_cli_options.generateCheckValidInstructions value] ;
 #--- Build unused variable set
   @stringset unusedVariableCppNameSet [emptySet] ;
   unusedVariableCppNameSet += !compilerCppName [] ;
@@ -392,7 +392,7 @@ local function generateCategoryReader
   ??@string inResultVariableCppName
   ->@string outGeneratedCode
 :
-  const @bool generateCheckValid := [option galgas_cli_options.generateCheckValidInstructions value] ;
+  const @bool generateCheckValid := false ; #  [option galgas_cli_options.generateCheckValidInstructions value] ;
   outGeneratedCode := "" ;
 #--- Build unused variable set
   @stringset unusedVariableCppNameSet [emptySet] ;

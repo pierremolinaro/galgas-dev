@@ -133,7 +133,7 @@ routine compileSyntaxComponentFromAST
   ;
   semanticContext->mLexiqueComponentMapForSemanticAnalysis := lexiqueMap ;
 #--- Parse lexique component
-  const @lstring lexiqueFilePath [new
+  const lexiqueFilePath := [@lstring new
     ![[inSyntaxComponentRoot mImportedLexiqueFilePath] absolutePathFromPath ![inSourceFile stringByDeletingLastPathComponent]]
     ![[inSyntaxComponentRoot mImportedLexiqueFilePath] location]
   ] ;
@@ -288,8 +288,8 @@ routine compileSyntaxComponentFromSourceFile
   ?!@parsedComponentStruct ioParsedComponentStruct
 :
 #--- Parse source file
-  const @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
-  const @lstring basenameKey [new !basename !here] ;
+  const basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
+  const basenameKey := [@lstring new !basename !here] ;
   @syntaxComponentAST syntaxComponentRoot ;
   if [[ioParsedComponentStruct mParsedSyntaxComponentMap] hasKey ! basename] then
     [[ioParsedComponentStruct mParsedSyntaxComponentMap] searchKey !basenameKey ?* ?syntaxComponentRoot] ;

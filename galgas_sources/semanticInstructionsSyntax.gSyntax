@@ -39,19 +39,8 @@ nonterminal <actual_parameter_list>
   ?!@localVariableDeclarationListAST ioLocalVariableDeclarationList
 ;
 
-nonterminal <semantic_instruction_list> !@semanticInstructionListAST outInstructionsList ;
-
-nonterminal <semantic_instruction>
-  !@semanticInstructionAST outInstruction
-  ?!@localVariableDeclarationListAST ioLocalVariableDeclarationList
-;
-
 nonterminal <output_expression_list>
   !@semanticExpressionListAST outExpressionList
-;
-
-nonterminal <semantic_declaration>
- ?!@semanticDeclarationListAST ioSemanticDeclarations
 ;
 
 #---------------------------------------------------------------------------*
@@ -321,7 +310,8 @@ rule <semantic_instruction>
       !sourceExpression
     ] ;
   or
-    select$[$ ;
+    select
+      $[$ ;
       @lstring constructorName ;
       $identifier$ ? constructorName ;
       @semanticExpressionListAST expressionList ;
@@ -334,6 +324,10 @@ rule <semantic_instruction>
         !constructorName
         !expressionList
       ] ;
+      if [option galgas_cli_options.warnsOnOldStyleConstantDeclaration value] then
+        warning variableName : "This construction is deprecated in GALGAS 2.6.0 and above: replace with \"const "
+         . variableName . " := [@" . typeName . " constructor...] ;" ;
+      end if ;
     or
       $default$ ;
       outInstruction := [@localVariableOrConstantDeclarationWithDefaultConstructorAST new
@@ -342,9 +336,37 @@ rule <semantic_instruction>
         !typeName
         !variableName
       ] ;
+      if [option galgas_cli_options.warnsOnOldStyleConstantDeclaration value] then
+        warning variableName : "This construction is deprecated in GALGAS 2.6.0 and above: replace with \"const "
+         . variableName . " := [@" . typeName . " default] ;" ;
+      end if ;
     end select ;
     $]$ ;
   end select ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  L O C A L    C O N S T A N T    D E C L A R A T I O N                    *
+#  with implicit target type                                                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction
+  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
+:
+  $const$ ;
+  $identifier$ ?@lstring variableName ;
+  $:=$ ;
+  @semanticExpressionAST sourceExpression ;
+  <expression> ? sourceExpression ;
+  outInstruction := [@localConstantDeclarationWithAssignmentAST new
+    ![variableName location]
+    !variableName
+    !sourceExpression
+  ] ;
   $;$ ;
 end rule ;
 

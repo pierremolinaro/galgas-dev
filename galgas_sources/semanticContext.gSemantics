@@ -894,7 +894,7 @@ override method @mapDeclarationAST enterInSemanticContext
   end foreach ;
 #--- Enter "attributeForKey" readers
   foreach mAttributeList do
-    const @lstring accessorName [new ![mAttributeName string] . "ForKey" ![mAttributeName location]] ;
+    const accessorName := [@lstring new ![mAttributeName string] . "ForKey" ![mAttributeName location]] ;
     @unifiedTypeMapProxy attributeTypeIndex ;
     [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mAttributeTypeName ?attributeTypeIndex] ;
     [!?readerMap insertOrReplace
@@ -923,7 +923,7 @@ override method @mapDeclarationAST enterInSemanticContext
   end if ;
 #---------- Enter "set...Attribute...forKey" modifiers
   foreach mAttributeList do
-    const @lstring accessorName [new !"set" . [[mAttributeName string] stringByCapitalizingFirstCharacter] . "ForKey" ![mAttributeName location]] ;
+    const accessorName := [@lstring new !"set" . [[mAttributeName string] stringByCapitalizingFirstCharacter] . "ForKey" ![mAttributeName location]] ;
     @unifiedTypeMapProxy attributeTypeIndex ;
     [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mAttributeTypeName ?attributeTypeIndex] ;
     @formalParameterSignature accessorFormalArgumentList [emptyList] ;
@@ -1168,7 +1168,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
   end if ;
 #--- Enter "attributeForKey" readers
   foreach mAttributeList do
-    const @lstring accessorName [new ![mAttributeName string] . "ForKey" ![mAttributeName location]] ;
+    const accessorName := [@lstring new ![mAttributeName string] . "ForKey" ![mAttributeName location]] ;
     @unifiedTypeMapProxy attributeTypeIndex ;
     [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mAttributeTypeName ?attributeTypeIndex] ;
     [!?readerMap insertOrReplace
@@ -1184,7 +1184,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
   end foreach ;
 #---------- Enter "set...Attribute...forKey" modifiers
   foreach mAttributeList do
-    const @lstring accessorName [new !"set" . [[mAttributeName string] stringByCapitalizingFirstCharacter] . "ForKey" ![mAttributeName location]] ;
+    const accessorName := [@lstring new !"set" . [[mAttributeName string] stringByCapitalizingFirstCharacter] . "ForKey" ![mAttributeName location]] ;
     @unifiedTypeMapProxy attributeTypeIndex ;
     [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mAttributeTypeName ?attributeTypeIndex] ;
     @formalParameterSignature accessorFormalArgumentList [emptyList] ;
@@ -2985,7 +2985,7 @@ override method @predefinedTypeAST enterDeclarationInGraph
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
-  const @lstring key [new !"@" . mPredefinedTypeName !here] ;
+  const key := [@lstring new !"@" . mPredefinedTypeName !here] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
 end method ;
 
@@ -2998,7 +2998,7 @@ override method @classDeclarationAST enterDeclarationInGraph
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
-  const @lstring key [new !"@" . mClassTypeName ![mClassTypeName location]] ;
+  const key := [@lstring new !"@" . mClassTypeName ![mClassTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
   if mSuperClassName->string != "" then
     [!?ioSemanticTypePrecedenceGraph addEdge !key ![@lstring new !"@" . mSuperClassName ![mSuperClassName location]]] ;
@@ -3018,7 +3018,7 @@ override method @listDeclarationAST enterDeclarationInGraph
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
-  const @lstring key [new !"@" . mListTypeName ![mListTypeName location]] ;
+  const key := [@lstring new !"@" . mListTypeName ![mListTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
   foreach mAttributeList do
     [!?ioSemanticTypePrecedenceGraph noteNode ![@lstring new !"@" . mAttributeTypeName ![mAttributeTypeName location]]] ;
@@ -3034,7 +3034,7 @@ override method @structDeclarationAST enterDeclarationInGraph
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
-  const @lstring key [new !"@" . mStructTypeName ![mStructTypeName location]] ;
+  const key := [@lstring new !"@" . mStructTypeName ![mStructTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
   foreach mAttributeList do
     [!?ioSemanticTypePrecedenceGraph addEdge !key ![@lstring new !"@" . mAttributeTypeName ![mAttributeTypeName location]]] ;
@@ -3050,7 +3050,7 @@ override method @enumDeclarationAST enterDeclarationInGraph
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
-  const @lstring key [new !"@" . mEnumTypeName ![mEnumTypeName location]] ;
+  const key := [@lstring new !"@" . mEnumTypeName ![mEnumTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
 end method ;
 
@@ -3063,7 +3063,7 @@ override method @sortedListDeclarationAST enterDeclarationInGraph
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
-  const @lstring key [new !"@" . mSortedListTypeName ![mSortedListTypeName location]] ;
+  const key := [@lstring new !"@" . mSortedListTypeName ![mSortedListTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
   foreach mAttributeList do
     [!?ioSemanticTypePrecedenceGraph noteNode ![@lstring new !"@" . mAttributeTypeName ![mAttributeTypeName location]]] ;
@@ -3079,7 +3079,7 @@ override method @arrayDeclarationAST enterDeclarationInGraph
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
-  const @lstring key [new !"@" . mArrayTypeName ![mArrayTypeName location]] ;
+  const key := [@lstring new !"@" . mArrayTypeName ![mArrayTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
   [!?ioSemanticTypePrecedenceGraph addEdge !key ![@lstring new !"@" . mElementTypeName ![mElementTypeName location]]] ;
 end method ;
@@ -3093,7 +3093,7 @@ override method @listmapDeclarationAST enterDeclarationInGraph
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
-  const @lstring key [new !"@" . mListmapTypeName ![mListmapTypeName location]] ;
+  const key := [@lstring new !"@" . mListmapTypeName ![mListmapTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
   [!?ioSemanticTypePrecedenceGraph addEdge !key ![@lstring new !"@" . mAssociatedListTypeName ![mAssociatedListTypeName location]]] ;
 end method ;
@@ -3107,7 +3107,7 @@ override method @mapDeclarationAST enterDeclarationInGraph
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
-  const @lstring key [new !"@" . mMapTypeName ![mMapTypeName location]] ;
+  const key := [@lstring new !"@" . mMapTypeName ![mMapTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
   foreach mAttributeList do
     [!?ioSemanticTypePrecedenceGraph noteNode ![@lstring new !"@" . mAttributeTypeName ![mAttributeTypeName location]]] ;
@@ -3123,7 +3123,7 @@ override method @uniqueMapDeclarationAST enterDeclarationInGraph
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
-  const @lstring key [new !"@" . mMapTypeName ![mMapTypeName location]] ;
+  const key := [@lstring new !"@" . mMapTypeName ![mMapTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
   foreach mAttributeList do
     [!?ioSemanticTypePrecedenceGraph noteNode ![@lstring new !"@" . mAttributeTypeName ![mAttributeTypeName location]]] ;
@@ -3139,7 +3139,7 @@ override method @mapProxyDeclarationAST enterDeclarationInGraph
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
-  const @lstring key [new !"@" . mMapProxyTypeName ![mMapProxyTypeName location]] ;
+  const key := [@lstring new !"@" . mMapProxyTypeName ![mMapProxyTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
   [!?ioSemanticTypePrecedenceGraph addEdge !key ![@lstring new !"@" . mAssociatedMapTypeName ![mAssociatedMapTypeName location]]] ;
 end method ;
@@ -3153,7 +3153,7 @@ override method @graphDeclarationAST enterDeclarationInGraph
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
-  const @lstring key [new !"@" . mGraphTypeName ![mGraphTypeName location]] ;
+  const key := [@lstring new !"@" . mGraphTypeName ![mGraphTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
   [!?ioSemanticTypePrecedenceGraph addEdge !key ![@lstring new !"@" . mAssociatedListTypeName ![mAssociatedListTypeName location]]] ;
 end method ;
@@ -3167,7 +3167,7 @@ override method @externTypeDeclarationAST enterDeclarationInGraph
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
-  const @lstring key [new !"@" . mExternTypeName ![mExternTypeName location]] ;
+  const key := [@lstring new !"@" . mExternTypeName ![mExternTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
 end method ;
 
@@ -3288,7 +3288,7 @@ override method @categoryReaderAST enterDeclarationInGraph
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
-  const @lstring key [new !"category reader @" . mTypeName . " " . mCategoryReaderName ![mCategoryReaderName location]] ;
+  const key := [@lstring new !"category reader @" . mTypeName . " " . mCategoryReaderName ![mCategoryReaderName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
   [!?ioSemanticTypePrecedenceGraph addEdge !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
 #---
@@ -3316,7 +3316,7 @@ override method @categoryMethodAST enterDeclarationInGraph
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
-  const @lstring key [new !"category method @" . mTypeName . " " . mCategoryMethodName ![mCategoryMethodName location]] ;
+  const key := [@lstring new !"category method @" . mTypeName . " " . mCategoryMethodName ![mCategoryMethodName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
   [!?ioSemanticTypePrecedenceGraph addEdge !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
 #---
@@ -3343,7 +3343,7 @@ override method @categoryModifierAST enterDeclarationInGraph
   ?!@categoryModifierMapForBuildingContext ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
-  const @lstring key [new !"category modifier @" . mTypeName . " " . mCategoryModifierName ![mCategoryModifierName location]] ;
+  const key := [@lstring new !"category modifier @" . mTypeName . " " . mCategoryModifierName ![mCategoryModifierName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
   [!?ioSemanticTypePrecedenceGraph addEdge !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
 #---
@@ -3382,7 +3382,7 @@ override method @abstractCategoryReaderAST enterDeclarationInGraph
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
-  const @lstring key [new !"category reader @" . mTypeName . " " . mAbstractCategoryReaderName ![mAbstractCategoryReaderName location]] ;
+  const key := [@lstring new !"category reader @" . mTypeName . " " . mAbstractCategoryReaderName ![mAbstractCategoryReaderName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
   [!?ioSemanticTypePrecedenceGraph addEdge !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
 #---
@@ -3410,7 +3410,7 @@ override method @abstractCategoryMethodAST enterDeclarationInGraph
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
-  const @lstring key [new !"category method @" . mTypeName . " " . mAbstractCategoryMethodName ![mAbstractCategoryMethodName location]] ;
+  const key := [@lstring new !"category method @" . mTypeName . " " . mAbstractCategoryMethodName ![mAbstractCategoryMethodName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
   [!?ioSemanticTypePrecedenceGraph addEdge !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
 #---
@@ -3437,7 +3437,7 @@ override method @abstractCategoryModifierAST enterDeclarationInGraph
   ?!@categoryModifierMapForBuildingContext ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
-  const @lstring key [new !"category modifier @" . mTypeName . " " . mAbstractCategoryModifierName ![mAbstractCategoryModifierName location]] ;
+  const key := [@lstring new !"category modifier @" . mTypeName . " " . mAbstractCategoryModifierName ![mAbstractCategoryModifierName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
   [!?ioSemanticTypePrecedenceGraph addEdge !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
 #---

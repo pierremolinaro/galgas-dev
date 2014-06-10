@@ -95,7 +95,7 @@ override method @localVariableOrConstantDeclarationWithDefaultConstructorAST ana
   ?!@variableMap ioVariableMap
 :
 #--- Check variable type
-  const @unifiedTypeMapProxy targetType := [@unifiedTypeMapProxy searchKey
+  const targetType := [@unifiedTypeMapProxy searchKey
     !inAnalysisContext->mSemanticContext->mTypeMap
     !mTypeName
   ] ;
@@ -106,7 +106,7 @@ override method @localVariableOrConstantDeclarationWithDefaultConstructorAST ana
     error mTypeName: "this class does not support the default constructor" ;
   end if ;
 #--- Declare variable (or constant)
-  const @string targetVariableCppName := "var_" . [mVariableName identifierRepresentation] ;
+  const targetVariableCppName := "var_" . [mVariableName identifierRepresentation] ;
   if mIsConstant then
     [!?ioVariableMap insertLocalConstant !mVariableName !targetType !targetVariableCppName !targetVariableCppName] ;
   else
@@ -141,14 +141,14 @@ override method @localVariableOrConstantDeclarationWithConstructorCallAST analyz
     ?@bool hasCompilerArgument
   ;
 #--- Check variable type
-  const @unifiedTypeMapProxy targetType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
+  const targetType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
   if targetType != returnedType then
     error mConstructorName
     :"this constructor returns an '@" . [returnedType key] ."' object, you should use a constructor that return an '@" . mTypeName . "' object"
     ;
   end if ;
 #--- Declare variable (or constant)
-  const @string targetVariableCppName := "var_" . [mVariableName identifierRepresentation] ;
+  const targetVariableCppName := "var_" . [mVariableName identifierRepresentation] ;
   if mIsConstant then
     [!?ioVariableMap insertLocalConstant !mVariableName !targetType !targetVariableCppName !targetVariableCppName] ;
   else
@@ -180,8 +180,8 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
     ?@semanticExpressionForGeneration expression
   ] ;
 #--- Check target variable
-  const @unifiedTypeMapProxy targetType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
-  const @string targetVariableCppName := "var_" . [mVariableName identifierRepresentation] ;
+  const targetType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
+  const targetVariableCppName := "var_" . [mVariableName identifierRepresentation] ;
   if mIsConstant then
     [!?ioVariableMap insertLocalConstant !mVariableName !targetType !targetVariableCppName !targetVariableCppName] ;
   else
@@ -200,14 +200,39 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @localConstantDeclarationWithAssignmentAST analyzeSemanticInstruction
+  ??@analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+:
+#--- Analyze source expression
+  [mSourceExpression analyzeSemanticExpression
+    !inAnalysisContext
+    !?ioVariableMap
+    ?@semanticExpressionForGeneration expression
+  ] ;
+#--- Enter target variable
+  const targetVariableCppName := "var_" . [mVariableName identifierRepresentation] ;
+    [!?ioVariableMap insertDefinedLocalVariable !mVariableName ![expression mType] !targetVariableCppName !targetVariableCppName] ;
+#--- Generate instruction
+  ioInstructionListForGeneration += ![@localVariableOrConstantDeclarationWithSourceExpressionForGeneration new
+    ![expression mType]
+    !true
+    !targetVariableCppName
+    !expression
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @localVariableDeclarationAST analyzeSemanticInstruction
   ??@analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
 :
 #--- Check target variable
-  const @unifiedTypeMapProxy targetType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
-  const @string targetVariableCppName := "var_" . [mVariableName identifierRepresentation] ;
+  const targetType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
+  const targetVariableCppName := "var_" . [mVariableName identifierRepresentation] ;
   if mIsUndefinedConstant then
     [!?ioVariableMap insertUndefinedLocalConstant !mVariableName !targetType !targetVariableCppName !targetVariableCppName] ;
   else
@@ -243,7 +268,7 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
   else
     [!?ioVariableMap searchForReadWriteAccess !mTargetVariableName ?targetType ?targetVariableCppName ?nameForCheckingFormalParameterUsing] ;
     foreach mStructAttributeList do
-      const @attributeMap attributeMap := [targetType mAttributeMap] ;
+      const attributeMap := [targetType mAttributeMap] ;
       [attributeMap searchKey !mValue ?targetType] ;
     end foreach ;
   end if ;
@@ -313,7 +338,7 @@ routine analyzeErrorOrWarningInstruction
 #--- Check location expression type is either @location either has a correct location reader
   outUseLocationReader := [outLocationExpression mType] != inAnalysisContext->mPredefinedTypes->mLocationType ;
   if outUseLocationReader then
-    const @readerMap readerMap := [[outLocationExpression mType] mReaderMap] ;
+    const readerMap := [[outLocationExpression mType] mReaderMap] ;
     with readerMap hasKey !"location" do
       if [mArgumentTypeList length] != 0 then
         error inErrorLocation
@@ -494,7 +519,7 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
   @string variableCppName ;
   [!?ioVariableMap searchForReadWriteAccess !mOutputInputActualParameterName ?parameterType ?variableCppName ?*] ;
   foreach mStructAttributeList do
-    const @attributeMap attributeMap := [parameterType mAttributeMap] ;
+    const attributeMap := [parameterType mAttributeMap] ;
     [attributeMap searchKey !mValue ?parameterType] ;
   end foreach ;
 #--- Check type
@@ -576,7 +601,7 @@ override method @inputJokerActualParameterAST checkAgainstFormalArgument
     . "' passing mode: this parameter should be passed with '" . [inFormalArgumentPassingMode correspondingEffectiveParameterString] . "'"
     ;
   else
-    const @string cppVarName := "joker_" . [[mQualifierLocation locationIndex] string] . "_" . [mJokerIndex string] ;
+    const cppVarName := "joker_" . [[mQualifierLocation locationIndex] string] . "_" . [mJokerIndex string] ;
   #--- Generate actual parameter
     ioActualParameterListForGeneration += ![@inputJokerParameterForGeneration new
       !cppVarName
@@ -655,7 +680,7 @@ override method @typeMethodCallInstructionAST analyzeSemanticInstruction
   ?!@variableMap ioVariableMap
 :
 #--- Get type method map for the named type
-  const @unifiedTypeMapProxy type [searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
+  const type := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
 #--- Get type method signature
   @formalParameterSignature routineSignature ;
   @bool hasCompilerArgument ;
@@ -762,7 +787,7 @@ override method @modifierCallInstructionAST analyzeSemanticInstruction
   @string receiverVariableBaseName ;
   [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?receiverType ?receiverVariableCppName ?receiverVariableBaseName] ;
   foreach mReceiverStructAttributes do
-    const @attributeMap attributeMap := [receiverType mAttributeMap] ;
+    const attributeMap := [receiverType mAttributeMap] ;
     [attributeMap searchKey !mValue ?receiverType] ;
   end foreach ;
 #--- Get modifier signature
@@ -884,7 +909,7 @@ override method @concatInstructionAST analyzeSemanticInstruction
   @string nameForCheckingFormalParameterUsing ;
   [!?ioVariableMap searchForReadWriteAccess !mTargetVariableName ?targetType ?targetVariableCppName ?nameForCheckingFormalParameterUsing] ;
   foreach mStructAttributeList do
-    const @attributeMap attributeMap := [targetType mAttributeMap] ;
+    const attributeMap := [targetType mAttributeMap] ;
     [attributeMap searchKey !mValue ?targetType] ;
   end foreach ;
 #--- Check target variable type support '.=' operator
@@ -961,11 +986,11 @@ override method @plusEqualInstructionAST analyzeSemanticInstruction # +=
   @string nameForCheckingFormalParameterUsing ;
   [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName ?nameForCheckingFormalParameterUsing] ;
   foreach mStructAttributeList do
-    const @attributeMap attributeMap := [targetType mAttributeMap] ;
+    const attributeMap := [targetType mAttributeMap] ;
     [attributeMap searchKey !mValue ?targetType] ;
   end foreach ;
 #--- Check target variable type support '+=' operator
-  const @unifiedTypeMapProxyAndParameterList addAssignOperatorArguments:= [targetType mAddAssignOperatorArguments] ; # Empty list if += operator is not supported
+  const addAssignOperatorArguments:= [targetType mAddAssignOperatorArguments] ; # Empty list if += operator is not supported
   if [addAssignOperatorArguments length] == 0 then
     error mInstructionLocation
     :"the target object has the '@" . [targetType key] . "' type, but this type does not support the '+=' operator"
@@ -1018,7 +1043,7 @@ override method @selfPlusEqualInstructionAST analyzeSemanticInstruction
     selfTypeProxy := inAnalysisContext->mSelfTypeProxy ;
   end if ;
 #--- Check target variable type support '+=' operator
-  const @unifiedTypeMapProxyAndParameterList addAssignOperatorArguments:= [selfTypeProxy mAddAssignOperatorArguments] ; # Empty list if += operator is not supported
+  const addAssignOperatorArguments:= [selfTypeProxy mAddAssignOperatorArguments] ; # Empty list if += operator is not supported
   if [addAssignOperatorArguments length] == 0 then
     error mInstructionLocation
     :"the target object has the '@" . [selfTypeProxy key] . "' type, but this type does not support the '+=' operator"
@@ -1066,7 +1091,7 @@ override method @incrementInstructionAST analyzeSemanticInstruction
   @string targetVariableCppName ;
   [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName ?*] ;
   foreach mStructAttributeList do
-    const @attributeMap attributeMap := [targetType mAttributeMap] ;
+    const attributeMap := [targetType mAttributeMap] ;
     [attributeMap searchKey !mValue ?targetType] ;
   end foreach ;
 #--- Check target type accepts incrementation
@@ -1127,7 +1152,7 @@ override method @decrementInstructionAST analyzeSemanticInstruction
   @string targetVariableCppName ;
   [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName ?*] ;
   foreach mStructAttributeList do
-    const @attributeMap attributeMap := [targetType mAttributeMap] ;
+    const attributeMap := [targetType mAttributeMap] ;
     [attributeMap searchKey !mValue ?targetType] ;
   end foreach ;
 #--- Check target type accepts incrementation
@@ -1254,9 +1279,9 @@ routine checkExpressionIsBoolean
   ??@semanticExpressionForGeneration inExpression
   !@semanticExpressionForGeneration outExpression
 :
-  const @unifiedTypeMapProxy expressionType := [inExpression mType] ;
+  const expressionType := [inExpression mType] ;
 #--- Boolean type
-  const @unifiedTypeMapProxy boolType := inAnalysisContext->mPredefinedTypes->mBoolType ;
+  const boolType := inAnalysisContext->mPredefinedTypes->mBoolType ;
   if expressionType == boolType then
     outExpression := inExpression ;
   elsif [expressionType mTypeKindEnum] == [@typeKindEnum structType] then
@@ -1444,8 +1469,8 @@ override method @forInstructionAST analyzeSemanticInstruction
       ?enumerationExpression
     ] ;
   #--- Check object can be enumerated
-    const @string enumeratorCppName := "enumerator_" . [[mEndOfEnumerationExpression locationIndex] string] ;
-    const @unifiedTypeMapProxy enumeratedElementType := [[enumerationExpression mType] mTypeForEnumeratedElement] ;
+    const enumeratorCppName := "enumerator_" . [[mEndOfEnumerationExpression locationIndex] string] ;
+    const enumeratedElementType := [[enumerationExpression mType] mTypeForEnumeratedElement] ;
     if [enumeratedElementType isNull] then
       error mEndOfEnumerationExpression : "an '@" . [[enumerationExpression mType] key] . "' object cannot be enumerated" ;
     else
@@ -1585,8 +1610,8 @@ override method @foreachInstructionAST analyzeSemanticInstruction
     ] ;
   #--- Check object can be enumerated
     @string enumerationOrder := [mEnumerationOrder string] ;
-    const @string enumeratorCppName := "enumerator_" . [[mEndOfEnumerationExpression locationIndex] string] ;
-    const @enumerationDescriptorList enumerationDescriptorList := [[enumerationExpression mType] mEnumerationDescriptor] ;
+    const enumeratorCppName := "enumerator_" . [[mEndOfEnumerationExpression locationIndex] string] ;
+    const enumerationDescriptorList := [[enumerationExpression mType] mEnumerationDescriptor] ;
     if [enumerationDescriptorList length] == 0 then
       error mEndOfEnumerationExpression : "an '@" . [[enumerationExpression mType] key] . "' object cannot be enumerated" ;
     else
@@ -1606,7 +1631,7 @@ override method @foreachInstructionAST analyzeSemanticInstruction
       end if ;
   #--- Arguments
       if ([mElementList length] == 0) & not mEndsWithEllipsis then
-        const @enumerationDescriptorList currentTypedAttributeList := [[enumerationExpression mType] mEnumerationDescriptor] ;
+        const currentTypedAttributeList := [[enumerationExpression mType] mEnumerationDescriptor] ;
         foreach currentTypedAttributeList do 
          [!?ioVariableMap insertUsedLocalConstant
            ![@lstring new ![mPrefix string] . mEnumerationName !mEndOfEnumerationExpression]
@@ -1634,7 +1659,7 @@ override method @foreachInstructionAST analyzeSemanticInstruction
       else
         foreach mElementList, enumerationDescriptorList do
           if [mConstantName string] != "" then # Empty string if joker
-            const @unifiedTypeMapProxy foundType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
+            const foundType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
             if foundType != mEnumeratedType then
               error mTypeName : "incorrect '@" . [foundType key] . "' type: '@" . [mEnumeratedType key] . "' type required here" ;
             end if ;
@@ -1794,7 +1819,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
   @castInstructionBranchListForGeneration castBranchList [emptyList] ;
   foreach mCastInstructionBranchList do
   #--- Get named type
-    const @unifiedTypeMapProxy type [searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
+    const type := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
   #--- Check named type is a descendant of receiver type
     @unifiedTypeMapProxy t := type ;
     @bool found := t == [castExpression mType] ;
@@ -1941,17 +1966,17 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
     ?keyExpression
   ] ;
 #--- Object Array cpp name
-  const @string objectArrayCppName := "objectArray_" . [[mInstructionLocation locationIndex] string] ;
+  const objectArrayCppName := "objectArray_" . [[mInstructionLocation locationIndex] string] ;
 #--- Read/write access to receiver variable
   @unifiedTypeMapProxy targetType ;
   @string receiverVariableCppName ;
   [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?receiverVariableCppName ?*] ;
   foreach mFieldList do
-    const @attributeMap attributeMap := [targetType mAttributeMap] ;
+    const attributeMap := [targetType mAttributeMap] ;
     [attributeMap searchKey !mValue ?targetType] ;
   end foreach ;
 #--- Check this type handle 'with' access
-  const @withAccessorMap withAccessorMap := [targetType mWithAccessorMap] ;
+  const withAccessorMap := [targetType mWithAccessorMap] ;
   @unifiedTypeMapProxyList argumentTypeList ;
   with withAccessorMap hasKey ![mAccessName string] do
     argumentTypeList := [@unifiedTypeMapProxyList listWithValue !mArgumentType] ;
@@ -1975,7 +2000,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
     end if ;
   end with ;
 #--- Check parameter list
-  const @semanticExpressionListForGeneration effectiveExpressionList [listWithValue !keyExpression]  ;
+  const effectiveExpressionList := [@semanticExpressionListForGeneration listWithValue !keyExpression]  ;
   if [effectiveExpressionList length] != [argumentTypeList length] then
     error mAccessName: "calling the '" . mAccessName . "' accessor of '@" . [targetType key] . "' requires "
     . [[argumentTypeList length] string] . " parameter(s), while this call has "
@@ -2046,7 +2071,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
     !?ioVariableMap
     ?receiverExpression
   ] ;
-  const @unifiedTypeMapProxy receiverType := [receiverExpression mType] ;
+  const receiverType := [receiverExpression mType] ;
 #--- Analyze key expression
   @semanticExpressionForGeneration keyExpression ;
   [mKeyExpression analyzeSemanticExpression
@@ -2055,9 +2080,9 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
     ?keyExpression
   ] ;
 #--- Object Array cpp name
-  const @string objectArrayCppName := "objectArray_" . [[mInstructionLocation locationIndex] string] ;
+  const objectArrayCppName := "objectArray_" . [[mInstructionLocation locationIndex] string] ;
 #--- Check this type handle 'with' access
-  const @withAccessorMap withAccessorMap := [receiverType mWithAccessorMap] ;
+  const withAccessorMap := [receiverType mWithAccessorMap] ;
   @unifiedTypeMapProxyList argumentTypeList ;
   with withAccessorMap hasKey ![mSearchMethodName string] do
     argumentTypeList := [@unifiedTypeMapProxyList listWithValue !mArgumentType] ;
@@ -2081,7 +2106,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
     end if ;
   end with ;
 #--- Check parameter list
-  const @semanticExpressionListForGeneration effectiveExpressionList [listWithValue !keyExpression]  ;
+  const effectiveExpressionList := [@semanticExpressionListForGeneration listWithValue !keyExpression]  ;
   if [effectiveExpressionList length] != [argumentTypeList length] then
     error mSearchMethodName: "calling the '" . mSearchMethodName . "' accessor of '@" . [receiverType key] . "' requires "
     . [[argumentTypeList length] string] . " parameter(s), while this call has "
@@ -2157,7 +2182,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
     : "the switch expression type should be an instance of an enumeration type (the '@" . [[switchExpression mType] key] . "' type is not an enumeration type)" ;
   end if ;
 #--- Enum constant stringset
-  const @stringset enumConstantStringSet := [[switchExpression mType] mEnumConstantSet] ;
+  const enumConstantStringSet := [[switchExpression mType] mEnumConstantSet] ;
   @stringset constantsNamedInSwitchInstruction [emptySet] ;
 #--- Analyze branches
   [!?ioVariableMap openOverrideForSelectBlock] ;
@@ -2191,7 +2216,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
   end foreach ;
   [!?ioVariableMap closeOverride !mEndOf_switch_instruction] ;
 #--- Check all constants have been named
-  const @stringset forgottenConstants := enumConstantStringSet - constantsNamedInSwitchInstruction ;
+  const forgottenConstants := enumConstantStringSet - constantsNamedInSwitchInstruction ;
   if [forgottenConstants count] > 0 then
     @string s := "" ;
     foreach forgottenConstants do
@@ -2226,7 +2251,7 @@ override method @matchInstructionAST analyzeSemanticInstruction
     ] ;
     expressionList += !matchedExpression ;
   #--- Check expression is an enum or a class instance
-    const @unifiedTypeMapProxy type := [matchedExpression mType] ;
+    const type := [matchedExpression mType] ;
     if ([type mTypeKindEnum] != [@typeKindEnum classType]) & ([type mTypeKindEnum] != [@typeKindEnum enumType]) then
       error mEndOfExpressionLocation
       :"this expression is an instance of '@" . [type key] . "' type, but this type is neither an enumeration, neither a class"
@@ -2242,10 +2267,10 @@ override method @matchInstructionAST analyzeSemanticInstruction
     @matchListForGeneration matchListForGeneration [emptyList] ;
     if [expressionList length] == [mMatchEntryList length] then
       foreach expressionList, mMatchEntryList do
-        const @unifiedTypeMapProxy type := [mExpression mType] ;
+        const type := [mExpression mType] ;
         if [type mTypeKindEnum] == [@typeKindEnum classType] then
           if mIsType then
-            const @unifiedTypeMapProxy namedType [searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeNameOrEnumerationConstantName] ;
+            const namedType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeNameOrEnumerationConstantName] ;
             @unifiedTypeMapProxy t := type ;
             @bool found := t == namedType ;
             loop [inAnalysisContext->mSemanticContext->mTypeMap count] + 1 :
