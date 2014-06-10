@@ -39,15 +39,6 @@ before {
   if [option galgas_cli_options.printPredefinedLexicalActions value] then
     printPredefinedLexicalActions ;
   end if ;
-#--- Print predefined types
-  if [option galgas_cli_options.printPredefinedTypes value] then
-    printPredefinedTypes ;
-  end if ;
-#--- Print predefined type feature
-  const @string printFeature := [option galgas_cli_options.printPredefinedTypeFeature value] ;
-  if printFeature != "" then
-    printPredefinedTypeFeature !printFeature ;
-  end if ;
 #--- Generate predefined files
   generatePredefinedTypeFiles ![option galgas_cli_options.generatePredefinedTypes value] ;
 #--- Extract LIBPM
@@ -230,12 +221,12 @@ indexing with projectLL1grammar
   ] ;
 #---------------------------------- Parse sources
   foreach [projectComponentAST mProjectSourceList] do
-    const @string extension := [mFilePath pathExtension] ;
-    const @lstring componentName [new
+    const extension := [mFilePath pathExtension] ;
+    const componentName := [@lstring new
       ![[mFilePath lastPathComponent] stringByDeletingPathExtension]
       ![mFilePath location]
     ] ;
-    const @lstring fullFilePath [new
+    const fullFilePath := [@lstring new
       ![inProjectSourceFile stringByDeletingLastPathComponent] . "/" . [mFilePath string]
       ![mFilePath location]
     ] ;
@@ -451,7 +442,7 @@ indexing with projectLL1grammar
     ;
   end if ;
 #--- Build project files
-  buildProject !inProjectSourceFile->string ;
+#  buildProject !inProjectSourceFile->string ;
 }
 
 #----------------------------------------------------------------------------*
@@ -469,24 +460,24 @@ indexing with projectLL1grammar
 
 #---------------------------------------------------------------------------*
 
-local routine buildProject ??@string inSourceFilePath :
-  const @string buildOption := [option galgas_cli_options.buildOption value] ;
-  if ([@uint errorCount] == 0) & (buildOption != "") then
-    @stringlist buildList := [buildOption componentsSeparatedByString !","] ;
-    foreach buildList do
-      message "*** Compiling C++ '" . mValue . "' project'\n" ;
-      const @string commandFileFullPath :=
-        [[inSourceFilePath stringByDeletingLastPathComponent] stringByDeletingLastPathComponent]
-         . "/" . mValue . "/build.command" ;
-      if [commandFileFullPath fileExists] then
-        @sint result := [commandFileFullPath system] ;
-      else
-        error [@location nowhere] : "cannot compile '" 
-        . mValue . "' project : the '" . commandFileFullPath . "' file does not exist" ;
-      end if ;
-    end foreach ;
-  end if ;
-end routine ;
+#local routine buildProject ??@string inSourceFilePath :
+#  const @string buildOption := [option galgas_cli_options.buildOption value] ;
+#  if ([@uint errorCount] == 0) & (buildOption != "") then
+#    @stringlist buildList := [buildOption componentsSeparatedByString !","] ;
+#    foreach buildList do
+#      message "*** Compiling C++ '" . mValue . "' project'\n" ;
+#      const @string commandFileFullPath :=
+#        [[inSourceFilePath stringByDeletingLastPathComponent] stringByDeletingLastPathComponent]
+#         . "/" . mValue . "/build.command" ;
+#      if [commandFileFullPath fileExists] then
+#        @sint result := [commandFileFullPath system] ;
+#      else
+#        error [@location nowhere] : "cannot compile '" 
+#        . mValue . "' project : the '" . commandFileFullPath . "' file does not exist" ;
+#      end if ;
+#    end foreach ;
+#  end if ;
+#end routine ;
 
 #---------------------------------------------------------------------------*
 

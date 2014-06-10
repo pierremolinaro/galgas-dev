@@ -21,13 +21,12 @@ option galgas_cli_options :
   @bool outputHTMLTypeListFile: 'T', "output-html-type-dump-file" -> "Output a HTML file that contains all defined types" ;
   @string create_project     : '\0', "create-project" -> "Create a new GALGAS Project" ;
   @bool printPredefinedLexicalActions: '\0', "print-predefined-lexical-actions" -> "Print the list of predefined lexical routines and functions" ;
-  @bool printPredefinedTypes: '\0', "print-predefined-types" -> "Print the list of predefined types" ;
-  @string printPredefinedTypeFeature: '\0', "print-predefined-type-features" -> "Print the feature of a given predefined type (without the leading '@', or '*' for all types)" ;
-  @bool generateCheckValidInstructions: '\0', "generate-instructions-for-checking-validity" -> "Generate instructions for Checking object validity (reserved for GALGAS development)" ;
+#  @bool generateCheckValidInstructions: '\0', "generate-instructions-for-checking-validity" -> "Generate instructions for Checking object validity (reserved for GALGAS development)" ;
   @string generatePredefinedTypes: '\0', "generate-predefined-types" -> "Generate C++ files of predefined types (reserved for GALGAS development)" ;
-  @bool noDeprecatedWarning: '\0', "no-deprecated-warning" -> "Do not warn on a deprecated construct" ;
-  @string buildOption: '\0', "build" -> "After a successful GALGAS compilation of a project file, build executable(s) using build command of 'string' directory" ;
+#  @string buildOption: '\0', "build" -> "After a successful GALGAS compilation of a project file, build executable(s) using build command of 'string' directory" ;
   @string extractLIBPMOption: '\0', "extract-libpm" -> "Extract embedded LIBPM at given path" ;
+  
+  @bool warnsOnOldStyleConstantDeclaration : '\0', "warns-on-deprecated-constant-declaration" -> "Emit a warning on a deprecated constant declaration" ;
 end option ;
 
 #---------------------------------------------------------------------------*

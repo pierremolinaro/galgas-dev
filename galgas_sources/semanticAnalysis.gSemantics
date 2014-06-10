@@ -256,7 +256,7 @@ override method @structDeclarationAST semanticAnalysis
   @typedAttributeList typedAttributeList [emptyList] ;
   @attributeIndexMap attributeMap [emptyMap] ;
   foreach mAttributeList do
-    const @unifiedTypeMapProxy t [searchKey !inSemanticContext->mTypeMap !mAttributeTypeName] ;
+    const t := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAttributeTypeName] ;
     foreach mFeatureList do
       error mValue : "a struct attribute does not accept any feature" ;
     end foreach ;
@@ -294,8 +294,8 @@ override method @graphDeclarationAST semanticAnalysis
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
-  const @unifiedTypeMapProxy graphTypeProxy [searchKey !inSemanticContext->mTypeMap !mGraphTypeName] ;
-  const @unifiedTypeMapProxy associatedListTypeProxy [searchKey !inSemanticContext->mTypeMap !mAssociatedListTypeName] ;
+  const graphTypeProxy := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mGraphTypeName] ;
+  const associatedListTypeProxy := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAssociatedListTypeName] ;
   if [associatedListTypeProxy mTypeKindEnum] != [@typeKindEnum listType] then
     error mAssociatedListTypeName: "the '@" . mAssociatedListTypeName . "' type should be a list" ;
   end if ;
@@ -327,7 +327,7 @@ override method @externTypeDeclarationAST semanticAnalysis
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
-  const @unifiedTypeMapProxy externTypeProxy [searchKey !inSemanticContext->mTypeMap !mExternTypeName] ;
+  const externTypeProxy := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mExternTypeName] ;
 #---
   ioSemanticDeclarationListForGeneration += ![@externTypeDeclarationForGeneration new
     !true # Is Global
@@ -960,7 +960,7 @@ routine buildLocalVariableMapAndSignature
 :
   outRoutineSignature := [@formalParameterListForGeneration emptyList] ;
   foreach inRoutineSignatureAST do
-    const @unifiedTypeMapProxy type [searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
+    const type := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
     @string formalArgumentCppName ;
     switch mFormalArgumentPassingMode
     when argumentIn :
@@ -1114,7 +1114,7 @@ override method @routineDeclarationAST semanticAnalysis
 #--- Instruction list
   @formalParameterListForGeneration formalArgumentList [emptyList] ;
   @semanticInstructionListForGeneration instructionList ;
-  const @analysisContext analysisContext [new
+  const analysisContext := [@analysisContext new
     !inSemanticContext
     !inPredefinedTypes
     ![@unifiedTypeMapProxy null]
@@ -1187,7 +1187,7 @@ override method @classDeclarationAST semanticAnalysis
   @typedAttributeList typedAttributeList [emptyList] ;
   @attributeIndexMap attributeMap [emptyMap] ;
   foreach mAttributeList do
-    const @unifiedTypeMapProxy t [searchKey !inSemanticContext->mTypeMap !mAttributeTypeName] ;
+    const t := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAttributeTypeName] ;
     @bool hasSetter := false ;
     @bool hasGetter := true ;
     foreach mFeatureList do
@@ -1271,7 +1271,7 @@ routine analyzeFunctionBody
 #--- Enter formal parameters
   outSignatureForGeneration := [@formalInputParameterListForGeneration emptyList] ;
   foreach inFunctionSignature do
-    const @unifiedTypeMapProxy parameterType [searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
+    const parameterType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
     if mIsConstant then
       const @string cppName := "constinArgument_" . [[mFormalArgumentName string] identifierRepresentation] ;
       outSignatureForGeneration +=
@@ -1329,7 +1329,7 @@ override method @functionDeclarationAST semanticAnalysis
   @formalInputParameterListForGeneration formalInputParameterList ;
   @unifiedTypeMapProxy returnType ;
   @string resultVariableCppName ;
-  const @analysisContext analysisContext [new
+  const analysisContext := [@analysisContext new
     !inSemanticContext
     !inPredefinedTypes
     ![@unifiedTypeMapProxy null]
@@ -1374,7 +1374,7 @@ override method @onceFunctionDeclarationAST semanticAnalysis
   @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
   @unifiedTypeMapProxy returnType ;
   @string resultVariableCppName ;
-  const @analysisContext analysisContext [new
+  const analysisContext := [@analysisContext new
     !inSemanticContext
     !inPredefinedTypes
     ![@unifiedTypeMapProxy null]
@@ -1460,7 +1460,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
       end foreach ;
     #--- Analyze template
       @templateInstructionListForGeneration templateInstructionListForGeneration [emptyList] ;
-      const @templateAnalysisContext templateAnalysisContext [new
+      const templateAnalysisContext := [@templateAnalysisContext new
         !inSemanticContext
         !inPredefinedTypes
         !templateVariableMap
@@ -1548,7 +1548,7 @@ override method @categoryMethodAST semanticAnalysis
 #--- Analyze instruction list
   @formalParameterListForGeneration formalParameterListForGeneration [emptyList] ;
   @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
-  const @analysisContext analysisContext [new
+  const analysisContext := [@analysisContext new
     !inSemanticContext
     !inPredefinedTypes
     !selfType
@@ -1619,7 +1619,7 @@ override method @overridingCategoryMethodAST semanticAnalysis
 #--- Analyze instruction list
   @formalParameterListForGeneration formalParameterListForGeneration [emptyList] ;
   @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
-  const @analysisContext analysisContext [new
+  const analysisContext := [@analysisContext new
     !inSemanticContext
     !inPredefinedTypes
     !selfType
@@ -1780,7 +1780,7 @@ override method @categoryModifierAST semanticAnalysis
 #--- Analyze instruction list
   @formalParameterListForGeneration formalParameterListForGeneration [emptyList] ;
   @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
-  const @analysisContext analysisContext [new
+  const analysisContext := [@analysisContext new
     !inSemanticContext
     !inPredefinedTypes
     !selfType
@@ -1848,7 +1848,7 @@ override method @overridingCategoryModifierAST semanticAnalysis
 #--- Analyze instruction list
   @formalParameterListForGeneration formalParameterListForGeneration [emptyList] ;
   @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
-  const @analysisContext analysisContext [new
+  const analysisContext := [@analysisContext new
     !inSemanticContext
     !inPredefinedTypes
     !selfType
@@ -2006,7 +2006,7 @@ override method @categoryReaderAST semanticAnalysis
     implementedAsFunction := true ;
   end if ;
 #--- Analyze instruction list
-  const @analysisContext analysisContext [new
+  const analysisContext := [@analysisContext new
     !inSemanticContext
     !inPredefinedTypes
     !selfType
@@ -2093,7 +2093,7 @@ override method @overridingCategoryReaderAST semanticAnalysis
     error mOverridingCategoryReaderName:"this reader is not declared by a super class" ;
   end if ;
 #--- Analyze instruction list
-  const @analysisContext analysisContext [new
+  const analysisContext := [@analysisContext new
     !inSemanticContext
     !inPredefinedTypes
     !selfType

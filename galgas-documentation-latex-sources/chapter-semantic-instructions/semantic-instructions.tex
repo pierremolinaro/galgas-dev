@@ -523,9 +523,66 @@ The \emph{expression} is first computed :
 }
 
 
-\section{Local Constant Declaration Instruction}
+\section{Instruction de déclaration de constante}
+
+Cette instruction peut prendre plusieurs formes ; la plus générale est la suivante :
+\lstset{emph={@type, nom, expression}, emphstyle=\emph}
+\begin{galgascode}
+const @type nom := expression ;
+\end{galgascode}
+
+Par exemple :
+\begin{galgascode}
+const @uint monEntier := 0 ;
+\end{galgascode}
+
+\subsection{Type implicite}
+
+\textbf{À partir de GALGAS 2.6.0.}
 
 
+Le nom du type de la constante peut être omis :
+\begin{galgascode}
+const nom := expression ;
+\end{galgascode}
+
+La constante prend alors implicitement le type de l'expression. Par exemple :
+\begin{galgascode}
+const monEntier := 0 ;
+\end{galgascode}
+
+
+
+\subsection{Constructeur avec type implicite}
+
+\textbf{Déprécié à partir de GALGAS 2.6.0.}
+
+Cette construction s'applique si l'expression est un appel de constructeur qui nomme le même type que la variable :
+\lstset{emph={@type, nom, expression, nom_constructeur}, emphstyle=\emph}
+\begin{galgascode}
+const @type nom := [@type nom_constructeur ...] ;
+\end{galgascode}
+
+Alors le type qui précède le nom du constructeur peut être omis, ainsi que le signe d'affectation :
+\begin{galgascode}
+const @type nom [nom_constructeur ...] ;
+\end{galgascode}
+
+Par exemple :
+\begin{galgascode}
+const @stringset s := [@stringset emptySet] ;
+\end{galgascode}
+
+Se simplifie en :
+
+\begin{galgascode}
+const @stringset s [emptySet] ;
+\end{galgascode}
+
+Cette construction est dépréciée à partir de GALGAS 2.6.0 au profit de l'écriture suivante :
+\begin{galgascode}
+const s := [@stringset emptySet] ;
+\end{galgascode}
 
 
 \sectionLabel{L'instruction \texttt{log}}{instructionLog}

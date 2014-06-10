@@ -1356,7 +1356,7 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
       !enumeratorCppName .".current_" . [mEnumerationName identifierRepresentation] . " (HERE)"
     ] ;
   end foreach ;
-  const @templateAnalysisContext doAnalysisContext [new
+  const doAnalysisContext := [@templateAnalysisContext new
     !inAnalysisContext->mSemanticContext
     !inAnalysisContext->mPredefinedTypes
     !doVariableMap

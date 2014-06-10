@@ -680,7 +680,7 @@ rule <semantic_declaration>
   while  
     $abstract$ ;
     $type_name$ ? @lstring mClassName indexing typeReferenceAbstractCategoryMethod, abstractCategoryMethodDefinition ;
-    const @lstring methodName [new ![methodNameInHeader string] !here] ;
+    const methodName := [@lstring new ![methodNameInHeader string] !here] ;
     ioSemanticDeclarations += ![@abstractCategoryMethodAST new
       !true # Is global
       !mClassName
@@ -692,7 +692,7 @@ rule <semantic_declaration>
     $abstract$ ;
     repeat
       $type_name$ ? @lstring mClassName indexing typeReferenceOverrideAbstractCategoryMethod, overrideAbstractCategoryMethodDefinition ;
-      const @lstring methodName [new ![methodNameInHeader string] !here] ;
+      const methodName := [@lstring new ![methodNameInHeader string] !here] ;
       ioSemanticDeclarations += ![@overridingAbstractCategoryMethodAST new
         !true # Is global
         !mClassName
@@ -704,7 +704,7 @@ rule <semantic_declaration>
     end repeat ;
   while
     $type_name$ ? @lstring mClassName indexing typeReferenceCategoryMethod, categoryMethodDefinition ;
-    const @lstring methodName [new ![methodNameInHeader string] !here] ;
+    const methodName := [@lstring new ![methodNameInHeader string] !here] ;
     ${$ ;
     @semanticInstructionListAST mRoutineInstructionList ;
     <semantic_instruction_list> ? mRoutineInstructionList ;
@@ -728,7 +728,7 @@ rule <semantic_declaration>
     while
       $,$ ;
     end repeat ;
-    const @lstring methodName [new ![methodNameInHeader string] !here] ;
+    const methodName := [@lstring new ![methodNameInHeader string] !here] ;
     ${$ ;
     @semanticInstructionListAST mRoutineInstructionList ;
     <semantic_instruction_list> ? mRoutineInstructionList ;
@@ -1014,7 +1014,7 @@ rule <semantic_declaration>
   repeat
   while
     $abstract$ ;
-    const @lstring readerName [new ![readerNameInHeader string] !here] ;
+    const readerName := [@lstring new ![readerNameInHeader string] !here] ;
     $type_name$ ? @lstring mClassName indexing abstractCategoryReaderDefinition ;
     ioSemanticDeclarations += ![@abstractCategoryReaderAST new
       !true # Is global
@@ -1027,7 +1027,7 @@ rule <semantic_declaration>
     $override$ ;
     $abstract$ ;
     repeat
-      const @lstring readerName [new ![readerNameInHeader string] !here] ;
+      const readerName := [@lstring new ![readerNameInHeader string] !here] ;
       $type_name$ ? @lstring mClassName indexing abstractCategoryReaderDefinition ;
       ioSemanticDeclarations += ![@overridingAbstractCategoryReaderAST new
         !true # Is global
@@ -1041,7 +1041,7 @@ rule <semantic_declaration>
     end repeat ;
   while
     $override$ ;
-    const @lstring readerName [new ![readerNameInHeader string] !here] ;
+    const readerName := [@lstring new ![readerNameInHeader string] !here] ;
     @lstringlist classNameList [emptyList] ;
     repeat
       $type_name$ ? @lstring mClassName indexing overrideCategoryReaderDefinition ;
@@ -1067,7 +1067,7 @@ rule <semantic_declaration>
       ] ;
     end foreach ;
   while
-    const @lstring readerName [new ![readerNameInHeader string] !here] ;
+    const readerName := [@lstring new ![readerNameInHeader string] !here] ;
     $type_name$ ? @lstring mClassName indexing categoryReaderDefinition ;
     ${$ ;
     @semanticInstructionListAST mRoutineInstructionList ;
@@ -1132,7 +1132,7 @@ rule <semantic_declaration>
   while
     $abstract$ ;
     $type_name$ ? @lstring mClassName indexing typeReferenceAbstractCategoryModifier, abstractCategoryModifierDefinition ;
-    const @lstring modifierName [new ![modifierNameInHeader string] !here] ;
+    const modifierName := [@lstring new ![modifierNameInHeader string] !here] ;
     ioSemanticDeclarations += ![@abstractCategoryModifierAST new
       !true # Is global
       !mClassName
@@ -1144,7 +1144,7 @@ rule <semantic_declaration>
     $abstract$ ;
     repeat
       $type_name$ ? @lstring mClassName indexing overrideAbstractCategoryModifierDefinition ;
-      const @lstring modifierName [new ![modifierNameInHeader string] !here] ;
+      const modifierName := [@lstring new ![modifierNameInHeader string] !here] ;
       ioSemanticDeclarations += ![@overridingAbstractCategoryModifierAST new
         !true # Is global
         !mClassName
@@ -1156,7 +1156,7 @@ rule <semantic_declaration>
     end repeat ;
   while
     $type_name$ ? @lstring mClassName indexing typeReferenceCategoryModifier, categoryModifierDefinition ;
-    const @lstring modifierName [new ![modifierNameInHeader string] !here] ;
+    const modifierName := [@lstring new ![modifierNameInHeader string] !here] ;
     ${$ ;
     @semanticInstructionListAST mRoutineInstructionList ;
     <semantic_instruction_list> ? mRoutineInstructionList ;
@@ -1179,7 +1179,7 @@ rule <semantic_declaration>
     while
       $,$ ;
     end repeat ;
-    const @lstring modifierName [new ![modifierNameInHeader string] !here] ;
+    const modifierName := [@lstring new ![modifierNameInHeader string] !here] ;
     ${$ ;
     @semanticInstructionListAST mRoutineInstructionList ;
     <semantic_instruction_list> ? mRoutineInstructionList ;

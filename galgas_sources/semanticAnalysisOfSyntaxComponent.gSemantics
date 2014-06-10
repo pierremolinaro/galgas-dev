@@ -191,7 +191,7 @@ local routine buildNonterminalDeclarationsMap
       @formalParameterListForGeneration signatureForGeneration [emptyList] ;
       @formalParameterSignature signature [emptyList] ;
       foreach mFormalArgumentList do
-        const @unifiedTypeMapProxy t [searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
+        const t := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
         signatureForGeneration += !mFormalArgumentPassingMode !t !mFormalArgumentName ![mFormalArgumentName string] ;
         signature += !t !mFormalArgumentPassingMode !mFormalArgumentName->string ;
       end foreach ;
@@ -1056,7 +1056,7 @@ routine semanticAnalysisOfSyntaxComponent
       @formalParameterListForGeneration signatureForGeneration [emptyList] ;
       @formalParameterSignature signature [emptyList] ;
       foreach mFormalArguments do
-        const @unifiedTypeMapProxy type [searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
+        const type := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
         signatureForGeneration += !mFormalArgumentPassingMode !type !mFormalArgumentName !"argument_" . mFormalArgumentName ;
         signature += !type !mFormalArgumentPassingMode !mFormalArgumentName->string ;
       end foreach ;
@@ -1069,7 +1069,7 @@ routine semanticAnalysisOfSyntaxComponent
 #    end with ;
   end foreach ;
 #--- Analysis context
-  const @analysisContext analysisContext [new
+  const analysisContext := [@analysisContext new
     !inSemanticContext
     !inPredefinedTypes
     ![@unifiedTypeMapProxy null]

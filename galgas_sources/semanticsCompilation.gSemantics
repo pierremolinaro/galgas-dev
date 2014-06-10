@@ -95,7 +95,7 @@ local routine recursivelyImportSemanticComponent
     ![inFilePath lastPathComponent]
   ] ;
   foreach inListOfFilesToParse do
-    const @lstring filePath [new
+    const filePath := [@lstring new
       ![mValue absolutePathFromPath !inDirectory]
       ![mValue location]
     ] ;
