@@ -241,9 +241,63 @@ rule <semantic_instruction>
   !@semanticInstructionAST outInstruction
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
+  $var$ ;
   $type_name$ ?@lstring typeName ;
   $identifier$ ?@lstring variableName ;
   outInstruction := [@localVariableDeclarationAST new ![typeName location] !typeName !variableName !false] ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction
+  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
+:
+  $type_name$ ?@lstring typeName ;
+  $identifier$ ?@lstring variableName ;
+  outInstruction := [@localVariableDeclarationAST new ![typeName location] !typeName !variableName !false] ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction
+  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
+:
+  $var$ ;
+  $type_name$ ?@lstring typeName ;
+  $identifier$ ?@lstring variableName ;
+  $:=$ ;
+  @semanticExpressionAST sourceExpression ;
+  <expression> ? sourceExpression ;
+  outInstruction := [@localVariableOrConstantDeclarationWithAssignmentAST new
+    ![typeName location]
+    !false
+    !typeName
+    !variableName
+    !sourceExpression
+  ] ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction
+  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
+:
+  $var$ ;
+  $identifier$ ?@lstring variableName ;
+  $:=$ ;
+  @semanticExpressionAST sourceExpression ;
+  <expression> ? sourceExpression ;
+  outInstruction := [@localVariableDeclarationWithAssignmentAST new
+    ![variableName location]
+    !variableName
+    !sourceExpression
+  ] ;
   $;$ ;
 end rule ;
 
@@ -285,6 +339,10 @@ rule <semantic_instruction>
     !typeName
     !variableName
   ] ;
+  if [option galgas_cli_options.warnsOnOldStyleConstantDeclaration value] then
+    warning variableName : "This construction is deprecated in GALGAS 2.6.0 and above: replace with \"var "
+     . variableName . " := [@" . typeName . " default] ;" ;
+  end if ;
   $;$ ;
 end rule ;
 
@@ -310,6 +368,10 @@ rule <semantic_instruction>
     !expressionList
   ] ;
   $]$ ;
+  if [option galgas_cli_options.warnsOnOldStyleConstantDeclaration value] then
+    warning variableName : "This construction is deprecated in GALGAS 2.6.0 and above: replace with \"var "
+     . variableName . " := [@" . typeName . " constructor...] ;" ;
+  end if ;
   $;$ ;
 end rule ;
 

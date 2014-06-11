@@ -201,7 +201,7 @@ indexing with projectLL1grammar
   if targetName == "" then
     error [projectComponentAST mTargetName]: "the target name should not be empty" ;
   end if ;
-#--- Build qualiied feature map
+#--- Build qualified feature map
   @projectQualifiedFeatureMap projectQualifiedFeatureMap [emptyMap] ;
   foreach projectComponentAST->mQualifiedFeatureList do
     [!?projectQualifiedFeatureMap insertKey

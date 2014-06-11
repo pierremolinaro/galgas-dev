@@ -168,6 +168,38 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @localVariableDeclarationWithAssignmentAST analyzeSemanticInstruction
+  ??@analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+:
+#--- Analyze source expression
+  [mSourceExpression analyzeSemanticExpression
+    !inAnalysisContext
+    !?ioVariableMap
+    ?@semanticExpressionForGeneration expression
+  ] ;
+#--- Check target variable
+#  const targetType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
+  const targetVariableCppName := "var_" . [mVariableName identifierRepresentation] ;
+#  if mIsConstant then
+#    [!?ioVariableMap insertLocalConstant !mVariableName !targetType !targetVariableCppName !targetVariableCppName] ;
+#  else
+    [!?ioVariableMap insertDefinedLocalVariable !mVariableName ![expression mType] !targetVariableCppName !targetVariableCppName] ;
+#  end if ;
+#--- Check assignment type compatibility
+#  checkAssignmentTypes !targetType ![expression mType] !mInstructionLocation ;
+#--- Generate instruction
+  ioInstructionListForGeneration += ![@localVariableOrConstantDeclarationWithSourceExpressionForGeneration new
+    ![expression mType]
+    !false
+    !targetVariableCppName
+    !expression
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSemanticInstruction
   ??@analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration

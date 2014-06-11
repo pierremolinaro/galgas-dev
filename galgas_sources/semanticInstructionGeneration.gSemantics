@@ -1283,9 +1283,9 @@ override method @matchInstructionForGeneration generateInstruction
 :
   @stringlist receiverList [emptyList] ;
   foreach mMatchedExpressionList do
-    @string var ;
-    [mExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?var] ;
-    receiverList += !var ;
+    @string variable ;
+    [mExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?variable] ;
+    receiverList += !variable ;
   end foreach ;
   ioGeneratedCode .= "if (" ;
   foreach receiverList

@@ -511,6 +511,13 @@ class @localVariableOrConstantDeclarationWithAssignmentAST extends @semanticInst
 
 #---------------------------------------------------------------------------*
 
+class @localVariableDeclarationWithAssignmentAST extends @semanticInstructionAST {
+  @lstring mVariableName ;
+  @semanticExpressionAST mSourceExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @localConstantDeclarationWithAssignmentAST extends @semanticInstructionAST {
   @lstring mVariableName ;
   @semanticExpressionAST mSourceExpression ;

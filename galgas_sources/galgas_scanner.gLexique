@@ -193,6 +193,7 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "true",
   "uniquemap",
   "unused",
+  "var",
   "warning",
   "when",              
   "while",

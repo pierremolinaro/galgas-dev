@@ -231,7 +231,7 @@ routine updateTargets
     end if ;
   end with ;
 #--- Check target names, file base name uniqueness, and build target file list
-  @stringset externSourceSet_tool [emptySet] ;
+  var externSourceSet_tool := [@stringset emptySet] ;
   @stringset guiSourceSet_tool [emptySet] ;
   @stringset scannerSourceSet_tool [emptySet] ;
   @stringset optionSourceSet_tool [emptySet] ;
@@ -276,7 +276,6 @@ routine updateTargets
       elsif extension == "framework" then
         externSourceSet_tool += ![mFilePath string] ;
         externSourceSet_app += ![mFilePath string] ;
-    #    handCodedSourceList += ![mFilePath lastPathComponent] ;
         if [mFilePath stringByDeletingLastPathComponent] == "" then
           handCodedSourceDirectorySet += !"../hand_coded_sources" ;
         else
