@@ -67,28 +67,39 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
   const C_BDD c (2, true) ;
   const C_BDD d (3, true) ;
   const C_BDD r = a.equalTo (c) | b.equalTo (d) ;
-  r.print (co) ;
+  r.printWithHeader (co) ;
+  co << "\n" ;
   const C_String dotFileA = r.graphvizRepresentation () ;
   C_TextFileWrite f ("test1a.dot") ;
   f << dotFileA ;
 //---
   const C_BDD s = a.equalTo (b) & c.equalTo (d) ;
-  s.print (co) ;
+  s.printWithHeader (co) ;
+  co << "\n" ;
   const C_String dotFileAA = s.graphvizRepresentation () ;
   C_TextFileWrite ff ("test1b.dot") ;
   ff << dotFileAA ;
 //---
   const C_BDD B = C_BDD::varCompareVar (0, 4, C_BDD::kEqual, 4) ;
-  B.print (co) ;
+  B.printWithHeader (co) ;
+  co << "\n" ;
   const C_String dotFileB = B.graphvizRepresentation () ;
   C_TextFileWrite g ("test1c.dot") ;
   g << dotFileB ;
 //---
   const C_BDD C = C_BDD::varCompareVar (0, 4, C_BDD::kLowerOrEqual, 4) ;
-  C.print (co) ;
+  C.printWithHeader (co) ;
+  co << "\n" ;
   const C_String dotFileC = C.graphvizRepresentation () ;
   C_TextFileWrite h ("test1d.dot") ;
   h << dotFileC ;
+//---
+  const C_BDD E = C_BDD (123, true) ;
+  E.printWithHeader (co) ;
+  co << "\n" ;
+  const C_String dotFileE = E.graphvizRepresentation () ;
+  C_TextFileWrite fe ("test1e.dot") ;
+  fe << dotFileE ;
 //---
   return 0 ;
 }
