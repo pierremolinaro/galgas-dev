@@ -1691,7 +1691,7 @@ swap201 (const uint32_t inBitSize1,
 #endif
 
 //-----------------------------------------------------------------------------*
-
+/*
 static void printBDDline (AC_OutputStream & outputStream,
                           const TC_UniqueArray <char> & inDisplayString,
                           const TC_UniqueArray <int32_t> & inNameLengthArray,
@@ -1836,70 +1836,6 @@ void C_BDD::printWithoutHeader (AC_OutputStream & outputStream,
 
 //-----------------------------------------------------------------------------*
 
-static void
-printLineWithSeparator (AC_OutputStream & outputStream,
-                        const TC_UniqueArray <C_String> & inSeparatorArray,
-                        const TC_UniqueArray <char> & inValueArray) {
-  for (int32_t i=0 ; i<inValueArray.count () ; i++) {
-    if (i < inSeparatorArray.count ()) {
-      outputStream << inSeparatorArray (i COMMA_HERE) ;
-    }
-    outputStream << cStringWithCharacter (inValueArray (i COMMA_HERE)) ;
-  }
-  outputStream << "\n" ;
-}
-
-//-----------------------------------------------------------------------------*
-
-static void
-internalPrintWithSeparator (AC_OutputStream & outputStream,
-                            const uint32_t inValue,
-                            TC_UniqueArray <char> & inDisplayString,
-                            const TC_UniqueArray <C_String> & inSeparatorArray,
-                            uint32_t inVariableIndex) {
-  const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
-  const uint32_t complement = inValue & 1 ;
-  if (bothBranches (gNodeArray [nodeIndex]) == 0) {
-    if (complement == 1) {
-      printLineWithSeparator (outputStream, inSeparatorArray, inDisplayString) ;
-    }
-  }else{
-    const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
-    while (inVariableIndex > var) {
-      inDisplayString.setObjectAtIndex ('X', (int32_t) inVariableIndex COMMA_HERE) ;
-      inVariableIndex -- ;
-    }
-  //--- Branche Zero
-    const uint32_t branche0 = gNodeArray [nodeIndex].mELSE ^ complement ;
-    if (branche0 != 0) {
-      inDisplayString.setObjectAtIndex ('0', (int32_t) var COMMA_HERE) ;
-      if (branche0 == 1) {
-        for (uint32_t i=0 ; i<var ; i++) {
-          inDisplayString.setObjectAtIndex ('X', (int32_t) i COMMA_HERE) ;
-        }
-        printLineWithSeparator (outputStream, inSeparatorArray, inDisplayString) ;
-      }else{
-        internalPrintWithSeparator (outputStream, branche0, inDisplayString, inSeparatorArray, (uint32_t) (inVariableIndex - 1)) ;
-      }
-    }
-  //--- Branche 1
-    const uint32_t branche1 = gNodeArray [nodeIndex].mTHEN ^ complement ;
-    if (branche1 != 0) {
-      inDisplayString.setObjectAtIndex ('1', (int32_t) var COMMA_HERE) ;
-      if (branche1 == 1) {
-        for (uint32_t i=0 ; i<var ; i++) {
-          inDisplayString.setObjectAtIndex ('X', (int32_t) i COMMA_HERE) ;
-        }
-        printLineWithSeparator (outputStream, inSeparatorArray, inDisplayString) ;
-      }else{
-        internalPrintWithSeparator (outputStream, branche1, inDisplayString, inSeparatorArray, (uint32_t) (inVariableIndex - 1)) ;
-      }
-    }
-  }
-}
-
-//-----------------------------------------------------------------------------*
-
 void C_BDD::printWithSeparator (AC_OutputStream & outputStream,
                                    const TC_UniqueArray <C_String> & inSeparatorArray) const {
   const uint32_t variablesCount = (uint32_t) inSeparatorArray.count () ;
@@ -1918,6 +1854,66 @@ void C_BDD::printWithSeparator (AC_OutputStream & outputStream,
                                 (uint32_t) (variablesCount - 1)) ;
   }
 }
+*/
+//-----------------------------------------------------------------------------*
+
+static void printLineWithSeparator (AC_OutputStream & outputStream,
+                                    const TC_UniqueArray <char> & inValueArray) {
+  for (int32_t i=inValueArray.count () - 1 ; i>=0 ; i--) {
+    if ((i % 4) == 3) {
+      outputStream << " " ;
+    }
+    outputStream << cStringWithCharacter (inValueArray (i COMMA_HERE)) ;
+  }
+  outputStream << "\n" ;
+}
+
+//-----------------------------------------------------------------------------*
+
+static void internalPrintWithSeparator (AC_OutputStream & outputStream,
+                                        const uint32_t inValue,
+                                        TC_UniqueArray <char> & inDisplayString,
+                                        uint32_t inVariableIndex) {
+  const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
+  const uint32_t complement = inValue & 1 ;
+  if (bothBranches (gNodeArray [nodeIndex]) == 0) {
+    if (complement == 1) {
+      printLineWithSeparator (outputStream, inDisplayString) ;
+    }
+  }else{
+    const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
+    while (inVariableIndex > var) {
+      inDisplayString.setObjectAtIndex ('X', (int32_t) inVariableIndex COMMA_HERE) ;
+      inVariableIndex -- ;
+    }
+  //--- Branche Zero
+    const uint32_t branche0 = gNodeArray [nodeIndex].mELSE ^ complement ;
+    if (branche0 != 0) {
+      inDisplayString.setObjectAtIndex ('0', (int32_t) var COMMA_HERE) ;
+      if (branche0 == 1) {
+        for (uint32_t i=0 ; i<var ; i++) {
+          inDisplayString.setObjectAtIndex ('X', (int32_t) i COMMA_HERE) ;
+        }
+        printLineWithSeparator (outputStream, inDisplayString) ;
+      }else{
+        internalPrintWithSeparator (outputStream, branche0, inDisplayString, (uint32_t) (inVariableIndex - 1)) ;
+      }
+    }
+  //--- Branche 1
+    const uint32_t branche1 = gNodeArray [nodeIndex].mTHEN ^ complement ;
+    if (branche1 != 0) {
+      inDisplayString.setObjectAtIndex ('1', (int32_t) var COMMA_HERE) ;
+      if (branche1 == 1) {
+        for (uint32_t i=0 ; i<var ; i++) {
+          inDisplayString.setObjectAtIndex ('X', (int32_t) i COMMA_HERE) ;
+        }
+        printLineWithSeparator (outputStream, inDisplayString) ;
+      }else{
+        internalPrintWithSeparator (outputStream, branche1, inDisplayString, (uint32_t) (inVariableIndex - 1)) ;
+      }
+    }
+  }
+}
 
 //-----------------------------------------------------------------------------*
 
@@ -1930,13 +1926,55 @@ void C_BDD::print (AC_OutputStream & outputStream) const {
     const uint32_t nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
     const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
     TC_UniqueArray <char> displayString ((int32_t) var + 1, 'X' COMMA_HERE) ;
-    TC_UniqueArray <C_String> separatorArray ;
     internalPrintWithSeparator (outputStream,
                                 mBDDvalue,
                                 displayString,
-                                separatorArray,
                                 var) ;
   }
+}
+
+//-----------------------------------------------------------------------------*
+
+void C_BDD::printHeader (AC_OutputStream & outputStream) const {
+  if (mBDDvalue > 1) {
+    const uint32_t nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
+    const int32_t var = (int32_t) gNodeArray [nodeIndex].mVariableIndex ;
+  //--- Digit count
+    int32_t digitCount = 0 ;
+    int32_t n = var ;
+    int32_t divisor = 1 ;
+    while (n > 0) {
+      digitCount ++ ;
+      n /= 10 ;
+      divisor *= 10 ;
+    }
+  //---
+    for (int32_t d=0 ; d<digitCount ; d++) {
+      divisor /= 10 ;
+      for (int32_t i=var ; i>=0 ; i--) {
+        if ((i % 4) == 3) {
+          outputStream << " " ;
+        }
+        const int32_t v = (i / divisor) % 10 ;
+        outputStream << cStringWithSigned (v) ;
+      }
+      outputStream << "\n" ;
+    }
+    for (int32_t i=var ; i>=0 ; i--) {
+      if ((i % 4) == 3) {
+        outputStream << "-" ;
+      }
+      outputStream << "-" ;
+    }
+    outputStream << "\n" ;
+  }
+}
+
+//-----------------------------------------------------------------------------*
+
+void C_BDD::printWithHeader (AC_OutputStream & outputStream) const {
+  printHeader (outputStream) ;
+  print (outputStream) ;
 }
 
 //-----------------------------------------------------------------------------*

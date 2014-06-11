@@ -65,6 +65,7 @@ computeNonterminalFollowedByEmpty (const cPureBNFproductionsList & inProductionR
   }
   
 //--- Contruire le bdd, limite aux seuls non terminaux
+  MF_Assert (vocabularyFollowedByEmpty_Array.count () == allSymbolsCount, "vocabularyFollowedByEmpty_Array.count () == %lld != allSymbolsCount = %lld", vocabularyFollowedByEmpty_Array.count (), allSymbolsCount)
   for (int32_t i=inVocabulary.getTerminalSymbolsCount () ; i<allSymbolsCount ; i++) {
     if (vocabularyFollowedByEmpty_Array (i COMMA_HERE)) {
       outVocabularyFollowedByEmpty.orWith (C_Relation (outVocabularyFollowedByEmpty.configuration (), 0, C_BDD::kEqual, (uint32_t) i COMMA_HERE) COMMA_HERE) ;
