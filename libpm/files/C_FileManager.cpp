@@ -179,7 +179,7 @@ bool C_FileManager::binaryDataWithContentOfFile (const C_String & inFilePath,
 //--- Get file size
   int32_t fileSize = 0 ;
   if (ok) {
-    fileSize = (int32_t) (ftell (inputFile) & UINT32_MAX) ;
+    fileSize = (int32_t) (ftell (inputFile) & INT32_MAX) ;
     ok = fileSize != -1 ;
   }
 

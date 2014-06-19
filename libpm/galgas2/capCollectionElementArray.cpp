@@ -117,7 +117,7 @@ void capCollectionElementArray::addObjectAtIndex (const capCollectionElement & i
     mCount ++ ;
   }else{
     C_String s = "insertAtIndex: insertion index (" ;
-    s << inInsertionIndex << ") > length (" << mCount << ")" ;
+    s << cStringWithUnsigned (inInsertionIndex) << ") > length (" << cStringWithUnsigned (mCount) << ")" ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }
 }

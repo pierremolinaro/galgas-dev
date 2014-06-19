@@ -256,7 +256,7 @@ GALGAS_uint GALGAS_double::reader_uint (C_Compiler * inCompiler
     s << ") to @uint" ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
-    result = GALGAS_uint ((uint32_t) (lround (mDoubleValue) & UINT32_MAX)) ;
+    result = GALGAS_uint ((uint32_t) (lround (mDoubleValue) & INT32_MAX)) ;
   }
   return result ;
 }

@@ -11,7 +11,7 @@ static PMDebug * gDebugObject ;
 void noteObjectAllocation (NSObject * inObject) {
   if (nil == gDebugObject) {
     gDebugObject = [PMDebug new] ;
-    #if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_8
+    #ifdef MAC_OS_X_VERSION_10_8
       NSArray * objects = nil ;
       const BOOL ok = [[NSBundle mainBundle] loadNibNamed:@"PMDebug" owner:gDebugObject topLevelObjects:& objects] ;
     #else
@@ -53,7 +53,7 @@ void noteObjectDeallocation (NSObject * inObject) {
 void showAllocationStatsWindow (void) {
   if (nil == gDebugObject) {
     gDebugObject = [PMDebug new] ;
-    #if MAC_OS_X_VERSION_MIN_REQUIRED >= MAC_OS_X_VERSION_10_8
+    #ifdef MAC_OS_X_VERSION_10_8
       NSArray * objects = nil ;
       const BOOL ok = [[NSBundle mainBundle] loadNibNamed:@"PMDebug" owner:gDebugObject topLevelObjects:& objects] ;
     #else
