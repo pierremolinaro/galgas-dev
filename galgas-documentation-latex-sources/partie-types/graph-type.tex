@@ -7,7 +7,11 @@
 
 Le type \galgas{graph} permet de faire des opérations sur les graphes orientés.
 
-Chaque nœud est identifié par un nom qui est une chaîne de caractères (de type \galgas{@string}), et est associé à une information utilisateur de type quelconque.
+Chaque nœud est identifié par un nom qui est une chaîne de caractères (de type \galgas{@string}) ; à chaque nœud sont associées types d'informations :
+\begin{itemize}
+  \item une liste de positions dans des textes sources (liste de \galgas{@location}) ;
+  \item une information utilisateur dont le type est défini par la déclaration du type graphe.
+\end{itemize}
 
 Un arc est identifié par un couple de nœuds.
 
@@ -29,7 +33,7 @@ graph @monGraphe (@uintlist) {
 }
 \end{galgascode}
 
-Si l'information associée est par exemple composée d'un entier et d'une chaîne de caractères, il faut déclarer un type liste :
+Si l'information associée à chaque nœud est composée d'un entier et d'une chaîne de caractères, il faut déclarer un type liste particulier :
 \begin{galgascode}
 list @maListe {
   @uint monInfo1 ;
@@ -44,12 +48,325 @@ graph @monGraphe (@maListe) {
 
 
 
-\section{Entrer les nœuds}
+\section{Constructeur \texttt{emptyGraph}}
+
+\begin{galgascode}
+constructor emptyGraph -> @self ;
+\end{galgascode}
+
+\galgas{emptyGraph} est le seul constructeur d'un graphe. Il instancie un graphe vide.
+
+\begin{galgascode}
+var gr := [@monGraphe emptyGraph] ;
+\end{galgascode}
 
 
 
-\section{Entrer les arcs}
+\section{Construire un graphe}
+
+Trois modifiers permettent de construire un graphe :
+\begin{itemize}
+  \item un \emph{modifier d'insertion} (\refSubsectionPage{modifier-insertion-graphe}), défini par l'utilisateur, réalise l'ajout d'un nœud ;
+  \item le \emph{modifier} \galgas{addEdge} (\refSubsectionPage{modifier-addEdge}), implicitement défini, réalise l'ajout d'un arc ;
+  \item le \emph{modifier} \galgas{noteNode} (\refSubsectionPage{modifier-noteNode}), implicitement défini, indique qu'un nœud doit être défini.
+\end{itemize}
+
+Ces trois modifiers peuvent être appelés dans un ordre quelconque. Il est possible d'entrer un arc alors que ni le nœud origine, ni le nœud destination ne sont définis. Il faudra simplement qu'ils le soient avant que les calculs soient entrepris sur le graphe.
+
+\subsectionLabel{Modifier d'insertion}{modifier-insertion-graphe}
+
+Pour pouvoir entrer un nœud, il faut déclarer explicitement un \emph{modifier d'insertion} :
+\begin{galgascode}
+graph @monGraphe (@maListe) {
+  insert addNode error message "the '%K' node is already declared at %L" ;
+}
+\end{galgascode}
+
+\galgas{addNode} est le nom donné au \emph{modifier} d'insertion de nœud. Comme dans un graphe, un nœud est unique, la chaîne de caractères qui suit \galgas{error message} est le message d'erreur qui est affiché en cas de tentative d'insertion d'un nœud déjà existant. Dans cette chaîne, deux séquences particulières peuvent être utilisées :
+\begin{itemize}
+  \item \colorbox{\couleurCodeGALGAS}{\texttt{\%K}}, qui est remplacée par le nom du nœud ;
+  \item \colorbox{\couleurCodeGALGAS}{\texttt{\%L}}, qui est remplacée par la désignation de l'endroit dans le texte source où est déclaré le nœud déjà existant.
+\end{itemize}
+
+Un modifier d'insertion présente que des arguments d'entrée :
+\begin{itemize}
+  \item le premier est toujours de type \galgas{@lstring} ; la composante \galgas{@string} est le nom du nœud (qui est unique dans un graphe donné), et la composante \galgas{@location} est la position dans le texte source où est déclaré le nœud, et est ajoutée à la liste correspondante du nœud ;
+  \item Les arguments suivants correspondent en nombre et en type aux champs du type liste qui définit les informations associées.
+\end{itemize}
+
+Ainsi, le modifier d'insertion \galgas{addNode} du type de graphe \galgas{@monGraphe} possède trois arguments en entrée ;
+\begin{itemize}
+  \item le premier de type \galgas{@lstring} ;
+  \item le deuxième de type \galgas{@uint}, qui correspond au premier champ \galgas{monInfo1} du type liste \galgas{@maListe} ;
+  \item le troisième de type \galgas{@string}, qui correspond au premier champ \galgas{monInfo2} du type liste \galgas{@maListe}.
+\end{itemize}
+
+Il est par exemple appelé comme suit :
+\begin{galgascode}
+var @lstring lstr := ... ;
+var gr := [@monGraphe emptyGraph] ;
+[!?gr addNode !lstr !0 !"xyz"] ;
+\end{galgascode}
 
 
 
 
+\subsectionLabel{Entrer un arc : modifier \texttt{addEdge}}{modifier-addEdge}
+
+\begin{galgascode}
+modifier addEdge ??@lstring inSourceNode ??@lstring inTargetNode ;
+\end{galgascode}
+
+Pour entrer un arc, appeler le modifier prédéfini \galgas{addEdge}. Celui-ci possède deux arguments d'entrée de type \galgas{@lstring} :
+\begin{itemize}
+  \item le premier spécifie le nœud origine de l'arc ; la composante \galgas{@string} est le nom du nœud origine, et la composante \galgas{@location} est ajoutée à la liste du nœud origine ;
+  \item le second spécifie le nœud destination de l'arc ; la composante \galgas{@string} est le nom du nœud destination, et la composante \galgas{@location} est ajoutée à la liste du nœud destination.
+\end{itemize}
+
+
+
+
+
+
+
+\subsectionLabel{Modifier \texttt{noteNode}}{modifier-noteNode}
+
+\begin{galgascode}
+modifier noteNode ??@lstring inNode ;
+\end{galgascode}
+
+Le modifier prédéfini \galgas{noteNode} permet d'indiquer qu'un nœud doit être défini : il possède un seul argument en entrée, de type \galgas{@lstring}, dont la composante \galgas{@string} désigne le nom du nœud, et dont la composante \galgas{@location} est ajoutée à la liste de ce nœud.
+
+
+
+\section{Enlever des arcs}
+
+Deux \emph{modifiers} permettent d'enlever des arcs à un graphe :
+\begin{itemize}
+  \item le \emph{modifier} \galgas{removeEdgesToNode} (\refSubsectionPage{modifier-graphe-removeEdgesToNode}) retire tous les arcs qui arrivent à un nœud ;
+  \item le \emph{modifier} \galgas{removeEdgesToDominators} (\refSubsectionPage{modifier-graphe-removeEdgesToDominators}) retire tous les arcs qui arrivent à un nœud \emph{dominateur}.
+\end{itemize}
+
+
+
+\subsectionLabel{Modifier \texttt{removeEdgesToNode}}{modifier-graphe-removeEdgesToNode}
+
+\begin{galgascode}
+modifier removeEdgesToNode ??@string inTargetNode ;
+\end{galgascode}
+
+Ce \emph{modifier} ne présente qu'un seul argument, une chaîne qui désigne un nœud du graphe. Son exécution supprime tous les arcs dont le nœud destination est le nœud nommé en argument.
+
+\subsectionLabel{Modifier \texttt{removeEdgesToDominators}}{modifier-graphe-removeEdgesToDominators}
+
+\begin{galgascode}
+modifier removeEdgesToDominators ;
+\end{galgascode}
+
+Dans un graphe, un nœud $d$ domine un autre nœud $n$ si chaque chemin à partir du nœud d'entrée vers le nœud $n$ doit passer par $d$ \footnote{\url{http://en.wikipedia.org/wiki/Dominator_(graph_theory)}}.
+
+Ce \emph{modifier} considère que les nœuds d'entrée sont les nœuds sans prédécesseur, et retire tous les arcs d'un nœud vers son dominateur.
+
+\section{Readers}
+
+\subsection{Reader \texttt{edges}}
+
+\begin{galgascode}
+reader edges -> @2stringlist ;
+\end{galgascode}
+
+Ce reader retourne la liste des arcs.
+
+
+\subsection{Reader \texttt{graphviz}}
+
+\begin{galgascode}
+reader graphviz -> @string ;
+\end{galgascode}
+
+Ce reader retourne une chaîne de caractères contenant une description compatible \emph{GraphViz}\footnote{\url{http://www.graphviz.org/}} du graphe.
+
+
+\subsection{Reader \texttt{keyList}}
+
+\begin{galgascode}
+reader keyList -> @stringlist ;
+\end{galgascode}
+
+Ce reader retourne la liste des noms de nœuds, aussi bien les nœuds définis (c'est à dire les nœuds pour lesquels un modifier d'insertion a été appelé, \refSubsectionPage{modifier-insertion-graphe}), que les nœuds indéfinis.
+
+
+
+\subsection{Reader \texttt{reversedGraph}}
+
+\begin{galgascode}
+reader reversedGraph -> @T ;
+\end{galgascode}
+
+Ce reader retourne un graphe de même type que le receiveur, mais dont les arcs sont inversés.
+
+
+
+
+
+\subsection{Reader \texttt{subgraphFromNode}}
+
+\begin{galgascode}
+reader subgraphFromNode
+  ??@lstringlist inStartNodes
+  ??@stringset inNodesToExclude
+  -> @self ;
+\end{galgascode}
+
+Ce reader retourne le graphe défini par la partie accessible du receveur à partir des nœuds nommés dans \galgas{inStartNodes}, en excluant les nœuds nommés dans \galgas{inNodesToExclude}.
+
+
+
+
+
+
+\subsection{Reader \texttt{undefinedNodeCount}}
+
+\begin{galgascode}
+reader undefinedNodeCount -> @uint ;
+\end{galgascode}
+
+Ce reader retourne le nombre de nœuds indéfinis (c'est à dire les nœuds pour lesquels un modifier d'insertion n'a été appelé, \refSubsectionPage{modifier-insertion-graphe}).
+
+
+
+
+
+
+
+\subsection{Reader \texttt{undefinedNodeKeyList}}
+
+\begin{galgascode}
+reader undefinedNodeKeyList -> @stringlist ;
+\end{galgascode}
+
+Ce reader retourne la liste des noms des nœuds indéfinis (c'est à dire les nœuds pour lesquels un modifier d'insertion n'a été appelé, \refSubsectionPage{modifier-insertion-graphe}).
+
+
+
+
+
+
+
+
+\subsection{Reader \texttt{undefinedNodeReferenceList}}
+
+\begin{galgascode}
+reader undefinedNodeReferenceList -> @lstringlist ;
+\end{galgascode}
+
+Ce reader retourne la liste des références des nœuds indéfinis (c'est à dire les nœuds pour lesquels un modifier d'insertion n'a été appelé, \refSubsectionPage{modifier-insertion-graphe}). Une référence à un nœud est un \galgas{@lstring} dont la chaîne est le nom du nœud, et la composante \galgas{@location} une position dans le texte source, définie par un appel à \galgas{addEdge} (\refSubsectionPage{modifier-addEdge}) ou \galgas{noteNode} (\refSubsectionPage{modifier-noteNode}).
+
+
+
+
+\section{Méthodes}
+
+\subsectionLabel{Méthode \texttt{depthFirstTopologicalSort}}{methode-graphe-depthFirstTopologicalSort}
+
+\begin{galgascode}
+method depthFirstTopologicalSort
+  !@nom_liste_information outSortedInformationList
+  !@lstringlist outSortedKeyList
+  !@nom_liste_information outUnsortedInformationList
+  !@lstringlist outUnsortedKeyList
+;
+\end{galgascode}
+
+Cette méthode effectue un tri topologique du graphe. Tous les arguments sont en sortie :
+\begin{itemize}
+  \item le premier argument \galgas{outSortedInformationList} est la liste triée des informations utilisateur liées aux nœuds ;
+  \item le deuxième \galgas{outSortedKeyList} est la liste triée des noms de nœuds ;
+  \item le troisième \galgas{outUnsortedInformationList} est la liste des informations utilisateur liées aux nœuds qui n'ont pas pu être triés ;
+  \item le dernier \galgas{outUnsortedKeyList} est la liste des noms de nœuds qui n'ont pas pu être triés.
+\end{itemize}
+
+Si le tri échoue, aucun message d'erreur n'est émis ; il suffit de tester le nombre d'éléments du troisième ou du quatrième argument pour savoir si le tri a réussi.
+
+Les deux premiers arguments renvoyés ont le même nombre d'éléments, et correspondent indice par indice. Le premier élément désigne un nœud qui n'a pas de prédecesseur, et le dernier un nœud qui n'a pas de successeur.
+
+
+Les deux derniers arguments renvoyés ont le même nombre d'éléments, et correspondent indice par indice. L'ordre dans lequel les nœuds non triés apparaissent n'est pas défini.
+
+Cette méthode différe de \galgas{topologicalSort} (\refSubsectionPage{methode-graphe-topologicalSort}) par le fait que la liste triée est présentée en privilégiant un parcours en profondeur.
+
+
+
+
+
+
+\subsectionLabel{Méthode \texttt{nodesWithNoPredecessor}}{methode-graphe-nodesWithNoPredecessor}
+
+\begin{galgascode}
+method nodesWithNoPredecessor
+  !@nom_liste_information outInformationList
+  !@lstringlist outKeyList
+;
+\end{galgascode}
+
+Cette méthode renvoie la liste de tous les nœuds sans prédecesseur. Les deux arguments sont en sortie :
+\begin{itemize}
+  \item le premier argument \galgas{outInformationList} est la liste des informations utilisateur liées aux nœuds sans prédécesseur ;
+  \item le second \galgas{outKeyList} est la liste des noms de nœuds sans prédécesseur.
+\end{itemize}
+
+Les deux arguments renvoyés ont le même nombre d'éléments, et correspondent indice par indice.
+
+
+
+
+
+
+\subsectionLabel{Méthode \texttt{nodesWithNoSucccessor}}{methode-graphe-nodesWithNoSucccessor}
+
+\begin{galgascode}
+method nodesWithNoSucccessor
+  !@nom_liste_information outInformationList
+  !@lstringlist outKeyList
+;
+\end{galgascode}
+
+Cette méthode renvoie la liste de tous les nœuds sans successeur. Les deux arguments sont en sortie :
+\begin{itemize}
+  \item le premier argument \galgas{outInformationList} est la liste des informations utilisateur liées aux nœuds sans successeur ;
+  \item le second \galgas{outKeyList} est la liste des noms de nœuds sans successeur.
+\end{itemize}
+
+Les deux arguments renvoyés ont le même nombre d'éléments, et correspondent indice par indice.
+
+
+
+
+
+\subsectionLabel{Méthode \texttt{topologicalSort}}{methode-graphe-topologicalSort}
+
+\begin{galgascode}
+method topologicalSort
+  !@nom_liste_information outSortedInformationList
+  !@lstringlist outSortedKeyList
+  !@nom_liste_information outUnsortedInformationList
+  !@lstringlist outUnsortedKeyList
+;
+\end{galgascode}
+
+Cette méthode effectue un tri topologique du graphe. Tous les arguments sont en sortie :
+\begin{itemize}
+  \item le premier argument \galgas{outSortedInformationList} est la liste triée des informations utilisateur liées aux nœuds ;
+  \item le deuxième \galgas{outSortedKeyList} est la liste triée des noms de nœuds ;
+  \item le troisième \galgas{outUnsortedInformationList} est la liste des informations utilisateur liées aux nœuds qui n'ont pas pu être triés ;
+  \item le dernier \galgas{outUnsortedKeyList} est la liste des noms de nœuds qui n'ont pas pu être triés.
+\end{itemize}
+
+Si le tri échoue, aucun message d'erreur n'est émis ; il suffit de tester le nombre d'éléments du troisième ou du quatrième argument pour savoir si le tri a réussi.
+
+Les deux premiers arguments renvoyés ont le même nombre d'éléments, et correspondent indice par indice. Le premier élément désigne un nœud qui n'a pas de prédecesseur, et le dernier un nœud qui n'a pas de successeur.
+
+
+Les deux derniers arguments renvoyés ont le même nombre d'éléments, et correspondent indice par indice. L'ordre dans lequel les nœuds non triés apparaissent n'est pas défini.
+
+Cette méthode différe de \galgas{depthFirstTopologicalSort} (\refSubsectionPage{methode-graphe-depthFirstTopologicalSort}) par le fait que  l'ordre topologique n'est pas défini.

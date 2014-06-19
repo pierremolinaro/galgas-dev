@@ -3005,7 +3005,6 @@ override method @classDeclarationAST enterDeclarationInGraph
   end if ;
   foreach mAttributeList do
     [!?ioSemanticTypePrecedenceGraph addEdge !key ![@lstring new !"@" . mAttributeTypeName ![mAttributeTypeName location]]] ;
- #   [!?ioSemanticTypePrecedenceGraph noteNode ![@lstring new !"@" . mAttributeTypeName ![mAttributeTypeName location]]] ;
   end foreach ;
 end method ;
 
