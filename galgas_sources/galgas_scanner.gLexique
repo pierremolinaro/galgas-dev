@@ -338,25 +338,6 @@ rule '@' :
   send $type_name$ ; 
 end rule ;
 
-# -------------------------- Variant Name -----------------------------
-
-$variant$ ! tokenString error message "a variant name (\\...)" style variantStyle ;
-
-message incorrectVariantNameError : "in a variant name, a letter should follow the '\\' character" ;
-
-rule '\\' :
-  select
-  when 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
-    repeat
-      enterCharacterIntoString !?tokenString !* ;
-    while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
-    end repeat ;
-  default
-    error incorrectVariantNameError ;
-  end select ;
-  send $variant$ ; 
-end rule ;
-
 #--------------------------------- Character constant ------------------------------------
 $literal_char$ ! charValue error message "a character constant" style characterStyle ;
 

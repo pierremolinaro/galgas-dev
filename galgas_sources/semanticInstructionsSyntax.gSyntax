@@ -665,13 +665,9 @@ rule <foreach_enumerated_object>
   or
     $>$ ;
     enumerationOrder := [@lstring new !"down" !here] ;
-  or
-    $variant$ ? enumerationOrder ;
-    warning here:"obsolete construction : now use '>' or '<'" ;
   end select ;
-  @semanticExpressionAST mEnumeratedExpression ;
-  <expression> ? mEnumeratedExpression ;
-  const @location endOfEnumerationExpression := here ;
+  <expression> ?@semanticExpressionAST mEnumeratedExpression ;
+  const endOfEnumerationExpression := here ;
   @foreachInstructionEnumeratedObjectElementListAST mElementList [emptyList] ;
   @bool mEndsWithEllipsis ;
   @lstring prefix ;
@@ -920,6 +916,10 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+#! IF instruction
+
+#---------------------------------------------------------------------------*
+
 rule <if_branch> !@semanticInstructionAST outInstruction :
   const @location instructionLocation := here ;
   @semanticExpressionAST if_expression ;
@@ -965,9 +965,57 @@ rule <semantic_instruction>
 end rule ;
 
 #---------------------------------------------------------------------------*
+
+#rule <new_if_branch> !@semanticInstructionAST outInstruction :
+#  const instructionLocation := here ;
+#  <expression> ?@semanticExpressionAST if_expression ;
+#  ${$ ;
+#  <semantic_instruction_list> ?@semanticInstructionListAST then_instructionList ;
+#  const endOf_then_branchLocation := here ;
+#  @semanticInstructionListAST else_instructionList ;
+#  select
+#    else_instructionList := [@semanticInstructionListAST emptyList] ;
+#  or
+##    $}$ ;
+#    $else$ ;
+#    ${$ ;
+#    <semantic_instruction_list> ?else_instructionList ;
+#  or
+##    $}$ ;
+#    $elsif$ ;
+#    <new_if_branch> ?@semanticInstructionAST instruction ;
+#    else_instructionList := [@semanticInstructionListAST emptyList] ;
+#    else_instructionList += !instruction ;
+#  end select ;
+#  outInstruction := [@ifInstructionAST new
+#    !instructionLocation
+#    !if_expression
+#    !then_instructionList
+#    !endOf_then_branchLocation
+#    !else_instructionList
+#    !here
+#  ] ;
+#end rule ;
+
+#---------------------------------------------------------------------------*
+
+#rule <semantic_instruction>
+#  !@semanticInstructionAST outInstruction
+#  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
+#:
+#  $if$ ;
+#  <new_if_branch> ?outInstruction ;
+#  $}$ ;
+#end rule ;
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 #    M E T H O D    C A L L    I N S T R U C T I O N                        *
 #                                                                           *
+#---------------------------------------------------------------------------*
+
+#!  Method call instruction
+
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
