@@ -773,7 +773,7 @@ void C_String::componentsSeparatedByString (const C_String & inSeparatorString,
       const utf32 * p = ::utf32_strstr (sourcePtr, separator) ;
       while (p != NULL) {
         C_String s ;
-        s.genericUnicodeArrayOutput (sourcePtr, (int32_t) ((p - sourcePtr) & UINT32_MAX)) ;
+        s.genericUnicodeArrayOutput (sourcePtr, (int32_t) ((p - sourcePtr) & INT32_MAX)) ;
         outResult.addObject (s) ;
         sourcePtr = p + splitStringLength ;
         p = ::utf32_strstr (sourcePtr, separator) ;
@@ -819,7 +819,7 @@ stringByDeletingTailFromString (const C_String & inSearchedString) const {
                                       inSearchedString.utf32String (HERE)) ;
     if (p != NULL) {
       result.setLengthToZero () ;
-      result.genericUnicodeArrayOutput (sourcePtr, (int32_t) ((p - sourcePtr) & UINT32_MAX)) ;
+      result.genericUnicodeArrayOutput (sourcePtr, (int32_t) ((p - sourcePtr) & INT32_MAX)) ;
     }
   }
   return result ;
