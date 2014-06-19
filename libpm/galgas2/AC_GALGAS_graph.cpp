@@ -102,6 +102,7 @@ class cSharedGraph : public C_SharedObject {
                                  COMMA_LOCATION_ARGS) ;
 
   public : void addEdge (const C_String & inSourceNodeKey,
+                         const GALGAS_location & inSourceNodeLocation,
                          const C_String & inTargetNodeKey,
                          const GALGAS_location & inTargetNodeLocation) ;
 
@@ -406,10 +407,10 @@ void cSharedGraph::subGraph (AC_GALGAS_graph & outResultingGraph,
     if (NULL == nodePtr) {
       C_String message = "subgraphFromNodes: '" ;
       message << enumerator1.current_mValue (THERE).mAttribute_string.stringValue() ;
-      message << "' is not a declared node" ;
-      inCompiler->emitSemanticError(enumerator1.current_mValue (THERE).mAttribute_location,
-                                    message
-                                    COMMA_THERE) ;
+      message << "' is not a declared node, cannot start from it" ;
+      inCompiler->emitSemanticError (enumerator1.current_mValue (THERE).mAttribute_location,
+                                     message
+                                     COMMA_THERE) ;
     }else{
       startNodeSet.add (nodePtr->mNodeID) ;
     }
@@ -424,7 +425,7 @@ void cSharedGraph::subGraph (AC_GALGAS_graph & outResultingGraph,
       C_String message = "subgraphFromNodes: '" ;
       message << enumerator2.current_key (THERE).stringValue() ;
       message << "' is not a declared node, cannot be excluded" ;
-      inCompiler->onTheFlySemanticError(message COMMA_THERE) ;
+      inCompiler->onTheFlySemanticError (message COMMA_THERE) ;
     }else{
       nodesToExcludeSet.add (nodePtr->mNodeID) ;
     }
@@ -746,10 +747,14 @@ void AC_GALGAS_graph::modifier_noteNode (const GALGAS_lstring & inKey
 //-----------------------------------------------------------------------------*
 
 void cSharedGraph::addEdge (const C_String & inSourceNodeKey,
+                            const GALGAS_location & inSourceNodeLocation,
                             const C_String & inTargetNodeKey,
                             const GALGAS_location & inTargetNodeLocation) {
   cGraphNode * sourceNode = findOrAddNodeForKey (inSourceNodeKey) ;
+  macroValidPointer (sourceNode) ;
   cGraphNode * targetNode = findOrAddNodeForKey (inTargetNodeKey) ;
+  macroValidPointer (targetNode) ;
+  sourceNode->mReferenceLocationArray.addObject (inSourceNodeLocation) ;
   targetNode->mReferenceLocationArray.addObject (inTargetNodeLocation) ;
   mDirectedGraph.addEdge (sourceNode->mNodeID, targetNode->mNodeID) ;
 }
@@ -764,6 +769,7 @@ void AC_GALGAS_graph::modifier_addEdge (const GALGAS_lstring & inSourceNodeKey,
     MF_Assert (NULL != mSharedGraph, "mSharedGraph == NULL", 0, 0) ;
     if (NULL != mSharedGraph) {
       mSharedGraph->addEdge (inSourceNodeKey.mAttribute_string.stringValue (),
+                             inSourceNodeKey.mAttribute_location,
                              inTargetNodeKey.mAttribute_string.stringValue (),
                              inTargetNodeKey.mAttribute_location) ;
     }

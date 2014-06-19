@@ -275,7 +275,7 @@ static NSArray * gIssueArray ;
     // NSLog (@"%lu for %@", documentData.textSyntaxColoring.displayDescriptorCount, documentData.fileURL) ;
     if (documentData.textSyntaxColoring.displayDescriptorCount == 0) {
       [documentData detach] ;
-      [gDocumentDataDictionary removeObjectForKey:documentData.fileURL] ;
+      [gDocumentDataDictionary removeObjectForKey:documentData.fileURL.path] ;
     }
   }
   if (gDocumentDataDictionary.count == 0) {
@@ -291,7 +291,7 @@ static NSArray * gIssueArray ;
   if (nil == gDocumentDataDictionary) {
     gDocumentDataDictionary = [NSMutableDictionary new] ;
   }
-  OC_GGS_DocumentData * documentData = [gDocumentDataDictionary objectForKey:inDocumentURL] ;
+  OC_GGS_DocumentData * documentData = [gDocumentDataDictionary objectForKey:inDocumentURL.path] ;
   if (nil == documentData) {
     NSFileManager * fm = [NSFileManager new] ;
     if ([fm isReadableFileAtPath:inDocumentURL.path]) {
@@ -299,7 +299,7 @@ static NSArray * gIssueArray ;
         initWithDataFromURL:inDocumentURL
       ] ;
       [documentData setIssueArray:gIssueArray] ;
-      [gDocumentDataDictionary setObject:documentData forKey:inDocumentURL] ;
+      [gDocumentDataDictionary setObject:documentData forKey:inDocumentURL.path] ;
     }
   }
   [documentData setCocoaDocument:inDocument] ;
@@ -309,7 +309,7 @@ static NSArray * gIssueArray ;
 //-----------------------------------------------------------------------------*
 
 + (OC_GGS_DocumentData *) findDocumentDataForFilePath: (NSString *) inFilePath {
-  return [gDocumentDataDictionary objectForKey:[NSURL fileURLWithPath:inFilePath]] ;
+  return [gDocumentDataDictionary objectForKey:inFilePath] ;
 }
 
 //-----------------------------------------------------------------------------*
