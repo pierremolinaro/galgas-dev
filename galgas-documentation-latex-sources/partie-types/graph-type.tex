@@ -4,3 +4,52 @@
 %--------------------------------------------------------------
 \chapter{Le type \texttt{graph}}
 %-------------------------------------------------------------
+
+Le type \galgas{graph} permet de faire des opérations sur les graphes orientés.
+
+Chaque nœud est identifié par un nom qui est une chaîne de caractères (de type \galgas{@string}), et est associé à une information utilisateur de type quelconque.
+
+Un arc est identifié par un couple de nœuds.
+
+
+Un type \galgas{graph} se déclare comme suit :
+\lstset{emph={@nom_du_type_graph, @nom_liste_information}, emphstyle=\emph}
+\begin{galgascode}
+graph @nom_du_type_graph (@nom_liste_information) {
+}
+\end{galgascode}
+
+Le nom \galgas{@nom_du_type_graph} est le nom donné au type. Le nom \galgas{@nom_liste_information} nomme un type qui spécifie l'information utilisateur associée à chaque nœud.
+
+Attention, le type \galgas{@nom_liste_information} est un type \emph{liste}, et l'information utilisateur a pour type l'élement associé, c'est à dire \galgas{@nom_liste_information.element}. 
+
+Par exemple, si l'on veut manipuler des graphes dont l'information associée est un entier \galgas{@uint}, on déclarera :
+\begin{galgascode}
+graph @monGraphe (@uintlist) {
+}
+\end{galgascode}
+
+Si l'information associée est par exemple composée d'un entier et d'une chaîne de caractères, il faut déclarer un type liste :
+\begin{galgascode}
+list @maListe {
+  @uint monInfo1 ;
+  @string monInfo2 ;
+}
+graph @monGraphe (@maListe) {
+}
+\end{galgascode}
+
+
+
+
+
+
+\section{Entrer les nœuds}
+
+
+
+\section{Entrer les arcs}
+
+
+
+

@@ -116,8 +116,10 @@ C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::getMessageForTerminal (const int16_t i
 //-----------------------------------------------------------------------------*
 %
   foreach STRINGS_IN_EXPLICIT_RULES do
+   if [key length] > 0 then
    %\n//--- Unicode string for '$%![key identifierRepresentation]%$'\n%
    %static const utf32 kUnicodeString_%![key identifierRepresentation]% [] = % ![key utf32Representation]% ;\n%
+   end if
   end foreach
 %
 %
