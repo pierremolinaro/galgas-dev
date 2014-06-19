@@ -242,234 +242,205 @@ abstract reader @semanticDeclarationAST keyRepresentation -> @string outString
 #---------------------------------------------------------------------------*
 
 override reader @abstractCategoryModifierAST keyRepresentation
-  ->@string outString
-:
+  ->@string outString {
   outString := "abstract category modifier @" . mTypeName . " " . mAbstractCategoryModifierName ;
-end reader ;
+}
 
 #---------------------------------------------------------------------------*
 
 override reader @categoryModifierAST keyRepresentation
-  ->@string outString
-:
+  ->@string outString {
   outString := "category modifier @" . mTypeName . " " . mCategoryModifierName ;
-end reader ;
+}
 
 #---------------------------------------------------------------------------*
 
 override reader @overridingCategoryModifierAST keyRepresentation
-  ->@string outString
-:
+  ->@string outString {
   outString := "overriding category modifier @" . mTypeName . " " . mOverridingCategoryModifierName ;
-end reader ;
+}
 
 #---------------------------------------------------------------------------*
 
 override reader @overridingAbstractCategoryModifierAST keyRepresentation
-  ->@string outString
-:
+  ->@string outString {
   outString := "overriding category modifier @" . mTypeName . " " . mOverridingCategoryModifierName ;
-end reader ;
+}
 
 #---------------------------------------------------------------------------*
 
 override reader @abstractCategoryMethodAST keyRepresentation
-  ->@string outString
-:
+  ->@string outString {
   outString := "abstract category method @" . mTypeName . " " . mAbstractCategoryMethodName ;
-end reader ;
+}
 
 #---------------------------------------------------------------------------*
 
 override reader @categoryMethodAST keyRepresentation
-  ->@string outString
-:
+  ->@string outString {
   outString := "category method @" . mTypeName . " " . mCategoryMethodName ;
-end reader ;
+}
 
 #---------------------------------------------------------------------------*
 
 override reader @overridingCategoryMethodAST keyRepresentation
-  ->@string outString
-:
+  ->@string outString {
   outString := "overriding category method @" . mTypeName . " " . mOverridingCategoryMethodName ;
-end reader ;
+}
 
 #---------------------------------------------------------------------------*
 
 override reader @overridingAbstractCategoryMethodAST keyRepresentation
-  ->@string outString
-:
+  ->@string outString {
   outString := "overriding category method @" . mTypeName . " " . mOverridingCategoryMethodName ;
-end reader ;
+}
 
 #---------------------------------------------------------------------------*
 
 override reader @abstractCategoryReaderAST keyRepresentation
-  ->@string outString
-:
+  ->@string outString {
   outString := "abstract category reader @" . mTypeName . " " . mAbstractCategoryReaderName ;
-end reader ;
+}
 
 #---------------------------------------------------------------------------*
 
 override reader @categoryReaderAST keyRepresentation
-  ->@string outString
-:
+  ->@string outString {
   outString := "category reader @" . mTypeName . " " . mCategoryReaderName ;
-end reader ;
+}
 
 #---------------------------------------------------------------------------*
 
 override reader @overridingCategoryReaderAST keyRepresentation
-  ->@string outString
-:
+  ->@string outString {
   outString := "overriding category reader @" . mTypeName . " " . mOverridingCategoryReaderName ;
-end reader ;
+}
 
 #---------------------------------------------------------------------------*
 
 override reader @overridingAbstractCategoryReaderAST keyRepresentation
-  ->@string outString
-:
+  ->@string outString {
   outString := "overriding category reader @" . mTypeName . " " . mAbstractCategoryReaderName ;
-end reader ;
+}
 
 #---------------------------------------------------------------------------*
 
 override reader @predefinedTypeAST keyRepresentation
-  ->@string outString
-:
+  ->@string outString {
   outString := "predefined type @" . mPredefinedTypeName ;
-end reader ;
+}
 
 #---------------------------------------------------------------------------*
 
 override reader @uniqueMapDeclarationAST keyRepresentation
-  ->@string outString
-:
+  ->@string outString {
   outString := "unique map @" . mMapTypeName ;
-end reader ;
+}
 
 #---------------------------------------------------------------------------*
 
 override reader @mapDeclarationAST keyRepresentation
-  ->@string outString
-:
+  ->@string outString {
   outString := "map @" . mMapTypeName ;
-end reader ;
+}
 
 #---------------------------------------------------------------------------*
 
 override reader @mapProxyDeclarationAST keyRepresentation
-  ->@string outString
-:
+  ->@string outString {
   outString := "map proxy @" . mMapProxyTypeName ;
-end reader ;
+}
 
 #---------------------------------------------------------------------------*
 
 override reader @enumDeclarationAST keyRepresentation
-  ->@string outString
-:
+  ->@string outString {
   outString := "enum @" . mEnumTypeName ;
-end reader ;
+}
 
 #---------------------------------------------------------------------------*
 
 override reader @sortedListDeclarationAST keyRepresentation
-  ->@string outString
-:
+  ->@string outString {
   outString := "sorted list @" . mSortedListTypeName ;
-end reader ;
+}
 
 #---------------------------------------------------------------------------*
 
 override reader @structDeclarationAST keyRepresentation
-  ->@string outString
-:
+  ->@string outString {
   outString := "struct @" . mStructTypeName ;
-end reader ;
+}
 
 #---------------------------------------------------------------------------*
 
 override reader @listDeclarationAST keyRepresentation
-  ->@string outString
-:
+  ->@string outString {
   outString := "list @" . mListTypeName ;
-end reader ;
+}
 
 #---------------------------------------------------------------------------*
 
 override reader @classDeclarationAST keyRepresentation
-  ->@string outString
-:
+  ->@string outString {
   outString := "class @" . mClassTypeName ;
-end reader ;
+}
 
 #---------------------------------------------------------------------------*
 
 override reader @arrayDeclarationAST keyRepresentation
-  ->@string outString
-:
+  ->@string outString {
   outString := "array @" . mArrayTypeName ;
-end reader ;
+}
 
 #---------------------------------------------------------------------------*
 
 override reader @listmapDeclarationAST keyRepresentation
-  ->@string outString
-:
+  ->@string outString {
   outString := "listmap @" . mListmapTypeName ;
-end reader ;
+}
 
 #---------------------------------------------------------------------------*
 
 override reader @filewrapperDeclarationAST keyRepresentation
-  ->@string outString
-:
+  ->@string outString {
   outString := "filewrapper @" . mFilewrapperName ;
-end reader ;
+}
 
 #---------------------------------------------------------------------------*
 
 override reader @graphDeclarationAST keyRepresentation
-  ->@string outString
-:
+  ->@string outString {
   outString := "graph @" . mGraphTypeName ;
-end reader ;
+}
 
 #---------------------------------------------------------------------------*
 
 override reader @externTypeDeclarationAST keyRepresentation
-  ->@string outString
-:
+  ->@string outString {
   outString := "extern @" . mExternTypeName ;
-end reader ;
+}
 
 #---------------------------------------------------------------------------*
 
 override reader @onceFunctionDeclarationAST keyRepresentation
-  ->@string outString
-:
+  ->@string outString {
   outString := "once function " . mFunctionName ;
-end reader ;
+}
 
 #---------------------------------------------------------------------------*
 
 override reader @externFunctionDeclarationAST keyRepresentation
-  ->@string outString
-:
+  ->@string outString {
   outString := "extern function " . mFunctionName ;
-end reader ;
+}
 
 #---------------------------------------------------------------------------*
 
 override reader @externRoutineDeclarationAST keyRepresentation
-  ->@string outString
-:
+  ->@string outString {
   outString := "extern routine " . mRoutineName ;
-end reader ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -693,7 +664,7 @@ end method;
 
 reader @predefinedTypeKindEnum defaultConstructorName
   -> @string outName
-:
+{
   switch selfcopy
   when predefined_bool, predefined_char,
        predefined_double, predefined_sint, predefined_sint64,
@@ -709,7 +680,7 @@ reader @predefinedTypeKindEnum defaultConstructorName
   when predefined_object : outName := "" ;
   when predefined_filewrapper : outName := "" ;
   end switch ;
-end reader ;
+}
 
 #---------------------------------------------------------------------------*
 

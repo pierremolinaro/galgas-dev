@@ -339,7 +339,7 @@ rule <semantic_instruction>
     !typeName
     !variableName
   ] ;
-  if [option galgas_cli_options.warnsOnOldStyleConstantDeclaration value] then
+  if [option galgas_cli_options.warnsOnDeprecatedConstructInGALGAS3 value] then
     warning variableName : "This construction is deprecated in GALGAS 2.6.0 and above: replace with \"var "
      . variableName . " := [@" . typeName . " default] ;" ;
   end if ;
@@ -368,9 +368,9 @@ rule <semantic_instruction>
     !expressionList
   ] ;
   $]$ ;
-  if [option galgas_cli_options.warnsOnOldStyleConstantDeclaration value] then
+  if [option galgas_cli_options.warnsOnDeprecatedConstructInGALGAS3 value] then
     warning variableName : "This construction is deprecated in GALGAS 2.6.0 and above: replace with \"var "
-     . variableName . " := [@" . typeName . " constructor...] ;" ;
+     . variableName . " := [@" . typeName . " constructor...] ;\"" ;
   end if ;
   $;$ ;
 end rule ;
@@ -424,7 +424,7 @@ rule <semantic_instruction>
     !constructorName
     !expressionList
   ] ;
-  if [option galgas_cli_options.warnsOnOldStyleConstantDeclaration value] then
+  if [option galgas_cli_options.warnsOnDeprecatedConstructInGALGAS3 value] then
     warning variableName : "This construction is deprecated in GALGAS 2.6.0 and above: replace with \"const "
      . variableName . " := [@" . typeName . " constructor...] ;" ;
   end if ;
@@ -449,7 +449,7 @@ rule <semantic_instruction>
     !typeName
     !variableName
   ] ;
-  if [option galgas_cli_options.warnsOnOldStyleConstantDeclaration value] then
+  if [option galgas_cli_options.warnsOnDeprecatedConstructInGALGAS3 value] then
     warning variableName : "This construction is deprecated in GALGAS 2.6.0 and above: replace with \"const "
      . variableName . " := [@" . typeName . " default] ;" ;
   end if ;

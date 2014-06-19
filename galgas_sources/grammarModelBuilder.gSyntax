@@ -58,14 +58,9 @@ rule <grammar_component_start_symbol>
   repeat
   while
     $label$ ;
-    select
-      $identifier$ ?@lstring labelName ;
-      <grammar_start_symbol_label> !labelName !?mLabelList ;
-    or
-      $parse$ ;
-      warning here : "obsolete construction: 'parse' label is from now implicite" ;
-    end select ;
-  end repeat ;
+    $identifier$ ?@lstring labelName ;
+    <grammar_start_symbol_label> !labelName !?mLabelList ;
+   end repeat ;
   $;$ ;
 #--- Unused non terminal symbols
   @lstringlist mUnusedNonterminalList [emptyList] ;
