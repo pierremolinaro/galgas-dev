@@ -39,11 +39,6 @@ nonterminal <semantic_declaration>
 rule <program_component_start_symbol> !@programComponentAST outProgramComponentRoot :
   $program$ ;
   $identifier$ ? @lstring mProgramName ;
-  select
-    $literal_string$ ? @lstring x ;
-    warning x: "This construct is obsolete in GALGAS 2.4.3 and later: version is defined in project file." ;
-  or
-  end select ;
   $:$ ;
 #--- Loop on import declarations
   @lstringlist importedComponentFileNameList [emptyList] ;

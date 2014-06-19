@@ -131,14 +131,9 @@ rule <nonterminal_declaration> ?!@nonterminalDeclarationListAST ioNonterminalDec
   repeat
   while
     $label$ ;
-    select
-      @lstring labelName ;
-      $identifier$ ?labelName ;
-      <nonterminal_label_declaration> !labelName !?mLabels ;
-    or
-      $parse$ ;
-      warning here : "obsolete construction: 'parse' label is from now implicite" ;
-    end select ;
+    @lstring labelName ;
+    $identifier$ ?labelName ;
+    <nonterminal_label_declaration> !labelName !?mLabels ;
   end repeat ;
   $;$ ;
   ioNonterminalDeclarationList +=

@@ -2,7 +2,7 @@
 #                                                                           *
 #  'syntax' component parser, as model builder                              *
 #                                                                           *
-#  Copyright (C) 2007, ..., 2010 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2014 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -50,28 +50,8 @@ rule <semantics_component_start_symbol>
   repeat
   while
     $import$ ;
-    select
-      $literal_string$ ? @lstring importedComponentFileName ;
-      mImportedComponentFileNameList += !importedComponentFileName ;
-    or
-      $semantics$ ;
-      $identifier$ ?* ;
-      warning here:"obsolete GALGAS 1 'import' declaration: useless in GALGAS 2" ;
-      $in$ ;
-      $literal_string$ ?* ;
-    or
-      $grammar$ ;
-      $identifier$ ?* ;
-      warning here:"obsolete GALGAS 1 'import' declaration: useless in GALGAS 2" ;
-      $in$ ;
-      $literal_string$ ?* ;
-    or
-      $option$ ;
-      $identifier$ ?* ;
-      warning here:"obsolete GALGAS 1 'import' declaration: useless in GALGAS 2" ;
-      $in$ ;
-      $literal_string$ ?* ;
-    end select ;
+    $literal_string$ ? @lstring importedComponentFileName ;
+    mImportedComponentFileNameList += !importedComponentFileName ;
     $;$ ;
   while
     <semantic_declaration> !?mSemanticDeclarations ;
