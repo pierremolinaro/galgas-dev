@@ -29,7 +29,7 @@ import "lexiqueCompilation.gSemantics" ;
 function transformLabelMap
   ??@nonTerminalLabelListAST inLabels
   -> @nonterminalSymbolLabelMapForGrammarAnalysis outNonterminalSymbolLabelMapForGrammarAnalysis
-:
+{
   outNonterminalSymbolLabelMapForGrammarAnalysis := [@nonterminalSymbolLabelMapForGrammarAnalysis emptyMap] ;
   foreach inLabels do
     @signatureForGrammarAnalysis formalParametersList [emptyList] ;
@@ -41,7 +41,7 @@ function transformLabelMap
       !formalParametersList
     ] ;
   end foreach ;
-end function ;
+}
 
 
 #---------------------------------------------------------------------------*

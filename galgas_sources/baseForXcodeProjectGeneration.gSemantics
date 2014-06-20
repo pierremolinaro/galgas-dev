@@ -32,10 +32,9 @@ abstract method @Xcode_PBXFileReference_abstract buildXcodeProject ?!@string out
 
 function getPBXFileReferenceKey
   ??@uint inSequenceNumber
-  -> @string outResult
-:
+  -> @string outResult {
   outResult := [[[inSequenceNumber string] md5] rightSubString!24] ;
-end function ;
+}
 
 #---------------------------------------------------------------------------*
 

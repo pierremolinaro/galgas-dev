@@ -34,23 +34,13 @@ rule <project_component_start_symbol>
 :
   $project$ ;
   $identifier$ ? @lstring projectName ;
-  @luint majorVersion ;
-  @luint minorVersion ;
-  @luint revisionVersion ;
-  select
-    majorVersion := [@luint new !0 !here] ;
-    minorVersion := [@luint new !0 !here] ;
-    revisionVersion := [@luint new !0 !here] ;
-    warning here: "required from GALGAS 2.4.3: the project version '(n:p:q)', where n, p and q are unsigned integer constants representing respectivly major version, minor version and revision." ;
-  or
-    $($ ;
-    $unsigned_literal_integer$ ? majorVersion ;
-    $:$ ;
-    $unsigned_literal_integer$ ? minorVersion ;
-    $:$ ;
-    $unsigned_literal_integer$ ? revisionVersion ;
-    $)$ ;
-  end select ;
+  $($ ;
+  $unsigned_literal_integer$ ?@luint majorVersion ;
+  $:$ ;
+  $unsigned_literal_integer$ ?@luint minorVersion ;
+  $:$ ;
+  $unsigned_literal_integer$ ?@luint revisionVersion ;
+  $)$ ;
   $->$ ;
   $literal_string$ ? @lstring targetName ;
   $:$ ;

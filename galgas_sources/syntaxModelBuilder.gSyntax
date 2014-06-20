@@ -87,7 +87,7 @@ rule <syntax_component_start_symbol> !@syntaxComponentAST outSyntaxComponentRoot
   end repeat ;
 #--- end
   $end$ ;
-  const @location endOfSource := here ;
+  const endOfSource := here ;
   $syntax$ ;
   $;$ ;
   outSyntaxComponentRoot := [@syntaxComponentAST new
@@ -307,20 +307,18 @@ rule <syntax_instruction>
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $repeat$ ;
-  @location mRepeatInstructionLocation := here ;
-  @syntaxInstructionList mRepeatedInstructionList ;
-  <syntax_instruction_list> ? mRepeatedInstructionList ;
-  const @location endOf_repeated_instructions := here ;
+  const mRepeatInstructionLocation := here ;
+  <syntax_instruction_list> ??@syntaxInstructionList mRepeatedInstructionList ;
+  const endOf_repeated_instructions := here ;
   @listOfSyntaxInstructionList mRepeatBranchList [emptyList] ;
   repeat
     $while$ ;
-    @syntaxInstructionList mInstructionList ;
-    <syntax_instruction_list> ? mInstructionList ;
+    <syntax_instruction_list> ??@syntaxInstructionList mInstructionList ;
     mRepeatBranchList += ! mInstructionList !here ;
   while
   end repeat ;
   $end$ ;
-  const @location endOf_repeat_instruction := here ;
+  const endOf_repeat_instruction := here ;
   $repeat$ ;
   $;$ ;
   outInstruction := [@repeatInstruction new
@@ -343,19 +341,18 @@ rule <syntax_instruction>
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $select$ ;
-  @location mSelectInstructionLocation := here ;
+  const mSelectInstructionLocation := here ;
   @listOfSyntaxInstructionList mSelectBranchList [emptyList] ;
-  @syntaxInstructionList instructionList ;
-  <syntax_instruction_list> ? instructionList ;
-  mSelectBranchList += !instructionList !here ;
+  <syntax_instruction_list> ??@syntaxInstructionList il ;
+  mSelectBranchList += !il !here ;
   repeat
     $or$ ;
-    <syntax_instruction_list> ? instructionList ;
+    <syntax_instruction_list> ??@syntaxInstructionList instructionList ;
     mSelectBranchList += !instructionList !here ;
   while
   end repeat ;
   $end$ ;
-  const @location endOf_select_instruction := here ;
+  const endOf_select_instruction := here ;
   $select$ ;
   $;$ ;
   outInstruction := [@selectInstruction new
@@ -376,20 +373,19 @@ rule <syntax_instruction>
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $parse$ ;
-  const @location instructionLocation := here ;
+  const instructionLocation := here ;
   $do$ ;
   @listOfSyntaxInstructionList mParseDoBranchList [emptyList] ;
-  @syntaxInstructionList instructionList ;
-  <syntax_instruction_list> ? instructionList ;
-  mParseDoBranchList += !instructionList !here ;
+  <syntax_instruction_list> ??@syntaxInstructionList il ;
+  mParseDoBranchList += !il !here ;
   repeat
     $rewind$ ;
-    <syntax_instruction_list> ? instructionList ;
+    <syntax_instruction_list> ??@syntaxInstructionList instructionList ;
     mParseDoBranchList += !instructionList  !here;
   while
   end repeat ;
   $end$ ;
-  const @location endOfInstruction := here ;
+  const endOfInstruction := here ;
   $parse$ ;
   $;$ ;
   outInstruction := [@parseRewindInstruction new
@@ -449,19 +445,16 @@ rule <syntax_instruction>
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $parse$ ;
-  const @location instructionLocation := here ;
+  const instructionLocation := here ;
   $when$ ;
-  @semanticExpressionAST whenExpression ;
-  <expression> ? whenExpression ;
-  const @location endOfWhenExpression := here ;
+  <expression> ?@semanticExpressionAST whenExpression ;
+  const endOfWhenExpression := here ;
   $:$ ;
-  @syntaxInstructionList whenInstructionList ;
-  <syntax_instruction_list> ? whenInstructionList ;
-  const @location endOfWhenInstructions := here ;
+  <syntax_instruction_list> ??@syntaxInstructionList whenInstructionList ;
+  const endOfWhenInstructions := here ;
 #--- Else part
-  @syntaxInstructionList elseInstructionList ;
-  <branchOfParseWhenInstruction> ? elseInstructionList ;
-  const @location endOfElseInstructions := here ;
+  <branchOfParseWhenInstruction> ??@syntaxInstructionList elseInstructionList ;
+  const endOfElseInstructions := here ;
   $end$ ;
   $parse$ ;
   $;$ ;
@@ -487,20 +480,17 @@ rule <syntax_instruction>
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $parse$ ;
-  const @location instructionLocation := here ;
+  const instructionLocation := here ;
   $loop$ ;
-  @semanticExpressionAST variantExpression ;
-  <expression> ? variantExpression ;
-  const @location endOfVariantExpression := here ;
+  <expression> ??@semanticExpressionAST variantExpression ;
+  const endOfVariantExpression := here ;
   $while$ ;
-  @semanticExpressionAST whileExpression ;
-  <expression> ? whileExpression ;
-  const @location endOfWhileExpression := here ;
+  <expression> ??@semanticExpressionAST whileExpression ;
+  const endOfWhileExpression := here ;
   $do$ ;
-  @syntaxInstructionList instructionList ;
-  <syntax_instruction_list> ? instructionList ;
+  <syntax_instruction_list> ??@syntaxInstructionList instructionList ;
   $end$ ;
-  const @location endOfInstructionList := here ;
+  const endOfInstructionList := here ;
   $parse$ ;
   $;$ ;
   outInstruction := [@parseLoopInstruction new

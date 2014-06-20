@@ -755,8 +755,7 @@ end method ;
 function checkReaderImplementationInSuperClasses
   ??@lstring inReaderName
   ??@unifiedTypeMapProxy inSuperClass
-  -> @string outResult
-:
+  -> @string outResult {
   if [inSuperClass isNull] then
     outResult := "" ;
   else
@@ -771,7 +770,7 @@ function checkReaderImplementationInSuperClasses
       outResult := checkReaderImplementationInSuperClasses [!inReaderName ![inSuperClass mSuperType]] ;
     end switch ;
   end if ;
-end function ;
+}
 
 #---------------------------------------------------------------------------*
 
