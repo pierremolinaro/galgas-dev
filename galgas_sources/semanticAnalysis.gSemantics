@@ -2222,8 +2222,7 @@ end method ;
 
 function buildPredefinedTypes
   ??@semanticContext inSemanticContext
-  ->@predefinedTypes outPredefinedTypes
-:
+  ->@predefinedTypes outPredefinedTypes {
   outPredefinedTypes := [@predefinedTypes new
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"location" !here]]
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"bool" !here]]
@@ -2243,7 +2242,7 @@ function buildPredefinedTypes
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"lsint64" !here]]
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"ldouble" !here]]
   ] ;
-end function ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *

@@ -110,17 +110,16 @@ abstract method @semanticInstructionForGeneration generateInstruction
 function generateRoutineBody
   ??@bool inGenerateCheckValid
   ??@semanticInstructionListForGeneration inInstructionList
-  ->@string outGeneratedCode
-:
+  ->@string outGeneratedCode {
   @stringset unusedVariableCppNameSet [emptySet] ;
   outGeneratedCode := "" ;
   @uint temporaryVariableIndex := 0 ;
   [!?outGeneratedCode incIndentation !2] ;
-  foreach inInstructionList do
-    [mInstruction generateInstruction !inGenerateCheckValid !?temporaryVariableIndex !?unusedVariableCppNameSet !?outGeneratedCode] ;
-  end foreach ;
+  for element in inInstructionList do
+    [element->mInstruction generateInstruction !inGenerateCheckValid !?temporaryVariableIndex !?unusedVariableCppNameSet !?outGeneratedCode] ;
+  end for ;
   [!?outGeneratedCode decIndentation !2] ;
-end function ;
+}
 
 #---------------------------------------------------------------------------*
 
@@ -129,14 +128,13 @@ routine generateInstructionList
   ??@semanticInstructionListForGeneration inInstructionList
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
-  ?!@string ioGeneratedCode
-:
+  ?!@string ioGeneratedCode {
   [!?ioGeneratedCode incIndentation !2] ;
-  foreach inInstructionList do
-    [mInstruction generateInstruction !inGenerateCheckValid !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet !?ioGeneratedCode] ;
-  end foreach ;
+  for element in inInstructionList do
+    [element->mInstruction generateInstruction !inGenerateCheckValid !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet !?ioGeneratedCode] ;
+  end for ;
   [!?ioGeneratedCode decIndentation !2] ;
-end routine ;
+}
 
 #---------------------------------------------------------------------------*
 

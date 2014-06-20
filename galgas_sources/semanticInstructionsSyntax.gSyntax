@@ -110,6 +110,10 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+#! Routine declaration
+
+#---------------------------------------------------------------------------*
+
 rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
@@ -136,30 +140,81 @@ rule <semantic_declaration>
 end rule ;
 
 #---------------------------------------------------------------------------*
-#                                                                           *
-#    F U N C T I O N    D E C L A R A T I O N                               *
-#                                                                           *
-#---------------------------------------------------------------------------*
 
 rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
   @bool isGlobal ;
   <local_declaration> ?isGlobal ;
+  $routine$ ;
+  $identifier$ ? @lstring mRoutineName indexing routineDefinition ;
+  <formal_parameter_list> ?@formalParameterListAST mFormalParameterList ;
+  ${$ ;
+  <semantic_instruction_list> ?@semanticInstructionListAST mRoutineInstructionList ;
+  $}$ ;
+  const endOfInstructionList := here ;
+  ioSemanticDeclarations += ![@routineDeclarationAST new
+    !isGlobal
+    !mRoutineName
+    !mFormalParameterList
+    !mRoutineInstructionList
+    !endOfInstructionList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    F U N C T I O N    D E C L A R A T I O N                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! Function declaration
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations
+:
+  <local_declaration> ?@bool isGlobal ;
   $function$ ;
   $identifier$ ? @lstring mRoutineName indexing functionDefinition ;
-  @formalInputParameterListAST formalInputParameterList ;
-  <formal_input_parameter_list> ? formalInputParameterList ;
+  <formal_input_parameter_list> ?@formalInputParameterListAST formalInputParameterList ;
   $->$ ;
   $type_name$ ?@lstring resultTypeName ;
   $identifier$ ?@lstring resultVariableName ;
   $:$ ;
-  @semanticInstructionListAST functionInstructionList ;
-  <semantic_instruction_list> ? functionInstructionList ;
+  <semantic_instruction_list> ?@semanticInstructionListAST functionInstructionList ;
   $end$ ;
-  const @location endOfFunctionInstructionList := here ;
+  const endOfFunctionInstructionList := here ;
   $function$ ;
   $;$ ;
+  ioSemanticDeclarations += ![@functionDeclarationAST new
+    !isGlobal
+    !mRoutineName
+    !formalInputParameterList
+    !resultTypeName
+    !resultVariableName
+    !functionInstructionList
+    !endOfFunctionInstructionList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations
+:
+  <local_declaration> ?@bool isGlobal ;
+  $function$ ;
+  $identifier$ ? @lstring mRoutineName indexing functionDefinition ;
+  <formal_input_parameter_list> ?@formalInputParameterListAST formalInputParameterList ;
+  $->$ ;
+  $type_name$ ?@lstring resultTypeName ;
+  $identifier$ ?@lstring resultVariableName ;
+  ${$ ;
+  <semantic_instruction_list> ?@semanticInstructionListAST functionInstructionList ;
+  $}$ ;
+  const endOfFunctionInstructionList := here ;
   ioSemanticDeclarations += ![@functionDeclarationAST new
     !isGlobal
     !mRoutineName
@@ -177,23 +232,50 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+#! once declaration
+
+#---------------------------------------------------------------------------*
+
 rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
-  @bool isGlobal ;
-  <local_declaration> ?isGlobal ;
+  <local_declaration> ??@bool isGlobal ;
   $once$ ;
   $identifier$ ? @lstring mRoutineName indexing functionDefinition ;
   $->$ ;
   $type_name$ ?@lstring resultTypeName ;
   $identifier$ ?@lstring resultVariableName ;
   $:$ ;
-  @semanticInstructionListAST mRoutineInstructionList ;
-  <semantic_instruction_list> ? mRoutineInstructionList ;
+  <semantic_instruction_list> ??@semanticInstructionListAST mRoutineInstructionList ;
   $end$ ;
   $once$ ;
   const @location endOfFunctionInstructionList := here ;
   $;$ ;
+  ioSemanticDeclarations += ![@onceFunctionDeclarationAST new
+    !isGlobal
+    !mRoutineName
+    !resultTypeName
+    !resultVariableName
+    !mRoutineInstructionList
+    !endOfFunctionInstructionList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations
+:
+  <local_declaration> ??@bool isGlobal ;
+  $once$ ;
+  $identifier$ ? @lstring mRoutineName indexing functionDefinition ;
+  $->$ ;
+  $type_name$ ?@lstring resultTypeName ;
+  $identifier$ ?@lstring resultVariableName ;
+  ${$ ;
+  <semantic_instruction_list> ??@semanticInstructionListAST mRoutineInstructionList ;
+  $}$ ;
+  const @location endOfFunctionInstructionList := here ;
   ioSemanticDeclarations += ![@onceFunctionDeclarationAST new
     !isGlobal
     !mRoutineName
