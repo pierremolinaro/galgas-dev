@@ -7,53 +7,73 @@
 
 
 
-\sectionLabel{Cible}{ciblePour Instruction}
-
-\lstset{emph={cible}, emphstyle=\emph}
-
-La notation \galgas{cible} apparaît dans plusieurs instructions :
-\begin{itemize}
-  \item l'instruction d'affectation (\refSectionPage{assignmentInstruction}) ;
-\end{itemize}
-
-Cette notation est décrite par le diagramme syntaxique de la \refFigure{}{diagrammeSyntaxiqueCible}.
-
-\begin{figure}[!ht]
-  \centering
-  \small
-  \begin{tikzpicture}[
-      point/.style={coordinate},
-      nonterminal/.style={rectangle, minimum size=6mm, very thick, draw=red!50!black!50, top color=white, bottom color=red!50!black!20, font=\it},
-      terminal/.style={rectangle, rounded corners=3mm, minimum size=6mm, very thick, draw=black!50, top color=white, bottom color=black!20, font=\ttfamily}
-    ]
-    \matrix[row sep=1mm,column sep=5mm] {
-      \node (a) [nonterminal] {cible} ; &
-      \node (start) {} ; &
-      \node (idf) [terminal] {identificateur} ; &
-      \node (p1)[point] {} ; &
-      \node (fleche) [terminal] {->} ; &
-      \node (idf2) [terminal] {identificateur} ; &
-      \node (p2)[point] {} ; &
-      \node (p3)[point] {} ; &
-      \node (end) {} ;\\
-    } ;
-    \draw [o-stealth] (start) -- (idf) ;
-    \draw [-stealth] (idf) -- (fleche) ;
-    \draw [-stealth] (fleche) -- (idf2) ;
-    \draw [-stealth] (idf2) -- (p2) ;
-    \draw [-stealth] (p1) -- +(0, 0.8) -| (p3) -- (end) ;
-    \draw [-stealth] (p2) -- +(0, -0.8) -| (p1) ;
-  \end{tikzpicture}
-  \caption{Diagramme syntaxique de \texttt{cible}}
-  \labelFigure{diagrammeSyntaxiqueCible}
-\end{figure}
-
-Un identificateur seul représente une variable. 
+%\sectionLabel{Cible}{ciblePour Instruction}
+%
+%\lstset{emph={cible}, emphstyle=\emph}
+%
+%La notation \galgas{cible} apparaît dans plusieurs instructions :
+%\begin{itemize}
+%  \item l'instruction d'affectation (\refSectionPage{assignmentInstruction}) ;
+%\end{itemize}
+%
+%Cette notation est décrite par le diagramme syntaxique de la \refFigure{}{diagrammeSyntaxiqueCible}.
+%
+%\begin{figure}[!ht]
+%  \centering
+%  \small
+%  \begin{tikzpicture}[
+%      point/.style={coordinate},
+%      nonterminal/.style={rectangle, minimum size=6mm, very thick, draw=red!50!black!50, top color=white, bottom color=red!50!black!20, font=\it},
+%      terminal/.style={rectangle, rounded corners=3mm, minimum size=6mm, very thick, draw=black!50, top color=white, bottom color=black!20, font=\ttfamily}
+%    ]
+%    \matrix[row sep=1mm,column sep=5mm] {
+%      \node (a) [nonterminal] {cible} ; &
+%      \node (start) {} ; &
+%      \node (idf) [terminal] {identificateur} ; &
+%      \node (p1)[point] {} ; &
+%      \node (fleche) [terminal] {->} ; &
+%      \node (idf2) [terminal] {identificateur} ; &
+%      \node (p2)[point] {} ; &
+%      \node (p3)[point] {} ; &
+%      \node (end) {} ;\\
+%    } ;
+%    \draw [o-stealth] (start) -- (idf) ;
+%    \draw [-stealth] (idf) -- (fleche) ;
+%    \draw [-stealth] (fleche) -- (idf2) ;
+%    \draw [-stealth] (idf2) -- (p2) ;
+%    \draw [-stealth] (p1) -- +(0, 0.8) -| (p3) -- (end) ;
+%    \draw [-stealth] (p2) -- +(0, -0.8) -| (p1) ;
+%  \end{tikzpicture}
+%  \caption{Diagramme syntaxique de \texttt{cible}}
+%  \labelFigure{diagrammeSyntaxiqueCible}
+%\end{figure}
+%
+%Un identificateur seul représente une variable. 
 
 \sectionLabel{Append Instruction}{appendInstruction}
 
 
-\sectionLabel{Assignment Instruction}{assignmentInstruction}
+\sectionLabel{Instruction d'affectation}{assignmentInstruction}
+
+L'instruction d'affectation peut prendre plusieurs formes. La plus courante est :
+\lstset{emph={expression, variable}, emphstyle=\emph}
+\begin{galgascode}
+variable := expression ;
+\end{galgascode}
+
+Si \galgas{variable} est une instance de structure (\refChapterPage{type-structure}), on peut directement en modifier un champ en utilisant l'opérateur \galgas{->} :
+\lstset{emph={expression, variable, champ}, emphstyle=\emph}
+\begin{galgascode}
+variable->champ := expression ;
+\end{galgascode}
+
+Si \galgas{champ} est lui-même une structure, on peut accéder à l'un de ses champs (et ainsi de suite) :
+\lstset{emph={expression, variable, champ, champ1}, emphstyle=\emph}
+\begin{galgascode}
+variable->champ->champ1 := expression ;
+\end{galgascode}
+
+
 
 
 \sectionLabel{L'instruction \texttt{cast}}{instructionCast}
@@ -127,7 +147,161 @@ Chaque variable nommée est placée dans l'état \emph{non construit}.
 
 
 
-\section{L'instruction \texttt{for}}
+%-----------------------------------------------------------------------------------
+
+\sectionLabel{L'instruction \texttt{for}}{instructionFor}
+
+L'instruction \galgas{for} permet d'énumérer :
+\begin{itemize}
+  \item une collection ;
+  \item plusieurs collections de manière synchrone.
+\end{itemize}
+
+\subsection{Présentation}
+
+Pour énumérer une collection, la syntaxe est la suivante :
+
+\lstset{emph={expression, sens, condition, nom_index, instructions_before, instructions_between, instructions_after, instructions\_do, expression1, sens1, expression2, sens2, cst, cst1, cst2}, emphstyle=\emph}
+\begin{galgascode}
+for sens cst in expression
+while condition # Optionnel
+before instructions_before  # Optionnel
+do 
+  index nom_index # Optionnel
+  instructions_do
+between instructions_between  # Optionnel
+after instructions_after  # Optionnel
+end for ;
+\end{galgascode}
+
+
+Pour énumérer plusieurs collections, la syntaxe est :
+\begin{galgascode}
+for sens1 cst1 in expression1, sens2 cst2 in expression2, ...
+while condition # Optionnel
+before instructions_before  # Optionnel
+do
+  index nom_index # Optionnel
+  instructions_do
+between instructions_between  # Optionnel
+after instructions_after  # Optionnel
+end for ;
+\end{galgascode}
+
+Les collections à énumérer sont les valeurs de \galgas{expression}, \galgas{expression1}, \galgas{expression2}. Les types pouvant être énumérés sont listés dans le \refTableau{typesEnumerablesFor}. Pour accéder aux valeurs courantes énumérées, à chaque \galgas{expression} correspond une constante (\galgas{cst}, \galgas{cst1}, \galgas{cst2}) dont le type implicite est indiqué dans la dernière colonne du \refTableau{typesEnumerablesFor}.
+
+Par exemple, pour énumérer une valeur de type \galgas{@stringset}, on écrira :
+\begin{galgascode}
+@stringset v := ... ;
+for s in v do
+  log s ; # Affichage des cles dans l'ordre alphabetique
+end for ;
+\end{galgascode}
+
+\begin{table}[ht]
+  \centering
+%  \rowcolors{2}{\fondTableau}{}
+  \begin{tabular}{llp{7cm}}
+  \textbf{Type} & \textbf{Ordre d'énumération}  & \textbf{Type implicite de la constante}\\
+  \hline
+  \galgas{@data} & Ordre croissant des indices & \galgas{@uint}\\
+  \galgas{list @T} & Ordre croissant des indices & \galgas{@T.element}\\
+  \galgas{map @T} & Ordre alphabétique des clés & \galgas{@T.element}\\
+  \galgas{listmap @T} & Ordre alphabétique des clés & \galgas{@T.element}\\
+  \galgas{sortedlist @T} & Ordre croissant des indices & \galgas{@T.element}\\
+  \galgas{@stringset} & Ordre alphabétique & \galgas{@string} \\
+  \hline
+  \end{tabular}
+  \caption{Types énumérables par l'instruction \texttt{for}}
+  \labelTableau{typesEnumerablesFor}
+\end{table}
+
+\subsection{Organigramme d'exécution}
+
+L'organigramme illustrant l'exécution de l'instruction \galgas{for} est donné à la \refFigure{}{organigrammeFor}.
+
+\begin{figure}[!ht]
+  \centering
+  \small
+  \begin{tikzpicture}[
+      cloud/.style ={draw=red, thick, ellipse,fill=red!20, minimum height=2em},
+      block/.style ={rectangle, draw=blue, thick, fill=green!20, align=center},
+      decision/.style={chamfered rectangle, draw=blue, thick, fill=green!20},
+      node distance=7mm
+    ]
+    \node [cloud] (start) {\textsc{begin}} ;
+    \node [block] (init) [below=of start] {{\tt \emph{nom\_index}} := 0} ;
+    \node [decision] (premierTest) [below=of init] {non empty \& {\tt \emph{while\_expression}} ?} ;
+    \node [block] (before) [below=of premierTest] {\tt \emph{before\_instructions}} ;
+    \node [block] (gotoFirst) [below=of before] {goto first element} ;
+    \node [block] (doInstructions) [below=of gotoFirst] {\tt \emph{instructions\_do}} ;
+    \node [block] (incLoopIndex) [below=of doInstructions] {{\tt \emph{nom\_index}} ++} ;
+    \node [decision] (exp) [below=of incLoopIndex] {has next element \& {\tt \emph{while\_expression}} ?} ;
+    \node [block] (after) [below=of exp] {\tt \emph{instructions\_after}} ;
+    \node [cloud] (end) [below=of after] {\textsc{end}} ;
+    \node [block] (between) [right=of doInstructions] {\tt \emph{instructions\_between}} ;
+    \node [block] (gotoNext) [below=of between] {goto next element} ;
+    
+    \draw [-stealth, thick] (start) -- (init) ;
+    \draw [-stealth, thick] (init) -- (premierTest) ;
+    \draw [-stealth, thick] (premierTest) to node[right] {\bf yes} (before) ;
+    \draw [-stealth, thick] (premierTest.west) -- node[above] {\bf no} +(-1, 0) |- (end.west) ;
+    \draw [-stealth, thick] (before) -- (gotoFirst) ;
+    \draw [-stealth, thick] (gotoFirst) -- (doInstructions) ;
+    \draw [-stealth, thick] (doInstructions) -- (incLoopIndex) ;
+    \draw [-stealth, thick] (incLoopIndex) -- (exp) ;
+    \draw [-stealth, thick] (exp) to node[right] {\bf no} (after) ;
+    \draw [-stealth, thick] (exp.east) -| node[right] {\bf yes} (gotoNext.south) ;
+    \draw [-stealth, thick] (after) -- (end) ;
+    \draw [-stealth, thick] (gotoNext) -- (between) ;
+    \draw [-stealth, thick] (between) -- (doInstructions) ;
+  \end{tikzpicture}
+  \caption{Organigramme d'exécution d'une instruction \texttt{for}}
+  \labelFigure{organigrammeFor}
+\end{figure}
+
+
+\subsection{Champs optionnels}
+
+Plusieurs champs de l'instruction \galgas{for} sont optionnels.
+
+\galgas{sens}. Ce champ peut prendre trois valeurs, et fixe l'ordre dans lequel les éléments sont énumérés :
+\begin{itemize}
+  \item si le champ est vide, dans l'ordre indiqué par le \refTableau{typesEnumerablesFor} ;
+  \item \galgas{<}, dans l'ordre indiqué par le \refTableau{typesEnumerablesFor} ;
+  \item \galgas{>}, dans l'ordre inverse à celui indiqué par le \refTableau{typesEnumerablesFor}.
+\end{itemize}
+
+
+\galgas{index nom\_index}. Vous pouvez mentionner un identificateur après le mot réservé \galgas{index}. Cet identificateur est le nom d'une constante qui a implicitement le type \galgas{@uint} et qui est initialisée à 0 avant toute exécution de la boucle, et incrémentée après chaque exécution des \galgas{instructions\_do}, et avant l'exécution des \galgas{instructions\_between}. Sa visibilité est la branche \galgas{do}.
+
+\galgas{while expression}. L'énumération est exécutée tant que l'\galgas{expression} est vraie. L'absence de cette construction est équivalent à \galgas{while true} et permet d'énumérer toutes les valeurs.
+
+
+\galgas{before instructions\_before}. Ces instructions sont exécutées une seule fois, au début de l'exécution de l'instruction. Aucun accès aux objets énumérés n'est possible. Si l'énumération est vide, ces instructions ne sont pas exécutées.
+
+\galgas{between instructions\_between}. Ces instructions sont exécutées entre deux exécutions consécutives des \galgas{instructions\_do}. Aucun accès aux objets énumérés n'est possible.
+
+\galgas{after instructions\_after}. Ces instructions sont exécutées une seule fois, à la fin de l'exécution de l'instruction. Aucun accès aux objets énumérés n'est possible. Si l'énumération est vide, ces instructions ne sont pas exécutées.
+
+
+\subsection{Modification de la collection}
+
+Au début de l'exécution de l'instruction \galgas{for}, les valeurs des \galgas{expression} enumérées sont capturées et mémorisées. L'énumération s'effectue sur ces valeurs mémorisées. Aussi, il est possible de modifier la collection en cours d'énumération sans que cela affecte l'exécution :
+\begin{galgascode}
+@stringlist v [emptyList] ;
+v += !"A" ;
+v += !"B" ;
+v += !"C" ;
+log v ; # "A", "B", "C"
+for s in v do
+  v += !s ;
+end for ;
+log v ; # "A", "B", "C", "A", "B", "C"
+\end{galgascode}
+
+
+
 
 
 
@@ -226,7 +400,7 @@ L'organigramme illustrant l'exécution de l'instruction \galgas{foreach} est don
     ]
     \node [cloud] (start) {\textsc{begin}} ;
     \node [block] (init) [below=of start] {{\tt \emph{nom\_index}} := 0} ;
-    \node [decision] (premierTest) [below=of init] {has element \& {\tt \emph{while\_expression}} ?} ;
+    \node [decision] (premierTest) [below=of init] {non empty \& {\tt \emph{while\_expression}} ?} ;
     \node [block] (before) [below=of premierTest] {\tt \emph{before\_instructions}} ;
     \node [block] (gotoFirst) [below=of before] {goto first element} ;
     \node [block] (doInstructions) [below=of gotoFirst] {\tt \emph{instructions\_do}} ;
@@ -262,9 +436,9 @@ Plusieurs champs de l'instruction \galgas{foreach} sont optionnels.
 
 \galgas{sens}. Ce champ peut prendre trois valeurs, et fixe l'ordre dans lequel les éléments sont énumérés :
 \begin{itemize}
-  \item si le champ est vide, dans l'ordre indiqué par le tableau \refTableau{typesEnumerablesForeach} ;
-  \item \galgas{<}, dans l'ordre indiqué par le tableau \refTableau{typesEnumerablesForeach} ;
-  \item \galgas{>}, dans l'ordre inverse à celui indiqué par le tableau \refTableau{typesEnumerablesForeach}.
+  \item si le champ est vide, dans l'ordre indiqué par le \refTableau{typesEnumerablesForeach} ;
+  \item \galgas{<}, dans l'ordre indiqué par le \refTableau{typesEnumerablesForeach} ;
+  \item \galgas{>}, dans l'ordre inverse à celui indiqué par le \refTableau{typesEnumerablesForeach}.
 \end{itemize}
 
 
