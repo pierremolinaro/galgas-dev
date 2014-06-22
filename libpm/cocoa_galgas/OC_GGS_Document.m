@@ -1382,8 +1382,9 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
     ? inPath.copy
     : [self.fileURL.path.stringByDeletingLastPathComponent stringByAppendingPathComponent:inPath]
   ;
+  NSURL * url = [NSURL fileURLWithPath:requestedAbsolutePath.stringByStandardizingPath] ;
   return [OC_GGS_DocumentData
-    findOrAddDataForDocumentURL:[NSURL fileURLWithPath:requestedAbsolutePath]
+    findOrAddDataForDocumentURL:url
     forCocoaDocument:nil
   ] ;
 }
