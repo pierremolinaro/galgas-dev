@@ -268,7 +268,7 @@ rule <semantic_declaration>
 :
   <local_declaration> ??@bool isGlobal ;
   $once$ ;
-  $identifier$ ? @lstring mRoutineName indexing functionDefinition ;
+  $identifier$ ?@lstring mRoutineName indexing functionDefinition ;
   $->$ ;
   $type_name$ ?@lstring resultTypeName ;
   $identifier$ ?@lstring resultVariableName ;
@@ -290,6 +290,10 @@ end rule ;
 #                                                                           *
 #    E X T E R N    F U N C T I O N    D E C L A R A T I O N                *
 #                                                                           *
+#---------------------------------------------------------------------------*
+
+#! extern function declaration
+
 #---------------------------------------------------------------------------*
 
 rule <semantic_declaration>
@@ -317,6 +321,10 @@ end rule ;
 #                                                                           *
 #  L O C A L    V A R I A B L E    D E C L A R A T I O N                    *
 #                                                                           *
+#---------------------------------------------------------------------------*
+
+#! var declaration instruction
+
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
@@ -437,10 +445,8 @@ rule <semantic_instruction>
   $type_name$ ?@lstring typeName ;
   $identifier$ ?@lstring variableName ;
   $[$ ;
-  @lstring constructorName ;
-  $identifier$ ? constructorName ;
-  @semanticExpressionListAST expressionList ;
-  <output_expression_list> ?expressionList ;
+  $identifier$ ?@lstring constructorName ;
+  <output_expression_list> ?@semanticExpressionListAST expressionList ;
   outInstruction := [@localVariableOrConstantDeclarationWithConstructorCallAST new
     ![typeName location]
     !false # Is not Constant
@@ -461,6 +467,10 @@ end rule ;
 #                                                                           *
 #  L O C A L    C O N S T A N T    D E C L A R A T I O N                    *
 #                                                                           *
+#---------------------------------------------------------------------------*
+
+#! const declaration instruction
+
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
@@ -568,6 +578,10 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+#! assignment instruction
+
+#---------------------------------------------------------------------------*
+
 rule <semantic_instruction>
   !@semanticInstructionAST outInstruction
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
@@ -598,12 +612,16 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+#! self assignment instruction
+
+#---------------------------------------------------------------------------*
+
 rule <semantic_instruction>
   !@semanticInstructionAST outInstruction
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $self$ ;
-  const @location instructionLocation := here ;
+  const instructionLocation := here ;
   $:=$ ;
   @semanticExpressionAST mSourceExpression ;
   <expression> ? mSourceExpression ;
@@ -620,12 +638,16 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+#! drop instruction
+
+#---------------------------------------------------------------------------*
+
 rule <semantic_instruction>
   !@semanticInstructionAST outInstruction
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $drop$ ;
-  const @location instructionLocation := here ;
+  const instructionLocation := here ;
   @lstringlist dropList [emptyList] ;
   repeat
     $identifier$ ?@lstring variableName ;
@@ -641,6 +663,10 @@ end rule ;
 #                                                                           *
 #    I N C R E M E N T    I N S T R U C T I O N                             *
 #                                                                           *
+#---------------------------------------------------------------------------*
+
+#! ++ instruction
+
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
@@ -670,12 +696,16 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+#! self ++ instruction
+
+#---------------------------------------------------------------------------*
+
 rule <semantic_instruction>
   !@semanticInstructionAST outInstruction
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $self$ ;
-  const @location instructionLocation := here ;
+  const instructionLocation := here ;
   $++$ ;
   $;$ ;
   outInstruction := [@selfIncrementInstructionAST new
@@ -687,6 +717,10 @@ end rule ;
 #                                                                           *
 #    D E C R E M E N T    I N S T R U C T I O N                             *
 #                                                                           *
+#---------------------------------------------------------------------------*
+
+#! -- instruction
+
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
@@ -716,12 +750,16 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+#! self -- instruction
+
+#---------------------------------------------------------------------------*
+
 rule <semantic_instruction>
   !@semanticInstructionAST outInstruction
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $self$ ;
-  const @location instructionLocation := here ;
+  const instructionLocation := here ;
   $--$ ;
   $;$ ;
   outInstruction := [@selfDecrementInstructionAST new
@@ -733,6 +771,10 @@ end rule ;
 #                                                                           *
 #    F O R E A C H    I N S T R U C T I O N                                 *
 #                                                                           *
+#---------------------------------------------------------------------------*
+
+#! foreach instruction
+
 #---------------------------------------------------------------------------*
 
 rule <foreach_enumerated_object>
@@ -813,7 +855,7 @@ rule <semantic_instruction>
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $foreach$ ;
-  const @location instructionLocation := here ;
+  const instructionLocation := here ;
   @foreachInstructionEnumeratedObjectListAST mEnumeratedObjectList [emptyList] ;
   repeat
     <foreach_enumerated_object> !?mEnumeratedObjectList ;
@@ -887,8 +929,12 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    ( N E W )    F O R E A C H    I N S T R U C T I O N                    *
+#    F O R    I N S T R U C T I O N                                         *
 #                                                                           *
+#---------------------------------------------------------------------------*
+
+#! for instruction
+
 #---------------------------------------------------------------------------*
 
 rule <new_foreach_enumerated_object>
@@ -920,7 +966,7 @@ rule <semantic_instruction>
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $for$ ;
-  const @location instructionLocation := here ;
+  const instructionLocation := here ;
   @forInstructionEnumeratedObjectListAST mEnumeratedObjectList [emptyList] ;
   repeat
     <new_foreach_enumerated_object> !?mEnumeratedObjectList ;
@@ -1003,7 +1049,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <if_branch> !@semanticInstructionAST outInstruction :
-  const @location instructionLocation := here ;
+  const instructionLocation := here ;
   @semanticExpressionAST if_expression ;
   <expression> ?if_expression ;
   $then$ ;
@@ -1105,12 +1151,10 @@ rule <semantic_instruction>
   ?!@localVariableDeclarationListAST ioLocalVariableDeclarationList
 :
   $[$ ;
-  const @location instructionLocation := here ;
-  @semanticExpressionAST mReceiverExpression ;
-  <expression> ? mReceiverExpression ;
+  const instructionLocation := here ;
+  <expression> ??@semanticExpressionAST mReceiverExpression ;
   $identifier$ ?@lstring mMethodName ;
-  @actualParameterListAST mActualParameterList ;
-  <actual_parameter_list> ? mActualParameterList !?ioLocalVariableDeclarationList ;
+  <actual_parameter_list> ??@actualParameterListAST mActualParameterList !?ioLocalVariableDeclarationList ;
   $]$ ;
   $;$ ;
   outInstruction := [@methodCallInstructionAST new
@@ -1132,7 +1176,7 @@ rule <semantic_instruction>
   ?!@localVariableDeclarationListAST ioLocalVariableDeclarationList
 :
   $[$ ;
-  const @location instructionLocation := here ;
+  const instructionLocation := here ;
   $!?$ ;
   $identifier$ ?@lstring mReceiverName ;
   @lstringlist mReceiverStructAttributes [emptyList] ;
@@ -1143,8 +1187,7 @@ rule <semantic_instruction>
     mReceiverStructAttributes += !structAttribute ;
   end repeat ;
   $identifier$ ?@lstring mModifierName ;
-  @actualParameterListAST mActualParameterList ;
-  <actual_parameter_list> ? mActualParameterList !?ioLocalVariableDeclarationList ;
+  <actual_parameter_list> ??@actualParameterListAST mActualParameterList !?ioLocalVariableDeclarationList ;
   $]$ ;
   $;$ ;
   outInstruction := [@modifierCallInstructionAST new
@@ -1167,7 +1210,7 @@ rule <semantic_instruction>
   ?!@localVariableDeclarationListAST ioLocalVariableDeclarationList
 :
   $[$ ;
-  const @location instructionLocation := here ;
+  const instructionLocation := here ;
   $!?$ ;
   $self$ ;
   $identifier$ ?@lstring mModifierName ;
@@ -1193,19 +1236,16 @@ rule <semantic_instruction>
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $error$ ;
-  const @location instructionLocation := here ;
-  @semanticExpressionAST mReceiverExpression ;
-  <expression> ? mReceiverExpression ;
+  const instructionLocation := here ;
+  <expression> ??@semanticExpressionAST mReceiverExpression ;
   $:$ ;
-  @semanticExpressionAST mErrorExpression ;
-  <expression> ? mErrorExpression ;
+  <expression> ??@semanticExpressionAST mErrorExpression ;
   @lstringlist mBuiltVariableList [emptyList] ;
   select
   or
     $:$ ;
     repeat
-     @lstring builtVariableName ;
-     $identifier$ ? builtVariableName ;
+     $identifier$ ?@lstring builtVariableName ;
      mBuiltVariableList += !builtVariableName ;
     while
       $,$ ;
@@ -1231,12 +1271,10 @@ rule <semantic_instruction>
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $warning$ ;
-  const @location instructionLocation := here ;
-  @semanticExpressionAST mReceiverExpression ;
-  <expression> ? mReceiverExpression ;
+  const instructionLocation := here ;
+  <expression> ?@semanticExpressionAST mReceiverExpression ;
   $:$ ;
-  @semanticExpressionAST mWarningExpression ;
-  <expression> ? mWarningExpression ;
+  <expression> ??@semanticExpressionAST mWarningExpression ;
   $;$ ;
   outInstruction := [@warningInstructionAST new
     !instructionLocation
@@ -1256,8 +1294,7 @@ rule <semantic_instruction>
   ?!@localVariableDeclarationListAST ioLocalVariableDeclarationList
 :
   $identifier$ ?@lstring mRoutineName indexing routineCall ;
-  @actualParameterListAST mActualParameterList ;
-  <actual_parameter_list> ? mActualParameterList !?ioLocalVariableDeclarationList ;
+  <actual_parameter_list> ??@actualParameterListAST mActualParameterList !?ioLocalVariableDeclarationList ;
   $;$ ;
   outInstruction := [@routineCallInstructionAST new
     ![mRoutineName location]
@@ -1277,7 +1314,7 @@ rule <semantic_instruction>
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $with$ ;
-  const @location instructionLocation := here ;
+  const instructionLocation := here ;
   $!?$ ;
   $identifier$ ?@lstring mTargetObjectName ;
   @lstringlist structAttributeList [emptyList] ;
@@ -1289,8 +1326,7 @@ rule <semantic_instruction>
   end repeat ;
   $identifier$ ?@lstring mSearchMethodName ;
   $!$ ;
-  @semanticExpressionAST mKeyExpression ;
-  <expression> ? mKeyExpression ;
+  <expression> ??@semanticExpressionAST mKeyExpression ;
   @lstring withPrefix ;
   select
     withPrefix := [@lstring new !"" !here] ;
@@ -1299,9 +1335,8 @@ rule <semantic_instruction>
     $identifier$ ? withPrefix ;
   end select ;
   $do$ ;
-  @semanticInstructionListAST mDoBranchInstructions ;
-  <semantic_instruction_list> ? mDoBranchInstructions ;
-  const @location endOf_do_instructions := here ;
+  <semantic_instruction_list> ??@semanticInstructionListAST mDoBranchInstructions ;
+  const endOf_do_instructions := here ;
   @semanticInstructionListAST mElseBranchInstructions ;
   select
     mElseBranchInstructions := [@semanticInstructionListAST emptyList] ;
@@ -1309,7 +1344,7 @@ rule <semantic_instruction>
     $else$ ;
     <semantic_instruction_list> ? mElseBranchInstructions ;
   end select ;
-  const @location endOf_else_instructions := here ;
+  const endOf_else_instructions := here ;
   outInstruction := [@readWriteAccessWithInstructionAST new
     !instructionLocation
     !withPrefix
@@ -1334,13 +1369,11 @@ rule <semantic_instruction>
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $with$ ;
-  const @location instructionLocation := here ;
-  @semanticExpressionAST receiverExpression ;
-  <expression> ? receiverExpression ;
+  const instructionLocation := here ;
+  <expression> ?@semanticExpressionAST receiverExpression ;
   $identifier$ ?@lstring mSearchMethodName ;
   $!$ ;
-  @semanticExpressionAST mKeyExpression ;
-  <expression> ? mKeyExpression ;
+  <expression> ?@semanticExpressionAST mKeyExpression ;
   @lstring withPrefix ;
   select
     withPrefix := [@lstring new !"" !here] ;
@@ -1349,9 +1382,8 @@ rule <semantic_instruction>
     $identifier$ ? withPrefix ;
   end select ;
   $do$ ;
-  @semanticInstructionListAST mDoBranchInstructions ;
-  <semantic_instruction_list> ? mDoBranchInstructions ;
-  const @location endOfDoInstructions := here ;
+  <semantic_instruction_list> ??@semanticInstructionListAST mDoBranchInstructions ;
+  const endOfDoInstructions := here ;
   @semanticInstructionListAST mElseBranchInstructions ;
   select
     mElseBranchInstructions := [@semanticInstructionListAST emptyList] ;
@@ -1381,123 +1413,112 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <match_entry> ?!@matchEntryListAST ioMatchEntryList :
-  $identifier$ ? @lstring enumerationConstantName ;
-  ioMatchEntryList +=
-    !false
-    !enumerationConstantName
-    ![@lstring new !"" !here]
-  ;
-end rule ;
+#! Match instruction
 
 #---------------------------------------------------------------------------*
 
-rule <match_entry> ?!@matchEntryListAST ioMatchEntryList :
-  $type_name$ ?@lstring className ;
-  @lstring localConstant ;
-  select
-    localConstant := [@lstring new !"" !here] ;
-  or
-    $identifier$ ?localConstant ;
-  end select ;
-  select
-  or
-    $($ ;
-    repeat
-    while
-      $type_name$ ?* ;
-      $identifier$ ?* ;
-    while
-      $*$ ;
-    while
-      $unsigned_literal_integer$ ?* ;
-      $*$ ;
-    end repeat ;
-    select
-    or
-      $...$ ;
-    end select ;
-    $)$ ;
-  end select ;
-  ioMatchEntryList +=
-    !true
-    !className
-    !localConstant
-  ;
-end rule ;
+#rule <match_entry> ?!@matchEntryListAST ioMatchEntryList :
+#  $identifier$ ? @lstring enumerationConstantName ;
+#  ioMatchEntryList +=
+#    !false
+#    !enumerationConstantName
+#    ![@lstring new !"" !here]
+#  ;
+#end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <match_instruction_branch> ?!@matchInstructionBranchListAST ioMatchInstructionBranchList :
-  $when$ ;
-  @matchEntryListAST mMatchEntryList [emptyList] ;
-  repeat
-    <match_entry> !? mMatchEntryList ;
-  while
-    $::$ ;
-  end repeat ;
-  const @location endOfMatchEntryList := here ;
-  $:$ ;
-  @semanticInstructionListAST mMatchBranchInstructionList ;
-  <semantic_instruction_list> ? mMatchBranchInstructionList ;
-  ioMatchInstructionBranchList +=
-    !mMatchEntryList
-    !endOfMatchEntryList
-    !mMatchBranchInstructionList
-    !here
-  ;
-end rule ;
+#rule <match_entry> ?!@matchEntryListAST ioMatchEntryList :
+#  $type_name$ ?@lstring className ;
+#  @lstring localConstant ;
+#  select
+#    localConstant := [@lstring new !"" !here] ;
+#  or
+#    $identifier$ ?localConstant ;
+#  end select ;
+#  ioMatchEntryList +=
+#    !true
+#    !className
+#    !localConstant
+#  ;
+#end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction>
-  !@semanticInstructionAST outInstruction
-  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
-:
-  $match$ ;
-  @semanticExpressionListAST matchedExpressionNameList [emptyList] ;
-  const @location instructionLocation := here ;
-  @semanticExpressionAST receiverExpression ;
-  <expression> ? receiverExpression ;
-  matchedExpressionNameList += !receiverExpression !here ;
-  $::$ ;
-  repeat
-    @semanticExpressionAST receiverExpression ;
-    <expression> ? receiverExpression ;
-    matchedExpressionNameList += !receiverExpression !here ;
-  while
-    $::$ ;
-  end repeat ;
-  $:$ ;
-  @matchInstructionBranchListAST matchInstructionBranchList [emptyList] ;
-  repeat
-    <match_instruction_branch> !? matchInstructionBranchList ;
-  while
-  end repeat ;
-  @semanticInstructionListAST elseInstructionList ;
-  select
-    elseInstructionList := [@semanticInstructionListAST emptyList] ;
-  or
-    $else$ ;
-    <semantic_instruction_list> ? elseInstructionList ;
-  end select ;
-  $end$ ;
-  $match$ ;
-  const @location endOf_match_instruction := here ;
-  $;$ ;
-  outInstruction := [@matchInstructionAST new
-    !instructionLocation
-    !matchedExpressionNameList
-    !matchInstructionBranchList
-    !elseInstructionList
-    !endOf_match_instruction
-  ] ;
-end rule ;
+#rule <match_instruction_branch> ?!@matchInstructionBranchListAST ioMatchInstructionBranchList :
+#  $when$ ;
+#  @matchEntryListAST mMatchEntryList [emptyList] ;
+#  repeat
+#    <match_entry> !? mMatchEntryList ;
+#  while
+#    $::$ ;
+#  end repeat ;
+#  const @location endOfMatchEntryList := here ;
+#  $:$ ;
+#  @semanticInstructionListAST mMatchBranchInstructionList ;
+#  <semantic_instruction_list> ? mMatchBranchInstructionList ;
+#  ioMatchInstructionBranchList +=
+#    !mMatchEntryList
+#    !endOfMatchEntryList
+#    !mMatchBranchInstructionList
+#    !here
+#  ;
+#end rule ;
+
+#---------------------------------------------------------------------------*
+
+#rule <semantic_instruction>
+#  !@semanticInstructionAST outInstruction
+#  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
+#:
+#  $match$ ;
+#  warning here : "eaerzerzrtetrytrutiy" ;
+#  @semanticExpressionListAST matchedExpressionNameList [emptyList] ;
+#  const instructionLocation := here ;
+#  <expression> ??@semanticExpressionAST receiverExpression ;
+#  matchedExpressionNameList += !receiverExpression !here ;
+#  $::$ ;
+#  repeat
+#    @semanticExpressionAST receiverExpression ;
+#    <expression> ? receiverExpression ;
+#    matchedExpressionNameList += !receiverExpression !here ;
+#  while
+#    $::$ ;
+#  end repeat ;
+#  $:$ ;
+#  @matchInstructionBranchListAST matchInstructionBranchList [emptyList] ;
+#  repeat
+#    <match_instruction_branch> !? matchInstructionBranchList ;
+#  while
+#  end repeat ;
+#  @semanticInstructionListAST elseInstructionList ;
+#  select
+#    elseInstructionList := [@semanticInstructionListAST emptyList] ;
+#  or
+#    $else$ ;
+#    <semantic_instruction_list> ? elseInstructionList ;
+#  end select ;
+#  $end$ ;
+#  $match$ ;
+#  const @location endOf_match_instruction := here ;
+#  $;$ ;
+#  outInstruction := [@matchInstructionAST new
+#    !instructionLocation
+#    !matchedExpressionNameList
+#    !matchInstructionBranchList
+#    !elseInstructionList
+#    !endOf_match_instruction
+#  ] ;
+#end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
 #    C A S T    I N S T R U C T I O N                                       *
 #                                                                           *
+#---------------------------------------------------------------------------*
+
+#! cast instruction
+
 #---------------------------------------------------------------------------*
 
 rule <cast_instruction_branch> ?!@castInstructionBranchListAST ioCastInstructionBranchList :
@@ -1547,10 +1568,9 @@ end rule ;
 
 rule <cast_else_or_default> !@semanticInstructionListAST outElseOrDefault :
   $default$ ;
-  const @location instructionLocation := here ;
+  const instructionLocation := here ;
   $error$ ;
-  @semanticExpressionAST errorLocationExpression ;
-  <expression> ? errorLocationExpression ;
+  <expression> ??@semanticExpressionAST errorLocationExpression ;
   outElseOrDefault := [@semanticInstructionListAST emptyList] ;
   outElseOrDefault += ![@errorInstructionAST new
     !instructionLocation
@@ -1570,18 +1590,16 @@ rule <semantic_instruction>
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $cast$ ;
-  const @location instructionLocation := here ;
-  @semanticExpressionAST mExpression ;
-  <expression> ? mExpression ;
+  const instructionLocation := here ;
+  <expression> ??@semanticExpressionAST mExpression ;
   @castInstructionBranchListAST mCastInstructionBranchList [emptyList] ;
   repeat
     <cast_instruction_branch> !? mCastInstructionBranchList ;
   while
   end repeat ;
-  @semanticInstructionListAST mElseOrDefault ;
-  <cast_else_or_default> ? mElseOrDefault ;
+  <cast_else_or_default> ??@semanticInstructionListAST mElseOrDefault ;
   $end$ ;
-  const @location endOfInstructionLocation := here ;
+  const endOfInstructionLocation := here ;
   $cast$ ;
   $;$ ;
   outInstruction := [@structuredCastInstructionAST new
@@ -1599,13 +1617,17 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+#! += instruction
+
+#---------------------------------------------------------------------------*
+
 rule <semantic_instruction>
   !@semanticInstructionAST outInstruction
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   @lstring mReceiverName ;
   $identifier$ ? mReceiverName ;
-  const @location instructionLocation := here ;
+  const instructionLocation := here ;
   @lstringlist mStructAttributeList [emptyList] ;
   repeat
   while
@@ -1631,12 +1653,16 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+#! self += instruction
+
+#---------------------------------------------------------------------------*
+
 rule <semantic_instruction>
   !@semanticInstructionAST outInstruction
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $self$ ;
-  const @location instructionLocation := here ;
+  const instructionLocation := here ;
   $+=$ ;
   @semanticExpressionListAST mExpressionList ;
   <output_expression_list> ?mExpressionList ;
@@ -1651,6 +1677,10 @@ end rule ;
 #                                                                           *
 #    C O N C A T    I N S T R U C T I O N    . =                            *
 #                                                                           *
+#---------------------------------------------------------------------------*
+
+#! .= instruction
+
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
@@ -1683,12 +1713,16 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+#! self .= instruction
+
+#---------------------------------------------------------------------------*
+
 rule <semantic_instruction>
   !@semanticInstructionAST outInstruction
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $self$ ;
-  const @location instructionLocation := here ;
+  const instructionLocation := here ;
   $.=$ ;
   @semanticExpressionAST mSourceExpression ;
   <expression> ? mSourceExpression ;
@@ -1705,12 +1739,16 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+#! loop instruction
+
+#---------------------------------------------------------------------------*
+
 rule <semantic_instruction>
   !@semanticInstructionAST outInstruction
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $loop$ ;
-  const @location instructionLocation := here ;
+  const instructionLocation := here ;
 #--- Variant
   <expression> ?@semanticExpressionAST mVariantExpression ;
   const @location mEndOfVariantExpression := here ;
@@ -1751,12 +1789,16 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+#! message instruction
+
+#---------------------------------------------------------------------------*
+
 rule <semantic_instruction>
   !@semanticInstructionAST outInstruction
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $message$ ;
-  const @location instructionLocation := here ;
+  const instructionLocation := here ;
   @semanticExpressionAST mExpression ;
   <expression> ? mExpression ;
   $;$ ;
@@ -1772,12 +1814,16 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+#! log instruction
+
+#---------------------------------------------------------------------------*
+
 rule <semantic_instruction>
   !@semanticInstructionAST outInstruction
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $log$ ;
-  const @location instructionLocation := here ;
+  const instructionLocation := here ;
   @logListAST logList [emptyList] ;
   repeat
     select
@@ -1806,12 +1852,16 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+#! grammar instruction
+
+#---------------------------------------------------------------------------*
+
 rule <semantic_instruction>
   !@semanticInstructionAST outInstruction
   ?!@localVariableDeclarationListAST ioLocalVariableDeclarationList
 :
   $grammar$ ;
-  const @location instructionLocation := here ;
+  const instructionLocation := here ;
   $identifier$ ?@lstring mGrammarComponentName indexing grammarComponentReference;
   @lstring mLabelName ;
   select
@@ -1849,12 +1899,16 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+#! switch instruction
+
+#---------------------------------------------------------------------------*
+
 rule <semantic_instruction>
   !@semanticInstructionAST outInstruction
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $switch$ ;
-  const @location instructionLocation := here ;
+  const instructionLocation := here ;
   @semanticExpressionAST switchExpression ;
   <expression> ? switchExpression ;
   const @location endOfSwitchExpression := here ;
@@ -1893,12 +1947,16 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+#! method call instruction
+
+#---------------------------------------------------------------------------*
+
 rule <semantic_instruction>
   !@semanticInstructionAST outInstruction
   ?!@localVariableDeclarationListAST ioLocalVariableDeclarationList
 :
   $[$ ;
-  const @location instructionLocation := here ;
+  const instructionLocation := here ;
   $type_name$ ? @lstring mTypeName indexing typeReferenceInTypeMethod ;
   $identifier$ ? @lstring mMethodName ;
   @actualParameterListAST mActualParameterList ;

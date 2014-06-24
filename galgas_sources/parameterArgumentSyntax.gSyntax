@@ -206,24 +206,25 @@ rule <actual_input_parameter_list>
   outActualInputParameterList := [@actualInputParameterListAST emptyList] ;
   repeat
   while
-    $?$ ;
-    @lstring mActualParameterTypeName ;
     select
-      mActualParameterTypeName := [@lstring new !"" !here] ;
-    or
-      $type_name$ ? mActualParameterTypeName ;
-    end select ;
-    @lstring mActualParameterName ;
-    select
-      $identifier$ ?mActualParameterName ;
-    or
+      $?$ ;
       $*$ ;
-      mActualParameterName := [@lstring new !"" !here] ;
+      outActualInputParameterList += ![@inputParameterAnonymousVariable new] ;
+    or
+      $?$ ;
+      $type_name$ ?@lstring actualParameterTypeName ;
+      $identifier$ ?@lstring actualParameterName ;
+      outActualInputParameterList += ![@inputParameterDeclaredVariable new !actualParameterTypeName !actualParameterName] ;
+    or
+      $??$ ;
+      $type_name$ ?@lstring actualParameterTypeName ;
+      $identifier$ ?@lstring actualParameterName ;
+      outActualInputParameterList += ![@inputParameterDeclaredConstant new !actualParameterTypeName !actualParameterName] ;
+    or
+      $?$ ;
+      $identifier$ ?@lstring actualParameterName ;
+      outActualInputParameterList += ![@inputParameterVariable new !actualParameterName] ;
     end select ;
-    outActualInputParameterList +=
-      !mActualParameterTypeName
-      !mActualParameterName
-    ;
   end repeat ;
 end rule ;  
 
