@@ -61,7 +61,7 @@ rule <syntax_component_start_symbol> !@syntaxComponentAST outSyntaxComponentRoot
   $identifier$ ? @lstring mSyntaxComponentName ;
 #--- Imported lexique
   $($ ;
-  $literal_string$ ? @lstring importedLexiqueReference ;
+  $literal_string$ ??@lstring importedLexiqueReference ;
   $)$ ;
   $:$ ;
 #--- Loop on import declarations
@@ -69,7 +69,7 @@ rule <syntax_component_start_symbol> !@syntaxComponentAST outSyntaxComponentRoot
   repeat
   while
     $import$ ;
-    $literal_string$ ? @lstring path ;
+    $literal_string$ ??@lstring path ;
     importedComponentPathList += !path ;
    $;$ ;
   end repeat ;
@@ -112,8 +112,7 @@ nonterminal <nonterminal_label_declaration> ??@lstring inLabelName ?!@nonTermina
 #---------------------------------------------------------------------------*
 
 rule <nonterminal_label_declaration> ??@lstring inLabelName ?!@nonTerminalLabelListAST ioNonTerminalLabelList :
-  @formalParameterListAST mFormalParameters ;
-  <formal_parameter_list> ? mFormalParameters ;
+  <formal_parameter_list> ??@formalParameterListAST mFormalParameters ;
   ioNonTerminalLabelList +=
     !inLabelName
     !mFormalParameters
@@ -125,14 +124,13 @@ end rule ;
 
 rule <nonterminal_declaration> ?!@nonterminalDeclarationListAST ioNonterminalDeclarationList :
   $nonterminal$ ;
-  $non_terminal_symbol$ ? @lstring mNonterminalName indexing ruleDefinition ;
+  $non_terminal_symbol$ ??@lstring mNonterminalName indexing ruleDefinition ;
   @nonTerminalLabelListAST mLabels [emptyList] ;
   <nonterminal_label_declaration> ![@lstring new !"" !here] !?mLabels ;
   repeat
   while
     $label$ ;
-    @lstring labelName ;
-    $identifier$ ?labelName ;
+    $identifier$ ??@lstring labelName ;
     <nonterminal_label_declaration> !labelName !?mLabels ;
   end repeat ;
   $;$ ;
@@ -266,8 +264,7 @@ rule <syntax_instruction>
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $terminal$ ? @lstring mTerminalName indexing terminalReference ;
-  @actualInputParameterListAST mActualInputParameterList ;
-  <actual_input_parameter_list> ? mActualInputParameterList ;
+  <actual_input_parameter_list> ??@actualInputParameterListAST mActualInputParameterList ;
   @lstringlist indexNameList [emptyList] ;
   select
   or
@@ -279,20 +276,12 @@ rule <syntax_instruction>
       $,$ ;
     end repeat ;
   end select ;
-#  @lstring terminalLocationConstantName ;
-#  select
-#    terminalLocationConstantName := ["" nowhere] ;
-#  or
-#    $:$ ;
-#     $identifier$ ?terminalLocationConstantName ;
-#  end select ;
   $;$ ;
   outInstruction := [@terminalCheckInstruction new
     ![mTerminalName location]
     !mTerminalName
     !mActualInputParameterList
     !indexNameList
-#    !terminalLocationConstantName
   ] ;
 end rule ;
 

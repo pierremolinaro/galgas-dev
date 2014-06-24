@@ -322,6 +322,133 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+abstract method @abstractInputParameter analyzeInputParameter
+  ??@analysisContext inAnalysisContext
+  ??@lexicalTypeEnum inRequiredLexicalType
+  ??@string inLexicalAttributeName
+  ?!@terminalCheckAssignementList ioTerminalCheckAssignementList
+  ?!@variableMap ioVariableMap
+;
+
+#---------------------------------------------------------------------------*
+
+override method @inputParameterAnonymousVariable analyzeInputParameter
+  ??@analysisContext unused inAnalysisContext
+  ??@lexicalTypeEnum unused inRequiredLexicalType
+  ??@string unused inLexicalAttributeName
+  ?!@terminalCheckAssignementList unused ioTerminalCheckAssignementList
+  ?!@variableMap unused ioVariableMap
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @inputParameterVariable analyzeInputParameter
+  ??@analysisContext inAnalysisContext
+  ??@lexicalTypeEnum inRequiredLexicalType
+  ??@string inLexicalAttributeName
+  ?!@terminalCheckAssignementList ioTerminalCheckAssignementList
+  ?!@variableMap ioVariableMap
+:
+  [!?ioVariableMap searchForWriteAccess !mActualParameterName ??@unifiedTypeMapProxy type ??@string cppName ?*] ;
+#  const cppName := "var_" . [mActualParameterName identifierRepresentation] ;
+#  const type := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mActualParameterTypeName] ;
+#  [!?ioVariableMap insertDefinedLocalVariable !mActualParameterName !type !cppName !cppName] ;
+  @unifiedTypeMapProxy expectedType ;
+  switch inRequiredLexicalType
+  when lexicalType_string : expectedType := inAnalysisContext->mPredefinedTypes->mLStringType ;
+  when lexicalType_char : expectedType := inAnalysisContext->mPredefinedTypes->mLCharType ;
+  when lexicalType_uint : expectedType := inAnalysisContext->mPredefinedTypes->mLUIntType ;
+  when lexicalType_uint64 : expectedType := inAnalysisContext->mPredefinedTypes->mLUInt64Type ;
+  when lexicalType_sint : expectedType := inAnalysisContext->mPredefinedTypes->mLSIntType ;
+  when lexicalType_sint64 : expectedType := inAnalysisContext->mPredefinedTypes->mLSInt64Type ;
+  when lexicalType_double : expectedType := inAnalysisContext->mPredefinedTypes->mLDoubleType ;
+  end switch ;
+  if expectedType != type then
+    error mActualParameterName
+    : "the '" . mActualParameterName . "' parameter has the '@" . [type identifierRepresentation]
+    . ", bit an '@" . [expectedType identifierRepresentation] . "' parameter is required here"
+    ;
+  end if ;
+  ioTerminalCheckAssignementList +=
+    !"" # Do not declare variable
+    !cppName
+    !inLexicalAttributeName
+  ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @inputParameterDeclaredVariable analyzeInputParameter
+  ??@analysisContext inAnalysisContext
+  ??@lexicalTypeEnum inRequiredLexicalType
+  ??@string inLexicalAttributeName
+  ?!@terminalCheckAssignementList ioTerminalCheckAssignementList
+  ?!@variableMap ioVariableMap
+:
+  const cppName := "var_" . [mActualParameterName identifierRepresentation] ;
+  const type := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mActualParameterTypeName] ;
+  [!?ioVariableMap insertDefinedLocalVariable !mActualParameterName !type !cppName !cppName] ;
+  @unifiedTypeMapProxy expectedType ;
+  switch inRequiredLexicalType
+  when lexicalType_string : expectedType := inAnalysisContext->mPredefinedTypes->mLStringType ;
+  when lexicalType_char : expectedType := inAnalysisContext->mPredefinedTypes->mLCharType ;
+  when lexicalType_uint : expectedType := inAnalysisContext->mPredefinedTypes->mLUIntType ;
+  when lexicalType_uint64 : expectedType := inAnalysisContext->mPredefinedTypes->mLUInt64Type ;
+  when lexicalType_sint : expectedType := inAnalysisContext->mPredefinedTypes->mLSIntType ;
+  when lexicalType_sint64 : expectedType := inAnalysisContext->mPredefinedTypes->mLSInt64Type ;
+  when lexicalType_double : expectedType := inAnalysisContext->mPredefinedTypes->mLDoubleType ;
+  end switch ;
+  if expectedType != type then
+    error mActualParameterName
+    : "the '" . mActualParameterName . "' parameter has the '@" . [type identifierRepresentation]
+    . ", bit an '@" . [expectedType identifierRepresentation] . "' parameter is required here"
+    ;
+  end if ;
+  ioTerminalCheckAssignementList +=
+    ![mActualParameterTypeName string]
+    !cppName
+    !inLexicalAttributeName
+  ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @inputParameterDeclaredConstant analyzeInputParameter
+  ??@analysisContext inAnalysisContext
+  ??@lexicalTypeEnum inRequiredLexicalType
+  ??@string inLexicalAttributeName
+  ?!@terminalCheckAssignementList ioTerminalCheckAssignementList
+  ?!@variableMap ioVariableMap
+:
+  const cppName := "var_" . [mActualParameterName identifierRepresentation] ;
+  const type := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mActualParameterTypeName] ;
+  [!?ioVariableMap insertLocalConstant !mActualParameterName !type !cppName !cppName] ;
+  @unifiedTypeMapProxy expectedType ;
+  switch inRequiredLexicalType
+  when lexicalType_string : expectedType := inAnalysisContext->mPredefinedTypes->mLStringType ;
+  when lexicalType_char : expectedType := inAnalysisContext->mPredefinedTypes->mLCharType ;
+  when lexicalType_uint : expectedType := inAnalysisContext->mPredefinedTypes->mLUIntType ;
+  when lexicalType_uint64 : expectedType := inAnalysisContext->mPredefinedTypes->mLUInt64Type ;
+  when lexicalType_sint : expectedType := inAnalysisContext->mPredefinedTypes->mLSIntType ;
+  when lexicalType_sint64 : expectedType := inAnalysisContext->mPredefinedTypes->mLSInt64Type ;
+  when lexicalType_double : expectedType := inAnalysisContext->mPredefinedTypes->mLDoubleType ;
+  end switch ;
+  if expectedType != type then
+    error mActualParameterName
+    : "the '" . mActualParameterName . "' parameter has the '@" . [type identifierRepresentation]
+    . ", bit an '@" . [expectedType identifierRepresentation] . "' parameter is required here"
+    ;
+  end if ;
+  ioTerminalCheckAssignementList +=
+    ![mActualParameterTypeName string]
+    !cppName
+    !inLexicalAttributeName
+  ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @terminalCheckInstruction analyzeSyntaxInstruction
   ??@analysisContext inAnalysisContext
   ??@terminalMap inTerminalMap
@@ -347,38 +474,13 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
 #---
   @terminalCheckAssignementList terminalCheckAssignementList [emptyList] ;
   foreach mActualInputParameterList, sentAttributeList do
-    if [mActualParameterName length] > 0 then # Empty string if joker
-      @unifiedTypeMapProxy type ;
-      @string cppName ;
-      if [mActualParameterTypeName length] > 0 then
-        cppName := "var_" . [mActualParameterName identifierRepresentation] ;
-        type := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mActualParameterTypeName] ;
-        [!?ioVariableMap insertDefinedLocalVariable !mActualParameterName !type !cppName !cppName] ;
-      else
-        [!?ioVariableMap searchForWriteAccess !mActualParameterName ?type ?cppName ?*] ;
-      end if ;
-      @unifiedTypeMapProxy expectedType ;
-      switch mLexicalType
-      when lexicalType_string : expectedType := inAnalysisContext->mPredefinedTypes->mLStringType ;
-      when lexicalType_char : expectedType := inAnalysisContext->mPredefinedTypes->mLCharType ;
-      when lexicalType_uint : expectedType := inAnalysisContext->mPredefinedTypes->mLUIntType ;
-      when lexicalType_uint64 : expectedType := inAnalysisContext->mPredefinedTypes->mLUInt64Type ;
-      when lexicalType_sint : expectedType := inAnalysisContext->mPredefinedTypes->mLSIntType ;
-      when lexicalType_sint64 : expectedType := inAnalysisContext->mPredefinedTypes->mLSInt64Type ;
-      when lexicalType_double : expectedType := inAnalysisContext->mPredefinedTypes->mLDoubleType ;
-      end switch ;
-      if expectedType != type then
-        error mActualParameterName
-        : "the '" . mActualParameterName . "' parameter has the '@" . [type identifierRepresentation]
-        . ", bit an '@" . [expectedType identifierRepresentation] . "' parameter is required here"
-        ;
-      end if ;
-      terminalCheckAssignementList +=
-        ![mActualParameterTypeName string]
-        !cppName
-        !mLexicalAttributeName
-      ;
-    end if ;
+    [mInputParameter analyzeInputParameter
+      !inAnalysisContext
+      !mLexicalType
+      !mLexicalAttributeName
+      !?terminalCheckAssignementList
+      !?ioVariableMap
+    ] ;
   end foreach ;
 #---
   foreach mIndexingKeyList do
@@ -391,19 +493,12 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
     end if ;
   end foreach ;
 #---
-#  if mTerminalLocationConstantName->string != "" then
-#    const @string cppName := "var_" . [mTerminalLocationConstantName identifierRepresentation] ;
-#    const @unifiedTypeMapProxy type [searchKey !inAnalysisContext->mSemanticContext->mTypeMap !["location" nowhere]] ;
-#    [!?ioVariableMap insertLocalConstant !mTerminalLocationConstantName !type !cppName !cppName] ;
-#  end if ;
-#---
   ioInstructionListForGeneration += ![@terminalCheckInstructionForGeneration new
     !mInstructionLocation
     !mTerminalName
     !inLexiqueName
     !terminalCheckAssignementList
     !mIndexingKeyList
-#    !mTerminalLocationConstantName->string
   ] ;
 end method ;
 

@@ -359,7 +359,7 @@ class @inputJokerActualParameterAST extends @actualParameterAST {
 #---------------------------------------------------------------------------*
 
 list @actualParameterListAST {
-  @actualParameterAST mActualParameter feature nogetter ;
+  @actualParameterAST mActualParameter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -368,9 +368,38 @@ list @actualParameterListAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+abstract class @abstractInputParameter {
+}
+
+#---------------------------------------------------------------------------*
+
+class @inputParameterAnonymousVariable : @abstractInputParameter {
+}
+
+#---------------------------------------------------------------------------*
+
+class @inputParameterVariable : @abstractInputParameter {
+  @lstring mActualParameterName ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @inputParameterDeclaredVariable : @abstractInputParameter {
+  @lstring mActualParameterTypeName ;
+  @lstring mActualParameterName ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @inputParameterDeclaredConstant : @abstractInputParameter {
+  @lstring mActualParameterTypeName ;
+  @lstring mActualParameterName ;
+}
+
+#---------------------------------------------------------------------------*
+
 list @actualInputParameterListAST {
-  @lstring mActualParameterTypeName feature nogetter ; # Empty if no type
-  @lstring mActualParameterName feature nogetter ;
+  @abstractInputParameter mInputParameter ;
 }
 
 #---------------------------------------------------------------------------*
