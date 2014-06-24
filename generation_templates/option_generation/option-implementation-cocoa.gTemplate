@@ -10,7 +10,7 @@ void enterOptionsFor_%![OPTION_COMPONENT_NAME identifierRepresentation]% (NSMuta
                                                        NSMutableArray * ioStringOptionArray) {
 %if ([BOOL_OPTION_MAP count] + [UINT_OPTION_MAP count] + [STRING_OPTION_MAP count]) > 0 then
   %  OC_GGS_CommandLineOption * option ;\n%
-end if
+end
 foreach BOOL_OPTION_MAP do
   %  option = [[OC_GGS_CommandLineOption alloc]\n%
   %    initWithDomainName:@%![OPTION_COMPONENT_NAME utf8Representation]%\n%
@@ -21,7 +21,7 @@ foreach BOOL_OPTION_MAP do
   %    defaultValue:@""\n%
   %  ] ;\n%
   %  [ioBoolOptionArray addObject:option] ;\n%
-end foreach
+end
 foreach UINT_OPTION_MAP do
   %  option = [[OC_GGS_CommandLineOption alloc]\n%
   %    initWithDomainName:@%![OPTION_COMPONENT_NAME utf8Representation]%\n%
@@ -32,7 +32,7 @@ foreach UINT_OPTION_MAP do
   %    defaultValue:@%![mDefaultValue utf8Representation]%\n%
   %  ] ;\n%
   %  [ioUIntOptionArray addObject:option] ;\n%
-end foreach
+end
 foreach STRING_OPTION_MAP do
   %  option = [[OC_GGS_CommandLineOption alloc]\n%
   %    initWithDomainName:@%![OPTION_COMPONENT_NAME utf8Representation]%\n%
@@ -43,7 +43,7 @@ foreach STRING_OPTION_MAP do
   %    defaultValue:@%![mDefaultValue utf8Representation]%\n%
   %  ] ;\n%
   %  [ioStringOptionArray addObject:option] ;\n%
-end foreach
+end
 %}
 
 //-----------------------------------------------------------------------------*

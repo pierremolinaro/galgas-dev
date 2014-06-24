@@ -16,8 +16,8 @@ typedef void (*categoryModifierSignature_%![CLASS_NAME identifierRepresentation]
       %GALGAS_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
     else # argumentIn
       %GALGAS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
-    end if
-  end foreach
+    end
+  end
   %,\n%!^%C_Compiler * inCompiler%
   %\n %!^%COMMA_LOCATION_ARGS) ;
 
@@ -39,8 +39,8 @@ void callCategoryModifier_%![MODIFIER_NAME identifierRepresentation]% (%?^%cPtr_
       %GALGAS_%![mFormalArgumentType identifierRepresentation]% & out_%![mFormalArgumentName identifierRepresentation]
     else # argumentIn
       %GALGAS_%![mFormalArgumentType identifierRepresentation]% in_%![mFormalArgumentName identifierRepresentation]
-    end if
-  end foreach
+    end
+  end
   %,\n%!^%C_Compiler * inCompiler%
   %\n%!^%COMMA_LOCATION_ARGS) ;
 

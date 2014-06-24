@@ -707,7 +707,6 @@ rule <template_instruction>
   end select ;
 #---
   $end$ ;
-  $foreach$ ;
   ioResultingInstructionList += ![@templateInstructionForeachAST new
    !ascending
    !expression
@@ -756,7 +755,6 @@ rule <template_instruction>
   end select ;
 #---
   $end$ ;
-  $if$ ;
   ioResultingInstructionList += ![@templateInstructionIfAST new
     !templateInstructionIfBranchList
     !elseInstructionList
@@ -796,7 +794,6 @@ rule <template_instruction>
   end repeat ;
 #---
   $end$ ;
-  $switch$ ;
   ioResultingInstructionList += ![@templateInstructionSwitchAST new
     !switchExpression
     !templateInstructionSwitchBranchList

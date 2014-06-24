@@ -8,14 +8,14 @@ class cPtr_%!TYPE_IDENTIFIER% : public C_SharedObject {
   private : GALGAS_%!ELEMENT_TYPE_IDENTIFIER% * mObjectArray ;
 %foreach DIMENSION_LIST do
 %  private : uint32_t mSize%!mValue% ;
-% end foreach
+% end
 %
 //--- Constructor
   public : cPtr_%!TYPE_IDENTIFIER% (%?^
 foreach DIMENSION_LIST
   do !^%const uint32_t inSize%!mValue
   between %,\n%
-end foreach
+end
 %
    %!^%COMMA_LOCATION_ARGS) ;
 
@@ -35,7 +35,7 @@ end foreach
 //--- 
 %foreach DIMENSION_LIST do
 %  public : inline uint32_t size%!mValue% (void) const { return mSize%!mValue% ; }
-% end foreach
+% end
 %
 
   public : VIRTUAL_IN_DEBUG GALGAS_%!ELEMENT_TYPE_IDENTIFIER% objectAtAbsoluteIndex (const int32_t inIndex) const ;
@@ -48,7 +48,7 @@ end foreach
 foreach DIMENSION_LIST
  before ?^
  do !^%const uint32_t inSize%!mValue%,\n%
- end foreach
+ end
 % %!^%C_Compiler * inCompiler
   %!^%COMMA_LOCATION_ARGS) const ;
 
@@ -57,7 +57,7 @@ foreach DIMENSION_LIST
 foreach DIMENSION_LIST
  do !^%const uint32_t inSize%!mValue
  between %,\n%
- end foreach
+ end
 %
  %!^%COMMA_LOCATION_ARGS) ;
 } ;
@@ -68,15 +68,15 @@ cPtr_%!TYPE_IDENTIFIER%::cPtr_%!TYPE_IDENTIFIER% (%
 foreach DIMENSION_LIST
  do %const uint32_t inSize%!mValue
  between %,\n                                                      %
- end foreach
+ end
 %    %!^%COMMA_LOCATION_ARGS) :
 C_SharedObject (THERE),
 mObjectArray (NULL),
 % foreach DIMENSION_LIST
   do %mSize%!mValue% (inSize%!mValue%)%
   between %,\n%
-  end foreach % {
-  macroMyNewArray (mObjectArray, GALGAS_%!ELEMENT_TYPE_IDENTIFIER%, % foreach DIMENSION_LIST do % inSize%!mValue between % * % end foreach %) ;
+  end % {
+  macroMyNewArray (mObjectArray, GALGAS_%!ELEMENT_TYPE_IDENTIFIER%, % foreach DIMENSION_LIST do % inSize%!mValue between % * % end %) ;
 }
 
 //-----------------------------------------------------------------------------*
@@ -88,8 +88,8 @@ mObjectArray (NULL),
 % foreach DIMENSION_LIST
   do %mSize%!mValue% (inPointer->size%!mValue% ())%
   between %,\n%
-  end foreach % {
-  const uint32_t size = % foreach DIMENSION_LIST do %mSize%!mValue between % * % end foreach % ;
+  end % {
+  const uint32_t size = % foreach DIMENSION_LIST do %mSize%!mValue between % * % end % ;
   macroMyNewArray (mObjectArray, GALGAS_%!ELEMENT_TYPE_IDENTIFIER%, size) ;
   for (uint32_t i=0 ; i<size ; i++) {
     mObjectArray [i] = inPointer->mObjectArray [i] ;
@@ -102,17 +102,17 @@ static inline uint32_t %!TYPE_IDENTIFIER%_computeIndex (%?^
 foreach DIMENSION_LIST
  do !^%const uint32_t inIndex%!mValue
  between %,\n%
- end foreach
+ end
 foreach [DIMENSION_LIST subListFromIndex !1]
  do %,\n%!^%const uint32_t inSize%!mValue
-end foreach
+end
 %) {
   uint32_t idx = inIndex0 ;
 %
 foreach [DIMENSION_LIST subListFromIndex !1] do
 %  idx *= inSize%!mValue% ;\n%
 %  idx += inIndex%!mValue% ;\n%
-end foreach
+end
 
 %  return idx ;
 }
@@ -122,7 +122,7 @@ end foreach
 int32_t cPtr_%!TYPE_IDENTIFIER%::indexForIndexes (%?^
 foreach DIMENSION_LIST
  do !^%const uint32_t inIndex%!mValue%,\n%
-end foreach
+end
 %  %!^%C_Compiler * inCompiler
    %!^%COMMA_LOCATION_ARGS) const {
   int32_t result = -1 ;
@@ -134,9 +134,9 @@ do
     s << "array index %!mValue% : " << cStringWithUnsigned (inIndex%!mValue%) << " >= size " << cStringWithUnsigned (size%!mValue% ()) ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;\n%
 between %  }else %
-end foreach
+end
 %  }else{
-    result = (int32_t) %!TYPE_IDENTIFIER%_computeIndex (%foreach DIMENSION_LIST do %inIndex%!mValue between %, % end foreach foreach [DIMENSION_LIST subListFromIndex !1] do %, size%!mValue% ()% end foreach %) ;
+    result = (int32_t) %!TYPE_IDENTIFIER%_computeIndex (%foreach DIMENSION_LIST do %inIndex%!mValue between %, % end foreach [DIMENSION_LIST subListFromIndex !1] do %, size%!mValue% ()% end %) ;
   }
   return result ;
 }
@@ -166,27 +166,27 @@ void cPtr_%!TYPE_IDENTIFIER%::setSize (%?^
 foreach DIMENSION_LIST
 do !^%const uint32_t inSize%!mValue
 between %,\n%
-end foreach
+end
 %      \n%!^%COMMA_LOCATION_ARGS) {
   GALGAS_%!ELEMENT_TYPE_IDENTIFIER% * p = NULL ;
-  macroMyNewArrayThere (p, GALGAS_%!ELEMENT_TYPE_IDENTIFIER%, % foreach DIMENSION_LIST do %inSize%!mValue between % * % end foreach %) ;
+  macroMyNewArrayThere (p, GALGAS_%!ELEMENT_TYPE_IDENTIFIER%, % foreach DIMENSION_LIST do %inSize%!mValue between % * % end %) ;
 %
 foreach DIMENSION_LIST
 do %  uint32_t min%!mValue% = uimin32 (size%!mValue% (), inSize%!mValue%) ;\n%
-end foreach
+end
 foreach DIMENSION_LIST
 do %  for (uint32_t i%!mValue%=0 ; i%!mValue%<min%!mValue% ; i%!mValue%++) {\n%
-end foreach
-%        const uint32_t idxSource = %!TYPE_IDENTIFIER%_computeIndex (%foreach DIMENSION_LIST do %i%!mValue between %, % end foreach foreach [DIMENSION_LIST subListFromIndex !1] do %, size%!mValue% ()% end foreach %) ;
-        const uint32_t idxTarget = %!TYPE_IDENTIFIER%_computeIndex (%foreach DIMENSION_LIST do %i%!mValue between %, % end foreach foreach [DIMENSION_LIST subListFromIndex !1] do %, inSize%!mValue end foreach %) ;
+end
+%        const uint32_t idxSource = %!TYPE_IDENTIFIER%_computeIndex (%foreach DIMENSION_LIST do %i%!mValue between %, % end foreach [DIMENSION_LIST subListFromIndex !1] do %, size%!mValue% ()% end %) ;
+        const uint32_t idxTarget = %!TYPE_IDENTIFIER%_computeIndex (%foreach DIMENSION_LIST do %i%!mValue between %, % end foreach [DIMENSION_LIST subListFromIndex !1] do %, inSize%!mValue end %) ;
         p [idxTarget] = mObjectArray [idxSource] ;
 %
 foreach DIMENSION_LIST
 do %  }\n%
-end foreach
+end
 foreach DIMENSION_LIST
 do %  mSize%!mValue% = inSize%!mValue% ;\n%
-end foreach
+end
 %  macroMyDeleteArray (mObjectArray) ;
   mObjectArray = p ;
 }
@@ -226,12 +226,12 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_new (%?^
 foreach DIMENSION_LIST
  do !^%const GALGAS_uint & inSize%!mValue
  between %,\n%
- end foreach
+ end
 %
  %!^%COMMA_LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% result ;
-  if (% foreach DIMENSION_LIST do %inSize%!mValue%.isValid ()% between % && % end foreach %) {
-    macroMyNew (result.mSharedObject, cPtr_%!TYPE_IDENTIFIER% (% foreach DIMENSION_LIST do %inSize%!mValue%.uintValue ()% between %, % end foreach % COMMA_THERE)) ;
+  if (% foreach DIMENSION_LIST do %inSize%!mValue%.isValid ()% between % && % end %) {
+    macroMyNew (result.mSharedObject, cPtr_%!TYPE_IDENTIFIER% (% foreach DIMENSION_LIST do %inSize%!mValue%.uintValue ()% between %, % end % COMMA_THERE)) ;
   }
   return result ;
 }
@@ -249,7 +249,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
 foreach DIMENSION_LIST
 do %\n%!^%<< cStringWithUnsigned (mSharedObject->size%!mValue% ())%
 between % << ", "%
-end foreach
+end
 %             << "] of @uint" ;
   }
   ioString << ">" ;
@@ -280,7 +280,7 @@ GALGAS_range GALGAS_%!TYPE_IDENTIFIER%::reader_rangeForAxis (%?^%const GALGAS_ui
 % foreach DIMENSION_LIST do
 %    }else if (%!mValue% == axisIndex) {\n%
 %      result = GALGAS_range (GALGAS_uint (0), GALGAS_uint (mSharedObject->size%!mValue% ())) ;\n%
-end foreach
+end
 %    }
   }
   return result ;
@@ -301,7 +301,7 @@ GALGAS_uint GALGAS_%!TYPE_IDENTIFIER%::reader_sizeForAxis (%?^%const GALGAS_uint
 % foreach DIMENSION_LIST do
 %    }else if (%!mValue% == axisIndex) {\n%
 %      result = GALGAS_uint (mSharedObject->size%!mValue% ()) ;\n%
-end foreach
+end
 %    }
   }
   return result ;
@@ -312,16 +312,16 @@ end foreach
 GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::reader_isValueValidAtIndex (%?^
 foreach DIMENSION_LIST
  do !^%const GALGAS_uint & inIndex%!mValue%,\n%
- end foreach
+ end
 %  %!^%C_Compiler * inCompiler
    %!^%COMMA_LOCATION_ARGS) const {
   GALGAS_bool result ;
-  if (isValid ()% foreach DIMENSION_LIST do % && inIndex%!mValue%.isValid ()%end foreach %) {
+  if (isValid ()% foreach DIMENSION_LIST do % && inIndex%!mValue%.isValid ()%end %) {
     macroValidSharedObject (mSharedObject, cPtr_%!TYPE_IDENTIFIER%) ;
     const int32_t idx = mSharedObject->indexForIndexes (%?^
 foreach DIMENSION_LIST
 do !^%inIndex%!mValue%.uintValue (),\n%
-end foreach
+end
 %                                                         inCompiler
                                                          COMMA_THERE) ;
     if (idx >= 0) {
@@ -336,16 +336,16 @@ end foreach
 GALGAS_%!ELEMENT_TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_valueAtIndex (%?^
 foreach DIMENSION_LIST
  do !^%const GALGAS_uint & inIndex%!mValue%,\n%
- end foreach
+ end
 %  %!^%C_Compiler * inCompiler
    %!^%COMMA_LOCATION_ARGS) const {
   GALGAS_%!ELEMENT_TYPE_IDENTIFIER% result ;
-  if (isValid ()% foreach DIMENSION_LIST do % && inIndex%!mValue%.isValid ()%end foreach %) {
+  if (isValid ()% foreach DIMENSION_LIST do % && inIndex%!mValue%.isValid ()%end %) {
     macroValidSharedObject (mSharedObject, cPtr_%!TYPE_IDENTIFIER%) ;
     const int32_t idx = mSharedObject->indexForIndexes (%?^
 foreach DIMENSION_LIST
 do !^%inIndex%!mValue%.uintValue (),\n%
-end foreach
+end
 %                                                         inCompiler
                                                          COMMA_THERE) ;
     if (idx >= 0) {
@@ -356,7 +356,7 @@ end foreach
 foreach DIMENSION_LIST
 do %\n             << cStringWithUnsigned (mSharedObject->size%!mValue% ())%
 between % << ", "%
-end foreach
+end
 %\n             << ") is invalid" ;
         inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
       }
@@ -383,17 +383,17 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_setValueAtIndex (%?^%GALGAS_%!ELEMENT_T
 %
 foreach DIMENSION_LIST
  do !^%GALGAS_uint inIndex%!mValue%,\n%
- end foreach
+ end
 %       %!^%C_Compiler * inCompiler
        %!^%COMMA_LOCATION_ARGS) {
-  if (isValid () && inValue.isValid ()% foreach DIMENSION_LIST do % && inIndex%!mValue%.isValid ()%end foreach %) {
+  if (isValid () && inValue.isValid ()% foreach DIMENSION_LIST do % && inIndex%!mValue%.isValid ()%end %) {
     insulate (THERE) ;
     macroValidSharedObject (mSharedObject, cPtr_%!TYPE_IDENTIFIER%) ;
     MF_Assert (mSharedObject->retainCount () == 1, "retainCount () == \%lld != 1", mSharedObject->retainCount (), 0) ;
     const int32_t idx = mSharedObject->indexForIndexes (%?^
 foreach DIMENSION_LIST
 do !^%inIndex%!mValue%.uintValue (),\n%
-end foreach
+end
 %                                                         inCompiler
                                                          COMMA_THERE) ;
     if (idx >= 0) {
@@ -407,27 +407,27 @@ end foreach
 void GALGAS_%!TYPE_IDENTIFIER%::modifier_forceValueAtIndex (%?^%GALGAS_%!ELEMENT_TYPE_IDENTIFIER% inValue,
 %foreach DIMENSION_LIST
  do !^%const GALGAS_uint inIndex%!mValue%,\n%
- end foreach
+ end
 % %!^%C_Compiler * inCompiler
   %!^%COMMA_LOCATION_ARGS) {
-  if (isValid () && inValue.isValid ()% foreach DIMENSION_LIST do % && inIndex%!mValue%.isValid ()%end foreach %) {
+  if (isValid () && inValue.isValid ()% foreach DIMENSION_LIST do % && inIndex%!mValue%.isValid ()%end %) {
     insulate (THERE) ;
     macroValidSharedObject (mSharedObject, cPtr_%!TYPE_IDENTIFIER%) ;
     MF_Assert (mSharedObject->retainCount () == 1, "retainCount () == \%lld != 1", mSharedObject->retainCount (), 0) ;
   //--- Resize ?
-    const bool resize = %foreach DIMENSION_LIST do %(inIndex%!mValue%.uintValue () >= mSharedObject->size%!mValue% ())% between % || % end foreach% ;
+    const bool resize = %foreach DIMENSION_LIST do %(inIndex%!mValue%.uintValue () >= mSharedObject->size%!mValue% ())% between % || % end% ;
     if (resize) {
 %
 foreach DIMENSION_LIST
 do %      const uint32_t newSize%!mValue% = uimax32 (mSharedObject->size%!mValue% (), inIndex%!mValue%.uintValue () + 1) ;\n%
-end foreach
-%      mSharedObject->setSize (%foreach DIMENSION_LIST do %newSize%!mValue between %, % end foreach% COMMA_THERE) ;
+end
+%      mSharedObject->setSize (%foreach DIMENSION_LIST do %newSize%!mValue between %, % end% COMMA_THERE) ;
     }
   //---
     const int32_t idx = mSharedObject->indexForIndexes (%?^
 foreach DIMENSION_LIST
 do !^%inIndex%!mValue%.uintValue (),\n%
-end foreach
+end
 %                                                         inCompiler
                                                          COMMA_THERE) ;
     if (idx >= 0) {
@@ -456,8 +456,8 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_setSizeForAxis (%?^%GALGAS_uint inNewSi
     }else{
 % foreach DIMENSION_LIST
 do %      const uint32_t newSize%!mValue% = (%!mValue% == axisIndex) ? inNewSize.uintValue () : mSharedObject->size%!mValue% () ;\n%
-end foreach
-%      mSharedObject->setSize (% foreach DIMENSION_LIST do %newSize%!mValue between %, % end foreach % COMMA_THERE) ;
+end
+%      mSharedObject->setSize (% foreach DIMENSION_LIST do %newSize%!mValue between %, % end % COMMA_THERE) ;
     }
   }
 }
@@ -468,17 +468,17 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_invalidateValueAtIndex (%
 foreach DIMENSION_LIST
  before ?^
  do !^%GALGAS_uint inIndex%!mValue%,\n%
- end foreach
+ end
 %        %!^%C_Compiler * inCompiler
         %!^%COMMA_LOCATION_ARGS) {
-  if (isValid ()% foreach DIMENSION_LIST do % && inIndex%!mValue%.isValid ()%end foreach %) {
+  if (isValid ()% foreach DIMENSION_LIST do % && inIndex%!mValue%.isValid ()%end %) {
     insulate (THERE) ;
     macroValidSharedObject (mSharedObject, cPtr_%!TYPE_IDENTIFIER%) ;
     MF_Assert (mSharedObject->retainCount () == 1, "retainCount () == \%lld != 1", mSharedObject->retainCount (), 0) ;
     const int32_t idx = mSharedObject->indexForIndexes (%?^
 foreach DIMENSION_LIST
 do !^%inIndex%!mValue%.uintValue (),\n%
-end foreach
+end
 %                                                         inCompiler
                                                          COMMA_THERE) ;
     if (idx >= 0) {
@@ -492,10 +492,10 @@ end foreach
 void GALGAS_%!TYPE_IDENTIFIER%::modifier_setSize (%?^
 foreach DIMENSION_LIST
 do !^%const GALGAS_uint inNewSize%!mValue%,\n%
-end foreach
+end
 %  %!^%C_Compiler * /* inCompiler */
    %!^%COMMA_LOCATION_ARGS) {
-  if (isValid ()% foreach DIMENSION_LIST do % && inNewSize%!mValue%.isValid ()%end foreach %) {
+  if (isValid ()% foreach DIMENSION_LIST do % && inNewSize%!mValue%.isValid ()%end %) {
     insulate (THERE) ;
     macroValidSharedObject (mSharedObject, cPtr_%!TYPE_IDENTIFIER%) ;
     MF_Assert (mSharedObject->retainCount () == 1, "retainCount () == \%lld != 1", mSharedObject->retainCount (), 0) ;
@@ -503,7 +503,7 @@ end foreach
 foreach DIMENSION_LIST
 do !^%inNewSize%!mValue%.uintValue ()%
 between %,\n%
-end foreach
+end
 %
                             COMMA_THERE) ;
   }
@@ -521,8 +521,8 @@ typeComparisonResult cPtr_%!TYPE_IDENTIFIER%::objectCompare (const cPtr_%!TYPE_I
       result = kFirstOperandGreaterThanSecond ;
     }
   }
-% end foreach
-%  for (uint32_t i=0 ; (i<(%foreach DIMENSION_LIST do%mSize%!mValue between %*% end foreach%)) && (result == kOperandEqual) ; i++) {
+% end
+%  for (uint32_t i=0 ; (i<(%foreach DIMENSION_LIST do%mSize%!mValue between %*% end%)) && (result == kOperandEqual) ; i++) {
     GALGAS_%!ELEMENT_TYPE_IDENTIFIER% * ptrObject1 = & (mObjectArray [i]) ;
     GALGAS_%!ELEMENT_TYPE_IDENTIFIER% * ptrObject2 = & (inOperand->mObjectArray [i]) ;
     if ((! ptrObject1->isValid ()) && ptrObject2->isValid ()) {

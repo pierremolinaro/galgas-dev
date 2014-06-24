@@ -9,21 +9,21 @@ GALGAS_string filewrapperTemplate_%![FILEWRAPPER_NAME identifierRepresentation]%
     %/* %!compilerCppName []% */%
   else
     !compilerCppName []
-  end if
+  end
   foreach FORMAL_ARGUMENT_LIST do
     %,\n%!^%const GALGAS_%![mFormalArgumentType identifierRepresentation]% & %
     if [UNUSED_VAR_SET hasKey !mFormalArgumentCppName] then
       %/* %!mFormalArgumentCppName% */%
     else
       !mFormalArgumentCppName
-    end if
-  end foreach
+    end
+  end
 %\n %!^%COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
 %
  if USES_COLUMN_MARKER then
    %  uint32_t columnMarker = 0 ;\n%
- end if
+ end
  block 2 :
  !GENERATED_INSTRUCTION_STRING
  end block

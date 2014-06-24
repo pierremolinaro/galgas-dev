@@ -5,4 +5,4 @@
 
 %foreach [GRAMMAR_COMPONENT_ROOT mSyntaxComponents] do
 %#include "%![[mValue string] stringByDeletingPathExtension]%.h"\n%
-end foreach%
+end%

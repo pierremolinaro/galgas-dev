@@ -43,7 +43,7 @@ static const C_galgas_type_descriptor * functionArgs_%![FUNCTION_NAME identifier
 %
   foreach FORMAL_ARGUMENT_LIST do
     %  & kTypeDescriptor_GALGAS_%![mFormalArgumentType identifierRepresentation]%,\n%
-  end foreach
+  end
 %  NULL
 } ;
 
@@ -64,14 +64,14 @@ else
                                              !^%COMMA_LOCATION_ARGS) {\n%
   foreach FORMAL_ARGUMENT_LIST do index IDX
     %  const GALGAS_%![mFormalArgumentType identifierRepresentation]% operand%![IDX string]% = GALGAS_%![mFormalArgumentType identifierRepresentation]%::extractObject (inEffectiveParameterArray.objectAtIndex (%![IDX string]% COMMA_HERE), inCompiler COMMA_THERE) ;\n%
-  end foreach
+  end
   %  return function_%![FUNCTION_NAME identifierRepresentation]% (%
   foreach FORMAL_ARGUMENT_LIST do index IDX
     %operand%![IDX string]%, %
-  end foreach
+  end
   %inCompiler COMMA_THERE).reader_object (THERE) ;\n%
   %}\n%
-end if
+end
 %
 //-----------------------------------------------------------------------------*
 

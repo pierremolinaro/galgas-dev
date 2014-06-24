@@ -21,18 +21,18 @@ class cParser_%![COMPONENT_NAME identifierRepresentation]% {
         %GALGAS_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
       else # argumentIn
         %GALGAS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
-      end if
+      end
       %,\n%!^ 
-    end foreach
+    end
   %C_Lexique_%!LEXIQUE_NAME% * inLexique) = 0 ;\n\n%
-  end foreach
+  end
   
   %  protected : virtual void nt_%![lkey identifierRepresentation]%_parse (C_Lexique_%!LEXIQUE_NAME% * inLexique) = 0 ;\n\n%
 
   if HAS_INDEXING then
     %  protected : virtual void nt_%![lkey identifierRepresentation]%_indexing (C_Lexique_%!LEXIQUE_NAME% * inLexique) = 0 ;\n\n%
-  end if
-end foreach%
+  end
+end%
 //--- Rule declarations
 %foreach RULE_DECLARATION_LIST do
   foreach mLabelImplementationList do
@@ -46,20 +46,20 @@ end foreach%
         %GALGAS_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
       else # argumentIn
         %GALGAS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
-      end if
+      end
       %,\n%!^
-    end foreach
+    end
     %C_Lexique_%!LEXIQUE_NAME% * inLexique) ;\n\n%
-  end foreach
+  end
   %  protected : void rule_%![COMPONENT_NAME identifierRepresentation]%_%![mNonterminalName identifierRepresentation]%_i%![mRuleIndex string]%_parse (C_Lexique_%!LEXIQUE_NAME% * inLexique) ;\n\n%
   if HAS_INDEXING then
     %  protected : void rule_%![COMPONENT_NAME identifierRepresentation]%_%![mNonterminalName identifierRepresentation]%_i%![mRuleIndex string]%_indexing (C_Lexique_%!LEXIQUE_NAME% * inLexique) ;\n\n%
-  end if
-end foreach%
+  end
+end%
 
 //--- Select methods
 %foreach SELECT_METHOD_LIST do
   %  protected : virtual int32_t select_%![COMPONENT_NAME identifierRepresentation]%_%![mValue string]% (C_Lexique_%!LEXIQUE_NAME% *) = 0 ;\n\n%
-end foreach%
+end%
 } ;
 

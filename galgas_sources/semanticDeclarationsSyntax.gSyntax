@@ -823,7 +823,7 @@ rule <semantic_declaration>
   $:$ ;
   <semantic_instruction_list> ??@semanticInstructionListAST routineInstructionList ;
   $end$ ;
-  const @location endOfMethodLocation := here ;
+  const endOfMethodLocation := here ;
   $method$ ;
   $;$ ;
   ioSemanticDeclarations += ![@categoryMethodAST new
@@ -838,26 +838,26 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <semantic_declaration>
- ?!@semanticDeclarationListAST ioSemanticDeclarations
-:
-  $method$ ;
-  $type_name$ ? @lstring className indexing typeReferenceCategoryMethod ;
-  $identifier$ ? @lstring mMethodName indexing categoryMethodDefinition ;
-  <formal_parameter_list> ??@formalParameterListAST formalParameterList ;
-  ${$ ;
-  <semantic_instruction_list> ??@semanticInstructionListAST routineInstructionList ;
-  $}$ ;
-  const @location endOfMethodLocation := here ;
-  ioSemanticDeclarations += ![@categoryMethodAST new
-    !true # Is global
-    !className
-    !mMethodName
-    !formalParameterList
-    !routineInstructionList
-    !endOfMethodLocation
-  ] ;
-end rule ;
+#rule <semantic_declaration>
+# ?!@semanticDeclarationListAST ioSemanticDeclarations
+#:
+#  $method$ ;
+#  $type_name$ ? @lstring className indexing typeReferenceCategoryMethod ;
+#  $identifier$ ? @lstring mMethodName indexing categoryMethodDefinition ;
+#  <formal_parameter_list> ??@formalParameterListAST formalParameterList ;
+#  ${$ ;
+#  <semantic_instruction_list> ??@semanticInstructionListAST routineInstructionList ;
+#  $}$ ;
+#  const @location endOfMethodLocation := here ;
+#  ioSemanticDeclarations += ![@categoryMethodAST new
+#    !true # Is global
+#    !className
+#    !mMethodName
+#    !formalParameterList
+#    !routineInstructionList
+#    !endOfMethodLocation
+#  ] ;
+#end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -895,27 +895,27 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <semantic_declaration>
- ?!@semanticDeclarationListAST ioSemanticDeclarations
-:
-  $override$ ;
-  $method$ ;
-  $type_name$ ? @lstring className indexing typeReferenceOverrideCategoryMethodDefinition ;
-  $identifier$ ? @lstring mMethodName indexing overrideCategoryMethodDefinition ;
-  <formal_parameter_list> ??@formalParameterListAST formalParameterList ;
-  ${$ ;
-  <semantic_instruction_list> ??@semanticInstructionListAST routineInstructionList ;
-  $}$ ;
-  const @location endOfMethodLocation := here ;
-  ioSemanticDeclarations += ![@overridingCategoryMethodAST new
-    !true # Is global
-    !className
-    !mMethodName
-    !formalParameterList
-    !routineInstructionList
-    !endOfMethodLocation
-  ] ;
-end rule ;
+#rule <semantic_declaration>
+# ?!@semanticDeclarationListAST ioSemanticDeclarations
+#:
+#  $override$ ;
+#  $method$ ;
+#  $type_name$ ? @lstring className indexing typeReferenceOverrideCategoryMethodDefinition ;
+#  $identifier$ ? @lstring mMethodName indexing overrideCategoryMethodDefinition ;
+#  <formal_parameter_list> ??@formalParameterListAST formalParameterList ;
+#  ${$ ;
+#  <semantic_instruction_list> ??@semanticInstructionListAST routineInstructionList ;
+#  $}$ ;
+#  const @location endOfMethodLocation := here ;
+#  ioSemanticDeclarations += ![@overridingCategoryMethodAST new
+#    !true # Is global
+#    !className
+#    !mMethodName
+#    !formalParameterList
+#    !routineInstructionList
+#    !endOfMethodLocation
+#  ] ;
+#end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -990,32 +990,32 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <semantic_declaration>
- ?!@semanticDeclarationListAST ioSemanticDeclarations
-:
-  $reader$ ;
-  $type_name$ ? @lstring className ;
-  $identifier$ ? @lstring mMethodName indexing categoryReaderDefinition ;
-  @formalInputParameterListAST mFormalInputParameterList ;
-  <formal_input_parameter_list> ? mFormalInputParameterList ;
-  $->$ ;
-  $type_name$ ? @lstring mReturnedTypeName ;
-  $identifier$ ? @lstring mReturnedVariableName ;
-  ${$ ;
-  <semantic_instruction_list> ??@semanticInstructionListAST routineInstructionList ;
-  $}$ ;
-  const @location endOfInstructionList := here ;
-  ioSemanticDeclarations += ![@categoryReaderAST new
-    !true # Is global
-    !className
-    !mMethodName
-    !mFormalInputParameterList
-    !mReturnedTypeName
-    !mReturnedVariableName
-    !routineInstructionList
-    !endOfInstructionList
-  ] ;
-end rule ;
+#rule <semantic_declaration>
+# ?!@semanticDeclarationListAST ioSemanticDeclarations
+#:
+#  $reader$ ;
+#  $type_name$ ? @lstring className ;
+#  $identifier$ ? @lstring mMethodName indexing categoryReaderDefinition ;
+#  @formalInputParameterListAST mFormalInputParameterList ;
+#  <formal_input_parameter_list> ? mFormalInputParameterList ;
+#  $->$ ;
+#  $type_name$ ? @lstring mReturnedTypeName ;
+#  $identifier$ ? @lstring mReturnedVariableName ;
+#  ${$ ;
+#  <semantic_instruction_list> ??@semanticInstructionListAST routineInstructionList ;
+#  $}$ ;
+#  const @location endOfInstructionList := here ;
+#  ioSemanticDeclarations += ![@categoryReaderAST new
+#    !true # Is global
+#    !className
+#    !mMethodName
+#    !mFormalInputParameterList
+#    !mReturnedTypeName
+#    !mReturnedVariableName
+#    !routineInstructionList
+#    !endOfInstructionList
+#  ] ;
+#end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1059,33 +1059,33 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <semantic_declaration>
- ?!@semanticDeclarationListAST ioSemanticDeclarations
-:
-  $override$ ;
-  $reader$ ;
-  $type_name$ ? @lstring className ;
-  $identifier$ ? @lstring mMethodName indexing overrideCategoryReaderDefinition ;
-  @formalInputParameterListAST mFormalInputParameterList ;
-  <formal_input_parameter_list> ? mFormalInputParameterList ;
-  $->$ ;
-  $type_name$ ? @lstring mReturnedTypeName ;
-  $identifier$ ? @lstring mReturnedVariableName ;
-  ${$ ;
-  <semantic_instruction_list> ??@semanticInstructionListAST routineInstructionList ;
-  $}$ ;
-  const @location endOfInstructionList := here ;
-  ioSemanticDeclarations += ![@overridingCategoryReaderAST new
-    !true # Is global
-    !className
-    !mMethodName
-    !mFormalInputParameterList
-    !mReturnedTypeName
-    !mReturnedVariableName
-    !routineInstructionList
-    !endOfInstructionList
-  ] ;
-end rule ;
+#rule <semantic_declaration>
+# ?!@semanticDeclarationListAST ioSemanticDeclarations
+#:
+#  $override$ ;
+#  $reader$ ;
+#  $type_name$ ? @lstring className ;
+#  $identifier$ ? @lstring mMethodName indexing overrideCategoryReaderDefinition ;
+#  @formalInputParameterListAST mFormalInputParameterList ;
+#  <formal_input_parameter_list> ? mFormalInputParameterList ;
+#  $->$ ;
+#  $type_name$ ? @lstring mReturnedTypeName ;
+#  $identifier$ ? @lstring mReturnedVariableName ;
+#  ${$ ;
+#  <semantic_instruction_list> ??@semanticInstructionListAST routineInstructionList ;
+#  $}$ ;
+#  const @location endOfInstructionList := here ;
+#  ioSemanticDeclarations += ![@overridingCategoryReaderAST new
+#    !true # Is global
+#    !className
+#    !mMethodName
+#    !mFormalInputParameterList
+#    !mReturnedTypeName
+#    !mReturnedVariableName
+#    !routineInstructionList
+#    !endOfInstructionList
+#  ] ;
+#end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1394,26 +1394,26 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <semantic_declaration>
- ?!@semanticDeclarationListAST ioSemanticDeclarations
-:
-  $modifier$ ;
-  $type_name$ ? @lstring className indexing typeReferenceCategoryModifier ;
-  $identifier$ ? @lstring modifierName indexing categoryModifierDefinition ;
-  <formal_parameter_list> ??@formalParameterListAST formalParameterList ;
-  ${$ ;
-  <semantic_instruction_list> ??@semanticInstructionListAST routineInstructionList ;
-  $}$ ;
-  const @location endOfModifierLocation := here ;
-  ioSemanticDeclarations += ![@categoryModifierAST new
-    !true # Is global
-    !className
-    !modifierName
-    !formalParameterList
-    !routineInstructionList
-    !endOfModifierLocation
-  ] ;
-end rule ;
+#rule <semantic_declaration>
+# ?!@semanticDeclarationListAST ioSemanticDeclarations
+#:
+#  $modifier$ ;
+#  $type_name$ ? @lstring className indexing typeReferenceCategoryModifier ;
+#  $identifier$ ? @lstring modifierName indexing categoryModifierDefinition ;
+#  <formal_parameter_list> ??@formalParameterListAST formalParameterList ;
+#  ${$ ;
+#  <semantic_instruction_list> ??@semanticInstructionListAST routineInstructionList ;
+#  $}$ ;
+#  const @location endOfModifierLocation := here ;
+#  ioSemanticDeclarations += ![@categoryModifierAST new
+#    !true # Is global
+#    !className
+#    !modifierName
+#    !formalParameterList
+#    !routineInstructionList
+#    !endOfModifierLocation
+#  ] ;
+#end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1451,27 +1451,27 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <semantic_declaration>
- ?!@semanticDeclarationListAST ioSemanticDeclarations
-:
-  $override$ ;
-  $modifier$ ;
-  $type_name$ ? @lstring className indexing typeReferenceOverrideCategoryModifierDefinition ;
-  $identifier$ ? @lstring modifierName indexing overrideCategoryModifierDefinition ;
-  <formal_parameter_list> ??@formalParameterListAST formalParameterList ;
-  ${$ ;
-  <semantic_instruction_list> ??@semanticInstructionListAST routineInstructionList ;
-  $}$ ;
-  const @location endOfModifierLocation := here ;
-  ioSemanticDeclarations += ![@overridingCategoryModifierAST new
-    !true # Is global
-    !className
-    !modifierName
-    !formalParameterList
-    !routineInstructionList
-    !endOfModifierLocation
-  ] ;
-end rule ;
+#rule <semantic_declaration>
+# ?!@semanticDeclarationListAST ioSemanticDeclarations
+#:
+#  $override$ ;
+#  $modifier$ ;
+#  $type_name$ ? @lstring className indexing typeReferenceOverrideCategoryModifierDefinition ;
+#  $identifier$ ? @lstring modifierName indexing overrideCategoryModifierDefinition ;
+#  <formal_parameter_list> ??@formalParameterListAST formalParameterList ;
+#  ${$ ;
+#  <semantic_instruction_list> ??@semanticInstructionListAST routineInstructionList ;
+#  $}$ ;
+#  const @location endOfModifierLocation := here ;
+#  ioSemanticDeclarations += ![@overridingCategoryModifierAST new
+#    !true # Is global
+#    !className
+#    !modifierName
+#    !formalParameterList
+#    !routineInstructionList
+#    !endOfModifierLocation
+#  ] ;
+#end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *

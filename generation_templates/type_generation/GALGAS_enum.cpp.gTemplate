@@ -12,7 +12,7 @@ foreach CONSTANT_LIST do
   %  result.mEnum = kEnum_%![mValue identifierRepresentation]% ;\n%
   %  return result ;\n%
   %}\n\n%
-end foreach
+end
 
 %//-----------------------------------------------------------------------------*
 
@@ -20,7 +20,7 @@ static const char * gEnumNameArrayFor_%!TYPE_IDENTIFIER% [%![[CONSTANT_LIST leng
   "(not built)"%
 foreach CONSTANT_LIST
    do %,\n  %![mValue utf8Representation]
-end foreach%
+end%
 } ;
 
 //-----------------------------------------------------------------------------*

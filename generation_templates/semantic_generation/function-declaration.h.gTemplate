@@ -10,8 +10,8 @@ GALGAS_%!RETURN_TYPE_IDENTIFIER% function_%![FUNCTION_NAME identifierRepresentat
       %const GALGAS_% ![mFormalArgumentType identifierRepresentation] % & constinArgument% ![IDX string]%,\n%!^
     else
       %GALGAS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]%,\n%!^
-    end if
-  end foreach
+    end
+  end
   %C_Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) ;
 

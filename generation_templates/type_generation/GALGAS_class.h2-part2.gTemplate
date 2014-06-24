@@ -2,19 +2,19 @@
 %
   foreach CURRENT_ATTRIBUTE_LIST do
     %  public : GALGAS_%![mAttributeTypeProxy identifierRepresentation]% mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
-  end foreach
+  end
 %
 //--- Constructor
   public : cPtr_%!TYPE_IDENTIFIER% (%?^
   foreach ALL_ATTRIBUTE_LIST
     do %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
     between %,\n%!^
-  end foreach
+  end
   if [ALL_ATTRIBUTE_LIST length] > 0 then
     %\n%!^%COMMA_LOCATION_ARGS%
   else
     %LOCATION_ARGS%
-  end if
+  end
 %) ;
 
 //--- Attribute accessors
@@ -22,11 +22,11 @@
   foreach CURRENT_ATTRIBUTE_LIST do
     if mHasGetter then
       %  public : VIRTUAL_IN_DEBUG GALGAS_%![mAttributeTypeProxy identifierRepresentation]% reader_%![mAttributeName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const ;\n%
-    end if
+    end
     if mHasSetter then
       %  public : VIRTUAL_IN_DEBUG void modifier_set%![[mAttributeName identifierRepresentation] stringByCapitalizingFirstCharacter]% (GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inValue COMMA_LOCATION_ARGS) ;\n%
-    end if
-  end foreach
+    end
+  end
 
 if IS_ABSTRACT then
 %//--- Description
@@ -47,7 +47,7 @@ else
 
   public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
 %
-end if
+end
 
 %
 } ;

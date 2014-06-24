@@ -22,21 +22,21 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyGraph (LOC
 void GALGAS_%!TYPE_IDENTIFIER%::modifier_%![mInsertModifierName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
   foreach [ASSOCIATED_LIST_TYPE mAddAssignOperatorArguments] do index IDX
     %,\n%!^%GALGAS_%![mType identifierRepresentation]% inArgument_%![IDX string]
-  end foreach
+  end
   %,\n%!^%C_Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]%::makeAttributesFromObjects (attributes%
   foreach [ASSOCIATED_LIST_TYPE mAddAssignOperatorArguments]
   do index IDX %, inArgument_%![IDX string]
-  end foreach
+  end
   % COMMA_THERE) ;
   const char * kErrorMessage = %![mInsertErrorMessage utf8Representation]% ;
   internalAddNode (inKey, kErrorMessage, attributes, inCompiler COMMA_THERE) ;
 }
 
 %
-end foreach
+end
 %
 //-----------------------------------------------------------------------------*
 
