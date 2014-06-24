@@ -15,7 +15,7 @@ class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_list {
   public : static void makeAttributesFromObjects (%?^%capCollectionElement & outAttributes%
   foreach ATTRIBUTE_LIST
     do %,\n%!^%const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
-  end foreach
+  end
 %\n%
 !^%COMMA_LOCATION_ARGS) ;
 

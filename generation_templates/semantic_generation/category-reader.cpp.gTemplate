@@ -22,8 +22,8 @@ GALGAS_%![RETURN_TYPE identifierRepresentation]% callCategoryReader_%![READER_NA
       %const GALGAS_%![mFormalArgumentType identifierRepresentation]% & in_%![mFormalArgumentName identifierRepresentation]
     else
       %GALGAS_%![mFormalArgumentType identifierRepresentation]% in_%![mFormalArgumentName identifierRepresentation]
-    end if
-  end foreach
+    end
+  end
   %,\n%!^%C_Compiler * inCompiler%
   %\n%!^%COMMA_LOCATION_ARGS) {
   GALGAS_%![RETURN_TYPE identifierRepresentation]% result ;
@@ -52,7 +52,7 @@ GALGAS_%![RETURN_TYPE identifierRepresentation]% callCategoryReader_%![READER_NA
       result = f (inObject, %
       foreach FORMAL_ARGUMENT_LIST do
         %in_%![mFormalArgumentName identifierRepresentation]%, %
-      end foreach
+      end
       %inCompiler COMMA_THERE) ;
     }
   }

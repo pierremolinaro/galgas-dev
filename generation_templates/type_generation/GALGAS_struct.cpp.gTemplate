@@ -5,7 +5,7 @@ GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
 foreach ATTRIBUTE_LIST
   do %mAttribute_%![mAttributeName identifierRepresentation]% ()%
   between %,\n%
-end foreach% {
+end% {
 }
 
 //-----------------------------------------------------------------------------*
@@ -19,11 +19,11 @@ GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (%?^
 foreach ATTRIBUTE_LIST
   do index IDX %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
-end foreach%) :\n%
+end%) :\n%
 foreach ATTRIBUTE_LIST do index IDX
   %mAttribute_%![mAttributeName identifierRepresentation]% (inOperand%![IDX string]%)%
   between %,\n%
-end foreach
+end
 % {
 }
 
@@ -35,29 +35,29 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_default (UNUSED
 foreach ATTRIBUTE_LIST do
    %GALGAS_%![mAttributeTypeProxy identifierRepresentation]%::constructor_%![[mAttributeTypeProxy mDefaultConstructorName] identifierRepresentation]% (HERE)%
   between %,\n%!^
-end foreach%) ;
+end%) ;
 }
 
-%end if
+%end
 %//-----------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_new (%?^
 foreach ATTRIBUTE_LIST
   do index IDX %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
-end foreach% \n%!^%COMMA_UNUSED_LOCATION_ARGS) {
+end% \n%!^%COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% result ;
   if (%
 foreach ATTRIBUTE_LIST
   do index IDX %inOperand%![IDX string]%.isValid ()%
   between % && %
-end foreach
+end
 %) {
     result = GALGAS_%!TYPE_IDENTIFIER% (%
 foreach ATTRIBUTE_LIST
   do index IDX %inOperand%![IDX string]
   between %, %
-end foreach
+end
 
 %) ;
   }
@@ -72,7 +72,7 @@ typeComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TY
   %  if (result == kOperandEqual) {\n%
   %    result = mAttribute_%![mAttributeName identifierRepresentation]%.objectCompare (inOperand.mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
   %  }\n%
-end foreach
+end
 %  return result ;
 }
 
@@ -83,7 +83,7 @@ bool GALGAS_%!TYPE_IDENTIFIER%::isValid (void) const {
     foreach ATTRIBUTE_LIST
       do %mAttribute_%![mAttributeName identifierRepresentation]%.isValid ()%
       between % && %
-    end foreach
+    end
 % ;
 }
 
@@ -92,7 +92,7 @@ bool GALGAS_%!TYPE_IDENTIFIER%::isValid (void) const {
 void GALGAS_%!TYPE_IDENTIFIER%::drop (void) {
 %  foreach ATTRIBUTE_LIST
     do %  mAttribute_%![mAttributeName identifierRepresentation]%.drop () ;\n%
-  end foreach
+  end
 %}
 
 //-----------------------------------------------------------------------------*
@@ -107,7 +107,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
 foreach ATTRIBUTE_LIST
   do index IDX %    mAttribute_%![mAttributeName identifierRepresentation]%.description (ioString, inIndentation+1) ;\n%
   between %    ioString << ", " ;\n%
-end foreach
+end
 %  }
   ioString << ">" ;
 }
@@ -118,6 +118,6 @@ end foreach
   %  return mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   %}\n\n%
 
-end foreach
+end
 %
 

@@ -16,7 +16,7 @@ if [CONSTRUCTOR_MAP count] > 0 then
     foreach mArgumentTypeList
       do index IDX %const GALGAS_% ![mType identifierRepresentation] % & inOperand%![IDX string]
       between %,\n%!^
-    end foreach
+    end
     if mHasCompilerArgument & ([mArgumentTypeList length] > 0) then
       %,\n%!^ %C_Compiler * inCompiler%
       %\n%!^ %COMMA_LOCATION_ARGS) ;\n\n%
@@ -27,15 +27,15 @@ if [CONSTRUCTOR_MAP count] > 0 then
       %\n%!^ %COMMA_LOCATION_ARGS) ;\n\n%
     else
       %LOCATION_ARGS) ;\n\n%
-    end if
-  end foreach
-end if
+    end
+  end
+end
 
 if (SUPPORTED_OPERATORS & generateCopyConstructorAndAssignmentOperator []) != 0 then
 %//--------------------------------- Handle copy
   public : GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% & inSource) ;
   public : GALGAS_%!TYPE_IDENTIFIER% & operator = (const GALGAS_%!TYPE_IDENTIFIER% & inSource) ;\n\n%
-end if
+end
 
 if (SUPPORTED_OPERATORS & binaryShiftOperator []) != 0 then
   %//--------------------------------- << and >> shift operators\n%
@@ -43,13 +43,13 @@ if (SUPPORTED_OPERATORS & binaryShiftOperator []) != 0 then
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
   %public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% right_shift_operation (%?^%const GALGAS_uint inShiftOperand\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
-end if
+end
 
 if (SUPPORTED_OPERATORS & dotAssignOperator []) != 0 then
   %//--------------------------------- .= operator\n%
   %  public : VIRTUAL_IN_DEBUG void dotAssign_operation (const GALGAS_%!TYPE_IDENTIFIER% inOperand\n%
   %                                                      COMMA_LOCATION_ARGS) ;\n\n%
-end if
+end
 
 if [ADD_ASSIGN_ARGUMENT_LIST length] > 0 then
 %//--------------------------------- += operator
@@ -57,85 +57,85 @@ if [ADD_ASSIGN_ARGUMENT_LIST length] > 0 then
   foreach ADD_ASSIGN_ARGUMENT_LIST
   do index IDX %const GALGAS_%![mType identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
-  end foreach
+  end
   %\n%!^%COMMA_LOCATION_ARGS) ;
 %
-end if
+end
 
 if (SUPPORTED_OPERATORS & binaryAndOperator []) != 0 then
   %//--------------------------------- & operator\n%
   %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% operator_and (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
-end if
+end
 
 if (SUPPORTED_OPERATORS & binaryOrOperator []) != 0 then
   %//--------------------------------- | operator\n%
   %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% operator_or (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
-end if
+end
 
 if (SUPPORTED_OPERATORS & binaryXorOperator []) != 0 then
   %//--------------------------------- ^ operator\n%
   %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% operator_xor (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
-end if
+end
 
 if (SUPPORTED_OPERATORS & unaryNotOperator []) != 0 then
   %//--------------------------------- not operator\n%
   %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% operator_not (LOCATION_ARGS) const ;\n\n%
-end if
+end
 
 if (SUPPORTED_OPERATORS & unaryTildeOperator []) != 0 then
   %//--------------------------------- ~ operator\n%
   %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% operator_tilde (LOCATION_ARGS) const ;\n\n%
-end if
+end
 
 if (SUPPORTED_OPERATORS & binaryConcatOperator []) != 0 then
   %//--------------------------------- . (concat) operator\n%
   %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% operator_concat (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand\n%
        !^%COMMA_LOCATION_ARGS) const ;\n\n%
-end if
+end
 
 if (SUPPORTED_OPERATORS & binaryAddOperator []) != 0 then
   %//--------------------------------- + operator\n%
   %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% add_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand,\n%
   !^%C_Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
-end if
+end
 
 if (SUPPORTED_OPERATORS & binarySubOperator []) != 0 then
   %//--------------------------------- - operator\n%
   %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% substract_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand,\n%
   !^%C_Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
-end if
+end
 
 if (SUPPORTED_OPERATORS & binaryMulOperator []) != 0 then
   %//--------------------------------- * operator\n%
   %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% multiply_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand,\n%
   !^%C_Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
-end if
+end
 
 if (SUPPORTED_OPERATORS & binaryDivOperator []) != 0 then
   %//--------------------------------- / operator\n%
   %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% divide_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand,\n%
   !^%C_Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
-end if
+end
 
 if (SUPPORTED_OPERATORS & binaryModOperator []) != 0 then
   %//--------------------------------- mod operator\n%
   %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% modulo_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand,\n%
   !^%C_Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
-end if
+end
 
 if (SUPPORTED_OPERATORS & unaryMinusOperator []) != 0 then
   %//--------------------------------- unary - operator\n%
   %  public : VIRTUAL_IN_DEBUG GALGAS_%!TYPE_IDENTIFIER% operator_unary_minus (%?^%C_Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
-end if
+end
 
 if (SUPPORTED_OPERATORS & incDecOperator []) != 0 then
   %//--------------------------------- ++, -- operators\n%
@@ -143,17 +143,17 @@ if (SUPPORTED_OPERATORS & incDecOperator []) != 0 then
         !^%COMMA_LOCATION_ARGS) ;\n\n%
   %  public : VIRTUAL_IN_DEBUG void decrement_operation (%?^%C_Compiler * inCompiler\n%
         !^%COMMA_LOCATION_ARGS) ;\n\n%
-end if
+end
 if (SUPPORTED_OPERATORS & generateDescriptionReaderUtilityMethod []) != 0 then
   %//--------------------------------- Implementation of reader 'description'\n%
   %  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,\n%
   %                                              const int32_t inIndentation) const ;\n%
-end if
+end
 
 if (SUPPORTED_OPERATORS & doNotGenererateObjectCompare []) == 0 then
 %//--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const ;
-%end if
+%end
 
 
 %
@@ -172,28 +172,28 @@ foreach MODIFIER_MAP do
           %GALGAS_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
         else # argumentIn
           %GALGAS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
-        end if
+        end
       between %,\n%!^
-      end foreach
+      end
       if [mParameterList length] == 0 then
         if mHasCompilerArgument then
           %C_Compiler * inCompiler\n%
           !^%COMMA_LOCATION_ARGS%
         else
           !^%LOCATION_ARGS%
-        end if  
+        end  
       else
         if mHasCompilerArgument then
           %,\n%!^%C_Compiler * inCompiler\n%
           !^%COMMA_LOCATION_ARGS%
         else
           %\n%!^%COMMA_LOCATION_ARGS%
-        end if  
-      end if
+        end  
+      end
       %) ;\n\n%
-    end if
-  end if
-end foreach
+    end
+  end
+end
 %
 //--------------------------------- Instance Methods
 %
@@ -210,28 +210,28 @@ foreach INSTANCE_METHOD_MAP do
           %GALGAS_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
         else # argumentIn
           %GALGAS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
-        end if
+        end
       between %,\n%!^
-      end foreach
+      end
       if [mParameterList length] == 0 then
         if mHasCompilerArgument then
           %C_Compiler * inCompiler\n%
           !^%COMMA_LOCATION_ARGS%
         else
           !^%LOCATION_ARGS%
-        end if  
+        end  
       else
         if mHasCompilerArgument then
           %,\n%!^%C_Compiler * inCompiler\n%
           !^%COMMA_LOCATION_ARGS%
         else
           %\n%!^%COMMA_LOCATION_ARGS%
-        end if  
-      end if
+        end  
+      end
       %) const ;\n\n%
-    end if
-  end if
-end foreach
+    end
+  end
+end
 %//--------------------------------- Class Methods
 %
 foreach CLASS_METHOD_MAP do
@@ -245,26 +245,26 @@ foreach CLASS_METHOD_MAP do
       %GALGAS_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
     else # argumentIn
       %GALGAS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
-    end if
+    end
   between %,\n%!^
-  end foreach
+  end
   if [mParameterList length] == 0 then
     if mHasCompilerArgument then
       %C_Compiler * inCompiler\n%
       !^%COMMA_LOCATION_ARGS%
     else
       !^%LOCATION_ARGS%
-    end if  
+    end  
   else
     if mHasCompilerArgument then
       %,\n%!^%C_Compiler * inCompiler\n%
       !^%COMMA_LOCATION_ARGS%
     else
       %\n%!^%COMMA_LOCATION_ARGS%
-    end if  
-  end if
+    end  
+  end
   %) ;\n\n%
-end foreach
+end
 %
 //--------------------------------- Readers
 %
@@ -275,24 +275,24 @@ foreach READER_MAP do
       foreach mArgumentTypeList
         do index IDX %const GALGAS_%![mType identifierRepresentation]% & constinOperand% ![IDX string]
         between %,\n% !^
-      end foreach
+      end
       if [mArgumentTypeList length] == 0 then
         if mHasCompilerArgument then
           %C_Compiler * inCompiler\n% !^ %COMMA_LOCATION_ARGS%
         else
           %LOCATION_ARGS%
-        end if
+        end
       else
         if mHasCompilerArgument then
           %,\n% !^ %C_Compiler * inCompiler\n% !^ %COMMA_LOCATION_ARGS%
         else
           %\n% !^ %COMMA_LOCATION_ARGS%
-        end if
-      end if
+        end
+      end
       %) const ;\n\n%
-    end if
-  end if
-end foreach
+    end
+  end
+end
 
 %
 //--------------------------------- Introspection
@@ -303,7 +303,7 @@ if ((SUPPORTED_OPERATORS & generateEnumerationHelperMethods []) != 0) then
   protected : VIRTUAL_IN_DEBUG void populateEnumerationArray (capCollectionElementArray & inEnumerationArray,
                                                               const typeEnumerationOrder inOrder) const ;
 
-%end if
+%end
 
 if [WITH_ACCESSOR_MAP count] > 0 then
   %//--------------------------------- 'with' accessors\n%
@@ -311,12 +311,12 @@ if [WITH_ACCESSOR_MAP count] > 0 then
     %  public : VIRTUAL_IN_DEBUG cMapElement_%!TYPE_IDENTIFIER% * readWriteAccessForWithInstruction_%![[lkey string] identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
     !^%const GALGAS_%![mArgumentType identifierRepresentation]% & inKey\n%
     !^%COMMA_LOCATION_ARGS) ;\n\n%
-  end foreach
-end if
+  end
+end
 if [ENUMERATION_DESCRIPTOR_LIST length] > 0 then
 %//--------------------------------- Friend\n
   friend class cEnumerator_%!TYPE_IDENTIFIER% ;
-%end if
+%end
 % 
 } ; // End of GALGAS_%!TYPE_IDENTIFIER% class
 
@@ -332,13 +332,13 @@ class cEnumerator_%!TYPE_IDENTIFIER% : public cGenericAbstractEnumerator {
 //--- Current element access\n%
   foreach ENUMERATION_DESCRIPTOR_LIST do
 %  public : GALGAS_%![mEnumeratedType identifierRepresentation]% current_%![mEnumerationName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
-  end foreach
+  end
   if not [ENUMERATED_OBJECT_TYPE isNull] then
 %//--- Current element access\n%
 %  public : GALGAS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (LOCATION_ARGS) const ;\n%
-  end if
+  end
 %} ;\n%
-end if
+end
 %
 //-----------------------------------------------------------------------------*
 
@@ -352,5 +352,5 @@ if [WITH_ACCESSOR_MAP count] > 0 then
     !^%GALGAS_%!TYPE_IDENTIFIER% & ioMap,\n%
     !^%GALGAS_%![mArgumentType identifierRepresentation]% & inKey\n%
     !^%COMMA_LOCATION_ARGS) ;\n\n%
-  end foreach
-end if
+  end
+end

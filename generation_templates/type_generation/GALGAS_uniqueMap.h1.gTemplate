@@ -10,7 +10,7 @@ class cMapElement_%!TYPE_IDENTIFIER% ;
 foreach SEARCH_METHOD_LIST do
   %//-----------------------------------------------------------------------------*\n\n%
   %extern const char * kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![mSearchMethodName identifierRepresentation]% ;\n\n%
-end foreach
+end
 %//-----------------------------------------------------------------------------*
 
 class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_uniqueMap {

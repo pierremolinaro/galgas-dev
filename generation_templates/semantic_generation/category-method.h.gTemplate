@@ -16,8 +16,8 @@ typedef void (*categoryMethodSignature_%![CLASS_NAME identifierRepresentation]%_
       %GALGAS_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
     else # argumentIn
       %GALGAS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
-    end if
-  end foreach
+    end
+  end
   %,\n%!^%C_Compiler * inCompiler%
   %\n %!^%COMMA_LOCATION_ARGS) ;
 
@@ -39,8 +39,8 @@ void callCategoryMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const cPt
       %GALGAS_%![mFormalArgumentType identifierRepresentation]% & out_%![mFormalArgumentName identifierRepresentation]
     else # argumentIn
       %GALGAS_%![mFormalArgumentType identifierRepresentation]% in_%![mFormalArgumentName identifierRepresentation]
-    end if
-  end foreach
+    end
+  end
   %,\n%!^%C_Compiler * inCompiler%
   %\n%!^%COMMA_LOCATION_ARGS) ;
 

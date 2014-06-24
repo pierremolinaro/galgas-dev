@@ -14,9 +14,9 @@ void routine_%![ROUTINE_NAME identifierRepresentation]% (%?^
       %GALGAS_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
     else # argumentIn
       %GALGAS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
-    end if
+    end
     %,\n%!^
-  end foreach
+  end
   %C_Compiler * inCompiler%
   %\n %!^%COMMA_LOCATION_ARGS) ;
 

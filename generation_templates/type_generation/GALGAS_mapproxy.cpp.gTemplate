@@ -42,7 +42,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::class_method_makeProxyFromString (%?^%GALGAS_%!A
   %  }\n%
   %  return result ;\n%
   %}\n\n%
-end foreach
+end
 
 foreach SEARCH_METHOD_LIST do index IDX
   %//-----------------------------------------------------------------------------*\n\n%
@@ -54,5 +54,5 @@ foreach SEARCH_METHOD_LIST do index IDX
   %  result.internalMakeRegularProxyBySearchingKey (inMap, inKey, kSearchErrorMessage_%!ASSOCIATED_MAP_TYPE_IDENTIFIER%_%![mSearchMethodName identifierRepresentation]%, inCompiler COMMA_THERE) ;\n%
   %  return result ;\n%
   %}\n\n%
-end foreach
+end
 %

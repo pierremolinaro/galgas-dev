@@ -17,18 +17,18 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyMap (LOCAT
 void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^%const GALGAS_string & inKey%
   foreach ATTRIBUTE_LIST do index IDX
     %,\n%!^%const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & inOperand%![IDX string]
-  end foreach
+  end
   %\n%!^%COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()%
   foreach ATTRIBUTE_LIST do index IDX
     % && inOperand%![IDX string]%.isValid ()%
-  end foreach
+  end
   %) {
     capCollectionElement attributes ;
     GALGAS_%!ASSOCIATED_LIST_TYPE_IDENTIFIER%::makeAttributesFromObjects (attributes%
     foreach ATTRIBUTE_LIST
     do index IDX %, inOperand%![IDX string]
-    end foreach
+    end
     % COMMA_THERE) ;
     addObjectInListMap (inKey.stringValue (), attributes) ;
   }

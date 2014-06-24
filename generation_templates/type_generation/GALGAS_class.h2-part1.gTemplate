@@ -4,4 +4,4 @@
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-class cPtr_%!TYPE_IDENTIFIER% : public %if SUPER_TYPE_IDENTIFIER == "" then %acPtr_class% else %cPtr_%!SUPER_TYPE_IDENTIFIER end if% {
+class cPtr_%!TYPE_IDENTIFIER% : public %if SUPER_TYPE_IDENTIFIER == "" then %acPtr_class% else %cPtr_%!SUPER_TYPE_IDENTIFIER end% {

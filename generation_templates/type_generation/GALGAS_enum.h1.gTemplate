@@ -13,7 +13,7 @@ class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
     kNotBuilt%
     foreach CONSTANT_LIST do
       %,\n    kEnum_%![mValue identifierRepresentation]
-    end foreach
+    end
 %
   } enumeration ;
   

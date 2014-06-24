@@ -15,10 +15,10 @@
                              ![mLexicalFormalArgumentType cocoaTypeName]
                              ![mLexicalFormalArgumentMode cocoaPointerInFormalArgument]
                              % %!mArgumentNameForComment
-      end foreach
+      end
       %) ;\n%
-    end if
-  end foreach
+    end
+  end
 %
 //-----------------------------------------------------------------------------*
 //                                                                             *
@@ -31,10 +31,10 @@
       %\n%![mReturnedLexicalType cppTypeName]% scanner_cocoa_function_%![lkey string]% (%?^%BOOL * ioScanningOk%
       foreach mLexicalTypeList do
         %,\n                %!^%const %![mLexicalType cppTypeName]% %!mArgumentNameForComment
-      end foreach
+      end
       %) ;\n%
-    end if
-  end foreach
+    end
+  end
 %
 
 //-----------------------------------------------------------------------------*
@@ -46,7 +46,7 @@
 enum {%!LEXIQUE_CLASS_NAME%_1_%
     foreach [LEXIQUE_ANALYSIS_CONTEXT mTerminalList] do
       %,\n  %!LEXIQUE_CLASS_NAME %_1_% ![[mTerminalName string] identifierRepresentation]
-    end foreach
+    end
   %\n} ;
 
 //-----------------------------------------------------------------------------*
@@ -60,6 +60,6 @@ enum {%!LEXIQUE_CLASS_NAME%_1_%
 %
   foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalAttributeMap] do
     %  @private %![mLexicalType cocoaTypeName]% mLexicalAttribute_%![lkey string]% ;\n%
-  end foreach
+  end
 %
 }

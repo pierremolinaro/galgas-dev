@@ -12,7 +12,7 @@ class cSortedListElement_%!TYPE_IDENTIFIER% : public cSortedListElement {
   foreach ATTRIBUTE_LIST
     do %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
     between %,\n%!^
-  end foreach
+  end
 %\n%
 !^%COMMA_LOCATION_ARGS) ;
 
@@ -38,7 +38,7 @@ cSortedListElement_%!TYPE_IDENTIFIER%::cSortedListElement_%!TYPE_IDENTIFIER% (%?
   foreach ATTRIBUTE_LIST
     do %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
     between %,\n%!^
-  end foreach
+  end
 %\n%
 !^%COMMA_LOCATION_ARGS) :
 cSortedListElement (THERE),
@@ -46,7 +46,7 @@ mObject (%
 foreach ATTRIBUTE_LIST
   do %in_%![mAttributeName identifierRepresentation]
   between %, %
-end foreach
+end
 %) {
 }
 
@@ -64,7 +64,7 @@ cSortedListElement * cSortedListElement_%!TYPE_IDENTIFIER%::copy (void) {
     foreach ATTRIBUTE_LIST
       do %mObject.mAttribute_%![mAttributeName identifierRepresentation]
       between %, %
-    end foreach
+    end
   % COMMA_HERE)) ;
   return result ;
 }
@@ -78,7 +78,7 @@ void cSortedListElement_%!TYPE_IDENTIFIER%::description (C_String & ioString, co
     %  ioString.writeStringMultiple ("| ", inIndentation) ;\n%
     %  ioString << %![mAttributeName utf8Representation]% ":" ;\n%
     %  mObject.mAttribute_%![mAttributeName identifierRepresentation]%.description (ioString, inIndentation) ;\n%
-  end foreach
+  end
 %}
 
 //-----------------------------------------------------------------------------*
@@ -108,10 +108,10 @@ typeComparisonResult cSortedListElement_%!TYPE_IDENTIFIER%::compareForSorting (c
       %mObject.mAttribute_%![mAttributeName identifierRepresentation]%.objectCompare (operand->mObject.mAttribute_%![mAttributeName identifierRepresentation]%)%
     else
       %operand->mObject.mAttribute_%![mAttributeName identifierRepresentation]%.objectCompare (mObject.mAttribute_%![mAttributeName identifierRepresentation]%)%
-    end if
+    end
     % ;\n%
     %  }\n%
-  end foreach
+  end
 %  return result ;
 }
 
@@ -129,7 +129,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_sortedListWithV
   foreach ATTRIBUTE_LIST
   do index IDX %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
-  end foreach
+  end
   %\n%!^%COMMA_LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% result = constructor_emptySortedList (THERE) ;
   cSortedListElement * p = NULL ;
@@ -137,7 +137,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_sortedListWithV
   foreach ATTRIBUTE_LIST
   do index IDX %inOperand%![IDX string]
   between %, %
-  end foreach
+  end
   % COMMA_THERE)) ;
   capSortedListElement attributes ;
   attributes.setPointer (p) ;
@@ -152,7 +152,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
   foreach ATTRIBUTE_LIST
   do index IDX %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
-  end foreach
+  end
 %
     %!^%COMMA_LOCATION_ARGS) {
   if (isValid ()) {
@@ -161,7 +161,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
     foreach ATTRIBUTE_LIST
     do index IDX %inOperand%![IDX string]
     between %, %
-    end foreach
+    end
     % COMMA_THERE)) ;
     capSortedListElement attributes ;
     attributes.setPointer (p) ;
@@ -197,7 +197,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::operator_concat (%?^%const 
 void GALGAS_%!TYPE_IDENTIFIER%::modifier_popSmallest (%?^
   foreach ATTRIBUTE_LIST
   do index IDX %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
-  end foreach
+  end
            %C_Compiler * inCompiler\n%
          !^%COMMA_LOCATION_ARGS) {
   capSortedListElement attributes ;
@@ -207,13 +207,13 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popSmallest (%?^
 %
  foreach ATTRIBUTE_LIST do index IDX
     %    outOperand%![IDX string] %.drop () ;\n%
-  end foreach
+  end
 %  }else{
     macroValidSharedObject (p, cSortedListElement_%!TYPE_IDENTIFIER%) ;
 %
  foreach ATTRIBUTE_LIST do index IDX
     %    outOperand%![IDX string] % = p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
-  end foreach
+  end
 %  }
 }
 
@@ -222,7 +222,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popSmallest (%?^
 void GALGAS_%!TYPE_IDENTIFIER%::modifier_popGreatest (%?^
   foreach ATTRIBUTE_LIST
   do index IDX %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
-  end foreach
+  end
            %C_Compiler * inCompiler\n%
          !^%COMMA_LOCATION_ARGS) {
   capSortedListElement attributes ;
@@ -232,13 +232,13 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popGreatest (%?^
 %
  foreach ATTRIBUTE_LIST do index IDX
     %    outOperand%![IDX string] %.drop () ;\n%
-  end foreach
+  end
 %  }else{
     macroValidSharedObject (p, cSortedListElement_%!TYPE_IDENTIFIER%) ;
 %
  foreach ATTRIBUTE_LIST do index IDX
     %    outOperand%![IDX string] % = p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
-  end foreach
+  end
 %  }
 }
 
@@ -247,7 +247,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popGreatest (%?^
 void GALGAS_%!TYPE_IDENTIFIER%::method_smallest (%?^
   foreach ATTRIBUTE_LIST
   do index IDX %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
-  end foreach
+  end
      %C_Compiler * inCompiler\n%
      !^%COMMA_LOCATION_ARGS) const {
   capSortedListElement attributes ;
@@ -257,13 +257,13 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_smallest (%?^
 %
  foreach ATTRIBUTE_LIST do index IDX
     %    outOperand%![IDX string] %.drop () ;\n%
-  end foreach
+  end
 %  }else{
     macroValidSharedObject (p, cSortedListElement_%!TYPE_IDENTIFIER%) ;
 %
  foreach ATTRIBUTE_LIST do index IDX
     %    outOperand%![IDX string] % = p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
-  end foreach
+  end
 %  }
 }
 
@@ -272,7 +272,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_smallest (%?^
 void GALGAS_%!TYPE_IDENTIFIER%::method_greatest (%?^
   foreach ATTRIBUTE_LIST
   do index IDX %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
-  end foreach
+  end
      %C_Compiler * inCompiler\n%
      !^%COMMA_LOCATION_ARGS) const {
   capSortedListElement attributes ;
@@ -282,13 +282,13 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_greatest (%?^
 %
  foreach ATTRIBUTE_LIST do index IDX
     %    outOperand%![IDX string] %.drop () ;\n%
-  end foreach
+  end
 %  }else{
     macroValidSharedObject (p, cSortedListElement_%!TYPE_IDENTIFIER%) ;
 %
  foreach ATTRIBUTE_LIST do index IDX
     %    outOperand%![IDX string] % = p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
-  end foreach
+  end
 %  }
 }
 
@@ -315,6 +315,6 @@ GALGAS_%!TYPE_IDENTIFIER%_2E_element cEnumerator_%!TYPE_IDENTIFIER%::current (LO
   %  macroValidSharedObject (p, cSortedListElement_%!TYPE_IDENTIFIER%) ;\n%
   %  return p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   %}\n\n%
-end foreach
+end
 %
 

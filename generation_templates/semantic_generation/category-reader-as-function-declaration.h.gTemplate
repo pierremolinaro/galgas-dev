@@ -11,8 +11,8 @@ GALGAS_%!RETURN_TYPE_IDENTIFIER% categoryReader_%![READER_NAME identifierReprese
       %const GALGAS_% ![mFormalArgumentType identifierRepresentation] % & constinArgument% ![IDX string]
     else
       %GALGAS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
-    end if
-  end foreach
+    end
+  end
   %,\n%!^
   %C_Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) ;

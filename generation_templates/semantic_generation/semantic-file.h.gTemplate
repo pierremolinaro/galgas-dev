@@ -9,11 +9,11 @@
 
 % foreach IMPORTED_COMPONENT_LIST do
     %#include "%!mValue%.h"\n%
-  end foreach%
+  end%
 //-----------------------------------------------------------------------------*
 
 %
 foreach TYPE_PREDECLARATION_LIST do
   %class %!mValue% ;\n%
-end foreach
+end
 %

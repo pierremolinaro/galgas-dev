@@ -9,7 +9,7 @@ class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 %
 foreach ATTRIBUTE_LIST
   do %  public : GALGAS_%![mAttributeTypeProxy identifierRepresentation]% mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
-end foreach%
+end%
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
@@ -20,7 +20,7 @@ end foreach%
   public : static GALGAS_%!TYPE_IDENTIFIER% constructor_default (LOCATION_ARGS) ;
 
 %
-end if
+end
 %//--------------------------------- Default constructor
   public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
 
@@ -32,5 +32,5 @@ end if
 foreach ATTRIBUTE_LIST
   do %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
   between %,\n%!^
-end foreach%) ;
+end%) ;
 

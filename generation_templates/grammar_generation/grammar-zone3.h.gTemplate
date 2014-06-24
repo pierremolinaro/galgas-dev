@@ -4,7 +4,7 @@ class cGrammar_%![[GRAMMAR_COMPONENT_ROOT mGrammarName] identifierRepresentation
 foreach [GRAMMAR_COMPONENT_ROOT mSyntaxComponents]
   do %public cParser_% ![[[mValue string] stringByDeletingPathExtension] identifierRepresentation]
   between %,\n%!^
-end foreach
+end
 % {
 %
 foreach NON_TERMINAL_MAP do
@@ -16,7 +16,7 @@ foreach NON_TERMINAL_MAP do
     if HAS_INDEXING then
       %//--- indexing\n%
       %  public : virtual void nt_%![lkey identifierRepresentation]%_indexing (C_Lexique_%!LEXIQUE_IDENTIFIER% * inCompiler) ;\n\n%
-    end if
+    end
   foreach mNonterminalSymbolParametersMap : label_ do
   %//----------- '%![label_lkey string]%' label\n%
   #--- Non terminal declaration
@@ -30,9 +30,9 @@ foreach NON_TERMINAL_MAP do
         %GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % & outArgument% ![IDX string]
       else # argumentIn
         %GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % inArgument% ![IDX string]
-      end if
+      end
       %,\n%!^
-    end foreach
+    end
     %C_Lexique_%!LEXIQUE_IDENTIFIER% * inCompiler) ;\n\n%
   #--- Start symbol ?
     if [[GRAMMAR_COMPONENT_ROOT mStartSymbolName] string] == [lkey string] then
@@ -49,8 +49,8 @@ foreach NON_TERMINAL_MAP do
           %GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % & outArgument% ![IDX string]
         else # argumentIn
           %GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % inArgument% ![IDX string]
-        end if
-      end foreach
+        end
+      end
       %\n%!^%COMMA_LOCATION_ARGS) ;\n\n%
       %  public : static void _performSourceStringParsing_%![label_lkey identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
       !^%GALGAS_string inSourceString%
@@ -64,23 +64,23 @@ foreach NON_TERMINAL_MAP do
           %GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % & outArgument% ![IDX string]
         else # argumentIn
           %GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % inArgument% ![IDX string]
-        end if
-      end foreach
+        end
+      end
       %\n%!^ %COMMA_LOCATION_ARGS) ;\n\n%
-    end if
-  end foreach
+    end
+  end
  #--- Start symbol ?
   if HAS_INDEXING & [[GRAMMAR_COMPONENT_ROOT mStartSymbolName] string] == [lkey string] then
     %//--- Start symbol indexing\n%
     %  public : static void performIndexing (%?^%C_Compiler * inCompiler,\n%
     !^%const C_String & inSourceFilePath) ;\n\n%
-  end if
-end foreach
+  end
+end
 
 foreach ADDED_NON_TERMINAL_LIST
   do %  public : virtual int32_t select_%![mSyntaxComponentName identifierRepresentation]%_%![mNonTerminalToAddCount string]% (C_Lexique_%!LEXIQUE_IDENTIFIER% *) ;\n%
   between %\n%
-end foreach
+end
 %} ;
 
 //-----------------------------------------------------------------------------*

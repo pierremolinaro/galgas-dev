@@ -26,16 +26,16 @@ void callCategoryMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const cPt
       %GALGAS_%![mFormalArgumentType identifierRepresentation]% & out_%![mFormalArgumentName identifierRepresentation]
     else # argumentIn
       %GALGAS_%![mFormalArgumentType identifierRepresentation]% in_%![mFormalArgumentName identifierRepresentation]
-    end if
-  end foreach
+    end
+  end
   %,\n%!^%C_Compiler * inCompiler%
   %\n%!^%COMMA_LOCATION_ARGS) {
 %
   foreach FORMAL_ARGUMENT_LIST do
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
       %  out_%![mFormalArgumentName identifierRepresentation]%.drop () ;\n%
-    end if
-  end foreach
+    end
+  end
 %  if (NULL != inObject) {
     macroValidSharedObject (inObject, cPtr_%![CLASS_NAME identifierRepresentation]%) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
@@ -67,9 +67,9 @@ void callCategoryMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const cPt
           %out_%![mFormalArgumentName identifierRepresentation]
         else # argumentIn
           %in_%![mFormalArgumentName identifierRepresentation]
-        end if
+        end
         %, %
-      end foreach
+      end
       %inCompiler COMMA_THERE) ;
     }
   }

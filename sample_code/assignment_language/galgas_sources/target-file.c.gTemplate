@@ -4,6 +4,6 @@ int main (void) {
 %
 foreach INSTRUCTION_LIST do
   %  %![mInstruction generateCcode]% ;\n%
-end foreach
+end
 %  return 0 ;
 }

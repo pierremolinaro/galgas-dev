@@ -3,13 +3,13 @@
 cMapElement_%!TYPE_IDENTIFIER%::cMapElement_%!TYPE_IDENTIFIER% (%?^%const GALGAS_lstring & inKey%
   foreach ATTRIBUTE_LIST
     do %,\n%!^%const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
-  end foreach
+  end
 %\n%
 !^%COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE)%
 foreach ATTRIBUTE_LIST
   do %,\n%  %mAttribute_%![mAttributeName identifierRepresentation]% (in_%![mAttributeName identifierRepresentation]%)%
-end foreach
+end
 % {
 }
 
@@ -19,7 +19,7 @@ bool cMapElement_%!TYPE_IDENTIFIER%::isValid (void) const {
   return mAttribute_lkey.isValid ()%
     foreach ATTRIBUTE_LIST
       do % && mAttribute_%![mAttributeName identifierRepresentation]%.isValid ()%
-    end foreach
+    end
   % ;
 }
 
@@ -30,7 +30,7 @@ cMapElement * cMapElement_%!TYPE_IDENTIFIER%::copy (void) {
   macroMyNew (result, cMapElement_%!TYPE_IDENTIFIER% (mAttribute_lkey%
     foreach ATTRIBUTE_LIST
       do %, mAttribute_%![mAttributeName identifierRepresentation]
-    end foreach
+    end
   % COMMA_HERE)) ;
   return result ;
 }
@@ -46,8 +46,8 @@ else
     %  ioString.writeStringMultiple ("| ", inIndentation) ;\n%
     %  ioString << %![mAttributeName utf8Representation]% ":" ;\n%
     %  mAttribute_%![mAttributeName identifierRepresentation]%.description (ioString, inIndentation) ;\n%
-  end foreach
-end if
+  end
+end
 %}
 
 //-----------------------------------------------------------------------------*
@@ -59,7 +59,7 @@ typeComparisonResult cMapElement_%!TYPE_IDENTIFIER%::compare (const cCollectionE
      %  if (kOperandEqual == result) {\n%
      %    result = mAttribute_%![mAttributeName identifierRepresentation]%.objectCompare (operand->mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
      %  }\n%
-   end foreach
+   end
 %  return result ;
 }
 
@@ -112,14 +112,14 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_overriddenMap (%?^%C
   %void GALGAS_%!TYPE_IDENTIFIER%::modifier_%![mInsertMethodName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
     foreach ATTRIBUTE_LIST
       do index IDX %,\n%!^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inArgument%![IDX string]
-    end foreach
+    end
     %,\n %!^%C_Compiler * inCompiler%
     %\n %!^%COMMA_LOCATION_ARGS) {\n%
     %  cMapElement_%!TYPE_IDENTIFIER% * p = NULL ;\n%
     %  macroMyNew (p, cMapElement_%!TYPE_IDENTIFIER% (inKey%
   foreach ATTRIBUTE_LIST
     do index IDX %, inArgument%![IDX string]
-  end foreach
+  end
   % COMMA_HERE)) ;\n%
   %  capCollectionElement attributes ;\n%
   %  attributes.setPointer (p) ;\n%
@@ -130,7 +130,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_overriddenMap (%?^%C
     %performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;\n%
   end block
   %}\n\n%
-end foreach
+end
 
 foreach SEARCH_METHOD_LIST do
   %//-----------------------------------------------------------------------------*\n\n%
@@ -139,7 +139,7 @@ foreach SEARCH_METHOD_LIST do
   %void GALGAS_%!TYPE_IDENTIFIER%::method_%![mSearchMethodName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
     foreach ATTRIBUTE_LIST
       do index IDX %,\n%!^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outArgument%![IDX string]
-    end foreach
+    end
     %,\n %!^%C_Compiler * inCompiler%
     %\n %!^%COMMA_LOCATION_ARGS) const {\n%
   block 2 :
@@ -150,16 +150,16 @@ foreach SEARCH_METHOD_LIST do
     %if (NULL == p) {\n%
     foreach ATTRIBUTE_LIST do index IDX
       %  outArgument%![IDX string]%.drop () ;\n%
-    end foreach
+    end
     %}else{\n%
     %  macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
     foreach ATTRIBUTE_LIST do index IDX
       %  outArgument%![IDX string]% = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
-    end foreach
+    end
     %}\n%
   end block
   %}\n\n%
-end foreach
+end
 
 
 foreach REMOVE_METHOD_LIST do
@@ -167,7 +167,7 @@ foreach REMOVE_METHOD_LIST do
   %void GALGAS_%!TYPE_IDENTIFIER%::modifier_%![mMethodName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
     foreach ATTRIBUTE_LIST
       do index IDX %,\n%!^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outArgument%![IDX string]
-    end foreach
+    end
     %,\n %!^%C_Compiler * inCompiler%
     %\n %!^%COMMA_LOCATION_ARGS) {\n%
   block 2 :
@@ -179,31 +179,31 @@ foreach REMOVE_METHOD_LIST do
     %  macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
     foreach ATTRIBUTE_LIST do index IDX
       %  outArgument%![IDX string]% = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
-    end foreach
+    end
     %}\n%
   end block
   %}\n\n%
-end foreach
+end
 
 if HAS_INSERT_OR_REPLACE then
   %//-----------------------------------------------------------------------------*\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::modifier_insertOrReplace (%?^%GALGAS_lstring inKey%
   foreach ATTRIBUTE_LIST
     do index IDX %,\n%!^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inArgument%![IDX string]
-  end foreach
+  end
   %\n %!^%COMMA_UNUSED_LOCATION_ARGS) {\n%
   %  cMapElement_%!TYPE_IDENTIFIER% * p = NULL ;\n%
   %  macroMyNew (p, cMapElement_%!TYPE_IDENTIFIER% (inKey%
   foreach ATTRIBUTE_LIST
     do index IDX %, inArgument%![IDX string]
-  end foreach
+  end
   % COMMA_HERE)) ;\n%
   %  capCollectionElement attributes ;\n%
   %  attributes.setPointer (p) ;\n%
   %  macroDetachSharedObject (p) ;\n%
   %  performInsertOrReplace (attributes) ;\n%
   %}\n\n%
-end if
+end
 
 foreach ATTRIBUTE_LIST do index IDX
   %//-----------------------------------------------------------------------------*\n\n%
@@ -219,7 +219,7 @@ foreach ATTRIBUTE_LIST do index IDX
   %  }\n%
   %  return result ;\n%
   %}\n\n%
-end foreach 
+end 
 
 foreach ATTRIBUTE_LIST do index IDX
   %//-----------------------------------------------------------------------------*\n\n%
@@ -234,7 +234,7 @@ foreach ATTRIBUTE_LIST do index IDX
   %    p->mAttribute_%![mAttributeName identifierRepresentation]% = inAttributeValue ;\n%
   %  }\n%
   %}\n\n%
-end foreach 
+end 
 
 foreach WITH_ACCESSOR_MAP do
   %//-----------------------------------------------------------------------------*\n\n%
@@ -245,12 +245,12 @@ foreach WITH_ACCESSOR_MAP do
   %  cMapElement * p = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;\n%
   else
   %  cMapElement * p = searchForReadWriteAttribute (inKey, inCompiler, kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![lkey identifierRepresentation]% COMMA_THERE) ;\n%
-  end if
+  end
   %  cMapElement_%!TYPE_IDENTIFIER% * result = (cMapElement_%!TYPE_IDENTIFIER% *) p ;\n%
   %  macroNullOrValidSharedObject (result, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
   %  return result ;\n%
   %}\n\n%
-end foreach
+end
 %//-----------------------------------------------------------------------------*
 
 cEnumerator_%!TYPE_IDENTIFIER%::cEnumerator_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inEnumeratedObject,
@@ -267,7 +267,7 @@ GALGAS_%!TYPE_IDENTIFIER%_2E_element cEnumerator_%!TYPE_IDENTIFIER%::current (LO
   return GALGAS_%!TYPE_IDENTIFIER%_2E_element (p->mAttribute_lkey%
 foreach ATTRIBUTE_LIST do
   %, p->mAttribute_%![mAttributeName identifierRepresentation]
-end foreach
+end
 %) ;
 }
 
@@ -286,6 +286,6 @@ GALGAS_lstring cEnumerator_%!TYPE_IDENTIFIER%::current_lkey (LOCATION_ARGS) cons
   %  macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
   %  return p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   %}\n\n%
-end foreach 
+end 
 %
 

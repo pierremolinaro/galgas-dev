@@ -3,10 +3,10 @@
 #import "F_CocoaWrapperForGalgas.h"
 %foreach [GUI_CONTEXT mWithLexiqueList] do
   %#import "%!mLexiqueClassName%-cocoa.m"\n%
-end foreach
+end
 foreach [GUI_CONTEXT mNibAndClassList] do
   %#import "%!mValue%.h"\n%
-end foreach%
+end%
 #ifdef USER_DEFAULT_COLORS_DEFINED
   #import "user_default_colors.h"
 #endif
@@ -25,7 +25,7 @@ NSArray * nibsAndClasses (void) {
   return [NSArray arrayWithObjects:
 %foreach [GUI_CONTEXT mNibAndClassList] do
   %    [NSArray arrayWithObjects:@"%!mValue%", [%!mValue% class], nil],\n%
-end foreach%    nil
+end%    nil
   ] ;
 }
 
@@ -42,7 +42,7 @@ end foreach%    nil
 %
 foreach [GUI_CONTEXT mImportedOptionComponentList] do
   %#import "%!mValue%-cocoa.m"\n%
-end foreach
+end
 %
 //-----------------------------------------------------------------------------*
 
@@ -52,7 +52,7 @@ void enterOptions (NSMutableArray * ioBoolOptionArray,
 %
 foreach [GUI_CONTEXT mImportedOptionComponentList] do
   %  enterOptionsFor_%![mValue identifierRepresentation]% (ioBoolOptionArray, ioUIntOptionArray, ioStringOptionArray) ;\n%
-end foreach
+end
 %}
 
 %foreach [GUI_CONTEXT mWithLexiqueList] do
@@ -68,14 +68,14 @@ end foreach
     %  %![mLeadingCharacterStrippedCount string]%, // Leading character count to strip\n%
       foreach mTerminalList do
         %  %!mLexiqueClassName%_1_%![mTerminal identifierRepresentation]%, %![mDisplayFlags string]%,\n%
-      end foreach    
+      end    
     %  0\n%
     %} ;\n\n%
-  end foreach
+  end
   %static const UInt16 * gPopUpData_%![mLexiqueClassName identifierRepresentation]% [%![[mLabels length] + 1 string]%] = {\n%
   foreach mLabels do
     %  gPopUpData_%![mLexiqueClassName identifierRepresentation]%_%![[mLocation locationIndex] string]%,\n%
-  end foreach
+  end
     %  NULL\n%
     %} ;\n\n%
   %//-----------------------------------------------------------------------------*\n%
@@ -115,7 +115,7 @@ end foreach
   %  static NSString * kTextMacroTitle [%![[mTextMacroList length] + 1 string]%] = {\n%
   foreach mTextMacroList do
     %    @%![mKey utf8Representation]%,\n%
-  end foreach
+  end
   %    NULL\n%
   %  } ;\n%
   %  return kTextMacroTitle [inIndex] ;\n%
@@ -125,14 +125,14 @@ end foreach
   %  static NSString * kTextMacroContent [%![[mTextMacroList length] + 1 string]%] = {\n%
   foreach mTextMacroList do
     %    @%![mContents utf8Representation]%,\n%
-  end foreach
+  end
   %    NULL\n%
   %  } ;\n%
   %  return kTextMacroContent [inIndex] ;\n%
   %}\n\n%
   %//-----------------------------------------------------------------------------*\n\n%
   %@end\n\n%
-end foreach
+end
 %
 
 //-----------------------------------------------------------------------------*
@@ -145,7 +145,7 @@ foreach [GUI_CONTEXT mExtensionMap]
      %    result = [OC_Tokenizer_%!mLexiqueName% new] ;\n%
   between %  }else if%
   after %  }\n%
-end foreach
+end
 %  return result ;
 }
 
@@ -155,7 +155,7 @@ NSArray * tokenizers (void) {
   return [NSArray arrayWithObjects:
 %foreach [GUI_CONTEXT mWithLexiqueList] do
   %    [OC_Tokenizer_%!mLexiqueClassName% new],\n%
-end foreach
+end
 %    nil
   ] ;
 }
