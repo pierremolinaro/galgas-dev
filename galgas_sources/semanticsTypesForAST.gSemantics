@@ -758,36 +758,6 @@ class @routineCallInstructionAST extends @semanticInstructionAST {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    M A T C H    I N S T R U C T I O N                                     *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-list @matchEntryListAST {
-  @bool mIsType feature nogetter ; # true if type, false if enum
-  @lstring mTypeNameOrEnumerationConstantName feature nogetter ;
-  @lstring mLocalConstantName feature nogetter ; # Empty string if no constant
-}
-
-#---------------------------------------------------------------------------*
-
-list @matchInstructionBranchListAST {
-  @matchEntryListAST mMatchEntryList feature nogetter ;
-  @location mEndOfMatchEntryList feature nogetter ;
-  @semanticInstructionListAST mMatchBranchInstructionList feature nogetter ;
-  @location mEndOf_instructionList feature nogetter ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @matchInstructionAST extends @semanticInstructionAST {
-  @semanticExpressionListAST mMatchedExpressionList ;
-  @matchInstructionBranchListAST mMatchInstructionBranchList ;
-  @semanticInstructionListAST mElseInstructionList ;
-  @location mEndOf_match_instruction ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #    C A S T    I N S T R U C T I O N                                       *
 #                                                                           *
 #---------------------------------------------------------------------------*
