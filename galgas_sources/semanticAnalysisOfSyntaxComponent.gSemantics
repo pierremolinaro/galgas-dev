@@ -69,6 +69,7 @@ class @syntaxDeclarationForGeneration extends @semanticDeclarationForGeneration 
   @ruleDeclarationList mRuleDeclarationList ;
   @uint mSelectMethodCount ;
   @bool mHasIndexing ;
+  @bool mHasTranslateFeature ;
 }
 
 #---------------------------------------------------------------------------*
@@ -99,6 +100,7 @@ filewrapper syntaxFileGenerationTemplate in "../generation_templates/syntax_gene
     ?@ruleDeclarationList RULE_DECLARATION_LIST
     ?@uintlist SELECT_METHOD_LIST
     ?@bool HAS_INDEXING
+    ?@bool HAS_TRANSLATE_FEATURE
   ;
 }
 
@@ -120,6 +122,7 @@ override reader @syntaxDeclarationForGeneration appendDeclaration1 -> @string ou
     !mRuleDeclarationList
     !selectMethodList
     !mHasIndexing
+    !mHasTranslateFeature
   ] ; 
 end reader ;
 
@@ -287,9 +290,9 @@ override method @nonterminalInstructionForGeneration generateInstruction
   ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
-#  ioGeneratedCode .= "//-------- @nonterminalInstructionForGeneration\n" ;
 #--- Parameters
   @stringlist parameterCppNameList [emptyList] ;
   @stringlist jokerParametersToReleaseList [emptyList] ;
@@ -304,6 +307,10 @@ override method @nonterminalInstructionForGeneration generateInstruction
   foreach parameterCppNameList do
     ioGeneratedCode .= mValue . ", " ;
   end foreach ;
+  if inGenerateSyntaxDirectedTranslationString then
+    ioGeneratedCode .= syntaxDirectedTranslationResultVarName[] . ", " ;
+    [!?ioUnusedVariableCppNameSet removeKey !syntaxDirectedTranslationResultVarName []] ;
+  end if ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
   ioGeneratedCode .=  compilerCppName [] . ") ;\n" ;
 #---
@@ -508,9 +515,9 @@ override method @terminalCheckInstructionForGeneration generateInstruction
   ??@bool inGenerateCheckValid
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
-#  ioGeneratedCode .= "//-------- @terminalCheckInstructionForGeneration\n" ;
 #--- Get synthetized attributes
   foreach mTerminalCheckAssignementList do
     if mTypeName != "" then
@@ -525,10 +532,12 @@ override method @terminalCheckInstructionForGeneration generateInstruction
   foreach mIndexingKeyList do
     ioGeneratedCode .= compilerCppName [] . "->enterIndexing (C_Lexique_" . mLexiqueIdentifier . "::kIndexing_" . [mValue identifierRepresentation] . ") ;\n" ;
   end foreach ;
-#--- Location constant
-#  if mTerminalLocationConstantName != "" then
-#    ioGeneratedCode .= "const GALGAS_location var_" . [mTerminalLocationConstantName identifierRepresentation] . " = " . compilerCppName [] . "->currentTokenLocation () ;\n" ;
-#  end if ;
+#--- Syntax directed translation
+  if inGenerateSyntaxDirectedTranslationString then
+    ioGeneratedCode .= syntaxDirectedTranslationResultVarName [] . " << inCompiler->preceedingSeparatorString () ;\n" ;
+    ioGeneratedCode .= syntaxDirectedTranslationResultVarName [] . " << inCompiler->tokenString () ;\n" ;
+    [!?ioUnusedVariableCppNameSet removeKey !syntaxDirectedTranslationResultVarName []] ;
+  end if ;
 #--- Check terminal symbol
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
   ioGeneratedCode .= compilerCppName [] . "->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_"
@@ -650,6 +659,7 @@ override method @repeatInstructionForGeneration generateInstruction
   ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
 #  ioGeneratedCode .= "//-------- @repeatInstructionForGeneration\n" ;
@@ -661,6 +671,7 @@ override method @repeatInstructionForGeneration generateInstruction
     !m_repeated_instructionList
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
+    !inGenerateSyntaxDirectedTranslationString
     !?ioGeneratedCode
   ;
   [!?ioGeneratedCode incIndentation !2] ;
@@ -672,6 +683,7 @@ override method @repeatInstructionForGeneration generateInstruction
       !mInstructionList
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
       !?ioGeneratedCode
     ;
     ioGeneratedCode .= "} break ;\n" ;
@@ -736,6 +748,7 @@ override method @selectInstructionForGeneration generateInstruction
   ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
 #  ioGeneratedCode .= "//-------- @selectInstructionForGeneration\n" ;
@@ -748,6 +761,7 @@ override method @selectInstructionForGeneration generateInstruction
       !mInstructionList
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
       !?ioGeneratedCode
     ;
     ioGeneratedCode .= "} break ;\n" ;
@@ -817,6 +831,7 @@ override method @parseRewindInstructionForGeneration generateInstruction
   ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
 #  ioGeneratedCode .= "//-------- @parseRewindInstructionForGeneration\n" ;
@@ -830,6 +845,7 @@ override method @parseRewindInstructionForGeneration generateInstruction
       !mInstructionList
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
       !?ioGeneratedCode
     ;
   between 
@@ -912,6 +928,7 @@ override method @parseLoopInstructionForGeneration generateInstruction
   ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
@@ -942,6 +959,7 @@ override method @parseLoopInstructionForGeneration generateInstruction
     !mInstructionList
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
+    !inGenerateSyntaxDirectedTranslationString
     !?ioGeneratedCode
   ;
   ioGeneratedCode .= compilerCppName [] . "->setParsingContext (parsingContext) ;\n" ;
@@ -958,6 +976,7 @@ override method @parseLoopInstructionForGeneration generateInstruction
     !syntaxSignatureOfInstructionList [!"parse" !mInstructionList]
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
+    !inGenerateSyntaxDirectedTranslationString
     !?ioGeneratedCode
   ;
   ioGeneratedCode .= compilerCppName [] . "->resetTemplateString () ;\n" ;
@@ -1042,6 +1061,7 @@ override method @parseWhenInstructionForGeneration generateInstruction
   ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
 #  ioGeneratedCode .= "//--------- @parseWhenInstructionForGeneration\n" ;
@@ -1053,6 +1073,7 @@ override method @parseWhenInstructionForGeneration generateInstruction
     !mInstructionList
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
+    !inGenerateSyntaxDirectedTranslationString
     !?ioGeneratedCode
   ;
   ioGeneratedCode .= "}else{\n" ;
@@ -1061,6 +1082,7 @@ override method @parseWhenInstructionForGeneration generateInstruction
     !mElseInstructionList
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
+    !inGenerateSyntaxDirectedTranslationString
     !?ioGeneratedCode
   ;
   ioGeneratedCode .= "}\n" ;
@@ -1135,6 +1157,7 @@ routine semanticAnalysisOfSyntaxComponent
   ??@terminalMap inTerminalMap
   ??@stringset inIndexNameSet
   ??@bool inHasIndexing
+  ??@bool inHasTranslateFeature
   !@syntaxDeclarationForGeneration outSyntaxDeclarationForGeneration
 :
 #------------ Build nonterminal map
@@ -1225,6 +1248,7 @@ routine semanticAnalysisOfSyntaxComponent
     !ruleDeclarationList
     !selectMethodCount
     !inHasIndexing
+    !inHasTranslateFeature
   ] ;
 end routine ;
 

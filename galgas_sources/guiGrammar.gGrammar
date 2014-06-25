@@ -19,7 +19,6 @@
 
 indexing grammar guiGrammar "SLR" :
   with "guiSyntax.gSyntax" ;
-
   root <gui_component_start_symbol>
     !@guiComponentAST outGuiComponentRoot
   ; # LL1

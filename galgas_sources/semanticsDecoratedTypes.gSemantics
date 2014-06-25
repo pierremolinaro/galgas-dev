@@ -881,6 +881,7 @@ class @grammarInstructionWithSourceFileForGeneration extends @semanticInstructio
   @string mLabelName ;
   @semanticExpressionForGeneration mSourceFileExpression ;
   @actualParameterListForGeneration mActualParameterList ;
+  @bool mGrammarHasTranslateFeature ;
 }
 
 #---------------------------------------------------------------------------*
@@ -891,6 +892,7 @@ class @grammarInstructionWithSourceExpressionForGeneration extends @semanticInst
   @string mLabelName ;
   @semanticExpressionForGeneration mSourceStringExpression ;
   @actualParameterListForGeneration mActualParameterList ;
+  @bool mGrammarHasTranslateFeature ;
 }
 
 #---------------------------------------------------------------------------*

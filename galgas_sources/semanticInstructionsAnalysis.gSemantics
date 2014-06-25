@@ -1921,17 +1921,16 @@ override method @grammarInstructionAST analyzeSemanticInstruction
   ?!@variableMap ioVariableMap
 :
 #--- Search grammar in grammar map
-  @grammarLabelMap grammarLabelMap ;
   [inAnalysisContext->mSemanticContext->mGrammarMap searchKey
     !mGrammarComponentName
-    ?grammarLabelMap
+    ??@grammarLabelMap grammarLabelMap
     ?*
+    ??@bool hasTranslateFeature
   ] ;
 #--- Search label
-  @formalParameterSignature labelSignature ;
   [grammarLabelMap searchKey
     !mLabelName
-    ?labelSignature
+    ??@formalParameterSignature labelSignature
   ] ;
 #--- Check actual parameters
   @actualParameterListForGeneration actualParameterListForGeneration ;
@@ -1945,11 +1944,10 @@ override method @grammarInstructionAST analyzeSemanticInstruction
     ?actualParameterListForGeneration
   ;
 #--- Parse source expression
-  @semanticExpressionForGeneration sourceExpression ;
   [mSourceExpression analyzeSemanticExpression
     !inAnalysisContext
     !?ioVariableMap
-    ?sourceExpression
+    ??@semanticExpressionForGeneration sourceExpression
   ] ;
 #--- Check source expression type: @lstring for file, @string for source string itself
   if mSourceExpressionIsFile then
@@ -1971,6 +1969,7 @@ override method @grammarInstructionAST analyzeSemanticInstruction
       ![mLabelName string]
       !sourceExpression
       !actualParameterListForGeneration
+      !hasTranslateFeature
     ] ;
   else
     ioInstructionListForGeneration += ![@grammarInstructionWithSourceExpressionForGeneration new
@@ -1979,6 +1978,7 @@ override method @grammarInstructionAST analyzeSemanticInstruction
       ![mLabelName string]
       !sourceExpression
       !actualParameterListForGeneration
+      !hasTranslateFeature
     ] ;
   end if ;
 end method ;

@@ -264,19 +264,20 @@ engendrerAiguillageNonTerminaux (const cVocabulary & inVocabulary,
                                  const int16_t nombreDeParametres,
                                  const cPureBNFproductionsList & inPureBNFproductions,
                                  AC_OutputStream & fichierCPP,
-                                 const C_String & inAltName) {
+                                 const C_String & inAltName,
+                                 const C_String & inSyntaxDirectedTranslationVarName) {
   const int32_t first = inPureBNFproductions.tableauIndicePremiereProduction (inOriginalGrammarProductionLeftNonTerminalIndex COMMA_HERE) ;
   if (first >= 0) { // Au moins une production
     const int32_t derniere = inPureBNFproductions.tableauIndiceDerniereProduction (inOriginalGrammarProductionLeftNonTerminalIndex COMMA_HERE) ;
     if (first == derniere) { // Une seule production, pas de conflit
       const int32_t indiceProduction = inPureBNFproductions.tableauIndirectionProduction (first COMMA_HERE) ;
-      inPureBNFproductions (indiceProduction COMMA_HERE).engendrerAppelProduction (nombreDeParametres, inVocabulary, inAltName, fichierCPP) ;
+      inPureBNFproductions (indiceProduction COMMA_HERE).engendrerAppelProduction (nombreDeParametres, inVocabulary, inAltName, fichierCPP, inSyntaxDirectedTranslationVarName) ;
     }else{ // Plusieurs inPureBNFproductions : engendrer l'aiguillage
       fichierCPP << "  switch (inLexique->nextProductionIndex ()) {\n" ;
       for (int32_t j=first ; j<=derniere ; j++) {
         fichierCPP << "  case " << cStringWithSigned ((int32_t)(j - first + 1)) << " :\n  " ;
         const int32_t indiceProduction = inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) ;
-        inPureBNFproductions (indiceProduction COMMA_HERE).engendrerAppelProduction (nombreDeParametres, inVocabulary, inAltName, fichierCPP) ;
+        inPureBNFproductions (indiceProduction COMMA_HERE).engendrerAppelProduction (nombreDeParametres, inVocabulary, inAltName, fichierCPP, inSyntaxDirectedTranslationVarName) ;
         fichierCPP << "    break ;\n" ;
       }
       fichierCPP << "  default :\n"
@@ -448,7 +449,8 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
                                const C_String & inLexiqueName,
                                const cVocabulary & inVocabulary,
                                const cPureBNFproductionsList & inPureBNFproductions,
-                               const bool inHasIndexing) {
+                               const bool inHasIndexing,
+                               const C_String & inSyntaxDirectedTranslationVarName) {
 //--- Generate header file inclusion --------------------------------------------------------------
   C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
   generatedZone2.appendCppHyphenLineComment () ;
@@ -589,12 +591,17 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
     const bool existeProduction = inPureBNFproductions.tableauIndicePremiereProduction ((int32_t) nonTerminal.current_mNonTerminalIndex (HERE).uintValue () COMMA_HERE) >= 0 ;
   //--- Parse label
       generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
-                 << "::nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
-                 << "_parse (C_Lexique_" << inLexiqueName.identifierRepresentation () << " * " << (existeProduction ? "inLexique" : "")
-                 << ") {\n" ; 
-    engendrerAiguillageNonTerminaux (inVocabulary, (int32_t) nonTerminal.current_mNonTerminalIndex (HERE).uintValue (), 0,
-                                     inPureBNFproductions, generatedZone3,
-                                     "parse") ;
+                     << "::nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
+                     << "_parse (" ;
+      if (inSyntaxDirectedTranslationVarName.length () > 0) {
+        generatedZone3 << "C_String & " << inSyntaxDirectedTranslationVarName << ", " ;
+      }
+      generatedZone3 << "C_Lexique_" << inLexiqueName.identifierRepresentation () << " * " << (existeProduction ? "inLexique" : "")
+                     << ") {\n" ;
+     engendrerAiguillageNonTerminaux (inVocabulary, (int32_t) nonTerminal.current_mNonTerminalIndex (HERE).uintValue (), 0,
+                                      inPureBNFproductions, generatedZone3,
+                                      "parse",
+                                      inSyntaxDirectedTranslationVarName) ;
     generatedZone3 << "}\n\n" ;
   //--- Indexing ? 
     if (inHasIndexing) {
@@ -604,7 +611,8 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
                    << ") {\n" ; 
       engendrerAiguillageNonTerminaux (inVocabulary, (int32_t) nonTerminal.current_mNonTerminalIndex (HERE).uintValue (), 0,
                                        inPureBNFproductions, generatedZone3,
-                                       "indexing") ;
+                                       "indexing",
+                                       "") ;
       generatedZone3 << "}\n\n" ;
     }
     cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal (nonTerminal.current_mNonterminalSymbolParametersMap (HERE), kEnumeration_up) ;
@@ -643,11 +651,15 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
         numeroParametre ++ ;
         generatedZone3 << ",\n                                " ;
       }
+      if (inSyntaxDirectedTranslationVarName.length () > 0) {
+        generatedZone3 << "C_String & " << inSyntaxDirectedTranslationVarName << ",\n                                " ;
+      }
       generatedZone3 << "C_Lexique_" << inLexiqueName.identifierRepresentation () << " * " << (existeProduction ? "inLexique" : "")
                      << ") {\n" ; 
       engendrerAiguillageNonTerminaux (inVocabulary, (int32_t) nonTerminal.current_mNonTerminalIndex (HERE).uintValue (), numeroParametre,
                                        inPureBNFproductions, generatedZone3,
-                                       currentAltForNonTerminal.current_lkey (HERE).mAttribute_string.stringValue ()) ;
+                                       currentAltForNonTerminal.current_lkey (HERE).mAttribute_string.stringValue (),
+                                       inSyntaxDirectedTranslationVarName) ;
       generatedZone3 << "}\n\n" ;
       currentAltForNonTerminal.gotoNextObject () ;
     }
@@ -681,8 +693,11 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
         generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
                        << "::_performSourceFileParsing_" << currentAltForNonTerminal.current_lkey (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
                        << " (C_Compiler * inCompiler"
-                          ",\n                                "
-                          "GALGAS_lstring inFilePath" ;
+                          ",\n                                " ;
+        if (inSyntaxDirectedTranslationVarName.length() > 0) {
+          generatedZone3 << "C_String & " << inSyntaxDirectedTranslationVarName << ",\n                                " ;
+        }
+        generatedZone3 << "GALGAS_lstring inFilePath" ;
         cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal.current_mFormalParametersList (HERE), kEnumeration_up) ;
         int16_t numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
@@ -729,7 +744,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
                        << ") ;\n"
                           "      if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {\n"
                           "        cGrammar_" << inTargetFileName.identifierRepresentation () << " grammar ;\n"
-                          "          " ;
+                          "        " ;
         generatedZone3 << "grammar.nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
                        << "_" << currentAltForNonTerminal.current_lkey (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
                        << " (" ;
@@ -739,6 +754,9 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
           generatedZone3 << "parameter_" << cStringWithSigned (numeroParametre) << ", " ;
           parametre.gotoNextObject () ;
           numeroParametre ++ ;
+        }
+        if (inSyntaxDirectedTranslationVarName.length() > 0) {
+          generatedZone3 << inSyntaxDirectedTranslationVarName << ", " ;
         }
         generatedZone3 << "scanner) ;\n"
                           "      }\n"
@@ -780,8 +798,11 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
         generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
                        << "::_performSourceStringParsing_" << currentAltForNonTerminal.current_lkey (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
                        << " (C_Compiler * inCompiler"
-                          ",\n                                "
-                          "GALGAS_string inSourceString" ;
+                          ",\n                                " ;
+        if (inSyntaxDirectedTranslationVarName.length() > 0) {
+          generatedZone3 << "C_String & " << inSyntaxDirectedTranslationVarName << ",\n                                " ;
+        }
+        generatedZone3 << "GALGAS_string inSourceString" ;
         parametre.rewind () ;
         numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
@@ -831,6 +852,9 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
           generatedZone3 << "parameter_" << cStringWithSigned (numeroParametre) << ", " ;
           parametre.gotoNextObject () ;
           numeroParametre ++ ;
+        }
+        if (inSyntaxDirectedTranslationVarName.length() > 0) {
+          generatedZone3 << inSyntaxDirectedTranslationVarName << ", " ;
         }
         generatedZone3 << "scanner) ;\n"
                           "    }\n"
@@ -888,7 +912,8 @@ LL1_computations (C_Compiler * inCompiler,
                   const C_String & inLexiqueName,
                   bool & outOk,
                   const bool inVerboseOptionOn,
-                  const bool inHasIndexing) {
+                  const bool inHasIndexing,
+                  const C_String & inSyntaxDirectedTranslationVarName) {
 
 //--- Console display
   if (inVerboseOptionOn) {
@@ -919,7 +944,8 @@ LL1_computations (C_Compiler * inCompiler,
                                    inLexiqueName,
                                    inVocabulary,
                                    inPureBNFproductions,
-                                   inHasIndexing) ;
+                                   inHasIndexing,
+                                   inSyntaxDirectedTranslationVarName) ;
   }
 }
 

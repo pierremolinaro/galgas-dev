@@ -103,8 +103,7 @@ local routine compileProgramRules
   foreach [inProgramComponentAST mProgramRules] do
     if mIndexingGrammar->string != "" then
       ioHasIndexing := true ;
-      @bool hasIndexing ;
-      [inAnalysisContext->mSemanticContext->mGrammarMap searchKey !mIndexingGrammar ?* ?hasIndexing] ;
+      [inAnalysisContext->mSemanticContext->mGrammarMap searchKey !mIndexingGrammar ?* ??@bool hasIndexing ?*] ;
       if not hasIndexing then
         error mIndexingGrammar : "the '" . mIndexingGrammar . "' grammar does not enable indexing" ;
       end if ;

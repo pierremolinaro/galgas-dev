@@ -314,10 +314,11 @@ routine buildGrammarComponentMapForSemanticAnalysis
       ] ;
     end foreach ;
   #--- Insert grammar in grammar map
-    [!?ioSemanticContext->mGrammarMap insertKey
+    [!?ioSemanticContext->mGrammarMap insertGrammar
       ![mGrammarComponentAST mGrammarName]
       !grammarLabelMap
       ![[mGrammarComponentAST mHasIndexing] bool]
+      !mGrammarComponentAST->mHasTranslateFeature
     ] ;
   end foreach ;
 end routine ;

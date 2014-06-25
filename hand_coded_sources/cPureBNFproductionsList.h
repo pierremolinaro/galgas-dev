@@ -76,7 +76,8 @@ class cProduction {
   public : void engendrerAppelProduction (const int16_t nombreDeParametres,
                                           const cVocabulary & inVocabulary,
                                           const C_String & inAltName,
-                                          AC_OutputStream & fichierCPP) const ;
+                                          AC_OutputStream & fichierCPP,
+                                          const C_String & inSyntaxDirectedTranslationVarName) const ;
 
 //--- No copy
   private : cProduction (const cProduction &) ;
