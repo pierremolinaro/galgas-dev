@@ -672,6 +672,7 @@ mNextToken (NULL),
 mStartLocation (),
 mEndLocation (),
 mTemplateStringBeforeToken (),
+mSeparatorStringBeforeToken (),
 mTokenCode (0) {
 }
 

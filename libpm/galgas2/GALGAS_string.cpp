@@ -216,22 +216,22 @@ GALGAS_string GALGAS_string::reader_identifierRepresentation (UNUSED_LOCATION_AR
 
 //-----------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_string::reader_rightSubString (const GALGAS_uint & inLength
+GALGAS_string GALGAS_string::reader_rightSubString (const GALGAS_uint & inStartIndex
                                                     COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
-  if (inLength.isValid ()) {
-    result = GALGAS_string (mString.rightSubString ((int32_t) inLength.uintValue ())) ;
+  if (inStartIndex.isValid ()) {
+    result = GALGAS_string (mString.subStringFromIndex ((int32_t) inStartIndex.uintValue ())) ;
   }
   return result ;
 }
 
 //-----------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_string::reader_leftSubString (const GALGAS_uint & inLength
+GALGAS_string GALGAS_string::reader_leftSubString (const GALGAS_uint & inEndIndex
                                                    COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
-  if (inLength.isValid ()) {
-    result = GALGAS_string (mString.leftSubString ((int32_t) inLength.uintValue ())) ;
+  if (inEndIndex.isValid ()) {
+    result = GALGAS_string (mString.subStringToIndex ((int32_t) inEndIndex.uintValue ())) ;
   }
   return result ;
 }

@@ -1387,11 +1387,11 @@ C_String C_String::md5 (void) const {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   R I G H T    S U B    S T R I N G                                         *
+//   S U B    S T R I N G    F R O M    I N D E X                              *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-C_String C_String::rightSubString (const int32_t inLength) const  {
+C_String C_String::subStringFromIndex (const int32_t inLength) const  {
   C_String result ;
   if (length () <= inLength) {
     result = *this ;
@@ -1403,11 +1403,11 @@ C_String C_String::rightSubString (const int32_t inLength) const  {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   L E F T    S U B    S T R I N G                                           *
+//   S U B    S T R I N G    T O    I N D E X                                  *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-C_String C_String::leftSubString (const int32_t inLength) const  {
+C_String C_String::subStringToIndex (const int32_t inLength) const  {
   C_String result ;
   if (length () <= inLength) {
     result = *this ;
