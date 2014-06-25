@@ -23,6 +23,7 @@ import "galgas_cli_options.gOption" ;
 import "grammarLL1grammar.gGrammar" ;
 import "syntaxSLRgrammar.gGrammar" ;
 import "lexiqueCompilation.gSemantics" ;
+import "semanticExpressionGeneration.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
@@ -468,6 +469,7 @@ extern routine grammarAnalysisAndGeneration
   ??@string inOutputDirectoryForHTMLfile
   ??@nonTerminalSymbolSortedListForGrammarAnalysis inNonTerminalSymbolSortedListForGrammarAnalysis
   ??@bool inHasIndexing
+  ??@string inSyntaxDirectedTranslationVarName # Empty if not syntax directed translation
 ;
 
 #---------------------------------------------------------------------------*
@@ -484,8 +486,8 @@ routine compileGrammarComponentFromAST
 :
  const @string outputDirectoryForHTMLFile := [inSourceFile stringByDeletingLastPathComponent] ;
 #---------------------------------------------------------- Check component name
-  const @lstring grammarComponentName := [inGrammarComponentRoot mGrammarName] ;
-  const @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
+  const grammarComponentName := [inGrammarComponentRoot mGrammarName] ;
+  const basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
   if [grammarComponentName string] != basename then
     warning grammarComponentName: "GALGAS checks "
       "the component name ('" . [grammarComponentName string]
@@ -514,6 +516,12 @@ routine compileGrammarComponentFromAST
         const @lstring lSourceFilePath := [@lstring new !sourceFilePath ![mValue location]] ;
         grammar syntaxSLRgrammar in lSourceFilePath ?syntaxComponentRoot ;
         [!?ioParsedComponentStruct->mParsedSyntaxComponentMap insertKey ![@lstring new !syntaxComponentName ![mValue location]] !lSourceFilePath !syntaxComponentRoot] ;
+      end if ;
+    #--- Check translate feature
+      if inGrammarComponentRoot->mHasTranslateFeature & not syntaxComponentRoot->mHasTranslateFeature then
+        error syntaxComponentRoot->mSyntaxComponentName : "as '" . inGrammarComponentRoot->mGrammarName . "' grammar declares 'translate' feature, this syntax component should do so" ;
+      elsif syntaxComponentRoot->mHasTranslateFeature & not inGrammarComponentRoot->mHasTranslateFeature then
+        error inGrammarComponentRoot->mGrammarName : "as '" . syntaxComponentRoot->mSyntaxComponentName . "' syntax component declares 'translate' feature, this grammar should do so" ;
       end if ;
     #--- Handle lexique component
       lexiqueComponentPath := [syntaxComponentRoot mImportedLexiqueFilePath] ;
@@ -602,13 +610,14 @@ routine compileGrammarComponentFromAST
     !outputDirectoryForHTMLFile
     !nonTerminalSymbolSortedListForGrammarAnalysis
     !hasIndexing
+    !if inGrammarComponentRoot->mHasTranslateFeature then syntaxDirectedTranslationResultVarName [] else "" end
   ;
 #---------------------------------------------------------- Generate header
   if [@uint errorCount] == 0 then
-    const @string zone2 := [filewrapper grammarGenerationTemplate.grammarZone2Header
+    const zone2 := [filewrapper grammarGenerationTemplate.grammarZone2Header
       !inGrammarComponentRoot
     ] ;
-    const @string zone3 := [filewrapper grammarGenerationTemplate.grammarZone3Header
+    const zone3 := [filewrapper grammarGenerationTemplate.grammarZone3Header
       ![lexiqueComponentName identifierRepresentation]
       !inGrammarComponentRoot
       !nonTerminalMapForGrammarAnalysis
@@ -634,8 +643,7 @@ routine compileGrammarComponentFromSourceFile
   ??@string inOutputDirectoryForCppFiles
   ?!@parsedComponentStruct ioParsedComponentStruct
 :
-  @grammarComponentAST grammarComponentRoot ;
-  parseGrammarComponent !inSourceFile !?ioParsedComponentStruct ?grammarComponentRoot ;
+  parseGrammarComponent !inSourceFile !?ioParsedComponentStruct ??@grammarComponentAST grammarComponentRoot ;
 #----
   compileGrammarComponentFromAST
     !inSourceFile

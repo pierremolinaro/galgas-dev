@@ -116,13 +116,17 @@ void cProduction::
 engendrerAppelProduction (const int16_t nombreDeParametres,
                           const cVocabulary & inVocabulary,
                           const C_String & inAltName,
-                          AC_OutputStream & fichierCPP) const {
+                          AC_OutputStream & fichierCPP,
+                          const C_String & inSyntaxDirectedTranslationVarName) const {
   fichierCPP << "  rule_" << mSourceFileName.identifierRepresentation ()
              << "_" << inVocabulary.getSymbol (mLeftNonTerminalIndex COMMA_HERE).identifierRepresentation ()
              << "_i" << cStringWithUnsigned (mProductionIndex)
              << "_" << inAltName.identifierRepresentation () << "(" ;
   for (int32_t i=1 ; i<nombreDeParametres ; i++) {
      fichierCPP << "parameter_" << cStringWithSigned (i)  << ", " ;
+  }
+  if (inSyntaxDirectedTranslationVarName.length () > 0) {
+    fichierCPP << inSyntaxDirectedTranslationVarName << ", " ;
   }
   fichierCPP << "inLexique" ;
   fichierCPP << ") ;\n" ;
@@ -303,7 +307,8 @@ analyzeGrammar (C_Compiler * inCompiler,
                 const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                 const C_String & inOutputDirectoryForCppFiles,
                 const C_String & inOutputDirectoryForHTMLFile,
-                const bool inHasIndexing) {
+                const bool inHasIndexing,
+                const C_String & inSyntaxDirectedTranslationVarName) {
   bool warningFlag = false ;
 
 //--- Depending of grammar class, fix operations to perform
@@ -569,7 +574,8 @@ analyzeGrammar (C_Compiler * inCompiler,
                       inLexiqueName,
                       ok,
                       verboseOptionOn,
-                      inHasIndexing) ;
+                      inHasIndexing,
+                      inSyntaxDirectedTranslationVarName) ;
     if (! ok) {
       errorFlag = kGrammarNotLL1 ;
     }
@@ -591,7 +597,8 @@ analyzeGrammar (C_Compiler * inCompiler,
                       inLexiqueName,
                       ok,
                       verboseOptionOn,
-                      inHasIndexing) ;
+                      inHasIndexing,
+                      inSyntaxDirectedTranslationVarName) ;
     if (ok) {
       errorFlag = kNoError ;
     }else{
@@ -617,7 +624,8 @@ analyzeGrammar (C_Compiler * inCompiler,
                       inLexiqueName,
                       ok,
                       verboseOptionOn,
-                      inHasIndexing) ;
+                      inHasIndexing,
+                      inSyntaxDirectedTranslationVarName) ;
     if (ok) {
       errorFlag = kNoError ;
     }else{
@@ -696,6 +704,7 @@ routine_grammarAnalysisAndGeneration (const GALGAS_lstring inTargetFileName,
                                       const GALGAS_string inOutputDirectoryForHTMLFile,
                                       const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis inNonTerminalSymbolSortedListForGrammarAnalysis,
                                       const GALGAS_bool inHasIndexing,
+                                      const GALGAS_string inSyntaxDirectedTranslationVarName,
                                       C_Compiler * inCompiler
                                       COMMA_UNUSED_LOCATION_ARGS) {
   if (totalErrorCount () == 0) {
@@ -719,7 +728,8 @@ routine_grammarAnalysisAndGeneration (const GALGAS_lstring inTargetFileName,
                     inNonTerminalSymbolSortedListForGrammarAnalysis,
                     inOutputDirectoryForCppFiles.stringValue (),
                     inOutputDirectoryForHTMLFile.stringValue (),
-                    inHasIndexing.boolValue ()) ;
+                    inHasIndexing.boolValue (),
+                    inSyntaxDirectedTranslationVarName.stringValue ()) ;
   }
 }
 

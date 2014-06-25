@@ -170,6 +170,7 @@ struct @syntaxComponentAST {
   @syntaxRuleListAST mRuleList ;
   @semanticDeclarationListAST mSemanticDeclarationList ;
   @location mEndOfSourceFile ;
+  @bool mHasTranslateFeature ;
 }
 
 #---------------------------------------------------------------------------*

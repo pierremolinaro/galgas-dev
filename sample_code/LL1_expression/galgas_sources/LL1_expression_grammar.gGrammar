@@ -1,4 +1,4 @@
-grammar LL1_expression_grammar "LL1":
+grammar LL1_expression_grammar "LL1" feature translate :
 with "LL1_expression_syntax.gSyntax" ;
 
 root <StartSymbol> ;

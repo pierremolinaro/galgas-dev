@@ -18,12 +18,7 @@
 #---------------------------------------------------------------------------*
 
 syntax guiSyntax ("galgas_scanner.gLexique") :
-
-import "guiTypesForAST.gSemantics" ;
-
-#---------------------------------------------------------------------------*
-
-nonterminal <gui_component_start_symbol> !@guiComponentAST outGuiComponentRoot ;
+  import "guiTypesForAST.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *

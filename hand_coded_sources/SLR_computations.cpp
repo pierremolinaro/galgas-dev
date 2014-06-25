@@ -659,7 +659,8 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
                                const C_String & inLexiqueName,
                                const C_String & inTargetFileName,
                                const C_String & inOutputDirectoryForCppFiles,
-                               const bool inHasIndexing) {
+                               const bool inHasIndexing,
+                               const C_String & inSyntaxDirectedTranslationVarName) {
 //--- Generate header file inclusion -----------------------------------------
   C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
   generatedZone2.appendCppHyphenLineComment () ;
@@ -846,7 +847,8 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
         inProductionRules (ip COMMA_HERE).engendrerAppelProduction (0,
                                                                     inVocabulary,
                                                                     "parse",
-                                                                    generatedZone3) ;
+                                                                    generatedZone3,
+                                                                    inSyntaxDirectedTranslationVarName) ;
         generatedZone3 << "    break ;\n" ;
       }
     }
@@ -872,7 +874,8 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
           inProductionRules (ip COMMA_HERE).engendrerAppelProduction (0,
                                                                       inVocabulary,
                                                                       "indexing",
-                                                                      generatedZone3) ;
+                                                                      generatedZone3,
+                                                                      "") ;
           generatedZone3 << "    break ;\n" ;
         }
       }
@@ -930,7 +933,8 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
           inProductionRules (ip COMMA_HERE).engendrerAppelProduction (numeroParametre,
                                                                       inVocabulary,
                                                                       currentAltForNonTerminal2.current_lkey (HERE).mAttribute_string.stringValue (),
-                                                                      generatedZone3) ;
+                                                                      generatedZone3,
+                                                                      inSyntaxDirectedTranslationVarName) ;
           generatedZone3 << "    break ;\n" ;
         }
       }
@@ -1226,7 +1230,8 @@ SLR_computations (C_Compiler * inCompiler,
                   const C_String & inLexiqueName,
                   bool & outOk,
                   const bool inVerboseOptionOn,
-                  const bool inHasIndexing) {
+                  const bool inHasIndexing,
+                  const C_String & inSyntaxDirectedTranslationVarName) {
 //--- Console display
   if (inVerboseOptionOn) {
     co << "  Building SLR automaton... " ;
@@ -1441,7 +1446,8 @@ SLR_computations (C_Compiler * inCompiler,
                                    inLexiqueName,
                                    inTargetFileName,
                                    inOutputDirectoryForCppFiles,
-                                   inHasIndexing) ;
+                                   inHasIndexing,
+                                   inSyntaxDirectedTranslationVarName) ;
   }
   outOk = conflictCount == 0 ;
 }

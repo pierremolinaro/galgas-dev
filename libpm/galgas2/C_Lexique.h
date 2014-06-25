@@ -83,6 +83,10 @@ class C_Lexique : public C_Compiler {
   protected : int32_t mLastSeparatorIndex ;
   public : void displayTokenList (void) const ;
 
+//--- Syntax directed translation : accessing current token
+  public : C_String preceedingSeparatorString (void) const ;
+  public : C_String tokenString (void) const ;
+
 //--- Current character
   protected : utf32 mCurrentChar ;
 

@@ -36,11 +36,15 @@ function generateProcedure
   ??@string inCompilerTypeName
   ??@bool inGenerateLocationArgs
   ??@bool inGenerateResetTemplateString
+  ??@bool inGenerateSyntaxDirectedTranslationString
   ->@string outGeneratedCode
 :
   const @bool generateCheckValid := false ; # [option galgas_cli_options.generateCheckValidInstructions value] ;
 #--- Build unused variable set
   @stringset unusedVariableCppNameSet [emptySet] ;
+  if inGenerateSyntaxDirectedTranslationString then
+    unusedVariableCppNameSet += !syntaxDirectedTranslationResultVarName [] ;
+  end if ;
   if not inGenerateResetTemplateString then
     unusedVariableCppNameSet += !compilerCppName [] ;
   end if ;
@@ -54,7 +58,7 @@ function generateProcedure
   @string routineBody := "" ;
   [!?routineBody incIndentation !2] ;
   foreach inInstructionList do
-    [mInstruction generateInstruction !generateCheckValid !?temporaryVariableIndex !?unusedVariableCppNameSet !?routineBody] ;
+    [mInstruction generateInstruction !generateCheckValid !?temporaryVariableIndex !?unusedVariableCppNameSet !inGenerateSyntaxDirectedTranslationString !?routineBody] ;
   end foreach ;
   [!?routineBody decIndentation !2] ;
 #--- Generate header
@@ -80,6 +84,15 @@ function generateProcedure
     outGeneratedCode .= ",\n" ;
     [!?outGeneratedCode appendSpacesUntilColumn !colRef] ;
   end foreach ;
+#--- Syntax directed argument ?
+  if inGenerateSyntaxDirectedTranslationString then
+    if [unusedVariableCppNameSet hasKey !syntaxDirectedTranslationResultVarName []] then
+      outGeneratedCode .= "C_String & /* " . syntaxDirectedTranslationResultVarName [] . " */,\n" ;
+    else
+      outGeneratedCode .= "C_String & " . syntaxDirectedTranslationResultVarName [] . ",\n" ;
+    end if ;
+    [!?outGeneratedCode appendSpacesUntilColumn !colRef] ;
+  end if ;
 #--- Compiler argument
   outGeneratedCode .= inCompilerTypeName . " * " ;
   if [unusedVariableCppNameSet hasKey !compilerCppName []] then
@@ -145,7 +158,12 @@ local function generateFunction
   @string routineBody := "" ;
   [!?routineBody incIndentation !2] ;
   foreach inInstructionList do
-    [mInstruction generateInstruction !generateCheckValid !?temporaryVariableIndex !?unusedVariableCppNameSet !?routineBody] ;
+    [mInstruction generateInstruction
+      !generateCheckValid
+      !?temporaryVariableIndex
+      !?unusedVariableCppNameSet
+      !false # inGenerateSyntaxDirectedTranslationString
+      !?routineBody] ;
   end foreach ;
   [!?routineBody decIndentation !2] ;
 #--- Generate header
@@ -220,7 +238,13 @@ local function generateCategoryModifier
   @string routineBody := "" ;
   [!?routineBody incIndentation !2] ;
   foreach inInstructionList do
-    [mInstruction generateInstruction !generateCheckValid !?temporaryVariableIndex !?unusedVariableCppNameSet !?routineBody] ;
+    [mInstruction generateInstruction
+      !generateCheckValid
+      !?temporaryVariableIndex
+      !?unusedVariableCppNameSet
+      !false # inGenerateSyntaxDirectedTranslationString
+      !?routineBody
+    ] ;
   end foreach ;
   [!?routineBody decIndentation !2] ;
 #--- Generate header
@@ -311,7 +335,13 @@ local function generateCategoryMethod
   @string routineBody := "" ;
   [!?routineBody incIndentation !2] ;
   foreach inInstructionList do
-    [mInstruction generateInstruction !generateCheckValid !?temporaryVariableIndex !?unusedVariableCppNameSet !?routineBody] ;
+    [mInstruction generateInstruction
+      !generateCheckValid
+      !?temporaryVariableIndex
+      !?unusedVariableCppNameSet
+      !false # inGenerateSyntaxDirectedTranslationString
+      !?routineBody
+    ] ;
   end foreach ;
   [!?routineBody decIndentation !2] ;
 #--- Generate header
@@ -406,7 +436,13 @@ local function generateCategoryReader
   @string routineBody := "" ;
   [!?routineBody incIndentation !2] ;
   foreach inInstructionList do
-    [mInstruction generateInstruction !generateCheckValid !?temporaryVariableIndex !?unusedVariableCppNameSet !?routineBody] ;
+    [mInstruction generateInstruction
+      !generateCheckValid
+      !?temporaryVariableIndex
+      !?unusedVariableCppNameSet
+      !false # inGenerateSyntaxDirectedTranslationString
+      !?routineBody
+    ] ;
   end foreach ;
   [!?routineBody decIndentation !2] ;
 #--- Generate header
@@ -1708,6 +1744,7 @@ override reader @routineImplementationForGeneration appendSpecificImplementation
       !"C_Compiler"
       !true # Generate location Argument
       !false # Do not generate 'resetTemplateString'
+      !false # Do not generate syntaxDirectedTranslationString argument
     ]
   ] ; 
 end reader ;
@@ -1783,6 +1820,7 @@ override reader @categoryMethodForGeneration appendSpecificImplementation -> @st
         !"C_Compiler"
         !true # Generate location Argument
         !false # Do not generate 'resetTemplateString'
+        !false # Do not generate syntaxDirectedTranslationString argument
       ]
     ] ; 
   else
@@ -1852,6 +1890,7 @@ override reader @categoryModifierForGeneration appendSpecificImplementation -> @
         !"C_Compiler"
         !true # Generate location Argument
         !false # Do not generate 'resetTemplateString'
+        !false # Do not generate syntaxDirectedTranslationString argument
       ]
     ] ; 
   else

@@ -2,7 +2,7 @@
 #                                                                           *
 #  Generate predefined types                                                *
 #                                                                           *
-#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
+#  Copyright (C) 2010, ..., 2014 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -102,6 +102,7 @@ abstract method @semanticInstructionForGeneration generateInstruction
   ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 ;
 
@@ -116,7 +117,13 @@ function generateRoutineBody
   @uint temporaryVariableIndex := 0 ;
   [!?outGeneratedCode incIndentation !2] ;
   for element in inInstructionList do
-    [element->mInstruction generateInstruction !inGenerateCheckValid !?temporaryVariableIndex !?unusedVariableCppNameSet !?outGeneratedCode] ;
+    [element->mInstruction generateInstruction
+      !inGenerateCheckValid
+      !?temporaryVariableIndex
+      !?unusedVariableCppNameSet
+      !false # inGenerateSyntaxDirectedTranslationString
+      !?outGeneratedCode
+    ] ;
   end for ;
   [!?outGeneratedCode decIndentation !2] ;
 }
@@ -128,10 +135,17 @@ routine generateInstructionList
   ??@semanticInstructionListForGeneration inInstructionList
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode {
   [!?ioGeneratedCode incIndentation !2] ;
   for element in inInstructionList do
-    [element->mInstruction generateInstruction !inGenerateCheckValid !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet !?ioGeneratedCode] ;
+    [element->mInstruction generateInstruction
+      !inGenerateCheckValid
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
+      !?ioGeneratedCode
+    ] ;
   end for ;
   [!?ioGeneratedCode decIndentation !2] ;
 }
@@ -142,6 +156,7 @@ override method @localVariableOrConstantDeclarationWithSourceExpressionForGenera
   ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
   @string sourceVar ;
@@ -161,6 +176,7 @@ override method @localVariableDeclarationForGeneration generateInstruction
   ??@bool unused inGenerateCheckValid
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
+  ??@bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
   ioGeneratedCode .= "GALGAS_" . [mVariableType identifierRepresentation] . " " . mCppVariableName . " ;\n" ;
@@ -172,6 +188,7 @@ override method @localVariableOrConstantDeclarationWithDefaultConstructorForGene
   ??@bool inGenerateCheckValid
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
+  ??@bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
   ioGeneratedCode .= "GALGAS_" . [mTargetType identifierRepresentation]
@@ -193,6 +210,7 @@ override method @localVariableOrConstantDeclarationWithConstructorCallForGenerat
   ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
   @stringlist parameterList [emptyList] ;
@@ -237,6 +255,7 @@ override method @assignmentInstructionForGeneration generateInstruction
   ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
   @string sourceVar ;
@@ -262,6 +281,7 @@ override method @dropInstructionForGeneration generateInstruction
   ??@bool unused inGenerateCheckValid
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
+  ??@bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
   foreach mDropList do
@@ -275,6 +295,7 @@ override method @concatInstructionForGeneration generateInstruction
   ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
   @string sourceVar ;
@@ -300,6 +321,7 @@ override method @grammarInstructionWithSourceFileForGeneration generateInstructi
   ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
   ioGeneratedCode .= "{\n" ;
@@ -326,9 +348,15 @@ override method @grammarInstructionWithSourceFileForGeneration generateInstructi
     ] ;
     parameterCppNameList += !parameterCppName ;
   end foreach ;
-  ioGeneratedCode .= "cGrammar_" . [mGrammarName identifierRepresentation]
+  if mGrammarHasTranslateFeature then
+    ioGeneratedCode .= "  C_String syntaxDirectedTranslationResult ;\n" ;
+  end if ;
+  ioGeneratedCode .= "  cGrammar_" . [mGrammarName identifierRepresentation]
                   .  "::_performSourceFileParsing_" . [mLabelName identifierRepresentation] 
-                  .  " (" . compilerCppName [] . ", " . sourceVar ;
+                  .  " ("
+                  . compilerCppName [] . ", "
+                  . if mGrammarHasTranslateFeature then "syntaxDirectedTranslationResult, " else "" end
+                  . sourceVar ;
   foreach parameterCppNameList do
     ioGeneratedCode .= ", " . mValue ;
   end foreach ;
@@ -350,6 +378,7 @@ override method @grammarInstructionWithSourceExpressionForGeneration generateIns
   ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
   ioGeneratedCode .= "{\n" ;
@@ -365,9 +394,14 @@ override method @grammarInstructionWithSourceExpressionForGeneration generateIns
     [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?inputVariableList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
     parameterCppNameList += !parameterCppName ;
   end foreach ;
-  ioGeneratedCode .= "cGrammar_" . [mGrammarName identifierRepresentation]
+  if mGrammarHasTranslateFeature then
+    ioGeneratedCode .= "  C_String syntaxDirectedTranslationResult ;\n" ;
+  end if ;
+  ioGeneratedCode .= "  cGrammar_" . [mGrammarName identifierRepresentation]
                   .  "::_performSourceStringParsing_" . [mLabelName identifierRepresentation] 
-                  .  " (" . compilerCppName [] . ", " . sourceVar ;
+                  .  " (" . compilerCppName [] . ", "
+                  . if mGrammarHasTranslateFeature then "syntaxDirectedTranslationResult, " else "" end
+                  . sourceVar ;
   foreach parameterCppNameList do
     ioGeneratedCode .= ", " . mValue ;
   end foreach ;
@@ -389,6 +423,7 @@ override method @ifInstructionForGeneration generateInstruction
   ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
 #--- Generate test expression
@@ -403,6 +438,7 @@ override method @ifInstructionForGeneration generateInstruction
     !m_then_instructionList
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
+    !inGenerateSyntaxDirectedTranslationString
     !?ioGeneratedCode
   ;
   if [m_else_instructionList length] > 0 then
@@ -412,6 +448,7 @@ override method @ifInstructionForGeneration generateInstruction
       !m_else_instructionList
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
       !?ioGeneratedCode
     ;
   end if ;
@@ -424,6 +461,7 @@ override method @errorInstructionForGeneration generateInstruction
   ??@bool unused inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
 #--- Receiver expression
@@ -455,6 +493,7 @@ override method @warningInstructionForGeneration generateInstruction
   ??@bool unused inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
 #--- Receiver expression
@@ -481,6 +520,7 @@ override method @methodCallInstructionForGeneration generateInstruction
   ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
 #--- Receiver expression
@@ -540,6 +580,7 @@ override method @routineCallInstructionForGeneration generateInstruction
   ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
   ioGeneratedCode .= "{\n" ;
@@ -575,6 +616,7 @@ override method @modifierCallInstructionForGeneration generateInstruction
   ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
   ioGeneratedCode .= "{\n" ;
@@ -646,6 +688,7 @@ override method @selfModifierCallInstructionForGeneration generateInstruction
   ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
   ioGeneratedCode .= "{\n" ;
@@ -705,6 +748,7 @@ override method @typeMethodInstructionForGeneration generateInstruction
   ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
   ioGeneratedCode .= "{\n" ;
@@ -751,6 +795,7 @@ override method @structuredCastInstructionForGeneration generateInstruction
   ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
 #--- Cast expression
@@ -791,6 +836,7 @@ override method @structuredCastInstructionForGeneration generateInstruction
       !mInstructionList
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
       !?ioGeneratedCode
     ;
   between ioGeneratedCode .= "}else " ;
@@ -803,6 +849,7 @@ override method @structuredCastInstructionForGeneration generateInstruction
       !mElseInstructionList
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
       !?ioGeneratedCode
     ;  
   end if ;
@@ -818,6 +865,7 @@ override method @plusEqualnstructionForGeneration generateInstruction
   ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
 #--- Parameters
@@ -854,6 +902,7 @@ override method @incrementInstructionForGeneration generateInstruction
   ??@bool inGenerateCheckValid
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
 #--- Receiver
@@ -879,6 +928,7 @@ override method @decrementInstructionForGeneration generateInstruction
   ??@bool inGenerateCheckValid
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
 #--- Receiver
@@ -904,6 +954,7 @@ override method @messageInstructionForGeneration generateInstruction
   ??@bool unused inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
 #--- Message expression
@@ -920,6 +971,7 @@ override method @loopInstructionForGeneration generateInstruction
   ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
 #--- Variant expression
@@ -938,6 +990,7 @@ override method @loopInstructionForGeneration generateInstruction
     !mFirstInstructions
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
+    !inGenerateSyntaxDirectedTranslationString
     !?ioGeneratedCode
   ;
   @string loopExpressionVar ;
@@ -958,6 +1011,7 @@ override method @loopInstructionForGeneration generateInstruction
     !mSecondInstructions
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
+    !inGenerateSyntaxDirectedTranslationString
     !?ioGeneratedCode
   ;
   ioGeneratedCode .= "}\n" ;
@@ -973,6 +1027,7 @@ override method @readOnlyWithInstructionForGeneration generateInstruction
   ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
 #--- Receiver expression
@@ -1000,6 +1055,7 @@ override method @readOnlyWithInstructionForGeneration generateInstruction
     !mDoBranchInstructions
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
+    !inGenerateSyntaxDirectedTranslationString
     !?ioGeneratedCode
   ;
   if [mElseBranchInstructions length] > 0 then
@@ -1009,6 +1065,7 @@ override method @readOnlyWithInstructionForGeneration generateInstruction
       !mElseBranchInstructions
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
       !?ioGeneratedCode
     ;
   end if ;
@@ -1021,6 +1078,7 @@ override method @readWriteWithInstructionForGeneration generateInstruction
   ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
   @string receiverCppName := mReceiverVariableCppName ;
@@ -1043,11 +1101,12 @@ override method @readWriteWithInstructionForGeneration generateInstruction
                   .  "if (NULL != " . mObjectArrayCppName . ") {\n"
                   .  "    macroValidSharedObject (" . mObjectArrayCppName . ", cMapElement_" . [mReceiverType identifierRepresentation] . ") ;\n" ;
   generateInstructionList
-   !inGenerateCheckValid
-   !mDoBranchInstructions
-   !?ioTemporaryVariableIndex
-   !?ioUnusedVariableCppNameSet
-   !?ioGeneratedCode
+    !inGenerateCheckValid
+    !mDoBranchInstructions
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    !inGenerateSyntaxDirectedTranslationString
+    !?ioGeneratedCode
   ;
   if [mElseBranchInstructions length] > 0 then
     ioGeneratedCode .= "}else{\n" ;
@@ -1056,6 +1115,7 @@ override method @readWriteWithInstructionForGeneration generateInstruction
       !mElseBranchInstructions
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
       !?ioGeneratedCode
     ;
   end if ;
@@ -1068,6 +1128,7 @@ override method @foreachInstructionForGeneration generateInstruction
   ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
   @stringlist enumerationVarCppNameList [emptyList] ;
@@ -1106,6 +1167,7 @@ override method @foreachInstructionForGeneration generateInstruction
       !mBeforeInstructionList
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
       !?ioGeneratedCode
     ;
     [!?ioGeneratedCode incIndentation !2] ;
@@ -1120,6 +1182,7 @@ override method @foreachInstructionForGeneration generateInstruction
       !mDoInstructionList
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
       !?ioGeneratedCode
     ;
   #--- Goto next object
@@ -1155,6 +1218,7 @@ override method @foreachInstructionForGeneration generateInstruction
         !mBetweenInstructionList
         !?ioTemporaryVariableIndex
         !?ioUnusedVariableCppNameSet
+        !inGenerateSyntaxDirectedTranslationString
         !?ioGeneratedCode
       ;
       ioGeneratedCode .= "}\n" ;
@@ -1169,6 +1233,7 @@ override method @foreachInstructionForGeneration generateInstruction
       !mAfterInstructionList
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
       !?ioGeneratedCode
     ;
     ioGeneratedCode .= "}\n" ;
@@ -1188,6 +1253,7 @@ override method @foreachInstructionForGeneration generateInstruction
       !mDoInstructionList
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
       !?ioGeneratedCode
     ;
   #--- Generate 'between' instruction
@@ -1204,6 +1270,7 @@ override method @foreachInstructionForGeneration generateInstruction
         !mBetweenInstructionList
         !?ioTemporaryVariableIndex
         !?ioUnusedVariableCppNameSet
+        !inGenerateSyntaxDirectedTranslationString
         !?ioGeneratedCode
       ;
       ioGeneratedCode .= "}\n" ;
@@ -1227,6 +1294,7 @@ override method @logInstructionForGeneration generateInstruction
   ??@bool unused inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
   [mLogExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ??@string logVar] ;
@@ -1239,6 +1307,7 @@ override method @switchInstructionForGeneration generateInstruction
   ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
 #--- Switch expression
@@ -1258,6 +1327,7 @@ override method @switchInstructionForGeneration generateInstruction
       !mInstructions
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
       !?ioGeneratedCode
     ;
     ioGeneratedCode .= "  } break ;\n" ;

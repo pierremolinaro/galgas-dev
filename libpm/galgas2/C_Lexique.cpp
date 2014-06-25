@@ -95,11 +95,11 @@ mIndexingDictionary (NULL),
 mFirstToken (NULL),
 mLastToken (NULL),
 mCurrentTokenPtr (NULL),
+mLastSeparatorIndex (0),
 mCurrentChar (TO_UNICODE ('\0')),
 mPreviousChar (TO_UNICODE ('\0')),
 mTokenStartLocation (),
 mTokenEndLocation (),
-mLastSeparatorIndex (0),
 mTriggerNonTerminalSymbolList (),
 mDebugDepthCounter (0),
 mDebugIsRunning (false),
@@ -151,6 +151,7 @@ mIndexingDictionary (NULL),
 mFirstToken (NULL),
 mLastToken (NULL),
 mCurrentTokenPtr (NULL),
+mLastSeparatorIndex (0),
 mCurrentChar (TO_UNICODE ('\0')),
 mPreviousChar (TO_UNICODE ('\0')),
 mTokenStartLocation (),
@@ -1434,6 +1435,28 @@ int16_t C_Lexique::nextProductionIndex (void) {
   if (mIndexForSecondPassParsing < mArrayForSecondPassParsing.count ()) {
     result = mArrayForSecondPassParsing (mIndexForSecondPassParsing COMMA_HERE) ;
     mIndexForSecondPassParsing ++ ;
+  }
+  return result ;
+}
+
+//-----------------------------------------------------------------------------*
+
+C_String C_Lexique::preceedingSeparatorString (void) const {
+  C_String result ;
+  if (mCurrentTokenPtr != NULL) {
+    result = mCurrentTokenPtr->mSeparatorStringBeforeToken ;
+  }
+  return result ;
+}
+
+//-----------------------------------------------------------------------------*
+
+C_String C_Lexique::tokenString (void) const {
+  C_String result ;
+  if (mCurrentTokenPtr != NULL) {
+    const int32_t tokenStart = mCurrentTokenPtr->mStartLocation.index () ;
+    const int32_t tokenLength = mCurrentTokenPtr->mEndLocation.index () - tokenStart + 1 ;
+    result = sourceText ()->mSourceString.subString (tokenStart, tokenLength) ;
   }
   return result ;
 }

@@ -11,7 +11,11 @@ foreach NON_TERMINAL_MAP do
   %//------------------------------------- '%![lkey string]%' non terminal\n%
   #--- Parse
     %//--- 'parse' label\n%
-    %  public : virtual void nt_%![lkey identifierRepresentation]%_parse (C_Lexique_%!LEXIQUE_IDENTIFIER% * inCompiler) ;\n\n%
+    %  public : virtual void nt_%![lkey identifierRepresentation]%_parse (%?^
+    if GRAMMAR_COMPONENT_ROOT->mHasTranslateFeature then
+      %C_String & %!syntaxDirectedTranslationResultVarName []%,\n%!^ 
+    end
+    %C_Lexique_%!LEXIQUE_IDENTIFIER% * inCompiler) ;\n\n%
   #--- indexing ?
     if HAS_INDEXING then
       %//--- indexing\n%
@@ -33,12 +37,19 @@ foreach NON_TERMINAL_MAP do
       end
       %,\n%!^
     end
+    if GRAMMAR_COMPONENT_ROOT->mHasTranslateFeature then
+      %C_String & %!syntaxDirectedTranslationResultVarName []%,\n%!^ 
+    end
     %C_Lexique_%!LEXIQUE_IDENTIFIER% * inCompiler) ;\n\n%
   #--- Start symbol ?
     if [[GRAMMAR_COMPONENT_ROOT mStartSymbolName] string] == [lkey string] then
       %//--- Start symbol\n%
-      %  public : static void _performSourceFileParsing_%![label_lkey identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
-      !^%GALGAS_lstring inFileName%
+      %  public : static void _performSourceFileParsing_%![label_lkey identifierRepresentation]% (%?^
+      %C_Compiler * inCompiler,\n%!^
+      if GRAMMAR_COMPONENT_ROOT->mHasTranslateFeature then
+        %C_String & %!syntaxDirectedTranslationResultVarName []%,\n%!^ 
+      end
+      %GALGAS_lstring inFileName%
       foreach label_mFormalParametersList do index IDX
         %,\n%!^
         if mFormalArgumentPassingModeForGrammarAnalysis == [@formalArgumentPassingModeAST argumentConstantIn] then
@@ -52,8 +63,12 @@ foreach NON_TERMINAL_MAP do
         end
       end
       %\n%!^%COMMA_LOCATION_ARGS) ;\n\n%
-      %  public : static void _performSourceStringParsing_%![label_lkey identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
-      !^%GALGAS_string inSourceString%
+      %  public : static void _performSourceStringParsing_%![label_lkey identifierRepresentation]% (%?^
+      %C_Compiler * inCompiler,\n%!^
+      if GRAMMAR_COMPONENT_ROOT->mHasTranslateFeature then
+        %C_String & %!syntaxDirectedTranslationResultVarName []%,\n%!^ 
+      end
+      %GALGAS_string inSourceString%
       foreach label_mFormalParametersList do index IDX
         %,\n%!^
         if mFormalArgumentPassingModeForGrammarAnalysis == [@formalArgumentPassingModeAST argumentConstantIn] then
