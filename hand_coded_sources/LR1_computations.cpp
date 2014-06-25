@@ -1293,9 +1293,13 @@ generate_LR1_grammar_cpp_file (C_Compiler * inCompiler,
   //--- Parse label
     generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
                  << "::nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
-                 << "_parse (C_Lexique_" << inLexiqueName.identifierRepresentation () << " * inLexique"
-                 << ") {\n"
-                    "  switch (inLexique->nextProductionIndex ()) {\n" ;
+                 << "_parse (" ;
+    if (inSyntaxDirectedTranslationVarName.length() > 0) {
+      generatedZone3 << "C_String & " << inSyntaxDirectedTranslationVarName << ",\n                                " ;
+    }
+    generatedZone3 << "C_Lexique_" << inLexiqueName.identifierRepresentation () << " * inLexique"
+                   << ") {\n"
+                      "  switch (inLexique->nextProductionIndex ()) {\n" ;
     if (first >= 0) { // first<0 means the non terminal symbol is unuseful
       MF_Assert (first >= 0, "first (%ld) < 0", first, 0) ;
       const int32_t last = inProductionRules.tableauIndiceDerniereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
@@ -1320,9 +1324,13 @@ generate_LR1_grammar_cpp_file (C_Compiler * inCompiler,
     if (inHasIndexing) {
       generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
                    << "::nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
-                   << "_indexing (C_Lexique_" << inLexiqueName.identifierRepresentation () << " * inLexique"
-                   << ") {\n"
-                      "  switch (inLexique->nextProductionIndex ()) {\n" ;
+                   << "_indexing (" ;
+      if (inSyntaxDirectedTranslationVarName.length() > 0) {
+        generatedZone3 << "C_String & " << inSyntaxDirectedTranslationVarName << ",\n                                " ;
+      }
+      generatedZone3 << "C_Lexique_" << inLexiqueName.identifierRepresentation () << " * inLexique"
+                     << ") {\n"
+                        "  switch (inLexique->nextProductionIndex ()) {\n" ;
       if (first >= 0) { // first<0 means the non terminal symbol is unuseful
         MF_Assert (first >= 0, "first (%ld) < 0", first, 0) ;
         const int32_t last = inProductionRules.tableauIndiceDerniereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
@@ -1380,7 +1388,10 @@ generate_LR1_grammar_cpp_file (C_Compiler * inCompiler,
         generatedZone3 << ",\n                                " ;
         numeroParametre ++ ;
       }
-      generatedZone3 << "C_Lexique_" << inLexiqueName.identifierRepresentation () << " * inLexique) {\n" 
+      if (inSyntaxDirectedTranslationVarName.length() > 0) {
+        generatedZone3 << "C_String & " << inSyntaxDirectedTranslationVarName << ",\n                                " ;
+      }
+      generatedZone3 << "C_Lexique_" << inLexiqueName.identifierRepresentation () << " * inLexique) {\n"
                         "  switch (inLexique->nextProductionIndex ()) {\n" ;
       if (first >= 0) { // first<0 means the non terminal symbol is unuseful
         MF_Assert (first >= 0, "first (%ld) < 0", first, 0) ;
@@ -1434,8 +1445,11 @@ generate_LR1_grammar_cpp_file (C_Compiler * inCompiler,
         generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
                        << "::_performSourceFileParsing_" << currentAltForNonTerminal.current_lkey (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
                        << " (C_Compiler * inCompiler"
-                          ",\n                                "
-                          "GALGAS_lstring inFilePath" ;
+                          ",\n                                " ;
+        if (inSyntaxDirectedTranslationVarName.length() > 0) {
+          generatedZone3 << "C_String & " << inSyntaxDirectedTranslationVarName << ",\n                                " ;
+        }
+        generatedZone3 << "GALGAS_lstring inFilePath" ;
         cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal.current_mFormalParametersList (HERE), kEnumeration_up) ;
         int16_t numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
@@ -1492,6 +1506,9 @@ generate_LR1_grammar_cpp_file (C_Compiler * inCompiler,
           parametre.gotoNextObject () ;
           numeroParametre ++ ;
         }
+        if (inSyntaxDirectedTranslationVarName.length() > 0) {
+          generatedZone3 << inSyntaxDirectedTranslationVarName << ", " ;
+        }
         generatedZone3 << "scanner) ;\n"
                           "        }\n" ;
         generatedZone3 << "      }else{\n"
@@ -1531,8 +1548,11 @@ generate_LR1_grammar_cpp_file (C_Compiler * inCompiler,
         generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
                        << "::_performSourceStringParsing_" << currentAltForNonTerminal.current_lkey (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
                        << " (C_Compiler * inCompiler"
-                          ",\n                                "
-                          "GALGAS_string inSourceString" ;
+                          ",\n                                " ;
+        if (inSyntaxDirectedTranslationVarName.length() > 0) {
+          generatedZone3 << "C_String & " << inSyntaxDirectedTranslationVarName << ",\n                                " ;
+        }
+        generatedZone3 << "GALGAS_string inSourceString" ;
         parametre.rewind () ;
         numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
@@ -1581,6 +1601,9 @@ generate_LR1_grammar_cpp_file (C_Compiler * inCompiler,
           generatedZone3 << "parameter_" << cStringWithSigned (numeroParametre) << ", " ;
           parametre.gotoNextObject () ;
           numeroParametre ++ ;
+        }
+        if (inSyntaxDirectedTranslationVarName.length() > 0) {
+          generatedZone3 << inSyntaxDirectedTranslationVarName << ", " ;
         }
         generatedZone3 << "scanner) ;\n"
                           "  }\n"
