@@ -213,8 +213,8 @@ class C_String : public AC_OutputStream {
                                const int32_t inLength) const ;
 
 //--- Get a sub string
-  public : C_String leftSubString (const int32_t inLength) const ;
-  public : C_String rightSubString (const int32_t inLength) const ;
+  public : C_String subStringToIndex (const int32_t inLength) const ;
+  public : C_String subStringFromIndex (const int32_t inLength) const ;
 
 //--- String concatenation
   public : C_String operator + (const C_String & inOperand) const ;

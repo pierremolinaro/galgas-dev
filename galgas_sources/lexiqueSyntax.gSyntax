@@ -521,14 +521,12 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <lexical_factor> !@lexicalExpressionAST outExpression :
-  @lchar character ;
-  $literal_char$ ?character ;
+  $literal_char$ ??@lchar character ;
   select
     outExpression := [@lexicalCharacterMatchAST new !character] ;
   or
     $->$ ;
-    @lchar upperBound ;
-    $literal_char$ ? upperBound ;
+    $literal_char$ ??@lchar upperBound ;
     outExpression := [@lexicalCharacterIntervalMatchAST new !character !upperBound] ;
   end select ;
 end rule ;
@@ -536,28 +534,25 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <lexical_factor> !@lexicalExpressionAST outExpression :
-  $identifier$ ?@lstring characterSet ;
+  $identifier$ ??@lstring characterSet ;
   outExpression := [@lexicalCharacterSetMatchAST new !characterSet] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
 rule <lexical_list_declaration> ?!@lexicalListDeclarationListAST ioLexicalListDeclarationList :
-  @lstring name ;
   $list$ ;
-  $identifier$ ? name ;
+  $identifier$ ??@lstring name ;
   @lstringlist sentAttributeList [emptyList] ;
   repeat
   while
     $!$ ;
-    @lstring sentAttribute ;
-    $identifier$ ?sentAttribute ;
+    $identifier$ ??@lstring sentAttribute ;
     sentAttributeList += ! sentAttribute ;
   end repeat ;
   $error$ ;
   $message$ ;
-  @lstring errorMessage ;
-  $literal_string$ ? errorMessage ;
+  $literal_string$ ??@lstring errorMessage ;
   @lstring theStyle ; # Empty string if no style
   select
     $style$ ;
@@ -600,10 +595,8 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <lexical_attribute_declaration> ?!@lexicalAttributeListAST ioLexicalAttributeList :
-  @lstring typeName ;
-  $type_name$ ? typeName  ;
-  @lstring name ;
-  $identifier$ ? name ;
+  $type_name$ ??@lstring typeName  ;
+  $identifier$ ??@lstring name ;
   $;$ ;
   ioLexicalAttributeList += !typeName !name ;
 end rule ;
@@ -611,20 +604,17 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <terminal_declaration> ?!@terminalDeclarationListAST ioTerminalDeclarationList :
-  @lstring name ;
-  $terminal$ ? name indexing terminalDeclaration ;
+  $terminal$ ??@lstring name indexing terminalDeclaration ;
   @lstringlist sentAttributeList [emptyList] ;
   repeat
   while
     $!$ ;
-    @lstring sentAttribute ;
-    $identifier$ ?sentAttribute ;
+    $identifier$ ??@lstring sentAttribute ;
     sentAttributeList += ! sentAttribute ;
   end repeat ;
   $error$ ;
   $message$ ;
-  @lstring errorMessage ;
-  $literal_string$ ? errorMessage ;
+  $literal_string$ ??@lstring errorMessage ;
   @lstring theStyle ; # Empty string if no style
   select
     $style$ ;
@@ -637,7 +627,7 @@ rule <terminal_declaration> ?!@terminalDeclarationListAST ioTerminalDeclarationL
   or
     $feature$ ;
     repeat
-      $identifier$ ? @lstring optionName ;
+      $identifier$ ?? @lstring optionName ;
       optionList += !optionName ;
     while
       $,$ ;

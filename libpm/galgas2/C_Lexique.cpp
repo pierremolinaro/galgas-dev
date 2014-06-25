@@ -5,7 +5,7 @@
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
-//  Copyright (C) 1996, ..., 2011 Pierre Molinaro.                             *
+//  Copyright (C) 1996, ..., 2014 Pierre Molinaro.                             *
 //                                                                             *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                               *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
@@ -99,6 +99,7 @@ mCurrentChar (TO_UNICODE ('\0')),
 mPreviousChar (TO_UNICODE ('\0')),
 mTokenStartLocation (),
 mTokenEndLocation (),
+mLastSeparatorIndex (0),
 mTriggerNonTerminalSymbolList (),
 mDebugDepthCounter (0),
 mDebugIsRunning (false),
@@ -194,14 +195,44 @@ C_Lexique::~C_Lexique (void) {
 
 //-----------------------------------------------------------------------------*
 
+void C_Lexique::displayTokenList (void) const {
+  printf ("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n") ;
+  cToken * p = mFirstToken ;
+  while (p != NULL) {
+    co << p->mSeparatorStringBeforeToken ;
+    const int32_t tokenStart = p->mStartLocation.index () ;
+    const int32_t tokenLength = p->mEndLocation.index () - tokenStart + 1 ;
+    const C_String tokenString = sourceText ()->mSourceString.subString (tokenStart, tokenLength) ;
+    co << tokenString ;
+    p = p->mNextToken ;
+  }
+//--- Append text after last token
+  const int32_t lastSeparatorStart = mLastToken->mEndLocation.index () + 1 ;
+  const C_String lastSeparatorString = sourceText ()->mSourceString.subStringFromIndex (lastSeparatorStart) ;
+  co << lastSeparatorString ;
+  printf ("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n") ;
+}
+
+//-----------------------------------------------------------------------------*
+
 void C_Lexique::enterTokenFromPointer (cToken * inToken) {
   macroValidPointer (inToken) ;
+//--- Append separator and comments
+  const int32_t tokenStart = mTokenStartLocation.index () ;
+  if (tokenStart > mLastSeparatorIndex) {
+    const C_String sep = sourceText ()->mSourceString.subString (mLastSeparatorIndex, tokenStart -mLastSeparatorIndex) ;
+    inToken->mSeparatorStringBeforeToken << sep ;
+  }
+  mLastSeparatorIndex = mTokenEndLocation.index () + 1 ;
+//--- Enter token in token list
   if (mLastToken == NULL) {
     mFirstToken = inToken ;
   }else{
     mLastToken->mNextToken = inToken ;
   }
   mLastToken = inToken ;
+//---
+//  appendToSyntaxDirectedTranslationString () ;
   if (executionModeIsLexicalAnalysisOnly ()) {
     C_String s ;
     for (int32_t i=inToken->mStartLocation.index () ; i<=inToken->mEndLocation.index () ; i++) {
@@ -247,7 +278,7 @@ void C_Lexique::resetForSecondPass (void) {
 //-----------------------------------------------------------------------------*
 
 int32_t C_Lexique::findTemplateDelimiterIndex (const cTemplateDelimiter inTemplateDelimiterArray [],
-                                                const int32_t inTemplateDelimiterArrayLength) {
+                                               const int32_t inTemplateDelimiterArrayLength) {
   int32_t templateIndex = 0 ;
   bool found = false ;
   
@@ -414,8 +445,8 @@ void C_Lexique::lexicalLog (LOCATION_ARGS) {
 //-----------------------------------------------------------------------------*
 
 int16_t C_Lexique::searchInList (const C_String & inString,
-                                  const C_unicode_lexique_table_entry inTable [],
-                                  const int16_t inTableSize) {
+                                 const C_unicode_lexique_table_entry inTable [],
+                                 const int16_t inTableSize) {
   const int32_t searchedStringLength = inString.length () ;
   int16_t code = -1 ; // -1 means 'not found'
   int32_t bottom = 0 ;
@@ -828,7 +859,7 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
     int16_t currentToken = (currentTokenPtr != NULL) ? currentTokenPtr->mTokenCode : ((int16_t) -1) ;
     if (currentTokenPtr == NULL) {
       mCurrentLocation.resetLocation () ;
-   }else{
+    }else{
       mCurrentLocation = currentTokenPtr->mEndLocation ;
     }
     while (loop) {

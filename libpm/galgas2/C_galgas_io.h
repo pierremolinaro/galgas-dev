@@ -69,7 +69,7 @@ class C_lexicalErrorException {
 
 //-----------------------------------------------------------------------------*
 
-class C_UserCancelException : public ::std:: exception {
+class C_UserCancelException : public ::std::exception {
   public : C_UserCancelException (void) ;
 } ;
 
@@ -104,6 +104,7 @@ class cToken {
   public : C_LocationInSource mStartLocation ;
   public : C_LocationInSource mEndLocation ;
   public : C_String mTemplateStringBeforeToken ; // Template string before the token
+  public : C_String mSeparatorStringBeforeToken ;
   public : int16_t mTokenCode ;
 
   public : cToken (void) ;
@@ -172,6 +173,7 @@ void signalExtractError (const C_SourceTextInString * inSourceTextPtr,
                          const TC_UniqueArray <C_String> & inExpectedClassesErrorStringsArray,
                          const C_String & inActualFoundClassErrorString
                          COMMA_LOCATION_ARGS) ;
+
 void signalCastError (const C_SourceTextInString * inSourceTextPtr,
                       const C_LocationInSource & inErrorLocation,
                       const std::type_info * inBaseClass,
