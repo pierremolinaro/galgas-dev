@@ -1,21 +1,21 @@
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  'semantics' component parser, as model builder                           *
-#                                                                           *
-#  Copyright (C) 2007, ..., 2011 Pierre Molinaro.                           *
-#                                                                           *
-#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
-#                                                                           *
-#  This program is free software; you can redistribute it and/or modify it  *
-#  under the terms of the GNU General Public License as published by the    *
-#  Free Software Foundation.                                                *
-#                                                                           *
-#  This program is distributed in the hope it will be useful, but WITHOUT   *
-#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
-#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
-#   more details.                                                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#------------------------------------------------------------------------------*
+#                                                                              *
+#  'syntax' component parser                                                   *
+#                                                                              *
+#  Copyright (C) 2007, ..., 2014 Pierre Molinaro.                              *
+#                                                                              *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                       *
+#                                                                              *
+#  This program is free software; you can redistribute it and/or modify it     *
+#  under the terms of the GNU General Public License as published by the       *
+#  Free Software Foundation.                                                   *
+#                                                                              *
+#  This program is distributed in the hope it will be useful, but WITHOUT      *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or       *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for    *
+#   more details.                                                              *
+#                                                                              *
+#------------------------------------------------------------------------------*
 
 syntax syntaxModelBuilder ("galgas_scanner.gLexique") :
 import "semanticsTypesForAST.gSemantics" ;
@@ -58,7 +58,7 @@ nonterminal <actual_input_parameter_list>
 rule <syntax_component_start_symbol> !@syntaxComponentAST outSyntaxComponentRoot :
   $syntax$ ;
 #--- Semantics Component Name
-  $identifier$ ? @lstring mSyntaxComponentName ;
+  $identifier$ ??@lstring mSyntaxComponentName ;
 #--- Imported lexique
   $($ ;
   $literal_string$ ??@lstring importedLexiqueReference ;
@@ -107,10 +107,6 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-nonterminal <nonterminal_label_declaration> ??@lstring inLabelName ?!@nonTerminalLabelListAST ioNonTerminalLabelList ;
-
-#---------------------------------------------------------------------------*
-
 rule <nonterminal_label_declaration> ??@lstring inLabelName ?!@nonTerminalLabelListAST ioNonTerminalLabelList :
   <formal_parameter_list> ??@formalParameterListAST mFormalParameters ;
   ioNonTerminalLabelList +=
@@ -120,7 +116,7 @@ rule <nonterminal_label_declaration> ??@lstring inLabelName ?!@nonTerminalLabelL
   ;
 end rule ;
 
-#---------------------------------------------------------------------------*
+#------------------------------------------------------------------------------*
 
 rule <nonterminal_declaration> ?!@nonterminalDeclarationListAST ioNonterminalDeclarationList :
   $nonterminal$ ;
@@ -146,20 +142,13 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-nonterminal <syntax_rule_label>
-  ??@lstring inLabelName
-  ?!@syntaxRuleLabelListAST ioLabelList
-;
-
-#------------------------------------------------------------------------------*
-
 rule <syntax_rule_label>
   ??@lstring inLabelName
   ?!@syntaxRuleLabelListAST ioLabelList
 :
   @formalParameterListAST mFormalParameters ;
   <formal_parameter_list> ? mFormalParameters ;
-  const @location endOfArguments := here ;
+  const endOfArguments := here ;
   $:$ ;
   @syntaxInstructionList mSyntaxInstructionList ;
   <syntax_instruction_list> ? mSyntaxInstructionList ;
@@ -172,7 +161,7 @@ rule <syntax_rule_label>
   ;
 end rule ;
 
-#---------------------------------------------------------------------------*
+#------------------------------------------------------------------------------*
 
 rule <syntax_rule_declaration> ?!@syntaxRuleListAST ioRuleList :
   $rule$ ;
@@ -180,7 +169,7 @@ rule <syntax_rule_declaration> ?!@syntaxRuleListAST ioRuleList :
   @lstring labelName [new !"" !here] ;
   @syntaxRuleLabelListAST mLabelList [emptyList] ;
   repeat
-    <syntax_rule_label> !labelName !? mLabelList ;
+    <syntax_rule_label> !labelName !?mLabelList ;
   while
     $label$ ;
     $identifier$ ?labelName ;
@@ -194,11 +183,11 @@ rule <syntax_rule_declaration> ?!@syntaxRuleListAST ioRuleList :
   ;
 end rule ;
 
-#---------------------------------------------------------------------------*
-#                                                                           *
-#   S Y N T A X    I N S T R U C T I O N    L I S T                         *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   S Y N T A X    I N S T R U C T I O N    L I S T                            *
+#                                                                              *
+#------------------------------------------------------------------------------*
 
 rule <syntax_instruction_list> !@syntaxInstructionList outSyntaxInstructionList :
   outSyntaxInstructionList := [@syntaxInstructionList emptyList] ;
@@ -222,11 +211,15 @@ rule <syntax_instruction_list> !@syntaxInstructionList outSyntaxInstructionList 
   end repeat ;
 end rule ;
 
-#---------------------------------------------------------------------------*
-#                                                                           *
-#   N O N T E R M I N A L    C A L L    I N S T R U C T I O N               *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   N O N T E R M I N A L    C A L L    I N S T R U C T I O N                  *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+#! Non terminal instruction
+
+#------------------------------------------------------------------------------*
 
 rule <syntax_instruction>
   !@syntaxInstructionAST outInstruction
@@ -253,24 +246,28 @@ rule <syntax_instruction>
   ] ;
 end rule ;
 
-#---------------------------------------------------------------------------*
-#                                                                           *
-#   T E R M I N A L    C H E C K    I N S T R U C T I O N                   *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   T E R M I N A L    C H E C K    I N S T R U C T I O N                      *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+#! Terminal instruction
+
+#------------------------------------------------------------------------------*
 
 rule <syntax_instruction>
   !@syntaxInstructionAST outInstruction
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
-  $terminal$ ? @lstring mTerminalName indexing terminalReference ;
-  <actual_input_parameter_list> ??@actualInputParameterListAST mActualInputParameterList ;
+  $terminal$ ??@lstring terminalName indexing terminalReference ;
+  <actual_input_parameter_list> ??@actualInputParameterListAST actualInputParameterList ;
   @lstringlist indexNameList [emptyList] ;
   select
   or
     $indexing$ ;
     repeat
-      $identifier$ ?@lstring indexName indexing indexingNameReference ;
+      $identifier$ ??@lstring indexName indexing indexingNameReference ;
       indexNameList += !indexName ;
     while
       $,$ ;
@@ -278,18 +275,22 @@ rule <syntax_instruction>
   end select ;
   $;$ ;
   outInstruction := [@terminalCheckInstruction new
-    ![mTerminalName location]
-    !mTerminalName
-    !mActualInputParameterList
+    ![terminalName location]
+    !terminalName
+    !actualInputParameterList
     !indexNameList
   ] ;
 end rule ;
 
-#---------------------------------------------------------------------------*
-#                                                                           *
-#   R E P E A T    I N S T R U C T I O N                                    *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   R E P E A T    I N S T R U C T I O N                                       *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+#! Repeat instruction
+
+#------------------------------------------------------------------------------*
 
 rule <syntax_instruction>
   !@syntaxInstructionAST outInstruction
@@ -319,11 +320,15 @@ rule <syntax_instruction>
   ] ;
 end rule ;
 
-#---------------------------------------------------------------------------*
-#                                                                           *
-#   S E L E C T    I N S T R U C T I O N                                    *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   S E L E C T    I N S T R U C T I O N                                       *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+#! select instruction
+
+#------------------------------------------------------------------------------*
 
 rule <syntax_instruction>
   !@syntaxInstructionAST outInstruction
@@ -351,11 +356,11 @@ rule <syntax_instruction>
   ] ;
 end rule ;
 
-#---------------------------------------------------------------------------*
-#                                                                           *
-#   P A R S E    R E W I N D    I N S T R U C T I O N                       *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P A R S E    R E W I N D    I N S T R U C T I O N                          *
+#                                                                              *
+#------------------------------------------------------------------------------*
 
 rule <syntax_instruction>
   !@syntaxInstructionAST outInstruction
@@ -384,37 +389,33 @@ rule <syntax_instruction>
   ] ;
 end rule ;
 
-#---------------------------------------------------------------------------*
-#                                                                           *
-#   P A R S E    W H E N    I N S T R U C T I O N                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-nonterminal <branchOfParseWhenInstruction> !@syntaxInstructionList outInstructionList ;
-
-#---------------------------------------------------------------------------*
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P A R S E    W H E N    I N S T R U C T I O N                              *
+#                                                                              *
+#------------------------------------------------------------------------------*
 
 rule <branchOfParseWhenInstruction> !@syntaxInstructionList outElseInstructionList :
   $else$ ;
   <syntax_instruction_list> ? outElseInstructionList ;
 end rule ;
 
-#---------------------------------------------------------------------------*
+#------------------------------------------------------------------------------*
 
 rule <branchOfParseWhenInstruction> !@syntaxInstructionList outElseInstructionList :
   $when$ ;
-  const @location instructionLocation := here ;
+  const instructionLocation := here ;
   @semanticExpressionAST whenExpression ;
   <expression> ? whenExpression ;
-  const @location endOfWhenExpression := here ;
+  const endOfWhenExpression := here ;
   $:$ ;
   @syntaxInstructionList whenInstructionList ;
   <syntax_instruction_list> ? whenInstructionList ;
-  const @location endOfWhenInstructions := here ;
+  const endOfWhenInstructions := here ;
 #--- Else part
   @syntaxInstructionList elseInstructionList ;
   <branchOfParseWhenInstruction> ? elseInstructionList ;
-  const @location endOfElseInstructions := here ;
+  const endOfElseInstructions := here ;
   outElseInstructionList := [@syntaxInstructionList emptyList] ;
   outElseInstructionList += ![@parseWhenInstruction new
     !instructionLocation
@@ -427,7 +428,7 @@ rule <branchOfParseWhenInstruction> !@syntaxInstructionList outElseInstructionLi
   ] ;
 end rule ;
 
-#---------------------------------------------------------------------------*
+#------------------------------------------------------------------------------*
 
 rule <syntax_instruction>
   !@syntaxInstructionAST outInstruction
@@ -458,11 +459,11 @@ rule <syntax_instruction>
   ] ;
 end rule ;
 
-#---------------------------------------------------------------------------*
-#                                                                           *
-#   P A R S E    L O O P    I N S T R U C T I O N                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P A R S E    L O O P    I N S T R U C T I O N                              *
+#                                                                              *
+#------------------------------------------------------------------------------*
 
 rule <syntax_instruction>
   !@syntaxInstructionAST outInstruction
@@ -493,6 +494,6 @@ rule <syntax_instruction>
   ] ;
 end rule ;
 
-#---------------------------------------------------------------------------*
+#------------------------------------------------------------------------------*
 
 end syntax ;

@@ -189,11 +189,10 @@ rule <term> !@semanticExpressionAST outExpression :
   <factor> ? outExpression ;
   repeat
   while
-    @location operatorLocation := here ;
+    const operatorLocation := here ;
     $*$ ;
-    @semanticExpressionAST leftOperand := outExpression ;
-    @semanticExpressionAST rightOperand ;
-    <factor> ? rightOperand ;
+    const leftOperand := outExpression ;
+    <factor> ??@semanticExpressionAST rightOperand ;
     outExpression := [@multiplicationExpressionAST new !operatorLocation !leftOperand !rightOperand] ;
   while
     @location operatorLocation := here ;

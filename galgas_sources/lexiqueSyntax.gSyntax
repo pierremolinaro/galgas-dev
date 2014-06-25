@@ -1,8 +1,8 @@
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  'option' component parser, as model builder                              *
+#  'lexique' component parser                                               *
 #                                                                           *
-#  Copyright (C) 2007, ..., 2009 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2014 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -33,7 +33,7 @@ rule <lexique_component_start_symbol> !@lexiqueComponentAST outLexiqueComponentR
   end select ;
   $lexique$ ;
 #--- Lexique Component Name
-  $identifier$ ?@lstring lexiqueComponentName ;
+  $identifier$ ??@lstring lexiqueComponentName ;
 #--- Enable indexing ?
   @lstring indexingDirectory ;
   select
@@ -114,8 +114,7 @@ end rule ;
 
 rule <template_delimitor> ?!@metamodelTemplateDelimitorListAST ioTemplateDelimitorList :
   $template$ ;
-  @lstring startString ;
-  $literal_string$ ? startString ;
+  $literal_string$ ??@lstring startString ;
   @lstringlist optionList [emptyList] ;
   select
   or
@@ -128,8 +127,7 @@ rule <template_delimitor> ?!@metamodelTemplateDelimitorListAST ioTemplateDelimit
     end repeat ;
   end select ;
   $...$ ;
-  @lstring endString ;
-  $literal_string$ ? endString ;
+  $literal_string$ ??@lstring endString ;
   $;$ ;
   ioTemplateDelimitorList += !startString !optionList !endString ;
 end rule ;
@@ -138,7 +136,7 @@ end rule ;
 
 rule <template_replacement> ?!@templateReplacementListAST ioTemplateReplacement :
   $replace$ ;
-  $literal_string$ ?@lstring  matchString ;
+  $literal_string$ ?@lstring matchString ;
   @lstring replacementString ;
   @lstring replacementFunction ;
   select
@@ -161,11 +159,9 @@ rule <lexical_message_declaration>
   ?!@lexicalMessageDeclarationListAST ioLexicalMessageDeclarationList
 :
   $message$ ;
-  @lstring messageName ;
-  $identifier$ ?messageName ;
+  $identifier$ ??@lstring messageName ;
   $:$ ;
-  @lstring messageValue ;
-  $literal_string$ ?messageValue ;
+  $literal_string$ ??@lstring messageValue ;
   $;$ ;
   ioLexicalMessageDeclarationList += !messageName !messageValue ;
 end rule ;
@@ -174,16 +170,14 @@ end rule ;
 
 rule <lexical_implicit_rule> ?!@lexicalRuleListAST ioLexicalImplicitRuleList :
   $list$ ;
-  @lstring listName ;
-  $identifier$ ? listName ;
+  $identifier$ ??@lstring listName ;
   ioLexicalImplicitRuleList += ![@lexicalImplicitRuleAST new !listName] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
 
 rule <lexical_explicit_rule> ?!@lexicalRuleListAST ioLexicalExplicitRuleList :
-  @lexicalExpressionAST lexicalRuleExpression ;
-  <lexical_expression> ?lexicalRuleExpression ;
+  <lexical_expression> ??@lexicalExpressionAST lexicalRuleExpression ;
   $:$ ;
   @lexicalInstructionListAST instructionList [emptyList] ;
   repeat
@@ -199,8 +193,7 @@ end rule ;
 
 rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList :
   $send$ ;
-  @lexicalInstructionAST instruction ;
-  <lexical_send_instruction> ?instruction ;
+  <lexical_send_instruction> ??@lexicalInstructionAST instruction ;
   ioInstructionList += !instruction ;
   $;$ ;
 end rule ;
@@ -208,8 +201,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction :
-  @lstring sentTerminal ;
-  $terminal$ ? sentTerminal ;
+  $terminal$ ??@lstring sentTerminal ;
   outInstruction := [@lexicalSimpleSendInstructionAST new !sentTerminal] ;
 end rule ;
 
@@ -219,11 +211,9 @@ rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction :
   @lexicalSendSearchListAST lexicalSendSearchList [emptyList] ;
   $search$ ;
   repeat
-    @lstring attributeName ;
-    $identifier$ ? attributeName ;
+    $identifier$ ??@lstring attributeName ;
     $in$ ;
-    @lstring searchListName ;
-    $identifier$ ? searchListName ;
+    $identifier$ ??@lstring searchListName ;
     lexicalSendSearchList += !attributeName !searchListName ;
     $default$ ;
   while
@@ -231,13 +221,11 @@ rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction :
   end repeat ;
   @lexicalSendDefaultActionAST lexicalSendDefaultAction ;
   select
-    @lstring defaultSentTerminal ;
-    $terminal$ ? defaultSentTerminal ;
+    $terminal$ ??@lstring defaultSentTerminal ;
     lexicalSendDefaultAction := [@lexicalSendTerminalByDefaultAST new !defaultSentTerminal] ;
   or
     $error$ ;
-    @lstring defaultErrorMessageName ;
-    $identifier$ ? defaultErrorMessageName ;
+    $identifier$ ??@lstring defaultErrorMessageName ;
     lexicalSendDefaultAction := [@lexicalErrorByDefaultAST new !defaultErrorMessageName] ;
   end select ;
   outInstruction := [@lexicalStructuredSendInstructionAST new
@@ -501,8 +489,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <lexical_factor>!@lexicalExpressionAST outExpression :
-  @lstring string ;
-  $literal_string$ ? string ;
+  $literal_string$ ??@lstring string ;
   outExpression := [@lexicalStringMatchAST new !string] ;
 end rule ;
 
@@ -510,11 +497,9 @@ end rule ;
 
 rule <lexical_factor> !@lexicalExpressionAST outExpression :
   $~$ ;
-  @lstring string ;
-  $literal_string$ ? string ;
+  $literal_string$ ??@lstring string ;
   $error$ ;
-  @lstring errorMessage ;
-  $identifier$ ?errorMessage ;
+  $identifier$ ??@lstring errorMessage ;
   outExpression := [@lexicalStringNotMatchAST new !string !errorMessage] ;
 end rule ;
 
