@@ -56,6 +56,7 @@ override method @nonterminalInstructionForGeneration appendSyntaxSignature
     !mNonterminalName
     !inPosfix
     ![@actualParameterListForGeneration emptyList]
+    ![@grammarInstructionSyntaxDirectedTranslationResultNone new]
   ] ;
 end method ;
 

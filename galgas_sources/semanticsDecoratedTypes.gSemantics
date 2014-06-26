@@ -972,6 +972,7 @@ class @nonterminalInstructionForGeneration extends @syntaxInstructionForGenerati
   @string mNonterminalName ;
   @string mLabelName ;
   @actualParameterListForGeneration mActualParameterList ;
+  @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationResult ;
 }
 
 #---------------------------------------------------------------------------*

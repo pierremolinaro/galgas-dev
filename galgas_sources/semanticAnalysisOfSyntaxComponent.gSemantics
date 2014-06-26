@@ -258,7 +258,6 @@ override method @nonterminalCallInstruction analyzeSyntaxInstruction
   ?!@variableMap ioVariableMap
   ?!@uint unused ioSelectMethodCount
 :
-#  message "Analyze <" . mNonterminalName . "> " . mLabelName . "\n" ;
   @nonterminalLabelMap labelMap ;
   [inNonterminalMap searchKey !mNonterminalName ?labelMap] ;
   @formalParameterSignature signature ;
@@ -278,12 +277,19 @@ override method @nonterminalCallInstruction analyzeSyntaxInstruction
     !?ioVariableMap
     ?actualParameterListForGeneration
   ;
+#--- Check syntax directed translation destination variable
+  [mGrammarInstructionSyntaxDirectedTranslationResult analyzeSDT
+    !inAnalysisContext
+    !inHasTranslateFeature
+    !?ioVariableMap
+  ] ;
 #---
   ioInstructionListForGeneration += ![@nonterminalInstructionForGeneration new
     !mInstructionLocation
     ![mNonterminalName string]
     ![mLabelName string]
     !actualParameterListForGeneration
+    !mGrammarInstructionSyntaxDirectedTranslationResult
   ] ;
 end method ;
 
@@ -301,21 +307,36 @@ override method @nonterminalInstructionForGeneration generateInstruction
   @stringlist jokerParametersToReleaseList [emptyList] ;
   @stringlist inputVariableList [emptyList] ;
   foreach mActualParameterList do
-    @string parameterCppName ;
-    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?inputVariableList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
+    [mActualParameter generateActualParameter
+      !?ioTemporaryVariableIndex
+      !?ioGeneratedCode
+      !?jokerParametersToReleaseList
+      !?inputVariableList
+      !?ioUnusedVariableCppNameSet
+      ??@string parameterCppName
+    ] ;
     parameterCppNameList += !parameterCppName ;
   end foreach ;
 #--- Generate method call
+  const sdtResultVarName := "syntaxDirectedTranslationResult_" . [mInstructionLocation locationIndex] ;
+  if inGenerateSyntaxDirectedTranslationString then
+    ioGeneratedCode .= "C_String " . sdtResultVarName . " ;\n" ;
+  end if ;
   ioGeneratedCode .= "nt_" . [mNonterminalName identifierRepresentation] . "_" . [mLabelName identifierRepresentation] . " (" ;
   foreach parameterCppNameList do
     ioGeneratedCode .= mValue . ", " ;
   end foreach ;
   if inGenerateSyntaxDirectedTranslationString then
-    ioGeneratedCode .= syntaxDirectedTranslationResultVarName[] . ", " ;
-    [!?ioUnusedVariableCppNameSet removeKey !syntaxDirectedTranslationResultVarName []] ;
+    ioGeneratedCode .= sdtResultVarName . ", " ;
   end if ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
   ioGeneratedCode .=  compilerCppName [] . ") ;\n" ;
+  [mGrammarInstructionSyntaxDirectedTranslationResult generateCode
+    !inGenerateSyntaxDirectedTranslationString
+    !sdtResultVarName
+    !?ioUnusedVariableCppNameSet
+    !?ioGeneratedCode
+  ] ;
 #---
   if inGenerateCheckValid then
     ioGeneratedCode .= "#ifndef DO_NOT_GENERATE_CHECKINGS\n" ;
@@ -569,7 +590,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultNone generateC
   ?!@string ioGeneratedCode
 :
   if inGenerateSyntaxDirectedTranslationString then
-    ioGeneratedCode .= syntaxDirectedTranslationResultVarName[] . " << inCompiler->" . inAccessMethodName . " () ;\n" ;
+    ioGeneratedCode .= syntaxDirectedTranslationResultVarName[] . " << " . inAccessMethodName . " ;\n" ;
     [!?ioUnusedVariableCppNameSet removeKey !syntaxDirectedTranslationResultVarName []] ;
   end if ;
 end method ;
@@ -593,7 +614,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInVar  generat
   ?!@string ioGeneratedCode
 :
   const cppName := "var_" . [mActualParameterName identifierRepresentation] ;
-  ioGeneratedCode .= cppName . " := GALGAS_string (inCompiler->" . inAccessMethodName . " ()) ;\n" ; 
+  ioGeneratedCode .= cppName . " := GALGAS_string (" . inAccessMethodName . ") ;\n" ; 
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -605,7 +626,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
   ?!@string ioGeneratedCode
 :
   const cppName := "var_" . [mActualParameterName identifierRepresentation] ;
-  ioGeneratedCode .= "GALGAS_string " . cppName . " (inCompiler->" . inAccessMethodName . " ()) ;\n" ; 
+  ioGeneratedCode .= "GALGAS_string " . cppName . " (" . inAccessMethodName . ") ;\n" ; 
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -617,7 +638,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredCons
   ?!@string ioGeneratedCode
 :
   const cppName := "var_" . [mActualParameterName identifierRepresentation] ;
-  ioGeneratedCode .= "const GALGAS_string " . cppName . " (inCompiler->" . inAccessMethodName . " ()) ;\n" ; 
+  ioGeneratedCode .= "const GALGAS_string " . cppName . " (" . inAccessMethodName . ") ;\n" ; 
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -715,25 +736,16 @@ override method @terminalCheckInstructionForGeneration generateInstruction
 #--- Syntax directed translation
   [mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor generateCode
     !inGenerateSyntaxDirectedTranslationString
-    !"preceedingSeparatorString"
+    !"inCompiler->preceedingSeparatorString ()"
     !?ioUnusedVariableCppNameSet
     !?ioGeneratedCode
   ] ;
   [mGrammarInstructionSyntaxDirectedTranslationToken generateCode
     !inGenerateSyntaxDirectedTranslationString
-    !"tokenString"
+    !"inCompiler->tokenString ()"
     !?ioUnusedVariableCppNameSet
     !?ioGeneratedCode
   ] ;
-
-#  for s in mAssignementList do
-#    ioGeneratedCode .= s->mValue . "\n" ;
-#  end for ;
-#  if inGenerateSyntaxDirectedTranslationString then
-##    ioGeneratedCode .= syntaxDirectedTranslationResultVarName [] . " << inCompiler->preceedingSeparatorString () ;\n" ;
-##    ioGeneratedCode .= syntaxDirectedTranslationResultVarName [] . " << inCompiler->tokenString () ;\n" ;
-#    [!?ioUnusedVariableCppNameSet removeKey !syntaxDirectedTranslationResultVarName []] ;
-#  end if ;
 #--- Check terminal symbol
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
   ioGeneratedCode .= compilerCppName [] . "->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_"

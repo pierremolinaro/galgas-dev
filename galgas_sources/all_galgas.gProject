@@ -59,6 +59,7 @@ project all_galgas (2:6:0) -> "galgas" :
   semantics "lexiqueCocoaGeneration.gSemantics" ;
   semantics "lexiqueCompilation.gSemantics" ;
 
+
 #--- Option Component
   semantics "optionTypesForAST.gSemantics" ;
   syntax    "optionSyntax.gSyntax" ;

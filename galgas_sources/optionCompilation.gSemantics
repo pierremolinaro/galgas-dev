@@ -130,8 +130,7 @@ routine parseOptionComponent
   if [[ioParsedComponentStruct mParsedOptionComponentMap] hasKey ! [outOptionComponentName string]] then
     [ioParsedComponentStruct->mParsedOptionComponentMap searchKey !outOptionComponentName ?outBoolOptionMap ?outUIntOptionMap ?outStringOptionMap] ;
   else
-    grammar optionLL1grammar in inSourceFile ?@optionComponentAST optionComponentAST :>??@string s ;
-    log s ;
+    grammar optionLL1grammar in inSourceFile ?@optionComponentAST optionComponentAST ;
   #--- Check component name
     @lstring componentName := [optionComponentAST mOptionComponentName] ;
     @string basename := [[[inSourceFile string] lastPathComponent] stringByDeletingPathExtension] ;
