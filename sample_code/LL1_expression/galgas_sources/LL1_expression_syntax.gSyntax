@@ -38,6 +38,7 @@ rule <Constant>
 :
   @luint cst ;
   $number$ ? cst :> ?* ?* ;
+  send "TOTO" ;
   outExpressionTree := [@cConst new !cst] ;
   outValue := [cst uint] ;
 end rule;

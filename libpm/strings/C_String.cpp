@@ -1391,12 +1391,10 @@ C_String C_String::md5 (void) const {
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-C_String C_String::subStringFromIndex (const int32_t inLength) const  {
+C_String C_String::subStringFromIndex (const int32_t inStartIndex) const  {
   C_String result ;
-  if (length () <= inLength) {
-    result = *this ;
-  }else{
-    result = subString (length () - inLength, inLength) ;
+  if (inStartIndex < length ()) {
+    result = subString (inStartIndex, length () - inStartIndex) ;
   }
   return result ;
 }

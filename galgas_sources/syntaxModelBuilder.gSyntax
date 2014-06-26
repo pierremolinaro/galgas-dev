@@ -395,6 +395,10 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
+#! parse instruction
+
+#------------------------------------------------------------------------------*
+
 rule <syntax_instruction>
   !@syntaxInstructionAST outInstruction
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
@@ -524,6 +528,30 @@ rule <syntax_instruction>
     !endOfWhileExpression
     !instructionList
     !endOfInstructionList
+  ] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P A R S E    R E W I N D    I N S T R U C T I O N                          *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+#! send instruction
+
+#------------------------------------------------------------------------------*
+
+rule <syntax_instruction>
+  !@syntaxInstructionAST outInstruction
+  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
+:
+  $send$ ;
+  const instructionLocation := here ;
+  <expression> ??@semanticExpressionAST sentExpression ;
+  $;$ ;
+  outInstruction := [@syntaxSendInstruction new
+    !instructionLocation
+    !sentExpression
   ] ;
 end rule ;
 

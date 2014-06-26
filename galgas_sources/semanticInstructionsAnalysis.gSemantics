@@ -324,11 +324,10 @@ override method @selfAssignmentInstructionAST analyzeSemanticInstruction
   ?!@variableMap ioVariableMap
 :
 #--- Analyze source expression
-  @semanticExpressionForGeneration expression ;
   [mSourceExpression analyzeSemanticExpression
     !inAnalysisContext
     !?ioVariableMap
-    ?expression
+    ??@semanticExpressionForGeneration expression
   ] ;
 #--- Analyze "self", as receiver expression
   if [inAnalysisContext->mSelfTypeProxy isNull] then

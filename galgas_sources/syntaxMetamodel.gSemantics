@@ -117,6 +117,12 @@ class @selectInstruction extends @syntaxInstructionAST {
 }
 
 #---------------------------------------------------------------------------*
+
+class @syntaxSendInstruction extends @syntaxInstructionAST {
+  @semanticExpressionAST mExpression ;
+}
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 #   P A R S E   R E W I N D    I N S T R U C T I O N                        *
 #                                                                           *
