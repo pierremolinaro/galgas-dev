@@ -7,7 +7,8 @@ before {
 when . "LL1_expression"
 message "an '.LL1_expression' source file"
 ??@lstring inSourceFile {
-  grammar LL1_expression_grammar in inSourceFile;
+  grammar LL1_expression_grammar in inSourceFile :> ?@string s;
+  log s ;
 }
 
 after {

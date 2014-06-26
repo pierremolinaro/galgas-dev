@@ -45,10 +45,6 @@ nonterminal <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 ;
 
-nonterminal <actual_input_parameter_list>
-  !@actualInputParameterListAST outActualInputParameterList
-;
-
 #------------------------------------------------------------------------------*
 #                                                                              *
 #      S Y N T A X    C O M P O N E N T                                        *
@@ -248,8 +244,7 @@ rule <syntax_instruction>
   or
     $identifier$ ? mLabelName ;
   end select ;
-  @actualParameterListAST mActualParameterList ;
-  <actual_parameter_list> ? mActualParameterList !?ioLocalVariableDeclarationList ;
+  <actual_parameter_list> ??@actualParameterListAST mActualParameterList !?ioLocalVariableDeclarationList ;
   $;$ ;
   outInstruction := [@nonterminalCallInstruction new
     ![mNonterminalName location]
@@ -266,6 +261,12 @@ end rule ;
 #------------------------------------------------------------------------------*
 
 #! Terminal instruction
+
+#------------------------------------------------------------------------------*
+
+nonterminal <actual_input_parameter_list>
+  !@actualInputParameterListAST outActualInputParameterList
+;
 
 #------------------------------------------------------------------------------*
 

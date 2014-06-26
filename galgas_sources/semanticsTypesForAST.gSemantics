@@ -902,6 +902,42 @@ class @dropInstructionAST extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+abstract class @abstractGrammarInstructionSyntaxDirectedTranslationResult {
+}
+
+#---------------------------------------------------------------------------*
+
+class @grammarInstructionSyntaxDirectedTranslationResultNone : @abstractGrammarInstructionSyntaxDirectedTranslationResult {
+}
+
+#---------------------------------------------------------------------------*
+
+class @grammarInstructionSyntaxDirectedTranslationDropResult : @abstractGrammarInstructionSyntaxDirectedTranslationResult {
+  @location mLocation ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @grammarInstructionSyntaxDirectedTranslationResultInVar : @abstractGrammarInstructionSyntaxDirectedTranslationResult {
+  @lstring mActualParameterName ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar : @abstractGrammarInstructionSyntaxDirectedTranslationResult {
+  @lstring mActualParameterTypeName ;
+  @lstring mActualParameterName ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst : @abstractGrammarInstructionSyntaxDirectedTranslationResult {
+  @lstring mActualParameterTypeName ;
+  @lstring mActualParameterName ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @grammarInstructionAST extends @semanticInstructionAST {
   @lstring mGrammarComponentName ;
   @lstring mLabelName ;
@@ -909,6 +945,7 @@ class @grammarInstructionAST extends @semanticInstructionAST {
   @location mEndOfSourceExpression ;
   @bool mSourceExpressionIsFile ; # If false, mSourceExpression should be the source string
   @actualParameterListAST mActualParameterList ;
+  @abstractGrammarInstructionSyntaxDirectedTranslationResult mAbstractGrammarInstructionSyntaxDirectedTranslationResult ;
 }
 
 #---------------------------------------------------------------------------*

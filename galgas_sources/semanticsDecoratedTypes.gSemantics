@@ -882,6 +882,8 @@ class @grammarInstructionWithSourceFileForGeneration extends @semanticInstructio
   @semanticExpressionForGeneration mSourceFileExpression ;
   @actualParameterListForGeneration mActualParameterList ;
   @bool mGrammarHasTranslateFeature ;
+  @stringlist mAssignementList ;
+  @string mSyntaxDirectedTranslationResultVarName ;
 }
 
 #---------------------------------------------------------------------------*
@@ -893,6 +895,8 @@ class @grammarInstructionWithSourceExpressionForGeneration extends @semanticInst
   @semanticExpressionForGeneration mSourceStringExpression ;
   @actualParameterListForGeneration mActualParameterList ;
   @bool mGrammarHasTranslateFeature ;
+  @stringlist mAssignementList ;
+  @string mSyntaxDirectedTranslationResultVarName ;
 }
 
 #---------------------------------------------------------------------------*

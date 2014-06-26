@@ -23,7 +23,6 @@ option galgas_cli_options :
   @bool printPredefinedLexicalActions: '\0', "print-predefined-lexical-actions" -> "Print the list of predefined lexical routines and functions" ;
 #  @bool generateCheckValidInstructions: '\0', "generate-instructions-for-checking-validity" -> "Generate instructions for Checking object validity (reserved for GALGAS development)" ;
   @string generatePredefinedTypes: '\0', "generate-predefined-types" -> "Generate C++ files of predefined types (reserved for GALGAS development)" ;
-#  @string buildOption: '\0', "build" -> "After a successful GALGAS compilation of a project file, build executable(s) using build command of 'string' directory" ;
   @string extractLIBPMOption: '\0', "extract-libpm" -> "Extract embedded LIBPM at given path" ;
   
   @bool warnsOnDeprecatedConstructInGALGAS3 : '\0', "warns-on-deprecated-construct" -> "Emit a warning on construct deprecated in GALGAS 3" ;

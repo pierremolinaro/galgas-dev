@@ -1915,6 +1915,114 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+abstract method @abstractGrammarInstructionSyntaxDirectedTranslationResult analyze
+  ??@analysisContext inAnalysisContext
+  ??@bool inHasTranslateFeature
+  ??@string inSyntaxDirectedTranslationResultVarName
+  ?!@stringlist ioAssignementList
+  ?!@variableMap ioVariableMap
+;
+
+#---------------------------------------------------------------------------*
+
+override method @grammarInstructionSyntaxDirectedTranslationResultNone analyze
+  ??@analysisContext unused inAnalysisContext
+  ??@bool unused inHasTranslateFeature
+  ??@string unused inSyntaxDirectedTranslationResultVarName
+  ?!@stringlist unused ioAssignementList
+  ?!@variableMap unused ioVariableMap
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @grammarInstructionSyntaxDirectedTranslationDropResult  analyze
+  ??@analysisContext unused inAnalysisContext
+  ??@bool inHasTranslateFeature
+  ??@string unused inSyntaxDirectedTranslationResultVarName
+  ?!@stringlist unused ioAssignementList
+  ?!@variableMap unused ioVariableMap
+:
+  if not inHasTranslateFeature then
+    error mLocation : "the ':>' construct requires the grammar to be declared with 'translate' feature" ;
+  end if ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @grammarInstructionSyntaxDirectedTranslationResultInVar  analyze
+  ??@analysisContext inAnalysisContext
+  ??@bool inHasTranslateFeature
+  ??@string inSyntaxDirectedTranslationResultVarName
+  ?!@stringlist ioAssignementList
+  ?!@variableMap ioVariableMap
+:
+  if not inHasTranslateFeature then
+    error mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature" ;
+  end if ;
+  [!?ioVariableMap searchForWriteAccess !mActualParameterName ??@unifiedTypeMapProxy type ??@string cppName ?*] ;
+  const expectedType := inAnalysisContext->mPredefinedTypes->mStringType ;
+  if expectedType != type then
+    error mActualParameterName
+    : "the '" . mActualParameterName . "' parameter has the '@" . [type identifierRepresentation]
+    . ", bit an '@" . [expectedType identifierRepresentation] . "' parameter is required here"
+    ;
+  end if ;
+  ioAssignementList += !cppName . " := GALGAS_string (" . inSyntaxDirectedTranslationResultVarName . ") ;" ; 
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar  analyze
+  ??@analysisContext inAnalysisContext
+  ??@bool inHasTranslateFeature
+  ??@string inSyntaxDirectedTranslationResultVarName
+  ?!@stringlist ioAssignementList
+  ?!@variableMap ioVariableMap
+:
+  if not inHasTranslateFeature then
+    error mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature" ;
+  end if ;
+  const cppName := "var_" . [mActualParameterName identifierRepresentation] ;
+  const type := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mActualParameterTypeName] ;
+  [!?ioVariableMap insertDefinedLocalVariable !mActualParameterName !type !cppName !cppName] ;
+  const expectedType := inAnalysisContext->mPredefinedTypes->mStringType ;
+  if expectedType != type then
+    error mActualParameterName
+    : "the '" . mActualParameterName . "' parameter has the '@" . [type identifierRepresentation]
+    . ", bit an '@" . [expectedType identifierRepresentation] . "' parameter is required here"
+    ;
+  end if ;
+  ioAssignementList += !"GALGAS_string " . cppName . " (" . inSyntaxDirectedTranslationResultVarName . ") ;" ; 
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst  analyze
+  ??@analysisContext inAnalysisContext
+  ??@bool inHasTranslateFeature
+  ??@string inSyntaxDirectedTranslationResultVarName
+  ?!@stringlist ioAssignementList
+  ?!@variableMap ioVariableMap
+:
+  if not inHasTranslateFeature then
+    error mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature" ;
+  end if ;
+  const cppName := "var_" . [mActualParameterName identifierRepresentation] ;
+  const type := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mActualParameterTypeName] ;
+  [!?ioVariableMap insertLocalConstant !mActualParameterName !type !cppName !cppName] ;
+  const expectedType := inAnalysisContext->mPredefinedTypes->mStringType ;
+  if expectedType != type then
+    error mActualParameterName
+    : "the '" . mActualParameterName . "' parameter has the '@" . [type identifierRepresentation]
+    . ", bit an '@" . [expectedType identifierRepresentation] . "' parameter is required here"
+    ;
+  end if ;
+  ioAssignementList += !"const GALGAS_string " . cppName . " (" . inSyntaxDirectedTranslationResultVarName . ") ;" ; 
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @grammarInstructionAST analyzeSemanticInstruction
   ??@analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
@@ -1961,6 +2069,16 @@ override method @grammarInstructionAST analyzeSemanticInstruction
     :"this expression is the source string and its type should be '@string', but it is '@" . [[sourceExpression mType] key] . "'"
     ;
   end if ;
+#--- Check syntax directed translation result parameter
+  const syntaxDirectedTranslationResultVarName := "syntaxDirectedTranslationResult_" . [mGrammarComponentName->location locationIndex] ;
+  @stringlist assignementList [emptyList] ;
+  [mAbstractGrammarInstructionSyntaxDirectedTranslationResult analyze
+    !inAnalysisContext
+    !hasTranslateFeature
+    !syntaxDirectedTranslationResultVarName
+    !?assignementList
+    !?ioVariableMap
+  ] ;
 #--- Generate instruction
   if mSourceExpressionIsFile then
     ioInstructionListForGeneration += ![@grammarInstructionWithSourceFileForGeneration new
@@ -1970,6 +2088,8 @@ override method @grammarInstructionAST analyzeSemanticInstruction
       !sourceExpression
       !actualParameterListForGeneration
       !hasTranslateFeature
+      !assignementList
+      !syntaxDirectedTranslationResultVarName
     ] ;
   else
     ioInstructionListForGeneration += ![@grammarInstructionWithSourceExpressionForGeneration new
@@ -1979,9 +2099,15 @@ override method @grammarInstructionAST analyzeSemanticInstruction
       !sourceExpression
       !actualParameterListForGeneration
       !hasTranslateFeature
+      !assignementList
+      !syntaxDirectedTranslationResultVarName
     ] ;
   end if ;
 end method ;
+
+#---------------------------------------------------------------------------*
+
+#! With instruction
 
 #---------------------------------------------------------------------------*
 
@@ -1991,11 +2117,10 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   ?!@variableMap ioVariableMap
 :
 #--- Analyze source expression
-  @semanticExpressionForGeneration keyExpression ;
   [mKeyExpression analyzeSemanticExpression
     !inAnalysisContext
     !?ioVariableMap
-    ?keyExpression
+    ??@semanticExpressionForGeneration keyExpression
   ] ;
 #--- Object Array cpp name
   const objectArrayCppName := "objectArray_" . [[mInstructionLocation locationIndex] string] ;

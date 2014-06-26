@@ -28,5 +28,5 @@ indexing grammar semanticsSLRgrammar "SLR" :
     !@semanticsComponentAST outSemanticsComponentRoot
   ; # SLR
 
-  unused <actual_input_parameter_list> ;
+  unused <actual_input_parameter_list>, <actual_input_parameter> ;
 end grammar ;

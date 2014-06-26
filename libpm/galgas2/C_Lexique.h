@@ -81,7 +81,7 @@ class C_Lexique : public C_Compiler {
   protected : cToken * mCurrentTokenPtr ;
   protected : void enterTokenFromPointer (cToken * inToken) ;
   protected : int32_t mLastSeparatorIndex ;
-  public : void displayTokenList (void) const ;
+  public : void appendLastSeparatorTo (C_String & ioString) const ;
 
 //--- Syntax directed translation : accessing current token
   public : C_String preceedingSeparatorString (void) const ;

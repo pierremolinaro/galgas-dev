@@ -1142,8 +1142,11 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
         if (inSyntaxDirectedTranslationVarName.length() > 0) {
           generatedZone3 << inSyntaxDirectedTranslationVarName << ", " ;
         }
-        generatedZone3 << "scanner) ;\n"
-                           "    }\n"
+        generatedZone3 << "scanner) ;\n" ;
+        if (inSyntaxDirectedTranslationVarName.length() > 0) {
+          generatedZone3 << "        scanner->appendLastSeparatorTo (" << inSyntaxDirectedTranslationVarName << ") ;\n" ;
+        }
+        generatedZone3 << "      }\n"
                           "  }\n"
                           "  macroDetachSharedObject (scanner) ;\n"
                           "}\n\n" ;

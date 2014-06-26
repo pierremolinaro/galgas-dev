@@ -34,11 +34,6 @@ nonterminal <formal_parameter_list> !@formalParameterListAST outFormalParameterL
 
 nonterminal <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList ;
 
-nonterminal <actual_parameter_list>
-  !@actualParameterListAST outActualParameterList
-  ?!@localVariableDeclarationListAST ioLocalVariableDeclarationList
-;
-
 nonterminal <output_expression_list>
   !@semanticExpressionListAST outExpressionList
 ;
@@ -1144,6 +1139,12 @@ end rule ;
 
 #!  Method call instruction
 
+#------------------------------------------------------------------------------*
+
+nonterminal <actual_input_parameter_list>
+  !@actualInputParameterListAST outActualInputParameterList
+;
+
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
@@ -1774,6 +1775,13 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
+nonterminal <actual_parameter_list>
+  !@actualParameterListAST outActualParameterList
+  ?!@localVariableDeclarationListAST ioLocalVariableDeclarationList
+;
+
+#---------------------------------------------------------------------------*
+
 rule <semantic_instruction>
   !@semanticInstructionAST outInstruction
   ?!@localVariableDeclarationListAST ioLocalVariableDeclarationList
@@ -1797,6 +1805,32 @@ rule <semantic_instruction>
   <expression> ??@semanticExpressionAST mSourceExpression ;
   const endOfSourceExpression := here ;
   <actual_parameter_list> ??@actualParameterListAST actualParameterList !?ioLocalVariableDeclarationList ;
+#--- Get syntax directed translation result string
+  @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult ;
+  select
+    grammarInstructionSyntaxDirectedTranslationResult := [@grammarInstructionSyntaxDirectedTranslationResultNone new] ;
+  or
+    $:>$ ;
+    select
+      $?$ ;
+      $*$ ;
+      grammarInstructionSyntaxDirectedTranslationResult := [@grammarInstructionSyntaxDirectedTranslationDropResult new !here] ;
+    or
+      $?$ ;
+      $type_name$ ?@lstring actualParameterTypeName ;
+      $identifier$ ?@lstring actualParameterName ;
+      grammarInstructionSyntaxDirectedTranslationResult := [@grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar new !actualParameterTypeName !actualParameterName] ;
+    or
+      $??$ ;
+      $type_name$ ?@lstring actualParameterTypeName ;
+      $identifier$ ?@lstring actualParameterName ;
+      grammarInstructionSyntaxDirectedTranslationResult := [@grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst new !actualParameterTypeName !actualParameterName] ;
+    or
+      $?$ ;
+      $identifier$ ?@lstring actualParameterName ;
+      grammarInstructionSyntaxDirectedTranslationResult := [@grammarInstructionSyntaxDirectedTranslationResultInVar new !actualParameterName] ;
+    end select ;
+  end select ;
   $;$ ;
   outInstruction := [@grammarInstructionAST new
     !instructionLocation
@@ -1806,6 +1840,7 @@ rule <semantic_instruction>
     !endOfSourceExpression
     !sourceExpressionIsFile
     !actualParameterList
+    !grammarInstructionSyntaxDirectedTranslationResult
   ] ;
 end rule ;
 
@@ -1854,6 +1889,53 @@ rule <semantic_instruction>
     !endOfSwitchInstruction
   ] ;
 end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  A C T U A L    I N P U T    P A R A M E T E R    L I S T                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! Input parameter list
+
+#---------------------------------------------------------------------------*
+
+rule <actual_input_parameter>
+  !@abstractInputParameter outActualInputParameter
+:
+  select
+    $?$ ;
+    $*$ ;
+    outActualInputParameter := [@inputParameterAnonymousVariable new] ;
+  or
+    $?$ ;
+    $type_name$ ?@lstring actualParameterTypeName ;
+    $identifier$ ?@lstring actualParameterName ;
+    outActualInputParameter := [@inputParameterDeclaredVariable new !actualParameterTypeName !actualParameterName] ;
+  or
+    $??$ ;
+    $type_name$ ?@lstring actualParameterTypeName ;
+    $identifier$ ?@lstring actualParameterName ;
+    outActualInputParameter := [@inputParameterDeclaredConstant new !actualParameterTypeName !actualParameterName] ;
+  or
+    $?$ ;
+    $identifier$ ?@lstring actualParameterName ;
+    outActualInputParameter := [@inputParameterVariable new !actualParameterName] ;
+  end select ;
+end rule ;  
+
+#---------------------------------------------------------------------------*
+
+rule <actual_input_parameter_list>
+  !@actualInputParameterListAST outActualInputParameterList
+:
+  outActualInputParameterList := [@actualInputParameterListAST emptyList] ;
+  repeat
+  while
+    <actual_input_parameter> ??@abstractInputParameter actualInputParameter ;
+    outActualInputParameterList += !actualInputParameter ;
+  end repeat ;
+end rule ;  
 
 #---------------------------------------------------------------------------*
 #                                                                           *
