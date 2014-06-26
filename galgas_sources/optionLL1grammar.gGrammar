@@ -17,7 +17,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-indexing grammar optionLL1grammar "LL1" feature translate :
+indexing grammar optionLL1grammar "LL1" :
   with "optionSyntax.gSyntax" ;
 
   root <option_component_start_symbol>

@@ -69,6 +69,7 @@ class @nonterminalCallInstruction extends @syntaxInstructionAST {
   @lstring mNonterminalName ;
   @lstring mLabelName ; # No label : empty string
   @actualParameterListAST mActualParameterList ;
+  @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationResult ;
 }
 
 #---------------------------------------------------------------------------*

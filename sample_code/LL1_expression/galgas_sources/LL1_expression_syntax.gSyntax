@@ -3,42 +3,17 @@ syntax LL1_expression_syntax ("LL1_expression_lexique.gLexique") feature transla
 import "LL1_expression_options.gOption" ;
 import "LL1_expression_semantics.gSemantics" ;
 
-nonterminal <StartSymbol> ;
-
-nonterminal <Expression>
-  !@cExpression outExpressionTree
-  !@uint outValue
-;
-nonterminal <Terme>
-  !@cExpression outExpressionTree
-  !@uint outValue
-;
-
-nonterminal <Facteur>
-  !@cExpression outExpressionTree
-  !@uint outValue
-;
-
-nonterminal <Constant>
-  !@cExpression outExpressionTree
-  !@uint outValue
-;
-  
-  
 rule <StartSymbol>:
-  @cExpression expressionTree;
-  @uint value ;
-  <Expression> ?expressionTree ?value ;
-  log value ;
+  <Expression> ??@cExpression expressionTree ??@uint value ;
+  log expressionTree, value ;
 end rule;
   
 rule <Constant>
   !@cExpression outExpressionTree
   !@uint outValue
 :
-  @luint cst ;
-  $number$ ? cst :> ?* ?* ;
-  send "TOTO" ;
+  $number$ ??@luint cst ;
+  send " " ;
   outExpressionTree := [@cConst new !cst] ;
   outValue := [cst uint] ;
 end rule;
@@ -50,10 +25,10 @@ rule <Expression>
   <Terme> ?outExpressionTree ?outValue ;
   repeat
   while 
-    $+$ ;
-    @cExpression rightOperand ;
-    @uint v ;
-    <Terme> ?rightOperand ?v ;
+    $+$ :> ?@string sep ?@string token ;
+    send sep ;
+    <Terme> ??@cExpression rightOperand ??@uint v ;
+    send token ;
     outExpressionTree := [@cAdd new ! outExpressionTree !rightOperand] ;
     outValue := outValue + v ;
   end repeat ;
@@ -63,16 +38,16 @@ rule <Terme>
   !@cExpression outExpressionTree
   !@uint outValue
 :
-   <Facteur> ?outExpressionTree ?outValue ;
-   repeat
-   while 
-     $*$ ;
-     @cExpression rightOperand ;
-     @uint v ;
-     <Facteur> ?rightOperand ?v ;
-     outExpressionTree := [@cMult new ! outExpressionTree !rightOperand] ;
-     outValue := outValue * v ;
-   end repeat ;
+  <Facteur> ?outExpressionTree ?outValue ;
+  repeat
+  while 
+    $*$ :> ?@string sep ?@string token ;
+    send sep ;
+    <Facteur> ??@cExpression rightOperand ??@uint v ;
+    send token ;
+    outExpressionTree := [@cMult new ! outExpressionTree !rightOperand] ;
+    outValue := outValue * v ;
+  end repeat ;
 end rule;
 
 rule <Facteur>
@@ -80,9 +55,9 @@ rule <Facteur>
   !@uint outValue
 :
   select
-    $($ ;
+    $($ :> ?* ?* ;
     <Expression> ?outExpressionTree ?outValue ;
-    $)$ ;
+    $)$ :> ?* ?* ;
   or
     <Constant> ?outExpressionTree ?outValue ;
   end select ;

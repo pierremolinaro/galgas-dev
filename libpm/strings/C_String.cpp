@@ -1230,8 +1230,7 @@ C_String C_String::operator + (const char * inOperand) const {
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-C_String C_String::
-pathExtension (void) const {
+C_String C_String::pathExtension (void) const {
   const utf32 * source = utf32String (HERE) ;
   C_String result ;
   int32_t receiver_length = length ();
@@ -1401,11 +1400,27 @@ C_String C_String::subStringFromIndex (const int32_t inStartIndex) const  {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   S U B    S T R I N G    T O    I N D E X                                  *
+//   R I G H T    S U B    S T R I N G                                         *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-C_String C_String::subStringToIndex (const int32_t inLength) const  {
+C_String C_String::rightSubString (const int32_t inLength) const  {
+  C_String result ;
+  if (length () <= inLength) {
+    result = *this ;
+  }else{
+    result = subString (length () - inLength, inLength) ;
+  }
+  return result ;
+}
+
+//-----------------------------------------------------------------------------*
+//                                                                             *
+//   L E F T    S U B    S T R I N G                                           *
+//                                                                             *
+//-----------------------------------------------------------------------------*
+
+C_String C_String::leftSubString (const int32_t inLength) const  {
   C_String result ;
   if (length () <= inLength) {
     result = *this ;
