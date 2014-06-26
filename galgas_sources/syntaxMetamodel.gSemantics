@@ -81,7 +81,8 @@ class @terminalCheckInstruction extends @syntaxInstructionAST {
   @lstring mTerminalName ;
   @actualInputParameterListAST mActualInputParameterList ;
   @lstringlist mIndexingKeyList ; # Empty list if no index
-#  @lstring mTerminalLocationConstantName ;
+  @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor ;
+  @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationToken ;
 }
 
 #---------------------------------------------------------------------------*

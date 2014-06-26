@@ -212,6 +212,7 @@ end routine ;
 
 abstract method @syntaxInstructionAST analyzeSyntaxInstruction
   ??@analysisContext inAnalysisContext
+  ??@bool inHasTranslateFeature
   ??@terminalMap inTerminalMap
   ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
@@ -226,6 +227,7 @@ abstract method @syntaxInstructionAST analyzeSyntaxInstruction
 
 override method @semanticInstructionAST analyzeSyntaxInstruction
   ??@analysisContext inAnalysisContext
+  ??@bool unused inHasTranslateFeature
   ??@terminalMap unused inTerminalMap
   ??@string unused inLexiqueName
   ??@nonterminalMap unused inNonterminalMap
@@ -246,6 +248,7 @@ end method ;
 
 override method @nonterminalCallInstruction analyzeSyntaxInstruction
   ??@analysisContext inAnalysisContext
+  ??@bool inHasTranslateFeature
   ??@terminalMap unused inTerminalMap
   ??@string unused inLexiqueName
   ??@nonterminalMap inNonterminalMap
@@ -326,6 +329,10 @@ override method @nonterminalInstructionForGeneration generateInstruction
     ioGeneratedCode .= mValue . ".drop () ; // Release temporary input variables (joker in source)\n" ;
   end foreach ;
 end method ;
+
+#---------------------------------------------------------------------------*
+
+#! Terminal instruction
 
 #---------------------------------------------------------------------------*
 
@@ -453,8 +460,171 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+abstract method @abstractGrammarInstructionSyntaxDirectedTranslationResult analyzeSDT
+  ??@analysisContext inAnalysisContext
+  ??@bool inHasTranslateFeature
+  ?!@variableMap ioVariableMap
+;
+
+#---------------------------------------------------------------------------*
+
+override method @grammarInstructionSyntaxDirectedTranslationResultNone analyzeSDT
+  ??@analysisContext unused inAnalysisContext
+  ??@bool unused inHasTranslateFeature
+  ?!@variableMap unused ioVariableMap
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @grammarInstructionSyntaxDirectedTranslationDropResult  analyzeSDT
+  ??@analysisContext unused inAnalysisContext
+  ??@bool inHasTranslateFeature
+  ?!@variableMap unused ioVariableMap
+:
+  if not inHasTranslateFeature then
+    error mLocation : "the ':>' construct requires the syntax component to be declared with 'translate' feature" ;
+  end if ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @grammarInstructionSyntaxDirectedTranslationResultInVar  analyzeSDT
+  ??@analysisContext inAnalysisContext
+  ??@bool inHasTranslateFeature
+  ?!@variableMap ioVariableMap
+:
+  if not inHasTranslateFeature then
+    error mActualParameterName : "the ':>' construct requires the syntax component to be declared with 'translate' feature" ;
+  end if ;
+  [!?ioVariableMap searchForWriteAccess !mActualParameterName ??@unifiedTypeMapProxy type ?* ?*] ;
+  const expectedType := inAnalysisContext->mPredefinedTypes->mStringType ;
+  if expectedType != type then
+    error mActualParameterName
+    : "the '" . mActualParameterName . "' parameter has the '@" . [type identifierRepresentation]
+    . ", bit an '@" . [expectedType identifierRepresentation] . "' parameter is required here"
+    ;
+  end if ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar  analyzeSDT
+  ??@analysisContext inAnalysisContext
+  ??@bool inHasTranslateFeature
+  ?!@variableMap ioVariableMap
+:
+  if not inHasTranslateFeature then
+    error mActualParameterName : "the ':>' construct requires the syntax component to be declared with 'translate' feature" ;
+  end if ;
+  const cppName := "var_" . [mActualParameterName identifierRepresentation] ;
+  const type := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mActualParameterTypeName] ;
+  [!?ioVariableMap insertDefinedLocalVariable !mActualParameterName !type !cppName !cppName] ;
+  const expectedType := inAnalysisContext->mPredefinedTypes->mStringType ;
+  if expectedType != type then
+    error mActualParameterName
+    : "the '" . mActualParameterName . "' parameter has the '@" . [type identifierRepresentation]
+    . ", bit an '@" . [expectedType identifierRepresentation] . "' parameter is required here"
+    ;
+  end if ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst  analyzeSDT
+  ??@analysisContext inAnalysisContext
+  ??@bool inHasTranslateFeature
+  ?!@variableMap ioVariableMap
+:
+  if not inHasTranslateFeature then
+    error mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature" ;
+  end if ;
+  const cppName := "var_" . [mActualParameterName identifierRepresentation] ;
+  const type := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mActualParameterTypeName] ;
+  [!?ioVariableMap insertLocalConstant !mActualParameterName !type !cppName !cppName] ;
+  const expectedType := inAnalysisContext->mPredefinedTypes->mStringType ;
+  if expectedType != type then
+    error mActualParameterName
+    : "the '" . mActualParameterName . "' parameter has the '@" . [type identifierRepresentation]
+    . ", bit an '@" . [expectedType identifierRepresentation] . "' parameter is required here"
+    ;
+  end if ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+abstract method @abstractGrammarInstructionSyntaxDirectedTranslationResult generateCode
+  ??@bool inGenerateSyntaxDirectedTranslationString
+  ??@string inAccessMethodName
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?!@string ioGeneratedCode
+;
+
+#---------------------------------------------------------------------------*
+
+override method @grammarInstructionSyntaxDirectedTranslationResultNone generateCode
+  ??@bool inGenerateSyntaxDirectedTranslationString
+  ??@string inAccessMethodName
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?!@string ioGeneratedCode
+:
+  if inGenerateSyntaxDirectedTranslationString then
+    ioGeneratedCode .= syntaxDirectedTranslationResultVarName[] . " << inCompiler->" . inAccessMethodName . " () ;\n" ;
+    [!?ioUnusedVariableCppNameSet removeKey !syntaxDirectedTranslationResultVarName []] ;
+  end if ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @grammarInstructionSyntaxDirectedTranslationDropResult  generateCode
+  ??@bool unused inGenerateSyntaxDirectedTranslationString
+  ??@string unused inAccessMethodName
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  ?!@string unused ioGeneratedCode
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @grammarInstructionSyntaxDirectedTranslationResultInVar  generateCode
+  ??@bool unused inGenerateSyntaxDirectedTranslationString
+  ??@string inAccessMethodName
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  ?!@string ioGeneratedCode
+:
+  const cppName := "var_" . [mActualParameterName identifierRepresentation] ;
+  ioGeneratedCode .= cppName . " := GALGAS_string (inCompiler->" . inAccessMethodName . " ()) ;\n" ; 
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar  generateCode
+  ??@bool unused inGenerateSyntaxDirectedTranslationString
+  ??@string inAccessMethodName
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  ?!@string ioGeneratedCode
+:
+  const cppName := "var_" . [mActualParameterName identifierRepresentation] ;
+  ioGeneratedCode .= "GALGAS_string " . cppName . " (inCompiler->" . inAccessMethodName . " ()) ;\n" ; 
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst  generateCode
+  ??@bool unused inGenerateSyntaxDirectedTranslationString
+  ??@string inAccessMethodName
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  ?!@string ioGeneratedCode
+:
+  const cppName := "var_" . [mActualParameterName identifierRepresentation] ;
+  ioGeneratedCode .= "const GALGAS_string " . cppName . " (inCompiler->" . inAccessMethodName . " ()) ;\n" ; 
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @terminalCheckInstruction analyzeSyntaxInstruction
   ??@analysisContext inAnalysisContext
+  ??@bool inHasTranslateFeature
   ??@terminalMap inTerminalMap
   ??@string inLexiqueName
   ??@nonterminalMap unused inNonterminalMap
@@ -496,6 +666,17 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
       error mValue : "the '" . mValue . "' indexing name is not declared by the lexique; available names are:" . s ;
     end if ;
   end foreach ;
+#--- Check syntax directed translation destination variable
+  [mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor analyzeSDT
+    !inAnalysisContext
+    !inHasTranslateFeature
+    !?ioVariableMap
+  ] ;
+  [mGrammarInstructionSyntaxDirectedTranslationToken analyzeSDT
+    !inAnalysisContext
+    !inHasTranslateFeature
+    !?ioVariableMap
+  ] ;
 #---
   ioInstructionListForGeneration += ![@terminalCheckInstructionForGeneration new
     !mInstructionLocation
@@ -503,6 +684,8 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
     !inLexiqueName
     !terminalCheckAssignementList
     !mIndexingKeyList
+    !mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
+    !mGrammarInstructionSyntaxDirectedTranslationToken
   ] ;
 end method ;
 
@@ -530,11 +713,27 @@ override method @terminalCheckInstructionForGeneration generateInstruction
     ioGeneratedCode .= compilerCppName [] . "->enterIndexing (C_Lexique_" . mLexiqueIdentifier . "::kIndexing_" . [mValue identifierRepresentation] . ") ;\n" ;
   end foreach ;
 #--- Syntax directed translation
-  if inGenerateSyntaxDirectedTranslationString then
-    ioGeneratedCode .= syntaxDirectedTranslationResultVarName [] . " << inCompiler->preceedingSeparatorString () ;\n" ;
-    ioGeneratedCode .= syntaxDirectedTranslationResultVarName [] . " << inCompiler->tokenString () ;\n" ;
-    [!?ioUnusedVariableCppNameSet removeKey !syntaxDirectedTranslationResultVarName []] ;
-  end if ;
+  [mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor generateCode
+    !inGenerateSyntaxDirectedTranslationString
+    !"preceedingSeparatorString"
+    !?ioUnusedVariableCppNameSet
+    !?ioGeneratedCode
+  ] ;
+  [mGrammarInstructionSyntaxDirectedTranslationToken generateCode
+    !inGenerateSyntaxDirectedTranslationString
+    !"tokenString"
+    !?ioUnusedVariableCppNameSet
+    !?ioGeneratedCode
+  ] ;
+
+#  for s in mAssignementList do
+#    ioGeneratedCode .= s->mValue . "\n" ;
+#  end for ;
+#  if inGenerateSyntaxDirectedTranslationString then
+##    ioGeneratedCode .= syntaxDirectedTranslationResultVarName [] . " << inCompiler->preceedingSeparatorString () ;\n" ;
+##    ioGeneratedCode .= syntaxDirectedTranslationResultVarName [] . " << inCompiler->tokenString () ;\n" ;
+#    [!?ioUnusedVariableCppNameSet removeKey !syntaxDirectedTranslationResultVarName []] ;
+#  end if ;
 #--- Check terminal symbol
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
   ioGeneratedCode .= compilerCppName [] . "->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_"
@@ -554,6 +753,7 @@ end method ;
 
 routine analyzeSyntaxInstructionList
   ??@analysisContext inAnalysisContext
+  ??@bool inHasTranslateFeature
   ??@terminalMap inTerminalMap
   ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
@@ -572,6 +772,7 @@ routine analyzeSyntaxInstructionList
   foreach inSyntaxInstructionListAST do
     [mInstruction analyzeSyntaxInstruction
       !inAnalysisContext
+      !inHasTranslateFeature
       !inTerminalMap
       !inLexiqueName
       !inNonterminalMap
@@ -590,6 +791,7 @@ end routine ;
 
 override method @repeatInstruction analyzeSyntaxInstruction
   ??@analysisContext inAnalysisContext
+  ??@bool inHasTranslateFeature
   ??@terminalMap inTerminalMap
   ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
@@ -607,6 +809,7 @@ override method @repeatInstruction analyzeSyntaxInstruction
   @semanticInstructionListForGeneration repeated_instructionList ;
   analyzeSyntaxInstructionList
     !inAnalysisContext
+    !inHasTranslateFeature
     !inTerminalMap
     !inLexiqueName
     !inNonterminalMap
@@ -624,6 +827,7 @@ override method @repeatInstruction analyzeSyntaxInstruction
     @semanticInstructionListForGeneration instructionList ;
     analyzeSyntaxInstructionList
       !inAnalysisContext
+      !inHasTranslateFeature
       !inTerminalMap
       !inLexiqueName
       !inNonterminalMap
@@ -697,6 +901,7 @@ end method ;
 
 override method @selectInstruction analyzeSyntaxInstruction
   ??@analysisContext inAnalysisContext
+  ??@bool inHasTranslateFeature
   ??@terminalMap inTerminalMap
   ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
@@ -716,6 +921,7 @@ override method @selectInstruction analyzeSyntaxInstruction
     @semanticInstructionListForGeneration instructionList ;
     analyzeSyntaxInstructionList
       !inAnalysisContext
+      !inHasTranslateFeature
       !inTerminalMap
       !inLexiqueName
       !inNonterminalMap
@@ -772,6 +978,7 @@ end method ;
 
 override method @parseRewindInstruction analyzeSyntaxInstruction
   ??@analysisContext inAnalysisContext
+  ??@bool inHasTranslateFeature
   ??@terminalMap  inTerminalMap
   ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
@@ -790,6 +997,7 @@ override method @parseRewindInstruction analyzeSyntaxInstruction
     foreach mSyntaxInstructionList do
       [mInstruction analyzeSyntaxInstruction
         !inAnalysisContext
+        !inHasTranslateFeature
         !inTerminalMap
         !inLexiqueName
         !inNonterminalMap
@@ -855,6 +1063,7 @@ end method ;
 
 override method @parseLoopInstruction analyzeSyntaxInstruction
   ??@analysisContext inAnalysisContext
+  ??@bool inHasTranslateFeature
   ??@terminalMap inTerminalMap
   ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
@@ -897,6 +1106,7 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
   @semanticInstructionListForGeneration instructionList ;
   analyzeSyntaxInstructionList
     !inAnalysisContext
+    !inHasTranslateFeature
     !inTerminalMap
     !inLexiqueName
     !inNonterminalMap
@@ -984,6 +1194,7 @@ end method ;
 
 override method @parseWhenInstruction analyzeSyntaxInstruction
   ??@analysisContext inAnalysisContext
+  ??@bool inHasTranslateFeature
   ??@terminalMap inTerminalMap
   ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
@@ -1007,6 +1218,7 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
   @semanticInstructionListForGeneration when_instructionListForGeneration ;
   analyzeSyntaxInstructionList
     !inAnalysisContext
+    !inHasTranslateFeature
     !inTerminalMap
     !inLexiqueName
     !inNonterminalMap
@@ -1022,6 +1234,7 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
   @semanticInstructionListForGeneration else_instructionListForGeneration ;
   analyzeSyntaxInstructionList
     !inAnalysisContext
+    !inHasTranslateFeature
     !inTerminalMap
     !inLexiqueName
     !inNonterminalMap
@@ -1096,6 +1309,7 @@ routine semanticAnalysisOfRuleLabel
   ??@syntaxInstructionList inSyntaxInstructionList
   ??@analysisContext inAnalysisContext
   ??@terminalMap inTerminalMap
+  ??@bool inHasTranslateFeature
   ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
   ??@string inComponentName
@@ -1124,6 +1338,7 @@ routine semanticAnalysisOfRuleLabel
   foreach inSyntaxInstructionList do
     [mInstruction analyzeSyntaxInstruction
       !inAnalysisContext
+      !inHasTranslateFeature
       !inTerminalMap
       !inLexiqueName
       !inNonterminalMap
@@ -1209,6 +1424,7 @@ routine semanticAnalysisOfSyntaxComponent
         !mSyntaxInstructionList
         !analysisContext
         !inTerminalMap
+        !inHasTranslateFeature
         !inLexiqueName
         !nonterminalMap
         !inComponentName

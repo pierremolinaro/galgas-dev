@@ -1782,6 +1782,32 @@ nonterminal <actual_parameter_list>
 
 #---------------------------------------------------------------------------*
 
+rule <syntax_directed_translation_result>
+  !@abstractGrammarInstructionSyntaxDirectedTranslationResult outResult
+:
+  select
+    $?$ ;
+    $*$ ;
+    outResult := [@grammarInstructionSyntaxDirectedTranslationDropResult new !here] ;
+  or
+    $?$ ;
+    $type_name$ ?@lstring actualParameterTypeName ;
+    $identifier$ ?@lstring actualParameterName ;
+    outResult := [@grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar new !actualParameterTypeName !actualParameterName] ;
+  or
+    $??$ ;
+    $type_name$ ?@lstring actualParameterTypeName ;
+    $identifier$ ?@lstring actualParameterName ;
+    outResult := [@grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst new !actualParameterTypeName !actualParameterName] ;
+  or
+    $?$ ;
+    $identifier$ ?@lstring actualParameterName ;
+    outResult := [@grammarInstructionSyntaxDirectedTranslationResultInVar new !actualParameterName] ;
+  end select ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
 rule <semantic_instruction>
   !@semanticInstructionAST outInstruction
   ?!@localVariableDeclarationListAST ioLocalVariableDeclarationList
@@ -1811,25 +1837,7 @@ rule <semantic_instruction>
     grammarInstructionSyntaxDirectedTranslationResult := [@grammarInstructionSyntaxDirectedTranslationResultNone new] ;
   or
     $:>$ ;
-    select
-      $?$ ;
-      $*$ ;
-      grammarInstructionSyntaxDirectedTranslationResult := [@grammarInstructionSyntaxDirectedTranslationDropResult new !here] ;
-    or
-      $?$ ;
-      $type_name$ ?@lstring actualParameterTypeName ;
-      $identifier$ ?@lstring actualParameterName ;
-      grammarInstructionSyntaxDirectedTranslationResult := [@grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar new !actualParameterTypeName !actualParameterName] ;
-    or
-      $??$ ;
-      $type_name$ ?@lstring actualParameterTypeName ;
-      $identifier$ ?@lstring actualParameterName ;
-      grammarInstructionSyntaxDirectedTranslationResult := [@grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst new !actualParameterTypeName !actualParameterName] ;
-    or
-      $?$ ;
-      $identifier$ ?@lstring actualParameterName ;
-      grammarInstructionSyntaxDirectedTranslationResult := [@grammarInstructionSyntaxDirectedTranslationResultInVar new !actualParameterName] ;
-    end select ;
+    <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationResult ;
   end select ;
   $;$ ;
   outInstruction := [@grammarInstructionAST new

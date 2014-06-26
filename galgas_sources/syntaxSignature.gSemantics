@@ -71,7 +71,8 @@ override method @terminalCheckInstructionForGeneration appendSyntaxSignature
     !mLexiqueIdentifier
     ![@terminalCheckAssignementList emptyList]
     !mIndexingKeyList
-#    !"" # No location var
+    ![@grammarInstructionSyntaxDirectedTranslationResultNone new]
+    ![@grammarInstructionSyntaxDirectedTranslationResultNone new]
   ] ;
 end method ;
 

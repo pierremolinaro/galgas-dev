@@ -1915,7 +1915,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-abstract method @abstractGrammarInstructionSyntaxDirectedTranslationResult analyze
+abstract method @abstractGrammarInstructionSyntaxDirectedTranslationResult analyzeGrammarInstructionSDT
   ??@analysisContext inAnalysisContext
   ??@bool inHasTranslateFeature
   ??@string inSyntaxDirectedTranslationResultVarName
@@ -1925,7 +1925,7 @@ abstract method @abstractGrammarInstructionSyntaxDirectedTranslationResult analy
 
 #---------------------------------------------------------------------------*
 
-override method @grammarInstructionSyntaxDirectedTranslationResultNone analyze
+override method @grammarInstructionSyntaxDirectedTranslationResultNone analyzeGrammarInstructionSDT
   ??@analysisContext unused inAnalysisContext
   ??@bool unused inHasTranslateFeature
   ??@string unused inSyntaxDirectedTranslationResultVarName
@@ -1936,7 +1936,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @grammarInstructionSyntaxDirectedTranslationDropResult  analyze
+override method @grammarInstructionSyntaxDirectedTranslationDropResult  analyzeGrammarInstructionSDT
   ??@analysisContext unused inAnalysisContext
   ??@bool inHasTranslateFeature
   ??@string unused inSyntaxDirectedTranslationResultVarName
@@ -1950,7 +1950,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @grammarInstructionSyntaxDirectedTranslationResultInVar  analyze
+override method @grammarInstructionSyntaxDirectedTranslationResultInVar  analyzeGrammarInstructionSDT
   ??@analysisContext inAnalysisContext
   ??@bool inHasTranslateFeature
   ??@string inSyntaxDirectedTranslationResultVarName
@@ -1973,7 +1973,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar  analyze
+override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar  analyzeGrammarInstructionSDT
   ??@analysisContext inAnalysisContext
   ??@bool inHasTranslateFeature
   ??@string inSyntaxDirectedTranslationResultVarName
@@ -1998,7 +1998,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst  analyze
+override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst  analyzeGrammarInstructionSDT
   ??@analysisContext inAnalysisContext
   ??@bool inHasTranslateFeature
   ??@string inSyntaxDirectedTranslationResultVarName
@@ -2072,7 +2072,7 @@ override method @grammarInstructionAST analyzeSemanticInstruction
 #--- Check syntax directed translation result parameter
   const syntaxDirectedTranslationResultVarName := "syntaxDirectedTranslationResult_" . [mGrammarComponentName->location locationIndex] ;
   @stringlist assignementList [emptyList] ;
-  [mAbstractGrammarInstructionSyntaxDirectedTranslationResult analyze
+  [mAbstractGrammarInstructionSyntaxDirectedTranslationResult analyzeGrammarInstructionSDT
     !inAnalysisContext
     !hasTranslateFeature
     !syntaxDirectedTranslationResultVarName
