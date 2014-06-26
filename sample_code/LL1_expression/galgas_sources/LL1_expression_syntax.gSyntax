@@ -37,7 +37,7 @@ rule <Constant>
   !@uint outValue
 :
   @luint cst ;
-  $number$ ? cst;
+  $number$ ? cst :> ?* ?* ;
   outExpressionTree := [@cConst new !cst] ;
   outValue := [cst uint] ;
 end rule;

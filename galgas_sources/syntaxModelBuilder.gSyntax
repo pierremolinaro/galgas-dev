@@ -270,6 +270,12 @@ nonterminal <actual_input_parameter_list>
 
 #------------------------------------------------------------------------------*
 
+nonterminal <syntax_directed_translation_result>
+  !@abstractGrammarInstructionSyntaxDirectedTranslationResult outResult
+;
+
+#------------------------------------------------------------------------------*
+
 rule <syntax_instruction>
   !@syntaxInstructionAST outInstruction
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
@@ -287,12 +293,25 @@ rule <syntax_instruction>
       $,$ ;
     end repeat ;
   end select ;
+#--- Get syntax directed translation result string
+  @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor ;
+  @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingToken;
+  select
+    grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor := [@grammarInstructionSyntaxDirectedTranslationResultNone new] ;
+    grammarInstructionSyntaxDirectedTranslationPreceedingToken := [@grammarInstructionSyntaxDirectedTranslationResultNone new] ;
+  or
+    $:>$ ;
+    <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor ;
+    <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationPreceedingToken ;
+  end select ;
   $;$ ;
   outInstruction := [@terminalCheckInstruction new
     ![terminalName location]
     !terminalName
     !actualInputParameterList
     !indexNameList
+    !grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
+    !grammarInstructionSyntaxDirectedTranslationPreceedingToken
   ] ;
 end rule ;
 

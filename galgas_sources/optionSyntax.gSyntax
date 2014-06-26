@@ -17,7 +17,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-syntax optionSyntax ("galgas_scanner.gLexique")  feature translate :
+syntax optionSyntax ("galgas_scanner.gLexique") feature translate :
 import "optionTypesForAST.gSemantics" ;
 
 #---------------------------------------------------------------------------*
@@ -25,7 +25,7 @@ import "optionTypesForAST.gSemantics" ;
 rule <option_component_start_symbol>
  !@optionComponentAST outOptionComponentRoot
 :
-  $option$ ;
+  $option$ :> ?* ?* ;
 #--- Option Component Name
   $identifier$ ?@lstring mOptionComponentName indexing optionComponentDefinition ;
   $:$ ;

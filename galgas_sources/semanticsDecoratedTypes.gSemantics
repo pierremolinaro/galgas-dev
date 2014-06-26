@@ -958,7 +958,8 @@ class @terminalCheckInstructionForGeneration extends @syntaxInstructionForGenera
   @string mLexiqueIdentifier ;
   @terminalCheckAssignementList mTerminalCheckAssignementList ;
   @lstringlist mIndexingKeyList ;
-#  @string mTerminalLocationConstantName ; # Empty string if no var
+  @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor ;
+  @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationToken ;
 }
 
 #---------------------------------------------------------------------------*
