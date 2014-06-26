@@ -17,7 +17,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-syntax optionSyntax ("galgas_scanner.gLexique") :
+syntax optionSyntax ("galgas_scanner.gLexique")  feature translate :
 import "optionTypesForAST.gSemantics" ;
 
 #---------------------------------------------------------------------------*

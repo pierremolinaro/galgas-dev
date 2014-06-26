@@ -196,22 +196,12 @@ C_Lexique::~C_Lexique (void) {
 
 //-----------------------------------------------------------------------------*
 
-void C_Lexique::displayTokenList (void) const {
-  printf ("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n") ;
-  cToken * p = mFirstToken ;
-  while (p != NULL) {
-    co << p->mSeparatorStringBeforeToken ;
-    const int32_t tokenStart = p->mStartLocation.index () ;
-    const int32_t tokenLength = p->mEndLocation.index () - tokenStart + 1 ;
-    const C_String tokenString = sourceText ()->mSourceString.subString (tokenStart, tokenLength) ;
-    co << tokenString ;
-    p = p->mNextToken ;
+void C_Lexique::appendLastSeparatorTo (C_String & ioString) const {
+  if (NULL != mLastToken) {
+    const int32_t lastSeparatorStart = mLastToken->mEndLocation.index () + 1 ;
+    const C_String lastSeparatorString = sourceText ()->mSourceString.subStringFromIndex (lastSeparatorStart) ;
+    ioString << lastSeparatorString ;
   }
-//--- Append text after last token
-  const int32_t lastSeparatorStart = mLastToken->mEndLocation.index () + 1 ;
-  const C_String lastSeparatorString = sourceText ()->mSourceString.subStringFromIndex (lastSeparatorStart) ;
-  co << lastSeparatorString ;
-  printf ("$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$\n") ;
 }
 
 //-----------------------------------------------------------------------------*

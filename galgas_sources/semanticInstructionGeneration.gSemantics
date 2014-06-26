@@ -324,45 +324,47 @@ override method @grammarInstructionWithSourceFileForGeneration generateInstructi
   ??@bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
-  ioGeneratedCode .= "{\n" ;
+#  ioGeneratedCode .= "{\n" ;
 #--- Source string
   [mSourceFileExpression generateExpression
     !?ioGeneratedCode
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
-    ?@string sourceVar
+    ??@string sourceVar
   ] ;
 #--- Parameters
   @stringlist parameterCppNameList [emptyList] ;
   @stringlist jokerParametersToReleaseList [emptyList] ;
   @stringlist inputVariableList [emptyList] ;
   foreach mActualParameterList do
-    @string parameterCppName ;
     [mActualParameter generateActualParameter
       !?ioTemporaryVariableIndex
       !?ioGeneratedCode
       !?jokerParametersToReleaseList
       !?inputVariableList
       !?ioUnusedVariableCppNameSet
-      ?parameterCppName
+      ??@string parameterCppName
     ] ;
     parameterCppNameList += !parameterCppName ;
   end foreach ;
   if mGrammarHasTranslateFeature then
-    ioGeneratedCode .= "  C_String syntaxDirectedTranslationResult ;\n" ;
+    ioGeneratedCode .= "C_String " . mSyntaxDirectedTranslationResultVarName . " ;\n" ;
   end if ;
-  ioGeneratedCode .= "  cGrammar_" . [mGrammarName identifierRepresentation]
+  ioGeneratedCode .= "cGrammar_" . [mGrammarName identifierRepresentation]
                   .  "::_performSourceFileParsing_" . [mLabelName identifierRepresentation] 
                   .  " ("
                   . compilerCppName [] . ", "
-                  . if mGrammarHasTranslateFeature then "syntaxDirectedTranslationResult, " else "" end
+                  . if mGrammarHasTranslateFeature then mSyntaxDirectedTranslationResultVarName . ", " else "" end
                   . sourceVar ;
   foreach parameterCppNameList do
     ioGeneratedCode .= ", " . mValue ;
   end foreach ;
   ioGeneratedCode .= " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
-  ioGeneratedCode .= "}\n" ;
+#  ioGeneratedCode .= "}\n" ;
+  for s in mAssignementList do
+    ioGeneratedCode .= s->mValue . "\n" ;
+  end for ;
   if inGenerateCheckValid then
     ioGeneratedCode .= "#ifndef DO_NOT_GENERATE_CHECKINGS\n" ;
     foreach inputVariableList do
@@ -381,7 +383,7 @@ override method @grammarInstructionWithSourceExpressionForGeneration generateIns
   ??@bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
-  ioGeneratedCode .= "{\n" ;
+#  ioGeneratedCode .= "{\n" ;
 #--- Source string
   @string sourceVar ;
   [mSourceStringExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?sourceVar] ;
@@ -395,18 +397,21 @@ override method @grammarInstructionWithSourceExpressionForGeneration generateIns
     parameterCppNameList += !parameterCppName ;
   end foreach ;
   if mGrammarHasTranslateFeature then
-    ioGeneratedCode .= "  C_String syntaxDirectedTranslationResult ;\n" ;
+    ioGeneratedCode .= "C_String " . mSyntaxDirectedTranslationResultVarName . " ;\n" ;
   end if ;
-  ioGeneratedCode .= "  cGrammar_" . [mGrammarName identifierRepresentation]
+  ioGeneratedCode .= "cGrammar_" . [mGrammarName identifierRepresentation]
                   .  "::_performSourceStringParsing_" . [mLabelName identifierRepresentation] 
                   .  " (" . compilerCppName [] . ", "
-                  . if mGrammarHasTranslateFeature then "syntaxDirectedTranslationResult, " else "" end
+                  . if mGrammarHasTranslateFeature then mSyntaxDirectedTranslationResultVarName . ", " else "" end
                   . sourceVar ;
   foreach parameterCppNameList do
     ioGeneratedCode .= ", " . mValue ;
   end foreach ;
   ioGeneratedCode .= " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+  for s in mAssignementList do
+    ioGeneratedCode .= s->mValue . "\n" ;
+  end for ;
   if inGenerateCheckValid then
     ioGeneratedCode .= "#ifndef DO_NOT_GENERATE_CHECKINGS\n" ;
     foreach inputVariableList do
@@ -414,7 +419,7 @@ override method @grammarInstructionWithSourceExpressionForGeneration generateIns
     end foreach ;
     ioGeneratedCode .= "#endif\n" ;
   end if ;
-  ioGeneratedCode .= "}\n" ;
+#  ioGeneratedCode .= "}\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*

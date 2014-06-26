@@ -27,8 +27,7 @@ indexing grammar programSLRgrammar "SLR" :
   root <program_component_start_symbol>
     !@programComponentAST outProgramComponentRoot
   ;
-  
-  unused <actual_input_parameter_list> ;
+  unused <actual_input_parameter_list>, <actual_input_parameter> ;
 end grammar ;
 
 #---------------------------------------------------------------------------*

@@ -358,9 +358,6 @@ override method @inputParameterVariable analyzeInputParameter
   ?!@variableMap ioVariableMap
 :
   [!?ioVariableMap searchForWriteAccess !mActualParameterName ??@unifiedTypeMapProxy type ??@string cppName ?*] ;
-#  const cppName := "var_" . [mActualParameterName identifierRepresentation] ;
-#  const type := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mActualParameterTypeName] ;
-#  [!?ioVariableMap insertDefinedLocalVariable !mActualParameterName !type !cppName !cppName] ;
   @unifiedTypeMapProxy expectedType ;
   switch inRequiredLexicalType
   when lexicalType_string : expectedType := inAnalysisContext->mPredefinedTypes->mLStringType ;

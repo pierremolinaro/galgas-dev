@@ -195,39 +195,5 @@ rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputP
 end rule ;
 
 #---------------------------------------------------------------------------*
-#                                                                           *
-#  A C T U A L    I N P U T    P A R A M E T E R    L I S T                 *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-rule <actual_input_parameter_list>
-  !@actualInputParameterListAST outActualInputParameterList
-:
-  outActualInputParameterList := [@actualInputParameterListAST emptyList] ;
-  repeat
-  while
-    select
-      $?$ ;
-      $*$ ;
-      outActualInputParameterList += ![@inputParameterAnonymousVariable new] ;
-    or
-      $?$ ;
-      $type_name$ ?@lstring actualParameterTypeName ;
-      $identifier$ ?@lstring actualParameterName ;
-      outActualInputParameterList += ![@inputParameterDeclaredVariable new !actualParameterTypeName !actualParameterName] ;
-    or
-      $??$ ;
-      $type_name$ ?@lstring actualParameterTypeName ;
-      $identifier$ ?@lstring actualParameterName ;
-      outActualInputParameterList += ![@inputParameterDeclaredConstant new !actualParameterTypeName !actualParameterName] ;
-    or
-      $?$ ;
-      $identifier$ ?@lstring actualParameterName ;
-      outActualInputParameterList += ![@inputParameterVariable new !actualParameterName] ;
-    end select ;
-  end repeat ;
-end rule ;  
-
-#---------------------------------------------------------------------------*
 
 end syntax ;

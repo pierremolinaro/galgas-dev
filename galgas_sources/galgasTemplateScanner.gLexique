@@ -98,7 +98,6 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "loop",
   "map",
   "mapproxy",
-#  "match",
   "message",
   "method",
   "mod",
@@ -543,13 +542,13 @@ end rule ;
 # ----------------------------- Delimitors ---------------------------------------
 list galgasDelimitorsList error message "the '%K' delimitor" style delimitersStyle :
   "*",     "|",    ",",      "+",     "--",
-  "::",    ">",    ";",      ":",     "?^",
+  ":>",    ">",    ";",      ":",     "?^",
   "-",     "(",    ")",     "->",      "?",
   "==",   "??",    "!",     ":=",     "++",
   "[",     "]",   "+=",     "?!",     "!?",
   "/",    "!=",   ">=",      "&",     "!^",
-  "{",     "}",   "+>",     "-=",
-  "^",    ">>",    "~",     "<-" ;
+  "{",     "}",     "-=",
+  "^",    ">>",    "~" ;
 
 rule list galgasDelimitorsList ;
 
