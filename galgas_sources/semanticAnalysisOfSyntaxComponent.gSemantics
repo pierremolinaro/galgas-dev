@@ -1299,6 +1299,57 @@ override method @parseWhenInstructionForGeneration generateInstruction
 end method ;
 
 #---------------------------------------------------------------------------*
+
+override method @syntaxSendInstruction analyzeSyntaxInstruction
+  ??@analysisContext inAnalysisContext
+  ??@bool inHasTranslateFeature
+  ??@terminalMap unused inTerminalMap
+  ??@string unused inLexiqueName
+  ??@nonterminalMap unused inNonterminalMap
+  ??@string unused inComponentName
+  ??@stringset unused inIndexNameSet
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+  ?!@uint unused ioSelectMethodCount
+:
+  if not inHasTranslateFeature then
+    error mInstructionLocation : "'send' instruction is only allowed when syntax componant has 'translate' feature" ;
+  end if ;
+#--- Analyze source expression
+  [mExpression analyzeSemanticExpression
+    !inAnalysisContext
+    !?ioVariableMap
+    ??@semanticExpressionForGeneration expression
+  ] ;
+#--- Check expression type
+  if [expression mType] != inAnalysisContext->mPredefinedTypes->mStringType  then
+    error mInstructionLocation: "'send' expresion should be an @string expression" ;
+  end if ;
+#---
+  ioInstructionListForGeneration += ![@syntaxSendInstructionForGeneration new
+    !mInstructionLocation
+    !expression
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @syntaxSendInstructionForGeneration generateInstruction
+  ??@bool unused inGenerateCheckValid
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode
+:
+  [mExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ??@string sourceVar] ;
+#---
+  [!?ioUnusedVariableCppNameSet removeKey !syntaxDirectedTranslationResultVarName []] ;
+  ioGeneratedCode .= "if (" . sourceVar . ".isValid ()) {\n"
+                   . "  " . syntaxDirectedTranslationResultVarName [] . " << " . sourceVar . ".stringValue () ;\n"
+                   . "}\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 #           B U I L D    C O N T E X T                                      *
 #                                                                           *

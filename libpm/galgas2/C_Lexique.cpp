@@ -223,7 +223,6 @@ void C_Lexique::enterTokenFromPointer (cToken * inToken) {
   }
   mLastToken = inToken ;
 //---
-//  appendToSyntaxDirectedTranslationString () ;
   if (executionModeIsLexicalAnalysisOnly ()) {
     C_String s ;
     for (int32_t i=inToken->mStartLocation.index () ; i<=inToken->mEndLocation.index () ; i++) {

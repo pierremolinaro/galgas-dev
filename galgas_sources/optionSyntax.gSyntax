@@ -26,6 +26,7 @@ rule <option_component_start_symbol>
  !@optionComponentAST outOptionComponentRoot
 :
   $option$ :> ?* ?* ;
+  send "HELLO" ;
 #--- Option Component Name
   $identifier$ ?@lstring mOptionComponentName indexing optionComponentDefinition ;
   $:$ ;

@@ -196,6 +196,16 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
+override method @syntaxSendInstruction transformInstruction
+  ?!@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap
+  ??@nonTerminalSymbolMapForGrammarAnalysis unused inNonTerminalSymbolMap
+  ?!@uint unused ioAddedNonTerminalIndex
+  ?!@syntaxInstructionListForGrammarAnalysis unused ioSyntaxInstructionList
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @terminalCheckInstruction transformInstruction
   ?!@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
   ??@nonTerminalSymbolMapForGrammarAnalysis unused inNonTerminalSymbolMap

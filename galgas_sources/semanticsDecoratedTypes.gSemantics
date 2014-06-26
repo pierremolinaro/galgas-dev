@@ -1033,6 +1033,15 @@ class @parseWhenInstructionForGeneration extends @syntaxInstructionForGeneration
   @semanticInstructionListForGeneration mInstructionList ;
   @semanticInstructionListForGeneration mElseInstructionList ;
 }
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  P A R S E    W H E N    I N S T R U C T I O N                            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @syntaxSendInstructionForGeneration extends @syntaxInstructionForGeneration {
+  @semanticExpressionForGeneration mExpression ;
+}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
