@@ -26,6 +26,7 @@ option galgas_cli_options :
   @string extractLIBPMOption: '\0', "extract-libpm" -> "Extract embedded LIBPM at given path" ;
   
   @bool warnsOnDeprecatedConstructInGALGAS3 : '\0', "warns-on-deprecated-construct" -> "Emit a warning on construct deprecated in GALGAS 3" ;
+  @bool convertToGalgas3 : '\0', "convert-to-galgas-3" -> "Convert to GALGAS 3" ;
 end option ;
 
 #---------------------------------------------------------------------------*

@@ -17,7 +17,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-syntax grammarModelBuilder ("galgas_scanner.gLexique") :
+syntax grammarModelBuilder ("galgas_scanner.gLexique")  feature translate:
 
 import "grammarMetamodel.gSemantics" ;
 

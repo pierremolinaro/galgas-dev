@@ -188,8 +188,13 @@ indexing with projectLL1grammar
 ??@lstring inProjectSourceFile {
   const @string outputDirectory := outputDirectory [!inProjectSourceFile] ;
 #--- Parse metamodel component
-  @projectComponentAST projectComponentAST ;
-  grammar projectLL1grammar in inProjectSourceFile ?projectComponentAST ;
+  grammar projectLL1grammar in inProjectSourceFile ??@projectComponentAST projectComponentAST :> ??@string translatedProject ;
+  if [option galgas_cli_options.convertToGalgas3 value] then
+    const projectName := [[inProjectSourceFile lastPathComponent] stringByDeletingPathExtension] ;
+    const directory := [inProjectSourceFile stringByDeletingLastPathComponent] . "/../" ;
+    const newProjectFile := directory . projectName . ".galgasProject" ;
+    [translatedProject writeToFileWhenDifferentContents !newProjectFile ?*] ;
+  end if ;
 #--- Check project name
   if [[projectComponentAST mProjectName] string] != [[inProjectSourceFile lastPathComponent] stringByDeletingPathExtension] then
     error [projectComponentAST mProjectName] 
@@ -238,7 +243,13 @@ indexing with projectLL1grammar
           message "*** Parse '" . [fullFilePath lastPathComponent] . "'\n" ;
         end if ;
         @guiComponentAST guiComponentRoot ;
-        grammar guiGrammar in fullFilePath ?guiComponentRoot ;
+        grammar guiGrammar in fullFilePath ?guiComponentRoot :> ??@string translatedGUI ;
+        if [option galgas_cli_options.convertToGalgas3 value] then
+          const projectName := [[fullFilePath lastPathComponent] stringByDeletingPathExtension] ;
+          const directory := [fullFilePath stringByDeletingLastPathComponent] . "/../galgas-sources/" ;
+          const newProjectFile := directory . projectName . ".galgas" ;
+          [translatedGUI writeToFileWhenDifferentContents !newProjectFile ?*] ;
+        end if ;
         [!?parsedComponentStruct->mParsedGuiComponentMap insertKey !componentName !fullFilePath !guiComponentRoot] ;
       else
         error mFilePath:"extension of a gui component should be '.gGui'." ;
@@ -249,7 +260,13 @@ indexing with projectLL1grammar
           message "*** Parse '" . [fullFilePath lastPathComponent] . "'\n" ;
         end if ;
         @lexiqueComponentAST lexiqueComponentRoot ;
-        grammar lexiqueLL1grammar in fullFilePath ?lexiqueComponentRoot ;
+        grammar lexiqueLL1grammar in fullFilePath ?lexiqueComponentRoot :> ??@string translatedSource ;
+        if [option galgas_cli_options.convertToGalgas3 value] then
+          const projectName := [[fullFilePath lastPathComponent] stringByDeletingPathExtension] ;
+          const directory := [fullFilePath stringByDeletingLastPathComponent] . "/../galgas-sources/" ;
+          const newProjectFile := directory . projectName . ".galgas" ;
+          [translatedSource writeToFileWhenDifferentContents !newProjectFile ?*] ;
+        end if ;
         [!?parsedComponentStruct->mParsedLexiqueComponentMap insertKey !componentName !lexiqueComponentRoot] ;
       else
         error mFilePath:"extension of a lexique component should be '.gLexique'." ;
@@ -260,7 +277,13 @@ indexing with projectLL1grammar
           message "*** Parse '" . [fullFilePath lastPathComponent] . "'\n" ;
         end if ;
         @optionComponentAST optionComponentAST ;
-        grammar optionLL1grammar in fullFilePath ?optionComponentAST ;
+        grammar optionLL1grammar in fullFilePath ?optionComponentAST :> ??@string translatedSource ;
+        if [option galgas_cli_options.convertToGalgas3 value] then
+          const projectName := [[fullFilePath lastPathComponent] stringByDeletingPathExtension] ;
+          const directory := [fullFilePath stringByDeletingLastPathComponent] . "/../galgas-sources/" ;
+          const newProjectFile := directory . projectName . ".galgas" ;
+          [translatedSource writeToFileWhenDifferentContents !newProjectFile ?*] ;
+        end if ;
       #--- Semantic Analysis of option component
         @commandLineOptionMap boolOptionMap ;
         @commandLineOptionMap UIntOptionMap ;
@@ -286,7 +309,13 @@ indexing with projectLL1grammar
           message "*** Parse '" . [fullFilePath lastPathComponent] . "'\n" ;
         end if ;
         @semanticsComponentAST semanticsComponentRoot ;
-        grammar semanticsSLRgrammar in fullFilePath ?semanticsComponentRoot ;
+        grammar semanticsSLRgrammar in fullFilePath ?semanticsComponentRoot :> ??@string translatedSource ;
+        if [option galgas_cli_options.convertToGalgas3 value] then
+          const projectName := [[fullFilePath lastPathComponent] stringByDeletingPathExtension] ;
+          const directory := [fullFilePath stringByDeletingLastPathComponent] . "/../galgas-sources/" ;
+          const newProjectFile := directory . projectName . ".galgas" ;
+          [translatedSource writeToFileWhenDifferentContents !newProjectFile ?*] ;
+        end if ;
         [!?parsedComponentStruct->mParsedSemanticsComponentMap insertKey !componentName !fullFilePath !semanticsComponentRoot] ;
       else
         error mFilePath:"extension of a semantics component should be '.gSemantics'." ;
@@ -297,7 +326,13 @@ indexing with projectLL1grammar
           message "*** Parse '" . [fullFilePath lastPathComponent] . "'\n" ;
         end if ;
         @syntaxComponentAST syntaxComponentRoot ;
-        grammar syntaxSLRgrammar in fullFilePath ?syntaxComponentRoot ;
+        grammar syntaxSLRgrammar in fullFilePath ?syntaxComponentRoot :> ??@string translatedSource ;
+        if [option galgas_cli_options.convertToGalgas3 value] then
+          const projectName := [[fullFilePath lastPathComponent] stringByDeletingPathExtension] ;
+          const directory := [fullFilePath stringByDeletingLastPathComponent] . "/../galgas-sources/" ;
+          const newProjectFile := directory . projectName . ".galgas" ;
+          [translatedSource writeToFileWhenDifferentContents !newProjectFile ?*] ;
+        end if ;
         [!?parsedComponentStruct->mParsedSyntaxComponentMap insertKey !componentName !fullFilePath !syntaxComponentRoot] ;
       else
         error mFilePath:"extension of a syntax component should be '.gSyntax'." ;
@@ -308,7 +343,13 @@ indexing with projectLL1grammar
           message "*** Parse '" . [fullFilePath lastPathComponent] . "'\n" ;
         end if ;
         @grammarComponentAST grammarComponentRoot ;
-        grammar grammarLL1grammar in fullFilePath ?grammarComponentRoot ;
+        grammar grammarLL1grammar in fullFilePath ?grammarComponentRoot :> ??@string translatedSource ;
+        if [option galgas_cli_options.convertToGalgas3 value] then
+          const projectName := [[fullFilePath lastPathComponent] stringByDeletingPathExtension] ;
+          const directory := [fullFilePath stringByDeletingLastPathComponent] . "/../galgas-sources/" ;
+          const newProjectFile := directory . projectName . ".galgas" ;
+          [translatedSource writeToFileWhenDifferentContents !newProjectFile ?*] ;
+        end if ;
         [!?parsedComponentStruct->mParsedGrammarComponentMap insertKey !componentName !fullFilePath !grammarComponentRoot] ;
       else
         error mFilePath:"extension of a grammar component should be '.gGrammar'." ;
@@ -319,7 +360,13 @@ indexing with projectLL1grammar
           message "*** Parse '" . [fullFilePath lastPathComponent] . "'\n" ;
         end if ;
         @programComponentAST programComponentAST ;
-        grammar programSLRgrammar in fullFilePath ?programComponentAST ;
+        grammar programSLRgrammar in fullFilePath ?programComponentAST :> ??@string translatedSource ;
+        if [option galgas_cli_options.convertToGalgas3 value] then
+          const projectName := [[fullFilePath lastPathComponent] stringByDeletingPathExtension] ;
+          const directory := [fullFilePath stringByDeletingLastPathComponent] . "/../galgas-sources/" ;
+          const newProjectFile := directory . projectName . ".galgas" ;
+          [translatedSource writeToFileWhenDifferentContents !newProjectFile ?*] ;
+        end if ;
         [!?parsedComponentStruct->mParsedProgramComponentMap insertKey !componentName !fullFilePath !programComponentAST] ;
       else
         error mFilePath:"extension of a program component should be '.gProgram'." ;
@@ -458,26 +505,31 @@ indexing with projectLL1grammar
   grammar templateGrammar in inSourceFile ?* ;
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------*
+#                                                                            *
+#          galgasProject                                                     *
+#                                                                            *
+#----------------------------------------------------------------------------*
 
-#local routine buildProject ??@string inSourceFilePath :
-#  const @string buildOption := [option galgas_cli_options.buildOption value] ;
-#  if ([@uint errorCount] == 0) & (buildOption != "") then
-#    @stringlist buildList := [buildOption componentsSeparatedByString !","] ;
-#    foreach buildList do
-#      message "*** Compiling C++ '" . mValue . "' project'\n" ;
-#      const @string commandFileFullPath :=
-#        [[inSourceFilePath stringByDeletingLastPathComponent] stringByDeletingLastPathComponent]
-#         . "/" . mValue . "/build.command" ;
-#      if [commandFileFullPath fileExists] then
-#        @sint result := [commandFileFullPath system] ;
-#      else
-#        error [@location nowhere] : "cannot compile '" 
-#        . mValue . "' project : the '" . commandFileFullPath . "' file does not exist" ;
-#      end if ;
-#    end foreach ;
-#  end if ;
-#end routine ;
+when . "galgasProject"
+message "a GALGAS project source file"
+indexing with projectLL1grammar
+??@lstring inSourceFile {
+#  grammar templateGrammar in inSourceFile ?* ;
+}
+
+#----------------------------------------------------------------------------*
+#                                                                            *
+#          galgas                                                            *
+#                                                                            *
+#----------------------------------------------------------------------------*
+
+when . "galgas"
+message "a GALGAS source file"
+indexing with projectLL1grammar
+??@lstring inSourceFile {
+#  grammar templateGrammar in inSourceFile ?* ;
+}
 
 #---------------------------------------------------------------------------*
 

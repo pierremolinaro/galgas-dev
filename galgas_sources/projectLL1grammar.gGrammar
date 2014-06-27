@@ -17,7 +17,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-indexing grammar projectLL1grammar "LL1" :
+indexing grammar projectLL1grammar "LL1" feature translate :
   with "projectModelBuilder.gSyntax" ;
 
   root <project_component_start_symbol>

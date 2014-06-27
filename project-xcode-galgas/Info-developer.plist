@@ -204,6 +204,38 @@
 			<key>NSPersistentStoreTypeKey</key>
 			<string>Binary</string>
 		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>galgasProject</string>
+			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>galgasDocuments.icns</string>
+			<key>CFBundleTypeName</key>
+			<string>GALGAS project</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSTypeIsPackage</key>
+			<integer>0</integer>
+			<key>NSDocumentClass</key>
+			<string>OC_GGS_Document</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>galgas</string>
+			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>galgasDocuments.icns</string>
+			<key>CFBundleTypeName</key>
+			<string>GALGAS source</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSTypeIsPackage</key>
+			<integer>0</integer>
+			<key>NSDocumentClass</key>
+			<string>OC_GGS_Document</string>
+		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
 	<string>cocoaGalgasDeveloper</string>
