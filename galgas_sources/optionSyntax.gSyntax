@@ -17,7 +17,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-syntax optionSyntax ("galgas_scanner.gLexique") :
+syntax optionSyntax ("galgas_scanner.gLexique") feature translate :
 import "optionTypesForAST.gSemantics" ;
 
 #---------------------------------------------------------------------------*
@@ -36,8 +36,8 @@ rule <option_component_start_symbol>
     <option> !?mOptions ;
   end repeat ;
   $end$ ;
-  $option$ ;
-  $;$ ;
+  $option$ :> ?* ?* ;
+  $;$ :> ?* ?* ;
   outOptionComponentRoot := [@optionComponentAST new
     !mOptionComponentName
     !mOptions
@@ -70,7 +70,7 @@ rule <option> ?!@commandLineOptionListAST ioCommandLineOptionList :
       optionDefaultValueKind := [@optionDefaultValueEnumAST unsignedDefaultValue] ;
     end select ;
   end select ;
-  $;$ ;
+  $;$ :> ?* ?* ;
   ioCommandLineOptionList +=
     !mOptionTypeName
     !mOptionInternalName

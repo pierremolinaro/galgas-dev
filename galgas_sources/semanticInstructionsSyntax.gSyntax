@@ -17,7 +17,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-syntax semanticInstructionsSyntax ("galgas_scanner.gLexique") :
+syntax semanticInstructionsSyntax ("galgas_scanner.gLexique")  feature translate :
 
 import "semanticsTypesForAST.gSemantics" ;
 import "galgas_cli_options.gOption" ;

@@ -17,7 +17,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-syntax lexiqueSyntax ("galgas_scanner.gLexique") :
+syntax lexiqueSyntax ("galgas_scanner.gLexique")  feature translate :
 
 import "lexiqueTypesForAST.gSemantics" ;
 
@@ -33,7 +33,7 @@ rule <lexique_component_start_symbol> !@lexiqueComponentAST outLexiqueComponentR
   end select ;
   $lexique$ ;
 #--- Lexique Component Name
-  $identifier$ ??@lstring lexiqueComponentName ;
+  $identifier$ ??@lstring lexiqueComponentName :> ?* ?* ;
 #--- Enable indexing ?
   @lstring indexingDirectory ;
   select
@@ -90,8 +90,8 @@ rule <lexique_component_start_symbol> !@lexiqueComponentAST outLexiqueComponentR
     $;$ ;
   end repeat ;
   $end$ ;
-  $lexique$ ;
-  $;$ ;
+  $lexique$ :> ?* ?* ;
+  $;$ :> ?* ?* ;
   outLexiqueComponentRoot := [@lexiqueComponentAST new
     !lexiqueComponentName
     !isTemplate

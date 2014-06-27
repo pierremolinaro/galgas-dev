@@ -17,7 +17,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-syntax semanticDeclarationsSyntax ("galgas_scanner.gLexique") :
+syntax semanticDeclarationsSyntax ("galgas_scanner.gLexique")  feature translate :
 import "galgas_cli_options.gOption" ;
 import "semanticsTypesForAST.gSemantics" ;
 
@@ -414,13 +414,8 @@ rule <semantic_declaration>
   select
     mSuperClassName := ["" nowhere] ;
   or
-    $extends$ ;
-    if [option galgas_cli_options.warnsOnDeprecatedConstructInGALGAS3 value] then
-      warning here : "\"extends\" key word is deprecated: use \":\" delimitor" ;
-    end if ;
-    $type_name$ ? mSuperClassName indexing classReferencedAsSuperClass ;
-  or
-    $:$ ;
+    $extends$ :> ??@string sep ?* ;
+    send sep . ":" ;
     $type_name$ ? mSuperClassName indexing classReferencedAsSuperClass ;
   end select ;
   @lstringlist classFeatureList [emptyList] ;

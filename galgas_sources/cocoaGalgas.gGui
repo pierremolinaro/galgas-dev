@@ -32,6 +32,8 @@ with lexique "galgas_scanner.gLexique" {
   fileExtension : "gOption" ;
   fileExtension : "gGui" ;
   fileExtension : "gProject" ;
+  fileExtension : "galgasProject" ;
+  fileExtension : "galgas" ;
   blockComment : "#" ;
   title: "Source" ;
   label $before$, ${$ ;

@@ -17,7 +17,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-indexing grammar programSLRgrammar "SLR" :
+indexing grammar programSLRgrammar "SLR"  feature translate :
   with "expressionSyntax.gSyntax" ;
   with "parameterArgumentSyntax.gSyntax" ;
   with "semanticInstructionsSyntax.gSyntax" ;

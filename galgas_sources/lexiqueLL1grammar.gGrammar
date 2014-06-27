@@ -17,7 +17,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-indexing grammar lexiqueLL1grammar "LL1" :
+indexing grammar lexiqueLL1grammar "LL1" feature translate :
   with "lexiqueSyntax.gSyntax" ;
 
   root <lexique_component_start_symbol>

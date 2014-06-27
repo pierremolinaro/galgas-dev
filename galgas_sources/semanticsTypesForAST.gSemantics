@@ -373,25 +373,25 @@ abstract class @abstractInputParameter {
 
 #---------------------------------------------------------------------------*
 
-class @inputParameterAnonymousVariable : @abstractInputParameter {
+class @inputParameterAnonymousVariable extends @abstractInputParameter {
 }
 
 #---------------------------------------------------------------------------*
 
-class @inputParameterVariable : @abstractInputParameter {
+class @inputParameterVariable extends @abstractInputParameter {
   @lstring mActualParameterName ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @inputParameterDeclaredVariable : @abstractInputParameter {
+class @inputParameterDeclaredVariable extends @abstractInputParameter {
   @lstring mActualParameterTypeName ;
   @lstring mActualParameterName ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @inputParameterDeclaredConstant : @abstractInputParameter {
+class @inputParameterDeclaredConstant extends @abstractInputParameter {
   @lstring mActualParameterTypeName ;
   @lstring mActualParameterName ;
 }
@@ -907,31 +907,31 @@ abstract class @abstractGrammarInstructionSyntaxDirectedTranslationResult {
 
 #---------------------------------------------------------------------------*
 
-class @grammarInstructionSyntaxDirectedTranslationResultNone : @abstractGrammarInstructionSyntaxDirectedTranslationResult {
+class @grammarInstructionSyntaxDirectedTranslationResultNone extends @abstractGrammarInstructionSyntaxDirectedTranslationResult {
 }
 
 #---------------------------------------------------------------------------*
 
-class @grammarInstructionSyntaxDirectedTranslationDropResult : @abstractGrammarInstructionSyntaxDirectedTranslationResult {
+class @grammarInstructionSyntaxDirectedTranslationDropResult extends @abstractGrammarInstructionSyntaxDirectedTranslationResult {
   @location mLocation ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @grammarInstructionSyntaxDirectedTranslationResultInVar : @abstractGrammarInstructionSyntaxDirectedTranslationResult {
+class @grammarInstructionSyntaxDirectedTranslationResultInVar extends @abstractGrammarInstructionSyntaxDirectedTranslationResult {
   @lstring mActualParameterName ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar : @abstractGrammarInstructionSyntaxDirectedTranslationResult {
+class @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar extends @abstractGrammarInstructionSyntaxDirectedTranslationResult {
   @lstring mActualParameterTypeName ;
   @lstring mActualParameterName ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst : @abstractGrammarInstructionSyntaxDirectedTranslationResult {
+class @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst extends @abstractGrammarInstructionSyntaxDirectedTranslationResult {
   @lstring mActualParameterTypeName ;
   @lstring mActualParameterName ;
 }

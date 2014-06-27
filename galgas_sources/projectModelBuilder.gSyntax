@@ -17,7 +17,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-syntax projectModelBuilder ("galgas_scanner.gLexique") :
+syntax projectModelBuilder ("galgas_scanner.gLexique")  feature translate :
 
 import "projectMetamodel.gSemantics" ;
 
@@ -33,13 +33,13 @@ rule <project_component_start_symbol>
   !@projectComponentAST outProjectComponentAST
 :
   $project$ ;
-  $identifier$ ? @lstring projectName ;
+  $identifier$ ??@lstring projectName :> ?* ?* ;
   $($ ;
-  $unsigned_literal_integer$ ?@luint majorVersion ;
+  $unsigned_literal_integer$ ??@luint majorVersion ;
   $:$ ;
-  $unsigned_literal_integer$ ?@luint minorVersion ;
+  $unsigned_literal_integer$ ??@luint minorVersion ;
   $:$ ;
-  $unsigned_literal_integer$ ?@luint revisionVersion ;
+  $unsigned_literal_integer$ ??@luint revisionVersion ;
   $)$ ;
   $->$ ;
   $literal_string$ ? @lstring targetName ;
@@ -59,36 +59,49 @@ rule <project_component_start_symbol>
       $literal_string$ ? @lstring featureName ;
       generateFeatureList += !featureName ;
     end select ;
-    $;$ ;
+    $;$ :> ?* ?* ;
   while
     @sourceFileKind sourceFileKind ;
     select
-      $extern$ ;
+      $extern$ :> ??@string sep ?* ;
+      send sep ;
       sourceFileKind := [@sourceFileKind externSourceFile] ;
     or
-      $gui$ ;
+      $gui$ :> ??@string sep ?* ;
+      send sep ;
       sourceFileKind := [@sourceFileKind guiSourceFile] ;
     or
-      $lexique$ ;
+      $lexique$ :> ??@string sep ?* ;
+      send sep ;
       sourceFileKind := [@sourceFileKind lexiqueSourceFile] ;
     or
-      $option$ ;
+      $option$ :> ??@string sep ?* ;
+      send sep ;
       sourceFileKind := [@sourceFileKind optionSourceFile] ;
     or
-      $semantics$ ;
+      $semantics$ :> ??@string sep ?* ;
+      send sep ;
       sourceFileKind := [@sourceFileKind semanticsSourceFile] ;
     or
-      $syntax$ ;
+      $syntax$ :> ??@string sep ?* ;
+      send sep ;
       sourceFileKind := [@sourceFileKind syntaxSourceFile] ;
     or
-      $grammar$ ;
+      $grammar$ :> ??@string sep ?* ;
+      send sep ;
       sourceFileKind := [@sourceFileKind grammarSourceFile] ;
     or
-      $program$ ;
+      $program$ :> ??@string sep ?* ;
+      send sep ;
       sourceFileKind := [@sourceFileKind programSourceFile] ;
     end select ;
-    $literal_string$ ?@lstring filePath ;
-    $;$ ;
+    $literal_string$ ?@lstring filePath :> ?* ?* ;
+    send if sourceFileKind == [@sourceFileKind externSourceFile] then
+      "\"hand_coded_sources/" . filePath . "\""
+    else 
+      "\"galgas-sources/" . [filePath stringByDeletingPathExtension] . ".galgas\""
+    end ;
+    $;$ :> ?* ?* ;
     projectSourceList +=
       !sourceFileKind
       !filePath
@@ -106,8 +119,8 @@ rule <project_component_start_symbol>
     !targetName
     !here
   ] ;
-  $project$ ;
-  $;$ ;
+  $project$ :> ?* ?* ;
+  $;$ :> ?* ?* ;
 end rule ;
 
 #---------------------------------------------------------------------------*

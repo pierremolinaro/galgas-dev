@@ -17,7 +17,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-indexing grammar guiGrammar "SLR" :
+indexing grammar guiGrammar "SLR" feature translate :
   with "guiSyntax.gSyntax" ;
   root <gui_component_start_symbol>
     !@guiComponentAST outGuiComponentRoot

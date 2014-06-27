@@ -17,7 +17,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-syntax semanticsComponent ("galgas_scanner.gLexique") :
+syntax semanticsComponent ("galgas_scanner.gLexique") feature translate :
 
 import "semanticsTypesForAST.gSemantics" ;
 
@@ -40,27 +40,29 @@ nonterminal <semantic_declaration>
 rule <semantics_component_start_symbol>
   !@semanticsComponentAST outSemanticsComponentRoot
 :
-  $semantics$ ;
+  $semantics$ :> ??@string sep ?* ;
+  send sep ;
 #--- Semantics Component Name
-  $identifier$ ? @lstring mSemanticsComponentName ;
-  $:$ ;
+  $identifier$ ??@lstring mSemanticsComponentName :> ?* ?* ;
+  $:$ :> ?* ?* ;
 #--- Loop on import and semantics declarations
   @lstringlist mImportedComponentFileNameList [emptyList] ;
   @semanticDeclarationListAST mSemanticDeclarations [emptyList] ;
   repeat
   while
-    $import$ ;
-    $literal_string$ ? @lstring importedComponentFileName ;
+    $import$ :> ?* ?* ;
+    $literal_string$ ??@lstring importedComponentFileName :> ?* ?* ;
     mImportedComponentFileNameList += !importedComponentFileName ;
-    $;$ ;
+    $;$ :> ?* ?* ;
   while
     <semantic_declaration> !?mSemanticDeclarations ;
   end repeat ;
 #--- end
-  $end$ ;
-  @location endOfSourceFile := here ;
-  $semantics$ ;
-  $;$ ;
+  $end$ :> ??@string sepf ?* ;
+  send sepf ;
+  const endOfSourceFile := here ;
+  $semantics$ :> ?* ?* ;
+  $;$ :> ?* ?* ;
   outSemanticsComponentRoot := [@semanticsComponentAST new
     !mSemanticsComponentName
     !mImportedComponentFileNameList

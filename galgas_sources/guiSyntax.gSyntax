@@ -17,7 +17,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-syntax guiSyntax ("galgas_scanner.gLexique") :
+syntax guiSyntax ("galgas_scanner.gLexique") feature translate :
   import "guiTypesForAST.gSemantics" ;
 
 #---------------------------------------------------------------------------*

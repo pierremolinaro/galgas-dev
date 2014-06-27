@@ -17,7 +17,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-syntax parameterArgumentSyntax ("galgas_scanner.gLexique") :
+syntax parameterArgumentSyntax ("galgas_scanner.gLexique")  feature translate :
 
 import "semanticsTypesForAST.gSemantics" ;
 

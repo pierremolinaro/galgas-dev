@@ -17,7 +17,7 @@
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-syntax syntaxModelBuilder ("galgas_scanner.gLexique") :
+syntax syntaxModelBuilder ("galgas_scanner.gLexique")  feature translate :
 import "semanticsTypesForAST.gSemantics" ;
 import "syntaxMetamodel.gSemantics" ;
 
@@ -57,7 +57,8 @@ rule <syntax_component_start_symbol> !@syntaxComponentAST outSyntaxComponentRoot
   $identifier$ ??@lstring mSyntaxComponentName ;
 #--- Imported lexique
   $($ ;
-  $literal_string$ ??@lstring importedLexiqueReference ;
+  $literal_string$ ??@lstring importedLexiqueReference :> ?* ?* ;
+  send [importedLexiqueReference->string stringByDeletingPathExtension] ;
   $)$ ;
 #--- Feature 'translate'
   @bool hasTranslateFeature ;
@@ -76,10 +77,10 @@ rule <syntax_component_start_symbol> !@syntaxComponentAST outSyntaxComponentRoot
   @lstringlist importedComponentPathList [emptyList] ;
   repeat
   while
-    $import$ ;
-    $literal_string$ ??@lstring path ;
+    $import$ :> ?* ?* ;
+    $literal_string$ ??@lstring path :> ?* ?* ;
     importedComponentPathList += !path ;
-   $;$ ;
+   $;$ :> ?* ?* ;
   end repeat ;
 #--- Loop on declarations
   @nonterminalDeclarationListAST mNonterminalDeclarationList [emptyList] ;
@@ -96,8 +97,8 @@ rule <syntax_component_start_symbol> !@syntaxComponentAST outSyntaxComponentRoot
 #--- end
   $end$ ;
   const endOfSource := here ;
-  $syntax$ ;
-  $;$ ;
+  $syntax$ :> ?* ?* ;
+  $;$  :> ?* ?* ;
   outSyntaxComponentRoot := [@syntaxComponentAST new
     !mSyntaxComponentName
     !importedLexiqueReference
@@ -128,7 +129,8 @@ end rule ;
 #------------------------------------------------------------------------------*
 
 rule <nonterminal_declaration> ?!@nonterminalDeclarationListAST ioNonterminalDeclarationList :
-  $nonterminal$ ;
+  $nonterminal$  :> ??@string sep ?* ;
+  send sep. "rule" ;
   $non_terminal_symbol$ ??@lstring mNonterminalName indexing ruleDefinition ;
   @nonTerminalLabelListAST mLabels [emptyList] ;
   <nonterminal_label_declaration> ![@lstring new !"" !here] !?mLabels ;
