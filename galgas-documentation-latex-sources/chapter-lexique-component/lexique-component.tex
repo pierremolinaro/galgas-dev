@@ -5,31 +5,36 @@
 \chapter{Le composant \texttt{lexique}}
 %-------------------------------------------------------------
 
+Le rôle d'un analyseur lexical est de grouper les caractères de la chaîne d'entrée en \emph{symboles terminaux}, ou encore \emph{terminaux}, en écartant les séparateurs comment les espaces ou les commentaires. 
+
+En GALGAS, un analyseur lexical est défini par un composant \galgas{lexique}. Les composants \galgas{syntax}, qui définissent un ensemble de règles de production, font référence à un composant \galgas{lexique}.
 
 
-====== Writing a GALGAS Scanner : Overview ======
 
-===== Purpose of a lexical analyzer =====
+\section{Définition d'un composant \texttt{lexique}}
 
-The purpose of a lexical analyzer is to group characters from input string into //terminal symbols//, discarding irrelevant separators as blank or comments. In GALGAS, a terminal symbol is denoted by a character string, delimited by two '\$' characters. The following figure presents an example of an input string and the translation that would make a GALGAS generated lexical analyzer.
 
-{{ lexical\_analyzer\_purpose.png }}
+En GALGAS, un composant \galgas{lexique} a la structure suivante :
 
-===== Lexical Analyzer in GALGAS =====
+{\lstset{emph={nom, declarations}, emphstyle=\emph}
+\begin{galgascode}
+lexique nom :
+  declarations
+end lexique ;
+\end{galgascode}
 
-In GALGAS, a scanner is defined by a ''**lexique**'' component, which has the following structure:
+Le \galgas{nom} est le nom donné au composant ; il est utilisé pour référencer le composant \galgas{lexique} dans un composant \galgas{grammar}.
 
-|''**lexique** //lexical\_component\_name//:\\ // declarations and rules//\\ **end** **lexique**;''|
 
-The ''//lexical\_component\_name//'' is the name you give to your lexical component. It will be used later for referencing it from ''**syntax**'' and ''**grammar**'' components.
-
-==== Lexical Declarations Overview ====
-Five kinds of declarations are defined:
-  * lexical attribute declaration;
-  * single terminal symbol declaration;
-  * list of terminal symbols declaration;
-  * lexical error message declaration;
-  * style declaration.
+Dans un composant \galgas{lexique}, cinq types de déclarations sont définies :
+\begin{itemize}
+  \item déclaration d'attribut lexical ;
+  \item déclaration d'un symbole terminal ;
+  \item déclaration d'une liste de symboles terminaux ;
+  \item déclaration d'un message d'erreur lexical ;
+  \item déclaration d'un style ;
+  \item déclaration de règles d'analyse.
+\end{itemize}
 
 A //lexical attribute// carries the value associated with a terminal symbol: for example, the integer value of a literal integer constant, the string value of a character string constant, ...
 
