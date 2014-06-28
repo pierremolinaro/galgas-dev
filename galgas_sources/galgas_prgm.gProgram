@@ -28,6 +28,8 @@ program galgas_prgm :
   import "programComponentCompilation.gSemantics" ;
   import "projectLL1grammar.gGrammar" ;
   import "targetGeneration.gSemantics" ;
+  import "galgas3projectAST.gSemantics" ;
+  import "galgas3ProjectGrammar.gGrammar" ;
 
 #---------------------------------------------------------------------------*
 
@@ -513,9 +515,9 @@ indexing with projectLL1grammar
 
 when . "galgasProject"
 message "a GALGAS project source file"
-indexing with projectLL1grammar
+indexing with galgas3ProjectGrammar
 ??@lstring inSourceFile {
-#  grammar templateGrammar in inSourceFile ?* ;
+  grammar galgas3ProjectGrammar in inSourceFile ??@galgas3ProjectComponentAST projectComponentAST ;
 }
 
 #----------------------------------------------------------------------------*
