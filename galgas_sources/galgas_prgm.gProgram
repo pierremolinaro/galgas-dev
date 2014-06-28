@@ -2,7 +2,7 @@
 #                                                                           *
 #  GALGAS main program definition                                           *
 #                                                                           *
-#  Copyright (C) 2007, ..., 2012 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2014 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -518,6 +518,10 @@ message "a GALGAS project source file"
 indexing with galgas3ProjectGrammar
 ??@lstring inSourceFile {
   grammar galgas3ProjectGrammar in inSourceFile ??@galgas3ProjectComponentAST projectComponentAST ;
+  foreach projectComponentAST->mProjectSourceList do
+    const absoluteSourcePath := [mValue absolutePathFromPath ![inSourceFile stringByDeletingLastPathComponent]] ;
+    log absoluteSourcePath ;
+  end foreach ;
 }
 
 #----------------------------------------------------------------------------*

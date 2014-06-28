@@ -237,6 +237,26 @@ Mentionner \galgas{s} dans l'instruction \galgas{send} permet de transmettre les
 L'instruction \galgas{send} permet de reconstituer le comportement par défaut de l'instruction d'appel de terminal : par exemple, \galgas{$($ \:> ?@string s ?@string t ; send s . t ;} a le même effet que \galgas{$($ ;}.
 
 
+Attention, l'instruction \galgas{send} est une instruction syntaxique. Cela signifie que le code suivant est incorrect :
+\lstset{emph={condition, A, B}, emphstyle=\emph}
+\begin{galgascode}
+if condition then
+  send A ; # Erreur
+else
+  send B ; # Erreur
+end if ;
+\end{galgascode}
+
+L'analyse des instructions \galgas{send A ;} et  \galgas{send B ;} déclenche une erreur ; en effet, les branches d'une instruction \galgas{if} ne peuvent contenir que des instructions sémantiques. Les instructions \galgas{send} ne peuvent que directement dans des règles de production, soient dans les branches des instructions \galgas{select}, \galgas{repeat} ou \galgas{parse}. Pour contourner cette interdiction, écrire :
+\begin{galgascode}
+@string s ;
+if condition then
+  s := A ;
+else
+  s := B ;
+end if ;
+send s ;
+\end{galgascode}
 
 
 
