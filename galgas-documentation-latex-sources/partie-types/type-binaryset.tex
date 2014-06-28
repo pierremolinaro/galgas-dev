@@ -334,13 +334,13 @@ log s; # displays <@binaryset: 01X00, 10X0X, 11X0X, 11X10>
 
 \textbf{Exemple :}
 \begin{galgascode}
-@binaryset graph [binarySetWithPredicateString !"0001 0000"] ; # Edge 0 -> 1
-graph := graph | [@binaryset binarySetWithPredicateString !"0010 0001"] ; # Edge 1 -> 2
-graph := graph | [@binaryset binarySetWithPredicateString !"0011 0010"] ; # Edge 2 -> 3
-graph := graph | [@binaryset binarySetWithPredicateString !"0100 0011"] ; # Edge 3 -> 4
-graph := graph | [@binaryset binarySetWithPredicateString !"0101 0100"] ; # Edge 4 -> 5
+@binaryset gr [binarySetWithPredicateString !"0001 0000"] ; # Edge 0 -> 1
+gr := gr | [@binaryset binarySetWithPredicateString !"0010 0001"] ; # Edge 1 -> 2
+gr := gr | [@binaryset binarySetWithPredicateString !"0011 0010"] ; # Edge 2 -> 3
+gr := gr | [@binaryset binarySetWithPredicateString !"0100 0011"] ; # Edge 3 -> 4
+gr := gr | [@binaryset binarySetWithPredicateString !"0101 0100"] ; # Edge 4 -> 5
 @binaryset initialState [binarySetWithPredicateString !"0000"] ; # 0 is the initial state
-@binaryset accessibleStates := [graph accessibleStates !initialState !4] ;
+@binaryset accessibleStates := [gr accessibleStates !initialState !4] ;
 message " Accessible:" ;
 @uint64list valueList := [accessibleStates uint64ValueList !4] ;
 foreach valueList do
