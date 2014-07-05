@@ -137,9 +137,22 @@ project all_galgas (2:6:0) -> "galgas" :
   semantics "libpmHandling.gSemantics" ;
 
 #--- GALGAS 3 Project
-  grammar "galgas3ProjectGrammar.gGrammar" ;
   syntax "galgas3ProjectSyntax.gSyntax" ;
+  grammar "galgas3ProjectGrammar.gGrammar" ;
   semantics "galgas3projectAST.gSemantics" ;
+
+#--- GALGAS 3 File
+  syntax "galgas3ExpressionSyntax.gSyntax" ;
+  syntax "galgas3ParameterArgumentSyntax.gSyntax" ;
+  syntax "galgas3InstructionsSyntax.gSyntax" ;
+  syntax "galgas3DeclarationsSyntax.gSyntax" ;
+  syntax "galgas3OptionComponentSyntax.gSyntax" ;
+  syntax "galgas3LexiqueComponentSyntax.gSyntax" ;
+  grammar "galgas3Grammar.gGrammar" ;
+
+  semantics "galgas3OptionComponentCompilation.gSemantics" ;
+
+  semantics "galgas3LexiqueComponentCompilation.gSemantics" ;
 
 #--- Hand coded sources
   extern "cDecisionTableElement.cpp" ;

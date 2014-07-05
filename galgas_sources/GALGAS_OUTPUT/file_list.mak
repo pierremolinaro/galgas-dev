@@ -115,9 +115,18 @@ SOURCES += projectModelBuilder.cpp
 SOURCES += projectLL1grammar.cpp
 SOURCES += projectGlobalCheckings.cpp
 SOURCES += libpmHandling.cpp
-SOURCES += galgas3ProjectGrammar.cpp
 SOURCES += galgas3ProjectSyntax.cpp
+SOURCES += galgas3ProjectGrammar.cpp
 SOURCES += galgas3projectAST.cpp
+SOURCES += galgas3ExpressionSyntax.cpp
+SOURCES += galgas3ParameterArgumentSyntax.cpp
+SOURCES += galgas3InstructionsSyntax.cpp
+SOURCES += galgas3DeclarationsSyntax.cpp
+SOURCES += galgas3OptionComponentSyntax.cpp
+SOURCES += galgas3LexiqueComponentSyntax.cpp
+SOURCES += galgas3Grammar.cpp
+SOURCES += galgas3OptionComponentCompilation.cpp
+SOURCES += galgas3LexiqueComponentCompilation.cpp
 
 
 #------------------------------------------------------------------------------*
