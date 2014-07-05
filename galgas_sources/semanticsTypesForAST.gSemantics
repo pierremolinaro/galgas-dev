@@ -18,6 +18,8 @@
 #---------------------------------------------------------------------------*
 
 semantics semanticsTypesForAST :
+  import "optionTypesForAST.gSemantics" ;
+  import "lexiqueTypesForAST.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
@@ -1505,6 +1507,32 @@ list @externTypeMethodList {
   @lstring mMethodName ;
   @formalParameterListAST mFormalParameterList ;
   @location mDeclarationLocation ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @galgas3OptionComponentAST extends @semanticDeclarationAST {
+  @lstring mOptionComponentName  ;
+  @commandLineOptionListAST mOptions  ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @galgas3LexiqueComponentAST extends @semanticDeclarationAST {
+  @lstring mLexiqueComponentName  ;
+  @bool mIsTemplate ;
+  @metamodelTemplateDelimitorListAST mTemplateDelimitorList ;
+  @templateReplacementListAST mTemplateReplacementList ;
+  @lexicalAttributeListAST mLexicalAttributeList ;
+  @lexicalStyleListAST mLexicalStyleList ;
+  @terminalDeclarationListAST mTerminalDeclarationList  ;
+  @lexicalMessageDeclarationListAST mLexicalMessageDeclarationList ;
+  @lexicalListDeclarationListAST mLexicalListDeclarationList  ;
+  @lexicalRuleListAST mLexicalRuleList ;
+  @externRoutineListAST mExternRoutineList ;
+  @externFunctionListAST mExternFunctionList  ;
+  @indexingListAST mIndexingListAST ;
+  @lstring mIndexingDirectory ;
 }
 
 #---------------------------------------------------------------------------*

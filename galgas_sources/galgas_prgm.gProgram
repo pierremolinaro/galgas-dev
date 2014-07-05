@@ -30,6 +30,7 @@ program galgas_prgm :
   import "targetGeneration.gSemantics" ;
   import "galgas3projectAST.gSemantics" ;
   import "galgas3ProjectGrammar.gGrammar" ;
+  import "galgas3Grammar.gGrammar" ;
 
 #---------------------------------------------------------------------------*
 
@@ -518,9 +519,10 @@ message "a GALGAS project source file"
 indexing with galgas3ProjectGrammar
 ??@lstring inSourceFile {
   grammar galgas3ProjectGrammar in inSourceFile ??@galgas3ProjectComponentAST projectComponentAST ;
+  var declarationList := [@semanticDeclarationListAST emptyList] ; 
   foreach projectComponentAST->mProjectSourceList do
     const absoluteSourcePath := [mValue absolutePathFromPath ![inSourceFile stringByDeletingLastPathComponent]] ;
-    log absoluteSourcePath ;
+    grammar galgas3Grammar in [@lstring new !absoluteSourcePath !mValue->location] !?declarationList ;
   end foreach ;
 }
 
@@ -534,7 +536,8 @@ when . "galgas"
 message "a GALGAS source file"
 indexing with projectLL1grammar
 ??@lstring inSourceFile {
-#  grammar templateGrammar in inSourceFile ?* ;
+  var declarationList := [@semanticDeclarationListAST emptyList] ; 
+  grammar galgas3Grammar in inSourceFile !?declarationList ;
 }
 
 #---------------------------------------------------------------------------*
