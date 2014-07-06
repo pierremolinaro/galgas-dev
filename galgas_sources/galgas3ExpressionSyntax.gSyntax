@@ -23,22 +23,42 @@ import "semanticsTypesForAST.gSemantics" ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#   E X P R E S S I O N                                                        *
+#   C A S T                                                                    *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-#rule <expression> !@semanticExpressionAST outExpression :
-#  <concatenation_term> ? outExpression ;
-#  repeat
-#  while
-#    @location operatorLocation := here ;
-#    $.$ ;
-#    @semanticExpressionAST leftOperand := outExpression ;
-#    @semanticExpressionAST rightOperand ;
-#    <concatenation_term> ? rightOperand ;
-#    outExpression := [@concatExpressionAST new !operatorLocation !leftOperand !rightOperand] ;
-#  end repeat ;
-#end rule ;
+rule <expression> !@semanticExpressionAST outExpression :
+  <casted_expression> ?outExpression ;
+  select
+  or
+    const @location endOfReceiverExpression := here ;
+    $is$ ;
+    @dynamicTypeComparisonKind kind ;
+    select
+      $==$ ; kind := [@dynamicTypeComparisonKind equal] ;
+    or
+      $>=$ ; kind := [@dynamicTypeComparisonKind inherited] ;
+    or
+      $>$ ; kind := [@dynamicTypeComparisonKind strictlyInherited] ;
+    end select ;
+    $type_name$ ?@lstring typeName ;
+    outExpression := [@testDynamicClassInExpressionAST new
+      !outExpression
+      !endOfReceiverExpression
+      !kind
+      !typeName
+    ] ;
+  or
+    const @location endOfReceiverExpression := here ;
+    $as$ ;
+    $type_name$ ?@lstring typeName ;
+    outExpression := [@castInExpressionAST new
+      !outExpression
+      !endOfReceiverExpression
+      !typeName
+    ] ;
+  end select ;
+end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
@@ -46,8 +66,7 @@ import "semanticsTypesForAST.gSemantics" ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-#rule <concatenation_term> !@semanticExpressionAST outExpression :
-rule <expression> !@semanticExpressionAST outExpression :
+rule <casted_expression> !@semanticExpressionAST outExpression :
   <relation_term> ? outExpression ;
   repeat
   while
@@ -292,56 +311,12 @@ end rule ;
 #------------------------------------------------------------------------------*
 #                                                                              *
 #   P R I M A R Y  :    (EXPRESSION)                                           *
-#                       (cast EXP : @T)                                        *
-#                       (EXP is @T)                                            *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression :
   $($ ;
   <expression> ? outExpression ;
-  $)$ ;
-end rule ;
-
-#------------------------------------------------------------------------------*
-
-rule <primary> !@semanticExpressionAST outExpression :
-  $($ ;
-  <expression> ?@semanticExpressionAST receiverExpression ;
-  const @location endOfReceiverExpression := here ;
-  $is$ ;
-  @dynamicTypeComparisonKind kind ;
-  select
-    $==$ ; kind := [@dynamicTypeComparisonKind equal] ;
-  or
-    $>=$ ; kind := [@dynamicTypeComparisonKind inherited] ;
-  or
-    $>$ ; kind := [@dynamicTypeComparisonKind strictlyInherited] ;
-  end select ;
-  $type_name$ ?@lstring typeName ;
-  outExpression := [@testDynamicClassInExpressionAST new
-    !receiverExpression
-    !endOfReceiverExpression
-    !kind
-    !typeName
-  ] ;
-  $)$ ;
-end rule ;
-
-#------------------------------------------------------------------------------*
-
-rule <primary> !@semanticExpressionAST outExpression :
-  $($ ;
-  $cast$ ;
-  <expression> ?@semanticExpressionAST receiverExpression ;
-  const @location endOfReceiverExpression := here ;
-  $:$ ;
-  $type_name$ ?@lstring typeName ;
-  outExpression := [@castInExpressionAST new
-    !receiverExpression
-    !endOfReceiverExpression
-    !typeName
-  ] ;
   $)$ ;
 end rule ;
 
@@ -496,90 +471,116 @@ end rule ;
 #------------------------------------------------------------------------------*
 #                                                                              *
 #                         P R I M A R Y                                        *
-#   reader call         :   [expression reader !... ]                          *
-#   constructor call    :   [@class method !... ]                              *
-#   default constructor :   [@class default]                                   *
-#   option value        :   [option option_component_name.option_name]         *
-#   filewrapper object  :   [filewrapper filewrapper_name]                     *
+#   reader call           :   [expression reader !... ]                        *
+#   constructor call      :   [@class constructor !... ]                       *
+#   default constructor   :   [@class default]                                 *
+#   lexique introspection :   [lexique lexique_component_name.name]            *
+#   option value          :   [option option_component_name.option_name]       *
+#   filewrapper object    :   [filewrapper filewrapper_name]                   *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression :
   $[$ ;
+#--- Get source identity characteristics
+  @semanticExpressionAST receiverExpression ;
+  <expression> ? receiverExpression ;
+#--- Get reader name
+  @lstring readerName ;
+  $identifier$ ? readerName ;
+#--- Actual parameters
+  @semanticExpressionListAST expressionList ;
+  <output_expression_list> ?expressionList ;
+  outExpression := [@readerCallExpressionAST new !receiverExpression !readerName !expressionList] ;
+  $]$ ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression :
+  $[$ ;
+#--- Class name
+  $type_name$ ?@lstring className indexing typeReferenceInConstructor ;
+#--- Constructor name
+  $identifier$ ?@lstring constructorName ;
+#--- Actual arguments
+  <output_expression_list> ?@semanticExpressionListAST expressionList ;
+  outExpression := [@constructorExpressionAST new
+    !className
+    !constructorName
+    !expressionList
+  ] ;
+  $]$ ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression :
+  $[$ ;
+  $type_name$ ?@lstring className indexing typeReferenceInConstructor ;
+  $default$ ;
+  outExpression := [@defaultConstructorExpressionAST new !className] ;
+  $]$ ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression :
+  $[$ ;
+  $option$ ;
   select
-  #--- Get source identity characteristics
-    @semanticExpressionAST receiverExpression ;
-    <expression> ? receiverExpression ;
-  #--- Get reader name
-    @lstring readerName ;
-    $identifier$ ? readerName ;
-  #--- Actual parameters
-    @semanticExpressionListAST expressionList ;
-    <output_expression_list> ?expressionList ;
-    outExpression := [@readerCallExpressionAST new !receiverExpression !readerName !expressionList] ;
+    $.$ ;
+    $identifier$ ?@lstring optionName ;
+    $identifier$ ?@lstring readerName ;
+    outExpression := [@optionExpressionAST new ![@lstring new !"galgas_builtin_options" !here] !optionName !readerName] ;
   or
-  #--- Class name
-    $type_name$ ?@lstring className indexing typeReferenceInConstructor ;
-  #--- Constructor name
-    $identifier$ ?@lstring constructorName ;
-  #--- Actual arguments
-    <output_expression_list> ?@semanticExpressionListAST expressionList ;
-    outExpression := [@constructorExpressionAST new
-      !className
-      !constructorName
-      !expressionList
+    $identifier$ ?@lstring optionComponentName indexing optionComponentReference ;
+    $.$ ;
+    $identifier$ ?@lstring optionName ;
+    $identifier$ ?@lstring readerName ;
+    outExpression := [@optionExpressionAST new !optionComponentName !optionName !readerName] ;
+  end select ;
+  $]$ ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression :
+  $[$ ;
+  $lexique$ ;
+  $identifier$ ?@lstring lexiqueName ;
+  $:$ ;
+  $identifier$ ?@lstring readerName ;
+  outExpression := [@lexiqueIntrospectionExpressionAST new !lexiqueName !readerName] ;
+  $]$ ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression :
+  $[$ ;
+  $filewrapper$ ;
+  $identifier$ ?@lstring filewrapperName indexing filewrapperReference ;
+  select
+    outExpression := [@filewrapperObjectInstanciationInExpressionAST new
+      !filewrapperName
     ] ;
   or
-    $type_name$ ?@lstring className indexing typeReferenceInConstructor ;
-    $default$ ;
-    outExpression := [@defaultConstructorExpressionAST new !className] ;
-  or
-    $option$ ;
+    $.$ ;
     select
-      $.$ ;
-      $identifier$ ?@lstring optionName ;
-      $identifier$ ?@lstring readerName ;
-      outExpression := [@optionExpressionAST new ![@lstring new !"galgas_builtin_options" !here] !optionName !readerName] ;
-    or
-      $identifier$ ?@lstring optionComponentName indexing optionComponentReference ;
-      $.$ ;
-      $identifier$ ?@lstring optionName ;
-      $identifier$ ?@lstring readerName ;
-      outExpression := [@optionExpressionAST new !optionComponentName !optionName !readerName] ;
-    end select ;
-  or
-    $lexique$ ;
-    $identifier$ ?@lstring lexiqueName ;
-    $:$ ;
-    $identifier$ ?@lstring readerName ;
-    outExpression := [@lexiqueIntrospectionExpressionAST new !lexiqueName !readerName] ;
-  or
-    $filewrapper$ ;
-    $identifier$ ?@lstring filewrapperName indexing filewrapperReference ;
-    select
-      outExpression := [@filewrapperObjectInstanciationInExpressionAST new
+      $literal_string$ ??@lstring filePath ;
+      outExpression := [@filewrapperInExpressionAST new
         !filewrapperName
+        !filePath
       ] ;
     or
-      $.$ ;
-      select
-        @lstring filePath ;
-        $literal_string$ ? filePath ;
-        outExpression := [@filewrapperInExpressionAST new
-          !filewrapperName
-          !filePath
-        ] ;
-      or
-        @lstring filewrapperTemplateName ;
-        $identifier$ ? filewrapperTemplateName ;
-        @semanticExpressionListAST expressionList ;
-        <output_expression_list> ?expressionList ;
-        outExpression := [@filewrapperTemplateInExpressionAST new
-          !filewrapperName
-          !filewrapperTemplateName
-          !expressionList
-        ] ;
-      end select ;
+      $identifier$ ??@lstring filewrapperTemplateName ;
+      <output_expression_list> ??@semanticExpressionListAST expressionList ;
+      outExpression := [@filewrapperTemplateInExpressionAST new
+        !filewrapperName
+        !filewrapperTemplateName
+        !expressionList
+      ] ;
     end select ;
   end select ;
   $]$ ;
@@ -597,11 +598,11 @@ rule <primary> !@semanticExpressionAST outExpression :
   $identifier$ ??@lstring functionName indexing functionCall ;
   $[$ ;
   <output_expression_list> ??@semanticExpressionListAST expressionList ;
+  $]$ ;
   outExpression := [@functionCallExpressionAST new
     !functionName
     !expressionList
   ] ;
-  $]$ ;
 end rule ;
 
 #------------------------------------------------------------------------------*
