@@ -551,7 +551,8 @@ rule <semantic_instruction>
   @lstringlist mStructAttributeList [emptyList] ;
   repeat
   while
-    $->$ ;
+    $->$ :> ?@string sep ?* ;
+    send sep . "." ;
     $identifier$ ? @lstring attributeName ;
     mStructAttributeList += !attributeName ;
   end repeat ;
@@ -638,7 +639,8 @@ rule <semantic_instruction>
   @lstringlist mStructAttributeList [emptyList] ;
   repeat
   while
-    $->$ ;
+    $->$ :> ?@string sep ?* ;
+    send sep . "." ;
     $identifier$ ? @lstring attributeName ;
     mStructAttributeList += !attributeName ;
   end repeat ;
@@ -692,7 +694,8 @@ rule <semantic_instruction>
   @lstringlist mStructAttributeList [emptyList] ;
   repeat
   while
-    $->$ ;
+    $->$ :> ?@string sep ?* ;
+    send sep . "." ;
     $identifier$ ? @lstring attributeName ;
     mStructAttributeList += !attributeName ;
   end repeat ;
@@ -1109,7 +1112,8 @@ rule <semantic_instruction>
   @lstringlist mReceiverStructAttributes [emptyList] ;
   repeat
   while
-    $->$ ;
+    $->$ :> ?@string sep ?* ;
+    send sep . "." ;
     $identifier$ ?@lstring structAttribute ;
     mReceiverStructAttributes += !structAttribute ;
   end repeat ;
@@ -1474,20 +1478,30 @@ rule <semantic_instruction>
   @lstringlist mStructAttributeList [emptyList] ;
   repeat
   while
-    $->$ ;
+    $->$ :> ?@string sep ?* ;
+    send sep . "." ;
     $identifier$ ? @lstring attributeName ;
     mStructAttributeList += !attributeName ;
   end repeat ;
   $+=$ ;
-  @semanticExpressionListAST expressionList ;
-  <output_expression_list> ?expressionList ;
+  select
+    <output_expression_list> ??@semanticExpressionListAST expressionList ;
+    outInstruction := [@plusEqualElementsInstructionAST new
+      !instructionLocation
+      !mReceiverName
+      !mStructAttributeList
+      !expressionList
+    ] ;
+  or
+    <expression> ??@semanticExpressionAST expression ;
+    outInstruction := [@plusEqualExpressionInstructionAST new
+      !instructionLocation
+      !mReceiverName
+      !mStructAttributeList
+      !expression
+    ] ;
+  end select ;
   $;$ ;
-  outInstruction := [@plusEqualInstructionAST new
-    !instructionLocation
-    !mReceiverName
-    !mStructAttributeList
-    !expressionList
-  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -1509,11 +1523,28 @@ rule <semantic_instruction>
   $+=$ ;
   @semanticExpressionListAST expressionList ;
   <output_expression_list> ?expressionList ;
-  $;$ ;
-  outInstruction := [@selfPlusEqualInstructionAST new
+  outInstruction := [@selfPlusEqualElementsInstructionAST new
     !instructionLocation
     !expressionList
   ] ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction
+  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
+:
+  $self$ ;
+  const instructionLocation := here ;
+  $+=$ ;
+  <expression> ??@semanticExpressionAST expression ;
+  outInstruction := [@selfPlusEqualExpressionInstructionAST new
+    !instructionLocation
+    !expression
+  ] ;
+  $;$ ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -1534,11 +1565,13 @@ rule <semantic_instruction>
   @lstringlist mStructAttributeList [emptyList] ;
   repeat
   while
-    $->$ ;
+    $->$ :> ?@string sep ?* ;
+    send sep . "." ;
     $identifier$ ? @lstring attributeName ;
     mStructAttributeList += !attributeName ;
   end repeat ;
-  $.=$ ;
+  $.=$ :> ?@string sep ?* ;
+  send sep . "+=" ;
   @semanticExpressionAST mSourceExpression ;
   <expression> ? mSourceExpression ;
   $;$ ;
@@ -1566,7 +1599,8 @@ rule <semantic_instruction>
 :
   $self$ ;
   const instructionLocation := here ;
-  $.=$ ;
+  $.=$ :> ?@string sep ?* ;
+  send sep . "+=" ;
   @semanticExpressionAST mSourceExpression ;
   <expression> ? mSourceExpression ;
   $;$ ;

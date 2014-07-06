@@ -282,7 +282,7 @@ end rule ;
 
 #------------------------------- Floating point Number ------------------
 $.$ error message "the '.' delimitor" style delimitersStyle ;
-$.=$ error message "the '.=' delimitor" style delimitersStyle ;
+#$.=$ error message "the '.=' delimitor" style delimitersStyle ;
 $...$ error message "the '...' delimitor" style delimitersStyle ;
 
 #--- Floating Point constant begining with a dot
@@ -303,8 +303,8 @@ rule '.' :
     select
     when ".." :
       send $...$ ;
-    when "=" :
-      send $.=$ ;
+#    when "=" :
+#      send $.=$ ;
     default
       send $.$ ;
     end select ;

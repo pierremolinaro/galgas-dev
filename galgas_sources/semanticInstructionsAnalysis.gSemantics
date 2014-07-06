@@ -1006,7 +1006,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @plusEqualInstructionAST analyzeSemanticInstruction # +=
+override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # += !… !…
   ??@analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
@@ -1059,7 +1059,48 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @selfPlusEqualInstructionAST analyzeSemanticInstruction
+override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # += exp
+  ??@analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+:
+#--- Check target variable
+  @unifiedTypeMapProxy targetType ;
+  @string targetVariableCppName ;
+  @string nameForCheckingFormalParameterUsing ;
+  [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName ?nameForCheckingFormalParameterUsing] ;
+  foreach mStructAttributeList do
+    const attributeMap := [targetType mAttributeMap] ;
+    [attributeMap searchKey !mValue ?targetType] ;
+  end foreach ;
+#--- Check target variable type support '+= exp' operator
+  if ([targetType mHandledOperatorFlags] & addAssignOperator []) == 0 then
+    error mInstructionLocation
+    :"the target object has the '@" . [targetType key] . "' type, but this type does not support the '+=' operator"
+    ;
+  end if ;
+#--- Analyze source expression
+  [mExpression analyzeSemanticExpression
+    !inAnalysisContext
+    !?ioVariableMap
+    ??@semanticExpressionForGeneration expression
+  ] ;
+#--- Check assignment type compatibility
+  checkAssignmentTypes !targetType ![expression mType] !mInstructionLocation ;
+#--- Generate instruction
+  ioInstructionListForGeneration += ![@concatInstructionForGeneration new
+    !mInstructionLocation
+    !targetType
+    !targetVariableCppName
+    !nameForCheckingFormalParameterUsing
+    ![@lstringlist emptyList]
+    !expression
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
   ??@analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
@@ -1108,6 +1149,47 @@ override method @selfPlusEqualInstructionAST analyzeSemanticInstruction
       !effectiveParameterList
     ] ;
   end if ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstruction
+  ??@analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+:
+#--- Analyze "self", as receiver expression
+  @unifiedTypeMapProxy selfTypeProxy ;
+  @string selfObjectCppName ;
+  if [inAnalysisContext->mSelfTypeProxy isNull] then
+    error mInstructionLocation: "'self' can be used only in category modifiers" : selfObjectCppName, selfTypeProxy ;
+  else
+    selfObjectCppName := inAnalysisContext->mSelfObjectCppName ;
+    selfTypeProxy := inAnalysisContext->mSelfTypeProxy ;
+  end if ;
+#--- Check target variable type support '+= exp' operator
+  if ([selfTypeProxy mHandledOperatorFlags] & addAssignOperator []) == 0 then
+    error mInstructionLocation
+    :"the target object has the '@" . [selfTypeProxy key] . "' type, but this type does not support the '+=' operator"
+    ;
+  end if ;
+#--- Analyze source expression
+  [mExpression analyzeSemanticExpression
+    !inAnalysisContext
+    !?ioVariableMap
+    ??@semanticExpressionForGeneration expression
+  ] ;
+#--- Check assignment type compatibility
+  checkAssignmentTypes !selfTypeProxy ![expression mType] !mInstructionLocation ;
+#--- Generate instruction
+  ioInstructionListForGeneration += ![@concatInstructionForGeneration new
+    !mInstructionLocation
+    !selfTypeProxy
+    !selfObjectCppName
+    !""
+    ![@lstringlist emptyList]
+    !expression
+  ] ;
 end method ;
 
 #---------------------------------------------------------------------------*

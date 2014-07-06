@@ -73,7 +73,7 @@ routine semanticAnalysisOfOptionComponent
   @stringset optionNameSet [emptySet] ;
   foreach [inOptionComponentRoot mOptions] do
     if [optionNameSet hasKey ![mOptionInternalName string]] then
-      error mOptionInternalName: "the '" . [mOptionInternalName string] . "' command line option has been already declared" ;
+      error mOptionInternalName: "the '" + [mOptionInternalName string] + "' command line option has been already declared" ;
     elsif [mOptionTypeName string] == "bool" then
       [!?outBoolOptionMap insertKey
         !mOptionInternalName

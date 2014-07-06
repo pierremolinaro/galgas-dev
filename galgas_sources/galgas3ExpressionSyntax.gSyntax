@@ -27,18 +27,18 @@ import "semanticsTypesForAST.gSemantics" ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <expression> !@semanticExpressionAST outExpression :
-  <concatenation_term> ? outExpression ;
-  repeat
-  while
-    @location operatorLocation := here ;
-    $.$ ;
-    @semanticExpressionAST leftOperand := outExpression ;
-    @semanticExpressionAST rightOperand ;
-    <concatenation_term> ? rightOperand ;
-    outExpression := [@concatExpressionAST new !operatorLocation !leftOperand !rightOperand] ;
-  end repeat ;
-end rule ;
+#rule <expression> !@semanticExpressionAST outExpression :
+#  <concatenation_term> ? outExpression ;
+#  repeat
+#  while
+#    @location operatorLocation := here ;
+#    $.$ ;
+#    @semanticExpressionAST leftOperand := outExpression ;
+#    @semanticExpressionAST rightOperand ;
+#    <concatenation_term> ? rightOperand ;
+#    outExpression := [@concatExpressionAST new !operatorLocation !leftOperand !rightOperand] ;
+#  end repeat ;
+#end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
@@ -46,7 +46,8 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <concatenation_term> !@semanticExpressionAST outExpression :
+#rule <concatenation_term> !@semanticExpressionAST outExpression :
+rule <expression> !@semanticExpressionAST outExpression :
   <relation_term> ? outExpression ;
   repeat
   while

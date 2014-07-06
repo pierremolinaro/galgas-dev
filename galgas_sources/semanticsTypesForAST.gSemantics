@@ -787,10 +787,18 @@ class @structuredCastInstructionAST extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @plusEqualInstructionAST extends @semanticInstructionAST {
+class @plusEqualElementsInstructionAST extends @semanticInstructionAST {
   @lstring mReceiverName ;
   @lstringlist mStructAttributeList ;
   @semanticExpressionListAST mExpressions ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @plusEqualExpressionInstructionAST extends @semanticInstructionAST {
+  @lstring mReceiverName ;
+  @lstringlist mStructAttributeList ;
+  @semanticExpressionAST mExpression ;
 }
 
 #---------------------------------------------------------------------------*
@@ -799,8 +807,14 @@ class @plusEqualInstructionAST extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @selfPlusEqualInstructionAST extends @semanticInstructionAST {
+class @selfPlusEqualElementsInstructionAST extends @semanticInstructionAST {
   @semanticExpressionListAST mExpressions ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @selfPlusEqualExpressionInstructionAST extends @semanticInstructionAST {
+  @semanticExpressionAST mExpression ;
 }
 
 #---------------------------------------------------------------------------*

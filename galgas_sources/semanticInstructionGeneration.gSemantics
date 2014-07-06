@@ -326,7 +326,6 @@ override method @grammarInstructionWithSourceFileForGeneration generateInstructi
   ??@bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
-#  ioGeneratedCode .= "{\n" ;
 #--- Source string
   [mSourceFileExpression generateExpression
     !?ioGeneratedCode
@@ -363,7 +362,6 @@ override method @grammarInstructionWithSourceFileForGeneration generateInstructi
   end foreach ;
   ioGeneratedCode .= " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
-#  ioGeneratedCode .= "}\n" ;
   for s in mAssignementList do
     ioGeneratedCode .= s->mValue . "\n" ;
   end for ;
