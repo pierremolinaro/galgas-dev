@@ -261,7 +261,8 @@ rule <factor> !@semanticExpressionAST outExpression :
   <primary> ? outExpression ;
   repeat
   while
-    $->$ ;
+    $->$ :> ?@string sep ?* ;
+    send sep . "." ;
     $identifier$ ? @lstring structFieldName ;
     outExpression := [@structFieldAccessExpressionAST new !structFieldName->location !outExpression !structFieldName] ;
   end repeat ;

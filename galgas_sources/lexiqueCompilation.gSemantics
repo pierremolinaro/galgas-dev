@@ -159,9 +159,10 @@ end method ;
 override method @lexicalErrorByDefaultAST checkLexicalDefaultAction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 :
-  with !?ioLexiqueAnalysisContext->mLexicalMessageMap searchKey !mDefaultErrorMessageName : xyz_ do
-    xyz_mMessageIsUsed := true ;
-  end with ;
+#  with !?ioLexiqueAnalysisContext->mLexicalMessageMap searchKey !mDefaultErrorMessageName : xyz_ do
+#    xyz_mMessageIsUsed := true ;
+#  end with ;
+  [!?ioLexiqueAnalysisContext->mLexicalMessageMap setMMessageIsUsedForKey !true !mDefaultErrorMessageName->string] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -223,9 +224,10 @@ override method @lexicalStringNotMatchAST checkLexicalExpression
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 :
   ioLexiqueAnalysisContext->mUnicodeStringToGenerate += ![mString string] ;
-  with !?ioLexiqueAnalysisContext->mLexicalMessageMap searchKey !mErrorMessage do
-    mMessageIsUsed := true ;
-  end with ;
+#  with !?ioLexiqueAnalysisContext->mLexicalMessageMap searchKey !mErrorMessage do
+#    mMessageIsUsed := true ;
+#  end with ;
+  [!?ioLexiqueAnalysisContext->mLexicalMessageMap setMMessageIsUsedForKey !true !mErrorMessage->string] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -541,9 +543,10 @@ override method @lexicalStructuredSendInstructionAST checkLexicalInstruction
   ?!@lexicalTagMap unused ioTagMap
 :
   foreach mLexicalSendSearchList do
-    with !?ioLexiqueAnalysisContext->mLexicalTokenListMap searchKey !mSearchListName do
-      mShouldBeGenerated := true ;
-    end with ;
+#    with !?ioLexiqueAnalysisContext->mLexicalTokenListMap searchKey !mSearchListName do
+#      mShouldBeGenerated := true ;
+#    end with ;
+    [!?ioLexiqueAnalysisContext->mLexicalTokenListMap setMShouldBeGeneratedForKey !true !mSearchListName->string] ;
     [[ioLexiqueAnalysisContext mLexicalAttributeMap] searchKey !mAttributeName ?*] ;
   end foreach ;
   [mLexicalSendDefaultAction checkLexicalDefaultAction !?ioLexiqueAnalysisContext] ;
@@ -634,9 +637,10 @@ override method @lexicalRoutineInstructionAST checkLexicalInstruction
   end if ;
 #--- Check error messages are actually defined
   foreach mErrorMessageList do
-    with !?ioLexiqueAnalysisContext->mLexicalMessageMap searchKey !mValue : xyz_ do
-      xyz_mMessageIsUsed := true ;
-    end with ;
+#    with !?ioLexiqueAnalysisContext->mLexicalMessageMap searchKey !mValue : xyz_ do
+#      xyz_mMessageIsUsed := true ;
+#    end with ;
+    [!?ioLexiqueAnalysisContext->mLexicalMessageMap setMMessageIsUsedForKey !true !mValue->string] ;
   end foreach ;
 end method ;
 
@@ -682,9 +686,10 @@ override method @lexicalErrorInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?!@lexicalTagMap unused ioTagMap
 :
-  with !?ioLexiqueAnalysisContext->mLexicalMessageMap searchKey !mErrorMessageName do
-    mMessageIsUsed := true ;
-  end with ;
+#  with !?ioLexiqueAnalysisContext->mLexicalMessageMap searchKey !mErrorMessageName do
+#    mMessageIsUsed := true ;
+#  end with ;
+  [!?ioLexiqueAnalysisContext->mLexicalMessageMap setMMessageIsUsedForKey !true !mErrorMessageName->string] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -693,9 +698,10 @@ override method @lexicalWarningInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?!@lexicalTagMap unused ioTagMap
 :
-  with !?ioLexiqueAnalysisContext->mLexicalMessageMap searchKey !mWarningMessageName do
-    mMessageIsUsed := true ;
-  end with ;
+#  with !?ioLexiqueAnalysisContext->mLexicalMessageMap searchKey !mWarningMessageName do
+#    mMessageIsUsed := true ;
+#  end with ;
+  [!?ioLexiqueAnalysisContext->mLexicalMessageMap setMMessageIsUsedForKey !true !mWarningMessageName->string] ;
 end method ;
 
 #---------------------------------------------------------------------------*
