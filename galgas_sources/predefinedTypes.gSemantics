@@ -22,7 +22,7 @@ semantics predefinedTypes :
 
 #---------------------------------------------------------------------------*
 
-local routine appendPredefinedListTypeAST
+routine appendPredefinedListTypeAST
   ?!@semanticDeclarationListAST ioDeclarationListASTs
   ??@string inElementTypeName
 :
@@ -35,7 +35,6 @@ local routine appendPredefinedListTypeAST
     !attributeFeatureList
   ;
   ioDeclarationListASTs += ![@listDeclarationAST new
-    !true # Is global
     ![@lstring new !inElementTypeName . "list" !here]
     !attributeList
   ] ;
@@ -43,7 +42,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine appendPredefined2StringListTypeAST
+routine appendPredefined2StringListTypeAST
   ?!@semanticDeclarationListAST ioDeclarationListASTs
 :
   @attributeInCollectionListAST attributeList [emptyList] ;
@@ -61,7 +60,6 @@ local routine appendPredefined2StringListTypeAST
   ;
 
   ioDeclarationListASTs += ![@listDeclarationAST new
-    !true # Is global
     ![@lstring new !"2stringlist" !here]
     !attributeList
   ] ;
@@ -69,7 +67,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine appendStructASTForTypeWithLocation
+routine appendStructASTForTypeWithLocation
   ?!@semanticDeclarationListAST ioDeclarationListASTs
   ??@string inElementTypeName
 :
@@ -78,7 +76,6 @@ local routine appendStructASTForTypeWithLocation
   attributeList += ![@lstring new !inElementTypeName !here] ![@lstring new !inElementTypeName !here] !featureList ;
   attributeList += ![@lstring new !"location" !here] ![@lstring new !"location" !here] !featureList ;
   ioDeclarationListASTs += ![@structDeclarationAST new
-    !true # Is global
     ![@lstring new !"l" . inElementTypeName !here]
     !attributeList
     !"" # Not enumerable
@@ -87,7 +84,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine appendStructASTForRangeType
+routine appendStructASTForRangeType
   ?!@semanticDeclarationListAST ioDeclarationListASTs
 :
   @lstringlist featureList [emptyList] ;
@@ -95,7 +92,6 @@ local routine appendStructASTForRangeType
   attributeList += ![@lstring new !"uint" !here] ![@lstring new !"start" !here] !featureList ;
   attributeList += ![@lstring new !"uint" !here] ![@lstring new !"length" !here] !featureList ;
   ioDeclarationListASTs += ![@structDeclarationAST new
-    !true # Is global
     ![@lstring new !"range" !here]
     !attributeList
     !"uint" # Enumerable
@@ -107,23 +103,23 @@ end routine ;
 routine appendPredefinedTypesASTs
   ?!@semanticDeclarationListAST ioDeclarationListASTs
 :
-  ioDeclarationListASTs += ![@applicationPredefinedTypeAST new !true !"application" ![@predefinedTypeKindEnum predefined_application]] ;
-  ioDeclarationListASTs += ![@filewrapperPredefinedTypeAST new !true !"filewrapper" ![@predefinedTypeKindEnum predefined_filewrapper]] ;
-  ioDeclarationListASTs += ![@objectPredefinedTypeAST new !true !"object" ![@predefinedTypeKindEnum predefined_object]] ;
-  ioDeclarationListASTs += ![@boolPredefinedTypeAST new !true !"bool" ![@predefinedTypeKindEnum predefined_bool]] ;
-  ioDeclarationListASTs += ![@uintPredefinedTypeAST new !true !"uint" ![@predefinedTypeKindEnum predefined_uint]] ;
-  ioDeclarationListASTs += ![@uint64PredefinedTypeAST new !true !"uint64" ![@predefinedTypeKindEnum predefined_uint64]] ;
-  ioDeclarationListASTs += ![@sintPredefinedTypeAST new !true !"sint" ![@predefinedTypeKindEnum predefined_sint]] ;
-  ioDeclarationListASTs += ![@sint64PredefinedTypeAST new !true !"sint64" ![@predefinedTypeKindEnum predefined_sint64]] ;
-  ioDeclarationListASTs += ![@charPredefinedTypeAST new !true !"char" ![@predefinedTypeKindEnum predefined_char]] ;
-  ioDeclarationListASTs += ![@doublePredefinedTypeAST new !true !"double" ![@predefinedTypeKindEnum predefined_double]] ;
-  ioDeclarationListASTs += ![@stringPredefinedTypeAST new !true !"string" ![@predefinedTypeKindEnum predefined_string]] ;
-  ioDeclarationListASTs += ![@locationPredefinedTypeAST new !true !"location" ![@predefinedTypeKindEnum predefined_location]] ;
-  ioDeclarationListASTs += ![@stringsetPredefinedTypeAST new !true !"stringset" ![@predefinedTypeKindEnum predefined_stringset]] ;
-  ioDeclarationListASTs += ![@functionPredefinedTypeAST new !true !"function" ![@predefinedTypeKindEnum predefined_function]] ;
-  ioDeclarationListASTs += ![@typePredefinedTypeAST new !true !"type" ![@predefinedTypeKindEnum predefined_type]] ;
-  ioDeclarationListASTs += ![@binarysetPredefinedTypeAST new !true !"binaryset" ![@predefinedTypeKindEnum predefined_binaryset]] ;
-  ioDeclarationListASTs += ![@dataPredefinedTypeAST new !true !"data" ![@predefinedTypeKindEnum predefined_data]] ;
+  ioDeclarationListASTs += ![@applicationPredefinedTypeAST new !"application" ![@predefinedTypeKindEnum predefined_application]] ;
+  ioDeclarationListASTs += ![@filewrapperPredefinedTypeAST new !"filewrapper" ![@predefinedTypeKindEnum predefined_filewrapper]] ;
+  ioDeclarationListASTs += ![@objectPredefinedTypeAST new !"object" ![@predefinedTypeKindEnum predefined_object]] ;
+  ioDeclarationListASTs += ![@boolPredefinedTypeAST new !"bool" ![@predefinedTypeKindEnum predefined_bool]] ;
+  ioDeclarationListASTs += ![@uintPredefinedTypeAST new !"uint" ![@predefinedTypeKindEnum predefined_uint]] ;
+  ioDeclarationListASTs += ![@uint64PredefinedTypeAST new !"uint64" ![@predefinedTypeKindEnum predefined_uint64]] ;
+  ioDeclarationListASTs += ![@sintPredefinedTypeAST new !"sint" ![@predefinedTypeKindEnum predefined_sint]] ;
+  ioDeclarationListASTs += ![@sint64PredefinedTypeAST new !"sint64" ![@predefinedTypeKindEnum predefined_sint64]] ;
+  ioDeclarationListASTs += ![@charPredefinedTypeAST new !"char" ![@predefinedTypeKindEnum predefined_char]] ;
+  ioDeclarationListASTs += ![@doublePredefinedTypeAST new !"double" ![@predefinedTypeKindEnum predefined_double]] ;
+  ioDeclarationListASTs += ![@stringPredefinedTypeAST new !"string" ![@predefinedTypeKindEnum predefined_string]] ;
+  ioDeclarationListASTs += ![@locationPredefinedTypeAST new !"location" ![@predefinedTypeKindEnum predefined_location]] ;
+  ioDeclarationListASTs += ![@stringsetPredefinedTypeAST new !"stringset" ![@predefinedTypeKindEnum predefined_stringset]] ;
+  ioDeclarationListASTs += ![@functionPredefinedTypeAST new !"function" ![@predefinedTypeKindEnum predefined_function]] ;
+  ioDeclarationListASTs += ![@typePredefinedTypeAST new !"type" ![@predefinedTypeKindEnum predefined_type]] ;
+  ioDeclarationListASTs += ![@binarysetPredefinedTypeAST new !"binaryset" ![@predefinedTypeKindEnum predefined_binaryset]] ;
+  ioDeclarationListASTs += ![@dataPredefinedTypeAST new !"data" ![@predefinedTypeKindEnum predefined_data]] ;
 
   appendPredefinedListTypeAST !?ioDeclarationListASTs !"luint" ;
   appendPredefinedListTypeAST !?ioDeclarationListASTs !"uint" ;
@@ -218,7 +214,7 @@ end routine ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-local filewrapper predefinedTypeGenerationTemplate in "../generation_templates/type_generation" {
+filewrapper predefinedTypeGenerationTemplate in "../generation_templates/type_generation" {
 }{
 }{
   template predefinedTypesImplementation "predefined_types.cpp.gTemplate" ;

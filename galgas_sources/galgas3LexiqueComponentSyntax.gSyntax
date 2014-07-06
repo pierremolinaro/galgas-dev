@@ -15,7 +15,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-syntax galgas3LexiqueComponentSyntax ("galgas_scanner.gLexique") :
+syntax galgas3LexiqueComponentSyntax ("galgas3Scanner.gLexique") :
 
 import "semanticsTypesForAST.gSemantics" ;
 
@@ -91,7 +91,6 @@ rule <declaration>
   end repeat ;
   $end$ ;
   ioDeclarations += ![@galgas3LexiqueComponentAST new
-    !true
     !lexiqueComponentName
     !isTemplate
     !templateDelimitorList

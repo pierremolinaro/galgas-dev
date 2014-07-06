@@ -15,7 +15,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-syntax galgas3GuiComponentSyntax ("galgas_scanner.gLexique") :
+syntax galgas3GuiComponentSyntax ("galgas3Scanner.gLexique") :
   import "semanticsTypesForAST.gSemantics" ;
 
 #---------------------------------------------------------------------------*
@@ -130,7 +130,6 @@ rule <declaration>
 #---
   $end$ ;
   ioDeclarations += ![@galgas3GUIComponentAST new
-    !true
     !mGUIName
     !mGUIClass
     !importedOptionList

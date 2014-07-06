@@ -15,7 +15,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-syntax galgas3InstructionsSyntax ("galgas_scanner.gLexique") :
+syntax galgas3InstructionsSyntax ("galgas3Scanner.gLexique") :
 
 import "semanticsTypesForAST.gSemantics" ;
 import "galgas_cli_options.gOption" ;
@@ -60,23 +60,6 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    ' L O C A L '    D E C L A R A T I O N                                 *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-nonterminal <local_declaration> !@bool outIsGlobal ;
-
-rule <local_declaration> !@bool outIsGlobal :
-  select
-    outIsGlobal := true ;
-  or
-    $local$ ;
-    outIsGlobal := false ;
-  end select ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #    E X T E R N    R O U T I N E    D E C L A R A T I O N                  *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -91,7 +74,6 @@ rule <declaration>
   <formal_parameter_list> ? mFormalParameterList ;
   $;$ ;
   ioSemanticDeclarations += ![@externRoutineDeclarationAST new
-    !true # Is global
     !mActionName
     !mFormalParameterList
   ] ;
@@ -110,35 +92,6 @@ end rule ;
 rule <declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
-  @bool isGlobal ;
-  <local_declaration> ?isGlobal ;
-  $routine$ ;
-  $identifier$ ? @lstring mRoutineName indexing routineDefinition ;
-  @formalParameterListAST mFormalParameterList ;
-  <formal_parameter_list> ? mFormalParameterList ;
-  $:$ ;
-  @semanticInstructionListAST mRoutineInstructionList ;
-  <semantic_instruction_list> ? mRoutineInstructionList ;
-  $end$ ;
-  const endOfInstructionList := here ;
-  $routine$ ;
-  $;$ ;
-  ioSemanticDeclarations += ![@routineDeclarationAST new
-    !isGlobal
-    !mRoutineName
-    !mFormalParameterList
-    !mRoutineInstructionList
-    !endOfInstructionList
-  ] ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <declaration>
- ?!@semanticDeclarationListAST ioSemanticDeclarations
-:
-  @bool isGlobal ;
-  <local_declaration> ?isGlobal ;
   $routine$ ;
   $identifier$ ? @lstring mRoutineName indexing routineDefinition ;
   <formal_parameter_list> ?@formalParameterListAST mFormalParameterList ;
@@ -147,7 +100,6 @@ rule <declaration>
   $}$ ;
   const endOfInstructionList := here ;
   ioSemanticDeclarations += ![@routineDeclarationAST new
-    !isGlobal
     !mRoutineName
     !mFormalParameterList
     !mRoutineInstructionList
@@ -168,36 +120,6 @@ end rule ;
 rule <declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
-  <local_declaration> ?@bool isGlobal ;
-  $function$ ;
-  $identifier$ ? @lstring mRoutineName indexing functionDefinition ;
-  <formal_input_parameter_list> ?@formalInputParameterListAST formalInputParameterList ;
-  $->$ ;
-  $type_name$ ?@lstring resultTypeName ;
-  $identifier$ ?@lstring resultVariableName ;
-  $:$ ;
-  <semantic_instruction_list> ?@semanticInstructionListAST functionInstructionList ;
-  $end$ ;
-  const endOfFunctionInstructionList := here ;
-  $function$ ;
-  $;$ ;
-  ioSemanticDeclarations += ![@functionDeclarationAST new
-    !isGlobal
-    !mRoutineName
-    !formalInputParameterList
-    !resultTypeName
-    !resultVariableName
-    !functionInstructionList
-    !endOfFunctionInstructionList
-  ] ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <declaration>
- ?!@semanticDeclarationListAST ioSemanticDeclarations
-:
-  <local_declaration> ?@bool isGlobal ;
   $function$ ;
   $identifier$ ? @lstring mRoutineName indexing functionDefinition ;
   <formal_input_parameter_list> ?@formalInputParameterListAST formalInputParameterList ;
@@ -209,7 +131,6 @@ rule <declaration>
   $}$ ;
   const endOfFunctionInstructionList := here ;
   ioSemanticDeclarations += ![@functionDeclarationAST new
-    !isGlobal
     !mRoutineName
     !formalInputParameterList
     !resultTypeName
@@ -232,34 +153,6 @@ end rule ;
 rule <declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
-  <local_declaration> ??@bool isGlobal ;
-  $once$ ;
-  $identifier$ ? @lstring mRoutineName indexing functionDefinition ;
-  $->$ ;
-  $type_name$ ?@lstring resultTypeName ;
-  $identifier$ ?@lstring resultVariableName ;
-  $:$ ;
-  <semantic_instruction_list> ??@semanticInstructionListAST mRoutineInstructionList ;
-  $end$ ;
-  $once$ ;
-  const endOfFunctionInstructionList := here ;
-  $;$ ;
-  ioSemanticDeclarations += ![@onceFunctionDeclarationAST new
-    !isGlobal
-    !mRoutineName
-    !resultTypeName
-    !resultVariableName
-    !mRoutineInstructionList
-    !endOfFunctionInstructionList
-  ] ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <declaration>
- ?!@semanticDeclarationListAST ioSemanticDeclarations
-:
-  <local_declaration> ??@bool isGlobal ;
   $once$ ;
   $identifier$ ?@lstring mRoutineName indexing functionDefinition ;
   $->$ ;
@@ -270,7 +163,6 @@ rule <declaration>
   $}$ ;
   const endOfFunctionInstructionList := here ;
   ioSemanticDeclarations += ![@onceFunctionDeclarationAST new
-    !isGlobal
     !mRoutineName
     !resultTypeName
     !resultVariableName
@@ -302,7 +194,6 @@ rule <declaration>
   $identifier$ ?@lstring resultVariableName ;
   $;$ ;
   ioSemanticDeclarations += ![@externFunctionDeclarationAST new
-    !true # Is global
     !mActionName
     !formalInputParameterList
     !resultTypeName
@@ -406,57 +297,6 @@ rule <semantic_instruction>
 end rule ;
 
 #---------------------------------------------------------------------------*
-
-rule <semantic_instruction>
-  !@semanticInstructionAST outInstruction
-  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
-:
-  $type_name$ ?@lstring typeName ;
-  $identifier$ ?@lstring variableName ;
-  $[$ ;
-  $default$ ;
-  $]$ ;
-  outInstruction := [@localVariableOrConstantDeclarationWithDefaultConstructorAST new
-    ![typeName location]
-    !false # Is not Constant
-    !typeName
-    !variableName
-  ] ;
-  if [option galgas_cli_options.warnsOnDeprecatedConstructInGALGAS3 value] then
-    warning variableName : "This construction is deprecated in GALGAS 2.6.0 and above: replace with \"var "
-     . variableName . " := [@" . typeName . " default] ;" ;
-  end if ;
-  $;$ ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <semantic_instruction>
-  !@semanticInstructionAST outInstruction
-  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
-:
-  $type_name$ ?@lstring typeName ;
-  $identifier$ ?@lstring variableName ;
-  $[$ ;
-  $identifier$ ?@lstring constructorName ;
-  <output_expression_list> ?@semanticExpressionListAST expressionList ;
-  outInstruction := [@localVariableOrConstantDeclarationWithConstructorCallAST new
-    ![typeName location]
-    !false # Is not Constant
-    !typeName
-    !variableName
-    !constructorName
-    !expressionList
-  ] ;
-  $]$ ;
-  if [option galgas_cli_options.warnsOnDeprecatedConstructInGALGAS3 value] then
-    warning variableName : "This construction is deprecated in GALGAS 2.6.0 and above: replace with \"var "
-     . variableName . " := [@" . typeName . " constructor...] ;\"" ;
-  end if ;
-  $;$ ;
-end rule ;
-
-#---------------------------------------------------------------------------*
 #                                                                           *
 #  L O C A L    C O N S T A N T    D E C L A R A T I O N                    *
 #                                                                           *
@@ -484,61 +324,6 @@ rule <semantic_instruction>
     !sourceExpression
   ] ;
  $;$ ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <semantic_instruction>
-  !@semanticInstructionAST outInstruction
-  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
-:
-  $const$ ;
-  $type_name$ ?@lstring typeName ;
-  $identifier$ ?@lstring variableName ;
-  $[$ ;
-  @lstring constructorName ;
-  $identifier$ ? constructorName ;
-  @semanticExpressionListAST expressionList ;
-  <output_expression_list> ?expressionList ;
-  $]$ ;
-  outInstruction := [@localVariableOrConstantDeclarationWithConstructorCallAST new
-    ![typeName location]
-    !true # is constant
-    !typeName
-    !variableName
-    !constructorName
-    !expressionList
-  ] ;
-  if [option galgas_cli_options.warnsOnDeprecatedConstructInGALGAS3 value] then
-    warning variableName : "This construction is deprecated in GALGAS 2.6.0 and above: replace with \"const "
-     . variableName . " := [@" . typeName . " constructor...] ;" ;
-  end if ;
-  $;$ ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <semantic_instruction>
-  !@semanticInstructionAST outInstruction
-  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
-:
-  $const$ ;
-  $type_name$ ?@lstring typeName ;
-  $identifier$ ?@lstring variableName ;
-  $[$ ;
-  $default$ ;
-  $]$ ;
-  outInstruction := [@localVariableOrConstantDeclarationWithDefaultConstructorAST new
-    ![typeName location]
-    !true # Is Constant
-    !typeName
-    !variableName
-  ] ;
-  if [option galgas_cli_options.warnsOnDeprecatedConstructInGALGAS3 value] then
-    warning variableName : "This construction is deprecated in GALGAS 2.6.0 and above: replace with \"const "
-     . variableName . " := [@" . typeName . " default] ;" ;
-  end if ;
-  $;$ ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -900,8 +685,6 @@ rule <semantic_instruction>
   const endof_after_branch := here ;
   $end$ ;
   const endof_foreach_instruction := here ;
-  $foreach$ ;
-  $;$ ;
   outInstruction := [@foreachInstructionAST new
     !instructionLocation
     !mEnumeratedObjectList
@@ -1011,8 +794,6 @@ rule <semantic_instruction>
   const endof_after_branch := here ;
   $end$ ;
   const endof_foreach_instruction := here ;
-  $for$ ;
-  $;$ ;
   outInstruction := [@forInstructionAST new
     !instructionLocation
     !mEnumeratedObjectList
@@ -1081,53 +862,7 @@ rule <semantic_instruction>
   $if$ ;
   <if_branch> ?outInstruction ;
   $end$ ;
-  $if$ ;
-  $;$ ;
 end rule ;
-
-#---------------------------------------------------------------------------*
-
-#rule <new_if_branch> !@semanticInstructionAST outInstruction :
-#  const instructionLocation := here ;
-#  <expression> ?@semanticExpressionAST if_expression ;
-#  ${$ ;
-#  <semantic_instruction_list> ?@semanticInstructionListAST then_instructionList ;
-#  const endOf_then_branchLocation := here ;
-#  @semanticInstructionListAST else_instructionList ;
-#  select
-#    else_instructionList := [@semanticInstructionListAST emptyList] ;
-#  or
-##    $}$ ;
-#    $else$ ;
-#    ${$ ;
-#    <semantic_instruction_list> ?else_instructionList ;
-#  or
-##    $}$ ;
-#    $elsif$ ;
-#    <new_if_branch> ?@semanticInstructionAST instruction ;
-#    else_instructionList := [@semanticInstructionListAST emptyList] ;
-#    else_instructionList += !instruction ;
-#  end select ;
-#  outInstruction := [@ifInstructionAST new
-#    !instructionLocation
-#    !if_expression
-#    !then_instructionList
-#    !endOf_then_branchLocation
-#    !else_instructionList
-#    !here
-#  ] ;
-#end rule ;
-
-#---------------------------------------------------------------------------*
-
-#rule <semantic_instruction>
-#  !@semanticInstructionAST outInstruction
-#  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
-#:
-#  $if$ ;
-#  <new_if_branch> ?outInstruction ;
-#  $}$ ;
-#end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *

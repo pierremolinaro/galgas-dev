@@ -361,18 +361,19 @@ map @categoryReaderMapForGlobalCheckings {
 
 function outputDirectory
   ??@lstring inSourceFile
-  ->  @string outOuputDirectory {
+  ->  @string outOuputDirectory
+:
   if [inSourceFile characterAtIndex !0] == '/' then
     outOuputDirectory := [inSourceFile stringByDeletingLastPathComponent] ;
     outOuputDirectory .= "/GALGAS_OUTPUT" ;
   else
     outOuputDirectory := "GALGAS_OUTPUT" ;
   end if ;
-}
+end function ;
 
 #---------------------------------------------------------------------------*
 
-local routine checkCategoryModifierDefinitionForClass
+routine checkCategoryModifierDefinitionForClass
   ??@string inClassNameForErrorSignaling
   ??@string inClassName
   ??@lstring inAbstractCategoryModifierName
@@ -409,7 +410,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine checkCategoryMethodDefinitionForClass
+routine checkCategoryMethodDefinitionForClass
   ??@string inClassNameForErrorSignaling
   ??@string inClassName
   ??@lstring inAbstractCategoryMethodName
@@ -446,7 +447,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine checkCategoryReaderDefinitionForClass
+routine checkCategoryReaderDefinitionForClass
   ??@string inClassNameForErrorSignaling
   ??@string inClassName
   ??@lstring inAbstractCategoryReaderName
@@ -756,9 +757,10 @@ filewrapper typeDumpGenerationTemplate in "../generation_templates/target_genera
 
 #---------------------------------------------------------------------------*
 
-local function linkForType ??@string inTypeName -> @string outResult {
+function linkForType ??@string inTypeName -> @string outResult
+:
   outResult := "<a class=\"header_link\" href=\"#" . inTypeName . "\">@" . inTypeName . "</a>" ;
-}
+end function ;
 
 #---------------------------------------------------------------------------*
 

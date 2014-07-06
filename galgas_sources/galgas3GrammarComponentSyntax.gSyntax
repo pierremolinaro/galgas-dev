@@ -15,7 +15,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-syntax galgas3GrammarComponentSyntax ("galgas_scanner.gLexique") :
+syntax galgas3GrammarComponentSyntax ("galgas3Scanner.gLexique") :
 
 import "semanticsTypesForAST.gSemantics" ;
 
@@ -88,7 +88,6 @@ rule <declaration>
 #---
   $end$ ;
   ioDeclarations += ![@galgas3GrammarComponentAST new
-    !true
     !hasIndexing
     !mGrammarName
     !mGrammarClass

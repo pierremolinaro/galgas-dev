@@ -6,7 +6,7 @@ import "baseForXcodeProjectGeneration.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
-local routine build_LIBPM_BDD_group
+routine build_LIBPM_BDD_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?!@XcodeObjectReferenceList ioFileListForGroup
 :
@@ -29,7 +29,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine build_LIBPM_BDD_source_files_for_sources_build_phase
+routine build_LIBPM_BDD_source_files_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
 :
@@ -51,7 +51,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine getGALGAS_2_source_file_list
+routine getGALGAS_2_source_file_list
   !@stringlist out_fileList
 :
 
@@ -136,7 +136,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine build_LIBPM_GALGAS_2_group
+routine build_LIBPM_GALGAS_2_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?!@XcodeObjectReferenceList ioFileListForGroup
 :
@@ -152,7 +152,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine build_LIBPM_GALGAS_2_files_for_sources_build_phase
+routine build_LIBPM_GALGAS_2_files_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
 :
@@ -174,7 +174,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine build_LIBPM_COCOA_GALGAS_group
+routine build_LIBPM_COCOA_GALGAS_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?!@XcodeObjectReferenceList ioFileListForGroup
 :
@@ -235,7 +235,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine build_LIBPM_COCOA_UTILITIES_group
+routine build_LIBPM_COCOA_UTILITIES_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?!@XcodeObjectReferenceList ioFileListForGroup
 :
@@ -253,7 +253,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine build_LIBPM_FILES_group
+routine build_LIBPM_FILES_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?!@XcodeObjectReferenceList ioFileListForGroup
 :
@@ -274,7 +274,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine build_LIBPM_FILES_files_for_sources_build_phase
+routine build_LIBPM_FILES_files_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
 :
@@ -295,7 +295,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine build_LIBPM_COMMAND_LINE_INTERFACE_group
+routine build_LIBPM_COMMAND_LINE_INTERFACE_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?!@XcodeObjectReferenceList ioFileListForGroup
 :
@@ -317,7 +317,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine build_LIBPM_COMMAND_LINE_INTERFACE_files_for_sources_build_phase
+routine build_LIBPM_COMMAND_LINE_INTERFACE_files_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
 :
@@ -339,7 +339,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine build_LIBPM_COLLECTIONS_group
+routine build_LIBPM_COLLECTIONS_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?!@XcodeObjectReferenceList ioFileListForGroup
 :
@@ -360,7 +360,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine build_PROJECT_RESOURCES_group
+routine build_PROJECT_RESOURCES_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?!@XcodeObjectReferenceList ioFileListForGroup
 :
@@ -387,7 +387,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine build_LIBPM_STRINGS_group
+routine build_LIBPM_STRINGS_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?!@XcodeObjectReferenceList ioFileListForGroup
 :
@@ -407,7 +407,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine build_LIBPM_STRINGS_files_for_sources_build_phase
+routine build_LIBPM_STRINGS_files_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
 :
@@ -425,7 +425,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine build_LIBPM_UTILITIES_group
+routine build_LIBPM_UTILITIES_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?!@XcodeObjectReferenceList ioFileListForGroup
 :
@@ -459,7 +459,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine build_LIBPM_UTILITIES_files_for_sources_build_phase
+routine build_LIBPM_UTILITIES_files_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
 :
@@ -487,7 +487,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine build_LIBPM_STREAMS_group
+routine build_LIBPM_STREAMS_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?!@XcodeObjectReferenceList ioFileListForGroup
 :
@@ -507,7 +507,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine build_LIBPM_STREAMS_files_for_sources_build_phase
+routine build_LIBPM_STREAMS_files_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
 :
@@ -527,7 +527,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine build_LIBPM_TIME_group
+routine build_LIBPM_TIME_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?!@XcodeObjectReferenceList ioFileListForGroup
 :
@@ -544,7 +544,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine build_LIBPM_TIME_files_for_sources_build_phase
+routine build_LIBPM_TIME_files_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
 :
@@ -561,7 +561,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine build_GENERATED_BY_GALGAS_files_for_sources_build_phase
+routine build_GENERATED_BY_GALGAS_files_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@stringset inComponentNameSet
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
@@ -580,7 +580,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine build_GENERATED_BY_GALGAS_group
+routine build_GENERATED_BY_GALGAS_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@stringset inComponentNameSet
   ??@stringset inGUISourceNameSet
@@ -603,7 +603,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine build_HAND_CODED_source_files_for_sources_tool_build_phase
+routine build_HAND_CODED_source_files_for_sources_tool_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@stringset inExternSourceNameSet
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
@@ -625,7 +625,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine build_HAND_CODED_source_files_for_sources_cocoa_build_phase
+routine build_HAND_CODED_source_files_for_sources_cocoa_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@stringset inExternSourceNameSet
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
@@ -647,7 +647,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine build_HAND_CODED_SOURCES_group
+routine build_HAND_CODED_SOURCES_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@stringset inExternSourceNameSet
   ?!@XcodeObjectReferenceList ioFileListForGroup
@@ -669,7 +669,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine build_FRAMEWORKS_group
+routine build_FRAMEWORKS_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?!@XcodeObjectReferenceList ioFileListForGroup
   ??@stringset inExternSourceForTool
@@ -705,7 +705,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine build_FRAMEWORKS_for_frameworks_build_phase
+routine build_FRAMEWORKS_for_frameworks_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@stringset inExternFileSet
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
@@ -726,7 +726,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine build_RESOURCES_for_resources_build_phase
+routine build_RESOURCES_for_resources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@string inBundleBaseName
   ??@string inProjectName
@@ -758,7 +758,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine build_COCOA_APP_files_for_sources_build_phase
+routine build_COCOA_APP_files_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@stringset inGUISourceNameSet
   ??@stringset unused inScannerSourceNameSet

@@ -1967,7 +1967,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInVar  analyze
     . ", bit an '@" . [expectedType identifierRepresentation] . "' parameter is required here"
     ;
   end if ;
-  ioAssignementList += !cppName . " := GALGAS_string (" . inSyntaxDirectedTranslationResultVarName . ") ;" ; 
+  ioAssignementList += !cppName . " = GALGAS_string (" . inSyntaxDirectedTranslationResultVarName . ") ;" ; 
 end method ;
 
 #---------------------------------------------------------------------------*

@@ -588,7 +588,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine enter_cpp_file_in_group
+routine enter_cpp_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@string inCppFile
   ?!@XcodeObjectReferenceList ioFileListForGroup
@@ -602,7 +602,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine enter_h_file_in_group
+routine enter_h_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@string inCppFile
   ?!@XcodeObjectReferenceList ioFileListForGroup
@@ -616,7 +616,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine enter_pch_file_in_group
+routine enter_pch_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@string inCppFile
   ?!@XcodeObjectReferenceList ioFileListForGroup
@@ -630,7 +630,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine enter_m_file_in_group
+routine enter_m_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@string inCppFile
   ?!@XcodeObjectReferenceList ioFileListForGroup
@@ -644,7 +644,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine enter_mm_file_in_group
+routine enter_mm_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@string inCppFile
   ?!@XcodeObjectReferenceList ioFileListForGroup
@@ -658,7 +658,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine enter_gif_file_in_group
+routine enter_gif_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@string inFile
   ?!@XcodeObjectReferenceList ioFileListForGroup
@@ -672,7 +672,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine enter_tiff_file_in_group
+routine enter_tiff_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@string inCppFile
   ?!@XcodeObjectReferenceList ioFileListForGroup
@@ -686,7 +686,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine enter_png_file_in_group
+routine enter_png_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@string inCppFile
   ?!@XcodeObjectReferenceList ioFileListForGroup
@@ -700,7 +700,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine enter_plist_file_in_group
+routine enter_plist_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@string inCppFile
   ?!@XcodeObjectReferenceList ioFileListForGroup
@@ -714,7 +714,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine enter_framework_file_in_group
+routine enter_framework_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@string inCppFile
   ?!@XcodeObjectReferenceList ioFileListForGroup
@@ -728,7 +728,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine enter_icns_file_in_group
+routine enter_icns_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@string inCppFile
   ?!@XcodeObjectReferenceList ioFileListForGroup
@@ -875,7 +875,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine enter_files_for_resources_build_phase
+routine enter_files_for_resources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@stringlist in_fileList
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
@@ -1145,7 +1145,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine buildXcodeProjectString
+routine buildXcodeProjectString
   ??@XcodeProjectDescription inXcodeProjectDescription
   ??@string inProjectName
   ??@string inMainGroupKey

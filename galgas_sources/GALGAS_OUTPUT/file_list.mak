@@ -114,6 +114,7 @@ SOURCES += projectModelBuilder.cpp
 SOURCES += projectLL1grammar.cpp
 SOURCES += projectGlobalCheckings.cpp
 SOURCES += libpmHandling.cpp
+SOURCES += galgas3Scanner.cpp
 SOURCES += galgas3ProjectSyntax.cpp
 SOURCES += galgas3ProjectGrammar.cpp
 SOURCES += galgas3projectAST.cpp

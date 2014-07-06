@@ -27,7 +27,7 @@ import "syntaxSLRgrammar.gGrammar" ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-local routine buildTerminalMap
+routine buildTerminalMap
   ??@lexiqueComponentAST inLexiqueComponentRoot
   !@terminalMap outTerminalMap
 :

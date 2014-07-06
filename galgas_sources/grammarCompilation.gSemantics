@@ -100,7 +100,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine handleNonTerminalDeclarations
+routine handleNonTerminalDeclarations
   ?!@nonTerminalSymbolMapForGrammarAnalysis ioNonTerminalMapForGrammarAnalysis
   ??@nonterminalDeclarationListAST inNonterminalDeclarationList
 :
@@ -124,7 +124,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine handleNonTerminalDeclarationsFromRuleList
+routine handleNonTerminalDeclarationsFromRuleList
   ?!@nonTerminalSymbolMapForGrammarAnalysis ioNonTerminalMapForGrammarAnalysis
   ??@syntaxRuleListAST inRuleList
 :
@@ -370,7 +370,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-local routine buildRuleList
+routine buildRuleList
   ??@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalMapForGrammarAnalysis
   ??@lstring inSyntaxComponentName
   ??@syntaxRuleListAST inRuleList
@@ -421,7 +421,7 @@ list @nonTerminalToAddList {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-local filewrapper grammarGenerationTemplate in "../generation_templates/grammar_generation" {
+filewrapper grammarGenerationTemplate in "../generation_templates/grammar_generation" {
 }{
 }{
   template grammarZone2Header "grammar-zone2.h.gTemplate"

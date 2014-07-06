@@ -17,7 +17,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-syntax galgas3ProjectSyntax ("galgas_scanner.gLexique") :
+syntax galgas3ProjectSyntax ("galgas3Scanner.gLexique") :
 
 import "galgas3projectAST.gSemantics" ;
 
