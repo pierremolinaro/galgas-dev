@@ -47,8 +47,13 @@ rule <attribute_declaration> ?!@attributeInCollectionListAST ioAttributeInCollec
   or
     $feature$ ;
     repeat
+      select
       $identifier$ ? @lstring featureName ;
       featureList += !featureName ;
+      or
+        $setter$ ;
+        featureList += ![@lstring new !"setter" !here] ;
+      end select ;
     while
       $,$ ;
     end repeat ;
