@@ -89,7 +89,7 @@ rule <semantic_declaration>
   $identifier$ ? @lstring mActionName indexing routineDefinition ;
   @formalParameterListAST mFormalParameterList ;
   <formal_parameter_list> ? mFormalParameterList ;
-  $;$ ;
+  $;$ :> ?* ?* ;
   ioSemanticDeclarations += ![@externRoutineDeclarationAST new
     !mActionName
     !mFormalParameterList
@@ -275,7 +275,7 @@ rule <semantic_declaration>
   $->$ ;
   $type_name$ ?@lstring resultTypeName ;
   $identifier$ ?@lstring resultVariableName ;
-  $;$ ;
+  $;$ :> ?* ?* ;
   ioSemanticDeclarations += ![@externFunctionDeclarationAST new
     !mActionName
     !formalInputParameterList
@@ -302,7 +302,7 @@ rule <semantic_instruction>
   $type_name$ ?@lstring typeName ;
   $identifier$ ?@lstring variableName ;
   outInstruction := [@localVariableDeclarationAST new ![typeName location] !typeName !variableName !false] ;
-  $;$ ;
+  $;$ :> ?* ?* ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -314,7 +314,7 @@ rule <semantic_instruction>
   $type_name$ ?@lstring typeName ;
   $identifier$ ?@lstring variableName ;
   outInstruction := [@localVariableDeclarationAST new ![typeName location] !typeName !variableName !false] ;
-  $;$ ;
+  $;$ :> ?* ?* ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -617,7 +617,7 @@ rule <semantic_instruction>
   while
     $,$ ;
   end repeat ;
-  $;$ ;
+  $;$ :> ?* ?* ;
   outInstruction := [@dropInstructionAST new !instructionLocation !dropList] ;
 end rule ;
 
@@ -645,7 +645,7 @@ rule <semantic_instruction>
     mStructAttributeList += !attributeName ;
   end repeat ;
   $++$ ;
-  $;$ ;
+  $;$ :> ?* ?* ;
   outInstruction := [@incrementInstructionAST new
     ![mReceiverName location]
     !mReceiverName
@@ -670,7 +670,7 @@ rule <semantic_instruction>
   $self$ ;
   const instructionLocation := here ;
   $++$ ;
-  $;$ ;
+  $;$ :> ?* ?* ;
   outInstruction := [@selfIncrementInstructionAST new
     !instructionLocation
   ] ;
@@ -700,7 +700,7 @@ rule <semantic_instruction>
     mStructAttributeList += !attributeName ;
   end repeat ;
   $--$ ;
-  $;$ ;
+  $;$ :> ?* ?* ;
   outInstruction := [@decrementInstructionAST new
     ![mReceiverName location]
     !mReceiverName
@@ -725,7 +725,7 @@ rule <semantic_instruction>
   $self$ ;
   const instructionLocation := here ;
   $--$ ;
-  $;$ ;
+  $;$ :> ?* ?* ;
   outInstruction := [@selfDecrementInstructionAST new
     !instructionLocation
   ] ;
@@ -1082,7 +1082,7 @@ rule <semantic_instruction>
   $identifier$ ?@lstring mMethodName ;
   <actual_parameter_list> ??@actualParameterListAST actualParameterList !?ioLocalVariableDeclarationList ;
   $]$ ;
-  $;$ ;
+  $;$ :> ?* ?* ;
   outInstruction := [@methodCallInstructionAST new
     !instructionLocation
     !mReceiverExpression
@@ -1120,7 +1120,7 @@ rule <semantic_instruction>
   $identifier$ ?@lstring mModifierName ;
   <actual_parameter_list> ??@actualParameterListAST actualParameterList !?ioLocalVariableDeclarationList ;
   $]$ ;
-  $;$ ;
+  $;$ :> ?* ?* ;
   outInstruction := [@modifierCallInstructionAST new
     !instructionLocation
     !mReceiverName
@@ -1152,7 +1152,7 @@ rule <semantic_instruction>
   @actualParameterListAST actualParameterList ;
   <actual_parameter_list> ? actualParameterList !?ioLocalVariableDeclarationList ;
   $]$ ;
-  $;$ ;
+  $;$ :> ?* ?* ;
   outInstruction := [@selfModifierCallInstructionAST new
     !instructionLocation
     !mModifierName
@@ -1190,7 +1190,8 @@ rule <semantic_instruction>
       $,$ ;
     end repeat ;
   end select ;
-  $;$ ;
+  $;$ :> ?@string sep ?* ;
+  send sep . "end" ;
   outInstruction := [@errorInstructionAST new
     !instructionLocation
     !mReceiverExpression
@@ -1218,7 +1219,8 @@ rule <semantic_instruction>
   <expression> ?@semanticExpressionAST mReceiverExpression ;
   $:$ ;
   <expression> ??@semanticExpressionAST mWarningExpression ;
-  $;$ ;
+  $;$ :> ?@string sep ?* ;
+  send sep . "end" ;
   outInstruction := [@warningInstructionAST new
     !instructionLocation
     !mReceiverExpression
@@ -1241,8 +1243,10 @@ rule <semantic_instruction>
   ?!@localVariableDeclarationListAST ioLocalVariableDeclarationList
 :
   $identifier$ ?@lstring mRoutineName indexing routineCall ;
+  send " [" ;
   <actual_parameter_list> ??@actualParameterListAST actualParameterList !?ioLocalVariableDeclarationList ;
-  $;$ ;
+  $;$ :> ?@string sep ?* ;
+  send sep . "]" ;
   outInstruction := [@routineCallInstructionAST new
     ![mRoutineName location]
     !mRoutineName
@@ -1309,8 +1313,8 @@ rule <semantic_instruction>
     !endOf_else_instructions
   ] ;
   $end$ ;
-  $with$ ;
-  $;$ ;
+  $with$ :> ?* ?* ;
+  $;$ :> ?* ?* ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -1354,8 +1358,8 @@ rule <semantic_instruction>
     !here
   ] ;
   $end$ ;
-  $with$ ;
-  $;$ ;
+  $with$ :> ?* ?* ;
+  $;$ :> ?* ?* ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -1447,8 +1451,8 @@ rule <semantic_instruction>
   <cast_else_or_default> ??@semanticInstructionListAST mElseOrDefault ;
   $end$ ;
   const endOfInstructionLocation := here ;
-  $cast$ ;
-  $;$ ;
+  $cast$ :> ?* ?* ;
+  $;$ :> ?* ?* ;
   outInstruction := [@structuredCastInstructionAST new
     !instructionLocation
     !expression
@@ -1644,8 +1648,8 @@ rule <semantic_instruction>
   const mEndOfSecondInstructions := here ;
   $end$ ;
   const mEndOfLoopInstruction := here ;
-  $loop$ ;
-  $;$ ;
+  $loop$ :> ?* ?* ;
+  $;$ :> ?* ?* ;
   outInstruction := [@loopInstructionAST new
     !instructionLocation
     !mVariantExpression
@@ -1842,9 +1846,9 @@ rule <semantic_instruction>
   while
   end repeat ;
   $end$ ;
-  $switch$ ;
+  $switch$ :> ?* ?* ;
   const endOfSwitchInstruction := here ;
-  $;$ ;
+  $;$ :> ?* ?* ;
   outInstruction := [@switchInstructionAST new
     !instructionLocation
     !switchExpression
@@ -1921,7 +1925,7 @@ rule <semantic_instruction>
   $identifier$ ??@lstring mMethodName ;
   <actual_parameter_list> ??@actualParameterListAST actualParameterList !?ioLocalVariableDeclarationList ;
   $]$ ;
-  $;$ ;
+  $;$ :> ?* ?* ;
   outInstruction := [@typeMethodCallInstructionAST new
     !instructionLocation
     !mTypeName

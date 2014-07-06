@@ -261,7 +261,7 @@ rule <factor> !@semanticExpressionAST outExpression :
   <primary> ? outExpression ;
   repeat
   while
-    $->$ ;
+    $.$ ;
     $identifier$ ? @lstring structFieldName ;
     outExpression := [@structFieldAccessExpressionAST new !structFieldName->location !outExpression !structFieldName] ;
   end repeat ;
@@ -594,10 +594,9 @@ end rule ;
 #------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression :
-  $identifier$ ? @lstring functionName indexing functionCall ;
+  $identifier$ ??@lstring functionName indexing functionCall ;
   $[$ ;
-  @semanticExpressionListAST expressionList ;
-  <output_expression_list> ?expressionList ;
+  <output_expression_list> ??@semanticExpressionListAST expressionList ;
   outExpression := [@functionCallExpressionAST new
     !functionName
     !expressionList
@@ -615,7 +614,7 @@ end rule ;
 
 rule <primary> !@semanticExpressionAST outExpression :
   $`$ ;
-  $type_name$ ? @lstring typeName ;
+  $type_name$ ??@lstring typeName ;
   outExpression := [@literalTypeInExpressionAST new
     !typeName
   ] ;
@@ -634,8 +633,7 @@ rule <output_expression_list>
   repeat
   while
     $!$ ;
-    @semanticExpressionAST expression ;
-    <expression> ? expression ;
+    <expression> ??@semanticExpressionAST expression ;
     outExpressionList += !expression !here ;
   end repeat ;
 end rule ;

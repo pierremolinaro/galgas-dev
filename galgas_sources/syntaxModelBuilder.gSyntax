@@ -204,6 +204,8 @@ end rule ;
 rule <syntax_instruction_list> !@syntaxInstructionList outSyntaxInstructionList :
   outSyntaxInstructionList := [@syntaxInstructionList emptyList] ;
   repeat
+  while 
+    $;$ ;
   while
     @semanticInstructionAST instruction ;
     @localVariableDeclarationListAST localVariableDeclarationList [emptyList] ;
@@ -316,7 +318,7 @@ rule <syntax_instruction>
     <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor ;
     <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationPreceedingToken ;
   end select ;
-  $;$ ;
+  $;$ :> ?* ?* ;
   outInstruction := [@terminalCheckInstruction new
     ![terminalName location]
     !terminalName
@@ -429,8 +431,8 @@ rule <syntax_instruction>
   end repeat ;
   $end$ ;
   const endOfInstruction := here ;
-  $parse$ ;
-  $;$ ;
+  $parse$ :> ?* ?* ;
+  $;$ :> ?* ?* ;
   outInstruction := [@parseRewindInstruction new
     !instructionLocation
     !mParseDoBranchList
@@ -495,8 +497,8 @@ rule <syntax_instruction>
   <branchOfParseWhenInstruction> ??@syntaxInstructionList elseInstructionList ;
   const endOfElseInstructions := here ;
   $end$ ;
-  $parse$ ;
-  $;$ ;
+  $parse$ :> ?* ?* ;
+  $;$ :> ?* ?* ;
   outInstruction := [@parseWhenInstruction new
     !instructionLocation
     !whenExpression
@@ -530,8 +532,8 @@ rule <syntax_instruction>
   <syntax_instruction_list> ??@syntaxInstructionList instructionList ;
   $end$ ;
   const endOfInstructionList := here ;
-  $parse$ ;
-  $;$ ;
+  $parse$ :> ?* ?* ;
+  $;$ :> ?* ?* ;
   outInstruction := [@parseLoopInstruction new
     !instructionLocation
     !variantExpression

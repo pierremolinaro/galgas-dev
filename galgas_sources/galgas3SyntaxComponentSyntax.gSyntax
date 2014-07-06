@@ -182,18 +182,18 @@ end rule ;
 rule <syntax_instruction_list> !@syntaxInstructionList outSyntaxInstructionList :
   outSyntaxInstructionList := [@syntaxInstructionList emptyList] ;
   repeat
+  while 
+    $;$ ;
   while
-    @semanticInstructionAST instruction ;
     @localVariableDeclarationListAST localVariableDeclarationList [emptyList] ;
-    <semantic_instruction> ? instruction !?localVariableDeclarationList ;
+    <semantic_instruction> ??@semanticInstructionAST instruction !?localVariableDeclarationList ;
     foreach localVariableDeclarationList do
       outSyntaxInstructionList += ![@localVariableDeclarationAST new ![mTypeName location] !mTypeName !mVariableName !mIsUndefinedConstant] ;
     end foreach ;
     outSyntaxInstructionList += !instruction ;
   while
-    @syntaxInstructionAST instruction ;
     @localVariableDeclarationListAST localVariableDeclarationList [emptyList] ;
-    <syntax_instruction> ? instruction !?localVariableDeclarationList ;
+    <syntax_instruction> ??@syntaxInstructionAST instruction !?localVariableDeclarationList ;
     foreach localVariableDeclarationList do
       outSyntaxInstructionList += ![@localVariableDeclarationAST new ![mTypeName location] !mTypeName !mVariableName !mIsUndefinedConstant] ;
     end foreach ;
@@ -294,7 +294,7 @@ rule <syntax_instruction>
     <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor ;
     <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationPreceedingToken ;
   end select ;
-  $;$ ;
+#§  $;$ ;
   outInstruction := [@terminalCheckInstruction new
     ![terminalName location]
     !terminalName
@@ -403,8 +403,6 @@ rule <syntax_instruction>
   end repeat ;
   $end$ ;
   const endOfInstruction := here ;
-  $parse$ ;
-  $;$ ;
   outInstruction := [@parseRewindInstruction new
     !instructionLocation
     !mParseDoBranchList
@@ -469,8 +467,6 @@ rule <syntax_instruction>
   <branchOfParseWhenInstruction> ??@syntaxInstructionList elseInstructionList ;
   const endOfElseInstructions := here ;
   $end$ ;
-  $parse$ ;
-  $;$ ;
   outInstruction := [@parseWhenInstruction new
     !instructionLocation
     !whenExpression
@@ -504,8 +500,6 @@ rule <syntax_instruction>
   <syntax_instruction_list> ??@syntaxInstructionList instructionList ;
   $end$ ;
   const endOfInstructionList := here ;
-  $parse$ ;
-  $;$ ;
   outInstruction := [@parseLoopInstruction new
     !instructionLocation
     !variantExpression
