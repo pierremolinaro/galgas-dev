@@ -110,17 +110,17 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
             if HAS_INDEXING then
               if [mIndexingGrammar string] == "" then
               %          if (! executionModeIsIndexing ()) {\n%
-              %            routine_%!["programRule_" . [IDX string] identifierRepresentation]% (sourceFilePath, commonLexique COMMA_HERE) ;\n%
+              %            routine_%!["programRule_" + [IDX string] identifierRepresentation]% (sourceFilePath, commonLexique COMMA_HERE) ;\n%
               %          }\n%
               else
               %          if (executionModeIsIndexing ()) {\n%
               %            cGrammar_%![mIndexingGrammar identifierRepresentation]%::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;\n%
               %          }else{\n%
-              %            routine_%!["programRule_" . [IDX string] identifierRepresentation]% (sourceFilePath, commonLexique COMMA_HERE) ;\n%
+              %            routine_%!["programRule_" + [IDX string] identifierRepresentation]% (sourceFilePath, commonLexique COMMA_HERE) ;\n%
               %          }\n%
               end
             else
-              %          routine_%!["programRule_" . [IDX string] identifierRepresentation]% (sourceFilePath, commonLexique COMMA_HERE) ;\n%
+              %          routine_%!["programRule_" + [IDX string] identifierRepresentation]% (sourceFilePath, commonLexique COMMA_HERE) ;\n%
             end 
           between %        }else %
           end

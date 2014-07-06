@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//%!["@" . TYPE_NAME . " extern type" stringByLeftAndRightPadding !77 !' ']%*
+//%!["@" + TYPE_NAME + " extern type" stringByLeftAndRightPadding !77 !' ']%*
 //                                                                             *
 //-----------------------------------------------------------------------------*
 //  Predeclarations (from GALGAS extern type declaration                     *

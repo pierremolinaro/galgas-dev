@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//%!["Class for element of '@" . TYPE_NAME . "' map" stringByLeftAndRightPadding !77 !' ']%*
+//%!["Class for element of '@" + TYPE_NAME + "' map" stringByLeftAndRightPadding !77 !' ']%*
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

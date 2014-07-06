@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//%!["Category modifier '@" . CLASS_NAME . " " . MODIFIER_NAME . "'" stringByLeftAndRightPadding !77 !' ']%*
+//%!["Category modifier '@" + CLASS_NAME + " " + MODIFIER_NAME + "'" stringByLeftAndRightPadding !77 !' ']%*
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

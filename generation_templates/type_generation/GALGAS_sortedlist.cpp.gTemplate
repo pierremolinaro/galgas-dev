@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//%!["Class for element of '@" . TYPE_IDENTIFIER . "' sorted list" stringByLeftAndRightPadding !77 !' ']%*
+//%!["Class for element of '@" + TYPE_IDENTIFIER + "' sorted list" stringByLeftAndRightPadding !77 !' ']%*
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//%!["@" . TYPE_IDENTIFIER . " sorted list" stringByLeftAndRightPadding !77 !' ']%*
+//%!["@" + TYPE_IDENTIFIER + " sorted list" stringByLeftAndRightPadding !77 !' ']%*
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

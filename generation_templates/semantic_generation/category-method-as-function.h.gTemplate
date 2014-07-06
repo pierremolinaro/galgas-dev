@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//%!["Category method '@" . TYPE_NAME . " " . METHOD_NAME . "'" stringByLeftAndRightPadding !77 !' ']%*
+//%!["Category method '@" + TYPE_NAME + " " + METHOD_NAME + "'" stringByLeftAndRightPadding !77 !' ']%*
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

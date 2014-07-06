@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//%!["Filewrapper template '" . FILEWRAPPER_NAME . " " . TEMPLATE_NAME . "'" stringByLeftAndRightPadding !77 !' ']%*
+//%!["Filewrapper template '" + FILEWRAPPER_NAME + " " + TEMPLATE_NAME + "'" stringByLeftAndRightPadding !77 !' ']%*
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//%!["Overriding category modifier '@" . CLASS_NAME . " " . MODIFIER_NAME . "'" stringByLeftAndRightPadding !77 !' ']%*
+//%!["Overriding category modifier '@" + CLASS_NAME + " " + MODIFIER_NAME + "'" stringByLeftAndRightPadding !77 !' ']%*
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

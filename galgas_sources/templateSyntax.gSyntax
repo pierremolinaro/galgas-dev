@@ -34,7 +34,7 @@ rule <expression>
   repeat
   while
     @location operatorLocation := here ;
-    $.$ ;
+    $.$ ; warning here : "obsolete : use '+'" ;
     @templateExpressionAST rightOperand ;
     <concatenation_term> ?rightOperand  ;
     outExpression := [@templateConcatOperationAST new !operatorLocation !outExpression !rightOperand] ;
