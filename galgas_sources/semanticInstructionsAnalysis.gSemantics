@@ -1772,9 +1772,11 @@ override method @foreachInstructionAST analyzeSemanticInstruction
       else
         foreach mElementList, enumerationDescriptorList do
           if [mConstantName string] != "" then # Empty string if joker
-            const foundType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
-            if foundType != mEnumeratedType then
-              error mTypeName : "incorrect '@" . [foundType key] . "' type: '@" . [mEnumeratedType key] . "' type required here" ;
+            if mTypeName->string != "" then
+              const foundType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
+              if foundType != mEnumeratedType then
+                error mTypeName : "incorrect '@" . [foundType key] . "' type: '@" . [mEnumeratedType key] . "' type required here" ;
+              end if ;
             end if ;
             [!?ioVariableMap insertUsedLocalConstant
               !mConstantName

@@ -107,6 +107,7 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "abstract",
   "after",
   "array",
+  "as",
   "before",
   "between",
   "block",

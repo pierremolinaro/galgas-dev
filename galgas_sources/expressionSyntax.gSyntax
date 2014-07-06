@@ -333,10 +333,11 @@ end rule ;
 
 rule <primary> !@semanticExpressionAST outExpression :
   $($ ;
-  $cast$ ;
+  $cast$ :> ?* ?*;
   <expression> ?@semanticExpressionAST receiverExpression ;
   const @location endOfReceiverExpression := here ;
-  $:$ ;
+  $:$ :> ?* ?* ;
+  send " as" ;
   $type_name$ ?@lstring typeName ;
   outExpression := [@castInExpressionAST new
     !receiverExpression
