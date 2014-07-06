@@ -425,10 +425,6 @@ rule <semantic_instruction>
     !expressionList
   ] ;
   $]$ ;
-  if [option galgas_cli_options.warnsOnDeprecatedConstructInGALGAS3 value] then
-    warning variableName : "This construction is deprecated in GALGAS 2.6.0 and above: replace with \"var "
-     . variableName . " := [@" . typeName . " constructor...] ;\"" ;
-  end if ;
   $;$ ;
 end rule ;
 

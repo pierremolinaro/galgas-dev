@@ -159,7 +159,8 @@ rule <syntax_rule_label>
   @formalParameterListAST mFormalParameters ;
   <formal_parameter_list> ? mFormalParameters ;
   const endOfArguments := here ;
-  $:$ ;
+  $:$ :> ?* ?* ;
+  send " {" ;
   @syntaxInstructionList mSyntaxInstructionList ;
   <syntax_instruction_list> ? mSyntaxInstructionList ;
   ioLabelList +=
@@ -169,6 +170,7 @@ rule <syntax_rule_label>
     !mSyntaxInstructionList
     !here
   ;
+  send "\n}" ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -184,9 +186,9 @@ rule <syntax_rule_declaration> ?!@syntaxRuleListAST ioRuleList :
     $label$ ;
     $identifier$ ?labelName ;
   end repeat ;
-  $end$ ;
-  $rule$ ;
-  $;$ ;
+  $end$ :> ?* ?* ;
+  $rule$ :> ?* ?* ;
+  $;$ :> ?* ?* ;
   ioRuleList +=
     !mNonterminalName
     !mLabelList
@@ -352,8 +354,8 @@ rule <syntax_instruction>
   end repeat ;
   $end$ ;
   const endOf_repeat_instruction := here ;
-  $repeat$ ;
-  $;$ ;
+  $repeat$ :> ?* ?* ;
+  $;$ :> ?* ?* ;
   outInstruction := [@repeatInstruction new
     !mRepeatInstructionLocation
     !mRepeatedInstructionList
@@ -390,8 +392,8 @@ rule <syntax_instruction>
   end repeat ;
   $end$ ;
   const endOf_select_instruction := here ;
-  $select$ ;
-  $;$ ;
+  $select$ :> ?* ?* ;
+  $;$ :> ?* ?* ;
   outInstruction := [@selectInstruction new
     !mSelectInstructionLocation
     !mSelectBranchList
