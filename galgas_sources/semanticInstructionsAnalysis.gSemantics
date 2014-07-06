@@ -1523,6 +1523,40 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+abstract method @abstractEnumeratedCollectionAST analyzeEnumeration
+  ??@analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  ?!@localInitializedVariableList ioLocalConstantListForDoBranch
+  !@string outEnumeratorCppName
+  !@semanticExpressionForGeneration outEnumerationExpression
+;
+
+#---------------------------------------------------------------------------*
+
+override method @enumeratedCollectionVarInExpAST analyzeEnumeration
+  ??@analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  ?!@localInitializedVariableList ioLocalConstantListForDoBranch
+  !@string outEnumeratorCppName
+  !@semanticExpressionForGeneration outEnumerationExpression
+:
+  [mEnumeratedExpression analyzeSemanticExpression
+    !inAnalysisContext
+    !?ioVariableMap
+    ?outEnumerationExpression
+  ] ;
+#--- Check object can be enumerated
+  outEnumeratorCppName := "enumerator_" . [[mEndOfEnumerationExpression locationIndex] string] ;
+  const enumeratedElementType := [[outEnumerationExpression mType] mTypeForEnumeratedElement] ;
+  if [enumeratedElementType isNull] then
+    error mEndOfEnumerationExpression : "an '@" . [[outEnumerationExpression mType] key] . "' object cannot be enumerated" ;
+  else
+    ioLocalConstantListForDoBranch += !enumeratedElementType !mEnumerationVariable !outEnumeratorCppName . ".current (HERE)" ;
+  end if ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @forInstructionAST analyzeSemanticInstruction
   ??@analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
@@ -1574,21 +1608,13 @@ override method @forInstructionAST analyzeSemanticInstruction
   @localInitializedVariableList localConstantListForDoBranch [emptyList] ;
   @foreachInstructionEnumeratedObjectListForGeneration enumerationList [emptyList] ;
   foreach mEnumeratedObjectList do
-  #--- Enumeration expression
-    @semanticExpressionForGeneration enumerationExpression ;
-    [mEnumeratedExpression analyzeSemanticExpression
+    [mEnumeratedCollection analyzeEnumeration
       !inAnalysisContext
       !?ioVariableMap
-      ?enumerationExpression
+      !?localConstantListForDoBranch
+      ??@string enumeratorCppName
+      ??@semanticExpressionForGeneration enumerationExpression
     ] ;
-  #--- Check object can be enumerated
-    const enumeratorCppName := "enumerator_" . [[mEndOfEnumerationExpression locationIndex] string] ;
-    const enumeratedElementType := [[enumerationExpression mType] mTypeForEnumeratedElement] ;
-    if [enumeratedElementType isNull] then
-      error mEndOfEnumerationExpression : "an '@" . [[enumerationExpression mType] key] . "' object cannot be enumerated" ;
-    else
-      localConstantListForDoBranch += !enumeratedElementType !mEnumerationVariable !enumeratorCppName . ".current (HERE)" ;
-    end if ;
   #---
     enumerationList +=
       !if mAscending then "up" else "down" end
@@ -1604,18 +1630,16 @@ override method @forInstructionAST analyzeSemanticInstruction
    [!?ioVariableMap insertUsedLocalConstant !mName !mType !mCppName !mCppName] ;
   end foreach ;
 #---
-  @semanticExpressionForGeneration uncheckedWhileExpression ;
   [mWhileExpression analyzeSemanticExpression
     !inAnalysisContext
     !?ioVariableMap
-    ?uncheckedWhileExpression
+    ??@semanticExpressionForGeneration uncheckedWhileExpression
   ] ;
-  @semanticExpressionForGeneration whileExpression ;
   checkExpressionIsBoolean
     !inAnalysisContext
     !mEndOf_while_expression
     !uncheckedWhileExpression
-    ?whileExpression
+    ??@semanticExpressionForGeneration whileExpression
   ;
 #---
   [!?ioVariableMap closeBranch !mEndOf_while_expression] ;

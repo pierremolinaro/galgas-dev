@@ -452,7 +452,7 @@ rule <primary> !@semanticExpressionAST outExpression :
   $if$ ;
   @semanticExpressionAST ifExpression ;
   <expression> ? ifExpression ;
-  const @location operatorLocation := here ;
+  const operatorLocation := here ;
   $then$ ;
   @semanticExpressionAST thenExpression ;
   <expression> ? thenExpression ;

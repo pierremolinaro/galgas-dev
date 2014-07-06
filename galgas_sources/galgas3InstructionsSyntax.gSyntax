@@ -68,9 +68,8 @@ rule <declaration>
 :
   $extern$ ;
   $routine$ ;
-  $identifier$ ? @lstring mActionName indexing routineDefinition ;
-  @formalParameterListAST mFormalParameterList ;
-  <formal_parameter_list> ? mFormalParameterList ;
+  $identifier$ ??@lstring mActionName indexing routineDefinition ;
+  <formal_parameter_list> ??@formalParameterListAST mFormalParameterList ;
 #§  $;$ ;
   ioSemanticDeclarations += ![@externRoutineDeclarationAST new
     !mActionName
@@ -309,12 +308,11 @@ rule <semantic_instruction>
   !@semanticInstructionAST outInstruction
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
-  $const$ ;
+  $let$ ;
   $type_name$ ?@lstring typeName ;
   $identifier$ ?@lstring variableName ;
   $:=$ ;
-  @semanticExpressionAST sourceExpression ;
-  <expression> ? sourceExpression ;
+  <expression> ??@semanticExpressionAST sourceExpression ;
   outInstruction := [@localVariableOrConstantDeclarationWithAssignmentAST new
     ![typeName location]
     !true # Is Constant
@@ -336,11 +334,10 @@ rule <semantic_instruction>
   !@semanticInstructionAST outInstruction
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
-  $const$ ;
+  $let$ ;
   $identifier$ ?@lstring variableName ;
   $:=$ ;
-  @semanticExpressionAST sourceExpression ;
-  <expression> ? sourceExpression ;
+  <expression> ??@semanticExpressionAST sourceExpression ;
   outInstruction := [@localConstantDeclarationWithAssignmentAST new
     ![variableName location]
     !variableName
@@ -372,8 +369,7 @@ rule <semantic_instruction>
     mStructAttributeList += !attributeName ;
   end repeat ;
   $:=$ ;
-  @semanticExpressionAST mSourceExpression ;
-  <expression> ? mSourceExpression ;
+  <expression> ??@semanticExpressionAST mSourceExpression ;
   $;$ ;
   outInstruction := [@assignmentInstructionAST new
     ![mTargetVariableName location]
@@ -400,8 +396,7 @@ rule <semantic_instruction>
   $self$ ;
   const instructionLocation := here ;
   $:=$ ;
-  @semanticExpressionAST mSourceExpression ;
-  <expression> ? mSourceExpression ;
+  <expression> ??@semanticExpressionAST mSourceExpression ;
   $;$ ;
   outInstruction := [@selfAssignmentInstructionAST new
     !instructionLocation
@@ -715,22 +710,24 @@ end rule ;
 rule <new_foreach_enumerated_object>
   ?!@forInstructionEnumeratedObjectListAST ioForeachInstructionEnumeratedObjectList
 :
-  $identifier$ ? @lstring enumerationVariable ;
-  $in$ ;
   @bool ascending ;
   select
     ascending := true ;
   or
-    $reverse$ ;
+    $>$ ;
     ascending := false ;
   end select ;
-  @semanticExpressionAST enumeratedExpression ;
-  <expression> ? enumeratedExpression ;
-  ioForeachInstructionEnumeratedObjectList +=
-    !ascending
+  $identifier$ ??@lstring enumerationVariable ;
+  $in$ ;
+  <expression> ??@semanticExpressionAST enumeratedExpression ;
+  const @abstractEnumeratedCollectionAST e := [@enumeratedCollectionVarInExpAST new
     !enumerationVariable
     !enumeratedExpression
     !here
+  ] ;
+  ioForeachInstructionEnumeratedObjectList +=
+    !ascending
+    !e
   ;
 end rule ;
 
