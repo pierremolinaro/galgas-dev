@@ -442,7 +442,8 @@ rule <semantic_instruction>
   !@semanticInstructionAST outInstruction
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
-  $const$ ;
+  $const$ :> ?@string sep ?* ;
+  send sep . "let" ;
   $type_name$ ?@lstring typeName ;
   $identifier$ ?@lstring variableName ;
   $:=$ ;
@@ -464,7 +465,8 @@ rule <semantic_instruction>
   !@semanticInstructionAST outInstruction
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
-  $const$ ;
+  $const$ :> ?@string sep ?* ;
+  send sep . "let" ;
   $type_name$ ?@lstring typeName :> ?* ?@string tp ;
   $identifier$ ?@lstring variableName ;
   send " :=" ;
@@ -492,7 +494,8 @@ rule <semantic_instruction>
   !@semanticInstructionAST outInstruction
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
-  $const$ ;
+  $const$ :> ?@string sep ?* ;
+  send sep . "let" ;
   $type_name$ ?@lstring typeName :> ?* ?@string tp ;
   $identifier$ ?@lstring variableName ;
   send " :=" ;
@@ -520,7 +523,8 @@ rule <semantic_instruction>
   !@semanticInstructionAST outInstruction
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
-  $const$ ;
+  $const$ :> ?@string sep ?* ;
+  send sep . "let" ;
   $identifier$ ?@lstring variableName ;
   $:=$ ;
   @semanticExpressionAST sourceExpression ;
@@ -908,22 +912,24 @@ end rule ;
 rule <new_foreach_enumerated_object>
   ?!@forInstructionEnumeratedObjectListAST ioForeachInstructionEnumeratedObjectList
 :
-  $identifier$ ? @lstring enumerationVariable ;
-  $in$ ;
   @bool ascending ;
   select
     ascending := true ;
   or
-    $reverse$ ;
+    $>$ ;
     ascending := false ;
   end select ;
-  @semanticExpressionAST enumeratedExpression ;
-  <expression> ? enumeratedExpression ;
-  ioForeachInstructionEnumeratedObjectList +=
-    !ascending
+  $identifier$ ??@lstring enumerationVariable ;
+  $in$ ;
+  <expression> ??@semanticExpressionAST enumeratedExpression ;
+  const @abstractEnumeratedCollectionAST e := [@enumeratedCollectionVarInExpAST new
     !enumerationVariable
     !enumeratedExpression
     !here
+  ] ;
+  ioForeachInstructionEnumeratedObjectList +=
+    !ascending
+    !e
   ;
 end rule ;
 

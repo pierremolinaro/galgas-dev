@@ -649,11 +649,22 @@ class @foreachInstructionAST extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+abstract class @abstractEnumeratedCollectionAST {
+}
+
+#---------------------------------------------------------------------------*
+
+class @enumeratedCollectionVarInExpAST extends @abstractEnumeratedCollectionAST {
+  @lstring mEnumerationVariable ;
+  @semanticExpressionAST mEnumeratedExpression ;
+  @location mEndOfEnumerationExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
 list @forInstructionEnumeratedObjectListAST {
-  @bool mAscending feature nogetter ;
-  @lstring mEnumerationVariable feature nogetter ;
-  @semanticExpressionAST mEnumeratedExpression feature nogetter ;
-  @location mEndOfEnumerationExpression feature nogetter ;
+  @bool mAscending ;
+  @abstractEnumeratedCollectionAST mEnumeratedCollection ;
 }
 
 #---------------------------------------------------------------------------*
