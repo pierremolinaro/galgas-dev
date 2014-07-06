@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//%!["Once function '" . FUNCTION_NAME . "'" stringByLeftAndRightPadding !77 !' ']%*
+//%!["Once function '" + FUNCTION_NAME + "'" stringByLeftAndRightPadding !77 !' ']%*
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

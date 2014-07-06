@@ -230,7 +230,7 @@ end
 
 foreach MAP_OVERRIDE_LIST do
   %//-----------------------------------------------------------------------------*\n%
-  %//%!["map override '" . mOverrideName . "'" stringByLeftAndRightPadding !77 !' ']%*\n%
+  %//%!["map override '" + mOverrideName + "'" stringByLeftAndRightPadding !77 !' ']%*\n%
   %//-----------------------------------------------------------------------------*\n\n%
   %static const cBranchOverrideTransformationDescriptor kBranchBehaviourForOverride_%
   !TYPE_IDENTIFIER

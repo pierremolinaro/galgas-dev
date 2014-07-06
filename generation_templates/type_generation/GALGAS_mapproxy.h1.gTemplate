@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//%!["@" . TYPE_IDENTIFIER . " map proxy" stringByLeftAndRightPadding !77 !' ']%*
+//%!["@" + TYPE_IDENTIFIER + " map proxy" stringByLeftAndRightPadding !77 !' ']%*
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

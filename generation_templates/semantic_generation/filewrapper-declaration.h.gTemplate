@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//%!["Filewrapper '" . FILEWRAPPER_NAME . "'" stringByLeftAndRightPadding !77 !' ']%*
+//%!["Filewrapper '" + FILEWRAPPER_NAME + "'" stringByLeftAndRightPadding !77 !' ']%*
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
