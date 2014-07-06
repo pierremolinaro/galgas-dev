@@ -1,0 +1,62 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Copyright (C) 2014, ..., 2014 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+semantics galgas3LexiqueComponentCompilation :
+import "semanticAnalysis.gSemantics" ;
+
+#---------------------------------------------------------------------------*
+
+override method @galgas3LexiqueComponentAST semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationSortedListForGeneration unused ioSemanticDeclarationListForGeneration
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @galgas3LexiqueComponentAST enterInSemanticContext
+  ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
+  ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ??@categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
+  ?!@semanticContext unused ioSemanticContext
+:
+
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @galgas3LexiqueComponentAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override reader @galgas3LexiqueComponentAST keyRepresentation
+  ->@string outString
+:
+  outString := "lexique " . mLexiqueComponentName ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+end semantics ;

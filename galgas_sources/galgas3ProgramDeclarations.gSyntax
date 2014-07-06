@@ -1,0 +1,130 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  'program' component parser, as model builder                             *
+#                                                                           *
+#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+syntax galgas3ProgramDeclarations ("galgas_scanner.gLexique") :
+
+import "semanticsTypesForAST.gSemantics" ;
+
+#---------------------------------------------------------------------------*
+
+nonterminal <semantic_instruction_list> !@semanticInstructionListAST outInstructionsList ;
+
+nonterminal <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations
+;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   P R O L O G U E                                                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@semanticDeclarationListAST ioDeclarations
+:
+  $before$ ;
+  ${$ ;
+  <semantic_instruction_list> ??@semanticInstructionListAST prologueInstructionList ;
+  const endOfPrologue := here ;
+  $}$ ;
+  ioDeclarations += ![@galgas3PrologueDeclarationAST new
+    !true
+    !prologueInstructionList
+    !endOfPrologue
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   E P I L O G U E                                                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@semanticDeclarationListAST ioDeclarations
+:
+  $after$ ;
+  ${$ ;
+  <semantic_instruction_list> ??@semanticInstructionListAST prologueInstructionList ;
+  const endOfPrologue := here ;
+  $}$ ;
+  ioDeclarations += ![@galgas3EpilogueDeclarationAST new
+    !true
+    !prologueInstructionList
+    !endOfPrologue
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   S O U R C E    R U L E                                                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@semanticDeclarationListAST ioDeclarations
+:
+  $when$ ;
+  $.$ ;
+  $literal_string$ ??@lstring mSourceFileExtension ;
+  $message$ ;
+  $literal_string$ ??@lstring mSourceFileHelp ;
+#--- Indexing
+  @lstring indexingGrammar ; # Empty string if no indexing
+  select
+    indexingGrammar := ["" nowhere] ;
+  or
+    $indexing$ ;
+    $with$ ;
+    $identifier$ ? indexingGrammar indexing grammarComponentReference ;
+  end select ;
+#--- Source file
+  $??$ ;
+  $type_name$ ? @lstring typeName ;
+  @bool isUnused ;
+  select
+    isUnused := false ;
+  or
+    $unused$ ;
+    isUnused := true ;
+  end select ;
+  if [typeName string] != "lstring" then
+    error typeName : "the only type allowed here is '@lstring'" ;
+  end if ;
+  $identifier$ ? @lstring mSourceFileVariableName ;
+#---
+  ${$ ;
+  <semantic_instruction_list> ??@semanticInstructionListAST mInstructionList ;
+  const endOfInstructionList := here ;
+  $}$ ;
+  ioDeclarations += ![@galgas3SourceRuleDeclarationAST new
+    !true
+    !mSourceFileExtension
+    !mSourceFileHelp
+    !mSourceFileVariableName
+    !isUnused
+    !indexingGrammar
+    !mInstructionList
+    !endOfInstructionList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+end syntax ;

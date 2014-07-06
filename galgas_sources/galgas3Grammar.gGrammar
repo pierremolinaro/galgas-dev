@@ -1,0 +1,37 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  galgas 3 project grammar                                                 *
+#                                                                           *
+#  Copyright (C) 2014, ..., 2014 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+indexing grammar galgas3Grammar "SLR" :
+  with "galgas3ExpressionSyntax.gSyntax" ;
+  with "galgas3ParameterArgumentSyntax.gSyntax" ;
+  with "galgas3InstructionsSyntax.gSyntax" ;
+  with "galgas3DeclarationsSyntax.gSyntax" ;
+  with "galgas3LexiqueComponentSyntax.gSyntax" ;
+  with "galgas3OptionComponentSyntax.gSyntax" ;
+  with "galgas3GuiComponentSyntax.gSyntax" ;
+  with "galgas3SyntaxComponentSyntax.gSyntax" ;
+  with "galgas3GrammarComponentSyntax.gSyntax" ;
+  with "galgas3ProgramDeclarations.gSyntax" ;
+
+  root <start_symbol>
+    ?!@semanticDeclarationListAST ioDeclarations
+  ;
+end grammar ;
+
+#---------------------------------------------------------------------------*

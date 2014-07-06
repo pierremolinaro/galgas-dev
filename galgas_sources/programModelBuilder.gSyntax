@@ -37,17 +37,18 @@ nonterminal <semantic_declaration>
 #---------------------------------------------------------------------------*
 
 rule <program_component_start_symbol> !@programComponentAST outProgramComponentRoot :
-  $program$ ;
-  $identifier$ ? @lstring mProgramName ;
-  $:$ ;
+  $program$ :> ?@string sep ?* ;
+  send sep ;
+  $identifier$ ? @lstring mProgramName :> ?* ?* ;
+  $:$  :> ?* ?* ;
 #--- Loop on import declarations
   @lstringlist importedComponentFileNameList [emptyList] ;
   repeat
   while
-    $import$ ;
-    $literal_string$ ? @lstring importedComponentFileName ;
+    $import$  :> ?* ?* ;
+    $literal_string$ ? @lstring importedComponentFileName  :> ?* ?* ;
     importedComponentFileNameList += !importedComponentFileName ;
-    $;$ ;
+    $;$ :> ?* ?* ;
   end repeat ;
 #--- Program rules
   @semanticDeclarationListAST mSemanticDeclarations [emptyList] ;
@@ -119,10 +120,10 @@ rule <program_component_start_symbol> !@programComponentAST outProgramComponentR
     <semantic_declaration> !?mSemanticDeclarations ;
   end repeat ;
 #---
-  $end$ ;
+  $end$ :> ?* ?* ;
   const @location endOfSourceFile := here ;
-  $program$ ;
-  $;$ ;
+  $program$ :> ?* ?* ;
+  $;$ :> ?* ?* ;
   outProgramComponentRoot := [@programComponentAST new
     !mProgramName
     !importedComponentFileNameList

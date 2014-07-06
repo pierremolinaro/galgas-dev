@@ -131,8 +131,8 @@ rule <gui_component_start_symbol>
   end repeat ;
 #---
   $end$ ;
-  $gui$ ;
-  $;$ ;
+  $gui$ :> ?* ?* ;
+  $;$ :> ?* ?* ;
   outGuiComponentRoot := [@guiComponentAST new
     !mGUIName
     !mGUIClass

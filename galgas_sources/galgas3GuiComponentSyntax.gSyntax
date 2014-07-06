@@ -1,0 +1,144 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Copyright (C) 2014, ..., 2014 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+syntax galgas3GuiComponentSyntax ("galgas_scanner.gLexique") :
+  import "semanticsTypesForAST.gSemantics" ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   G U I    C O M P O N E N T                                              *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@semanticDeclarationListAST ioDeclarations
+:
+  $gui$ ;
+  $identifier$ ?@lstring mGUIName ;
+  $literal_string$ ?@lstring mGUIClass ;
+  $:$ ;
+  @lstringlist importedOptionList [emptyList] ;
+  @guiSimpleAttributeListAST simpleGlobalAttributes [emptyList] ;
+  @withLexiqueListAST withLexiqueList [emptyList] ;
+  repeat
+  while
+    $identifier$ ?@lstring mKey ;
+    $:$ ;
+    @lstring mValue [new !"" !here] ;
+    repeat
+      $literal_string$ ?@lstring value ;
+      mValue := [@lstring new ![mValue string] . [value string] ![value location]] ;
+    while
+    end repeat ;
+    $;$ ;
+    simpleGlobalAttributes += !mKey !mValue ;
+  while
+    $with$ ;
+    select
+      $option$ ;
+      $literal_string$ ?@lstring optionReference ;
+      importedOptionList += !optionReference ;
+      $;$ ;
+    or
+      $lexique$ ;
+      $literal_string$ ?@lstring lexiqueReference ;
+      @guiLabelListAST labels [emptyList] ;
+      @guiSimpleAttributeListAST simpleAttributes [emptyList] ;
+      @guiCompoundAttributeListAST compoundAttributes [emptyList] ;
+      ${$ ;
+      repeat
+      while
+        $label$ ;
+        @uint displayStyle ;
+        select
+          displayStyle := 0 ;
+        or
+          $*$ ;
+          displayStyle := 1 ;
+        end select ;
+        @terminalLabelListAST terminalList [emptyList] ;
+        repeat
+          $terminal$ ? @lstring terminal ;
+          @uint displayFlags ;
+          select
+            displayFlags := 0 ; # Default
+          or
+            $-$ ;
+            displayFlags := 0xFFFF ; # Do not diplay
+          or
+            $($ ;
+            $unsigned_literal_integer$ ?@luint leadingStrip ;
+            if leadingStrip->uint >= 15 then
+              error leadingStrip:"leading strip should be < 15" ;
+            end if ;
+            $,$ ;
+            $unsigned_literal_integer$ ?@luint endingStrip ;
+            if endingStrip->uint >= 15 then
+              error endingStrip:"tail strip should be < 15" ;
+            end if ;
+            displayFlags := (leadingStrip->uint << 4) | endingStrip ;
+           $)$ ;
+          end select ;
+          terminalList += !terminal !displayFlags ;
+        while
+          $,$ ;
+        end repeat ;
+        $;$ ;
+        labels += !displayStyle !terminalList !here ;
+      while
+        $identifier$ ?@lstring key ;
+        $literal_string$ ?@lstring name ;
+        $:$ ;
+        @lstring value [new !"" !here] ;
+        repeat
+          $literal_string$ ?@lstring v ;
+          value := [@lstring new ![value string] . [v string] ![v location]] ;
+        while
+        end repeat ;
+        $;$ ;
+        compoundAttributes += !key !name !value ;
+      while
+        $identifier$ ?@lstring name ;
+        $:$ ;
+        $literal_string$ ?@lstring value ;
+        $;$ ;
+        simpleAttributes += !name !value ;
+      end repeat ;
+      $}$ ;
+      withLexiqueList += 
+        !lexiqueReference
+        !labels
+        !simpleAttributes
+        !compoundAttributes
+      ;
+    end select ;
+  end repeat ;
+#---
+  $end$ ;
+  ioDeclarations += ![@galgas3GUIComponentAST new
+    !true
+    !mGUIName
+    !mGUIClass
+    !importedOptionList
+    !simpleGlobalAttributes
+    !withLexiqueList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+end syntax ;

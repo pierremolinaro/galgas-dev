@@ -100,8 +100,8 @@ rule <grammar_component_start_symbol>
     !here
     !hasTranslateFeature
   ] ;
-  $grammar$ ;
-  $;$ ;
+  $grammar$ :> ?* ?* ;
+  $;$ :> ?* ?* ;
 end rule ;
 
 #---------------------------------------------------------------------------*

@@ -91,7 +91,6 @@ SOURCES += semanticInstructionGeneration.cpp
 SOURCES += semanticGeneration.cpp
 SOURCES += semanticsCompilation.cpp
 SOURCES += predefinedTypes.cpp
-SOURCES += syntaxMetamodel.cpp
 SOURCES += syntaxModelBuilder.cpp
 SOURCES += syntaxSLRgrammar.cpp
 SOURCES += syntaxSignature.cpp
@@ -124,9 +123,17 @@ SOURCES += galgas3InstructionsSyntax.cpp
 SOURCES += galgas3DeclarationsSyntax.cpp
 SOURCES += galgas3OptionComponentSyntax.cpp
 SOURCES += galgas3LexiqueComponentSyntax.cpp
+SOURCES += galgas3GuiComponentSyntax.cpp
+SOURCES += galgas3SyntaxComponentSyntax.cpp
+SOURCES += galgas3GrammarComponentSyntax.cpp
+SOURCES += galgas3ProgramDeclarations.cpp
 SOURCES += galgas3Grammar.cpp
 SOURCES += galgas3OptionComponentCompilation.cpp
 SOURCES += galgas3LexiqueComponentCompilation.cpp
+SOURCES += galgas3GUIComponentCompilation.cpp
+SOURCES += galgas3SyntaxComponentCompilation.cpp
+SOURCES += galgas3GrammarComponentCompilation.cpp
+SOURCES += galgas3ProgramDeclarationCompilation.cpp
 
 
 #------------------------------------------------------------------------------*

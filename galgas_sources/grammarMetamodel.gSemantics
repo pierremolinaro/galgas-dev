@@ -18,7 +18,7 @@
 #---------------------------------------------------------------------------*
 
 semantics grammarMetamodel :
-import "syntaxMetamodel.gSemantics" ;
+import "semanticsTypesForAST.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 

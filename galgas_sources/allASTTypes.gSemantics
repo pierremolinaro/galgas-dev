@@ -23,7 +23,6 @@ semantics allASTTypes :
   import "optionTypesForAST.gSemantics" ;
   import "guiTypesForAST.gSemantics" ;
   import "lexiqueTypesForAST.gSemantics" ;
-  import "syntaxMetamodel.gSemantics" ;
   import "grammarMetamodel.gSemantics" ;
   import "optionSemantics.gSemantics" ;
   import "programMetamodel.gSemantics" ;
