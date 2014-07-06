@@ -108,7 +108,8 @@ end reader ;
 override reader @stringPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags
 :
-  outFlags := binaryConcatOperator [] | dotAssignOperator []
+  outFlags := binaryConcatOperator [] | dotAssignOperator [] | binaryAddOperator []
+    | addAssignOperator []
     | generateDescriptionReaderUtilityMethod [] | isComparable [] ;
 end reader ;
 

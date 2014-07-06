@@ -32,7 +32,8 @@ rule <expression> !@semanticExpressionAST outExpression :
   repeat
   while
     @location operatorLocation := here ;
-    $.$ ;
+    $.$ :> ?@string sep ?* ;
+    send sep . "+" ;
     @semanticExpressionAST leftOperand := outExpression ;
     @semanticExpressionAST rightOperand ;
     <concatenation_term> ? rightOperand ;
@@ -633,8 +634,7 @@ rule <output_expression_list>
   repeat
   while
     $!$ ;
-    @semanticExpressionAST expression ;
-    <expression> ? expression ;
+    <expression> ??@semanticExpressionAST expression ;
     outExpressionList += !expression !here ;
   end repeat ;
 end rule ;
