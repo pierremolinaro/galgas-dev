@@ -71,7 +71,7 @@ rule <local_declaration> :
   or
     $local$ :> ?@string sep ?* ;
     send sep ;
-    error here: "'local' qualifier is deprecated and ignored" ;
+    warning here: "'local' qualifier is deprecated and ignored" ;
   end select ;
 end rule ;
 
