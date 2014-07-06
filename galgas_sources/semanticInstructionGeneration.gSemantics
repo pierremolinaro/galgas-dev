@@ -111,7 +111,8 @@ abstract method @semanticInstructionForGeneration generateInstruction
 function generateRoutineBody
   ??@bool inGenerateCheckValid
   ??@semanticInstructionListForGeneration inInstructionList
-  ->@string outGeneratedCode {
+  ->@string outGeneratedCode
+:
   @stringset unusedVariableCppNameSet [emptySet] ;
   outGeneratedCode := "" ;
   @uint temporaryVariableIndex := 0 ;
@@ -126,7 +127,7 @@ function generateRoutineBody
     ] ;
   end for ;
   [!?outGeneratedCode decIndentation !2] ;
-}
+end function ;
 
 #---------------------------------------------------------------------------*
 
@@ -136,7 +137,8 @@ routine generateInstructionList
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ??@bool inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode {
+  ?!@string ioGeneratedCode
+:
   [!?ioGeneratedCode incIndentation !2] ;
   for element in inInstructionList do
     [element->mInstruction generateInstruction
@@ -148,7 +150,7 @@ routine generateInstructionList
     ] ;
   end for ;
   [!?ioGeneratedCode decIndentation !2] ;
-}
+end routine ;
 
 #---------------------------------------------------------------------------*
 

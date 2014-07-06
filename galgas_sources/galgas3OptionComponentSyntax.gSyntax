@@ -17,7 +17,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-syntax galgas3OptionComponentSyntax ("galgas_scanner.gLexique") :
+syntax galgas3OptionComponentSyntax ("galgas3Scanner.gLexique") :
 import "optionTypesForAST.gSemantics" ;
 import "semanticsTypesForAST.gSemantics" ;
 
@@ -36,7 +36,6 @@ rule <declaration>
   end repeat ;
   $end$ ;
   ioDeclarations += ![@galgas3OptionComponentAST new
-    !true
     !optionComponentName
     !options
   ] ;

@@ -132,7 +132,7 @@ end reader ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-local routine enterNonterminalNonTerminalInMapAndCheck
+routine enterNonterminalNonTerminalInMapAndCheck
   ??@lstring inNonTerminalName
   ??@nonterminalLabelMap inNonterminalLabelMap
   ?!@nonterminalMap ioNonterminalDeclarationMap 
@@ -181,7 +181,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine buildNonterminalDeclarationsMap
+routine buildNonterminalDeclarationsMap
   ??@nonterminalDeclarationListAST inNonterminalDeclarationList
   ??@semanticContext inSemanticContext
   !@nonterminalMap outNonterminalDeclarationMap
@@ -614,7 +614,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInVar  generat
   ?!@string ioGeneratedCode
 :
   const cppName := "var_" . [mActualParameterName identifierRepresentation] ;
-  ioGeneratedCode .= cppName . " := GALGAS_string (" . inAccessMethodName . ") ;\n" ; 
+  ioGeneratedCode .= cppName . " = GALGAS_string (" . inAccessMethodName . ") ;\n" ; 
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -1455,11 +1455,7 @@ routine semanticAnalysisOfSyntaxComponent
       end foreach ;
       [!?nonterminalLabelMap insertKey !mLabelName !signatureForGeneration !signature !mEndOfArgumentLocation] ;
     end foreach ;
-#    with nonterminalMap hasKey ![mNonterminalName string] do
       enterNonterminalNonTerminalInMapAndCheck !mNonterminalName !nonterminalLabelMap !?nonterminalMap ;
-#    else
-#      enterNonterminalNonTerminalInMapAndCheck !mNonterminalName !nonterminalLabelMap !?nonterminalMap ;
-#    end with ;
   end foreach ;
 #--- Analysis context
   const analysisContext := [@analysisContext new
@@ -1517,7 +1513,6 @@ routine semanticAnalysisOfSyntaxComponent
   end foreach ;
 #---
   outSyntaxDeclarationForGeneration := [@syntaxDeclarationForGeneration new
-    !true # is Global
     !inComponentName
     !inLexiqueName
     !nonterminalMap

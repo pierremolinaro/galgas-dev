@@ -478,7 +478,7 @@ end reader ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-local routine addCategories
+routine addCategories
   ??@categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
   ??@categoryReaderMapForBuildingContext inCategoryReaderMapForBuildingContext
   ??@categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
@@ -3481,7 +3481,6 @@ override method @mapDeclarationAST addAssociatedElement
     ;
   end foreach ;
   ioSemanticDeclarationList += ![@structDeclarationAST new
-    !true
     ![@lstring new !mMapTypeName->string . elementTypeNameSuffix [] !mMapTypeName->location]
     !structAttributeList
     !""
@@ -3502,7 +3501,6 @@ override method @listDeclarationAST addAssociatedElement
     ;
   end foreach ;
   ioSemanticDeclarationList += ![@structDeclarationAST new
-    !true
     ![@lstring new !mListTypeName->string . elementTypeNameSuffix [] !mListTypeName->location]
     !structAttributeList
     !""
@@ -3523,7 +3521,6 @@ override method @sortedListDeclarationAST addAssociatedElement
     ;
   end foreach ;
   ioSemanticDeclarationList += ![@structDeclarationAST new
-    !true
     ![@lstring new !mSortedListTypeName->string . elementTypeNameSuffix [] !mSortedListTypeName->location]
     !structAttributeList
     !""
@@ -3548,7 +3545,6 @@ override method @listmapDeclarationAST addAssociatedElement
   ;
 #---
   ioSemanticDeclarationList += ![@structDeclarationAST new
-    !true
     ![@lstring new !mListmapTypeName->string . elementTypeNameSuffix [] !mListmapTypeName->location]
     !structAttributeList
     !""

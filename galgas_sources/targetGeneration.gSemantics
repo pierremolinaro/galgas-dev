@@ -7,7 +7,7 @@ semantics targetGeneration :
 
 #---------------------------------------------------------------------------*
 
-local filewrapper updaterApplicationFileWrapper in "../generation_templates/cocoa_application_update/updater-application" {
+filewrapper updaterApplicationFileWrapper in "../generation_templates/cocoa_application_update/updater-application" {
 }{
 }{
  template credits "UpdaterAppCredits.rtf" ;
@@ -31,7 +31,7 @@ local filewrapper updaterApplicationFileWrapper in "../generation_templates/coco
 
 #---------------------------------------------------------------------------*
 
-local filewrapper updaterToolFileWrapper in "../generation_templates/cocoa_application_update/updater-tool" {
+filewrapper updaterToolFileWrapper in "../generation_templates/cocoa_application_update/updater-tool" {
 }{
 }{
  template updater_object_protocol "PMUpdaterServerProtocol.h.gTemplate" ;
@@ -54,7 +54,7 @@ local filewrapper updaterToolFileWrapper in "../generation_templates/cocoa_appli
 
 #---------------------------------------------------------------------------*
 
-local filewrapper applicationUpdateFileWrapper in "../generation_templates/cocoa_application_update/application" {
+filewrapper applicationUpdateFileWrapper in "../generation_templates/cocoa_application_update/application" {
 }{
 }{
  template application_update_header "PMApplicationUpdate.h.gTemplate" ;
@@ -75,7 +75,7 @@ local filewrapper applicationUpdateFileWrapper in "../generation_templates/cocoa
 
 #---------------------------------------------------------------------------*
 
-local filewrapper targetGenerationFileWrapper in "../generation_templates/target_generation" {
+filewrapper targetGenerationFileWrapper in "../generation_templates/target_generation" {
  "bat", "command", "rtf"
 }{
 }{
@@ -117,7 +117,7 @@ local filewrapper targetGenerationFileWrapper in "../generation_templates/target
 
 #---------------------------------------------------------------------------*
 
-local routine generateMsysOnWin32Target
+routine generateMsysOnWin32Target
   ??@string inProjectDirectory
   ??@string inProjectName
 :
@@ -131,7 +131,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine generateMinGWOnMacOSXTarget
+routine generateMinGWOnMacOSXTarget
   ??@string inProjectDirectory
   ??@string inProjectName
 :
@@ -144,7 +144,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine generateMakefileMacOSXTarget
+routine generateMakefileMacOSXTarget
   ??@string inProjectDirectory
   ??@string inProjectName
 :
@@ -158,7 +158,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine generateMakefileUnixTarget
+routine generateMakefileUnixTarget
   ??@string inProjectDirectory
   ??@string inProjectName
 :
@@ -172,7 +172,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine generateI386LinuxOnMacOSXTarget
+routine generateI386LinuxOnMacOSXTarget
   ??@string inProjectDirectory
   ??@string inProjectName
 :
@@ -185,7 +185,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine generateX86_64LinuxOnMacOSXTarget
+routine generateX86_64LinuxOnMacOSXTarget
   ??@string inProjectDirectory
   ??@string inProjectName
 :

@@ -17,17 +17,13 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-syntax galgas3ProgramDeclarations ("galgas_scanner.gLexique") :
+syntax galgas3ProgramDeclarations ("galgas3Scanner.gLexique") :
 
 import "semanticsTypesForAST.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
 nonterminal <semantic_instruction_list> !@semanticInstructionListAST outInstructionsList ;
-
-nonterminal <semantic_declaration>
- ?!@semanticDeclarationListAST ioSemanticDeclarations
-;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -44,7 +40,6 @@ rule <declaration>
   const endOfPrologue := here ;
   $}$ ;
   ioDeclarations += ![@galgas3PrologueDeclarationAST new
-    !true
     !prologueInstructionList
     !endOfPrologue
   ] ;
@@ -65,7 +60,6 @@ rule <declaration>
   const endOfPrologue := here ;
   $}$ ;
   ioDeclarations += ![@galgas3EpilogueDeclarationAST new
-    !true
     !prologueInstructionList
     !endOfPrologue
   ] ;
@@ -114,7 +108,6 @@ rule <declaration>
   const endOfInstructionList := here ;
   $}$ ;
   ioDeclarations += ![@galgas3SourceRuleDeclarationAST new
-    !true
     !mSourceFileExtension
     !mSourceFileHelp
     !mSourceFileVariableName

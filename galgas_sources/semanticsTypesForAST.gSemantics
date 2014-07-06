@@ -425,7 +425,6 @@ list @semanticInstructionListAST {
 #---------------------------------------------------------------------------*
 
 abstract class @semanticDeclarationAST {
-  @bool mIsGlobal ;
 }
 
 #---------------------------------------------------------------------------*

@@ -15,7 +15,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-syntax galgas3ParameterArgumentSyntax ("galgas_scanner.gLexique") :
+syntax galgas3ParameterArgumentSyntax ("galgas3Scanner.gLexique") :
 
 import "semanticsTypesForAST.gSemantics" ;
 

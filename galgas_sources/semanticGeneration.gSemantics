@@ -134,7 +134,7 @@ end function ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-local function generateFunction
+function generateFunction
   ??@string inProcedureName
   ??@formalInputParameterListForGeneration inFormalArgumentList
   ??@semanticInstructionListForGeneration inInstructionList
@@ -217,7 +217,7 @@ end function ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-local function generateCategoryModifier
+function generateCategoryModifier
   ??@string inClassName
   ??@string inBaseClassName
   ??@string inMethodName
@@ -314,7 +314,7 @@ end function ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-local function generateCategoryMethod
+function generateCategoryMethod
   ??@string inClassName
   ??@string inBaseClassName
   ??@string inMethodName
@@ -411,7 +411,7 @@ end function ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-local function generateCategoryReader
+function generateCategoryReader
   ??@string inClassName
   ??@string inBaseClassName
   ??@string inReaderName
@@ -765,7 +765,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-local filewrapper semanticComponentGenerationTemplate in "../generation_templates/semantic_generation" {
+filewrapper semanticComponentGenerationTemplate in "../generation_templates/semantic_generation" {
 }{
 }{
 #------------ Category reader
@@ -1337,7 +1337,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-local routine recursivlyEnumerateRegularFile
+routine recursivlyEnumerateRegularFile
   ??@wrapperFileMap inFilewrapperFileMap
   ??@wrapperDirectoryMap inFilewrapperDirectoryMap
   ?!@stringlist ioRegularFileIndexStringList
@@ -2007,7 +2007,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-local routine generateWrapperContents
+routine generateWrapperContents
   ??@string inFilewrapperName
   ??@string inFilewrapperDirectory
   ??@uint inFilewrapperDirectoryIndex

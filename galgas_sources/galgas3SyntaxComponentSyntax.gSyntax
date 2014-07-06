@@ -15,7 +15,7 @@
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-syntax galgas3SyntaxComponentSyntax ("galgas_scanner.gLexique") :
+syntax galgas3SyntaxComponentSyntax ("galgas3Scanner.gLexique") :
 import "semanticsTypesForAST.gSemantics" ;
 
 #------------------------------------------------------------------------------*
@@ -36,10 +36,6 @@ nonterminal <formal_parameter_list> !@formalParameterListAST outFormalParameterL
 nonterminal <actual_parameter_list>
   !@actualParameterListAST outActualParameterList
   ?!@localVariableDeclarationListAST ioLocalVariableDeclarationList
-;
-
-nonterminal <semantic_declaration>
- ?!@semanticDeclarationListAST ioSemanticDeclarations
 ;
 
 #------------------------------------------------------------------------------*
@@ -85,7 +81,6 @@ rule <declaration>
   $end$ ;
   const endOfSource := here ;
   ioDeclarations += ![@galgas3SyntaxComponentAST new
-    !true
     !mSyntaxComponentName
     !importedLexiqueReference
     !mNonterminalDeclarationList

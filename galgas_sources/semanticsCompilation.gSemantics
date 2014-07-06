@@ -77,7 +77,7 @@ graph @semanticImportDependenceGraph (@stringlist) {
 
 #---------------------------------------------------------------------------*
 
-local routine recursivelyImportSemanticComponent
+routine recursivelyImportSemanticComponent
   ??@lstring inFilePath
   ?!@parsedComponentStruct ioParsedComponentStruct
   ?!@semanticImportDependenceGraph ioSemanticImportDependenceGraph
@@ -129,9 +129,7 @@ local routine recursivelyImportSemanticComponent
         ioHeaderIncludeList += ![[semanticsComponentRoot mSemanticsComponentName] string] ;
       #--- Add declaration to declaration list (only if global)
         foreach [semanticsComponentRoot mSemanticDeclarationList] do
-          if [mSemanticDeclaration mIsGlobal] then
-            ioSemanticDeclarationList += !mSemanticDeclaration ;
-          end if ;
+          ioSemanticDeclarationList += !mSemanticDeclaration ;
         end foreach ;
       #--- Import semantic components named in this file
         recursivelyImportSemanticComponent
@@ -426,14 +424,10 @@ routine compileSemanticsComponentAST
       !typeList
     ] ;
     foreach decoratedDeclarationListForGeneration do
-      if [mDeclaration mIsGlobal] then
-        headerString .= [mDeclaration appendDeclaration1] ;
-      end if ;
+      headerString .= [mDeclaration appendDeclaration1] ;
     end foreach ;
     foreach decoratedDeclarationListForGeneration do
-      if [mDeclaration mIsGlobal] then
-        headerString .= [mDeclaration appendDeclaration2 !inOutputDirectory] ;
-      end if ;
+      headerString .= [mDeclaration appendDeclaration2 !inOutputDirectory] ;
     end foreach ;
     [@string generateFileWithPattern
       !inOutputDirectory
@@ -451,16 +445,16 @@ routine compileSemanticsComponentAST
       ![componentName string]
       !implementationIncludeList
     ] ;
-    foreach decoratedDeclarationListForGeneration do
-      if not [mDeclaration mIsGlobal] then
-        implementationString .= [mDeclaration appendDeclaration1] ;
-      end if ;
-    end foreach ;
-    foreach decoratedDeclarationListForGeneration do
-      if not [mDeclaration mIsGlobal] then
-        implementationString .= [mDeclaration appendDeclaration2 !inOutputDirectory] ;
-      end if ;
-    end foreach ;
+#    foreach decoratedDeclarationListForGeneration do
+#      if not [mDeclaration mIsGlobal] then
+#        implementationString .= [mDeclaration appendDeclaration1] ;
+#      end if ;
+#    end foreach ;
+#    foreach decoratedDeclarationListForGeneration do
+#      if not [mDeclaration mIsGlobal] then
+#        implementationString .= [mDeclaration appendDeclaration2 !inOutputDirectory] ;
+#      end if ;
+#    end foreach ;
     foreach decoratedDeclarationListForGeneration do
       implementationString .= [mDeclaration appendSpecificImplementation] ;
       implementationString .= [mDeclaration appendTypeGenericImplementation] ;

@@ -17,7 +17,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-syntax galgas3ExpressionSyntax ("galgas_scanner.gLexique") :
+syntax galgas3ExpressionSyntax ("galgas3Scanner.gLexique") :
 
 import "semanticsTypesForAST.gSemantics" ;
 
