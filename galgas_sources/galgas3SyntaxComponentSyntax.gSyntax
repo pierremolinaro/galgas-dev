@@ -1,0 +1,554 @@
+#------------------------------------------------------------------------------*
+#                                                                              *
+#  Copyright (C) 2014, ..., 2014 Pierre Molinaro.                              *
+#                                                                              *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                       *
+#                                                                              *
+#  This program is free software; you can redistribute it and/or modify it     *
+#  under the terms of the GNU General Public License as published by the       *
+#  Free Software Foundation.                                                   *
+#                                                                              *
+#  This program is distributed in the hope it will be useful, but WITHOUT      *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or       *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for    *
+#   more details.                                                              *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+syntax galgas3SyntaxComponentSyntax ("galgas_scanner.gLexique") :
+import "semanticsTypesForAST.gSemantics" ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#          Rules prototypes                                                    *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+nonterminal <expression> !@semanticExpressionAST outExpression ;
+
+nonterminal <semantic_instruction>
+  !@semanticInstructionAST outInstruction
+  ?!@localVariableDeclarationListAST ioLocalVariableDeclarationList
+;
+
+nonterminal <formal_parameter_list> !@formalParameterListAST outFormalParameterList ;
+
+nonterminal <actual_parameter_list>
+  !@actualParameterListAST outActualParameterList
+  ?!@localVariableDeclarationListAST ioLocalVariableDeclarationList
+;
+
+nonterminal <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations
+;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#      S Y N T A X    C O M P O N E N T                                        *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@semanticDeclarationListAST ioDeclarations
+:
+  $syntax$ ;
+#--- Semantics Component Name
+  $identifier$ ??@lstring mSyntaxComponentName ;
+#--- Imported lexique
+  $($ ;
+  $identifier$ ??@lstring importedLexiqueReference  ;
+  $)$ ;
+#--- Feature 'translate'
+  @bool hasTranslateFeature ;
+  select
+    hasTranslateFeature := false ;
+  or
+    $feature$ ;
+    $identifier$ ??@lstring featureName ;
+    if featureName->string != "translate" then
+      error featureName: "only 'feature translate' can be declared here" ;
+    end if ;
+    hasTranslateFeature := true ;
+  end select ;
+  $:$ ;
+#--- Loop on declarations
+  @nonterminalDeclarationListAST mNonterminalDeclarationList [emptyList] ;
+  @syntaxRuleListAST mRuleList [emptyList] ;
+  @semanticDeclarationListAST mSemanticDeclarations [emptyList] ;
+  repeat
+  while
+    <nonterminal_declaration> !? mNonterminalDeclarationList ;
+  while
+    <syntax_rule_declaration> !? mRuleList ;
+  end repeat ;
+#--- end
+  $end$ ;
+  const endOfSource := here ;
+  ioDeclarations += ![@galgas3SyntaxComponentAST new
+    !true
+    !mSyntaxComponentName
+    !importedLexiqueReference
+    !mNonterminalDeclarationList
+    !mRuleList
+    !endOfSource
+    !hasTranslateFeature
+  ] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#      N O N T E R M I N A L    D E C L A R A T I O N                          *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <nonterminal_label_declaration> ??@lstring inLabelName ?!@nonTerminalLabelListAST ioNonTerminalLabelList :
+  <formal_parameter_list> ??@formalParameterListAST mFormalParameters ;
+  ioNonTerminalLabelList +=
+    !inLabelName
+    !mFormalParameters
+    !here
+  ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+
+rule <nonterminal_declaration> ?!@nonterminalDeclarationListAST ioNonterminalDeclarationList :
+  $rule$ ;
+  $non_terminal_symbol$ ??@lstring mNonterminalName indexing ruleDefinition ;
+  @nonTerminalLabelListAST mLabels [emptyList] ;
+  <nonterminal_label_declaration> ![@lstring new !"" !here] !?mLabels ;
+  repeat
+  while
+    $label$ ;
+    $identifier$ ??@lstring labelName ;
+    <nonterminal_label_declaration> !labelName !?mLabels ;
+  end repeat ;
+  $;$ ;
+  ioNonterminalDeclarationList +=
+    !mNonterminalName
+    !mLabels
+  ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#      S Y N T A X    R U L E    D E C L A R A T I O N                         *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <syntax_rule_label>
+  ??@lstring inLabelName
+  ?!@syntaxRuleLabelListAST ioLabelList
+:
+  @formalParameterListAST mFormalParameters ;
+  <formal_parameter_list> ? mFormalParameters ;
+  const endOfArguments := here ;
+  $:$ ;
+  @syntaxInstructionList mSyntaxInstructionList ;
+  <syntax_instruction_list> ? mSyntaxInstructionList ;
+  ioLabelList +=
+    !inLabelName
+    !mFormalParameters
+    !endOfArguments
+    !mSyntaxInstructionList
+    !here
+  ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+
+rule <syntax_rule_declaration> ?!@syntaxRuleListAST ioRuleList :
+  $rule$ ;
+  $non_terminal_symbol$ ? @lstring mNonterminalName indexing ruleDefinition ;
+  @lstring labelName [new !"" !here] ;
+  @syntaxRuleLabelListAST mLabelList [emptyList] ;
+  repeat
+    <syntax_rule_label> !labelName !?mLabelList ;
+  while
+    $label$ ;
+    $identifier$ ?labelName ;
+  end repeat ;
+  $end$ ;
+  $rule$ ;
+  $;$ ;
+  ioRuleList +=
+    !mNonterminalName
+    !mLabelList
+  ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   S Y N T A X    I N S T R U C T I O N    L I S T                            *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <syntax_instruction_list> !@syntaxInstructionList outSyntaxInstructionList :
+  outSyntaxInstructionList := [@syntaxInstructionList emptyList] ;
+  repeat
+  while
+    @semanticInstructionAST instruction ;
+    @localVariableDeclarationListAST localVariableDeclarationList [emptyList] ;
+    <semantic_instruction> ? instruction !?localVariableDeclarationList ;
+    foreach localVariableDeclarationList do
+      outSyntaxInstructionList += ![@localVariableDeclarationAST new ![mTypeName location] !mTypeName !mVariableName !mIsUndefinedConstant] ;
+    end foreach ;
+    outSyntaxInstructionList += !instruction ;
+  while
+    @syntaxInstructionAST instruction ;
+    @localVariableDeclarationListAST localVariableDeclarationList [emptyList] ;
+    <syntax_instruction> ? instruction !?localVariableDeclarationList ;
+    foreach localVariableDeclarationList do
+      outSyntaxInstructionList += ![@localVariableDeclarationAST new ![mTypeName location] !mTypeName !mVariableName !mIsUndefinedConstant] ;
+    end foreach ;
+    outSyntaxInstructionList += !instruction ;
+  end repeat ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   N O N T E R M I N A L    C A L L    I N S T R U C T I O N                  *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+#! Non terminal instruction
+
+#------------------------------------------------------------------------------*
+
+rule <syntax_instruction>
+  !@syntaxInstructionAST outInstruction
+  ?!@localVariableDeclarationListAST ioLocalVariableDeclarationList
+:
+  $non_terminal_symbol$ ? @lstring mNonterminalName indexing ruleReference ;
+  @lstring mLabelName ; # No label : empty string
+  select
+    mLabelName := [@lstring new !"" !here] ;
+  or
+    $parse$ ;
+    mLabelName := [@lstring new !"parse" !here] ;
+  or
+    $identifier$ ? mLabelName ;
+  end select ;
+  <actual_parameter_list> ??@actualParameterListAST mActualParameterList !?ioLocalVariableDeclarationList ;
+#--- Get syntax directed translation result string
+  @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult ;
+  select
+    grammarInstructionSyntaxDirectedTranslationResult := [@grammarInstructionSyntaxDirectedTranslationResultNone new] ;
+  or
+    $:>$ ;
+    <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationResult ;
+  end select ;
+  $;$ ;
+  outInstruction := [@nonterminalCallInstruction new
+    ![mNonterminalName location]
+    !mNonterminalName
+    !mLabelName
+    !mActualParameterList
+    !grammarInstructionSyntaxDirectedTranslationResult
+  ] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   T E R M I N A L    C H E C K    I N S T R U C T I O N                      *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+#! Terminal instruction
+
+#------------------------------------------------------------------------------*
+
+nonterminal <actual_input_parameter_list>
+  !@actualInputParameterListAST outActualInputParameterList
+;
+
+#------------------------------------------------------------------------------*
+
+nonterminal <syntax_directed_translation_result>
+  !@abstractGrammarInstructionSyntaxDirectedTranslationResult outResult
+;
+
+#------------------------------------------------------------------------------*
+
+rule <syntax_instruction>
+  !@syntaxInstructionAST outInstruction
+  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
+:
+  $terminal$ ??@lstring terminalName indexing terminalReference ;
+  <actual_input_parameter_list> ??@actualInputParameterListAST actualInputParameterList ;
+  @lstringlist indexNameList [emptyList] ;
+  select
+  or
+    $indexing$ ;
+    repeat
+      $identifier$ ??@lstring indexName indexing indexingNameReference ;
+      indexNameList += !indexName ;
+    while
+      $,$ ;
+    end repeat ;
+  end select ;
+#--- Get syntax directed translation result string
+  @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor ;
+  @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingToken;
+  select
+    grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor := [@grammarInstructionSyntaxDirectedTranslationResultNone new] ;
+    grammarInstructionSyntaxDirectedTranslationPreceedingToken := [@grammarInstructionSyntaxDirectedTranslationResultNone new] ;
+  or
+    $:>$ ;
+    <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor ;
+    <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationPreceedingToken ;
+  end select ;
+  $;$ ;
+  outInstruction := [@terminalCheckInstruction new
+    ![terminalName location]
+    !terminalName
+    !actualInputParameterList
+    !indexNameList
+    !grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
+    !grammarInstructionSyntaxDirectedTranslationPreceedingToken
+  ] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   R E P E A T    I N S T R U C T I O N                                       *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+#! Repeat instruction
+
+#------------------------------------------------------------------------------*
+
+rule <syntax_instruction>
+  !@syntaxInstructionAST outInstruction
+  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
+:
+  $repeat$ ;
+  const mRepeatInstructionLocation := here ;
+  <syntax_instruction_list> ??@syntaxInstructionList mRepeatedInstructionList ;
+  const endOf_repeated_instructions := here ;
+  @listOfSyntaxInstructionList mRepeatBranchList [emptyList] ;
+  repeat
+    $while$ ;
+    <syntax_instruction_list> ??@syntaxInstructionList mInstructionList ;
+    mRepeatBranchList += ! mInstructionList !here ;
+  while
+  end repeat ;
+  $end$ ;
+  const endOf_repeat_instruction := here ;
+  $repeat$ ;
+  $;$ ;
+  outInstruction := [@repeatInstruction new
+    !mRepeatInstructionLocation
+    !mRepeatedInstructionList
+    !endOf_repeated_instructions
+    !mRepeatBranchList
+    !endOf_repeat_instruction
+  ] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   S E L E C T    I N S T R U C T I O N                                       *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+#! select instruction
+
+#------------------------------------------------------------------------------*
+
+rule <syntax_instruction>
+  !@syntaxInstructionAST outInstruction
+  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
+:
+  $select$ ;
+  const mSelectInstructionLocation := here ;
+  @listOfSyntaxInstructionList mSelectBranchList [emptyList] ;
+  <syntax_instruction_list> ??@syntaxInstructionList il ;
+  mSelectBranchList += !il !here ;
+  repeat
+    $or$ ;
+    <syntax_instruction_list> ??@syntaxInstructionList instructionList ;
+    mSelectBranchList += !instructionList !here ;
+  while
+  end repeat ;
+  $end$ ;
+  const endOf_select_instruction := here ;
+  $select$ ;
+  $;$ ;
+  outInstruction := [@selectInstruction new
+    !mSelectInstructionLocation
+    !mSelectBranchList
+    !endOf_select_instruction
+  ] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P A R S E    R E W I N D    I N S T R U C T I O N                          *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+#! parse instruction
+
+#------------------------------------------------------------------------------*
+
+rule <syntax_instruction>
+  !@syntaxInstructionAST outInstruction
+  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
+:
+  $parse$ ;
+  const instructionLocation := here ;
+  $do$ ;
+  @listOfSyntaxInstructionList mParseDoBranchList [emptyList] ;
+  <syntax_instruction_list> ??@syntaxInstructionList il ;
+  mParseDoBranchList += !il !here ;
+  repeat
+    $rewind$ ;
+    <syntax_instruction_list> ??@syntaxInstructionList instructionList ;
+    mParseDoBranchList += !instructionList  !here;
+  while
+  end repeat ;
+  $end$ ;
+  const endOfInstruction := here ;
+  $parse$ ;
+  $;$ ;
+  outInstruction := [@parseRewindInstruction new
+    !instructionLocation
+    !mParseDoBranchList
+    !endOfInstruction
+  ] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P A R S E    W H E N    I N S T R U C T I O N                              *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <branchOfParseWhenInstruction> !@syntaxInstructionList outElseInstructionList :
+  $else$ ;
+  <syntax_instruction_list> ? outElseInstructionList ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+
+rule <branchOfParseWhenInstruction> !@syntaxInstructionList outElseInstructionList :
+  $when$ ;
+  const instructionLocation := here ;
+  @semanticExpressionAST whenExpression ;
+  <expression> ? whenExpression ;
+  const endOfWhenExpression := here ;
+  $:$ ;
+  @syntaxInstructionList whenInstructionList ;
+  <syntax_instruction_list> ? whenInstructionList ;
+  const endOfWhenInstructions := here ;
+#--- Else part
+  @syntaxInstructionList elseInstructionList ;
+  <branchOfParseWhenInstruction> ? elseInstructionList ;
+  const endOfElseInstructions := here ;
+  outElseInstructionList := [@syntaxInstructionList emptyList] ;
+  outElseInstructionList += ![@parseWhenInstruction new
+    !instructionLocation
+    !whenExpression
+    !endOfWhenExpression
+    !whenInstructionList
+    !endOfWhenInstructions
+    !elseInstructionList
+    !endOfElseInstructions
+  ] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+
+rule <syntax_instruction>
+  !@syntaxInstructionAST outInstruction
+  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
+:
+  $parse$ ;
+  const instructionLocation := here ;
+  $when$ ;
+  <expression> ?@semanticExpressionAST whenExpression ;
+  const endOfWhenExpression := here ;
+  $:$ ;
+  <syntax_instruction_list> ??@syntaxInstructionList whenInstructionList ;
+  const endOfWhenInstructions := here ;
+#--- Else part
+  <branchOfParseWhenInstruction> ??@syntaxInstructionList elseInstructionList ;
+  const endOfElseInstructions := here ;
+  $end$ ;
+  $parse$ ;
+  $;$ ;
+  outInstruction := [@parseWhenInstruction new
+    !instructionLocation
+    !whenExpression
+    !endOfWhenExpression
+    !whenInstructionList
+    !endOfWhenInstructions
+    !elseInstructionList
+    !endOfElseInstructions
+  ] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P A R S E    L O O P    I N S T R U C T I O N                              *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <syntax_instruction>
+  !@syntaxInstructionAST outInstruction
+  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
+:
+  $parse$ ;
+  const instructionLocation := here ;
+  $loop$ ;
+  <expression> ??@semanticExpressionAST variantExpression ;
+  const endOfVariantExpression := here ;
+  $while$ ;
+  <expression> ??@semanticExpressionAST whileExpression ;
+  const endOfWhileExpression := here ;
+  $do$ ;
+  <syntax_instruction_list> ??@syntaxInstructionList instructionList ;
+  $end$ ;
+  const endOfInstructionList := here ;
+  $parse$ ;
+  $;$ ;
+  outInstruction := [@parseLoopInstruction new
+    !instructionLocation
+    !variantExpression
+    !endOfVariantExpression
+    !whileExpression
+    !endOfWhileExpression
+    !instructionList
+    !endOfInstructionList
+  ] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P A R S E    R E W I N D    I N S T R U C T I O N                          *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+#! send instruction
+
+#------------------------------------------------------------------------------*
+
+rule <syntax_instruction>
+  !@syntaxInstructionAST outInstruction
+  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
+:
+  $send$ ;
+  const instructionLocation := here ;
+  <expression> ??@semanticExpressionAST sentExpression ;
+  $;$ ;
+  outInstruction := [@syntaxSendInstruction new
+    !instructionLocation
+    !sentExpression
+  ] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+
+end syntax ;

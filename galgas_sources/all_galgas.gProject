@@ -103,7 +103,6 @@ project all_galgas (2:6:0) -> "galgas" :
   semantics "predefinedTypes.gSemantics" ;
 
 #--- Syntax Component
-  semantics "syntaxMetamodel.gSemantics" ;
   syntax    "syntaxModelBuilder.gSyntax" ;
   grammar   "syntaxSLRgrammar.gGrammar" ;
   semantics "syntaxSignature.gSemantics" ;
@@ -148,11 +147,23 @@ project all_galgas (2:6:0) -> "galgas" :
   syntax "galgas3DeclarationsSyntax.gSyntax" ;
   syntax "galgas3OptionComponentSyntax.gSyntax" ;
   syntax "galgas3LexiqueComponentSyntax.gSyntax" ;
+  syntax "galgas3GuiComponentSyntax.gSyntax" ;
+  syntax "galgas3SyntaxComponentSyntax.gSyntax" ;
+  syntax "galgas3GrammarComponentSyntax.gSyntax" ;
+  syntax "galgas3ProgramDeclarations.gSyntax" ;
   grammar "galgas3Grammar.gGrammar" ;
 
   semantics "galgas3OptionComponentCompilation.gSemantics" ;
 
   semantics "galgas3LexiqueComponentCompilation.gSemantics" ;
+
+  semantics "galgas3GUIComponentCompilation.gSemantics" ;
+
+  semantics "galgas3SyntaxComponentCompilation.gSemantics" ;
+
+  semantics "galgas3GrammarComponentCompilation.gSemantics" ;
+  
+  semantics "galgas3ProgramDeclarationCompilation.gSemantics" ;
 
 #--- Hand coded sources
   extern "cDecisionTableElement.cpp" ;

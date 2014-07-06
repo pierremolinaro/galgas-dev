@@ -562,17 +562,6 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-routine enterTemplateString
-  ?!@templateInstructionListAST outResultingInstructionList
-:
-  const @string s := [@string retrieveAndResetTemplateString]  ;
-  if [s length] > 0 then
-    outResultingInstructionList += ![@templateInstructionStringAST new !s] ;
-  end if ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
 rule <template_instruction>
   ?!@templateInstructionListAST ioResultingInstructionList
 :

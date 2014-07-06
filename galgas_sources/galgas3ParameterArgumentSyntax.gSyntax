@@ -1,0 +1,197 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Copyright (C) 2014, ..., 2014 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+syntax galgas3ParameterArgumentSyntax ("galgas_scanner.gLexique") :
+
+import "semanticsTypesForAST.gSemantics" ;
+
+#------------------------------------------------------------------------------*
+
+nonterminal <expression> !@semanticExpressionAST outExpressionAST ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#          F O R M A L    P A R A M E T E R    L I S T                         *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <formal_parameter_list> !@formalParameterListAST outFormalParameterList :
+  outFormalParameterList := [@formalParameterListAST emptyList] ;
+  repeat
+  while
+    @formalArgumentPassingModeAST mFormalParameterPassingMode ;
+    select
+      $?$ ;
+      mFormalParameterPassingMode := [@formalArgumentPassingModeAST argumentIn] ;
+    or
+      $??$ ;
+      mFormalParameterPassingMode := [@formalArgumentPassingModeAST argumentConstantIn] ;
+    or
+      $?!$ ;
+      mFormalParameterPassingMode := [@formalArgumentPassingModeAST argumentInOut] ;
+    or
+      $!$ ;
+      mFormalParameterPassingMode := [@formalArgumentPassingModeAST argumentOut] ;
+    end select ;
+    $type_name$ ?@lstring mFormalParameterTypeName ;
+    @bool mIsUnused ;
+    select
+      mIsUnused := false ;
+    or
+      $unused$ ;
+      mIsUnused := true ;
+    end select ;
+    $identifier$ ?@lstring mFormalParameterName ;
+    outFormalParameterList +=
+      !mFormalParameterPassingMode
+      !mFormalParameterTypeName
+      !mFormalParameterName
+      !mIsUnused
+    ;
+  end repeat ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  A C T U A L    P A R A M E T E R    L I S T                              *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <actual_parameter_list>
+  !@actualParameterListAST outActualParameterList
+  ?!@localVariableDeclarationListAST ioLocalVariableDeclarationList
+:
+  outActualParameterList := [@actualParameterListAST emptyList] ;
+  repeat
+  while
+    $?$ ;
+    const @location qualifierLocation := here ;
+    select
+      $*$ ;
+      outActualParameterList += ![@inputJokerActualParameterAST new !qualifierLocation !0] ;
+    or
+      @luint count ;
+      $unsigned_literal_integer$ ? count ;
+      $*$ ;
+      @uint n := [count uint] ;
+      if n == 0 then
+        error count: "the count value should be > 0" ;
+      else
+        loop n :
+        while n > 0 do
+          outActualParameterList += ![@inputJokerActualParameterAST new !qualifierLocation !n] ;
+          n -- ;
+        end loop ;
+      end if ;
+    end select ;
+  while
+    $!$ ;
+    const @location qualifierLocation := here ;
+    @semanticExpressionAST e ;
+    <expression> ? e ;
+    const @location endOfExpressionLocation := here ;
+    outActualParameterList += ![@outputActualParameterAST new
+      !qualifierLocation
+      !e
+      !endOfExpressionLocation
+    ] ;
+  while
+    $!?$ ;
+    const @location qualifierLocation := here ;
+    @lstring outputInputActualParameterName ;
+    $identifier$ ?outputInputActualParameterName ;
+    @lstringlist structAttributeList [emptyList] ;
+    repeat
+    while
+      $->$ ;
+      $identifier$ ? @lstring structAttributeName ;
+      structAttributeList += !structAttributeName ;
+    end repeat ;
+    outActualParameterList += ![@outputInputActualParameterAST new 
+      !qualifierLocation
+      !outputInputActualParameterName
+      !structAttributeList
+    ] ;
+  while
+    $?$ ;
+    const @location qualifierLocation := here ;
+    @lstring inputActualParameterName ;
+    select
+      $identifier$ ?inputActualParameterName ;
+    or
+      $type_name$ ? @lstring declarationTypeName ;
+      $identifier$ ?inputActualParameterName ;
+      ioLocalVariableDeclarationList += !declarationTypeName !inputActualParameterName !false ;
+    end select ;
+    outActualParameterList += ![@inputActualParameterAST new
+      !qualifierLocation
+      !inputActualParameterName
+      !false # is not constant
+    ] ;
+  while
+    $??$ ;
+    const @location qualifierLocation := here ;
+    $type_name$ ?@lstring declarationTypeName ;
+    $identifier$ ?@lstring inputActualParameterName ;
+    ioLocalVariableDeclarationList += !declarationTypeName !inputActualParameterName !true ;
+    outActualParameterList += ![@inputActualParameterAST new
+      !qualifierLocation
+      !inputActualParameterName
+      !true # Is constant
+    ] ;
+  end repeat ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  F O R M A L    I N P U T    P A R A M E T E R S                          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList :
+  outFormalInputParameterList := [@formalInputParameterListAST emptyList] ;
+  repeat
+  while
+    @bool isConstant ;
+    select
+      $?$ ;
+      isConstant := false ;
+    or
+      $??$ ;
+      isConstant := true ;
+    end select ;
+    $type_name$ ?@lstring mFormalParameterTypeName ;
+    @bool mIsUnused ;
+    select
+      mIsUnused := false ;
+    or
+      $unused$ ;
+      mIsUnused := true ;
+    end select ;
+    $identifier$ ?@lstring mFormalParameterName ;
+    outFormalInputParameterList +=
+      !mFormalParameterTypeName
+      !mFormalParameterName
+      !mIsUnused
+      !isConstant
+    ;
+  end repeat ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+end syntax ;

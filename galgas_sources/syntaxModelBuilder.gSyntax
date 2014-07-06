@@ -19,7 +19,6 @@
 
 syntax syntaxModelBuilder ("galgas_scanner.gLexique")  feature translate :
 import "semanticsTypesForAST.gSemantics" ;
-import "syntaxMetamodel.gSemantics" ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *

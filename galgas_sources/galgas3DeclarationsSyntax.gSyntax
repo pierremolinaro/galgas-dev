@@ -1,0 +1,1471 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Copyright (C) 2014, ..., 2014 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+syntax galgas3DeclarationsSyntax ("galgas_scanner.gLexique") :
+import "galgas_cli_options.gOption" ;
+import "semanticsTypesForAST.gSemantics" ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#          Start symbol                                                        *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <start_symbol>
+ ?!@semanticDeclarationListAST ioDeclarations
+:
+  repeat
+  while
+    <declaration> !?ioDeclarations ;
+  end repeat ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#          Rules prototypes                                                    *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+nonterminal <formal_parameter_list> !@formalParameterListAST outFormalParameterList ;
+
+nonterminal <semantic_instruction_list> !@semanticInstructionListAST outInstructionsList ;
+
+nonterminal <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    A T T R I B U T E    I N    C O L L E C T I O N                        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <attribute_declaration> ?!@attributeInCollectionListAST ioAttributeInCollectionList :
+  $type_name$ ? @lstring mAttributeTypeName ;
+  $identifier$ ? @lstring mAttributeName ;
+  @lstringlist featureList [emptyList] ;
+  select
+  or
+    $feature$ ;
+    repeat
+      $identifier$ ? @lstring featureName ;
+      featureList += !featureName ;
+    while
+      $,$ ;
+    end repeat ;
+  end select ;
+  $;$ ;
+  ioAttributeInCollectionList += !mAttributeTypeName !mAttributeName !featureList ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    L I S T M A P    D E C L A R A T I O N                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@semanticDeclarationListAST ioDeclarations
+:
+  $listmap$ ;
+#--- Map type name
+  $type_name$ ? @lstring mListmapTypeName indexing listmapDefinition ;
+  $($ ;
+  $type_name$ ? @lstring mAssociatedListTypeName ;
+  $)$ ;
+  $;$ ;
+  ioDeclarations += ![@listmapDeclarationAST new
+    !true # Is global
+    !mListmapTypeName
+    !mAssociatedListTypeName
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    A R R A Y    D E C L A R A T I O N                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@semanticDeclarationListAST ioDeclarations
+:
+  $array$ ;
+#--- Map type name
+  $type_name$ ? @lstring arrayTypeName indexing arrayTypeDefinition ;
+  $:$ ;
+  $type_name$ ? @lstring elementListTypeName indexing arrayElementTypeReference ;
+  $[$ ;
+  $unsigned_literal_integer$ ? @luint dimension ;
+  $]$ ;
+  $;$ ;
+  ioDeclarations += ![@arrayDeclarationAST new
+    !true # Is global
+    !arrayTypeName
+    !elementListTypeName
+    !dimension
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    M A P    D E C L A R A T I O N                                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <insert_method_declaration> ?!@insertMethodListAST ioMapMethodList :
+  $identifier$ ? @lstring mMethodName ;
+  @lstring stateName ;
+  select
+    stateName := [@lstring new !"" !here] ;
+  or
+    $state$ ;
+    $identifier$ ? stateName ;
+  end select ;
+  $error$ ;
+  $message$ ;
+  $literal_string$ ? @lstring mErrorMessage ;
+  @lstring mShadowErrorMessage ;
+  select
+    mShadowErrorMessage := [@lstring new !"" !here] ;
+  or
+    $,$ ;
+    $literal_string$ ? mShadowErrorMessage ;
+  end select ;
+  $;$ ;
+  ioMapMethodList +=
+    !mMethodName
+    !mErrorMessage
+    !mShadowErrorMessage
+    !stateName
+  ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@semanticDeclarationListAST ioDeclarations
+:
+  $map$ ;
+#--- Map type name
+  $type_name$ ? @lstring mMapTypeName indexing mapDefinition ;
+#--- Map properties
+  ${$ ;
+  @attributeInCollectionListAST mAttributeList [emptyList] ;
+  @insertMethodListAST mInsertMethodList [emptyList] ;
+  @mapSearchMethodListAST mSearchMethodList [emptyList] ;
+  @mapRemoveMethodListAST mRemoveMethodList [emptyList] ;
+  @insertOrReplaceDeclarationListAST insertOrReplaceDeclarationListAST [emptyList] ;
+  repeat
+  while
+    <attribute_declaration> !? mAttributeList ;
+  while
+    $insert$ ;
+    <insert_method_declaration> !? mInsertMethodList ;
+  while
+    $search$ ;
+    $identifier$ ? @lstring mMethodName ;
+    $error$ ;
+    $message$ ;
+    $literal_string$ ? @lstring mErrorMessage ;
+    $;$ ;
+    mSearchMethodList +=
+      !mMethodName
+      !mErrorMessage
+      ![@lstring new !"" !here]
+    ;
+  while
+    $remove$ ;
+    $identifier$ ? @lstring mMethodName ;
+    $error$ ;
+    $message$ ;
+    $literal_string$ ? @lstring mErrorMessage ;
+    $;$ ;
+    mRemoveMethodList +=
+      !mMethodName
+      !mErrorMessage
+    ;
+  while
+    $insert$ ;
+    $or$ ;
+    $replace$ ;
+    insertOrReplaceDeclarationListAST += !here ;
+    $;$ ;
+  end repeat ;
+  $}$ ;
+  ioDeclarations += ![@mapDeclarationAST new
+    !true # Is global
+    !mMapTypeName
+    !mAttributeList
+    !mInsertMethodList
+    !mSearchMethodList
+    !mRemoveMethodList
+    !insertOrReplaceDeclarationListAST
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@semanticDeclarationListAST ioDeclarations
+:
+  $uniquemap$ ;
+#--- Map type name
+  $type_name$ ? @lstring mMapTypeName indexing uniquemapDefinition ;
+#--- Map properties
+  ${$ ;
+  @attributeInCollectionListAST mAttributeList [emptyList] ;
+  @insertMethodListAST mInsertMethodList [emptyList] ;
+  @mapSearchMethodListAST mSearchMethodList [emptyList] ;
+  @mapStateList mapStateList [emptyList] ;
+  @mapOverrideBlockListAST mapOverrideBlockListAST [emptyList] ;
+  repeat
+  while
+    $state$ ;
+    $identifier$ ? @lstring stateName ;
+    @mapAutomatonMessageKind stateMessageKind ;
+    @lstring stateMessage ;
+    select
+      stateMessageKind := [@mapAutomatonMessageKind noMessage] ;
+      stateMessage := [@lstring new !"" !here] ;
+    or
+      $warning$ ;
+      $literal_string$ ? stateMessage ;
+      stateMessageKind := [@mapAutomatonMessageKind warningMessage] ;
+    or
+      $error$ ;
+      $literal_string$ ? stateMessage ;
+      stateMessageKind := [@mapAutomatonMessageKind errorMessage] ;
+    end select ;
+    ${$ ;
+    @mapStateTransitionList transitionList [emptyList] ;
+    repeat
+    while
+      $identifier$ ? @lstring actionName ;
+      $->$ ;
+      $identifier$ ? @lstring targetStateName ;
+      @mapAutomatonMessageKind transitionMessageKind ;
+      @lstring transitionMessage ;
+      select
+        transitionMessageKind := [@mapAutomatonMessageKind noMessage] ;
+        transitionMessage := [@lstring new !"" !here] ;
+      or
+        $warning$ ;
+        $literal_string$ ? transitionMessage ;
+        transitionMessageKind := [@mapAutomatonMessageKind warningMessage] ;
+      or
+        $error$ ;
+        $literal_string$ ? transitionMessage ;
+        transitionMessageKind := [@mapAutomatonMessageKind errorMessage] ;
+      end select ;
+      transitionList +=
+        !actionName
+        !targetStateName
+        !transitionMessageKind
+        !transitionMessage
+      ;
+    end repeat ;
+    mapStateList +=
+      !stateName
+      !stateMessageKind
+      !stateMessage
+      !transitionList
+    ;
+    $}$ ;
+  while
+    <attribute_declaration> !? mAttributeList ;
+  while
+    $insert$ ;
+    <insert_method_declaration> !? mInsertMethodList ;
+  while
+    $search$ ;
+    $identifier$ ? @lstring mMethodName ;
+    @lstring actionName ;
+    select
+      actionName := [@lstring new !"" !here] ;
+    or
+      $do$ ;
+      $identifier$ ? actionName ;
+    end select ;
+    $error$ ;
+    $message$ ;
+    $literal_string$ ? @lstring mErrorMessage ;
+    $;$ ;
+    mSearchMethodList +=
+      !mMethodName
+      !mErrorMessage
+      !actionName
+    ;
+  while
+    $override$ ;
+    $identifier$ ? @lstring overrideBlockName ;
+    @mapOverrideBlockDescriptorAST mapOverrideBlockDescriptor1AST [emptyList] ;
+    ${$ ;
+    repeat
+    while
+      $identifier$ ? @lstring sourceState1 ;
+      $:$ ;
+      $identifier$ ? @lstring sourceState2 ;
+      $->$ ;
+      $identifier$ ? @lstring targetState ;
+      @mapAutomatonMessageKind messageKind ;
+      @lstring messageText ;
+      select
+        messageKind := [@mapAutomatonMessageKind noMessage] ;
+        messageText := [@lstring new !"" !here] ;
+      or
+        $warning$ ;
+        messageKind := [@mapAutomatonMessageKind warningMessage] ;
+        $literal_string$ ? messageText ;
+      or
+        $error$ ;
+        messageKind := [@mapAutomatonMessageKind errorMessage] ;
+        $literal_string$ ? messageText ;
+      end select ;
+      mapOverrideBlockDescriptor1AST += !sourceState1 !sourceState2 !targetState !messageKind !messageText ;
+    end repeat ;
+    $}$ ;
+    @mapOverrideBlockDescriptorAST mapOverrideBlockDescriptor2AST [emptyList] ;
+    ${$ ;
+    repeat
+    while
+      $identifier$ ? @lstring sourceState1 ;
+      $:$ ;
+      $identifier$ ? @lstring sourceState2 ;
+      $->$ ;
+      $identifier$ ? @lstring targetState ;
+      @mapAutomatonMessageKind messageKind ;
+      @lstring messageText ;
+      select
+        messageKind := [@mapAutomatonMessageKind noMessage] ;
+        messageText := [@lstring new !"" !here] ;
+      or
+        $warning$ ;
+        messageKind := [@mapAutomatonMessageKind warningMessage] ;
+        $literal_string$ ? messageText ;
+      or
+        $error$ ;
+        messageKind := [@mapAutomatonMessageKind errorMessage] ;
+        $literal_string$ ? messageText ;
+      end select ;
+      mapOverrideBlockDescriptor2AST += !sourceState1 !sourceState2 !targetState !messageKind !messageText ;
+    end repeat ;
+    $}$ ;
+    mapOverrideBlockListAST += !overrideBlockName !mapOverrideBlockDescriptor1AST !mapOverrideBlockDescriptor2AST ;
+  end repeat ;
+  $}$ ;
+  ioDeclarations += ![@uniqueMapDeclarationAST new
+    !true # Is global
+    !mMapTypeName
+    !mAttributeList
+    !mInsertMethodList
+    !mSearchMethodList
+    !mapStateList
+    !mapOverrideBlockListAST
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    M A P    P R O X Y    D E C L A R A T I O N                            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@semanticDeclarationListAST ioDeclarations
+:
+  $mapproxy$ ;
+  $type_name$ ?@lstring mMapIndexName indexing mapProxyDefinition ;
+  $($ ;
+  $type_name$ ? @lstring mMapTypeName ;
+  $)$ ;
+  $;$ ;
+  ioDeclarations += ![@mapProxyDeclarationAST new
+    !true # Is global
+    !mMapIndexName
+    !mMapTypeName
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    C L A S S    D E C L A R A T I O N                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@semanticDeclarationListAST ioDeclarations
+:
+  @bool mIsAbstract ;
+  select
+    mIsAbstract := false ;
+  or
+    $abstract$ ;
+    mIsAbstract := true ;
+  end select ;
+  $class$ ;
+  @lstringlist classNameList [emptyList] ;
+  repeat
+    $type_name$ ?@lstring className indexing classDefinition ;
+    classNameList += !className ;
+  while
+    $,$ ;
+  end repeat ;
+  @lstring mSuperClassName ; # Empty if no super class
+  select
+    mSuperClassName := ["" nowhere] ;
+  or
+    $:$ ;
+    $type_name$ ? mSuperClassName indexing classReferencedAsSuperClass ;
+  end select ;
+  @lstringlist classFeatureList [emptyList] ;
+  select
+  or
+    $feature$ ;
+    repeat
+      $identifier$ ? @lstring classFeatureName ;
+      classFeatureList += !classFeatureName ;
+    while
+      $,$ ;
+    end repeat ;
+  end select ;
+  ${$ ;
+  @string mClassMessage := "" ;
+#--- Class properties
+  @attributeInCollectionListAST mAttributeList [emptyList] ;
+  repeat
+  while
+    <attribute_declaration> !? mAttributeList ;
+  end repeat ;
+  $}$ ;
+  foreach classNameList do
+    ioDeclarations += ![@classDeclarationAST new
+      !true # Is global
+      !mIsAbstract
+      !mValue
+      !mSuperClassName # Empty if no super class
+      !classFeatureList
+      !mAttributeList
+    ] ;
+  end foreach ;
+end rule ;
+
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    S T R U C T    D E C L A R A T I O N                                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@semanticDeclarationListAST ioDeclarations
+:
+  $struct$ ;
+  $type_name$ ?@lstring mListTypeName indexing structDefinition ;
+  ${$ ;
+  @attributeInCollectionListAST mAttributeList [emptyList] ;
+  repeat
+  while
+    <attribute_declaration> !? mAttributeList ;
+  end repeat ;
+  $}$ ;
+  ioDeclarations += ![@structDeclarationAST new
+    !true # Is global
+    !mListTypeName
+    !mAttributeList
+    !""
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    L I S T    D E C L A R A T I O N                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@semanticDeclarationListAST ioDeclarations
+:
+  $list$ ;
+  $type_name$ ?@lstring mListTypeName indexing listDefinition ;
+  ${$ ;
+  @attributeInCollectionListAST mAttributeList [emptyList] ;
+  repeat
+  while
+    <attribute_declaration> !? mAttributeList ;
+  end repeat ;
+  $}$ ;
+  ioDeclarations += ![@listDeclarationAST new
+    !true # Is global
+    !mListTypeName
+    !mAttributeList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    S O R T E D    L I S T    D E C L A R A T I O N                        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <sortedlist_sort_descriptor> ?!@sortedListSortDescriptorListAST ioSortedListSortDescriptorList :
+  $identifier$ ? @lstring mSortedAttributeName ;
+  @bool mAscending ;
+  select
+    $<$ ;
+    mAscending := true ;
+  or
+    $>$ ;
+    mAscending := false ;
+  end select ;
+  ioSortedListSortDescriptorList += !mSortedAttributeName !mAscending ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@semanticDeclarationListAST ioDeclarations
+:
+  $sortedlist$ ;
+  $type_name$ ?@lstring mSortedListTypeName indexing sortedListDefinition ;
+  ${$ ;
+  @attributeInCollectionListAST mAttributeList [emptyList] ;
+  repeat
+  while
+    <attribute_declaration> !? mAttributeList ;
+  end repeat ;
+  $}$ ;
+  ${$ ;
+  @sortedListSortDescriptorListAST mSortDescriptorList[emptyList] ;
+  repeat
+    <sortedlist_sort_descriptor> !? mSortDescriptorList ;
+  while
+    $,$ ;
+  end repeat ;
+  $}$ ;
+  ioDeclarations += ![@sortedListDeclarationAST new
+    !true # Is global
+    !mSortedListTypeName
+    !mAttributeList
+    !mSortDescriptorList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    E N U M    D E C L A R A T I O N                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@semanticDeclarationListAST ioDeclarations
+:
+  $enum$ ;
+  $type_name$ ? @lstring mEnumTypeName indexing enumDefinition ;
+  ${$ ;
+  @lstringlist mConstantList [emptyList] ;
+  repeat
+    $identifier$ ?@lstring constantName ;
+    mConstantList += !constantName ;
+  while
+   $,$ ;
+  end repeat ;
+  $}$ ;
+  ioDeclarations += ![@enumDeclarationAST new
+    !true # Is global
+    !mEnumTypeName
+    !mConstantList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    F I L E W R A P P E R    D E C L A R A T I O N                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@semanticDeclarationListAST ioDeclarations
+:
+  @bool isGlobal ;
+  select
+    isGlobal := true ;
+  or
+    $local$ ;
+    isGlobal := false ;
+  end select ;
+  $filewrapper$ ;
+  $identifier$ ? @lstring mFilewrapperName indexing filewrapperDefinition ;
+  $in$ ;
+  $literal_string$ ? @lstring mFilewrapperPath ;
+  ${$ ;
+  @lstringlist filewrapperTextFileExtensionList [emptyList] ;
+  select
+  or
+    repeat
+      $literal_string$ ?@lstring extension ;
+      filewrapperTextFileExtensionList += !extension ;
+    while
+      $,$ ;
+    end repeat ;
+  end select ;
+  $}$ ;
+  ${$ ;
+  @lstringlist filewrapperBinaryFileExtensionList [emptyList] ;
+  select
+  or
+    repeat
+      $literal_string$ ?@lstring extension ;
+      filewrapperBinaryFileExtensionList += !extension ;
+    while
+      $,$ ;
+    end repeat ;
+  end select ;
+  $}$ ;
+  ${$ ;
+  @filewrapperTemplateListAST mFilewrapperTemplateList [emptyList] ;
+  repeat
+  while
+    $template$ ;
+    $identifier$ ? @lstring mFilewrapperTemplateName ;
+    $literal_string$ ? @lstring mFilewrapperTemplatePath ;
+    @formalTemplateInputParameterListAST filewrapperTemplateFormalInputParameters [emptyList] ;
+    repeat
+    while
+      $?$ ;
+      $type_name$ ? @lstring typeName ;
+      @bool isUnused ;
+      select
+        isUnused := false ;
+      or
+        $unused$ ;
+        isUnused := true ;
+      end select ;
+      $identifier$ ? @lstring argumentName ;
+      filewrapperTemplateFormalInputParameters += !typeName !argumentName !isUnused ;
+    end repeat ;
+    $;$ ;
+    mFilewrapperTemplateList +=
+      !mFilewrapperTemplateName
+      !mFilewrapperTemplatePath
+      !filewrapperTemplateFormalInputParameters
+    ;
+  end repeat ;
+  $}$ ;
+  ioDeclarations += ![@filewrapperDeclarationAST new
+    !isGlobal
+    ![@string stringWithSourceFilePath]
+    !mFilewrapperName
+    !mFilewrapperPath
+    !filewrapperTextFileExtensionList
+    !filewrapperBinaryFileExtensionList
+    !mFilewrapperTemplateList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#         C O N D E N S E D    C A T E G O R Y    M E T H O D               *
+#                         D E C L A R A T I O N                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@semanticDeclarationListAST ioDeclarations
+:
+  $method$ ;
+  $identifier$ ? @lstring methodNameInHeader ;
+  <formal_parameter_list> ??@formalParameterListAST formalParameterList ;
+  repeat
+  while  
+    $abstract$ ;
+    $type_name$ ? @lstring className indexing typeReferenceAbstractCategoryMethod, abstractCategoryMethodDefinition ;
+    const methodName := [@lstring new ![methodNameInHeader string] !here] ;
+    ioDeclarations += ![@abstractCategoryMethodAST new
+      !true # Is global
+      !className
+      !methodName
+      !formalParameterList
+    ] ;
+  while
+    $override$ ;
+    $abstract$ ;
+    repeat
+      $type_name$ ? @lstring className indexing typeReferenceOverrideAbstractCategoryMethod, overrideAbstractCategoryMethodDefinition ;
+      const methodName := [@lstring new ![methodNameInHeader string] !here] ;
+      ioDeclarations += ![@overridingAbstractCategoryMethodAST new
+        !true # Is global
+        !className
+        !methodName
+        !formalParameterList
+      ] ;
+    while
+      $,$ ;
+    end repeat ;
+  while
+    $type_name$ ? @lstring className indexing typeReferenceCategoryMethod, categoryMethodDefinition ;
+    const methodName := [@lstring new ![methodNameInHeader string] !here] ;
+    ${$ ;
+    @semanticInstructionListAST routineInstructionList ;
+    <semantic_instruction_list> ? routineInstructionList ;
+    $}$ ;
+    const @location endOfMethodLocation := here ;
+    ioDeclarations += ![@categoryMethodAST new
+      !true # Is global
+      !className
+      !methodName
+      !formalParameterList
+      !routineInstructionList
+      !endOfMethodLocation
+    ] ;
+  while
+    $override$ ;
+    $method$ ;
+    @lstringlist classNameList [emptyList] ;
+    repeat
+      $type_name$ ? @lstring className indexing typeReferenceOverrideCategoryMethodDefinition, overrideCategoryMethodDefinition ;
+      classNameList += !className ;
+    while
+      $,$ ;
+    end repeat ;
+    const methodName := [@lstring new ![methodNameInHeader string] !here] ;
+    ${$ ;
+    @semanticInstructionListAST routineInstructionList ;
+    <semantic_instruction_list> ? routineInstructionList ;
+    $}$ ;
+    const @location endOfMethodLocation := here ;
+    foreach classNameList do
+      ioDeclarations += ![@overridingCategoryMethodAST new
+        !true # Is global
+        !mValue
+        !methodName
+        !formalParameterList
+        !routineInstructionList
+        !endOfMethodLocation
+      ] ;
+    end foreach ;
+  end repeat ;
+  $end$ ;
+  $modifier$ ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#A B S T R A C T    C A T E G O R Y    M E T H O D    D E C L A R A T I O N *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@semanticDeclarationListAST ioDeclarations
+:
+  $abstract$ ;
+  $method$ ;
+  $type_name$ ? @lstring className indexing typeReferenceAbstractCategoryMethod ;
+  $identifier$ ? @lstring mMethodName indexing abstractCategoryMethodDefinition ;
+  <formal_parameter_list> ??@formalParameterListAST formalParameterList ;
+  $;$ ;
+  ioDeclarations += ![@abstractCategoryMethodAST new
+    !true # Is global
+    !className
+    !mMethodName
+    !formalParameterList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# O V E R R I D E    A B S T R A C T    C A T E G O R Y    M E T H O D      *
+#                       D E C L A R A T I O N                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@semanticDeclarationListAST ioDeclarations
+:
+  $override$ ;
+  $abstract$ ;
+  $method$ ;
+  $type_name$ ? @lstring className indexing typeReferenceOverrideAbstractCategoryMethod ;
+  $identifier$ ? @lstring mMethodName indexing overrideAbstractCategoryMethodDefinition ;
+  <formal_parameter_list> ??@formalParameterListAST formalParameterList ;
+  $;$ ;
+  ioDeclarations += ![@overridingAbstractCategoryMethodAST new
+    !true # Is global
+    !className
+    !mMethodName
+    !formalParameterList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    E X T E N S I O N     M E T H O D    D E C L A R A T I O N             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! Method declaration
+
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@semanticDeclarationListAST ioDeclarations
+:
+  $method$ ;
+  $type_name$ ? @lstring className indexing typeReferenceCategoryMethod ;
+  $identifier$ ? @lstring mMethodName indexing categoryMethodDefinition ;
+  <formal_parameter_list> ??@formalParameterListAST formalParameterList ;
+  $:$ ;
+  <semantic_instruction_list> ??@semanticInstructionListAST routineInstructionList ;
+  $end$ ;
+  const endOfMethodLocation := here ;
+  $method$ ;
+  $;$ ;
+  ioDeclarations += ![@categoryMethodAST new
+    !true # Is global
+    !className
+    !mMethodName
+    !formalParameterList
+    !routineInstructionList
+    !endOfMethodLocation
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#O V E R R I D I N G   C A T E G O R Y   M E T H O D   D E C L A R A T I O N*
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! Overriding method
+
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@semanticDeclarationListAST ioDeclarations
+:
+  $override$ ;
+  $method$ ;
+  $type_name$ ? @lstring className indexing typeReferenceOverrideCategoryMethodDefinition ;
+  $identifier$ ? @lstring mMethodName indexing overrideCategoryMethodDefinition ;
+  <formal_parameter_list> ??@formalParameterListAST formalParameterList ;
+  $:$ ;
+  <semantic_instruction_list> ??@semanticInstructionListAST routineInstructionList ;
+  $end$ ;
+  const @location endOfMethodLocation := here ;
+  $method$ ;
+  $;$ ;
+  ioDeclarations += ![@overridingCategoryMethodAST new
+    !true # Is global
+    !className
+    !mMethodName
+    !formalParameterList
+    !routineInstructionList
+    !endOfMethodLocation
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#A B S T R A C T    C A T E G O R Y    R E A D E R    D E C L A R A T I O N *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! Abstract reader
+
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@semanticDeclarationListAST ioDeclarations
+:
+  $abstract$ ;
+  $reader$ ;
+  $type_name$ ? @lstring className ;
+  $identifier$ ? @lstring mReaderName indexing abstractCategoryReaderDefinition ;
+  @formalInputParameterListAST mFormalInputParameterList ;
+  <formal_input_parameter_list> ? mFormalInputParameterList ;
+  $->$ ;
+  $type_name$ ? @lstring mReturnedTypeName ;
+  $identifier$ ? * ;
+  $;$ ;
+  ioDeclarations += ![@abstractCategoryReaderAST new
+    !true # Is global
+    !className
+    !mReaderName
+    !mFormalInputParameterList
+    !mReturnedTypeName
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    C A T E G O R Y    R E A D E R    D E C L A R A T I O N                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! Reader declaration
+
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@semanticDeclarationListAST ioDeclarations
+:
+  $reader$ ;
+  $type_name$ ? @lstring className ;
+  $identifier$ ? @lstring mMethodName indexing categoryReaderDefinition ;
+  @formalInputParameterListAST mFormalInputParameterList ;
+  <formal_input_parameter_list> ? mFormalInputParameterList ;
+  $->$ ;
+  $type_name$ ? @lstring mReturnedTypeName ;
+  $identifier$ ? @lstring mReturnedVariableName ;
+  $:$ ;
+  <semantic_instruction_list> ??@semanticInstructionListAST routineInstructionList ;
+  $end$ ;
+  const @location endOfInstructionList := here ;
+  $reader$ ;
+  $;$ ;
+  ioDeclarations += ![@categoryReaderAST new
+    !true # Is global
+    !className
+    !mMethodName
+    !mFormalInputParameterList
+    !mReturnedTypeName
+    !mReturnedVariableName
+    !routineInstructionList
+    !endOfInstructionList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#O V E R R I D I N G   C A T E G O R Y   R E A D E R   D E C L A R A T I O N*
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! Overriding reader declaration
+
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@semanticDeclarationListAST ioDeclarations
+:
+  $override$ ;
+  $reader$ ;
+  $type_name$ ? @lstring className ;
+  $identifier$ ? @lstring mMethodName indexing overrideCategoryReaderDefinition ;
+  @formalInputParameterListAST mFormalInputParameterList ;
+  <formal_input_parameter_list> ? mFormalInputParameterList ;
+  $->$ ;
+  $type_name$ ? @lstring mReturnedTypeName ;
+  $identifier$ ? @lstring mReturnedVariableName ;
+  $:$ ;
+  <semantic_instruction_list> ??@semanticInstructionListAST routineInstructionList ;
+  $end$ ;
+  const @location endOfInstructionList := here ;
+  $reader$ ;
+  $;$ ;
+  ioDeclarations += ![@overridingCategoryReaderAST new
+    !true # Is global
+    !className
+    !mMethodName
+    !mFormalInputParameterList
+    !mReturnedTypeName
+    !mReturnedVariableName
+    !routineInstructionList
+    !endOfInstructionList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# O V E R R I D I N G    A B S T R A C T   C A T E G O R Y    R E A D E R   *
+#                     D E C L A R A T I O N                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! Overriding abstract reader
+
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@semanticDeclarationListAST ioDeclarations
+:
+  $override$ ;
+  $abstract$ ;
+  $reader$ ;
+  $type_name$ ? @lstring className ;
+  $identifier$ ? @lstring mReaderName indexing overrideAbstractCategoryReaderDefinition ;
+  @formalInputParameterListAST mFormalInputParameterList ;
+  <formal_input_parameter_list> ? mFormalInputParameterList ;
+  $->$ ;
+  $type_name$ ? @lstring mReturnedTypeName ;
+  $identifier$ ? * ;
+  $;$ ;
+  ioDeclarations += ![@overridingAbstractCategoryReaderAST new
+    !true # Is global
+    !className
+    !mReaderName
+    !mFormalInputParameterList
+    !mReturnedTypeName
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#           C O N D E N S E D    C A T E G O R Y    R E A D E R             *
+#                       D E C L A R A T I O N                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@semanticDeclarationListAST ioDeclarations
+:
+  $reader$ ;
+  $identifier$ ? @lstring readerNameInHeader ;
+  @formalInputParameterListAST mFormalInputParameterList ;
+  <formal_input_parameter_list> ? mFormalInputParameterList ;
+  $->$ ;
+  $type_name$ ? @lstring mReturnedTypeName ;
+  $identifier$ ? @lstring mReturnedVarName ;
+  repeat
+  while
+    $abstract$ ;
+    const readerName := [@lstring new ![readerNameInHeader string] !here] ;
+    $type_name$ ? @lstring className indexing abstractCategoryReaderDefinition ;
+    ioDeclarations += ![@abstractCategoryReaderAST new
+      !true # Is global
+      !className
+      !readerName
+      !mFormalInputParameterList
+      !mReturnedTypeName
+    ] ;
+  while
+    $override$ ;
+    $abstract$ ;
+    repeat
+      const readerName := [@lstring new ![readerNameInHeader string] !here] ;
+      $type_name$ ? @lstring className indexing abstractCategoryReaderDefinition ;
+      ioDeclarations += ![@overridingAbstractCategoryReaderAST new
+        !true # Is global
+        !className
+        !readerName
+        !mFormalInputParameterList
+        !mReturnedTypeName
+      ] ;
+    while
+      $,$ ;
+    end repeat ;
+  while
+    $override$ ;
+    const readerName := [@lstring new ![readerNameInHeader string] !here] ;
+    @lstringlist classNameList [emptyList] ;
+    repeat
+      $type_name$ ? @lstring className indexing overrideCategoryReaderDefinition ;
+      classNameList += !className ;
+    while
+      $,$ ;
+    end repeat ;
+    ${$ ;
+    @semanticInstructionListAST routineInstructionList ;
+    <semantic_instruction_list> ? routineInstructionList ;
+    $}$ ;
+    const @location endOfInstructionList := here ;
+    foreach classNameList do
+      ioDeclarations += ![@overridingCategoryReaderAST new
+        !true # Is global
+        !mValue
+        !readerName
+        !mFormalInputParameterList
+        !mReturnedTypeName
+        !mReturnedVarName
+        !routineInstructionList
+        !endOfInstructionList
+      ] ;
+    end foreach ;
+  while
+    const readerName := [@lstring new ![readerNameInHeader string] !here] ;
+    $type_name$ ? @lstring className indexing categoryReaderDefinition ;
+    ${$ ;
+    @semanticInstructionListAST routineInstructionList ;
+    <semantic_instruction_list> ? routineInstructionList ;
+    $}$ ;
+    const @location endOfInstructionList := here ;
+    ioDeclarations += ![@categoryReaderAST new
+      !true # Is global
+      !className
+      !readerName
+      !mFormalInputParameterList
+      !mReturnedTypeName
+      !mReturnedVarName
+      !routineInstructionList
+      !endOfInstructionList
+    ] ;
+  end repeat ;
+  $end$ ;
+  $reader$ ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#A B S T R A C T    C A T E G O R Y    M O D I F I E R    D E C L A R A T I O N *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! Abstract modifier
+
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@semanticDeclarationListAST ioDeclarations
+:
+  $abstract$ ;
+  $modifier$ ;
+  $type_name$ ? @lstring className indexing typeReferenceAbstractCategoryModifier ;
+  $identifier$ ? @lstring modifierName indexing abstractCategoryModifierDefinition ;
+  <formal_parameter_list> ??@formalParameterListAST formalParameterList ;
+  $;$ ;
+  ioDeclarations += ![@abstractCategoryModifierAST new
+    !true # Is global
+    !className
+    !modifierName
+    !formalParameterList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#         C O N D E N S E D    C A T E G O R Y    M O D I F I E R           *
+#                            D E C L A R A T I O N                          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@semanticDeclarationListAST ioDeclarations
+:
+  $modifier$ ;
+  $identifier$ ? @lstring modifierNameInHeader ;
+  <formal_parameter_list> ??@formalParameterListAST formalParameterList ;
+  repeat
+  while
+    $abstract$ ;
+    $type_name$ ? @lstring className indexing typeReferenceAbstractCategoryModifier, abstractCategoryModifierDefinition ;
+    const modifierName := [@lstring new ![modifierNameInHeader string] !here] ;
+    ioDeclarations += ![@abstractCategoryModifierAST new
+      !true # Is global
+      !className
+      !modifierName
+      !formalParameterList
+    ] ;
+  while
+    $override$ ;
+    $abstract$ ;
+    repeat
+      $type_name$ ? @lstring className indexing overrideAbstractCategoryModifierDefinition ;
+      const modifierName := [@lstring new ![modifierNameInHeader string] !here] ;
+      ioDeclarations += ![@overridingAbstractCategoryModifierAST new
+        !true # Is global
+        !className
+        !modifierName
+        !formalParameterList
+      ] ;
+    while
+      $,$ ;
+    end repeat ;
+  while
+    $type_name$ ? @lstring className indexing typeReferenceCategoryModifier, categoryModifierDefinition ;
+    const modifierName := [@lstring new ![modifierNameInHeader string] !here] ;
+    ${$ ;
+    @semanticInstructionListAST routineInstructionList ;
+    <semantic_instruction_list> ? routineInstructionList ;
+    $}$ ;
+    const @location endOfModifierLocation := here ;
+    ioDeclarations += ![@categoryModifierAST new
+      !true # Is global
+      !className
+      !modifierName
+      !formalParameterList
+      !routineInstructionList
+      !endOfModifierLocation
+    ] ;
+  while
+    $override$ ;
+    @lstringlist classNameList [emptyList] ;
+    repeat
+      $type_name$ ? @lstring className indexing typeReferenceOverrideCategoryModifierDefinition, overrideCategoryModifierDefinition ;
+      classNameList += !className ;
+    while
+      $,$ ;
+    end repeat ;
+    const modifierName := [@lstring new ![modifierNameInHeader string] !here] ;
+    ${$ ;
+    @semanticInstructionListAST routineInstructionList ;
+    <semantic_instruction_list> ? routineInstructionList ;
+    $}$ ;
+    const @location endOfModifierLocation := here ;
+    foreach classNameList do
+      ioDeclarations += ![@overridingCategoryModifierAST new
+        !true # Is global
+        !mValue
+        !modifierName
+        !formalParameterList
+        !routineInstructionList
+        !endOfModifierLocation
+      ] ;
+    end foreach ;
+  end repeat ;
+  $end$ ;
+  $modifier$ ;
+  $;$ ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# O V E R R I D E    A B S T R A C T    C A T E G O R Y    M O D I F I E R  *
+#                       D E C L A R A T I O N                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! Overriding abstract modifier
+
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@semanticDeclarationListAST ioDeclarations
+:
+  $override$ ;
+  $abstract$ ;
+  $modifier$ ;
+  $type_name$ ? @lstring className indexing typeReferenceOverrideAbstractCategoryModifier ;
+  $identifier$ ? @lstring modifierName indexing overrideAbstractCategoryModifierDefinition ;
+  <formal_parameter_list> ??@formalParameterListAST formalParameterList ;
+  $;$ ;
+  ioDeclarations += ![@overridingAbstractCategoryModifierAST new
+    !true # Is global
+    !className
+    !modifierName
+    !formalParameterList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    C A T E G O R Y    M O D I F I E R    D E C L A R A T I O N            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! Modifier declaration
+
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@semanticDeclarationListAST ioDeclarations
+:
+  $modifier$ ;
+  $type_name$ ? @lstring className indexing typeReferenceCategoryModifier ;
+  $identifier$ ? @lstring modifierName indexing categoryModifierDefinition ;
+  <formal_parameter_list> ??@formalParameterListAST formalParameterList ;
+  $:$ ;
+  <semantic_instruction_list> ??@semanticInstructionListAST routineInstructionList ;
+  $end$ ;
+  const @location endOfModifierLocation := here ;
+  $modifier$ ;
+  $;$ ;
+  ioDeclarations += ![@categoryModifierAST new
+    !true # Is global
+    !className
+    !modifierName
+    !formalParameterList
+    !routineInstructionList
+    !endOfModifierLocation
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#O V E R R I D I N G   C A T E G O R Y   M O D I F I E R   D E C L A R A T I O N*
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! Overriding modifier declaration
+
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@semanticDeclarationListAST ioDeclarations
+:
+  $override$ ;
+  $modifier$ ;
+  $type_name$ ? @lstring className indexing typeReferenceOverrideCategoryModifierDefinition ;
+  $identifier$ ? @lstring modifierName indexing overrideCategoryModifierDefinition ;
+  <formal_parameter_list> ??@formalParameterListAST formalParameterList ;
+  $:$ ;
+  <semantic_instruction_list> ??@semanticInstructionListAST routineInstructionList ;
+  $end$ ;
+  const @location endOfModifierLocation := here ;
+  $modifier$ ;
+  $;$ ;
+  ioDeclarations += ![@overridingCategoryModifierAST new
+    !true # Is global
+    !className
+    !modifierName
+    !formalParameterList
+    !routineInstructionList
+    !endOfModifierLocation
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#     G R A P H                                                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@semanticDeclarationListAST ioDeclarations
+:
+  $graph$ ;
+  $type_name$ ? @lstring graphTypeName indexing graphDefinition ;
+  $($ ;
+  $type_name$ ? @lstring associatedListTypeName ;
+  $)$ ;
+  ${$ ;
+  @graphInsertModifierList graphInsertModifierList [emptyList] ;
+  repeat
+  while
+    $insert$ ;
+    $identifier$ ? @lstring insertName ;
+    $error$ ;
+    $message$ ;
+    $literal_string$ ? @lstring errorMessage ;
+    graphInsertModifierList += !insertName !errorMessage ;
+    $;$ ;
+  end repeat ;
+  $}$ ;
+  ioDeclarations += ![@graphDeclarationAST new
+    !true # Is global
+    !graphTypeName
+    !associatedListTypeName
+    !graphInsertModifierList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#     E X T E R N    T Y P E    D E C L A R A T I O N                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@semanticDeclarationListAST ioDeclarations
+:
+  $extern$ ;
+  $type_name$ ? @lstring externTypeName indexing externTypeDefinition ;
+  ${$ ;
+    @string cppPredeclarationCode := "" ;
+    repeat
+    while
+      $literal_string$ ? @lstring cppPredeclarationCodeElement ;
+      cppPredeclarationCode .= cppPredeclarationCodeElement->string ;
+    end repeat ;
+  $}$ ;
+  ${$ ;
+    @string cppClassCode := "" ;
+    repeat
+    while
+      $literal_string$ ? @lstring cppClassCodeElement ;
+      cppClassCode .= cppClassCodeElement->string ;
+    end repeat ;
+  $}$ ;
+  ${$ ;
+  @externTypeConstructorList externTypeConstructorList [emptyList] ;
+  @externTypeReaderList externTypeReaderList [emptyList] ;
+  @externTypeModifierList externTypeModifierList [emptyList] ;
+  @externTypeMethodList externTypeMethodList [emptyList] ;
+  repeat
+  while
+    $constructor$ ;
+    $identifier$ ? @lstring constructorName ;
+    @typeNameFormalParameterNameList argumentTypeList [emptyList] ;
+    repeat
+    while
+      $??$ ;
+      $type_name$ ? @lstring argumentTypeName ;
+      $identifier$ ? @lstring argumentName ;
+      argumentTypeList += !argumentTypeName !argumentName->string ;
+    end repeat ;
+    $->$ ;
+    $type_name$ ? @lstring resultTypeName ;
+    $;$ ;
+    externTypeConstructorList +=
+      !constructorName
+      !resultTypeName
+      !argumentTypeList
+    ;
+  while
+    $reader$ ;
+    $identifier$ ? @lstring readerName ;
+    @typeNameFormalParameterNameList argumentTypeList [emptyList] ;
+    repeat
+    while
+      $??$ ;
+      $type_name$ ? @lstring argumentTypeName ;
+      $identifier$ ? @lstring argumentName ;
+      argumentTypeList += !argumentTypeName !argumentName->string ;
+    end repeat ;
+    $->$ ;
+    $type_name$ ? @lstring resultTypeName ;
+    $;$ ;
+    externTypeReaderList +=
+      !readerName
+      !resultTypeName
+      !argumentTypeList
+    ;
+  while
+    $modifier$ ;
+    $identifier$ ? @lstring modifierName ;
+    <formal_parameter_list> ?@formalParameterListAST formalParameterList ;
+    $;$ ;
+    externTypeModifierList +=
+      !modifierName
+      !formalParameterList
+    ;
+  while
+    $method$ ;
+    $identifier$ ? @lstring methodName ;
+    <formal_parameter_list> ?@formalParameterListAST formalParameterList ;
+    externTypeMethodList +=
+      !methodName
+      !formalParameterList
+      !here
+    ;
+    $;$ ;
+  end repeat ;
+  $}$ ;
+  ioDeclarations += ![@externTypeDeclarationAST new
+    !true # Is global
+    !externTypeName
+    !cppPredeclarationCode
+    !cppClassCode
+    !externTypeConstructorList
+    !externTypeReaderList
+    !externTypeModifierList
+    !externTypeMethodList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+end syntax ;
