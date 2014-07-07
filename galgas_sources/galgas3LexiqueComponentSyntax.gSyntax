@@ -639,7 +639,7 @@ rule <extern_routine_or_function_declaration>
 :
   $extern$ ;
   select
-    $routine$ ;
+    $proc$ ;
     $identifier$ ?@lstring routineName ;
     @lexicalExternRoutineFormalArgumentListAST lexicalRoutineFormalArgumentList [emptyList] ;
     repeat
@@ -670,7 +670,7 @@ rule <extern_routine_or_function_declaration>
     $;$ ;      
     ioExternRoutineList += !routineName !lexicalRoutineFormalArgumentList !errorMessageList ;
   or
-    $function$ ;
+    $func$ ;
     $identifier$ ?@lstring functionName ;
     @lexicalExternFunctionFormalArgumentListAST lexicalFunctionFormalArgumentList [emptyList] ;
     repeat

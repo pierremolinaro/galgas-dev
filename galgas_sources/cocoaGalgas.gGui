@@ -136,8 +136,8 @@ with lexique "galgas3Scanner.gLexique" {
   label $extern$, $type_name$ ;
   label $struct$, $type_name$ ;
   label $rule$, $non_terminal_symbol$ ;
-  label $routine$, $identifier$ ;
-  label $function$, $identifier$ ;
+  label $proc$, $identifier$ ;
+  label $func$, $identifier$ ;
   label $once$, $identifier$ ;
   label $filewrapper$, $identifier$, $in$ ;
   label $abstract$, $method$, $type_name$, $identifier$ ;

@@ -641,7 +641,8 @@ rule <extern_routine_or_function_declaration>
 :
   $extern$ ;
   select
-    $routine$ ;
+    $routine$ :> ??@string sep ?* ;
+    send sep . "proc" ;
     $identifier$ ?@lstring routineName ;
     @lexicalExternRoutineFormalArgumentListAST lexicalRoutineFormalArgumentList [emptyList] ;
     repeat
@@ -672,7 +673,8 @@ rule <extern_routine_or_function_declaration>
     $;$ ;      
     ioExternRoutineList += !routineName !lexicalRoutineFormalArgumentList !errorMessageList ;
   or
-    $function$ ;
+    $function$ :> ??@string sep ?* ;
+    send sep . "func" ;
     $identifier$ ?@lstring functionName ;
     @lexicalExternFunctionFormalArgumentListAST lexicalFunctionFormalArgumentList [emptyList] ;
     repeat
