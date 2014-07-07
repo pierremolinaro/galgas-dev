@@ -483,14 +483,11 @@ end rule ;
 rule <primary> !@semanticExpressionAST outExpression :
   $[$ ;
 #--- Get source identity characteristics
-  @semanticExpressionAST receiverExpression ;
-  <expression> ? receiverExpression ;
+  <expression> ??@semanticExpressionAST receiverExpression ;
 #--- Get reader name
-  @lstring readerName ;
-  $identifier$ ? readerName ;
+  $identifier$ ??@lstring readerName ;
 #--- Actual parameters
-  @semanticExpressionListAST expressionList ;
-  <output_expression_list> ?expressionList ;
+  <output_expression_list> ??@semanticExpressionListAST expressionList ;
   outExpression := [@readerCallExpressionAST new !receiverExpression !readerName !expressionList] ;
   $]$ ;
 end rule ;

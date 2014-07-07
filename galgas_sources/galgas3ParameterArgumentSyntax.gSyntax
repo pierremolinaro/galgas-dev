@@ -117,7 +117,7 @@ rule <actual_parameter_list>
     @lstringlist structAttributeList [emptyList] ;
     repeat
     while
-      $->$ ;
+      $.$ ;
       $identifier$ ? @lstring structAttributeName ;
       structAttributeList += !structAttributeName ;
     end repeat ;

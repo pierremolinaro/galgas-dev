@@ -139,7 +139,7 @@ rule <nonterminal_declaration> ?!@nonterminalDeclarationListAST ioNonterminalDec
     $identifier$ ??@lstring labelName ;
     <nonterminal_label_declaration> !labelName !?mLabels ;
   end repeat ;
-  $;$ ;
+  $;$  :> ?* ?* ;
   ioNonterminalDeclarationList +=
     !mNonterminalName
     !mLabels
@@ -239,7 +239,8 @@ rule <syntax_instruction>
   !@syntaxInstructionAST outInstruction
   ?!@localVariableDeclarationListAST ioLocalVariableDeclarationList
 :
-  $non_terminal_symbol$ ? @lstring mNonterminalName indexing ruleReference ;
+  $non_terminal_symbol$ ? @lstring mNonterminalName indexing ruleReference :> ?@string sep ?@string nonTerminalSymbol ;
+  send sep ;
   @lstring mLabelName ; # No label : empty string
   select
     mLabelName := [@lstring new !"" !here] ;
@@ -247,8 +248,10 @@ rule <syntax_instruction>
     $parse$ ;
     mLabelName := [@lstring new !"parse" !here] ;
   or
+    send "parse " ;
     $identifier$ ? mLabelName ;
   end select ;
+  send nonTerminalSymbol ;
   <actual_parameter_list> ??@actualParameterListAST mActualParameterList !?ioLocalVariableDeclarationList ;
 #--- Get syntax directed translation result string
   @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult ;

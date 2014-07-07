@@ -238,8 +238,7 @@ rule <semantic_instruction>
   $type_name$ ?@lstring typeName ;
   $identifier$ ?@lstring variableName ;
   $:=$ ;
-  @semanticExpressionAST sourceExpression ;
-  <expression> ? sourceExpression ;
+  <expression> ??@semanticExpressionAST sourceExpression ;
   outInstruction := [@localVariableOrConstantDeclarationWithAssignmentAST new
     ![typeName location]
     !false
@@ -573,35 +572,42 @@ rule <foreach_enumerated_object>
   or
     prefix := [@lstring new !"" !here] ;
     $($ ;
-    repeat
-    while
-      $*$ ;
-      mElementList += ![@lstring new !"" !here] ![@lstring new !"" !here] ;
-    while
-      @luint count ;
-      $unsigned_literal_integer$ ?count ;
-      $*$ ;
-      @uint n := [count uint] ;
-      if n == 0 then
-        error count: "this value should be > 0" ;
-      end if ;
-      loop n :
-      while n > 0 do
-        mElementList += ![@lstring new !"" !here] ![@lstring new !"" !here] ;
-        n -- ;
-      end loop ;
-    while
-      @lstring typeName ;
-      $type_name$ ?typeName ;
-      @lstring constantName ;
-      $identifier$ ?constantName ;
-      mElementList += !typeName !constantName ;
-    end repeat ;
     select
-      mEndsWithEllipsis := false ;
-    or
       $...$ ;
       mEndsWithEllipsis := true ;
+    or
+      repeat
+        select
+          $*$ ;
+          mElementList += ![@lstring new !"" !here] ![@lstring new !"" !here] ;
+        or
+          @luint count ;
+          $unsigned_literal_integer$ ?count ;
+          $*$ ;
+          @uint n := [count uint] ;
+          if n == 0 then
+            error count: "this value should be > 0" ;
+          end if ;
+          loop n :
+          while n > 0 do
+            mElementList += ![@lstring new !"" !here] ![@lstring new !"" !here] ;
+            n -- ;
+          end loop ;
+        or
+          @lstring typeName ;
+          $type_name$ ?typeName ;
+          @lstring constantName ;
+          $identifier$ ?constantName ;
+          mElementList += !typeName !constantName ;
+        end select ;
+      while
+      end repeat ;
+      select
+        mEndsWithEllipsis := false ;
+      or
+        $...$ ;
+        mEndsWithEllipsis := true ;
+      end select ;
     end select ;
     $)$ ;
   end select ;
@@ -882,7 +888,6 @@ rule <semantic_instruction>
   $identifier$ ?@lstring mMethodName ;
   <actual_parameter_list> ??@actualParameterListAST actualParameterList !?ioLocalVariableDeclarationList ;
   $]$ ;
-#  $;$ ;
   outInstruction := [@methodCallInstructionAST new
     !instructionLocation
     !mReceiverExpression
@@ -919,7 +924,6 @@ rule <semantic_instruction>
   $identifier$ ?@lstring mModifierName ;
   <actual_parameter_list> ??@actualParameterListAST actualParameterList !?ioLocalVariableDeclarationList ;
   $]$ ;
-#  $;$ ;
   outInstruction := [@modifierCallInstructionAST new
     !instructionLocation
     !mReceiverName
@@ -951,7 +955,6 @@ rule <semantic_instruction>
   @actualParameterListAST actualParameterList ;
   <actual_parameter_list> ? actualParameterList !?ioLocalVariableDeclarationList ;
   $]$ ;
-#§  $;$ ;
   outInstruction := [@selfModifierCallInstructionAST new
     !instructionLocation
     !mModifierName
@@ -1040,10 +1043,9 @@ rule <semantic_instruction>
   ?!@localVariableDeclarationListAST ioLocalVariableDeclarationList
 :
   $identifier$ ?@lstring mRoutineName indexing routineCall ;
-  $[$ ;
+  $($ ;
   <actual_parameter_list> ??@actualParameterListAST actualParameterList !?ioLocalVariableDeclarationList ;
-  $]$ ;
-#§  $;$ ;
+  $)$ ;
   outInstruction := [@routineCallInstructionAST new
     ![mRoutineName location]
     !mRoutineName
@@ -1072,7 +1074,7 @@ rule <semantic_instruction>
   @lstringlist structAttributeList [emptyList] ;
   repeat
   while
-    $->$ ;
+    $.$ ;
     $identifier$ ?@lstring mStructFieldName ;
     structAttributeList += !mStructFieldName ;
   end repeat ;
@@ -1376,16 +1378,14 @@ rule <semantic_instruction>
   const mEndOfVariantExpression := here ;
   $:$ ;
 #---
-    <semantic_instruction_list> ?@semanticInstructionListAST mFirstInstructions ;
+  <semantic_instruction_list> ?@semanticInstructionListAST mFirstInstructions ;
 #---
   const mEndOfFirstInstructions := here ;
   $while$ ;
-  @semanticExpressionAST mLoopExpression ;
-  <expression> ? mLoopExpression ;
+  <expression> ??@semanticExpressionAST mLoopExpression ;
   const mEndOfLoopExpression := here ;
   $do$ ;
-  @semanticInstructionListAST mSecondInstructions ;
-  <semantic_instruction_list> ? mSecondInstructions ;
+  <semantic_instruction_list> ??@semanticInstructionListAST mSecondInstructions ;
   const mEndOfSecondInstructions := here ;
   $end$ ;
   const mEndOfLoopInstruction := here ;
@@ -1662,7 +1662,6 @@ rule <semantic_instruction>
   $identifier$ ??@lstring mMethodName ;
   <actual_parameter_list> ??@actualParameterListAST actualParameterList !?ioLocalVariableDeclarationList ;
   $]$ ;
-#§  $;$ ;
   outInstruction := [@typeMethodCallInstructionAST new
     !instructionLocation
     !mTypeName

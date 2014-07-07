@@ -135,7 +135,6 @@ with lexique "galgas3Scanner.gLexique" {
   label $class$, $type_name$ ;
   label $extern$, $type_name$ ;
   label $struct$, $type_name$ ;
-  label $nonterminal$, $non_terminal_symbol$ ;
   label $rule$, $non_terminal_symbol$ ;
   label $routine$, $identifier$ ;
   label $function$, $identifier$ ;

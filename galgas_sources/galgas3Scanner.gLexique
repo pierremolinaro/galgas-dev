@@ -157,7 +157,7 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "method",
   "mod",
 #  "modifier",
-  "nonterminal",
+#  "nonterminal",
   "not",
   "on",
   "once",

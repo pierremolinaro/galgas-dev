@@ -1251,10 +1251,10 @@ rule <semantic_instruction>
   ?!@localVariableDeclarationListAST ioLocalVariableDeclarationList
 :
   $identifier$ ?@lstring mRoutineName indexing routineCall ;
-  send " [" ;
+  send " (" ;
   <actual_parameter_list> ??@actualParameterListAST actualParameterList !?ioLocalVariableDeclarationList ;
   $;$ :> ?@string sep ?* ;
-  send sep . "]" ;
+  send sep . ")" ;
   outInstruction := [@routineCallInstructionAST new
     ![mRoutineName location]
     !mRoutineName
@@ -1283,7 +1283,8 @@ rule <semantic_instruction>
   @lstringlist structAttributeList [emptyList] ;
   repeat
   while
-    $->$ ;
+    $->$ :> ?@string sep ?* ;
+    send sep . "." ;
     $identifier$ ?@lstring mStructFieldName ;
     structAttributeList += !mStructFieldName ;
   end repeat ;
