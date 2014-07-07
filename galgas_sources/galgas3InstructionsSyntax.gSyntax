@@ -582,7 +582,7 @@ rule <for_instruction_enumerated_object>
     repeat
       <for_instruction_element> !?elementList ;
     while
-      $,$ ;
+#      $,$ ;
     end repeat ;
     select
       endsWithEllipsis := false ;

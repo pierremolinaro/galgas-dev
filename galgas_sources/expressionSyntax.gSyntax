@@ -286,7 +286,8 @@ end rule ;
 #------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression :
-  $selfcopy$ ;
+  $selfcopy$ :> ??@string sep ?* ;
+  send sep . "self" ;
   outExpression := [@selfCopyInExpressionAST new !here] ;
 end rule ;
 
