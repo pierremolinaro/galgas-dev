@@ -1200,8 +1200,7 @@ rule <semantic_instruction>
       $,$ ;
     end repeat ;
   end select ;
-  $;$ :> ?@string sep ?* ;
-  send sep . "end" ;
+  $;$ ;
   outInstruction := [@errorInstructionAST new
     !instructionLocation
     !mReceiverExpression
@@ -1229,8 +1228,7 @@ rule <semantic_instruction>
   <expression> ?@semanticExpressionAST mReceiverExpression ;
   $:$ ;
   <expression> ??@semanticExpressionAST mWarningExpression ;
-  $;$ :> ?@string sep ?* ;
-  send sep . "end" ;
+  $;$ ;
   outInstruction := [@warningInstructionAST new
     !instructionLocation
     !mReceiverExpression

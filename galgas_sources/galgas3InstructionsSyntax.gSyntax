@@ -32,10 +32,6 @@ nonterminal <formal_parameter_list> !@formalParameterListAST outFormalParameterL
 
 nonterminal <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList ;
 
-nonterminal <output_expression_list>
-  !@semanticExpressionListAST outExpressionList
-;
-
 #---------------------------------------------------------------------------*
 #                                                                           *
 #    S E M A N T I C    I N S T R U C T I O N    L I S T                    *
@@ -993,8 +989,7 @@ rule <semantic_instruction>
       $,$ ;
     end repeat ;
   end select ;
-#§  $;$ ;
-  $end$ ;
+  $;$ ;
   outInstruction := [@errorInstructionAST new
     !instructionLocation
     !mReceiverExpression
@@ -1022,8 +1017,7 @@ rule <semantic_instruction>
   <expression> ?@semanticExpressionAST mReceiverExpression ;
   $:$ ;
   <expression> ??@semanticExpressionAST mWarningExpression ;
-#§  $;$ ;
-  $end$ ;
+  $;$ ;
   outInstruction := [@warningInstructionAST new
     !instructionLocation
     !mReceiverExpression
@@ -1285,7 +1279,7 @@ rule <semantic_instruction>
   end repeat ;
   $+=$ ;
   select
-    <output_expression_list> ??@semanticExpressionListAST expressionList ;
+    <non_empty_output_expression_list> ??@semanticExpressionListAST expressionList ;
     outInstruction := [@plusEqualElementsInstructionAST new
       !instructionLocation
       !mReceiverName
@@ -1302,6 +1296,20 @@ rule <semantic_instruction>
     ] ;
   end select ;
   $;$ ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+
+rule <non_empty_output_expression_list>
+  !@semanticExpressionListAST outExpressionList
+:
+  outExpressionList := [@semanticExpressionListAST emptyList] ;
+  repeat
+    $!$ ;
+    <expression> ??@semanticExpressionAST expression ;
+    outExpressionList += !expression !here ;
+  while
+  end repeat ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -1322,7 +1330,7 @@ rule <semantic_instruction>
   const instructionLocation := here ;
   $+=$ ;
   @semanticExpressionListAST expressionList ;
-  <output_expression_list> ?expressionList ;
+  <non_empty_output_expression_list> ?expressionList ;
   $;$ ;
   outInstruction := [@selfPlusEqualElementsInstructionAST new
     !instructionLocation
