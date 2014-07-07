@@ -544,160 +544,160 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <foreach_enumerated_object>
-  ?!@foreachInstructionEnumeratedObjectListAST ioForeachInstructionEnumeratedObjectList
-:
-  @lstring enumerationOrder ;
-  select
-    enumerationOrder := [@lstring new !"" !here] ; # Default order
-  or
-    $<$ ;
-    enumerationOrder := [@lstring new !"up" !here] ;
-  or
-    $>$ ;
-    enumerationOrder := [@lstring new !"down" !here] ;
-  end select ;
-  <expression> ?@semanticExpressionAST mEnumeratedExpression ;
-  const endOfEnumerationExpression := here ;
-  @foreachInstructionEnumeratedObjectElementListAST mElementList [emptyList] ;
-  @bool mEndsWithEllipsis ;
-  @lstring prefix ;
-  select
-    mEndsWithEllipsis := false ;
-    prefix := [@lstring new !"" !here] ;
-  or
-    $:$ ;
-    $identifier$ ? prefix ;
-    mEndsWithEllipsis := false ;
-  or
-    prefix := [@lstring new !"" !here] ;
-    $($ ;
-    select
-      $...$ ;
-      mEndsWithEllipsis := true ;
-    or
-      repeat
-        select
-          $*$ ;
-          mElementList += ![@lstring new !"" !here] ![@lstring new !"" !here] ;
-        or
-          @luint count ;
-          $unsigned_literal_integer$ ?count ;
-          $*$ ;
-          @uint n := [count uint] ;
-          if n == 0 then
-            error count: "this value should be > 0" ;
-          end if ;
-          loop n :
-          while n > 0 do
-            mElementList += ![@lstring new !"" !here] ![@lstring new !"" !here] ;
-            n -- ;
-          end loop ;
-        or
-          @lstring typeName ;
-          $type_name$ ?typeName ;
-          @lstring constantName ;
-          $identifier$ ?constantName ;
-          mElementList += !typeName !constantName ;
-        end select ;
-      while
-      end repeat ;
-      select
-        mEndsWithEllipsis := false ;
-      or
-        $...$ ;
-        mEndsWithEllipsis := true ;
-      end select ;
-    end select ;
-    $)$ ;
-  end select ;
-  ioForeachInstructionEnumeratedObjectList +=
-    !enumerationOrder
-    !mEnumeratedExpression
-    !endOfEnumerationExpression
-    !mElementList
-    !here
-    !mEndsWithEllipsis
-    !prefix
-  ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <semantic_instruction>
-  !@semanticInstructionAST outInstruction
-  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
-:
-  $foreach$ ;
-  const instructionLocation := here ;
-  @foreachInstructionEnumeratedObjectListAST mEnumeratedObjectList [emptyList] ;
-  repeat
-    <foreach_enumerated_object> !?mEnumeratedObjectList ;
-  while
-    $,$ ;
-  end repeat ;
-  @lstring mIndexVariableName ;
-  select
-    mIndexVariableName := [@lstring new !"" !here] ;
-  or
-    $index$ ;
-    $identifier$ ? mIndexVariableName ;
-  end select ;
-  @semanticExpressionAST mWhileExpression ;
-  select
-    mWhileExpression := [@trueExpressionAST new !here] ;
-  or
-    $while$ ;
-    <expression> ? mWhileExpression ;
-  end select ;
-  const endof_while_expression := here ;
-  @semanticInstructionListAST mBeforeInstructionList ;
-  select
-    mBeforeInstructionList := [@semanticInstructionListAST emptyList] ;
-  or
-    $before$ ;
-    <semantic_instruction_list> ? mBeforeInstructionList ;
-  end select ;
-  const endof_before_branch := here ;
-  $do$ ;
-  @semanticInstructionListAST mDoInstructionList ;
-  <semantic_instruction_list> ? mDoInstructionList ;
-  const endof_do_branch := here ;
-  @semanticInstructionListAST mBetweenInstructionList ;
-  select
-    mBetweenInstructionList := [@semanticInstructionListAST emptyList] ;
-  or
-    $between$ ;
-    <semantic_instruction_list> ? mBetweenInstructionList ;
-  end select ;
-  const endof_between_branch := here ;
-  @semanticInstructionListAST mAfterInstructionList ;
-  select
-    mAfterInstructionList := [@semanticInstructionListAST emptyList] ;
-  or
-    $after$ ;
-    <semantic_instruction_list> ? mAfterInstructionList ;
-  end select ;
-  const endof_after_branch := here ;
-  $end$ ;
-  const endof_foreach_instruction := here ;
-  outInstruction := [@foreachInstructionAST new
-    !instructionLocation
-    !mEnumeratedObjectList
-    !mIndexVariableName
-    !mWhileExpression
-    !endof_while_expression
-    !mBeforeInstructionList
-    !endof_before_branch
-    !mBetweenInstructionList
-    !endof_between_branch
-    !mDoInstructionList
-    !endof_do_branch
-    !mAfterInstructionList
-    !endof_after_branch
-    !endof_foreach_instruction
-  ] ;
-end rule ;
+#rule <foreach_enumerated_object>
+#  ?!@foreachInstructionEnumeratedObjectListAST ioForeachInstructionEnumeratedObjectList
+#:
+#  @lstring enumerationOrder ;
+#  select
+#    enumerationOrder := [@lstring new !"" !here] ; # Default order
+#  or
+#    $<$ ;
+#    enumerationOrder := [@lstring new !"up" !here] ;
+#  or
+#    $>$ ;
+#    enumerationOrder := [@lstring new !"down" !here] ;
+#  end select ;
+#  <expression> ?@semanticExpressionAST mEnumeratedExpression ;
+#  const endOfEnumerationExpression := here ;
+#  @foreachInstructionEnumeratedObjectElementListAST mElementList [emptyList] ;
+#  @bool mEndsWithEllipsis ;
+#  @lstring prefix ;
+#  select
+#    mEndsWithEllipsis := false ;
+#    prefix := [@lstring new !"" !here] ;
+#  or
+#    $:$ ;
+#    $identifier$ ? prefix ;
+#    mEndsWithEllipsis := false ;
+#  or
+#    prefix := [@lstring new !"" !here] ;
+#    $($ ;
+#    select
+#      $...$ ;
+#      mEndsWithEllipsis := true ;
+#    or
+#      repeat
+#        select
+#          $*$ ;
+#          mElementList += ![@lstring new !"" !here] ![@lstring new !"" !here] ;
+#        or
+#          @luint count ;
+#          $unsigned_literal_integer$ ?count ;
+#          $*$ ;
+#          @uint n := [count uint] ;
+#          if n == 0 then
+#            error count: "this value should be > 0" ;
+#          end if ;
+#          loop n :
+#          while n > 0 do
+#            mElementList += ![@lstring new !"" !here] ![@lstring new !"" !here] ;
+#            n -- ;
+#          end loop ;
+#        or
+#          @lstring typeName ;
+#          $type_name$ ?typeName ;
+#          @lstring constantName ;
+#          $identifier$ ?constantName ;
+#          mElementList += !typeName !constantName ;
+#        end select ;
+#      while
+#      end repeat ;
+#      select
+#        mEndsWithEllipsis := false ;
+#      or
+#        $...$ ;
+#        mEndsWithEllipsis := true ;
+#      end select ;
+#    end select ;
+#    $)$ ;
+#  end select ;
+#  ioForeachInstructionEnumeratedObjectList +=
+#    !enumerationOrder
+#    !mEnumeratedExpression
+#    !endOfEnumerationExpression
+#    !mElementList
+#    !here
+#    !mEndsWithEllipsis
+#    !prefix
+#  ;
+#end rule ;
+#
+##---------------------------------------------------------------------------*
+#
+#rule <semantic_instruction>
+#  !@semanticInstructionAST outInstruction
+#  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
+#:
+#  $foreach$ ;
+#  const instructionLocation := here ;
+#  @foreachInstructionEnumeratedObjectListAST mEnumeratedObjectList [emptyList] ;
+#  repeat
+#    <foreach_enumerated_object> !?mEnumeratedObjectList ;
+#  while
+#    $,$ ;
+#  end repeat ;
+#  @lstring mIndexVariableName ;
+#  select
+#    mIndexVariableName := [@lstring new !"" !here] ;
+#  or
+#    $index$ ;
+#    $identifier$ ? mIndexVariableName ;
+#  end select ;
+#  @semanticExpressionAST mWhileExpression ;
+#  select
+#    mWhileExpression := [@trueExpressionAST new !here] ;
+#  or
+#    $while$ ;
+#    <expression> ? mWhileExpression ;
+#  end select ;
+#  const endof_while_expression := here ;
+#  @semanticInstructionListAST mBeforeInstructionList ;
+#  select
+#    mBeforeInstructionList := [@semanticInstructionListAST emptyList] ;
+#  or
+#    $before$ ;
+#    <semantic_instruction_list> ? mBeforeInstructionList ;
+#  end select ;
+#  const endof_before_branch := here ;
+#  $do$ ;
+#  @semanticInstructionListAST mDoInstructionList ;
+#  <semantic_instruction_list> ? mDoInstructionList ;
+#  const endof_do_branch := here ;
+#  @semanticInstructionListAST mBetweenInstructionList ;
+#  select
+#    mBetweenInstructionList := [@semanticInstructionListAST emptyList] ;
+#  or
+#    $between$ ;
+#    <semantic_instruction_list> ? mBetweenInstructionList ;
+#  end select ;
+#  const endof_between_branch := here ;
+#  @semanticInstructionListAST mAfterInstructionList ;
+#  select
+#    mAfterInstructionList := [@semanticInstructionListAST emptyList] ;
+#  or
+#    $after$ ;
+#    <semantic_instruction_list> ? mAfterInstructionList ;
+#  end select ;
+#  const endof_after_branch := here ;
+#  $end$ ;
+#  const endof_foreach_instruction := here ;
+#  outInstruction := [@foreachInstructionAST new
+#    !instructionLocation
+#    !mEnumeratedObjectList
+#    !mIndexVariableName
+#    !mWhileExpression
+#    !endof_while_expression
+#    !mBeforeInstructionList
+#    !endof_before_branch
+#    !mBetweenInstructionList
+#    !endof_between_branch
+#    !mDoInstructionList
+#    !endof_do_branch
+#    !mAfterInstructionList
+#    !endof_after_branch
+#    !endof_foreach_instruction
+#  ] ;
+#end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -709,54 +709,75 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
+rule <for_instruction_element>
+  ?!@foreachInstructionEnumeratedObjectElementListAST ioElementList
+:
+  $*$ ;
+  ioElementList += !["" nowhere] !["" nowhere] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <for_instruction_element>
+  ?!@foreachInstructionEnumeratedObjectElementListAST ioElementList
+:
+  $unsigned_literal_integer$ ??@luint count ;
+  $*$ ;
+  var n := [count uint] ;
+  if n == 0 then
+    error count: "this value should be > 0" ;
+  end if ;
+  loop n : while n > 0 do
+    ioElementList += !["" nowhere] !["" nowhere] ;
+    n -- ;
+  end loop ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <for_instruction_element>
+  ?!@foreachInstructionEnumeratedObjectElementListAST ioElementList
+:
+  @lstring typeName ;
+  select
+    typeName := ["" nowhere] ;
+  or
+    $type_name$ ?typeName ;
+  end select ;
+  $identifier$ ??@lstring constantName ;
+  ioElementList += !typeName !constantName ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
 rule <for_instruction_enumerated_object>
   !@abstractEnumeratedCollectionAST outEnumeratedObject
 :
   $($ ;
   @foreachInstructionEnumeratedObjectElementListAST elementList [emptyList] ;
-  @bool mEndsWithEllipsis ;
+  @bool endsWithEllipsis ;
   select
     $...$ ;
-    mEndsWithEllipsis := true ;
+    endsWithEllipsis := true ;
   or
     repeat
-      select
-        $*$ ;
-        elementList += ![@lstring new !"" !here] ![@lstring new !"" !here] ;
-      or
-        $unsigned_literal_integer$ ??@luint count ;
-        $*$ ;
-        var n := [count uint] ;
-        if n == 0 then
-          error count: "this value should be > 0" ;
-        end if ;
-        loop n :
-        while n > 0 do
-          elementList += ![@lstring new !"" !here] ![@lstring new !"" !here] ;
-          n -- ;
-        end loop ;
-      or
-        @lstring typeName ;
-        $type_name$ ?typeName ;
-        $identifier$ ??@lstring constantName ;
-        elementList += !typeName !constantName ;
-      end select ;
+      <for_instruction_element> !?elementList ;
     while
       $,$ ;
     end repeat ;
     select
-      mEndsWithEllipsis := false ;
+      endsWithEllipsis := false ;
     or
       $...$ ;
-      mEndsWithEllipsis := true ;
+      endsWithEllipsis := true ;
     end select ;
   end select ;
   $)$ ;
-  $identifier$ ??@lstring enumerationVariable ;
   $in$ ;
   <expression> ??@semanticExpressionAST enumeratedExpression ;
-  outEnumeratedObject := [@enumeratedCollectionVarInExpAST new
-    !enumerationVariable
+  outEnumeratedObject := [@enumeratedCollectionCstListInExpAST new
+    !elementList
+    !endsWithEllipsis
     !enumeratedExpression
     !here
   ] ;
@@ -779,21 +800,24 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <for_instruction_enumeration>
-  ?!@forInstructionEnumeratedObjectListAST ioForeachInstructionEnumeratedObjectList
+rule <for_instruction_enumerated_object>
+  !@abstractEnumeratedCollectionAST outEnumeratedObject
 :
-  @bool ascending ;
+  $*$ ;
+  $in$ ;
+  <expression> ??@semanticExpressionAST enumeratedExpression ;
+  @lstring prefix ;
   select
-    ascending := true ;
+    prefix := ["" nowhere] ;
   or
-    $>$ ;
-    ascending := false ;
+    $:$ ;
+    $identifier$ ?prefix ;
   end select ;
-  <for_instruction_enumerated_object> ??@abstractEnumeratedCollectionAST enumeratedObject ;
-  ioForeachInstructionEnumeratedObjectList +=
-    !ascending
-    !enumeratedObject
-  ;
+  outEnumeratedObject := [@enumeratedCollectionImplicitVarInExpAST new
+    !prefix
+    !enumeratedExpression
+    !here
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -806,7 +830,15 @@ rule <semantic_instruction>
   const instructionLocation := here ;
   @forInstructionEnumeratedObjectListAST mEnumeratedObjectList [emptyList] ;
   repeat
-    <for_instruction_enumeration> !?mEnumeratedObjectList ;
+    @bool ascending ;
+    select
+      ascending := true ;
+    or
+      $>$ ;
+      ascending := false ;
+    end select ;
+    <for_instruction_enumerated_object> ??@abstractEnumeratedCollectionAST enumeratedObject ;
+    mEnumeratedObjectList += !ascending !enumeratedObject ;
   while
     $,$ ;
   end repeat ;
