@@ -118,7 +118,6 @@ rule <nonterminal_declaration> ?!@nonterminalDeclarationListAST ioNonterminalDec
     $identifier$ ??@lstring labelName ;
     <nonterminal_label_declaration> !labelName !?mLabels ;
   end repeat ;
-  $;$ ;
   ioNonterminalDeclarationList +=
     !mNonterminalName
     !mLabels
@@ -138,7 +137,6 @@ rule <syntax_rule_label>
   @formalParameterListAST mFormalParameters ;
   <formal_parameter_list> ? mFormalParameters ;
   const endOfArguments := here ;
-#  $:$ ;
   ${$ ;
   <syntax_instruction_list> ??@syntaxInstructionList mSyntaxInstructionList ;
   ioLabelList +=
@@ -164,9 +162,6 @@ rule <syntax_rule_declaration> ?!@syntaxRuleListAST ioRuleList :
     $label$ ;
     $identifier$ ?labelName ;
   end repeat ;
-#  $end$ ;
-#  $rule$ ;
-#  $;$ ;
   ioRuleList +=
     !mNonterminalName
     !mLabelList
@@ -215,7 +210,6 @@ rule <syntax_instruction>
   !@syntaxInstructionAST outInstruction
   ?!@localVariableDeclarationListAST ioLocalVariableDeclarationList
 :
-  $non_terminal_symbol$ ? @lstring mNonterminalName indexing ruleReference ;
   @lstring mLabelName ; # No label : empty string
   select
     mLabelName := [@lstring new !"" !here] ;
@@ -223,8 +217,10 @@ rule <syntax_instruction>
     $parse$ ;
     mLabelName := [@lstring new !"parse" !here] ;
   or
+    $parse$ ;
     $identifier$ ? mLabelName ;
   end select ;
+  $non_terminal_symbol$ ??@lstring mNonterminalName indexing ruleReference ;
   <actual_parameter_list> ??@actualParameterListAST mActualParameterList !?ioLocalVariableDeclarationList ;
 #--- Get syntax directed translation result string
   @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult ;
@@ -294,7 +290,6 @@ rule <syntax_instruction>
     <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor ;
     <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationPreceedingToken ;
   end select ;
-#§  $;$ ;
   outInstruction := [@terminalCheckInstruction new
     ![terminalName location]
     !terminalName
