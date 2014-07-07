@@ -758,7 +758,7 @@ rule <foreach_enumerated_object>
     $>$ ;
     enumerationOrder := [@lstring new !"down" !here] ;
   end select ;
-  <expression> ?@semanticExpressionAST mEnumeratedExpression ;
+  <expression> ?@semanticExpressionAST mEnumeratedExpression :> ?@string exp ;
   const endOfEnumerationExpression := here ;
   @foreachInstructionEnumeratedObjectElementListAST mElementList [emptyList] ;
   @bool endsWithEllipsis ;
@@ -766,10 +766,12 @@ rule <foreach_enumerated_object>
   select
     endsWithEllipsis := false ;
     prefix := [@lstring new !"" !here] ;
+    send " *" ;
   or
-    $:$ ;
-    $identifier$ ? prefix ;
+    $:$ :> ?* ?* ;
+    $identifier$ ? prefix :> ?* ?* ;
     endsWithEllipsis := false ;
+    send " *" ;
   or
     prefix := [@lstring new !"" !here] ;
     $($ ;
@@ -809,6 +811,7 @@ rule <foreach_enumerated_object>
     end select ;
     $)$ ;
   end select ;
+  send " in" . exp . if prefix->string != "" then " : " . prefix else "" end ;  
   ioForeachInstructionEnumeratedObjectList +=
     !enumerationOrder
     !mEnumeratedExpression
@@ -826,7 +829,8 @@ rule <semantic_instruction>
   !@semanticInstructionAST outInstruction
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
-  $foreach$ ;
+  $foreach$ :> ?@string sep ?* ;
+  send sep . "for" ;
   const instructionLocation := here ;
   @foreachInstructionEnumeratedObjectListAST mEnumeratedObjectList [emptyList] ;
   repeat
@@ -838,8 +842,8 @@ rule <semantic_instruction>
   select
     mIndexVariableName := [@lstring new !"" !here] ;
   or
-    $index$ ;
-    $identifier$ ? mIndexVariableName ;
+    $index$ :> ?* ?* ;
+    $identifier$ ?mIndexVariableName :> ?* ?* ;
   end select ;
   @semanticExpressionAST mWhileExpression ;
   select
@@ -858,6 +862,7 @@ rule <semantic_instruction>
   end select ;
   const endof_before_branch := here ;
   $do$ ;
+  send if mIndexVariableName->string != "" then " index " . mIndexVariableName else "" end ;
   @semanticInstructionListAST mDoInstructionList ;
   <semantic_instruction_list> ? mDoInstructionList ;
   const endof_do_branch := here ;
