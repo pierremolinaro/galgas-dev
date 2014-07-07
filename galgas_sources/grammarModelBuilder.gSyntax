@@ -52,18 +52,21 @@ rule <grammar_component_start_symbol>
     end if ;
     hasTranslateFeature := true ;
   end select ;
-  $:$ ;
+  $:$ :> ?* ?* ;
+  send " {" ;
 #--- New style imports
   @lstringlist syntaxComponents [emptyList] ;
   repeat
     $with$ ;
-    $literal_string$ ? @lstring syntaxComponent ;
-    $;$ ;
+    $literal_string$ ? @lstring syntaxComponent :> ??@string sep ?* ;
+    send sep . [syntaxComponent stringByDeletingPathExtension] ;
+    $;$ :> ?* ?* ;
     syntaxComponents += !syntaxComponent ;
   while
   end repeat ;
 #--- Root symbol
-  $root$ ;
+  $root$ :> ?@string sep ?* ;
+  send sep ;
   $non_terminal_symbol$ ?@lstring  mStartSymbol indexing ruleReference ;
   @nonTerminalLabelListAST mLabelList [emptyList] ;
   <grammar_start_symbol_label> ![@lstring new !"" !here] !?mLabelList ;
@@ -72,23 +75,25 @@ rule <grammar_component_start_symbol>
     $label$ ;
     $identifier$ ?@lstring labelName ;
     <grammar_start_symbol_label> !labelName !?mLabelList ;
-   end repeat ;
-  $;$ ;
+  end repeat ;
+  $;$ :> ?* ?* ;
 #--- Unused non terminal symbols
   @lstringlist mUnusedNonterminalList [emptyList] ;
   repeat
   while
-   $unused$ ;
+   $unused$ :> ?* ?* ;
    repeat
+     send "\n unused" ;
      $non_terminal_symbol$ ? @lstring nonterminalSymbolName ;
      mUnusedNonterminalList += ! nonterminalSymbolName ;
    while
-     $,$ ;
+     $,$ :> ?* ?* ;
    end repeat ;
-   $;$ ;
+   $;$ :> ?* ?* ;
   end repeat ;
 #---
-  $end$ ;
+  $end$ :> ?sep ?* ;
+  send sep . "}" ;
   outGrammarComponentRoot := [@grammarComponentAST new
     !hasIndexing
     !mGrammarName
