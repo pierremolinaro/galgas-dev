@@ -63,7 +63,7 @@ rule <declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
   $extern$ ;
-  $routine$ ;
+  $proc$ ;
   $identifier$ ??@lstring mActionName indexing routineDefinition ;
   <formal_parameter_list> ??@formalParameterListAST mFormalParameterList ;
   ioSemanticDeclarations += ![@externRoutineDeclarationAST new
@@ -85,7 +85,7 @@ end rule ;
 rule <declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
-  $routine$ ;
+  $proc$ ;
   $identifier$ ? @lstring mRoutineName indexing routineDefinition ;
   <formal_parameter_list> ?@formalParameterListAST mFormalParameterList ;
   ${$ ;
@@ -113,7 +113,7 @@ end rule ;
 rule <declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
-  $function$ ;
+  $func$ ;
   $identifier$ ? @lstring mRoutineName indexing functionDefinition ;
   <formal_input_parameter_list> ?@formalInputParameterListAST formalInputParameterList ;
   $->$ ;
@@ -178,7 +178,7 @@ rule <declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
   $extern$ ;
-  $function$ ;
+  $func$ ;
   $identifier$ ? @lstring mActionName indexing functionDefinition ;
   @formalInputParameterListAST formalInputParameterList ;
   <formal_input_parameter_list> ? formalInputParameterList ;

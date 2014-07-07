@@ -85,7 +85,8 @@ rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
   $extern$ ;
-  $routine$ ;
+  $routine$ :> ??@string sep ?* ;
+  send sep . "proc" ;
   $identifier$ ? @lstring mActionName indexing routineDefinition ;
   @formalParameterListAST mFormalParameterList ;
   <formal_parameter_list> ? mFormalParameterList ;
@@ -110,7 +111,8 @@ rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
   <local_declaration> ;
-  $routine$ ;
+  $routine$ :> ?@string sep ?* ;
+  send sep . "proc" ;
   $identifier$ ? @lstring mRoutineName indexing routineDefinition ;
   @formalParameterListAST mFormalParameterList ;
   <formal_parameter_list> ? mFormalParameterList ;
@@ -118,7 +120,7 @@ rule <semantic_declaration>
   send " {" ;
   @semanticInstructionListAST mRoutineInstructionList ;
   <semantic_instruction_list> ? mRoutineInstructionList ;
-  $end$ :> ?@string sep ?* ;
+  $end$ :> ?sep ?* ;
   send sep . "}" ;
   $routine$ :> ?* ?*  ;
   const endOfInstructionList := here ;
@@ -137,7 +139,8 @@ rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
   <local_declaration> ;
-  $routine$ ;
+  $routine$ :> ??@string sep ?* ;
+  send sep . "proc" ;
   $identifier$ ? @lstring mRoutineName indexing routineDefinition ;
   @formalParameterListAST mFormalParameterList ;
   <formal_parameter_list> ? mFormalParameterList ;
@@ -168,7 +171,8 @@ rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
   <local_declaration> ;
-  $function$ ;
+  $function$ :> ?@string sep ?* ;
+  send sep . "func" ;
   $identifier$ ? @lstring mRoutineName indexing functionDefinition ;
   <formal_input_parameter_list> ?@formalInputParameterListAST formalInputParameterList ;
   $->$ ;
@@ -177,7 +181,7 @@ rule <semantic_declaration>
   $:$ :> ?* ?* ;
   send " {" ;
   <semantic_instruction_list> ?@semanticInstructionListAST functionInstructionList ;
-  $end$ :> ?@string sep ?* ;
+  $end$ :> ?sep ?* ;
   send sep . "}" ;
   $function$ :> ?* ?*  ;
   const endOfFunctionInstructionList := here ;
@@ -198,7 +202,8 @@ rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
   <local_declaration> ;
-  $function$ ;
+  $function$ :> ??@string sep ?* ;
+  send sep . "func" ;
   $identifier$ ? @lstring mRoutineName indexing functionDefinition ;
   <formal_input_parameter_list> ?@formalInputParameterListAST formalInputParameterList ;
   $->$ ;
@@ -268,7 +273,8 @@ rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
   $extern$ ;
-  $function$ ;
+  $function$ :> ??@string sep ?* ;
+  send sep . "func" ;
   $identifier$ ? @lstring mActionName indexing functionDefinition ;
   @formalInputParameterListAST formalInputParameterList ;
   <formal_input_parameter_list> ? formalInputParameterList ;
