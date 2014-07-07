@@ -29,6 +29,8 @@ rule <start_symbol>
  ?!@semanticDeclarationListAST ioDeclarations
 :
   repeat
+#  while
+#    $;$ ;
   while
     <declaration> !?ioDeclarations ;
   end repeat ;
@@ -66,7 +68,6 @@ rule <attribute_declaration> ?!@attributeInCollectionListAST ioAttributeInCollec
       $,$ ;
     end repeat ;
   end select ;
-  $;$ ;
   ioAttributeInCollectionList += !mAttributeTypeName !mAttributeName !featureList ;
 end rule ;
 
@@ -74,6 +75,10 @@ end rule ;
 #                                                                           *
 #    L I S T M A P    D E C L A R A T I O N                                 *
 #                                                                           *
+#---------------------------------------------------------------------------*
+
+#! Listmap Declaration
+
 #---------------------------------------------------------------------------*
 
 rule <declaration>
@@ -85,7 +90,6 @@ rule <declaration>
   $($ ;
   $type_name$ ? @lstring mAssociatedListTypeName ;
   $)$ ;
-  $;$ ;
   ioDeclarations += ![@listmapDeclarationAST new
     !mListmapTypeName
     !mAssociatedListTypeName
@@ -96,6 +100,10 @@ end rule ;
 #                                                                           *
 #    A R R A Y    D E C L A R A T I O N                                     *
 #                                                                           *
+#---------------------------------------------------------------------------*
+
+#! Array Declaration
+
 #---------------------------------------------------------------------------*
 
 rule <declaration>
@@ -109,7 +117,6 @@ rule <declaration>
   $[$ ;
   $unsigned_literal_integer$ ? @luint dimension ;
   $]$ ;
-  $;$ ;
   ioDeclarations += ![@arrayDeclarationAST new
     !arrayTypeName
     !elementListTypeName
@@ -121,6 +128,10 @@ end rule ;
 #                                                                           *
 #    M A P    D E C L A R A T I O N                                         *
 #                                                                           *
+#---------------------------------------------------------------------------*
+
+#! Map Declaration
+
 #---------------------------------------------------------------------------*
 
 rule <insert_method_declaration> ?!@insertMethodListAST ioMapMethodList :
@@ -142,7 +153,6 @@ rule <insert_method_declaration> ?!@insertMethodListAST ioMapMethodList :
     $,$ ;
     $literal_string$ ? mShadowErrorMessage ;
   end select ;
-  $;$ ;
   ioMapMethodList +=
     !mMethodName
     !mErrorMessage
@@ -178,7 +188,6 @@ rule <declaration>
     $error$ ;
     $message$ ;
     $literal_string$ ? @lstring mErrorMessage ;
-    $;$ ;
     mSearchMethodList +=
       !mMethodName
       !mErrorMessage
@@ -190,7 +199,6 @@ rule <declaration>
     $error$ ;
     $message$ ;
     $literal_string$ ? @lstring mErrorMessage ;
-    $;$ ;
     mRemoveMethodList +=
       !mMethodName
       !mErrorMessage
@@ -200,7 +208,6 @@ rule <declaration>
     $or$ ;
     $replace$ ;
     insertOrReplaceDeclarationListAST += !here ;
-    $;$ ;
   end repeat ;
   $}$ ;
   ioDeclarations += ![@mapDeclarationAST new
@@ -212,6 +219,10 @@ rule <declaration>
     !insertOrReplaceDeclarationListAST
   ] ;
 end rule ;
+
+#---------------------------------------------------------------------------*
+
+#! Unique Map Declaration
 
 #---------------------------------------------------------------------------*
 
@@ -299,7 +310,6 @@ rule <declaration>
     $error$ ;
     $message$ ;
     $literal_string$ ? @lstring mErrorMessage ;
-    $;$ ;
     mSearchMethodList +=
       !mMethodName
       !mErrorMessage
@@ -379,6 +389,10 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+#! Mapproxy Declaration
+
+#---------------------------------------------------------------------------*
+
 rule <declaration>
  ?!@semanticDeclarationListAST ioDeclarations
 :
@@ -387,7 +401,6 @@ rule <declaration>
   $($ ;
   $type_name$ ? @lstring mMapTypeName ;
   $)$ ;
-  $;$ ;
   ioDeclarations += ![@mapProxyDeclarationAST new
     !mMapIndexName
     !mMapTypeName
@@ -398,6 +411,10 @@ end rule ;
 #                                                                           *
 #    C L A S S    D E C L A R A T I O N                                     *
 #                                                                           *
+#---------------------------------------------------------------------------*
+
+#! Class Declaration
+
 #---------------------------------------------------------------------------*
 
 rule <declaration>
@@ -463,6 +480,10 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+#! Struct Declaration
+
+#---------------------------------------------------------------------------*
+
 rule <declaration>
  ?!@semanticDeclarationListAST ioDeclarations
 :
@@ -488,6 +509,10 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+#! List Declaration
+
+#---------------------------------------------------------------------------*
+
 rule <declaration>
  ?!@semanticDeclarationListAST ioDeclarations
 :
@@ -510,6 +535,10 @@ end rule ;
 #                                                                           *
 #    S O R T E D    L I S T    D E C L A R A T I O N                        *
 #                                                                           *
+#---------------------------------------------------------------------------*
+
+#! Sorted Declaration
+
 #---------------------------------------------------------------------------*
 
 rule <sortedlist_sort_descriptor> ?!@sortedListSortDescriptorListAST ioSortedListSortDescriptorList :
@@ -560,6 +589,10 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+#! Enum Declaration
+
+#---------------------------------------------------------------------------*
+
 rule <declaration>
  ?!@semanticDeclarationListAST ioDeclarations
 :
@@ -584,6 +617,10 @@ end rule ;
 #                                                                           *
 #    F I L E W R A P P E R    D E C L A R A T I O N                         *
 #                                                                           *
+#---------------------------------------------------------------------------*
+
+#! Filewrapper Declaration
+
 #---------------------------------------------------------------------------*
 
 rule <declaration>
@@ -639,7 +676,6 @@ rule <declaration>
       $identifier$ ? @lstring argumentName ;
       filewrapperTemplateFormalInputParameters += !typeName !argumentName !isUnused ;
     end repeat ;
-    $;$ ;
     mFilewrapperTemplateList +=
       !mFilewrapperTemplateName
       !mFilewrapperTemplatePath
@@ -663,6 +699,10 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+#! Abstract method Declaration
+
+#---------------------------------------------------------------------------*
+
 rule <declaration>
  ?!@semanticDeclarationListAST ioDeclarations
 :
@@ -671,7 +711,6 @@ rule <declaration>
   $type_name$ ? @lstring className indexing typeReferenceAbstractCategoryMethod ;
   $identifier$ ? @lstring mMethodName indexing abstractCategoryMethodDefinition ;
   <formal_parameter_list> ??@formalParameterListAST formalParameterList ;
-  $;$ ;
   ioDeclarations += ![@abstractCategoryMethodAST new
     !className
     !mMethodName
@@ -686,6 +725,10 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+#! Override abstract method Declaration
+
+#---------------------------------------------------------------------------*
+
 rule <declaration>
  ?!@semanticDeclarationListAST ioDeclarations
 :
@@ -695,7 +738,6 @@ rule <declaration>
   $type_name$ ? @lstring className indexing typeReferenceOverrideAbstractCategoryMethod ;
   $identifier$ ? @lstring mMethodName indexing overrideAbstractCategoryMethodDefinition ;
   <formal_parameter_list> ??@formalParameterListAST formalParameterList ;
-  $;$ ;
   ioDeclarations += ![@overridingAbstractCategoryMethodAST new
     !className
     !mMethodName
@@ -770,7 +812,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#! Abstract reader
+#! Abstract getter
 
 #---------------------------------------------------------------------------*
 
@@ -786,7 +828,6 @@ rule <declaration>
   $->$ ;
   $type_name$ ? @lstring mReturnedTypeName ;
   $identifier$ ? * ;
-  $;$ ;
   ioDeclarations += ![@abstractCategoryReaderAST new
     !className
     !mReaderName
@@ -801,7 +842,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#! Reader declaration
+#! Getter declaration
 
 #---------------------------------------------------------------------------*
 
@@ -837,7 +878,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#! Overriding reader declaration
+#! Overriding getter declaration
 
 #---------------------------------------------------------------------------*
 
@@ -875,7 +916,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#! Overriding abstract reader
+#! Overriding abstract getter
 
 #---------------------------------------------------------------------------*
 
@@ -892,7 +933,6 @@ rule <declaration>
   $->$ ;
   $type_name$ ? @lstring mReturnedTypeName ;
   $identifier$ ? * ;
-  $;$ ;
   ioDeclarations += ![@overridingAbstractCategoryReaderAST new
     !className
     !mReaderName
@@ -907,7 +947,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#! Abstract modifier
+#! Abstract setter
 
 #---------------------------------------------------------------------------*
 
@@ -919,7 +959,6 @@ rule <declaration>
   $type_name$ ? @lstring className indexing typeReferenceAbstractCategoryModifier ;
   $identifier$ ? @lstring modifierName indexing abstractCategoryModifierDefinition ;
   <formal_parameter_list> ??@formalParameterListAST formalParameterList ;
-  $;$ ;
   ioDeclarations += ![@abstractCategoryModifierAST new
     !className
     !modifierName
@@ -934,7 +973,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#! Overriding abstract modifier
+#! Overriding abstract setter
 
 #---------------------------------------------------------------------------*
 
@@ -947,7 +986,6 @@ rule <declaration>
   $type_name$ ? @lstring className indexing typeReferenceOverrideAbstractCategoryModifier ;
   $identifier$ ? @lstring modifierName indexing overrideAbstractCategoryModifierDefinition ;
   <formal_parameter_list> ??@formalParameterListAST formalParameterList ;
-  $;$ ;
   ioDeclarations += ![@overridingAbstractCategoryModifierAST new
     !className
     !modifierName
@@ -961,7 +999,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#! Modifier declaration
+#! Setter declaration
 
 #---------------------------------------------------------------------------*
 
@@ -991,7 +1029,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#! Overriding modifier declaration
+#! Overriding setter declaration
 
 #---------------------------------------------------------------------------*
 
@@ -1022,6 +1060,10 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+#! Graph Declaration
+
+#---------------------------------------------------------------------------*
+
 rule <declaration>
  ?!@semanticDeclarationListAST ioDeclarations
 :
@@ -1040,7 +1082,6 @@ rule <declaration>
     $message$ ;
     $literal_string$ ? @lstring errorMessage ;
     graphInsertModifierList += !insertName !errorMessage ;
-    $;$ ;
   end repeat ;
   $}$ ;
   ioDeclarations += ![@graphDeclarationAST new
@@ -1054,6 +1095,10 @@ end rule ;
 #                                                                           *
 #     E X T E R N    T Y P E    D E C L A R A T I O N                       *
 #                                                                           *
+#---------------------------------------------------------------------------*
+
+#! Extern type Declaration
+
 #---------------------------------------------------------------------------*
 
 rule <declaration>
@@ -1096,7 +1141,6 @@ rule <declaration>
     end repeat ;
     $->$ ;
     $type_name$ ? @lstring resultTypeName ;
-    $;$ ;
     externTypeConstructorList +=
       !constructorName
       !resultTypeName
@@ -1115,7 +1159,6 @@ rule <declaration>
     end repeat ;
     $->$ ;
     $type_name$ ? @lstring resultTypeName ;
-    $;$ ;
     externTypeReaderList +=
       !readerName
       !resultTypeName
@@ -1125,7 +1168,6 @@ rule <declaration>
     $setter$ ;
     $identifier$ ? @lstring modifierName ;
     <formal_parameter_list> ?@formalParameterListAST formalParameterList ;
-    $;$ ;
     externTypeModifierList +=
       !modifierName
       !formalParameterList
@@ -1139,7 +1181,6 @@ rule <declaration>
       !formalParameterList
       !here
     ;
-    $;$ ;
   end repeat ;
   $}$ ;
   ioDeclarations += ![@externTypeDeclarationAST new

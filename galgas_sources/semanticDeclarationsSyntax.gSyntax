@@ -58,7 +58,7 @@ rule <attribute_declaration> ?!@attributeInCollectionListAST ioAttributeInCollec
       $,$ ;
     end repeat ;
   end select ;
-  $;$ ;
+  $;$ :> ?* ?* ;
   ioAttributeInCollectionList += !mAttributeTypeName !mAttributeName !featureList ;
 end rule ;
 
@@ -77,7 +77,7 @@ rule <semantic_declaration>
   $($ ;
   $type_name$ ? @lstring mAssociatedListTypeName ;
   $)$ ;
-  $;$ ;
+  $;$ :> ?* ?* ;
   ioSemanticDeclarations += ![@listmapDeclarationAST new
     !mListmapTypeName
     !mAssociatedListTypeName
@@ -101,7 +101,7 @@ rule <semantic_declaration>
   $[$ ;
   $unsigned_literal_integer$ ? @luint dimension ;
   $]$ ;
-  $;$ ;
+  $;$ :> ?* ?* ;
   ioSemanticDeclarations += ![@arrayDeclarationAST new
     !arrayTypeName
     !elementListTypeName
@@ -134,7 +134,7 @@ rule <insert_method_declaration> ?!@insertMethodListAST ioMapMethodList :
     $,$ ;
     $literal_string$ ? mShadowErrorMessage ;
   end select ;
-  $;$ ;
+  $;$ :> ?* ?* ;
   ioMapMethodList +=
     !mMethodName
     !mErrorMessage
@@ -170,7 +170,7 @@ rule <semantic_declaration>
     $error$ ;
     $message$ ;
     $literal_string$ ? @lstring mErrorMessage ;
-    $;$ ;
+    $;$ :> ?* ?* ;
     mSearchMethodList +=
       !mMethodName
       !mErrorMessage
@@ -182,7 +182,7 @@ rule <semantic_declaration>
     $error$ ;
     $message$ ;
     $literal_string$ ? @lstring mErrorMessage ;
-    $;$ ;
+    $;$ :> ?* ?* ;
     mRemoveMethodList +=
       !mMethodName
       !mErrorMessage
@@ -192,7 +192,7 @@ rule <semantic_declaration>
     $or$ ;
     $replace$ ;
     insertOrReplaceDeclarationListAST += !here ;
-    $;$ ;
+    $;$ :> ?* ?* ;
   end repeat ;
   $}$ ;
   ioSemanticDeclarations += ![@mapDeclarationAST new
@@ -291,7 +291,7 @@ rule <semantic_declaration>
     $error$ ;
     $message$ ;
     $literal_string$ ? @lstring mErrorMessage ;
-    $;$ ;
+    $;$ :> ?* ?* ;
     mSearchMethodList +=
       !mMethodName
       !mErrorMessage
@@ -379,7 +379,7 @@ rule <semantic_declaration>
   $($ ;
   $type_name$ ? @lstring mMapTypeName ;
   $)$ ;
-  $;$ ;
+  $;$ :> ?* ?* ;
   ioSemanticDeclarations += ![@mapProxyDeclarationAST new
     !mMapIndexName
     !mMapTypeName
@@ -638,7 +638,7 @@ rule <semantic_declaration>
       $identifier$ ? @lstring argumentName ;
       filewrapperTemplateFormalInputParameters += !typeName !argumentName !isUnused ;
     end repeat ;
-    $;$ ;
+    $;$ :> ?* ?* ;
     mFilewrapperTemplateList +=
       !mFilewrapperTemplateName
       !mFilewrapperTemplatePath
@@ -670,7 +670,7 @@ rule <semantic_declaration>
   $type_name$ ? @lstring className indexing typeReferenceAbstractCategoryMethod ;
   $identifier$ ? @lstring mMethodName indexing abstractCategoryMethodDefinition ;
   <formal_parameter_list> ??@formalParameterListAST formalParameterList ;
-  $;$ ;
+  $;$ :> ?* ?* ;
   ioSemanticDeclarations += ![@abstractCategoryMethodAST new
     !className
     !mMethodName
@@ -694,7 +694,7 @@ rule <semantic_declaration>
   $type_name$ ? @lstring className indexing typeReferenceOverrideAbstractCategoryMethod ;
   $identifier$ ? @lstring mMethodName indexing overrideAbstractCategoryMethodDefinition ;
   <formal_parameter_list> ??@formalParameterListAST formalParameterList ;
-  $;$ ;
+  $;$ :> ?* ?* ;
   ioSemanticDeclarations += ![@overridingAbstractCategoryMethodAST new
     !className
     !mMethodName
@@ -794,7 +794,7 @@ rule <semantic_declaration>
   $->$ ;
   $type_name$ ? @lstring mReturnedTypeName ;
   $identifier$ ? * ;
-  $;$ ;
+  $;$ :> ?* ?* ;
   ioSemanticDeclarations += ![@abstractCategoryReaderAST new
     !className
     !mReaderName
@@ -911,7 +911,7 @@ rule <semantic_declaration>
   $->$ ;
   $type_name$ ? @lstring mReturnedTypeName ;
   $identifier$ ? * ;
-  $;$ ;
+  $;$ :> ?* ?* ;
   ioSemanticDeclarations += ![@overridingAbstractCategoryReaderAST new
     !className
     !mReaderName
@@ -939,7 +939,7 @@ rule <semantic_declaration>
   $type_name$ ? @lstring className indexing typeReferenceAbstractCategoryModifier ;
   $identifier$ ? @lstring modifierName indexing abstractCategoryModifierDefinition ;
   <formal_parameter_list> ??@formalParameterListAST formalParameterList ;
-  $;$ ;
+  $;$ :> ?* ?* ;
   ioSemanticDeclarations += ![@abstractCategoryModifierAST new
     !className
     !modifierName
@@ -968,7 +968,7 @@ rule <semantic_declaration>
   $type_name$ ? @lstring className indexing typeReferenceOverrideAbstractCategoryModifier ;
   $identifier$ ? @lstring modifierName indexing overrideAbstractCategoryModifierDefinition ;
   <formal_parameter_list> ??@formalParameterListAST formalParameterList ;
-  $;$ ;
+  $;$ :> ?* ?* ;
   ioSemanticDeclarations += ![@overridingAbstractCategoryModifierAST new
     !className
     !modifierName
@@ -1075,7 +1075,7 @@ rule <semantic_declaration>
     $message$ ;
     $literal_string$ ? @lstring errorMessage ;
     graphInsertModifierList += !insertName !errorMessage ;
-    $;$ ;
+    $;$ :> ?* ?* ;
   end repeat ;
   $}$ ;
   ioSemanticDeclarations += ![@graphDeclarationAST new
@@ -1131,7 +1131,7 @@ rule <semantic_declaration>
     end repeat ;
     $->$ ;
     $type_name$ ? @lstring resultTypeName ;
-    $;$ ;
+    $;$ :> ?* ?* ;
     externTypeConstructorList +=
       !constructorName
       !resultTypeName
@@ -1151,7 +1151,7 @@ rule <semantic_declaration>
     end repeat ;
     $->$ ;
     $type_name$ ? @lstring resultTypeName ;
-    $;$ ;
+    $;$ :> ?* ?* ;
     externTypeReaderList +=
       !readerName
       !resultTypeName
@@ -1162,7 +1162,7 @@ rule <semantic_declaration>
     send sep . "setter" ;
     $identifier$ ? @lstring modifierName ;
     <formal_parameter_list> ?@formalParameterListAST formalParameterList ;
-    $;$ ;
+    $;$ :> ?* ?* ;
     externTypeModifierList +=
       !modifierName
       !formalParameterList
@@ -1176,7 +1176,7 @@ rule <semantic_declaration>
       !formalParameterList
       !here
     ;
-    $;$ ;
+    $;$ :> ?* ?* ;
   end repeat ;
   $}$ ;
   ioSemanticDeclarations += ![@externTypeDeclarationAST new
