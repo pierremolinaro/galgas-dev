@@ -34,9 +34,7 @@ nonterminal <formal_parameter_list> !@formalParameterListAST outFormalParameterL
 
 nonterminal <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList ;
 
-nonterminal <output_expression_list>
-  !@semanticExpressionListAST outExpressionList
-;
+nonterminal <output_expression_list> !@semanticExpressionListAST outExpressionList ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *

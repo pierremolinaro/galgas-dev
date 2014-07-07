@@ -50,18 +50,16 @@ rule <declaration>
     end if ;
     hasTranslateFeature := true ;
   end select ;
-  $:$ ;
-#--- New style imports
+  ${$ ;
+#--- Imports
   @lstringlist syntaxComponents [emptyList] ;
   repeat
     $with$ ;
-    $literal_string$ ? @lstring syntaxComponent ;
-    $;$ ;
+    $identifier$ ? @lstring syntaxComponent ;
     syntaxComponents += !syntaxComponent ;
   while
   end repeat ;
 #--- Root symbol
-  $root$ ;
   $non_terminal_symbol$ ?@lstring  mStartSymbol indexing ruleReference ;
   @nonTerminalLabelListAST mLabelList [emptyList] ;
   <grammar_start_symbol_label> ![@lstring new !"" !here] !?mLabelList ;
@@ -71,22 +69,16 @@ rule <declaration>
     $identifier$ ?@lstring labelName ;
     <grammar_start_symbol_label> !labelName !?mLabelList ;
    end repeat ;
-  $;$ ;
 #--- Unused non terminal symbols
   @lstringlist mUnusedNonterminalList [emptyList] ;
   repeat
   while
-   $unused$ ;
-   repeat
-     $non_terminal_symbol$ ? @lstring nonterminalSymbolName ;
-     mUnusedNonterminalList += ! nonterminalSymbolName ;
-   while
-     $,$ ;
-   end repeat ;
-   $;$ ;
+    $unused$ ;
+    $non_terminal_symbol$ ? @lstring nonterminalSymbolName ;
+    mUnusedNonterminalList += ! nonterminalSymbolName ;
   end repeat ;
 #---
-  $end$ ;
+  $}$ ;
   ioDeclarations += ![@galgas3GrammarComponentAST new
     !hasIndexing
     !mGrammarName
