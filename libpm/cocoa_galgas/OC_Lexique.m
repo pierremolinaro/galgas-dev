@@ -273,6 +273,13 @@
     [NSFont boldSystemFontOfSize:11.0], NSFontAttributeName,
     nil
   ] ;
+  NSAttributedString * prefixString = [[NSAttributedString alloc]
+    initWithString:@"                                   "
+    attributes:[NSDictionary dictionaryWithObjectsAndKeys:
+      [NSColor colorWithWhite:0.9 alpha:1.0], NSBackgroundColorAttributeName,
+      nil
+    ]
+  ] ;
   NSMenu * menu = [[NSMenu alloc] initWithTitle:@""] ;
   const UInt16 ** popUpListData = [self popupListData] ;
   if (NULL != popUpListData) {
@@ -338,10 +345,19 @@
           action:NULL
           keyEquivalent:@""
         ] ;
-        [item setAttributedTitle:[[NSAttributedString alloc]
-          initWithString:title
-          attributes:(displayFlags == 0) ? defaultAttributes : specialAttributes]
-        ] ;
+        if (displayFlags == 0) {
+          [item setAttributedTitle:[[NSAttributedString alloc]
+            initWithString:title
+            attributes:defaultAttributes
+          ]] ;
+        }else{
+          NSMutableAttributedString * s = prefixString.mutableCopy ;
+          [s appendAttributedString:[[NSAttributedString alloc]
+            initWithString:title
+            attributes:specialAttributes
+          ]] ;
+          [item setAttributedTitle:s] ;
+        }
         [item setTag:(NSInteger) [[inTokenArray objectAtIndex:tokenIndex] range].location] ;
         [menu addItem:item] ;
         tokenIndex += labelLength ;

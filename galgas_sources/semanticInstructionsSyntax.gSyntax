@@ -102,7 +102,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#!--------------------------- Routine declaration
+#! Routine declaration
 
 #---------------------------------------------------------------------------*
 
@@ -160,7 +160,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#!--------------------------- Function declaration
+#! Function declaration
 
 #---------------------------------------------------------------------------*
 
@@ -224,7 +224,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#!--------------------------- once declaration
+#! once declaration
 
 #---------------------------------------------------------------------------*
 
@@ -260,7 +260,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#!--------------------------- extern function declaration
+#! extern function declaration
 
 #---------------------------------------------------------------------------*
 
@@ -290,7 +290,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#!--------------------------- var declaration instruction
+#! var declaration instruction
 
 #---------------------------------------------------------------------------*
 
@@ -434,7 +434,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#!--------------------------- const declaration instruction
+#! const declaration instruction
 
 #---------------------------------------------------------------------------*
 
@@ -543,7 +543,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#!--------------------------- assignment instruction
+#! assignment instruction
 
 #---------------------------------------------------------------------------*
 
@@ -578,7 +578,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#!--------------------------- self assignment instruction
+#! self assignment instruction
 
 #---------------------------------------------------------------------------*
 
@@ -604,7 +604,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#!--------------------------- drop instruction
+#! drop instruction
 
 #---------------------------------------------------------------------------*
 
@@ -631,7 +631,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#!--------------------------- ++ instruction
+#! ++ instruction
 
 #---------------------------------------------------------------------------*
 
@@ -663,7 +663,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#!--------------------------- self ++ instruction
+#! self ++ instruction
 
 #---------------------------------------------------------------------------*
 
@@ -686,7 +686,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#!--------------------------- -- instruction
+#! -- instruction
 
 #---------------------------------------------------------------------------*
 
@@ -718,7 +718,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#!--------------------------- self -- instruction
+#! self -- instruction
 
 #---------------------------------------------------------------------------*
 
@@ -741,7 +741,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#!--------------------------- foreach instruction
+#! foreach instruction
 
 #---------------------------------------------------------------------------*
 
@@ -761,15 +761,15 @@ rule <foreach_enumerated_object>
   <expression> ?@semanticExpressionAST mEnumeratedExpression ;
   const endOfEnumerationExpression := here ;
   @foreachInstructionEnumeratedObjectElementListAST mElementList [emptyList] ;
-  @bool mEndsWithEllipsis ;
+  @bool endsWithEllipsis ;
   @lstring prefix ;
   select
-    mEndsWithEllipsis := false ;
+    endsWithEllipsis := false ;
     prefix := [@lstring new !"" !here] ;
   or
     $:$ ;
     $identifier$ ? prefix ;
-    mEndsWithEllipsis := false ;
+    endsWithEllipsis := false ;
   or
     prefix := [@lstring new !"" !here] ;
     $($ ;
@@ -802,10 +802,10 @@ rule <foreach_enumerated_object>
       mElementList += !typeName !constantName ;
     end repeat ;
     select
-      mEndsWithEllipsis := false ;
+      endsWithEllipsis := false ;
     or
       $...$ ;
-      mEndsWithEllipsis := true ;
+      endsWithEllipsis := true ;
     end select ;
     $)$ ;
   end select ;
@@ -815,7 +815,7 @@ rule <foreach_enumerated_object>
     !endOfEnumerationExpression
     !mElementList
     !here
-    !mEndsWithEllipsis
+    !endsWithEllipsis
     !prefix
   ;
 end rule ;
@@ -905,32 +905,119 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#!--------------------------- for instruction
+#! for instruction
 
 #---------------------------------------------------------------------------*
 
-rule <new_foreach_enumerated_object>
-  ?!@forInstructionEnumeratedObjectListAST ioForeachInstructionEnumeratedObjectList
+rule <for_instruction_element>
+  ?!@foreachInstructionEnumeratedObjectElementListAST ioElementList
 :
-  @bool ascending ;
+  $*$ ;
+  ioElementList += !["" nowhere] !["" nowhere] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <for_instruction_element>
+  ?!@foreachInstructionEnumeratedObjectElementListAST ioElementList
+:
+  $unsigned_literal_integer$ ??@luint count ;
+  $*$ ;
+  var n := [count uint] ;
+  if n == 0 then
+    error count: "this value should be > 0" ;
+  end if ;
+  loop n : while n > 0 do
+    ioElementList += !["" nowhere] !["" nowhere] ;
+    n -- ;
+  end loop ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <for_instruction_element>
+  ?!@foreachInstructionEnumeratedObjectElementListAST ioElementList
+:
+  @lstring typeName ;
   select
-    ascending := true ;
+    typeName := ["" nowhere] ;
   or
-    $>$ ;
-    ascending := false ;
+    $type_name$ ?typeName ;
   end select ;
+  $identifier$ ??@lstring constantName ;
+  ioElementList += !typeName !constantName ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <for_instruction_enumerated_object>
+  !@abstractEnumeratedCollectionAST outEnumeratedObject
+:
+  $($ ;
+  @foreachInstructionEnumeratedObjectElementListAST elementList [emptyList] ;
+  @bool endsWithEllipsis ;
+  select
+    $...$ ;
+    endsWithEllipsis := true ;
+  or
+    repeat
+      <for_instruction_element> !?elementList ;
+    while
+      $,$ ;
+    end repeat ;
+    select
+      endsWithEllipsis := false ;
+    or
+      $...$ ;
+      endsWithEllipsis := true ;
+    end select ;
+  end select ;
+  $)$ ;
+  $in$ ;
+  <expression> ??@semanticExpressionAST enumeratedExpression ;
+  outEnumeratedObject := [@enumeratedCollectionCstListInExpAST new
+    !elementList
+    !endsWithEllipsis
+    !enumeratedExpression
+    !here
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <for_instruction_enumerated_object>
+  !@abstractEnumeratedCollectionAST outEnumeratedObject
+:
   $identifier$ ??@lstring enumerationVariable ;
   $in$ ;
   <expression> ??@semanticExpressionAST enumeratedExpression ;
-  const @abstractEnumeratedCollectionAST e := [@enumeratedCollectionVarInExpAST new
+  outEnumeratedObject := [@enumeratedCollectionVarInExpAST new
     !enumerationVariable
     !enumeratedExpression
     !here
   ] ;
-  ioForeachInstructionEnumeratedObjectList +=
-    !ascending
-    !e
-  ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <for_instruction_enumerated_object>
+  !@abstractEnumeratedCollectionAST outEnumeratedObject
+:
+  $*$ ;
+  $in$ ;
+  <expression> ??@semanticExpressionAST enumeratedExpression ;
+  @lstring prefix ;
+  select
+    prefix := ["" nowhere] ;
+  or
+    $:$ ;
+    $identifier$ ?prefix ;
+  end select ;
+  outEnumeratedObject := [@enumeratedCollectionImplicitVarInExpAST new
+    !prefix
+    !enumeratedExpression
+    !here
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -943,7 +1030,15 @@ rule <semantic_instruction>
   const instructionLocation := here ;
   @forInstructionEnumeratedObjectListAST mEnumeratedObjectList [emptyList] ;
   repeat
-    <new_foreach_enumerated_object> !?mEnumeratedObjectList ;
+    @bool ascending ;
+    select
+      ascending := true ;
+    or
+      $>$ ;
+      ascending := false ;
+    end select ;
+    <for_instruction_enumerated_object> ??@abstractEnumeratedCollectionAST enumeratedObject ;
+    mEnumeratedObjectList += !ascending !enumeratedObject ;
   while
     $,$ ;
   end repeat ;
@@ -1018,7 +1113,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#!--------------------------- IF instruction
+#! IF instruction
 
 #---------------------------------------------------------------------------*
 
@@ -1072,7 +1167,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#!---------------------------  Method call instruction
+#!  Method call instruction
 
 #------------------------------------------------------------------------------*
 
@@ -1107,7 +1202,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#!--------------------------- modifier call
+#! modifier call
 
 #---------------------------------------------------------------------------*
 
@@ -1146,7 +1241,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#!--------------------------- self modifier call
+#! self modifier call
 
 #---------------------------------------------------------------------------*
 
@@ -1176,7 +1271,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#!--------------------------- error instruction
+#! error instruction
 
 #---------------------------------------------------------------------------*
 
@@ -1215,7 +1310,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#!--------------------------- warning instruction
+#! warning instruction
 
 #---------------------------------------------------------------------------*
 
@@ -1242,7 +1337,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#!--------------------------- routine call
+#! routine call
 
 #---------------------------------------------------------------------------*
 
@@ -1268,7 +1363,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#!--------------------------- with
+#! with
 
 #---------------------------------------------------------------------------*
 
@@ -1377,7 +1472,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#!--------------------------- cast instruction
+#! cast instruction
 
 #---------------------------------------------------------------------------*
 
@@ -1477,7 +1572,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#!--------------------------- += instruction
+#! += instruction
 
 #---------------------------------------------------------------------------*
 
@@ -1523,7 +1618,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#!--------------------------- self += instruction
+#! self += instruction
 
 #---------------------------------------------------------------------------*
 
@@ -1566,7 +1661,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#!--------------------------- .= instruction
+#! .= instruction
 
 #---------------------------------------------------------------------------*
 
@@ -1602,7 +1697,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#!--------------------------- self .= instruction
+#! self .= instruction
 
 #---------------------------------------------------------------------------*
 
@@ -1629,7 +1724,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#!--------------------------- loop instruction
+#! loop instruction
 
 #---------------------------------------------------------------------------*
 
@@ -1679,7 +1774,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#!--------------------------- message instruction
+#! message instruction
 
 #---------------------------------------------------------------------------*
 
@@ -1703,7 +1798,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#!--------------------------- log instruction
+#! log instruction
 
 #---------------------------------------------------------------------------*
 
@@ -1740,7 +1835,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#!--------------------------- grammar instruction
+#! grammar instruction
 
 #---------------------------------------------------------------------------*
 
@@ -1827,7 +1922,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#!--------------------------- switch instruction
+#! switch instruction
 
 #---------------------------------------------------------------------------*
 
@@ -1873,7 +1968,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#!--------------------------- Input parameter list
+#! Input parameter list
 
 #---------------------------------------------------------------------------*
 
@@ -1920,7 +2015,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#!--------------------------- method call instruction
+#! method call instruction
 
 #---------------------------------------------------------------------------*
 

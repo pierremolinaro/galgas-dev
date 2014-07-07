@@ -345,7 +345,7 @@ routine checkAssignmentTypes
     ok := inTargetType == sourceType ;
   end loop ;
   if not ok then
-    error inErrorLocation : "target object type is '@" . [inTargetType key] . "' and cannot be assigned by an '@" . [inSourceType key] . "' object" ;
+    error inErrorLocation : "target object type is '@" . [inTargetType key] . "' and cannot be assigned from an '@" . [inSourceType key] . "' object" ;
   end if ;
 end routine ;
 
