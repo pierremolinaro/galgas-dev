@@ -230,7 +230,6 @@ rule <syntax_instruction>
     $:>$ ;
     <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationResult ;
   end select ;
-  $;$ ;
   outInstruction := [@nonterminalCallInstruction new
     ![mNonterminalName location]
     !mNonterminalName
@@ -523,7 +522,6 @@ rule <syntax_instruction>
   $send$ ;
   const instructionLocation := here ;
   <expression> ??@semanticExpressionAST sentExpression ;
-  $;$ ;
   outInstruction := [@syntaxSendInstruction new
     !instructionLocation
     !sentExpression

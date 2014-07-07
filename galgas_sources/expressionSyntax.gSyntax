@@ -597,14 +597,16 @@ end rule ;
 
 rule <primary> !@semanticExpressionAST outExpression :
   $identifier$ ? @lstring functionName indexing functionCall ;
-  $[$ ;
+  $[$ :> ?@string sep ?* ;
+  send sep . "(" ;
   @semanticExpressionListAST expressionList ;
   <output_expression_list> ?expressionList ;
   outExpression := [@functionCallExpressionAST new
     !functionName
     !expressionList
   ] ;
-  $]$ ;
+  $]$ :> ?sep ?* ;
+  send sep . ")" ;
 end rule ;
 
 #------------------------------------------------------------------------------*
