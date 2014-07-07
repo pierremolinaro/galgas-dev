@@ -587,15 +587,15 @@ end rule ;
 #                                                                              *
 #                         P R I M A R Y                                        *
 #                                                                              *
-#   function call        :   function_name [!... ]                             *
+#   function call        :   function_name (!... )                             *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression :
   $identifier$ ??@lstring functionName indexing functionCall ;
-  $[$ ;
+  $($ ;
   <output_expression_list> ??@semanticExpressionListAST expressionList ;
-  $]$ ;
+  $)$ ;
   outExpression := [@functionCallExpressionAST new
     !functionName
     !expressionList
