@@ -654,8 +654,25 @@ abstract class @abstractEnumeratedCollectionAST {
 
 #---------------------------------------------------------------------------*
 
+class @enumeratedCollectionImplicitVarInExpAST extends @abstractEnumeratedCollectionAST {
+  @lstring mPrefix ;
+  @semanticExpressionAST mEnumeratedExpression ;
+  @location mEndOfEnumerationExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @enumeratedCollectionVarInExpAST extends @abstractEnumeratedCollectionAST {
   @lstring mEnumerationVariable ;
+  @semanticExpressionAST mEnumeratedExpression ;
+  @location mEndOfEnumerationExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @enumeratedCollectionCstListInExpAST extends @abstractEnumeratedCollectionAST {
+  @foreachInstructionEnumeratedObjectElementListAST mElementList ;
+  @bool mEndsWithEllipsis ;
   @semanticExpressionAST mEnumeratedExpression ;
   @location mEndOfEnumerationExpression ;
 }

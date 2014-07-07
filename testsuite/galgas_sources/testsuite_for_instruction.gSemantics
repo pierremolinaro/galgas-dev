@@ -7,12 +7,11 @@ routine testsuite_for_instruction :
   strList += !"b" ;
   strList += !"c" ;
   strList += !"d" ;
-#  for s in strList  before
-  for s in strList 
+  for (s) in strList 
   before
     message "  before\n" ;
   do
-    message "  do '" . s->mValue . "'\n" ;
+    message "  do '" . s . "'\n" ;
   between
     message "  between\n" ;
   after
@@ -20,12 +19,12 @@ routine testsuite_for_instruction :
   end for ;
 
   message "--- begin of for instruction test 2\n" ;
-  for s in strList
+  for * in strList
   while false
   before
     message "  before\n" ;
   do
-    message "  do '" . s->mValue . "'\n" ;
+    message "  do '" . mValue . "'\n" ;
   between
     message "  between\n" ;
   after
@@ -34,12 +33,12 @@ routine testsuite_for_instruction :
 
   message "--- begin of for instruction test 3\n" ;
   @uint n := 0 ;
-  for s in strList
+  for * in strList : xyz_
   while n < 2
   before
     message "  before\n" ;
   do
-    message "  do '" . s->mValue . "', n: " . [n string] . "\n" ;
+    message "  do '" . xyz_mValue . "', n: " . [n string] . "\n" ;
     n ++ ;
   between
     message "  between\n" ;
@@ -92,7 +91,7 @@ routine testsuite_for_instruction :
   end for ;
 
   message "--- begin of for instruction test 8\n" ;
-  for s in reverse set do index idx
+  for > s in set do index idx
     message "  do '" . s . "' (idx: " . [idx string] . ")\n" ;
   end for ;
 

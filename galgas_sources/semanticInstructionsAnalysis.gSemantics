@@ -245,7 +245,7 @@ override method @localConstantDeclarationWithAssignmentAST analyzeSemanticInstru
   ] ;
 #--- Enter target variable
   const targetVariableCppName := "var_" . [mVariableName identifierRepresentation] ;
-    [!?ioVariableMap insertDefinedLocalVariable !mVariableName ![expression mType] !targetVariableCppName !targetVariableCppName] ;
+    [!?ioVariableMap insertLocalConstant !mVariableName ![expression mType] !targetVariableCppName !targetVariableCppName] ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@localVariableOrConstantDeclarationWithSourceExpressionForGeneration new
     ![expression mType]
@@ -1523,6 +1523,10 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+#! For instruction
+
+#---------------------------------------------------------------------------*
+
 abstract method @abstractEnumeratedCollectionAST analyzeEnumeration
   ??@analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
@@ -1530,6 +1534,99 @@ abstract method @abstractEnumeratedCollectionAST analyzeEnumeration
   !@string outEnumeratorCppName
   !@semanticExpressionForGeneration outEnumerationExpression
 ;
+
+#---------------------------------------------------------------------------*
+
+override method @enumeratedCollectionImplicitVarInExpAST analyzeEnumeration
+  ??@analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  ?!@localInitializedVariableList ioLocalConstantListForDoBranch
+  !@string outEnumeratorCppName
+  !@semanticExpressionForGeneration outEnumerationExpression
+:
+  [mEnumeratedExpression analyzeSemanticExpression
+    !inAnalysisContext
+    !?ioVariableMap
+    ?outEnumerationExpression
+  ] ;
+#--- Check object can be enumerated
+  outEnumeratorCppName := "enumerator_" . [[mEndOfEnumerationExpression locationIndex] string] ;
+  const enumerationDescriptorList := [[outEnumerationExpression mType] mEnumerationDescriptor] ;
+  if [enumerationDescriptorList length] == 0 then
+    error mEndOfEnumerationExpression : "an '@" . [[outEnumerationExpression mType] key] . "' object cannot be enumerated" ;
+  end if ;
+#--- Declare implicit constants
+  foreach enumerationDescriptorList do
+    ioLocalConstantListForDoBranch +=
+      !mEnumeratedType
+      ![@lstring new !mPrefix->string . mEnumerationName !mEndOfEnumerationExpression]
+      !outEnumeratorCppName . ".current_" . [mEnumerationName identifierRepresentation]. " (HERE)"
+    ;
+  end foreach ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
+  ??@analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  ?!@localInitializedVariableList ioLocalConstantListForDoBranch
+  !@string outEnumeratorCppName
+  !@semanticExpressionForGeneration outEnumerationExpression
+:
+  [mEnumeratedExpression analyzeSemanticExpression
+    !inAnalysisContext
+    !?ioVariableMap
+    ?outEnumerationExpression
+  ] ;
+#--- Check object can be enumerated
+  outEnumeratorCppName := "enumerator_" . [[mEndOfEnumerationExpression locationIndex] string] ;
+  const enumerationDescriptorList := [[outEnumerationExpression mType] mEnumerationDescriptor] ;
+  if [enumerationDescriptorList length] == 0 then
+    error mEndOfEnumerationExpression : "an '@" . [[outEnumerationExpression mType] key] . "' object cannot be enumerated" ;
+  else
+#--- Arguments
+    if ([mElementList length] == 0) & not mEndsWithEllipsis then
+      const currentTypedAttributeList := [[outEnumerationExpression mType] mEnumerationDescriptor] ;
+      foreach currentTypedAttributeList do 
+       [!?ioVariableMap insertUsedLocalConstant
+         ![@lstring new !mEnumerationName !mEndOfEnumerationExpression]
+         !mEnumeratedType
+         !outEnumeratorCppName .".current_" . [mEnumerationName identifierRepresentation] . " (HERE)"
+         !outEnumeratorCppName .".current_" . [mEnumerationName identifierRepresentation] . " (HERE)"
+       ] ;
+      end foreach ;
+    elsif (not mEndsWithEllipsis) & ([mElementList length] != [enumerationDescriptorList length]) then
+      error mEndOfEnumerationExpression
+      :"the '@" . [[outEnumerationExpression mType] key] . "' type requires "
+      . [[enumerationDescriptorList length] string] . " argument"
+      . if ([enumerationDescriptorList length] > 1) then "s" else "" end
+      . " for enumeration: this list provides "
+      . [[mElementList length] string]
+      ;
+    elsif (mEndsWithEllipsis) & ([mElementList length] > [enumerationDescriptorList length]) then
+      error mEndOfEnumerationExpression
+      :"the '@" . [[outEnumerationExpression mType] key] . "' type requires "
+      . [[enumerationDescriptorList length] string] . " argument"
+      . if ([enumerationDescriptorList length] > 1) then "s" else "" end
+      . " or less for enumeration: this list provides "
+      . [[mElementList length] string]
+      ;
+    else
+      foreach mElementList, enumerationDescriptorList do
+        if [mConstantName string] != "" then # Empty string if joker
+          if mTypeName->string != "" then
+            const foundType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
+            if foundType != mEnumeratedType then
+              error mTypeName : "incorrect '@" . [foundType key] . "' type: '@" . [mEnumeratedType key] . "' type required here" ;
+            end if ;
+          end if ;
+          ioLocalConstantListForDoBranch += !mEnumeratedType !mConstantName !outEnumeratorCppName . ".current_" . [mEnumerationName identifierRepresentation]. " (HERE)" ;
+        end if ;
+      end foreach ;
+    end if ;
+  end if ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
@@ -1593,7 +1690,6 @@ override method @forInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap closeOverride !mEndOf_between_branch] ;
 #--- 'after' branch
   [!?ioVariableMap openOverrideForRepeatBlock] ;
-  @semanticInstructionListForGeneration after_instructionList ;
   analyzeSemanticInstructionList
     !inAnalysisContext
     ![@localConstantList emptyList]
@@ -1601,7 +1697,7 @@ override method @forInstructionAST analyzeSemanticInstruction
     !mAfterInstructionList
     !mEndOf_after_branch
     !?ioVariableMap
-    ?after_instructionList
+    ??@semanticInstructionListForGeneration after_instructionList
   ;
   [!?ioVariableMap closeOverride !mEndOf_after_branch] ;
 #--- Analyze enumerated objects
