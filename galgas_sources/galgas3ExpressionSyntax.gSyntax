@@ -304,7 +304,7 @@ end rule ;
 #------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression :
-  $selfcopy$ ;
+  $self$ ;
   outExpression := [@selfCopyInExpressionAST new !here] ;
 end rule ;
 
