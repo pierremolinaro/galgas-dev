@@ -1,0 +1,297 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Copyright (C) 2014, ..., 2014 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+semantics galgas3SemanticDeclarationCompilation :
+import "optionTypesForAST.gSemantics" ;
+import "semanticAnalysis.gSemantics" ;
+import "predefinedTypes.gSemantics" ;
+
+#---------------------------------------------------------------------------*
+
+routine compileSemanticDeclarations
+  ??@string inProjectSourceFile
+  ??@location inEndOfProjectSourceFile
+  ??@semanticDeclarationListAST inSemanticDeclarationList
+  ??@galgas3OptionComponentListAST inOptionComponentList
+  ??@galgas3LexiqueComponentListAST inLexiqueComponentList
+  ??@galgas3GrammarComponentListAST inGrammarComponentList
+:
+  message "** Building context\n" ;
+#------ Add predefined types to semantics declarations
+  @semanticDeclarationListAST semanticDeclarationListWithPredefinedTypes := inSemanticDeclarationList ;
+  appendPredefinedTypesASTs !?semanticDeclarationListWithPredefinedTypes ;
+#------ Build semantic context
+  buildGalgas3SemanticContext
+    !inProjectSourceFile
+    !semanticDeclarationListWithPredefinedTypes
+    !inEndOfProjectSourceFile
+    ?@semanticContext semanticContext
+  ;
+#------ Build option component map for analysis
+  buildGalgas3OptionComponentMapForSemanticAnalysis
+    !inOptionComponentList
+    !?semanticContext->mOptionComponentMapForSemanticAnalysis
+  ;
+#--- Build lexique component map for semantic analysis
+  foreach inLexiqueComponentList do
+    [!?semanticContext->mLexiqueComponentMapForSemanticAnalysis insertKey !mLexiqueComponentName] ;
+  end foreach ;
+#------ Perform semantic analysis of grammar components
+  buildGalgas3GrammarComponentMapForSemanticAnalysis
+    !inGrammarComponentList
+    !?semanticContext
+  ;
+#------ Semantic Analysis
+  message "** Semantic analysis\n" ;
+  performSemanticAnalysis
+    !inSemanticDeclarationList
+    !semanticContext
+    ??@semanticDeclarationSortedListForGeneration decoratedDeclarationListForGeneration
+  ;
+#--- Generate type files
+#  const productDirectory := [inProjectSourceFile stringByDeletingPathExtension] . "/build/output/" ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine buildGalgas3GrammarComponentMapForSemanticAnalysis
+  ??@galgas3GrammarComponentListAST inGrammarComponentList
+  ?!@semanticContext ioSemanticContext
+:
+#--- Perform semantic analysis of grammar components
+  foreach inGrammarComponentList do
+  #--- Analyze start symbol labels
+    @grammarLabelMap grammarLabelMap [emptyMap] ;
+    foreach mStartSymbolLabelList do
+    #--- Analyze signature
+      @formalParameterSignature formalArgumentList [emptyList] ;
+      foreach mFormalArgumentList do
+        formalArgumentList +=
+          ![@unifiedTypeMapProxy searchKey !ioSemanticContext->mTypeMap !mFormalArgumentTypeName]
+          !mFormalArgumentPassingMode
+          !mFormalArgumentName->string
+        ;
+      end foreach ;
+      [!?grammarLabelMap insertKey
+        !mLabelName
+        !formalArgumentList
+      ] ;
+    end foreach ;
+  #--- Insert grammar in grammar map
+    [!?ioSemanticContext->mGrammarMap insertGrammar
+      !mGrammarComponentName
+      !grammarLabelMap
+      !mHasIndexing->bool
+      !mHasTranslateFeature
+    ] ;
+  end foreach ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    B U I L D    S E M A N T I C    C O N T E X T                          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine buildGalgas3SemanticContext
+  ??@string inProjectSourceFile
+  ??@semanticDeclarationListAST inSemanticDeclarationList
+  ??@location inEndOfProjectSourceFile
+  !@semanticContext outSemanticContext
+:
+#------ Create associated type (@TYPE.element) for lists, maps, ...
+  @semanticDeclarationListAST semanticDeclarationList := inSemanticDeclarationList ;
+  foreach inSemanticDeclarationList do
+    [mSemanticDeclaration addAssociatedElement !?semanticDeclarationList] ;
+  end foreach ;
+#------ Build ordered types list, so that
+#  - a class appears after its super class
+#  - a map index appears after its associated map
+#  - a list map appears after its associated list
+  @semanticTypePrecedenceGraph semanticTypePrecedenceGraph [emptyGraph] ;
+  @categoryMethodMapForBuildingContext categoryMethodMapForBuildingContext [emptyMap] ;
+  @categoryReaderMapForBuildingContext categoryReaderMapForBuildingContext  [emptyMap] ;
+  @categoryModifierMapForBuildingContext categoryModifierMapForBuildingContext  [emptyMap] ;
+  @semanticDeclarationListAST categoryOverrideDefinitionList [emptyList] ;
+  foreach semanticDeclarationList do
+    [mSemanticDeclaration enterDeclarationInGraph
+      !?semanticTypePrecedenceGraph
+      !?categoryMethodMapForBuildingContext
+      !?categoryReaderMapForBuildingContext
+      !?categoryModifierMapForBuildingContext
+      !?categoryOverrideDefinitionList
+    ] ;  
+  end foreach ;
+  if [semanticTypePrecedenceGraph undefinedNodeCount] > 0 then
+    foreach [semanticTypePrecedenceGraph undefinedNodeReferenceList] do
+      error mValue : "the '" . mValue . "' type is not defined" ;
+    end foreach ;
+    error inEndOfProjectSourceFile : "semantic analysis not performed, due to undefined type error(s)" : outSemanticContext ;
+  else
+    [semanticTypePrecedenceGraph topologicalSort
+      ?@semanticDeclarationListAST sortedSemanticDeclarationListAST
+      ?*
+      ?@semanticDeclarationListAST unsortedSemanticDeclarationListAST
+      ?@lstringlist unsortedNodeKeyList
+    ] ;
+    if [unsortedSemanticDeclarationListAST length] > 0 then
+      @string s := "semantic analysis not performed, " . [[unsortedSemanticDeclarationListAST length] string] . " declarations are involved in circular definition:" ;
+      foreach unsortedSemanticDeclarationListAST do
+        s .= "\n-  " . [mSemanticDeclaration keyRepresentation] ;
+      end foreach ;
+      error inEndOfProjectSourceFile : s : outSemanticContext ;
+    else
+    #--- Add category override
+      sortedSemanticDeclarationListAST .= categoryOverrideDefinitionList ;
+    #--- Build initial semantic context
+      outSemanticContext := [@semanticContext new
+        !inProjectSourceFile
+        ![@unifiedTypeMap emptyMap]
+        ![@routineMap emptyMap]
+        ![@functionMap emptyMap]
+        ![@filewrapperMap emptyMap]
+        ![@grammarMap emptyMap]
+        ![@optionComponentMapForSemanticAnalysis emptyMap]
+        ![@lexiqueComponentMapForSemanticAnalysis emptyMap]
+        ![@optionMapForSemanticAnalysis emptyMap]
+      ] ;
+    #--- Loop throught all declarations
+      foreach sortedSemanticDeclarationListAST do
+        [mSemanticDeclaration enterInSemanticContext
+          !categoryMethodMapForBuildingContext
+          !categoryReaderMapForBuildingContext
+          !categoryModifierMapForBuildingContext
+          !?outSemanticContext
+        ] ;
+      end foreach ;
+    end if ;
+  end if ;
+#--- Generate graphviz file
+#  const graphvizText := [semanticTypePrecedenceGraph graphviz] ;
+#  const graphvizFilePath := [inProjectSourceFile stringByDeletingPathExtension] . "+type-precedence.dot" ;
+#  [graphvizText writeToFileWhenDifferentContents !graphvizFilePath ?*] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine buildGalgas3OptionComponentMapForSemanticAnalysis
+  ??@galgas3OptionComponentListAST inOptionComponentList
+  ?!@optionComponentMapForSemanticAnalysis ioOptionComponentMapForSemanticAnalysis
+:
+  foreach inOptionComponentList do
+    var boolOptionMap := [@commandLineOptionMap emptyMap] ;
+    var uintOptionMap := [@commandLineOptionMap emptyMap] ;
+    var stringOptionMap := [@commandLineOptionMap emptyMap] ;
+    @stringset optionNameSet [emptySet] ;
+    foreach mOptions do
+      if [optionNameSet hasKey ![mOptionInternalName string]] then
+        error mOptionInternalName: "the '" + [mOptionInternalName string] + "' command line option has been already declared" ;
+      elsif [mOptionTypeName string] == "bool" then
+        [!?boolOptionMap insertKey
+          !mOptionInternalName
+          ![mOptionInvocationLetter char]
+          ![mOptionInvocationString string]
+          ![mOptionComment string]
+          !"false"
+        ] ;
+        if mOptionDefaultValueKind != [@optionDefaultValueEnumAST noDefaultValue] then
+          error mOptionDefaultValue:"an @bool option cannot have a default value (default value is allways false)" ;      
+        end if ;
+      elsif [mOptionTypeName string] == "uint" then
+        [!?uintOptionMap insertKey
+          !mOptionInternalName
+          ![mOptionInvocationLetter char]
+          ![mOptionInvocationString string]
+          ![mOptionComment string]
+          !if [mOptionDefaultValue string] == "" then "0" else [mOptionDefaultValue string] end
+        ] ;
+        if mOptionDefaultValueKind == [@optionDefaultValueEnumAST stringDefaultValue] then
+          error mOptionDefaultValue:"an @uint option default value cannot be an @string value" ;      
+        end if ;
+      elsif [mOptionTypeName string] == "string" then
+        [!?stringOptionMap insertKey
+          !mOptionInternalName
+          ![mOptionInvocationLetter char]
+          ![mOptionInvocationString string]
+          ![mOptionComment string]
+          ![mOptionDefaultValue string]
+        ] ;
+        if mOptionDefaultValueKind == [@optionDefaultValueEnumAST unsignedDefaultValue] then
+          error mOptionDefaultValue:"an @string option default value cannot be an @uint value" ;      
+        end if ;
+      else
+        error mOptionTypeName: "only the @bool, @uint or @string types are allowed here" ;
+      end if ;
+      optionNameSet += ![mOptionInternalName string] ;
+    end foreach ;
+    [!?ioOptionComponentMapForSemanticAnalysis insertKey
+      !mOptionComponentName
+      !boolOptionMap
+      !uintOptionMap
+      !stringOptionMap
+    ] ;
+  end foreach ;
+#--- Add predefined option component
+  if not [ioOptionComponentMapForSemanticAnalysis hasKey !"galgas_builtin_options"] then
+    @2stringlist optionNameList := [@application boolOptionNameList] ;
+    @commandLineOptionMap boolOptionMap [emptyMap] ;
+    foreach optionNameList do
+      [!?boolOptionMap insertKey
+        ![@lstring new !mValue1 !here]
+        ![@application boolOptionInvocationLetter !mValue0 !mValue1]
+        ![@application boolOptionInvocationString !mValue0 !mValue1]
+        ![@application boolOptionCommentString !mValue0 !mValue1]
+        !"" # Not used
+      ] ;
+    end foreach ;
+  #--- 
+    optionNameList := [@application uintOptionNameList] ;
+    @commandLineOptionMap uintOptionMap [emptyMap] ;
+    foreach optionNameList do
+      [!?uintOptionMap insertKey
+        ![@lstring new !mValue1 !here]
+        ![@application uintOptionInvocationLetter !mValue0 !mValue1]
+        ![@application uintOptionInvocationString !mValue0 !mValue1]
+        ![@application uintOptionCommentString !mValue0 !mValue1]
+        !"" # Not used
+      ] ;
+    end foreach ;
+  #--- 
+    optionNameList := [@application stringOptionNameList] ;
+    @commandLineOptionMap stringOptionMap [emptyMap] ;
+    foreach optionNameList do
+      [!?stringOptionMap insertKey
+        ![@lstring new !mValue1 !here]
+        ![@application stringOptionInvocationLetter !mValue0 !mValue1]
+        ![@application stringOptionInvocationString !mValue0 !mValue1]
+        ![@application stringOptionCommentString !mValue0 !mValue1]
+        !"" # Not used
+      ] ;
+    end foreach ;
+  #---
+    [!?ioOptionComponentMapForSemanticAnalysis insertKey
+      ![@lstring new !"galgas_builtin_options" !here]
+      !boolOptionMap
+      !uintOptionMap
+      !stringOptionMap
+    ] ;
+  end if ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+end semantics ;

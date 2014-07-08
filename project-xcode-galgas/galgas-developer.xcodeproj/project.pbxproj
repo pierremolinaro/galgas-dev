@@ -165,6 +165,8 @@
 		CF4A264E10A9832B00A2A903 /* grammarLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4A264910A9832B00A2A903 /* grammarLL1grammar.cpp */; };
 		CF51F02315C9200E00387A48 /* PMDebug.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF51F02115C9200E00387A48 /* PMDebug.xib */; };
 		CF51F02715C9201800387A48 /* PMDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = CF51F02615C9201800387A48 /* PMDebug.m */; };
+		CF5283B2196C1C9A0010D0B7 /* galgas3SemanticDeclarationCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5283B0196C1C9A0010D0B7 /* galgas3SemanticDeclarationCompilation.cpp */; };
+		CF5283B3196C1C9A0010D0B7 /* galgas3SemanticDeclarationCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5283B0196C1C9A0010D0B7 /* galgas3SemanticDeclarationCompilation.cpp */; };
 		CF5610A5137B32C30007E1BC /* typeComparisonResult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5610A2137B32C30007E1BC /* typeComparisonResult.cpp */; };
 		CF5610A6137B32C30007E1BC /* typeComparisonResult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5610A2137B32C30007E1BC /* typeComparisonResult.cpp */; };
 		CF5719C81275901A00AAB8BF /* templateAnalysis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5719C01275901A00AAB8BF /* templateAnalysis.cpp */; };
@@ -663,6 +665,8 @@
 		CF51F02215C9200E00387A48 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/PMDebug.xib; sourceTree = "<group>"; };
 		CF51F02515C9201800387A48 /* PMDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PMDebug.h; sourceTree = "<group>"; };
 		CF51F02615C9201800387A48 /* PMDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PMDebug.m; sourceTree = "<group>"; };
+		CF5283B0196C1C9A0010D0B7 /* galgas3SemanticDeclarationCompilation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = galgas3SemanticDeclarationCompilation.cpp; sourceTree = "<group>"; };
+		CF5283B1196C1C9A0010D0B7 /* galgas3SemanticDeclarationCompilation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = galgas3SemanticDeclarationCompilation.h; sourceTree = "<group>"; };
 		CF5610A2137B32C30007E1BC /* typeComparisonResult.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = typeComparisonResult.cpp; sourceTree = "<group>"; };
 		CF5719C01275901A00AAB8BF /* templateAnalysis.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = templateAnalysis.cpp; sourceTree = "<group>"; };
 		CF5719C11275901A00AAB8BF /* templateAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = templateAnalysis.h; sourceTree = "<group>"; };
@@ -1208,6 +1212,8 @@
 		CF0955DD196895F700162C60 /* galgas3 File */ = {
 			isa = PBXGroup;
 			children = (
+				CF5283B0196C1C9A0010D0B7 /* galgas3SemanticDeclarationCompilation.cpp */,
+				CF5283B1196C1C9A0010D0B7 /* galgas3SemanticDeclarationCompilation.h */,
 				CF697C4E19695B8F002DFCE1 /* galgas3Scanner-cocoa.h */,
 				CF697C4F19695B8F002DFCE1 /* galgas3Scanner-cocoa.m */,
 				CF697C4A19695B66002DFCE1 /* galgas3Scanner.cpp */,
@@ -2396,6 +2402,7 @@
 				CF5DF68F114D36E900B96CB0 /* semanticAnalysis.cpp in Sources */,
 				CFE4FC1B114E4C9000DB2D43 /* semanticGeneration.cpp in Sources */,
 				CFBC4D0B1152370D006CAD14 /* projectGlobalCheckings.cpp in Sources */,
+				CF5283B2196C1C9A0010D0B7 /* galgas3SemanticDeclarationCompilation.cpp in Sources */,
 				CFBC4D1311523723006CAD14 /* semanticContext.cpp in Sources */,
 				CFB6B6DC1160D26100604D8C /* predefinedTypes.cpp in Sources */,
 				CFFA4049118CAEC300E56DE2 /* semanticInstructionsAnalysis.cpp in Sources */,
@@ -2603,6 +2610,7 @@
 				CF5DF690114D36E900B96CB0 /* semanticAnalysis.cpp in Sources */,
 				CFE4FC1C114E4C9000DB2D43 /* semanticGeneration.cpp in Sources */,
 				CFBC4D0C1152370D006CAD14 /* projectGlobalCheckings.cpp in Sources */,
+				CF5283B3196C1C9A0010D0B7 /* galgas3SemanticDeclarationCompilation.cpp in Sources */,
 				CFBC4D1411523723006CAD14 /* semanticContext.cpp in Sources */,
 				CFB6B6DD1160D26100604D8C /* predefinedTypes.cpp in Sources */,
 				CFFA404A118CAEC300E56DE2 /* semanticInstructionsAnalysis.cpp in Sources */,

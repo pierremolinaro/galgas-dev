@@ -3598,11 +3598,6 @@ routine buildSemanticContext
       ?@semanticDeclarationListAST unsortedSemanticDeclarationListAST
       ?@lstringlist unsortedNodeKeyList
     ] ;
-  #    @string s := "--- Sorted declarations:\n" ;
-  #    foreach sortedSemanticDeclarationListAST do
-  #      [mSemanticDeclaration display !?s] ;
-  #    end foreach ;
-  #    message s ;
     if [unsortedSemanticDeclarationListAST length] > 0 then
       @string s := "semantic analysis not performed, " . [[unsortedSemanticDeclarationListAST length] string] . " declarations are involved in circular definition:" ;
       foreach unsortedSemanticDeclarationListAST do

@@ -154,6 +154,8 @@ project all_galgas (2:6:0) -> "galgas" :
   syntax "galgas3ProgramDeclarations.gSyntax" ;
   grammar "galgas3Grammar.gGrammar" ;
 
+  semantics "galgas3SemanticDeclarationCompilation.gSemantics" ;
+ 
   semantics "galgas3OptionComponentCompilation.gSemantics" ;
 
   semantics "galgas3LexiqueComponentCompilation.gSemantics" ;
