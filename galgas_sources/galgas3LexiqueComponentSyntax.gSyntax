@@ -22,7 +22,7 @@ import "semanticsTypesForAST.gSemantics" ;
 #---------------------------------------------------------------------------*
 
 rule <declaration>
- ?!@semanticDeclarationListAST ioDeclarations
+ ?!@galgas3DeclarationAST ioDeclarations
 :
   @bool isTemplate ;
   select
@@ -90,7 +90,7 @@ rule <declaration>
     $;$ ;
   end repeat ;
   $end$ ;
-  ioDeclarations += ![@galgas3LexiqueComponentAST new
+  ioDeclarations->mLexiqueComponentList +=
     !lexiqueComponentName
     !isTemplate
     !templateDelimitorList
@@ -105,7 +105,7 @@ rule <declaration>
     !externFunctionList
     !indexingListAST
     !indexingDirectory
-  ] ;
+  ;
 end rule ;
 
 #---------------------------------------------------------------------------*

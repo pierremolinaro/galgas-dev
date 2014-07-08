@@ -20,43 +20,4 @@ import "semanticAnalysis.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
-override method @galgas3GrammarComponentAST semanticAnalysis
-  ??@semanticContext unused inSemanticContext
-  ??@predefinedTypes unused inPredefinedTypes
-  ?!@semanticDeclarationSortedListForGeneration unused ioSemanticDeclarationListForGeneration
-:
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @galgas3GrammarComponentAST enterInSemanticContext
-  ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-  ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
-  ??@categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
-  ?!@semanticContext unused ioSemanticContext
-:
-
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @galgas3GrammarComponentAST enterDeclarationInGraph
-  ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
-  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
-  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
-  ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
-:
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override reader @galgas3GrammarComponentAST keyRepresentation
-  ->@string outString
-:
-  outString := "grammar " . mGrammarComponentName ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
 end semantics ;

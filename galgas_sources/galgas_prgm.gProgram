@@ -519,11 +519,11 @@ message "a GALGAS project source file"
 indexing with galgas3ProjectGrammar
 ??@lstring inSourceFile {
   grammar galgas3ProjectGrammar in inSourceFile ??@galgas3ProjectComponentAST projectComponentAST ;
-  var declarationList := [@semanticDeclarationListAST emptyList] ; 
+  var declarationAST := [@galgas3DeclarationAST default] ; 
   foreach projectComponentAST->mProjectSourceList do
     if [mValue pathExtension] == "galgas" then
       const absoluteSourcePath := [mValue absolutePathFromPath ![inSourceFile stringByDeletingLastPathComponent]] ;
-      grammar galgas3Grammar in [@lstring new !absoluteSourcePath !mValue->location] !?declarationList ;
+      grammar galgas3Grammar in [@lstring new !absoluteSourcePath !mValue->location] !?declarationAST ;
     end if ;
   end foreach ;
 }
@@ -538,8 +538,8 @@ when . "galgas"
 message "a GALGAS source file"
 indexing with projectLL1grammar
 ??@lstring inSourceFile {
-  var declarationList := [@semanticDeclarationListAST emptyList] ; 
-  grammar galgas3Grammar in inSourceFile !?declarationList ;
+  var declaration := [@galgas3DeclarationAST default] ; 
+  grammar galgas3Grammar in inSourceFile !?declaration ;
 }
 
 #---------------------------------------------------------------------------*

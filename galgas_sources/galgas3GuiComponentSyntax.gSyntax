@@ -25,7 +25,7 @@ syntax galgas3GuiComponentSyntax ("galgas3Scanner.gLexique") :
 #---------------------------------------------------------------------------*
 
 rule <declaration>
- ?!@semanticDeclarationListAST ioDeclarations
+ ?!@galgas3DeclarationAST ioDeclarations
 :
   $gui$ ;
   $identifier$ ?@lstring mGUIName ;
@@ -129,13 +129,13 @@ rule <declaration>
   end repeat ;
 #---
   $end$ ;
-  ioDeclarations += ![@galgas3GUIComponentAST new
+  ioDeclarations->mGUIComponentList +=
     !mGUIName
     !mGUIClass
     !importedOptionList
     !simpleGlobalAttributes
     !withLexiqueList
-  ] ;
+  ;
 end rule ;
 
 #---------------------------------------------------------------------------*

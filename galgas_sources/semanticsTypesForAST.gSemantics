@@ -1713,14 +1713,18 @@ struct @syntaxComponentAST {
 
 #---------------------------------------------------------------------------*
 
-class @galgas3OptionComponentAST extends @semanticDeclarationAST {
+#! GALGAS 3 AST
+
+#---------------------------------------------------------------------------*
+
+list @galgas3OptionComponentListAST {
   @lstring mOptionComponentName  ;
   @commandLineOptionListAST mOptions  ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @galgas3LexiqueComponentAST extends @semanticDeclarationAST {
+list @galgas3LexiqueComponentListAST {
   @lstring mLexiqueComponentName  ;
   @bool mIsTemplate ;
   @metamodelTemplateDelimitorListAST mTemplateDelimitorList ;
@@ -1739,7 +1743,7 @@ class @galgas3LexiqueComponentAST extends @semanticDeclarationAST {
 
 #---------------------------------------------------------------------------*
 
-class @galgas3GUIComponentAST extends @semanticDeclarationAST {
+list @galgas3GUIComponentListAST {
   @lstring mGUIComponentName  ;
   @lstring mGUIClass ;
   @lstringlist mImportedOptionList ;
@@ -1749,7 +1753,7 @@ class @galgas3GUIComponentAST extends @semanticDeclarationAST {
 
 #---------------------------------------------------------------------------*
 
-class @galgas3SyntaxComponentAST extends @semanticDeclarationAST {
+list @galgas3SyntaxComponentListAST {
   @lstring mSyntaxComponentName ;
   @lstring mImportedLexiqueFilePath ; 
   @nonterminalDeclarationListAST mNonterminalDeclarationList ;
@@ -1760,7 +1764,7 @@ class @galgas3SyntaxComponentAST extends @semanticDeclarationAST {
 
 #---------------------------------------------------------------------------*
 
-class @galgas3GrammarComponentAST extends @semanticDeclarationAST {
+list @galgas3GrammarComponentListAST {
   @lbool mHasIndexing ;
   @lstring mGrammarComponentName ;
   @lstring mGrammarClass ;
@@ -1774,21 +1778,21 @@ class @galgas3GrammarComponentAST extends @semanticDeclarationAST {
 
 #---------------------------------------------------------------------------*
 
-class @galgas3PrologueDeclarationAST extends @semanticDeclarationAST {
+list @galgas3PrologueDeclarationListAST {
   @semanticInstructionListAST mInstructionList ;
   @location mEndOfInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @galgas3EpilogueDeclarationAST extends @semanticDeclarationAST {
+list @galgas3EpilogueDeclarationListAST {
   @semanticInstructionListAST mInstructionList ;
   @location mEndOfInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
 
-class @galgas3SourceRuleDeclarationAST extends @semanticDeclarationAST {
+list @galgas3SourceRuleDeclarationListAST {
   @lstring mSourceFileExtension ;
   @lstring mSourceFileHelp ;
   @lstring mSourceFileVariableName ;
@@ -1796,6 +1800,20 @@ class @galgas3SourceRuleDeclarationAST extends @semanticDeclarationAST {
   @lstring mIndexingGrammar ; # Empty string if no indexing
   @semanticInstructionListAST mInstructionList ;
   @location mEndOfInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+struct @galgas3DeclarationAST {
+  @semanticDeclarationListAST mSemanticDeclarationList ;
+  @galgas3LexiqueComponentListAST mLexiqueComponentList ;
+  @galgas3SyntaxComponentListAST mSyntaxComponentList ;
+  @galgas3GrammarComponentListAST mGrammarComponentList ;
+  @galgas3GUIComponentListAST mGUIComponentList ;
+  @galgas3OptionComponentListAST mOptionComponentList ;
+  @galgas3SourceRuleDeclarationListAST mSourceRuleList ;
+  @galgas3PrologueDeclarationListAST mPrologueDeclarationList ;
+  @galgas3EpilogueDeclarationListAST mEpilogueDeclarationList ;
 }
 
 #---------------------------------------------------------------------------*
