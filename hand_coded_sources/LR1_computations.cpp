@@ -1,10 +1,10 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//     Routines for LR(1) grammar computations                               *
+//     Routines for LR(1) grammar computations                                 *
 //                                                                             *
-//  Copyright (C) 2002, ..., 2010 Pierre Molinaro.                             *
+//  Copyright (C) 2002, ..., 2014 Pierre Molinaro.                             *
 //                                                                             *
-//  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+//  e-mail : molinaro@irccyn.ec-nantes.fr                                      *
 //                                                                             *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
 //  ECN, École Centrale de Nantes (France)                                     *
@@ -36,7 +36,7 @@
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//    C L A S S    F O R   L R 1    I T E M                                  *
+//    C L A S S    F O R   L R 1    I T E M                                    *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -1525,13 +1525,13 @@ generate_LR1_grammar_cpp_file (C_Compiler * inCompiler,
           parametre.gotoNextObject () ;
           numeroParametre ++ ;
         }
-        generatedZone3 << "      }\n"
-                          "      macroDetachSharedObject (scanner) ;\n"
-                          "    }else{\n"
-                          "      C_String message ;\n"
-                          "      message << \"the '\" << filePath << \"' file does not exist\" ;\n"
-                          "      const GALGAS_location errorLocation (inFilePath.reader_location (THERE)) ;\n"
-                          "      inCompiler->semanticErrorAtLocation (errorLocation, message COMMA_THERE) ;\n" ;
+        generatedZone3 << "        }\n"
+                          "        macroDetachSharedObject (scanner) ;\n"
+                          "      }else{\n"
+                          "        C_String message ;\n"
+                          "        message << \"the '\" << filePath << \"' file does not exist\" ;\n"
+                          "        const GALGAS_location errorLocation (inFilePath.reader_location (THERE)) ;\n"
+                          "        inCompiler->semanticErrorAtLocation (errorLocation, message COMMA_THERE) ;\n" ;
          parametre.rewind () ;
         numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
