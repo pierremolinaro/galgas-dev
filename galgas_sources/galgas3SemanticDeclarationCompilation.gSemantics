@@ -19,6 +19,7 @@ semantics galgas3SemanticDeclarationCompilation :
 import "optionTypesForAST.gSemantics" ;
 import "semanticAnalysis.gSemantics" ;
 import "predefinedTypes.gSemantics" ;
+import "semanticsCompilation.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
@@ -40,6 +41,7 @@ routine compileSemanticDeclarations
     !semanticDeclarationListWithPredefinedTypes
     !inEndOfProjectSourceFile
     ?@semanticContext semanticContext
+    ??@semanticDeclarationListAST sortedSemanticDeclarationListAST
   ;
 #------ Build option component map for analysis
   buildGalgas3OptionComponentMapForSemanticAnalysis
@@ -57,13 +59,88 @@ routine compileSemanticDeclarations
   ;
 #------ Semantic Analysis
   message "** Semantic analysis\n" ;
-  performSemanticAnalysis
-    !inSemanticDeclarationList
-    !semanticContext
-    ??@semanticDeclarationSortedListForGeneration decoratedDeclarationListForGeneration
-  ;
+#  performSemanticAnalysis
+#    !sortedSemanticDeclarationListAST
+#    !semanticContext
+#    ??@semanticDeclarationSortedListForGeneration decoratedDeclarationListForGeneration
+#  ;
+#------ Check there is no undefined types
+  foreach [semanticContext->mTypeMap unsolvedProxyList] do
+    error mValue : "the '" . mValue . "' type is undefined" ;
+  end foreach ;
+#------ Create associated type (@TYPE:element) for lists, maps, ...
+#  @semanticDeclarationListAST semanticDeclarationList := inDeclarationList ;
+#  foreach inDeclarationList do
+#    [mSemanticDeclaration addAssociatedElement !?semanticDeclarationList] ;
+#  end foreach ;
+#---
+  var decoratedDeclarationListForGeneration := [@semanticDeclarationSortedListForGeneration emptySortedList] ;
+  if [@uint errorCount] == 0 then
+    const @predefinedTypes predefinedTypes := buildPredefinedTypes [!semanticContext] ;
+    foreach sortedSemanticDeclarationListAST do
+      [mSemanticDeclaration semanticAnalysis
+        !semanticContext
+        !predefinedTypes
+        !?decoratedDeclarationListForGeneration
+      ] ;
+    end foreach ;
+  end if ;
 #--- Generate type files
-#  const productDirectory := [inProjectSourceFile stringByDeletingPathExtension] . "/build/output/" ;
+  message "** Generating files\n" ;
+  const productDirectory := [inProjectSourceFile stringByDeletingLastPathComponent] . "/build/output/" ;
+#------ Generate Header File
+  if [@uint errorCount] == 0 then
+    @stringlist typeList [emptyList] ;
+    foreach decoratedDeclarationListForGeneration do
+      if not mIsPredefined then
+        [mDeclaration addCppTypeForPredeclarationInHeaderFile !?typeList] ;
+      end if ;
+    end foreach ;
+    var headerString := [filewrapper semanticFileGenerationTemplate.semanticFileHeader
+      !"AZERTYUIOP"
+      ![@stringlist emptyList]
+      !typeList
+    ] ;
+    foreach decoratedDeclarationListForGeneration do
+      if not mIsPredefined then
+        headerString .= [mDeclaration appendDeclaration1] ;
+      end if ;
+    end foreach ;
+    foreach decoratedDeclarationListForGeneration do
+      if not mIsPredefined then
+        headerString .= [mDeclaration appendDeclaration2 !productDirectory] ;
+      end if ;
+    end foreach ;
+    [@string generateFileWithPattern
+      !productDirectory
+      !"AZERTYUIOP.h"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      !headerString
+      !"\n\n" # Defaut user zone2
+      !"#endif\n"
+    ] ;
+  end if ;
+#------ Generate Implementation File
+  if [@uint errorCount] == 0 then
+    @string implementationString := [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
+      !"AZERTYUIOP"
+      ![@stringlist emptyList]
+    ] ;
+    foreach decoratedDeclarationListForGeneration do
+      implementationString .= [mDeclaration appendSpecificImplementation] ;
+      implementationString .= [mDeclaration appendTypeGenericImplementation] ;
+    end foreach ;
+    [@string generateFileWithPattern
+      !productDirectory
+      !"AZERTYUIOP.cpp"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      !implementationString
+      !"\n\n" # Defaut user zone2
+      !"\n"
+    ] ;
+  end if ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -112,6 +189,7 @@ routine buildGalgas3SemanticContext
   ??@semanticDeclarationListAST inSemanticDeclarationList
   ??@location inEndOfProjectSourceFile
   !@semanticContext outSemanticContext
+  !@semanticDeclarationListAST outSortedSemanticDeclarationListAST
 :
 #------ Create associated type (@TYPE.element) for lists, maps, ...
   @semanticDeclarationListAST semanticDeclarationList := inSemanticDeclarationList ;
@@ -140,10 +218,10 @@ routine buildGalgas3SemanticContext
     foreach [semanticTypePrecedenceGraph undefinedNodeReferenceList] do
       error mValue : "the '" . mValue . "' type is not defined" ;
     end foreach ;
-    error inEndOfProjectSourceFile : "semantic analysis not performed, due to undefined type error(s)" : outSemanticContext ;
+    error inEndOfProjectSourceFile : "semantic analysis not performed, due to undefined type error(s)" : outSemanticContext, outSortedSemanticDeclarationListAST ;
   else
     [semanticTypePrecedenceGraph topologicalSort
-      ?@semanticDeclarationListAST sortedSemanticDeclarationListAST
+      ?outSortedSemanticDeclarationListAST
       ?*
       ?@semanticDeclarationListAST unsortedSemanticDeclarationListAST
       ?@lstringlist unsortedNodeKeyList
@@ -156,7 +234,7 @@ routine buildGalgas3SemanticContext
       error inEndOfProjectSourceFile : s : outSemanticContext ;
     else
     #--- Add category override
-      sortedSemanticDeclarationListAST .= categoryOverrideDefinitionList ;
+      outSortedSemanticDeclarationListAST .= categoryOverrideDefinitionList ;
     #--- Build initial semantic context
       outSemanticContext := [@semanticContext new
         !inProjectSourceFile
@@ -170,7 +248,7 @@ routine buildGalgas3SemanticContext
         ![@optionMapForSemanticAnalysis emptyMap]
       ] ;
     #--- Loop throught all declarations
-      foreach sortedSemanticDeclarationListAST do
+      foreach outSortedSemanticDeclarationListAST do
         [mSemanticDeclaration enterInSemanticContext
           !categoryMethodMapForBuildingContext
           !categoryReaderMapForBuildingContext

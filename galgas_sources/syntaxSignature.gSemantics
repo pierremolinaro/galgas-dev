@@ -131,7 +131,7 @@ override method @parseRewindInstructionForGeneration appendSyntaxSignature
 :
   @semanticInstructionListForGeneration instructionList ;
   [mListOfSemanticInstructionListForGeneration first ?instructionList ?*] ;
-  ioInstructionListForGeneration .= syntaxSignatureOfInstructionList [!inPosfix !instructionList] ;
+  ioInstructionListForGeneration += syntaxSignatureOfInstructionList [!inPosfix !instructionList] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -140,7 +140,7 @@ override method @parseLoopInstructionForGeneration appendSyntaxSignature
   ??@string inPosfix
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
 :
-  ioInstructionListForGeneration .= syntaxSignatureOfInstructionList [!inPosfix !mInstructionList] ;
+  ioInstructionListForGeneration += syntaxSignatureOfInstructionList [!inPosfix !mInstructionList] ;
 end method ;
 
 #---------------------------------------------------------------------------*

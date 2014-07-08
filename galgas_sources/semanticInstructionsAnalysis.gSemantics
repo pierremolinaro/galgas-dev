@@ -1006,6 +1006,10 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+#! += Instruction
+
+#---------------------------------------------------------------------------*
+
 override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # += !… !…
   ??@analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
