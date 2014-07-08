@@ -760,14 +760,14 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
         }
         generatedZone3 << "scanner) ;\n" ;
         if (inSyntaxDirectedTranslationVarName.length() > 0) {
-          generatedZone3 << "        scanner->appendLastSeparatorTo (" << inSyntaxDirectedTranslationVarName << ") ;\n" ;
+          generatedZone3 << "          scanner->appendLastSeparatorTo (" << inSyntaxDirectedTranslationVarName << ") ;\n" ;
         }
-        generatedZone3 << "      }\n"
-                          "    }else{\n"
-                          "      C_String message ;\n"
-                          "      message << \"the '\" << filePath << \"' file exists, but cannot be read\" ;\n"
-                          "      const GALGAS_location errorLocation (inFilePath.reader_location (THERE)) ;\n"
-                          "      inCompiler->semanticErrorAtLocation (errorLocation, message COMMA_THERE) ;\n" ;
+        generatedZone3 << "        }\n"
+                          "      }else{\n"
+                          "        C_String message ;\n"
+                          "        message << \"the '\" << filePath << \"' file exists, but cannot be read\" ;\n"
+                          "        const GALGAS_location errorLocation (inFilePath.reader_location (THERE)) ;\n"
+                          "        inCompiler->semanticErrorAtLocation (errorLocation, message COMMA_THERE) ;\n" ;
         parametre.rewind () ;
         numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
