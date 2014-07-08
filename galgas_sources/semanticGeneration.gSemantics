@@ -1145,26 +1145,6 @@ override reader @structTypeForGeneration appendDeclaration1 ->@string outHeader 
 #---------------------------------------------------------------------------*
 
 override reader @listTypeForGeneration appendDeclaration1 ->@string outHeader :
-#  outHeader := [filewrapper typeGenerationTemplate.structTypeHeader1
-#    ![mTypeProxy key]. ":element"
-#    ![mTypeProxy identifierRepresentation]
-#    !mTypedAttributeList
-#  ] ;
-#  outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-#    ![mTypeProxy key]
-#    ![mTypeProxy identifierRepresentation]
-#    ![mTypeProxy mIsConcrete]
-#    ![mTypeProxy mConstructorMap]
-#    ![mTypeProxy mReaderMap]
-#    ![mTypeProxy mModifierMap]
-#    ![mTypeProxy mInstanceMethodMap]
-#    ![mTypeProxy mClassMethodMap]
-#    ![mTypeProxy mEnumerationDescriptor]
-#    ![mTypeProxy mHandledOperatorFlags]
-#    ![mTypeProxy mAddAssignOperatorArguments]
-#    ![mTypeProxy mWithAccessorMap]
-#    ![mTypeProxy mTypeForEnumeratedElement]
-#  ] ;
   outHeader := [filewrapper typeGenerationTemplate.listTypeHeader1
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
@@ -1652,7 +1632,6 @@ override reader @uniqueMapTypeForGeneration appendSpecificImplementation ->@stri
 #---------------------------------------------------------------------------*
 
 override reader @sortedListTypeForGeneration appendSpecificImplementation ->@string outImplementation :
-#  message "@soprtedListTypeForGeneration appendSpecificImplementation\n" ;
   outImplementation := [filewrapper typeGenerationTemplate.sortedlistTypeSpecificImplementation
     ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
@@ -1711,7 +1690,6 @@ override reader @structTypeForGeneration appendSpecificImplementation ->@string 
 #---------------------------------------------------------------------------*
 
 override reader @listTypeForGeneration appendSpecificImplementation ->@string outImplementation :
-#  message "@listTypeForGeneration appendSpecificImplementation\n" ;
   outImplementation := [filewrapper typeGenerationTemplate.listTypeSpecificImplementation
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
@@ -1722,7 +1700,6 @@ override reader @listTypeForGeneration appendSpecificImplementation ->@string ou
 #---------------------------------------------------------------------------*
 
 override reader @graphDeclarationForGeneration appendSpecificImplementation ->@string outImplementation :
-#  message "@graphTypeForGeneration appendSpecificImplementation\n" ;
   outImplementation := [filewrapper typeGenerationTemplate.graphTypeSpecificImplementation
     !mTypeProxy
     ![mTypeProxy identifierRepresentation]

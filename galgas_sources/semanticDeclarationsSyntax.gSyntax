@@ -82,6 +82,7 @@ rule <semantic_declaration>
   $)$ ;
   $;$ :> ?* ?* ;
   ioSemanticDeclarations += ![@listmapDeclarationAST new
+    !false # Is not predefined
     !mListmapTypeName
     !mAssociatedListTypeName
   ] ;
@@ -106,6 +107,7 @@ rule <semantic_declaration>
   $]$ ;
   $;$ :> ?* ?* ;
   ioSemanticDeclarations += ![@arrayDeclarationAST new
+    !false # Is not predefined
     !arrayTypeName
     !elementListTypeName
     !dimension
@@ -199,6 +201,7 @@ rule <semantic_declaration>
   end repeat ;
   $}$ ;
   ioSemanticDeclarations += ![@mapDeclarationAST new
+    !false # Is not predefined
     !mMapTypeName
     !mAttributeList
     !mInsertMethodList
@@ -359,6 +362,7 @@ rule <semantic_declaration>
   end repeat ;
   $}$ ;
   ioSemanticDeclarations += ![@uniqueMapDeclarationAST new
+    !false # Is not predefined
     !mMapTypeName
     !mAttributeList
     !mInsertMethodList
@@ -384,6 +388,7 @@ rule <semantic_declaration>
   $)$ ;
   $;$ :> ?* ?* ;
   ioSemanticDeclarations += ![@mapProxyDeclarationAST new
+    !false # Is not predefined
     !mMapIndexName
     !mMapTypeName
   ] ;
@@ -445,6 +450,7 @@ rule <semantic_declaration>
   $}$ ;
   foreach classNameList do
     ioSemanticDeclarations += ![@classDeclarationAST new
+      !false # Is not predefined
       !mIsAbstract
       !mValue
       !mSuperClassName # Empty if no super class
@@ -474,6 +480,7 @@ rule <semantic_declaration>
   end repeat ;
   $}$ ;
   ioSemanticDeclarations += ![@structDeclarationAST new
+    !false # Is not predefined
     !mListTypeName
     !mAttributeList
     !""
@@ -499,6 +506,7 @@ rule <semantic_declaration>
   end repeat ;
   $}$ ;
   ioSemanticDeclarations += ![@listDeclarationAST new
+    !false # Is not predefined
     !mListTypeName
     !mAttributeList
   ] ;
@@ -546,6 +554,7 @@ rule <semantic_declaration>
   end repeat ;
   $}$ ;
   ioSemanticDeclarations += ![@sortedListDeclarationAST new
+    !false # Is not predefined
     !mSortedListTypeName
     !mAttributeList
     !mSortDescriptorList
@@ -573,6 +582,7 @@ rule <semantic_declaration>
   end repeat ;
   $}$ ;
   ioSemanticDeclarations += ![@enumDeclarationAST new
+    !false # Is not predefined
     !mEnumTypeName
     !mConstantList
   ] ;
@@ -652,6 +662,7 @@ rule <semantic_declaration>
   end repeat ;
   $}$ ;
   ioSemanticDeclarations += ![@filewrapperDeclarationAST new
+    !false # Is not predefined
     ![@string stringWithSourceFilePath]
     !mFilewrapperName
     !mFilewrapperPath
@@ -677,6 +688,7 @@ rule <semantic_declaration>
   <formal_parameter_list> ??@formalParameterListAST formalParameterList ;
   $;$ :> ?* ?* ;
   ioSemanticDeclarations += ![@abstractCategoryMethodAST new
+    !false # Is not predefined
     !className
     !mMethodName
     !formalParameterList
@@ -701,6 +713,7 @@ rule <semantic_declaration>
   <formal_parameter_list> ??@formalParameterListAST formalParameterList ;
   $;$ :> ?* ?* ;
   ioSemanticDeclarations += ![@overridingAbstractCategoryMethodAST new
+    !false # Is not predefined
     !className
     !mMethodName
     !formalParameterList
@@ -733,6 +746,7 @@ rule <semantic_declaration>
   $method$ :> ?* ?* ;
   $;$ :> ?* ?* ;
   ioSemanticDeclarations += ![@categoryMethodAST new
+    !false # Is not predefined
     !className
     !mMethodName
     !formalParameterList
@@ -768,6 +782,7 @@ rule <semantic_declaration>
   $method$ :> ?* ?* ;
   $;$ :> ?* ?* ;
   ioSemanticDeclarations += ![@overridingCategoryMethodAST new
+    !false # Is not predefined
     !className
     !mMethodName
     !formalParameterList
@@ -801,6 +816,7 @@ rule <semantic_declaration>
   $identifier$ ? * ;
   $;$ :> ?* ?* ;
   ioSemanticDeclarations += ![@abstractCategoryReaderAST new
+    !false # Is not predefined
     !className
     !mReaderName
     !mFormalInputParameterList
@@ -839,6 +855,7 @@ rule <semantic_declaration>
   $reader$ :> ?* ?* ;
   $;$ :> ?* ?* ;
   ioSemanticDeclarations += ![@categoryReaderAST new
+    !false # Is not predefined
     !className
     !mMethodName
     !mFormalInputParameterList
@@ -881,6 +898,7 @@ rule <semantic_declaration>
   $reader$ :> ?* ?* ;
   $;$ :> ?* ?* ;
   ioSemanticDeclarations += ![@overridingCategoryReaderAST new
+    !false # Is not predefined
     !className
     !mMethodName
     !mFormalInputParameterList
@@ -918,6 +936,7 @@ rule <semantic_declaration>
   $identifier$ ? * ;
   $;$ :> ?* ?* ;
   ioSemanticDeclarations += ![@overridingAbstractCategoryReaderAST new
+    !false # Is not predefined
     !className
     !mReaderName
     !mFormalInputParameterList
@@ -946,6 +965,7 @@ rule <semantic_declaration>
   <formal_parameter_list> ??@formalParameterListAST formalParameterList ;
   $;$ :> ?* ?* ;
   ioSemanticDeclarations += ![@abstractCategoryModifierAST new
+    !false # Is not predefined
     !className
     !modifierName
     !formalParameterList
@@ -975,6 +995,7 @@ rule <semantic_declaration>
   <formal_parameter_list> ??@formalParameterListAST formalParameterList ;
   $;$ :> ?* ?* ;
   ioSemanticDeclarations += ![@overridingAbstractCategoryModifierAST new
+    !false # Is not predefined
     !className
     !modifierName
     !formalParameterList
@@ -1008,6 +1029,7 @@ rule <semantic_declaration>
   $modifier$ :> ?* ?* ;
   $;$ :> ?* ?* ;
   ioSemanticDeclarations += ![@categoryModifierAST new
+    !false # Is not predefined
     !className
     !modifierName
     !formalParameterList
@@ -1044,6 +1066,7 @@ rule <semantic_declaration>
   $modifier$ :> ?* ?* ;
   $;$ :> ?* ?* ;
   ioSemanticDeclarations += ![@overridingCategoryModifierAST new
+    !false # Is not predefined
     !className
     !modifierName
     !formalParameterList
@@ -1084,6 +1107,7 @@ rule <semantic_declaration>
   end repeat ;
   $}$ ;
   ioSemanticDeclarations += ![@graphDeclarationAST new
+    !false # Is not predefined
     !graphTypeName
     !associatedListTypeName
     !graphInsertModifierList
@@ -1185,6 +1209,7 @@ rule <semantic_declaration>
   end repeat ;
   $}$ ;
   ioSemanticDeclarations += ![@externTypeDeclarationAST new
+    !false # Is not predefined
     !externTypeName
     !cppPredeclarationCode
     !cppClassCode

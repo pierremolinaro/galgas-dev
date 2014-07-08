@@ -425,6 +425,7 @@ list @semanticInstructionListAST {
 #---------------------------------------------------------------------------*
 
 abstract class @semanticDeclarationAST {
+  @bool mIsPredefined ;
 }
 
 #---------------------------------------------------------------------------*

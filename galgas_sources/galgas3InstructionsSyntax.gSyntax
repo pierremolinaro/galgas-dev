@@ -67,6 +67,7 @@ rule <declaration>
   $identifier$ ??@lstring mActionName indexing routineDefinition ;
   <formal_parameter_list> ??@formalParameterListAST mFormalParameterList ;
   ioDeclarations->mSemanticDeclarationList += ![@externRoutineDeclarationAST new
+    !false # Is not predefined
     !mActionName
     !mFormalParameterList
   ] ;
@@ -93,6 +94,7 @@ rule <declaration>
   $}$ ;
   const endOfInstructionList := here ;
   ioDeclarations->mSemanticDeclarationList += ![@routineDeclarationAST new
+    !false # Is not predefined
     !mRoutineName
     !mFormalParameterList
     !mRoutineInstructionList
@@ -124,6 +126,7 @@ rule <declaration>
   $}$ ;
   const endOfFunctionInstructionList := here ;
   ioDeclarations->mSemanticDeclarationList += ![@functionDeclarationAST new
+    !false # Is not predefined
     !mRoutineName
     !formalInputParameterList
     !resultTypeName
@@ -156,6 +159,7 @@ rule <declaration>
   $}$ ;
   const endOfFunctionInstructionList := here ;
   ioDeclarations->mSemanticDeclarationList += ![@onceFunctionDeclarationAST new
+    !false # Is not predefined
     !mRoutineName
     !resultTypeName
     !resultVariableName
@@ -186,6 +190,7 @@ rule <declaration>
   $type_name$ ?@lstring resultTypeName ;
   $identifier$ ?@lstring resultVariableName ;
   ioDeclarations->mSemanticDeclarationList += ![@externFunctionDeclarationAST new
+    !false # Is not predefined
     !mActionName
     !formalInputParameterList
     !resultTypeName

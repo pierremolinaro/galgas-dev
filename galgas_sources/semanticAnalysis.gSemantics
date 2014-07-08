@@ -113,12 +113,14 @@ override method @predefinedTypeAST semanticAnalysis
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
-  ioSemanticDeclarationListForGeneration += ![@primitiveTypeForGeneration new
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !mPredefinedTypeName !here]]
-    !mPredefinedTypeName
-    !mKind
-  ]
-  !""
+  ioSemanticDeclarationListForGeneration +=
+    !mIsPredefined
+    ![@primitiveTypeForGeneration new
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !mPredefinedTypeName !here]]
+      !mPredefinedTypeName
+      !mKind
+    ]
+    !""
   ;
 
 end method ;
@@ -141,9 +143,9 @@ override method @listDeclarationAST semanticAnalysis
   @typedAttributeList typedAttributeList [emptyList] ;
   @attributeIndexMap attributeMap [emptyMap] ;
   foreach mAttributeList do
-    @unifiedTypeMapProxy t [searchKey !inSemanticContext->mTypeMap !mAttributeTypeName] ;
-    @bool hasGetter := true ;
-    @bool hasSetter := false ;
+    const @unifiedTypeMapProxy t [searchKey !inSemanticContext->mTypeMap !mAttributeTypeName] ;
+    var hasGetter := true ;
+    var hasSetter := false ;
     foreach mFeatureList do
       if mValue->string == "nogetter" then
         if not hasGetter then
@@ -169,6 +171,7 @@ override method @listDeclarationAST semanticAnalysis
   end foreach ;
 #---
   ioSemanticDeclarationListForGeneration +=
+    !mIsPredefined
     ![@listTypeForGeneration new
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mListTypeName]
       !typedAttributeList
@@ -212,12 +215,14 @@ override method @sortedListDeclarationAST semanticAnalysis
     attributesUsedForSorting += ![mSortedAttributeName string] ;
   end foreach ;
 #--- Generate type
-  ioSemanticDeclarationListForGeneration += ![@sortedListTypeForGeneration new
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mSortedListTypeName]
-    !typedAttributeList
-    !sortDescriptorList
-  ]
-  !""
+  ioSemanticDeclarationListForGeneration +=
+    !mIsPredefined
+    ![@sortedListTypeForGeneration new
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mSortedListTypeName]
+      !typedAttributeList
+      !sortDescriptorList
+    ]
+    !""
   ;
 
 end method ;
@@ -265,11 +270,13 @@ override method @structDeclarationAST semanticAnalysis
     end if ;
     [!?attributeMap insertKey !mAttributeName !t] ;
   end foreach ;
-  ioSemanticDeclarationListForGeneration += ![@structTypeForGeneration new
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mStructTypeName]
-    !typedAttributeList
-  ]
-  !"~"
+  ioSemanticDeclarationListForGeneration +=
+    !mIsPredefined
+    ![@structTypeForGeneration new
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mStructTypeName]
+      !typedAttributeList
+    ]
+    !"~"
   ;
 end method ;
 
@@ -296,12 +303,14 @@ override method @graphDeclarationAST semanticAnalysis
     check_K_L_escapeCharacters !mInsertErrorMessage ;
   end foreach ;
 #---
-  ioSemanticDeclarationListForGeneration += ![@graphDeclarationForGeneration new
-    !graphTypeProxy
-    !associatedListTypeProxy
-    !mInsertModifierList
-  ]
-  !""
+  ioSemanticDeclarationListForGeneration +=
+    !mIsPredefined
+    ![@graphDeclarationForGeneration new
+      !graphTypeProxy
+      !associatedListTypeProxy
+      !mInsertModifierList
+    ]
+    !""
   ;
 end method ;
 
@@ -314,13 +323,15 @@ override method @externTypeDeclarationAST semanticAnalysis
 :
   const externTypeProxy := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mExternTypeName] ;
 #---
-  ioSemanticDeclarationListForGeneration += ![@externTypeDeclarationForGeneration new
-    !externTypeProxy
-    !mExternTypeName->string
-    !mCppPreDeclarationCode
-    !mCppClassCode
-  ]
-  !""
+  ioSemanticDeclarationListForGeneration +=
+    !mIsPredefined
+    ![@externTypeDeclarationForGeneration new
+      !externTypeProxy
+      !mExternTypeName->string
+      !mCppPreDeclarationCode
+      !mCppClassCode
+    ]
+    !""
   ;
 end method ;
 
@@ -347,11 +358,13 @@ override method @enumDeclarationAST semanticAnalysis
     [!?constantMap insertKey !mValue ![constantMap count]] ;
   end foreach ;
 #---
-  ioSemanticDeclarationListForGeneration += ![@enumTypeForGeneration new
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mEnumTypeName]
-    !constantList
-  ]
-  !""
+  ioSemanticDeclarationListForGeneration +=
+    !mIsPredefined
+    ![@enumTypeForGeneration new
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mEnumTypeName]
+      !constantList
+    ]
+    !""
   ;
 end method ;
 
@@ -363,12 +376,14 @@ override method @arrayDeclarationAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
 #---
-  ioSemanticDeclarationListForGeneration += ![@arrayTypeForGeneration new
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mArrayTypeName]
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mElementTypeName]
-    ![mDimension uint]
-  ]
-  !""
+  ioSemanticDeclarationListForGeneration +=
+    !mIsPredefined
+    ![@arrayTypeForGeneration new
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mArrayTypeName]
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mElementTypeName]
+      ![mDimension uint]
+    ]
+    !""
   ;
 end method ;
 
@@ -384,12 +399,14 @@ override method @listmapDeclarationAST semanticAnalysis
   @typedAttributeList listTypeAttributeList ;
   [inSemanticContext->mTypeMap searchKey !mAssociatedListTypeName ?2* ?typeKindEnum ?listTypeAttributeList ?19*] ;
 #---
-  ioSemanticDeclarationListForGeneration += ![@listmapTypeForGeneration new
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mListmapTypeName]
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAssociatedListTypeName]
-    !listTypeAttributeList
-  ]
-  !""
+  ioSemanticDeclarationListForGeneration +=
+     !mIsPredefined
+   ![@listmapTypeForGeneration new
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mListmapTypeName]
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAssociatedListTypeName]
+      !listTypeAttributeList
+    ]
+    !""
   ;
 end method ;
 
@@ -526,17 +543,19 @@ override method @mapDeclarationAST semanticAnalysis
     ] ;
   end foreach ;
 #--- Enter map declaration
-  ioSemanticDeclarationListForGeneration += ![@mapTypeForGeneration new
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mMapTypeName]
-    !mMapTypeName
-    !typedAttributeList
-    !mInsertMethodList
-    !mSearchMethodList
-    !mRemoveMethodList
-    !hasInsertOrReplaceModifier
-    !withAccessorMap
-  ]
-  !""
+  ioSemanticDeclarationListForGeneration +=
+    !mIsPredefined
+    ![@mapTypeForGeneration new
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mMapTypeName]
+      !mMapTypeName
+      !typedAttributeList
+      !mInsertMethodList
+      !mSearchMethodList
+      !mRemoveMethodList
+      !hasInsertOrReplaceModifier
+      !withAccessorMap
+    ]
+    !""
   ;
 end method ;
 
@@ -877,19 +896,21 @@ override method @uniqueMapDeclarationAST semanticAnalysis
     ] ;
   end foreach ;
 #--- Enter map declaration
-  ioSemanticDeclarationListForGeneration += ![@uniqueMapTypeForGeneration new
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mMapTypeName]
-    !mMapTypeName
-    !typedAttributeList
-    !mInsertMethodList
-    !mSearchMethodList
-    !withAccessorMap
-    !mapAutomatonStateMap
-    !mapAutomatonActionMap
-    !mapStateSortedList
-    !mapOverrideList
-  ]
-  !""
+  ioSemanticDeclarationListForGeneration +=
+    !mIsPredefined
+    ![@uniqueMapTypeForGeneration new
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mMapTypeName]
+      !mMapTypeName
+      !typedAttributeList
+      !mInsertMethodList
+      !mSearchMethodList
+      !withAccessorMap
+      !mapAutomatonStateMap
+      !mapAutomatonActionMap
+      !mapStateSortedList
+      !mapOverrideList
+    ]
+    !""
   ;
 end method ;
 
@@ -912,13 +933,15 @@ override method @mapProxyDeclarationAST semanticAnalysis
     ?5*
   ] ;
 #---
-  ioSemanticDeclarationListForGeneration += ![@mapProxyTypeForGeneration new
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mMapProxyTypeName]
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAssociatedMapTypeName]
-    !listTypeAttributeList
-    !searchMethodList
-  ]
-  !""
+  ioSemanticDeclarationListForGeneration +=
+    !mIsPredefined
+    ![@mapProxyTypeForGeneration new
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mMapProxyTypeName]
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAssociatedMapTypeName]
+      !listTypeAttributeList
+      !searchMethodList
+    ]
+    !""
   ;
 end method ;
 
@@ -1047,12 +1070,14 @@ override method @externFunctionDeclarationAST semanticAnalysis
       !mIsConstant
     ;
   end foreach ;
-  ioSemanticDeclarationListForGeneration += ![@functionPrototypeDeclarationForGeneration new
-    ![mFunctionName string]
-    !formalArgumentList
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mResultTypeName]
-  ]
-  !""
+  ioSemanticDeclarationListForGeneration +=
+    !mIsPredefined
+    ![@functionPrototypeDeclarationForGeneration new
+      ![mFunctionName string]
+      !formalArgumentList
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mResultTypeName]
+    ]
+    !""
   ;
 end method ;
 
@@ -1072,11 +1097,13 @@ override method @externRoutineDeclarationAST semanticAnalysis
       ![mFormalArgumentName string]
     ;
   end foreach ;
-  ioSemanticDeclarationListForGeneration += ![@routinePrototypeDeclarationForGeneration new
-    ![mRoutineName string]
-    !formalArgumentList
-  ]
-  !""
+  ioSemanticDeclarationListForGeneration +=
+    !mIsPredefined
+    ![@routinePrototypeDeclarationForGeneration new
+      ![mRoutineName string]
+      !formalArgumentList
+    ]
+    !""
   ;
 end method ;
 
@@ -1110,12 +1137,14 @@ override method @routineDeclarationAST semanticAnalysis
     ?formalArgumentList
   ;
 #---
-  ioSemanticDeclarationListForGeneration += ![@routineImplementationForGeneration new
-    ![mRoutineName string]
-    !formalArgumentList
-    !instructionList
-  ]
-  !""
+  ioSemanticDeclarationListForGeneration +=
+    !mIsPredefined
+    ![@routineImplementationForGeneration new
+      ![mRoutineName string]
+      !formalArgumentList
+      !instructionList
+    ]
+    !""
   ;
 end method ;
 
@@ -1203,16 +1232,18 @@ override method @classDeclarationAST semanticAnalysis
     t := [t mSuperType] ;
   end loop ;
 #------
-  ioSemanticDeclarationListForGeneration += ![@classTypeForGeneration new
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mClassTypeName]
-    !mIsAbstract
-    !mClassTypeName
-    !superClassProxy
-    !allAttributeList
-    !typedAttributeList
-    ![selfType mGenerateHeaderInSeparateFile]
-  ]
-  !sortString
+  ioSemanticDeclarationListForGeneration +=
+    !mIsPredefined
+    ![@classTypeForGeneration new
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mClassTypeName]
+      !mIsAbstract
+      !mClassTypeName
+      !superClassProxy
+      !allAttributeList
+      !typedAttributeList
+      ![selfType mGenerateHeaderInSeparateFile]
+    ]
+    !sortString
   ;
 end method ;
 
@@ -1325,14 +1356,16 @@ override method @functionDeclarationAST semanticAnalysis
     ?semanticInstructionListForGeneration
   ;
 #---
-  ioSemanticDeclarationListForGeneration += ![@functionImplementationForGeneration new
-    ![mFunctionName string]
-    !formalInputParameterList
-    !returnType
-    !resultVariableCppName
-    !semanticInstructionListForGeneration
-  ]
-  !""
+  ioSemanticDeclarationListForGeneration +=
+    !mIsPredefined
+    ![@functionImplementationForGeneration new
+      ![mFunctionName string]
+      !formalInputParameterList
+      !returnType
+      !resultVariableCppName
+      !semanticInstructionListForGeneration
+    ]
+    !""
   ;
 end method ;
 
@@ -1369,13 +1402,15 @@ override method @onceFunctionDeclarationAST semanticAnalysis
     ?semanticInstructionListForGeneration
   ;
 #---
-  ioSemanticDeclarationListForGeneration += ![@onceFunctionDeclarationForGeneration new
-    ![mFunctionName string]
-    !returnType
-    !resultVariableCppName
-    !semanticInstructionListForGeneration
-  ]
-  !""
+  ioSemanticDeclarationListForGeneration +=
+    !mIsPredefined
+    ![@onceFunctionDeclarationForGeneration new
+      ![mFunctionName string]
+      !returnType
+      !resultVariableCppName
+      !semanticInstructionListForGeneration
+    ]
+    !""
   ;
 end method ;
 
@@ -1403,10 +1438,10 @@ override method @filewrapperDeclarationAST semanticAnalysis
   ] ;
 #--- Build absolute path
   @string absoluteSourcePath ;
-  if [[mFilewrapperPath string] firstCharacterOrNul] == '/' then
-    absoluteSourcePath := [mFilewrapperPath string] ;
+  if [mFilewrapperPath->string firstCharacterOrNul] == '/' then
+    absoluteSourcePath := mFilewrapperPath->string ;
   else
-    absoluteSourcePath := [[inSemanticContext mSourceFileAbsolutePath] stringByDeletingLastPathComponent] . "/" . [mFilewrapperPath string] ;
+    absoluteSourcePath := [mSourceFileAbsolutePath stringByDeletingLastPathComponent] . "/" . [mFilewrapperPath string] ;
   end if ;
   if not [absoluteSourcePath directoryExists] then
     error mFilewrapperPath: "The '" . absoluteSourcePath . "' directory does not exist" ;
@@ -1446,14 +1481,16 @@ override method @filewrapperDeclarationAST semanticAnalysis
       ;
     end foreach ;
   #---- Enter filewrapper in generated list
-    ioSemanticDeclarationListForGeneration += ![@filewrapperDeclarationForGeneration new
-      ![mFilewrapperName string]
-      ![mFilewrapperPath string]
-      !wrapperFileMap
-      !wrapperDirectoryMap
-      !filewrapperTemplateListForGeneration
-    ]
-  !""
+    ioSemanticDeclarationListForGeneration +=
+      !mIsPredefined
+      ![@filewrapperDeclarationForGeneration new
+        ![mFilewrapperName string]
+        ![mFilewrapperPath string]
+        !wrapperFileMap
+        !wrapperDirectoryMap
+        !filewrapperTemplateListForGeneration
+      ]
+    !""
   ;
   end if ;
 end method ;
@@ -1484,12 +1521,14 @@ override method @abstractCategoryMethodAST semanticAnalysis
     ;
   end foreach ;
 #---
-  ioSemanticDeclarationListForGeneration += ![@abstractCategoryMethodForGeneration new
-    ![mTypeName string]
-    ![mAbstractCategoryMethodName string]
-    !formalParameterListForGeneration
-  ]
-  !"~" # So that category are declared at the end of the file
+  ioSemanticDeclarationListForGeneration +=
+    !mIsPredefined
+    ![@abstractCategoryMethodForGeneration new
+      ![mTypeName string]
+      ![mAbstractCategoryMethodName string]
+      !formalParameterListForGeneration
+    ]
+    !"~" # So that category are declared at the end of the file
   ;
 end method ;
 
@@ -1541,15 +1580,17 @@ override method @categoryMethodAST semanticAnalysis
     ?formalParameterListForGeneration
   ;
 #---
-  ioSemanticDeclarationListForGeneration += ![@categoryMethodForGeneration new
-    !selfType
-    ![mCategoryMethodName string]
-    !implementedAsFunction
-    !formalParameterListForGeneration
-    ![selfType mAllTypedAttributeList]
-    !semanticInstructionListForGeneration
-  ]
-  !"~" # So that category are declared at the end of the file
+  ioSemanticDeclarationListForGeneration +=
+    !mIsPredefined
+      ![@categoryMethodForGeneration new
+      !selfType
+      ![mCategoryMethodName string]
+      !implementedAsFunction
+      !formalParameterListForGeneration
+      ![selfType mAllTypedAttributeList]
+      !semanticInstructionListForGeneration
+    ]
+    !"~" # So that category are declared at the end of the file
   ;
 end method ;
 
@@ -1621,15 +1662,17 @@ override method @overridingCategoryMethodAST semanticAnalysis
     ;
   end if ;
 #---
-  ioSemanticDeclarationListForGeneration += ![@overridingCategoryMethodForGeneration new
-    ![mTypeName string]
-    !baseTypeName
-    ![mOverridingCategoryMethodName string]
-    !formalParameterListForGeneration
-    ![selfType mAllTypedAttributeList]
-    !semanticInstructionListForGeneration
-  ]
-  !"~" # So that category are declared at the end of the file
+  ioSemanticDeclarationListForGeneration +=
+    !mIsPredefined
+    ![@overridingCategoryMethodForGeneration new
+      ![mTypeName string]
+      !baseTypeName
+      ![mOverridingCategoryMethodName string]
+      !formalParameterListForGeneration
+      ![selfType mAllTypedAttributeList]
+      !semanticInstructionListForGeneration
+    ]
+    !"~" # So that category are declared at the end of the file
   ;
 end method ;
 
@@ -1713,12 +1756,14 @@ override method @abstractCategoryModifierAST semanticAnalysis
     ;
   end foreach ;
 #---
-  ioSemanticDeclarationListForGeneration += ![@abstractCategoryModifierForGeneration new
-    ![mTypeName string]
-    ![mAbstractCategoryModifierName string]
-    !formalParameterListForGeneration
-  ]
-  !"~" # So that category are declared at the end of the file
+  ioSemanticDeclarationListForGeneration +=
+    !mIsPredefined
+      ![@abstractCategoryModifierForGeneration new
+      ![mTypeName string]
+      ![mAbstractCategoryModifierName string]
+      !formalParameterListForGeneration
+    ]
+    !"~" # So that category are declared at the end of the file
   ;
 end method ;
 
@@ -1767,15 +1812,17 @@ override method @categoryModifierAST semanticAnalysis
     ?formalParameterListForGeneration
   ;
 #---
-  ioSemanticDeclarationListForGeneration += ![@categoryModifierForGeneration new
-    !selfType
-    ![mCategoryModifierName string]
-    !implementedAsFunction
-    !formalParameterListForGeneration
-    ![selfType mAllTypedAttributeList]
-    !semanticInstructionListForGeneration
-  ]
-  !"~" # So that category are declared at the end of the file
+  ioSemanticDeclarationListForGeneration +=
+    !mIsPredefined
+      ![@categoryModifierForGeneration new
+      !selfType
+      ![mCategoryModifierName string]
+      !implementedAsFunction
+      !formalParameterListForGeneration
+      ![selfType mAllTypedAttributeList]
+      !semanticInstructionListForGeneration
+    ]
+    !"~" # So that category are declared at the end of the file
   ;
 end method ;
 
@@ -1843,15 +1890,17 @@ override method @overridingCategoryModifierAST semanticAnalysis
     ;
   end if ;
 #---
-  ioSemanticDeclarationListForGeneration += ![@overridingCategoryModifierForGeneration new
-    ![mTypeName string]
-    !baseTypeName
-    ![mOverridingCategoryModifierName string]
-    !formalParameterListForGeneration
-    ![selfType mAllTypedAttributeList]
-    !semanticInstructionListForGeneration
-  ]
-  !"~" # So that category are declared at the end of the file
+  ioSemanticDeclarationListForGeneration +=
+    !mIsPredefined
+      ![@overridingCategoryModifierForGeneration new
+      ![mTypeName string]
+      !baseTypeName
+      ![mOverridingCategoryModifierName string]
+      !formalParameterListForGeneration
+      ![selfType mAllTypedAttributeList]
+      !semanticInstructionListForGeneration
+    ]
+    !"~" # So that category are declared at the end of the file
   ;
 end method ;
 
@@ -1935,13 +1984,15 @@ override method @abstractCategoryReaderAST semanticAnalysis
     ;
   end foreach ;
 #---
-  ioSemanticDeclarationListForGeneration += ![@abstractCategoryReaderForGeneration new
-    ![mTypeName string]
-    ![mAbstractCategoryReaderName string]
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAbstractCategoryReaderReturnedTypeName]
-    !formalParameterListForGeneration
-  ]
-  !"~" # So that category are declared at the end of the file
+  ioSemanticDeclarationListForGeneration +=
+    !mIsPredefined
+    ![@abstractCategoryReaderForGeneration new
+      ![mTypeName string]
+      ![mAbstractCategoryReaderName string]
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAbstractCategoryReaderReturnedTypeName]
+      !formalParameterListForGeneration
+    ]
+    !"~" # So that category are declared at the end of the file
   ;
 end method ;
 
@@ -2000,17 +2051,19 @@ override method @categoryReaderAST semanticAnalysis
     ?semanticInstructionListForGeneration
   ;
 #---
-  ioSemanticDeclarationListForGeneration += ![@categoryReaderForGeneration new
-    !selfType
-    ![mCategoryReaderName string]
-    !implementedAsFunction
-    !returnType
-    !returnVariableCppName
-    !formalParameterListForGeneration
-    ![selfType mAllTypedAttributeList]
-    !semanticInstructionListForGeneration
-  ]
-  !"~" # So that category are declared at the end of the file
+  ioSemanticDeclarationListForGeneration +=
+    !mIsPredefined
+    ![@categoryReaderForGeneration new
+      !selfType
+      ![mCategoryReaderName string]
+      !implementedAsFunction
+      !returnType
+      !returnVariableCppName
+      !formalParameterListForGeneration
+      ![selfType mAllTypedAttributeList]
+      !semanticInstructionListForGeneration
+    ]
+    !"~" # So that category are declared at the end of the file
   ;
 end method ;
 
@@ -2094,6 +2147,7 @@ override method @overridingCategoryReaderAST semanticAnalysis
   end if ;
 #---
   ioSemanticDeclarationListForGeneration +=
+    !mIsPredefined
     ![@overrideCategoryReaderForGeneration new
       ![mTypeName string]
       !baseTypeName
@@ -2104,7 +2158,7 @@ override method @overridingCategoryReaderAST semanticAnalysis
       ![selfType mAllTypedAttributeList]
       !semanticInstructionListForGeneration
     ]
-  !"~" # So that category are declared at the end of the file
+    !"~" # So that category are declared at the end of the file
   ;
 end method ;
 

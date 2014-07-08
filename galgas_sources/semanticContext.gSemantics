@@ -2173,7 +2173,7 @@ override method @listDeclarationAST enterInSemanticContext
     ![@classMethodMap emptyMap]
     !enumerationDescriptor
     !enumerationVariants
-    !binaryConcatOperator [] | doNotGenererateObjectCompare [] | dotAssignOperator []
+    !binaryConcatOperator [] | doNotGenererateObjectCompare [] | dotAssignOperator [] | addAssignOperator []
     !constructorAttributeTypeList
     ![@stringset emptySet]
     ![@lstringlist emptyList]
@@ -3002,10 +3002,10 @@ override method @classDeclarationAST enterDeclarationInGraph
   const key := [@lstring new !"@" . mClassTypeName ![mClassTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
   if mSuperClassName->string != "" then
-    [!?ioSemanticTypePrecedenceGraph addEdge !key ![@lstring new !"@" . mSuperClassName ![mSuperClassName location]]] ;
+    [!?ioSemanticTypePrecedenceGraph addEdge !key ![@lstring new !"@" . mSuperClassName !mSuperClassName->location]] ;
   end if ;
   foreach mAttributeList do
-    [!?ioSemanticTypePrecedenceGraph addEdge !key ![@lstring new !"@" . mAttributeTypeName ![mAttributeTypeName location]]] ;
+    [!?ioSemanticTypePrecedenceGraph addEdge !key ![@lstring new !"@" . mAttributeTypeName !mSuperClassName->location]] ;
   end foreach ;
 end method ;
 
@@ -3481,6 +3481,7 @@ override method @mapDeclarationAST addAssociatedElement
     ;
   end foreach ;
   ioSemanticDeclarationList += ![@structDeclarationAST new
+    !mIsPredefined
     ![@lstring new !mMapTypeName->string . elementTypeNameSuffix [] !mMapTypeName->location]
     !structAttributeList
     !""
@@ -3501,6 +3502,7 @@ override method @listDeclarationAST addAssociatedElement
     ;
   end foreach ;
   ioSemanticDeclarationList += ![@structDeclarationAST new
+    !mIsPredefined
     ![@lstring new !mListTypeName->string . elementTypeNameSuffix [] !mListTypeName->location]
     !structAttributeList
     !""
@@ -3521,6 +3523,7 @@ override method @sortedListDeclarationAST addAssociatedElement
     ;
   end foreach ;
   ioSemanticDeclarationList += ![@structDeclarationAST new
+    !mIsPredefined
     ![@lstring new !mSortedListTypeName->string . elementTypeNameSuffix [] !mSortedListTypeName->location]
     !structAttributeList
     !""
@@ -3545,6 +3548,7 @@ override method @listmapDeclarationAST addAssociatedElement
   ;
 #---
   ioSemanticDeclarationList += ![@structDeclarationAST new
+    !mIsPredefined
     ![@lstring new !mListmapTypeName->string . elementTypeNameSuffix [] !mListmapTypeName->location]
     !structAttributeList
     !""

@@ -177,7 +177,7 @@ routine compileSyntaxComponentFromAST
       !semanticContext
       ?decoratedDeclarationListForGeneration
     ;
-    decoratedDeclarationListForGeneration += !syntaxDeclarationForGeneration !"" ;
+    decoratedDeclarationListForGeneration += !false !syntaxDeclarationForGeneration !"" ;
   #------ Generate Header File
     if [@uint errorCount] == 0 then
       var headerString := [filewrapper syntaxFileGenerationTemplate.syntaxFileHeader

@@ -90,6 +90,7 @@ rule <semantic_declaration>
   <formal_parameter_list> ? mFormalParameterList ;
   $;$ :> ?* ?* ;
   ioSemanticDeclarations += ![@externRoutineDeclarationAST new
+    !false # Is not predefined
     !mActionName
     !mFormalParameterList
   ] ;
@@ -124,6 +125,7 @@ rule <semantic_declaration>
   const endOfInstructionList := here ;
   $;$ :> ?* ?* ;
   ioSemanticDeclarations += ![@routineDeclarationAST new
+    !false # Is not predefined
     !mRoutineName
     !mFormalParameterList
     !mRoutineInstructionList
@@ -148,6 +150,7 @@ rule <semantic_declaration>
   const endOfInstructionList := here ;
   $}$ ;
   ioSemanticDeclarations += ![@routineDeclarationAST new
+    !false # Is not predefined
     !mRoutineName
     !mFormalParameterList
     !mRoutineInstructionList
@@ -185,6 +188,7 @@ rule <semantic_declaration>
   const endOfFunctionInstructionList := here ;
   $;$ :> ?* ?* ;
   ioSemanticDeclarations += ![@functionDeclarationAST new
+    !false # Is not predefined
     !mRoutineName
     !formalInputParameterList
     !resultTypeName
@@ -212,6 +216,7 @@ rule <semantic_declaration>
   const endOfFunctionInstructionList := here ;
   $}$ ;
   ioSemanticDeclarations += ![@functionDeclarationAST new
+    !false # Is not predefined
     !mRoutineName
     !formalInputParameterList
     !resultTypeName
@@ -249,6 +254,7 @@ rule <semantic_declaration>
   const endOfFunctionInstructionList := here ;
   $;$ :> ?* ?* ;
   ioSemanticDeclarations += ![@onceFunctionDeclarationAST new
+    !false # Is not predefined
     !mRoutineName
     !resultTypeName
     !resultVariableName
@@ -281,6 +287,7 @@ rule <semantic_declaration>
   $identifier$ ?@lstring resultVariableName ;
   $;$ :> ?* ?* ;
   ioSemanticDeclarations += ![@externFunctionDeclarationAST new
+    !false # Is not predefined
     !mActionName
     !formalInputParameterList
     !resultTypeName
