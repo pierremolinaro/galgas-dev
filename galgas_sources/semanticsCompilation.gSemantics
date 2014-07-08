@@ -217,7 +217,6 @@ routine buildOptionComponentMapForSemanticAnalysis
   ??@lstringlist inOptionComponentFileNameList
   ?!@parsedComponentStruct ioParsedComponentStruct
   ?!@optionComponentMapForSemanticAnalysis ioOptionComponentMapForSemanticAnalysis
-#  ?!@optionMapForSemanticAnalysis ioOptionMap
 :
   foreach inOptionComponentFileNameList do
     @lstring optionComponentName ;
@@ -445,16 +444,6 @@ routine compileSemanticsComponentAST
       ![componentName string]
       !implementationIncludeList
     ] ;
-#    foreach decoratedDeclarationListForGeneration do
-#      if not [mDeclaration mIsGlobal] then
-#        implementationString .= [mDeclaration appendDeclaration1] ;
-#      end if ;
-#    end foreach ;
-#    foreach decoratedDeclarationListForGeneration do
-#      if not [mDeclaration mIsGlobal] then
-#        implementationString .= [mDeclaration appendDeclaration2 !inOutputDirectory] ;
-#      end if ;
-#    end foreach ;
     foreach decoratedDeclarationListForGeneration do
       implementationString .= [mDeclaration appendSpecificImplementation] ;
       implementationString .= [mDeclaration appendTypeGenericImplementation] ;

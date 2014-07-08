@@ -31,6 +31,7 @@ program galgas_prgm :
   import "galgas3projectAST.gSemantics" ;
   import "galgas3ProjectGrammar.gGrammar" ;
   import "galgas3Grammar.gGrammar" ;
+  import "galgas3SemanticDeclarationCompilation.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
@@ -517,15 +518,39 @@ indexing with projectLL1grammar
 when . "galgasProject"
 message "a GALGAS project source file"
 indexing with galgas3ProjectGrammar
-??@lstring inSourceFile {
-  grammar galgas3ProjectGrammar in inSourceFile ??@galgas3ProjectComponentAST projectComponentAST ;
+??@lstring inProjectSourceFile {
+  message "** Parsing project files\n" ;
+  grammar galgas3ProjectGrammar in inProjectSourceFile
+    ??@galgas3ProjectComponentAST projectComponentAST
+  ;
   var declarationAST := [@galgas3DeclarationAST default] ; 
   foreach projectComponentAST->mProjectSourceList do
     if [mValue pathExtension] == "galgas" then
-      const absoluteSourcePath := [mValue absolutePathFromPath ![inSourceFile stringByDeletingLastPathComponent]] ;
+      const absoluteSourcePath := [mValue absolutePathFromPath ![inProjectSourceFile stringByDeletingLastPathComponent]] ;
       grammar galgas3Grammar in [@lstring new !absoluteSourcePath !mValue->location] !?declarationAST ;
     end if ;
   end foreach ;
+  if [@uint errorCount] == 0 then
+  #--- Display result
+    message "  Semantic declarations: " . [declarationAST->mSemanticDeclarationList length] . "\n" ;
+    message "  Lexique components: " . [declarationAST->mLexiqueComponentList length] . "\n" ;
+    message "  Syntax components: " . [declarationAST->mSyntaxComponentList length] . "\n" ;
+    message "  Grammar components: " . [declarationAST->mGrammarComponentList length] . "\n" ;
+    message "  GUI components: " . [declarationAST->mGUIComponentList length] . "\n" ;
+    message "  Option components: " . [declarationAST->mOptionComponentList length] . "\n" ;
+    message "  Source rules: " . [declarationAST->mSourceRuleList length] . "\n" ;
+    message "  Prologue procs: " . [declarationAST->mPrologueDeclarationList length] . "\n" ;
+    message "  Epilogue procs: " . [declarationAST->mEpilogueDeclarationList length] . "\n" ;
+  #--- Compile semantic declarations
+    compileSemanticDeclarations
+      !inProjectSourceFile->string
+      !projectComponentAST->mEndOfSourceFile
+      !declarationAST->mSemanticDeclarationList
+      !declarationAST->mOptionComponentList
+      !declarationAST->mLexiqueComponentList
+      !declarationAST->mGrammarComponentList
+    ;
+  end if ;
 }
 
 #----------------------------------------------------------------------------*

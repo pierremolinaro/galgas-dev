@@ -129,6 +129,7 @@ SOURCES += galgas3SyntaxComponentSyntax.cpp
 SOURCES += galgas3GrammarComponentSyntax.cpp
 SOURCES += galgas3ProgramDeclarations.cpp
 SOURCES += galgas3Grammar.cpp
+SOURCES += galgas3SemanticDeclarationCompilation.cpp
 SOURCES += galgas3OptionComponentCompilation.cpp
 SOURCES += galgas3LexiqueComponentCompilation.cpp
 SOURCES += galgas3GUIComponentCompilation.cpp
