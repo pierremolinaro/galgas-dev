@@ -59,14 +59,13 @@ rule <declaration>
   select
     hasTranslateFeature := false ;
   or
-    $feature$ ;
-    $identifier$ ??@lstring featureName ;
+    $attribute$ ??@lstring featureName ;
     if featureName->string != "translate" then
       error featureName: "only 'feature translate' can be declared here" ;
     end if ;
     hasTranslateFeature := true ;
   end select ;
-  $:$ ;
+  ${$ ;
 #--- Loop on declarations
   @nonterminalDeclarationListAST mNonterminalDeclarationList [emptyList] ;
   @syntaxRuleListAST mRuleList [emptyList] ;
@@ -78,7 +77,7 @@ rule <declaration>
     <syntax_rule_declaration> !? mRuleList ;
   end repeat ;
 #--- end
-  $end$ ;
+  $}$ ;
   const endOfSource := here ;
   ioDeclarations += ![@galgas3SyntaxComponentAST new
     !mSyntaxComponentName

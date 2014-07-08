@@ -95,6 +95,7 @@ style float_csts -> "Floating Point Constants" ;
 style characterStyle -> "Character Constants" ;
 style stringStyle -> "String Constants" ;
 style typeNameStyle -> "Type Names (@...)" ;
+style attributeStyle -> "Attributes (%...)" ;
 style commentStyle -> "Comments" ;
 
 # -------------------------- identifier or key word --------------------
@@ -126,7 +127,7 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
 #  "extends",
   "extern",
   "false",
-  "feature",
+#  "feature",
   "filewrapper",
   "for",
 #  "foreach",
@@ -286,7 +287,6 @@ end rule ;
 
 #------------------------------- Floating point Number ------------------
 $.$ error message "the '.' delimitor" style delimitersStyle ;
-#$.=$ error message "the '.=' delimitor" style delimitersStyle ;
 $...$ error message "the '...' delimitor" style delimitersStyle ;
 
 #--- Floating Point constant begining with a dot
@@ -307,8 +307,6 @@ rule '.' :
     select
     when ".." :
       send $...$ ;
-#    when "=" :
-#      send $.=$ ;
     default
       send $.$ ;
     end select ;
@@ -341,6 +339,25 @@ rule '@' :
     error incorrectTypeNameError ;
   end select ;
   send $type_name$ ; 
+end rule ;
+
+# -------------------------- Attribute -----------------------------
+
+$attribute$ ! tokenString error message "an attribute (%...)" style attributeStyle ;
+
+message attributeError : "in an attribute name, a letter or a digit should follow the '%' character" ;
+
+rule '%' :
+  select
+  when 'a'->'z' | 'A'->'Z' | '0'->'9' :
+    repeat
+      enterCharacterIntoString !?tokenString !* ;
+    while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
+    end repeat ;
+  default
+    error attributeError ;
+  end select ;
+  send $attribute$ ; 
 end rule ;
 
 #--------------------------------- Character constant ------------------------------------
@@ -532,7 +549,6 @@ rule list galgasDelimitorsList ;
 
 # --------- Special delimitors / non terminal symbol --------------------------
 $<$ error message "the '<' delimitor" style delimitersStyle ;
-$<->$ error message "the '<->' delimitor" style delimitersStyle ;
 $<=$ error message "the '<=' delimitor" style delimitersStyle ;
 $<<$ error message "the '<<' delimitor" style delimitersStyle ;
 $non_terminal_symbol$ ! tokenString error message "a non terminal symbol <...>" style nonTerminalStyle ;
@@ -542,8 +558,6 @@ rule '<' :
   select
   when '=' :
     send $<=$ ;
-  when "->" :
-    send $<->$ ;
   when '<' :
     send $<<$ ;
   when 'a' -> 'z' | 'A' ->'Z' :

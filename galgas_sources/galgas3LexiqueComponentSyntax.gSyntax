@@ -114,16 +114,11 @@ rule <template_delimitor> ?!@metamodelTemplateDelimitorListAST ioTemplateDelimit
   $template$ ;
   $literal_string$ ??@lstring startString ;
   @lstringlist optionList [emptyList] ;
-  select
-  or
-    $feature$ ;
-    repeat
-      $identifier$ ? @lstring optionName ;
-      optionList += !optionName ;
-    while
-      $,$ ;
-    end repeat ;
-  end select ;
+  repeat
+  while
+    $attribute$ ? @lstring optionName ;
+    optionList += !optionName ;
+  end repeat ;
   $...$ ;
   $literal_string$ ??@lstring endString ;
   $;$ ;
@@ -561,8 +556,7 @@ rule <lexical_list_entry> ?!@lexicalListEntryListAST ioLexicalListEntryList :
   @lstringlist optionList [emptyList] ;
   select
   or
-    $feature$ ;
-    $identifier$ ? @lstring optionName ;
+    $attribute$ ? @lstring optionName ;
     optionList += !optionName ;
   end select ;
   @lstring terminalSpelling ;
@@ -606,16 +600,11 @@ rule <terminal_declaration> ?!@terminalDeclarationListAST ioTerminalDeclarationL
     theStyle := [@lstring new !"" !here] ;
   end select ;
   @lstringlist optionList [emptyList] ;
-  select
-  or
-    $feature$ ;
-    repeat
-      $identifier$ ?? @lstring optionName ;
-      optionList += !optionName ;
-    while
-      $,$ ;
-    end repeat ;
-  end select ;
+  repeat
+  while
+    $attribute$ ?? @lstring optionName ;
+    optionList += !optionName ;
+  end repeat ;
   $;$ ;
   ioTerminalDeclarationList += !name !sentAttributeList !errorMessage !theStyle !optionList ;
 end rule ;

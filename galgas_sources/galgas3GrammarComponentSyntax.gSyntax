@@ -43,8 +43,7 @@ rule <declaration>
   select
     hasTranslateFeature := false ;
   or
-    $feature$ ;
-    $identifier$ ??@lstring featureName ;
+    $attribute$ ??@lstring featureName ;
     if featureName->string != "translate" then
       error featureName: "only 'feature translate' can be declared here" ;
     end if ;

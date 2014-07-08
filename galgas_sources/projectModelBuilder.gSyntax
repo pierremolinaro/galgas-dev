@@ -43,20 +43,24 @@ rule <project_component_start_symbol>
   $)$ ;
   $->$ ;
   $literal_string$ ? @lstring targetName ;
-  $:$ ;
+  $:$ :> ?@string sep ?* ;
+  send sep . "{" ;
   @projectSourceList projectSourceList [emptyList] ;
   @lstringlist generateFeatureList [emptyList] ;
   @qualifiedFeatureList qualifiedFeatureList [ emptyList] ;
   repeat
   while
-    $feature$ ;
+    $feature$ :> ?@string sep ?* ;
+    send sep ;
     select
-      $identifier$ ? @lstring featureName ;
+      $identifier$ ? @lstring featureName :> ?* ?* ;
+      send "%" . featureName ;
       $:$ ;
       $literal_string$ ? @lstring featureValue ;
       qualifiedFeatureList += !featureName !featureValue ;
     or
-      $literal_string$ ? @lstring featureName ;
+      $literal_string$ ? @lstring featureName :> ?* ?* ;
+      send "%" . featureName ;
       generateFeatureList += !featureName ;
     end select ;
     $;$ :> ?* ?* ;
@@ -107,7 +111,8 @@ rule <project_component_start_symbol>
       !filePath
     ;
   end repeat ;
-  $end$ ;
+  $end$ :> ?sep ?* ;
+  send sep . "}" ;
   outProjectComponentAST := [@projectComponentAST new
     !projectSourceList
     !majorVersion

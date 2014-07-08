@@ -64,14 +64,17 @@ rule <syntax_component_start_symbol> !@syntaxComponentAST outSyntaxComponentRoot
   select
     hasTranslateFeature := false ;
   or
-    $feature$ ;
-    $identifier$ ??@lstring featureName ;
+    $feature$ :> ?@string sep ?* ;
+    send sep ;
+    $identifier$ ??@lstring featureName :> ?* ?* ;
+    send "%" . featureName ;
     if featureName->string != "translate" then
       error featureName: "only 'feature translate' can be declared here" ;
     end if ;
     hasTranslateFeature := true ;
   end select ;
-  $:$ ;
+  $:$ :> ?@string sep ?* ;
+  send sep . "{" ;
 #--- Loop on import declarations
   @lstringlist importedComponentPathList [emptyList] ;
   repeat
@@ -79,7 +82,7 @@ rule <syntax_component_start_symbol> !@syntaxComponentAST outSyntaxComponentRoot
     $import$ :> ?* ?* ;
     $literal_string$ ??@lstring path :> ?* ?* ;
     importedComponentPathList += !path ;
-   $;$ :> ?* ?* ;
+    $;$ :> ?* ?* ;
   end repeat ;
 #--- Loop on declarations
   @nonterminalDeclarationListAST mNonterminalDeclarationList [emptyList] ;
@@ -94,7 +97,8 @@ rule <syntax_component_start_symbol> !@syntaxComponentAST outSyntaxComponentRoot
     <semantic_declaration> !?mSemanticDeclarations ;
   end repeat ;
 #--- end
-  $end$ ;
+  $end$ :> ?sep ?* ;
+  send sep . "}" ;
   const endOfSource := here ;
   $syntax$ :> ?* ?* ;
   $;$  :> ?* ?* ;

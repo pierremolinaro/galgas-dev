@@ -274,9 +274,11 @@
     nil
   ] ;
   NSAttributedString * prefixString = [[NSAttributedString alloc]
-    initWithString:@"                                   "
+//    initWithString:@"                                   "
+    initWithString:@"———————————————————————————————————"
     attributes:[NSDictionary dictionaryWithObjectsAndKeys:
-      [NSColor colorWithWhite:0.9 alpha:1.0], NSBackgroundColorAttributeName,
+      [NSFont fontWithName:@"Courier" size:11.0], NSFontAttributeName,
+ //     [NSColor colorWithWhite:0.9 alpha:1.0], NSBackgroundColorAttributeName,
       nil
     ]
   ] ;

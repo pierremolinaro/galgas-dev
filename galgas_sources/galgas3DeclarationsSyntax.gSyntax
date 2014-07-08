@@ -58,16 +58,11 @@ rule <attribute_declaration> ?!@attributeInCollectionListAST ioAttributeInCollec
   $type_name$ ? @lstring mAttributeTypeName ;
   $identifier$ ? @lstring mAttributeName ;
   @lstringlist featureList [emptyList] ;
-  select
-  or
-    $feature$ ;
-    repeat
-      $identifier$ ? @lstring featureName ;
-      featureList += !featureName ;
-    while
-      $,$ ;
-    end repeat ;
-  end select ;
+  repeat
+  while
+    $attribute$ ? @lstring featureName ;
+    featureList += !featureName ;
+  end repeat ;
   ioAttributeInCollectionList += !mAttributeTypeName !mAttributeName !featureList ;
 end rule ;
 
@@ -443,16 +438,11 @@ rule <declaration>
     $type_name$ ? mSuperClassName indexing classReferencedAsSuperClass ;
   end select ;
   @lstringlist classFeatureList [emptyList] ;
-  select
-  or
-    $feature$ ;
-    repeat
-      $identifier$ ? @lstring classFeatureName ;
-      classFeatureList += !classFeatureName ;
-    while
-      $,$ ;
-    end repeat ;
-  end select ;
+  repeat
+  while
+    $attribute$ ? @lstring classFeatureName ;
+    classFeatureList += !classFeatureName ;
+  end repeat ;
   ${$ ;
   @string mClassMessage := "" ;
 #--- Class properties

@@ -118,12 +118,14 @@ rule <template_delimitor> ?!@metamodelTemplateDelimitorListAST ioTemplateDelimit
   @lstringlist optionList [emptyList] ;
   select
   or
-    $feature$ ;
+    $feature$ :> ?@string sep ?* ;
+    send sep ;
     repeat
-      $identifier$ ? @lstring optionName ;
+      $identifier$ ? @lstring optionName :> ?sep ?*  ;
+      send sep . "%" . optionName ;
       optionList += !optionName ;
     while
-      $,$ ;
+      $,$ :> ?* ?* ;
     end repeat ;
   end select ;
   $...$ ;
@@ -563,8 +565,10 @@ rule <lexical_list_entry> ?!@lexicalListEntryListAST ioLexicalListEntryList :
   @lstringlist optionList [emptyList] ;
   select
   or
-    $feature$ ;
-    $identifier$ ? @lstring optionName ;
+    $feature$ :> ?@string sep ?* ;
+    send sep ;
+    $identifier$ ? @lstring optionName :> ?* ?* ;
+    send "%" . optionName ;
     optionList += !optionName ;
   end select ;
   @lstring terminalSpelling ;
@@ -610,12 +614,14 @@ rule <terminal_declaration> ?!@terminalDeclarationListAST ioTerminalDeclarationL
   @lstringlist optionList [emptyList] ;
   select
   or
-    $feature$ ;
+    $feature$ :> ?@string sep ?* ;
+    send sep ;
     repeat
-      $identifier$ ?? @lstring optionName ;
+      $identifier$ ??@lstring optionName :> ?* ?* ;
+      send "%" . optionName ;
       optionList += !optionName ;
     while
-      $,$ ;
+      $,$ :> ?* ?* ;
     end repeat ;
   end select ;
   $;$ ;

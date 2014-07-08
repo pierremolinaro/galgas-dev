@@ -45,17 +45,20 @@ rule <attribute_declaration> ?!@attributeInCollectionListAST ioAttributeInCollec
   @lstringlist featureList [emptyList] ;
   select
   or
-    $feature$ ;
+    $feature$ :> ?@string sep ?* ;
+    send sep ;
     repeat
       select
-      $identifier$ ? @lstring featureName ;
+      $identifier$ ? @lstring featureName :> ?* ?* ;
+      send "%" . featureName ;
       featureList += !featureName ;
       or
-        $setter$ ;
+        $setter$ :> ?* ?* ;
+        send "%setter" ;
         featureList += ![@lstring new !"setter" !here] ;
       end select ;
     while
-      $,$ ;
+      $,$ :> ?* ?* ;
     end repeat ;
   end select ;
   $;$ :> ?* ?* ;
@@ -421,12 +424,14 @@ rule <semantic_declaration>
   @lstringlist classFeatureList [emptyList] ;
   select
   or
-    $feature$ ;
+    $feature$ :> ?@string sep ?* ;
+    send sep ;
     repeat
-      $identifier$ ? @lstring classFeatureName ;
+      $identifier$ ? @lstring classFeatureName :> ?* ?* ;
+      send "%" . classFeatureName ;
       classFeatureList += !classFeatureName ;
     while
-      $,$ ;
+      $,$ :> ?* ?* ;
     end repeat ;
   end select ;
   ${$ ;
