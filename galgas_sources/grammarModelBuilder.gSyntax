@@ -45,8 +45,9 @@ rule <grammar_component_start_symbol>
   select
     hasTranslateFeature := false ;
   or
-    $feature$ ;
-    $identifier$ ??@lstring featureName ;
+    $feature$ :> ??@string sep ?* ;
+    $identifier$ ??@lstring featureName :> ?* ?* ;
+    send sep . "%" . featureName ;
     if featureName->string != "translate" then
       error featureName: "only 'feature translate' can be declared here" ;
     end if ;
