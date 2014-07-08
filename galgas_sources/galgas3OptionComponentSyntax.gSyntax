@@ -24,7 +24,7 @@ import "semanticsTypesForAST.gSemantics" ;
 #---------------------------------------------------------------------------*
 
 rule <declaration>
- ?!@semanticDeclarationListAST ioDeclarations
+ ?!@galgas3DeclarationAST ioDeclarations
 :
   $option$ ;
   $identifier$ ??@lstring optionComponentName ;
@@ -35,10 +35,10 @@ rule <declaration>
     <option> !?options ;
   end repeat ;
   $end$ ;
-  ioDeclarations += ![@galgas3OptionComponentAST new
+  ioDeclarations->mOptionComponentList +=
     !optionComponentName
     !options
-  ] ;
+  ;
 end rule ;
 
 #---------------------------------------------------------------------------*

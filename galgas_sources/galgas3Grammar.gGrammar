@@ -30,7 +30,7 @@ indexing grammar galgas3Grammar "SLR" :
   with "galgas3ProgramDeclarations.gSyntax" ;
 
   root <start_symbol>
-    ?!@semanticDeclarationListAST ioDeclarations
+    ?!@galgas3DeclarationAST ioDeclarations
   ;
 end grammar ;
 

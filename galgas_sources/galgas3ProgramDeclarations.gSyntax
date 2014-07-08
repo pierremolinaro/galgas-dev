@@ -32,17 +32,17 @@ nonterminal <semantic_instruction_list> !@semanticInstructionListAST outInstruct
 #---------------------------------------------------------------------------*
 
 rule <declaration>
- ?!@semanticDeclarationListAST ioDeclarations
+ ?!@galgas3DeclarationAST ioDeclarations
 :
   $before$ ;
   ${$ ;
   <semantic_instruction_list> ??@semanticInstructionListAST prologueInstructionList ;
   const endOfPrologue := here ;
   $}$ ;
-  ioDeclarations += ![@galgas3PrologueDeclarationAST new
+  ioDeclarations->mPrologueDeclarationList +=
     !prologueInstructionList
     !endOfPrologue
-  ] ;
+  ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -52,17 +52,17 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <declaration>
- ?!@semanticDeclarationListAST ioDeclarations
+ ?!@galgas3DeclarationAST ioDeclarations
 :
   $after$ ;
   ${$ ;
   <semantic_instruction_list> ??@semanticInstructionListAST prologueInstructionList ;
   const endOfPrologue := here ;
   $}$ ;
-  ioDeclarations += ![@galgas3EpilogueDeclarationAST new
+  ioDeclarations->mEpilogueDeclarationList +=
     !prologueInstructionList
     !endOfPrologue
-  ] ;
+  ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -72,7 +72,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <declaration>
- ?!@semanticDeclarationListAST ioDeclarations
+ ?!@galgas3DeclarationAST ioDeclarations
 :
   $when$ ;
   $.$ ;
@@ -107,7 +107,7 @@ rule <declaration>
   <semantic_instruction_list> ??@semanticInstructionListAST mInstructionList ;
   const endOfInstructionList := here ;
   $}$ ;
-  ioDeclarations += ![@galgas3SourceRuleDeclarationAST new
+  ioDeclarations->mSourceRuleList +=
     !mSourceFileExtension
     !mSourceFileHelp
     !mSourceFileVariableName
@@ -115,7 +115,7 @@ rule <declaration>
     !indexingGrammar
     !mInstructionList
     !endOfInstructionList
-  ] ;
+  ;
 end rule ;
 
 #---------------------------------------------------------------------------*

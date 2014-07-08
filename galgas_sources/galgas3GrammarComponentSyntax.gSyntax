@@ -26,7 +26,7 @@ import "semanticsTypesForAST.gSemantics" ;
 #---------------------------------------------------------------------------*
 
 rule <declaration>
- ?!@semanticDeclarationListAST ioDeclarations
+ ?!@galgas3DeclarationAST ioDeclarations
 :
   @lbool hasIndexing ;
   select
@@ -78,7 +78,7 @@ rule <declaration>
   end repeat ;
 #---
   $}$ ;
-  ioDeclarations += ![@galgas3GrammarComponentAST new
+  ioDeclarations->mGrammarComponentList +=
     !hasIndexing
     !mGrammarName
     !mGrammarClass
@@ -88,7 +88,7 @@ rule <declaration>
     !mUnusedNonterminalList
     !here
     !hasTranslateFeature
-  ] ;
+  ;
 end rule ;
 
 #---------------------------------------------------------------------------*

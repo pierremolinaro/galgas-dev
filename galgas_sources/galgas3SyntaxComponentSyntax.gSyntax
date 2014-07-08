@@ -45,7 +45,7 @@ nonterminal <actual_parameter_list>
 #------------------------------------------------------------------------------*
 
 rule <declaration>
- ?!@semanticDeclarationListAST ioDeclarations
+ ?!@galgas3DeclarationAST ioDeclarations
 :
   $syntax$ ;
 #--- Semantics Component Name
@@ -79,14 +79,14 @@ rule <declaration>
 #--- end
   $}$ ;
   const endOfSource := here ;
-  ioDeclarations += ![@galgas3SyntaxComponentAST new
+  ioDeclarations->mSyntaxComponentList +=
     !mSyntaxComponentName
     !importedLexiqueReference
     !mNonterminalDeclarationList
     !mRuleList
     !endOfSource
     !hasTranslateFeature
-  ] ;
+  ;
 end rule ;
 
 #------------------------------------------------------------------------------*
