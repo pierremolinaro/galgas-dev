@@ -125,6 +125,7 @@ map @filewrapperMap {
 #---------------------------------------------------------------------------*
 
 map @optionComponentMapForSemanticAnalysis {
+  @bool mIsPredefined ;
   @commandLineOptionMap mBoolOptionMap ;
   @commandLineOptionMap mUIntOptionMap ;
   @commandLineOptionMap mStringOptionMap ;

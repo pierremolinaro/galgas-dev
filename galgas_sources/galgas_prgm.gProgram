@@ -209,7 +209,7 @@ indexing with projectLL1grammar
   grammar projectLL1grammar in inProjectSourceFile ??@projectComponentAST projectComponentAST :> ??@string translatedProject ;
   if [option galgas_cli_options.convertToGalgas3 value] then
     const directory := [inProjectSourceFile stringByDeletingLastPathComponent] . "/../" ;
-    const newProjectFile := directory . "-" . projectComponentAST->mTargetName . ".galgasProject" ;
+    const newProjectFile := directory . projectComponentAST->mTargetName . ".galgasProject" ;
     [translatedProject writeToFileWhenDifferentContents !newProjectFile ?*] ;
   end if ;
 #--- Check project name
@@ -543,7 +543,10 @@ indexing with galgas3ProjectGrammar
     message "  Epilogue procs: " . [declarationAST->mEpilogueDeclarationList length] . "\n" ;
   end if ;
 #---------------------------------- Compile semantic declarations
+  const productDirectory := [inProjectSourceFile stringByDeletingLastPathComponent] . "/build/output" ;
   var toolProductFileList := [@stringlist emptyList] ;
+  var appProductFileList := [@stringlist emptyList] ;
+  var optionComponentMapForSemanticAnalysis := [@optionComponentMapForSemanticAnalysis emptyMap] ;
   if [@uint errorCount] == 0 then
     compileSemanticDeclarations
       !inProjectSourceFile->string
@@ -553,7 +556,24 @@ indexing with galgas3ProjectGrammar
       !declarationAST->mLexiqueComponentList
       !declarationAST->mGrammarComponentList
       !?toolProductFileList
+      ?optionComponentMapForSemanticAnalysis
     ;
+  end if ;
+#---------------------------------- Compile option declarations
+  if [@uint errorCount] == 0 then
+    foreach optionComponentMapForSemanticAnalysis do
+      if not mIsPredefined then
+        compileOptionComponentGalgas3
+          !productDirectory
+          !lkey->string
+          !mBoolOptionMap
+          !mUIntOptionMap
+          !mStringOptionMap
+          !?toolProductFileList
+          !?appProductFileList
+        ;
+      end if ;
+    end foreach ;
   end if ;
 #---------------------------------- Update targets
   if 0 == [@uint errorCount] then
@@ -576,7 +596,7 @@ indexing with galgas3ProjectGrammar
       !projectQualifiedFeatureMap
       !projectComponentAST->mGenerationFeatureList
       !toolProductFileList
-      ![@stringlist emptyList] # inAppProductFileList
+      !appProductFileList
       !handledExtensionSet
     ;
   end if ;

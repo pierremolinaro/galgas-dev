@@ -595,6 +595,7 @@ override method @templateOptionAccessAST templateExpressionAnalysis
   @commandLineOptionMap stringOptionMap ;
   [inAnalysisContext->mSemanticContext->mOptionComponentMapForSemanticAnalysis searchKey
     !mOptionComponentName
+    ?*
     ?boolOptionMap
     ?uintOptionMap
     ?stringOptionMap
