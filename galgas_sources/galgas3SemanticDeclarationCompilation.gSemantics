@@ -20,6 +20,7 @@ import "optionTypesForAST.gSemantics" ;
 import "semanticAnalysis.gSemantics" ;
 import "predefinedTypes.gSemantics" ;
 import "semanticsCompilation.gSemantics" ;
+import "projectGlobalCheckings.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
@@ -30,8 +31,9 @@ routine compileSemanticDeclarations
   ??@galgas3OptionComponentListAST inOptionComponentList
   ??@galgas3LexiqueComponentListAST inLexiqueComponentList
   ??@galgas3GrammarComponentListAST inGrammarComponentList
+  ?!@stringlist ioToolProductFileList
 :
-  message "** Building context\n" ;
+  message "*** Building context\n" ;
 #------ Add predefined types to semantics declarations
   @semanticDeclarationListAST semanticDeclarationListWithPredefinedTypes := inSemanticDeclarationList ;
   appendPredefinedTypesASTs !?semanticDeclarationListWithPredefinedTypes ;
@@ -58,21 +60,11 @@ routine compileSemanticDeclarations
     !?semanticContext
   ;
 #------ Semantic Analysis
-  message "** Semantic analysis\n" ;
-#  performSemanticAnalysis
-#    !sortedSemanticDeclarationListAST
-#    !semanticContext
-#    ??@semanticDeclarationSortedListForGeneration decoratedDeclarationListForGeneration
-#  ;
+  message "*** Semantic analysis\n" ;
 #------ Check there is no undefined types
   foreach [semanticContext->mTypeMap unsolvedProxyList] do
     error mValue : "the '" . mValue . "' type is undefined" ;
   end foreach ;
-#------ Create associated type (@TYPE:element) for lists, maps, ...
-#  @semanticDeclarationListAST semanticDeclarationList := inDeclarationList ;
-#  foreach inDeclarationList do
-#    [mSemanticDeclaration addAssociatedElement !?semanticDeclarationList] ;
-#  end foreach ;
 #---
   var decoratedDeclarationListForGeneration := [@semanticDeclarationSortedListForGeneration emptySortedList] ;
   if [@uint errorCount] == 0 then
@@ -85,11 +77,23 @@ routine compileSemanticDeclarations
       ] ;
     end foreach ;
   end if ;
+#---------------------------------- Perform global checkings
+  if [@uint errorCount] == 0 then
+    if [option .verbose_output value] then
+      message "*** Perform global checkings\n" ;
+    end if ;
+    performGalgas3ProjectGlobalCheckings
+      !semanticContext
+      !inSemanticDeclarationList
+      !inProjectSourceFile
+    ;
+  end if ;
 #--- Generate type files
-  message "** Generating files\n" ;
-  const productDirectory := [inProjectSourceFile stringByDeletingLastPathComponent] . "/build/output/" ;
+  message "*** Generating files\n" ;
+  const productDirectory := [inProjectSourceFile stringByDeletingLastPathComponent] . "/build/output" ;
 #------ Generate Header File
   if [@uint errorCount] == 0 then
+    ioToolProductFileList += !"AZERTYUIOP.cpp" ;
     @stringlist typeList [emptyList] ;
     foreach decoratedDeclarationListForGeneration do
       if not mIsPredefined then

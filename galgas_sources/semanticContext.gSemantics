@@ -2173,7 +2173,7 @@ override method @listDeclarationAST enterInSemanticContext
     ![@classMethodMap emptyMap]
     !enumerationDescriptor
     !enumerationVariants
-    !binaryConcatOperator [] | doNotGenererateObjectCompare [] | dotAssignOperator [] | addAssignOperator []
+    !binaryConcatOperator [] | doNotGenererateObjectCompare [] | dotAssignOperator [] | addAssignOperator [] | binaryAddOperator []
     !constructorAttributeTypeList
     ![@stringset emptySet]
     ![@lstringlist emptyList]

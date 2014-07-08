@@ -22,11 +22,11 @@ project all_galgas (2:6:0) -> "galgas" :
   feature libpmAtPath : "../libpm" ;
 #--- Targets
   feature "makefile_macosx" ;                                                                     
-  feature "makefile_unix" ;
-  feature "makefile_i386_linux_on_macosx" ;
-  feature "makefile_x86_64_linux_on_macosx" ;
-  feature "makefile_mingw_on_macosx" ;
-  feature "makefile_msys_on_win32" ;
+#  feature "makefile_unix" ;
+#  feature "makefile_i386_linux_on_macosx" ;
+#  feature "makefile_x86_64_linux_on_macosx" ;
+#  feature "makefile_mingw_on_macosx" ;
+#  feature "makefile_msys_on_win32" ;
 
 #--- Command Line Options
   option "galgas_cli_options.gOption" ;
@@ -167,6 +167,8 @@ project all_galgas (2:6:0) -> "galgas" :
   semantics "galgas3GrammarComponentCompilation.gSemantics" ;
   
   semantics "galgas3ProgramDeclarationCompilation.gSemantics" ;
+
+  semantics "galgas3TargetGeneration.gSemantics" ;
 
 #--- Hand coded sources
   extern "cDecisionTableElement.cpp" ;

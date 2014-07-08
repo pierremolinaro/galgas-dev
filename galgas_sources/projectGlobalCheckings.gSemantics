@@ -739,6 +739,262 @@ routine performProjectGlobalCheckings
 end routine ;
 
 #---------------------------------------------------------------------------*
+
+routine performGalgas3ProjectGlobalCheckings
+  ??@semanticContext inSemanticContext
+  ??@semanticDeclarationListAST inSemanticDeclarationList
+  ??@string inProjectSourceFilePath
+:
+#  @semanticDeclarationListAST semanticDeclarationList [emptyList] ;
+##------ Add predefined types to semantics declarations
+#  appendPredefinedTypesASTs !?semanticDeclarationList ;
+##--- Build all declaration list
+#  foreach [inParsedComponentStruct mParsedSemanticsComponentMap] do
+#    semanticDeclarationList .= [mSemanticComponentRoot mSemanticDeclarationList] ;
+#  end foreach ;
+#  foreach [inParsedComponentStruct mParsedSyntaxComponentMap] do
+#    semanticDeclarationList .= [mSyntaxComponentRoot mSemanticDeclarationList] ;
+#  end foreach ;
+#  foreach [inParsedComponentStruct mParsedProgramComponentMap] do
+#    semanticDeclarationList .= [mProgramComponentAST mSemanticDeclarationList] ;
+#  end foreach ;
+##------ Generate declarations
+#  buildSemanticContext
+#    !""
+#    !semanticDeclarationList
+#    !inEndOfSourceFile
+#    ??@semanticContext semanticContext
+#  ;
+#------ Build descendant type list map
+# For every type, a list of its directed descendants is associated
+  @descendantClassListMap descendantClassListMap [emptyMap] ;
+  foreach inSemanticContext->mTypeMap do
+     if not [mSuperType isNull] then
+       descendantClassListMap +=
+         ![mSuperType key]
+         ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !lkey]
+       ;
+     end if ;
+  end foreach ;
+#--- Build Category method listmaps
+  @genericCategoryMethodListMap abstractCategoryMethodListMap [emptyMap] ;
+  @genericCategoryMethodListMap categoryMethodListMap [emptyMap] ;
+  @genericCategoryMethodListMap overridingCategoryMethodListMap [emptyMap];
+  @genericCategoryMethodListMap overridingAbstractCategoryMethodListMap [emptyMap];
+  @genericCategoryMethodListMap abstractCategoryReaderListMap [emptyMap] ;
+  @genericCategoryMethodListMap categoryReaderListMap [emptyMap] ;
+  @genericCategoryMethodListMap overridingCategoryReaderListMap [emptyMap];
+  @genericCategoryMethodListMap overridingAbstractCategoryReaderListMap [emptyMap] ;
+  @genericCategoryMethodListMap abstractCategoryModifierListMap [emptyMap] ;
+  @genericCategoryMethodListMap categoryModifierListMap [emptyMap] ;
+  @genericCategoryMethodListMap overridingCategoryModifierListMap [emptyMap] ;
+  @genericCategoryMethodListMap overridingAbstractCategoryModifierListMap [emptyMap] ;
+  foreach inSemanticDeclarationList do
+    [mSemanticDeclaration buildCategoryListMaps
+      !?abstractCategoryModifierListMap
+      !?categoryModifierListMap
+      !?overridingCategoryModifierListMap
+      !?overridingAbstractCategoryModifierListMap
+      !?abstractCategoryMethodListMap
+      !?categoryMethodListMap
+      !?overridingCategoryMethodListMap
+      !?overridingAbstractCategoryMethodListMap
+      !?abstractCategoryReaderListMap
+      !?categoryReaderListMap
+      !?overridingCategoryReaderListMap
+      !?overridingAbstractCategoryReaderListMap
+    ] ;
+  end foreach ;
+#------ Check Category
+  if [@uint errorCount] == 0 then
+  #--- A given abstract category modifier is defined only once for a class
+    foreach abstractCategoryModifierListMap do
+      @categoryModifierMapForGlobalCheckings categoryModifierMap [emptyMap] ;
+      foreach mList do
+        [!?categoryModifierMap insertKey !mValue] ;
+      end foreach ;
+    end foreach ;  
+  #--- A given base category modifier is defined only once for a class
+    foreach categoryModifierListMap do
+      @categoryModifierMapForGlobalCheckings categoryModifierMap [emptyMap] ;
+      foreach mList do
+        [!?categoryModifierMap insertKey !mValue] ;
+      end foreach ;
+    end foreach ;  
+  #--- A given overriding category modifier is defined only once for a class
+    foreach overridingCategoryModifierListMap do
+      @categoryModifierMapForGlobalCheckings categoryModifierMap [emptyMap] ;
+      foreach mList do
+        [!?categoryModifierMap insertKey !mValue] ;
+      end foreach ;
+    end foreach ;  
+  #--- A given overriding abstract category modifier is defined only once for a class
+    foreach overridingAbstractCategoryMethodListMap do
+      @categoryModifierMapForGlobalCheckings categoryModifierMap [emptyMap] ;
+      foreach mList do
+        [!?categoryModifierMap insertKey !mValue] ;
+      end foreach ;
+    end foreach ;  
+  #------ Check that for every abstract category modifier, an overridden category modifier defined in an concrete subclass
+    foreach abstractCategoryModifierListMap do
+      foreach mList do
+        checkCategoryModifierDefinitionForClass
+          !key
+          !key
+          !mValue
+          !descendantClassListMap
+          !overridingCategoryModifierListMap
+          !inSemanticContext->mTypeMap
+        ;
+      end foreach ;
+    end foreach ;
+  #------ Check that for every overriding abstract category modifier, an overridden category modifier defined in an concrete subclass
+    foreach overridingAbstractCategoryModifierListMap do
+      foreach mList do
+        checkCategoryModifierDefinitionForClass
+          !key
+          !key
+          !mValue
+          !descendantClassListMap
+          !overridingCategoryModifierListMap
+          !inSemanticContext->mTypeMap
+        ;
+      end foreach ;
+    end foreach ;
+  #--- A given abstract category method is defined only once for a class
+    foreach abstractCategoryMethodListMap do
+      @categoryMethodMapForGlobalCheckings categoryMethodMap [emptyMap] ;
+      foreach mList do
+        [!?categoryMethodMap insertKey !mValue] ;
+      end foreach ;
+    end foreach ;  
+  #--- A given base category method is defined only once for a class
+    foreach categoryMethodListMap do
+      @categoryMethodMapForGlobalCheckings categoryMethodMap [emptyMap] ;
+      foreach mList do
+        [!?categoryMethodMap insertKey !mValue] ;
+      end foreach ;
+    end foreach ;  
+  #--- A given overriding category method is defined only once for a class
+    foreach overridingCategoryMethodListMap do
+      @categoryMethodMapForGlobalCheckings categoryMethodMap [emptyMap] ;
+      foreach mList do
+        [!?categoryMethodMap insertKey !mValue] ;
+      end foreach ;
+    end foreach ;  
+  #--- A given overriding abstract category method is defined only once for a class
+    foreach overridingAbstractCategoryMethodListMap do
+      @categoryMethodMapForGlobalCheckings categoryMethodMap [emptyMap] ;
+      foreach mList do
+        [!?categoryMethodMap insertKey !mValue] ;
+      end foreach ;
+    end foreach ;  
+  #------ Check that for every abstract category method, an overridden category method defined in an concrete subclass
+    foreach abstractCategoryMethodListMap do
+      foreach mList do
+        checkCategoryMethodDefinitionForClass
+          !key
+          !key
+          !mValue
+          !descendantClassListMap
+          !overridingCategoryMethodListMap
+          !inSemanticContext->mTypeMap
+        ;
+      end foreach ;
+    end foreach ;
+  #------ Check that for every abstract category method, an overridden category method defined in an concrete subclass
+    foreach overridingAbstractCategoryMethodListMap do
+      foreach mList do
+        checkCategoryMethodDefinitionForClass
+          !key
+          !key
+          !mValue
+          !descendantClassListMap
+          !overridingCategoryMethodListMap
+          !inSemanticContext->mTypeMap
+        ;
+      end foreach ;
+    end foreach ;
+  #------ Check Category readers
+##--- Check that for every abstract category reader, an overridden category reader
+##    defined in an concrete subclass
+  #--- A given abstract category reader is defined only once for a class
+    foreach abstractCategoryReaderListMap do
+      @categoryReaderMapForGlobalCheckings CategoryReaderMap [emptyMap] ;
+      foreach mList do
+        [!?CategoryReaderMap insertKey !mValue] ;
+      end foreach ;
+    end foreach ;  
+  #--- A given base category reader is defined only once for a class
+    foreach categoryReaderListMap do
+      @categoryReaderMapForGlobalCheckings CategoryReaderMap [emptyMap] ;
+      foreach mList do
+        [!?CategoryReaderMap insertKey !mValue] ;
+      end foreach ;
+    end foreach ;  
+  #--- A given overriding category reader is defined only once for a class
+    foreach overridingCategoryReaderListMap do
+      @categoryReaderMapForGlobalCheckings CategoryReaderMap [emptyMap] ;
+      foreach mList do
+        [!?CategoryReaderMap insertKey !mValue] ;
+      end foreach ;
+    end foreach ;  
+  #--- Check every abstract category reader is implemented by every inherited concrete type
+    foreach abstractCategoryReaderListMap do
+      foreach mList do
+        checkCategoryReaderDefinitionForClass
+          !key
+          !key
+          !mValue
+          !descendantClassListMap
+          !overridingCategoryReaderListMap
+          !inSemanticContext->mTypeMap
+        ;
+      end foreach ;
+    end foreach ;
+  #--- Check every abstract category reader is implemented by every inherited concrete type
+    foreach overridingAbstractCategoryReaderListMap do
+      foreach mList do
+        checkCategoryReaderDefinitionForClass
+          !key
+          !key
+          !mValue
+          !descendantClassListMap
+          !overridingCategoryReaderListMap
+          !inSemanticContext->mTypeMap
+        ;
+      end foreach ;
+    end foreach ;
+  end if ;
+#--- Build a text file that contains all declared types
+  const @string typeDumpFilePath := inProjectSourceFilePath . ".html" ;
+  if [option galgas_cli_options.outputHTMLTypeListFile value] then
+    @stringset firstLetterSet [emptySet] ;
+    foreach inSemanticContext->mTypeMap do
+      firstLetterSet += ![[lkey->string characterAtIndex!0] string] ;
+    end foreach ;
+    @string tableOfTypeString := "" ;
+    @char currentFirstLetter := ' ' ;
+    foreach inSemanticContext->mTypeMap : type_ do
+      if currentFirstLetter != [type_lkey->string characterAtIndex !0] then
+        currentFirstLetter := [type_lkey->string characterAtIndex !0] ;
+        tableOfTypeString .= "<br><a name=\"" . [currentFirstLetter uint] . "\"><b>" . currentFirstLetter . "</b></a><br>" ;
+      end if ;
+      tableOfTypeString .= linkForType [!type_lkey->string] . "<br>" ;
+    end foreach ;
+    const @string typeDumpString := [filewrapper typeDumpGenerationTemplate.typeDump
+      ![inProjectSourceFilePath lastPathComponent]
+      !inSemanticContext->mTypeMap
+      !firstLetterSet
+      !tableOfTypeString
+    ] ;
+    [typeDumpString writeToFileWhenDifferentContents !typeDumpFilePath ?*] ;
+  else
+    [@string deleteFileIfExists !typeDumpFilePath] ;
+  end if ;
+end routine ;
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 #           G E N E R A T I O N    F I L E W R A P P E R S                  *
 #                                                                           *

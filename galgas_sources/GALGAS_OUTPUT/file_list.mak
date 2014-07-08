@@ -136,6 +136,7 @@ SOURCES += galgas3GUIComponentCompilation.cpp
 SOURCES += galgas3SyntaxComponentCompilation.cpp
 SOURCES += galgas3GrammarComponentCompilation.cpp
 SOURCES += galgas3ProgramDeclarationCompilation.cpp
+SOURCES += galgas3TargetGeneration.cpp
 
 
 #------------------------------------------------------------------------------*

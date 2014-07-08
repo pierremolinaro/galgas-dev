@@ -352,6 +352,19 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::operator_concat (%?^%const 
 
 //-----------------------------------------------------------------------------*
 
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::add_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand,
+                                            %!^%C_Compiler * /* inCompiler */
+                                            %!^%COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_%!TYPE_IDENTIFIER% result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//-----------------------------------------------------------------------------*
+
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_subListWithRange (%?^%const GALGAS_range & inRange,
                                                %!^%C_Compiler * inCompiler
                                                %!^%COMMA_LOCATION_ARGS) const {
