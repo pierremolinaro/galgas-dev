@@ -32,6 +32,7 @@ program galgas_prgm :
   import "galgas3ProjectGrammar.gGrammar" ;
   import "galgas3Grammar.gGrammar" ;
   import "galgas3SemanticDeclarationCompilation.gSemantics" ;
+  import "galgas3TargetGeneration.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
@@ -49,6 +50,19 @@ before {
   if [option galgas_cli_options.extractLIBPMOption value] != "" then
     updateLIBPMatPath ![option galgas_cli_options.extractLIBPMOption value] ;
   end if ;  
+}
+
+#----------------------------------------------------------------------------*
+#                                                                            *
+#          Template                                                          *
+#                                                                            *
+#----------------------------------------------------------------------------*
+
+when . "gTemplate"
+message "a GALGAS Template source file"
+indexing with projectLL1grammar
+??@lstring inSourceFile {
+  grammar templateGrammar in inSourceFile ?* ;
 }
 
 #---------------------------------------------------------------------------*
@@ -194,9 +208,8 @@ indexing with projectLL1grammar
 #--- Parse metamodel component
   grammar projectLL1grammar in inProjectSourceFile ??@projectComponentAST projectComponentAST :> ??@string translatedProject ;
   if [option galgas_cli_options.convertToGalgas3 value] then
-    const projectName := [[inProjectSourceFile lastPathComponent] stringByDeletingPathExtension] ;
     const directory := [inProjectSourceFile stringByDeletingLastPathComponent] . "/../" ;
-    const newProjectFile := directory . projectName . ".galgasProject" ;
+    const newProjectFile := directory . "-" . projectComponentAST->mTargetName . ".galgasProject" ;
     [translatedProject writeToFileWhenDifferentContents !newProjectFile ?*] ;
   end if ;
 #--- Check project name
@@ -498,19 +511,6 @@ indexing with projectLL1grammar
 
 #----------------------------------------------------------------------------*
 #                                                                            *
-#          Template                                                          *
-#                                                                            *
-#----------------------------------------------------------------------------*
-
-when . "gTemplate"
-message "a GALGAS Template source file"
-indexing with projectLL1grammar
-??@lstring inSourceFile {
-  grammar templateGrammar in inSourceFile ?* ;
-}
-
-#----------------------------------------------------------------------------*
-#                                                                            *
 #          galgasProject                                                     *
 #                                                                            *
 #----------------------------------------------------------------------------*
@@ -519,7 +519,7 @@ when . "galgasProject"
 message "a GALGAS project source file"
 indexing with galgas3ProjectGrammar
 ??@lstring inProjectSourceFile {
-  message "** Parsing project files\n" ;
+  message "*** Parsing project files\n" ;
   grammar galgas3ProjectGrammar in inProjectSourceFile
     ??@galgas3ProjectComponentAST projectComponentAST
   ;
@@ -530,8 +530,8 @@ indexing with galgas3ProjectGrammar
       grammar galgas3Grammar in [@lstring new !absoluteSourcePath !mValue->location] !?declarationAST ;
     end if ;
   end foreach ;
+#---------------------------------- Display result
   if [@uint errorCount] == 0 then
-  #--- Display result
     message "  Semantic declarations: " . [declarationAST->mSemanticDeclarationList length] . "\n" ;
     message "  Lexique components: " . [declarationAST->mLexiqueComponentList length] . "\n" ;
     message "  Syntax components: " . [declarationAST->mSyntaxComponentList length] . "\n" ;
@@ -541,7 +541,10 @@ indexing with galgas3ProjectGrammar
     message "  Source rules: " . [declarationAST->mSourceRuleList length] . "\n" ;
     message "  Prologue procs: " . [declarationAST->mPrologueDeclarationList length] . "\n" ;
     message "  Epilogue procs: " . [declarationAST->mEpilogueDeclarationList length] . "\n" ;
-  #--- Compile semantic declarations
+  end if ;
+#---------------------------------- Compile semantic declarations
+  var toolProductFileList := [@stringlist emptyList] ;
+  if [@uint errorCount] == 0 then
     compileSemanticDeclarations
       !inProjectSourceFile->string
       !projectComponentAST->mEndOfSourceFile
@@ -549,6 +552,32 @@ indexing with galgas3ProjectGrammar
       !declarationAST->mOptionComponentList
       !declarationAST->mLexiqueComponentList
       !declarationAST->mGrammarComponentList
+      !?toolProductFileList
+    ;
+  end if ;
+#---------------------------------- Update targets
+  if 0 == [@uint errorCount] then
+    @stringset handledExtensionSet [emptySet] ;
+    for * in declarationAST->mSourceRuleList do
+      handledExtensionSet += !mSourceFileExtension->string ;
+    end for ;
+  #--- Build qualified feature map
+    @projectQualifiedFeatureMap projectQualifiedFeatureMap [emptyMap] ;
+    foreach projectComponentAST->mQualifiedFeatureList do
+      [!?projectQualifiedFeatureMap insertKey
+        !mFeatureName
+        !mFeatureValue
+      ] ;
+    end foreach ;
+    updateGalgas3Targets
+      !inProjectSourceFile
+      !projectComponentAST->mEndOfSourceFile
+      ![projectComponentAST->mMajorVersion->uint string] . "." . projectComponentAST->mMinorVersion->uint . "." . projectComponentAST->mRevisionVersion->uint
+      !projectQualifiedFeatureMap
+      !projectComponentAST->mGenerationFeatureList
+      !toolProductFileList
+      ![@stringlist emptyList] # inAppProductFileList
+      !handledExtensionSet
     ;
   end if ;
 }
