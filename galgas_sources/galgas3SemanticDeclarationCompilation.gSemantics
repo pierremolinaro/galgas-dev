@@ -32,6 +32,7 @@ routine compileSemanticDeclarations
   ??@galgas3LexiqueComponentListAST inLexiqueComponentList
   ??@galgas3GrammarComponentListAST inGrammarComponentList
   ?!@stringlist ioToolProductFileList
+  !@optionComponentMapForSemanticAnalysis outOptionComponentMapForSemanticAnalysis
 :
   message "*** Building context\n" ;
 #------ Add predefined types to semantics declarations
@@ -46,10 +47,17 @@ routine compileSemanticDeclarations
     ??@semanticDeclarationListAST sortedSemanticDeclarationListAST
   ;
 #------ Build option component map for analysis
+  var implementationFileIncludeList := [@stringlist emptyList] ;
   buildGalgas3OptionComponentMapForSemanticAnalysis
     !inOptionComponentList
-    !?semanticContext->mOptionComponentMapForSemanticAnalysis
+    ?outOptionComponentMapForSemanticAnalysis
   ;
+  semanticContext->mOptionComponentMapForSemanticAnalysis := outOptionComponentMapForSemanticAnalysis ;
+  for * in outOptionComponentMapForSemanticAnalysis do
+    if not mIsPredefined then
+      implementationFileIncludeList += !lkey->string ;
+    end if ;
+  end for ;
 #--- Build lexique component map for semantic analysis
   foreach inLexiqueComponentList do
     [!?semanticContext->mLexiqueComponentMapForSemanticAnalysis insertKey !mLexiqueComponentName] ;
@@ -59,6 +67,7 @@ routine compileSemanticDeclarations
     !inGrammarComponentList
     !?semanticContext
   ;
+  
 #------ Semantic Analysis
   message "*** Semantic analysis\n" ;
 #------ Check there is no undefined types
@@ -129,7 +138,7 @@ routine compileSemanticDeclarations
   if [@uint errorCount] == 0 then
     @string implementationString := [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
       !"AZERTYUIOP"
-      ![@stringlist emptyList]
+      !implementationFileIncludeList
     ] ;
     foreach decoratedDeclarationListForGeneration do
       implementationString .= [mDeclaration appendSpecificImplementation] ;
@@ -272,8 +281,9 @@ end routine ;
 
 routine buildGalgas3OptionComponentMapForSemanticAnalysis
   ??@galgas3OptionComponentListAST inOptionComponentList
-  ?!@optionComponentMapForSemanticAnalysis ioOptionComponentMapForSemanticAnalysis
+  !@optionComponentMapForSemanticAnalysis outOptionComponentMapForSemanticAnalysis
 :
+  outOptionComponentMapForSemanticAnalysis := [@optionComponentMapForSemanticAnalysis emptyMap] ;
   foreach inOptionComponentList do
     var boolOptionMap := [@commandLineOptionMap emptyMap] ;
     var uintOptionMap := [@commandLineOptionMap emptyMap] ;
@@ -320,15 +330,16 @@ routine buildGalgas3OptionComponentMapForSemanticAnalysis
       end if ;
       optionNameSet += ![mOptionInternalName string] ;
     end foreach ;
-    [!?ioOptionComponentMapForSemanticAnalysis insertKey
+    [!?outOptionComponentMapForSemanticAnalysis insertKey
       !mOptionComponentName
+      !false # Is not predefined
       !boolOptionMap
       !uintOptionMap
       !stringOptionMap
     ] ;
   end foreach ;
 #--- Add predefined option component
-  if not [ioOptionComponentMapForSemanticAnalysis hasKey !"galgas_builtin_options"] then
+  if not [outOptionComponentMapForSemanticAnalysis hasKey !"galgas_builtin_options"] then
     @2stringlist optionNameList := [@application boolOptionNameList] ;
     @commandLineOptionMap boolOptionMap [emptyMap] ;
     foreach optionNameList do
@@ -365,8 +376,9 @@ routine buildGalgas3OptionComponentMapForSemanticAnalysis
       ] ;
     end foreach ;
   #---
-    [!?ioOptionComponentMapForSemanticAnalysis insertKey
+    [!?outOptionComponentMapForSemanticAnalysis insertKey
       ![@lstring new !"galgas_builtin_options" !here]
+      !true # Is predefined
       !boolOptionMap
       !uintOptionMap
       !stringOptionMap

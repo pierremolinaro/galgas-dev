@@ -271,4 +271,88 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
+routine compileOptionComponentGalgas3
+  ??@string inProductDirectory
+  ??@string inOptionComponentName
+  ??@commandLineOptionMap boolOptionMap
+  ??@commandLineOptionMap uintOptionMap
+  ??@commandLineOptionMap stringOptionMap
+  ?!@stringlist ioToolProductFileList
+  ?!@stringlist ioAppProductFileList
+:
+  ioToolProductFileList += !inOptionComponentName . ".cpp" ;
+  ioAppProductFileList += !inOptionComponentName . "-cocoa.m" ;
+#--- Generate header
+  if [@uint errorCount] == 0 then
+    [@string generateFileWithPattern
+      !inProductDirectory
+      !inOptionComponentName . ".h"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      ![filewrapper optionGenerationTemplates.optionHeaderZone2
+        !inOptionComponentName
+      ]
+      !"\n\n" # Defaut user zone2
+      ![filewrapper optionGenerationTemplates.optionHeaderZone3
+        !inOptionComponentName
+        !boolOptionMap
+        !uintOptionMap
+        !stringOptionMap
+      ]
+    ] ;
+  end if ;
+#--- Generate Implementation
+  if [@uint errorCount] == 0 then
+    [@string generateFileWithPattern
+      !inProductDirectory
+      !inOptionComponentName . ".cpp"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      ![filewrapper optionGenerationTemplates.optionImplementation
+        !inOptionComponentName
+        !boolOptionMap
+        !uintOptionMap
+        !stringOptionMap
+      ]
+      !"\n\n" # Defaut user zone2
+      !"\n\n" # User Zone 3
+    ] ;
+ end if ;
+#--- Generate Cocoa header
+  if [@uint errorCount] == 0 then
+    [@string generateFileWithPattern
+      !inProductDirectory
+      !inOptionComponentName . "-cocoa.h"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      ![filewrapper optionGenerationTemplates.optionHeaderCocoaZone2
+        !inOptionComponentName
+      ]
+      !"\n\n" # Defaut user zone2
+      ![filewrapper optionGenerationTemplates.optionHeaderCocoaZone3
+        !inOptionComponentName
+      ]
+    ] ;
+  end if ;
+#--- Generate Cocoa Implementation
+  if [@uint errorCount] == 0 then
+    [@string generateFileWithPattern
+      !inProductDirectory
+      !inOptionComponentName . "-cocoa.m"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      ![filewrapper optionGenerationTemplates.optionImplementationCocoa
+        !inOptionComponentName
+        !boolOptionMap
+        !uintOptionMap
+        !stringOptionMap
+      ]
+      !"\n\n" # Defaut user zone2
+      !"\n\n" # User Zone 3
+    ] ;
+ end if ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
 end semantics ;

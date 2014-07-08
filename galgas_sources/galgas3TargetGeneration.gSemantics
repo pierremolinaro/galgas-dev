@@ -200,7 +200,7 @@ end routine ;
 
 routine updateGalgas3Targets
   ??@lstring inProjectSourceFilePath
-  ??@location inEndOfProjectSourceFile
+  ??@location unused inEndOfProjectSourceFile
   ??@string inProjectVersionString
   ??@projectQualifiedFeatureMap inProjectQualifiedFeatureMap
   ??@lstringlist inTargetFeatureList
@@ -215,7 +215,7 @@ routine updateGalgas3Targets
     ![inProjectSourceFilePath stringByDeletingLastPathComponent] . "/build/output/project_header.h"
     ?*
   ] ;
-#--- Update LIBPM
+#----------------------------------------------------------- Update LIBPM
   @string libpmPath ;
   with inProjectQualifiedFeatureMap hasKey !"libpmAtPath" do
     if mFeatureValue->string == "" then
@@ -226,10 +226,10 @@ routine updateGalgas3Targets
   else
     updateLIBPMatPath ![inProjectSourceFilePath stringByDeletingLastPathComponent] . "/build/libpm" ;
     libpmPath := "../build/libpm" ;
-    const @string libpmAbsolutePath := [libpmPath absolutePathFromPath ![inProjectSourceFilePath stringByDeletingLastPathComponent]] ;
-    if not [libpmAbsolutePath directoryExists] then
-      error inEndOfProjectSourceFile:"the '" . libpmAbsolutePath . "'  LIBPM directory does not exists" ;
-    end if ;
+#    const @string libpmAbsolutePath := [libpmPath absolutePathFromPath ![inProjectSourceFilePath stringByDeletingLastPathComponent]] ;
+#    if not [libpmAbsolutePath directoryExists] then
+#      error inEndOfProjectSourceFile:"the '" . libpmAbsolutePath . "'  LIBPM directory does not exists" ;
+#    end if ;
   end with ;
 #--- 
 #--- Check target names, file base name uniqueness, and build target file list
