@@ -28,7 +28,7 @@ import "syntaxSLRgrammar.gGrammar" ;
 #---------------------------------------------------------------------------*
 
 routine buildTerminalMap
-  ??@lexiqueComponentAST inLexiqueComponentRoot
+  ??@galgas3LexiqueComponentListAST.element inLexiqueComponentRoot
   !@terminalMap outTerminalMap
 :
 #--------------------------------------- Build lexical attribute map
@@ -137,7 +137,7 @@ routine compileSyntaxComponentFromAST
     ![[inSyntaxComponentRoot mImportedLexiqueFilePath] absolutePathFromPath ![inSourceFile stringByDeletingLastPathComponent]]
     ![[inSyntaxComponentRoot mImportedLexiqueFilePath] location]
   ] ;
-  @lexiqueComponentAST lexiqueComponentRoot ;
+  @galgas3LexiqueComponentListAST.element lexiqueComponentRoot ;
   parseLexiqueComponent
     !lexiqueFilePath
     !?ioParsedComponentStruct

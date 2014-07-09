@@ -352,7 +352,7 @@ rule '%' :
   when 'a'->'z' | 'A'->'Z' | '0'->'9' :
     repeat
       enterCharacterIntoString !?tokenString !* ;
-    while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
+    while 'a'->'z' | 'A'->'Z' | '-'  | '_' | '0'->'9' :
     end repeat ;
   default
     error attributeError ;

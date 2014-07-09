@@ -140,7 +140,7 @@ routine compileGuiComponentFromAST
 #--- 'with lexique' construct analysis
   foreach [inGuiComponentRoot mWithLexiqueList] do
   #--- Check lexique
-    @lexiqueComponentAST lexiqueComponentRoot ;
+    @galgas3LexiqueComponentListAST.element lexiqueComponentRoot ;
     if [[mLexiqueFileName string] pathExtension] != "gLexique" then
       error mLexiqueFileName:"the file extension for a lexique component should be 'gLexique'" : lexiqueComponentRoot ;
     else
