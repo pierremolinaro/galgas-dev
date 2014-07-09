@@ -255,91 +255,17 @@ routine updateGalgas3Targets
 #  @stringlist generatedFileListForMakefile [emptyList] ;
   @stringlist handCodedSourceList [emptyList] ;
   @stringset handCodedSourceDirectorySet [emptySet] ;
-#  foreach inProjectSourceList do
-#    const @string baseName := [[[mFilePath string] lastPathComponent] stringByDeletingPathExtension] ;
-#    const @string extension := [mFilePath pathExtension] ;
-#    const @string cppFile := baseName . ".cpp" ;
-#  #--- Check base name is unique
-#    if [sourceFileSet hasKey !baseName] & (extension != "h") & (extension != "xib") then
-#      error mFilePath: "there is already a file with '" . baseName . "' as base name in the project" ;
-#    end if ;
-#    sourceFileSet += !baseName ;
-#  #---
-#    switch mSourceKind
-#    when externSourceFile :
-#      if (extension == "cpp") | (extension == "mm") then
-#        externSourceSet_tool += ![mFilePath string] ;
-#        handCodedSourceList += ![mFilePath lastPathComponent] ;
-#        if [mFilePath stringByDeletingLastPathComponent] == "" then
-#          handCodedSourceDirectorySet += !"../hand_coded_sources" ;
-#        else
-#          handCodedSourceDirectorySet += !"../hand_coded_sources/" . [mFilePath stringByDeletingLastPathComponent] ;
-#        end if ;
-#      elsif extension == "framework" then
-#        externSourceSet_tool += ![mFilePath string] ;
-#        externSourceSet_app += ![mFilePath string] ;
-#        if [mFilePath stringByDeletingLastPathComponent] == "" then
-#          handCodedSourceDirectorySet += !"../hand_coded_sources" ;
-#        else
-#          handCodedSourceDirectorySet += !"../hand_coded_sources/" . [mFilePath stringByDeletingLastPathComponent] ;
-#        end if ;
-#      elsif extension == "m" then
-#        externSourceSet_app += ![mFilePath string] ;
-#        if [mFilePath stringByDeletingLastPathComponent] == "" then
-#          handCodedSourceDirectorySet += !"../hand_coded_sources" ;
-#        else
-#          handCodedSourceDirectorySet += !"../hand_coded_sources/" . [mFilePath stringByDeletingLastPathComponent] ;
-#        end if ;
-#      elsif extension == "h" then
-#        externSourceSet_tool += ![mFilePath string] ;
-#        if [mFilePath stringByDeletingLastPathComponent] == "" then
-#          handCodedSourceDirectorySet += !"../hand_coded_sources" ;
-#        else
-#          handCodedSourceDirectorySet += !"../hand_coded_sources/" . [mFilePath stringByDeletingLastPathComponent] ;
-#        end if ;
-#      elsif extension == "xib" then
-#        externSourceSet_app += ![mFilePath string] ;
-#        if [mFilePath stringByDeletingLastPathComponent] == "" then
-#          handCodedSourceDirectorySet += !"../hand_coded_sources" ;
-#        else
-#          handCodedSourceDirectorySet += !"../hand_coded_sources/" . [mFilePath stringByDeletingLastPathComponent] ;
-#        end if ;
-#      else
-#        error mFilePath:"unhandled extension" ;
-#      end if ;
-#    when lexiqueSourceFile :
-#      generatedFileListForMakefile += !cppFile ;
-#      scannerSourceSet_tool += !baseName ;
-#    when syntaxSourceFile :
-#      generatedFileListForMakefile += !cppFile ;
-#      syntaxSourceSet_tool += !baseName ;
-#    when semanticsSourceFile :
-#      generatedFileListForMakefile += !cppFile ;
-#      semanticsSourceSet_tool += !baseName ;
-#    when grammarSourceFile :
-#      generatedFileListForMakefile += !cppFile ;
-#      grammarSourceSet_tool += !baseName ;
-#    when programSourceFile :
-#      generatedFileListForMakefile += !cppFile ;
-#      programSourceSet_tool += !baseName ;
-#    when optionSourceFile :
-#      generatedFileListForMakefile += !cppFile ;
-#      optionSourceSet_tool += !baseName ;
-#    when guiSourceFile :
-#      guiSourceSet_app += !baseName ;
-#    end switch ;
-#  end foreach ;
 #--- Parse features
   if [option .verbose_output value] then
     message "*** Updating targets\n" ;
   end if ;
   @stringset availableGenerationFeatures [emptySet] ;
-  availableGenerationFeatures += !"makefile_macosx" ;
-  availableGenerationFeatures += !"makefile_unix" ;
-  availableGenerationFeatures += !"makefile_i386_linux_on_macosx" ;
-  availableGenerationFeatures += !"makefile_x86_64_linux_on_macosx" ;
-  availableGenerationFeatures += !"makefile_mingw_on_macosx" ;
-  availableGenerationFeatures += !"makefile_msys_on_win32" ;
+  availableGenerationFeatures += !"makefile-macosx" ;
+  availableGenerationFeatures += !"makefile-unix" ;
+  availableGenerationFeatures += !"makefile-i386-linux-on-macosx" ;
+  availableGenerationFeatures += !"makefile-x86_64-linux-on-macosx" ;
+  availableGenerationFeatures += !"makefile-mingw-on-macosx" ;
+  availableGenerationFeatures += !"makefile-msys-on-win32" ;
   availableGenerationFeatures += !"SnowLeopard" ;
   availableGenerationFeatures += !"Lion" ;
   availableGenerationFeatures += !"MountainLion" ;
