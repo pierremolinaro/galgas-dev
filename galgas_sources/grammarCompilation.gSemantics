@@ -570,7 +570,7 @@ routine compileGrammarComponentFromAST
     end if ;
   end foreach ;
 #------------------------ Get lexique component, for knowing if there are "indexing" declaration
-  @lexiqueComponentAST lexiqueComponentAST ;
+  @galgas3LexiqueComponentListAST.element lexiqueComponentAST ;
   parseLexiqueComponent
     ![@lstring new ![lexiqueComponentPath absolutePathFromPath ![inSourceFile stringByDeletingLastPathComponent]] ![lexiqueComponentPath location]]
     !?ioParsedComponentStruct

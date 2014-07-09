@@ -30,7 +30,7 @@ semantics allASTTypes :
 #---------------------------------------------------------------------------*
 
 map @parsedLexiqueComponentMap {
-  @lexiqueComponentAST mLexiqueComponentAST ;
+  @galgas3LexiqueComponentListAST.element mLexiqueComponentAST ;
   insert insertKey error message "the '%K' lexique component has already been parsed" ;
   search searchKey error message "the '%K' lexique component symbol is not parsed" ;
 }

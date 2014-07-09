@@ -276,7 +276,7 @@ indexing with projectLL1grammar
         if [option .verbose_output value] then
           message "*** Parse '" . [fullFilePath lastPathComponent] . "'\n" ;
         end if ;
-        @lexiqueComponentAST lexiqueComponentRoot ;
+        @galgas3LexiqueComponentListAST.element lexiqueComponentRoot ;
         grammar lexiqueLL1grammar in fullFilePath ?lexiqueComponentRoot :> ??@string translatedSource ;
         if [option galgas_cli_options.convertToGalgas3 value] then
           const projectName := [[fullFilePath lastPathComponent] stringByDeletingPathExtension] ;
@@ -574,6 +574,17 @@ indexing with galgas3ProjectGrammar
         ;
       end if ;
     end foreach ;
+  end if ;
+#---------------------------------- Compile lexique declarations
+  if [@uint errorCount] == 0 then
+    for scanner in declarationAST->mLexiqueComponentList do
+      compileLexiqueComponentGalgas3
+        !productDirectory
+        !scanner
+        !?toolProductFileList
+        !?appProductFileList
+      ;
+    end for ;
   end if ;
 #---------------------------------- Update targets
   if 0 == [@uint errorCount] then
