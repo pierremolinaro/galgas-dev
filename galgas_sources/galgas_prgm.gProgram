@@ -209,7 +209,7 @@ indexing with projectLL1grammar
   grammar projectLL1grammar in inProjectSourceFile ??@projectComponentAST projectComponentAST :> ??@string translatedProject ;
   if [option galgas_cli_options.convertToGalgas3 value] then
     const directory := [inProjectSourceFile stringByDeletingLastPathComponent] . "/../" ;
-    const newProjectFile := directory . projectComponentAST->mTargetName . ".galgasProject" ;
+    const newProjectFile := directory . "+" . projectComponentAST->mTargetName . ".galgasProject" ;
     [translatedProject writeToFileWhenDifferentContents !newProjectFile ?*] ;
   end if ;
 #--- Check project name
@@ -547,8 +547,9 @@ indexing with galgas3ProjectGrammar
   var toolProductFileList := [@stringlist emptyList] ;
   var appProductFileList := [@stringlist emptyList] ;
   var optionComponentMapForSemanticAnalysis := [@optionComponentMapForSemanticAnalysis emptyMap] ;
+  var semanticContext := [@semanticContext default] ;
   if [@uint errorCount] == 0 then
-    compileSemanticDeclarations
+    compileSemanticDeclarationsGalgas3
       !inProjectSourceFile->string
       !projectComponentAST->mEndOfSourceFile
       !declarationAST->mSemanticDeclarationList
@@ -556,7 +557,7 @@ indexing with galgas3ProjectGrammar
       !declarationAST->mLexiqueComponentList
       !declarationAST->mGrammarComponentList
       !?toolProductFileList
-      ?optionComponentMapForSemanticAnalysis
+      ?semanticContext
     ;
   end if ;
 #---------------------------------- Compile option declarations
@@ -575,7 +576,7 @@ indexing with galgas3ProjectGrammar
       end if ;
     end foreach ;
   end if ;
-#---------------------------------- Compile lexique declarations
+#---------------------------------- Compile lexique components
   if [@uint errorCount] == 0 then
     for scanner in declarationAST->mLexiqueComponentList do
       compileLexiqueComponentGalgas3
@@ -583,6 +584,17 @@ indexing with galgas3ProjectGrammar
         !scanner
         !?toolProductFileList
         !?appProductFileList
+      ;
+    end for ;
+  end if ;
+#---------------------------------- Compile syntax components
+  if [@uint errorCount] == 0 then
+    for component in declarationAST->mSyntaxComponentList do
+      compileSyntaxComponentGalgas3
+        !productDirectory
+        !component
+        !semanticContext
+        !?toolProductFileList
       ;
     end for ;
   end if ;

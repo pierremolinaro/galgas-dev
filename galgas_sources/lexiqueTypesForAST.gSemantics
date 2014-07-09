@@ -412,25 +412,6 @@ list @indexingListAST {
 
 #---------------------------------------------------------------------------*
 
-#struct @lexiqueComponentAST {
-#  @lstring mLexiqueComponentName  ;
-#  @bool mIsTemplate ;
-#  @metamodelTemplateDelimitorListAST mTemplateDelimitorList ;
-#  @templateReplacementListAST mTemplateReplacementList ;
-#  @lexicalAttributeListAST mLexicalAttributeList ;
-#  @lexicalStyleListAST mLexicalStyleList ;
-#  @terminalDeclarationListAST mTerminalDeclarationList  ;
-#  @lexicalMessageDeclarationListAST mLexicalMessageDeclarationList ;
-#  @lexicalListDeclarationListAST mLexicalListDeclarationList  ;
-#  @lexicalRuleListAST mLexicalRuleList ;
-#  @externRoutineListAST mExternRoutineList ;
-#  @externFunctionListAST mExternFunctionList  ;
-#  @indexingListAST mIndexingListAST ;
-#  @lstring mIndexingDirectory ;
-#}
-
-#---------------------------------------------------------------------------*
-
 list @galgas3LexiqueComponentListAST {
   @lstring mLexiqueComponentName  ;
   @bool mIsTemplate ;
@@ -447,6 +428,133 @@ list @galgas3LexiqueComponentListAST {
   @indexingListAST mIndexingListAST ;
   @lstring mIndexingDirectory ;
 }
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#           B U I L D    T E R M I N A L    M A P                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+enum @lexicalTypeEnum {
+  lexicalType_string, lexicalType_char, lexicalType_uint,
+  lexicalType_uint64, lexicalType_sint, lexicalType_sint64,
+  lexicalType_double
+}
+
+#---------------------------------------------------------------------------*
+
+list @lexicalSentValueList {
+  @string mLexicalAttributeName ;
+  @lexicalTypeEnum mLexicalType ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @terminalMap {
+  @lexicalSentValueList mSentAttributeList ;
+  insert insertKey error message "the '%K' terminal has been already declared in %L" ;
+  search searchKey error message "the '%K' terminal is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+#          B U I L D    L E X I C A L    T Y P E    M A P                   *
+#---------------------------------------------------------------------------*
+
+map @lexicalTypeMap {
+  @lexicalTypeEnum mLexicalType ;
+  insert insertKey error message "the '@%K' lexical type is already declared in %L" ;
+  search searchKey error message "there is no '@%K' lexical type" ;
+}
+
+#---------------------------------------------------------------------------*
+
+once buildLexicalTypeMap
+  ->@lexicalTypeMap outLexicalTypeMap
+:
+  outLexicalTypeMap := [@lexicalTypeMap emptyMap] ;
+  [!?outLexicalTypeMap insertKey ![@lstring new !"string" !here] ![@lexicalTypeEnum lexicalType_string]] ;
+  [!?outLexicalTypeMap insertKey ![@lstring new !"char"   !here] ![@lexicalTypeEnum lexicalType_char]] ;
+  [!?outLexicalTypeMap insertKey ![@lstring new !"uint"   !here] ![@lexicalTypeEnum lexicalType_uint]] ;
+  [!?outLexicalTypeMap insertKey ![@lstring new !"uint64" !here] ![@lexicalTypeEnum lexicalType_uint64]] ;
+  [!?outLexicalTypeMap insertKey ![@lstring new !"sint"   !here] ![@lexicalTypeEnum lexicalType_sint]] ;
+  [!?outLexicalTypeMap insertKey ![@lstring new !"sint64" !here] ![@lexicalTypeEnum lexicalType_sint64]] ;
+  [!?outLexicalTypeMap insertKey ![@lstring new !"double" !here] ![@lexicalTypeEnum lexicalType_double]] ;
+end once ;
+
+#---------------------------------------------------------------------------*
+
+map @lexicalAttributeMap {
+  @lexicalTypeEnum mLexicalType ;
+  insert insertKey error message "the '%K' lexical attribute has been already declared in %L" ;
+  search searchKey error message "the '%K' lexical attribute is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+#   B U I L D    L E X I C A L    A T T R I B U T E    M A P                *
+#---------------------------------------------------------------------------*
+
+routine buildLexicalAttributeMap
+  ??@lexicalTypeMap inLexicalTypeMap
+  ??@lexicalAttributeListAST inLexicalAttributeList
+  ?!@lexicalAttributeMap ioLexicalAttributeMap
+:
+  foreach inLexicalAttributeList do
+    if [inLexicalTypeMap hasKey ![mTypeName string]] then
+      @lexicalTypeEnum lexicalType ;
+      [inLexicalTypeMap searchKey !mTypeName ?lexicalType] ;
+      [!?ioLexicalAttributeMap insertKey !mName !lexicalType] ;
+    else
+      @string m := "" ;
+      m .= "the @" . mTypeName . " type is not a valid lexical attribute type; are allowed:" ;
+      @bool firstLoop := true ;
+      foreach inLexicalTypeMap do
+        m .= " @" . lkey ;
+      between
+        m .= "," ;
+      end foreach ;
+      error mTypeName: m ;
+    end if ;
+  end foreach ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine buildTerminalMap
+  ??@galgas3LexiqueComponentListAST.element inLexiqueComponentRoot
+  !@terminalMap outTerminalMap
+:
+#--------------------------------------- Build lexical attribute map
+  const @lexicalTypeMap lexicalTypeMap := buildLexicalTypeMap [] ;
+  @lexicalAttributeMap lexicalAttributeMap [emptyMap] ;
+  buildLexicalAttributeMap
+   !lexicalTypeMap
+   ![inLexiqueComponentRoot mLexicalAttributeList]
+   !?lexicalAttributeMap
+  ;
+#--------------------------------------- 
+  outTerminalMap := [@terminalMap emptyMap] ;
+  foreach [inLexiqueComponentRoot mTerminalDeclarationList] do
+    @lexicalSentValueList argumentTypeList [emptyList] ;
+    foreach mSentAttributeList do
+      @lexicalTypeEnum attributeLexicalType ;
+      [lexicalAttributeMap searchKey !mValue ?attributeLexicalType] ;
+      argumentTypeList += ![mValue string] !attributeLexicalType ;
+    end foreach ;
+    [!?outTerminalMap insertKey !mName !argumentTypeList] ;
+  end foreach ;
+#---
+  foreach [inLexiqueComponentRoot mLexicalListDeclarationList] do
+    @lexicalSentValueList argumentTypeList [emptyList] ;
+    foreach mSentAttributeList do
+      @lexicalTypeEnum attributeLexicalType ;
+      [lexicalAttributeMap searchKey !mValue ?attributeLexicalType] ;
+      argumentTypeList += ![mValue string] !attributeLexicalType ;
+    end foreach ;
+    foreach mEntryList do
+      [!?outTerminalMap insertKey !mTerminalSpelling !argumentTypeList] ;
+    end foreach ;
+  end foreach ;
+end routine ;
 
 #---------------------------------------------------------------------------*
 

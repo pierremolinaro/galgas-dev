@@ -1946,6 +1946,7 @@ override method @lexiqueIntrospectionExpressionAST analyzeSemanticExpression
 #--- Check  lexique is declared
   [inAnalysisContext->mSemanticContext->mLexiqueComponentMapForSemanticAnalysis searchKey
     !mLexiqueComponentName
+    ?3*
   ] ;
 #--- Check reader name
   if mLexiqueReaderName->string != "symbols" then

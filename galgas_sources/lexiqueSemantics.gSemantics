@@ -3,47 +3,8 @@ import "lexiqueTypesForAST.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
-enum @lexicalTypeEnum {
-  lexicalType_string, lexicalType_char, lexicalType_uint,
-  lexicalType_uint64, lexicalType_sint, lexicalType_sint64,
-  lexicalType_double
-}
-
-#---------------------------------------------------------------------------*
-
 list @lexicalTypeList {
   @lexicalTypeEnum mLexicalType ; 
-}
-
-#---------------------------------------------------------------------------*
-
-map @lexicalTypeMap {
-  @lexicalTypeEnum mLexicalType ;
-  insert insertKey error message "the '@%K' lexical type is already declared in %L" ;
-  search searchKey error message "there is no '@%K' lexical type" ;
-}
-
-#---------------------------------------------------------------------------*
-
-map @lexicalAttributeMap {
-  @lexicalTypeEnum mLexicalType ;
-  insert insertKey error message "the '%K' lexical attribute has been already declared in %L" ;
-  search searchKey error message "the '%K' lexical attribute is not declared" ;
-}
-
-#---------------------------------------------------------------------------*
-
-list @lexicalSentValueList {
-  @string mLexicalAttributeName ;
-  @lexicalTypeEnum mLexicalType ;
-}
-
-#---------------------------------------------------------------------------*
-
-map @terminalMap {
-  @lexicalSentValueList mSentAttributeList ;
-  insert insertKey error message "the '%K' terminal has been already declared in %L" ;
-  search searchKey error message "the '%K' terminal is not declared" ;
 }
 
 #---------------------------------------------------------------------------*

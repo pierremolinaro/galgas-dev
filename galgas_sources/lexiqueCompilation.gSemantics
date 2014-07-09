@@ -803,51 +803,6 @@ routine parseLexiqueComponent
 end routine ;
 
 #---------------------------------------------------------------------------*
-#          B U I L D    L E X I C A L    T Y P E    M A P                   *
-#---------------------------------------------------------------------------*
-
-once buildLexicalTypeMap
-  ->@lexicalTypeMap outLexicalTypeMap
-:
-  outLexicalTypeMap := [@lexicalTypeMap emptyMap] ;
-  [!?outLexicalTypeMap insertKey ![@lstring new !"string" !here] ![@lexicalTypeEnum lexicalType_string]] ;
-  [!?outLexicalTypeMap insertKey ![@lstring new !"char"   !here] ![@lexicalTypeEnum lexicalType_char]] ;
-  [!?outLexicalTypeMap insertKey ![@lstring new !"uint"   !here] ![@lexicalTypeEnum lexicalType_uint]] ;
-  [!?outLexicalTypeMap insertKey ![@lstring new !"uint64" !here] ![@lexicalTypeEnum lexicalType_uint64]] ;
-  [!?outLexicalTypeMap insertKey ![@lstring new !"sint"   !here] ![@lexicalTypeEnum lexicalType_sint]] ;
-  [!?outLexicalTypeMap insertKey ![@lstring new !"sint64" !here] ![@lexicalTypeEnum lexicalType_sint64]] ;
-  [!?outLexicalTypeMap insertKey ![@lstring new !"double" !here] ![@lexicalTypeEnum lexicalType_double]] ;
-end once ;
-
-#---------------------------------------------------------------------------*
-#   B U I L D    L E X I C A L    A T T R I B U T E    M A P                *
-#---------------------------------------------------------------------------*
-
-routine buildLexicalAttributeMap
-  ??@lexicalTypeMap inLexicalTypeMap
-  ??@lexicalAttributeListAST inLexicalAttributeList
-  ?!@lexicalAttributeMap ioLexicalAttributeMap
-:
-  foreach inLexicalAttributeList do
-    if [inLexicalTypeMap hasKey ![mTypeName string]] then
-      @lexicalTypeEnum lexicalType ;
-      [inLexicalTypeMap searchKey !mTypeName ?lexicalType] ;
-      [!?ioLexicalAttributeMap insertKey !mName !lexicalType] ;
-    else
-      @string m := "" ;
-      m .= "the @" . mTypeName . " type is not a valid lexical attribute type; are allowed:" ;
-      @bool firstLoop := true ;
-      foreach inLexicalTypeMap do
-        m .= " @" . lkey ;
-      between
-        m .= "," ;
-      end foreach ;
-      error mTypeName: m ;
-    end if ;
-  end foreach ;
-end routine ;
-
-#---------------------------------------------------------------------------*
 #                         compileLexiqueComponentFromAST                    *
 #---------------------------------------------------------------------------*
 
