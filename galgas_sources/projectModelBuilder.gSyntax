@@ -54,13 +54,13 @@ rule <project_component_start_symbol>
     send sep ;
     select
       $identifier$ ? @lstring featureName :> ?* ?* ;
-      send "%" . featureName ;
+      send "%" . [featureName->string stringByReplacingStringByString !"_" !"-"] ;
       $:$ ;
       $literal_string$ ? @lstring featureValue ;
       qualifiedFeatureList += !featureName !featureValue ;
     or
       $literal_string$ ? @lstring featureName :> ?* ?* ;
-      send "%" . featureName ;
+      send "%" . [featureName->string stringByReplacingStringByString !"_" !"-"] ;
       generateFeatureList += !featureName ;
     end select ;
     $;$ :> ?* ?* ;
