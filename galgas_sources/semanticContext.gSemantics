@@ -24,6 +24,7 @@ semantics semanticContext :
   import "semanticsReaders.gSemantics" ;
   import "semanticsConstructors.gSemantics" ;
   import "optionCompilation.gSemantics" ;
+  import "lexiqueSemantics.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -152,6 +153,9 @@ map @optionMapForSemanticAnalysis {
 #---------------------------------------------------------------------------*
 
 map @lexiqueComponentMapForSemanticAnalysis {
+  @terminalMap mTerminalMap ;
+  @indexingListAST mIndexingListAST ;
+  @lstring mIndexingDirectory ;
   insert insertKey error message "redefinition of the '%K' lexique component: it has been already declared in %L" ;
   search searchKey error message "the '%K' lexique component is not imported" ;
 }

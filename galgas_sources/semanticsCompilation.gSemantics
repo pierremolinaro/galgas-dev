@@ -207,7 +207,13 @@ routine buildLexiqueComponentMapForSemanticAnalysis
 :
   outLexiqueComponentMapForSemanticAnalysis := [@lexiqueComponentMapForSemanticAnalysis emptyMap] ;
   foreach inParsedComponentStruct->mParsedLexiqueComponentMap do
-    [!?outLexiqueComponentMapForSemanticAnalysis insertKey !lkey] ;
+    buildTerminalMap !mLexiqueComponentAST ??@terminalMap terminalMap ;
+    [!?outLexiqueComponentMapForSemanticAnalysis insertKey
+      !lkey
+      !terminalMap
+      !mLexiqueComponentAST->mIndexingListAST
+      !mLexiqueComponentAST->mIndexingDirectory
+    ] ;
   end foreach ;
 end routine ;
 

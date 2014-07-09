@@ -18,7 +18,6 @@
 
 semantics syntaxSignature :
 import "semanticsCompilation.gSemantics" ;
-import "lexiqueCompilation.gSemantics" ;
     
 #---------------------------------------------------------------------------*
 #                                                                           *

@@ -23,49 +23,6 @@ import "syntaxSLRgrammar.gGrammar" ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#           B U I L D    T E R M I N A L    M A P                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-routine buildTerminalMap
-  ??@galgas3LexiqueComponentListAST.element inLexiqueComponentRoot
-  !@terminalMap outTerminalMap
-:
-#--------------------------------------- Build lexical attribute map
-  const @lexicalTypeMap lexicalTypeMap := buildLexicalTypeMap [] ;
-  @lexicalAttributeMap lexicalAttributeMap [emptyMap] ;
-  buildLexicalAttributeMap
-   !lexicalTypeMap
-   ![inLexiqueComponentRoot mLexicalAttributeList]
-   !?lexicalAttributeMap
-  ;
-#--------------------------------------- 
-  outTerminalMap := [@terminalMap emptyMap] ;
-  foreach [inLexiqueComponentRoot mTerminalDeclarationList] do
-    @lexicalSentValueList argumentTypeList [emptyList] ;
-    foreach mSentAttributeList do
-      @lexicalTypeEnum attributeLexicalType ;
-      [lexicalAttributeMap searchKey !mValue ?attributeLexicalType] ;
-      argumentTypeList += ![mValue string] !attributeLexicalType ;
-    end foreach ;
-    [!?outTerminalMap insertKey !mName !argumentTypeList] ;
-  end foreach ;
-#---
-  foreach [inLexiqueComponentRoot mLexicalListDeclarationList] do
-    @lexicalSentValueList argumentTypeList [emptyList] ;
-    foreach mSentAttributeList do
-      @lexicalTypeEnum attributeLexicalType ;
-      [lexicalAttributeMap searchKey !mValue ?attributeLexicalType] ;
-      argumentTypeList += ![mValue string] !attributeLexicalType ;
-    end foreach ;
-    foreach mEntryList do
-      [!?outTerminalMap insertKey !mTerminalSpelling !argumentTypeList] ;
-    end foreach ;
-  end foreach ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #           C O M P I L E    S Y N T A X    C O M P O N E N T               *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -285,6 +242,7 @@ routine compileSyntaxComponentFromAST
     end if ;
   end if ;
 end routine ;
+
 #---------------------------------------------------------------------------*
 
 routine compileSyntaxComponentFromSourceFile
@@ -309,6 +267,228 @@ routine compileSyntaxComponentFromSourceFile
     !syntaxComponentRoot
     !?ioParsedComponentStruct
   ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#           C O M P I L E    S Y N T A X    C O M P O N E N T               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine compileSyntaxComponentGalgas3
+  ??@string inOutputDirectory
+  ??@galgas3SyntaxComponentListAST.element inSyntaxComponentRoot
+  ??@semanticContext inSemanticContext
+  ?!@stringlist ioToolProductFileList
+:
+  const @string componentName := inSyntaxComponentRoot->mSyntaxComponentName->string ;
+#--- Recursively parse all imported files
+#  @semanticDeclarationListAST semanticDeclarationList := [inSyntaxComponentRoot mSemanticDeclarationList] ;
+#  @stringset parsedFileSet [setWithString ![inSourceFile string]] ;
+#  @lstringlist optionComponentFileNameList [emptyList] ;
+#  @grammarComponentASTList grammarComponentASTList [emptyList] ;
+#  @stringlist headerIncludeList [emptyList] ;
+#  @stringlist implementationIncludeList [emptyList] ;
+#  recursivelyImportSemanticComponentAndCheckNoCircularityInImportSemantics
+#    !inSourceFile
+#    !?ioParsedComponentStruct
+#    !?optionComponentFileNameList
+#    !?grammarComponentASTList
+#    !?semanticDeclarationList
+#    !?parsedFileSet
+#    !?headerIncludeList
+#    !?implementationIncludeList
+#    ![inSyntaxComponentRoot mImportedComponentFileNameList]
+#    ![inSourceFile stringByDeletingLastPathComponent]
+#  ;
+#------ Add predefined types to semantics declarations
+#  @semanticDeclarationListAST semanticDeclarationListWithPredefinedTypes := semanticDeclarationList ;
+#  appendPredefinedTypesASTs !?semanticDeclarationListWithPredefinedTypes ;
+##------ Build semantic context
+#  @semanticContext semanticContext ;
+#  buildSemanticContext
+#    ![inSourceFile string]
+#    !semanticDeclarationListWithPredefinedTypes
+#    ![inSyntaxComponentRoot mEndOfSourceFile]
+#    ?semanticContext
+#  ;
+##--- Perform semantic analysis of grammar components
+#  buildGrammarComponentMapForSemanticAnalysis
+#    !grammarComponentASTList
+#    !?semanticContext
+#  ;
+##--- Build option component map for analysis
+#  buildOptionComponentMapForSemanticAnalysis
+#    !optionComponentFileNameList
+#    !?ioParsedComponentStruct
+#    !?semanticContext->mOptionComponentMapForSemanticAnalysis
+#  ;
+##--- Build lexique component map for semantic analysis
+#  buildLexiqueComponentMapForSemanticAnalysis
+#    !ioParsedComponentStruct
+#    ?@lexiqueComponentMapForSemanticAnalysis lexiqueMap
+#  ;
+#  semanticContext->mLexiqueComponentMapForSemanticAnalysis := lexiqueMap ;
+#--- Parse lexique component
+#  const lexiqueFilePath := [@lstring new
+#    ![[inSyntaxComponentRoot mImportedLexiqueFilePath] absolutePathFromPath ![inSourceFile stringByDeletingLastPathComponent]]
+#    ![[inSyntaxComponentRoot mImportedLexiqueFilePath] location]
+#  ] ;
+#  @galgas3LexiqueComponentListAST.element lexiqueComponentRoot ;
+#  parseLexiqueComponent
+#    !lexiqueFilePath
+#    !?ioParsedComponentStruct
+#    ?lexiqueComponentRoot
+#  ;
+#--------------------------------------- Build terminal map
+  [inSemanticContext->mLexiqueComponentMapForSemanticAnalysis searchKey
+    !inSyntaxComponentRoot->mImportedLexiqueFilePath
+    ??@terminalMap terminalMap
+    ??@indexingListAST indexingListAST
+    ??@lstring indexingDirectory
+  ] ;
+#--------------------------------------- Build "indexing" set
+  @stringset indexNameSet [emptySet] ;
+  foreach indexingListAST do
+    indexNameSet += !mIndexName->string ;
+  end foreach ;
+  const @bool hasIndexing := not [indexingDirectory isNowhere] ;
+#--- Build semantic context from rule headers and non terminal declaration
+  if [@uint errorCount] == 0 then
+    const @string lexiqueName := [[[inSyntaxComponentRoot mImportedLexiqueFilePath] lastPathComponent] stringByDeletingPathExtension] ;
+    @semanticDeclarationSortedListForGeneration decoratedDeclarationListForGeneration ;
+    const @predefinedTypes predefinedTypes := buildPredefinedTypes [!inSemanticContext] ;
+    @syntaxDeclarationForGeneration syntaxDeclarationForGeneration ;
+    semanticAnalysisOfSyntaxComponent
+      !inSyntaxComponentRoot->mNonterminalDeclarationList
+      !inSyntaxComponentRoot->mRuleList
+      !componentName
+      ![lexiqueName identifierRepresentation]
+      !inSemanticContext
+      !predefinedTypes
+      !terminalMap
+      !indexNameSet
+      !hasIndexing
+      !inSyntaxComponentRoot->mHasTranslateFeature
+      ?syntaxDeclarationForGeneration
+    ;
+  #------ Semantic Analysis
+    performSemanticAnalysis
+      ![@semanticDeclarationListAST emptyList]
+#      ![inSyntaxComponentRoot mSemanticDeclarationList]
+      !inSemanticContext
+      ?decoratedDeclarationListForGeneration
+    ;
+    decoratedDeclarationListForGeneration += !false !syntaxDeclarationForGeneration !"" ;
+    var headerIncludeList := [@stringlist emptyList] ;
+    var implementationIncludeList := [@stringlist emptyList] ;
+  #------ Generate Header File
+    if [@uint errorCount] == 0 then
+      var headerString := [filewrapper syntaxFileGenerationTemplate.syntaxFileHeader
+        !componentName
+        !lexiqueName
+        !headerIncludeList
+        ![inSemanticContext->mTypeMap allKeyList]
+      ] ;
+      foreach decoratedDeclarationListForGeneration do
+        headerString .= [mDeclaration appendDeclaration1] ;
+      end foreach ;
+      foreach decoratedDeclarationListForGeneration do
+        headerString .= [mDeclaration appendDeclaration2 !inOutputDirectory] ;
+      end foreach ;
+      [@string generateFileWithPattern
+        !inOutputDirectory
+        !componentName . ".h"
+        !"//"
+        !"\n\n" # Defaut user zone1
+        !headerString
+        !"\n\n" # Defaut user zone2
+        !"#endif\n"
+      ] ;
+    #------ Generate Implementation File
+      if [@uint errorCount] == 0 then
+        @string implementationString := [filewrapper syntaxFileGenerationTemplate.syntaxFileImplementation
+          !componentName
+          !implementationIncludeList
+        ] ;
+        foreach decoratedDeclarationListForGeneration do
+          implementationString .= [mDeclaration appendTypeGenericImplementation] ;
+          implementationString .= [mDeclaration appendSpecificImplementation] ;
+        end foreach ;
+        const @string lexiqueCppName := "C_Lexique_"
+        . [[[[inSyntaxComponentRoot mImportedLexiqueFilePath] lastPathComponent] stringByDeletingPathExtension] identifierRepresentation] ;
+        foreach [syntaxDeclarationForGeneration mRuleDeclarationList] do
+        #--- Generate rule label implementation
+          foreach mLabelImplementationList do
+            const @string ruleName := "cParser_" . [componentName identifierRepresentation]
+              . "::rule_" . [componentName identifierRepresentation] . "_"
+              . [mNonterminalName identifierRepresentation]
+              . "_i" . [mRuleIndex string] . "_" . [mLabelName identifierRepresentation]
+            ;
+            implementationString .= "//---------------------------------------------------------------------------*\n\n" ;
+            implementationString .= generateProcedure [
+              !ruleName
+              !mSignatureForGeneration
+              !mInstructionListForGeneration
+              !false
+              !lexiqueCppName
+              !false # Do not generate location Argument
+              !false # Do not generate 'resetTemplateString'
+              !inSyntaxComponentRoot->mHasTranslateFeature
+            ] ;
+          end foreach ;
+        #--- Generate "parse" label
+          @semanticInstructionListForGeneration instructionList ;
+          [mLabelImplementationList first ?* ?* ?* ?* ?instructionList] ;
+          const @string ruleName := "cParser_" . [componentName identifierRepresentation]
+          . "::rule_" . [componentName identifierRepresentation] . "_"
+          . [mNonterminalName identifierRepresentation]
+          . "_i" . [mRuleIndex string] . "_parse" ;
+          implementationString .= "//---------------------------------------------------------------------------*\n\n" ;
+          implementationString .= generateProcedure [
+            !ruleName
+            ![@formalParameterListForGeneration emptyList]
+            !syntaxSignatureOfInstructionList [!"parse" !instructionList]
+            !false
+            !lexiqueCppName
+            !false # Do not generate location Argument
+            !true # Generate 'resetTemplateString'
+            !inSyntaxComponentRoot->mHasTranslateFeature
+          ] ;
+        #--- Generate indexing code
+          if hasIndexing then
+            @semanticInstructionListForGeneration instructionList ;
+            [mLabelImplementationList first ?* ?* ?* ?* ?instructionList] ;
+            const @string ruleName := "cParser_" . [componentName identifierRepresentation]
+            . "::rule_" . [componentName identifierRepresentation] . "_"
+            . [mNonterminalName identifierRepresentation]
+            . "_i" . [mRuleIndex string] . "_indexing" ;
+            implementationString .= "//---------------------------------------------------------------------------*\n\n" ;
+            implementationString .= generateProcedure [
+              !ruleName
+              ![@formalParameterListForGeneration emptyList]
+              !syntaxSignatureOfInstructionList [!"indexing" !instructionList]
+              !false
+              !lexiqueCppName
+              !false # Do not generate location Argument
+              !false # Do not generate 'resetTemplateString'
+              !false # Do not generate syntaxDirectedTranslationString argument
+            ] ;
+          end if ;
+        end foreach ;
+        ioToolProductFileList += !componentName . ".cpp" ;
+        [@string generateFileWithPattern
+          !inOutputDirectory
+          !componentName . ".cpp"
+          !"//"
+          !"\n\n" # Defaut user zone1
+          !implementationString
+          !"\n\n" # Defaut user zone2
+          !"\n"
+        ] ;
+      end if ;
+    end if ;
+  end if ;
 end routine ;
 
 #---------------------------------------------------------------------------*
