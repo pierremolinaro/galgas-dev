@@ -70,16 +70,16 @@ static bool displayUnusefulSymbols (C_Compiler * inCompiler,
                                     const GALGAS_location & inErrorLocation,
                                     const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
                                     const C_Relation & inUsefulSymbolsRelation,
-                                    C_HTML_FileWrite * inHTMLfile,
+                                    C_HTML_FileWrite & ioHTMLfile,
                                     const cVocabulary & inVocabulary,
                                     const int32_t inIterationCount,
                                     const bool inVerboseOptionOn) {
-  if (inHTMLfile != NULL) {
-    inHTMLfile->outputRawData ("<p><a name=\"useful_symbols\"></a>") ;
-    *inHTMLfile << "Calculus completed in "
+  if (ioHTMLfile.isOpened ()) {
+    ioHTMLfile.outputRawData ("<p><a name=\"useful_symbols\"></a>") ;
+    ioHTMLfile << "Calculus completed in "
                 << cStringWithSigned (inIterationCount)
                 << " iterations.\n" ;
-    inHTMLfile->outputRawData ("</p>") ;
+    ioHTMLfile.outputRawData ("</p>") ;
   }
 
 //------------------------------------------------------ Compute useless symbols
@@ -110,25 +110,25 @@ static bool displayUnusefulSymbols (C_Compiler * inCompiler,
   TC_UniqueArray <uint64_t> unusedSymbolArrayForWarning ;
   uselessSymbolsForWarning.getValueArray (unusedSymbolArrayForWarning) ;
 //---------------------------------------------------------- Print in HTML file  
-  if (inHTMLfile != NULL) {
-    inHTMLfile->outputRawData ("<p>") ;
+  if (ioHTMLfile.isOpened ()) {
+    ioHTMLfile.outputRawData ("<p>") ;
     if (unusedSymbolArrayForWarning.count () == 0) {
-      inHTMLfile->outputRawData ("<span class=\"success\">") ;
-      *inHTMLfile << "All terminal and nonterminal symbols are useful.\n\n" ;
-      inHTMLfile->outputRawData ("</span>") ;
+      ioHTMLfile.outputRawData ("<span class=\"success\">") ;
+      ioHTMLfile << "All terminal and nonterminal symbols are useful.\n\n" ;
+      ioHTMLfile.outputRawData ("</span>") ;
     }else{
-      inHTMLfile->outputRawData ("<span class=\"warning\">") ;
-      *inHTMLfile << "The vocabulary has " ;
-      inHTMLfile->appendSigned (unusedSymbolArrayForWarning.count ()) ;
-      *inHTMLfile << " useless symbol(s) : \n" ;
-      inHTMLfile->outputRawData ("<code>") ;
+      ioHTMLfile.outputRawData ("<span class=\"warning\">") ;
+      ioHTMLfile << "The vocabulary has " ;
+      ioHTMLfile.appendSigned (unusedSymbolArrayForWarning.count ()) ;
+      ioHTMLfile << " useless symbol(s) : \n" ;
+      ioHTMLfile.outputRawData ("<code>") ;
       for (int32_t symbol=0 ; symbol < unusedSymbolArrayForWarning.count () ; symbol++) {
-        inHTMLfile->outputRawData ("<br>") ;
-        *inHTMLfile << uselessSymbolsForWarning.configuration().constantNameForVariableAndValue (0, (uint32_t) unusedSymbolArrayForWarning (symbol COMMA_HERE) COMMA_HERE) ;
+        ioHTMLfile.outputRawData ("<br>") ;
+        ioHTMLfile << uselessSymbolsForWarning.configuration().constantNameForVariableAndValue (0, (uint32_t) unusedSymbolArrayForWarning (symbol COMMA_HERE) COMMA_HERE) ;
       }
-      inHTMLfile->outputRawData ("</code></span>") ;
+      ioHTMLfile.outputRawData ("</code></span>") ;
     }
-    inHTMLfile->outputRawData ("</p>") ;
+    ioHTMLfile.outputRawData ("</p>") ;
   }
 //---------------------------------------- Print messages and warnings on stdout
 //--- Ok, or warning ?
@@ -191,7 +191,7 @@ void useful_symbols_computations (C_Compiler * inCompiler,
                                   const cPureBNFproductionsList & inPureBNFproductions,
                                   const C_RelationSingleType & inVocabularyBDDType,
                                   const cVocabulary & inVocabulary,
-                                  C_HTML_FileWrite * inHTMLfile,
+                                  C_HTML_FileWrite & ioHTMLfile,
                                   C_Relation & outUsefulSymbols,
                                   bool & outWarningFlag,
                                   const bool inVerboseOptionOn) {
@@ -201,8 +201,8 @@ void useful_symbols_computations (C_Compiler * inCompiler,
     co.flush () ;
   }
 //--- Print in BNF file
-  if (inHTMLfile != NULL) {
-    inHTMLfile->appendCppTitleComment ("Useful terminal and nonterminal symbols", "title") ;
+  if (ioHTMLfile.isOpened ()) {
+    ioHTMLfile.appendCppTitleComment ("Useful terminal and nonterminal symbols", "title") ;
   }
   int32_t iterationsCount = 0 ;
   computeUsefulSymbols (inPureBNFproductions,
@@ -215,7 +215,7 @@ void useful_symbols_computations (C_Compiler * inCompiler,
                                                inErrorLocation,
                                                inUnusedNonTerminalSymbolsForGrammar,
                                                outUsefulSymbols,
-                                               inHTMLfile,
+                                               ioHTMLfile,
                                                inVocabulary,
                                                iterationsCount,
                                                inVerboseOptionOn) ;

@@ -21,7 +21,7 @@ indexing grammar grammarLL1grammar "LL1"  feature translate :
   with "grammarModelBuilder.gSyntax" ;
 
   root <grammar_component_start_symbol>
-    !@grammarComponentAST outGrammarComponentRoot
+    !@galgas3GrammarComponentListAST.element outGrammarComponentRoot
   ; # LL1
 end grammar ;
 

@@ -1701,16 +1701,16 @@ class @parseWhenInstruction extends @syntaxInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-struct @syntaxComponentAST {
-  @lstring mSyntaxComponentName ;
-  @lstring mImportedLexiqueFilePath ; 
-  @lstringlist mImportedComponentFileNameList ;
-  @nonterminalDeclarationListAST mNonterminalDeclarationList ;
-  @syntaxRuleListAST mRuleList ;
-  @semanticDeclarationListAST mSemanticDeclarationList ;
-  @location mEndOfSourceFile ;
-  @bool mHasTranslateFeature ;
-}
+#struct @syntaxComponentAST {
+#  @lstring mSyntaxComponentName ;
+#  @lstring mImportedLexiqueFilePath ; 
+#  @lstringlist mImportedComponentFileNameList ;
+#  @nonterminalDeclarationListAST mNonterminalDeclarationList ;
+#  @syntaxRuleListAST mRuleList ;
+#  @semanticDeclarationListAST mSemanticDeclarationList ;
+#  @location mEndOfSourceFile ;
+#  @bool mHasTranslateFeature ;
+#}
 
 #---------------------------------------------------------------------------*
 
@@ -1738,8 +1738,10 @@ list @galgas3GUIComponentListAST {
 list @galgas3SyntaxComponentListAST {
   @lstring mSyntaxComponentName ;
   @lstring mImportedLexiqueFilePath ; 
+  @lstringlist mImportedComponentFileNameList ;
   @nonterminalDeclarationListAST mNonterminalDeclarationList ;
   @syntaxRuleListAST mRuleList ;
+  @semanticDeclarationListAST mSemanticDeclarationList ;
   @location mEndOfSourceFile ;
   @bool mHasTranslateFeature ;
 }

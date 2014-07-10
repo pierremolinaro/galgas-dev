@@ -77,20 +77,20 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
                      const C_Relation & inFOLLOWsets,
                      const TC_UniqueArray <bool> & vocabulaireSeDerivantEnVide,
                      const cVocabulary & inVocabulary,
-                     C_HTML_FileWrite * inHTMLfile,
+                     C_HTML_FileWrite & ioHTMLfile,
                      const bool inVerboseOptionOn) {
 //--- Pour chaque non-terminal presentant plusieurs inPureBNFproductions, calculer le 'premiers' de chacune d'elle,
 // et verifier l'absence de conflit.
-  if (inHTMLfile != NULL) {
-    inHTMLfile->outputRawData ("<p>") ;
-    *inHTMLfile << "The FIRST of a production is :\n"
+  if (ioHTMLfile.isOpened ()) {
+    ioHTMLfile.outputRawData ("<p>") ;
+    ioHTMLfile << "The FIRST of a production is :\n"
                    " if the production is empty, the FOLLOW of the left nonterminal symbol ;\n"
                    " if the production is not empty (e.g. g -> x) :\n"
                    "         -- the FIRST of x, and\n"
                    "         -- if x est a nonterminal symbol deriving in the empty string, union the FOLLOW of x.\n\n"
                    "Only are listed the nonterminal having more than one production (see step 2\n"
                    "for inPureBNFproductions numbering) :\n\n" ;
-    inHTMLfile->outputRawData ("</p>") ;
+    ioHTMLfile.outputRawData ("</p>") ;
   }
   
   C_Relation t (inFOLLOWsets.configuration(), false) ;
@@ -98,8 +98,8 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
   int32_t nombreDeConflits = 0 ;
   const int32_t nombreNonTerminaux = inVocabulary.getNonTerminalSymbolsCount () ;
   const int32_t terminalSymbolsCount = inVocabulary.getTerminalSymbolsCount () ;
-  if (inHTMLfile != NULL) {
-    inHTMLfile->outputRawData ("<table class=\"result\">") ;
+  if (ioHTMLfile.isOpened ()) {
+    ioHTMLfile.outputRawData ("<table class=\"result\">") ;
   }
   for (int32_t i=0 ; i<nombreNonTerminaux ; i++) {
     const int32_t first = inPureBNFproductions.tableauIndicePremiereProduction (i COMMA_HERE) ;
@@ -107,19 +107,19 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
       const int32_t derniere = inPureBNFproductions.tableauIndiceDerniereProduction (i COMMA_HERE) ;
       if (derniere > first) { // Plusieurs inPureBNFproductions d'un meme non-terminal
       //--- Calculer et afficher les premiers
-        if (inHTMLfile != NULL) {
-          inHTMLfile->outputRawData ("<tr><td class=\"result_title\" colspan=\"2\"><code>") ;
-          inVocabulary.printInFile (*inHTMLfile, i + terminalSymbolsCount COMMA_HERE) ;
-          inHTMLfile->outputRawData ("</code></td></tr>") ;
+        if (ioHTMLfile.isOpened ()) {
+          ioHTMLfile.outputRawData ("<tr><td class=\"result_title\" colspan=\"2\"><code>") ;
+          inVocabulary.printInFile (ioHTMLfile, i + terminalSymbolsCount COMMA_HERE) ;
+          ioHTMLfile.outputRawData ("</code></td></tr>") ;
         }
         for (int32_t j=first ; j<=derniere ; j++) {
           const int32_t numeroProduction = inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) ;
-          if (inHTMLfile != NULL) {
-            inHTMLfile->outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><a href=\"#pure_bnf_") ;
-            *inHTMLfile << cStringWithSigned (numeroProduction) ;
-            inHTMLfile->outputRawData ("\">") ;
-            *inHTMLfile << cStringWithSigned (numeroProduction) ;
-            inHTMLfile->outputRawData ("</a></td><td><code>") ;
+          if (ioHTMLfile.isOpened ()) {
+            ioHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><a href=\"#pure_bnf_") ;
+            ioHTMLfile << cStringWithSigned (numeroProduction) ;
+            ioHTMLfile.outputRawData ("\">") ;
+            ioHTMLfile << cStringWithSigned (numeroProduction) ;
+            ioHTMLfile.outputRawData ("</a></td><td><code>") ;
           }
           cProduction & p = inPureBNFproductions (numeroProduction COMMA_HERE) ;
           if (p.derivationLength () == 0) {
@@ -137,15 +137,15 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
               }
             }
           }
-          if (inHTMLfile != NULL) {
+          if (ioHTMLfile.isOpened ()) {
             TC_UniqueArray <uint64_t> array ;
             p.derivationFirst ().getValueArray (array) ;
             for (int32_t i=0 ; i < array.count () ; i++) {
               const uint64_t symbol = array (i COMMA_HERE) ;
-              inVocabulary.printInFile (*inHTMLfile, (int32_t) symbol COMMA_HERE) ;
-              *inHTMLfile << " " ;
+              inVocabulary.printInFile (ioHTMLfile, (int32_t) symbol COMMA_HERE) ;
+              ioHTMLfile << " " ;
             }
-            inHTMLfile->outputRawData ("</code></td></tr>") ;
+            ioHTMLfile.outputRawData ("</code></td></tr>") ;
           }
         }
      //--- Verifier l'absence de conflit
@@ -158,26 +158,26 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
             const bool ok = rJ.andOp (rK COMMA_HERE).isEmpty () ;
             if (! ok) {
               nombreDeConflits ++ ;
-              if (inHTMLfile != NULL) {
-                inHTMLfile->outputRawData ("<tr><td colspan=\"2\"><span class=\"error\">") ;
-                *inHTMLfile << "***** Conflict between the productions "
+              if (ioHTMLfile.isOpened ()) {
+                ioHTMLfile.outputRawData ("<tr><td colspan=\"2\"><span class=\"error\">") ;
+                ioHTMLfile << "***** Conflict between the productions "
                             << cStringWithSigned (numeroProductionJ)
                             << " and "
                             << cStringWithSigned (numeroProductionK)
                             << " *****" ;
-                inHTMLfile->outputRawData ("</span></td></tr>\n") ;
+                ioHTMLfile.outputRawData ("</span></td></tr>\n") ;
               }
             }
           }
         }
-        if (inHTMLfile != NULL) {
-          *inHTMLfile << "\n" ;
+        if (ioHTMLfile.isOpened ()) {
+          ioHTMLfile << "\n" ;
         }
       }
     }
   }
-  if (inHTMLfile != NULL) {
-    inHTMLfile->outputRawData ("</table><p>") ;
+  if (ioHTMLfile.isOpened ()) {
+    ioHTMLfile.outputRawData ("</table><p>") ;
   }
 //--- Bilan de l'analyse
   if (inVerboseOptionOn) {
@@ -188,21 +188,21 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
     }
     co.flush () ;
   }
-  if (inHTMLfile != NULL) {
+  if (ioHTMLfile.isOpened ()) {
     if (nombreDeConflits == 0) {
-      inHTMLfile->outputRawData ("<span class=\"success\">") ;
-      *inHTMLfile << "No conflict : the grammar is LL (1).\n" ;
-      inHTMLfile->outputRawData ("</span>") ;
+      ioHTMLfile.outputRawData ("<span class=\"success\">") ;
+      ioHTMLfile << "No conflict : the grammar is LL (1).\n" ;
+      ioHTMLfile.outputRawData ("</span>") ;
     }else{
-      inHTMLfile->outputRawData ("<span class=\"error\">") ;
-      *inHTMLfile << "The grammar is not  LL (1) : "
+      ioHTMLfile.outputRawData ("<span class=\"error\">") ;
+      ioHTMLfile << "The grammar is not  LL (1) : "
                   << cStringWithSigned (nombreDeConflits)
                   << " conflict"
                   << ((nombreDeConflits > 1) ? "s" : "")
                   << "." ;
-      inHTMLfile->outputRawData ("</span>") ;
+      ioHTMLfile.outputRawData ("</span>") ;
     }
-    inHTMLfile->outputRawData ("</p>") ;
+    ioHTMLfile.outputRawData ("</p>") ;
   }
   return nombreDeConflits == 0 ;
 }
@@ -442,6 +442,7 @@ printDecisionTable (const cPureBNFproductionsList & inPureBNFproductions,
 
 static void
 generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
+                               const bool inCompileForGalgas3,
                                const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                                const uint32_t inOriginalGrammarStartSymbol,
                                const C_String & inTargetFileName,
@@ -452,13 +453,18 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
                                const bool inHasIndexing,
                                const C_String & inSyntaxDirectedTranslationVarName) {
 //--- Generate header file inclusion --------------------------------------------------------------
-  C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
+  C_String generatedZone2 ;
   generatedZone2.appendCppHyphenLineComment () ;
   generatedZone2 << "#include \"utilities/MF_MemoryControl.h\"\n" ;
   generatedZone2 << "#include \"galgas2/C_galgas_CLI_Options.h\"\n\n" ;
   generatedZone2 << "#include \"files/C_FileManager.h\"\n\n" ;
   generatedZone2.appendCppHyphenLineComment () ;
-  generatedZone2 << "#include \"" << inTargetFileName << ".h\"\n\n" ;
+  generatedZone2 << "#include \"" << inTargetFileName << ".h\"\n" ;
+  if (inCompileForGalgas3) {
+    generatedZone2 << "#include \"" << inLexiqueName << ".h\"\n" ;
+    generatedZone2 << "#include \"AZERTYUIOP.h\"\n" ;
+  }
+  generatedZone2 << "\n" ;
 
   generatedZone2.appendCppHyphenLineComment () ;
   generatedZone2 << "#ifndef DO_NOT_GENERATE_CHECKINGS\n"
@@ -470,7 +476,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
                     "#endif\n\n" ;
 
 //--- Generate LL(1) tables
-  C_String generatedZone3 ; generatedZone3.setCapacity (2000000) ;
+  C_String generatedZone3 ;
   const int32_t productionsCount = inPureBNFproductions.length () ;
   TC_UniqueArray <int16_t> productionRulesIndex (500 COMMA_HERE);
   TC_UniqueArray <int16_t> firstProductionRuleIndex (500 COMMA_HERE) ;
@@ -902,8 +908,9 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
 
 void
 LL1_computations (C_Compiler * inCompiler,
+                  const bool inCompileForGalgas3,
                   const cPureBNFproductionsList & inPureBNFproductions,
-                  C_HTML_FileWrite * inHTMLfile,
+                  C_HTML_FileWrite & ioHTMLfile,
                   const cVocabulary & inVocabulary,
                   const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                   const C_Relation & inFIRSTsets,
@@ -924,8 +931,8 @@ LL1_computations (C_Compiler * inCompiler,
     co.flush () ;
   }
 //--- Print in BNF file
-  if (inHTMLfile != NULL) {
-    inHTMLfile->appendCppTitleComment ("Checking LL(1) condition", "title") ;
+  if (ioHTMLfile.isOpened ()) {
+    ioHTMLfile.appendCppTitleComment ("Checking LL(1) condition", "title") ;
   }
 
 //--- Check LL(1) condition
@@ -934,12 +941,13 @@ LL1_computations (C_Compiler * inCompiler,
                                inFOLLOWsets,
                                inVocabularyDerivingToEmpty_Array,
                                inVocabulary,
-                               inHTMLfile,
+                               ioHTMLfile,
                                inVerboseOptionOn) ;
 
 //--- Generate C++ file
   if (outOk) {
     generate_LL1_grammar_Cpp_file (inCompiler,
+                                   inCompileForGalgas3,
                                    inNonTerminalSymbolSortedListForGrammarAnalysis,
                                    inOriginalGrammarStartSymbol,
                                    inTargetFileName,

@@ -41,7 +41,7 @@ void useful_symbols_computations (C_Compiler * inCompiler,
                                   const cPureBNFproductionsList & inPureBNFproductions,
                                   const C_RelationSingleType & inVocabularyBDDType,
                                   const cVocabulary & inVocabulary,
-                                  C_HTML_FileWrite * inHTMLfile,
+                                  C_HTML_FileWrite & ioHTMLfile,
                                   C_Relation & outUsefulSymbolsRelation,
                                   bool & outWarningFlag,
                                   const bool inVerboseOptionOn) ;

@@ -130,42 +130,42 @@ computeNonterminalDerivingInEmptyString (const cPureBNFproductionsList & inProdu
 static void
 printNonterminalDerivingInEmptyString (const C_Relation & inVocabularyDerivingToEmpty,
                                        const C_Relation & inNonTerminalHavingEmptyDerivation,
-                                       C_HTML_FileWrite * inHTMLfile,
+                                       C_HTML_FileWrite & ioHTMLfile,
                                        const int32_t inIterationsCount,
                                        const bool inVerboseOptionOn) { 
   const uint64_t t = inVocabularyDerivingToEmpty.value64Count () ;
-  if (inHTMLfile != NULL) {
-    inHTMLfile->outputRawData ("<p>") ;
-    *inHTMLfile << "Nonterminal symbols deriving indirectly in empty string : calculus in " ;
-    inHTMLfile->appendSigned (inIterationsCount) ;
-    *inHTMLfile << " iterations.\n" ;
-    inHTMLfile->outputRawData ("</p>") ;
+  if (ioHTMLfile.isOpened ()) {
+    ioHTMLfile.outputRawData ("<p>") ;
+    ioHTMLfile << "Nonterminal symbols deriving indirectly in empty string : calculus in " ;
+    ioHTMLfile.appendSigned (inIterationsCount) ;
+    ioHTMLfile << " iterations.\n" ;
+    ioHTMLfile.outputRawData ("</p>") ;
     const C_Relation newNonterminal = inVocabularyDerivingToEmpty.andOp (~ inNonTerminalHavingEmptyDerivation COMMA_HERE) ;
     const uint64_t n = newNonterminal.value64Count () ;
     if (n == 0) {
-      inHTMLfile->outputRawData ("<p>") ;
-      *inHTMLfile << "No more than those deriving directly to the empty string.\n" ;
-      inHTMLfile->outputRawData ("</p>") ;
+      ioHTMLfile.outputRawData ("<p>") ;
+      ioHTMLfile << "No more than those deriving directly to the empty string.\n" ;
+      ioHTMLfile.outputRawData ("</p>") ;
     }else{
-      inHTMLfile->outputRawData ("<p>") ;
-      inHTMLfile->appendUnsigned (n) ;
-      inHTMLfile->appendCString (" nonterminal symbol(s) in addition to those deriving directly to the empty string :\n") ;
-      inHTMLfile->outputRawData ("</p>") ;
+      ioHTMLfile.outputRawData ("<p>") ;
+      ioHTMLfile.appendUnsigned (n) ;
+      ioHTMLfile.appendCString (" nonterminal symbol(s) in addition to those deriving directly to the empty string :\n") ;
+      ioHTMLfile.outputRawData ("</p>") ;
       TC_UniqueArray <uint64_t> nonTerminalArray ;
       newNonterminal.getValueArray (nonTerminalArray) ;
       int32_t index = 0 ;
-      inHTMLfile->outputRawData ("<table class=\"result\">") ;
+      ioHTMLfile.outputRawData ("<table class=\"result\">") ;
       for (int32_t i=0 ; i<nonTerminalArray.count () ; i++) {
         if (nonTerminalArray (i COMMA_HERE)) {
-          inHTMLfile->outputRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
-          *inHTMLfile << cStringWithSigned (index) ;
+          ioHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
+          ioHTMLfile << cStringWithSigned (index) ;
           index ++ ;
-          inHTMLfile->outputRawData ("</td><td><code>") ;
-          *inHTMLfile << newNonterminal.configuration().constantNameForVariableAndValue(0, (uint32_t) nonTerminalArray (i COMMA_HERE) COMMA_HERE) ;
-          inHTMLfile->outputRawData ("</code></td></tr>") ;
+          ioHTMLfile.outputRawData ("</td><td><code>") ;
+          ioHTMLfile << newNonterminal.configuration().constantNameForVariableAndValue(0, (uint32_t) nonTerminalArray (i COMMA_HERE) COMMA_HERE) ;
+          ioHTMLfile.outputRawData ("</code></td></tr>") ;
         }
       }
-      inHTMLfile->outputRawData ("</table>") ;
+      ioHTMLfile.outputRawData ("</table>") ;
     }
   }
   if (inVerboseOptionOn) {
@@ -179,7 +179,7 @@ printNonterminalDerivingInEmptyString (const C_Relation & inVocabularyDerivingTo
 
 C_Relation
 empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions,
-                            C_HTML_FileWrite * inHTMLfile,
+                            C_HTML_FileWrite & ioHTMLfile,
                             TC_UniqueArray <bool> & outVocabularyDerivingToEmpty_Array,
                             const C_RelationConfiguration & inVocabularyConfiguration,
                             const bool inVerboseOptionOn) {
@@ -189,15 +189,15 @@ empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions
     co.flush () ;
   }
 //--- Print in BNF file
-  if (inHTMLfile != NULL) {
-    inHTMLfile->appendCppTitleComment ("Searching for nonterminal symbols deriving in empty string", "title") ;
+  if (ioHTMLfile.isOpened ()) {
+    ioHTMLfile.appendCppTitleComment ("Searching for nonterminal symbols deriving in empty string", "title") ;
   }
 
   const C_Relation nonTerminalHavingEmptyDerivation
     = computeNonterminalSymbolsHavingEmptyDerivation (inPureBNFproductions,
                                                       inVocabularyConfiguration) ;
-  if (inHTMLfile != NULL) {
-    printNonterminalSymbolsHavingEmptyDerivation (nonTerminalHavingEmptyDerivation, *inHTMLfile) ;
+  if (ioHTMLfile.isOpened ()) {
+    printNonterminalSymbolsHavingEmptyDerivation (nonTerminalHavingEmptyDerivation, ioHTMLfile) ;
   }
 
 //--- Compute non terminal symbol deriving in empty string
@@ -213,7 +213,7 @@ empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions
 
   printNonterminalDerivingInEmptyString (vocabularyDerivingToEmpty,
                                          nonTerminalHavingEmptyDerivation,
-                                         inHTMLfile,
+                                         ioHTMLfile,
                                          iterationCount,
                                          inVerboseOptionOn) ;
   return vocabularyDerivingToEmpty ;

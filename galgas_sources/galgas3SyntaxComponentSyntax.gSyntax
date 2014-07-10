@@ -78,13 +78,14 @@ rule <declaration>
   end repeat ;
 #--- end
   $}$ ;
-  const endOfSource := here ;
   ioDeclarations->mSyntaxComponentList +=
     !mSyntaxComponentName
     !importedLexiqueReference
+    ![@lstringlist emptyList]  # inutile GALGAS 3
     !mNonterminalDeclarationList
     !mRuleList
-    !endOfSource
+    ![@semanticDeclarationListAST emptyList] # inutile GALGAS 3
+    !here
     !hasTranslateFeature
   ;
 end rule ;

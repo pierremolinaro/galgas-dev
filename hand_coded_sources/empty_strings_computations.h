@@ -39,7 +39,7 @@ class C_RelationConfiguration ;
 
 C_Relation
 empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions,
-                            C_HTML_FileWrite * inHTMLfile,
+                            C_HTML_FileWrite & ioHTMLfile,
                             TC_UniqueArray <bool> & outVocabularyDerivingToEmpty_Array,
                             const C_RelationConfiguration & inVocabularyConfiguration,
                             const bool inVerboseOptionOn) ;

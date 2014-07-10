@@ -342,7 +342,7 @@ indexing with projectLL1grammar
         if [option .verbose_output value] then
           message "*** Parse '" . [fullFilePath lastPathComponent] . "'\n" ;
         end if ;
-        @syntaxComponentAST syntaxComponentRoot ;
+        @galgas3SyntaxComponentListAST.element syntaxComponentRoot ;
         grammar syntaxSLRgrammar in fullFilePath ?syntaxComponentRoot :> ??@string translatedSource ;
         if [option galgas_cli_options.convertToGalgas3 value] then
           const projectName := [[fullFilePath lastPathComponent] stringByDeletingPathExtension] ;
@@ -359,7 +359,7 @@ indexing with projectLL1grammar
         if [option .verbose_output value] then
           message "*** Parse '" . [fullFilePath lastPathComponent] . "'\n" ;
         end if ;
-        @grammarComponentAST grammarComponentRoot ;
+        @galgas3GrammarComponentListAST.element grammarComponentRoot ;
         grammar grammarLL1grammar in fullFilePath ?grammarComponentRoot :> ??@string translatedSource ;
         if [option galgas_cli_options.convertToGalgas3 value] then
           const projectName := [[fullFilePath lastPathComponent] stringByDeletingPathExtension] ;
@@ -588,11 +588,25 @@ indexing with galgas3ProjectGrammar
     end for ;
   end if ;
 #---------------------------------- Compile syntax components
+  var parsedSyntaxComponentMap := [@parsedSyntaxComponentMap emptyMap] ;
   if [@uint errorCount] == 0 then
     for component in declarationAST->mSyntaxComponentList do
       compileSyntaxComponentGalgas3
         !productDirectory
         !component
+        !semanticContext
+        !?parsedSyntaxComponentMap
+        !?toolProductFileList
+      ;
+    end for ;
+  end if ;
+#---------------------------------- Compile grammar components
+  if [@uint errorCount] == 0 then
+    for component in declarationAST->mGrammarComponentList do
+      compileGrammarComponentGalgas3
+        !productDirectory
+        !component
+        !parsedSyntaxComponentMap
         !semanticContext
         !?toolProductFileList
       ;

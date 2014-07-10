@@ -37,9 +37,10 @@ class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis ;
 //-----------------------------------------------------------------------------*
 
 void LR1_computations (C_Compiler * inCompiler,
+                       const bool inCompileForGalgas3,
                        const cPureBNFproductionsList & inProductionRules,
                        const cVocabulary & inVocabulary,
-                       C_HTML_FileWrite * inHTMLfile,
+                       C_HTML_FileWrite & ioHTMLfile,
                        const TC_UniqueArray <TC_UniqueArray <uint64_t> > & FIRSTarray,
                        const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                        const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
