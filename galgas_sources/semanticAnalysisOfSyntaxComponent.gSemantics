@@ -91,6 +91,11 @@ filewrapper syntaxFileGenerationTemplate in "../generation_templates/syntax_gene
     ?@string COMPONENT_NAME
   ;
 
+  template syntaxFileImplementationGalgas3 "syntax-file-galgas3.cpp.gTemplate"
+    ?@string COMPONENT_NAME
+    ?@stringlist INCLUSION_LIST
+  ;
+
   template syntaxFileImplementation "syntax-file.cpp.gTemplate"
     ?@string COMPONENT_NAME
     ?@stringlist IMPORTED_COMPONENT_LIST

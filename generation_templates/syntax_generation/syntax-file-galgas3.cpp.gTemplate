@@ -1,0 +1,19 @@
+#include "syntax-%!COMPONENT_NAME%.h"
+// #include "galgas2/C_galgas_CLI_Options.h"
+// #include "utilities/C_PrologueEpilogue.h"
+
+//-----------------------------------------------------------------------------*
+
+% foreach INCLUSION_LIST do
+    %#include "%!mValue%.h"\n%
+  end%
+//-----------------------------------------------------------------------------*
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  #define SOURCE_FILE_AT_LINE(line) "%!COMPONENT_NAME%.gSyntax", line
+  #define COMMA_SOURCE_FILE_AT_LINE(line) , SOURCE_FILE_AT_LINE(line)
+#else
+  #define SOURCE_FILE_AT_LINE(line) 
+  #define COMMA_SOURCE_FILE_AT_LINE(line) 
+#endif
+

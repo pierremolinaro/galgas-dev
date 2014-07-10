@@ -3,6 +3,8 @@
 
 //-----------------------------------------------------------------------------*
 
-%foreach [GRAMMAR_COMPONENT_ROOT mSyntaxComponents] do
-%#include "%!mValue->string%.h"\n%
+%foreach GRAMMAR_COMPONENT_ROOT->mSyntaxComponents do
+%#include "syntax-%!mValue->string%.h"\n%
 end%
+
+
