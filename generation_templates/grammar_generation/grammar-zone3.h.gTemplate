@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 
-class cGrammar_%![[GRAMMAR_COMPONENT_ROOT mGrammarName] identifierRepresentation]% : %?^
+class cGrammar_%![GRAMMAR_COMPONENT_ROOT->mGrammarComponentName identifierRepresentation]% : %?^
 foreach [GRAMMAR_COMPONENT_ROOT mSyntaxComponents]
   do %public cParser_% ![[[mValue string] stringByDeletingPathExtension] identifierRepresentation]
   between %,\n%!^

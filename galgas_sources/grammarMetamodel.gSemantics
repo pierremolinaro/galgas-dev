@@ -20,20 +20,20 @@
 semantics grammarMetamodel :
 import "semanticsTypesForAST.gSemantics" ;
 
-#---------------------------------------------------------------------------*
-
-struct @grammarComponentAST {
-  @lbool mHasIndexing ;
-  @lstring mGrammarName ;
-  @lstring mGrammarClass ;
-  @lstringlist mSyntaxComponents ;
-  @lstring mStartSymbolName ;
-  @nonTerminalLabelListAST mStartSymbolLabelList ;
-  @lstringlist mUnusedNonterminalList ;
-  @location mEndOfSourceText ;
-  @bool mHasTranslateFeature ;
-}
-
+##---------------------------------------------------------------------------*
+#
+#struct @grammarComponentAST {
+#  @lbool mHasIndexing ;
+#  @lstring mGrammarName ;
+#  @lstring mGrammarClass ;
+#  @lstringlist mSyntaxComponents ;
+#  @lstring mStartSymbolName ;
+#  @nonTerminalLabelListAST mStartSymbolLabelList ;
+#  @lstringlist mUnusedNonterminalList ;
+#  @location mEndOfSourceText ;
+#  @bool mHasTranslateFeature ;
+#}
+#
 #---------------------------------------------------------------------------*
 
 end semantics ;

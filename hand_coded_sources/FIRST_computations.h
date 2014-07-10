@@ -39,7 +39,7 @@ class C_Relation ;
 
 void
 FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
-                    C_HTML_FileWrite * inHTMLfile,
+                    C_HTML_FileWrite & ioHTMLfile,
                     const cVocabulary & inVocabulary,
                     const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                     const C_Relation & inVocabularyDerivingToEmpty,

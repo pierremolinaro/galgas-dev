@@ -77,35 +77,35 @@ computeNonterminalFollowedByEmpty (const cPureBNFproductionsList & inProductionR
  
 static void
 displayNonterminalSymbolsFollowedByEmpty (const C_Relation & inVocabularyFollowedByEmpty,
-                                          C_HTML_FileWrite * inHTMLfile,
+                                          C_HTML_FileWrite & ioHTMLfile,
                                           const cVocabulary & inVocabulary,
                                           const int32_t inIterationsCount,
                                           const bool inVerboseOptionOn) { 
   const uint64_t n = inVocabularyFollowedByEmpty.value64Count () ;
 
-  if (inHTMLfile != NULL) {
-    inHTMLfile->outputRawData ("<p><a name=\"follow_by_empty\"></a>") ;
-    *inHTMLfile << "Calculus completed in "
+  if (ioHTMLfile.isOpened ()) {
+    ioHTMLfile.outputRawData ("<p><a name=\"follow_by_empty\"></a>") ;
+    ioHTMLfile << "Calculus completed in "
                 << cStringWithSigned (inIterationsCount)
                 << " iterations.\n" ;
-    inHTMLfile->outputRawData ("</p><p>") ;
+    ioHTMLfile.outputRawData ("</p><p>") ;
     if (n == 1) {
-      *inHTMLfile << "One nonterminal symbol (the start symbol) can be followed by the empty string.\n" ;
+      ioHTMLfile << "One nonterminal symbol (the start symbol) can be followed by the empty string.\n" ;
     }else{
-      inHTMLfile->appendUnsigned (n) ;
-       inHTMLfile->appendCString (" nonterminal symbols (including the start symbol) can be followed by the empty string.\n") ;
+      ioHTMLfile.appendUnsigned (n) ;
+       ioHTMLfile.appendCString (" nonterminal symbols (including the start symbol) can be followed by the empty string.\n") ;
     }
-    inHTMLfile->outputRawData ("</p>") ;
+    ioHTMLfile.outputRawData ("</p>") ;
     TC_UniqueArray <uint64_t> array ;
     inVocabularyFollowedByEmpty.getValueArray (array) ;
-    inHTMLfile->outputRawData ("<table class=\"result\">") ;
+    ioHTMLfile.outputRawData ("<table class=\"result\">") ;
     for (int32_t i=0 ; i < array.count () ; i++) {
-      inHTMLfile->outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
+      ioHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
       const uint64_t symbol = array (i COMMA_HERE) ;
-      inVocabulary.printInFile (*inHTMLfile, (int32_t) symbol COMMA_HERE) ;
-      inHTMLfile->outputRawData ("</code></td></tr>") ;
+      inVocabulary.printInFile (ioHTMLfile, (int32_t) symbol COMMA_HERE) ;
+      ioHTMLfile.outputRawData ("</code></td></tr>") ;
     }
-    inHTMLfile->outputRawData ("</table>") ;
+    ioHTMLfile.outputRawData ("</table>") ;
   }
   if (inVerboseOptionOn) {
     co.appendUnsigned (n) ;
@@ -118,7 +118,7 @@ displayNonterminalSymbolsFollowedByEmpty (const C_Relation & inVocabularyFollowe
 
 void
 follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductions,
-                              C_HTML_FileWrite * inHTMLfile,
+                              C_HTML_FileWrite & ioHTMLfile,
                               const cVocabulary & inVocabulary,
                               const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                               C_Relation & outVocabularyFollowedByEmpty,
@@ -129,8 +129,8 @@ follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductio
     co.flush () ;
   }
 //--- Print in BNF file
-  if (inHTMLfile != NULL) {
-    inHTMLfile->appendCppTitleComment ("Nonterminal symbol set followed by empty string", "title") ;
+  if (ioHTMLfile.isOpened ()) {
+    ioHTMLfile.appendCppTitleComment ("Nonterminal symbol set followed by empty string", "title") ;
   }
 
 //--- Compute nonterminal symbols followed by empty 
@@ -143,7 +143,7 @@ follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductio
 
 //--- Display nonterminal symbols followed by empty 
  displayNonterminalSymbolsFollowedByEmpty (outVocabularyFollowedByEmpty,
-                                           inHTMLfile,
+                                           ioHTMLfile,
                                            inVocabulary,
                                            iterationsCount,
                                            inVerboseOptionOn) ; 

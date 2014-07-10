@@ -50,7 +50,7 @@ nonterminal <semantic_declaration>
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <syntax_component_start_symbol> !@syntaxComponentAST outSyntaxComponentRoot :
+rule <syntax_component_start_symbol> !@galgas3SyntaxComponentListAST.element outSyntaxComponentRoot :
   $syntax$ ;
 #--- Semantics Component Name
   $identifier$ ??@lstring mSyntaxComponentName ;
@@ -102,7 +102,7 @@ rule <syntax_component_start_symbol> !@syntaxComponentAST outSyntaxComponentRoot
   const endOfSource := here ;
   $syntax$ :> ?* ?* ;
   $;$  :> ?* ?* ;
-  outSyntaxComponentRoot := [@syntaxComponentAST new
+  outSyntaxComponentRoot := [@galgas3SyntaxComponentListAST.element new
     !mSyntaxComponentName
     !importedLexiqueReference
     !importedComponentPathList

@@ -28,7 +28,7 @@ import "grammarMetamodel.gSemantics" ;
 #---------------------------------------------------------------------------*
 
 rule <grammar_component_start_symbol>
-  !@grammarComponentAST outGrammarComponentRoot
+  !@galgas3GrammarComponentListAST.element outGrammarComponentRoot
 :
   @lbool hasIndexing ;
   select
@@ -95,7 +95,7 @@ rule <grammar_component_start_symbol>
 #---
   $end$ :> ?sep ?* ;
   send sep . "}" ;
-  outGrammarComponentRoot := [@grammarComponentAST new
+  outGrammarComponentRoot := [@galgas3GrammarComponentListAST.element new
     !hasIndexing
     !mGrammarName
     !mGrammarClass

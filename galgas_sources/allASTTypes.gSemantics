@@ -58,7 +58,7 @@ map @parsedSemanticsComponentMap {
 
 map @parsedGrammarComponentMap {
   @lstring mSourceFullFilePath ;
-  @grammarComponentAST mGrammarComponentRoot ;
+  @galgas3GrammarComponentListAST.element mGrammarComponentRoot ;
   insert insertKey error message "the '%K' grammar component has already been parsed" ;
   search searchKey error message "the '%K' grammar component is not parsed" ;
 }
@@ -67,7 +67,7 @@ map @parsedGrammarComponentMap {
 
 map @parsedSyntaxComponentMap {
   @lstring mSourceFullFilePath ;
-  @syntaxComponentAST mSyntaxComponentRoot ;
+  @galgas3SyntaxComponentListAST.element mSyntaxComponentRoot ;
   insert insertKey error message "the '%K' syntax component has already been parsed" ;
   search searchKey error message "the '%K' syntax component is not parsed" ;
 }

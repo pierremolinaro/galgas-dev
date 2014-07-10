@@ -425,11 +425,21 @@ filewrapper grammarGenerationTemplate in "../generation_templates/grammar_genera
 }{
 }{
   template grammarZone2Header "grammar-zone2.h.gTemplate"
-    ?@grammarComponentAST GRAMMAR_COMPONENT_ROOT
+    ?@galgas3GrammarComponentListAST.element GRAMMAR_COMPONENT_ROOT
+  ;
+  template grammarZone2HeaderGalgas3 "grammar-zone2-galgas3.h.gTemplate"
+    ?@galgas3GrammarComponentListAST.element GRAMMAR_COMPONENT_ROOT
   ;
   template grammarZone3Header "grammar-zone3.h.gTemplate"
     ?@string LEXIQUE_IDENTIFIER
-    ?@grammarComponentAST GRAMMAR_COMPONENT_ROOT
+    ?@galgas3GrammarComponentListAST.element GRAMMAR_COMPONENT_ROOT
+    ?@nonTerminalSymbolMapForGrammarAnalysis NON_TERMINAL_MAP
+    ?@nonTerminalToAddList ADDED_NON_TERMINAL_LIST
+    ?@bool HAS_INDEXING
+  ;
+  template grammarZone3HeaderGalgas3 "grammar-zone3-galgas3.h.gTemplate"
+    ?@string LEXIQUE_IDENTIFIER
+    ?@galgas3GrammarComponentListAST.element GRAMMAR_COMPONENT_ROOT
     ?@nonTerminalSymbolMapForGrammarAnalysis NON_TERMINAL_MAP
     ?@nonTerminalToAddList ADDED_NON_TERMINAL_LIST
     ?@bool HAS_INDEXING
@@ -445,7 +455,7 @@ filewrapper grammarGenerationTemplate in "../generation_templates/grammar_genera
 routine parseGrammarComponent
   ??@lstring inSourceFile
   ?!@parsedComponentStruct ioParsedComponentStruct
-  !@grammarComponentAST outGrammarComponentRoot
+  !@galgas3GrammarComponentListAST.element outGrammarComponentRoot
 :
   const @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
   with ioParsedComponentStruct->mParsedGrammarComponentMap hasKey !basename do
@@ -467,6 +477,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 extern routine grammarAnalysisAndGeneration
+  ??@bool inCompileForGalgas3
   ??@lstring inGrammarName
   ??@lstring inGrammarClass
   ??@uint startSymbolIndex
@@ -491,12 +502,12 @@ extern routine grammarAnalysisAndGeneration
 routine compileGrammarComponentFromAST
   ??@lstring inSourceFile
   ??@string inOutputDirectoryForCppFiles
-  ??@grammarComponentAST inGrammarComponentRoot
+  ??@galgas3GrammarComponentListAST.element inGrammarComponentRoot
   ?!@parsedComponentStruct ioParsedComponentStruct
 :
  const @string outputDirectoryForHTMLFile := [inSourceFile stringByDeletingLastPathComponent] ;
 #---------------------------------------------------------- Check component name
-  const grammarComponentName := [inGrammarComponentRoot mGrammarName] ;
+  const grammarComponentName := inGrammarComponentRoot->mGrammarComponentName ;
   const basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
   if [grammarComponentName string] != basename then
     warning grammarComponentName: "GALGAS checks "
@@ -518,7 +529,7 @@ routine compileGrammarComponentFromAST
       error mValue: "a syntax component file should have '.gSyntax' path extension" ;
     else
       @string syntaxComponentName := [[mValue lastPathComponent] stringByDeletingPathExtension] ;
-      @syntaxComponentAST syntaxComponentRoot ;
+      @galgas3SyntaxComponentListAST.element syntaxComponentRoot ;
       if [[ioParsedComponentStruct mParsedSyntaxComponentMap] hasKey !syntaxComponentName] then
         [[ioParsedComponentStruct mParsedSyntaxComponentMap] searchKey ![@lstring new !syntaxComponentName !here] ?* ?syntaxComponentRoot] ;
       else
@@ -529,9 +540,9 @@ routine compileGrammarComponentFromAST
       end if ;
     #--- Check translate feature
       if inGrammarComponentRoot->mHasTranslateFeature & not syntaxComponentRoot->mHasTranslateFeature then
-        error syntaxComponentRoot->mSyntaxComponentName : "as '" . inGrammarComponentRoot->mGrammarName . "' grammar declares 'translate' feature, this syntax component should do so" ;
+        error syntaxComponentRoot->mSyntaxComponentName : "as '" . inGrammarComponentRoot->mGrammarComponentName . "' grammar declares 'translate' feature, this syntax component should do so" ;
       elsif syntaxComponentRoot->mHasTranslateFeature & not inGrammarComponentRoot->mHasTranslateFeature then
-        error inGrammarComponentRoot->mGrammarName : "as '" . syntaxComponentRoot->mSyntaxComponentName . "' syntax component declares 'translate' feature, this grammar should do so" ;
+        error inGrammarComponentRoot->mGrammarComponentName : "as '" . syntaxComponentRoot->mSyntaxComponentName . "' syntax component declares 'translate' feature, this grammar should do so" ;
       end if ;
     #--- Handle lexique component
       lexiqueComponentPath := [syntaxComponentRoot mImportedLexiqueFilePath] ;
@@ -578,7 +589,7 @@ routine compileGrammarComponentFromAST
   ;
   const @bool hasIndexing := not [[lexiqueComponentAST mIndexingDirectory] isNowhere] ;
   if hasIndexing & not inGrammarComponentRoot->mHasIndexing->bool then
-    error inGrammarComponentRoot->mGrammarName : "the grammar does not enable indexing, but the '" . lexiqueComponentAST->mLexiqueComponentName . "' does" ;
+    error inGrammarComponentRoot->mGrammarComponentName : "the grammar does not enable indexing, but the '" . lexiqueComponentAST->mLexiqueComponentName . "' does" ;
   elsif (not hasIndexing) & inGrammarComponentRoot->mHasIndexing->bool then
     error inGrammarComponentRoot->mHasIndexing : "the grammar enables indexing, but the '" . lexiqueComponentAST->mLexiqueComponentName . "' does not" ;
   end if ;
@@ -608,7 +619,8 @@ routine compileGrammarComponentFromAST
   end foreach ;
 #---------------------------------------------------------- Analyze grammar
   grammarAnalysisAndGeneration
-    ![inGrammarComponentRoot mGrammarName]
+    !false # Do not compile for galgas 3
+    !inGrammarComponentRoot->mGrammarComponentName
     ![inGrammarComponentRoot mGrammarClass]
     !startSymbolIndex
     !lexiqueComponentName
@@ -636,7 +648,7 @@ routine compileGrammarComponentFromAST
     ] ;
     [@string generateFileWithPattern
       !inOutputDirectoryForCppFiles
-      ![[inGrammarComponentRoot mGrammarName] string] . ".h"
+      !inGrammarComponentRoot->mGrammarComponentName->string . ".h"
       !"//"
       !"\n\n" # Defaut user zone1
       !zone2
@@ -653,7 +665,7 @@ routine compileGrammarComponentFromSourceFile
   ??@string inOutputDirectoryForCppFiles
   ?!@parsedComponentStruct ioParsedComponentStruct
 :
-  parseGrammarComponent !inSourceFile !?ioParsedComponentStruct ??@grammarComponentAST grammarComponentRoot ;
+  parseGrammarComponent !inSourceFile !?ioParsedComponentStruct ??@galgas3GrammarComponentListAST.element grammarComponentRoot ;
 #----
   compileGrammarComponentFromAST
     !inSourceFile
@@ -661,6 +673,151 @@ routine compileGrammarComponentFromSourceFile
     !grammarComponentRoot
     !?ioParsedComponentStruct
   ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#      C O M P I L E    G R A M M A R    C O M P O N E N T                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine compileGrammarComponentGalgas3
+  ??@string inOutputDirectory
+  ??@galgas3GrammarComponentListAST.element inGrammarComponentRoot
+  ??@parsedSyntaxComponentMap inParsedSyntaxComponentMap
+  ??@semanticContext inSemanticContext
+  ?!@stringlist ioToolProductFileList
+:
+  const @string outputDirectoryForHTMLFile := [inOutputDirectory stringByDeletingLastPathComponent] ;
+#---------------------------------------------------------- Parse syntax components
+  @terminalSymbolsMapForGrammarAnalysis actuallyUsedTerminalSymbolMap [emptyMap] ;
+  @nonTerminalSymbolMapForGrammarAnalysis nonTerminalMapForGrammarAnalysis [emptyMap] ;
+  @lstring lexiqueComponentName :=  ["" nowhere] ; # Empty string means unknown
+  @syntaxComponentListForGrammarAnalysis syntaxComponentListForGrammarAnalysis [emptyList] ;
+  @nonTerminalToAddList nonTerminalToAddList [emptyList] ;
+  @uint addedNonTerminalCount := 0 ;
+  foreach inGrammarComponentRoot->mSyntaxComponents do
+    const @uint addedNonTerminalCountRef := addedNonTerminalCount ;
+    @string syntaxComponentName := mValue->string ;
+    [inParsedSyntaxComponentMap searchKey !mValue ?* ??@galgas3SyntaxComponentListAST.element syntaxComponentRoot] ;
+  #--- Check translate feature
+    if inGrammarComponentRoot->mHasTranslateFeature & not syntaxComponentRoot->mHasTranslateFeature then
+      error syntaxComponentRoot->mSyntaxComponentName : "as '" . inGrammarComponentRoot->mGrammarComponentName . "' grammar declares 'translate' feature, this syntax component should do so" ;
+    elsif syntaxComponentRoot->mHasTranslateFeature & not inGrammarComponentRoot->mHasTranslateFeature then
+      error inGrammarComponentRoot->mGrammarComponentName : "as '" . syntaxComponentRoot->mSyntaxComponentName . "' syntax component declares 'translate' feature, this grammar should do so" ;
+    end if ;
+  #--- Handle lexique component
+    const currentLexiqueName := syntaxComponentRoot->mImportedLexiqueFilePath ;
+    if lexiqueComponentName->string == "" then
+      lexiqueComponentName := currentLexiqueName ;
+    elsif lexiqueComponentName->string != currentLexiqueName->string then
+      error mValue : "this syntax component uses '"
+        . currentLexiqueName . "' lexique component, but the first syntax component uses the '"
+        . lexiqueComponentName . "' lexique component (they should be the same)" ;
+    end if ;
+  #--- Handle non terminal declarations
+    handleNonTerminalDeclarations
+      !?nonTerminalMapForGrammarAnalysis
+      ![syntaxComponentRoot mNonterminalDeclarationList]
+    ;
+  #--- Enter non terminal definition from rule list
+    handleNonTerminalDeclarationsFromRuleList
+      !?nonTerminalMapForGrammarAnalysis
+      ![syntaxComponentRoot mRuleList]
+    ;
+  #--- Handle syntax rules
+    buildRuleList
+      !nonTerminalMapForGrammarAnalysis
+      ![syntaxComponentRoot mSyntaxComponentName]
+      ![syntaxComponentRoot mRuleList]
+      !?actuallyUsedTerminalSymbolMap
+      !?syntaxComponentListForGrammarAnalysis
+      !?addedNonTerminalCount
+    ;
+    @uint i := 0 ;
+    loop addedNonTerminalCount : while i < (addedNonTerminalCount - addedNonTerminalCountRef) do
+      nonTerminalToAddList += !syntaxComponentName !i ;
+      i++ ;
+    end loop ;
+  end foreach ;
+#------------------------ Get lexique component, for knowing if there are "indexing" declaration
+  var lexiqueComponentSet := [@stringset emptySet] ;
+  [inSemanticContext->mLexiqueComponentMapForSemanticAnalysis searchKey
+    !lexiqueComponentName
+    ?* # @terminalMap inTerminalMap
+    ?* # @indexingListAST inIndexingListAST
+    ??@lstring inIndexingDirectory
+  ] ;
+  const @bool hasIndexing := not [inIndexingDirectory isNowhere] ;
+  if hasIndexing & not inGrammarComponentRoot->mHasIndexing->bool then
+    error inGrammarComponentRoot->mGrammarComponentName : "the grammar does not enable indexing, but the '" . lexiqueComponentName . "' does" ;
+  elsif (not hasIndexing) & inGrammarComponentRoot->mHasIndexing->bool then
+    error inGrammarComponentRoot->mHasIndexing : "the grammar enables indexing, but the '" . lexiqueComponentName . "' does not" ;
+  end if ;
+#---------------------------------------------------------- Start symbol
+#--- Search start symbol in non terminal map
+  @nonterminalSymbolLabelMapForGrammarAnalysis startSymbolAltMap ;
+  @uint startSymbolIndex ;
+  [nonTerminalMapForGrammarAnalysis searchKey ![inGrammarComponentRoot mStartSymbolName] ?startSymbolIndex ?startSymbolAltMap] ;
+#--- Check signatures
+  checkLabelMap
+    ![[inGrammarComponentRoot mStartSymbolName] location]
+    ![inGrammarComponentRoot mStartSymbolLabelList]
+    ![nonTerminalMapForGrammarAnalysis locationForKey ![[inGrammarComponentRoot mStartSymbolName] string]]
+    !startSymbolAltMap
+  ;
+#---------------------------------------------------------- Unused Non Terminal Symbols
+  @unusedNonTerminalSymbolMapForGrammarAnalysis unusedNonTerminalSymbolsForGrammar [emptyMap] ;
+  foreach [inGrammarComponentRoot mUnusedNonterminalList] do
+    @uint nonterminalIndex ;
+    [nonTerminalMapForGrammarAnalysis searchKey !mValue ?nonterminalIndex ?*] ;
+    [!?unusedNonTerminalSymbolsForGrammar insertKey !mValue !nonterminalIndex] ;
+  end foreach ;
+#---------------------------------------------------------- Non terminal symbols, sorted by index
+  @nonTerminalSymbolSortedListForGrammarAnalysis nonTerminalSymbolSortedListForGrammarAnalysis [emptySortedList] ;
+  foreach nonTerminalMapForGrammarAnalysis do
+    nonTerminalSymbolSortedListForGrammarAnalysis += !lkey !mNonTerminalIndex !mNonterminalSymbolParametersMap ;
+  end foreach ;
+#---------------------------------------------------------- Analyze grammar
+  ioToolProductFileList += !inGrammarComponentRoot->mGrammarComponentName->string + ".cpp" ;
+  grammarAnalysisAndGeneration
+    !true # Compile for galgas 3
+    !inGrammarComponentRoot->mGrammarComponentName
+    ![inGrammarComponentRoot mGrammarClass]
+    !startSymbolIndex
+    !lexiqueComponentName->string
+    ![inGrammarComponentRoot mEndOfSourceText]
+    !actuallyUsedTerminalSymbolMap
+    !syntaxComponentListForGrammarAnalysis
+    !unusedNonTerminalSymbolsForGrammar
+    !inOutputDirectory
+    !outputDirectoryForHTMLFile
+    !nonTerminalSymbolSortedListForGrammarAnalysis
+    !hasIndexing
+    !if inGrammarComponentRoot->mHasTranslateFeature then syntaxDirectedTranslationResultVarName [] else "" end
+  ;
+#---------------------------------------------------------- Generate header
+  if [@uint errorCount] == 0 then
+    const zone2 := [filewrapper grammarGenerationTemplate.grammarZone2HeaderGalgas3
+      !inGrammarComponentRoot
+    ] ;
+    const zone3 := [filewrapper grammarGenerationTemplate.grammarZone3HeaderGalgas3
+      ![lexiqueComponentName identifierRepresentation]
+      !inGrammarComponentRoot
+      !nonTerminalMapForGrammarAnalysis
+      !nonTerminalToAddList
+      !hasIndexing
+    ] ;
+    [@string generateFileWithPattern
+      !inOutputDirectory
+      !inGrammarComponentRoot->mGrammarComponentName->string . ".h"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      !zone2
+      !"\n\n" # Defaut user zone2
+      !zone3
+    ] ;
+  end if ;
 end routine ;
 
 #---------------------------------------------------------------------------*

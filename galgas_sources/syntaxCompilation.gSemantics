@@ -30,7 +30,7 @@ import "syntaxSLRgrammar.gGrammar" ;
 routine compileSyntaxComponentFromAST
   ??@lstring inSourceFile
   ??@string inOutputDirectory
-  ??@syntaxComponentAST inSyntaxComponentRoot
+  ??@galgas3SyntaxComponentListAST.element inSyntaxComponentRoot
   ?!@parsedComponentStruct ioParsedComponentStruct
 :
   const @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
@@ -253,7 +253,7 @@ routine compileSyntaxComponentFromSourceFile
 #--- Parse source file
   const basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
   const basenameKey := [@lstring new !basename !here] ;
-  @syntaxComponentAST syntaxComponentRoot ;
+  @galgas3SyntaxComponentListAST.element syntaxComponentRoot ;
   if [[ioParsedComponentStruct mParsedSyntaxComponentMap] hasKey ! basename] then
     [[ioParsedComponentStruct mParsedSyntaxComponentMap] searchKey !basenameKey ?* ?syntaxComponentRoot] ;
   else
@@ -279,67 +279,10 @@ routine compileSyntaxComponentGalgas3
   ??@string inOutputDirectory
   ??@galgas3SyntaxComponentListAST.element inSyntaxComponentRoot
   ??@semanticContext inSemanticContext
+  ?!@parsedSyntaxComponentMap ioParsedSyntaxComponentMap
   ?!@stringlist ioToolProductFileList
 :
   const @string componentName := inSyntaxComponentRoot->mSyntaxComponentName->string ;
-#--- Recursively parse all imported files
-#  @semanticDeclarationListAST semanticDeclarationList := [inSyntaxComponentRoot mSemanticDeclarationList] ;
-#  @stringset parsedFileSet [setWithString ![inSourceFile string]] ;
-#  @lstringlist optionComponentFileNameList [emptyList] ;
-#  @grammarComponentASTList grammarComponentASTList [emptyList] ;
-#  @stringlist headerIncludeList [emptyList] ;
-#  @stringlist implementationIncludeList [emptyList] ;
-#  recursivelyImportSemanticComponentAndCheckNoCircularityInImportSemantics
-#    !inSourceFile
-#    !?ioParsedComponentStruct
-#    !?optionComponentFileNameList
-#    !?grammarComponentASTList
-#    !?semanticDeclarationList
-#    !?parsedFileSet
-#    !?headerIncludeList
-#    !?implementationIncludeList
-#    ![inSyntaxComponentRoot mImportedComponentFileNameList]
-#    ![inSourceFile stringByDeletingLastPathComponent]
-#  ;
-#------ Add predefined types to semantics declarations
-#  @semanticDeclarationListAST semanticDeclarationListWithPredefinedTypes := semanticDeclarationList ;
-#  appendPredefinedTypesASTs !?semanticDeclarationListWithPredefinedTypes ;
-##------ Build semantic context
-#  @semanticContext semanticContext ;
-#  buildSemanticContext
-#    ![inSourceFile string]
-#    !semanticDeclarationListWithPredefinedTypes
-#    ![inSyntaxComponentRoot mEndOfSourceFile]
-#    ?semanticContext
-#  ;
-##--- Perform semantic analysis of grammar components
-#  buildGrammarComponentMapForSemanticAnalysis
-#    !grammarComponentASTList
-#    !?semanticContext
-#  ;
-##--- Build option component map for analysis
-#  buildOptionComponentMapForSemanticAnalysis
-#    !optionComponentFileNameList
-#    !?ioParsedComponentStruct
-#    !?semanticContext->mOptionComponentMapForSemanticAnalysis
-#  ;
-##--- Build lexique component map for semantic analysis
-#  buildLexiqueComponentMapForSemanticAnalysis
-#    !ioParsedComponentStruct
-#    ?@lexiqueComponentMapForSemanticAnalysis lexiqueMap
-#  ;
-#  semanticContext->mLexiqueComponentMapForSemanticAnalysis := lexiqueMap ;
-#--- Parse lexique component
-#  const lexiqueFilePath := [@lstring new
-#    ![[inSyntaxComponentRoot mImportedLexiqueFilePath] absolutePathFromPath ![inSourceFile stringByDeletingLastPathComponent]]
-#    ![[inSyntaxComponentRoot mImportedLexiqueFilePath] location]
-#  ] ;
-#  @galgas3LexiqueComponentListAST.element lexiqueComponentRoot ;
-#  parseLexiqueComponent
-#    !lexiqueFilePath
-#    !?ioParsedComponentStruct
-#    ?lexiqueComponentRoot
-#  ;
 #--------------------------------------- Build terminal map
   [inSemanticContext->mLexiqueComponentMapForSemanticAnalysis searchKey
     !inSyntaxComponentRoot->mImportedLexiqueFilePath
@@ -372,6 +315,12 @@ routine compileSyntaxComponentGalgas3
       !inSyntaxComponentRoot->mHasTranslateFeature
       ?syntaxDeclarationForGeneration
     ;
+  #------
+    [!?ioParsedSyntaxComponentMap insertKey
+      !inSyntaxComponentRoot->mSyntaxComponentName
+      !inSyntaxComponentRoot->mSyntaxComponentName # mSourceFullFilePath
+      !inSyntaxComponentRoot     
+    ] ;
   #------ Semantic Analysis
     performSemanticAnalysis
       ![@semanticDeclarationListAST emptyList]

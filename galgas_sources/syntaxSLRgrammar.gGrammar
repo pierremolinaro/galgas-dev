@@ -25,7 +25,7 @@ indexing grammar syntaxSLRgrammar "SLR" feature translate :
   with "semanticDeclarationsSyntax.gSyntax" ;
 
   root <syntax_component_start_symbol>
-    !@syntaxComponentAST outSyntaxComponentRoot
+    !@galgas3SyntaxComponentListAST.element outSyntaxComponentRoot
   ; # SLR
 
 #  unused <sdfgh> ;

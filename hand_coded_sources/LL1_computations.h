@@ -41,8 +41,9 @@ class C_Relation ;
 
 void
 LL1_computations (C_Compiler * inCompiler,
+                  const bool inCompileForGalgas3,
                   const cPureBNFproductionsList & inPureBNFproductions,
-                  C_HTML_FileWrite * inHTMLfile,
+                  C_HTML_FileWrite & ioHTMLfile,
                   const cVocabulary & inVocabulary,
                   const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                   const C_Relation & inFIRSTsets,

@@ -108,7 +108,10 @@ routine compileSemanticDeclarationsGalgas3
   const productDirectory := [inProjectSourceFile stringByDeletingLastPathComponent] . "/build/output" ;
 #------ Generate Header File
   if [@uint errorCount] == 0 then
-    ioToolProductFileList += !"AZERTYUIOP.cpp" ;
+    var headerInclusionList := [@stringlist emptyList] ;
+    for * in outSemanticContext->mGrammarMap do
+      headerInclusionList += !lkey->string ;
+    end for ;
     @stringlist typeList [emptyList] ;
     foreach decoratedDeclarationListForGeneration do
       if not mIsPredefined then
@@ -117,7 +120,7 @@ routine compileSemanticDeclarationsGalgas3
     end foreach ;
     var headerString := [filewrapper semanticFileGenerationTemplate.semanticFileHeader
       !"AZERTYUIOP"
-      ![@stringlist emptyList]
+      !headerInclusionList
       !typeList
     ] ;
     foreach decoratedDeclarationListForGeneration do
@@ -142,6 +145,7 @@ routine compileSemanticDeclarationsGalgas3
   end if ;
 #------ Generate Implementation File
   if [@uint errorCount] == 0 then
+    ioToolProductFileList += !"AZERTYUIOP.cpp" ;
     @string implementationString := [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
       !"AZERTYUIOP"
       !implementationFileIncludeList

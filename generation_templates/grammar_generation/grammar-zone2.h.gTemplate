@@ -1,5 +1,5 @@
-#ifndef GRAMMAR_%![[GRAMMAR_COMPONENT_ROOT mGrammarName] identifierRepresentation]%_HAS_BEEN_DEFINED
-#define GRAMMAR_%![[GRAMMAR_COMPONENT_ROOT mGrammarName] identifierRepresentation]%_HAS_BEEN_DEFINED
+#ifndef GRAMMAR_%![GRAMMAR_COMPONENT_ROOT->mGrammarComponentName identifierRepresentation]%_HAS_BEEN_DEFINED
+#define GRAMMAR_%![GRAMMAR_COMPONENT_ROOT->mGrammarComponentName identifierRepresentation]%_HAS_BEEN_DEFINED
 
 //-----------------------------------------------------------------------------*
 

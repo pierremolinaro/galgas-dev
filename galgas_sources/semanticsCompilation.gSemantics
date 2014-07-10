@@ -66,7 +66,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 list @grammarComponentASTList {
-  @grammarComponentAST mGrammarComponentAST ;
+  @galgas3GrammarComponentListAST.element mGrammarComponentAST ;
 }
 
 #---------------------------------------------------------------------------*
@@ -106,14 +106,14 @@ routine recursivelyImportSemanticComponent
         ioOptionComponentFileNameList += !filePath ;
         ioImplementationIncludeList += ![[filePath lastPathComponent] stringByDeletingPathExtension] ;
       elsif extension == "gGrammar" then
-        @grammarComponentAST grammarComponentAST ;
+        @galgas3GrammarComponentListAST.element grammarComponentAST ;
         parseGrammarComponent
           !filePath
           !?ioParsedComponentStruct
           ?grammarComponentAST
         ;
         ioGrammarComponentASTList += !grammarComponentAST ;
-        ioImplementationIncludeList += ![[grammarComponentAST mGrammarName] string] ;
+        ioImplementationIncludeList += !grammarComponentAST->mGrammarComponentName->string ;
       elsif extension == "gSemantics" then
         [!?ioSemanticImportDependenceGraph addEdge
           ![@lstring new ![inFilePath lastPathComponent] ![inFilePath location]]
@@ -320,7 +320,7 @@ routine buildGrammarComponentMapForSemanticAnalysis
     end foreach ;
   #--- Insert grammar in grammar map
     [!?ioSemanticContext->mGrammarMap insertGrammar
-      ![mGrammarComponentAST mGrammarName]
+      !mGrammarComponentAST->mGrammarComponentName
       !grammarLabelMap
       ![[mGrammarComponentAST mHasIndexing] bool]
       !mGrammarComponentAST->mHasTranslateFeature
