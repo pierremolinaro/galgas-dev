@@ -20,7 +20,6 @@
 syntax programModelBuilder ("galgas_scanner.gLexique")  feature translate:
 
 import "semanticsTypesForAST.gSemantics" ;
-import "programMetamodel.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 

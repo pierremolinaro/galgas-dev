@@ -117,7 +117,6 @@ project all_galgas (2:6:0) -> "galgas" :
   semantics "grammarCompilation.gSemantics" ;
 
 #--- Program component
-  semantics "programMetamodel.gSemantics" ;
   syntax    "programModelBuilder.gSyntax" ;
   grammar   "programSLRgrammar.gGrammar" ;
   semantics "programComponentCompilation.gSemantics" ;
@@ -155,18 +154,6 @@ project all_galgas (2:6:0) -> "galgas" :
   grammar "galgas3Grammar.gGrammar" ;
 
   semantics "galgas3SemanticDeclarationCompilation.gSemantics" ;
- 
-  semantics "galgas3OptionComponentCompilation.gSemantics" ;
-
-  semantics "galgas3LexiqueComponentCompilation.gSemantics" ;
-
-  semantics "galgas3GUIComponentCompilation.gSemantics" ;
-
-  semantics "galgas3SyntaxComponentCompilation.gSemantics" ;
-
-  semantics "galgas3GrammarComponentCompilation.gSemantics" ;
-  
-  semantics "galgas3ProgramDeclarationCompilation.gSemantics" ;
 
   semantics "galgas3TargetGeneration.gSemantics" ;
 

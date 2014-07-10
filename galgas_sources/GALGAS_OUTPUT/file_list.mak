@@ -101,7 +101,6 @@ SOURCES += grammarModelBuilder.cpp
 SOURCES += grammarLL1grammar.cpp
 SOURCES += grammarSemantics.cpp
 SOURCES += grammarCompilation.cpp
-SOURCES += programMetamodel.cpp
 SOURCES += programModelBuilder.cpp
 SOURCES += programSLRgrammar.cpp
 SOURCES += programComponentCompilation.cpp
@@ -130,12 +129,6 @@ SOURCES += galgas3GrammarComponentSyntax.cpp
 SOURCES += galgas3ProgramDeclarations.cpp
 SOURCES += galgas3Grammar.cpp
 SOURCES += galgas3SemanticDeclarationCompilation.cpp
-SOURCES += galgas3OptionComponentCompilation.cpp
-SOURCES += galgas3LexiqueComponentCompilation.cpp
-SOURCES += galgas3GUIComponentCompilation.cpp
-SOURCES += galgas3SyntaxComponentCompilation.cpp
-SOURCES += galgas3GrammarComponentCompilation.cpp
-SOURCES += galgas3ProgramDeclarationCompilation.cpp
 SOURCES += galgas3TargetGeneration.cpp
 
 

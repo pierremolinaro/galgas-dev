@@ -206,6 +206,7 @@ routine updateGalgas3Targets
   ??@lstringlist inTargetFeatureList
   ??@stringlist inToolProductFileList
   ??@stringlist unused inAppProductFileList
+  ??@stringset inHandCodedSourceDirectorySet
   ??@stringset inHandledExtensionSet
 :
   const projectName := [[inProjectSourceFilePath lastPathComponent] stringByDeletingPathExtension] ;
@@ -252,9 +253,7 @@ routine updateGalgas3Targets
   @stringset programSourceSet_app [emptySet] ;
 #---
   @stringset sourceFileSet [emptySet] ;
-#  @stringlist generatedFileListForMakefile [emptyList] ;
   @stringlist handCodedSourceList [emptyList] ;
-  @stringset handCodedSourceDirectorySet [emptySet] ;
 #--- Parse features
   if [option .verbose_output value] then
     message "*** Updating targets\n" ;
@@ -366,7 +365,7 @@ routine updateGalgas3Targets
   end if ;
 #--- Update makefile file list
   const @string newFileListContents := [filewrapper targetGalgas3GenerationFileWrapper.makefile_file_list
-    !handCodedSourceDirectorySet
+    !inHandCodedSourceDirectorySet
     !handCodedSourceList
     !inToolProductFileList
     !libpmPath
