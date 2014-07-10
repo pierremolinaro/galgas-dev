@@ -464,6 +464,12 @@ list @semanticInstructionListForGeneration {
 
 #---------------------------------------------------------------------------*
 
+class @semanticBlockInstructionForGeneration extends @semanticInstructionForGeneration {
+  @semanticInstructionListForGeneration mInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
 list @listOfSemanticInstructionListForGeneration {
   @semanticInstructionListForGeneration mInstructionList ;
   @location mEndOfInstructionList ;

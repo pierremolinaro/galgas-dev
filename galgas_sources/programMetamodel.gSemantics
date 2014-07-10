@@ -44,8 +44,8 @@ list @programRuleList {
 struct @programComponentAST {
   @lstring mProgramComponentName ;
   @lstringlist mImportedComponentFileNameList ;
-  @prologueEpilogueList mPrologueList ; # Zero or one is correct
-  @prologueEpilogueList mEpilogueList ; # zero or one is correct
+  @prologueEpilogueList mPrologueList ;
+  @prologueEpilogueList mEpilogueList ;
   @programRuleList mProgramRules ;
   @semanticDeclarationListAST mSemanticDeclarationList ;
   @location mEndOfSourceFile ;

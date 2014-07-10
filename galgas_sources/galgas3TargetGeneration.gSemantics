@@ -263,7 +263,7 @@ routine updateGalgas3Targets
   availableGenerationFeatures += !"makefile-macosx" ;
   availableGenerationFeatures += !"makefile-unix" ;
   availableGenerationFeatures += !"makefile-i386-linux-on-macosx" ;
-  availableGenerationFeatures += !"makefile-x86_64-linux-on-macosx" ;
+  availableGenerationFeatures += !"makefile-x86-64-linux-on-macosx" ;
   availableGenerationFeatures += !"makefile-mingw-on-macosx" ;
   availableGenerationFeatures += !"makefile-msys-on-win32" ;
   availableGenerationFeatures += !"SnowLeopard" ;
