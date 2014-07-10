@@ -367,6 +367,9 @@ override method @grammarInstructionWithSourceFileForGeneration generateInstructi
       !?ioUnusedVariableCppNameSet
       ??@string parameterCppName
     ] ;
+    if (mActualParameter is >= @inputActualParameterForGeneration) then
+      ioGeneratedCode .= parameterCppName . ".drop () ;\n" ;
+    end if ;
     parameterCppNameList += !parameterCppName ;
   end foreach ;
   if mGrammarHasTranslateFeature then
@@ -404,7 +407,6 @@ override method @grammarInstructionWithSourceExpressionForGeneration generateIns
   ??@bool unused inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode
 :
-#  ioGeneratedCode .= "{\n" ;
 #--- Source string
   @string sourceVar ;
   [mSourceStringExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?sourceVar] ;
@@ -416,6 +418,9 @@ override method @grammarInstructionWithSourceExpressionForGeneration generateIns
     @string parameterCppName ;
     [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?inputVariableList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
     parameterCppNameList += !parameterCppName ;
+    if (mActualParameter is >= @inputActualParameterForGeneration) then
+      ioGeneratedCode .= parameterCppName . ".drop () ;\n" ;
+    end if ;
   end foreach ;
   if mGrammarHasTranslateFeature then
     ioGeneratedCode .= "C_String " . mSyntaxDirectedTranslationResultVarName . " ;\n" ;

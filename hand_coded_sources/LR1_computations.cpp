@@ -1131,7 +1131,7 @@ generate_LR1_grammar_cpp_file (C_Compiler * inCompiler,
   if (inCompileForGalgas3) {
     generatedZone2 << "#include \"grammar-" << inTargetFileName << ".h\"\n" ;
     generatedZone2 << "#include \"lexique-" << inLexiqueName << ".h\"\n" ;
-    generatedZone2 << "#include \"AZERTYUIOP.h\"\n" ;
+    generatedZone2 << "// #include \"AZERTYUIOP.h\"\n" ;
   }else{
     generatedZone2 << "#include \"" << inTargetFileName << ".h\"\n" ;
   }
@@ -1524,7 +1524,7 @@ generate_LR1_grammar_cpp_file (C_Compiler * inCompiler,
                           "        message << \"the '\" << filePath << \"' file exits, but cannot be read\" ;\n"
                           "        const GALGAS_location errorLocation (inFilePath.reader_location (THERE)) ;\n"
                           "        inCompiler->semanticErrorAtLocation (errorLocation, message COMMA_THERE) ;\n" ;
-        parametre.rewind () ;
+/*        parametre.rewind () ;
         numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
           if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GALGAS_formalArgumentPassingModeAST::kEnum_argumentOut) {
@@ -1532,7 +1532,7 @@ generate_LR1_grammar_cpp_file (C_Compiler * inCompiler,
           }
           parametre.gotoNextObject () ;
           numeroParametre ++ ;
-        }
+        }*/
         generatedZone3 << "        }\n"
                           "        macroDetachSharedObject (scanner) ;\n"
                           "      }else{\n"
@@ -1540,7 +1540,7 @@ generate_LR1_grammar_cpp_file (C_Compiler * inCompiler,
                           "        message << \"the '\" << filePath << \"' file does not exist\" ;\n"
                           "        const GALGAS_location errorLocation (inFilePath.reader_location (THERE)) ;\n"
                           "        inCompiler->semanticErrorAtLocation (errorLocation, message COMMA_THERE) ;\n" ;
-         parametre.rewind () ;
+/*         parametre.rewind () ;
         numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
           if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GALGAS_formalArgumentPassingModeAST::kEnum_argumentOut) {
@@ -1548,7 +1548,7 @@ generate_LR1_grammar_cpp_file (C_Compiler * inCompiler,
           }
           parametre.gotoNextObject () ;
           numeroParametre ++ ;
-        }
+        }*/
         generatedZone3 << "    }\n"
                           "  }\n"
                           "}\n\n" ;
