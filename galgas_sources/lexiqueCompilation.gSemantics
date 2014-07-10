@@ -752,6 +752,18 @@ filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_gener
     ?@indexingListAST INDEXING_LIST
   ;
 
+  template newImplementationZone2Galgas3 "lexique_implementation-galgas3.cpp.gTemplate"
+    ?@string LEXIQUE_IDENTIFIER
+    ?@lexicalAttributeMap LEXICAL_ATTRIBUTE_MAP
+    ?@lexicalMessageMap LEXICAL_MESSAGE_MAP
+    ?@terminalList TERMINAL_LIST
+    ?@lexicalExplicitTokenListMapMap LEXICAL_TOKEN_LIST_MAP
+    ?@stringset STRINGS_IN_EXPLICIT_RULES
+    ?@lexicalRuleListAST LEXICAL_RULE_LIST
+    ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
+    ?@galgas3LexiqueComponentListAST.element LEXIQUE_COMPONENT_ROOT
+  ;
+
   template newImplementationZone2 "lexique_implementation.new.cpp.gTemplate"
     ?@string LEXIQUE_IDENTIFIER
     ?@lexicalAttributeMap LEXICAL_ATTRIBUTE_MAP
@@ -1347,13 +1359,13 @@ routine compileLexiqueComponentGalgas3
   end foreach ;
 #--------------------------------------- Build Header file
   const lexiqueClassName := inLexiqueComponentAST->mLexiqueComponentName->string ;
-  ioToolProductFileList += !lexiqueClassName . ".cpp" ;
-  ioAppProductFileList += !lexiqueClassName . "-cocoa.m" ;
+  ioToolProductFileList += !"lexique-" + lexiqueClassName + ".cpp" ;
+  ioAppProductFileList += !"lexique-" + lexiqueClassName + "-cocoa.m" ;
 #--- Generate header file
   if [@uint errorCount] == 0 then
     [@string generateFileWithPattern
       !inOutputDirectory
-      !lexiqueClassName . ".h"
+      !"lexique-" + lexiqueClassName . ".h"
       !"//"
       !"\n\n" # Defaut user zone1
       ![filewrapper lexiqueGenerationTemplates.newHeaderZone2
@@ -1374,10 +1386,10 @@ routine compileLexiqueComponentGalgas3
   if [@uint errorCount] == 0 then
     [@string generateFileWithPattern
       !inOutputDirectory
-      !lexiqueClassName . ".cpp"
+      !"lexique-" + lexiqueClassName . ".cpp"
       !"//"
       !"\n\n" # Defaut user zone1
-      ![filewrapper lexiqueGenerationTemplates.newImplementationZone2
+      ![filewrapper lexiqueGenerationTemplates.newImplementationZone2Galgas3
          ![lexiqueClassName identifierRepresentation]
          ![lexiqueAnalysisContext mLexicalAttributeMap]
          ![lexiqueAnalysisContext mLexicalMessageMap]
@@ -1396,7 +1408,7 @@ routine compileLexiqueComponentGalgas3
   if [@uint errorCount] == 0 then
     [@string generateFileWithPattern
       !inOutputDirectory
-      !lexiqueClassName . "-cocoa.h"
+      !"lexique-" + lexiqueClassName . "-cocoa.h"
       !"//"
       !"\n\n" # Defaut user zone1
       ![filewrapper lexiqueGenerationTemplates.cocoaHeaderZone2
@@ -1414,7 +1426,7 @@ routine compileLexiqueComponentGalgas3
   if [@uint errorCount] == 0 then
     [@string generateFileWithPattern
       !inOutputDirectory
-      !lexiqueClassName . "-cocoa.m"
+      !"lexique-" + lexiqueClassName . "-cocoa.m"
       !"//"
       !"\n\n" # Defaut user zone1
       ![filewrapper lexiqueGenerationTemplates.cocoaImplementationZone2

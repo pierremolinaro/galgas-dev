@@ -514,8 +514,6 @@ indexing with projectLL1grammar
       !handledExtensionSet
     ;
   end if ;
-#--- Build project files
-#  buildProject !inProjectSourceFile->string ;
 }
 
 #----------------------------------------------------------------------------*

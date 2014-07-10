@@ -324,13 +324,12 @@ routine compileSyntaxComponentGalgas3
   #------ Semantic Analysis
     performSemanticAnalysis
       ![@semanticDeclarationListAST emptyList]
-#      ![inSyntaxComponentRoot mSemanticDeclarationList]
       !inSemanticContext
       ?decoratedDeclarationListForGeneration
     ;
     decoratedDeclarationListForGeneration += !false !syntaxDeclarationForGeneration !"" ;
     var implementationIncludeList := [@stringlist emptyList] ;
-    implementationIncludeList += !lexiqueName ;
+    implementationIncludeList += !"lexique-" + lexiqueName ;
     implementationIncludeList += !"AZERTYUIOP" ;
   #------ Generate Header File
     if [@uint errorCount] == 0 then
@@ -345,7 +344,7 @@ routine compileSyntaxComponentGalgas3
       end foreach ;
       [@string generateFileWithPattern
         !inOutputDirectory
-        !componentName . ".h"
+        !"syntax-" . componentName . ".h"
         !"//"
         !"\n\n" # Defaut user zone1
         !headerString
@@ -355,7 +354,7 @@ routine compileSyntaxComponentGalgas3
     #------ Generate Implementation File
       if [@uint errorCount] == 0 then
         const lexiqueCppName := "C_Lexique_" . [inSyntaxComponentRoot->mImportedLexiqueFilePath  identifierRepresentation] ;
-        @string implementationString := [filewrapper syntaxFileGenerationTemplate.syntaxFileImplementation
+        @string implementationString := [filewrapper syntaxFileGenerationTemplate.syntaxFileImplementationGalgas3
           !componentName
           !implementationIncludeList
         ] ;
@@ -422,10 +421,10 @@ routine compileSyntaxComponentGalgas3
             ] ;
           end if ;
         end foreach ;
-        ioToolProductFileList += !componentName . ".cpp" ;
+        ioToolProductFileList += !"syntax-" . componentName . ".cpp" ;
         [@string generateFileWithPattern
           !inOutputDirectory
-          !componentName . ".cpp"
+          !"syntax-" . componentName . ".cpp"
           !"//"
           !"\n\n" # Defaut user zone1
           !implementationString

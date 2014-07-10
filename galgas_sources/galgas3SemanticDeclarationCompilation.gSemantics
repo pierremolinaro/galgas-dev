@@ -55,7 +55,7 @@ routine compileSemanticDeclarationsGalgas3
   outSemanticContext->mOptionComponentMapForSemanticAnalysis := optionComponentMapForSemanticAnalysis ;
   for * in optionComponentMapForSemanticAnalysis do
     if not mIsPredefined then
-      implementationFileIncludeList += !lkey->string ;
+      implementationFileIncludeList += !"option-" + lkey->string ;
     end if ;
   end for ;
 #--- Build lexique component map for semantic analysis
@@ -110,7 +110,7 @@ routine compileSemanticDeclarationsGalgas3
   if [@uint errorCount] == 0 then
     var headerInclusionList := [@stringlist emptyList] ;
     for * in outSemanticContext->mGrammarMap do
-      headerInclusionList += !lkey->string ;
+      headerInclusionList += !"grammar-" . lkey->string ;
     end for ;
     @stringlist typeList [emptyList] ;
     foreach decoratedDeclarationListForGeneration do

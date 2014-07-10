@@ -669,10 +669,12 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
   generatedZone2 << "#include \"galgas2/C_galgas_CLI_Options.h\"\n\n" ;
   generatedZone2 << "#include \"files/C_FileManager.h\"\n\n" ;
   generatedZone2.appendCppHyphenLineComment () ;
-  generatedZone2 << "#include \"" << inTargetFileName << ".h\"\n" ;
   if (inCompileForGalgas3) {
-    generatedZone2 << "#include \"" << inLexiqueName << ".h\"\n" ;
+    generatedZone2 << "#include \"grammar-" << inTargetFileName << ".h\"\n" ;
+    generatedZone2 << "#include \"lexique-" << inLexiqueName << ".h\"\n" ;
     generatedZone2 << "#include \"AZERTYUIOP.h\"\n" ;
+  }else{
+    generatedZone2 << "#include \"" << inTargetFileName << ".h\"\n" ;
   }
   generatedZone2 << "\n" ;
 
@@ -1196,7 +1198,7 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
   inCompiler->generateFileWithPatternFromPathes (inOutputDirectoryForCppFiles,
                                     directoriesToExclude,
                                     "//",
-                                    inTargetFileName + ".cpp",
+                                    C_String (inCompileForGalgas3 ? "grammar-" : "") + inTargetFileName + ".cpp",
                                     "\n\n", // User Zone 1
                                     generatedZone2,
                                     "\n\n", // User Zone 2
@@ -1205,11 +1207,11 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-// G E N E R A T E    S L R    A N A L Y Z E R                               *
+// G E N E R A T E    S L R    A N A L Y Z E R                                 *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 //                                                                             *
-// C O M P U T E    L R 0    A U T O M A T O N                               *
+// C O M P U T E    L R 0    A U T O M A T O N                                 *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

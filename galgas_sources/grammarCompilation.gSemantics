@@ -779,7 +779,7 @@ routine compileGrammarComponentGalgas3
     nonTerminalSymbolSortedListForGrammarAnalysis += !lkey !mNonTerminalIndex !mNonterminalSymbolParametersMap ;
   end foreach ;
 #---------------------------------------------------------- Analyze grammar
-  ioToolProductFileList += !inGrammarComponentRoot->mGrammarComponentName->string + ".cpp" ;
+  ioToolProductFileList += !"grammar-" + inGrammarComponentRoot->mGrammarComponentName->string + ".cpp" ;
   grammarAnalysisAndGeneration
     !true # Compile for galgas 3
     !inGrammarComponentRoot->mGrammarComponentName
@@ -810,7 +810,7 @@ routine compileGrammarComponentGalgas3
     ] ;
     [@string generateFileWithPattern
       !inOutputDirectory
-      !inGrammarComponentRoot->mGrammarComponentName->string . ".h"
+      !"grammar-" . inGrammarComponentRoot->mGrammarComponentName->string . ".h"
       !"//"
       !"\n\n" # Defaut user zone1
       !zone2

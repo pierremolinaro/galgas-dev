@@ -1,0 +1,401 @@
+#include <ctype.h>
+#include <string.h>
+
+//-----------------------------------------------------------------------------*
+
+#include "utilities/MF_MemoryControl.h"
+#include "strings/unicode_character_cpp.h"
+#include "galgas2/scanner_actions.h"
+
+//-----------------------------------------------------------------------------*
+
+#include "lexique-%!LEXIQUE_COMPONENT_ROOT->mLexiqueComponentName->string%.h"
+
+//-----------------------------------------------------------------------------*
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  #define LINE_AND_SOURCE_FILE sourceText ()->sourceFilePath ().cString (HERE), lineNumber ()
+  #define COMMA_LINE_AND_SOURCE_FILE , LINE_AND_SOURCE_FILE
+#else
+  #define LINE_AND_SOURCE_FILE
+  #define COMMA_LINE_AND_SOURCE_FILE
+#endif
+
+//-----------------------------------------------------------------------------*
+//                                                                             *
+//                               Constructors                                  *
+//                                                                             *
+//-----------------------------------------------------------------------------*
+
+cTokenFor_%!LEXIQUE_IDENTIFIER%::cTokenFor_%!LEXIQUE_IDENTIFIER% (void)%
+  foreach LEXICAL_ATTRIBUTE_MAP
+  before % :\n%
+  do %mLexicalAttribute_%![lkey identifierRepresentation]% ()%
+  between %,\n%
+  end
+% {
+}
+
+//-----------------------------------------------------------------------------*
+
+C_Lexique_%!LEXIQUE_IDENTIFIER%::C_Lexique_%!LEXIQUE_IDENTIFIER% (C_Compiler * inCallerCompiler,
+                const C_String & inDependencyFileExtension,
+                const C_String & inDependencyFilePath,
+                const C_String & inSourceFileName
+                COMMA_LOCATION_ARGS) :
+C_Lexique (inCallerCompiler, inDependencyFileExtension, inDependencyFilePath, inSourceFileName COMMA_THERE)%
+  if [[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] > 0 then
+    %,\nmMatchedTemplateDelimiterIndex (-1)%
+  end
+% {
+}
+
+//-----------------------------------------------------------------------------*
+
+C_Lexique_%!LEXIQUE_IDENTIFIER%::C_Lexique_%!LEXIQUE_IDENTIFIER% (C_Compiler * inCallerCompiler,
+                const C_String & inSourceString,
+                const C_String & inStringForError
+                COMMA_LOCATION_ARGS) :
+C_Lexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE)%
+  if [[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] > 0 then
+    %,\nmMatchedTemplateDelimiterIndex (-1)%
+  end
+% {
+}
+
+//-----------------------------------------------------------------------------*
+//                                                                             *
+//                 I N D E X I N G    D I R E C T O R Y                        *
+//                                                                             *
+//-----------------------------------------------------------------------------*
+
+C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::indexingDirectory (void) const {
+  return %![[LEXIQUE_COMPONENT_ROOT mIndexingDirectory] utf8Representation]% ;
+}
+
+//-----------------------------------------------------------------------------*
+//                                                                             *
+//                        Lexical error message list                           *
+//                                                                             *
+//-----------------------------------------------------------------------------*
+%
+  foreach LEXICAL_MESSAGE_MAP do
+   %\nstatic const utf32 gLexicalMessage_%![lkey string]% [] = % ![mLexicalMessage utf32Representation]% ;\n%
+  end
+%
+//-----------------------------------------------------------------------------*
+//                                                                             *
+//          Syntax error messages, for every terminal symbol                   *
+//                                                                             *
+//-----------------------------------------------------------------------------*
+%
+  foreach TERMINAL_LIST do
+   %\n//--- Syntax error message for terminal '$%![mTerminalName string]%$' :\n%
+   %static const utf32 gSyntaxErrorMessage_%![[mTerminalName string] identifierRepresentation]% [] = %![mSyntaxErrorMessage utf32Representation]% ;\n%
+  end
+%
+//-----------------------------------------------------------------------------*
+//                                                                             *
+//                getMessageForTerminal                                        *
+//                                                                             *
+//-----------------------------------------------------------------------------*
+
+C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::getMessageForTerminal (const int16_t inTerminalIndex) const {
+  static const utf32 * syntaxErrorMessageArray [%![[TERMINAL_LIST length] + 1 string]%] = {kEndOfSourceLexicalErrorMessage%
+  foreach TERMINAL_LIST do
+   %,\n    gSyntaxErrorMessage_%![[mTerminalName string] identifierRepresentation]
+  end
+%} ;
+  return syntaxErrorMessageArray [inTerminalIndex] ;
+}
+
+//-----------------------------------------------------------------------------*
+//                                                                             *
+//                      U N I C O D E    S T R I N G S                         *
+//                                                                             *
+//-----------------------------------------------------------------------------*
+%
+  foreach STRINGS_IN_EXPLICIT_RULES do
+   if [key length] > 0 then
+   %\n//--- Unicode string for '$%![key identifierRepresentation]%$'\n%
+   %static const utf32 kUnicodeString_%![key identifierRepresentation]% [] = % ![key utf32Representation]% ;\n%
+   end
+  end
+%
+%
+  foreach LEXICAL_TOKEN_LIST_MAP : tokenList_ do
+    %//-----------------------------------------------------------------------------*\n%
+    %//                                                                             *\n%
+    %//             Key words table '%![tokenList_lkey string]%'                            *\n%
+    %//                                                                             *\n%
+    %//-----------------------------------------------------------------------------*\n%
+    %\nstatic const int32_t ktable_size_%![tokenList_lkey string]% = %![[tokenList_mExplicitTokenListMap count] string]% ;\n\n%
+    %static const C_unicode_lexique_table_entry ktable_for_%![tokenList_lkey string]% [ktable_size_%![tokenList_lkey string]%] = {\n%
+      foreach tokenList_mTokenSortedList
+      do %  C_unicode_lexique_table_entry (kUnicodeString_%![mName identifierRepresentation]%, %![mLength string]%, C_Lexique_%!LEXIQUE_IDENTIFIER%::kToken_%![mTerminalName identifierRepresentation]%)%
+      between %,\n%
+      end
+    %\n} ;\n\n%
+    %int16_t C_Lexique_%!LEXIQUE_IDENTIFIER%::search_into_%![tokenList_lkey string]% (const C_String & inSearchedString) {\n%
+    %  return searchInList (inSearchedString, ktable_for_%![tokenList_lkey string]%, ktable_size_%![tokenList_lkey string]%) ;\n%
+    %}\n\n%
+  end
+%
+//-----------------------------------------------------------------------------*
+//                                                                             *
+//                          getCurrentTokenString                              *
+//                                                                             *
+//-----------------------------------------------------------------------------*
+
+C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::getCurrentTokenString (const cToken * inTokenPtr) const {
+  const cTokenFor_%!LEXIQUE_IDENTIFIER% * ptr = (const cTokenFor_%!LEXIQUE_IDENTIFIER% *) inTokenPtr ;
+  C_String s ;
+  if (ptr == NULL) {
+    s.appendCString("$$") ;
+  }else{
+    switch (ptr->mTokenCode) {
+    case kToken_:
+      s.appendCString("$$") ;
+      break ;
+%foreach TERMINAL_LIST do
+   %    case kToken_%![[mTerminalName string] identifierRepresentation]%:\n%
+   %      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;\n%
+   %      s.appendCString (%![[mTerminalName string] utf8Representation]%) ;\n%
+   %      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;\n%
+   foreach mSentAttributeList do
+     %      s.appendUnicodeCharacter (TO_UNICODE (' ') COMMA_HERE) ;\n%
+     %      s.%![mLexicalType appendMethodName]% (ptr->mLexicalAttribute_%![mLexicalAttributeName identifierRepresentation] ![mLexicalType appendArgumentOfMethod]%) ;\n%
+   end
+   %      break ;\n%
+end
+%    default:
+      break ;
+    }
+  }
+  return s ;
+}
+
+//-----------------------------------------------------------------------------*
+//                                                                             *
+//                           Template Delimiters                               *
+//                                                                             *
+//-----------------------------------------------------------------------------*
+
+% foreach [LEXIQUE_ANALYSIS_CONTEXT mTemplateDelimitorList]
+    before %static const cTemplateDelimiter kTemplateDefinitionArray [%![[[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] string]%] = {\n%
+    do %  cTemplateDelimiter (kUnicodeString_%![mStartString identifierRepresentation]%, %![[mStartString length] string]%, %
+      if [mEndString length] == 0 then
+        %NULL, 0,%
+      else
+        %kUnicodeString_%![mEndString identifierRepresentation]%, %![[mEndString length] string]%,%
+      end
+      % NULL, %
+      ![not mPreservesStartDelimiter cString]
+      %)%
+    between %,\n%
+    after %\n} ;\n%
+  end
+%
+//-----------------------------------------------------------------------------*
+//                                                                             *
+//                           Template Replacements                             *
+//                                                                             *
+//-----------------------------------------------------------------------------*
+
+% foreach [LEXIQUE_COMPONENT_ROOT mTemplateReplacementList]
+    before %static const cTemplateDelimiter kTemplateReplacementArray [%![[[LEXIQUE_COMPONENT_ROOT mTemplateReplacementList] length] string]%] = {\n%
+    do
+      %  cTemplateDelimiter (kUnicodeString_%![mMatchString identifierRepresentation]%, %![[mMatchString length] string]%, %
+      %kUnicodeString_%![mReplacementString identifierRepresentation]%, %![[mReplacementString length] string]%, %
+      if [mReplacementFunction length] == 0 then
+        %NULL%
+      else
+        %scanner_routine_%![mReplacementFunction string]
+      end
+      %, true)%
+    between %,\n%
+    after %\n} ;\n%
+  end
+%
+//-----------------------------------------------------------------------------*
+//                                                                             *
+//            Terminal Symbols as end of script in template mark               *
+//                                                                             *
+//-----------------------------------------------------------------------------*
+
+% if [[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] > 0 then
+    foreach [LEXIQUE_ANALYSIS_CONTEXT mTerminalList]
+      before %static const bool kEndOfScriptInTemplateArray [%![[[LEXIQUE_ANALYSIS_CONTEXT mTerminalList] length] string]%] = {\n%
+      do %  %![mIsEndOfTemplateMark cString]% /* %![mTerminalName string]% */%
+      between %,\n%
+      after %\n} ;\n%
+    end
+  end
+%
+
+//-----------------------------------------------------------------------------*
+//                                                                             *
+//               P A R S E    L E X I C A L    T O K E N                       *
+//                                                                             *
+//-----------------------------------------------------------------------------*
+
+bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
+  cTokenFor_%!LEXIQUE_IDENTIFIER% token ;
+  mLoop = true ;
+  token.mTokenCode = -1 ;
+  while ((token.mTokenCode < 0) && (UNICODE_VALUE (mCurrentChar) != '\0')) {
+%
+  if [[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] > 0 then
+%    if ((mMatchedTemplateDelimiterIndex >= 0)
+     && (kTemplateDefinitionArray [mMatchedTemplateDelimiterIndex].mEndStringLength > 0)
+     && (UNICODE_VALUE (mCurrentChar) != '\0')) {
+      const bool foundEndDelimitor = testForInputUTF32String (kTemplateDefinitionArray [mMatchedTemplateDelimiterIndex].mEndString,
+                                                              kTemplateDefinitionArray [mMatchedTemplateDelimiterIndex].mEndStringLength,
+                                                              true) ;
+      if (foundEndDelimitor) {
+        mMatchedTemplateDelimiterIndex = -1 ;
+      }
+    }
+    while ((mMatchedTemplateDelimiterIndex < 0) && (UNICODE_VALUE (mCurrentChar) != '\0')) {
+      int32_t replacementIndex = 0 ;
+      while (replacementIndex >= 0) {
+        replacementIndex = findTemplateDelimiterIndex (kTemplateReplacementArray, %![[[LEXIQUE_COMPONENT_ROOT mTemplateReplacementList] length] string]%) ;
+        if (replacementIndex >= 0) {
+          if (kTemplateReplacementArray [replacementIndex].mReplacementFunction == NULL) {
+            token.mTemplateStringBeforeToken << kTemplateReplacementArray [replacementIndex].mEndString ;
+          }else{
+            C_String s ;
+            while (notTestForInputUTF32String (kTemplateReplacementArray [replacementIndex].mEndString,
+                                               kTemplateReplacementArray [replacementIndex].mEndStringLength,
+                                               kEndOfSourceLexicalErrorMessage
+                                               COMMA_HERE)) {
+              s.appendUnicodeCharacter (previousChar () COMMA_HERE) ;
+            }
+            kTemplateReplacementArray [replacementIndex].mReplacementFunction (*this, s, token.mTemplateStringBeforeToken) ;
+          }
+        }
+      }
+      mMatchedTemplateDelimiterIndex = findTemplateDelimiterIndex (kTemplateDefinitionArray, %![[[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] string]%) ;
+      if (mMatchedTemplateDelimiterIndex < 0) {
+        token.mTemplateStringBeforeToken.appendUnicodeCharacter (mCurrentChar COMMA_HERE) ;
+        advance () ;
+      }
+    }
+    if ((mMatchedTemplateDelimiterIndex >= 0) && (UNICODE_VALUE (mCurrentChar) != '\0')) {
+%  foreach LEXICAL_ATTRIBUTE_MAP do
+    %    token.mLexicalAttribute_%![lkey identifierRepresentation] ![mLexicalType initialization] % ;\n%
+  end
+%    mTokenStartLocation = mCurrentLocation ;
+    try{
+%
+  block 8 :
+    foreach LEXICAL_RULE_LIST do
+      ![mLexicalRule generateCode !LEXIQUE_IDENTIFIER !LEXIQUE_ANALYSIS_CONTEXT]
+    end
+  end block
+%if (testForInputUTF32Char (TO_UNICODE ('\0'))) { // End of source text ? 
+          token.mTokenCode = kToken_ ; // Empty string code
+        }else{ // Unknown input character
+          unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;
+        }
+      }catch (const C_lexicalErrorException &) {
+        token.mTokenCode = -1 ; // No token
+        advance () ; // ... go throught unknown character
+      }
+    }
+    if ((token.mTokenCode > 0) && kEndOfScriptInTemplateArray [token.mTokenCode - 1]) {
+      mMatchedTemplateDelimiterIndex = -1 ;
+    }
+  %else
+  foreach LEXICAL_ATTRIBUTE_MAP do
+    %    token.mLexicalAttribute_%![lkey identifierRepresentation] ![mLexicalType initialization] % ;\n%
+  end
+%    mTokenStartLocation = mCurrentLocation ;
+    try{
+%
+  block 6 :
+    foreach LEXICAL_RULE_LIST do
+      ![mLexicalRule generateCode !LEXIQUE_IDENTIFIER !LEXIQUE_ANALYSIS_CONTEXT]
+    end
+  end block
+%if (testForInputUTF32Char (TO_UNICODE ('\0'))) { // End of source text ? 
+        token.mTokenCode = kToken_ ; // Empty string code
+      }else{ // Unknown input character
+        unknownCharacterLexicalError (LINE_AND_SOURCE_FILE) ;
+      }
+    }catch (const C_lexicalErrorException &) {
+      token.mTokenCode = -1 ; // No token
+      advance () ; // ... go throught unknown character
+    }%end%
+  }
+  if ((UNICODE_VALUE (mCurrentChar) == '\0') && (token.mTemplateStringBeforeToken.length () > 0)) {
+    token.mTokenCode = 0 ;
+    enterToken (token) ;
+  }
+  return token.mTokenCode > 0 ;
+}
+
+//-----------------------------------------------------------------------------*
+//                                                                             *
+//                         E N T E R    T O K E N                              *
+//                                                                             *
+//-----------------------------------------------------------------------------*
+
+void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (const cTokenFor_%!LEXIQUE_IDENTIFIER% & inToken) {
+  cTokenFor_%!LEXIQUE_IDENTIFIER% * ptr = NULL ;
+  macroMyNew (ptr, cTokenFor_%!LEXIQUE_IDENTIFIER% ()) ;
+  ptr->mTokenCode = inToken.mTokenCode ;
+  ptr->mStartLocation = mTokenStartLocation ;
+  ptr->mEndLocation = mTokenEndLocation ;
+  ptr->mTemplateStringBeforeToken = inToken.mTemplateStringBeforeToken ;
+%
+  foreach LEXICAL_ATTRIBUTE_MAP do
+    %  ptr->mLexicalAttribute_%![lkey identifierRepresentation]% = inToken.mLexicalAttribute_%![lkey identifierRepresentation]% ;\n%
+  end
+%  enterTokenFromPointer (ptr) ;
+}
+
+//-----------------------------------------------------------------------------*
+//                                                                             *
+//               A T T R I B U T E   A C C E S S                               *
+//                                                                             *
+%
+  foreach LEXICAL_ATTRIBUTE_MAP do
+    %//-----------------------------------------------------------------------------*\n\n%
+    ![mLexicalType cppTypeName]% C_Lexique_%!LEXIQUE_IDENTIFIER%::attributeValue_%![lkey identifierRepresentation]% (void) const {\n%
+    %  cTokenFor_%!LEXIQUE_IDENTIFIER% * ptr = (cTokenFor_%!LEXIQUE_IDENTIFIER% *) mCurrentTokenPtr ;\n%
+    %  return ptr->mLexicalAttribute_%![lkey identifierRepresentation]% ;\n%
+    %}\n\n%
+  end
+%//-----------------------------------------------------------------------------*
+//                                                                             *
+//         A S S I G N    F R O M    A T T R I B U T E                         *
+//                                                                             *
+%
+  foreach LEXICAL_ATTRIBUTE_MAP do
+    %//-----------------------------------------------------------------------------*\n\n%
+    %GALGAS_l%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]% C_Lexique_%!LEXIQUE_IDENTIFIER%::synthetizedAttribute_%![lkey identifierRepresentation]% (void) const {\n%
+    %  cTokenFor_%!LEXIQUE_IDENTIFIER% * ptr = (cTokenFor_%!LEXIQUE_IDENTIFIER% *) mCurrentTokenPtr ;\n%
+    %  macroValidSharedObject (ptr, cTokenFor_%!LEXIQUE_IDENTIFIER%) ;\n%
+    %  GALGAS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;\n%
+    %  GALGAS_%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]% value (ptr->mLexicalAttribute_%![lkey identifierRepresentation]%) ;\n%
+    %  GALGAS_l%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]% result (value, currentLocation) ;\n%
+    %  return result ;\n%
+    %}\n\n%
+  end
+%//-----------------------------------------------------------------------------*
+//                                                                             *
+//                         I N T R O S P E C T I O N                           *
+//                                                                             *
+//-----------------------------------------------------------------------------*
+
+GALGAS_stringlist C_Lexique_%!LEXIQUE_IDENTIFIER%::symbols (LOCATION_ARGS) {
+  GALGAS_stringlist result = GALGAS_stringlist::constructor_emptyList (THERE) ;
+%foreach [LEXIQUE_ANALYSIS_CONTEXT mTerminalList]
+  do %  result.addAssign_operation (GALGAS_string (%![mTerminalName utf8Representation]%) COMMA_THERE) ;\n%
+  end
+%  return result ;
+}
+
+//-----------------------------------------------------------------------------*
+

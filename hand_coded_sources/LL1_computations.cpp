@@ -459,10 +459,12 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
   generatedZone2 << "#include \"galgas2/C_galgas_CLI_Options.h\"\n\n" ;
   generatedZone2 << "#include \"files/C_FileManager.h\"\n\n" ;
   generatedZone2.appendCppHyphenLineComment () ;
-  generatedZone2 << "#include \"" << inTargetFileName << ".h\"\n" ;
   if (inCompileForGalgas3) {
-    generatedZone2 << "#include \"" << inLexiqueName << ".h\"\n" ;
+    generatedZone2 << "#include \"grammar-" << inTargetFileName << ".h\"\n" ;
+    generatedZone2 << "#include \"lexique-" << inLexiqueName << ".h\"\n" ;
     generatedZone2 << "#include \"AZERTYUIOP.h\"\n" ;
+  }else{
+    generatedZone2 << "#include \"" << inTargetFileName << ".h\"\n" ;
   }
   generatedZone2 << "\n" ;
 
@@ -897,7 +899,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
   inCompiler->generateFileWithPatternFromPathes (inOutputDirectoryForCppFiles,
                                     directoriesToExclude,
                                     "//",
-                                    inTargetFileName + ".cpp",
+                                    C_String (inCompileForGalgas3 ? "grammar-" : "") + inTargetFileName + ".cpp",
                                     "\n\n", // User Zone 1
                                     generatedZone2,
                                     "\n\n", // User Zone 2
