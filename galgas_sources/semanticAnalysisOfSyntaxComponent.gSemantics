@@ -49,7 +49,6 @@ list @ruleLabelImplementationList {
   @formalParameterSignature mSignature ;
   @location mEndOfArgumentLocation ;
   @semanticInstructionListForGeneration mInstructionListForGeneration ;
-#  feature "first";
 }
 
 #---------------------------------------------------------------------------*
@@ -86,6 +85,10 @@ filewrapper syntaxFileGenerationTemplate in "../generation_templates/syntax_gene
     ?@string LEXIQUE_NAME
     ?@stringlist IMPORTED_COMPONENT_LIST
     ?@lstringlist TYPE_PREDECLARATION_LIST
+  ;
+
+  template syntaxFileHeaderGalgas3 "syntax-file-galgas3.h.gTemplate"
+    ?@string COMPONENT_NAME
   ;
 
   template syntaxFileImplementation "syntax-file.cpp.gTemplate"

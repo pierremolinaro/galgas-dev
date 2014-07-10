@@ -380,15 +380,13 @@ routine compileSyntaxComponentGalgas3
       ?decoratedDeclarationListForGeneration
     ;
     decoratedDeclarationListForGeneration += !false !syntaxDeclarationForGeneration !"" ;
-    var headerIncludeList := [@stringlist emptyList] ;
     var implementationIncludeList := [@stringlist emptyList] ;
+    implementationIncludeList += !lexiqueName ;
+    implementationIncludeList += !"AZERTYUIOP" ;
   #------ Generate Header File
     if [@uint errorCount] == 0 then
-      var headerString := [filewrapper syntaxFileGenerationTemplate.syntaxFileHeader
+      var headerString := [filewrapper syntaxFileGenerationTemplate.syntaxFileHeaderGalgas3
         !componentName
-        !lexiqueName
-        !headerIncludeList
-        ![inSemanticContext->mTypeMap allKeyList]
       ] ;
       foreach decoratedDeclarationListForGeneration do
         headerString .= [mDeclaration appendDeclaration1] ;
@@ -407,7 +405,7 @@ routine compileSyntaxComponentGalgas3
       ] ;
     #------ Generate Implementation File
       if [@uint errorCount] == 0 then
-        const lexiqueCppName := "C_Lexique_" . inSyntaxComponentRoot->mImportedLexiqueFilePath ;
+        const lexiqueCppName := "C_Lexique_" . [inSyntaxComponentRoot->mImportedLexiqueFilePath  identifierRepresentation] ;
         @string implementationString := [filewrapper syntaxFileGenerationTemplate.syntaxFileImplementation
           !componentName
           !implementationIncludeList
