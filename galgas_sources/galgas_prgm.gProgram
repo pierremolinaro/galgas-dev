@@ -38,14 +38,23 @@ program galgas_prgm :
 
 before {
 #--- Generate project
-  const @string creationProjectName := [option galgas_cli_options.create_project value] ;
+  const creationProjectName := [option galgas_cli_options.create_project value] ;
   projectCreation !creationProjectName ;
+}
+
+before {
 #--- Print predefined lexical action
   if [option galgas_cli_options.printPredefinedLexicalActions value] then
     printPredefinedLexicalActions ;
   end if ;
+}
+
+before {
 #--- Generate predefined files
   generatePredefinedTypeFiles ![option galgas_cli_options.generatePredefinedTypes value] ;
+}
+
+before {
 #--- Extract LIBPM
   if [option galgas_cli_options.extractLIBPMOption value] != "" then
     updateLIBPMatPath ![option galgas_cli_options.extractLIBPMOption value] ;

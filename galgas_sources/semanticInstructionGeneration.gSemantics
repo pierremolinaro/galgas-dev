@@ -154,6 +154,27 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
+override method @semanticBlockInstructionForGeneration generateInstruction
+  ??@bool inGenerateCheckValid
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode
+:
+  ioGeneratedCode += "{\n" ;
+  generateInstructionList
+    !inGenerateCheckValid
+    !mInstructionList
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    !inGenerateSyntaxDirectedTranslationString
+    !?ioGeneratedCode
+  ;
+  ioGeneratedCode += "}\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @localVariableOrConstantDeclarationWithSourceExpressionForGeneration generateInstruction
   ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
