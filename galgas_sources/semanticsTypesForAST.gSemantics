@@ -1762,21 +1762,14 @@ list @galgas3GrammarComponentListAST {
 
 #---------------------------------------------------------------------------*
 
-list @galgas3PrologueDeclarationListAST {
+list @prologueEpilogueList {
   @semanticInstructionListAST mInstructionList ;
   @location mEndOfInstructionList ;
 }
 
 #---------------------------------------------------------------------------*
 
-list @galgas3EpilogueDeclarationListAST {
-  @semanticInstructionListAST mInstructionList ;
-  @location mEndOfInstructionList ;
-}
-
-#---------------------------------------------------------------------------*
-
-list @galgas3SourceRuleDeclarationListAST {
+list @programRuleList {
   @lstring mSourceFileExtension ;
   @lstring mSourceFileHelp ;
   @lstring mSourceFileVariableName ;
@@ -1788,6 +1781,18 @@ list @galgas3SourceRuleDeclarationListAST {
 
 #---------------------------------------------------------------------------*
 
+struct @programComponentAST {
+  @lstring mProgramComponentName ;
+  @lstringlist mImportedComponentFileNameList ;
+  @prologueEpilogueList mPrologueList ;
+  @prologueEpilogueList mEpilogueList ;
+  @programRuleList mProgramRules ;
+  @semanticDeclarationListAST mSemanticDeclarationList ;
+  @location mEndOfSourceFile ;
+}
+
+#---------------------------------------------------------------------------*
+
 struct @galgas3DeclarationAST {
   @semanticDeclarationListAST mSemanticDeclarationList ;
   @galgas3LexiqueComponentListAST mLexiqueComponentList ;
@@ -1795,9 +1800,9 @@ struct @galgas3DeclarationAST {
   @galgas3GrammarComponentListAST mGrammarComponentList ;
   @galgas3GUIComponentListAST mGUIComponentList ;
   @galgas3OptionComponentListAST mOptionComponentList ;
-  @galgas3SourceRuleDeclarationListAST mSourceRuleList ;
-  @galgas3PrologueDeclarationListAST mPrologueDeclarationList ;
-  @galgas3EpilogueDeclarationListAST mEpilogueDeclarationList ;
+  @prologueEpilogueList mPrologueDeclarationList ;
+  @programRuleList mSourceRuleList ;
+  @prologueEpilogueList mEpilogueDeclarationList ;
 }
 
 #---------------------------------------------------------------------------*

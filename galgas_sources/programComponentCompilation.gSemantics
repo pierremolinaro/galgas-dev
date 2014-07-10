@@ -52,12 +52,12 @@ filewrapper programFileGenerationTemplate in "../generation_templates/program_ge
 
 routine compileBeforeClause
   ??@analysisContext inAnalysisContext
-  ??@programComponentAST inProgramComponentAST
+  ??@prologueEpilogueList inPrologueList
   ?!@semanticDeclarationSortedListForGeneration ioDecoratedDeclarationListForGeneration
 :
 #--- Compile 'before' routines
   var semanticInstructionListForGeneration := [@semanticInstructionListForGeneration emptyList] ;
-  for * in inProgramComponentAST->mPrologueList do
+  for * in inPrologueList do
     analyzeRoutineBody
       !inAnalysisContext
       ![@formalParameterListAST emptyList] # Routine signature : no argument
@@ -94,12 +94,12 @@ end routine ;
 
 routine compileProgramRules
   ??@analysisContext inAnalysisContext
-  ??@programComponentAST inProgramComponentAST
+  ??@programRuleList inProgramRules
   ?!@semanticDeclarationSortedListForGeneration ioDecoratedDeclarationListForGeneration
   ?!@bool ioHasIndexing
 :
   @uint ruleIndex := 0 ;
-  foreach [inProgramComponentAST mProgramRules] do
+  foreach inProgramRules do
     if mIndexingGrammar->string != "" then
       ioHasIndexing := true ;
       [inAnalysisContext->mSemanticContext->mGrammarMap searchKey !mIndexingGrammar ?* ??@bool hasIndexing ?*] ;
@@ -149,12 +149,12 @@ end routine ;
 
 routine compileAfterClause
   ??@analysisContext inAnalysisContext
-  ??@programComponentAST inProgramComponentAST
+  ??@prologueEpilogueList inEpilogueList
   ?!@semanticDeclarationSortedListForGeneration ioDecoratedDeclarationListForGeneration
 :
 #--- Compile 'before' routines
   var semanticInstructionListForGeneration := [@semanticInstructionListForGeneration emptyList] ;
-  for * in inProgramComponentAST->mEpilogueList do
+  for * in inEpilogueList do
     analyzeRoutineBody
       !inAnalysisContext
       ![@formalParameterListAST emptyList] # Routine signature : no argument
@@ -171,27 +171,6 @@ routine compileAfterClause
       !blockSemanticInstructionListForGeneration
     ] ;
   end for ;
-#--- Check there is zero or one 'before' declaration
-#  @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
-#  if [[inProgramComponentAST mEpilogueList] length] > 1 then
-#    const @location locationOfSecondItem := [[inProgramComponentAST mEpilogueList] mEndOfInstructionListAtIndex !1] ;
-#    error locationOfSecondItem: "there are several 'after' declarations" : semanticInstructionListForGeneration ;
-#  elsif [[inProgramComponentAST mEpilogueList] length] == 0 then
-#    semanticInstructionListForGeneration := [@semanticInstructionListForGeneration emptyList] ;
-#  else
-#    analyzeRoutineBody
-#      !inAnalysisContext
-#      ![@formalParameterListAST emptyList] # Routine signature : no argument
-#      ![@localConstantList emptyList] # No local constant
-#      ![@typedAttributeList emptyList] # No attribute (not a method)
-#      ![@typedAttributeList emptyList] # No attribute (not a method)
-#      !""
-#      ![[inProgramComponentAST mEpilogueList] mInstructionListAtIndex !0]
-#      ![[inProgramComponentAST mEpilogueList] mEndOfInstructionListAtIndex !0]
-#      ?semanticInstructionListForGeneration
-#      ?*
-#    ;
-#  end if ;
 #---
   ioDecoratedDeclarationListForGeneration +=
     !false # Is not predefined
@@ -290,21 +269,21 @@ routine compileProgramComponentFromAST
 #--- Analyse 'before' instructions
   compileBeforeClause
     !analysisContext
-    !inProgramComponentAST
+    !inProgramComponentAST->mPrologueList
     !?decoratedDeclarationListForGeneration
   ;
 #--- Analyse program rules
   @bool hasIndexing := false ;
   compileProgramRules
     !analysisContext
-    !inProgramComponentAST
+    !inProgramComponentAST->mProgramRules
     !?decoratedDeclarationListForGeneration
     !?hasIndexing
   ;
 #--- Analyse 'after' instructions
   compileAfterClause
     !analysisContext
-    !inProgramComponentAST
+    !inProgramComponentAST->mEpilogueList
     !?decoratedDeclarationListForGeneration
   ;
 #------ Generate Header File
@@ -378,6 +357,112 @@ routine compileProgramComponentFromSourceFile
     !programComponentAST
     !?ioParsedComponentStruct
   ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#           C O M P I L E    P R O G R A M    C O M P O N E N T             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine compileProgramComponentGalgas3
+  ??@string inOutputDirectory
+  ??@prologueEpilogueList inPrologueList
+  ??@programRuleList inProgramRules
+  ??@prologueEpilogueList inEpilogueList
+  ??@semanticContext inSemanticContext
+  ?!@stringlist ioToolProductFileList
+:
+#------ Semantic Analysis
+#  performSemanticAnalysis
+#    ![@semanticDeclarationListAST emptyList]
+#    !inSemanticContext
+#    ?@semanticDeclarationSortedListForGeneration decoratedDeclarationListForGeneration
+#  ;
+#--- Analysis context
+  const analysisContext := [@analysisContext new
+    !inSemanticContext
+    !buildPredefinedTypes [!inSemanticContext]
+    ![@unifiedTypeMapProxy null]
+    !""
+    ![@unifiedTypeMapProxy null]
+  ] ;
+#--- Analyse 'before' instructions
+  var decoratedDeclarationListForGeneration := [@semanticDeclarationSortedListForGeneration emptySortedList] ;
+  compileBeforeClause
+    !analysisContext
+    !inPrologueList
+    !?decoratedDeclarationListForGeneration
+  ;
+#--- Analyse program rules
+  @bool hasIndexing := false ;
+  compileProgramRules
+    !analysisContext
+    !inProgramRules
+    !?decoratedDeclarationListForGeneration
+    !?hasIndexing
+  ;
+#--- Analyse 'after' instructions
+  compileAfterClause
+    !analysisContext
+    !inEpilogueList
+    !?decoratedDeclarationListForGeneration
+  ;
+#------ Generate Header File
+  const programFileName := "program" ;
+  if [@uint errorCount] == 0 then
+    var headerIncludeList := [@stringlist emptyList] ;
+    headerIncludeList += !"AZERTYUIOP" ;
+    @string headerString := [filewrapper programFileGenerationTemplate.programFileHeader
+      !programFileName
+      !headerIncludeList
+      ![inSemanticContext->mTypeMap allKeyList]
+    ] ;
+    foreach decoratedDeclarationListForGeneration do
+      headerString .= [mDeclaration appendDeclaration1] ;
+    end foreach ;
+    foreach decoratedDeclarationListForGeneration do
+      headerString .= [mDeclaration appendDeclaration2 !inOutputDirectory] ;
+    end foreach ;
+    [@string generateFileWithPattern
+      !inOutputDirectory
+      !programFileName + ".h"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      !headerString
+      !"\n\n" # Defaut user zone2
+      !"#endif\n"
+    ] ;
+  end if ;
+#------ Generate Implementation File
+  if [@uint errorCount] == 0 then
+    ioToolProductFileList += !programFileName . ".cpp" ;
+    var implementationIncludeList := [@stringlist emptyList] ;
+    for * in inSemanticContext->mOptionComponentMapForSemanticAnalysis do
+      if not mIsPredefined then
+        implementationIncludeList += !lkey->string ;
+      end if ;
+    end for ;
+    @string implementationString := [filewrapper programFileGenerationTemplate.programFileImplementation
+      !programFileName
+      !implementationIncludeList
+      !inProgramRules
+      !hasIndexing
+    ] ;
+    foreach decoratedDeclarationListForGeneration do
+      implementationString .= [mDeclaration appendTypeGenericImplementation] ;
+      implementationString .= [mDeclaration appendSpecificImplementation] ;
+    end foreach ;
+    [@string generateFileWithPattern
+      !inOutputDirectory
+      !programFileName . ".cpp"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      !implementationString
+      !"\n\n" # Defaut user zone2
+      !"\n"
+    ] ;
+  end if ;
 end routine ;
 
 #---------------------------------------------------------------------------*

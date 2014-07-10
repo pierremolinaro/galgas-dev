@@ -1,0 +1,109 @@
+//-----------------------------------------------------------------------------*
+
+class C_Compiler ;
+class GALGAS_lstring ;
+class GALGAS_string ;
+
+//-----------------------------------------------------------------------------*
+
+class cGrammar_%![GRAMMAR_COMPONENT_ROOT->mGrammarComponentName identifierRepresentation]% : %?^
+foreach [GRAMMAR_COMPONENT_ROOT mSyntaxComponents]
+  do %public cParser_% ![mValue->string identifierRepresentation]
+  between %,\n%!^
+end
+% {
+%
+foreach NON_TERMINAL_MAP do
+  %//------------------------------------- '%![lkey string]%' non terminal\n%
+  #--- Parse
+    %//--- 'parse' label\n%
+    %  public : virtual void nt_%![lkey identifierRepresentation]%_parse (%?^
+    if GRAMMAR_COMPONENT_ROOT->mHasTranslateFeature then
+      %C_String & %!syntaxDirectedTranslationResultVarName []%,\n%!^ 
+    end
+    %C_Lexique_%!LEXIQUE_IDENTIFIER% * inCompiler) ;\n\n%
+  #--- indexing ?
+    if HAS_INDEXING then
+      %//--- indexing\n%
+      %  public : virtual void nt_%![lkey identifierRepresentation]%_indexing (C_Lexique_%!LEXIQUE_IDENTIFIER% * inCompiler) ;\n\n%
+    end
+  foreach mNonterminalSymbolParametersMap : label_ do
+  %//----------- '%![label_lkey string]%' label\n%
+  #--- Non terminal declaration
+    %  public : virtual void nt_%![lkey identifierRepresentation]%_%![label_lkey identifierRepresentation]% (%?^
+    foreach label_mFormalParametersList do index IDX
+      if mFormalArgumentPassingModeForGrammarAnalysis == [@formalArgumentPassingModeAST argumentConstantIn] then
+        %const GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % inArgument% ![IDX string]
+      elsif mFormalArgumentPassingModeForGrammarAnalysis == [@formalArgumentPassingModeAST argumentInOut] then
+        %GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % & ioArgument% ![IDX string]
+      elsif mFormalArgumentPassingModeForGrammarAnalysis == [@formalArgumentPassingModeAST argumentOut] then
+        %GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % & outArgument% ![IDX string]
+      else # argumentIn
+        %GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % inArgument% ![IDX string]
+      end
+      %,\n%!^
+    end
+    if GRAMMAR_COMPONENT_ROOT->mHasTranslateFeature then
+      %C_String & %!syntaxDirectedTranslationResultVarName []%,\n%!^ 
+    end
+    %C_Lexique_%!LEXIQUE_IDENTIFIER% * inCompiler) ;\n\n%
+  #--- Start symbol ?
+    if [[GRAMMAR_COMPONENT_ROOT mStartSymbolName] string] == [lkey string] then
+      %//--- Start symbol\n%
+      %  public : static void _performSourceFileParsing_%![label_lkey identifierRepresentation]% (%?^
+      %C_Compiler * inCompiler,\n%!^
+      if GRAMMAR_COMPONENT_ROOT->mHasTranslateFeature then
+        %C_String & %!syntaxDirectedTranslationResultVarName []%,\n%!^ 
+      end
+      %GALGAS_lstring inFileName%
+      foreach label_mFormalParametersList do index IDX
+        %,\n%!^
+        if mFormalArgumentPassingModeForGrammarAnalysis == [@formalArgumentPassingModeAST argumentConstantIn] then
+          %const GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % inArgument% ![IDX string]
+        elsif mFormalArgumentPassingModeForGrammarAnalysis == [@formalArgumentPassingModeAST argumentInOut] then
+          %GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % & ioArgument% ![IDX string]
+        elsif mFormalArgumentPassingModeForGrammarAnalysis == [@formalArgumentPassingModeAST argumentOut] then
+          %GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % & outArgument% ![IDX string]
+        else # argumentIn
+          %GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % inArgument% ![IDX string]
+        end
+      end
+      %\n%!^%COMMA_LOCATION_ARGS) ;\n\n%
+      %  public : static void _performSourceStringParsing_%![label_lkey identifierRepresentation]% (%?^
+      %C_Compiler * inCompiler,\n%!^
+      if GRAMMAR_COMPONENT_ROOT->mHasTranslateFeature then
+        %C_String & %!syntaxDirectedTranslationResultVarName []%,\n%!^ 
+      end
+      %GALGAS_string inSourceString%
+      foreach label_mFormalParametersList do index IDX
+        %,\n%!^
+        if mFormalArgumentPassingModeForGrammarAnalysis == [@formalArgumentPassingModeAST argumentConstantIn] then
+          %const GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % inArgument% ![IDX string]
+        elsif mFormalArgumentPassingModeForGrammarAnalysis == [@formalArgumentPassingModeAST argumentInOut] then
+          %GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % & ioArgument% ![IDX string]
+        elsif mFormalArgumentPassingModeForGrammarAnalysis == [@formalArgumentPassingModeAST argumentOut] then
+          %GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % & outArgument% ![IDX string]
+        else # argumentIn
+          %GALGAS_% ![mGalgasTypeNameForGrammarAnalysis identifierRepresentation] % inArgument% ![IDX string]
+        end
+      end
+      %\n%!^ %COMMA_LOCATION_ARGS) ;\n\n%
+    end
+  end
+ #--- Start symbol ?
+  if HAS_INDEXING & [[GRAMMAR_COMPONENT_ROOT mStartSymbolName] string] == [lkey string] then
+    %//--- Start symbol indexing\n%
+    %  public : static void performIndexing (%?^%C_Compiler * inCompiler,\n%
+    !^%const C_String & inSourceFilePath) ;\n\n%
+  end
+end
+
+foreach ADDED_NON_TERMINAL_LIST
+  do %  public : virtual int32_t select_%![mSyntaxComponentName identifierRepresentation]%_%![mNonTerminalToAddCount string]% (C_Lexique_%!LEXIQUE_IDENTIFIER% *) ;\n%
+  between %\n%
+end
+%} ;
+
+//-----------------------------------------------------------------------------*
+
+#endif

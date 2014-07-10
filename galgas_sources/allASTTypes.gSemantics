@@ -25,7 +25,6 @@ semantics allASTTypes :
   import "lexiqueTypesForAST.gSemantics" ;
   import "grammarMetamodel.gSemantics" ;
   import "optionSemantics.gSemantics" ;
-  import "programMetamodel.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 

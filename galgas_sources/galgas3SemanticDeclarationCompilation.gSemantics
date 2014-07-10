@@ -151,8 +151,10 @@ routine compileSemanticDeclarationsGalgas3
       !implementationFileIncludeList
     ] ;
     foreach decoratedDeclarationListForGeneration do
-      implementationString .= [mDeclaration appendSpecificImplementation] ;
-      implementationString .= [mDeclaration appendTypeGenericImplementation] ;
+      if not mIsPredefined then
+        implementationString .= [mDeclaration appendSpecificImplementation] ;
+        implementationString .= [mDeclaration appendTypeGenericImplementation] ;
+      end if ;
     end foreach ;
     [@string generateFileWithPattern
       !productDirectory

@@ -533,10 +533,20 @@ indexing with galgas3ProjectGrammar
     ??@galgas3ProjectComponentAST projectComponentAST
   ;
   var declarationAST := [@galgas3DeclarationAST default] ; 
+  var toolProductFileList := [@stringlist emptyList] ;
+  var handCodedSourceDirectorySet := [@stringset emptySet] ;
   foreach projectComponentAST->mProjectSourceList do
     if [mValue pathExtension] == "galgas" then
       const absoluteSourcePath := [mValue absolutePathFromPath ![inProjectSourceFile stringByDeletingLastPathComponent]] ;
       grammar galgas3Grammar in [@lstring new !absoluteSourcePath !mValue->location] !?declarationAST ;
+    elsif [mValue pathExtension] == "cpp" then
+      toolProductFileList += ![mValue lastPathComponent] ;
+      const directory := [mValue stringByDeletingLastPathComponent] ;
+      if directory != "" then
+        handCodedSourceDirectorySet += !"../" + directory ;
+      end if ;
+    else
+      error mValue: "unhandled extension" ;
     end if ;
   end foreach ;
 #---------------------------------- Display result
@@ -553,9 +563,7 @@ indexing with galgas3ProjectGrammar
   end if ;
 #---------------------------------- Compile semantic declarations
   const productDirectory := [inProjectSourceFile stringByDeletingLastPathComponent] . "/build/output" ;
-  var toolProductFileList := [@stringlist emptyList] ;
   var appProductFileList := [@stringlist emptyList] ;
-  var optionComponentMapForSemanticAnalysis := [@optionComponentMapForSemanticAnalysis emptyMap] ;
   var semanticContext := [@semanticContext default] ;
   if [@uint errorCount] == 0 then
     compileSemanticDeclarationsGalgas3
@@ -571,7 +579,7 @@ indexing with galgas3ProjectGrammar
   end if ;
 #---------------------------------- Compile option declarations
   if [@uint errorCount] == 0 then
-    foreach optionComponentMapForSemanticAnalysis do
+    foreach semanticContext->mOptionComponentMapForSemanticAnalysis do
       if not mIsPredefined then
         compileOptionComponentGalgas3
           !productDirectory
@@ -621,6 +629,17 @@ indexing with galgas3ProjectGrammar
       ;
     end for ;
   end if ;
+#---------------------------------- Compile program declarations
+  if [@uint errorCount] == 0 then
+    compileProgramComponentGalgas3
+      !productDirectory
+      !declarationAST->mPrologueDeclarationList
+      !declarationAST->mSourceRuleList
+      !declarationAST->mEpilogueDeclarationList
+      !semanticContext
+      !?toolProductFileList
+    ;
+  end if ;
 #---------------------------------- Update targets
   if 0 == [@uint errorCount] then
     @stringset handledExtensionSet [emptySet] ;
@@ -643,6 +662,7 @@ indexing with galgas3ProjectGrammar
       !projectComponentAST->mGenerationFeatureList
       !toolProductFileList
       !appProductFileList
+      !handCodedSourceDirectorySet
       !handledExtensionSet
     ;
   end if ;
