@@ -106,22 +106,39 @@ routine compileSemanticDeclarationsGalgas3
 #--- Generate type files
   message "*** Generating files\n" ;
   const productDirectory := [inProjectSourceFile stringByDeletingLastPathComponent] . "/build/output" ;
-#------ Generate Header File
+#------ Generate Header Files
   if [@uint errorCount] == 0 then
+  #--- Header files
+    foreach decoratedDeclarationListForGeneration do
+      if not mIsPredefined then
+        var headerString := "#ifndef " . [[mDeclaration headerFileName] identifierRepresentation] . "_DEFINED\n" ;
+        headerString .= "#define " . [[mDeclaration headerFileName] identifierRepresentation] . "_DEFINED\n\n" ;
+        headerString .= [mDeclaration appendDeclaration1] ;
+        headerString .= [mDeclaration appendDeclaration2 !productDirectory] ;
+        headerString .= "#endif\n\n" ;
+        headerString .= "//-----------------------------------------------------------------------------*\n\n" ;
+        [@string generateFileWithPattern
+          !productDirectory
+          ![mDeclaration headerFileName] . ".h"
+          !"//"
+          !"\n\n" # Defaut user zone1
+          !headerString
+          !"\n\n" # Defaut user zone2
+          !"\n"
+        ] ;
+      end if ;
+    end foreach ;
+  #--- AZERTYUIOP
     var headerInclusionList := [@stringlist emptyList] ;
-    for * in outSemanticContext->mGrammarMap do
-      headerInclusionList += !"grammar-" . lkey->string ;
-    end for ;
-    @stringlist typePredeclarationList [emptyList] ;
 #    foreach decoratedDeclarationListForGeneration do
 #      if not mIsPredefined then
-#        [mDeclaration addCppTypeForPredeclarationInHeaderFile !?typePredeclarationList] ;
+#        headerInclusionList += ![mDeclaration headerFileName] ;
 #      end if ;
 #    end foreach ;
     var headerString := [filewrapper semanticFileGenerationTemplate.semanticFileHeader
       !"AZERTYUIOP"
       !headerInclusionList
-      !typePredeclarationList
+      ![@stringlist emptyList]
     ] ;
     foreach decoratedDeclarationListForGeneration do
       if not mIsPredefined then
@@ -146,6 +163,9 @@ routine compileSemanticDeclarationsGalgas3
 #------ Generate Implementation File
   if [@uint errorCount] == 0 then
     ioToolProductFileList += !"AZERTYUIOP.cpp" ;
+    for * in outSemanticContext->mGrammarMap do
+      implementationFileIncludeList += !"grammar-" . lkey->string ;
+    end for ;
     @string implementationString := [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
       !"AZERTYUIOP"
       !implementationFileIncludeList

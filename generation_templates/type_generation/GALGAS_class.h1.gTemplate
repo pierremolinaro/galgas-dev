@@ -20,7 +20,6 @@ class GALGAS_%!TYPE_IDENTIFIER% : public %if SUPER_TYPE_IDENTIFIER == "" then %A
 end
 %//---
   public : inline const cPtr_%!TYPE_IDENTIFIER% * ptr (void) const { return (const cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ; }
-//  public : inline cPtr_%!TYPE_IDENTIFIER% * ptr (void) { return (cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
   public : GALGAS_%!TYPE_IDENTIFIER% (const cPtr_%!TYPE_IDENTIFIER% * inSourcePtr) ;

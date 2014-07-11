@@ -482,6 +482,10 @@ abstract class @semanticDeclarationForGeneration {
 
 #---------------------------------------------------------------------------*
 
+abstract reader @semanticDeclarationForGeneration headerFileName -> @string outName ;
+
+#---------------------------------------------------------------------------*
+
 sortedlist @semanticDeclarationSortedListForGeneration {
   @bool mIsPredefined ;
   @semanticDeclarationForGeneration mDeclaration ;
@@ -501,12 +505,36 @@ abstract class @semanticTypeForGeneration extends @semanticDeclarationForGenerat
 }
 
 #---------------------------------------------------------------------------*
+
+override reader @semanticTypeForGeneration headerFileName -> @string outName
+:
+  outName := [mTypeProxy mHeaderFileName] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    D E C L A R A T I O N    W I T H   H E A D E R    S P E C              *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+abstract class @semanticDeclarationWithHeaderForGeneration extends @semanticDeclarationForGeneration {
+  @string mHeaderFileName ; # C++ header file that contains declaration
+}
+
+#---------------------------------------------------------------------------*
+
+override reader @semanticDeclarationWithHeaderForGeneration headerFileName -> @string outName
+:
+  outName := mHeaderFileName ;
+end reader ;
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 #    R O U T I N E    D E C L A R A T I O N                                 *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @routinePrototypeDeclarationForGeneration extends @semanticDeclarationForGeneration {
+class @routinePrototypeDeclarationForGeneration extends @semanticDeclarationWithHeaderForGeneration {
   @string mRoutineName ;
   @formalParameterListForGeneration mFormalArgumentList ;
 }
@@ -527,7 +555,7 @@ class @routineImplementationForGeneration extends @routinePrototypeDeclarationFo
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @functionPrototypeDeclarationForGeneration extends @semanticDeclarationForGeneration {
+class @functionPrototypeDeclarationForGeneration extends @semanticDeclarationWithHeaderForGeneration {
   @string mFunctionName ;
   @formalInputParameterListForGeneration mFormalArgumentList ;
   @unifiedTypeMapProxy mReturnType ;
@@ -550,7 +578,7 @@ class @functionImplementationForGeneration extends @functionPrototypeDeclaration
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @onceFunctionDeclarationForGeneration extends @semanticDeclarationForGeneration {
+class @onceFunctionDeclarationForGeneration extends @semanticDeclarationWithHeaderForGeneration {
   @string mFunctionName ;
   @unifiedTypeMapProxy mReturnType ;
   @string mResultVariableCppName ;
@@ -1317,7 +1345,7 @@ class @externTypeDeclarationForGeneration extends @semanticTypeForGeneration {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @abstractCategoryMethodForGeneration extends @semanticDeclarationForGeneration {
+class @abstractCategoryMethodForGeneration extends @semanticDeclarationWithHeaderForGeneration {
   @string mTypeName ;
   @string mAbstractCategoryMethodName ;
   @formalParameterListForGeneration mAbstractCategoryMethodFormalParameterList ;
@@ -1329,7 +1357,7 @@ class @abstractCategoryMethodForGeneration extends @semanticDeclarationForGenera
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @categoryMethodForGeneration extends @semanticDeclarationForGeneration {
+class @categoryMethodForGeneration extends @semanticDeclarationWithHeaderForGeneration {
   @unifiedTypeMapProxy mSelfType ;
   @string mCategoryMethodName ;
   @bool mImplementedAsFunction ;
@@ -1344,7 +1372,7 @@ class @categoryMethodForGeneration extends @semanticDeclarationForGeneration {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @overridingCategoryMethodForGeneration extends @semanticDeclarationForGeneration {
+class @overridingCategoryMethodForGeneration extends @semanticDeclarationWithHeaderForGeneration {
   @string mTypeName ;
   @string mBaseTypeName ;
   @string mCategoryMethodName ;
@@ -1359,7 +1387,7 @@ class @overridingCategoryMethodForGeneration extends @semanticDeclarationForGene
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @abstractCategoryModifierForGeneration extends @semanticDeclarationForGeneration {
+class @abstractCategoryModifierForGeneration extends @semanticDeclarationWithHeaderForGeneration {
   @string mTypeName ;
   @string mAbstractCategoryModifierName ;
   @formalParameterListForGeneration mAbstractCategoryModifierFormalParameterList ;
@@ -1371,7 +1399,7 @@ class @abstractCategoryModifierForGeneration extends @semanticDeclarationForGene
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @categoryModifierForGeneration extends @semanticDeclarationForGeneration {
+class @categoryModifierForGeneration extends @semanticDeclarationWithHeaderForGeneration {
   @unifiedTypeMapProxy mSelfType ;
   @string mCategoryModifierName ;
   @bool mImplementedAsFunction ;
@@ -1386,7 +1414,7 @@ class @categoryModifierForGeneration extends @semanticDeclarationForGeneration {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @overridingCategoryModifierForGeneration extends @semanticDeclarationForGeneration {
+class @overridingCategoryModifierForGeneration extends @semanticDeclarationWithHeaderForGeneration {
   @string mTypeName ;
   @string mBaseTypeName ;
   @string mCategoryModifierName ;
@@ -1401,7 +1429,7 @@ class @overridingCategoryModifierForGeneration extends @semanticDeclarationForGe
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @abstractCategoryReaderForGeneration extends @semanticDeclarationForGeneration {
+class @abstractCategoryReaderForGeneration extends @semanticDeclarationWithHeaderForGeneration {
   @string mTypeName ;
   @string mAbstractCategoryReaderName ;
   @unifiedTypeMapProxy mResultType ;
@@ -1414,7 +1442,7 @@ class @abstractCategoryReaderForGeneration extends @semanticDeclarationForGenera
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @categoryReaderForGeneration extends @semanticDeclarationForGeneration {
+class @categoryReaderForGeneration extends @semanticDeclarationWithHeaderForGeneration {
   @unifiedTypeMapProxy mSelfType ;
   @string mCategoryReaderName ;
   @bool mImplementedAsFunction ;
@@ -1431,7 +1459,7 @@ class @categoryReaderForGeneration extends @semanticDeclarationForGeneration {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @overrideCategoryReaderForGeneration extends @semanticDeclarationForGeneration {
+class @overrideCategoryReaderForGeneration extends @semanticDeclarationWithHeaderForGeneration {
   @string mTypeName ;
   @string mBaseTypeName ;
   @string mOverridingCategoryReaderName ;
@@ -1456,7 +1484,7 @@ list @filewrapperTemplateListForGeneration {
 
 #---------------------------------------------------------------------------*
 
-class @filewrapperDeclarationForGeneration extends @semanticDeclarationForGeneration {
+class @filewrapperDeclarationForGeneration extends @semanticDeclarationWithHeaderForGeneration {
   @string mFilewrapperName ;
   @string mFilewrapperAbsolutePath ;
   @wrapperFileMap mFilewrapperFileMap ;
