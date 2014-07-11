@@ -14,7 +14,7 @@ if [CONSTRUCTOR_MAP count] > 0 then
   foreach CONSTRUCTOR_MAP do
     %  public : static GALGAS_%![mReturnedType identifierRepresentation]% constructor_%![[lkey string] identifierRepresentation]% (%?^
     foreach mArgumentTypeList
-      do index IDX %const GALGAS_% ![mType identifierRepresentation] % & inOperand%![IDX string]
+      do index IDX %const class GALGAS_% ![mType identifierRepresentation] % & inOperand%![IDX string]
       between %,\n%!^
     end
     if mHasCompilerArgument & ([mArgumentTypeList length] > 0) then
@@ -165,13 +165,13 @@ foreach MODIFIER_MAP do
       %  public : VIRTUAL_IN_DEBUG void modifier_%![[lkey string] identifierRepresentation]% (%?^
       foreach mParameterList do index IDX
         if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-          %GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
+          %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
         elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
-          %GALGAS_% ![mFormalArgumentType identifierRepresentation] % & ioArgument% ![IDX string]
+          %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % & ioArgument% ![IDX string]
         elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
-          %GALGAS_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
+          %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
         else # argumentIn
-          %GALGAS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
+          %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
         end
       between %,\n%!^
       end
@@ -203,13 +203,13 @@ foreach INSTANCE_METHOD_MAP do
       %  public : VIRTUAL_IN_DEBUG void method_%![[lkey string] identifierRepresentation]% (%?^
       foreach mParameterList do index IDX
         if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-          %GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
+          %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
         elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
-          %GALGAS_% ![mFormalArgumentType identifierRepresentation] % & ioArgument% ![IDX string]
+          %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % & ioArgument% ![IDX string]
         elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
-          %GALGAS_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
+          %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
         else # argumentIn
-          %GALGAS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
+          %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
         end
       between %,\n%!^
       end
@@ -238,13 +238,13 @@ foreach CLASS_METHOD_MAP do
   %  public : static void class_method_%![[lkey string] identifierRepresentation]% (%?^
   foreach mParameterList do index IDX
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-      %GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
+      %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
     elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
-      %GALGAS_% ![mFormalArgumentType identifierRepresentation] % & ioArgument% ![IDX string]
+      %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % & ioArgument% ![IDX string]
     elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
-      %GALGAS_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
+      %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
     else # argumentIn
-      %GALGAS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
+      %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
     end
   between %,\n%!^
   end
@@ -273,7 +273,7 @@ foreach READER_MAP do
     if (mErrorMessage == "") & ((mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isBasic]) | (mQualifier == [@methodQualifier isBasicFinal])) then
       %  public : VIRTUAL_IN_DEBUG GALGAS_% ![mReturnedType identifierRepresentation] % reader_% ![[lkey string] identifierRepresentation] % (%?^
       foreach mArgumentTypeList
-        do index IDX %const GALGAS_%![mType identifierRepresentation]% & constinOperand% ![IDX string]
+        do index IDX %const class GALGAS_%![mType identifierRepresentation]% & constinOperand% ![IDX string]
         between %,\n% !^
       end
       if [mArgumentTypeList length] == 0 then
@@ -322,7 +322,7 @@ if [ENUMERATION_DESCRIPTOR_LIST length] > 0 then
 
 %if [ENUMERATION_DESCRIPTOR_LIST length] > 0 then
 %//-----------------------------------------------------------------------------*
-//   Enumerator declaration                                                  *
+//   Enumerator declaration                                                    *
 //-----------------------------------------------------------------------------*
 
 class cEnumerator_%!TYPE_IDENTIFIER% : public cGenericAbstractEnumerator {
@@ -331,11 +331,11 @@ class cEnumerator_%!TYPE_IDENTIFIER% : public cGenericAbstractEnumerator {
 
 //--- Current element access\n%
   foreach ENUMERATION_DESCRIPTOR_LIST do
-%  public : GALGAS_%![mEnumeratedType identifierRepresentation]% current_%![mEnumerationName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
+%  public : class GALGAS_%![mEnumeratedType identifierRepresentation]% current_%![mEnumerationName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
   end
   if not [ENUMERATED_OBJECT_TYPE isNull] then
 %//--- Current element access\n%
-%  public : GALGAS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (LOCATION_ARGS) const ;\n%
+%  public : class GALGAS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (LOCATION_ARGS) const ;\n%
   end
 %} ;\n%
 end
