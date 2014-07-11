@@ -14,7 +14,7 @@ typedef GALGAS_%![RETURN_TYPE identifierRepresentation]% (*categoryReaderSignatu
       %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
     end
   end
-  %,\n%!^%C_Compiler * inCompiler%
+  %,\n%!^%class C_Compiler * inCompiler%
   %\n %!^%COMMA_LOCATION_ARGS) ;
 
 //-----------------------------------------------------------------------------*

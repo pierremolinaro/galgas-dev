@@ -15,7 +15,7 @@ static GALGAS_%!RETURN_TYPE_IDENTIFIER% gOnceFunctionResult_%![FUNCTION_NAME ide
 
 //-----------------------------------------------------------------------------*
 
-GALGAS_%!RETURN_TYPE_IDENTIFIER% function_%![FUNCTION_NAME identifierRepresentation]% (%!^%C_Compiler * inCompiler
+GALGAS_%!RETURN_TYPE_IDENTIFIER% function_%![FUNCTION_NAME identifierRepresentation]% (%!^%class C_Compiler * inCompiler
               %!^%COMMA_LOCATION_ARGS) {
   if (! gOnceFunctionResultAvailable_%![FUNCTION_NAME identifierRepresentation]%) {
     gOnceFunctionResult_%![FUNCTION_NAME identifierRepresentation]% = onceFunction_%![FUNCTION_NAME identifierRepresentation]% (inCompiler COMMA_THERE) ;

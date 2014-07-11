@@ -33,6 +33,6 @@ class GALGAS_%![RETURN_TYPE identifierRepresentation]% callCategoryReader_%![REA
       %GALGAS_%![mFormalArgumentType identifierRepresentation]% in_%![mFormalArgumentName identifierRepresentation]
     end
   end
-  %,\n%!^%C_Compiler * inCompiler%
+  %,\n%!^%class C_Compiler * inCompiler%
   %\n%!^%COMMA_LOCATION_ARGS) ;
 

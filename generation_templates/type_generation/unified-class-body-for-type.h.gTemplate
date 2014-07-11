@@ -18,7 +18,7 @@ if [CONSTRUCTOR_MAP count] > 0 then
       between %,\n%!^
     end
     if mHasCompilerArgument & ([mArgumentTypeList length] > 0) then
-      %,\n%!^ %C_Compiler * inCompiler%
+      %,\n%!^ %class C_Compiler * inCompiler%
       %\n%!^ %COMMA_LOCATION_ARGS) ;\n\n%
     elsif mHasCompilerArgument then
       %C_Compiler * inCompiler%
