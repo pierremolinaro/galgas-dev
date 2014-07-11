@@ -112,16 +112,16 @@ routine compileSemanticDeclarationsGalgas3
     for * in outSemanticContext->mGrammarMap do
       headerInclusionList += !"grammar-" . lkey->string ;
     end for ;
-    @stringlist typeList [emptyList] ;
-    foreach decoratedDeclarationListForGeneration do
-      if not mIsPredefined then
-        [mDeclaration addCppTypeForPredeclarationInHeaderFile !?typeList] ;
-      end if ;
-    end foreach ;
+    @stringlist typePredeclarationList [emptyList] ;
+#    foreach decoratedDeclarationListForGeneration do
+#      if not mIsPredefined then
+#        [mDeclaration addCppTypeForPredeclarationInHeaderFile !?typePredeclarationList] ;
+#      end if ;
+#    end foreach ;
     var headerString := [filewrapper semanticFileGenerationTemplate.semanticFileHeader
       !"AZERTYUIOP"
       !headerInclusionList
-      !typeList
+      !typePredeclarationList
     ] ;
     foreach decoratedDeclarationListForGeneration do
       if not mIsPredefined then
