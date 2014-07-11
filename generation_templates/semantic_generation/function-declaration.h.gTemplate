@@ -12,6 +12,6 @@ class GALGAS_%!RETURN_TYPE_IDENTIFIER% function_%![FUNCTION_NAME identifierRepre
       %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]%,\n%!^
     end
   end
-  %C_Compiler * inCompiler\n%
+  %class C_Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) ;
 
