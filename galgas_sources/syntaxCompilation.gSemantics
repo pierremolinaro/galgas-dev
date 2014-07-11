@@ -134,7 +134,11 @@ routine compileSyntaxComponentFromAST
       !semanticContext
       ?decoratedDeclarationListForGeneration
     ;
-    decoratedDeclarationListForGeneration += !false !syntaxDeclarationForGeneration !"" ;
+    decoratedDeclarationListForGeneration +=
+      !false
+      !syntaxDeclarationForGeneration
+      !""
+    ;
   #------ Generate Header File
     if [@uint errorCount] == 0 then
       var headerString := [filewrapper syntaxFileGenerationTemplate.syntaxFileHeader
@@ -299,9 +303,7 @@ routine compileSyntaxComponentGalgas3
 #--- Build semantic context from rule headers and non terminal declaration
   if [@uint errorCount] == 0 then
     const lexiqueName := inSyntaxComponentRoot->mImportedLexiqueFilePath->string ;
-    @semanticDeclarationSortedListForGeneration decoratedDeclarationListForGeneration ;
     const @predefinedTypes predefinedTypes := buildPredefinedTypes [!inSemanticContext] ;
-    @syntaxDeclarationForGeneration syntaxDeclarationForGeneration ;
     semanticAnalysisOfSyntaxComponent
       !inSyntaxComponentRoot->mNonterminalDeclarationList
       !inSyntaxComponentRoot->mRuleList
@@ -313,7 +315,7 @@ routine compileSyntaxComponentGalgas3
       !indexNameSet
       !hasIndexing
       !inSyntaxComponentRoot->mHasTranslateFeature
-      ?syntaxDeclarationForGeneration
+      ??@syntaxDeclarationForGeneration syntaxDeclarationForGeneration
     ;
   #------
     [!?ioParsedSyntaxComponentMap insertKey
@@ -321,13 +323,6 @@ routine compileSyntaxComponentGalgas3
       !inSyntaxComponentRoot->mSyntaxComponentName # mSourceFullFilePath
       !inSyntaxComponentRoot     
     ] ;
-  #------ Semantic Analysis
-    performSemanticAnalysis
-      ![@semanticDeclarationListAST emptyList]
-      !inSemanticContext
-      ?decoratedDeclarationListForGeneration
-    ;
-    decoratedDeclarationListForGeneration += !false !syntaxDeclarationForGeneration !"" ;
     var implementationIncludeList := [@stringlist emptyList] ;
     implementationIncludeList += !"lexique-" + lexiqueName ;
     implementationIncludeList += !"AZERTYUIOP" ;
@@ -336,12 +331,8 @@ routine compileSyntaxComponentGalgas3
       var headerString := [filewrapper syntaxFileGenerationTemplate.syntaxFileHeaderGalgas3
         !componentName
       ] ;
-      foreach decoratedDeclarationListForGeneration do
-        headerString .= [mDeclaration appendDeclaration1] ;
-      end foreach ;
-      foreach decoratedDeclarationListForGeneration do
-        headerString .= [mDeclaration appendDeclaration2 !inOutputDirectory] ;
-      end foreach ;
+      headerString .= [syntaxDeclarationForGeneration appendDeclaration1] ;
+      headerString .= [syntaxDeclarationForGeneration appendDeclaration2 !inOutputDirectory] ;
       [@string generateFileWithPattern
         !inOutputDirectory
         !"syntax-" . componentName . ".h"
@@ -358,10 +349,8 @@ routine compileSyntaxComponentGalgas3
           !componentName
           !implementationIncludeList
         ] ;
-        foreach decoratedDeclarationListForGeneration do
-          implementationString .= [mDeclaration appendTypeGenericImplementation] ;
-          implementationString .= [mDeclaration appendSpecificImplementation] ;
-        end foreach ;
+        implementationString .= [syntaxDeclarationForGeneration appendTypeGenericImplementation] ;
+        implementationString .= [syntaxDeclarationForGeneration appendSpecificImplementation] ;
         foreach [syntaxDeclarationForGeneration mRuleDeclarationList] do
         #--- Generate rule label implementation
           foreach mLabelImplementationList do

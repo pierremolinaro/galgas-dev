@@ -72,6 +72,13 @@ class @syntaxDeclarationForGeneration extends @semanticDeclarationForGeneration 
 }
 
 #---------------------------------------------------------------------------*
+
+override reader @syntaxDeclarationForGeneration headerFileName -> @string outName
+:
+  outName := "" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 #           G E N E R A T I O N    F I L E W R A P P E R S                  *
 #                                                                           *

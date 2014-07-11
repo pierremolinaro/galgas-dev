@@ -397,10 +397,10 @@ override method @listmapDeclarationAST semanticAnalysis
 #--- Check associated list is actually a list
   @typeKindEnum typeKindEnum ;
   @typedAttributeList listTypeAttributeList ;
-  [inSemanticContext->mTypeMap searchKey !mAssociatedListTypeName ?2* ?typeKindEnum ?listTypeAttributeList ?19*] ;
+  [inSemanticContext->mTypeMap searchKey !mAssociatedListTypeName ?2* ?typeKindEnum ?listTypeAttributeList ?20*] ;
 #---
   ioSemanticDeclarationListForGeneration +=
-     !mIsPredefined
+   !mIsPredefined
    ![@listmapTypeForGeneration new
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mListmapTypeName]
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAssociatedListTypeName]
@@ -930,7 +930,7 @@ override method @mapProxyDeclarationAST semanticAnalysis
     ?listTypeAttributeList
     ?11*
     ?searchMethodList
-    ?5*
+    ?6*
   ] ;
 #---
   ioSemanticDeclarationListForGeneration +=
@@ -1073,6 +1073,7 @@ override method @externFunctionDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !mIsPredefined
     ![@functionPrototypeDeclarationForGeneration new
+      !"func-" . mFunctionName
       ![mFunctionName string]
       !formalArgumentList
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mResultTypeName]
@@ -1100,6 +1101,7 @@ override method @externRoutineDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !mIsPredefined
     ![@routinePrototypeDeclarationForGeneration new
+      !"proc-" . mRoutineName
       ![mRoutineName string]
       !formalArgumentList
     ]
@@ -1140,6 +1142,7 @@ override method @routineDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !mIsPredefined
     ![@routineImplementationForGeneration new
+      !"proc-" . mRoutineName
       ![mRoutineName string]
       !formalArgumentList
       !instructionList
@@ -1359,6 +1362,7 @@ override method @functionDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !mIsPredefined
     ![@functionImplementationForGeneration new
+      !"func-" . mFunctionName
       ![mFunctionName string]
       !formalInputParameterList
       !returnType
@@ -1405,6 +1409,7 @@ override method @onceFunctionDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !mIsPredefined
     ![@onceFunctionDeclarationForGeneration new
+      !"once-" . mFunctionName
       ![mFunctionName string]
       !returnType
       !resultVariableCppName
@@ -1484,6 +1489,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
     ioSemanticDeclarationListForGeneration +=
       !mIsPredefined
       ![@filewrapperDeclarationForGeneration new
+        !"filewrapper-" . mFilewrapperName
         ![mFilewrapperName string]
         ![mFilewrapperPath string]
         !wrapperFileMap
@@ -1524,6 +1530,7 @@ override method @abstractCategoryMethodAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !mIsPredefined
     ![@abstractCategoryMethodForGeneration new
+      !"method-" . mTypeName . mAbstractCategoryMethodName
       ![mTypeName string]
       ![mAbstractCategoryMethodName string]
       !formalParameterListForGeneration
@@ -1582,7 +1589,8 @@ override method @categoryMethodAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !mIsPredefined
-      ![@categoryMethodForGeneration new
+    ![@categoryMethodForGeneration new
+      !"method-" . [selfType key] . "-" . mCategoryMethodName
       !selfType
       ![mCategoryMethodName string]
       !implementedAsFunction
@@ -1665,6 +1673,7 @@ override method @overridingCategoryMethodAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !mIsPredefined
     ![@overridingCategoryMethodForGeneration new
+      !"method-" . mTypeName . "-" . mOverridingCategoryMethodName
       ![mTypeName string]
       !baseTypeName
       ![mOverridingCategoryMethodName string]
@@ -1758,7 +1767,8 @@ override method @abstractCategoryModifierAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !mIsPredefined
-      ![@abstractCategoryModifierForGeneration new
+    ![@abstractCategoryModifierForGeneration new
+      !"setter-" . mTypeName . "-" . mAbstractCategoryModifierName
       ![mTypeName string]
       ![mAbstractCategoryModifierName string]
       !formalParameterListForGeneration
@@ -1814,7 +1824,8 @@ override method @categoryModifierAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !mIsPredefined
-      ![@categoryModifierForGeneration new
+    ![@categoryModifierForGeneration new
+      !"setter-" . [selfType key] . "-" . mCategoryModifierName
       !selfType
       ![mCategoryModifierName string]
       !implementedAsFunction
@@ -1892,7 +1903,8 @@ override method @overridingCategoryModifierAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !mIsPredefined
-      ![@overridingCategoryModifierForGeneration new
+    ![@overridingCategoryModifierForGeneration new
+      !"setter-" . mTypeName . "-" . mOverridingCategoryModifierName
       ![mTypeName string]
       !baseTypeName
       ![mOverridingCategoryModifierName string]
@@ -1987,6 +1999,7 @@ override method @abstractCategoryReaderAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !mIsPredefined
     ![@abstractCategoryReaderForGeneration new
+      !"getter-" . mTypeName . "-" . mAbstractCategoryReaderName
       ![mTypeName string]
       ![mAbstractCategoryReaderName string]
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAbstractCategoryReaderReturnedTypeName]
@@ -2054,6 +2067,7 @@ override method @categoryReaderAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !mIsPredefined
     ![@categoryReaderForGeneration new
+      !"getter-" . [selfType key] . "-" . mCategoryReaderName
       !selfType
       ![mCategoryReaderName string]
       !implementedAsFunction
@@ -2149,6 +2163,7 @@ override method @overridingCategoryReaderAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !mIsPredefined
     ![@overrideCategoryReaderForGeneration new
+      !"getter-" . mTypeName . "-" . mOverridingCategoryReaderName
       ![mTypeName string]
       !baseTypeName
       ![mOverridingCategoryReaderName string]

@@ -78,6 +78,7 @@ routine compileBeforeClause
   ioDecoratedDeclarationListForGeneration +=
     !false # Is not predefined
     ![@routineImplementationForGeneration new
+      !"proc-before"
       !"before"
       ![@formalParameterListForGeneration emptyList]
       !semanticInstructionListForGeneration
@@ -131,6 +132,7 @@ routine compileProgramRules
     ioDecoratedDeclarationListForGeneration +=
       !false # Is not predefined
       ![@routineImplementationForGeneration new
+        !"proc-programrule"
         !"programRule_" . [ruleIndex string]
         !routineSignature
         !semanticInstructionListForGeneration
@@ -175,6 +177,7 @@ routine compileAfterClause
   ioDecoratedDeclarationListForGeneration +=
     !false # Is not predefined
     ![@routineImplementationForGeneration new
+      !"proc-after"
       !"after"
       ![@formalParameterListForGeneration emptyList]
       !semanticInstructionListForGeneration
@@ -373,12 +376,6 @@ routine compileProgramComponentGalgas3
   ??@semanticContext inSemanticContext
   ?!@stringlist ioToolProductFileList
 :
-#------ Semantic Analysis
-#  performSemanticAnalysis
-#    ![@semanticDeclarationListAST emptyList]
-#    !inSemanticContext
-#    ?@semanticDeclarationSortedListForGeneration decoratedDeclarationListForGeneration
-#  ;
 #--- Analysis context
   const analysisContext := [@analysisContext new
     !inSemanticContext
@@ -442,6 +439,9 @@ routine compileProgramComponentGalgas3
       if not mIsPredefined then
         implementationIncludeList += !lkey->string ;
       end if ;
+    end for ;
+    for * in inSemanticContext->mGrammarMap do
+      implementationIncludeList += !"grammar-" . lkey->string ;
     end for ;
     @string implementationString := [filewrapper programFileGenerationTemplate.programFileImplementation
       !programFileName

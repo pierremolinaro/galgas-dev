@@ -1695,7 +1695,7 @@ override method @literalTypeInExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 :
 #--- Get constructor map from type map
-  [inAnalysisContext->mSemanticContext->mTypeMap searchKey !mLiteralTypeName ?23*] ;
+  [inAnalysisContext->mSemanticContext->mTypeMap searchKey !mLiteralTypeName ?24*] ;
 #---
   outExpression := [@literalTypeInExpressionForGeneration new
     ![@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap ![@lstring new !"type" !here]]
