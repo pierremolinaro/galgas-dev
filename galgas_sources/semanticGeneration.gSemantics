@@ -555,6 +555,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
     ?@bool HAS_DEFAULT_CONSTRUCTOR
+    ?@stringlist INCLUSION_LIST
   ;
 
   template structTypeSpecificImplementation "GALGAS_struct.cpp.gTemplate"
@@ -680,6 +681,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
+    ?@stringlist INCLUSION_LIST
   ;
 
   template mapTypeSpecificImplementation "GALGAS_map.cpp.gTemplate"
@@ -698,6 +700,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
     ?@mapSearchMethodListAST SEARCH_METHOD_LIST
+    ?@stringlist INCLUSION_LIST
   ;
 
   template uniqueMapTypeHeader2 "GALGAS_uniqueMap.h2.gTemplate"
@@ -1064,9 +1067,9 @@ override reader @mapTypeForGeneration appendDeclaration1
   var inclusionList := [@stringlist emptyList] ;
   if inGenerateForGalgas3 then
     inclusionList += !"galgas2/AC_GALGAS_map" ;
-    for * in mTypedAttributeList do
-      if not [mTypeProxy mIsPredefined] then
-        inclusionList += ![mTypeProxy mHeaderFileName] ;      
+    for (t ...) in mTypedAttributeList do
+      if not [t mIsPredefined] then
+        inclusionList += ![t mHeaderFileName] . "-1" ;      
       end if ;
     end for ;
   end if ;
@@ -1126,14 +1129,24 @@ override reader @arrayTypeForGeneration appendDeclaration1
 #---------------------------------------------------------------------------*
 
 override reader @uniqueMapTypeForGeneration appendDeclaration1
-  ??@bool unused inGenerateForGalgas3
+  ??@bool inGenerateForGalgas3
   -> @string outHeader
 :
+  var inclusionList := [@stringlist emptyList] ;
+  if inGenerateForGalgas3 then
+    inclusionList += !"galgas2/AC_GALGAS_uniqueMap" ;
+    for (t ...) in mTypedAttributeList do
+      if not [t mIsPredefined] then
+        inclusionList += ![t mHeaderFileName] . "-1" ;      
+      end if ;
+    end for ;
+  end if ;
   outHeader := [filewrapper typeGenerationTemplate.uniqueMapTypeHeader1
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
     !mSearchMethodList
+    !inclusionList
   ] ;
   outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     ![mTypeProxy key]
@@ -1155,14 +1168,23 @@ override reader @uniqueMapTypeForGeneration appendDeclaration1
 #---------------------------------------------------------------------------*
 
 override reader @structTypeForGeneration appendDeclaration1
-  ??@bool unused inGenerateForGalgas3
+  ??@bool inGenerateForGalgas3
   -> @string outHeader
 :
+  var inclusionList := [@stringlist emptyList] ;
+  if inGenerateForGalgas3 then
+    for (t ...) in mTypedAttributeList do
+      if not [t mIsPredefined] then
+        inclusionList += ![t mHeaderFileName] . "-1" ;      
+      end if ;
+    end for ;
+  end if ;
   outHeader := [filewrapper typeGenerationTemplate.structTypeHeader1
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
     ![mTypeProxy mDefaultConstructorName] != ""
+    !inclusionList
   ] ;
   outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     ![mTypeProxy key]
@@ -1542,12 +1564,21 @@ end reader ;
 
 override reader @mapTypeForGeneration appendDeclaration2
   ??@string unused inOutputDirectory
-  ??@bool unused inGenerateForGalgas3
+  ??@bool inGenerateForGalgas3
  ->@string outHeader :
+  var inclusionList := [@stringlist emptyList] ;
+  if inGenerateForGalgas3 then
+    for (t ...) in mTypedAttributeList do
+      if not [t mIsPredefined] then
+        inclusionList += ![t mHeaderFileName] . "-1" ;      
+      end if ;
+    end for ;
+  end if ;
   outHeader := [filewrapper typeGenerationTemplate.mapTypeHeader2
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
+    !inclusionList
   ] ;
  end reader ;
 
