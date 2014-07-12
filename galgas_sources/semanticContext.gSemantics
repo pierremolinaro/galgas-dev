@@ -568,6 +568,10 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
+#! enterInSemanticContext
+
+#---------------------------------------------------------------------------*
+
 abstract method @semanticDeclarationAST enterInSemanticContext
   ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
   ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
@@ -970,11 +974,11 @@ override method @mapDeclarationAST enterInSemanticContext
     !?modifierMap
     !?instanceMethodMap
   ;
-#--- current map type index
+#--- Element type index
   [@unifiedTypeMapProxy makeProxy
     !?ioSemanticContext->mTypeMap
     ![@lstring new !mMapTypeName->string . elementTypeNameSuffix [] !mMapTypeName->location]
-    ?@unifiedTypeMapProxy enumeratorTypeIndex
+    ?@unifiedTypeMapProxy elementTypeProxy
   ] ;
 #--- Enter in type map
   [!?ioSemanticContext->mTypeMap insertKey
@@ -1001,11 +1005,11 @@ override method @mapDeclarationAST enterInSemanticContext
     ![@mapSearchMethodListAST emptyList]
     !withAccessorMap
     !false # Do not generate header in separate file
-    !enumeratorTypeIndex # Type for enumerated element for "for" instruction
+    !elementTypeProxy # Type for enumerated element for "for" instruction
     !"emptyMap"
     !"map-" . mMapTypeName
-    !typesToIncludeInHeaderCompilation
     ![@unifiedTypeMapProxyList emptyList]
+    ![@unifiedTypeMapProxyList listWithValue !elementTypeProxy]
     ![@stringlist emptyList]
   ] ;
 end method ;
@@ -1564,20 +1568,15 @@ override method @graphDeclarationAST enterInSemanticContext
   ?!@semanticContext ioSemanticContext
 :
 #--- string type proxy
-  @unifiedTypeMapProxy stringTypeProxy ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioSemanticContext->mTypeMap !"string" ?stringTypeProxy] ;
+  [@unifiedTypeMapProxy makeProxyFromString !?ioSemanticContext->mTypeMap !"string" ??@unifiedTypeMapProxy stringTypeProxy] ;
 #--- lstring type proxy
-  @unifiedTypeMapProxy lstringTypeProxy ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioSemanticContext->mTypeMap !"lstring" ?lstringTypeProxy] ;
+  [@unifiedTypeMapProxy makeProxyFromString !?ioSemanticContext->mTypeMap !"lstring" ??@unifiedTypeMapProxy lstringTypeProxy] ;
 #--- Graph type proxy
-  @unifiedTypeMapProxy graphTypeProxy ;
-  [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mGraphTypeName ?graphTypeProxy] ;
+  [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mGraphTypeName ??@unifiedTypeMapProxy graphTypeProxy] ;
 #--- Associated list type proxy
-  @unifiedTypeMapProxy associatedListTypeProxy ;
-  [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mAssociatedListTypeName ?associatedListTypeProxy] ;
+  [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mAssociatedListTypeName ??@unifiedTypeMapProxy associatedListTypeProxy] ;
 #--- @lstringlist type proxy
-  @unifiedTypeMapProxy lstringListTypeProxy ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioSemanticContext->mTypeMap !"lstringlist" ?lstringListTypeProxy] ;
+  [@unifiedTypeMapProxy makeProxyFromString !?ioSemanticContext->mTypeMap !"lstringlist" ??@unifiedTypeMapProxy lstringListTypeProxy] ;
 #---
   commonReaderMapForAllTypes !?ioSemanticContext->mTypeMap ?@readerMap readerMap ;
   @constructorMap constructorMap [emptyMap] ;
@@ -1781,6 +1780,15 @@ override method @graphDeclarationAST enterInSemanticContext
     !?modifierMap
     !?instanceMethodMap
   ;
+#--- Associated list type proxy
+  [@unifiedTypeMapProxy makeProxy
+    !?ioSemanticContext->mTypeMap
+    ![@lstring new !mAssociatedListTypeName->string . elementTypeNameSuffix [] !mAssociatedListTypeName->location]
+    ??@unifiedTypeMapProxy associatedListElementTypeProxy
+  ] ;
+#--- 
+  var cppDependance := [@unifiedTypeMapProxyList listWithValue !associatedListTypeProxy] ;
+  cppDependance += !associatedListElementTypeProxy ;
 #--- Enter type in type map
   [!?ioSemanticContext->mTypeMap insertKey
     !mGraphTypeName
@@ -1810,7 +1818,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !"emptyGraph" # Default constructor
     !"graph-" . mGraphTypeName
     ![@unifiedTypeMapProxyList emptyList]
-    ![@unifiedTypeMapProxyList emptyList]
+    !cppDependance
     ![@stringlist emptyList]
   ] ;
 end method ;
@@ -2044,8 +2052,7 @@ override method @listDeclarationAST enterInSemanticContext
 #--- Handle attributes
   @typedAttributeList typedAttributeList [emptyList] ;
   foreach mAttributeList do
-    @unifiedTypeMapProxy attributeTypeIndex ;
-    [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mAttributeTypeName ?attributeTypeIndex] ;
+    [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mAttributeTypeName ??@unifiedTypeMapProxy attributeTypeIndex] ;
     @bool hasGetter := true ;
     @bool hasSetter := false ;
     foreach mFeatureList do
@@ -2064,7 +2071,7 @@ override method @listDeclarationAST enterInSemanticContext
 #--- Element type index
   [@unifiedTypeMapProxy makeProxy
     !?ioSemanticContext->mTypeMap
-    ![@lstring new !mListTypeName->string . ".element" !mListTypeName->location]
+    ![@lstring new !mListTypeName->string . elementTypeNameSuffix [] !mListTypeName->location]
     ??@unifiedTypeMapProxy listElementTypeIndex
   ] ;
 #--- Attribute description
@@ -2198,12 +2205,6 @@ override method @listDeclarationAST enterInSemanticContext
     !?modifierMap
     !?instanceMethodMap
   ;
-#--- Element type index
-  [@unifiedTypeMapProxy makeProxy
-    !?ioSemanticContext->mTypeMap
-    ![@lstring new !mListTypeName->string . elementTypeNameSuffix [] !mListTypeName->location]
-    ??@unifiedTypeMapProxy enumeratedTypeIndex
-  ] ;
 #--- Enter in type map
   [!?ioSemanticContext->mTypeMap insertKey
     !mListTypeName
@@ -2229,7 +2230,7 @@ override method @listDeclarationAST enterInSemanticContext
     ![@mapSearchMethodListAST emptyList]
     ![@withAccessorMap emptyMap]
     !false # Do not generate header in separate file
-    !enumeratedTypeIndex # Type for enumerated element for "for" instruction
+    !listElementTypeIndex # Type for enumerated element for "for" instruction
     !"emptyList" # Default constructor
     !"list-" . mListTypeName
     ![@unifiedTypeMapProxyList emptyList]
@@ -2246,23 +2247,26 @@ override method @sortedListDeclarationAST enterInSemanticContext
   ??@categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
-#  message "@sortedListDeclarationAST enterInSemanticContext\n" ;
-  @unifiedTypeMapProxy uintType ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioSemanticContext->mTypeMap !"uint" ?uintType] ;
+#--- Type index
+  [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mSortedListTypeName ??@unifiedTypeMapProxy listTypeIndex] ;
 #--- Element type index
-  @unifiedTypeMapProxy listTypeIndex ;
-  [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mSortedListTypeName ?listTypeIndex] ;
+  [@unifiedTypeMapProxy makeProxy
+    !?ioSemanticContext->mTypeMap
+    ![@lstring new !mSortedListTypeName->string . elementTypeNameSuffix [] !mSortedListTypeName->location]
+    ??@unifiedTypeMapProxy listElementTypeIndex
+  ] ;
 #--- Enumeration description
   @enumerationDescriptorList enumerationDescriptor [emptyList] ;
   @unifiedTypeMapProxyAndParameterList constructorAttributeTypeList [emptyList] ;
   @formalParameterSignature modifierFormalArgumentList [emptyList] ;
   @typedAttributeList typedAttributeList [emptyList] ;
+  var typesToIncludeInCPPCompilation := [@unifiedTypeMapProxyList listWithValue !listElementTypeIndex] ;
   foreach mAttributeList do
-    @unifiedTypeMapProxy attributeTypeIndex ;
-    [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mAttributeTypeName ?attributeTypeIndex] ;
+    [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mAttributeTypeName ??@unifiedTypeMapProxy attributeTypeIndex] ;
     @bool hasGetter := true ;
     @bool hasSetter := true ;
     typedAttributeList += !attributeTypeIndex !mAttributeName !hasSetter !hasGetter ;
+    typesToIncludeInCPPCompilation += !attributeTypeIndex ;
     enumerationDescriptor += !attributeTypeIndex !mAttributeName->string ;
     constructorAttributeTypeList += !attributeTypeIndex !mAttributeName->string ;
     modifierFormalArgumentList += !attributeTypeIndex ![@formalArgumentPassingModeAST argumentOut] !mAttributeName->string ;
@@ -2332,13 +2336,6 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !?modifierMap
     !?instanceMethodMap
   ;
-#--- Element type index
-  @unifiedTypeMapProxy enumeratedTypeIndex ;
-  [@unifiedTypeMapProxy makeProxy
-    !?ioSemanticContext->mTypeMap
-    ![@lstring new !mSortedListTypeName->string . elementTypeNameSuffix [] !mSortedListTypeName->location]
-    ?enumeratedTypeIndex
-  ] ;
 #--- Enter in type map
   [!?ioSemanticContext->mTypeMap insertKey
     !mSortedListTypeName
@@ -2364,11 +2361,11 @@ override method @sortedListDeclarationAST enterInSemanticContext
     ![@mapSearchMethodListAST emptyList]
     ![@withAccessorMap emptyMap]
     !false # Do not generate header in separate file
-    !enumeratedTypeIndex # Type for enumerated element for "for" instruction
+    !listElementTypeIndex # Type for enumerated element for "for" instruction
     !"emptySortedList" # Default constructor
     !"sortedlist-" . mSortedListTypeName
     ![@unifiedTypeMapProxyList emptyList]
-    ![@unifiedTypeMapProxyList emptyList]
+    !typesToIncludeInCPPCompilation
     ![@stringlist emptyList]
   ] ;
 end method ;
@@ -2481,7 +2478,7 @@ override method @structDeclarationAST enterInSemanticContext
     !enumeratedType # Type for enumerated element for "for" instruction
     !defaultConstructorName # Default constructor
     !"struct-" . mStructTypeName
-    !typesToIncludeInHeaderCompilation
+    ![@unifiedTypeMapProxyList emptyList]
     ![@unifiedTypeMapProxyList emptyList]
     ![@stringlist emptyList]
   ] ;
@@ -3041,6 +3038,10 @@ end method ;
 #                                                                           *
 #    B U I L D    O R D E R E D     S E M A N T I C    L I S T              *
 #                                                                           *
+#---------------------------------------------------------------------------*
+
+#! enterDeclarationInGraph
+
 #---------------------------------------------------------------------------*
 
 graph @semanticTypePrecedenceGraph (@semanticDeclarationListAST) {
