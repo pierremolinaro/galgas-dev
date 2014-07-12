@@ -763,6 +763,7 @@ override method @predefinedTypeAST enterInSemanticContext
 #---
   [!?ioSemanticContext->mTypeMap insertKey
     ![@lstring new !mPredefinedTypeName !here]
+    !mIsPredefined
     !true # Concrete Type
     ![@unifiedTypeMapProxy null]
     ![@typeKindEnum predefinedType]
@@ -786,7 +787,10 @@ override method @predefinedTypeAST enterInSemanticContext
     !false # Do not generate header in separate file
     !enumeratedTypeProxy
     ![mKind defaultConstructorName]
-    !"predefined-types"
+    !"galgas2/predefined-types"
+    ![@unifiedTypeMapProxyList emptyList]
+    ![@unifiedTypeMapProxyList emptyList]
+    ![@stringlist emptyList]
   ] ;
 end method ;
 
@@ -847,12 +851,13 @@ override method @mapDeclarationAST enterInSemanticContext
   insertMethodFormalArgumentList += !lstringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !"inLKey" ;
   @formalParameterSignature removeMethodFormalArgumentList [emptyList] ;
   removeMethodFormalArgumentList += !lstringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !"inLKey" ;
+  var typesToIncludeInHeaderCompilation := [@unifiedTypeMapProxyList emptyList] ;
   foreach mAttributeList do
-    @unifiedTypeMapProxy attributeTypeIndex ;
-    [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mAttributeTypeName ?attributeTypeIndex] ;
+    [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mAttributeTypeName ??@unifiedTypeMapProxy attributeTypeIndex] ;
     @bool hasGetter := true ;
     @bool hasSetter := true ;
     typedAttributeList += !attributeTypeIndex !mAttributeName !hasSetter !hasGetter ;
+    typesToIncludeInHeaderCompilation += !attributeTypeIndex ;
     enumerationDescriptor += !attributeTypeIndex ![mAttributeName string] ;
     insertMethodFormalArgumentList += !attributeTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !mAttributeName->string ;
     removeMethodFormalArgumentList += !attributeTypeIndex ![@formalArgumentPassingModeAST argumentOut] !mAttributeName->string ;
@@ -974,6 +979,7 @@ override method @mapDeclarationAST enterInSemanticContext
 #--- Enter in type map
   [!?ioSemanticContext->mTypeMap insertKey
     !mMapTypeName
+    !mIsPredefined
     !true # Concrete Type
     ![@unifiedTypeMapProxy null]
     ![@typeKindEnum mapType]
@@ -998,6 +1004,9 @@ override method @mapDeclarationAST enterInSemanticContext
     !enumeratorTypeIndex # Type for enumerated element for "for" instruction
     !"emptyMap"
     !"map-" . mMapTypeName
+    !typesToIncludeInHeaderCompilation
+    ![@unifiedTypeMapProxyList emptyList]
+    ![@stringlist emptyList]
   ] ;
 end method ;
 
@@ -1230,6 +1239,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
 #--- Enter in type map
   [!?ioSemanticContext->mTypeMap insertKey
     !mMapTypeName
+    !mIsPredefined
     !true # Concrete Type
     ![@unifiedTypeMapProxy null]
     ![@typeKindEnum uniqueMapType]
@@ -1254,6 +1264,9 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
     !"emptyMap"
     !"uniquemap-" . mMapTypeName
+    ![@unifiedTypeMapProxyList emptyList]
+    ![@unifiedTypeMapProxyList emptyList]
+    ![@stringlist emptyList]
   ] ;
 end method ;
 
@@ -1268,13 +1281,13 @@ override method @mapProxyDeclarationAST enterInSemanticContext
 #--- Check associated map is really a map
   [ioSemanticContext->mTypeMap searchKey
     !mAssociatedMapTypeName
-    ?2*
+    ?3*
     ?@typeKindEnum typeKindEnum
     ?2*
     ?@typedAttributeList mapTypedAttributeList
     ?11*
     ?@mapSearchMethodListAST searchMethodList
-    ?6*
+    ?9*
   ] ;
   if typeKindEnum != [@typeKindEnum uniqueMapType] then
     error mAssociatedMapTypeName : "the @" . mAssociatedMapTypeName . " should be an unique map type" ;
@@ -1377,6 +1390,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
 #--- Enter type in type map
   [!?ioSemanticContext->mTypeMap insertKey
     !mMapProxyTypeName
+    !mIsPredefined
     !true # Concrete Type
     ![@unifiedTypeMapProxy null]
     ![@typeKindEnum mapProxyType]
@@ -1401,6 +1415,9 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
     !"null" # Default constructor
     !"mapproxy-" . mMapProxyTypeName
+    ![@unifiedTypeMapProxyList emptyList]
+    ![@unifiedTypeMapProxyList emptyList]
+    ![@stringlist emptyList]
   ] ;
 end method ;
 
@@ -1507,6 +1524,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
 #--- Enter type in type map
   [!?ioSemanticContext->mTypeMap insertKey
     !mExternTypeName
+    !mIsPredefined
     !true # Concrete Type
     ![@unifiedTypeMapProxy null]
     ![@typeKindEnum graphType]
@@ -1531,6 +1549,9 @@ override method @externTypeDeclarationAST enterInSemanticContext
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
     !"default" # Default constructor
     !"externtype-" . mExternTypeName
+    ![@unifiedTypeMapProxyList emptyList]
+    ![@unifiedTypeMapProxyList emptyList]
+    ![@stringlist emptyList]
   ] ;
 end method ;
 
@@ -1763,6 +1784,7 @@ override method @graphDeclarationAST enterInSemanticContext
 #--- Enter type in type map
   [!?ioSemanticContext->mTypeMap insertKey
     !mGraphTypeName
+    !mIsPredefined
     !true # Concrete Type
     ![@unifiedTypeMapProxy null]
     ![@typeKindEnum graphType]
@@ -1787,6 +1809,9 @@ override method @graphDeclarationAST enterInSemanticContext
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
     !"emptyGraph" # Default constructor
     !"graph-" . mGraphTypeName
+    ![@unifiedTypeMapProxyList emptyList]
+    ![@unifiedTypeMapProxyList emptyList]
+    ![@stringlist emptyList]
   ] ;
 end method ;
 
@@ -1830,6 +1855,7 @@ override method @enumDeclarationAST enterInSemanticContext
 #--- Enter type in type map
   [!?ioSemanticContext->mTypeMap insertKey
     !mEnumTypeName
+    !mIsPredefined
     !true # Concrete Type
     ![@unifiedTypeMapProxy null]
     ![@typeKindEnum enumType]
@@ -1854,6 +1880,9 @@ override method @enumDeclarationAST enterInSemanticContext
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
     ![mConstantList mValueAtIndex !0]->string # Default constructor
     !"enum-" . mEnumTypeName
+    ![@unifiedTypeMapProxyList emptyList]
+    ![@unifiedTypeMapProxyList emptyList]
+    ![@stringlist emptyList]
   ] ;
 end method ;
 
@@ -2029,17 +2058,23 @@ override method @listDeclarationAST enterInSemanticContext
     typedAttributeList += !attributeTypeIndex !mAttributeName !hasSetter !hasGetter ;
   end foreach ;
 #--- uint type index
-  @unifiedTypeMapProxy uintType ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioSemanticContext->mTypeMap !"uint" ?uintType] ;
+  [@unifiedTypeMapProxy makeProxyFromString !?ioSemanticContext->mTypeMap !"uint" ??@unifiedTypeMapProxy uintType] ;
+#--- List type index
+  [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mListTypeName ??@unifiedTypeMapProxy listTypeIndex] ;
 #--- Element type index
-  @unifiedTypeMapProxy listTypeIndex ;
-  [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mListTypeName ?listTypeIndex] ;
+  [@unifiedTypeMapProxy makeProxy
+    !?ioSemanticContext->mTypeMap
+    ![@lstring new !mListTypeName->string . ".element" !mListTypeName->location]
+    ??@unifiedTypeMapProxy listElementTypeIndex
+  ] ;
 #--- Attribute description
   @enumerationDescriptorList enumerationDescriptor [emptyList] ;
   @unifiedTypeMapProxyAndParameterList constructorAttributeTypeList [emptyList] ;
   @formalParameterSignature modifierOutputFormalArgumentList [emptyList] ;
   @formalParameterSignature modifierInputFormalArgumentList [emptyList] ;
+  var typesToIncludeInCPPCompilation := [@unifiedTypeMapProxyList listWithValue !listElementTypeIndex] ;
   foreach typedAttributeList do
+    typesToIncludeInCPPCompilation += !mAttributeTypeProxy ;
     enumerationDescriptor += !mAttributeTypeProxy ![mAttributeName string] ;
     constructorAttributeTypeList += !mAttributeTypeProxy !mAttributeName->string ;
     modifierOutputFormalArgumentList += !mAttributeTypeProxy ![@formalArgumentPassingModeAST argumentOut] !mAttributeName->string ;
@@ -2167,11 +2202,12 @@ override method @listDeclarationAST enterInSemanticContext
   [@unifiedTypeMapProxy makeProxy
     !?ioSemanticContext->mTypeMap
     ![@lstring new !mListTypeName->string . elementTypeNameSuffix [] !mListTypeName->location]
-    ?@unifiedTypeMapProxy enumeratedTypeIndex
+    ??@unifiedTypeMapProxy enumeratedTypeIndex
   ] ;
 #--- Enter in type map
   [!?ioSemanticContext->mTypeMap insertKey
     !mListTypeName
+    !mIsPredefined
     !true # Concrete Type
     ![@unifiedTypeMapProxy null]
     ![@typeKindEnum listType]
@@ -2196,6 +2232,9 @@ override method @listDeclarationAST enterInSemanticContext
     !enumeratedTypeIndex # Type for enumerated element for "for" instruction
     !"emptyList" # Default constructor
     !"list-" . mListTypeName
+    ![@unifiedTypeMapProxyList emptyList]
+    !typesToIncludeInCPPCompilation
+    ![@stringlist emptyList]
   ] ;
 end method ;
 
@@ -2303,6 +2342,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
 #--- Enter in type map
   [!?ioSemanticContext->mTypeMap insertKey
     !mSortedListTypeName
+    !mIsPredefined
     !true # Concrete Type
     ![@unifiedTypeMapProxy null]
     ![@typeKindEnum sortedListType]
@@ -2327,6 +2367,9 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !enumeratedTypeIndex # Type for enumerated element for "for" instruction
     !"emptySortedList" # Default constructor
     !"sortedlist-" . mSortedListTypeName
+    ![@unifiedTypeMapProxyList emptyList]
+    ![@unifiedTypeMapProxyList emptyList]
+    ![@stringlist emptyList]
   ] ;
 end method ;
 
@@ -2346,10 +2389,11 @@ override method @structDeclarationAST enterInSemanticContext
   @constructorMap constructorMap [emptyMap] ;
   @unifiedTypeMapProxyAndParameterList constructorAttributeTypeList [emptyList] ;
   @typedAttributeList typedAttributeList [emptyList] ;
+  var typesToIncludeInHeaderCompilation := [@unifiedTypeMapProxyList emptyList] ;
   foreach mAttributeList do
-    @unifiedTypeMapProxy attributeTypeIndex ;
-    [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mAttributeTypeName ?attributeTypeIndex] ;
+    [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mAttributeTypeName ??@unifiedTypeMapProxy attributeTypeIndex] ;
     constructorAttributeTypeList += !attributeTypeIndex !mAttributeName->string ;
+    typesToIncludeInHeaderCompilation += !attributeTypeIndex ;
     @bool hasSetter := false ;
     @bool hasGetter := true ;
     typedAttributeList += !attributeTypeIndex !mAttributeName !hasSetter !hasGetter ;
@@ -2412,6 +2456,7 @@ override method @structDeclarationAST enterInSemanticContext
 #--- Enter in type map
   [!?ioSemanticContext->mTypeMap insertKey
     !mStructTypeName
+    !mIsPredefined
     !true # Concrete Type
     ![@unifiedTypeMapProxy null]
     ![@typeKindEnum structType]
@@ -2436,6 +2481,9 @@ override method @structDeclarationAST enterInSemanticContext
     !enumeratedType # Type for enumerated element for "for" instruction
     !defaultConstructorName # Default constructor
     !"struct-" . mStructTypeName
+    !typesToIncludeInHeaderCompilation
+    ![@unifiedTypeMapProxyList emptyList]
+    ![@stringlist emptyList]
   ] ;
 end method ;
 
@@ -2479,7 +2527,7 @@ override method @classDeclarationAST enterInSemanticContext
     @instanceMethodMap inheritedMethodMap ;
     [ioSemanticContext->mTypeMap searchKey
       !mSuperClassName
-      ?2*
+      ?3*
       ?typeKindEnum
       ?inheritedTypedAttributeList
       ?attributeMap
@@ -2489,7 +2537,7 @@ override method @classDeclarationAST enterInSemanticContext
       ?inheritedMethodMap
       ?10*
       ?generateHeaderInSeparateFile
-      ?3*
+      ?6*
     ] ;
   #---
     if typeKindEnum != [@typeKindEnum classType] then
@@ -2627,10 +2675,12 @@ override method @classDeclarationAST enterInSemanticContext
   ;
 #--- Generate a "default" constructor ?
   @string defaultConstructorName ;
+  var headerInclusionTypeList := [@unifiedTypeMapProxyList emptyList] ;
   if [superClassIndex isNull] then
     defaultConstructorName := "default" ;
   else
     defaultConstructorName := [superClassIndex mDefaultConstructorName] ;
+    headerInclusionTypeList += !superClassIndex ;
   end if ;
   foreach currentClassTypedAttributeList while defaultConstructorName != "" do
     if ([mAttributeTypeProxy mDefaultConstructorName] == "") | not [mAttributeTypeProxy mIsConcrete] then
@@ -2640,6 +2690,7 @@ override method @classDeclarationAST enterInSemanticContext
 #--- Enter in type map
   [!?ioSemanticContext->mTypeMap insertKey
     !mClassTypeName
+    !mIsPredefined
     !not mIsAbstract # Concrete Type
     !superClassIndex
     ![@typeKindEnum classType]
@@ -2664,6 +2715,9 @@ override method @classDeclarationAST enterInSemanticContext
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
     !defaultConstructorName # Default constructor
     !"class-" . mClassTypeName
+    !headerInclusionTypeList
+    ![@unifiedTypeMapProxyList emptyList]
+    ![@stringlist emptyList]
   ] ;
 end method ;
 
@@ -2844,6 +2898,7 @@ override method @arrayDeclarationAST enterInSemanticContext
 #--- Enter in semantic context
   [!?ioSemanticContext->mTypeMap insertKey
     !mArrayTypeName
+    !mIsPredefined
     !true # Concrete Type
     ![@unifiedTypeMapProxy null]
     ![@typeKindEnum listMapType]
@@ -2868,6 +2923,9 @@ override method @arrayDeclarationAST enterInSemanticContext
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
     !"" # No default constructor
     !"array-" . mArrayTypeName
+    ![@unifiedTypeMapProxyList emptyList]
+    ![@unifiedTypeMapProxyList emptyList]
+    ![@stringlist emptyList]
   ] ;
 end method ;
 
@@ -2883,10 +2941,10 @@ override method @listmapDeclarationAST enterInSemanticContext
 #--- Check associated map is really a list
   [ioSemanticContext->mTypeMap searchKey
     !mAssociatedListTypeName
-    ?2*
+    ?3*
     ?@typeKindEnum typeKindEnum
     ?@typedAttributeList listTypedAttributeList
-    ?20*
+    ?23*
   ] ;
   if typeKindEnum != [@typeKindEnum listType] then
     error mAssociatedListTypeName : "the '@" . mAssociatedListTypeName . "' type should be a list type" ;
@@ -2948,6 +3006,7 @@ override method @listmapDeclarationAST enterInSemanticContext
 #--- Enter type in type map
   [!?ioSemanticContext->mTypeMap insertKey
     !mListmapTypeName
+    !mIsPredefined
     !true # Concrete Type
     ![@unifiedTypeMapProxy null]
     ![@typeKindEnum listMapType]
@@ -2972,6 +3031,9 @@ override method @listmapDeclarationAST enterInSemanticContext
     !enumeratedTypeIndex # Type for enumerated element for "for" instruction
     !"emptyMap" # Default constructor
     !"listmap-" . mListmapTypeName
+    ![@unifiedTypeMapProxyList emptyList]
+    ![@unifiedTypeMapProxyList emptyList]
+    ![@stringlist emptyList]
   ] ;
 end method ;
 

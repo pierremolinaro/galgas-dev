@@ -431,10 +431,10 @@ routine compileSemanticsComponentAST
       !typeList
     ] ;
     foreach decoratedDeclarationListForGeneration do
-      headerString .= [mDeclaration appendDeclaration1] ;
+      headerString .= [mDeclaration appendDeclaration1 !false] ;
     end foreach ;
     foreach decoratedDeclarationListForGeneration do
-      headerString .= [mDeclaration appendDeclaration2 !inOutputDirectory] ;
+      headerString .= [mDeclaration appendDeclaration2 !inOutputDirectory !false] ;
     end foreach ;
     [@string generateFileWithPattern
       !inOutputDirectory

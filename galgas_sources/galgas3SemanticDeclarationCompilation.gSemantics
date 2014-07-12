@@ -112,87 +112,91 @@ routine compileSemanticDeclarationsGalgas3
     var headerInclusionList1 := [@stringlist emptyList] ;
     var headerInclusionList2 := [@stringlist emptyList] ;
     foreach decoratedDeclarationListForGeneration do
-      if not mIsPredefined then
-        const headerString1 := [mDeclaration appendDeclaration1] ;
-        const headerString2 := [mDeclaration appendDeclaration2 !productDirectory] ;
+      if not [mDeclaration isPredefined] then
+        const headerString1 := [mDeclaration appendDeclaration1 !true] ;
+        const headerString2 := [mDeclaration appendDeclaration2 !productDirectory !true] ;
+        const hasHeader := (headerString1 != "") | (headerString2 != "") ;
+        if hasHeader != [mDeclaration hasCppHeaderFile] then
+          log mDeclaration ;
+        end if ;
         if (headerString1 != "") & (headerString2 == "") then
-          if [mDeclaration headerFileName] == "" then
-            log mDeclaration ;
-          end if ;
-          var headerString := "#ifndef " . [[mDeclaration headerFileName] identifierRepresentation] . "_DEFINED\n" ;
-          headerString .= "#define " . [[mDeclaration headerFileName] identifierRepresentation] . "_DEFINED\n\n" ;
+          var headerString := "#ifndef " . [[mDeclaration implementationCppFileName] identifierRepresentation] . "_DEFINED\n" ;
+          headerString .= "#define " . [[mDeclaration implementationCppFileName] identifierRepresentation] . "_DEFINED\n\n" ;
+          headerString .= "//-----------------------------------------------------------------------------*\n\n" ;
+          [mDeclaration addHeaderInclusions !?headerString] ;
+          headerString .= "#include \"galgas2/predefined-types.h\"\n\n" ;
+          headerString .= "//-----------------------------------------------------------------------------*\n\n" ;
+          headerString .= headerString1 ;
+          headerString .= "#endif\n\n" ;
+          [@string generateFileWithPattern
+            !productDirectory
+            ![mDeclaration implementationCppFileName] . ".h"
+            !"//"
+            !"\n\n" # Defaut user zone1
+            !headerString
+            !"\n\n" # Defaut user zone2
+            !"\n"
+          ] ;
+          headerInclusionList1 += ![mDeclaration implementationCppFileName] ;
+        elsif (headerString1 == "") & (headerString2 != "") then
+          var headerString := "#ifndef " . [[mDeclaration implementationCppFileName] identifierRepresentation] . "_DEFINED\n" ;
+          headerString .= "#define " . [[mDeclaration implementationCppFileName] identifierRepresentation] . "_DEFINED\n\n" ;
+          headerString .= "//-----------------------------------------------------------------------------*\n\n" ;
+          [mDeclaration addHeaderInclusions !?headerString] ;
+          headerString .= "#include \"galgas2/predefined-types.h\"\n\n" ;
+          headerString .= "//-----------------------------------------------------------------------------*\n\n" ;
+          headerString .= headerString2 ;
+          headerString .= "#endif\n\n" ;
+          [@string generateFileWithPattern
+            !productDirectory
+            ![mDeclaration implementationCppFileName] . ".h"
+            !"//"
+            !"\n\n" # Defaut user zone1
+            !headerString
+            !"\n\n" # Defaut user zone2
+            !"\n"
+          ] ;
+          headerInclusionList2 += ![mDeclaration implementationCppFileName] ;
+        elsif (headerString1 != "") & (headerString2 != "") then
+          var headerString := "#ifndef " . [[mDeclaration implementationCppFileName] identifierRepresentation] . "_1_DEFINED\n" ;
+          headerString .= "#define " . [[mDeclaration implementationCppFileName] identifierRepresentation] . "_1_DEFINED\n\n" ;
           headerString .= headerString1 ;
           headerString .= "#endif\n\n" ;
           headerString .= "//-----------------------------------------------------------------------------*\n\n" ;
+          headerString .= "#include \"galgas2/predefined-types.h\"\n\n" ;
+          headerString .= "//-----------------------------------------------------------------------------*\n\n" ;
           [@string generateFileWithPattern
             !productDirectory
-            ![mDeclaration headerFileName] . ".h"
+            ![mDeclaration implementationCppFileName] . "-1.h"
             !"//"
             !"\n\n" # Defaut user zone1
             !headerString
             !"\n\n" # Defaut user zone2
             !"\n"
           ] ;
-          headerInclusionList1 += ![mDeclaration headerFileName] ;
-       elsif (headerString1 == "") & (headerString2 != "") then
-          if [mDeclaration headerFileName] == "" then
-            log mDeclaration ;
-          end if ;
-          var headerString := "#ifndef " . [[mDeclaration headerFileName] identifierRepresentation] . "_DEFINED\n" ;
-          headerString .= "#define " . [[mDeclaration headerFileName] identifierRepresentation] . "_DEFINED\n\n" ;
+          headerString := "#ifndef " . [[mDeclaration implementationCppFileName] identifierRepresentation] . "_DEFINED\n" ;
+          headerString .= "#define " . [[mDeclaration implementationCppFileName] identifierRepresentation] . "_DEFINED\n\n" ;
+          headerString .= "//-----------------------------------------------------------------------------*\n\n" ;
+          headerString .= "#include \"" . [mDeclaration implementationCppFileName] . "-1.h\"\n" ;
+          [mDeclaration addHeaderInclusions !?headerString] ;
+          headerString .= "\n//-----------------------------------------------------------------------------*\n\n" ;
           headerString .= headerString2 ;
           headerString .= "#endif\n\n" ;
-          headerString .= "//-----------------------------------------------------------------------------*\n\n" ;
           [@string generateFileWithPattern
             !productDirectory
-            ![mDeclaration headerFileName] . ".h"
+            ![mDeclaration implementationCppFileName] . ".h"
             !"//"
             !"\n\n" # Defaut user zone1
             !headerString
             !"\n\n" # Defaut user zone2
             !"\n"
           ] ;
-          headerInclusionList2 += ![mDeclaration headerFileName] ;
-       elsif (headerString1 != "") & (headerString2 != "") then
-          if [mDeclaration headerFileName] == "" then
-            log mDeclaration ;
-          end if ;
-          var headerString := "#ifndef " . [[mDeclaration headerFileName] identifierRepresentation] . "_1_DEFINED\n" ;
-          headerString .= "#define " . [[mDeclaration headerFileName] identifierRepresentation] . "_1_DEFINED\n\n" ;
-          headerString .= headerString1 ;
-          headerString .= "#endif\n\n" ;
-          headerString .= "//-----------------------------------------------------------------------------*\n\n" ;
-          [@string generateFileWithPattern
-            !productDirectory
-            ![mDeclaration headerFileName] . "-1.h"
-            !"//"
-            !"\n\n" # Defaut user zone1
-            !headerString
-            !"\n\n" # Defaut user zone2
-            !"\n"
-          ] ;
-          headerString := "#ifndef " . [[mDeclaration headerFileName] identifierRepresentation] . "_DEFINED\n" ;
-          headerString .= "#define " . [[mDeclaration headerFileName] identifierRepresentation] . "_DEFINED\n\n" ;
-          headerString .= headerString2 ;
-          headerString .= "#endif\n\n" ;
-          headerString .= "//-----------------------------------------------------------------------------*\n\n" ;
-          [@string generateFileWithPattern
-            !productDirectory
-            ![mDeclaration headerFileName] . ".h"
-            !"//"
-            !"\n\n" # Defaut user zone1
-            !headerString
-            !"\n\n" # Defaut user zone2
-            !"\n"
-          ] ;
-          headerInclusionList1 += ![mDeclaration headerFileName] . "-1" ;
-          headerInclusionList2 += ![mDeclaration headerFileName] ;
-        elsif [mDeclaration headerFileName] != "" then
-          warning ["" nowhere] : "Header file name provided without any code for '" . [mDeclaration headerFileName] . "'" ;
+          headerInclusionList1 += ![mDeclaration implementationCppFileName] . "-1" ;
+          headerInclusionList2 += ![mDeclaration implementationCppFileName] ;
         end if ;
       end if ;
     end foreach ;
-  #--- AZERTYUIOP
+  #--- AZERTYUIOP.h
     var headerString := [filewrapper semanticFileGenerationTemplate.semanticFileHeader
       !"AZERTYUIOP"
       !headerInclusionList1 + headerInclusionList2
@@ -208,31 +212,59 @@ routine compileSemanticDeclarationsGalgas3
       !"#endif\n"
     ] ;
   end if ;
-#------ Generate Implementation File
+#---------------------------------- Generate Implementation Files
   if [@uint errorCount] == 0 then
-    ioToolProductFileList += !"AZERTYUIOP.cpp" ;
-    for * in outSemanticContext->mGrammarMap do
-      implementationFileIncludeList += !"grammar-" . lkey->string ;
-    end for ;
-    @string implementationString := [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
-      !"AZERTYUIOP"
-      !implementationFileIncludeList
-    ] ;
+  #-------------
     foreach decoratedDeclarationListForGeneration do
-      if not mIsPredefined then
+      if not [mDeclaration isPredefined] then
+        var implementationFileIncludes := [@stringlist emptyList] ;
+        if [mDeclaration hasCppHeaderFile] then
+          implementationFileIncludes += ![mDeclaration implementationCppFileName] ;
+        end if ;
+        [mDeclaration addInclusionForCPPFile !?implementationFileIncludes] ;
+        @string implementationString := [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
+          ![mDeclaration implementationCppFileName]
+          !implementationFileIncludes
+        ] ;
         implementationString .= [mDeclaration appendSpecificImplementation] ;
         implementationString .= [mDeclaration appendTypeGenericImplementation] ;
+        [@string generateFileWithPattern
+          !productDirectory
+          ![mDeclaration implementationCppFileName] . ".cpp"
+          !"//"
+          !"\n\n" # Defaut user zone1
+          !implementationString
+          !"\n\n" # Defaut user zone2
+          !"\n"
+        ] ;
+        ioToolProductFileList += ![mDeclaration implementationCppFileName] . ".cpp" ;
       end if ;
     end foreach ;
-    [@string generateFileWithPattern
-      !productDirectory
-      !"AZERTYUIOP.cpp"
-      !"//"
-      !"\n\n" # Defaut user zone1
-      !implementationString
-      !"\n\n" # Defaut user zone2
-      !"\n"
-    ] ;
+  
+  #------------- AZERTYUIOP.cpp
+#    ioToolProductFileList += !"AZERTYUIOP.cpp" ;
+#    for * in outSemanticContext->mGrammarMap do
+#      implementationFileIncludeList += !"grammar-" . lkey->string ;
+#    end for ;
+#    @string implementationString := [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
+#      !"AZERTYUIOP"
+#      !implementationFileIncludeList
+#    ] ;
+#    foreach decoratedDeclarationListForGeneration do
+#      if not mIsPredefined then
+#        implementationString .= [mDeclaration appendSpecificImplementation] ;
+#        implementationString .= [mDeclaration appendTypeGenericImplementation] ;
+#      end if ;
+#    end foreach ;
+#    [@string generateFileWithPattern
+#      !productDirectory
+#      !"AZERTYUIOP.cpp"
+#      !"//"
+#      !"\n\n" # Defaut user zone1
+#      !implementationString
+#      !"\n\n" # Defaut user zone2
+#      !"\n"
+#    ] ;
   end if ;
 end routine ;
 

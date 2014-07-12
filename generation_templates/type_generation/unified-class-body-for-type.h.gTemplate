@@ -271,7 +271,7 @@ end
 foreach READER_MAP do
   if mKind == [@methodKind definedAsMember] then
     if (mErrorMessage == "") & ((mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isBasic]) | (mQualifier == [@methodQualifier isBasicFinal])) then
-      %  public : VIRTUAL_IN_DEBUG GALGAS_% ![mReturnedType identifierRepresentation] % reader_% ![[lkey string] identifierRepresentation] % (%?^
+      %  public : VIRTUAL_IN_DEBUG class GALGAS_% ![mReturnedType identifierRepresentation] % reader_% ![[lkey string] identifierRepresentation] % (%?^
       foreach mArgumentTypeList
         do index IDX %const class GALGAS_%![mType identifierRepresentation]% & constinOperand% ![IDX string]
         between %,\n% !^
