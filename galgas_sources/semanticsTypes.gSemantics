@@ -287,6 +287,7 @@ map @attributeMap {
 #---------------------------------------------------------------------------*
 
 uniquemap @unifiedTypeMap {
+  @bool mIsPredefined ;
   @bool mIsConcrete ; # false if abstract class
   @unifiedTypeMapProxy mSuperType ;
   @typeKindEnum mTypeKindEnum ;
@@ -311,6 +312,9 @@ uniquemap @unifiedTypeMap {
   @unifiedTypeMapProxy mTypeForEnumeratedElement ;
   @string mDefaultConstructorName ; # Used in [@xxx default] (empty string if no default constructor)
   @string mHeaderFileName ; # Name of C++ header file that contains type declaration
+  @unifiedTypeMapProxyList mTypesToIncludeInHeaderFile ;
+  @unifiedTypeMapProxyList mTypesToIncludeInCppFile ;
+  @stringlist mSpecificHeadersForCppFile ;
 
   insert insertKey error message "the '@%K' type has been already declared in %L" ;
   search searchKey error message "the '@%K' type is not declared" ;

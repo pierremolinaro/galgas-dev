@@ -135,7 +135,7 @@ routine compileSyntaxComponentFromAST
       ?decoratedDeclarationListForGeneration
     ;
     decoratedDeclarationListForGeneration +=
-      !false
+#      !false
       !syntaxDeclarationForGeneration
       !""
     ;
@@ -148,10 +148,10 @@ routine compileSyntaxComponentFromAST
         ![semanticContext->mTypeMap allKeyList]
       ] ;
       foreach decoratedDeclarationListForGeneration do
-        headerString .= [mDeclaration appendDeclaration1] ;
+        headerString .= [mDeclaration appendDeclaration1 !false] ;
       end foreach ;
       foreach decoratedDeclarationListForGeneration do
-        headerString .= [mDeclaration appendDeclaration2 !inOutputDirectory] ;
+        headerString .= [mDeclaration appendDeclaration2 !inOutputDirectory !false] ;
       end foreach ;
       [@string generateFileWithPattern
         !inOutputDirectory
@@ -331,8 +331,8 @@ routine compileSyntaxComponentGalgas3
       var headerString := [filewrapper syntaxFileGenerationTemplate.syntaxFileHeaderGalgas3
         !componentName
       ] ;
-      headerString .= [syntaxDeclarationForGeneration appendDeclaration1] ;
-      headerString .= [syntaxDeclarationForGeneration appendDeclaration2 !inOutputDirectory] ;
+      headerString .= [syntaxDeclarationForGeneration appendDeclaration1 !true] ;
+      headerString .= [syntaxDeclarationForGeneration appendDeclaration2 !inOutputDirectory !true] ;
       [@string generateFileWithPattern
         !inOutputDirectory
         !"syntax-" . componentName . ".h"

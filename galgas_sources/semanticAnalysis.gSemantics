@@ -114,7 +114,7 @@ override method @predefinedTypeAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
   ioSemanticDeclarationListForGeneration +=
-    !mIsPredefined
+#    !mIsPredefined
     ![@primitiveTypeForGeneration new
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !mPredefinedTypeName !here]]
       !mPredefinedTypeName
@@ -171,7 +171,7 @@ override method @listDeclarationAST semanticAnalysis
   end foreach ;
 #---
   ioSemanticDeclarationListForGeneration +=
-    !mIsPredefined
+ #    !mIsPredefined
     ![@listTypeForGeneration new
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mListTypeName]
       !typedAttributeList
@@ -216,7 +216,7 @@ override method @sortedListDeclarationAST semanticAnalysis
   end foreach ;
 #--- Generate type
   ioSemanticDeclarationListForGeneration +=
-    !mIsPredefined
+ #    !mIsPredefined
     ![@sortedListTypeForGeneration new
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mSortedListTypeName]
       !typedAttributeList
@@ -271,7 +271,7 @@ override method @structDeclarationAST semanticAnalysis
     [!?attributeMap insertKey !mAttributeName !t] ;
   end foreach ;
   ioSemanticDeclarationListForGeneration +=
-    !mIsPredefined
+ #    !mIsPredefined
     ![@structTypeForGeneration new
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mStructTypeName]
       !typedAttributeList
@@ -304,7 +304,7 @@ override method @graphDeclarationAST semanticAnalysis
   end foreach ;
 #---
   ioSemanticDeclarationListForGeneration +=
-    !mIsPredefined
+ #    !mIsPredefined
     ![@graphDeclarationForGeneration new
       !graphTypeProxy
       !associatedListTypeProxy
@@ -324,7 +324,7 @@ override method @externTypeDeclarationAST semanticAnalysis
   const externTypeProxy := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mExternTypeName] ;
 #---
   ioSemanticDeclarationListForGeneration +=
-    !mIsPredefined
+ #    !mIsPredefined
     ![@externTypeDeclarationForGeneration new
       !externTypeProxy
       !mExternTypeName->string
@@ -359,7 +359,7 @@ override method @enumDeclarationAST semanticAnalysis
   end foreach ;
 #---
   ioSemanticDeclarationListForGeneration +=
-    !mIsPredefined
+ #    !mIsPredefined
     ![@enumTypeForGeneration new
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mEnumTypeName]
       !constantList
@@ -377,7 +377,7 @@ override method @arrayDeclarationAST semanticAnalysis
 :
 #---
   ioSemanticDeclarationListForGeneration +=
-    !mIsPredefined
+ #    !mIsPredefined
     ![@arrayTypeForGeneration new
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mArrayTypeName]
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mElementTypeName]
@@ -397,10 +397,10 @@ override method @listmapDeclarationAST semanticAnalysis
 #--- Check associated list is actually a list
   @typeKindEnum typeKindEnum ;
   @typedAttributeList listTypeAttributeList ;
-  [inSemanticContext->mTypeMap searchKey !mAssociatedListTypeName ?2* ?typeKindEnum ?listTypeAttributeList ?20*] ;
+  [inSemanticContext->mTypeMap searchKey !mAssociatedListTypeName ?3* ?typeKindEnum ?listTypeAttributeList ?23*] ;
 #---
   ioSemanticDeclarationListForGeneration +=
-   !mIsPredefined
+#    !mIsPredefined
    ![@listmapTypeForGeneration new
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mListmapTypeName]
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAssociatedListTypeName]
@@ -544,7 +544,7 @@ override method @mapDeclarationAST semanticAnalysis
   end foreach ;
 #--- Enter map declaration
   ioSemanticDeclarationListForGeneration +=
-    !mIsPredefined
+ #    !mIsPredefined
     ![@mapTypeForGeneration new
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mMapTypeName]
       !mMapTypeName
@@ -897,7 +897,7 @@ override method @uniqueMapDeclarationAST semanticAnalysis
   end foreach ;
 #--- Enter map declaration
   ioSemanticDeclarationListForGeneration +=
-    !mIsPredefined
+ #    !mIsPredefined
     ![@uniqueMapTypeForGeneration new
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mMapTypeName]
       !mMapTypeName
@@ -926,15 +926,15 @@ override method @mapProxyDeclarationAST semanticAnalysis
   @mapSearchMethodListAST searchMethodList ;
   [inSemanticContext->mTypeMap searchKey
     !mAssociatedMapTypeName
-    ?5*
+    ?6*
     ?listTypeAttributeList
     ?11*
     ?searchMethodList
-    ?6*
+    ?9*
   ] ;
 #---
   ioSemanticDeclarationListForGeneration +=
-    !mIsPredefined
+ #    !mIsPredefined
     ![@mapProxyTypeForGeneration new
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mMapProxyTypeName]
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAssociatedMapTypeName]
@@ -1071,8 +1071,9 @@ override method @externFunctionDeclarationAST semanticAnalysis
     ;
   end foreach ;
   ioSemanticDeclarationListForGeneration +=
-    !mIsPredefined
+ #    !mIsPredefined
     ![@functionPrototypeDeclarationForGeneration new
+      !true # Generate Cpp header file
       !"func-" . mFunctionName
       ![mFunctionName string]
       !formalArgumentList
@@ -1099,8 +1100,9 @@ override method @externRoutineDeclarationAST semanticAnalysis
     ;
   end foreach ;
   ioSemanticDeclarationListForGeneration +=
-    !mIsPredefined
+# #    !mIsPredefined
     ![@routinePrototypeDeclarationForGeneration new
+      !true # Generate Cpp header file
       !"proc-" . mRoutineName
       ![mRoutineName string]
       !formalArgumentList
@@ -1140,8 +1142,9 @@ override method @routineDeclarationAST semanticAnalysis
   ;
 #---
   ioSemanticDeclarationListForGeneration +=
-    !mIsPredefined
+#    !mIsPredefined
     ![@routineImplementationForGeneration new
+      !true # Generate Cpp header file
       !"proc-" . mRoutineName
       ![mRoutineName string]
       !formalArgumentList
@@ -1236,7 +1239,7 @@ override method @classDeclarationAST semanticAnalysis
   end loop ;
 #------
   ioSemanticDeclarationListForGeneration +=
-    !mIsPredefined
+#    !mIsPredefined
     ![@classTypeForGeneration new
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mClassTypeName]
       !mIsAbstract
@@ -1360,8 +1363,9 @@ override method @functionDeclarationAST semanticAnalysis
   ;
 #---
   ioSemanticDeclarationListForGeneration +=
-    !mIsPredefined
+#    !mIsPredefined
     ![@functionImplementationForGeneration new
+      !true # Generate Cpp header file
       !"func-" . mFunctionName
       ![mFunctionName string]
       !formalInputParameterList
@@ -1407,8 +1411,9 @@ override method @onceFunctionDeclarationAST semanticAnalysis
   ;
 #---
   ioSemanticDeclarationListForGeneration +=
-    !mIsPredefined
+#    !mIsPredefined
     ![@onceFunctionDeclarationForGeneration new
+      !true # Generate Cpp header file
       !"func-" . mFunctionName
       ![mFunctionName string]
       !returnType
@@ -1487,8 +1492,9 @@ override method @filewrapperDeclarationAST semanticAnalysis
     end foreach ;
   #---- Enter filewrapper in generated list
     ioSemanticDeclarationListForGeneration +=
-      !mIsPredefined
+  #    !mIsPredefined
       ![@filewrapperDeclarationForGeneration new
+        !true # Generate Cpp header file
         !"filewrapper-" . mFilewrapperName
         ![mFilewrapperName string]
         ![mFilewrapperPath string]
@@ -1528,8 +1534,9 @@ override method @abstractCategoryMethodAST semanticAnalysis
   end foreach ;
 #---
   ioSemanticDeclarationListForGeneration +=
-    !mIsPredefined
+#    !mIsPredefined
     ![@abstractCategoryMethodForGeneration new
+      !true # Generate Cpp header file
       !"method-" . mTypeName . mAbstractCategoryMethodName
       ![mTypeName string]
       ![mAbstractCategoryMethodName string]
@@ -1588,8 +1595,9 @@ override method @categoryMethodAST semanticAnalysis
   ;
 #---
   ioSemanticDeclarationListForGeneration +=
-    !mIsPredefined
+#    !mIsPredefined
     ![@categoryMethodForGeneration new
+      !true # Generate Cpp header file
       !"method-" . [selfType key] . "-" . mCategoryMethodName
       !selfType
       ![mCategoryMethodName string]
@@ -1670,9 +1678,10 @@ override method @overridingCategoryMethodAST semanticAnalysis
   end if ;
 #---
   ioSemanticDeclarationListForGeneration +=
-    !mIsPredefined
+#    !mIsPredefined
     ![@overridingCategoryMethodForGeneration new
-      !"" #"method-" . mTypeName . "-" . mOverridingCategoryMethodName
+      !false # Do not generate Cpp header file
+      !"method-" . mTypeName . "-" . mOverridingCategoryMethodName
       ![mTypeName string]
       !baseTypeName
       ![mOverridingCategoryMethodName string]
@@ -1765,8 +1774,9 @@ override method @abstractCategoryModifierAST semanticAnalysis
   end foreach ;
 #---
   ioSemanticDeclarationListForGeneration +=
-    !mIsPredefined
+#    !mIsPredefined
     ![@abstractCategoryModifierForGeneration new
+      !true # Generate Cpp header file
       !"setter-" . mTypeName . "-" . mAbstractCategoryModifierName
       ![mTypeName string]
       ![mAbstractCategoryModifierName string]
@@ -1822,8 +1832,9 @@ override method @categoryModifierAST semanticAnalysis
   ;
 #---
   ioSemanticDeclarationListForGeneration +=
-    !mIsPredefined
+#    !mIsPredefined
     ![@categoryModifierForGeneration new
+      !true # Generate Cpp header file
       !"setter-" . [selfType key] . "-" . mCategoryModifierName
       !selfType
       ![mCategoryModifierName string]
@@ -1901,9 +1912,10 @@ override method @overridingCategoryModifierAST semanticAnalysis
   end if ;
 #---
   ioSemanticDeclarationListForGeneration +=
-    !mIsPredefined
+#    !mIsPredefined
     ![@overridingCategoryModifierForGeneration new
-      !"" # "setter-" . mTypeName . "-" . mOverridingCategoryModifierName
+      !false # Do not generate Cpp header file
+      !"setter-" . mTypeName . "-" . mOverridingCategoryModifierName
       ![mTypeName string]
       !baseTypeName
       ![mOverridingCategoryModifierName string]
@@ -1996,8 +2008,9 @@ override method @abstractCategoryReaderAST semanticAnalysis
   end foreach ;
 #---
   ioSemanticDeclarationListForGeneration +=
-    !mIsPredefined
+##    !mIsPredefined
     ![@abstractCategoryReaderForGeneration new
+      !true # Generate Cpp header file
       !"getter-" . mTypeName . "-" . mAbstractCategoryReaderName
       ![mTypeName string]
       ![mAbstractCategoryReaderName string]
@@ -2063,8 +2076,9 @@ override method @categoryReaderAST semanticAnalysis
   ;
 #---
   ioSemanticDeclarationListForGeneration +=
-    !mIsPredefined
+#    !mIsPredefined
     ![@categoryReaderForGeneration new
+      !true # Generate Cpp header file
       !"getter-" . [selfType key] . "-" . mCategoryReaderName
       !selfType
       ![mCategoryReaderName string]
@@ -2159,9 +2173,10 @@ override method @overridingCategoryReaderAST semanticAnalysis
   end if ;
 #---
   ioSemanticDeclarationListForGeneration +=
-    !mIsPredefined
+#    !mIsPredefined
     ![@overrideCategoryReaderForGeneration new
-      !"" #"getter-" . mTypeName . "-" . mOverridingCategoryReaderName
+      !false # Do not generate Cpp header file
+      !"getter-" . mTypeName . "-" . mOverridingCategoryReaderName
       ![mTypeName string]
       !baseTypeName
       ![mOverridingCategoryReaderName string]

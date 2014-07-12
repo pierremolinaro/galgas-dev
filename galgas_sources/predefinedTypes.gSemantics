@@ -35,7 +35,7 @@ routine appendPredefinedListTypeAST
     !attributeFeatureList
   ;
   ioDeclarationListASTs += ![@listDeclarationAST new
-    !true # Is prefined
+    !true # Is predefined
     ![@lstring new !inElementTypeName . "list" !here]
     !attributeList
   ] ;
@@ -61,7 +61,7 @@ routine appendPredefined2StringListTypeAST
   ;
 
   ioDeclarationListASTs += ![@listDeclarationAST new
-    !true # Is prefined
+    !true # Is predefined
     ![@lstring new !"2stringlist" !here]
     !attributeList
   ] ;
@@ -363,11 +363,11 @@ routine generatePredefinedTypeFiles ??@string inDirectory :
         generatedCode .= [mDeclaration appendPrimitiveTypeDeclaration] ;
       end foreach ;
       foreach decoratedDeclarationListForGeneration do
-        generatedCode .= [mDeclaration appendDeclaration1] ;
+        generatedCode .= [mDeclaration appendDeclaration1 !false] ;
       end foreach ;
       generatedCode .= [filewrapper predefinedTypeGenerationTemplate.predefinedTypeSeparation] ;
       foreach decoratedDeclarationListForGeneration do
-        generatedCode .= [mDeclaration appendDeclaration2 !inDirectory] ;
+        generatedCode .= [mDeclaration appendDeclaration2 !inDirectory !false] ;
       end foreach ;
       if [@uint errorCount] == 0 then
         [@string generateFileWithPattern

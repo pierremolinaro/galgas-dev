@@ -76,8 +76,8 @@ routine compileBeforeClause
   end for ;
 #---
   ioDecoratedDeclarationListForGeneration +=
-    !false # Is not predefined
     ![@routineImplementationForGeneration new
+      !false # Has no header
       !"proc-before"
       !"before"
       ![@formalParameterListForGeneration emptyList]
@@ -130,8 +130,8 @@ routine compileProgramRules
       ?routineSignature
     ;
     ioDecoratedDeclarationListForGeneration +=
-      !false # Is not predefined
       ![@routineImplementationForGeneration new
+        !false # Has no header
         !"proc-programrule"
         !"programRule_" . [ruleIndex string]
         !routineSignature
@@ -175,8 +175,8 @@ routine compileAfterClause
   end for ;
 #---
   ioDecoratedDeclarationListForGeneration +=
-    !false # Is not predefined
     ![@routineImplementationForGeneration new
+      !false # Has no header
       !"proc-after"
       !"after"
       ![@formalParameterListForGeneration emptyList]
@@ -297,10 +297,10 @@ routine compileProgramComponentFromAST
       ![semanticContext->mTypeMap allKeyList]
     ] ;
     foreach decoratedDeclarationListForGeneration do
-      headerString .= [mDeclaration appendDeclaration1] ;
+      headerString .= [mDeclaration appendDeclaration1 !false] ;
     end foreach ;
     foreach decoratedDeclarationListForGeneration do
-      headerString .= [mDeclaration appendDeclaration2 !inOutputDirectory] ;
+      headerString .= [mDeclaration appendDeclaration2 !inOutputDirectory !false] ;
     end foreach ;
     [@string generateFileWithPattern
       !inOutputDirectory
@@ -416,10 +416,10 @@ routine compileProgramComponentGalgas3
       ![inSemanticContext->mTypeMap allKeyList]
     ] ;
     foreach decoratedDeclarationListForGeneration do
-      headerString .= [mDeclaration appendDeclaration1] ;
+      headerString .= [mDeclaration appendDeclaration1 !true] ;
     end foreach ;
     foreach decoratedDeclarationListForGeneration do
-      headerString .= [mDeclaration appendDeclaration2 !inOutputDirectory] ;
+      headerString .= [mDeclaration appendDeclaration2 !inOutputDirectory !true] ;
     end foreach ;
     [@string generateFileWithPattern
       !inOutputDirectory

@@ -482,12 +482,27 @@ abstract class @semanticDeclarationForGeneration {
 
 #---------------------------------------------------------------------------*
 
-abstract reader @semanticDeclarationForGeneration headerFileName -> @string outName ;
+abstract reader @semanticDeclarationForGeneration implementationCppFileName -> @string outName ;
+
+#---------------------------------------------------------------------------*
+
+abstract reader @semanticDeclarationForGeneration hasCppHeaderFile -> @bool outHasHeader ;
+
+#---------------------------------------------------------------------------*
+
+abstract reader @semanticDeclarationForGeneration isPredefined -> @bool outResult ;
+
+#---------------------------------------------------------------------------*
+
+abstract method @semanticDeclarationForGeneration addInclusionForCPPFile ?!@stringlist ioInclusionList ;
+
+#---------------------------------------------------------------------------*
+
+abstract method @semanticDeclarationForGeneration addHeaderInclusions ?!@string ioHeaderString ;
 
 #---------------------------------------------------------------------------*
 
 sortedlist @semanticDeclarationSortedListForGeneration {
-  @bool mIsPredefined ;
   @semanticDeclarationForGeneration mDeclaration ;
   @string mSortKey ;
 }{
@@ -506,10 +521,50 @@ abstract class @semanticTypeForGeneration extends @semanticDeclarationForGenerat
 
 #---------------------------------------------------------------------------*
 
-override reader @semanticTypeForGeneration headerFileName -> @string outName
+override reader @semanticTypeForGeneration implementationCppFileName -> @string outName
 :
   outName := [mTypeProxy mHeaderFileName] ;
 end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @semanticTypeForGeneration hasCppHeaderFile -> @bool outHasHeader
+:
+  outHasHeader := true ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @semanticTypeForGeneration isPredefined -> @bool outResult :
+  outResult := [mTypeProxy mIsPredefined] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override method @semanticTypeForGeneration addInclusionForCPPFile
+  ?!@stringlist ioInclusionList
+:
+  for (t) in [mTypeProxy mTypesToIncludeInCppFile] do
+    if ([t mHeaderFileName] != "") & not [t mIsPredefined] then
+      ioInclusionList += ![t mHeaderFileName] ;
+    end if ;
+  end for ;
+  for (s) in [mTypeProxy mSpecificHeadersForCppFile] do
+    ioInclusionList += !s ;
+  end for ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @semanticTypeForGeneration addHeaderInclusions
+  ?!@string ioHeaderString
+:
+  for (t) in [mTypeProxy mTypesToIncludeInHeaderFile] do
+    if not [t mIsPredefined] then
+      ioHeaderString .= "#include \"" . [t mHeaderFileName]  . ".h\" // addHeaderInclusions\n" ;
+    end if ;
+  end for ;
+end method ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -518,14 +573,42 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 abstract class @semanticDeclarationWithHeaderForGeneration extends @semanticDeclarationForGeneration {
-  @string mHeaderFileName ; # C++ header file that contains declaration
+  @bool mhasHeader ;
+  @string mImplementationCppFileName ;
 }
 
 #---------------------------------------------------------------------------*
 
-override reader @semanticDeclarationWithHeaderForGeneration headerFileName -> @string outName
+override reader @semanticDeclarationWithHeaderForGeneration implementationCppFileName -> @string outName
 :
-  outName := mHeaderFileName ;
+  outName := mImplementationCppFileName ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @semanticDeclarationWithHeaderForGeneration hasCppHeaderFile -> @bool outHasHeader
+:
+  outHasHeader := mhasHeader ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override method @semanticDeclarationWithHeaderForGeneration addInclusionForCPPFile
+  ?!@stringlist unused ioInclusionList
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @semanticDeclarationWithHeaderForGeneration addHeaderInclusions
+  ?!@string unused ioHeaderString
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override reader @semanticDeclarationWithHeaderForGeneration isPredefined -> @bool outResult :
+  outResult := false ;
 end reader ;
 
 #---------------------------------------------------------------------------*

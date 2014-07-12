@@ -73,9 +73,36 @@ class @syntaxDeclarationForGeneration extends @semanticDeclarationForGeneration 
 
 #---------------------------------------------------------------------------*
 
-override reader @syntaxDeclarationForGeneration headerFileName -> @string outName
+override reader @syntaxDeclarationForGeneration implementationCppFileName -> @string outName
 :
   outName := "" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @syntaxDeclarationForGeneration hasCppHeaderFile -> @bool outHasHeader
+:
+  outHasHeader := false ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override method @syntaxDeclarationForGeneration addInclusionForCPPFile
+  ?!@stringlist unused ioInclusionList
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @syntaxDeclarationForGeneration addHeaderInclusions
+  ?!@string unused ioHeaderString
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override reader @syntaxDeclarationForGeneration isPredefined -> @bool outResult :
+  outResult := false ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -121,7 +148,9 @@ filewrapper syntaxFileGenerationTemplate in "../generation_templates/syntax_gene
 
 #---------------------------------------------------------------------------*
 
-override reader @syntaxDeclarationForGeneration appendDeclaration1 -> @string outHeader
+override reader @syntaxDeclarationForGeneration appendDeclaration1
+  ??@bool unused inCompileForGalgas3
+  -> @string outHeader
 :
   @uintlist selectMethodList [emptyList] ;
   @uint idx := 0 ;

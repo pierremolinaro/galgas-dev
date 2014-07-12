@@ -4,7 +4,7 @@
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
-//  Copyright (C) 2008, ..., 2013 Pierre Molinaro.                             *
+//  Copyright (C) 2008, ..., 2014 Pierre Molinaro.                             *
 //                                                                             *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                               *
 //                                                                             *
@@ -30,6 +30,7 @@
 
 #include "galgas2/AC_GALGAS_root.h"
 #include "galgas2/typeComparisonResult.h"
+#include "collections/TC_UniqueArray.h"
 
 //-----------------------------------------------------------------------------*
 
