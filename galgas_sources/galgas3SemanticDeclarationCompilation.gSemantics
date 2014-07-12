@@ -109,47 +109,95 @@ routine compileSemanticDeclarationsGalgas3
 #------ Generate Header Files
   if [@uint errorCount] == 0 then
   #--- Header files
+    var headerInclusionList1 := [@stringlist emptyList] ;
+    var headerInclusionList2 := [@stringlist emptyList] ;
     foreach decoratedDeclarationListForGeneration do
       if not mIsPredefined then
-        var headerString := "#ifndef " . [[mDeclaration headerFileName] identifierRepresentation] . "_DEFINED\n" ;
-        headerString .= "#define " . [[mDeclaration headerFileName] identifierRepresentation] . "_DEFINED\n\n" ;
-        headerString .= [mDeclaration appendDeclaration1] ;
-        headerString .= [mDeclaration appendDeclaration2 !productDirectory] ;
-        headerString .= "#endif\n\n" ;
-        headerString .= "//-----------------------------------------------------------------------------*\n\n" ;
-        [@string generateFileWithPattern
-          !productDirectory
-          ![mDeclaration headerFileName] . ".h"
-          !"//"
-          !"\n\n" # Defaut user zone1
-          !headerString
-          !"\n\n" # Defaut user zone2
-          !"\n"
-        ] ;
+        const headerString1 := [mDeclaration appendDeclaration1] ;
+        const headerString2 := [mDeclaration appendDeclaration2 !productDirectory] ;
+        if (headerString1 != "") & (headerString2 == "") then
+          if [mDeclaration headerFileName] == "" then
+            log mDeclaration ;
+          end if ;
+          var headerString := "#ifndef " . [[mDeclaration headerFileName] identifierRepresentation] . "_DEFINED\n" ;
+          headerString .= "#define " . [[mDeclaration headerFileName] identifierRepresentation] . "_DEFINED\n\n" ;
+          headerString .= headerString1 ;
+          headerString .= "#endif\n\n" ;
+          headerString .= "//-----------------------------------------------------------------------------*\n\n" ;
+          [@string generateFileWithPattern
+            !productDirectory
+            ![mDeclaration headerFileName] . ".h"
+            !"//"
+            !"\n\n" # Defaut user zone1
+            !headerString
+            !"\n\n" # Defaut user zone2
+            !"\n"
+          ] ;
+          headerInclusionList1 += ![mDeclaration headerFileName] ;
+       elsif (headerString1 == "") & (headerString2 != "") then
+          if [mDeclaration headerFileName] == "" then
+            log mDeclaration ;
+          end if ;
+          var headerString := "#ifndef " . [[mDeclaration headerFileName] identifierRepresentation] . "_DEFINED\n" ;
+          headerString .= "#define " . [[mDeclaration headerFileName] identifierRepresentation] . "_DEFINED\n\n" ;
+          headerString .= headerString2 ;
+          headerString .= "#endif\n\n" ;
+          headerString .= "//-----------------------------------------------------------------------------*\n\n" ;
+          [@string generateFileWithPattern
+            !productDirectory
+            ![mDeclaration headerFileName] . ".h"
+            !"//"
+            !"\n\n" # Defaut user zone1
+            !headerString
+            !"\n\n" # Defaut user zone2
+            !"\n"
+          ] ;
+          headerInclusionList2 += ![mDeclaration headerFileName] ;
+       elsif (headerString1 != "") & (headerString2 != "") then
+          if [mDeclaration headerFileName] == "" then
+            log mDeclaration ;
+          end if ;
+          var headerString := "#ifndef " . [[mDeclaration headerFileName] identifierRepresentation] . "_1_DEFINED\n" ;
+          headerString .= "#define " . [[mDeclaration headerFileName] identifierRepresentation] . "_1_DEFINED\n\n" ;
+          headerString .= headerString1 ;
+          headerString .= "#endif\n\n" ;
+          headerString .= "//-----------------------------------------------------------------------------*\n\n" ;
+          [@string generateFileWithPattern
+            !productDirectory
+            ![mDeclaration headerFileName] . "-1.h"
+            !"//"
+            !"\n\n" # Defaut user zone1
+            !headerString
+            !"\n\n" # Defaut user zone2
+            !"\n"
+          ] ;
+          headerString := "#ifndef " . [[mDeclaration headerFileName] identifierRepresentation] . "_DEFINED\n" ;
+          headerString .= "#define " . [[mDeclaration headerFileName] identifierRepresentation] . "_DEFINED\n\n" ;
+          headerString .= headerString2 ;
+          headerString .= "#endif\n\n" ;
+          headerString .= "//-----------------------------------------------------------------------------*\n\n" ;
+          [@string generateFileWithPattern
+            !productDirectory
+            ![mDeclaration headerFileName] . ".h"
+            !"//"
+            !"\n\n" # Defaut user zone1
+            !headerString
+            !"\n\n" # Defaut user zone2
+            !"\n"
+          ] ;
+          headerInclusionList1 += ![mDeclaration headerFileName] . "-1" ;
+          headerInclusionList2 += ![mDeclaration headerFileName] ;
+        elsif [mDeclaration headerFileName] != "" then
+          warning ["" nowhere] : "Header file name provided without any code for '" . [mDeclaration headerFileName] . "'" ;
+        end if ;
       end if ;
     end foreach ;
   #--- AZERTYUIOP
-    var headerInclusionList := [@stringlist emptyList] ;
-#    foreach decoratedDeclarationListForGeneration do
-#      if not mIsPredefined then
-#        headerInclusionList += ![mDeclaration headerFileName] ;
-#      end if ;
-#    end foreach ;
     var headerString := [filewrapper semanticFileGenerationTemplate.semanticFileHeader
       !"AZERTYUIOP"
-      !headerInclusionList
+      !headerInclusionList1 + headerInclusionList2
       ![@stringlist emptyList]
     ] ;
-    foreach decoratedDeclarationListForGeneration do
-      if not mIsPredefined then
-        headerString .= [mDeclaration appendDeclaration1] ;
-      end if ;
-    end foreach ;
-    foreach decoratedDeclarationListForGeneration do
-      if not mIsPredefined then
-        headerString .= [mDeclaration appendDeclaration2 !productDirectory] ;
-      end if ;
-    end foreach ;
     [@string generateFileWithPattern
       !productDirectory
       !"AZERTYUIOP.h"

@@ -1409,7 +1409,7 @@ override method @onceFunctionDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !mIsPredefined
     ![@onceFunctionDeclarationForGeneration new
-      !"once-" . mFunctionName
+      !"func-" . mFunctionName
       ![mFunctionName string]
       !returnType
       !resultVariableCppName
@@ -1648,7 +1648,6 @@ override method @overridingCategoryMethodAST semanticAnalysis
     !analysisContext
     !mOverridingCategoryMethodFormalParameterList
     ![@localConstantList emptyList]
-#    ![selfType mAllTypedAttributeList]
     !if ([selfType mTypeKindEnum] == [@typeKindEnum classType]) | ([selfType mTypeKindEnum] == [@typeKindEnum structType])
        then [selfType mAllTypedAttributeList]
        else [@typedAttributeList emptyList]
@@ -1673,7 +1672,7 @@ override method @overridingCategoryMethodAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !mIsPredefined
     ![@overridingCategoryMethodForGeneration new
-      !"method-" . mTypeName . "-" . mOverridingCategoryMethodName
+      !"" #"method-" . mTypeName . "-" . mOverridingCategoryMethodName
       ![mTypeName string]
       !baseTypeName
       ![mOverridingCategoryMethodName string]
@@ -1904,7 +1903,7 @@ override method @overridingCategoryModifierAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !mIsPredefined
     ![@overridingCategoryModifierForGeneration new
-      !"setter-" . mTypeName . "-" . mOverridingCategoryModifierName
+      !"" # "setter-" . mTypeName . "-" . mOverridingCategoryModifierName
       ![mTypeName string]
       !baseTypeName
       ![mOverridingCategoryModifierName string]
@@ -2048,7 +2047,6 @@ override method @categoryReaderAST semanticAnalysis
   analyzeFunctionBody
     !analysisContext
     !mCategoryReaderFormalInputParameterList
-#    ![selfType mAllTypedAttributeList]
     !if ([selfType mTypeKindEnum] == [@typeKindEnum classType]) | ([selfType mTypeKindEnum] == [@typeKindEnum structType])
        then [selfType mAllTypedAttributeList]
        else [@typedAttributeList emptyList]
@@ -2163,7 +2161,7 @@ override method @overridingCategoryReaderAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !mIsPredefined
     ![@overrideCategoryReaderForGeneration new
-      !"getter-" . mTypeName . "-" . mOverridingCategoryReaderName
+      !"" #"getter-" . mTypeName . "-" . mOverridingCategoryReaderName
       ![mTypeName string]
       !baseTypeName
       ![mOverridingCategoryReaderName string]
