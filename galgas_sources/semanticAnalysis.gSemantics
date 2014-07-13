@@ -1537,7 +1537,7 @@ override method @abstractCategoryMethodAST semanticAnalysis
 #    !mIsPredefined
     ![@abstractCategoryMethodForGeneration new
       !true # Generate Cpp header file
-      !"method-" . mTypeName . mAbstractCategoryMethodName
+      !"method-" . [selfType key] . "-" . mAbstractCategoryMethodName
       ![mTypeName string]
       ![mAbstractCategoryMethodName string]
       !formalParameterListForGeneration
@@ -1681,7 +1681,7 @@ override method @overridingCategoryMethodAST semanticAnalysis
 #    !mIsPredefined
     ![@overridingCategoryMethodForGeneration new
       !false # Do not generate Cpp header file
-      !"method-" . mTypeName . "-" . mOverridingCategoryMethodName
+      !"method-" . [selfType key] . "-" . mOverridingCategoryMethodName
       ![mTypeName string]
       !baseTypeName
       ![mOverridingCategoryMethodName string]

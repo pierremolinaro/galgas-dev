@@ -40,7 +40,6 @@ function generateProcedure
   ??@bool inGenerateSyntaxDirectedTranslationString
   ->@string outGeneratedCode
 :
-  const @bool generateCheckValid := false ; # [option galgas_cli_options.generateCheckValidInstructions value] ;
 #--- Build unused variable set
   @stringset unusedVariableCppNameSet [emptySet] ;
   if inGenerateSyntaxDirectedTranslationString then
@@ -58,9 +57,10 @@ function generateProcedure
   var temporaryVariableIndex := 0 ;
   var routineBody := "" ;
   [!?routineBody incIndentation !2] ;
+  var inclusionSet := [@stringset emptySet] ;
   foreach inInstructionList do
     [mInstruction generateInstruction
-      !generateCheckValid
+      !?inclusionSet
       !?temporaryVariableIndex
       !?unusedVariableCppNameSet
       !inGenerateSyntaxDirectedTranslationString
@@ -68,8 +68,22 @@ function generateProcedure
     ] ;
   end foreach ;
   [!?routineBody decIndentation !2] ;
+#--- Generate inclusions
+  outGeneratedCode := "" ;
+  if inGenerateForGalgas3 then
+    foreach inFormalArgumentList do
+      switch mFormalArgumentPassingMode 
+      when argumentOut :
+        [mFormalArgumentType addHeaderFileName !?inclusionSet] ;
+      when argumentConstantIn, argumentIn, argumentInOut :
+      end switch ;
+    end foreach ;
+    for (s) in inclusionSet do
+      outGeneratedCode .= "#include \"" . s . ".h\"\n" ;    
+    end for ;
+  end if ;
 #--- Generate header
-  outGeneratedCode := "void " . inProcedureName . " (" ;
+  outGeneratedCode .= "void " . inProcedureName . " (" ;
   const @uint colRef := [outGeneratedCode currentColumn] ;
 #---
   foreach inFormalArgumentList do
@@ -142,7 +156,9 @@ end function ;
 #---------------------------------------------------------------------------*
 
 function generateFunction
-  ??@string inProcedureName
+  ??@string inFunctionCppRepresentationName
+  ??@string inFunctionInclusionFile
+  ??@bool inGenerateForGalgas3
   ??@formalInputParameterListForGeneration inFormalArgumentList
   ??@semanticInstructionListForGeneration inInstructionList
   ??@string inCompilerTypeName
@@ -151,7 +167,6 @@ function generateFunction
   ??@bool inIsStatic
   ->@string outGeneratedCode
 :
-  const @bool generateCheckValid := false ; # [option galgas_cli_options.generateCheckValidInstructions value] ;
   outGeneratedCode := "" ;
 #--- Build unused variable set
   @stringset unusedVariableCppNameSet [emptySet] ;
@@ -164,21 +179,29 @@ function generateFunction
   @uint temporaryVariableIndex := 0 ;
   @string routineBody := "" ;
   [!?routineBody incIndentation !2] ;
+  var inclusionSet := [@stringset emptySet] ;
   foreach inInstructionList do
     [mInstruction generateInstruction
-      !generateCheckValid
+      !?inclusionSet
       !?temporaryVariableIndex
       !?unusedVariableCppNameSet
       !false # inGenerateSyntaxDirectedTranslationString
       !?routineBody] ;
   end foreach ;
   [!?routineBody decIndentation !2] ;
+#--- Generation inclusions
+  if inGenerateForGalgas3 then
+    outGeneratedCode .= "#include \"" . inFunctionInclusionFile . ".h\"\n" ;
+    for (s) in inclusionSet do
+      outGeneratedCode .= "#include \"" . s . ".h\"\n" ;
+    end for ;
+  end if ;
 #--- Generate header
   if inIsStatic then
     outGeneratedCode .= "static " ;
   end if ;
   outGeneratedCode .= "GALGAS_" . [inResultTypeName identifierRepresentation] . " " ;
-  outGeneratedCode .= inProcedureName . " (" ;
+  outGeneratedCode .= inFunctionCppRepresentationName . " (" ;
   const @uint colRef := [outGeneratedCode currentColumn] ;
 #---
   foreach inFormalArgumentList do
@@ -232,7 +255,6 @@ function generateCategoryModifier
   ??@semanticInstructionListForGeneration inInstructionList
   ->@string outGeneratedCode
 :
-  const @bool generateCheckValid := false ; #  [option galgas_cli_options.generateCheckValidInstructions value] ;
 #--- Build unused variable set
   @stringset unusedVariableCppNameSet [emptySet] ;
   unusedVariableCppNameSet += !compilerCppName [] ;
@@ -241,12 +263,13 @@ function generateCategoryModifier
     unusedVariableCppNameSet += !mFormalArgumentCppName ;
   end foreach ;
 #--- Generate body
-  @uint temporaryVariableIndex := 0 ;
-  @string routineBody := "" ;
+  var temporaryVariableIndex := 0 ;
+  var routineBody := "" ;
+  var inclusionSet := [@stringset emptySet] ;
   [!?routineBody incIndentation !2] ;
   foreach inInstructionList do
     [mInstruction generateInstruction
-      !generateCheckValid
+      !?inclusionSet
       !?temporaryVariableIndex
       !?unusedVariableCppNameSet
       !false # inGenerateSyntaxDirectedTranslationString
@@ -329,7 +352,6 @@ function generateCategoryMethod
   ??@semanticInstructionListForGeneration inInstructionList
   ->@string outGeneratedCode
 :
-  const @bool generateCheckValid := false ; #  [option galgas_cli_options.generateCheckValidInstructions value] ;
 #--- Build unused variable set
   @stringset unusedVariableCppNameSet [emptySet] ;
   unusedVariableCppNameSet += !compilerCppName [] ;
@@ -341,9 +363,10 @@ function generateCategoryMethod
   @uint temporaryVariableIndex := 0 ;
   @string routineBody := "" ;
   [!?routineBody incIndentation !2] ;
+  var inclusionSet := [@stringset emptySet] ;
   foreach inInstructionList do
     [mInstruction generateInstruction
-      !generateCheckValid
+      !?inclusionSet
       !?temporaryVariableIndex
       !?unusedVariableCppNameSet
       !false # inGenerateSyntaxDirectedTranslationString
@@ -429,7 +452,6 @@ function generateCategoryReader
   ??@string inResultVariableCppName
   ->@string outGeneratedCode
 :
-  const @bool generateCheckValid := false ; #  [option galgas_cli_options.generateCheckValidInstructions value] ;
   outGeneratedCode := "" ;
 #--- Build unused variable set
   @stringset unusedVariableCppNameSet [emptySet] ;
@@ -441,10 +463,11 @@ function generateCategoryReader
 #--- Generate body
   @uint temporaryVariableIndex := 0 ;
   @string routineBody := "" ;
+  var inclusionSet := [@stringset emptySet] ;
   [!?routineBody incIndentation !2] ;
   foreach inInstructionList do
     [mInstruction generateInstruction
-      !generateCheckValid
+      !?inclusionSet
       !?temporaryVariableIndex
       !?unusedVariableCppNameSet
       !false # inGenerateSyntaxDirectedTranslationString
@@ -562,7 +585,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
     ?@bool HAS_DEFAULT_CONSTRUCTOR
-    ?@stringlist INCLUSION_LIST
+    ?@stringset INCLUSION_SET
   ;
 
   template structTypeSpecificImplementation "GALGAS_struct.cpp.gTemplate"
@@ -614,7 +637,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
   template listmapTypeHeader1 "GALGAS_listmap.h1.gTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
-    ?@stringlist INCLUSION_LIST
+    ?@stringset INCLUSION_SET
   ;
 
   template listmapTypeSpecificImplementation "GALGAS_listmap.cpp.gTemplate"
@@ -682,14 +705,14 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
     ?@mapSearchMethodListAST SEARCH_METHOD_LIST
-    ?@stringlist INCLUSION_LIST
+    ?@stringset INCLUSION_SET
   ;
 
   template mapTypeHeader2 "GALGAS_map.h2.gTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
-    ?@stringlist INCLUSION_LIST
+    ?@stringset INCLUSION_SET
   ;
 
   template mapTypeSpecificImplementation "GALGAS_map.cpp.gTemplate"
@@ -708,7 +731,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
     ?@mapSearchMethodListAST SEARCH_METHOD_LIST
-    ?@stringlist INCLUSION_LIST
+    ?@stringset INCLUSION_SET
   ;
 
   template uniqueMapTypeHeader2 "GALGAS_uniqueMap.h2.gTemplate"
@@ -747,7 +770,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@typedAttributeList CURRENT_ATTRIBUTE_LIST
     ?@typedAttributeList ALL_ATTRIBUTE_LIST
     ?@bool IS_ABSTRACT
-    ?@stringlist INCLUSION_LIST
+    ?@stringset INCLUSION_SET
   ;
 
   template classTypeHeader2part2 "GALGAS_class.h2-part2.gTemplate"
@@ -981,6 +1004,7 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
     ?@stringset UNUSED_VAR_SET
     ?@bool USES_COLUMN_MARKER
     ?@string GENERATED_INSTRUCTION_STRING
+    ?@stringset INCLUSION_SET
   ;
 }
 
@@ -1072,13 +1096,11 @@ override reader @mapTypeForGeneration appendDeclaration1
   ??@bool inGenerateForGalgas3
   -> @string outHeader
 :
-  var inclusionList := [@stringlist emptyList] ;
+  var inclusionSet := [@stringset emptySet] ;
   if inGenerateForGalgas3 then
-    inclusionList += !"galgas2/AC_GALGAS_map" ;
+    inclusionSet += !"galgas2/AC_GALGAS_map" ;
     for (t ...) in mTypedAttributeList do
-      if not [t mIsPredefined] then
-        inclusionList += ![t mHeaderFileName] . "-1" ;      
-      end if ;
+      [t addHeaderFileName1 !?inclusionSet] ;
     end for ;
   end if ;
   outHeader := [filewrapper typeGenerationTemplate.mapTypeHeader1
@@ -1086,7 +1108,7 @@ override reader @mapTypeForGeneration appendDeclaration1
     ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
     !mSearchMethodList
-    !inclusionList
+    !inclusionSet
   ] ;
   outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     ![mTypeProxy key]
@@ -1140,13 +1162,11 @@ override reader @uniqueMapTypeForGeneration appendDeclaration1
   ??@bool inGenerateForGalgas3
   -> @string outHeader
 :
-  var inclusionList := [@stringlist emptyList] ;
+  var inclusionSet := [@stringset emptySet] ;
   if inGenerateForGalgas3 then
-    inclusionList += !"galgas2/AC_GALGAS_uniqueMap" ;
+    inclusionSet += !"galgas2/AC_GALGAS_uniqueMap" ;
     for (t ...) in mTypedAttributeList do
-      if not [t mIsPredefined] then
-        inclusionList += ![t mHeaderFileName] . "-1" ;      
-      end if ;
+      [t addHeaderFileName1 !?inclusionSet] ;
     end for ;
   end if ;
   outHeader := [filewrapper typeGenerationTemplate.uniqueMapTypeHeader1
@@ -1154,7 +1174,7 @@ override reader @uniqueMapTypeForGeneration appendDeclaration1
     ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
     !mSearchMethodList
-    !inclusionList
+    !inclusionSet
   ] ;
   outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     ![mTypeProxy key]
@@ -1179,12 +1199,10 @@ override reader @structTypeForGeneration appendDeclaration1
   ??@bool inGenerateForGalgas3
   -> @string outHeader
 :
-  var inclusionList := [@stringlist emptyList] ;
+  var inclusionSet := [@stringset emptySet] ;
   if inGenerateForGalgas3 then
     for (t ...) in mTypedAttributeList do
-      if not [t mIsPredefined] then
-        inclusionList += ![t mHeaderFileName] . "-1" ;      
-      end if ;
+      [t addHeaderFileName1 !?inclusionSet] ;
     end for ;
   end if ;
   outHeader := [filewrapper typeGenerationTemplate.structTypeHeader1
@@ -1192,7 +1210,7 @@ override reader @structTypeForGeneration appendDeclaration1
     ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
     ![mTypeProxy mDefaultConstructorName] != ""
-    !inclusionList
+    !inclusionSet
   ] ;
   outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     ![mTypeProxy key]
@@ -1301,19 +1319,17 @@ override reader @listmapTypeForGeneration appendDeclaration1
   ??@bool inGenerateForGalgas3
   -> @string outHeader
 :
-  var inclusionList := [@stringlist emptyList] ;
+  var inclusionSet := [@stringset emptySet] ;
   if inGenerateForGalgas3 then
-    inclusionList += !"galgas2/AC_GALGAS_map" ;
+    inclusionSet += !"galgas2/AC_GALGAS_map" ;
     for (t ...) in mAssociatedListTypedAttributeList do
-      if not [t mIsPredefined] then
-        inclusionList += ![t mHeaderFileName] . "-1" ;      
-      end if ;
+      [t addHeaderFileName1 !?inclusionSet] ;
     end for ;
   end if ;
   outHeader := [filewrapper typeGenerationTemplate.listmapTypeHeader1
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
-    !inclusionList
+    !inclusionSet
   ] ;
   outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     ![mTypeProxy key]
@@ -1584,19 +1600,17 @@ override reader @mapTypeForGeneration appendDeclaration2
   ??@string unused inOutputDirectory
   ??@bool inGenerateForGalgas3
  ->@string outHeader :
-  var inclusionList := [@stringlist emptyList] ;
+  var inclusionSet := [@stringset emptySet] ;
   if inGenerateForGalgas3 then
     for (t ...) in mTypedAttributeList do
-      if not [t mIsPredefined] then
-        inclusionList += ![t mHeaderFileName] . "-1" ;      
-      end if ;
+      [t addHeaderFileName1 !?inclusionSet] ;
     end for ;
   end if ;
   outHeader := [filewrapper typeGenerationTemplate.mapTypeHeader2
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
-    !inclusionList
+    !inclusionSet
   ] ;
  end reader ;
 
@@ -1619,12 +1633,10 @@ override reader @classTypeForGeneration appendDeclaration2
   ??@string inOutputDirectory
   ??@bool inGenerateForGalgas3
  ->@string outHeader :
-  var inclusionList := [@stringlist emptyList] ;
+  var inclusionSet := [@stringset emptySet] ;
   if inGenerateForGalgas3 then
     for (t ...) in mTypedAttributeList do
-      if not [t mIsPredefined] then
-        inclusionList += ![t mHeaderFileName] ;      
-      end if ;
+      [t addHeaderFileName !?inclusionSet] ;
     end for ;
   end if ;
   if mGenerateHeaderInSeparateFile then
@@ -1635,7 +1647,7 @@ override reader @classTypeForGeneration appendDeclaration2
       !mTypedAttributeList
       !mAllTypedAttributeList
       !mIsAbstract
-      !inclusionList
+      !inclusionSet
     ] ;
     const @string part2 := [filewrapper typeGenerationTemplate.classTypeHeader2part2
       ![mTypeProxy key]
@@ -1664,7 +1676,7 @@ override reader @classTypeForGeneration appendDeclaration2
       !mTypedAttributeList
       !mAllTypedAttributeList
       !mIsAbstract
-      !inclusionList
+      !inclusionSet
     ] ;
     outHeader .= [filewrapper typeGenerationTemplate.classTypeHeader2part2
       ![mTypeProxy key]
@@ -1913,13 +1925,15 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @functionImplementationForGeneration appendSpecificImplementation
-  ??@bool unused inGenerateForGalgas3
+  ??@bool inGenerateForGalgas3
   ->@string outImplementation
 :
   outImplementation := [filewrapper semanticComponentGenerationTemplate.functionImplementation
     !mFunctionName
     !generateFunction [
       !"function_" . [mFunctionName identifierRepresentation]
+      !"func-" . mFunctionName
+      !inGenerateForGalgas3
       !mFormalArgumentList
       !mFunctionInstructionList
       !"C_Compiler"
@@ -1935,13 +1949,15 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @onceFunctionDeclarationForGeneration appendSpecificImplementation
-  ??@bool unused inGenerateForGalgas3
+  ??@bool inGenerateForGalgas3
   ->@string outImplementation
 :
   outImplementation := [filewrapper semanticComponentGenerationTemplate.onceFunctionImplementation
     !mFunctionName
     !generateFunction [
       !"onceFunction_" . [mFunctionName identifierRepresentation]
+      !"func-" . mFunctionName
+      !inGenerateForGalgas3
       ![@formalInputParameterListForGeneration emptyList]
       !mFunctionInstructionList
       !"C_Compiler"
@@ -2131,7 +2147,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @categoryReaderForGeneration appendSpecificImplementation
-  ??@bool unused inGenerateForGalgas3
+  ??@bool inGenerateForGalgas3
   ->@string outImplementation
 :
   if mImplementedAsFunction then
@@ -2148,6 +2164,8 @@ override reader @categoryReaderForGeneration appendSpecificImplementation
       !mCategoryReaderName
       !generateFunction [
         !"categoryReader_" . [mCategoryReaderName identifierRepresentation]
+        !mCategoryReaderName
+        !inGenerateForGalgas3
         !categoryReaderFormalParameterList
         !mSemanticInstructionListForGeneration
         !"C_Compiler"
@@ -2291,7 +2309,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 override reader @filewrapperDeclarationForGeneration appendSpecificImplementation
-  ??@bool unused inGenerateForGalgas3
+  ??@bool inGenerateForGalgas3
   ->@string outImplementation
 :
   @string filewrapperImplementation := "" ;
@@ -2308,6 +2326,7 @@ override reader @filewrapperDeclarationForGeneration appendSpecificImplementatio
     !filewrapperImplementation
   ] ;
 #--- template generation
+  var inclusionSet := [@stringset emptySet] ;
   foreach mFilewrapperTemplateListForGeneration do
   #--- Build generated code for instruction list
     @string generatedCodeForInstructionList := "" ;
@@ -2321,6 +2340,7 @@ override reader @filewrapperDeclarationForGeneration appendSpecificImplementatio
     templateCodeGenerationForListInstruction
       !mTemplateInstructionListForGeneration
       !?generatedCodeForInstructionList
+      !?inclusionSet
       !?temporaryVariableIndex
       !?unusedVariableCppNameSet
       !?useColumnMarker
@@ -2333,6 +2353,7 @@ override reader @filewrapperDeclarationForGeneration appendSpecificImplementatio
       !unusedVariableCppNameSet
       !useColumnMarker
       !generatedCodeForInstructionList
+      !if inGenerateForGalgas3 then inclusionSet else [@stringset emptySet] end
     ] ;
   end foreach ;
 end reader ;

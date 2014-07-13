@@ -546,12 +546,13 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
     ;
   end if ;
 #--- Analyze input/output variable
-  @unifiedTypeMapProxy parameterType ;
   @string variableCppName ;
-  [!?ioVariableMap searchForReadWriteAccess !mOutputInputActualParameterName ?parameterType ?variableCppName ?*] ;
+  [!?ioVariableMap searchForReadWriteAccess !mOutputInputActualParameterName ?@unifiedTypeMapProxy parameterType ?variableCppName ?*] ;
+  var typeList := [@unifiedTypeMapProxyList listWithValue !parameterType] ;
   foreach mStructAttributeList do
     const attributeMap := [parameterType mAttributeMap] ;
     [attributeMap searchKey !mValue ?parameterType] ;
+    typeList += !parameterType ;
   end foreach ;
 #--- Check type
   if inFormalArgumentType != parameterType then
@@ -571,6 +572,7 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
   ioActualParameterListForGeneration += ![@outputInputActualParameterForGeneration new
     !variableCppName
     !mStructAttributeList
+    !typeList
   ] ;
 end method ;
 
@@ -744,11 +746,10 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
   ?!@variableMap ioVariableMap
 :
 #--- Analyze receiver expression
-  @semanticExpressionForGeneration receiverExpression ;
   [mReceiverExpression analyzeSemanticExpression
     !inAnalysisContext
     !?ioVariableMap
-    ?receiverExpression
+    ??@semanticExpressionForGeneration receiverExpression
   ] ;
 #--- Get type method signature
   @formalParameterSignature routineSignature ;
@@ -760,7 +761,6 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
     error mMethodName : errorMessage ;
   end if ;
 #--- Check effective parameters
-  @actualParameterListForGeneration actualParameterListForGeneration ;
   analyzeRoutineArguments
     !inAnalysisContext
     !mMethodName
@@ -768,8 +768,22 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
     !routineSignature
     !mActualParameterList
     !?ioVariableMap
-    ?actualParameterListForGeneration
+    ??@actualParameterListForGeneration actualParameterListForGeneration
   ;
+#--- Search base type that declares the method
+  var baseType := [receiverExpression mType] ;
+  var searching := true ;
+  loop [@uint max] : while searching do
+    if not [[baseType mSuperType] isNull] then
+      if [[[baseType mSuperType] mInstanceMethodMap] hasKey !mMethodName->string] then
+        baseType := [baseType mSuperType] ;
+      else
+        searching := false ;
+      end if ;
+    else
+      searching := false ;
+    end if ;  
+  end loop ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@methodCallInstructionForGeneration new
     !mInstructionLocation
@@ -779,6 +793,7 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
     !kind
     !actualParameterListForGeneration
     !hasCompilerArgument
+    !baseType
   ] ;
 end method ;
 
@@ -1376,15 +1391,18 @@ override method @dropInstructionAST analyzeSemanticInstruction
   ?!@variableMap ioVariableMap
 :
   @stringlist cppNameDropList [emptyList] ;
+  var dropTypeList := [@unifiedTypeMapProxyList emptyList] ;
   foreach mDropList do
     @string variableCppName ;
-    [!?ioVariableMap searchForDropAccess !mValue ?* ?variableCppName ?*] ;
+    [!?ioVariableMap searchForDropAccess !mValue ??@unifiedTypeMapProxy t ?variableCppName ?*] ;
     cppNameDropList += !variableCppName ;
+    dropTypeList += !t ;
   end foreach ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@dropInstructionForGeneration new
      !cppNameDropList
      !"drop instruction"
+     !dropTypeList
   ] ;  
 end method ;
 
