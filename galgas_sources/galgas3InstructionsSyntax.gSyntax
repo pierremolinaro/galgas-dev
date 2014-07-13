@@ -1290,7 +1290,6 @@ rule <semantic_instruction>
 #--- Variant
   <expression> ?@semanticExpressionAST mVariantExpression ;
   const mEndOfVariantExpression := here ;
-  $:$ ;
 #---
   <semantic_instruction_list> ?@semanticInstructionListAST mFirstInstructions ;
 #---
