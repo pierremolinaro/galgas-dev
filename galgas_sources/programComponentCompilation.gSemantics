@@ -322,7 +322,7 @@ routine compileProgramComponentFromAST
     ] ;
     foreach decoratedDeclarationListForGeneration do
       implementationString .= [mDeclaration appendTypeGenericImplementation] ;
-      implementationString .= [mDeclaration appendSpecificImplementation] ;
+      implementationString .= [mDeclaration appendSpecificImplementation !false] ;
     end foreach ;
     [@string generateFileWithPattern
       !inOutputDirectory
@@ -451,7 +451,7 @@ routine compileProgramComponentGalgas3
     ] ;
     foreach decoratedDeclarationListForGeneration do
       implementationString .= [mDeclaration appendTypeGenericImplementation] ;
-      implementationString .= [mDeclaration appendSpecificImplementation] ;
+      implementationString .= [mDeclaration appendSpecificImplementation !true] ;
     end foreach ;
     [@string generateFileWithPattern
       !inOutputDirectory

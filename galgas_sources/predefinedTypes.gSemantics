@@ -384,7 +384,7 @@ routine generatePredefinedTypeFiles ??@string inDirectory :
       generatedCode := [filewrapper predefinedTypeGenerationTemplate.predefinedTypesImplementation] ;
       foreach decoratedDeclarationListForGeneration do
         generatedCode .= [mDeclaration appendTypeGenericImplementation] ;
-        generatedCode .= [mDeclaration appendSpecificImplementation] ;
+        generatedCode .= [mDeclaration appendSpecificImplementation !false] ;
       end foreach ;
       if [@uint errorCount] == 0 then
         [@string generateFileWithPattern

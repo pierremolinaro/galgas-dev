@@ -1304,8 +1304,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
   @instanceMethodMap instanceMethodMap [emptyMap] ;
   @classMethodMap classMethodMap [emptyMap] ;
 #--- Associated map type index
-  @unifiedTypeMapProxy associatedMapTypeIndex ;
-  [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mAssociatedMapTypeName ?associatedMapTypeIndex] ;
+  [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mAssociatedMapTypeName ??@unifiedTypeMapProxy associatedMapTypeIndex] ;
 #--- string type index
   @unifiedTypeMapProxy stringTypeIndex ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioSemanticContext->mTypeMap !"string" ?stringTypeIndex] ;
@@ -1420,7 +1419,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     !"null" # Default constructor
     !"mapproxy-" . mMapProxyTypeName
     ![@unifiedTypeMapProxyList emptyList]
-    ![@unifiedTypeMapProxyList emptyList]
+    ![@unifiedTypeMapProxyList listWithValue !associatedMapTypeIndex]
     ![@stringlist emptyList]
   ] ;
 end method ;
@@ -2994,11 +2993,10 @@ override method @listmapDeclarationAST enterInSemanticContext
     !?instanceMethodMap
   ;
 #--- Element type index
-  @unifiedTypeMapProxy enumeratedTypeIndex ;
   [@unifiedTypeMapProxy makeProxy
     !?ioSemanticContext->mTypeMap
     ![@lstring new !mListmapTypeName->string . elementTypeNameSuffix [] !mListmapTypeName->location]
-    ?enumeratedTypeIndex
+    ??@unifiedTypeMapProxy listElementTypeIndex
   ] ;
 #--- Enter type in type map
   [!?ioSemanticContext->mTypeMap insertKey
@@ -3025,11 +3023,11 @@ override method @listmapDeclarationAST enterInSemanticContext
     ![@mapSearchMethodListAST emptyList]
     ![@withAccessorMap emptyMap]
     !false # Do not generate header in separate file
-    !enumeratedTypeIndex # Type for enumerated element for "for" instruction
+    !listElementTypeIndex # Type for enumerated element for "for" instruction
     !"emptyMap" # Default constructor
     !"listmap-" . mListmapTypeName
     ![@unifiedTypeMapProxyList emptyList]
-    ![@unifiedTypeMapProxyList emptyList]
+    ![@unifiedTypeMapProxyList listWithValue !listElementTypeIndex]
     ![@stringlist emptyList]
   ] ;
 end method ;

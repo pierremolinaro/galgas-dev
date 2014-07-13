@@ -30,6 +30,7 @@ semantics semanticGeneration :
 
 function generateProcedure
   ??@string inProcedureName
+  ??@bool inGenerateForGalgas3
   ?@formalParameterListForGeneration inFormalArgumentList
   ??@semanticInstructionListForGeneration inInstructionList
   ??@bool inProcedureIsConst
@@ -54,11 +55,17 @@ function generateProcedure
     end if ;
   end foreach ;
 #--- Generate body
-  @uint temporaryVariableIndex := 0 ;
-  @string routineBody := "" ;
+  var temporaryVariableIndex := 0 ;
+  var routineBody := "" ;
   [!?routineBody incIndentation !2] ;
   foreach inInstructionList do
-    [mInstruction generateInstruction !generateCheckValid !?temporaryVariableIndex !?unusedVariableCppNameSet !inGenerateSyntaxDirectedTranslationString !?routineBody] ;
+    [mInstruction generateInstruction
+      !generateCheckValid
+      !?temporaryVariableIndex
+      !?unusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
+      !?routineBody
+    ] ;
   end foreach ;
   [!?routineBody decIndentation !2] ;
 #--- Generate header
@@ -607,6 +614,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
   template listmapTypeHeader1 "GALGAS_listmap.h1.gTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
+    ?@stringlist INCLUSION_LIST
   ;
 
   template listmapTypeSpecificImplementation "GALGAS_listmap.cpp.gTemplate"
@@ -1290,12 +1298,22 @@ override reader @externTypeDeclarationForGeneration appendDeclaration1
 #---------------------------------------------------------------------------*
 
 override reader @listmapTypeForGeneration appendDeclaration1
-  ??@bool unused inGenerateForGalgas3
+  ??@bool inGenerateForGalgas3
   -> @string outHeader
 :
+  var inclusionList := [@stringlist emptyList] ;
+  if inGenerateForGalgas3 then
+    inclusionList += !"galgas2/AC_GALGAS_map" ;
+    for (t ...) in mAssociatedListTypedAttributeList do
+      if not [t mIsPredefined] then
+        inclusionList += ![t mHeaderFileName] . "-1" ;      
+      end if ;
+    end for ;
+  end if ;
   outHeader := [filewrapper typeGenerationTemplate.listmapTypeHeader1
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
+    !inclusionList
   ] ;
   outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     ![mTypeProxy key]
@@ -1688,13 +1706,19 @@ end reader ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-reader @semanticDeclarationForGeneration appendSpecificImplementation ->@string outImplementation :
+reader @semanticDeclarationForGeneration appendSpecificImplementation
+  ??@bool unused inGenerateForGalgas3
+  ->@string outImplementation
+:
   outImplementation := "" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @arrayTypeForGeneration appendSpecificImplementation ->@string outImplementation :
+override reader @arrayTypeForGeneration appendSpecificImplementation
+  ??@bool unused inGenerateForGalgas3
+  ->@string outImplementation
+:
   @stringlist suffixList [emptyList] ;
   @uint idx := 0 ;
   loop mDimension : while idx < mDimension do
@@ -1712,7 +1736,10 @@ override reader @arrayTypeForGeneration appendSpecificImplementation ->@string o
 
 #---------------------------------------------------------------------------*
 
-override reader @listmapTypeForGeneration appendSpecificImplementation ->@string outImplementation :
+override reader @listmapTypeForGeneration appendSpecificImplementation
+  ??@bool unused inGenerateForGalgas3
+  ->@string outImplementation
+:
   outImplementation := [filewrapper typeGenerationTemplate.listmapTypeSpecificImplementation
     ![mTypeProxy identifierRepresentation]
     ![mAssociatedListTypeIndex identifierRepresentation]
@@ -1722,7 +1749,10 @@ override reader @listmapTypeForGeneration appendSpecificImplementation ->@string
 
 #---------------------------------------------------------------------------*
 
-override reader @mapTypeForGeneration appendSpecificImplementation ->@string outImplementation :
+override reader @mapTypeForGeneration appendSpecificImplementation
+  ??@bool unused inGenerateForGalgas3
+  ->@string outImplementation
+:
   outImplementation := [filewrapper typeGenerationTemplate.mapTypeSpecificImplementation
     ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
@@ -1736,7 +1766,10 @@ override reader @mapTypeForGeneration appendSpecificImplementation ->@string out
 
 #---------------------------------------------------------------------------*
 
-override reader @uniqueMapTypeForGeneration appendSpecificImplementation ->@string outImplementation :
+override reader @uniqueMapTypeForGeneration appendSpecificImplementation
+  ??@bool unused inGenerateForGalgas3
+  ->@string outImplementation
+:
   @keySortedList keySortedList [emptySortedList] ;
   foreach mMapAutomatonStateMap do
     keySortedList += !lkey->string !mStateIndex ;
@@ -1757,7 +1790,10 @@ override reader @uniqueMapTypeForGeneration appendSpecificImplementation ->@stri
 
 #---------------------------------------------------------------------------*
 
-override reader @sortedListTypeForGeneration appendSpecificImplementation ->@string outImplementation :
+override reader @sortedListTypeForGeneration appendSpecificImplementation
+  ??@bool unused inGenerateForGalgas3
+  ->@string outImplementation
+:
   outImplementation := [filewrapper typeGenerationTemplate.sortedlistTypeSpecificImplementation
     ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
@@ -1767,7 +1803,10 @@ override reader @sortedListTypeForGeneration appendSpecificImplementation ->@str
 
 #---------------------------------------------------------------------------*
 
-override reader @enumTypeForGeneration appendSpecificImplementation ->@string outImplementation :
+override reader @enumTypeForGeneration appendSpecificImplementation
+  ??@bool unused inGenerateForGalgas3
+  ->@string outImplementation
+:
   outImplementation := [filewrapper typeGenerationTemplate.enumTypeSpecificImplementation
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
@@ -1777,7 +1816,10 @@ override reader @enumTypeForGeneration appendSpecificImplementation ->@string ou
 
 #---------------------------------------------------------------------------*
 
-override reader @mapProxyTypeForGeneration appendSpecificImplementation ->@string outImplementation :
+override reader @mapProxyTypeForGeneration appendSpecificImplementation
+  ??@bool unused inGenerateForGalgas3
+  ->@string outImplementation
+:
   outImplementation := [filewrapper typeGenerationTemplate.mapProxyTypeSpecificImplementation
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
@@ -1789,7 +1831,10 @@ override reader @mapProxyTypeForGeneration appendSpecificImplementation ->@strin
 
 #---------------------------------------------------------------------------*
 
-override reader @classTypeForGeneration appendSpecificImplementation ->@string outImplementation :
+override reader @classTypeForGeneration appendSpecificImplementation
+  ??@bool unused inGenerateForGalgas3
+  ->@string outImplementation
+:
   outImplementation := [filewrapper typeGenerationTemplate.classTypeSpecificImplementation
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
@@ -1804,7 +1849,10 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @structTypeForGeneration appendSpecificImplementation ->@string outImplementation :
+override reader @structTypeForGeneration appendSpecificImplementation
+  ??@bool unused inGenerateForGalgas3
+  ->@string outImplementation
+:
   outImplementation := [filewrapper typeGenerationTemplate.structTypeSpecificImplementation
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
@@ -1815,7 +1863,10 @@ override reader @structTypeForGeneration appendSpecificImplementation ->@string 
 
 #---------------------------------------------------------------------------*
 
-override reader @listTypeForGeneration appendSpecificImplementation ->@string outImplementation :
+override reader @listTypeForGeneration appendSpecificImplementation
+  ??@bool unused inGenerateForGalgas3
+  ->@string outImplementation
+:
   outImplementation := [filewrapper typeGenerationTemplate.listTypeSpecificImplementation
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
@@ -1825,7 +1876,10 @@ override reader @listTypeForGeneration appendSpecificImplementation ->@string ou
 
 #---------------------------------------------------------------------------*
 
-override reader @graphDeclarationForGeneration appendSpecificImplementation ->@string outImplementation :
+override reader @graphDeclarationForGeneration appendSpecificImplementation
+  ??@bool unused inGenerateForGalgas3
+  ->@string outImplementation
+:
   outImplementation := [filewrapper typeGenerationTemplate.graphTypeSpecificImplementation
     !mTypeProxy
     ![mTypeProxy identifierRepresentation]
@@ -1836,11 +1890,15 @@ override reader @graphDeclarationForGeneration appendSpecificImplementation ->@s
 
 #---------------------------------------------------------------------------*
 
-override reader @routineImplementationForGeneration appendSpecificImplementation -> @string outImplementation :
+override reader @routineImplementationForGeneration appendSpecificImplementation
+  ??@bool inGenerateForGalgas3
+  ->@string outImplementation
+:
   outImplementation := [filewrapper semanticComponentGenerationTemplate.routineImplementation
     !mRoutineName
     !generateProcedure [
       !"routine_" . [mRoutineName identifierRepresentation]
+      !inGenerateForGalgas3
       !mFormalArgumentList
       !mRoutineInstructionList
       !false # Do not generate 'const' qualifier
@@ -1854,7 +1912,10 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @functionImplementationForGeneration appendSpecificImplementation -> @string outImplementation :
+override reader @functionImplementationForGeneration appendSpecificImplementation
+  ??@bool unused inGenerateForGalgas3
+  ->@string outImplementation
+:
   outImplementation := [filewrapper semanticComponentGenerationTemplate.functionImplementation
     !mFunctionName
     !generateFunction [
@@ -1873,7 +1934,10 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @onceFunctionDeclarationForGeneration appendSpecificImplementation -> @string outImplementation :
+override reader @onceFunctionDeclarationForGeneration appendSpecificImplementation
+  ??@bool unused inGenerateForGalgas3
+  ->@string outImplementation
+:
   outImplementation := [filewrapper semanticComponentGenerationTemplate.onceFunctionImplementation
     !mFunctionName
     !generateFunction [
@@ -1892,7 +1956,10 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @abstractCategoryMethodForGeneration appendSpecificImplementation -> @string outImplementation :
+override reader @abstractCategoryMethodForGeneration appendSpecificImplementation
+  ??@bool unused inGenerateForGalgas3
+  ->@string outImplementation
+:
   outImplementation := [filewrapper semanticComponentGenerationTemplate.abstractCategoryMethodImplementation
     !mTypeName
     !mAbstractCategoryMethodName
@@ -1902,7 +1969,10 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @categoryMethodForGeneration appendSpecificImplementation -> @string outImplementation :
+override reader @categoryMethodForGeneration appendSpecificImplementation
+  ??@bool inGenerateForGalgas3
+  ->@string outImplementation
+:
   if mImplementedAsFunction then
     @formalParameterListForGeneration categoryMethodFormalParameterList := mCategoryMethodFormalParameterList ;
     [!?categoryMethodFormalParameterList insertAtIndex
@@ -1917,6 +1987,7 @@ override reader @categoryMethodForGeneration appendSpecificImplementation -> @st
       !mCategoryMethodName
       !generateProcedure [
         !"categoryMethod_" . [mCategoryMethodName identifierRepresentation]
+        !inGenerateForGalgas3
         !categoryMethodFormalParameterList
         !mSemanticInstructionListForGeneration
         !false # is not const
@@ -1945,7 +2016,10 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @overridingCategoryMethodForGeneration appendSpecificImplementation -> @string outImplementation :
+override reader @overridingCategoryMethodForGeneration appendSpecificImplementation
+  ??@bool unused inGenerateForGalgas3
+  ->@string outImplementation
+:
   const @string methodImplementation := generateCategoryMethod [
     !mTypeName
     !mBaseTypeName
@@ -1962,7 +2036,10 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @abstractCategoryModifierForGeneration appendSpecificImplementation -> @string outImplementation :
+override reader @abstractCategoryModifierForGeneration appendSpecificImplementation
+  ??@bool unused inGenerateForGalgas3
+  ->@string outImplementation
+:
   outImplementation := [filewrapper semanticComponentGenerationTemplate.abstractCategoryModifierImplementation
     !mTypeName
     !mAbstractCategoryModifierName
@@ -1972,7 +2049,10 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @categoryModifierForGeneration appendSpecificImplementation -> @string outImplementation :
+override reader @categoryModifierForGeneration appendSpecificImplementation
+  ??@bool inGenerateForGalgas3
+  ->@string outImplementation
+:
   if mImplementedAsFunction then
     @formalParameterListForGeneration categoryModifierFormalParameterList := mCategoryModifierFormalParameterList ;
     [!?categoryModifierFormalParameterList insertAtIndex
@@ -1987,6 +2067,7 @@ override reader @categoryModifierForGeneration appendSpecificImplementation -> @
       !mCategoryModifierName
       !generateProcedure [
         !"categoryModifier_" . [mCategoryModifierName identifierRepresentation]
+        !inGenerateForGalgas3
         !categoryModifierFormalParameterList
         !mSemanticInstructionListForGeneration
         !false # is not const
@@ -2015,7 +2096,10 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @overridingCategoryModifierForGeneration appendSpecificImplementation -> @string outImplementation :
+override reader @overridingCategoryModifierForGeneration appendSpecificImplementation
+  ??@bool unused inGenerateForGalgas3
+  ->@string outImplementation
+:
   const @string methodImplementation := generateCategoryModifier [
     !mTypeName
     !mBaseTypeName
@@ -2032,7 +2116,10 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @abstractCategoryReaderForGeneration appendSpecificImplementation -> @string outImplementation :
+override reader @abstractCategoryReaderForGeneration appendSpecificImplementation
+  ??@bool unused inGenerateForGalgas3
+  ->@string outImplementation
+:
   outImplementation := [filewrapper semanticComponentGenerationTemplate.abstractCategoryReaderImplementation
     !mTypeName
     !mAbstractCategoryReaderName
@@ -2043,7 +2130,10 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @categoryReaderForGeneration appendSpecificImplementation -> @string outImplementation :
+override reader @categoryReaderForGeneration appendSpecificImplementation
+  ??@bool unused inGenerateForGalgas3
+  ->@string outImplementation
+:
   if mImplementedAsFunction then
     @formalInputParameterListForGeneration categoryReaderFormalParameterList := mCategoryReaderFormalParameterList ;
     [!?categoryReaderFormalParameterList insertAtIndex
@@ -2089,7 +2179,10 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @overrideCategoryReaderForGeneration appendSpecificImplementation -> @string outImplementation :
+override reader @overrideCategoryReaderForGeneration appendSpecificImplementation
+  ??@bool unused inGenerateForGalgas3
+  ->@string outImplementation
+:
   const @string categoryReaderCode := generateCategoryReader [
     !mTypeName
     !mBaseTypeName
@@ -2197,7 +2290,10 @@ end routine ;
   
 #---------------------------------------------------------------------------*
 
-override reader @filewrapperDeclarationForGeneration appendSpecificImplementation -> @string outImplementation :
+override reader @filewrapperDeclarationForGeneration appendSpecificImplementation
+  ??@bool unused inGenerateForGalgas3
+  ->@string outImplementation
+:
   @string filewrapperImplementation := "" ;
   generateWrapperContents
     !mFilewrapperName
