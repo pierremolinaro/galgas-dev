@@ -10,6 +10,7 @@ LIBPM_DIRECTORY_PATH := %!LIBPM_DIRECTORY_PATH%
 #------------------------------------------------------------------------------*
 
 SOURCES_DIR := ../build/output
+SOURCES_DIR += ../build/headers
 %foreach HAND_CODED_SOURCE_DIR_SET do
   %SOURCES_DIR += %!key%\n%
 end
