@@ -1647,7 +1647,7 @@ override reader @classTypeForGeneration appendDeclaration2
     ] ;
     const @string headerFileName := "separateHeaderFor_" . [mTypeProxy identifierRepresentation] . ".h" ;
     [@string generateFileWithPattern
-      !inOutputDirectory
+      !inOutputDirectory + if inGenerateForGalgas3 then "/../headers" else "" end
       !headerFileName
       !"//"
       !"\n\n" # Defaut user zone1
