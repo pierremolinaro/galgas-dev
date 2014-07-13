@@ -430,6 +430,7 @@ class @outputActualParameterForGeneration extends @actualParameterForGeneration 
 class @outputInputActualParameterForGeneration extends @actualParameterForGeneration {
   @string mOutputInputVariableCppName ;
   @lstringlist mStructAttributeList ;
+  @unifiedTypeMapProxyList mTypeList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -732,6 +733,7 @@ class @assignmentInstructionForGeneration extends @semanticInstructionForGenerat
 class @dropInstructionForGeneration extends @semanticInstructionForGeneration {
   @stringlist mDropList ;
   @string mComment ;
+  @unifiedTypeMapProxyList mDropTypeList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -854,6 +856,7 @@ class @methodCallInstructionForGeneration extends @semanticInstructionForGenerat
   @methodKind mKind ;
   @actualParameterListForGeneration mActualParameterList ;
   @bool mHasCompilerArgument ;
+  @unifiedTypeMapProxy mMethodBaseType ;
 }
 
 #---------------------------------------------------------------------------*

@@ -311,7 +311,7 @@ uniquemap @unifiedTypeMap {
   @bool mGenerateHeaderInSeparateFile ; # Significant only for classes
   @unifiedTypeMapProxy mTypeForEnumeratedElement ;
   @string mDefaultConstructorName ; # Used in [@xxx default] (empty string if no default constructor)
-  @string mHeaderFileName ; # Name of C++ header file that contains type declaration
+  @string mHeaderFileName feature nogetter ; # Name of C++ header file that contains type declaration
   @unifiedTypeMapProxyList mTypesToIncludeInHeaderFile ;
   @unifiedTypeMapProxyList mTypesToIncludeInCppFile ;
   @stringlist mSpecificHeadersForCppFile ;
@@ -323,6 +323,35 @@ uniquemap @unifiedTypeMap {
 #---------------------------------------------------------------------------*
 
 mapproxy @unifiedTypeMapProxy (@unifiedTypeMap) ;
+
+#---------------------------------------------------------------------------*
+
+reader @unifiedTypeMapProxy baseType -> @unifiedTypeMapProxy outBaseType :
+  outBaseType := selfcopy ;
+  loop [@uint max] : while not [[outBaseType mSuperType] isNull] do
+    outBaseType := [outBaseType mSuperType] ;
+  end loop ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+method @unifiedTypeMapProxy addHeaderFileName
+ ?!@stringset ioInclusions
+:
+  if not [selfcopy mIsPredefined] then
+    ioInclusions += ![selfcopy mHeaderFileName] ;
+  end if ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+method @unifiedTypeMapProxy addHeaderFileName1
+ ?!@stringset ioInclusions
+:
+  if not [selfcopy mIsPredefined] then
+    ioInclusions += ![selfcopy mHeaderFileName] . "-1" ;
+  end if ;
+end method ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *

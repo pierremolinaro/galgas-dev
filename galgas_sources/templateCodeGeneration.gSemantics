@@ -24,6 +24,7 @@ semantics templateCodeGeneration :
 
 abstract method @templateInstructionForGeneration templateCodeGeneration
   ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
   ?!@bool unused ioUseColumnMarker
@@ -34,6 +35,7 @@ abstract method @templateInstructionForGeneration templateCodeGeneration
 routine templateCodeGenerationForListInstruction
   ??@templateInstructionListForGeneration inInstructionList
   ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@bool ioUseColumnMarker
@@ -41,6 +43,7 @@ routine templateCodeGenerationForListInstruction
   foreach inInstructionList do
     [mInstruction templateCodeGeneration
       !?ioGeneratedCode
+      !?ioInclusionSet
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
       !?ioUseColumnMarker
@@ -52,6 +55,7 @@ end routine ;
 
 override method @templateInstructionStringForGeneration templateCodeGeneration
   ?!@string ioGeneratedCode
+  ?!@stringset unused  ioInclusionSet
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
   ?!@bool unused ioUseColumnMarker
@@ -63,13 +67,14 @@ end method ;
 
 override method @templateInstructionExpressionForGeneration templateCodeGeneration
   ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@bool unused ioUseColumnMarker
 :
 #--- Expression
   @string cppName ;
-  [mExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?cppName] ;
+  [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?cppName] ;
   ioGeneratedCode .= "result << " . cppName . ".stringValue () ;\n" ;
 end method ;
 
@@ -77,19 +82,21 @@ end method ;
 
 override method @templateBlockInstructionForGeneration templateCodeGeneration
   ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@bool ioUseColumnMarker
 :
 #--- Expression
   @string indendationVarCppName ;
-  [mExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?indendationVarCppName] ;
+  [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?indendationVarCppName] ;
   ioGeneratedCode .= "if (" . indendationVarCppName . ".isValid ()) {\n" ;
   ioGeneratedCode .= "  result.incIndentation ((int32_t) " . indendationVarCppName . ".uintValue ()) ;\n" ;
   ioGeneratedCode .= "}\n" ;
   templateCodeGenerationForListInstruction
     !mBlockInstructionList
     !?ioGeneratedCode
+    !?ioInclusionSet
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
     !?ioUseColumnMarker
@@ -103,6 +110,7 @@ end method ;
 
 override method @templateInstructionGetColumnLocationForGeneration templateCodeGeneration
   ?!@string ioGeneratedCode
+  ?!@stringset unused ioInclusionSet
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
   ?!@bool ioUseColumnMarker
@@ -115,6 +123,7 @@ end method ;
 
 override method @templateInstructionGotoColumnLocationForGeneration templateCodeGeneration
   ?!@string ioGeneratedCode
+  ?!@stringset unused ioInclusionSet
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
   ?!@bool ioUseColumnMarker
@@ -127,13 +136,14 @@ end method ;
 
 override method @templateInstructionForeachForGeneration templateCodeGeneration
   ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@bool ioUseColumnMarker
 :
 #---
   @string foreachVarCppName ;
-  [mExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?foreachVarCppName] ;
+  [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?foreachVarCppName] ;
 #--- Index
   if [mIndexCppName length] > 0 then
     ioGeneratedCode .= "GALGAS_uint " . mIndexCppName . " (0) ;\n" ;
@@ -153,6 +163,7 @@ override method @templateInstructionForeachForGeneration templateCodeGeneration
     templateCodeGenerationForListInstruction
       !mBeforeInstructionList
       !?ioGeneratedCode
+      !?ioInclusionSet
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
       !?ioUseColumnMarker
@@ -166,6 +177,7 @@ override method @templateInstructionForeachForGeneration templateCodeGeneration
   templateCodeGenerationForListInstruction
     !mDoInstructionList
     !?ioGeneratedCode
+    !?ioInclusionSet
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
     !?ioUseColumnMarker
@@ -177,6 +189,7 @@ override method @templateInstructionForeachForGeneration templateCodeGeneration
     templateCodeGenerationForListInstruction
       !mBetweenInstructionList
       !?ioGeneratedCode
+      !?ioInclusionSet
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
       !?ioUseColumnMarker
@@ -199,6 +212,7 @@ override method @templateInstructionForeachForGeneration templateCodeGeneration
     templateCodeGenerationForListInstruction
       !mAfterInstructionList
       !?ioGeneratedCode
+      !?ioInclusionSet
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
       !?ioUseColumnMarker
@@ -215,6 +229,7 @@ end method ;
 
 override method @templateInstructionIfForGeneration templateCodeGeneration
   ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@bool ioUseColumnMarker
@@ -222,7 +237,7 @@ override method @templateInstructionIfForGeneration templateCodeGeneration
   foreach mTemplateInstructionIfBranchList do
   #--- IF expression
     @string ifVarCppName ;
-    [mExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?ifVarCppName] ;
+    [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?ifVarCppName] ;
     const @string testVar := "test_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
     ioGeneratedCode .= "const enumGalgasBool " . testVar . " = " . ifVarCppName . ".boolEnum () ;\n" ;
     ioGeneratedCode .= "if (kBoolTrue == " . testVar . ") {\n" ;
@@ -230,6 +245,7 @@ override method @templateInstructionIfForGeneration templateCodeGeneration
     templateCodeGenerationForListInstruction
       !mInstructionList
       !?ioGeneratedCode
+      !?ioInclusionSet
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
       !?ioUseColumnMarker
@@ -242,6 +258,7 @@ override method @templateInstructionIfForGeneration templateCodeGeneration
   templateCodeGenerationForListInstruction
     !mElseInstructionList
     !?ioGeneratedCode
+    !?ioInclusionSet
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
     !?ioUseColumnMarker
@@ -256,13 +273,14 @@ end method ;
 
 override method @templateInstructionSwitchForGeneration templateCodeGeneration
   ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@bool ioUseColumnMarker
 :
 #--- Expression
   @string switchVarCppName ;
-  [mSwitchExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?switchVarCppName] ;
+  [mSwitchExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?switchVarCppName] ;
 #---
   ioGeneratedCode .= "switch (" . switchVarCppName . ".enumValue ()) {\n" ;
   ioGeneratedCode .= "case GALGAS_" . [[mSwitchExpression mType] identifierRepresentation] . "::kNotBuilt :\n" ;
@@ -276,6 +294,7 @@ override method @templateInstructionSwitchForGeneration templateCodeGeneration
     templateCodeGenerationForListInstruction
       !mInstructionList
       !?ioGeneratedCode
+      !?ioInclusionSet
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
       !?ioUseColumnMarker
