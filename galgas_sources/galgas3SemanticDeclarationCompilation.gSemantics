@@ -270,7 +270,7 @@ routine compileSemanticDeclarationsGalgas3
           ![mDeclaration implementationCppFileName]
           !implementationFileIncludes
         ] ;
-        implementationString .= [mDeclaration appendSpecificImplementation] ;
+        implementationString .= [mDeclaration appendSpecificImplementation !true] ;
         implementationString .= [mDeclaration appendTypeGenericImplementation] ;
         [@string generateFileWithPattern
           !productDirectory
