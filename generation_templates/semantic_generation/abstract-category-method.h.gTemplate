@@ -5,7 +5,7 @@
 //-----------------------------------------------------------------------------*
 
 typedef void (*categoryMethodSignature_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%) (%?^
-%const cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
+%const class cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
   foreach FORMAL_ARGUMENT_LIST do index IDX
     %,\n%!^
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
@@ -28,7 +28,7 @@ void enterCategoryMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const in
 
 //-----------------------------------------------------------------------------*
 
-void callCategoryMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
+void callCategoryMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const class cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
   foreach FORMAL_ARGUMENT_LIST do
     %,\n%!^
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then

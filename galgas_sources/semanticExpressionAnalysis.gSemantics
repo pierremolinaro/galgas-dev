@@ -784,7 +784,7 @@ override method @optionExpressionAST analyzeSemanticExpression
   @commandLineOptionMap stringOptionMap ;
   [inAnalysisContext->mSemanticContext->mOptionComponentMapForSemanticAnalysis searchKey
     !mOptionComponentName
-    ?*
+    ??@bool optionComponentIsPredefined
     ?boolOptionMap
     ?uintOptionMap
     ?stringOptionMap
@@ -804,6 +804,7 @@ override method @optionExpressionAST analyzeSemanticExpression
       outExpression := [@optionValueExpressionForGeneration new
         !returnedType
         ![mOptionComponentName location]
+        !optionComponentIsPredefined
         ![mOptionComponentName string]
         ![mOptionEntryName string]
       ] ;
@@ -811,6 +812,7 @@ override method @optionExpressionAST analyzeSemanticExpression
       outExpression := [@optionCharExpressionForGeneration new
         !inAnalysisContext->mPredefinedTypes->mCharType
         ![mOptionComponentName location]
+        !optionComponentIsPredefined
         ![mOptionComponentName string]
         ![mOptionEntryName string]
       ] ;
@@ -818,6 +820,7 @@ override method @optionExpressionAST analyzeSemanticExpression
       outExpression := [@optionStringExpressionForGeneration new
         !inAnalysisContext->mPredefinedTypes->mStringType
         ![mOptionComponentName location]
+        !optionComponentIsPredefined
         ![mOptionComponentName string]
         ![mOptionEntryName string]
       ] ;
@@ -825,6 +828,7 @@ override method @optionExpressionAST analyzeSemanticExpression
       outExpression := [@optionCommentExpressionForGeneration new
         !inAnalysisContext->mPredefinedTypes->mStringType
         ![mOptionComponentName location]
+        !optionComponentIsPredefined
         ![mOptionComponentName string]
         ![mOptionEntryName string]
       ] ;

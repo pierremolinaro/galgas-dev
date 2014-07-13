@@ -1,32 +1,38 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//%!["Abstract category method '@" + CLASS_NAME + " " + METHOD_NAME + "'" stringByLeftAndRightPadding !77 !' ']%*
+//%!["Abstract category method '@" + [RECEIVER_TYPE key] + " " + METHOD_NAME + "'" stringByLeftAndRightPadding !77 !' ']%*
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-static TC_UniqueArray <categoryMethodSignature_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%> gCategoryMethodTable_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% ;
+% foreach INCLUSION_SET do
+%#include "%!key%.h"\n%
+end
+%
+//-----------------------------------------------------------------------------*
+
+static TC_UniqueArray <categoryMethodSignature_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%> gCategoryMethodTable_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% ;
 
 //-----------------------------------------------------------------------------*
 
 void enterCategoryMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const int32_t inClassIndex,
-               %!^%categoryMethodSignature_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% inMethod) {
-  gCategoryMethodTable_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+               %!^%categoryMethodSignature_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% inMethod) {
+  gCategoryMethodTable_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
 //-----------------------------------------------------------------------------*
 
-static void freeCategoryMethod_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% (void) {
-  gCategoryMethodTable_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%.free () ;
+static void freeCategoryMethod_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% (void) {
+  gCategoryMethodTable_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%.free () ;
 }
 
 //-----------------------------------------------------------------------------*
 
-C_PrologueEpilogue gMethod_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% (%?^%NULL,
-       %!^%freeCategoryMethod_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%) ;
+C_PrologueEpilogue gMethod_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% (%?^%NULL,
+       %!^%freeCategoryMethod_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%) ;
 
 //-----------------------------------------------------------------------------*
 
-void callCategoryMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
+void callCategoryMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const cPtr_%![[RECEIVER_TYPE key] identifierRepresentation]% * inObject%
   foreach FORMAL_ARGUMENT_LIST do
     %,\n%!^
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
@@ -50,22 +56,22 @@ void callCategoryMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const cPt
   end
 %//--- Find method
   if (NULL != inObject) {
-    macroValidSharedObject (inObject, cPtr_%![CLASS_NAME identifierRepresentation]%) ;
+    macroValidSharedObject (inObject, cPtr_%![[RECEIVER_TYPE key] identifierRepresentation]%) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% f = NULL ;
-    if (classIndex < gCategoryMethodTable_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%.count ()) {
-      f = gCategoryMethodTable_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% (classIndex COMMA_HERE) ;
+    categoryMethodSignature_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% f = NULL ;
+    if (classIndex < gCategoryMethodTable_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%.count ()) {
+      f = gCategoryMethodTable_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% (classIndex COMMA_HERE) ;
     }
     if (NULL == f) {
        const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
        while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%.count ()) {
-           f = gCategoryMethodTable_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% (p->mSlotID COMMA_HERE) ;
+         if (p->mSlotID < gCategoryMethodTable_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%.count ()) {
+           f = gCategoryMethodTable_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% (p->mSlotID COMMA_HERE) ;
          }
          p = p->mSuperclassDescriptor ;
        }
-       gCategoryMethodTable_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+       gCategoryMethodTable_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;

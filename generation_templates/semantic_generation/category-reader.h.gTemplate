@@ -5,7 +5,7 @@
 //-----------------------------------------------------------------------------*
 
 typedef GALGAS_%![RETURN_TYPE identifierRepresentation]% (*categoryReaderSignature_%![CLASS_NAME identifierRepresentation]%_%![READER_NAME identifierRepresentation]%) (%?^
-%const cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
+%const class cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
   foreach FORMAL_ARGUMENT_LIST do index IDX
     %,\n%!^
     if mIsConstant then

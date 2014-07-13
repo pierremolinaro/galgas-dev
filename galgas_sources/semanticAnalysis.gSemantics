@@ -1534,11 +1534,10 @@ override method @abstractCategoryMethodAST semanticAnalysis
   end foreach ;
 #---
   ioSemanticDeclarationListForGeneration +=
-#    !mIsPredefined
     ![@abstractCategoryMethodForGeneration new
       !true # Generate Cpp header file
       !"method-" . [selfType key] . "-" . mAbstractCategoryMethodName
-      ![mTypeName string]
+      !selfType
       ![mAbstractCategoryMethodName string]
       !formalParameterListForGeneration
     ]

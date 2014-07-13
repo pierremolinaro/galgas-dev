@@ -525,6 +525,7 @@ override method @outputActualParameterAST checkAgainstFormalArgument
   #--- Generate actual parameter
     ioActualParameterListForGeneration += ![@outputActualParameterForGeneration new
       !expression
+      !inFormalArgumentType
     ] ;
   end if ;
 end method ;

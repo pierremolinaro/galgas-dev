@@ -595,7 +595,7 @@ override method @templateOptionAccessAST templateExpressionAnalysis
   @commandLineOptionMap stringOptionMap ;
   [inAnalysisContext->mSemanticContext->mOptionComponentMapForSemanticAnalysis searchKey
     !mOptionComponentName
-    ?*
+    ?@bool optionComponentIsPredefined
     ?boolOptionMap
     ?uintOptionMap
     ?stringOptionMap
@@ -615,6 +615,7 @@ override method @templateOptionAccessAST templateExpressionAnalysis
       outExpression := [@optionValueExpressionForGeneration new
         !returnedType
         ![mOptionComponentName location]
+        !optionComponentIsPredefined
         ![mOptionComponentName string]
         ![mOptionName string]
       ] ;
@@ -622,6 +623,7 @@ override method @templateOptionAccessAST templateExpressionAnalysis
       outExpression := [@optionCharExpressionForGeneration new
         !inAnalysisContext->mPredefinedTypes->mCharType
         ![mOptionComponentName location]
+        !optionComponentIsPredefined
         ![mOptionComponentName string]
         ![mOptionName string]
       ] ;
@@ -629,6 +631,7 @@ override method @templateOptionAccessAST templateExpressionAnalysis
       outExpression := [@optionStringExpressionForGeneration new
         !inAnalysisContext->mPredefinedTypes->mStringType
         ![mOptionComponentName location]
+        !optionComponentIsPredefined
         ![mOptionComponentName string]
         ![mOptionName string]
       ] ;
@@ -636,6 +639,7 @@ override method @templateOptionAccessAST templateExpressionAnalysis
       outExpression := [@optionCommentExpressionForGeneration new
         !inAnalysisContext->mPredefinedTypes->mStringType
         ![mOptionComponentName location]
+        !optionComponentIsPredefined
         ![mOptionComponentName string]
         ![mOptionName string]
       ] ;

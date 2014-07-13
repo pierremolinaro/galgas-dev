@@ -4,7 +4,7 @@
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-void categoryModifier_%![MODIFIER_NAME identifierRepresentation]% (%?^%GALGAS_%![TYPE_NAME identifierRepresentation]% & ioObject%
+void categoryModifier_%![MODIFIER_NAME identifierRepresentation]% (%?^%class GALGAS_%![TYPE_NAME identifierRepresentation]% & ioObject%
   foreach FORMAL_ARGUMENT_LIST do
     %,\n%!^
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
