@@ -43,6 +43,7 @@ override method @outputActualParameterForGeneration generateActualParameter
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppName
 :
+  [mFormalArgumentType addHeaderFileName !?ioInclusionSet] ;
   [mOutputActualParameterExpression generateExpression !?ioImplementation !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?outCppName] ;
 end method ;
 

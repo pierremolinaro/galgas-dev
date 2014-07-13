@@ -135,6 +135,7 @@ class @readerCallExpressionForGeneration extends @semanticExpressionForGeneratio
 #---------------------------------------------------------------------------*
 
 class @optionValueExpressionForGeneration extends @semanticExpressionForGeneration {
+  @bool mOptionComponentIsPredefined ;
   @string mOptionComponentName ;
   @string mOptionEntryName ;
 }
@@ -142,6 +143,7 @@ class @optionValueExpressionForGeneration extends @semanticExpressionForGenerati
 #---------------------------------------------------------------------------*
 
 class @optionCharExpressionForGeneration extends @semanticExpressionForGeneration {
+  @bool mOptionComponentIsPredefined ;
   @string mOptionComponentName ;
   @string mOptionEntryName ;
 }
@@ -149,6 +151,7 @@ class @optionCharExpressionForGeneration extends @semanticExpressionForGeneratio
 #---------------------------------------------------------------------------*
 
 class @optionStringExpressionForGeneration extends @semanticExpressionForGeneration {
+  @bool mOptionComponentIsPredefined ;
   @string mOptionComponentName ;
   @string mOptionEntryName ;
 }
@@ -156,6 +159,7 @@ class @optionStringExpressionForGeneration extends @semanticExpressionForGenerat
 #---------------------------------------------------------------------------*
 
 class @optionCommentExpressionForGeneration extends @semanticExpressionForGeneration {
+  @bool mOptionComponentIsPredefined ;
   @string mOptionComponentName ;
   @string mOptionEntryName ;
 }
@@ -423,6 +427,7 @@ abstract class @actualParameterForGeneration {
 
 class @outputActualParameterForGeneration extends @actualParameterForGeneration {
   @semanticExpressionForGeneration mOutputActualParameterExpression ;
+  @unifiedTypeMapProxy mFormalArgumentType ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1432,7 +1437,7 @@ class @externTypeDeclarationForGeneration extends @semanticTypeForGeneration {
 #---------------------------------------------------------------------------*
 
 class @abstractCategoryMethodForGeneration extends @semanticDeclarationWithHeaderForGeneration {
-  @string mTypeName ;
+  @unifiedTypeMapProxy mReceiverType ;
   @string mAbstractCategoryMethodName ;
   @formalParameterListForGeneration mAbstractCategoryMethodFormalParameterList ;
 }

@@ -321,6 +321,10 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+#! option
+
+#---------------------------------------------------------------------------*
+
 override method @optionValueExpressionForGeneration generateExpression
   ?!@string unused ioGeneratedCode
   ?!@stringset ioInclusionSet
@@ -328,7 +332,9 @@ override method @optionValueExpressionForGeneration generateExpression
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
-  ioInclusionSet += !"option-" . mOptionComponentName ;
+  if not mOptionComponentIsPredefined then
+    ioInclusionSet += !"option-" . mOptionComponentName ;
+  end if ;
   outCppExpression := "GALGAS_" . [mType identifierRepresentation] . " (gOption_" . [mOptionComponentName identifierRepresentation]
                    . "_" . [mOptionEntryName identifierRepresentation] . ".reader_value ())" ;
 end method ;
@@ -342,7 +348,9 @@ override method @optionCharExpressionForGeneration generateExpression
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
-  ioInclusionSet += !"option-" . mOptionComponentName ;
+  if not mOptionComponentIsPredefined then
+    ioInclusionSet += !"option-" . mOptionComponentName ;
+  end if ;
   outCppExpression := "GALGAS_char (gOption_" . [mOptionComponentName identifierRepresentation]
                   . "_" . [mOptionEntryName identifierRepresentation] . ".reader_char ())" ;
 end method ;
@@ -356,7 +364,9 @@ override method @optionStringExpressionForGeneration generateExpression
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
-  ioInclusionSet += !"option-" . mOptionComponentName ;
+  if not mOptionComponentIsPredefined then
+    ioInclusionSet += !"option-" . mOptionComponentName ;
+  end if ;
   outCppExpression := "GALGAS_string (gOption_" . [mOptionComponentName identifierRepresentation]
                   . "_" . [mOptionEntryName identifierRepresentation] . ".reader_string ())" ;
 end method ;
@@ -370,7 +380,9 @@ override method @optionCommentExpressionForGeneration generateExpression
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
-  ioInclusionSet += !"option-" . mOptionComponentName ;
+  if not mOptionComponentIsPredefined then
+    ioInclusionSet += !"option-" . mOptionComponentName ;
+  end if ;
   outCppExpression := "gOption_" . [mOptionComponentName identifierRepresentation]
                   . "_" . [mOptionEntryName identifierRepresentation] . ".reader_comment ()" ;
 end method ;

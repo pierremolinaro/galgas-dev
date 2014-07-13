@@ -41,6 +41,7 @@ function generateProcedure
   ->@string outGeneratedCode
 :
 #--- Build unused variable set
+  var inclusionSet := [@stringset emptySet] ;
   @stringset unusedVariableCppNameSet [emptySet] ;
   if inGenerateSyntaxDirectedTranslationString then
     unusedVariableCppNameSet += !syntaxDirectedTranslationResultVarName [] ;
@@ -49,6 +50,11 @@ function generateProcedure
     unusedVariableCppNameSet += !compilerCppName [] ;
   end if ;
   foreach inFormalArgumentList do
+#    if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentIn] then
+#      [mFormalArgumentType addHeaderFileName !?inclusionSet] ;
+#    elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
+#      [mFormalArgumentType addHeaderFileName !?inclusionSet] ;
+#    end if ;
     if mFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentOut] then
       unusedVariableCppNameSet += !mFormalArgumentCppName ;
     end if ;
@@ -57,7 +63,6 @@ function generateProcedure
   var temporaryVariableIndex := 0 ;
   var routineBody := "" ;
   [!?routineBody incIndentation !2] ;
-  var inclusionSet := [@stringset emptySet] ;
   foreach inInstructionList do
     [mInstruction generateInstruction
       !?inclusionSet
@@ -72,11 +77,11 @@ function generateProcedure
   outGeneratedCode := "" ;
   if inGenerateForGalgas3 then
     foreach inFormalArgumentList do
-      switch mFormalArgumentPassingMode 
-      when argumentOut :
+#      switch mFormalArgumentPassingMode 
+#      when argumentOut :
         [mFormalArgumentType addHeaderFileName !?inclusionSet] ;
-      when argumentConstantIn, argumentIn, argumentInOut :
-      end switch ;
+#      when argumentConstantIn, argumentIn, argumentInOut :
+#      end switch ;
     end foreach ;
     for (s) in inclusionSet do
       outGeneratedCode .= "#include \"" . s . ".h\"\n" ;    
@@ -168,18 +173,19 @@ function generateFunction
   ->@string outGeneratedCode
 :
   outGeneratedCode := "" ;
+  var inclusionSet := [@stringset emptySet] ;
 #--- Build unused variable set
   @stringset unusedVariableCppNameSet [emptySet] ;
   unusedVariableCppNameSet += !compilerCppName [] ;
 #--- Release 'in' and 'const in' arguments at the end of the routine
   foreach inFormalArgumentList do
+    [mFormalArgumentType addHeaderFileName !?inclusionSet] ;
     unusedVariableCppNameSet += !mFormalArgumentCppName ;
   end foreach ;
 #--- Generate body
   @uint temporaryVariableIndex := 0 ;
   @string routineBody := "" ;
   [!?routineBody incIndentation !2] ;
-  var inclusionSet := [@stringset emptySet] ;
   foreach inInstructionList do
     [mInstruction generateInstruction
       !?inclusionSet
@@ -191,7 +197,9 @@ function generateFunction
   [!?routineBody decIndentation !2] ;
 #--- Generation inclusions
   if inGenerateForGalgas3 then
-    outGeneratedCode .= "#include \"" . inFunctionInclusionFile . ".h\"\n" ;
+    if inFunctionInclusionFile != "" then
+      outGeneratedCode .= "#include \"" . inFunctionInclusionFile . ".h\"\n" ;
+    end if ;
     for (s) in inclusionSet do
       outGeneratedCode .= "#include \"" . s . ".h\"\n" ;
     end for ;
@@ -882,9 +890,10 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
   ;
   
   template abstractCategoryMethodImplementation "abstract-category-method.cpp.gTemplate"
-    ?@string CLASS_NAME
+    ?@unifiedTypeMapProxy RECEIVER_TYPE
     ?@string METHOD_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
+    ?@stringset INCLUSION_SET
   ;
   
   template categoryMethodDeclaration "category-method.h.gTemplate"
@@ -908,6 +917,9 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
   
   template filewrapperDeclaration "filewrapper-declaration.h.gTemplate"
     ?@stringlist FILE_INDEX_STRING_LIST
+    ?@stringlist DIRECTORY_INDEX_STRING_LIST
+    ?@stringlist TEXT_CONTENT_INDEX_STRING_LIST
+    ?@stringlist BINARY_CONTENT_INDEX_STRING_LIST
     ?@string FILEWRAPPER_NAME
   ;
   
@@ -1433,51 +1445,6 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-routine recursivlyEnumerateRegularFile
-  ??@wrapperFileMap inFilewrapperFileMap
-  ??@wrapperDirectoryMap inFilewrapperDirectoryMap
-  ?!@stringlist ioRegularFileIndexStringList
-:
-  foreach inFilewrapperFileMap do
-    ioRegularFileIndexStringList += ![[ioRegularFileIndexStringList length] string] ;
-  end foreach ;
-  foreach inFilewrapperDirectoryMap do
-    recursivlyEnumerateRegularFile
-      !mRegularFileMap
-      !mDirectoryMap
-      !?ioRegularFileIndexStringList
-    ;
-  end foreach ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-override reader @filewrapperDeclarationForGeneration appendDeclaration1
-  ??@bool unused inGenerateForGalgas3
-  -> @string outHeader
-:
-  @stringlist regularFileIndexStringList [emptyList] ;
-  recursivlyEnumerateRegularFile
-    !mFilewrapperFileMap
-    !mFilewrapperDirectoryMap
-    !?regularFileIndexStringList
-  ;
-  outHeader := [filewrapper semanticComponentGenerationTemplate.filewrapperDeclaration
-    !regularFileIndexStringList
-    !mFilewrapperName
-  ] ; 
-#--- template generation
-  foreach mFilewrapperTemplateListForGeneration do
-    outHeader .= [filewrapper semanticComponentGenerationTemplate.filewrapperTemplateDeclaration
-      !mFilewrapperName
-      !mFilewrapperTemplateName
-      !mFilewrapperTemplateFormalInputParameters
-    ] ;
-  end foreach ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
 override reader @abstractCategoryModifierForGeneration appendDeclaration1
   ??@bool unused inGenerateForGalgas3
   -> @string outHeader
@@ -1517,7 +1484,7 @@ override reader @abstractCategoryMethodForGeneration appendDeclaration1
   -> @string outHeader
 :
   outHeader := [filewrapper semanticComponentGenerationTemplate.abstractCategoryMethodDeclaration
-    !mTypeName
+    ![mReceiverType key]
     !mAbstractCategoryMethodName
     !mAbstractCategoryMethodFormalParameterList
   ] ; 
@@ -1973,13 +1940,21 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @abstractCategoryMethodForGeneration appendSpecificImplementation
-  ??@bool unused inGenerateForGalgas3
+  ??@bool inGenerateForGalgas3
   ->@string outImplementation
 :
+  var inclusionSet := [@stringset emptySet] ;
+  if inGenerateForGalgas3 then
+    [mReceiverType addHeaderFileName !?inclusionSet] ;
+    for * in mAbstractCategoryMethodFormalParameterList do
+      [mFormalArgumentType addHeaderFileName !?inclusionSet] ;
+    end for ;
+  end if ;
   outImplementation := [filewrapper semanticComponentGenerationTemplate.abstractCategoryMethodImplementation
-    !mTypeName
+    !mReceiverType
     !mAbstractCategoryMethodName
     !mAbstractCategoryMethodFormalParameterList
+    !inclusionSet
   ] ; 
 end reader ;
 
@@ -2164,7 +2139,7 @@ override reader @categoryReaderForGeneration appendSpecificImplementation
       !mCategoryReaderName
       !generateFunction [
         !"categoryReader_" . [mCategoryReaderName identifierRepresentation]
-        !mCategoryReaderName
+        !""
         !inGenerateForGalgas3
         !categoryReaderFormalParameterList
         !mSemanticInstructionListForGeneration
@@ -2221,6 +2196,76 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
+#! Filewrapper
+
+#---------------------------------------------------------------------------*
+
+routine recursivlyEnumerateRegularFile
+  ??@wrapperFileMap inFilewrapperFileMap
+  ??@wrapperDirectoryMap inFilewrapperDirectoryMap
+  ?!@stringlist ioRegularFileIndexStringList
+  ?!@stringlist ioDirectoryIndexStringList
+  ?!@stringlist ioRegularTextContentIndexStringList
+  ?!@stringlist ioRegularBinaryContentIndexStringList
+:
+  ioDirectoryIndexStringList += ![[ioDirectoryIndexStringList length] string] ;
+  foreach inFilewrapperFileMap do
+    ioRegularFileIndexStringList += ![[ioRegularFileIndexStringList length] string] ;
+    if mIsTextFile then
+      ioRegularTextContentIndexStringList += ![mWrapperFileIndex string] ;
+    else
+      ioRegularBinaryContentIndexStringList += ![mWrapperFileIndex string] ;
+    end if ;
+  end foreach ;
+  for * in inFilewrapperDirectoryMap do
+    recursivlyEnumerateRegularFile
+      !mRegularFileMap
+      !mDirectoryMap
+      !?ioRegularFileIndexStringList
+      !?ioDirectoryIndexStringList
+      !?ioRegularTextContentIndexStringList
+      !?ioRegularBinaryContentIndexStringList
+    ;
+  end for ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+override reader @filewrapperDeclarationForGeneration appendDeclaration1
+  ??@bool unused inGenerateForGalgas3
+  -> @string outHeader
+:
+  @stringlist regularFileIndexStringList [emptyList] ;
+  @stringlist regularBinaryContentIndexStringList [emptyList] ;
+  @stringlist regularTextContentIndexStringList [emptyList] ;
+  @stringlist directoryIndexStringList [emptyList] ;
+  recursivlyEnumerateRegularFile
+    !mFilewrapperFileMap
+    !mFilewrapperDirectoryMap
+    !?regularFileIndexStringList
+    !?directoryIndexStringList
+    !?regularTextContentIndexStringList
+    !?regularBinaryContentIndexStringList
+  ;
+  outHeader := [filewrapper semanticComponentGenerationTemplate.filewrapperDeclaration
+    !regularFileIndexStringList
+    !directoryIndexStringList
+    !regularTextContentIndexStringList
+    !regularBinaryContentIndexStringList
+    !mFilewrapperName
+  ] ; 
+#--- template generation
+  foreach mFilewrapperTemplateListForGeneration do
+    outHeader .= [filewrapper semanticComponentGenerationTemplate.filewrapperTemplateDeclaration
+      !mFilewrapperName
+      !mFilewrapperTemplateName
+      !mFilewrapperTemplateFormalInputParameters
+    ] ;
+  end foreach ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
 routine generateWrapperContents
   ??@string inFilewrapperName
   ??@string inFilewrapperDirectory
@@ -2234,11 +2279,11 @@ routine generateWrapperContents
     if mIsTextFile then
       const @string contents := [@string stringWithContentsOfFile !mAbsoluteFilePath] ;
       ioImplementation .= "//--- File '" . inFilewrapperDirectory . "/" . lkey . "'\n\n"
-      .  "static const char * gWrapperFileContent_"
+      .  "const char * gWrapperFileContent_"
       . [mWrapperFileIndex string] . "_"
       . [inFilewrapperName identifierRepresentation] . " = "
       . [contents utf8Representation] . " ;\n\n"
-      . "static const cRegularFileWrapper gWrapperFile_" . [mWrapperFileIndex string]. "_"
+      . "const cRegularFileWrapper gWrapperFile_" . [mWrapperFileIndex string]. "_"
       . [inFilewrapperName identifierRepresentation] . " (\n"
       . "  " . [lkey utf8Representation] . ",\n"
       . "  " . [[lkey pathExtension] utf8Representation] . ",\n"
@@ -2249,11 +2294,11 @@ routine generateWrapperContents
     else
       const @data contents := [@data dataWithContentsOfFile !mAbsoluteFilePath] ;
       ioImplementation .= "//--- File '" . inFilewrapperDirectory . "/" . lkey . "'\n\n"
-      .  "static const unsigned char gWrapperFileContent_"
+      .  "const uint8_t gWrapperFileContent_"
       . [mWrapperFileIndex string] . "_"
       . [inFilewrapperName identifierRepresentation] . " [" . [contents length] . "] = {"
       . [contents cStringRepresentation] . "} ;\n\n"
-      . "static const cRegularFileWrapper gWrapperFile_" . [mWrapperFileIndex string]. "_"
+      . "const cRegularFileWrapper gWrapperFile_" . [mWrapperFileIndex string]. "_"
       . [inFilewrapperName identifierRepresentation] . " (\n"
       . "  " . [lkey utf8Representation] . ",\n"
       . "  " . [[lkey pathExtension] utf8Representation] . ",\n"
