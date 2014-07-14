@@ -750,7 +750,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @terminalCheckInstructionForGeneration generateInstruction
-  ?!@stringset ioInclusionSet
+  ?!@stringset unused ioInclusionSet
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ??@bool inGenerateSyntaxDirectedTranslationString
@@ -1376,7 +1376,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @syntaxSendInstructionForGeneration generateInstruction
-  ?!@stringset unused ioInclusionSet
+  ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ??@bool unused inGenerateSyntaxDirectedTranslationString

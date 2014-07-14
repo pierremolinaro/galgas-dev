@@ -1719,11 +1719,11 @@ override method @testDynamicClassInExpressionAST analyzeSemanticExpression
   @semanticExpressionForGeneration expression ;
   [mReceiverExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?expression] ;
 #--- Get type information
-   const type := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
+   const castType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
 #--- This type is either a class
   if [[expression mType] mTypeKindEnum] == [@typeKindEnum classType] then
   #--- Check expression type is a descendant of named type
-    @unifiedTypeMapProxy t := type ;
+    @unifiedTypeMapProxy t := castType ;
     @bool found := t == [expression mType] ;
     loop [inAnalysisContext->mSemanticContext->mTypeMap count] + 1 :
     while (not found) & not [[t mSuperType] isNull] do
@@ -1745,7 +1745,7 @@ override method @testDynamicClassInExpressionAST analyzeSemanticExpression
     ![mTypeName location]
     !expression
     !mTypeComparisonKind
-    ![mTypeName string]
+    !castType
   ] ;
 end method ;
 

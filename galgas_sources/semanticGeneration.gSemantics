@@ -77,11 +77,7 @@ function generateProcedure
   outGeneratedCode := "" ;
   if inGenerateForGalgas3 then
     foreach inFormalArgumentList do
-#      switch mFormalArgumentPassingMode 
-#      when argumentOut :
-        [mFormalArgumentType addHeaderFileName !?inclusionSet] ;
-#      when argumentConstantIn, argumentIn, argumentInOut :
-#      end switch ;
+      [mFormalArgumentType addHeaderFileName !?inclusionSet] ;
     end foreach ;
     for (s) in inclusionSet do
       outGeneratedCode .= "#include \"" . s . ".h\"\n" ;    
@@ -353,13 +349,15 @@ end function ;
 #---------------------------------------------------------------------------*
 
 function generateCategoryMethod
-  ??@string inClassName
+  ??@unifiedTypeMapProxy inReceiverType
   ??@string inBaseClassName
+  ??@bool inGenerateForGalgas3
   ??@string inMethodName
   ??@formalParameterListForGeneration inFormalArgumentList
   ??@semanticInstructionListForGeneration inInstructionList
   ->@string outGeneratedCode
 :
+  const className := [inReceiverType key] ;
 #--- Build unused variable set
   @stringset unusedVariableCppNameSet [emptySet] ;
   unusedVariableCppNameSet += !compilerCppName [] ;
@@ -382,11 +380,36 @@ function generateCategoryMethod
     ] ;
   end foreach ;
   [!?routineBody decIndentation !2] ;
+#--- Generate inclusions
+  outGeneratedCode := "" ;
+  if inGenerateForGalgas3 then
+    @unifiedTypeMapProxy baseType := inReceiverType ;
+    @bool searching := true ;
+    loop [@uint max] : while searching do
+      if not [[baseType mSuperType] isNull] then
+        if [[[baseType mSuperType] mInstanceMethodMap] hasKey !inMethodName] then
+          baseType := [baseType mSuperType] ;
+        else
+          searching := false ;
+        end if ;
+      else
+        searching := false ;
+      end if ;  
+    end loop ;
+    inclusionSet += !"method-" . [baseType key] . "-" . inMethodName ;
+    [inReceiverType addHeaderFileName !?inclusionSet] ;
+    foreach inFormalArgumentList do
+      [mFormalArgumentType addHeaderFileName !?inclusionSet] ;
+    end foreach ;
+    for (s) in inclusionSet do
+      outGeneratedCode .= "#include \"" . s . ".h\"\n" ;    
+    end for ;
+  end if ;
 #--- Generate header
-  outGeneratedCode := "static void categoryMethod_" . [inClassName identifierRepresentation] . "_" . [inMethodName identifierRepresentation] . " (" ;
+  outGeneratedCode .= "static void categoryMethod_" . [className identifierRepresentation] . "_" . [inMethodName identifierRepresentation] . " (" ;
   const @uint colRef := [outGeneratedCode currentColumn] ;
   if inBaseClassName == "" then
-    outGeneratedCode .= "const cPtr_" . [inClassName identifierRepresentation] . " * " ;
+    outGeneratedCode .= "const cPtr_" . [className identifierRepresentation] . " * " ;
   else
     outGeneratedCode .= "const cPtr_" . [inBaseClassName identifierRepresentation] . " * " ;
   end if ;
@@ -432,11 +455,11 @@ function generateCategoryMethod
 #--- Generate routine body
   if not currentObjectIsUnused then
     if inBaseClassName == "" then
-      outGeneratedCode .= "  const cPtr_" . [inClassName identifierRepresentation] . " * object = inObject ;\n" ;
+      outGeneratedCode .= "  const cPtr_" . [className identifierRepresentation] . " * object = inObject ;\n" ;
     else
-      outGeneratedCode .= "  const cPtr_" . [inClassName identifierRepresentation] . " * object = (const cPtr_" . [inClassName identifierRepresentation] . " *) inObject ;\n" ;
+      outGeneratedCode .= "  const cPtr_" . [className identifierRepresentation] . " * object = (const cPtr_" . [className identifierRepresentation] . " *) inObject ;\n" ;
     end if ;
-    outGeneratedCode .= "  macroValidSharedObject (object, cPtr_" . [inClassName identifierRepresentation] . ") ;\n" ;
+    outGeneratedCode .= "  macroValidSharedObject (object, cPtr_" . [className identifierRepresentation] . ") ;\n" ;
   end if ;
   outGeneratedCode .= routineBody ;
 #---
@@ -450,8 +473,9 @@ end function ;
 #---------------------------------------------------------------------------*
 
 function generateCategoryReader
-  ??@string inClassName
+  ??@unifiedTypeMapProxy inReceiverType
   ??@string inBaseClassName
+  ??@bool inGenerateForGalgas3
   ??@string inReaderName
   ??@formalInputParameterListForGeneration inFormalArgumentList
   ??@semanticInstructionListForGeneration inInstructionList
@@ -460,6 +484,7 @@ function generateCategoryReader
   ??@string inResultVariableCppName
   ->@string outGeneratedCode
 :
+  const className := [inReceiverType key] ;
   outGeneratedCode := "" ;
 #--- Build unused variable set
   @stringset unusedVariableCppNameSet [emptySet] ;
@@ -483,12 +508,37 @@ function generateCategoryReader
     ] ;
   end foreach ;
   [!?routineBody decIndentation !2] ;
+#--- Generate inclusions
+  if inGenerateForGalgas3 then
+    [inReceiverType addHeaderFileName !?inclusionSet] ;
+    @unifiedTypeMapProxy baseType := inReceiverType ;
+    @bool searching := true ;
+    loop [@uint max] : while searching do
+      if not [[baseType mSuperType] isNull] then
+        if [[[baseType mSuperType] mReaderMap] hasKey !inReaderName] then
+          baseType := [baseType mSuperType] ;
+        else
+          searching := false ;
+        end if ;
+      else
+        searching := false ;
+      end if ;  
+    end loop ;
+    inclusionSet += !"getter-" . [baseType key] . "-" . inReaderName ;
+    [inReceiverType addHeaderFileName !?inclusionSet] ;
+    foreach inFormalArgumentList do
+      [mFormalArgumentType addHeaderFileName !?inclusionSet] ;
+    end foreach ;
+    for (s) in inclusionSet do
+      outGeneratedCode .= "#include \"" . s . ".h\"\n" ;    
+    end for ;
+  end if ;
 #--- Generate header
   outGeneratedCode .= "static GALGAS_" . [inResultTypeName identifierRepresentation] . " categoryReader_" ;
-  outGeneratedCode .= [inClassName identifierRepresentation] . "_" . [inReaderName identifierRepresentation] . " (" ;
+  outGeneratedCode .= [className identifierRepresentation] . "_" . [inReaderName identifierRepresentation] . " (" ;
   const @uint colRef := [outGeneratedCode currentColumn] ;
   if inBaseClassName == "" then
-    outGeneratedCode .= "const cPtr_" . [inClassName identifierRepresentation] . " * " ;
+    outGeneratedCode .= "const cPtr_" . [className identifierRepresentation] . " * " ;
   else
     outGeneratedCode .= "const cPtr_" . [inBaseClassName identifierRepresentation] . " * " ;
   end if ;
@@ -532,11 +582,11 @@ function generateCategoryReader
 #--- Generate routine body
   if not currentObjectIsUnused then
     if inBaseClassName == "" then
-      outGeneratedCode .= "  const cPtr_" . [inClassName identifierRepresentation] . " * object = inObject ;\n" ;
+      outGeneratedCode .= "  const cPtr_" . [className identifierRepresentation] . " * object = inObject ;\n" ;
     else
-      outGeneratedCode .= "  const cPtr_" . [inClassName identifierRepresentation] . " * object = (const cPtr_" . [inClassName identifierRepresentation] . " *) inObject ;\n" ;
+      outGeneratedCode .= "  const cPtr_" . [className identifierRepresentation] . " * object = (const cPtr_" . [className identifierRepresentation] . " *) inObject ;\n" ;
     end if ;
-    outGeneratedCode .= "  macroValidSharedObject (object, cPtr_" . [inClassName identifierRepresentation] . ") ;\n" ;
+    outGeneratedCode .= "  macroValidSharedObject (object, cPtr_" . [className identifierRepresentation] . ") ;\n" ;
   end if ;
   outGeneratedCode .= routineBody ;
 #--- Generate return instruction
@@ -825,6 +875,7 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
     ?@string READER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@unifiedTypeMapProxy RETURN_TYPE
+    ?@stringset INCLUSION_SET
   ;
   
   template categoryReaderDeclaration "category-reader.h.gTemplate"
@@ -840,6 +891,7 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@unifiedTypeMapProxy RETURN_TYPE
     ?@string READER_IMPLEMENTATION
+    ?@stringset INCLUSION_SET
   ;
   
   template overridingCategoryReaderImplementation "overriding-category-reader.cpp.gTemplate"
@@ -907,6 +959,7 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
     ?@string METHOD_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@string METHOD_IMPLEMENTATION
+    ?@stringset INCLUSION_SET
   ;
   
   template overridingCategoryMethodImplementation "overriding-category-method.cpp.gTemplate"
@@ -1464,88 +1517,17 @@ override reader @categoryModifierForGeneration appendDeclaration1
 :
   if mImplementedAsFunction then
     outHeader := [filewrapper semanticComponentGenerationTemplate.categoryModifierAsFunctionDeclaration
-      ![mSelfType key]
+      ![mReceiverType key]
       !mCategoryModifierName
       !mCategoryModifierFormalParameterList
     ] ; 
   else
     outHeader := [filewrapper semanticComponentGenerationTemplate.categoryModifierDeclaration
-      ![mSelfType key]
+      ![mReceiverType key]
       !mCategoryModifierName
       !mCategoryModifierFormalParameterList
     ] ;
   end if ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @abstractCategoryMethodForGeneration appendDeclaration1
-  ??@bool unused inGenerateForGalgas3
-  -> @string outHeader
-:
-  outHeader := [filewrapper semanticComponentGenerationTemplate.abstractCategoryMethodDeclaration
-    ![mReceiverType key]
-    !mAbstractCategoryMethodName
-    !mAbstractCategoryMethodFormalParameterList
-  ] ; 
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @categoryMethodForGeneration appendDeclaration1
-  ??@bool unused inGenerateForGalgas3
-  -> @string outHeader
-:
-  if mImplementedAsFunction then
-    outHeader := [filewrapper semanticComponentGenerationTemplate.categoryMethodAsFunctionDeclaration
-      ![mSelfType key]
-      !mCategoryMethodName
-      !mCategoryMethodFormalParameterList
-    ] ; 
-  else
-    outHeader := [filewrapper semanticComponentGenerationTemplate.categoryMethodDeclaration
-      ![mSelfType key]
-      !mCategoryMethodName
-      !mCategoryMethodFormalParameterList
-    ] ; 
-  end if ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @abstractCategoryReaderForGeneration appendDeclaration1
-  ??@bool unused inGenerateForGalgas3
-  -> @string outHeader
-:
-  outHeader := [filewrapper semanticComponentGenerationTemplate.abstractCategoryReaderDeclaration
-    !mTypeName
-    !mAbstractCategoryReaderName
-    !mAbstractCategoryReaderFormalParameterList
-    !mResultType
-  ] ; 
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @categoryReaderForGeneration appendDeclaration1
-  ??@bool unused inGenerateForGalgas3
-  -> @string outHeader
-:
-  if mImplementedAsFunction then
-    outHeader := [filewrapper semanticComponentGenerationTemplate.categoryReaderAsFunctionDeclaration
-      ![mSelfType key]
-      !mCategoryReaderName
-      !mCategoryReaderFormalParameterList
-      ![mResultType identifierRepresentation]
-    ] ; 
-  else
-    outHeader := [filewrapper semanticComponentGenerationTemplate.categoryReaderDeclaration
-      ![mSelfType key]
-      !mCategoryReaderName
-      !mCategoryReaderFormalParameterList
-      !mResultType
-    ] ;
-  end if ; 
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -1939,6 +1921,23 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
+#! Method
+
+#---------------------------------------------------------------------------*
+
+override reader @abstractCategoryMethodForGeneration appendDeclaration1
+  ??@bool unused inGenerateForGalgas3
+  -> @string outHeader
+:
+  outHeader := [filewrapper semanticComponentGenerationTemplate.abstractCategoryMethodDeclaration
+    ![mReceiverType key]
+    !mAbstractCategoryMethodName
+    !mAbstractCategoryMethodFormalParameterList
+  ] ; 
+end reader ;
+
+#---------------------------------------------------------------------------*
+
 override reader @abstractCategoryMethodForGeneration appendSpecificImplementation
   ??@bool inGenerateForGalgas3
   ->@string outImplementation
@@ -1960,6 +1959,27 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
+override reader @categoryMethodForGeneration appendDeclaration1
+  ??@bool unused inGenerateForGalgas3
+  -> @string outHeader
+:
+  if mImplementedAsFunction then
+    outHeader := [filewrapper semanticComponentGenerationTemplate.categoryMethodAsFunctionDeclaration
+      ![mReceiverType key]
+      !mCategoryMethodName
+      !mCategoryMethodFormalParameterList
+    ] ; 
+  else
+    outHeader := [filewrapper semanticComponentGenerationTemplate.categoryMethodDeclaration
+      ![mReceiverType key]
+      !mCategoryMethodName
+      !mCategoryMethodFormalParameterList
+    ] ; 
+  end if ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
 override reader @categoryMethodForGeneration appendSpecificImplementation
   ??@bool inGenerateForGalgas3
   ->@string outImplementation
@@ -1968,13 +1988,13 @@ override reader @categoryMethodForGeneration appendSpecificImplementation
     @formalParameterListForGeneration categoryMethodFormalParameterList := mCategoryMethodFormalParameterList ;
     [!?categoryMethodFormalParameterList insertAtIndex
       ![@formalArgumentPassingModeAST argumentConstantIn]
-      !mSelfType
+      !mReceiverType
       ![@lstring new !"self" !here]
       !"inObject"
       !0
     ] ;
     outImplementation := [filewrapper semanticComponentGenerationTemplate.categoryMethodAsFunctionImplementation
-      ![mSelfType key]
+      ![mReceiverType key]
       !mCategoryMethodName
       !generateProcedure [
         !"categoryMethod_" . [mCategoryMethodName identifierRepresentation]
@@ -1989,41 +2009,86 @@ override reader @categoryMethodForGeneration appendSpecificImplementation
       ]
     ] ; 
   else
+    var inclusionSet := [@stringset emptySet] ;
+    if inGenerateForGalgas3 then
+      [mReceiverType addHeaderFileName !?inclusionSet] ;
+      for * in mCategoryMethodFormalParameterList do
+        [mFormalArgumentType addHeaderFileName !?inclusionSet] ;
+      end for ;
+    end if ;
     const @string methodImplementation := generateCategoryMethod [
-      ![mSelfType key]
+      !mReceiverType
       !""
+      !inGenerateForGalgas3
       !mCategoryMethodName
       !mCategoryMethodFormalParameterList
       !mSemanticInstructionListForGeneration
     ] ;
     outImplementation := [filewrapper semanticComponentGenerationTemplate.categoryMethodImplementation
-      ![mSelfType key]
+      ![mReceiverType key]
       !mCategoryMethodName
       !mCategoryMethodFormalParameterList
       !methodImplementation
+      !inclusionSet
     ] ;
   end if ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
+#override reader @overridingCategoryMethodForGeneration appendDeclaration1
+#  ??@bool inGenerateForGalgas3
+#  -> @string outHeader
+#:
+#  if inGenerateForGalgas3 then
+#    @unifiedTypeMapProxy baseType := mReceiverType ;
+#    @bool searching := true ;
+#    loop [@uint max] : while searching do
+#      if not [[baseType mSuperType] isNull] then
+#        if [[[baseType mSuperType] mInstanceMethodMap] hasKey !mCategoryMethodName] then
+#          baseType := [baseType mSuperType] ;
+#        else
+#          searching := false ;
+#        end if ;
+#      else
+#        searching := false ;
+#      end if ;  
+#    end loop ;
+#    outHeader := "#include \"method-" . [baseType key] . "-" . mCategoryMethodName . ".h\"\n\n" ;
+#  else
+#    outHeader := "" ;
+#  end if ;
+##    outHeader := [filewrapper semanticComponentGenerationTemplate.categoryMethodDeclaration
+##      ![mReceiverType key]
+##      !mCategoryMethodName
+##      !mCategoryMethodFormalParameterList
+##    ] ; 
+#end reader ;
+
+#---------------------------------------------------------------------------*
+
 override reader @overridingCategoryMethodForGeneration appendSpecificImplementation
-  ??@bool unused inGenerateForGalgas3
+  ??@bool inGenerateForGalgas3
   ->@string outImplementation
 :
   const @string methodImplementation := generateCategoryMethod [
-    !mTypeName
+    !mReceiverType
     !mBaseTypeName
+    !inGenerateForGalgas3
     !mCategoryMethodName
     !mCategoryMethodFormalParameterList
     !mSemanticInstructionListForGeneration
   ] ;
   outImplementation := [filewrapper semanticComponentGenerationTemplate.overridingCategoryMethodImplementation
-    !mTypeName
+    ![mReceiverType key]
     !mCategoryMethodName
     !methodImplementation
   ] ; 
 end reader ;
+
+#---------------------------------------------------------------------------*
+
+#! Setter
 
 #---------------------------------------------------------------------------*
 
@@ -2048,13 +2113,13 @@ override reader @categoryModifierForGeneration appendSpecificImplementation
     @formalParameterListForGeneration categoryModifierFormalParameterList := mCategoryModifierFormalParameterList ;
     [!?categoryModifierFormalParameterList insertAtIndex
       ![@formalArgumentPassingModeAST argumentInOut]
-      !mSelfType
+      !mReceiverType
       ![@lstring new !"self" !here]
       !"ioObject"
       !0
     ] ;
     outImplementation := [filewrapper semanticComponentGenerationTemplate.categoryMethodAsFunctionImplementation
-      ![mSelfType key]
+      ![mReceiverType key]
       !mCategoryModifierName
       !generateProcedure [
         !"categoryModifier_" . [mCategoryModifierName identifierRepresentation]
@@ -2070,14 +2135,14 @@ override reader @categoryModifierForGeneration appendSpecificImplementation
     ] ; 
   else
     const @string modifierImplementation := generateCategoryModifier [
-      ![mSelfType key]
+      ![mReceiverType key]
       !""
       !mCategoryModifierName
       !mCategoryModifierFormalParameterList
       !mSemanticInstructionListForGeneration
     ] ;
     outImplementation := [filewrapper semanticComponentGenerationTemplate.categoryModifierImplementation
-      ![mSelfType key]
+      ![mReceiverType key]
       !mCategoryModifierName
       !mCategoryModifierFormalParameterList
       !modifierImplementation
@@ -2107,16 +2172,65 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @abstractCategoryReaderForGeneration appendSpecificImplementation
+#! Getter
+
+#---------------------------------------------------------------------------*
+
+override reader @abstractCategoryReaderForGeneration appendDeclaration1
   ??@bool unused inGenerateForGalgas3
-  ->@string outImplementation
+  -> @string outHeader
 :
-  outImplementation := [filewrapper semanticComponentGenerationTemplate.abstractCategoryReaderImplementation
-    !mTypeName
+  outHeader := [filewrapper semanticComponentGenerationTemplate.abstractCategoryReaderDeclaration
+    ![mReceiverType key]
     !mAbstractCategoryReaderName
     !mAbstractCategoryReaderFormalParameterList
     !mResultType
   ] ; 
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @abstractCategoryReaderForGeneration appendSpecificImplementation
+  ??@bool inGenerateForGalgas3
+  ->@string outImplementation
+:
+  var inclusionSet := [@stringset emptySet] ;
+  if inGenerateForGalgas3 then
+    [mReceiverType addHeaderFileName !?inclusionSet] ;
+    for * in mAbstractCategoryReaderFormalParameterList do
+      [mFormalArgumentType addHeaderFileName !?inclusionSet] ;
+    end for ;
+  end if ;
+  outImplementation := [filewrapper semanticComponentGenerationTemplate.abstractCategoryReaderImplementation
+    ![mReceiverType key]
+    !mAbstractCategoryReaderName
+    !mAbstractCategoryReaderFormalParameterList
+    !mResultType
+    !inclusionSet
+  ] ; 
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @categoryReaderForGeneration appendDeclaration1
+  ??@bool unused inGenerateForGalgas3
+  -> @string outHeader
+:
+  if mImplementedAsFunction then
+    outHeader := [filewrapper semanticComponentGenerationTemplate.categoryReaderAsFunctionDeclaration
+      ![mReceiverType key]
+      !mCategoryReaderName
+      !mCategoryReaderFormalParameterList
+      ![mResultType identifierRepresentation]
+    ] ; 
+  else
+    outHeader := [filewrapper semanticComponentGenerationTemplate.categoryReaderDeclaration
+      ![mReceiverType key]
+      !mCategoryReaderName
+      !mCategoryReaderFormalParameterList
+      !mResultType
+    ] ;
+  end if ; 
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -2128,14 +2242,14 @@ override reader @categoryReaderForGeneration appendSpecificImplementation
   if mImplementedAsFunction then
     @formalInputParameterListForGeneration categoryReaderFormalParameterList := mCategoryReaderFormalParameterList ;
     [!?categoryReaderFormalParameterList insertAtIndex
-      !mSelfType
+      !mReceiverType
       !"inObject"
       ![@lstring new !"self" !here]
       !true  
       !0    
     ] ;
     outImplementation := [filewrapper semanticComponentGenerationTemplate.categoryReaderAsFunctionImplementation
-      ![mSelfType key]
+      ![mReceiverType key]
       !mCategoryReaderName
       !generateFunction [
         !"categoryReader_" . [mCategoryReaderName identifierRepresentation]
@@ -2150,9 +2264,17 @@ override reader @categoryReaderForGeneration appendSpecificImplementation
       ]
     ] ; 
   else
+    var inclusionSet := [@stringset emptySet] ;
+    if inGenerateForGalgas3 then
+      [mReceiverType addHeaderFileName !?inclusionSet] ;
+      for * in mCategoryReaderFormalParameterList do
+        [mFormalArgumentType addHeaderFileName !?inclusionSet] ;
+      end for ;
+    end if ;
     const @string categoryReaderCode := generateCategoryReader [
-      ![mSelfType key]
+      !mReceiverType
       !""
+      !inGenerateForGalgas3
       !mCategoryReaderName
       !mCategoryReaderFormalParameterList
       !mSemanticInstructionListForGeneration
@@ -2161,11 +2283,12 @@ override reader @categoryReaderForGeneration appendSpecificImplementation
       !mResultVarCppName
     ] ;
     outImplementation := [filewrapper semanticComponentGenerationTemplate.categoryReaderImplementation
-      ![mSelfType key]
+      ![mReceiverType key]
       !mCategoryReaderName
       !mCategoryReaderFormalParameterList
       !mResultType
       !categoryReaderCode
+      !inclusionSet
     ] ;
   end if ;
 end reader ;
@@ -2173,12 +2296,13 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @overrideCategoryReaderForGeneration appendSpecificImplementation
-  ??@bool unused inGenerateForGalgas3
+  ??@bool inGenerateForGalgas3
   ->@string outImplementation
 :
   const @string categoryReaderCode := generateCategoryReader [
-    !mTypeName
+    !mReceiverType
     !mBaseTypeName
+    !inGenerateForGalgas3
     !mOverridingCategoryReaderName
     !mOverridingCategoryReaderFormalParameterList
     !mSemanticInstructionListForGeneration
@@ -2187,7 +2311,7 @@ override reader @overrideCategoryReaderForGeneration appendSpecificImplementatio
     !mResultVarCppName
   ] ;
   outImplementation := [filewrapper semanticComponentGenerationTemplate.overridingCategoryReaderImplementation
-    !mTypeName
+    ![mReceiverType key]
     !mOverridingCategoryReaderName
     !mResultType
     !categoryReaderCode

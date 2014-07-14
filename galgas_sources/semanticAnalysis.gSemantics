@@ -1681,7 +1681,7 @@ override method @overridingCategoryMethodAST semanticAnalysis
     ![@overridingCategoryMethodForGeneration new
       !false # Do not generate Cpp header file
       !"method-" . [selfType key] . "-" . mOverridingCategoryMethodName
-      ![mTypeName string]
+      !selfType
       !baseTypeName
       ![mOverridingCategoryMethodName string]
       !formalParameterListForGeneration
@@ -2011,7 +2011,7 @@ override method @abstractCategoryReaderAST semanticAnalysis
     ![@abstractCategoryReaderForGeneration new
       !true # Generate Cpp header file
       !"getter-" . mTypeName . "-" . mAbstractCategoryReaderName
-      ![mTypeName string]
+      !selfType
       ![mAbstractCategoryReaderName string]
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAbstractCategoryReaderReturnedTypeName]
       !formalParameterListForGeneration
@@ -2176,7 +2176,7 @@ override method @overridingCategoryReaderAST semanticAnalysis
     ![@overrideCategoryReaderForGeneration new
       !false # Do not generate Cpp header file
       !"getter-" . mTypeName . "-" . mOverridingCategoryReaderName
-      ![mTypeName string]
+      !selfType
       !baseTypeName
       ![mOverridingCategoryReaderName string]
       !returnType

@@ -4,6 +4,13 @@
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
+% foreach INCLUSION_SET do
+%#include "%!key%.h"\n%
+end
+%
+
+//-----------------------------------------------------------------------------*
+
 static TC_UniqueArray <categoryMethodSignature_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%> gCategoryMethodTable_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% ;
 
 //-----------------------------------------------------------------------------*

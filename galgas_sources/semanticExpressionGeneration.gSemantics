@@ -278,63 +278,6 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @readerCallExpressionForGeneration generateExpression
-  ?!@string ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression
-:
-#--- Receiver expression
-  @string receiverCppName ;
-  [mReceiverExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?receiverCppName] ;
-#--- Reader operands
-  @stringlist readerArgumentCppNameList [emptyList] ;
-  foreach mExpressions do
-    @string argumentCppName ;
-    [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?argumentCppName] ;
-    readerArgumentCppNameList += !argumentCppName ;
-  end foreach ;
-#--- Generate Reader call
-  switch mKind
-  when definedAsCategory :
-    ioInclusionSet += !"getter-" . [[[mReceiverExpression mType] baseType] key] . "-" . mReaderName ;
-    [!?ioUnusedVariableCppNameSet removeKey !receiverCppName] ;
-    if [[mReceiverExpression mType] mTypeKindEnum] == [@typeKindEnum classType] then
-      outCppExpression := "callCategoryReader_" . [mReaderName identifierRepresentation]
-         . " ((const cPtr_" . [[mReceiverExpression mType] identifierRepresentation] . " *) " . receiverCppName . ".ptr (), " ;
-    else
-      [[mReceiverExpression mType] addHeaderFileName !?ioInclusionSet] ;
-      outCppExpression := "categoryReader_" . [mReaderName identifierRepresentation] . " (" . receiverCppName . ", " ;
-    end if ;
-  when definedAsMember :
-    outCppExpression := receiverCppName ;
-    foreach mFieldList do
-      outCppExpression .= ".mAttribute_" . [mValue identifierRepresentation] ;
-    end foreach ;
-    [mType addHeaderFileName !?ioInclusionSet] ;
-    outCppExpression .=  ".reader_" . [mReaderName identifierRepresentation] . " (" ;
-  end switch ;
-  foreach readerArgumentCppNameList
-    do outCppExpression .= mValue ;
-    between outCppExpression .= ", " ;
-  end foreach ;
-  if [readerArgumentCppNameList length] == 0 then
-    if mHasCompilerArgument then
-      [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
-      outCppExpression .= compilerCppName [] . " COMMA_" ;
-    end if ;
-  elsif mHasCompilerArgument then
-    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
-    outCppExpression .= ", " . compilerCppName [] . " COMMA_" ;
-  else
-    outCppExpression .= " COMMA_" ;
-  end if ;
-  outCppExpression .= [mLocation sourceFile] . ")" ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
 #! option
 
 #---------------------------------------------------------------------------*
@@ -908,6 +851,7 @@ override method @testDynamicClassInExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
+  const typeNameRepresentation := [[mCastType key] identifierRepresentation] ;
 #--- Receiver expression
   [mReceiverExpression generateExpression
     !?ioGeneratedCode
@@ -917,20 +861,21 @@ override method @testDynamicClassInExpressionForGeneration generateExpression
     ?@string receiverExpression
   ] ;
 #--- Generated test
+  [mCastType addHeaderFileName !?ioInclusionSet] ;
   switch mTypeComparisonKind
   when equal :
     outCppExpression := "GALGAS_bool (" . receiverExpression
       . ".dynamicTypeDescriptor () == & kTypeDescriptor_GALGAS_"
-      . [mTypeName identifierRepresentation] . ")" ;
+      . typeNameRepresentation . ")" ;
   when inherited :
     outCppExpression := "GALGAS_bool (NULL != dynamic_cast <const cPtr_"
-    . [mTypeName identifierRepresentation]
+    . typeNameRepresentation
     . " *> (" . receiverExpression . ".ptr ()))" ;
   when strictlyInherited :
     outCppExpression := "GALGAS_bool ((" . receiverExpression
       . ".dynamicTypeDescriptor () != & kTypeDescriptor_GALGAS_"
-      . [mTypeName identifierRepresentation] . ") && (NULL != dynamic_cast <const cPtr_"
-    . [mTypeName identifierRepresentation]
+      . typeNameRepresentation . ") && (NULL != dynamic_cast <const cPtr_"
+    . typeNameRepresentation
     . " *> (" . receiverExpression . ".ptr ())))" ;
   end switch ;
 end method ;
@@ -983,6 +928,93 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @varInExpressionForGeneration generateExpression
+  ?!@string unused ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppExpression
+:
+  [mType addHeaderFileName !?ioInclusionSet] ;
+  outCppExpression := mCppVarName ;
+  [!?ioUnusedVariableCppNameSet removeKey !mNameForCheckingFormalParameterUsing] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+#! Appels
+#---------------------------------------------------------------------------*
+
+override method @readerCallExpressionForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppExpression
+:
+#--- Receiver expression
+  @string receiverCppName ;
+  [mReceiverExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?receiverCppName] ;
+#--- Reader operands
+  @stringlist readerArgumentCppNameList [emptyList] ;
+  foreach mExpressions do
+    @string argumentCppName ;
+    [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?argumentCppName] ;
+    readerArgumentCppNameList += !argumentCppName ;
+  end foreach ;
+#--- Generate Reader call
+  switch mKind
+  when definedAsCategory :
+ #   ioInclusionSet += !"getter-" . [[[mReceiverExpression mType] baseType] key] . "-" . mReaderName ;
+    @unifiedTypeMapProxy baseType := [mReceiverExpression mType] ;
+    @bool searching := true ;
+    loop [@uint max] : while searching do
+      if not [[baseType mSuperType] isNull] then
+        if [[[baseType mSuperType] mReaderMap] hasKey !mReaderName] then
+          baseType := [baseType mSuperType] ;
+        else
+          searching := false ;
+        end if ;
+      else
+        searching := false ;
+      end if ;  
+    end loop ;
+    ioInclusionSet += !"getter-" . [baseType key] . "-" . mReaderName ;
+    [!?ioUnusedVariableCppNameSet removeKey !receiverCppName] ;
+    if [[mReceiverExpression mType] mTypeKindEnum] == [@typeKindEnum classType] then
+      outCppExpression := "callCategoryReader_" . [mReaderName identifierRepresentation]
+         . " ((const cPtr_" . [[mReceiverExpression mType] identifierRepresentation] . " *) " . receiverCppName . ".ptr (), " ;
+    else
+      [[mReceiverExpression mType] addHeaderFileName !?ioInclusionSet] ;
+      outCppExpression := "categoryReader_" . [mReaderName identifierRepresentation] . " (" . receiverCppName . ", " ;
+    end if ;
+  when definedAsMember :
+    outCppExpression := receiverCppName ;
+    foreach mFieldList do
+      outCppExpression .= ".mAttribute_" . [mValue identifierRepresentation] ;
+    end foreach ;
+    [mType addHeaderFileName !?ioInclusionSet] ;
+    outCppExpression .=  ".reader_" . [mReaderName identifierRepresentation] . " (" ;
+  end switch ;
+  foreach readerArgumentCppNameList
+    do outCppExpression .= mValue ;
+    between outCppExpression .= ", " ;
+  end foreach ;
+  if [readerArgumentCppNameList length] == 0 then
+    if mHasCompilerArgument then
+      [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+      outCppExpression .= compilerCppName [] . " COMMA_" ;
+    end if ;
+  elsif mHasCompilerArgument then
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+    outCppExpression .= ", " . compilerCppName [] . " COMMA_" ;
+  else
+    outCppExpression .= " COMMA_" ;
+  end if ;
+  outCppExpression .= [mLocation sourceFile] . ")" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @functionCallExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
@@ -1005,20 +1037,6 @@ override method @functionCallExpressionForGeneration generateExpression
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
   outCppExpression .= compilerCppName [] ;
   outCppExpression .= [mLocation commaSourceFile] . ")" ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @varInExpressionForGeneration generateExpression
-  ?!@string unused ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint unused ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression
-:
-  [mType addHeaderFileName !?ioInclusionSet] ;
-  outCppExpression := mCppVarName ;
-  [!?ioUnusedVariableCppNameSet removeKey !mNameForCheckingFormalParameterUsing] ;
 end method ;
 
 #---------------------------------------------------------------------------*
