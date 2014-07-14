@@ -61,6 +61,14 @@ list @ruleDeclarationList {
 
 #---------------------------------------------------------------------------*
 
+list @syntaxListForGeneration {
+  @galgas3SyntaxComponentListAST.element mSyntaxComponentRoot ;
+  @syntaxDeclarationForGeneration mSyntaxGeneration ;
+  @bool mHasIndexing ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @syntaxDeclarationForGeneration extends @semanticDeclarationForGeneration {
   @string mComponentName ;
   @string mLexiqueName ;

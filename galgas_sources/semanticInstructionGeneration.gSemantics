@@ -323,15 +323,19 @@ override method @concatInstructionForGeneration generateInstruction
   ?!@string ioGeneratedCode
 :
   [mTargetType addHeaderFileName !?ioInclusionSet] ;
-  @string sourceVar ;
-  [mSourceExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?sourceVar] ;
+  [mSourceExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ??@string sourceVar
+  ] ;
   [!?ioUnusedVariableCppNameSet removeKey !mNameForCheckingFormalParameterUsing] ;
-  @string targetCppName := mTargetVariableCppName ;
+  ioGeneratedCode .= mTargetVariableCppName ;
   foreach mStructAttributeList do
-    targetCppName .= ".mAttribute_" . mValue ;
+    ioGeneratedCode .= ".mAttribute_" . mValue ;
   end foreach ;
-  ioGeneratedCode .= targetCppName . ".dotAssign_operation (" . sourceVar
-                  . " " . [mInstructionLocation commaSourceFile] . ") ;\n" ;
+  ioGeneratedCode .= ".dotAssign_operation (" . sourceVar . " " . [mInstructionLocation commaSourceFile] . ") ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !mTargetVariableCppName] ;
 end method ;
 
@@ -883,13 +887,13 @@ override method @plusEqualnstructionForGeneration generateInstruction
   end foreach ;
 #--- Receiver
   [!?ioUnusedVariableCppNameSet removeKey !mNameForCheckingFormalParameterUsing] ;
-  @string receiverCppName := mReceiverCppName ;
+  ioGeneratedCode .= mReceiverCppName ;
   foreach mStructAttributeList do
-    receiverCppName .= ".mAttribute_" . [[mValue string] identifierRepresentation] ;
+    ioGeneratedCode .= ".mAttribute_" . [[mValue string] identifierRepresentation] ;
   end foreach ;
 #--- Call add assign (+=) operator
-  ioGeneratedCode .= receiverCppName . ".addAssign_operation (" ;
-  [!?ioUnusedVariableCppNameSet removeKey !receiverCppName] ;
+  ioGeneratedCode .= ".addAssign_operation (" ;
+  [!?ioUnusedVariableCppNameSet removeKey !mReceiverCppName] ;
   foreach parameterList
     do ioGeneratedCode .= mValue ;
     between ioGeneratedCode .= ", " ;

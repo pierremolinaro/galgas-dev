@@ -687,6 +687,7 @@ routine compileGrammarComponentGalgas3
   ??@parsedSyntaxComponentMap inParsedSyntaxComponentMap
   ??@semanticContext inSemanticContext
   ?!@stringlist ioToolProductFileList
+  ?!@stringset ioAllProductFileSet
 :
   const @string outputDirectoryForHTMLFile := [inOutputDirectory stringByDeletingLastPathComponent] ;
 #---------------------------------------------------------- Parse syntax components
@@ -780,6 +781,8 @@ routine compileGrammarComponentGalgas3
   end foreach ;
 #---------------------------------------------------------- Analyze grammar
   ioToolProductFileList += !"grammar-" + inGrammarComponentRoot->mGrammarComponentName->string + ".cpp" ;
+  ioAllProductFileSet += !"grammar-" + inGrammarComponentRoot->mGrammarComponentName->string + ".h" ;
+  ioAllProductFileSet += !"grammar-" + inGrammarComponentRoot->mGrammarComponentName->string + ".cpp" ;
   grammarAnalysisAndGeneration
     !true # Compile for galgas 3
     !inGrammarComponentRoot->mGrammarComponentName

@@ -285,11 +285,13 @@ routine compileOptionComponentGalgas3
   ??@commandLineOptionMap stringOptionMap
   ?!@stringlist ioToolProductFileList
   ?!@stringlist ioAppProductFileList
+  ?!@stringset ioAllProductFileSet
 :
   ioToolProductFileList += !"option-" . inOptionComponentName . ".cpp" ;
   ioAppProductFileList += !"option-" . inOptionComponentName . "-cocoa.m" ;
 #--- Generate header
   if [@uint errorCount] == 0 then
+    ioAllProductFileSet += !"option-" . inOptionComponentName . ".h" ;
     [@string generateFileWithPattern
       !inProductDirectory
       !"option-" . inOptionComponentName . ".h"
@@ -309,6 +311,7 @@ routine compileOptionComponentGalgas3
   end if ;
 #--- Generate Implementation
   if [@uint errorCount] == 0 then
+    ioAllProductFileSet += !"option-" . inOptionComponentName . ".cpp" ;
     [@string generateFileWithPattern
       !inProductDirectory
       !"option-" . inOptionComponentName . ".cpp"
@@ -326,6 +329,7 @@ routine compileOptionComponentGalgas3
  end if ;
 #--- Generate Cocoa header
   if [@uint errorCount] == 0 then
+    ioAllProductFileSet += !"option-" . inOptionComponentName . "-cocoa.h" ;
     [@string generateFileWithPattern
       !inProductDirectory
       !"option-" . inOptionComponentName . "-cocoa.h"
@@ -342,6 +346,7 @@ routine compileOptionComponentGalgas3
   end if ;
 #--- Generate Cocoa Implementation
   if [@uint errorCount] == 0 then
+    ioAllProductFileSet += !"option-" . inOptionComponentName . "-cocoa.m" ;
     [@string generateFileWithPattern
       !inProductDirectory
       !"option-" . inOptionComponentName . "-cocoa.m"

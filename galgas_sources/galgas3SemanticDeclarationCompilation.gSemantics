@@ -32,6 +32,7 @@ routine compileSemanticDeclarationsGalgas3
   ??@galgas3LexiqueComponentListAST inLexiqueComponentList
   ??@galgas3GrammarComponentListAST inGrammarComponentList
   ?!@stringlist ioToolProductFileList
+  ?!@stringset ioAllProductFileSet
   !@semanticContext outSemanticContext
 :
   message "*** Building context\n" ;
@@ -124,6 +125,7 @@ routine compileSemanticDeclarationsGalgas3
         headerString .= "//-----------------------------------------------------------------------------*\n\n" ;
         headerString .= headerString1 ;
         headerString .= "#endif\n\n" ;
+        ioAllProductFileSet += ![mDeclaration implementationCppFileName] . "-1.h" ;
         [@string generateFileWithPattern
           !productDirectory
           ![mDeclaration implementationCppFileName] . "-1.h"
@@ -143,6 +145,7 @@ routine compileSemanticDeclarationsGalgas3
         headerString .= "\n//-----------------------------------------------------------------------------*\n\n" ;
         headerString .= headerString2 ;
         headerString .= "#endif\n\n" ;
+        ioAllProductFileSet += ![mDeclaration implementationCppFileName] . ".h" ;
         [@string generateFileWithPattern
           !productDirectory
           ![mDeclaration implementationCppFileName] . ".h"
@@ -246,6 +249,7 @@ routine compileSemanticDeclarationsGalgas3
       !headerInclusionList1 + headerInclusionList2
       ![@stringlist emptyList]
     ] ;
+    ioAllProductFileSet += !"AZERTYUIOP.h" ;
     [@string generateFileWithPattern
       !productDirectory
       !"AZERTYUIOP.h"
@@ -272,6 +276,7 @@ routine compileSemanticDeclarationsGalgas3
         ] ;
         implementationString .= [mDeclaration appendSpecificImplementation !true] ;
         implementationString .= [mDeclaration appendTypeGenericImplementation] ;
+        ioAllProductFileSet += ![mDeclaration implementationCppFileName] . ".cpp" ;
         [@string generateFileWithPattern
           !productDirectory
           ![mDeclaration implementationCppFileName] . ".cpp"

@@ -531,14 +531,14 @@ indexing with galgas3ProjectGrammar
     ??@galgas3ProjectComponentAST projectComponentAST
   ;
   var declarationAST := [@galgas3DeclarationAST default] ; 
-  var toolProductFileList := [@stringlist emptyList] ;
+  var handCodedSourceFileList := [@stringlist emptyList] ;
   var handCodedSourceDirectorySet := [@stringset emptySet] ;
   foreach projectComponentAST->mProjectSourceList do
     if [mValue pathExtension] == "galgas" then
       const absoluteSourcePath := [mValue absolutePathFromPath ![inProjectSourceFile stringByDeletingLastPathComponent]] ;
       grammar galgas3Grammar in [@lstring new !absoluteSourcePath !mValue->location] !?declarationAST ;
     elsif [mValue pathExtension] == "cpp" then
-      toolProductFileList += ![mValue lastPathComponent] ;
+      handCodedSourceFileList += ![mValue lastPathComponent] ;
       const directory := [mValue stringByDeletingLastPathComponent] ;
       if directory != "" then
         handCodedSourceDirectorySet += !"../" + directory ;
@@ -548,6 +548,8 @@ indexing with galgas3ProjectGrammar
     end if ;
   end foreach ;
 #---------------------------------- Display result
+  var toolCppFileList := [@stringlist emptyList] ;
+  var allProductFileSet := [@stringset emptySet] ;
   if [@uint errorCount] == 0 then
     message "  Semantic declarations: " . [declarationAST->mSemanticDeclarationList length] . "\n" ;
     message "  Lexique components: " . [declarationAST->mLexiqueComponentList length] . "\n" ;
@@ -571,7 +573,8 @@ indexing with galgas3ProjectGrammar
       !declarationAST->mOptionComponentList
       !declarationAST->mLexiqueComponentList
       !declarationAST->mGrammarComponentList
-      !?toolProductFileList
+      !?toolCppFileList
+      !?allProductFileSet
       ?semanticContext
     ;
   end if ;
@@ -585,8 +588,9 @@ indexing with galgas3ProjectGrammar
           !mBoolOptionMap
           !mUIntOptionMap
           !mStringOptionMap
-          !?toolProductFileList
+          !?toolCppFileList
           !?appProductFileList
+          !?allProductFileSet
         ;
       end if ;
     end foreach ;
@@ -597,21 +601,22 @@ indexing with galgas3ProjectGrammar
       compileLexiqueComponentGalgas3
         !productDirectory
         !scanner
-        !?toolProductFileList
+        !?toolCppFileList
         !?appProductFileList
+        !?allProductFileSet
       ;
     end for ;
   end if ;
 #---------------------------------- Compile syntax components
   var parsedSyntaxComponentMap := [@parsedSyntaxComponentMap emptyMap] ;
+  var syntaxListForGeneration := [@syntaxListForGeneration emptyList] ;
   if [@uint errorCount] == 0 then
     for component in declarationAST->mSyntaxComponentList do
       compileSyntaxComponentGalgas3
-        !productDirectory
         !component
         !semanticContext
         !?parsedSyntaxComponentMap
-        !?toolProductFileList
+        !?syntaxListForGeneration
       ;
     end for ;
   end if ;
@@ -623,7 +628,8 @@ indexing with galgas3ProjectGrammar
         !component
         !parsedSyntaxComponentMap
         !semanticContext
-        !?toolProductFileList
+        !?toolCppFileList
+        !?allProductFileSet
       ;
     end for ;
   end if ;
@@ -635,9 +641,31 @@ indexing with galgas3ProjectGrammar
       !declarationAST->mSourceRuleList
       !declarationAST->mEpilogueDeclarationList
       !semanticContext
-      !?toolProductFileList
+      !?toolCppFileList
+      !?allProductFileSet
     ;
   end if ;
+#---------------------------------- Generate syntax components
+  if 0 == [@uint errorCount] then
+    for s in syntaxListForGeneration do
+      generateSyntaxComponentGalgas3
+        !productDirectory
+        !s
+        !semanticContext
+        !?toolCppFileList
+        !?allProductFileSet
+      ;
+    end for ;
+  end if ;
+#---------------------------------- Remove useless files
+  var allActualFileSet := [@stringset emptySet] ;
+  foreach [productDirectory regularFiles !false] do
+    allActualFileSet += !mValue ;
+  end foreach ;
+  const uselessFileSet := allActualFileSet - allProductFileSet ;
+  foreach uselessFileSet do
+    [@string deleteFile !productDirectory . "/" . key] ;
+  end foreach ;
 #---------------------------------- Update targets
   if 0 == [@uint errorCount] then
     @stringset handledExtensionSet [emptySet] ;
@@ -654,12 +682,14 @@ indexing with galgas3ProjectGrammar
     end foreach ;
     updateGalgas3Targets
       !inProjectSourceFile
+      !projectComponentAST->mTargetName->string
       !projectComponentAST->mEndOfSourceFile
       ![projectComponentAST->mMajorVersion->uint string] . "." . projectComponentAST->mMinorVersion->uint . "." . projectComponentAST->mRevisionVersion->uint
       !projectQualifiedFeatureMap
       !projectComponentAST->mGenerationFeatureList
-      !toolProductFileList
+      !toolCppFileList
       !appProductFileList
+      !handCodedSourceFileList
       !handCodedSourceDirectorySet
       !handledExtensionSet
     ;

@@ -375,6 +375,7 @@ routine compileProgramComponentGalgas3
   ??@prologueEpilogueList inEpilogueList
   ??@semanticContext inSemanticContext
   ?!@stringlist ioToolProductFileList
+  ?!@stringset ioAllProductFileSet
 :
 #--- Analysis context
   const analysisContext := [@analysisContext new
@@ -421,6 +422,7 @@ routine compileProgramComponentGalgas3
     foreach decoratedDeclarationListForGeneration do
       headerString .= [mDeclaration appendDeclaration2 !inOutputDirectory !true] ;
     end foreach ;
+    ioAllProductFileSet += !programFileName + ".h" ;
     [@string generateFileWithPattern
       !inOutputDirectory
       !programFileName + ".h"
@@ -437,7 +439,7 @@ routine compileProgramComponentGalgas3
     var implementationIncludeList := [@stringlist emptyList] ;
     for * in inSemanticContext->mOptionComponentMapForSemanticAnalysis do
       if not mIsPredefined then
-        implementationIncludeList += !lkey->string ;
+        implementationIncludeList += !"option-" . lkey->string ;
       end if ;
     end for ;
     for * in inSemanticContext->mGrammarMap do
@@ -453,6 +455,7 @@ routine compileProgramComponentGalgas3
       implementationString .= [mDeclaration appendTypeGenericImplementation] ;
       implementationString .= [mDeclaration appendSpecificImplementation !true] ;
     end foreach ;
+    ioAllProductFileSet += !programFileName + ".cpp" ;
     [@string generateFileWithPattern
       !inOutputDirectory
       !programFileName . ".cpp"
