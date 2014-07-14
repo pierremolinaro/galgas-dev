@@ -1152,6 +1152,7 @@ routine compileLexiqueComponentGalgas3
   ??@galgas3LexiqueComponentListAST.element inLexiqueComponentAST
   ?!@stringlist ioToolProductFileList
   ?!@stringlist ioAppProductFileList
+  ?!@stringset ioAllProductFileSet
 :
 #--------------------------------------- Lexical attribute type name map
   const @lexicalTypeMap lexicalTypeMap := buildLexicalTypeMap [] ;
@@ -1363,6 +1364,7 @@ routine compileLexiqueComponentGalgas3
   ioAppProductFileList += !"lexique-" + lexiqueClassName + "-cocoa.m" ;
 #--- Generate header file
   if [@uint errorCount] == 0 then
+    ioAllProductFileSet += !"lexique-" + lexiqueClassName . ".h" ;
     [@string generateFileWithPattern
       !inOutputDirectory
       !"lexique-" + lexiqueClassName . ".h"
@@ -1384,6 +1386,7 @@ routine compileLexiqueComponentGalgas3
   end if ;
 #--- Generate implementation file
   if [@uint errorCount] == 0 then
+    ioAllProductFileSet += !"lexique-" + lexiqueClassName . ".cpp" ;
     [@string generateFileWithPattern
       !inOutputDirectory
       !"lexique-" + lexiqueClassName . ".cpp"
@@ -1406,6 +1409,7 @@ routine compileLexiqueComponentGalgas3
   end if ;
 #--- Generate cocoa header file
   if [@uint errorCount] == 0 then
+    ioAllProductFileSet += !"lexique-" + lexiqueClassName . "-cocoa.h" ;
     [@string generateFileWithPattern
       !inOutputDirectory
       !"lexique-" + lexiqueClassName . "-cocoa.h"
@@ -1424,6 +1428,7 @@ routine compileLexiqueComponentGalgas3
   end if ;
 #--- Generate Cocoa implementation file
   if [@uint errorCount] == 0 then
+    ioAllProductFileSet += !"lexique-" + lexiqueClassName . "-cocoa.m" ;
     [@string generateFileWithPattern
       !inOutputDirectory
       !"lexique-" + lexiqueClassName . "-cocoa.m"

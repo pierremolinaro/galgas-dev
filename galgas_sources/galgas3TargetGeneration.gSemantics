@@ -200,20 +200,21 @@ end routine ;
 
 routine updateGalgas3Targets
   ??@lstring inProjectSourceFilePath
+  ??@string inTargetName
   ??@location unused inEndOfProjectSourceFile
   ??@string inProjectVersionString
   ??@projectQualifiedFeatureMap inProjectQualifiedFeatureMap
   ??@lstringlist inTargetFeatureList
   ??@stringlist inToolProductFileList
   ??@stringlist unused inAppProductFileList
+  ??@stringlist inHandCodedSourceFileList
   ??@stringset inHandCodedSourceDirectorySet
   ??@stringset inHandledExtensionSet
 :
-  const projectName := [[inProjectSourceFilePath lastPathComponent] stringByDeletingPathExtension] ;
   const projectDirectory := [inProjectSourceFilePath stringByDeletingLastPathComponent] ;
 #--- Update project header
   [[filewrapper targetGalgas3GenerationFileWrapper.project_header !inProjectVersionString] writeToFileWhenDifferentContents
-    ![inProjectSourceFilePath stringByDeletingLastPathComponent] . "/build/output/project_header.h"
+    ![inProjectSourceFilePath stringByDeletingLastPathComponent] . "/build/headers/project_header.h"
     ?*
   ] ;
 #----------------------------------------------------------- Update LIBPM
@@ -253,7 +254,6 @@ routine updateGalgas3Targets
   @stringset programSourceSet_app [emptySet] ;
 #---
   @stringset sourceFileSet [emptySet] ;
-  @stringlist handCodedSourceList [emptyList] ;
 #--- Parse features
   if [option .verbose_output value] then
     message "*** Updating targets\n" ;
@@ -345,41 +345,38 @@ routine updateGalgas3Targets
     warning here: "For a Cocoa project, the \"applicationBundleBase\" feature should be set; for example: 'feature applicationBundleBase : \"fr.what\" ;'" ;
   end if ;
 #--- Generation
-  if [generationFeatures hasKey !"makefile_macosx"] then
-    generateGalgas3MakefileMacOSXTarget !projectDirectory !projectName ;
+  if [generationFeatures hasKey !"makefile-macosx"] then
+    generateGalgas3MakefileMacOSXTarget !projectDirectory !inTargetName ;
   end if ;
-  if [generationFeatures hasKey !"makefile_unix"] then
-    generateGalgas3MakefileUnixTarget !projectDirectory !projectName ;
+  if [generationFeatures hasKey !"makefile-unix"] then
+    generateGalgas3MakefileUnixTarget !projectDirectory !inTargetName ;
   end if ;
-  if [generationFeatures hasKey !"makefile_i386_linux_on_macosx"] then
-    generateGalgas3Linux32OnMacOSXTarget !projectDirectory !projectName ;
+  if [generationFeatures hasKey !"makefile-i386-linux-on-macosx"] then
+    generateGalgas3Linux32OnMacOSXTarget !projectDirectory !inTargetName ;
   end if ;
-  if [generationFeatures hasKey !"makefile_x86_64_linux_on_macosx"] then
-    generateGalgas3Linux64OnMacOSXTarget !projectDirectory !projectName ;
+  if [generationFeatures hasKey !"makefile-x86_64-linux-on-macosx"] then
+    generateGalgas3Linux64OnMacOSXTarget !projectDirectory !inTargetName ;
   end if ;
-  if [generationFeatures hasKey !"makefile_mingw_on_macosx"] then
-    generateGalgas3MinGWOnMacOSXTarget !projectDirectory !projectName ;
+  if [generationFeatures hasKey !"makefile-mingw-on-macosx"] then
+    generateGalgas3MinGWOnMacOSXTarget !projectDirectory !inTargetName ;
   end if ;
-  if [generationFeatures hasKey !"makefile_msys_on_win32"] then
-    generateGalgas3MsysOnWin32Target !projectDirectory !projectName ;
+  if [generationFeatures hasKey !"makefile-msy-on-win32"] then
+    generateGalgas3MsysOnWin32Target !projectDirectory !inTargetName ;
   end if ;
 #--- Update makefile file list
   const @string newFileListContents := [filewrapper targetGalgas3GenerationFileWrapper.makefile_file_list
     !inHandCodedSourceDirectorySet
-    !handCodedSourceList
+    !inHandCodedSourceFileList
     !inToolProductFileList
     !libpmPath
     !if multiThreadingEnabled then "1" else "0" end
   ] ;
-  const @string fileListPath := [inProjectSourceFilePath stringByDeletingLastPathComponent] . "/build/output/file_list.mak" ;
+  const fileListPath := [inProjectSourceFilePath stringByDeletingLastPathComponent] . "/build/lists/file-list.mak" ;
   [newFileListContents writeToFileWhenDifferentContents !fileListPath ?*] ;
 #---------------------- update Xcode project
   if SDK != "" then
-    const @string dir := projectDirectory . "/xcode-project";
+    const dir := projectDirectory . "/xcode-project";
     [dir makeDirectory] ;
-
-    const @string icon_help_file_path := dir ."/adding-icons-to-your-application.rtf" ;
-    [[filewrapper targetGalgas3GenerationFileWrapper."project_xcode/adding-icons-to-your-application.rtf"] writeToFileWhenDifferentContents !icon_help_file_path ?*] ;
   #--- Info.plist
     @string applicationBundleBase ;
     with inProjectQualifiedFeatureMap hasKey !"applicationBundleBase" do
@@ -388,7 +385,7 @@ routine updateGalgas3Targets
       applicationBundleBase := "fr.irccyn" ;
     end with ;
     @string InfoPlistContents := [filewrapper targetGalgas3GenerationFileWrapper.makefile_info_plist
-      !projectName
+      !inTargetName
       !applicationBundleBase
       !inProjectVersionString
       !inHandledExtensionSet
@@ -401,7 +398,7 @@ routine updateGalgas3Targets
 
     [dir . "/English.lproj" makeDirectory] ;
     const @string InfoPlist_strings_path := dir ."/English.lproj/InfoPlist.strings" ;
-    [[filewrapper targetGalgas3GenerationFileWrapper.makefile_info_plist_strings !projectName] writeToFileWhenDifferentContents !InfoPlist_strings_path ?*] ;
+    [[filewrapper targetGalgas3GenerationFileWrapper.makefile_info_plist_strings !inTargetName] writeToFileWhenDifferentContents !InfoPlist_strings_path ?*] ;
     const @string Credits_rtf_path := dir ."/English.lproj/Credits.rtf" ;
     if not [Credits_rtf_path fileExists] then
       [[filewrapper targetGalgas3GenerationFileWrapper."project_xcode/English.lproj/Credits.rtf"] writeToFile !Credits_rtf_path] ;
@@ -412,14 +409,14 @@ routine updateGalgas3Targets
       [applicationUpdateDir makeDirectory] ;
       [[filewrapper applicationGalgas3UpdateFileWrapper.application_update_header ] writeToFileWhenDifferentContents !applicationUpdateDir . "/PMApplicationUpdate.h" ?*] ;
       [[filewrapper applicationGalgas3UpdateFileWrapper.application_update_implementation
-         !projectName
+         !inTargetName
          !mFeatureValue->string # Repository URL
          !applicationBundleBase
        ] writeToFileWhenDifferentContents
         !applicationUpdateDir . "/PMApplicationUpdate.m"
         ?*
       ] ;
-      [[filewrapper applicationGalgas3UpdateFileWrapper.application_update_nib !projectName] writeToFileWhenDifferentContents !applicationUpdateDir . "/English.lproj/PMApplicationUpdate.xib" ?*] ;
+      [[filewrapper applicationGalgas3UpdateFileWrapper.application_update_nib !inTargetName] writeToFileWhenDifferentContents !applicationUpdateDir . "/English.lproj/PMApplicationUpdate.xib" ?*] ;
       [[filewrapper applicationGalgas3UpdateFileWrapper.download_data_header] writeToFileWhenDifferentContents !applicationUpdateDir . "/PMDownloadData.h" ?*] ;
       [[filewrapper applicationGalgas3UpdateFileWrapper.download_data_implementation] writeToFileWhenDifferentContents !applicationUpdateDir . "/PMDownloadData.m" ?*] ;
       [[filewrapper applicationGalgas3UpdateFileWrapper.download_file_header] writeToFileWhenDifferentContents !applicationUpdateDir . "/PMDownloadFile.h" ?*] ;
@@ -439,7 +436,7 @@ routine updateGalgas3Targets
       [[filewrapper updaterGalgas3ToolFileWrapper.updater_object_implementation] writeToFileWhenDifferentContents !updaterToolDir . "/PMUpdaterServerObject.m" ?*] ;
       [[filewrapper updaterGalgas3ToolFileWrapper.updater_tool_info_plist
          !applicationBundleBase
-         !projectName
+         !inTargetName
          !codeSignIdentity
        ] writeToFileWhenDifferentContents
         !updaterToolDir . "/updater-tool-Info.plist"
@@ -447,14 +444,14 @@ routine updateGalgas3Targets
       ] ;
       [[filewrapper updaterGalgas3ToolFileWrapper.updater_tool_launchd_plist
          !applicationBundleBase
-         !projectName
+         !inTargetName
        ] writeToFileWhenDifferentContents
         !updaterToolDir . "/updater-tool-Launchd.plist"
         ?*
       ] ;
       [[filewrapper updaterGalgas3ToolFileWrapper.updater_object_main
          !applicationBundleBase
-         !projectName
+         !inTargetName
        ] writeToFileWhenDifferentContents
         !updaterToolDir . "/updater-tool-main.m"
         ?*
@@ -464,17 +461,17 @@ routine updateGalgas3Targets
       [updaterApplicationDir makeDirectory] ;
       [[filewrapper updaterGalgas3ApplicationFileWrapper.credits] writeToFileWhenDifferentContents !updaterApplicationDir . "/English.lproj/UpdaterAppCredits.rtf" ?*] ;
       [[filewrapper updaterGalgas3ApplicationFileWrapper.info_plist_strings] writeToFileWhenDifferentContents !updaterApplicationDir . "/English.lproj/UpdaterAppInfoPlist.strings" ?*] ;
-      [[filewrapper updaterGalgas3ApplicationFileWrapper.main_menu_xib !projectName] writeToFileWhenDifferentContents !updaterApplicationDir . "/English.lproj/UpdaterAppMainMenu.xib" ?*] ;
+      [[filewrapper updaterGalgas3ApplicationFileWrapper.main_menu_xib !inTargetName] writeToFileWhenDifferentContents !updaterApplicationDir . "/English.lproj/UpdaterAppMainMenu.xib" ?*] ;
       [[filewrapper updaterGalgas3ApplicationFileWrapper.application_delegate_header] writeToFileWhenDifferentContents !updaterApplicationDir . "/PMUpdaterAppDelegate.h" ?*] ;
       [[filewrapper updaterGalgas3ApplicationFileWrapper.application_delegate_implementation
          !applicationBundleBase
-         !projectName
+         !inTargetName
        ]
        writeToFileWhenDifferentContents !updaterApplicationDir . "/PMUpdaterAppDelegate.m" ?*
       ] ;
       [[filewrapper updaterGalgas3ApplicationFileWrapper.info_plist
          !applicationBundleBase
-         !projectName
+         !inTargetName
          !codeSignIdentity
        ]
        writeToFileWhenDifferentContents !updaterApplicationDir . "/updater-app-Info.plist" ?*
@@ -489,8 +486,8 @@ routine updateGalgas3Targets
     extensionList += !"icns" ;
     const @stringlist resourceFiles := [userResourceDir regularFilesWithExtensions !false !extensionList] ;
   #--- Build pathes
-    const @string xcodeProjectPath := dir . "/" . projectName . ".xcodeproj" ; # Actually a directory
-    const @string intermediateFilePath := [inProjectSourceFilePath stringByDeletingLastPathComponent] . "/build/output/file_list_for_xcode_project.txt" ;
+    const @string xcodeProjectPath := dir . "/" . inTargetName . ".xcodeproj" ; # Actually a directory
+    const @string intermediateFilePath := [inProjectSourceFilePath stringByDeletingLastPathComponent] . "/build/lists/file-list-for-xcode-project.txt" ;
   #---
     [xcodeProjectPath makeDirectory] ;
   #--- Build intermediate
@@ -511,7 +508,7 @@ routine updateGalgas3Targets
       !syntaxSourceSet_app
       !grammarSourceSet_app
       !programSourceSet_app
-      !projectName # XCode project base name
+      !inTargetName # XCode project base name
       !xcodeProjectPath # Full Path of xxx.xcodeproj file
       !resourceFiles
       !intermediateFilePath

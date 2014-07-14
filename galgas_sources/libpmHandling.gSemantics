@@ -46,7 +46,7 @@ routine updateLIBPMatPath ??@string inLIBPMPath :
   foreach [inLIBPMPath regularFiles !true] do
     allActualFileSet += !"/" . mValue ;
   end foreach ;
-  const @stringset uselessFileSet := allActualFileSet - allNeededFileSet ;
+  const uselessFileSet := allActualFileSet - allNeededFileSet ;
   foreach uselessFileSet do
     [@string deleteFile !inLIBPMPath . key] ;
   end foreach ;

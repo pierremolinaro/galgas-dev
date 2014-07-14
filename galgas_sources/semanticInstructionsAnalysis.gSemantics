@@ -774,17 +774,19 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
 #--- Search base type that declares the method
   var baseType := [receiverExpression mType] ;
   var searching := true ;
-  loop [@uint max] : while searching do
-    if not [[baseType mSuperType] isNull] then
-      if [[[baseType mSuperType] mInstanceMethodMap] hasKey !mMethodName->string] then
-        baseType := [baseType mSuperType] ;
-      else
+  if [@uint errorCount] == 0 then
+    loop [@uint max] : while searching do
+      if [[baseType mSuperType] isNull] then
         searching := false ;
-      end if ;
-    else
-      searching := false ;
-    end if ;  
-  end loop ;
+      else
+        if [[[baseType mSuperType] mInstanceMethodMap] hasKey !mMethodName->string] then
+          baseType := [baseType mSuperType] ;
+        else
+          searching := false ;
+        end if ;
+      end if ;  
+    end loop ;
+  end if ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@methodCallInstructionForGeneration new
     !mInstructionLocation
@@ -1113,7 +1115,7 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
     !targetType
     !targetVariableCppName
     !nameForCheckingFormalParameterUsing
-    ![@lstringlist emptyList]
+    !mStructAttributeList
     !expression
   ] ;
 end method ;
