@@ -435,6 +435,7 @@ override method @locationPredefinedTypeAST getReaderMap
   commonReaderMapForAllTypes !?ioUnifiedTypeMap ?outMap ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"locationString" !"string" !true ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"locationIndex" !"uint" !true ;
+  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"file" !"string" !true ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"line" !"uint" !true ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"column" !"uint" !true ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"isNowhere" !"bool" !false ;

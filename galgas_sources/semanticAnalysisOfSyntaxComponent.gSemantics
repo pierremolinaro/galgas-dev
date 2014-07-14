@@ -787,7 +787,7 @@ override method @terminalCheckInstructionForGeneration generateInstruction
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
   ioGeneratedCode .= compilerCppName [] . "->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_"
                   . mLexiqueIdentifier . "::kToken_" . [mTerminalName identifierRepresentation]
-                  . ") COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
+                  . ")" . [mInstructionLocation commaSourceFile] . ") ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
