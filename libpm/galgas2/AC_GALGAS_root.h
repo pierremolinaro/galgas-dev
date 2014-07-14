@@ -44,6 +44,18 @@ class C_String ;
 class C_galgas_type_descriptor ;
 
 //-----------------------------------------------------------------------------*
+//   SOURCE FILE                                                               *
+//-----------------------------------------------------------------------------*
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  #define SOURCE_FILE(file,line) file, line
+  #define COMMA_SOURCE_FILE(file,line) , SOURCE_FILE(file,line)
+#else
+  #define SOURCE_FILE(file,line)
+  #define COMMA_SOURCE_FILE(file,line)
+#endif
+
+//-----------------------------------------------------------------------------*
 //   VIRTUAL_IN_DEBUG                                                          *
 //-----------------------------------------------------------------------------*
 

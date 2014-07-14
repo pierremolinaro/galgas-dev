@@ -231,7 +231,7 @@ override method @localVariableOrConstantDeclarationWithDefaultConstructorForGene
                   . " = GALGAS_"  . [mTargetType identifierRepresentation]
                   . "::constructor_"
                   . [[mTargetType mDefaultConstructorName] identifierRepresentation]
-                  . " (SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
+                  . " (" . [mInstructionLocation sourceFile] . ") ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -269,9 +269,9 @@ override method @localVariableOrConstantDeclarationWithConstructorCallForGenerat
     needsComma := true ;
   end if ;
   if needsComma then
-    ioGeneratedCode .= " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
+    ioGeneratedCode .= [mInstructionLocation commaSourceFile] . ") ;\n" ;
   else
-    ioGeneratedCode .= "SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
+    ioGeneratedCode .= [mInstructionLocation sourceFile] . ") ;\n" ;
   end if ;
 end method ;
 
@@ -331,7 +331,7 @@ override method @concatInstructionForGeneration generateInstruction
     targetCppName .= ".mAttribute_" . mValue ;
   end foreach ;
   ioGeneratedCode .= targetCppName . ".dotAssign_operation (" . sourceVar
-                  . " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
+                  . " " . [mInstructionLocation commaSourceFile] . ") ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !mTargetVariableCppName] ;
 end method ;
 
@@ -384,7 +384,7 @@ override method @grammarInstructionWithSourceFileForGeneration generateInstructi
   foreach parameterCppNameList do
     ioGeneratedCode .= ", " . mValue ;
   end foreach ;
-  ioGeneratedCode .= " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
+  ioGeneratedCode .= " " . [mInstructionLocation commaSourceFile] . ") ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
   for s in mAssignementList do
     ioGeneratedCode .= s->mValue . "\n" ;
@@ -427,7 +427,7 @@ override method @grammarInstructionWithSourceExpressionForGeneration generateIns
   foreach parameterCppNameList do
     ioGeneratedCode .= ", " . mValue ;
   end foreach ;
-  ioGeneratedCode .= " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
+  ioGeneratedCode .= " " . [mInstructionLocation commaSourceFile] . ") ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
   for s in mAssignementList do
     ioGeneratedCode .= s->mValue . "\n" ;
@@ -475,7 +475,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @errorInstructionForGeneration generateInstruction
-  ?!@stringset unused ioInclusionSet
+  ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ??@bool unused inGenerateSyntaxDirectedTranslationString
@@ -496,7 +496,7 @@ override method @errorInstructionForGeneration generateInstruction
 #--- Generate error instruction
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
   ioGeneratedCode .= compilerCppName [] . "->emitSemanticError (" . receiverCppVarName . ", " . messageCppVarName
-                   . " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
+                   . " " . [mInstructionLocation commaSourceFile] . ") ;\n" ;
 #--- Release dropped variables
   foreach mBuiltVariableCppNameList do
     [!?ioUnusedVariableCppNameSet removeKey !mValue] ;
@@ -507,7 +507,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @warningInstructionForGeneration generateInstruction
-  ?!@stringset unused ioInclusionSet
+  ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ??@bool unused inGenerateSyntaxDirectedTranslationString
@@ -528,7 +528,7 @@ override method @warningInstructionForGeneration generateInstruction
 #--- Generate warning instruction
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
   ioGeneratedCode .= compilerCppName [] . "->emitSemanticWarning (" . receiverCppVarName . ", " . messageCppVarName
-                  . " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
+                  . " " . [mInstructionLocation commaSourceFile] . ") ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -582,7 +582,7 @@ override method @methodCallInstructionForGeneration generateInstruction
   else
     ioGeneratedCode .= " COMMA_" ;
   end if ;
-  ioGeneratedCode .= "SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
+  ioGeneratedCode .= [mInstructionLocation sourceFile] . ") ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -611,7 +611,7 @@ override method @routineCallInstructionForGeneration generateInstruction
     ioGeneratedCode .= mValue . ", " ;
   end foreach ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
-  ioGeneratedCode .=  compilerCppName [] . " COMMA_SOURCE_FILE_AT_LINE (" . [[[mRoutineName location] line] string] . ")) ;\n" ;
+  ioGeneratedCode .=  compilerCppName [] . " " . [[mRoutineName location] commaSourceFile] . ") ;\n" ;
   ioGeneratedCode .= "}\n" ;
 end method ;
 
@@ -677,7 +677,7 @@ override method @modifierCallInstructionForGeneration generateInstruction
   elsif [parameterCppNameList length] != 0 then
     ioGeneratedCode .= " COMMA_" ;
   end if ;
-  ioGeneratedCode .= "SOURCE_FILE_AT_LINE (" . [[[mModifierName location] line] string] . ")) ;\n" ;
+  ioGeneratedCode .= [[mModifierName location] sourceFile] . ") ;\n" ;
   ioGeneratedCode .= "}\n" ;
 end method ;
 
@@ -736,7 +736,7 @@ override method @selfModifierCallInstructionForGeneration generateInstruction
   elsif [parameterCppNameList length] != 0 then
     ioGeneratedCode .= " COMMA_" ;
   end if ;
-  ioGeneratedCode .= "SOURCE_FILE_AT_LINE (" . [[[mModifierName location] line] string] . ")) ;\n" ;
+  ioGeneratedCode .= [[mModifierName location] sourceFile] . ") ;\n" ;
   ioGeneratedCode .= "}\n" ;
 end method ;
 
@@ -782,7 +782,7 @@ override method @typeMethodInstructionForGeneration generateInstruction
   if mHasCompilerArgument | ([parameterCppNameList length] > 0) then
     ioGeneratedCode .= " COMMA_" ;
   end if ;
-  ioGeneratedCode .= "SOURCE_FILE_AT_LINE (" . [[[mMethodName location] line] string] . ")) ;\n" ;
+  ioGeneratedCode .= [[mMethodName location] sourceFile] . ") ;\n" ;
   ioGeneratedCode .= "}\n" ;
 end method ;
 
@@ -887,13 +887,13 @@ override method @plusEqualnstructionForGeneration generateInstruction
     do ioGeneratedCode .= mValue ;
     between ioGeneratedCode .= ", " ;
   end foreach ;
-  ioGeneratedCode .= " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n"  ;
+  ioGeneratedCode .= " " . [mInstructionLocation commaSourceFile] . ") ;\n"  ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @incrementInstructionForGeneration generateInstruction
-  ?!@stringset ioInclusionSet
+  ?!@stringset unused ioInclusionSet
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ??@bool unused inGenerateSyntaxDirectedTranslationString
@@ -907,14 +907,14 @@ override method @incrementInstructionForGeneration generateInstruction
   end foreach ;
 #--- Invoke incrementation
   ioGeneratedCode .= receiverCppName . ".increment_operation (" . compilerCppName []
-                  . " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
+                  . " " . [mInstructionLocation commaSourceFile] . ") ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @decrementInstructionForGeneration generateInstruction
-  ?!@stringset ioInclusionSet
+  ?!@stringset unused ioInclusionSet
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ??@bool unused inGenerateSyntaxDirectedTranslationString
@@ -928,14 +928,14 @@ override method @decrementInstructionForGeneration generateInstruction
   end foreach ;
 #--- Invoke incrementation
   ioGeneratedCode .= receiverCppName . ".decrement_operation (" . compilerCppName []
-                  . " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
+                  . " " . [mInstructionLocation commaSourceFile] . ") ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @messageInstructionForGeneration generateInstruction
-  ?!@stringset unused ioInclusionSet
+  ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ??@bool unused inGenerateSyntaxDirectedTranslationString
@@ -945,7 +945,7 @@ override method @messageInstructionForGeneration generateInstruction
   [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ??@string messageCppVarName] ;
 #--- Invoke 'printMessage' method of C_Compiler
   ioGeneratedCode .= compilerCppName [] . "->printMessage (" . messageCppVarName ;
-  ioGeneratedCode .= " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n"  ;
+  ioGeneratedCode .= " " . [mInstructionLocation commaSourceFile] . ") ;\n"  ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
 end method ;
 
@@ -986,7 +986,7 @@ override method @loopInstructionForGeneration generateInstruction
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
   ioGeneratedCode .= "if (" . loopVar . " && (0 == " . variantVar . ")) {\n"
                      "  " . loopVar . " = false ;\n"
-                     "  " . compilerCppName [] . "->loopRunTimeVariantError (SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n"
+                     "  " . compilerCppName [] . "->loopRunTimeVariantError (" . [mInstructionLocation sourceFile] . ") ;\n"
                      "}\n"
                    . "if (" . loopVar . ") {\n" ;
   ioGeneratedCode .= "  " . variantVar . " -- ;\n" ;
@@ -1030,7 +1030,7 @@ override method @readOnlyWithInstructionForGeneration generateInstruction
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
     ioGeneratedCode .= "performSearch (" . keyVarCppName . ", " . compilerCppName []
                      . ", kSearchErrorMessage_" . [receiverType identifierRepresentation] . "_" . [mAccessName identifierRepresentation]
-                     . " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
+                     . " " . [mInstructionLocation commaSourceFile] . ") ;\n" ;
   end if ;
   ioGeneratedCode .= "if (NULL != " . mObjectArrayCppName . ") {\n"
                   .  "    macroValidSharedObject (" . mObjectArrayCppName . ", cMapElement_" . [receiverType identifierRepresentation] . ") ;\n" ;
@@ -1081,7 +1081,7 @@ override method @readWriteWithInstructionForGeneration generateInstruction
   ioGeneratedCode .= "cMapElement_" . [mReceiverType identifierRepresentation]
                   . " * " . mObjectArrayCppName . " = (cMapElement_" . [mReceiverType identifierRepresentation]
                   . " *) " . receiverCppName . ".readWriteAccessForWithInstruction_" . [mAccessName identifierRepresentation] . " (" . compilerCppName []
-                  .  ", " . keyVarCppName . " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n"
+                  .  ", " . keyVarCppName . " " . [mInstructionLocation commaSourceFile] . ") ;\n"
                   .  "if (NULL != " . mObjectArrayCppName . ") {\n"
                   .  "    macroValidSharedObject (" . mObjectArrayCppName . ", cMapElement_" . [mReceiverType identifierRepresentation] . ") ;\n" ;
   generateInstructionList
@@ -1266,7 +1266,8 @@ override method @foreachInstructionForGeneration generateInstruction
     end foreach ;
     if mIndexVariableCppName != "" then
       [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
-      ioGeneratedCode .= "  " . mIndexVariableCppName . ".increment_operation (" . compilerCppName [] . " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
+      ioGeneratedCode .= "  " . mIndexVariableCppName . ".increment_operation (" . compilerCppName []
+      . " " . [mInstructionLocation commaSourceFile] . ") ;\n" ;
     end if ;
     ioGeneratedCode .= "}\n" ;
   end if ;
@@ -1282,7 +1283,8 @@ override method @logInstructionForGeneration generateInstruction
   ?!@string ioGeneratedCode
 :
   [mLogExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ??@string logVar] ;
-  ioGeneratedCode .= logVar . ".log (" . [mLogMessage utf8Representation] . " COMMA_SOURCE_FILE_AT_LINE (" . [[[mLogMessage location] line] string] . ")) ;\n" ;
+  ioGeneratedCode .= logVar . ".log (" . [mLogMessage utf8Representation]
+  . " " . [[mLogMessage location] commaSourceFile] . ") ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*

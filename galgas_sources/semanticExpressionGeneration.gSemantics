@@ -22,6 +22,20 @@ semantics semanticExpressionGeneration :
 
 #---------------------------------------------------------------------------*
 
+reader @location sourceFile -> @string outResult
+:
+  outResult := "SOURCE_FILE (" . [[[selfcopy file] lastPathComponent] utf8Representation] . ", " .  [[selfcopy line] string] . ")" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+reader @location commaSourceFile -> @string outResult
+:
+  outResult := " COMMA_" . [selfcopy sourceFile] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
 once compilerCppName ->@string outCompilerCppName :
   outCompilerCppName := "inCompiler" ;
 end once ;
@@ -219,7 +233,7 @@ override method @defaultConstructorExpressionForGeneration generateExpression
     "GALGAS_"  . [mType identifierRepresentation]
   . "::constructor_"
   . [[mType mDefaultConstructorName] identifierRepresentation]
-  . " (SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))"
+  . " (" . [mLocation sourceFile] . ")"
   ;
 end method ;
 
@@ -256,9 +270,9 @@ override method @constructorExpressionForGeneration generateExpression
     needsComma := true ;
   end if ;
   if needsComma then
-    outCppExpression .= " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))" ;
+    outCppExpression .= " " . [mLocation commaSourceFile] . ")" ;
   else
-    outCppExpression .= "SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))" ;
+    outCppExpression .= [mLocation sourceFile] . ")" ;
   end if ;
 end method ;
 
@@ -316,7 +330,7 @@ override method @readerCallExpressionForGeneration generateExpression
   else
     outCppExpression .= " COMMA_" ;
   end if ;
-  outCppExpression .= "SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))" ;
+  outCppExpression .= [mLocation sourceFile] . ")" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -404,7 +418,7 @@ override method @concatExpressionForGeneration generateExpression
   [mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand] ;
 #--- Generate Comparison
   outCppExpression := leftTemporaryOperand . ".operator_concat ("
-                   . rightTemporaryOperand . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))" ;
+                   . rightTemporaryOperand . " " . [mLocation commaSourceFile] . ")" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -425,7 +439,7 @@ override method @orExpressionForGeneration generateExpression
   [mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand] ;
 #--- Generate Comparison
   outCppExpression := leftTemporaryOperand . ".operator_or ("
-                   . rightTemporaryOperand . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))" ;
+                   . rightTemporaryOperand  . [mLocation commaSourceFile] . ")" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -446,7 +460,7 @@ override method @xorExpressionForGeneration generateExpression
   [mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand] ;
 #--- Generate Comparison
   outCppExpression := leftTemporaryOperand . ".operator_xor ("
-                  .  rightTemporaryOperand . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))" ;
+                  .  rightTemporaryOperand . [mLocation commaSourceFile] . ")" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -467,7 +481,7 @@ override method @andExpressionForGeneration generateExpression
   [mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand] ;
 #--- Generate Comparison
   outCppExpression := leftTemporaryOperand . ".operator_and ("
-                  . rightTemporaryOperand . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))" ;
+                  . rightTemporaryOperand . [mLocation commaSourceFile] . ")" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -608,7 +622,7 @@ override method @rightShiftExpressionForGeneration generateExpression
   [mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand] ;
 #--- Generate Comparison
   outCppExpression := leftTemporaryOperand . ".right_shift_operation ("
-                   . rightTemporaryOperand . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))" ;
+                   . rightTemporaryOperand . [mLocation commaSourceFile] . ")" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -629,7 +643,7 @@ override method @leftShiftExpressionForGeneration generateExpression
   [mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand] ;
 #--- Generate Comparison
   outCppExpression := leftTemporaryOperand . ".left_shift_operation ("
-                   .  rightTemporaryOperand . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))" ;
+                   .  rightTemporaryOperand . [mLocation commaSourceFile] . ")" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -650,7 +664,7 @@ override method @addExpressionForGeneration generateExpression
   [mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand] ;
 #--- Generate Comparison
   outCppExpression := leftTemporaryOperand . ".add_operation ("
-                   . rightTemporaryOperand . ", " . compilerCppName [] . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))" ;
+                   . rightTemporaryOperand . ", " . compilerCppName [] . [mLocation commaSourceFile] . ")" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
 end method ;
 
@@ -672,7 +686,7 @@ override method @subExpressionForGeneration generateExpression
   [mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand] ;
 #--- Generate Comparison
   outCppExpression := leftTemporaryOperand . ".substract_operation ("
-                  . rightTemporaryOperand . ", " . compilerCppName [] . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))" ;
+                  . rightTemporaryOperand . ", " . compilerCppName [] . [mLocation commaSourceFile] . ")" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
 end method ;
 
@@ -694,7 +708,7 @@ override method @multiplicationExpressionForGeneration generateExpression
   [mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand] ;
 #--- Generate Comparison
   outCppExpression := leftTemporaryOperand . ".multiply_operation ("
-                  . rightTemporaryOperand . ", " . compilerCppName [] . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))" ;
+                  . rightTemporaryOperand . ", " . compilerCppName [] . [mLocation commaSourceFile] . ")" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
 end method ;
 
@@ -716,7 +730,7 @@ override method @divisionExpressionForGeneration generateExpression
   [mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand] ;
 #--- Generate Comparison
   outCppExpression := leftTemporaryOperand . ".divide_operation ("
-                  . rightTemporaryOperand . ", " . compilerCppName [] . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))" ;
+                  . rightTemporaryOperand . ", " . compilerCppName [] . [mLocation commaSourceFile] . ")" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
 end method ;
 
@@ -738,7 +752,7 @@ override method @moduloExpressionForGeneration generateExpression
   [mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand] ;
 #--- Generate Comparison
   outCppExpression := leftTemporaryOperand . ".modulo_operation ("
-                  . rightTemporaryOperand . ", " . compilerCppName [] . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))" ;
+                  . rightTemporaryOperand . ", " . compilerCppName [] . [mLocation commaSourceFile] . ")" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
 end method ;
 
@@ -757,7 +771,7 @@ override method @unaryMinusExpressionForGeneration generateExpression
   [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?operand] ;
 #--- Generate Comparison
   outCppExpression := operand . ".operator_unary_minus ("
-                  . compilerCppName [] . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))" ;
+                  . compilerCppName [] . [mLocation commaSourceFile] . ")" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
 end method ;
 
@@ -775,7 +789,7 @@ override method @notExpressionForGeneration generateExpression
   @string operand ;
   [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?operand] ;
 #--- Generate
-  outCppExpression := operand . ".operator_not (SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))" ;
+  outCppExpression := operand . ".operator_not (" . [mLocation sourceFile] . ")" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -809,7 +823,7 @@ override method @tildeExpressionForGeneration generateExpression
   @string operand ;
   [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?operand] ;
 #--- Generate
-  outCppExpression := operand . ".operator_tilde (SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))" ;
+  outCppExpression := operand . ".operator_tilde (" . [mLocation sourceFile] . ")" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -881,7 +895,7 @@ override method @extractObjectInExpressionForGeneration generateExpression
   outCppExpression := "GALGAS_" . [mType identifierRepresentation]
   . "::extractObject (" . receiverExpression
   . ", " . compilerCppName []
-  . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))" ;
+  . [mLocation commaSourceFile] . ")" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
 end method ;
 
@@ -958,7 +972,7 @@ override method @castInExpressionForGeneration generateExpression
     compilerCppName [] . "->castError (\""
   . [mTypeName identifierRepresentation] 
   . "\", " . receiverExpression . ".ptr ()->classDescriptor ()"
-  . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n"
+  . [mLocation commaSourceFile] . ") ;\n"
   ;
   [!?ioGeneratedCode decIndentation !2] ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
@@ -990,7 +1004,7 @@ override method @functionCallExpressionForGeneration generateExpression
   end foreach ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
   outCppExpression .= compilerCppName [] ;
-  outCppExpression .= " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))" ;
+  outCppExpression .= [mLocation commaSourceFile] . ")" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -1053,7 +1067,7 @@ override method @filewrapperTemplateInExpressionForGeneration generateExpression
     outCppExpression .= ", " . mValue ;
   end foreach ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
-  outCppExpression .= " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")))" ;
+  outCppExpression .= [mLocation commaSourceFile] . "))" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -1084,7 +1098,7 @@ override method @lexiqueIntrospectionForGeneration generateExpression
   ioInclusionSet += !"lexique-" . mLexiqueComponentName ;
   outCppExpression := "C_Lexique_" . [mLexiqueComponentName identifierRepresentation] . "::"
   . [mLexiqueReaderName identifierRepresentation]
-  . "(SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))" ;
+  . "(" . [mLocation sourceFile] . ")" ;
 end method ;
 
 
