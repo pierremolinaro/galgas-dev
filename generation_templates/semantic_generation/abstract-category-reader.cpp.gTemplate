@@ -4,6 +4,12 @@
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
+% foreach INCLUSION_SET do
+%#include "%!key%.h"\n%
+end
+%
+//-----------------------------------------------------------------------------*
+
 static TC_UniqueArray <categoryReaderSignature_%![CLASS_NAME identifierRepresentation]%_%![READER_NAME identifierRepresentation]%> gCategoryReaderTable_%![CLASS_NAME identifierRepresentation]%_%![READER_NAME identifierRepresentation]% ;
 
 //-----------------------------------------------------------------------------*

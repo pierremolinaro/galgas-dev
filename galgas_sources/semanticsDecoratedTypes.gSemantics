@@ -348,7 +348,7 @@ class @castInExpressionForGeneration extends @semanticExpressionForGeneration {
 class @testDynamicClassInExpressionForGeneration extends @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mReceiverExpression ;
   @dynamicTypeComparisonKind mTypeComparisonKind ;
-  @string mTypeName ;
+  @unifiedTypeMapProxy mCastType ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1449,7 +1449,7 @@ class @abstractCategoryMethodForGeneration extends @semanticDeclarationWithHeade
 #---------------------------------------------------------------------------*
 
 class @categoryMethodForGeneration extends @semanticDeclarationWithHeaderForGeneration {
-  @unifiedTypeMapProxy mSelfType ;
+  @unifiedTypeMapProxy mReceiverType ;
   @string mCategoryMethodName ;
   @bool mImplementedAsFunction ;
   @formalParameterListForGeneration mCategoryMethodFormalParameterList ;
@@ -1464,7 +1464,7 @@ class @categoryMethodForGeneration extends @semanticDeclarationWithHeaderForGene
 #---------------------------------------------------------------------------*
 
 class @overridingCategoryMethodForGeneration extends @semanticDeclarationWithHeaderForGeneration {
-  @string mTypeName ;
+  @unifiedTypeMapProxy mReceiverType ;
   @string mBaseTypeName ;
   @string mCategoryMethodName ;
   @formalParameterListForGeneration mCategoryMethodFormalParameterList ;
@@ -1491,7 +1491,7 @@ class @abstractCategoryModifierForGeneration extends @semanticDeclarationWithHea
 #---------------------------------------------------------------------------*
 
 class @categoryModifierForGeneration extends @semanticDeclarationWithHeaderForGeneration {
-  @unifiedTypeMapProxy mSelfType ;
+  @unifiedTypeMapProxy mReceiverType ;
   @string mCategoryModifierName ;
   @bool mImplementedAsFunction ;
   @formalParameterListForGeneration mCategoryModifierFormalParameterList ;
@@ -1521,7 +1521,7 @@ class @overridingCategoryModifierForGeneration extends @semanticDeclarationWithH
 #---------------------------------------------------------------------------*
 
 class @abstractCategoryReaderForGeneration extends @semanticDeclarationWithHeaderForGeneration {
-  @string mTypeName ;
+  @unifiedTypeMapProxy mReceiverType ;
   @string mAbstractCategoryReaderName ;
   @unifiedTypeMapProxy mResultType ;
   @formalInputParameterListForGeneration mAbstractCategoryReaderFormalParameterList ;
@@ -1534,7 +1534,7 @@ class @abstractCategoryReaderForGeneration extends @semanticDeclarationWithHeade
 #---------------------------------------------------------------------------*
 
 class @categoryReaderForGeneration extends @semanticDeclarationWithHeaderForGeneration {
-  @unifiedTypeMapProxy mSelfType ;
+  @unifiedTypeMapProxy mReceiverType ;
   @string mCategoryReaderName ;
   @bool mImplementedAsFunction ;
   @unifiedTypeMapProxy mResultType ;
@@ -1551,7 +1551,7 @@ class @categoryReaderForGeneration extends @semanticDeclarationWithHeaderForGene
 #---------------------------------------------------------------------------*
 
 class @overrideCategoryReaderForGeneration extends @semanticDeclarationWithHeaderForGeneration {
-  @string mTypeName ;
+  @unifiedTypeMapProxy mReceiverType ;
   @string mBaseTypeName ;
   @string mOverridingCategoryReaderName ;
   @unifiedTypeMapProxy mResultType ;

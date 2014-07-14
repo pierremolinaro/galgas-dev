@@ -71,7 +71,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @inputActualParameterForGeneration generateActualParameter
-  ?!@stringset ioInclusionSet
+  ?!@stringset unused ioInclusionSet
   ?!@uint unused ioTemporaryVariableIndex
   ?!@string unused ioImplementation
   ?!@stringlist unused ioJokerParametersToReleaseList
@@ -87,7 +87,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @inputJokerParameterForGeneration generateActualParameter
-  ?!@stringset unused ioInclusionSet
+  ?!@stringset ioInclusionSet
   ?!@uint unused ioTemporaryVariableIndex
   ?!@string ioImplementation
   ?!@stringlist ioJokerParametersToReleaseList
@@ -531,7 +531,11 @@ override method @warningInstructionForGeneration generateInstruction
                   . " " . [mInstructionLocation commaSourceFile] . ") ;\n" ;
 end method ;
 
+
 #---------------------------------------------------------------------------*
+#! Calls
+#---------------------------------------------------------------------------*
+
 
 override method @methodCallInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
@@ -787,6 +791,8 @@ override method @typeMethodInstructionForGeneration generateInstruction
 end method ;
 
 #---------------------------------------------------------------------------*
+#! Cast
+#---------------------------------------------------------------------------*
 
 override method @structuredCastInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
@@ -807,6 +813,7 @@ override method @structuredCastInstructionForGeneration generateInstruction
   ioGeneratedCode .= "if (" . castCppVarName . ".isValid ()) {\n" ;
   [!?ioGeneratedCode incIndentation !2] ;
   foreach mCastBranchList do
+   [mType addHeaderFileName !?ioInclusionSet] ;
     switch mTypeComparisonKind
     when equal :
       ioGeneratedCode .= "if (" . castCppVarName
