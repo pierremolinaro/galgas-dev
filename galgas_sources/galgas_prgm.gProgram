@@ -531,22 +531,33 @@ indexing with galgas3ProjectGrammar
     ??@galgas3ProjectComponentAST projectComponentAST
   ;
   var declarationAST := [@galgas3DeclarationAST default] ; 
-  var handCodedSourceFileList := [@stringlist emptyList] ;
-  var handCodedSourceDirectorySet := [@stringset emptySet] ;
   foreach projectComponentAST->mProjectSourceList do
     if [mValue pathExtension] == "galgas" then
       const absoluteSourcePath := [mValue absolutePathFromPath ![inProjectSourceFile stringByDeletingLastPathComponent]] ;
       grammar galgas3Grammar in [@lstring new !absoluteSourcePath !mValue->location] !?declarationAST ;
-    elsif [mValue pathExtension] == "cpp" then
-      handCodedSourceFileList += ![mValue lastPathComponent] ;
-      const directory := [mValue stringByDeletingLastPathComponent] ;
+    else
+      error mValue: "only \".galgas\" extension is allowed here" ;
+    end if ;
+  end foreach ;
+#---------------------------------- Hand coded source files
+  var handCodedSourceAppFileList := [@stringlist emptyList] ;
+  var handCodedSourceToolFileList := [@stringlist emptyList] ;
+  var handCodedSourceDirectorySet := [@stringset emptySet] ;
+  for * in projectComponentAST->mQualifiedFeatureList do
+    if mFeatureName->string == "tool-file" then
+      handCodedSourceToolFileList += ![mFeatureValue lastPathComponent] ;
+      const directory := [mFeatureValue stringByDeletingLastPathComponent] ;
       if directory != "" then
         handCodedSourceDirectorySet += !"../" + directory ;
       end if ;
-    else
-      error mValue: "unhandled extension" ;
+    elsif mFeatureName->string == "app-file" then
+      handCodedSourceAppFileList += ![mFeatureValue lastPathComponent] ;
+      const directory := [mFeatureValue stringByDeletingLastPathComponent] ;
+      if directory != "" then
+        handCodedSourceDirectorySet += !"../" + directory ;
+      end if ;
     end if ;
-  end foreach ;
+  end for ;
 #---------------------------------- Display result
   var toolCppFileList := [@stringlist emptyList] ;
   var allProductFileSet := [@stringset emptySet] ;
@@ -673,12 +684,17 @@ indexing with galgas3ProjectGrammar
       handledExtensionSet += !mSourceFileExtension->string ;
     end for ;
   #--- Build qualified feature map
+    var ignoredFeatureSet := [@stringset emptySet] ;
+    ignoredFeatureSet += !"tool-file" ;
+    ignoredFeatureSet += !"app-file" ;
     @projectQualifiedFeatureMap projectQualifiedFeatureMap [emptyMap] ;
     foreach projectComponentAST->mQualifiedFeatureList do
-      [!?projectQualifiedFeatureMap insertKey
-        !mFeatureName
-        !mFeatureValue
-      ] ;
+      if not [ignoredFeatureSet hasKey !mFeatureName->string] then
+        [!?projectQualifiedFeatureMap insertKey
+          !mFeatureName
+          !mFeatureValue
+        ] ;
+      end if ;
     end foreach ;
     updateGalgas3Targets
       !inProjectSourceFile
@@ -689,7 +705,7 @@ indexing with galgas3ProjectGrammar
       !projectComponentAST->mGenerationFeatureList
       !toolCppFileList
       !appProductFileList
-      !handCodedSourceFileList
+      !handCodedSourceToolFileList
       !handCodedSourceDirectorySet
       !handledExtensionSet
     ;

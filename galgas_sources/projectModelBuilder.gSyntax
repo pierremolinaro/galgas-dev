@@ -66,45 +66,60 @@ rule <project_component_start_symbol>
     $;$ :> ?* ?* ;
   while
     @sourceFileKind sourceFileKind ;
+    @lstring filePath ;
     select
       $extern$ :> ??@string sep ?* ;
       send sep ;
+      $literal_string$ ?filePath :> ?* ?* ;
+      send  if [filePath pathExtension] == "cpp"
+        then "%tool-file : \"hand_coded_sources/" . filePath . "\""
+        else "%app-file : \"hand_coded_sources/" . filePath . "\""
+        end
+      ;
       sourceFileKind := [@sourceFileKind externSourceFile] ;
     or
       $gui$ :> ??@string sep ?* ;
       send sep ;
+      $literal_string$ ?filePath :> ?* ?* ;
+      send "\"galgas-sources/" . [filePath stringByDeletingPathExtension] . ".galgas\"" ;
       sourceFileKind := [@sourceFileKind guiSourceFile] ;
     or
       $lexique$ :> ??@string sep ?* ;
       send sep ;
+      $literal_string$ ?filePath :> ?* ?* ;
+      send "\"galgas-sources/" . [filePath stringByDeletingPathExtension] . ".galgas\"" ;
       sourceFileKind := [@sourceFileKind lexiqueSourceFile] ;
     or
       $option$ :> ??@string sep ?* ;
       send sep ;
+      $literal_string$ ?filePath :> ?* ?* ;
+      send "\"galgas-sources/" . [filePath stringByDeletingPathExtension] . ".galgas\"" ;
       sourceFileKind := [@sourceFileKind optionSourceFile] ;
     or
       $semantics$ :> ??@string sep ?* ;
       send sep ;
+      $literal_string$ ?filePath :> ?* ?* ;
+      send "\"galgas-sources/" . [filePath stringByDeletingPathExtension] . ".galgas\"" ;
       sourceFileKind := [@sourceFileKind semanticsSourceFile] ;
     or
       $syntax$ :> ??@string sep ?* ;
       send sep ;
-      sourceFileKind := [@sourceFileKind syntaxSourceFile] ;
+      $literal_string$ ?filePath :> ?* ?* ;
+       send "\"galgas-sources/" . [filePath stringByDeletingPathExtension] . ".galgas\"" ;
+     sourceFileKind := [@sourceFileKind syntaxSourceFile] ;
     or
       $grammar$ :> ??@string sep ?* ;
       send sep ;
+      $literal_string$ ?filePath :> ?* ?* ;
+      send "\"galgas-sources/" . [filePath stringByDeletingPathExtension] . ".galgas\"" ;
       sourceFileKind := [@sourceFileKind grammarSourceFile] ;
     or
       $program$ :> ??@string sep ?* ;
       send sep ;
+      $literal_string$ ?filePath :> ?* ?* ;
+      send "\"galgas-sources/" . [filePath stringByDeletingPathExtension] . ".galgas\"" ;
       sourceFileKind := [@sourceFileKind programSourceFile] ;
     end select ;
-    $literal_string$ ?@lstring filePath :> ?* ?* ;
-    send if sourceFileKind == [@sourceFileKind externSourceFile] then
-      "\"hand_coded_sources/" . filePath . "\""
-    else 
-      "\"galgas-sources/" . [filePath stringByDeletingPathExtension] . ".galgas\""
-    end ;
     $;$ :> ?* ?* ;
     projectSourceList +=
       !sourceFileKind
