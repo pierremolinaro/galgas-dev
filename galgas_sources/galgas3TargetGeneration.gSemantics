@@ -278,8 +278,10 @@ routine updateGalgas3Targets
   @string SDK := "" ;
   @bool usesARC := false ;
   foreach inTargetFeatureList do
-    if [availableGenerationFeatures hasKey ![mValue string]] then
-      if [generationFeatures hasKey ![mValue string]] then
+#    if [ignoredFeatureSet hasKey !mValue->string] then
+#      # Ignored attribute, do nothing
+    if [availableGenerationFeatures hasKey !mValue->string] then
+      if [generationFeatures hasKey !mValue->string] then
         error mValue: "duplicate '" . mValue . "' feature" ;
       end if ;
     #--- Multi-threading
@@ -330,7 +332,7 @@ routine updateGalgas3Targets
         SDK := "macosx" ;
         usesARC := true ;
       else
-        generationFeatures += ![mValue string] ;
+        generationFeatures += !mValue->string ;
       end if ;
     else
       @string s := "" ;

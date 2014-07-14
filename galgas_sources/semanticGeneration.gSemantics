@@ -1126,37 +1126,6 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @classTypeForGeneration appendDeclaration1
-  ??@bool unused inGenerateForGalgas3
-  -> @string outHeader
-:
-  outHeader := [filewrapper typeGenerationTemplate.classTypeHeader1
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
-    !mAllTypedAttributeList
-    !mIsAbstract
-    ![mTypeProxy mDefaultConstructorName] != ""
-  ] ;
-  outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    ![mTypeProxy mIsConcrete]
-    ![mTypeProxy mConstructorMap]
-    ![mTypeProxy mReaderMap]
-    ![mTypeProxy mModifierMap]
-    ![mTypeProxy mInstanceMethodMap]
-    ![mTypeProxy mClassMethodMap]
-    ![mTypeProxy mEnumerationDescriptor]
-    ![mTypeProxy mHandledOperatorFlags]
-    ![mTypeProxy mAddAssignOperatorArguments]
-    ![mTypeProxy mWithAccessorMap]
-    ![mTypeProxy mTypeForEnumeratedElement]
-  ] ;
- end reader ;
-
-#---------------------------------------------------------------------------*
-
 override reader @mapTypeForGeneration appendDeclaration1
   ??@bool inGenerateForGalgas3
   -> @string outHeader
@@ -1577,68 +1546,6 @@ override reader @uniqueMapTypeForGeneration appendDeclaration2
  end reader ;
 
 #---------------------------------------------------------------------------*
-
-override reader @classTypeForGeneration appendDeclaration2
-  ??@string inOutputDirectory
-  ??@bool inGenerateForGalgas3
- ->@string outHeader :
-  var inclusionSet := [@stringset emptySet] ;
-  if inGenerateForGalgas3 then
-    for (t ...) in mTypedAttributeList do
-      [t addHeaderFileName !?inclusionSet] ;
-    end for ;
-  end if ;
-  if mGenerateHeaderInSeparateFile then
-    const @string part1 := [filewrapper typeGenerationTemplate.classTypeHeader2part1
-      ![mTypeProxy key]
-      ![mTypeProxy identifierRepresentation]
-      !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
-      !mTypedAttributeList
-      !mAllTypedAttributeList
-      !mIsAbstract
-      !inclusionSet
-    ] ;
-    const @string part2 := [filewrapper typeGenerationTemplate.classTypeHeader2part2
-      ![mTypeProxy key]
-      ![mTypeProxy identifierRepresentation]
-      !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
-      !mTypedAttributeList
-      !mAllTypedAttributeList
-      !mIsAbstract
-    ] ;
-    const @string headerFileName := "separateHeaderFor_" . [mTypeProxy identifierRepresentation] . ".h" ;
-    [@string generateFileWithPattern
-      !inOutputDirectory + if inGenerateForGalgas3 then "/../headers" else "" end
-      !headerFileName
-      !"//"
-      !"\n\n" # Defaut user zone1
-      !part1
-      !"\n\n" # Defaut user zone2
-      !part2
-    ] ;
-    outHeader := "#include \"" . headerFileName . "\"\n\n" ;
-  else
-    outHeader := [filewrapper typeGenerationTemplate.classTypeHeader2part1
-      ![mTypeProxy key]
-      ![mTypeProxy identifierRepresentation]
-      !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
-      !mTypedAttributeList
-      !mAllTypedAttributeList
-      !mIsAbstract
-      !inclusionSet
-    ] ;
-    outHeader .= [filewrapper typeGenerationTemplate.classTypeHeader2part2
-      ![mTypeProxy key]
-      ![mTypeProxy identifierRepresentation]
-      !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
-      !mTypedAttributeList
-      !mAllTypedAttributeList
-      !mIsAbstract
-    ] ;
-  end if ;
- end reader ;
-
-#---------------------------------------------------------------------------*
 #                                                                           *
 # A P P E N D    G E N E R I C    T Y P E    I M P L E M E N T A T I O N    *
 #                                                                           *
@@ -1792,24 +1699,6 @@ override reader @mapProxyTypeForGeneration appendSpecificImplementation
 
 #---------------------------------------------------------------------------*
 
-override reader @classTypeForGeneration appendSpecificImplementation
-  ??@bool unused inGenerateForGalgas3
-  ->@string outImplementation
-:
-  outImplementation := [filewrapper typeGenerationTemplate.classTypeSpecificImplementation
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
-    !mTypedAttributeList
-    !mAllTypedAttributeList
-    ![mAllTypedAttributeList subListWithRange ![@range new !0 ![mAllTypedAttributeList length] - [mTypedAttributeList length]]]
-    !mIsAbstract
-    ![mTypeProxy mDefaultConstructorName] != ""
-  ] ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
 override reader @structTypeForGeneration appendSpecificImplementation
   ??@bool unused inGenerateForGalgas3
   ->@string outImplementation
@@ -1849,6 +1738,121 @@ override reader @graphDeclarationForGeneration appendSpecificImplementation
   ] ;
  end reader ;
 
+#---------------------------------------------------------------------------*
+#! Class
+#---------------------------------------------------------------------------*
+
+override reader @classTypeForGeneration appendDeclaration1
+  ??@bool unused inGenerateForGalgas3
+  -> @string outHeader
+:
+  outHeader := [filewrapper typeGenerationTemplate.classTypeHeader1
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
+    !mAllTypedAttributeList
+    !mIsAbstract
+    ![mTypeProxy mDefaultConstructorName] != ""
+  ] ;
+  outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mTypeProxy mIsConcrete]
+    ![mTypeProxy mConstructorMap]
+    ![mTypeProxy mReaderMap]
+    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mInstanceMethodMap]
+    ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mEnumerationDescriptor]
+    ![mTypeProxy mHandledOperatorFlags]
+    ![mTypeProxy mAddAssignOperatorArguments]
+    ![mTypeProxy mWithAccessorMap]
+    ![mTypeProxy mTypeForEnumeratedElement]
+  ] ;
+ end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @classTypeForGeneration appendDeclaration2
+  ??@string inOutputDirectory
+  ??@bool inGenerateForGalgas3
+ ->@string outHeader :
+  var inclusionSet := [@stringset emptySet] ;
+  if inGenerateForGalgas3 then
+    for (t ...) in mTypedAttributeList do
+      [t addHeaderFileName !?inclusionSet] ;
+    end for ;
+  end if ;
+  if mGenerateHeaderInSeparateFile then
+    const part1 := [filewrapper typeGenerationTemplate.classTypeHeader2part1
+      ![mTypeProxy key]
+      ![mTypeProxy identifierRepresentation]
+      !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
+      !mTypedAttributeList
+      !mAllTypedAttributeList
+      !mIsAbstract
+      !inclusionSet
+    ] ;
+    const part2 := [filewrapper typeGenerationTemplate.classTypeHeader2part2
+      ![mTypeProxy key]
+      ![mTypeProxy identifierRepresentation]
+      !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
+      !mTypedAttributeList
+      !mAllTypedAttributeList
+      !mIsAbstract
+    ] ;
+    const headerFileName := "separateHeaderFor_" . [mTypeProxy identifierRepresentation] . ".h" ;
+    [@string generateFileWithPattern
+      !inOutputDirectory + if inGenerateForGalgas3 then "/../headers" else "" end
+      !headerFileName
+      !"//"
+      !"\n\n" # Defaut user zone1
+      !part1
+      !"\n\n" # Defaut user zone2
+      !part2
+    ] ;
+    outHeader := "#include \"" . headerFileName . "\"\n\n" ;
+  else
+    outHeader := [filewrapper typeGenerationTemplate.classTypeHeader2part1
+      ![mTypeProxy key]
+      ![mTypeProxy identifierRepresentation]
+      !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
+      !mTypedAttributeList
+      !mAllTypedAttributeList
+      !mIsAbstract
+      !inclusionSet
+    ] ;
+    outHeader .= [filewrapper typeGenerationTemplate.classTypeHeader2part2
+      ![mTypeProxy key]
+      ![mTypeProxy identifierRepresentation]
+      !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
+      !mTypedAttributeList
+      !mAllTypedAttributeList
+      !mIsAbstract
+    ] ;
+  end if ;
+ end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @classTypeForGeneration appendSpecificImplementation
+  ??@bool unused inGenerateForGalgas3
+  ->@string outImplementation
+:
+  outImplementation := [filewrapper typeGenerationTemplate.classTypeSpecificImplementation
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
+    !mTypedAttributeList
+    !mAllTypedAttributeList
+    ![mAllTypedAttributeList subListWithRange ![@range new !0 ![mAllTypedAttributeList length] - [mTypedAttributeList length]]]
+    !mIsAbstract
+    ![mTypeProxy mDefaultConstructorName] != ""
+  ] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+#! Sub programs
 #---------------------------------------------------------------------------*
 
 override reader @routineImplementationForGeneration appendSpecificImplementation

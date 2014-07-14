@@ -370,6 +370,11 @@ routine generateSyntaxComponentGalgas3
       ] ;
     #------ Generate Implementation File
       if [@uint errorCount] == 0 then
+        for * in inSemanticContext->mOptionComponentMapForSemanticAnalysis do
+          if not mIsPredefined then
+            implementationIncludeList += !"option-" . lkey->string ;
+          end if ;
+        end for ;
         const lexiqueCppName := "C_Lexique_" . [inSyntaxStructForGeneration->mSyntaxComponentRoot->mImportedLexiqueFilePath  identifierRepresentation] ;
         @string implementationString := [filewrapper syntaxFileGenerationTemplate.syntaxFileImplementationGalgas3
           !componentName
