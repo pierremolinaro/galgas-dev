@@ -135,7 +135,7 @@ $(OBJECTS_DIR):
 
 $(EXECUTABLE):$(OBJECT_FILES_LIST)
 	@echo "- $(LINKING_MESSAGE): $(EXECUTABLE)"
-	$(SILENT_CHAR)$(LINKER_TOOL) $(OBJECT_FILES_LIST) -o $(EXECUTABLE) $(LINKER_OPTIONS) $(PLATFORM_LINKER_OPTIONS) && $(STRIP_TOOL) $(STRIP_OPTION) $(EXECUTABLE)
+	$(SILENT_CHAR)$(LINKER_TOOL) $(OBJECT_FILES_LIST) -o $(EXECUTABLE) $(LINKER_OPTIONS) $(USER_LINK_OPTIONS) $(PLATFORM_LINKER_OPTIONS) && $(STRIP_TOOL) $(STRIP_OPTION) $(EXECUTABLE)
 
 #----------------------------------------------------------------------------*
 #                                                                            *
@@ -157,7 +157,7 @@ $(DEBUG_OBJECTS_DIR):
 
 $(EXECUTABLE_DEBUG):$(DEBUG_OBJECT_FILES_LIST)
 	@echo "- $(LINKING_MESSAGE): $(EXECUTABLE_DEBUG)"
-	$(SILENT_CHAR)$(LINKER_TOOL) $(DEBUG_OBJECT_FILES_LIST) -o $(EXECUTABLE_DEBUG) $(LINKER_OPTIONS) $(PLATFORM_LINKER_OPTIONS)
+	$(SILENT_CHAR)$(LINKER_TOOL) $(DEBUG_OBJECT_FILES_LIST) -o $(EXECUTABLE_DEBUG) $(LINKER_OPTIONS) $(USER_LINK_OPTIONS) $(PLATFORM_LINKER_OPTIONS)
 
 #----------------------------------------------------------------------------*
 #                                                                            *

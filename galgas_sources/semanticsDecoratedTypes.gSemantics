@@ -421,13 +421,13 @@ list @formalInputParameterListForGeneration {
 #---------------------------------------------------------------------------*
 
 abstract class @actualParameterForGeneration {
+  @unifiedTypeMapProxy mFormalArgumentType ;
 }
 
 #---------------------------------------------------------------------------*
 
 class @outputActualParameterForGeneration extends @actualParameterForGeneration {
   @semanticExpressionForGeneration mOutputActualParameterExpression ;
-  @unifiedTypeMapProxy mFormalArgumentType ;
 }
 
 #---------------------------------------------------------------------------*
@@ -448,7 +448,6 @@ class @inputActualParameterForGeneration extends @actualParameterForGeneration {
 
 class @inputJokerParameterForGeneration extends @actualParameterForGeneration {
   @string mInputActualCppName ;
-  @unifiedTypeMapProxy mFormalArgumentType ;
 }
 
 #---------------------------------------------------------------------------*

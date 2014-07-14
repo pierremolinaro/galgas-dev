@@ -1131,7 +1131,7 @@ generate_LR1_grammar_cpp_file (C_Compiler * inCompiler,
   if (inCompileForGalgas3) {
     generatedZone2 << "#include \"grammar-" << inTargetFileName << ".h\"\n" ;
     generatedZone2 << "#include \"lexique-" << inLexiqueName << ".h\"\n" ;
-    generatedZone2 << "// #include \"AZERTYUIOP.h\"\n" ;
+    generatedZone2 << "#include \"AZERTYUIOP.h\"\n" ;
   }else{
     generatedZone2 << "#include \"" << inTargetFileName << ".h\"\n" ;
   }

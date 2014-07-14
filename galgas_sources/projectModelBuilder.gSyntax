@@ -71,11 +71,22 @@ rule <project_component_start_symbol>
       $extern$ :> ??@string sep ?* ;
       send sep ;
       $literal_string$ ?filePath :> ?* ?* ;
-      send  if [filePath pathExtension] == "cpp"
-        then "%tool-file : \"hand_coded_sources/" . filePath . "\""
-        else "%app-file : \"hand_coded_sources/" . filePath . "\""
-        end
-      ;
+      const extension := [filePath pathExtension] ;
+      @string attribute ;
+      if extension == "cpp" then
+        attribute := "tool-source" ;
+      elsif extension == "m" then
+        attribute := "app-source" ;
+      elsif extension == "mm" then
+        attribute := "tool-source" ;
+      elsif extension == "framework" then
+        attribute := "tool-link" ;
+      elsif extension == "xib" then
+        attribute := "app-source" ;
+      else
+        error filePath : "unhandled extension" : attribute ;
+      end if ;
+      send "%" . attribute . " : \"hand_coded_sources/" . filePath . "\"" ;
       sourceFileKind := [@sourceFileKind externSourceFile] ;
     or
       $gui$ :> ??@string sep ?* ;

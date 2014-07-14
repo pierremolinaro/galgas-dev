@@ -106,6 +106,7 @@ filewrapper targetGalgas3GenerationFileWrapper in "../generation_templates/targe
     ?@stringset HAND_CODED_SOURCE_DIR_SET
     ?@stringlist HAND_CODED_SOURCE_FILE_LIST
     ?@stringlist MAKEFILE_FILE_LIST
+    ?@stringlist TOOL_LINK_LIST
     ?@string LIBPM_DIRECTORY_PATH
     ?@string MULTI_THREADING_ENABLED
   ;
@@ -210,6 +211,7 @@ routine updateGalgas3Targets
   ??@stringlist inHandCodedSourceFileList
   ??@stringset inHandCodedSourceDirectorySet
   ??@stringset inHandledExtensionSet
+  ??@stringlist inHandCodedLinkToolFileList
 :
   const projectDirectory := [inProjectSourceFilePath stringByDeletingLastPathComponent] ;
 #--- Update project header
@@ -228,10 +230,6 @@ routine updateGalgas3Targets
   else
     updateLIBPMatPath ![inProjectSourceFilePath stringByDeletingLastPathComponent] . "/build/libpm" ;
     libpmPath := "../build/libpm" ;
-#    const @string libpmAbsolutePath := [libpmPath absolutePathFromPath ![inProjectSourceFilePath stringByDeletingLastPathComponent]] ;
-#    if not [libpmAbsolutePath directoryExists] then
-#      error inEndOfProjectSourceFile:"the '" . libpmAbsolutePath . "'  LIBPM directory does not exists" ;
-#    end if ;
   end with ;
 #--- 
 #--- Check target names, file base name uniqueness, and build target file list
@@ -278,8 +276,6 @@ routine updateGalgas3Targets
   @string SDK := "" ;
   @bool usesARC := false ;
   foreach inTargetFeatureList do
-#    if [ignoredFeatureSet hasKey !mValue->string] then
-#      # Ignored attribute, do nothing
     if [availableGenerationFeatures hasKey !mValue->string] then
       if [generationFeatures hasKey !mValue->string] then
         error mValue: "duplicate '" . mValue . "' feature" ;
@@ -370,6 +366,7 @@ routine updateGalgas3Targets
     !inHandCodedSourceDirectorySet
     !inHandCodedSourceFileList
     !inToolProductFileList
+    !inHandCodedLinkToolFileList
     !libpmPath
     !if multiThreadingEnabled then "1" else "0" end
   ] ;
