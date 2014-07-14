@@ -340,6 +340,8 @@ override method @concatInstructionForGeneration generateInstruction
 end method ;
 
 #---------------------------------------------------------------------------*
+#! Grammar
+#---------------------------------------------------------------------------*
 
 override method @grammarInstructionWithSourceFileForGeneration generateInstruction
   ?!@stringset ioInclusionSet
@@ -371,10 +373,10 @@ override method @grammarInstructionWithSourceFileForGeneration generateInstructi
       !?ioUnusedVariableCppNameSet
       ??@string parameterCppName
     ] ;
+    parameterCppNameList += !parameterCppName ;
     if (mActualParameter is >= @inputActualParameterForGeneration) then
       ioGeneratedCode .= parameterCppName . ".drop () ;\n" ;
     end if ;
-    parameterCppNameList += !parameterCppName ;
   end foreach ;
   if mGrammarHasTranslateFeature then
     ioGeneratedCode .= "C_String " . mSyntaxDirectedTranslationResultVarName . " ;\n" ;
@@ -413,8 +415,15 @@ override method @grammarInstructionWithSourceExpressionForGeneration generateIns
   @stringlist jokerParametersToReleaseList [emptyList] ;
   @stringlist inputVariableList [emptyList] ;
   foreach mActualParameterList do
-    @string parameterCppName ;
-    [mActualParameter generateActualParameter !?ioInclusionSet !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?inputVariableList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
+    [mActualParameter generateActualParameter
+       !?ioInclusionSet
+       !?ioTemporaryVariableIndex
+       !?ioGeneratedCode
+       !?jokerParametersToReleaseList
+       !?inputVariableList
+       !?ioUnusedVariableCppNameSet
+       ??@string parameterCppName
+    ] ;
     parameterCppNameList += !parameterCppName ;
     if (mActualParameter is >= @inputActualParameterForGeneration) then
       ioGeneratedCode .= parameterCppName . ".drop () ;\n" ;

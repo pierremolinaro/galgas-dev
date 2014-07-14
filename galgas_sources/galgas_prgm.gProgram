@@ -542,20 +542,27 @@ indexing with galgas3ProjectGrammar
 #---------------------------------- Hand coded source files
   var handCodedSourceAppFileList := [@stringlist emptyList] ;
   var handCodedSourceToolFileList := [@stringlist emptyList] ;
+  var handCodedLinkToolFileList := [@stringlist emptyList] ;
   var handCodedSourceDirectorySet := [@stringset emptySet] ;
   for * in projectComponentAST->mQualifiedFeatureList do
-    if mFeatureName->string == "tool-file" then
+    if mFeatureName->string == "tool-source" then
       handCodedSourceToolFileList += ![mFeatureValue lastPathComponent] ;
       const directory := [mFeatureValue stringByDeletingLastPathComponent] ;
       if directory != "" then
         handCodedSourceDirectorySet += !"../" + directory ;
       end if ;
-    elsif mFeatureName->string == "app-file" then
+    elsif mFeatureName->string == "app-source" then
       handCodedSourceAppFileList += ![mFeatureValue lastPathComponent] ;
       const directory := [mFeatureValue stringByDeletingLastPathComponent] ;
       if directory != "" then
         handCodedSourceDirectorySet += !"../" + directory ;
       end if ;
+    elsif mFeatureName->string == "tool-link" then
+      handCodedLinkToolFileList += ![mFeatureValue lastPathComponent] ;
+#      const directory := [mFeatureValue stringByDeletingLastPathComponent] ;
+#      if directory != "" then
+#        handCodedSourceDirectorySet += !"../" + directory ;
+#      end if ;
     end if ;
   end for ;
 #---------------------------------- Display result
@@ -685,8 +692,9 @@ indexing with galgas3ProjectGrammar
     end for ;
   #--- Build qualified feature map
     var ignoredFeatureSet := [@stringset emptySet] ;
-    ignoredFeatureSet += !"tool-file" ;
-    ignoredFeatureSet += !"app-file" ;
+    ignoredFeatureSet += !"tool-source" ;
+    ignoredFeatureSet += !"tool-link" ;
+    ignoredFeatureSet += !"app-source" ;
     @projectQualifiedFeatureMap projectQualifiedFeatureMap [emptyMap] ;
     foreach projectComponentAST->mQualifiedFeatureList do
       if not [ignoredFeatureSet hasKey !mFeatureName->string] then
@@ -708,6 +716,7 @@ indexing with galgas3ProjectGrammar
       !handCodedSourceToolFileList
       !handCodedSourceDirectorySet
       !handledExtensionSet
+      !handCodedLinkToolFileList
     ;
   end if ;
 }

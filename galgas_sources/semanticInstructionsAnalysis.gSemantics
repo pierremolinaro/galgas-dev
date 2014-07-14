@@ -524,8 +524,8 @@ override method @outputActualParameterAST checkAgainstFormalArgument
     checkAssignmentTypes !inFormalArgumentType ![expression mType] !mEndOfExpressionLocation ;
   #--- Generate actual parameter
     ioActualParameterListForGeneration += ![@outputActualParameterForGeneration new
-      !expression
       !inFormalArgumentType
+      !expression
     ] ;
   end if ;
 end method ;
@@ -571,6 +571,7 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
   ioExclusiveVariableSet += ![mOutputInputActualParameterName string] ;
 #--- Generate actual parameter
   ioActualParameterListForGeneration += ![@outputInputActualParameterForGeneration new
+    !parameterType
     !variableCppName
     !mStructAttributeList
     !typeList
@@ -615,6 +616,7 @@ override method @inputActualParameterAST checkAgainstFormalArgument
   ioExclusiveVariableSet += ![mInputActualParameterName string] ;
 #--- Generate actual parameter
   ioActualParameterListForGeneration += ![@inputActualParameterForGeneration new
+    !parameterType
     !targetVariableCppName
   ] ;
 end method ;
@@ -638,8 +640,8 @@ override method @inputJokerActualParameterAST checkAgainstFormalArgument
     const cppVarName := "joker_" . [[mQualifierLocation locationIndex] string] . "_" . [mJokerIndex string] ;
   #--- Generate actual parameter
     ioActualParameterListForGeneration += ![@inputJokerParameterForGeneration new
-      !cppVarName
       !inFormalArgumentType
+      !cppVarName
     ] ;
   end if ;
 end method ;
