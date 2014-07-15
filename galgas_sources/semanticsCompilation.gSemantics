@@ -435,7 +435,10 @@ routine compileSemanticsComponentAST
       headerString .= code ;
     end foreach ;
     foreach decoratedDeclarationListForGeneration do
-      headerString .= [mDeclaration appendDeclaration2 !inOutputDirectory !false] ;
+      var inclusionSet2 := [@stringset emptySet] ;
+      [mDeclaration appendDeclaration2 !false !inOutputDirectory !?inclusionSet2 ??@string headerString2] ;
+      headerString .= headerString2 ;
+#      headerString .= [mDeclaration appendDeclaration2 !inOutputDirectory !false] ;
     end foreach ;
     [@string generateFileWithPattern
       !inOutputDirectory
