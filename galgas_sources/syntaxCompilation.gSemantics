@@ -350,7 +350,7 @@ routine generateSyntaxComponentGalgas3
     for * in inSemanticContext->mGrammarMap do
       implementationIncludeList += !"grammar-" . lkey->string ;
     end for ;
-    implementationIncludeList += !"AZERTYUIOP" ;
+    implementationIncludeList += !"all-declarations" ;
   #------ Generate Header File
     if [@uint errorCount] == 0 then
       var headerString := [filewrapper syntaxFileGenerationTemplate.syntaxFileHeaderGalgas3

@@ -462,20 +462,11 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
   if (inCompileForGalgas3) {
     generatedZone2 << "#include \"grammar-" << inTargetFileName << ".h\"\n" ;
     generatedZone2 << "#include \"lexique-" << inLexiqueName << ".h\"\n" ;
-    generatedZone2 << "#include \"AZERTYUIOP.h\"\n" ;
+    generatedZone2 << "#include \"all-declarations.h\"\n" ;
   }else{
     generatedZone2 << "#include \"" << inTargetFileName << ".h\"\n" ;
   }
   generatedZone2 << "\n" ;
-
-  generatedZone2.appendCppHyphenLineComment () ;
-  generatedZone2 << "#ifndef DO_NOT_GENERATE_CHECKINGS\n"
-                    "  #define SOURCE_FILE_AT_LINE(line) \"" << inCompiler->sourceFilePath ().lastPathComponent () << "\", line\n"
-                    "  #define COMMA_SOURCE_FILE_AT_LINE(line) , SOURCE_FILE_AT_LINE(line)\n"
-                    "#else\n"
-                    "  #define SOURCE_FILE_AT_LINE(line) \n"
-                    "  #define COMMA_SOURCE_FILE_AT_LINE(line) \n"
-                    "#endif\n\n" ;
 
 //--- Generate LL(1) tables
   C_String generatedZone3 ;
