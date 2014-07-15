@@ -148,7 +148,9 @@ routine compileSyntaxComponentFromAST
         ![semanticContext->mTypeMap allKeyList]
       ] ;
       foreach decoratedDeclarationListForGeneration do
-        headerString .= [mDeclaration appendDeclaration1 !false] ;
+        var unusedInclusionSet := [@stringset emptySet] ;
+        [mDeclaration appendDeclaration1 !?unusedInclusionSet ??@string code] ;
+        headerString .= code ;
       end foreach ;
       foreach decoratedDeclarationListForGeneration do
         headerString .= [mDeclaration appendDeclaration2 !inOutputDirectory !false] ;
@@ -356,7 +358,12 @@ routine generateSyntaxComponentGalgas3
       var headerString := [filewrapper syntaxFileGenerationTemplate.syntaxFileHeaderGalgas3
         !componentName
       ] ;
-      headerString .= [inSyntaxStructForGeneration->mSyntaxGeneration appendDeclaration1 !true] ;
+      var inclusionSet := [@stringset emptySet] ;
+      [inSyntaxStructForGeneration->mSyntaxGeneration appendDeclaration1 !?inclusionSet ??@string code] ;
+      for (s) in inclusionSet do
+        headerString .= "#include \"" . s . ".h\"\n" ;
+      end for ;
+      headerString .= code ;
       headerString .= [inSyntaxStructForGeneration->mSyntaxGeneration appendDeclaration2 !inOutputDirectory !true] ;
       ioAllProductFileSet += !"syntax-" . componentName . ".h" ;
       [@string generateFileWithPattern

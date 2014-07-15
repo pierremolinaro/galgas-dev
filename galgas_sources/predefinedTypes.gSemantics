@@ -363,7 +363,9 @@ routine generatePredefinedTypeFiles ??@string inDirectory :
         generatedCode .= [mDeclaration appendPrimitiveTypeDeclaration] ;
       end foreach ;
       foreach decoratedDeclarationListForGeneration do
-        generatedCode .= [mDeclaration appendDeclaration1 !false] ;
+        var unusedInclusionSet := [@stringset emptySet] ;
+        [mDeclaration appendDeclaration1 !?unusedInclusionSet ??@string code] ;
+        generatedCode .= code ;
       end foreach ;
       generatedCode .= [filewrapper predefinedTypeGenerationTemplate.predefinedTypeSeparation] ;
       foreach decoratedDeclarationListForGeneration do

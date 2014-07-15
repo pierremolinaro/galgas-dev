@@ -156,9 +156,9 @@ filewrapper syntaxFileGenerationTemplate in "../generation_templates/syntax_gene
 
 #---------------------------------------------------------------------------*
 
-override reader @syntaxDeclarationForGeneration appendDeclaration1
-  ??@bool unused inCompileForGalgas3
-  -> @string outHeader
+override method @syntaxDeclarationForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader
 :
   @uintlist selectMethodList [emptyList] ;
   @uint idx := 0 ;
@@ -176,7 +176,7 @@ override reader @syntaxDeclarationForGeneration appendDeclaration1
     !mHasIndexing
     !mHasTranslateFeature
   ] ; 
-end reader ;
+end method ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *

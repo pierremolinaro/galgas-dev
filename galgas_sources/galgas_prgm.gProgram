@@ -682,7 +682,7 @@ indexing with galgas3ProjectGrammar
 #---------------------------------- Generate semantic files
   generateSemanticDeclarationsGalgas3
     !productDirectory
-    ![@generationKind oneFile]
+    ![@generationKind someFiles]
     !semanticContext
     !semanticDeclarationSortedListForGeneration
     !?toolCppFileList

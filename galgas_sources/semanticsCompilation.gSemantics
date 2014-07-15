@@ -430,7 +430,9 @@ routine compileSemanticsComponentAST
       !typeList
     ] ;
     foreach decoratedDeclarationListForGeneration do
-      headerString .= [mDeclaration appendDeclaration1 !false] ;
+      var unusedInclusionSet := [@stringset emptySet] ;
+      [mDeclaration appendDeclaration1 !?unusedInclusionSet ??@string code] ;
+      headerString .= code ;
     end foreach ;
     foreach decoratedDeclarationListForGeneration do
       headerString .= [mDeclaration appendDeclaration2 !inOutputDirectory !false] ;

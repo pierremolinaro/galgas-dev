@@ -4,12 +4,6 @@
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-% foreach INCLUSION_SET do
-%#include "%!key%.h"\n%
-end
-%
-//-----------------------------------------------------------------------------*
-
 class GALGAS_%!TYPE_IDENTIFIER% : public %if SUPER_TYPE_IDENTIFIER == "" then %AC_GALGAS_class% else %GALGAS_%!SUPER_TYPE_IDENTIFIER end% {
 //--- Constructor
   public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
