@@ -147,7 +147,6 @@ end routine ;
 
 routine generateFunction
   ??@string inFunctionCppRepresentationName
-  ??@string inFunctionInclusionFile
   ?!@stringset ioInclusionSet
   ??@formalInputParameterListForGeneration inFormalArgumentList
   ??@semanticInstructionListForGeneration inInstructionList
@@ -158,13 +157,12 @@ routine generateFunction
   !@string outGeneratedCode
 :
   outGeneratedCode := "" ;
-  var inclusionSet := [@stringset emptySet] ;
 #--- Build unused variable set
   @stringset unusedVariableCppNameSet [emptySet] ;
   unusedVariableCppNameSet += !compilerCppName [] ;
 #--- Release 'in' and 'const in' arguments at the end of the routine
   foreach inFormalArgumentList do
-    [mFormalArgumentType addHeaderFileName !?inclusionSet] ;
+    [mFormalArgumentType addHeaderFileName !?ioInclusionSet] ;
     unusedVariableCppNameSet += !mFormalArgumentCppName ;
   end foreach ;
 #--- Generate body
@@ -173,17 +171,13 @@ routine generateFunction
   [!?routineBody incIndentation !2] ;
   foreach inInstructionList do
     [mInstruction generateInstruction
-      !?inclusionSet
+      !?ioInclusionSet
       !?temporaryVariableIndex
       !?unusedVariableCppNameSet
       !false # inGenerateSyntaxDirectedTranslationString
       !?routineBody] ;
   end foreach ;
   [!?routineBody decIndentation !2] ;
-#--- Generation inclusions
-  if inFunctionInclusionFile != "" then
-    ioInclusionSet += !inFunctionInclusionFile ;
-  end if ;
 #--- Generate header
   if inIsStatic then
     outGeneratedCode .= "static " ;
@@ -235,13 +229,14 @@ end routine ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-function generateCategoryModifier
+routine generateCategoryModifier
   ??@string inClassName
   ??@string inBaseClassName
   ??@string inMethodName
+  ?!@stringset ioInclusionSet
   ??@formalParameterListForGeneration inFormalArgumentList
   ??@semanticInstructionListForGeneration inInstructionList
-  ->@string outGeneratedCode
+  !@string outGeneratedCode
 :
 #--- Build unused variable set
   @stringset unusedVariableCppNameSet [emptySet] ;
@@ -253,11 +248,10 @@ function generateCategoryModifier
 #--- Generate body
   var temporaryVariableIndex := 0 ;
   var routineBody := "" ;
-  var inclusionSet := [@stringset emptySet] ;
   [!?routineBody incIndentation !2] ;
   foreach inInstructionList do
     [mInstruction generateInstruction
-      !?inclusionSet
+      !?ioInclusionSet
       !?temporaryVariableIndex
       !?unusedVariableCppNameSet
       !false # inGenerateSyntaxDirectedTranslationString
@@ -324,7 +318,7 @@ function generateCategoryModifier
   outGeneratedCode .= routineBody ;
 #---
   outGeneratedCode .= "}" ;
-end function ;
+end routine ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -353,10 +347,9 @@ routine generateCategoryMethod
   @uint temporaryVariableIndex := 0 ;
   @string routineBody := "" ;
   [!?routineBody incIndentation !2] ;
-  var inclusionSet := [@stringset emptySet] ;
   foreach inInstructionList do
     [mInstruction generateInstruction
-      !?inclusionSet
+      !?ioInclusionSet
       !?temporaryVariableIndex
       !?unusedVariableCppNameSet
       !false # inGenerateSyntaxDirectedTranslationString
@@ -473,11 +466,10 @@ routine generateCategoryReader
 #--- Generate body
   @uint temporaryVariableIndex := 0 ;
   @string routineBody := "" ;
-  var inclusionSet := [@stringset emptySet] ;
   [!?routineBody incIndentation !2] ;
   foreach inInstructionList do
     [mInstruction generateInstruction
-      !?inclusionSet
+      !?ioInclusionSet
       !?temporaryVariableIndex
       !?unusedVariableCppNameSet
       !false # inGenerateSyntaxDirectedTranslationString
@@ -1142,40 +1134,6 @@ override method @externTypeDeclarationForGeneration appendDeclaration1
     ![mTypeProxy mTypeForEnumeratedElement]
   ] ;
  end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @abstractCategoryModifierForGeneration appendDeclaration1
-  ?!@stringset unused ioInclusionSet
-  !@string outHeader
-:
-  outHeader := [filewrapper semanticComponentGenerationTemplate.abstractCategoryModifierDeclaration
-    !mTypeName
-    !mAbstractCategoryModifierName
-    !mAbstractCategoryModifierFormalParameterList
-  ] ; 
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @categoryModifierForGeneration appendDeclaration1
-  ?!@stringset unused ioInclusionSet
-  !@string outHeader
-:
-  if mImplementedAsFunction then
-    outHeader := [filewrapper semanticComponentGenerationTemplate.categoryModifierAsFunctionDeclaration
-      ![mReceiverType key]
-      !mCategoryModifierName
-      !mCategoryModifierFormalParameterList
-    ] ; 
-  else
-    outHeader := [filewrapper semanticComponentGenerationTemplate.categoryModifierDeclaration
-      ![mReceiverType key]
-      !mCategoryModifierName
-      !mCategoryModifierFormalParameterList
-    ] ;
-  end if ;
-end method ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1868,9 +1826,9 @@ override method @functionImplementationForGeneration appendSpecificImplementatio
   ?!@stringset ioInclusionSet
   !@string outImplementation
 :
+  ioInclusionSet += !"func-" . mFunctionName ;
   generateFunction
     !"function_" . [mFunctionName identifierRepresentation]
-    !"func-" . mFunctionName
     !?ioInclusionSet
     !mFormalArgumentList
     !mFunctionInstructionList
@@ -1894,9 +1852,9 @@ override method @onceFunctionDeclarationForGeneration appendSpecificImplementati
   ?!@stringset ioInclusionSet
   !@string outImplementation
 :
+  ioInclusionSet += !"func-" . mFunctionName ;
   generateFunction
     !"onceFunction_" . [mFunctionName identifierRepresentation]
-    !"func-" . mFunctionName
     !?ioInclusionSet
     ![@formalInputParameterListForGeneration emptyList]
     !mFunctionInstructionList
@@ -1984,6 +1942,7 @@ override method @categoryMethodForGeneration appendSpecificImplementation
       !"inObject"
       !0
     ] ;
+    ioInclusionSet += !"method-" . [mReceiverType key]. "-" . mCategoryMethodName ;
     generateProcedure
       !"categoryMethod_" . [mCategoryMethodName identifierRepresentation]
       !?ioInclusionSet
@@ -2006,6 +1965,20 @@ override method @categoryMethodForGeneration appendSpecificImplementation
     for * in mCategoryMethodFormalParameterList do
       [mFormalArgumentType addHeaderFileName !?ioInclusionSet] ;
     end for ;
+    @unifiedTypeMapProxy baseType := mReceiverType ;
+    @bool searching := true ;
+    loop [@uint max] : while searching do
+      if not [[baseType mSuperType] isNull] then
+        if [[[baseType mSuperType] mInstanceMethodMap] hasKey !mCategoryMethodName] then
+          baseType := [baseType mSuperType] ;
+        else
+          searching := false ;
+        end if ;
+      else
+        searching := false ;
+      end if ;  
+    end loop ;
+    ioInclusionSet += !"method-" . [baseType key]. "-" . mCategoryMethodName ;
     generateCategoryMethod
       !mReceiverType
       !""
@@ -2052,6 +2025,19 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @abstractCategoryModifierForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader
+:
+  outHeader := [filewrapper semanticComponentGenerationTemplate.abstractCategoryModifierDeclaration
+    !mTypeName
+    !mAbstractCategoryModifierName
+    !mAbstractCategoryModifierFormalParameterList
+  ] ; 
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @abstractCategoryModifierForGeneration appendSpecificImplementation
   ?!@stringset unused ioInclusionSet
   !@string outImplementation
@@ -2061,6 +2047,27 @@ override method @abstractCategoryModifierForGeneration appendSpecificImplementat
     !mAbstractCategoryModifierName
     !mAbstractCategoryModifierFormalParameterList
   ] ; 
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @categoryModifierForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader
+:
+  if mImplementedAsFunction then
+    outHeader := [filewrapper semanticComponentGenerationTemplate.categoryModifierAsFunctionDeclaration
+      ![mReceiverType key]
+      !mCategoryModifierName
+      !mCategoryModifierFormalParameterList
+    ] ; 
+  else
+    outHeader := [filewrapper semanticComponentGenerationTemplate.categoryModifierDeclaration
+      ![mReceiverType key]
+      !mCategoryModifierName
+      !mCategoryModifierFormalParameterList
+    ] ;
+  end if ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -2078,6 +2085,7 @@ override method @categoryModifierForGeneration appendSpecificImplementation
       !"ioObject"
       !0
     ] ;
+    ioInclusionSet += !"setter-" . [mReceiverType key] . "-" . mCategoryModifierName ;
     generateProcedure
       !"categoryModifier_" . [mCategoryModifierName identifierRepresentation]
       !?ioInclusionSet
@@ -2096,13 +2104,29 @@ override method @categoryModifierForGeneration appendSpecificImplementation
       !code
     ] ; 
   else
-    const @string modifierImplementation := generateCategoryModifier [
+    @unifiedTypeMapProxy baseType := mReceiverType ;
+    @bool searching := true ;
+    loop [@uint max] : while searching do
+      if not [[baseType mSuperType] isNull] then
+        if [[[baseType mSuperType] mModifierMap] hasKey !mCategoryModifierName] then
+          baseType := [baseType mSuperType] ;
+        else
+          searching := false ;
+        end if ;
+      else
+        searching := false ;
+      end if ;  
+    end loop ;
+    ioInclusionSet += !"setter-" . [baseType key]. "-" . mCategoryModifierName ;
+    generateCategoryModifier
       ![mReceiverType key]
       !""
       !mCategoryModifierName
+      !?ioInclusionSet
       !mCategoryModifierFormalParameterList
       !mSemanticInstructionListForGeneration
-    ] ;
+      ??@string modifierImplementation
+    ;
     outImplementation := [filewrapper semanticComponentGenerationTemplate.categoryModifierImplementation
       ![mReceiverType key]
       !mCategoryModifierName
@@ -2115,16 +2139,18 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @overridingCategoryModifierForGeneration appendSpecificImplementation
-  ?!@stringset unused ioInclusionSet
+  ?!@stringset ioInclusionSet
   !@string outImplementation
 :
-  const @string methodImplementation := generateCategoryModifier [
+  generateCategoryModifier
     !mTypeName
     !mBaseTypeName
     !mCategoryModifierName
+    !?ioInclusionSet
     !mCategoryModifierFormalParameterList
     !mSemanticInstructionListForGeneration
-  ] ;
+    ??@string methodImplementation
+  ;
   outImplementation := [filewrapper semanticComponentGenerationTemplate.overridingCategoryModifierImplementation
     !mTypeName
     !mCategoryModifierName
@@ -2207,9 +2233,9 @@ override method @categoryReaderForGeneration appendSpecificImplementation
       !true  
       !0    
     ] ;
+    ioInclusionSet += !"getter-" . [mReceiverType key]. "-" . mCategoryReaderName ;
     generateFunction
       !"categoryReader_" . [mCategoryReaderName identifierRepresentation]
-      !""
       !?ioInclusionSet
       !categoryReaderFormalParameterList
       !mSemanticInstructionListForGeneration
@@ -2230,6 +2256,20 @@ override method @categoryReaderForGeneration appendSpecificImplementation
     for * in mCategoryReaderFormalParameterList do
       [mFormalArgumentType addHeaderFileName !?ioInclusionSet] ;
     end for ;
+    @unifiedTypeMapProxy baseType := mReceiverType ;
+    @bool searching := true ;
+    loop [@uint max] : while searching do
+      if not [[baseType mSuperType] isNull] then
+        if [[[baseType mSuperType] mReaderMap] hasKey !mCategoryReaderName] then
+          baseType := [baseType mSuperType] ;
+        else
+          searching := false ;
+        end if ;
+      else
+        searching := false ;
+      end if ;  
+    end loop ;
+    ioInclusionSet += !"getter-" . [baseType key]. "-" . mCategoryReaderName ;
     generateCategoryReader
       !mReceiverType
       !""

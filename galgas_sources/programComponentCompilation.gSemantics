@@ -328,7 +328,6 @@ routine compileProgramComponentFromAST
       var unusedInclusionSet := [@stringset emptySet] ;
       [mDeclaration appendSpecificImplementation !?unusedInclusionSet ??@string code] ;
       implementationString += code ;
-#      implementationString .= [mDeclaration appendSpecificImplementation !false] ;
     end foreach ;
     [@string generateFileWithPattern
       !inOutputDirectory
@@ -455,38 +454,40 @@ routine compileProgramComponentGalgas3
       !"#endif\n"
     ] ;
   end if ;
-#------ Generate Implementation File
+#-------------------------------------------------------- Generate Implementation File
   if [@uint errorCount] == 0 then
-    ioToolProductFileList += !programFileName . ".cpp" ;
-    var implementationIncludeList := [@stringlist emptyList] ;
-    for * in inSemanticContext->mOptionComponentMapForSemanticAnalysis do
-      if not mIsPredefined then
-        implementationIncludeList += !"option-" . lkey->string ;
-      end if ;
-    end for ;
-    for * in inSemanticContext->mGrammarMap do
-      implementationIncludeList += !"grammar-" . lkey->string ;
-    end for ;
-    @string implementationString := [filewrapper programFileGenerationTemplate.programFileImplementation
+    var inclusionSet := [@stringset emptySet] ;
+    var implementationString := "" ;
+    foreach decoratedDeclarationListForGeneration do
+      implementationString += [mDeclaration appendTypeGenericImplementation] ;
+      [mDeclaration appendSpecificImplementation !?inclusionSet ??@string code] ;
+      implementationString += code ;
+    end foreach ;
+    if inUseOneBigHeader then
+      inclusionSet := [@stringset emptySet] ;
+      for * in inSemanticContext->mOptionComponentMapForSemanticAnalysis do
+        if not mIsPredefined then
+          inclusionSet += !"option-" . lkey->string ;
+        end if ;
+      end for ;
+      for * in inSemanticContext->mGrammarMap do
+        inclusionSet += !"grammar-" . lkey->string ;
+      end for ;
+    end if ;
+    const header := [filewrapper programFileGenerationTemplate.programFileImplementation
       !programFileName
-      !implementationIncludeList
+      ![inclusionSet stringList]
       !inProgramRules
       !hasIndexing
     ] ;
-    foreach decoratedDeclarationListForGeneration do
-      implementationString .= [mDeclaration appendTypeGenericImplementation] ;
-      var unusedInclusionSet := [@stringset emptySet] ;
-      [mDeclaration appendSpecificImplementation !?unusedInclusionSet ??@string code] ;
-      implementationString += code ;
-#      implementationString .= [mDeclaration appendSpecificImplementation !true] ;
-    end foreach ;
+    ioToolProductFileList += !programFileName . ".cpp" ;
     ioAllProductFileSet += !programFileName + ".cpp" ;
     [@string generateFileWithPattern
       !inOutputDirectory
       !programFileName . ".cpp"
       !"//"
       !"\n\n" # Defaut user zone1
-      !implementationString
+      !header + implementationString
       !"\n\n" # Defaut user zone2
       !"\n"
     ] ;
