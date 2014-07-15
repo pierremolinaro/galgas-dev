@@ -135,7 +135,6 @@ routine compileSyntaxComponentFromAST
       ?decoratedDeclarationListForGeneration
     ;
     decoratedDeclarationListForGeneration +=
-#      !false
       !syntaxDeclarationForGeneration
       !""
     ;
@@ -145,7 +144,6 @@ routine compileSyntaxComponentFromAST
         ![componentName string]
         !lexiqueName
         !headerIncludeList
-        ![semanticContext->mTypeMap allKeyList]
       ] ;
       foreach decoratedDeclarationListForGeneration do
         var unusedInclusionSet := [@stringset emptySet] ;

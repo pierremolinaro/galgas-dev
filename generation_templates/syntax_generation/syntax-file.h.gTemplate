@@ -16,8 +16,3 @@
   end%
 //-----------------------------------------------------------------------------*
 
-%
-foreach TYPE_PREDECLARATION_LIST do
-  %class GALGAS_%![mValue identifierRepresentation]% ;\n%
-end
-%

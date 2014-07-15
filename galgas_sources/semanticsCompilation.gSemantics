@@ -34,10 +34,8 @@ filewrapper semanticFileGenerationTemplate in "../generation_templates/semantic_
   template semanticFileHeader "semantic-file.h.gTemplate"
     ?@string COMPONENT_NAME
     ?@stringlist IMPORTED_COMPONENT_LIST
-    ?@stringlist TYPE_PREDECLARATION_LIST
   ;
   template semanticFileImplementation "semantic-file.cpp.gTemplate"
-    ?@string COMPONENT_NAME
     ?@stringlist IMPORTED_COMPONENT_LIST
   ;
 }
@@ -421,13 +419,12 @@ routine compileSemanticsComponentAST
 #------ Generate Header File
   if [@uint errorCount] == 0 then
     @stringlist typeList [emptyList] ;
-    foreach decoratedDeclarationListForGeneration do
-      [mDeclaration addCppTypeForPredeclarationInHeaderFile !?typeList] ;
-    end foreach ;
-    @string headerString := [filewrapper semanticFileGenerationTemplate.semanticFileHeader
+#    foreach decoratedDeclarationListForGeneration do
+#      [mDeclaration addCppTypeForPredeclarationInHeaderFile !?typeList] ;
+#    end foreach ;
+    var headerString := [filewrapper semanticFileGenerationTemplate.semanticFileHeader
       ![componentName string]
       !headerIncludeList
-      !typeList
     ] ;
     foreach decoratedDeclarationListForGeneration do
       var unusedInclusionSet := [@stringset emptySet] ;
@@ -452,8 +449,8 @@ routine compileSemanticsComponentAST
   end if ;
 #------ Generate Implementation File
   if [@uint errorCount] == 0 then
-    @string implementationString := [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
-      ![componentName string]
+    implementationIncludeList += !componentName->string ;
+    var implementationString := [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
       !implementationIncludeList
     ] ;
     foreach decoratedDeclarationListForGeneration do

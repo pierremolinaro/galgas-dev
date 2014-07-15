@@ -126,7 +126,6 @@ filewrapper syntaxFileGenerationTemplate in "../generation_templates/syntax_gene
     ?@string COMPONENT_NAME
     ?@string LEXIQUE_NAME
     ?@stringlist IMPORTED_COMPONENT_LIST
-    ?@lstringlist TYPE_PREDECLARATION_LIST
   ;
 
   template syntaxFileHeaderGalgas3 "syntax-file-galgas3.h.gTemplate"

@@ -32,7 +32,6 @@ filewrapper programFileGenerationTemplate in "../generation_templates/program_ge
   template programFileHeader "program-file.h.gTemplate"
     ?@string COMPONENT_NAME
     ?@stringlist IMPORTED_COMPONENT_LIST
-    ?@lstringlist TYPE_PREDECLARATION_LIST
   ;
 
   template programFileImplementation "program-file.cpp.gTemplate"
@@ -294,7 +293,6 @@ routine compileProgramComponentFromAST
     @string headerString := [filewrapper programFileGenerationTemplate.programFileHeader
       ![componentName string]
       !headerIncludeList
-      ![semanticContext->mTypeMap allKeyList]
     ] ;
     foreach decoratedDeclarationListForGeneration do
       var unusedInclusionSet := [@stringset emptySet] ;
@@ -422,7 +420,6 @@ routine compileProgramComponentGalgas3
     @string headerString := [filewrapper programFileGenerationTemplate.programFileHeader
       !programFileName
       !headerIncludeList
-      ![inSemanticContext->mTypeMap allKeyList]
     ] ;
     foreach decoratedDeclarationListForGeneration do
       var inclusionSet := [@stringset emptySet] ;

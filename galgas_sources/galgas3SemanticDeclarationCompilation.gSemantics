@@ -546,7 +546,6 @@ routine generateManyHeaders
   var headerString := [filewrapper semanticFileGenerationTemplate.semanticFileHeader
     !"all-declarations"
     !headerInclusionList1 + headerInclusionList2
-    ![@stringlist emptyList]
   ] ;
   ioAllProductFileSet += !"all-declarations.h" ;
   [@string generateFileWithPattern
@@ -569,7 +568,6 @@ routine generateOneBigHeader
 :
   var headerString := [filewrapper semanticFileGenerationTemplate.semanticFileHeader
     !"all-declarations"
-    ![@stringlist emptyList]
     ![@stringlist emptyList]
   ] ;
 #--- Declaration 1
@@ -627,7 +625,6 @@ routine generateFewImplementationFiles
           implementationFileIncludeList += !"grammar-" . lkey->string ;
         end for ;
         implementationString := [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
-          !"all-declarations"
           !implementationFileIncludeList
         ] ;
       end if ;
@@ -739,7 +736,6 @@ routine generateManyFiles
   var headerString := [filewrapper semanticFileGenerationTemplate.semanticFileHeader
     !"all-declarations"
     !headerInclusionList1 + headerInclusionList2
-    ![@stringlist emptyList]
   ] ;
   ioAllProductFileSet += !"all-declarations.h" ;
   [@string generateFileWithPattern
@@ -759,7 +755,6 @@ routine generateManyFiles
         implementationFileIncludes += ![mDeclaration implementationCppFileName] ;
       end if ;
       var implementationString := [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
-        ![mDeclaration implementationCppFileName]
         !implementationFileIncludes
       ] ;
       implementationString .= [mDeclaration appendSpecificImplementation !true] ;
