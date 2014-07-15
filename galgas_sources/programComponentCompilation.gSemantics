@@ -297,7 +297,9 @@ routine compileProgramComponentFromAST
       ![semanticContext->mTypeMap allKeyList]
     ] ;
     foreach decoratedDeclarationListForGeneration do
-      headerString .= [mDeclaration appendDeclaration1 !false] ;
+      var unusedInclusionSet := [@stringset emptySet] ;
+      [mDeclaration appendDeclaration1 !?unusedInclusionSet ??@string code] ;
+      headerString .= code ;
     end foreach ;
     foreach decoratedDeclarationListForGeneration do
       headerString .= [mDeclaration appendDeclaration2 !inOutputDirectory !false] ;
@@ -417,7 +419,12 @@ routine compileProgramComponentGalgas3
       ![inSemanticContext->mTypeMap allKeyList]
     ] ;
     foreach decoratedDeclarationListForGeneration do
-      headerString .= [mDeclaration appendDeclaration1 !true] ;
+      var inclusionSet := [@stringset emptySet] ;
+      [mDeclaration appendDeclaration1 !?inclusionSet ??@string code] ;
+      for (s) in inclusionSet do
+        headerString .= "#include \"" . s . ".h\"\n" ;
+      end for ;
+      headerString .= code ;
     end foreach ;
     foreach decoratedDeclarationListForGeneration do
       headerString .= [mDeclaration appendDeclaration2 !inOutputDirectory !true] ;

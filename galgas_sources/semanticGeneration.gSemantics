@@ -638,7 +638,6 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
     ?@bool HAS_DEFAULT_CONSTRUCTOR
-    ?@stringset INCLUSION_SET
   ;
 
   template structTypeSpecificImplementation "GALGAS_struct.cpp.gTemplate"
@@ -691,7 +690,6 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
   template listmapTypeHeader1 "GALGAS_listmap.h1.gTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
-    ?@stringset INCLUSION_SET
   ;
 
   template listmapTypeSpecificImplementation "GALGAS_listmap.cpp.gTemplate"
@@ -763,7 +761,6 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
     ?@mapSearchMethodListAST SEARCH_METHOD_LIST
-    ?@stringset INCLUSION_SET
   ;
 
   template mapTypeHeader2 "GALGAS_map.h2.gTemplate"
@@ -790,7 +787,6 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
     ?@mapSearchMethodListAST SEARCH_METHOD_LIST
-    ?@stringset INCLUSION_SET
   ;
 
   template uniqueMapTypeHeader2 "GALGAS_uniqueMap.h2.gTemplate"
@@ -820,7 +816,6 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@typedAttributeList ALL_ATTRIBUTE_LIST
     ?@bool IS_ABSTRACT
     ?@bool HAS_DEFAULT_CONSTRUCTOR
-    ?@stringset INCLUSION_SET
   ;
 
   template classTypeHeader2part1 "GALGAS_class.h2-part1.gTemplate"
@@ -1081,56 +1076,56 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-reader @semanticDeclarationForGeneration appendDeclaration1
-  ??@bool unused inGenerateForGalgas3
-  -> @string outHeader
+method @semanticDeclarationForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader
 :
   outHeader := "" ;
-end reader ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @routinePrototypeDeclarationForGeneration appendDeclaration1
-  ??@bool unused inGenerateForGalgas3
-  -> @string outHeader
+override method @routinePrototypeDeclarationForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader
 :
   outHeader := [filewrapper semanticComponentGenerationTemplate.routineDeclaration
     !mRoutineName
     !mFormalArgumentList
   ] ; 
-end reader ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @functionPrototypeDeclarationForGeneration appendDeclaration1
-  ??@bool unused inGenerateForGalgas3
-  -> @string outHeader
+override method @functionPrototypeDeclarationForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader
 :
   outHeader := [filewrapper semanticComponentGenerationTemplate.functionDeclaration
     !mFunctionName
     !mFormalArgumentList
     ![mReturnType identifierRepresentation]
   ] ; 
-end reader ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @onceFunctionDeclarationForGeneration appendDeclaration1
-  ??@bool unused inGenerateForGalgas3
-  -> @string outHeader
+override method @onceFunctionDeclarationForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader
 :
   outHeader := [filewrapper semanticComponentGenerationTemplate.functionDeclaration
     !mFunctionName
     ![@formalInputParameterListForGeneration emptyList]
     ![mReturnType identifierRepresentation]
   ] ; 
-end reader ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @arrayTypeForGeneration appendDeclaration1
-  ??@bool unused inGenerateForGalgas3
-  -> @string outHeader
+override method @arrayTypeForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader
 :
   outHeader := [filewrapper typeGenerationTemplate.arrayTypeHeader1
     ![mTypeProxy key]
@@ -1153,13 +1148,13 @@ override reader @arrayTypeForGeneration appendDeclaration1
     ![mTypeProxy mWithAccessorMap]
     ![mTypeProxy mTypeForEnumeratedElement]
   ] ;
- end reader ;
+ end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @externTypeDeclarationForGeneration appendDeclaration1
-  ??@bool unused inGenerateForGalgas3
-  -> @string outHeader
+override method @externTypeDeclarationForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader
 :
   outHeader := [filewrapper typeGenerationTemplate.externTypeHeader1
     ![mTypeProxy key]
@@ -1182,26 +1177,26 @@ override reader @externTypeDeclarationForGeneration appendDeclaration1
     ![mTypeProxy mWithAccessorMap]
     ![mTypeProxy mTypeForEnumeratedElement]
   ] ;
- end reader ;
+ end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @abstractCategoryModifierForGeneration appendDeclaration1
-  ??@bool unused inGenerateForGalgas3
-  -> @string outHeader
+override method @abstractCategoryModifierForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader
 :
   outHeader := [filewrapper semanticComponentGenerationTemplate.abstractCategoryModifierDeclaration
     !mTypeName
     !mAbstractCategoryModifierName
     !mAbstractCategoryModifierFormalParameterList
   ] ; 
-end reader ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @categoryModifierForGeneration appendDeclaration1
-  ??@bool unused inGenerateForGalgas3
-  -> @string outHeader
+override method @categoryModifierForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader
 :
   if mImplementedAsFunction then
     outHeader := [filewrapper semanticComponentGenerationTemplate.categoryModifierAsFunctionDeclaration
@@ -1216,7 +1211,7 @@ override reader @categoryModifierForGeneration appendDeclaration1
       !mCategoryModifierFormalParameterList
     ] ;
   end if ;
-end reader ;
+end method ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1292,21 +1287,18 @@ override reader @arrayTypeForGeneration appendSpecificImplementation
 #! List map
 #---------------------------------------------------------------------------*
 
-override reader @listmapTypeForGeneration appendDeclaration1
-  ??@bool inGenerateForGalgas3
-  -> @string outHeader
+override method @listmapTypeForGeneration appendDeclaration1
+  ?!@stringset ioInclusionSet
+  !@string outHeader
 :
-  var inclusionSet := [@stringset emptySet] ;
-  if inGenerateForGalgas3 then
-    inclusionSet += !"galgas2/AC_GALGAS_map" ;
-    for (t ...) in mAssociatedListTypedAttributeList do
-      [t addHeaderFileName1 !?inclusionSet] ;
-    end for ;
-  end if ;
+  ioInclusionSet += !"galgas2/AC_GALGAS_map" ;
+  for (t ...) in mAssociatedListTypedAttributeList do
+    [t addHeaderFileName1 !?ioInclusionSet] ;
+  end for ;
+
   outHeader := [filewrapper typeGenerationTemplate.listmapTypeHeader1
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
-    !inclusionSet
   ] ;
   outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     ![mTypeProxy key]
@@ -1323,7 +1315,7 @@ override reader @listmapTypeForGeneration appendDeclaration1
     ![mTypeProxy mWithAccessorMap]
     ![mTypeProxy mTypeForEnumeratedElement]
   ] ;
- end reader ;
+ end method ;
 
 #---------------------------------------------------------------------------*
 
@@ -1347,23 +1339,20 @@ override reader @listmapTypeForGeneration appendSpecificImplementation
 #! Map
 #---------------------------------------------------------------------------*
 
-override reader @mapTypeForGeneration appendDeclaration1
-  ??@bool inGenerateForGalgas3
-  -> @string outHeader
+override method @mapTypeForGeneration appendDeclaration1
+  ?!@stringset ioInclusionSet
+  !@string outHeader
 :
-  var inclusionSet := [@stringset emptySet] ;
-  if inGenerateForGalgas3 then
-    inclusionSet += !"galgas2/AC_GALGAS_map" ;
-    for (t ...) in mTypedAttributeList do
-      [t addHeaderFileName1 !?inclusionSet] ;
-    end for ;
-  end if ;
+  ioInclusionSet += !"galgas2/AC_GALGAS_map" ;
+  for (t ...) in mTypedAttributeList do
+    [t addHeaderFileName1 !?ioInclusionSet] ;
+  end for ;
+
   outHeader := [filewrapper typeGenerationTemplate.mapTypeHeader1
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
     !mSearchMethodList
-    !inclusionSet
   ] ;
   outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     ![mTypeProxy key]
@@ -1380,7 +1369,7 @@ override reader @mapTypeForGeneration appendDeclaration1
     ![mTypeProxy mWithAccessorMap]
     ![mTypeProxy mTypeForEnumeratedElement]
   ] ;
- end reader ;
+ end method ;
 
 #---------------------------------------------------------------------------*
 
@@ -1428,23 +1417,20 @@ override reader @mapTypeForGeneration appendSpecificImplementation
 #! Unique Map
 #---------------------------------------------------------------------------*
 
-override reader @uniqueMapTypeForGeneration appendDeclaration1
-  ??@bool inGenerateForGalgas3
-  -> @string outHeader
+override method @uniqueMapTypeForGeneration appendDeclaration1
+  ?!@stringset ioInclusionSet
+  !@string outHeader
 :
-  var inclusionSet := [@stringset emptySet] ;
-  if inGenerateForGalgas3 then
-    inclusionSet += !"galgas2/AC_GALGAS_uniqueMap" ;
-    for (t ...) in mTypedAttributeList do
-      [t addHeaderFileName1 !?inclusionSet] ;
-    end for ;
-  end if ;
+  ioInclusionSet += !"galgas2/AC_GALGAS_uniqueMap" ;
+  for (t ...) in mTypedAttributeList do
+    [t addHeaderFileName1 !?ioInclusionSet] ;
+  end for ;
+
   outHeader := [filewrapper typeGenerationTemplate.uniqueMapTypeHeader1
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
     !mSearchMethodList
-    !inclusionSet
   ] ;
   outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     ![mTypeProxy key]
@@ -1461,7 +1447,7 @@ override reader @uniqueMapTypeForGeneration appendDeclaration1
     ![mTypeProxy mWithAccessorMap]
     ![mTypeProxy mTypeForEnumeratedElement]
   ] ;
- end reader ;
+ end method ;
 
 #---------------------------------------------------------------------------*
 
@@ -1504,9 +1490,9 @@ override reader @uniqueMapTypeForGeneration appendSpecificImplementation
 #! Sorted List
 #---------------------------------------------------------------------------*
 
-override reader @sortedListTypeForGeneration appendDeclaration1
-  ??@bool unused inGenerateForGalgas3
-  -> @string outHeader
+override method @sortedListTypeForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader
 :
   outHeader := [filewrapper typeGenerationTemplate.sortedlistTypeHeader1
     ![mTypeProxy key]
@@ -1528,7 +1514,7 @@ override reader @sortedListTypeForGeneration appendDeclaration1
     ![mTypeProxy mWithAccessorMap]
     ![mTypeProxy mTypeForEnumeratedElement]
   ] ;
- end reader ;
+ end method ;
 
 #---------------------------------------------------------------------------*
 
@@ -1555,9 +1541,9 @@ override reader @sortedListTypeForGeneration appendSpecificImplementation
 #! Enum
 #---------------------------------------------------------------------------*
 
-override reader @enumTypeForGeneration appendDeclaration1
-  ??@bool unused inGenerateForGalgas3
-  -> @string outHeader
+override method @enumTypeForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader
 :
   outHeader := [filewrapper typeGenerationTemplate.enumTypeHeader1
     ![mTypeProxy key]
@@ -1579,7 +1565,7 @@ override reader @enumTypeForGeneration appendDeclaration1
     ![mTypeProxy mWithAccessorMap]
     ![mTypeProxy mTypeForEnumeratedElement]
   ] ;
- end reader ;
+ end method ;
 
 #---------------------------------------------------------------------------*
 
@@ -1598,9 +1584,9 @@ override reader @enumTypeForGeneration appendSpecificImplementation
 #! Map proxy
 #---------------------------------------------------------------------------*
 
-override reader @mapProxyTypeForGeneration appendDeclaration1
-  ??@bool unused inGenerateForGalgas3
-  -> @string outHeader
+override method @mapProxyTypeForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader
 :
   outHeader := [filewrapper typeGenerationTemplate.mapProxyTypeHeader1
     ![mTypeProxy key]
@@ -1621,7 +1607,7 @@ override reader @mapProxyTypeForGeneration appendDeclaration1
     ![mTypeProxy mWithAccessorMap]
     ![mTypeProxy mTypeForEnumeratedElement]
   ] ;
-end reader ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
@@ -1647,22 +1633,19 @@ override reader @mapProxyTypeForGeneration appendSpecificImplementation
 #! Struct
 #---------------------------------------------------------------------------*
 
-override reader @structTypeForGeneration appendDeclaration1
-  ??@bool inGenerateForGalgas3
-  -> @string outHeader
+override method @structTypeForGeneration appendDeclaration1
+  ?!@stringset ioInclusionSet
+  !@string outHeader
 :
-  var inclusionSet := [@stringset emptySet] ;
-  if inGenerateForGalgas3 then
-    for (t ...) in mTypedAttributeList do
-      [t addHeaderFileName1 !?inclusionSet] ;
-    end for ;
-  end if ;
+  for (t ...) in mTypedAttributeList do
+    [t addHeaderFileName1 !?ioInclusionSet] ;
+  end for ;
+
   outHeader := [filewrapper typeGenerationTemplate.structTypeHeader1
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
     ![mTypeProxy mDefaultConstructorName] != ""
-    !inclusionSet
   ] ;
   outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     ![mTypeProxy key]
@@ -1679,7 +1662,7 @@ override reader @structTypeForGeneration appendDeclaration1
     ![mTypeProxy mWithAccessorMap]
     ![mTypeProxy mTypeForEnumeratedElement]
   ] ;
- end reader ;
+ end method ;
 
 #---------------------------------------------------------------------------*
 
@@ -1699,9 +1682,9 @@ override reader @structTypeForGeneration appendSpecificImplementation
 #! List
 #---------------------------------------------------------------------------*
 
-override reader @listTypeForGeneration appendDeclaration1
-  ??@bool unused inGenerateForGalgas3
-  -> @string outHeader
+override method @listTypeForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader
 :
   outHeader := [filewrapper typeGenerationTemplate.listTypeHeader1
     ![mTypeProxy key]
@@ -1723,7 +1706,7 @@ override reader @listTypeForGeneration appendDeclaration1
     ![mTypeProxy mWithAccessorMap]
     ![mTypeProxy mTypeForEnumeratedElement]
   ] ;
-end reader ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
@@ -1750,9 +1733,9 @@ override reader @listTypeForGeneration appendSpecificImplementation
 #! Graph
 #---------------------------------------------------------------------------*
 
-override reader @graphDeclarationForGeneration appendDeclaration1
-  ??@bool unused inGenerateForGalgas3
-  -> @string outHeader
+override method @graphDeclarationForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader
 :
   outHeader := [filewrapper typeGenerationTemplate.graphTypeHeader1
     ![mTypeProxy key]
@@ -1773,7 +1756,7 @@ override reader @graphDeclarationForGeneration appendDeclaration1
     ![mTypeProxy mWithAccessorMap]
     ![mTypeProxy mTypeForEnumeratedElement]
   ] ;
- end reader ;
+ end method ;
 
 #---------------------------------------------------------------------------*
 
@@ -1799,16 +1782,14 @@ override reader @graphDeclarationForGeneration appendSpecificImplementation
 #! Class
 #---------------------------------------------------------------------------*
 
-override reader @classTypeForGeneration appendDeclaration1
-  ??@bool inGenerateForGalgas3
-  -> @string outHeader
+override method @classTypeForGeneration appendDeclaration1
+  ?!@stringset ioInclusionSet
+  !@string outHeader
 :
-  var inclusionSet := [@stringset emptySet] ;
-  if inGenerateForGalgas3 then
-    if not [mSuperClass isNull] then
-      [mSuperClass addHeaderFileName !?inclusionSet] ;
-    end if ;
+  if not [mSuperClass isNull] then
+    [mSuperClass addHeaderFileName !?ioInclusionSet] ;
   end if ;
+
   outHeader := [filewrapper typeGenerationTemplate.classTypeHeader1
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
@@ -1816,7 +1797,6 @@ override reader @classTypeForGeneration appendDeclaration1
     !mAllTypedAttributeList
     !mIsAbstract
     ![mTypeProxy mDefaultConstructorName] != ""
-    !inclusionSet
   ] ;
   outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     ![mTypeProxy key]
@@ -1833,7 +1813,7 @@ override reader @classTypeForGeneration appendDeclaration1
     ![mTypeProxy mWithAccessorMap]
     ![mTypeProxy mTypeForEnumeratedElement]
   ] ;
- end reader ;
+ end method ;
 
 #---------------------------------------------------------------------------*
 
@@ -1993,16 +1973,16 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @abstractCategoryMethodForGeneration appendDeclaration1
-  ??@bool unused inGenerateForGalgas3
-  -> @string outHeader
+override method @abstractCategoryMethodForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader
 :
   outHeader := [filewrapper semanticComponentGenerationTemplate.abstractCategoryMethodDeclaration
     ![mReceiverType key]
     !mAbstractCategoryMethodName
     !mAbstractCategoryMethodFormalParameterList
   ] ; 
-end reader ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
@@ -2027,9 +2007,9 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @categoryMethodForGeneration appendDeclaration1
-  ??@bool unused inGenerateForGalgas3
-  -> @string outHeader
+override method @categoryMethodForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader
 :
   if mImplementedAsFunction then
     outHeader := [filewrapper semanticComponentGenerationTemplate.categoryMethodAsFunctionDeclaration
@@ -2044,7 +2024,7 @@ override reader @categoryMethodForGeneration appendDeclaration1
       !mCategoryMethodFormalParameterList
     ] ; 
   end if ;
-end reader ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
@@ -2101,37 +2081,6 @@ override reader @categoryMethodForGeneration appendSpecificImplementation
     ] ;
   end if ;
 end reader ;
-
-#---------------------------------------------------------------------------*
-
-#override reader @overridingCategoryMethodForGeneration appendDeclaration1
-#  ??@bool inGenerateForGalgas3
-#  -> @string outHeader
-#:
-#  if inGenerateForGalgas3 then
-#    @unifiedTypeMapProxy baseType := mReceiverType ;
-#    @bool searching := true ;
-#    loop [@uint max] : while searching do
-#      if not [[baseType mSuperType] isNull] then
-#        if [[[baseType mSuperType] mInstanceMethodMap] hasKey !mCategoryMethodName] then
-#          baseType := [baseType mSuperType] ;
-#        else
-#          searching := false ;
-#        end if ;
-#      else
-#        searching := false ;
-#      end if ;  
-#    end loop ;
-#    outHeader := "#include \"method-" . [baseType key] . "-" . mCategoryMethodName . ".h\"\n\n" ;
-#  else
-#    outHeader := "" ;
-#  end if ;
-##    outHeader := [filewrapper semanticComponentGenerationTemplate.categoryMethodDeclaration
-##      ![mReceiverType key]
-##      !mCategoryMethodName
-##      !mCategoryMethodFormalParameterList
-##    ] ; 
-#end reader ;
 
 #---------------------------------------------------------------------------*
 
@@ -2244,9 +2193,9 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @abstractCategoryReaderForGeneration appendDeclaration1
-  ??@bool unused inGenerateForGalgas3
-  -> @string outHeader
+override method @abstractCategoryReaderForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader
 :
   outHeader := [filewrapper semanticComponentGenerationTemplate.abstractCategoryReaderDeclaration
     ![mReceiverType key]
@@ -2254,7 +2203,7 @@ override reader @abstractCategoryReaderForGeneration appendDeclaration1
     !mAbstractCategoryReaderFormalParameterList
     !mResultType
   ] ; 
-end reader ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
@@ -2281,9 +2230,9 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @categoryReaderForGeneration appendDeclaration1
-  ??@bool unused inGenerateForGalgas3
-  -> @string outHeader
+override method @categoryReaderForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader
 :
   if mImplementedAsFunction then
     outHeader := [filewrapper semanticComponentGenerationTemplate.categoryReaderAsFunctionDeclaration
@@ -2300,7 +2249,7 @@ override reader @categoryReaderForGeneration appendDeclaration1
       !mResultType
     ] ;
   end if ; 
-end reader ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
@@ -2425,9 +2374,9 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-override reader @filewrapperDeclarationForGeneration appendDeclaration1
-  ??@bool unused inGenerateForGalgas3
-  -> @string outHeader
+override method @filewrapperDeclarationForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader
 :
   @stringlist regularFileIndexStringList [emptyList] ;
   @stringlist regularBinaryContentIndexStringList [emptyList] ;
@@ -2456,7 +2405,7 @@ override reader @filewrapperDeclarationForGeneration appendDeclaration1
       !mFilewrapperTemplateFormalInputParameters
     ] ;
   end foreach ;
-end reader ;
+end method ;
 
 #---------------------------------------------------------------------------*
 

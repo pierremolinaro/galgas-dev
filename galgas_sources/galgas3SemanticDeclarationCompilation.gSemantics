@@ -25,7 +25,7 @@ import "projectGlobalCheckings.gSemantics" ;
 #---------------------------------------------------------------------------*
 
 enum @generationKind {
-  oneFile, manyManyFiles
+  someFiles, manyManyFiles
 }
 
 #---------------------------------------------------------------------------*
@@ -354,7 +354,7 @@ routine generateSemanticDeclarationsGalgas3
 #------ Generate Header Files
   if [@uint errorCount] == 0 then
     switch inGenerationKind
-    when oneFile : 
+    when someFiles : 
        generateOneFile
         !inProductDirectory
         !inSemanticContext
@@ -387,13 +387,17 @@ routine generateOneFile
   var headerInclusionList2 := [@stringlist emptyList] ;
   foreach inSemanticDeclarationSortedListForGeneration do
     if not [mDeclaration isPredefined] then
-      const headerString1 := [mDeclaration appendDeclaration1 !true] ;
+      var inclusionSet1 := [@stringset emptySet] ;
+      [mDeclaration appendDeclaration1 !?inclusionSet1 ??@string headerString1] ;
       const headerString2 := [mDeclaration appendDeclaration2 !inProductDirectory !true] ;
     #--- Header 1
       var headerString := "#ifndef " . [[mDeclaration implementationCppFileName] identifierRepresentation] . "_1_DEFINED\n" ;
       headerString .= "#define " . [[mDeclaration implementationCppFileName] identifierRepresentation] . "_1_DEFINED\n\n" ;
       headerString .= "//-----------------------------------------------------------------------------*\n\n" ;
       [mDeclaration addHeaderInclusions !?headerString] ;
+      for (s) in inclusionSet1 do
+        headerString .= "#include \"" . s . ".h\"\n" ;
+      end for ;
       headerString .= "#include \"galgas2/predefined-types.h\"\n\n" ;
       headerString .= "//-----------------------------------------------------------------------------*\n\n" ;
       headerString .= headerString1 ;
@@ -639,13 +643,17 @@ routine generateManyFiles
   var headerInclusionList2 := [@stringlist emptyList] ;
   foreach inSemanticDeclarationSortedListForGeneration do
     if not [mDeclaration isPredefined] then
-      const headerString1 := [mDeclaration appendDeclaration1 !true] ;
+      var inclusionSet1 := [@stringset emptySet] ;
+      [mDeclaration appendDeclaration1 !?inclusionSet1 ??@string headerString1] ;
       const headerString2 := [mDeclaration appendDeclaration2 !inProductDirectory !true] ;
     #--- Header 1
       var headerString := "#ifndef " . [[mDeclaration implementationCppFileName] identifierRepresentation] . "_1_DEFINED\n" ;
       headerString .= "#define " . [[mDeclaration implementationCppFileName] identifierRepresentation] . "_1_DEFINED\n\n" ;
       headerString .= "//-----------------------------------------------------------------------------*\n\n" ;
       [mDeclaration addHeaderInclusions !?headerString] ;
+      for (s) in inclusionSet1 do
+        headerString .= "#include \"" . s . ".h\"\n" ;
+      end for ;
       headerString .= "#include \"galgas2/predefined-types.h\"\n\n" ;
       headerString .= "//-----------------------------------------------------------------------------*\n\n" ;
       headerString .= headerString1 ;
