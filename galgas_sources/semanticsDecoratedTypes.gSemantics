@@ -1254,6 +1254,7 @@ list @mapOverrideList {
 #---------------------------------------------------------------------------*
 
 class @mapTypeForGeneration extends @semanticTypeForGeneration {
+  @unifiedTypeMapProxy mElementTypeProxy ;
   @lstring mMapTypeName ;
   @typedAttributeList mTypedAttributeList ;
   @insertMethodListAST mInsertMethodList ;

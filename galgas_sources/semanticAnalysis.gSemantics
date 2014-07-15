@@ -560,9 +560,9 @@ override method @mapDeclarationAST semanticAnalysis
   end foreach ;
 #--- Enter map declaration
   ioSemanticDeclarationListForGeneration +=
- #    !mIsPredefined
     ![@mapTypeForGeneration new
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mMapTypeName]
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !mMapTypeName->string . elementTypeNameSuffix [] !mMapTypeName->location]]
       !mMapTypeName
       !typedAttributeList
       !mInsertMethodList
