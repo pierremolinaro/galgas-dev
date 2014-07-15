@@ -655,7 +655,7 @@ indexing with galgas3ProjectGrammar
   if [@uint errorCount] == 0 then
     compileProgramComponentGalgas3
       !productDirectory
-#      !generationKind
+      !generationKind == [@generationKind fewFiles]
       !declarationAST->mPrologueDeclarationList
       !declarationAST->mSourceRuleList
       !declarationAST->mEpilogueDeclarationList
@@ -675,7 +675,7 @@ indexing with galgas3ProjectGrammar
     for s in syntaxListForGeneration do
       generateSyntaxComponentGalgas3
         !productDirectory
-#        !generationKind
+        !generationKind == [@generationKind fewFiles]
         !s
         !semanticContext
         !?toolCppFileList

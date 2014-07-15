@@ -342,6 +342,7 @@ end routine ;
 
 routine generateSyntaxComponentGalgas3
   ??@string inOutputDirectory
+  ??@bool inUseOneBigHeader
   ??@syntaxListForGeneration.element inSyntaxStructForGeneration
   ??@semanticContext inSemanticContext
   ?!@stringlist ioToolProductFileList
@@ -362,18 +363,24 @@ routine generateSyntaxComponentGalgas3
         !componentName
       ] ;
       var inclusionSet := [@stringset emptySet] ;
+      if inUseOneBigHeader then
+        inclusionSet += !"all-declarations" ;
+      end if ;
       [inSyntaxStructForGeneration->mSyntaxGeneration appendDeclaration1 !?inclusionSet ??@string code] ;
-      for (s) in inclusionSet do
-        headerString .= "#include \"" . s . ".h\"\n" ;
-      end for ;
+      if not inUseOneBigHeader then
+        for (s) in inclusionSet do
+          headerString .= "#include \"" . s . ".h\"\n" ;
+        end for ;
+      end if ;
       headerString .= code ;
       var inclusionSet2 := [@stringset emptySet] ;
       [inSyntaxStructForGeneration->mSyntaxGeneration appendDeclaration2 !true !inOutputDirectory !?inclusionSet2 ??@string headerString2] ;
-      for (s) in inclusionSet2 do
-        headerString .= "#include \"" . s . ".h\"\n" ;
-      end for ;
+      if not inUseOneBigHeader then
+        for (s) in inclusionSet2 do
+          headerString .= "#include \"" . s . ".h\"\n" ;
+        end for ;
+      end if ;
       headerString .= headerString2 ;
-#      headerString .= [inSyntaxStructForGeneration->mSyntaxGeneration appendDeclaration2 !inOutputDirectory !true] ;
       ioAllProductFileSet += !"syntax-" . componentName . ".h" ;
       [@string generateFileWithPattern
         !inOutputDirectory

@@ -375,6 +375,7 @@ end routine ;
 
 routine compileProgramComponentGalgas3
   ??@string inOutputDirectory
+  ??@bool inUseOneBigHeader
   ??@prologueEpilogueList inPrologueList
   ??@programRuleList inProgramRules
   ??@prologueEpilogueList inEpilogueList
@@ -415,7 +416,9 @@ routine compileProgramComponentGalgas3
   const programFileName := "program" ;
   if [@uint errorCount] == 0 then
     var headerIncludeList := [@stringlist emptyList] ;
-    headerIncludeList += !"all-declarations" ;
+    if inUseOneBigHeader then
+      headerIncludeList += !"all-declarations" ;
+    end if ;
     @string headerString := [filewrapper programFileGenerationTemplate.programFileHeader
       !programFileName
       !headerIncludeList
@@ -424,19 +427,22 @@ routine compileProgramComponentGalgas3
     foreach decoratedDeclarationListForGeneration do
       var inclusionSet := [@stringset emptySet] ;
       [mDeclaration appendDeclaration1 !?inclusionSet ??@string code] ;
-      for (s) in inclusionSet do
-        headerString .= "#include \"" . s . ".h\"\n" ;
-      end for ;
+      if not inUseOneBigHeader then
+        for (s) in inclusionSet do
+          headerString .= "#include \"" . s . ".h\"\n" ;
+        end for ;
+      end if ;
       headerString .= code ;
     end foreach ;
     foreach decoratedDeclarationListForGeneration do
       var inclusionSet2 := [@stringset emptySet] ;
       [mDeclaration appendDeclaration2 !true !inOutputDirectory !?inclusionSet2 ??@string headerString2] ;
-      for (s) in inclusionSet2 do
-        headerString .= "#include \"" . s . ".h\"\n" ;
-      end for ;
+      if not inUseOneBigHeader then
+        for (s) in inclusionSet2 do
+          headerString .= "#include \"" . s . ".h\"\n" ;
+        end for ;
+      end if ;
       headerString .= headerString2 ;
-#      headerString .= [mDeclaration appendDeclaration2 !inOutputDirectory !true] ;
     end foreach ;
     ioAllProductFileSet += !programFileName + ".h" ;
     [@string generateFileWithPattern
