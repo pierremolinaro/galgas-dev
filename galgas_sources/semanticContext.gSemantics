@@ -2,7 +2,7 @@
 #                                                                           *
 #  semantics definitions for semantics component                            *
 #                                                                           *
-#  Copyright (C) 2010, ..., 2012 Pierre Molinaro.                           *
+#  Copyright (C) 2010, ..., 2014 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -2356,7 +2356,8 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !"emptySortedList" # Default constructor
     !"sortedlist-" . mSortedListTypeName
     ![@unifiedTypeMapProxyList emptyList]
-    !typesToIncludeInCPPCompilation
+    ![@unifiedTypeMapProxyList emptyList]
+#    !typesToIncludeInCPPCompilation
   ] ;
 end method ;
 
@@ -3014,7 +3015,6 @@ override method @listmapDeclarationAST enterInSemanticContext
     !"listmap-" . mListmapTypeName
     ![@unifiedTypeMapProxyList emptyList]
     ![@unifiedTypeMapProxyList emptyList]
-#    ![@unifiedTypeMapProxyList listWithValue !listElementTypeIndex]
   ] ;
 end method ;
 

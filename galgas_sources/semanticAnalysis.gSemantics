@@ -191,7 +191,7 @@ override method @sortedListDeclarationAST semanticAnalysis
   @typedAttributeList typedAttributeList [emptyList] ;
   @attributeIndexMap attributeMap [emptyMap] ;
   foreach mAttributeList do
-    @unifiedTypeMapProxy t [searchKey !inSemanticContext->mTypeMap !mAttributeTypeName] ;
+    const t := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAttributeTypeName] ;
     @bool hasSetter := true ;
     @bool hasGetter := true ;
     typedAttributeList +=
@@ -206,8 +206,7 @@ override method @sortedListDeclarationAST semanticAnalysis
   @stringset attributesUsedForSorting [emptySet] ;
   @sortDescriptorListForGeneration sortDescriptorList [emptyList] ;
   foreach mSortDescriptorList do
-    @unifiedTypeMapProxy type ;
-    [attributeMap searchKey !mSortedAttributeName ?type] ;
+    [attributeMap searchKey !mSortedAttributeName ??@unifiedTypeMapProxy type] ;
     sortDescriptorList += !type ![mSortedAttributeName string] !mAscending ;
     if [attributesUsedForSorting hasKey ![mSortedAttributeName string]] then
       error mSortedAttributeName : "the '" . mSortedAttributeName . "' is already used for sorting" ;
@@ -216,9 +215,9 @@ override method @sortedListDeclarationAST semanticAnalysis
   end foreach ;
 #--- Generate type
   ioSemanticDeclarationListForGeneration +=
- #    !mIsPredefined
     ![@sortedListTypeForGeneration new
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mSortedListTypeName]
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !mSortedListTypeName->string . elementTypeNameSuffix [] !mSortedListTypeName->location]]
       !typedAttributeList
       !sortDescriptorList
     ]

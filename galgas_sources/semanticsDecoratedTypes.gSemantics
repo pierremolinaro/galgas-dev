@@ -1390,6 +1390,7 @@ list @sortDescriptorListForGeneration {
 #---------------------------------------------------------------------------*
 
 class @sortedListTypeForGeneration extends @semanticTypeForGeneration {
+  @unifiedTypeMapProxy mListElementTypeIndex ;
   @typedAttributeList mTypedAttributeList ;
   @sortDescriptorListForGeneration mSortDescriptorList ;
 }
