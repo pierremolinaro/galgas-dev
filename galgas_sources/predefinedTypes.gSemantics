@@ -372,7 +372,6 @@ routine generatePredefinedTypeFiles ??@string inDirectory :
         var inclusionSet2 := [@stringset emptySet] ;
         [mDeclaration appendDeclaration2 !false !inDirectory !?inclusionSet2 ??@string headerString2] ;
         generatedCode .= headerString2 ;
-#        generatedCode .= [mDeclaration appendDeclaration2 !inDirectory !false] ;
       end foreach ;
       if [@uint errorCount] == 0 then
         [@string generateFileWithPattern
@@ -389,7 +388,9 @@ routine generatePredefinedTypeFiles ??@string inDirectory :
       generatedCode := [filewrapper predefinedTypeGenerationTemplate.predefinedTypesImplementation] ;
       foreach decoratedDeclarationListForGeneration do
         generatedCode .= [mDeclaration appendTypeGenericImplementation] ;
-        generatedCode .= [mDeclaration appendSpecificImplementation !false] ;
+        var unusedInclusionSet := [@stringset emptySet] ;
+        [mDeclaration appendSpecificImplementation !?unusedInclusionSet ??@string code] ;
+        generatedCode += code ;
       end foreach ;
       if [@uint errorCount] == 0 then
         [@string generateFileWithPattern

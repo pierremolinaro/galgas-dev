@@ -4,12 +4,6 @@
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-% foreach INCLUSION_SET do
-%#include "%!key%.h"\n%
-end
-%
-//-----------------------------------------------------------------------------*
-
 GALGAS_string filewrapperTemplate_%![FILEWRAPPER_NAME identifierRepresentation]%_%![TEMPLATE_NAME identifierRepresentation]% (%?^%C_Compiler * %
   if [UNUSED_VAR_SET hasKey !compilerCppName []] then
     %/* %!compilerCppName []% */%

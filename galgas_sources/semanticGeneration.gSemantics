@@ -148,7 +148,7 @@ end routine ;
 routine generateFunction
   ??@string inFunctionCppRepresentationName
   ??@string inFunctionInclusionFile
-  ??@bool inGenerateForGalgas3
+  ?!@stringset ioInclusionSet
   ??@formalInputParameterListForGeneration inFormalArgumentList
   ??@semanticInstructionListForGeneration inInstructionList
   ??@string inCompilerTypeName
@@ -181,13 +181,8 @@ routine generateFunction
   end foreach ;
   [!?routineBody decIndentation !2] ;
 #--- Generation inclusions
-  if inGenerateForGalgas3 then
-    if inFunctionInclusionFile != "" then
-      outGeneratedCode .= "#include \"" . inFunctionInclusionFile . ".h\"\n" ;
-    end if ;
-    for (s) in inclusionSet do
-      outGeneratedCode .= "#include \"" . s . ".h\"\n" ;
-    end for ;
+  if inFunctionInclusionFile != "" then
+    ioInclusionSet += !inFunctionInclusionFile ;
   end if ;
 #--- Generate header
   if inIsStatic then
@@ -340,7 +335,7 @@ end function ;
 routine generateCategoryMethod
   ??@unifiedTypeMapProxy inReceiverType
   ??@string inBaseClassName
-  ??@bool inGenerateForGalgas3
+  ?!@stringset ioInclusionSet
   ??@string inMethodName
   ??@formalParameterListForGeneration inFormalArgumentList
   ??@semanticInstructionListForGeneration inInstructionList
@@ -370,32 +365,26 @@ routine generateCategoryMethod
   end foreach ;
   [!?routineBody decIndentation !2] ;
 #--- Generate inclusions
-  outGeneratedCode := "" ;
-  if inGenerateForGalgas3 then
-    @unifiedTypeMapProxy baseType := inReceiverType ;
-    @bool searching := true ;
-    loop [@uint max] : while searching do
-      if not [[baseType mSuperType] isNull] then
-        if [[[baseType mSuperType] mInstanceMethodMap] hasKey !inMethodName] then
-          baseType := [baseType mSuperType] ;
-        else
-          searching := false ;
-        end if ;
+  @unifiedTypeMapProxy baseType := inReceiverType ;
+  @bool searching := true ;
+  loop [@uint max] : while searching do
+    if not [[baseType mSuperType] isNull] then
+      if [[[baseType mSuperType] mInstanceMethodMap] hasKey !inMethodName] then
+        baseType := [baseType mSuperType] ;
       else
         searching := false ;
-      end if ;  
-    end loop ;
-    inclusionSet += !"method-" . [baseType key] . "-" . inMethodName ;
-    [inReceiverType addHeaderFileName !?inclusionSet] ;
-    foreach inFormalArgumentList do
-      [mFormalArgumentType addHeaderFileName !?inclusionSet] ;
-    end foreach ;
-    for (s) in inclusionSet do
-      outGeneratedCode .= "#include \"" . s . ".h\"\n" ;    
-    end for ;
-  end if ;
+      end if ;
+    else
+      searching := false ;
+    end if ;  
+  end loop ;
+  ioInclusionSet += !"method-" . [baseType key] . "-" . inMethodName ;
+  [inReceiverType addHeaderFileName !?ioInclusionSet] ;
+  foreach inFormalArgumentList do
+    [mFormalArgumentType addHeaderFileName !?ioInclusionSet] ;
+  end foreach ;
 #--- Generate header
-  outGeneratedCode .= "static void categoryMethod_" . [className identifierRepresentation] . "_" . [inMethodName identifierRepresentation] . " (" ;
+  outGeneratedCode := "static void categoryMethod_" . [className identifierRepresentation] . "_" . [inMethodName identifierRepresentation] . " (" ;
   const @uint colRef := [outGeneratedCode currentColumn] ;
   if inBaseClassName == "" then
     outGeneratedCode .= "const cPtr_" . [className identifierRepresentation] . " * " ;
@@ -464,7 +453,7 @@ end routine ;
 routine generateCategoryReader
   ??@unifiedTypeMapProxy inReceiverType
   ??@string inBaseClassName
-  ??@bool inGenerateForGalgas3
+  ?!@stringset ioInclusionSet
   ??@string inReaderName
   ??@formalInputParameterListForGeneration inFormalArgumentList
   ??@semanticInstructionListForGeneration inInstructionList
@@ -474,7 +463,6 @@ routine generateCategoryReader
   !@string outGeneratedCode
 :
   const className := [inReceiverType key] ;
-  outGeneratedCode := "" ;
 #--- Build unused variable set
   @stringset unusedVariableCppNameSet [emptySet] ;
   unusedVariableCppNameSet += !compilerCppName [] ;
@@ -498,32 +486,27 @@ routine generateCategoryReader
   end foreach ;
   [!?routineBody decIndentation !2] ;
 #--- Generate inclusions
-  if inGenerateForGalgas3 then
-    [inReceiverType addHeaderFileName !?inclusionSet] ;
-    @unifiedTypeMapProxy baseType := inReceiverType ;
-    @bool searching := true ;
-    loop [@uint max] : while searching do
-      if not [[baseType mSuperType] isNull] then
-        if [[[baseType mSuperType] mReaderMap] hasKey !inReaderName] then
-          baseType := [baseType mSuperType] ;
-        else
-          searching := false ;
-        end if ;
+  [inReceiverType addHeaderFileName !?ioInclusionSet] ;
+  @unifiedTypeMapProxy baseType := inReceiverType ;
+  @bool searching := true ;
+  loop [@uint max] : while searching do
+    if not [[baseType mSuperType] isNull] then
+      if [[[baseType mSuperType] mReaderMap] hasKey !inReaderName] then
+        baseType := [baseType mSuperType] ;
       else
         searching := false ;
-      end if ;  
-    end loop ;
-    inclusionSet += !"getter-" . [baseType key] . "-" . inReaderName ;
-    [inReceiverType addHeaderFileName !?inclusionSet] ;
-    foreach inFormalArgumentList do
-      [mFormalArgumentType addHeaderFileName !?inclusionSet] ;
-    end foreach ;
-    for (s) in inclusionSet do
-      outGeneratedCode .= "#include \"" . s . ".h\"\n" ;    
-    end for ;
-  end if ;
+      end if ;
+    else
+      searching := false ;
+    end if ;  
+  end loop ;
+  ioInclusionSet += !"getter-" . [baseType key] . "-" . inReaderName ;
+  [inReceiverType addHeaderFileName !?ioInclusionSet] ;
+  foreach inFormalArgumentList do
+    [mFormalArgumentType addHeaderFileName !?ioInclusionSet] ;
+  end foreach ;
 #--- Generate header
-  outGeneratedCode .= "static GALGAS_" . [inResultTypeName identifierRepresentation] . " categoryReader_" ;
+  outGeneratedCode := "static GALGAS_" . [inResultTypeName identifierRepresentation] . " categoryReader_" ;
   outGeneratedCode .= [className identifierRepresentation] . "_" . [inReaderName identifierRepresentation] . " (" ;
   const @uint colRef := [outGeneratedCode currentColumn] ;
   if inBaseClassName == "" then
@@ -661,7 +644,6 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@string TYPE_IDENTIFIER
     ?@unifiedTypeMapProxy ASSOCIATED_LIST_TYPE
     ?@graphInsertModifierList INSERT_MODIFIER_LIST
-    ?@stringset INCLUSION_SET
   ;
 
 #---------- Array
@@ -690,7 +672,6 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@string TYPE_IDENTIFIER
     ?@string ASSOCIATED_LIST_TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
-    ?@stringset INCLUSION_SET
   ;
 
 #---------- LIST
@@ -704,7 +685,6 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
-    ?@stringset INCLUSION_SET
   ;
 
 #---------- SORTED LIST
@@ -718,7 +698,6 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
     ?@sortDescriptorListForGeneration SORT_ATTRIBUTE_LIST
-    ?@stringset INCLUSION_SET
   ;
 
 #---------- ENUM
@@ -746,7 +725,6 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@string ASSOCIATED_MAP_TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
     ?@mapSearchMethodListAST SEARCH_METHOD_LIST
-    ?@stringset INCLUSION_SET
   ;
 
 #---------- MAP
@@ -771,7 +749,6 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@mapRemoveMethodListAST REMOVE_METHOD_LIST
     ?@bool HAS_INSERT_OR_REPLACE 
     ?@withAccessorMap WITH_ACCESSOR_MAP
-    ?@stringset INCLUSION_SET
   ;
 
 #---------- UNIQUE MAP
@@ -864,7 +841,6 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
     ?@string READER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@unifiedTypeMapProxy RETURN_TYPE
-    ?@stringset INCLUSION_SET
   ;
   
   template categoryReaderDeclaration "category-reader.h.gTemplate"
@@ -880,7 +856,6 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@unifiedTypeMapProxy RETURN_TYPE
     ?@string READER_IMPLEMENTATION
-    ?@stringset INCLUSION_SET
   ;
   
   template overridingCategoryReaderImplementation "overriding-category-reader.cpp.gTemplate"
@@ -934,7 +909,6 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
     ?@unifiedTypeMapProxy RECEIVER_TYPE
     ?@string METHOD_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
-    ?@stringset INCLUSION_SET
   ;
   
   template categoryMethodDeclaration "category-method.h.gTemplate"
@@ -948,7 +922,6 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
     ?@string METHOD_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@string METHOD_IMPLEMENTATION
-    ?@stringset INCLUSION_SET
   ;
   
   template overridingCategoryMethodImplementation "overriding-category-method.cpp.gTemplate"
@@ -1058,7 +1031,6 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
     ?@stringset UNUSED_VAR_SET
     ?@bool USES_COLUMN_MARKER
     ?@string GENERATED_INSTRUCTION_STRING
-    ?@stringset INCLUSION_SET
   ;
 }
 
@@ -1249,18 +1221,18 @@ end reader ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-reader @semanticDeclarationForGeneration appendSpecificImplementation
-  ??@bool unused inGenerateForGalgas3
-  ->@string outImplementation
+method @semanticDeclarationForGeneration appendSpecificImplementation
+  ?!@stringset unused  ioInclusionSet
+  !@string outImplementation
 :
   outImplementation := "" ;
-end reader ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @arrayTypeForGeneration appendSpecificImplementation
-  ??@bool unused inGenerateForGalgas3
-  ->@string outImplementation
+override method @arrayTypeForGeneration appendSpecificImplementation
+  ?!@stringset unused ioInclusionSet
+  !@string outImplementation
 :
   @stringlist suffixList [emptyList] ;
   @uint idx := 0 ;
@@ -1275,7 +1247,7 @@ override reader @arrayTypeForGeneration appendSpecificImplementation
     !mDimension
     !suffixList
   ] ;
- end reader ;
+ end method ;
 
 #---------------------------------------------------------------------------*
 #! List map
@@ -1313,21 +1285,17 @@ override method @listmapTypeForGeneration appendDeclaration1
 
 #---------------------------------------------------------------------------*
 
-override reader @listmapTypeForGeneration appendSpecificImplementation
-  ??@bool inGenerateForGalgas3
-  ->@string outImplementation
+override method @listmapTypeForGeneration appendSpecificImplementation
+  ?!@stringset ioInclusionSet
+  !@string outImplementation
 :
-  var inclusionSet := [@stringset emptySet] ;
-  if inGenerateForGalgas3 then
-    [mAssociatedListMapElementTypeIndex addHeaderFileName !?inclusionSet] ;
-  end if ;
+  [mAssociatedListMapElementTypeIndex addHeaderFileName !?ioInclusionSet] ;
   outImplementation := [filewrapper typeGenerationTemplate.listmapTypeSpecificImplementation
     ![mTypeProxy identifierRepresentation]
     ![mAssociatedListTypeIndex identifierRepresentation]
     !mAssociatedListTypedAttributeList
-    !inclusionSet
   ] ;
- end reader ;
+ end method ;
 
 #---------------------------------------------------------------------------*
 #! Map
@@ -1386,14 +1354,11 @@ override method @mapTypeForGeneration appendDeclaration2
 
 #---------------------------------------------------------------------------*
 
-override reader @mapTypeForGeneration appendSpecificImplementation
-  ??@bool inGenerateForGalgas3
-  ->@string outImplementation
+override method @mapTypeForGeneration appendSpecificImplementation
+  ?!@stringset ioInclusionSet
+  !@string outImplementation
 :
-  var inclusionSet := [@stringset emptySet] ;
-  if inGenerateForGalgas3 then
-    [mElementTypeProxy addHeaderFileName !?inclusionSet] ;
-  end if ;
+  [mElementTypeProxy addHeaderFileName !?ioInclusionSet] ;
   outImplementation := [filewrapper typeGenerationTemplate.mapTypeSpecificImplementation
     ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
@@ -1402,9 +1367,8 @@ override reader @mapTypeForGeneration appendSpecificImplementation
     !mRemoveMethodList
     !mHasInsertOrReplaceModifier
     !mWithAccessorMap
-    !inclusionSet
   ] ;
- end reader ;
+ end method ;
 
 #---------------------------------------------------------------------------*
 #! Unique Map
@@ -1459,9 +1423,9 @@ override method @uniqueMapTypeForGeneration appendDeclaration2
 
 #---------------------------------------------------------------------------*
 
-override reader @uniqueMapTypeForGeneration appendSpecificImplementation
-  ??@bool unused inGenerateForGalgas3
-  ->@string outImplementation
+override method @uniqueMapTypeForGeneration appendSpecificImplementation
+  ?!@stringset unused ioInclusionSet
+  !@string outImplementation
 :
   @keySortedList keySortedList [emptySortedList] ;
   foreach mMapAutomatonStateMap do
@@ -1479,7 +1443,7 @@ override reader @uniqueMapTypeForGeneration appendSpecificImplementation
     !mMapOverrideList
     !keySortedList
   ] ;
- end reader ;
+ end method ;
 
 #---------------------------------------------------------------------------*
 #! Sorted List
@@ -1513,24 +1477,20 @@ override method @sortedListTypeForGeneration appendDeclaration1
 
 #---------------------------------------------------------------------------*
 
-override reader @sortedListTypeForGeneration appendSpecificImplementation
-  ??@bool inGenerateForGalgas3
-  ->@string outImplementation
+override method @sortedListTypeForGeneration appendSpecificImplementation
+  ?!@stringset ioInclusionSet
+  !@string outImplementation
 :
-  var inclusionSet := [@stringset emptySet] ;
-  if inGenerateForGalgas3 then
-    for (t ...) in mTypedAttributeList do
-      [t addHeaderFileName !?inclusionSet] ;
-    end for ;
-    [mListElementTypeIndex addHeaderFileName !?inclusionSet] ;
-  end if ;
+  for (t ...) in mTypedAttributeList do
+    [t addHeaderFileName !?ioInclusionSet] ;
+  end for ;
+  [mListElementTypeIndex addHeaderFileName !?ioInclusionSet] ;
   outImplementation := [filewrapper typeGenerationTemplate.sortedlistTypeSpecificImplementation
     ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
     !mSortDescriptorList
-    !inclusionSet
   ] ;
- end reader ;
+ end method ;
 
 #---------------------------------------------------------------------------*
 #! Enum
@@ -1564,16 +1524,16 @@ override method @enumTypeForGeneration appendDeclaration1
 
 #---------------------------------------------------------------------------*
 
-override reader @enumTypeForGeneration appendSpecificImplementation
-  ??@bool unused inGenerateForGalgas3
-  ->@string outImplementation
+override method @enumTypeForGeneration appendSpecificImplementation
+  ?!@stringset unused ioInclusionSet
+  !@string outImplementation
 :
   outImplementation := [filewrapper typeGenerationTemplate.enumTypeSpecificImplementation
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
     !mConstantList
   ] ;
- end reader ;
+ end method ;
 
 #---------------------------------------------------------------------------*
 #! Map proxy
@@ -1606,23 +1566,19 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @mapProxyTypeForGeneration appendSpecificImplementation
-  ??@bool inGenerateForGalgas3
-  ->@string outImplementation
+override method @mapProxyTypeForGeneration appendSpecificImplementation
+  ?!@stringset ioInclusionSet
+  !@string outImplementation
 :
-  var inclusionSet := [@stringset emptySet] ;
-  if inGenerateForGalgas3 then
-    [mAssociatedMapTypeProxy addHeaderFileName !?inclusionSet] ;
-  end if ;
+  [mAssociatedMapTypeProxy addHeaderFileName !?ioInclusionSet] ;
   outImplementation := [filewrapper typeGenerationTemplate.mapProxyTypeSpecificImplementation
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
     ![mAssociatedMapTypeProxy identifierRepresentation]
     !mAssociatedMapTypedAttributeList
     !mSearchMethodList
-    !inclusionSet
   ] ;
- end reader ;
+ end method ;
 
 #---------------------------------------------------------------------------*
 #! Struct
@@ -1661,9 +1617,9 @@ override method @structTypeForGeneration appendDeclaration1
 
 #---------------------------------------------------------------------------*
 
-override reader @structTypeForGeneration appendSpecificImplementation
-  ??@bool unused inGenerateForGalgas3
-  ->@string outImplementation
+override method @structTypeForGeneration appendSpecificImplementation
+  ?!@stringset unused ioInclusionSet
+  !@string outImplementation
 :
   outImplementation := [filewrapper typeGenerationTemplate.structTypeSpecificImplementation
     ![mTypeProxy key]
@@ -1671,7 +1627,7 @@ override reader @structTypeForGeneration appendSpecificImplementation
     !mTypedAttributeList
     ![mTypeProxy mDefaultConstructorName] != ""
   ] ;
- end reader ;
+ end method ;
 
 #---------------------------------------------------------------------------*
 #! List
@@ -1705,24 +1661,20 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @listTypeForGeneration appendSpecificImplementation
-  ??@bool inGenerateForGalgas3
-  ->@string outImplementation
+override method @listTypeForGeneration appendSpecificImplementation
+  ?!@stringset ioInclusionSet
+  !@string outImplementation
 :
-  var inclusionSet := [@stringset emptySet] ;
-  if inGenerateForGalgas3 then
-    for (t ...) in mTypedAttributeList do
-      [t addHeaderFileName !?inclusionSet] ;
-    end for ;
-    [mListElementTypeIndex addHeaderFileName !?inclusionSet] ;
-  end if ;
+  for (t ...) in mTypedAttributeList do
+    [t addHeaderFileName !?ioInclusionSet] ;
+  end for ;
+  [mListElementTypeIndex addHeaderFileName !?ioInclusionSet] ;
   outImplementation := [filewrapper typeGenerationTemplate.listTypeSpecificImplementation
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
-    !inclusionSet
   ] ;
- end reader ;
+ end method ;
 
 #---------------------------------------------------------------------------*
 #! Graph
@@ -1755,23 +1707,19 @@ override method @graphDeclarationForGeneration appendDeclaration1
 
 #---------------------------------------------------------------------------*
 
-override reader @graphDeclarationForGeneration appendSpecificImplementation
-  ??@bool inGenerateForGalgas3
-  ->@string outImplementation
+override method @graphDeclarationForGeneration appendSpecificImplementation
+  ?!@stringset ioInclusionSet
+  !@string outImplementation
 :
-  var inclusionSet := [@stringset emptySet] ;
-  if inGenerateForGalgas3 then
-    [mAssociatedListTypeProxy addHeaderFileName !?inclusionSet] ;
-    [mAssociatedListElementTypeProxy addHeaderFileName !?inclusionSet] ;
-  end if ;
+  [mAssociatedListTypeProxy addHeaderFileName !?ioInclusionSet] ;
+  [mAssociatedListElementTypeProxy addHeaderFileName !?ioInclusionSet] ;
   outImplementation := [filewrapper typeGenerationTemplate.graphTypeSpecificImplementation
     !mTypeProxy
     ![mTypeProxy identifierRepresentation]
     !mAssociatedListTypeProxy
     !mInsertModifierList
-    !inclusionSet
   ] ;
- end reader ;
+ end method ;
 
 #---------------------------------------------------------------------------*
 #! Class
@@ -1872,9 +1820,9 @@ override method @classTypeForGeneration appendDeclaration2
 
 #---------------------------------------------------------------------------*
 
-override reader @classTypeForGeneration appendSpecificImplementation
-  ??@bool unused inGenerateForGalgas3
-  ->@string outImplementation
+override method @classTypeForGeneration appendSpecificImplementation
+  ?!@stringset unused ioInclusionSet
+  !@string outImplementation
 :
   outImplementation := [filewrapper typeGenerationTemplate.classTypeSpecificImplementation
     ![mTypeProxy key]
@@ -1886,17 +1834,16 @@ override reader @classTypeForGeneration appendSpecificImplementation
     !mIsAbstract
     ![mTypeProxy mDefaultConstructorName] != ""
   ] ;
-end reader ;
+end method ;
 
 #---------------------------------------------------------------------------*
 #! Sub programs
 #---------------------------------------------------------------------------*
 
-override reader @routineImplementationForGeneration appendSpecificImplementation
-  ??@bool inGenerateForGalgas3
-  ->@string outImplementation
+override method @routineImplementationForGeneration appendSpecificImplementation
+  ?!@stringset ioInclusionSet
+  !@string outImplementation
 :
-  var ioInclusionSet := [@stringset emptySet] ;
   generateProcedure
     !"routine_" . [mRoutineName identifierRepresentation]
     !?ioInclusionSet
@@ -1913,18 +1860,18 @@ override reader @routineImplementationForGeneration appendSpecificImplementation
     !mRoutineName
     !code
   ] ; 
-end reader ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @functionImplementationForGeneration appendSpecificImplementation
-  ??@bool inGenerateForGalgas3
-  ->@string outImplementation
+override method @functionImplementationForGeneration appendSpecificImplementation
+  ?!@stringset ioInclusionSet
+  !@string outImplementation
 :
   generateFunction
     !"function_" . [mFunctionName identifierRepresentation]
     !"func-" . mFunctionName
-    !inGenerateForGalgas3
+    !?ioInclusionSet
     !mFormalArgumentList
     !mFunctionInstructionList
     !"C_Compiler"
@@ -1939,18 +1886,18 @@ override reader @functionImplementationForGeneration appendSpecificImplementatio
     !mFormalArgumentList
     ![mReturnType identifierRepresentation]
   ] ; 
-end reader ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @onceFunctionDeclarationForGeneration appendSpecificImplementation
-  ??@bool inGenerateForGalgas3
-  ->@string outImplementation
+override method @onceFunctionDeclarationForGeneration appendSpecificImplementation
+  ?!@stringset ioInclusionSet
+  !@string outImplementation
 :
   generateFunction
     !"onceFunction_" . [mFunctionName identifierRepresentation]
     !"func-" . mFunctionName
-    !inGenerateForGalgas3
+    !?ioInclusionSet
     ![@formalInputParameterListForGeneration emptyList]
     !mFunctionInstructionList
     !"C_Compiler"
@@ -1965,7 +1912,7 @@ override reader @onceFunctionDeclarationForGeneration appendSpecificImplementati
     ![@formalInputParameterListForGeneration emptyList]
     ![mReturnType identifierRepresentation]
   ] ; 
-end reader ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
@@ -1986,24 +1933,20 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @abstractCategoryMethodForGeneration appendSpecificImplementation
-  ??@bool inGenerateForGalgas3
-  ->@string outImplementation
+override method @abstractCategoryMethodForGeneration appendSpecificImplementation
+  ?!@stringset ioInclusionSet
+  !@string outImplementation
 :
-  var inclusionSet := [@stringset emptySet] ;
-  if inGenerateForGalgas3 then
-    [mReceiverType addHeaderFileName !?inclusionSet] ;
-    for * in mAbstractCategoryMethodFormalParameterList do
-      [mFormalArgumentType addHeaderFileName !?inclusionSet] ;
-    end for ;
-  end if ;
+  [mReceiverType addHeaderFileName !?ioInclusionSet] ;
+  for * in mAbstractCategoryMethodFormalParameterList do
+    [mFormalArgumentType addHeaderFileName !?ioInclusionSet] ;
+  end for ;
   outImplementation := [filewrapper semanticComponentGenerationTemplate.abstractCategoryMethodImplementation
     !mReceiverType
     !mAbstractCategoryMethodName
     !mAbstractCategoryMethodFormalParameterList
-    !inclusionSet
   ] ; 
-end reader ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
@@ -2028,11 +1971,10 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @categoryMethodForGeneration appendSpecificImplementation
-  ??@bool inGenerateForGalgas3
-  ->@string outImplementation
+override method @categoryMethodForGeneration appendSpecificImplementation
+  ?!@stringset ioInclusionSet
+  !@string outImplementation
 :
-  var ioInclusionSet := [@stringset emptySet] ;
   if mImplementedAsFunction then
     @formalParameterListForGeneration categoryMethodFormalParameterList := mCategoryMethodFormalParameterList ;
     [!?categoryMethodFormalParameterList insertAtIndex
@@ -2060,17 +2002,14 @@ override reader @categoryMethodForGeneration appendSpecificImplementation
       !code
     ] ; 
   else
-    var inclusionSet := [@stringset emptySet] ;
-    if inGenerateForGalgas3 then
-      [mReceiverType addHeaderFileName !?inclusionSet] ;
-      for * in mCategoryMethodFormalParameterList do
-        [mFormalArgumentType addHeaderFileName !?inclusionSet] ;
-      end for ;
-    end if ;
+    [mReceiverType addHeaderFileName !?ioInclusionSet] ;
+    for * in mCategoryMethodFormalParameterList do
+      [mFormalArgumentType addHeaderFileName !?ioInclusionSet] ;
+    end for ;
     generateCategoryMethod
       !mReceiverType
       !""
-      !inGenerateForGalgas3
+      !?ioInclusionSet
       !mCategoryMethodName
       !mCategoryMethodFormalParameterList
       !mSemanticInstructionListForGeneration
@@ -2081,21 +2020,20 @@ override reader @categoryMethodForGeneration appendSpecificImplementation
       !mCategoryMethodName
       !mCategoryMethodFormalParameterList
       !methodImplementation
-      !inclusionSet
     ] ;
   end if ;
-end reader ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @overridingCategoryMethodForGeneration appendSpecificImplementation
-  ??@bool inGenerateForGalgas3
-  ->@string outImplementation
+override method @overridingCategoryMethodForGeneration appendSpecificImplementation
+  ?!@stringset ioInclusionSet
+  !@string outImplementation
 :
   generateCategoryMethod
     !mReceiverType
     !mBaseTypeName
-    !inGenerateForGalgas3
+    !?ioInclusionSet
     !mCategoryMethodName
     !mCategoryMethodFormalParameterList
     !mSemanticInstructionListForGeneration
@@ -2106,7 +2044,7 @@ override reader @overridingCategoryMethodForGeneration appendSpecificImplementat
     !mCategoryMethodName
     !methodImplementation
   ] ; 
-end reader ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
@@ -2114,24 +2052,23 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @abstractCategoryModifierForGeneration appendSpecificImplementation
-  ??@bool unused inGenerateForGalgas3
-  ->@string outImplementation
+override method @abstractCategoryModifierForGeneration appendSpecificImplementation
+  ?!@stringset unused ioInclusionSet
+  !@string outImplementation
 :
   outImplementation := [filewrapper semanticComponentGenerationTemplate.abstractCategoryModifierImplementation
     !mTypeName
     !mAbstractCategoryModifierName
     !mAbstractCategoryModifierFormalParameterList
   ] ; 
-end reader ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @categoryModifierForGeneration appendSpecificImplementation
-  ??@bool inGenerateForGalgas3
-  ->@string outImplementation
+override method @categoryModifierForGeneration appendSpecificImplementation
+  ?!@stringset ioInclusionSet
+  !@string outImplementation
 :
-  var ioInclusionSet := [@stringset emptySet] ;
   if mImplementedAsFunction then
     @formalParameterListForGeneration categoryModifierFormalParameterList := mCategoryModifierFormalParameterList ;
     [!?categoryModifierFormalParameterList insertAtIndex
@@ -2173,13 +2110,13 @@ override reader @categoryModifierForGeneration appendSpecificImplementation
       !modifierImplementation
     ] ;
   end if ;
-end reader ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @overridingCategoryModifierForGeneration appendSpecificImplementation
-  ??@bool unused inGenerateForGalgas3
-  ->@string outImplementation
+override method @overridingCategoryModifierForGeneration appendSpecificImplementation
+  ?!@stringset unused ioInclusionSet
+  !@string outImplementation
 :
   const @string methodImplementation := generateCategoryModifier [
     !mTypeName
@@ -2193,7 +2130,7 @@ override reader @overridingCategoryModifierForGeneration appendSpecificImplement
     !mCategoryModifierName
     !methodImplementation
   ] ; 
-end reader ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
@@ -2215,26 +2152,22 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @abstractCategoryReaderForGeneration appendSpecificImplementation
-  ??@bool inGenerateForGalgas3
-  ->@string outImplementation
+override method @abstractCategoryReaderForGeneration appendSpecificImplementation
+  ?!@stringset ioInclusionSet
+  !@string outImplementation
 :
-  var inclusionSet := [@stringset emptySet] ;
-  if inGenerateForGalgas3 then
-    [mResultType addHeaderFileName !?inclusionSet] ;
-    [mReceiverType addHeaderFileName !?inclusionSet] ;
-    for * in mAbstractCategoryReaderFormalParameterList do
-      [mFormalArgumentType addHeaderFileName !?inclusionSet] ;
-    end for ;
-  end if ;
+  [mResultType addHeaderFileName !?ioInclusionSet] ;
+  [mReceiverType addHeaderFileName !?ioInclusionSet] ;
+  for * in mAbstractCategoryReaderFormalParameterList do
+    [mFormalArgumentType addHeaderFileName !?ioInclusionSet] ;
+  end for ;
   outImplementation := [filewrapper semanticComponentGenerationTemplate.abstractCategoryReaderImplementation
     ![mReceiverType key]
     !mAbstractCategoryReaderName
     !mAbstractCategoryReaderFormalParameterList
     !mResultType
-    !inclusionSet
   ] ; 
-end reader ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
@@ -2261,9 +2194,9 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @categoryReaderForGeneration appendSpecificImplementation
-  ??@bool inGenerateForGalgas3
-  ->@string outImplementation
+override method @categoryReaderForGeneration appendSpecificImplementation
+  ?!@stringset ioInclusionSet
+  !@string outImplementation
 :
   if mImplementedAsFunction then
     @formalInputParameterListForGeneration categoryReaderFormalParameterList := mCategoryReaderFormalParameterList ;
@@ -2277,7 +2210,7 @@ override reader @categoryReaderForGeneration appendSpecificImplementation
     generateFunction
       !"categoryReader_" . [mCategoryReaderName identifierRepresentation]
       !""
-      !inGenerateForGalgas3
+      !?ioInclusionSet
       !categoryReaderFormalParameterList
       !mSemanticInstructionListForGeneration
       !"C_Compiler"
@@ -2292,18 +2225,15 @@ override reader @categoryReaderForGeneration appendSpecificImplementation
       !code
     ] ; 
   else
-    var inclusionSet := [@stringset emptySet] ;
-    if inGenerateForGalgas3 then
-      [mResultType addHeaderFileName !?inclusionSet] ; 
-      [mReceiverType addHeaderFileName !?inclusionSet] ;
-      for * in mCategoryReaderFormalParameterList do
-        [mFormalArgumentType addHeaderFileName !?inclusionSet] ;
-      end for ;
-    end if ;
+    [mResultType addHeaderFileName !?ioInclusionSet] ; 
+    [mReceiverType addHeaderFileName !?ioInclusionSet] ;
+    for * in mCategoryReaderFormalParameterList do
+      [mFormalArgumentType addHeaderFileName !?ioInclusionSet] ;
+    end for ;
     generateCategoryReader
       !mReceiverType
       !""
-      !inGenerateForGalgas3
+      !?ioInclusionSet
       !mCategoryReaderName
       !mCategoryReaderFormalParameterList
       !mSemanticInstructionListForGeneration
@@ -2318,21 +2248,20 @@ override reader @categoryReaderForGeneration appendSpecificImplementation
       !mCategoryReaderFormalParameterList
       !mResultType
       !categoryReaderCode
-      !inclusionSet
     ] ;
   end if ;
-end reader ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
-override reader @overrideCategoryReaderForGeneration appendSpecificImplementation
-  ??@bool inGenerateForGalgas3
-  ->@string outImplementation
+override method @overrideCategoryReaderForGeneration appendSpecificImplementation
+  ?!@stringset ioInclusionSet
+  !@string outImplementation
 :
   generateCategoryReader
     !mReceiverType
     !mBaseTypeName
-    !inGenerateForGalgas3
+    !?ioInclusionSet
     !mOverridingCategoryReaderName
     !mOverridingCategoryReaderFormalParameterList
     !mSemanticInstructionListForGeneration
@@ -2347,7 +2276,7 @@ override reader @overrideCategoryReaderForGeneration appendSpecificImplementatio
     !mResultType
     !categoryReaderCode
   ] ; 
-end reader ;
+end method ;
 
 #---------------------------------------------------------------------------*
 
@@ -2508,9 +2437,9 @@ end routine ;
   
 #---------------------------------------------------------------------------*
 
-override reader @filewrapperDeclarationForGeneration appendSpecificImplementation
-  ??@bool inGenerateForGalgas3
-  ->@string outImplementation
+override method @filewrapperDeclarationForGeneration appendSpecificImplementation
+  ?!@stringset ioInclusionSet
+  !@string outImplementation
 :
   @string filewrapperImplementation := "" ;
   generateWrapperContents
@@ -2526,7 +2455,6 @@ override reader @filewrapperDeclarationForGeneration appendSpecificImplementatio
     !filewrapperImplementation
   ] ;
 #--- template generation
-  var inclusionSet := [@stringset emptySet] ;
   foreach mFilewrapperTemplateListForGeneration do
   #--- Build generated code for instruction list
     @string generatedCodeForInstructionList := "" ;
@@ -2540,7 +2468,7 @@ override reader @filewrapperDeclarationForGeneration appendSpecificImplementatio
     templateCodeGenerationForListInstruction
       !mTemplateInstructionListForGeneration
       !?generatedCodeForInstructionList
-      !?inclusionSet
+      !?ioInclusionSet
       !?temporaryVariableIndex
       !?unusedVariableCppNameSet
       !?useColumnMarker
@@ -2553,10 +2481,9 @@ override reader @filewrapperDeclarationForGeneration appendSpecificImplementatio
       !unusedVariableCppNameSet
       !useColumnMarker
       !generatedCodeForInstructionList
-      !if inGenerateForGalgas3 then inclusionSet else [@stringset emptySet] end
     ] ;
   end foreach ;
-end reader ;
+end method ;
 
 #---------------------------------------------------------------------------*
 

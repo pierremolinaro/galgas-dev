@@ -4,12 +4,6 @@
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-% foreach INCLUSION_SET do
-%#include "%!key%.h"\n%
-end
-%
-//-----------------------------------------------------------------------------*
-
 static TC_UniqueArray <categoryMethodSignature_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%> gCategoryMethodTable_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% ;
 
 //-----------------------------------------------------------------------------*

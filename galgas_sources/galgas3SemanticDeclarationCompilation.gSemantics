@@ -612,26 +612,28 @@ routine generateFewImplementationFiles
   var n := 0 ;
   var fileIdx := 0 ;
   var implementationString := "" ;
+  var inclusionSet := [@stringset emptySet] ;
   foreach inSemanticDeclarationSortedListForGeneration do
     if not [mDeclaration isPredefined] then
-      if implementationString == "" then
-        var implementationFileIncludeList := [@stringlist listWithValue !"all-declarations"] ;
-        for * in inSemanticContext->mOptionComponentMapForSemanticAnalysis do
-          if not mIsPredefined then
-            implementationFileIncludeList += !"option-" + lkey->string ;
-          end if ;
-        end for ;
-        for * in inSemanticContext->mGrammarMap do
-          implementationFileIncludeList += !"grammar-" . lkey->string ;
-        end for ;
-        implementationString := [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
-          !implementationFileIncludeList
-        ] ;
-      end if ;
-      implementationString .= [mDeclaration appendSpecificImplementation !false] ;
+      [mDeclaration appendSpecificImplementation !?inclusionSet ??@string code] ;
+      implementationString += code ;
       implementationString .= [mDeclaration appendTypeGenericImplementation] ;
       n ++ ;
       if n == 100 then
+        if inUniqueHeader then
+          inclusionSet := [@stringset setWithString !"all-declarations"] ;
+        end if ;
+        for * in inSemanticContext->mOptionComponentMapForSemanticAnalysis do
+          if not mIsPredefined then
+            inclusionSet += !"option-" + lkey->string ;
+          end if ;
+        end for ;
+        for * in inSemanticContext->mGrammarMap do
+          inclusionSet += !"grammar-" . lkey->string ;
+        end for ;
+        const header := [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
+          ![inclusionSet stringList]
+        ] ;
         const fileName := "all-declarations-" . fileIdx . ".cpp" ;
         ioToolProductFileList := [@stringlist listWithValue !fileName] + ioToolProductFileList ;
         ioAllProductFileSet += !fileName ;
@@ -640,18 +642,33 @@ routine generateFewImplementationFiles
           !fileName
           !"//"
           !"\n\n" # Defaut user zone1
-          !implementationString
+          !header + implementationString
           !"\n\n" # Defaut user zone2
           !"\n"
         ] ;
         n := 0 ;
         fileIdx ++ ;
         implementationString := "" ;
+        inclusionSet := [@stringset emptySet] ;
       end if ;
     end if ;
   end foreach ;
 #--- Last file
   if implementationString != "" then
+    if inUniqueHeader then
+      inclusionSet := [@stringset setWithString !"all-declarations"] ;
+    end if ;
+    for * in inSemanticContext->mOptionComponentMapForSemanticAnalysis do
+      if not mIsPredefined then
+        inclusionSet += !"option-" + lkey->string ;
+      end if ;
+    end for ;
+    for * in inSemanticContext->mGrammarMap do
+      inclusionSet += !"grammar-" . lkey->string ;
+    end for ;
+    const header := [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
+      ![inclusionSet stringList]
+    ] ;
     const fileName := "all-declarations-" . fileIdx . ".cpp" ;
     ioToolProductFileList := [@stringlist listWithValue !fileName] + ioToolProductFileList ;
     ioAllProductFileSet += !fileName ;
@@ -660,7 +677,7 @@ routine generateFewImplementationFiles
       !fileName
       !"//"
       !"\n\n" # Defaut user zone1
-      !implementationString
+      !header + implementationString
       !"\n\n" # Defaut user zone2
       !"\n"
     ] ;
@@ -749,15 +766,15 @@ routine generateManyFiles
   ] ;
 #---------------------------------- Generate Implementation Files
   foreach inSemanticDeclarationSortedListForGeneration do
+    var inclusionSet := [@stringset emptySet] ;
     if not [mDeclaration isPredefined] then
-      var implementationFileIncludes := [@stringlist emptyList] ;
+      [mDeclaration appendSpecificImplementation !?inclusionSet ?@string implementationString] ;
       if [mDeclaration hasCppHeaderFile] then
-        implementationFileIncludes += ![mDeclaration implementationCppFileName] ;
+        inclusionSet += ![mDeclaration implementationCppFileName] ;
       end if ;
-      var implementationString := [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
-        !implementationFileIncludes
+      const header := [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
+        ![inclusionSet stringList]
       ] ;
-      implementationString .= [mDeclaration appendSpecificImplementation !true] ;
       implementationString .= [mDeclaration appendTypeGenericImplementation] ;
       ioAllProductFileSet += ![mDeclaration implementationCppFileName] . ".cpp" ;
       [@string generateFileWithPattern
@@ -765,7 +782,7 @@ routine generateManyFiles
         ![mDeclaration implementationCppFileName] . ".cpp"
         !"//"
         !"\n\n" # Defaut user zone1
-        !implementationString
+        !header + implementationString
         !"\n\n" # Defaut user zone2
         !"\n"
       ] ;
