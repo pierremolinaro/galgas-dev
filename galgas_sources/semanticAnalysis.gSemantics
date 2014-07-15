@@ -288,6 +288,10 @@ override method @graphDeclarationAST semanticAnalysis
 :
   const graphTypeProxy := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mGraphTypeName] ;
   const associatedListTypeProxy := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAssociatedListTypeName] ;
+  const associatedListElementTypeProxy := [@unifiedTypeMapProxy searchKey 
+    !inSemanticContext->mTypeMap
+    ![@lstring new !mAssociatedListTypeName->string .elementTypeNameSuffix [] !mAssociatedListTypeName->location]
+  ] ;
   if [associatedListTypeProxy mTypeKindEnum] != [@typeKindEnum listType] then
     error mAssociatedListTypeName: "the '@" . mAssociatedListTypeName . "' type should be a list" ;
   end if ;
@@ -307,6 +311,7 @@ override method @graphDeclarationAST semanticAnalysis
     ![@graphDeclarationForGeneration new
       !graphTypeProxy
       !associatedListTypeProxy
+      !associatedListElementTypeProxy
       !mInsertModifierList
     ]
     !""

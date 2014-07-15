@@ -1775,14 +1775,14 @@ override method @graphDeclarationAST enterInSemanticContext
     !?instanceMethodMap
   ;
 #--- Associated list type proxy
-  [@unifiedTypeMapProxy makeProxy
-    !?ioSemanticContext->mTypeMap
-    ![@lstring new !mAssociatedListTypeName->string . elementTypeNameSuffix [] !mAssociatedListTypeName->location]
-    ??@unifiedTypeMapProxy associatedListElementTypeProxy
-  ] ;
+#  [@unifiedTypeMapProxy makeProxy
+#    !?ioSemanticContext->mTypeMap
+#    ![@lstring new !mAssociatedListTypeName->string . elementTypeNameSuffix [] !mAssociatedListTypeName->location]
+#    ??@unifiedTypeMapProxy associatedListElementTypeProxy
+#  ] ;
 #--- 
-  var cppDependance := [@unifiedTypeMapProxyList listWithValue !associatedListTypeProxy] ;
-  cppDependance += !associatedListElementTypeProxy ;
+#  var cppDependance := [@unifiedTypeMapProxyList listWithValue !associatedListTypeProxy] ;
+#  cppDependance += !associatedListElementTypeProxy ;
 #--- Enter type in type map
   [!?ioSemanticContext->mTypeMap insertKey
     !mGraphTypeName
@@ -1812,7 +1812,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !"emptyGraph" # Default constructor
     !"graph-" . mGraphTypeName
     ![@unifiedTypeMapProxyList emptyList]
-    !cppDependance
+    ![@unifiedTypeMapProxyList emptyList]
   ] ;
 end method ;
 
