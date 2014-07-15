@@ -28,9 +28,9 @@ semantics semanticGeneration :
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-function generateProcedure
+routine generateProcedure
   ??@string inProcedureName
-  ??@bool inGenerateForGalgas3
+  ?!@stringset ioInclusionSet
   ?@formalParameterListForGeneration inFormalArgumentList
   ??@semanticInstructionListForGeneration inInstructionList
   ??@bool inProcedureIsConst
@@ -38,10 +38,9 @@ function generateProcedure
   ??@bool inGenerateLocationArgs
   ??@bool inGenerateResetTemplateString
   ??@bool inGenerateSyntaxDirectedTranslationString
-  ->@string outGeneratedCode
+  !@string outGeneratedCode
 :
 #--- Build unused variable set
-  var inclusionSet := [@stringset emptySet] ;
   @stringset unusedVariableCppNameSet [emptySet] ;
   if inGenerateSyntaxDirectedTranslationString then
     unusedVariableCppNameSet += !syntaxDirectedTranslationResultVarName [] ;
@@ -60,7 +59,7 @@ function generateProcedure
   [!?routineBody incIndentation !2] ;
   foreach inInstructionList do
     [mInstruction generateInstruction
-      !?inclusionSet
+      !?ioInclusionSet
       !?temporaryVariableIndex
       !?unusedVariableCppNameSet
       !inGenerateSyntaxDirectedTranslationString
@@ -70,14 +69,9 @@ function generateProcedure
   [!?routineBody decIndentation !2] ;
 #--- Generate inclusions
   outGeneratedCode := "" ;
-  if inGenerateForGalgas3 then
-    foreach inFormalArgumentList do
-      [mFormalArgumentType addHeaderFileName !?inclusionSet] ;
-    end foreach ;
-    for (s) in inclusionSet do
-      outGeneratedCode .= "#include \"" . s . ".h\"\n" ;    
-    end for ;
-  end if ;
+  foreach inFormalArgumentList do
+    [mFormalArgumentType addHeaderFileName !?ioInclusionSet] ;
+  end foreach ;
 #--- Generate header
   outGeneratedCode .= "void " . inProcedureName . " (" ;
   const @uint colRef := [outGeneratedCode currentColumn] ;
@@ -143,7 +137,7 @@ function generateProcedure
   end if ;
 #---
   outGeneratedCode .= "}\n\n" ;
-end function ;
+end routine ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1902,19 +1896,22 @@ override reader @routineImplementationForGeneration appendSpecificImplementation
   ??@bool inGenerateForGalgas3
   ->@string outImplementation
 :
+  var ioInclusionSet := [@stringset emptySet] ;
+  generateProcedure
+    !"routine_" . [mRoutineName identifierRepresentation]
+    !?ioInclusionSet
+    !mFormalArgumentList
+    !mRoutineInstructionList
+    !false # Do not generate 'const' qualifier
+    !"C_Compiler"
+    !true # Generate location Argument
+    !false # Do not generate 'resetTemplateString'
+    !false # Do not generate syntaxDirectedTranslationString argument
+    ??@string code
+  ;
   outImplementation := [filewrapper semanticComponentGenerationTemplate.routineImplementation
     !mRoutineName
-    !generateProcedure [
-      !"routine_" . [mRoutineName identifierRepresentation]
-      !inGenerateForGalgas3
-      !mFormalArgumentList
-      !mRoutineInstructionList
-      !false # Do not generate 'const' qualifier
-      !"C_Compiler"
-      !true # Generate location Argument
-      !false # Do not generate 'resetTemplateString'
-      !false # Do not generate syntaxDirectedTranslationString argument
-    ]
+    !code
   ] ; 
 end reader ;
 
@@ -2031,6 +2028,7 @@ override reader @categoryMethodForGeneration appendSpecificImplementation
   ??@bool inGenerateForGalgas3
   ->@string outImplementation
 :
+  var ioInclusionSet := [@stringset emptySet] ;
   if mImplementedAsFunction then
     @formalParameterListForGeneration categoryMethodFormalParameterList := mCategoryMethodFormalParameterList ;
     [!?categoryMethodFormalParameterList insertAtIndex
@@ -2040,20 +2038,22 @@ override reader @categoryMethodForGeneration appendSpecificImplementation
       !"inObject"
       !0
     ] ;
+    generateProcedure
+      !"categoryMethod_" . [mCategoryMethodName identifierRepresentation]
+      !?ioInclusionSet
+      !categoryMethodFormalParameterList
+      !mSemanticInstructionListForGeneration
+      !false # is not const
+      !"C_Compiler"
+      !true # Generate location Argument
+      !false # Do not generate 'resetTemplateString'
+      !false # Do not generate syntaxDirectedTranslationString argument
+      ??@string code
+    ;
     outImplementation := [filewrapper semanticComponentGenerationTemplate.categoryMethodAsFunctionImplementation
       ![mReceiverType key]
       !mCategoryMethodName
-      !generateProcedure [
-        !"categoryMethod_" . [mCategoryMethodName identifierRepresentation]
-        !inGenerateForGalgas3
-        !categoryMethodFormalParameterList
-        !mSemanticInstructionListForGeneration
-        !false # is not const
-        !"C_Compiler"
-        !true # Generate location Argument
-        !false # Do not generate 'resetTemplateString'
-        !false # Do not generate syntaxDirectedTranslationString argument
-      ]
+      !code
     ] ; 
   else
     var inclusionSet := [@stringset emptySet] ;
@@ -2125,6 +2125,7 @@ override reader @categoryModifierForGeneration appendSpecificImplementation
   ??@bool inGenerateForGalgas3
   ->@string outImplementation
 :
+  var ioInclusionSet := [@stringset emptySet] ;
   if mImplementedAsFunction then
     @formalParameterListForGeneration categoryModifierFormalParameterList := mCategoryModifierFormalParameterList ;
     [!?categoryModifierFormalParameterList insertAtIndex
@@ -2134,20 +2135,22 @@ override reader @categoryModifierForGeneration appendSpecificImplementation
       !"ioObject"
       !0
     ] ;
+    generateProcedure
+      !"categoryModifier_" . [mCategoryModifierName identifierRepresentation]
+      !?ioInclusionSet
+      !categoryModifierFormalParameterList
+      !mSemanticInstructionListForGeneration
+      !false # is not const
+      !"C_Compiler"
+      !true # Generate location Argument
+      !false # Do not generate 'resetTemplateString'
+      !false # Do not generate syntaxDirectedTranslationString argument
+      ??@string code
+    ;
     outImplementation := [filewrapper semanticComponentGenerationTemplate.categoryMethodAsFunctionImplementation
       ![mReceiverType key]
       !mCategoryModifierName
-      !generateProcedure [
-        !"categoryModifier_" . [mCategoryModifierName identifierRepresentation]
-        !inGenerateForGalgas3
-        !categoryModifierFormalParameterList
-        !mSemanticInstructionListForGeneration
-        !false # is not const
-        !"C_Compiler"
-        !true # Generate location Argument
-        !false # Do not generate 'resetTemplateString'
-        !false # Do not generate syntaxDirectedTranslationString argument
-      ]
+      !code
     ] ; 
   else
     const @string modifierImplementation := generateCategoryModifier [

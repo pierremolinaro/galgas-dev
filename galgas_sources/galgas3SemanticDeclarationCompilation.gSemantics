@@ -355,7 +355,7 @@ routine generateSemanticDeclarationsGalgas3
   if [@uint errorCount] == 0 then
     switch inGenerationKind
     when fewFiles : 
-       generateManyHeaders
+       generateOneBigHeader
         !inProductDirectory
         !inSemanticDeclarationSortedListForGeneration
         !?ioAllProductFileSet
@@ -548,6 +548,46 @@ routine generateManyHeaders
     !headerInclusionList1 + headerInclusionList2
     ![@stringlist emptyList]
   ] ;
+  ioAllProductFileSet += !"all-declarations.h" ;
+  [@string generateFileWithPattern
+    !inProductDirectory
+    !"all-declarations.h"
+    !"//"
+    !"\n\n" # Defaut user zone1
+    !headerString
+    !"\n\n" # Defaut user zone2
+    !"#endif\n"
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine generateOneBigHeader
+  ??@string inProductDirectory
+  ??@semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
+  ?!@stringset ioAllProductFileSet
+:
+  var headerString := [filewrapper semanticFileGenerationTemplate.semanticFileHeader
+    !"all-declarations"
+    ![@stringlist emptyList]
+    ![@stringlist emptyList]
+  ] ;
+#--- Declaration 1
+  foreach inSemanticDeclarationSortedListForGeneration do
+    if not [mDeclaration isPredefined] then
+      var inclusionSet1 := [@stringset emptySet] ;
+      [mDeclaration appendDeclaration1 !?inclusionSet1 ??@string headerString1] ;
+      headerString .= headerString1 ;
+    end if ;
+  end foreach ;
+#--- Declaration 2
+  foreach inSemanticDeclarationSortedListForGeneration do
+    if not [mDeclaration isPredefined] then
+      var inclusionSet2 := [@stringset emptySet] ;
+      [mDeclaration appendDeclaration2 !true !inProductDirectory !?inclusionSet2 ??@string headerString2] ;
+      headerString .= headerString2 ;
+    end if ;
+  end foreach ;
   ioAllProductFileSet += !"all-declarations.h" ;
   [@string generateFileWithPattern
     !inProductDirectory
