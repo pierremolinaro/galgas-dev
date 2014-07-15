@@ -1341,6 +1341,7 @@ class @classTypeForGeneration extends @semanticTypeForGeneration {
 class @listmapTypeForGeneration extends @semanticTypeForGeneration {
   @unifiedTypeMapProxy mAssociatedListTypeIndex ;
   @typedAttributeList mAssociatedListTypedAttributeList ;
+  @unifiedTypeMapProxy mAssociatedListMapElementTypeIndex ;
 }
 
 #---------------------------------------------------------------------------*

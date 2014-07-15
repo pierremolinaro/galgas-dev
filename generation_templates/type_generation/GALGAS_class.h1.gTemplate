@@ -4,8 +4,10 @@
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-class cPtr_%!TYPE_IDENTIFIER% ;
-
+% foreach INCLUSION_SET do
+%#include "%!key%.h"\n%
+end
+%
 //-----------------------------------------------------------------------------*
 
 class GALGAS_%!TYPE_IDENTIFIER% : public %if SUPER_TYPE_IDENTIFIER == "" then %AC_GALGAS_class% else %GALGAS_%!SUPER_TYPE_IDENTIFIER end% {
@@ -19,7 +21,7 @@ class GALGAS_%!TYPE_IDENTIFIER% : public %if SUPER_TYPE_IDENTIFIER == "" then %A
 %
 end
 %//---
-  public : inline const cPtr_%!TYPE_IDENTIFIER% * ptr (void) const { return (const cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ; }
+  public : inline const class cPtr_%!TYPE_IDENTIFIER% * ptr (void) const { return (const cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ; }
 
 //--------------------------------- Constructor from pointer
   public : GALGAS_%!TYPE_IDENTIFIER% (const cPtr_%!TYPE_IDENTIFIER% * inSourcePtr) ;

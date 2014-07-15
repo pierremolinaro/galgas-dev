@@ -2661,12 +2661,10 @@ override method @classDeclarationAST enterInSemanticContext
   ;
 #--- Generate a "default" constructor ?
   @string defaultConstructorName ;
-  var headerInclusionTypeList := [@unifiedTypeMapProxyList emptyList] ;
   if [superClassIndex isNull] then
     defaultConstructorName := "default" ;
   else
     defaultConstructorName := [superClassIndex mDefaultConstructorName] ;
-    headerInclusionTypeList += !superClassIndex ;
   end if ;
   foreach currentClassTypedAttributeList while defaultConstructorName != "" do
     if ([mAttributeTypeProxy mDefaultConstructorName] == "") | not [mAttributeTypeProxy mIsConcrete] then
@@ -2701,7 +2699,7 @@ override method @classDeclarationAST enterInSemanticContext
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
     !defaultConstructorName # Default constructor
     !"class-" . mClassTypeName
-    !headerInclusionTypeList
+    ![@unifiedTypeMapProxyList emptyList]
     ![@unifiedTypeMapProxyList emptyList]
   ] ;
 end method ;
@@ -3015,7 +3013,8 @@ override method @listmapDeclarationAST enterInSemanticContext
     !"emptyMap" # Default constructor
     !"listmap-" . mListmapTypeName
     ![@unifiedTypeMapProxyList emptyList]
-    ![@unifiedTypeMapProxyList listWithValue !listElementTypeIndex]
+    ![@unifiedTypeMapProxyList emptyList]
+#    ![@unifiedTypeMapProxyList listWithValue !listElementTypeIndex]
   ] ;
 end method ;
 
