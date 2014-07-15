@@ -389,7 +389,8 @@ routine generateOneFile
     if not [mDeclaration isPredefined] then
       var inclusionSet1 := [@stringset emptySet] ;
       [mDeclaration appendDeclaration1 !?inclusionSet1 ??@string headerString1] ;
-      const headerString2 := [mDeclaration appendDeclaration2 !inProductDirectory !true] ;
+      var inclusionSet2 := [@stringset emptySet] ;
+      [mDeclaration appendDeclaration2 !true !inProductDirectory !?inclusionSet2 ??@string headerString2] ;
     #--- Header 1
       var headerString := "#ifndef " . [[mDeclaration implementationCppFileName] identifierRepresentation] . "_1_DEFINED\n" ;
       headerString .= "#define " . [[mDeclaration implementationCppFileName] identifierRepresentation] . "_1_DEFINED\n\n" ;
@@ -417,6 +418,9 @@ routine generateOneFile
       headerString := "#ifndef " . [[mDeclaration implementationCppFileName] identifierRepresentation] . "_DEFINED\n" ;
       headerString .= "#define " . [[mDeclaration implementationCppFileName] identifierRepresentation] . "_DEFINED\n\n" ;
       headerString .= "//-----------------------------------------------------------------------------*\n\n" ;
+      for (s) in inclusionSet2 do
+        headerString .= "#include \"" . s . ".h\"\n" ;
+      end for ;
       headerString .= "#include \"" . [mDeclaration implementationCppFileName] . "-1.h\"\n" ;
       [mDeclaration addHeaderInclusions !?headerString] ;
       headerString .= "\n//-----------------------------------------------------------------------------*\n\n" ;
@@ -560,7 +564,7 @@ routine generateOneFile
       implementationString .= [mDeclaration appendSpecificImplementation !false] ;
       implementationString .= [mDeclaration appendTypeGenericImplementation] ;
       n ++ ;
-      if n == 80 then
+      if n == 100 then
         const fileName := "all-declarations-" . fileIdx . ".cpp" ;
         ioToolProductFileList := [@stringlist listWithValue !fileName] + ioToolProductFileList ;
         ioAllProductFileSet += !fileName ;
@@ -645,7 +649,8 @@ routine generateManyFiles
     if not [mDeclaration isPredefined] then
       var inclusionSet1 := [@stringset emptySet] ;
       [mDeclaration appendDeclaration1 !?inclusionSet1 ??@string headerString1] ;
-      const headerString2 := [mDeclaration appendDeclaration2 !inProductDirectory !true] ;
+      var inclusionSet2 := [@stringset emptySet] ;
+      [mDeclaration appendDeclaration2 !true !inProductDirectory !?inclusionSet2 ??@string headerString2] ;
     #--- Header 1
       var headerString := "#ifndef " . [[mDeclaration implementationCppFileName] identifierRepresentation] . "_1_DEFINED\n" ;
       headerString .= "#define " . [[mDeclaration implementationCppFileName] identifierRepresentation] . "_1_DEFINED\n\n" ;
@@ -673,6 +678,9 @@ routine generateManyFiles
       headerString := "#ifndef " . [[mDeclaration implementationCppFileName] identifierRepresentation] . "_DEFINED\n" ;
       headerString .= "#define " . [[mDeclaration implementationCppFileName] identifierRepresentation] . "_DEFINED\n\n" ;
       headerString .= "//-----------------------------------------------------------------------------*\n\n" ;
+      for (s) in inclusionSet2 do
+        headerString .= "#include \"" . s . ".h\"\n" ;
+      end for ;
       headerString .= "#include \"" . [mDeclaration implementationCppFileName] . "-1.h\"\n" ;
       [mDeclaration addHeaderInclusions !?headerString] ;
       headerString .= "\n//-----------------------------------------------------------------------------*\n\n" ;

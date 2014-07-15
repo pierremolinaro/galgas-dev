@@ -302,7 +302,10 @@ routine compileProgramComponentFromAST
       headerString .= code ;
     end foreach ;
     foreach decoratedDeclarationListForGeneration do
-      headerString .= [mDeclaration appendDeclaration2 !inOutputDirectory !false] ;
+      var inclusionSet2 := [@stringset emptySet] ;
+      [mDeclaration appendDeclaration2 !false !inOutputDirectory !?inclusionSet2 ??@string headerString2] ;
+      headerString .= headerString2 ;
+#      headerString .= [mDeclaration appendDeclaration2 !inOutputDirectory !false] ;
     end foreach ;
     [@string generateFileWithPattern
       !inOutputDirectory
@@ -427,7 +430,13 @@ routine compileProgramComponentGalgas3
       headerString .= code ;
     end foreach ;
     foreach decoratedDeclarationListForGeneration do
-      headerString .= [mDeclaration appendDeclaration2 !inOutputDirectory !true] ;
+      var inclusionSet2 := [@stringset emptySet] ;
+      [mDeclaration appendDeclaration2 !true !inOutputDirectory !?inclusionSet2 ??@string headerString2] ;
+      for (s) in inclusionSet2 do
+        headerString .= "#include \"" . s . ".h\"\n" ;
+      end for ;
+      headerString .= headerString2 ;
+#      headerString .= [mDeclaration appendDeclaration2 !inOutputDirectory !true] ;
     end foreach ;
     ioAllProductFileSet += !programFileName + ".h" ;
     [@string generateFileWithPattern

@@ -369,7 +369,10 @@ routine generatePredefinedTypeFiles ??@string inDirectory :
       end foreach ;
       generatedCode .= [filewrapper predefinedTypeGenerationTemplate.predefinedTypeSeparation] ;
       foreach decoratedDeclarationListForGeneration do
-        generatedCode .= [mDeclaration appendDeclaration2 !inDirectory !false] ;
+        var inclusionSet2 := [@stringset emptySet] ;
+        [mDeclaration appendDeclaration2 !false !inDirectory !?inclusionSet2 ??@string headerString2] ;
+        generatedCode .= headerString2 ;
+#        generatedCode .= [mDeclaration appendDeclaration2 !inDirectory !false] ;
       end foreach ;
       if [@uint errorCount] == 0 then
         [@string generateFileWithPattern

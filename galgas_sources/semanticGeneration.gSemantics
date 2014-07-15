@@ -767,7 +767,6 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
-    ?@stringset INCLUSION_SET
   ;
 
   template mapTypeSpecificImplementation "GALGAS_map.cpp.gTemplate"
@@ -825,7 +824,6 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@typedAttributeList CURRENT_ATTRIBUTE_LIST
     ?@typedAttributeList ALL_ATTRIBUTE_LIST
     ?@bool IS_ABSTRACT
-    ?@stringset INCLUSION_SET
   ;
 
   template classTypeHeader2part2 "GALGAS_class.h2-part2.gTemplate"
@@ -1219,12 +1217,14 @@ end method ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-reader @semanticDeclarationForGeneration appendDeclaration2
-  ??@string unused inOutputDirectory
+method @semanticDeclarationForGeneration appendDeclaration2
   ??@bool unused inGenerateForGalgas3
- -> @string outHeader :
+  ??@string unused inOutputDirectory
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader
+:
   outHeader := "" ;
-end reader ;
+end method ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -1373,23 +1373,22 @@ override method @mapTypeForGeneration appendDeclaration1
 
 #---------------------------------------------------------------------------*
 
-override reader @mapTypeForGeneration appendDeclaration2
+override method @mapTypeForGeneration appendDeclaration2
+  ??@bool unused inGenerateForGalgas3
   ??@string unused inOutputDirectory
-  ??@bool inGenerateForGalgas3
- ->@string outHeader :
-  var inclusionSet := [@stringset emptySet] ;
-  if inGenerateForGalgas3 then
-    for (t ...) in mTypedAttributeList do
-      [t addHeaderFileName1 !?inclusionSet] ;
-    end for ;
-  end if ;
+  ?!@stringset ioInclusionSet
+  !@string outHeader
+:
+  for (t ...) in mTypedAttributeList do
+    [t addHeaderFileName1 !?ioInclusionSet] ;
+  end for ;
+
   outHeader := [filewrapper typeGenerationTemplate.mapTypeHeader2
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
-    !inclusionSet
   ] ;
- end reader ;
+ end method ;
 
 #---------------------------------------------------------------------------*
 
@@ -1451,16 +1450,18 @@ override method @uniqueMapTypeForGeneration appendDeclaration1
 
 #---------------------------------------------------------------------------*
 
-override reader @uniqueMapTypeForGeneration appendDeclaration2
-  ??@string unused inOutputDirectory
+override method @uniqueMapTypeForGeneration appendDeclaration2
   ??@bool unused inGenerateForGalgas3
- ->@string outHeader :
+  ??@string unused inOutputDirectory
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader
+:
   outHeader := [filewrapper typeGenerationTemplate.uniqueMapTypeHeader2
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
   ] ;
- end reader ;
+ end method ;
 
 #---------------------------------------------------------------------------*
 
@@ -1817,16 +1818,16 @@ override method @classTypeForGeneration appendDeclaration1
 
 #---------------------------------------------------------------------------*
 
-override reader @classTypeForGeneration appendDeclaration2
-  ??@string inOutputDirectory
+override method @classTypeForGeneration appendDeclaration2
   ??@bool inGenerateForGalgas3
- ->@string outHeader :
-  var inclusionSet := [@stringset emptySet] ;
-  if inGenerateForGalgas3 then
-    for (t ...) in mTypedAttributeList do
-      [t addHeaderFileName !?inclusionSet] ;
-    end for ;
-  end if ;
+  ??@string inOutputDirectory
+  ?!@stringset ioInclusionSet
+  !@string outHeader
+:
+  for (t ...) in mTypedAttributeList do
+    [t addHeaderFileName !?ioInclusionSet] ;
+  end for ;
+
   if mGenerateHeaderInSeparateFile then
     const part1 := [filewrapper typeGenerationTemplate.classTypeHeader2part1
       ![mTypeProxy key]
@@ -1835,7 +1836,6 @@ override reader @classTypeForGeneration appendDeclaration2
       !mTypedAttributeList
       !mAllTypedAttributeList
       !mIsAbstract
-      !inclusionSet
     ] ;
     const part2 := [filewrapper typeGenerationTemplate.classTypeHeader2part2
       ![mTypeProxy key]
@@ -1864,7 +1864,6 @@ override reader @classTypeForGeneration appendDeclaration2
       !mTypedAttributeList
       !mAllTypedAttributeList
       !mIsAbstract
-      !inclusionSet
     ] ;
     outHeader .= [filewrapper typeGenerationTemplate.classTypeHeader2part2
       ![mTypeProxy key]
@@ -1875,7 +1874,7 @@ override reader @classTypeForGeneration appendDeclaration2
       !mIsAbstract
     ] ;
   end if ;
- end reader ;
+ end method ;
 
 #---------------------------------------------------------------------------*
 
