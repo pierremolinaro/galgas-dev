@@ -1362,6 +1362,7 @@ class @primitiveTypeForGeneration extends @semanticTypeForGeneration {
 #---------------------------------------------------------------------------*
 
 class @listTypeForGeneration extends @semanticTypeForGeneration {
+  @unifiedTypeMapProxy mListElementTypeIndex ;
   @typedAttributeList mTypedAttributeList ;
 }
 

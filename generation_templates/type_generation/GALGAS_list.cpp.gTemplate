@@ -4,6 +4,12 @@
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
+%foreach INCLUSION_SET do
+%#include "%!key%.h"\n%
+end
+%
+//-----------------------------------------------------------------------------*
+
 class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElement {
   public : GALGAS_%!TYPE_IDENTIFIER%_2E_element mObject ;
 
