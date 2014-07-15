@@ -729,6 +729,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
     ?@sortDescriptorListForGeneration SORT_ATTRIBUTE_LIST
+    ?@stringset INCLUSION_SET
   ;
 
 #---------- ENUM
@@ -1128,43 +1129,6 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @mapTypeForGeneration appendDeclaration1
-  ??@bool inGenerateForGalgas3
-  -> @string outHeader
-:
-  var inclusionSet := [@stringset emptySet] ;
-  if inGenerateForGalgas3 then
-    inclusionSet += !"galgas2/AC_GALGAS_map" ;
-    for (t ...) in mTypedAttributeList do
-      [t addHeaderFileName1 !?inclusionSet] ;
-    end for ;
-  end if ;
-  outHeader := [filewrapper typeGenerationTemplate.mapTypeHeader1
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    !mTypedAttributeList
-    !mSearchMethodList
-    !inclusionSet
-  ] ;
-  outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    ![mTypeProxy mIsConcrete]
-    ![mTypeProxy mConstructorMap]
-    ![mTypeProxy mReaderMap]
-    ![mTypeProxy mModifierMap]
-    ![mTypeProxy mInstanceMethodMap]
-    ![mTypeProxy mClassMethodMap]
-    ![mTypeProxy mEnumerationDescriptor]
-    ![mTypeProxy mHandledOperatorFlags]
-    ![mTypeProxy mAddAssignOperatorArguments]
-    ![mTypeProxy mWithAccessorMap]
-    ![mTypeProxy mTypeForEnumeratedElement]
-  ] ;
- end reader ;
-
-#---------------------------------------------------------------------------*
-
 override reader @arrayTypeForGeneration appendDeclaration1
   ??@bool unused inGenerateForGalgas3
   -> @string outHeader
@@ -1351,34 +1315,6 @@ override reader @externTypeDeclarationForGeneration appendDeclaration1
 
 #---------------------------------------------------------------------------*
 
-override reader @sortedListTypeForGeneration appendDeclaration1
-  ??@bool unused inGenerateForGalgas3
-  -> @string outHeader
-:
-  outHeader := [filewrapper typeGenerationTemplate.sortedlistTypeHeader1
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    !mTypedAttributeList
-  ] ;
-  outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    ![mTypeProxy mIsConcrete]
-    ![mTypeProxy mConstructorMap]
-    ![mTypeProxy mReaderMap]
-    ![mTypeProxy mModifierMap]
-    ![mTypeProxy mInstanceMethodMap]
-    ![mTypeProxy mClassMethodMap]
-    ![mTypeProxy mEnumerationDescriptor]
-    ![mTypeProxy mHandledOperatorFlags]
-    ![mTypeProxy mAddAssignOperatorArguments]
-    ![mTypeProxy mWithAccessorMap]
-    ![mTypeProxy mTypeForEnumeratedElement]
-  ] ;
- end reader ;
-
-#---------------------------------------------------------------------------*
-
 override reader @enumTypeForGeneration appendDeclaration1
   ??@bool unused inGenerateForGalgas3
   -> @string outHeader
@@ -1478,26 +1414,6 @@ reader @semanticDeclarationForGeneration appendDeclaration2
  -> @string outHeader :
   outHeader := "" ;
 end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @mapTypeForGeneration appendDeclaration2
-  ??@string unused inOutputDirectory
-  ??@bool inGenerateForGalgas3
- ->@string outHeader :
-  var inclusionSet := [@stringset emptySet] ;
-  if inGenerateForGalgas3 then
-    for (t ...) in mTypedAttributeList do
-      [t addHeaderFileName1 !?inclusionSet] ;
-    end for ;
-  end if ;
-  outHeader := [filewrapper typeGenerationTemplate.mapTypeHeader2
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    !mTypedAttributeList
-    !inclusionSet
-  ] ;
- end reader ;
 
 #---------------------------------------------------------------------------*
 
@@ -1622,7 +1538,65 @@ override reader @listmapTypeForGeneration appendSpecificImplementation
     !mAssociatedListTypedAttributeList
     !inclusionSet
   ] ;
-  log inclusionSet ;
+ end reader ;
+
+#---------------------------------------------------------------------------*
+#! Map
+#---------------------------------------------------------------------------*
+
+override reader @mapTypeForGeneration appendDeclaration1
+  ??@bool inGenerateForGalgas3
+  -> @string outHeader
+:
+  var inclusionSet := [@stringset emptySet] ;
+  if inGenerateForGalgas3 then
+    inclusionSet += !"galgas2/AC_GALGAS_map" ;
+    for (t ...) in mTypedAttributeList do
+      [t addHeaderFileName1 !?inclusionSet] ;
+    end for ;
+  end if ;
+  outHeader := [filewrapper typeGenerationTemplate.mapTypeHeader1
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    !mTypedAttributeList
+    !mSearchMethodList
+    !inclusionSet
+  ] ;
+  outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mTypeProxy mIsConcrete]
+    ![mTypeProxy mConstructorMap]
+    ![mTypeProxy mReaderMap]
+    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mInstanceMethodMap]
+    ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mEnumerationDescriptor]
+    ![mTypeProxy mHandledOperatorFlags]
+    ![mTypeProxy mAddAssignOperatorArguments]
+    ![mTypeProxy mWithAccessorMap]
+    ![mTypeProxy mTypeForEnumeratedElement]
+  ] ;
+ end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @mapTypeForGeneration appendDeclaration2
+  ??@string unused inOutputDirectory
+  ??@bool inGenerateForGalgas3
+ ->@string outHeader :
+  var inclusionSet := [@stringset emptySet] ;
+  if inGenerateForGalgas3 then
+    for (t ...) in mTypedAttributeList do
+      [t addHeaderFileName1 !?inclusionSet] ;
+    end for ;
+  end if ;
+  outHeader := [filewrapper typeGenerationTemplate.mapTypeHeader2
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    !mTypedAttributeList
+    !inclusionSet
+  ] ;
  end reader ;
 
 #---------------------------------------------------------------------------*
@@ -1667,15 +1641,53 @@ override reader @uniqueMapTypeForGeneration appendSpecificImplementation
  end reader ;
 
 #---------------------------------------------------------------------------*
+#! Sorted List
+#---------------------------------------------------------------------------*
+
+override reader @sortedListTypeForGeneration appendDeclaration1
+  ??@bool unused inGenerateForGalgas3
+  -> @string outHeader
+:
+  outHeader := [filewrapper typeGenerationTemplate.sortedlistTypeHeader1
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    !mTypedAttributeList
+  ] ;
+  outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mTypeProxy mIsConcrete]
+    ![mTypeProxy mConstructorMap]
+    ![mTypeProxy mReaderMap]
+    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mInstanceMethodMap]
+    ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mEnumerationDescriptor]
+    ![mTypeProxy mHandledOperatorFlags]
+    ![mTypeProxy mAddAssignOperatorArguments]
+    ![mTypeProxy mWithAccessorMap]
+    ![mTypeProxy mTypeForEnumeratedElement]
+  ] ;
+ end reader ;
+
+#---------------------------------------------------------------------------*
 
 override reader @sortedListTypeForGeneration appendSpecificImplementation
-  ??@bool unused inGenerateForGalgas3
+  ??@bool inGenerateForGalgas3
   ->@string outImplementation
 :
+  var inclusionSet := [@stringset emptySet] ;
+  if inGenerateForGalgas3 then
+    for (t ...) in mTypedAttributeList do
+      [t addHeaderFileName !?inclusionSet] ;
+    end for ;
+    [mListElementTypeIndex addHeaderFileName !?inclusionSet] ;
+  end if ;
   outImplementation := [filewrapper typeGenerationTemplate.sortedlistTypeSpecificImplementation
     ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
     !mSortDescriptorList
+    !inclusionSet
   ] ;
  end reader ;
 
