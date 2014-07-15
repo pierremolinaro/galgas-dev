@@ -1,5 +1,5 @@
-#ifndef %!COMPONENT_NAME%_ENTITIES_DEFINED
-#define %!COMPONENT_NAME%_ENTITIES_DEFINED
+#ifndef %![COMPONENT_NAME identifierRepresentation]%_ENTITIES_DEFINED
+#define %![COMPONENT_NAME identifierRepresentation]%_ENTITIES_DEFINED
 
 //-----------------------------------------------------------------------------*
 

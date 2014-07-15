@@ -243,16 +243,16 @@ routine compileSemanticDeclarationsGalgas3
 #        end if ;
 #      end if ;
 #    end foreach ;
-  #--- AZERTYUIOP.h
+  #--- all-declarations.h
     var headerString := [filewrapper semanticFileGenerationTemplate.semanticFileHeader
-      !"AZERTYUIOP"
+      !"all-declarations"
       !headerInclusionList1 + headerInclusionList2
       ![@stringlist emptyList]
     ] ;
-    ioAllProductFileSet += !"AZERTYUIOP.h" ;
+    ioAllProductFileSet += !"all-declarations.h" ;
     [@string generateFileWithPattern
       !productDirectory
-      !"AZERTYUIOP.h"
+      !"all-declarations.h"
       !"//"
       !"\n\n" # Defaut user zone1
       !headerString
@@ -290,13 +290,13 @@ routine compileSemanticDeclarationsGalgas3
       end if ;
     end foreach ;
   
-  #------------- AZERTYUIOP.cpp
-#    ioToolProductFileList += !"AZERTYUIOP.cpp" ;
+  #------------- all-declarations.cpp
+#    ioToolProductFileList += !"all-declarations.cpp" ;
 #    for * in outSemanticContext->mGrammarMap do
 #      implementationFileIncludeList += !"grammar-" . lkey->string ;
 #    end for ;
 #    @string implementationString := [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
-#      !"AZERTYUIOP"
+#      !"all-declarations"
 #      !implementationFileIncludeList
 #    ] ;
 #    foreach decoratedDeclarationListForGeneration do
@@ -307,7 +307,7 @@ routine compileSemanticDeclarationsGalgas3
 #    end foreach ;
 #    [@string generateFileWithPattern
 #      !productDirectory
-#      !"AZERTYUIOP.cpp"
+#      !"all-declarations.cpp"
 #      !"//"
 #      !"\n\n" # Defaut user zone1
 #      !implementationString

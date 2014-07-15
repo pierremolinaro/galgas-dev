@@ -558,7 +558,7 @@ indexing with galgas3ProjectGrammar
         handCodedSourceDirectorySet += !"../" + directory ;
       end if ;
     elsif mFeatureName->string == "tool-link" then
-      handCodedLinkToolFileList += ![mFeatureValue lastPathComponent] ;
+      handCodedLinkToolFileList += !mFeatureValue->string ;
 #      const directory := [mFeatureValue stringByDeletingLastPathComponent] ;
 #      if directory != "" then
 #        handCodedSourceDirectorySet += !"../" + directory ;
