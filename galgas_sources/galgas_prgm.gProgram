@@ -539,7 +539,8 @@ indexing with galgas3ProjectGrammar
       error mValue: "only \".galgas\" extension is allowed here" ;
     end if ;
   end foreach ;
-  var generationKind := [@generationKind fewFiles] ;
+  const generationKind := [@generationKind manyManyFiles] ;
+#  const generationKind := [@generationKind fewFiles] ;
 #---------------------------------- Hand coded source files
   var handCodedSourceAppFileList := [@stringlist emptyList] ;
   var handCodedSourceToolFileList := [@stringlist emptyList] ;

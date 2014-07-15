@@ -674,6 +674,7 @@ override method @modifierCallInstructionForGeneration generateInstruction
       ioGeneratedCode .= "callCategoryModifier_" . [mModifierName identifierRepresentation]
                       . " ((cPtr_" . [mReceiverType identifierRepresentation] . " *) " . receiverCppName . ".ptr (), " ;
     else
+      ioInclusionSet += !"setter-" . [mReceiverType key]. "-" . mModifierName ;
       ioGeneratedCode .= "categoryModifier_" . [mModifierName identifierRepresentation] . " (" . receiverCppName . ", " ;
     end if ;
   when definedAsMember :
