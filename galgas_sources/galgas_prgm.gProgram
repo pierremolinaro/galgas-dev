@@ -583,6 +583,7 @@ indexing with galgas3ProjectGrammar
   const productDirectory := [inProjectSourceFile stringByDeletingLastPathComponent] . "/build/output" ;
   var appProductFileList := [@stringlist emptyList] ;
   var semanticContext := [@semanticContext default] ;
+  @semanticDeclarationSortedListForGeneration semanticDeclarationSortedListForGeneration ;
   if [@uint errorCount] == 0 then
     compileSemanticDeclarationsGalgas3
       !inProjectSourceFile->string
@@ -591,10 +592,11 @@ indexing with galgas3ProjectGrammar
       !declarationAST->mOptionComponentList
       !declarationAST->mLexiqueComponentList
       !declarationAST->mGrammarComponentList
-      !?toolCppFileList
-      !?allProductFileSet
       ?semanticContext
+      ?semanticDeclarationSortedListForGeneration
     ;
+  else
+    semanticDeclarationSortedListForGeneration := [@semanticDeclarationSortedListForGeneration emptySortedList] ;
   end if ;
 #---------------------------------- Compile option declarations
   if [@uint errorCount] == 0 then
@@ -675,6 +677,13 @@ indexing with galgas3ProjectGrammar
       ;
     end for ;
   end if ;
+#---------------------------------- Generate semantic files
+  generateSemanticDeclarationsGalgas3
+    !productDirectory
+    !semanticDeclarationSortedListForGeneration
+    !?toolCppFileList
+    !?allProductFileSet
+  ;
 #---------------------------------- Remove useless files
   var allActualFileSet := [@stringset emptySet] ;
   foreach [productDirectory regularFiles !false] do

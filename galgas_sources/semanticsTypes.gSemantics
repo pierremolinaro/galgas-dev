@@ -281,6 +281,12 @@ map @attributeMap {
 }
 
 #---------------------------------------------------------------------------*
+
+enum @headerKind {
+  noHeader, oneHeader, twoHeaders
+}
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 #  U N I F I E D    T Y P E    M A P                                        *
 #                                                                           *
@@ -312,8 +318,7 @@ uniquemap @unifiedTypeMap {
   @unifiedTypeMapProxy mTypeForEnumeratedElement ;
   @string mDefaultConstructorName ; # Used in [@xxx default] (empty string if no default constructor)
   @string mHeaderFileName feature nogetter ; # Name of C++ header file that contains type declaration
-  @unifiedTypeMapProxyList mTypesToIncludeInHeaderFile ;
-  @unifiedTypeMapProxyList mTypesToIncludeInCppFile ;
+  @headerKind mHeaderKind ;
 
   insert insertKey error message "the '@%K' type has been already declared in %L" ;
   search searchKey error message "the '@%K' type is not declared" ;

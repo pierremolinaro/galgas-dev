@@ -745,26 +745,9 @@ routine performGalgas3ProjectGlobalCheckings
   ??@semanticDeclarationListAST inSemanticDeclarationList
   ??@string inProjectSourceFilePath
 :
-#  @semanticDeclarationListAST semanticDeclarationList [emptyList] ;
-##------ Add predefined types to semantics declarations
-#  appendPredefinedTypesASTs !?semanticDeclarationList ;
-##--- Build all declaration list
-#  foreach [inParsedComponentStruct mParsedSemanticsComponentMap] do
-#    semanticDeclarationList .= [mSemanticComponentRoot mSemanticDeclarationList] ;
-#  end foreach ;
-#  foreach [inParsedComponentStruct mParsedSyntaxComponentMap] do
-#    semanticDeclarationList .= [mSyntaxComponentRoot mSemanticDeclarationList] ;
-#  end foreach ;
-#  foreach [inParsedComponentStruct mParsedProgramComponentMap] do
-#    semanticDeclarationList .= [mProgramComponentAST mSemanticDeclarationList] ;
-#  end foreach ;
-##------ Generate declarations
-#  buildSemanticContext
-#    !""
-#    !semanticDeclarationList
-#    !inEndOfSourceFile
-#    ??@semanticContext semanticContext
-#  ;
+  if [option .verbose_output value] then
+    message "*** Perform global checkings\n" ;
+  end if ;
 #------ Build descendant type list map
 # For every type, a list of its directed descendants is associated
   @descendantClassListMap descendantClassListMap [emptyMap] ;

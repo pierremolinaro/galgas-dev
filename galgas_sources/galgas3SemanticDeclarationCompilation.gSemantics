@@ -31,9 +31,8 @@ routine compileSemanticDeclarationsGalgas3
   ??@galgas3OptionComponentListAST inOptionComponentList
   ??@galgas3LexiqueComponentListAST inLexiqueComponentList
   ??@galgas3GrammarComponentListAST inGrammarComponentList
-  ?!@stringlist ioToolProductFileList
-  ?!@stringset ioAllProductFileSet
   !@semanticContext outSemanticContext
+  !@semanticDeclarationSortedListForGeneration outSemanticDeclarationSortedListForGeneration
 :
   message "*** Building context\n" ;
 #------ Add predefined types to semantics declarations
@@ -47,6 +46,10 @@ routine compileSemanticDeclarationsGalgas3
     ?outSemanticContext
     ??@semanticDeclarationListAST sortedSemanticDeclarationListAST
   ;
+#---
+  if [option .verbose_output value] then
+    message "*** Semantic analysis\n" ;
+  end if ;
 #------ Build option component map for analysis
   var implementationFileIncludeList := [@stringlist emptyList] ;
   buildGalgas3OptionComponentMapForSemanticAnalysis
@@ -74,48 +77,54 @@ routine compileSemanticDeclarationsGalgas3
     !inGrammarComponentList
     !?outSemanticContext
   ;
-  
 #------ Semantic Analysis
-  message "*** Semantic analysis\n" ;
 #------ Check there is no undefined types
   foreach [outSemanticContext->mTypeMap unsolvedProxyList] do
     error mValue : "the '" . mValue . "' type is undefined" ;
   end foreach ;
 #---
-  var decoratedDeclarationListForGeneration := [@semanticDeclarationSortedListForGeneration emptySortedList] ;
+  outSemanticDeclarationSortedListForGeneration := [@semanticDeclarationSortedListForGeneration emptySortedList] ;
   if [@uint errorCount] == 0 then
     const @predefinedTypes predefinedTypes := buildPredefinedTypes [!outSemanticContext] ;
     foreach sortedSemanticDeclarationListAST do
       [mSemanticDeclaration semanticAnalysis
         !outSemanticContext
         !predefinedTypes
-        !?decoratedDeclarationListForGeneration
+        !?outSemanticDeclarationSortedListForGeneration
       ] ;
     end foreach ;
   end if ;
 #---------------------------------- Perform global checkings
   if [@uint errorCount] == 0 then
-    if [option .verbose_output value] then
-      message "*** Perform global checkings\n" ;
-    end if ;
     performGalgas3ProjectGlobalCheckings
       !outSemanticContext
       !inSemanticDeclarationList
       !inProjectSourceFile
     ;
   end if ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine generateSemanticDeclarationsGalgas3
+  ??@string inProductDirectory
+  ??@semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
+  ?!@stringlist ioToolProductFileList
+  ?!@stringset ioAllProductFileSet
+:
 #--- Generate type files
-  message "*** Generating files\n" ;
-  const productDirectory := [inProjectSourceFile stringByDeletingLastPathComponent] . "/build/output" ;
+  if [option .verbose_output value] then
+    message "*** Generating files\n" ;
+  end if ;
 #------ Generate Header Files
   if [@uint errorCount] == 0 then
   #--- Header files
     var headerInclusionList1 := [@stringlist emptyList] ;
     var headerInclusionList2 := [@stringlist emptyList] ;
-    foreach decoratedDeclarationListForGeneration do
+    foreach inSemanticDeclarationSortedListForGeneration do
       if not [mDeclaration isPredefined] then
         const headerString1 := [mDeclaration appendDeclaration1 !true] ;
-        const headerString2 := [mDeclaration appendDeclaration2 !productDirectory !true] ;
+        const headerString2 := [mDeclaration appendDeclaration2 !inProductDirectory !true] ;
       #--- Header 1
         var headerString := "#ifndef " . [[mDeclaration implementationCppFileName] identifierRepresentation] . "_1_DEFINED\n" ;
         headerString .= "#define " . [[mDeclaration implementationCppFileName] identifierRepresentation] . "_1_DEFINED\n\n" ;
@@ -127,7 +136,7 @@ routine compileSemanticDeclarationsGalgas3
         headerString .= "#endif\n\n" ;
         ioAllProductFileSet += ![mDeclaration implementationCppFileName] . "-1.h" ;
         [@string generateFileWithPattern
-          !productDirectory
+          !inProductDirectory
           ![mDeclaration implementationCppFileName] . "-1.h"
           !"//"
           !"\n\n" # Defaut user zone1
@@ -147,7 +156,7 @@ routine compileSemanticDeclarationsGalgas3
         headerString .= "#endif\n\n" ;
         ioAllProductFileSet += ![mDeclaration implementationCppFileName] . ".h" ;
         [@string generateFileWithPattern
-          !productDirectory
+          !inProductDirectory
           ![mDeclaration implementationCppFileName] . ".h"
           !"//"
           !"\n\n" # Defaut user zone1
@@ -161,7 +170,7 @@ routine compileSemanticDeclarationsGalgas3
 #    foreach decoratedDeclarationListForGeneration do
 #      if not [mDeclaration isPredefined] then
 #        const headerString1 := [mDeclaration appendDeclaration1 !true] ;
-#        const headerString2 := [mDeclaration appendDeclaration2 !productDirectory !true] ;
+#        const headerString2 := [mDeclaration appendDeclaration2 !inProductDirectory !true] ;
 #        const hasHeader := (headerString1 != "") | (headerString2 != "") ;
 #        if hasHeader != [mDeclaration hasCppHeaderFile] then
 #          log mDeclaration ;
@@ -176,7 +185,7 @@ routine compileSemanticDeclarationsGalgas3
 #          headerString .= headerString1 ;
 #          headerString .= "#endif\n\n" ;
 #          [@string generateFileWithPattern
-#            !productDirectory
+#            !inProductDirectory
 #            ![mDeclaration implementationCppFileName] . ".h"
 #            !"//"
 #            !"\n\n" # Defaut user zone1
@@ -195,7 +204,7 @@ routine compileSemanticDeclarationsGalgas3
 #          headerString .= headerString2 ;
 #          headerString .= "#endif\n\n" ;
 #          [@string generateFileWithPattern
-#            !productDirectory
+#            !inProductDirectory
 #            ![mDeclaration implementationCppFileName] . ".h"
 #            !"//"
 #            !"\n\n" # Defaut user zone1
@@ -213,7 +222,7 @@ routine compileSemanticDeclarationsGalgas3
 #          headerString .= "#include \"galgas2/predefined-types.h\"\n\n" ;
 #          headerString .= "//-----------------------------------------------------------------------------*\n\n" ;
 #          [@string generateFileWithPattern
-#            !productDirectory
+#            !inProductDirectory
 #            ![mDeclaration implementationCppFileName] . "-1.h"
 #            !"//"
 #            !"\n\n" # Defaut user zone1
@@ -230,7 +239,7 @@ routine compileSemanticDeclarationsGalgas3
 #          headerString .= headerString2 ;
 #          headerString .= "#endif\n\n" ;
 #          [@string generateFileWithPattern
-#            !productDirectory
+#            !inProductDirectory
 #            ![mDeclaration implementationCppFileName] . ".h"
 #            !"//"
 #            !"\n\n" # Defaut user zone1
@@ -251,7 +260,7 @@ routine compileSemanticDeclarationsGalgas3
     ] ;
     ioAllProductFileSet += !"all-declarations.h" ;
     [@string generateFileWithPattern
-      !productDirectory
+      !inProductDirectory
       !"all-declarations.h"
       !"//"
       !"\n\n" # Defaut user zone1
@@ -263,13 +272,12 @@ routine compileSemanticDeclarationsGalgas3
 #---------------------------------- Generate Implementation Files
   if [@uint errorCount] == 0 then
   #-------------
-    foreach decoratedDeclarationListForGeneration do
+    foreach inSemanticDeclarationSortedListForGeneration do
       if not [mDeclaration isPredefined] then
         var implementationFileIncludes := [@stringlist emptyList] ;
         if [mDeclaration hasCppHeaderFile] then
           implementationFileIncludes += ![mDeclaration implementationCppFileName] ;
         end if ;
-        [mDeclaration addInclusionForCPPFile !?implementationFileIncludes] ;
         var implementationString := [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
           ![mDeclaration implementationCppFileName]
           !implementationFileIncludes
@@ -278,7 +286,7 @@ routine compileSemanticDeclarationsGalgas3
         implementationString .= [mDeclaration appendTypeGenericImplementation] ;
         ioAllProductFileSet += ![mDeclaration implementationCppFileName] . ".cpp" ;
         [@string generateFileWithPattern
-          !productDirectory
+          !inProductDirectory
           ![mDeclaration implementationCppFileName] . ".cpp"
           !"//"
           !"\n\n" # Defaut user zone1
@@ -306,7 +314,7 @@ routine compileSemanticDeclarationsGalgas3
 #      end if ;
 #    end foreach ;
 #    [@string generateFileWithPattern
-#      !productDirectory
+#      !inProductDirectory
 #      !"all-declarations.cpp"
 #      !"//"
 #      !"\n\n" # Defaut user zone1
