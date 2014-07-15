@@ -325,7 +325,10 @@ routine compileProgramComponentFromAST
     ] ;
     foreach decoratedDeclarationListForGeneration do
       implementationString .= [mDeclaration appendTypeGenericImplementation] ;
-      implementationString .= [mDeclaration appendSpecificImplementation !false] ;
+      var unusedInclusionSet := [@stringset emptySet] ;
+      [mDeclaration appendSpecificImplementation !?unusedInclusionSet ??@string code] ;
+      implementationString += code ;
+#      implementationString .= [mDeclaration appendSpecificImplementation !false] ;
     end foreach ;
     [@string generateFileWithPattern
       !inOutputDirectory
@@ -472,7 +475,10 @@ routine compileProgramComponentGalgas3
     ] ;
     foreach decoratedDeclarationListForGeneration do
       implementationString .= [mDeclaration appendTypeGenericImplementation] ;
-      implementationString .= [mDeclaration appendSpecificImplementation !true] ;
+      var unusedInclusionSet := [@stringset emptySet] ;
+      [mDeclaration appendSpecificImplementation !?unusedInclusionSet ??@string code] ;
+      implementationString += code ;
+#      implementationString .= [mDeclaration appendSpecificImplementation !true] ;
     end foreach ;
     ioAllProductFileSet += !programFileName + ".cpp" ;
     [@string generateFileWithPattern

@@ -130,10 +130,10 @@ filewrapper syntaxFileGenerationTemplate in "../generation_templates/syntax_gene
 
   template syntaxFileHeaderGalgas3 "syntax-file-galgas3.h.gTemplate"
     ?@string COMPONENT_NAME
+    ?@stringset INCLUSION_SET
   ;
 
   template syntaxFileImplementationGalgas3 "syntax-file-galgas3.cpp.gTemplate"
-    ?@string COMPONENT_NAME
     ?@stringset INCLUSION_SET
   ;
 

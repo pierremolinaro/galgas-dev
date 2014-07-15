@@ -172,7 +172,10 @@ routine compileSyntaxComponentFromAST
         ] ;
         foreach decoratedDeclarationListForGeneration do
           implementationString .= [mDeclaration appendTypeGenericImplementation] ;
-          implementationString .= [mDeclaration appendSpecificImplementation !false] ;
+          var unusedInclusionSet := [@stringset emptySet] ;
+          [mDeclaration appendSpecificImplementation !?unusedInclusionSet ??@string code] ;
+          implementationString += code ;
+#          implementationString .= [mDeclaration appendSpecificImplementation !false] ;
         end foreach ;
         const @string lexiqueCppName := "C_Lexique_"
         . [[[[inSyntaxComponentRoot mImportedLexiqueFilePath] lastPathComponent] stringByDeletingPathExtension] identifierRepresentation] ;
@@ -355,48 +358,44 @@ routine generateSyntaxComponentGalgas3
   const componentName := inSyntaxStructForGeneration->mSyntaxComponentRoot->mSyntaxComponentName->string ;
   const lexiqueName := inSyntaxStructForGeneration->mSyntaxComponentRoot->mImportedLexiqueFilePath->string ;
 #------ Generate Header File
-  var headerString := [filewrapper syntaxFileGenerationTemplate.syntaxFileHeaderGalgas3
-    !componentName
-  ] ;
-  var inclusionSet := [@stringset emptySet] ;
-  [inSyntaxStructForGeneration->mSyntaxGeneration appendDeclaration1 !?inclusionSet ??@string code] ;
-#  if not inUseOneBigHeader then
-#    for (s) in inclusionSet do
-#      headerString .= "#include \"" . s . ".h\"\n" ;
-#    end for ;
-#  end if ;
-  headerString .= code ;
-  var inclusionSet2 := [@stringset emptySet] ;
-  [inSyntaxStructForGeneration->mSyntaxGeneration appendDeclaration2 !true !inOutputDirectory !?inclusionSet2 ??@string headerString2] ;
-  if not inUseOneBigHeader then
-    for (s) in inclusionSet2 do
-      headerString .= "#include \"" . s . ".h\"\n" ;
-    end for ;
-  end if ;
+  var headerInclusionSet := [@stringset emptySet] ;
+  [inSyntaxStructForGeneration->mSyntaxGeneration appendDeclaration1 !?headerInclusionSet ?@string headerString] ;
+  [inSyntaxStructForGeneration->mSyntaxGeneration appendDeclaration2 !true !inOutputDirectory !?headerInclusionSet ??@string headerString2] ;
   headerString .= headerString2 ;
+  if inUseOneBigHeader then
+    headerInclusionSet := [@stringset setWithString !"all-declarations"] ;
+  end if ;
+  headerInclusionSet += !"syntax-" + componentName ;
+  headerInclusionSet += !"lexique-" + lexiqueName ;
+#  for * in inSemanticContext->mGrammarMap do
+#    headerInclusionSet += !"grammar-" . lkey->string ;
+#  end for ;
+#  for * in inSemanticContext->mOptionComponentMapForSemanticAnalysis do
+#    if not mIsPredefined then
+#      headerInclusionSet += !"option-" . lkey->string ;
+#    end if ;
+#  end for ;
+  const header := [filewrapper syntaxFileGenerationTemplate.syntaxFileHeaderGalgas3
+    !componentName
+    !headerInclusionSet
+  ] ;
   ioAllProductFileSet += !"syntax-" . componentName . ".h" ;
   [@string generateFileWithPattern
     !inOutputDirectory
     !"syntax-" . componentName . ".h"
     !"//"
     !"\n\n" # Defaut user zone1
-    !headerString
+    !header + headerString
     !"\n\n" # Defaut user zone2
     !"#endif\n"
   ] ;
-#------ Generate Implementation File
-#  for * in inSemanticContext->mOptionComponentMapForSemanticAnalysis do
-#    if not mIsPredefined then
-#      implementationIncludeList += !"option-" . lkey->string ;
-#    end if ;
-#  end for ;
+#---------------------------------- Generate implementation file
   const lexiqueCppName := "C_Lexique_" . [inSyntaxStructForGeneration->mSyntaxComponentRoot->mImportedLexiqueFilePath  identifierRepresentation] ;
-#  @string implementationString := [filewrapper syntaxFileGenerationTemplate.syntaxFileImplementationGalgas3
-#    !componentName
-#    !
-#  ] ;
   var implementationString := [inSyntaxStructForGeneration->mSyntaxGeneration appendTypeGenericImplementation] ;
-  implementationString .= [inSyntaxStructForGeneration->mSyntaxGeneration appendSpecificImplementation !false] ;
+  var cppInclusionSet := [@stringset emptySet] ;
+  [inSyntaxStructForGeneration->mSyntaxGeneration appendSpecificImplementation !?cppInclusionSet ??@string code] ;
+  implementationString += code ;
+#  implementationString .= [inSyntaxStructForGeneration->mSyntaxGeneration appendSpecificImplementation !false] ;
   foreach [inSyntaxStructForGeneration->mSyntaxGeneration mRuleDeclarationList] do
   #--- Generate rule label implementation
     foreach mLabelImplementationList do
@@ -408,7 +407,7 @@ routine generateSyntaxComponentGalgas3
       implementationString .= "//---------------------------------------------------------------------------*\n\n" ;
       generateProcedure
         !ruleName
-        !?inclusionSet
+        !?cppInclusionSet
         !mSignatureForGeneration
         !mInstructionListForGeneration
         !false
@@ -430,7 +429,7 @@ routine generateSyntaxComponentGalgas3
     implementationString .= "//---------------------------------------------------------------------------*\n\n" ;
     generateProcedure
       !ruleName
-      !?inclusionSet
+      !?cppInclusionSet
       ![@formalParameterListForGeneration emptyList]
       !syntaxSignatureOfInstructionList [!"parse" !instructionList]
       !false
@@ -452,7 +451,7 @@ routine generateSyntaxComponentGalgas3
       implementationString .= "//---------------------------------------------------------------------------*\n\n" ;
       generateProcedure
         !ruleName
-        !?inclusionSet
+        !?cppInclusionSet
         ![@formalParameterListForGeneration emptyList]
         !syntaxSignatureOfInstructionList [!"indexing" !instructionList]
         !false
@@ -467,22 +466,19 @@ routine generateSyntaxComponentGalgas3
   end foreach ;
 #--- Generate headers
   if inUseOneBigHeader then
-    inclusionSet := [@stringset setWithString !"all-declarations"] ;
+    cppInclusionSet := [@stringset setWithString !"syntax-" + componentName] ;
   end if ;
-  inclusionSet += !"lexique-" + lexiqueName ;
   for * in inSemanticContext->mGrammarMap do
-    inclusionSet += !"grammar-" . lkey->string ;
+    cppInclusionSet += !"grammar-" . lkey->string ;
   end for ;
   for * in inSemanticContext->mOptionComponentMapForSemanticAnalysis do
     if not mIsPredefined then
-      inclusionSet += !"option-" . lkey->string ;
+      cppInclusionSet += !"option-" . lkey->string ;
     end if ;
   end for ;
-  const header := [filewrapper syntaxFileGenerationTemplate.syntaxFileImplementationGalgas3
-    !componentName
-    !inclusionSet
+  const headerOfCppFile := [filewrapper syntaxFileGenerationTemplate.syntaxFileImplementationGalgas3
+    !cppInclusionSet
   ] ;
-#--- Generate file
   ioToolProductFileList += !"syntax-" . componentName . ".cpp" ;
   ioAllProductFileSet += !"syntax-" . componentName . ".cpp" ;
   [@string generateFileWithPattern
@@ -490,7 +486,7 @@ routine generateSyntaxComponentGalgas3
     !"syntax-" . componentName . ".cpp"
     !"//"
     !"\n\n" # Defaut user zone1
-    !header + implementationString
+    !headerOfCppFile + implementationString
     !"\n\n" # Defaut user zone2
     !"\n"
   ] ;

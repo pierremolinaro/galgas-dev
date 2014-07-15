@@ -1,11 +1,5 @@
 //-----------------------------------------------------------------------------*
 
-%foreach INCLUSION_SET do
-%#include "%!key%.h"\n%
-end
-%
-//-----------------------------------------------------------------------------*
-
 cMapElement_%!TYPE_IDENTIFIER%::cMapElement_%!TYPE_IDENTIFIER% (%?^%const GALGAS_lstring & inKey%
   foreach ATTRIBUTE_LIST
     do %,\n%!^%const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]

@@ -5,3 +5,9 @@
 
 #include <stdint.h>
 
+//-----------------------------------------------------------------------------*
+
+% foreach INCLUSION_SET do
+    %#include "%!key%.h"\n%
+  end%
+

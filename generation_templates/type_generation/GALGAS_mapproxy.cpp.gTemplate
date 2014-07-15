@@ -1,11 +1,5 @@
 //-----------------------------------------------------------------------------*
 
-%foreach INCLUSION_SET do
-%#include "%!key%.h"\n%
-end
-%
-//-----------------------------------------------------------------------------*
-
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
 AC_GALGAS_uniqueMapProxy () {
 }
