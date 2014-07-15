@@ -559,10 +559,6 @@ indexing with galgas3ProjectGrammar
       end if ;
     elsif mFeatureName->string == "tool-link" then
       handCodedLinkToolFileList += !mFeatureValue->string ;
-#      const directory := [mFeatureValue stringByDeletingLastPathComponent] ;
-#      if directory != "" then
-#        handCodedSourceDirectorySet += !"../" + directory ;
-#      end if ;
     end if ;
   end for ;
 #---------------------------------- Display result
@@ -665,6 +661,12 @@ indexing with galgas3ProjectGrammar
       !?allProductFileSet
     ;
   end if ;
+#---------------------------------- File generation
+  if 0 == [@uint errorCount] then
+    if [option .verbose_output value] then
+      message "*** Generating files\n" ;
+    end if ;
+  end if ;
 #---------------------------------- Generate syntax components
   if 0 == [@uint errorCount] then
     for s in syntaxListForGeneration do
@@ -680,6 +682,8 @@ indexing with galgas3ProjectGrammar
 #---------------------------------- Generate semantic files
   generateSemanticDeclarationsGalgas3
     !productDirectory
+    ![@generationKind oneFile]
+    !semanticContext
     !semanticDeclarationSortedListForGeneration
     !?toolCppFileList
     !?allProductFileSet

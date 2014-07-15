@@ -175,7 +175,6 @@ struct @semanticContext {
   @grammarMap mGrammarMap ;
   @optionComponentMapForSemanticAnalysis mOptionComponentMapForSemanticAnalysis ;
   @lexiqueComponentMapForSemanticAnalysis mLexiqueComponentMapForSemanticAnalysis ;
-  @optionMapForSemanticAnalysis mOptionMap ;
 }
 
 #---------------------------------------------------------------------------*
@@ -3659,7 +3658,6 @@ routine buildSemanticContext
         ![@grammarMap emptyMap]
         ![@optionComponentMapForSemanticAnalysis emptyMap]
         ![@lexiqueComponentMapForSemanticAnalysis emptyMap]
-        ![@optionMapForSemanticAnalysis emptyMap]
       ] ;
     #--- Loop throught all declarations
       foreach sortedSemanticDeclarationListAST do

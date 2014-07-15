@@ -399,7 +399,6 @@ routine compileSemanticsComponentAST
     !optionComponentFileNameList
     !?ioParsedComponentStruct
     !?semanticContext->mOptionComponentMapForSemanticAnalysis
-#    !?semanticContext->mOptionMap
   ;
 #--- Build lexique component map for semantic analysis
   buildLexiqueComponentMapForSemanticAnalysis
