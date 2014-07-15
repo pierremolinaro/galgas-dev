@@ -270,7 +270,7 @@ routine compileSemanticDeclarationsGalgas3
           implementationFileIncludes += ![mDeclaration implementationCppFileName] ;
         end if ;
         [mDeclaration addInclusionForCPPFile !?implementationFileIncludes] ;
-        @string implementationString := [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
+        var implementationString := [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
           ![mDeclaration implementationCppFileName]
           !implementationFileIncludes
         ] ;

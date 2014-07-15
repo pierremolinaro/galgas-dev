@@ -314,7 +314,6 @@ uniquemap @unifiedTypeMap {
   @string mHeaderFileName feature nogetter ; # Name of C++ header file that contains type declaration
   @unifiedTypeMapProxyList mTypesToIncludeInHeaderFile ;
   @unifiedTypeMapProxyList mTypesToIncludeInCppFile ;
-#  @stringlist mSpecificHeadersForCppFile ;
 
   insert insertKey error message "the '@%K' type has been already declared in %L" ;
   search searchKey error message "the '@%K' type is not declared" ;

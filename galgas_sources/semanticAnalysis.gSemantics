@@ -388,6 +388,8 @@ override method @arrayDeclarationAST semanticAnalysis
 end method ;
 
 #---------------------------------------------------------------------------*
+#! Listmap
+#---------------------------------------------------------------------------*
 
 override method @listmapDeclarationAST semanticAnalysis
   ??@semanticContext inSemanticContext
@@ -395,21 +397,31 @@ override method @listmapDeclarationAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
 #--- Check associated list is actually a list
-  @typeKindEnum typeKindEnum ;
-  @typedAttributeList listTypeAttributeList ;
-  [inSemanticContext->mTypeMap searchKey !mAssociatedListTypeName ?3* ?typeKindEnum ?listTypeAttributeList ?22*] ;
+  [inSemanticContext->mTypeMap searchKey
+    !mAssociatedListTypeName
+    ?3*
+    ??@typeKindEnum typeKindEnum
+    ??@typedAttributeList listTypeAttributeList
+    ?22*
+  ] ;
+#---
+  if typeKindEnum != [@typeKindEnum listType] then
+    error mAssociatedListTypeName : "associated type should be a list type" ;
+  end if ;
 #---
   ioSemanticDeclarationListForGeneration +=
-#    !mIsPredefined
    ![@listmapTypeForGeneration new
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mListmapTypeName]
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAssociatedListTypeName]
       !listTypeAttributeList
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !mListmapTypeName->string . elementTypeNameSuffix [] !mListmapTypeName->location]]
     ]
     !""
   ;
 end method ;
 
+#---------------------------------------------------------------------------*
+#! Map
 #---------------------------------------------------------------------------*
 
 map @insertMethodMap {
