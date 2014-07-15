@@ -539,6 +539,7 @@ indexing with galgas3ProjectGrammar
       error mValue: "only \".galgas\" extension is allowed here" ;
     end if ;
   end foreach ;
+  var generationKind := [@generationKind fewFiles] ;
 #---------------------------------- Hand coded source files
   var handCodedSourceAppFileList := [@stringlist emptyList] ;
   var handCodedSourceToolFileList := [@stringlist emptyList] ;
@@ -641,6 +642,7 @@ indexing with galgas3ProjectGrammar
     for component in declarationAST->mGrammarComponentList do
       compileGrammarComponentGalgas3
         !productDirectory
+        !generationKind == [@generationKind fewFiles]
         !component
         !parsedSyntaxComponentMap
         !semanticContext
@@ -653,6 +655,7 @@ indexing with galgas3ProjectGrammar
   if [@uint errorCount] == 0 then
     compileProgramComponentGalgas3
       !productDirectory
+#      !generationKind
       !declarationAST->mPrologueDeclarationList
       !declarationAST->mSourceRuleList
       !declarationAST->mEpilogueDeclarationList
@@ -672,6 +675,7 @@ indexing with galgas3ProjectGrammar
     for s in syntaxListForGeneration do
       generateSyntaxComponentGalgas3
         !productDirectory
+#        !generationKind
         !s
         !semanticContext
         !?toolCppFileList
@@ -682,7 +686,7 @@ indexing with galgas3ProjectGrammar
 #---------------------------------- Generate semantic files
   generateSemanticDeclarationsGalgas3
     !productDirectory
-    ![@generationKind someFiles]
+    !generationKind
     !semanticContext
     !semanticDeclarationSortedListForGeneration
     !?toolCppFileList

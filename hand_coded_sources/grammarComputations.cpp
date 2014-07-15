@@ -290,6 +290,7 @@ static const char k_default_style [] = {
 static void
 analyzeGrammar (C_Compiler * inCompiler,
                 const bool inCompileForGalgas3,
+                const TC_UniqueArray <C_String> & inImplementationFileHeaderList,
                 const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
                 const GALGAS_lstring & inTargetFileName,
                 const GALGAS_lstring & inGrammarClass,
@@ -557,6 +558,7 @@ analyzeGrammar (C_Compiler * inCompiler,
     bool ok = false ;
     LL1_computations (inCompiler,
                       inCompileForGalgas3,
+                      inImplementationFileHeaderList,
                       pureBNFproductions,
                       HTMLfile,
                       vocabulary,
@@ -583,6 +585,7 @@ analyzeGrammar (C_Compiler * inCompiler,
     bool ok = false ;
     SLR_computations (inCompiler,
                       inCompileForGalgas3,
+                      inImplementationFileHeaderList,
                       pureBNFproductions,
                       vocabulary,
                       HTMLfile,
@@ -610,6 +613,7 @@ analyzeGrammar (C_Compiler * inCompiler,
     bool ok = false ;
     LR1_computations (inCompiler,
                       inCompileForGalgas3,
+                      inImplementationFileHeaderList,
                       pureBNFproductions,
                       vocabulary,
                       HTMLfile,
@@ -685,7 +689,8 @@ analyzeGrammar (C_Compiler * inCompiler,
 //-----------------------------------------------------------------------------*
 
 void
-routine_grammarAnalysisAndGeneration (const GALGAS_bool inCompileForGalgas3,
+routine_grammarAnalysisAndGeneration (const GALGAS_stringset inImplementationFileHeaderSet,
+                                      const GALGAS_bool inCompileForGalgas3,
                                       const GALGAS_lstring inTargetFileName,
                                       const GALGAS_lstring inGrammarClass,
                                       const GALGAS_uint inOriginalGrammarStartSymbol,
@@ -710,9 +715,18 @@ routine_grammarAnalysisAndGeneration (const GALGAS_bool inCompileForGalgas3,
     #ifdef LOG_GRAMMAR_COMPUTATIONS
       printf ("MARK AND SWEEP BDD NODES DONE\n") ; fflush (stdout) ;
     #endif
-    const bool compileForGalgas3 = inCompileForGalgas3.boolValue() ;
+
+    TC_UniqueArray <C_String> implementationFileHeaderList ;
+    cEnumerator_stringset enumerator_30239 (inImplementationFileHeaderSet, kEnumeration_up) ;
+    while (enumerator_30239.hasCurrentObject ()) {
+      implementationFileHeaderList.addObject (enumerator_30239.current_key (HERE).stringValue()) ;
+      enumerator_30239.gotoNextObject () ;
+    }
+
+    const bool compileForGalgas3 = inCompileForGalgas3.boolValue () ;
     analyzeGrammar (inCompiler,
                     compileForGalgas3,
+                    implementationFileHeaderList,
                     inUnusedNonTerminalSymbolsForGrammar,
                     inTargetFileName,
                     inGrammarClass,

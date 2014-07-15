@@ -477,6 +477,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 extern routine grammarAnalysisAndGeneration
+  ??@stringset inImplementationFileHeaderSet
   ??@bool inCompileForGalgas3
   ??@lstring inGrammarName
   ??@lstring inGrammarClass
@@ -619,7 +620,8 @@ routine compileGrammarComponentFromAST
   end foreach ;
 #---------------------------------------------------------- Analyze grammar
   grammarAnalysisAndGeneration
-    !false # Do not compile for galgas 3
+    ![@stringset setWithString !inGrammarComponentRoot->mGrammarComponentName->string]
+    !false
     !inGrammarComponentRoot->mGrammarComponentName
     ![inGrammarComponentRoot mGrammarClass]
     !startSymbolIndex
@@ -683,6 +685,7 @@ end routine ;
 
 routine compileGrammarComponentGalgas3
   ??@string inOutputDirectory
+  ??@bool unused inUseOneHeaderFile
   ??@galgas3GrammarComponentListAST.element inGrammarComponentRoot
   ??@parsedSyntaxComponentMap inParsedSyntaxComponentMap
   ??@semanticContext inSemanticContext
@@ -779,12 +782,18 @@ routine compileGrammarComponentGalgas3
   foreach nonTerminalMapForGrammarAnalysis do
     nonTerminalSymbolSortedListForGrammarAnalysis += !lkey !mNonTerminalIndex !mNonterminalSymbolParametersMap ;
   end foreach ;
+#---------------------------------------------------------- Header of implementation file
+  var implementationFileHeader := [@stringset emptySet] ;
+  implementationFileHeader += !"all-declarations" ;
+  implementationFileHeader += !"grammar-" . inGrammarComponentRoot->mGrammarComponentName->string ;
+  implementationFileHeader += !"lexique-" . lexiqueComponentName->string ;
 #---------------------------------------------------------- Analyze grammar
   ioToolProductFileList += !"grammar-" + inGrammarComponentRoot->mGrammarComponentName->string + ".cpp" ;
   ioAllProductFileSet += !"grammar-" + inGrammarComponentRoot->mGrammarComponentName->string + ".h" ;
   ioAllProductFileSet += !"grammar-" + inGrammarComponentRoot->mGrammarComponentName->string + ".cpp" ;
   grammarAnalysisAndGeneration
-    !true # Compile for galgas 3
+    !implementationFileHeader
+    !true # Compile for GALGAS 3
     !inGrammarComponentRoot->mGrammarComponentName
     ![inGrammarComponentRoot mGrammarClass]
     !startSymbolIndex

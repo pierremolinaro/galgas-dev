@@ -25,7 +25,7 @@ import "projectGlobalCheckings.gSemantics" ;
 #---------------------------------------------------------------------------*
 
 enum @generationKind {
-  someFiles, manyManyFiles
+  fewFiles, manyHeaders, manyManyFiles
 }
 
 #---------------------------------------------------------------------------*
@@ -354,9 +354,29 @@ routine generateSemanticDeclarationsGalgas3
 #------ Generate Header Files
   if [@uint errorCount] == 0 then
     switch inGenerationKind
-    when someFiles : 
-       generateOneFile
+    when fewFiles : 
+       generateManyHeaders
         !inProductDirectory
+        !inSemanticDeclarationSortedListForGeneration
+        !?ioAllProductFileSet
+      ;
+      generateFewImplementationFiles
+        !inProductDirectory
+        !true # One header file
+        !inSemanticContext
+        !inSemanticDeclarationSortedListForGeneration
+        !?ioToolProductFileList
+        !?ioAllProductFileSet
+      ;
+    when manyHeaders : 
+       generateManyHeaders
+        !inProductDirectory
+        !inSemanticDeclarationSortedListForGeneration
+        !?ioAllProductFileSet
+      ;
+      generateFewImplementationFiles
+        !inProductDirectory
+        !false # Many headers
         !inSemanticContext
         !inSemanticDeclarationSortedListForGeneration
         !?ioToolProductFileList
@@ -375,11 +395,9 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine generateOneFile
+routine generateManyHeaders
   ??@string inProductDirectory
-  ??@semanticContext inSemanticContext
   ??@semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
-  ?!@stringlist ioToolProductFileList
   ?!@stringset ioAllProductFileSet
 :
 #--- Header files
@@ -540,6 +558,18 @@ routine generateOneFile
     !"\n\n" # Defaut user zone2
     !"#endif\n"
   ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine generateFewImplementationFiles
+  ??@string inProductDirectory
+  ??@bool inUniqueHeader
+  ??@semanticContext inSemanticContext
+  ??@semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
+  ?!@stringlist ioToolProductFileList
+  ?!@stringset ioAllProductFileSet
+:
 #------------- all-declarations.cpp
   var n := 0 ;
   var fileIdx := 0 ;
@@ -598,40 +628,6 @@ routine generateOneFile
       !"\n"
     ] ;
   end if ;
-
-#  ioToolProductFileList := [@stringlist listWithValue !"all-declarations.cpp"] + ioToolProductFileList ;
-#  ioAllProductFileSet += !"all-declarations.cpp" ;
-#  var implementationFileIncludeList := [@stringlist listWithValue !"all-declarations"] ;
-#  for * in inSemanticContext->mOptionComponentMapForSemanticAnalysis do
-#    if not mIsPredefined then
-#      implementationFileIncludeList += !"option-" + lkey->string ;
-#    end if ;
-#  end for ;
-#  for * in inSemanticContext->mGrammarMap do
-#    implementationFileIncludeList += !"grammar-" . lkey->string ;
-#  end for ;
-#  @string implementationString := [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
-#    !"all-declarations"
-#    !implementationFileIncludeList
-#  ] ;
-#  var n := 0 ;
-#  foreach inSemanticDeclarationSortedListForGeneration do
-#    if not [mDeclaration isPredefined] then
-#      n++ ;
-#      implementationString .= [mDeclaration appendSpecificImplementation !false] ;
-#      implementationString .= [mDeclaration appendTypeGenericImplementation] ;
-#    end if ;
-#  end foreach ;
-#  [@string generateFileWithPattern
-#    !inProductDirectory
-#    !"all-declarations.cpp"
-#    !"//"
-#    !"\n\n" # Defaut user zone1
-#    !implementationString
-#    !"\n\n" # Defaut user zone2
-#    !"\n"
-#  ] ;
-#  log n ;
 end routine ;
 
 #---------------------------------------------------------------------------*

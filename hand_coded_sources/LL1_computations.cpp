@@ -443,6 +443,7 @@ printDecisionTable (const cPureBNFproductionsList & inPureBNFproductions,
 static void
 generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
                                const bool inCompileForGalgas3,
+                               const TC_UniqueArray <C_String> & inImplementationFileHeaderList,
                                const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                                const uint32_t inOriginalGrammarStartSymbol,
                                const C_String & inTargetFileName,
@@ -458,13 +459,10 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
   generatedZone2 << "#include \"utilities/MF_MemoryControl.h\"\n" ;
   generatedZone2 << "#include \"galgas2/C_galgas_CLI_Options.h\"\n\n" ;
   generatedZone2 << "#include \"files/C_FileManager.h\"\n\n" ;
+
   generatedZone2.appendCppHyphenLineComment () ;
-  if (inCompileForGalgas3) {
-    generatedZone2 << "#include \"grammar-" << inTargetFileName << ".h\"\n" ;
-    generatedZone2 << "#include \"lexique-" << inLexiqueName << ".h\"\n" ;
-    generatedZone2 << "#include \"all-declarations.h\"\n" ;
-  }else{
-    generatedZone2 << "#include \"" << inTargetFileName << ".h\"\n" ;
+  for (int32_t i=0 ; i<inImplementationFileHeaderList.count () ; i++) {
+    generatedZone2 << "#include \"" << inImplementationFileHeaderList (i COMMA_HERE) << ".h\"\n" ;
   }
   generatedZone2 << "\n" ;
 
@@ -766,33 +764,15 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
                           "        C_String message ;\n"
                           "        message << \"the '\" << filePath << \"' file exists, but cannot be read\" ;\n"
                           "        const GALGAS_location errorLocation (inFilePath.reader_location (THERE)) ;\n"
-                          "        inCompiler->semanticErrorAtLocation (errorLocation, message COMMA_THERE) ;\n" ;
-/*        parametre.rewind () ;
-        numeroParametre = 1 ;
-        while (parametre.hasCurrentObject ()) {
-          if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GALGAS_formalArgumentPassingModeAST::kEnum_argumentOut) {
-            generatedZone3 << "      parameter_" << cStringWithSigned (numeroParametre) << ".drop () ;\n" ;
-          }
-          parametre.gotoNextObject () ;
-          numeroParametre ++ ;
-        }*/
-        generatedZone3 << "    }\n"
+                          "        inCompiler->semanticErrorAtLocation (errorLocation, message COMMA_THERE) ;\n"
+                          "    }\n"
                           "    macroDetachSharedObject (scanner) ;\n"
                           "  }else{\n"
                           "    C_String message ;\n"
                           "    message << \"the '\" << filePath << \"' file does not exist\" ;\n"
                           "    const GALGAS_location errorLocation (inFilePath.reader_location (THERE)) ;\n"
-                          "    inCompiler->semanticErrorAtLocation (errorLocation, message COMMA_THERE) ;\n" ;
-/*        parametre.rewind () ;
-        numeroParametre = 1 ;
-        while (parametre.hasCurrentObject ()) {
-          if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GALGAS_formalArgumentPassingModeAST::kEnum_argumentOut) {
-            generatedZone3 << "    parameter_" << cStringWithSigned (numeroParametre) << ".drop () ;\n" ;
-          }
-          parametre.gotoNextObject () ;
-          numeroParametre ++ ;
-        } */
-        generatedZone3 << "    }\n"
+                          "    inCompiler->semanticErrorAtLocation (errorLocation, message COMMA_THERE) ;\n"
+                          "    }\n"
                           "  }\n"
                           "}\n\n" ;
       //--- Define string parsing static method
@@ -902,6 +882,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
 void
 LL1_computations (C_Compiler * inCompiler,
                   const bool inCompileForGalgas3,
+                  const TC_UniqueArray <C_String> & inImplementationFileHeaderList,
                   const cPureBNFproductionsList & inPureBNFproductions,
                   C_HTML_FileWrite & ioHTMLfile,
                   const cVocabulary & inVocabulary,
@@ -941,6 +922,7 @@ LL1_computations (C_Compiler * inCompiler,
   if (outOk) {
     generate_LL1_grammar_Cpp_file (inCompiler,
                                    inCompileForGalgas3,
+                                   inImplementationFileHeaderList,
                                    inNonTerminalSymbolSortedListForGrammarAnalysis,
                                    inOriginalGrammarStartSymbol,
                                    inTargetFileName,
