@@ -673,6 +673,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@string TYPE_IDENTIFIER
     ?@unifiedTypeMapProxy ASSOCIATED_LIST_TYPE
     ?@graphInsertModifierList INSERT_MODIFIER_LIST
+    ?@stringset INCLUSION_SET
   ;
 
 #---------- Array
@@ -1175,33 +1176,6 @@ override reader @structTypeForGeneration appendDeclaration1
     !mTypedAttributeList
     ![mTypeProxy mDefaultConstructorName] != ""
     !inclusionSet
-  ] ;
-  outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    ![mTypeProxy mIsConcrete]
-    ![mTypeProxy mConstructorMap]
-    ![mTypeProxy mReaderMap]
-    ![mTypeProxy mModifierMap]
-    ![mTypeProxy mInstanceMethodMap]
-    ![mTypeProxy mClassMethodMap]
-    ![mTypeProxy mEnumerationDescriptor]
-    ![mTypeProxy mHandledOperatorFlags]
-    ![mTypeProxy mAddAssignOperatorArguments]
-    ![mTypeProxy mWithAccessorMap]
-    ![mTypeProxy mTypeForEnumeratedElement]
-  ] ;
- end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @graphDeclarationForGeneration appendDeclaration1
-  ??@bool unused inGenerateForGalgas3
-  -> @string outHeader
-:
-  outHeader := [filewrapper typeGenerationTemplate.graphTypeHeader1
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
   ] ;
   outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     ![mTypeProxy key]
@@ -1769,15 +1743,48 @@ override reader @listTypeForGeneration appendSpecificImplementation
 #! Graph
 #---------------------------------------------------------------------------*
 
-override reader @graphDeclarationForGeneration appendSpecificImplementation
+override reader @graphDeclarationForGeneration appendDeclaration1
   ??@bool unused inGenerateForGalgas3
+  -> @string outHeader
+:
+  outHeader := [filewrapper typeGenerationTemplate.graphTypeHeader1
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+  ] ;
+  outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mTypeProxy mIsConcrete]
+    ![mTypeProxy mConstructorMap]
+    ![mTypeProxy mReaderMap]
+    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mInstanceMethodMap]
+    ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mEnumerationDescriptor]
+    ![mTypeProxy mHandledOperatorFlags]
+    ![mTypeProxy mAddAssignOperatorArguments]
+    ![mTypeProxy mWithAccessorMap]
+    ![mTypeProxy mTypeForEnumeratedElement]
+  ] ;
+ end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @graphDeclarationForGeneration appendSpecificImplementation
+  ??@bool inGenerateForGalgas3
   ->@string outImplementation
 :
+  var inclusionSet := [@stringset emptySet] ;
+  if inGenerateForGalgas3 then
+    [mAssociatedListTypeProxy addHeaderFileName !?inclusionSet] ;
+    [mAssociatedListElementTypeProxy addHeaderFileName !?inclusionSet] ;
+  end if ;
   outImplementation := [filewrapper typeGenerationTemplate.graphTypeSpecificImplementation
     !mTypeProxy
     ![mTypeProxy identifierRepresentation]
     !mAssociatedListTypeProxy
     !mInsertModifierList
+    !inclusionSet
   ] ;
  end reader ;
 

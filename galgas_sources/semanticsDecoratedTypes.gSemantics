@@ -1414,6 +1414,7 @@ class @enumTypeForGeneration extends @semanticTypeForGeneration {
 
 class @graphDeclarationForGeneration extends @semanticTypeForGeneration {
   @unifiedTypeMapProxy mAssociatedListTypeProxy ;
+  @unifiedTypeMapProxy mAssociatedListElementTypeProxy ;
   @graphInsertModifierList mInsertModifierList ;
 }
 
