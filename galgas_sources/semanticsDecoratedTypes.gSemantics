@@ -499,7 +499,7 @@ abstract reader @semanticDeclarationForGeneration isPredefined -> @bool outResul
 
 #---------------------------------------------------------------------------*
 
-abstract method @semanticDeclarationForGeneration addInclusionForCPPFile ?!@stringlist ioInclusionList ;
+abstract reader @semanticDeclarationForGeneration headerKind -> @headerKind outHeaderKind ;
 
 #---------------------------------------------------------------------------*
 
@@ -546,26 +546,16 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override method @semanticTypeForGeneration addInclusionForCPPFile
-  ?!@stringlist ioInclusionList
+override reader @semanticTypeForGeneration headerKind -> @headerKind outHeaderKind
 :
-  for (t) in [mTypeProxy mTypesToIncludeInCppFile] do
-    if ([t mHeaderFileName] != "") & not [t mIsPredefined] then
-      ioInclusionList += ![t mHeaderFileName] ;
-    end if ;
-  end for ;
-end method ;
+  outHeaderKind := [@headerKind twoHeaders] ;
+end reader ;
 
 #---------------------------------------------------------------------------*
 
 override method @semanticTypeForGeneration addHeaderInclusions
-  ?!@string ioHeaderString
+  ?!@string unused ioHeaderString
 :
-  for (t) in [mTypeProxy mTypesToIncludeInHeaderFile] do
-    if not [t mIsPredefined] then
-      ioHeaderString .= "#include \"" . [t mHeaderFileName]  . ".h\" // addHeaderInclusions\n" ;
-    end if ;
-  end for ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -595,10 +585,10 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override method @semanticDeclarationWithHeaderForGeneration addInclusionForCPPFile
-  ?!@stringlist unused ioInclusionList
+override reader @semanticDeclarationWithHeaderForGeneration headerKind -> @headerKind outHeaderKind
 :
-end method ;
+  outHeaderKind := [@headerKind twoHeaders] ;
+end reader ;
 
 #---------------------------------------------------------------------------*
 

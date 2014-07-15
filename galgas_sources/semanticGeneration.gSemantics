@@ -50,11 +50,6 @@ function generateProcedure
     unusedVariableCppNameSet += !compilerCppName [] ;
   end if ;
   foreach inFormalArgumentList do
-#    if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentIn] then
-#      [mFormalArgumentType addHeaderFileName !?inclusionSet] ;
-#    elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-#      [mFormalArgumentType addHeaderFileName !?inclusionSet] ;
-#    end if ;
     if mFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentOut] then
       unusedVariableCppNameSet += !mFormalArgumentCppName ;
     end if ;
@@ -2269,6 +2264,7 @@ override reader @abstractCategoryReaderForGeneration appendSpecificImplementatio
 :
   var inclusionSet := [@stringset emptySet] ;
   if inGenerateForGalgas3 then
+    [mResultType addHeaderFileName !?inclusionSet] ;
     [mReceiverType addHeaderFileName !?inclusionSet] ;
     for * in mAbstractCategoryReaderFormalParameterList do
       [mFormalArgumentType addHeaderFileName !?inclusionSet] ;
@@ -2339,6 +2335,7 @@ override reader @categoryReaderForGeneration appendSpecificImplementation
   else
     var inclusionSet := [@stringset emptySet] ;
     if inGenerateForGalgas3 then
+      [mResultType addHeaderFileName !?inclusionSet] ; 
       [mReceiverType addHeaderFileName !?inclusionSet] ;
       for * in mCategoryReaderFormalParameterList do
         [mFormalArgumentType addHeaderFileName !?inclusionSet] ;

@@ -406,7 +406,7 @@ override method @listmapDeclarationAST semanticAnalysis
     ?3*
     ??@typeKindEnum typeKindEnum
     ??@typedAttributeList listTypeAttributeList
-    ?22*
+    ?21*
   ] ;
 #---
   if typeKindEnum != [@typeKindEnum listType] then
@@ -946,7 +946,7 @@ override method @mapProxyDeclarationAST semanticAnalysis
     ?listTypeAttributeList
     ?11*
     ?searchMethodList
-    ?8*
+    ?7*
   ] ;
 #---
   ioSemanticDeclarationListForGeneration +=

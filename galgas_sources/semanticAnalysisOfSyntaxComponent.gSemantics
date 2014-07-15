@@ -95,10 +95,10 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override method @syntaxDeclarationForGeneration addInclusionForCPPFile
-  ?!@stringlist unused ioInclusionList
+override reader @syntaxDeclarationForGeneration headerKind -> @headerKind outHeaderKind
 :
-end method ;
+  outHeaderKind := [@headerKind twoHeaders] ;
+end reader ;
 
 #---------------------------------------------------------------------------*
 

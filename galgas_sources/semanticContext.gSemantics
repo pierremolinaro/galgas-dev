@@ -792,8 +792,7 @@ override method @predefinedTypeAST enterInSemanticContext
     !enumeratedTypeProxy
     ![mKind defaultConstructorName]
     !"galgas2/predefined-types"
-    ![@unifiedTypeMapProxyList emptyList]
-    ![@unifiedTypeMapProxyList emptyList]
+    ![@headerKind twoHeaders]
   ] ;
 end method ;
 
@@ -1007,9 +1006,7 @@ override method @mapDeclarationAST enterInSemanticContext
     !elementTypeProxy # Type for enumerated element for "for" instruction
     !"emptyMap"
     !"map-" . mMapTypeName
-    ![@unifiedTypeMapProxyList emptyList]
-    ![@unifiedTypeMapProxyList emptyList]
-#    ![@unifiedTypeMapProxyList listWithValue !elementTypeProxy]
+    ![@headerKind twoHeaders]
   ] ;
 end method ;
 
@@ -1267,8 +1264,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
     !"emptyMap"
     !"uniquemap-" . mMapTypeName
-    ![@unifiedTypeMapProxyList emptyList]
-    ![@unifiedTypeMapProxyList emptyList]
+    ![@headerKind twoHeaders]
   ] ;
 end method ;
 
@@ -1289,7 +1285,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     ?@typedAttributeList mapTypedAttributeList
     ?11*
     ?@mapSearchMethodListAST searchMethodList
-    ?8*
+    ?7*
   ] ;
   if typeKindEnum != [@typeKindEnum uniqueMapType] then
     error mAssociatedMapTypeName : "the @" . mAssociatedMapTypeName . " should be an unique map type" ;
@@ -1416,8 +1412,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
     !"null" # Default constructor
     !"mapproxy-" . mMapProxyTypeName
-    ![@unifiedTypeMapProxyList emptyList]
-    ![@unifiedTypeMapProxyList emptyList]
+    ![@headerKind twoHeaders]
   ] ;
 end method ;
 
@@ -1549,8 +1544,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
     !"default" # Default constructor
     !"externtype-" . mExternTypeName
-    ![@unifiedTypeMapProxyList emptyList]
-    ![@unifiedTypeMapProxyList emptyList]
+    ![@headerKind twoHeaders]
   ] ;
 end method ;
 
@@ -1803,8 +1797,7 @@ override method @graphDeclarationAST enterInSemanticContext
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
     !"emptyGraph" # Default constructor
     !"graph-" . mGraphTypeName
-    ![@unifiedTypeMapProxyList emptyList]
-    ![@unifiedTypeMapProxyList emptyList]
+    ![@headerKind twoHeaders]
   ] ;
 end method ;
 
@@ -1873,8 +1866,7 @@ override method @enumDeclarationAST enterInSemanticContext
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
     ![mConstantList mValueAtIndex !0]->string # Default constructor
     !"enum-" . mEnumTypeName
-    ![@unifiedTypeMapProxyList emptyList]
-    ![@unifiedTypeMapProxyList emptyList]
+    ![@headerKind twoHeaders]
   ] ;
 end method ;
 
@@ -2215,8 +2207,7 @@ override method @listDeclarationAST enterInSemanticContext
     !listElementTypeIndex # Type for enumerated element for "for" instruction
     !"emptyList" # Default constructor
     !"list-" . mListTypeName
-    ![@unifiedTypeMapProxyList emptyList]
-    ![@unifiedTypeMapProxyList emptyList]
+    ![@headerKind twoHeaders]
   ] ;
 end method ;
 
@@ -2343,9 +2334,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !listElementTypeIndex # Type for enumerated element for "for" instruction
     !"emptySortedList" # Default constructor
     !"sortedlist-" . mSortedListTypeName
-    ![@unifiedTypeMapProxyList emptyList]
-    ![@unifiedTypeMapProxyList emptyList]
-#    !typesToIncludeInCPPCompilation
+    ![@headerKind twoHeaders]
   ] ;
 end method ;
 
@@ -2457,8 +2446,7 @@ override method @structDeclarationAST enterInSemanticContext
     !enumeratedType # Type for enumerated element for "for" instruction
     !defaultConstructorName # Default constructor
     !"struct-" . mStructTypeName
-    ![@unifiedTypeMapProxyList emptyList]
-    ![@unifiedTypeMapProxyList emptyList]
+    ![@headerKind twoHeaders]
   ] ;
 end method ;
 
@@ -2512,7 +2500,7 @@ override method @classDeclarationAST enterInSemanticContext
       ?inheritedMethodMap
       ?10*
       ?generateHeaderInSeparateFile
-      ?5*
+      ?4*
     ] ;
   #---
     if typeKindEnum != [@typeKindEnum classType] then
@@ -2688,8 +2676,7 @@ override method @classDeclarationAST enterInSemanticContext
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
     !defaultConstructorName # Default constructor
     !"class-" . mClassTypeName
-    ![@unifiedTypeMapProxyList emptyList]
-    ![@unifiedTypeMapProxyList emptyList]
+    ![@headerKind twoHeaders]
   ] ;
 end method ;
 
@@ -2895,8 +2882,7 @@ override method @arrayDeclarationAST enterInSemanticContext
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
     !"" # No default constructor
     !"array-" . mArrayTypeName
-    ![@unifiedTypeMapProxyList emptyList]
-    ![@unifiedTypeMapProxyList emptyList]
+    ![@headerKind twoHeaders]
   ] ;
 end method ;
 
@@ -2915,7 +2901,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     ?3*
     ?@typeKindEnum typeKindEnum
     ?@typedAttributeList listTypedAttributeList
-    ?22*
+    ?21*
   ] ;
   if typeKindEnum != [@typeKindEnum listType] then
     error mAssociatedListTypeName : "the '@" . mAssociatedListTypeName . "' type should be a list type" ;
@@ -3001,8 +2987,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     !listElementTypeIndex # Type for enumerated element for "for" instruction
     !"emptyMap" # Default constructor
     !"listmap-" . mListmapTypeName
-    ![@unifiedTypeMapProxyList emptyList]
-    ![@unifiedTypeMapProxyList emptyList]
+    ![@headerKind twoHeaders]
   ] ;
 end method ;
 
