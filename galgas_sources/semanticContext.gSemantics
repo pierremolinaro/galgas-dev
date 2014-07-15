@@ -977,7 +977,7 @@ override method @mapDeclarationAST enterInSemanticContext
   [@unifiedTypeMapProxy makeProxy
     !?ioSemanticContext->mTypeMap
     ![@lstring new !mMapTypeName->string . elementTypeNameSuffix [] !mMapTypeName->location]
-    ?@unifiedTypeMapProxy elementTypeProxy
+    ??@unifiedTypeMapProxy elementTypeProxy
   ] ;
 #--- Enter in type map
   [!?ioSemanticContext->mTypeMap insertKey
@@ -1008,7 +1008,8 @@ override method @mapDeclarationAST enterInSemanticContext
     !"emptyMap"
     !"map-" . mMapTypeName
     ![@unifiedTypeMapProxyList emptyList]
-    ![@unifiedTypeMapProxyList listWithValue !elementTypeProxy]
+    ![@unifiedTypeMapProxyList emptyList]
+#    ![@unifiedTypeMapProxyList listWithValue !elementTypeProxy]
   ] ;
 end method ;
 
@@ -1416,7 +1417,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     !"null" # Default constructor
     !"mapproxy-" . mMapProxyTypeName
     ![@unifiedTypeMapProxyList emptyList]
-    ![@unifiedTypeMapProxyList listWithValue !associatedMapTypeIndex]
+    ![@unifiedTypeMapProxyList emptyList]
   ] ;
 end method ;
 
@@ -1774,15 +1775,6 @@ override method @graphDeclarationAST enterInSemanticContext
     !?modifierMap
     !?instanceMethodMap
   ;
-#--- Associated list type proxy
-#  [@unifiedTypeMapProxy makeProxy
-#    !?ioSemanticContext->mTypeMap
-#    ![@lstring new !mAssociatedListTypeName->string . elementTypeNameSuffix [] !mAssociatedListTypeName->location]
-#    ??@unifiedTypeMapProxy associatedListElementTypeProxy
-#  ] ;
-#--- 
-#  var cppDependance := [@unifiedTypeMapProxyList listWithValue !associatedListTypeProxy] ;
-#  cppDependance += !associatedListElementTypeProxy ;
 #--- Enter type in type map
   [!?ioSemanticContext->mTypeMap insertKey
     !mGraphTypeName
