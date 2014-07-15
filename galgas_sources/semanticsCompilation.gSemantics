@@ -328,21 +328,6 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-method @semanticDeclarationForGeneration addCppTypeForPredeclarationInHeaderFile
-  ?!@stringlist unused ioTypeList
-:
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @semanticTypeForGeneration addCppTypeForPredeclarationInHeaderFile
-  ?!@stringlist ioTypeList
-:
-  ioTypeList += !"GALGAS_" . [mTypeProxy identifierRepresentation] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
 routine compileSemanticsComponentAST
   ??@lstring inSourceFile
   ??@string inOutputDirectory
@@ -419,9 +404,6 @@ routine compileSemanticsComponentAST
 #------ Generate Header File
   if [@uint errorCount] == 0 then
     @stringlist typeList [emptyList] ;
-#    foreach decoratedDeclarationListForGeneration do
-#      [mDeclaration addCppTypeForPredeclarationInHeaderFile !?typeList] ;
-#    end foreach ;
     var headerString := [filewrapper semanticFileGenerationTemplate.semanticFileHeader
       ![componentName string]
       !headerIncludeList
@@ -435,7 +417,6 @@ routine compileSemanticsComponentAST
       var inclusionSet2 := [@stringset emptySet] ;
       [mDeclaration appendDeclaration2 !false !inOutputDirectory !?inclusionSet2 ??@string headerString2] ;
       headerString .= headerString2 ;
-#      headerString .= [mDeclaration appendDeclaration2 !inOutputDirectory !false] ;
     end foreach ;
     [@string generateFileWithPattern
       !inOutputDirectory
