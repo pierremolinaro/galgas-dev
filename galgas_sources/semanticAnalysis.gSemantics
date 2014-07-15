@@ -171,9 +171,9 @@ override method @listDeclarationAST semanticAnalysis
   end foreach ;
 #---
   ioSemanticDeclarationListForGeneration +=
- #    !mIsPredefined
     ![@listTypeForGeneration new
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mListTypeName]
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !mListTypeName->string . elementTypeNameSuffix [] !mListTypeName->location]]
       !typedAttributeList
     ]
   !""

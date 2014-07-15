@@ -2071,9 +2071,7 @@ override method @listDeclarationAST enterInSemanticContext
   @unifiedTypeMapProxyAndParameterList constructorAttributeTypeList [emptyList] ;
   @formalParameterSignature modifierOutputFormalArgumentList [emptyList] ;
   @formalParameterSignature modifierInputFormalArgumentList [emptyList] ;
-  var typesToIncludeInCPPCompilation := [@unifiedTypeMapProxyList listWithValue !listElementTypeIndex] ;
   foreach typedAttributeList do
-    typesToIncludeInCPPCompilation += !mAttributeTypeProxy ;
     enumerationDescriptor += !mAttributeTypeProxy ![mAttributeName string] ;
     constructorAttributeTypeList += !mAttributeTypeProxy !mAttributeName->string ;
     modifierOutputFormalArgumentList += !mAttributeTypeProxy ![@formalArgumentPassingModeAST argumentOut] !mAttributeName->string ;
@@ -2226,7 +2224,7 @@ override method @listDeclarationAST enterInSemanticContext
     !"emptyList" # Default constructor
     !"list-" . mListTypeName
     ![@unifiedTypeMapProxyList emptyList]
-    !typesToIncludeInCPPCompilation
+    ![@unifiedTypeMapProxyList emptyList]
   ] ;
 end method ;
 
@@ -2251,13 +2249,11 @@ override method @sortedListDeclarationAST enterInSemanticContext
   @unifiedTypeMapProxyAndParameterList constructorAttributeTypeList [emptyList] ;
   @formalParameterSignature modifierFormalArgumentList [emptyList] ;
   @typedAttributeList typedAttributeList [emptyList] ;
-  var typesToIncludeInCPPCompilation := [@unifiedTypeMapProxyList listWithValue !listElementTypeIndex] ;
   foreach mAttributeList do
     [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mAttributeTypeName ??@unifiedTypeMapProxy attributeTypeIndex] ;
     @bool hasGetter := true ;
     @bool hasSetter := true ;
     typedAttributeList += !attributeTypeIndex !mAttributeName !hasSetter !hasGetter ;
-    typesToIncludeInCPPCompilation += !attributeTypeIndex ;
     enumerationDescriptor += !attributeTypeIndex !mAttributeName->string ;
     constructorAttributeTypeList += !attributeTypeIndex !mAttributeName->string ;
     modifierFormalArgumentList += !attributeTypeIndex ![@formalArgumentPassingModeAST argumentOut] !mAttributeName->string ;
