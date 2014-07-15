@@ -1,6 +1,4 @@
 #include "syntax-%!COMPONENT_NAME%.h"
-// #include "galgas2/C_galgas_CLI_Options.h"
-// #include "utilities/C_PrologueEpilogue.h"
 
 //-----------------------------------------------------------------------------*
 
