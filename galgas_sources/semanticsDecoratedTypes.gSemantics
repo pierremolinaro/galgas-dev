@@ -554,9 +554,6 @@ override method @semanticTypeForGeneration addInclusionForCPPFile
       ioInclusionList += ![t mHeaderFileName] ;
     end if ;
   end for ;
-  for (s) in [mTypeProxy mSpecificHeadersForCppFile] do
-    ioInclusionList += !s ;
-  end for ;
 end method ;
 
 #---------------------------------------------------------------------------*

@@ -397,7 +397,7 @@ override method @listmapDeclarationAST semanticAnalysis
 #--- Check associated list is actually a list
   @typeKindEnum typeKindEnum ;
   @typedAttributeList listTypeAttributeList ;
-  [inSemanticContext->mTypeMap searchKey !mAssociatedListTypeName ?3* ?typeKindEnum ?listTypeAttributeList ?23*] ;
+  [inSemanticContext->mTypeMap searchKey !mAssociatedListTypeName ?3* ?typeKindEnum ?listTypeAttributeList ?22*] ;
 #---
   ioSemanticDeclarationListForGeneration +=
 #    !mIsPredefined
@@ -930,7 +930,7 @@ override method @mapProxyDeclarationAST semanticAnalysis
     ?listTypeAttributeList
     ?11*
     ?searchMethodList
-    ?9*
+    ?8*
   ] ;
 #---
   ioSemanticDeclarationListForGeneration +=

@@ -794,7 +794,6 @@ override method @predefinedTypeAST enterInSemanticContext
     !"galgas2/predefined-types"
     ![@unifiedTypeMapProxyList emptyList]
     ![@unifiedTypeMapProxyList emptyList]
-    ![@stringlist emptyList]
   ] ;
 end method ;
 
@@ -1010,7 +1009,6 @@ override method @mapDeclarationAST enterInSemanticContext
     !"map-" . mMapTypeName
     ![@unifiedTypeMapProxyList emptyList]
     ![@unifiedTypeMapProxyList listWithValue !elementTypeProxy]
-    ![@stringlist emptyList]
   ] ;
 end method ;
 
@@ -1270,7 +1268,6 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     !"uniquemap-" . mMapTypeName
     ![@unifiedTypeMapProxyList emptyList]
     ![@unifiedTypeMapProxyList emptyList]
-    ![@stringlist emptyList]
   ] ;
 end method ;
 
@@ -1291,7 +1288,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     ?@typedAttributeList mapTypedAttributeList
     ?11*
     ?@mapSearchMethodListAST searchMethodList
-    ?9*
+    ?8*
   ] ;
   if typeKindEnum != [@typeKindEnum uniqueMapType] then
     error mAssociatedMapTypeName : "the @" . mAssociatedMapTypeName . " should be an unique map type" ;
@@ -1420,7 +1417,6 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     !"mapproxy-" . mMapProxyTypeName
     ![@unifiedTypeMapProxyList emptyList]
     ![@unifiedTypeMapProxyList listWithValue !associatedMapTypeIndex]
-    ![@stringlist emptyList]
   ] ;
 end method ;
 
@@ -1554,7 +1550,6 @@ override method @externTypeDeclarationAST enterInSemanticContext
     !"externtype-" . mExternTypeName
     ![@unifiedTypeMapProxyList emptyList]
     ![@unifiedTypeMapProxyList emptyList]
-    ![@stringlist emptyList]
   ] ;
 end method ;
 
@@ -1818,7 +1813,6 @@ override method @graphDeclarationAST enterInSemanticContext
     !"graph-" . mGraphTypeName
     ![@unifiedTypeMapProxyList emptyList]
     !cppDependance
-    ![@stringlist emptyList]
   ] ;
 end method ;
 
@@ -1889,7 +1883,6 @@ override method @enumDeclarationAST enterInSemanticContext
     !"enum-" . mEnumTypeName
     ![@unifiedTypeMapProxyList emptyList]
     ![@unifiedTypeMapProxyList emptyList]
-    ![@stringlist emptyList]
   ] ;
 end method ;
 
@@ -2234,7 +2227,6 @@ override method @listDeclarationAST enterInSemanticContext
     !"list-" . mListTypeName
     ![@unifiedTypeMapProxyList emptyList]
     !typesToIncludeInCPPCompilation
-    ![@stringlist emptyList]
   ] ;
 end method ;
 
@@ -2365,7 +2357,6 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !"sortedlist-" . mSortedListTypeName
     ![@unifiedTypeMapProxyList emptyList]
     !typesToIncludeInCPPCompilation
-    ![@stringlist emptyList]
   ] ;
 end method ;
 
@@ -2479,7 +2470,6 @@ override method @structDeclarationAST enterInSemanticContext
     !"struct-" . mStructTypeName
     ![@unifiedTypeMapProxyList emptyList]
     ![@unifiedTypeMapProxyList emptyList]
-    ![@stringlist emptyList]
   ] ;
 end method ;
 
@@ -2533,7 +2523,7 @@ override method @classDeclarationAST enterInSemanticContext
       ?inheritedMethodMap
       ?10*
       ?generateHeaderInSeparateFile
-      ?6*
+      ?5*
     ] ;
   #---
     if typeKindEnum != [@typeKindEnum classType] then
@@ -2713,7 +2703,6 @@ override method @classDeclarationAST enterInSemanticContext
     !"class-" . mClassTypeName
     !headerInclusionTypeList
     ![@unifiedTypeMapProxyList emptyList]
-    ![@stringlist emptyList]
   ] ;
 end method ;
 
@@ -2921,7 +2910,6 @@ override method @arrayDeclarationAST enterInSemanticContext
     !"array-" . mArrayTypeName
     ![@unifiedTypeMapProxyList emptyList]
     ![@unifiedTypeMapProxyList emptyList]
-    ![@stringlist emptyList]
   ] ;
 end method ;
 
@@ -2940,7 +2928,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     ?3*
     ?@typeKindEnum typeKindEnum
     ?@typedAttributeList listTypedAttributeList
-    ?23*
+    ?22*
   ] ;
   if typeKindEnum != [@typeKindEnum listType] then
     error mAssociatedListTypeName : "the '@" . mAssociatedListTypeName . "' type should be a list type" ;
@@ -3028,7 +3016,6 @@ override method @listmapDeclarationAST enterInSemanticContext
     !"listmap-" . mListmapTypeName
     ![@unifiedTypeMapProxyList emptyList]
     ![@unifiedTypeMapProxyList listWithValue !listElementTypeIndex]
-    ![@stringlist emptyList]
   ] ;
 end method ;
 
