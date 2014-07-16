@@ -439,11 +439,12 @@ routine generateManyHeaders
         headerString .= "\n" ;
         headerString .= "//-----------------------------------------------------------------------------*\n\n" ;
         headerString .= "#endif\n\n" ;
-        headerInclusionList1 += ![mDeclaration implementationCppFileName] . "-1" ;
-        ioAllProductFileSet += ![mDeclaration implementationCppFileName] . "-1.h" ;
+        const headerFileName := [mDeclaration implementationCppFileName] + if [mDeclaration headerKind] == [@headerKind twoHeaders] then "-1" else "" end ;
+        headerInclusionList1 += !headerFileName ;
+        ioAllProductFileSet += !headerFileName . ".h" ;
         [@string generateFileWithPattern
           !inProductDirectory
-          ![mDeclaration implementationCppFileName] . "-1.h"
+          !headerFileName . ".h"
           !"//"
           !"\n\n" # Defaut user zone1
           !headerString

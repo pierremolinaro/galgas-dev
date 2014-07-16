@@ -2373,8 +2373,6 @@ override method @structDeclarationAST enterInSemanticContext
   @readerMap readerMap ;
   commonReaderMapForAllTypes !?ioSemanticContext->mTypeMap ?readerMap ;
   foreach typedAttributeList do
-#    log "ATTRIBUTE" : [mAttributeName string] ;
-#    log "TYPE" :  [mAttributeTypeProxy key] ;
     enterBaseFinalReaderWithoutArgument
       !?readerMap
       !?ioSemanticContext->mTypeMap 
@@ -2383,7 +2381,6 @@ override method @structDeclarationAST enterInSemanticContext
       !false
     ;
   end foreach ;
-#  log mStructTypeName, readerMap ;
 #--- Modifiers
   @modifierMap modifierMap [emptyMap] ;
 #--- Instance methods
@@ -2445,7 +2442,7 @@ override method @structDeclarationAST enterInSemanticContext
     !enumeratedType # Type for enumerated element for "for" instruction
     !defaultConstructorName # Default constructor
     !"struct-" . mStructTypeName
-    ![@headerKind twoHeaders]
+    ![@headerKind oneHeader]
   ] ;
 end method ;
 
