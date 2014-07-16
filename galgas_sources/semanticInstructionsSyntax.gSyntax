@@ -897,6 +897,7 @@ rule <semantic_instruction>
   const endof_foreach_instruction := here ;
   $foreach$ :> ?* ?* ;
   $;$ :> ?* ?* ;
+  send if generateGalgas3InstructionTerminator [] then "%for" else "" end ;
   outInstruction := [@foreachInstructionAST new
     !instructionLocation
     !mEnumeratedObjectList
@@ -1105,6 +1106,7 @@ rule <semantic_instruction>
   const endof_foreach_instruction := here ;
   $for$ :> ?* ?* ;
   $;$ :> ?* ?* ;
+  send if generateGalgas3InstructionTerminator [] then "%for" else "" end ;
   outInstruction := [@forInstructionAST new
     !instructionLocation
     !mEnumeratedObjectList
@@ -1175,6 +1177,7 @@ rule <semantic_instruction>
   $end$ ;
   $if$ :> ?* ?* ;
   $;$ :> ?* ?* ;
+  send if generateGalgas3InstructionTerminator [] then "%if" else "" end ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -1435,6 +1438,7 @@ rule <semantic_instruction>
   $end$ ;
   $with$ :> ?* ?* ;
   $;$ :> ?* ?* ;
+  send if generateGalgas3InstructionTerminator [] then "%with" else "" end ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -1480,6 +1484,7 @@ rule <semantic_instruction>
   $end$ ;
   $with$ :> ?* ?* ;
   $;$ :> ?* ?* ;
+  send if generateGalgas3InstructionTerminator [] then "%with" else "" end ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -1573,6 +1578,7 @@ rule <semantic_instruction>
   const endOfInstructionLocation := here ;
   $cast$ :> ?* ?* ;
   $;$ :> ?* ?* ;
+  send if generateGalgas3InstructionTerminator [] then "%cast" else "" end ;
   outInstruction := [@structuredCastInstructionAST new
     !instructionLocation
     !expression
@@ -1969,6 +1975,7 @@ rule <semantic_instruction>
   $switch$ :> ?* ?* ;
   const endOfSwitchInstruction := here ;
   $;$ :> ?* ?* ;
+  send if generateGalgas3InstructionTerminator [] then "%switch" else "" end ;
   outInstruction := [@switchInstructionAST new
     !instructionLocation
     !switchExpression

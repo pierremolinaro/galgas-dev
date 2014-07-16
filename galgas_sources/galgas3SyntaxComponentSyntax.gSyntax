@@ -326,6 +326,13 @@ rule <syntax_instruction>
   end repeat ;
   $end$ ;
   const endOf_repeat_instruction := here ;
+  select
+  or
+    $attribute$ ??@lstring terminator ;
+    if terminator->string != "repeat" then
+      error terminator : "the terminator attribute should be '%repeat'" ;
+    end if ;
+  end select ;
   outInstruction := [@repeatInstruction new
     !mRepeatInstructionLocation
     !mRepeatedInstructionList
@@ -362,6 +369,13 @@ rule <syntax_instruction>
   end repeat ;
   $end$ ;
   const endOf_select_instruction := here ;
+  select
+  or
+    $attribute$ ??@lstring terminator ;
+    if terminator->string != "select" then
+      error terminator : "the terminator attribute should be '%select'" ;
+    end if ;
+  end select ;
   outInstruction := [@selectInstruction new
     !mSelectInstructionLocation
     !mSelectBranchList
@@ -397,6 +411,13 @@ rule <syntax_instruction>
   end repeat ;
   $end$ ;
   const endOfInstruction := here ;
+  select
+  or
+    $attribute$ ??@lstring terminator ;
+    if terminator->string != "parse" then
+      error terminator : "the terminator attribute should be '%parse'" ;
+    end if ;
+  end select ;
   outInstruction := [@parseRewindInstruction new
     !instructionLocation
     !mParseDoBranchList
@@ -461,6 +482,13 @@ rule <syntax_instruction>
   <branchOfParseWhenInstruction> ??@syntaxInstructionList elseInstructionList ;
   const endOfElseInstructions := here ;
   $end$ ;
+  select
+  or
+    $attribute$ ??@lstring terminator ;
+    if terminator->string != "parse" then
+      error terminator : "the terminator attribute should be '%parse'" ;
+    end if ;
+  end select ;
   outInstruction := [@parseWhenInstruction new
     !instructionLocation
     !whenExpression
@@ -494,6 +522,13 @@ rule <syntax_instruction>
   <syntax_instruction_list> ??@syntaxInstructionList instructionList ;
   $end$ ;
   const endOfInstructionList := here ;
+  select
+  or
+    $attribute$ ??@lstring terminator ;
+    if terminator->string != "parse" then
+      error terminator : "the terminator attribute should be '%parse'" ;
+    end if ;
+  end select ;
   outInstruction := [@parseLoopInstruction new
     !instructionLocation
     !variantExpression
@@ -507,7 +542,7 @@ end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#   P A R S E    R E W I N D    I N S T R U C T I O N                          *
+#   S E N D    I N S T R U C T I O N                                           *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
