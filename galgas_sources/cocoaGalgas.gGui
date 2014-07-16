@@ -138,7 +138,7 @@ with lexique "galgas3Scanner.gLexique" {
   label $rule$, $non_terminal_symbol$ ;
   label $proc$, $identifier$ ;
   label $func$, $identifier$ ;
-  label $once$, $identifier$ ;
+  label $func$, $attribute$, $identifier$ ;
   label $filewrapper$, $identifier$, $in$ ;
   label $abstract$, $method$, $type_name$, $identifier$ ;
   label $override$, $method$, $type_name$, $identifier$ ;

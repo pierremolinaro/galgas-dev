@@ -116,8 +116,21 @@ rule <declaration>
  ?!@galgas3DeclarationAST ioDeclarations
 :
   $func$ ;
-  $identifier$ ? @lstring mRoutineName indexing functionDefinition ;
-  <formal_input_parameter_list> ?@formalInputParameterListAST formalInputParameterList ;
+  var isOnce := false ;
+  select
+  or
+    $attribute$ ??@lstring onceQualifier ;
+    if onceQualifier->string != "once" then
+      error onceQualifier : "the only attribute allowed here is '%once'" ;
+    else
+      isOnce := true ;
+    end if ;
+  end select ;
+  $identifier$ ? @lstring functionName indexing functionDefinition ;
+  <formal_input_parameter_list> ??@formalInputParameterListAST formalInputParameterList ;
+  if isOnce & ([formalInputParameterList length] > 0) then
+    error functionName: "an 'once' function should has no argument" ;
+  end if ;
   $->$ ;
   $type_name$ ?@lstring resultTypeName ;
   $identifier$ ?@lstring resultVariableName ;
@@ -125,47 +138,26 @@ rule <declaration>
   <semantic_instruction_list> ?@semanticInstructionListAST functionInstructionList ;
   $}$ ;
   const endOfFunctionInstructionList := here ;
-  ioDeclarations->mSemanticDeclarationList += ![@functionDeclarationAST new
-    !false # Is not predefined
-    !mRoutineName
-    !formalInputParameterList
-    !resultTypeName
-    !resultVariableName
-    !functionInstructionList
-    !endOfFunctionInstructionList
-  ] ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#    O N C E    F U N C T I O N    D E C L A R A T I O N                    *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-#! once declaration
-
-#---------------------------------------------------------------------------*
-
-rule <declaration>
- ?!@galgas3DeclarationAST ioDeclarations
-:
-  $once$ ;
-  $identifier$ ?@lstring mRoutineName indexing functionDefinition ;
-  $->$ ;
-  $type_name$ ?@lstring resultTypeName ;
-  $identifier$ ?@lstring resultVariableName ;
-  ${$ ;
-  <semantic_instruction_list> ??@semanticInstructionListAST mRoutineInstructionList ;
-  $}$ ;
-  const endOfFunctionInstructionList := here ;
-  ioDeclarations->mSemanticDeclarationList += ![@onceFunctionDeclarationAST new
-    !false # Is not predefined
-    !mRoutineName
-    !resultTypeName
-    !resultVariableName
-    !mRoutineInstructionList
-    !endOfFunctionInstructionList
-  ] ;
+  if isOnce then
+    ioDeclarations->mSemanticDeclarationList += ![@onceFunctionDeclarationAST new
+      !false # Is not predefined
+      !functionName
+      !resultTypeName
+      !resultVariableName
+      !functionInstructionList
+      !endOfFunctionInstructionList
+    ] ;
+  else
+    ioDeclarations->mSemanticDeclarationList += ![@functionDeclarationAST new
+      !false # Is not predefined
+      !functionName
+      !formalInputParameterList
+      !resultTypeName
+      !resultVariableName
+      !functionInstructionList
+      !endOfFunctionInstructionList
+    ] ;
+  end if ;
 end rule ;
 
 #---------------------------------------------------------------------------*

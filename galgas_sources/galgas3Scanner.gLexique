@@ -162,7 +162,7 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
 #  "nonterminal",
   "not",
   "on",
-  "once",
+#  "once",
   "operator",
   "option",
   "or",

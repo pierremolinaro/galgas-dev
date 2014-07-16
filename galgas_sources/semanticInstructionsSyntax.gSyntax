@@ -240,7 +240,8 @@ rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
   <local_declaration> ;
-  $once$ ;
+  $once$ :>?@string sep ?* ;
+  send sep . "func %once" ;
   $identifier$ ? @lstring mRoutineName indexing functionDefinition ;
   $->$ ;
   $type_name$ ?@lstring resultTypeName ;
@@ -248,7 +249,7 @@ rule <semantic_declaration>
   $:$ :> ?* ?* ;
   send " {" ;
   <semantic_instruction_list> ??@semanticInstructionListAST mRoutineInstructionList ;
-  $end$ :> ?@string sep ?* ;
+  $end$ :> ?sep ?* ;
   send sep . "}" ;
   $once$ :> ?* ?*  ;
   const endOfFunctionInstructionList := here ;
