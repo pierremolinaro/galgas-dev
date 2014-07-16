@@ -102,13 +102,6 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override method @syntaxDeclarationForGeneration addHeaderInclusions
-  ?!@string unused ioHeaderString
-:
-end method ;
-
-#---------------------------------------------------------------------------*
-
 override reader @syntaxDeclarationForGeneration isPredefined -> @bool outResult :
   outResult := false ;
 end reader ;

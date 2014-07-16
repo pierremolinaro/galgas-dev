@@ -503,10 +503,6 @@ abstract reader @semanticDeclarationForGeneration headerKind -> @headerKind outH
 
 #---------------------------------------------------------------------------*
 
-abstract method @semanticDeclarationForGeneration addHeaderInclusions ?!@string ioHeaderString ;
-
-#---------------------------------------------------------------------------*
-
 sortedlist @semanticDeclarationSortedListForGeneration {
   @string mMessage ;
   @semanticDeclarationForGeneration mDeclaration ;
@@ -553,13 +549,6 @@ override reader @semanticTypeForGeneration headerKind -> @headerKind outHeaderKi
 end reader ;
 
 #---------------------------------------------------------------------------*
-
-override method @semanticTypeForGeneration addHeaderInclusions
-  ?!@string unused ioHeaderString
-:
-end method ;
-
-#---------------------------------------------------------------------------*
 #                                                                           *
 #    D E C L A R A T I O N    W I T H   H E A D E R    S P E C              *
 #                                                                           *
@@ -590,13 +579,6 @@ override reader @semanticDeclarationWithHeaderForGeneration headerKind -> @heade
 :
   outHeaderKind := [@headerKind twoHeaders] ;
 end reader ;
-
-#---------------------------------------------------------------------------*
-
-override method @semanticDeclarationWithHeaderForGeneration addHeaderInclusions
-  ?!@string unused ioHeaderString
-:
-end method ;
 
 #---------------------------------------------------------------------------*
 
