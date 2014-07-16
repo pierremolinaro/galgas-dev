@@ -1112,6 +1112,12 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override reader @onceFunctionDeclarationForGeneration headerKind ->@headerKind outResult :
+  outResult := [@headerKind oneHeader] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
 override method @onceFunctionDeclarationForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader
@@ -2401,6 +2407,12 @@ end method ;
 #---------------------------------------------------------------------------*
 
 #! Filewrapper
+
+#---------------------------------------------------------------------------*
+
+override reader @filewrapperDeclarationForGeneration headerKind ->@headerKind outResult :
+  outResult := [@headerKind oneHeader] ;
+end reader ;
 
 #---------------------------------------------------------------------------*
 
