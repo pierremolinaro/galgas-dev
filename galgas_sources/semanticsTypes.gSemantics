@@ -342,7 +342,7 @@ end reader ;
 method @unifiedTypeMapProxy addHeaderFileName
  ?!@stringset ioInclusions
 :
-  if not [selfcopy mIsPredefined] then
+  if (not [selfcopy mIsPredefined]) & ([selfcopy mHeaderKind] != [@headerKind noHeader]) then
     ioInclusions += ![selfcopy mHeaderFileName] ;
   end if ;
 end method ;
@@ -353,7 +353,13 @@ method @unifiedTypeMapProxy addHeaderFileName1
  ?!@stringset ioInclusions
 :
   if not [selfcopy mIsPredefined] then
-    ioInclusions += ![selfcopy mHeaderFileName] . "-1" ;
+    switch [selfcopy mHeaderKind]
+    when noHeader :
+    when oneHeader :
+      ioInclusions += ![selfcopy mHeaderFileName] ;
+    when twoHeaders :
+      ioInclusions += ![selfcopy mHeaderFileName] . "-1" ;
+    end switch ;
   end if ;
 end method ;
 
