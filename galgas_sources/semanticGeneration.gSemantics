@@ -1040,102 +1040,6 @@ method @semanticDeclarationForGeneration appendDeclaration1
 end method ;
 
 #---------------------------------------------------------------------------*
-
-override method @routinePrototypeDeclarationForGeneration appendDeclaration1
-  ?!@stringset unused ioInclusionSet
-  !@string outHeader
-:
-  outHeader := [filewrapper semanticComponentGenerationTemplate.routineDeclaration
-    !mRoutineName
-    !mFormalArgumentList
-  ] ; 
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @functionPrototypeDeclarationForGeneration appendDeclaration1
-  ?!@stringset unused ioInclusionSet
-  !@string outHeader
-:
-  outHeader := [filewrapper semanticComponentGenerationTemplate.functionDeclaration
-    !mFunctionName
-    !mFormalArgumentList
-    ![mReturnType identifierRepresentation]
-  ] ; 
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @onceFunctionDeclarationForGeneration appendDeclaration1
-  ?!@stringset unused ioInclusionSet
-  !@string outHeader
-:
-  outHeader := [filewrapper semanticComponentGenerationTemplate.functionDeclaration
-    !mFunctionName
-    ![@formalInputParameterListForGeneration emptyList]
-    ![mReturnType identifierRepresentation]
-  ] ; 
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @arrayTypeForGeneration appendDeclaration1
-  ?!@stringset unused ioInclusionSet
-  !@string outHeader
-:
-  outHeader := [filewrapper typeGenerationTemplate.arrayTypeHeader1
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    ![mElementTypeProxy identifierRepresentation]
-    !mDimension
-  ] ;
-  outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    ![mTypeProxy mIsConcrete]
-    ![mTypeProxy mConstructorMap]
-    ![mTypeProxy mReaderMap]
-    ![mTypeProxy mModifierMap]
-    ![mTypeProxy mInstanceMethodMap]
-    ![mTypeProxy mClassMethodMap]
-    ![mTypeProxy mEnumerationDescriptor]
-    ![mTypeProxy mHandledOperatorFlags]
-    ![mTypeProxy mAddAssignOperatorArguments]
-    ![mTypeProxy mWithAccessorMap]
-    ![mTypeProxy mTypeForEnumeratedElement]
-  ] ;
- end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @externTypeDeclarationForGeneration appendDeclaration1
-  ?!@stringset unused ioInclusionSet
-  !@string outHeader
-:
-  outHeader := [filewrapper typeGenerationTemplate.externTypeHeader1
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    !mCppPreDeclarationCode
-    !mCppClassCode
-  ] ;
-  outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![mTypeProxy key]
-    ![mTypeProxy identifierRepresentation]
-    ![mTypeProxy mIsConcrete]
-    ![mTypeProxy mConstructorMap]
-    ![mTypeProxy mReaderMap]
-    ![mTypeProxy mModifierMap]
-    ![mTypeProxy mInstanceMethodMap]
-    ![mTypeProxy mClassMethodMap]
-    ![mTypeProxy mEnumerationDescriptor]
-    ![mTypeProxy mHandledOperatorFlags]
-    ![mTypeProxy mAddAssignOperatorArguments]
-    ![mTypeProxy mWithAccessorMap]
-    ![mTypeProxy mTypeForEnumeratedElement]
-  ] ;
- end method ;
-
-#---------------------------------------------------------------------------*
 #                                                                           *
 # A P P E N D    D E C L A R A T I O N    2                                 *
 #                                                                           *
@@ -1166,6 +1070,91 @@ method @semanticDeclarationForGeneration appendSpecificImplementation
 end method ;
 
 #---------------------------------------------------------------------------*
+#! Proc
+#---------------------------------------------------------------------------*
+
+override reader @routinePrototypeDeclarationForGeneration headerKind ->@headerKind outResult :
+  outResult := [@headerKind oneHeader] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override method @routinePrototypeDeclarationForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader
+:
+  outHeader := [filewrapper semanticComponentGenerationTemplate.routineDeclaration
+    !mRoutineName
+    !mFormalArgumentList
+  ] ; 
+end method ;
+
+#---------------------------------------------------------------------------*
+#! func
+#---------------------------------------------------------------------------*
+
+override reader @functionPrototypeDeclarationForGeneration headerKind ->@headerKind outResult :
+  outResult := [@headerKind oneHeader] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override method @functionPrototypeDeclarationForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader
+:
+  outHeader := [filewrapper semanticComponentGenerationTemplate.functionDeclaration
+    !mFunctionName
+    !mFormalArgumentList
+    ![mReturnType identifierRepresentation]
+  ] ; 
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @onceFunctionDeclarationForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader
+:
+  outHeader := [filewrapper semanticComponentGenerationTemplate.functionDeclaration
+    !mFunctionName
+    ![@formalInputParameterListForGeneration emptyList]
+    ![mReturnType identifierRepresentation]
+  ] ; 
+end method ;
+
+#---------------------------------------------------------------------------*
+#! Extern type
+#---------------------------------------------------------------------------*
+
+override method @externTypeDeclarationForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader
+:
+  outHeader := [filewrapper typeGenerationTemplate.externTypeHeader1
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    !mCppPreDeclarationCode
+    !mCppClassCode
+  ] ;
+  outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mTypeProxy mIsConcrete]
+    ![mTypeProxy mConstructorMap]
+    ![mTypeProxy mReaderMap]
+    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mInstanceMethodMap]
+    ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mEnumerationDescriptor]
+    ![mTypeProxy mHandledOperatorFlags]
+    ![mTypeProxy mAddAssignOperatorArguments]
+    ![mTypeProxy mWithAccessorMap]
+    ![mTypeProxy mTypeForEnumeratedElement]
+  ] ;
+ end method ;
+
+#---------------------------------------------------------------------------*
 #! Semantic Type
 #---------------------------------------------------------------------------*
 
@@ -1180,6 +1169,35 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 #! Array
+#---------------------------------------------------------------------------*
+
+override method @arrayTypeForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader
+:
+  outHeader := [filewrapper typeGenerationTemplate.arrayTypeHeader1
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mElementTypeProxy identifierRepresentation]
+    !mDimension
+  ] ;
+  outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mTypeProxy mIsConcrete]
+    ![mTypeProxy mConstructorMap]
+    ![mTypeProxy mReaderMap]
+    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mInstanceMethodMap]
+    ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mEnumerationDescriptor]
+    ![mTypeProxy mHandledOperatorFlags]
+    ![mTypeProxy mAddAssignOperatorArguments]
+    ![mTypeProxy mWithAccessorMap]
+    ![mTypeProxy mTypeForEnumeratedElement]
+  ] ;
+ end method ;
+
 #---------------------------------------------------------------------------*
 
 override method @arrayTypeForGeneration appendSpecificImplementation
