@@ -86,8 +86,12 @@ const char * max_error_count_reached_exception::what (void) const throw () {
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
+static const char * kMaxWarning = "The maximum warning count is reached" ;
+
+//-----------------------------------------------------------------------------*
+
 const char * max_warning_count_reached_exception::what (void) const throw () {
-  return "The maximum warning count is reached" ;
+  return kMaxWarning ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -140,7 +144,7 @@ void incrementGeneratedFileCount (void) {
 
 int32_t maxErrorCount (void) {
   int32_t result = (int32_t) gOption_galgas_5F_builtin_5F_options_max_5F_errors.mValue ;
-  return (result == 0) ? 100 : result ;
+  return (result == 0) ? INT32_MAX : result ;
 }
 
 //-----------------------------------------------------------------------------*
@@ -155,7 +159,7 @@ int32_t totalErrorCount (void) {
 
 int32_t maxWarningCount (void) {
   int32_t result = (int32_t) gOption_galgas_5F_builtin_5F_options_max_5F_warnings.mValue ;
-  return (result == 0) ? 100 : result ;
+  return (result == 0) ? INT32_MAX : result ;
 }
 
 //-----------------------------------------------------------------------------*
@@ -222,7 +226,7 @@ void signalLexicalWarning (const C_SourceTextInString * inSourceTextPtr,
   C_String warningMessage ;
 //--- Add warning
   warningMessage << (gOption_galgas_5F_builtin_5F_options_verbose_5F_output.mValue ? "lexical " : "")
-                 << "warning: " << inLexicalWarningMessage << "\n" ;
+                 << "warning #" << cStringWithSigned (mTotalWarningCount) << ": " << inLexicalWarningMessage << "\n" ;
 //--- Print
   ggs_printWarning (inSourceTextPtr, inWarningLocation, warningMessage COMMA_THERE) ;
 //--- Warning max count reached ?
@@ -246,7 +250,7 @@ void signalLexicalError (const C_SourceTextInString * inSourceTextPtr,
 //--- Construct parsing error message
   C_String errorMessage ;
   errorMessage << (gOption_galgas_5F_builtin_5F_options_verbose_5F_output.mValue ? "lexical " : "")
-               << "error: " << inLexicalErrorMessage << "\n" ;
+               << "error #" << cStringWithSigned (mErrorTotalCount) << ": " << inLexicalErrorMessage << "\n" ;
 //--- Print
   ggs_printError (inSourceTextPtr, inErrorLocation, errorMessage COMMA_THERE) ;
 //--- Error max count reached ?
@@ -272,7 +276,7 @@ void signalParsingError (const C_SourceTextInString * inSourceTextPtr,
   C_String errorMessage ;
 //--- Construct parsing error message
   errorMessage << (gOption_galgas_5F_builtin_5F_options_verbose_5F_output.mValue ? "syntax " : "")
-               << "error: found " << inFoundTokenMessage <<", accepted:\n" ;  
+               << "error #" << cStringWithSigned (mErrorTotalCount) << ": found " << inFoundTokenMessage <<", accepted:\n" ;
   for (int32_t i=0 ; i<inAcceptedTokenNames.count () ; i++) {
     errorMessage << "-  " << inAcceptedTokenNames (i COMMA_HERE) << "\n" ;  
   }
@@ -428,7 +432,7 @@ void signalSemanticWarning (const C_SourceTextInString * inSourceTextPtr,
   C_String warningMessage ;
 //--- Add warning
   warningMessage << (gOption_galgas_5F_builtin_5F_options_verbose_5F_output.mValue ? "semantic " : "")
-                 << "warning: " << inWarningMessage << "\n" ;
+                 << "warning #" << cStringWithSigned (mTotalWarningCount) << ": " << inWarningMessage << "\n" ;
 //--- Print
   ggs_printWarning (inSourceTextPtr, inWarningLocation, warningMessage COMMA_THERE) ;
 //--- Warning max count reached ?
@@ -462,7 +466,7 @@ void signalSemanticError (const C_SourceTextInString * inSourceTextPtr,
 //--- Construct location error message
   C_String errorMessage ;
 //--- Print error
-  errorMessage << "semantic error: " << inErrorMessage << "\n" ;
+  errorMessage << "semantic error #" << cStringWithSigned (mErrorTotalCount) << ": " << inErrorMessage << "\n" ;
 //--- Print
   ggs_printError (inSourceTextPtr, inErrorLocation, errorMessage COMMA_THERE) ;
 //--- Error max count reached ?
@@ -479,7 +483,7 @@ void signalRunTimeError (const C_String & inRunTimeErrorMessage
   mErrorTotalCount ++ ;
 //--- Construct location error message
   C_String errorMessage ;
-  errorMessage << "Run Time Error: " << inRunTimeErrorMessage << "\n" ;
+  errorMessage << "Run Time Error #" << cStringWithSigned (mErrorTotalCount) << ": " << inRunTimeErrorMessage << "\n" ;
 //--- Print
   ggs_printError (NULL, C_LocationInSource (), errorMessage COMMA_THERE) ;
 //--- Error max count reached ?
@@ -496,7 +500,7 @@ void signalRunTimeWarning (const C_String & inWarningMessage
   mTotalWarningCount ++ ;
 //--- Construct location error message
   C_String warningMessage ;
-  warningMessage << "Run Time Warning: " << inWarningMessage << "\n" ;
+  warningMessage << "Run Time Warning #" << cStringWithSigned (mTotalWarningCount) << ": " << inWarningMessage << "\n" ;
 //--- Print
   ggs_printWarning (NULL, C_LocationInSource (), warningMessage COMMA_THERE) ;
 //--- Warning max count reached ?

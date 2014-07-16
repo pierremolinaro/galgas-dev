@@ -508,6 +508,7 @@ abstract method @semanticDeclarationForGeneration addHeaderInclusions ?!@string 
 #---------------------------------------------------------------------------*
 
 sortedlist @semanticDeclarationSortedListForGeneration {
+  @string mMessage ;
   @semanticDeclarationForGeneration mDeclaration ;
   @string mSortKey ;
 }{

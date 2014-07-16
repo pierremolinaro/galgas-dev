@@ -75,6 +75,7 @@ routine compileBeforeClause
   end for ;
 #---
   ioDecoratedDeclarationListForGeneration +=
+    !"routine before"
     ![@routineImplementationForGeneration new
       !false # Has no header
       !"proc-before"
@@ -129,6 +130,7 @@ routine compileProgramRules
       ?routineSignature
     ;
     ioDecoratedDeclarationListForGeneration +=
+      !"source rule " . ruleIndex
       ![@routineImplementationForGeneration new
         !false # Has no header
         !"proc-programrule"
@@ -174,6 +176,7 @@ routine compileAfterClause
   end for ;
 #---
   ioDecoratedDeclarationListForGeneration +=
+    !"proc-after"
     ![@routineImplementationForGeneration new
       !false # Has no header
       !"proc-after"

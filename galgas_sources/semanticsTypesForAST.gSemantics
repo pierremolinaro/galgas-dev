@@ -1,8 +1,6 @@
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  metamodel that defines expression                                        *
-#                                                                           *
-#  Copyright (C) 2007, ..., 2012 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2014 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -25,7 +23,7 @@ semantics semanticsTypesForAST :
 #---------------------------------------------------------------------------*
 
 once generateGalgas3InstructionTerminator -> @bool outResult :
-  outResult := true ;
+  outResult := false ;
 end once ;
 
 #---------------------------------------------------------------------------*
