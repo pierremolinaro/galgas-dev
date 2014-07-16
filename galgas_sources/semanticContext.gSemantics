@@ -1411,7 +1411,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
     !"null" # Default constructor
     !"mapproxy-" . mMapProxyTypeName
-    ![@headerKind twoHeaders]
+    ![@headerKind oneHeader]
   ] ;
 end method ;
 
@@ -1543,7 +1543,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
     !"default" # Default constructor
     !"externtype-" . mExternTypeName
-    ![@headerKind twoHeaders]
+    ![@headerKind oneHeader]
   ] ;
 end method ;
 
@@ -1796,7 +1796,7 @@ override method @graphDeclarationAST enterInSemanticContext
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
     !"emptyGraph" # Default constructor
     !"graph-" . mGraphTypeName
-    ![@headerKind twoHeaders]
+    ![@headerKind oneHeader]
   ] ;
 end method ;
 
@@ -1865,7 +1865,7 @@ override method @enumDeclarationAST enterInSemanticContext
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
     ![mConstantList mValueAtIndex !0]->string # Default constructor
     !"enum-" . mEnumTypeName
-    ![@headerKind twoHeaders]
+    ![@headerKind oneHeader]
   ] ;
 end method ;
 
@@ -2206,7 +2206,7 @@ override method @listDeclarationAST enterInSemanticContext
     !listElementTypeIndex # Type for enumerated element for "for" instruction
     !"emptyList" # Default constructor
     !"list-" . mListTypeName
-    ![@headerKind twoHeaders]
+    ![@headerKind oneHeader]
   ] ;
 end method ;
 
@@ -2333,7 +2333,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !listElementTypeIndex # Type for enumerated element for "for" instruction
     !"emptySortedList" # Default constructor
     !"sortedlist-" . mSortedListTypeName
-    ![@headerKind twoHeaders]
+    ![@headerKind oneHeader]
   ] ;
 end method ;
 
@@ -2977,7 +2977,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     !listElementTypeIndex # Type for enumerated element for "for" instruction
     !"emptyMap" # Default constructor
     !"listmap-" . mListmapTypeName
-    ![@headerKind twoHeaders]
+    ![@headerKind oneHeader]
   ] ;
 end method ;
 
