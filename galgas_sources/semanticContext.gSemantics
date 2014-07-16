@@ -2893,7 +2893,6 @@ override method @listmapDeclarationAST enterInSemanticContext
   ??@categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
-#  message "@listmapDeclarationAST enterInSemanticContext: @" . [mListmapTypeName string] . "\n" ;
 #--- Check associated map is really a list
   [ioSemanticContext->mTypeMap searchKey
     !mAssociatedListTypeName
@@ -2912,14 +2911,9 @@ override method @listmapDeclarationAST enterInSemanticContext
   @modifierMap modifierMap [emptyMap] ;
   @instanceMethodMap instanceMethodMap [emptyMap] ;
 #--- Associated map type index
-  @unifiedTypeMapProxy associatedListTypeIndex ;
-  [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mAssociatedListTypeName ?associatedListTypeIndex] ;
+  [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mAssociatedListTypeName ??@unifiedTypeMapProxy associatedListTypeIndex] ;
 #--- currentType type index
-  @unifiedTypeMapProxy currentTypeIndex ;
-  [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mListmapTypeName ?currentTypeIndex] ;
-#--- currentType type index
-  @unifiedTypeMapProxy stringTypeIndex ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioSemanticContext->mTypeMap !"string" ?stringTypeIndex] ;
+  [@unifiedTypeMapProxy makeProxyFromString !?ioSemanticContext->mTypeMap !"string" ??@unifiedTypeMapProxy stringTypeIndex] ;
 #--- readers
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"count" !"uint" !false ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"allKeys" !"stringset" !false ;

@@ -599,6 +599,7 @@ routine generateFewImplementationFiles
   ?!@stringset ioAllProductFileSet
 :
   const useOneHugeHeader := [option galgas_cli_options.generateOneHeader value] ;
+#  var includeConfigurationSet := [@stringset emptySet] ;
 #------------- all-declarations.cpp
   var n := 0 ;
   var fileIdx := 0 ;
@@ -607,6 +608,13 @@ routine generateFewImplementationFiles
   foreach inSemanticDeclarationSortedListForGeneration do
     if not [mDeclaration isPredefined] then
       [mDeclaration appendSpecificImplementation !?inclusionSet ??@string code] ;
+#      var tempInclusionSet := [@stringset emptySet] ;
+#      [mDeclaration appendSpecificImplementation !?tempInclusionSet ?*] ;
+#      var xx := "" ;
+#      for (s) in tempInclusionSet do
+#        xx += s ;
+#      end for ;
+#      includeConfigurationSet += !xx ;
       implementationString += code ;
       implementationString .= [mDeclaration appendTypeGenericImplementation] ;
       n ++ ;
@@ -644,6 +652,7 @@ routine generateFewImplementationFiles
       end if ;
     end if ;
   end foreach ;
+#  message [[includeConfigurationSet count] string] . " include header configurations.\n" ;
 #--- Last file
   if implementationString != "" then
     if useOneHugeHeader then

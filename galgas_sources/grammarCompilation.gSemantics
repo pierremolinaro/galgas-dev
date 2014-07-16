@@ -782,8 +782,40 @@ routine compileGrammarComponentGalgas3
     nonTerminalSymbolSortedListForGrammarAnalysis += !lkey !mNonTerminalIndex !mNonterminalSymbolParametersMap ;
   end foreach ;
 #---------------------------------------------------------- Header of implementation file
+# loop throuht all rules for detecting input arguments : as copy constructor is used in
+# generated code, we need to include header for the corresponding types
   var implementationFileHeader := [@stringset emptySet] ;
-  implementationFileHeader += !"all-declarations" ;
+  for * in nonTerminalMapForGrammarAnalysis do
+#    @nonterminalSymbolLabelMapForGrammarAnalysis mNonterminalSymbolParametersMap ;
+    for * in mNonterminalSymbolParametersMap do
+#        @signatureForGrammarAnalysis mFormalParametersList ;
+       for * in mFormalParametersList do
+         switch mFormalArgumentPassingModeForGrammarAnalysis
+         when argumentIn, argumentConstantIn :
+           const t := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mGalgasTypeNameForGrammarAnalysis] ;
+           [t addHeaderFileName !?implementationFileHeader] ;
+#           [@unifiedTypeMapProxy makeProxy !inSemanticContext->mTypeMap !mGalgasTypeNameForGrammarAnalysis ?*] ;
+#           [inSemanticContext->mTypeMap searchKey
+#             !mGalgasTypeNameForGrammarAnalysis
+#             ?*
+#             ?@unifiedTypeMapProxy type
+#             ?24*
+#           ] ;
+#    ?3*
+#    ?@typeKindEnum typeKindEnum
+#    ?@typedAttributeList listTypedAttributeList
+#    ?21*
+#  ] ;
+
+         when argumentInOut, argumentOut :
+#  @lstring mGalgasTypeNameForGrammarAnalysis ;
+         end switch ;
+       end for ;
+    end for ;
+  end for ;
+  if [option galgas_cli_options.generateOneHeader value] then
+    implementationFileHeader := [@stringset setWithString !"all-declarations"] ;
+  end if ;
   implementationFileHeader += !"grammar-" . inGrammarComponentRoot->mGrammarComponentName->string ;
   implementationFileHeader += !"lexique-" . lexiqueComponentName->string ;
 #---------------------------------------------------------- Analyze grammar
