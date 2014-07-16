@@ -20,6 +20,7 @@ semantics syntaxCompilation :
 import "semanticAnalysisOfSyntaxComponent.gSemantics" ;
 import "lexiqueCompilation.gSemantics" ;
 import "syntaxSLRgrammar.gGrammar" ;
+import "galgas_cli_options.gOptions" ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -349,12 +350,12 @@ end routine ;
 
 routine generateSyntaxComponentGalgas3
   ??@string inOutputDirectory
-  ??@bool inUseOneBigHeader
   ??@syntaxListForGeneration.element inSyntaxStructForGeneration
   ??@semanticContext inSemanticContext
   ?!@stringlist ioToolProductFileList
   ?!@stringset ioAllProductFileSet
 :
+  const generateOneHugeHeader := [option galgas_cli_options.generateOneHeader value] ;
   const componentName := inSyntaxStructForGeneration->mSyntaxComponentRoot->mSyntaxComponentName->string ;
   const lexiqueName := inSyntaxStructForGeneration->mSyntaxComponentRoot->mImportedLexiqueFilePath->string ;
 #------ Generate Header File
@@ -362,7 +363,7 @@ routine generateSyntaxComponentGalgas3
   [inSyntaxStructForGeneration->mSyntaxGeneration appendDeclaration1 !?headerInclusionSet ?@string headerString] ;
   [inSyntaxStructForGeneration->mSyntaxGeneration appendDeclaration2 !true !inOutputDirectory !?headerInclusionSet ??@string headerString2] ;
   headerString .= headerString2 ;
-  if inUseOneBigHeader then
+  if generateOneHugeHeader then
     headerInclusionSet := [@stringset setWithString !"all-declarations"] ;
   end if ;
   headerInclusionSet += !"syntax-" + componentName ;
@@ -465,7 +466,7 @@ routine generateSyntaxComponentGalgas3
     end if ;
   end foreach ;
 #--- Generate headers
-  if inUseOneBigHeader then
+  if generateOneHugeHeader then
     cppInclusionSet := [@stringset setWithString !"syntax-" + componentName] ;
   end if ;
   for * in inSemanticContext->mGrammarMap do

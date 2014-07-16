@@ -2,7 +2,7 @@
 #                                                                           *
 #  GALGAS Command Line Option Definition                                    *
 #                                                                           *
-#  Copyright (C) 2004, ..., 2013 Pierre Molinaro.                           *
+#  Copyright (C) 2004, ..., 2014 Pierre Molinaro.                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -21,11 +21,12 @@ option galgas_cli_options :
   @bool outputHTMLTypeListFile: 'T', "output-html-type-dump-file" -> "Output a HTML file that contains all defined types" ;
   @string create_project     : '\0', "create-project" -> "Create a new GALGAS Project" ;
   @bool printPredefinedLexicalActions: '\0', "print-predefined-lexical-actions" -> "Print the list of predefined lexical routines and functions" ;
-#  @bool generateCheckValidInstructions: '\0', "generate-instructions-for-checking-validity" -> "Generate instructions for Checking object validity (reserved for GALGAS development)" ;
   @string generatePredefinedTypes: '\0', "generate-predefined-types" -> "Generate C++ files of predefined types (reserved for GALGAS development)" ;
   @string extractLIBPMOption: '\0', "extract-libpm" -> "Extract embedded LIBPM at given path" ;
   
   @bool convertToGalgas3 : '\0', "convert-to-galgas-3" -> "Convert to GALGAS 3" ;
+  @bool generateOneHeader : '\0', "generate-one-cpp-header" -> "Generate one C++ header file for all declarations" ;
+  @bool generateManyFiles : '\0', "generate-many-cpp-files" -> "Generate many C++ implementation files" ;
 end option ;
 
 #---------------------------------------------------------------------------*

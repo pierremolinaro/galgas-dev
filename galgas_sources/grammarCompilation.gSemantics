@@ -685,7 +685,6 @@ end routine ;
 
 routine compileGrammarComponentGalgas3
   ??@string inOutputDirectory
-  ??@bool unused inUseOneHeaderFile
   ??@galgas3GrammarComponentListAST.element inGrammarComponentRoot
   ??@parsedSyntaxComponentMap inParsedSyntaxComponentMap
   ??@semanticContext inSemanticContext

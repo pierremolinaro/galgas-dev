@@ -270,7 +270,6 @@ override method @structDeclarationAST semanticAnalysis
     [!?attributeMap insertKey !mAttributeName !t] ;
   end foreach ;
   ioSemanticDeclarationListForGeneration +=
- #    !mIsPredefined
     ![@structTypeForGeneration new
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mStructTypeName]
       !typedAttributeList
@@ -1793,7 +1792,7 @@ override method @abstractCategoryModifierAST semanticAnalysis
     ![@abstractCategoryModifierForGeneration new
       !true # Generate Cpp header file
       !"setter-" . mTypeName . "-" . mAbstractCategoryModifierName
-      ![mTypeName string]
+      !selfType
       ![mAbstractCategoryModifierName string]
       !formalParameterListForGeneration
     ]
