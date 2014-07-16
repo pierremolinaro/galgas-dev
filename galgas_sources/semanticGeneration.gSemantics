@@ -1896,6 +1896,12 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override reader @abstractCategoryMethodForGeneration headerKind ->@headerKind outResult :
+  outResult := [@headerKind oneHeader] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
 override method @abstractCategoryMethodForGeneration appendSpecificImplementation
   ?!@stringset ioInclusionSet
   !@string outImplementation
@@ -2034,6 +2040,12 @@ end method ;
 #---------------------------------------------------------------------------*
 
 #! Setter
+
+#---------------------------------------------------------------------------*
+
+override reader @abstractCategoryModifierForGeneration headerKind ->@headerKind outResult :
+  outResult := [@headerKind oneHeader] ;
+end reader ;
 
 #---------------------------------------------------------------------------*
 
@@ -2180,6 +2192,12 @@ end method ;
 #---------------------------------------------------------------------------*
 
 #! Getter
+
+#---------------------------------------------------------------------------*
+
+override reader @abstractCategoryReaderForGeneration headerKind ->@headerKind outResult :
+  outResult := [@headerKind oneHeader] ;
+end reader ;
 
 #---------------------------------------------------------------------------*
 
