@@ -552,13 +552,6 @@ routine generateFewImplementationFiles
   foreach inSemanticDeclarationSortedListForGeneration do
     if not [mDeclaration isPredefined] then
       [mDeclaration appendSpecificImplementation !?inclusionSet ??@string code] ;
-#      var tempInclusionSet := [@stringset emptySet] ;
-#      [mDeclaration appendSpecificImplementation !?tempInclusionSet ?*] ;
-#      var xx := "" ;
-#      for (s) in tempInclusionSet do
-#        xx += s ;
-#      end for ;
-#      includeConfigurationSet += !xx ;
       implementationString += code ;
       implementationString .= [mDeclaration appendTypeGenericImplementation] ;
       n ++ ;

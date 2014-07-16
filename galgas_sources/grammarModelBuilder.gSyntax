@@ -103,7 +103,6 @@ rule <grammar_component_start_symbol>
     !mStartSymbol
     !mLabelList
     !mUnusedNonterminalList
-    !here
     !hasTranslateFeature
   ] ;
   $grammar$ :> ?* ?* ;

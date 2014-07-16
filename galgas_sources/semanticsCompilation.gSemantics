@@ -374,7 +374,6 @@ routine compileSemanticsComponentAST
   buildSemanticContext
     ![inSourceFile string]
     !semanticDeclarationListWithPredefinedTypes
-    ![inSemanticsComponentRoot mEndOfSourceFile]
     ?@semanticContext semanticContext
   ;
 #------ Build option component map for analysis

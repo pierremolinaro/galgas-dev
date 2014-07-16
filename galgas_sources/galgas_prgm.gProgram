@@ -498,7 +498,6 @@ indexing with projectLL1grammar
     performProjectGlobalCheckings
       !parsedComponentStruct
       !inProjectSourceFile->string
-      ![projectComponentAST mEndOfSourceFile]
     ;
   end if ;
 #--- Update targets
@@ -630,14 +629,12 @@ indexing with galgas3ProjectGrammar
   var parsedSyntaxComponentMap := [@parsedSyntaxComponentMap emptyMap] ;
   var syntaxListForGeneration := [@syntaxListForGeneration emptyList] ;
   if [@uint errorCount] == 0 then
-    for component in declarationAST->mSyntaxComponentList do
-      compileSyntaxComponentGalgas3
-        !component
-        !semanticContext
-        !?parsedSyntaxComponentMap
-        !?syntaxListForGeneration
-      ;
-    end for ;
+    compileAllSyntaxComponentsGalgas3
+      !declarationAST->mSyntaxComponentList
+      !semanticContext
+      !?parsedSyntaxComponentMap
+      !?syntaxListForGeneration
+    ;
   end if ;
 #---------------------------------- Compile grammar components
   if [@uint errorCount] == 0 then
@@ -691,14 +688,16 @@ indexing with galgas3ProjectGrammar
     !?allProductFileSet
   ;
 #---------------------------------- Remove useless files
-  var allActualFileSet := [@stringset emptySet] ;
-  foreach [productDirectory regularFiles !false] do
-    allActualFileSet += !mValue ;
-  end foreach ;
-  const uselessFileSet := allActualFileSet - allProductFileSet ;
-  foreach uselessFileSet do
-    [@string deleteFile !productDirectory . "/" . key] ;
-  end foreach ;
+  if 0 == [@uint errorCount] then
+    var allActualFileSet := [@stringset emptySet] ;
+    foreach [productDirectory regularFiles !false] do
+      allActualFileSet += !mValue ;
+    end foreach ;
+    const uselessFileSet := allActualFileSet - allProductFileSet ;
+    foreach uselessFileSet do
+      [@string deleteFile !productDirectory . "/" . key] ;
+    end foreach ;
+  end if ;
 #---------------------------------- Update targets
   if 0 == [@uint errorCount] then
     @stringset handledExtensionSet [emptySet] ;

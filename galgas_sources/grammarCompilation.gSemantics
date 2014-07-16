@@ -483,7 +483,6 @@ extern routine grammarAnalysisAndGeneration
   ??@lstring inGrammarClass
   ??@uint startSymbolIndex
   ??@string inLexiqueName
-  ??@location endOfSourceFile
   ??@terminalSymbolsMapForGrammarAnalysis inTerminalSymbolMap
   ??@syntaxComponentListForGrammarAnalysis ioSyntaxComponentsList
   ??@unusedNonTerminalSymbolMapForGrammarAnalysis inUnusedNonTerminalSymbolsForGrammar
@@ -626,7 +625,6 @@ routine compileGrammarComponentFromAST
     ![inGrammarComponentRoot mGrammarClass]
     !startSymbolIndex
     !lexiqueComponentName
-    ![inGrammarComponentRoot mEndOfSourceText]
     !actuallyUsedTerminalSymbolMap
     !syntaxComponentListForGrammarAnalysis
     !unusedNonTerminalSymbolsForGrammar
@@ -813,7 +811,6 @@ routine compileGrammarComponentGalgas3
     ![inGrammarComponentRoot mGrammarClass]
     !startSymbolIndex
     !lexiqueComponentName->string
-    ![inGrammarComponentRoot mEndOfSourceText]
     !actuallyUsedTerminalSymbolMap
     !syntaxComponentListForGrammarAnalysis
     !unusedNonTerminalSymbolsForGrammar

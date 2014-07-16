@@ -86,7 +86,6 @@ rule <declaration>
     !mStartSymbol
     !mLabelList
     !mUnusedNonterminalList
-    !here
     !hasTranslateFeature
   ;
 end rule ;

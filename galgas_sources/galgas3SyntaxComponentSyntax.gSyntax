@@ -51,9 +51,14 @@ rule <declaration>
 #--- Semantics Component Name
   $identifier$ ??@lstring mSyntaxComponentName ;
 #--- Imported lexique
-  $($ ;
-  $identifier$ ??@lstring importedLexiqueReference  ;
-  $)$ ;
+  @lstring importedLexiqueReference ;
+  select
+    importedLexiqueReference := ["" nowhere] ;
+  or
+    $($ ;
+    $identifier$ ?importedLexiqueReference  ;
+    $)$ ;
+  end select ;
 #--- Feature 'translate'
   @bool hasTranslateFeature ;
   select
@@ -85,7 +90,6 @@ rule <declaration>
     !mNonterminalDeclarationList
     !mRuleList
     ![@semanticDeclarationListAST emptyList] # inutile GALGAS 3
-    !here
     !hasTranslateFeature
   ;
 end rule ;

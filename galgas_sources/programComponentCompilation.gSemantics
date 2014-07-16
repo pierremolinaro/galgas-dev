@@ -236,7 +236,6 @@ routine compileProgramComponentFromAST
   buildSemanticContext
     ![inSourceFile string]
     !semanticDeclarationListWithPredefinedTypes
-    ![inProgramComponentAST mEndOfSourceFile]
     ?semanticContext
   ;
 #--- Perform semantic analysis of grammar components
@@ -437,35 +436,6 @@ routine compileProgramComponentGalgas3
       !programFileName
       ![inclusionSet1 stringList] + [inclusionSet2 stringList]
     ] ;
-
-#    var headerIncludeList := [@stringlist emptyList] ;
-#    if useOneHugeHeader then
-#      headerIncludeList += !"all-declarations" ;
-#    end if ;
-#    @string headerString := [filewrapper programFileGenerationTemplate.programFileHeader
-#      !programFileName
-#      !headerIncludeList
-#    ] ;
-#    foreach decoratedDeclarationListForGeneration do
-#      var inclusionSet := [@stringset emptySet] ;
-#      [mDeclaration appendDeclaration1 !?inclusionSet ??@string code] ;
-#      if not useOneHugeHeader then
-#        for (s) in inclusionSet do
-#          headerString .= "#include \"" . s . ".h\"\n" ;
-#        end for ;
-#      end if ;
-#      headerString .= code ;
-#    end foreach ;
-#    foreach decoratedDeclarationListForGeneration do
-#      var inclusionSet2 := [@stringset emptySet] ;
-#      [mDeclaration appendDeclaration2 !true !inOutputDirectory !?inclusionSet2 ??@string headerString2] ;
-#      if not useOneHugeHeader then
-#        for (s) in inclusionSet2 do
-#          headerString .= "#include \"" . s . ".h\"\n" ;
-#        end for ;
-#      end if ;
-#      headerString .= headerString2 ;
-#    end foreach ;
     ioAllProductFileSet += !programFileName + ".h" ;
     [@string generateFileWithPattern
       !inOutputDirectory
