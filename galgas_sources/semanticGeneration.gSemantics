@@ -2005,6 +2005,12 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override reader @overridingCategoryMethodForGeneration headerKind ->@headerKind outResult :
+  outResult := [@headerKind noHeader] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
 override method @overridingCategoryMethodForGeneration appendSpecificImplementation
   ?!@stringset ioInclusionSet
   !@string outImplementation
@@ -2142,6 +2148,12 @@ override method @categoryModifierForGeneration appendSpecificImplementation
     ] ;
   end if ;
 end method ;
+
+#---------------------------------------------------------------------------*
+
+override reader @overridingCategoryModifierForGeneration headerKind ->@headerKind outResult :
+  outResult := [@headerKind noHeader] ;
+end reader ;
 
 #---------------------------------------------------------------------------*
 
@@ -2299,6 +2311,12 @@ override method @categoryReaderForGeneration appendSpecificImplementation
     ] ;
   end if ;
 end method ;
+
+#---------------------------------------------------------------------------*
+
+override reader @overrideCategoryReaderForGeneration headerKind ->@headerKind outResult :
+  outResult := [@headerKind noHeader] ;
+end reader ;
 
 #---------------------------------------------------------------------------*
 
