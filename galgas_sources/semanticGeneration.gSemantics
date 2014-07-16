@@ -1151,16 +1151,26 @@ method @semanticDeclarationForGeneration appendDeclaration2
 end method ;
 
 #---------------------------------------------------------------------------*
-#                                                                           *
-# A P P E N D    G E N E R I C    T Y P E    I M P L E M E N T A T I O N    *
-#                                                                           *
-#  This code is common for all types                                        *
+
+#abstract reader @semanticDeclarationForGeneration headerKind ->@headerKind outKind ;
+
 #---------------------------------------------------------------------------*
 
 reader @semanticDeclarationForGeneration appendTypeGenericImplementation ->@string outImplementation :
   outImplementation := "" ;
 end reader ;
 
+#---------------------------------------------------------------------------*
+
+method @semanticDeclarationForGeneration appendSpecificImplementation
+  ?!@stringset unused  ioInclusionSet
+  !@string outImplementation
+:
+  outImplementation := "" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+#! Semantic Type
 #---------------------------------------------------------------------------*
 
 override reader @semanticTypeForGeneration appendTypeGenericImplementation ->@string outImplementation :
@@ -1172,20 +1182,14 @@ override reader @semanticTypeForGeneration appendTypeGenericImplementation ->@st
   ] ;
 end reader ;
 
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-# A P P E N D    S P E C I F I C    I M P L E M E N T A T I O N             *
-#                                                                           *
 #---------------------------------------------------------------------------*
 
-method @semanticDeclarationForGeneration appendSpecificImplementation
-  ?!@stringset unused  ioInclusionSet
-  !@string outImplementation
-:
-  outImplementation := "" ;
-end method ;
+#override reader @semanticTypeForGeneration headerKind ->@headerKind outKind :
+#  outKind := [mTypeProxy mHeaderKind] ;
+#end reader ;
 
+#---------------------------------------------------------------------------*
+#! Array
 #---------------------------------------------------------------------------*
 
 override method @arrayTypeForGeneration appendSpecificImplementation
