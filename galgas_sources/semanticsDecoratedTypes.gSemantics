@@ -1470,7 +1470,7 @@ class @overridingCategoryMethodForGeneration extends @semanticDeclarationWithHea
 #---------------------------------------------------------------------------*
 
 class @abstractCategoryModifierForGeneration extends @semanticDeclarationWithHeaderForGeneration {
-  @string mTypeName ;
+  @unifiedTypeMapProxy mReceiverType ;
   @string mAbstractCategoryModifierName ;
   @formalParameterListForGeneration mAbstractCategoryModifierFormalParameterList ;
 }

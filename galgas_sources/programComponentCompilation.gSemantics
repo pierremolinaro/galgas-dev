@@ -375,7 +375,6 @@ end routine ;
 
 routine compileProgramComponentGalgas3
   ??@string inOutputDirectory
-  ??@bool inUseOneBigHeader
   ??@prologueEpilogueList inPrologueList
   ??@programRuleList inProgramRules
   ??@prologueEpilogueList inEpilogueList
@@ -383,6 +382,7 @@ routine compileProgramComponentGalgas3
   ?!@stringlist ioToolProductFileList
   ?!@stringset ioAllProductFileSet
 :
+  const useOneHugeHeader := [option galgas_cli_options.generateOneHeader value] ;
 #--- Analysis context
   const analysisContext := [@analysisContext new
     !inSemanticContext
@@ -415,41 +415,61 @@ routine compileProgramComponentGalgas3
 #------ Generate Header File
   const programFileName := "program" ;
   if [@uint errorCount] == 0 then
-    var headerIncludeList := [@stringlist emptyList] ;
-    if inUseOneBigHeader then
-      headerIncludeList += !"all-declarations" ;
-    end if ;
-    @string headerString := [filewrapper programFileGenerationTemplate.programFileHeader
-      !programFileName
-      !headerIncludeList
-    ] ;
+    var inclusionSet1 := [@stringset emptySet] ;
+    var inclusionSet2 := [@stringset emptySet] ;
+    var headerString := "" ;
     foreach decoratedDeclarationListForGeneration do
-      var inclusionSet := [@stringset emptySet] ;
-      [mDeclaration appendDeclaration1 !?inclusionSet ??@string code] ;
-      if not inUseOneBigHeader then
-        for (s) in inclusionSet do
-          headerString .= "#include \"" . s . ".h\"\n" ;
-        end for ;
-      end if ;
+      [mDeclaration appendDeclaration1 !?inclusionSet1 ??@string code] ;
       headerString .= code ;
     end foreach ;
     foreach decoratedDeclarationListForGeneration do
-      var inclusionSet2 := [@stringset emptySet] ;
       [mDeclaration appendDeclaration2 !true !inOutputDirectory !?inclusionSet2 ??@string headerString2] ;
-      if not inUseOneBigHeader then
-        for (s) in inclusionSet2 do
-          headerString .= "#include \"" . s . ".h\"\n" ;
-        end for ;
-      end if ;
       headerString .= headerString2 ;
     end foreach ;
+    if useOneHugeHeader then
+      inclusionSet1 := [@stringset setWithString !"all-declarations"] ;
+      inclusionSet2 := [@stringset emptySet] ;
+    end if ;
+    const headerIncludes:= [filewrapper programFileGenerationTemplate.programFileHeader
+      !programFileName
+      ![inclusionSet1 stringList] + [inclusionSet2 stringList]
+    ] ;
+
+#    var headerIncludeList := [@stringlist emptyList] ;
+#    if useOneHugeHeader then
+#      headerIncludeList += !"all-declarations" ;
+#    end if ;
+#    @string headerString := [filewrapper programFileGenerationTemplate.programFileHeader
+#      !programFileName
+#      !headerIncludeList
+#    ] ;
+#    foreach decoratedDeclarationListForGeneration do
+#      var inclusionSet := [@stringset emptySet] ;
+#      [mDeclaration appendDeclaration1 !?inclusionSet ??@string code] ;
+#      if not useOneHugeHeader then
+#        for (s) in inclusionSet do
+#          headerString .= "#include \"" . s . ".h\"\n" ;
+#        end for ;
+#      end if ;
+#      headerString .= code ;
+#    end foreach ;
+#    foreach decoratedDeclarationListForGeneration do
+#      var inclusionSet2 := [@stringset emptySet] ;
+#      [mDeclaration appendDeclaration2 !true !inOutputDirectory !?inclusionSet2 ??@string headerString2] ;
+#      if not useOneHugeHeader then
+#        for (s) in inclusionSet2 do
+#          headerString .= "#include \"" . s . ".h\"\n" ;
+#        end for ;
+#      end if ;
+#      headerString .= headerString2 ;
+#    end foreach ;
     ioAllProductFileSet += !programFileName + ".h" ;
     [@string generateFileWithPattern
       !inOutputDirectory
       !programFileName + ".h"
       !"//"
       !"\n\n" # Defaut user zone1
-      !headerString
+      !headerIncludes . headerString
       !"\n\n" # Defaut user zone2
       !"#endif\n"
     ] ;
@@ -463,7 +483,7 @@ routine compileProgramComponentGalgas3
       [mDeclaration appendSpecificImplementation !?inclusionSet ??@string code] ;
       implementationString += code ;
     end foreach ;
-    if inUseOneBigHeader then
+    if useOneHugeHeader then
       inclusionSet := [@stringset emptySet] ;
       for * in inSemanticContext->mOptionComponentMapForSemanticAnalysis do
         if not mIsPredefined then
