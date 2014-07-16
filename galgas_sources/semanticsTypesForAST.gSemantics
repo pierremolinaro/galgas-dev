@@ -24,6 +24,12 @@ semantics semanticsTypesForAST :
 
 #---------------------------------------------------------------------------*
 
+once generateGalgas3InstructionTerminator -> @bool outResult :
+  outResult := true ;
+end once ;
+
+#---------------------------------------------------------------------------*
+
 abstract class @semanticExpressionAST {
 }
 

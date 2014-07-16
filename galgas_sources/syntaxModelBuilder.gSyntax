@@ -365,6 +365,7 @@ rule <syntax_instruction>
   const endOf_repeat_instruction := here ;
   $repeat$ :> ?* ?* ;
   $;$ :> ?* ?* ;
+  send if generateGalgas3InstructionTerminator [] then "%repeat" else "" end ;
   outInstruction := [@repeatInstruction new
     !mRepeatInstructionLocation
     !mRepeatedInstructionList
@@ -403,6 +404,7 @@ rule <syntax_instruction>
   const endOf_select_instruction := here ;
   $select$ :> ?* ?* ;
   $;$ :> ?* ?* ;
+  send if generateGalgas3InstructionTerminator [] then "%select" else "" end ;
   outInstruction := [@selectInstruction new
     !mSelectInstructionLocation
     !mSelectBranchList
@@ -440,6 +442,7 @@ rule <syntax_instruction>
   const endOfInstruction := here ;
   $parse$ :> ?* ?* ;
   $;$ :> ?* ?* ;
+  send if generateGalgas3InstructionTerminator [] then "%parse" else "" end ;
   outInstruction := [@parseRewindInstruction new
     !instructionLocation
     !mParseDoBranchList
@@ -506,6 +509,7 @@ rule <syntax_instruction>
   $end$ ;
   $parse$ :> ?* ?* ;
   $;$ :> ?* ?* ;
+  send if generateGalgas3InstructionTerminator [] then "%parse" else "" end ;
   outInstruction := [@parseWhenInstruction new
     !instructionLocation
     !whenExpression
@@ -541,6 +545,7 @@ rule <syntax_instruction>
   const endOfInstructionList := here ;
   $parse$ :> ?* ?* ;
   $;$ :> ?* ?* ;
+  send if generateGalgas3InstructionTerminator [] then "%parse" else "" end ;
   outInstruction := [@parseLoopInstruction new
     !instructionLocation
     !variantExpression
