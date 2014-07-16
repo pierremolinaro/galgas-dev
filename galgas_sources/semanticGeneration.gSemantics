@@ -1152,10 +1152,6 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-#abstract reader @semanticDeclarationForGeneration headerKind ->@headerKind outKind ;
-
-#---------------------------------------------------------------------------*
-
 reader @semanticDeclarationForGeneration appendTypeGenericImplementation ->@string outImplementation :
   outImplementation := "" ;
 end reader ;
@@ -1181,12 +1177,6 @@ override reader @semanticTypeForGeneration appendTypeGenericImplementation ->@st
     ![mTypeProxy mHandledOperatorFlags]
   ] ;
 end reader ;
-
-#---------------------------------------------------------------------------*
-
-#override reader @semanticTypeForGeneration headerKind ->@headerKind outKind :
-#  outKind := [mTypeProxy mHeaderKind] ;
-#end reader ;
 
 #---------------------------------------------------------------------------*
 #! Array
