@@ -345,7 +345,6 @@ routine generatePredefinedTypeFiles ??@string inDirectory :
       buildSemanticContext
         !""
         !predefinedTypeASTlist
-        !here
         ?semanticContext
       ;
     #------ Semantic Analysis

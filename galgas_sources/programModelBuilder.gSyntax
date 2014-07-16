@@ -120,7 +120,6 @@ rule <program_component_start_symbol> !@programComponentAST outProgramComponentR
   end repeat ;
 #---
   $end$ :> ?* ?* ;
-  const @location endOfSourceFile := here ;
   $program$ :> ?* ?* ;
   $;$ :> ?* ?* ;
   outProgramComponentRoot := [@programComponentAST new
@@ -130,7 +129,6 @@ rule <program_component_start_symbol> !@programComponentAST outProgramComponentR
     !epilogueList
     !mProgramRules
     !mSemanticDeclarations
-    !endOfSourceFile
   ] ;
 end rule ;
 

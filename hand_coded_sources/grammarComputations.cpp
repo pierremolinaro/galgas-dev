@@ -695,7 +695,6 @@ routine_grammarAnalysisAndGeneration (const GALGAS_stringset inImplementationFil
                                       const GALGAS_lstring inGrammarClass,
                                       const GALGAS_uint inOriginalGrammarStartSymbol,
                                       const GALGAS_string inLexiqueName,
-                                      const GALGAS_location inErrorLocation,
                                       const GALGAS_terminalSymbolsMapForGrammarAnalysis inTerminalSymbolMap,
                                       const GALGAS_syntaxComponentListForGrammarAnalysis inSyntaxComponentsList,
                                       const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis inUnusedNonTerminalSymbolsForGrammar,
@@ -715,6 +714,8 @@ routine_grammarAnalysisAndGeneration (const GALGAS_stringset inImplementationFil
     #ifdef LOG_GRAMMAR_COMPUTATIONS
       printf ("MARK AND SWEEP BDD NODES DONE\n") ; fflush (stdout) ;
     #endif
+
+    const GALGAS_location inErrorLocation = inTargetFileName.reader_location (HERE) ;
 
     TC_UniqueArray <C_String> implementationFileHeaderList ;
     cEnumerator_stringset enumerator_30239 (inImplementationFileHeaderSet, kEnumeration_up) ;

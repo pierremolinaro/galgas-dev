@@ -70,7 +70,6 @@ routine compileSyntaxComponentFromAST
   buildSemanticContext
     ![inSourceFile string]
     !semanticDeclarationListWithPredefinedTypes
-    ![inSyntaxComponentRoot mEndOfSourceFile]
     ?semanticContext
   ;
 #--- Perform semantic analysis of grammar components
@@ -296,6 +295,63 @@ end routine ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+routine compileAllSyntaxComponentsGalgas3
+  ??@galgas3SyntaxComponentListAST inAllSyntaxComponents
+  ??@semanticContext inSemanticContext
+  ?!@parsedSyntaxComponentMap ioParsedSyntaxComponentMap
+  ?!@syntaxListForGeneration ioSyntaxListForGeneration
+:
+#--- get together syntax components with the same name
+  var syntaxComponentNames := [@stringset emptySet] ; 
+  for component in inAllSyntaxComponents do
+    syntaxComponentNames += !component->mSyntaxComponentName->string ;
+  end for ;
+  var allGroupedSyntaxComponents := [@galgas3SyntaxComponentListAST emptyList] ;
+  for (name) in syntaxComponentNames do
+    var componentName := ["" nowhere] ;
+    var importedLexiqueName := ["" nowhere] ; 
+    var nonterminalDeclarationList := [@nonterminalDeclarationListAST emptyList] ;
+    var ruleList := [@syntaxRuleListAST emptyList] ;
+    var hasTranslateFeature := false ;
+    for component in inAllSyntaxComponents do
+      if component->mSyntaxComponentName->string == name then
+        componentName := component->mSyntaxComponentName ;
+        if importedLexiqueName->string == "" then
+          importedLexiqueName := component->mImportedLexiqueFilePath ;
+        elsif (component->mImportedLexiqueFilePath->string != "") & (importedLexiqueName->string != component->mImportedLexiqueFilePath->string) then
+          error component->mImportedLexiqueFilePath : "lexique name is different from that previously declared ('" .  importedLexiqueName . "')" ;
+          error importedLexiqueName : "previously declaration is here" ;
+        end if ;
+        nonterminalDeclarationList += component->mNonterminalDeclarationList ;
+        ruleList += component->mRuleList ;
+        if component->mHasTranslateFeature then
+          hasTranslateFeature := true ;
+        end if ;
+      end if ;
+    end for ;
+    allGroupedSyntaxComponents +=
+      !componentName
+      !importedLexiqueName
+      ![@lstringlist emptyList] # Unused in GALGAS 3
+      !nonterminalDeclarationList
+      !ruleList
+      ![@semanticDeclarationListAST emptyList] # Unused in GALGAS 3
+      !hasTranslateFeature
+    ;
+  end for ;
+#---- Compile
+  for component in allGroupedSyntaxComponents do
+    compileSyntaxComponentGalgas3
+      !component
+      !inSemanticContext
+      !?ioParsedSyntaxComponentMap
+      !?ioSyntaxListForGeneration
+    ;
+  end for ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
 routine compileSyntaxComponentGalgas3
   ??@galgas3SyntaxComponentListAST.element inSyntaxComponentRoot
   ??@semanticContext inSemanticContext
@@ -369,14 +425,6 @@ routine generateSyntaxComponentGalgas3
   end if ;
   headerInclusionSet += !"syntax-" + componentName ;
   headerInclusionSet += !"lexique-" + lexiqueName ;
-#  for * in inSemanticContext->mGrammarMap do
-#    headerInclusionSet += !"grammar-" . lkey->string ;
-#  end for ;
-#  for * in inSemanticContext->mOptionComponentMapForSemanticAnalysis do
-#    if not mIsPredefined then
-#      headerInclusionSet += !"option-" . lkey->string ;
-#    end if ;
-#  end for ;
   const header := [filewrapper syntaxFileGenerationTemplate.syntaxFileHeaderGalgas3
     !componentName
     !headerInclusionSet

@@ -3592,7 +3592,6 @@ end method ;
 routine buildSemanticContext
   ??@string inSourceFile
   ??@semanticDeclarationListAST inSemanticDeclarationList
-  ??@location inEndOfSourceFile
   !@semanticContext outSemanticContext
 :
 #------ Create associated type (@TYPE.element) for lists, maps, ...
@@ -3619,10 +3618,10 @@ routine buildSemanticContext
     ] ;  
   end foreach ;
   if [semanticTypePrecedenceGraph undefinedNodeCount] > 0 then
+    outSemanticContext := [@semanticContext default] ;
     foreach [semanticTypePrecedenceGraph undefinedNodeReferenceList] do
-      error mValue : "the '" . mValue . "' type is not defined" ;
+      error mValue : "the '" . mValue . "' type is not defined" : outSemanticContext ;
     end foreach ;
-    error inEndOfSourceFile : "semantic analysis not performed, due to undefined type error(s)" : outSemanticContext ;
   else
     [semanticTypePrecedenceGraph topologicalSort
       ?@semanticDeclarationListAST sortedSemanticDeclarationListAST
@@ -3635,7 +3634,7 @@ routine buildSemanticContext
       foreach unsortedSemanticDeclarationListAST do
         s .= "\n-  " . [mSemanticDeclaration keyRepresentation] ;
       end foreach ;
-      error inEndOfSourceFile : s : outSemanticContext ;
+      error ["" nowhere] : s : outSemanticContext ;
     else
     #--- Add category override
       sortedSemanticDeclarationListAST .= categoryOverrideDefinitionList ;
