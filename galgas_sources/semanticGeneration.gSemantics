@@ -1932,7 +1932,7 @@ override method @abstractCategoryMethodForGeneration appendSpecificImplementatio
 :
   ioInclusionSet += !"method-" . [mReceiverType key]. "-" . mAbstractCategoryMethodName ;
   [mReceiverType addHeaderFileName !?ioInclusionSet] ;
-  for * in mAbstractCategoryMethodFormalParameterList do
+  for () in mAbstractCategoryMethodFormalParameterList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet] ;
   end for ;
   outImplementation := [filewrapper semanticComponentGenerationTemplate.abstractCategoryMethodImplementation
@@ -2004,7 +2004,7 @@ override method @categoryMethodForGeneration appendSpecificImplementation
     ] ; 
   else
     [mReceiverType addHeaderFileName !?ioInclusionSet] ;
-    for * in mCategoryMethodFormalParameterList do
+    for () in mCategoryMethodFormalParameterList do
       [mFormalArgumentType addHeaderFileName !?ioInclusionSet] ;
     end for ;
     @unifiedTypeMapProxy baseType := mReceiverType ;
@@ -2258,7 +2258,7 @@ override method @abstractCategoryReaderForGeneration appendSpecificImplementatio
   ioInclusionSet += !"getter-" . [mReceiverType key]. "-" . mAbstractCategoryReaderName ;
   [mResultType addHeaderFileName !?ioInclusionSet] ;
   [mReceiverType addHeaderFileName !?ioInclusionSet] ;
-  for * in mAbstractCategoryReaderFormalParameterList do
+  for () in mAbstractCategoryReaderFormalParameterList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet] ;
   end for ;
   outImplementation := [filewrapper semanticComponentGenerationTemplate.abstractCategoryReaderImplementation
@@ -2333,7 +2333,7 @@ override method @categoryReaderForGeneration appendSpecificImplementation
   else
     [mResultType addHeaderFileName !?ioInclusionSet] ; 
     [mReceiverType addHeaderFileName !?ioInclusionSet] ;
-    for * in mCategoryReaderFormalParameterList do
+    for () in mCategoryReaderFormalParameterList do
       [mFormalArgumentType addHeaderFileName !?ioInclusionSet] ;
     end for ;
     @unifiedTypeMapProxy baseType := mReceiverType ;
@@ -2433,7 +2433,7 @@ routine recursivlyEnumerateRegularFile
       ioRegularBinaryContentIndexStringList += ![mWrapperFileIndex string] ;
     end if ;
   end foreach ;
-  for * in inFilewrapperDirectoryMap do
+  for () in inFilewrapperDirectoryMap do
     recursivlyEnumerateRegularFile
       !mRegularFileMap
       !mDirectoryMap

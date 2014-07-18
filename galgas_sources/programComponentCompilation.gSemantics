@@ -56,7 +56,7 @@ routine compileBeforeClause
 :
 #--- Compile 'before' routines
   var semanticInstructionListForGeneration := [@semanticInstructionListForGeneration emptyList] ;
-  for * in inPrologueList do
+  for () in inPrologueList do
     analyzeRoutineBody
       !inAnalysisContext
       ![@formalParameterListAST emptyList] # Routine signature : no argument
@@ -157,7 +157,7 @@ routine compileAfterClause
 :
 #--- Compile 'before' routines
   var semanticInstructionListForGeneration := [@semanticInstructionListForGeneration emptyList] ;
-  for * in inEpilogueList do
+  for () in inEpilogueList do
     analyzeRoutineBody
       !inAnalysisContext
       ![@formalParameterListAST emptyList] # Routine signature : no argument
@@ -458,12 +458,12 @@ routine compileProgramComponentGalgas3
     end foreach ;
     if useOneHugeHeader then
       inclusionSet := [@stringset emptySet] ;
-      for * in inSemanticContext->mOptionComponentMapForSemanticAnalysis do
+      for () in inSemanticContext->mOptionComponentMapForSemanticAnalysis do
         if not mIsPredefined then
           inclusionSet += !"option-" . lkey->string ;
         end if ;
       end for ;
-      for * in inSemanticContext->mGrammarMap do
+      for () in inSemanticContext->mGrammarMap do
         inclusionSet += !"grammar-" . lkey->string ;
       end for ;
     end if ;

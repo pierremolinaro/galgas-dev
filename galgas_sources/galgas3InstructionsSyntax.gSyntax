@@ -579,7 +579,6 @@ rule <for_instruction_enumerated_object>
     repeat
       <for_instruction_element> !?elementList ;
     while
-#      $,$ ;
     end repeat ;
     select
       endsWithEllipsis := false ;
@@ -619,16 +618,16 @@ end rule ;
 rule <for_instruction_enumerated_object>
   !@abstractEnumeratedCollectionAST outEnumeratedObject
 :
-  $*$ ;
-  $in$ ;
-  <expression> ??@semanticExpressionAST enumeratedExpression ;
+  $($ ;
+  $)$ ;
   @lstring prefix ;
   select
     prefix := ["" nowhere] ;
   or
-    $:$ ;
     $identifier$ ?prefix ;
   end select ;
+  $in$ ;
+  <expression> ??@semanticExpressionAST enumeratedExpression ;
   outEnumeratedObject := [@enumeratedCollectionImplicitVarInExpAST new
     !prefix
     !enumeratedExpression

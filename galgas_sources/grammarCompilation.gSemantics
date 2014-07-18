@@ -783,9 +783,9 @@ routine compileGrammarComponentGalgas3
 #  Loop throuht all rules for detecting input arguments: as the generated C++ code uses a copy constructor
 # for these arguments, we need to include the corresponding type declaration.
   var implementationFileHeader := [@stringset emptySet] ;
-  for * in nonTerminalMapForGrammarAnalysis do
-    for * in mNonterminalSymbolParametersMap do
-      for * in mFormalParametersList do
+  for () in nonTerminalMapForGrammarAnalysis do
+    for () in mNonterminalSymbolParametersMap do
+      for () in mFormalParametersList do
         switch mFormalArgumentPassingModeForGrammarAnalysis
         when argumentIn, argumentConstantIn :
           const t := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mGalgasTypeNameForGrammarAnalysis] ;
