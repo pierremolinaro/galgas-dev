@@ -102,7 +102,7 @@ void C_HTML_FileWrite::performActualCharArrayOutput (const char * inCharArray,
       inherited::performActualCharArrayOutput ("&gt;", 4) ;
       break ;
     case '&' :
-      inherited::performActualCharArrayOutput ("&amp;", 4) ;
+      inherited::performActualCharArrayOutput ("&amp;", 5) ;
       break ;
     default :
       inherited::performActualCharArrayOutput (& c, 1) ;
@@ -125,7 +125,7 @@ void C_HTML_FileWrite::performActualUnicodeArrayOutput (const utf32 * inCharArra
       inherited::performActualCharArrayOutput ("&gt;", 4) ;
       break ;
     case '&' :
-      inherited::performActualCharArrayOutput ("&amp;", 4) ;
+      inherited::performActualCharArrayOutput ("&amp;", 5) ;
       break ;
     default :
       inherited::performActualUnicodeArrayOutput (& codePoint, 1) ;
