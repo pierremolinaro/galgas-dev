@@ -20,7 +20,7 @@
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-#include "files/C_HTML_FileWrite.h"
+#include "strings/C_HTMLString.h"
 #include "files/C_TextFileWrite.h"
 #include "utilities/MF_MemoryControl.h"
 #include "galgas2/C_Compiler.h"
@@ -37,11 +37,11 @@
 
 class cAffichagePremiersProduction : public C_bdd_value_traversing {
 //--- Attributs
-  protected : C_HTML_FileWrite & mFichierBNF ;
+  protected : C_HTMLString & mFichierBNF ;
   protected : const cVocabulary & mVocabulary ;
 
 //--- Constructeur
-  public : cAffichagePremiersProduction (C_HTML_FileWrite & inHTMLfile,
+  public : cAffichagePremiersProduction (C_HTMLString & inHTMLfile,
                                          const cVocabulary & inVocabulary) ;
 
 //--- Methode virtelle appelee pour chaque valeur
@@ -51,7 +51,7 @@ class cAffichagePremiersProduction : public C_bdd_value_traversing {
   
 //-----------------------------------------------------------------------------*
 
-cAffichagePremiersProduction::cAffichagePremiersProduction (C_HTML_FileWrite & inHTMLfile,
+cAffichagePremiersProduction::cAffichagePremiersProduction (C_HTMLString & inHTMLfile,
                                                             const cVocabulary & inVocabulary) :
 mFichierBNF (inHTMLfile),
 mVocabulary (inVocabulary) {
@@ -77,20 +77,20 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
                      const C_Relation & inFOLLOWsets,
                      const TC_UniqueArray <bool> & vocabulaireSeDerivantEnVide,
                      const cVocabulary & inVocabulary,
-                     C_HTML_FileWrite & ioHTMLfile,
+                     C_HTMLString & ioHTMLFileContents,
                      const bool inVerboseOptionOn) {
 //--- Pour chaque non-terminal presentant plusieurs inPureBNFproductions, calculer le 'premiers' de chacune d'elle,
 // et verifier l'absence de conflit.
-  if (ioHTMLfile.isOpened ()) {
-    ioHTMLfile.outputRawData ("<p>") ;
-    ioHTMLfile << "The FIRST of a production is :\n"
+  if (ioHTMLFileContents.registeringIsEnabled ()) {
+    ioHTMLFileContents.outputRawData ("<p>") ;
+    ioHTMLFileContents << "The FIRST of a production is :\n"
                    " if the production is empty, the FOLLOW of the left nonterminal symbol ;\n"
                    " if the production is not empty (e.g. g -> x) :\n"
                    "         -- the FIRST of x, and\n"
                    "         -- if x est a nonterminal symbol deriving in the empty string, union the FOLLOW of x.\n\n"
                    "Only are listed the nonterminal having more than one production (see step 2\n"
                    "for inPureBNFproductions numbering) :\n\n" ;
-    ioHTMLfile.outputRawData ("</p>") ;
+    ioHTMLFileContents.outputRawData ("</p>") ;
   }
   
   C_Relation t (inFOLLOWsets.configuration(), false) ;
@@ -98,8 +98,8 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
   int32_t nombreDeConflits = 0 ;
   const int32_t nombreNonTerminaux = inVocabulary.getNonTerminalSymbolsCount () ;
   const int32_t terminalSymbolsCount = inVocabulary.getTerminalSymbolsCount () ;
-  if (ioHTMLfile.isOpened ()) {
-    ioHTMLfile.outputRawData ("<table class=\"result\">") ;
+  if (ioHTMLFileContents.registeringIsEnabled ()) {
+    ioHTMLFileContents.outputRawData ("<table class=\"result\">") ;
   }
   for (int32_t i=0 ; i<nombreNonTerminaux ; i++) {
     const int32_t first = inPureBNFproductions.tableauIndicePremiereProduction (i COMMA_HERE) ;
@@ -107,19 +107,19 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
       const int32_t derniere = inPureBNFproductions.tableauIndiceDerniereProduction (i COMMA_HERE) ;
       if (derniere > first) { // Plusieurs inPureBNFproductions d'un meme non-terminal
       //--- Calculer et afficher les premiers
-        if (ioHTMLfile.isOpened ()) {
-          ioHTMLfile.outputRawData ("<tr><td class=\"result_title\" colspan=\"2\"><code>") ;
-          inVocabulary.printInFile (ioHTMLfile, i + terminalSymbolsCount COMMA_HERE) ;
-          ioHTMLfile.outputRawData ("</code></td></tr>") ;
+        if (ioHTMLFileContents.registeringIsEnabled ()) {
+          ioHTMLFileContents.outputRawData ("<tr><td class=\"result_title\" colspan=\"2\"><code>") ;
+          inVocabulary.printInFile (ioHTMLFileContents, i + terminalSymbolsCount COMMA_HERE) ;
+          ioHTMLFileContents.outputRawData ("</code></td></tr>") ;
         }
         for (int32_t j=first ; j<=derniere ; j++) {
           const int32_t numeroProduction = inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) ;
-          if (ioHTMLfile.isOpened ()) {
-            ioHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><a href=\"#pure_bnf_") ;
-            ioHTMLfile << cStringWithSigned (numeroProduction) ;
-            ioHTMLfile.outputRawData ("\">") ;
-            ioHTMLfile << cStringWithSigned (numeroProduction) ;
-            ioHTMLfile.outputRawData ("</a></td><td><code>") ;
+          if (ioHTMLFileContents.registeringIsEnabled ()) {
+            ioHTMLFileContents.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><a href=\"#pure_bnf_") ;
+            ioHTMLFileContents << cStringWithSigned (numeroProduction) ;
+            ioHTMLFileContents.outputRawData ("\">") ;
+            ioHTMLFileContents << cStringWithSigned (numeroProduction) ;
+            ioHTMLFileContents.outputRawData ("</a></td><td><code>") ;
           }
           cProduction & p = inPureBNFproductions (numeroProduction COMMA_HERE) ;
           if (p.derivationLength () == 0) {
@@ -137,15 +137,15 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
               }
             }
           }
-          if (ioHTMLfile.isOpened ()) {
+          if (ioHTMLFileContents.registeringIsEnabled ()) {
             TC_UniqueArray <uint64_t> array ;
             p.derivationFirst ().getValueArray (array) ;
             for (int32_t i=0 ; i < array.count () ; i++) {
               const uint64_t symbol = array (i COMMA_HERE) ;
-              inVocabulary.printInFile (ioHTMLfile, (int32_t) symbol COMMA_HERE) ;
-              ioHTMLfile << " " ;
+              inVocabulary.printInFile (ioHTMLFileContents, (int32_t) symbol COMMA_HERE) ;
+              ioHTMLFileContents << " " ;
             }
-            ioHTMLfile.outputRawData ("</code></td></tr>") ;
+            ioHTMLFileContents.outputRawData ("</code></td></tr>") ;
           }
         }
      //--- Verifier l'absence de conflit
@@ -158,27 +158,23 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
             const bool ok = rJ.andOp (rK COMMA_HERE).isEmpty () ;
             if (! ok) {
               nombreDeConflits ++ ;
-              if (ioHTMLfile.isOpened ()) {
-                ioHTMLfile.outputRawData ("<tr><td colspan=\"2\"><span class=\"error\">") ;
-                ioHTMLfile << "***** Conflict between the productions "
+              if (ioHTMLFileContents.registeringIsEnabled ()) {
+                ioHTMLFileContents.outputRawData ("<tr><td colspan=\"2\"><span class=\"error\">") ;
+                ioHTMLFileContents << "***** Conflict between the productions "
                             << cStringWithSigned (numeroProductionJ)
                             << " and "
                             << cStringWithSigned (numeroProductionK)
                             << " *****" ;
-                ioHTMLfile.outputRawData ("</span></td></tr>\n") ;
+                ioHTMLFileContents.outputRawData ("</span></td></tr>\n") ;
               }
             }
           }
         }
-        if (ioHTMLfile.isOpened ()) {
-          ioHTMLfile << "\n" ;
-        }
+        ioHTMLFileContents << "\n" ;
       }
     }
   }
-  if (ioHTMLfile.isOpened ()) {
-    ioHTMLfile.outputRawData ("</table><p>") ;
-  }
+  ioHTMLFileContents.outputRawData ("</table><p>") ;
 //--- Bilan de l'analyse
   if (inVerboseOptionOn) {
     if (nombreDeConflits == 0) {
@@ -188,21 +184,21 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
     }
     co.flush () ;
   }
-  if (ioHTMLfile.isOpened ()) {
+  if (ioHTMLFileContents.registeringIsEnabled ()) {
     if (nombreDeConflits == 0) {
-      ioHTMLfile.outputRawData ("<span class=\"success\">") ;
-      ioHTMLfile << "No conflict : the grammar is LL (1).\n" ;
-      ioHTMLfile.outputRawData ("</span>") ;
+      ioHTMLFileContents.outputRawData ("<span class=\"success\">") ;
+      ioHTMLFileContents << "No conflict : the grammar is LL (1).\n" ;
+      ioHTMLFileContents.outputRawData ("</span>") ;
     }else{
-      ioHTMLfile.outputRawData ("<span class=\"error\">") ;
-      ioHTMLfile << "The grammar is not  LL (1) : "
+      ioHTMLFileContents.outputRawData ("<span class=\"error\">") ;
+      ioHTMLFileContents << "The grammar is not  LL (1) : "
                   << cStringWithSigned (nombreDeConflits)
                   << " conflict"
                   << ((nombreDeConflits > 1) ? "s" : "")
                   << "." ;
-      ioHTMLfile.outputRawData ("</span>") ;
+      ioHTMLFileContents.outputRawData ("</span>") ;
     }
-    ioHTMLfile.outputRawData ("</p>") ;
+    ioHTMLFileContents.outputRawData ("</p>") ;
   }
   return nombreDeConflits == 0 ;
 }
@@ -211,13 +207,13 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
 
 class cEcrireNonTerminal : public C_bdd_value_traversing {
 //--- Attributs
-  protected : C_HTML_FileWrite & mFichierBNF ;
+  protected : C_HTMLString & mFichierBNF ;
   protected : const cVocabulary & mVocabulary ;
   protected : C_String aNomClasseLexique ;
   protected : int16_t aIndice ;
 
 //--- Constructeur
-  public : cEcrireNonTerminal (C_HTML_FileWrite & inHTMLfile,
+  public : cEcrireNonTerminal (C_HTMLString & inHTMLfile,
                                const cVocabulary & inVocabulary,
                                const C_String & nomClasseLexique) ;
 
@@ -229,7 +225,7 @@ class cEcrireNonTerminal : public C_bdd_value_traversing {
 //-----------------------------------------------------------------------------*
 
 cEcrireNonTerminal::
-cEcrireNonTerminal (C_HTML_FileWrite & inHTMLfile,
+cEcrireNonTerminal (C_HTMLString & inHTMLfile,
                     const cVocabulary & inVocabulary,
                     const C_String & nomClasseLexique) :
 mFichierBNF (inHTMLfile),
@@ -884,7 +880,7 @@ LL1_computations (C_Compiler * inCompiler,
                   const bool inCompileForGalgas3,
                   const TC_UniqueArray <C_String> & inImplementationFileHeaderList,
                   const cPureBNFproductionsList & inPureBNFproductions,
-                  C_HTML_FileWrite & ioHTMLfile,
+                  C_HTMLString & ioHTMLFileContents,
                   const cVocabulary & inVocabulary,
                   const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                   const C_Relation & inFIRSTsets,
@@ -905,9 +901,7 @@ LL1_computations (C_Compiler * inCompiler,
     co.flush () ;
   }
 //--- Print in BNF file
-  if (ioHTMLfile.isOpened ()) {
-    ioHTMLfile.appendCppTitleComment ("Checking LL(1) condition", "title") ;
-  }
+  ioHTMLFileContents.appendCppTitleComment ("Checking LL(1) condition", "title") ;
 
 //--- Check LL(1) condition
   outOk = check_LL1_condition (inPureBNFproductions,
@@ -915,7 +909,7 @@ LL1_computations (C_Compiler * inCompiler,
                                inFOLLOWsets,
                                inVocabularyDerivingToEmpty_Array,
                                inVocabulary,
-                               ioHTMLfile,
+                               ioHTMLFileContents,
                                inVerboseOptionOn) ;
 
 //--- Generate C++ file

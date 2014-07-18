@@ -8,7 +8,7 @@
 
 //--- START OF USER ZONE 1
 
-class C_HTML_FileWrite ;
+class C_HTMLString ;
 class cPureBNFproductionsList ;
 class cVocabulary ;
 
@@ -23,7 +23,7 @@ class cVocabulary ;
 class cPtr_abstractSyntaxInstructionForGrammarAnalysis : public acPtr_class {
 //--- START OF USER ZONE 2
 
-  public : virtual void printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) = 0 ;
+  public : virtual void printInstructionForGrammar (C_HTMLString & inHTMLfile) = 0 ;
 
   public : virtual void fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
                                                   const C_String & inSyntaxComponentName,

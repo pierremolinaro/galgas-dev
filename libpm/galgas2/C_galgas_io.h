@@ -234,7 +234,7 @@ void ggs_printMessage (const C_String & inMessage
 
 //-----------------------------------------------------------------------------*
 
-uint32_t checkedLineCount (void) ;
+/*uint32_t checkedLineCount (void) ;
 void incrementCheckedFileCount (const uint32_t inIncrement) ;
 
 //-----------------------------------------------------------------------------*
@@ -251,7 +251,7 @@ void incrementPreservedLileCount (const uint32_t inIncrement) ;
 
 uint32_t generatedFileCount (void) ;
 void incrementGeneratedFileCount (void) ;
-
+*/
 //-----------------------------------------------------------------------------*
 
 #endif

@@ -27,7 +27,7 @@
 
 class cPureBNFproductionsList ;
 class cVocabulary ;
-class C_HTML_FileWrite ;
+class C_HTMLString ;
 class C_Compiler ;
 class GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis ;
 class C_RelationSingleType ;
@@ -41,7 +41,7 @@ void useful_symbols_computations (C_Compiler * inCompiler,
                                   const cPureBNFproductionsList & inPureBNFproductions,
                                   const C_RelationSingleType & inVocabularyBDDType,
                                   const cVocabulary & inVocabulary,
-                                  C_HTML_FileWrite & ioHTMLfile,
+                                  C_HTMLString & ioHTMLFileContents,
                                   C_Relation & outUsefulSymbolsRelation,
                                   bool & outWarningFlag,
                                   const bool inVerboseOptionOn) ;

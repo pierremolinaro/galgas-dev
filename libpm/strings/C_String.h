@@ -4,7 +4,7 @@
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
-//  Copyright (C) 1997, ..., 2011 Pierre Molinaro.                             *
+//  Copyright (C) 1997, ..., 2014 Pierre Molinaro.                             *
 //                                                                             *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                               *
 //                                                                             *
@@ -94,7 +94,6 @@ class C_String : public AC_OutputStream {
   public : C_String (void) ; // Empty string
   public : C_String (const char * chaineC) ; // From a C string
   public : C_String (const utf32 * inUTF32String) ;
-//  public : C_String (const int32_t inSignedValue) ; // From an int32_t
   
 //--- Virtual destructor
   public : virtual ~C_String (void) ;
@@ -115,6 +114,14 @@ class C_String : public AC_OutputStream {
 //--- Init from a string
   public : void setFromCstring (const char * inCstring) ;
   public : void setFromString (const C_String & inString) ;
+
+//--- Registering
+  public : void enableRegistering (void) ;
+  public : void disableRegistering (void) ;
+  public : bool registeringIsEnabled (void) const ;
+
+//--- Insulate
+  public : void insulate (void) const ;
 
 //--- hash code
   public : uint32_t hash (void) const ;
@@ -287,7 +294,7 @@ class C_String : public AC_OutputStream {
                                                             const int32_t inArrayCount) ;
 
 //--- Private (internal) methods
-  private : void insulateEmbeddedString (const uint32_t inNewCapacity) ;
+  private : void insulateEmbeddedString (const uint32_t inNewCapacity) const ;
 
   #ifndef DO_NOT_GENERATE_CHECKINGS
     private : void checkString (LOCATION_ARGS) const ;
@@ -298,7 +305,7 @@ class C_String : public AC_OutputStream {
                                   C_String & outString) ;
 
 //---------------- Private attributes -------------
-  private : class cEmbeddedString * mEmbeddedString ;
+  private : mutable class cEmbeddedString * mEmbeddedString ;
 } ;
 
 //-----------------------------------------------------------------------------*

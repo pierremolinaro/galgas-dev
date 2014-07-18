@@ -72,6 +72,8 @@
 		CF1109E310D4F09C00E1B8FC /* semanticsReaders.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1109E110D4F09C00E1B8FC /* semanticsReaders.cpp */; };
 		CF1109E410D4F09C00E1B8FC /* semanticsReaders.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1109E110D4F09C00E1B8FC /* semanticsReaders.cpp */; };
 		CF13F11A1861CD5700A875A4 /* PMTableViewRefusesFirstResponder.m in Sources */ = {isa = PBXBuildFile; fileRef = CF13F1191861CD5700A875A4 /* PMTableViewRefusesFirstResponder.m */; };
+		CF1AA5911979A9240095B745 /* C_HTMLString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1AA58F1979A9240095B745 /* C_HTMLString.cpp */; };
+		CF1AA5921979A9240095B745 /* C_HTMLString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1AA58F1979A9240095B745 /* C_HTMLString.cpp */; };
 		CF1C0C8F14E844C200F79BD0 /* AC_FileHandle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1C0C8E14E844C200F79BD0 /* AC_FileHandle.cpp */; };
 		CF1C0C9014E844C200F79BD0 /* AC_FileHandle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1C0C8E14E844C200F79BD0 /* AC_FileHandle.cpp */; };
 		CF1C0C9414E8477100F79BD0 /* AC_FileHandleForWriting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1C0C9314E8477100F79BD0 /* AC_FileHandleForWriting.cpp */; };
@@ -542,6 +544,8 @@
 		CF1109E210D4F09C00E1B8FC /* semanticsReaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticsReaders.h; sourceTree = "<group>"; };
 		CF13F1181861CD5700A875A4 /* PMTableViewRefusesFirstResponder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTableViewRefusesFirstResponder.h; sourceTree = "<group>"; };
 		CF13F1191861CD5700A875A4 /* PMTableViewRefusesFirstResponder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTableViewRefusesFirstResponder.m; sourceTree = "<group>"; };
+		CF1AA58F1979A9240095B745 /* C_HTMLString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_HTMLString.cpp; sourceTree = "<group>"; };
+		CF1AA5901979A9240095B745 /* C_HTMLString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_HTMLString.h; sourceTree = "<group>"; };
 		CF1BCEA410D2B68000A0D648 /* GALGAS_sint_36__34_.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GALGAS_sint_36__34_.cpp; sourceTree = "<group>"; };
 		CF1BCEC010D2BAA400A0D648 /* GALGAS_uint_36__34_.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GALGAS_uint_36__34_.cpp; sourceTree = "<group>"; };
 		CF1BCEE210D2C1A300A0D648 /* GALGAS_string.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GALGAS_string.cpp; sourceTree = "<group>"; };
@@ -1701,6 +1705,8 @@
 		CFD3E8510FA0C0F800C4995E /* strings */ = {
 			isa = PBXGroup;
 			children = (
+				CF1AA58F1979A9240095B745 /* C_HTMLString.cpp */,
+				CF1AA5901979A9240095B745 /* C_HTMLString.h */,
 				CF7FD6AB0FF13CFB001EA1B7 /* unicode_character_m.h */,
 				CF7FD6AC0FF13CFB001EA1B7 /* unicode_character_m.m */,
 				CF7FD69C0FF13C1C001EA1B7 /* unicode_character_base.h */,
@@ -2277,6 +2283,7 @@
 				CF6DF16C09E3F23700506859 /* C_TextFileWrite.cpp in Sources */,
 				CF6DF16E09E3F23700506859 /* AC_OutputStream.cpp in Sources */,
 				CF6DF16F09E3F23700506859 /* C_ConsoleOut.cpp in Sources */,
+				CF1AA5911979A9240095B745 /* C_HTMLString.cpp in Sources */,
 				CF6DF17009E3F23700506859 /* C_DateTime.cpp in Sources */,
 				CF6DF17109E3F23700506859 /* C_Timer.cpp in Sources */,
 				CF6DF17409E3F23700506859 /* F_DisplayException.cpp in Sources */,
@@ -2479,6 +2486,7 @@
 				CF6DF1E609E3F30400506859 /* C_TextFileWrite.cpp in Sources */,
 				CF6DF1E809E3F30400506859 /* AC_OutputStream.cpp in Sources */,
 				CF6DF1E909E3F30400506859 /* C_ConsoleOut.cpp in Sources */,
+				CF1AA5921979A9240095B745 /* C_HTMLString.cpp in Sources */,
 				CF6DF1EA09E3F30400506859 /* C_DateTime.cpp in Sources */,
 				CF6DF1EB09E3F30400506859 /* C_Timer.cpp in Sources */,
 				CF6DF1EE09E3F30400506859 /* F_DisplayException.cpp in Sources */,
@@ -2777,7 +2785,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
 				CLANG_ANALYZER_SECURITY_INSECUREAPI_RAND = YES;
+				CLANG_ANALYZER_SECURITY_INSECUREAPI_STRCPY = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = YES;
@@ -2789,18 +2801,13 @@
 				CLANG_WARN_OBJC_REPEATED_USE_OF_WEAK = YES;
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
 				DEAD_CODE_STRIPPING = YES;
-				GCC_C_LANGUAGE_STANDARD = c99;
-				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_ASM_KEYWORD = NO;
 				GCC_ENABLE_PASCAL_STRINGS = NO;
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PREPROCESSOR_DEFINITIONS = "LIBPM_MULTI_THREADING=1";
-				GCC_STRICT_ALIASING = NO;
-				GCC_THREADSAFE_STATICS = NO;
 				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
 				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				GCC_UNROLL_LOOPS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
@@ -2814,7 +2821,6 @@
 				GCC_WARN_MISSING_PARENTHESES = YES;
 				GCC_WARN_MULTIPLE_DEFINITION_TYPES_FOR_SELECTOR = NO;
 				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
-				GCC_WARN_PEDANTIC = NO;
 				GCC_WARN_SHADOW = NO;
 				GCC_WARN_SIGN_COMPARE = YES;
 				GCC_WARN_STRICT_SELECTOR_MATCH = NO;
@@ -2833,7 +2839,6 @@
 					libpm,
 				);
 				INSTALL_PATH = /usr/local/bin;
-				LD_GENERATE_MAP_FILE = NO;
 				SDKROOT = macosx10.9;
 				SYMROOT = "build-developer";
 				VALID_ARCHS = x86_64;
@@ -2883,7 +2888,6 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				COPY_PHASE_STRIP = NO;
 				DEPLOYMENT_LOCATION = NO;
-				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_ENABLE_TRIGRAPHS = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_OPTIMIZATION_LEVEL = 1;

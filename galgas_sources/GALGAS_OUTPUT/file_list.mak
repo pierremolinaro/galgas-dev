@@ -174,6 +174,7 @@ SOURCES += C_TCPSocketOut.cpp
 SOURCES += unicode_character_cpp.cpp
 SOURCES += unicode_string_routines.cpp
 SOURCES += C_String.cpp
+SOURCES += C_HTMLString.cpp
 SOURCES += md5.cpp
 
 #--- Time

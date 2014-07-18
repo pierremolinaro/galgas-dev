@@ -24,7 +24,6 @@
 
 //-----------------------------------------------------------------------------*
 
-#include "files/C_HTML_FileWrite.h"
 #include "files/C_TextFileWrite.h"
 #include "files/C_FileManager.h"
 #include "bdd/C_Relation.h"
@@ -34,6 +33,7 @@
 #include "galgas2/C_Compiler.h"
 #include "galgas_cli_options.h"
 #include "galgas2/C_galgas_io.h"
+#include "strings/C_HTMLString.h"
 
 //-----------------------------------------------------------------------------*
 
@@ -148,9 +148,9 @@ void swap (cProduction & ioProduction1, cProduction & ioProduction2) {
 
 static bool
 searchForIdenticalProductions (const cPureBNFproductionsList & productions,
-                               C_HTML_FileWrite & ioHTMLfile) {
-  ioHTMLfile.outputRawData ("<p><a name=\"identical_productions\"></a></p>") ;
-  ioHTMLfile.appendCppTitleComment ("Step 2 : searching for identical productions", "title") ;
+                               C_HTMLString & ioHTMLFileContents) {
+  ioHTMLFileContents.outputRawData ("<p><a name=\"identical_productions\"></a></p>") ;
+  ioHTMLFileContents.appendCppTitleComment ("Step 2 : searching for identical productions", "title") ;
   bool ok = true ;
   for (int32_t i=0 ; i<productions.length () ; i++) {
     const cProduction & pi = productions (i COMMA_HERE) ;
@@ -165,22 +165,22 @@ searchForIdenticalProductions (const cPureBNFproductionsList & productions,
       }
       if (identiques) {
         ok = false ;
-        ioHTMLfile << "  Error : productions " << cStringWithSigned (i) << " and " << cStringWithSigned (j) << " are identical.\n" ;
+        ioHTMLFileContents << "  Error : productions " << cStringWithSigned (i) << " and " << cStringWithSigned (j) << " are identical.\n" ;
       }
     }
   }
-  ioHTMLfile.outputRawData ("<p>") ;
+  ioHTMLFileContents.outputRawData ("<p>") ;
   if (ok) {
-    ioHTMLfile.outputRawData ("<span class=\"success\">") ;
-    ioHTMLfile << "Ok : all productions are different.\n" ;
-    ioHTMLfile.outputRawData ("</span>") ;
+    ioHTMLFileContents.outputRawData ("<span class=\"success\">") ;
+    ioHTMLFileContents << "Ok : all productions are different.\n" ;
+    ioHTMLFileContents.outputRawData ("</span>") ;
   }else{
-    ioHTMLfile.outputRawData ("<span class=\"error\">") ;
-    ioHTMLfile << "As the grammar presents identical productions, it is ambiguous :\n"
+    ioHTMLFileContents.outputRawData ("<span class=\"error\">") ;
+    ioHTMLFileContents << "As the grammar presents identical productions, it is ambiguous :\n"
                    "it is impossible to build a deterministic parser.\n\n" ;
-    ioHTMLfile.outputRawData ("</span>") ;
+    ioHTMLFileContents.outputRawData ("</span>") ;
   }
-  ioHTMLfile.outputRawData ("</p>") ;
+  ioHTMLFileContents.outputRawData ("</p>") ;
   return ok ;
 }
 
@@ -290,6 +290,7 @@ static const char k_default_style [] = {
 static void
 analyzeGrammar (C_Compiler * inCompiler,
                 const bool inCompileForGalgas3,
+                const C_String & inHTMLFileName,
                 const TC_UniqueArray <C_String> & inImplementationFileHeaderList,
                 const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
                 const GALGAS_lstring & inTargetFileName,
@@ -301,9 +302,9 @@ analyzeGrammar (C_Compiler * inCompiler,
                 const GALGAS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList,
                 const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                 const C_String & inOutputDirectoryForCppFiles,
-                const C_String & inOutputDirectoryForHTMLFile,
                 const bool inHasIndexing,
-                const C_String & inSyntaxDirectedTranslationVarName) {
+                const C_String & inSyntaxDirectedTranslationVarName,
+                C_HTMLString & outHTMLHelperFileContents) {
   bool warningFlag = false ;
 
 //--- Depending of grammar class, fix operations to perform
@@ -327,61 +328,35 @@ analyzeGrammar (C_Compiler * inCompiler,
 
 //--- Verbose Output
   const bool verboseOptionOn = gOption_galgas_5F_builtin_5F_options_verbose_5F_output.mValue ;
-//--- Output a HTML file ?
-  const bool outputHTMLfile = gOption_galgas_5F_cli_5F_options_outputHTMLgrammarFile.mValue ;
 //--- If 'HTMLfileName' is the empty string, no file is created
 
 //--- Create output HTML file
-  C_FileManager::makeDirectoryIfDoesNotExist (inOutputDirectoryForHTMLFile) ;
-  const bool generateHTMLFile = outputHTMLfile && inCompiler->performGeneration () ;
-  const C_String HTMLfileName = generateHTMLFile
-    ? (inOutputDirectoryForHTMLFile + "/" + inTargetFileName.mAttribute_string.stringValue () + ".html")
-    : ""
-  ;
-  C_String s ;
-  s << "'" << inTargetFileName.mAttribute_string.stringValue () << "' grammar" ;
-  C_HTML_FileWrite HTMLfile (HTMLfileName,
-                             s,
-                             "", // No css file
-                             k_default_style) ; // Style definition
-  if (generateHTMLFile && ! HTMLfile.isOpened ()) {
-      C_String message ;
-      message << "Cannot open '" << HTMLfileName << "' file in write mode." ;
-      inCompiler->onTheFlySemanticError (message COMMA_HERE) ;
-  }else if (generateHTMLFile) {
-  
-  //--- HTML title
-    HTMLfile.outputRawData ("<h1>") ;
-    HTMLfile << s ;
-    HTMLfile.outputRawData ("</h1>") ;
- //--- Create links to page entries
-    HTMLfile.outputRawData ("<p><a class=\"header_link\" href=\"#pure_bnf\">Pure BNF productions</a></p>"
-                             "<p><a class=\"header_link\" href=\"#vocabulary\">Vocabulary</a></p>"
-                             "<p><a class=\"header_link\" href=\"#identical_productions\">Identical productions</a></p>"
-                             "<p><a class=\"header_link\" href=\"#useful_symbols\">Useful symbols</a></p>"
-                             "<p><a class=\"header_link\" href=\"#empty_strings\">Empty string derivations</a></p>"
-                             "<p><a class=\"header_link\" href=\"#first_sets\">First sets</a></p>"
-                             "<p><a class=\"header_link\" href=\"#follow_by_empty\">Follow by empty</a></p>"
-                             "<p><a class=\"header_link\" href=\"#grammar\">Grammar analysis</a></p>"
-                             ) ;
-  }else if ((! HTMLfile.isOpened ()) && C_FileManager::fileExistsAtPath (HTMLfileName)) { // Delete HTML file
-    if (C_Compiler::performGeneration ()) {
-      C_FileManager::deleteFile (HTMLfileName) ;
-      if (verboseOptionOn) {
-        ggs_printFileOperationSuccess ((C_String ("Deleted '") + HTMLfileName + "'.\n").cString (HERE) COMMA_HERE) ;
-      }
-    }else{
-      ggs_printWarning (NULL, C_LocationInSource (), (C_String ("Need to delete '") + HTMLfileName + "'.\n").cString (HERE) COMMA_HERE) ;
-    }
-  }
+  const C_String title = C_String ("'") + inTargetFileName.mAttribute_string.stringValue () + "' grammar" ;
+  outHTMLHelperFileContents.writeStartCode (title,
+                                            "", // No css file
+                                            k_default_style) ; // Style definition
+//--- HTML title
+  outHTMLHelperFileContents.outputRawData ("<h1>") ;
+  outHTMLHelperFileContents << title ;
+  outHTMLHelperFileContents.outputRawData ("</h1>") ;
+//--- Create links to page entries
+  outHTMLHelperFileContents.outputRawData ("<p><a class=\"header_link\" href=\"#pure_bnf\">Pure BNF productions</a></p>"
+                           "<p><a class=\"header_link\" href=\"#vocabulary\">Vocabulary</a></p>"
+                           "<p><a class=\"header_link\" href=\"#identical_productions\">Identical productions</a></p>"
+                           "<p><a class=\"header_link\" href=\"#useful_symbols\">Useful symbols</a></p>"
+                           "<p><a class=\"header_link\" href=\"#empty_strings\">Empty string derivations</a></p>"
+                           "<p><a class=\"header_link\" href=\"#first_sets\">First sets</a></p>"
+                           "<p><a class=\"header_link\" href=\"#follow_by_empty\">Follow by empty</a></p>"
+                           "<p><a class=\"header_link\" href=\"#grammar\">Grammar analysis</a></p>"
+                           ) ;
 
 //--- Print original grammar in BNF file
-  if ((errorFlag == 0) && (grammarClass != kGrammarClassError) && HTMLfile.isOpened ()) {
-    HTMLfile.appendCppTitleComment ("Original grammar", "title") ;
+  if ((errorFlag == 0) && (grammarClass != kGrammarClassError)) {
+    outHTMLHelperFileContents.appendCppTitleComment ("Original grammar", "title") ;
     #ifdef LOG_GRAMMAR_COMPUTATIONS
       printf ("PRINT ORIGINAL GRAMMAR IN HTML FILE\n") ; fflush (stdout) ;
     #endif
-    printOriginalGrammar (HTMLfile, inSyntaxComponentsList) ;
+    printOriginalGrammar (outHTMLHelperFileContents, inSyntaxComponentsList) ;
     #ifdef LOG_GRAMMAR_COMPUTATIONS
       printf ("PRINT ORIGINAL GRAMMAR IN HTML FILE DONE \n") ; fflush (stdout) ;
     #endif
@@ -407,11 +382,9 @@ analyzeGrammar (C_Compiler * inCompiler,
                          pureBNFproductions) ;
 
   //--- Print in bnf file the pure BNF productions
-    if (HTMLfile.isOpened ()) {
-      HTMLfile.outputRawData ("<p></p>") ;
-      HTMLfile.appendCppTitleComment ("  Pure BNF productions list", "title") ;
-      printPureBNFgrammarInBNFfile (HTMLfile, vocabulary, pureBNFproductions) ;
-    }
+    outHTMLHelperFileContents.outputRawData ("<p></p>") ;
+    outHTMLHelperFileContents.appendCppTitleComment ("  Pure BNF productions list", "title") ;
+    printPureBNFgrammarInBNFfile (outHTMLHelperFileContents, vocabulary, pureBNFproductions) ;
     if (verboseOptionOn) {
       co << cStringWithSigned (pureBNFproductions.length ()) << " productions.\n" ;
       co.flush () ;
@@ -431,7 +404,7 @@ analyzeGrammar (C_Compiler * inCompiler,
     if (verboseOptionOn) {
       co << "  Searching for identical productions... " ;
     }
-    const bool step2ok = searchForIdenticalProductions (pureBNFproductions, HTMLfile) ;
+    const bool step2ok = searchForIdenticalProductions (pureBNFproductions, outHTMLHelperFileContents) ;
     if (! step2ok) {
       errorFlag = kError ;
       if (! verboseOptionOn) {
@@ -443,29 +416,29 @@ analyzeGrammar (C_Compiler * inCompiler,
     }
     co.flush () ;
   }
-  if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError) && HTMLfile.isOpened ()) {
+  if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
   //--- Enregistrer les caracteristiques de la grammaire
-    HTMLfile << "For information :\n" ;
-    HTMLfile.outputRawData ("<ul><li>") ;
-    HTMLfile << cStringWithSigned ((int32_t)(vocabulary.getTerminalSymbolsCount () - 1))
+    outHTMLHelperFileContents << "For information :\n" ;
+    outHTMLHelperFileContents.outputRawData ("<ul><li>") ;
+    outHTMLHelperFileContents << cStringWithSigned ((int32_t)(vocabulary.getTerminalSymbolsCount () - 1))
               << " terminal symbols, numbered from 0 to "
               << cStringWithSigned ((int32_t)(vocabulary.getTerminalSymbolsCount () - 2)) << " ;" ;
-    HTMLfile.outputRawData ("</li>\n<li>") ;
-    HTMLfile << " the 'empty string' symbol '$$' is numbered "
+    outHTMLHelperFileContents.outputRawData ("</li>\n<li>") ;
+    outHTMLHelperFileContents << " the 'empty string' symbol '$$' is numbered "
               << cStringWithSigned (vocabulary.getEmptyStringTerminalSymbolIndex ()) << " ;" ;
-    HTMLfile.outputRawData ("</li>\n<li>") ;
-    HTMLfile << cStringWithSigned (vocabulary.getNonTerminalSymbolsCount ())
+    outHTMLHelperFileContents.outputRawData ("</li>\n<li>") ;
+    outHTMLHelperFileContents << cStringWithSigned (vocabulary.getNonTerminalSymbolsCount ())
               << " nonterminal symbols in the pure BNF grammar, numbered from "
               << cStringWithSigned (vocabulary.getTerminalSymbolsCount ())
               << " to "
               << cStringWithSigned ((int32_t)(vocabulary.getAllSymbolsCount () - 1)) << " ;" ;
-    HTMLfile.outputRawData ("</li>\n<li>") ;
-    HTMLfile << "whole vocabulary : "
+    outHTMLHelperFileContents.outputRawData ("</li>\n<li>") ;
+    outHTMLHelperFileContents << "whole vocabulary : "
               << cStringWithSigned (vocabulary.getAllSymbolsCount ())
               << " elements, "
               << cStringWithUnsigned (vocabularyBDDType.BDDBitCount ())
               << " bits for BDDs." ;
-    HTMLfile.outputRawData ("</li>\n</ul>\n") ;
+    outHTMLHelperFileContents.outputRawData ("</li>\n</ul>\n") ;
   }
   #ifdef LOG_GRAMMAR_COMPUTATIONS
     printf ("SEARCH FOR IDENTICAL PRODUCTIONS DONE\n") ; fflush (stdout) ;
@@ -482,7 +455,7 @@ analyzeGrammar (C_Compiler * inCompiler,
                                  pureBNFproductions,
                                  vocabularyBDDType,
                                  vocabulary,
-                                 HTMLfile,
+                                 outHTMLHelperFileContents,
                                  usefulSymbols,
                                  warningFlag,
                                  verboseOptionOn) ;
@@ -495,7 +468,7 @@ analyzeGrammar (C_Compiler * inCompiler,
   C_Relation vocabularyDerivingToEmpty ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     vocabularyDerivingToEmpty = empty_strings_computations (pureBNFproductions,
-                                                            HTMLfile,
+                                                            outHTMLHelperFileContents,
                                                             vocabularyDerivingToEmpty_Array,
                                                             usefulSymbols.configuration (),
                                                             verboseOptionOn) ;
@@ -506,7 +479,7 @@ analyzeGrammar (C_Compiler * inCompiler,
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     bool ok = false ;
     FIRST_computations (pureBNFproductions,
-                        HTMLfile,
+                        outHTMLHelperFileContents,
                         vocabulary,
                         vocabularyDerivingToEmpty_Array,
                         vocabularyDerivingToEmpty,
@@ -523,7 +496,7 @@ analyzeGrammar (C_Compiler * inCompiler,
   C_Relation nonTerminalSymbolsFollowedByEmpty (usefulSymbols.configuration (), false) ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     follow_by_empty_computations (pureBNFproductions,
-                                  HTMLfile,
+                                  outHTMLHelperFileContents,
                                   vocabulary,
                                   vocabularyDerivingToEmpty_Array,
                                   nonTerminalSymbolsFollowedByEmpty,
@@ -537,7 +510,7 @@ analyzeGrammar (C_Compiler * inCompiler,
       (grammarClass != kLR1grammar)) { // Follow are not used by LR(1) computations
     bool ok = false ;
     FOLLOW_computations (pureBNFproductions,
-                         HTMLfile,
+                         outHTMLHelperFileContents,
                          vocabulary,
                          vocabularyDerivingToEmpty_Array,
                          usefulSymbols,
@@ -552,7 +525,7 @@ analyzeGrammar (C_Compiler * inCompiler,
     }
   }
 //--- Checking LL (1) condition -------------------------------------------------------------
-  HTMLfile.outputRawData ("<a name=\"grammar\"></a>") ;
+  outHTMLHelperFileContents.outputRawData ("<a name=\"grammar\"></a>") ;
   if ((errorFlag == kNoError)
    && ((grammarClass == kDefaultBehavior) || (grammarClass == kLL1grammar))) {
     bool ok = false ;
@@ -560,7 +533,7 @@ analyzeGrammar (C_Compiler * inCompiler,
                       inCompileForGalgas3,
                       inImplementationFileHeaderList,
                       pureBNFproductions,
-                      HTMLfile,
+                      outHTMLHelperFileContents,
                       vocabulary,
                       vocabularyDerivingToEmpty_Array,
                       FIRSTsets,
@@ -588,7 +561,7 @@ analyzeGrammar (C_Compiler * inCompiler,
                       inImplementationFileHeaderList,
                       pureBNFproductions,
                       vocabulary,
-                      HTMLfile,
+                      outHTMLHelperFileContents,
                       FOLLOWarray,
                       inNonTerminalSymbolSortedListForGrammarAnalysis,
                       inOriginalGrammarStartSymbol.uintValue (),
@@ -616,7 +589,7 @@ analyzeGrammar (C_Compiler * inCompiler,
                       inImplementationFileHeaderList,
                       pureBNFproductions,
                       vocabulary,
-                      HTMLfile,
+                      outHTMLHelperFileContents,
                       FIRSTarray,
                       vocabularyDerivingToEmpty_Array,
                       inNonTerminalSymbolSortedListForGrammarAnalysis,
@@ -639,12 +612,12 @@ analyzeGrammar (C_Compiler * inCompiler,
   C_BDD::markAndSweepUnusedNodes () ;
   if (errorFlag != kNoError) {
     C_String s ; s << "ENDING ON ERROR, STEP" << cStringWithSigned ((uint16_t) errorFlag) ;
-    HTMLfile.appendCppTitleComment (s, "title") ;
+    outHTMLHelperFileContents.appendCppTitleComment (s, "title") ;
     C_String errorMessage  ;
-    if (HTMLfile.isOpened()) {
+    if (outHTMLHelperFileContents.registeringIsEnabled ()) {
       errorMessage << "errors have been raised when analyzing the grammar: see file"
                       " '"
-                   << HTMLfileName
+                   << inHTMLFileName
                    << "'" ;
     }else{
       errorMessage << "errors have been raised when analyzing the grammar:"
@@ -663,26 +636,17 @@ analyzeGrammar (C_Compiler * inCompiler,
       warningFlag >>= 1 ;
       i ++ ;
     }
-    HTMLfile.appendCppTitleComment (s, "title") ;
+    outHTMLHelperFileContents.appendCppTitleComment (s, "title") ;
     C_String warningMessage  ;
     warningMessage << "warnings have been raised when analyzing the grammar: " ;
-    if (HTMLfile.isOpened()) {
-      warningMessage << "see file '" << HTMLfileName << "'" ;
+    if (outHTMLHelperFileContents.registeringIsEnabled ()) {
+      warningMessage << "see file '" << inHTMLFileName << "'" ;
     }else{
       warningMessage << "turn on '-H' command line option, and see generated '" << inTargetFileName.mAttribute_string.stringValue () << ".html' file" ;
     }
     inCompiler->semanticWarningAtLocation (inErrorLocation, warningMessage COMMA_HERE) ;
-  }else if (HTMLfile.isOpened()) {
-    HTMLfile.appendCppTitleComment ("OK (no error, no warning)", "title") ;
-  }
-  if (outputHTMLfile) {
-    if (C_Compiler::performGeneration ()) {
-      if (verboseOptionOn) {
-        ggs_printFileOperationSuccess (C_String ("Written '") + HTMLfileName + "'.\n" COMMA_HERE) ;
-      }
-    }else{
-      ggs_printWarning (NULL, C_LocationInSource (), C_String ("Need to write '") + HTMLfileName + "'.\n" COMMA_HERE) ;
-    }
+  }else{
+    outHTMLHelperFileContents.appendCppTitleComment ("OK (no error, no warning)", "title") ;
   }
 }
 
@@ -699,10 +663,11 @@ routine_grammarAnalysisAndGeneration (const GALGAS_stringset inImplementationFil
                                       const GALGAS_syntaxComponentListForGrammarAnalysis inSyntaxComponentsList,
                                       const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis inUnusedNonTerminalSymbolsForGrammar,
                                       const GALGAS_string inOutputDirectoryForCppFiles,
-                                      const GALGAS_string inOutputDirectoryForHTMLFile,
+                                      const GALGAS_string inHTMLFileName,
                                       const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis inNonTerminalSymbolSortedListForGrammarAnalysis,
                                       const GALGAS_bool inHasIndexing,
                                       const GALGAS_string inSyntaxDirectedTranslationVarName,
+                                      GALGAS_string & outHTMLHelperFileContents,
                                       C_Compiler * inCompiler
                                       COMMA_UNUSED_LOCATION_ARGS) {
   if (totalErrorCount () == 0) {
@@ -724,9 +689,16 @@ routine_grammarAnalysisAndGeneration (const GALGAS_stringset inImplementationFil
       enumerator_30239.gotoNextObject () ;
     }
 
+    C_HTMLString HTMLHelperFileContents ;
+  //--- Output a HTML file ?
+    if (! gOption_galgas_5F_cli_5F_options_outputHTMLgrammarFile.mValue) {
+      HTMLHelperFileContents.disableRegistering ()  ;
+    }
+    
     const bool compileForGalgas3 = inCompileForGalgas3.boolValue () ;
     analyzeGrammar (inCompiler,
                     compileForGalgas3,
+                    inHTMLFileName.stringValue (),
                     implementationFileHeaderList,
                     inUnusedNonTerminalSymbolsForGrammar,
                     inTargetFileName,
@@ -738,9 +710,10 @@ routine_grammarAnalysisAndGeneration (const GALGAS_stringset inImplementationFil
                     inSyntaxComponentsList,
                     inNonTerminalSymbolSortedListForGrammarAnalysis,
                     inOutputDirectoryForCppFiles.stringValue (),
-                    inOutputDirectoryForHTMLFile.stringValue (),
                     inHasIndexing.boolValue (),
-                    inSyntaxDirectedTranslationVarName.stringValue ()) ;
+                    inSyntaxDirectedTranslationVarName.stringValue (),
+                    HTMLHelperFileContents) ;
+    outHTMLHelperFileContents = GALGAS_string (HTMLHelperFileContents) ;
   }
 }
 

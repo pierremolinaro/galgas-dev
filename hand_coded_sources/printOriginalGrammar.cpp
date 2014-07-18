@@ -2,7 +2,7 @@
 //                                                                             *
 //  Routines for printing original grammar (with 'select' and 'repeat')        *
 //                                                                             *
-//  Copyright (C) 1999, ..., 2007 Pierre Molinaro.                             *
+//  Copyright (C) 1999, ..., 2014 Pierre Molinaro.                             *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                      *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
 //  ECN, École Centrale de Nantes (France)                                     *
@@ -19,7 +19,7 @@
 //-----------------------------------------------------------------------------*
 
 #include "utilities/MF_MemoryControl.h"
-#include "files/C_HTML_FileWrite.h"
+#include "strings/C_HTMLString.h"
 #include "galgas2/C_SourceTextInString.h"
 
 #include "printOriginalGrammar.h"
@@ -29,7 +29,7 @@
 
 static void
 printInstructionsListForGrammar (const GALGAS_syntaxInstructionListForGrammarAnalysis & inInstructionsList,
-                                 C_HTML_FileWrite & inHTMLfile) {
+                                 C_HTMLString & inHTMLfile) {
   cEnumerator_syntaxInstructionListForGrammarAnalysis currentInstruction (inInstructionsList, kEnumeration_up) ;
   while (currentInstruction.hasCurrentObject ()) {
     cPtr_abstractSyntaxInstructionForGrammarAnalysis * instruction = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) currentInstruction.current_mInstruction (HERE).ptr () ;
@@ -41,7 +41,7 @@ printInstructionsListForGrammar (const GALGAS_syntaxInstructionListForGrammarAna
 //-----------------------------------------------------------------------------*
 
 void cPtr_repeatInstructionForGrammarAnalysis::
-printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
+printInstructionForGrammar (C_HTMLString & inHTMLfile) {
   inHTMLfile.outputRawData ("<span class=\"galgas_structure\">") ;
   inHTMLfile.outputRawData ("<span class=\"galgas_keyword\">") ;
   inHTMLfile << "repeat " ;
@@ -69,7 +69,7 @@ printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
 //-----------------------------------------------------------------------------*
 
 void cPtr_selectInstructionForGrammarAnalysis::
-printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
+printInstructionForGrammar (C_HTMLString & inHTMLfile) {
   inHTMLfile.outputRawData ("<span class=\"galgas_structure\">") ;
   inHTMLfile.outputRawData ("<span class=\"galgas_keyword\">") ;
   inHTMLfile << "select " ;
@@ -97,7 +97,7 @@ printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
 //-----------------------------------------------------------------------------*
 
 void cPtr_nonTerminalInstructionForGrammarAnalysis::
-printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
+printInstructionForGrammar (C_HTMLString & inHTMLfile) {
   inHTMLfile.outputRawData ("<span class=\"galgas_nonterminal\">") ;
   inHTMLfile << "<" << mAttribute_mNonterminalSymbolName.mAttribute_string.stringValue () << ">; " ;
   inHTMLfile.outputRawData ("</span>") ;
@@ -106,7 +106,7 @@ printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
 //-----------------------------------------------------------------------------*
 
 void cPtr_terminalInstructionForGrammarAnalysis::
-printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
+printInstructionForGrammar (C_HTMLString & inHTMLfile) {
   inHTMLfile.outputRawData ("<span class=\"galgas_terminal\">") ;
   inHTMLfile << "$" << mAttribute_mTerminalSymbolName.mAttribute_string.stringValue () << "$; " ;
   inHTMLfile.outputRawData ("</span>") ;
@@ -114,7 +114,7 @@ printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
 
 //-----------------------------------------------------------------------------*
 
-void printOriginalGrammar (C_HTML_FileWrite & inHTMLfile,
+void printOriginalGrammar (C_HTMLString & inHTMLfile,
                            const GALGAS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList) {
 //--- Print message
   int32_t productionsCount = 0 ;

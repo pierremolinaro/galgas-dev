@@ -28,7 +28,7 @@
 //-----------------------------------------------------------------------------*
 
 class cPureBNFproductionsList ;
-class C_HTML_FileWrite ;
+class C_HTMLString ;
 class cVocabulary ;
 class C_Lexique ;
 class C_Relation ;
@@ -37,7 +37,7 @@ class C_Relation ;
 
 void
 follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductions,
-                              C_HTML_FileWrite & ioHTMLfile,
+                              C_HTMLString & ioHTMLFileContents,
                               const cVocabulary & inVocabulary,
                               const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                               C_Relation & outVocabularyFollowedByEmpty,

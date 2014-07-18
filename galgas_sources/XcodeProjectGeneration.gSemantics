@@ -393,6 +393,7 @@ routine build_LIBPM_STRINGS_group
 :
   @stringlist fileList [emptyList] ;
   append_cpp_h_files !?fileList !"C_String" ;
+  append_cpp_h_files !?fileList !"C_HTMLString" ;
   append_cpp_h_files !?fileList !"unicode_character_cpp" ;
   append_cpp_h_files !?fileList !"unicode_string_routines" ;
   append_m_h_files   !?fileList !"unicode_character_m" ;
@@ -413,6 +414,7 @@ routine build_LIBPM_STRINGS_files_for_sources_build_phase
 :
   @stringlist fileList [emptyList] ;
   fileList += !"C_String.cpp" ;
+  fileList += !"C_HTMLString.cpp" ;
   fileList += !"unicode_character_cpp.cpp" ;
   fileList += !"unicode_string_routines.cpp" ;
 #---

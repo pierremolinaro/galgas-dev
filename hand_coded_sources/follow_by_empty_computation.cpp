@@ -19,7 +19,7 @@
 //-----------------------------------------------------------------------------*
 
 #include "follow_by_empty_computation.h"
-#include "files/C_HTML_FileWrite.h"
+#include "strings/C_HTMLString.h"
 #include "bdd/C_Relation.h"
 
 //-----------------------------------------------------------------------------*
@@ -77,35 +77,35 @@ computeNonterminalFollowedByEmpty (const cPureBNFproductionsList & inProductionR
  
 static void
 displayNonterminalSymbolsFollowedByEmpty (const C_Relation & inVocabularyFollowedByEmpty,
-                                          C_HTML_FileWrite & ioHTMLfile,
+                                          C_HTMLString & ioHTMLFileContents,
                                           const cVocabulary & inVocabulary,
                                           const int32_t inIterationsCount,
                                           const bool inVerboseOptionOn) { 
   const uint64_t n = inVocabularyFollowedByEmpty.value64Count () ;
 
-  if (ioHTMLfile.isOpened ()) {
-    ioHTMLfile.outputRawData ("<p><a name=\"follow_by_empty\"></a>") ;
-    ioHTMLfile << "Calculus completed in "
+  if (ioHTMLFileContents.registeringIsEnabled ()) {
+    ioHTMLFileContents.outputRawData ("<p><a name=\"follow_by_empty\"></a>") ;
+    ioHTMLFileContents << "Calculus completed in "
                 << cStringWithSigned (inIterationsCount)
                 << " iterations.\n" ;
-    ioHTMLfile.outputRawData ("</p><p>") ;
+    ioHTMLFileContents.outputRawData ("</p><p>") ;
     if (n == 1) {
-      ioHTMLfile << "One nonterminal symbol (the start symbol) can be followed by the empty string.\n" ;
+      ioHTMLFileContents << "One nonterminal symbol (the start symbol) can be followed by the empty string.\n" ;
     }else{
-      ioHTMLfile.appendUnsigned (n) ;
-       ioHTMLfile.appendCString (" nonterminal symbols (including the start symbol) can be followed by the empty string.\n") ;
+      ioHTMLFileContents.appendUnsigned (n) ;
+       ioHTMLFileContents.appendCString (" nonterminal symbols (including the start symbol) can be followed by the empty string.\n") ;
     }
-    ioHTMLfile.outputRawData ("</p>") ;
+    ioHTMLFileContents.outputRawData ("</p>") ;
     TC_UniqueArray <uint64_t> array ;
     inVocabularyFollowedByEmpty.getValueArray (array) ;
-    ioHTMLfile.outputRawData ("<table class=\"result\">") ;
+    ioHTMLFileContents.outputRawData ("<table class=\"result\">") ;
     for (int32_t i=0 ; i < array.count () ; i++) {
-      ioHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
+      ioHTMLFileContents.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
       const uint64_t symbol = array (i COMMA_HERE) ;
-      inVocabulary.printInFile (ioHTMLfile, (int32_t) symbol COMMA_HERE) ;
-      ioHTMLfile.outputRawData ("</code></td></tr>") ;
+      inVocabulary.printInFile (ioHTMLFileContents, (int32_t) symbol COMMA_HERE) ;
+      ioHTMLFileContents.outputRawData ("</code></td></tr>") ;
     }
-    ioHTMLfile.outputRawData ("</table>") ;
+    ioHTMLFileContents.outputRawData ("</table>") ;
   }
   if (inVerboseOptionOn) {
     co.appendUnsigned (n) ;
@@ -118,7 +118,7 @@ displayNonterminalSymbolsFollowedByEmpty (const C_Relation & inVocabularyFollowe
 
 void
 follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductions,
-                              C_HTML_FileWrite & ioHTMLfile,
+                              C_HTMLString & ioHTMLFileContents,
                               const cVocabulary & inVocabulary,
                               const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                               C_Relation & outVocabularyFollowedByEmpty,
@@ -129,8 +129,8 @@ follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductio
     co.flush () ;
   }
 //--- Print in BNF file
-  if (ioHTMLfile.isOpened ()) {
-    ioHTMLfile.appendCppTitleComment ("Nonterminal symbol set followed by empty string", "title") ;
+  if (ioHTMLFileContents.registeringIsEnabled ()) {
+    ioHTMLFileContents.appendCppTitleComment ("Nonterminal symbol set followed by empty string", "title") ;
   }
 
 //--- Compute nonterminal symbols followed by empty 
@@ -143,7 +143,7 @@ follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductio
 
 //--- Display nonterminal symbols followed by empty 
  displayNonterminalSymbolsFollowedByEmpty (outVocabularyFollowedByEmpty,
-                                           ioHTMLfile,
+                                           ioHTMLFileContents,
                                            inVocabulary,
                                            iterationsCount,
                                            inVerboseOptionOn) ; 

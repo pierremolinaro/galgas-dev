@@ -29,7 +29,7 @@
 
 class cPureBNFproductionsList ;
 class cVocabulary ;
-class C_HTML_FileWrite ;
+class C_HTMLString ;
 class C_String ;
 class C_Compiler ;
 class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis ;
@@ -42,7 +42,7 @@ SLR_computations (C_Compiler * inCompiler,
                   const TC_UniqueArray <C_String> & inImplementationFileHeaderList,
                   const cPureBNFproductionsList & inProductionRules,
                   const cVocabulary & inVocabulary,
-                  C_HTML_FileWrite & ioHTMLfile,
+                  C_HTMLString & ioHTMLFileContents,
                   const TC_UniqueArray <TC_UniqueArray <uint64_t> > & inFOLLOWarray,
                   const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                   const uint32_t inOriginalGrammarStartSymbol,
