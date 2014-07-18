@@ -70,6 +70,7 @@ static const utf32 kEmptyUTF32String [1] = {TO_UNICODE (0)} ;
 //-----------------------------------------------------------------------------*
 
 class cEmbeddedString : public C_SharedObject {
+  public : int32_t mRegisteringEnableCount ; // > 0 : registering, <= à: no registering (initial : 1)
   public : uint32_t mCapacity ; // Maximun allowed length of the following C string
   public : uint32_t mLength ; // Current length of the following C string
   public : char * mEncodedCString ;
@@ -109,6 +110,7 @@ static uint32_t stringGoodSize (const uint32_t inCurrentCapacity,
 
 cEmbeddedString::cEmbeddedString (const uint32_t inCapacity COMMA_LOCATION_ARGS) :
 C_SharedObject (THERE),
+mRegisteringEnableCount (1),
 mCapacity (0),
 mLength (0),
 mEncodedCString (NULL),
@@ -125,6 +127,7 @@ cEmbeddedString::cEmbeddedString (const cEmbeddedString * inEmbeddedString,
                                   const uint32_t inCapacity
                                   COMMA_LOCATION_ARGS) :
 C_SharedObject (THERE),
+mRegisteringEnableCount (1),
 mCapacity (0),
 mLength (0),
 mEncodedCString (NULL),
@@ -407,13 +410,40 @@ const utf32 * C_String::utf32String (UNUSED_LOCATION_ARGS) const {
 
 //-----------------------------------------------------------------------------*
 
+bool C_String::registeringIsEnabled (void) const {
+  bool result = true ;
+  if (NULL != mEmbeddedString) {
+    macroValidSharedObject (mEmbeddedString, cEmbeddedString) ;
+    result = mEmbeddedString->mRegisteringEnableCount > 0 ;
+  }
+  return result ;
+}
+
+//-----------------------------------------------------------------------------*
+
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Methods that change string
 #endif
 
 //-----------------------------------------------------------------------------*
 
-void C_String::insulateEmbeddedString (const uint32_t inNewCapacity) {
+void C_String::enableRegistering (void) {
+  insulate () ;
+  macroValidSharedObject (mEmbeddedString, cEmbeddedString) ;
+  mEmbeddedString->mRegisteringEnableCount ++ ;
+}
+
+//-----------------------------------------------------------------------------*
+
+void C_String::disableRegistering (void) {
+  insulate () ;
+  macroValidSharedObject (mEmbeddedString, cEmbeddedString) ;
+  mEmbeddedString->mRegisteringEnableCount -- ;
+}
+
+//-----------------------------------------------------------------------------*
+
+void C_String::insulateEmbeddedString (const uint32_t inNewCapacity) const {
   if (mEmbeddedString == NULL) {
     macroMyNew (mEmbeddedString, cEmbeddedString (inNewCapacity COMMA_HERE)) ;
   }else{
@@ -455,6 +485,12 @@ void C_String::setLengthToZero (void) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkString (HERE) ;
   #endif
+}
+
+//-----------------------------------------------------------------------------*
+
+void C_String::insulate (void) const {
+  insulateEmbeddedString ((uint32_t) length ()) ;
 }
 
 //-----------------------------------------------------------------------------*
@@ -519,14 +555,16 @@ void C_String::performActualUnicodeArrayOutput (const utf32 * inUTF32CharArray,
     const int32_t kNewLength = length () + inArrayCount ;
     insulateEmbeddedString ((uint32_t) (kNewLength + 1)) ;
     MF_Assert (mEmbeddedString->retainCount () == 1, "mEmbeddedString->retainCount () == (%lld) != 1", mEmbeddedString->retainCount () == 1, 0) ;
-    for (int32_t i=0 ; i<inArrayCount ; i++) {
-      mEmbeddedString->mString [mEmbeddedString->mLength + (uint32_t) i] = inUTF32CharArray [i] ;
+    if (mEmbeddedString->mRegisteringEnableCount > 0) {
+      for (int32_t i=0 ; i<inArrayCount ; i++) {
+        mEmbeddedString->mString [mEmbeddedString->mLength + (uint32_t) i] = inUTF32CharArray [i] ;
+      }
+      mEmbeddedString->mLength = (uint32_t) kNewLength ;
+      mEmbeddedString->mString [kNewLength] = TO_UNICODE ('\0') ;
+      #ifndef DO_NOT_GENERATE_CHECKINGS
+        checkString (HERE) ;
+      #endif
     }
-    mEmbeddedString->mLength = (uint32_t) kNewLength ;
-    mEmbeddedString->mString [kNewLength] = TO_UNICODE ('\0') ;
-    #ifndef DO_NOT_GENERATE_CHECKINGS
-      checkString (HERE) ;
-    #endif
     MF_Assert (capacity () > (uint32_t) kNewLength, "capacity (%lld) <= kNewLength (%lld)", capacity (), kNewLength) ;
     macroUniqueSharedObject (mEmbeddedString) ;
   }
@@ -541,22 +579,24 @@ void C_String::performActualCharArrayOutput (const char * inCharArray,
   #endif
   if (inArrayCount != 0) {
     insulateEmbeddedString ((uint32_t) (length () + inArrayCount + 1)) ;
-    int32_t idx = 0 ;
     int32_t newLength = (int32_t) mEmbeddedString->mLength ;
-    bool ok = true ;
-    while ((idx < inArrayCount) && ok) {
-      if ((inCharArray [idx] & 0x80) == 0) { // ASCII
-        mEmbeddedString->mString [newLength] = TO_UNICODE ((uint32_t) inCharArray [idx]) ;
-        idx ++ ;
-        newLength ++ ;
-      }else{
-        const utf32 unicodeChar = utf32CharacterForPointer ((const uint8_t *) inCharArray, idx, inArrayCount, ok) ;
-        mEmbeddedString->mString [newLength] = unicodeChar ;
-        newLength ++ ;
+    if (mEmbeddedString->mRegisteringEnableCount > 0) {
+      int32_t idx = 0 ;
+      bool ok = true ;
+      while ((idx < inArrayCount) && ok) {
+        if ((inCharArray [idx] & 0x80) == 0) { // ASCII
+          mEmbeddedString->mString [newLength] = TO_UNICODE ((uint32_t) inCharArray [idx]) ;
+          idx ++ ;
+          newLength ++ ;
+        }else{
+          const utf32 unicodeChar = utf32CharacterForPointer ((const uint8_t *) inCharArray, idx, inArrayCount, ok) ;
+          mEmbeddedString->mString [newLength] = unicodeChar ;
+          newLength ++ ;
+        }
       }
+      mEmbeddedString->mLength = (uint32_t) newLength ;
+      mEmbeddedString->mString [newLength] = TO_UNICODE ('\0') ;
     }
-    mEmbeddedString->mLength = (uint32_t) newLength ;
-    mEmbeddedString->mString [newLength] = TO_UNICODE ('\0') ;
     #ifndef DO_NOT_GENERATE_CHECKINGS
       checkString (HERE) ;
     #endif

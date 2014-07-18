@@ -1,9 +1,9 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  Routines for printing original grammar (with 'select' and 'repeat')      *
+//  Routines for printing original grammar (with 'select' and 'repeat')        *
 //                                                                             *
-//  Copyright (C) 1999-2002 Pierre Molinaro.                                 *
-//  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+//  Copyright (C) 1999-2002 Pierre Molinaro.                                   *
+//  e-mail : molinaro@irccyn.ec-nantes.fr                                      *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
 //  ECN, École Centrale de Nantes (France)                                     *
 //                                                                             *
@@ -23,12 +23,12 @@
 
 //-----------------------------------------------------------------------------*
 
-class C_HTML_FileWrite ;
+class C_HTMLString ;
 class GALGAS_syntaxComponentListForGrammarAnalysis ;
 
 //-----------------------------------------------------------------------------*
 
-void printOriginalGrammar (C_HTML_FileWrite & inHTMLfile,
+void printOriginalGrammar (C_HTMLString & inHTMLfile,
                            const GALGAS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList) ;
 
 //-----------------------------------------------------------------------------*

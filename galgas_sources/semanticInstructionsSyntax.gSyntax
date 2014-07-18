@@ -789,8 +789,7 @@ rule <foreach_enumerated_object>
     $($ ;
     repeat
     while
-      $*$ :>??@string sep ?* ;
-      send sep . "()" ;
+      $*$ ;
       mElementList += ![@lstring new !"" !here] ![@lstring new !"" !here] ;
     while
       @luint count ;

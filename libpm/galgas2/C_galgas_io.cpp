@@ -102,7 +102,7 @@ const char * max_warning_count_reached_exception::what (void) const throw () {
 
 //-----------------------------------------------------------------------------*
 
-static uint32_t mCheckedLines ;
+/*static uint32_t mCheckedLines ;
 
 uint32_t checkedLineCount (void) { return mCheckedLines ; } ;
 
@@ -139,7 +139,7 @@ uint32_t generatedFileCount (void) { return mGeneratedFileCount ; } ;
 void incrementGeneratedFileCount (void) {
   mGeneratedFileCount ++ ;
 }
-
+*/
 //-----------------------------------------------------------------------------*
 
 int32_t maxErrorCount (void) {

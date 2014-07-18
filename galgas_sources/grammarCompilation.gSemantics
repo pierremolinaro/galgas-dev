@@ -491,6 +491,7 @@ extern routine grammarAnalysisAndGeneration
   ??@nonTerminalSymbolSortedListForGrammarAnalysis inNonTerminalSymbolSortedListForGrammarAnalysis
   ??@bool inHasIndexing
   ??@string inSyntaxDirectedTranslationVarName # Empty if not syntax directed translation
+  !@string outGrammarHTMLHelperContents
 ;
 
 #---------------------------------------------------------------------------*
@@ -618,6 +619,7 @@ routine compileGrammarComponentFromAST
     nonTerminalSymbolSortedListForGrammarAnalysis += !lkey !mNonTerminalIndex !mNonterminalSymbolParametersMap ;
   end foreach ;
 #---------------------------------------------------------- Analyze grammar
+  const HTMLFilePath := outputDirectoryForHTMLFile . "/" . inGrammarComponentRoot->mGrammarComponentName . ".html" ;
   grammarAnalysisAndGeneration
     ![@stringset setWithString !inGrammarComponentRoot->mGrammarComponentName->string]
     !false
@@ -629,11 +631,20 @@ routine compileGrammarComponentFromAST
     !syntaxComponentListForGrammarAnalysis
     !unusedNonTerminalSymbolsForGrammar
     !inOutputDirectoryForCppFiles
-    !outputDirectoryForHTMLFile
+    !HTMLFilePath
     !nonTerminalSymbolSortedListForGrammarAnalysis
     !hasIndexing
     !if inGrammarComponentRoot->mHasTranslateFeature then syntaxDirectedTranslationResultVarName [] else "" end
+    ??@string grammarHTMLHelperContents
   ;
+#---------------------------------------------------------- Generate HTML grammer helper file
+  if [@uint errorCount] == 0 then
+    if [option galgas_cli_options.outputHTMLgrammarFile value] then
+      [grammarHTMLHelperContents writeToFileWhenDifferentContents !HTMLFilePath ?*] ;
+    else
+      [@string deleteFileIfExists !HTMLFilePath] ;
+    end if ;
+  end if ;
 #---------------------------------------------------------- Generate header
   if [@uint errorCount] == 0 then
     const zone2 := [filewrapper grammarGenerationTemplate.grammarZone2Header
@@ -689,7 +700,6 @@ routine compileGrammarComponentGalgas3
   ?!@stringlist ioToolProductFileList
   ?!@stringset ioAllProductFileSet
 :
-  const @string outputDirectoryForHTMLFile := [inOutputDirectory stringByDeletingLastPathComponent] ;
 #---------------------------------------------------------- Parse syntax components
   @terminalSymbolsMapForGrammarAnalysis actuallyUsedTerminalSymbolMap [emptyMap] ;
   @nonTerminalSymbolMapForGrammarAnalysis nonTerminalMapForGrammarAnalysis [emptyMap] ;
@@ -804,6 +814,7 @@ routine compileGrammarComponentGalgas3
   ioToolProductFileList += !"grammar-" + inGrammarComponentRoot->mGrammarComponentName->string + ".cpp" ;
   ioAllProductFileSet += !"grammar-" + inGrammarComponentRoot->mGrammarComponentName->string + ".h" ;
   ioAllProductFileSet += !"grammar-" + inGrammarComponentRoot->mGrammarComponentName->string + ".cpp" ;
+  const HTMLFilePath := inOutputDirectory . "/../helpers/" . inGrammarComponentRoot->mGrammarComponentName . ".html" ;
   grammarAnalysisAndGeneration
     !implementationFileHeader
     !true # Compile for GALGAS 3
@@ -815,11 +826,20 @@ routine compileGrammarComponentGalgas3
     !syntaxComponentListForGrammarAnalysis
     !unusedNonTerminalSymbolsForGrammar
     !inOutputDirectory
-    !outputDirectoryForHTMLFile
+    !HTMLFilePath
     !nonTerminalSymbolSortedListForGrammarAnalysis
     !hasIndexing
     !if inGrammarComponentRoot->mHasTranslateFeature then syntaxDirectedTranslationResultVarName [] else "" end
+    ??@string grammarHTMLHelperContents
   ;
+#---------------------------------------------------------- Generate HTML grammer helper file
+  if [@uint errorCount] == 0 then
+    if [option galgas_cli_options.outputHTMLgrammarFile value] then
+      [grammarHTMLHelperContents writeToFileWhenDifferentContents !HTMLFilePath ?*] ;
+    else
+      [@string deleteFileIfExists !HTMLFilePath] ;
+    end if ;
+  end if ;
 #---------------------------------------------------------- Generate header
   if [@uint errorCount] == 0 then
     const zone2 := [filewrapper grammarGenerationTemplate.grammarZone2HeaderGalgas3

@@ -20,7 +20,7 @@
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-#include "files/C_HTML_FileWrite.h"
+#include "strings/C_HTMLString.h"
 #include "bdd/C_Relation.h"
 
 //-----------------------------------------------------------------------------*
@@ -124,7 +124,7 @@ computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules,
 static void
 printFOLLOWsets (const TC_UniqueArray <TC_UniqueArray <uint64_t> > & inFOLLOWarray,
                  const cVocabulary & inVocabulary,
-                 C_HTML_FileWrite & inHTMLfile,
+                 C_HTMLString & inHTMLfile,
                  const uint64_t inValuesCount,
                  const int32_t inIterationsCount) {
 //--- Print messages
@@ -160,7 +160,7 @@ printFOLLOWsets (const TC_UniqueArray <TC_UniqueArray <uint64_t> > & inFOLLOWarr
 //-----------------------------------------------------------------------------*
 
 static bool
-checkFOLLOWsets (C_HTML_FileWrite & ioHTMLfile,
+checkFOLLOWsets (C_HTMLString & ioHTMLFileContents,
                  const C_Relation & inNonterminalSymbolsFollowedByEmpty,
                  const cVocabulary & inVocabulary,
                  const C_Relation & inUsefulSymbols,
@@ -178,14 +178,14 @@ checkFOLLOWsets (C_HTML_FileWrite & ioHTMLfile,
   const C_Relation suivantsPlusVide = ntVide.orOp (inFOLLOWsets COMMA_HERE) ;
 
 //--- Verifier les suivants
-  if (ioHTMLfile.isOpened ()) {
-    ioHTMLfile.outputRawData ("<p>") ;
-    ioHTMLfile << "Every useful nonterminal symbol should:"
+  if (ioHTMLFileContents.registeringIsEnabled ()) {
+    ioHTMLFileContents.outputRawData ("<p>") ;
+    ioHTMLFileContents << "Every useful nonterminal symbol should:"
                    " either have a non empty FOLLOW,"
                    " either can be followed by the empty string,"
                    " either both."
                    " In no way none of them : it is an error." ;
-    ioHTMLfile.outputRawData ("</p>") ;
+    ioHTMLFileContents.outputRawData ("</p>") ;
   }
 //--- Obtenir les non terminaux en erreur
   C_Relation nterminauxAverifier (inUsefulSymbols.configuration(), 0, C_BDD::kGreaterOrEqual, (uint32_t) inVocabulary.getTerminalSymbolsCount () COMMA_HERE) ;
@@ -203,32 +203,32 @@ checkFOLLOWsets (C_HTML_FileWrite & ioHTMLfile,
     }
     co.flush () ;
   }
-  if (ioHTMLfile.isOpened ()) {
+  if (ioHTMLFileContents.registeringIsEnabled ()) {
     if (n == 0) {
-      ioHTMLfile.outputRawData ("<p><span class=\"success\">") ;
-      ioHTMLfile << "All FOLLOW are correct." ;
-      ioHTMLfile.outputRawData ("</span></p>") ;
+      ioHTMLFileContents.outputRawData ("<p><span class=\"success\">") ;
+      ioHTMLFileContents << "All FOLLOW are correct." ;
+      ioHTMLFileContents.outputRawData ("</span></p>") ;
     }else{
-      ioHTMLfile.outputRawData ("<p><span class=\"error\">") ;
-      ioHTMLfile << "Error : " ;
-      ioHTMLfile.appendUnsigned (n) ;
-      ioHTMLfile << " nonterminal symbol"
+      ioHTMLFileContents.outputRawData ("<p><span class=\"error\">") ;
+      ioHTMLFileContents << "Error : " ;
+      ioHTMLFileContents.appendUnsigned (n) ;
+      ioHTMLFileContents << " nonterminal symbol"
                   << ((n > 1) ? "s have" : " has")
                   << " an empty FOLLOW :\n" ;
-      ioHTMLfile.outputRawData ("</span></p>") ;
+      ioHTMLFileContents.outputRawData ("</span></p>") ;
 
       TC_UniqueArray <uint64_t> array ;
       ntErreurSuivants.getValueArray (array) ;
-      ioHTMLfile.outputRawData ("<table class=\"result\">") ;
+      ioHTMLFileContents.outputRawData ("<table class=\"result\">") ;
       for (int32_t i=0 ; i < array.count () ; i++) {
         const int32_t symbol = (int32_t) array (i COMMA_HERE) ;
         if (symbol >= inVocabulary.getTerminalSymbolsCount ()) {
-          ioHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
-          inVocabulary.printInFile (ioHTMLfile, symbol COMMA_HERE) ;
-          ioHTMLfile.outputRawData ("</code></td></tr>") ;
+          ioHTMLFileContents.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
+          inVocabulary.printInFile (ioHTMLFileContents, symbol COMMA_HERE) ;
+          ioHTMLFileContents.outputRawData ("</code></td></tr>") ;
         }
       }
-      ioHTMLfile.outputRawData ("</table>") ;
+      ioHTMLFileContents.outputRawData ("</table>") ;
     }
   }
   return n == 0 ; 
@@ -238,7 +238,7 @@ checkFOLLOWsets (C_HTML_FileWrite & ioHTMLfile,
 
 void
 FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
-                     C_HTML_FileWrite & ioHTMLfile,
+                     C_HTMLString & ioHTMLFileContents,
                      const cVocabulary & inVocabulary,
                      const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                      const C_Relation & inUsefulSymbols,
@@ -254,9 +254,9 @@ FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
     co.flush () ;
   }
 //--- Print in BNF file
-  if (ioHTMLfile.isOpened ()) {
-    ioHTMLfile.outputRawData ("<p></p>") ;
-    ioHTMLfile.appendCppTitleComment ("Computing the FOLLOW sets", "title") ;
+  if (ioHTMLFileContents.registeringIsEnabled ()) {
+    ioHTMLFileContents.outputRawData ("<p></p>") ;
+    ioHTMLFileContents.appendCppTitleComment ("Computing the FOLLOW sets", "title") ;
   }
 //--- Compute FOLLOW (with BDD)
   int32_t iterationsCount = 0 ;
@@ -271,16 +271,16 @@ FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
                      iterationsCount) ;
 
 //--- Print FOLLOW sets
-  if (ioHTMLfile.isOpened ()) {
+  if (ioHTMLFileContents.registeringIsEnabled ()) {
     printFOLLOWsets (outFOLLOWarray,
                      inVocabulary,
-                     ioHTMLfile,
+                     ioHTMLFileContents,
                      outFOLLOWsets.value64Count (),
                      iterationsCount) ;
   }
 
 //--- Check FOLLOW
-  outOk = checkFOLLOWsets (ioHTMLfile,
+  outOk = checkFOLLOWsets (ioHTMLFileContents,
                            inNonterminalSymbolsFollowedByEmpty,
                            inVocabulary,
                            inUsefulSymbols,

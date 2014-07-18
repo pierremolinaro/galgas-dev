@@ -20,7 +20,7 @@
 class cPtr_terminalInstructionForGrammarAnalysis : public cPtr_abstractSyntaxInstructionForGrammarAnalysis {
 //--- START OF USER ZONE 2
 
-  public : virtual void printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) ;
+  public : virtual void printInstructionForGrammar (C_HTMLString & inHTMLfile) ;
 
   public : virtual void fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
                                                   const C_String & inSyntaxComponentName,

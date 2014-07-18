@@ -20,7 +20,7 @@
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-#include "files/C_HTML_FileWrite.h"
+#include "strings/C_HTMLString.h"
 #include "files/C_TextFileWrite.h"
 #include "collections/TC_UniqueArray2.h"
 #include "galgas2/C_Compiler.h"
@@ -117,7 +117,7 @@ class c_LR0_items_set {
 //--- Display LR0 items set
   public : void display (const cPureBNFproductionsList & inProductionRules,
                          const cVocabulary & inVocabulary,
-                         C_HTML_FileWrite & inHTMLfile) ;
+                         C_HTMLString & inHTMLfile) ;
 
 //--- Compare two items sets
   public : static int32_t compare_LR0_items_sets (const c_LR0_items_set & inItemsSet1,
@@ -211,7 +211,7 @@ bool c_LR0_items_set::isEmptySet (void) const {
 void c_LR0_items_set::
 display (const cPureBNFproductionsList & inProductionRules,
          const cVocabulary & inVocabulary,
-         C_HTML_FileWrite & inHTMLfile) {
+         C_HTMLString & inHTMLfile) {
   for (int32_t i=0 ; i<mItemsSet.count () ; i++) {
     const cProduction & p = inProductionRules (mItemsSet (i COMMA_HERE).mProductionRuleIndex COMMA_HERE) ;
     const int32_t location = mItemsSet (i COMMA_HERE).mLocationIndex ;
@@ -519,7 +519,7 @@ class c_LR0_items_sets_collection {
 //--- Display LR0 items set
   public : void display (const cPureBNFproductionsList & inProductionRules,
                          const cVocabulary & inVocabulary,
-                         C_HTML_FileWrite & inHTMLfile) ;
+                         C_HTMLString & inHTMLfile) ;
 
 //--- Search from a LR0 items set (used for building 'reduce' actions of SLR table)
   public : void getProductionsWhereLocationIsRight (const int32_t inStateIndex,
@@ -559,7 +559,7 @@ searchOrInsert_LR0_itemSet (c_LR0_items_set & ioItemSet) {
 void c_LR0_items_sets_collection::
 display (const cPureBNFproductionsList & inProductionRules,
          const cVocabulary & inVocabulary,
-         C_HTML_FileWrite & inHTMLfile) {
+         C_HTMLString & inHTMLfile) {
   for (int32_t i=0 ; i<m_LR0_items_sets_array.count () ; i++) {
     inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
     inHTMLfile << "S" << cStringWithSigned (i) ;
@@ -1242,7 +1242,7 @@ SLR_computations (C_Compiler * inCompiler,
                   const TC_UniqueArray <C_String> & inImplementationFileHeaderList,
                   const cPureBNFproductionsList & inProductionRules,
                   const cVocabulary & inVocabulary,
-                  C_HTML_FileWrite & ioHTMLfile,
+                  C_HTMLString & ioHTMLFileContents,
                   const TC_UniqueArray <TC_UniqueArray <uint64_t> > & inFOLLOWarray,
                   const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                   const uint32_t inOriginalGrammarStartSymbol,
@@ -1259,9 +1259,9 @@ SLR_computations (C_Compiler * inCompiler,
     co.flush () ;
   }
 //--- Print in BNF file
-  if (ioHTMLfile.isOpened ()) {
-    ioHTMLfile.appendCppTitleComment ("Building SLR automaton", "title") ;
-    ioHTMLfile.outputRawData ("<p></p>") ;
+  if (ioHTMLFileContents.registeringIsEnabled ()) {
+    ioHTMLFileContents.appendCppTitleComment ("Building SLR automaton", "title") ;
+    ioHTMLFileContents.outputRawData ("<p></p>") ;
   }
 
 //--- Compute LR0 automaton
@@ -1277,29 +1277,29 @@ SLR_computations (C_Compiler * inCompiler,
     co.flush () ;
   }
 //--- Display automaton states
-  if (ioHTMLfile.isOpened ()) {
-    ioHTMLfile.outputRawData ("<table class=\"result\">"
+  if (ioHTMLFileContents.registeringIsEnabled ()) {
+    ioHTMLFileContents.outputRawData ("<table class=\"result\">"
                               "<tr><td class=\"result_title\" colspan=\"2\">") ;
-    ioHTMLfile << "LR0 automaton states" ;
-    ioHTMLfile.outputRawData ("</td></tr>") ;
-    LR0_items_sets_collection.display (inProductionRules, inVocabulary, ioHTMLfile) ;
-    ioHTMLfile.outputRawData ("</table>") ;
+    ioHTMLFileContents << "LR0 automaton states" ;
+    ioHTMLFileContents.outputRawData ("</td></tr>") ;
+    LR0_items_sets_collection.display (inProductionRules, inVocabulary, ioHTMLFileContents) ;
+    ioHTMLFileContents.outputRawData ("</table>") ;
   }
 //--- Display automaton transitions
-  if (ioHTMLfile.isOpened ()) {
-    ioHTMLfile.outputRawData ("<p></p><table class=\"result\"><tr><td class=\"result_title\">") ;
-    ioHTMLfile << "LR0 automaton transitions" ;
-    ioHTMLfile.outputRawData ("</td></tr>") ;
+  if (ioHTMLFileContents.registeringIsEnabled ()) {
+    ioHTMLFileContents.outputRawData ("<p></p><table class=\"result\"><tr><td class=\"result_title\">") ;
+    ioHTMLFileContents << "LR0 automaton transitions" ;
+    ioHTMLFileContents.outputRawData ("</td></tr>") ;
     for (int32_t i=0 ; i<transitionList.length () ; i++) {
-      ioHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
-      ioHTMLfile << "  S" << cStringWithSigned (transitionList (i COMMA_HERE).mSourceState)
+      ioHTMLFileContents.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
+      ioHTMLFileContents << "  S" << cStringWithSigned (transitionList (i COMMA_HERE).mSourceState)
                   << " |- " ;
-      inVocabulary.printInFile (ioHTMLfile, transitionList (i COMMA_HERE).mAction COMMA_HERE) ;
-      ioHTMLfile << " -> S"
+      inVocabulary.printInFile (ioHTMLFileContents, transitionList (i COMMA_HERE).mAction COMMA_HERE) ;
+      ioHTMLFileContents << " -> S"
                   << cStringWithSigned (transitionList (i COMMA_HERE).mTargetState) ;
-      ioHTMLfile.outputRawData ("</code></td></tr>") ;
+      ioHTMLFileContents.outputRawData ("</code></td></tr>") ;
     }
-    ioHTMLfile.outputRawData ("</table><p></p>") ;
+    ioHTMLFileContents.outputRawData ("</table><p></p>") ;
   }
 
 //--- Console display
@@ -1308,8 +1308,8 @@ SLR_computations (C_Compiler * inCompiler,
     co.flush () ;
   }
 //--- Print in BNF file
-  if (ioHTMLfile.isOpened ()) {
-  ioHTMLfile.appendCppTitleComment ("Checking SLR condition", "title") ;
+  if (ioHTMLFileContents.registeringIsEnabled ()) {
+  ioHTMLFileContents.appendCppTitleComment ("Checking SLR condition", "title") ;
   }
 
 //--- Build SLR table... detect if grammar is not SLR
@@ -1318,10 +1318,10 @@ SLR_computations (C_Compiler * inCompiler,
   int32_t shiftActions = 0 ;
   int32_t reduceActions = 0 ;
   int32_t successorEntries = 0 ;
-  if (ioHTMLfile.isOpened ()) {
-    ioHTMLfile.outputRawData ("<p></p><table class=\"result\"><tr><td class=\"result_title\">") ;
-    ioHTMLfile << "SLR decision table" ;
-    ioHTMLfile.outputRawData ("</td></tr>") ;
+  if (ioHTMLFileContents.registeringIsEnabled ()) {
+    ioHTMLFileContents.outputRawData ("<p></p><table class=\"result\"><tr><td class=\"result_title\">") ;
+    ioHTMLFileContents << "SLR decision table" ;
+    ioHTMLFileContents.outputRawData ("</td></tr>") ;
   }
 //--- Shift actions
   for (int32_t index=0 ; index<transitionList.length () ; index++) {
@@ -1329,12 +1329,12 @@ SLR_computations (C_Compiler * inCompiler,
       const int32_t sourceState = transitionList (index COMMA_HERE).mSourceState ;
       const int32_t targetState = transitionList (index COMMA_HERE).mTargetState ;
       const int32_t terminal = transitionList (index COMMA_HERE).mAction ;
-      if (ioHTMLfile.isOpened ()) {
-        ioHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
-        ioHTMLfile << "Action [S" << cStringWithSigned (sourceState) << ", " ;
-        inVocabulary.printInFile (ioHTMLfile, terminal COMMA_HERE) ;
-        ioHTMLfile << "] : shift, goto S" << cStringWithSigned (targetState) ;
-        ioHTMLfile.outputRawData ("</code></td></tr>") ;
+      if (ioHTMLFileContents.registeringIsEnabled ()) {
+        ioHTMLFileContents.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
+        ioHTMLFileContents << "Action [S" << cStringWithSigned (sourceState) << ", " ;
+        inVocabulary.printInFile (ioHTMLFileContents, terminal COMMA_HERE) ;
+        ioHTMLFileContents << "] : shift, goto S" << cStringWithSigned (targetState) ;
+        ioHTMLFileContents.outputRawData ("</code></td></tr>") ;
       }
       SLRdecisionTable (sourceState, terminal COMMA_HERE) = cDecisionTableElement::shiftDecision (targetState) ;
       shiftActions ++ ;
@@ -1351,26 +1351,26 @@ SLR_computations (C_Compiler * inCompiler,
                                                                   acceptCondition) ;
     if (acceptCondition) {
       const int32_t terminal = inVocabulary.getEmptyStringTerminalSymbolIndex () ;
-      if (ioHTMLfile.isOpened ()) {
-        ioHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
-        ioHTMLfile << "Action [S"
+      if (ioHTMLFileContents.registeringIsEnabled ()) {
+        ioHTMLFileContents.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
+        ioHTMLFileContents << "Action [S"
                     << cStringWithSigned (state)
                     << ", " ;
-        inVocabulary.printInFile (ioHTMLfile, terminal COMMA_HERE) ;
-        ioHTMLfile << "] : accept" ;
-        ioHTMLfile.outputRawData ("</code>") ;
+        inVocabulary.printInFile (ioHTMLFileContents, terminal COMMA_HERE) ;
+        ioHTMLFileContents << "] : accept" ;
+        ioHTMLFileContents.outputRawData ("</code>") ;
       }
       if (! SLRdecisionTable (state, terminal COMMA_HERE).isInUndefinedState ()) {
-        if (ioHTMLfile.isOpened ()) {
-          ioHTMLfile.outputRawData ("<span class=\"error\">") ;
-          ioHTMLfile << " *** CONFLICT ***" ;
-          ioHTMLfile.outputRawData ("</span>") ;
+        if (ioHTMLFileContents.registeringIsEnabled ()) {
+          ioHTMLFileContents.outputRawData ("<span class=\"error\">") ;
+          ioHTMLFileContents << " *** CONFLICT ***" ;
+          ioHTMLFileContents.outputRawData ("</span>") ;
         }
         conflictCount ++ ;
       }
       SLRdecisionTable (state, terminal COMMA_HERE) = cDecisionTableElement::acceptDecision () ;
-      if (ioHTMLfile.isOpened ()) {
-        ioHTMLfile.outputRawData ("</td></tr>") ;
+      if (ioHTMLFileContents.registeringIsEnabled ()) {
+        ioHTMLFileContents.outputRawData ("</td></tr>") ;
       }
     }
     for (int32_t p=0 ; p<productionsSet.count () ; p++) {
@@ -1378,26 +1378,26 @@ SLR_computations (C_Compiler * inCompiler,
       const int32_t leftNonTerminal = inProductionRules (productionIndex COMMA_HERE).leftNonTerminalIndex () ;
       for (int32_t f=0 ; f<inFOLLOWarray (leftNonTerminal COMMA_HERE).count () ; f++) {
         const int32_t terminal = (int32_t) inFOLLOWarray (leftNonTerminal COMMA_HERE) (f COMMA_HERE) ;
-        if (ioHTMLfile.isOpened ()) {
-          ioHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
-          ioHTMLfile << "Action [S"
+        if (ioHTMLFileContents.registeringIsEnabled ()) {
+          ioHTMLFileContents.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
+          ioHTMLFileContents << "Action [S"
                       << cStringWithSigned (state)
                       << ", " ;
-          inVocabulary.printInFile (ioHTMLfile, terminal COMMA_HERE) ;
-          ioHTMLfile << "] : reduce by " ;
-          inVocabulary.printInFile (ioHTMLfile, leftNonTerminal COMMA_HERE) ;
-          ioHTMLfile.outputRawData ("</code>") ;
+          inVocabulary.printInFile (ioHTMLFileContents, terminal COMMA_HERE) ;
+          ioHTMLFileContents << "] : reduce by " ;
+          inVocabulary.printInFile (ioHTMLFileContents, leftNonTerminal COMMA_HERE) ;
+          ioHTMLFileContents.outputRawData ("</code>") ;
         }
         if (! SLRdecisionTable (state, terminal COMMA_HERE).isInUndefinedState ()) {
-          if (ioHTMLfile.isOpened ()) {
-            ioHTMLfile.outputRawData ("<span class=\"error\">") ;
-            ioHTMLfile << " *** CONFLICT ***" ;
-            ioHTMLfile.outputRawData ("</span>") ;
+          if (ioHTMLFileContents.registeringIsEnabled ()) {
+            ioHTMLFileContents.outputRawData ("<span class=\"error\">") ;
+            ioHTMLFileContents << " *** CONFLICT ***" ;
+            ioHTMLFileContents.outputRawData ("</span>") ;
           }
           conflictCount ++ ;
         }
-        if (ioHTMLfile.isOpened ()) {
-          ioHTMLfile.outputRawData ("</td></tr>") ;
+        if (ioHTMLFileContents.registeringIsEnabled ()) {
+          ioHTMLFileContents.outputRawData ("</td></tr>") ;
         }
         SLRdecisionTable (state, terminal COMMA_HERE) = cDecisionTableElement::reduceDecision (productionIndex) ;
         reduceActions ++ ;
@@ -1408,15 +1408,15 @@ SLR_computations (C_Compiler * inCompiler,
   for (int32_t t=0 ; t<transitionList.length () ; t++) {
     if (transitionList (t COMMA_HERE).mAction >= terminalSymbolsCount) {
       successorEntries ++ ;
-      if (ioHTMLfile.isOpened ()) {
-        ioHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
-        ioHTMLfile << "Successor [S"
+      if (ioHTMLFileContents.registeringIsEnabled ()) {
+        ioHTMLFileContents.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
+        ioHTMLFileContents << "Successor [S"
                     << cStringWithSigned (transitionList (t COMMA_HERE).mSourceState)
                     << ", " ;
-        inVocabulary.printInFile (ioHTMLfile, transitionList (t COMMA_HERE).mAction COMMA_HERE) ;
-        ioHTMLfile << "] = S"
+        inVocabulary.printInFile (ioHTMLFileContents, transitionList (t COMMA_HERE).mAction COMMA_HERE) ;
+        ioHTMLFileContents << "] = S"
                     << cStringWithSigned (transitionList (t COMMA_HERE).mTargetState) ;
-        ioHTMLfile.outputRawData ("</code></td></tr>") ;
+        ioHTMLFileContents.outputRawData ("</code></td></tr>") ;
       }
     }
   }
@@ -1429,9 +1429,9 @@ SLR_computations (C_Compiler * inCompiler,
     }
     co.flush () ;
   }
-  if (ioHTMLfile.isOpened ()) {
-    ioHTMLfile.outputRawData ("</table><p>") ;
-    ioHTMLfile << "LR0 automaton has "
+  if (ioHTMLFileContents.registeringIsEnabled ()) {
+    ioHTMLFileContents.outputRawData ("</table><p>") ;
+    ioHTMLFileContents << "LR0 automaton has "
                 << cStringWithSigned (LR0_items_sets_collection.getStatesCount ())
                 << " states and "
                 << cStringWithSigned (transitionList.length ())
@@ -1440,20 +1440,20 @@ SLR_computations (C_Compiler * inCompiler,
                 << cStringWithSigned (shiftActions) << " shift actions, "
                 << cStringWithSigned (reduceActions) << " reduce actions, and "
                 << cStringWithSigned (successorEntries) << " state successor entries." ;
-    ioHTMLfile.outputRawData ("</p><p>") ;
+    ioHTMLFileContents.outputRawData ("</p><p>") ;
     if (conflictCount == 0) {
-      ioHTMLfile.outputRawData ("<span class=\"success\">") ;
-      ioHTMLfile << "No conflict : grammar is SLR (1)." ;
-      ioHTMLfile.outputRawData ("</span>") ;
+      ioHTMLFileContents.outputRawData ("<span class=\"success\">") ;
+      ioHTMLFileContents << "No conflict : grammar is SLR (1)." ;
+      ioHTMLFileContents.outputRawData ("</span>") ;
     }else{
-      ioHTMLfile.outputRawData ("<span class=\"error\">") ;
-      ioHTMLfile << cStringWithSigned (conflictCount)
+      ioHTMLFileContents.outputRawData ("<span class=\"error\">") ;
+      ioHTMLFileContents << cStringWithSigned (conflictCount)
                   << " conflict"
                   << ((conflictCount > 1) ? "s" : "")
                   << " : grammar is not SLR (1)." ;
-      ioHTMLfile.outputRawData ("</span>") ;
+      ioHTMLFileContents.outputRawData ("</span>") ;
     }
-    ioHTMLfile.outputRawData ("</p>") ;
+    ioHTMLFileContents.outputRawData ("</p>") ;
   }
 //--- Generate C++ file
   if (conflictCount == 0) {

@@ -20,7 +20,7 @@
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-#include "files/C_HTML_FileWrite.h"
+#include "strings/C_HTMLString.h"
 #include "bdd/C_Relation.h"
 #include "collections/TC_Array2.h"
 
@@ -75,7 +75,7 @@ computeFIRSTsets (const cPureBNFproductionsList & inProductionRules,
 //-----------------------------------------------------------------------------*
 
 static bool
-displayAndCheckFIRSTsets (C_HTML_FileWrite & ioHTMLfile,
+displayAndCheckFIRSTsets (C_HTMLString & ioHTMLFileContents,
                           const C_Relation & inVocabularyDerivingInEmptyString,
                           const cVocabulary & inVocabulary,
                           const C_Relation & inUsefulSymbols,
@@ -83,12 +83,12 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite & ioHTMLfile,
                           TC_UniqueArray <TC_UniqueArray <uint64_t> > & outFIRSTarray,
                           const int32_t inIterationsCount,
                           const bool inVerboseOptionOn) {
-  const int32_t symbolsCountEX = inVocabulary.getAllSymbolsCount () ;
+//  const int32_t symbolsCountEX = inVocabulary.getAllSymbolsCount () ;
   const int32_t symbolsCount = (int32_t) inUsefulSymbols.configuration().constantCountForVariable (0 COMMA_HERE) ;
-  if (symbolsCountEX != symbolsCount) {
+/*  if (symbolsCountEX != symbolsCount) {
     printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
     exit (1) ;
-  }
+  }*/
   C_RelationConfiguration vocabulary2Config = inUsefulSymbols.configuration() ;
   vocabulary2Config.appendConfiguration (inUsefulSymbols.configuration()) ;
 //--- Build cartesian product 'inVocabularyDerivingInEmptyString' * 'empty string terminal symbol'
@@ -105,28 +105,28 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite & ioHTMLfile,
 
 //--- Display FIRST
   const uint64_t m = FIRST_with_empty_relation.value64Count() ;
-  if (ioHTMLfile.isOpened ()) {
-    ioHTMLfile.outputRawData ("<p>") ;
-    ioHTMLfile << "Calculus completed in "
+  if (ioHTMLFileContents.registeringIsEnabled ()) {
+    ioHTMLFileContents.outputRawData ("<p>") ;
+    ioHTMLFileContents << "Calculus completed in "
                 << cStringWithSigned (inIterationsCount)
                 << " iterations, "
                 << cStringWithUnsigned (m)
                 << " values ;\n"
                    "'$$' means the nonterminal can be derived to empty string (see step 4).\n" ;
-    ioHTMLfile.outputRawData ("</p>") ;
-    ioHTMLfile.outputRawData ("<table class=\"result\">") ;
+    ioHTMLFileContents.outputRawData ("</p>") ;
+    ioHTMLFileContents.outputRawData ("<table class=\"result\">") ;
     for (int32_t symbol=inVocabulary.getTerminalSymbolsCount () ; symbol < symbolsCount ; symbol++) {
-      ioHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
-      ioHTMLfile << FIRST_with_empty_relation.configuration().constantNameForVariableAndValue(0, (uint32_t) symbol COMMA_HERE) ;
-      ioHTMLfile.outputRawData ("</code></td><td><code>") ;
+      ioHTMLFileContents.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
+      ioHTMLFileContents << FIRST_with_empty_relation.configuration().constantNameForVariableAndValue(0, (uint32_t) symbol COMMA_HERE) ;
+      ioHTMLFileContents.outputRawData ("</code></td><td><code>") ;
       const int32_t length = outFIRSTarray (symbol COMMA_HERE).count () ;
       for (int32_t e=0 ; e<length ; e++) {
-        ioHTMLfile << " " ;
-        inVocabulary.printInFile (ioHTMLfile, (int32_t) outFIRSTarray (symbol COMMA_HERE) (e COMMA_HERE) COMMA_HERE) ;
+        ioHTMLFileContents << " " ;
+        inVocabulary.printInFile (ioHTMLFileContents, (int32_t) outFIRSTarray (symbol COMMA_HERE) (e COMMA_HERE) COMMA_HERE) ;
       }
-      ioHTMLfile.outputRawData ("</code></td></tr>") ;
+      ioHTMLFileContents.outputRawData ("</code></td></tr>") ;
     }
-    ioHTMLfile.outputRawData ("</table>") ;
+    ioHTMLFileContents.outputRawData ("</table>") ;
   }
 //----------------------------------------------- Check FIRST
   const C_Relation ntToCheck_relation (inUsefulSymbols.configuration(),
@@ -142,38 +142,38 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite & ioHTMLfile,
   const uint64_t ntInErrorCount = ntInError_relation.value64Count () ;
 
 //--- Display nonterminal symbols in error
-  if (ioHTMLfile.isOpened ()) {
-    ioHTMLfile.outputRawData ("<p>") ;
-    ioHTMLfile << "Every useful nonterminal should"
+  if (ioHTMLFileContents.registeringIsEnabled ()) {
+    ioHTMLFileContents.outputRawData ("<p>") ;
+    ioHTMLFileContents << "Every useful nonterminal should"
                    " either have a non empty FIRST,"
                    " either be derived to empty string,"
                    " either both."
                    " In any way having none: it is an error." ;
-    ioHTMLfile.outputRawData ("</p>") ;
-    ioHTMLfile.outputRawData ("<p>") ;
+    ioHTMLFileContents.outputRawData ("</p>") ;
+    ioHTMLFileContents.outputRawData ("<p>") ;
     if (ntInErrorCount == 0) {
-      ioHTMLfile.outputRawData ("<span class=\"success\">") ;
-      ioHTMLfile << "All FIRST are correct.\n\n" ;
-      ioHTMLfile.outputRawData ("</span>") ;
+      ioHTMLFileContents.outputRawData ("<span class=\"success\">") ;
+      ioHTMLFileContents << "All FIRST are correct.\n\n" ;
+      ioHTMLFileContents.outputRawData ("</span>") ;
     }else{
-      ioHTMLfile.outputRawData ("<span class=\"error\">") ;
-      ioHTMLfile << "Error : "
+      ioHTMLFileContents.outputRawData ("<span class=\"error\">") ;
+      ioHTMLFileContents << "Error : "
                   << cStringWithUnsigned (ntInErrorCount)
                   << " nonterminal symbol"
                   << ((ntInErrorCount>1) ? " has" : "s have")
                   << " an empty FIRST :" ;
       TC_UniqueArray <uint64_t> errorArray_relation ;
       ntInError_relation.getValueArray (errorArray_relation) ;
-      ioHTMLfile.outputRawData ("<code>") ;
+      ioHTMLFileContents.outputRawData ("<code>") ;
       for (int32_t i=0 ; i<errorArray_relation.count () ; i++) {
         const uint64_t ntInError = errorArray_relation (i COMMA_HERE) ;
-        ioHTMLfile << " "
+        ioHTMLFileContents << " "
                     << ntInError_relation.configuration().constantNameForVariableAndValue (0, (uint32_t) ntInError COMMA_HERE) ;
       }
-      ioHTMLfile.outputRawData ("</code>") ;
-      ioHTMLfile.outputRawData ("</span>") ;
+      ioHTMLFileContents.outputRawData ("</code>") ;
+      ioHTMLFileContents.outputRawData ("</span>") ;
     }
-    ioHTMLfile.outputRawData ("</p>") ;
+    ioHTMLFileContents.outputRawData ("</p>") ;
   }
   if (inVerboseOptionOn) {
     if (ntInErrorCount == 0) {
@@ -190,7 +190,7 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite & ioHTMLfile,
 
 void
 FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
-                    C_HTML_FileWrite & ioHTMLfile,
+                    C_HTMLString & ioHTMLFileContents,
                     const cVocabulary & inVocabulary,
                     const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                     const C_Relation & inVocabularyDerivingToEmpty,
@@ -206,9 +206,9 @@ FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
     co.flush () ;
   }
 //--- Print in BNF file
-  if (ioHTMLfile.isOpened ()) {
-    ioHTMLfile.outputRawData ("<p><a name=\"first_sets\"></a></p>") ;
-    ioHTMLfile.appendCppTitleComment ("FIRST set", "title") ;
+  if (ioHTMLFileContents.registeringIsEnabled ()) {
+    ioHTMLFileContents.outputRawData ("<p><a name=\"first_sets\"></a></p>") ;
+    ioHTMLFileContents.appendCppTitleComment ("FIRST set", "title") ;
   }
 
 //--- Compute FIRST sets
@@ -220,7 +220,7 @@ FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
                                    iterationsCount) ;
 
 //--- Display and Check FIRST
- outOk = displayAndCheckFIRSTsets (ioHTMLfile,
+ outOk = displayAndCheckFIRSTsets (ioHTMLFileContents,
                                   inVocabularyDerivingToEmpty,
                                    inVocabulary,
                                    inUsefulSymbols,

@@ -1,9 +1,9 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  Routines for building pure BNF grammar (without 'select' and 'repeat')   *
+//  Routines for building pure BNF grammar (without 'select' and 'repeat')     *
 //                                                                             *
-//  Copyright (C) 1999-2002 Pierre Molinaro.                                 *
-//  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+//  Copyright (C) 1999-2002 Pierre Molinaro.                                   *
+//  e-mail : molinaro@irccyn.ec-nantes.fr                                      *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
 //  ECN, École Centrale de Nantes (France)                                     *
 //                                                                             *
@@ -26,7 +26,7 @@
 class GALGAS_syntaxComponentListForGrammarAnalysis ;
 class cPureBNFproductionsList ;
 class cVocabulary ;
-class C_HTML_FileWrite ;
+class C_HTMLString ;
 
 //-----------------------------------------------------------------------------*
 
@@ -36,7 +36,7 @@ buildPureBNFgrammar (const GALGAS_syntaxComponentListForGrammarAnalysis & inSynt
                      cPureBNFproductionsList & ioProductions) ;
 
 void
-printPureBNFgrammarInBNFfile (C_HTML_FileWrite & inHTMLfile,
+printPureBNFgrammarInBNFfile (C_HTMLString & inHTMLfile,
                               const cVocabulary & inVocabulary,
                               const cPureBNFproductionsList & inProductions) ;
 

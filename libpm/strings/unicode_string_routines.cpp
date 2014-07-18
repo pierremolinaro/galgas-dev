@@ -136,10 +136,9 @@ int32_t utf32_strlen (const utf32 * inString) {
 //   }
 //--- My adaptation:
 
-const utf32 *
-utf32_strstr (const utf32 * haystack, const utf32 * needle) {
-  register const utf32 * s = haystack;
-  register const utf32 * p = needle;
+const utf32 * utf32_strstr (const utf32 * haystack, const utf32 * needle) {
+  const utf32 * s = haystack;
+  const utf32 * p = needle;
   do {
     if (! UNICODE_VALUE (*p)) {
       return haystack ;

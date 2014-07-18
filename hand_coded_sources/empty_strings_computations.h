@@ -30,7 +30,7 @@
 //-----------------------------------------------------------------------------*
 
 class cPureBNFproductionsList ;
-class C_HTML_FileWrite ;
+class C_HTMLString ;
 class C_Lexique ;
 class C_Relation ;
 class C_RelationConfiguration ;
@@ -39,7 +39,7 @@ class C_RelationConfiguration ;
 
 C_Relation
 empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions,
-                            C_HTML_FileWrite & ioHTMLfile,
+                            C_HTMLString & ioHTMLFileContents,
                             TC_UniqueArray <bool> & outVocabularyDerivingToEmpty_Array,
                             const C_RelationConfiguration & inVocabularyConfiguration,
                             const bool inVerboseOptionOn) ;
