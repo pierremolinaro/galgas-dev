@@ -648,6 +648,8 @@ analyzeGrammar (C_Compiler * inCompiler,
   }else{
     outHTMLHelperFileContents.appendCppTitleComment ("OK (no error, no warning)", "title") ;
   }
+  
+  outHTMLHelperFileContents.writeEndCode () ;
 }
 
 //-----------------------------------------------------------------------------*
