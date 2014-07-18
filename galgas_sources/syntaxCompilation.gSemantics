@@ -518,10 +518,10 @@ routine generateSyntaxComponentGalgas3
   if generateOneHugeHeader then
     cppInclusionSet := [@stringset setWithString !"syntax-" + componentName] ;
   end if ;
-  for * in inSemanticContext->mGrammarMap do
+  for () in inSemanticContext->mGrammarMap do
     cppInclusionSet += !"grammar-" . lkey->string ;
   end for ;
-  for * in inSemanticContext->mOptionComponentMapForSemanticAnalysis do
+  for () in inSemanticContext->mOptionComponentMapForSemanticAnalysis do
     if not mIsPredefined then
       cppInclusionSet += !"option-" . lkey->string ;
     end if ;

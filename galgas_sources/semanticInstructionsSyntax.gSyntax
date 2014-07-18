@@ -778,18 +778,19 @@ rule <foreach_enumerated_object>
   select
     endsWithEllipsis := false ;
     prefix := [@lstring new !"" !here] ;
-    send " *" ;
+    send " ()" ;
   or
     $:$ :> ?* ?* ;
     $identifier$ ? prefix :> ?* ?* ;
     endsWithEllipsis := false ;
-    send " *" ;
+    send " () " ;
   or
     prefix := [@lstring new !"" !here] ;
     $($ ;
     repeat
     while
-      $*$ ;
+      $*$ :>??@string sep ?* ;
+      send sep . "()" ;
       mElementList += ![@lstring new !"" !here] ![@lstring new !"" !here] ;
     while
       @luint count ;
@@ -823,7 +824,7 @@ rule <foreach_enumerated_object>
     end select ;
     $)$ ;
   end select ;
-  send " in" . exp . if prefix->string != "" then " : " . prefix else "" end ;  
+  send prefix->string . " in" . exp  ;  
   ioForeachInstructionEnumeratedObjectList +=
     !enumerationOrder
     !mEnumeratedExpression
@@ -1021,7 +1022,8 @@ end rule ;
 rule <for_instruction_enumerated_object>
   !@abstractEnumeratedCollectionAST outEnumeratedObject
 :
-  $*$ ;
+  $($ ;
+  $)$ ;
   $in$ ;
   <expression> ??@semanticExpressionAST enumeratedExpression ;
   @lstring prefix ;

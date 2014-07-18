@@ -546,7 +546,7 @@ indexing with galgas3ProjectGrammar
   var handCodedSourceToolFileList := [@stringlist emptyList] ;
   var handCodedLinkToolFileList := [@stringlist emptyList] ;
   var handCodedSourceDirectorySet := [@stringset emptySet] ;
-  for * in projectComponentAST->mQualifiedFeatureList do
+  for () in projectComponentAST->mQualifiedFeatureList do
     if mFeatureName->string == "tool-source" then
       handCodedSourceToolFileList += ![mFeatureValue lastPathComponent] ;
       const directory := [mFeatureValue stringByDeletingLastPathComponent] ;
@@ -701,7 +701,7 @@ indexing with galgas3ProjectGrammar
 #---------------------------------- Update targets
   if 0 == [@uint errorCount] then
     @stringset handledExtensionSet [emptySet] ;
-    for * in declarationAST->mSourceRuleList do
+    for () in declarationAST->mSourceRuleList do
       handledExtensionSet += !mSourceFileExtension->string ;
     end for ;
   #--- Build qualified feature map
