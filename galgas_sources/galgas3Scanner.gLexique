@@ -2,7 +2,7 @@
 #                                                                           *
 #  GALGAS scanner definition                                                *
 #                                                                           *
-#  Copyright (C) 1997, ..., 2009 Pierre Molinaro.                           *
+#  Copyright (C) 1997, ..., 2014 Pierre Molinaro.                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -535,10 +535,10 @@ end rule ;
 
 # ----------------------------- Delimitors ---------------------------------------
 list galgasDelimitorsList error message "the '%K' delimitor" style delimitersStyle :
-  "*",     "|",    ",",      "+",     "--",  ":>",
-  ">",    ";",      ":",
+  "*",     "|",    ",",      "+",   "--",
+  ">",    ";",      ":",  ":>",
   "-",     "(",    ")",     "->",      "?",
-  "==",   "??",    "!",     ":=",     "++",
+  "==",   "??",    "!",     "=",     "++",
   "[",     "]",   "+=",     "?!",     "!?",
   "/",    "!=",   ">=",      "&",
   "{",     "}",    "`",     "-=",
