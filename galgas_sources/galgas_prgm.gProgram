@@ -593,34 +593,13 @@ indexing with galgas3ProjectGrammar
   else
     semanticDeclarationSortedListForGeneration := [@semanticDeclarationSortedListForGeneration emptySortedList] ;
   end if ;
-#---------------------------------- Compile option declarations
-  var toolCppFileList := [@stringlist emptyList] ;
-  var allProductFileSet := [@stringset emptySet] ;
-  if [@uint errorCount] == 0 then
-    foreach semanticContext->mOptionComponentMapForSemanticAnalysis do
-      if not mIsPredefined then
-        compileOptionComponentGalgas3
-          !productDirectory
-          !lkey->string
-          !mBoolOptionMap
-          !mUIntOptionMap
-          !mStringOptionMap
-          !?toolCppFileList
-          !?appProductFileList
-          !?allProductFileSet
-        ;
-      end if ;
-    end foreach ;
-  end if ;
 #---------------------------------- Compile lexique components
+  var lexiqueComponentGenerationList := [@lexiqueComponentGenerationList emptyList] ;
   if [@uint errorCount] == 0 then
     for scanner in declarationAST->mLexiqueComponentList do
       compileLexiqueComponentGalgas3
-        !productDirectory
         !scanner
-        !?toolCppFileList
-        !?appProductFileList
-        !?allProductFileSet
+        !?lexiqueComponentGenerationList
       ;
     end for ;
   end if ;
@@ -666,6 +645,8 @@ indexing with galgas3ProjectGrammar
   if (0 == [@uint errorCount]) & [option .verbose_output value] then
     message "*** Generating files\n" ;
   end if ;
+  var toolCppFileList := [@stringlist emptyList] ;
+  var allProductFileSet := [@stringset emptySet] ;
 #---------------------------------- Generate program component
   generateProgramComponentGalgas3
     !productDirectory
@@ -683,6 +664,34 @@ indexing with galgas3ProjectGrammar
     !?allProductFileSet
   ;
   drop grammarGenerationList ;
+#---------------------------------- Generate lexique components
+  if [@uint errorCount] == 0 then
+    generateLexiqueComponentsGalgas3
+      !productDirectory
+      !lexiqueComponentGenerationList
+      !?toolCppFileList
+      !?appProductFileList
+      !?allProductFileSet
+    ;
+  end if ;
+  drop lexiqueComponentGenerationList ;
+#---------------------------------- Generate option components
+  if [@uint errorCount] == 0 then
+    foreach semanticContext->mOptionComponentMapForSemanticAnalysis do
+      if not mIsPredefined then
+        generateOptionComponentGalgas3
+          !productDirectory
+          !lkey->string
+          !mBoolOptionMap
+          !mUIntOptionMap
+          !mStringOptionMap
+          !?toolCppFileList
+          !?appProductFileList
+          !?allProductFileSet
+        ;
+      end if ;
+    end foreach ;
+  end if ;
 #---------------------------------- Generate syntax components
   if 0 == [@uint errorCount] then
     for s in syntaxListForGeneration do
