@@ -1,0 +1,13 @@
+
+
+struct @structTest {
+  @string mString
+  @uint mInt
+}
+
+proc testsuite_struct {
+  message "*************************************** begin of struct logging\n"
+  var s = [@structTest new !"az" !34]
+  log s
+}
+

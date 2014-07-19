@@ -1,0 +1,57 @@
+
+
+#-----------------------------------------------------------------------------
+
+class @A {}
+class @B : @A {}
+
+#-----------------------------------------------------------------------------
+
+proc testsuite_introspection {
+message "*************************************** begin of introspection test\n"
+#--- List of types
+  let @typelist typeList = [@type typeList]
+  message "--- Type list (" + [[typeList length] string] + " types)\n"
+  for () in typeList do
+    message "  @" + [mValue name] + "\n"
+  end
+#--- List of functions
+  let @functionlist functionList = [@function functionList]
+  message "--- Function list (" + [[functionList length] string]
+  + " function" + if [functionList length] > 1 then "s" else "" end + ")\n"
+  for () in functionList do
+    @string s = ""
+    for () in [mValue formalParameterTypeList]
+    do s += "?@" + [mValue name]
+    between s += " "
+    end
+    log "mValue" : mValue
+    message [mValue description] + "  " + [mValue name] + " [" + s + "] -> @" + [[mValue resultType] name] + "\n"
+  end
+  let @bool b1 = [@function isFunctionDefined !"foo"]
+  let @bool b2 = [@function isFunctionDefined !"functionTest"]
+  message "Function 'foo' exists:" + [b1 cString] + "\n"
+  message "Function 'functionTest' exists:" + [b2 cString] + "\n"
+#--- Introspection of an @uint
+  let @uint x = 2
+  @object object = [x object]
+  log object
+  let @uint y = ( object as @uint)
+  log y
+#--- Type
+#  @type t := [x dynamicType] ;
+#  log t ;
+#  @A a := [@B new] ;
+#  t := [a dynamicType] ;
+#  log t ;
+#--- Function invocation
+  @function f = [@function functionWithName !"functionTest"]
+  var arguments = [@objectlist emptyList]
+  arguments += ![2 object]
+  arguments += ![6 object]
+  let @object result = [f invoke !arguments !here]
+  log result
+}
+
+#-----------------------------------------------------------------------------
+

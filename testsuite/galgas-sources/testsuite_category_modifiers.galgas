@@ -1,0 +1,64 @@
+
+
+proc testsuite_category_modifiers {
+  message "*************************************** begin of category modifier test\n"
+  var v = [@TestCategoryModifier new !1 !"Hello"]
+  @uint u = 2
+  @string s = " World"
+  [!?v modifier2 !?u !s]
+  log u, v
+  var w = [@overridingTestCategoryModifier new !1 !"" !"" !2]
+  [!?w m]
+}
+
+abstract class @abstractTestCategoryModifier {
+  @uint mInteger
+}
+
+class @TestCategoryModifier : @abstractTestCategoryModifier {
+  @string mString
+}
+
+setter @TestCategoryModifier modifier3 ??@uint inArg {
+  [!?mString appendSpacesUntilColumn!inArg]
+}
+
+
+setter @TestCategoryModifier modifier1 ?!@uint ioArg {
+  mInteger = mInteger + ioArg
+  ioArg ++
+}
+
+
+class @overridingTestCategoryModifier : @abstractOverridingTestCategoryModifier {
+  @uint mOtherInteger
+}
+
+
+setter @TestCategoryModifier modifier2 ?!@uint ioArg ??@string inS {
+  [!?self modifier1 !?ioArg]
+  mString += inS
+}
+
+abstract setter @abstractTestCategoryModifier m
+
+override setter @TestCategoryModifier m { }
+
+override setter @overridingTestCategoryModifier m { }
+
+override abstract setter @abstractOverridingTestCategoryModifier m
+
+abstract class @abstractOverridingTestCategoryModifier : @TestCategoryModifier {
+  @string mOtherString
+}
+
+class @adjMat{
+   @uint dim
+   @stringlist nodes %setter
+}
+
+setter @adjMat addNode {
+   var tmp = [@stringlist emptyList]
+   [!?self setNodes !tmp]
+}
+

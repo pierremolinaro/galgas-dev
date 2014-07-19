@@ -776,7 +776,7 @@ rule <foreach_enumerated_object>
   select
     enumerationOrder := [@lstring new !"" !here] ; # Default order
   or
-    $<$ ;
+    $<$ :> ?* ?* ;
     enumerationOrder := [@lstring new !"up" !here] ;
   or
     $>$ ;

@@ -1,0 +1,104 @@
+
+
+proc testsuite_type_categories {
+  message "*************************************** begin of type category test\n"
+  log "Square of 7" : [7L square]
+  var aList = [@uintlist emptyList]
+  aList += !1
+  aList += !2
+  aList += !3
+  aList += !4
+  log "Sum 1 + 2 + 3 + 4" : [aList sum]
+  log "Hello !" : [[@lstring new !"Hello" !here] op]
+  @uint64 v
+  [7L square ?v]
+  log v
+  @uint u
+  [aList sum ?u]
+  log u
+  @string s
+  [[@lstring new !"Hello" !here] op ?s]
+  log s
+  var ls = [@lstring new !"Hello" ! here]
+  [!?ls appendInt !3]
+  log ls
+  [!?aList appendSquare!9]
+  log aList
+  var aList64 = [@uint64list listWithValue !7L]
+  [!?aList64 prependSquare !5L]
+}
+
+#----------- Category readers
+getter @uint64 square -> @uint64 outResult {
+  outResult = self * self
+}
+
+getter @uintlist sum -> @uint outResult {
+  outResult = 0
+  for () in self do
+    outResult = outResult + mValue
+  end
+}
+
+getter @lstring op -> @string outResult {
+  outResult = string + " !"
+}
+
+#------------ Category methods
+method @uint64 square !@uint64 outResult {
+  outResult = self * self
+}
+
+method @uintlist sum !@uint outResult {
+  outResult = 0
+  for () in self do
+    outResult = outResult + mValue
+  end
+}
+
+method @lstring op !@string outResult {
+  outResult = string + " !"
+}
+
+#------------ Category modifiers
+setter @lstring appendInt ??@uint inValue {
+  string += [inValue string]
+}
+
+setter @uintlist appendSquare ??@uint inValue {
+  self += !inValue * inValue
+}
+
+setter @uint64list prependSquare ??@uint64 inValue {
+  [!?self insertAtIndex ![inValue square] !0]
+}
+
+setter @string concatList ??@stringlist inList {
+  for () in inList do
+    self += mValue
+  end
+}
+
+setter @uint64 increment {
+  self ++
+}
+
+#----------------------------------------------------------------------------*
+
+abstract class @toto { }
+class @toto1 : @toto { }
+abstract class @toto2 : @toto1 { }
+class @toto3 : @toto2 { }
+
+#override method @toto1 m : end method ;
+#override method @toto3 m : end method ;
+#override abstract method @toto2 m ;
+#abstract method @toto m ;
+
+override abstract getter @toto2 r -> @uint result
+override getter @toto3 r -> @uint result { result = 0 }
+override getter @toto1 r -> @uint result { result = 0 }
+getter @toto1 rr -> @uint result { result = 0 }
+abstract getter @toto r -> @uint result
+
+

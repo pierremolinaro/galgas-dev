@@ -1,0 +1,11 @@
+
+
+proc testsuite_strings {
+  message "*************************************** begin of string test\n"
+  let @string command = "echo accentué"
+  log command
+  @string result = [command popen]
+  log result
+}
+
+

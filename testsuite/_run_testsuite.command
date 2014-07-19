@@ -2,7 +2,7 @@
 #set -x
 GALGAS_TOOL=`dirname $0`/../makefile_macosx/galgas_debug &&
 cd `dirname $0`/../makefile_macosx && make galgas_debug -j `sysctl -n hw.ncpu` &&
-cd `dirname $0` && $GALGAS_TOOL galgas_sources/all_testsuite.gProject -v --Werror &&
+cd `dirname $0` && $GALGAS_TOOL --generate-many-cpp-files -v --Werror +testsuite.galgasProject &&
 cd `dirname $0`/makefile_macosx && make --warn-undefined-variables all -j `sysctl -n hw.ncpu` &&
 echo "*** Running test suite" &&
 cd `dirname $0` && ./makefile_macosx/testsuite > results.txt &&

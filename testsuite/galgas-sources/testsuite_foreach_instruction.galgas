@@ -1,0 +1,107 @@
+
+
+proc testsuite_foreach_instruction {
+  var strList = [@stringlist emptyList]
+  strList += !"a"
+  strList += !"b"
+  strList += !"c"
+  strList += !"d"
+  message "*************************************** begin of foreach instruction test 1\n"
+  for (@string s) in strList
+  before
+    message "  before\n"
+  do
+    message "  do '" + s + "'\n"
+  between
+    message "  between\n"
+  after
+    message "  after\n"
+  end
+  message "--- begin of foreach instruction test 2\n"
+  for (@string s) in strList
+  while false
+  before
+    message "  before\n"
+  do
+    message "  do '" + s + "'\n"
+  between
+    message "  between\n"
+  after
+    message "  after\n"
+  end
+  message "--- begin of foreach instruction test 3\n"
+  @uint n = 0
+  for (@string s) in strList
+  while n < 2
+  before
+    message "  before\n"
+  do
+    message "  do '" + s + "', n: " + [n string] + "\n"
+    n ++
+  between
+    message "  between\n"
+  after
+    message "  after\n"
+  end
+  message "--- begin of foreach instruction test 4\n"
+  for () in strList while mValue != "c"
+  before
+    message "  before\n"
+  do
+    message "  do '" + mValue + "'\n"
+  between
+    message "  between\n"
+  after
+    message "  after\n"
+  end
+  message "--- begin of foreach instruction test 5\n"
+  for (@string s) in strList
+  before
+    message "  before\n"
+  do index idx
+    message "  do '" + s + "' (idx: " + [idx string] + ")\n"
+  between
+    message "  between\n"
+  after
+    message "  after\n"
+  end
+  message "--- begin of foreach instruction test 6\n"
+  for (@string s) in strList
+  do index idx
+    message "  do '" + s + "' (idx: " + [idx string] + ")\n"
+  end
+  message "--- begin of foreach instruction test 7\n"
+  var set = [@stringset emptySet]
+  set += !"A"
+  set += !"B"
+  set += !"C"
+  set += !"D"
+  set += !"E"
+  set += !"F"
+  set += !"G"
+  set += !"H"
+  for () in set
+  do index idx
+    message "  do '" + key + "' (idx: " + [idx string] + ")\n"
+  end
+  message "--- begin of foreach instruction test 8\n"
+  for > () in set
+  do index idx
+    message "  do '" + key + "' (idx: " + [idx string] + ")\n"
+  end
+  message "--- begin of foreach instruction test 9\n"
+  var myData = [@data emptyData]
+  [!?myData appendByte !1]
+  [!?myData appendByte !2]
+  [!?myData appendByte !3]
+  [!?myData appendByte !4]
+  [!?myData appendByte !5]
+  [!?myData appendByte !6]
+  [!?myData appendByte !7]
+  [!?myData appendByte !8]
+  for () in myData
+  do index idx
+    message "  do '" + data + "' (idx: " + [idx string] + ")\n"
+  end
+}
+
