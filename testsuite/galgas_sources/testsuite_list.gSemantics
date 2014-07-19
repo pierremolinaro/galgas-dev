@@ -31,6 +31,16 @@ routine testsuite_list :
   @myList bList [listWithValue !"az"] ;
   const @bool comp := aList == bList ;
   log comp ;
+  message "*************************************** begin of collection value\n" ;
+  var s1 := [@stringlist listWithValue !"a"] ;
+  s1 += !"b" ;
+  var s2 := [@stringlist listWithValue !"c"] ;
+  s2 += !"d" ;
+  s2 += [@stringlist listWithValue !"e"] ;
+  const str := @stringlist {s1, s2} ;
+  log str ;
+  const str2 := @stringlist {!"a", !"b", !"c", !"d", !"e"} ;
+  log str2 ;
 end routine ;
 
 end semantics ;

@@ -150,6 +150,29 @@ LOGGING strList: <list @myList (4 objects):
 LOGGING s: <@string:"d">
 *************************************** begin of list compare
 LOGGING comp: <@bool:true>
+*************************************** begin of collection value
+LOGGING str: <list @stringlist (5 objects): 
+|-at 0
+| | mValue:<@string:"a">
+|-at 1
+| | mValue:<@string:"b">
+|-at 2
+| | mValue:<@string:"c">
+|-at 3
+| | mValue:<@string:"d">
+|-at 4
+| | mValue:<@string:"e">>
+LOGGING str2: <list @stringlist (5 objects): 
+|-at 0
+| | mValue:<@string:"a">
+|-at 1
+| | mValue:<@string:"b">
+|-at 2
+| | mValue:<@string:"c">
+|-at 3
+| | mValue:<@string:"d">
+|-at 4
+| | mValue:<@string:"e">>
 *************************************** begin of sorted list test
   index 0 : d
   index 1 : c

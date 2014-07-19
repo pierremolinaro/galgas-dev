@@ -757,8 +757,8 @@ rule <template_instruction>
 :
   $switch$ ;
 #--- Switch expression
-  @templateExpressionAST switchExpression ;
-  <expression> ?switchExpression ;
+  <expression> ??@templateExpressionAST switchExpression ;
+  const @location endOfSwitchExpression := here ;
 #--- Loop on "when' clauses
   @templateInstructionSwitchBranchListAST templateInstructionSwitchBranchList [emptyList] ;
   repeat
@@ -785,6 +785,7 @@ rule <template_instruction>
   $end$ ;
   ioResultingInstructionList += ![@templateInstructionSwitchAST new
     !switchExpression
+    !endOfSwitchExpression
     !templateInstructionSwitchBranchList
   ] ;
 end rule ;

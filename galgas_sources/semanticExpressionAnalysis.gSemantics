@@ -609,20 +609,16 @@ override method @constructorExpressionAST analyzeSemanticExpression
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  @unifiedTypeMapProxy returnedType ;
-  @unifiedTypeMapProxy constructorType ;
-  @semanticExpressionListForGeneration constructorEffectiveParameterList ;
-  @bool hasCompilerArgument ;
   analyzeConstructorInvocation
     !inAnalysisContext
     !?ioVariableMap
     !mTypeName
     !mConstructorName
     !mExpressions
-    ?returnedType
-    ?constructorType
-    ?constructorEffectiveParameterList
-    ?hasCompilerArgument
+    ??@unifiedTypeMapProxy returnedType
+    ??@unifiedTypeMapProxy constructorType
+    ??@semanticExpressionListForGeneration constructorEffectiveParameterList
+    ??@bool hasCompilerArgument
   ;
 #---
   outExpression := [@constructorExpressionForGeneration new
@@ -732,8 +728,7 @@ override method @readerCallExpressionAST analyzeSemanticExpression
   else
     @semanticExpressionListForGeneration constructorEffectiveParameterList [emptyList] ;
     foreach mExpressions, readerFormalArgumentTypeList do
-      @semanticExpressionForGeneration exp ;
-      [mExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?exp] ;
+      [mExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ??@semanticExpressionForGeneration exp] ;
       checkAssignmentTypes !mType ![exp mType] !mEndOfExpressionLocation ;
       constructorEffectiveParameterList += !exp ;
     end foreach ;
@@ -1679,10 +1674,12 @@ override method @varInExpressionAST analyzeSemanticExpression
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  @unifiedTypeMapProxy type ;
-  @string sourceVariableCppName ;
-  @string nameForCheckingFormalParameterUsing ;
-  [!?ioVariableMap searchForReadAccess !mVarName ?type ?sourceVariableCppName ?nameForCheckingFormalParameterUsing] ;
+  [!?ioVariableMap searchForReadAccess
+    !mVarName
+    ??@unifiedTypeMapProxy type
+    ??@string sourceVariableCppName
+    ??@string nameForCheckingFormalParameterUsing
+  ] ;
   outExpression := [@varInExpressionForGeneration new
     !type
     ![mVarName location]
@@ -1699,7 +1696,7 @@ override method @literalTypeInExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 :
 #--- Get constructor map from type map
-  [inAnalysisContext->mSemanticContext->mTypeMap searchKey !mLiteralTypeName ?26*] ;
+  [inAnalysisContext->mSemanticContext->mTypeMap searchKey !mLiteralTypeName ?27*] ;
 #---
   outExpression := [@literalTypeInExpressionForGeneration new
     ![@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap ![@lstring new !"type" !here]]
@@ -1963,6 +1960,133 @@ override method @lexiqueIntrospectionExpressionAST analyzeSemanticExpression
     !mLexiqueComponentName->string
     !mLexiqueReaderName->string
   ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+#! Collection value
+#---------------------------------------------------------------------------*
+
+abstract method @abstractCollectionValueElement analyze
+  ??@analysisContext inAnalysisContext
+  ??@unifiedTypeMapProxy inElementType
+  ?!@variableMap ioVariableMap
+  ?!@collectionValueElementListForGeneration ioCollectionValueElementListForGeneration
+;
+
+#---------------------------------------------------------------------------*
+
+override method @expressionCollectionValue analyze
+  ??@analysisContext inAnalysisContext
+  ??@unifiedTypeMapProxy inElementType
+  ?!@variableMap ioVariableMap
+  ?!@collectionValueElementListForGeneration ioCollectionValueElementListForGeneration
+:
+  [mExpression analyzeSemanticExpression
+    !inAnalysisContext
+    !?ioVariableMap
+    ??@semanticExpressionForGeneration expression
+  ] ;
+#--- Check assignment type compatibility
+  checkAssignmentTypes !inElementType ![expression mType] !mExpressionLocation ;
+#---
+  ioCollectionValueElementListForGeneration += ![@expressionCollectionValueForGeneration new !mExpressionLocation !expression] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @expressionListCollectionValue analyze
+  ??@analysisContext inAnalysisContext
+  ??@unifiedTypeMapProxy inElementType
+  ?!@variableMap ioVariableMap
+  ?!@collectionValueElementListForGeneration ioCollectionValueElementListForGeneration
+:
+  const @unifiedTypeMapProxyAndParameterList formalParameterTypeList := [inElementType mAddAssignOperatorArguments] ;
+  @semanticExpressionListForGeneration semanticExpressionListForGeneration ;
+  if [formalParameterTypeList length] != [mExpressionList length] then
+    error mEndOfExpressionLocation: "element of of '@" . [inElementType key] . "' requires "
+    . [formalParameterTypeList length] . " parameter(s), while this list has "
+    . [mExpressionList length] . " element(s)" : semanticExpressionListForGeneration ;
+  else
+    semanticExpressionListForGeneration := @semanticExpressionListForGeneration {} ;
+    foreach mExpressionList, formalParameterTypeList do
+      [mExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ??@semanticExpressionForGeneration exp] ;
+      checkAssignmentTypes !mType ![exp mType] !mEndOfExpressionLocation ;
+      semanticExpressionListForGeneration += !exp ;
+    end foreach ;
+    ioCollectionValueElementListForGeneration += ![@expressionListCollectionForGeneration new
+      !mEndOfExpressionLocation
+      !semanticExpressionListForGeneration
+    ] ;
+  end if ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+list @collectionValueElementListForGeneration {
+  @abstractCollectionValueElementForGeneration mElement ;
+}
+
+#---------------------------------------------------------------------------*
+
+abstract class @abstractCollectionValueElementForGeneration {
+  @location mExpressionLocation ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @expressionCollectionValueForGeneration extends @abstractCollectionValueElementForGeneration {
+  @semanticExpressionForGeneration mExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @expressionListCollectionForGeneration extends @abstractCollectionValueElementForGeneration {
+  @semanticExpressionListForGeneration mExpressionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @expressionCollectionForGeneration extends @semanticExpressionForGeneration {
+  @collectionValueElementListForGeneration mElementList ;
+}
+
+#---------------------------------------------------------------------------*
+
+override method @collectionValueAST analyzeSemanticExpression
+  ??@analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+:
+  if mTypeName->string == "" then
+    error mTypeName : "Cannot infer type" : outExpression ;
+  else
+    const targetType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
+    if not [targetType mSupportCollectionValue] then
+      error mTypeName : "the @" . mTypeName . " type does not support collection value" : outExpression ;
+    else
+      if [mElementList length] == 0 then
+        outExpression := [@defaultConstructorExpressionForGeneration new
+          !targetType
+          !mTypeName->location
+        ] ;
+      else
+        var collectionValueElementListForGeneration := @collectionValueElementListForGeneration {} ;
+        for () in mElementList do
+          [mElement analyze
+            !inAnalysisContext
+            !targetType
+            !?ioVariableMap
+            !?collectionValueElementListForGeneration
+          ] ;
+        end for ;
+        outExpression := [@expressionCollectionForGeneration new
+          !targetType
+          !mEndOfCollectionValue
+          !collectionValueElementListForGeneration
+        ] ;
+      end if ;
+    end if ;
+  end if ;
 end method ;
 
 #---------------------------------------------------------------------------*

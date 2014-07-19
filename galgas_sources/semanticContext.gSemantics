@@ -770,6 +770,7 @@ override method @predefinedTypeAST enterInSemanticContext
     !true # Concrete Type
     ![@unifiedTypeMapProxy null]
     ![@typeKindEnum predefinedType]
+    !mPredefinedTypeName == "stringset" # Only @stringset supports collection value
     ![@typedAttributeList emptyList]
     ![@attributeMap emptyMap]
     ![@typedAttributeList emptyList]
@@ -984,6 +985,7 @@ override method @mapDeclarationAST enterInSemanticContext
     !true # Concrete Type
     ![@unifiedTypeMapProxy null]
     ![@typeKindEnum mapType]
+    !true # Support collection value
     ![@typedAttributeList emptyList]
     ![@attributeMap emptyMap]
     !typedAttributeList
@@ -1242,6 +1244,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     !true # Concrete Type
     ![@unifiedTypeMapProxy null]
     ![@typeKindEnum uniqueMapType]
+    !false # Does not support collection value
     ![@typedAttributeList emptyList]
     ![@attributeMap emptyMap]
     !typedAttributeList
@@ -1280,7 +1283,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     !mAssociatedMapTypeName
     ?3*
     ?@typeKindEnum typeKindEnum
-    ?2*
+    ?3*
     ?@typedAttributeList mapTypedAttributeList
     ?11*
     ?@mapSearchMethodListAST searchMethodList
@@ -1390,6 +1393,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     !true # Concrete Type
     ![@unifiedTypeMapProxy null]
     ![@typeKindEnum mapProxyType]
+    !false # Does not support collection value
     ![@typedAttributeList emptyList]
     ![@attributeMap emptyMap]
     !mapTypedAttributeList
@@ -1521,7 +1525,8 @@ override method @externTypeDeclarationAST enterInSemanticContext
     !mIsPredefined
     !true # Concrete Type
     ![@unifiedTypeMapProxy null]
-    ![@typeKindEnum graphType]
+    ![@typeKindEnum externType]
+    !false # Does not support collection value
     ![@typedAttributeList emptyList]
     ![@attributeMap emptyMap]
     ![@typedAttributeList emptyList]
@@ -1775,6 +1780,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !true # Concrete Type
     ![@unifiedTypeMapProxy null]
     ![@typeKindEnum graphType]
+    !false # Does not support collection value
     ![@typedAttributeList emptyList]
     ![@attributeMap emptyMap]
     ![@typedAttributeList emptyList]
@@ -1844,6 +1850,7 @@ override method @enumDeclarationAST enterInSemanticContext
     !true # Concrete Type
     ![@unifiedTypeMapProxy null]
     ![@typeKindEnum enumType]
+    !false # Does not support collection value
     ![@typedAttributeList emptyList]
     ![@attributeMap emptyMap]
     ![@typedAttributeList emptyList]
@@ -2185,6 +2192,7 @@ override method @listDeclarationAST enterInSemanticContext
     !true # Concrete Type
     ![@unifiedTypeMapProxy null]
     ![@typeKindEnum listType]
+    !true # Support collection value
     !typedAttributeList
     ![@attributeMap emptyMap]
     ![@typedAttributeList emptyList]
@@ -2195,7 +2203,7 @@ override method @listDeclarationAST enterInSemanticContext
     ![@classMethodMap emptyMap]
     !enumerationDescriptor
     !enumerationVariants
-    !binaryConcatOperator [] | doNotGenererateObjectCompare [] | dotAssignOperator [] | addAssignOperator [] | binaryAddOperator []
+    !binaryConcatOperator [] | doNotGenererateObjectCompare [] | dotEqualOperator [] | plusEgalOperator [] | binaryAddOperator []
     !constructorAttributeTypeList
     ![@stringset emptySet]
     ![@lstringlist emptyList]
@@ -2312,6 +2320,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !true # Concrete Type
     ![@unifiedTypeMapProxy null]
     ![@typeKindEnum sortedListType]
+    !true # Support collection value
     !typedAttributeList
     ![@attributeMap emptyMap]
     ![@typedAttributeList emptyList]
@@ -2322,7 +2331,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     ![@classMethodMap emptyMap]
     !enumerationDescriptor
     !enumerationVariants
-    !binaryConcatOperator [] | doNotGenererateObjectCompare [] | dotAssignOperator []
+    !binaryConcatOperator [] | doNotGenererateObjectCompare [] | dotEqualOperator []
     !constructorAttributeTypeList
     ![@stringset emptySet]
     ![@lstringlist emptyList]
@@ -2421,6 +2430,7 @@ override method @structDeclarationAST enterInSemanticContext
     !true # Concrete Type
     ![@unifiedTypeMapProxy null]
     ![@typeKindEnum structType]
+    !false # Does not support collection value
     !typedAttributeList
     !attributeMap
     !typedAttributeList
@@ -2488,6 +2498,7 @@ override method @classDeclarationAST enterInSemanticContext
       !mSuperClassName
       ?3*
       ?typeKindEnum
+      ?*
       ?inheritedTypedAttributeList
       ?attributeMap
       ?2*
@@ -2651,6 +2662,7 @@ override method @classDeclarationAST enterInSemanticContext
     !not mIsAbstract # Concrete Type
     !superClassIndex
     ![@typeKindEnum classType]
+    !false # Does not support collection value
     !allTypedAttributeList
     !attributeMap
     !currentClassTypedAttributeList
@@ -2857,6 +2869,7 @@ override method @arrayDeclarationAST enterInSemanticContext
     !true # Concrete Type
     ![@unifiedTypeMapProxy null]
     ![@typeKindEnum listMapType]
+    !false # Does not support collection value
     ![@typedAttributeList emptyList]
     ![@attributeMap emptyMap]
     ![@typedAttributeList emptyList]
@@ -2895,6 +2908,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     !mAssociatedListTypeName
     ?3*
     ?@typeKindEnum typeKindEnum
+    ?*
     ?@typedAttributeList listTypedAttributeList
     ?21*
   ] ;
@@ -2955,7 +2969,8 @@ override method @listmapDeclarationAST enterInSemanticContext
     !mIsPredefined
     !true # Concrete Type
     ![@unifiedTypeMapProxy null]
-    ![@typeKindEnum listMapType]
+    ![@typeKindEnum arrayType]
+    !true # Support collection value
     ![@typedAttributeList emptyList]
     ![@attributeMap emptyMap]
     !listTypedAttributeList

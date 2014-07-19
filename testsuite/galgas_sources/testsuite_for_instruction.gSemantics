@@ -19,7 +19,7 @@ routine testsuite_for_instruction :
   end for ;
 
   message "--- begin of for instruction test 2\n" ;
-  for * in strList
+  for () in strList
   while false
   before
     message "  before\n" ;
@@ -33,7 +33,7 @@ routine testsuite_for_instruction :
 
   message "--- begin of for instruction test 3\n" ;
   @uint n := 0 ;
-  for * in strList : xyz_
+  foreach strList : xyz_
   while n < 2
   before
     message "  before\n" ;
@@ -44,7 +44,7 @@ routine testsuite_for_instruction :
     message "  between\n" ;
   after
     message "  after\n" ;
-  end for ;
+  end foreach ;
 
   message "--- begin of for instruction test 4\n" ;
   for s in strList while s->mValue != "c"

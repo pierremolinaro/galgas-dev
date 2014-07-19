@@ -407,6 +407,7 @@ override method @listmapDeclarationAST semanticAnalysis
     !mAssociatedListTypeName
     ?3*
     ??@typeKindEnum typeKindEnum
+    ?*
     ??@typedAttributeList listTypeAttributeList
     ?21*
   ] ;
@@ -942,14 +943,12 @@ override method @mapProxyDeclarationAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
 #--- Get attribute list of associated map
-  @typedAttributeList listTypeAttributeList ;
-  @mapSearchMethodListAST searchMethodList ;
   [inSemanticContext->mTypeMap searchKey
     !mAssociatedMapTypeName
-    ?6*
-    ?listTypeAttributeList
+    ?7*
+    ??@typedAttributeList listTypeAttributeList
     ?11*
-    ?searchMethodList
+    ??@mapSearchMethodListAST searchMethodList
     ?7*
   ] ;
 #---

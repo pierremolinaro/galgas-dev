@@ -1241,7 +1241,7 @@ override method @templateClassToTypeOperandAST  templateExpressionAnalysis
   !@semanticExpressionForGeneration outExpression
 :
 #--- Get constructor map from type map
-  [inAnalysisContext->mSemanticContext->mTypeMap searchKey !mTypeName ?26*] ;
+  [inAnalysisContext->mSemanticContext->mTypeMap searchKey !mTypeName ?27*] ;
 #---
   outExpression := [@literalTypeInExpressionForGeneration new
     ![@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap ![@lstring new !"type" !here]]
@@ -1451,7 +1451,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
     foreach missingConstants do
       m .= "\n  - '" . key . "'" ;
     end foreach ;
-    error here : m ;
+    error mSwitchExpressionEndLocation : m ;
   end if ;
 #---
   ioInstructionList += ![@templateInstructionSwitchForGeneration new
