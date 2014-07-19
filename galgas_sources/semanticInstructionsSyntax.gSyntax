@@ -1771,9 +1771,11 @@ rule <semantic_instruction>
   $loop$ ;
   const instructionLocation := here ;
 #--- Variant
+  send "(" ;
   <expression> ?@semanticExpressionAST mVariantExpression ;
   const mEndOfVariantExpression := here ;
   $:$ :> ?* ?* ;
+  send ")" ;
 #---
     <semantic_instruction_list> ?@semanticInstructionListAST mFirstInstructions ;
 #---

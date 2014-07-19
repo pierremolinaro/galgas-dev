@@ -891,8 +891,13 @@ override method @plusEqualnstructionForGeneration generateInstruction
   [mTargetType addHeaderFileName !?ioInclusionSet] ;
   @stringlist parameterList [emptyList] ;
   foreach mExpressionList do
-    @string parameter ;
-    [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?parameter] ;
+    [mExpression generateExpression
+      !?ioGeneratedCode
+      !?ioInclusionSet
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      ??@string parameter
+    ] ;
     parameterList += !parameter ;  
   end foreach ;
 #--- Receiver

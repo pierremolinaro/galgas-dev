@@ -1040,9 +1040,7 @@ override method @functionCallExpressionForGeneration generateExpression
 end method ;
 
 #---------------------------------------------------------------------------*
-
 #! Filewrapper
-
 #---------------------------------------------------------------------------*
 
 override method @filewrapperInExpressionForGeneration generateExpression
@@ -1104,6 +1102,8 @@ override method @filewrapperStaticPathInExpressionForGeneration generateExpressi
 end method ;
 
 #---------------------------------------------------------------------------*
+#! Lexique introspection
+#---------------------------------------------------------------------------*
 
 override method @lexiqueIntrospectionForGeneration generateExpression
   ?!@string unused ioGeneratedCode
@@ -1119,6 +1119,112 @@ override method @lexiqueIntrospectionForGeneration generateExpression
   . "(" . [mLocation sourceFile] . ")" ;
 end method ;
 
+#---------------------------------------------------------------------------*
+#! Collection value
+#---------------------------------------------------------------------------*
+
+abstract method @abstractCollectionValueElementForGeneration generateCollectionElementCode
+  ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ??@string inCppTargetVar
+;
+
+#---------------------------------------------------------------------------*
+
+override method @expressionCollectionValueForGeneration generateCollectionElementCode
+  ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ??@string inCppTargetVar
+:
+  [mExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ??@string sourceVar
+  ] ;
+  ioGeneratedCode .= inCppTargetVar ;
+  ioGeneratedCode .= ".dotAssign_operation (" . sourceVar . " " . [mExpressionLocation commaSourceFile] . ") ;\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @expressionListCollectionForGeneration generateCollectionElementCode
+  ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ??@string inCppTargetVar
+:
+#--- Parameters
+  var parameterList := @stringlist {} ;
+  foreach mExpressionList do
+    [mExpression generateExpression
+      !?ioGeneratedCode
+      !?ioInclusionSet
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      ??@string parameter
+    ] ;
+    parameterList += !parameter ;  
+  end foreach ;
+#--- Receiver
+  ioGeneratedCode .= inCppTargetVar ;
+#--- Call add assign (+=) operator
+  ioGeneratedCode .= ".addAssign_operation (" ;
+  foreach parameterList
+    do ioGeneratedCode .= mValue ;
+    between ioGeneratedCode .= ", " ;
+  end foreach ;
+  ioGeneratedCode .= " " . [mExpressionLocation commaSourceFile] . ") ;\n"  ;
+
+
+
+
+
+
+#  [mExpression generateExpression
+#    !?ioGeneratedCode
+#    !?ioInclusionSet
+#    !?ioTemporaryVariableIndex
+#    !?ioUnusedVariableCppNameSet
+#    ??@string sourceVar
+#  ] ;
+#  ioGeneratedCode .= inCppTargetVar ;
+#  ioGeneratedCode .= ".dotAssign_operation (" . sourceVar . " " . [mExpressionLocation commaSourceFile] . ") ;\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @expressionCollectionForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppExpression
+:
+#---
+  [mType addHeaderFileName !?ioInclusionSet] ;
+#--- Create temporary variable variable
+  outCppExpression := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+#--- Declare variable and apply default constructor
+  ioGeneratedCode .= "GALGAS_" . [mType identifierRepresentation] . " " . outCppExpression
+     . " = GALGAS_" .  [mType identifierRepresentation] . "::constructor_" . [[mType mDefaultConstructorName] identifierRepresentation] . " (" . [mLocation sourceFile] . ") ;\n" ;
+#--- Add Elements
+  for () in mElementList do
+    [mElement generateCollectionElementCode
+      !?ioGeneratedCode
+      !?ioInclusionSet
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      !outCppExpression
+    ] ;    
+  end for ;
+end method ;
 
 #---------------------------------------------------------------------------*
 

@@ -774,13 +774,12 @@ GALGAS_stringset GALGAS_stringset::operator_and (const GALGAS_stringset & inOper
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//    U N I O N                                                              *
+//    U N I O N                                                                *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
 GALGAS_stringset GALGAS_stringset::operator_or (const GALGAS_stringset & inOperand2
                                                 COMMA_LOCATION_ARGS) const {
-// printf ("OPERATION AND\n") ; fflush (stdout) ;
   GALGAS_stringset result ;
   if (isValid () && inOperand2.isValid ()) {
     #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -804,8 +803,31 @@ GALGAS_stringset GALGAS_stringset::operator_or (const GALGAS_stringset & inOpera
 }
 
 //-----------------------------------------------------------------------------*
+
+void GALGAS_stringset::dotAssign_operation (const GALGAS_stringset inOperand2
+                                            COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand2.isValid ()) {
+    #ifndef DO_NOT_GENERATE_CHECKINGS
+      checkStringset (HERE) ;
+      inOperand2.checkStringset (HERE) ;
+    #endif
+    const uint32_t rightCount = (NULL == inOperand2.mSharedRoot) ? 0 : inOperand2.mSharedRoot->count () ;
+    TC_UniqueArray <C_String> rightList ((int32_t) rightCount COMMA_THERE) ;
+    if (NULL != inOperand2.mSharedRoot) {
+      inOperand2.mSharedRoot->buildOrderedKeyList (rightList) ;
+    }
+    for (uint32_t i=0 ; i<rightCount ; i++) {
+      addAssign_operation (GALGAS_string (rightList ((int32_t) i COMMA_THERE)) COMMA_HERE) ;
+    }
+    #ifndef DO_NOT_GENERATE_CHECKINGS
+      checkStringset (HERE) ;
+    #endif
+  }
+}
+
+//-----------------------------------------------------------------------------*
 //                                                                             *
-//    D I F F E R E N C E                                                    *
+//    D I F F E R E N C E                                                      *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

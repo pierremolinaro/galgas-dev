@@ -444,6 +444,7 @@ list @templateInstructionSwitchBranchListAST {
 
 class @templateInstructionSwitchAST extends @templateInstructionAST {
   @templateExpressionAST mSwitchExpression ;
+  @location mSwitchExpressionEndLocation ;
   @templateInstructionSwitchBranchListAST mTemplateInstructionSwitchBranchList ;
 }
 

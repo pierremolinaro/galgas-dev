@@ -1334,8 +1334,10 @@ rule <semantic_instruction>
   $loop$ ;
   const instructionLocation := here ;
 #--- Variant
+  $($ ;
   <expression> ?@semanticExpressionAST mVariantExpression ;
   const mEndOfVariantExpression := here ;
+  $)$ ;
 #---
   <semantic_instruction_list> ?@semanticInstructionListAST mFirstInstructions ;
 #---

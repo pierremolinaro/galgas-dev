@@ -1700,6 +1700,42 @@ class @parseWhenInstruction extends @syntaxInstructionAST {
   @location mEndOfElseInstructionList ;
 }
 
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   Collection value                                                           *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+list @collectionValueElementList {
+  @abstractCollectionValueElement mElement ;
+}
+
+#------------------------------------------------------------------------------*
+
+abstract class @abstractCollectionValueElement {}
+
+#------------------------------------------------------------------------------*
+
+class @expressionCollectionValue extends @abstractCollectionValueElement {
+  @semanticExpressionAST mExpression ;
+  @location mExpressionLocation ;
+}
+
+#------------------------------------------------------------------------------*
+
+class @expressionListCollectionValue extends @abstractCollectionValueElement {
+  @semanticExpressionListAST mExpressionList ;
+  @location mEndOfExpressionLocation ;
+}
+
+#------------------------------------------------------------------------------*
+
+class @collectionValueAST extends @semanticExpressionAST {
+  @lstring mTypeName ; # Empty string if infered
+  @collectionValueElementList mElementList ;
+  @location mEndOfCollectionValue ;
+}
+
 #---------------------------------------------------------------------------*
 #                                                                           *
 #   S Y N T A X    C O M P O N E N T    A S T                               *

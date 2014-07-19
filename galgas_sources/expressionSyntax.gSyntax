@@ -1,8 +1,6 @@
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  'expression' component parser, as model builder                          *
-#                                                                           *
-#  Copyright (C) 2007, ..., 2010 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2014 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -20,6 +18,24 @@
 syntax expressionSyntax ("galgas_scanner.gLexique") feature translate :
 
 import "semanticsTypesForAST.gSemantics" ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   O U T P U T    E X P R E S S I O N    L I S T                              *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <output_expression_list>
+  !@semanticExpressionListAST outExpressionList
+:
+  outExpressionList := [@semanticExpressionListAST emptyList] ;
+  repeat
+  while
+    $!$ ;
+    <expression> ??@semanticExpressionAST expression ;
+    outExpressionList += !expression !here ;
+  end repeat ;
+end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
@@ -628,20 +644,60 @@ end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#   O U T P U T    E X P R E S S I O N    L I S T                              *
+#                         P R I M A R Y                                        *
+#                                                                              *
+#   Collection value                                                           *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <output_expression_list>
-  !@semanticExpressionListAST outExpressionList
+rule <collection_value_element> 
+  !@abstractCollectionValueElement outValueElement
 :
-  outExpressionList := [@semanticExpressionListAST emptyList] ;
+  @semanticExpressionListAST expressionList [emptyList] ;
   repeat
-  while
     $!$ ;
     <expression> ??@semanticExpressionAST expression ;
-    outExpressionList += !expression !here ;
+    expressionList += !expression !here ;
+  while
   end repeat ;
+  outValueElement := [@expressionListCollectionValue new !expressionList !here] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+
+rule <collection_value_element> 
+  !@abstractCollectionValueElement outValueElement
+:
+  <expression> ??@semanticExpressionAST expression ;
+  outValueElement := [@expressionCollectionValue new !expression !here] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression :
+  @lstring typeName ;
+  select
+    typeName := [@lstring new !"" !here] ;
+  or
+    $type_name$ ?typeName ;
+  end select ;
+  ${$ ;
+  var elementList := [@collectionValueElementList emptyList] ;
+  select
+  or
+    repeat
+      <collection_value_element> ??@abstractCollectionValueElement element ;
+      elementList += !element ;
+    while
+      $,$ ;
+    end repeat ;
+  end select ;
+  outExpression := [@collectionValueAST new
+    !typeName
+    !elementList
+    !here
+  ] ;  
+  $}$ ;
 end rule ;
 
 #---------------------------------------------------------------------------*

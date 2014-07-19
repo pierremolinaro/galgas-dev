@@ -2,7 +2,7 @@
 #                                                                           *
 #  semantics definitions for semantics component                            *
 #                                                                           *
-#  Copyright (C) 1997, ..., 2012 Pierre Molinaro.                           *
+#  Copyright (C) 1997, ..., 2014 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -217,6 +217,8 @@ enum @typeKindEnum {
   listMapType,
   structType,
   graphType,
+  externType,
+  arrayType,
   predefinedType
 }
 
@@ -235,6 +237,8 @@ reader @typeKindEnum kind -> @string outResult :
     when structType : outResult := "struct" ;
     when graphType : outResult := "graph" ;
     when predefinedType : outResult := "predefined" ;
+    when arrayType : outResult := "array" ;
+    when externType : outResult := "extern" ;
   end switch ;
 end reader ;
 
@@ -263,8 +267,8 @@ once binaryXorOperator -> @uint outMask : outMask := 1 << 12 ; end once ;
 once unaryNotOperator  -> @uint outMask : outMask := 1 << 13 ; end once ;
 
 once binaryConcatOperator -> @uint outMask : outMask := 1 << 14 ; end once ; # exp1 . exp2
-once dotAssignOperator    -> @uint outMask : outMask := 1 << 15 ; end once ; # var .= exp ;
-once addAssignOperator    -> @uint outMask : outMask := 1 << 16 ; end once ; # var += exp ;
+once dotEqualOperator     -> @uint outMask : outMask := 1 << 15 ; end once ; # var .= exp ;
+once plusEgalOperator     -> @uint outMask : outMask := 1 << 16 ; end once ; # var += exp ;
 once isComparable         -> @uint outMask : outMask := 1 << 17 ; end once ; # Supports <, <=, >, >= operators
 
 once generateEnumerationHelperMethods             -> @uint outMask : outMask := 1 << 28 ; end once ;
@@ -297,6 +301,7 @@ uniquemap @unifiedTypeMap {
   @bool mIsConcrete ; # false if abstract class
   @unifiedTypeMapProxy mSuperType ;
   @typeKindEnum mTypeKindEnum ;
+  @bool mSupportCollectionValue ;
   @typedAttributeList mAllTypedAttributeList ;
   @attributeMap mAttributeMap ; # struct, class
   @typedAttributeList mCurrentTypedAttributeList ;

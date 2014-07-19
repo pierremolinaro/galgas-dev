@@ -2,7 +2,7 @@
 #                                                                           *
 #  Generate predefined types                                                *
 #                                                                           *
-#  Copyright (C) 2010, ..., 2012 Pierre Molinaro.                           *
+#  Copyright (C) 2010, ..., 2014 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -542,7 +542,7 @@ routine printFeaturesOfType
   after
     s .= "\n" ;
   end foreach ;
-  if (inHandledOperatorFlags & dotAssignOperator []) != 0 then
+  if (inHandledOperatorFlags & dotEqualOperator []) != 0 then
     s .= "    @" . inTypeName . " .= @" . inTypeName . "\n" ;
   end if ;
   if (inHandledOperatorFlags & isComparable []) != 0 then
