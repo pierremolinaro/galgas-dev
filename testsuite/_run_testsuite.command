@@ -3,9 +3,9 @@
 GALGAS_TOOL=`dirname $0`/../makefile_macosx/galgas_debug &&
 cd `dirname $0`/../makefile_macosx && make galgas_debug -j `sysctl -n hw.ncpu` &&
 cd `dirname $0` && $GALGAS_TOOL --generate-many-cpp-files -v --Werror +testsuite.galgasProject &&
-cd `dirname $0`/makefile_macosx && make --warn-undefined-variables all -j `sysctl -n hw.ncpu` &&
+cd `dirname $0`/makefile-macosx && make --warn-undefined-variables all -j `sysctl -n hw.ncpu` &&
 echo "*** Running test suite" &&
-cd `dirname $0` && ./makefile_macosx/testsuite > results.txt &&
+cd `dirname $0` && ./makefile-macosx/testsuite > results.txt &&
 if [ "`cat results.txt`" != "`cat results_reference.txt`" ]; then
   /Applications/Xcode.app/Contents/Developer/usr/bin/opendiff results.txt results_reference.txt
   echo "*************************"
@@ -13,7 +13,7 @@ if [ "`cat results.txt`" != "`cat results_reference.txt`" ]; then
   echo "*************************"
 else
   echo "*** Running test suite (debug mode)" &&
-  cd `dirname $0` && ./makefile_macosx/testsuite_debug &&
+  cd `dirname $0` && ./makefile-macosx/testsuite_debug &&
   echo "*************************"
   echo "*        SUCCESS        *"
   echo "*************************"

@@ -848,6 +848,7 @@ class @modifierCallInstructionForGeneration extends @semanticInstructionForGener
   @methodKind mKind ;
   @actualParameterListForGeneration mActualParameterList ;
   @bool mHasCompilerArgument ;
+  @unifiedTypeMapProxy mMethodBaseType ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1480,7 +1481,7 @@ class @categoryModifierForGeneration extends @semanticDeclarationWithHeaderForGe
 #---------------------------------------------------------------------------*
 
 class @overridingCategoryModifierForGeneration extends @semanticDeclarationWithHeaderForGeneration {
-  @string mTypeName ;
+  @unifiedTypeMapProxy mReceiverType ;
   @string mBaseTypeName ;
   @string mCategoryModifierName ;
   @formalParameterListForGeneration mCategoryModifierFormalParameterList ;

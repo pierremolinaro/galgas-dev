@@ -1124,6 +1124,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 abstract method @abstractCollectionValueElementForGeneration generateCollectionElementCode
+  ??@unifiedTypeMapProxy inTargetType
   ?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
@@ -1134,6 +1135,7 @@ abstract method @abstractCollectionValueElementForGeneration generateCollectionE
 #---------------------------------------------------------------------------*
 
 override method @expressionCollectionValueForGeneration generateCollectionElementCode
+  ??@unifiedTypeMapProxy unused inTargetType
   ?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
@@ -1154,6 +1156,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @expressionListCollectionForGeneration generateCollectionElementCode
+  ??@unifiedTypeMapProxy inTargetType
   ?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
@@ -1180,22 +1183,11 @@ override method @expressionListCollectionForGeneration generateCollectionElement
     do ioGeneratedCode .= mValue ;
     between ioGeneratedCode .= ", " ;
   end foreach ;
+  if ([inTargetType mHandledOperatorFlags] & plusEqualOperatorWithFieldListNeedsCompilerArg []) != 0 then
+    ioGeneratedCode  .= ", " . compilerCppName [] ;
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+  end if ;
   ioGeneratedCode .= " " . [mExpressionLocation commaSourceFile] . ") ;\n"  ;
-
-
-
-
-
-
-#  [mExpression generateExpression
-#    !?ioGeneratedCode
-#    !?ioInclusionSet
-#    !?ioTemporaryVariableIndex
-#    !?ioUnusedVariableCppNameSet
-#    ??@string sourceVar
-#  ] ;
-#  ioGeneratedCode .= inCppTargetVar ;
-#  ioGeneratedCode .= ".dotAssign_operation (" . sourceVar . " " . [mExpressionLocation commaSourceFile] . ") ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -1217,6 +1209,7 @@ override method @expressionCollectionForGeneration generateExpression
 #--- Add Elements
   for () in mElementList do
     [mElement generateCollectionElementCode
+      !mType
       !?ioGeneratedCode
       !?ioInclusionSet
       !?ioTemporaryVariableIndex

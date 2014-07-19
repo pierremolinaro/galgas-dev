@@ -1935,7 +1935,7 @@ override method @overridingCategoryModifierAST semanticAnalysis
     ![@overridingCategoryModifierForGeneration new
       !false # Do not generate Cpp header file
       !"setter-" . mTypeName . "-" . mOverridingCategoryModifierName
-      ![mTypeName string]
+      !selfType
       !baseTypeName
       ![mOverridingCategoryModifierName string]
       !formalParameterListForGeneration

@@ -18,8 +18,8 @@ if [CONSTRUCTOR_MAP count] > 0 then
       between %,\n%!^
     end
     if mHasCompilerArgument & ([mArgumentTypeList length] > 0) then
-      %,\n%!^ %class C_Compiler * inCompiler%
-      %\n%!^ %COMMA_LOCATION_ARGS) ;\n\n%
+      %,\n%!^%class C_Compiler * inCompiler%
+      %\n%!^%COMMA_LOCATION_ARGS) ;\n\n%
     elsif mHasCompilerArgument then
       %C_Compiler * inCompiler%
       %\n%!^ %COMMA_LOCATION_ARGS) ;\n\n%
@@ -55,8 +55,11 @@ if [ADD_ASSIGN_ARGUMENT_LIST length] > 0 then
 %//--------------------------------- += operator (with list of field expressions)
   public : VIRTUAL_IN_DEBUG void addAssign_operation (%?^
   foreach ADD_ASSIGN_ARGUMENT_LIST
-  do index IDX %const GALGAS_%![mType identifierRepresentation]% & inOperand%![IDX string]
+  do index IDX %const class GALGAS_%![mType identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
+  end
+  if (SUPPORTED_OPERATORS & plusEqualOperatorWithFieldListNeedsCompilerArg []) != 0 then
+    %,\n%!^%C_Compiler * inCompiler%
   end
   %\n%!^%COMMA_LOCATION_ARGS) ;
 %

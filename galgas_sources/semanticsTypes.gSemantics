@@ -271,10 +271,11 @@ once plusEqualOperatorWithExpression -> @uint outMask : outMask := 1 << 15 ; end
 once plusEqualOperatorWithFieldList  -> @uint outMask : outMask := 1 << 16 ; end once ; # var += exp ;
 once isComparable                    -> @uint outMask : outMask := 1 << 17 ; end once ; # Supports <, <=, >, >= operators
 
-once generateEnumerationHelperMethods             -> @uint outMask : outMask := 1 << 28 ; end once ;
-once doNotGenererateObjectCompare                 -> @uint outMask : outMask := 1 << 29 ; end once ;
-once generateDescriptionReaderUtilityMethod       -> @uint outMask : outMask := 1 << 30 ; end once ;
-once generateCopyConstructorAndAssignmentOperator -> @uint outMask : outMask := 1 << 31 ; end once ;
+once plusEqualOperatorWithFieldListNeedsCompilerArg -> @uint outMask : outMask := 1 << 27 ; end once ;
+once generateEnumerationHelperMethods               -> @uint outMask : outMask := 1 << 28 ; end once ;
+once doNotGenererateObjectCompare                   -> @uint outMask : outMask := 1 << 29 ; end once ;
+once generateDescriptionReaderUtilityMethod         -> @uint outMask : outMask := 1 << 30 ; end once ;
+once generateCopyConstructorAndAssignmentOperator   -> @uint outMask : outMask := 1 << 31 ; end once ;
 
 #---------------------------------------------------------------------------*
 
