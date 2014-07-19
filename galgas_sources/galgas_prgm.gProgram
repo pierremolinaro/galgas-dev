@@ -634,6 +634,7 @@ indexing with galgas3ProjectGrammar
     ;
   end if ;
 #---------------------------------- Compile grammar components
+  var grammarGenerationList := [@grammarComponentGenerationList emptyList] ;
   if [@uint errorCount] == 0 then
     for component in declarationAST->mGrammarComponentList do
       compileGrammarComponentGalgas3
@@ -641,8 +642,7 @@ indexing with galgas3ProjectGrammar
         !component
         !parsedSyntaxComponentMap
         !semanticContext
-        !?toolCppFileList
-        !?allProductFileSet
+        !?grammarGenerationList
       ;
     end for ;
   end if ;
@@ -664,6 +664,13 @@ indexing with galgas3ProjectGrammar
       message "*** Generating files\n" ;
     end if ;
   end if ;
+#---------------------------------- Generate grammar components
+  generateGrammarComponentGalgas3
+    !productDirectory
+    !grammarGenerationList
+    !?toolCppFileList
+    !?allProductFileSet
+  ;
 #---------------------------------- Generate syntax components
   if 0 == [@uint errorCount] then
     for s in syntaxListForGeneration do
