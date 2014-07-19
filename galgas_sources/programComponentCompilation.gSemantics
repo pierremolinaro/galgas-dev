@@ -381,8 +381,8 @@ routine compileProgramComponentGalgas3
   ??@programRuleList inProgramRules
   ??@prologueEpilogueList inEpilogueList
   ??@semanticContext inSemanticContext
-  ?!@stringlist ioToolProductFileList
-  ?!@stringset ioAllProductFileSet
+  !@string outHeaderContents
+  !@string outCppContents
 :
   const useOneHugeHeader := [option galgas_cli_options.generateOneHeader value] ;
 #--- Analysis context
@@ -414,8 +414,8 @@ routine compileProgramComponentGalgas3
     !inEpilogueList
     !?decoratedDeclarationListForGeneration
   ;
-#------ Generate Header File
-  const programFileName := "program" ;
+#------ Build Header File
+  outHeaderContents := "" ;
   if [@uint errorCount] == 0 then
     var inclusionSet1 := [@stringset emptySet] ;
     var inclusionSet2 := [@stringset emptySet] ;
@@ -432,22 +432,14 @@ routine compileProgramComponentGalgas3
       inclusionSet1 := [@stringset setWithString !"all-declarations"] ;
       inclusionSet2 := [@stringset emptySet] ;
     end if ;
-    const headerIncludes:= [filewrapper programFileGenerationTemplate.programFileHeader
-      !programFileName
+    outHeaderContents := [filewrapper programFileGenerationTemplate.programFileHeader
+      !"program"
       ![inclusionSet1 stringList] + [inclusionSet2 stringList]
     ] ;
-    ioAllProductFileSet += !programFileName + ".h" ;
-    [@string generateFileWithPattern
-      !inOutputDirectory
-      !programFileName + ".h"
-      !"//"
-      !"\n\n" # Defaut user zone1
-      !headerIncludes . headerString
-      !"\n\n" # Defaut user zone2
-      !"#endif\n"
-    ] ;
+    outHeaderContents += headerString ;
   end if ;
-#-------------------------------------------------------- Generate Implementation File
+#------------ Build Implementation File
+  outCppContents := "" ;
   if [@uint errorCount] == 0 then
     var inclusionSet := [@stringset emptySet] ;
     var implementationString := "" ;
@@ -467,12 +459,45 @@ routine compileProgramComponentGalgas3
         inclusionSet += !"grammar-" . lkey->string ;
       end for ;
     end if ;
-    const header := [filewrapper programFileGenerationTemplate.programFileImplementation
-      !programFileName
+    outCppContents := [filewrapper programFileGenerationTemplate.programFileImplementation
+      !"program"
       ![inclusionSet stringList]
       !inProgramRules
       !hasIndexing
     ] ;
+    outCppContents += implementationString ;
+  end if ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#         G E N E R A T E    P R O G R A M    C O M P O N E N T             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine generateProgramComponentGalgas3
+  ??@string inOutputDirectory
+  ??@string inHeaderContents
+  ??@string inCppContents
+  ?!@stringlist ioToolProductFileList
+  ?!@stringset ioAllProductFileSet
+:
+#------ Generate Header File
+  const programFileName := "program" ;
+  if [@uint errorCount] == 0 then
+    ioAllProductFileSet += !programFileName + ".h" ;
+    [@string generateFileWithPattern
+      !inOutputDirectory
+      !programFileName + ".h"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      !inHeaderContents
+      !"\n\n" # Defaut user zone2
+      !"#endif\n"
+    ] ;
+  end if ;
+#-------------------------------------------------------- Generate Implementation File
+  if [@uint errorCount] == 0 then
     ioToolProductFileList += !programFileName . ".cpp" ;
     ioAllProductFileSet += !programFileName + ".cpp" ;
     [@string generateFileWithPattern
@@ -480,7 +505,7 @@ routine compileProgramComponentGalgas3
       !programFileName . ".cpp"
       !"//"
       !"\n\n" # Defaut user zone1
-      !header + implementationString
+      !inCppContents
       !"\n\n" # Defaut user zone2
       !"\n"
     ] ;

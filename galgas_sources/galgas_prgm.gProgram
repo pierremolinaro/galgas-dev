@@ -525,7 +525,9 @@ when . "galgasProject"
 message "a GALGAS project source file"
 indexing with galgas3ProjectGrammar
 ??@lstring inProjectSourceFile {
-  message "*** Parsing project files\n" ;
+  if [option .verbose_output value] then
+    message "*** Parsing project files\n" ;
+  end if ;
   grammar galgas3ProjectGrammar in inProjectSourceFile
     ??@galgas3ProjectComponentAST projectComponentAST
   ;
@@ -561,19 +563,17 @@ indexing with galgas3ProjectGrammar
     end if ;
   end for ;
 #---------------------------------- Display result
-  var toolCppFileList := [@stringlist emptyList] ;
-  var allProductFileSet := [@stringset emptySet] ;
-  if [@uint errorCount] == 0 then
-    message "  Semantic declarations: " . [declarationAST->mSemanticDeclarationList length] . "\n" ;
-    message "  Lexique components: " . [declarationAST->mLexiqueComponentList length] . "\n" ;
-    message "  Syntax components: " . [declarationAST->mSyntaxComponentList length] . "\n" ;
-    message "  Grammar components: " . [declarationAST->mGrammarComponentList length] . "\n" ;
-    message "  GUI components: " . [declarationAST->mGUIComponentList length] . "\n" ;
-    message "  Option components: " . [declarationAST->mOptionComponentList length] . "\n" ;
-    message "  Source rules: " . [declarationAST->mSourceRuleList length] . "\n" ;
-    message "  Prologue procs: " . [declarationAST->mPrologueDeclarationList length] . "\n" ;
-    message "  Epilogue procs: " . [declarationAST->mEpilogueDeclarationList length] . "\n" ;
-  end if ;
+#  if [@uint errorCount] == 0 then
+#    message "  Semantic declarations: " . [declarationAST->mSemanticDeclarationList length] . "\n" ;
+#    message "  Lexique components: " . [declarationAST->mLexiqueComponentList length] . "\n" ;
+#    message "  Syntax components: " . [declarationAST->mSyntaxComponentList length] . "\n" ;
+#    message "  Grammar components: " . [declarationAST->mGrammarComponentList length] . "\n" ;
+#    message "  GUI components: " . [declarationAST->mGUIComponentList length] . "\n" ;
+#    message "  Option components: " . [declarationAST->mOptionComponentList length] . "\n" ;
+#    message "  Source rules: " . [declarationAST->mSourceRuleList length] . "\n" ;
+#    message "  Prologue procs: " . [declarationAST->mPrologueDeclarationList length] . "\n" ;
+#    message "  Epilogue procs: " . [declarationAST->mEpilogueDeclarationList length] . "\n" ;
+#  end if ;
 #---------------------------------- Compile semantic declarations
   const productDirectory := [inProjectSourceFile stringByDeletingLastPathComponent] . "/build/output" ;
   var appProductFileList := [@stringlist emptyList] ;
@@ -594,6 +594,8 @@ indexing with galgas3ProjectGrammar
     semanticDeclarationSortedListForGeneration := [@semanticDeclarationSortedListForGeneration emptySortedList] ;
   end if ;
 #---------------------------------- Compile option declarations
+  var toolCppFileList := [@stringlist emptyList] ;
+  var allProductFileSet := [@stringset emptySet] ;
   if [@uint errorCount] == 0 then
     foreach semanticContext->mOptionComponentMapForSemanticAnalysis do
       if not mIsPredefined then
@@ -647,6 +649,8 @@ indexing with galgas3ProjectGrammar
     end for ;
   end if ;
 #---------------------------------- Compile program declarations
+  var programHeaderContents := "" ;
+  var programCppContents := "" ;
   if [@uint errorCount] == 0 then
     compileProgramComponentGalgas3
       !productDirectory
@@ -654,16 +658,23 @@ indexing with galgas3ProjectGrammar
       !declarationAST->mSourceRuleList
       !declarationAST->mEpilogueDeclarationList
       !semanticContext
-      !?toolCppFileList
-      !?allProductFileSet
+      ?programHeaderContents
+      ?programCppContents
     ;
   end if ;
 #---------------------------------- File generation
-  if 0 == [@uint errorCount] then
-    if [option .verbose_output value] then
-      message "*** Generating files\n" ;
-    end if ;
+  if (0 == [@uint errorCount]) & [option .verbose_output value] then
+    message "*** Generating files\n" ;
   end if ;
+#---------------------------------- Generate program component
+  generateProgramComponentGalgas3
+    !productDirectory
+    !programHeaderContents
+    !programCppContents
+    !?toolCppFileList
+    !?allProductFileSet
+  ;
+  drop programHeaderContents, programCppContents ;
 #---------------------------------- Generate grammar components
   generateGrammarComponentGalgas3
     !productDirectory
@@ -671,6 +682,7 @@ indexing with galgas3ProjectGrammar
     !?toolCppFileList
     !?allProductFileSet
   ;
+  drop grammarGenerationList ;
 #---------------------------------- Generate syntax components
   if 0 == [@uint errorCount] then
     for s in syntaxListForGeneration do
