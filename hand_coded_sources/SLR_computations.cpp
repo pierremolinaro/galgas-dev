@@ -649,9 +649,7 @@ mTargetState (inTargetState) {
 //-----------------------------------------------------------------------------*
 
 static void
-generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
-                               const bool inCompileForGalgas3,
-                               const TC_UniqueArray <C_String> & inImplementationFileHeaderList,
+generate_SLR_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementationFileHeaderList,
                                const cPureBNFproductionsList & inProductionRules,
                                const cVocabulary & inVocabulary,
                                const TC_UniqueArray2 <cDecisionTableElement> & inSLRdecisionTable,
@@ -660,42 +658,39 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
                                const uint32_t inOriginalGrammarStartSymbol,
                                const C_String & inLexiqueName,
                                const C_String & inTargetFileName,
-                               const C_String & inOutputDirectoryForCppFiles,
+                               C_String & ioCppFileContents,
                                const bool inHasIndexing,
                                const C_String & inSyntaxDirectedTranslationVarName) {
 //--- Generate header file inclusion -----------------------------------------
-  C_String generatedZone2 ;
-  generatedZone2.appendCppHyphenLineComment () ;
-  generatedZone2 << "#include \"utilities/MF_MemoryControl.h\"\n" ;
-  generatedZone2 << "#include \"galgas2/C_galgas_CLI_Options.h\"\n\n" ;
-  generatedZone2 << "#include \"files/C_FileManager.h\"\n\n" ;
+  ioCppFileContents.appendCppHyphenLineComment () ;
+  ioCppFileContents << "#include \"utilities/MF_MemoryControl.h\"\n" ;
+  ioCppFileContents << "#include \"galgas2/C_galgas_CLI_Options.h\"\n\n" ;
+  ioCppFileContents << "#include \"files/C_FileManager.h\"\n\n" ;
 
-  generatedZone2.appendCppHyphenLineComment () ;
+  ioCppFileContents.appendCppHyphenLineComment () ;
   for (int32_t i=0 ; i<inImplementationFileHeaderList.count () ; i++) {
-    generatedZone2 << "#include \"" << inImplementationFileHeaderList (i COMMA_HERE) << ".h\"\n" ;
+    ioCppFileContents << "#include \"" << inImplementationFileHeaderList (i COMMA_HERE) << ".h\"\n" ;
   }
-  generatedZone2 << "\n" ;
-
-  C_String generatedZone3 ;
+  ioCppFileContents << "\n" ;
 
 //--- Print non-terminal symbols --------------------------------------
-  generatedZone3.appendCppTitleComment ("N O N    T E R M I N A L    N A M E S") ;
-  generatedZone3 << "static const char * gNonTerminalNames ["
+  ioCppFileContents.appendCppTitleComment ("N O N    T E R M I N A L    N A M E S") ;
+  ioCppFileContents << "static const char * gNonTerminalNames ["
                  << cStringWithSigned (inVocabulary.getNonTerminalSymbolsCount ()) << "] = {\n" ;
   for (int32_t i=inVocabulary.getTerminalSymbolsCount () ; i<inVocabulary.getAllSymbolsCount () ; i++) {
-    generatedZone3 << "  \"<" << inVocabulary.getSymbol (i COMMA_HERE) << ">\""
+    ioCppFileContents << "  \"<" << inVocabulary.getSymbol (i COMMA_HERE) << ">\""
                    << (((i+1)<inVocabulary.getAllSymbolsCount ()) ? "," : "")
                    << "// Index " << cStringWithSigned (i - inVocabulary.getTerminalSymbolsCount ()) << "\n" ;
   }
-  generatedZone3 << "} ;\n\n" ;
+  ioCppFileContents << "} ;\n\n" ;
 
 //--- Generate SLR analyze action table --------------------------------------
-  generatedZone3.appendCppTitleComment ("S L R    A N A L Y Z E R    A C T I O N    T A B L E") ;
+  ioCppFileContents.appendCppTitleComment ("S L R    A N A L Y Z E R    A C T I O N    T A B L E") ;
   const int32_t rowsCount = inSLRdecisionTable.rowCount () ; // Number of states
   const int32_t columnsCount = inSLRdecisionTable.columnCount () ; // Number of terminal symbols
 //--- State action tables
   TC_UniqueArray <int32_t> startIndexArray (rowsCount COMMA_HERE) ;
-  generatedZone3 << "// Action tables handle shift and reduce actions ;\n"
+  ioCppFileContents << "// Action tables handle shift and reduce actions ;\n"
                     "//  - a shift action is (terminal_symbol, SHIFT (n)) : if shifts to state n ;\n"
                     "//  - the accept action is (terminal_symbol, ACCEPT) ;\n"
                     "//  - a reduce action is (terminal_symbol, REDUCE (n)) ; if reduces to state n.\n\n"
@@ -703,55 +698,55 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
                     "#define REDUCE(a) (-(a) - 1)\n"
                     "#define ACCEPT (1)\n"
                     "#define END (-1)\n\n" ;
-  generatedZone3 << "static const int16_t gActionTable [] = {" ;
+  ioCppFileContents << "static const int16_t gActionTable [] = {" ;
   bool isFirst = true ;
   int32_t startIndex = 0 ;
   for (int32_t i=0 ; i<rowsCount ; i++) {
     startIndexArray.addObject (startIndex) ;
-    generatedZone3 <<"\n// State S" << cStringWithSigned (i) << " (index = " << cStringWithSigned (startIndex) << ")" ;
+    ioCppFileContents <<"\n// State S" << cStringWithSigned (i) << " (index = " << cStringWithSigned (startIndex) << ")" ;
     for (int32_t j=0 ; j<columnsCount ; j++) {
       const int32_t parameter = inSLRdecisionTable (i, j COMMA_HERE).parameter () ;
       const cDecisionTableElement::enumDecision decision = inSLRdecisionTable (i, j COMMA_HERE).decision () ;
       if (decision != cDecisionTableElement::kUndefinedState) {
         startIndex += 2 ;
-        generatedZone3 << "\n" ;
+        ioCppFileContents << "\n" ;
         if (isFirst) {
           isFirst = false ;
-          generatedZone3 << "  " ;
+          ioCppFileContents << "  " ;
         }else{
-          generatedZone3 << ", " ;
+          ioCppFileContents << ", " ;
         }
-        generatedZone3 << "C_Lexique_" << inLexiqueName.identifierRepresentation () << "::kToken_"
+        ioCppFileContents << "C_Lexique_" << inLexiqueName.identifierRepresentation () << "::kToken_"
                        << inVocabulary.getSymbol (j COMMA_HERE).identifierRepresentation ()
                        << ", " ;
         if (decision == cDecisionTableElement::kDecisionReduce) { // Reduce action
-          generatedZone3 << "REDUCE (" << cStringWithSigned (parameter) << ")" ;
+          ioCppFileContents << "REDUCE (" << cStringWithSigned (parameter) << ")" ;
         }else if (decision == cDecisionTableElement::kDecisionShift) { // Shift action
-          generatedZone3 << "SHIFT (" << cStringWithSigned (parameter) << ")" ;
+          ioCppFileContents << "SHIFT (" << cStringWithSigned (parameter) << ")" ;
         }else{ // Accept action
-          generatedZone3 << "ACCEPT" ;
+          ioCppFileContents << "ACCEPT" ;
         }
       }
     }
-    generatedZone3 << "\n, END" ;
+    ioCppFileContents << "\n, END" ;
     startIndex ++ ;
   }
-  generatedZone3 << "} ;\n\n"
+  ioCppFileContents << "} ;\n\n"
                     "static const uint32_t gActionTableIndex [" << cStringWithSigned (rowsCount) << "] = {" ;
   isFirst = true ;
   for (int32_t i=0 ; i<rowsCount ; i++) {
-    generatedZone3 << "\n" ;
+    ioCppFileContents << "\n" ;
     if (isFirst) {
       isFirst = false ;
-      generatedZone3 << "  " ;
+      ioCppFileContents << "  " ;
     }else{
-      generatedZone3 << ", " ;
+      ioCppFileContents << ", " ;
     }
-    generatedZone3 << cStringWithSigned (startIndexArray (i COMMA_HERE)) << "  // S" << cStringWithSigned (i) ;
+    ioCppFileContents << cStringWithSigned (startIndexArray (i COMMA_HERE)) << "  // S" << cStringWithSigned (i) ;
   }
-  generatedZone3 << "\n} ;\n\n" ;
+  ioCppFileContents << "\n} ;\n\n" ;
 //--- Generate state successor table -----------------------------------------
-  generatedZone3.appendCppTitleComment ("SLR states successors table") ;
+  ioCppFileContents.appendCppTitleComment ("SLR states successors table") ;
 //--- Get successor count, by state
   TC_UniqueArray <int32_t> stateSuccessorsCount (rowsCount, 0 COMMA_HERE) ;
   const int32_t transitionsCount = inTransitionList.length () ;
@@ -762,7 +757,7 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
   }
 
 //--- Write successor table, state by state ----------------------------------
-  generatedZone3 << "// Successor tables handle non terminal successors ;\n"
+  ioCppFileContents << "// Successor tables handle non terminal successors ;\n"
                     "// an entry is (non_terminal_symbol, n) ; successor is state n.\n\n" ;
   int32_t currentSourceState = -1 ; // No state
   for (int32_t t=0 ; t<transitionsCount ; t++) {
@@ -770,72 +765,72 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
     if (nonterminal >= 0) {
       const int32_t sourceState = inTransitionList (t COMMA_HERE).mSourceState ;
       if (currentSourceState == sourceState) {
-        generatedZone3 << ",\n  " ;
+        ioCppFileContents << ",\n  " ;
       }else{
         if (currentSourceState >= 0) {
-          generatedZone3 << ", -1} ;\n\n" ;
+          ioCppFileContents << ", -1} ;\n\n" ;
         }
-        generatedZone3 << "static const int16_t gSuccessorTable"
+        ioCppFileContents << "static const int16_t gSuccessorTable"
                 << cStringWithSigned (sourceState) << " ["
                 << cStringWithSigned ((int32_t)(2 * stateSuccessorsCount (sourceState COMMA_HERE) + 1))
                 << "] = {" ;
         currentSourceState = sourceState ;
       }
-      generatedZone3 << cStringWithSigned (nonterminal) << ", " << cStringWithSigned (inTransitionList (t COMMA_HERE).mTargetState) ;
+      ioCppFileContents << cStringWithSigned (nonterminal) << ", " << cStringWithSigned (inTransitionList (t COMMA_HERE).mTargetState) ;
     }
   }
-  generatedZone3 << ", -1} ;\n\n" ;
+  ioCppFileContents << ", -1} ;\n\n" ;
 //--- Write global state successor table
-  generatedZone3 << "static const int16_t * gSuccessorTable ["
+  ioCppFileContents << "static const int16_t * gSuccessorTable ["
           << cStringWithSigned (rowsCount)
           << "] = {\n" ;
   int32_t itemInSameLineCount = 0 ;
   for (int32_t r=0 ; r<rowsCount ; r++) {
-    if (r != 0) generatedZone3 << ", " ;
+    if (r != 0) ioCppFileContents << ", " ;
     if (itemInSameLineCount == 4) {
-      generatedZone3 << "\n  " ;
+      ioCppFileContents << "\n  " ;
       itemInSameLineCount = 0 ;
     }
     itemInSameLineCount ++ ;
     if (stateSuccessorsCount (r COMMA_HERE) == 0) {
-      generatedZone3 << "NULL" ;
+      ioCppFileContents << "NULL" ;
     }else{
-      generatedZone3 << "gSuccessorTable" << cStringWithSigned (r) ;
+      ioCppFileContents << "gSuccessorTable" << cStringWithSigned (r) ;
     }
   }
-  generatedZone3 << "} ;\n\n" ;
+  ioCppFileContents << "} ;\n\n" ;
 
 //--- Write for every production, its left non terminal, ---------------------
 //    and the size of right string
   const int32_t productionsCount = inProductionRules.length () ;
-  generatedZone3.appendCppTitleComment ("Production rules infos (left non terminal, size of right string)") ;
-  generatedZone3 << "static const int16_t gProductionsTable ["
+  ioCppFileContents.appendCppTitleComment ("Production rules infos (left non terminal, size of right string)") ;
+  ioCppFileContents << "static const int16_t gProductionsTable ["
           << cStringWithSigned (productionsCount)
           << " * 2] = {\n" ;
   for (int32_t p=0 ; p<productionsCount ; p++) {
     if (p > 0) {
-      generatedZone3 << ",\n" ;
+      ioCppFileContents << ",\n" ;
     }
-    generatedZone3 << "  " << cStringWithSigned (inProductionRules (p COMMA_HERE).leftNonTerminalIndex () - columnsCount)
+    ioCppFileContents << "  " << cStringWithSigned (inProductionRules (p COMMA_HERE).leftNonTerminalIndex () - columnsCount)
             << ", "
             << cStringWithSigned (inProductionRules (p COMMA_HERE).derivationLength ()) ;
   }
-  generatedZone3 << "\n} ;\n\n" ;
+  ioCppFileContents << "\n} ;\n\n" ;
 
 //--- Generate methods, one by non terminal ----------------------------------
   cEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis nonTerminal (inNonTerminalSymbolSortedListForGrammarAnalysis, kEnumeration_up) ;
   while (nonTerminal.hasCurrentObject ()) {
-    generatedZone3.appendCppTitleComment (C_String ("'") + nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue () + "' non terminal implementation") ;
+    ioCppFileContents.appendCppTitleComment (C_String ("'") + nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue () + "' non terminal implementation") ;
     const int32_t pureBNFleftNonterminalIndex = (int32_t) nonTerminal.current_mNonTerminalIndex (HERE).uintValue () ;
     const int32_t first = inProductionRules.tableauIndicePremiereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
   //--- Parse label
-    generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
+    ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
                  << "::nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
                  << "_parse (" ;
       if (inSyntaxDirectedTranslationVarName.length() > 0) {
-        generatedZone3 << "C_String & " << inSyntaxDirectedTranslationVarName << ",\n                                " ;
+        ioCppFileContents << "C_String & " << inSyntaxDirectedTranslationVarName << ",\n                                " ;
       }
-      generatedZone3 << "C_Lexique_" << inLexiqueName.identifierRepresentation () << " * inLexique"
+      ioCppFileContents << "C_Lexique_" << inLexiqueName.identifierRepresentation () << " * inLexique"
                      << ") {\n"
                         "  switch (inLexique->nextProductionIndex ()) {\n" ;
     if (first >= 0) { // first<0 means the non terminal symbol is unuseful
@@ -844,23 +839,23 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
       MF_Assert (last >= first, "last (%ld) < first (%ld)", last, first) ;
       for (int32_t j=first ; j<=last ; j++) {
         const int32_t ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
-        generatedZone3 << "  case " << cStringWithSigned (ip) << " :\n    " ;
+        ioCppFileContents << "  case " << cStringWithSigned (ip) << " :\n    " ;
         inProductionRules (ip COMMA_HERE).engendrerAppelProduction (0,
                                                                     inVocabulary,
                                                                     "parse",
-                                                                    generatedZone3,
+                                                                    ioCppFileContents,
                                                                     inSyntaxDirectedTranslationVarName) ;
-        generatedZone3 << "    break ;\n" ;
+        ioCppFileContents << "    break ;\n" ;
       }
     }
-    generatedZone3 << "  default :\n"
+    ioCppFileContents << "  default :\n"
                       "    inLexique->internalBottomUpParserError (HERE) ;\n"
                       "    break ;\n"
                       "  }\n"
                       "}\n\n" ;
   //--- Indexing
     if (inHasIndexing) {
-      generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
+      ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
                    << "::nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
                    << "_indexing (C_Lexique_" << inLexiqueName.identifierRepresentation () << " * inLexique"
                    << ") {\n"
@@ -871,16 +866,16 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
         MF_Assert (last >= first, "last (%ld) < first (%ld)", last, first) ;
         for (int32_t j=first ; j<=last ; j++) {
           const int32_t ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
-          generatedZone3 << "  case " << cStringWithSigned (ip) << " :\n    " ;
+          ioCppFileContents << "  case " << cStringWithSigned (ip) << " :\n    " ;
           inProductionRules (ip COMMA_HERE).engendrerAppelProduction (0,
                                                                       inVocabulary,
                                                                       "indexing",
-                                                                      generatedZone3,
+                                                                      ioCppFileContents,
                                                                       "") ;
-          generatedZone3 << "    break ;\n" ;
+          ioCppFileContents << "    break ;\n" ;
         }
       }
-      generatedZone3 << "  default :\n"
+      ioCppFileContents << "  default :\n"
                         "    inLexique->internalBottomUpParserError (HERE) ;\n"
                         "    break ;\n"
                         "  }\n"
@@ -888,7 +883,7 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
     }
     cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal2 (nonTerminal.current_mNonterminalSymbolParametersMap (HERE), kEnumeration_up) ;
     while (currentAltForNonTerminal2.hasCurrentObject ()) {
-      generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
+      ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
                      << "::nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
                      << "_" << currentAltForNonTerminal2.current_lkey (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
                      << " (" ;
@@ -897,35 +892,35 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
       while (parametre.hasCurrentObject ()) {
         switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
         case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn :
-          generatedZone3 << "const " ;
+          ioCppFileContents << "const " ;
           break ;
         default : break ;
         }
-        generatedZone3 << "GALGAS_" << parametre.current_mGalgasTypeNameForGrammarAnalysis (HERE).mAttribute_string.stringValue ().identifierRepresentation () ;
+        ioCppFileContents << "GALGAS_" << parametre.current_mGalgasTypeNameForGrammarAnalysis (HERE).mAttribute_string.stringValue ().identifierRepresentation () ;
         switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
         case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn :
-          generatedZone3 << " " ;
+          ioCppFileContents << " " ;
           break ;
         case GALGAS_formalArgumentPassingModeAST::kEnum_argumentIn :
-          generatedZone3 << " " ;
+          ioCppFileContents << " " ;
           break ;
         case GALGAS_formalArgumentPassingModeAST::kEnum_argumentInOut :
         case GALGAS_formalArgumentPassingModeAST::kEnum_argumentOut :
-          generatedZone3 << " & " ;
+          ioCppFileContents << " & " ;
           break ;
         default : break ;
         }
         if (first >= 0) {
-          generatedZone3 << " parameter_" << cStringWithSigned (numeroParametre) ;
+          ioCppFileContents << " parameter_" << cStringWithSigned (numeroParametre) ;
         }
         parametre.gotoNextObject () ;
-        generatedZone3 << ",\n                                " ;
+        ioCppFileContents << ",\n                                " ;
         numeroParametre ++ ;
       }
       if (inSyntaxDirectedTranslationVarName.length() > 0) {
-        generatedZone3 << "C_String & " << inSyntaxDirectedTranslationVarName << ",\n                                " ;
+        ioCppFileContents << "C_String & " << inSyntaxDirectedTranslationVarName << ",\n                                " ;
       }
-      generatedZone3 << "C_Lexique_" << inLexiqueName.identifierRepresentation () << " * inLexique) {\n"
+      ioCppFileContents << "C_Lexique_" << inLexiqueName.identifierRepresentation () << " * inLexique) {\n"
                         "  switch (inLexique->nextProductionIndex ()) {\n" ;
       if (first >= 0) { // first<0 means the non terminal symbol is unuseful
         MF_Assert (first >= 0, "first (%ld) < 0", first, 0) ;
@@ -933,25 +928,25 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
         MF_Assert (last >= first, "last (%ld) < first (%ld)", last, first) ;
         for (int32_t j=first ; j<=last ; j++) {
           const int32_t ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
-          generatedZone3 << "  case " << cStringWithSigned (ip) << " :\n    " ;
+          ioCppFileContents << "  case " << cStringWithSigned (ip) << " :\n    " ;
           inProductionRules (ip COMMA_HERE).engendrerAppelProduction (numeroParametre,
                                                                       inVocabulary,
                                                                       currentAltForNonTerminal2.current_lkey (HERE).mAttribute_string.stringValue (),
-                                                                      generatedZone3,
+                                                                      ioCppFileContents,
                                                                       inSyntaxDirectedTranslationVarName) ;
-          generatedZone3 << "    break ;\n" ;
+          ioCppFileContents << "    break ;\n" ;
         }
       }
-      generatedZone3 << "  default :\n"
+      ioCppFileContents << "  default :\n"
                         "    inLexique->internalBottomUpParserError (HERE) ;\n"
                         "  }\n" ;
-      generatedZone3 << "}\n\n" ;
+      ioCppFileContents << "}\n\n" ;
       currentAltForNonTerminal2.gotoNextObject () ;
     }
     //--- Engendrer l'axiome ?
     if (nonTerminal.current_mNonTerminalIndex (HERE).uintValue () == inOriginalGrammarStartSymbol) {
       if (inHasIndexing) {
-        generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
+        ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
                      << "::performIndexing (C_Compiler * inCompiler,\n"
                         "             const C_String & inSourceFilePath) {\n"
                         "  C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
@@ -972,47 +967,47 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
       }
       cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal (nonTerminal.current_mNonterminalSymbolParametersMap (HERE), kEnumeration_up) ;
       while (currentAltForNonTerminal.hasCurrentObject ()) {
-        generatedZone3.appendCppTitleComment ("Grammar start symbol implementation") ;
+        ioCppFileContents.appendCppTitleComment ("Grammar start symbol implementation") ;
       //--- Define file parsing static method
-        generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
+        ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
                        << "::_performSourceFileParsing_" << currentAltForNonTerminal.current_lkey (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
                        << " (C_Compiler * inCompiler"
                           ",\n                                " ;
         if (inSyntaxDirectedTranslationVarName.length() > 0) {
-          generatedZone3 << "C_String & " << inSyntaxDirectedTranslationVarName << ",\n                                " ;
+          ioCppFileContents << "C_String & " << inSyntaxDirectedTranslationVarName << ",\n                                " ;
         }
-        generatedZone3 << "GALGAS_lstring inFilePath" ;
+        ioCppFileContents << "GALGAS_lstring inFilePath" ;
         cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal.current_mFormalParametersList (HERE), kEnumeration_up) ;
         int32_t numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
-          generatedZone3 << ",\n                                " ;
+          ioCppFileContents << ",\n                                " ;
           switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
           case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn :
-            generatedZone3 << "const " ;
+            ioCppFileContents << "const " ;
             break ;
           default : break ;
           }
-          generatedZone3 << "GALGAS_" << parametre.current_mGalgasTypeNameForGrammarAnalysis (HERE).mAttribute_string.stringValue ().identifierRepresentation () ;
+          ioCppFileContents << "GALGAS_" << parametre.current_mGalgasTypeNameForGrammarAnalysis (HERE).mAttribute_string.stringValue ().identifierRepresentation () ;
           switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
           case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn :
-            generatedZone3 << " " ;
+            ioCppFileContents << " " ;
             break ;
           case GALGAS_formalArgumentPassingModeAST::kEnum_argumentIn :
-            generatedZone3 << " " ;
+            ioCppFileContents << " " ;
             break ;
           case GALGAS_formalArgumentPassingModeAST::kEnum_argumentInOut :
           case GALGAS_formalArgumentPassingModeAST::kEnum_argumentOut :
-            generatedZone3 << " & " ;
+            ioCppFileContents << " & " ;
             break ;
           default : break ;
           }
-          generatedZone3 << " parameter_" << cStringWithSigned (numeroParametre) ;
+          ioCppFileContents << " parameter_" << cStringWithSigned (numeroParametre) ;
           parametre.gotoNextObject () ;
           numeroParametre ++ ;
         }
-        generatedZone3 << "\n                                "
+        ioCppFileContents << "\n                                "
                           "COMMA_LOCATION_ARGS) {\n" ;
-        generatedZone3 << "  if (inFilePath.isValid ()) {\n"
+        ioCppFileContents << "  if (inFilePath.isValid ()) {\n"
                           "    const GALGAS_string filePathAsString = inFilePath.reader_string (HERE) ;\n"
                           "    C_String filePath = filePathAsString.stringValue () ;\n"
                           "    if (! C_FileManager::isAbsolutePath (filePath)) {\n"
@@ -1028,95 +1023,76 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
                           "        if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {\n"
                           "          cGrammar_" << inTargetFileName.identifierRepresentation () << " grammar ;\n"
                           "          " ;
-        generatedZone3 << "grammar.nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
+        ioCppFileContents << "grammar.nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
                        << "_" << currentAltForNonTerminal.current_lkey (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
                        << " (" ;
         parametre.rewind () ;
         numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
-          generatedZone3 << "parameter_" << cStringWithSigned (numeroParametre) << ", " ;
+          ioCppFileContents << "parameter_" << cStringWithSigned (numeroParametre) << ", " ;
           parametre.gotoNextObject () ;
           numeroParametre ++ ;
         }
         if (inSyntaxDirectedTranslationVarName.length() > 0) {
-          generatedZone3 << inSyntaxDirectedTranslationVarName << ", " ;
+          ioCppFileContents << inSyntaxDirectedTranslationVarName << ", " ;
         }
-        generatedZone3 << "scanner) ;\n"
-                          "        }\n"
-                          "      }else{\n"
-                          "        C_String message ;\n"
-                          "        message << \"the '\" << filePath << \"' file exists, but cannot be read\" ;\n"
-                          "        const GALGAS_location errorLocation (inFilePath.reader_location (THERE)) ;\n"
-                          "        inCompiler->semanticErrorAtLocation (errorLocation, message COMMA_THERE) ;\n" ;
-/*        parametre.rewind () ;
-        numeroParametre = 1 ;
-        while (parametre.hasCurrentObject ()) {
-          if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GALGAS_formalArgumentPassingModeAST::kEnum_argumentOut) {
-            generatedZone3 << "        parameter_" << cStringWithSigned (numeroParametre) << ".drop () ;\n" ;
-          }
-          parametre.gotoNextObject () ;
-          numeroParametre ++ ;
-        }*/
-        generatedZone3 << "      }\n"
-                          "      macroDetachSharedObject (scanner) ;\n"
-                          "    }else{\n"
-                          "      C_String message ;\n"
-                          "      message << \"the '\" << filePath << \"' file does not exist\" ;\n"
-                          "      const GALGAS_location errorLocation (inFilePath.reader_location (THERE)) ;\n"
-                          "      inCompiler->semanticErrorAtLocation (errorLocation, message COMMA_THERE) ;\n" ;
-/*        parametre.rewind () ;
-        numeroParametre = 1 ;
-        while (parametre.hasCurrentObject ()) {
-          if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GALGAS_formalArgumentPassingModeAST::kEnum_argumentOut) {
-            generatedZone3 << "    parameter_" << cStringWithSigned (numeroParametre) << ".drop () ;\n" ;
-          }
-          parametre.gotoNextObject () ;
-          numeroParametre ++ ;
-        } */
-        generatedZone3 << "    }\n"
-                          "  }\n"
-                          "}\n\n" ;
+        ioCppFileContents << "scanner) ;\n"
+                             "        }\n"
+                             "      }else{\n"
+                             "        C_String message ;\n"
+                             "        message << \"the '\" << filePath << \"' file exists, but cannot be read\" ;\n"
+                             "        const GALGAS_location errorLocation (inFilePath.reader_location (THERE)) ;\n"
+                             "        inCompiler->semanticErrorAtLocation (errorLocation, message COMMA_THERE) ;\n"
+                             "      }\n"
+                             "      macroDetachSharedObject (scanner) ;\n"
+                             "    }else{\n"
+                             "      C_String message ;\n"
+                             "      message << \"the '\" << filePath << \"' file does not exist\" ;\n"
+                             "      const GALGAS_location errorLocation (inFilePath.reader_location (THERE)) ;\n"
+                             "    }\n"
+                             "  }\n"
+                             "}\n\n" ;
       //--- Define string parsing static method
-        generatedZone3.appendCppHyphenLineComment () ;
-        generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
+        ioCppFileContents.appendCppHyphenLineComment () ;
+        ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
                        << "::_performSourceStringParsing_" << currentAltForNonTerminal.current_lkey (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
                        << " (C_Compiler * inCompiler"
                           ",\n                                " ;
         if (inSyntaxDirectedTranslationVarName.length() > 0) {
-          generatedZone3 << "C_String & " << inSyntaxDirectedTranslationVarName << ",\n                                " ;
+          ioCppFileContents << "C_String & " << inSyntaxDirectedTranslationVarName << ",\n                                " ;
         }
-        generatedZone3 << "GALGAS_string inSourceString" ;
+        ioCppFileContents << "GALGAS_string inSourceString" ;
         parametre.rewind () ;
         numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
-          generatedZone3 << ",\n                                " ;
+          ioCppFileContents << ",\n                                " ;
           switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
           case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn :
-            generatedZone3 << "const " ;
+            ioCppFileContents << "const " ;
             break ;
           default : break ;
           }
-          generatedZone3 << "GALGAS_" << parametre.current_mGalgasTypeNameForGrammarAnalysis (HERE).mAttribute_string.stringValue ().identifierRepresentation () ;
+          ioCppFileContents << "GALGAS_" << parametre.current_mGalgasTypeNameForGrammarAnalysis (HERE).mAttribute_string.stringValue ().identifierRepresentation () ;
           switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
           case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn :
-            generatedZone3 << " " ;
+            ioCppFileContents << " " ;
             break ;
           case GALGAS_formalArgumentPassingModeAST::kEnum_argumentIn :
-            generatedZone3 << " " ;
+            ioCppFileContents << " " ;
             break ;
           case GALGAS_formalArgumentPassingModeAST::kEnum_argumentInOut :
           case GALGAS_formalArgumentPassingModeAST::kEnum_argumentOut :
-            generatedZone3 << " & " ;
+            ioCppFileContents << " & " ;
             break ;
           default : break ;
           }
-          generatedZone3 << " parameter_" << cStringWithSigned (numeroParametre) ;
+          ioCppFileContents << " parameter_" << cStringWithSigned (numeroParametre) ;
           parametre.gotoNextObject () ;
           numeroParametre ++ ;
         }
-        generatedZone3 << "\n                                "
+        ioCppFileContents << "\n                                "
                           "COMMA_UNUSED_LOCATION_ARGS) {\n" ;
-        generatedZone3 << "  C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
+        ioCppFileContents << "  C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
                           "  macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation ()
                        << " (inCompiler, inSourceString.stringValue (), \"\" COMMA_HERE)) ;\n"
                           "  if (scanner->sourceText () != NULL) {\n"
@@ -1126,24 +1102,24 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
                           "    if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {\n"
                           "      cGrammar_" << inTargetFileName.identifierRepresentation () << " grammar ;\n"
                           "      " ;
-        generatedZone3 << "grammar.nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
+        ioCppFileContents << "grammar.nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
                        << "_" << currentAltForNonTerminal.current_lkey (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
                        << " (" ;
         parametre.rewind () ;
         numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
-          generatedZone3 << "parameter_" << cStringWithSigned (numeroParametre) << ", " ;
+          ioCppFileContents << "parameter_" << cStringWithSigned (numeroParametre) << ", " ;
           parametre.gotoNextObject () ;
           numeroParametre ++ ;
         }
         if (inSyntaxDirectedTranslationVarName.length() > 0) {
-          generatedZone3 << inSyntaxDirectedTranslationVarName << ", " ;
+          ioCppFileContents << inSyntaxDirectedTranslationVarName << ", " ;
         }
-        generatedZone3 << "scanner) ;\n" ;
+        ioCppFileContents << "scanner) ;\n" ;
         if (inSyntaxDirectedTranslationVarName.length() > 0) {
-          generatedZone3 << "        scanner->appendLastSeparatorTo (" << inSyntaxDirectedTranslationVarName << ") ;\n" ;
+          ioCppFileContents << "        scanner->appendLastSeparatorTo (" << inSyntaxDirectedTranslationVarName << ") ;\n" ;
         }
-        generatedZone3 << "      }\n"
+        ioCppFileContents << "      }\n"
                           "  }\n"
                           "  macroDetachSharedObject (scanner) ;\n"
                           "}\n\n" ;
@@ -1157,21 +1133,21 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
   const int32_t terminalSymbolsCount = inVocabulary.getTerminalSymbolsCount () ;
   for (int32_t ts=terminalSymbolsCount ; ts<inVocabulary.getAllSymbolsCount () ; ts++) {
     if (inVocabulary.needToGenerateChoice (ts COMMA_HERE)) {
-      generatedZone3.appendCppTitleComment (C_String ("'") + inVocabulary.getSymbol (ts COMMA_HERE) +"' non terminal implementation") ;
-      generatedZone3 << "int32_t cGrammar_" << inTargetFileName.identifierRepresentation ()
+      ioCppFileContents.appendCppTitleComment (C_String ("'") + inVocabulary.getSymbol (ts COMMA_HERE) +"' non terminal implementation") ;
+      ioCppFileContents << "int32_t cGrammar_" << inTargetFileName.identifierRepresentation ()
               << "::" << inVocabulary.getSymbol (ts COMMA_HERE) << " ("
               << "C_Lexique_" << inLexiqueName.identifierRepresentation () << " * inLexique"
               << ") {\n" ;
-      generatedZone3 << "// Productions numbers :" ;
+      ioCppFileContents << "// Productions numbers :" ;
 
       const int32_t first = inProductionRules.tableauIndicePremiereProduction (ts - terminalSymbolsCount COMMA_HERE) ;
       MF_Assert (first >= 0, "first (%ld) < 0", first, 0) ;
       const int32_t last = inProductionRules.tableauIndiceDerniereProduction (ts - terminalSymbolsCount COMMA_HERE) ;
       MF_Assert (last >= first, "last (%ld) < first (%ld)", last, first) ;
       for (int32_t j=first ; j<=last ; j++) {
-        generatedZone3 << " " << cStringWithSigned (inProductionRules.tableauIndirectionProduction (j COMMA_HERE)) ;
+        ioCppFileContents << " " << cStringWithSigned (inProductionRules.tableauIndirectionProduction (j COMMA_HERE)) ;
       }
-      generatedZone3 << "\n"
+      ioCppFileContents << "\n"
                  "  return inLexique->nextProductionIndex () - "
               << cStringWithSigned ((int32_t)(first - 1))
               << " ;\n"
@@ -1179,19 +1155,7 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
     }
   }
 //--- End of C++ file
-  generatedZone3.appendCppHyphenLineComment () ;
-
-//--- Generate file
-  TC_UniqueArray <C_String> directoriesToExclude ;
-  directoriesToExclude.addObject ("DEPENDENCIES") ;
-  inCompiler->generateFileWithPatternFromPathes (inOutputDirectoryForCppFiles,
-                                    directoriesToExclude,
-                                    "//",
-                                    C_String (inCompileForGalgas3 ? "grammar-" : "") + inTargetFileName + ".cpp",
-                                    "\n\n", // User Zone 1
-                                    generatedZone2,
-                                    "\n\n", // User Zone 2
-                                    generatedZone3) ;
+  ioCppFileContents.appendCppHyphenLineComment () ;
 }
 
 //-----------------------------------------------------------------------------*
@@ -1237,9 +1201,7 @@ compute_LR0_automation (const cPureBNFproductionsList & inProductionRules,
 //-----------------------------------------------------------------------------*
 
 void
-SLR_computations (C_Compiler * inCompiler,
-                  const bool inCompileForGalgas3,
-                  const TC_UniqueArray <C_String> & inImplementationFileHeaderList,
+SLR_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderList,
                   const cPureBNFproductionsList & inProductionRules,
                   const cVocabulary & inVocabulary,
                   C_HTMLString & ioHTMLFileContents,
@@ -1247,7 +1209,7 @@ SLR_computations (C_Compiler * inCompiler,
                   const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                   const uint32_t inOriginalGrammarStartSymbol,
                   const C_String & inTargetFileName,
-                  const C_String & inOutputDirectoryForCppFiles,
+                  C_String & ioCppFileContents,
                   const C_String & inLexiqueName,
                   bool & outOk,
                   const bool inVerboseOptionOn,
@@ -1457,9 +1419,7 @@ SLR_computations (C_Compiler * inCompiler,
   }
 //--- Generate C++ file
   if (conflictCount == 0) {
-    generate_SLR_grammar_cpp_file (inCompiler,
-                                   inCompileForGalgas3,
-                                   inImplementationFileHeaderList,
+    generate_SLR_grammar_cpp_file (inImplementationFileHeaderList,
                                    inProductionRules,
                                    inVocabulary,
                                    SLRdecisionTable,
@@ -1468,7 +1428,7 @@ SLR_computations (C_Compiler * inCompiler,
                                    inOriginalGrammarStartSymbol,
                                    inLexiqueName,
                                    inTargetFileName,
-                                   inOutputDirectoryForCppFiles,
+                                   ioCppFileContents,
                                    inHasIndexing,
                                    inSyntaxDirectedTranslationVarName) ;
   }

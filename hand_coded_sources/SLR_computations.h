@@ -2,7 +2,7 @@
 //                                                                             *
 //     Routines for SLR (1) grammar computations                               *
 //                                                                             *
-//  Copyright (C) 2002, ..., 2007 Pierre Molinaro.                             *
+//  Copyright (C) 2002, ..., 2014 Pierre Molinaro.                             *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                      *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
 //  ECN, École Centrale de Nantes (France)                                     *
@@ -31,15 +31,12 @@ class cPureBNFproductionsList ;
 class cVocabulary ;
 class C_HTMLString ;
 class C_String ;
-class C_Compiler ;
 class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis ;
 
 //-----------------------------------------------------------------------------*
 
 void
-SLR_computations (C_Compiler * inCompiler,
-                  const bool inCompileForGalgas3,
-                  const TC_UniqueArray <C_String> & inImplementationFileHeaderList,
+SLR_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderList,
                   const cPureBNFproductionsList & inProductionRules,
                   const cVocabulary & inVocabulary,
                   C_HTMLString & ioHTMLFileContents,
@@ -47,7 +44,7 @@ SLR_computations (C_Compiler * inCompiler,
                   const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                   const uint32_t inOriginalGrammarStartSymbol,
                   const C_String & inTargetFileName,
-                  const C_String & inOutputDirectoryForCppFiles,
+                  C_String & ioCppFileContents,
                   const C_String & inLexiqueName,
                   bool & outOk,
                   const bool inVerboseOptionOn,

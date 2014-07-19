@@ -289,7 +289,6 @@ static const char k_default_style [] = {
 
 static void
 analyzeGrammar (C_Compiler * inCompiler,
-                const bool inCompileForGalgas3,
                 const C_String & inHTMLFileName,
                 const TC_UniqueArray <C_String> & inImplementationFileHeaderList,
                 const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
@@ -301,9 +300,9 @@ analyzeGrammar (C_Compiler * inCompiler,
                 const GALGAS_terminalSymbolsMapForGrammarAnalysis & inTerminalSymbolMap,
                 const GALGAS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList,
                 const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
-                const C_String & inOutputDirectoryForCppFiles,
                 const bool inHasIndexing,
                 const C_String & inSyntaxDirectedTranslationVarName,
+                C_String & ioCppFileContents,
                 C_HTMLString & outHTMLHelperFileContents) {
   bool warningFlag = false ;
 
@@ -529,9 +528,7 @@ analyzeGrammar (C_Compiler * inCompiler,
   if ((errorFlag == kNoError)
    && ((grammarClass == kDefaultBehavior) || (grammarClass == kLL1grammar))) {
     bool ok = false ;
-    LL1_computations (inCompiler,
-                      inCompileForGalgas3,
-                      inImplementationFileHeaderList,
+    LL1_computations (inImplementationFileHeaderList,
                       pureBNFproductions,
                       outHTMLHelperFileContents,
                       vocabulary,
@@ -541,7 +538,7 @@ analyzeGrammar (C_Compiler * inCompiler,
                       inNonTerminalSymbolSortedListForGrammarAnalysis,
                       inOriginalGrammarStartSymbol.uintValue (),
                       inTargetFileName.mAttribute_string.stringValue (),
-                      inOutputDirectoryForCppFiles,
+                      ioCppFileContents,
                       inLexiqueName,
                       ok,
                       verboseOptionOn,
@@ -556,9 +553,7 @@ analyzeGrammar (C_Compiler * inCompiler,
         ||
      ((errorFlag == kNoError) && (grammarClass == kSLRgrammar))) {
     bool ok = false ;
-    SLR_computations (inCompiler,
-                      inCompileForGalgas3,
-                      inImplementationFileHeaderList,
+    SLR_computations (inImplementationFileHeaderList,
                       pureBNFproductions,
                       vocabulary,
                       outHTMLHelperFileContents,
@@ -566,7 +561,7 @@ analyzeGrammar (C_Compiler * inCompiler,
                       inNonTerminalSymbolSortedListForGrammarAnalysis,
                       inOriginalGrammarStartSymbol.uintValue (),
                       inTargetFileName.mAttribute_string.stringValue (),
-                      inOutputDirectoryForCppFiles,
+                      ioCppFileContents,
                       inLexiqueName,
                       ok,
                       verboseOptionOn,
@@ -584,9 +579,7 @@ analyzeGrammar (C_Compiler * inCompiler,
         ||
      ((errorFlag == kNoError) && (grammarClass == kLR1grammar))) {
     bool ok = false ;
-    LR1_computations (inCompiler,
-                      inCompileForGalgas3,
-                      inImplementationFileHeaderList,
+    LR1_computations (inImplementationFileHeaderList,
                       pureBNFproductions,
                       vocabulary,
                       outHTMLHelperFileContents,
@@ -595,7 +588,7 @@ analyzeGrammar (C_Compiler * inCompiler,
                       inNonTerminalSymbolSortedListForGrammarAnalysis,
                       inOriginalGrammarStartSymbol.uintValue (),
                       inTargetFileName.mAttribute_string.stringValue (),
-                      inOutputDirectoryForCppFiles,
+                      ioCppFileContents,
                       inLexiqueName,
                       ok,
                       verboseOptionOn,
@@ -656,7 +649,6 @@ analyzeGrammar (C_Compiler * inCompiler,
 
 void
 routine_grammarAnalysisAndGeneration (const GALGAS_stringset inImplementationFileHeaderSet,
-                                      const GALGAS_bool inCompileForGalgas3,
                                       const GALGAS_lstring inTargetFileName,
                                       const GALGAS_lstring inGrammarClass,
                                       const GALGAS_uint inOriginalGrammarStartSymbol,
@@ -664,11 +656,11 @@ routine_grammarAnalysisAndGeneration (const GALGAS_stringset inImplementationFil
                                       const GALGAS_terminalSymbolsMapForGrammarAnalysis inTerminalSymbolMap,
                                       const GALGAS_syntaxComponentListForGrammarAnalysis inSyntaxComponentsList,
                                       const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis inUnusedNonTerminalSymbolsForGrammar,
-                                      const GALGAS_string inOutputDirectoryForCppFiles,
                                       const GALGAS_string inHTMLFileName,
                                       const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis inNonTerminalSymbolSortedListForGrammarAnalysis,
                                       const GALGAS_bool inHasIndexing,
                                       const GALGAS_string inSyntaxDirectedTranslationVarName,
+                                      GALGAS_string & outCppFileContents,
                                       GALGAS_string & outHTMLHelperFileContents,
                                       C_Compiler * inCompiler
                                       COMMA_UNUSED_LOCATION_ARGS) {
@@ -697,9 +689,9 @@ routine_grammarAnalysisAndGeneration (const GALGAS_stringset inImplementationFil
       HTMLHelperFileContents.disableRegistering ()  ;
     }
     
-    const bool compileForGalgas3 = inCompileForGalgas3.boolValue () ;
+    C_String CppFileContents ;
+    
     analyzeGrammar (inCompiler,
-                    compileForGalgas3,
                     inHTMLFileName.stringValue (),
                     implementationFileHeaderList,
                     inUnusedNonTerminalSymbolsForGrammar,
@@ -711,11 +703,12 @@ routine_grammarAnalysisAndGeneration (const GALGAS_stringset inImplementationFil
                     inTerminalSymbolMap,
                     inSyntaxComponentsList,
                     inNonTerminalSymbolSortedListForGrammarAnalysis,
-                    inOutputDirectoryForCppFiles.stringValue (),
                     inHasIndexing.boolValue (),
                     inSyntaxDirectedTranslationVarName.stringValue (),
+                    CppFileContents,
                     HTMLHelperFileContents) ;
     outHTMLHelperFileContents = GALGAS_string (HTMLHelperFileContents) ;
+    outCppFileContents = GALGAS_string (CppFileContents) ;
   }
 }
 
