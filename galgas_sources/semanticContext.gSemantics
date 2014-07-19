@@ -2203,7 +2203,7 @@ override method @listDeclarationAST enterInSemanticContext
     ![@classMethodMap emptyMap]
     !enumerationDescriptor
     !enumerationVariants
-    !binaryConcatOperator [] | doNotGenererateObjectCompare [] | dotEqualOperator [] | plusEgalOperator [] | binaryAddOperator []
+    !binaryConcatOperator [] | doNotGenererateObjectCompare [] | plusEqualOperatorWithExpression [] | plusEqualOperatorWithFieldList [] | binaryAddOperator []
     !constructorAttributeTypeList
     ![@stringset emptySet]
     ![@lstringlist emptyList]
@@ -2331,7 +2331,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     ![@classMethodMap emptyMap]
     !enumerationDescriptor
     !enumerationVariants
-    !binaryConcatOperator [] | doNotGenererateObjectCompare [] | dotEqualOperator []
+    !binaryConcatOperator [] | doNotGenererateObjectCompare [] | plusEqualOperatorWithExpression []
     !constructorAttributeTypeList
     ![@stringset emptySet]
     ![@lstringlist emptyList]

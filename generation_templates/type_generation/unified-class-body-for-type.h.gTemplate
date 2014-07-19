@@ -45,14 +45,14 @@ if (SUPPORTED_OPERATORS & binaryShiftOperator []) != 0 then
   !^%COMMA_LOCATION_ARGS) const ;\n\n%
 end
 
-if (SUPPORTED_OPERATORS & dotEqualOperator []) != 0 then
-  %//--------------------------------- .= operator\n%
+if (SUPPORTED_OPERATORS & plusEqualOperatorWithExpression []) != 0 then
+  %//--------------------------------- += operator (with expression)\n%
   %  public : VIRTUAL_IN_DEBUG void dotAssign_operation (const GALGAS_%!TYPE_IDENTIFIER% inOperand\n%
   %                                                      COMMA_LOCATION_ARGS) ;\n\n%
 end
 
 if [ADD_ASSIGN_ARGUMENT_LIST length] > 0 then
-%//--------------------------------- += operator
+%//--------------------------------- += operator (with list of field expressions)
   public : VIRTUAL_IN_DEBUG void addAssign_operation (%?^
   foreach ADD_ASSIGN_ARGUMENT_LIST
   do index IDX %const GALGAS_%![mType identifierRepresentation]% & inOperand%![IDX string]
