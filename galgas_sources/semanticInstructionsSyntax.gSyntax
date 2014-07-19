@@ -338,7 +338,8 @@ rule <semantic_instruction>
   $var$ ;
   $type_name$ ?@lstring typeName ;
   $identifier$ ?@lstring variableName ;
-  $:=$ ;
+  $:=$ :> ??@string sep ?*;
+  send sep . "=" ;
   @semanticExpressionAST sourceExpression ;
   <expression> ? sourceExpression ;
   outInstruction := [@localVariableOrConstantDeclarationWithAssignmentAST new
@@ -359,7 +360,8 @@ rule <semantic_instruction>
 :
   $var$ ;
   $identifier$ ?@lstring variableName ;
-  $:=$ ;
+  $:=$ :> ??@string sep ?*;
+  send sep . "=" ;
   @semanticExpressionAST sourceExpression ;
   <expression> ? sourceExpression ;
   outInstruction := [@localVariableDeclarationWithAssignmentAST new
@@ -378,7 +380,8 @@ rule <semantic_instruction>
 :
   $type_name$ ?@lstring typeName ;
   $identifier$ ?@lstring variableName ;
-  $:=$ ;
+  $:=$ :> ??@string sep ?*;
+  send sep . "=" ;
   @semanticExpressionAST sourceExpression ;
   <expression> ? sourceExpression ;
   outInstruction := [@localVariableOrConstantDeclarationWithAssignmentAST new
@@ -400,7 +403,7 @@ rule <semantic_instruction>
   $type_name$ ?@lstring typeName :> ?@string sep ?@string tp ;
   send sep. "var" ;
   $identifier$ ?@lstring variableName ;
-  send " :=" ;
+  send " =" ;
   $[$ ;
   send tp . " " ;
   $default$ ;
@@ -423,7 +426,7 @@ rule <semantic_instruction>
   $type_name$ ?@lstring typeName :> ?@string sep ?@string tp ;
   send sep. "var" ;
   $identifier$ ?@lstring variableName ;
-  send " :=" ;
+  send " =" ;
   $[$ ;
   send tp . " " ;
   $identifier$ ?@lstring constructorName ;
@@ -458,7 +461,8 @@ rule <semantic_instruction>
   send sep . "let" ;
   $type_name$ ?@lstring typeName ;
   $identifier$ ?@lstring variableName ;
-  $:=$ ;
+  $:=$ :> ?sep ?*;
+  send sep . "=" ;
   @semanticExpressionAST sourceExpression ;
   <expression> ? sourceExpression ;
   outInstruction := [@localVariableOrConstantDeclarationWithAssignmentAST new
@@ -481,7 +485,7 @@ rule <semantic_instruction>
   send sep . "let" ;
   $type_name$ ?@lstring typeName :> ?* ?@string tp ;
   $identifier$ ?@lstring variableName ;
-  send " :=" ;
+  send " =" ;
   $[$ ;
   send tp . " " ;
   @lstring constructorName ;
@@ -510,7 +514,7 @@ rule <semantic_instruction>
   send sep . "let" ;
   $type_name$ ?@lstring typeName :> ?* ?@string tp ;
   $identifier$ ?@lstring variableName ;
-  send " :=" ;
+  send " =" ;
   $[$ ;
   send tp . " " ;
   $default$ ;
@@ -538,7 +542,8 @@ rule <semantic_instruction>
   $const$ :> ?@string sep ?* ;
   send sep . "let" ;
   $identifier$ ?@lstring variableName ;
-  $:=$ ;
+  $:=$ :> ?sep ?*;
+  send sep . "=" ;
   @semanticExpressionAST sourceExpression ;
   <expression> ? sourceExpression ;
   outInstruction := [@localConstantDeclarationWithAssignmentAST new
@@ -572,7 +577,8 @@ rule <semantic_instruction>
     $identifier$ ? @lstring attributeName ;
     mStructAttributeList += !attributeName ;
   end repeat ;
-  $:=$ ;
+  $:=$ :> ??@string sep ?*;
+  send sep . "=" ;
   @semanticExpressionAST mSourceExpression ;
   <expression> ? mSourceExpression ;
   $;$ :> ?* ?* ;
@@ -600,7 +606,8 @@ rule <semantic_instruction>
 :
   $self$ ;
   const instructionLocation := here ;
-  $:=$ ;
+  $:=$ :> ??@string sep ?*;
+  send sep . "=" ;
   @semanticExpressionAST mSourceExpression ;
   <expression> ? mSourceExpression ;
   $;$ :> ?* ?* ;

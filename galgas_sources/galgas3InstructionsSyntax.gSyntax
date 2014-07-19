@@ -230,7 +230,7 @@ rule <semantic_instruction>
   $var$ ;
   $type_name$ ?@lstring typeName ;
   $identifier$ ?@lstring variableName ;
-  $:=$ ;
+  $=$ ;
   <expression> ??@semanticExpressionAST sourceExpression ;
   outInstruction := [@localVariableOrConstantDeclarationWithAssignmentAST new
     ![typeName location]
@@ -249,7 +249,7 @@ rule <semantic_instruction>
 :
   $var$ ;
   $identifier$ ?@lstring variableName ;
-  $:=$ ;
+  $=$ ;
   @semanticExpressionAST sourceExpression ;
   <expression> ? sourceExpression ;
   outInstruction := [@localVariableDeclarationWithAssignmentAST new
@@ -267,7 +267,7 @@ rule <semantic_instruction>
 :
   $type_name$ ?@lstring typeName ;
   $identifier$ ?@lstring variableName ;
-  $:=$ ;
+  $=$ ;
   @semanticExpressionAST sourceExpression ;
   <expression> ? sourceExpression ;
   outInstruction := [@localVariableOrConstantDeclarationWithAssignmentAST new
@@ -296,7 +296,7 @@ rule <semantic_instruction>
   $let$ ;
   $type_name$ ?@lstring typeName ;
   $identifier$ ?@lstring variableName ;
-  $:=$ ;
+  $=$ ;
   <expression> ??@semanticExpressionAST sourceExpression ;
   outInstruction := [@localVariableOrConstantDeclarationWithAssignmentAST new
     ![typeName location]
@@ -320,7 +320,7 @@ rule <semantic_instruction>
 :
   $let$ ;
   $identifier$ ?@lstring variableName ;
-  $:=$ ;
+  $=$ ;
   <expression> ??@semanticExpressionAST sourceExpression ;
   outInstruction := [@localConstantDeclarationWithAssignmentAST new
     ![variableName location]
@@ -351,7 +351,7 @@ rule <semantic_instruction>
     $identifier$ ? @lstring attributeName ;
     mStructAttributeList += !attributeName ;
   end repeat ;
-  $:=$ ;
+  $=$ ;
   <expression> ??@semanticExpressionAST mSourceExpression ;
   outInstruction := [@assignmentInstructionAST new
     ![mTargetVariableName location]
@@ -377,7 +377,7 @@ rule <semantic_instruction>
 :
   $self$ ;
   const instructionLocation := here ;
-  $:=$ ;
+  $=$ ;
   <expression> ??@semanticExpressionAST mSourceExpression ;
   outInstruction := [@selfAssignmentInstructionAST new
     !instructionLocation
