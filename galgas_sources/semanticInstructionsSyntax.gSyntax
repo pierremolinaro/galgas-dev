@@ -64,14 +64,15 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <local_declaration> :
-  select
-  or
-    $local$ :> ?@string sep ?* ;
-    send sep ;
-    warning here: "'local' qualifier is deprecated and ignored" ;
-  end select ;
-end rule ;
+#rule <local_declaration> !@bool outLocal :
+#  select
+#    outLocal := false ;
+#  or
+#    $local$ :> ?@string sep ?* ;
+#    send sep . "%local" ;
+#    outLocal := true ;
+#  end select ;
+#end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -82,6 +83,7 @@ end rule ;
 rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
+#  <local_declaration> ??@bool isLocal ;
   $extern$ ;
   $routine$ :> ??@string sep ?* ;
   send sep . "proc" ;
@@ -91,6 +93,7 @@ rule <semantic_declaration>
   $;$ :> ?* ?* ;
   ioSemanticDeclarations += ![@externRoutineDeclarationAST new
     !false # Is not predefined
+    !false #isLocal
     !mActionName
     !mFormalParameterList
   ] ;
@@ -109,7 +112,7 @@ end rule ;
 rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
-  <local_declaration> ;
+#  <local_declaration> ??@bool isLocal ;
   $routine$ :> ?@string sep ?* ;
   send sep . "proc" ;
   $identifier$ ? @lstring mRoutineName indexing routineDefinition ;
@@ -126,6 +129,7 @@ rule <semantic_declaration>
   $;$ :> ?* ?* ;
   ioSemanticDeclarations += ![@routineDeclarationAST new
     !false # Is not predefined
+    !false #isLocal
     !mRoutineName
     !mFormalParameterList
     !mRoutineInstructionList
@@ -138,7 +142,7 @@ end rule ;
 rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
-  <local_declaration> ;
+#  <local_declaration> ??@bool isLocal ;
   $routine$ :> ??@string sep ?* ;
   send sep . "proc" ;
   $identifier$ ? @lstring mRoutineName indexing routineDefinition ;
@@ -151,6 +155,7 @@ rule <semantic_declaration>
   $}$ ;
   ioSemanticDeclarations += ![@routineDeclarationAST new
     !false # Is not predefined
+    !false #isLocal
     !mRoutineName
     !mFormalParameterList
     !mRoutineInstructionList
@@ -171,7 +176,7 @@ end rule ;
 rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
-  <local_declaration> ;
+#  <local_declaration> ??@bool isLocal ;
   $function$ :> ?@string sep ?* ;
   send sep . "func" ;
   $identifier$ ? @lstring mRoutineName indexing functionDefinition ;
@@ -203,7 +208,7 @@ end rule ;
 rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
-  <local_declaration> ;
+#  <local_declaration> ??@bool isLocal ;
   $function$ :> ??@string sep ?* ;
   send sep . "func" ;
   $identifier$ ? @lstring mRoutineName indexing functionDefinition ;
@@ -239,7 +244,7 @@ end rule ;
 rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
-  <local_declaration> ;
+#  <local_declaration> ??@bool isLocal ;
   $once$ :>?@string sep ?* ;
   send sep . "func %once" ;
   $identifier$ ? @lstring mRoutineName indexing functionDefinition ;

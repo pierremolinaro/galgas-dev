@@ -47,11 +47,26 @@ rule <semantic_instruction_list> !@semanticInstructionListAST outInstructionsLis
     @localVariableDeclarationListAST localVariableDeclarationList [emptyList] ;
     <semantic_instruction> ??@semanticInstructionAST instruction !?localVariableDeclarationList ;
     foreach localVariableDeclarationList do
-      outInstructionsList += ![@localVariableDeclarationAST new ![mTypeName location] !mTypeName !mVariableName !mIsUndefinedConstant] ;
+      outInstructionsList += ![@localVariableDeclarationAST new !mTypeName->location !mTypeName !mVariableName !mIsUndefinedConstant] ;
     end foreach ;
     outInstructionsList += !instruction ;
   end repeat ;
 end rule ;
+
+#---------------------------------------------------------------------------*
+
+#rule <declaration>
+# ?!@galgas3DeclarationAST ioDeclarations
+#:
+#  @bool isLocal ;
+#  select
+#    isLocal := false ;
+#  or
+#    $local$ ;
+#    isLocal := true ;
+#  end select ;
+#  <declaration_with_local> !isLocal !?ioDeclarations ;
+#end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -60,14 +75,16 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <declaration>
- ?!@galgas3DeclarationAST ioDeclarations
+  ?!@galgas3DeclarationAST ioDeclarations
 :
   $extern$ ;
+#  <local_declaration> ??@bool isLocal ;
   $proc$ ;
   $identifier$ ??@lstring mActionName indexing routineDefinition ;
   <formal_parameter_list> ??@formalParameterListAST mFormalParameterList ;
   ioDeclarations->mSemanticDeclarationList += ![@externRoutineDeclarationAST new
     !false # Is not predefined
+    !false # inIsLocal
     !mActionName
     !mFormalParameterList
   ] ;
@@ -84,7 +101,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <declaration>
- ?!@galgas3DeclarationAST ioDeclarations
+  ?!@galgas3DeclarationAST ioDeclarations
 :
   $proc$ ;
   $identifier$ ? @lstring mRoutineName indexing routineDefinition ;
@@ -95,6 +112,7 @@ rule <declaration>
   const endOfInstructionList := here ;
   ioDeclarations->mSemanticDeclarationList += ![@routineDeclarationAST new
     !false # Is not predefined
+    !false # inIsLocal
     !mRoutineName
     !mFormalParameterList
     !mRoutineInstructionList
@@ -115,6 +133,7 @@ end rule ;
 rule <declaration>
  ?!@galgas3DeclarationAST ioDeclarations
 :
+#  <local_declaration> ??@bool isLocal ;
   $func$ ;
   var isOnce := false ;
   select
@@ -174,6 +193,7 @@ rule <declaration>
  ?!@galgas3DeclarationAST ioDeclarations
 :
   $extern$ ;
+#  <local_declaration> ??@bool isLocal ;
   $func$ ;
   $identifier$ ? @lstring mActionName indexing functionDefinition ;
   @formalInputParameterListAST formalInputParameterList ;

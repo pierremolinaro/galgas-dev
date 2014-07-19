@@ -445,6 +445,7 @@ list @semanticDeclarationListAST {
 #---------------------------------------------------------------------------*
 
 class @externRoutineDeclarationAST extends @semanticDeclarationAST {
+  @bool mIsLocal ;
   @lstring mRoutineName ;
   @formalParameterListAST mFormalArgumentList ;
 }

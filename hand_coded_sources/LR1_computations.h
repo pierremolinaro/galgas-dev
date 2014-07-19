@@ -31,14 +31,11 @@ class cPureBNFproductionsList ;
 class cVocabulary ;
 class C_HTMLString ;
 class C_String ;
-class C_Compiler ;
 class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis ;
 
 //-----------------------------------------------------------------------------*
 
-void LR1_computations (C_Compiler * inCompiler,
-                       const bool inCompileForGalgas3,
-                       const TC_UniqueArray <C_String> & inImplementationFileHeaderList,
+void LR1_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderList,
                        const cPureBNFproductionsList & inProductionRules,
                        const cVocabulary & inVocabulary,
                        C_HTMLString & ioHTMLFileContents,
@@ -47,7 +44,7 @@ void LR1_computations (C_Compiler * inCompiler,
                        const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                        const uint32_t inOriginalGrammarStartSymbol,
                        const C_String & inTargetFileName,
-                       const C_String & inOutputDirectoryForCppFiles,
+                       C_String & ioCppFileContents,
                        const C_String & inLexiqueName,
                        bool & outOk,
                        const bool inVerboseOptionOn,

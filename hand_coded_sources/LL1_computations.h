@@ -40,9 +40,7 @@ class C_Relation ;
 //-----------------------------------------------------------------------------*
 
 void
-LL1_computations (C_Compiler * inCompiler,
-                  const bool inCompileForGalgas3,
-                  const TC_UniqueArray <C_String> & inImplementationFileHeaderList,
+LL1_computations (const TC_UniqueArray <C_String> & inImplementationFileHeaderList,
                   const cPureBNFproductionsList & inPureBNFproductions,
                   C_HTMLString & ioHTMLFileContents,
                   const cVocabulary & inVocabulary,
@@ -52,7 +50,7 @@ LL1_computations (C_Compiler * inCompiler,
                   const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                   const uint32_t inOriginalGrammarStartSymbol,
                   const C_String & inTargetFileName,
-                  const C_String & inOutputDirectoryForCppFiles,
+                  C_String & ioCppFileContents,
                   const C_String & inLexiqueName,
                   bool & outOk,
                   const bool inVerboseOptionOn,
