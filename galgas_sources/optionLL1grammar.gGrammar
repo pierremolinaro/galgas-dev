@@ -22,5 +22,5 @@ indexing grammar optionLL1grammar "LL1" feature translate :
 
   root <option_component_start_symbol>
     !@optionComponentAST outOptionComponentRoot
-  ; # LL1
+  ;
 end grammar ;

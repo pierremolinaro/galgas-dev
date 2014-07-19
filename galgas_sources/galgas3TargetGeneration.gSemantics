@@ -253,9 +253,6 @@ routine updateGalgas3Targets
 #---
   @stringset sourceFileSet [emptySet] ;
 #--- Parse features
-  if [option .verbose_output value] then
-    message "*** Updating targets\n" ;
-  end if ;
   @stringset availableGenerationFeatures [emptySet] ;
   availableGenerationFeatures += !"makefile-macosx" ;
   availableGenerationFeatures += !"makefile-unix" ;

@@ -702,14 +702,25 @@ end routine ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+list @grammarComponentGenerationList {
+  @string mGrammarName ;
+  @string mHeaderContents ;
+  @string mCppFileContents ;
+  @string mHTMLFileContents ;
+}
+
+#---------------------------------------------------------------------------*
+
 routine compileGrammarComponentGalgas3
   ??@string inOutputDirectory
   ??@galgas3GrammarComponentListAST.element inGrammarComponentRoot
   ??@parsedSyntaxComponentMap inParsedSyntaxComponentMap
   ??@semanticContext inSemanticContext
-  ?!@stringlist ioToolProductFileList
-  ?!@stringset ioAllProductFileSet
+  ?!@grammarComponentGenerationList ioGrammarGenerationList
 :
+  if [option .verbose_output value] then
+    message "*** Analyzing '" + inGrammarComponentRoot->mGrammarComponentName + "' grammar\n" ;
+  end if ;
 #---------------------------------------------------------- Parse syntax components
   @terminalSymbolsMapForGrammarAnalysis actuallyUsedTerminalSymbolMap [emptyMap] ;
   @nonTerminalSymbolMapForGrammarAnalysis nonTerminalMapForGrammarAnalysis [emptyMap] ;
@@ -749,7 +760,7 @@ routine compileGrammarComponentGalgas3
   #--- Handle syntax rules
     buildRuleList
       !nonTerminalMapForGrammarAnalysis
-      ![syntaxComponentRoot mSyntaxComponentName]
+      !syntaxComponentRoot->mSyntaxComponentName
       ![syntaxComponentRoot mRuleList]
       !?actuallyUsedTerminalSymbolMap
       !?syntaxComponentListForGrammarAnalysis
@@ -838,51 +849,77 @@ routine compileGrammarComponentGalgas3
     ??@string grammarCppFile
     ??@string grammarHTMLHelperContents
   ;
-#---------------------------------------------------------- Generate HTML grammer helper file
-#  if [@uint errorCount] == 0 then
-    if [option galgas_cli_options.outputHTMLgrammarFile value] then
-      [grammarHTMLHelperContents writeToFileWhenDifferentContents !HTMLFilePath ?*] ;
-    else
-      [@string deleteFileIfExists !HTMLFilePath] ;
-    end if ;
-#  end if ;
-#---------------------------------------------------------- Generate Implementation file
+#---------------------------------------------------------- Build header contents
+  var headerContents := "" ;
   if [@uint errorCount] == 0 then
-    ioToolProductFileList += !"grammar-" + inGrammarComponentRoot->mGrammarComponentName->string + ".cpp" ;
-    ioAllProductFileSet += !"grammar-" + inGrammarComponentRoot->mGrammarComponentName->string + ".cpp" ;
-    [@string generateFileWithPattern
-      !inOutputDirectory
-      !"grammar-" + inGrammarComponentRoot->mGrammarComponentName->string . ".cpp"
-      !"//"
-      !"\n\n" # Defaut user zone1
-      !grammarCppFile
-      !"\n\n" # Defaut user zone2
-      !"\n"
-    ] ;
-  end if ;
-#---------------------------------------------------------- Generate header
-  if [@uint errorCount] == 0 then
-    const zone2 := [filewrapper grammarGenerationTemplate.grammarZone2HeaderGalgas3
+    headerContents := [filewrapper grammarGenerationTemplate.grammarZone2HeaderGalgas3
       !inGrammarComponentRoot
     ] ;
-    const zone3 := [filewrapper grammarGenerationTemplate.grammarZone3HeaderGalgas3
+    headerContents += [filewrapper grammarGenerationTemplate.grammarZone3HeaderGalgas3
       ![lexiqueComponentName identifierRepresentation]
       !inGrammarComponentRoot
       !nonTerminalMapForGrammarAnalysis
       !nonTerminalToAddList
       !hasIndexing
     ] ;
-    ioAllProductFileSet += !"grammar-" + inGrammarComponentRoot->mGrammarComponentName->string + ".h" ;
-    [@string generateFileWithPattern
-      !inOutputDirectory
-      !"grammar-" . inGrammarComponentRoot->mGrammarComponentName->string . ".h"
-      !"//"
-      !"\n\n" # Defaut user zone1
-      !zone2
-      !"\n\n" # Defaut user zone2
-      !zone3
-    ] ;
   end if ;
+#---------------------------------------------------------- Add to generation list
+  ioGrammarGenerationList +=
+    !inGrammarComponentRoot->mGrammarComponentName->string
+    !headerContents
+    !grammarCppFile
+    !grammarHTMLHelperContents
+  ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#      G E N E R A T E    G R A M M A R    C O M P O N E N T S              *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine generateGrammarComponentGalgas3
+  ??@string inOutputDirectory
+  ??@grammarComponentGenerationList inGrammarGenerationList
+  ?!@stringlist ioToolProductFileList
+  ?!@stringset ioAllProductFileSet
+:
+  for () in inGrammarGenerationList do
+  #---------------------------------------------------------- Generate HTML grammer helper file
+    const HTMLFilePath := inOutputDirectory + "/../helpers/" + mGrammarName . ".html" ;
+    if [option galgas_cli_options.outputHTMLgrammarFile value] then
+      [mHTMLFileContents writeToFileWhenDifferentContents !HTMLFilePath ?*] ;
+    else
+      [@string deleteFileIfExists !HTMLFilePath] ;
+    end if ;
+  #---------------------------------------------------------- Generate Implementation file
+    if [@uint errorCount] == 0 then
+      ioToolProductFileList += !"grammar-" + mGrammarName + ".cpp" ;
+      ioAllProductFileSet += !"grammar-" + mGrammarName + ".cpp" ;
+      [@string generateFileWithPattern
+        !inOutputDirectory
+        !"grammar-" + mGrammarName . ".cpp"
+        !"//"
+        !"\n\n" # Defaut user zone1
+        !mCppFileContents
+        !"\n\n" # Defaut user zone2
+        !"\n"
+      ] ;
+    end if ;
+  #---------------------------------------------------------- Generate header
+    if [@uint errorCount] == 0 then
+      ioAllProductFileSet += !"grammar-" + mGrammarName + ".h" ;
+      [@string generateFileWithPattern
+        !inOutputDirectory
+        !"grammar-" . mGrammarName . ".h"
+        !"//"
+        !"\n\n" # Defaut user zone1
+        !mHeaderContents
+        !"\n\n" # Defaut user zone2
+        !"\n"
+      ] ;
+    end if ;
+  end for ;
 end routine ;
 
 #---------------------------------------------------------------------------*
