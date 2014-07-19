@@ -1,0 +1,45 @@
+
+
+extern proc testsuite_hand_coded
+
+list @myList {
+  @string mValue %setter
+}
+
+proc testsuite_list {
+  var strList = [@myList emptyList]
+  strList += !"a"
+  strList += !"b"
+  strList += !"c"
+  strList += !"d"
+  message "*************************************** begin of list direct access\n"
+  @string s = [strList mValueAtIndex !0]
+  log s
+  s = [strList mValueAtIndex !1]
+  log s
+  s = [strList mValueAtIndex !2]
+  log s
+  s = [strList mValueAtIndex !3]
+  log s
+  [!?strList setMValueAtIndex !"z" !3]
+  log strList
+  message "--- test .= operator on list\n"
+  strList += strList
+  log s
+  message "*************************************** begin of list compare\n"
+  var aList = [@myList listWithValue !"az"]
+  var bList = [@myList listWithValue !"az"]
+  let @bool comp = aList == bList
+  log comp
+  message "*************************************** begin of collection value\n"
+  var s1 = [@stringlist listWithValue !"a"]
+  s1 += !"b"
+  var s2 = [@stringlist listWithValue !"c"]
+  s2 += !"d"
+  s2 += [@stringlist listWithValue !"e"]
+  let str = @stringlist {s1, s2}
+  log str
+  let str2 = @stringlist {!"a", !"b", !"c", !"d", !"e"}
+  log str2
+}
+

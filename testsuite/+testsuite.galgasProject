@@ -1,0 +1,33 @@
+project (1:0:0) -> "testsuite" {
+  %makefile-macosx
+  %makefile-mingw-on-macosx
+  %SnowLeopard
+  %applicationBundleBase : "fr.what"
+  "galgas-sources/testsuite_lexique.galgas"
+  "galgas-sources/testsuite_syntax.galgas"
+  "galgas-sources/testsuite_grammar.galgas"
+  "galgas-sources/testsuite_foreach_instruction.galgas"
+  "galgas-sources/testsuite_for_instruction.galgas"
+  "galgas-sources/testsuite_sortedlist.galgas"
+  "galgas-sources/testsuite_list.galgas"
+  "galgas-sources/testsuite_struct.galgas"
+  "galgas-sources/testsuite_listmap.galgas"
+  "galgas-sources/testsuite_map.galgas"
+  "galgas-sources/testsuite_functions.galgas"
+  "galgas-sources/testsuite_introspection.galgas"
+  "galgas-sources/testsuite_mapproxy.galgas"
+  "galgas-sources/testsuite_category_readers.galgas"
+  "galgas-sources/testsuite_category_methods.galgas"
+  "galgas-sources/testsuite_category_modifiers.galgas"
+  "galgas-sources/testsuite_type_categories.galgas"
+  "galgas-sources/testsuite_strings.galgas"
+  "galgas-sources/testsuite_range.galgas"
+  "galgas-sources/testsuite_array.galgas"
+
+  "galgas-sources/testsuite_extern_type.galgas"
+  %tool-source : "hand_coded_sources/extern_type_implementation.cpp"
+
+  "galgas-sources/testsuite_program.galgas"
+
+  %tool-source : "hand_coded_sources/testsuite_hand_coded.cpp"
+}

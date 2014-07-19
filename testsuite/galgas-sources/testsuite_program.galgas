@@ -1,0 +1,34 @@
+
+
+#--- Prologue routine
+before {
+  testsuite_hand_coded ( )
+  testsuite_foreach_instruction ( )
+  testsuite_for_instruction ( )
+  testsuite_list ( )
+  testsuite_sortedlist ( )
+  testsuite_struct ( )
+  testsuite_listmap ( )
+  testsuite_map ( )
+  testsuite_functions ( )
+  testsuite_introspection ( )
+  testsuite_mapproxy ( )
+  testsuite_category_readers ( )
+  testsuite_category_modifiers ( )
+  testsuite_type_categories ( )
+  testsuite_strings ( )
+  testsuite_range ( )
+  testsuite_array ( )
+  testsuite_extern_type ( )
+}
+
+#--- 'when' clauses
+when . "testsuite"
+message "a source text file with the .testsuite extension"
+??@lstring inSourceFile {
+  grammar testsuite_grammar in inSourceFile
+}
+
+#--- Epilogue routine
+after {
+}

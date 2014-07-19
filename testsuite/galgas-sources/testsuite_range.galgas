@@ -1,0 +1,17 @@
+
+
+proc testsuite_range {
+  message "*************************************** begin of range test\n"
+  @string s = "Range [4, 3] enumeration:"
+  for i in [@range new !4 ! 3] do
+    s+= " " + i
+  end
+  log s
+  s = "Range [4, 3] reverse enumeration:"
+  for > i in [@range new !4 ! 3] do
+    s+= " " + i
+  end
+  log s
+}
+
+

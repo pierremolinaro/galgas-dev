@@ -1,0 +1,89 @@
+
+
+map @aMap {
+  @uint value %setter
+  insert insertKey error message "the '%K' key is already inserted"
+  search searchKey error message "the '%K' key is not inserted"
+  remove removeKey error message "the '%K' key is not inserted"
+}
+
+proc testsuite_map {
+  message "*************************************** begin of map\n"
+  var m = [@aMap emptyMap]
+  [!?m insertKey ![@lstring new !"g" !here] !37]
+  log m
+  [!?m setValueForKey !56 !"g"]
+  log m
+  var mm = [@aMap mapWithMapToOverride !m]
+  log mm
+  @uint v
+  [mm searchKey ![@lstring new !"g" !here] ?v]
+  log v # Displays 56
+  [!?mm insertKey ![@lstring new !"g" !here] !11]
+  log mm
+  [mm searchKey ![@lstring new !"g" !here] ?v]
+  log v # Displays 11
+  m = [mm overriddenMap]
+  log m
+  @location loc = [m locationForKey !"g"]
+  log loc
+#---
+  var otherMap = [@aMap emptyMap]
+  [!?otherMap insertKey !["A" nowhere] !1]
+  [!?otherMap insertKey !["B" nowhere] !2]
+  [!?otherMap insertKey !["C" nowhere] !3]
+  [!?otherMap insertKey !["D" nowhere] !4]
+  [!?otherMap insertKey !["E" nowhere] !5]
+  [!?otherMap insertKey !["F" nowhere] !6]
+  [!?otherMap insertKey !["G" nowhere] !7]
+  [!?otherMap insertKey !["H" nowhere] !8]
+  [!?otherMap insertKey !["I" nowhere] !9]
+  [!?otherMap insertKey !["K" nowhere] !10]
+  [!?otherMap insertKey !["L" nowhere] !11]
+  [!?otherMap insertKey !["M" nowhere] !12]
+  [!?otherMap insertKey !["N" nowhere] !13]
+  [!?otherMap insertKey !["O" nowhere] !14]
+  [!?otherMap insertKey !["P" nowhere] !15]
+  [!?otherMap insertKey !["R" nowhere] !16]
+  [!?otherMap insertKey !["S" nowhere] !17]
+  [!?otherMap insertKey !["T" nowhere] !18]
+  [!?otherMap insertKey !["U" nowhere] !19]
+  [!?otherMap insertKey !["V" nowhere] !20]
+  [!?otherMap insertKey !["W" nowhere] !21]
+  [!?otherMap insertKey !["X" nowhere] !22]
+  [!?otherMap insertKey !["Y" nowhere] !23]
+  [!?otherMap insertKey !["Z" nowhere] !24]
+  [!?otherMap insertKey !["a" nowhere] !25]
+  [!?otherMap insertKey !["b" nowhere] !26]
+  [!?otherMap insertKey !["c" nowhere] !27]
+  [!?otherMap insertKey !["d" nowhere] !28]
+  [!?otherMap insertKey !["e" nowhere] !29]
+  [!?otherMap insertKey !["f" nowhere] !30]
+  [!?otherMap insertKey !["g" nowhere] !31]
+  [!?otherMap insertKey !["h" nowhere] !32]
+  [!?otherMap insertKey !["i" nowhere] !33]
+  [!?otherMap insertKey !["j" nowhere] !34]
+  [!?otherMap insertKey !["k" nowhere] !35]
+  [!?otherMap insertKey !["l" nowhere] !36]
+  [!?otherMap insertKey !["m" nowhere] !37]
+  [!?otherMap insertKey !["n" nowhere] !38]
+  [!?otherMap insertKey !["o" nowhere] !39]
+  [!?otherMap insertKey !["p" nowhere] !40]
+  [!?otherMap insertKey !["q" nowhere] !41]
+  [!?otherMap insertKey !["r" nowhere] !42]
+  [!?otherMap insertKey !["s" nowhere] !43]
+  [!?otherMap insertKey !["t" nowhere] !44]
+  [!?otherMap insertKey !["u" nowhere] !45]
+  [!?otherMap insertKey !["v" nowhere] !46]
+  [!?otherMap insertKey !["w" nowhere] !47]
+  [!?otherMap insertKey !["x" nowhere] !48]
+  [!?otherMap insertKey !["y" nowhere] !49]
+  [!?otherMap insertKey !["z" nowhere] !50]
+  for e in otherMap do
+    message "  key '" + e.lkey + "', value: " + e.value + "\n"
+  end
+  for key in [otherMap keyList] do
+    [!?otherMap removeKey !key.mValue ?*]
+  end
+}
+

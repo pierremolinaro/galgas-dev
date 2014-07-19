@@ -1,6 +1,0 @@
-grammar testsuite_grammar "LL1":
-with "testsuite_syntax.gSyntax" ;
-
-root <start_symbol> ;
-
-end grammar ;

@@ -2891,7 +2891,7 @@ override method @arrayDeclarationAST enterInSemanticContext
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
     !"" # No default constructor
     !"array-" . mArrayTypeName
-    ![@headerKind twoHeaders]
+    ![@headerKind oneHeader]
   ] ;
 end method ;
 

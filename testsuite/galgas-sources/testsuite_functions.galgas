@@ -1,0 +1,22 @@
+
+
+func functionTest
+  ?@uint inArg1
+  ??@uint inArg2
+-> @uint outResult {
+  outResult = inArg1 + inArg2
+}
+
+extern func externTestFunction
+  ?@uint inArg1
+  ??@uint inArg2
+-> @uint outResult
+
+proc testsuite_functions {
+  message "*************************************** begin of function test\n"
+  @uint r = functionTest (!2 !3)
+  log r
+  r = externTestFunction (!2 !3)
+  log r
+}
+

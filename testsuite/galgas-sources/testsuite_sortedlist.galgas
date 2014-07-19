@@ -1,0 +1,20 @@
+
+
+sortedlist @mySortedList {
+  @string mValue
+}{
+  mValue >
+}
+
+proc testsuite_sortedlist {
+  var strList = [@mySortedList emptySortedList]
+  strList += !"b"
+  strList += !"a"
+  strList += !"d"
+  strList += !"c"
+  message "*************************************** begin of sorted list test\n"
+  for s in strList do index idx
+    message "  index " + idx + " : " + s.mValue + "\n"
+  end
+}
+

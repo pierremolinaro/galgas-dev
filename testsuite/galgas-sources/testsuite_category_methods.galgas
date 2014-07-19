@@ -1,0 +1,15 @@
+
+
+class @TestCategoryMethod {}
+
+method @TestCategoryMethod method1 {
+}
+
+getter @TestCategoryMethod reader1 -> @uint result {
+  result = 2
+}
+
+method @TestCategoryMethod method2 !@uint result {
+  result = [self reader1]
+}
+
