@@ -277,7 +277,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine compileOptionComponentGalgas3
+routine generateOptionComponentGalgas3
   ??@string inProductDirectory
   ??@string inOptionComponentName
   ??@commandLineOptionMap boolOptionMap

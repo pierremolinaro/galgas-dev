@@ -1147,12 +1147,19 @@ end routine ;
 #                         compileLexiqueComponentGalgas3                    *
 #---------------------------------------------------------------------------*
 
+list @lexiqueComponentGenerationList {
+  @string mLexiqueComponentName ;
+  @string mCppHeaderContents ;
+  @string mCppContents ;
+  @string mCocoaHeaderContents ;
+  @string mCocoaContents ;
+}
+
+#---------------------------------------------------------------------------*
+
 routine compileLexiqueComponentGalgas3
-  ??@string inOutputDirectory
   ??@galgas3LexiqueComponentListAST.element inLexiqueComponentAST
-  ?!@stringlist ioToolProductFileList
-  ?!@stringlist ioAppProductFileList
-  ?!@stringset ioAllProductFileSet
+  ?!@lexiqueComponentGenerationList ioLexiqueComponentGenerationList
 :
 #--------------------------------------- Lexical attribute type name map
   const @lexicalTypeMap lexicalTypeMap := buildLexicalTypeMap [] ;
@@ -1358,95 +1365,124 @@ routine compileLexiqueComponentGalgas3
    lexiqueAnalysisContext->mUnicodeStringToGenerate += ![mReplacementString string] ;
    # § TODO Check replacement function
   end foreach ;
-#--------------------------------------- Build Header file
-  const lexiqueClassName := inLexiqueComponentAST->mLexiqueComponentName->string ;
-  ioToolProductFileList += !"lexique-" + lexiqueClassName + ".cpp" ;
-  ioAppProductFileList += !"lexique-" + lexiqueClassName + "-cocoa.m" ;
-#--- Generate header file
+#--------------------------------------- Build header and Cpp contents
   if [@uint errorCount] == 0 then
-    ioAllProductFileSet += !"lexique-" + lexiqueClassName . ".h" ;
-    [@string generateFileWithPattern
-      !inOutputDirectory
-      !"lexique-" + lexiqueClassName . ".h"
-      !"//"
-      !"\n\n" # Defaut user zone1
-      ![filewrapper lexiqueGenerationTemplates.newHeaderZone2
-         ![lexiqueClassName identifierRepresentation]
-         !lexiqueAnalysisContext
-         !inLexiqueComponentAST
-       ]
-      !"\n\n" # Defaut user zone2
-      ![filewrapper lexiqueGenerationTemplates.newHeaderZone3
-         ![lexiqueClassName identifierRepresentation]
-         !inLexiqueComponentAST->mLexicalListDeclarationList
-         !lexiqueAnalysisContext
-         !inLexiqueComponentAST->mIndexingListAST
-       ]
+    const lexiqueClassName := inLexiqueComponentAST->mLexiqueComponentName->string ;
+  #--- Header
+    var headerContents := [filewrapper lexiqueGenerationTemplates.newHeaderZone2
+       ![lexiqueClassName identifierRepresentation]
+       !lexiqueAnalysisContext
+       !inLexiqueComponentAST
     ] ;
-  end if ;
-#--- Generate implementation file
-  if [@uint errorCount] == 0 then
-    ioAllProductFileSet += !"lexique-" + lexiqueClassName . ".cpp" ;
-    [@string generateFileWithPattern
-      !inOutputDirectory
-      !"lexique-" + lexiqueClassName . ".cpp"
-      !"//"
-      !"\n\n" # Defaut user zone1
-      ![filewrapper lexiqueGenerationTemplates.newImplementationZone2Galgas3
-         ![lexiqueClassName identifierRepresentation]
-         ![lexiqueAnalysisContext mLexicalAttributeMap]
-         ![lexiqueAnalysisContext mLexicalMessageMap]
-         ![lexiqueAnalysisContext mTerminalList]
-         ![lexiqueAnalysisContext mLexicalTokenListMap]
-         ![lexiqueAnalysisContext mUnicodeStringToGenerate]
-         !inLexiqueComponentAST->mLexicalRuleList
-         !lexiqueAnalysisContext
-         !inLexiqueComponentAST
-       ]
-      !"\n\n" # Defaut user zone2
-      !"\n\n" # Zone 3
+    headerContents += [filewrapper lexiqueGenerationTemplates.newHeaderZone3
+      ![lexiqueClassName identifierRepresentation]
+      !inLexiqueComponentAST->mLexicalListDeclarationList
+      !lexiqueAnalysisContext
+      !inLexiqueComponentAST->mIndexingListAST
     ] ;
-  end if ;
-#--- Generate cocoa header file
-  if [@uint errorCount] == 0 then
-    ioAllProductFileSet += !"lexique-" + lexiqueClassName . "-cocoa.h" ;
-    [@string generateFileWithPattern
-      !inOutputDirectory
-      !"lexique-" + lexiqueClassName . "-cocoa.h"
-      !"//"
-      !"\n\n" # Defaut user zone1
-      ![filewrapper lexiqueGenerationTemplates.cocoaHeaderZone2
+  #--- Cpp
+    const cppContents :=  [filewrapper lexiqueGenerationTemplates.newImplementationZone2Galgas3
+      ![lexiqueClassName identifierRepresentation]
+      ![lexiqueAnalysisContext mLexicalAttributeMap]
+      ![lexiqueAnalysisContext mLexicalMessageMap]
+      ![lexiqueAnalysisContext mTerminalList]
+      ![lexiqueAnalysisContext mLexicalTokenListMap]
+      ![lexiqueAnalysisContext mUnicodeStringToGenerate]
+      !inLexiqueComponentAST->mLexicalRuleList
+      !lexiqueAnalysisContext
+      !inLexiqueComponentAST
+    ] ;
+  #--- Cocoa header
+    var cocoaHeader := [filewrapper lexiqueGenerationTemplates.cocoaHeaderZone2
          !lexiqueClassName
          !lexiqueAnalysisContext
-       ]
-      !"\n\n" # Defaut user zone2
-      ![filewrapper lexiqueGenerationTemplates.cocoaHeaderZone3
-         !lexiqueClassName
-         !lexiqueAnalysisContext
-       ]
     ] ;
+    cocoaHeader += [filewrapper lexiqueGenerationTemplates.cocoaHeaderZone3
+      !lexiqueClassName
+      !lexiqueAnalysisContext
+    ] ;
+  #--- Cocoa implementation
+    const cocoaImplementation := [filewrapper lexiqueGenerationTemplates.cocoaImplementationZone2
+      !lexiqueClassName
+      ![lexiqueAnalysisContext mLexicalAttributeMap]
+      ![lexiqueAnalysisContext mLexicalMessageMap]
+      ![lexiqueAnalysisContext mTerminalList]
+      ![lexiqueAnalysisContext mUnicodeStringToGenerate]
+      !inLexiqueComponentAST->mLexicalRuleList
+      !lexiqueAnalysisContext
+      !inLexiqueComponentAST
+    ] ;
+  #---
+    ioLexiqueComponentGenerationList +=
+      !lexiqueClassName
+      !headerContents
+      !cppContents
+      !cocoaHeader
+      !cocoaImplementation
+    ;  
   end if ;
-#--- Generate Cocoa implementation file
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                         generateLexiqueComponentsGalgas3                  *
+#---------------------------------------------------------------------------*
+
+routine generateLexiqueComponentsGalgas3
+  ??@string inOutputDirectory
+  ??@lexiqueComponentGenerationList inLexiqueComponentGenerationList
+  ?!@stringlist ioToolProductFileList
+  ?!@stringlist ioAppProductFileList
+  ?!@stringset ioAllProductFileSet
+:
   if [@uint errorCount] == 0 then
-    ioAllProductFileSet += !"lexique-" + lexiqueClassName . "-cocoa.m" ;
-    [@string generateFileWithPattern
-      !inOutputDirectory
-      !"lexique-" + lexiqueClassName . "-cocoa.m"
-      !"//"
-      !"\n\n" # Defaut user zone1
-      ![filewrapper lexiqueGenerationTemplates.cocoaImplementationZone2
-         !lexiqueClassName
-         ![lexiqueAnalysisContext mLexicalAttributeMap]
-         ![lexiqueAnalysisContext mLexicalMessageMap]
-         ![lexiqueAnalysisContext mTerminalList]
-         ![lexiqueAnalysisContext mUnicodeStringToGenerate]
-         !inLexiqueComponentAST->mLexicalRuleList
-         !lexiqueAnalysisContext
-         !inLexiqueComponentAST
-       ]
-      !"\n\n" # Defaut user zone2
-      !"\n\n" # Zone 3
-    ] ;
+    for () in inLexiqueComponentGenerationList do
+    #--- Build Cpp Header file
+      ioAllProductFileSet += !"lexique-" + mLexiqueComponentName . ".h" ;
+      [@string generateFileWithPattern
+        !inOutputDirectory
+        !"lexique-" + mLexiqueComponentName . ".h"
+        !"//"
+        !"\n\n" # Defaut user zone1
+        !mCppHeaderContents
+        !"\n\n" # Defaut user zone2
+        !"\n"
+      ] ;
+    #--- Generate implementation file
+      ioAllProductFileSet += !"lexique-" + mLexiqueComponentName . ".cpp" ;
+      ioToolProductFileList += !"lexique-" + mLexiqueComponentName + ".cpp" ;
+      [@string generateFileWithPattern
+        !inOutputDirectory
+        !"lexique-" + mLexiqueComponentName . ".cpp"
+        !"//"
+        !"\n\n" # Defaut user zone1
+        !mCppContents
+        !"\n\n" # Defaut user zone2
+        !"\n\n" # Zone 3
+      ] ;
+    #--- Generate cocoa header file
+      ioAllProductFileSet += !"lexique-" + mLexiqueComponentName . "-cocoa.h" ;
+      [@string generateFileWithPattern
+        !inOutputDirectory
+        !"lexique-" + mLexiqueComponentName . "-cocoa.h"
+        !"//"
+        !"\n\n" # Defaut user zone1
+        !mCocoaHeaderContents
+        !"\n\n" # Defaut user zone2
+        !"\n"
+      ] ;
+    #--- Generate Cocoa implementation file
+      ioAppProductFileList += !"lexique-" + mLexiqueComponentName + "-cocoa.m" ;
+      ioAllProductFileSet += !"lexique-" + mLexiqueComponentName . "-cocoa.m" ;
+      [@string generateFileWithPattern
+        !inOutputDirectory
+        !"lexique-" + mLexiqueComponentName . "-cocoa.m"
+        !"//"
+        !"\n\n" # Defaut user zone1
+        !mCocoaContents
+        !"\n\n" # Defaut user zone2
+        !"\n\n" # Zone 3
+      ] ;
+    end for ;
   end if ;
 end routine ;
 
