@@ -2097,6 +2097,7 @@ override method @abstractCategoryModifierForGeneration appendSpecificImplementat
   !@string outImplementation
 :
   ioInclusionSet += !"setter-" . [mReceiverType key]. "-" . mAbstractCategoryModifierName ;
+  [mReceiverType addHeaderFileName !?ioInclusionSet] ;
   outImplementation := [filewrapper semanticComponentGenerationTemplate.abstractCategoryModifierImplementation
     ![mReceiverType key]
     !mAbstractCategoryModifierName
@@ -2179,6 +2180,7 @@ override method @categoryModifierForGeneration appendSpecificImplementation
       end if ;  
     end loop ;
     ioInclusionSet += !"setter-" . [baseType key]. "-" . mCategoryModifierName ;
+    [baseType addHeaderFileName !?ioInclusionSet] ;
     generateCategoryModifier
       ![mReceiverType key]
       !""
@@ -2210,7 +2212,7 @@ override method @overridingCategoryModifierForGeneration appendSpecificImplement
   !@string outImplementation
 :
   generateCategoryModifier
-    !mTypeName
+    ![mReceiverType key]
     !mBaseTypeName
     !mCategoryModifierName
     !?ioInclusionSet
@@ -2218,8 +2220,23 @@ override method @overridingCategoryModifierForGeneration appendSpecificImplement
     !mSemanticInstructionListForGeneration
     ??@string methodImplementation
   ;
+  @unifiedTypeMapProxy baseType := mReceiverType ;
+  @bool searching := true ;
+  loop [@uint max] : while searching do
+    if not [[baseType mSuperType] isNull] then
+      if [[[baseType mSuperType] mModifierMap] hasKey !mCategoryModifierName] then
+        baseType := [baseType mSuperType] ;
+      else
+        searching := false ;
+      end if ;
+    else
+      searching := false ;
+    end if ;  
+  end loop ;
+  ioInclusionSet += !"setter-" . [baseType key]. "-" . mCategoryModifierName ;
+  [mReceiverType addHeaderFileName !?ioInclusionSet] ;
   outImplementation := [filewrapper semanticComponentGenerationTemplate.overridingCategoryModifierImplementation
-    !mTypeName
+    ![mReceiverType key]
     !mCategoryModifierName
     !methodImplementation
   ] ; 

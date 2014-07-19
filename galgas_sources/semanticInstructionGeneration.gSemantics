@@ -667,6 +667,7 @@ override method @modifierCallInstructionForGeneration generateInstruction
 #--- Generate method call
   switch mKind
   when definedAsCategory :
+    ioInclusionSet += !"setter-" . [mMethodBaseType key]. "-" . mModifierName ;
     if [mReceiverType mTypeKindEnum] == [@typeKindEnum classType] then
       if ([[mReceiverType mAllTypedAttributeList] length] > 0) & [mReceiverType mIsConcrete] then
         ioGeneratedCode .= receiverCppName . ".insulate (HERE) ;\n" ;
@@ -674,7 +675,6 @@ override method @modifierCallInstructionForGeneration generateInstruction
       ioGeneratedCode .= "callCategoryModifier_" . [mModifierName identifierRepresentation]
                       . " ((cPtr_" . [mReceiverType identifierRepresentation] . " *) " . receiverCppName . ".ptr (), " ;
     else
-      ioInclusionSet += !"setter-" . [mReceiverType key]. "-" . mModifierName ;
       ioGeneratedCode .= "categoryModifier_" . [mModifierName identifierRepresentation] . " (" . receiverCppName . ", " ;
     end if ;
   when definedAsMember :
@@ -728,6 +728,7 @@ override method @selfModifierCallInstructionForGeneration generateInstruction
 #--- Generate modifier call
   switch mKind
   when definedAsCategory :
+    ioInclusionSet += !"setter-" . [mReceiverType key]. "-" . mModifierName ;
     if [mReceiverType mTypeKindEnum] == [@typeKindEnum classType] then
       ioGeneratedCode .= "callCategoryModifier_" . [mModifierName identifierRepresentation] . " (" . mSelfCppName . ", " ;
     else
@@ -913,6 +914,10 @@ override method @plusEqualnstructionForGeneration generateInstruction
     do ioGeneratedCode .= mValue ;
     between ioGeneratedCode .= ", " ;
   end foreach ;
+  if ([mTargetType mHandledOperatorFlags] & plusEqualOperatorWithFieldListNeedsCompilerArg []) != 0 then
+    ioGeneratedCode  .= ", " . compilerCppName [] ;
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+  end if ;
   ioGeneratedCode .= " " . [mInstructionLocation commaSourceFile] . ") ;\n"  ;
 end method ;
 

@@ -107,6 +107,31 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_overriddenMap (%?^%C
   getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
 }
+
+//-----------------------------------------------------------------------------*
+
+void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^%const GALGAS_lstring & inKey%
+foreach ATTRIBUTE_LIST
+  do index IDX %,\n%!^%const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & inArgument%![IDX string]
+end
+%,\n %!^%C_Compiler * inCompiler%
+%\n %!^%COMMA_LOCATION_ARGS) {\n%
+%  cMapElement_%!TYPE_IDENTIFIER% * p = NULL ;\n%
+%  macroMyNew (p, cMapElement_%!TYPE_IDENTIFIER% (inKey%
+foreach ATTRIBUTE_LIST
+  do index IDX %, inArgument%![IDX string]
+end
+% COMMA_HERE)) ;\n%
+%  capCollectionElement attributes ;\n%
+%  attributes.setPointer (p) ;\n%
+%  macroDetachSharedObject (p) ;\n%
+block 2 :
+  %const char * kInsertErrorMessage = "@%!TYPE_IDENTIFIER% insert error: '\%K' already in map" ;\n%
+  %const char * kShadowErrorMessage = "" ;\n%
+  %performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;\n%
+end block
+%}
+
 %foreach INSERT_METHOD_LIST do
   %//-----------------------------------------------------------------------------*\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::modifier_%![mInsertMethodName identifierRepresentation]% (%?^%GALGAS_lstring inKey%

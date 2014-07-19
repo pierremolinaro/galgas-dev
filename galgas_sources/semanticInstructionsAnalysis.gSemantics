@@ -812,8 +812,7 @@ function checkMethodImplementationInSuperClasses
   if [inSuperClass isNull] then
     outResult := "" ;
   else
-    @methodQualifier qualifier ;
-    [[inSuperClass mInstanceMethodMap] searchKey !inMethodName ?* ?* ?* ?* ?qualifier ?*] ;
+    [[inSuperClass mInstanceMethodMap] searchKey !inMethodName ?* ?* ?* ?* ??@methodQualifier qualifier ?*] ;
     switch qualifier
     when isAbstract :
       outResult := "" ;
@@ -861,6 +860,22 @@ override method @modifierCallInstructionAST analyzeSemanticInstruction
     !?ioVariableMap
     ?actualParameterListForGeneration
   ;
+#--- Search base type that declares the method
+  var baseType := receiverType ;
+  var searching := true ;
+  if [@uint errorCount] == 0 then
+    loop [@uint max] : while searching do
+      if [[baseType mSuperType] isNull] then
+        searching := false ;
+      else
+        if [[[baseType mSuperType] mModifierMap] hasKey !mModifierName->string] then
+          baseType := [baseType mSuperType] ;
+        else
+          searching := false ;
+        end if ;
+      end if ;  
+    end loop ;
+  end if ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@modifierCallInstructionForGeneration new
     !receiverVariableCppName
@@ -871,6 +886,7 @@ override method @modifierCallInstructionAST analyzeSemanticInstruction
     !kind
     !actualParameterListForGeneration
     !hasCompilerArgument
+    !baseType
   ] ;
 end method ;
 

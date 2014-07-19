@@ -850,6 +850,8 @@ override method @mapDeclarationAST enterInSemanticContext
 #--- Handle attributes
   @formalParameterSignature insertMethodFormalArgumentList [emptyList] ;
   @typedAttributeList typedAttributeList [emptyList] ;
+  var argumentTypeListForAddAssignWithFieldExpressionList := @unifiedTypeMapProxyAndParameterList {} ;
+  argumentTypeListForAddAssignWithFieldExpressionList += !lstringTypeIndex !"lkey" ;
   insertMethodFormalArgumentList += !lstringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !"inLKey" ;
   @formalParameterSignature removeMethodFormalArgumentList [emptyList] ;
   removeMethodFormalArgumentList += !lstringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !"inLKey" ;
@@ -858,6 +860,7 @@ override method @mapDeclarationAST enterInSemanticContext
     [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mAttributeTypeName ??@unifiedTypeMapProxy attributeTypeIndex] ;
     @bool hasGetter := true ;
     @bool hasSetter := true ;
+    argumentTypeListForAddAssignWithFieldExpressionList += !attributeTypeIndex !mAttributeName->string ;
     typedAttributeList += !attributeTypeIndex !mAttributeName !hasSetter !hasGetter ;
     typesToIncludeInHeaderCompilation += !attributeTypeIndex ;
     enumerationDescriptor += !attributeTypeIndex ![mAttributeName string] ;
@@ -996,8 +999,8 @@ override method @mapDeclarationAST enterInSemanticContext
     ![@classMethodMap emptyMap]
     !enumerationDescriptor
     !enumerationVariants
-    !doNotGenererateObjectCompare []
-    ![@unifiedTypeMapProxyAndParameterList emptyList]
+    !doNotGenererateObjectCompare [] | plusEqualOperatorWithFieldList [] | plusEqualOperatorWithFieldListNeedsCompilerArg []
+    !argumentTypeListForAddAssignWithFieldExpressionList
     ![@stringset emptySet]
     ![@lstringlist emptyList]
     !mSearchMethodList
