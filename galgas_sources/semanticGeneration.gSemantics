@@ -1775,7 +1775,7 @@ override method @classTypeForGeneration appendDeclaration2
     ] ;
     const headerFileName := "separateHeaderFor_" . [mTypeProxy identifierRepresentation] . ".h" ;
     [@string generateFileWithPattern
-      !inOutputDirectory + if inGenerateForGalgas3 then "/../headers" else "" end
+      !inOutputDirectory + if inGenerateForGalgas3 then "/../user-headers" else "" end
       !headerFileName
       !"//"
       !"\n\n" # Defaut user zone1

@@ -712,17 +712,6 @@ indexing with galgas3ProjectGrammar
     !?toolCppFileList
     !?allProductFileSet
   ;
-#---------------------------------- Remove useless files
-  if 0 == [@uint errorCount] then
-    var allActualFileSet := [@stringset emptySet] ;
-    foreach [productDirectory regularFiles !false] do
-      allActualFileSet += !mValue ;
-    end foreach ;
-    const uselessFileSet := allActualFileSet - allProductFileSet ;
-    foreach uselessFileSet do
-      [@string deleteFile !productDirectory . "/" . key] ;
-    end foreach ;
-  end if ;
 #---------------------------------- Update targets
   if 0 == [@uint errorCount] then
     @stringset handledExtensionSet [emptySet] ;
@@ -756,7 +745,19 @@ indexing with galgas3ProjectGrammar
       !handCodedSourceDirectorySet
       !handledExtensionSet
       !handCodedLinkToolFileList
+      !?allProductFileSet
     ;
+  end if ;
+#---------------------------------- Remove useless files
+  if 0 == [@uint errorCount] then
+    var allActualFileSet := [@stringset emptySet] ;
+    foreach [productDirectory regularFiles !false] do
+      allActualFileSet += !mValue ;
+    end foreach ;
+    const uselessFileSet := allActualFileSet - allProductFileSet ;
+    foreach uselessFileSet do
+      [@string deleteFile !productDirectory . "/" . key] ;
+    end foreach ;
   end if ;
 }
 

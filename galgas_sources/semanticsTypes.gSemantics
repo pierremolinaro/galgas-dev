@@ -266,10 +266,10 @@ once binaryOrOperator  -> @uint outMask : outMask := 1 << 11 ; end once ;
 once binaryXorOperator -> @uint outMask : outMask := 1 << 12 ; end once ;
 once unaryNotOperator  -> @uint outMask : outMask := 1 << 13 ; end once ;
 
-once binaryConcatOperator -> @uint outMask : outMask := 1 << 14 ; end once ; # exp1 . exp2
-once dotEqualOperator     -> @uint outMask : outMask := 1 << 15 ; end once ; # var .= exp ;
-once plusEgalOperator     -> @uint outMask : outMask := 1 << 16 ; end once ; # var += exp ;
-once isComparable         -> @uint outMask : outMask := 1 << 17 ; end once ; # Supports <, <=, >, >= operators
+once binaryConcatOperator            -> @uint outMask : outMask := 1 << 14 ; end once ; # exp1 . exp2
+once plusEqualOperatorWithExpression -> @uint outMask : outMask := 1 << 15 ; end once ; # var .= exp ;
+once plusEqualOperatorWithFieldList  -> @uint outMask : outMask := 1 << 16 ; end once ; # var += exp ;
+once isComparable                    -> @uint outMask : outMask := 1 << 17 ; end once ; # Supports <, <=, >, >= operators
 
 once generateEnumerationHelperMethods             -> @uint outMask : outMask := 1 << 28 ; end once ;
 once doNotGenererateObjectCompare                 -> @uint outMask : outMask := 1 << 29 ; end once ;

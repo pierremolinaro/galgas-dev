@@ -212,13 +212,15 @@ routine updateGalgas3Targets
   ??@stringset inHandCodedSourceDirectorySet
   ??@stringset inHandledExtensionSet
   ??@stringlist inHandCodedLinkToolFileList
+  ?!@stringset ioAllProductFileSet
 :
   const projectDirectory := [inProjectSourceFilePath stringByDeletingLastPathComponent] ;
 #--- Update project header
   [[filewrapper targetGalgas3GenerationFileWrapper.project_header !inProjectVersionString] writeToFileWhenDifferentContents
-    ![inProjectSourceFilePath stringByDeletingLastPathComponent] . "/build/headers/project_header.h"
+    ![inProjectSourceFilePath stringByDeletingLastPathComponent] . "/build/output/project_header.h"
     ?*
   ] ;
+  ioAllProductFileSet += !"project_header.h" ;
 #----------------------------------------------------------- Update LIBPM
   @string libpmPath ;
   with inProjectQualifiedFeatureMap hasKey !"libpmAtPath" do
@@ -367,8 +369,9 @@ routine updateGalgas3Targets
     !libpmPath
     !if multiThreadingEnabled then "1" else "0" end
   ] ;
-  const fileListPath := [inProjectSourceFilePath stringByDeletingLastPathComponent] . "/build/lists/file-list.mak" ;
+  const fileListPath := [inProjectSourceFilePath stringByDeletingLastPathComponent] . "/build/output/file-list.mak" ;
   [newFileListContents writeToFileWhenDifferentContents !fileListPath ?*] ;
+  ioAllProductFileSet += !"file-list.mak" ;
 #---------------------- update Xcode project
   if SDK != "" then
     const dir := projectDirectory . "/xcode-project";
@@ -483,7 +486,8 @@ routine updateGalgas3Targets
     const @stringlist resourceFiles := [userResourceDir regularFilesWithExtensions !false !extensionList] ;
   #--- Build pathes
     const @string xcodeProjectPath := dir . "/" . inTargetName . ".xcodeproj" ; # Actually a directory
-    const @string intermediateFilePath := [inProjectSourceFilePath stringByDeletingLastPathComponent] . "/build/lists/file-list-for-xcode-project.txt" ;
+    const @string intermediateFilePath := [inProjectSourceFilePath stringByDeletingLastPathComponent] . "/build/output/file-list-for-xcode-project.txt" ;
+    ioAllProductFileSet += !"file-list-for-xcode-project.txt" ;
   #---
     [xcodeProjectPath makeDirectory] ;
   #--- Build intermediate

@@ -139,7 +139,7 @@ end%
     if (type_mHandledOperatorFlags & binaryConcatOperator []) != 0 then
       %concatenation: %!linkForType [!type_lkey->string]% . %!linkForType [!type_lkey->string]% &rarr; %!linkForType [!type_lkey->string]%<br><br>%
     end
-    if (type_mHandledOperatorFlags & dotEqualOperator []) != 0 then
+    if (type_mHandledOperatorFlags & plusEqualOperatorWithExpression []) != 0 then
       %appending instruction: %!linkForType [!type_lkey->string]% .= %!linkForType [!type_lkey->string]%<br><br>%
     end
     if (type_mHandledOperatorFlags & incDecOperator []) != 0 then

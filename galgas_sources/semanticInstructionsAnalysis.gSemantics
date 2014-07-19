@@ -964,7 +964,7 @@ override method @concatInstructionAST analyzeSemanticInstruction
     [attributeMap searchKey !mValue ?targetType] ;
   end foreach ;
 #--- Check target variable type support '.=' operator
-  if ([targetType mHandledOperatorFlags] & dotEqualOperator []) == 0 then
+  if ([targetType mHandledOperatorFlags] & plusEqualOperatorWithExpression []) == 0 then
     error mInstructionLocation
     :"the target object has the '@" . [targetType key] . "' type, but this type does not support the '.=' operator"
     ;
@@ -999,7 +999,7 @@ override method @selfConcatInstructionAST analyzeSemanticInstruction
     selfTypeProxy := inAnalysisContext->mSelfTypeProxy ;
   end if ;
 #--- Check target variable type support '.=' operator
-  if ([selfTypeProxy mHandledOperatorFlags] & dotEqualOperator []) == 0 then
+  if ([selfTypeProxy mHandledOperatorFlags] & plusEqualOperatorWithExpression []) == 0 then
     error mInstructionLocation
     :"the target object has the '@" . [selfTypeProxy key] . "' type, but this type does not support the '.=' operator"
     ;
@@ -1098,7 +1098,7 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
     [attributeMap searchKey !mValue ?targetType] ;
   end foreach ;
 #--- Check target variable type support '+= exp' operator
-  if ([targetType mHandledOperatorFlags] & plusEgalOperator []) == 0 then
+  if ([targetType mHandledOperatorFlags] & plusEqualOperatorWithFieldList []) == 0 then
     error mInstructionLocation
     :"the target object has the '@" . [targetType key] . "' type, but this type does not support the '+=' operator"
     ;
@@ -1192,7 +1192,7 @@ override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstructio
     selfTypeProxy := inAnalysisContext->mSelfTypeProxy ;
   end if ;
 #--- Check target variable type support '+= exp' operator
-  if ([selfTypeProxy mHandledOperatorFlags] & plusEgalOperator []) == 0 then
+  if ([selfTypeProxy mHandledOperatorFlags] & plusEqualOperatorWithFieldList []) == 0 then
     error mInstructionLocation
     :"the target object has the '@" . [selfTypeProxy key] . "' type, but this type does not support the '+=' operator"
     ;
