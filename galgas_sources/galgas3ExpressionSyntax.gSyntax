@@ -455,10 +455,10 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <primary> !@semanticExpressionAST outExpression :
-  $here$ ;
-  outExpression := [@hereExpressionAST new !here] ;
-end rule ;
+#rule <primary> !@semanticExpressionAST outExpression :
+#  $here$ ;
+#  outExpression := [@hereExpressionAST new !here] ;
+#end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *

@@ -128,8 +128,10 @@ override method @localVariableOrConstantDeclarationWithConstructorCallAST analyz
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
 :
+  const targetType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
 #--- Analyze constructor call
   analyzeConstructorInvocation
+    !targetType
     !inAnalysisContext
     !?ioVariableMap
     !mTypeName
@@ -141,7 +143,6 @@ override method @localVariableOrConstantDeclarationWithConstructorCallAST analyz
     ?@bool hasCompilerArgument
   ;
 #--- Check variable type
-  const targetType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
   if targetType != returnedType then
     error mConstructorName
     :"this constructor returns an '@" . [returnedType key] ."' object, you should use a constructor that return an '@" . mTypeName . "' object"

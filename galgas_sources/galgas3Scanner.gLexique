@@ -137,7 +137,7 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "grammar",
   "graph",
   "gui",
-  "here",
+#  "here",
   "if",
 #  "import",
   "in",
