@@ -68,12 +68,11 @@ routine generateProcedure
   end foreach ;
   [!?routineBody decIndentation !2] ;
 #--- Generate inclusions
-  outGeneratedCode := "" ;
   foreach inFormalArgumentList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet] ;
   end foreach ;
 #--- Generate header
-  outGeneratedCode .= "void " . inProcedureName . " (" ;
+  outGeneratedCode := "void " . inProcedureName . " (" ;
   const @uint colRef := [outGeneratedCode currentColumn] ;
 #---
   foreach inFormalArgumentList do
@@ -151,12 +150,13 @@ routine generateFunction
   ??@formalInputParameterListForGeneration inFormalArgumentList
   ??@semanticInstructionListForGeneration inInstructionList
   ??@string inCompilerTypeName
-  ??@string inResultTypeName
+  ??@unifiedTypeMapProxy inResultType
   ??@string inResultVariableCppName
   ??@bool inIsStatic
   !@string outGeneratedCode
 :
   outGeneratedCode := "" ;
+  [inResultType addHeaderFileName !?ioInclusionSet] ;
 #--- Build unused variable set
   @stringset unusedVariableCppNameSet [emptySet] ;
   unusedVariableCppNameSet += !compilerCppName [] ;
@@ -182,7 +182,7 @@ routine generateFunction
   if inIsStatic then
     outGeneratedCode .= "static " ;
   end if ;
-  outGeneratedCode .= "GALGAS_" . [inResultTypeName identifierRepresentation] . " " ;
+  outGeneratedCode .= "GALGAS_" . [inResultType identifierRepresentation] . " " ;
   outGeneratedCode .= inFunctionCppRepresentationName . " (" ;
   const @uint colRef := [outGeneratedCode currentColumn] ;
 #---
@@ -212,7 +212,7 @@ routine generateFunction
   outGeneratedCode .= "COMMA_UNUSED_LOCATION_ARGS)" ;
   outGeneratedCode .= " {\n" ;
 #--- Declare returned variable
-  outGeneratedCode .= "  GALGAS_" . [inResultTypeName identifierRepresentation]
+  outGeneratedCode .= "  GALGAS_" . [inResultType identifierRepresentation]
                    .  " " . inResultVariableCppName . " ; // Returned variable\n" ;
 #--- Generate routine body
   outGeneratedCode .= routineBody ;
@@ -1211,6 +1211,8 @@ override method @arrayTypeForGeneration appendSpecificImplementation
   !@string outImplementation
 :
   [mTypeProxy addHeaderFileName !?ioInclusionSet] ;
+  [mElementTypeProxy addHeaderFileName !?ioInclusionSet] ;
+
   @stringlist suffixList [emptyList] ;
   @uint idx := 0 ;
   loop mDimension : while idx < mDimension do
@@ -1284,9 +1286,9 @@ override method @mapTypeForGeneration appendDeclaration1
   !@string outHeader
 :
   ioInclusionSet += !"galgas2/AC_GALGAS_map" ;
-  for (t ...) in mTypedAttributeList do
-    [t addHeaderFileName1 !?ioInclusionSet] ;
-  end for ;
+#  for (t ...) in mTypedAttributeList do
+#    [t addHeaderFileName1 !?ioInclusionSet] ;
+#  end for ;
 
   outHeader := [filewrapper typeGenerationTemplate.mapTypeHeader1
     ![mTypeProxy key]
@@ -1862,7 +1864,7 @@ override method @functionImplementationForGeneration appendSpecificImplementatio
     !mFormalArgumentList
     !mFunctionInstructionList
     !"C_Compiler"
-    ![mReturnType key]
+    !mReturnType
     !mResultVariableCppName
     !false # is not static
     ??@string code
@@ -1888,7 +1890,7 @@ override method @onceFunctionDeclarationForGeneration appendSpecificImplementati
     ![@formalInputParameterListForGeneration emptyList]
     !mFunctionInstructionList
     !"C_Compiler"
-    ![mReturnType key]
+    !mReturnType
     !mResultVariableCppName
     !true # is static
     ??@string code
@@ -2337,7 +2339,7 @@ override method @categoryReaderForGeneration appendSpecificImplementation
       !categoryReaderFormalParameterList
       !mSemanticInstructionListForGeneration
       !"C_Compiler"
-      ![mResultType key]
+      !mResultType
       !mResultVarCppName
       !false # is not static
       ??@string code

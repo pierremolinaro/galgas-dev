@@ -839,7 +839,7 @@ rule <foreach_enumerated_object>
     end select ;
     $)$ ;
   end select ;
-  send prefix->string . " in" . exp  ;  
+  send prefix->string . " in " . exp  ;  
   ioForeachInstructionEnumeratedObjectList +=
     !enumerationOrder
     !mEnumeratedExpression
