@@ -396,14 +396,17 @@ struct @analysisContext {
 #---------------------------------------------------------------------------*
 
 abstract method @semanticExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 ;
 
 #---------------------------------------------------------------------------*
+#! Literal
 
 override method @selfCopyInExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -419,6 +422,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @hereExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -429,6 +433,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @trueExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -439,6 +444,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @falseExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -449,6 +455,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @literalCharExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -459,6 +466,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @literalStringExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -473,6 +481,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @literalDoubleExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -483,6 +492,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @literalUIntExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -493,6 +503,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @literalUInt64ExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -503,6 +514,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @literalSIntExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -513,6 +525,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @literalSInt64ExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -575,7 +588,7 @@ routine analyzeConstructorInvocation
   outConstructorEffectiveParameterList := [@semanticExpressionListForGeneration emptyList] ;
   foreach inConstuctorEffectiveParameterExpressions, constructorFormalArgumentTypeList do
     @semanticExpressionForGeneration exp ;
-    [mExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?exp] ;
+    [mExpression analyzeSemanticExpression !mType !inAnalysisContext !?ioVariableMap ?exp] ;
     checkAssignmentTypes !mType ![exp mType] !mEndOfExpressionLocation ;
     outConstructorEffectiveParameterList += !exp ;
   end foreach ;
@@ -584,6 +597,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 override method @defaultConstructorExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -605,6 +619,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @constructorExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -634,13 +649,14 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @readerCallExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
 #--- Expression analysis
   @semanticExpressionForGeneration receiverExpression ;
-  [mReceiver analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?receiverExpression] ;
+  [mReceiver analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?receiverExpression] ;
   const @unifiedTypeMapProxy receiverType := [receiverExpression mType] ;
 #--- Get reader map
   const @readerMap readerMap := [receiverType mReaderMap] ;
@@ -728,7 +744,7 @@ override method @readerCallExpressionAST analyzeSemanticExpression
   else
     @semanticExpressionListForGeneration constructorEffectiveParameterList [emptyList] ;
     foreach mExpressions, readerFormalArgumentTypeList do
-      [mExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ??@semanticExpressionForGeneration exp] ;
+      [mExpression analyzeSemanticExpression !mType !inAnalysisContext !?ioVariableMap ??@semanticExpressionForGeneration exp] ;
       checkAssignmentTypes !mType ![exp mType] !mEndOfExpressionLocation ;
       constructorEffectiveParameterList += !exp ;
     end foreach ;
@@ -770,8 +786,9 @@ function checkReaderImplementationInSuperClasses
 #---------------------------------------------------------------------------*
 
 override method @optionExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
- ?!@variableMap unused ioVariableMap
+  ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
   @commandLineOptionMap boolOptionMap ;
@@ -914,16 +931,17 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 override method @concatExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
 #--- Left expression analysis
   @semanticExpressionForGeneration leftExpression ;
-  [mLeftExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?leftExpression] ;
+  [mLeftExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?leftExpression] ;
 #--- Right expression analysis
   @semanticExpressionForGeneration rightExpression ;
-  [mRightExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?rightExpression] ;
+  [mRightExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?rightExpression] ;
 #--- Check operator availability
   const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
   checkDiadicOperator
@@ -946,16 +964,17 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @orExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
 #--- Left expression analysis
   @semanticExpressionForGeneration leftExpression ;
-  [mLeftExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?leftExpression] ;
+  [mLeftExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?leftExpression] ;
 #--- Right expression analysis
   @semanticExpressionForGeneration rightExpression ;
-  [mRightExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?rightExpression] ;
+  [mRightExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?rightExpression] ;
 #--- Check operator availability
   const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
   checkDiadicOperator
@@ -978,16 +997,17 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @andExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
 #--- Left expression analysis
   @semanticExpressionForGeneration leftExpression ;
-  [mLeftExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?leftExpression] ;
+  [mLeftExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?leftExpression] ;
 #--- Right expression analysis
   @semanticExpressionForGeneration rightExpression ;
-  [mRightExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?rightExpression] ;
+  [mRightExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?rightExpression] ;
 #--- Check operator availability
   const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
   checkDiadicOperator
@@ -1010,16 +1030,17 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @xorExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
 #--- Left expression analysis
   @semanticExpressionForGeneration leftExpression ;
-  [mLeftExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?leftExpression] ;
+  [mLeftExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?leftExpression] ;
 #--- Right expression analysis
   @semanticExpressionForGeneration rightExpression ;
-  [mRightExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?rightExpression] ;
+  [mRightExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?rightExpression] ;
 #--- Check operator availability
   const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
   checkDiadicOperator
@@ -1042,16 +1063,17 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @equalExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
 #--- Left expression analysis
   @semanticExpressionForGeneration leftExpression ;
-  [mLeftExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?leftExpression] ;
+  [mLeftExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?leftExpression] ;
 #--- Right expression analysis
   @semanticExpressionForGeneration rightExpression ;
-  [mRightExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?rightExpression] ;
+  [mRightExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?rightExpression] ;
 #--- Check operator availability
   const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
   const @unifiedTypeMapProxy rightType := [rightExpression mType] ;
@@ -1074,16 +1096,17 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @notEqualExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
 #--- Left expression analysis
   @semanticExpressionForGeneration leftExpression ;
-  [mLeftExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?leftExpression] ;
+  [mLeftExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?leftExpression] ;
 #--- Right expression analysis
   @semanticExpressionForGeneration rightExpression ;
-  [mRightExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?rightExpression] ;
+  [mRightExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?rightExpression] ;
 #--- Check operator availability
   const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
   const @unifiedTypeMapProxy rightType := [rightExpression mType] ;
@@ -1106,16 +1129,17 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @lowerOrEqualExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
 #--- Left expression analysis
   @semanticExpressionForGeneration leftExpression ;
-  [mLeftExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?leftExpression] ;
+  [mLeftExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?leftExpression] ;
 #--- Right expression analysis
   @semanticExpressionForGeneration rightExpression ;
-  [mRightExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?rightExpression] ;
+  [mRightExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?rightExpression] ;
 #--- Check operator availability
   const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
   const @unifiedTypeMapProxy rightType := [rightExpression mType] ;
@@ -1143,16 +1167,17 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @greaterOrEqualExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
 #--- Left expression analysis
   @semanticExpressionForGeneration leftExpression ;
-  [mLeftExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?leftExpression] ;
+  [mLeftExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?leftExpression] ;
 #--- Right expression analysis
   @semanticExpressionForGeneration rightExpression ;
-  [mRightExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?rightExpression] ;
+  [mRightExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?rightExpression] ;
 #--- Check operator availability
   const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
   const @unifiedTypeMapProxy rightType := [rightExpression mType] ;
@@ -1180,16 +1205,17 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @strictGreaterExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
 #--- Left expression analysis
   @semanticExpressionForGeneration leftExpression ;
-  [mLeftExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?leftExpression] ;
+  [mLeftExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?leftExpression] ;
 #--- Right expression analysis
   @semanticExpressionForGeneration rightExpression ;
-  [mRightExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?rightExpression] ;
+  [mRightExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?rightExpression] ;
 #--- Check operator availability
   const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
   const @unifiedTypeMapProxy rightType := [rightExpression mType] ;
@@ -1217,16 +1243,17 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @strictLowerExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
 #--- Left expression analysis
   @semanticExpressionForGeneration leftExpression ;
-  [mLeftExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?leftExpression] ;
+  [mLeftExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?leftExpression] ;
 #--- Right expression analysis
   @semanticExpressionForGeneration rightExpression ;
-  [mRightExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?rightExpression] ;
+  [mRightExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?rightExpression] ;
 #--- Check operator availability
   const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
   const @unifiedTypeMapProxy rightType := [rightExpression mType] ;
@@ -1254,16 +1281,17 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @rightShiftExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
 #--- Left expression analysis
   @semanticExpressionForGeneration leftExpression ;
-  [mLeftExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?leftExpression] ;
+  [mLeftExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?leftExpression] ;
 #--- Right expression analysis
   @semanticExpressionForGeneration rightExpression ;
-  [mRightExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?rightExpression] ;
+  [mRightExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?rightExpression] ;
 #--- Check operator availability
   const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
   const @unifiedTypeMapProxy rightType := [rightExpression mType] ;
@@ -1291,16 +1319,17 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @leftShiftExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
 #--- Left expression analysis
   @semanticExpressionForGeneration leftExpression ;
-  [mLeftExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?leftExpression] ;
+  [mLeftExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?leftExpression] ;
 #--- Right expression analysis
   @semanticExpressionForGeneration rightExpression ;
-  [mRightExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?rightExpression] ;
+  [mRightExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?rightExpression] ;
 #--- Check operator availability
   const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
   const @unifiedTypeMapProxy rightType := [rightExpression mType] ;
@@ -1328,16 +1357,17 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @addExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
 #--- Left expression analysis
   @semanticExpressionForGeneration leftExpression ;
-  [mLeftExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?leftExpression] ;
+  [mLeftExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?leftExpression] ;
 #--- Right expression analysis
   @semanticExpressionForGeneration rightExpression ;
-  [mRightExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?rightExpression] ;
+  [mRightExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?rightExpression] ;
 #--- Check operator availability
   const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
   checkDiadicOperator
@@ -1360,16 +1390,17 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @subExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
 #--- Left expression analysis
   @semanticExpressionForGeneration leftExpression ;
-  [mLeftExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?leftExpression] ;
+  [mLeftExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?leftExpression] ;
 #--- Right expression analysis
   @semanticExpressionForGeneration rightExpression ;
-  [mRightExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?rightExpression] ;
+  [mRightExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?rightExpression] ;
 #--- Check operator availability
   const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
   checkDiadicOperator
@@ -1392,16 +1423,17 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @multiplicationExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
 #--- Left expression analysis
   @semanticExpressionForGeneration leftExpression ;
-  [mLeftExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?leftExpression] ;
+  [mLeftExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?leftExpression] ;
 #--- Right expression analysis
   @semanticExpressionForGeneration rightExpression ;
-  [mRightExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?rightExpression] ;
+  [mRightExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?rightExpression] ;
 #--- Check operator availability
   const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
   checkDiadicOperator
@@ -1424,16 +1456,17 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @divisionExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
 #--- Left expression analysis
   @semanticExpressionForGeneration leftExpression ;
-  [mLeftExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?leftExpression] ;
+  [mLeftExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?leftExpression] ;
 #--- Right expression analysis
   @semanticExpressionForGeneration rightExpression ;
-  [mRightExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?rightExpression] ;
+  [mRightExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?rightExpression] ;
 #--- Check operator availability
   const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
   checkDiadicOperator
@@ -1456,16 +1489,17 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @moduloExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
 #--- Left expression analysis
   @semanticExpressionForGeneration leftExpression ;
-  [mLeftExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?leftExpression] ;
+  [mLeftExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?leftExpression] ;
 #--- Right expression analysis
   @semanticExpressionForGeneration rightExpression ;
-  [mRightExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?rightExpression] ;
+  [mRightExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?rightExpression] ;
 #--- Check operator availability
   const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
   checkDiadicOperator
@@ -1488,13 +1522,14 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @unaryMinusExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
 #--- Expression analysis
   @semanticExpressionForGeneration expression ;
-  [mExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?expression] ;
+  [mExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?expression] ;
 #--- Check operator availability
   const @unifiedTypeMapProxy type := [expression mType] ;
   if ([type mHandledOperatorFlags] & unaryMinusOperator []) == 0 then
@@ -1515,13 +1550,14 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @notExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
 #--- Expression analysis
   @semanticExpressionForGeneration expression ;
-  [mExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?expression] ;
+  [mExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?expression] ;
 #--- Check operator availability
   const @unifiedTypeMapProxy type := [expression mType] ;
   if ([type mHandledOperatorFlags] & unaryNotOperator []) == 0 then
@@ -1542,13 +1578,14 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @structFieldAccessExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
 #--- Expression analysis
   @semanticExpressionForGeneration expression ;
-  [mExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?expression] ;
+  [mExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?expression] ;
 #--- Check field access availability
   @unifiedTypeMapProxy type := [expression mType] ;
   if [type mTypeKindEnum] != [@typeKindEnum structType] then
@@ -1568,13 +1605,14 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @complementExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
 #--- Expression analysis
   @semanticExpressionForGeneration expression ;
-  [mExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?expression] ;
+  [mExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?expression] ;
 #--- Check operator availability
   const @unifiedTypeMapProxy type := [expression mType] ;
   if ([type mHandledOperatorFlags] & unaryTildeOperator []) == 0 then
@@ -1595,19 +1633,20 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @ifExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
 #--- 'if' expression analysis
   @semanticExpressionForGeneration if_expression ;
-  [mIfExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?if_expression] ;
+  [mIfExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?if_expression] ;
 #--- 'then' expression analysis
   @semanticExpressionForGeneration then_expression ;
-  [mThenExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?then_expression] ;
+  [mThenExpression analyzeSemanticExpression !inType !inAnalysisContext !?ioVariableMap ?then_expression] ;
 #--- 'else' expression analysis
   @semanticExpressionForGeneration else_expression ;
-  [mElseExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?else_expression] ;
+  [mElseExpression analyzeSemanticExpression !inType !inAnalysisContext !?ioVariableMap ?else_expression] ;
 #--- Check 'if' expression is boolean
   if [[if_expression mType] key] != "bool" then
     error mOperatorLocation
@@ -1634,6 +1673,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @functionCallExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -1654,7 +1694,7 @@ override method @functionCallExpressionAST analyzeSemanticExpression
     @semanticExpressionListForGeneration semanticExpressionListForGeneration [emptyList] ;
     foreach functionSignature, mExpressions do
       @semanticExpressionForGeneration expression ;
-      [mExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?expression] ;
+      [mExpression analyzeSemanticExpression !mType !inAnalysisContext !?ioVariableMap ?expression] ;
       checkAssignmentTypes !mType ![expression mType] !mEndOfExpressionLocation ;
       semanticExpressionListForGeneration += !expression ;
     end foreach ;
@@ -1670,6 +1710,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @varInExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext unused inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -1691,6 +1732,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @literalTypeInExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -1708,13 +1750,14 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @testDynamicClassInExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
 #--- Receiver expression analysis
   @semanticExpressionForGeneration expression ;
-  [mReceiverExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?expression] ;
+  [mReceiverExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?expression] ;
 #--- Get type information
    const castType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
 #--- This type is either a class
@@ -1749,12 +1792,14 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @castInExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
 #--- Receiver expression analysis
   [mReceiverExpression analyzeSemanticExpression
+    ![@unifiedTypeMapProxy null]
     !inAnalysisContext 
     !?ioVariableMap
     ?@semanticExpressionForGeneration expression
@@ -1810,6 +1855,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -1829,6 +1875,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -1851,7 +1898,7 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
     effectiveParameterList := [@semanticExpressionListForGeneration emptyList] ;
     foreach mExpressions, templateSignature do
       @semanticExpressionForGeneration exp ;
-      [mExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?exp] ;
+      [mExpression analyzeSemanticExpression !mType !inAnalysisContext !?ioVariableMap ?exp] ;
       checkAssignmentTypes !mType ![exp mType] !mEndOfExpressionLocation ;
       effectiveParameterList += !exp ;
     end foreach ;
@@ -1869,6 +1916,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @filewrapperInExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -1940,6 +1988,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @lexiqueIntrospectionExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -1982,6 +2031,7 @@ override method @expressionCollectionValue analyze
   ?!@collectionValueElementListForGeneration ioCollectionValueElementListForGeneration
 :
   [mExpression analyzeSemanticExpression
+    !inElementType
     !inAnalysisContext
     !?ioVariableMap
     ??@semanticExpressionForGeneration expression
@@ -2009,7 +2059,7 @@ override method @expressionListCollectionValue analyze
   else
     semanticExpressionListForGeneration := @semanticExpressionListForGeneration {} ;
     foreach mExpressionList, formalParameterTypeList do
-      [mExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ??@semanticExpressionForGeneration exp] ;
+      [mExpression analyzeSemanticExpression !mType !inAnalysisContext !?ioVariableMap ??@semanticExpressionForGeneration exp] ;
       checkAssignmentTypes !mType ![exp mType] !mEndOfExpressionLocation ;
       semanticExpressionListForGeneration += !exp ;
     end foreach ;
@@ -2053,38 +2103,44 @@ class @expressionCollectionForGeneration extends @semanticExpressionForGeneratio
 #---------------------------------------------------------------------------*
 
 override method @collectionValueAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
+#--- Type
+  @unifiedTypeMapProxy targetType ;
   if mTypeName->string == "" then
-    error mTypeName : "Cannot infer type" : outExpression ;
+    targetType := inType ;
   else
-    const targetType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
-    if not [targetType mSupportCollectionValue] then
-      error mTypeName : "the @" . mTypeName . " type does not support collection value" : outExpression ;
+    targetType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
+  end if ;
+#---
+  if targetType == [@unifiedTypeMapProxy null] then
+    error mTypeName : "Cannot infer type" : outExpression ;
+  elsif not [targetType mSupportCollectionValue] then
+    error mTypeName : "the @" . mTypeName . " type does not support collection value" : outExpression ;
+  else
+    if [mElementList length] == 0 then
+      outExpression := [@defaultConstructorExpressionForGeneration new
+        !targetType
+        !mTypeName->location
+      ] ;
     else
-      if [mElementList length] == 0 then
-        outExpression := [@defaultConstructorExpressionForGeneration new
+      var collectionValueElementListForGeneration := @collectionValueElementListForGeneration {} ;
+      for () in mElementList do
+        [mElement analyze
+          !inAnalysisContext
           !targetType
-          !mTypeName->location
+          !?ioVariableMap
+          !?collectionValueElementListForGeneration
         ] ;
-      else
-        var collectionValueElementListForGeneration := @collectionValueElementListForGeneration {} ;
-        for () in mElementList do
-          [mElement analyze
-            !inAnalysisContext
-            !targetType
-            !?ioVariableMap
-            !?collectionValueElementListForGeneration
-          ] ;
-        end for ;
-        outExpression := [@expressionCollectionForGeneration new
-          !targetType
-          !mEndOfCollectionValue
-          !collectionValueElementListForGeneration
-        ] ;
-      end if ;
+      end for ;
+      outExpression := [@expressionCollectionForGeneration new
+        !targetType
+        !mEndOfCollectionValue
+        !collectionValueElementListForGeneration
+      ] ;
     end if ;
   end if ;
 end method ;

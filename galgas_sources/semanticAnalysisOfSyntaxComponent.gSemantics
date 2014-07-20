@@ -1117,6 +1117,7 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
 #--- Variant expression
   @semanticExpressionForGeneration variant_expression ;
   [mVariantExpression analyzeSemanticExpression
+    ![@unifiedTypeMapProxy null]
     !inAnalysisContext
     !?ioVariableMap
     ?variant_expression
@@ -1130,6 +1131,7 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
 #--- While expression
   @semanticExpressionForGeneration while_expression ;
   [mWhileExpression analyzeSemanticExpression
+    ![@unifiedTypeMapProxy null]
     !inAnalysisContext
     !?ioVariableMap
     ?while_expression
@@ -1248,6 +1250,7 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
 #--- When expression
   @semanticExpressionForGeneration when_expression ;
   [mWhenExpression analyzeSemanticExpression
+    ![@unifiedTypeMapProxy null]
     !inAnalysisContext
     !?ioVariableMap
     ?when_expression
@@ -1358,6 +1361,7 @@ override method @syntaxSendInstruction analyzeSyntaxInstruction
   end if ;
 #--- Analyze source expression
   [mExpression analyzeSemanticExpression
+    ![@unifiedTypeMapProxy null]
     !inAnalysisContext
     !?ioVariableMap
     ??@semanticExpressionForGeneration expression
