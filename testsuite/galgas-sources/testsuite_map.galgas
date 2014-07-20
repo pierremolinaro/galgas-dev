@@ -28,7 +28,7 @@ proc testsuite_map {
   @location loc = [m locationForKey !"g"]
   log loc
 #---
-  var otherMap = @aMap {
+  @aMap otherMap = {
     !["A" nowhere] !1,
     !["B" nowhere] !2,
     !["C" nowhere] !3,

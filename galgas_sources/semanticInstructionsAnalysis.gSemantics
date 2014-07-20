@@ -175,6 +175,7 @@ override method @localVariableDeclarationWithAssignmentAST analyzeSemanticInstru
 :
 #--- Analyze source expression
   [mSourceExpression analyzeSemanticExpression
+    ![@unifiedTypeMapProxy null]
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration expression
@@ -205,14 +206,15 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
 :
+  const targetType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
 #--- Analyze source expression
   [mSourceExpression analyzeSemanticExpression
+    !targetType
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration expression
   ] ;
 #--- Check target variable
-  const targetType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
   const targetVariableCppName := "var_" . [mVariableName identifierRepresentation] ;
   if mIsConstant then
     [!?ioVariableMap insertLocalConstant !mVariableName !targetType !targetVariableCppName !targetVariableCppName] ;
@@ -239,6 +241,7 @@ override method @localConstantDeclarationWithAssignmentAST analyzeSemanticInstru
 :
 #--- Analyze source expression
   [mSourceExpression analyzeSemanticExpression
+    ![@unifiedTypeMapProxy null]
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration expression
@@ -284,14 +287,7 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
 :
-#--- Analyze source expression
-  @semanticExpressionForGeneration expression ;
-  [mSourceExpression analyzeSemanticExpression
-    !inAnalysisContext
-    !?ioVariableMap
-    ?expression
-  ] ;
-#--- Check target variable
+#--- Get target variable
   @unifiedTypeMapProxy targetType ;
   @string targetVariableCppName ;
   @string nameForCheckingFormalParameterUsing ;
@@ -304,6 +300,13 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
       [attributeMap searchKey !mValue ?targetType] ;
     end foreach ;
   end if ;
+#--- Analyze source expression
+  [mSourceExpression analyzeSemanticExpression
+    !targetType
+    !inAnalysisContext
+    !?ioVariableMap
+    ??@semanticExpressionForGeneration expression
+  ] ;
 #--- Check assignment type compatibility
   checkAssignmentTypes !targetType ![expression mType] !mInstructionLocation ;
 #--- Generate instruction
@@ -325,6 +328,7 @@ override method @selfAssignmentInstructionAST analyzeSemanticInstruction
 :
 #--- Analyze source expression
   [mSourceExpression analyzeSemanticExpression
+    !inAnalysisContext->mSelfTypeProxy
     !inAnalysisContext
     !?ioVariableMap
     ??@semanticExpressionForGeneration expression
@@ -362,6 +366,7 @@ routine analyzeErrorOrWarningInstruction
 :
 #--- Analyze location expression
   [inLocationExpression analyzeSemanticExpression
+    ![@unifiedTypeMapProxy null]
     !inAnalysisContext
     !?ioVariableMap
     ?outLocationExpression
@@ -392,6 +397,7 @@ routine analyzeErrorOrWarningInstruction
   end if ;
 #--- Analyze message expression
   [inMessageExpression analyzeSemanticExpression
+    ![@unifiedTypeMapProxy null]
     !inAnalysisContext
     !?ioVariableMap
     ?outMessageExpression
@@ -516,6 +522,7 @@ override method @outputActualParameterAST checkAgainstFormalArgument
   else
     @semanticExpressionForGeneration expression ;
     [mOutputActualParameterExpression analyzeSemanticExpression
+      !inFormalArgumentType
       !inAnalysisContext
       !?ioVariableMap
       ?expression
@@ -750,6 +757,7 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
 :
 #--- Analyze receiver expression
   [mReceiverExpression analyzeSemanticExpression
+    ![@unifiedTypeMapProxy null]
     !inAnalysisContext
     !?ioVariableMap
     ??@semanticExpressionForGeneration receiverExpression
@@ -963,13 +971,6 @@ override method @concatInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
 :
-#--- Analyze source expression
-  @semanticExpressionForGeneration expression ;
-  [mSourceExpression analyzeSemanticExpression
-    !inAnalysisContext
-    !?ioVariableMap
-    ?expression
-  ] ;
 #--- Check target variable
   @unifiedTypeMapProxy targetType ;
   @string targetVariableCppName ;
@@ -979,6 +980,14 @@ override method @concatInstructionAST analyzeSemanticInstruction
     const attributeMap := [targetType mAttributeMap] ;
     [attributeMap searchKey !mValue ?targetType] ;
   end foreach ;
+#--- Analyze source expression
+  @semanticExpressionForGeneration expression ;
+  [mSourceExpression analyzeSemanticExpression
+    !targetType
+    !inAnalysisContext
+    !?ioVariableMap
+    ?expression
+  ] ;
 #--- Check target variable type support '.=' operator
   if ([targetType mHandledOperatorFlags] & plusEqualOperatorWithExpression []) == 0 then
     error mInstructionLocation
@@ -1023,6 +1032,7 @@ override method @selfConcatInstructionAST analyzeSemanticInstruction
 #--- Analyze source expression
   @semanticExpressionForGeneration expression ;
   [mSourceExpression analyzeSemanticExpression
+    !selfTypeProxy
     !inAnalysisContext
     !?ioVariableMap
     ?expression
@@ -1078,6 +1088,7 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
     foreach mExpressions, addAssignOperatorArguments do
       @semanticExpressionForGeneration exp ;
       [mExpression analyzeSemanticExpression
+        !mType
         !inAnalysisContext
         !?ioVariableMap
         ?exp
@@ -1121,6 +1132,7 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
   end if ;
 #--- Analyze source expression
   [mExpression analyzeSemanticExpression
+    !targetType
     !inAnalysisContext
     !?ioVariableMap
     ??@semanticExpressionForGeneration expression
@@ -1172,6 +1184,7 @@ override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
     foreach mExpressions, addAssignOperatorArguments do
       @semanticExpressionForGeneration exp ;
       [mExpression analyzeSemanticExpression
+        !mType
         !inAnalysisContext
         !?ioVariableMap
         ?exp
@@ -1215,6 +1228,7 @@ override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstructio
   end if ;
 #--- Analyze source expression
   [mExpression analyzeSemanticExpression
+    !selfTypeProxy
     !inAnalysisContext
     !?ioVariableMap
     ??@semanticExpressionForGeneration expression
@@ -1364,6 +1378,7 @@ override method @messageInstructionAST analyzeSemanticInstruction
 #--- Analyze source expression
   @semanticExpressionForGeneration expression ;
   [mExpression analyzeSemanticExpression
+    ![@unifiedTypeMapProxy null]
     !inAnalysisContext
     !?ioVariableMap
     ?expression
@@ -1392,6 +1407,7 @@ override method @logInstructionAST analyzeSemanticInstruction
   #--- Analyze source expression
     @semanticExpressionForGeneration expression ;
     [mLogExpression analyzeSemanticExpression
+      ![@unifiedTypeMapProxy null]
       !inAnalysisContext
       !?ioVariableMap
       ?expression
@@ -1519,6 +1535,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
 #--- Test expression
   @semanticExpressionForGeneration analyzed_if_expression ;
   [m_if_expression analyzeSemanticExpression
+    ![@unifiedTypeMapProxy null]
     !inAnalysisContext
     !?ioVariableMap
     ?analyzed_if_expression
@@ -1588,6 +1605,7 @@ override method @enumeratedCollectionImplicitVarInExpAST analyzeEnumeration
   !@semanticExpressionForGeneration outEnumerationExpression
 :
   [mEnumeratedExpression analyzeSemanticExpression
+    ![@unifiedTypeMapProxy null]
     !inAnalysisContext
     !?ioVariableMap
     ?outEnumerationExpression
@@ -1618,6 +1636,7 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
   !@semanticExpressionForGeneration outEnumerationExpression
 :
   [mEnumeratedExpression analyzeSemanticExpression
+    ![@unifiedTypeMapProxy null]
     !inAnalysisContext
     !?ioVariableMap
     ?outEnumerationExpression
@@ -1681,6 +1700,7 @@ override method @enumeratedCollectionVarInExpAST analyzeEnumeration
   !@semanticExpressionForGeneration outEnumerationExpression
 :
   [mEnumeratedExpression analyzeSemanticExpression
+    ![@unifiedTypeMapProxy null]
     !inAnalysisContext
     !?ioVariableMap
     ?outEnumerationExpression
@@ -1770,6 +1790,7 @@ override method @forInstructionAST analyzeSemanticInstruction
   end foreach ;
 #---
   [mWhileExpression analyzeSemanticExpression
+    ![@unifiedTypeMapProxy null]
     !inAnalysisContext
     !?ioVariableMap
     ??@semanticExpressionForGeneration uncheckedWhileExpression
@@ -1880,6 +1901,7 @@ override method @foreachInstructionAST analyzeSemanticInstruction
   #--- Enumeration expression
     @semanticExpressionForGeneration enumerationExpression ;
     [mEnumeratedExpression analyzeSemanticExpression
+      ![@unifiedTypeMapProxy null]
       !inAnalysisContext
       !?ioVariableMap
       ?enumerationExpression
@@ -1957,6 +1979,7 @@ override method @foreachInstructionAST analyzeSemanticInstruction
 #--- While expression
   @semanticExpressionForGeneration uncheckedWhileExpression ;
   [mWhileExpression analyzeSemanticExpression
+    ![@unifiedTypeMapProxy null]
     !inAnalysisContext
     !?ioVariableMap
     ?uncheckedWhileExpression
@@ -2020,6 +2043,7 @@ override method @loopInstructionAST analyzeSemanticInstruction
 #--- Variant expression
   @semanticExpressionForGeneration variantExpression ;
   [mVariantExpression analyzeSemanticExpression
+    ![@unifiedTypeMapProxy null]
     !inAnalysisContext
     !?ioVariableMap
     ?variantExpression
@@ -2032,6 +2056,7 @@ override method @loopInstructionAST analyzeSemanticInstruction
 #--- Loop expression
   @semanticExpressionForGeneration loopExpression ;
   [mLoopExpression analyzeSemanticExpression
+    ![@unifiedTypeMapProxy null]
     !inAnalysisContext
     !?ioVariableMap
     ?loopExpression
@@ -2087,6 +2112,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
 #--- Expression
   @semanticExpressionForGeneration castExpression ;
   [mCastExpression analyzeSemanticExpression
+    ![@unifiedTypeMapProxy null]
     !inAnalysisContext
     !?ioVariableMap
     ?castExpression
@@ -2299,6 +2325,7 @@ override method @grammarInstructionAST analyzeSemanticInstruction
   ;
 #--- Parse source expression
   [mSourceExpression analyzeSemanticExpression
+    ![@unifiedTypeMapProxy null]
     !inAnalysisContext
     !?ioVariableMap
     ??@semanticExpressionForGeneration sourceExpression
@@ -2364,6 +2391,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
 :
 #--- Analyze source expression
   [mKeyExpression analyzeSemanticExpression
+    ![@unifiedTypeMapProxy null]
     !inAnalysisContext
     !?ioVariableMap
     ??@semanticExpressionForGeneration keyExpression
@@ -2470,6 +2498,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
 #--- Analyze receiver expression
   @semanticExpressionForGeneration receiverExpression ;
   [mReceiverExpression analyzeSemanticExpression
+    ![@unifiedTypeMapProxy null]
     !inAnalysisContext
     !?ioVariableMap
     ?receiverExpression
@@ -2478,6 +2507,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
 #--- Analyze key expression
   @semanticExpressionForGeneration keyExpression ;
   [mKeyExpression analyzeSemanticExpression
+    ![@unifiedTypeMapProxy null]
     !inAnalysisContext
     !?ioVariableMap
     ?keyExpression
@@ -2575,6 +2605,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
 #--- Analyze switch expression
   @semanticExpressionForGeneration switchExpression ;
   [mSwitchExpression analyzeSemanticExpression
+    ![@unifiedTypeMapProxy null]
     !inAnalysisContext
     !?ioVariableMap
     ?switchExpression
