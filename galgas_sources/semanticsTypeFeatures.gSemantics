@@ -109,7 +109,6 @@ override reader @stringPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags
 :
   outFlags := binaryConcatOperator [] | plusEqualOperatorWithExpression [] | binaryAddOperator []
-    | plusEqualOperatorWithFieldList []
     | generateDescriptionReaderUtilityMethod [] | isComparable [] ;
 end reader ;
 
@@ -190,7 +189,7 @@ override reader @stringsetPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags
 :
   outFlags := binarySubOperator []
-    | binaryAndOperator [] | binaryOrOperator [] | plusEqualOperatorWithFieldList []
+    | binaryAndOperator [] | binaryOrOperator []
     | generateDescriptionReaderUtilityMethod [] | plusEqualOperatorWithExpression []
     | generateEnumerationHelperMethods [] | isComparable []
     | generateCopyConstructorAndAssignmentOperator [] ;

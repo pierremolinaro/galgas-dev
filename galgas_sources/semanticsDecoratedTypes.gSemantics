@@ -1559,5 +1559,32 @@ class @filewrapperDeclarationForGeneration extends @semanticDeclarationWithHeade
 }
 
 #---------------------------------------------------------------------------*
+#                                                                           *
+#    M A T C H    I N S T R U C T I O N                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @matchListForGeneration {
+  @bool mIsType ;
+  @string mTypeNameOrEnumerationConstantName ;
+  @string mLocalConstantName ; # Empy string if no variable
+}
+
+#---------------------------------------------------------------------------*
+
+list @matchInstructionBranchListForGeneration {
+  @matchListForGeneration mMatchListForGeneration ;
+  @semanticInstructionListForGeneration mMatchBranchInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @matchInstructionForGeneration extends @semanticInstructionForGeneration {
+  @semanticExpressionListForGeneration mMatchedExpressionList ;
+  @matchInstructionBranchListForGeneration mMatchInstructionBranchList ;
+  @semanticInstructionListForGeneration mElseInstructionList ;
+}
+
+#---------------------------------------------------------------------------*
 
 end semantics ;
