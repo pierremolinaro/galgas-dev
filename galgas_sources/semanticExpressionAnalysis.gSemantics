@@ -536,6 +536,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 routine analyzeConstructorInvocation
+  ??@unifiedTypeMapProxy inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   ??@lstring inTypeName
@@ -546,52 +547,59 @@ routine analyzeConstructorInvocation
   !@semanticExpressionListForGeneration outConstructorEffectiveParameterList
   !@bool outHasCompilerArgument
 :
-  outConstructorType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !inTypeName] ;
-#--- Get constructor map from type map
-  const @constructorMap constructorMap := [outConstructorType mConstructorMap] ;
-#--- Search contructor
-  @unifiedTypeMapProxyAndParameterList constructorFormalArgumentTypeList ;
-  with constructorMap hasKey ![inConstructorName string] do
-    constructorFormalArgumentTypeList := mArgumentTypeList ;
-    outHasCompilerArgument := mHasCompilerArgument ;
-    outReturnedType := mReturnedType ;
-  else
-    if [constructorMap count] == 0 then
-      error inConstructorName
-      : "the '@". inTypeName . "' type does not define any constructor"
-      : constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType
-      ;
-    else
-      @string s := "" ;
-      foreach constructorMap do
-        s .= "\n  - " . lkey ;
-        foreach mArgumentTypeList do
-          s .= " ?@" . [mType key] ;
-        end foreach ;
-        s .= " -> @" . [mReturnedType key] ;
-      end foreach ;
-      error inConstructorName
-      : "the '@". inTypeName . "' type does not define the '" . inConstructorName . "' constructor; "
-      . if [constructorMap count] > 1 then "available constructors are" else "available constructor is" end
-      . ":" . s
-      : constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType
-      ;
-    end if ;
-  end with ;
-#--- Analysis arguments
-  if [inConstuctorEffectiveParameterExpressions length] != [constructorFormalArgumentTypeList length] then
-    error inConstructorName
-    : "calling the '" . inConstructorName . "' constructor of '@" . inTypeName . "' requires "
-    . [[constructorFormalArgumentTypeList length] string] . " parameter(s), while this call has "
-    . [[inConstuctorEffectiveParameterExpressions length] string] . " parameter(s)" ;
+  outConstructorType := inType ;
+  if inTypeName->string != "" then
+    outConstructorType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !inTypeName] ;
   end if ;
-  outConstructorEffectiveParameterList := [@semanticExpressionListForGeneration emptyList] ;
-  foreach inConstuctorEffectiveParameterExpressions, constructorFormalArgumentTypeList do
-    @semanticExpressionForGeneration exp ;
-    [mExpression analyzeSemanticExpression !mType !inAnalysisContext !?ioVariableMap ?exp] ;
-    checkAssignmentTypes !mType ![exp mType] !mEndOfExpressionLocation ;
-    outConstructorEffectiveParameterList += !exp ;
-  end foreach ;
+  if [outConstructorType isNull] then
+    error inTypeName : "cannot infer type" : outReturnedType, outConstructorType, outConstructorEffectiveParameterList, outHasCompilerArgument ;
+  else
+  #--- Get constructor map from type map
+    const @constructorMap constructorMap := [outConstructorType mConstructorMap] ;
+  #--- Search contructor
+    @unifiedTypeMapProxyAndParameterList constructorFormalArgumentTypeList ;
+    with constructorMap hasKey ![inConstructorName string] do
+      constructorFormalArgumentTypeList := mArgumentTypeList ;
+      outHasCompilerArgument := mHasCompilerArgument ;
+      outReturnedType := mReturnedType ;
+    else
+      if [constructorMap count] == 0 then
+        error inConstructorName
+        : "the '@". inTypeName . "' type does not define any constructor"
+        : constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType
+        ;
+      else
+        @string s := "" ;
+        foreach constructorMap do
+          s .= "\n  - " . lkey ;
+          foreach mArgumentTypeList do
+            s .= " ?@" . [mType key] ;
+          end foreach ;
+          s .= " -> @" . [mReturnedType key] ;
+        end foreach ;
+        error inConstructorName
+        : "the '@". inTypeName . "' type does not define the '" . inConstructorName . "' constructor; "
+        . if [constructorMap count] > 1 then "available constructors are" else "available constructor is" end
+        . ":" . s
+        : constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType
+        ;
+      end if ;
+    end with ;
+  #--- Analysis arguments
+    if [inConstuctorEffectiveParameterExpressions length] != [constructorFormalArgumentTypeList length] then
+      error inConstructorName
+      : "calling the '" . inConstructorName . "' constructor of '@" . inTypeName . "' requires "
+      . [[constructorFormalArgumentTypeList length] string] . " parameter(s), while this call has "
+      . [[inConstuctorEffectiveParameterExpressions length] string] . " parameter(s)" ;
+    end if ;
+    outConstructorEffectiveParameterList := [@semanticExpressionListForGeneration emptyList] ;
+    foreach inConstuctorEffectiveParameterExpressions, constructorFormalArgumentTypeList do
+      @semanticExpressionForGeneration exp ;
+      [mExpression analyzeSemanticExpression !mType !inAnalysisContext !?ioVariableMap ?exp] ;
+      checkAssignmentTypes !mType ![exp mType] !mEndOfExpressionLocation ;
+      outConstructorEffectiveParameterList += !exp ;
+    end foreach ;
+  end if ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -619,12 +627,13 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @constructorExpressionAST analyzeSemanticExpression
-  ??@unifiedTypeMapProxy unused inType
+  ??@unifiedTypeMapProxy inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
   analyzeConstructorInvocation
+    !inType
     !inAnalysisContext
     !?ioVariableMap
     !mTypeName

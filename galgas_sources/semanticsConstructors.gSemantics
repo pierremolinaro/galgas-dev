@@ -132,8 +132,9 @@ override method @locationPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@constructorMap outMap
 :
-  outMap := [@constructorMap emptyMap] ;
+  outMap := {} ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"nowhere" !"location" !false ;
+  enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"here" !"location" !true ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -142,7 +143,7 @@ override method @stringPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@constructorMap outMap
 :
-  outMap := [@constructorMap emptyMap] ;
+  outMap := {} ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"retrieveAndResetTemplateString" !"string" !true ;
   enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"stringWithSymbolicLinkContents" !"string" !"inPath" !"string" !true ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"stringWithVersionString" !"string" !false ;
@@ -167,7 +168,7 @@ override method @applicationPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@constructorMap outMap
 :
-  outMap := [@constructorMap emptyMap] ;
+  outMap := {} ;
 #--- Constructors for "bool" options
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"boolOptionNameList" !"2stringlist" !false ;
   enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"boolOptionInvocationLetter" !"string" !"inOptionComponentName" !"string" !"inOptionName" !"char" !false ;
@@ -191,7 +192,7 @@ override method @charPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@constructorMap outMap
 :
-  outMap := [@constructorMap emptyMap] ;
+  outMap := {} ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"replacementCharacter" !"char" !false ;
   enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"unicodeCharacterWithUnsigned" !"uint" !"inValue" !"char" !false ;
 end method ;
@@ -202,7 +203,7 @@ override method @uintPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@constructorMap outMap
 :
-  outMap := [@constructorMap emptyMap] ;
+  outMap := {} ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"compilationMode" !"uint" !false ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"max" !"uint" !false ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"errorCount" !"uint" !false ;
@@ -216,7 +217,7 @@ override method @sintPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@constructorMap outMap
 :
-  outMap := [@constructorMap emptyMap] ;
+  outMap := {} ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"max" !"sint" !false ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"min" !"sint" !false ;
 end method ;
@@ -227,7 +228,7 @@ override method @uint64PredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@constructorMap outMap
 :
-  outMap := [@constructorMap emptyMap] ;
+  outMap := {} ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"max" !"uint64" !false ;
   enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"uint64MaskWithCompressedBitString" !"string" !"inBitString" !"uint64" !true ;
   enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"uint64BaseValueWithCompressedBitString" !"string" !"inBitString" !"uint64" !true ;
@@ -240,7 +241,7 @@ override method @sint64PredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@constructorMap outMap
 :
-  outMap := [@constructorMap emptyMap] ;
+  outMap := {} ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"max" !"sint64" !false ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"min" !"sint64" !false ;
 end method ;
@@ -251,7 +252,7 @@ override method @stringsetPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@constructorMap outMap
 :
-  outMap := [@constructorMap emptyMap] ;
+  outMap := {} ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"emptySet" !"stringset" !false ;
   enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"setWithString" !"string" !"inString" !"stringset" !false ;
   enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"setWithStringList" !"stringlist" !"inStringList" !"stringset" !false ;
@@ -264,7 +265,7 @@ override method @binarysetPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@constructorMap outMap
 :
-  outMap := [@constructorMap emptyMap] ;
+  outMap := {} ;
   enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"binarySetWithBit" !"uint" !"inBitIndex" !"binaryset" !true ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"emptyBinarySet" !"binaryset" !false ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"fullBinarySet" !"binaryset" !false ;
@@ -290,7 +291,7 @@ override method @typePredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@constructorMap outMap
 :
-  outMap := [@constructorMap emptyMap] ;
+  outMap := {} ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"typeList" !"typelist" !false ;
 end method ;
 
@@ -300,7 +301,7 @@ override method @dataPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@constructorMap outMap
 :
-  outMap := [@constructorMap emptyMap] ;
+  outMap := {} ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"emptyData" !"data" !false ;
   enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"dataWithContentsOfFile" !"string" !"inFilePath" !"data" !true ;
 end method ;
@@ -311,7 +312,7 @@ override method @functionPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@constructorMap outMap
 :
-  outMap := [@constructorMap emptyMap] ;
+  outMap := {} ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"functionList" !"functionlist" !false ;
   enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"functionWithName" !"string" !"inName" !"function" !false ;
   enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"isFunctionDefined" !"string" !"inFunctionName" !"bool" !false ;
@@ -323,7 +324,7 @@ override method @doublePredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@constructorMap outMap
 :
-  outMap := [@constructorMap emptyMap] ;
+  outMap := {} ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"pi" !"double" !false ;
   enterConstructorWithArgument    !?outMap !?ioUnifiedTypeMap !"doubleWithBinaryImage" !"uint64" !"inBinaryImage" !"double" !false ;
 end method ;

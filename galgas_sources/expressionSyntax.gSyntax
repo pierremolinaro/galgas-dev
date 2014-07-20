@@ -482,7 +482,8 @@ end rule ;
 #------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression :
-  $here$ ;
+  $here$ :> ??@string sep ?* ;
+  send sep . "@location:here" ;
   outExpression := [@hereExpressionAST new !here] ;
 end rule ;
 
