@@ -88,19 +88,22 @@ rule <syntax_component_start_symbol> !@galgas3SyntaxComponentListAST.element out
   @nonterminalDeclarationListAST mNonterminalDeclarationList [emptyList] ;
   @syntaxRuleListAST mRuleList [emptyList] ;
   @semanticDeclarationListAST mSemanticDeclarations [emptyList] ;
+  var semanticDeclarations := "" ;
   repeat
   while
     <nonterminal_declaration> !? mNonterminalDeclarationList ;
   while
     <syntax_rule_declaration> !? mRuleList ;
   while
-    <semantic_declaration> !?mSemanticDeclarations ;
+    <semantic_declaration> !?mSemanticDeclarations :> ??@string dec ;
+    semanticDeclarations += dec ;
   end repeat ;
 #--- end
   $end$ :> ?sep ?* ;
   send sep . "}" ;
   $syntax$ :> ?* ?* ;
   $;$  :> ?* ?* ;
+  send semanticDeclarations ;
   outSyntaxComponentRoot := [@galgas3SyntaxComponentListAST.element new
     !mSyntaxComponentName
     !importedLexiqueReference
