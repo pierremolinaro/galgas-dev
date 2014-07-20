@@ -129,6 +129,7 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "filewrapper",
   "for",
   "foreach",
+  "func",
   "function",
   "getter",
   "grammar",
@@ -152,6 +153,7 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "loop",
   "map",
   "mapproxy",
+  "match",
   "message",
   "method",
   "mod",
@@ -165,6 +167,7 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "or",
   "override",
   "parse",
+  "proc",
   "project",
   "program",
   "reader",
@@ -515,7 +518,7 @@ end rule ;
 # ----------------------------- Delimitors ---------------------------------------
 list galgasDelimitorsList error message "the '%K' delimitor" style delimitersStyle :
   "*",     "|",    ",",      "+",     "--",  ":>",
-  ">",    ";",      ":",
+  ">",    ";",      ":",    "::",
   "-",     "(",    ")",     "->",      "?",
   "==",   "??",    "!",     ":=",     "++",
   "[",     "]",   "+=",     "?!",     "!?",

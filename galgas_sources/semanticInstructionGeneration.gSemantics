@@ -1319,6 +1319,8 @@ override method @logInstructionForGeneration generateInstruction
 end method ;
 
 #---------------------------------------------------------------------------*
+#! switch
+#---------------------------------------------------------------------------*
 
 override method @switchInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
@@ -1349,6 +1351,65 @@ override method @switchInstructionForGeneration generateInstruction
     ;
     ioGeneratedCode .= "  } break ;\n" ;
   end foreach ;
+  ioGeneratedCode .= "}\n" ;
+  [!?ioGeneratedCode decIndentation !2] ;
+  ioGeneratedCode .= "}\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @matchInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode
+:
+  @stringlist receiverList [emptyList] ;
+  foreach mMatchedExpressionList do
+    [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ??@string variable] ;
+    receiverList += !variable ;
+  end foreach ;
+  ioGeneratedCode .= "if (" ;
+  foreach receiverList
+    do ioGeneratedCode .= mValue . ".isValid ()" ;
+    between ioGeneratedCode .= " && " ;
+  end foreach ;
+  ioGeneratedCode .= ") {\n" ;
+  [!?ioGeneratedCode incIndentation !2] ;
+  foreach mMatchInstructionBranchList do
+    ioGeneratedCode .= "if (" ;
+    foreach mMatchListForGeneration, receiverList do
+      if mIsType then
+        ioGeneratedCode .= "(NULL != dynamic_cast <const cPtr_" . [mTypeNameOrEnumerationConstantName identifierRepresentation]
+                        . " *> (" . mValue . ".ptr ()))" ;
+      else
+        ioGeneratedCode .= "(" . mValue . ".enumValue () == GALGAS_"
+                        . [mLocalConstantName identifierRepresentation]
+                        . "::kEnum_" . [mTypeNameOrEnumerationConstantName identifierRepresentation] . ")" ;
+      end if ;
+      between ioGeneratedCode .= " && " ;
+    end foreach ;
+    ioGeneratedCode .= ") {\n" ;
+    generateInstructionList
+      !?ioInclusionSet
+      !mMatchBranchInstructionList
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
+      !?ioGeneratedCode
+    ;
+  between ioGeneratedCode .= "}else " ;
+  end foreach ;
+  ioGeneratedCode .= "}else{\n" ;
+  generateInstructionList
+    !?ioInclusionSet
+    !mElseInstructionList
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    !inGenerateSyntaxDirectedTranslationString
+    !?ioGeneratedCode
+  ;
   ioGeneratedCode .= "}\n" ;
   [!?ioGeneratedCode decIndentation !2] ;
   ioGeneratedCode .= "}\n" ;

@@ -999,7 +999,7 @@ override method @mapDeclarationAST enterInSemanticContext
     ![@classMethodMap emptyMap]
     !enumerationDescriptor
     !enumerationVariants
-    !doNotGenererateObjectCompare [] | plusEqualOperatorWithFieldList [] | plusEqualOperatorWithFieldListNeedsCompilerArg []
+    !doNotGenererateObjectCompare [] | plusEqualOperatorWithFieldListNeedsCompilerArg []
     !argumentTypeListForAddAssignWithFieldExpressionList
     ![@stringset emptySet]
     ![@lstringlist emptyList]
@@ -2206,7 +2206,7 @@ override method @listDeclarationAST enterInSemanticContext
     ![@classMethodMap emptyMap]
     !enumerationDescriptor
     !enumerationVariants
-    !binaryConcatOperator [] | doNotGenererateObjectCompare [] | plusEqualOperatorWithExpression [] | plusEqualOperatorWithFieldList [] | binaryAddOperator []
+    !binaryConcatOperator [] | doNotGenererateObjectCompare [] | plusEqualOperatorWithExpression [] | binaryAddOperator []
     !constructorAttributeTypeList
     ![@stringset emptySet]
     ![@lstringlist emptyList]
