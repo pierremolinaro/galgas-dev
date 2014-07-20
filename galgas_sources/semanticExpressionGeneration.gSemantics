@@ -24,7 +24,11 @@ semantics semanticExpressionGeneration :
 
 reader @location sourceFile -> @string outResult
 :
-  outResult := "SOURCE_FILE (" . [[[selfcopy file] lastPathComponent] utf8Representation] . ", " .  [[selfcopy line] string] . ")" ;
+  if [selfcopy isNowhere] then
+    outResult := "SOURCE_FILE (\"\", 0)" ;
+  else
+    outResult := "SOURCE_FILE (" . [[[selfcopy file] lastPathComponent] utf8Representation] . ", " .  [[selfcopy line] string] . ")" ;
+  end if ;
 end reader ;
 
 #---------------------------------------------------------------------------*

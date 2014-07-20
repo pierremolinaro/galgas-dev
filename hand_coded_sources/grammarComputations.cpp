@@ -609,13 +609,12 @@ analyzeGrammar (C_Compiler * inCompiler,
     C_String errorMessage  ;
     if (outHTMLHelperFileContents.registeringIsEnabled ()) {
       errorMessage << "errors have been raised when analyzing the grammar: see file"
-                      " '"
+                      " 'file://"
                    << inHTMLFileName
                    << "'" ;
     }else{
       errorMessage << "errors have been raised when analyzing the grammar:"
                       " turn on '--output-html-grammar-file' option in order to get an output file for debugging" ;
-
     }
     inCompiler->semanticErrorAtLocation (inErrorLocation, errorMessage COMMA_HERE) ;
   }else if (warningFlag) {
@@ -633,7 +632,7 @@ analyzeGrammar (C_Compiler * inCompiler,
     C_String warningMessage  ;
     warningMessage << "warnings have been raised when analyzing the grammar: " ;
     if (outHTMLHelperFileContents.registeringIsEnabled ()) {
-      warningMessage << "see file '" << inHTMLFileName << "'" ;
+      warningMessage << "see file 'file://" << inHTMLFileName << "'" ;
     }else{
       warningMessage << "turn on '-H' command line option, and see generated '" << inTargetFileName.mAttribute_string.stringValue () << ".html' file" ;
     }

@@ -525,80 +525,112 @@ end rule ;
 
 rule <primary> !@semanticExpressionAST outExpression :
   $[$ ;
+#--- Get source identity characteristics
+  @semanticExpressionAST receiverExpression ;
+  <expression> ? receiverExpression ;
+#--- Get reader name
+  @lstring readerName ;
+  $identifier$ ? readerName ;
+#--- Actual parameters
+  @semanticExpressionListAST expressionList ;
+  <output_expression_list> ?expressionList ;
+  outExpression := [@readerCallExpressionAST new !receiverExpression !readerName !expressionList] ;
+  $]$ ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression :
+  $[$ :> ??@string sep ?* ;
+  send sep ;
+#--- Class name
+  $type_name$ ?@lstring className indexing typeReferenceInConstructor ;
+  send ":" ;
+#--- Constructor name
+  $identifier$ ?@lstring constructorName ;
+  send " {" ;
+#--- Actual arguments
+  <output_expression_list> ?@semanticExpressionListAST expressionList ;
+  outExpression := [@constructorExpressionAST new
+    !className
+    !constructorName
+    !expressionList
+  ] ;
+  $]$ :> ?* ?* ;
+  send "}" ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression :
+  $[$ :> ??@string sep ?* ;
+  send sep ;
+  $type_name$ ?@lstring className indexing typeReferenceInConstructor ;
+  $default$ ;
+  outExpression := [@defaultConstructorExpressionAST new !className] ;
+  $]$ :> ?* ?* ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression :
+  $[$ ;
+  $option$ ;
   select
-  #--- Get source identity characteristics
-    @semanticExpressionAST receiverExpression ;
-    <expression> ? receiverExpression ;
-  #--- Get reader name
-    @lstring readerName ;
-    $identifier$ ? readerName ;
-  #--- Actual parameters
-    @semanticExpressionListAST expressionList ;
-    <output_expression_list> ?expressionList ;
-    outExpression := [@readerCallExpressionAST new !receiverExpression !readerName !expressionList] ;
+    $.$ ;
+    $identifier$ ?@lstring optionName ;
+    $identifier$ ?@lstring readerName ;
+    outExpression := [@optionExpressionAST new ![@lstring new !"galgas_builtin_options" !here] !optionName !readerName] ;
   or
-  #--- Class name
-    $type_name$ ?@lstring className indexing typeReferenceInConstructor ;
-  #--- Constructor name
-    $identifier$ ?@lstring constructorName ;
-  #--- Actual arguments
-    <output_expression_list> ?@semanticExpressionListAST expressionList ;
-    outExpression := [@constructorExpressionAST new
-      !className
-      !constructorName
-      !expressionList
+    $identifier$ ?@lstring optionComponentName indexing optionComponentReference ;
+    $.$ ;
+    $identifier$ ?@lstring optionName ;
+    $identifier$ ?@lstring readerName ;
+    outExpression := [@optionExpressionAST new !optionComponentName !optionName !readerName] ;
+  end select ;
+  $]$ ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+rule <primary> !@semanticExpressionAST outExpression :
+  $[$ ;
+  $lexique$ ;
+  $identifier$ ?@lstring lexiqueName ;
+  $:$ ;
+  $identifier$ ?@lstring readerName ;
+  outExpression := [@lexiqueIntrospectionExpressionAST new !lexiqueName !readerName] ;
+  $]$ ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression :
+  $[$ ;
+  $filewrapper$ ;
+  $identifier$ ?@lstring filewrapperName indexing filewrapperReference ;
+  select
+    outExpression := [@filewrapperObjectInstanciationInExpressionAST new
+      !filewrapperName
     ] ;
   or
-    $type_name$ ?@lstring className indexing typeReferenceInConstructor ;
-    $default$ ;
-    outExpression := [@defaultConstructorExpressionAST new !className] ;
-  or
-    $option$ ;
+    $.$ ;
     select
-      $.$ ;
-      $identifier$ ?@lstring optionName ;
-      $identifier$ ?@lstring readerName ;
-      outExpression := [@optionExpressionAST new ![@lstring new !"galgas_builtin_options" !here] !optionName !readerName] ;
-    or
-      $identifier$ ?@lstring optionComponentName indexing optionComponentReference ;
-      $.$ ;
-      $identifier$ ?@lstring optionName ;
-      $identifier$ ?@lstring readerName ;
-      outExpression := [@optionExpressionAST new !optionComponentName !optionName !readerName] ;
-    end select ;
-  or
-    $lexique$ ;
-    $identifier$ ?@lstring lexiqueName ;
-    $:$ ;
-    $identifier$ ?@lstring readerName ;
-    outExpression := [@lexiqueIntrospectionExpressionAST new !lexiqueName !readerName] ;
-  or
-    $filewrapper$ ;
-    $identifier$ ?@lstring filewrapperName indexing filewrapperReference ;
-    select
-      outExpression := [@filewrapperObjectInstanciationInExpressionAST new
+      @lstring filePath ;
+      $literal_string$ ? filePath ;
+      outExpression := [@filewrapperInExpressionAST new
         !filewrapperName
+        !filePath
       ] ;
     or
-      $.$ ;
-      select
-        @lstring filePath ;
-        $literal_string$ ? filePath ;
-        outExpression := [@filewrapperInExpressionAST new
-          !filewrapperName
-          !filePath
-        ] ;
-      or
-        @lstring filewrapperTemplateName ;
-        $identifier$ ? filewrapperTemplateName ;
-        @semanticExpressionListAST expressionList ;
-        <output_expression_list> ?expressionList ;
-        outExpression := [@filewrapperTemplateInExpressionAST new
-          !filewrapperName
-          !filewrapperTemplateName
-          !expressionList
-        ] ;
-      end select ;
+      @lstring filewrapperTemplateName ;
+      $identifier$ ? filewrapperTemplateName ;
+      @semanticExpressionListAST expressionList ;
+      <output_expression_list> ?expressionList ;
+      outExpression := [@filewrapperTemplateInExpressionAST new
+        !filewrapperName
+        !filewrapperTemplateName
+        !expressionList
+      ] ;
     end select ;
   end select ;
   $]$ ;

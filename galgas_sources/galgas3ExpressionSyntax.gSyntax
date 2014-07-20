@@ -59,7 +59,7 @@ rule <expression> !@semanticExpressionAST outExpression :
     or
       $>$ ; kind := [@dynamicTypeComparisonKind strictlyInherited] ;
     end select ;
-    $type_name$ ?@lstring typeName ;
+    $type_name$ ??@lstring typeName ;
     outExpression := [@testDynamicClassInExpressionAST new
       !outExpression
       !endOfReceiverExpression
@@ -500,6 +500,13 @@ end rule ;
 
 rule <primary> !@semanticExpressionAST outExpression :
   $[$ ;
+  <primary_entre_crochets> ?outExpression ;
+  $]$ ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+
+rule <primary_entre_crochets> !@semanticExpressionAST outExpression :
 #--- Get source identity characteristics
   <expression> ??@semanticExpressionAST receiverExpression ;
 #--- Get reader name
@@ -507,41 +514,11 @@ rule <primary> !@semanticExpressionAST outExpression :
 #--- Actual parameters
   <output_expression_list> ??@semanticExpressionListAST expressionList ;
   outExpression := [@readerCallExpressionAST new !receiverExpression !readerName !expressionList] ;
-  $]$ ;
 end rule ;
 
 #------------------------------------------------------------------------------*
 
-rule <primary> !@semanticExpressionAST outExpression :
-  $[$ ;
-#--- Class name
-  $type_name$ ??@lstring className indexing typeReferenceInConstructor ;
-#--- Constructor name
-  $identifier$ ??@lstring constructorName ;
-#--- Actual arguments
-  <output_expression_list> ??@semanticExpressionListAST expressionList ;
-  outExpression := [@constructorExpressionAST new
-    !className
-    !constructorName
-    !expressionList
-  ] ;
-  $]$ ;
-end rule ;
-
-#------------------------------------------------------------------------------*
-
-rule <primary> !@semanticExpressionAST outExpression :
-  $[$ ;
-  $type_name$ ??@lstring className indexing typeReferenceInConstructor ;
-  $default$ ;
-  outExpression := [@defaultConstructorExpressionAST new !className] ;
-  $]$ ;
-end rule ;
-
-#------------------------------------------------------------------------------*
-
-rule <primary> !@semanticExpressionAST outExpression :
-  $[$ ;
+rule <primary_entre_crochets> !@semanticExpressionAST outExpression :
   $option$ ;
   select
     $.$ ;
@@ -555,25 +532,21 @@ rule <primary> !@semanticExpressionAST outExpression :
     $identifier$ ?@lstring readerName ;
     outExpression := [@optionExpressionAST new !optionComponentName !optionName !readerName] ;
   end select ;
-  $]$ ;
 end rule ;
 
 #------------------------------------------------------------------------------*
 
-rule <primary> !@semanticExpressionAST outExpression :
-  $[$ ;
+rule <primary_entre_crochets> !@semanticExpressionAST outExpression :
   $lexique$ ;
   $identifier$ ?@lstring lexiqueName ;
   $:$ ;
   $identifier$ ?@lstring readerName ;
   outExpression := [@lexiqueIntrospectionExpressionAST new !lexiqueName !readerName] ;
-  $]$ ;
 end rule ;
 
 #------------------------------------------------------------------------------*
 
-rule <primary> !@semanticExpressionAST outExpression :
-  $[$ ;
+rule <primary_entre_crochets> !@semanticExpressionAST outExpression :
   $filewrapper$ ;
   $identifier$ ?@lstring filewrapperName indexing filewrapperReference ;
   select
@@ -598,7 +571,100 @@ rule <primary> !@semanticExpressionAST outExpression :
       ] ;
     end select ;
   end select ;
-  $]$ ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#! Constructor
+#------------------------------------------------------------------------------*
+
+rule <optional_type> !@lstring outTypeName :
+  outTypeName := [@lstring new !"" !here] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+rule <optional_type> !@lstring outTypeName :
+  $type_name$ ?outTypeName indexing typeReferenceInConstructor ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression :
+#--- Type name
+  <optional_type> ??@lstring typeName ;
+  $:$ ;
+#--- Constructor name
+  $identifier$ ??@lstring constructorName ;
+#--- Actual arguments
+  @semanticExpressionListAST expressionList ;
+  select
+    expressionList := {} ;
+  or
+    ${$ ;
+    <output_expression_list> ?expressionList ;
+    $}$ ;
+  end select ;
+  outExpression := [@constructorExpressionAST new
+    !typeName
+    !constructorName
+    !expressionList
+  ] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression :
+  <optional_type> ??@lstring typeName ;
+  $default$ ;
+  outExpression := [@defaultConstructorExpressionAST new !typeName] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#! Collection value
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression :
+  <optional_type> ??@lstring typeName ;
+  ${$ ;
+  var elementList := @collectionValueElementList {} ;
+  select
+  or
+    repeat
+      <collection_value_element> ??@abstractCollectionValueElement element ;
+      elementList += !element ;
+    while
+      $,$ ;
+    end repeat ;
+  end select ;
+  outExpression := [@collectionValueAST new
+    !typeName
+    !elementList
+    !here
+  ] ;  
+  $}$ ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+
+rule <collection_value_element> 
+  !@abstractCollectionValueElement outValueElement
+:
+  @semanticExpressionListAST expressionList [emptyList] ;
+  repeat
+    $!$ ;
+    <expression> ??@semanticExpressionAST expression ;
+    expressionList += !expression !here ;
+  while
+  end repeat ;
+  outValueElement := [@expressionListCollectionValue new !expressionList !here] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+
+rule <collection_value_element> 
+  !@abstractCollectionValueElement outValueElement
+:
+  <expression> ??@semanticExpressionAST expression ;
+  outValueElement := [@expressionCollectionValue new !expression !here] ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -607,6 +673,8 @@ end rule ;
 #                                                                              *
 #   function call        :   function_name (!... )                             *
 #                                                                              *
+#------------------------------------------------------------------------------*
+#! Function call
 #------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression :
@@ -634,102 +702,6 @@ rule <primary> !@semanticExpressionAST outExpression :
   outExpression := [@literalTypeInExpressionAST new
     !typeName
   ] ;
-end rule ;
-
-#------------------------------------------------------------------------------*
-#                                                                              *
-#                         P R I M A R Y                                        *
-#                                                                              *
-#   Collection value                                                           *
-#                                                                              *
-#------------------------------------------------------------------------------*
-
-rule <collection_value_element> 
-  !@abstractCollectionValueElement outValueElement
-:
-  @semanticExpressionListAST expressionList [emptyList] ;
-  repeat
-    $!$ ;
-    <expression> ??@semanticExpressionAST expression ;
-    expressionList += !expression !here ;
-  while
-  end repeat ;
-  outValueElement := [@expressionListCollectionValue new !expressionList !here] ;
-end rule ;
-
-#------------------------------------------------------------------------------*
-
-rule <collection_value_element> 
-  !@abstractCollectionValueElement outValueElement
-:
-  <expression> ??@semanticExpressionAST expression ;
-  outValueElement := [@expressionCollectionValue new !expression !here] ;
-end rule ;
-
-#------------------------------------------------------------------------------*
-
-rule <primary> !@semanticExpressionAST outExpression :
-  @lstring typeName ;
-  select
-    typeName := [@lstring new !"" !here] ;
-  or
-    $type_name$ ?typeName ;
-  end select ;
-  ${$ ;
-  var elementList := @collectionValueElementList {} ;
-  select
-  or
-    repeat
-      <collection_value_element> ??@abstractCollectionValueElement element ;
-      elementList += !element ;
-    while
-      $,$ ;
-    end repeat ;
-  end select ;
-  outExpression := [@collectionValueAST new
-    !typeName
-    !elementList
-    !here
-  ] ;  
-  $}$ ;
-end rule ;
-
-#------------------------------------------------------------------------------*
-#                                                                              *
-#                         P R I M A R Y                                        *
-#                                                                              *
-#   Constructor call with infered type                                         *
-#                                                                              *
-#------------------------------------------------------------------------------*
-
-#rule <primary> !@semanticExpressionAST outExpression :
-#  $[$ ;
-##--- Constructor name
-##  $identifier$ ??@lstring constructorName ;
-##--- Actual arguments
-##  <output_expression_list> ??@semanticExpressionListAST expressionList ;
-##  outExpression := [@constructorExpressionAST new
-##    !className
-##    !constructorName
-##    !expressionList
-##  ] ;
-#  outExpression := [@trueExpressionAST new !here] ; # TEMPORARY !!!
-#  $]$ ;
-#end rule ;
-
-#------------------------------------------------------------------------------*
-
-rule <primary> !@semanticExpressionAST outExpression :
-  $[$ ;
-#--- Constructor name
-  $default$ ;
-#  outExpression := [@constructorExpressionAST new
-#    !className
-#    !constructorName
-#    !expressionList
-#  ] ;
-  outExpression := [@trueExpressionAST new !here] ; # TEMPORARY !!!
-  $]$ ;
 end rule ;
 
 #---------------------------------------------------------------------------*
