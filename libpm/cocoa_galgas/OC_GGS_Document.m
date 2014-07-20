@@ -1047,6 +1047,7 @@
     attributes:defaultDictionary
   ] ;
   [mOutputTextView.textStorage setAttributedString:attributedString] ;
+  [mOutputTextView setAutomaticLinkDetectionEnabled:YES] ;
 }
 
 //-----------------------------------------------------------------------------*

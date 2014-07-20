@@ -409,10 +409,10 @@ rule <semantic_instruction>
   send sep. "var" ;
   $identifier$ ?@lstring variableName ;
   send " =" ;
-  $[$ ;
+  $[$ :> ?* ?* ;
   send tp . " " ;
   $default$ ;
-  $]$ ;
+  $]$ :> ?* ?* ;
   outInstruction := [@localVariableOrConstantDeclarationWithDefaultConstructorAST new
     ![typeName location]
     !false # Is not Constant
@@ -432,9 +432,10 @@ rule <semantic_instruction>
   send sep. "var" ;
   $identifier$ ?@lstring variableName ;
   send " =" ;
-  $[$ ;
-  send tp . " " ;
+  $[$ :> ?* ?* ;
+  send tp . ":" ;
   $identifier$ ?@lstring constructorName ;
+  send "{" ;
   <output_expression_list> ?@semanticExpressionListAST expressionList ;
   outInstruction := [@localVariableOrConstantDeclarationWithConstructorCallAST new
     ![typeName location]
@@ -444,7 +445,8 @@ rule <semantic_instruction>
     !constructorName
     !expressionList
   ] ;
-  $]$ ;
+  $]$ :> ?sep ?* ;
+  send sep . "}" ;
   $;$ :> ?* ?* ;
 end rule ;
 
@@ -490,14 +492,16 @@ rule <semantic_instruction>
   send sep . "let" ;
   $type_name$ ?@lstring typeName :> ?* ?@string tp ;
   $identifier$ ?@lstring variableName ;
-  send " =" ;
-  $[$ ;
-  send tp . " " ;
+  send " = " ;
+  $[$ :> ?* ?* ;
+  send tp . ":" ;
   @lstring constructorName ;
   $identifier$ ? constructorName ;
+  send " {" ;
   @semanticExpressionListAST expressionList ;
   <output_expression_list> ?expressionList ;
-  $]$ ;
+  $]$ :> ?sep ?* ;
+  send sep . "}" ;
   outInstruction := [@localVariableOrConstantDeclarationWithConstructorCallAST new
     ![typeName location]
     !true # is constant
@@ -519,11 +523,11 @@ rule <semantic_instruction>
   send sep . "let" ;
   $type_name$ ?@lstring typeName :> ?* ?@string tp ;
   $identifier$ ?@lstring variableName ;
-  send " =" ;
-  $[$ ;
-  send tp . " " ;
+  send " = " ;
+  $[$ :> ?* ?* ;
+  send tp . ":" ;
   $default$ ;
-  $]$ ;
+  $]$ :> ?* ?* ;
   outInstruction := [@localVariableOrConstantDeclarationWithDefaultConstructorAST new
     ![typeName location]
     !true # Is Constant

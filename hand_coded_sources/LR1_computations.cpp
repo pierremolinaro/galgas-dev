@@ -1128,7 +1128,7 @@ generate_LR1_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
 
   ioCppFileContents.appendCppHyphenLineComment () ;
   for (int32_t i=0 ; i<inImplementationFileHeaderList.count () ; i++) {
-    ioCppFileContents << "// #include \"" << inImplementationFileHeaderList (i COMMA_HERE) << ".h\"\n" ;
+    ioCppFileContents << "#include \"" << inImplementationFileHeaderList (i COMMA_HERE) << ".h\"\n" ;
   }
   ioCppFileContents << "\n" ;
 
