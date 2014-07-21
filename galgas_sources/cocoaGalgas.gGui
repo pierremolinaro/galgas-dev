@@ -146,15 +146,15 @@ with lexique "galgas3Scanner.gLexique" {
   label $abstract$, $getter$, $type_name$, $identifier$ ;
   label $override$,  $getter$, $type_name$, $identifier$ ;
   label $getter$, $type_name$, $identifier$ ;
-  label $when$, $.$, $literal_string$ ;
+  label $case$, $.$, $literal_string$ ;
   label * $commentMark$ (2, 0) ;
   label $terminal$, $!$ - ;
   label $terminal$, $error$ - ;
 
   
   textMacro "Types/Class" :
-    "class @aClassName : extends @superClassName {\n"
-    "  @aType mAnAttribute ;\n"
+    "class @aClassName : @superClassName {\n"
+    "  @aType mAnAttribute\n"
     "}\n"
   ;
   
@@ -166,29 +166,29 @@ with lexique "galgas3Scanner.gLexique" {
   
   textMacro "Types/List" :
     "list @type {\n"
-    "  @aType mAnAttribute ;\n"
+    "  @aType mAnAttribute\n"
     "}\n"
   ;
   
   textMacro "Types/List Map" :
     "list @type {\n"
-    "  @aType mAnAttribute ;\n"
+    "  @aType mAnAttribute\n"
     "}\n"
-    "listmap @myListMap (@aList) ;\n"
+    "listmap @myListMap (@aList)\n"
   ;
   
   textMacro "Types/Map" :
     "map @type {\n"
-    "  @aType mAnAttribute ;\n"
-    "  insert insertKey error message \"the '%K' key is already declared in %L\" ;\n"
-    "  search searchKey error message \"there is no '%K' key\" ;\n"
+    "  @aType mAnAttribute\n"
+    "  insert insertKey error message \"the '%K' key is already declared in %L\"\n"
+    "  search searchKey error message \"there is no '%K' key\"\n"
     "}\n"
   ;
   
   textMacro "Types/Sorted List" :
     "sortedlist @type {\n"
-    "  @string mFirstAttribute ;\n"
-    "  @bool mSecondAttribute ;\n"
+    "  @string mFirstAttribute\n"
+    "  @bool mSecondAttribute\n"
     "}{\n"
     "  mFirstAttribute >, mSecondAttribute <\n"
     "}\n"
@@ -196,7 +196,7 @@ with lexique "galgas3Scanner.gLexique" {
   
   textMacro "Types/Struct" :
     "struct @type {\n"
-    "  @aType mAnAttribute ;\n"
+    "  @aType mAnAttribute\n"
     "}\n"
   ;
 }

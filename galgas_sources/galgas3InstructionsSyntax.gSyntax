@@ -1124,7 +1124,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <cast_instruction_branch> ?!@castInstructionBranchListAST ioCastInstructionBranchList :
-  $when$ ;
+  $case$ ;
   @dynamicTypeComparisonKind kind ;
   select
     $==$ ; kind := [@dynamicTypeComparisonKind equal] ;
@@ -1536,7 +1536,7 @@ rule <semantic_instruction>
   const endOfSwitchExpression := here ;
   @switchBranchesAST switchBranches [emptyList] ;
   repeat
-    $when$ ;
+    $case$ ;
     @lstringlist constantNameList [emptyList] ;
     repeat
       $identifier$ ??@lstring constantName ;
@@ -1681,7 +1681,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <match_instruction_branch> ?!@matchInstructionBranchListAST ioMatchInstructionBranchList :
-  $when$ ;
+  $case$ ;
   @matchEntryListAST mMatchEntryList [emptyList] ;
   repeat
     <match_entry> !? mMatchEntryList ;

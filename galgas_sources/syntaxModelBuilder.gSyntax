@@ -465,7 +465,8 @@ end rule ;
 #------------------------------------------------------------------------------*
 
 rule <branchOfParseWhenInstruction> !@syntaxInstructionList outElseInstructionList :
-  $when$ ;
+  $when$ :> ??@string sep ?* ;
+  send sep . "case" ; ;
   const instructionLocation := here ;
   @semanticExpressionAST whenExpression ;
   <expression> ? whenExpression ;
@@ -498,7 +499,8 @@ rule <syntax_instruction>
 :
   $parse$ ;
   const instructionLocation := here ;
-  $when$ ;
+  $when$ :> ??@string sep ?* ;
+  send sep . "with" ;
   <expression> ?@semanticExpressionAST whenExpression ;
   const endOfWhenExpression := here ;
   $:$ ;
