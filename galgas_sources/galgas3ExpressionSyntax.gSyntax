@@ -451,17 +451,6 @@ end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#   P R I M A R Y    :    here                                                 *
-#                                                                              *
-#------------------------------------------------------------------------------*
-
-#rule <primary> !@semanticExpressionAST outExpression :
-#  $here$ ;
-#  outExpression := [@hereExpressionAST new !here] ;
-#end rule ;
-
-#------------------------------------------------------------------------------*
-#                                                                              *
 #   P R I M A R Y    :    if exp then exp else exp end                         *
 #                                                                              *
 #------------------------------------------------------------------------------*
@@ -591,7 +580,7 @@ end rule ;
 rule <primary> !@semanticExpressionAST outExpression :
 #--- Type name
   <optional_type> ??@lstring typeName ;
-  $:$ ;
+  $.$ ;
 #--- Constructor name
   $identifier$ ??@lstring constructorName ;
 #--- Actual arguments

@@ -289,7 +289,7 @@ indexing with projectLL1grammar
         if [option .verbose_output value] then
           message "*** Parse '" . [fullFilePath lastPathComponent] . "'\n" ;
         end if ;
-        @galgas3LexiqueComponentListAST.element lexiqueComponentRoot ;
+        @galgas3LexiqueComponentListAST-element lexiqueComponentRoot ;
         grammar lexiqueLL1grammar in fullFilePath ?lexiqueComponentRoot :> ??@string translatedSource ;
         if [option galgas_cli_options.convertToGalgas3 value] then
           const projectName := [[fullFilePath lastPathComponent] stringByDeletingPathExtension] ;
@@ -355,7 +355,7 @@ indexing with projectLL1grammar
         if [option .verbose_output value] then
           message "*** Parse '" . [fullFilePath lastPathComponent] . "'\n" ;
         end if ;
-        @galgas3SyntaxComponentListAST.element syntaxComponentRoot ;
+        @galgas3SyntaxComponentListAST-element syntaxComponentRoot ;
         grammar syntaxSLRgrammar in fullFilePath ?syntaxComponentRoot :> ??@string translatedSource ;
         if [option galgas_cli_options.convertToGalgas3 value] then
           const projectName := [[fullFilePath lastPathComponent] stringByDeletingPathExtension] ;
@@ -372,7 +372,7 @@ indexing with projectLL1grammar
         if [option .verbose_output value] then
           message "*** Parse '" . [fullFilePath lastPathComponent] . "'\n" ;
         end if ;
-        @galgas3GrammarComponentListAST.element grammarComponentRoot ;
+        @galgas3GrammarComponentListAST-element grammarComponentRoot ;
         grammar grammarLL1grammar in fullFilePath ?grammarComponentRoot :> ??@string translatedSource ;
         if [option galgas_cli_options.convertToGalgas3 value] then
           const projectName := [[fullFilePath lastPathComponent] stringByDeletingPathExtension] ;

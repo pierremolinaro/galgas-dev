@@ -51,10 +51,10 @@ cGenericAbstractEnumerator () {
 
 //-----------------------------------------------------------------------------*
 
-GALGAS_%!TYPE_IDENTIFIER%_2E_element cEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
+GALGAS_%!TYPE_IDENTIFIER%_2D_element cEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
   const cListMapElement * p = (const cListMapElement *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cListMapElement) ;
-  return GALGAS_%!TYPE_IDENTIFIER%_2E_element (p->mKey, p->mSharedListMapList) ;
+  return GALGAS_%!TYPE_IDENTIFIER%_2D_element (p->mKey, p->mSharedListMapList) ;
 }
 
 //-----------------------------------------------------------------------------*

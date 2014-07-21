@@ -90,7 +90,7 @@ proc testsuite_foreach_instruction {
     message "  do '" + key + "' (idx: " + [idx string] + ")\n"
   end
   message "--- begin of foreach instruction test 9\n"
-  var myData = @data:emptyData
+  var myData = @data.emptyData
   [!?myData appendByte !1]
   [!?myData appendByte !2]
   [!?myData appendByte !3]

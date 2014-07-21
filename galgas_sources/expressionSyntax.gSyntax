@@ -483,7 +483,7 @@ end rule ;
 
 rule <primary> !@semanticExpressionAST outExpression :
   $here$ :> ??@string sep ?* ;
-  send sep . "@location:here" ;
+  send sep . "@location.here" ;
   outExpression := [@hereExpressionAST new !here] ;
 end rule ;
 
@@ -546,7 +546,7 @@ rule <primary> !@semanticExpressionAST outExpression :
   send sep ;
 #--- Class name
   $type_name$ ?@lstring className indexing typeReferenceInConstructor ;
-  send ":" ;
+  send "." ;
 #--- Constructor name
   $identifier$ ?@lstring constructorName ;
   send " {" ;

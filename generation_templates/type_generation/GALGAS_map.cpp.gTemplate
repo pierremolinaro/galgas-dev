@@ -286,10 +286,10 @@ cGenericAbstractEnumerator () {
 
 //-----------------------------------------------------------------------------*
 
-GALGAS_%!TYPE_IDENTIFIER%_2E_element cEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
+GALGAS_%!TYPE_IDENTIFIER%_2D_element cEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
   const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;
-  return GALGAS_%!TYPE_IDENTIFIER%_2E_element (p->mAttribute_lkey%
+  return GALGAS_%!TYPE_IDENTIFIER%_2D_element (p->mAttribute_lkey%
 foreach ATTRIBUTE_LIST do
   %, p->mAttribute_%![mAttributeName identifierRepresentation]
 end

@@ -330,7 +330,7 @@ rule '@' :
     while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
     end repeat ;
     select
-    when '.' :
+    when '-' :
       repeat
         enterCharacterIntoString !?tokenString !* ;
       while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :

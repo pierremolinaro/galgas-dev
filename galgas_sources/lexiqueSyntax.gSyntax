@@ -23,7 +23,7 @@ import "lexiqueTypesForAST.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
-rule <lexique_component_start_symbol> !@galgas3LexiqueComponentListAST.element outLexiqueComponentRoot :
+rule <lexique_component_start_symbol> !@galgas3LexiqueComponentListAST-element outLexiqueComponentRoot :
   @bool isTemplate ;
   select
     isTemplate := true ;
@@ -92,7 +92,7 @@ rule <lexique_component_start_symbol> !@galgas3LexiqueComponentListAST.element o
   $end$ ;
   $lexique$ :> ?* ?* ;
   $;$ :> ?* ?* ;
-  outLexiqueComponentRoot := [@galgas3LexiqueComponentListAST.element new
+  outLexiqueComponentRoot := [@galgas3LexiqueComponentListAST-element new
     !lexiqueComponentName
     !isTemplate
     !templateDelimitorList

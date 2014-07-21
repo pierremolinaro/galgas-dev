@@ -31,7 +31,7 @@ import "galgas_cli_options.gOptions" ;
 routine compileSyntaxComponentFromAST
   ??@lstring inSourceFile
   ??@string inOutputDirectory
-  ??@galgas3SyntaxComponentListAST.element inSyntaxComponentRoot
+  ??@galgas3SyntaxComponentListAST-element inSyntaxComponentRoot
   ?!@parsedComponentStruct ioParsedComponentStruct
 :
   const @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
@@ -94,7 +94,7 @@ routine compileSyntaxComponentFromAST
     ![[inSyntaxComponentRoot mImportedLexiqueFilePath] absolutePathFromPath ![inSourceFile stringByDeletingLastPathComponent]]
     ![[inSyntaxComponentRoot mImportedLexiqueFilePath] location]
   ] ;
-  @galgas3LexiqueComponentListAST.element lexiqueComponentRoot ;
+  @galgas3LexiqueComponentListAST-element lexiqueComponentRoot ;
   parseLexiqueComponent
     !lexiqueFilePath
     !?ioParsedComponentStruct
@@ -273,7 +273,7 @@ routine compileSyntaxComponentFromSourceFile
 #--- Parse source file
   const basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
   const basenameKey := [@lstring new !basename !here] ;
-  @galgas3SyntaxComponentListAST.element syntaxComponentRoot ;
+  @galgas3SyntaxComponentListAST-element syntaxComponentRoot ;
   if [[ioParsedComponentStruct mParsedSyntaxComponentMap] hasKey ! basename] then
     [[ioParsedComponentStruct mParsedSyntaxComponentMap] searchKey !basenameKey ?* ?syntaxComponentRoot] ;
   else
@@ -353,7 +353,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 routine compileSyntaxComponentGalgas3
-  ??@galgas3SyntaxComponentListAST.element inSyntaxComponentRoot
+  ??@galgas3SyntaxComponentListAST-element inSyntaxComponentRoot
   ??@semanticContext inSemanticContext
   ?!@parsedSyntaxComponentMap ioParsedSyntaxComponentMap
   ?!@syntaxListForGeneration ioSyntaxListForGeneration
@@ -407,7 +407,7 @@ end routine ;
 
 routine generateSyntaxComponentGalgas3
   ??@string inOutputDirectory
-  ??@syntaxListForGeneration.element inSyntaxStructForGeneration
+  ??@syntaxListForGeneration-element inSyntaxStructForGeneration
   ??@semanticContext inSemanticContext
   ?!@stringlist ioToolProductFileList
   ?!@stringset ioAllProductFileSet

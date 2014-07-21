@@ -38,7 +38,7 @@ class C_Compiler ;
 //-----------------------------------------------------------------------------*
 
 class GALGAS__32_stringlist ;
-class GALGAS__32_stringlist_2E_element ;
+class GALGAS__32_stringlist_2D_element ;
 class GALGAS_application ;
 class GALGAS_binaryset ;
 class GALGAS_bool ;
@@ -48,7 +48,7 @@ class GALGAS_double ;
 class GALGAS_filewrapper ;
 class GALGAS_function ;
 class GALGAS_functionlist ;
-class GALGAS_functionlist_2E_element ;
+class GALGAS_functionlist_2D_element ;
 class GALGAS_lbool ;
 class GALGAS_lchar ;
 class GALGAS_ldouble ;
@@ -57,30 +57,30 @@ class GALGAS_lsint ;
 class GALGAS_lsint_36__34_ ;
 class GALGAS_lstring ;
 class GALGAS_lstringlist ;
-class GALGAS_lstringlist_2E_element ;
+class GALGAS_lstringlist_2D_element ;
 class GALGAS_luint ;
 class GALGAS_luint_36__34_ ;
 class GALGAS_luintlist ;
-class GALGAS_luintlist_2E_element ;
+class GALGAS_luintlist_2D_element ;
 class GALGAS_object ;
 class GALGAS_objectlist ;
-class GALGAS_objectlist_2E_element ;
+class GALGAS_objectlist_2D_element ;
 class GALGAS_range ;
 class GALGAS_sint ;
 class GALGAS_sint_36__34_ ;
 class GALGAS_string ;
 class GALGAS_stringlist ;
-class GALGAS_stringlist_2E_element ;
+class GALGAS_stringlist_2D_element ;
 class GALGAS_stringset ;
 class GALGAS_type ;
 class GALGAS_typelist ;
-class GALGAS_typelist_2E_element ;
+class GALGAS_typelist_2D_element ;
 class GALGAS_uint ;
 class GALGAS_uint_36__34_ ;
 class GALGAS_uint_36__34_list ;
-class GALGAS_uint_36__34_list_2E_element ;
+class GALGAS_uint_36__34_list_2D_element ;
 class GALGAS_uintlist ;
-class GALGAS_uintlist_2E_element ;
+class GALGAS_uintlist_2D_element ;
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
@@ -2562,7 +2562,7 @@ class cEnumerator_luintlist : public cGenericAbstractEnumerator {
 //--- Current element access
   public : class GALGAS_luint current_mValue (LOCATION_ARGS) const ;
 //--- Current element access
-  public : class GALGAS_luintlist_2E_element current (LOCATION_ARGS) const ;
+  public : class GALGAS_luintlist_2D_element current (LOCATION_ARGS) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -2689,7 +2689,7 @@ class cEnumerator_uintlist : public cGenericAbstractEnumerator {
 //--- Current element access
   public : class GALGAS_uint current_mValue (LOCATION_ARGS) const ;
 //--- Current element access
-  public : class GALGAS_uintlist_2E_element current (LOCATION_ARGS) const ;
+  public : class GALGAS_uintlist_2D_element current (LOCATION_ARGS) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -2816,7 +2816,7 @@ class cEnumerator_uint_36__34_list : public cGenericAbstractEnumerator {
 //--- Current element access
   public : class GALGAS_uint_36__34_ current_mValue (LOCATION_ARGS) const ;
 //--- Current element access
-  public : class GALGAS_uint_36__34_list_2E_element current (LOCATION_ARGS) const ;
+  public : class GALGAS_uint_36__34_list_2D_element current (LOCATION_ARGS) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -2943,7 +2943,7 @@ class cEnumerator_functionlist : public cGenericAbstractEnumerator {
 //--- Current element access
   public : class GALGAS_function current_mValue (LOCATION_ARGS) const ;
 //--- Current element access
-  public : class GALGAS_functionlist_2E_element current (LOCATION_ARGS) const ;
+  public : class GALGAS_functionlist_2D_element current (LOCATION_ARGS) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -3070,7 +3070,7 @@ class cEnumerator_stringlist : public cGenericAbstractEnumerator {
 //--- Current element access
   public : class GALGAS_string current_mValue (LOCATION_ARGS) const ;
 //--- Current element access
-  public : class GALGAS_stringlist_2E_element current (LOCATION_ARGS) const ;
+  public : class GALGAS_stringlist_2D_element current (LOCATION_ARGS) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -3197,7 +3197,7 @@ class cEnumerator_lstringlist : public cGenericAbstractEnumerator {
 //--- Current element access
   public : class GALGAS_lstring current_mValue (LOCATION_ARGS) const ;
 //--- Current element access
-  public : class GALGAS_lstringlist_2E_element current (LOCATION_ARGS) const ;
+  public : class GALGAS_lstringlist_2D_element current (LOCATION_ARGS) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -3324,7 +3324,7 @@ class cEnumerator_typelist : public cGenericAbstractEnumerator {
 //--- Current element access
   public : class GALGAS_type current_mValue (LOCATION_ARGS) const ;
 //--- Current element access
-  public : class GALGAS_typelist_2E_element current (LOCATION_ARGS) const ;
+  public : class GALGAS_typelist_2D_element current (LOCATION_ARGS) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -3451,7 +3451,7 @@ class cEnumerator_objectlist : public cGenericAbstractEnumerator {
 //--- Current element access
   public : class GALGAS_object current_mValue (LOCATION_ARGS) const ;
 //--- Current element access
-  public : class GALGAS_objectlist_2E_element current (LOCATION_ARGS) const ;
+  public : class GALGAS_objectlist_2D_element current (LOCATION_ARGS) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -3597,7 +3597,7 @@ class cEnumerator__32_stringlist : public cGenericAbstractEnumerator {
   public : class GALGAS_string current_mValue_30_ (LOCATION_ARGS) const ;
   public : class GALGAS_string current_mValue_31_ (LOCATION_ARGS) const ;
 //--- Current element access
-  public : class GALGAS__32_stringlist_2E_element current (LOCATION_ARGS) const ;
+  public : class GALGAS__32_stringlist_2D_element current (LOCATION_ARGS) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -4245,11 +4245,11 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_range ;
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                        @luintlist_2E_element struct                         *
+//                        @luintlist_2D_element struct                         *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-class GALGAS_luintlist_2E_element : public AC_GALGAS_root {
+class GALGAS_luintlist_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
   public : GALGAS_luint mAttribute_mValue ;
 
@@ -4259,16 +4259,16 @@ class GALGAS_luintlist_2E_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG void drop (void) ;
 
 //--------------------------------- Default GALGAS constructor
-  public : static GALGAS_luintlist_2E_element constructor_default (LOCATION_ARGS) ;
+  public : static GALGAS_luintlist_2D_element constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_luintlist_2E_element (void) ;
+  public : GALGAS_luintlist_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_luintlist_2E_element (void) ;
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_luintlist_2D_element (void) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_luintlist_2E_element (const GALGAS_luint & in_mValue) ;
+  public : GALGAS_luintlist_2D_element (const GALGAS_luint & in_mValue) ;
 
 //-- Start of generic part --*
 
@@ -4276,19 +4276,19 @@ class GALGAS_luintlist_2E_element : public AC_GALGAS_root {
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_luintlist_2E_element extractObject (const GALGAS_object & inObject,
+  public : static GALGAS_luintlist_2D_element extractObject (const GALGAS_object & inObject,
                                                              C_Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_luintlist_2E_element constructor_new (const class GALGAS_luint & inOperand0
+  public : static GALGAS_luintlist_2D_element constructor_new (const class GALGAS_luint & inOperand0
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_luintlist_2E_element & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_luintlist_2D_element & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4302,20 +4302,20 @@ class GALGAS_luintlist_2E_element : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_luintlist_2E_element class
+} ; // End of GALGAS_luintlist_2D_element class
 
 
 //-----------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_luintlist_2E_element ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_luintlist_2D_element ;
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                         @uintlist_2E_element struct                         *
+//                         @uintlist_2D_element struct                         *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-class GALGAS_uintlist_2E_element : public AC_GALGAS_root {
+class GALGAS_uintlist_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
   public : GALGAS_uint mAttribute_mValue ;
 
@@ -4325,16 +4325,16 @@ class GALGAS_uintlist_2E_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG void drop (void) ;
 
 //--------------------------------- Default GALGAS constructor
-  public : static GALGAS_uintlist_2E_element constructor_default (LOCATION_ARGS) ;
+  public : static GALGAS_uintlist_2D_element constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_uintlist_2E_element (void) ;
+  public : GALGAS_uintlist_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_uintlist_2E_element (void) ;
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_uintlist_2D_element (void) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_uintlist_2E_element (const GALGAS_uint & in_mValue) ;
+  public : GALGAS_uintlist_2D_element (const GALGAS_uint & in_mValue) ;
 
 //-- Start of generic part --*
 
@@ -4342,19 +4342,19 @@ class GALGAS_uintlist_2E_element : public AC_GALGAS_root {
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_uintlist_2E_element extractObject (const GALGAS_object & inObject,
+  public : static GALGAS_uintlist_2D_element extractObject (const GALGAS_object & inObject,
                                                             C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_uintlist_2E_element constructor_new (const class GALGAS_uint & inOperand0
+  public : static GALGAS_uintlist_2D_element constructor_new (const class GALGAS_uint & inOperand0
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_uintlist_2E_element & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_uintlist_2D_element & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4368,20 +4368,20 @@ class GALGAS_uintlist_2E_element : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_uintlist_2E_element class
+} ; // End of GALGAS_uintlist_2D_element class
 
 
 //-----------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uintlist_2E_element ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uintlist_2D_element ;
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                     @uint_36__34_list_2E_element struct                     *
+//                     @uint_36__34_list_2D_element struct                     *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-class GALGAS_uint_36__34_list_2E_element : public AC_GALGAS_root {
+class GALGAS_uint_36__34_list_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
   public : GALGAS_uint_36__34_ mAttribute_mValue ;
 
@@ -4391,16 +4391,16 @@ class GALGAS_uint_36__34_list_2E_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG void drop (void) ;
 
 //--------------------------------- Default GALGAS constructor
-  public : static GALGAS_uint_36__34_list_2E_element constructor_default (LOCATION_ARGS) ;
+  public : static GALGAS_uint_36__34_list_2D_element constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_uint_36__34_list_2E_element (void) ;
+  public : GALGAS_uint_36__34_list_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_uint_36__34_list_2E_element (void) ;
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_uint_36__34_list_2D_element (void) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_uint_36__34_list_2E_element (const GALGAS_uint_36__34_ & in_mValue) ;
+  public : GALGAS_uint_36__34_list_2D_element (const GALGAS_uint_36__34_ & in_mValue) ;
 
 //-- Start of generic part --*
 
@@ -4408,19 +4408,19 @@ class GALGAS_uint_36__34_list_2E_element : public AC_GALGAS_root {
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_uint_36__34_list_2E_element extractObject (const GALGAS_object & inObject,
+  public : static GALGAS_uint_36__34_list_2D_element extractObject (const GALGAS_object & inObject,
                                                                     C_Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_uint_36__34_list_2E_element constructor_new (const class GALGAS_uint_36__34_ & inOperand0
+  public : static GALGAS_uint_36__34_list_2D_element constructor_new (const class GALGAS_uint_36__34_ & inOperand0
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_uint_36__34_list_2E_element & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_uint_36__34_list_2D_element & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4434,20 +4434,20 @@ class GALGAS_uint_36__34_list_2E_element : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_uint_36__34_list_2E_element class
+} ; // End of GALGAS_uint_36__34_list_2D_element class
 
 
 //-----------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint_36__34_list_2E_element ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint_36__34_list_2D_element ;
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                       @functionlist_2E_element struct                       *
+//                       @functionlist_2D_element struct                       *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-class GALGAS_functionlist_2E_element : public AC_GALGAS_root {
+class GALGAS_functionlist_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
   public : GALGAS_function mAttribute_mValue ;
 
@@ -4457,13 +4457,13 @@ class GALGAS_functionlist_2E_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG void drop (void) ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_functionlist_2E_element (void) ;
+  public : GALGAS_functionlist_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_functionlist_2E_element (void) ;
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_functionlist_2D_element (void) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_functionlist_2E_element (const GALGAS_function & in_mValue) ;
+  public : GALGAS_functionlist_2D_element (const GALGAS_function & in_mValue) ;
 
 //-- Start of generic part --*
 
@@ -4471,19 +4471,19 @@ class GALGAS_functionlist_2E_element : public AC_GALGAS_root {
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_functionlist_2E_element extractObject (const GALGAS_object & inObject,
+  public : static GALGAS_functionlist_2D_element extractObject (const GALGAS_object & inObject,
                                                                 C_Compiler * inCompiler
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_functionlist_2E_element constructor_new (const class GALGAS_function & inOperand0
+  public : static GALGAS_functionlist_2D_element constructor_new (const class GALGAS_function & inOperand0
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_functionlist_2E_element & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_functionlist_2D_element & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4497,20 +4497,20 @@ class GALGAS_functionlist_2E_element : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_functionlist_2E_element class
+} ; // End of GALGAS_functionlist_2D_element class
 
 
 //-----------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionlist_2E_element ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_functionlist_2D_element ;
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                        @stringlist_2E_element struct                        *
+//                        @stringlist_2D_element struct                        *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-class GALGAS_stringlist_2E_element : public AC_GALGAS_root {
+class GALGAS_stringlist_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
   public : GALGAS_string mAttribute_mValue ;
 
@@ -4520,16 +4520,16 @@ class GALGAS_stringlist_2E_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG void drop (void) ;
 
 //--------------------------------- Default GALGAS constructor
-  public : static GALGAS_stringlist_2E_element constructor_default (LOCATION_ARGS) ;
+  public : static GALGAS_stringlist_2D_element constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_stringlist_2E_element (void) ;
+  public : GALGAS_stringlist_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_stringlist_2E_element (void) ;
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_stringlist_2D_element (void) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_stringlist_2E_element (const GALGAS_string & in_mValue) ;
+  public : GALGAS_stringlist_2D_element (const GALGAS_string & in_mValue) ;
 
 //-- Start of generic part --*
 
@@ -4537,19 +4537,19 @@ class GALGAS_stringlist_2E_element : public AC_GALGAS_root {
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_stringlist_2E_element extractObject (const GALGAS_object & inObject,
+  public : static GALGAS_stringlist_2D_element extractObject (const GALGAS_object & inObject,
                                                               C_Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_stringlist_2E_element constructor_new (const class GALGAS_string & inOperand0
+  public : static GALGAS_stringlist_2D_element constructor_new (const class GALGAS_string & inOperand0
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_stringlist_2E_element & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_stringlist_2D_element & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4563,20 +4563,20 @@ class GALGAS_stringlist_2E_element : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_stringlist_2E_element class
+} ; // End of GALGAS_stringlist_2D_element class
 
 
 //-----------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_stringlist_2E_element ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_stringlist_2D_element ;
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                       @lstringlist_2E_element struct                        *
+//                       @lstringlist_2D_element struct                        *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-class GALGAS_lstringlist_2E_element : public AC_GALGAS_root {
+class GALGAS_lstringlist_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
   public : GALGAS_lstring mAttribute_mValue ;
 
@@ -4586,16 +4586,16 @@ class GALGAS_lstringlist_2E_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG void drop (void) ;
 
 //--------------------------------- Default GALGAS constructor
-  public : static GALGAS_lstringlist_2E_element constructor_default (LOCATION_ARGS) ;
+  public : static GALGAS_lstringlist_2D_element constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_lstringlist_2E_element (void) ;
+  public : GALGAS_lstringlist_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_lstringlist_2E_element (void) ;
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_lstringlist_2D_element (void) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_lstringlist_2E_element (const GALGAS_lstring & in_mValue) ;
+  public : GALGAS_lstringlist_2D_element (const GALGAS_lstring & in_mValue) ;
 
 //-- Start of generic part --*
 
@@ -4603,19 +4603,19 @@ class GALGAS_lstringlist_2E_element : public AC_GALGAS_root {
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_lstringlist_2E_element extractObject (const GALGAS_object & inObject,
+  public : static GALGAS_lstringlist_2D_element extractObject (const GALGAS_object & inObject,
                                                                C_Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lstringlist_2E_element constructor_new (const class GALGAS_lstring & inOperand0
+  public : static GALGAS_lstringlist_2D_element constructor_new (const class GALGAS_lstring & inOperand0
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_lstringlist_2E_element & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lstringlist_2D_element & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4629,20 +4629,20 @@ class GALGAS_lstringlist_2E_element : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_lstringlist_2E_element class
+} ; // End of GALGAS_lstringlist_2D_element class
 
 
 //-----------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lstringlist_2E_element ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_lstringlist_2D_element ;
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                         @typelist_2E_element struct                         *
+//                         @typelist_2D_element struct                         *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-class GALGAS_typelist_2E_element : public AC_GALGAS_root {
+class GALGAS_typelist_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
   public : GALGAS_type mAttribute_mValue ;
 
@@ -4652,13 +4652,13 @@ class GALGAS_typelist_2E_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG void drop (void) ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_typelist_2E_element (void) ;
+  public : GALGAS_typelist_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_typelist_2E_element (void) ;
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_typelist_2D_element (void) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_typelist_2E_element (const GALGAS_type & in_mValue) ;
+  public : GALGAS_typelist_2D_element (const GALGAS_type & in_mValue) ;
 
 //-- Start of generic part --*
 
@@ -4666,19 +4666,19 @@ class GALGAS_typelist_2E_element : public AC_GALGAS_root {
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_typelist_2E_element extractObject (const GALGAS_object & inObject,
+  public : static GALGAS_typelist_2D_element extractObject (const GALGAS_object & inObject,
                                                             C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_typelist_2E_element constructor_new (const class GALGAS_type & inOperand0
+  public : static GALGAS_typelist_2D_element constructor_new (const class GALGAS_type & inOperand0
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_typelist_2E_element & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_typelist_2D_element & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4692,20 +4692,20 @@ class GALGAS_typelist_2E_element : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_typelist_2E_element class
+} ; // End of GALGAS_typelist_2D_element class
 
 
 //-----------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typelist_2E_element ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typelist_2D_element ;
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                        @objectlist_2E_element struct                        *
+//                        @objectlist_2D_element struct                        *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-class GALGAS_objectlist_2E_element : public AC_GALGAS_root {
+class GALGAS_objectlist_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
   public : GALGAS_object mAttribute_mValue ;
 
@@ -4715,13 +4715,13 @@ class GALGAS_objectlist_2E_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG void drop (void) ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_objectlist_2E_element (void) ;
+  public : GALGAS_objectlist_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_objectlist_2E_element (void) ;
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_objectlist_2D_element (void) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_objectlist_2E_element (const GALGAS_object & in_mValue) ;
+  public : GALGAS_objectlist_2D_element (const GALGAS_object & in_mValue) ;
 
 //-- Start of generic part --*
 
@@ -4729,19 +4729,19 @@ class GALGAS_objectlist_2E_element : public AC_GALGAS_root {
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_objectlist_2E_element extractObject (const GALGAS_object & inObject,
+  public : static GALGAS_objectlist_2D_element extractObject (const GALGAS_object & inObject,
                                                               C_Compiler * inCompiler
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_objectlist_2E_element constructor_new (const class GALGAS_object & inOperand0
+  public : static GALGAS_objectlist_2D_element constructor_new (const class GALGAS_object & inOperand0
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_objectlist_2E_element & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_objectlist_2D_element & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4755,20 +4755,20 @@ class GALGAS_objectlist_2E_element : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_objectlist_2E_element class
+} ; // End of GALGAS_objectlist_2D_element class
 
 
 //-----------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_objectlist_2E_element ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_objectlist_2D_element ;
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                      @_32_stringlist_2E_element struct                      *
+//                      @_32_stringlist_2D_element struct                      *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-class GALGAS__32_stringlist_2E_element : public AC_GALGAS_root {
+class GALGAS__32_stringlist_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
   public : GALGAS_string mAttribute_mValue_30_ ;
   public : GALGAS_string mAttribute_mValue_31_ ;
@@ -4779,16 +4779,16 @@ class GALGAS__32_stringlist_2E_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG void drop (void) ;
 
 //--------------------------------- Default GALGAS constructor
-  public : static GALGAS__32_stringlist_2E_element constructor_default (LOCATION_ARGS) ;
+  public : static GALGAS__32_stringlist_2D_element constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Default constructor
-  public : GALGAS__32_stringlist_2E_element (void) ;
+  public : GALGAS__32_stringlist_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS__32_stringlist_2E_element (void) ;
+  public : VIRTUAL_IN_DEBUG ~ GALGAS__32_stringlist_2D_element (void) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS__32_stringlist_2E_element (const GALGAS_string & in_mValue_30_,
+  public : GALGAS__32_stringlist_2D_element (const GALGAS_string & in_mValue_30_,
                                              const GALGAS_string & in_mValue_31_) ;
 
 //-- Start of generic part --*
@@ -4797,12 +4797,12 @@ class GALGAS__32_stringlist_2E_element : public AC_GALGAS_root {
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS__32_stringlist_2E_element extractObject (const GALGAS_object & inObject,
+  public : static GALGAS__32_stringlist_2D_element extractObject (const GALGAS_object & inObject,
                                                                   C_Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS__32_stringlist_2E_element constructor_new (const class GALGAS_string & inOperand0,
+  public : static GALGAS__32_stringlist_2D_element constructor_new (const class GALGAS_string & inOperand0,
                                                                     const class GALGAS_string & inOperand1
                                                                     COMMA_LOCATION_ARGS) ;
 
@@ -4810,7 +4810,7 @@ class GALGAS__32_stringlist_2E_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS__32_stringlist_2E_element & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS__32_stringlist_2D_element & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4826,12 +4826,12 @@ class GALGAS__32_stringlist_2E_element : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS__32_stringlist_2E_element class
+} ; // End of GALGAS__32_stringlist_2D_element class
 
 
 //-----------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS__32_stringlist_2E_element ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS__32_stringlist_2D_element ;
 
 //-----------------------------------------------------------------------------*
 

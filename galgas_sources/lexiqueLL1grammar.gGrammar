@@ -21,6 +21,6 @@ indexing grammar lexiqueLL1grammar "LL1" feature translate :
   with "lexiqueSyntax.gSyntax" ;
 
   root <lexique_component_start_symbol>
-    !@galgas3LexiqueComponentListAST.element outLexiqueComponentRoot
+    !@galgas3LexiqueComponentListAST-element outLexiqueComponentRoot
   ; # LL1
 end grammar ;

@@ -62,7 +62,7 @@ list @ruleDeclarationList {
 #---------------------------------------------------------------------------*
 
 list @syntaxListForGeneration {
-  @galgas3SyntaxComponentListAST.element mSyntaxComponentRoot ;
+  @galgas3SyntaxComponentListAST-element mSyntaxComponentRoot ;
   @syntaxDeclarationForGeneration mSyntaxGeneration ;
   @bool mHasIndexing ;
 }

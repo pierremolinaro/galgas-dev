@@ -425,21 +425,21 @@ filewrapper grammarGenerationTemplate in "../generation_templates/grammar_genera
 }{
 }{
   template grammarZone2Header "grammar-zone2.h.gTemplate"
-    ?@galgas3GrammarComponentListAST.element GRAMMAR_COMPONENT_ROOT
+    ?@galgas3GrammarComponentListAST-element GRAMMAR_COMPONENT_ROOT
   ;
   template grammarZone2HeaderGalgas3 "grammar-zone2-galgas3.h.gTemplate"
-    ?@galgas3GrammarComponentListAST.element GRAMMAR_COMPONENT_ROOT
+    ?@galgas3GrammarComponentListAST-element GRAMMAR_COMPONENT_ROOT
   ;
   template grammarZone3Header "grammar-zone3.h.gTemplate"
     ?@string LEXIQUE_IDENTIFIER
-    ?@galgas3GrammarComponentListAST.element GRAMMAR_COMPONENT_ROOT
+    ?@galgas3GrammarComponentListAST-element GRAMMAR_COMPONENT_ROOT
     ?@nonTerminalSymbolMapForGrammarAnalysis NON_TERMINAL_MAP
     ?@nonTerminalToAddList ADDED_NON_TERMINAL_LIST
     ?@bool HAS_INDEXING
   ;
   template grammarZone3HeaderGalgas3 "grammar-zone3-galgas3.h.gTemplate"
     ?@string LEXIQUE_IDENTIFIER
-    ?@galgas3GrammarComponentListAST.element GRAMMAR_COMPONENT_ROOT
+    ?@galgas3GrammarComponentListAST-element GRAMMAR_COMPONENT_ROOT
     ?@nonTerminalSymbolMapForGrammarAnalysis NON_TERMINAL_MAP
     ?@nonTerminalToAddList ADDED_NON_TERMINAL_LIST
     ?@bool HAS_INDEXING
@@ -455,7 +455,7 @@ filewrapper grammarGenerationTemplate in "../generation_templates/grammar_genera
 routine parseGrammarComponent
   ??@lstring inSourceFile
   ?!@parsedComponentStruct ioParsedComponentStruct
-  !@galgas3GrammarComponentListAST.element outGrammarComponentRoot
+  !@galgas3GrammarComponentListAST-element outGrammarComponentRoot
 :
   const @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
   with ioParsedComponentStruct->mParsedGrammarComponentMap hasKey !basename do
@@ -502,7 +502,7 @@ extern routine grammarAnalysisAndGeneration
 routine compileGrammarComponentFromAST
   ??@lstring inSourceFile
   ??@string inOutputDirectoryForCppFiles
-  ??@galgas3GrammarComponentListAST.element inGrammarComponentRoot
+  ??@galgas3GrammarComponentListAST-element inGrammarComponentRoot
   ?!@parsedComponentStruct ioParsedComponentStruct
 :
  const @string outputDirectoryForHTMLFile := [inSourceFile stringByDeletingLastPathComponent] ;
@@ -529,7 +529,7 @@ routine compileGrammarComponentFromAST
       error mValue: "a syntax component file should have '.gSyntax' path extension" ;
     else
       @string syntaxComponentName := [[mValue lastPathComponent] stringByDeletingPathExtension] ;
-      @galgas3SyntaxComponentListAST.element syntaxComponentRoot ;
+      @galgas3SyntaxComponentListAST-element syntaxComponentRoot ;
       if [[ioParsedComponentStruct mParsedSyntaxComponentMap] hasKey !syntaxComponentName] then
         [[ioParsedComponentStruct mParsedSyntaxComponentMap] searchKey ![@lstring new !syntaxComponentName !here] ?* ?syntaxComponentRoot] ;
       else
@@ -581,7 +581,7 @@ routine compileGrammarComponentFromAST
     end if ;
   end foreach ;
 #------------------------ Get lexique component, for knowing if there are "indexing" declaration
-  @galgas3LexiqueComponentListAST.element lexiqueComponentAST ;
+  @galgas3LexiqueComponentListAST-element lexiqueComponentAST ;
   parseLexiqueComponent
     ![@lstring new ![lexiqueComponentPath absolutePathFromPath ![inSourceFile stringByDeletingLastPathComponent]] ![lexiqueComponentPath location]]
     !?ioParsedComponentStruct
@@ -686,7 +686,7 @@ routine compileGrammarComponentFromSourceFile
   ??@string inOutputDirectoryForCppFiles
   ?!@parsedComponentStruct ioParsedComponentStruct
 :
-  parseGrammarComponent !inSourceFile !?ioParsedComponentStruct ??@galgas3GrammarComponentListAST.element grammarComponentRoot ;
+  parseGrammarComponent !inSourceFile !?ioParsedComponentStruct ??@galgas3GrammarComponentListAST-element grammarComponentRoot ;
 #----
   compileGrammarComponentFromAST
     !inSourceFile
@@ -713,7 +713,7 @@ list @grammarComponentGenerationList {
 
 routine compileGrammarComponentGalgas3
   ??@string inOutputDirectory
-  ??@galgas3GrammarComponentListAST.element inGrammarComponentRoot
+  ??@galgas3GrammarComponentListAST-element inGrammarComponentRoot
   ??@parsedSyntaxComponentMap inParsedSyntaxComponentMap
   ??@semanticContext inSemanticContext
   ?!@grammarComponentGenerationList ioGrammarGenerationList
@@ -731,7 +731,7 @@ routine compileGrammarComponentGalgas3
   foreach inGrammarComponentRoot->mSyntaxComponents do
     const @uint addedNonTerminalCountRef := addedNonTerminalCount ;
     @string syntaxComponentName := mValue->string ;
-    [inParsedSyntaxComponentMap searchKey !mValue ?* ??@galgas3SyntaxComponentListAST.element syntaxComponentRoot] ;
+    [inParsedSyntaxComponentMap searchKey !mValue ?* ??@galgas3SyntaxComponentListAST-element syntaxComponentRoot] ;
   #--- Check translate feature
     if inGrammarComponentRoot->mHasTranslateFeature & not syntaxComponentRoot->mHasTranslateFeature then
       error syntaxComponentRoot->mSyntaxComponentName : "as '" . inGrammarComponentRoot->mGrammarComponentName . "' grammar declares 'translate' feature, this syntax component should do so" ;

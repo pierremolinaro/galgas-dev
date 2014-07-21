@@ -520,7 +520,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 routine buildTerminalMap
-  ??@galgas3LexiqueComponentListAST.element inLexiqueComponentRoot
+  ??@galgas3LexiqueComponentListAST-element inLexiqueComponentRoot
   !@terminalMap outTerminalMap
 :
 #--------------------------------------- Build lexical attribute map
