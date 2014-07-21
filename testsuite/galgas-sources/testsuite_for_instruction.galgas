@@ -96,7 +96,7 @@ proc testsuite_for_instruction {
   end
 
   message "--- begin of for instruction test 9\n"
-  var data = @data:emptyData
+  var data = @data.emptyData
   [!?data appendByte !1]
   [!?data appendByte !2]
   [!?data appendByte !3]

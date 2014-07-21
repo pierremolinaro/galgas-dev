@@ -13,7 +13,7 @@ mapproxy @monMapProxy (@maTable)
 
 proc testsuite_mapproxy {
 message "*************************************** begin of maproxy test\n"
-  var table = @maTable:emptyMap
+  var table = @maTable.emptyMap
   @monMapProxy proxy
   [@monMapProxy makeProxyFromString !?table !"abc" ?proxy]
   log "[table count]": [table count]

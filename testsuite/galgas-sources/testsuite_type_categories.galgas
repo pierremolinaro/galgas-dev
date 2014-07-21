@@ -9,7 +9,7 @@ proc testsuite_type_categories {
   aList += !3
   aList += !4
   log "Sum 1 + 2 + 3 + 4" : [aList sum]
-  log "Hello !" : [@lstring:new {!"Hello" !:here} op]
+  log "Hello !" : [@lstring.new {!"Hello" !.here} op]
   @uint64 v
   [7L square ?v]
   log v
@@ -17,9 +17,9 @@ proc testsuite_type_categories {
   [aList sum ?u]
   log u
   @string s
-  [@lstring:new {!"Hello" !:here} op ?s]
+  [@lstring.new {!"Hello" !.here} op ?s]
   log s
-  var ls = @lstring:new {!"Hello" !:here}
+  var ls = @lstring.new {!"Hello" !.here}
   [!?ls appendInt !3]
   log ls
   [!?aList appendSquare!9]

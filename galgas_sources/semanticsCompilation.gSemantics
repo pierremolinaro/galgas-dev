@@ -64,7 +64,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 list @grammarComponentASTList {
-  @galgas3GrammarComponentListAST.element mGrammarComponentAST ;
+  @galgas3GrammarComponentListAST-element mGrammarComponentAST ;
 }
 
 #---------------------------------------------------------------------------*
@@ -104,7 +104,7 @@ routine recursivelyImportSemanticComponent
         ioOptionComponentFileNameList += !filePath ;
         ioImplementationIncludeList += ![[filePath lastPathComponent] stringByDeletingPathExtension] ;
       elsif extension == "gGrammar" then
-        @galgas3GrammarComponentListAST.element grammarComponentAST ;
+        @galgas3GrammarComponentListAST-element grammarComponentAST ;
         parseGrammarComponent
           !filePath
           !?ioParsedComponentStruct

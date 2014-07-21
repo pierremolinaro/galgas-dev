@@ -2,12 +2,12 @@
 
 proc testsuite_category_modifiers {
   message "*************************************** begin of category modifier test\n"
-  var v = @TestCategoryModifier:new {!1 !"Hello"}
+  var v = @TestCategoryModifier.new {!1 !"Hello"}
   @uint u = 2
   @string s = " World"
   [!?v modifier2 !?u !s]
   log u, v
-  var w = @overridingTestCategoryModifier:new {!1 !"" !"" !2}
+  var w = @overridingTestCategoryModifier.new {!1 !"" !"" !2}
   [!?w m]
 }
 

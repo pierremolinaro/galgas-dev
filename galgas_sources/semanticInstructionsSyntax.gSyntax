@@ -433,7 +433,7 @@ rule <semantic_instruction>
   $identifier$ ?@lstring variableName ;
   send " =" ;
   $[$ :> ?* ?* ;
-  send tp . ":" ;
+  send tp . "." ;
   $identifier$ ?@lstring constructorName ;
   send "{" ;
   <output_expression_list> ?@semanticExpressionListAST expressionList ;
@@ -494,7 +494,7 @@ rule <semantic_instruction>
   $identifier$ ?@lstring variableName ;
   send " = " ;
   $[$ :> ?* ?* ;
-  send tp . ":" ;
+  send tp . "." ;
   @lstring constructorName ;
   $identifier$ ? constructorName ;
   send " {" ;
@@ -525,7 +525,7 @@ rule <semantic_instruction>
   $identifier$ ?@lstring variableName ;
   send " = " ;
   $[$ :> ?* ?* ;
-  send tp . ":" ;
+  send tp . " " ;
   $default$ ;
   $]$ :> ?* ?* ;
   outInstruction := [@localVariableOrConstantDeclarationWithDefaultConstructorAST new

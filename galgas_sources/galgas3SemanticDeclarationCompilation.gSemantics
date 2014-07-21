@@ -152,7 +152,7 @@ routine buildGalgas3SemanticContext
   !@semanticContext outSemanticContext
   !@semanticDeclarationListAST outSortedSemanticDeclarationListAST
 :
-#------ Create associated type (@TYPE.element) for lists, maps, ...
+#------ Create associated type (@TYPE-element) for lists, maps, ...
   @semanticDeclarationListAST semanticDeclarationList := inSemanticDeclarationList ;
   foreach inSemanticDeclarationList do
     [mSemanticDeclaration addAssociatedElement !?semanticDeclarationList] ;

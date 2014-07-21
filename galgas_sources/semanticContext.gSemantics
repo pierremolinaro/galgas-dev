@@ -799,7 +799,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 once elementTypeNameSuffix ->@string outResult :
-  outResult := ".element" ;
+  outResult := "-element" ;
 end once ;
 
 #---------------------------------------------------------------------------*

@@ -742,7 +742,7 @@ filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_gener
   template newHeaderZone2 "lexique_header_template_zone_2.new.h.gTemplate"
     ?@string LEXIQUE_IDENTIFIER
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
-    ?@galgas3LexiqueComponentListAST.element LEXIQUE_COMPONENT_ROOT
+    ?@galgas3LexiqueComponentListAST-element LEXIQUE_COMPONENT_ROOT
   ;
 
   template newHeaderZone3 "lexique_header_template_zone_3.new.h.gTemplate"
@@ -761,7 +761,7 @@ filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_gener
     ?@stringset STRINGS_IN_EXPLICIT_RULES
     ?@lexicalRuleListAST LEXICAL_RULE_LIST
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
-    ?@galgas3LexiqueComponentListAST.element LEXIQUE_COMPONENT_ROOT
+    ?@galgas3LexiqueComponentListAST-element LEXIQUE_COMPONENT_ROOT
   ;
 
   template newImplementationZone2 "lexique_implementation.new.cpp.gTemplate"
@@ -773,7 +773,7 @@ filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_gener
     ?@stringset STRINGS_IN_EXPLICIT_RULES
     ?@lexicalRuleListAST LEXICAL_RULE_LIST
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
-    ?@galgas3LexiqueComponentListAST.element LEXIQUE_COMPONENT_ROOT
+    ?@galgas3LexiqueComponentListAST-element LEXIQUE_COMPONENT_ROOT
   ;
 
   template cocoaHeaderZone2 "lexique_cocoa_header_template_zone_2.h.gTemplate"
@@ -792,7 +792,7 @@ filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_gener
     ?@stringset unused STRINGS_IN_EXPLICIT_RULES
     ?@lexicalRuleListAST LEXICAL_RULE_LIST
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
-    ?@galgas3LexiqueComponentListAST.element LEXIQUE_COMPONENT_ROOT
+    ?@galgas3LexiqueComponentListAST-element LEXIQUE_COMPONENT_ROOT
   ;
 }
 
@@ -803,7 +803,7 @@ filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_gener
 routine parseLexiqueComponent
   ??@lstring inSourceFile
   ?!@parsedComponentStruct ioParsedComponentStruct
-  !@galgas3LexiqueComponentListAST.element outLexiqueComponentRoot
+  !@galgas3LexiqueComponentListAST-element outLexiqueComponentRoot
 :
   @lstring key [new ![[[inSourceFile string] lastPathComponent] stringByDeletingPathExtension] ![inSourceFile location]] ;
   if [[ioParsedComponentStruct mParsedLexiqueComponentMap] hasKey ! [key string]] then
@@ -821,7 +821,7 @@ end routine ;
 routine compileLexiqueComponentFromAST
   ??@string inComponentNameFromSourceFilePath
   ??@string inOutputDirectory
-  ??@galgas3LexiqueComponentListAST.element inLexiqueComponentRoot
+  ??@galgas3LexiqueComponentListAST-element inLexiqueComponentRoot
 :
 #--------------------------------------- Check component name
   @lstring componentName := [inLexiqueComponentRoot mLexiqueComponentName] ;
@@ -1130,7 +1130,7 @@ routine compileLexiqueComponentFromSource
   ??@string inOutputDirectory
   ?!@parsedComponentStruct ioParsedComponentStruct
 :
-  @galgas3LexiqueComponentListAST.element lexiqueComponentRoot ;
+  @galgas3LexiqueComponentListAST-element lexiqueComponentRoot ;
   parseLexiqueComponent
     !inSourceFile
     !?ioParsedComponentStruct
@@ -1158,7 +1158,7 @@ list @lexiqueComponentGenerationList {
 #---------------------------------------------------------------------------*
 
 routine compileLexiqueComponentGalgas3
-  ??@galgas3LexiqueComponentListAST.element inLexiqueComponentAST
+  ??@galgas3LexiqueComponentListAST-element inLexiqueComponentAST
   ?!@lexiqueComponentGenerationList ioLexiqueComponentGenerationList
 :
 #--------------------------------------- Lexical attribute type name map
