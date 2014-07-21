@@ -1,7 +1,7 @@
 
 
 proc testsuite_foreach_instruction {
-  var strList = [@stringlist emptyList]
+  var strList = @stringlist {}
   strList += !"a"
   strList += !"b"
   strList += !"c"
@@ -71,7 +71,7 @@ proc testsuite_foreach_instruction {
     message "  do '" + s + "' (idx: " + [idx string] + ")\n"
   end
   message "--- begin of foreach instruction test 7\n"
-  var set = [@stringset emptySet]
+  var set = @stringset {}
   set += !"A"
   set += !"B"
   set += !"C"
@@ -90,7 +90,7 @@ proc testsuite_foreach_instruction {
     message "  do '" + key + "' (idx: " + [idx string] + ")\n"
   end
   message "--- begin of foreach instruction test 9\n"
-  var myData = [@data emptyData]
+  var myData = @data:emptyData
   [!?myData appendByte !1]
   [!?myData appendByte !2]
   [!?myData appendByte !3]
