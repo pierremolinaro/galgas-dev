@@ -272,9 +272,8 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList :
   $select$ ;
   @lexicalSelectBranchListAST lexicalWhileBranchList [emptyList] ;
   repeat
-    @lexicalExpressionAST selectExpression ;
-    $when$ ;
-    <lexical_expression> ?selectExpression ;
+    $case$ ;
+    <lexical_expression> ??@lexicalExpressionAST selectExpression ;
     $:$ ;
     @lexicalInstructionListAST selectInstructionList [emptyList] ;
     repeat

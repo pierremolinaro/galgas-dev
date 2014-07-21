@@ -443,7 +443,7 @@ end rule ;
 #------------------------------------------------------------------------------*
 
 rule <branchOfParseWhenInstruction> !@syntaxInstructionList outElseInstructionList :
-  $when$ ;
+  $case$ ;
   const instructionLocation := here ;
   @semanticExpressionAST whenExpression ;
   <expression> ? whenExpression ;
@@ -476,7 +476,7 @@ rule <syntax_instruction>
 :
   $parse$ ;
   const instructionLocation := here ;
-  $when$ ;
+  $with$ ;
   <expression> ?@semanticExpressionAST whenExpression ;
   const endOfWhenExpression := here ;
   $:$ ;

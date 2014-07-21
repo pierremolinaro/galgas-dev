@@ -72,7 +72,8 @@ rule <program_component_start_symbol> !@programComponentAST outProgramComponentR
     $}$ ;
     epilogueList += !epilogueInstructionList !endOfEpilogue ;
   while
-    $when$ ;
+    $when$ :> ??@string sep ?* ;
+    send sep . "case" ;
     $.$ ;
     $literal_string$ ? @lstring mSourceFileExtension ;
     $message$ ;

@@ -165,11 +165,11 @@ do
   foreach mTransitionList do
     %  {kMapState_%!TYPE_IDENTIFIER%_%![mTargetStateName identifierRepresentation]% /* %![mTargetStateIndex string]% */, %
     switch mTransitionMessageKind
-    when noMessage :
+    case noMessage :
       %kMapAutomatonNoIssue%
-    when warningMessage :
+    case warningMessage :
       %kMapAutomatonIssueWarning%
-    when errorMessage :
+    case errorMessage :
       %kMapAutomatonIssueError%
     end
     %, %
@@ -191,11 +191,11 @@ before
 do
   %  {%
   switch mStateMessageKind
-  when noMessage :
+  case noMessage :
     %kMapAutomatonNoIssue%
-  when warningMessage :
+  case warningMessage :
     %kMapAutomatonIssueWarning%
-  when errorMessage :
+  case errorMessage :
     %kMapAutomatonIssueError%
   end
   %, %
@@ -243,11 +243,11 @@ foreach MAP_OVERRIDE_LIST do
     %, kMapState_%!TYPE_IDENTIFIER%_%![mFinalStateName identifierRepresentation]% /* %![mFinalStateIndex string]% */%
     %, %
     switch mBehaviourMessageKind
-    when noMessage :
+    case noMessage :
       %kMapAutomatonNoIssue%
-    when warningMessage :
+    case warningMessage :
       %kMapAutomatonIssueWarning%
-    when errorMessage :
+    case errorMessage :
       %kMapAutomatonIssueError%
     end
     %, %
@@ -267,11 +267,11 @@ foreach MAP_OVERRIDE_LIST do
     %, kMapState_%!TYPE_IDENTIFIER%_%![mFinalStateName identifierRepresentation]% /* %![mFinalStateIndex string]% */%
     %, %
     switch mBehaviourMessageKind
-    when noMessage :
+    case noMessage :
       %kMapAutomatonNoIssue%
-    when warningMessage :
+    case warningMessage :
       %kMapAutomatonIssueWarning%
-    when errorMessage :
+    case errorMessage :
       %kMapAutomatonIssueError%
     end
     %, %

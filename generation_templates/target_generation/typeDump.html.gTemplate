@@ -68,19 +68,19 @@ end
   <td>
     %if not type_mIsConcrete then%abstract %end
     switch type_mTypeKindEnum
-    when classType : %class%
-    when enumType : %enum%
-    when listType : %list%
-    when sortedListType : %sorted list%
-    when mapType : %map%
-    when uniqueMapType : %unique map%
-    when mapProxyType : %map proxy%
-    when listMapType : %list map%
-    when structType : %struct%
-    when graphType : %graph%
-    when arrayType : %array%
-    when externType : %extern%
-    when predefinedType : %predefined type%
+    case classType : %class%
+    case enumType : %enum%
+    case listType : %list%
+    case sortedListType : %sorted list%
+    case mapType : %map%
+    case uniqueMapType : %unique map%
+    case mapProxyType : %map proxy%
+    case listMapType : %list map%
+    case structType : %struct%
+    case graphType : %graph%
+    case arrayType : %array%
+    case externType : %extern%
+    case predefinedType : %predefined type%
     end%
 </td></tr>
 %if not [type_mSuperType isNull] then
@@ -180,21 +180,21 @@ if [type_mConstructorMap count] > 0 then
 end
 #--- Readers
 if [type_mReaderMap count] > 0 then
-  %<tr class="result_line"><td>Readers</td><td>%
+  %<tr class="result_line"><td>Getters</td><td>%
   foreach type_mReaderMap do
     switch mKind
-    when definedAsMember :
-    when definedAsCategory : %(category) %
+    case definedAsMember :
+    case definedAsCategory : %(extension) %
     end
     switch mQualifier
-    when isAbstract : %<b>abstract</b> %
-    when isBasic :
-    when isBasicFinal :
-    when isInherited :
-    when isOverriding : %<b>override</b> %
-    when isOverridingAbstract : %<b>abstract override</b> %
+    case isAbstract : %<b>abstract</b> %
+    case isBasic :
+    case isBasicFinal :
+    case isInherited :
+    case isOverriding : %<b>override</b> %
+    case isOverridingAbstract : %<b>abstract override</b> %
     end
-    %<b>reader</b> %!lkey->string
+    %<b>getter</b> %!lkey->string
     foreach mArgumentTypeList do
       %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
       % ?%!linkForType [![mType key]] % % !mFormalParameterName
@@ -208,25 +208,25 @@ if [type_mInstanceMethodMap count] > 0 then
   %<tr class="result_line"><td>Methods</td><td>%
   foreach type_mInstanceMethodMap do
     switch mKind
-    when definedAsMember :
-    when definedAsCategory : %(category) %
+    case definedAsMember :
+    case definedAsCategory : %(extension) %
     end
     switch mQualifier
-    when isAbstract : %<b>abstract</b> %
-    when isBasic :
-    when isBasicFinal :
-    when isInherited :
-    when isOverriding : %<b>override</b> %
-    when isOverridingAbstract : %<b>abstract override</b> %
+    case isAbstract : %<b>abstract</b> %
+    case isBasic :
+    case isBasicFinal :
+    case isInherited :
+    case isOverriding : %<b>override</b> %
+    case isOverridingAbstract : %<b>abstract override</b> %
     end
     %<b>method</b> %!lkey->string
     foreach mParameterList do
       %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
       switch mFormalArgumentPassingMode
-      when argumentConstantIn : % ??%
-      when argumentIn         : % ?%
-      when argumentInOut      : % ?!%
-      when argumentOut        : % !%
+      case argumentConstantIn : % ??%
+      case argumentIn         : % ?%
+      case argumentInOut      : % ?!%
+      case argumentOut        : % !%
       end
       !linkForType [![mFormalArgumentType key]] % % !mFormalArgumentName
     end
@@ -236,28 +236,28 @@ if [type_mInstanceMethodMap count] > 0 then
 end
 #--- Modifiers
 if [type_mModifierMap count] > 0 then
-  %<tr class="result_line"><td>Modifiers</td><td>%
+  %<tr class="result_line"><td>Setters</td><td>%
   foreach type_mModifierMap do
     switch mKind
-    when definedAsMember :
-    when definedAsCategory : %(category) %
+    case definedAsMember :
+    case definedAsCategory : %(extension) %
     end
     switch mQualifier
-    when isAbstract : %<b>abstract</b> %
-    when isBasic :
-    when isBasicFinal :
-    when isInherited :
-    when isOverriding : %<b>override</b> %
-    when isOverridingAbstract : %<b>abstract override</b> %
+    case isAbstract : %<b>abstract</b> %
+    case isBasic :
+    case isBasicFinal :
+    case isInherited :
+    case isOverriding : %<b>override</b> %
+    case isOverridingAbstract : %<b>abstract override</b> %
     end
-    %<b>modifier</b> %!lkey->string
+    %<b>setter</b> %!lkey->string
     foreach mParameterList do
       %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
       switch mFormalArgumentPassingMode
-      when argumentConstantIn : % ??%
-      when argumentIn         : % ?%
-      when argumentInOut      : % ?!%
-      when argumentOut        : % !%
+      case argumentConstantIn : % ??%
+      case argumentIn         : % ?%
+      case argumentInOut      : % ?!%
+      case argumentOut        : % !%
       end
       !linkForType [![mFormalArgumentType key]] % % !mFormalArgumentName
     end
@@ -273,10 +273,10 @@ if [type_mClassMethodMap count] > 0 then
     foreach mParameterList do
       %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
       switch mFormalArgumentPassingMode
-      when argumentConstantIn : % ??%
-      when argumentIn         : % ?%
-      when argumentInOut      : % ?!%
-      when argumentOut        : % !%
+      case argumentConstantIn : % ??%
+      case argumentIn         : % ?%
+      case argumentInOut      : % ?!%
+      case argumentOut        : % !%
       end
       !linkForType [![mFormalArgumentType key]] % % !mFormalArgumentName
     end

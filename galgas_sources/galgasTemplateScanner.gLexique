@@ -58,6 +58,7 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "before",
   "between",
   "block",
+  "case",
   "cast",
   "class",
   "const",
