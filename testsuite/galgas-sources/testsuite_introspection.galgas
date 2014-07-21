@@ -10,13 +10,13 @@ class @B : @A {}
 proc testsuite_introspection {
 message "*************************************** begin of introspection test\n"
 #--- List of types
-  let @typelist typeList = [@type typeList]
+  let @typelist typeList = @type:typeList
   message "--- Type list (" + [[typeList length] string] + " types)\n"
   for () in typeList do
     message "  @" + [mValue name] + "\n"
   end
 #--- List of functions
-  let @functionlist functionList = [@function functionList]
+  let @functionlist functionList = @function:functionList
   message "--- Function list (" + [[functionList length] string]
   + " function" + if [functionList length] > 1 then "s" else "" end + ")\n"
   for () in functionList do
@@ -28,8 +28,8 @@ message "*************************************** begin of introspection test\n"
     log "mValue" : mValue
     message [mValue description] + "  " + [mValue name] + " [" + s + "] -> @" + [[mValue resultType] name] + "\n"
   end
-  let @bool b1 = [@function isFunctionDefined !"foo"]
-  let @bool b2 = [@function isFunctionDefined !"functionTest"]
+  let b1 = @function:isFunctionDefined {!"foo"}
+  let b2 = @function:isFunctionDefined {!"functionTest"}
   message "Function 'foo' exists:" + [b1 cString] + "\n"
   message "Function 'functionTest' exists:" + [b2 cString] + "\n"
 #--- Introspection of an @uint
@@ -45,11 +45,11 @@ message "*************************************** begin of introspection test\n"
 #  t := [a dynamicType] ;
 #  log t ;
 #--- Function invocation
-  @function f = [@function functionWithName !"functionTest"]
-  var arguments = [@objectlist emptyList]
+  @function f = @function:functionWithName {!"functionTest"}
+  var arguments = @objectlist {}
   arguments += ![2 object]
   arguments += ![6 object]
-  let @object result = [f invoke !arguments !here]
+  let @object result = [f invoke !arguments !:here]
   log result
 }
 

@@ -7,7 +7,7 @@ sortedlist @mySortedList {
 }
 
 proc testsuite_sortedlist {
-  var strList = [@mySortedList emptySortedList]
+  var strList = @mySortedList {}
   strList += !"b"
   strList += !"a"
   strList += !"d"

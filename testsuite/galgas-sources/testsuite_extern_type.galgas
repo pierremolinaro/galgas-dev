@@ -18,7 +18,7 @@ extern @complex {
 
 proc testsuite_extern_type {
   message "*************************************** begin of extern type test\n"
-  var complex = [@complex new !1.0 !-1.0]
+  var complex = @complex:new{!1.0 !-1.0}
   log complex
   log "real" : [complex real]
   log "imaginary" : [complex imaginary]

@@ -9,7 +9,7 @@ listmap @myListMap (@aList)
 
 proc testsuite_listmap {
   message "*************************************** begin of listmap\n"
-  var m = [@myListMap emptyMap]
+  var m = @myListMap {}
   m += !"d" !"g" !37
   m += !"a" !"b" !23
   m += !"c" !"f" !11
@@ -24,13 +24,13 @@ proc testsuite_listmap {
   @aList aList = [m listForKey !"a"]
   log aList
 #  message "--- test .= operator listmap\n" ;
-  var m2 = [@myListMap emptyMap]
+  var m2 = @myListMap {}
 #  m2 += !"b" !"z" !9 ;
 #  m2 += !"a" !"q" !14 ;
 #  m .= m2 ;
 #  log m ;
   message "--- test += operator listmap\n"
-  m2 = [@myListMap emptyMap]
+  m2 = @myListMap {}
   m2 += !"b" !"w" !7
   m2 += !"e" !"r" !2
   m2 += !"b" !"x" !19

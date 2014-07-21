@@ -22,7 +22,7 @@ override abstract getter @C_C aReader ?@uint inA ??@string inB -> @string outRes
 
 proc testsuite_category_readers {
   message "*************************************** begin of category reader test\n"
-  @B_B b = [@B_B new]
+  @B_B b = :new
   @string s = [b otherReader !2 !"-"]
   log s
 }

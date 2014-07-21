@@ -9,19 +9,19 @@ map @aMap {
 
 proc testsuite_map {
   message "*************************************** begin of map\n"
-  var m = [@aMap emptyMap]
-  [!?m insertKey ![@lstring new !"g" !here] !37]
+  var m = @aMap:emptyMap
+  [!?m insertKey !@lstring:new {!"g" !:here} !37]
   log m
   [!?m setValueForKey !56 !"g"]
   log m
-  var mm = [@aMap mapWithMapToOverride !m]
+  var mm = @aMap:mapWithMapToOverride {!m}
   log mm
   @uint v
-  [mm searchKey ![@lstring new !"g" !here] ?v]
+  [mm searchKey !@lstring:new {!"g" !:here} ?v]
   log v # Displays 56
-  [!?mm insertKey ![@lstring new !"g" !here] !11]
+  [!?mm insertKey !@lstring:new {!"g" !:here} !11]
   log mm
-  [mm searchKey ![@lstring new !"g" !here] ?v]
+  [mm searchKey !@lstring:new {!"g" !:here} ?v]
   log v # Displays 11
   m = [mm overriddenMap]
   log m

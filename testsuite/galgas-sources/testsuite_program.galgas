@@ -23,7 +23,7 @@ before {
 }
 
 #--- 'when' clauses
-when . "testsuite"
+case . "testsuite"
 message "a source text file with the .testsuite extension"
 ??@lstring inSourceFile {
   grammar testsuite_grammar in inSourceFile

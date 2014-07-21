@@ -7,7 +7,7 @@ list @myList {
 }
 
 proc testsuite_list {
-  var strList = [@myList emptyList]
+  var strList = @myList {}
   strList += !"a"
   strList += !"b"
   strList += !"c"
@@ -27,16 +27,16 @@ proc testsuite_list {
   strList += strList
   log s
   message "*************************************** begin of list compare\n"
-  var aList = [@myList listWithValue !"az"]
-  var bList = [@myList listWithValue !"az"]
+  var aList = @myList {!"az"}
+  var bList = @myList {!"az"}
   let @bool comp = aList == bList
   log comp
   message "*************************************** begin of collection value\n"
-  var s1 = [@stringlist listWithValue !"a"]
+  var s1 = @stringlist {!"a"}
   s1 += !"b"
-  var s2 = [@stringlist listWithValue !"c"]
+  var s2 = @stringlist {!"c"}
   s2 += !"d"
-  s2 += [@stringlist listWithValue !"e"]
+  s2 += {!"e"}
   let str = @stringlist {s1, s2}
   log str
   let str2 = @stringlist {!"a", !"b", !"c", !"d", !"e"}
