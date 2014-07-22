@@ -18,7 +18,7 @@
 %
 %Cette notation est décrite par le diagramme syntaxique de la \refFigure{}{diagrammeSyntaxiqueCible}.
 %
-%\begin{figure}[!ht]
+%\begin{figure}[t]
 %  \centering
 %  \small
 %  \begin{tikzpicture}[
@@ -50,27 +50,46 @@
 %
 %Un identificateur seul représente une variable. 
 
-\sectionLabel{Append Instruction}{appendInstruction}
+\section{Rôle du point-virgule «\texttt{;}»}
+
+Le point-virgule n'est pas un terminateur d'instruction. Il représente une instruction vide. Aussi, il peut être utilisé en nombre quelconque entre deux instructions consécutives. Ainsi, on peut écrire :
+
+\lstset{emph={instruction1, instruction2}, emphstyle=\emph}
+\begin{galgascode}
+instruction1  instruction2
+\end{galgascode}
+
+Ou encore :
+\begin{galgascode}
+instruction1 ; instruction2
+\end{galgascode}
+\begin{galgascode}
+instruction1 ;;;; instruction2
+\end{galgascode}
 
 
-\sectionLabel{Instruction d'affectation}{assignmentInstruction}
+
+
+
+
+\sectionLabel{L'instruction d'affectation}{assignmentInstruction}
 
 L'instruction d'affectation peut prendre plusieurs formes. La plus courante est :
 \lstset{emph={expression, variable}, emphstyle=\emph}
 \begin{galgascode}
-variable := expression ;
+variable = expression
 \end{galgascode}
 
-Si \galgas{variable} est une instance de structure (\refChapterPage{type-structure}), on peut directement en modifier un champ en utilisant l'opérateur \galgas{->} :
+Si \galgas{variable} est une instance de structure (\refChapterPage{type-structure}), on peut directement en modifier un champ en utilisant l'opérateur \galgas{.} :
 \lstset{emph={expression, variable, champ}, emphstyle=\emph}
 \begin{galgascode}
-variable->champ := expression ;
+variable.champ = expression
 \end{galgascode}
 
 Si \galgas{champ} est lui-même une structure, on peut accéder à l'un de ses champs (et ainsi de suite) :
 \lstset{emph={expression, variable, champ, champ1}, emphstyle=\emph}
 \begin{galgascode}
-variable->champ->champ1 := expression ;
+variable.champ.champ1 = expression
 \end{galgascode}
 
 
@@ -80,74 +99,306 @@ variable->champ->champ1 := expression ;
 
 L'instruction \galgas{cast} permet simplement d'exprimer de manière élégante une série de tests de conversions polymorphiques inverses. Sa syntaxe est :
 
-\lstset{emph={expression, variable, conversion}, emphstyle=\emph}
+\lstset{emph={expression, nom1, nom2, conversion}, emphstyle=\emph}
 \begin{galgascode}
 cast expression
-when conversion @T1 variable :
+case conversion @T1 nom1 :
   ...
-when conversion @T2 variable :
+case conversion @T2 nom2 :
   ...
 else
   ...
-end cast ;
+end
 \end{galgascode}
 
-L'instruction accepte une ou plusieurs branches \galgas{when}, et zéro ou une branche \galgas{else}. \galgas{conversion} est soit \galgas{==}, soit \galgas{>=}. \galgas{variable} est une constante dont le type est le type nommé dans la branche \galgas{when} qui la déclare, et dont la portée est limitée à cette branche \galgas{when}.
+L'instruction accepte une ou plusieurs branches \galgas{case}, et zéro ou une branche \galgas{else}. \galgas{conversion} est soit \galgas{==}, soit \galgas{>=}. \galgas{nom1} et \galgas{nom2} sont des constantes dont le type est le type nommé dans la branche \galgas{case} qui la déclare, et dont la portée est limitée à cette branche \galgas{case}.
 
-Lors de l'exécution, le type dynamique de \galgas{expression} est comparé successivement aux types (\galgas{@T1}, \galgas{@T2}) nommés dans les branches \galgas{when} ; dès que ce type dynamique est :
+Lors de l'exécution, le type dynamique de \galgas{expression} est comparé successivement aux types (\galgas{@T1}, \galgas{@T2}) nommés dans les branches \galgas{case} ; dès que ce type dynamique est :
 \begin{itemize}
   \item exactement la classe \galgas{@T} (\galgas{conversion} est \galgas{==}), 
   \item la classe \galgas{@T} ou de l'une de ses classes héritières (\galgas{conversion} est \galgas{>=}),
   \item une classe héritière de la classe \galgas{@T}, mais pas la classe \galgas{@T} (\galgas{conversion} est \galgas{>}),
 \end{itemize}
-\galgas{variable} prend la valeur de \galgas{expression} et les instructions de la branche correspondante sont exécutées.
+alors la constante prend la valeur de \galgas{expression} et les instructions de la branche correspondante sont exécutées.
 
 Si toutes les comparaisons échouent, la branche \galgas{else} est exécutée (si elle existe). La forme typique de cette instruction est donc :
 
 
 \begin{galgascode}
 cast expression
-when >= @B variable :
+case >= @B v1 :
   ...
-when >= @C variable :
+case >= @C v2 :
   ...
 else
   message "conversion impossible"
-end if ;
+end
 \end{galgascode}
 
-Note : si la variable \galgas{var} n'est pas utilisée dans la branche correspondante, une alerte est émise. Pour la supprimer, ne pas mentionner la variable en écrivant \galgas{when >= @T :}.
+Note : si la variable \galgas{nom1} ou  \galgas{nom2} n'est pas utilisée dans la branche correspondante, une alerte est émise. Pour la supprimer, ne pas mentionner la variable en écrivant \galgas{case >= @T :}.
 
 
 
-\sectionLabel{Concat Instruction}{concatInstruction}
-
-
-\sectionLabel{Decrement Instruction}{decrementInstruction}
 
 
 
+
+
+
+\sectionLabel{L'instruction d'ajout \texttt{+=}}{concatInstruction}
+
+\lstset{emph={cible, expression, expression1, expressionN}, emphstyle=\emph}
+Cette instruction permet d'ajouter un élément à une collection ; elle présente deux syntaxes, suivant que l'élément à ajouter est défini par :
+\begin{itemize}
+  \item une expression : \galgas{cible += expression} ;
+  \item une liste d'expressions : \galgas{cible += !expression1 ... !expressionN}.
+\end{itemize}
+
+
+ suivant que l'élément à ajouté est défini par une expression ou une liste d'expressions. La cible est une variable ou un champ de structure.
+
+Cette instruction s'applique aux types suivants :
+\begin{itemize}
+  \item \galgas{@string} (\refSubsectionPage{instructionConcatString}) ;
+  \item \galgas{@stringset} (\refSubsectionPage{instructionConcatStringset}) ;
+  \item \galgas{list @T} (\refSubsectionPage{instructionConcatList}) ;
+  \item \galgas{sortedlist @T} (\refSubsectionPage{instructionConcatSortedList}).
+\end{itemize}
+
+
+\subsectionLabel{Instruction d'ajout et le type \texttt{@string}}{instructionConcatString}
+
+Sous la forme \galgas{cible += expression}, l'instruction permet de concaténer des chaînes de caractères :
+\begin{galgascode}
+var s = "abc"
+s += "def" # s vaut "abcdef"
+\end{galgascode}
+
+La forme \galgas{cible += !expression1 ... !expressionN} n'est pas prise en compte pour le type \galgas{@string}.
+
+
+
+\subsectionLabel{Instruction d'ajout et le type \texttt{@stringset}}{instructionConcatStringset}
+
+Sous la forme \galgas{cible += expression}, l'instruction permet de concaténer d'effectuer l'union des ensembles de châines :
+\begin{galgascode}
+var strset1 = @stringset {!"a", !"b"} # Valeur : "a", "b"
+var strset2 = @stringset {!"b", !"c"} # Valeur : "b", "c"
+strset1 += strset2 # strset1 vaut "a", "b", "c"
+\end{galgascode}
+
+La forme \galgas{cible += !expression1 ... !expressionN} permet d'ajouter une chaîne à l'ensemble :
+\begin{galgascode}
+var strset1 = @stringset {!"a", !"b"} # Valeur : "a", "b"
+strset1 += !"c" # strset1 vaut "a", "b", "c"
+strset1 += !"b" # strset1 vaut "a", "b", "c"
+\end{galgascode}
+
+
+
+\subsectionLabel{Instruction d'ajout et les listes}{instructionConcatList}
+
+Sous la forme \galgas{cible += expression}, l'instruction effectue une concaténation de listes : \galgas{cible} et \galgas{expression} doivent avoir le même type \galgas{list @T}, et l'\galgas{expression} est ajoutée à la fin de la \galgas{cible}.
+
+\begin{galgascode}
+var liste1 = @stringlist {!"a", !"b"}
+var liste2 = @stringlist {!"c", !"d"}
+liste1 += liste2 # liste1 vaut "a" "b" "c" "d"
+\end{galgascode}
+
+
+
+Sous la forme \galgas{cible += !expression1 ... !expressionN}, l'instruction ajoute un élément à la fin de \galgas{cible}. L'élément est défini par la liste des valeurs de ses champs.
+
+Avec la liste :
+\begin{galgascode}
+list @maListe {
+  @uint mProperty1
+  @string mProperty2
+}
+\end{galgascode}
+
+On a :
+
+\begin{galgascode}
+var liste = @maListe {}
+liste += !2 !"a" # liste vaut contient un element 2, "a"
+\end{galgascode}
+
+
+
+
+
+
+\subsectionLabel{Instruction d'ajout et les listes triées}{instructionConcatSortedList}
+
+Sous la forme \galgas{cible += expression}, l'instruction effectue une concaténation de listes : \galgas{cible} et \galgas{expression} doivent avoir le même type \galgas{list @T}, et chaque élément de \galgas{expression} est ajouté à la \galgas{cible} en respectant l'ordre de tri.
+
+Avec la liste triée :
+\begin{galgascode}
+sortedlist @maListeTriee {
+  @uint mProperty1
+  @string mProperty2
+}{
+  mProperty1 <
+}
+\end{galgascode}
+
+\begin{galgascode}
+var liste1 = @maListeTriee {!3 !"a", !1 !"c"} # Valeur : (1, "c"), (3, "a")
+var liste2 = @maListeTriee {!4 !"d", !2 !"b"} # Valeur : (2, "b"), (4, "d")
+liste1 += liste2 # liste1 vaut (1, "c"), (2, "b"), (3, "a"), (4, "d")
+\end{galgascode}
+
+
+
+Sous la forme \galgas{cible += !expression1 ... !expressionN}, l'instruction ajoute un élément à la fin de \galgas{cible}. L'élément est défini par la liste des valeurs de ses champs.
+
+
+On a :
+
+\begin{galgascode}
+var liste = @maListeTriee {}
+liste += !2 !"a" # Valeur : (2, "a")
+liste += !1 !"b" # Valeur : (1, "b"), (2, "a")
+liste += !3 !"c" # Valeur : (1, "b"), (2, "a"), (3, "c")
+\end{galgascode}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\sectionLabel{Décrémentation \texttt{-{}-}}{decrementInstruction}
+
+L'instruction de décrémentation s'applique aux types \refTypePredefini{sint}, \refTypePredefini{sint64}, \refTypePredefini{uint} et \refTypePredefini{uint64} ; sa syntaxe est la suivante :
+\lstset{emph={variable, champ}, emphstyle=\emph}
+\begin{galgascode}
+variable --
+\end{galgascode}
+
+Les champs de structure peuvent être décrémentés :
+\begin{galgascode}
+variable.champ --
+\end{galgascode}
+
+Une erreur d'exécution est déclenchée en cas de dépassement de capacité.
+
+
+
+
+
+
+%---------------------------------------------------------------------------------------------------------------------------
 
 \section{L'instruction \texttt{drop}}
 
 La syntaxe de l'instruction \galgas{drop} est la suivante :
 {\lstset{emph={variable}, emphstyle=\emph}
 \begin{galgascode}
-drop variable, ... ;
+drop variable, ...
 \end{galgascode}
 }
 
 Chaque variable nommée est placée dans l'état \emph{non construit}.
 
-\section{Error Instruction}
-
-
-\sectionLabel{L'instruction d'appel de routine}{appelRoutine}
 
 
 
 
-%-----------------------------------------------------------------------------------
+
+
+%---------------------------------------------------------------------------------------------------------------------------
+
+\section{L'instruction \texttt{error}}
+
+L'instruction \galgas{error} permet de signaler une erreur à l'utilisateur. Elle est constituée de trois champs séparés par un double-point (\galgas{\:}) :
+
+{\lstset{emph={localisation, message_erreur, variable1, variableN}, emphstyle=\emph}
+\begin{galgascode}
+error localisation : message_erreur : variable1, ..., variableN
+\end{galgascode}
+
+
+
+Le champ \galgas{localisation} signale à l'utilisateur la position de l'erreur dans le texte source. C'est donc une expression de type \galgas{@location}, ou d'un type possédant un \emph{getter} sans argument nommé \galgas{location} et renvoyant un objet de type \galgas{@location} : c'est le cas de tous les types prédéfinis \refTypePredefini{luint}, \refTypePredefini{luint64}, \refTypePredefini{lsint}, \refTypePredefini{lsint64}, \refTypePredefini{lbool}, \refTypePredefini{lchar} et \refTypePredefini{lstring}. Le \galgas{message_erreur} est le message affiché à l'utilisateur : c'est donc une expression de type \galgas{@string}. Enfin, le troisième champ liste les variables \galgas{variable1}, ..., \galgas{variableN} qui ne peuvent être construites du fait de l'erreur. Si il n'y a pas de variable à citer, l'instruction s'écrit :
+\begin{galgascode}
+error localisation : message_erreur
+\end{galgascode}
+
+Par exemple :
+
+\begin{galgascode}
+$identifier$ ??@lstring nom
+...
+error nom.location : message_erreur
+\end{galgascode}
+
+Comme \galgas{nom} est de type \galgas{lstring} (voir ci-dessus), on peut simplement écrire :
+\begin{galgascode}
+$identifier$ ??@lstring nom
+...
+error nom : message_erreur
+\end{galgascode}
+
+
+Lister des variables qui ne peuvent pas être construites est indispensable dans certains cas. Examinons le code suivant (\underline{qui ne compile pas}) :
+\begin{galgascode}
+$identifier$ ??@lstring nom
+@unType resultat
+if ok then
+  resultat = ...
+else
+  error nom : message_erreur
+end
+\end{galgascode}
+
+En effet, une des branches du \galgas{if} donne une valeur à \galgas{resultat}, et l'autre pas. Or, en cas d'erreur, on veut que \galgas{resultat} ne soit pas valué à l'exécution. On écrit alors le texte suivant (qui compile) :
+\begin{galgascode}
+$identifier$ ??@lstring nom
+@unType resultat
+if ok then
+  resultat = ...
+else
+  error nom : message_erreur : resultat
+end
+\end{galgascode}
+
+Mentionner \galgas{resultat} à la fin de l'instruction \galgas{error} permet de faire croire au compilateur que \galgas{resultat} est valué.
+
+
+%---------------------------------------------------------------------------------------------------------------------------
+
+\sectionLabel{L'appel de procédure}{appelRoutine}
+
+Cette instruction permet d'exécuter une procédure. Si par exemple celle-ci est définie par :
+\begin{galgascode}
+proc maRoutine !@uint a ?!@string b {
+  ...
+}
+\end{galgascode}
+
+L'instruction d'appel de cette routine est (il y a plusieurs variantes possibles pour le premier paramètre qui est en entrée) :
+\begin{galgascode}
+@string x = ...
+maRoutine (?@uint y !?x)
+\end{galgascode}
+
+Note : les parenthèses sont obligatoires, même si il n'y a aucun argment.
+
+La correspondance entre arguments formels et paramètres effectifs est décrite à la \refSectionPage{correspondanceArgFormelsParametresEffectifs}.
+
+
+
+%---------------------------------------------------------------------------------------------------------------------------
 
 \sectionLabel{L'instruction \texttt{for}}{instructionFor}
 
@@ -157,13 +408,11 @@ L'instruction \galgas{for} permet d'énumérer :
   \item plusieurs collections de manière synchrone.
 \end{itemize}
 
-\subsection{Présentation}
-
 Pour énumérer une collection, la syntaxe est la suivante :
 
-\lstset{emph={expression, sens, condition, nom_index, instructions_before, instructions_between, instructions_after, instructions\_do, expression1, sens1, expression2, sens2, cst, cst1, cst2}, emphstyle=\emph}
+\lstset{emph={expression, sens, condition, nom_index, instructions_before, instructions_between, instructions_after, instructions\_do, enumeration_collection, enumeration_collection1, enumeration_collection2}, emphstyle=\emph}
 \begin{galgascode}
-for sens cst in expression
+for enumeration_collection
 while condition # Optionnel
 before instructions_before  # Optionnel
 do 
@@ -171,13 +420,13 @@ do
   instructions_do
 between instructions_between  # Optionnel
 after instructions_after  # Optionnel
-end for ;
+end
 \end{galgascode}
 
 
-Pour énumérer plusieurs collections, la syntaxe est :
+Énumérer plusieurs collections s'exprime en séparant les différentes énumérations par une virgule :
 \begin{galgascode}
-for sens1 cst1 in expression1, sens2 cst2 in expression2, ...
+for enumeration_collection1, enumeration_collection2, ...
 while condition # Optionnel
 before instructions_before  # Optionnel
 do
@@ -185,42 +434,336 @@ do
   instructions_do
 between instructions_between  # Optionnel
 after instructions_after  # Optionnel
-end for ;
+end
 \end{galgascode}
+
+
+\subsection{Les quatre formes d'une énumération}
+
+Le \refTableau{quatreFormesEnumeration} liste les quatre façons d'exprimer l'énumération \galgas{enumeration_collection}.
+
+
+\lstset{emph={enumeration_collection, expression, sens, prefixe, cst, cst1, cst2}, emphstyle=\emph}
+\begin{table}[t]
+  \centering
+  \begin{tabular}{lp{8.5cm}}
+  \textbf{Énumération} & \textbf{Signification}\\
+  \galgas{sens () in expression} & Utilisation de constantes définies implicitement qui représentent les champs de l'élément courant (\refSubsectionPage{enumerationImplicite}).\\
+  \galgas{sens () prefixe in expression} & Utilisation de constantes préfixées définies implicitement qui représentent les champs de l'élément courant (\refSubsectionPage{enumerationImplicitePrefixee}).\\
+  \galgas{sens cst in expression} & Déclaration d'une constante représentant l'élément courant (\refSubsectionPage{enumerationParConstante}).\\
+  \galgas{sens (cst1 cst2 ...) in expression} & Déclaration de constantes représentant les champs de l'élément courant (\refSubsectionPage{enumerationParListeConstantes}).\\
+  \end{tabular}
+  \caption{Les quatre formes d'énumération de l'instruction \texttt{for}}
+  \labelTableau{quatreFormesEnumeration}
+  \ligne
+\end{table}
+
+
+\subsection{Types énumérables et ordre d'énumération}
+
+Les types pouvant être énumérés sont listés dans le \refTableau{typesEnumerablesFor}, ainsi que leur ordre d'énumération par défaut. Si le champ \galgas{sens} est vide, c'est l'ordre par défaut qui est adopté. Utiliser \galgas{>} fixe le sens inverse.
+
+\begin{table}[t]
+  \centering
+  \begin{tabular}{ll}
+  \textbf{Type} & \textbf{Ordre d'énumération}\\
+  \galgas{@data} & Ordre croissant des indices\\
+  \galgas{list @T} & Ordre croissant des indices \\
+  \galgas{map @T} & Ordre alphabétique des clés \\
+  \galgas{listmap @T} & Ordre alphabétique des clés \\
+  \galgas{sortedlist @T} & Ordre du tri \\
+  \galgas{@stringset} & Ordre alphabétique \\
+  \end{tabular}
+  \caption{Types énumérables par l'instruction \texttt{for}}
+  \labelTableau{typesEnumerablesFor}
+  \ligne
+\end{table}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsectionLabel{Énumération « \texttt{() in expression} »}{enumerationImplicite}
+
+Des constantes correspondants à chaque champ de l'élément courant sont implicitement déclarées (\refTableau{constantesImplicitementDeclarees}). 
+
+\begin{table}[t]
+  \centering
+  \begin{tabular}{lp{12cm}}
+  \textbf{Type} & \textbf{Constantes implicitement déclarées}\\
+  \galgas{@data} & \galgas{data}, de type \galgas{@uint}\\
+  \galgas{list @T} & À chaque champ de la liste, correspond une constante de même nom.\\
+  \galgas{map @T} & \galgas{lkey}, de type \galgas{@lstring}, qui représente la clé, et à chaque champ de la table, correspond une constante de même nom.\\
+  \galgas{listmap @T} & \galgas{key}, de type \galgas{@string}, qui représente la clé, et \galgas{mList}, qui représente la liste associée.\\
+  \galgas{sortedlist @T} & À chaque champ de la liste, correspond une constante de même nom.\\
+  \galgas{@stringset} & \galgas{key}, de type \galgas{@string} \\
+  \end{tabular}
+  \caption{Constantes implicitement déclarées par «\texttt{() in expression}»}
+  \labelTableau{constantesImplicitementDeclarees}
+  \ligne
+\end{table}
+
+Voici quelques exemples :
+\begin{galgascode}
+@data d = ...
+for () in d do
+  log data
+end
+\end{galgascode}
+
+
+
+\begin{galgascode}
+@stringset v = ...
+for () in v do
+  log key # Affichage des cles dans l'ordre alphabetique
+end
+\end{galgascode}
+
+Avec la liste :
+\begin{galgascode}
+list @maListe {
+  @uint mProperty1
+  @string mProperty2
+}
+\end{galgascode}
+
+On peut écrire :
+
+\begin{galgascode}
+@maListe lst = ...
+for () in lst do
+  log mProperty1, mProperty2
+end
+\end{galgascode}
+
+
+Avec la table :
+\begin{galgascode}
+map @maTable {
+  @uint mProperty1
+  @string mProperty2
+}
+\end{galgascode}
+
+On peut écrire :
+
+\begin{galgascode}
+@maTable tab = ...
+for () in tab do
+  log lkey, mProperty1, mProperty2
+end
+\end{galgascode}
+
+
+\subsectionLabel{Énumération « \texttt{() prefixe in expression} »}{enumerationImplicitePrefixee}
+
+Cette écriture est une extension de celle de la section précédente : \galgas{prefixe} est utilisé pour préfixer le nom des constantes implicitement déclarées. En reprenant les exemples de la section précédente :
+
+\begin{galgascode}
+@data d = ...
+for () xyz_ in d do
+  log xyz_data
+end
+\end{galgascode}
+
+
+
+\begin{galgascode}
+@stringset v = ...
+for () pre in v do
+  log prekey # Affichage des cles dans l'ordre alphabetique
+end
+\end{galgascode}
+
+
+\begin{galgascode}
+@maListe lst = ...
+for () lst in lst do
+  log lstmProperty1, lstmProperty2
+end
+\end{galgascode}
+
+
+\begin{galgascode}
+@maTable tab = ...
+for () tb_ in tab do
+  log tb_lkey, tb_mProperty1, tb_mProperty2
+end
+\end{galgascode}
+
+Utiliser un préfixe permet de lever les collisions des noms des constantes implicites quand on énumère des collections ayant des champs de même nom :
+
+\begin{galgascode}
+@maListe v1 = ...
+@maListe v2 = ...
+for () in v1, () in v2 do # Erreur !
+ ...
+end
+\end{galgascode}
+
+Le compilateur GALGAS déclenche une erreur, car il y a ambiguïté sur la signification de \galgas{mProperty1} et de \galgas{mProperty2} à l'intérieur de la boucle : désigne-t'elle l'élément courant de \galgas{v1} ou l'élément courant de \galgas{v2} ?
+
+Pour lever l'ambiguïté, on complète l'instruction en précisant un préfixe pour l'une des deux listes (par exemple la seconde) :
+\begin{galgascode}
+@maListe v1 = ...
+@maListe v2 = ...
+for () in v1, () l2_ in v2 do
+  log mProperty1 # Designe sans ambiguite le champ de la premiere liste
+  log l2_mProperty1 # Designe sans ambiguite le champ de la seconde liste
+end
+\end{galgascode}
+
+
+\subsectionLabel{Énumération « \texttt{cst in expression} »}{enumerationParConstante}
+
+Dans cette forme, une seule constante est déclarée (\galgas{cst}), et son type est donné par le \refTableau{enumerationParConstante}. Le type \galgas{@T-element} est implicitement déclaré avec la déclaration de la collection correspondante (liste, table), et est une structure : on accède donc à ses champs par l'opérateur \galgas{.}. 
+
+
+\begin{table}[t]
+  \centering
+  \begin{tabular}{llp{7cm}}
+  \textbf{Type} & \textbf{Type implicite de la constante}\\
+  \galgas{@data} & \galgas{@uint}\\
+  \galgas{list @T} & \galgas{@T-element}\\
+  \galgas{map @T} & \galgas{@T-element}\\
+  \galgas{listmap @T} & \galgas{@T-element}\\
+  \galgas{sortedlist @T} & \galgas{@T-element}\\
+  \galgas{@stringset} & \galgas{@string} \\
+  \end{tabular}
+  \caption{Type de la constante dans «\texttt{cst in expression} »}
+  \labelTableau{enumerationParConstante}
+  \ligne
+\end{table}
+
+
+En reprenant les exemples de la \refSubsectionPage{enumerationImplicite} :
+
+\begin{galgascode}
+@data d = ...
+for v in d do
+  log v
+end
+\end{galgascode}
+
+
+
+\begin{galgascode}
+@stringset v = ...
+for s in v do
+  log s
+end
+\end{galgascode}
+
+
+\begin{galgascode}
+@maListe lst = ...
+for x in lst do
+  log x.mProperty1, x.mProperty2
+end
+\end{galgascode}
+
+
+\begin{galgascode}
+@maTable tab = ...
+for entry in tab do
+  log entry.lkey, entry.mProperty1, entry.mProperty2
+end
+\end{galgascode}
+
+Le compilateur GALGAS vérifie alors l'identité entre le type explicitement déclaré, et le type implicitement déduit du type de l'expression enumérée. Il est possible de déclarer explicitement le type de la constante en écrivant l'énumération sous la forme :
+
+\begin{galgascode}
+@unType cst in expression
+\end{galgascode}
+
+Les exemples précédents deviennent alors :
+
+\begin{galgascode}
+@data d = ...
+for @uint v in d do
+  log v
+end
+\end{galgascode}
+
+
+
+\begin{galgascode}
+@stringset v = ...
+for @string s in v do
+  log s
+end
+\end{galgascode}
+
+
+\begin{galgascode}
+@maListe lst = ...
+for @maListe-element x in lst do
+  log x.mProperty1, x.mProperty2
+end
+\end{galgascode}
+
+
+\begin{galgascode}
+@maListe tab = ...
+for @maListe-element entry in tab do
+  log entry.lkey, entry.mProperty1, entry.mProperty2
+end
+\end{galgascode}
+
+
+
+\subsectionLabel{Énumération « \texttt{(cst1 cst2 ...) in expression} »}{enumerationParListeConstantes}
+
+Une liste de noms figure entre parenthèses, chaque nom désignant une constante correspondant à un champ de la collection à énumérer. Le \refTableau{enumerationParListeConstantes} liste pour chaque type le nom et le type correspondant.
+
+\begin{table}[t]
+  \centering
+  \begin{tabular}{lp{12cm}}
+  \textbf{Type} & \textbf{Constantes à déclarer}\\
+  \galgas{@data} & \emph{Ce type n'est pas pris en charge par cette forme.}\\
+  \galgas{list @T} & Une constante pour chaque champ, dans l'ordre de déclaration.\\
+  \galgas{map @T} & Une constante de type \galgas{@lstring}, qui représente la clé, suivi d'une constante pour chaque champ de la table, dans l'ordre de déclaration.\\
+  \galgas{listmap @T} & Une constante de type \galgas{@string}, qui représente la clé, et une constante qui représente la liste associée.\\
+  \galgas{sortedlist @T} & Une constante pour chaque champ, dans l'ordre de déclaration.\\
+  \galgas{@stringset} & \emph{Ce type n'est pas pris en charge par cette forme.} \\
+  \end{tabular}
+  \caption{Constantes à déclarer pour «\texttt{(cst1 cst2 ...) in expression} »}
+  \labelTableau{enumerationParListeConstantes}
+  \ligne
+\end{table}
+
 
 Les collections à énumérer sont les valeurs de \galgas{expression}, \galgas{expression1}, \galgas{expression2}. Les types pouvant être énumérés sont listés dans le \refTableau{typesEnumerablesFor}. Pour accéder aux valeurs courantes énumérées, à chaque \galgas{expression} correspond une constante (\galgas{cst}, \galgas{cst1}, \galgas{cst2}) dont le type implicite est indiqué dans la dernière colonne du \refTableau{typesEnumerablesFor}.
 
 Par exemple, pour énumérer une valeur de type \galgas{@stringset}, on écrira :
 \begin{galgascode}
-@stringset v := ... ;
+@stringset v = ... ;
 for s in v do
   log s ; # Affichage des cles dans l'ordre alphabetique
 end for ;
 \end{galgascode}
 
-\begin{table}[ht]
-  \centering
-%  \rowcolors{2}{\fondTableau}{}
-  \begin{tabular}{llp{7cm}}
-  \textbf{Type} & \textbf{Ordre d'énumération}  & \textbf{Type implicite de la constante}\\
-  \hline
-  \galgas{@data} & Ordre croissant des indices & \galgas{@uint}\\
-  \galgas{list @T} & Ordre croissant des indices & \galgas{@T.element}\\
-  \galgas{map @T} & Ordre alphabétique des clés & \galgas{@T.element}\\
-  \galgas{listmap @T} & Ordre alphabétique des clés & \galgas{@T.element}\\
-  \galgas{sortedlist @T} & Ordre croissant des indices & \galgas{@T.element}\\
-  \galgas{@stringset} & Ordre alphabétique & \galgas{@string} \\
-  \hline
-  \end{tabular}
-  \caption{Types énumérables par l'instruction \texttt{for}}
-  \labelTableau{typesEnumerablesFor}
-\end{table}
+
+
+
 
 \subsection{Organigramme d'exécution}
 
-L'organigramme illustrant l'exécution de l'instruction \galgas{for} est donné à la \refFigure{}{organigrammeFor}.
+L'organigramme illustrant l'exécution de l'instruction \galgas{for} est donné à la \refFigure{}{organigrammeFor}. Si plusieurs collections sont énumérées, l'instructions se termine dès que la collection la moins nombreuse est complètement enumérée.
 
-\begin{figure}[!ht]
+\begin{figure}[t]
   \centering
   \small
   \begin{tikzpicture}[
@@ -230,7 +773,7 @@ L'organigramme illustrant l'exécution de l'instruction \galgas{for} est donné 
       node distance=7mm
     ]
     \node [cloud] (start) {\textsc{begin}} ;
-    \node [block] (init) [below=of start] {{\tt \emph{nom\_index}} := 0} ;
+    \node [block] (init) [below=of start] {{\tt \emph{nom\_index}} = 0} ;
     \node [decision] (premierTest) [below=of init] {non empty \& {\tt \emph{while\_expression}} ?} ;
     \node [block] (before) [below=of premierTest] {\tt \emph{before\_instructions}} ;
     \node [block] (gotoFirst) [below=of before] {goto first element} ;
@@ -244,20 +787,21 @@ L'organigramme illustrant l'exécution de l'instruction \galgas{for} est donné 
     
     \draw [-stealth, thick] (start) -- (init) ;
     \draw [-stealth, thick] (init) -- (premierTest) ;
-    \draw [-stealth, thick] (premierTest) to node[right] {\bf yes} (before) ;
-    \draw [-stealth, thick] (premierTest.west) -- node[above] {\bf no} +(-1, 0) |- (end.west) ;
+    \draw [>-stealth, thick] (premierTest) to (before) ;
+    \draw [o-stealth, thick] (premierTest.west) -- +(-1, 0) |- (end.west) ;
     \draw [-stealth, thick] (before) -- (gotoFirst) ;
     \draw [-stealth, thick] (gotoFirst) -- (doInstructions) ;
     \draw [-stealth, thick] (doInstructions) -- (incLoopIndex) ;
     \draw [-stealth, thick] (incLoopIndex) -- (exp) ;
-    \draw [-stealth, thick] (exp) to node[right] {\bf no} (after) ;
-    \draw [-stealth, thick] (exp.east) -| node[right] {\bf yes} (gotoNext.south) ;
+    \draw [o-stealth, thick] (exp) to (after) ;
+    \draw [>-stealth, thick] (exp.east) -| (gotoNext.south) ;
     \draw [-stealth, thick] (after) -- (end) ;
     \draw [-stealth, thick] (gotoNext) -- (between) ;
     \draw [-stealth, thick] (between) -- (doInstructions) ;
   \end{tikzpicture}
   \caption{Organigramme d'exécution d'une instruction \texttt{for}}
   \labelFigure{organigrammeFor}
+  \ligne
 \end{figure}
 
 
@@ -265,10 +809,11 @@ L'organigramme illustrant l'exécution de l'instruction \galgas{for} est donné 
 
 Plusieurs champs de l'instruction \galgas{for} sont optionnels.
 
+\lstset{emph={expression, sens, instructions\_before, instructions\_do, instructions\_between, instructions\_after}, emphstyle=\emph}
+
 \galgas{sens}. Ce champ peut prendre trois valeurs, et fixe l'ordre dans lequel les éléments sont énumérés :
 \begin{itemize}
   \item si le champ est vide, dans l'ordre indiqué par le \refTableau{typesEnumerablesFor} ;
-  \item \galgas{<}, dans l'ordre indiqué par le \refTableau{typesEnumerablesFor} ;
   \item \galgas{>}, dans l'ordre inverse à celui indiqué par le \refTableau{typesEnumerablesFor}.
 \end{itemize}
 
@@ -287,17 +832,17 @@ Plusieurs champs de l'instruction \galgas{for} sont optionnels.
 
 \subsection{Modification de la collection}
 
-Au début de l'exécution de l'instruction \galgas{for}, les valeurs des \galgas{expression} enumérées sont capturées et mémorisées. L'énumération s'effectue sur ces valeurs mémorisées. Aussi, il est possible de modifier la collection en cours d'énumération sans que cela affecte l'exécution :
+Au début de l'exécution de l'instruction \galgas{for}, les valeurs des collections enumérées sont capturées et mémorisées. L'énumération s'effectue sur ces valeurs mémorisées. Aussi, il est possible de modifier la collection en cours d'énumération sans que cela affecte l'exécution :
 \begin{galgascode}
-@stringlist v [emptyList] ;
-v += !"A" ;
-v += !"B" ;
-v += !"C" ;
-log v ; # "A", "B", "C"
+@stringlist v = {}
+v += !"A"
+v += !"B"
+v += !"C"
+log v # "A", "B", "C"
 for s in v do
-  v += !s ;
-end for ;
-log v ; # "A", "B", "C", "A", "B", "C"
+  v += !s
+end for
+log v # "A", "B", "C", "A", "B", "C"
 \end{galgascode}
 
 
@@ -318,194 +863,203 @@ log v ; # "A", "B", "C", "A", "B", "C"
 
 %-----------------------------------------------------------------------------------
 
-\sectionLabel{L'instruction \texttt{foreach}}{instructionForeach}
+%\sectionLabel{L'instruction \texttt{foreach}}{instructionForeach}
+%
+%L'instruction \galgas{foreach} permet d'énumérer :
+%\begin{itemize}
+%  \item une collection ;
+%  \item plusieurs collections de manière synchrone.
+%\end{itemize}
+%
+%Cette instruction s'est présentée sous plusieurs formes au cours des versions successives de GALGAS, seule la version non obsolète est exposée.
+%
+%\subsection{Présentation}
+%
+%Pour énumérer une collection, la syntaxe est la suivante :
+%
+%\lstset{emph={expression, sens, condition, nom_index, instructions_before, instructions_between, instructions_after, instructions\_do, expression1, sens1, expression2, sens2}, emphstyle=\emph}
+%\begin{galgascode}
+%foreach sens expression
+%index nom_index # Optionnel
+%while condition # Optionnel
+%before instructions_before  # Optionnel
+%do instructions_do
+%between instructions_between  # Optionnel
+%after instructions_after  # Optionnel
+%end foreach ;
+%\end{galgascode}
+%
+%
+%Pour énumérer plusieurs collections, la syntaxe est :
+%\begin{galgascode}
+%foreach sens1 expression1, sens2 expression2, ...
+%index nom_index # Optionnel
+%while condition # Optionnel
+%before instructions_before  # Optionnel
+%do instructions_do
+%between instructions_between  # Optionnel
+%after instructions_after  # Optionnel
+%end foreach ;
+%\end{galgascode}
+%
+%Les collections à énumérer sont les valeurs de \galgas{expression}, \galgas{expression1}, \galgas{expression2}. Les types pouvant être énumérés sont listés dans le \refTableau{typesEnumerablesForeach}. Pour accéder aux valeurs courantes énumérées, à chaque \galgas{expression} correspond des constantes implicitement déclarées dont les noms sont indiqués dans la dernière colonne du \refTableau{typesEnumerablesForeach}. Cette caractéristique peut provoquer des conflits de noms, que l'on résoud en indiquant explicitement un préfixe (voir \refSubsectionPage{prefixageConstantesForeach}).
+%
+%Par exemple, pour énumérer une valeur de type \galgas{@stringset}, on écrira :
+%\begin{galgascode}
+%@stringset v = ... ;
+%foreach v do
+%  log key ; # Affichage des cles dans l'ordre alphabetique
+%end foreach ;
+%\end{galgascode}
+%
+%\begin{table}[t]
+%  \centering
+%  \begin{tabular}{llp{7cm}}
+%  \textbf{Type} & \textbf{Ordre d'énumération}  & \textbf{Constantes déclarées}\\
+%  \galgas{@data} & Ordre croissant des indices & \galgas{data}, de type \galgas{@uint}\\
+%  \galgas{list @T} & Ordre croissant des indices & À chaque champ de la liste, correspond une constante de même nom.\\
+%  \galgas{map @T} & Ordre alphabétique des clés & \galgas{lkey}, de type \galgas{@lstring}, qui représente la clé, et à chaque champ de la table, correspond une constante de même nom.\\
+%  \galgas{listmap @T} & Ordre alphabétique des clés & \galgas{key}, de type \galgas{@string}, qui représente la clé, et \galgas{mList}, qui représente la liste associée.\\
+%  \galgas{sortedlist @T} & Ordre croissant des indices & À chaque champ de la liste, correspond une constante de même nom.\\
+%  \galgas{@stringset} & Ordre alphabétique & \galgas{key}, de type \galgas{@string} \\
+%  \end{tabular}
+%  \caption{Types énumérables par l'instruction \texttt{foreach}}
+%  \labelTableau{typesEnumerablesForeach}
+%\end{table}
+%
+%\subsection{Organigramme d'exécution}
+%
+%L'organigramme illustrant l'exécution de l'instruction \galgas{foreach} est donné à la \refFigure{}{organigrammeForeach}.
+%
+%\begin{figure}[t]
+%  \centering
+%  \small
+%  \begin{tikzpicture}[
+%      cloud/.style ={draw=red, thick, ellipse,fill=red!20, minimum height=2em},
+%      block/.style ={rectangle, draw=blue, thick, fill=green!20, align=center},
+%      decision/.style={chamfered rectangle, draw=blue, thick, fill=green!20},
+%      node distance=7mm
+%    ]
+%    \node [cloud] (start) {\textsc{begin}} ;
+%    \node [block] (init) [below=of start] {{\tt \emph{nom\_index}} = 0} ;
+%    \node [decision] (premierTest) [below=of init] {non empty \& {\tt \emph{while\_expression}} ?} ;
+%    \node [block] (before) [below=of premierTest] {\tt \emph{before\_instructions}} ;
+%    \node [block] (gotoFirst) [below=of before] {goto first element} ;
+%    \node [block] (doInstructions) [below=of gotoFirst] {\tt \emph{instructions\_do}} ;
+%    \node [block] (incLoopIndex) [below=of doInstructions] {{\tt \emph{nom\_index}} ++} ;
+%    \node [decision] (exp) [below=of incLoopIndex] {has next element \& {\tt \emph{while\_expression}} ?} ;
+%    \node [block] (after) [below=of exp] {\tt \emph{instructions\_after}} ;
+%    \node [cloud] (end) [below=of after] {\textsc{end}} ;
+%    \node [block] (between) [right=of doInstructions] {\tt \emph{instructions\_between}} ;
+%    \node [block] (gotoNext) [below=of between] {goto next element} ;
+%    
+%    \draw [-stealth, thick] (start) -- (init) ;
+%    \draw [-stealth, thick] (init) -- (premierTest) ;
+%    \draw [-stealth, thick] (premierTest) to node[right] {\bf yes} (before) ;
+%    \draw [-stealth, thick] (premierTest.west) -- node[above] {\bf no} +(-1, 0) |- (end.west) ;
+%    \draw [-stealth, thick] (before) -- (gotoFirst) ;
+%    \draw [-stealth, thick] (gotoFirst) -- (doInstructions) ;
+%    \draw [-stealth, thick] (doInstructions) -- (incLoopIndex) ;
+%    \draw [-stealth, thick] (incLoopIndex) -- (exp) ;
+%    \draw [-stealth, thick] (exp) to node[right] {\bf no} (after) ;
+%    \draw [-stealth, thick] (exp.east) -| node[right] {\bf yes} (gotoNext.south) ;
+%    \draw [-stealth, thick] (after) -- (end) ;
+%    \draw [-stealth, thick] (gotoNext) -- (between) ;
+%    \draw [-stealth, thick] (between) -- (doInstructions) ;
+%  \end{tikzpicture}
+%  \caption{Organigramme d'exécution d'une instruction \texttt{foreach}}
+%  \labelFigure{organigrammeForeach}
+%\ligne\end{figure}
+%
+%
+%\subsection{Champs optionnels}
+%
+%Plusieurs champs de l'instruction \galgas{foreach} sont optionnels.
+%
+%\galgas{sens}. Ce champ peut prendre trois valeurs, et fixe l'ordre dans lequel les éléments sont énumérés :
+%\begin{itemize}
+%  \item si le champ est vide, dans l'ordre indiqué par le \refTableau{typesEnumerablesForeach} ;
+%  \item \galgas{<}, dans l'ordre indiqué par le \refTableau{typesEnumerablesForeach} ;
+%  \item \galgas{>}, dans l'ordre inverse à celui indiqué par le \refTableau{typesEnumerablesForeach}.
+%\end{itemize}
+%
+%
+%\galgas{index nom\_index}. Vous pouvez mentionner un identificateur après le mot réservé \galgas{index}. Cet identificateur est le nom d'une variable qui a implicitement le type \galgas{@uint} et qui est initialisée à 0 avant toute exécution de la boucle, et incrémentée après chaque exécution des \galgas{instructions\_do}, et avant l'exécution des \galgas{instructions\_between}. Vous ne pouvez pas vous même changer la valeur de cette variable. Sa visibilité inclut l'ensemble des constructions optionnelles.
+%
+%\galgas{while expression}. L'énumération est exécutée tant que l'\galgas{expression} est vraie. L'absence de cette construction est équivalent à \galgas{while true} et permet d'énumérer toutes les valeurs.
+%
+%
+%\galgas{before instructions\_before}. Ces instructions sont exécutées une seule fois, au début de l'exécution de l'instruction. Aucun accès aux objets énumérés n'est possible. Si l'énumération est vide, ces instructions ne sont pas exécutées.
+%
+%\galgas{between instructions\_between}. Ces instructions sont exécutées entre deux exécutions consécutives des \galgas{instructions\_do}. Aucun accès aux objets énumérés n'est possible.
+%
+%\galgas{after instructions\_after}. Ces instructions sont exécutées une seule fois, à la fin de l'exécution de l'instruction. Aucun accès aux objets énumérés n'est possible. Si l'énumération est vide, ces instructions ne sont pas exécutées.
+%
+%\subsectionLabel{Préfixage des constantes}{prefixageConstantesForeach}
+%
+%Considérons l'exemple suivant :
+%
+%\begin{galgascode}
+%@stringlist v1 = ... ;
+%@stringlist v2 = ... ;
+%foreach v1, v2 do # Erreur !
+% ...
+%end foreach ;
+%\end{galgascode}
+%
+%Le compilateur GALGAS déclenche une erreur, car il y a ambiguïté sur la signification de \galgas{mValue} à l'intérieur de la boucle : désigne-t'elle l'élément courant de \galgas{v1} ou l'élément courant de \galgas{v2} ?
+%
+%Pour lever l'ambiguïté, on complète l'instruction en précisant un \emph{préfixe} pour l'une des deux listes (par exemple la seconde) :
+%\begin{galgascode}
+%@stringlist v1 = ... ;
+%@stringlist v2 = ... ;
+%foreach v1, v2 : l2_ do
+%  ...
+%end foreach ;
+%\end{galgascode}
+%
+%La déclaration du préfixe \galgas{l2\_} signifie que les constantes associées à la seconde liste auront leur nom préfixé par \galgas{l2\_}. De cette façon, \galgas{l2\_mValue} désigne la valeur courante de la seconde liste, et \galgas{mValue} désigne sans ambiguïté la valeur courante de la première liste.
+%\begin{galgascode}
+%@stringlist v1 = ... ;
+%@stringlist v2 = ... ;
+%foreach v1, v2 : l2_ do
+%  log mValue, l2_mValue ;
+%end foreach ;
+%\end{galgascode}
+%
+%\subsection{Modification de la collection}
+%
+%Au début de l'exécution de l'instruction \galgas{foreach}, les valeurs des \galgas{expression} enumérées sont capturées et mémorisées. L'énumération s'effectue sur ces valeurs mémorisées. Aussi, il est possible de modifier la collection en cours d'énumération sans que cela affecte l'exécution :
+%\begin{galgascode}
+%@stringlist v [emptyList] ;
+%v += !"A" ;
+%v += !"B" ;
+%v += !"C" ;
+%log v ; # "A", "B", "C"
+%foreach v do
+%  v += !mValue ;
+%end foreach ;
+%log v ; # "A", "B", "C", "A", "B", "C"
+%\end{galgascode}
+%
 
-L'instruction \galgas{foreach} permet d'énumérer :
-\begin{itemize}
-  \item une collection ;
-  \item plusieurs collections de manière synchrone.
-\end{itemize}
 
-Cette instruction s'est présentée sous plusieurs formes au cours des versions successives de GALGAS, seule la version non obsolète est exposée.
 
-\subsection{Présentation}
 
-Pour énumérer une collection, la syntaxe est la suivante :
+\sectionLabel{Instruction d'incrémentation}{incrementInstruction}
 
-\lstset{emph={expression, sens, condition, nom_index, instructions_before, instructions_between, instructions_after, instructions\_do, expression1, sens1, expression2, sens2}, emphstyle=\emph}
+L'instruction d'incrémentation s'applique aux types  \refTypePredefini{sint},  \refTypePredefini{sint64}, \refTypePredefini{uint} et \refTypePredefini{uint64} ; sa syntaxe est la suivante :
+\lstset{emph={variable, champ}, emphstyle=\emph}
 \begin{galgascode}
-foreach sens expression
-index nom_index # Optionnel
-while condition # Optionnel
-before instructions_before  # Optionnel
-do instructions_do
-between instructions_between  # Optionnel
-after instructions_after  # Optionnel
-end foreach ;
+variable ++
 \end{galgascode}
 
-
-Pour énumérer plusieurs collections, la syntaxe est :
+Les champs de structure peuvent être incrémentés :
 \begin{galgascode}
-foreach sens1 expression1, sens2 expression2, ...
-index nom_index # Optionnel
-while condition # Optionnel
-before instructions_before  # Optionnel
-do instructions_do
-between instructions_between  # Optionnel
-after instructions_after  # Optionnel
-end foreach ;
+variable.champ ++
 \end{galgascode}
 
-Les collections à énumérer sont les valeurs de \galgas{expression}, \galgas{expression1}, \galgas{expression2}. Les types pouvant être énumérés sont listés dans le \refTableau{typesEnumerablesForeach}. Pour accéder aux valeurs courantes énumérées, à chaque \galgas{expression} correspond des constantes implicitement déclarées dont les noms sont indiqués dans la dernière colonne du \refTableau{typesEnumerablesForeach}. Cette caractéristique peut provoquer des conflits de noms, que l'on résoud en indiquant explicitement un préfixe (voir \refSubsectionPage{prefixageConstantesForeach}).
-
-Par exemple, pour énumérer une valeur de type \galgas{@stringset}, on écrira :
-\begin{galgascode}
-@stringset v := ... ;
-foreach v do
-  log key ; # Affichage des cles dans l'ordre alphabetique
-end foreach ;
-\end{galgascode}
-
-\begin{table}[ht]
-  \centering
-%  \rowcolors{2}{\fondTableau}{}
-  \begin{tabular}{llp{7cm}}
-  \textbf{Type} & \textbf{Ordre d'énumération}  & \textbf{Constantes déclarées}\\
-  \hline
-  \galgas{@data} & Ordre croissant des indices & \galgas{data}, de type \galgas{@uint}\\
-  \galgas{list @T} & Ordre croissant des indices & À chaque champ de la liste, correspond une constante de même nom.\\
-  \galgas{map @T} & Ordre alphabétique des clés & \galgas{lkey}, de type \galgas{@lstring}, qui représente la clé, et à chaque champ de la table, correspond une constante de même nom.\\
-  \galgas{listmap @T} & Ordre alphabétique des clés & \galgas{key}, de type \galgas{@string}, qui représente la clé, et \galgas{mList}, qui représente la liste associée.\\
-  \galgas{sortedlist @T} & Ordre croissant des indices & À chaque champ de la liste, correspond une constante de même nom.\\
-  \galgas{@stringset} & Ordre alphabétique & \galgas{key}, de type \galgas{@string} \\
-  \hline
-  \end{tabular}
-  \caption{Types énumérables par l'instruction \texttt{foreach}}
-  \labelTableau{typesEnumerablesForeach}
-\end{table}
-
-\subsection{Organigramme d'exécution}
-
-L'organigramme illustrant l'exécution de l'instruction \galgas{foreach} est donné à la \refFigure{}{organigrammeForeach}.
-
-\begin{figure}[!ht]
-  \centering
-  \small
-  \begin{tikzpicture}[
-      cloud/.style ={draw=red, thick, ellipse,fill=red!20, minimum height=2em},
-      block/.style ={rectangle, draw=blue, thick, fill=green!20, align=center},
-      decision/.style={chamfered rectangle, draw=blue, thick, fill=green!20},
-      node distance=7mm
-    ]
-    \node [cloud] (start) {\textsc{begin}} ;
-    \node [block] (init) [below=of start] {{\tt \emph{nom\_index}} := 0} ;
-    \node [decision] (premierTest) [below=of init] {non empty \& {\tt \emph{while\_expression}} ?} ;
-    \node [block] (before) [below=of premierTest] {\tt \emph{before\_instructions}} ;
-    \node [block] (gotoFirst) [below=of before] {goto first element} ;
-    \node [block] (doInstructions) [below=of gotoFirst] {\tt \emph{instructions\_do}} ;
-    \node [block] (incLoopIndex) [below=of doInstructions] {{\tt \emph{nom\_index}} ++} ;
-    \node [decision] (exp) [below=of incLoopIndex] {has next element \& {\tt \emph{while\_expression}} ?} ;
-    \node [block] (after) [below=of exp] {\tt \emph{instructions\_after}} ;
-    \node [cloud] (end) [below=of after] {\textsc{end}} ;
-    \node [block] (between) [right=of doInstructions] {\tt \emph{instructions\_between}} ;
-    \node [block] (gotoNext) [below=of between] {goto next element} ;
-    
-    \draw [-stealth, thick] (start) -- (init) ;
-    \draw [-stealth, thick] (init) -- (premierTest) ;
-    \draw [-stealth, thick] (premierTest) to node[right] {\bf yes} (before) ;
-    \draw [-stealth, thick] (premierTest.west) -- node[above] {\bf no} +(-1, 0) |- (end.west) ;
-    \draw [-stealth, thick] (before) -- (gotoFirst) ;
-    \draw [-stealth, thick] (gotoFirst) -- (doInstructions) ;
-    \draw [-stealth, thick] (doInstructions) -- (incLoopIndex) ;
-    \draw [-stealth, thick] (incLoopIndex) -- (exp) ;
-    \draw [-stealth, thick] (exp) to node[right] {\bf no} (after) ;
-    \draw [-stealth, thick] (exp.east) -| node[right] {\bf yes} (gotoNext.south) ;
-    \draw [-stealth, thick] (after) -- (end) ;
-    \draw [-stealth, thick] (gotoNext) -- (between) ;
-    \draw [-stealth, thick] (between) -- (doInstructions) ;
-  \end{tikzpicture}
-  \caption{Organigramme d'exécution d'une instruction \texttt{foreach}}
-  \labelFigure{organigrammeForeach}
-\end{figure}
-
-
-\subsection{Champs optionnels}
-
-Plusieurs champs de l'instruction \galgas{foreach} sont optionnels.
-
-\galgas{sens}. Ce champ peut prendre trois valeurs, et fixe l'ordre dans lequel les éléments sont énumérés :
-\begin{itemize}
-  \item si le champ est vide, dans l'ordre indiqué par le \refTableau{typesEnumerablesForeach} ;
-  \item \galgas{<}, dans l'ordre indiqué par le \refTableau{typesEnumerablesForeach} ;
-  \item \galgas{>}, dans l'ordre inverse à celui indiqué par le \refTableau{typesEnumerablesForeach}.
-\end{itemize}
-
-
-\galgas{index nom\_index}. Vous pouvez mentionner un identificateur après le mot réservé \galgas{index}. Cet identificateur est le nom d'une variable qui a implicitement le type \galgas{@uint} et qui est initialisée à 0 avant toute exécution de la boucle, et incrémentée après chaque exécution des \galgas{instructions\_do}, et avant l'exécution des \galgas{instructions\_between}. Vous ne pouvez pas vous même changer la valeur de cette variable. Sa visibilité inclut l'ensemble des constructions optionnelles.
-
-\galgas{while expression}. L'énumération est exécutée tant que l'\galgas{expression} est vraie. L'absence de cette construction est équivalent à \galgas{while true} et permet d'énumérer toutes les valeurs.
-
-
-\galgas{before instructions\_before}. Ces instructions sont exécutées une seule fois, au début de l'exécution de l'instruction. Aucun accès aux objets énumérés n'est possible. Si l'énumération est vide, ces instructions ne sont pas exécutées.
-
-\galgas{between instructions\_between}. Ces instructions sont exécutées entre deux exécutions consécutives des \galgas{instructions\_do}. Aucun accès aux objets énumérés n'est possible.
-
-\galgas{after instructions\_after}. Ces instructions sont exécutées une seule fois, à la fin de l'exécution de l'instruction. Aucun accès aux objets énumérés n'est possible. Si l'énumération est vide, ces instructions ne sont pas exécutées.
-
-\subsectionLabel{Préfixage des constantes}{prefixageConstantesForeach}
-
-Considérons l'exemple suivant :
-
-\begin{galgascode}
-@stringlist v1 := ... ;
-@stringlist v2 := ... ;
-foreach v1, v2 do # Erreur !
- ...
-end foreach ;
-\end{galgascode}
-
-Le compilateur GALGAS déclenche une erreur, car il y a ambiguïté sur la signification de \galgas{mValue} à l'intérieur de la boucle : désigne-t'elle l'élément courant de \galgas{v1} ou l'élément courant de \galgas{v2} ?
-
-Pour lever l'ambiguïté, on complète l'instruction en précisant un \emph{préfixe} pour l'une des deux listes (par exemple la seconde) :
-\begin{galgascode}
-@stringlist v1 := ... ;
-@stringlist v2 := ... ;
-foreach v1, v2 : l2_ do
-  ...
-end foreach ;
-\end{galgascode}
-
-La déclaration du préfixe \galgas{l2\_} signifie que les constantes associées à la seconde liste auront leur nom préfixé par \galgas{l2\_}. De cette façon, \galgas{l2\_mValue} désigne la valeur courante de la seconde liste, et \galgas{mValue} désigne sans ambiguïté la valeur courante de la première liste.
-\begin{galgascode}
-@stringlist v1 := ... ;
-@stringlist v2 := ... ;
-foreach v1, v2 : l2_ do
-  log mValue, l2_mValue ;
-end foreach ;
-\end{galgascode}
-
-\subsection{Modification de la collection}
-
-Au début de l'exécution de l'instruction \galgas{foreach}, les valeurs des \galgas{expression} enumérées sont capturées et mémorisées. L'énumération s'effectue sur ces valeurs mémorisées. Aussi, il est possible de modifier la collection en cours d'énumération sans que cela affecte l'exécution :
-\begin{galgascode}
-@stringlist v [emptyList] ;
-v += !"A" ;
-v += !"B" ;
-v += !"C" ;
-log v ; # "A", "B", "C"
-foreach v do
-  v += !mValue ;
-end foreach ;
-log v ; # "A", "B", "C", "A", "B", "C"
-\end{galgascode}
-
-
-
-
-
-\sectionLabel{Increment Instruction}{incrementInstruction}
-
+Une erreur d'exécution est déclenchée en cas de dépassement de capacité.
 
 
 
@@ -597,7 +1151,7 @@ Most expressions you write fall in the first case.
 Applying the second rule enables to use an \refTypePredefini{lbool} expression as an \emph{if} expression. For example:
 {\lstset{emph={expression, instructions, else_instructions}, emphstyle=\emph}
 \begin{galgascode}
-@lbool var := ... ;
+@lbool var = ... ;
 if var then
   instructions
 else
@@ -609,7 +1163,7 @@ end if ;
 The \emph{var} object belongs to the \refTypePredefini{lbool} type: so first rule fails. But \refTypePredefini{lbool} is a \emph{structure} type, it has a \emph{bool} attribute with the \refTypePredefini{bool} type, so the second rule succeeds. It is semantically equivalent to write:
 {\lstset{emph={expression, instructions, else_instructions}, emphstyle=\emph}
 \begin{galgascode}
-@lbool var := ... ;
+@lbool var = ... ;
 if var->bool then
   instructions
 else
@@ -628,7 +1182,7 @@ reader @myClass bool -> @bool outResult : ... end reader ;
 enables to write:
 {\lstset{emph={expression, instructions, else_instructions}, emphstyle=\emph}
 \begin{galgascode}
-@myClass myObject := ... ;
+@myClass myObject = ... ;
 if myObject then
   instructions
 else
@@ -640,7 +1194,7 @@ end if ;
 It is semantically equivalent to write:
 {\lstset{emph={expression, instructions, else_instructions}, emphstyle=\emph}
 \begin{galgascode}
-@myClass myObject := ... ;
+@myClass myObject = ... ;
 if [myObject bool] then
   instructions
 else
@@ -686,7 +1240,7 @@ The \emph{expression} is first computed :
 
 {\lstset{emph={variable, expression}, emphstyle=\emph}
 \begin{galgascode}
-@type variable := expression ;
+@type variable = expression ;
 \end{galgascode}
 }
 
@@ -702,12 +1256,12 @@ The \emph{expression} is first computed :
 Cette instruction peut prendre plusieurs formes ; la plus générale est la suivante :
 \lstset{emph={@type, nom, expression}, emphstyle=\emph}
 \begin{galgascode}
-const @type nom := expression ;
+const @type nom = expression ;
 \end{galgascode}
 
 Par exemple :
 \begin{galgascode}
-const @uint monEntier := 0 ;
+const @uint monEntier = 0 ;
 \end{galgascode}
 
 \subsection{Type implicite}
@@ -717,12 +1271,12 @@ const @uint monEntier := 0 ;
 
 Le nom du type de la constante peut être omis :
 \begin{galgascode}
-const nom := expression ;
+const nom = expression ;
 \end{galgascode}
 
 La constante prend alors implicitement le type de l'expression. Par exemple :
 \begin{galgascode}
-const monEntier := 0 ;
+const monEntier = 0 ;
 \end{galgascode}
 
 
@@ -734,7 +1288,7 @@ const monEntier := 0 ;
 Cette construction s'applique si l'expression est un appel de constructeur qui nomme le même type que la variable :
 \lstset{emph={@type, nom, expression, nom_constructeur}, emphstyle=\emph}
 \begin{galgascode}
-const @type nom := [@type nom_constructeur ...] ;
+const @type nom = [@type nom_constructeur ...] ;
 \end{galgascode}
 
 Alors le type qui précède le nom du constructeur peut être omis, ainsi que le signe d'affectation :
@@ -744,7 +1298,7 @@ const @type nom [nom_constructeur ...] ;
 
 Par exemple :
 \begin{galgascode}
-const @stringset s := [@stringset emptySet] ;
+const @stringset s = [@stringset emptySet] ;
 \end{galgascode}
 
 Se simplifie en :
@@ -755,7 +1309,7 @@ const @stringset s [emptySet] ;
 
 Cette construction est dépréciée à partir de GALGAS 2.6.0 au profit de l'écriture suivante :
 \begin{galgascode}
-const s := [@stringset emptySet] ;
+const s = [@stringset emptySet] ;
 \end{galgascode}
 
 
@@ -791,7 +1345,7 @@ L'\galgas{expression} est une expression de type \galgas{@bool} qui exprime la c
 L'exécution de l'instruction \galgas{loop} est illustrée par l'organigramme de la \refFigure{}{loopInstructionFlowchart}.
 
 
-\begin{figure}[!ht]
+\begin{figure}[t]
   \centering
   \small
   \begin{tikzpicture}[
@@ -802,7 +1356,7 @@ L'exécution de l'instruction \galgas{loop} est illustrée par l'organigramme de
       node distance=7mm
     ]
     \node [cloud] (start) {\textsc{begin}} ;
-    \node [block] (affectationVariant) [below=of start] {variant := {\tt \emph{variant\_expression}}} ;
+    \node [block] (affectationVariant) [below=of start] {variant = {\tt \emph{variant\_expression}}} ;
     \node [decision] (premierTest) [below=of affectationVariant] {variant > 0 ?} ;
     \node [error] (loopVariantError) [right=of premierTest] {loop variant error} ;
     \node [block] (instructions1) [below=of premierTest] {\tt \emph{instructions\_1}} ;
@@ -829,6 +1383,7 @@ L'exécution de l'instruction \galgas{loop} est illustrée par l'organigramme de
   \end{tikzpicture}
   \caption{Organigramme d'exécution d'une instruction \texttt{loop}}
   \labelFigure{loopInstructionFlowchart}
+  \ligne
 \end{figure}
 
 
@@ -894,7 +1449,7 @@ enum @feuTricolore {
 On peut écrire :
 
 \begin{galgascode}
-@feuTricolore feu := ... ;
+@feuTricolore feu = ... ;
 
 switch feu
 when vert, orange:
@@ -913,7 +1468,6 @@ end switch ;
 
 
 
-\section{Send Instruction}
 
 
 

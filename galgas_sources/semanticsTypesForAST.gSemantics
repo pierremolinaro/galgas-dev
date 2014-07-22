@@ -669,6 +669,7 @@ class @enumeratedCollectionImplicitVarInExpAST extends @abstractEnumeratedCollec
 #---------------------------------------------------------------------------*
 
 class @enumeratedCollectionVarInExpAST extends @abstractEnumeratedCollectionAST {
+  @lstring mEnumerationTypeName ; # Empty string if implicit
   @lstring mEnumerationVariable ;
   @semanticExpressionAST mEnumeratedExpression ;
   @location mEndOfEnumerationExpression ;

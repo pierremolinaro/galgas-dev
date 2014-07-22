@@ -9,17 +9,18 @@
 
 \lstdefinelanguage{galgas}{
 %  keywordsprefix=\@,
-  morekeywords=[2]{abstract, after, array, before, between, block, cast, class, const, constructor, default, do, drop, else, elsif, end, enum,
-    error, extends, extern, false, feature, filewrapper, for, foreach, function, grammar, graph, gui, here, if,
-    import, in, index, indexing, insert, is, label, lexique, list, listmap, local, log, loop, map, mapproxy,
-    message, method, mod, modifier, nonterminal, not, on, once, operator, option, or, override, parse, pragma,
-    prefixedby, project, program, reader, remove, replace, repeat, rewind, root, routine, rule, search, select,
-    self, selfcopy, semantics, send, sortedlist, state, struct, style, switch, syntax, tag, template,
-    then, to, true, uniquemap, unused, var, warning, when, while, with
+  morekeywords=[2]{abstract, after, array, as, before, between, block, case, cast, class, constructor, default, do, drop, else, elsif, end, enum,
+    error, extern, false, feature, filewrapper, for, func, getter, grammar, graph, gui, if,
+    in, index, indexing, insert, is, label, lexique, list, listmap, local, log, loop, map, mapproxy,
+    message, method, mod, not, on, operator, option, or, override, parse, proc,
+    project, program, remove, replace, repeat, rewind, rule, search, select,
+    self, setter, send, sortedlist, state, struct, style, switch, syntax, tag, template,
+    then, to, true, uniquemap, unused, var, warning, while, with
   },
   comment=[l]\#,
   string=[b]", string=[d]",
-  style=galgas
+  style=galgas,
+  showstringspaces=false  % underline spaces within strings only
 }
 
 \newcommand\couleurCodeGALGAS{green!25}
@@ -77,7 +78,7 @@
 %--- Cette macro établit un hyperlien vers un type prédéfini
 % Exemple d'appel : \refTypePredefini{bool} -- affiche --> @bool type (page xx)
 
-\newcommand \refTypePredefini[1] {\hyperref[type:#1]{type \texttt{@#1} (page \pageref{type:#1})}}
+\newcommand \refTypePredefini[1] {\hyperref[type:#1]{\texttt{@#1} (page \pageref{type:#1})}}
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *

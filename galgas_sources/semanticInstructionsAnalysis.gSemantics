@@ -1714,6 +1714,14 @@ override method @enumeratedCollectionVarInExpAST analyzeEnumeration
   else
     ioLocalConstantListForDoBranch += !enumeratedElementType !mEnumerationVariable !outEnumeratorCppName . ".current (HERE)" ;
   end if ;
+#--- Check enumeration type
+  if mEnumerationTypeName->string != "" then
+    const explicitType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mEnumerationTypeName] ;
+    if [enumeratedElementType key] != [explicitType key] then
+      error mEnumerationTypeName: "the '@" . [enumeratedElementType key] . "' type is expected here" ;
+    end if ;
+  end if ;
+#---
 end method ;
 
 #---------------------------------------------------------------------------*
