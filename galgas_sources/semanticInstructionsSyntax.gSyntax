@@ -1022,10 +1022,17 @@ end rule ;
 rule <for_instruction_enumerated_object>
   !@abstractEnumeratedCollectionAST outEnumeratedObject
 :
+  @lstring typeName ;
+  select
+    typeName := ["" nowhere] ;
+  or
+    $type_name$ ?typeName ;
+  end select ;
   $identifier$ ??@lstring enumerationVariable ;
   $in$ ;
   <expression> ??@semanticExpressionAST enumeratedExpression ;
   outEnumeratedObject := [@enumeratedCollectionVarInExpAST new
+    !typeName
     !enumerationVariable
     !enumeratedExpression
     !here
