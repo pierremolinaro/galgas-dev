@@ -72,6 +72,180 @@ instruction1 ;;;; instruction2
 
 
 
+
+\section{Instruction de déclaration de variable}
+
+\lstset{emph={variable, expression}, emphstyle=\emph}
+
+Une déclaration de variable peut citer une \galgas{expression} qui lui fournit sa valeur initiale. Dans le cas constraire, la variable est \emph{non construite} jusqu'à ce qu'une valeur lui soit affectée.
+
+Les deux formes de déclaration sont donc :
+\begin{itemize}
+\item déclaration d'une variable \emph{non construite} : « \galgas{var @type variable} » ;
+\item déclaration d'une variable \emph{construite} : « \galgas{var @type variable = expression} ».
+\end{itemize}
+
+
+
+La forme générale de déclaration d'une variable \emph{non construite} est :
+\begin{galgascode}
+var @type variable
+\end{galgascode}
+
+
+La forme générale de déclaration d'une variable \emph{construite} est :
+\begin{galgascode}
+var @type variable = expression
+\end{galgascode}
+
+\subsection{Déclaration « \texttt{var @type variable} »}
+
+On peut alléger l'écriture en ommettant le mot clé \galgas{var} :
+\begin{galgascode}
+@type variable
+\end{galgascode}
+
+
+\subsectionLabel{Déclaration « \texttt{var @type variable = expression} »}{declarationVariableAvecExpression}
+
+
+On peut alléger l'écriture en ommettant le mot clé \galgas{var} :
+\begin{galgascode}
+@type variable = expression
+\end{galgascode}
+
+On peut omettre le type (mais il faut alors garder le mot-clé \galgas{var}), à la condition que l'expression puisse fournir l'information de type. Par exemple, dans l'écriture suivante :
+\begin{galgascode}
+var @string s = "Hello"
+\end{galgascode}
+
+L'expression est une chaîne de caractères, dont le type est \galgas{@string}. On peut donc omettre l'annotation de type dans l'instruction :
+\begin{galgascode}
+var s = "Hello"
+\end{galgascode}
+
+
+Prenons un autre exemple, celui de l'initialisation d'une liste :
+\begin{galgascode}
+var @stringlist sl = @stringlist {}
+\end{galgascode}
+
+Le type est annoté de façon redondante, puisqu'il apparaît à la fois dans le membre de gauche et dans l'expression ; l'une des deux annotations peut être omise :
+\begin{galgascode}
+var sl = @stringlist {}
+\end{galgascode}
+
+Ou :
+\begin{galgascode}
+var @stringlist sl = {}
+\end{galgascode}
+
+Par contre, omettre les deux annotations ne permet pas de déduire le type de la variable : c'est donc une erreur détectée par le compilateur :
+\begin{galgascode}
+var sl = {} # Erreur : le type est indetermine
+\end{galgascode}
+
+Un dernier exemple, avec un constructeur :
+\begin{galgascode}
+var @location sl = @location.here
+\end{galgascode}
+
+On peut écrire :
+\begin{galgascode}
+var sl = @location.here
+\end{galgascode}
+
+Ou :
+\begin{galgascode}
+var @location sl = .here
+\end{galgascode}
+
+Mais en aucun cas :
+\begin{galgascode}
+var sl = .here # Erreur : le type est indetermine
+\end{galgascode}
+
+
+
+
+
+\section{Instruction de déclaration de constante}
+
+La forme générale de cette instruction est la suivante :
+\lstset{emph={nom, expression}, emphstyle=\emph}
+\begin{galgascode}
+let @type nom = expression
+\end{galgascode}
+
+Le mot clé \galgas{let} caractérise une déclaration de constante. L'annotation de type peut être omis si le type peut être déduit de l'expression, comme pour l'instruction de déclaration de variable (\refSubsectionPage{declarationVariableAvecExpression}). On peut donc reprendre les exemples de cette section :
+\begin{galgascode}
+let @string s = "Hello"
+\end{galgascode}
+
+L'expression est une chaîne de caractères, dont le type est \galgas{@string}. On peut donc omettre l'annotation de type dans l'instruction :
+\begin{galgascode}
+let s = "Hello"
+\end{galgascode}
+
+
+Prenons un autre exemple, celui de l'initialisation d'une liste :
+\begin{galgascode}
+let @stringlist sl = @stringlist {}
+\end{galgascode}
+
+Le type est annoté de façon redondante, puisqu'il apparaît à la fois dans le membre de gauche et dans l'expression ; l'une des deux annotations peut être omise :
+\begin{galgascode}
+let sl = @stringlist {}
+\end{galgascode}
+
+Ou :
+\begin{galgascode}
+let @stringlist sl = {}
+\end{galgascode}
+
+Par contre, omettre les deux annotations ne permet pas de déduire le type de la constante : c'est donc une erreur détectée par le compilateur :
+\begin{galgascode}
+let sl = {} # Erreur : le type est indetermine
+\end{galgascode}
+
+Un dernier exemple, avec un constructeur :
+\begin{galgascode}
+let @location sl = @location.here
+\end{galgascode}
+
+On peut écrire :
+\begin{galgascode}
+let sl = @location.here
+\end{galgascode}
+
+Ou :
+\begin{galgascode}
+let @location sl = .here
+\end{galgascode}
+
+Mais en aucun cas :
+\begin{galgascode}
+let sl = .here # Erreur : le type est indetermine
+\end{galgascode}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \sectionLabel{L'instruction d'affectation}{assignmentInstruction}
 
 L'instruction d'affectation peut prendre plusieurs formes. La plus courante est :
@@ -91,6 +265,15 @@ Si \galgas{champ} est lui-même une structure, on peut accéder à l'un de ses c
 \begin{galgascode}
 variable.champ.champ1 = expression
 \end{galgascode}
+
+
+
+
+
+
+
+
+
 
 
 
@@ -416,7 +599,7 @@ for enumeration_collection
 while condition # Optionnel
 before instructions_before  # Optionnel
 do 
-  index nom_index # Optionnel
+  (nom_index) # Optionnel
   instructions_do
 between instructions_between  # Optionnel
 after instructions_after  # Optionnel
@@ -430,7 +613,7 @@ for enumeration_collection1, enumeration_collection2, ...
 while condition # Optionnel
 before instructions_before  # Optionnel
 do
-  index nom_index # Optionnel
+  (nom_index) # Optionnel
   instructions_do
 between instructions_between  # Optionnel
 after instructions_after  # Optionnel
@@ -682,7 +865,9 @@ for entry in tab do
 end
 \end{galgascode}
 
-Le compilateur GALGAS vérifie alors l'identité entre le type explicitement déclaré, et le type implicitement déduit du type de l'expression enumérée. Il est possible de déclarer explicitement le type de la constante en écrivant l'énumération sous la forme :
+\subsubsection{Type explicite}
+
+On peut annoter le nom de la constante en la faisant précéder par un nom de type. Le compilateur GALGAS vérifie alors l'identité entre le type explicitement déclaré, et le type implicitement déduit du type de l'expression enumérée. Il est possible de déclarer explicitement le type de la constante en écrivant l'énumération sous la forme :
 
 \begin{galgascode}
 @unType cst in expression
@@ -726,7 +911,7 @@ end
 
 \subsectionLabel{Énumération « \texttt{(cst1 cst2 ...) in expression} »}{enumerationParListeConstantes}
 
-Une liste de noms figure entre parenthèses, chaque nom désignant une constante correspondant à un champ de la collection à énumérer. Le \refTableau{enumerationParListeConstantes} liste pour chaque type le nom et le type correspondant.
+Le \refTableau{enumerationParListeConstantes} liste pour chaque type le nombre et la signification des constantes qui doivent être déclarées.
 
 \begin{table}[t]
   \centering
@@ -745,15 +930,85 @@ Une liste de noms figure entre parenthèses, chaque nom désignant une constante
 \end{table}
 
 
-Les collections à énumérer sont les valeurs de \galgas{expression}, \galgas{expression1}, \galgas{expression2}. Les types pouvant être énumérés sont listés dans le \refTableau{typesEnumerablesFor}. Pour accéder aux valeurs courantes énumérées, à chaque \galgas{expression} correspond une constante (\galgas{cst}, \galgas{cst1}, \galgas{cst2}) dont le type implicite est indiqué dans la dernière colonne du \refTableau{typesEnumerablesFor}.
-
-Par exemple, pour énumérer une valeur de type \galgas{@stringset}, on écrira :
+Prenons comme exemple le type liste suivant :
 \begin{galgascode}
-@stringset v = ... ;
-for s in v do
-  log s ; # Affichage des cles dans l'ordre alphabetique
-end for ;
+list @maListe {
+  @uint mProperty1
+  @string mProperty2
+  @char mProperty3
+  @bool mProperty4
+}
 \end{galgascode}
+
+L'énumération s'écrit :
+\begin{galgascode}
+@maListe uneListe = {!1 !"a" !'b' !false}
+for (p1 p2 p3 p4) in uneListe do
+  log p1, p2, p3, p4
+end
+\end{galgascode}
+
+Plusieurs variantes sont possibles, et sont décrites ci-après.
+
+\subsubsection{Type explicite}
+
+Il est possible d'annoter chaque constante en précisant son type.
+
+\begin{galgascode}
+@maListe uneListe = {!1 !"a" !'b' !false}
+for (@uint p1 @string p2 @char p3 @bool p4) in uneListe do
+  log p1, p2, p3, p4
+end
+\end{galgascode}
+
+Le compilateur vérifie alors que le type cité est égal au type déduit du type de l'expression énumérée.
+\begin{galgascode}
+@maListe uneListe = {!1 !"a" !'b' !false}
+for (@uint p1 @string p2 @char p3 @bool p4) in uneListe do
+  log p1, p2, p3, p4
+end
+\end{galgascode}
+
+
+\subsubsection{Joker}
+
+Si certaines constantes ne sont pas utiles, on peut les remplacer par un joker (\galgas{*}). Le nom du type ne doit alors pas figurer.
+\begin{galgascode}
+@maListe uneListe = {!1 !"a" !'b' !false}
+for (@uint p1 * * @bool p4) in uneListe do
+  log p1, p4
+end
+\end{galgascode}
+
+Plusieurs jokers peuvent être rassemblés en mentionnant leur nombre d'occurrences.
+\begin{galgascode}
+@maListe uneListe = {!1 !"a" !'b' !false}
+for (@uint p1 2* @bool p4) in uneListe do
+  log p1, p4
+end
+\end{galgascode}
+
+
+
+\subsubsection{Points de suspension}
+
+Trois points consécutifs (\galgas{...}) peuvent être utilisés pour signifier que les dernières constantes ne sont pas utiles.
+
+\begin{galgascode}
+@maListe uneListe = {!1 !"a" !'b' !false}
+for (@uint p1 ...) in uneListe do
+  log p1
+end
+\end{galgascode}
+
+Et si aucune constante n'est utile, on écrit :
+\begin{galgascode}
+@maListe uneListe = {!1 !"a" !'b' !false}
+for (...) in uneListe do
+
+end
+\end{galgascode}
+
 
 
 
@@ -818,7 +1073,7 @@ Plusieurs champs de l'instruction \galgas{for} sont optionnels.
 \end{itemize}
 
 
-\galgas{index nom\_index}. Vous pouvez mentionner un identificateur après le mot réservé \galgas{index}. Cet identificateur est le nom d'une constante qui a implicitement le type \galgas{@uint} et qui est initialisée à 0 avant toute exécution de la boucle, et incrémentée après chaque exécution des \galgas{instructions\_do}, et avant l'exécution des \galgas{instructions\_between}. Sa visibilité est la branche \galgas{do}.
+\galgas{(nom\_index)}. Vous pouvez mentionner un identificateur entre parenthèses après le mot réservé \galgas{do}. Cet identificateur est le nom d'une constante qui a implicitement le type \galgas{@uint} et qui est initialisée à 0 avant toute exécution de la boucle, et incrémentée après chaque exécution des \galgas{instructions\_do}, et avant l'exécution des \galgas{instructions\_between}. Sa visibilité est la branche \galgas{do}.
 
 \galgas{while expression}. L'énumération est exécutée tant que l'\galgas{expression} est vraie. L'absence de cette construction est équivalent à \galgas{while true} et permet d'énumérer toutes les valeurs.
 
@@ -1072,245 +1327,175 @@ Une erreur d'exécution est déclenchée en cas de dépassement de capacité.
 \section{L'instruction \texttt{if}}
 
 
-\subsection{Syntax}
-
-The \emph{if} instruction has the following syntax:
-{\lstset{emph={expression, instructions, expression2, instructions2, else_instructions}, emphstyle=\emph}
+Dans sa forme la plus générale, l'instruction \galgas{if} a la syntaxe suivante:
+{\lstset{emph={condition, instructions, condition2, instructions2, instructions_else}, emphstyle=\emph}
 \begin{galgascode}
-if expression then
+if condition then
   instructions
-elsif expression2 then
+elsif condition2 then
   instructions2
 ...
 else
-  else_instructions
-end if ;  
+  instructions_else
+end
 \end{galgascode}
 }
 
-More precisely, it contains :
+Plus précisement, elle contient :
 \begin{itemize}
-\item zero, one or more \emph{elsif} branches ;
-\item zero or one \emph{else} branch.
+\item zéro, une ou plusieurs branches \galgas{elsif} ;
+\item zéro ou une branche \galgas{else}.
 \end{itemize}
 
 
-\subsection{Static semantics}
+Aucune branche \galgas{else} est équivalent à une branche \galgas{else} sans aucune instruction.
 
 
-No \emph{else} branch is equivalent to an \emph{else} branch without any instruction.
-
-
-The \emph{elsif} branches are just syntactic sugar: it is semantically equivalent to use embedded \emph{if} instructions instead. For example:
-{\lstset{emph={expression, instructions, expression2, instructions2, else_instructions}, emphstyle=\emph}
+Les branches \galgas{elsif} sont simplement du sucre syntaxique : il est sémantiquement équivalent d'utiliser des instructions \galgas{if} imbriquées. Par exemple :
+{\lstset{emph={condition, instructions, condition2, instructions2, instructions_else}, emphstyle=\emph}
 \begin{galgascode}
-if expression then
+if condition then
   instructions
-elsif expression2 then
+elsif condition2 then
   instructions2
 else
-  else_instructions
-end if ;  
+  instructions_else
+end
 \end{galgascode}
 }
-is equivalent to:
-{\lstset{emph={expression, instructions, expression2, instructions2, else_instructions}, emphstyle=\emph}
+est équivalent à :
+{\lstset{emph={condition, instructions, condition2, instructions2, instructions_else}, emphstyle=\emph}
 \begin{galgascode}
-if expression then
+if condition then
   instructions
 else
-  if expression2 then
+  if condition2 then
     instructions2
   else
-    else_instructions
-  end if ;  
-end if ;  
+    instructions_else
+  end
+end
 \end{galgascode}
 }
 
-So, for describing \emph{if} instruction static and dynamic semantics, we only need to describe an \emph{if} instruction without any \emph{elsif} branch and with an \emph{else} branch:
+%So, for describing \emph{if} instruction static and dynamic semantics, we only need to describe an \emph{if} instruction without any \emph{elsif} branch and with an \emph{else} branch:
+%{\lstset{emph={condition, instructions, else_instructions}, emphstyle=\emph}
+%\begin{galgascode}
+%if condition then
+%  instructions
+%else
+%  else_instructions
+%end
+%\end{galgascode}
+%}
+
+{\lstset{emph={condition, condition2}, emphstyle=\emph}
+Le langage permet que le type des \galgas{condition} et \galgas{condition2} soit différent du type \refTypePredefini{bool}, sous certaines conditions. La règle complète est que le type des \galgas{condition} et \galgas{condition2} est :
+\begin{itemize}
+\item soit le type \galgas{@bool} ;
+\item soit un type \emph{structure}, possèdant une propriété nommée \galgas{bool}, dont le type est \galgas{@bool}; 
+\item soit un type possédant un \emph{getter} sans argument nommé \galgas{bool} et renvoyant une valeur de type \galgas{@bool}.
+\end{itemize}
+
+Voici un exemple illustrant le deuxième cas ; le type \refTypePredefini{bool} est une structure possèdant une propriété nommée \galgas{bool}, dont le type est \galgas{@bool}. Aussi, écrire :
 {\lstset{emph={expression, instructions, else_instructions}, emphstyle=\emph}
 \begin{galgascode}
-if expression then
+@lbool variable = ...
+if variable then
   instructions
 else
   else_instructions
-end if ;
+end
 \end{galgascode}
 }
 
-The static semantics evaluates the \emph{expression} type, and applies the following rules until success:
-\begin{enumerate}
-\item the \emph{expression} type is \refTypePredefini{bool};
-\item the \emph{expression} type is an \emph{structure} type, it has a attribute named \emph{bool}, whose type is \refTypePredefini{bool};
-\item the \emph{expression} type has a reader without any argument named \emph{bool} that returns a \refTypePredefini{bool} value.
-\end{enumerate}
-
-Most expressions you write fall in the first case.
-
-Applying the second rule enables to use an \refTypePredefini{lbool} expression as an \emph{if} expression. For example:
+est équivalent à :
 {\lstset{emph={expression, instructions, else_instructions}, emphstyle=\emph}
 \begin{galgascode}
-@lbool var = ... ;
-if var then
+@lbool variable = ...
+if variable.bool then
   instructions
 else
   else_instructions
-end if ;
+end
 \end{galgascode}
 }
 
-The \emph{var} object belongs to the \refTypePredefini{lbool} type: so first rule fails. But \refTypePredefini{lbool} is a \emph{structure} type, it has a \emph{bool} attribute with the \refTypePredefini{bool} type, so the second rule succeeds. It is semantically equivalent to write:
-{\lstset{emph={expression, instructions, else_instructions}, emphstyle=\emph}
-\begin{galgascode}
-@lbool var = ... ;
-if var->bool then
-  instructions
-else
-  else_instructions
-end if ;
-\end{galgascode}
-}
-
-The third rule applies on a \emph{class} type that defines a category reader with argument named \emph{bool} that returns a \refTypePredefini{bool} type. For example, declaring:
+Pour illustrer le troisième cas, on prend l'exemple de la classe suivante :
 \begin{galgascode}
 class @myClass { ... }
 
-reader @myClass bool -> @bool outResult : ... end reader ;
+getter @myClass bool -> @bool outResult { ... }
 \end{galgascode}
 
-enables to write:
+Ainsi, on peut écrire :
 {\lstset{emph={expression, instructions, else_instructions}, emphstyle=\emph}
 \begin{galgascode}
-@myClass myObject = ... ;
+@myClass myObject = ...
 if myObject then
   instructions
 else
   else_instructions
-end if ;
+end
 \end{galgascode}
 }
 
-It is semantically equivalent to write:
+Il est équivalent d'écrire :
 {\lstset{emph={expression, instructions, else_instructions}, emphstyle=\emph}
 \begin{galgascode}
-@myClass myObject = ... ;
+@myClass myObject = ...
 if [myObject bool] then
   instructions
 else
   else_instructions
-end if ;
+end
 \end{galgascode}
 }
 
 
-\subsection{Dynamic semantics}
-
-According to the preceding section, we only need to describe the dynamic semantic of an \emph{if} instruction without any \emph{elsif} branch and with an \emph{else} branch:
-{\lstset{emph={expression, instructions, else_instructions}, emphstyle=\emph}
-\begin{galgascode}
-if expression then
-  instructions
-else
-  else_instructions
-end if ;  
-\end{galgascode}
-}
-
-
-
-The \emph{expression} is first computed :
-\begin{itemize}
-\item if the evaluation fails, neither the \emph{if} instructions, neither the \emph{else} instructions are executed;
-\item if the evaluation result is \emph{true}, the \emph{if} instructions are executed ;
-\item if the evaluation result is \emph{false}, the \emph{else} instructions are executed.
-\end{itemize}
-
-
-\sectionLabel{Instruction \texttt{grammar}}{instruction-grammar}
-
-\section{Local Variable Declaration Instruction}
+%\subsection{Dynamic semantics}
+%
+%According to the preceding section, we only need to describe the dynamic semantic of an \emph{if} instruction without any \emph{elsif} branch and with an \emph{else} branch:
+%{\lstset{emph={expression, instructions, else_instructions}, emphstyle=\emph}
+%\begin{galgascode}
+%if expression then
+%  instructions
+%else
+%  else_instructions
+%end  
+%\end{galgascode}
+%}
+%
+%
+%
+%The \emph{expression} is first computed :
+%\begin{itemize}
+%\item if the evaluation fails, neither the \emph{if} instructions, neither the \emph{else} instructions are executed;
+%\item if the evaluation result is \emph{true}, the \emph{if} instructions are executed ;
+%\item if the evaluation result is \emph{false}, the \emph{else} instructions are executed.
+%\end{itemize}
 
 
-{\lstset{emph={variable}, emphstyle=\emph}
-\begin{galgascode}
-@type variable ;
-\end{galgascode}
-}
+\sectionLabel{L'instruction \texttt{grammar}}{instruction-grammar}
 
-{\lstset{emph={variable, expression}, emphstyle=\emph}
-\begin{galgascode}
-@type variable = expression ;
-\end{galgascode}
-}
-
-{\lstset{emph={variable, constructor, arguments}, emphstyle=\emph}
-\begin{galgascode}
-@type variable [constructor arguments] ;
-\end{galgascode}
-}
-
-
-\section{Instruction de déclaration de constante}
-
-Cette instruction peut prendre plusieurs formes ; la plus générale est la suivante :
-\lstset{emph={@type, nom, expression}, emphstyle=\emph}
-\begin{galgascode}
-const @type nom = expression ;
-\end{galgascode}
-
-Par exemple :
-\begin{galgascode}
-const @uint monEntier = 0 ;
-\end{galgascode}
-
-\subsection{Type implicite}
-
-\textbf{À partir de GALGAS 2.6.0.}
-
-
-Le nom du type de la constante peut être omis :
-\begin{galgascode}
-const nom = expression ;
-\end{galgascode}
-
-La constante prend alors implicitement le type de l'expression. Par exemple :
-\begin{galgascode}
-const monEntier = 0 ;
-\end{galgascode}
+L'instruction \galgas{grammar} permet d'exécuter l'analyse d'un texte par une grammaire. Le texte peut être contenu dans un fichier ou dans une chaîne de caractères.
 
 
 
-\subsection{Constructeur avec type implicite}
 
-\textbf{Déprécié à partir de GALGAS 2.6.0.}
 
-Cette construction s'applique si l'expression est un appel de constructeur qui nomme le même type que la variable :
-\lstset{emph={@type, nom, expression, nom_constructeur}, emphstyle=\emph}
-\begin{galgascode}
-const @type nom = [@type nom_constructeur ...] ;
-\end{galgascode}
 
-Alors le type qui précède le nom du constructeur peut être omis, ainsi que le signe d'affectation :
-\begin{galgascode}
-const @type nom [nom_constructeur ...] ;
-\end{galgascode}
 
-Par exemple :
-\begin{galgascode}
-const @stringset s = [@stringset emptySet] ;
-\end{galgascode}
 
-Se simplifie en :
 
-\begin{galgascode}
-const @stringset s [emptySet] ;
-\end{galgascode}
 
-Cette construction est dépréciée à partir de GALGAS 2.6.0 au profit de l'écriture suivante :
-\begin{galgascode}
-const s = [@stringset emptySet] ;
-\end{galgascode}
+
+
+
+
+
+
+
 
 
 \sectionLabel{L'instruction \texttt{log}}{instructionLog}
@@ -1321,22 +1506,19 @@ const s = [@stringset emptySet] ;
 \section{L'instruction \texttt{loop}}
 
 
-\subsection{Syntaxe}
-
 L'instruction \galgas{loop} a la syntaxe suivante :
 \lstset{emph={expression, instructions_1, instructions_2, variant_expression}, emphstyle=\emph}
 \begin{galgascode}
-loop variant_expression :
+loop (variant_expression)
   instructions_1
 while expression do
   instructions_2
-end loop ;  
+end
 \end{galgascode}
 
 
 Les \galgas{instructions\_1} et \galgas{instructions\_2} sont des listes d'instructions qui peuvent être vides.
 
-\subsection{Sémantique}
 
 Le \galgas{variant\_expression} est une expression de type \galgas{@uint} qui assure que la boucle n'est pas sans fin : elle est calculée au début de l'exécution de l'instruction, et décrémentée après chaque itération. Si sa valeur atteint zéro, une erreur d'exécution est déclenchée.
 
@@ -1356,7 +1538,7 @@ L'exécution de l'instruction \galgas{loop} est illustrée par l'organigramme de
       node distance=7mm
     ]
     \node [cloud] (start) {\textsc{begin}} ;
-    \node [block] (affectationVariant) [below=of start] {variant = {\tt \emph{variant\_expression}}} ;
+    \node [block] (affectationVariant) [below=of start] {variant := {\tt \emph{variant\_expression}}} ;
     \node [decision] (premierTest) [below=of affectationVariant] {variant > 0 ?} ;
     \node [error] (loopVariantError) [right=of premierTest] {loop variant error} ;
     \node [block] (instructions1) [below=of premierTest] {\tt \emph{instructions\_1}} ;
@@ -1369,15 +1551,15 @@ L'exécution de l'instruction \galgas{loop} est illustrée par l'organigramme de
     
     \draw [-stealth, thick] (start) -- (affectationVariant) ;
     \draw [-stealth, thick] (affectationVariant) -- (premierTest) ;
-    \draw [-stealth, thick] (premierTest) -- node[above] {\bf no} (loopVariantError) ;
-    \draw [-stealth, thick] (secondTest) -- node[above] {\bf no} (loopVariantError2) ;
+    \draw [o-stealth, thick] (premierTest) -- (loopVariantError) ;
+    \draw [o-stealth, thick] (secondTest) -- (loopVariantError2) ;
     \draw [-stealth, thick] (loopVariantError.east) -- +(1, 0) |- (end.east) ;
     \draw [-stealth, thick] (loopVariantError2.east) -- +(1, 0) ;
-    \draw [-stealth, thick] (expression.east) -- node[above] {\bf false} +(4.5, 0) ;
+    \draw [o-stealth, thick] (expression.east) -- +(4.5, 0) ;
     \draw [-stealth, thick] (instructions1) -- (expression) ;
-    \draw [-stealth, thick] (premierTest) to node[right] {\bf yes} (instructions1) ;
-    \draw [-stealth, thick] (expression) -- node[right] {\bf true} (secondTest) ;
-    \draw [-stealth, thick] (secondTest) -- node[right] {\bf yes} (decVariant) ;
+    \draw [>-stealth, thick] (premierTest) -- (instructions1) ;
+    \draw [>-stealth, thick] (expression) -- (secondTest) ;
+    \draw [>-stealth, thick] (secondTest) -- (decVariant) ;
     \draw [-stealth, thick] (decVariant) -- (instructions2) ;
     \draw [-stealth, thick] (instructions2.west) -- +(-1, 0) |- (instructions1.west) ;
   \end{tikzpicture}
@@ -1427,16 +1609,16 @@ L'instruction \galgas{switch} est dédiée aux types énumérés. Elle présente
 \lstset{emph={constante, expression, liste_instructions}, emphstyle=\emph}
 \begin{galgascode}
 switch expression
-when constante, constante, ... :
+case constante, constante, ... :
   liste_instructions
-when constante, constante, ... :
+case constante, constante, ... :
   liste_instructions
 ...
-end switch ;
+end
 \end{galgascode}
 
 
-Où \galgas{expression} est une expression d'un type énuméré. Toutes les constantes de ce type doivent être nommées dans les branches \galgas{when}, une et une seule fois.
+Où \galgas{expression} est une expression d'un type énuméré. Toutes les constantes de ce type doivent être nommées dans les branches \galgas{case}, une et une seule fois.
 
 Par exemple, avec la déclaration :
 
@@ -1452,11 +1634,11 @@ On peut écrire :
 @feuTricolore feu = ... ;
 
 switch feu
-when vert, orange:
+case vert, orange:
   ...
-when rouge :
+case rouge :
   ...
-end switch ;
+end
 \end{galgascode}
 
 

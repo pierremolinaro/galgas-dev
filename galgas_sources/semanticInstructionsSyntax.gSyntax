@@ -890,7 +890,7 @@ rule <semantic_instruction>
   end select ;
   const endof_before_branch := here ;
   $do$ ;
-  send if mIndexVariableName->string != "" then " index " . mIndexVariableName else "" end ;
+  send if mIndexVariableName->string != "" then "(" . mIndexVariableName . ")" else "" end ;
   @semanticInstructionListAST mDoInstructionList ;
   <semantic_instruction_list> ? mDoInstructionList ;
   const endof_do_branch := here ;
@@ -1105,8 +1105,10 @@ rule <semantic_instruction>
   select
     indexVariableName := [@lstring new !"" !here] ;
   or
-    $index$ ;
+    $index$ :> ?* ?* ;
+    send "(" ;
     $identifier$ ? indexVariableName ;
+    send ")" ;
   end select ;
   @semanticInstructionListAST mDoInstructionList ;
   <semantic_instruction_list> ? mDoInstructionList ;

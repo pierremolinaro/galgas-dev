@@ -142,7 +142,7 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "if",
 #  "import",
   "in",
-  "index",
+#  "index",
   "indexing",
   "insert",
   "is",
