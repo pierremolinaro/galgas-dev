@@ -232,11 +232,9 @@ routine compileProgramComponentFromAST
   @semanticDeclarationListAST semanticDeclarationListWithPredefinedTypes := semanticDeclarationList ;
   appendPredefinedTypesASTs !?semanticDeclarationListWithPredefinedTypes ;
 #------ Build semantic context
-  @semanticContext semanticContext ;
   buildSemanticContext
-    ![inSourceFile string]
     !semanticDeclarationListWithPredefinedTypes
-    ?semanticContext
+    ?@semanticContext semanticContext
   ;
 #--- Perform semantic analysis of grammar components
   buildGrammarComponentMapForSemanticAnalysis
