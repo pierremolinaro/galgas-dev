@@ -25,7 +25,6 @@ import "projectGlobalCheckings.gSemantics" ;
 #---------------------------------------------------------------------------*
 
 routine compileSemanticDeclarationsGalgas3
-  ??@string inProjectSourceFile
   ??@location inEndOfProjectSourceFile
   ??@semanticDeclarationListAST inSemanticDeclarationList
   ??@galgas3OptionComponentListAST inOptionComponentList
@@ -40,7 +39,6 @@ routine compileSemanticDeclarationsGalgas3
   appendPredefinedTypesASTs !?semanticDeclarationListWithPredefinedTypes ;
 #------ Build semantic context
   buildGalgas3SemanticContext
-    !inProjectSourceFile
     !semanticDeclarationListWithPredefinedTypes
     !inEndOfProjectSourceFile
     ?outSemanticContext
@@ -77,12 +75,11 @@ routine compileSemanticDeclarationsGalgas3
     !inGrammarComponentList
     !?outSemanticContext
   ;
-#------ Semantic Analysis
 #------ Check there is no undefined types
   foreach [outSemanticContext->mTypeMap unsolvedProxyList] do
     error mValue : "the '" . mValue . "' type is undefined" ;
   end foreach ;
-#---
+#------ Semantic Analysis
   outSemanticDeclarationSortedListForGeneration := [@semanticDeclarationSortedListForGeneration emptySortedList] ;
   if [@uint errorCount] == 0 then
     const @predefinedTypes predefinedTypes := buildPredefinedTypes [!outSemanticContext] ;
@@ -93,14 +90,6 @@ routine compileSemanticDeclarationsGalgas3
         !?outSemanticDeclarationSortedListForGeneration
       ] ;
     end foreach ;
-  end if ;
-#---------------------------------- Perform global checkings
-  if [@uint errorCount] == 0 then
-    performGalgas3ProjectGlobalCheckings
-      !outSemanticContext
-      !inSemanticDeclarationList
-      !inProjectSourceFile
-    ;
   end if ;
 end routine ;
 
@@ -146,7 +135,6 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 routine buildGalgas3SemanticContext
-  ??@string inProjectSourceFile
   ??@semanticDeclarationListAST inSemanticDeclarationList
   ??@location inEndOfProjectSourceFile
   !@semanticContext outSemanticContext
@@ -198,7 +186,6 @@ routine buildGalgas3SemanticContext
       outSortedSemanticDeclarationListAST .= categoryOverrideDefinitionList ;
     #--- Build initial semantic context
       outSemanticContext := [@semanticContext new
-        !inProjectSourceFile
         ![@unifiedTypeMap emptyMap]
         ![@routineMap emptyMap]
         ![@functionMap emptyMap]

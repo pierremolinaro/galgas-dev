@@ -598,7 +598,6 @@ routine compileProject
   @semanticDeclarationSortedListForGeneration semanticDeclarationSortedListForGeneration ;
   if [@uint errorCount] == 0 then
     compileSemanticDeclarationsGalgas3
-      !inProjectSourceFile->string
       !projectComponentAST->mEndOfSourceFile
       !declarationAST->mSemanticDeclarationList
       !declarationAST->mOptionComponentList
@@ -635,13 +634,15 @@ routine compileProject
   var grammarGenerationList := [@grammarComponentGenerationList emptyList] ;
   if [@uint errorCount] == 0 then
     for component in declarationAST->mGrammarComponentList do
-      compileGrammarComponentGalgas3
-        !productDirectory
-        !component
-        !parsedSyntaxComponentMap
-        !semanticContext
-        !?grammarGenerationList
-      ;
+      if (inSourceToAnalyze == "") | (inSourceToAnalyze == [component->mGrammarComponentName file]) then
+        compileGrammarComponentGalgas3
+          !productDirectory
+          !component
+          !parsedSyntaxComponentMap
+          !semanticContext
+          !?grammarGenerationList
+        ;
+      end if ;
     end for ;
   end if ;
 #---------------------------------- Compile program declarations
@@ -656,6 +657,39 @@ routine compileProject
       !semanticContext
       ?programHeaderContents
       ?programCppContents
+    ;
+  end if ;
+#------------------------------------ Build a text file that contains all declared types
+  const @string typeDumpFilePath := [inProjectSourceFile stringByDeletingLastPathComponent] + "/build/helpers/" +  [inProjectSourceFile lastPathComponent] . ".html" ;
+  if [option galgas_cli_options.outputHTMLTypeListFile value] then
+    @stringset firstLetterSet [emptySet] ;
+    foreach semanticContext->mTypeMap do
+      firstLetterSet += ![[lkey->string characterAtIndex!0] string] ;
+    end foreach ;
+    @string tableOfTypeString := "" ;
+    @char currentFirstLetter := ' ' ;
+    foreach semanticContext->mTypeMap : type_ do
+      if currentFirstLetter != [type_lkey->string characterAtIndex !0] then
+        currentFirstLetter := [type_lkey->string characterAtIndex !0] ;
+        tableOfTypeString .= "<br><a name=\"" . [currentFirstLetter uint] . "\"><b>" . currentFirstLetter . "</b></a><br>" ;
+      end if ;
+      tableOfTypeString .= linkForType [!type_lkey->string] . "<br>" ;
+    end foreach ;
+    const @string typeDumpString := [filewrapper typeDumpGenerationTemplate.typeDump
+      ![inProjectSourceFile lastPathComponent]
+      !semanticContext->mTypeMap
+      !firstLetterSet
+      !tableOfTypeString
+    ] ;
+    [typeDumpString writeToFileWhenDifferentContents !typeDumpFilePath ?*] ;
+  else
+    [@string deleteFileIfExists !typeDumpFilePath] ;
+  end if ;
+#---------------------------------- Perform global checkings
+  if (0 == [@uint errorCount]) & (inSourceToAnalyze == "") then
+    performGalgas3ProjectGlobalCheckings
+      !semanticContext
+      !declarationAST->mSemanticDeclarationList
     ;
   end if ;
 #---------------------------------- File generation

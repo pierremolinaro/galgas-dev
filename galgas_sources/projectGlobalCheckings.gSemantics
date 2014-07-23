@@ -503,7 +503,6 @@ routine performProjectGlobalCheckings
   end foreach ;
 #------ Generate declarations
   buildSemanticContext
-    !""
     !semanticDeclarationList
     ??@semanticContext semanticContext
   ;
@@ -741,7 +740,6 @@ end routine ;
 routine performGalgas3ProjectGlobalCheckings
   ??@semanticContext inSemanticContext
   ??@semanticDeclarationListAST inSemanticDeclarationList
-  ??@string inProjectSourceFilePath
 :
   if [option .verbose_output value] then
     message "*** Perform global checkings\n" ;
@@ -946,32 +944,6 @@ routine performGalgas3ProjectGlobalCheckings
         ;
       end foreach ;
     end foreach ;
-  end if ;
-#--- Build a text file that contains all declared types
-  const @string typeDumpFilePath := inProjectSourceFilePath . ".html" ;
-  if [option galgas_cli_options.outputHTMLTypeListFile value] then
-    @stringset firstLetterSet [emptySet] ;
-    foreach inSemanticContext->mTypeMap do
-      firstLetterSet += ![[lkey->string characterAtIndex!0] string] ;
-    end foreach ;
-    @string tableOfTypeString := "" ;
-    @char currentFirstLetter := ' ' ;
-    foreach inSemanticContext->mTypeMap : type_ do
-      if currentFirstLetter != [type_lkey->string characterAtIndex !0] then
-        currentFirstLetter := [type_lkey->string characterAtIndex !0] ;
-        tableOfTypeString .= "<br><a name=\"" . [currentFirstLetter uint] . "\"><b>" . currentFirstLetter . "</b></a><br>" ;
-      end if ;
-      tableOfTypeString .= linkForType [!type_lkey->string] . "<br>" ;
-    end foreach ;
-    const @string typeDumpString := [filewrapper typeDumpGenerationTemplate.typeDump
-      ![inProjectSourceFilePath lastPathComponent]
-      !inSemanticContext->mTypeMap
-      !firstLetterSet
-      !tableOfTypeString
-    ] ;
-    [typeDumpString writeToFileWhenDifferentContents !typeDumpFilePath ?*] ;
-  else
-    [@string deleteFileIfExists !typeDumpFilePath] ;
   end if ;
 end routine ;
 

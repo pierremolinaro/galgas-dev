@@ -565,7 +565,7 @@ routine analyzeConstructorInvocation
     else
       if [constructorMap count] == 0 then
         error inConstructorName
-        : "the '@". inTypeName . "' type does not define any constructor"
+        : "the '@". [outConstructorType key] . "' type does not define any constructor"
         : constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType
         ;
       else
@@ -605,23 +605,30 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 override method @defaultConstructorExpressionAST analyzeSemanticExpression
-  ??@unifiedTypeMapProxy unused inType
+  ??@unifiedTypeMapProxy inType
   ??@analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  const type := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
-#--- Check type accepts default constructor
-  if not [type mIsConcrete] then
-    error mTypeName: "an abstract class does not support the default constructor" ;
-  elsif [type mDefaultConstructorName] == "" then
-    error mTypeName: "this class does not support the default constructor" ;
+  var type := inType ;
+  if mTypeName->string != "" then
+    type := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
   end if ;
-#---
-  outExpression := [@defaultConstructorExpressionForGeneration new
-    !type
-    !mTypeName->location
-  ] ;
+  if [type isNull] then
+    error mTypeName : "cannot infer type" : outExpression ;
+  else
+  #--- Check type accepts default constructor
+    if not [type mIsConcrete] then
+      error mTypeName: "an abstract class does not support the default constructor" ;
+    elsif [type mDefaultConstructorName] == "" then
+      error mTypeName: "this class does not support the default constructor" ;
+    end if ;
+  #---
+    outExpression := [@defaultConstructorExpressionForGeneration new
+      !type
+      !mTypeName->location
+    ] ;
+  end if ;
 end method ;
 
 #---------------------------------------------------------------------------*

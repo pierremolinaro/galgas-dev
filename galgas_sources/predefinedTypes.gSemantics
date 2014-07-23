@@ -341,11 +341,9 @@ routine generatePredefinedTypeFiles ??@string inDirectory :
       @semanticDeclarationListAST predefinedTypeASTlist [emptyList] ;
       appendPredefinedTypesASTs !?predefinedTypeASTlist ;
     #------ Build Semantic Context
-      @semanticContext semanticContext ;
       buildSemanticContext
-        !""
         !predefinedTypeASTlist
-        ?semanticContext
+        ??@semanticContext semanticContext
       ;
     #------ Semantic Analysis
       @semanticDeclarationSortedListForGeneration decoratedDeclarationListForGeneration ;

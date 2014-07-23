@@ -167,7 +167,6 @@ map @lexiqueComponentMapForSemanticAnalysis {
 #---------------------------------------------------------------------------*
 
 struct @semanticContext {
-  @string mSourceFileAbsolutePath ;
   @unifiedTypeMap mTypeMap ;
   @routineMap mRoutineMap ;
   @functionMap mFunctionMap ;
@@ -3608,7 +3607,6 @@ end method ;
 #---------------------------------------------------------------------------*
 
 routine buildSemanticContext
-  ??@string inSourceFile
   ??@semanticDeclarationListAST inSemanticDeclarationList
   !@semanticContext outSemanticContext
 :
@@ -3658,7 +3656,6 @@ routine buildSemanticContext
       sortedSemanticDeclarationListAST .= categoryOverrideDefinitionList ;
     #--- Build initial semantic context
       outSemanticContext := [@semanticContext new
-        !inSourceFile
         ![@unifiedTypeMap emptyMap]
         ![@routineMap emptyMap]
         ![@functionMap emptyMap]
