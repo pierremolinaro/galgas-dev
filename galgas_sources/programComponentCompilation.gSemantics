@@ -448,6 +448,9 @@ routine compileProgramComponentGalgas3
       [mDeclaration appendSpecificImplementation !?inclusionSet ??@string code] ;
       implementationString += code ;
     end foreach ;
+    foreach inSemanticContext->mGrammarMap do
+      inclusionSet += !"grammar-" . lkey ;
+    end foreach ;
     if useOneHugeHeader then
       inclusionSet := [@stringset emptySet] ;
       for () in inSemanticContext->mOptionComponentMapForSemanticAnalysis do
