@@ -51,9 +51,9 @@ rule <declaration>
   end select ;
   ${$ ;
 #--- Imports
-  @lstringlist syntaxComponents [emptyList] ;
+  @lstringlist syntaxComponents := {} ;
   repeat
-    $with$ ;
+    $syntax$ ;
     $identifier$ ? @lstring syntaxComponent ;
     syntaxComponents += !syntaxComponent ;
   while

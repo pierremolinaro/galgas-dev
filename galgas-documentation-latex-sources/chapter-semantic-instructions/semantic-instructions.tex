@@ -1480,9 +1480,65 @@ end
 
 L'instruction \galgas{grammar} permet d'exécuter l'analyse d'un texte par une grammaire. Le texte peut être contenu dans un fichier ou dans une chaîne de caractères.
 
+Si le texte est contenu dans un fichier :
+\lstset{emph={nom\_grammaire, label\_grammaire, expression\_de\_type\_lstring, liste\_parametres,
+              expression\_de\_type\_string, traduction\_dirigee\_par\_la\_syntaxe},
+        emphstyle=\emph
+}
+\begin{galgascode}
+grammar
+  nom_grammaire
+  label_grammaire # Optionnel
+  in expression_de_type_lstring # Chemin du fichier source
+  liste_parametres
+  traduction_dirigee_par_la_syntaxe # Optionnel
+\end{galgascode}
+
+Si le texte est contenu dans une chaîne de caractères :
+\begin{galgascode}
+grammar
+  nom_grammaire
+  label_grammaire # Optionnel
+  on expression_de_type_string # Texte source
+  liste_parametres
+  traduction_dirigee_par_la_syntaxe # Optionnel
+\end{galgascode}
+
+Dans ces écritures :
+\begin{itemize}
+  \item \galgas{nom\_grammaire} est un identificateur nommant la grammaire, c'est le nom d'un composant grammaire du projet ;
+  \item \galgas{label\_grammaire} est optionnel, et permet d'exécuter une variante des règles de production (voir \refSectionPage{analysePlusieursPhases}) ;
+  \item \galgas{expression\_de\_type\_lstring} est une valeur de type \galgas{@lstring}, dont le champ \galgas{string} désigne un fichier source, par un chemin relatif ou absolu, et dont le champ \galgas{location} est la position de signalement d'erreur si le fichier source ne peut pas être lu ;
+  \item \galgas{expression\_de\_type\_string} est directement la chaîne source à analyser ;
+  \item \galgas{liste\_parametres} est une liste de paramètres effectifs (en entrée, sortie, ou sortie/entrée), en accord avec la liste des arguments formels de l'axiome de la grammaire ;
+  \item \galgas{traduction\_dirigee\_par\_la\_syntaxe} est optionnel, et permet d'obtenir la chaîne source traduite lors d'une \emph{traduction dirigée par la syntaxe} (voir \refSectionPage{instructionGrammarEtTraductionDirigeeParLaSyntaxe}).
+\end{itemize}
 
 
+Prenons l'exemple d'un composant grammaire :
+\begin{galgascode}
+grammar maGrammaire "SLR" {
+  syntax ...
+   <start_symbol> ?!@declarationAST ioDeclarations
+}
+\end{galgascode}
 
+L'instruction grammaire s'écrit alors :
+\begin{galgascode}
+grammar maGrammaire in fichierSource !?ioDeclarations
+\end{galgascode}
+
+Cette instruction est typiquement utilisé dans une règle d'analyse de fichier source (\refChapterPage{regleAnalyseFichierSource}) :
+
+\begin{galgascode}
+case . "monExtension"
+message "un fichier source"
+??@lstring inSourceFile {
+  var declaration = @declarationList {}
+  grammar maGrammaire in inSourceFile !?ioDeclarations
+  ...
+}
+\end{galgascode}
 
 
 
