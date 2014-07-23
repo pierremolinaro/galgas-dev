@@ -58,8 +58,9 @@ rule <grammar_component_start_symbol>
 #--- New style imports
   @lstringlist syntaxComponents [emptyList] ;
   repeat
-    $with$ ;
-    $literal_string$ ? @lstring syntaxComponent :> ??@string sep ?* ;
+    $with$ :>?@string sep ?* ;
+    send sep. "syntax" ;
+    $literal_string$ ? @lstring syntaxComponent :> ?sep ?* ;
     send sep . [syntaxComponent stringByDeletingPathExtension] ;
     $;$ :> ?* ?* ;
     syntaxComponents += !syntaxComponent ;
