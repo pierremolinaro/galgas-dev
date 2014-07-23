@@ -200,7 +200,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 routine updateGalgas3Targets
-  ??@lstring inProjectSourceFilePath
+  ??@string inProjectSourceFilePath
   ??@string inTargetName
   ??@location unused inEndOfProjectSourceFile
   ??@string inProjectVersionString

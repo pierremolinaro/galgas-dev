@@ -529,6 +529,19 @@ when . "galgasProject"
 message "a GALGAS project source file"
 indexing with galgas3ProjectGrammar
 ??@lstring inProjectSourceFile {
+  compileProject !inProjectSourceFile !"" ;
+}
+
+#----------------------------------------------------------------------------*
+#                                                                            *
+#          compileProject                                                    *
+#                                                                            *
+#----------------------------------------------------------------------------*
+
+routine compileProject
+  ??@lstring inProjectSourceFile
+  ??@string inSourceToAnalyze # Empty string: compile all project
+:
   if [option .verbose_output value] then
     message "*** Parsing project files\n" ;
   end if ;
@@ -646,45 +659,88 @@ indexing with galgas3ProjectGrammar
     ;
   end if ;
 #---------------------------------- File generation
-  if (0 == [@uint errorCount]) & [option .verbose_output value] then
+  if (0 == [@uint errorCount]) & (inSourceToAnalyze == "") then
+    projectGeneration
+      !productDirectory
+      !programHeaderContents
+      !programCppContents
+      !grammarGenerationList
+      !lexiqueComponentGenerationList
+      !appProductFileList
+      !semanticContext
+      !syntaxListForGeneration
+      !semanticDeclarationSortedListForGeneration
+      !declarationAST->mSourceRuleList
+      !projectComponentAST
+      !inProjectSourceFile->string
+      !handCodedSourceDirectorySet
+      !handCodedSourceToolFileList
+      !handCodedLinkToolFileList
+    ;
+  end if ;
+end routine ;
+
+#----------------------------------------------------------------------------*
+#                                                                            *
+#          projectGeneration                                                 *
+#                                                                            *
+#----------------------------------------------------------------------------*
+
+routine projectGeneration
+  ??@string inProductDirectory
+  ??@string inProgramHeaderContents
+  ??@string inProgramCppContents
+  ??@grammarComponentGenerationList inGrammarGenerationList
+  ??@lexiqueComponentGenerationList inLexiqueComponentGenerationList
+  ??@stringlist inAppProductFileList
+  ??@semanticContext inSemanticContext
+  ??@syntaxListForGeneration inSyntaxListForGeneration
+  ??@semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
+  ??@programRuleList inSourceRuleList
+  ??@galgas3ProjectComponentAST inProjectComponentAST
+  ??@string inProjectSourceFile
+  ??@stringset inHandCodedSourceDirectorySet
+  ??@stringlist inHandCodedSourceToolFileList
+  ??@stringlist inHandCodedLinkToolFileList
+:
+  var appProductFileList := inAppProductFileList ;
+#---------------------------------- File generation
+  if [option .verbose_output value] then
     message "*** Generating files\n" ;
   end if ;
   var toolCppFileList := [@stringlist emptyList] ;
   var allProductFileSet := [@stringset emptySet] ;
 #---------------------------------- Generate program component
   generateProgramComponentGalgas3
-    !productDirectory
-    !programHeaderContents
-    !programCppContents
+    !inProductDirectory
+    !inProgramHeaderContents
+    !inProgramCppContents
     !?toolCppFileList
     !?allProductFileSet
   ;
-  drop programHeaderContents, programCppContents ;
 #---------------------------------- Generate grammar components
   generateGrammarComponentGalgas3
-    !productDirectory
-    !grammarGenerationList
+    !inProductDirectory
+    !inGrammarGenerationList
     !?toolCppFileList
     !?allProductFileSet
   ;
-  drop grammarGenerationList ;
 #---------------------------------- Generate lexique components
   if [@uint errorCount] == 0 then
     generateLexiqueComponentsGalgas3
-      !productDirectory
-      !lexiqueComponentGenerationList
+      !inProductDirectory
+      !inLexiqueComponentGenerationList
       !?toolCppFileList
       !?appProductFileList
       !?allProductFileSet
     ;
   end if ;
-  drop lexiqueComponentGenerationList ;
 #---------------------------------- Generate option components
   if [@uint errorCount] == 0 then
-    foreach semanticContext->mOptionComponentMapForSemanticAnalysis do
+    foreach inSemanticContext->mOptionComponentMapForSemanticAnalysis do
       if not mIsPredefined then
         generateOptionComponentGalgas3
-          !productDirectory
+          !inProductDirectory
           !lkey->string
           !mBoolOptionMap
           !mUIntOptionMap
@@ -698,11 +754,11 @@ indexing with galgas3ProjectGrammar
   end if ;
 #---------------------------------- Generate syntax components
   if 0 == [@uint errorCount] then
-    for s in syntaxListForGeneration do
+    for s in inSyntaxListForGeneration do
       generateSyntaxComponentGalgas3
-        !productDirectory
+        !inProductDirectory
         !s
-        !semanticContext
+        !inSemanticContext
         !?toolCppFileList
         !?allProductFileSet
       ;
@@ -710,16 +766,16 @@ indexing with galgas3ProjectGrammar
   end if ;
 #---------------------------------- Generate semantic files
   generateSemanticDeclarationsGalgas3
-    !productDirectory
-    !semanticContext
-    !semanticDeclarationSortedListForGeneration
+    !inProductDirectory
+    !inSemanticContext
+    !inSemanticDeclarationSortedListForGeneration
     !?toolCppFileList
     !?allProductFileSet
   ;
 #---------------------------------- Update targets
   if 0 == [@uint errorCount] then
     @stringset handledExtensionSet [emptySet] ;
-    for () in declarationAST->mSourceRuleList do
+    for () in inSourceRuleList do
       handledExtensionSet += !mSourceFileExtension->string ;
     end for ;
   #--- Build qualified feature map
@@ -728,7 +784,7 @@ indexing with galgas3ProjectGrammar
     ignoredFeatureSet += !"tool-link" ;
     ignoredFeatureSet += !"app-source" ;
     @projectQualifiedFeatureMap projectQualifiedFeatureMap [emptyMap] ;
-    foreach projectComponentAST->mQualifiedFeatureList do
+    foreach inProjectComponentAST->mQualifiedFeatureList do
       if not [ignoredFeatureSet hasKey !mFeatureName->string] then
         [!?projectQualifiedFeatureMap insertKey
           !mFeatureName
@@ -738,32 +794,32 @@ indexing with galgas3ProjectGrammar
     end foreach ;
     updateGalgas3Targets
       !inProjectSourceFile
-      !projectComponentAST->mTargetName->string
-      !projectComponentAST->mEndOfSourceFile
-      ![projectComponentAST->mMajorVersion->uint string] . "." . projectComponentAST->mMinorVersion->uint . "." . projectComponentAST->mRevisionVersion->uint
+      !inProjectComponentAST->mTargetName->string
+      !inProjectComponentAST->mEndOfSourceFile
+      ![inProjectComponentAST->mMajorVersion->uint string] . "." . inProjectComponentAST->mMinorVersion->uint . "." . inProjectComponentAST->mRevisionVersion->uint
       !projectQualifiedFeatureMap
-      !projectComponentAST->mGenerationFeatureList
+      !inProjectComponentAST->mGenerationFeatureList
       !toolCppFileList
       !appProductFileList
-      !handCodedSourceToolFileList
-      !handCodedSourceDirectorySet
+      !inHandCodedSourceToolFileList
+      !inHandCodedSourceDirectorySet
       !handledExtensionSet
-      !handCodedLinkToolFileList
+      !inHandCodedLinkToolFileList
       !?allProductFileSet
     ;
   end if ;
 #---------------------------------- Remove useless files
   if 0 == [@uint errorCount] then
     var allActualFileSet := [@stringset emptySet] ;
-    foreach [productDirectory regularFiles !false] do
+    foreach [inProductDirectory regularFiles !false] do
       allActualFileSet += !mValue ;
     end foreach ;
     const uselessFileSet := allActualFileSet - allProductFileSet ;
     foreach uselessFileSet do
-      [@string deleteFile !productDirectory . "/" . key] ;
+      [@string deleteFile !inProductDirectory . "/" . key] ;
     end foreach ;
   end if ;
-}
+end routine ;
 
 #----------------------------------------------------------------------------*
 #                                                                            *
@@ -775,8 +831,21 @@ when . "galgas"
 message "a GALGAS source file"
 indexing with projectLL1grammar
 ??@lstring inSourceFile {
-  var declaration := [@galgas3DeclarationAST default] ; 
-  grammar galgas3Grammar in inSourceFile !?declaration ;
+#--- Search for a project file in parent directory
+  const parentDirectory := [[inSourceFile->string stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] ;
+  const candidateProjectFiles := [parentDirectory regularFilesWithExtensions !false !{!"galgasProject"}] ;
+  if [candidateProjectFiles length] == 0 then
+    error inSourceFile : "no project file in parent directory of source file" ;
+  elsif [candidateProjectFiles length] > 1 then
+    var s := "several project files in source file parent directory:" ;
+    for () in candidateProjectFiles do
+      s += "\n  - " + mValue ;
+    end for ;
+    error inSourceFile : s ;
+  else
+    const projectFilePath := parentDirectory + "/" + [candidateProjectFiles mValueAtIndex !0] ;
+    compileProject ![@lstring new !projectFilePath !inSourceFile->location] !inSourceFile->string ;
+  end if ;
 }
 
 #---------------------------------------------------------------------------*
