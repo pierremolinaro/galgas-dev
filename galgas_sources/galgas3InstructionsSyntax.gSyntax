@@ -1019,7 +1019,7 @@ rule <semantic_instruction>
 :
   $with$ ;
   const instructionLocation := here ;
-  <expression> ??@semanticExpressionAST mKeyExpression ;
+  <expression> ??@semanticExpressionAST keyExpression ;
   const endOfKeyExpression := here ;
   @lstring withPrefix ;
   select
@@ -1029,42 +1029,91 @@ rule <semantic_instruction>
     $identifier$ ? withPrefix ;
   end select ;
   $in$ ;
-  <expression> ??@semanticExpressionAST receiverExpression ;
-  const endOfReceiverExpression := here ;
-  @lstring searchMethodNameForErrorSignaling ;
   select
-    searchMethodNameForErrorSignaling := ["" nowhere] ;
+     <expression> ??@semanticExpressionAST receiverExpression ;
+    const endOfReceiverExpression := here ;
+    @lstring searchMethodNameForErrorSignaling ;
+    select
+      searchMethodNameForErrorSignaling := ["" nowhere] ;
+    or
+      $error$ ;
+      $message$ ;
+      $identifier$ ?searchMethodNameForErrorSignaling ;
+    end select ;
+    $do$ ;
+    <semantic_instruction_list> ??@semanticInstructionListAST mDoBranchInstructions ;
+    const endOfDoInstructions := here ;
+    @semanticInstructionListAST mElseBranchInstructions ;
+    select
+      mElseBranchInstructions := {} ;
+    or
+      $else$ ;
+      if searchMethodNameForErrorSignaling->string != "" then
+        error searchMethodNameForErrorSignaling : "no 'else' branch if error on search is enabled" ;
+      end if ;
+      <semantic_instruction_list> ?mElseBranchInstructions ;
+    end select ;
+    outInstruction := [@readAccessWithInstructionAST new
+      !instructionLocation
+      !withPrefix
+      !receiverExpression
+      !endOfReceiverExpression
+      !keyExpression
+      !endOfKeyExpression
+      !searchMethodNameForErrorSignaling
+      !mDoBranchInstructions
+      !endOfDoInstructions
+      !mElseBranchInstructions
+      !here
+    ] ;
   or
-    $error$ ;
-    $message$ ;
-    $identifier$ ?searchMethodNameForErrorSignaling ;
+    $!?$ ;
+    $identifier$ ?@lstring mTargetObjectName ;
+    @lstringlist structAttributeList [emptyList] ;
+    repeat
+    while
+      $.$ ;
+      $identifier$ ?@lstring mStructFieldName ;
+      structAttributeList += !mStructFieldName ;
+    end repeat ;
+    const endOfReceiverExpression := here ;
+    @lstring searchMethodNameForErrorSignaling ;
+    select
+      searchMethodNameForErrorSignaling := ["" nowhere] ;
+    or
+      $error$ ;
+      $message$ ;
+      $identifier$ ?searchMethodNameForErrorSignaling ;
+    end select ;
+    $do$ ;
+    <semantic_instruction_list> ??@semanticInstructionListAST mDoBranchInstructions ;
+    const endOf_do_instructions := here ;
+    @semanticInstructionListAST mElseBranchInstructions ;
+    select
+      mElseBranchInstructions := [@semanticInstructionListAST emptyList] ;
+    or
+      $else$ ;
+      if searchMethodNameForErrorSignaling->string != "" then
+        error searchMethodNameForErrorSignaling : "no 'else' branch if error on search is enabled" ;
+      end if ;
+      <semantic_instruction_list> ? mElseBranchInstructions ;
+    end select ;
+    const endOf_else_instructions := here ;
+    outInstruction := [@readWriteAccessWithInstructionAST new
+      !instructionLocation
+      !withPrefix
+      !mTargetObjectName
+      !structAttributeList
+      !endOfReceiverExpression
+      !keyExpression
+      !endOfKeyExpression
+      !searchMethodNameForErrorSignaling
+      !mDoBranchInstructions
+      !endOf_do_instructions
+      !mElseBranchInstructions
+      !endOf_else_instructions
+    ] ;
   end select ;
-  $do$ ;
-  <semantic_instruction_list> ??@semanticInstructionListAST mDoBranchInstructions ;
-  const endOfDoInstructions := here ;
-  @semanticInstructionListAST mElseBranchInstructions ;
-  select
-    mElseBranchInstructions := {} ;
-  or
-    $else$ ;
-    if searchMethodNameForErrorSignaling->string != "" then
-      error searchMethodNameForErrorSignaling : "no 'else' branch if error on search is enabled" ;
-    end if ;
-    <semantic_instruction_list> ?mElseBranchInstructions ;
-  end select ;
-  outInstruction := [@readAccessWithInstructionAST new
-    !instructionLocation
-    !withPrefix
-    !receiverExpression
-    !endOfReceiverExpression
-    !mKeyExpression
-    !endOfKeyExpression
-    !searchMethodNameForErrorSignaling
-    !mDoBranchInstructions
-    !endOfDoInstructions
-    !mElseBranchInstructions
-    !here
-  ] ;
   $end$ ;
   select
   or
@@ -1077,77 +1126,78 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction>
-  !@semanticInstructionAST outInstruction
-  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
-:
-  $with$ ;
-  $!?$ ;
-  const instructionLocation := here ;
-  <expression> ??@semanticExpressionAST keyExpression ;
-  const endOfKeyExpression := here ;
-  @lstring withPrefix ;
-  select
-    withPrefix := [@lstring new !"" !here] ;
-  or
-    $:$ ;
-    $identifier$ ? withPrefix ;
-  end select ;
-  $in$ ;
-  $identifier$ ?@lstring mTargetObjectName ;
-  @lstringlist structAttributeList [emptyList] ;
-  repeat
-  while
-    $.$ ;
-    $identifier$ ?@lstring mStructFieldName ;
-    structAttributeList += !mStructFieldName ;
-  end repeat ;
-  const endOfReceiverExpression := here ;
-  @lstring searchMethodNameForErrorSignaling ;
-  select
-    searchMethodNameForErrorSignaling := ["" nowhere] ;
-  or
-    $error$ ;
-    $message$ ;
-    $identifier$ ?searchMethodNameForErrorSignaling ;
-  end select ;
-  $do$ ;
-  <semantic_instruction_list> ??@semanticInstructionListAST mDoBranchInstructions ;
-  const endOf_do_instructions := here ;
-  @semanticInstructionListAST mElseBranchInstructions ;
-  select
-    mElseBranchInstructions := [@semanticInstructionListAST emptyList] ;
-  or
-    $else$ ;
-    if searchMethodNameForErrorSignaling->string != "" then
-      error searchMethodNameForErrorSignaling : "no 'else' branch if error on search is enabled" ;
-    end if ;
-    <semantic_instruction_list> ? mElseBranchInstructions ;
-  end select ;
-  const endOf_else_instructions := here ;
-  outInstruction := [@readWriteAccessWithInstructionAST new
-    !instructionLocation
-    !withPrefix
-    !mTargetObjectName
-    !structAttributeList
-    !endOfReceiverExpression
-    !keyExpression
-    !endOfKeyExpression
-    !searchMethodNameForErrorSignaling
-    !mDoBranchInstructions
-    !endOf_do_instructions
-    !mElseBranchInstructions
-    !endOf_else_instructions
-  ] ;
-  $end$ ;
-  select
-  or
-    $attribute$ ??@lstring terminator ;
-    if terminator->string != "with" then
-      error terminator : "the terminator attribute should be '%with'" ;
-    end if ;
-  end select ;
-end rule ;
+#rule <semantic_instruction>
+#  !@semanticInstructionAST outInstruction
+#  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
+#:
+#  $with$ ;
+#  $!?$ ;
+#  const instructionLocation := here ;
+#  <expression> ??@semanticExpressionAST keyExpression ;
+#  const endOfKeyExpression := here ;
+#  @lstring withPrefix ;
+#  select
+#    withPrefix := [@lstring new !"" !here] ;
+#  or
+#    $:$ ;
+#    $identifier$ ? withPrefix ;
+#  end select ;
+#  $in$ ;
+#  $!?$ ;
+#  $identifier$ ?@lstring mTargetObjectName ;
+#  @lstringlist structAttributeList [emptyList] ;
+#  repeat
+#  while
+#    $.$ ;
+#    $identifier$ ?@lstring mStructFieldName ;
+#    structAttributeList += !mStructFieldName ;
+#  end repeat ;
+#  const endOfReceiverExpression := here ;
+#  @lstring searchMethodNameForErrorSignaling ;
+#  select
+#    searchMethodNameForErrorSignaling := ["" nowhere] ;
+#  or
+#    $error$ ;
+#    $message$ ;
+#    $identifier$ ?searchMethodNameForErrorSignaling ;
+#  end select ;
+#  $do$ ;
+#  <semantic_instruction_list> ??@semanticInstructionListAST mDoBranchInstructions ;
+#  const endOf_do_instructions := here ;
+#  @semanticInstructionListAST mElseBranchInstructions ;
+#  select
+#    mElseBranchInstructions := [@semanticInstructionListAST emptyList] ;
+#  or
+#    $else$ ;
+#    if searchMethodNameForErrorSignaling->string != "" then
+#      error searchMethodNameForErrorSignaling : "no 'else' branch if error on search is enabled" ;
+#    end if ;
+#    <semantic_instruction_list> ? mElseBranchInstructions ;
+#  end select ;
+#  const endOf_else_instructions := here ;
+#  outInstruction := [@readWriteAccessWithInstructionAST new
+#    !instructionLocation
+#    !withPrefix
+#    !mTargetObjectName
+#    !structAttributeList
+#    !endOfReceiverExpression
+#    !keyExpression
+#    !endOfKeyExpression
+#    !searchMethodNameForErrorSignaling
+#    !mDoBranchInstructions
+#    !endOf_do_instructions
+#    !mElseBranchInstructions
+#    !endOf_else_instructions
+#  ] ;
+#  $end$ ;
+#  select
+#  or
+#    $attribute$ ??@lstring terminator ;
+#    if terminator->string != "with" then
+#      error terminator : "the terminator attribute should be '%with'" ;
+#    end if ;
+#  end select ;
+#end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
