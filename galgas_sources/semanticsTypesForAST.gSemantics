@@ -1008,8 +1008,9 @@ class @grammarInstructionAST extends @semanticInstructionAST {
 class @readAccessWithInstructionAST extends @semanticInstructionAST {
   @lstring mPrefix ;
   @semanticExpressionAST mReceiverExpression ;
-  @location mEndOfReceiverExpression;
+  @location mEndOfReceiverExpression ;
   @semanticExpressionAST mKeyExpression ;
+  @location mEndOfKeyExpression ;
   @semanticInstructionListAST mDoBranchInstructions ;
   @location mEndOf_do_instructions ;
   @semanticInstructionListAST mElseBranchInstructions ;
@@ -1026,8 +1027,9 @@ class @readWriteAccessWithInstructionAST extends @semanticInstructionAST {
   @lstring mPrefix ;
   @lstring mReceiverName ;
   @lstringlist mFieldList ;
-  @lstring mSearchMethodName ;
+  @location mEndOfReceiverExpression ;
   @semanticExpressionAST mKeyExpression ;
+  @location mEndOfKeyExpression ;
   @semanticInstructionListAST m_do_Instructions ;
   @location mEndOf_do_instructions ;
   @semanticInstructionListAST m_else_Instructions ;
