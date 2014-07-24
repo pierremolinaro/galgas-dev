@@ -1824,10 +1824,34 @@ warning nom : message_alerte
 L'instruction \galgas{with} permet d'associer un test de recherche dans une table et l'accès aux champs correspondants si succès. Elle peut prendre deux formes différentes, suivi que l'on veuille modifier la table ou non.
 
 \subsection{Instruction \texttt{with} et accès en lecture}
+
+
+\lstset{emph={expression_cle, prefixe_optionnel, expression_table, liste_instructions_do, liste_instructions_else}, emphstyle=\emph}
 \begin{galgascode}
-with expression_table nom_methode_recherche !expression_cle : prefixe
+with expression_cle prefixe_optionnel in expression_table
 do liste_instructions_do
-else liste_instructions_else
+else liste_instructions_else # Optionnel
+end
+\end{galgascode}
+
+Où :
+\begin{itemize}
+  \item \galgas{expression\_cle} est une expression de type \galgas{@string} dont la valeur définit la clé ;
+  \item \galgas{prefixe\_optionnel} est soit vide, soit est constitué d'un double-point \galgast{:} suivi d'un identificateur qui préfixe les noms des champs dans la liste d'instructions \galgas{liste\_instructions\_do} ;
+  \item \galgas{expression\_table} est une expression qui désigne la table.
+\end{itemize}
+
+
+
+
+\subsection{Instruction \texttt{with} et accès en lecture/écriture}
+
+
+\lstset{emph={expression_cle, prefixe_optionnel, cible_table, liste_instructions_do, liste_instructions_else}, emphstyle=\emph}
+\begin{galgascode}
+with expression_cle prefixe_optionnel in !?cible_table
+do liste_instructions_do
+else liste_instructions_else # Optionnel
 end
 \end{galgascode}
 
