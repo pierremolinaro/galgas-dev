@@ -3358,7 +3358,7 @@ override method @categoryReaderAST enterDeclarationInGraph
       ![@categoryReaderMapForType emptyMap]
     ] ;
   end if ;
-  with !?ioCategoryReaderMapForBuildingContext searchKey !mTypeName do
+  with !?ioCategoryReaderMapForBuildingContext searchKey !mTypeName->string do
     [!?mCategoryReaderMapForType insertKey
       !mCategoryReaderName
       !mCategoryReaderReturnedTypeName
@@ -3386,7 +3386,7 @@ override method @categoryMethodAST enterDeclarationInGraph
       ![@categoryMethodMapForType emptyMap]
     ] ;
   end if ;
-  with !?ioCategoryMethodMapForBuildingContext searchKey !mTypeName do
+  with !?ioCategoryMethodMapForBuildingContext searchKey !mTypeName->string do
     [!?mCategoryMethodMapForType insertKey
       !mCategoryMethodName
       !mCategoryMethodFormalParameterList
@@ -3413,7 +3413,7 @@ override method @categoryModifierAST enterDeclarationInGraph
       ![@categoryModifierMapForType emptyMap]
     ] ;
   end if ;
-  with !?ioCategoryModifierMapForBuildingContext searchKey !mTypeName do
+  with !?ioCategoryModifierMapForBuildingContext searchKey !mTypeName->string do
     [!?mCategoryModifierMapForType insertKey
       !mCategoryModifierName
       !mCategoryModifierFormalParameterList
@@ -3452,7 +3452,7 @@ override method @abstractCategoryReaderAST enterDeclarationInGraph
       ![@categoryReaderMapForType emptyMap]
     ] ;
   end if ;
-  with !?ioCategoryReaderMapForBuildingContext searchKey !mTypeName do
+  with !?ioCategoryReaderMapForBuildingContext searchKey !mTypeName->string do
     [!?mCategoryReaderMapForType insertKey
       !mAbstractCategoryReaderName
       !mAbstractCategoryReaderReturnedTypeName
@@ -3480,7 +3480,7 @@ override method @abstractCategoryMethodAST enterDeclarationInGraph
       ![@categoryMethodMapForType emptyMap]
     ] ;
   end if ;
-  with !?ioCategoryMethodMapForBuildingContext searchKey !mTypeName do
+  with !?ioCategoryMethodMapForBuildingContext searchKey !mTypeName->string do
     [!?mCategoryMethodMapForType insertKey
       !mAbstractCategoryMethodName
       !mAbstractCategoryMethodFormalParameterList
@@ -3507,7 +3507,7 @@ override method @abstractCategoryModifierAST enterDeclarationInGraph
       ![@categoryModifierMapForType emptyMap]
     ] ;
   end if ;
-  with !?ioCategoryModifierMapForBuildingContext searchKey !mTypeName do
+  with !?ioCategoryModifierMapForBuildingContext searchKey !mTypeName->string do
     [!?mCategoryModifierMapForType insertKey
       !mAbstractCategoryModifierName
       !mAbstractCategoryModifierFormalParameterList

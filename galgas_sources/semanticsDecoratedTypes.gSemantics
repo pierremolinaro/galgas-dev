@@ -1005,7 +1005,6 @@ class @readWriteWithInstructionForGeneration extends @semanticInstructionForGene
   @string mReceiverVariableCppName ;
   @unifiedTypeMapProxy mReceiverType ;
   @lstringlist mStructAttributeList ;
-  @string mAccessName ;
   @string mObjectArrayCppName ;
   @semanticExpressionForGeneration mKeyExpression ;
   @semanticInstructionListForGeneration mDoBranchInstructions ;

@@ -308,12 +308,18 @@ if ((SUPPORTED_OPERATORS & generateEnumerationHelperMethods []) != 0) then
 
 %end
 
+if ((SUPPORTED_OPERATORS & supportWithAccessor []) != 0) then
+  %  public : VIRTUAL_IN_DEBUG cMapElement_%!TYPE_IDENTIFIER% * readWriteAccessForWithInstruction (%?^%C_Compiler * inCompiler,\n%
+  !^%const GALGAS_string & inKey\n%
+  !^%COMMA_LOCATION_ARGS) ;\n\n%
+end
+
 if [WITH_ACCESSOR_MAP count] > 0 then
   %//--------------------------------- 'with' accessors\n%
   foreach WITH_ACCESSOR_MAP do
-    %  public : VIRTUAL_IN_DEBUG cMapElement_%!TYPE_IDENTIFIER% * readWriteAccessForWithInstruction_%![[lkey string] identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
+    %/*  public : VIRTUAL_IN_DEBUG cMapElement_%!TYPE_IDENTIFIER% * readWriteAccessForWithInstruction_%![[lkey string] identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
     !^%const GALGAS_%![mArgumentType identifierRepresentation]% & inKey\n%
-    !^%COMMA_LOCATION_ARGS) ;\n\n%
+    !^%COMMA_LOCATION_ARGS) ; */\n\n%
   end
 end
 if [ENUMERATION_DESCRIPTOR_LIST length] > 0 then
