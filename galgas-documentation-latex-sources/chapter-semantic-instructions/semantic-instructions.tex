@@ -1556,6 +1556,36 @@ message "un fichier source"
 
 \sectionLabel{L'instruction \texttt{log}}{instructionLog}
 
+L'instruction \galgas{log} permet d'afficher le détail de la valeur d'une variable, d'une constante ou d'une expression :
+\lstset{emph={expression, nom}, emphstyle=\emph}
+\begin{itemize}
+  \item pour une variable ou une constante, \galgas{log nom} ;
+  \item pour une expression, \galgas{log "message" : expression} ;
+\end{itemize}
+
+Par exemple :
+\begin{galgascode}
+let x = 2
+log x # Affiche LOGGING x: <@uint:2>
+log "valeur" : x * 2 # Affiche LOGGING valeur: <@uint:4>
+\end{galgascode}
+
+Plusieurs variables ou constantes peuvent être affichées par une même instruction \galgas{log}, en les séparant par une virgule :
+\begin{galgascode}
+let x = 2
+log x, "valeur" : x * 2
+\end{galgascode}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1641,17 +1671,59 @@ L'exécution de l'instruction \galgas{loop} est illustrée par l'organigramme de
 
 \sectionLabel{L'instruction d'appel de méthode}{methodCallInstruction}
 
+En GALGAS, une \emph{méthode} est un sous-programme qui s'applique à un objet, et qui ne modifie pas cet objet. La syntaxe de l'appel d'une méthode est :
+\lstset{emph={nom_methode, expression, liste_parametres_effectifs}, emphstyle=\emph}
+\begin{galgascode}
+[expression nom_methode liste_parametres_effectifs]
+\end{galgascode}
+
+La valeur d'\galgas{expression} est l'objet sur lequel la méthode est appelée, \galgas{nom\_methode} est le nom de la méthode, et \galgas{liste\_parametres\_effectifs} est la liste des paramètres effectifs, en accord avec l'en-tête de la méthode.
+
+Avec l'option \texttt{-T}, un fichier HTML qui contient les caractéristiques de tous les types d'un projet est engendré dans le répertoire \texttt{build/helpers}. Ainsi, les en-têtes de toutes les méthodes sont listés. Par exemple, pour le type \galgas{@string}, la méthode \galgas{writeToExecutableFileWhenDifferentContents} est présentée comme suit :
+
+\texttt{
+\textbf{method} writeToExecutableFileWhenDifferentContents\\
+\hspace*{2cm}??@string inFilePath\\
+\hspace*{2cm}!@bool outFileModified
+}
+
+Aussi, cette méthode peut être appelée par :
+\begin{galgascode}
+@string contents = ...
+@string filePath = ...
+[contents writeToExecutableFileWhenDifferentContents
+  !filePath
+  ??@bool fileChanged
+]
+\end{galgascode}
 
 
 
-\sectionLabel{L'instruction d'appel de modifier}{modifierCallInstruction}
+
+\sectionLabel{L'instruction d'appel de \emph{setter}}{modifierCallInstruction}
 
 
+En GALGAS, un \emph{setter} est un sous-programme qui s'applique à un objet, et qui peut modifier cet objet. La syntaxe de l'appel d'un  \emph{setter} est :
+\lstset{emph={nom_setter, cible, liste_parametres_effectifs}, emphstyle=\emph}
+\begin{galgascode}
+[!?cible nom_setter liste_parametres_effectifs]
+\end{galgascode}
 
+Le délimiteur \galgas{\!^?} devant \galgas{cible} permet de distinguer syntaxiquement un appel de \emph{setter} d'un appel de méthode. \galgas{cible} désigne l'objet sur lequel le \emph{setter} est appelé, et peut être une variable, ou le champ d'une variable (\galgas{variable.champ}), ou le champ d'un champ d'une variable (\galgas{variable.champ.champ2}), ... \galgas{nom\_setter} est le nom du \emph{setter}, et \galgas{liste\_parametres\_effectifs} est la liste des paramètres effectifs, en accord avec l'en-tête du \emph{setter}.
 
+Avec l'option \texttt{-T}, un fichier HTML qui contient les caractéristiques de tous les types d'un projet est engendré dans le répertoire \texttt{build/helpers}. Ainsi, les en-têtes de toutes les \emph{setters} sont listés. Par exemple, pour le type \galgas{@string}, le \emph{setter} \galgas{setCharacterAtIndex} est présenté comme suit :
 
+\texttt{
+\textbf{setter} setCharacterAtIndex\\
+\hspace*{2cm}??@char inChar\\
+\hspace*{2cm}??@uint inIndex
+}
 
-
+Aussi, ce \emph{setter} peut être appelée par :
+\begin{galgascode}
+@string s = ...
+[!?s setCharacterAtIndex !'a' !4]
+\end{galgascode}
 
 
 
