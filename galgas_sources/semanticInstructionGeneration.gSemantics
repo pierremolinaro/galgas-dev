@@ -1014,6 +1014,8 @@ override method @loopInstructionForGeneration generateInstruction
 end method ;
 
 #---------------------------------------------------------------------------*
+#! with
+#---------------------------------------------------------------------------*
 
 override method @readOnlyWithInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
@@ -1114,6 +1116,8 @@ override method @readWriteWithInstructionForGeneration generateInstruction
   ioGeneratedCode .= "}\n" ;
 end method ;
 
+#---------------------------------------------------------------------------*
+#! foreach
 #---------------------------------------------------------------------------*
 
 override method @foreachInstructionForGeneration generateInstruction
@@ -1282,6 +1286,8 @@ override method @foreachInstructionForGeneration generateInstruction
 end method ;
 
 #---------------------------------------------------------------------------*
+#! Log
+#---------------------------------------------------------------------------*
 
 override method @logInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
@@ -1333,6 +1339,8 @@ override method @switchInstructionForGeneration generateInstruction
   ioGeneratedCode .= "}\n" ;
 end method ;
 
+#---------------------------------------------------------------------------*
+#! Match
 #---------------------------------------------------------------------------*
 
 override method @matchInstructionForGeneration generateInstruction

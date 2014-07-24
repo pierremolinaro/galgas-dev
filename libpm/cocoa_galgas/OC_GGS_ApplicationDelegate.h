@@ -26,6 +26,7 @@
 
 //-----------------------------------------------------------------------------*
 
+#define GGS_prefix_by_tool_utility           @"PMPrefixByTimeUtility"
 #define GGS_selected_tab                     @"GGS_selected_tab"
 #define GGS_enable_completion                @"GGS_enable_completion"
 #define GGS_build_text_font                  @"GGS_build_window_text_font"
@@ -72,6 +73,9 @@ extern OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 //--- Tool popup button
   @private IBOutlet NSPopUpButton * mToolPopUpButton ;
   @private NSMutableArray * mToolNameArray ;
+
+//--- Prefix by time utility
+  @private IBOutlet NSButton * mPrefixByTimeUtilityCheckBox ;
 
 //--- "Show ruler" checkbox
   @private IBOutlet NSButton * mEnableCompletionCheckBox ;
@@ -133,6 +137,10 @@ extern OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 - (NSArray *) toolNameArray ;
 
 - (NSString *) compilerToolPath ;
+
+- (BOOL) prefixByToolUtility ;
+
+- (NSString *) toolUtilityPrefix ;
 @end
 
 //-----------------------------------------------------------------------------*

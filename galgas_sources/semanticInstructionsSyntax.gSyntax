@@ -1538,6 +1538,9 @@ rule <semantic_instruction>
     structAttributeList += !mStructFieldName ;
   end repeat ;
   $identifier$ ?@lstring mSearchMethodName ;
+  if mSearchMethodName->string != "searchKey" then
+    warning mSearchMethodName : "NOT hasKey !" ;
+  end if ;
   $!$ ;
   <expression> ??@semanticExpressionAST mKeyExpression ;
   @lstring withPrefix ;
@@ -1584,8 +1587,11 @@ rule <semantic_instruction>
 :
   $with$ ;
   const instructionLocation := here ;
-  <expression> ?@semanticExpressionAST receiverExpression ;
-  $identifier$ ?@lstring mSearchMethodName ;
+  <expression> ??@semanticExpressionAST receiverExpression ;
+  $identifier$ ??@lstring mSearchMethodName ;
+  if mSearchMethodName->string != "hasKey" then
+    warning mSearchMethodName : "NOT hasKey !" ;
+  end if ;
   $!$ ;
   <expression> ?@semanticExpressionAST mKeyExpression ;
   @lstring withPrefix ;

@@ -61,13 +61,15 @@
       [arguments addObject:@"--cocoa"] ;
    //--- Create task
       mTask = [NSTask new] ;
-//      [mTask setLaunchPath:[commandLineArray objectAtIndex:0]] ;
-//      [mTask setArguments:arguments] ;
-      [mTask setLaunchPath:@"/usr/bin/time"] ;
-      NSArray * allArguments = [NSArray arrayWithObject:[commandLineArray objectAtIndex:0]] ;
-      allArguments = [allArguments arrayByAddingObjectsFromArray:arguments] ;
-      [mTask setArguments:allArguments] ;
-      // NSLog (@"'%@' %@", [mTask launchPath], arguments) ;
+      if ([gCocoaApplicationDelegate prefixByToolUtility]) {
+        [mTask setLaunchPath:[gCocoaApplicationDelegate toolUtilityPrefix]] ;
+        NSArray * allArguments = [NSArray arrayWithObject:[commandLineArray objectAtIndex:0]] ;
+        allArguments = [allArguments arrayByAddingObjectsFromArray:arguments] ;
+        [mTask setArguments:allArguments] ;
+      }else{
+        [mTask setLaunchPath:[commandLineArray objectAtIndex:0]] ;
+        [mTask setArguments:arguments] ;
+      }
     //--- Set standard output notification
       mPipe = [NSPipe pipe] ;
       [mTask setStandardOutput:mPipe] ;

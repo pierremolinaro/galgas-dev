@@ -1026,7 +1026,7 @@ class @readWriteAccessWithInstructionAST extends @semanticInstructionAST {
   @lstring mPrefix ;
   @lstring mReceiverName ;
   @lstringlist mFieldList ;
-  @lstring mAccessName ;
+  @lstring mSearchMethodName ;
   @semanticExpressionAST mKeyExpression ;
   @semanticInstructionListAST m_do_Instructions ;
   @location mEndOf_do_instructions ;
