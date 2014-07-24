@@ -144,11 +144,11 @@ map @classMethodMap {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @withAccessorMap {
-  @unifiedTypeMapProxy mArgumentType ;
-  insert insertKey error message "the '%K' 'with' accessor is already declared" ;
-  search searchKey error message "the '%K' 'with' accessor is not declared" ;
-}
+#map @withAccessorMap {
+#  @unifiedTypeMapProxy mArgumentType ;
+#  insert insertKey error message "the '%K' 'with' accessor is already declared" ;
+#  search searchKey error message "the '%K' 'with' accessor is not declared" ;
+#}
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -319,8 +319,6 @@ uniquemap @unifiedTypeMap {
   @lstringlist mEnumConstantList ;
   @mapSearchMethodListAST mMapSearchMethodList ; # For a map, the list of search methods
   @mapSearchMethodListAST mMapProxySearchConstructorList ; # For a map proxy, the list of search methods of the associated map
-  @unifiedTypeMapProxyAndParameterList mWithAccessorParameterList ; # Empty list if 'with' operator is not supported, otherwise lkey is the first element
-  @withAccessorMap mWithAccessorMap ; # Method for with accessor
   @bool mGenerateHeaderInSeparateFile ; # Significant only for classes
   @unifiedTypeMapProxy mTypeForEnumeratedElement ;
   @string mDefaultConstructorName ; # Used in [@xxx default] (empty string if no default constructor)

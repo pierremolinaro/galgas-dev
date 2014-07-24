@@ -1527,23 +1527,15 @@ rule <semantic_instruction>
 :
   $with$ ;
   const instructionLocation := here ;
-  $!?$ ;
-  $identifier$ ?@lstring mTargetObjectName ;
-  @lstringlist structAttributeList [emptyList] ;
-  repeat
-  while
-    $->$ :> ?@string sep ?* ;
-    send sep . "." ;
-    $identifier$ ?@lstring mStructFieldName ;
-    structAttributeList += !mStructFieldName ;
-  end repeat ;
+  <expression> ??@semanticExpressionAST receiverExpression :>??@string receiverExpressionString ;
   const endOfReceiverExpression := here ;
-  $identifier$ ?* ; # @lstring mSearchMethodName ;
-#  if mSearchMethodName->string != "searchKey" then
-#    warning mSearchMethodName : "NOT hasKey !" ;
-#  end if ;
-  $!$ ;
-  <expression> ??@semanticExpressionAST mKeyExpression ;
+  $identifier$ ?@lstring searchMethodNameForErrorSignaling :> ?* ?* ;
+  if searchMethodNameForErrorSignaling->string == "hasKey" then
+    searchMethodNameForErrorSignaling->string := "" ;
+  end if ;
+  $!$ :> ?* ?* ;
+  send " " ;
+  <expression> ?@semanticExpressionAST mKeyExpression ;
   const endOfKeyExpression := here ;
   @lstring withPrefix ;
   select
@@ -1552,29 +1544,33 @@ rule <semantic_instruction>
     $:$ ;
     $identifier$ ? withPrefix ;
   end select ;
+  send " in " . receiverExpressionString . " " ;
+  send if searchMethodNameForErrorSignaling->string != "" then "error message " . searchMethodNameForErrorSignaling . " " else "" end ;
   $do$ ;
   <semantic_instruction_list> ??@semanticInstructionListAST mDoBranchInstructions ;
-  const endOf_do_instructions := here ;
+  const endOfDoInstructions := here ;
   @semanticInstructionListAST mElseBranchInstructions ;
   select
     mElseBranchInstructions := [@semanticInstructionListAST emptyList] ;
   or
     $else$ ;
+    if searchMethodNameForErrorSignaling->string != "" then
+      error searchMethodNameForErrorSignaling : "GALGAS 3 compatibility: no 'else' branch if method different than 'hasKey'" ;
+    end if ;
     <semantic_instruction_list> ? mElseBranchInstructions ;
   end select ;
-  const endOf_else_instructions := here ;
-  outInstruction := [@readWriteAccessWithInstructionAST new
+  outInstruction := [@readAccessWithInstructionAST new
     !instructionLocation
     !withPrefix
-    !mTargetObjectName
-    !structAttributeList
+    !receiverExpression
     !endOfReceiverExpression
     !mKeyExpression
     !endOfKeyExpression
+    !searchMethodNameForErrorSignaling
     !mDoBranchInstructions
-    !endOf_do_instructions
+    !endOfDoInstructions
     !mElseBranchInstructions
-    !endOf_else_instructions
+    !here
   ] ;
   $end$ ;
   $with$ :> ?* ?* ;
@@ -1590,12 +1586,22 @@ rule <semantic_instruction>
 :
   $with$ ;
   const instructionLocation := here ;
-  <expression> ??@semanticExpressionAST receiverExpression :>??@string receiverExpressionString ;
+  $!?$ ;
+  $identifier$ ?@lstring mTargetObjectName :> ?* ?* ;
+  @lstringlist structAttributeList [emptyList] ;
+  repeat
+  while
+    $->$ :> ?* ?* ;
+    $identifier$ ?@lstring mStructFieldName :> ?* ?* ;
+    structAttributeList += !mStructFieldName ;
+  end repeat ;
   const endOfReceiverExpression := here ;
-  $identifier$ ?* :> ?* ?* ; # ?@lstring mSearchMethodName ;
+  $identifier$ ?@lstring searchMethodNameForErrorSignaling :> ?* ?* ;
+  if searchMethodNameForErrorSignaling->string == "hasKey" then
+    searchMethodNameForErrorSignaling->string := "" ;
+  end if ;
   $!$ :> ?* ?* ;
-  send " " ;
-  <expression> ?@semanticExpressionAST mKeyExpression ;
+  <expression> ??@semanticExpressionAST mKeyExpression ;
   const endOfKeyExpression := here ;
   @lstring withPrefix ;
   select
@@ -1604,28 +1610,40 @@ rule <semantic_instruction>
     $:$ ;
     $identifier$ ? withPrefix ;
   end select ;
-  send " in " . receiverExpressionString . " " ;
+  @string s := "" ;
+  for () in structAttributeList do
+    s += "." . mValue ;
+  end for ;
+  send " in " . mTargetObjectName . s
+    . if searchMethodNameForErrorSignaling->string != "" then " error message " . searchMethodNameForErrorSignaling else "" end
+    . " " ;
   $do$ ;
   <semantic_instruction_list> ??@semanticInstructionListAST mDoBranchInstructions ;
-  const endOfDoInstructions := here ;
+  const endOf_do_instructions := here ;
   @semanticInstructionListAST mElseBranchInstructions ;
   select
     mElseBranchInstructions := [@semanticInstructionListAST emptyList] ;
   or
     $else$ ;
+    if searchMethodNameForErrorSignaling->string != "" then
+      error searchMethodNameForErrorSignaling : "GALGAS 3 compatibility: no 'else' branch if method different than 'hasKey'" ;
+    end if ;
     <semantic_instruction_list> ? mElseBranchInstructions ;
   end select ;
-  outInstruction := [@readAccessWithInstructionAST new
+  const endOf_else_instructions := here ;
+  outInstruction := [@readWriteAccessWithInstructionAST new
     !instructionLocation
     !withPrefix
-    !receiverExpression
+    !mTargetObjectName
+    !structAttributeList
     !endOfReceiverExpression
     !mKeyExpression
     !endOfKeyExpression
+    !searchMethodNameForErrorSignaling
     !mDoBranchInstructions
-    !endOfDoInstructions
+    !endOf_do_instructions
     !mElseBranchInstructions
-    !here
+    !endOf_else_instructions
   ] ;
   $end$ ;
   $with$ :> ?* ?* ;

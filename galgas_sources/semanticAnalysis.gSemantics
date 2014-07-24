@@ -409,7 +409,7 @@ override method @listmapDeclarationAST semanticAnalysis
     ??@typeKindEnum typeKindEnum
     ?*
     ??@typedAttributeList listTypeAttributeList
-    ?22*
+    ?20*
   ] ;
 #---
   if typeKindEnum != [@typeKindEnum listType] then
@@ -497,7 +497,7 @@ end once ;
 
 override method @mapDeclarationAST semanticAnalysis
   ??@semanticContext inSemanticContext
-  ??@predefinedTypes inPredefinedTypes
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
 #------ Enter attributes
@@ -554,14 +554,14 @@ override method @mapDeclarationAST semanticAnalysis
     error insertOrReplaceDeclarationLocation : "the insertOrReplace' modifier cannot be declared : an insert modifier or a remove modifier has been declared with this name" ;
   end if ;
 #--- Enter 'with' accessors
-  @withAccessorMap withAccessorMap [emptyMap] ;
-  [!?withAccessorMap insertKey ![@lstring new !"hasKey" !here] !inPredefinedTypes->mStringType] ;
-  foreach mSearchMethodList do
-    [!?withAccessorMap insertKey
-      !mSearchMethodName
-      !inPredefinedTypes->mLStringType
-    ] ;
-  end foreach ;
+#  @withAccessorMap withAccessorMap [emptyMap] ;
+#  [!?withAccessorMap insertKey ![@lstring new !"hasKey" !here] !inPredefinedTypes->mStringType] ;
+#  foreach mSearchMethodList do
+#    [!?withAccessorMap insertKey
+#      !mSearchMethodName
+#      !inPredefinedTypes->mLStringType
+#    ] ;
+#  end foreach ;
 #--- Enter map declaration
   ioSemanticDeclarationListForGeneration +=
     !"map " . mMapTypeName
@@ -574,7 +574,7 @@ override method @mapDeclarationAST semanticAnalysis
       !mSearchMethodList
       !mRemoveMethodList
       !hasInsertOrReplaceModifier
-      !withAccessorMap
+#      !withAccessorMap
     ]
     !""
   ;
@@ -584,7 +584,7 @@ end method ;
 
 override method @uniqueMapDeclarationAST semanticAnalysis
   ??@semanticContext inSemanticContext
-  ??@predefinedTypes inPredefinedTypes
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
 #--- Compute initial state set
@@ -908,14 +908,14 @@ override method @uniqueMapDeclarationAST semanticAnalysis
     end foreach ;
   end foreach ;
 #--- Enter 'with' accessors
-  @withAccessorMap withAccessorMap [emptyMap] ;
-  [!?withAccessorMap insertKey ![@lstring new !"hasKey" !here] !inPredefinedTypes->mStringType] ;
-  foreach mSearchMethodList do
-    [!?withAccessorMap insertKey
-      !mSearchMethodName
-      !inPredefinedTypes->mLStringType
-    ] ;
-  end foreach ;
+#  @withAccessorMap withAccessorMap [emptyMap] ;
+#  [!?withAccessorMap insertKey ![@lstring new !"hasKey" !here] !inPredefinedTypes->mStringType] ;
+#  foreach mSearchMethodList do
+#    [!?withAccessorMap insertKey
+#      !mSearchMethodName
+#      !inPredefinedTypes->mLStringType
+#    ] ;
+#  end foreach ;
 #--- Enter map declaration
   ioSemanticDeclarationListForGeneration +=
     !"unique map " . mMapTypeName
@@ -925,7 +925,7 @@ override method @uniqueMapDeclarationAST semanticAnalysis
       !typedAttributeList
       !mInsertMethodList
       !mSearchMethodList
-      !withAccessorMap
+#      !withAccessorMap
       !mapAutomatonStateMap
       !mapAutomatonActionMap
       !mapStateSortedList
@@ -949,7 +949,7 @@ override method @mapProxyDeclarationAST semanticAnalysis
     ??@typedAttributeList listTypeAttributeList
     ?11*
     ??@mapSearchMethodListAST searchMethodList
-    ?8*
+    ?6*
   ] ;
 #---
   ioSemanticDeclarationListForGeneration +=
