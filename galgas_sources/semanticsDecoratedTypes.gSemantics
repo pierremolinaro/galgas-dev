@@ -1007,6 +1007,7 @@ class @readWriteWithInstructionForGeneration extends @semanticInstructionForGene
   @lstringlist mStructAttributeList ;
   @string mObjectArrayCppName ;
   @semanticExpressionForGeneration mKeyExpression ;
+  @string mSearchMethodNameForErrorSignaling ;
   @semanticInstructionListForGeneration mDoBranchInstructions ;
   @semanticInstructionListForGeneration mElseBranchInstructions ;
 }
@@ -1022,6 +1023,7 @@ class @readOnlyWithInstructionForGeneration extends @semanticInstructionForGener
   @semanticExpressionForGeneration mReceiverExpression ;
   @string mObjectArrayCppName ;
   @semanticExpressionForGeneration mKeyExpression ;
+  @string mSearchMethodNameForErrorSignaling ;
   @semanticInstructionListForGeneration mDoBranchInstructions ;
   @semanticInstructionListForGeneration mElseBranchInstructions ;
 }
@@ -1233,7 +1235,7 @@ class @mapTypeForGeneration extends @semanticTypeForGeneration {
   @mapSearchMethodListAST mSearchMethodList ;
   @mapRemoveMethodListAST mRemoveMethodList ;
   @bool mHasInsertOrReplaceModifier ;
-  @withAccessorMap mWithAccessorMap ; # Method for with accessor
+#  @withAccessorMap mWithAccessorMap ; # Method for with accessor
 }
 
 #---------------------------------------------------------------------------*
@@ -1243,7 +1245,7 @@ class @uniqueMapTypeForGeneration extends @semanticTypeForGeneration {
   @typedAttributeList mTypedAttributeList ;
   @insertMethodListAST mInsertMethodList ;
   @mapSearchMethodListAST mSearchMethodList ;
-  @withAccessorMap mWithAccessorMap ; # Method for with accessor
+#  @withAccessorMap mWithAccessorMap ; # Method for with accessor
   @mapAutomatonStateMap mMapAutomatonStateMap ;
   @mapAutomatonActionMap mMapAutomatonActionMap ;
   @mapStateSortedList mMapStateSortedList ;

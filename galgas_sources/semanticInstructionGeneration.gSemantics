@@ -1032,9 +1032,17 @@ override method @readOnlyWithInstructionForGeneration generateInstruction
 #---
   ioGeneratedCode .= "const cMapElement_" . [receiverType identifierRepresentation]
                   . " * " . mObjectArrayCppName . " = (const cMapElement_" . [receiverType identifierRepresentation]
-                  . " *) " . receiverVarCppName . "."
-                  . "readAccessForWithInstruction (" . keyVarCppName . ") ;\n"
-                  .  "if (NULL != " . mObjectArrayCppName . ") {\n"
+                  . " *) " . receiverVarCppName . "." ;
+  if mSearchMethodNameForErrorSignaling == "" then
+    ioGeneratedCode .= "readAccessForWithInstruction (" . keyVarCppName . ") ;\n" ;
+  else
+    ioGeneratedCode .= "performSearch (" . keyVarCppName
+                    . ", " . compilerCppName []
+                    . ", kSearchErrorMessage_" . [receiverType identifierRepresentation] . "_" . mSearchMethodNameForErrorSignaling
+                    . " " . [mInstructionLocation commaSourceFile] . ") ;\n" ;
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+  end if ;
+  ioGeneratedCode .=  "if (NULL != " . mObjectArrayCppName . ") {\n"
                   .  "    macroValidSharedObject (" . mObjectArrayCppName . ", cMapElement_" . [receiverType identifierRepresentation] . ") ;\n" ;
   generateInstructionList
     !?ioInclusionSet
@@ -1074,15 +1082,18 @@ override method @readWriteWithInstructionForGeneration generateInstruction
 #--- key expression
   [mKeyExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ??@string keyVarCppName] ;
 #---
-#  foreach [mReceiverType mCurrentTypedAttributeList] index IDX do
-#    ioGeneratedCode .= "// index " . [IDX+1 string] . ": attribute '" . mAttributeName . "', type @" . [mAttributeTypeProxy key] . "\n" ;
-#  end foreach ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
   [!?ioUnusedVariableCppNameSet removeKey !mReceiverVariableCppName] ;
   ioGeneratedCode .= "cMapElement_" . [mReceiverType identifierRepresentation]
                   . " * " . mObjectArrayCppName . " = (cMapElement_" . [mReceiverType identifierRepresentation]
-                  . " *) " . receiverCppName . ".readWriteAccessForWithInstruction (" . compilerCppName []
-                  .  ", " . keyVarCppName . " " . [mInstructionLocation commaSourceFile] . ") ;\n"
+                  . " *) " . receiverCppName . "." ;
+  if mSearchMethodNameForErrorSignaling == "" then
+    ioGeneratedCode .= "readWriteAccessForWithInstruction (" . compilerCppName [] .  ", " . keyVarCppName ;
+  else
+    ioGeneratedCode .= "readWriteAccessForWithInstructionWithErrorMessage (" . compilerCppName [] .  ", " . keyVarCppName ;
+    ioGeneratedCode .= ", kSearchErrorMessage_" . [mReceiverType identifierRepresentation] . "_" . mSearchMethodNameForErrorSignaling ;
+  end if ;
+  ioGeneratedCode .=  " " . [mInstructionLocation commaSourceFile] . ") ;\n"
                   .  "if (NULL != " . mObjectArrayCppName . ") {\n"
                   .  "    macroValidSharedObject (" . mObjectArrayCppName . ", cMapElement_" . [mReceiverType identifierRepresentation] . ") ;\n" ;
   generateInstructionList

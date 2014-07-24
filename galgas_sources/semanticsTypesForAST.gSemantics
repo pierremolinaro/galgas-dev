@@ -1011,6 +1011,7 @@ class @readAccessWithInstructionAST extends @semanticInstructionAST {
   @location mEndOfReceiverExpression ;
   @semanticExpressionAST mKeyExpression ;
   @location mEndOfKeyExpression ;
+  @lstring mSearchMethodNameForErrorSignaling ;
   @semanticInstructionListAST mDoBranchInstructions ;
   @location mEndOf_do_instructions ;
   @semanticInstructionListAST mElseBranchInstructions ;
@@ -1030,6 +1031,7 @@ class @readWriteAccessWithInstructionAST extends @semanticInstructionAST {
   @location mEndOfReceiverExpression ;
   @semanticExpressionAST mKeyExpression ;
   @location mEndOfKeyExpression ;
+  @lstring mSearchMethodNameForErrorSignaling ;
   @semanticInstructionListAST m_do_Instructions ;
   @location mEndOf_do_instructions ;
   @semanticInstructionListAST m_else_Instructions ;

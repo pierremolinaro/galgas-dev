@@ -1031,6 +1031,14 @@ rule <semantic_instruction>
   $in$ ;
   <expression> ??@semanticExpressionAST receiverExpression ;
   const endOfReceiverExpression := here ;
+  @lstring searchMethodNameForErrorSignaling ;
+  select
+    searchMethodNameForErrorSignaling := ["" nowhere] ;
+  or
+    $error$ ;
+    $message$ ;
+    $identifier$ ?searchMethodNameForErrorSignaling ;
+  end select ;
   $do$ ;
   <semantic_instruction_list> ??@semanticInstructionListAST mDoBranchInstructions ;
   const endOfDoInstructions := here ;
@@ -1039,6 +1047,9 @@ rule <semantic_instruction>
     mElseBranchInstructions := {} ;
   or
     $else$ ;
+    if searchMethodNameForErrorSignaling->string != "" then
+      error searchMethodNameForErrorSignaling : "no 'else' branch if error on search is enabled" ;
+    end if ;
     <semantic_instruction_list> ?mElseBranchInstructions ;
   end select ;
   outInstruction := [@readAccessWithInstructionAST new
@@ -1048,6 +1059,7 @@ rule <semantic_instruction>
     !endOfReceiverExpression
     !mKeyExpression
     !endOfKeyExpression
+    !searchMethodNameForErrorSignaling
     !mDoBranchInstructions
     !endOfDoInstructions
     !mElseBranchInstructions
@@ -1070,8 +1082,18 @@ rule <semantic_instruction>
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $with$ ;
-  const instructionLocation := here ;
   $!?$ ;
+  const instructionLocation := here ;
+  <expression> ??@semanticExpressionAST keyExpression ;
+  const endOfKeyExpression := here ;
+  @lstring withPrefix ;
+  select
+    withPrefix := [@lstring new !"" !here] ;
+  or
+    $:$ ;
+    $identifier$ ? withPrefix ;
+  end select ;
+  $in$ ;
   $identifier$ ?@lstring mTargetObjectName ;
   @lstringlist structAttributeList [emptyList] ;
   repeat
@@ -1081,16 +1103,13 @@ rule <semantic_instruction>
     structAttributeList += !mStructFieldName ;
   end repeat ;
   const endOfReceiverExpression := here ;
-  $identifier$ ?@lstring mSearchMethodName ;
-  $!$ ;
-  <expression> ??@semanticExpressionAST mKeyExpression ;
-  const endOfKeyExpression := here ;
-  @lstring withPrefix ;
+  @lstring searchMethodNameForErrorSignaling ;
   select
-    withPrefix := [@lstring new !"" !here] ;
+    searchMethodNameForErrorSignaling := ["" nowhere] ;
   or
-    $:$ ;
-    $identifier$ ? withPrefix ;
+    $error$ ;
+    $message$ ;
+    $identifier$ ?searchMethodNameForErrorSignaling ;
   end select ;
   $do$ ;
   <semantic_instruction_list> ??@semanticInstructionListAST mDoBranchInstructions ;
@@ -1100,6 +1119,9 @@ rule <semantic_instruction>
     mElseBranchInstructions := [@semanticInstructionListAST emptyList] ;
   or
     $else$ ;
+    if searchMethodNameForErrorSignaling->string != "" then
+      error searchMethodNameForErrorSignaling : "no 'else' branch if error on search is enabled" ;
+    end if ;
     <semantic_instruction_list> ? mElseBranchInstructions ;
   end select ;
   const endOf_else_instructions := here ;
@@ -1109,8 +1131,9 @@ rule <semantic_instruction>
     !mTargetObjectName
     !structAttributeList
     !endOfReceiverExpression
-    !mKeyExpression
+    !keyExpression
     !endOfKeyExpression
+    !searchMethodNameForErrorSignaling
     !mDoBranchInstructions
     !endOf_do_instructions
     !mElseBranchInstructions

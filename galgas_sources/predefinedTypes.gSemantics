@@ -321,7 +321,7 @@ override reader @primitiveTypeForGeneration appendPrimitiveTypeDeclaration -> @s
     ![mTypeProxy mEnumerationDescriptor]
     ![mTypeProxy mHandledOperatorFlags]
     ![mTypeProxy mAddAssignOperatorArguments]
-    ![mTypeProxy mWithAccessorMap]
+#    ![mTypeProxy mWithAccessorMap]
     ![mTypeProxy mTypeForEnumeratedElement]
   ] ;
 end reader ;
@@ -417,7 +417,7 @@ routine printFeaturesOfType
   ??@classMethodMap inClassMethodMap
   ??@uint inHandledOperatorFlags
   ??@unifiedTypeMapProxyAndParameterList inAddAssignOperatorArguments
-  ??@withAccessorMap inWithAccessorMap
+#  ??@withAccessorMap inWithAccessorMap
 :
   @string s := "Features of @" . inTypeName . " type:\n" ;
   s .= " - kind: " . [inTypeKindEnum kind] .";\n" ;
@@ -552,12 +552,15 @@ routine printFeaturesOfType
   s .= "    @" . inTypeName . " =  @" . inTypeName . " -> @bool\n" ;
   s .= "    @" . inTypeName . " != @" . inTypeName . " -> @bool\n" ;
 #---
-  foreach inWithAccessorMap
-  before
-    s .= " - 'with' accessor method(s):\n" ;
-  do
-    s .= "    " . lkey . "?@" . [mArgumentType key] . "\n" ;
-  end foreach ;
+  if (inHandledOperatorFlags & supportWithAccessor []) != 0 then
+    s .= " - 'with' accessor\n" ;
+  end if ;
+#  foreach inWithAccessorMap
+#  before
+#    s .= " - 'with' accessor method(s):\n" ;
+#  do
+#    s .= "    " . lkey . "?@" . [mArgumentType key] . "\n" ;
+#  end foreach ;
 #---
   message s ;
 end routine ;

@@ -4,7 +4,7 @@
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
-//  Copyright (C) 2008, ..., 2011 Pierre Molinaro.                             *
+//  Copyright (C) 2008, ..., 2014 Pierre Molinaro.                             *
 //                                                                             *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                               *
 //                                                                             *
@@ -455,7 +455,7 @@ cMapNode * AC_GALGAS_map::searchEntryInMap (const C_String & inKey) const {
 //-----------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Search for "with" read only access
+  #pragma mark Search for "with instruction" read only access
 #endif
 
 //-----------------------------------------------------------------------------*
@@ -465,6 +465,28 @@ const cCollectionElement * AC_GALGAS_map::readAccessForWithInstruction (const GA
   if (isValid () && inKey.isValid ()) {
     cMapNode * node = mSharedMap->findEntryInMap (inKey.stringValue (), mSharedMap) ;
     if (NULL != node) {
+      result = node->mAttributes.ptr () ;
+    }
+  }
+  return result ;
+}
+
+//-----------------------------------------------------------------------------*
+
+cCollectionElement * AC_GALGAS_map::readWriteAccessForWithInstructionWithErrorMessage (C_Compiler * inCompiler,
+                                                                                       const GALGAS_lstring & inKey,
+                                                                                       const char * inSearchErrorMessage
+                                                                                       COMMA_LOCATION_ARGS) {
+  cCollectionElement * result = NULL ;
+  if (isValid () && inKey.isValid ()) {
+    insulate (HERE) ;
+    const C_String key = inKey.mAttribute_string.stringValue () ;
+    cMapNode * node = mSharedMap->findEntryInMap (key, mSharedMap) ;
+    if (NULL == node) {
+      TC_UniqueArray <C_String> nearestKeyArray ;
+      mSharedMap->findNearestKey (key, nearestKeyArray) ;
+      inCompiler->semanticErrorWith_K_message (inKey, nearestKeyArray, inSearchErrorMessage COMMA_THERE) ;
+    }else{
       result = node->mAttributes.ptr () ;
     }
   }
@@ -776,7 +798,6 @@ void AC_GALGAS_map::performInsert (const capCollectionElement & inAttributes,
 //--- If all attributes are built, perform insertion
   if (isValid ()) {
     insulate (HERE) ;
-    /* cMapNode * node = (NULL == mSharedMap) ? NULL : */
     if (NULL != mSharedMap) {
       mSharedMap->performInsert (inAttributes, inCompiler, inInsertErrorMessage, inShadowErrorMessage COMMA_THERE) ;
     }

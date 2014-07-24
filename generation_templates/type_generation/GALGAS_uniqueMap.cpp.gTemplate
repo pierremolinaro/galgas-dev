@@ -422,24 +422,7 @@ cMapElement_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::readWriteAccessForWi
   return result ;
 }
 
-%
-
-foreach WITH_ACCESSOR_MAP do
-  %//-----------------------------------------------------------------------------*\n\n%
-  %/* cMapElement_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::readWriteAccessForWithInstruction_%![lkey identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
-  !^%const GALGAS_%![mArgumentType identifierRepresentation]% & inKey\n%
-  !^%COMMA_LOCATION_ARGS) {\n%
-  if [lkey string] == "hasKey" then
-  %  cMapElement * p = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;\n%
-  else
-  %  cMapElement * p = searchForReadWriteAttribute (inKey, inCompiler, kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![lkey identifierRepresentation]% COMMA_THERE) ;\n%
-  end
-  %  cMapElement_%!TYPE_IDENTIFIER% * result = (cMapElement_%!TYPE_IDENTIFIER% *) p ;\n%
-  %  macroNullOrValidSharedObject (result, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
-  %  return result ;\n%
-  %} */\n\n%
-end
-%//-----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 cEnumerator_%!TYPE_IDENTIFIER%::cEnumerator_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inEnumeratedObject,
                        %!^%const typeEnumerationOrder inOrder) :

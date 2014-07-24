@@ -314,14 +314,6 @@ if ((SUPPORTED_OPERATORS & supportWithAccessor []) != 0) then
   !^%COMMA_LOCATION_ARGS) ;\n\n%
 end
 
-if [WITH_ACCESSOR_MAP count] > 0 then
-  %//--------------------------------- 'with' accessors\n%
-  foreach WITH_ACCESSOR_MAP do
-    %/*  public : VIRTUAL_IN_DEBUG cMapElement_%!TYPE_IDENTIFIER% * readWriteAccessForWithInstruction_%![[lkey string] identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
-    !^%const GALGAS_%![mArgumentType identifierRepresentation]% & inKey\n%
-    !^%COMMA_LOCATION_ARGS) ; */\n\n%
-  end
-end
 if [ENUMERATION_DESCRIPTOR_LIST length] > 0 then
 %//--------------------------------- Friend\n
   friend class cEnumerator_%!TYPE_IDENTIFIER% ;
@@ -354,12 +346,3 @@ end
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_%!TYPE_IDENTIFIER% ;
 
 %
-if [WITH_ACCESSOR_MAP count] > 0 then
-  %//--------------------------------- 'with' accessors\n%
-  foreach WITH_ACCESSOR_MAP do
-    %cCollectionElement * readWriteAccessForWithInstruction_%![[lkey string] identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
-    !^%GALGAS_%!TYPE_IDENTIFIER% & ioMap,\n%
-    !^%GALGAS_%![mArgumentType identifierRepresentation]% & inKey\n%
-    !^%COMMA_LOCATION_ARGS) ;\n\n%
-  end
-end
