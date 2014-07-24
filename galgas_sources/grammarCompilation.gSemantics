@@ -105,7 +105,7 @@ routine handleNonTerminalDeclarations
   ??@nonterminalDeclarationListAST inNonterminalDeclarationList
 :
   foreach inNonterminalDeclarationList do
-    with !?ioNonTerminalMapForGrammarAnalysis hasKey ![mNonterminalName string] do
+    with ioNonTerminalMapForGrammarAnalysis hasKey ![mNonterminalName string] do
       checkLabelMap
         ![mNonterminalName location]
         !mLabels
@@ -137,7 +137,7 @@ routine handleNonTerminalDeclarationsFromRuleList
         !mEndOfArgumentLocation
       ;
     end foreach ;
-    with !?ioNonTerminalMapForGrammarAnalysis hasKey ![mNonterminalName string] do
+    with ioNonTerminalMapForGrammarAnalysis hasKey ![mNonterminalName string] do
       checkLabelMap
         ![mNonterminalName location]
         !nonTerminalLabelListAST
@@ -213,7 +213,7 @@ override method @terminalCheckInstruction transformInstruction
   ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList
 :
   @uint terminalSymbolIndex ;
-  with !?ioActuallyUsedTerminalSymbolMap hasKey ![mTerminalName string] do
+  with ioActuallyUsedTerminalSymbolMap hasKey ![mTerminalName string] do
     terminalSymbolIndex := mTerminalIndex ;
   else
     terminalSymbolIndex := [ioActuallyUsedTerminalSymbolMap count] ;

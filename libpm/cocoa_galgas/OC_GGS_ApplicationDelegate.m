@@ -122,6 +122,18 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 
 //-----------------------------------------------------------------------------*
 
+- (BOOL) prefixByToolUtility {
+  return [[NSUserDefaults standardUserDefaults] boolForKey:GGS_prefix_by_tool_utility] ;
+}
+
+//-----------------------------------------------------------------------------*
+
+- (NSString *) toolUtilityPrefix {
+  return @"/usr/bin/time" ;
+}
+
+//-----------------------------------------------------------------------------*
+
 - (NSString *) commandLineString {
   NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults] ;
   NSMutableArray * arguments = [NSMutableArray new] ;
@@ -179,6 +191,10 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   mCommandLineItemArray = arguments ;
 //---- Build string for displaying
   NSMutableString * s = [NSMutableString new] ;
+  if ([self prefixByToolUtility]) {
+    [s appendString:[self toolUtilityPrefix]] ;
+    [s appendString:@" "] ;
+  }
   for (NSUInteger i=0 ; i<[arguments count] ; i++) {
     [s appendString:[arguments objectAtIndex:i]] ;
     [s appendString:@" "] ;  
@@ -795,9 +811,17 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 
 - (void) awakeFromNib {
   // NSLog (@"%s", __PRETTY_FUNCTION__) ;
-//--- Add observer to user defaults changes
+  NSUserDefaultsController * udc = [NSUserDefaultsController sharedUserDefaultsController] ;
   NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
   NSNotificationCenter  * nc = [NSNotificationCenter defaultCenter] ;
+//--- Bind « Prefix by time Utility » checkbox
+  [mPrefixByTimeUtilityCheckBox
+    bind:@"value"
+    toObject:udc
+    withKeyPath:@"values." GGS_prefix_by_tool_utility
+    options:nil
+  ] ;
+//--- Add observer to user defaults changes
   [nc addObserver:self selector:@selector(preferencesDidChange:) name:NSUserDefaultsDidChangeNotification object:ud] ;
 //--- Load tool nibs ?
   NSArray * nibArray = nibsAndClasses () ;
@@ -822,7 +846,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 //--- Bind "Shift Left Inserted space count" Textfield
   [mShiftLeftInsertedSpaceTextField
     bind:@"value"
-    toObject:[NSUserDefaultsController sharedUserDefaultsController]
+    toObject:udc
     withKeyPath:@"values.PMShiftLeftInsertedSpaceCount"
     options:[NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:NSContinuouslyUpdatesValueBindingOption]
   ] ;
@@ -843,7 +867,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 //--- Get default font, used when there is no preference setting
   [mCurrentBuildWindowFontAndSizeSettingsButton
     bind:@"fontValue"
-    toObject:[NSUserDefaultsController sharedUserDefaultsController]
+    toObject:udc
     withKeyPath:[NSString stringWithFormat:@"values.%@", GGS_build_text_font]
     options:NULL
   ] ;
@@ -857,7 +881,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   }
   [mEnableCompletionCheckBox
     bind:@"value"
-    toObject:[NSUserDefaultsController sharedUserDefaultsController]
+    toObject:udc
     withKeyPath:@"values." GGS_enable_completion
     options:nil
   ] ;
@@ -888,7 +912,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 //---
   [mPreferencesTabView
     bind:@"selectedIndex"
-    toObject:[NSUserDefaultsController sharedUserDefaultsController]
+    toObject:udc
     withKeyPath:@"values.GGS_selected_tab"
     options:nil
   ] ;
@@ -904,7 +928,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   }
   [mConvert_CRLF_And_CR_To_LF_AtStartUpButton
     bind:@"value"
-    toObject:[NSUserDefaultsController sharedUserDefaultsController]
+    toObject:udc
     withKeyPath:@"values.PMConvert_CRLF_And_CR_To_LF_AtStartUp"
     options:NULL
   ] ;
@@ -914,14 +938,14 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   }
   [mConvert_HTAB_To_SPACE_AtStartUpButton
     bind:@"value"
-    toObject:[NSUserDefaultsController sharedUserDefaultsController]
+    toObject:udc
     withKeyPath:@"values.PMConvert_HTAB_To_SPACE_AtStartUp"
     options:NULL
   ] ;
 //--- Show Invisible Characters Checkbox
  [mShowInvisibleCharactersCheckBox
     bind:@"value"
-    toObject:[NSUserDefaultsController sharedUserDefaultsController]
+    toObject:udc
     withKeyPath:@"values.PMShowInvisibleCharacters"
     options:NULL
   ] ;

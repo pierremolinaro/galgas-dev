@@ -20,7 +20,7 @@
   comment=[l]\#,
   string=[b]", string=[d]",
   style=galgas,
-  showstringspaces=false  % underline spaces within strings only
+  showstringspaces=false  % do not underline spaces within strings
 }
 
 \newcommand\couleurCodeGALGAS{green!25}
@@ -50,6 +50,7 @@
 %-----------------------------------------------------------------------------------------------------------------------*
 
 \newcommand\galgas[1]{\colorbox{\couleurCodeGALGAS}{\lstinline[language=galgas]\%#1\%}}
+\newcommand\galgast[1]{\colorbox{\couleurCodeGALGAS}{\ttfamily\smaller{#1}}}
 
 \lstnewenvironment{galgascode}{\lstset{language=galgas}}{}
 

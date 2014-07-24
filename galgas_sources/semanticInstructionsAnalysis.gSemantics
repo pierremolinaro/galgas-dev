@@ -2408,9 +2408,12 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
 #--- Object Array cpp name
   const objectArrayCppName := "objectArray_" . [[mInstructionLocation locationIndex] string] ;
 #--- Read/write access to receiver variable
-  @unifiedTypeMapProxy targetType ;
-  @string receiverVariableCppName ;
-  [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?receiverVariableCppName ?*] ;
+  [!?ioVariableMap searchForReadWriteAccess
+    !mReceiverName
+    ?@unifiedTypeMapProxy targetType
+    ??@string receiverVariableCppName
+    ?*
+  ] ;
   foreach mFieldList do
     const attributeMap := [targetType mAttributeMap] ;
     [attributeMap searchKey !mValue ?targetType] ;
@@ -2418,11 +2421,11 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
 #--- Check this type handle 'with' access
   const withAccessorMap := [targetType mWithAccessorMap] ;
   @unifiedTypeMapProxyList argumentTypeList ;
-  with withAccessorMap hasKey ![mAccessName string] do
+  with withAccessorMap hasKey ![mSearchMethodName string] do
     argumentTypeList := [@unifiedTypeMapProxyList listWithValue !mArgumentType] ;
   else
     if [withAccessorMap count] == 0 then
-      error mAccessName
+      error mSearchMethodName
       : "the '@". [targetType key] . "' type cannot be used in a 'with' instruction"
       : argumentTypeList
       ;
@@ -2431,8 +2434,8 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
       foreach withAccessorMap do
         s .= "\n  - " . lkey ." ?@" . [mArgumentType key] ;
       end foreach ;
-      error mAccessName
-      : "the '@". [targetType key] . "' type does not define the '" . mAccessName . "' accessor for the 'with' instruction; available "
+      error mSearchMethodName
+      : "the '@". [targetType key] . "' type does not define the '" . mSearchMethodName . "' accessor for the 'with' instruction; available "
       . if [withAccessorMap count] > 1 then "accessors are" else "accessor is" end
       . ":" . s
       : argumentTypeList
@@ -2442,12 +2445,12 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
 #--- Check parameter list
   const effectiveExpressionList := [@semanticExpressionListForGeneration listWithValue !keyExpression]  ;
   if [effectiveExpressionList length] != [argumentTypeList length] then
-    error mAccessName: "calling the '" . mAccessName . "' accessor of '@" . [targetType key] . "' requires "
+    error mSearchMethodName: "calling the '" . mSearchMethodName . "' accessor of '@" . [targetType key] . "' requires "
     . [[argumentTypeList length] string] . " parameter(s), while this call has "
     . [[effectiveExpressionList length] string] . " parameter(s)" ;
   else
     foreach effectiveExpressionList, argumentTypeList do
-      checkAssignmentTypes !mType ![mExpression mType] ![mAccessName location] ;
+      checkAssignmentTypes !mType ![mExpression mType] ![mSearchMethodName location] ;
     end foreach ;
   end if ;
 #--- Enter in a select block
@@ -2457,7 +2460,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   foreach [targetType mCurrentTypedAttributeList] do
     localInitializedVariableList +=
       !mAttributeTypeProxy
-      ![@lstring new ![mPrefix string] . mAttributeName ![mAccessName location]]
+      ![@lstring new ![mPrefix string] . mAttributeName ![mSearchMethodName location]]
       !objectArrayCppName . "->mAttribute_" . [mAttributeName identifierRepresentation]
     ;
   end foreach ;
@@ -2489,7 +2492,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
     !receiverVariableCppName
     !targetType
     !mFieldList
-    ![mAccessName string]
+    ![mSearchMethodName string]
     !objectArrayCppName
     !keyExpression
     !do_instructionList
