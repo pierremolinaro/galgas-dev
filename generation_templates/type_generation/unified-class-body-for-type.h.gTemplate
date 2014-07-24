@@ -160,7 +160,7 @@ if (SUPPORTED_OPERATORS & doNotGenererateObjectCompare []) == 0 then
 
 
 %
-//--------------------------------- Modifiers
+//--------------------------------- Setters
 %
 foreach MODIFIER_MAP do
   if mKind == [@methodKind definedAsMember] then
@@ -269,7 +269,7 @@ foreach CLASS_METHOD_MAP do
   %) ;\n\n%
 end
 %
-//--------------------------------- Readers
+//--------------------------------- Getters
 %
 foreach READER_MAP do
   if mKind == [@methodKind definedAsMember] then

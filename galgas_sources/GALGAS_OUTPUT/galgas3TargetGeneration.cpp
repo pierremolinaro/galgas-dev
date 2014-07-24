@@ -8770,7 +8770,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
   GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_project_5F_header (inCompiler, constinArgument_inProjectVersionString COMMA_SOURCE_FILE ("galgas3TargetGeneration.gSemantics", 219))).method_writeToFileWhenDifferentContents (constinArgument_inProjectSourceFilePath.reader_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas3TargetGeneration.gSemantics", 220)).operator_concat (GALGAS_string ("/build/output/project_header.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.gSemantics", 220)), joker_10441_0, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.gSemantics", 219)) ;
   ioArgument_ioAllProductFileSet.addAssign_operation (GALGAS_string ("project_header.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.gSemantics", 223)) ;
   GALGAS_string var_libpmPath ;
-  const cMapElement_projectQualifiedFeatureMap * objectArray_10598 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction_hasKey (GALGAS_string ("libpmAtPath")) ;
+  const cMapElement_projectQualifiedFeatureMap * objectArray_10598 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction (GALGAS_string ("libpmAtPath")) ;
   if (NULL != objectArray_10598) {
       macroValidSharedObject (objectArray_10598, cMapElement_projectQualifiedFeatureMap) ;
     const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, objectArray_10598->mAttribute_mFeatureValue.mAttribute_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
@@ -8977,7 +8977,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
     GALGAS_string var_dir = var_projectDirectory.operator_concat (GALGAS_string ("/xcode-project")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.gSemantics", 377)) ;
     var_dir.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.gSemantics", 378)) ;
     GALGAS_string var_applicationBundleBase ;
-    const cMapElement_projectQualifiedFeatureMap * objectArray_17417 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction_hasKey (GALGAS_string ("applicationBundleBase")) ;
+    const cMapElement_projectQualifiedFeatureMap * objectArray_17417 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction (GALGAS_string ("applicationBundleBase")) ;
     if (NULL != objectArray_17417) {
         macroValidSharedObject (objectArray_17417, cMapElement_projectQualifiedFeatureMap) ;
       var_applicationBundleBase = objectArray_17417->mAttribute_mFeatureValue.mAttribute_string ;
@@ -9000,7 +9000,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
     if (kBoolTrue == test_38) {
       GALGAS_string (gWrapperFileContent_17_targetGalgas_33_GenerationFileWrapper).method_writeToFile (var_Credits_5F_rtf_5F_path, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.gSemantics", 403)) ;
     }
-    const cMapElement_projectQualifiedFeatureMap * objectArray_18710 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction_hasKey (GALGAS_string ("repositoryURL")) ;
+    const cMapElement_projectQualifiedFeatureMap * objectArray_18710 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction (GALGAS_string ("repositoryURL")) ;
     if (NULL != objectArray_18710) {
         macroValidSharedObject (objectArray_18710, cMapElement_projectQualifiedFeatureMap) ;
       GALGAS_string var_applicationUpdateDir = var_projectDirectory.operator_concat (GALGAS_string ("/xcode-project/cocoa-application-update/application")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.gSemantics", 407)) ;
@@ -9022,7 +9022,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
       GALGAS_bool joker_20446_0 ; // Joker input parameter
       GALGAS_string (filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_compatibility_5F_header (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.gSemantics", 423))).method_writeToFileWhenDifferentContents (var_applicationUpdateDir.operator_concat (GALGAS_string ("/PMSnowLeopardLionCompatibility.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.gSemantics", 423)), joker_20446_0, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.gSemantics", 423)) ;
       GALGAS_string var_codeSignIdentity ;
-      const cMapElement_projectQualifiedFeatureMap * objectArray_20516 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction_hasKey (GALGAS_string ("codeSigning")) ;
+      const cMapElement_projectQualifiedFeatureMap * objectArray_20516 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction (GALGAS_string ("codeSigning")) ;
       if (NULL != objectArray_20516) {
           macroValidSharedObject (objectArray_20516, cMapElement_projectQualifiedFeatureMap) ;
         var_codeSignIdentity = objectArray_20516->mAttribute_mFeatureValue.mAttribute_string ;

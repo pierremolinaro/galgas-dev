@@ -531,7 +531,7 @@ const cUniqueMapNode * cSharedUniqueMapRoot::findNodeForKeyInMapOrInOverridenMap
 
 //-----------------------------------------------------------------------------*
 
-const cCollectionElement * AC_GALGAS_uniqueMap::readAccessForWithInstruction_hasKey (const GALGAS_string & inKey) const {
+const cCollectionElement * AC_GALGAS_uniqueMap::readAccessForWithInstruction (const GALGAS_string & inKey) const {
   const cCollectionElement * result = NULL ;
   if (isValid () && inKey.isValid ()) {
     cUniqueMapNode * node = mSharedMap->findEntryInMap (inKey.stringValue (), mSharedMap) ;

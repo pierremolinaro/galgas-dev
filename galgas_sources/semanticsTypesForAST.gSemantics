@@ -1008,7 +1008,7 @@ class @grammarInstructionAST extends @semanticInstructionAST {
 class @readAccessWithInstructionAST extends @semanticInstructionAST {
   @lstring mPrefix ;
   @semanticExpressionAST mReceiverExpression ;
-  @lstring mSearchMethodName ;
+  @location mEndOfReceiverExpression;
   @semanticExpressionAST mKeyExpression ;
   @semanticInstructionListAST mDoBranchInstructions ;
   @location mEndOf_do_instructions ;

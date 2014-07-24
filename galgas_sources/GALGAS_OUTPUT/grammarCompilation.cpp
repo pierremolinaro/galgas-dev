@@ -166,7 +166,7 @@ void routine_handleNonTerminalDeclarations (GALGAS_nonTerminalSymbolMapForGramma
                                             COMMA_UNUSED_LOCATION_ARGS) {
   cEnumerator_nonterminalDeclarationListAST enumerator_5315 (constinArgument_inNonterminalDeclarationList, kEnumeration_up) ;
   while (enumerator_5315.hasCurrentObject ()) {
-    const cMapElement_nonTerminalSymbolMapForGrammarAnalysis * objectArray_5327 = (const cMapElement_nonTerminalSymbolMapForGrammarAnalysis *) ioArgument_ioNonTerminalMapForGrammarAnalysis.readAccessForWithInstruction_hasKey (enumerator_5315.current_mNonterminalName (HERE).reader_string (SOURCE_FILE ("grammarCompilation.gSemantics", 108))) ;
+    const cMapElement_nonTerminalSymbolMapForGrammarAnalysis * objectArray_5327 = (const cMapElement_nonTerminalSymbolMapForGrammarAnalysis *) ioArgument_ioNonTerminalMapForGrammarAnalysis.readAccessForWithInstruction (enumerator_5315.current_mNonterminalName (HERE).reader_string (SOURCE_FILE ("grammarCompilation.gSemantics", 108))) ;
     if (NULL != objectArray_5327) {
         macroValidSharedObject (objectArray_5327, cMapElement_nonTerminalSymbolMapForGrammarAnalysis) ;
       {
@@ -200,7 +200,7 @@ void routine_handleNonTerminalDeclarationsFromRuleList (GALGAS_nonTerminalSymbol
       var_nonTerminalLabelListAST.addAssign_operation (enumerator_6205.current_mLabelName (HERE), enumerator_6205.current_mFormalArguments (HERE), enumerator_6205.current_mEndOfArgumentLocation (HERE)  COMMA_SOURCE_FILE ("grammarCompilation.gSemantics", 134)) ;
       enumerator_6205.gotoNextObject () ;
     }
-    const cMapElement_nonTerminalSymbolMapForGrammarAnalysis * objectArray_6355 = (const cMapElement_nonTerminalSymbolMapForGrammarAnalysis *) ioArgument_ioNonTerminalMapForGrammarAnalysis.readAccessForWithInstruction_hasKey (enumerator_6112.current_mNonterminalName (HERE).reader_string (SOURCE_FILE ("grammarCompilation.gSemantics", 140))) ;
+    const cMapElement_nonTerminalSymbolMapForGrammarAnalysis * objectArray_6355 = (const cMapElement_nonTerminalSymbolMapForGrammarAnalysis *) ioArgument_ioNonTerminalMapForGrammarAnalysis.readAccessForWithInstruction (enumerator_6112.current_mNonterminalName (HERE).reader_string (SOURCE_FILE ("grammarCompilation.gSemantics", 140))) ;
     if (NULL != objectArray_6355) {
         macroValidSharedObject (objectArray_6355, cMapElement_nonTerminalSymbolMapForGrammarAnalysis) ;
       {
@@ -1403,7 +1403,7 @@ void routine_parseGrammarComponent (const GALGAS_lstring constinArgument_inSourc
                                     COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outGrammarComponentRoot.drop () ; // Release 'out' argument
   GALGAS_string var_basename = constinArgument_inSourceFile.mAttribute_string.reader_lastPathComponent (SOURCE_FILE ("grammarCompilation.gSemantics", 460)).reader_stringByDeletingPathExtension (SOURCE_FILE ("grammarCompilation.gSemantics", 460)) ;
-  const cMapElement_parsedGrammarComponentMap * objectArray_18611 = (const cMapElement_parsedGrammarComponentMap *) ioArgument_ioParsedComponentStruct.mAttribute_mParsedGrammarComponentMap.readAccessForWithInstruction_hasKey (var_basename) ;
+  const cMapElement_parsedGrammarComponentMap * objectArray_18611 = (const cMapElement_parsedGrammarComponentMap *) ioArgument_ioParsedComponentStruct.mAttribute_mParsedGrammarComponentMap.readAccessForWithInstruction (var_basename) ;
   if (NULL != objectArray_18611) {
       macroValidSharedObject (objectArray_18611, cMapElement_parsedGrammarComponentMap) ;
     outArgument_outGrammarComponentRoot = objectArray_18611->mAttribute_mGrammarComponentRoot ;
@@ -2494,7 +2494,7 @@ static void categoryMethod_terminalCheckInstruction_transformInstruction (const 
   const cPtr_terminalCheckInstruction * object = (const cPtr_terminalCheckInstruction *) inObject ;
   macroValidSharedObject (object, cPtr_terminalCheckInstruction) ;
   GALGAS_uint var_terminalSymbolIndex ;
-  const cMapElement_terminalSymbolsMapForGrammarAnalysis * objectArray_9387 = (const cMapElement_terminalSymbolsMapForGrammarAnalysis *) ioArgument_ioActuallyUsedTerminalSymbolMap.readAccessForWithInstruction_hasKey (object->mAttribute_mTerminalName.reader_string (SOURCE_FILE ("grammarCompilation.gSemantics", 216))) ;
+  const cMapElement_terminalSymbolsMapForGrammarAnalysis * objectArray_9387 = (const cMapElement_terminalSymbolsMapForGrammarAnalysis *) ioArgument_ioActuallyUsedTerminalSymbolMap.readAccessForWithInstruction (object->mAttribute_mTerminalName.reader_string (SOURCE_FILE ("grammarCompilation.gSemantics", 216))) ;
   if (NULL != objectArray_9387) {
       macroValidSharedObject (objectArray_9387, cMapElement_terminalSymbolsMapForGrammarAnalysis) ;
     var_terminalSymbolIndex = objectArray_9387->mAttribute_mTerminalIndex ;

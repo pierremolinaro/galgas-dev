@@ -1350,7 +1350,7 @@ void routine_generateXcodeProject (const GALGAS_stringset constinArgument_inExte
                                    COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_bool var_handleUpdateFromInternet = constinArgument_inProjectQualifiedFeatureMap.reader_hasKey (GALGAS_string ("repositoryURL") COMMA_SOURCE_FILE ("XcodeProjectGeneration.gSemantics", 860)) ;
   GALGAS_string var_bundleBaseName ;
-  const cMapElement_projectQualifiedFeatureMap * objectArray_27827 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction_hasKey (GALGAS_string ("applicationBundleBase")) ;
+  const cMapElement_projectQualifiedFeatureMap * objectArray_27827 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction (GALGAS_string ("applicationBundleBase")) ;
   if (NULL != objectArray_27827) {
       macroValidSharedObject (objectArray_27827, cMapElement_projectQualifiedFeatureMap) ;
     var_bundleBaseName = objectArray_27827->mAttribute_mFeatureValue.mAttribute_string ;
@@ -1773,7 +1773,7 @@ void routine_generateXcodeProject (const GALGAS_stringset constinArgument_inExte
   routine_enterProjectDefaultSettings (var_pathes, constinArgument_inSDK, var_projectDefaultSettings, constinArgument_inUsesARC, inCompiler  COMMA_SOURCE_FILE ("XcodeProjectGeneration.gSemantics", 1506)) ;
   }
   var_projectDefaultSettings.addAssign_operation (GALGAS_string ("COPY_PHASE_STRIP = NO ;")  COMMA_SOURCE_FILE ("XcodeProjectGeneration.gSemantics", 1512)) ;
-  const cMapElement_projectQualifiedFeatureMap * objectArray_50976 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction_hasKey (GALGAS_string ("codeSigning")) ;
+  const cMapElement_projectQualifiedFeatureMap * objectArray_50976 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction (GALGAS_string ("codeSigning")) ;
   if (NULL != objectArray_50976) {
       macroValidSharedObject (objectArray_50976, cMapElement_projectQualifiedFeatureMap) ;
     var_projectDefaultSettings.addAssign_operation (GALGAS_string ("CODE_SIGN_IDENTITY = \"").operator_concat (objectArray_50976->mAttribute_mFeatureValue.reader_string (SOURCE_FILE ("XcodeProjectGeneration.gSemantics", 1515))  COMMA_SOURCE_FILE ("XcodeProjectGeneration.gSemantics", 1515)).operator_concat (GALGAS_string ("\";")  COMMA_SOURCE_FILE ("XcodeProjectGeneration.gSemantics", 1515))  COMMA_SOURCE_FILE ("XcodeProjectGeneration.gSemantics", 1515)) ;

@@ -270,6 +270,7 @@ once binaryConcatOperator            -> @uint outMask : outMask := 1 << 14 ; end
 once plusEqualOperatorWithExpression -> @uint outMask : outMask := 1 << 15 ; end once ; # var .= exp ;
 once isComparable                    -> @uint outMask : outMask := 1 << 16 ; end once ; # Supports <, <=, >, >= operators
 
+once supportWithAccessor                            -> @uint outMask : outMask := 1 << 26 ; end once ;
 once plusEqualOperatorWithFieldListNeedsCompilerArg -> @uint outMask : outMask := 1 << 27 ; end once ;
 once generateEnumerationHelperMethods               -> @uint outMask : outMask := 1 << 28 ; end once ;
 once doNotGenererateObjectCompare                   -> @uint outMask : outMask := 1 << 29 ; end once ;
@@ -318,6 +319,7 @@ uniquemap @unifiedTypeMap {
   @lstringlist mEnumConstantList ;
   @mapSearchMethodListAST mMapSearchMethodList ; # For a map, the list of search methods
   @mapSearchMethodListAST mMapProxySearchConstructorList ; # For a map proxy, the list of search methods of the associated map
+  @unifiedTypeMapProxyAndParameterList mWithAccessorParameterList ; # Empty list if 'with' operator is not supported, otherwise lkey is the first element
   @withAccessorMap mWithAccessorMap ; # Method for with accessor
   @bool mGenerateHeaderInSeparateFile ; # Significant only for classes
   @unifiedTypeMapProxy mTypeForEnumeratedElement ;
