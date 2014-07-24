@@ -1028,21 +1028,13 @@ override method @readOnlyWithInstructionForGeneration generateInstruction
   [mReceiverExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ??@string receiverVarCppName] ;
   const receiverType := [mReceiverExpression mType] ;
 #--- key expression
-  @string keyVarCppName ;
-  [mKeyExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?keyVarCppName] ;
+  [mKeyExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ??@string keyVarCppName] ;
 #---
   ioGeneratedCode .= "const cMapElement_" . [receiverType identifierRepresentation]
                   . " * " . mObjectArrayCppName . " = (const cMapElement_" . [receiverType identifierRepresentation]
-                  . " *) " . receiverVarCppName . "." ;
-  if mAccessName == "hasKey" then
-    ioGeneratedCode .= "readAccessForWithInstruction_hasKey (" . keyVarCppName . ") ;\n" ;
-  else
-    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
-    ioGeneratedCode .= "performSearch (" . keyVarCppName . ", " . compilerCppName []
-                     . ", kSearchErrorMessage_" . [receiverType identifierRepresentation] . "_" . [mAccessName identifierRepresentation]
-                     . " " . [mInstructionLocation commaSourceFile] . ") ;\n" ;
-  end if ;
-  ioGeneratedCode .= "if (NULL != " . mObjectArrayCppName . ") {\n"
+                  . " *) " . receiverVarCppName . "."
+                  . "readAccessForWithInstruction (" . keyVarCppName . ") ;\n"
+                  .  "if (NULL != " . mObjectArrayCppName . ") {\n"
                   .  "    macroValidSharedObject (" . mObjectArrayCppName . ", cMapElement_" . [receiverType identifierRepresentation] . ") ;\n" ;
   generateInstructionList
     !?ioInclusionSet

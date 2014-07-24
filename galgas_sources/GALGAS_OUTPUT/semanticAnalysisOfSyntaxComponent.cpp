@@ -2619,7 +2619,7 @@ void routine_enterNonterminalNonTerminalInMapAndCheck (const GALGAS_lstring cons
                                                        GALGAS_nonterminalMap & ioArgument_ioNonterminalDeclarationMap,
                                                        C_Compiler * inCompiler
                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  const cMapElement_nonterminalMap * objectArray_7088 = (const cMapElement_nonterminalMap *) ioArgument_ioNonterminalDeclarationMap.readAccessForWithInstruction_hasKey (constinArgument_inNonTerminalName.reader_string (SOURCE_FILE ("semanticAnalysisOfSyntaxComponent.gSemantics", 184))) ;
+  const cMapElement_nonterminalMap * objectArray_7088 = (const cMapElement_nonterminalMap *) ioArgument_ioNonterminalDeclarationMap.readAccessForWithInstruction (constinArgument_inNonTerminalName.reader_string (SOURCE_FILE ("semanticAnalysisOfSyntaxComponent.gSemantics", 184))) ;
   if (NULL != objectArray_7088) {
       macroValidSharedObject (objectArray_7088, cMapElement_nonterminalMap) ;
     GALGAS_stringset var_firstDeclarationLabelSet = objectArray_7088->mAttribute_mLabelMap.reader_keySet (SOURCE_FILE ("semanticAnalysisOfSyntaxComponent.gSemantics", 185)) ;

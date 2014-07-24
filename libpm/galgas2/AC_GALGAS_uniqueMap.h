@@ -240,7 +240,7 @@ class AC_GALGAS_uniqueMap : public AC_GALGAS_root {
                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Search for 'with' read only instruction
-  public : VIRTUAL_IN_DEBUG const cCollectionElement * readAccessForWithInstruction_hasKey (const GALGAS_string & inKey) const ;
+  public : VIRTUAL_IN_DEBUG const cCollectionElement * readAccessForWithInstruction (const GALGAS_string & inKey) const ;
 
 //--------------------------------- Search
   protected : VIRTUAL_IN_DEBUG cUniqueMapNode * searchEntryInMap (const C_String & inKey) const ;

@@ -8753,7 +8753,7 @@ void routine_updateTargets (const GALGAS_lstring constinArgument_inProjectSource
   GALGAS_bool joker_9981_0 ; // Joker input parameter
   GALGAS_string (filewrapperTemplate_targetGenerationFileWrapper_project_5F_header (inCompiler, constinArgument_inProjectVersionString COMMA_SOURCE_FILE ("targetGeneration.gSemantics", 213))).method_writeToFileWhenDifferentContents (constinArgument_inProjectSourceFilePath.mAttribute_string.reader_stringByDeletingLastPathComponent (SOURCE_FILE ("targetGeneration.gSemantics", 214)).operator_concat (GALGAS_string ("/GALGAS_OUTPUT/project_header.h")  COMMA_SOURCE_FILE ("targetGeneration.gSemantics", 214)), joker_9981_0, inCompiler COMMA_SOURCE_FILE ("targetGeneration.gSemantics", 213)) ;
   GALGAS_string var_libpmPath ;
-  const cMapElement_projectQualifiedFeatureMap * objectArray_10035 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction_hasKey (GALGAS_string ("libpmAtPath")) ;
+  const cMapElement_projectQualifiedFeatureMap * objectArray_10035 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction (GALGAS_string ("libpmAtPath")) ;
   if (NULL != objectArray_10035) {
       macroValidSharedObject (objectArray_10035, cMapElement_projectQualifiedFeatureMap) ;
     const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, objectArray_10035->mAttribute_mFeatureValue.mAttribute_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
@@ -9086,7 +9086,7 @@ void routine_updateTargets (const GALGAS_lstring constinArgument_inProjectSource
     GALGAS_bool joker_21183_0 ; // Joker input parameter
     GALGAS_string (gWrapperFileContent_15_targetGenerationFileWrapper).method_writeToFileWhenDifferentContents (var_icon_5F_help_5F_file_5F_path, joker_21183_0, inCompiler COMMA_SOURCE_FILE ("targetGeneration.gSemantics", 457)) ;
     GALGAS_string var_applicationBundleBase ;
-    const cMapElement_projectQualifiedFeatureMap * objectArray_21250 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction_hasKey (GALGAS_string ("applicationBundleBase")) ;
+    const cMapElement_projectQualifiedFeatureMap * objectArray_21250 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction (GALGAS_string ("applicationBundleBase")) ;
     if (NULL != objectArray_21250) {
         macroValidSharedObject (objectArray_21250, cMapElement_projectQualifiedFeatureMap) ;
       var_applicationBundleBase = objectArray_21250->mAttribute_mFeatureValue.mAttribute_string ;
@@ -9109,7 +9109,7 @@ void routine_updateTargets (const GALGAS_lstring constinArgument_inProjectSource
     if (kBoolTrue == test_54) {
       GALGAS_string (gWrapperFileContent_17_targetGenerationFileWrapper).method_writeToFile (var_Credits_5F_rtf_5F_path, inCompiler COMMA_SOURCE_FILE ("targetGeneration.gSemantics", 482)) ;
     }
-    const cMapElement_projectQualifiedFeatureMap * objectArray_22515 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction_hasKey (GALGAS_string ("repositoryURL")) ;
+    const cMapElement_projectQualifiedFeatureMap * objectArray_22515 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction (GALGAS_string ("repositoryURL")) ;
     if (NULL != objectArray_22515) {
         macroValidSharedObject (objectArray_22515, cMapElement_projectQualifiedFeatureMap) ;
       GALGAS_string var_applicationUpdateDir = var_projectDirectory.operator_concat (GALGAS_string ("/project_xcode/cocoa-application-update/application")  COMMA_SOURCE_FILE ("targetGeneration.gSemantics", 486)) ;
@@ -9131,7 +9131,7 @@ void routine_updateTargets (const GALGAS_lstring constinArgument_inProjectSource
       GALGAS_bool joker_24195_0 ; // Joker input parameter
       GALGAS_string (filewrapperTemplate_applicationUpdateFileWrapper_compatibility_5F_header (inCompiler COMMA_SOURCE_FILE ("targetGeneration.gSemantics", 502))).method_writeToFileWhenDifferentContents (var_applicationUpdateDir.operator_concat (GALGAS_string ("/PMSnowLeopardLionCompatibility.h")  COMMA_SOURCE_FILE ("targetGeneration.gSemantics", 502)), joker_24195_0, inCompiler COMMA_SOURCE_FILE ("targetGeneration.gSemantics", 502)) ;
       GALGAS_string var_codeSignIdentity ;
-      const cMapElement_projectQualifiedFeatureMap * objectArray_24265 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction_hasKey (GALGAS_string ("codeSigning")) ;
+      const cMapElement_projectQualifiedFeatureMap * objectArray_24265 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction (GALGAS_string ("codeSigning")) ;
       if (NULL != objectArray_24265) {
           macroValidSharedObject (objectArray_24265, cMapElement_projectQualifiedFeatureMap) ;
         var_codeSignIdentity = objectArray_24265->mAttribute_mFeatureValue.mAttribute_string ;

@@ -786,6 +786,7 @@ override method @predefinedTypeAST enterInSemanticContext
     ![@lstringlist emptyList]
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
+    !{} # 'with" accessor is not handled
     ![@withAccessorMap emptyMap]
     !false # Do not generate header in separate file
     !enumeratedTypeProxy
@@ -937,11 +938,12 @@ override method @mapDeclarationAST enterInSemanticContext
       !"" # No error message
     ] ;
   end if ;
-#---------- Enter "set...Attribute...forKey" modifiers
+#---------- Enter "set...Attribute...forKey" modifiers, and 'with' accessor
+  var withAccessorParameterList := @unifiedTypeMapProxyAndParameterList {!lstringTypeIndex !"lkey"} ;
   foreach mAttributeList do
     const accessorName := [@lstring new !"set" . [[mAttributeName string] stringByCapitalizingFirstCharacter] . "ForKey" ![mAttributeName location]] ;
-    @unifiedTypeMapProxy attributeTypeIndex ;
-    [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mAttributeTypeName ?attributeTypeIndex] ;
+    [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mAttributeTypeName ??@unifiedTypeMapProxy attributeTypeIndex] ;
+    withAccessorParameterList += !attributeTypeIndex !mAttributeName->string ;
     @formalParameterSignature accessorFormalArgumentList [emptyList] ;
     accessorFormalArgumentList += !attributeTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !mAttributeName->string ;
     accessorFormalArgumentList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !mAttributeName->string ;
@@ -998,12 +1000,13 @@ override method @mapDeclarationAST enterInSemanticContext
     ![@classMethodMap emptyMap]
     !enumerationDescriptor
     !enumerationVariants
-    !doNotGenererateObjectCompare [] | plusEqualOperatorWithFieldListNeedsCompilerArg []
+    !doNotGenererateObjectCompare [] | plusEqualOperatorWithFieldListNeedsCompilerArg [] | supportWithAccessor []
     !argumentTypeListForAddAssignWithFieldExpressionList
     ![@stringset emptySet]
     ![@lstringlist emptyList]
     !mSearchMethodList
     ![@mapSearchMethodListAST emptyList]
+    !withAccessorParameterList
     !withAccessorMap
     !false # Do not generate header in separate file
     !elementTypeProxy # Type for enumerated element for "for" instruction
@@ -1202,11 +1205,12 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
       !"" # No Error message
     ] ;
   end foreach ;
-#---------- Enter "set...Attribute...forKey" modifiers
+#---------- Enter "set...Attribute...forKey" modifiers, and 'with' accessor parameter
+  var withAccessorParameterList := @unifiedTypeMapProxyAndParameterList {!lstringTypeIndex !"lkey"} ;
   foreach mAttributeList do
     const accessorName := [@lstring new !"set" . [[mAttributeName string] stringByCapitalizingFirstCharacter] . "ForKey" ![mAttributeName location]] ;
-    @unifiedTypeMapProxy attributeTypeIndex ;
-    [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mAttributeTypeName ?attributeTypeIndex] ;
+    [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mAttributeTypeName ??@unifiedTypeMapProxy attributeTypeIndex] ;
+    withAccessorParameterList += !attributeTypeIndex !mAttributeName->string ;
     @formalParameterSignature accessorFormalArgumentList [emptyList] ;
     accessorFormalArgumentList += !attributeTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !mAttributeName->string ;
     accessorFormalArgumentList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !mAttributeName->string ;
@@ -1257,12 +1261,13 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     ![@classMethodMap emptyMap]
     !enumerationDescriptor
     !enumerationVariants
-    !doNotGenererateObjectCompare []
+    !doNotGenererateObjectCompare [] | supportWithAccessor []
     ![@unifiedTypeMapProxyAndParameterList emptyList]
     ![@stringset emptySet]
     ![@lstringlist emptyList]
     !mSearchMethodList
     ![@mapSearchMethodListAST emptyList]
+    !withAccessorParameterList
     !withAccessorMap
     !false # Do not generate header in separate file
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
@@ -1289,7 +1294,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     ?@typedAttributeList mapTypedAttributeList
     ?11*
     ?@mapSearchMethodListAST searchMethodList
-    ?7*
+    ?8*
   ] ;
   if typeKindEnum != [@typeKindEnum uniqueMapType] then
     error mAssociatedMapTypeName : "the @" . mAssociatedMapTypeName . " should be an unique map type" ;
@@ -1412,6 +1417,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     ![@lstringlist emptyList]
     ![@mapSearchMethodListAST emptyList]
     !searchMethodList
+    !{} # 'with" accessor is not handled
     ![@withAccessorMap emptyMap]
     !false # Do not generate header in separate file
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
@@ -1545,6 +1551,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
     ![@lstringlist emptyList]
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
+    !{} # 'with" accessor is not handled
     ![@withAccessorMap emptyMap]
     !false # Do not generate header in separate file
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
@@ -1799,6 +1806,7 @@ override method @graphDeclarationAST enterInSemanticContext
     ![@lstringlist emptyList]
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
+    !{} # 'with" accessor is not handled
     ![@withAccessorMap emptyMap]
     !false # Do not generate header in separate file
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
@@ -1869,6 +1877,7 @@ override method @enumDeclarationAST enterInSemanticContext
     !mConstantList
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
+    !{} # 'with" accessor is not handled
     ![@withAccessorMap emptyMap]
     !false # Do not generate header in separate file
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
@@ -2211,6 +2220,7 @@ override method @listDeclarationAST enterInSemanticContext
     ![@lstringlist emptyList]
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
+    !{} # 'with" accessor is not handled
     ![@withAccessorMap emptyMap]
     !false # Do not generate header in separate file
     !listElementTypeIndex # Type for enumerated element for "for" instruction
@@ -2339,6 +2349,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     ![@lstringlist emptyList]
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
+    !{} # 'with" accessor is not handled
     ![@withAccessorMap emptyMap]
     !false # Do not generate header in separate file
     !listElementTypeIndex # Type for enumerated element for "for" instruction
@@ -2449,6 +2460,7 @@ override method @structDeclarationAST enterInSemanticContext
     ![@lstringlist emptyList]
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
+    !{} # 'with" accessor is not handled
     ![@withAccessorMap emptyMap]
     !false # Do not generate header in separate file
     !enumeratedType # Type for enumerated element for "for" instruction
@@ -2507,7 +2519,7 @@ override method @classDeclarationAST enterInSemanticContext
       ?inheritedReaderMap
       ?inheritedModifierMap
       ?inheritedMethodMap
-      ?10*
+      ?11*
       ?generateHeaderInSeparateFile
       ?4*
     ] ;
@@ -2681,6 +2693,7 @@ override method @classDeclarationAST enterInSemanticContext
     ![@lstringlist emptyList]
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
+    !{} # 'with" accessor is not handled
     ![@withAccessorMap emptyMap]
     !generateHeaderInSeparateFile
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
@@ -2888,6 +2901,7 @@ override method @arrayDeclarationAST enterInSemanticContext
     ![@lstringlist emptyList]
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
+    !{} # 'with" accessor is not handled
     ![@withAccessorMap emptyMap]
     !false # Do not generate header in separate file
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
@@ -2912,7 +2926,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     ?@typeKindEnum typeKindEnum
     ?*
     ?@typedAttributeList listTypedAttributeList
-    ?21*
+    ?22*
   ] ;
   if typeKindEnum != [@typeKindEnum listType] then
     error mAssociatedListTypeName : "the '@" . mAssociatedListTypeName . "' type should be a list type" ;
@@ -2989,6 +3003,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     ![@lstringlist emptyList]
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
+    !{} # 'with" accessor is not handled
     ![@withAccessorMap emptyMap]
     !false # Do not generate header in separate file
     !listElementTypeIndex # Type for enumerated element for "for" instruction

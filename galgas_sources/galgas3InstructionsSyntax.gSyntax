@@ -1019,6 +1019,56 @@ rule <semantic_instruction>
 :
   $with$ ;
   const instructionLocation := here ;
+  <expression> ??@semanticExpressionAST mKeyExpression ;
+  @lstring withPrefix ;
+  select
+    withPrefix := [@lstring new !"" !here] ;
+  or
+    $:$ ;
+    $identifier$ ? withPrefix ;
+  end select ;
+  $in$ ;
+  <expression> ??@semanticExpressionAST receiverExpression ;
+  const endOfReceiverExpression := here ;
+  $do$ ;
+  <semantic_instruction_list> ??@semanticInstructionListAST mDoBranchInstructions ;
+  const endOfDoInstructions := here ;
+  @semanticInstructionListAST mElseBranchInstructions ;
+  select
+    mElseBranchInstructions := {} ;
+  or
+    $else$ ;
+    <semantic_instruction_list> ?mElseBranchInstructions ;
+  end select ;
+  outInstruction := [@readAccessWithInstructionAST new
+    !instructionLocation
+    !withPrefix
+    !receiverExpression
+    !endOfReceiverExpression
+    !mKeyExpression
+    !mDoBranchInstructions
+    !endOfDoInstructions
+    !mElseBranchInstructions
+    !here
+  ] ;
+  $end$ ;
+  select
+  or
+    $attribute$ ??@lstring terminator ;
+    if terminator->string != "with" then
+      error terminator : "the terminator attribute should be '%with'" ;
+    end if ;
+  end select ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction
+  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
+:
+  $with$ ;
+  const instructionLocation := here ;
   $!?$ ;
   $identifier$ ?@lstring mTargetObjectName ;
   @lstringlist structAttributeList [emptyList] ;
@@ -1060,56 +1110,6 @@ rule <semantic_instruction>
     !endOf_do_instructions
     !mElseBranchInstructions
     !endOf_else_instructions
-  ] ;
-  $end$ ;
-  select
-  or
-    $attribute$ ??@lstring terminator ;
-    if terminator->string != "with" then
-      error terminator : "the terminator attribute should be '%with'" ;
-    end if ;
-  end select ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <semantic_instruction>
-  !@semanticInstructionAST outInstruction
-  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
-:
-  $with$ ;
-  const instructionLocation := here ;
-  <expression> ?@semanticExpressionAST receiverExpression ;
-  $identifier$ ?@lstring mSearchMethodName ;
-  $!$ ;
-  <expression> ?@semanticExpressionAST mKeyExpression ;
-  @lstring withPrefix ;
-  select
-    withPrefix := [@lstring new !"" !here] ;
-  or
-    $:$ ;
-    $identifier$ ? withPrefix ;
-  end select ;
-  $do$ ;
-  <semantic_instruction_list> ??@semanticInstructionListAST mDoBranchInstructions ;
-  const endOfDoInstructions := here ;
-  @semanticInstructionListAST mElseBranchInstructions ;
-  select
-    mElseBranchInstructions := [@semanticInstructionListAST emptyList] ;
-  or
-    $else$ ;
-    <semantic_instruction_list> ? mElseBranchInstructions ;
-  end select ;
-  outInstruction := [@readAccessWithInstructionAST new
-    !instructionLocation
-    !withPrefix
-    !receiverExpression
-    !mSearchMethodName
-    !mKeyExpression
-    !mDoBranchInstructions
-    !endOfDoInstructions
-    !mElseBranchInstructions
-    !here
   ] ;
   $end$ ;
   select

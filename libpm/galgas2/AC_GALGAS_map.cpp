@@ -460,7 +460,7 @@ cMapNode * AC_GALGAS_map::searchEntryInMap (const C_String & inKey) const {
 
 //-----------------------------------------------------------------------------*
 
-const cCollectionElement * AC_GALGAS_map::readAccessForWithInstruction_hasKey (const GALGAS_string & inKey) const {
+const cCollectionElement * AC_GALGAS_map::readAccessForWithInstruction (const GALGAS_string & inKey) const {
   const cCollectionElement * result = NULL ;
   if (isValid () && inKey.isValid ()) {
     cMapNode * node = mSharedMap->findEntryInMap (inKey.stringValue (), mSharedMap) ;

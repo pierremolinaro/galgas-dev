@@ -1021,7 +1021,6 @@ class @readWriteWithInstructionForGeneration extends @semanticInstructionForGene
 class @readOnlyWithInstructionForGeneration extends @semanticInstructionForGeneration {
   @location mInstructionLocation ;
   @semanticExpressionForGeneration mReceiverExpression ;
-  @string mAccessName ;
   @string mObjectArrayCppName ;
   @semanticExpressionForGeneration mKeyExpression ;
   @semanticInstructionListForGeneration mDoBranchInstructions ;

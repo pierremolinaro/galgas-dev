@@ -1538,9 +1538,9 @@ rule <semantic_instruction>
     structAttributeList += !mStructFieldName ;
   end repeat ;
   $identifier$ ?@lstring mSearchMethodName ;
-  if mSearchMethodName->string != "searchKey" then
-    warning mSearchMethodName : "NOT hasKey !" ;
-  end if ;
+#  if mSearchMethodName->string != "searchKey" then
+#    warning mSearchMethodName : "NOT hasKey !" ;
+#  end if ;
   $!$ ;
   <expression> ??@semanticExpressionAST mKeyExpression ;
   @lstring withPrefix ;
@@ -1587,12 +1587,11 @@ rule <semantic_instruction>
 :
   $with$ ;
   const instructionLocation := here ;
-  <expression> ??@semanticExpressionAST receiverExpression ;
-  $identifier$ ??@lstring mSearchMethodName ;
-  if mSearchMethodName->string != "hasKey" then
-    warning mSearchMethodName : "NOT hasKey !" ;
-  end if ;
-  $!$ ;
+  <expression> ??@semanticExpressionAST receiverExpression :>??@string receiverExpressionString ;
+  const endOfReceiverExpression := here ;
+  $identifier$ ?* :> ?* ?* ; # ?@lstring mSearchMethodName ;
+  $!$ :> ?* ?* ;
+  send " " ;
   <expression> ?@semanticExpressionAST mKeyExpression ;
   @lstring withPrefix ;
   select
@@ -1601,6 +1600,7 @@ rule <semantic_instruction>
     $:$ ;
     $identifier$ ? withPrefix ;
   end select ;
+  send " in " . receiverExpressionString . " " ;
   $do$ ;
   <semantic_instruction_list> ??@semanticInstructionListAST mDoBranchInstructions ;
   const endOfDoInstructions := here ;
@@ -1615,7 +1615,7 @@ rule <semantic_instruction>
     !instructionLocation
     !withPrefix
     !receiverExpression
-    !mSearchMethodName
+    !endOfReceiverExpression
     !mKeyExpression
     !mDoBranchInstructions
     !endOfDoInstructions
