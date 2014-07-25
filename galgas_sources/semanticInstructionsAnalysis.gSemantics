@@ -1941,7 +1941,7 @@ override method @foreachInstructionAST analyzeSemanticInstruction
         const currentTypedAttributeList := [[enumerationExpression mType] mEnumerationDescriptor] ;
         foreach currentTypedAttributeList do 
          [!?ioVariableMap insertUsedLocalConstant
-           ![@lstring new ![mPrefix string] . mEnumerationName !mEndOfEnumerationExpression]
+           ![@lstring new !mPrefix->string . mEnumerationName !mEndOfEnumerationExpression]
            !mEnumeratedType
            !enumeratorCppName .".current_" . [mEnumerationName identifierRepresentation] . " (HERE)"
            !enumeratorCppName .".current_" . [mEnumerationName identifierRepresentation] . " (HERE)"
@@ -2435,7 +2435,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
   foreach [receiverType mCurrentTypedAttributeList] do
     localConstantList +=
       !mAttributeTypeProxy
-      ![@lstring new ![mPrefix string] . mAttributeName !mEndOfReceiverExpression]
+      ![@lstring new !mPrefix->string . mAttributeName !mEndOfReceiverExpression]
       !true # Do not warn if unused
       !objectArrayCppName . "->mAttribute_" . [mAttributeName identifierRepresentation]
     ;
@@ -2443,7 +2443,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
 #--- Add lkey as @lstring constant
   localConstantList +=
     ![@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !["lstring" nowhere]]
-    ![@lstring new ![mPrefix string] . "lkey" !mEndOfReceiverExpression]
+    ![@lstring new !mPrefix->string . "lkey" !mEndOfReceiverExpression]
     !true # Do not warn if unused
     !objectArrayCppName . "->mAttribute_lkey"
   ;
@@ -2535,18 +2535,19 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   foreach [targetType mCurrentTypedAttributeList] do
     localInitializedVariableList +=
       !mAttributeTypeProxy
-      ![@lstring new ![mPrefix string] . mAttributeName !mEndOfReceiverExpression]
+      ![@lstring new !mPrefix->string . mAttributeName !mEndOfReceiverExpression]
       !objectArrayCppName . "->mAttribute_" . [mAttributeName identifierRepresentation]
     ;
   end foreach ;
-  localInitializedVariableList +=
+  const localConstantList := @localConstantList {
     ![@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !["lstring" nowhere]]
-    ![@lstring new ![mPrefix string] . "lkey" !mEndOfReceiverExpression]
+    ![@lstring new !mPrefix->string . "lkey" !mEndOfReceiverExpression]
+    !true # Do not warn if unused
     !objectArrayCppName . "->mAttribute_lkey"
-  ;
+  } ;
   analyzeSemanticInstructionList
     !inAnalysisContext
-    ![@localConstantList emptyList]
+    !localConstantList
     !localInitializedVariableList
     !m_do_Instructions
     !mEndOf_do_instructions

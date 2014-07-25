@@ -1821,12 +1821,50 @@ warning nom : message_alerte
 
 \section{L'instruction \texttt{with}}
 
-L'instruction \galgas{with} permet d'associer un test de recherche dans une table et l'accès aux champs correspondants si succès. Elle peut prendre deux formes différentes, suivi que l'on veuille modifier la table ou non.
+L'instruction \galgas{with} permet d'associer un test de recherche dans une table et l'accès aux champs correspondants si succès. Elle peut prendre quatre formes différentes, suivi que l'on veuille modifier la table ou non, et suivant que l'on veut tolérer l'échec de la recherche ou non.
 
-\subsection{Instruction \texttt{with} et accès en lecture}
+\lstset{emph={expression_cle, prefixe_optionnel, expression_table, liste_instructions_do, liste_instructions_else, methode_recherche, cible_table}, emphstyle=\emph}
+
+Accès en lecture, tolérance de l'échec de la recherche (\refSubsectionPage{instructionWithEnLectureTolerante}) :
+\begin{galgascode}
+with expression_cle prefixe_optionnel in expression_table
+do liste_instructions_do
+else liste_instructions_else # Optionnel
+end
+\end{galgascode}
+
+Accès en lecture, signalement d'erreur si échec de la recherche (\refSubsectionPage{instructionWithEnLectureSansTolerance}) :
+\begin{galgascode}
+with expression_cle prefixe_optionnel in expression_table
+error message methode_recherche
+do liste_instructions_do
+end
+\end{galgascode}
 
 
-\lstset{emph={expression_cle, prefixe_optionnel, expression_table, liste_instructions_do, liste_instructions_else}, emphstyle=\emph}
+
+Accès en lecture/écriture, tolérance de l'échec de la recherche (\refSubsectionPage{instructionWithEnLectureEcritureTolerante}) :
+\begin{galgascode}
+with expression_cle prefixe_optionnel in !?cible_table
+do liste_instructions_do
+else liste_instructions_else # Optionnel
+end
+\end{galgascode}
+
+Accès en lecture/écriture, signalement d'erreur si échec de la recherche (\refSubsectionPage{instructionWithEnLectureEcritureSansTolerance}) :
+\begin{galgascode}
+with expression_cle prefixe_optionnel in !?cible_table
+error message methode_recherche
+do liste_instructions_do
+end
+\end{galgascode}
+
+
+
+
+\subsectionLabel{Accès en lecture tolérant l'échec de la recherche}{instructionWithEnLectureTolerante}
+
+
 \begin{galgascode}
 with expression_cle prefixe_optionnel in expression_table
 do liste_instructions_do
@@ -1841,13 +1879,133 @@ Où :
   \item \galgas{expression\_table} est une expression qui désigne la table.
 \end{itemize}
 
+La clé désignée par la valeur de \galgas{expression\_cle} est recherchée dans la table désignée par la valeur de \galgas{expression\_table} :
+\begin{itemize}
+  \item en cas d'échec, les instructions \galgas{liste_instructions_else} sont exécutées ;
+  \item en cas de succès, ce sont les instructions \galgas{liste_instructions_do} qui sont exécutées ; les propriétés de l'élément recherché sont alors disponibles en lecture, sous leur nom éventuellement préfixé ; la clé est disponible sous le nom \galgas{lkey} éventuellement préfixé, et est de type \galgas{@lstring}.
+\end{itemize}
+
+%Par exemple, on veut disposer d'une table qui implémente un \emph{counted set}, c'est à dire que l'on associe à la clé son nombre de citations. On déclare :
+%\begin{galgascode}
+%map @maTable {
+%  @uint mOccurrenceCount
+%  insert insertKey error message "entree deja presente"
+%}
+%\end{galgascode}
+%
+%Et on effectue des recherches / insertions de la façon suivante :
+%\begin{galgascode}
+%@lstring cle = ...
+%with cle.string in !?table do
+%  mOccurrenceCount ++
+%else
+%  [!?table insertKey !cle !1]
+%end
+%\end{galgascode}
+%
+%En utilisant un préfixe, le code devient :
+%\begin{galgascode}
+%@lstring cle = ...
+%with cle.string : xyz_ in !?table do
+%  mOccurrenceCount ++
+%else
+%  [!?table insertKey !cle !1]
+%end
+%\end{galgascode}
+
+
+Par exemple, on veut disposer d'une table possédant une propriété identifiant de manière unique la clé. On déclare :
+\begin{galgascode}
+map @maTable {
+  @uint mIndex
+  insert insertKey error message "entree deja presente"
+}
+\end{galgascode}
+
+Et on effectue des recherches / insertions de la façon suivante :
+\begin{galgascode}
+@uint idx ;
+@lstring cle = ...
+with cle.string in table do
+  idx = mIndex
+else
+  idx = [table count]
+  [!?table insertKey !cle !idx]
+end
+\end{galgascode}
+
+En utilisant un préfixe, le code devient :
+\begin{galgascode}
+@uint idx ;
+@lstring cle = ...
+with cle.string : xyz_ in table do
+  idx = xyz_mIndex
+else
+  idx = [table count]
+  [!?table insertKey !cle !idx]
+end
+\end{galgascode}
 
 
 
-\subsection{Instruction \texttt{with} et accès en lecture/écriture}
+
+\subsectionLabel{Accès en lecture, signalement d'erreur si échec de la recherche}{instructionWithEnLectureSansTolerance}
 
 
-\lstset{emph={expression_cle, prefixe_optionnel, cible_table, liste_instructions_do, liste_instructions_else}, emphstyle=\emph}
+\begin{galgascode}
+with expression_cle prefixe_optionnel in expression_table
+error message methode_recherche
+do liste_instructions_do
+end
+\end{galgascode}
+
+Où :
+\begin{itemize}
+  \item \galgas{expression\_cle} est une expression de type \galgas{@lstring} dont la valeur définit la clé ;
+  \item \galgas{prefixe\_optionnel} est soit vide, soit est constitué d'un double-point \galgast{:} suivi d'un identificateur qui préfixe les noms des champs dans la liste d'instructions \galgas{liste\_instructions\_do} ;
+  \item \galgas{expression\_table} est une expression qui désigne la table ;
+  \item \galgas{methode_recherche} est une méthode de recherche de la table (c'est-à-dire déclarée par \galgas{search}) dont le message associé sera utilisé pour le signalement d'erreur.
+\end{itemize}
+
+La clé désignée par la valeur de \galgas{expression\_cle} est recherchée dans la table désignée par la valeur de \galgas{expression\_table} :
+\begin{itemize}
+  \item en cas d'échec, une erreur est affichée, son message étant fourni par la méthode de recherche \galgas{methode_recherche}, et sa localisation par le champ \galgas{location} de l'\galgas{expression\_cle} ;
+  \item en cas de succès, ce sont les instructions \galgas{liste_instructions_do} qui sont exécutées ; les propriétés de l'élément recherché sont alors disponibles en lecture, sous leur nom éventuellement préfixé ; la clé est disponible sous le nom \galgas{lkey} éventuellement préfixé, et est de type \galgas{@lstring}.
+\end{itemize}
+
+Par exemple, on veut disposer d'une table qui implémente un \emph{counted set}, c'est à dire que l'on associe à la clé son nombre de citations, et la doit avoir été entrée auparavant. On déclare :
+\begin{galgascode}
+map @maTable {
+  @uint mOccurrenceCount
+  search searchKey error message "entree %K absente"
+}
+\end{galgascode}
+
+Et on effectue des recherches de la façon suivante :
+\begin{galgascode}
+@lstring cle = ...
+@uint occurenceCount
+with cle in table error message searchKey do
+  occurenceCount = mOccurrenceCount ++
+end
+\end{galgascode}
+
+En utilisant un préfixe, le code devient :
+\begin{galgascode}
+@lstring cle = ...
+@uint occurenceCount
+with cle : abc_ in table error message searchKey do
+  occurenceCount = abc_mOccurrenceCount ++
+end
+\end{galgascode}
+
+
+
+
+
+\subsectionLabel{Accès en lecture/écriture tolérant l'échec de la recherche}{instructionWithEnLectureEcritureTolerante}
+
+
 \begin{galgascode}
 with expression_cle prefixe_optionnel in !?cible_table
 do liste_instructions_do
@@ -1855,4 +2013,96 @@ else liste_instructions_else # Optionnel
 end
 \end{galgascode}
 
+
+Où :
+\begin{itemize}
+  \item \galgas{expression\_cle} est une expression de type \galgas{@string} dont la valeur définit la clé ;
+  \item \galgas{prefixe\_optionnel} est soit vide, soit est constitué d'un double-point \galgast{:} suivi d'un identificateur qui préfixe les noms des champs dans la liste d'instructions \galgas{liste\_instructions\_do} ;
+  \item \galgas{cible\_table} est de la forme \galgas{variable}, ou  \galgas{variable.champ}, ou \galgas{variable.champ.champ2}, ... et désigne la table ; la cible est accédée en lecture/écriture.
+\end{itemize}
+
+La clé désignée par la valeur de \galgas{expression\_cle} est recherchée dans la table désignée par la valeur de \galgas{cible_table} :
+\begin{itemize}
+  \item en cas d'échec, les instructions \galgas{liste_instructions_else} sont exécutées ;
+  \item en cas de succès, ce sont les instructions \galgas{liste_instructions_do} qui sont exécutées ; les propriétés de l'élément recherché sont alors disponibles en lecture / écriture, sous leur nom éventuellement préfixé ; la clé est disponible en lecture seule sous le nom \galgas{lkey} éventuellement préfixé, est de type \galgas{@lstring}.
+\end{itemize}
+
+Par exemple, on veut disposer d'une table qui implémente un \emph{counted set}, c'est à dire que l'on associe à la clé son nombre de citations. On déclare :
+\begin{galgascode}
+map @maTable {
+  @uint mOccurrenceCount
+  insert insertKey error message "entree deja presente"
+}
+\end{galgascode}
+
+Et on effectue des recherches / insertions de la façon suivante :
+\begin{galgascode}
+@lstring cle = ...
+with cle.string in !?table do
+  mOccurrenceCount ++
+else
+  [!?table insertKey !cle !1]
+end
+\end{galgascode}
+
+En utilisant un préfixe, le code devient :
+\begin{galgascode}
+@lstring cle = ...
+with cle.string : xyz_ in !?table do
+  xyz_mOccurrenceCount ++
+else
+  [!?table insertKey !cle !1]
+end
+\end{galgascode}
+
+
+
+\subsectionLabel{Accès en lecture/écriture, signalement d'erreur si échec de la recherche}{instructionWithEnLectureEcritureSansTolerance}
+
+
+\begin{galgascode}
+with expression_cle prefixe_optionnel in !?cible_table
+error message methode_recherche
+do liste_instructions_do
+end
+\end{galgascode}
+
+Où :
+\begin{itemize}
+  \item \galgas{expression\_cle} est une expression de type \galgas{@lstring} dont la valeur définit la clé ;
+  \item \galgas{prefixe\_optionnel} est soit vide, soit est constitué d'un double-point \galgast{:} suivi d'un identificateur qui préfixe les noms des champs dans la liste d'instructions \galgas{liste\_instructions\_do} ;
+  \item \galgas{expression\_table} est une expression qui désigne la table ;
+  \item \galgas{methode_recherche} est une méthode de recherche de la table (c'est-à-dire déclarée par \galgas{search}) dont le message associé sera utilisé pour le signalement d'erreur ;
+  \item \galgas{cible\_table} est de la forme \galgas{variable}, ou  \galgas{variable.champ}, ou \galgas{variable.champ.champ2}, ... et désigne la table ; la cible est accédée en lecture/écriture.
+\end{itemize}
+
+La clé désignée par la valeur de \galgas{expression\_cle} est recherchée dans la table désignée par la valeur de \galgas{expression\_table} :
+\begin{itemize}
+  \item en cas d'échec, une erreur est affichée, son message étant fourni par la méthode de recherche \galgas{methode_recherche}, et sa localisation par le champ \galgas{location} de l'\galgas{expression\_cle} ;
+  \item en cas de succès, ce sont les instructions \galgas{liste_instructions_do} qui sont exécutées ; les propriétés de l'élément recherché sont alors disponibles en lecture/écriture, sous leur nom éventuellement préfixé ; la clé est disponible en lecture seule sous le nom \galgas{lkey} éventuellement préfixé, et est de type \galgas{@lstring}.
+\end{itemize}
+
+Par exemple, on veut disposer d'une table qui implémente un \emph{counted set}, c'est à dire que l'on associe à la clé son nombre de citations, et la clé doit avoir été entrée auparavant. On déclare :
+\begin{galgascode}
+map @maTable {
+  @uint mOccurrenceCount
+  search searchKey error message "entree %K absente"
+}
+\end{galgascode}
+
+Et on effectue des recherches de la façon suivante :
+\begin{galgascode}
+@lstring cle = ...
+with cle in !?table error message searchKey do
+  mOccurrenceCount ++
+end
+\end{galgascode}
+
+En utilisant un préfixe, le code devient :
+\begin{galgascode}
+@lstring cle = ...
+with cle : abc_ in !?table error message searchKey do
+  abc_mOccurrenceCount ++
+end
+\end{galgascode}
 
