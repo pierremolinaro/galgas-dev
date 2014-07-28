@@ -179,12 +179,11 @@ Alors :
 
 La priorité des opérateurs est définie dans le \refTableau{prioriteOperateurs}. Pour des opérateurs de même priorité, le groupement s'effectue de gauche à droite. Les parenthèses permettent de forcer l'ordre d'évaluation. Par exemple, \galgas{4 + 3 - 2 - 3} est équivalent à \galgas{((4 + 3) - 2) - 3}.
 
-\begin{table}[!ht]
+\begin{table}[t]
   \centering
 %  \rowcolors{2}{\fondTableau}{}
   \begin{tabular}{llll}
   \textbf{Priorité} & \textbf{Opérateur}  & \textbf{Commentaire} & \textbf{Référence}\\
-  \hline
   0 (plus faible) & \galgas{.} & Concaténation & \refSubsectionPage{operateurConcatenation}\\
   1 & \galgas{\|} & « ou » logique & \refSubsectionPage{operateursLogiques}\\
     & \galgas{\^} & « ou exclusif » logique & \refSubsectionPage{operateursLogiques}\\
@@ -202,10 +201,10 @@ La priorité des opérateurs est définie dans le \refTableau{prioriteOperateurs
   7 & \galgas{not} & Complémentation booléenne & \refSubsectionPage{operateursLogiques}\\
   8 & \galgas{\~} & Complémentation bit-à-bit & \refSubsectionPage{complementationBitABit}\\
   9 (plus forte) & \galgas{->} & Accès à un champ d'une structure & \refSubsectionPage{accesChampStructure}\\
-  \hline
   \end{tabular}
   \caption{Priorité des opérateurs}
   \labelTableau{prioriteOperateurs}
+  \ligne
 \end{table}
 
 \subsectionLabel{Concaténation}{operateurConcatenation}

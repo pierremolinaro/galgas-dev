@@ -335,7 +335,7 @@ An abstract category reader, method, modifier that has the same name as a catego
 
 The following example illustrates how theses rules should be applied. In the \refFigure{}{figureCategoryExample}, four classes are shown. An arrow links a class to its super class. The \lstinline[language=galgas]!@A! and \lstinline[language=galgas]!@C! classes are abstract. \lstinline[language=galgas]!m1! is a name for any reader, method or modifier.
 
-\begin{figure}[ht]
+\begin{figure}[t]
   \centering
    \begin{tikzpicture}[every state/.style={draw, circle}, node distance=1.5cm, <-, thick]
      \node at (0, 4.5) [state, accepting] (A) {\lstinline[language=galgas]!@A!};
@@ -352,6 +352,7 @@ The following example illustrates how theses rules should be applied. In the \re
    \end{tikzpicture}
   \caption{inheritance graph and categories}
   \labelFigure{figureCategoryExample}
+  \ligne
 \end{figure}
 
 \lstinline[language=galgas]!m1! is declared as \lstinline[language=galgas]!abstract! for the \lstinline[language=galgas]!@A! class. It is allowed since \lstinline[language=galgas]!@A! is abstract. Consequently, the concrete \lstinline[language=galgas]!@B! class should override \lstinline[language=galgas]!m1!. The \lstinline[language=galgas]!@C! class is also abstract, and \lstinline[language=galgas]!m1! can be declared as \lstinline[language=galgas]!abstract! for this class. But as it has been also declared for one of theses super class, it should also declared as \lstinline[language=galgas]!override!. As \lstinline[language=galgas]!@D! is concrete, \lstinline[language=galgas]!m1! should be declared for this class with \lstinline[language=galgas]!override! tag.

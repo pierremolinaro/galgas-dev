@@ -10,6 +10,23 @@ Les six instructions décrites dans ce chapitre ne peuvent être utilisées qu'�
 
 \sectionLabel{Instruction d'appel de terminal}{instruction-appel-terminal}
 
+\lstset{emph={$terminal$, parametres_entree, nom_index, traduction_dirigee_par_la_syntaxe}, emphstyle=\emph}
+
+Cette instruction permet de vérifier l'occurrence d'un terminal. Sa syntaxe présente deux options :
+\begin{galgascode}
+$terminal$ parametres_entree
+indexing nom_index # Optionnel
+traduction_dirigee_par_la_syntaxe # Optionnel
+\end{galgascode}
+
+Où :
+\begin{itemize}
+  \item \galgas{$terminal$} est le nom du terminal à vérifier ; il doit être l'un des terminaux déclarés par le lexique importé par le composant syntaxique ;
+  \item \galgas{parametres_entree} est une liste de zéro, un ou plusieurs paramètres effectifs en entrée, en accord avec la déclaration du \galgas{$terminal$} dans le lexique ; comment écrire une liste de paramètres en entrée est présenté à la \refSectionPage{listeParametresEffectifsEntree} ;
+  \item \galgas{nom_index} est le nom d'un index, tel que déclaré dans le lexique ; cet index sert à peupler le menu contextual de cross référence en Cocoa (\refSectionPage{indexingYourSourceFiles}) ;
+  \item \galgas{traduction_dirigee_par_la_syntaxe} permet de préciser les options de \emph{traduction dirigée par la syntaxe} ; celle-ci est présentée en détail au \refChapterPage{chapitreTraductionDirigeeParSyntaxe}. 
+\end{itemize}
+
 
 
 

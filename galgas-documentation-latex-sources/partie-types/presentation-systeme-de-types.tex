@@ -201,12 +201,11 @@ L'expression \galgas{[@T default]} invoque le constructeur par défaut du type \
 Le \refTableau{constructeurParDefaut} précise par chaque type l'existence du constructeur par défaut.
 
 
-\begin{table}[ht]
+\begin{table}[t]
   \centering
 %  \rowcolors{2}{\fondTableau}{}
   \begin{tabular}{@{}lllllll@{}}
   \textbf{Type} & \textbf{Constructeur par défaut} \\
-  \hline
   \galgas{abstract class @T} & \emph{Pas de constructeur par défaut} \\
   \galgas{@bool} & Initialisation à \galgas{false} \\
   \galgas{@application} & \emph{Pas de constructeur par défaut} \\
@@ -231,10 +230,10 @@ Le \refTableau{constructeurParDefaut} précise par chaque type l'existence du co
   \galgas{@type} & \emph{Pas de constructeur par défaut} \\
   \galgas{@uint} & Initialisation à \galgas{0} \\
   \galgas{@uint64} & Initialisation à \galgas{0L} \\
-  \hline
   \end{tabular}
   \caption{Constructeur par défaut pour chaque type}
   \labelTableau{constructeurParDefaut}
+  \ligne
 \end{table}
 
 Remarques :

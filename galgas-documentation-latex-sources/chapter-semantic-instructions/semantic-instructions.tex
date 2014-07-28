@@ -541,7 +541,7 @@ if ok then
   resultat = ...
 else
   error nom : message_erreur
-end
+end # Erreur : 'resultat' est value par une branche
 \end{galgascode}
 
 En effet, une des branches du \galgas{if} donne une valeur à \galgas{resultat}, et l'autre pas. Or, en cas d'erreur, on veut que \galgas{resultat} ne soit pas valué à l'exécution. On écrit alors le texte suivant (qui compile) :
