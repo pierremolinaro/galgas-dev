@@ -10,35 +10,28 @@ GALGAS définit les sous-programmes suivants :
   \item les \emph{routines} (\refChapterPage{routines}) ;
   \item les \emph{fonctions} (\refChapterPage{fonctions}) ;
   \item les \emph{méthodes} (\refSectionPage{categoryMethod}) ;
-  \item les \emph{readers} (\refSectionPage{categoryReader}) ;
-  \item les \emph{modifiers} (\refSectionPage{categoryModifier}).
+  \item les \emph{getter} (\refSectionPage{categoryReader}) ;
+  \item les \emph{setters} (\refSectionPage{categoryModifier}).
 \end{itemize}
 
-En GALGAS, \emph{méthodes}, \emph{readers} et \emph{modifiers} s'appliquent sur un objet d'un type quelconque (qui n'est donc pas forcément un type \emph{classe}). Pour les types définis par l'utilisateur, \emph{méthodes}, \emph{readers} et \emph{modifiers} sont toujours déclarés en dehors de la déclaration du type auquel ils s'appliquent.
+En GALGAS, \emph{méthodes}, \emph{getters} et \emph{setters} s'appliquent sur un objet d'un type quelconque (qui n'est donc pas forcément un type \emph{classe}). Pour les types définis par l'utilisateur, \emph{méthodes}, \emph{getters} et \emph{setters} sont toujours déclarés en dehors de la déclaration du type auquel ils s'appliquent.
 
-Un sous-programme peut donc être directement déclaré dans :
-\begin{itemize}
-\item un composant \emph{semantics} ;
-\item un composant \emph{syntax} ;
-\item un composant \emph{program}.
-\end{itemize}
 
 À chaque nature de sous-programme correspond une construction particulière pour l'appeler (\refTableau{appelSousProgramme}).
 
-\begin{table}[ht]
+\begin{table}[t]
   \centering
     \begin{tabular}{lll}
       \textbf{Sous-programme} & \textbf{Construction}  & \textbf{Référence} \\
-      \hline
       \emph{routine} & Instruction d'appel de routine & \refSectionPage{appelRoutine} \\
       \emph{fonction} & Appel de fonction (dans une expression) & \refSubsectionPage{appelFonction} \\
       \emph{méthode} & Instruction d'appel de méthode & \refSectionPage{methodCallInstruction} \\
-      \emph{reader} & Appel de reader (dans une expression) & \refSubsectionPage{appelReader} \\
-      \emph{modifier} & Instruction d'appel de modifier & \refSectionPage{modifierCallInstruction} \\
-      \hline
+      \emph{getter} & Appel de getter (dans une expression) & \refSubsectionPage{appelReader} \\
+      \emph{setter} & Instruction d'appel de setter & \refSectionPage{modifierCallInstruction} \\
     \end{tabular}
   \caption{Constructions d'appel de sous programme}
   \labelTableau{appelSousProgramme}
+  \ligne
 \end{table}
 
 
@@ -54,89 +47,86 @@ Un sous-programme peut donc être directement déclaré dans :
 
 Le \refTableau{ArgumentFormelEntree} liste les différentes formes d'un argument formel en entrée. Le paramètre effectif correspondant est une expression précédée par \galgas{\!}.
 
-\begin{table}[!ht]
+\begin{table}[t]
   \centering
   \subfloat[Argument formel]{
     \begin{tabular}{ll}
       \textbf{Syntaxe} & \textbf{Remarque} \\
-      \hline
       \galgas{\?@T var} & \galgas{var} est modifiable localement \\
       \galgas{\?@T unused var} & \galgas{var} n'est pas utilisée \\
       \galgas{\?\?@T var} & \galgas{var} est une constante \\
       \galgas{\?@T unused var} & \galgas{var} est une constante inutilisée \\
-      \hline
     \end{tabular}
   }
   \subfloat[Paramètre effectif]{
     \begin{tabular}{ll}
       \textbf{Syntaxe} \\
-      \hline
       \galgas{\!expression}~~~~~~~~~~~\\
       \\
       \\
       \\
-      \hline
     \end{tabular}
   }
   \caption{Argument formel en entrée, paramètre effectif en sortie}
   \labelTableau{ArgumentFormelEntree}
+  \ligne
 \end{table}
 
 \subsection{Argument formel en entrée/sortie}
 
-Le \refTableau{ArgumentFormelEntreeSortie} liste les différentes formes d'un argument formel en entrée. Le paramètre effectif correspondant est une \emph{cible} précédée par \galgas{\!\?}. Une \emph{cible} est soit une variable, soit l'accès à un champ d'une variable de type \galgas{struct}.
+Le \refTableau{ArgumentFormelEntreeSortie} liste les différentes formes d'un argument formel en entrée. Le paramètre effectif correspondant est une \emph{cible} précédée par \galgast{!?}. Une \emph{cible} est soit une variable, soit l'accès à un champ d'une variable de type \galgas{struct}.
 
-\begin{table}[!ht]
+\begin{table}[t]
   \centering
   \subfloat[Argument formel]{
     \begin{tabular}{ll}
       \textbf{Syntaxe} & \textbf{Remarque} \\
-      \hline
       \galgas{\?\!@T var} & \galgas{var} est modifiable \\
       \galgas{\?\!@T unused var} & \galgas{var} n'est pas utilisée \\
-      \hline
     \end{tabular}
   }
   \subfloat[Paramètre effectif]{
     \begin{tabular}{l}
       \textbf{Syntaxe} \\
-      \hline
-      \galgas{\!\?cible}~~~~~~~~~~~\\
+      \galgast{!?cible}~~~~~~~~~~~\\
       \\
-      \hline
     \end{tabular}
   }
   \caption{Argument formel en entrée/sortie, paramètre effectif en sortie/entrée}
   \labelTableau{ArgumentFormelEntreeSortie}
+  \ligne
 \end{table}
 
 \subsection{Argument formel en sortie}
 
-\begin{table}[!ht]
+\begin{table}[t]
   \centering
   \subfloat[Argument formel]{
     \begin{tabular}{ll}
       \textbf{Syntaxe} \\
-      \hline
       \galgas{\!@T var}~~~~~~~~~~~~\\
       \\
       \\
       \\
-      \hline
     \end{tabular}
   }
   \subfloat[Paramètre effectif]{
     \begin{tabular}{ll}
       \textbf{Syntaxe} & \textbf{Remarque} \\
-      \hline
-      \galgas{\?nom} & Affectation d'une variable \\
-      \galgas{\?@T nom} & Déclaration et affectation d'une variable \\
-      \galgas{\?*} & Variable anonyme \\
-      \galgas{\?\?@T nom} & Déclaration et affectation d'une constante \\
-      \hline
+      \galgast{?nom} & Affectation d'une variable \\
+      \galgast{?@T nom} & Déclaration et affectation d'une variable \\
+      \galgast{?*} & Variable anonyme \\
+      \galgast{??@T nom} & Déclaration et affectation d'une constante \\
     \end{tabular}
   }
   \caption{Argument formel en sortie, paramètre effectif en entrée}
   \labelTableau{ArgumentFormelSortie}
+  \ligne
 \end{table}
+
+
+
+\sectionLabel{Liste de paramètres effectifs en entrée}{listeParametresEffectifsEntree}
+
+
 

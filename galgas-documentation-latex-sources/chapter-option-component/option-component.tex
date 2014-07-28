@@ -10,9 +10,9 @@ Le composant \galgas{option} permet de définir des options qui sont appelables 
 
 Voici l'exemple d'un composant \galgas{option} qui déclare une option (évidement, un composant \galgas{option} peut déclarer un nombre quelconque d'options) :
 \begin{galgascode}
-option nom_composant :
-  @bool nom_option : 'S', "asm" -> "Extract assembly code" ;
-end  option ;
+option nom_composant {
+  @bool nom_option : 'S', "asm" -> "Extract assembly code"
+}
 \end{galgascode}
 
 
@@ -20,7 +20,7 @@ end  option ;
 
 La déclaration d'une option présente le syntaxe suivante :
 \begin{galgascode}
-  @T nom_option : caractere, chaine -> description ;
+  @T nom_option : caractere, chaine -> description
 \end{galgascode}
 
 Les cinq champs qui définissent une option sont :
@@ -43,7 +43,7 @@ Les cinq champs qui définissent une option sont :
 
 Le champ qui définit le type de l'option est \galgas{@bool} ; par exemple :
 \begin{galgascode}
-  @bool nom_option : 'S', "asm" -> "Extract assembly code" ;
+  @bool nom_option : 'S', "asm" -> "Extract assembly code"
 \end{galgascode}
 
 Dans la ligne de commande, l'option est activée par \texttt{-A} ou \texttt{-{}-asm}.
@@ -61,7 +61,7 @@ Par défaut, l'option n'est pas activée, et sa valeur associée est \galgas{fal
 
 Le champ qui définit le type de l'option est \galgas{@uint} ; par exemple :
 \begin{galgascode}
-  @uint nom_option : 'M', "max-iterations-count" -> "Max of iteration count";
+  @uint nom_option : 'M', "max-iterations-count" -> "Max of iteration count"
 \end{galgascode}
 
 Dans la ligne de commande, l'option est activée par \texttt{-N=xxx} ou \texttt{-{}-max-iterations-count=xxx}, où \texttt{xxx} est un nombre entier positif ou nul (et inférieur ou égal à $2^{32}-1$).
@@ -81,7 +81,7 @@ Par défaut, l'option n'est pas activée, et sa valeur associée est $0$. Quand 
 
 Le champ qui définit le type de l'option est \galgas{@string} ; par exemple :
 \begin{galgascode}
-  @string nom_option : 'F', "file-name" -> "File name";
+  @string nom_option : 'F', "file-name" -> "File name"
 \end{galgascode}
 
 Dans la ligne de commande, l'option est activée par \texttt{-F=abc} ou \texttt{-{}-file-name=abc}, où \texttt{abc} est une chaîne de caractères sans espaces. Si vous voulez entrer une chaîne de caractères qui comprend des espaces, écrivez : \texttt{"-F=abc"} ou \texttt{"-{}-file-name=abc"}.

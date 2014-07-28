@@ -75,11 +75,12 @@ This new style's feature can be edited as other styles, by the Preferences setti
 
 \texteEncercle{3} Edit the \texttt{my\_lexique-syntax-coloring-adds.plist} with the \emph{Property List Editor} application or Xcode. Add one entry for every custom syntax coloring case: the \emph{key} is the terminal spelling, the \emph{value} has the \emph{String} type, and the specific style name. For example, the \refFigure{}{customSyntaxColoringPropertyList} shows the assignment of the terminal which spelling is \texttt{begin} by the \texttt{mySpecificStyle} style.
 
-\begin{figure}[ht]
+\begin{figure}[t]
   \centering
   \includegraphics[width=15cm]{chapter-cocoa-features/custom-syntax-coloring-property-list-edition.pdf}
   \caption{Example of a syntax coloring property list}
   \labelFigure{customSyntaxColoringPropertyList}
+  \ligne
 \end{figure}
 
 If your provides an undefined style name, you will be warned every time you open a document by a beep and a small explanation window.
@@ -93,11 +94,12 @@ If your provides an undefined style name, you will be warned every time you open
 
 You can configure your project for enabling cross-referencing entities with your Cocoa application. This has been done in GALGAS, providing such feature (\refFigure{}{indexingUnderCocoaGALGAS}). The contextual menu is displayed with a \texttt{cmd}-click.
 
-\begin{figure}[ht]
+\begin{figure}[t]
   \centering
   \includegraphics[width=16cm]{chapter-cocoa-features/indexing-sample.png}
   \caption{Indexing and cross-referencing in GALGAS Cocoa Application}
   \labelFigure{indexingUnderCocoaGALGAS}
+  \ligne
 \end{figure}
 
 For configuring your project, you will have to modify the lexique component, the syntax component, the grammar component and the program component. This section presents the six configuring steps.

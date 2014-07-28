@@ -410,7 +410,7 @@ rule <syntax_instruction>
   repeat
     $rewind$ ;
     <syntax_instruction_list> ??@syntaxInstructionList instructionList ;
-    mParseDoBranchList += !instructionList  !here;
+    mParseDoBranchList += !instructionList !here;
   while
   end repeat ;
   $end$ ;

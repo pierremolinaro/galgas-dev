@@ -2,7 +2,7 @@
 %!TEX root = ../galgas-book.tex
 
 %--------------------------------------------------------------
-\chapter{Traduction dirigée par la syntaxe}
+\chapterLabel{Traduction dirigée par la syntaxe}{chapitreTraductionDirigeeParSyntaxe}
 %-------------------------------------------------------------
 
 GALGAS permet de construire un \emph{traducteur dirigée par la syntaxe}. Ce type de traduction permet de transformer le texte source d'une grammaire en un autre texte source, tout en conservant les commentaires. C'est donc bien adapté pour mettre à jour des textes sources suite à un changement de syntaxe.
@@ -32,41 +32,42 @@ L'analyseur lexical -- non décrit -- définit les symboles terminaux \galgas{$i
 
 L'analyseur syntaxique est le suivant :
 \begin{galgascode}
-syntax expSyntax :
-  rule <expression> :
-    <terme> ;
-    repeat while $+$ ; <terme> ; end repeat ;
-  end rule ;
-  rule <terme> :
-    <facteur> ;
-    repeat while $*$ ; <facteur> ; end repeat ;
-  end rule ;
-  rule <facteur> :
-    $idf$ ?* ;
-  end rule ;
-  rule <facteur> :
-    $($ ;
-    <expression> ;
-    $)$ ;
-  end rule ;
-end syntax ;
+syntax expSyntax {
+  rule <expression> {
+    <terme>
+    repeat while $+$ ; <terme> ; end
+  }
+  rule <terme> {
+    <facteur>
+    repeat while $*$ ; <facteur> ; end
+  }
+  rule <facteur> {
+    $idf$ ?*
+  }
+  rule <facteur> {
+    $($
+    <expression>
+    $)$
+  }
+}
 \end{galgascode}
 
 La grammaire :
 \begin{galgascode}
-grammar expGrammar "LL1" (expSyntax) :
-  root <expression> ;
-end grammar ;
+grammar expGrammar "LL1" {
+  syntax expSyntax
+  <expression>
+}
 \end{galgascode}
 
 La classe de la grammaire (ici \texttt{LL1}) n'a pas d'importance pour la traduction dirigée par la syntaxe : celle-ci fonctionne pour toutes les classes de grammaire. 
 
 Enfin, le lien entre l'extension des fichiers source et l'analyseur est réalisé par le code suivant :
 \begin{galgascode}
-when . "expression"
+case . "expression"
 message "an '.expression' source file"
 ??@lstring inSourceFile {
-  grammar expGrammar in inSourceFile ;
+  grammar expGrammar in inSourceFile
 }
 \end{galgascode}
 
@@ -79,17 +80,17 @@ message "an '.expression' source file"
 
 \section{Activer la traduction dirigée par la syntaxe}
 
-Activer la traduction dirigée par la syntaxe indique à GALGAS d'engendrer le code supplémentaire qui prend en charge la traduction. L'activation doit être indiquée à la fois sur le composant \galgas{syntax} et le composant \galgas{grammar} en ajoutant la directive \galgas{feature translate} dans chaque en-tête\footnote{Dans le cas où les règles syntaxiques sont réparties dans plusieurs composants \galgas{syntax}, l'activation doit être indiquée dans tous.}.
+Activer la traduction dirigée par la syntaxe indique à GALGAS d'engendrer le code supplémentaire qui prend en charge la traduction. L'activation doit être indiquée à la fois sur le composant \galgas{syntax} et le composant \galgas{grammar} en ajoutant la directive \galgast{\%translate} dans chaque en-tête\footnote{Dans le cas où les règles syntaxiques sont réparties dans plusieurs composants \galgas{syntax}, l'activation doit être indiquée dans tous.}.
 
 Pour le composant \galgas{syntax} :
 \begin{galgascode}
-syntax expSyntax feature translate :
+syntax expSyntax %translate {
   ...
 \end{galgascode}
 
 Et pour la grammaire :
 \begin{galgascode}
-grammar expGrammar "LL1" (expSyntax) feature translate :
+grammar expGrammar "LL1" %translate {
   ...
 \end{galgascode}
 
@@ -106,12 +107,12 @@ Quand la traduction est activée, l'analyse d'un fichier construit une chaîne d
 
 La chaîne traduite est obtenue en modifiant l'instruction \galgas{grammar} (\refSectionPage{instruction-grammar}). Comme on l'a vu, celle-ci est : 
 \begin{galgascode}
-grammar expGrammar in inSourceFile ;
+grammar expGrammar in inSourceFile
 \end{galgascode}
 
 Obtenir la chaine traduite s'exprime en utilisant l'opérateur  \galgas{\:>} :
 \begin{galgascode}
-grammar expGrammar in inSourceFile :> ?@string s ;
+grammar expGrammar in inSourceFile :> ?@string s
 \end{galgascode}
 
 L'instruction déclare une variable \galgas{s} de type \galgas{@string} et lui affecte la chaîne traduite \footnote{Il existe des variantes pour exprimer l'obtention de la chaîne traduite, voir la description de l'instruction \galgas{grammar} à la \refSectionPage{instruction-grammar}.}.
@@ -133,7 +134,7 @@ Par défaut, la chaîne traduite est identique à la chaîne source. Obtenir une
 
 Une instruction d'appel de terminal a l'allure suivante (par exemple pour \galgas{$idf$}) :
 \begin{galgascode}
-$idf$ ?* ;
+$idf$ ?*
 \end{galgascode}
 
 Par défaut, cette instruction recopie à l'identique dans la chaîne produite deux informations :
@@ -166,24 +167,24 @@ Cette écriture a pour effet que le séparateur précédent le terminal et le te
 
 On va prendre un exemple pour illustrer cette construction : produite une chaîne dont les identificateurs et les séparateurs qui les précèdent auront disparus. On modifie le composant \galgas{syntax} comme suit\footnote{Il existe une expression plus simple de l'instruction \galgas{$idf$ ?* :> ?@string s ?@string t ;}, puisque \galgas{s} et \galgas{t} ne sont pas utilisés : c'est \galgas{$idf$ ?* :> ?* ?* ;}, décrite  à la \refSectionPage{instruction-appel-terminal}.} :
 \begin{galgascode}
-syntax expSyntax :
-  rule <expression> :
+syntax expSyntax {
+  rule <expression> {
     <terme> ;
-    repeat while $+$ ; <terme> ; end repeat ;
-  end rule ;
-  rule <terme> :
+    repeat while $+$ ; <terme> ; end
+  }
+  rule <terme> {
     <facteur> ;
-    repeat while $*$ ; <facteur> ; end repeat ;
-  end rule ;
-  rule <facteur> :
+    repeat while $*$ ; <facteur> ; end
+  }
+  rule <facteur> {
     $idf$ ?* :> ?@string s ?@string t ;
-  end rule ;
-  rule <facteur> :
+  }
+  rule <facteur> {
     $($ ;
     <expression> ;
     $)$ ;
-  end rule ;
-end syntax ;
+  }
+}
 \end{galgascode}
 
 Si la chaîne source est \galgas{@1@a+@2@b@3@}, alors la chaîne produite est \galgas{+@3@}.
@@ -204,31 +205,31 @@ Cette première instruction permet donc de ne pas transmettre les informations a
 L'instruction \galgas{send} a la syntaxe suivante\footnote{L'instruction \galgas{send} est décrite à la \refSectionPage{instruction-send-syntaxique}.} :
 \lstset{emph={exp}, emphstyle=\emph}
 \begin{galgascode}
-send exp ;
+send exp
 \end{galgascode}
 
 \galgas{exp} est une expression de type \galgas{@string}. Son comportement est simple : la valeur de l'expression chaîne de caractères est simplement transmise à la chaîne produite.
 
 Par exemple, supposons que l'on veuille transformer les parenthèses en accolades ; on écrit le composant \galgas{syntax} comme suit\footnote{Là encore, il existe une forme plus concise de l'instruction \galgas{$($ :> ?@string s ?@string t ;}, puisque \galgas{t} est inutilisé : c'est \galgas{$($ :> ?@string s ?* ;}, décrite  à la \refSectionPage{instruction-appel-terminal}.} :
 \begin{galgascode}
-syntax expSyntax :
-  rule <expression> :
-    <terme> ;
-    repeat while $+$ ; <terme> ; end repeat ;
-  end rule ;
-  rule <terme> :
-    <facteur> ;
-    repeat while $*$ ; <facteur> ; end repeat ;
-  end rule ;
-  rule <facteur> :
-    $idf$ ?* ;
-  end rule ;
-  rule <facteur> :
-    $($ :> ?@string s ?@string t ; send s . "{" ;
-    <expression> ;
-    $)$ :> ?@string s ?@string t ; send s . "}" ;
-  end rule ;
-end syntax ;
+syntax expSyntax {
+  rule <expression> {
+    <terme>
+    repeat while $+$ <terme> end
+  }
+  rule <terme> {
+    <facteur>
+    repeat while $*$ <facteur> end
+  }
+  rule <facteur> {
+    $idf$ ?*
+  }
+  rule <facteur> {
+    $($ :> ?@string s ?@string t ; send s . "{"
+    <expression>
+    $)$ :> ?@string s ?@string t ; send s . "}"
+  }
+}
 \end{galgascode}
 
 Mentionner \galgas{s} dans l'instruction \galgas{send} permet de transmettre les séparateurs qui précèdent les parenthèses. Ainsi à partir de la chaîne source \galgas{(@1@a+@2@b)@3@}, on obtient \galgas{\{@1@a+@2@b\}@3@}.
@@ -241,21 +242,21 @@ Attention, l'instruction \galgas{send} est une instruction syntaxique. Cela sign
 \lstset{emph={condition, A, B}, emphstyle=\emph}
 \begin{galgascode}
 if condition then
-  send A ; # Erreur
+  send A # Erreur
 else
-  send B ; # Erreur
-end if ;
+  send B # Erreur
+end
 \end{galgascode}
 
-L'analyse des instructions \galgas{send A ;} et  \galgas{send B ;} déclenche une erreur ; en effet, les branches d'une instruction \galgas{if} ne peuvent contenir que des instructions sémantiques. Les instructions \galgas{send} ne peuvent que directement dans des règles de production, soient dans les branches des instructions \galgas{select}, \galgas{repeat} ou \galgas{parse}. Pour contourner cette interdiction, écrire :
+L'analyse des instructions \galgas{send A ;} et  \galgas{send B ;} déclenche une erreur ; en effet, les branches d'une instruction \galgas{if} ne peuvent contenir que des instructions sémantiques. Les instructions \galgas{send} ne peuvent figurer que directement dans des règles de production, soient dans les branches des instructions \galgas{select}, \galgas{repeat} ou \galgas{parse}. Pour contourner cette interdiction, écrire :
 \begin{galgascode}
-@string s ;
+@string s
 if condition then
-  s := A ;
+  s = A
 else
-  s := B ;
-end if ;
-send s ;
+  s = B
+end
+send s
 \end{galgascode}
 
 
@@ -264,7 +265,7 @@ send s ;
 
 L'instruction d'appel de non terminal capture la chaîne obtenue par la dérivation de ce non terminal :
 \begin{galgascode}
-<expression> ;
+<expression>
 \end{galgascode}
 
 
@@ -272,24 +273,24 @@ Par défaut, cette chaîne est ajoutée à la chaîne produite.
 
 Là encore, l'opérateur \galgas{\:>} permet d'effectuer une interception. On écrit :
 \begin{galgascode}
-<expression> :> ?@string e ;
+<expression> :> ?@string e
 \end{galgascode}
 
 La chaîne obtenue par la dérivation du non terminal \galgas{<expression>} n'est pas ajoutée à la chaîne produite, mais affectée à la variable \galgas{e}. D'une manière analogue à l'instruction d'appel de terminal, l'instruction \galgas{send} permet de retrouver le comportement par défaut :
 \begin{galgascode}
-<expression> :> ?@string e ; send e ;
+<expression> :> ?@string e ; send e
 \end{galgascode}
 
-On utilise souvent cette construction pour ne pas transmettre la chaîne obtenue par la dérivation d'un non terminal ; par exemple, si on ne veut pas transmettre les expressions entre parenthèses, on modifie la dernière règle \galgas{facteur} en\footnote{Ou encore : \galgas{<expression> \:> ?* ;}.} :
+On utilise souvent cette construction pour ne pas transmettre la chaîne obtenue par la dérivation d'un non terminal ; par exemple, si on ne veut pas transmettre les expressions entre parenthèses, on modifie la dernière règle \galgas{facteur} en\footnote{Ou encore : \galgas{<expression> \:> ?*}.} :
 \begin{galgascode}
-syntax expSyntax :
+syntax expSyntax {
   ...
-  rule <facteur> :
-    $($ ;
-    <expression> :> ?@string e ;
-    $)$ ;
-  end rule ;
-end syntax ;
+  rule <facteur> {
+    $($
+    <expression> :> ?@string e
+    $)$
+  }
+}
 \end{galgascode}
 
 
