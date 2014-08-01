@@ -117,6 +117,7 @@ map @filewrapperMap {
   @wrapperFileMap mFilewrapperFileMap ;
   @wrapperDirectoryMap mFilewrapperDirectoryMap ;
   @filewrapperTemplateMap mFilewrapperTemplateMap ;
+  @bool mIsInternal ;
   insert insertKey error message "the '%K' filewrapper has been already declared in %L" ;
   search searchKey error message "the '%K' filewrapper is not declared" ;
 }
@@ -2031,6 +2032,7 @@ override method @filewrapperDeclarationAST enterInSemanticContext
     !regularRootFileMap
     !wrapperDirectoryMap
     !filewrapperTemplateMap
+    !mIsInternal
   ] ;
 end method ;
 
