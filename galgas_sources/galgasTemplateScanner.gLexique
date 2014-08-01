@@ -91,6 +91,7 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "index",
   "indexing",
   "insert",
+  "internal",
   "is",
   "label",
   "let",

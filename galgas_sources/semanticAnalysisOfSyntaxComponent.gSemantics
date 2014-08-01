@@ -311,7 +311,6 @@ override method @nonterminalCallInstruction analyzeSyntaxInstruction
     [labelMap searchKey !mLabelName ?* ?signature ?*] ;
   end if ;
 #--- call arguments
-  @actualParameterListForGeneration actualParameterListForGeneration ;
   analyzeRoutineArguments
     !inAnalysisContext
     !mNonterminalName
@@ -319,7 +318,7 @@ override method @nonterminalCallInstruction analyzeSyntaxInstruction
     !signature
     !mActualParameterList
     !?ioVariableMap
-    ?actualParameterListForGeneration
+    ??@actualParameterListForGeneration actualParameterListForGeneration
   ;
 #--- Check syntax directed translation destination variable
   [mGrammarInstructionSyntaxDirectedTranslationResult analyzeSDT

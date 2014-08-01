@@ -55,18 +55,18 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-#rule <declaration>
-# ?!@galgas3DeclarationAST ioDeclarations
-#:
-#  @bool isLocal ;
-#  select
-#    isLocal := false ;
-#  or
-#    $local$ ;
-#    isLocal := true ;
-#  end select ;
-#  <declaration_with_local> !isLocal !?ioDeclarations ;
-#end rule ;
+rule <declaration>
+ ?!@galgas3DeclarationAST ioDeclarations
+:
+  @bool isLocal ;
+  select
+    isLocal := false ;
+  or
+    $internal$ ;
+    isLocal := true ;
+  end select ;
+  <declaration_with_local> !isLocal !?ioDeclarations ;
+end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -84,7 +84,7 @@ rule <declaration>
   <formal_parameter_list> ??@formalParameterListAST mFormalParameterList ;
   ioDeclarations->mSemanticDeclarationList += ![@externRoutineDeclarationAST new
     !false # Is not predefined
-    !false # inIsLocal
+    !false # Is not internal
     !mActionName
     !mFormalParameterList
   ] ;
@@ -100,7 +100,8 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <declaration>
+rule <declaration_with_local>
+  ??@bool inIsInternal
   ?!@galgas3DeclarationAST ioDeclarations
 :
   $proc$ ;
@@ -112,7 +113,7 @@ rule <declaration>
   const endOfInstructionList := here ;
   ioDeclarations->mSemanticDeclarationList += ![@routineDeclarationAST new
     !false # Is not predefined
-    !false # inIsLocal
+    !inIsInternal
     !mRoutineName
     !mFormalParameterList
     !mRoutineInstructionList
@@ -130,10 +131,10 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <declaration>
- ?!@galgas3DeclarationAST ioDeclarations
+rule  <declaration_with_local>
+  ??@bool inIsInternal
+  ?!@galgas3DeclarationAST ioDeclarations
 :
-#  <local_declaration> ??@bool isLocal ;
   $func$ ;
   var isOnce := false ;
   select
@@ -165,6 +166,7 @@ rule <declaration>
       !resultVariableName
       !functionInstructionList
       !endOfFunctionInstructionList
+      !inIsInternal
     ] ;
   else
     ioDeclarations->mSemanticDeclarationList += ![@functionDeclarationAST new
@@ -175,6 +177,7 @@ rule <declaration>
       !resultVariableName
       !functionInstructionList
       !endOfFunctionInstructionList
+      !inIsInternal
     ] ;
   end if ;
 end rule ;
@@ -1123,81 +1126,6 @@ rule <semantic_instruction>
     end if ;
   end select ;
 end rule ;
-
-#---------------------------------------------------------------------------*
-
-#rule <semantic_instruction>
-#  !@semanticInstructionAST outInstruction
-#  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
-#:
-#  $with$ ;
-#  $!?$ ;
-#  const instructionLocation := here ;
-#  <expression> ??@semanticExpressionAST keyExpression ;
-#  const endOfKeyExpression := here ;
-#  @lstring withPrefix ;
-#  select
-#    withPrefix := [@lstring new !"" !here] ;
-#  or
-#    $:$ ;
-#    $identifier$ ? withPrefix ;
-#  end select ;
-#  $in$ ;
-#  $!?$ ;
-#  $identifier$ ?@lstring mTargetObjectName ;
-#  @lstringlist structAttributeList [emptyList] ;
-#  repeat
-#  while
-#    $.$ ;
-#    $identifier$ ?@lstring mStructFieldName ;
-#    structAttributeList += !mStructFieldName ;
-#  end repeat ;
-#  const endOfReceiverExpression := here ;
-#  @lstring searchMethodNameForErrorSignaling ;
-#  select
-#    searchMethodNameForErrorSignaling := ["" nowhere] ;
-#  or
-#    $error$ ;
-#    $message$ ;
-#    $identifier$ ?searchMethodNameForErrorSignaling ;
-#  end select ;
-#  $do$ ;
-#  <semantic_instruction_list> ??@semanticInstructionListAST mDoBranchInstructions ;
-#  const endOf_do_instructions := here ;
-#  @semanticInstructionListAST mElseBranchInstructions ;
-#  select
-#    mElseBranchInstructions := [@semanticInstructionListAST emptyList] ;
-#  or
-#    $else$ ;
-#    if searchMethodNameForErrorSignaling->string != "" then
-#      error searchMethodNameForErrorSignaling : "no 'else' branch if error on search is enabled" ;
-#    end if ;
-#    <semantic_instruction_list> ? mElseBranchInstructions ;
-#  end select ;
-#  const endOf_else_instructions := here ;
-#  outInstruction := [@readWriteAccessWithInstructionAST new
-#    !instructionLocation
-#    !withPrefix
-#    !mTargetObjectName
-#    !structAttributeList
-#    !endOfReceiverExpression
-#    !keyExpression
-#    !endOfKeyExpression
-#    !searchMethodNameForErrorSignaling
-#    !mDoBranchInstructions
-#    !endOf_do_instructions
-#    !mElseBranchInstructions
-#    !endOf_else_instructions
-#  ] ;
-#  $end$ ;
-#  select
-#  or
-#    $attribute$ ??@lstring terminator ;
-#    if terminator->string != "with" then
-#      error terminator : "the terminator attribute should be '%with'" ;
-#    end if ;
-#  end select ;
-#end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *

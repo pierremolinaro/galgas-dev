@@ -673,9 +673,19 @@ override method @templateFunctionCallAST templateExpressionAnalysis
   !@semanticExpressionForGeneration outExpression
 :
 #--- Retrieve function features
-  @unifiedTypeMapProxyList functionSignature ;
-  @unifiedTypeMapProxy resultType ;
-  [inAnalysisContext->mSemanticContext->mFunctionMap searchKey !mFunctionName ?functionSignature ?resultType] ;
+  [inAnalysisContext->mSemanticContext->mFunctionMap searchKey
+    !mFunctionName
+    ??@unifiedTypeMapProxyList functionSignature
+    ??@unifiedTypeMapProxy resultType
+    ??@bool isInternal
+  ] ;
+#--- Check internal
+  if isInternal then
+    const procDeclarationLocation := [inAnalysisContext->mSemanticContext->mFunctionMap locationForKey !mFunctionName->string] ;
+    if [mFunctionName->location file] != [procDeclarationLocation file] then
+      error mFunctionName : "this proc is internal to '" . [procDeclarationLocation file] . "' file" ;
+    end if ;
+  end if ;
 #--- Analyze effective parameters
   if [functionSignature length] != [mExpressionList length] then
     error mFunctionName

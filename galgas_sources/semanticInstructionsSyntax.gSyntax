@@ -64,15 +64,15 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#rule <local_declaration> !@bool outLocal :
-#  select
-#    outLocal := false ;
-#  or
-#    $local$ :> ?@string sep ?* ;
-#    send sep . "%local" ;
-#    outLocal := true ;
-#  end select ;
-#end rule ;
+rule <local_declaration> !@bool outLocal :
+  select
+    outLocal := false ;
+  or
+    $local$ :> ?@string sep ?* ;
+    send sep . "internal" ;
+    outLocal := true ;
+  end select ;
+end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -83,7 +83,6 @@ end rule ;
 rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
-#  <local_declaration> ??@bool isLocal ;
   $extern$ ;
   $routine$ :> ??@string sep ?* ;
   send sep . "proc" ;
@@ -112,7 +111,7 @@ end rule ;
 rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
-#  <local_declaration> ??@bool isLocal ;
+  <local_declaration> ??@bool isLocal ;
   $routine$ :> ?@string sep ?* ;
   send sep . "proc" ;
   $identifier$ ? @lstring mRoutineName indexing routineDefinition ;
@@ -129,7 +128,7 @@ rule <semantic_declaration>
   $;$ :> ?* ?* ;
   ioSemanticDeclarations += ![@routineDeclarationAST new
     !false # Is not predefined
-    !false #isLocal
+    !isLocal
     !mRoutineName
     !mFormalParameterList
     !mRoutineInstructionList
@@ -142,7 +141,7 @@ end rule ;
 rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
-#  <local_declaration> ??@bool isLocal ;
+  <local_declaration> ??@bool isLocal ;
   $routine$ :> ??@string sep ?* ;
   send sep . "proc" ;
   $identifier$ ? @lstring mRoutineName indexing routineDefinition ;
@@ -155,7 +154,7 @@ rule <semantic_declaration>
   $}$ ;
   ioSemanticDeclarations += ![@routineDeclarationAST new
     !false # Is not predefined
-    !false #isLocal
+    !isLocal
     !mRoutineName
     !mFormalParameterList
     !mRoutineInstructionList
@@ -176,7 +175,7 @@ end rule ;
 rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
-#  <local_declaration> ??@bool isLocal ;
+  <local_declaration> ??@bool isLocal ;
   $function$ :> ?@string sep ?* ;
   send sep . "func" ;
   $identifier$ ? @lstring mRoutineName indexing functionDefinition ;
@@ -200,6 +199,7 @@ rule <semantic_declaration>
     !resultVariableName
     !functionInstructionList
     !endOfFunctionInstructionList
+    !isLocal
   ] ;
 end rule ;
 
@@ -208,7 +208,7 @@ end rule ;
 rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
-#  <local_declaration> ??@bool isLocal ;
+  <local_declaration> ??@bool isLocal ;
   $function$ :> ??@string sep ?* ;
   send sep . "func" ;
   $identifier$ ? @lstring mRoutineName indexing functionDefinition ;
@@ -228,6 +228,7 @@ rule <semantic_declaration>
     !resultVariableName
     !functionInstructionList
     !endOfFunctionInstructionList
+    !isLocal
   ] ;
 end rule ;
 
@@ -244,7 +245,7 @@ end rule ;
 rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
-#  <local_declaration> ??@bool isLocal ;
+  <local_declaration> ??@bool isLocal ;
   $once$ :>?@string sep ?* ;
   send sep . "func %once" ;
   $identifier$ ? @lstring mRoutineName indexing functionDefinition ;
@@ -266,6 +267,7 @@ rule <semantic_declaration>
     !resultVariableName
     !mRoutineInstructionList
     !endOfFunctionInstructionList
+    !isLocal
   ] ;
 end rule ;
 

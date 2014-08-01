@@ -56,6 +56,7 @@ map @grammarMap {
 
 map @routineMap {
   @formalParameterSignature mRoutineSignature ;
+  @bool mIsInternal ;
   insert insertKey error message "the '%K' routine has been already declared in %L" ;
   search searchKey error message "the '%K' routine is not declared" ;
 }
@@ -69,6 +70,7 @@ map @routineMap {
 map @functionMap {
   @unifiedTypeMapProxyList mFunctionSignature ;
   @unifiedTypeMapProxy mResultType ;
+  @bool mIsInternal ;
   insert insertKey error message "the '%K' function has been already declared in %L" ;
   search searchKey error message "the '%K' function is not declared" ;
 }
@@ -2691,8 +2693,6 @@ override method @classDeclarationAST enterInSemanticContext
     ![@lstringlist emptyList]
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
-#    !{} # 'with" accessor is not handled
-#    ![@withAccessorMap emptyMap]
     !generateHeaderInSeparateFile
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
     !defaultConstructorName # Default constructor
@@ -2717,7 +2717,11 @@ override method @externRoutineDeclarationAST enterInSemanticContext # Handles al
     routineSignature += !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName->string ;
   end foreach ;
 #--- Enter routine in routine map
-  [!?ioSemanticContext->mRoutineMap insertKey !mRoutineName !routineSignature] ;
+  [!?ioSemanticContext->mRoutineMap insertKey
+    !mRoutineName
+    !routineSignature
+    !mIsInternal
+  ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -2739,7 +2743,12 @@ override method @externFunctionDeclarationAST enterInSemanticContext # Handles a
   @unifiedTypeMapProxy resultTypeIndex ;
   [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mResultTypeName ?resultTypeIndex] ;
 #--- Enter function in routine map
-  [!?ioSemanticContext->mFunctionMap insertKey !mFunctionName !functionSignature !resultTypeIndex] ;
+  [!?ioSemanticContext->mFunctionMap insertKey
+    !mFunctionName
+    !functionSignature
+    !resultTypeIndex
+    !false # Is not internal
+  ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -2753,7 +2762,7 @@ override method @onceFunctionDeclarationAST enterInSemanticContext
 #--- Result type
   [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mResultTypeName ??@unifiedTypeMapProxy resultTypeIndex] ;
 #--- Enter function in routine map
-  [!?ioSemanticContext->mFunctionMap insertKey !mFunctionName ![@unifiedTypeMapProxyList emptyList] !resultTypeIndex] ;
+  [!?ioSemanticContext->mFunctionMap insertKey !mFunctionName ![@unifiedTypeMapProxyList emptyList] !resultTypeIndex !mIsInternal] ;
 end method ;
 
 #---------------------------------------------------------------------------*
