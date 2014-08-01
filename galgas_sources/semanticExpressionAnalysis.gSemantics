@@ -1887,8 +1887,19 @@ override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticEx
   !@semanticExpressionForGeneration outExpression
 :
 #--- Search for filewrapper name in filewrapper map
-  @lstring filewrapperPath ;
-  [inAnalysisContext->mSemanticContext->mFilewrapperMap searchKey !mFilewrapperName ?filewrapperPath ?* ?* ?* ?*] ;
+  [inAnalysisContext->mSemanticContext->mFilewrapperMap searchKey
+    !mFilewrapperName
+    ??@lstring filewrapperPath
+    ?4*
+    ??@bool isInternal
+  ] ;
+#--- Check internal
+  if isInternal then
+    const filewrapperDeclarationLocation := [inAnalysisContext->mSemanticContext->mFilewrapperMap locationForKey !mFilewrapperName->string] ;
+    if [mFilewrapperName->location file] != [filewrapperDeclarationLocation file] then
+      error mFilewrapperName : "this filewrapper is internal to '" . [filewrapperDeclarationLocation file] . "' file" ;
+    end if ;
+  end if ;
 #---
   outExpression := [@filewrapperInExpressionForGeneration new
     ![@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap ![@lstring new !"filewrapper" ![mFilewrapperName location]]]
@@ -1907,11 +1918,21 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 :
 #---
-  @filewrapperTemplateMap filewrapperTemplateMap ;
-  [inAnalysisContext->mSemanticContext->mFilewrapperMap searchKey !mFilewrapperName ?* ?* ?* ?* ?filewrapperTemplateMap] ;
+  [inAnalysisContext->mSemanticContext->mFilewrapperMap searchKey
+     !mFilewrapperName
+     ?4*
+     ??@filewrapperTemplateMap filewrapperTemplateMap
+     ??@bool isInternal
+   ] ;
+#--- Check internal
+  if isInternal then
+    const filewrapperDeclarationLocation := [inAnalysisContext->mSemanticContext->mFilewrapperMap locationForKey !mFilewrapperName->string] ;
+    if [mFilewrapperName->location file] != [filewrapperDeclarationLocation file] then
+      error mFilewrapperName : "this filewrapper is internal to '" . [filewrapperDeclarationLocation file] . "' file" ;
+    end if ;
+  end if ;
 #---
-  @unifiedTypeMapProxyList templateSignature ;
-  [filewrapperTemplateMap searchKey !mFilewrapperTemplateName ?templateSignature ?*] ;
+  [filewrapperTemplateMap searchKey !mFilewrapperTemplateName ??@unifiedTypeMapProxyList templateSignature ?*] ;
 #--- Analysis arguments
   @semanticExpressionListForGeneration effectiveParameterList ;
   if [mExpressions length] != [templateSignature length] then
@@ -1959,16 +1980,22 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
     [!?directoryList popLast ?fileName] ;
   end if ;
 #--- Get filewrapper features
-  @wrapperFileMap filewrapperFileMap ;
-  @wrapperDirectoryMap filewrapperDirectoryMap ;
   [inAnalysisContext->mSemanticContext->mFilewrapperMap searchKey
     !mFilewrapperName
     ?*
     ?*
-    ?filewrapperFileMap
-    ?filewrapperDirectoryMap
+    ?@wrapperFileMap filewrapperFileMap
+    ?@wrapperDirectoryMap filewrapperDirectoryMap
     ?*
+    ??@bool isInternal
   ] ;
+#--- Check internal
+  if isInternal then
+    const filewrapperDeclarationLocation := [inAnalysisContext->mSemanticContext->mFilewrapperMap locationForKey !mFilewrapperName->string] ;
+    if [mFilewrapperName->location file] != [filewrapperDeclarationLocation file] then
+      error mFilewrapperName : "this filewrapper is internal to '" . [filewrapperDeclarationLocation file] . "' file" ;
+    end if ;
+  end if ;
 #--- Search for file
   @string builtPath := "" ;
   loop [filewrapperDirectoryMap count] + 1 :

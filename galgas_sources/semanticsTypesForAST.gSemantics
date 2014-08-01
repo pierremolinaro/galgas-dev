@@ -1474,6 +1474,7 @@ list @filewrapperTemplateListAST {
 #---------------------------------------------------------------------------*
 
 class @filewrapperDeclarationAST extends @semanticDeclarationAST {
+  @bool mIsInternal ;
   @string mSourceFileAbsolutePath ;
   @lstring mFilewrapperName ;
   @lstring mFilewrapperPath ;

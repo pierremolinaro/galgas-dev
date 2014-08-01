@@ -597,11 +597,13 @@ end rule ;
 rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
+  @bool isInternal ;
   select
+    isInternal := false ;
   or
     $local$ :> ?@string sep ?* ;
-    send sep ;
-    warning here : "'local' qualifier is deprecated and ignored" ;
+    send sep + "internal" ;
+    isInternal := true ;
   end select ;
   $filewrapper$ ;
   $identifier$ ? @lstring mFilewrapperName indexing filewrapperDefinition ;
@@ -663,6 +665,7 @@ rule <semantic_declaration>
   $}$ ;
   ioSemanticDeclarations += ![@filewrapperDeclarationAST new
     !false # Is not predefined
+    !isInternal
     ![@string stringWithSourceFilePath]
     !mFilewrapperName
     !mFilewrapperPath

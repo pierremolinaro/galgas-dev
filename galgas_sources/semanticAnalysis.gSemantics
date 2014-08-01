@@ -1455,15 +1455,13 @@ override method @filewrapperDeclarationAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
 #--- Get filewrapper features
-  @wrapperFileMap wrapperFileMap ;
-  @wrapperDirectoryMap wrapperDirectoryMap ;
   [inSemanticContext->mFilewrapperMap searchKey
     !mFilewrapperName
     ?*
     ?*
-    ?wrapperFileMap
-    ?wrapperDirectoryMap
-    ?*
+    ??@wrapperFileMap wrapperFileMap
+    ??@wrapperDirectoryMap wrapperDirectoryMap
+    ?2*
   ] ;
 #--- Build absolute path
   @string absoluteSourcePath ;

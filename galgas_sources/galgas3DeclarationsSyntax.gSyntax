@@ -20,6 +20,13 @@ import "galgas_cli_options.gOption" ;
 import "semanticsTypesForAST.gSemantics" ;
 
 #------------------------------------------------------------------------------*
+
+nonterminal <declaration_with_local>
+  ??@bool inIsInternal
+  ?!@galgas3DeclarationAST ioDeclarations
+;
+
+#------------------------------------------------------------------------------*
 #                                                                              *
 #          Start symbol                                                        *
 #                                                                              *
@@ -623,8 +630,9 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <declaration>
- ?!@galgas3DeclarationAST ioDeclarations
+rule <declaration_with_local>
+  ??@bool inIsInternal
+   ?!@galgas3DeclarationAST ioDeclarations
 :
   $filewrapper$ ;
   $identifier$ ? @lstring mFilewrapperName indexing filewrapperDefinition ;
@@ -685,6 +693,7 @@ rule <declaration>
   $}$ ;
   ioDeclarations->mSemanticDeclarationList += ![@filewrapperDeclarationAST new
     !false # Is not predefined
+    !inIsInternal
     ![@string stringWithSourceFilePath]
     !mFilewrapperName
     !mFilewrapperPath
