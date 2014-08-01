@@ -445,7 +445,7 @@ list @semanticDeclarationListAST {
 #---------------------------------------------------------------------------*
 
 class @externRoutineDeclarationAST extends @semanticDeclarationAST {
-  @bool mIsLocal ;
+  @bool mIsInternal ;
   @lstring mRoutineName ;
   @formalParameterListAST mFormalArgumentList ;
 }
@@ -483,6 +483,7 @@ class @externFunctionDeclarationAST extends @semanticDeclarationAST {
 class @functionDeclarationAST extends @externFunctionDeclarationAST {
   @semanticInstructionListAST mFunctionInstructionList ;
   @location mEndOfFunctionInstructionList ;
+  @bool mIsInternal ;
 }
 
 #---------------------------------------------------------------------------*
@@ -497,6 +498,7 @@ class @onceFunctionDeclarationAST extends @semanticDeclarationAST {
   @lstring mResultVariableName ;
   @semanticInstructionListAST mFunctionInstructionList ;
   @location mEndOfFunctionInstructionList ;
+  @bool mIsInternal ;
 }
 
 #---------------------------------------------------------------------------*

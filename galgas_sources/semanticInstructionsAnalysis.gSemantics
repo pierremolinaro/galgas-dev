@@ -51,7 +51,7 @@ list @localInitializedVariableList {
 
 #---------------------------------------------------------------------------*
 
-routine analyzeSemanticInstructionList
+local routine analyzeSemanticInstructionList
   ??@analysisContext inAnalysisContext
   ??@localConstantList inLocalConstantList
   ??@localInitializedVariableList inLocalInitializedVariableList
@@ -354,7 +354,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-routine analyzeErrorOrWarningInstruction
+local routine analyzeErrorOrWarningInstruction
   ??@analysisContext inAnalysisContext
   ??@semanticExpressionAST inLocationExpression
   ??@semanticExpressionAST inMessageExpression
@@ -696,10 +696,19 @@ override method @routineCallInstructionAST analyzeSemanticInstruction
   ?!@variableMap ioVariableMap
 :
 #--- Get routine signature
-  @formalParameterSignature routineSignature ;
-  [inAnalysisContext->mSemanticContext->mRoutineMap searchKey !mRoutineName ?routineSignature] ;
+  [inAnalysisContext->mSemanticContext->mRoutineMap searchKey
+     !mRoutineName
+     ??@formalParameterSignature routineSignature
+     ??@bool isInternal
+   ] ;
+#--- Check internal
+  if isInternal then
+    const procDeclarationLocation := [inAnalysisContext->mSemanticContext->mRoutineMap locationForKey !mRoutineName->string] ;
+    if [mRoutineName->location file] != [procDeclarationLocation file] then
+      error mRoutineName : "this proc is internal to '" . [procDeclarationLocation file] . "' file" ;
+    end if ;
+  end if ;
 #--- Check effective parameters
-  @actualParameterListForGeneration actualParameterListForGeneration ;
   analyzeRoutineArguments
     !inAnalysisContext
     !mRoutineName
@@ -707,7 +716,7 @@ override method @routineCallInstructionAST analyzeSemanticInstruction
     !routineSignature
     !mActualParameterList
     !?ioVariableMap
-    ?actualParameterListForGeneration
+    ??@actualParameterListForGeneration actualParameterListForGeneration
   ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@routineCallInstructionForGeneration new
@@ -1446,7 +1455,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-routine checkExpressionIsBoolean
+local routine checkExpressionIsBoolean
   ??@analysisContext inAnalysisContext
   ??@location inErrorLocation
   ??@semanticExpressionForGeneration inExpression

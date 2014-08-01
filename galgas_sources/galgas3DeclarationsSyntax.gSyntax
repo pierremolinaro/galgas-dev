@@ -29,14 +29,10 @@ rule <start_symbol>
  ?!@galgas3DeclarationAST ioDeclarations
 :
   repeat
-#  while
-#    $;$ ;
+  while
+    $;$ ;
   while
     <declaration> !?ioDeclarations ;
-#    select
-#    or
-#      $;$ ;
-#    end select ;
   end repeat ;
 end rule ;
 
