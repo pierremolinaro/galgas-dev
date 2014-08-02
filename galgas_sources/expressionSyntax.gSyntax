@@ -567,7 +567,8 @@ rule <primary> !@semanticExpressionAST outExpression :
   $[$ :> ??@string sep ?* ;
   send sep ;
   $type_name$ ?@lstring className indexing typeReferenceInConstructor ;
-  $default$ ;
+  $default$ :> ?* ?* ;
+  send ".default" ;
   outExpression := [@defaultConstructorExpressionAST new !className] ;
   $]$ :> ?* ?* ;
 end rule ;

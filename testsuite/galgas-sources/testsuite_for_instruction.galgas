@@ -62,7 +62,7 @@ proc testsuite_for_instruction {
   for s in strList
   before
     message "  before\n"
-  do index idx
+  do (idx)
     message "  do '" + s.mValue + "' (idx: " + [idx string] + ")\n"
   between
     message "  between\n"
@@ -72,7 +72,7 @@ proc testsuite_for_instruction {
 
   message "--- begin of for instruction test 6\n"
   for s in strList
-  do index idx
+  do (idx)
     message "  do '" + s.mValue + "' (idx: " + [idx string] + ")\n"
   end
 
@@ -86,12 +86,12 @@ proc testsuite_for_instruction {
   set += !"F"
   set += !"G"
   set += !"H"
-  for s in set do index idx
+  for s in set do (idx)
     message "  do '" + s + "' (idx: " + [idx string] + ")\n"
   end
 
   message "--- begin of for instruction test 8\n"
-  for > s in set do index idx
+  for > s in set do (idx)
     message "  do '" + s + "' (idx: " + [idx string] + ")\n"
   end
 
@@ -105,7 +105,7 @@ proc testsuite_for_instruction {
   [!?data appendByte !6]
   [!?data appendByte !7]
   [!?data appendByte !8]
-  for d in data do index idx
+  for d in data do (idx)
     message "  do '" + d + "' (idx: " + [idx string] + ")\n"
   end
 }

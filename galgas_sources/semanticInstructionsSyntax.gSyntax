@@ -412,7 +412,7 @@ rule <semantic_instruction>
   $identifier$ ?@lstring variableName ;
   send " =" ;
   $[$ :> ?* ?* ;
-  send tp . " " ;
+  send tp . "." ;
   $default$ ;
   $]$ :> ?* ?* ;
   outInstruction := [@localVariableOrConstantDeclarationWithDefaultConstructorAST new
@@ -527,7 +527,7 @@ rule <semantic_instruction>
   $identifier$ ?@lstring variableName ;
   send " = " ;
   $[$ :> ?* ?* ;
-  send tp . " " ;
+  send tp . "." ;
   $default$ ;
   $]$ :> ?* ?* ;
   outInstruction := [@localVariableOrConstantDeclarationWithDefaultConstructorAST new
