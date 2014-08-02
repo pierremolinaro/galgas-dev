@@ -2170,13 +2170,41 @@ rule <actual_input_parameter>
   or
     $?$ ;
     send "var " ;
-    $type_name$ ?@lstring actualParameterTypeName ;
-    $identifier$ ?@lstring actualParameterName ;
+    $type_name$ ?const actualParameterTypeName ;
+    $identifier$ ??@lstring actualParameterName ;
+    outActualInputParameter := [@inputParameterDeclaredVariable new !actualParameterTypeName !actualParameterName] ;
+  or
+    $?$ ;
+    $var$ ;
+    @lstring actualParameterTypeName ;
+    select
+      actualParameterTypeName := ["" nowhere] ;
+    or
+      $type_name$ ?actualParameterTypeName ;
+    end select ;
+    $identifier$ ??@lstring actualParameterName ;
     outActualInputParameter := [@inputParameterDeclaredVariable new !actualParameterTypeName !actualParameterName] ;
   or
     $??$ :> ??@string sep ?* ;
     send sep + "?let " ;
-    $type_name$ ?@lstring actualParameterTypeName ;
+    @lstring actualParameterTypeName ;
+    select
+      actualParameterTypeName := ["" nowhere] ;
+    or
+      $type_name$ ?actualParameterTypeName ;
+    end select ;
+    $identifier$ ?@lstring actualParameterName ;
+    outActualInputParameter := [@inputParameterDeclaredConstant new !actualParameterTypeName !actualParameterName] ;
+  or
+    $?$ ;
+    $const$ :> ??@string sep ?* ;
+    send sep + "let" ;
+    @lstring actualParameterTypeName ;
+    select
+      actualParameterTypeName := ["" nowhere] ;
+    or
+      $type_name$ ?actualParameterTypeName ;
+    end select ;
     $identifier$ ?@lstring actualParameterName ;
     outActualInputParameter := [@inputParameterDeclaredConstant new !actualParameterTypeName !actualParameterName] ;
   or
