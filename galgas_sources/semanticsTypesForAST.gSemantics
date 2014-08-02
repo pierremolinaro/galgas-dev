@@ -354,7 +354,7 @@ class @outputInputActualParameterAST extends @actualParameterAST {
 
 class @inputActualParameterAST extends @actualParameterAST {
   @lstring mInputActualParameterName ;
-  @bool mIsContant ;
+  @bool mIsConstant ;
 }
 
 #---------------------------------------------------------------------------*

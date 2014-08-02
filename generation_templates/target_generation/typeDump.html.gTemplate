@@ -265,11 +265,11 @@ if [type_mModifierMap count] > 0 then
   end
   %</td></tr>%
 end
-#--- class methods
+#--- type proc
 if [type_mClassMethodMap count] > 0 then
-  %<tr class="result_line"><td>Class methods</td><td>%
+  %<tr class="result_line"><td>Type procs</td><td>%
   foreach type_mClassMethodMap do
-    %<b>class method</b> %!lkey->string
+    %<b>proc</b> @%!type_lkey->string% %!lkey->string
     foreach mParameterList do
       %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
       switch mFormalArgumentPassingMode

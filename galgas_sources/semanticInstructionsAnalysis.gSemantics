@@ -743,7 +743,7 @@ override method @typeMethodCallInstructionAST analyzeSemanticInstruction
   analyzeRoutineArguments
     !inAnalysisContext
     !mMethodName
-    !"'" . mMethodName . "' class method header"
+    !"'" . mMethodName . "' type proc header"
     !routineSignature
     !mActualParameterList
     !?ioVariableMap

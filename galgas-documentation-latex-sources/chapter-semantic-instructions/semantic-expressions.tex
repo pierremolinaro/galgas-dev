@@ -114,7 +114,54 @@ Une constante entière est une séquence de chiffres décimaux, éventuellement 
 \subsectionLabel{Appel de reader}{appelReader}
 
 
-\subsection{Appel de constructeur}
+
+
+
+
+
+
+\subsection{Constructeur}
+
+L'appel d'un constructeur instancie un nouvel objet. Sa syntaxe est :
+
+\lstset{emph={@T.constructeur, exp0, exp1}, emphstyle=\emph}
+\begin{galgascode}
+@T.constructeur {!exp0 !exp1 ...}
+\end{galgascode}
+
+Par exemple :
+\begin{galgascode}
+@lstring ls = @lstring.new {!"" !@location.here{}}
+@stringlist str = @lstringlist.emptyList {}
+\end{galgascode}
+
+Deux simplifications syntaxiques sont proposées :
+\begin{itemize}
+  \item si la liste des arguments est vide, les accolades peuvent être omises ;
+  \item si le type peut être inféré, il peut être omis.
+\end{itemize}
+
+
+\subsubsection{Suppression des accolades}
+
+Si la liste des arguments est vide, les accolades peuvent être omises.
+
+\begin{galgascode}
+@lstring ls = @lstring.new {!"" !@location.here}
+@stringlist str = @lstringlist.emptyList
+\end{galgascode}
+
+
+
+\subsubsection{Inférence du type}
+
+Si le type peut être inféré, il peut être omis (remarquer que ceci est valable aussi pour \galgas{@location.here} qui peut être simplifié en \galgas{.here}.
+
+\begin{galgascode}
+@lstring ls = .new {!"" !.here}
+@stringlist str = .emptyList
+\end{galgascode}
+
 
 
 

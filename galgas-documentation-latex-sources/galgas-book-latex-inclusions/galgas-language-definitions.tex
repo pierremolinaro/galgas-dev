@@ -11,7 +11,7 @@
 %  keywordsprefix=\@,
   morekeywords=[2]{abstract, after, array, as, before, between, block, case, cast, class, constructor, default, do, drop, else, elsif, end, enum,
     error, extern, false, feature, filewrapper, for, func, getter, grammar, graph, gui, if,
-    in, indexing, insert, is, label, lexique, list, listmap, let, local, log, loop, map, mapproxy,
+    in, indexing, insert, internal, is, label, lexique, list, listmap, let, log, loop, map, mapproxy,
     message, method, mod, not, on, operator, option, or, override, parse, proc,
     project, program, remove, replace, repeat, rewind, rule, search, select,
     self, setter, send, sortedlist, state, struct, style, switch, syntax, tag, template,
@@ -101,18 +101,18 @@
 \newcommand\labelReaderSansArgument[2]{}
 
 \newcommand\readerSansArgument[6] {
-  \subsection{\texttt{#1} Reader}\label{reader:#2:#1}\index{#1!"@#2 reader}
+  \subsection{Getter \texttt{#1}}\label{reader:#2:#1}\index{#1!"@#2 reader}
   #5
   \newline
   \newline
   \colorbox{\couleurCodeGALGAS}{
     \begin{tabular}{l}
-    \texttt{\textbf{reader} @#2 #1 -> @#4 ;}
+    \galgas{getter @#2 #1 -> @#4 ;}
     \end{tabular}
   }
   \newline
   \newline
-  \textbf{Availability:} available in GALGAS #3 and later.
+  \textbf{Disponibilité :} disponible en GALGAS version #3 et ultérieure.
   \ifthenelse{\equal{#6}{}}{
   }{
     \newline
@@ -143,15 +143,15 @@
 % {this reader raises a run-time error if ...} % Discussion
 
 \newcommand \readerUnArgument[7] {
-  \subsection{\texttt{#1} Reader}\label{reader:#2:#1}\index{#1!"@#2 reader}
+  \subsection{Getter \texttt{#1}}\label{reader:#2:#1}\index{#1!"@#2 reader}
   #6
   \newline
   \newline
   \colorbox{\couleurCodeGALGAS}{
     \begin{tabular}{l}
-      \texttt{\textbf{reader} @#2 #1}\\
-      \texttt{\ \ ?#5}\\
-      \texttt{\ \ -> @#4 ;}
+      \galgas{getter @#2 #1}\\
+      \ \ \galgas{?#5}\\
+      \ \ \galgas{-> @#4 ;}
     \end{tabular}
   }
   \newline
@@ -178,16 +178,16 @@
 % {this reader raises a run-time error if ...} % Discussion
 
 \newcommand \readerDeuxArguments[8] {
-  \subsection{\texttt{#1} Reader}\label{reader:#2:#1}\index{#1!"@#2 reader}
+  \subsection{Getter \texttt{#1}}\label{reader:#2:#1}\index{#1!"@#2 reader}
   #7
   \newline
   \newline
   \colorbox{\couleurCodeGALGAS}{
     \begin{tabular}{l}
-    \texttt{\textbf{reader} @#2 #1}\\
-    \texttt{\ \ ?#5}\\
-    \texttt{\ \ ?#6}\\
-    \texttt{\ \ -> @#4 ;}
+    \galgas{getter @#2 #1}\\
+    \ \ \galgas{?#5}\\
+    \ \ \galgas{?#6}\\
+    \ \ \galgas{-> @#4 ;}
     \end{tabular}
   }
   \newline
@@ -207,17 +207,17 @@
 %--- Définition d'un reader à 3 arguments
 
 \newcommand \readerTroisArguments[9] {
-  \subsection{\texttt{#1} Reader}\label{reader:#2:#1}\index{#1!"@#2 reader}
+  \subsection{Getter \texttt{#1}}\label{reader:#2:#1}\index{#1!"@#2 reader}
   #8
   \newline
   \newline
   \colorbox{\couleurCodeGALGAS}{
     \begin{tabular}{l}
-    \texttt{\emph{reader} @#2 #1}\\
-    \texttt{\ \ ?#5}\\
-    \texttt{\ \ ?#6}\\
-    \texttt{\ \ ?#7}\\
-    \texttt{\ \ -> @#4 ;}
+    \galgas{getter @#2 #1}\\
+    \ \ \galgas{?#5}\\
+    \ \ \galgas{?#6}\\
+    \ \ \galgas{?#7}\\
+    \ \ \galgas{-> @#4 ;}
     \end{tabular}
   }
   \newline
@@ -248,18 +248,18 @@
 %{The returned object responds \motCle{true} to the isNowhere reader.} % Discussion
 
 \newcommand \constructeurSansArgument[6] {
-  \subsection{\texttt{#1} Constructor}\label{constructor:#2:#1}\index{#1!"@#2 constructor}
+  \subsection{Constructeur \texttt{#1}}\label{constructor:#2:#1}\index{#1!"@#2 constructor}
   #5
   \newline
   \newline
   \colorbox{\couleurCodeGALGAS}{
     \begin{tabular}{l}
-    \texttt{\textbf{constructor} @#2 #1 -> @#4 ;}
+    \galgas{constructor @#2 #1 -> @#4}
     \end{tabular}
   }
   \newline
   \newline
-  \textbf{Availability:} available in GALGAS #3 and later.
+  \textbf{Disponibilité :} disponible en GALGAS version #3 et ultérieure.
   \ifthenelse{\equal{#6}{}}{
   }{
     \newline
@@ -274,25 +274,25 @@
 %--- Définition d'un constructeur avec 1 argument
 
 \newcommand \constructeurUnArgument[7] {
-  \subsection{\texttt{#1} Constructor}\label{constructor:#2:#1}\index{#1!"#2 constructor}
+  \subsection{Constructeur \texttt{#1}}\label{constructor:#2:#1}\index{#1!"#2 constructor}
   #6
   \newline
   \newline
   \colorbox{\couleurCodeGALGAS}{
     \begin{tabular}{l}
-    \texttt{\textbf{constructor} @#2 #1}\\
-    \texttt{\ \ ?#5}\\
-    \texttt{\ \ -> @#4 ;}
+    \galgas{constructor @#2 #1}\\
+    \ \ \galgas{?#5}\\
+    \ \ \galgas{-> @#4}
     \end{tabular}
   }
   \newline
   \newline
-  \textbf{Availability:} available in GALGAS #3 and later.
+  \textbf{Disponibilité :} disponible en GALGAS version #3 et ultérieure.
   \ifthenelse{\equal{#7}{}}{
   }{
     \newline
     \newline
-    \textbf{Discussion:} #7
+    \textbf{Discussion :} #7
   }
   \newline
 }
@@ -302,26 +302,26 @@
 %--- Définition d'un constructeur avec 2 arguments
 
 \newcommand \constructeurDeuxArguments[8] {
-  \subsection{\texttt{#1} Constructor}\label{constructor:#2:#1}\index{#1!"@#2 constructor}
+  \subsection{Constructeur \texttt{#1}}\label{constructor:#2:#1}\index{#1!"@#2 constructor}
   #7
   \newline
   \newline
   \colorbox{\couleurCodeGALGAS}{
     \begin{tabular}{l}
-    \texttt{\textbf{constructor} @#2 #1}\\
-    \texttt{\ \ ?#5}\\
-    \texttt{\ \ ?#6}\\
-    \texttt{\ \ -> @#4 ;}
+    \galgas{constructor @#2 #1}\\
+    \ \ \galgas{?#5}\\
+    \ \ \galgas{?#6}\\
+    \ \ \galgas{-> @#4}
     \end{tabular}
   }
   \newline
   \newline
-  \textbf{Availability:} available in GALGAS #3 and later.
+  \textbf{Disponibilité :} disponible en GALGAS version #3 et ultérieure.
   \ifthenelse{\equal{#8}{}}{
   }{
     \newline
     \newline
-    \textbf{Discussion:} #8
+    \textbf{Discussion :} #8
   }
   \newline
 }
@@ -331,27 +331,27 @@
 %--- Définition d'un constructeur avec 3 arguments
 
 \newcommand \constructeurTroisArguments[9] {
-  \subsection{\texttt{#1} Constructor}\label{constructor:#2:#1}\index{#1!"@#2 constructor}
+  \subsection{Constructeur \texttt{#1}}\label{constructor:#2:#1}\index{#1!"@#2 constructor}
   #8
   \newline
   \newline
   \colorbox{\couleurCodeGALGAS}{
     \begin{tabular}{l}
-    \texttt{\textbf{constructor} @#2 #1}\\
-    \texttt{\ \ ?#5}\\
-    \texttt{\ \ ?#6}\\
-    \texttt{\ \ ?#7}\\
-    \texttt{\ \ -> @#4 ;}
+    \galgas{constructor @#2 #1}\\
+    \ \ \galgas{?#5}\\
+    \ \ \galgas{?#6}\\
+    \ \ \galgas{?#7}\\
+    \ \ \galgas{-> @#4}
     \end{tabular}
   }
   \newline
   \newline
-  \textbf{Availability:} available in GALGAS #3 and later.
+  \textbf{Disponibilité :} disponible en GALGAS version #3 et ultérieure.
   \ifthenelse{\equal{#9}{}}{
   }{
     \newline
     \newline
-    \textbf{Discussion:} #9
+    \textbf{Discussion :} #9
   }
   \newline
 }
@@ -361,19 +361,19 @@
 %--- Définition d'un modifier à 1 argument
 
 \newcommand \modifierUnArgument[6] {
-  \subsection{\texttt{#1} Modifier}\label{modifier:#2:#1}\index{#1!"@#2 modifier}
+  \subsection{Setter \texttt{#1}}\label{modifier:#2:#1}\index{#1!"@#2 modifier}
   #5
   \newline
   \newline
   \colorbox{\couleurCodeGALGAS}{
     \begin{tabular}{l}
-    \texttt{\textbf{modifier} @#2 #1}\\
-    \texttt{\ \ ?#4}\\
+    \galgas{setter @#2 #1}\\
+    \ \ \galgas{?#4}\\
     \end{tabular}
   }
   \newline
   \newline
-  \textbf{Availability:} available in GALGAS #3 and later.
+  \textbf{Disponibilité :} disponible en GALGAS version #3 et ultérieure.
   \ifthenelse{\equal{#6}{}}{
   }{
     \newline

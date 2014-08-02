@@ -517,7 +517,7 @@ end rule ;
 #                                                                              *
 #                         P R I M A R Y                                        *
 #   reader call         :   [expression reader !... ]                          *
-#   constructor call    :   [@class method !... ]                              *
+#   constructor call    :   [@class proc_name !... ]                           *
 #   default constructor :   [@class default]                                   *
 #   option value        :   [option option_component_name.option_name]         *
 #   filewrapper object  :   [filewrapper filewrapper_name]                     *
