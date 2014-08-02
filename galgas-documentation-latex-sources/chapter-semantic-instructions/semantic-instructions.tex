@@ -345,7 +345,8 @@ Cette instruction s'applique aux types suivants :
   \item \galgas{@string} (\refSubsectionPage{instructionConcatString}) ;
   \item \galgas{@stringset} (\refSubsectionPage{instructionConcatStringset}) ;
   \item \galgas{list @T} (\refSubsectionPage{instructionConcatList}) ;
-  \item \galgas{sortedlist @T} (\refSubsectionPage{instructionConcatSortedList}).
+  \item \galgas{sortedlist @T} (\refSubsectionPage{instructionConcatSortedList}) ;
+  \item \galgas{map @T} (\refSubsectionPage{instructionConcatMap}).
 \end{itemize}
 
 
@@ -445,6 +446,35 @@ var liste = @maListeTriee {}
 liste += !2 !"a" # Valeur : (2, "a")
 liste += !1 !"b" # Valeur : (1, "b"), (2, "a")
 liste += !3 !"c" # Valeur : (1, "b"), (2, "a"), (3, "c")
+\end{galgascode}
+
+
+
+
+
+
+
+\subsectionLabel{Instruction d'ajout et les tables}{instructionConcatMap}
+
+La forme \galgas{cible += expression} n'est pas prise en charge.
+
+Sous la forme \galgas{cible += !expression1 ... !expressionN}, l'instruction ajoute un élément à la table \galgas{cible}. L'élément est défini par la clé et suivie de la liste des valeurs de ses champs.
+
+
+Avec la table :
+\begin{galgascode}
+map @maTable {
+  @uint mProperty1
+  @string mProperty2
+}
+\end{galgascode}
+
+on a :
+
+\begin{galgascode}
+var table = @maTable {}
+@lstring clef = ...
+table += !clef !2 !"a"
 \end{galgascode}
 
 

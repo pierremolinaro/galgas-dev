@@ -1,5 +1,5 @@
 grammar testsuite_grammar "LL1" {
-with testsuite_syntax
+syntax testsuite_syntax
 
  <start_symbol>
 

@@ -19,7 +19,7 @@ Tout type implémente implicitement :
   \item le \emph{reader} \galgas{object}.
 \end{itemize}
 
-La plupart des types implémentent le constructeur par défaut \galgas{default} (voir \refSectionPage{constructeurParDefaut}). 
+La plupart des types implémentent le constructeur par défaut \galgas{default} (voir \refSubsectionPage{constructeurParDefaut}). 
 
 
 \subsection{L'opérateur \texttt{==}}
@@ -130,116 +130,4 @@ Le \emph{reader} \galgas{object} retourne un objet de type \galgas{@object}. Une
 
 
 
-
-\sectionLabel{Constructeur par défaut}{constructeurParDefaut}
-
-Pour la plupart des types, un constructeur par défaut est implicitement défini (voir la définition précise \refSubsectionPage{constructeurParDefautPourChaqueType}). Celui-ci est invoqué par le mot réservé \galgas{default}.
-
-Le constructeur par défaut peut être utilisé dans deux constructions :
-\begin{itemize}
-  \item la déclaration d'une variable ou d'une constante ;
-  \item dans une expression.
-\end{itemize}
-
-\subsection{Intérêt du constructeur par défaut}
-
-
-L'intérêt du constructeur par défaut est qu'il allège l'écriture de l'initialisation des variables de certains types. Ce n'est pas une construction qui apporte de l'expressivité au langage (on peut très bien se passer d'appeler des constructeurs par défaut).
-
-Pour un type comme \galgas{@uint}, écrire \galgas{@uint v [default] ;} est sémantiquement équivalent à écrire \galgas{@uint v := 0 ;}. On voit que le constructeur par défaut présente peu d'utilité ici.
-
-Par contre, si l'on a un type structure :
-
-\begin{galgascode}
-struct @T {
-  @uneMap mMap ;
-  @uneListe mList ;
-  @stringlist mStringList ;
-  @stringset mStringSet ;
-}
-\end{galgascode}
-
-Déclarer et initialiser une variable de ce type s'écrit :
-
-\begin{galgascode}
-@T variable [new
-  ![@uneMap emptyMap]
-  ![@uneListe emptyList]
-  ![@stringlist emptyList]
-  ![@stringset emptySet]
-] ;
-\end{galgascode}
-
-Avec le constructeur par défaut, cette instruction s'écrit simplement :
-
-\begin{galgascode}
-@T variable [default] ;
-\end{galgascode}
-
-Pour une structure, comme on va le voir plus bas, le constructeur par défaut appelle le constructeur par défaut pour chaque champ ; le constructeur par défaut d'une \galgas{map} est équivalent à \galgas{emptyMap}, celui d'une \galgas{list}  équivalent à \galgas{emptyList}, et celui d'un \galgas{@stringset}  équivalent à \galgas{emptySet}.
-
-
-\subsection{Appel dans la déclaration d'une variable ou d'une constante}
-
-\begin{galgascode}
-@T variable [default] ;
-\end{galgascode}
-
-Ceci déclare une variable de type \galgas{@T} et l'initialise avec le constructeur par défaut. Pour une constante, la syntaxe est :
-
-\begin{galgascode}
-const @T constante [default] ;
-\end{galgascode}
-
-
-\subsection{Appel dans une expression}
-
-L'expression \galgas{[@T default]} invoque le constructeur par défaut du type \galgas{@T} et renvoie un objet initialisé du type \galgas{@T}.
-
-\subsectionLabel{Les constructeurs par défaut pour chaque type}{constructeurParDefautPourChaqueType}
-
-Le \refTableau{constructeurParDefaut} précise par chaque type l'existence du constructeur par défaut.
-
-
-\begin{table}[t]
-  \centering
-%  \rowcolors{2}{\fondTableau}{}
-  \begin{tabular}{@{}lllllll@{}}
-  \textbf{Type} & \textbf{Constructeur par défaut} \\
-  \galgas{abstract class @T} & \emph{Pas de constructeur par défaut} \\
-  \galgas{@bool} & Initialisation à \galgas{false} \\
-  \galgas{@application} & \emph{Pas de constructeur par défaut} \\
-  \galgas{array @T} & \emph{Pas de constructeur par défaut} \\
-  \galgas{@char} & Initialisation au caractère \texttt{NULL} \\
-  \galgas{class @T} & Oui, si tous les attributs possèdent un constructeur par défaut \\
-  \galgas{@data} & Équivalent au constructeur \galgas{emptyData} \\
-  \galgas{@double} & Initialisation à \texttt{0.0} \\
-  \galgas{@filewrapper} & \emph{Pas de constructeur par défaut} \\
-  \galgas{@function} & \emph{Pas de constructeur par défaut} \\
-  \galgas{graph @T} & Équivalent au constructeur \galgas{emptyGraph} \\
-  \galgas{list @T} & Équivalent au constructeur \galgas{emptyList} \\
-  \galgas{map @T} & Équivalent au constructeur \galgas{emptyMap} \\
-  \galgas{listmap @T} & Équivalent au constructeur \galgas{emptyMap} \\
-  \galgas{@object} & \emph{Pas de constructeur par défaut} \\
-  \galgas{@sint} & Initialisation à \galgas{0S} \\
-  \galgas{@sint64} & Initialisation à \galgas{0LS} \\
-  \galgas{sortedlist @T} & Équivalent au constructeur \galgas{emptySortedList} \\
-  \galgas{@string} & Initialisation à chaîne vide \galgas{""} \\
-  \galgas{@stringset} & Équivalent au constructeur \galgas{emptySet} \\
-  \galgas{struct @T} & Oui, si tous les attributs possèdent un constructeur par défaut \\
-  \galgas{@type} & \emph{Pas de constructeur par défaut} \\
-  \galgas{@uint} & Initialisation à \galgas{0} \\
-  \galgas{@uint64} & Initialisation à \galgas{0L} \\
-  \end{tabular}
-  \caption{Constructeur par défaut pour chaque type}
-  \labelTableau{constructeurParDefaut}
-  \ligne
-\end{table}
-
-Remarques :
-\begin{itemize}
-  \item une classe abstraite ne possède pas de constructeur par défaut ;
-  \item une classe concrète possède un constructeur par défaut si tous les attributs (ceux déclarés dans la classe et les super classes) en possèdent un ; la valeur par défaut est celle définie par l'appel du constructeur par défaut sur tous ces attributs ;
-  \item une structure possède un constructeur par défaut si tous ces champs en possèdent un ; la valeur par défaut est celle définie par l'appel du constructeur par défaut sur tous les champs.
-\end{itemize}
 

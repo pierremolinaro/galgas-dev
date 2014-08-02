@@ -13,7 +13,7 @@ proc testsuite_sortedlist {
   strList += !"d"
   strList += !"c"
   message "*************************************** begin of sorted list test\n"
-  for s in strList do index idx
+  for s in strList do (idx)
     message "  index " + idx + " : " + s.mValue + "\n"
   end
 }

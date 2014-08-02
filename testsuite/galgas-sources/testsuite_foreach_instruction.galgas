@@ -58,7 +58,7 @@ proc testsuite_foreach_instruction {
   for (@string s) in strList
   before
     message "  before\n"
-  do index idx
+  do (idx)
     message "  do '" + s + "' (idx: " + [idx string] + ")\n"
   between
     message "  between\n"
@@ -67,7 +67,7 @@ proc testsuite_foreach_instruction {
   end
   message "--- begin of foreach instruction test 6\n"
   for (@string s) in strList
-  do index idx
+  do (idx)
     message "  do '" + s + "' (idx: " + [idx string] + ")\n"
   end
   message "--- begin of foreach instruction test 7\n"
@@ -81,12 +81,12 @@ proc testsuite_foreach_instruction {
   set += !"G"
   set += !"H"
   for () in set
-  do index idx
+  do (idx)
     message "  do '" + key + "' (idx: " + [idx string] + ")\n"
   end
   message "--- begin of foreach instruction test 8\n"
   for > () in set
-  do index idx
+  do (idx)
     message "  do '" + key + "' (idx: " + [idx string] + ")\n"
   end
   message "--- begin of foreach instruction test 9\n"
@@ -100,7 +100,7 @@ proc testsuite_foreach_instruction {
   [!?myData appendByte !7]
   [!?myData appendByte !8]
   for () in myData
-  do index idx
+  do (idx)
     message "  do '" + data + "' (idx: " + [idx string] + ")\n"
   end
 }

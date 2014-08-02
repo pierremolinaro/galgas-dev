@@ -603,6 +603,7 @@ end rule ;
 
 rule <primary> !@semanticExpressionAST outExpression :
   <optional_type> ??@lstring typeName ;
+  $.$ ;
   $default$ ;
   outExpression := [@defaultConstructorExpressionAST new !typeName] ;
 end rule ;
