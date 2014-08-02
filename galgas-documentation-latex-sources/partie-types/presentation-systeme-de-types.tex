@@ -14,9 +14,9 @@ Tout type implémente implicitement :
 \begin{itemize}
   \item l'opérateur \galgas{==} ;
   \item l'opérateur \galgas{\!=} ;
-  \item le \emph{reader} \galgas{description} ;
-  \item le \emph{reader} \galgas{dynamicType} ;
-  \item le \emph{reader} \galgas{object}.
+  \item le \emph{getter} \galgas{description} ;
+  \item le \emph{getter} \galgas{dynamicType} ;
+  \item le \emph{getter} \galgas{object}.
 \end{itemize}
 
 La plupart des types implémentent le constructeur par défaut \galgas{default} (voir \refSubsectionPage{constructeurParDefaut}). 
@@ -25,7 +25,7 @@ La plupart des types implémentent le constructeur par défaut \galgas{default} 
 \subsection{L'opérateur \texttt{==}}
 
 \begin{galgascode}
-operator @T == -> @bool ;
+func == ?@T ?@T -> @bool
 \end{galgascode}
 
 Cet opérateur permet de tester l'identité entre de deux objets de même type. 
@@ -33,7 +33,7 @@ Cet opérateur permet de tester l'identité entre de deux objets de même type.
 \subsection{L'opérateur \texttt{!=}}
 
 \begin{galgascode}
-operator @T != -> @bool ;
+func != ?@T ?@T -> @bool
 \end{galgascode}
 
 Cet opérateur permet de tester la non identité entre de deux objets de même type. Il renvoie le complément logique du résultat de l'application de l'opérateur \galgas{==}.
@@ -42,30 +42,30 @@ Cet opérateur permet de tester la non identité entre de deux objets de même t
 
 
 
-\subsection{Le reader \texttt{description}}
+\subsection{Le getter \texttt{description}}
 
 \begin{galgascode}
-reader @T description -> @string ;
+getter @T description -> @string
 \end{galgascode}
 
-Le \emph{reader} \galgas{description} retourne une description textuelle du receveur, la même que celle affichée par l'instruction \galgas{log} (\refSectionPage{instructionLog}).
+Le \emph{getter} \galgas{description} retourne une description textuelle du receveur, la même que celle affichée par l'instruction \galgas{log} (\refSectionPage{instructionLog}).
 
 
 
-\subsection{Le reader \texttt{dynamicType}}
+\subsection{Le getter \texttt{dynamicType}}
 
 \begin{galgascode}
-reader @T dynamicType -> @type ;
+getter @T dynamicType -> @type
 \end{galgascode}
 
-Le \emph{reader} \galgas{dynamicType} retourne un objet de type \galgas{@type}, dont la valeur représente le type dynamique du receveur (voir aussi la définition du \refTypePredefini{type}).
+Le \emph{getter} \galgas{dynamicType} retourne un objet de type \galgas{@type}, dont la valeur représente le type dynamique du receveur (voir aussi la définition du type \refTypePredefini{type}).
 
 Pour tous les types sauf les classes, leurs instances sont du même type que le type statique :
 
 \begin{galgascode}
-@uint n := 2 ;
-@type t := [n dynamicType] ;
-log t ; # Affiche @uint
+@uint n = 2
+@type t = [n dynamicType]
+log t # Affiche @uint
 \end{galgascode}
 
 Pour les instances de classes, le jeu des affectations polymorphiques peut entraîner que le type dynamique soit une classe héritière du type statique.
@@ -73,61 +73,30 @@ Pour les instances de classes, le jeu des affectations polymorphiques peut entra
 Par exemple, en déclarant :
 \begin{galgascode}
 class @A { }
-class @B extends @A { }
+class @B : @A { }
 \end{galgascode}
 
 Et avec la séquence d'instructions suivante :
 \begin{galgascode}
-@B b [new] ;
-@type t := [b dynamicType] ;
-log t ; # Affiche @B, type statique de b : @B
-@A a := b ; # Affectation polymorphique
-t := [a dynamicType] ;
-log t ; # Affiche @B, type statique de a : @A
+@B b = .new
+@type t = [b dynamicType]
+log t # Affiche @B, type statique de b : @B
+@A a = b # Affectation polymorphique
+t = [a dynamicType]
+log t # Affiche @B, type statique de a : @A
 \end{galgascode}
 
 
 
 
 
-\subsection{Le reader \texttt{object}}
+\subsection{Le getter \texttt{object}}
 
 \begin{galgascode}
-reader @T object -> @object ;
+getter @T object -> @object
 \end{galgascode}
 
 
-Le \emph{reader} \galgas{object} retourne un objet de type \galgas{@object}. Une variable de \refTypePredefini{object} peut encapsuler tout type de valeur.
-
-%====== Readers ======
-%===== description =====
-%
-%''**reader** description %%->%% @string ;''\\
-%
-%This reader returns a string representation of the receiver's value.
-%
-%===== dynamicType =====
-%
-%|Available on GALGAS 1.9.5 and later|
-%
-%''**reader** dynamicType %%->%% @type ;''\\
-%
-%This reader returns the dynamic type of the receiver's value.
-%===== object =====
-%
-%|Available on GALGAS 1.9.5 and later|
-%
-%''**reader** object %%->%% @object ;''\\
-%
-%This reader returns an ''@object'' instance that embeds the receiver's value.
-
-
-
-
-
-
-
-
-
+Le \emph{getter} \galgas{object} retourne un objet de type \galgas{@object}. Une variable de type \refTypePredefini{object} peut encapsuler tout type de valeur.
 
 

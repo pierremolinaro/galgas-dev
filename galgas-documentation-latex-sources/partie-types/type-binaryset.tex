@@ -3,28 +3,24 @@
 
 \chapitreTypePredefiniLabelIndex{binaryset}
 
-The \galgas{@binaryset} type encodes sets, binary relations, boolean mathematical expressions. It is implemented with Binary Decision Diagrams (BDD).
+Le type \galgas{@binaryset} encode des ensembles, des relations binaires, des expressions booléennes. Il est implémenté par des BDD (Binary Decision Diagrams).
 
 
-\section{Constructors}
+\section{Constructeurs}
 
 \constructeurUnArgument{binarySetWithBit}
 {binaryset}
 {1.6.0}
 {binaryset}
 {@uint inBitIndex}
-{Returns an \galgas{@binaryset} object whose \emph{inBitIndex} bit is constraint to one.}
+{Retourne un \galgas{@binaryset} dont le bit \galgas{inBitIndex} est égal à 1.}
 {}
-
-\begin{lstlisting}[language=galgas]
-  constructor toto
-\end{lstlisting}
 
 
 \textbf{Exemple :}
 \begin{galgascode}
-@binaryset s [binarySetWithBit !2] ;
-log s ; # displays <@binaryset: 1XX>
+@binaryset s = .binarySetWithBit {!2}
+log s # Affiche <@binaryset: 1XX>
 \end{galgascode}
 
 
@@ -38,13 +34,13 @@ log s ; # displays <@binaryset: 1XX>
 {@uint inLeftFirstIndex}
 {@uint inBitCount}
 {@uint inRightFirstIndex}
-{Returns an \galgas{@binaryset} object that encodes a equality relation between two variables.}
-{the constructor returns an binary set that encodes the \emph{a~==~b} relation, where \emph{a} is encoded from bit index \emph{inLeftFirstIndex} to bit index \emph{inLeftFirstIndex  + inBitCount - 1}, and \emph{b} is encoded from bit index \emph{inRightFirstIndex} to \emph{inRightFirstIndex + inBitCount - 1}.}
+{Retourne un \galgas{@binaryset} qui encode la relation d'égalité entre deux variables.}
+{ce constructeur retourne un binary set qui encode la relation \emph{a~==~b}, où \emph{a} est encodé à partir du bit d'indice \emph{inLeftFirstIndex} jusqu'au bit d'indice \emph{inLeftFirstIndex  + inBitCount - 1}, et \emph{b} est encodé à partir du bit d'indice bit \emph{inRightFirstIndex} jusqu'au bit d'indice \emph{inRightFirstIndex + inBitCount - 1}.}
 
 \textbf{Exemple :}
 \begin{galgascode}
-@binaryset s [binarySetWithEqualComparison !0 !2 !3] ;
-log s; # displays <@binaryset: 00x00, 01X01, 10X10, 11X11>
+@binaryset s = .binarySetWithEqualComparison {!0 !2 !3}
+log s # Affiche <@binaryset: 00x00, 01X01, 10X10, 11X11>
 \end{galgascode}
 
 
@@ -58,13 +54,13 @@ log s; # displays <@binaryset: 00x00, 01X01, 10X10, 11X11>
 {@uint inLeftFirstIndex}
 {@uint inBitCount}
 {@uint64 inConstant}
-{Returns an \galgas{@binaryset} object that encodes a equality relation between a variable and a constant.}
-{the constructor returns an binary set that encodes the \emph{a~==~cst} relation, where \emph {a} is encoded from bit index \emph{inBitIndex} to bit index \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.}
+{Retourne un \galgas{@binaryset} object that encodes a equality relation between a variable and a constant.}
+{ce constructeur retourne un objet qui encode la relation the \emph{a~==~cst}, où \emph {a} est encodé à partir du bit d'indice \emph{inBitIndex} jusqu'au bit d'indice \emph{inBitIndex  + inBitCount - 1}, et \emph{cst} est défini par l'argument \emph{inConstant}.}
 
 \textbf{Exemple :}
 \begin{galgascode}
-@binaryset s [binarySetWithEqualToConstant !0 !6 !23L] ;
-log s; # displays <@binaryset: 10111>
+@binaryset s = .binarySetWithEqualToConstant {!0 !6 !23L}
+log s # Affiche <@binaryset: 10111>
 \end{galgascode}
 
 
@@ -78,13 +74,13 @@ log s; # displays <@binaryset: 10111>
 {@uint inLeftFirstIndex}
 {@uint inBitCount}
 {@uint inRightFirstIndex}
-{Returns an \galgas{@binaryset} object that encodes a greater or equal relation between two variables.}
-{the constructor returns an binary set that encodes the \emph{a~>=~b} relation, where \emph{a} is encoded from bit index \emph{inLeftFirstIndex} to bit index \emph{inLeftFirstIndex  + inBitCount - 1}, and \emph{b} is encoded from bit index \emph{inRightFirstIndex} to \emph{inRightFirstIndex + inBitCount - 1}.}
+{Retourne un \galgas{@binaryset} object qui encode la relation \emph{supérieur ou égal} entre deux variables.}
+{ce constructeur retourne un binary set qui encode la relation \emph{a~>=~b}, où \emph{a} est encodé à partir du bit d'indice \emph{inLeftFirstIndex} jusqu'au bit d'indice \emph{inLeftFirstIndex  + inBitCount - 1}, et \emph{b} est encodé à partir du bit d'indice bit \emph{inRightFirstIndex} jusqu'au bit d'indice \emph{inRightFirstIndex + inBitCount - 1}.}
 
 \textbf{Exemple :}
 \begin{galgascode}
-@binaryset s [binarySetWithGreaterOrEqualComparison !0 !2 !3] ;
-log s; # displays <@binaryset: 00XXX, 01X01, 01X1X, 10X1X, 11X11>
+@binaryset s = .binarySetWithGreaterOrEqualComparison {!0 !2 !3}
+log s # Affiche <@binaryset: 00XXX, 01X01, 01X1X, 10X1X, 11X11>
 \end{galgascode}
 
 
@@ -98,8 +94,8 @@ log s; # displays <@binaryset: 00XXX, 01X01, 01X1X, 10X1X, 11X11>
 {@uint inLeftFirstIndex}
 {@uint inBitCount}
 {@uint64 inConstant}
-{Returns an \galgas{@binaryset} object that encodes a greater or equal relation between a variable and a constant.}
-{the constructor returns an binary set that encodes the \emph{a~>=~cst} relation, where \emph {a} is encoded from bit index \emph{inBitIndex} to bit index \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.}
+{Retourne un \galgas{@binaryset} object that encodes a greater or equal relation between a variable and a constant.}
+{the constructeur Retourne un binary set that encodes the \emph{a~>=~cst} relation, where \emph {a} est encodé à partir du bit d'indice \emph{inBitIndex} jusqu'au bit d'indice \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.}
 
 
 
@@ -112,13 +108,13 @@ log s; # displays <@binaryset: 00XXX, 01X01, 01X1X, 10X1X, 11X11>
 {@uint inLeftFirstIndex}
 {@uint inBitCount}
 {@uint inRightFirstIndex}
-{Returns an \galgas{@binaryset} object that encodes a lower or equal relation between two variables.}
-{the constructor returns an binary set that encodes the \emph{a~<=~b} relation, where \emph{a} is encoded from bit index \emph{inLeftFirstIndex} to bit index \emph{inLeftFirstIndex  + inBitCount - 1}, and \emph{b} is encoded from bit index \emph{inRightFirstIndex} to \emph{inRightFirstIndex + inBitCount - 1}.}
+{Retourne un \galgas{@binaryset} object that encodes a lower or equal relation between two variables.}
+{the constructeur Retourne un binary set that encodes the \emph{a~<=~b} relation, where \emph{a} est encodé à partir du bit d'indice \emph{inLeftFirstIndex} jusqu'au bit d'indice \emph{inLeftFirstIndex  + inBitCount - 1}, and \emph{b} est encodé à partir du bit d'indice \emph{inRightFirstIndex} to \emph{inRightFirstIndex + inBitCount - 1}.}
 
 \textbf{Exemple :}
 \begin{galgascode}
-@binaryset s [binarySetWithLowerOrEqualComparison !0 !2 !3] ;
-log s; # displays <@binaryset: 00X00, 01X0X, 10X0X, 10X10, 11XXX>
+@binaryset s = .binarySetWithLowerOrEqualComparison !0 !2 !3] ;
+log s; # Affiche <@binaryset: 00X00, 01X0X, 10X0X, 10X10, 11XXX>
 \end{galgascode}
 
 
@@ -132,8 +128,8 @@ log s; # displays <@binaryset: 00X00, 01X0X, 10X0X, 10X10, 11XXX>
 {@uint inLeftFirstIndex}
 {@uint inBitCount}
 {@uint64 inConstant}
-{Returns an \galgas{@binaryset} object that encodes a lower or equal relation between a variable and a constant.}
-{the constructor returns an binary set that encodes the \emph{a~<=~cst} relation, where \emph {a} is encoded from bit index \emph{inBitIndex} to bit index \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.}
+{Retourne un \galgas{@binaryset} object that encodes a lower or equal relation between a variable and a constant.}
+{the constructeur Retourne un binary set that encodes the \emph{a~<=~cst} relation, where \emph {a} est encodé à partir du bit d'indice \emph{inBitIndex} jusqu'au bit d'indice \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.}
 
 
 
@@ -146,13 +142,13 @@ log s; # displays <@binaryset: 00X00, 01X0X, 10X0X, 10X10, 11XXX>
 {@uint inLeftFirstIndex}
 {@uint inBitCount}
 {@uint inRightFirstIndex}
-{Returns an \galgas{@binaryset} object that encodes an inequality relation between two variables.}
-{the constructor returns an binary set that encodes the \emph{a~!=~b} relation, where \emph{a} is encoded from bit index \emph{inLeftFirstIndex} to bit index \emph{inLeftFirstIndex  + inBitCount - 1}, and \emph{b} is encoded from bit index \emph{inRightFirstIndex} to \emph{inRightFirstIndex + inBitCount - 1}.}
+{Retourne un \galgas{@binaryset} object that encodes an inequality relation between two variables.}
+{the constructeur Retourne un binary set that encodes the \emph{a~!=~b} relation, where \emph{a} est encodé à partir du bit d'indice \emph{inLeftFirstIndex} jusqu'au bit d'indice \emph{inLeftFirstIndex  + inBitCount - 1}, and \emph{b} est encodé à partir du bit d'indice \emph{inRightFirstIndex} to \emph{inRightFirstIndex + inBitCount - 1}.}
 
 \textbf{Exemple :}
 \begin{galgascode}
-@binaryset s [binarySetWithNotEqualComparison !0 !2 !3] ;
-log s; # displays <@binaryset: 00X01, 00X1X, 01X00, 01X1X, 10X0X, 10X11, 11X0X, 11X10>
+@binaryset s = .binarySetWithNotEqualComparison !0 !2 !3] ;
+log s; # Affiche <@binaryset: 00X01, 00X1X, 01X00, 01X1X, 10X0X, 10X11, 11X0X, 11X10>
 \end{galgascode}
 
 
@@ -166,8 +162,8 @@ log s; # displays <@binaryset: 00X01, 00X1X, 01X00, 01X1X, 10X0X, 10X11, 11X0X, 
 {@uint inLeftFirstIndex}
 {@uint inBitCount}
 {@uint64 inConstant}
-{Returns an \galgas{@binaryset} object that encodes an inequality relation between a variable and a constant.}
-{the constructor returns an binary set that encodes the \emph{a~!=~cst} relation, where \emph {a} is encoded from bit index \emph{inBitIndex} to bit index \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.}
+{Retourne un \galgas{@binaryset} object that encodes an inequality relation between a variable and a constant.}
+{the constructeur Retourne un binary set that encodes the \emph{a~!=~cst} relation, where \emph {a} est encodé à partir du bit d'indice \emph{inBitIndex} jusqu'au bit d'indice \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.}
 
 
 
@@ -197,29 +193,29 @@ log s; # displays <@binaryset: 00X01, 00X1X, 01X00, 01X1X, 10X0X, 10X11, 11X0X, 
 \textbf{Exemple :}
 \begin{galgascode}
 An empty predicate string (or a string containing only spaces) provides an empty binary set:
-@binaryset s [binarySetWithPredicateString !" "] ;
-@bool b := [s isEmptySet]; # b is true
+@binaryset s = .binarySetWithPredicateString !" "] ;
+@bool b = = .s isEmptySet]; # b is true
 \end{galgascode}
 
 
 \begin{galgascode}
 A predicate string containing only 'X' characters (at least one) provides an full binary set:
-@binaryset s [binarySetWithPredicateString !" X X"] ; # Spaces are non significant
-@bool b := [s isFullSet]; # b is true
+@binaryset s = .binarySetWithPredicateString !" X X"] ; # Spaces are non significant
+@bool b = [s isFullSet]; # b is true
 \end{galgascode}
 
 
 \begin{galgascode}
 A predicate string can encode a binary value (MSB first):
 @binaryset s [binarySetWithPredicateString !"1100"] ; # 12 in decimal
-log s; # Displays <@binaryset: 1100>
+log s; # Affiche <@binaryset: 1100>
 \end{galgascode}
 
 
 \begin{galgascode}
 You can use the boolean '|' operator for providing an or'ed values:
 @binaryset s [binarySetWithPredicateString !" 1100 | 1101"] ;
-log s; # Displays <@binaryset: 110X>
+log s; # Affiche <@binaryset: 110X>
 \end{galgascode}
 
 
@@ -227,7 +223,7 @@ log s; # Displays <@binaryset: 110X>
 \begin{galgascode}
 You can use you can use don't care bits and '|' operator together:
 @binaryset s [binarySetWithPredicateString !"11X00X0 | 111XXX"] ;
-log s; # Displays <@binaryset: 1100X0, 111XXX>
+log s; # Affiche <@binaryset: 1100X0, 111XXX>
 \end{galgascode}
 
 
@@ -241,13 +237,13 @@ log s; # Displays <@binaryset: 1100X0, 111XXX>
 {@uint inLeftFirstIndex}
 {@uint inBitCount}
 {@uint inRightFirstIndex}
-{Returns an \galgas{@binaryset} object that encodes a strict greater than relation between two variables.}
-{the constructor returns an binary set that encodes the \emph{a~>~b} relation, where \emph{a} is encoded from bit index \emph{inLeftFirstIndex} to bit index \emph{inLeftFirstIndex  + inBitCount - 1}, and \emph{b} is encoded from bit index \emph{inRightFirstIndex} to \emph{inRightFirstIndex + inBitCount - 1}.}
+{Retourne un \galgas{@binaryset} object that encodes a strict greater than relation between two variables.}
+{the constructeur Retourne un binary set that encodes the \emph{a~>~b} relation, where \emph{a} est encodé à partir du bit d'indice \emph{inLeftFirstIndex} jusqu'au bit d'indice \emph{inLeftFirstIndex  + inBitCount - 1}, and \emph{b} est encodé à partir du bit d'indice \emph{inRightFirstIndex} to \emph{inRightFirstIndex + inBitCount - 1}.}
 
 \textbf{Exemple :}
 \begin{galgascode}
 @binaryset s [binarySetWithStrictGreaterComparison !0 !2 !3] ;
-log s; # displays <@binaryset: 00X01, 00X1X, 01X1X, 10X11>
+log s; # Affiche <@binaryset: 00X01, 00X1X, 01X1X, 10X11>
 \end{galgascode}
 
 
@@ -261,8 +257,8 @@ log s; # displays <@binaryset: 00X01, 00X1X, 01X1X, 10X11>
 {@uint inLeftFirstIndex}
 {@uint inBitCount}
 {@uint64 inConstant}
-{Returns an \galgas{@binaryset} object that encodes a strict greater than relation between a variable and a constant.}
-{the constructor returns an binary set that encodes the \emph{a~>~cst} relation, where \emph {a} is encoded from bit index \emph{inBitIndex} to bit index \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.}
+{Retourne un \galgas{@binaryset} object that encodes a strict greater than relation between a variable and a constant.}
+{the constructeur Retourne un binary set that encodes the \emph{a~>~cst} relation, where \emph {a} est encodé à partir du bit d'indice \emph{inBitIndex} jusqu'au bit d'indice \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.}
 
 
 
@@ -275,13 +271,13 @@ log s; # displays <@binaryset: 00X01, 00X1X, 01X1X, 10X11>
 {@uint inLeftFirstIndex}
 {@uint inBitCount}
 {@uint inRightFirstIndex}
-{Returns an \galgas{@binaryset} object that encodes a strict lower than relation between two variables.}
-{the constructor returns an binary set that encodes the \emph{a~<~b} relation, where \emph{a} is encoded from bit index \emph{inLeftFirstIndex} to bit index \emph{inLeftFirstIndex  + inBitCount - 1}, and \emph{b} is encoded from bit index \emph{inRightFirstIndex} to \emph{inRightFirstIndex + inBitCount - 1}.}
+{Retourne un \galgas{@binaryset} object that encodes a strict lower than relation between two variables.}
+{the constructeur Retourne un binary set that encodes the \emph{a~<~b} relation, where \emph{a} est encodé à partir du bit d'indice \emph{inLeftFirstIndex} jusqu'au bit d'indice \emph{inLeftFirstIndex  + inBitCount - 1}, and \emph{b} est encodé à partir du bit d'indice \emph{inRightFirstIndex} to \emph{inRightFirstIndex + inBitCount - 1}.}
 
 \textbf{Exemple :}
 \begin{galgascode}
 @binaryset s [binarySetWithStrictLowerComparison !0 !2 !3] ;
-log s; # displays <@binaryset: 01X00, 10X0X, 11X0X, 11X10>
+log s; # Affiche <@binaryset: 01X00, 10X0X, 11X0X, 11X10>
 \end{galgascode}
 
 
@@ -295,8 +291,8 @@ log s; # displays <@binaryset: 01X00, 10X0X, 11X0X, 11X10>
 {@uint inLeftFirstIndex}
 {@uint inBitCount}
 {@uint64 inConstant}
-{Returns an \galgas{@binaryset} object that encodes a strict lower than relation between a variable and a constant.}
-{the constructor returns an binary set that encodes the \emph{a~<~cst} relation, where \emph {a} is encoded from bit index \emph{inBitIndex} to bit index \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.}
+{Retourne un \galgas{@binaryset} object that encodes a strict lower than relation between a variable and a constant.}
+{the constructeur Retourne un binary set that encodes the \emph{a~<~cst} relation, where \emph {a} est encodé à partir du bit d'indice \emph{inBitIndex} jusqu'au bit d'indice \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.}
 
 
 
@@ -306,7 +302,7 @@ log s; # displays <@binaryset: 01X00, 10X0X, 11X0X, 11X10>
 {binaryset}
 {1.6.0}
 {binaryset}
-{Returns an empty \galgas{@binaryset} object.}
+{Retourne un empty \galgas{@binaryset} object.}
 {}
 
 
@@ -335,14 +331,14 @@ log s; # displays <@binaryset: 01X00, 10X0X, 11X0X, 11X10>
 \textbf{Exemple :}
 \begin{galgascode}
 @binaryset gr [binarySetWithPredicateString !"0001 0000"] ; # Edge 0 -> 1
-gr := gr | [@binaryset binarySetWithPredicateString !"0010 0001"] ; # Edge 1 -> 2
-gr := gr | [@binaryset binarySetWithPredicateString !"0011 0010"] ; # Edge 2 -> 3
-gr := gr | [@binaryset binarySetWithPredicateString !"0100 0011"] ; # Edge 3 -> 4
-gr := gr | [@binaryset binarySetWithPredicateString !"0101 0100"] ; # Edge 4 -> 5
+gr = gr | [@binaryset binarySetWithPredicateString !"0010 0001"] ; # Edge 1 -> 2
+gr = gr | [@binaryset binarySetWithPredicateString !"0011 0010"] ; # Edge 2 -> 3
+gr = gr | [@binaryset binarySetWithPredicateString !"0100 0011"] ; # Edge 3 -> 4
+gr = gr | [@binaryset binarySetWithPredicateString !"0101 0100"] ; # Edge 4 -> 5
 @binaryset initialState [binarySetWithPredicateString !"0000"] ; # 0 is the initial state
-@binaryset accessibleStates := [gr accessibleStates !initialState !4] ;
+@binaryset accessibleStates = [gr accessibleStates !initialState !4] ;
 message " Accessible:" ;
-@uint64list valueList := [accessibleStates uint64ValueList !4] ;
+@uint64list valueList = [accessibleStates uint64ValueList !4] ;
 foreach valueList do
   message " " . [mValue string] ;
 end foreach ;
@@ -350,7 +346,7 @@ message "\n" ;
 \end{galgascode}
 
 
-This program displays: \texttt{Accessible: 0 1 2 3 4 5}.
+This program Affiche: \texttt{Accessible: 0 1 2 3 4 5}.
 
 
 
@@ -399,26 +395,26 @@ This program displays: \texttt{Accessible: 0 1 2 3 4 5}.
 {bool}
 {@uint inFirstBit}
 {@uint inBitCount}
-{Returns an \galgas{@bool} value indicating whether the receiver'value contains a given value.}
+{Retourne un \galgas{@bool} value indicating whether the receiver'value contains a given value.}
 {returns \galgas{true} if the receiver's contains a value, and \galgas{false} otherwise; this value is computed from the \emph{inBitCount} first bits of \emph{inValue} value, shifted left by \emph{inFirstBit}.}
 
 
 \textbf{Exemple :}
 \begin{galgascode}
 @binaryset s [binarySetWithPredicateString !"0 00XX X111\textbar 1 1111 1111"] ;
-log s ; \# Displays <@binaryset: 000XXX111, 111111111>
-@bool b := [s containsValue !127L !0 !7] ;
-log b ; \# Displays <@bool:true>
-b := [s containsValue !31L !1 !7] ;
-log b ; \# Displays <@bool:true>
-b := [s containsValue !63L !1 !8] ;
-log b ; \# Displays <@bool:false>
-b := [s containsValue !7L !0 !9] ;
-log b ; \# Displays <@bool:true>
-b := [s containsValue !7L !0 !10] ;
-log b ; \# Displays <@bool:true>
-b := [s containsValue !32767L !1 !12] ;
-log b ; \# Displays <@bool:true>
+log s ; \# Affiche <@binaryset: 000XXX111, 111111111>
+@bool b = [s containsValue !127L !0 !7] ;
+log b ; \# Affiche <@bool:true>
+b = [s containsValue !31L !1 !7] ;
+log b ; \# Affiche <@bool:true>
+b = [s containsValue !63L !1 !8] ;
+log b ; \# Affiche <@bool:false>
+b = [s containsValue !7L !0 !9] ;
+log b ; \# Affiche <@bool:true>
+b = [s containsValue !7L !0 !10] ;
+log b ; \# Affiche <@bool:true>
+b = [s containsValue !32767L !1 !12] ;
+log b ; \# Affiche <@bool:true>
 \end{galgascode}
 
 
@@ -438,7 +434,7 @@ log b ; \# Displays <@bool:true>
 
 Note that \texttt{[a equalTo !b]} is equivalent to \texttt{$\sim$ (a $\wedge$ b)}.
 
-This operation returns an \galgas{@binaryset} value; do not confuse with \emph{==} operator that returns an \galgas{@bool} value.
+This operation Retourne un \galgas{@binaryset} value; do not confuse with \emph{==} operator that Retourne un \galgas{@bool} value.
 
 
 
@@ -473,9 +469,9 @@ This operation returns an \galgas{@binaryset} value; do not confuse with \emph{=
 \textbf{Exemple :}
 \begin{galgascode}
 @binaryset s [binarySetWithPredicateString !"01110010"] ;
-log s ; # Displays <@binaryset: 01110010>
-@binaryset ss := [s existsOnBitRange !2 !3] ;
-log s ; # Displays <@binaryset: 011XXX10>
+log s ; # Affiche <@binaryset: 01110010>
+@binaryset ss = [s existsOnBitRange !2 !3] ;
+log s ; # Affiche <@binaryset: 011XXX10>
 \end{galgascode}
 
 
@@ -850,7 +846,7 @@ $\sim$ & Negation, Complementation \\
 \hline
 \end{tabular}
 
-This operator returns an \galgas{@binaryset} object.
+This operator Retourne un \galgas{@binaryset} object.
 
 
 
@@ -895,8 +891,8 @@ $>>$ & Right Shift \\
 \textbf{Exemple :}
 \begin{galgascode}
 @binaryset b [binarySetWithPredicateString !"1010"] ;
-log b ; # displays: <@binaryset: 1010>
-@binaryset bb := b << 3 ;
-log bb ; # displays: <@binaryset: 1010XXX>
+log b ; # Affiche: <@binaryset: 1010>
+@binaryset bb = b << 3 ;
+log bb ; # Affiche: <@binaryset: 1010XXX>
 \end{galgascode}
 

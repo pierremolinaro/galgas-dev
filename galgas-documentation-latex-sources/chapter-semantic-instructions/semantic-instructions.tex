@@ -1699,6 +1699,44 @@ L'exécution de l'instruction \galgas{loop} est illustrée par l'organigramme de
 
 
 
+\sectionLabel{L'instruction d'appel de procédure}{instructionAppelProcedure}
+
+La syntaxe de l'appel d'une procédure est :
+\lstset{emph={nom_procedure, liste_parametres_effectifs}, emphstyle=\emph}
+\begin{galgascode}
+nom_procedure (liste_parametres_effectifs)
+\end{galgascode}
+
+Les parenthèses sont obligatoires. La déclaration d'un procédure est présentée à la \refSectionPage{declarationProcedure}.
+
+\galgas{nom_procedure} est le nom de la procédure, et \galgas{liste\_parametres\_effectifs} est la liste des paramètres effectifs de l'appel, en accord avec l'en-tête de la procédure.
+
+Par exemple, la procedure suivante :
+\begin{galgascode}
+proc produit ?@uint a ?@uint b !@uint resultat {
+  resultat = a * b
+}
+\end{galgascode}
+
+Peut être appelée par :
+\begin{galgascode}
+produit (!2 !3 ??@uint resultat)
+\end{galgascode}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \sectionLabel{L'instruction d'appel de méthode}{methodCallInstruction}
 
 En GALGAS, une \emph{méthode} est un sous-programme qui s'applique à un objet, et qui ne modifie pas cet objet. La syntaxe de l'appel d'une méthode est :
@@ -1713,8 +1751,8 @@ Avec l'option \texttt{-T}, un fichier HTML qui contient les caractéristiques de
 
 \texttt{
 \textbf{method} writeToExecutableFileWhenDifferentContents\\
-\hspace*{2cm}??@string inFilePath\\
-\hspace*{2cm}!@bool outFileModified
+\hspace*{1cm}??@string inFilePath\\
+\hspace*{1cm}!@bool outFileModified
 }
 
 Aussi, cette méthode peut être appelée par :
@@ -1726,6 +1764,48 @@ Aussi, cette méthode peut être appelée par :
   ??@bool fileChanged
 ]
 \end{galgascode}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\sectionLabel{L'instruction d'appel de procédure de classe}{classProcCallInstruction}
+
+En GALGAS, une \emph{procédure de classe} est est une procédure définie dans un type. Au contraire d'une méthode, elle ne s'applique pas à un objet. La syntaxe de l'appel d'une procédure de classe est :
+\lstset{emph={nom_procedure, liste_parametres_effectifs}, emphstyle=\emph}
+\begin{galgascode}
+[@T nom_procedure liste_parametres_effectifs]
+\end{galgascode}
+
+\galgas{nom_procedure} est le nom de la procédure, et \galgas{liste\_parametres\_effectifs} est la liste des paramètres effectifs, en accord avec l'en-tête de la procédure.
+
+Avec l'option \texttt{-T}, un fichier HTML qui contient les caractéristiques de tous les types d'un projet est engendré dans le répertoire \texttt{build/helpers}. Ainsi, les en-têtes de toutes les méthodes sont listés. Par exemple, pour le type \galgas{@string}, la procédure de classe \galgas{deleteFile} est présentée comme suit :
+
+\texttt{
+\textbf{proc} @string deleteFile\\
+\hspace*{1cm}??@string inFilePath\\
+}
+
+Aussi, elle peut être appelée par :
+\begin{galgascode}
+@string filePath = ...
+[@string deleteFile !filePath]
+\end{galgascode}
+
+
+
+
+
 
 
 

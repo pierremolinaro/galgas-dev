@@ -103,8 +103,7 @@ rule <actual_parameter_list>
   while
     $!$ ;
     const @location qualifierLocation := here ;
-    @semanticExpressionAST e ;
-    <expression> ? e ;
+    <expression> ??@semanticExpressionAST e ;
     const @location endOfExpressionLocation := here ;
     outActualParameterList += ![@outputActualParameterAST new
       !qualifierLocation
@@ -114,8 +113,7 @@ rule <actual_parameter_list>
   while
     $!?$ ;
     const @location qualifierLocation := here ;
-    @lstring outputInputActualParameterName ;
-    $identifier$ ?outputInputActualParameterName ;
+    $identifier$ ??@lstring outputInputActualParameterName ;
     @lstringlist structAttributeList [emptyList] ;
     repeat
     while
@@ -136,7 +134,8 @@ rule <actual_parameter_list>
     select
       $identifier$ ?inputActualParameterName ;
     or
-      $type_name$ ? @lstring declarationTypeName ;
+      $type_name$ ? @lstring declarationTypeName :> ??@string sep ?* ;
+      send sep . "var @" . declarationTypeName ;
       $identifier$ ?inputActualParameterName ;
       ioLocalVariableDeclarationList += !declarationTypeName !inputActualParameterName !false ;
     end select ;
@@ -146,7 +145,8 @@ rule <actual_parameter_list>
       !false # is not constant
     ] ;
   while
-    $??$ ;
+    $??$ :> ??@string sep ?* ;
+    send sep . "?let " ;
     const @location qualifierLocation := here ;
     $type_name$ ?@lstring declarationTypeName ;
     $identifier$ ?@lstring inputActualParameterName ;

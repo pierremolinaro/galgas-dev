@@ -417,7 +417,6 @@ routine printFeaturesOfType
   ??@classMethodMap inClassMethodMap
   ??@uint inHandledOperatorFlags
   ??@unifiedTypeMapProxyAndParameterList inAddAssignOperatorArguments
-#  ??@withAccessorMap inWithAccessorMap
 :
   @string s := "Features of @" . inTypeName . " type:\n" ;
   s .= " - kind: " . [inTypeKindEnum kind] .";\n" ;
@@ -464,7 +463,7 @@ routine printFeaturesOfType
 #---
   foreach inInstanceMethodMap
   before
-    s .= " - instance method(s):\n" ;
+    s .= " - method(s):\n" ;
   do
     s .= "    " . lkey ;
     foreach mParameterList do
@@ -475,7 +474,7 @@ routine printFeaturesOfType
 #---
   foreach inClassMethodMap
   before
-    s .= " - class method(s):\n" ;
+    s .= " - type proc(s):\n" ;
   do
     s .= "    " . lkey ;
     foreach mParameterList do

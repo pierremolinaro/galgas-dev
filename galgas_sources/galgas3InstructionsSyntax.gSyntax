@@ -825,12 +825,6 @@ end rule ;
 
 #!  Method call instruction
 
-#------------------------------------------------------------------------------*
-
-nonterminal <actual_input_parameter_list>
-  !@actualInputParameterListAST outActualInputParameterList
-;
-
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction>
@@ -1600,11 +1594,13 @@ rule <actual_input_parameter>
     outActualInputParameter := [@inputParameterAnonymousVariable new] ;
   or
     $?$ ;
+    $var$ ;
     $type_name$ ?@lstring actualParameterTypeName ;
     $identifier$ ?@lstring actualParameterName ;
     outActualInputParameter := [@inputParameterDeclaredVariable new !actualParameterTypeName !actualParameterName] ;
   or
-    $??$ ;
+    $?$ ;
+    $let$ ;
     $type_name$ ?@lstring actualParameterTypeName ;
     $identifier$ ?@lstring actualParameterName ;
     outActualInputParameter := [@inputParameterDeclaredConstant new !actualParameterTypeName !actualParameterName] ;
