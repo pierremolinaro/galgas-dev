@@ -454,9 +454,7 @@ override method @inputParameterDeclaredVariable analyzeInputParameter
   ?!@terminalCheckAssignementList ioTerminalCheckAssignementList
   ?!@variableMap ioVariableMap
 :
-  const cppName := "var_" . [mActualParameterName identifierRepresentation] ;
-  const type := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mActualParameterTypeName] ;
-  [!?ioVariableMap insertDefinedLocalVariable !mActualParameterName !type !cppName !cppName] ;
+#--- Expected type
   @unifiedTypeMapProxy expectedType ;
   switch inRequiredLexicalType
   when lexicalType_string : expectedType := inAnalysisContext->mPredefinedTypes->mLStringType ;
@@ -467,14 +465,21 @@ override method @inputParameterDeclaredVariable analyzeInputParameter
   when lexicalType_sint64 : expectedType := inAnalysisContext->mPredefinedTypes->mLSInt64Type ;
   when lexicalType_double : expectedType := inAnalysisContext->mPredefinedTypes->mLDoubleType ;
   end switch ;
-  if expectedType != type then
-    error mActualParameterName
-    : "the '" . mActualParameterName . "' parameter has the '@" . [type identifierRepresentation]
-    . ", bit an '@" . [expectedType identifierRepresentation] . "' parameter is required here"
-    ;
+#--- Type is named, or should be infered ?
+  if mActualParameterTypeName->string != "" then
+    const type := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mActualParameterTypeName] ;
+    if expectedType != type then
+      error mActualParameterName
+      : "the '" . mActualParameterName . "' formal argument has the '@" . [type key]
+      . ", bit an '@" . [expectedType key] . "' parameter is required here"
+      ;
+    end if ;
   end if ;
+#--- Create local variable
+  const cppName := "var_" . [mActualParameterName identifierRepresentation] ;
+  [!?ioVariableMap insertDefinedLocalVariable !mActualParameterName !expectedType !cppName !cppName] ;
   ioTerminalCheckAssignementList +=
-    ![mActualParameterTypeName string]
+    ![expectedType key]
     !cppName
     !inLexicalAttributeName
   ;
@@ -489,9 +494,7 @@ override method @inputParameterDeclaredConstant analyzeInputParameter
   ?!@terminalCheckAssignementList ioTerminalCheckAssignementList
   ?!@variableMap ioVariableMap
 :
-  const cppName := "var_" . [mActualParameterName identifierRepresentation] ;
-  const type := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mActualParameterTypeName] ;
-  [!?ioVariableMap insertLocalConstant !mActualParameterName !type !cppName !cppName] ;
+#--- Expected type
   @unifiedTypeMapProxy expectedType ;
   switch inRequiredLexicalType
   when lexicalType_string : expectedType := inAnalysisContext->mPredefinedTypes->mLStringType ;
@@ -502,14 +505,22 @@ override method @inputParameterDeclaredConstant analyzeInputParameter
   when lexicalType_sint64 : expectedType := inAnalysisContext->mPredefinedTypes->mLSInt64Type ;
   when lexicalType_double : expectedType := inAnalysisContext->mPredefinedTypes->mLDoubleType ;
   end switch ;
-  if expectedType != type then
-    error mActualParameterName
-    : "the '" . mActualParameterName . "' parameter has the '@" . [type identifierRepresentation]
-    . ", bit an '@" . [expectedType identifierRepresentation] . "' parameter is required here"
-    ;
+#--- Type is named, or should be infered ?
+  if mActualParameterTypeName->string != "" then
+    const type := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mActualParameterTypeName] ;
+    if expectedType != type then
+      error mActualParameterName
+      : "the '" . mActualParameterName . "' formal argument has the '@" . [type key]
+      . ", bit an '@" . [expectedType key] . "' parameter is required here"
+      ;
+    end if ;
   end if ;
+#--- Create local constant
+  const cppName := "var_" . [mActualParameterName identifierRepresentation] ;
+  [!?ioVariableMap insertLocalConstant !mActualParameterName !expectedType !cppName !cppName] ;
+#---
   ioTerminalCheckAssignementList +=
-    ![mActualParameterTypeName string]
+    ![expectedType key]
     !cppName
     !inLexicalAttributeName
   ;

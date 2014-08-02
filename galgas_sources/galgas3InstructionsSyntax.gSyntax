@@ -1595,13 +1595,23 @@ rule <actual_input_parameter>
   or
     $?$ ;
     $var$ ;
-    $type_name$ ?@lstring actualParameterTypeName ;
+    @lstring actualParameterTypeName ;
+    select
+      actualParameterTypeName := ["" nowhere] ;
+    or
+      $type_name$ ?actualParameterTypeName ;
+    end select ;
     $identifier$ ?@lstring actualParameterName ;
     outActualInputParameter := [@inputParameterDeclaredVariable new !actualParameterTypeName !actualParameterName] ;
   or
     $?$ ;
     $let$ ;
-    $type_name$ ?@lstring actualParameterTypeName ;
+    @lstring actualParameterTypeName ;
+    select
+      actualParameterTypeName := ["" nowhere] ;
+    or
+      $type_name$ ?actualParameterTypeName ;
+    end select ;
     $identifier$ ?@lstring actualParameterName ;
     outActualInputParameter := [@inputParameterDeclaredConstant new !actualParameterTypeName !actualParameterName] ;
   or
