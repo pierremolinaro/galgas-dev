@@ -35,7 +35,6 @@ nonterminal <formal_parameter_list> !@formalParameterListAST outFormalParameterL
 
 nonterminal <actual_parameter_list>
   !@actualParameterListAST outActualParameterList
-  ?!@localVariableDeclarationListAST ioLocalVariableDeclarationList
 ;
 
 #------------------------------------------------------------------------------*
@@ -212,7 +211,7 @@ end rule ;
 
 rule <syntax_instruction>
   !@syntaxInstructionAST outInstruction
-  ?!@localVariableDeclarationListAST ioLocalVariableDeclarationList
+  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   @lstring mLabelName ; # No label : empty string
   select
@@ -225,7 +224,7 @@ rule <syntax_instruction>
     $identifier$ ? mLabelName ;
   end select ;
   $non_terminal_symbol$ ??@lstring mNonterminalName indexing ruleReference ;
-  <actual_parameter_list> ??@actualParameterListAST mActualParameterList !?ioLocalVariableDeclarationList ;
+  <actual_parameter_list> ??@actualParameterListAST mActualParameterList ;
 #--- Get syntax directed translation result string
   @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult ;
   select
