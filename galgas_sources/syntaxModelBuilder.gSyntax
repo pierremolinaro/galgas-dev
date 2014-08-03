@@ -30,7 +30,6 @@ nonterminal <expression> !@semanticExpressionAST outExpression ;
 
 nonterminal <semantic_instruction>
   !@semanticInstructionAST outInstruction
-  ?!@localVariableDeclarationListAST ioLocalVariableDeclarationList
 ;
 
 nonterminal <formal_parameter_list> !@formalParameterListAST outFormalParameterList ;
@@ -211,20 +210,10 @@ rule <syntax_instruction_list> !@syntaxInstructionList outSyntaxInstructionList 
   while 
     $;$ ;
   while
-    @semanticInstructionAST instruction ;
-    @localVariableDeclarationListAST localVariableDeclarationList [emptyList] ;
-    <semantic_instruction> ? instruction !?localVariableDeclarationList ;
-    foreach localVariableDeclarationList do
-      outSyntaxInstructionList += ![@localVariableDeclarationAST new ![mTypeName location] !mTypeName !mVariableName !mIsUndefinedConstant] ;
-    end foreach ;
+    <semantic_instruction> ?let instruction ;
     outSyntaxInstructionList += !instruction ;
   while
-    @syntaxInstructionAST instruction ;
-    @localVariableDeclarationListAST localVariableDeclarationList [emptyList] ;
-    <syntax_instruction> ? instruction !?localVariableDeclarationList ;
-    foreach localVariableDeclarationList do
-      outSyntaxInstructionList += ![@localVariableDeclarationAST new ![mTypeName location] !mTypeName !mVariableName !mIsUndefinedConstant] ;
-    end foreach ;
+    <syntax_instruction> ?let instruction ;
     outSyntaxInstructionList += !instruction ;
   end repeat ;
 end rule ;
@@ -241,7 +230,6 @@ end rule ;
 
 rule <syntax_instruction>
   !@syntaxInstructionAST outInstruction
-  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $non_terminal_symbol$ ? @lstring mNonterminalName indexing ruleReference :> ?@string sep ?@string nonTerminalSymbol ;
   send sep ;
@@ -299,7 +287,6 @@ nonterminal <syntax_directed_translation_result>
 
 rule <syntax_instruction>
   !@syntaxInstructionAST outInstruction
-  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $terminal$ ??@lstring terminalName indexing terminalReference ;
   <actual_input_parameter_list> ??@actualInputParameterListAST actualInputParameterList ;
@@ -348,7 +335,6 @@ end rule ;
 
 rule <syntax_instruction>
   !@syntaxInstructionAST outInstruction
-  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $repeat$ ;
   const mRepeatInstructionLocation := here ;
@@ -387,7 +373,6 @@ end rule ;
 
 rule <syntax_instruction>
   !@syntaxInstructionAST outInstruction
-  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $select$ ;
   const mSelectInstructionLocation := here ;
@@ -424,7 +409,6 @@ end rule ;
 
 rule <syntax_instruction>
   !@syntaxInstructionAST outInstruction
-  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $parse$ ;
   const instructionLocation := here ;
@@ -494,7 +478,6 @@ end rule ;
 
 rule <syntax_instruction>
   !@syntaxInstructionAST outInstruction
-  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $parse$ ;
   const instructionLocation := here ;
@@ -531,7 +514,6 @@ end rule ;
 
 rule <syntax_instruction>
   !@syntaxInstructionAST outInstruction
-  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $parse$ ;
   const instructionLocation := here ;
@@ -571,7 +553,6 @@ end rule ;
 
 rule <syntax_instruction>
   !@syntaxInstructionAST outInstruction
-  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $send$ ;
   const instructionLocation := here ;

@@ -528,14 +528,6 @@ class @localVariableDeclarationAST extends @semanticInstructionAST {
 
 #---------------------------------------------------------------------------*
 
-list @localVariableDeclarationListAST {
-  @lstring mTypeName ;
-  @lstring mVariableName ;
-  @bool mIsUndefinedConstant ;
-}
-
-#---------------------------------------------------------------------------*
-
 class @localVariableOrConstantDeclarationWithConstructorCallAST extends @semanticInstructionAST {
   @bool mIsConstant ;
   @lstring mTypeName ;
