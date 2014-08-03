@@ -73,7 +73,6 @@ end rule ;
 
 rule <actual_parameter_list>
   !@actualParameterListAST outActualParameterList
-  ?!@localVariableDeclarationListAST ioLocalVariableDeclarationList
 :
   outActualParameterList := [@actualParameterListAST emptyList] ;
   repeat
@@ -118,7 +117,7 @@ rule <actual_parameter_list>
     repeat
     while
       $.$ ;
-      $identifier$ ? @lstring structAttributeName ;
+      $identifier$ ?var structAttributeName ;
       structAttributeList += !structAttributeName ;
     end repeat ;
     outActualParameterList += ![@outputInputActualParameterAST new 
@@ -126,43 +125,56 @@ rule <actual_parameter_list>
       !outputInputActualParameterName
       !structAttributeList
     ] ;
-  while
+  while # input parameter, existing variable
     $?$ ;
     const @location qualifierLocation := here ;
-    @bool isConstant ;
-    @lstring inputActualParameterName ;
-    select
-      $identifier$ ?inputActualParameterName ;
-      isConstant := false ;
-    or
-      $var$ ;
-      $type_name$ ? @lstring declarationTypeName ;
-      $identifier$ ?inputActualParameterName ;
-      ioLocalVariableDeclarationList += !declarationTypeName !inputActualParameterName !false ;
-      isConstant := false ;
-    or
-      $let$ ;
-      $type_name$ ? @lstring declarationTypeName ;
-      $identifier$ ?inputActualParameterName ;
-      ioLocalVariableDeclarationList += !declarationTypeName !inputActualParameterName !true ;
-      isConstant := true ;
-    end select ;
-    outActualParameterList += ![@inputActualParameterAST new
+    $identifier$ ?const inputActualParameterName ;
+    outActualParameterList += ![@inputActualExistingVariableParameterAST new
       !qualifierLocation
       !inputActualParameterName
-      !isConstant
     ] ;
-#  while
-#    $??$ ;
-#    const @location qualifierLocation := here ;
-#    $type_name$ ?@lstring declarationTypeName ;
-#    $identifier$ ?@lstring inputActualParameterName ;
-#    ioLocalVariableDeclarationList += !declarationTypeName !inputActualParameterName !true ;
-#    outActualParameterList += ![@inputActualParameterAST new
-#      !qualifierLocation
-#      !inputActualParameterName
-#      !true # Is constant
-#    ] ;
+  while  # input parameter, new variable
+    $?$ ;
+    const @location qualifierLocation := here ;
+    $var$ ;
+    @lstring declarationTypeName ;
+    select
+      declarationTypeName := ["" nowhere] ;
+    or
+      $type_name$ ?declarationTypeName ;
+    end select ;
+    $identifier$ ?const inputActualParameterName ;
+    outActualParameterList += ![@inputActualNewVariableParameterAST new
+      !qualifierLocation
+      !declarationTypeName
+      !inputActualParameterName
+    ] ;
+  while  # input parameter, new variable, explicit type
+    $?$ ;
+    const @location qualifierLocation := here ;
+    $type_name$ ?const declarationTypeName ;
+    $identifier$ ?const inputActualParameterName ;
+    outActualParameterList += ![@inputActualNewVariableParameterAST new
+      !qualifierLocation
+      !declarationTypeName
+      !inputActualParameterName
+    ] ;
+  while # input parameter, new constant
+    $?$ ;
+    const @location qualifierLocation := here ;
+    $let$ ;
+    @lstring declarationTypeName ;
+    select
+      declarationTypeName := ["" nowhere] ;
+    or
+      $type_name$ ?declarationTypeName ;
+    end select ;
+    $identifier$ ?const inputActualParameterName ;
+    outActualParameterList += ![@inputActualNewConstantParameterAST new
+      !qualifierLocation
+      !declarationTypeName
+      !inputActualParameterName
+    ] ;
   end repeat ;
 end rule ;
 
