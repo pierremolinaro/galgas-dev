@@ -89,8 +89,14 @@ rule <declaration>
     $identifier$ ? indexingGrammar indexing grammarComponentReference ;
   end select ;
 #--- Source file
-  $??$ ;
-  $type_name$ ? @lstring typeName ;
+  $?$ ;
+  select
+  or
+    $type_name$ ?const typeName ;
+    if typeName->string != "lstring" then
+      error typeName : "the only type allowed here is '@lstring'" ;
+    end if ;
+  end select ;
   @bool isUnused ;
   select
     isUnused := false ;
@@ -98,9 +104,6 @@ rule <declaration>
     $unused$ ;
     isUnused := true ;
   end select ;
-  if [typeName string] != "lstring" then
-    error typeName : "the only type allowed here is '@lstring'" ;
-  end if ;
   $identifier$ ? @lstring mSourceFileVariableName ;
 #---
   ${$ ;

@@ -40,7 +40,8 @@ rule <formal_parameter_list> !@formalParameterListAST outFormalParameterList :
       $?$ ;
       mFormalParameterPassingMode := [@formalArgumentPassingModeAST argumentIn] ;
     or
-      $??$ ;
+      $??$ :> ??@string sep ?* ;
+      send sep . "?let " ;
       mFormalParameterPassingMode := [@formalArgumentPassingModeAST argumentConstantIn] ;
     or
       $?!$ ;
@@ -211,7 +212,8 @@ rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputP
       $?$ ;
       isConstant := false ;
     or
-      $??$ ;
+      $??$ :> ??@string sep ?* ;
+      send sep . "?let " ;
       isConstant := true ;
     end select ;
     $type_name$ ?@lstring mFormalParameterTypeName ;

@@ -38,7 +38,8 @@ rule <formal_parameter_list> !@formalParameterListAST outFormalParameterList :
       $?$ ;
       mFormalParameterPassingMode := [@formalArgumentPassingModeAST argumentIn] ;
     or
-      $??$ ;
+      $?$ ;
+      $let$ ;
       mFormalParameterPassingMode := [@formalArgumentPassingModeAST argumentConstantIn] ;
     or
       $?!$ ;
@@ -189,11 +190,11 @@ rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputP
   repeat
   while
     @bool isConstant ;
+    $?$ ;
     select
-      $?$ ;
       isConstant := false ;
     or
-      $??$ ;
+      $let$ ;
       isConstant := true ;
     end select ;
     $type_name$ ?@lstring mFormalParameterTypeName ;

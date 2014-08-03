@@ -1433,7 +1433,8 @@ rule <syntax_directed_translation_result>
     $identifier$ ?@lstring actualParameterName ;
     outResult := [@grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar new !actualParameterTypeName !actualParameterName] ;
   or
-    $??$ ;
+    $?$ ;
+    $let$ ;
     $type_name$ ?@lstring actualParameterTypeName ;
     $identifier$ ?@lstring actualParameterName ;
     outResult := [@grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst new !actualParameterTypeName !actualParameterName] ;
