@@ -28,7 +28,6 @@ nonterminal <expression> !@semanticExpressionAST outExpression ;
 
 nonterminal <semantic_instruction>
   !@semanticInstructionAST outInstruction
-  ?!@localVariableDeclarationListAST ioLocalVariableDeclarationList
 ;
 
 nonterminal <formal_parameter_list> !@formalParameterListAST outFormalParameterList ;
@@ -183,18 +182,10 @@ rule <syntax_instruction_list> !@syntaxInstructionList outSyntaxInstructionList 
   while 
     $;$ ;
   while
-    @localVariableDeclarationListAST localVariableDeclarationList [emptyList] ;
-    <semantic_instruction> ??@semanticInstructionAST instruction !?localVariableDeclarationList ;
-    foreach localVariableDeclarationList do
-      outSyntaxInstructionList += ![@localVariableDeclarationAST new ![mTypeName location] !mTypeName !mVariableName !mIsUndefinedConstant] ;
-    end foreach ;
+    <semantic_instruction> ??@semanticInstructionAST instruction ;
     outSyntaxInstructionList += !instruction ;
   while
-    @localVariableDeclarationListAST localVariableDeclarationList [emptyList] ;
-    <syntax_instruction> ??@syntaxInstructionAST instruction !?localVariableDeclarationList ;
-    foreach localVariableDeclarationList do
-      outSyntaxInstructionList += ![@localVariableDeclarationAST new ![mTypeName location] !mTypeName !mVariableName !mIsUndefinedConstant] ;
-    end foreach ;
+    <syntax_instruction> ?let instruction ;
     outSyntaxInstructionList += !instruction ;
   end repeat ;
 end rule ;
@@ -211,7 +202,6 @@ end rule ;
 
 rule <syntax_instruction>
   !@syntaxInstructionAST outInstruction
-  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   @lstring mLabelName ; # No label : empty string
   select
@@ -266,7 +256,6 @@ nonterminal <syntax_directed_translation_result>
 
 rule <syntax_instruction>
   !@syntaxInstructionAST outInstruction
-  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $terminal$ ??@lstring terminalName indexing terminalReference ;
   <actual_input_parameter_list> ??@actualInputParameterListAST actualInputParameterList ;
@@ -314,7 +303,6 @@ end rule ;
 
 rule <syntax_instruction>
   !@syntaxInstructionAST outInstruction
-  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $repeat$ ;
   const mRepeatInstructionLocation := here ;
@@ -357,7 +345,6 @@ end rule ;
 
 rule <syntax_instruction>
   !@syntaxInstructionAST outInstruction
-  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $select$ ;
   const mSelectInstructionLocation := here ;
@@ -398,7 +385,6 @@ end rule ;
 
 rule <syntax_instruction>
   !@syntaxInstructionAST outInstruction
-  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $parse$ ;
   const instructionLocation := here ;
@@ -471,7 +457,6 @@ end rule ;
 
 rule <syntax_instruction>
   !@syntaxInstructionAST outInstruction
-  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $parse$ ;
   const instructionLocation := here ;
@@ -511,7 +496,6 @@ end rule ;
 
 rule <syntax_instruction>
   !@syntaxInstructionAST outInstruction
-  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $parse$ ;
   const instructionLocation := here ;
@@ -555,7 +539,6 @@ end rule ;
 
 rule <syntax_instruction>
   !@syntaxInstructionAST outInstruction
-  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $send$ ;
   const instructionLocation := here ;
