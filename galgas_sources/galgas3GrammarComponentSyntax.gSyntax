@@ -137,7 +137,8 @@ rule <label_formal_parameter>
   !@lstring outArgumentName
   ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList
 :
-  $??$ ;
+  $?$ ;
+  $let$ ;
   $type_name$ ?@lstring mTypeName ;
   select
   or

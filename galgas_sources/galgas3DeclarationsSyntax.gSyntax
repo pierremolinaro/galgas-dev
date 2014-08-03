@@ -1157,7 +1157,7 @@ rule <declaration>
     @typeNameFormalParameterNameList argumentTypeList [emptyList] ;
     repeat
     while
-      $??$ ;
+      $?$ ;
       $type_name$ ? @lstring argumentTypeName ;
       $identifier$ ? @lstring argumentName ;
       argumentTypeList += !argumentTypeName !argumentName->string ;
@@ -1175,7 +1175,7 @@ rule <declaration>
     @typeNameFormalParameterNameList argumentTypeList [emptyList] ;
     repeat
     while
-      $??$ ;
+      $?$ ;
       $type_name$ ? @lstring argumentTypeName ;
       $identifier$ ? @lstring argumentName ;
       argumentTypeList += !argumentTypeName !argumentName->string ;

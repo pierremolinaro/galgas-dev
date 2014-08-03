@@ -545,20 +545,19 @@ rule <primary> !@semanticExpressionAST outExpression :
   $[$ :> ??@string sep ?* ;
   send sep ;
 #--- Class name
-  $type_name$ ?@lstring className indexing typeReferenceInConstructor ;
+  $type_name$ ?const className indexing typeReferenceInConstructor ;
   send "." ;
 #--- Constructor name
-  $identifier$ ?@lstring constructorName ;
-  send " {" ;
+  $identifier$ ?const constructorName ;
 #--- Actual arguments
-  <output_expression_list> ?@semanticExpressionListAST expressionList ;
+  <output_expression_list> ?@semanticExpressionListAST expressionList :> ??@string strExpressionList ;
   outExpression := [@constructorExpressionAST new
     !className
     !constructorName
     !expressionList
   ] ;
   $]$ :> ?* ?* ;
-  send "}" ;
+  send if [expressionList length] > 0 then " {" . strExpressionList . "}" else "" end ;
 end rule ;
 
 #------------------------------------------------------------------------------*
