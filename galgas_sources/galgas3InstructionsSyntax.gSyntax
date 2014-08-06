@@ -1231,7 +1231,7 @@ rule <semantic_instruction>
   end repeat ;
   $+=$ ;
   select
-    <non_empty_output_expression_list> ??@semanticExpressionListAST expressionList ;
+    <non_empty_output_expression_list> ??@actualOutputExpressionList expressionList ;
     outInstruction := [@plusEqualElementsInstructionAST new
       !instructionLocation
       !mReceiverName
@@ -1252,9 +1252,9 @@ end rule ;
 #------------------------------------------------------------------------------*
 
 rule <non_empty_output_expression_list>
-  !@semanticExpressionListAST outExpressionList
+  !@actualOutputExpressionList outExpressionList
 :
-  outExpressionList := [@semanticExpressionListAST emptyList] ;
+  outExpressionList := {} ;
   repeat
     $!$ ?const selector ;
     <expression> ??@semanticExpressionAST expression ;
@@ -1279,8 +1279,7 @@ rule <semantic_instruction>
   $self$ ;
   const instructionLocation := here ;
   $+=$ ;
-  @semanticExpressionListAST expressionList ;
-  <non_empty_output_expression_list> ?expressionList ;
+  <non_empty_output_expression_list> ??@actualOutputExpressionList expressionList ;
   outInstruction := [@selfPlusEqualElementsInstructionAST new
     !instructionLocation
     !expressionList
@@ -1701,12 +1700,12 @@ rule <semantic_instruction>
   @semanticExpressionListAST matchedExpressionNameList [emptyList] ;
   const instructionLocation := here ;
   <expression> ??@semanticExpressionAST receiverExpression ;
-  matchedExpressionNameList += !["" nowhere] !receiverExpression !here ;
+  matchedExpressionNameList += !receiverExpression !here ;
   $,$ ;
   repeat
     @semanticExpressionAST receiverExpression ;
     <expression> ? receiverExpression ;
-    matchedExpressionNameList += !["" nowhere] !receiverExpression !here ;
+    matchedExpressionNameList += !receiverExpression !here ;
   while
     $,$ ;
   end repeat ;

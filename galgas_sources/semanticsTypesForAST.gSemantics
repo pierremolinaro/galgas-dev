@@ -33,8 +33,15 @@ abstract class @semanticExpressionAST {
 
 #---------------------------------------------------------------------------*
 
-list @semanticExpressionListAST {
+list @actualOutputExpressionList {
   @lstring mActualSelector feature nogetter ;
+  @semanticExpressionAST mExpression feature nogetter ;
+  @location mEndOfExpressionLocation feature nogetter ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @semanticExpressionListAST {
   @semanticExpressionAST mExpression feature nogetter ;
   @location mEndOfExpressionLocation feature nogetter ;
 }
@@ -111,7 +118,7 @@ class @literalSInt64ExpressionAST extends @semanticExpressionAST {
 class @constructorExpressionAST extends @semanticExpressionAST {
   @lstring mTypeName ;
   @lstring mConstructorName ;
-  @semanticExpressionListAST mExpressions ;
+  @actualOutputExpressionList mExpressions ;
 }
 
 #---------------------------------------------------------------------------*
@@ -125,7 +132,7 @@ class @defaultConstructorExpressionAST extends @semanticExpressionAST {
 class @readerCallExpressionAST extends @semanticExpressionAST {
   @semanticExpressionAST mReceiver ;
   @lstring mReaderName ;
-  @semanticExpressionListAST mExpressions ;
+  @actualOutputExpressionList mExpressions ;
 }
 
 #---------------------------------------------------------------------------*
@@ -197,7 +204,7 @@ class @ifExpressionAST extends @semanticExpressionAST {
 
 class @functionCallExpressionAST extends @semanticExpressionAST {
   @lstring mFunctionName ;
-  @semanticExpressionListAST mExpressions ;
+  @actualOutputExpressionList mExpressionList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -255,7 +262,7 @@ class @filewrapperInExpressionAST extends @semanticExpressionAST {
 class @filewrapperTemplateInExpressionAST extends @semanticExpressionAST {
   @lstring mFilewrapperName ;
   @lstring mFilewrapperTemplateName ;
-  @semanticExpressionListAST mExpressions ;
+  @actualOutputExpressionList mExpressions ;
 }
 
 #---------------------------------------------------------------------------*
@@ -536,7 +543,7 @@ class @localVariableOrConstantDeclarationWithConstructorCallAST extends @semanti
   @lstring mTypeName ;
   @lstring mVariableName ;
   @lstring mConstructorName ;
-  @semanticExpressionListAST mConstructorExpressions ;
+  @actualOutputExpressionList mConstructorExpressions ;
 }
 
 #---------------------------------------------------------------------------*
@@ -835,7 +842,7 @@ class @structuredCastInstructionAST extends @semanticInstructionAST {
 class @plusEqualElementsInstructionAST extends @semanticInstructionAST {
   @lstring mReceiverName ;
   @lstringlist mStructAttributeList ;
-  @semanticExpressionListAST mExpressions ;
+  @actualOutputExpressionList mExpressions ;
 }
 
 #---------------------------------------------------------------------------*
@@ -853,7 +860,7 @@ class @plusEqualExpressionInstructionAST extends @semanticInstructionAST {
 #---------------------------------------------------------------------------*
 
 class @selfPlusEqualElementsInstructionAST extends @semanticInstructionAST {
-  @semanticExpressionListAST mExpressions ;
+  @actualOutputExpressionList mExpressions ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1770,7 +1777,7 @@ class @expressionCollectionValue extends @abstractCollectionValueElement {
 #------------------------------------------------------------------------------*
 
 class @expressionListCollectionValue extends @abstractCollectionValueElement {
-  @semanticExpressionListAST mExpressionList ;
+  @actualOutputExpressionList mExpressionList ;
   @location mEndOfExpressionLocation ;
 }
 
