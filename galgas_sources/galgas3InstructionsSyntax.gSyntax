@@ -1430,23 +1430,23 @@ nonterminal <actual_parameter_list>
 rule <syntax_directed_translation_result>
   !@abstractGrammarInstructionSyntaxDirectedTranslationResult outResult
 :
+  $?$ ?const selector ;
+  if selector->string != "" then
+    error selector : "the selector should be '?'" ;
+  end if ;
   select
-    $?$ ?const selector ;
     $*$ ;
     outResult := [@grammarInstructionSyntaxDirectedTranslationDropResult new !here] ;
   or
-    $?$ ?const selector ;
     $type_name$ ?@lstring actualParameterTypeName ;
     $identifier$ ?@lstring actualParameterName ;
     outResult := [@grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar new !actualParameterTypeName !actualParameterName] ;
   or
-    $?$ ?const selector ;
     $let$ ;
     $type_name$ ?@lstring actualParameterTypeName ;
     $identifier$ ?@lstring actualParameterName ;
     outResult := [@grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst new !actualParameterTypeName !actualParameterName] ;
   or
-    $?$ ?const selector ;
     $identifier$ ?@lstring actualParameterName ;
     outResult := [@grammarInstructionSyntaxDirectedTranslationResultInVar new !actualParameterName] ;
   end select ;

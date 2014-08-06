@@ -308,11 +308,17 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList :
   repeat
   while
     $!$ ?const selector ;
+    if selector->string != "" then
+      error selector : "the selector should be '!'" ;
+    end if ;
     @location passingModeLocation := here ;
     <lexical_output_effective_argument> ?let @lexicalRoutineOrFunctionFormalInputArgumentAST arg ;
     actualArgumentList += ![@lexicalFormalInputArgumentAST new !passingModeLocation !arg] ;
   while
     $!?$ ?const selector ;
+    if selector->string != "" then
+      error selector : "the selector should be '!?'" ;
+    end if ;
     @location passingModeLocation := here ;
     $identifier$ ?@lstring attributeName ;
     @lexicalAttributeInputOutputArgumentAST arg [new !passingModeLocation !attributeName] ;
@@ -390,6 +396,9 @@ rule <function_call_or_attribute> ??@lstring inIdf !@lexicalRoutineOrFunctionFor
   repeat
   while
     $!$ ?const selector ;
+    if selector->string != "" then
+      error selector : "the selector should be '!'" ;
+    end if ;
     @lexicalRoutineOrFunctionFormalInputArgumentAST arg ;
     <lexical_output_effective_argument> ?arg ;
     functionActualArgumentList += !arg ;
@@ -634,9 +643,15 @@ rule <extern_routine_or_function_declaration>
       @lexicalArgumentModeAST lexicalArgumentMode ;
       select
         $?!$ ?const selector ;
+        if selector->string != "" then
+          error selector : "the selector should be '?!'" ;
+        end if ;
         lexicalArgumentMode := [@lexicalArgumentModeAST lexicalInputOutputMode] ;
       or
         $?$ ?const selector ;
+        if selector->string != "" then
+          error selector : "the selector should be '?'" ;
+        end if ;
         lexicalArgumentMode := [@lexicalArgumentModeAST lexicalInputMode] ;
       end select ;
       $type_name$ ?@lstring lexicalTypeName ;
@@ -663,6 +678,9 @@ rule <extern_routine_or_function_declaration>
     repeat
     while
       $?$ ?const selector ;
+      if selector->string != "" then
+        error selector : "the selector should be '?'" ;
+      end if ;
       $type_name$ ?@lstring lexicalTypeName ;
       $identifier$ ?@lstring formalArgumentName ;
       lexicalFunctionFormalArgumentList += !lexicalTypeName !formalArgumentName ;

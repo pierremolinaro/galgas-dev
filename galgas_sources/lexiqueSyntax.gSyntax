@@ -665,9 +665,15 @@ rule <extern_routine_or_function_declaration>
       @lexicalArgumentModeAST lexicalArgumentMode ;
       select
         $?!$ ?const selector ;
+        if selector->string != "" then
+          error selector : "the selector should be '?!'" ;
+        end if ;
         lexicalArgumentMode := [@lexicalArgumentModeAST lexicalInputOutputMode] ;
       or
         $?$ ?const selector ;
+        if selector->string != "" then
+          error selector : "the selector should be '?'" ;
+        end if ;
         lexicalArgumentMode := [@lexicalArgumentModeAST lexicalInputMode] ;
       end select ;
       $type_name$ ?@lstring lexicalTypeName ;
@@ -695,6 +701,9 @@ rule <extern_routine_or_function_declaration>
     repeat
     while
       $?$  ?const selector;
+      if selector->string != "" then
+        error selector : "the selector should be '?'" ;
+      end if ;
       $type_name$ ?@lstring lexicalTypeName ;
       $identifier$ ?@lstring formalArgumentName ;
       lexicalFunctionFormalArgumentList += !lexicalTypeName !formalArgumentName ;
