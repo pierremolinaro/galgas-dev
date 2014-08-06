@@ -9,7 +9,7 @@
 
 %\sectionLabel{Cible}{ciblePour Instruction}
 %
-%\lstset{emph={cible}, emphstyle=\emph}
+%\lstset{emph={cible}, emphstyle=\galgasEmphStyle}
 %
 %La notation \galgas{cible} apparaît dans plusieurs instructions :
 %\begin{itemize}
@@ -54,7 +54,7 @@
 
 Le point-virgule n'est pas un terminateur d'instruction. Il représente une instruction vide. Aussi, il peut être utilisé en nombre quelconque entre deux instructions consécutives. Ainsi, on peut écrire :
 
-\lstset{emph={instruction1, instruction2}, emphstyle=\emph}
+\lstset{emph={instruction1, instruction2}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 instruction1  instruction2
 \end{galgascode}
@@ -75,7 +75,7 @@ instruction1 ;;;; instruction2
 
 \section{Instruction de déclaration de variable}
 
-\lstset{emph={variable, expression}, emphstyle=\emph}
+\lstset{emph={variable, expression, @type}, emphstyle=\galgasEmphStyle}
 
 Une déclaration de variable peut citer une \galgas{expression} qui lui fournit sa valeur initiale. Dans le cas constraire, la variable est \emph{non construite} jusqu'à ce qu'une valeur lui soit affectée.
 
@@ -172,12 +172,12 @@ var sl = .here # Erreur : le type est indetermine
 \section{Instruction de déclaration de constante}
 
 La forme générale de cette instruction est la suivante :
-\lstset{emph={nom, expression}, emphstyle=\emph}
+\lstset{emph={nom, expression, @type}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 let @type nom = expression
 \end{galgascode}
 
-Le mot clé \galgas{let} caractérise une déclaration de constante. L'annotation de type peut être omis si le type peut être déduit de l'expression, comme pour l'instruction de déclaration de variable (\refSubsectionPage{declarationVariableAvecExpression}). On peut donc reprendre les exemples de cette section :
+Le mot clé \galgas{let} caractérise une déclaration de constante. L'annotation de type peut être omis si le type peut être déduit de l'expression, comme pour l'instruction de déclaration de variable (\refSubsectionPage{declarationVariableAvecExpression}). On peut donc reprendre les exemples de la section précédente :
 \begin{galgascode}
 let @string s = "Hello"
 \end{galgascode}
@@ -249,19 +249,19 @@ let sl = .here # Erreur : le type est indetermine
 \sectionLabel{L'instruction d'affectation}{assignmentInstruction}
 
 L'instruction d'affectation peut prendre plusieurs formes. La plus courante est :
-\lstset{emph={expression, variable}, emphstyle=\emph}
+\lstset{emph={expression, variable}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 variable = expression
 \end{galgascode}
 
 Si \galgas{variable} est une instance de structure (\refChapterPage{type-structure}), on peut directement en modifier un champ en utilisant l'opérateur \galgas{.} :
-\lstset{emph={expression, variable, champ}, emphstyle=\emph}
+\lstset{emph={expression, variable, champ}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 variable.champ = expression
 \end{galgascode}
 
 Si \galgas{champ} est lui-même une structure, on peut accéder à l'un de ses champs (et ainsi de suite) :
-\lstset{emph={expression, variable, champ, champ1}, emphstyle=\emph}
+\lstset{emph={expression, variable, champ, champ1}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 variable.champ.champ1 = expression
 \end{galgascode}
@@ -282,7 +282,7 @@ variable.champ.champ1 = expression
 
 L'instruction \galgas{cast} permet simplement d'exprimer de manière élégante une série de tests de conversions polymorphiques inverses. Sa syntaxe est :
 
-\lstset{emph={expression, nom1, nom2, conversion}, emphstyle=\emph}
+\lstset{emph={expression, nom1, nom2, conversion}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 cast expression
 case conversion @T1 nom1 :
@@ -330,7 +330,7 @@ Note : si la variable \galgas{nom1} ou  \galgas{nom2} n'est pas utilisée dans l
 
 \sectionLabel{L'instruction d'ajout \texttt{+=}}{concatInstruction}
 
-\lstset{emph={cible, expression, expression1, expressionN}, emphstyle=\emph}
+\lstset{emph={cible, expression, expression1, expressionN}, emphstyle=\galgasEmphStyle}
 Cette instruction permet d'ajouter un élément à une collection ; elle présente deux syntaxes, suivant que l'élément à ajouter est défini par :
 \begin{itemize}
   \item une expression : \galgas{cible += expression} ;
@@ -338,7 +338,7 @@ Cette instruction permet d'ajouter un élément à une collection ; elle présen
 \end{itemize}
 
 
- suivant que l'élément à ajouté est défini par une expression ou une liste d'expressions. La cible est une variable ou un champ de structure.
+La \galgas{cible} est une variable ou un champ de structure.
 
 Cette instruction s'applique aux types suivants :
 \begin{itemize}
@@ -493,7 +493,7 @@ table += !clef !2 !"a"
 \sectionLabel{Décrémentation \texttt{-{}-}}{decrementInstruction}
 
 L'instruction de décrémentation s'applique aux types \refTypePredefini{sint}, \refTypePredefini{sint64}, \refTypePredefini{uint} et \refTypePredefini{uint64} ; sa syntaxe est la suivante :
-\lstset{emph={variable, champ}, emphstyle=\emph}
+\lstset{emph={variable, champ}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 variable --
 \end{galgascode}
@@ -515,7 +515,7 @@ Une erreur d'exécution est déclenchée en cas de dépassement de capacité.
 \section{L'instruction \texttt{drop}}
 
 La syntaxe de l'instruction \galgas{drop} est la suivante :
-{\lstset{emph={variable}, emphstyle=\emph}
+{\lstset{emph={variable}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 drop variable, ...
 \end{galgascode}
@@ -535,7 +535,7 @@ Chaque variable nommée est placée dans l'état \emph{non construit}.
 
 L'instruction \galgas{error} permet de signaler une erreur à l'utilisateur. Elle est constituée de trois champs séparés par un double-point (\galgas{\:}) :
 
-{\lstset{emph={localisation, message_erreur, variable1, variableN}, emphstyle=\emph}
+{\lstset{emph={localisation, message_erreur, variable1, variableN}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 error localisation : message_erreur : variable1, ..., variableN
 \end{galgascode}
@@ -623,7 +623,7 @@ L'instruction \galgas{for} permet d'énumérer :
 
 Pour énumérer une collection, la syntaxe est la suivante :
 
-\lstset{emph={expression, sens, condition, nom_index, instructions_before, instructions_between, instructions_after, instructions\_do, enumeration_collection, enumeration_collection1, enumeration_collection2}, emphstyle=\emph}
+\lstset{emph={expression, sens, condition, nom_index, instructions_before, instructions_between, instructions_after, instructions\_do, enumeration_collection, enumeration_collection1, enumeration_collection2}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 for enumeration_collection
 while condition # Optionnel
@@ -656,7 +656,7 @@ end
 Le \refTableau{quatreFormesEnumeration} liste les quatre façons d'exprimer l'énumération \galgas{enumeration_collection}.
 
 
-\lstset{emph={enumeration_collection, expression, sens, prefixe, cst, cst1, cst2}, emphstyle=\emph}
+\lstset{emph={enumeration_collection, expression, sens, prefixe, cst, cst1, cst2}, emphstyle=\galgasEmphStyle}
 \begin{table}[t]
   \centering
   \begin{tabular}{lp{8.5cm}}
@@ -1094,7 +1094,7 @@ L'organigramme illustrant l'exécution de l'instruction \galgas{for} est donné 
 
 Plusieurs champs de l'instruction \galgas{for} sont optionnels.
 
-\lstset{emph={expression, sens, instructions\_before, instructions\_do, instructions\_between, instructions\_after}, emphstyle=\emph}
+\lstset{emph={expression, sens, instructions\_before, instructions\_do, instructions\_between, instructions\_after}, emphstyle=\galgasEmphStyle}
 
 \galgas{sens}. Ce champ peut prendre trois valeurs, et fixe l'ordre dans lequel les éléments sont énumérés :
 \begin{itemize}
@@ -1162,7 +1162,7 @@ log v # "A", "B", "C", "A", "B", "C"
 %
 %Pour énumérer une collection, la syntaxe est la suivante :
 %
-%\lstset{emph={expression, sens, condition, nom_index, instructions_before, instructions_between, instructions_after, instructions\_do, expression1, sens1, expression2, sens2}, emphstyle=\emph}
+%\lstset{emph={expression, sens, condition, nom_index, instructions_before, instructions_between, instructions_after, instructions\_do, expression1, sens1, expression2, sens2}, emphstyle=\galgasEmphStyle}
 %\begin{galgascode}
 %foreach sens expression
 %index nom_index # Optionnel
@@ -1334,7 +1334,7 @@ log v # "A", "B", "C", "A", "B", "C"
 \sectionLabel{Instruction d'incrémentation}{incrementInstruction}
 
 L'instruction d'incrémentation s'applique aux types  \refTypePredefini{sint},  \refTypePredefini{sint64}, \refTypePredefini{uint} et \refTypePredefini{uint64} ; sa syntaxe est la suivante :
-\lstset{emph={variable, champ}, emphstyle=\emph}
+\lstset{emph={variable, champ}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 variable ++
 \end{galgascode}
@@ -1358,7 +1358,7 @@ Une erreur d'exécution est déclenchée en cas de dépassement de capacité.
 
 
 Dans sa forme la plus générale, l'instruction \galgas{if} a la syntaxe suivante:
-{\lstset{emph={condition, instructions, condition2, instructions2, instructions_else}, emphstyle=\emph}
+{\lstset{emph={condition, instructions, condition2, instructions2, instructions_else}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 if condition then
   instructions
@@ -1382,7 +1382,7 @@ Aucune branche \galgas{else} est équivalent à une branche \galgas{else} sans a
 
 
 Les branches \galgas{elsif} sont simplement du sucre syntaxique : il est sémantiquement équivalent d'utiliser des instructions \galgas{if} imbriquées. Par exemple :
-{\lstset{emph={condition, instructions, condition2, instructions2, instructions_else}, emphstyle=\emph}
+{\lstset{emph={condition, instructions, condition2, instructions2, instructions_else}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 if condition then
   instructions
@@ -1394,7 +1394,7 @@ end
 \end{galgascode}
 }
 est équivalent à :
-{\lstset{emph={condition, instructions, condition2, instructions2, instructions_else}, emphstyle=\emph}
+{\lstset{emph={condition, instructions, condition2, instructions2, instructions_else}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 if condition then
   instructions
@@ -1409,7 +1409,7 @@ end
 }
 
 %So, for describing \emph{if} instruction static and dynamic semantics, we only need to describe an \emph{if} instruction without any \emph{elsif} branch and with an \emph{else} branch:
-%{\lstset{emph={condition, instructions, else_instructions}, emphstyle=\emph}
+%{\lstset{emph={condition, instructions, else_instructions}, emphstyle=\galgasEmphStyle}
 %\begin{galgascode}
 %if condition then
 %  instructions
@@ -1419,7 +1419,7 @@ end
 %\end{galgascode}
 %}
 
-{\lstset{emph={condition, condition2}, emphstyle=\emph}
+{\lstset{emph={condition, condition2}, emphstyle=\galgasEmphStyle}
 Le langage permet que le type des \galgas{condition} et \galgas{condition2} soit différent du type \refTypePredefini{bool}, sous certaines conditions. La règle complète est que le type des \galgas{condition} et \galgas{condition2} est :
 \begin{itemize}
 \item soit le type \galgas{@bool} ;
@@ -1428,7 +1428,7 @@ Le langage permet que le type des \galgas{condition} et \galgas{condition2} soit
 \end{itemize}
 
 Voici un exemple illustrant le deuxième cas ; le type \refTypePredefini{bool} est une structure possèdant une propriété nommée \galgas{bool}, dont le type est \galgas{@bool}. Aussi, écrire :
-{\lstset{emph={expression, instructions, else_instructions}, emphstyle=\emph}
+{\lstset{emph={expression, instructions, else_instructions}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 @lbool variable = ...
 if variable then
@@ -1440,7 +1440,7 @@ end
 }
 
 est équivalent à :
-{\lstset{emph={expression, instructions, else_instructions}, emphstyle=\emph}
+{\lstset{emph={expression, instructions, else_instructions}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 @lbool variable = ...
 if variable.bool then
@@ -1459,7 +1459,7 @@ getter @myClass bool -> @bool outResult { ... }
 \end{galgascode}
 
 Ainsi, on peut écrire :
-{\lstset{emph={expression, instructions, else_instructions}, emphstyle=\emph}
+{\lstset{emph={expression, instructions, else_instructions}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 @myClass myObject = ...
 if myObject then
@@ -1471,7 +1471,7 @@ end
 }
 
 Il est équivalent d'écrire :
-{\lstset{emph={expression, instructions, else_instructions}, emphstyle=\emph}
+{\lstset{emph={expression, instructions, else_instructions}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 @myClass myObject = ...
 if [myObject bool] then
@@ -1486,7 +1486,7 @@ end
 %\subsection{Dynamic semantics}
 %
 %According to the preceding section, we only need to describe the dynamic semantic of an \emph{if} instruction without any \emph{elsif} branch and with an \emph{else} branch:
-%{\lstset{emph={expression, instructions, else_instructions}, emphstyle=\emph}
+%{\lstset{emph={expression, instructions, else_instructions}, emphstyle=\galgasEmphStyle}
 %\begin{galgascode}
 %if expression then
 %  instructions
@@ -1513,7 +1513,7 @@ L'instruction \galgas{grammar} permet d'exécuter l'analyse d'un texte par une g
 Si le texte est contenu dans un fichier :
 \lstset{emph={nom\_grammaire, label\_grammaire, expression\_de\_type\_lstring, liste\_parametres,
               expression\_de\_type\_string, traduction\_dirigee\_par\_la\_syntaxe},
-        emphstyle=\emph
+        emphstyle=\galgasEmphStyle
 }
 \begin{galgascode}
 grammar
@@ -1587,7 +1587,7 @@ message "un fichier source"
 \sectionLabel{L'instruction \texttt{log}}{instructionLog}
 
 L'instruction \galgas{log} permet d'afficher le détail de la valeur d'une variable, d'une constante ou d'une expression :
-\lstset{emph={expression, nom}, emphstyle=\emph}
+\lstset{emph={expression, nom}, emphstyle=\galgasEmphStyle}
 \begin{itemize}
   \item pour une variable ou une constante, \galgas{log nom} ;
   \item pour une expression, \galgas{log "message" : expression} ;
@@ -1623,7 +1623,7 @@ log x, "valeur" : x * 2
 
 
 L'instruction \galgas{loop} a la syntaxe suivante :
-\lstset{emph={expression, instructions_1, instructions_2, variant_expression}, emphstyle=\emph}
+\lstset{emph={expression, instructions_1, instructions_2, variant_expression}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 loop (variant_expression)
   instructions_1
@@ -1702,7 +1702,7 @@ L'exécution de l'instruction \galgas{loop} est illustrée par l'organigramme de
 \sectionLabel{L'instruction d'appel de procédure}{instructionAppelProcedure}
 
 La syntaxe de l'appel d'une procédure est :
-\lstset{emph={nom_procedure, liste_parametres_effectifs}, emphstyle=\emph}
+\lstset{emph={nom_procedure, liste_parametres_effectifs}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 nom_procedure (liste_parametres_effectifs)
 \end{galgascode}
@@ -1740,7 +1740,7 @@ produit (!2 !3 ??@uint resultat)
 \sectionLabel{L'instruction d'appel de méthode}{methodCallInstruction}
 
 En GALGAS, une \emph{méthode} est un sous-programme qui s'applique à un objet, et qui ne modifie pas cet objet. La syntaxe de l'appel d'une méthode est :
-\lstset{emph={nom_methode, expression, liste_parametres_effectifs}, emphstyle=\emph}
+\lstset{emph={nom_methode, expression, liste_parametres_effectifs}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 [expression nom_methode liste_parametres_effectifs]
 \end{galgascode}
@@ -1782,7 +1782,7 @@ Aussi, cette méthode peut être appelée par :
 \sectionLabel{L'instruction d'appel de procédure de classe}{classProcCallInstruction}
 
 En GALGAS, une \emph{procédure de classe} est est une procédure définie dans un type. Au contraire d'une méthode, elle ne s'applique pas à un objet. La syntaxe de l'appel d'une procédure de classe est :
-\lstset{emph={nom_procedure, liste_parametres_effectifs}, emphstyle=\emph}
+\lstset{emph={nom_procedure, liste_parametres_effectifs}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 [@T nom_procedure liste_parametres_effectifs]
 \end{galgascode}
@@ -1814,7 +1814,7 @@ Aussi, elle peut être appelée par :
 
 
 En GALGAS, un \emph{setter} est un sous-programme qui s'applique à un objet, et qui peut modifier cet objet. La syntaxe de l'appel d'un  \emph{setter} est :
-\lstset{emph={nom_setter, cible, liste_parametres_effectifs}, emphstyle=\emph}
+\lstset{emph={nom_setter, cible, liste_parametres_effectifs}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 [!?cible nom_setter liste_parametres_effectifs]
 \end{galgascode}
@@ -1844,7 +1844,7 @@ Aussi, ce \emph{setter} peut être appelée par :
 
 L'instruction \galgas{switch} est dédiée aux types énumérés. Elle présente la syntaxe suivante :
 
-\lstset{emph={constante, expression, liste_instructions}, emphstyle=\emph}
+\lstset{emph={constante, expression, liste_instructions}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 switch expression
 case constante, constante, ... :
@@ -1896,7 +1896,7 @@ end
 
 L'instruction \galgas{warning} permet de signaler une alerte à l'utilisateur. Elle est constituée de deux champs séparés par un double-point (\galgas{\:}) :
 
-{\lstset{emph={localisation, message_alerte, variable1, variableN}, emphstyle=\emph}
+{\lstset{emph={localisation, message_alerte, variable1, variableN}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 warning localisation : message_alerte
 \end{galgascode}
@@ -1933,7 +1933,7 @@ warning nom : message_alerte
 
 L'instruction \galgas{with} permet d'associer un test de recherche dans une table et l'accès aux champs correspondants si succès. Elle peut prendre quatre formes différentes, suivi que l'on veuille modifier la table ou non, et suivant que l'on veut tolérer l'échec de la recherche ou non.
 
-\lstset{emph={expression_cle, prefixe_optionnel, expression_table, liste_instructions_do, liste_instructions_else, methode_recherche, cible_table}, emphstyle=\emph}
+\lstset{emph={expression_cle, prefixe_optionnel, expression_table, liste_instructions_do, liste_instructions_else, methode_recherche, cible_table}, emphstyle=\galgasEmphStyle}
 
 Accès en lecture, tolérance de l'échec de la recherche (\refSubsectionPage{instructionWithEnLectureTolerante}) :
 \begin{galgascode}

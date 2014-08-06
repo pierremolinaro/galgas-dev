@@ -826,11 +826,11 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    M O D I F I E R    C A L L    I N S T R U C T I O N                    *
+#    S E T T E R    C A L L    I N S T R U C T I O N                        *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#! modifier call
+#! setter call
 
 #---------------------------------------------------------------------------*
 
@@ -839,7 +839,10 @@ rule <semantic_instruction>
 :
   $[$ ;
   const instructionLocation := here ;
-  $!?$ ;
+  $!?$ ?const selector ;
+  if selector->string != "" then
+    error selector : "an empty selector '!?' is required here" ;
+  end if ;
   $identifier$ ?@lstring mReceiverName ;
   @lstringlist mReceiverStructAttributes [emptyList] ;
   repeat
@@ -862,11 +865,11 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    " S E L F "   M O D I F I E R    C A L L    I N S T R U C T I O N      *
+#    " S E L F "   S E T T E R    C A L L    I N S T R U C T I O N          *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#! self modifier call
+#! self setter call
 
 #---------------------------------------------------------------------------*
 
@@ -875,11 +878,13 @@ rule <semantic_instruction>
 :
   $[$ ;
   const instructionLocation := here ;
-  $!?$ ;
+  $!?$ ?const selector ;
+  if selector->string != "" then
+    error selector : "an empty selector '!?' is required here" ;
+  end if ;
   $self$ ;
-  $identifier$ ?@lstring mModifierName ;
-  @actualParameterListAST actualParameterList ;
-  <actual_parameter_list> ? actualParameterList ;
+  $identifier$ ?const mModifierName ;
+  <actual_parameter_list> ?let @actualParameterListAST actualParameterList ;
   $]$ ;
   outInstruction := [@selfModifierCallInstructionAST new
     !instructionLocation
@@ -1037,7 +1042,10 @@ rule <semantic_instruction>
       !here
     ] ;
   or
-    $!?$ ;
+    $!?$ ?const selector ;
+    if selector->string != "" then
+      error selector : "an empty selector '!?' is required here" ;
+    end if ;
     $identifier$ ?@lstring mTargetObjectName ;
     @lstringlist structAttributeList [emptyList] ;
     repeat
@@ -1248,7 +1256,7 @@ rule <non_empty_output_expression_list>
 :
   outExpressionList := [@semanticExpressionListAST emptyList] ;
   repeat
-    $!$ ;
+    $!$ ?const selector ;
     <expression> ??@semanticExpressionAST expression ;
     outExpressionList += !expression !here ;
   while
@@ -1424,22 +1432,22 @@ rule <syntax_directed_translation_result>
   !@abstractGrammarInstructionSyntaxDirectedTranslationResult outResult
 :
   select
-    $?$ ;
+    $?$ ?const selector ;
     $*$ ;
     outResult := [@grammarInstructionSyntaxDirectedTranslationDropResult new !here] ;
   or
-    $?$ ;
+    $?$ ?const selector ;
     $type_name$ ?@lstring actualParameterTypeName ;
     $identifier$ ?@lstring actualParameterName ;
     outResult := [@grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar new !actualParameterTypeName !actualParameterName] ;
   or
-    $?$ ;
+    $?$ ?const selector ;
     $let$ ;
     $type_name$ ?@lstring actualParameterTypeName ;
     $identifier$ ?@lstring actualParameterName ;
     outResult := [@grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst new !actualParameterTypeName !actualParameterName] ;
   or
-    $?$ ;
+    $?$ ?const selector ;
     $identifier$ ?@lstring actualParameterName ;
     outResult := [@grammarInstructionSyntaxDirectedTranslationResultInVar new !actualParameterName] ;
   end select ;
@@ -1553,11 +1561,11 @@ rule <actual_input_parameter>
   !@abstractInputParameter outActualInputParameter
 :
   select
-    $?$ ;
+    $?$ ?const selector ;
     $*$ ;
     outActualInputParameter := [@inputParameterAnonymousVariable new] ;
   or
-    $?$ ;
+    $?$ ?const selector ;
     $var$ ;
     @lstring actualParameterTypeName ;
     select
@@ -1568,7 +1576,7 @@ rule <actual_input_parameter>
     $identifier$ ?@lstring actualParameterName ;
     outActualInputParameter := [@inputParameterDeclaredVariable new !actualParameterTypeName !actualParameterName] ;
   or
-    $?$ ;
+    $?$ ?const selector ;
     $let$ ;
     @lstring actualParameterTypeName ;
     select
@@ -1579,7 +1587,7 @@ rule <actual_input_parameter>
     $identifier$ ?@lstring actualParameterName ;
     outActualInputParameter := [@inputParameterDeclaredConstant new !actualParameterTypeName !actualParameterName] ;
   or
-    $?$ ;
+    $?$ ?const selector ;
     $identifier$ ?@lstring actualParameterName ;
     outActualInputParameter := [@inputParameterVariable new !actualParameterName] ;
   end select ;

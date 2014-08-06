@@ -530,12 +530,12 @@ end rule ;
 rule <lexical_list_declaration> ?!@lexicalListDeclarationListAST ioLexicalListDeclarationList :
   $list$ ;
   $identifier$ ??@lstring name ;
-  @lstringlist sentAttributeList [emptyList] ;
+  @sentLexicalAttributeListAST sentAttributeList [emptyList] ;
   repeat
   while
     $!$ ;
     $identifier$ ??@lstring sentAttribute ;
-    sentAttributeList += ! sentAttribute ;
+    sentAttributeList += !["" nowhere] !sentAttribute ;
   end repeat ;
   $error$ ;
   $message$ ;

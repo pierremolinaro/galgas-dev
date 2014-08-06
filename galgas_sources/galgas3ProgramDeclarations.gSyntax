@@ -2,7 +2,7 @@
 #                                                                           *
 #  'program' component parser, as model builder                             *
 #                                                                           *
-#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2014 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -89,7 +89,10 @@ rule <declaration>
     $identifier$ ? indexingGrammar indexing grammarComponentReference ;
   end select ;
 #--- Source file
-  $?$ ;
+  $?$ ?const selector ;
+  if selector->string != "sourceFilePath" then
+    error selector : "the selector should be '?sourceFilePath:'" ;
+  end if ;
   select
   or
     $type_name$ ?const typeName ;

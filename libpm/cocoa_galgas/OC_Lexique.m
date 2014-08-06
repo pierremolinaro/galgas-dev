@@ -112,9 +112,8 @@
   while ((idx < inReplacementPatternArray.count) && ! found) {
     NSString * s = [inReplacementPatternArray objectAtIndex:idx] ;
     BOOL stringMatch = YES ;
-    NSUInteger i ;
     const NSUInteger sLength = [s length] ;
-    for (i=0 ; (i<sLength) && stringMatch ; i++) {
+    for (NSUInteger i=0 ; (i<sLength) && stringMatch ; i++) {
       stringMatch = [s characterAtIndex:i] == [mSourceString characterAtIndex:mCurrentLocation + i] ;
     }
     if (stringMatch) {
@@ -188,8 +187,7 @@
     result = cmp == NSOrderedSame ;
     if (result & inFlag) {
       // NSLog (@"FOUND") ;
-      UInt32 i ;
-      for (i=0 ; i<testedStringLength ; i++) {
+      for (UInt32 i=0 ; i<testedStringLength ; i++) {
         [self advance] ;
       }
     }
@@ -212,8 +210,7 @@
     if (loop) {
       [self advance] ;
     }else{
-      UInt32 i ;
-      for (i=0 ; i<[inSearchString length] ; i++) {
+      for (UInt32 i=0 ; i<[inSearchString length] ; i++) {
         [self advance] ;
       }
     }
@@ -524,8 +521,7 @@
   #ifdef DEBUG_MESSAGES
     NSLog (@"  Translate range for items beyond affected range") ;
   #endif
-  NSUInteger i ;
-  for (i=((NSUInteger) *outLowerIndexToRedrawInStyleArray) ; i<[ioStyledRangeArray count] ; i++) {
+  for (NSUInteger i=((NSUInteger) *outLowerIndexToRedrawInStyleArray) ; i<[ioStyledRangeArray count] ; i++) {
     OC_Token * token = [ioStyledRangeArray objectAtIndex:i] ;
     [token translateRange:inChangeInLength] ;
   }
@@ -610,7 +606,7 @@
 //--- Display token list
   #ifdef DEBUG_MESSAGES
     NSLog (@"New token list (%lu elements):", [ioStyledRangeArray count]) ;
-    for (i=0 ; i<[ioStyledRangeArray count] ; i++) {
+    for (NSUInteger i=0 ; i<[ioStyledRangeArray count] ; i++) {
       OC_Token * token = [ioStyledRangeArray objectAtIndex:i] ;
       NSString * s = [mSourceString substringWithRange:[token range]] ;
       s = [s stringByReplacingOccurrencesOfString:@"\n" withString:@"\u21B5"] ;
@@ -966,8 +962,7 @@ scanner_cocoa_routine_convertDecimalStringIntoUInt (BOOL * ioScanningOk,
   * outValue = 0 ;
   bool ok = true ;
   const UInt32 max = UINT32_MAX / 10 ;
-  UInt32 i ;
-  for (i=0 ; (i<[inDecimalString length]) && ok ; i++) {
+  for (UInt32 i=0 ; (i<[inDecimalString length]) && ok ; i++) {
     const UInt32 c = [inDecimalString characterAtIndex:i] ;
     if ((UNICODE_VALUE (c) < '0') || (UNICODE_VALUE (c) > '9')) {
       * ioScanningOk = NO ;
@@ -995,8 +990,7 @@ scanner_cocoa_routine_convertDecimalStringIntoSInt (BOOL * ioScanningOk,
                                                     SInt32 * outValue) {
   * outValue = 0 ;
   bool ok = true ;
-  UInt32 i ;
-  for (i=0 ; (i<[inDecimalString length]) && ok ; i++) {
+  for (UInt32 i=0 ; (i<[inDecimalString length]) && ok ; i++) {
     const UInt32 c = [inDecimalString characterAtIndex:i] ;
     if ((UNICODE_VALUE (c) < '0') || (UNICODE_VALUE (c) > '9')) {
       * ioScanningOk = NO ;
@@ -1024,8 +1018,7 @@ scanner_cocoa_routine_convertDecimalStringIntoUInt64 (BOOL * ioScanningOk,
                                                       UInt64 * outValue) {
   *outValue = 0 ;
   bool ok = true ;
-  UInt32 i ;
-  for (i=0 ; (i<[inDecimalString length]) && ok ; i++) {
+  for (UInt32 i=0 ; (i<[inDecimalString length]) && ok ; i++) {
     const UInt32 c = [inDecimalString characterAtIndex:i] ;
     if ((UNICODE_VALUE (c) < '0') || (UNICODE_VALUE (c) > '9')) {
       * ioScanningOk = NO ;
@@ -1053,8 +1046,7 @@ scanner_cocoa_routine_convertDecimalStringIntoSInt64 (BOOL * ioScanningOk,
                                                       SInt64 * outValue) {
   * outValue = 0 ;
   bool ok = true ;
-  UInt32 i ;
-  for (i=0 ; (i<[inDecimalString length]) && ok ; i++) {
+  for (UInt32 i=0 ; (i<[inDecimalString length]) && ok ; i++) {
     const UInt32 c = [inDecimalString characterAtIndex:i] ;
     if ((UNICODE_VALUE (c) < '0') || (UNICODE_VALUE (c) > '9')) {
         * ioScanningOk = NO ;
@@ -1219,8 +1211,7 @@ scanner_cocoa_routine_convertHexStringIntoUInt (BOOL * ioScanningOk,
   *outValue = 0 ;
   bool ok = true ;
   const UInt32 max = UINT32_MAX >> 4 ;
-  UInt32 i ;
-  for (i=0 ; (i<[inHexString length]) && ok ; i++) {
+  for (NSUInteger i=0 ; (i<[inHexString length]) && ok ; i++) {
     const UInt32 c = [inHexString characterAtIndex:i] ;
     if (*outValue > max) {
       * ioScanningOk = NO ;
@@ -1250,8 +1241,7 @@ scanner_cocoa_routine_convertHexStringIntoUInt64 (BOOL * ioScanningOk,
   *outValue = 0 ;
   bool ok = true ;
   const UInt64 max = UINT64_MAX >> 4 ;
-  UInt32 i ;
-  for (i=0 ; (i<[inHexString length]) && ok ; i++) {
+  for (NSUInteger i=0 ; (i<[inHexString length]) && ok ; i++) {
     const UInt32 c = [inHexString characterAtIndex:i] ;
     if (*outValue > max) {
       * ioScanningOk = NO ;
@@ -1281,8 +1271,7 @@ scanner_cocoa_routine_convertHexStringIntoSInt (BOOL * ioScanningOk,
   *outValue = 0 ;
   bool ok = true ;
   const SInt32 max = INT32_MAX >> 4 ;
-  UInt32 i ;
-  for (i=0 ; (i<[inHexString length]) && ok ; i++) {
+  for (NSUInteger i=0 ; (i<[inHexString length]) && ok ; i++) {
     const UInt32 c = [inHexString characterAtIndex:i] ;
     if (*outValue > max) {
       * ioScanningOk = NO ;
@@ -1312,8 +1301,7 @@ scanner_cocoa_routine_convertHexStringIntoSInt64 (BOOL * ioScanningOk,
   *outValue = 0 ;
   bool ok = true ;
   const SInt64 max = LLONG_MAX >> 4 ;
-  UInt32 i ;
-  for (i=0 ; (i<[inHexString length]) && ok ; i++) {
+  for (NSUInteger i=0 ; (i<[inHexString length]) && ok ; i++) {
     const UInt32 c = [inHexString characterAtIndex:i] ;
     if (*outValue > max) {
       * ioScanningOk = NO ;
@@ -1377,8 +1365,7 @@ scanner_cocoa_routine_codePointToUnicode (BOOL * ioScanningOk,
   }else if ((UNICODE_VALUE ([inElementString characterAtIndex:0]) == 'x') || (UNICODE_VALUE ([inElementString characterAtIndex:0]) == 'X')) {
     bool ok = true ;
     UInt32 code = 0 ;
-    UInt32 i ;
-    for (i=1 ; (i<[inElementString length]) && ok ; i++) {
+    for (NSUInteger i=1 ; (i<[inElementString length]) && ok ; i++) {
       code <<= 4 ;
       const UInt32 c = [inElementString characterAtIndex:i] ;
       if ((UNICODE_VALUE (c) >= '0') && (UNICODE_VALUE (c) <= '9')) {
@@ -1400,8 +1387,7 @@ scanner_cocoa_routine_codePointToUnicode (BOOL * ioScanningOk,
   }else{ // Decimal value
     bool ok = true ;
     UInt32 code = 0 ;
-    UInt32 i ;
-    for (i=0 ; (i<[inElementString length]) && ok ; i++) {
+    for (UInt32 i=0 ; (i<[inElementString length]) && ok ; i++) {
       code *= 10 ;
       const UInt32 c = [inElementString characterAtIndex:i] ;
       if ((UNICODE_VALUE (c) >= '0') && (UNICODE_VALUE (c) <= '9')) {
@@ -1421,3 +1407,15 @@ scanner_cocoa_routine_codePointToUnicode (BOOL * ioScanningOk,
 
 //-----------------------------------------------------------------------------*
 
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark ========= Predefined Scanner Actions (from GALGAS 3.0.0)
+#endif
+
+//-----------------------------------------------------------------------------*
+
+void scanner_cocoa_routine_resetString (BOOL * ioNoLexicalError,
+                                        NSMutableString * ioString) {
+  [ioString setString:@""] ;
+}
+
+//-----------------------------------------------------------------------------*

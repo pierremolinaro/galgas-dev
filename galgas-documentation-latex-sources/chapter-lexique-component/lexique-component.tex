@@ -16,7 +16,7 @@ En GALGAS, un analyseur lexical est défini par un composant \galgas{lexique}. L
 
 En GALGAS, un composant \galgas{lexique} a la structure suivante :
 
-{\lstset{emph={nom, declarations}, emphstyle=\emph}
+{\lstset{emph={nom, declarations}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 lexique nom {
   declarations
@@ -49,18 +49,18 @@ The order of declarations is not significant, but any entity must be declared be
 ==== Lexical Rules Overview ====
 The //lexical rules// define the executable part of a lexical component. Every lexical rule define //matching strings// that are are tested against substring from current location in input string. A matching string has a one character or more.
 
-===== Generated Files =====
+\section{Fichiers engendrés}
 
 A lexical component description is translated in C++ code; for every lexical component, GALGAS generates a specific C++ class:
-  * the name of the class is the name of the ''**lexique**'' component;
-  * this class is declared in a header file that is named the name of the ''**lexique**'' component with the ''%%'%%.h%%'%%'' extension;
-  * this class is implemented in a file that is named the name of the ''**lexique**'' component with the ''%%'%%.cpp%%'%%'' extension;
+  * the name of the class is the name of the \galgas{lexique} component;
+  * this class is declared in a header file that is named the name of the \galgas{lexique} component with the ''\textquotesingle.h\textquotesingle'' extension;
+  * this class is implemented in a file that is named the name of the \galgas{lexique} component with the ''\textquotesingle.cpp\textquotesingle'' extension;
   * this class inherits from ''C\_Lexique'' class (declared in ''libpm/galgas/C\_Lexique.h'' and implemented in ''libpm/galgas/C\_Lexique.cpp'').
 
 The two generated files are generated according the [[generated\_files|GALGAS file generation process]].
 
 
-===== How a lexical analyzer Works =====
+\section{Comment opère un analyseur lexical}
 
 You can consider the lexical analyzer as an autonomous thread which analyzes the input string and which sends the sequence of the terminal symbols to the parser. Of course, for efficiency, the lexical analyzer is actually a parser subroutine.
 
@@ -80,28 +80,28 @@ Then, the first lexical rule matching expressions are tested against substring a
 
 If no lexical rule matches, the character at current location is tested against eos character. On match success, the lexical analyzer sends once a predefined terminal symbol (denoted by ''\\$\\$'') to the parser, for telling it the end of input string is reached. On match failure, the //unknow character// lexical error is raised. The character at current location is discarded, that is the current location points out the next character of the input string.
 
-===== Lexical Ambiguities =====
+\section{Ambiguïtés lexicales}
 
 **GALGAS does not currently check that the set of lexical rules is unambiguous.** So, if the set is unambiguous, the rule order is not significant; if two or more rules introduce an ambiguity, the first defined one is used. 
 
-===== A very Simple Example =====
+\section{Unexemple}
 
 This is very simple scanner, from ''galgas/samples/notSLRgrammar.ggs'':
 
 |''**lexique** my\_scanner\_for\_not\_SLR\_grammar:\\ 
 \#--- Identifiers\\ 
-\\$id\\$ **error** **message** %%"%%an identifier%%"%% ;\\ 
-**rule** %%'%%a%%'%% %%->%% %%'%%z%%'%% | %%'%%A%%'%% %%->%% %%'%%Z%%'%% :\\ 
- **send** \\$id\\$ ;\\ **end** **rule** ;\\ 
+\\$id\\$ error **message** %%"%%an identifier%%"%% ;\\ 
+**rule** \textquotesingle{a}\textquotesingle -> \textquotesingle{z}\textquotesingle | \textquotesingle{A}\textquotesingle -> \textquotesingle{Z}\textquotesingle :\\ 
+ send \\$id\\$ ;\\ **end** **rule** ;\\ 
 \#--- Delimitors\\ 
-**list** delimitorsList **error** **message** %%"%%the %%'"%% . * . %%"'%% delimitor%%"%%: %%"%%=%%"%% , %%"%%*%%"%% ;\\ 
+**list** delimitorsList error **message** %%"%%the %%'"%% . * . %%"'%% delimitor%%"%%: %%"%%=%%"%% , %%"%%*%%"%% ;\\ 
 **rule** **list** delimitorsList ;\\ 
 \#--- Separators\\ 
-**rule** %%'%%\1%%'%% %%->%% %%' '%%:\\ 
+**rule** \textquotesingle\textbackslash{1}\textquotesingle -> %%' '%%:\\ 
 **end** **rule** ;\\ 
 **end** **lexique** ;''|
 
-This ''**lexique**'' component defines the following set of terminal symbols: ''\\$id\\$'' (explicitly declared), ''\\$=\\$'' and ''\\$*\\$'' (declared  by ''delimitorsList'' list.
+This \galgas{lexique} component defines the following set of terminal symbols: ''\\$id\\$'' (explicitly declared), ''\\$=\\$'' and ''\\$*\\$'' (declared  by ''delimitorsList'' list.
 
 The first rule sends the ''\\$id\\$'' terminal symbol each time a lower case or upper case character is found. The second rule names the ''delimitorsList'' list and sends the ''\\$=\\$'' or ''\\$*\\$'' terminal symbol each time the corresponding character is found. The last rule discards silently the space character and any control character.
 
@@ -109,50 +109,50 @@ Note that this scanner considers identifiers of only one character: ''ab'' is sc
 
 ===== Finding Sample Code =====
 
-You can find examples of ''**lexique**'' components in:
+You can find examples of \galgas{lexique} components in:
   * ''galgas/sample/alt\_sample.ggs'' file; this is a very basic scanner that handles one-letter identifier and four delimitors;
   * ''galgas/sample/arith\_expression.ggs'' file (for scanning literal integers); 
   * ''galgas/sample/test\_LR1\_grammar.ggs'' file gives an example of a small scanner for "toy" parser;
   * ''galgas/galgas/galgas\_sources/galgas\_scanner.ggs'' file: this is the actual scanner of the GALGAS language, and scans identifiers, keywords, delimiters, literal integers, literal characters, literal character strings, galgas type names (the '@' character followed by a sequence of letters), comments, ...   
 
-====== Lexical Declarations ======
+\section{Déclarations lexicales}
 
-===== Single Terminal Symbol Declaration =====
+\subsection{Déclaration d'un symbole terminal}
 
-The //single terminal symbol declaration// declares a name used for naming a terminal symbol. This declaration just performs declaration, not scanning. For sending this terminal symbol to the parser, it must be named in a ''**send**'' lexical instruction within a lexical rule.
+The //single terminal symbol declaration// declares a name used for naming a terminal symbol. This declaration just performs declaration, not scanning. For sending this terminal symbol to the parser, it must be named in a ''send'' lexical instruction within a lexical rule.
 
 The declaration associates to the terminal symbol a possibly empty list of lexical attributes and a syntax error message (not a //lexical// error message), defined by a character string.
 
 First example:
 
-|''\$literal\_integer\$ **error** **message** %%"%%a decimal number%%"%%;''|
+|''\$literal\_integer\$ error **message** %%"%%a decimal number%%"%%;''|
 
-This declaration names no lexical attribute. Consequently, when the lexical send instruction ''**send** \$literal\_integer\$;'' will be called from a lexical rule, only the terminal symbol will be sent to the parser, but not the literal integer value. The parser has no way to get the actual value: all integer values share the same terminal symbol. It is sufficient for a pure parser, however a real compiler needs the actual value.
+This declaration names no lexical attribute. Consequently, when the lexical send instruction ''send \$literal\_integer\$;'' will be called from a lexical rule, only the terminal symbol will be sent to the parser, but not the literal integer value. The parser has no way to get the actual value: all integer values share the same terminal symbol. It is sufficient for a pure parser, however a real compiler needs the actual value.
 
 Second example:
 
 |''@uint unsignedValueAttribute;\\ 
-\$literal\_integer\$ !unsignedValueAttribute **error** **message** %%"%%a decimal number%%"%%;''|
+\$literal\_integer\$ !unsignedValueAttribute error **message** %%"%%a decimal number%%"%%;''|
 
-In this declaration, the ''unsignedValueAttribute'' attribute is named in the terminal symbol declaration. So, when the lexical send instruction ''**send** \$literal\_integer\$;'' will be called from a lexical rule, the terminal symbol will be sent to the parser together with the unsigned value of the ''unsignedValueAttribute'' attribute, enabling the semantic instructions to catch it.
+In this declaration, the ''unsignedValueAttribute'' attribute is named in the terminal symbol declaration. So, when the lexical send instruction ''send \$literal\_integer\$;'' will be called from a lexical rule, the terminal symbol will be sent to the parser together with the unsigned value of the ''unsignedValueAttribute'' attribute, enabling the semantic instructions to catch it.
 
-===== List of Terminal Symbols Declaration =====
+\subsection{Déclaration d'une liste de symboles terminaux}
 
 The //list of terminal symbol declaration// associates to a name a list of terminal symbols with a generic syntax error message. It is typically used for declaring the keywords and the delimiters.
 
 An example of key words declaration:
 
-| ''**list** keywordList **error** **message** %%"%%the '%K' key word%%"%%: %%"%%if%%"%%, %%"%%then%%"%%, %%"%%else%%"%% ;'' |
+| ''**list** keywordList error **message** %%"%%the '%K' key word%%"%%: %%"%%if%%"%%, %%"%%then%%"%%, %%"%%else%%"%% ;'' |
 
 The declared terminal symbols are: ''\$if\$'', ''\$then\$'', ''\$else\$''. The actual syntax error message is built from generic error message by replacing ''%K'' with terminal symbol string (for outputing a single ''%'', write ''%''''%''). So the syntax error message associated to the ''\$if\$'' terminal symbol is: "''the 'if' key word''".
 
 An other example is a delimitor list declaration:
 
-|''**list** delimitorList **error** **message** %%"%%the '%K' delimitor%%"%%: %%"%%.%%"%%, %%"%%;%%"%%, %%"%%(%%"%%, %%"%%)%%"%% ;''|
+|''**list** delimitorList error **message** %%"%%the '%K' delimitor%%"%%: %%"%%.%%"%%, %%"%%;%%"%%, %%"%%(%%"%%, %%"%%)%%"%% ;''|
 
 Actual scanning of a delimitor is done by a ''**rule** **list**'' lexical instruction.
 
-===== Lexical Attribute Declaration =====
+\subsection{Déclaration d'un attribut terminal}
 
 Lexical attributes carry values associated with terminal symbol. GALGAS handles string, unsigned, character, float lexical attributes. Every lexical attribute needs to be declared and its declaration names a GALGAS type name.
 
@@ -177,7 +177,7 @@ The //default value// is the one used at the beginning of every scanning loop fo
 The //corresponding C type// is useful if you want to write your own lexical actions (in C++). Please note that this correspondance is **only** available for lexical actions, and not for semantic action. The ''C\_String'' type is a C++ class that handles mutable character strings, without being worried about memory management. It is declared in the ''libpm/strings/C\_string.h'' file. The ''uint32'' type is the 32-bit unsigned integer type, and the ''sint32'' type is the 32-bit signed integer type. 
  
 
-===== Lexical Error Message Declaration =====
+\subsection{Déclaration d'un message d'erreur lexicale}
 
 The //lexical error message declaration// associates a name to a string. These error messages are used in lexical actions, and define the message that are displayed when a lexical error occurs.
 
@@ -185,13 +185,13 @@ The //lexical error message declaration// associates a name to a string. These e
 
  
 
-====== Lexical Rules ======
+\section{Règles lexicales}
 
 There are two kinds of //lexical rules//:
   - the //list lexical rule//;
   - the //single lexical rule//.
 
-===== List Lexical Rule =====
+\subsection{Règle s'appuyant sur une liste}
 
 This is the simpliest form: it just names a previously defined list of terminal symbols; for example:
 
@@ -201,7 +201,7 @@ This is the simpliest form: it just names a previously defined list of terminal 
 
 This kind of rule is typically used for scanning for a delimitor.
 
-===== Single Lexical Rule =====
+\subsection{Simple règle}
 
 A //single lexical rule// has the following form:
 
@@ -209,21 +209,22 @@ A //single lexical rule// has the following form:
 
 The //matching expression// defines a set of matching strings, that are tested against the substring from input string at current location. On match, the //lexical instructions// are executed.
 
-==== Matching Expression ====
-
 A matching expression can be:
-  - a one-character string (for example, ''%%'%%a%%'%%'' matches the ''a'' character);
-  - an union of one-character strings, defined by a character subrange (for example, ''%%'%%a%%'%% %%->%% %%'%%z%%'%%'' matches a lower case letter);
+  - a one-character string (for example, ''\textquotesingle{a}\textquotesingle'' matches the ''a'' character);
+  - an union of one-character strings, defined by a character subrange (for example, ''\textquotesingle{a}\textquotesingle -> \textquotesingle{z}\textquotesingle'' matches a lower case letter);
   - a one or more characters string (for example, ''%%"%%:=%%"%%'' matches the corresponding string);
-  - an union of above (for example: ''%%'%%A%%'%% %%->%% %%'%%Z%%'%% | %%'%%a%%'%% %%->%% %%'%%z%%'%%'' matches a lower or upper case letter).
+  - an union of above (for example: ''\textquotesingle{A}\textquotesingle -> \textquotesingle{Z}\textquotesingle | \textquotesingle{a}\textquotesingle -> \textquotesingle{z}\textquotesingle'' matches a lower or upper case letter).
 
 On match success, the current location is moved to designate the character after the matching string.
 
-==== Lexical Select Instruction ====
+\section{Instructions lexicales}
+
+
+\subsection{Instruction lexicale \texttt{select}}
 
 The //lexical select instruction// is the following:
 
-|''**select**\\ **when** //matching\_expression\_1\_in\_select//: //lexical\_instructions\_1//\\ **when** //matching\_expression\_2\_in\_select//: //lexical\_instructions\_2//\\ ...\\ **default** //default\_lexical\_instructions//\\ **end** **select**;''|
+|''**select**\\ **when** //matching\_expression\_1\_in\_select//: //lexical\_instructions\_1//\\ **when** //matching\_expression\_2\_in\_select//: //lexical\_instructions\_2//\\ ...\\ default //default\_lexical\_instructions//\\ **end** **select**;''|
 
 A //lexical select instruction// has one or more ''**when**'' branches.
 
@@ -231,7 +232,7 @@ A //lexical select instruction// has one or more ''**when**'' branches.
 
 This instruction tries to match the different //matching expressions// until a matching success is found. In such case, the corresponding //lexical instructions// are executed. If all matching fail, the //default lexical instructions// are executed.
 
-==== Lexical Repeat Instruction ====
+\subsection{Instruction lexicale \texttt{repeat}}
 
 The //lexical repeat instruction// is the following:
 
@@ -246,7 +247,7 @@ A //lexical while instruction// has one or more ''**while**'' branches.
 
 This instruction first executes the //lexical instructions 0//. Then, it tries to match the different //matching expressions// until a matching success is found. In such case, the corresponding //lexical instructions// are executed, then the instruction is executed again (from //lexical instructions 0//). If all matching fail, execution of this instruction is complete (excution goes on the next instruction).
 
-==== Lexical Action Call Instruction ====
+\subsection{Appel d'une action lexicale}
 
 The //lexical action call instruction// calls a C++ defined method for performing computation and checking on lexical attributes. Its syntax is the following:
 
@@ -254,20 +255,20 @@ The //lexical action call instruction// calls a C++ defined method for performin
 
 or
 
-|''lexical\_action\_name (parameter, ...) **error** message\_name, ... ;''|
+|''lexical\_action\_name (parameter, ...) error message\_name, ... ;''|
 
 A lexical action is designated by its name. It accepts one or more parameters, and zero, one or more messages names.
 
 A parameter is:
   - either a lexical attribute,
   - either a lexical function call;
-  - either the joker character ''%%'%%*%%'%%'' that represents the character at current location.
+  - either the joker character ''\textquotesingle*\textquotesingle'' that represents the character at current location.
 
 A lexical action can be predefined or defined by the user. Predefined lexical actions are actually methods of ''C\_Lexique'' class (the generated scanner is a class that inherits from this class). User defined lexical actions must be implemented as methods of the generated scanner class.
 
 **Note that no parameter type checking, no error message count checking is performed by GALGAS. ** A parameter type error or a message count error is detected at C++ compilation stage.
  
-==== Lexical Function Call ====
+\subsection{Appel d'une fonction lexicale}
 
 The //lexical function call// calls a C++ defined method for performing computation on lexical attributes. It can only appear as parameter of a lexical action call or a parameter of an other lexical function call. Its syntax is the following:
 
@@ -278,41 +279,41 @@ A lexical function is designated by its name. It accepts one or more parameters.
 A lexical function parameter is:
   - either a lexical attribute,
   - either a lexical function call;
-  - either the joker character ''%%'%%*%%'%%'' that represents the character at current location.
+  - either the joker character ''\textquotesingle*\textquotesingle'' that represents the character at current location.
 
 A lexical function can be predefined or defined by the user. Predefined lexical actions are actually methods of ''C\_Lexique'' class (the generated scanner is a class that inherits from this class). User defined lexical functions must be implemented as methods of the generated scanner class.
 
 **Note that no parameter type checking is performed by GALGAS. ** A parameter type error is detected at C++ compilation stage.
  
-==== Lexical Error Instruction ====
+\subsection{Instruction lexicale \texttt{error}}
 
 The //lexical error instruction// raises a lexical error. Its syntax is:
 
-|''**error** message\_name ;''|
+|''error message\_name ;''|
 
 The //message name// is the name of a previously declared lexical error message.
 
-==== Lexical Send Instruction ====
+\subsection{Instruction lexicale \texttt{send}}
 
 The //lexical send instruction// sends a terminal symbol to the parser. It has several forms:
 
 === First Form ===
 
-|''**send** terminal\_symbol ;''|
+|''send terminal\_symbol ;''|
 
 This instruction sends inconditionnaly the //terminal symbol// to the parser.
 
 === Second Form ===
 
-|''**send** **search** //attribute\_name// **in** //lexical\_list// **default** terminal\_symbol ;''|
+|''send search //attribute\_name// in //lexical\_list// default terminal\_symbol ;''|
 
 This instruction first search for //attribute name// value in the //lexical list//. If found, the corresponding terminal symbol is sent to the parser. If not found, the default //terminal symbol// is sent.
 
-Several consecutive ''**search**'' are accepted, allowing sequential searching in different lists:
+Several consecutive ''search'' are accepted, allowing sequential searching in different lists:
 
-|''**send** **search** //attribute\_name\_1// **in** //lexical\_list\_1// **default** **search** //attribute\_name\_2// **in** //lexical\_list\_2// **default** terminal\_symbol ;''|
+|''send search //attribute\_name\_1// in //lexical\_list\_1// default search //attribute\_name\_2// in //lexical\_list\_2// default terminal\_symbol ;''|
 
-==== Lexical drop Instruction ====
+\subsection{Instruction lexicale \texttt{drop}}
 
 |Available in GALGAS 1.5.6 and later.|
 
@@ -323,7 +324,7 @@ This instruction names a terminal symbol:
 |''**drop** //terminal\_symbol// ;''|
 
 
-==== Lexical tag Instruction ====
+\subsection{Instruction lexicale \texttt{tag}}
 
 |Available in GALGAS 1.5.6 and later.|
 
@@ -333,21 +334,22 @@ This instruction declares a new //tag identifier//.
 
 A ''**tag**'' instruction records a location in the scanned file. The only way to use the declared tag identifier is the [[\#lexical\_rewind\_instruction|lexical rewind instruction]].
 
-==== Lexical rewind Instruction ====
+\subsection{Instruction lexicale \texttt{rewind}}
 
 |Available in GALGAS 1.5.6 and later.|
 
-|''**rewind** //tag\_identifier// **send** //terminal\_symbol//;''|
+|''**rewind** //tag\_identifier// send //terminal\_symbol//;''|
 
 This instruction rewinds the scanned location from the tag identifier value, and sends the terminal symbol to the parser.
 
-====== Lexical Routines and Lexical Functions ======
 
-%\^ Available in GALGAS 1.8.4 and later.\^ 
 
-There are two kinds of lexical actions:
-  * lexical routines;
-  * lexical actions.
+
+
+
+
+
+\section{Routines lexicales prédéfinies}
 
 Lexical routine calls are instructions. Lexical function calls can appear as actual output parameters of routine calls and function calls. GALGAS predefines several lexical routines and several lexical functions (listed below).
 
@@ -355,147 +357,330 @@ A lexical routine accepts:
   * zero, one or more input/output or input formal arguments;
   * zero, one or more error messages.
 
-A lexical function accepts:
-  * zero, one or more input formal arguments.
+Running the \texttt{-{}-print-predefined-lexical-actions} command line option lists all predefined routines and functions prototype.
 
-Running the ''%%--print-predefined-lexical-actions%%'' command line option lists all predefined routines and functions prototype.
+\subsection{Routine \texttt{codePointToUnicode}}
 
-===== Predefined Lexical Routines =====
+\begin{galgascode}
+codePointToUnicode !@string inCodePointString
+                   ?!@string ioString
+\end{galgascode}
 
+\subsection{Routine \texttt{convertDecimalStringIntoSInt}}
 
-==== codePointToUnicode ====
-''codePointToUnicode !@string inCodePointString ?!@string ioString ;''
+\begin{galgascode}
+convertDecimalStringIntoSInt !@string inString
+                             ?!@sint ioSignedNumber
+                             error inNumberTooLargeError,
+                                   inCharacterIsNotDecimalDigitError
+\end{galgascode}
 
-==== convertDecimalStringIntoSInt ====
-''convertDecimalStringIntoSInt !@string inString ?!@sint ioSignedNumber **error** inNumberTooLargeError, inCharacterIsNotDecimalDigitError ;''
+\subsection{Routine \texttt{convertDecimalStringIntoSInt64}}
 
-==== convertDecimalStringIntoSInt64 ====
-''convertDecimalStringIntoSInt64 !@string inString ?!@sint64 ioSignedNumber **error** inNumberTooLargeError, inCharacterIsNotDecimalDigitError ;''
+\begin{galgascode}
+convertDecimalStringIntoSInt64 !@string inString
+                               ?!@sint64 ioSignedNumber
+                               error inNumberTooLargeError,
+                                     inCharacterIsNotDecimalDigitError
+\end{galgascode}
 
-==== convertDecimalStringIntoUInt ====
-''convertDecimalStringIntoUInt !@string inString ?!@uint ioUnsignedNumber **error** inNumberTooLargeError, inCharacterIsNotDecimalDigitError ;''
+\subsection{Routine \texttt{convertDecimalStringIntoUInt}}
 
-==== convertDecimalStringIntoUInt64 ====
-''convertDecimalStringIntoUInt64 !@string inString ?!@uint64 ioUnsignedNumber **error** inNumberTooLargeError, inCharacterIsNotDecimalDigitError ;''
+\begin{galgascode}
+convertDecimalStringIntoUInt !@string inString
+                             ?!@uint ioUnsignedNumber
+                             error inNumberTooLargeError,
+                                   inCharacterIsNotDecimalDigitError
+\end{galgascode}
 
-==== convertHTMLSequenceToUnicodeCharacter ====
-''convertHTMLSequenceToUnicodeCharacter ?!@string inString ?!@char ioUnicodeCharacter **error** inUnassignedHTMLSequenceError ;''
+\subsection{Routine \texttt{convertDecimalStringIntoUInt64}}
 
-==== convertHexStringIntoSInt ====
-''convertHexStringIntoSInt !@string inString ?!@sint ioSignedNumber **error** inNumberTooLargeError, inCharacterIsNotHexDigitError ;''
+\begin{galgascode}
+convertDecimalStringIntoUInt64 !@string inString
+                               ?!@uint64 ioUnsignedNumber
+                               error inNumberTooLargeError,
+                                     inCharacterIsNotDecimalDigitError
+\end{galgascode}
 
-==== convertHexStringIntoSInt64 ====
-''convertHexStringIntoSInt64 !@string inString ?!@sint64 ioSignedNumber **error** inNumberTooLargeError, inCharacterIsNotHexDigitError ;''
+\subsection{Routine \texttt{convertHTMLSequenceToUnicodeCharacter}}
 
-==== convertHexStringIntoUInt ====
-''convertHexStringIntoUInt !@string inString ?!@uint ioUnsignedNumber **error** inNumberTooLargeError, inCharacterIsNotHexDigitError ;''
+\begin{galgascode}
+convertHTMLSequenceToUnicodeCharacter ?!@string inString
+                                      ?!@char ioUnicodeCharacter
+                                      error inUnassignedHTMLSequenceError
+\end{galgascode}
 
-==== convertHexStringIntoUInt64 ====
-''convertHexStringIntoUInt64 !@string inString ?!@uint64 ioUnsignedNumber **error** inNumberTooLargeError, inCharacterIsNotHexDigitError ;''
+\subsection{Routine \texttt{convertHexStringIntoSInt}}
 
-==== convertStringToDouble ====
-''convertStringToDouble !@string inString ?!@double ioDouble **error** inConversionError ;''
+\begin{galgascode}
+convertHexStringIntoSInt !@string inString
+                         ?!@sint ioSignedNumber
+                         error inNumberTooLargeError,
+                               inCharacterIsNotHexDigitError
+\end{galgascode}
+
+\subsection{Routine \texttt{convertHexStringIntoSInt64}}
+
+\begin{galgascode}
+convertHexStringIntoSInt64 !@string inString
+                           ?!@sint64 ioSignedNumber
+                           error inNumberTooLargeError,
+                                 inCharacterIsNotHexDigitError
+\end{galgascode}
+
+\subsection{Routine \texttt{convertHexStringIntoUInt}}
+
+\begin{galgascode}
+convertHexStringIntoUInt !@string inString
+                         ?!@uint ioUnsignedNumber
+                         error inNumberTooLargeError,
+                               inCharacterIsNotHexDigitError
+\end{galgascode}
+
+\subsection{Routine \texttt{convertHexStringIntoUInt64}}
+
+\begin{galgascode}
+convertHexStringIntoUInt64 !@string inString
+                           ?!@uint64 ioUnsignedNumber
+                           error inNumberTooLargeError,
+                                 inCharacterIsNotHexDigitError
+\end{galgascode}
+
+\subsection{Routine \texttt{convertStringToDouble}}
+
+\begin{galgascode}
+convertStringToDouble !@string inString
+                      ?!@double ioDouble
+                      error inConversionError
+\end{galgascode}
 
 This action tries to convert the string value of the first argument into a double value. On success, the resulting double is set to the second argument. The conversion error message is displayed on conversion error.
 
-==== convertUInt64ToSInt64 ====
-''convertUInt64ToSInt64 !@uint64 inUnsignedNumber ?!@sint64 ioSignedNumber **error** inNumberTooLargeError ;''
+\subsection{Routine \texttt{convertUInt64ToSInt64}}
+
+\begin{galgascode}
+convertUInt64ToSInt64 !@uint64 inUnsignedNumber
+                      ?!@sint64 ioSignedNumber
+                      error inNumberTooLargeError
+\end{galgascode}
 
 If the unsigned value of the ''inUnsignedNumber'' argument is greater than ''2<sup>63</sup>-1'', the error is raised. Otherwise, the value is assigned to the ''ioSignedNumber'' argument.
 
-==== convertUIntToSInt ====
-''convertUIntToSInt !@uint inUnsignedNumber ?!@sint ioSignedNumber **error** inNumberTooLargeError ;''
+\subsection{Routine \texttt{convertUIntToSInt}}
+
+\begin{galgascode}
+convertUIntToSInt !@uint inUnsignedNumber
+                  ?!@sint ioSignedNumber
+                  error inNumberTooLargeError
+\end{galgascode}
 
 If the unsigned value of the ''inUnsignedNumber'' argument is greater than ''2<sup>31</sup>-1'', the error is raised. Otherwise, the value is assigned to the ''ioSignedNumber'' argument.
 
-==== convertUnsignedNumberToUnicodeChar ====
-''convertUnsignedNumberToUnicodeChar ?!@uint inUnsignedNumber ?!@char ioUnicodeCharacter **error** inUnassignedUnicodeValueError ;''
+\subsection{Routine \texttt{convertUnsignedNumberToUnicodeChar}}
 
-==== enterBinDigitIntoUInt ====
-''enterBinDigitIntoUInt !@char inCharacter ?!@uint ioUnsignedNumber **error** inNumberTooLargeError, inCharacterIsNotBinDigitError ;''
+\begin{galgascode}
+convertUnsignedNumberToUnicodeChar ?!@uint inUnsignedNumber
+                                   ?!@char ioUnicodeCharacter
+                                   error inUnassignedUnicodeValueError
+\end{galgascode}
 
-==== enterBinDigitIntoUInt64 ====
-''enterBinDigitIntoUInt64 !@char inCharacter ?!@uint64 ioUnsignedNumber **error** inNumberTooLargeError, inCharacterIsNotBinDigitError ;''
+\subsection{Routine \texttt{enterBinDigitIntoUInt}}
 
-==== enterCharacterIntoCharacter ====
-''enterCharacterIntoCharacter ?!@char ioCharacter !@char inCharacter ;''
+\begin{galgascode}
+enterBinDigitIntoUInt !@char inCharacter
+                      ?!@uint ioUnsignedNumber
+                      error inNumberTooLargeError,
+                            inCharacterIsNotBinDigitError
+\end{galgascode}
+
+\subsection{Routine \texttt{enterBinDigitIntoUInt64}}
+
+\begin{galgascode}
+enterBinDigitIntoUInt64 !@char inCharacter
+                        ?!@uint64 ioUnsignedNumber
+                        error inNumberTooLargeError,
+                              inCharacterIsNotBinDigitError
+\end{galgascode}
+
+\subsection{Routine \texttt{enterCharacterIntoCharacter}}
+
+\begin{galgascode}
+enterCharacterIntoCharacter ?!@char ioCharacter
+                            !@char inCharacter
+\end{galgascode}
 
 This routine performs ''ioCharacter := inCharacter'' assignment.
 
-==== enterCharacterIntoString ====
-''enterCharacterIntoString ?!@string ioString !@char inCharacter ;''
+\subsection{Routine \texttt{enterCharacterIntoString}}
+
+\begin{galgascode}
+enterCharacterIntoString ?!@string ioString
+                         !@char inCharacter
+\end{galgascode}
 
 Appends the character value of the second argument to the string value of the first argument. The resulting string is set to the first argument.
 
-==== enterDigitIntoASCIIcharacter ====
-''enterDigitIntoASCIIcharacter ?!@char ioASCIICharacter !@char inDecimalDigitCharacter **error** inErrorCodeGreaterThan255, inErrorNotDecimalDigitCharacter ;''
+\subsection{Routine \texttt{enterDigitIntoASCIIcharacter}}
+
+\begin{galgascode}
+enterDigitIntoASCIIcharacter ?!@char ioASCIICharacter
+                             !@char inDecimalDigitCharacter
+                             error inErrorCodeGreaterThan255,
+                                   inErrorNotDecimalDigitCharacter
+\end{galgascode}
 
 Build an ASCII character from its decimal definition.
 
-First, the character value of the ''inDecimalDigitCharacter'' argument is tested to be a valid decimal digit, that is in one range ''[%%'%%0%%'%%, %%'%%9%%'%%]''. On failure, the ''inErrorNotDecimalDigitCharacter'' error message is displayed. On success, the unsigned value of the ''ioASCIICharacter'' argument is multiplied by ten, and is added the decimal value corresponding to second argument. If the result is lower or equal to ''2<sup>8</sup>-1'', it is set to the ''ioASCIICharacter'' argument. Otherwise, the ''inErrorCodeGreaterThan255'' error is raised.
+First, the character value of the ''inDecimalDigitCharacter'' argument is tested to be a valid decimal digit, that is in one range ''[\textquotesingle0\textquotesingle, \textquotesingle9\textquotesingle]''. On failure, the ''inErrorNotDecimalDigitCharacter'' error message is displayed. On success, the unsigned value of the ''ioASCIICharacter'' argument is multiplied by ten, and is added the decimal value corresponding to second argument. If the result is lower or equal to ''2<sup>8</sup>-1'', it is set to the ''ioASCIICharacter'' argument. Otherwise, the ''inErrorCodeGreaterThan255'' error is raised.
 
 Note: this lexical action treats characters as unsigned values.
 
-==== enterDigitIntoUInt ====
-''enterDigitIntoUInt !@char inDecimalDigitCharacter ?!@uint ioUnsignedNumber **error** inNumberTooLargeError, inCharacterIsNotDecimalDigitError ;''
+\subsection{Routine \texttt{enterDigitIntoUInt}}
 
-First, the value of ''inDecimalDigitCharacter'' argument is tested to be in the range ''[%%'%%0%%'%%, %%'%%9%%'%%]''. On failure, the ''inCharacterIsNotDecimalDigitError'' error message is displayed. On success, the unsigned value of the first argument is multiplied by ten, and is added the decimal value corresponding to the ''ioUnsignedNumber'' argument. If the result is lower or equal to ''2<sup>32</sup>-1'', it is set to the ''ioUnsignedNumber'' argument. Otherwise, the ''inNumberTooLargeError'' error is raised.
+\begin{galgascode}
+enterDigitIntoUInt !@char inDecimalDigitCharacter
+                   ?!@uint ioUnsignedNumber
+                   error inNumberTooLargeError,
+                         inCharacterIsNotDecimalDigitError
+\end{galgascode}
 
-==== enterDigitIntoUInt64 ====
-''enterDigitIntoUInt64 !@char inDecimalDigitCharacter ?!@uint64 ioUnsignedNumber **error** inNumberTooLargeError, inCharacterIsNotDecimalDigitError ;''
+First, the value of ''inDecimalDigitCharacter'' argument is tested to be in the range ''[\textquotesingle0\textquotesingle, \textquotesingle9\textquotesingle]''. On failure, the ''inCharacterIsNotDecimalDigitError'' error message is displayed. On success, the unsigned value of the first argument is multiplied by ten, and is added the decimal value corresponding to the ''ioUnsignedNumber'' argument. If the result is lower or equal to ''2<sup>32</sup>-1'', it is set to the ''ioUnsignedNumber'' argument. Otherwise, the ''inNumberTooLargeError'' error is raised.
 
-First, the value of ''inDecimalDigitCharacter'' argument is tested to be in the range ''[%%'%%0%%'%%, %%'%%9%%'%%]''. On failure, the ''inCharacterIsNotDecimalDigitError'' error message is displayed. On success, the unsigned value of the first argument is multiplied by ten, and is added the decimal value corresponding to the ''ioUnsignedNumber'' argument. If the result is lower or equal to ''2<sup>64</sup>-1'', it is set to the ''ioUnsignedNumber'' argument. Otherwise, the ''inNumberTooLargeError'' error is raised.
+\subsection{Routine \texttt{enterDigitIntoUInt64}}
 
-==== enterHexDigitIntoASCIIcharacter ====
-''enterHexDigitIntoASCIIcharacter ?!@char ioASCIICharacter !@char inHexDigitCharacter **error** inErrorCodeGreaterThan255, inErrorNotHexDigitCharacter ;''
+\begin{galgascode}
+enterDigitIntoUInt64 !@char inDecimalDigitCharacter
+                     ?!@uint64 ioUnsignedNumber
+                     error inNumberTooLargeError,
+                           inCharacterIsNotDecimalDigitError
+\end{galgascode}
+
+First, the value of ''inDecimalDigitCharacter'' argument is tested to be in the range ''[\textquotesingle0\textquotesingle, \textquotesingle9\textquotesingle]''. On failure, the ''inCharacterIsNotDecimalDigitError'' error message is displayed. On success, the unsigned value of the first argument is multiplied by ten, and is added the decimal value corresponding to the ''ioUnsignedNumber'' argument. If the result is lower or equal to ''2<sup>64</sup>-1'', it is set to the ''ioUnsignedNumber'' argument. Otherwise, the ''inNumberTooLargeError'' error is raised.
+
+\subsection{Routine \texttt{enterHexDigitIntoASCIIcharacter}}
+
+\begin{galgascode}
+enterHexDigitIntoASCIIcharacter ?!@char ioASCIICharacter
+                                !@char inHexDigitCharacter
+                                error inErrorCodeGreaterThan255,
+                                      inErrorNotHexDigitCharacter
+\end{galgascode}
 
 Build an ASCII character from its hexadecimal definition.
 
-First, the character value of the ''inHexDigitCharacter'' argument is tested to be a valid hexadecimal digit, that is in one of the ranges ''[%%'%%0%%'%%, %%'%%9%%'%%]'', ''[%%'%%a%%'%%, %%'%%f%%'%%]'', ''[%%'%%A%%'%%, %%'%%F%%'%%]''. On failure, the ''inErrorNotHexDigitCharacter'' error message is displayed. On success, the unsigned value of the first argument is multiplied by sixteen, and is added the hexadecimal value corresponding to ''ioASCIICharacter'' argument. If the result is lower or equal to ''2<sup>8</sup>-1'', it is set to the ''ioASCIICharacter'' argument. Otherwise, the ''inErrorCodeGreaterThan255'' error is raised.
+First, the character value of the ''inHexDigitCharacter'' argument is tested to be a valid hexadecimal digit, that is in one of the ranges ''[\textquotesingle0\textquotesingle, \textquotesingle9\textquotesingle]'', ''[\textquotesingle{a}\textquotesingle, \textquotesingle{f}\textquotesingle]'', ''[\textquotesingle{A}\textquotesingle, \textquotesingle{F}\textquotesingle]''. On failure, the ''inErrorNotHexDigitCharacter'' error message is displayed. On success, the unsigned value of the first argument is multiplied by sixteen, and is added the hexadecimal value corresponding to ''ioASCIICharacter'' argument. If the result is lower or equal to ''2<sup>8</sup>-1'', it is set to the ''ioASCIICharacter'' argument. Otherwise, the ''inErrorCodeGreaterThan255'' error is raised.
 
 Note: this lexical action treats characters as unsigned values.
 
-==== enterHexDigitIntoUInt ====
-''enterHexDigitIntoUInt !@char inHexDigitCharacter ?!@uint ioUnsignedNumber **error** inNumberTooLargeError, inCharacterIsNotHexDigitError ;''
+\subsection{Routine \texttt{enterHexDigitIntoUInt}}
 
-First, the character value of the ''inHexDigitCharacter'' argument is tested to be a valid hexadecimal digit, that in one of the the ranges ''[%%'%%0%%'%%, %%'%%9%%'%%]'', ''[%%'%%a%%'%%, %%'%%f%%'%%]'', ''[%%'%%A%%'%%, %%'%%F%%'%%]''. On failure, the ''inCharacterIsNotHexDigitError'' error message is displayed. On success, the unsigned value of the ''ioUnsignedNumber'' argument is multiplied by sixteen, and is added the hexadecimal value corresponding to second argument. If the result is lower or equal to ''2<sup>32</sup>-1'', it is set to the ''ioUnsignedNumber'' argument. Otherwise, the first error is raised.
+\begin{galgascode}
+enterHexDigitIntoUInt !@char inHexDigitCharacter
+                      ?!@uint ioUnsignedNumber
+                      error inNumberTooLargeError,
+                            inCharacterIsNotHexDigitError
+\end{galgascode}
 
-==== enterHexDigitIntoUInt64 ====
-''enterHexDigitIntoUInt64 !@char inHexDigitCharacter ?!@uint64 ioUnsignedNumber **error** inNumberTooLargeError, inCharacterIsNotHexDigitError ;''
+First, the character value of the ''inHexDigitCharacter'' argument is tested to be a valid hexadecimal digit, that in one of the the ranges ''[\textquotesingle0\textquotesingle, \textquotesingle9\textquotesingle]'', ''[\textquotesingle{a}\textquotesingle, \textquotesingle{f}\textquotesingle]'', ''[\textquotesingle{A}\textquotesingle, \textquotesingle{F}\textquotesingle]''. On failure, the ''inCharacterIsNotHexDigitError'' error message is displayed. On success, the unsigned value of the ''ioUnsignedNumber'' argument is multiplied by sixteen, and is added the hexadecimal value corresponding to second argument. If the result is lower or equal to ''2<sup>32</sup>-1'', it is set to the ''ioUnsignedNumber'' argument. Otherwise, the first error is raised.
 
-First, the character value of the ''inHexDigitCharacter'' argument is tested to be a valid hexadecimal digit, that in one of the the ranges ''[%%'%%0%%'%%, %%'%%9%%'%%]'', ''[%%'%%a%%'%%, %%'%%f%%'%%]'', ''[%%'%%A%%'%%, %%'%%F%%'%%]''. On failure, the ''inCharacterIsNotHexDigitError'' error message is displayed. On success, the unsigned value of the ''ioUnsignedNumber'' argument is multiplied by sixteen, and is added the hexadecimal value corresponding to second argument. If the result is lower or equal to ''2<sup>64</sup>-1'', it is set to the ''ioUnsignedNumber'' argument. Otherwise, the first error is raised.
+\subsection{Routine \texttt{enterHexDigitIntoUInt64}}
 
-==== enterOctDigitIntoUInt ====
-''enterOctDigitIntoUInt !@char inString ?!@uint ioUnsignedNumber **error** inNumberTooLargeError, inCharacterIsNotOctDigitError ;''
+\begin{galgascode}
+enterHexDigitIntoUInt64 !@char inHexDigitCharacter
+                        ?!@uint64 ioUnsignedNumber
+                        error inNumberTooLargeError,
+                              inCharacterIsNotHexDigitError
+\end{galgascode}
 
-==== enterOctDigitIntoUInt64 ====
-''enterOctDigitIntoUInt64 !@char inString ?!@uint64 ioUnsignedNumber **error** inNumberTooLargeError, inCharacterIsNotOctDigitError ;''
+First, the character value of the ''inHexDigitCharacter'' argument is tested to be a valid hexadecimal digit, that in one of the the ranges ''[\textquotesingle0\textquotesingle, \textquotesingle9\textquotesingle]'', ''[\textquotesingle{a}\textquotesingle, \textquotesingle{f}\textquotesingle]'', ''[\textquotesingle{A}\textquotesingle, \textquotesingle{F}\textquotesingle]''. On failure, the ''inCharacterIsNotHexDigitError'' error message is displayed. On success, the unsigned value of the ''ioUnsignedNumber'' argument is multiplied by sixteen, and is added the hexadecimal value corresponding to second argument. If the result is lower or equal to ''2<sup>64</sup>-1'', it is set to the ''ioUnsignedNumber'' argument. Otherwise, the first error is raised.
 
-==== multiplyUInt ====
-''multiplyUInt !@uint inUnsignedNumber ?!@uint ioUnsignedNumber **error** inResultTooLargeError ;''
+\subsection{Routine \texttt{enterOctDigitIntoUInt}}
+
+\begin{galgascode}
+enterOctDigitIntoUInt !@char inString
+                      ?!@uint ioUnsignedNumber
+                      error inNumberTooLargeError,
+                            inCharacterIsNotOctDigitError
+\end{galgascode}
+
+\subsection{Routine \texttt{enterOctDigitIntoUInt64}}
+
+\begin{galgascode}
+enterOctDigitIntoUInt64 !@char inString
+                        ?!@uint64 ioUnsignedNumber
+                        error inNumberTooLargeError,
+                              inCharacterIsNotOctDigitError
+\end{galgascode}
+
+\subsection{Routine \texttt{multiplyUInt}}
+
+\begin{galgascode}
+multiplyUInt !@uint inUnsignedNumber
+             ?!@uint ioUnsignedNumber
+             error inResultTooLargeError
+\end{galgascode}
 
 Multiply the ''ioUnsignedNumber'' value by ''inUnsignedNumber'' value. Detection of overflow is performed.
 
-==== multiplyUInt64 ====
-''multiplyUInt64 !@uint inUnsignedNumber ?!@uint64 ioUnsignedNumber **error** inResultTooLargeError ;''
+\subsection{Routine \texttt{multiplyUInt64}}
+
+\begin{galgascode}
+multiplyUInt64 !@uint inUnsignedNumber
+               ?!@uint64 ioUnsignedNumber
+               error inResultTooLargeError
+\end{galgascode}
 
 Multiply the ''ioUnsignedNumber'' value by ''inUnsignedNumber'' value. Detection of overflow is performed.
 
-==== negateSInt ====
-''negateSInt ?!@sint ioNumber **error** inNumberTooLargeError ;''
+\subsection{Routine \texttt{negateSInt}}
 
-==== negateSInt64 ====
-''negateSInt64 ?!@sint64 ioNumber **error** inNumberTooLargeError ;''
+\begin{galgascode}
+negateSInt ?!@sint ioNumber
+           error inNumberTooLargeError
+\end{galgascode}
 
-===== Predefined Lexical functions =====
+\subsection{Routine \texttt{negateSInt64}}
 
-==== toLower ====
-''toLower ?@char inCharacter %%->%% @char ;''
+\begin{galgascode}
+negateSInt64 ?!@sint64 ioNumber
+             error inNumberTooLargeError
+\end{galgascode}
+
+
+\subsection{Routine \texttt{resetString}}
+
+\begin{galgascode}
+resetString ?!@string ioString
+\end{galgascode}
+
+
+
+
+
+
+
+
+\section{Fonctions lexicales prédéfinies}
+
+
+A lexical function accepts:
+  * zero, one or more input formal arguments.
+
+Running the \texttt{-{}-print-predefined-lexical-actions} command line option lists all predefined routines and functions prototype.
+
+\subsection{Fonction \texttt{toLower}}
+
+\begin{galgascode}
+toLower ?@char inCharacter -> @char
+\end{galgascode}
 
 If the character value of the argument is an upper case letter, this function returns the corresponding lower case letter. Otherwise, it returns the unchanged character value of the argument.
 
-==== toUpper ====
-''toUpper ?@char inCharacter %%->%% @char ;''
+\subsection{Fonction \texttt{toUpper}}
+
+\begin{galgascode}
+toUpper ?@char inCharacter -> @char
+\end{galgascode}
 
 
 If the character value of the argument is an lower case letter, this function returns the corresponding upper case letter. Otherwise, it returns the unchanged character value of the argument.
@@ -508,7 +693,7 @@ You can define your own lexical actions and functions in C++ and make them avail
 
 ==== Where ? ====
 
-You must define your lexical actions and functions as a method of the C++ class generated by compilation of the ''**lexique**'' component. You need to modify the generated code, adding method prototype declaration in class declaration.
+You must define your lexical actions and functions as a method of the C++ class generated by compilation of the \galgas{lexique} component. You need to modify the generated code, adding method prototype declaration in class declaration.
 
 **So that the method declaration that you added is not deleted at the time of a future compilation, define it in user zone 2 of the generated header file.** For more details, see [[generated\_files |file generation process page]].
 
@@ -550,39 +735,39 @@ The prototype must conform to the rules presented in the [[\#Correspondance betw
 ===== Scanning identifiers =====
 
 |''@string identifierString;\\ 
-\$identifier\$ !identifierString **error** **message** %%"%%an identifier%%"%%;\\ 
+\$identifier\$ !identifierString error **message** %%"%%an identifier%%"%%;\\ 
 **rule** %%'a'->'z' | 'A'->'Z'%%:\\ 
  **repeat**\\ 
   enterCharacterIntoString !?identifierString !* ;\\ 
  **while** %%'a'->'z' | 'A'->'Z' | '\_' | '0'->'9'%%:\\ 
  **end** **repeat** ;\\ 
- **send** \$identifier\$ ;\\
+ send \$identifier\$ ;\\
 **end** **rule** ;''|
 
 |''@string identifierString;\\ 
-\$identifier\$ !identifierString **error** **message** %%"%%an identifier%%"%%;\\ 
+\$identifier\$ !identifierString error **message** %%"%%an identifier%%"%%;\\ 
 **rule** %%'a'->'z' | 'A'->'Z'%%:\\ 
  **repeat**\\ 
   enterCharacterIntoString !?identifierString !toLower (!*) ;\\ 
  **while** %%'a'->'z' | 'A'->'Z' | '\_' | '0'->'9'%%:\\ 
  **end** **repeat** ;\\ 
- **send** \$identifier\$ ;\\
+ send \$identifier\$ ;\\
 **end** **rule** ;''|
 
 ===== Scanning identifiers and key words =====
 
 |''@string identifierString;\\ 
 \\ 
-\$identifier\$ !identifierString **error** **message** %%"%%an identifier%%"%%;\\ 
+\$identifier\$ !identifierString error **message** %%"%%an identifier%%"%%;\\ 
 \\ 
-**list** keywordList **error** **message** %%"the '%K' key word": "begin", "else", "end"%%;\\
+**list** keywordList error **message** %%"the '%K' key word": "begin", "else", "end"%%;\\
 \\ 
 **rule** %%'a'->'z' | 'A'->'Z'%%:\\ 
  **repeat**\\ 
   enterCharacterIntoString !?identifierString !* ;\\ 
  **while** %%'a'->'z' | 'A'->'Z' | '\_' | '0'->'9'%%:\\ 
  **end** **repeat** ;\\ 
- **send** **search** identifierString **in** keywordList  **default** \$identifier\$ ;\\
+ send search identifierString in keywordList  default \$identifier\$ ;\\
 **end** **rule** ;''|
 
 ===== Scanning delimitors =====
@@ -611,25 +796,25 @@ The prototype must conform to the rules presented in the [[\#Correspondance betw
 ===== Scanning decimal unsigned integers =====
 
 |''\$unsigned\_literal\_integer\$ !ulongValue **error message** %%"a decimal number"%% ;\\ 
-\$signed\_literal\_integer\$ !longValue **error** **message** %%"a signed decimal number"%% ;\\ 
+\$signed\_literal\_integer\$ !longValue error **message** %%"a signed decimal number"%% ;\\ 
 \\ 
 **message** decimalNumberTooLarge : %%"decimal number too large"%% ;\\ 
 \\ 
 **message** internalError : %%"internal error"%% ;\\ 
 \\ 
 **rule** %%'0'->'9'%% :\\ 
- enterDigitIntoUlong !?ulongValue !* **error** decimalNumberTooLarge, internalError ;\\ 
+ enterDigitIntoUlong !?ulongValue !* error decimalNumberTooLarge, internalError ;\\ 
  **repeat**\\ 
  **while** %%'0'->'9'%% :\\ 
-  enterDigitIntoUlong !?ulongValue !* **error** decimalNumberTooLarge, internalError ;\\ 
+  enterDigitIntoUlong !?ulongValue !* error decimalNumberTooLarge, internalError ;\\ 
  **while** %%'\_'%% :\\ 
  **end repeat** ;\\ 
  **select**\\ 
  **when** %%'S' | 's'%% :\\ 
   convertUlongToLong !?longValue !ulongValue %%error%% decimalNumberTooLarge ;\\ 
-  **send** \$signed\_literal\_integer\$ ;\\ 
- **default**\\ 
-  **send** \$unsigned\_literal\_integer\$ ;\\ 
+  send \$signed\_literal\_integer\$ ;\\ 
+ default\\ 
+  send \$unsigned\_literal\_integer\$ ;\\ 
  **end select** ;\\ 
 **end rule** ;''|
 
@@ -665,22 +850,22 @@ The prototype must conform to the rules presented in the [[\#Correspondance betw
    enterCharacterIntoCharacter !?charValue !%%'\''%% ;\\ 
   **when** %%'0' -> '9'%% :\\ 
    **repeat**\\ 
-    enterHexDigitIntoASCIIcharacter !?charValue !* **error** ASCIIcodeTooLargeError, internalError ;\\ 
+    enterHexDigitIntoASCIIcharacter !?charValue !* error ASCIIcodeTooLargeError, internalError ;\\ 
    **while** %%'0' -> '9'%% :\\ 
    **end repeat** ;\\ 
-  **default**\\ 
-   **error** incorrectCharConstant ;\\ 
+  default\\ 
+   error incorrectCharConstant ;\\ 
   **end select** ;\\ 
  **when** %%' ' -> '\uFFFD'%% :\\ 
   enterCharacterIntoCharacter !?charValue !* ;\\ 
- **default**\\ 
-  **error** incorrectCharConstant ;\\ 
+ default\\ 
+  error incorrectCharConstant ;\\ 
  **end select** ;\\ 
  **select**\\ 
  **when** %%'\''%% :\\ 
-  **send** \$literal\_char\$ ;\\ 
- **default**\\ 
-  **error** incorrectCharConstant ;\\ 
+  send \$literal\_char\$ ;\\ 
+ default\\ 
+  error incorrectCharConstant ;\\ 
  **end select** ;\\ 
 **end rule** ;''|
 
@@ -705,10 +890,10 @@ The prototype must conform to the rules presented in the [[\#Correspondance betw
    enterCharacterIntoString !?tokenString !* ;\\ 
   **while** %%'\_'%% :\\ 
   **end repeat** ;\\ 
-  convertStringToDouble !tokenString !?floatValue **error** floatNumberConversionError ;\\ 
-  **send** \$literal\_double\$ ;\\ 
- **default**\\ 
-  **send** \$.\$ ;\\ 
+  convertStringToDouble !tokenString !?floatValue error floatNumberConversionError ;\\ 
+  send \$literal\_double\$ ;\\ 
+ default\\ 
+  send \$.\$ ;\\ 
  **end select** ;\\
 **end rule** ;''|
 
@@ -733,9 +918,9 @@ In the file ''galgas/galgas\_sources/galgas\_scanner.ggs'', the three delimitors
 '' **tag** onlyInfDelimiter ;''\\
 '' **select**''\\
 '' **when** '=' :''\\
-'' **send** %%\$<=\$%% ;''\\
+'' send %%\$<=\$%% ;''\\
 '' **when** '<' :''\\
-''  **send** %%\$<<\$%% ;''\\
+''  send %%\$<<\$%% ;''\\
 '' **when** %%'a' -> 'z' | 'A' ->'Z'%% :''\\
 ''  **repeat**''\\
 ''   enterCharacterIntoString !?tokenString !* ;''\\
@@ -743,12 +928,12 @@ In the file ''galgas/galgas\_sources/galgas\_scanner.ggs'', the three delimitors
 ''  **end repeat** ;''\\
 ''  **select**''\\
 ''  **when** '>' :''\\
-''   **send** \$non\_terminal\_symbol\$ ;''\\
-''  **default**''\\
-''   **rewind** onlyInfDelimiter **send** \$<\$ ;''\\
+''   send \$non\_terminal\_symbol\$ ;''\\
+''  default''\\
+''   **rewind** onlyInfDelimiter send \$<\$ ;''\\
 ''  **end select** ;''\\
-'' **default**''\\
-''  **send** \$<\$ ;''\\
+'' default''\\
+''  send \$<\$ ;''\\
 '' **end select** ;''\\
 ''**end rule** ;''\\
 
@@ -757,7 +942,7 @@ The ''**tag**'' instruction records a scanning location. When the final '>' char
 The second examples shows how to scan for integer constants, float constants, and array bounds in Pascal :
   * an integer constant is a (non empty) sequence of digits ;
   * a float constant is a (non empty) sequence of digits, following by a dot and a (possibly empty) sequence of digits;
-  * an array bound is an integer constant, followied by the '..' delimitor (two dots) and an integer constant.
+  * an array bound is an integer constant, followed by the '..' delimitor (two dots) and an integer constant.
 
 The problem is that ''1..2'' should not be scanned as a float constant, a single dot delimitor, and an integer constant.
 
@@ -772,17 +957,17 @@ This can be achieved by the following code:
 '' **when** %%'.'%% :''\\
 ''  **select**''\\
 ''  **when** %%'.'%% :''\\
-''   **rewind** endOfIntegerConstant **send** \$integer\_constant\$ ;''\\
+''   **rewind** endOfIntegerConstant send \$integer\_constant\$ ;''\\
 ''  **when** %%'0' -> '9'%% :''\\
 ''   **repeat**''\\
 ''   **while** %%'0' -> '9'%% :''\\
 ''   **end repeat** ;''\\
-''   **send** \$float\_constant\$ ;''\\
-''  **default**''\\
-''   **send** \$float\_constant\$ ;''\\
+''   send \$float\_constant\$ ;''\\
+''  default''\\
+''   send \$float\_constant\$ ;''\\
 ''  **end select** ;''\\
-'' **default**''\\
-''  **send** \$integer\_constant\$ ;''\\
+'' default''\\
+''  send \$integer\_constant\$ ;''\\
 '' **end select** ;''\\
 ''**end rule** ;''\\
 
@@ -793,21 +978,21 @@ With GALGAS, you can easily embbed your compiler in a GUI application (currently
 
 A //style declaration// associates a message to a style identifier. For example:
 
-|''**style** keywordsStyle %%->%% %%"%%Keywords:%%"%% ;''|
+|''**style** keywordsStyle -> %%"%%Keywords:%%"%% ;''|
 
 The associated message is used in application preferences window as a comment of each color selection item.
 
 A //style declaration// does not link a style identifier to any terminal symbol. You need to add this information to //single terminal symbol declaration// and //list of terminal symbols declaration// by naming the style identifier after the syntax error message:
 
-|''\$literal\_integer\$ **error** **message** %%"%%a decimal number%%"%% **style** integerStyle;''|
+|''\$literal\_integer\$ error **message** %%"%%a decimal number%%"%% **style** integerStyle;''|
 
-|''**list** delimitorList **error** **message** %%"%%the '%%"%% . * . %%"%%' delimitor%%"%% **style** keywordsStyle: %%"%%.%%"%%, %%"%%;%%"%%, %%"%%(%%"%%, %%"%%)%%"%%;''|
+|''**list** delimitorList error **message** %%"%%the '%%"%% . * . %%"%%' delimitor%%"%% **style** keywordsStyle: %%"%%.%%"%%, %%"%%;%%"%%, %%"%%(%%"%%, %%"%%)%%"%%;''|
 
 ===== Example: Styles provided by GALGAS Scanner =====
 
 As an example, you can take a look on GALGAS scanner, in ''galgas/galgas\_sources/galgas\_scanner.ggs'' file. The style declarations are the following:
 
-|''**style** keywordsStyle %%->%% %%"%%Keywords:%%"%% ;\\ **style** delimitersStyle %%->%% %%"%%Delimiters:%%"%% ;\\ **style** terminalStyle %%->%% %%"%%Terminal symbols:%%"%% ;\\ **style** integerStyle %%->%% %%"%%Integer constants:%%"%% ;\\ **style** characterStyle %%->%% %%"%%Character constants:%%"%% ;\\ **style** stringStyle %%->%% %%"%%String constants:%%"%% ;\\ **style** typeNameStyle %%->%% %%"%%Type names (@...):%%"%%'';|
+|''**style** keywordsStyle -> %%"%%Keywords:%%"%% ;\\ **style** delimitersStyle -> %%"%%Delimiters:%%"%% ;\\ **style** terminalStyle -> %%"%%Terminal symbols:%%"%% ;\\ **style** integerStyle -> %%"%%Integer constants:%%"%% ;\\ **style** characterStyle -> %%"%%Character constants:%%"%% ;\\ **style** stringStyle -> %%"%%String constants:%%"%% ;\\ **style** typeNameStyle -> %%"%%Type names (@...):%%"%%'';|
 
 You can search for the occurrence of style identifiers, to see how they are used.
 
@@ -824,15 +1009,15 @@ Note that no default color is defined in style declaration. Until you define you
 In GALGAS 1.5.6 and later, you can define a color for comments. Proceed as follows:
   - declare a new terminal symbol, for example ''\$comment\$'';
   - declare a style for this new terminal symbol;
-  - when a comment is scanned, use the ''**drop**'' instruction for naming the new terminal symbol (instead of the usual ''**send**'' instruction).
+  - when a comment is scanned, use the ''**drop**'' instruction for naming the new terminal symbol (instead of the usual ''send'' instruction).
 
 The ''**drop**'' instruction is only significant for syntax coloring.
 
 For example, GALGAS comments are defined in ''galgas/galgas\_sources/galgas\_scanner.ggs'' in this way:
 
-''**style** commentStyle %%->%% "Comments:" ;''\\
+''**style** commentStyle -> "Comments:" ;''\\
 ''...''\\
-''\$comment\$ **error** **message** %%"%%a comment%%"%% **style** commentStyle ;''\\
+''\$comment\$ error **message** %%"%%a comment%%"%% **style** commentStyle ;''\\
 ''**rule** %%'\#'%% :''\\
 '' **repeat**''\\
 '' **while** %%'\u0001' -> '\u0009' | '\u000B' | '\u000C' | '\u000E' -> '\uFFFD'%% :''\\

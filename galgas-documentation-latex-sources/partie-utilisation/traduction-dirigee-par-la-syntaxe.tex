@@ -203,7 +203,7 @@ Cette première instruction permet donc de ne pas transmettre les informations a
 \section{Insérer du texte : instruction \texttt{send}}
 
 L'instruction \galgas{send} a la syntaxe suivante\footnote{L'instruction \galgas{send} est décrite à la \refSectionPage{instruction-send-syntaxique}.} :
-\lstset{emph={exp}, emphstyle=\emph}
+\lstset{emph={exp}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 send exp
 \end{galgascode}
@@ -239,7 +239,7 @@ L'instruction \galgas{send} permet de reconstituer le comportement par défaut d
 
 
 Attention, l'instruction \galgas{send} est une instruction syntaxique. Cela signifie que le code suivant est incorrect :
-\lstset{emph={condition, A, B}, emphstyle=\emph}
+\lstset{emph={condition, A, B}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
 if condition then
   send A # Erreur
