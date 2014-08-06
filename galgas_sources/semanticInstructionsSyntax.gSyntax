@@ -34,7 +34,7 @@ nonterminal <formal_parameter_list> !@formalParameterListAST outFormalParameterL
 
 nonterminal <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList ;
 
-nonterminal <output_expression_list> !@semanticExpressionListAST outExpressionList ;
+nonterminal <output_expression_list> !@actualOutputExpressionList outExpressionList ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -426,7 +426,7 @@ rule <semantic_instruction>
   send tp . "." ;
   $identifier$ ?@lstring constructorName ;
   send "{" ;
-  <output_expression_list> ?@semanticExpressionListAST expressionList ;
+  <output_expression_list> ?@actualOutputExpressionList expressionList ;
   outInstruction := [@localVariableOrConstantDeclarationWithConstructorCallAST new
     ![typeName location]
     !false # Is not Constant
@@ -486,8 +486,7 @@ rule <semantic_instruction>
   @lstring constructorName ;
   $identifier$ ? constructorName ;
   send " {" ;
-  @semanticExpressionListAST expressionList ;
-  <output_expression_list> ?expressionList ;
+  <output_expression_list> ??@actualOutputExpressionList expressionList ;
   $]$ :> ?sep ?* ;
   send sep . "}" ;
   outInstruction := [@localVariableOrConstantDeclarationWithConstructorCallAST new
@@ -1252,13 +1251,13 @@ rule <semantic_instruction>
   @semanticExpressionListAST matchedExpressionNameList [emptyList] ;
   const instructionLocation := here ;
   <expression> ??@semanticExpressionAST receiverExpression ;
-  matchedExpressionNameList += !["" nowhere] !receiverExpression !here ;
+  matchedExpressionNameList += !receiverExpression !here ;
   $::$ :>?@string sep ?* ;
   send sep . "," ;
   repeat
     @semanticExpressionAST receiverExpression ;
     <expression> ? receiverExpression ;
-    matchedExpressionNameList += !["" nowhere] !receiverExpression !here ;
+    matchedExpressionNameList += !receiverExpression !here ;
   while
     $::$ :>?sep ?* ;
     send sep . "," ;
@@ -1748,7 +1747,7 @@ rule <semantic_instruction>
   end repeat ;
   $+=$ ;
   select
-    <output_expression_list> ??@semanticExpressionListAST expressionList ;
+    <output_expression_list> ??@actualOutputExpressionList expressionList ;
     outInstruction := [@plusEqualElementsInstructionAST new
       !instructionLocation
       !mReceiverName
@@ -1783,8 +1782,7 @@ rule <semantic_instruction>
   $self$ ;
   const instructionLocation := here ;
   $+=$ ;
-  @semanticExpressionListAST expressionList ;
-  <output_expression_list> ?expressionList ;
+  <output_expression_list> ??@actualOutputExpressionList expressionList ;
   outInstruction := [@selfPlusEqualElementsInstructionAST new
     !instructionLocation
     !expressionList

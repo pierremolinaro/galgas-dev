@@ -26,9 +26,9 @@ import "semanticsTypesForAST.gSemantics" ;
 #------------------------------------------------------------------------------*
 
 rule <output_expression_list>
-  !@semanticExpressionListAST outExpressionList
+  !@actualOutputExpressionList outExpressionList
 :
-  outExpressionList := [@semanticExpressionListAST emptyList] ;
+  outExpressionList := [@actualOutputExpressionList emptyList] ;
   repeat
   while
     $!$ ?const selector ;
@@ -533,8 +533,7 @@ rule <primary> !@semanticExpressionAST outExpression :
   @lstring readerName ;
   $identifier$ ? readerName ;
 #--- Actual parameters
-  @semanticExpressionListAST expressionList ;
-  <output_expression_list> ?expressionList ;
+  <output_expression_list> ??@actualOutputExpressionList expressionList ;
   outExpression := [@readerCallExpressionAST new !receiverExpression !readerName !expressionList] ;
   $]$ ;
 end rule ;
@@ -550,7 +549,7 @@ rule <primary> !@semanticExpressionAST outExpression :
 #--- Constructor name
   $identifier$ ?const constructorName ;
 #--- Actual arguments
-  <output_expression_list> ?@semanticExpressionListAST expressionList :> ??@string strExpressionList ;
+  <output_expression_list> ?@actualOutputExpressionList expressionList :> ??@string strExpressionList ;
   outExpression := [@constructorExpressionAST new
     !className
     !constructorName
@@ -625,8 +624,7 @@ rule <primary> !@semanticExpressionAST outExpression :
     or
       @lstring filewrapperTemplateName ;
       $identifier$ ? filewrapperTemplateName ;
-      @semanticExpressionListAST expressionList ;
-      <output_expression_list> ?expressionList ;
+      <output_expression_list> ??@actualOutputExpressionList expressionList ;
       outExpression := [@filewrapperTemplateInExpressionAST new
         !filewrapperName
         !filewrapperTemplateName
@@ -649,8 +647,7 @@ rule <primary> !@semanticExpressionAST outExpression :
   $identifier$ ? @lstring functionName indexing functionCall ;
   $[$ :> ?@string sep ?* ;
   send sep . "(" ;
-  @semanticExpressionListAST expressionList ;
-  <output_expression_list> ?expressionList ;
+  <output_expression_list> ??@actualOutputExpressionList expressionList ;
   outExpression := [@functionCallExpressionAST new
     !functionName
     !expressionList
@@ -686,7 +683,7 @@ end rule ;
 rule <collection_value_element> 
   !@abstractCollectionValueElement outValueElement
 :
-  @semanticExpressionListAST expressionList [emptyList] ;
+  @actualOutputExpressionList expressionList [emptyList] ;
   repeat
     $!$ ?const selector ;
     <expression> ??@semanticExpressionAST expression ;

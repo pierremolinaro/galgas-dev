@@ -541,7 +541,7 @@ routine analyzeConstructorInvocation
   ?!@variableMap ioVariableMap
   ??@lstring inTypeName
   ??@lstring inConstructorName
-  ??@semanticExpressionListAST inConstuctorEffectiveParameterExpressions
+  ??@actualOutputExpressionList inConstuctorEffectiveParameterExpressions
   !@unifiedTypeMapProxy outReturnedType
   !@unifiedTypeMapProxy outConstructorType
   !@semanticExpressionListForGeneration outConstructorEffectiveParameterList
@@ -1709,16 +1709,16 @@ override method @functionCallExpressionAST analyzeSemanticExpression
     end if ;
   end if ;
 #--- Analyze effective parameters
-  if [functionSignature length] != [mExpressions length] then
+  if [functionSignature length] != [mExpressionList length] then
     error mFunctionName
     :"the '" . mFunctionName . "' function header declares " . [[functionSignature length] string]
-      . " formal parameter(s), but this function call names " . [[mExpressions length] string]
+      . " formal parameter(s), but this function call names " . [[mExpressionList length] string]
       . " effective argument(s)"
     : outExpression
     ;
   else
     @semanticExpressionListForGeneration semanticExpressionListForGeneration [emptyList] ;
-    foreach functionSignature, mExpressions do
+    foreach functionSignature, mExpressionList do
       [mExpression analyzeSemanticExpression
         !mFormalArgumentType
         !inAnalysisContext
