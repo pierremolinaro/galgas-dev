@@ -1473,6 +1473,7 @@ class @enumDeclarationAST extends @semanticDeclarationAST {
 #---------------------------------------------------------------------------*
 
 list @formalTemplateInputParameterListAST {
+  @lstring mFormalTemplateSelector ;
   @lstring mFormalArgumentTypeName feature nogetter ;
   @lstring mFormalArgumentName feature nogetter ;
   @bool mIsUnused feature nogetter ;
@@ -1575,8 +1576,9 @@ class @externTypeDeclarationAST extends @semanticDeclarationAST {
 #---------------------------------------------------------------------------*
 
 list @typeNameFormalParameterNameList {
+  @lstring mFormalSelector ;
   @lstring mFormalParameterTypeName ;
-  @string mFormalParameterName ;
+  @lstring mFormalParameterName ;
 }
 
 #---------------------------------------------------------------------------*

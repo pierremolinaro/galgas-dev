@@ -25,25 +25,25 @@ import "predefinedLexicalActions.gSemantics" ;
 #---------------------------------------------------------------------------*
 
 abstract reader @lexicalExpressionAST generateConditionCode
-  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  ?context:@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 ;
 
 #---------------------------------------------------------------------------*
 
 override reader @lexicalOrExpressionAST generateConditionCode
-  ?@lexiqueAnalysisContext inLexiqueAnalysisContext
+  ?context:@lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
-  outGeneratedCode := [mLeftOperand generateConditionCode !inLexiqueAnalysisContext] ;
+  outGeneratedCode := [mLeftOperand generateConditionCode !context:inLexiqueAnalysisContext] ;
   outGeneratedCode .= " || " ;
-  outGeneratedCode .= [mRightOperand generateConditionCode !inLexiqueAnalysisContext] ;
+  outGeneratedCode .= [mRightOperand generateConditionCode !context:inLexiqueAnalysisContext] ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
 override reader @lexicalCharacterIntervalMatchAST generateConditionCode
-  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  ?context:@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
   outGeneratedCode := "" ;
@@ -57,7 +57,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @lexicalStringMatchAST generateConditionCode
-  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  ?context:@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
   outGeneratedCode := "testForInputUTF32String (kUnicodeString_" . [mString identifierRepresentation] ;
@@ -69,7 +69,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @lexicalStringNotMatchAST generateConditionCode
-  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  ?context:@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
   outGeneratedCode := "notTestForInputUTF32String (kUnicodeString_" ;
@@ -84,7 +84,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @lexicalCharacterMatchAST generateConditionCode
-  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  ?context:@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
   outGeneratedCode := "testForInputUTF32Char (" ;
@@ -95,7 +95,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @lexicalCharacterSetMatchAST generateConditionCode
-  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  ?context:@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
   outGeneratedCode := "testForCharWithFunction (" ;
@@ -263,7 +263,7 @@ override reader @lexicalRepeatInstructionAST generateInstructionCode
   foreach mLexicalWhileBranchList
   do
     outGeneratedCode .= "if (" ;
-    outGeneratedCode .= [mWhileExpression generateConditionCode !inLexiqueAnalysisContext] ;
+    outGeneratedCode .= [mWhileExpression generateConditionCode !context:inLexiqueAnalysisContext] ;
     outGeneratedCode .= ") {\n" ;
     [!?outGeneratedCode incIndentation !2] ;
     foreach mWhileInstructionList do
@@ -293,7 +293,7 @@ override reader @lexicalSelectInstructionAST generateInstructionCode
   foreach mLexicalSelectBranchList
   do
     outGeneratedCode .= "if (" ;
-    outGeneratedCode .= [mSelectExpression generateConditionCode !inLexiqueAnalysisContext] ;
+    outGeneratedCode .= [mSelectExpression generateConditionCode !context:inLexiqueAnalysisContext] ;
     outGeneratedCode .= ") {\n" ;
     [!?outGeneratedCode incIndentation !2] ;
     foreach mSelectInstructionList do
@@ -438,7 +438,7 @@ override reader @lexicalExplicitRuleAST generateCode
   -> @string outGeneratedCode
 :
   outGeneratedCode := "if (" ;
-  outGeneratedCode .= [mLexicalRuleExpression generateConditionCode !inLexiqueAnalysisContext] ;
+  outGeneratedCode .= [mLexicalRuleExpression generateConditionCode !context:inLexiqueAnalysisContext] ;
   outGeneratedCode .= ") {\n" ;
   [!?outGeneratedCode incIndentation !2] ;
   foreach mInstructionList do

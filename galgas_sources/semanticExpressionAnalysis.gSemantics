@@ -557,7 +557,7 @@ routine analyzeConstructorInvocation
   #--- Get constructor map from type map
     const @constructorMap constructorMap := [outConstructorType mConstructorMap] ;
   #--- Search contructor
-    @unifiedTypeMapProxyAndParameterList constructorFormalArgumentTypeList ;
+    @functionSignature constructorFormalArgumentTypeList ;
     with constructorMap hasKey ![inConstructorName string] do
       constructorFormalArgumentTypeList := mArgumentTypeList ;
       outHasCompilerArgument := mHasCompilerArgument ;
@@ -573,7 +573,7 @@ routine analyzeConstructorInvocation
         foreach constructorMap do
           s .= "\n  - " . lkey ;
           foreach mArgumentTypeList do
-            s .= " ?@" . [mType key] ;
+            s .= " ?" + if mFormalSelector->string != "" then mFormalSelector->string + ":" else "" end + "@" . [mFormalArgumentType key] ;
           end foreach ;
           s .= " -> @" . [mReturnedType key] ;
         end foreach ;
@@ -595,8 +595,8 @@ routine analyzeConstructorInvocation
     outConstructorEffectiveParameterList := [@semanticExpressionListForGeneration emptyList] ;
     foreach inConstuctorEffectiveParameterExpressions, constructorFormalArgumentTypeList do
       @semanticExpressionForGeneration exp ;
-      [mExpression analyzeSemanticExpression !mType !inAnalysisContext !?ioVariableMap ?exp] ;
-      checkAssignmentTypes !mType ![exp mType] !mEndOfExpressionLocation ;
+      [mExpression analyzeSemanticExpression !mFormalArgumentType !inAnalysisContext !?ioVariableMap ?exp] ;
+      checkAssignmentTypes !mFormalArgumentType ![exp mType] !mEndOfExpressionLocation ;
       outConstructorEffectiveParameterList += !exp ;
     end foreach ;
   end if ;
@@ -677,7 +677,7 @@ override method @readerCallExpressionAST analyzeSemanticExpression
 #--- Get reader map
   const @readerMap readerMap := [receiverType mReaderMap] ;
 #--- Search reader
-  @unifiedTypeMapProxyAndParameterList readerFormalArgumentTypeList ;
+  @functionSignature readerFormalArgumentTypeList ;
   @methodKind kind ;
   @bool hasCompilerArgument ;
   @unifiedTypeMapProxy returnedType ;
@@ -693,7 +693,7 @@ override method @readerCallExpressionAST analyzeSemanticExpression
   else
     @uint matchingReaderCount := 0 ;
     if [receiverType mTypeKindEnum] == [@typeKindEnum structType] then
-      readerFormalArgumentTypeList := [@unifiedTypeMapProxyAndParameterList emptyList] ;
+      readerFormalArgumentTypeList := {} ;
       hasCompilerArgument := true ;
       returnedType := [@unifiedTypeMapProxy null] ;
       kind := [@methodKind definedAsCategory] ;
@@ -740,7 +740,7 @@ override method @readerCallExpressionAST analyzeSemanticExpression
       foreach readerMap do
         s .= "\n  - " . lkey ;
         foreach mArgumentTypeList do
-          s .= " ?@" . [mType key] ;
+          s .= " ?" + if mFormalSelector->string != "" then mFormalSelector->string + ":" else "" end + "@" . [mFormalArgumentType key] ;
         end foreach ;
         s .= " -> @" . [mReturnedType key] ;
       end foreach ;
@@ -760,8 +760,11 @@ override method @readerCallExpressionAST analyzeSemanticExpression
   else
     @semanticExpressionListForGeneration constructorEffectiveParameterList [emptyList] ;
     foreach mExpressions, readerFormalArgumentTypeList do
-      [mExpression analyzeSemanticExpression !mType !inAnalysisContext !?ioVariableMap ??@semanticExpressionForGeneration exp] ;
-      checkAssignmentTypes !mType ![exp mType] !mEndOfExpressionLocation ;
+      [mExpression analyzeSemanticExpression !mFormalArgumentType !inAnalysisContext !?ioVariableMap ??@semanticExpressionForGeneration exp] ;
+      if mFormalSelector->string != mActualSelector->string then
+        error mActualSelector : "the selector should be '!" . mFormalSelector . if mFormalSelector->string != "" then ":" else "" end + "'" ;
+      end if ;
+      checkAssignmentTypes !mFormalArgumentType ![exp mType] !mEndOfExpressionLocation ;
       constructorEffectiveParameterList += !exp ;
     end foreach ;
     outExpression := [@readerCallExpressionForGeneration new
@@ -912,7 +915,7 @@ routine checkDiadicOperator
         [[inRightType mReaderMap] searchKey
           ![inLeftType lkey]
           ?kind
-          ?@unifiedTypeMapProxyAndParameterList argumentTypeList
+          ?@functionSignature argumentTypeList
           ?*
           ?hasCompilerArgument
           ?returnedType
@@ -2110,7 +2113,7 @@ override method @expressionListCollectionValue analyze
   ?!@variableMap ioVariableMap
   ?!@collectionValueElementListForGeneration ioCollectionValueElementListForGeneration
 :
-  const @unifiedTypeMapProxyAndParameterList formalParameterTypeList := [inElementType mAddAssignOperatorArguments] ;
+  const @functionSignature formalParameterTypeList := [inElementType mAddAssignOperatorArguments] ;
   @semanticExpressionListForGeneration semanticExpressionListForGeneration ;
   if [formalParameterTypeList length] != [mExpressionList length] then
     error mEndOfExpressionLocation: "element of of '@" . [inElementType key] . "' requires "
@@ -2119,8 +2122,11 @@ override method @expressionListCollectionValue analyze
   else
     semanticExpressionListForGeneration := @semanticExpressionListForGeneration {} ;
     foreach mExpressionList, formalParameterTypeList do
-      [mExpression analyzeSemanticExpression !mType !inAnalysisContext !?ioVariableMap ??@semanticExpressionForGeneration exp] ;
-      checkAssignmentTypes !mType ![exp mType] !mEndOfExpressionLocation ;
+      [mExpression analyzeSemanticExpression !mFormalArgumentType !inAnalysisContext !?ioVariableMap ??@semanticExpressionForGeneration exp] ;
+      if mFormalSelector->string != mActualSelector->string then
+        error mActualSelector : "the selector should be '!" . mFormalSelector . if mFormalSelector->string != "" then ":" else "" end + "'" ;
+      end if ;
+      checkAssignmentTypes !mFormalArgumentType ![exp mType] !mEndOfExpressionLocation ;
       semanticExpressionListForGeneration += !exp ;
     end foreach ;
     ioCollectionValueElementListForGeneration += ![@expressionListCollectionForGeneration new

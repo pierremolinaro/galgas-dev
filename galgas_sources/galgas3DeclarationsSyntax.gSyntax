@@ -682,7 +682,7 @@ rule <declaration_with_local>
         isUnused := true ;
       end select ;
       $identifier$ ? @lstring argumentName ;
-      filewrapperTemplateFormalInputParameters += !typeName !argumentName !isUnused ;
+      filewrapperTemplateFormalInputParameters += !selector !typeName !argumentName !isUnused ;
     end repeat ;
     mFilewrapperTemplateList +=
       !mFilewrapperTemplateName
@@ -1160,7 +1160,7 @@ rule <declaration>
       $?$ ?const selector ;
       $type_name$ ? @lstring argumentTypeName ;
       $identifier$ ? @lstring argumentName ;
-      argumentTypeList += !argumentTypeName !argumentName->string ;
+      argumentTypeList += !selector !argumentTypeName !argumentName ;
     end repeat ;
     $->$ ;
     $type_name$ ? @lstring resultTypeName ;
@@ -1178,7 +1178,7 @@ rule <declaration>
       $?$ ?const selector ;
       $type_name$ ? @lstring argumentTypeName ;
       $identifier$ ? @lstring argumentName ;
-      argumentTypeList += !argumentTypeName !argumentName->string ;
+      argumentTypeList += !selector !argumentTypeName !argumentName ;
     end repeat ;
     $->$ ;
     $type_name$ ? @lstring resultTypeName ;

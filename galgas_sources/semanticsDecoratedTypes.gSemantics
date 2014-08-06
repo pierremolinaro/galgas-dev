@@ -408,6 +408,7 @@ list @formalParameterListForGeneration {
 #---------------------------------------------------------------------------*
 
 list @formalInputParameterListForGeneration {
+  @lstring mFormalSelector ;
   @unifiedTypeMapProxy mFormalArgumentType ;
   @string mFormalArgumentCppName ;
   @lstring mFormalArgumentName ;
