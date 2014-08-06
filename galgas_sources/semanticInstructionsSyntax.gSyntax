@@ -1333,7 +1333,10 @@ rule <semantic_instruction>
 :
   $[$ ;
   const instructionLocation := here ;
-  $!?$ ;
+  $!?$ ?const selector ;
+  if selector->string != "" then
+    error selector : "The selector should be '!?'" ;
+  end if ;
   $identifier$ ?@lstring mReceiverName ;
   @lstringlist mReceiverStructAttributes [emptyList] ;
   repeat
@@ -1371,7 +1374,10 @@ rule <semantic_instruction>
 :
   $[$ ;
   const instructionLocation := here ;
-  $!?$ ;
+  $!?$ ?const selector ;
+  if selector->string != "" then
+    error selector : "The selector should be '!?'" ;
+  end if ;
   $self$ ;
   $identifier$ ?@lstring mModifierName ;
   <actual_parameter_list> ??@actualParameterListAST actualParameterList ;
@@ -1494,7 +1500,7 @@ rule <semantic_instruction>
   if searchMethodNameForErrorSignaling->string == "hasKey" then
     searchMethodNameForErrorSignaling->string := "" ;
   end if ;
-  $!$ :> ?* ?* ;
+  $!$ ?const selector :> ?* ?* ;
   send " " ;
   <expression> ?@semanticExpressionAST mKeyExpression ;
   const endOfKeyExpression := here ;
@@ -1546,7 +1552,10 @@ rule <semantic_instruction>
 :
   $with$ ;
   const instructionLocation := here ;
-  $!?$ :> ?* ?* ;
+  $!?$ ?const selector  :> ?* ?* ;
+  if selector->string != "" then
+    error selector : "The selector should be '!?'" ;
+  end if ;
   send " " ;
   $identifier$ ?@lstring mTargetObjectName :> ?* ?* ;
   @lstringlist structAttributeList [emptyList] ;
@@ -1561,7 +1570,7 @@ rule <semantic_instruction>
   if searchMethodNameForErrorSignaling->string == "hasKey" then
     searchMethodNameForErrorSignaling->string := "" ;
   end if ;
-  $!$ :> ?* ?* ;
+  $!$ ?const selector2 :> ?* ?* ;
   <expression> ??@semanticExpressionAST mKeyExpression ;
   const endOfKeyExpression := here ;
   @lstring withPrefix ;
@@ -1990,11 +1999,11 @@ rule <syntax_directed_translation_result>
   !@abstractGrammarInstructionSyntaxDirectedTranslationResult outResult
 :
   select
-    $?$ ;
+    $?$ ?const selector ;
     $*$ ;
     outResult := [@grammarInstructionSyntaxDirectedTranslationDropResult new !here] ;
   or
-    $?$ ;
+    $?$ ?const selector ;
     $type_name$ ?@lstring actualParameterTypeName ;
     $identifier$ ?@lstring actualParameterName ;
     outResult := [@grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar new !actualParameterTypeName !actualParameterName] ;
@@ -2005,7 +2014,7 @@ rule <syntax_directed_translation_result>
     $identifier$ ?@lstring actualParameterName ;
     outResult := [@grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst new !actualParameterTypeName !actualParameterName] ;
   or
-    $?$ ;
+    $?$ ?const selector ;
     $identifier$ ?@lstring actualParameterName ;
     outResult := [@grammarInstructionSyntaxDirectedTranslationResultInVar new !actualParameterName] ;
   end select ;
@@ -2117,17 +2126,17 @@ rule <actual_input_parameter>
   !@abstractInputParameter outActualInputParameter
 :
   select
-    $?$ ;
+    $?$ ?const selector ;
     $*$ ;
     outActualInputParameter := [@inputParameterAnonymousVariable new] ;
   or
-    $?$ ;
+    $?$ ?const selector ;
     send "var " ;
     $type_name$ ?const actualParameterTypeName ;
     $identifier$ ??@lstring actualParameterName ;
     outActualInputParameter := [@inputParameterDeclaredVariable new !actualParameterTypeName !actualParameterName] ;
   or
-    $?$ ;
+    $?$ ?const selector ;
     $var$ ;
     @lstring actualParameterTypeName ;
     select
@@ -2149,7 +2158,7 @@ rule <actual_input_parameter>
     $identifier$ ?@lstring actualParameterName ;
     outActualInputParameter := [@inputParameterDeclaredConstant new !actualParameterTypeName !actualParameterName] ;
   or
-    $?$ ;
+    $?$ ?const selector ;
     $const$ :> ??@string sep ?* ;
     send sep + "let" ;
     @lstring actualParameterTypeName ;
@@ -2161,7 +2170,7 @@ rule <actual_input_parameter>
     $identifier$ ?@lstring actualParameterName ;
     outActualInputParameter := [@inputParameterDeclaredConstant new !actualParameterTypeName !actualParameterName] ;
   or
-    $?$ ;
+    $?$ ?const selector ;
     $identifier$ ?@lstring actualParameterName ;
     outActualInputParameter := [@inputParameterVariable new !actualParameterName] ;
   end select ;
