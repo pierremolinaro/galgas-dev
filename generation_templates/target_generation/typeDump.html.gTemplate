@@ -12,6 +12,10 @@ h1 {
   text-align: center ;
 }
 
+.selecteur {
+  color:green ;
+}
+
 a.header_link {
   background-color: #FFFFCC ;
 }
@@ -136,11 +140,8 @@ end%
       %greater than test: %!linkForType [!type_lkey->string]% &gt; %!linkForType [!type_lkey->string]% &rarr; %!linkForType [!"bool"]%<br><br>%
       %greater or equal test: %!linkForType [!type_lkey->string]% &gt;= %!linkForType [!type_lkey->string]% &rarr; %!linkForType [!"bool"]%<br><br>%
     end
-    if (type_mHandledOperatorFlags & binaryConcatOperator []) != 0 then
-      %concatenation: %!linkForType [!type_lkey->string]% . %!linkForType [!type_lkey->string]% &rarr; %!linkForType [!type_lkey->string]%<br><br>%
-    end
     if (type_mHandledOperatorFlags & plusEqualOperatorWithExpression []) != 0 then
-      %appending instruction: %!linkForType [!type_lkey->string]% .= %!linkForType [!type_lkey->string]%<br><br>%
+      %appending instruction: %!linkForType [!type_lkey->string]% += %!linkForType [!type_lkey->string]%<br><br>%
     end
     if (type_mHandledOperatorFlags & incDecOperator []) != 0 then
       %incrementation instruction: %!linkForType [!type_lkey->string]% ++<br><br>%
@@ -150,16 +151,17 @@ end%
 </td></tr>
 % 
 if [type_mAddAssignOperatorArguments length] > 0 then
-  %<tr class="result_line"><td>+= instruction arguments</td><td>%
+  %<tr class="result_line"><td>+= !... !...</td><td>%
   foreach type_mAddAssignOperatorArguments do
-    %?%if mFormalSelector->string != "" then !mFormalSelector->string + ":" end!linkForType [![mFormalArgumentType key]] % % !mFormalArgumentName %<br><br>%
+    %<span class="selecteur">?%if mFormalSelector->string != "" then !mFormalSelector->string + ":" end%</span>%
+    !linkForType [![mFormalArgumentType key]] % % !mFormalArgumentName %<br>%
   end
   %</td></tr>%
 end
 if [type_mEnumerationDescriptor length] > 0 then
-  %<tr class="result_line"><td><b>foreach</b> constants</td><td>%
+  %<tr class="result_line"><td><b>for</b> constants</td><td>%
   foreach type_mEnumerationDescriptor do
-    !linkForType [![mEnumeratedType key]]% %!mEnumerationName%<br><br>%
+    !linkForType [![mEnumeratedType key]]% %!mEnumerationName%<br>%
   end
   %</td></tr>%
 end
@@ -173,7 +175,8 @@ if [type_mConstructorMap count] > 0 then
     %<b>constructor</b> %!lkey->string
     foreach mArgumentTypeList do
       %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
-      % ?%if mFormalSelector->string != "" then !mFormalSelector->string + ":" end !linkForType [![mFormalArgumentType key]] % % !mFormalArgumentName
+      % <span class="selecteur">?%if mFormalSelector->string != "" then !mFormalSelector->string + ":" end !%</span>%
+      linkForType [![mFormalArgumentType key]] % % !mFormalArgumentName
     end
     % &rarr; %!linkForType [![mReturnedType key]] %<br><br>%
   end
@@ -197,7 +200,8 @@ if [type_mReaderMap count] > 0 then
     %<b>getter</b> %!lkey->string
     foreach mArgumentTypeList do
       %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
-      % ?%if mFormalSelector->string != "" then !mFormalSelector->string + ":" end!linkForType [![mFormalArgumentType key]] % % !mFormalArgumentName
+      % ?<span class="selecteur">%if mFormalSelector->string != "" then !mFormalSelector->string + ":" end%</span>%
+      !linkForType [![mFormalArgumentType key]] % % !mFormalArgumentName
     end
     % &rarr; %!linkForType [![mReturnedType key]] %<br><br>%
   end
@@ -223,11 +227,12 @@ if [type_mInstanceMethodMap count] > 0 then
     foreach mParameterList do
       %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
       switch mFormalArgumentPassingMode
-      case argumentConstantIn : % ??%
-      case argumentIn         : % ?%
-      case argumentInOut      : % ?!%
-      case argumentOut        : % !%
+      case argumentConstantIn : % <span class="selecteur">?%
+      case argumentIn         : % <span class="selecteur">?%
+      case argumentInOut      : % <span class="selecteur">?!%
+      case argumentOut        : % <span class="selecteur">!%
       end
+      if mFormalSelector->string != "" then !mFormalSelector->string + ":" end%</span>%
       !linkForType [![mFormalArgumentType key]] % % !mFormalArgumentName
     end
     %<br><br>%
@@ -254,11 +259,12 @@ if [type_mModifierMap count] > 0 then
     foreach mParameterList do
       %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
       switch mFormalArgumentPassingMode
-      case argumentConstantIn : % ??%
-      case argumentIn         : % ?%
-      case argumentInOut      : % ?!%
-      case argumentOut        : % !%
+      case argumentConstantIn : % <span class="selecteur">?%
+      case argumentIn         : % <span class="selecteur">?%
+      case argumentInOut      : % <span class="selecteur">?!%
+      case argumentOut        : % <span class="selecteur">!%
       end
+      if mFormalSelector->string != "" then !mFormalSelector->string + ":" end%</span>%
       !linkForType [![mFormalArgumentType key]] % % !mFormalArgumentName
     end
     %<br><br>%
@@ -273,11 +279,12 @@ if [type_mClassMethodMap count] > 0 then
     foreach mParameterList do
       %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
       switch mFormalArgumentPassingMode
-      case argumentConstantIn : % ??%
-      case argumentIn         : % ?%
-      case argumentInOut      : % ?!%
-      case argumentOut        : % !%
+      case argumentConstantIn : % <span class="selecteur">?%
+      case argumentIn         : % <span class="selecteur">?%
+      case argumentInOut      : % <span class="selecteur">?!%
+      case argumentOut        : % <span class="selecteur">!%
       end
+      if mFormalSelector->string != "" then !mFormalSelector->string + ":" end%</span>%
       !linkForType [![mFormalArgumentType key]] % % !mFormalArgumentName
     end
     %<br><br>%
