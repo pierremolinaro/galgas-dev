@@ -643,7 +643,7 @@ rule <semantic_declaration>
     @formalTemplateInputParameterListAST filewrapperTemplateFormalInputParameters [emptyList] ;
     repeat
     while
-      $?$ ;
+      $?$ ?const selector ;
       $type_name$ ? @lstring typeName ;
       @bool isUnused ;
       select
@@ -1156,7 +1156,7 @@ rule <semantic_declaration>
     @typeNameFormalParameterNameList argumentTypeList [emptyList] ;
     repeat
     while
-      $?$ ;
+      $?$ ?const selector ;
       $type_name$ ? @lstring argumentTypeName ;
       $identifier$ ? @lstring argumentName ;
       argumentTypeList += !argumentTypeName !argumentName->string ;
@@ -1176,7 +1176,7 @@ rule <semantic_declaration>
     @typeNameFormalParameterNameList argumentTypeList [emptyList] ;
     repeat
     while
-      $?$ ;
+      $?$ ?const selector ;
       $type_name$ ? @lstring argumentTypeName ;
       $identifier$ ? @lstring argumentName ;
       argumentTypeList += !argumentTypeName !argumentName->string ;

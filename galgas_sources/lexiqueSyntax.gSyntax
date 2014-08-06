@@ -317,13 +317,13 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList :
   @lexicalRoutineCallActualArgumentListAST actualArgumentList [emptyList] ;
   repeat
   while
-    $!$ ;
+    $!$ ?const selector ;
     @location passingModeLocation := here ;
     @lexicalRoutineOrFunctionFormalInputArgumentAST arg ;
     <lexical_output_effective_argument> ?arg ;
     actualArgumentList += ![@lexicalFormalInputArgumentAST new !passingModeLocation !arg] ;
   while
-    $!?$ ;
+    $!?$ ?const selector ;
     @location passingModeLocation := here ;
     $identifier$ ?@lstring attributeName ;
     @lexicalAttributeInputOutputArgumentAST arg [new !passingModeLocation !attributeName] ;
@@ -400,7 +400,7 @@ rule <function_call_or_attribute> ??@lstring inIdf !@lexicalRoutineOrFunctionFor
   @lexicalFunctionCallActualArgumentListAST functionActualArgumentList [emptyList] ;
   repeat
   while
-    $!$ ;
+    $!$ ?const selector ;
     @lexicalRoutineOrFunctionFormalInputArgumentAST arg ;
     <lexical_output_effective_argument> ?arg ;
     functionActualArgumentList += !arg ;
@@ -533,9 +533,9 @@ rule <lexical_list_declaration> ?!@lexicalListDeclarationListAST ioLexicalListDe
   @sentLexicalAttributeListAST sentAttributeList [emptyList] ;
   repeat
   while
-    $!$ ;
+    $!$ ?const selector ;
     $identifier$ ??@lstring sentAttribute ;
-    sentAttributeList += !["" nowhere] !sentAttribute ;
+    sentAttributeList += !selector !sentAttribute ;
   end repeat ;
   $error$ ;
   $message$ ;
@@ -597,7 +597,7 @@ rule <terminal_declaration> ?!@terminalDeclarationListAST ioTerminalDeclarationL
   @lstringlist sentAttributeList [emptyList] ;
   repeat
   while
-    $!$ ;
+    $!$ ?const selector ;
     $identifier$ ??@lstring sentAttribute ;
     sentAttributeList += ! sentAttribute ;
   end repeat ;
@@ -655,10 +655,10 @@ rule <extern_routine_or_function_declaration>
     while
       @lexicalArgumentModeAST lexicalArgumentMode ;
       select
-        $?!$ ;
+        $?!$ ?const selector ;
         lexicalArgumentMode := [@lexicalArgumentModeAST lexicalInputOutputMode] ;
       or
-        $?$ ;
+        $?$ ?const selector ;
         lexicalArgumentMode := [@lexicalArgumentModeAST lexicalInputMode] ;
       end select ;
       $type_name$ ?@lstring lexicalTypeName ;
@@ -685,7 +685,7 @@ rule <extern_routine_or_function_declaration>
     @lexicalExternFunctionFormalArgumentListAST lexicalFunctionFormalArgumentList [emptyList] ;
     repeat
     while
-      $?$ ;
+      $?$  ?const selector;
       $type_name$ ?@lstring lexicalTypeName ;
       $identifier$ ?@lstring formalArgumentName ;
       lexicalFunctionFormalArgumentList += !lexicalTypeName !formalArgumentName ;

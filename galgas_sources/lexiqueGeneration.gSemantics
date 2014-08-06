@@ -369,8 +369,9 @@ override reader @lexicalTagInstructionAST generateInstructionCode
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "const C_LocationInSource locationForTag_" . mLexicalTagName . " = mCurrentLocation ;\n" ;
-  outGeneratedCode .= "const utf32 currentCharForTag_" . mLexicalTagName . " = mCurrentChar ;\n" ;
+  outGeneratedCode := "const C_LocationInSource currentLocationForTag_" . mLexicalTagName . " = mCurrentLocation ;\n"
+                    + "const C_LocationInSource endLocationForTag_" . mLexicalTagName . " = mTokenEndLocation ;\n"
+                    + "const utf32 currentCharForTag_" . mLexicalTagName . " = mCurrentChar ;\n" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -380,10 +381,11 @@ override reader @lexicalRewindInstructionAST generateInstructionCode
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "mCurrentLocation = locationForTag_" . mLexicalTagName . " ;\n" ;
-  outGeneratedCode .= "mCurrentChar = currentCharForTag_" . mLexicalTagName . " ;\n" ;
-  outGeneratedCode .= "token.mTokenCode = kToken_" . [mTerminalName identifierRepresentation] . " ;\n" ;
-  outGeneratedCode .= "enterToken (token) ;\n" ;
+  outGeneratedCode := "mCurrentLocation = currentLocationForTag_" . mLexicalTagName . " ;\n"
+                    + "mTokenEndLocation = endLocationForTag_" . mLexicalTagName . " ;\n"
+                    + "mCurrentChar = currentCharForTag_" . mLexicalTagName . " ;\n"
+                    + "token.mTokenCode = kToken_" . [mTerminalName identifierRepresentation] . " ;\n"
+                    + "enterToken (token) ;\n" ;
 end reader ;
 
 #---------------------------------------------------------------------------*

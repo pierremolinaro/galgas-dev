@@ -521,15 +521,97 @@ end rule ;
 list galgasDelimitorsList error message "the '%K' delimitor" style delimitersStyle :
   "*",     "|",    ",",      "+",     "--",  ":>",
   ">",    ";",      ":",    "::",
-  "-",     "(",    ")",     "->",      "?",
-  "==",   "??",    "!",     ":=",     "++",
-  "[",     "]",   "+=",     "?!",     "!?",
+  "-",     "(",    ")",     "->",
+  "==",   "??",     ":=",     "++",
+  "[",     "]",   "+=",
   "/",    "!=",   ">=",      "&",
   "{",     "}",    "`",
+#  "?",    "!",     "?!",     "!?",
   "^",    ">>",    "~" ;
 
 rule list galgasDelimitorsList ;
 
+# --------- Special formal arguments, actual parameters --------------------------
+$?$ ! tokenString error message "the '?' or '?selector:' delimitor" style delimitersStyle ;
+$?!$ ! tokenString error message "the '?!' or '?!selector:' delimitor" style delimitersStyle ;
+$!$ ! tokenString error message "the '!' or '!selector:' delimitor" style delimitersStyle ;
+$!?$ ! tokenString error message "the '!?' or '!?selector:' delimitor" style delimitersStyle ;
+
+rule '?' :
+  tag onlyInterrogationMark ;
+  select
+  when '!' :
+    tag onlyExclamationInterrogationMark ;
+    select
+    when 'a' -> 'z' | 'A' ->'Z' :
+      repeat
+        enterCharacterIntoString !?tokenString !* ;
+      while 'a' -> 'z' | 'A' ->'Z' | '0' -> '9' | '_' :
+      end repeat ;
+      select
+      when ':' :
+        send $?!$ ;
+      default
+        resetString !?tokenString ;
+        rewind onlyExclamationInterrogationMark send $?!$ ;
+      end select ;
+    default
+      send $?!$ ;
+    end select ;
+  when 'a' -> 'z' | 'A' ->'Z' :
+    repeat
+      enterCharacterIntoString !?tokenString !* ;
+    while 'a' -> 'z' | 'A' ->'Z' | '0' -> '9' | '_' :
+    end repeat ;
+    select
+    when ':' :
+      send $?$ ;
+    default
+      resetString !?tokenString ;
+      rewind onlyInterrogationMark send $?$ ;
+    end select ;
+  default
+    send $?$ ;
+  end select ;
+end rule ;
+
+rule '!' :
+  tag onlyExclamationMark ;
+  select
+  when '?' :
+    tag onlyInterrogationExclamationMark ;
+    select
+    when 'a' -> 'z' | 'A' ->'Z' :
+      repeat
+        enterCharacterIntoString !?tokenString !* ;
+      while 'a' -> 'z' | 'A' ->'Z' | '0' -> '9' | '_' :
+      end repeat ;
+      select
+      when ':' :
+        send $!?$ ;
+      default
+        resetString !?tokenString ;
+        rewind onlyInterrogationExclamationMark send $!?$ ;
+      end select ;
+    default
+      send $!?$ ;
+    end select ;
+  when 'a' -> 'z' | 'A' ->'Z' :
+    repeat
+      enterCharacterIntoString !?tokenString !* ;
+    while 'a' -> 'z' | 'A' ->'Z' | '0' -> '9' | '_' :
+    end repeat ;
+    select
+    when ':' :
+      send $!$ ;
+    default
+      resetString !?tokenString ;
+      rewind onlyExclamationMark send $!$ ;
+    end select ;
+  default
+    send $!$ ;
+  end select ;
+end rule ;
 
 # --------- Special delimitors / non terminal symbol --------------------------
 $<$ error message "the '<' delimitor" style delimitersStyle ;
