@@ -532,11 +532,11 @@ list galgasDelimitorsList error message "the '%K' delimitor" style delimitersSty
 rule list galgasDelimitorsList ;
 
 # --------- Special formal arguments, actual parameters --------------------------
-$??$ ! tokenString error message "the '??' or '??selector:' delimitor" style selectorStyle ;
-$?$ ! tokenString error message "the '?' or '?selector:' delimitor" style selectorStyle ;
-$?!$ ! tokenString error message "the '?!' or '?!selector:' delimitor" style selectorStyle ;
-$!$ ! tokenString error message "the '!' or '!selector:' delimitor" style selectorStyle ;
-$!?$ ! tokenString error message "the '!?' or '!?selector:' delimitor" style selectorStyle ;
+$??$ !tokenString error message "the '??' or '??selector:' delimitor" style selectorStyle ;
+$?$ !tokenString error message "the '?' or '?selector:' delimitor" style selectorStyle ;
+$?!$ !tokenString error message "the '?!' or '?!selector:' delimitor" style selectorStyle ;
+$!$ !tokenString error message "the '!' or '!selector:' delimitor" style selectorStyle ;
+$!?$ !tokenString error message "the '!?' or '!?selector:' delimitor" style selectorStyle ;
 
 rule '?' :
   tag onlyInterrogationMark ;
