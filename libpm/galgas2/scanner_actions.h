@@ -210,6 +210,10 @@ scanner_routine_codePointToUnicode (C_Lexique & inLexique,
                                    const C_String & inElementString,
                                    C_String & ioTemplateString) ;
 
+//--- Methods introduced in GALGAS 3.0.0
+void scanner_routine_resetString (C_Lexique & inLexique,
+                                  C_String & ioString) ;
+
 //-----------------------------------------------------------------------------*
 
 //--- Predefined scanner functions: see http://galgas.rts-software.org/doku.php?id=lex#predefined_lexical_functions

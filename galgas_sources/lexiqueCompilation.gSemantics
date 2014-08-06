@@ -947,8 +947,8 @@ routine compileLexiqueComponentFromAST
     @lexicalSentValueList argumentTypeList [emptyList] ;
     foreach mSentAttributeList do
       @lexicalTypeEnum attributeLexicalType ;
-      [lexiqueAnalysisContext->mLexicalAttributeMap searchKey !mValue ?attributeLexicalType] ;
-      argumentTypeList += ![mValue string] !attributeLexicalType ;
+      [lexiqueAnalysisContext->mLexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType] ;
+      argumentTypeList += !mAttributeName->string !attributeLexicalType ;
     end foreach ;
     @lexicalExplicitTokenListMap lexicalTokenListMap [emptyMap] ;
     @tokenSortedlist tokenSortedlist [emptySortedList] ;
@@ -1277,8 +1277,8 @@ routine compileLexiqueComponentGalgas3
     @lexicalSentValueList argumentTypeList [emptyList] ;
     foreach mSentAttributeList do
       @lexicalTypeEnum attributeLexicalType ;
-      [lexiqueAnalysisContext->mLexicalAttributeMap searchKey !mValue ?attributeLexicalType] ;
-      argumentTypeList += ![mValue string] !attributeLexicalType ;
+      [lexiqueAnalysisContext->mLexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType] ;
+      argumentTypeList += !mAttributeName->string !attributeLexicalType ;
     end foreach ;
     @lexicalExplicitTokenListMap lexicalTokenListMap [emptyMap] ;
     @tokenSortedlist tokenSortedlist [emptySortedList] ;

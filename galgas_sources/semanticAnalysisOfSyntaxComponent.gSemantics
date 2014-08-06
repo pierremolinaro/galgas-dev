@@ -714,11 +714,11 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
 #---
   if [mActualInputParameterList length] != [sentAttributeList length] then
     error mTerminalName
-    : "naming the '$" . mTerminalName . "$' requires " . [[sentAttributeList length] string]
-    . "parameter" . if [sentAttributeList length] > 0 then "s" else "" end
+    : "naming the '$" . mTerminalName . "$' terminal requires " . [[sentAttributeList length] string]
+    . " input parameter" . if [sentAttributeList length] > 1 then "s" else "" end
     . ", but this instruction names "
-    . [[mActualInputParameterList length] string] . " parameter" 
-    . if [mActualInputParameterList length] > 0 then "s" else "" end
+    . [[mActualInputParameterList length] string] . " input parameter" 
+    . if [mActualInputParameterList length] > 1 then "s" else "" end
     ;
   end if ;
 #---
@@ -735,7 +735,7 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
 #---
   foreach mIndexingKeyList do
     if not [inIndexNameSet hasKey ![mValue string]] then
-      @string s := "" ;
+      var s := "" ;
       foreach inIndexNameSet do
         s .= "\n  - " . key  ;
       end foreach ;

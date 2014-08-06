@@ -284,6 +284,11 @@ scanner_cocoa_routine_codePointToUnicode (BOOL * ioNoLexicalError,
                                           NSString * inElementString,
                                           NSMutableString * ioTemplateString) ;
 
+//--- Methods introduced in GALGAS 3.0.0
+void scanner_cocoa_routine_resetString (BOOL * ioNoLexicalError,
+                                        NSMutableString * ioString) ;
+
+
 //-----------------------------------------------------------------------------*
 
 //--- Predefined scanner functions: see http://galgas.rts-software.org/doku.php?id=lex#predefined_lexical_functions

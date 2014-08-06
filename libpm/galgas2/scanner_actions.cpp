@@ -788,3 +788,16 @@ scanner_routine_codePointToUnicode (C_Lexique & inLexique,
 }
 
 //-----------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark ========= Predefined Scanner Actions (from GALGAS 3.0.0)
+#endif
+
+//-----------------------------------------------------------------------------*
+
+void scanner_routine_resetString (C_Lexique & /* inLexique */,
+                                  C_String & ioString) {
+  ioString.setLengthToZero () ;
+}
+
+//-----------------------------------------------------------------------------*

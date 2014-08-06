@@ -28,12 +28,12 @@
 
 \ifthenelse{\equal{\sortieEnCouleur}{true}}{
   \lstdefinestyle{galgas}{
-    basicstyle=\ttfamily\smaller,
+    basicstyle=\ttfamily,
 %    keywordstyle=\color{red}\textbf,
 %    frame=l,
     upquote=true,
     xleftmargin=16pt,
-    keywordstyle=[2]\color{blue},
+    keywordstyle=[2]\bfseries\color{blue},
     backgroundcolor=\color{\couleurCodeGALGAS},
     identifierstyle=\color{brown},
     commentstyle=\color{red},
@@ -43,16 +43,22 @@
   \lstdefinestyle{galgas}{
     basicstyle=\ttfamily,
     upquote=true,
-    keywordstyle=\sffamily\textbf
+    keywordstyle=\bf
   }
 }
 
 %-----------------------------------------------------------------------------------------------------------------------*
 
 \newcommand\galgas[1]{\colorbox{\couleurCodeGALGAS}{\lstinline[language=galgas]\%#1\%}}
-\newcommand\galgast[1]{\colorbox{\couleurCodeGALGAS}{\ttfamily\smaller{#1}}}
+\newcommand\galgast[1]{\colorbox{\couleurCodeGALGAS}{\ttfamily{#1}}}
 
 \lstnewenvironment{galgascode}{\lstset{language=galgas}}{}
+
+\setlength{\fboxsep}{1.5pt}
+
+%\newcommand\galgasEmphStyle{\framebox[1.05\width]}
+\newcommand\galgasEmphStyle{\underline}
+%\newcommand\galgasEmphStyle{\emph}
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *

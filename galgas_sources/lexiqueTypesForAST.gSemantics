@@ -116,11 +116,18 @@ list @lexicalListEntryListAST {
 
 #---------------------------------------------------------------------------*
 
+list @sentLexicalAttributeListAST {
+  @lstring mSelector ;
+  @lstring mAttributeName ;
+}
+
+#---------------------------------------------------------------------------*
+
 list @lexicalListDeclarationListAST {
   @lstring mName feature nogetter ;
   @lstring mStyle feature nogetter ; # Empty string if no style
   @lstring mSyntaxErrorMessage feature nogetter ;
-  @lstringlist mSentAttributeList feature nogetter ;
+  @sentLexicalAttributeListAST mSentAttributeList feature nogetter ;
   @lexicalListEntryListAST mEntryList feature nogetter ;  
 }
 
@@ -547,8 +554,8 @@ routine buildTerminalMap
     @lexicalSentValueList argumentTypeList [emptyList] ;
     foreach mSentAttributeList do
       @lexicalTypeEnum attributeLexicalType ;
-      [lexicalAttributeMap searchKey !mValue ?attributeLexicalType] ;
-      argumentTypeList += ![mValue string] !attributeLexicalType ;
+      [lexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType] ;
+      argumentTypeList += !mAttributeName->string !attributeLexicalType ;
     end foreach ;
     foreach mEntryList do
       [!?outTerminalMap insertKey !mTerminalSpelling !argumentTypeList] ;

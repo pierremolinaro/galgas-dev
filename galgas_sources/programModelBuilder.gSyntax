@@ -89,7 +89,7 @@ rule <program_component_start_symbol> !@programComponentAST outProgramComponentR
     end select ;
   #--- Source file
     $??$ :> ?sep ?* ;
-    send sep . "?" ;
+    send sep . "?sourceFilePath:" ;
     $type_name$ ? @lstring typeName ;
     @bool isUnused ;
     select

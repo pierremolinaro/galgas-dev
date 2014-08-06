@@ -35,17 +35,17 @@ rule <formal_parameter_list> !@formalParameterListAST outFormalParameterList :
   while
     @formalArgumentPassingModeAST mFormalParameterPassingMode ;
     select
-      $?$ ;
+      $?$ ?const selector ;
       mFormalParameterPassingMode := [@formalArgumentPassingModeAST argumentIn] ;
     or
-      $?$ ;
+      $?$ ?const selector ;
       $let$ ;
       mFormalParameterPassingMode := [@formalArgumentPassingModeAST argumentConstantIn] ;
     or
-      $?!$ ;
+      $?!$ ?const selector ;
       mFormalParameterPassingMode := [@formalArgumentPassingModeAST argumentInOut] ;
     or
-      $!$ ;
+      $!$ ?const selector ;
       mFormalParameterPassingMode := [@formalArgumentPassingModeAST argumentOut] ;
     end select ;
     $type_name$ ?@lstring mFormalParameterTypeName ;
@@ -78,7 +78,7 @@ rule <actual_parameter_list>
   outActualParameterList := [@actualParameterListAST emptyList] ;
   repeat
   while
-    $?$ ;
+    $?$ ?const selector ;
     const @location qualifierLocation := here ;
     select
       $*$ ;
@@ -99,7 +99,7 @@ rule <actual_parameter_list>
       end if ;
     end select ;
   while
-    $!$ ;
+    $!$ ?const selector ;
     const @location qualifierLocation := here ;
     @semanticExpressionAST e ;
     <expression> ? e ;
@@ -110,7 +110,7 @@ rule <actual_parameter_list>
       !endOfExpressionLocation
     ] ;
   while
-    $!?$ ;
+    $!?$ ?const selector ;
     const @location qualifierLocation := here ;
     @lstring outputInputActualParameterName ;
     $identifier$ ?outputInputActualParameterName ;
@@ -127,7 +127,7 @@ rule <actual_parameter_list>
       !structAttributeList
     ] ;
   while # input parameter, existing variable
-    $?$ ;
+    $?$ ?const selector ;
     const @location qualifierLocation := here ;
     $identifier$ ?const inputActualParameterName ;
     outActualParameterList += ![@inputActualExistingVariableParameterAST new
@@ -135,7 +135,7 @@ rule <actual_parameter_list>
       !inputActualParameterName
     ] ;
   while  # input parameter, new variable
-    $?$ ;
+    $?$ ?const selector ;
     const @location qualifierLocation := here ;
     $var$ ;
     @lstring declarationTypeName ;
@@ -151,7 +151,7 @@ rule <actual_parameter_list>
       !inputActualParameterName
     ] ;
   while  # input parameter, new variable, explicit type
-    $?$ ;
+    $?$ ?const selector ;
     const @location qualifierLocation := here ;
     $type_name$ ?const declarationTypeName ;
     $identifier$ ?const inputActualParameterName ;
@@ -161,7 +161,7 @@ rule <actual_parameter_list>
       !inputActualParameterName
     ] ;
   while # input parameter, new constant
-    $?$ ;
+    $?$ ?const selector ;
     const @location qualifierLocation := here ;
     $let$ ;
     @lstring declarationTypeName ;
@@ -190,7 +190,7 @@ rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputP
   repeat
   while
     @bool isConstant ;
-    $?$ ;
+    $?$ ?const selector ;
     select
       isConstant := false ;
     or

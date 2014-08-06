@@ -116,7 +116,7 @@ rule <label_formal_parameter>
   !@lstring outArgumentName
   ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList
 :
-  $?$ ;
+  $?$ ?const selector ;
   $type_name$ ?@lstring mTypeName ;
   select
   or
@@ -137,7 +137,7 @@ rule <label_formal_parameter>
   !@lstring outArgumentName
   ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList
 :
-  $?$ ;
+  $?$ ?const selector ;
   $let$ ;
   $type_name$ ?@lstring mTypeName ;
   select
@@ -159,7 +159,7 @@ rule <label_formal_parameter>
   !@lstring outArgumentName
   ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList
 :
-  $?!$ ;
+  $?!$ ?const selector ;
   $type_name$ ?@lstring mTypeName ;
   select
   or
@@ -180,7 +180,7 @@ rule <label_formal_parameter>
   !@lstring outArgumentName
   ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList
 :
-  $!$ ;
+  $!$ ?const selector ;
   $type_name$ ?@lstring mTypeName ;
   $identifier$ ?outArgumentName ;
   ioStartSymbolLabelFormalParameterList +=

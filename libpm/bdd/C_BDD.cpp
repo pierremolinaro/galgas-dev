@@ -315,13 +315,12 @@ C_BDD C_BDD::varCompareConst (const uint32_t inFirstIndex,
     exit (1) ;
   }
   C_BDD result ;
-  uint32_t i ;
   uint64_t val = inComparisonConstant ;
   const uint32_t indiceMax = (uint32_t) (inFirstIndex + inDimension - 1) ;
   switch (inComparison) {
   case kEqual : case kNotEqual : // on construit l'egalite
     result.mBDDvalue = 1 ;
-    for (i = inFirstIndex ; i <= indiceMax ; i++) {
+    for (uint32_t i = inFirstIndex ; i <= indiceMax ; i++) {
       result = result & C_BDD (i, ((val & 1) == 0) ? false : true) ;
       val >>= 1 ;
     }

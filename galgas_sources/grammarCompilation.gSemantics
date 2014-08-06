@@ -706,7 +706,6 @@ list @grammarComponentGenerationList {
   @string mGrammarName ;
   @string mHeaderContents ;
   @string mCppFileContents ;
-  @string mHTMLFileContents ;
 }
 
 #---------------------------------------------------------------------------*
@@ -863,12 +862,17 @@ routine compileGrammarComponentGalgas3
       !hasIndexing
     ] ;
   end if ;
+#---------------------------------------------------------- Write HTML file
+  if [option galgas_cli_options.outputHTMLgrammarFile value] then
+    [grammarHTMLHelperContents writeToFileWhenDifferentContents !HTMLFilePath ?*] ;
+  else
+    [@string deleteFileIfExists !HTMLFilePath] ;
+  end if ;
 #---------------------------------------------------------- Add to generation list
   ioGrammarGenerationList +=
     !inGrammarComponentRoot->mGrammarComponentName->string
     !headerContents
     !grammarCppFile
-    !grammarHTMLHelperContents
   ;
 end routine ;
 
@@ -885,13 +889,6 @@ routine generateGrammarComponentGalgas3
   ?!@stringset ioAllProductFileSet
 :
   for () in inGrammarGenerationList do
-  #---------------------------------------------------------- Generate HTML grammer helper file
-    const HTMLFilePath := inOutputDirectory + "/../helpers/" + mGrammarName . ".html" ;
-    if [option galgas_cli_options.outputHTMLgrammarFile value] then
-      [mHTMLFileContents writeToFileWhenDifferentContents !HTMLFilePath ?*] ;
-    else
-      [@string deleteFileIfExists !HTMLFilePath] ;
-    end if ;
   #---------------------------------------------------------- Generate Implementation file
     if [@uint errorCount] == 0 then
       ioToolProductFileList += !"grammar-" + mGrammarName + ".cpp" ;

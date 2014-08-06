@@ -370,6 +370,7 @@ override reader @lexicalTagInstructionAST generateInstructionCode
   -> @string outGeneratedCode
 :
   outGeneratedCode := "const C_LocationInSource locationForTag_" . mLexicalTagName . " = mCurrentLocation ;\n" ;
+  outGeneratedCode .= "const utf32 currentCharForTag_" . mLexicalTagName . " = mCurrentChar ;\n" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -380,6 +381,7 @@ override reader @lexicalRewindInstructionAST generateInstructionCode
   -> @string outGeneratedCode
 :
   outGeneratedCode := "mCurrentLocation = locationForTag_" . mLexicalTagName . " ;\n" ;
+  outGeneratedCode .= "mCurrentChar = currentCharForTag_" . mLexicalTagName . " ;\n" ;
   outGeneratedCode .= "token.mTokenCode = kToken_" . [mTerminalName identifierRepresentation] . " ;\n" ;
   outGeneratedCode .= "enterToken (token) ;\n" ;
 end reader ;

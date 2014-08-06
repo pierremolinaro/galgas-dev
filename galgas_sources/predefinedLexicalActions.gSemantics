@@ -77,6 +77,13 @@ routine buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap :
     !mErrorMessageList
     !false # Is not extern
   ] ;
+#--- resetString
+  [!?outLexicalRoutineMap insertKey
+    ![@lstring new !"resetString" !here]
+    !{![@lexicalArgumentModeAST lexicalInputOutputMode] ![@lexicalTypeEnum lexicalType_string] !"ioString"}
+    !{}
+    !false # Is not extern
+  ] ;
 #--- convertStringToDouble
   mLexicalRoutineFormalArgumentList := [@lexicalRoutineFormalArgumentList emptyList] ;
   mErrorMessageList := [@stringlist emptyList] ;
