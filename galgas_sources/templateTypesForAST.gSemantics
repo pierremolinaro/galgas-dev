@@ -42,6 +42,7 @@ abstract class @templateExpressionAST {
 #---------------------------------------------------------------------------*
 
 list @templateExpressionListAST {
+  @lstring mActualSelector ;
   @templateExpressionAST mExpression ;
   @location mEndOfExpressionLocation ;
 }

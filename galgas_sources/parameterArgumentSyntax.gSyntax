@@ -208,11 +208,12 @@ rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputP
   repeat
   while
     @bool isConstant ;
+    @lstring selector ;
     select
-      $?$ ?const selector ;
+      $?$ ?selector ;
       isConstant := false ;
     or
-      $??$ ?const selector :> ??@string sep ?* ;
+      $??$ ?selector :> ??@string sep ?* ;
       send sep + "?" + if selector->string != "" then selector->string + ":" else "" end + "let " ;
       isConstant := true ;
     end select ;
@@ -226,6 +227,7 @@ rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputP
     end select ;
     $identifier$ ?@lstring mFormalParameterName ;
     outFormalInputParameterList +=
+      !selector
       !mFormalParameterTypeName
       !mFormalParameterName
       !mIsUnused

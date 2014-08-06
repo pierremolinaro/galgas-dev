@@ -33,7 +33,7 @@ rule <output_expression_list>
   while
     $!$ ?const selector ;
     <expression> ??@semanticExpressionAST expression ;
-    outExpressionList += !expression !here ;
+    outExpressionList += !selector !expression !here ;
   end repeat ;
 end rule ;
 
@@ -690,7 +690,7 @@ rule <collection_value_element>
   repeat
     $!$ ?const selector ;
     <expression> ??@semanticExpressionAST expression ;
-    expressionList += !expression !here ;
+    expressionList += !selector !expression !here ;
   while
   end repeat ;
   outValueElement := [@expressionListCollectionValue new !expressionList !here] ;

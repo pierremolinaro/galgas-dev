@@ -1252,13 +1252,13 @@ rule <semantic_instruction>
   @semanticExpressionListAST matchedExpressionNameList [emptyList] ;
   const instructionLocation := here ;
   <expression> ??@semanticExpressionAST receiverExpression ;
-  matchedExpressionNameList += !receiverExpression !here ;
+  matchedExpressionNameList += !["" nowhere] !receiverExpression !here ;
   $::$ :>?@string sep ?* ;
   send sep . "," ;
   repeat
     @semanticExpressionAST receiverExpression ;
     <expression> ? receiverExpression ;
-    matchedExpressionNameList += !receiverExpression !here ;
+    matchedExpressionNameList += !["" nowhere] !receiverExpression !here ;
   while
     $::$ :>?sep ?* ;
     send sep . "," ;

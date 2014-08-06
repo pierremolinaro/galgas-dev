@@ -207,6 +207,7 @@ rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputP
     end select ;
     $identifier$ ?@lstring mFormalParameterName ;
     outFormalInputParameterList +=
+      !selector
       !mFormalParameterTypeName
       !mFormalParameterName
       !mIsUnused

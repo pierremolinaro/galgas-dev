@@ -675,7 +675,7 @@ override method @templateFunctionCallAST templateExpressionAnalysis
 #--- Retrieve function features
   [inAnalysisContext->mSemanticContext->mFunctionMap searchKey
     !mFunctionName
-    ??@unifiedTypeMapProxyList functionSignature
+    ??@functionSignature functionSignature
     ??@unifiedTypeMapProxy resultType
     ??@bool isInternal
   ] ;
@@ -697,10 +697,12 @@ override method @templateFunctionCallAST templateExpressionAnalysis
   else
     @semanticExpressionListForGeneration semanticExpressionListForGeneration [emptyList] ;
     foreach functionSignature, mExpressionList do
-      @semanticExpressionForGeneration expression ;
-      [mExpression templateExpressionAnalysis !inAnalysisContext ?expression] ;
-      checkAssignmentTypes !mType ![expression mType] !mEndOfExpressionLocation ;
+      [mExpression templateExpressionAnalysis !inAnalysisContext ??@semanticExpressionForGeneration expression] ;
+      checkAssignmentTypes !mFormalArgumentType ![expression mType] !mEndOfExpressionLocation ;
       semanticExpressionListForGeneration += !expression ;
+      if mFormalSelector->string != mActualSelector->string then
+        error mActualSelector : "the selector should be '!" . if mFormalSelector->string != "" then mFormalSelector->string + ":" else "" end + "'" ;
+      end if ;
     end foreach ;
     outExpression := [@functionCallExpressionForGeneration new
       !resultType
