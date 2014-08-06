@@ -551,7 +551,7 @@ rule '?' :
       end repeat ;
       select
       when ':' :
-        send $?!$ ;
+        send $??$ ;
       default
         resetString !?tokenString ;
         rewind onlyDoubleInterrogationMark send $??$ ;

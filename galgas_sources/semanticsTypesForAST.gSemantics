@@ -34,6 +34,7 @@ abstract class @semanticExpressionAST {
 #---------------------------------------------------------------------------*
 
 list @semanticExpressionListAST {
+  @lstring mActualSelector feature nogetter ;
   @semanticExpressionAST mExpression feature nogetter ;
   @location mEndOfExpressionLocation feature nogetter ;
 }
@@ -320,6 +321,7 @@ list @formalParameterListAST {
 #---------------------------------------------------------------------------*
 
 list @formalInputParameterListAST {
+  @lstring mFormalSelector feature nogetter ;
   @lstring mFormalArgumentTypeName feature nogetter ;
   @lstring mFormalArgumentName feature nogetter ;
   @bool mIsUnused feature nogetter ;

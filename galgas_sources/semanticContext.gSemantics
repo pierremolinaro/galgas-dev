@@ -68,7 +68,7 @@ map @routineMap {
 #---------------------------------------------------------------------------*
 
 map @functionMap {
-  @unifiedTypeMapProxyList mFunctionSignature ;
+  @functionSignature mFunctionSignature ;
   @unifiedTypeMapProxy mResultType ;
   @bool mIsInternal ;
   insert insertKey error message "the '%K' function has been already declared in %L" ;
@@ -2735,11 +2735,11 @@ override method @externFunctionDeclarationAST enterInSemanticContext # Handles a
   ?!@semanticContext ioSemanticContext
 :
 #--- Build signature
-  @unifiedTypeMapProxyList functionSignature [emptyList] ;
+  @functionSignature functionSignature [emptyList] ;
   foreach mFormalArgumentList do
     @unifiedTypeMapProxy parameterTypeIndex ;
     [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mFormalArgumentTypeName ?parameterTypeIndex] ;
-    functionSignature += !parameterTypeIndex ;
+    functionSignature += !mFormalSelector !parameterTypeIndex ;
   end foreach ;
 #--- Result type
   @unifiedTypeMapProxy resultTypeIndex ;
@@ -2764,7 +2764,7 @@ override method @onceFunctionDeclarationAST enterInSemanticContext
 #--- Result type
   [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mResultTypeName ??@unifiedTypeMapProxy resultTypeIndex] ;
 #--- Enter function in routine map
-  [!?ioSemanticContext->mFunctionMap insertKey !mFunctionName ![@unifiedTypeMapProxyList emptyList] !resultTypeIndex !mIsInternal] ;
+  [!?ioSemanticContext->mFunctionMap insertKey !mFunctionName ![@functionSignature emptyList] !resultTypeIndex !mIsInternal] ;
 end method ;
 
 #---------------------------------------------------------------------------*
