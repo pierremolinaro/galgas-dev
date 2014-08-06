@@ -159,9 +159,6 @@ end method ;
 override method @lexicalErrorByDefaultAST checkLexicalDefaultAction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 :
-#  with !?ioLexiqueAnalysisContext->mLexicalMessageMap searchKey !mDefaultErrorMessageName : xyz_ do
-#    xyz_mMessageIsUsed := true ;
-#  end with ;
   [!?ioLexiqueAnalysisContext->mLexicalMessageMap setMMessageIsUsedForKey !true !mDefaultErrorMessageName->string] ;
 end method ;
 
@@ -224,9 +221,6 @@ override method @lexicalStringNotMatchAST checkLexicalExpression
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 :
   ioLexiqueAnalysisContext->mUnicodeStringToGenerate += ![mString string] ;
-#  with !?ioLexiqueAnalysisContext->mLexicalMessageMap searchKey !mErrorMessage do
-#    mMessageIsUsed := true ;
-#  end with ;
   [!?ioLexiqueAnalysisContext->mLexicalMessageMap setMMessageIsUsedForKey !true !mErrorMessage->string] ;
 end method ;
 
@@ -543,9 +537,6 @@ override method @lexicalStructuredSendInstructionAST checkLexicalInstruction
   ?!@lexicalTagMap unused ioTagMap
 :
   foreach mLexicalSendSearchList do
-#    with !?ioLexiqueAnalysisContext->mLexicalTokenListMap searchKey !mSearchListName do
-#      mShouldBeGenerated := true ;
-#    end with ;
     [!?ioLexiqueAnalysisContext->mLexicalTokenListMap setMShouldBeGeneratedForKey !true !mSearchListName->string] ;
     [[ioLexiqueAnalysisContext mLexicalAttributeMap] searchKey !mAttributeName ?*] ;
   end foreach ;
@@ -862,18 +853,20 @@ routine compileLexiqueComponentFromAST
     [!?lexicalFunctionMap insertKey !mFunctionName !lexicalFunctionFormalArgumentList !returnedArgumentType !"" !true] ;
   end foreach ;
 #--------------------------------------- Unicode test functions
-  @stringset externUnicodeTestFunctions [emptySet] ;
-  externUnicodeTestFunctions += !"unicodeToLower" ;
-  externUnicodeTestFunctions += !"unicodeToUpper" ;
-  externUnicodeTestFunctions += !"isUnicodeLetter" ;
-  externUnicodeTestFunctions += !"isUnicodeMark" ;
-  externUnicodeTestFunctions += !"isUnicodeNumber" ;
-  externUnicodeTestFunctions += !"isUnicodeDecimalDigit" ;
-  externUnicodeTestFunctions += !"isUnicodeASCIIHexDigit" ;
-  externUnicodeTestFunctions += !"isUnicodeSeparator" ;
-  externUnicodeTestFunctions += !"isUnicodeCommand" ;
-  externUnicodeTestFunctions += !"isUnicodePunctuation" ;
-  externUnicodeTestFunctions += !"isUnicodeSymbol" ;
+  const @stringset externUnicodeTestFunctions := {
+   !"unicodeToLower",
+   !"unicodeToUpper",
+   !"unicodeToUpper",
+   !"isUnicodeLetter",
+   !"isUnicodeMark",
+   !"isUnicodeNumber",
+   !"isUnicodeDecimalDigit",
+   !"isUnicodeASCIIHexDigit",
+   !"isUnicodeSeparator",
+   !"isUnicodeCommand",
+   !"isUnicodePunctuation",
+   !"isUnicodeSymbol"
+  } ;
 #---------------------------------------
   @lexiqueAnalysisContext lexiqueAnalysisContext [new
     !lexicalRoutineMap
@@ -909,8 +902,8 @@ routine compileLexiqueComponentFromAST
     @lexicalSentValueList argumentTypeList [emptyList] ;
     foreach mSentAttributeList do
       @lexicalTypeEnum attributeLexicalType ;
-      [lexiqueAnalysisContext->mLexicalAttributeMap searchKey !mValue ?attributeLexicalType] ;
-      argumentTypeList += ![mValue string] !attributeLexicalType ;
+      [lexiqueAnalysisContext->mLexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType] ;
+      argumentTypeList += !mFormalSelector !mAttributeName->string !attributeLexicalType ;
     end foreach ;
     [!?lexiqueAnalysisContext->mTerminalMap insertKey !mName !argumentTypeList] ;
     @bool isEndOfTemplateMark := false ;
@@ -948,7 +941,7 @@ routine compileLexiqueComponentFromAST
     foreach mSentAttributeList do
       @lexicalTypeEnum attributeLexicalType ;
       [lexiqueAnalysisContext->mLexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType] ;
-      argumentTypeList += !mAttributeName->string !attributeLexicalType ;
+      argumentTypeList += !mFormalSelector !mAttributeName->string !attributeLexicalType ;
     end foreach ;
     @lexicalExplicitTokenListMap lexicalTokenListMap [emptyMap] ;
     @tokenSortedlist tokenSortedlist [emptySortedList] ;
@@ -1192,18 +1185,20 @@ routine compileLexiqueComponentGalgas3
     [!?lexicalFunctionMap insertKey !mFunctionName !lexicalFunctionFormalArgumentList !returnedArgumentType !"" !true] ;
   end foreach ;
 #--------------------------------------- Unicode test functions
-  @stringset externUnicodeTestFunctions [emptySet] ;
-  externUnicodeTestFunctions += !"unicodeToLower" ;
-  externUnicodeTestFunctions += !"unicodeToUpper" ;
-  externUnicodeTestFunctions += !"isUnicodeLetter" ;
-  externUnicodeTestFunctions += !"isUnicodeMark" ;
-  externUnicodeTestFunctions += !"isUnicodeNumber" ;
-  externUnicodeTestFunctions += !"isUnicodeDecimalDigit" ;
-  externUnicodeTestFunctions += !"isUnicodeASCIIHexDigit" ;
-  externUnicodeTestFunctions += !"isUnicodeSeparator" ;
-  externUnicodeTestFunctions += !"isUnicodeCommand" ;
-  externUnicodeTestFunctions += !"isUnicodePunctuation" ;
-  externUnicodeTestFunctions += !"isUnicodeSymbol" ;
+  const @stringset externUnicodeTestFunctions := {
+   !"unicodeToLower",
+   !"unicodeToUpper",
+   !"unicodeToUpper",
+   !"isUnicodeLetter",
+   !"isUnicodeMark",
+   !"isUnicodeNumber",
+   !"isUnicodeDecimalDigit",
+   !"isUnicodeASCIIHexDigit",
+   !"isUnicodeSeparator",
+   !"isUnicodeCommand",
+   !"isUnicodePunctuation",
+   !"isUnicodeSymbol"
+  } ;
 #---------------------------------------
   @lexiqueAnalysisContext lexiqueAnalysisContext [new
     !lexicalRoutineMap
@@ -1239,8 +1234,8 @@ routine compileLexiqueComponentGalgas3
     @lexicalSentValueList argumentTypeList [emptyList] ;
     foreach mSentAttributeList do
       @lexicalTypeEnum attributeLexicalType ;
-      [lexiqueAnalysisContext->mLexicalAttributeMap searchKey !mValue ?attributeLexicalType] ;
-      argumentTypeList += ![mValue string] !attributeLexicalType ;
+      [lexiqueAnalysisContext->mLexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType] ;
+      argumentTypeList += !mFormalSelector !mAttributeName->string !attributeLexicalType ;
     end foreach ;
     [!?lexiqueAnalysisContext->mTerminalMap insertKey !mName !argumentTypeList] ;
     @bool isEndOfTemplateMark := false ;
@@ -1278,7 +1273,7 @@ routine compileLexiqueComponentGalgas3
     foreach mSentAttributeList do
       @lexicalTypeEnum attributeLexicalType ;
       [lexiqueAnalysisContext->mLexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType] ;
-      argumentTypeList += !mAttributeName->string !attributeLexicalType ;
+      argumentTypeList += !mFormalSelector !mAttributeName->string !attributeLexicalType ;
     end foreach ;
     @lexicalExplicitTokenListMap lexicalTokenListMap [emptyMap] ;
     @tokenSortedlist tokenSortedlist [emptySortedList] ;

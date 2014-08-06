@@ -100,7 +100,7 @@ list @lexicalStyleListAST {
 
 list @terminalDeclarationListAST {
   @lstring mName feature nogetter ;
-  @lstringlist mSentAttributeList feature nogetter ;
+  @sentLexicalAttributeListAST mSentAttributeList feature nogetter ;
   @lstring mSyntaxErrorMessage feature nogetter ;
   @lstring mStyle feature nogetter ; # Empty string if no style
   @lstringlist mOptionList feature nogetter ;
@@ -117,7 +117,7 @@ list @lexicalListEntryListAST {
 #---------------------------------------------------------------------------*
 
 list @sentLexicalAttributeListAST {
-  @lstring mSelector ;
+  @lstring mFormalSelector ;
   @lstring mAttributeName ;
 }
 
@@ -451,6 +451,7 @@ enum @lexicalTypeEnum {
 #---------------------------------------------------------------------------*
 
 list @lexicalSentValueList {
+  @lstring mLexicalFormalSelector ;
   @string mLexicalAttributeName ;
   @lexicalTypeEnum mLexicalType ;
 }
@@ -507,8 +508,7 @@ routine buildLexicalAttributeMap
 :
   foreach inLexicalAttributeList do
     if [inLexicalTypeMap hasKey ![mTypeName string]] then
-      @lexicalTypeEnum lexicalType ;
-      [inLexicalTypeMap searchKey !mTypeName ?lexicalType] ;
+      [inLexicalTypeMap searchKey !mTypeName ?@lexicalTypeEnum lexicalType] ;
       [!?ioLexicalAttributeMap insertKey !mName !lexicalType] ;
     else
       @string m := "" ;
@@ -532,10 +532,10 @@ routine buildTerminalMap
 :
 #--------------------------------------- Build lexical attribute map
   const @lexicalTypeMap lexicalTypeMap := buildLexicalTypeMap [] ;
-  @lexicalAttributeMap lexicalAttributeMap [emptyMap] ;
+  @lexicalAttributeMap lexicalAttributeMap := {} ;
   buildLexicalAttributeMap
    !lexicalTypeMap
-   ![inLexiqueComponentRoot mLexicalAttributeList]
+   !inLexiqueComponentRoot->mLexicalAttributeList
    !?lexicalAttributeMap
   ;
 #--------------------------------------- 
@@ -544,8 +544,8 @@ routine buildTerminalMap
     @lexicalSentValueList argumentTypeList [emptyList] ;
     foreach mSentAttributeList do
       @lexicalTypeEnum attributeLexicalType ;
-      [lexicalAttributeMap searchKey !mValue ?attributeLexicalType] ;
-      argumentTypeList += ![mValue string] !attributeLexicalType ;
+      [lexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType] ;
+      argumentTypeList += !mFormalSelector !mAttributeName->string !attributeLexicalType ;
     end foreach ;
     [!?outTerminalMap insertKey !mName !argumentTypeList] ;
   end foreach ;
@@ -555,7 +555,7 @@ routine buildTerminalMap
     foreach mSentAttributeList do
       @lexicalTypeEnum attributeLexicalType ;
       [lexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType] ;
-      argumentTypeList += !mAttributeName->string !attributeLexicalType ;
+      argumentTypeList += !mFormalSelector !mAttributeName->string !attributeLexicalType ;
     end foreach ;
     foreach mEntryList do
       [!?outTerminalMap insertKey !mTerminalSpelling !argumentTypeList] ;

@@ -157,8 +157,8 @@ rule <label_formal_parameter>
   !@lstring outArgumentName
   ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList
 :
-  $??$ :> ??@string sep ?* ;
-  send sep . "?let " ;
+  $??$ ?const selector :> ??@string sep ?* ;
+  send sep + "?" + if selector->string != "" then selector->string + ":" else "" end + "let " ;
   $type_name$ ?@lstring mTypeName ;
   select
   or
