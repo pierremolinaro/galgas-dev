@@ -14,7 +14,7 @@ if [CONSTRUCTOR_MAP count] > 0 then
   foreach CONSTRUCTOR_MAP do
     %  public : static GALGAS_%![mReturnedType identifierRepresentation]% constructor_%![[lkey string] identifierRepresentation]% (%?^
     foreach mArgumentTypeList
-      do index IDX %const class GALGAS_% ![mType identifierRepresentation] % & inOperand%![IDX string]
+      do index IDX %const class GALGAS_% ![mFormalArgumentType identifierRepresentation] % & inOperand%![IDX string]
       between %,\n%!^
     end
     if mHasCompilerArgument & ([mArgumentTypeList length] > 0) then
@@ -55,7 +55,7 @@ if [ADD_ASSIGN_ARGUMENT_LIST length] > 0 then
 %//--------------------------------- += operator (with list of field expressions)
   public : VIRTUAL_IN_DEBUG void addAssign_operation (%?^
   foreach ADD_ASSIGN_ARGUMENT_LIST
-  do index IDX %const class GALGAS_%![mType identifierRepresentation]% & inOperand%![IDX string]
+  do index IDX %const class GALGAS_%![mFormalArgumentType identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
   end
   if (SUPPORTED_OPERATORS & plusEqualOperatorWithFieldListNeedsCompilerArg []) != 0 then
@@ -276,7 +276,7 @@ foreach READER_MAP do
     if (mErrorMessage == "") & ((mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isBasic]) | (mQualifier == [@methodQualifier isBasicFinal])) then
       %  public : VIRTUAL_IN_DEBUG class GALGAS_% ![mReturnedType identifierRepresentation] % reader_% ![[lkey string] identifierRepresentation] % (%?^
       foreach mArgumentTypeList
-        do index IDX %const class GALGAS_%![mType identifierRepresentation]% & constinOperand% ![IDX string]
+        do index IDX %const class GALGAS_%![mFormalArgumentType identifierRepresentation]% & constinOperand% ![IDX string]
         between %,\n% !^
       end
       if [mArgumentTypeList length] == 0 then

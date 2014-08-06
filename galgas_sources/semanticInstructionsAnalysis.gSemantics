@@ -1246,14 +1246,16 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
   else
     @semanticExpressionListForGeneration effectiveParameterList [emptyList] ;
     foreach mExpressions, addAssignOperatorArguments do
-      @semanticExpressionForGeneration exp ;
       [mExpression analyzeSemanticExpression
-        !mType
+        !mFormalArgumentType
         !inAnalysisContext
         !?ioVariableMap
-        ?exp
+        ??@semanticExpressionForGeneration exp
       ] ;
-      checkAssignmentTypes !mType ![exp mType] !mEndOfExpressionLocation ;
+      if mFormalSelector->string != mActualSelector->string then
+        error mActualSelector : "the selector should be '!" . mFormalSelector . if mFormalSelector->string != "" then ":" else "" end + "'" ;
+      end if ;
+      checkAssignmentTypes !mFormalArgumentType ![exp mType] !mEndOfExpressionLocation ;
       effectiveParameterList += !exp ;
     end foreach ;
   #--- Generate instruction
@@ -1342,14 +1344,16 @@ override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
   else
     @semanticExpressionListForGeneration effectiveParameterList [emptyList] ;
     foreach mExpressions, addAssignOperatorArguments do
-      @semanticExpressionForGeneration exp ;
       [mExpression analyzeSemanticExpression
-        !mType
+        !mFormalArgumentType
         !inAnalysisContext
         !?ioVariableMap
-        ?exp
+        ??@semanticExpressionForGeneration exp
       ] ;
-      checkAssignmentTypes !mType ![exp mType] !mEndOfExpressionLocation ;
+      if mFormalSelector->string != mActualSelector->string then
+        error mActualSelector : "the selector should be '!" . if mFormalSelector->string != "" then mFormalSelector->string + ":" else "" end + "'" ;
+      end if ;
+      checkAssignmentTypes !mFormalArgumentType ![exp mType] !mEndOfExpressionLocation ;
       effectiveParameterList += !exp ;
     end foreach ;
   #--- Generate instruction
@@ -1670,7 +1674,7 @@ local routine checkExpressionIsBoolean
         foreach [expressionType mReaderMap] do
           s .= "\n  - " . lkey ;
           foreach mArgumentTypeList do
-            s .= " ?@" . [mType key] ;
+            s .= " ?" + if mFormalSelector->string != "" then mFormalSelector->string + ":" else "" end + "@" . [mFormalArgumentType key] ;
           end foreach ;
           s .= " -> @" . [mReturnedType key] ;
         end foreach ;

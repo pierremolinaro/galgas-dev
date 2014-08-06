@@ -67,28 +67,31 @@ routine checkReaderSignatures
   ??@formalInputParameterListForGeneration inTestedSignature
   ??@unifiedTypeMapProxy inReturnType
   ??@location inErrorLocation
-  ??@unifiedTypeMapProxyAndParameterList inReferenceSignature
+  ??@functionSignature inReferenceSignature
   ??@unifiedTypeMapProxy inInheritedReturnType
   ??@location inReferenceLocation
 :
   if [inReturnType key] != [inInheritedReturnType key] then
     error inErrorLocation : "the return type is '@"
-    . [inReturnType key] . "', but overriden reader names '@" 
+    . [inReturnType key] . "', but overriden getter names '@" 
     . [inInheritedReturnType key] . "' as return type" ;
-    error inReferenceLocation:"overriden reader is declared here" ;
+    error inReferenceLocation:"overriden getter is declared here" ;
   end if ;
   if [inTestedSignature length] != [inReferenceSignature length] then
-    error inErrorLocation:"this reader declares " . [[inTestedSignature length] string]
-    . " formal parameter(s), but overriden reader declares " . [[inReferenceSignature length] string]
+    error inErrorLocation:"this getter declares " . [[inTestedSignature length] string]
+    . " formal parameter(s), but overriden getter declares " . [[inReferenceSignature length] string]
     ;
-    error inReferenceLocation:"overriden reader is declared here" ;
+    error inReferenceLocation:"overriden getter is declared here" ;
   else
     foreach inReferenceSignature : ref_, inTestedSignature do
-      if [mFormalArgumentType key] != [ref_mType key] then
+      if mFormalSelector->string != ref_mFormalSelector->string then
+        error mFormalSelector : "the selector should be '?" . ref_mFormalSelector . if ref_mFormalSelector->string != "" then ":" else "" end + "'" ;
+      end if ;
+      if [mFormalArgumentType key] != [ref_mFormalArgumentType key] then
         error mFormalArgumentName : "the '" . mFormalArgumentName . "' formal parameter has the '@"
-        . [mFormalArgumentType key] . "' type, but overriden reader declares with the '@" 
-        . [ref_mType key] . "' type" ;
-        error inReferenceLocation:"overriden reader is declared here" ;
+        . [mFormalArgumentType key] . "' type, but overriden getter declares with the '@" 
+        . [ref_mFormalArgumentType key] . "' type" ;
+        error inReferenceLocation:"overriden getter is declared here" ;
       end if ;
     end foreach ;
   end if ;
@@ -1083,6 +1086,7 @@ override method @externFunctionDeclarationAST semanticAnalysis
   @formalInputParameterListForGeneration formalArgumentList [emptyList] ;
   foreach mFormalArgumentList do
     formalArgumentList +=
+      !mFormalSelector
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName]
       ![mFormalArgumentName string]
       !mFormalArgumentName
@@ -1305,6 +1309,7 @@ routine analyzeFunctionBody
     if mIsConstant then
       const @string cppName := "constinArgument_" . [[mFormalArgumentName string] identifierRepresentation] ;
       outSignatureForGeneration +=
+        !mFormalSelector
         !parameterType
         !cppName
         !mFormalArgumentName
@@ -1318,6 +1323,7 @@ routine analyzeFunctionBody
     else
       const @string cppName := "inArgument_" . [[mFormalArgumentName string] identifierRepresentation] ;
       outSignatureForGeneration +=
+        !mFormalSelector
         !parameterType
         !cppName
         !mFormalArgumentName
@@ -1490,7 +1496,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
         @unifiedTypeMapProxy type [searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
         const @string cppVarName := "in_" . [[mFormalArgumentName string] identifierRepresentation] ;
         [!?templateVariableMap insertKey !mFormalArgumentName !type !cppVarName] ;
-        filewrapperTemplateFormalInputParameters += !type !cppVarName !mFormalArgumentName !true ;
+        filewrapperTemplateFormalInputParameters += !mFormalTemplateSelector !type !cppVarName !mFormalArgumentName !true ;
       end foreach ;
     #--- Analyze template
       @templateInstructionListForGeneration templateInstructionListForGeneration [emptyList] ;
@@ -1742,7 +1748,7 @@ override method @overridingAbstractCategoryMethodAST semanticAnalysis
     superType := [superType mSuperType] ;
   end loop ;
   if baseTypeName == "" then
-    error mOverridingCategoryMethodName:"this reader is not declared by a super class" ;
+    error mOverridingCategoryMethodName:"this getter is not declared by a super class" ;
   end if ;
 #--- Analyze formal argument list
   @variableMap variableMap [emptyMap] ;
@@ -2017,6 +2023,7 @@ override method @abstractCategoryReaderAST semanticAnalysis
   @formalInputParameterListForGeneration formalParameterListForGeneration [emptyList] ;
   foreach mAbstractCategoryReaderFormalInputParameterList do
     formalParameterListForGeneration +=
+      !mFormalSelector
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName]
       ![mFormalArgumentName string]
       !mFormalArgumentName
@@ -2126,7 +2133,7 @@ override method @overridingCategoryReaderAST semanticAnalysis
 #--- Find base type name
   @string baseTypeName := "" ;
   @unifiedTypeMapProxy superType := [selfType mSuperType] ;
-  @unifiedTypeMapProxyAndParameterList inheritedSignature [emptyList] ;
+  @functionSignature inheritedSignature := {} ;
   @unifiedTypeMapProxy inheritedReturnType [null] ;
   @location inheritedDeclarationLocation := here ;
   loop [inSemanticContext->mTypeMap count] + 1 :
@@ -2149,7 +2156,7 @@ override method @overridingCategoryReaderAST semanticAnalysis
     superType := [superType mSuperType] ;
   end loop ;
   if baseTypeName == "" then
-    error mOverridingCategoryReaderName:"this reader is not declared by a super class" ;
+    error mOverridingCategoryReaderName:"this getter is not declared by a super class" ;
   end if ;
 #--- Analyze instruction list
   const analysisContext := [@analysisContext new
@@ -2162,7 +2169,6 @@ override method @overridingCategoryReaderAST semanticAnalysis
   analyzeFunctionBody
     !analysisContext
     !mOverridingCategoryReaderFormalInputParameterList
-#    ![selfType mAllTypedAttributeList]
     !if ([selfType mTypeKindEnum] == [@typeKindEnum classType]) | ([selfType mTypeKindEnum] == [@typeKindEnum structType])
        then [selfType mAllTypedAttributeList]
        else [@typedAttributeList emptyList]
@@ -2227,7 +2233,7 @@ override method @overridingAbstractCategoryReaderAST semanticAnalysis
 #--- Find base type name
   @string baseTypeName := "" ;
   @unifiedTypeMapProxy superType := [selfType mSuperType] ;
-  @unifiedTypeMapProxyAndParameterList inheritedSignature [emptyList] ;
+  @functionSignature inheritedSignature := {} ;
   @unifiedTypeMapProxy inheritedReturnType [null] ;
   @location inheritedDeclarationLocation := here ;
   loop [inSemanticContext->mTypeMap count] + 1 :
@@ -2251,13 +2257,14 @@ override method @overridingAbstractCategoryReaderAST semanticAnalysis
     superType := [superType mSuperType] ;
   end loop ;
   if baseTypeName == "" then
-    error mAbstractCategoryReaderName:"this reader is not declared by a super class" ;
+    error mAbstractCategoryReaderName:"this getter is not declared by a super class" ;
   end if ;
 #--- Check Signature
   if baseTypeName != "" then
     @formalInputParameterListForGeneration formalParameterListForGeneration [emptyList] ;
     foreach mAbstractCategoryReaderFormalInputParameterList do
       formalParameterListForGeneration +=
+        !mFormalSelector
         ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName]
         ![mFormalArgumentName string]
         !mFormalArgumentName

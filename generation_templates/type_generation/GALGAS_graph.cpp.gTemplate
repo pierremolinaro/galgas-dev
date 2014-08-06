@@ -21,7 +21,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyGraph (LOC
 
 void GALGAS_%!TYPE_IDENTIFIER%::modifier_%![mInsertModifierName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
   foreach [ASSOCIATED_LIST_TYPE mAddAssignOperatorArguments] do index IDX
-    %,\n%!^%GALGAS_%![mType identifierRepresentation]% inArgument_%![IDX string]
+    %,\n%!^%GALGAS_%![mFormalArgumentType identifierRepresentation]% inArgument_%![IDX string]
   end
   %,\n%!^%C_Compiler * inCompiler\n%
   !^%COMMA_LOCATION_ARGS) {

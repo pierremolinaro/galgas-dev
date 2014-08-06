@@ -321,7 +321,6 @@ override reader @primitiveTypeForGeneration appendPrimitiveTypeDeclaration -> @s
     ![mTypeProxy mEnumerationDescriptor]
     ![mTypeProxy mHandledOperatorFlags]
     ![mTypeProxy mAddAssignOperatorArguments]
-#    ![mTypeProxy mWithAccessorMap]
     ![mTypeProxy mTypeForEnumeratedElement]
   ] ;
 end reader ;
@@ -434,7 +433,7 @@ routine printFeaturesOfType
   do
     s .= "    " . lkey ;
     foreach mArgumentTypeList do
-      s .= " ?@" . [mType key] ;
+      s .= " ?" + if mFormalSelector->string != "" then mFormalSelector->string + ":" else "" end + "@" . [mFormalArgumentType key] ;
     end foreach ;
     s .= " -> @" . [mReturnedType key] . "\n" ;
   end foreach ;
@@ -445,7 +444,7 @@ routine printFeaturesOfType
   do
     s .= "    " . lkey ;
     foreach mArgumentTypeList do
-      s .= " ?@" . [mType key] ;
+      s .= " ?" + if mFormalSelector->string != "" then mFormalSelector->string + ":" else "" end + "@" . [mFormalArgumentType key] ;
     end foreach ;
     s .= " -> @" . [mReturnedType key] . "\n" ;
   end foreach ;

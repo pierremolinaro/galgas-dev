@@ -69,7 +69,7 @@ override method @templateReaderCallInExpressionAST templateExpressionAnalysis
 #--- Get reader map
   const @readerMap readerMap := [receiverType mReaderMap] ;
 #--- Search contructor
-  @unifiedTypeMapProxyAndParameterList readerFormalArgumentTypeList ;
+  @functionSignature readerFormalArgumentTypeList ;
   @methodKind kind ;
   @bool hasCompilerArgument ;
   @unifiedTypeMapProxy returnedType ;
@@ -86,7 +86,7 @@ override method @templateReaderCallInExpressionAST templateExpressionAnalysis
   else
     @uint matchingReaderCount := 0 ;
     if [receiverType mTypeKindEnum] == [@typeKindEnum structType] then
-      readerFormalArgumentTypeList := [@unifiedTypeMapProxyAndParameterList emptyList] ;
+      readerFormalArgumentTypeList :={} ;
       hasCompilerArgument := true ;
       returnedType := [@unifiedTypeMapProxy null] ;
       kind := [@methodKind definedAsMember] ;
@@ -129,7 +129,7 @@ override method @templateReaderCallInExpressionAST templateExpressionAnalysis
       foreach readerMap do
         s .= "\n  - " . lkey ;
         foreach mArgumentTypeList do
-          s .= " ?@" . [mType key] ;
+          s .= " ?@" . [mFormalArgumentType key] ;
         end foreach ;
         s .= " -> @" . [mReturnedType key] ;
       end foreach ;
@@ -149,9 +149,11 @@ override method @templateReaderCallInExpressionAST templateExpressionAnalysis
   else
     @semanticExpressionListForGeneration constructorEffectiveParameterList [emptyList] ;
     foreach mExpressionList, readerFormalArgumentTypeList do
-      @semanticExpressionForGeneration exp ;
-      [mExpression templateExpressionAnalysis !inAnalysisContext ?exp] ;
-      checkAssignmentTypes !mType ![exp mType] !mEndOfExpressionLocation ;
+      [mExpression templateExpressionAnalysis !inAnalysisContext ??@semanticExpressionForGeneration exp] ;
+      if mFormalSelector->string != mActualSelector->string then
+        error mActualSelector : "the selector should be '!" . mFormalSelector . if mFormalSelector->string != "" then ":" else "" end + "'" ;
+      end if ;
+      checkAssignmentTypes !mFormalArgumentType ![exp mType] !mEndOfExpressionLocation ;
       constructorEffectiveParameterList += !exp ;
     end foreach ;
     outExpression := [@readerCallExpressionForGeneration new
@@ -181,7 +183,7 @@ override method @templateConstructorAST templateExpressionAnalysis
 #--- Search contructor
   @unifiedTypeMapProxy returnedType ;
   @bool hasCompilerArgument ;
-  @unifiedTypeMapProxyAndParameterList constructorFormalArgumentTypeList ;
+  @functionSignature constructorFormalArgumentTypeList ;
   with constructorMap hasKey ![mConstructorName string] do
     constructorFormalArgumentTypeList := mArgumentTypeList ;
     hasCompilerArgument := mHasCompilerArgument ;
@@ -197,7 +199,7 @@ override method @templateConstructorAST templateExpressionAnalysis
       foreach constructorMap do
         s .= "\n  - " . lkey ;
         foreach mArgumentTypeList do
-          s .= " ?@" . [mType key] ;
+          s .= " ?" + if mFormalSelector->string != "" then mFormalSelector->string + ":" else "" end + "@" . [mFormalArgumentType key] ;
         end foreach ;
         s .= " -> @" . [mReturnedType key] ;
       end foreach ;
@@ -222,7 +224,10 @@ override method @templateConstructorAST templateExpressionAnalysis
     foreach mExpressionList, constructorFormalArgumentTypeList do
       @semanticExpressionForGeneration exp ;
       [mExpression templateExpressionAnalysis !inAnalysisContext ?exp] ;
-      checkAssignmentTypes !mType ![exp mType] !mEndOfExpressionLocation ;
+      if mFormalSelector->string != mActualSelector->string then
+        error mActualSelector : "the selector should be '!" . mFormalSelector . if mFormalSelector->string != "" then ":" else "" end + "'" ;
+      end if ;
+      checkAssignmentTypes !mFormalArgumentType ![exp mType] !mEndOfExpressionLocation ;
       constructorEffectiveParameterList += !exp ;
     end foreach ;
   end if ;

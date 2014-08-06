@@ -152,7 +152,7 @@ end%
 if [type_mAddAssignOperatorArguments length] > 0 then
   %<tr class="result_line"><td>+= instruction arguments</td><td>%
   foreach type_mAddAssignOperatorArguments do
-    !linkForType [![mType key]] % % !mFormalParameterName %<br><br>%
+    %?%if mFormalSelector->string != "" then !mFormalSelector->string + ":" end!linkForType [![mFormalArgumentType key]] % % !mFormalArgumentName %<br><br>%
   end
   %</td></tr>%
 end
@@ -173,7 +173,7 @@ if [type_mConstructorMap count] > 0 then
     %<b>constructor</b> %!lkey->string
     foreach mArgumentTypeList do
       %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
-      % ?%!linkForType [![mType key]] % % !mFormalParameterName
+      % ?%if mFormalSelector->string != "" then !mFormalSelector->string + ":" end !linkForType [![mFormalArgumentType key]] % % !mFormalArgumentName
     end
     % &rarr; %!linkForType [![mReturnedType key]] %<br><br>%
   end
@@ -197,7 +197,7 @@ if [type_mReaderMap count] > 0 then
     %<b>getter</b> %!lkey->string
     foreach mArgumentTypeList do
       %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
-      % ?%!linkForType [![mType key]] % % !mFormalParameterName
+      % ?%if mFormalSelector->string != "" then !mFormalSelector->string + ":" end!linkForType [![mFormalArgumentType key]] % % !mFormalArgumentName
     end
     % &rarr; %!linkForType [![mReturnedType key]] %<br><br>%
   end

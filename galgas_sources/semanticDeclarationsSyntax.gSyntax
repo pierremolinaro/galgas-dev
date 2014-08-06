@@ -653,7 +653,7 @@ rule <semantic_declaration>
         isUnused := true ;
       end select ;
       $identifier$ ? @lstring argumentName ;
-      filewrapperTemplateFormalInputParameters += !typeName !argumentName !isUnused ;
+      filewrapperTemplateFormalInputParameters += !selector !typeName !argumentName !isUnused ;
     end repeat ;
     $;$ :> ?* ?* ;
     mFilewrapperTemplateList +=
@@ -812,8 +812,7 @@ rule <semantic_declaration>
   send sep . "getter" ;
   $type_name$ ? @lstring className ;
   $identifier$ ? @lstring mReaderName indexing abstractCategoryReaderDefinition ;
-  @formalInputParameterListAST mFormalInputParameterList ;
-  <formal_input_parameter_list> ? mFormalInputParameterList ;
+  <formal_input_parameter_list> ??@formalInputParameterListAST mFormalInputParameterList ;
   $->$ ;
   $type_name$ ? @lstring mReturnedTypeName ;
   $identifier$ ? * ;
@@ -1159,7 +1158,7 @@ rule <semantic_declaration>
       $?$ ?const selector ;
       $type_name$ ? @lstring argumentTypeName ;
       $identifier$ ? @lstring argumentName ;
-      argumentTypeList += !argumentTypeName !argumentName->string ;
+      argumentTypeList += !selector !argumentTypeName !argumentName ;
     end repeat ;
     $->$ ;
     $type_name$ ? @lstring resultTypeName ;
@@ -1179,7 +1178,7 @@ rule <semantic_declaration>
       $?$ ?const selector ;
       $type_name$ ? @lstring argumentTypeName ;
       $identifier$ ? @lstring argumentName ;
-      argumentTypeList += !argumentTypeName !argumentName->string ;
+      argumentTypeList += !selector !argumentTypeName !argumentName ;
     end repeat ;
     $->$ ;
     $type_name$ ? @lstring resultTypeName ;

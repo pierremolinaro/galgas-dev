@@ -592,6 +592,7 @@ rule <primary> !@semanticExpressionAST outExpression :
 end rule ;
 
 #------------------------------------------------------------------------------*
+
 rule <primary> !@semanticExpressionAST outExpression :
   $[$ ;
   $lexique$ ;
