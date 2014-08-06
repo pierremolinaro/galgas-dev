@@ -36,18 +36,19 @@ rule <formal_parameter_list> !@formalParameterListAST outFormalParameterList :
   repeat
   while
     @formalArgumentPassingModeAST mFormalParameterPassingMode ;
+    @lstring selector ;
     select
-      $?$ ?const selector ;
+      $?$ ?selector ;
       mFormalParameterPassingMode := [@formalArgumentPassingModeAST argumentIn] ;
     or
-      $??$ ?const selector :> ??@string sep ?* ;
+      $??$ ?selector :> ??@string sep ?* ;
       send sep + "?" + if selector->string != "" then selector->string + ":" else "" end + "let " ;
       mFormalParameterPassingMode := [@formalArgumentPassingModeAST argumentConstantIn] ;
     or
-      $?!$ ?const selector ;
+      $?!$ ?selector ;
       mFormalParameterPassingMode := [@formalArgumentPassingModeAST argumentInOut] ;
     or
-      $!$ ?const selector ;
+      $!$ ?selector ;
       mFormalParameterPassingMode := [@formalArgumentPassingModeAST argumentOut] ;
     end select ;
     $type_name$ ?@lstring mFormalParameterTypeName ;
@@ -60,6 +61,7 @@ rule <formal_parameter_list> !@formalParameterListAST outFormalParameterList :
     end select ;
     $identifier$ ?@lstring mFormalParameterName ;
     outFormalParameterList +=
+      !selector
       !mFormalParameterPassingMode
       !mFormalParameterTypeName
       !mFormalParameterName
@@ -84,12 +86,18 @@ rule <actual_parameter_list>
     const @location qualifierLocation := here ;
     select
       $*$ ;
+      if selector->string != "" then
+        error selector : "the selector should be '?*'" ;
+      end if ;
       outActualParameterList += ![@inputJokerActualParameterAST new !qualifierLocation !0] ;
     or
       @luint count ;
       $unsigned_literal_integer$ ? count ;
       $*$ ;
       @uint n := [count uint] ;
+      if selector->string != "" then
+        error selector : "the selector should be '?" . n . "*'" ;
+      end if ;
       if n == 0 then
         error count: "the count value should be > 0" ;
       else
@@ -107,6 +115,7 @@ rule <actual_parameter_list>
     const @location endOfExpressionLocation := here ;
     outActualParameterList += ![@outputActualParameterAST new
       !qualifierLocation
+      !selector
       !e
       !endOfExpressionLocation
     ] ;
@@ -124,6 +133,7 @@ rule <actual_parameter_list>
     end repeat ;
     outActualParameterList += ![@outputInputActualParameterAST new 
       !qualifierLocation
+      !selector
       !outputInputActualParameterName
       !structAttributeList
     ] ;
@@ -133,6 +143,7 @@ rule <actual_parameter_list>
     $identifier$ ?const inputActualParameterName ;
     outActualParameterList += ![@inputActualExistingVariableParameterAST new
       !qualifierLocation
+      !selector
       !inputActualParameterName
     ] ;
   while # New var parameter
@@ -143,6 +154,7 @@ rule <actual_parameter_list>
     $identifier$ ?const inputActualParameterName ;
     outActualParameterList += ![@inputActualNewVariableParameterAST new
       !qualifierLocation
+      !selector
       !declarationTypeName
       !inputActualParameterName
     ] ;
@@ -159,6 +171,7 @@ rule <actual_parameter_list>
     $identifier$ ?const inputActualParameterName ;
     outActualParameterList += ![@inputActualNewVariableParameterAST new
       !qualifierLocation
+      !selector
       !declarationTypeName
       !inputActualParameterName
     ] ;
@@ -175,6 +188,7 @@ rule <actual_parameter_list>
     $identifier$ ?@lstring inputActualParameterName ;
     outActualParameterList += ![@inputActualNewConstantParameterAST new
       !qualifierLocation
+      !selector
       !declarationTypeName
       !inputActualParameterName
     ] ;
@@ -191,6 +205,7 @@ rule <actual_parameter_list>
     $identifier$ ?@lstring inputActualParameterName ;
     outActualParameterList += ![@inputActualNewConstantParameterAST new
       !qualifierLocation
+      !selector
       !declarationTypeName
       !inputActualParameterName
     ] ;

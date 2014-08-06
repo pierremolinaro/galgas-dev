@@ -51,7 +51,7 @@ routine enterInstanceMethodWithInputArgument
   @unifiedTypeMapProxy argumentTypeIndex ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgumentTypeName ?argumentTypeIndex] ;
   @formalParameterSignature argList [emptyList] ;
-  argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !inInputArgumentName ;
+  argList += !["" nowhere] !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !inInputArgumentName ;
   [!?ioInstanceMethodMap insertKey
     !inInstanceMethodName
     ![@methodKind definedAsMember]
@@ -76,7 +76,7 @@ routine enterInstanceMethodWithOutputArgument
   @unifiedTypeMapProxy argumentTypeIndex ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inOutputArgumentTypeName ?argumentTypeIndex] ;
   @formalParameterSignature argList [emptyList] ;
-  argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentOut] !inOutputArgumentName ;
+  argList += !["" nowhere] !argumentTypeIndex ![@formalArgumentPassingModeAST argumentOut] !inOutputArgumentName ;
   [!?ioInstanceMethodMap insertKey
     !inInstanceMethodName
     ![@methodKind definedAsMember]
@@ -100,9 +100,9 @@ override method @dataPredefinedTypeAST getInstanceMethodMap
   @formalParameterSignature argList [emptyList] ;
   @unifiedTypeMapProxy t ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?t] ;
-  argList += !t ![@formalArgumentPassingModeAST argumentConstantIn] !"inFilePath" ;
+  argList += !["" nowhere] !t ![@formalArgumentPassingModeAST argumentConstantIn] !"inFilePath" ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !"bool" ?t] ;
-  argList += !t ![@formalArgumentPassingModeAST argumentOut] !"outFileModified" ;
+  argList += !["" nowhere] !t ![@formalArgumentPassingModeAST argumentOut] !"outFileModified" ;
   [!?outInstanceMethodMap insertKey
     ![@lstring new !"writeToFileWhenDifferentContents" !here]
     ![@methodKind definedAsMember]
@@ -129,9 +129,9 @@ override method @stringPredefinedTypeAST getInstanceMethodMap
   @formalParameterSignature argList [emptyList] ;
   @unifiedTypeMapProxy t ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?t] ;
-  argList += !t ![@formalArgumentPassingModeAST argumentConstantIn] !"inFilePath" ;
+  argList += !["" nowhere] !t ![@formalArgumentPassingModeAST argumentConstantIn] !"inFilePath" ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !"bool" ?t] ;
-  argList += !t ![@formalArgumentPassingModeAST argumentOut] !"outFileModified" ;
+  argList += !["" nowhere] !t ![@formalArgumentPassingModeAST argumentOut] !"outFileModified" ;
   [!?outInstanceMethodMap insertKey
     ![@lstring new !"writeToFileWhenDifferentContents" !here]
     ![@methodKind definedAsMember]

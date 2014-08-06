@@ -47,6 +47,9 @@ routine checkMethodSignatures
         . [ref_mFormalArgumentPassingMode formalArgumentMessage] ;
         error inReferenceLocation:"overriden method is declared here" ;
       end if ;
+      if mFormalSelector->string != ref_mFormalSelector->string then
+        error mFormalSelector : "the selector should be '" . [ref_mFormalArgumentPassingMode string] . ref_mFormalSelector . if ref_mFormalSelector->string != "" then ":" else "" end + "'" ;
+      end if ;
       if [mFormalArgumentType key] != [ref_mFormalArgumentType key] then
         error mFormalArgumentName : "the '" . mFormalArgumentName . "' formal parameter has the '@"
         . [mFormalArgumentType key] . "' type, but overriden method declares with the '@" 
@@ -1011,7 +1014,7 @@ routine buildLocalVariableMapAndSignature
         [!?ioVariableMap insertConstantInputFormalArgument !mFormalArgumentName !type !formalArgumentCppName !formalArgumentCppName] ;
       end if ;
     end switch ;
-    outRoutineSignature += !mFormalArgumentPassingMode !type !mFormalArgumentName !formalArgumentCppName ;
+    outRoutineSignature += !mFormalSelector !mFormalArgumentPassingMode !type !mFormalArgumentName !formalArgumentCppName ;
   end foreach ;
 end routine ;
 
@@ -1116,6 +1119,7 @@ override method @externRoutineDeclarationAST semanticAnalysis
   @formalParameterListForGeneration formalArgumentList [emptyList] ;
   foreach mFormalArgumentList do
     formalArgumentList +=
+      !mFormalSelector
       !mFormalArgumentPassingMode
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName]
       !mFormalArgumentName
@@ -1549,6 +1553,7 @@ override method @abstractCategoryMethodAST semanticAnalysis
   @formalParameterListForGeneration formalParameterListForGeneration [emptyList] ;
   foreach mAbstractCategoryMethodFormalParameterList do
     formalParameterListForGeneration +=
+      !mFormalSelector
       !mFormalArgumentPassingMode
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName]
       !mFormalArgumentName
@@ -1789,6 +1794,7 @@ override method @abstractCategoryModifierAST semanticAnalysis
   @formalParameterListForGeneration formalParameterListForGeneration [emptyList] ;
   foreach mAbstractCategoryModifierFormalParameterList do
     formalParameterListForGeneration +=
+      !mFormalSelector
       !mFormalArgumentPassingMode
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName]
       !mFormalArgumentName

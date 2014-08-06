@@ -108,13 +108,13 @@ routine compileProgramRules
         error mIndexingGrammar : "the '" . mIndexingGrammar . "' grammar does not enable indexing" ;
       end if ;
     end if ;
-    @formalParameterListAST argumentList [emptyList] ;
-    argumentList +=
+    const @formalParameterListAST argumentList := {
+      !["" nowhere]
       ![@formalArgumentPassingModeAST argumentConstantIn]
       ![@lstring new !"lstring" !here]
       !mSourceFileVariableName
       !mSourceFileVariableNameIsUnused
-    ;
+    } ;
     @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
     @formalParameterListForGeneration routineSignature ;
     analyzeRoutineBody

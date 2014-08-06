@@ -1979,6 +1979,7 @@ override method @categoryMethodForGeneration appendSpecificImplementation
   if mImplementedAsFunction then
     @formalParameterListForGeneration categoryMethodFormalParameterList := mCategoryMethodFormalParameterList ;
     [!?categoryMethodFormalParameterList insertAtIndex
+      !["" nowhere]
       ![@formalArgumentPassingModeAST argumentConstantIn]
       !mReceiverType
       ![@lstring new !"self" !here]
@@ -2142,6 +2143,7 @@ override method @categoryModifierForGeneration appendSpecificImplementation
   if mImplementedAsFunction then
     @formalParameterListForGeneration categoryModifierFormalParameterList := mCategoryModifierFormalParameterList ;
     [!?categoryModifierFormalParameterList insertAtIndex
+      !["" nowhere]
       ![@formalArgumentPassingModeAST argumentInOut]
       !mReceiverType
       ![@lstring new !"self" !here]

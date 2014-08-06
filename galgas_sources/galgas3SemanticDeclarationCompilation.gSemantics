@@ -108,6 +108,7 @@ routine buildGalgas3GrammarComponentMapForSemanticAnalysis
       @formalParameterSignature formalArgumentList [emptyList] ;
       foreach mFormalArgumentList do
         formalArgumentList +=
+          !mFormalSelector
           ![@unifiedTypeMapProxy searchKey !ioSemanticContext->mTypeMap !mFormalArgumentTypeName]
           !mFormalArgumentPassingMode
           !mFormalArgumentName->string

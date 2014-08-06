@@ -315,6 +315,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 list @formalParameterListAST {
+  @lstring mFormalSelector ;
   @formalArgumentPassingModeAST mFormalArgumentPassingMode feature nogetter ;
   @lstring mFormalArgumentTypeName feature nogetter ;
   @lstring mFormalArgumentName feature nogetter ;
@@ -348,6 +349,7 @@ abstract class @actualParameterAST {
 #---------------------------------------------------------------------------*
 
 class @outputActualParameterAST extends @actualParameterAST {
+  @lstring mActualSelector ;
   @semanticExpressionAST mOutputActualParameterExpression ;
   @location mEndOfExpressionLocation ;
 }
@@ -355,6 +357,7 @@ class @outputActualParameterAST extends @actualParameterAST {
 #---------------------------------------------------------------------------*
 
 class @outputInputActualParameterAST extends @actualParameterAST {
+  @lstring mActualSelector ;
   @lstring mOutputInputActualParameterName ;
   @lstringlist mStructAttributeList ;
 }
@@ -362,12 +365,14 @@ class @outputInputActualParameterAST extends @actualParameterAST {
 #---------------------------------------------------------------------------*
 
 class @inputActualExistingVariableParameterAST extends @actualParameterAST {
+  @lstring mActualSelector ;
   @lstring mInputActualParameterName ;
 }
 
 #---------------------------------------------------------------------------*
 
 class @inputActualNewVariableParameterAST extends @actualParameterAST {
+  @lstring mActualSelector ;
   @lstring mInputActualTypeName ;
   @lstring mInputActualParameterName ;
 }
@@ -375,6 +380,7 @@ class @inputActualNewVariableParameterAST extends @actualParameterAST {
 #---------------------------------------------------------------------------*
 
 class @inputActualNewConstantParameterAST extends @actualParameterAST {
+  @lstring mActualSelector ;
   @lstring mInputActualTypeName ;
   @lstring mInputActualParameterName ;
 }

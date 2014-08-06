@@ -43,7 +43,7 @@ abstract class @Xcode_productFileReference extends @Xcode_PBXFileReference_abstr
 
 #---------------------------------------------------------------------------*
 
-abstract method @Xcode_productFileReference productExtension !@string outProductExtension ;
+abstract method @Xcode_productFileReference productExtension !extension:@string outProductExtension ;
 
 #---------------------------------------------------------------------------*
 
@@ -52,7 +52,7 @@ class @Xcode_PBXFileReference_CompiledMachOExecutable extends @Xcode_productFile
 
 #---------------------------------------------------------------------------*
 
-override method @Xcode_PBXFileReference_CompiledMachOExecutable productExtension !@string outProductExtension :
+override method @Xcode_PBXFileReference_CompiledMachOExecutable productExtension !extension:@string outProductExtension :
   outProductExtension := "tool" ;
 end method ;
 
@@ -71,7 +71,7 @@ class @Xcode_PBXFileReference_Application extends @Xcode_productFileReference {
 
 #---------------------------------------------------------------------------*
 
-override method @Xcode_PBXFileReference_Application productExtension !@string outProductExtension :
+override method @Xcode_PBXFileReference_Application productExtension !extension:@string outProductExtension :
   outProductExtension := "application" ;
 end method ;
 
@@ -1218,7 +1218,7 @@ routine buildXcodeProjectString
     foreach mBuildPhaseKeyList do
       outString .= "\t\t\t\t" . mValue . " ,\n" ;
     end foreach ;
-    @string productExtension ; [mProduct productExtension ?productExtension] ; 
+    @string productExtension ; [mProduct productExtension ?extension:productExtension] ; 
     outString .= "\t\t\t);\n"
     . "\t\t\tbuildRules = (\n"
     . "\t\t\t);\n"

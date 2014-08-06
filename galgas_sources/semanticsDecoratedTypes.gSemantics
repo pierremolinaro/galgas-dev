@@ -395,6 +395,7 @@ class @lexiqueIntrospectionForGeneration extends @semanticExpressionForGeneratio
 #---------------------------------------------------------------------------*
 
 list @formalParameterListForGeneration {
+  @lstring mFormalSelector ;
   @formalArgumentPassingModeAST mFormalArgumentPassingMode ;
   @unifiedTypeMapProxy mFormalArgumentType ;
   @lstring mFormalArgumentName ;
