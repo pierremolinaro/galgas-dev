@@ -124,6 +124,7 @@ rule <label_formal_parameter>
   end select ;
   $identifier$ ?outArgumentName ;
   ioStartSymbolLabelFormalParameterList +=
+    !selector
     ![@formalArgumentPassingModeAST argumentIn]
     !mTypeName
     !outArgumentName
@@ -146,6 +147,7 @@ rule <label_formal_parameter>
   end select ;
   $identifier$ ?outArgumentName ;
   ioStartSymbolLabelFormalParameterList +=
+    !selector
     ![@formalArgumentPassingModeAST argumentConstantIn]
     !mTypeName
     !outArgumentName
@@ -167,6 +169,7 @@ rule <label_formal_parameter>
   end select ;
   $identifier$ ?outArgumentName ;
   ioStartSymbolLabelFormalParameterList +=
+    !selector
     ![@formalArgumentPassingModeAST argumentInOut]
     !mTypeName
     !outArgumentName
@@ -184,6 +187,7 @@ rule <label_formal_parameter>
   $type_name$ ?@lstring mTypeName ;
   $identifier$ ?outArgumentName ;
   ioStartSymbolLabelFormalParameterList +=
+    !selector
     ![@formalArgumentPassingModeAST argumentOut]
     !mTypeName
     !outArgumentName

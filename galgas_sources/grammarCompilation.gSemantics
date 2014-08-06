@@ -159,18 +159,18 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 abstract method @syntaxInstructionAST transformInstruction
-  ?!@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
-  ??@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
-  ?!@uint ioAddedNonTerminalIndex
+  ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
+  ??nonTerminalSymbolMap:@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
+  ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex
   ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList
 ;
 
 #---------------------------------------------------------------------------*
 
 override method @semanticInstructionAST transformInstruction
-  ?!@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap
-  ??@nonTerminalSymbolMapForGrammarAnalysis unused inNonTerminalSymbolMap
-  ?!@uint unused ioAddedNonTerminalIndex
+  ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap
+  ??nonTerminalSymbolMap:@nonTerminalSymbolMapForGrammarAnalysis unused inNonTerminalSymbolMap
+  ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex
   ?!@syntaxInstructionListForGrammarAnalysis unused ioSyntaxInstructionList
 :
 end method ;
@@ -179,16 +179,16 @@ end method ;
 
 routine transformInstructionList
   ??@syntaxInstructionList inInstructionList
-  ?!@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
-  ??@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
-  ?!@uint ioAddedNonTerminalIndex
+  ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
+  ??nonTerminalSymbolMap:@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
+  ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex
   ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList
 :
   foreach inInstructionList do
     [mInstruction transformInstruction
-      !?ioActuallyUsedTerminalSymbolMap
-      !inNonTerminalSymbolMap
-      !?ioAddedNonTerminalIndex
+      !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap
+      !nonTerminalSymbolMap:inNonTerminalSymbolMap
+      !?addedTerminalIndex:ioAddedNonTerminalIndex
       !?ioSyntaxInstructionList
    ] ;
   end foreach ;
@@ -197,9 +197,9 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 override method @syntaxSendInstruction transformInstruction
-  ?!@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap
-  ??@nonTerminalSymbolMapForGrammarAnalysis unused inNonTerminalSymbolMap
-  ?!@uint unused ioAddedNonTerminalIndex
+  ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap
+  ??nonTerminalSymbolMap:@nonTerminalSymbolMapForGrammarAnalysis unused inNonTerminalSymbolMap
+  ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex
   ?!@syntaxInstructionListForGrammarAnalysis unused ioSyntaxInstructionList
 :
 end method ;
@@ -207,9 +207,9 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @terminalCheckInstruction transformInstruction
-  ?!@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
-  ??@nonTerminalSymbolMapForGrammarAnalysis unused inNonTerminalSymbolMap
-  ?!@uint unused ioAddedNonTerminalIndex
+  ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
+  ??nonTerminalSymbolMap:@nonTerminalSymbolMapForGrammarAnalysis unused inNonTerminalSymbolMap
+  ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex
   ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList
 :
   @uint terminalSymbolIndex ;
@@ -229,9 +229,9 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @nonterminalCallInstruction transformInstruction
-  ?!@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap
-  ??@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
-  ?!@uint unused ioAddedNonTerminalIndex
+  ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap
+  ??nonTerminalSymbolMap:@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
+  ?!addedTerminalIndex:@uint unused ioAddedNonTerminalIndex
   ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList
 :
   @uint nonTerminalSymbolIndex ;
@@ -246,9 +246,9 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @repeatInstruction transformInstruction
-  ?!@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
-  ??@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
-  ?!@uint ioAddedNonTerminalIndex
+  ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
+  ??nonTerminalSymbolMap:@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
+  ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex
   ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList
 :
   const @uint addedNonTerminalIndex := ioAddedNonTerminalIndex ;
@@ -257,9 +257,9 @@ override method @repeatInstruction transformInstruction
   @syntaxInstructionListForGrammarAnalysis repeatedInstructionList [emptyList] ;
   transformInstructionList
     !mRepeatedInstructionList
-    !?ioActuallyUsedTerminalSymbolMap
-    !inNonTerminalSymbolMap
-    !?ioAddedNonTerminalIndex
+    !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap
+    !nonTerminalSymbolMap:inNonTerminalSymbolMap
+    !?addedTerminalIndex:ioAddedNonTerminalIndex
     !?repeatedInstructionList
   ;
   @branchListForGrammarAnalysis repeatBranchList [listWithValue !repeatedInstructionList] ;
@@ -268,9 +268,9 @@ override method @repeatInstruction transformInstruction
     @syntaxInstructionListForGrammarAnalysis syntaxInstructionList [emptyList] ;
     transformInstructionList
       !mSyntaxInstructionList
-      !?ioActuallyUsedTerminalSymbolMap
-      !inNonTerminalSymbolMap
-      !?ioAddedNonTerminalIndex
+      !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap
+      !nonTerminalSymbolMap:inNonTerminalSymbolMap
+      !?addedTerminalIndex:ioAddedNonTerminalIndex
       !?syntaxInstructionList
     ;
     repeatBranchList += !syntaxInstructionList ;
@@ -286,9 +286,9 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @selectInstruction transformInstruction
-  ?!@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
-  ??@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
-  ?!@uint ioAddedNonTerminalIndex
+  ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
+  ??nonTerminalSymbolMap:@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
+  ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex
   ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList
 :
   const @uint addedNonTerminalIndex := ioAddedNonTerminalIndex ;
@@ -299,9 +299,9 @@ override method @selectInstruction transformInstruction
     @syntaxInstructionListForGrammarAnalysis syntaxInstructionList [emptyList] ;
     transformInstructionList
       !mSyntaxInstructionList
-      !?ioActuallyUsedTerminalSymbolMap
-      !inNonTerminalSymbolMap
-      !?ioAddedNonTerminalIndex
+      !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap
+      !nonTerminalSymbolMap:inNonTerminalSymbolMap
+      !?addedTerminalIndex:ioAddedNonTerminalIndex
       !?syntaxInstructionList
     ;
     selectBranchList += !syntaxInstructionList ;
@@ -317,9 +317,9 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @parseRewindInstruction transformInstruction
-  ?!@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
-  ??@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
-  ?!@uint ioAddedNonTerminalIndex
+  ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
+  ??nonTerminalSymbolMap:@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
+  ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex
   ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList
 :
   @syntaxInstructionList syntaxInstructionList ;
@@ -327,9 +327,9 @@ override method @parseRewindInstruction transformInstruction
 
   transformInstructionList
     !syntaxInstructionList
-    !?ioActuallyUsedTerminalSymbolMap
-    !inNonTerminalSymbolMap
-    !?ioAddedNonTerminalIndex
+    !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap
+    !nonTerminalSymbolMap:inNonTerminalSymbolMap
+    !?addedTerminalIndex:ioAddedNonTerminalIndex
     !?ioSyntaxInstructionList
   ;
 end method ;
@@ -337,16 +337,16 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @parseWhenInstruction transformInstruction
-  ?!@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
-  ??@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
-  ?!@uint ioAddedNonTerminalIndex
+  ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
+  ??nonTerminalSymbolMap:@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
+  ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex
   ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList
 :
   transformInstructionList
     !mElseInstructionList
-    !?ioActuallyUsedTerminalSymbolMap
-    !inNonTerminalSymbolMap
-    !?ioAddedNonTerminalIndex
+    !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap
+    !nonTerminalSymbolMap:inNonTerminalSymbolMap
+    !?addedTerminalIndex:ioAddedNonTerminalIndex
     !?ioSyntaxInstructionList
   ;
 end method ;
@@ -354,16 +354,16 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @parseLoopInstruction transformInstruction
-  ?!@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
-  ??@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
-  ?!@uint ioAddedNonTerminalIndex
+  ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
+  ??nonTerminalSymbolMap:@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
+  ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex
   ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList
 :
   transformInstructionList
     !mDoInstructionList
-    !?ioActuallyUsedTerminalSymbolMap
-    !inNonTerminalSymbolMap
-    !?ioAddedNonTerminalIndex
+    !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap
+    !nonTerminalSymbolMap:inNonTerminalSymbolMap
+    !?addedTerminalIndex:ioAddedNonTerminalIndex
     !?ioSyntaxInstructionList
   ;
 end method ;
@@ -389,9 +389,9 @@ routine buildRuleList
     @syntaxInstructionListForGrammarAnalysis instructionList [emptyList] ;
     transformInstructionList
       !parsedSyntaxInstructionList
-      !?ioActuallyUsedTerminalSymbolMap
-      !inNonTerminalMapForGrammarAnalysis
-      !?ioAddedNonTerminalCount
+      !?usedTerminalMap:ioActuallyUsedTerminalSymbolMap
+      !nonTerminalSymbolMap:inNonTerminalMapForGrammarAnalysis
+      !?addedTerminalIndex:ioAddedNonTerminalCount
       !?instructionList
     ; 
   #---

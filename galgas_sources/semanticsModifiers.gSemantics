@@ -33,7 +33,7 @@ routine enterModifierWithInputArgument
   @unifiedTypeMapProxy argumentTypeIndex ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgumentTypeName ?argumentTypeIndex] ;
   @formalParameterSignature argList [emptyList] ;
-  argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !inInputArgumentName ;
+  argList += !["" nowhere] !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !inInputArgumentName ;
   [!?ioModifierMap insertOrReplace
     ![@lstring new !inModifierName !here]
     ![@methodKind definedAsMember]
@@ -57,7 +57,7 @@ routine enterModifierWithOutputArgument
   @unifiedTypeMapProxy argumentTypeIndex ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inOutputArgumentTypeName ?argumentTypeIndex] ;
   @formalParameterSignature argList [emptyList] ;
-  argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentOut] !inOutputArgumentName ;
+  argList += !["" nowhere] !argumentTypeIndex ![@formalArgumentPassingModeAST argumentOut] !inOutputArgumentName ;
   [!?ioModifierMap insertOrReplace
     ![@lstring new !inModifierName !here]
     ![@methodKind definedAsMember]
@@ -83,9 +83,9 @@ routine enterModifierWith2InputArguments
   @formalParameterSignature argList [emptyList] ;
   @unifiedTypeMapProxy argumentTypeIndex ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgument1TypeName ?argumentTypeIndex] ;
-  argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !inInputArgument1Name ;
+  argList += !["" nowhere] !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !inInputArgument1Name ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgument2TypeName ?argumentTypeIndex] ;
-  argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !inInputArgument2Name ;
+  argList += !["" nowhere] !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !inInputArgument2Name ;
   [!?ioModifierMap insertOrReplace
     ![@lstring new !inModifierName !here]
     ![@methodKind definedAsMember]

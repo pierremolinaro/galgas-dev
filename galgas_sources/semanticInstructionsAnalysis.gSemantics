@@ -485,6 +485,7 @@ end method ;
 
 abstract method @actualParameterAST checkAgainstFormalArgument
   ??@analysisContext inAnalysisContext
+  ??@lstring inFormalSelector
   ??@unifiedTypeMapProxy inFormalArgumentType
   ??@formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@variableMap ioVariableMap
@@ -509,6 +510,7 @@ end reader ;
 
 override method @outputActualParameterAST checkAgainstFormalArgument
   ??@analysisContext inAnalysisContext
+  ??@lstring inFormalSelector
   ??@unifiedTypeMapProxy inFormalArgumentType
   ??@formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@variableMap ioVariableMap
@@ -523,12 +525,14 @@ override method @outputActualParameterAST checkAgainstFormalArgument
     . "' passing mode: this parameter should be passed with '" . [inFormalArgumentPassingMode correspondingEffectiveParameterString] . "'"
     ;
   else
-    @semanticExpressionForGeneration expression ;
+    if inFormalSelector->string != mActualSelector->string then
+       error mActualSelector : "the selector should be '!" + inFormalSelector . if inFormalSelector->string != "" then ":" else "" end + "'" ;
+     end if ;
     [mOutputActualParameterExpression analyzeSemanticExpression
       !inFormalArgumentType
       !inAnalysisContext
       !?ioVariableMap
-      ?expression
+      ??@semanticExpressionForGeneration expression
     ] ;
   #--- Check effective expression type against formal argument type
     checkAssignmentTypes !inFormalArgumentType ![expression mType] !mEndOfExpressionLocation ;
@@ -544,6 +548,7 @@ end method ;
 
 override method @outputInputActualParameterAST checkAgainstFormalArgument
   ??@analysisContext unused inAnalysisContext
+  ??@lstring inFormalSelector
   ??@unifiedTypeMapProxy inFormalArgumentType
   ??@formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@variableMap ioVariableMap
@@ -556,6 +561,8 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
     :"the corresponding formal argument has the '" . [inFormalArgumentPassingMode string]
     . "' passing mode: this parameter should be passed with '" . [inFormalArgumentPassingMode correspondingEffectiveParameterString] . "'"
     ;
+  elsif inFormalSelector->string != mActualSelector->string then
+    error mActualSelector : "the selector should be '!?" + inFormalSelector . if inFormalSelector->string != "" then ":" else "" end + "'" ;
   end if ;
 #--- Analyze input/output variable
   @string variableCppName ;
@@ -593,6 +600,7 @@ end method ;
 
 override method @inputActualExistingVariableParameterAST checkAgainstFormalArgument
   ??@analysisContext unused inAnalysisContext
+  ??@lstring inFormalSelector
   ??@unifiedTypeMapProxy inFormalArgumentType
   ??@formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@variableMap ioVariableMap
@@ -605,6 +613,8 @@ override method @inputActualExistingVariableParameterAST checkAgainstFormalArgum
     :"the corresponding formal argument has the '" . [inFormalArgumentPassingMode string]
     . "' passing mode: this parameter should be passed with '" . [inFormalArgumentPassingMode correspondingEffectiveParameterString] . "'"
     ;
+  elsif inFormalSelector->string != mActualSelector->string then
+     error mActualSelector : "the selector should be '?" + inFormalSelector . if inFormalSelector->string != "" then ":" else "" end + "'" ;
   end if ;
   [!?ioVariableMap searchForWriteAccess
     !mInputActualParameterName
@@ -637,6 +647,7 @@ end method ;
 
 override method @inputActualNewVariableParameterAST checkAgainstFormalArgument
   ??@analysisContext inAnalysisContext
+  ??@lstring inFormalSelector
   ??@unifiedTypeMapProxy inFormalArgumentType
   ??@formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@variableMap ioVariableMap
@@ -650,6 +661,8 @@ override method @inputActualNewVariableParameterAST checkAgainstFormalArgument
     :"the corresponding formal argument has the '" . [inFormalArgumentPassingMode string]
     . "' passing mode: this parameter should be passed with '" . [inFormalArgumentPassingMode correspondingEffectiveParameterString] . "'"
     ;
+  elsif inFormalSelector->string != mActualSelector->string then
+     error mActualSelector : "the selector should be '?" + inFormalSelector . if inFormalSelector->string != "" then ":" else "" end + "'" ;
   end if ;
 #--- Analyze or infer type
 
@@ -690,6 +703,7 @@ end method ;
 
 override method @inputActualNewConstantParameterAST checkAgainstFormalArgument
   ??@analysisContext inAnalysisContext
+  ??@lstring inFormalSelector
   ??@unifiedTypeMapProxy inFormalArgumentType
   ??@formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@variableMap ioVariableMap
@@ -703,6 +717,8 @@ override method @inputActualNewConstantParameterAST checkAgainstFormalArgument
     :"the corresponding formal argument has the '" . [inFormalArgumentPassingMode string]
     . "' passing mode: this parameter should be passed with '" . [inFormalArgumentPassingMode correspondingEffectiveParameterString] . "'"
     ;
+  elsif inFormalSelector->string != mActualSelector->string then
+     error mActualSelector : "the selector should be '?" + inFormalSelector . if inFormalSelector->string != "" then ":" else "" end + "'" ;
   end if ;
 #--- Analyze or infer type
 
@@ -743,6 +759,7 @@ end method ;
 
 override method @inputJokerActualParameterAST checkAgainstFormalArgument
   ??@analysisContext unused inAnalysisContext
+  ??@lstring unused inFormalSelector
   ??@unifiedTypeMapProxy inFormalArgumentType
   ??@formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@variableMap unused ioVariableMap
@@ -790,6 +807,7 @@ routine analyzeRoutineArguments
     foreach inRoutineSignature, inActualParameterList do
       [mActualParameter checkAgainstFormalArgument
         !inAnalysisContext
+        !mFormalSelector
         !mFormalArgumentType
         !mFormalArgumentPassingMode
         !?ioVariableMap

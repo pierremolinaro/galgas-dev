@@ -103,6 +103,7 @@ map @readerMap {
 #---------------------------------------------------------------------------*
 
 list @formalParameterSignature {
+  @lstring mFormalSelector ;
   @unifiedTypeMapProxy mFormalArgumentType ;
   @formalArgumentPassingModeAST mFormalArgumentPassingMode ;
   @string mFormalArgumentName ;

@@ -32,7 +32,7 @@ routine enterClassMethodWithStringInputArgument
   @unifiedTypeMapProxy argumentTypeIndex ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?argumentTypeIndex] ;
   @formalParameterSignature argList [emptyList] ;
-  argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ! inStringArgumentName ;
+  argList += !["" nowhere] !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ! inStringArgumentName ;
   [!?ioClassMethodMap insertOrReplace
     ![@lstring new !inClassMethodName !here]
     !argList
@@ -54,22 +54,22 @@ override method @stringPredefinedTypeAST getClassMethodMap
   @unifiedTypeMapProxy stringType ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?stringType] ;
   @formalParameterSignature argList [emptyList] ;
-  argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] !"inStartPath" ;
-  argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] !"inFileName" ;
-  argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] !"inContents" ;
+  argList += !["" nowhere] !stringType ![@formalArgumentPassingModeAST argumentConstantIn] !"inStartPath" ;
+  argList += !["" nowhere] !stringType ![@formalArgumentPassingModeAST argumentConstantIn] !"inFileName" ;
+  argList += !["" nowhere] !stringType ![@formalArgumentPassingModeAST argumentConstantIn] !"inContents" ;
   [!?outClassMethodMap insertOrReplace
     ![@lstring new !"generateFile" !here]
     !argList
     !true
   ] ;
   argList := [@formalParameterSignature emptyList] ;
-  argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] !"inStartPath" ;
-  argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] !"inFileName" ;
-  argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] !"inLineCommentPrefix" ;
-  argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] !"inDefaultUserZone1" ;
-  argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] !"inGeneratedZone2" ;
-  argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] !"inDefaultUserZone2" ;
-  argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] !"inGeneratedZone3" ;
+  argList += !["" nowhere] !stringType ![@formalArgumentPassingModeAST argumentConstantIn] !"inStartPath" ;
+  argList += !["" nowhere] !stringType ![@formalArgumentPassingModeAST argumentConstantIn] !"inFileName" ;
+  argList += !["" nowhere] !stringType ![@formalArgumentPassingModeAST argumentConstantIn] !"inLineCommentPrefix" ;
+  argList += !["" nowhere] !stringType ![@formalArgumentPassingModeAST argumentConstantIn] !"inDefaultUserZone1" ;
+  argList += !["" nowhere] !stringType ![@formalArgumentPassingModeAST argumentConstantIn] !"inGeneratedZone2" ;
+  argList += !["" nowhere] !stringType ![@formalArgumentPassingModeAST argumentConstantIn] !"inDefaultUserZone2" ;
+  argList += !["" nowhere] !stringType ![@formalArgumentPassingModeAST argumentConstantIn] !"inGeneratedZone3" ;
   [!?outClassMethodMap insertOrReplace
     ![@lstring new !"generateFileWithPattern" !here]
     !argList
