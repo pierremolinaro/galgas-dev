@@ -566,8 +566,10 @@ rule <template_instruction>
   ?!@templateInstructionListAST ioResultingInstructionList
 :
   $!$ ?const selector ;
-  @templateExpressionAST expression ;
-  <expression> ?expression ;
+  if selector->string != "" then
+    error selector : "the selector should be '!'" ;
+  end if ;
+  <expression> ??@templateExpressionAST expression ;
   ioResultingInstructionList += ![@templateInstructionExpressionAST new !expression !here] ;
 end rule ;
 
