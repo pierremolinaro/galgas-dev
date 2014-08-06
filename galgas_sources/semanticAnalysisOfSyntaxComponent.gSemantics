@@ -731,6 +731,10 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
       !?terminalCheckAssignementList
       !?ioVariableMap
     ] ;
+    if mLexicalFormalSelector->string != mActualSelector->string then
+      error mActualSelector : "the actual selector should be '?" . mLexicalFormalSelector . if mLexicalFormalSelector->string != "" then ":" else "" end + "'" ;
+      warning mLexicalFormalSelector : "the formal selector is declared here" ;
+    end if ;
   end foreach ;
 #---
   foreach mIndexingKeyList do
