@@ -549,7 +549,7 @@ rule <output_expression_list>
   outExpressionList := [@templateExpressionListAST emptyList] ;
   repeat
   while
-    $!$ ;
+    $!$ ?const selector ;
     @templateExpressionAST expression ;
     <expression> ?expression;
     outExpressionList += !expression !here ;
@@ -565,7 +565,7 @@ end rule ;
 rule <template_instruction>
   ?!@templateInstructionListAST ioResultingInstructionList
 :
-  $!$ ;
+  $!$ ?const selector ;
   @templateExpressionAST expression ;
   <expression> ?expression ;
   ioResultingInstructionList += ![@templateInstructionExpressionAST new !expression !here] ;

@@ -318,14 +318,20 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList :
   repeat
   while
     $!$ ?const selector ;
+    if selector->string != "" then
+      error selector : "the selector should be '!'" ;
+    end if ;
     @location passingModeLocation := here ;
     @lexicalRoutineOrFunctionFormalInputArgumentAST arg ;
     <lexical_output_effective_argument> ?arg ;
     actualArgumentList += ![@lexicalFormalInputArgumentAST new !passingModeLocation !arg] ;
   while
     $!?$ ?const selector ;
+    if selector->string != "" then
+      error selector : "the selector should be '!'" ;
+    end if ;
     @location passingModeLocation := here ;
-    $identifier$ ?@lstring attributeName ;
+    $identifier$ ?const attributeName ;
     @lexicalAttributeInputOutputArgumentAST arg [new !passingModeLocation !attributeName] ;
     actualArgumentList += !arg ;
   end repeat ;
@@ -401,6 +407,9 @@ rule <function_call_or_attribute> ??@lstring inIdf !@lexicalRoutineOrFunctionFor
   repeat
   while
     $!$ ?const selector ;
+    if selector->string != "" then
+      error selector : "the selector should be '!'" ;
+    end if ;
     @lexicalRoutineOrFunctionFormalInputArgumentAST arg ;
     <lexical_output_effective_argument> ?arg ;
     functionActualArgumentList += !arg ;
@@ -594,12 +603,12 @@ end rule ;
 
 rule <terminal_declaration> ?!@terminalDeclarationListAST ioTerminalDeclarationList :
   $terminal$ ??@lstring name indexing terminalDeclaration ;
-  @lstringlist sentAttributeList [emptyList] ;
+  @sentLexicalAttributeListAST sentAttributeList [emptyList] ;
   repeat
   while
     $!$ ?const selector ;
     $identifier$ ??@lstring sentAttribute ;
-    sentAttributeList += ! sentAttribute ;
+    sentAttributeList += !selector !sentAttribute ;
   end repeat ;
   $error$ ;
   $message$ ;

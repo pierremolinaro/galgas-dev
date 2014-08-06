@@ -88,7 +88,10 @@ rule <program_component_start_symbol> !@programComponentAST outProgramComponentR
       $identifier$ ? indexingGrammar indexing grammarComponentReference ;
     end select ;
   #--- Source file
-    $??$ :> ?sep ?* ;
+    $??$ ?const selector :> ?sep ?* ;
+    if selector->string != "" then
+      error selector : "The selector should be '??'" ;
+    end if ;
     send sep . "?sourceFilePath:" ;
     $type_name$ ? @lstring typeName ;
     @bool isUnused ;

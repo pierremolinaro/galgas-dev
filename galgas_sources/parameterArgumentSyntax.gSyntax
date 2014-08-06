@@ -40,8 +40,8 @@ rule <formal_parameter_list> !@formalParameterListAST outFormalParameterList :
       $?$ ?const selector ;
       mFormalParameterPassingMode := [@formalArgumentPassingModeAST argumentIn] ;
     or
-      $??$ :> ??@string sep ?* ;
-      send sep . "?let " ;
+      $??$ ?const selector :> ??@string sep ?* ;
+      send sep + "?" + if selector->string != "" then selector->string + ":" else "" end + "let " ;
       mFormalParameterPassingMode := [@formalArgumentPassingModeAST argumentConstantIn] ;
     or
       $?!$ ?const selector ;
@@ -163,8 +163,8 @@ rule <actual_parameter_list>
       !inputActualParameterName
     ] ;
   while # New constant parameter
-    $??$ :> ??@string sep ?* ;
-    send sep . "?let " ;
+    $??$ ?const selector :> ??@string sep ?* ;
+    send sep + "?" + if selector->string != "" then selector->string + ":" else "" end + "let " ;
     const @location qualifierLocation := here ;
     @lstring declarationTypeName ;
     select
@@ -212,8 +212,8 @@ rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputP
       $?$ ?const selector ;
       isConstant := false ;
     or
-      $??$ :> ??@string sep ?* ;
-      send sep . "?let " ;
+      $??$ ?const selector :> ??@string sep ?* ;
+      send sep + "?" + if selector->string != "" then selector->string + ":" else "" end + "let " ;
       isConstant := true ;
     end select ;
     $type_name$ ?@lstring mFormalParameterTypeName ;

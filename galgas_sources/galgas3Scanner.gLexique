@@ -87,6 +87,7 @@ indexing indexingNameReference : "Indexing Name Reference" ;
 
 style keywordsStyle -> "Keywords" ;
 style delimitersStyle -> "Delimiters" ;
+style selectorStyle -> "Selectors" ;
 style terminalStyle -> "Terminal Symbols" ;
 style nonTerminalStyle -> "Non Terminal Symbols" ;
 style variantStyle -> "Variant Symbols" ;
@@ -550,10 +551,10 @@ list galgasDelimitorsList error message "the '%K' delimitor" style delimitersSty
 rule list galgasDelimitorsList ;
 
 # --------- Special formal arguments, actual parameters --------------------------
-$?$ ! tokenString error message "the '?' or '?selector:' delimitor" style delimitersStyle ;
-$?!$ ! tokenString error message "the '?!' or '?!selector:' delimitor" style delimitersStyle ;
-$!$ ! tokenString error message "the '!' or '!selector:' delimitor" style delimitersStyle ;
-$!?$ ! tokenString error message "the '!?' or '!?selector:' delimitor" style delimitersStyle ;
+$?$ ! tokenString error message "the '?' or '?selector:' delimitor" style selectorStyle ;
+$?!$ ! tokenString error message "the '?!' or '?!selector:' delimitor" style selectorStyle ;
+$!$ ! tokenString error message "the '!' or '!selector:' delimitor" style selectorStyle ;
+$!?$ ! tokenString error message "the '!?' or '!?selector:' delimitor" style selectorStyle ;
 
 rule '?' :
   tag onlyInterrogationMark ;

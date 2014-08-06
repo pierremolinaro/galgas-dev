@@ -2008,8 +2008,8 @@ rule <syntax_directed_translation_result>
     $identifier$ ?@lstring actualParameterName ;
     outResult := [@grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar new !actualParameterTypeName !actualParameterName] ;
   or
-    $??$ :> ??@string sep ?* ;
-    send sep . "?let " ;
+    $??$ ?const selector :> ??@string sep ?* ;
+    send sep + "?" + if selector->string != "" then selector->string + ":" else "" end + "let " ;
     $type_name$ ?@lstring actualParameterTypeName ;
     $identifier$ ?@lstring actualParameterName ;
     outResult := [@grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst new !actualParameterTypeName !actualParameterName] ;
@@ -2123,20 +2123,21 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <actual_input_parameter>
+  !@lstring outSelector
   !@abstractInputParameter outActualInputParameter
 :
   select
-    $?$ ?const selector ;
+    $?$ ?outSelector ;
     $*$ ;
     outActualInputParameter := [@inputParameterAnonymousVariable new] ;
   or
-    $?$ ?const selector ;
+    $?$ ?outSelector ;
     send "var " ;
     $type_name$ ?const actualParameterTypeName ;
     $identifier$ ??@lstring actualParameterName ;
     outActualInputParameter := [@inputParameterDeclaredVariable new !actualParameterTypeName !actualParameterName] ;
   or
-    $?$ ?const selector ;
+    $?$ ?outSelector ;
     $var$ ;
     @lstring actualParameterTypeName ;
     select
@@ -2147,8 +2148,8 @@ rule <actual_input_parameter>
     $identifier$ ??@lstring actualParameterName ;
     outActualInputParameter := [@inputParameterDeclaredVariable new !actualParameterTypeName !actualParameterName] ;
   or
-    $??$ :> ??@string sep ?* ;
-    send sep + "?let " ;
+    $??$ ?outSelector :> ??@string sep ?* ;
+    send sep + "?" + if outSelector->string != "" then outSelector->string + ":" else "" end + "let " ;
     @lstring actualParameterTypeName ;
     select
       actualParameterTypeName := ["" nowhere] ;
@@ -2158,7 +2159,7 @@ rule <actual_input_parameter>
     $identifier$ ?@lstring actualParameterName ;
     outActualInputParameter := [@inputParameterDeclaredConstant new !actualParameterTypeName !actualParameterName] ;
   or
-    $?$ ?const selector ;
+    $?$ ?outSelector ;
     $const$ :> ??@string sep ?* ;
     send sep + "let" ;
     @lstring actualParameterTypeName ;
@@ -2170,7 +2171,7 @@ rule <actual_input_parameter>
     $identifier$ ?@lstring actualParameterName ;
     outActualInputParameter := [@inputParameterDeclaredConstant new !actualParameterTypeName !actualParameterName] ;
   or
-    $?$ ?const selector ;
+    $?$ ?outSelector ;
     $identifier$ ?@lstring actualParameterName ;
     outActualInputParameter := [@inputParameterVariable new !actualParameterName] ;
   end select ;
@@ -2184,8 +2185,8 @@ rule <actual_input_parameter_list>
   outActualInputParameterList := [@actualInputParameterListAST emptyList] ;
   repeat
   while
-    <actual_input_parameter> ??@abstractInputParameter actualInputParameter ;
-    outActualInputParameterList += !actualInputParameter ;
+    <actual_input_parameter> ?let actualSelector ??@abstractInputParameter actualInputParameter ;
+    outActualInputParameterList += !actualSelector !actualInputParameter ;
   end repeat ;
 end rule ;  
 

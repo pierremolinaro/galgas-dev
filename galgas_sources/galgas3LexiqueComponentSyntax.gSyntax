@@ -580,12 +580,12 @@ end rule ;
 
 rule <terminal_declaration> ?!@terminalDeclarationListAST ioTerminalDeclarationList :
   $terminal$ ??@lstring name indexing terminalDeclaration ;
-  @lstringlist sentAttributeList [emptyList] ;
+  @sentLexicalAttributeListAST sentAttributeList [emptyList] ;
   repeat
   while
     $!$ ?const selector ;
     $identifier$ ??@lstring sentAttribute ;
-    sentAttributeList += ! sentAttribute ;
+    sentAttributeList += !selector !sentAttribute ;
   end repeat ;
   $error$ ;
   $message$ ;
