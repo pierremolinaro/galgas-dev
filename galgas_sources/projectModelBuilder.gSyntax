@@ -65,6 +65,8 @@ rule <project_component_start_symbol>
         newName := "makefile-x86linux64-on-macosx" ;
       elsif newName == "makefile-i386-linux-on-macosx" then # makefile_i386_linux_on_macosx
         newName := "makefile-x86linux32-on-macosx" ;
+      elsif newName == "makefile-mingw-on-macosx" then # makefile_mingw_on_macosx
+        newName := "makefile-win32-on-macosx" ;
       end if ;
       send "%" . newName ;
       generateFeatureList += !featureName ;
