@@ -301,7 +301,7 @@ enum @headerKind {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-uniquemap @unifiedTypeMap {
+uniquemap @unifiedTypeMap @unifiedTypeMapProxy {
   @bool mIsPredefined ;
   @bool mIsConcrete ; # false if abstract class
   @unifiedTypeMapProxy mSuperType ;
@@ -332,10 +332,6 @@ uniquemap @unifiedTypeMap {
   insert insertKey error message "the '@%K' type has been already declared in %L" ;
   search searchKey error message "the '@%K' type is not declared" ;
 }
-
-#---------------------------------------------------------------------------*
-
-mapproxy @unifiedTypeMapProxy (@unifiedTypeMap) ;
 
 #---------------------------------------------------------------------------*
 

@@ -155,7 +155,7 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "log",
   "loop",
   "map",
-  "mapproxy",
+#  "mapproxy",
   "match",
   "message",
   "method",

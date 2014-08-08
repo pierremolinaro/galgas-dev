@@ -1023,15 +1023,14 @@ rule <for_instruction_enumerated_object>
 :
   $($ ;
   $)$ ;
-  $in$ ;
-  <expression> ??@semanticExpressionAST enumeratedExpression ;
   @lstring prefix ;
   select
     prefix := ["" nowhere] ;
   or
-    $:$ ;
     $identifier$ ?prefix ;
   end select ;
+  $in$ ;
+  <expression> ??@semanticExpressionAST enumeratedExpression ;
   outEnumeratedObject := [@enumeratedCollectionImplicitVarInExpAST new
     !prefix
     !enumeratedExpression
