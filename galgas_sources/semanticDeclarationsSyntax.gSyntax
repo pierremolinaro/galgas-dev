@@ -218,7 +218,8 @@ rule <semantic_declaration>
 :
   $uniquemap$ ;
 #--- Map type name
-  $type_name$ ? @lstring mMapTypeName indexing uniquemapDefinition ;
+  $type_name$ ??@lstring mMapTypeName indexing uniquemapDefinition ;
+  $type_name$ ??@lstring mapProxyTypeName indexing mapProxyDefinition ;
 #--- Map properties
   ${$ ;
   @attributeInCollectionListAST mAttributeList [emptyList] ;
@@ -361,6 +362,7 @@ rule <semantic_declaration>
     mapOverrideBlockListAST += !overrideBlockName !mapOverrideBlockDescriptor1AST !mapOverrideBlockDescriptor2AST ;
   end repeat ;
   $}$ ;
+#--- Declare map
   ioSemanticDeclarations += ![@uniqueMapDeclarationAST new
     !false # Is not predefined
     !mMapTypeName
@@ -370,26 +372,10 @@ rule <semantic_declaration>
     !mapStateList
     !mapOverrideBlockListAST
   ] ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#    M A P    P R O X Y    D E C L A R A T I O N                            *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-rule <semantic_declaration>
- ?!@semanticDeclarationListAST ioSemanticDeclarations
-:
-  $mapproxy$ ;
-  $type_name$ ?@lstring mMapIndexName indexing mapProxyDefinition ;
-  $($ ;
-  $type_name$ ? @lstring mMapTypeName ;
-  $)$ ;
-  $;$ :> ?* ?* ;
+#--- Declare map proxy
   ioSemanticDeclarations += ![@mapProxyDeclarationAST new
     !false # Is not predefined
-    !mMapIndexName
+    !mapProxyTypeName
     !mMapTypeName
   ] ;
 end rule ;
@@ -516,6 +502,8 @@ end rule ;
 #                                                                           *
 #    S O R T E D    L I S T    D E C L A R A T I O N                        *
 #                                                                           *
+#---------------------------------------------------------------------------*
+#! Sorted list
 #---------------------------------------------------------------------------*
 
 rule <sortedlist_sort_descriptor> ?!@sortedListSortDescriptorListAST ioSortedListSortDescriptorList :

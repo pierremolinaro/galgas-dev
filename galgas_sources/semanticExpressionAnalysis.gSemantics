@@ -26,7 +26,7 @@ semantics semanticExpressionAnalysis :
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-uniquemap @variableMap {
+uniquemap @variableMap @variableMapProxy {
   @unifiedTypeMapProxy mTypeProxy ;
   @string mCppName ;
   @string mNameForCheckingFormalParameterUsing ;

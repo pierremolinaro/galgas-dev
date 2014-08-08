@@ -237,6 +237,7 @@ rule <declaration>
   $uniquemap$ ;
 #--- Map type name
   $type_name$ ? @lstring mMapTypeName indexing uniquemapDefinition ;
+  $type_name$ ??@lstring mapProxyTypeName indexing mapProxyDefinition ;
 #--- Map properties
   ${$ ;
   @attributeInCollectionListAST mAttributeList [emptyList] ;
@@ -378,6 +379,7 @@ rule <declaration>
     mapOverrideBlockListAST += !overrideBlockName !mapOverrideBlockDescriptor1AST !mapOverrideBlockDescriptor2AST ;
   end repeat ;
   $}$ ;
+#--- Declare map
   ioDeclarations->mSemanticDeclarationList += ![@uniqueMapDeclarationAST new
     !false # Is not predefined
     !mMapTypeName
@@ -387,29 +389,10 @@ rule <declaration>
     !mapStateList
     !mapOverrideBlockListAST
   ] ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#    M A P    P R O X Y    D E C L A R A T I O N                            *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-#! Mapproxy Declaration
-
-#---------------------------------------------------------------------------*
-
-rule <declaration>
- ?!@galgas3DeclarationAST ioDeclarations
-:
-  $mapproxy$ ;
-  $type_name$ ?@lstring mMapIndexName indexing mapProxyDefinition ;
-  $($ ;
-  $type_name$ ? @lstring mMapTypeName ;
-  $)$ ;
+#--- Declare map proxy
   ioDeclarations->mSemanticDeclarationList += ![@mapProxyDeclarationAST new
     !false # Is not predefined
-    !mMapIndexName
+    !mapProxyTypeName
     !mMapTypeName
   ] ;
 end rule ;
