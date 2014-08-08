@@ -61,19 +61,19 @@ method @lstring op !@string outResult {
 }
 
 #------------ Category modifiers
-setter @lstring appendInt ??@uint inValue {
+setter @lstring appendInt ?let@uint inValue {
   string += [inValue string]
 }
 
-setter @uintlist appendSquare ??@uint inValue {
+setter @uintlist appendSquare ?let@uint inValue {
   self += !inValue * inValue
 }
 
-setter @uint64list prependSquare ??@uint64 inValue {
+setter @uint64list prependSquare ?let@uint64 inValue {
   [!?self insertAtIndex ![inValue square] !0]
 }
 
-setter @string concatList ??@stringlist inList {
+setter @string concatList ?let@stringlist inList {
   for () in inList do
     self += mValue
   end

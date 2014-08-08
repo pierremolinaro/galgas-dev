@@ -19,7 +19,7 @@ class @TestCategoryModifier : @abstractTestCategoryModifier {
   @string mString
 }
 
-setter @TestCategoryModifier modifier3 ??@uint inArg {
+setter @TestCategoryModifier modifier3 ?let@uint inArg {
   [!?mString appendSpacesUntilColumn!inArg]
 }
 
@@ -35,7 +35,7 @@ class @overridingTestCategoryModifier : @abstractOverridingTestCategoryModifier 
 }
 
 
-setter @TestCategoryModifier modifier2 ?!@uint ioArg ??@string inS {
+setter @TestCategoryModifier modifier2 ?!@uint ioArg ?let@string inS {
   [!?self modifier1 !?ioArg]
   mString += inS
 }

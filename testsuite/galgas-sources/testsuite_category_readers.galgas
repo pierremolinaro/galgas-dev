@@ -4,21 +4,21 @@ abstract class @A_A {}
 
 class @B_B : @A_A {}
 
-abstract getter @A_A aReader ?@uint inA ??@string inB -> @string outResult
+abstract getter @A_A aReader ?@uint inA ?let@string inB -> @string outResult
 
-override getter @B_B aReader ?@uint inA ??@string inB -> @string outResult {
+override getter @B_B aReader ?@uint inA ?let@string inB -> @string outResult {
   inA ++
   outResult = inB + inA
 }
 
-getter @B_B otherReader ?@uint inA ??@string inB -> @string outResult {
+getter @B_B otherReader ?@uint inA ?let@string inB -> @string outResult {
   inA ++
   outResult = inB + inA + [self aReader !inA !inB] + [self aReader !inA !inB]
 }
 
 abstract class @C_C : @B_B {}
 
-override abstract getter @C_C aReader ?@uint inA ??@string inB -> @string outResult
+override abstract getter @C_C aReader ?@uint inA ?let@string inB -> @string outResult
 
 proc testsuite_category_readers {
   message "*************************************** begin of category reader test\n"
