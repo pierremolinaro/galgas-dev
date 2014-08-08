@@ -1049,6 +1049,7 @@ generate_SLR_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
                              "      C_String message ;\n"
                              "      message << \"the '\" << filePath << \"' file does not exist\" ;\n"
                              "      const GALGAS_location errorLocation (inFilePath.reader_location (THERE)) ;\n"
+                             "      inCompiler->semanticErrorAtLocation (errorLocation, message COMMA_THERE) ;\n"
                              "    }\n"
                              "  }\n"
                              "}\n\n" ;

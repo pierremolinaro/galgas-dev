@@ -1494,7 +1494,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
     #--- Parse template
       grammar templateGrammar in [@lstring new !absoluteTemplatePath ![mFilewrapperTemplatePath location]] ?resultingInstructionList ;
     #--- Build template variable map
-      @templateVariableMap templateVariableMap [emptyMap] ;
+      @templateVariableMap templateVariableMap := {} ;
       @formalInputParameterListForGeneration filewrapperTemplateFormalInputParameters [emptyList] ;
       foreach mFilewrapperTemplateFormalInputParameters do
         @unifiedTypeMapProxy type [searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
@@ -2090,7 +2090,7 @@ override method @categoryReaderAST semanticAnalysis
   analyzeFunctionBody
     !analysisContext
     !mCategoryReaderFormalInputParameterList
-    !if ([selfType mTypeKindEnum] == [@typeKindEnum classType]) | ([selfType mTypeKindEnum] == [@typeKindEnum structType])
+    !if ([selfType mTypeKindEnum] == [@typeKindEnum classType]) | ([selfType mTypeKindEnum] == [@typeKindEnum structType]) | ([selfType mTypeKindEnum] == [@typeKindEnum mapProxyType])
        then [selfType mAllTypedAttributeList]
        else [@typedAttributeList emptyList]
      end
