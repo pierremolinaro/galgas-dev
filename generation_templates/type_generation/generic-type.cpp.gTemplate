@@ -1,20 +1,20 @@
-//-----------------------------------------------------------------------------*
-//                                                                             *
-//%!["@" + TYPE_NAME + " type" stringByLeftAndRightPadding !77 !' ']%*
-//                                                                             *
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//%!["@" + TYPE_NAME + " type" stringByLeftAndRightPadding !117 !' ']%*
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
 const C_galgas_type_descriptor
 kTypeDescriptor_GALGAS_%!TYPE_IDENTIFIER% (%?^%"%!TYPE_NAME%",
                        %!^ if [SUPER_TYPE_INDEX isNull] then %NULL% else %& kTypeDescriptor_GALGAS_%![SUPER_TYPE_INDEX identifierRepresentation] end %) ;
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 const C_galgas_type_descriptor * GALGAS_%!TYPE_IDENTIFIER%::staticTypeDescriptor (void) const {
   return & kTypeDescriptor_GALGAS_%!TYPE_IDENTIFIER% ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 AC_GALGAS_root * GALGAS_%!TYPE_IDENTIFIER%::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
@@ -24,7 +24,7 @@ AC_GALGAS_root * GALGAS_%!TYPE_IDENTIFIER%::clonedObject (void) const {
   return result ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::extractObject (%?^%const GALGAS_object & inObject,
                %!^%C_Compiler * inCompiler

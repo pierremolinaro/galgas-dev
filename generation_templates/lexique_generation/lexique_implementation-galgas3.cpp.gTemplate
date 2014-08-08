@@ -1,17 +1,17 @@
 #include <ctype.h>
 #include <string.h>
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 #include "utilities/MF_MemoryControl.h"
 #include "strings/unicode_character_cpp.h"
 #include "galgas2/scanner_actions.h"
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 #include "lexique-%!LEXIQUE_COMPONENT_ROOT->mLexiqueComponentName->string%.h"
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   #define LINE_AND_SOURCE_FILE sourceText ()->sourceFilePath ().cString (HERE), lineNumber ()
@@ -21,11 +21,11 @@
   #define COMMA_LINE_AND_SOURCE_FILE
 #endif
 
-//-----------------------------------------------------------------------------*
-//                                                                             *
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                               Constructors                                  *
-//                                                                             *
-//-----------------------------------------------------------------------------*
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
 cTokenFor_%!LEXIQUE_IDENTIFIER%::cTokenFor_%!LEXIQUE_IDENTIFIER% (void)%
   foreach LEXICAL_ATTRIBUTE_MAP
@@ -36,7 +36,7 @@ cTokenFor_%!LEXIQUE_IDENTIFIER%::cTokenFor_%!LEXIQUE_IDENTIFIER% (void)%
 % {
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 C_Lexique_%!LEXIQUE_IDENTIFIER%::C_Lexique_%!LEXIQUE_IDENTIFIER% (C_Compiler * inCallerCompiler,
                 const C_String & inDependencyFileExtension,
@@ -50,7 +50,7 @@ C_Lexique (inCallerCompiler, inDependencyFileExtension, inDependencyFilePath, in
 % {
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 C_Lexique_%!LEXIQUE_IDENTIFIER%::C_Lexique_%!LEXIQUE_IDENTIFIER% (C_Compiler * inCallerCompiler,
                 const C_String & inSourceString,
@@ -63,42 +63,42 @@ C_Lexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE)%
 % {
 }
 
-//-----------------------------------------------------------------------------*
-//                                                                             *
-//                 I N D E X I N G    D I R E C T O R Y                        *
-//                                                                             *
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                 I N D E X I N G    D I R E C T O R Y                                                                *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::indexingDirectory (void) const {
   return %![[LEXIQUE_COMPONENT_ROOT mIndexingDirectory] utf8Representation]% ;
 }
 
-//-----------------------------------------------------------------------------*
-//                                                                             *
-//                        Lexical error message list                           *
-//                                                                             *
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                        Lexical error message list                                                                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 %
   foreach LEXICAL_MESSAGE_MAP do
    %\nstatic const utf32 gLexicalMessage_%![lkey string]% [] = % ![mLexicalMessage utf32Representation]% ;\n%
   end
 %
-//-----------------------------------------------------------------------------*
-//                                                                             *
-//          Syntax error messages, for every terminal symbol                   *
-//                                                                             *
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//          Syntax error messages, for every terminal symbol                                                           *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 %
   foreach TERMINAL_LIST do
    %\n//--- Syntax error message for terminal '$%![mTerminalName string]%$' :\n%
    %static const utf32 gSyntaxErrorMessage_%![[mTerminalName string] identifierRepresentation]% [] = %![mSyntaxErrorMessage utf32Representation]% ;\n%
   end
 %
-//-----------------------------------------------------------------------------*
-//                                                                             *
-//                getMessageForTerminal                                        *
-//                                                                             *
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                getMessageForTerminal                                                                                *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::getMessageForTerminal (const int16_t inTerminalIndex) const {
   static const utf32 * syntaxErrorMessageArray [%![[TERMINAL_LIST length] + 1 string]%] = {kEndOfSourceLexicalErrorMessage%
@@ -109,11 +109,11 @@ C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::getMessageForTerminal (const int16_t i
   return syntaxErrorMessageArray [inTerminalIndex] ;
 }
 
-//-----------------------------------------------------------------------------*
-//                                                                             *
-//                      U N I C O D E    S T R I N G S                         *
-//                                                                             *
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                      U N I C O D E    S T R I N G S                                                                 *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 %
   foreach STRINGS_IN_EXPLICIT_RULES do
    if [key length] > 0 then
@@ -124,11 +124,11 @@ C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::getMessageForTerminal (const int16_t i
 %
 %
   foreach LEXICAL_TOKEN_LIST_MAP : tokenList_ do
-    %//-----------------------------------------------------------------------------*\n%
-    %//                                                                             *\n%
+    %//---------------------------------------------------------------------------------------------------------------------*\n%
+    %//                                                                                                                     *\n%
     %//             Key words table '%![tokenList_lkey string]%'                            *\n%
-    %//                                                                             *\n%
-    %//-----------------------------------------------------------------------------*\n%
+    %//                                                                                                                     *\n%
+    %//---------------------------------------------------------------------------------------------------------------------*\n%
     %\nstatic const int32_t ktable_size_%![tokenList_lkey string]% = %![[tokenList_mExplicitTokenListMap count] string]% ;\n\n%
     %static const C_unicode_lexique_table_entry ktable_for_%![tokenList_lkey string]% [ktable_size_%![tokenList_lkey string]%] = {\n%
       foreach tokenList_mTokenSortedList
@@ -141,11 +141,11 @@ C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::getMessageForTerminal (const int16_t i
     %}\n\n%
   end
 %
-//-----------------------------------------------------------------------------*
-//                                                                             *
-//                          getCurrentTokenString                              *
-//                                                                             *
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                          getCurrentTokenString                                                                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::getCurrentTokenString (const cToken * inTokenPtr) const {
   const cTokenFor_%!LEXIQUE_IDENTIFIER% * ptr = (const cTokenFor_%!LEXIQUE_IDENTIFIER% *) inTokenPtr ;
@@ -175,11 +175,11 @@ end
   return s ;
 }
 
-//-----------------------------------------------------------------------------*
-//                                                                             *
-//                           Template Delimiters                               *
-//                                                                             *
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                           Template Delimiters                                                                       *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
 % foreach [LEXIQUE_ANALYSIS_CONTEXT mTemplateDelimitorList]
     before %static const cTemplateDelimiter kTemplateDefinitionArray [%![[[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] string]%] = {\n%
@@ -196,11 +196,11 @@ end
     after %\n} ;\n%
   end
 %
-//-----------------------------------------------------------------------------*
-//                                                                             *
-//                           Template Replacements                             *
-//                                                                             *
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                           Template Replacements                                                                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
 % foreach [LEXIQUE_COMPONENT_ROOT mTemplateReplacementList]
     before %static const cTemplateDelimiter kTemplateReplacementArray [%![[[LEXIQUE_COMPONENT_ROOT mTemplateReplacementList] length] string]%] = {\n%
@@ -217,11 +217,11 @@ end
     after %\n} ;\n%
   end
 %
-//-----------------------------------------------------------------------------*
-//                                                                             *
-//            Terminal Symbols as end of script in template mark               *
-//                                                                             *
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//            Terminal Symbols as end of script in template mark                                                       *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
 % if [[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] > 0 then
     foreach [LEXIQUE_ANALYSIS_CONTEXT mTerminalList]
@@ -233,11 +233,11 @@ end
   end
 %
 
-//-----------------------------------------------------------------------------*
-//                                                                             *
-//               P A R S E    L E X I C A L    T O K E N                       *
-//                                                                             *
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//               P A R S E    L E X I C A L    T O K E N                                                               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
 bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
   cTokenFor_%!LEXIQUE_IDENTIFIER% token ;
@@ -335,11 +335,11 @@ bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
   return token.mTokenCode > 0 ;
 }
 
-//-----------------------------------------------------------------------------*
-//                                                                             *
-//                         E N T E R    T O K E N                              *
-//                                                                             *
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                         E N T E R    T O K E N                                                                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
 void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (const cTokenFor_%!LEXIQUE_IDENTIFIER% & inToken) {
   cTokenFor_%!LEXIQUE_IDENTIFIER% * ptr = NULL ;
@@ -355,10 +355,10 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (const cTokenFor_%!LEXIQUE_IDEN
 %  enterTokenFromPointer (ptr) ;
 }
 
-//-----------------------------------------------------------------------------*
-//                                                                             *
-//               A T T R I B U T E   A C C E S S                               *
-//                                                                             *
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//               A T T R I B U T E   A C C E S S                                                                       *
+//                                                                                                                     *
 %
   foreach LEXICAL_ATTRIBUTE_MAP do
     %//-----------------------------------------------------------------------------*\n\n%
@@ -367,10 +367,10 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (const cTokenFor_%!LEXIQUE_IDEN
     %  return ptr->mLexicalAttribute_%![lkey identifierRepresentation]% ;\n%
     %}\n\n%
   end
-%//-----------------------------------------------------------------------------*
-//                                                                             *
-//         A S S I G N    F R O M    A T T R I B U T E                         *
-//                                                                             *
+%//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//         A S S I G N    F R O M    A T T R I B U T E                                                                 *
+//                                                                                                                     *
 %
   foreach LEXICAL_ATTRIBUTE_MAP do
     %//-----------------------------------------------------------------------------*\n\n%
@@ -383,11 +383,11 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (const cTokenFor_%!LEXIQUE_IDEN
     %  return result ;\n%
     %}\n\n%
   end
-%//-----------------------------------------------------------------------------*
-//                                                                             *
-//                         I N T R O S P E C T I O N                           *
-//                                                                             *
-//-----------------------------------------------------------------------------*
+%//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                         I N T R O S P E C T I O N                                                                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_stringlist C_Lexique_%!LEXIQUE_IDENTIFIER%::symbols (LOCATION_ARGS) {
   GALGAS_stringlist result = GALGAS_stringlist::constructor_emptyList (THERE) ;
@@ -397,5 +397,5 @@ GALGAS_stringlist C_Lexique_%!LEXIQUE_IDENTIFIER%::symbols (LOCATION_ARGS) {
 %  return result ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 

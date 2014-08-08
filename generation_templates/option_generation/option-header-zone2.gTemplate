@@ -1,11 +1,11 @@
 #ifndef %!OPTION_COMPONENT_NAME%_0_DEFINED
 #define %!OPTION_COMPONENT_NAME%_0_DEFINED
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 #include "command_line_interface/C_BoolCommandLineOption.h"
 #include "command_line_interface/C_UIntCommandLineOption.h"
 #include "command_line_interface/C_StringCommandLineOption.h"
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 

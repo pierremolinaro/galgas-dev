@@ -1,10 +1,10 @@
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
 AC_GALGAS_listmap () {
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyMap (LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% result ;
@@ -12,7 +12,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyMap (LOCAT
   return result ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^%const GALGAS_string & inKey%
   foreach ATTRIBUTE_LIST do index IDX
@@ -34,14 +34,14 @@ void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^%const GALGAS_string & i
   }
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_%!ASSOCIATED_LIST_TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_listForKey (%?^%const GALGAS_string & inKey%
   %\n%!^%COMMA_UNUSED_LOCATION_ARGS) const {
   return GALGAS_%!ASSOCIATED_LIST_TYPE_IDENTIFIER% (listForKey (inKey)) ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 cEnumerator_%!TYPE_IDENTIFIER%::cEnumerator_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inEnumeratedObject,
                        %!^%const typeEnumerationOrder inOrder) :
@@ -49,7 +49,7 @@ cGenericAbstractEnumerator () {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER%_2D_element cEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
   const cListMapElement * p = (const cListMapElement *) currentObjectPtr (THERE) ;
@@ -57,7 +57,7 @@ GALGAS_%!TYPE_IDENTIFIER%_2D_element cEnumerator_%!TYPE_IDENTIFIER%::current (LO
   return GALGAS_%!TYPE_IDENTIFIER%_2D_element (p->mKey, p->mSharedListMapList) ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_%!TYPE_IDENTIFIER%::current_key (LOCATION_ARGS) const {
   const cListMapElement * p = (const cListMapElement *) currentObjectPtr (THERE) ;
@@ -65,7 +65,7 @@ GALGAS_string cEnumerator_%!TYPE_IDENTIFIER%::current_key (LOCATION_ARGS) const 
   return GALGAS_string (p->mKey) ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_%!ASSOCIATED_LIST_TYPE_IDENTIFIER% cEnumerator_%!TYPE_IDENTIFIER%::current_mList (LOCATION_ARGS) const {
   const cListMapElement * p = (const cListMapElement *) currentObjectPtr (THERE) ;

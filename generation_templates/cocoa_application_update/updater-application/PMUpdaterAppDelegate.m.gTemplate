@@ -4,21 +4,21 @@
 //  Created by Pierre Molinaro on 30/07/12.
 //  Copyright (c) 2012 IRCCyN. All rights reserved.
 //
-//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 #import "PMUpdaterAppDelegate.h"
 #import "PMUpdaterServerProtocol.h"
 
-//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 #import <SystemConfiguration/SystemConfiguration.h>
 #import <ServiceManagement/ServiceManagement.h>
 
-//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 //#define DEBUG_UPDATER
 
-//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 #if __has_feature(objc_arc)
   #define macroBridgeInARC __bridge
@@ -26,7 +26,7 @@
   #define macroBridgeInARC
 #endif
 
-//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 static NSConnection * installAndLaunchHelperToolWithIdentifier (NSString * inToolIdentifier) {
   #ifdef EASY_BINDINGS_DEBUG
@@ -114,11 +114,11 @@ static NSConnection * installAndLaunchHelperToolWithIdentifier (NSString * inToo
   return connection ;
 }
 
-//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 @implementation PMUpdaterAppDelegate
 
-//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 - (void) installAndTerminates {
 //--- Dismiss waiting alert
@@ -181,7 +181,7 @@ static NSConnection * installAndLaunchHelperToolWithIdentifier (NSString * inToo
   }
 }
 
-//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 - (BOOL) applicationIsStillRunning {
   NSWorkspace * ws = [NSWorkspace sharedWorkspace] ;
@@ -203,7 +203,7 @@ static NSConnection * installAndLaunchHelperToolWithIdentifier (NSString * inToo
   return stillRunning ;
 }
 
-//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 - (void) waitForApplicationTermination: (NSTimer *) inTimer {
   mWaitingTimeInSeconds ++ ;
@@ -242,7 +242,7 @@ static NSConnection * installAndLaunchHelperToolWithIdentifier (NSString * inToo
   }
 }
 
-//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 - (void) terminateApplicationWitoutInstalling: (id) inUnusedSender {
 //--- Dismiss waiting alert
@@ -252,7 +252,7 @@ static NSConnection * installAndLaunchHelperToolWithIdentifier (NSString * inToo
   [NSApp terminate:nil] ;
 }
 
-//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 - (void) applicationDidFinishLaunching: (NSNotification *) aNotification {
 //--- Get application current path : the temporary directory
@@ -278,8 +278,8 @@ static NSConnection * installAndLaunchHelperToolWithIdentifier (NSString * inToo
   }
 }
 
-//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 @end
 
-//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*

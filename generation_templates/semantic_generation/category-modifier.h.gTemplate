@@ -1,8 +1,8 @@
-//-----------------------------------------------------------------------------*
-//                                                                             *
-//%!["Category modifier '@" + CLASS_NAME + " " + MODIFIER_NAME + "'" stringByLeftAndRightPadding !77 !' ']%*
-//                                                                             *
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//%!["Category modifier '@" + CLASS_NAME + " " + MODIFIER_NAME + "'" stringByLeftAndRightPadding !117 !' ']%*
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
 typedef void (*categoryModifierSignature_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%) (%?^
 %class cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
@@ -21,12 +21,12 @@ typedef void (*categoryModifierSignature_%![CLASS_NAME identifierRepresentation]
   %,\n%!^%class C_Compiler * inCompiler%
   %\n %!^%COMMA_LOCATION_ARGS) ;
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 void enterCategoryModifier_%![MODIFIER_NAME identifierRepresentation]% (%?^%const int32_t inClassIndex,
                %!^%categoryModifierSignature_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% inModifier) ;
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 void callCategoryModifier_%![MODIFIER_NAME identifierRepresentation]% (%?^%class cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
   foreach FORMAL_ARGUMENT_LIST do

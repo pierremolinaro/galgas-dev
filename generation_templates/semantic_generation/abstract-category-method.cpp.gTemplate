@@ -1,30 +1,30 @@
-//-----------------------------------------------------------------------------*
-//                                                                             *
-//%!["Abstract category method '@" + [RECEIVER_TYPE key] + " " + METHOD_NAME + "'" stringByLeftAndRightPadding !77 !' ']%*
-//                                                                             *
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//%!["Abstract category method '@" + [RECEIVER_TYPE key] + " " + METHOD_NAME + "'" stringByLeftAndRightPadding !117 !' ']%*
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
 static TC_UniqueArray <categoryMethodSignature_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%> gCategoryMethodTable_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% ;
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 void enterCategoryMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const int32_t inClassIndex,
                %!^%categoryMethodSignature_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% inMethod) {
   gCategoryMethodTable_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 static void freeCategoryMethod_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% (void) {
   gCategoryMethodTable_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%.free () ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% (%?^%NULL,
        %!^%freeCategoryMethod_%![[RECEIVER_TYPE key] identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%) ;
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 void callCategoryMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const cPtr_%![[RECEIVER_TYPE key] identifierRepresentation]% * inObject%
   foreach FORMAL_ARGUMENT_LIST do

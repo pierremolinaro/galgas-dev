@@ -187,7 +187,7 @@ routine compileSyntaxComponentFromAST
               . [mNonterminalName identifierRepresentation]
               . "_i" . [mRuleIndex string] . "_" . [mLabelName identifierRepresentation]
             ;
-            implementationString .= "//---------------------------------------------------------------------------*\n\n" ;
+            implementationString .= "//---------------------------------------------------------------------------------------------------------------------*\n\n" ;
             generateProcedure
               !ruleName
               !?inclusionSet
@@ -209,7 +209,7 @@ routine compileSyntaxComponentFromAST
           . "::rule_" . [componentName identifierRepresentation] . "_"
           . [mNonterminalName identifierRepresentation]
           . "_i" . [mRuleIndex string] . "_parse" ;
-          implementationString .= "//---------------------------------------------------------------------------*\n\n" ;
+          implementationString .= "//---------------------------------------------------------------------------------------------------------------------*\n\n" ;
           generateProcedure
             !ruleName
             !?inclusionSet
@@ -231,7 +231,7 @@ routine compileSyntaxComponentFromAST
             . "::rule_" . [componentName identifierRepresentation] . "_"
             . [mNonterminalName identifierRepresentation]
             . "_i" . [mRuleIndex string] . "_indexing" ;
-            implementationString .= "//---------------------------------------------------------------------------*\n\n" ;
+            implementationString .= "//---------------------------------------------------------------------------------------------------------------------*\n\n" ;
             generateProcedure
               !ruleName
               !?inclusionSet
@@ -452,7 +452,7 @@ routine generateSyntaxComponentGalgas3
         . [mNonterminalName identifierRepresentation]
         . "_i" . [mRuleIndex string] . "_" . [mLabelName identifierRepresentation]
       ;
-      implementationString .= "//---------------------------------------------------------------------------*\n\n" ;
+      implementationString .= "//---------------------------------------------------------------------------------------------------------------------*\n\n" ;
       generateProcedure
         !ruleName
         !?cppInclusionSet
@@ -474,7 +474,7 @@ routine generateSyntaxComponentGalgas3
     . "::rule_" . [componentName identifierRepresentation] . "_"
     . [mNonterminalName identifierRepresentation]
     . "_i" . [mRuleIndex string] . "_parse" ;
-    implementationString .= "//---------------------------------------------------------------------------*\n\n" ;
+    implementationString .= "//---------------------------------------------------------------------------------------------------------------------*\n\n" ;
     generateProcedure
       !ruleName
       !?cppInclusionSet
@@ -496,7 +496,7 @@ routine generateSyntaxComponentGalgas3
       . "::rule_" . [componentName identifierRepresentation] . "_"
       . [mNonterminalName identifierRepresentation]
       . "_i" . [mRuleIndex string] . "_indexing" ;
-      implementationString .= "//---------------------------------------------------------------------------*\n\n" ;
+      implementationString .= "//---------------------------------------------------------------------------------------------------------------------*\n\n" ;
       generateProcedure
         !ruleName
         !?cppInclusionSet

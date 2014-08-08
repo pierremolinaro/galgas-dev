@@ -1,8 +1,8 @@
-//-----------------------------------------------------------------------------*
-//                                                                             *
-//%!["Abstract category method '@" + CLASS_NAME + " " + METHOD_NAME + "'" stringByLeftAndRightPadding !77 !' ']%*
-//                                                                             *
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//%!["Abstract category method '@" + CLASS_NAME + " " + METHOD_NAME + "'" stringByLeftAndRightPadding !117 !' ']%*
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
 typedef void (*categoryMethodSignature_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%) (%?^
 %const class cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
@@ -21,12 +21,12 @@ typedef void (*categoryMethodSignature_%![CLASS_NAME identifierRepresentation]%_
   %,\n%!^%class C_Compiler * inCompiler%
   %\n %!^%COMMA_LOCATION_ARGS) ;
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 void enterCategoryMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const int32_t inClassIndex,
                %!^%categoryMethodSignature_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% inMethod) ;
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 void callCategoryMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const class cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
   foreach FORMAL_ARGUMENT_LIST do
