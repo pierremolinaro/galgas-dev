@@ -752,21 +752,21 @@ generate_LL1_grammar_Cpp_file (const TC_UniqueArray <C_String> & inImplementatio
           ioCppFileContents << "          scanner->appendLastSeparatorTo (" << inSyntaxDirectedTranslationVarName << ") ;\n" ;
         }
         ioCppFileContents << "        }\n"
-                          "      }else{\n"
-                          "        C_String message ;\n"
-                          "        message << \"the '\" << filePath << \"' file exists, but cannot be read\" ;\n"
-                          "        const GALGAS_location errorLocation (inFilePath.reader_location (THERE)) ;\n"
-                          "        inCompiler->semanticErrorAtLocation (errorLocation, message COMMA_THERE) ;\n"
-                          "    }\n"
-                          "    macroDetachSharedObject (scanner) ;\n"
-                          "  }else{\n"
-                          "    C_String message ;\n"
-                          "    message << \"the '\" << filePath << \"' file does not exist\" ;\n"
-                          "    const GALGAS_location errorLocation (inFilePath.reader_location (THERE)) ;\n"
-                          "    inCompiler->semanticErrorAtLocation (errorLocation, message COMMA_THERE) ;\n"
-                          "    }\n"
-                          "  }\n"
-                          "}\n\n" ;
+                             "      }else{\n"
+                             "        C_String message ;\n"
+                             "        message << \"the '\" << filePath << \"' file exists, but cannot be read\" ;\n"
+                             "        const GALGAS_location errorLocation (inFilePath.reader_location (THERE)) ;\n"
+                             "        inCompiler->semanticErrorAtLocation (errorLocation, message COMMA_THERE) ;\n"
+                             "      }\n"
+                             "      macroDetachSharedObject (scanner) ;\n"
+                             "    }else{\n"
+                             "      C_String message ;\n"
+                             "      message << \"the '\" << filePath << \"' file does not exist\" ;\n"
+                             "      const GALGAS_location errorLocation (inFilePath.reader_location (THERE)) ;\n"
+                             "      inCompiler->semanticErrorAtLocation (errorLocation, message COMMA_THERE) ;\n"
+                             "    }\n"
+                             "  }\n"
+                             "}\n\n" ;
       //--- Define string parsing static method
         ioCppFileContents.appendCppHyphenLineComment () ;
         ioCppFileContents << "void cGrammar_" << inTargetFileName.identifierRepresentation ()

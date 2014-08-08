@@ -1376,7 +1376,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     ![@unifiedTypeMapProxy null]
     ![@typeKindEnum mapProxyType]
     !false # Does not support collection value
-    ![@typedAttributeList emptyList]
+    !mapTypedAttributeList #[@typedAttributeList emptyList]
     ![@attributeMap emptyMap]
     !mapTypedAttributeList
     !constructorMap
