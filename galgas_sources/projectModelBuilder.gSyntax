@@ -60,7 +60,13 @@ rule <project_component_start_symbol>
       qualifiedFeatureList += !featureName !featureValue ;
     or
       $literal_string$ ? @lstring featureName :> ?* ?* ;
-      send "%" . [featureName->string stringByReplacingStringByString !"_" !"-"] ;
+      var newName := [featureName->string stringByReplacingStringByString !"_" !"-"] ;
+      if newName == "makefile-x86-64-linux-on-macosx" then
+        newName := "makefile-x86linux64-on-macosx" ;
+      elsif newName == "makefile-i386-linux-on-macosx" then # makefile_i386_linux_on_macosx
+        newName := "makefile-x86linux32-on-macosx" ;
+      end if ;
+      send "%" . newName ;
       generateFeatureList += !featureName ;
     end select ;
     $;$ :> ?* ?* ;

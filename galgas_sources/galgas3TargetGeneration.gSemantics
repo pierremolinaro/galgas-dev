@@ -76,16 +76,16 @@ filewrapper applicationGalgas3UpdateFileWrapper in "../generation_templates/coco
 #---------------------------------------------------------------------------*
 
 filewrapper targetGalgas3GenerationFileWrapper in "../generation_templates/target_generation" {
- "bat", "command", "rtf"
+ "bat", "command", "rtf", "py"
 }{
 }{
-  template makefile_macosx_makefile "makefile_macosx/makefile-galgas3.gTemplate" ?@string PROJECT_NAME ;
+  template makefile_macosx_makefile "makefile-macosx/makefile.gTemplate" ?@string PROJECT_NAME ;
 
   template makefile_unix_makefile "makefile_unix/makefile" ?@string PROJECT_NAME ;
 
-  template makefile_i386_linux_on_macosx_makefile "makefile_i386_linux_on_macosx/makefile" ?@string PROJECT_NAME ;
+  template makefile_x86_linux32_on_macosx_makefile "makefile-x86linux32-on-macosx/makefile.gTemplate" ?@string PROJECT_NAME ;
 
-  template makefile_x86_64_linux_on_macosx_makefile "makefile_x86_64_linux_on_macosx/makefile" ?@string PROJECT_NAME ;
+  template makefile_x86_linux64_on_macosx_makefile "makefile-x86linux64-on-macosx/makefile.gTemplate" ?@string PROJECT_NAME ;
 
   template makefile_mingw_on_macosx_makefile "makefile_mingw_on_macosx/makefile" ?@string PROJECT_NAME ;
 
@@ -151,9 +151,10 @@ routine generateGalgas3MakefileMacOSXTarget
 :
   const @string dir := inProjectDirectory . "/makefile-macosx" ;
   [dir makeDirectory] ;
-  [[filewrapper targetGalgas3GenerationFileWrapper."makefile_macosx/build.command"] writeToExecutableFileWhenDifferentContents !dir ."/build.command" ?*] ;
-  [[filewrapper targetGalgas3GenerationFileWrapper."makefile_macosx/clean.command"] writeToExecutableFileWhenDifferentContents !dir ."/clean.command" ?*] ;
-  [[filewrapper targetGalgas3GenerationFileWrapper."makefile_macosx/install.command"] writeToExecutableFileWhenDifferentContents !dir ."/install.command" ?*] ;
+  [[filewrapper targetGalgas3GenerationFileWrapper."makefile-macosx/build.py"] writeToExecutableFileWhenDifferentContents !dir ."/build.py" ?*] ;
+  [[filewrapper targetGalgas3GenerationFileWrapper."makefile-macosx/verbose-build.py"] writeToExecutableFileWhenDifferentContents !dir ."/verbose-build.py" ?*] ;
+  [[filewrapper targetGalgas3GenerationFileWrapper."makefile-macosx/clean.py"] writeToExecutableFileWhenDifferentContents !dir ."/clean.py" ?*] ;
+  [[filewrapper targetGalgas3GenerationFileWrapper."makefile-macosx/install.py"] writeToExecutableFileWhenDifferentContents !dir ."/install.py" ?*] ;
   [[filewrapper targetGalgas3GenerationFileWrapper.makefile_macosx_makefile !inProjectName] writeToFileWhenDifferentContents !dir ."/makefile" ?*] ;
 end routine ;
 
@@ -177,11 +178,12 @@ routine generateGalgas3Linux32OnMacOSXTarget
   ??@string inProjectDirectory
   ??@string inProjectName
 :
-  const @string dir := inProjectDirectory . "/makefile-linux32-on-macosx" ;
+  const @string dir := inProjectDirectory . "/makefile-x86linux32-on-macosx" ;
   [dir makeDirectory] ;
-  [[filewrapper targetGalgas3GenerationFileWrapper."makefile_i386_linux_on_macosx/build.command"] writeToExecutableFileWhenDifferentContents !dir ."/build.command" ?*] ;
-  [[filewrapper targetGalgas3GenerationFileWrapper."makefile_i386_linux_on_macosx/clean.command"] writeToExecutableFileWhenDifferentContents !dir ."/clean.command" ?*] ;
-  [[filewrapper targetGalgas3GenerationFileWrapper.makefile_i386_linux_on_macosx_makefile !inProjectName] writeToFileWhenDifferentContents !dir ."/makefile" ?*] ;
+  [[filewrapper targetGalgas3GenerationFileWrapper."makefile-x86linux32-on-macosx/build.py"] writeToExecutableFileWhenDifferentContents !dir ."/build.py" ?*] ;
+  [[filewrapper targetGalgas3GenerationFileWrapper."makefile-x86linux32-on-macosx/clean.py"] writeToExecutableFileWhenDifferentContents !dir ."/clean.py" ?*] ;
+  [[filewrapper targetGalgas3GenerationFileWrapper."makefile-x86linux32-on-macosx/verbose-build.py"] writeToExecutableFileWhenDifferentContents !dir ."/verbose-build.py" ?*] ;
+  [[filewrapper targetGalgas3GenerationFileWrapper.makefile_x86_linux32_on_macosx_makefile !inProjectName] writeToFileWhenDifferentContents !dir ."/makefile" ?*] ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -190,11 +192,12 @@ routine generateGalgas3Linux64OnMacOSXTarget
   ??@string inProjectDirectory
   ??@string inProjectName
 :
-  const @string dir := inProjectDirectory . "/makefile-linux64-on-macosx" ;
+  const @string dir := inProjectDirectory . "/makefile-x86linux64-on-macosx" ;
   [dir makeDirectory] ;
-  [[filewrapper targetGalgas3GenerationFileWrapper."makefile_x86_64_linux_on_macosx/build.command"] writeToExecutableFileWhenDifferentContents !dir ."/build.command" ?*] ;
-  [[filewrapper targetGalgas3GenerationFileWrapper."makefile_x86_64_linux_on_macosx/clean.command"] writeToExecutableFileWhenDifferentContents !dir ."/clean.command" ?*] ;
-  [[filewrapper targetGalgas3GenerationFileWrapper.makefile_x86_64_linux_on_macosx_makefile !inProjectName] writeToFileWhenDifferentContents !dir ."/makefile" ?*] ;
+  [[filewrapper targetGalgas3GenerationFileWrapper."makefile-x86linux64-on-macosx/build.py"] writeToExecutableFileWhenDifferentContents !dir ."/build.py" ?*] ;
+  [[filewrapper targetGalgas3GenerationFileWrapper."makefile-x86linux64-on-macosx/clean.py"] writeToExecutableFileWhenDifferentContents !dir ."/clean.py" ?*] ;
+  [[filewrapper targetGalgas3GenerationFileWrapper."makefile-x86linux64-on-macosx/verbose-build.py"] writeToExecutableFileWhenDifferentContents !dir ."/verbose-build.py" ?*] ;
+  [[filewrapper targetGalgas3GenerationFileWrapper.makefile_x86_linux64_on_macosx_makefile !inProjectName] writeToFileWhenDifferentContents !dir ."/makefile" ?*] ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -258,8 +261,8 @@ routine updateGalgas3Targets
   @stringset availableGenerationFeatures [emptySet] ;
   availableGenerationFeatures += !"makefile-macosx" ;
   availableGenerationFeatures += !"makefile-unix" ;
-  availableGenerationFeatures += !"makefile-i386-linux-on-macosx" ;
-  availableGenerationFeatures += !"makefile-x86-64-linux-on-macosx" ;
+  availableGenerationFeatures += !"makefile-x86linux32-on-macosx" ;
+  availableGenerationFeatures += !"makefile-x86linux64-on-macosx" ;
   availableGenerationFeatures += !"makefile-mingw-on-macosx" ;
   availableGenerationFeatures += !"makefile-msys-on-win32" ;
   availableGenerationFeatures += !"SnowLeopard" ;
@@ -348,10 +351,10 @@ routine updateGalgas3Targets
   if [generationFeatures hasKey !"makefile-unix"] then
     generateGalgas3MakefileUnixTarget !projectDirectory !inTargetName ;
   end if ;
-  if [generationFeatures hasKey !"makefile-i386-linux-on-macosx"] then
+  if [generationFeatures hasKey !"makefile-x86linux32-on-macosx"] then
     generateGalgas3Linux32OnMacOSXTarget !projectDirectory !inTargetName ;
   end if ;
-  if [generationFeatures hasKey !"makefile-x86_64-linux-on-macosx"] then
+  if [generationFeatures hasKey !"makefile-x86linux64-on-macosx"] then
     generateGalgas3Linux64OnMacOSXTarget !projectDirectory !inTargetName ;
   end if ;
   if [generationFeatures hasKey !"makefile-mingw-on-macosx"] then

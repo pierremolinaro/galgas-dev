@@ -25,7 +25,7 @@ before {
 #--- 'when' clauses
 case . "testsuite"
 message "a source text file with the .testsuite extension"
-??@lstring inSourceFile {
+?sourceFilePath:@lstring inSourceFile {
   grammar testsuite_grammar in inSourceFile
 }
 
