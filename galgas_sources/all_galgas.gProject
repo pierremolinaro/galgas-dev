@@ -25,7 +25,7 @@ project all_galgas (2:7:0) -> "galgas" :
 #  feature "makefile_unix" ;
   feature "makefile_i386_linux_on_macosx" ;
   feature "makefile_x86_64_linux_on_macosx" ;
-#  feature "makefile_mingw_on_macosx" ;
+  feature "makefile_mingw_on_macosx" ;
 #  feature "makefile_msys_on_win32" ;
 
 #--- Command Line Options
