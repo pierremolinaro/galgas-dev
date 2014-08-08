@@ -1,8 +1,8 @@
-//-----------------------------------------------------------------------------*
-//                                                                             *
-//%!["Class for element of '@" + TYPE_IDENTIFIER + "' sorted list" stringByLeftAndRightPadding !77 !' ']%*
-//                                                                             *
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//%!["Class for element of '@" + TYPE_IDENTIFIER + "' sorted list" stringByLeftAndRightPadding !117 !' ']%*
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cSortedListElement_%!TYPE_IDENTIFIER% : public cSortedListElement {
   public : GALGAS_%!TYPE_IDENTIFIER%_2D_element mObject ;
@@ -32,7 +32,7 @@ class cSortedListElement_%!TYPE_IDENTIFIER% : public cSortedListElement {
   public : virtual typeComparisonResult compareForSorting (const cSortedListElement * inOperand) const ;
 } ;
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 cSortedListElement_%!TYPE_IDENTIFIER%::cSortedListElement_%!TYPE_IDENTIFIER% (%?^
   foreach ATTRIBUTE_LIST
@@ -50,13 +50,13 @@ end
 %) {
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 bool cSortedListElement_%!TYPE_IDENTIFIER%::isValid (void) const {
   return mObject.isValid () ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 cSortedListElement * cSortedListElement_%!TYPE_IDENTIFIER%::copy (void) {
   cSortedListElement * result = NULL ;
@@ -69,7 +69,7 @@ cSortedListElement * cSortedListElement_%!TYPE_IDENTIFIER%::copy (void) {
   return result ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 void cSortedListElement_%!TYPE_IDENTIFIER%::description (C_String & ioString, const int32_t inIndentation) const {
 %
@@ -81,7 +81,7 @@ void cSortedListElement_%!TYPE_IDENTIFIER%::description (C_String & ioString, co
   end
 %}
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cSortedListElement_%!TYPE_IDENTIFIER%::compare (const cCollectionElement * inOperand) const {
   cSortedListElement_%!TYPE_IDENTIFIER% * operand = (cSortedListElement_%!TYPE_IDENTIFIER% *) inOperand ;
@@ -89,13 +89,13 @@ typeComparisonResult cSortedListElement_%!TYPE_IDENTIFIER%::compare (const cColl
   return mObject.objectCompare (operand->mObject) ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
 AC_GALGAS_sortedlist () {
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cSortedListElement_%!TYPE_IDENTIFIER%::compareForSorting (const cSortedListElement * inOperand) const {
   typeComparisonResult result = kOperandEqual ;
@@ -115,7 +115,7 @@ typeComparisonResult cSortedListElement_%!TYPE_IDENTIFIER%::compareForSorting (c
 %  return result ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptySortedList (LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% result ;
@@ -123,7 +123,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptySortedList
   return result ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_sortedListWithValue (%?^
   foreach ATTRIBUTE_LIST
@@ -146,7 +146,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_sortedListWithV
   return result ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
   foreach ATTRIBUTE_LIST
@@ -170,7 +170,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
   }
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_%!TYPE_IDENTIFIER%::dotAssign_operation (%?^%const GALGAS_%!TYPE_IDENTIFIER% inOperand
                           %!^%COMMA_UNUSED_LOCATION_ARGS) {
@@ -179,7 +179,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::dotAssign_operation (%?^%const GALGAS_%!TYPE_IDE
   }
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::operator_concat (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand
                                 %!^%COMMA_LOCATION_ARGS) const {
@@ -192,7 +192,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::operator_concat (%?^%const 
   return result ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_%!TYPE_IDENTIFIER%::modifier_popSmallest (%?^
   foreach ATTRIBUTE_LIST
@@ -217,7 +217,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popSmallest (%?^
 %  }
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_%!TYPE_IDENTIFIER%::modifier_popGreatest (%?^
   foreach ATTRIBUTE_LIST
@@ -242,7 +242,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popGreatest (%?^
 %  }
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_%!TYPE_IDENTIFIER%::method_smallest (%?^
   foreach ATTRIBUTE_LIST
@@ -267,7 +267,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_smallest (%?^
 %  }
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_%!TYPE_IDENTIFIER%::method_greatest (%?^
   foreach ATTRIBUTE_LIST
@@ -292,7 +292,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_greatest (%?^
 %  }
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 cEnumerator_%!TYPE_IDENTIFIER%::cEnumerator_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inEnumeratedObject,
                    %!^%const typeEnumerationOrder inOrder) :
@@ -300,7 +300,7 @@ cGenericAbstractEnumerator () {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER%_2D_element cEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
   const cSortedListElement_%!TYPE_IDENTIFIER% * p = (const cSortedListElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;
@@ -309,7 +309,7 @@ GALGAS_%!TYPE_IDENTIFIER%_2D_element cEnumerator_%!TYPE_IDENTIFIER%::current (LO
 }
 
 %foreach ATTRIBUTE_LIST do index IDX
-  %//-----------------------------------------------------------------------------*\n\n%
+  %//---------------------------------------------------------------------------------------------------------------------*\n\n%
   %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mAttributeName identifierRepresentation]% (LOCATION_ARGS) const {\n%
   %  const cSortedListElement_%!TYPE_IDENTIFIER% * p = (const cSortedListElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;\n%
   %  macroValidSharedObject (p, cSortedListElement_%!TYPE_IDENTIFIER%) ;\n%

@@ -56,43 +56,43 @@ static PMApplicationUpdate * gApplicationUpdate ;
 
 #pragma mark Pathes & URLs
 
-//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 - (NSString *) applicationArchiveName {
   return @"Cocoa%![PROJECT_NAME stringByCapitalizingFirstCharacter]%.app.tar.bz2" ;
 }
 
-//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 - (NSString *) serverHTTPPath {
   return @"%!REPOSITORY_URL%" ;
 }
 
-//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 - (NSString *) lastReleaseHTTPPath {
   return [self.serverHTTPPath stringByAppendingString:@"/lastRelease.php"] ;
 }
 
-//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 - (NSString *) HTTPPathForVersion: (NSString *) inVersionString {
   return [NSString stringWithFormat:@"\%@/\%@/\%@", self.serverHTTPPath, inVersionString, self.applicationArchiveName] ;
 }
 
-//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 - (NSString *) temporaryDir {
   return @"/tmp/TEMPORARY_DIR_FOR_%![PROJECT_NAME uppercaseString]%" ;
 }
 
-//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 - (NSString *) temporaryPathForApplicationArchive {
   return [NSString stringWithFormat:@"\%@/\%@", self.temporaryDir, self.applicationArchiveName] ;
 }
 
-//---------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 - (NSComparisonResult) compareVersionString: (NSString *) inVersionString
                        withVersionString: (NSString *) inOtherVersionString {

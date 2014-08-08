@@ -1,8 +1,8 @@
-//-----------------------------------------------------------------------------*
-//                                                                             *
-//%!["Category modifier '@" + TYPE_NAME + " " + MODIFIER_NAME + "'" stringByLeftAndRightPadding !77 !' ']%*
-//                                                                             *
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//%!["Category modifier '@" + TYPE_NAME + " " + MODIFIER_NAME + "'" stringByLeftAndRightPadding !117 !' ']%*
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
 void categoryModifier_%![MODIFIER_NAME identifierRepresentation]% (%?^%class GALGAS_%![TYPE_NAME identifierRepresentation]% & ioObject%
   foreach FORMAL_ARGUMENT_LIST do

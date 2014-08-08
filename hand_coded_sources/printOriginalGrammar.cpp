@@ -1,22 +1,22 @@
-//-----------------------------------------------------------------------------*
-//                                                                             *
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //  Routines for printing original grammar (with 'select' and 'repeat')        *
-//                                                                             *
+//                                                                                                                     *
 //  Copyright (C) 1999, ..., 2014 Pierre Molinaro.                             *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                      *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
 //  ECN, École Centrale de Nantes (France)                                     *
-//                                                                             *
+//                                                                                                                     *
 //  This program is free software; you can redistribute it and/or modify it    *
 //  under the terms of the GNU General Public License as published by the      *
 //  Free Software Foundation.                                                  *
-//                                                                             *
+//                                                                                                                     *
 //  This program is distributed in the hope it will be useful, but WITHOUT     *
 //  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or      *
 //  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for   *
 //  more details.                                                              *
-//                                                                             *
-//-----------------------------------------------------------------------------*
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
 #include "utilities/MF_MemoryControl.h"
 #include "strings/C_HTMLString.h"
@@ -25,7 +25,7 @@
 #include "printOriginalGrammar.h"
 #include "grammarCompilation.h"
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 static void
 printInstructionsListForGrammar (const GALGAS_syntaxInstructionListForGrammarAnalysis & inInstructionsList,
@@ -38,7 +38,7 @@ printInstructionsListForGrammar (const GALGAS_syntaxInstructionListForGrammarAna
   }
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 void cPtr_repeatInstructionForGrammarAnalysis::
 printInstructionForGrammar (C_HTMLString & inHTMLfile) {
@@ -66,7 +66,7 @@ printInstructionForGrammar (C_HTMLString & inHTMLfile) {
   inHTMLfile.outputRawData ("</span></span>") ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 void cPtr_selectInstructionForGrammarAnalysis::
 printInstructionForGrammar (C_HTMLString & inHTMLfile) {
@@ -94,7 +94,7 @@ printInstructionForGrammar (C_HTMLString & inHTMLfile) {
   inHTMLfile.outputRawData ("</span></span>") ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 void cPtr_nonTerminalInstructionForGrammarAnalysis::
 printInstructionForGrammar (C_HTMLString & inHTMLfile) {
@@ -103,7 +103,7 @@ printInstructionForGrammar (C_HTMLString & inHTMLfile) {
   inHTMLfile.outputRawData ("</span>") ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 void cPtr_terminalInstructionForGrammarAnalysis::
 printInstructionForGrammar (C_HTMLString & inHTMLfile) {
@@ -112,7 +112,7 @@ printInstructionForGrammar (C_HTMLString & inHTMLfile) {
   inHTMLfile.outputRawData ("</span>") ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 void printOriginalGrammar (C_HTMLString & inHTMLfile,
                            const GALGAS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList) {
@@ -167,4 +167,4 @@ void printOriginalGrammar (C_HTMLString & inHTMLfile,
   inHTMLfile.outputRawData ("</table>") ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*

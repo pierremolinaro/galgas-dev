@@ -1,8 +1,8 @@
-//-----------------------------------------------------------------------------*
-//                                                                             *
-//%!["@" + TYPE_NAME + " array" stringByLeftAndRightPadding !77 !' ']%*
-//                                                                             *
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//%!["@" + TYPE_NAME + " array" stringByLeftAndRightPadding !117 !' ']%*
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cPtr_%!TYPE_IDENTIFIER% : public C_SharedObject {
   private : GALGAS_%!ELEMENT_TYPE_IDENTIFIER% * mObjectArray ;
@@ -62,7 +62,7 @@ foreach DIMENSION_LIST
  %!^%COMMA_LOCATION_ARGS) ;
 } ;
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 cPtr_%!TYPE_IDENTIFIER%::cPtr_%!TYPE_IDENTIFIER% (%
 foreach DIMENSION_LIST
@@ -79,7 +79,7 @@ mObjectArray (NULL),
   macroMyNewArray (mObjectArray, GALGAS_%!ELEMENT_TYPE_IDENTIFIER%, % foreach DIMENSION_LIST do % inSize%!mValue between % * % end %) ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 cPtr_%!TYPE_IDENTIFIER%::cPtr_%!TYPE_IDENTIFIER% (%?^%const cPtr_%!TYPE_IDENTIFIER% * inPointer
     %!^%COMMA_LOCATION_ARGS) :
@@ -96,7 +96,7 @@ mObjectArray (NULL),
   }
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 static inline uint32_t %!TYPE_IDENTIFIER%_computeIndex (%?^
 foreach DIMENSION_LIST
@@ -117,7 +117,7 @@ end
 %  return idx ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 int32_t cPtr_%!TYPE_IDENTIFIER%::indexForIndexes (%?^
 foreach DIMENSION_LIST
@@ -141,26 +141,26 @@ end
   return result ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_%!ELEMENT_TYPE_IDENTIFIER% cPtr_%!TYPE_IDENTIFIER%::objectAtAbsoluteIndex (const int32_t inIndex) const {
   return mObjectArray [inIndex] ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 void cPtr_%!TYPE_IDENTIFIER%::setObjectAtAbsoluteIndex (%?^%const GALGAS_%!ELEMENT_TYPE_IDENTIFIER% & inObject,
        %!^%const int32_t inIndex) {
   mObjectArray [inIndex] = inObject ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 cPtr_%!TYPE_IDENTIFIER%::~ cPtr_%!TYPE_IDENTIFIER% (void) {
   macroMyDeleteArray (mObjectArray) ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 void cPtr_%!TYPE_IDENTIFIER%::setSize (%?^
 foreach DIMENSION_LIST
@@ -191,19 +191,19 @@ end
   mObjectArray = p ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER%::~ GALGAS_%!TYPE_IDENTIFIER% (void) {
   macroDetachSharedObject (mSharedObject) ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_%!TYPE_IDENTIFIER%::drop (void) {
   macroDetachSharedObject (mSharedObject) ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% & inSourceObject) :
 AC_GALGAS_root (),
@@ -211,7 +211,7 @@ mSharedObject (NULL) {
   macroAssignSharedObject (mSharedObject, inSourceObject.mSharedObject) ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER% & GALGAS_%!TYPE_IDENTIFIER%::operator = (const GALGAS_%!TYPE_IDENTIFIER% & inSourceObject) {
   if (this != & inSourceObject) {
@@ -220,7 +220,7 @@ GALGAS_%!TYPE_IDENTIFIER% & GALGAS_%!TYPE_IDENTIFIER%::operator = (const GALGAS_
   return *this ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_new (%?^
 foreach DIMENSION_LIST
@@ -236,7 +236,7 @@ foreach DIMENSION_LIST
   return result ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
        %!^%const int32_t /* inIndentation */) const {
@@ -255,7 +255,7 @@ end
   ioString << ">" ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uint GALGAS_%!TYPE_IDENTIFIER%::reader_axisCount (UNUSED_LOCATION_ARGS) const {
   GALGAS_uint result ;
@@ -265,7 +265,7 @@ GALGAS_uint GALGAS_%!TYPE_IDENTIFIER%::reader_axisCount (UNUSED_LOCATION_ARGS) c
   return result ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_range GALGAS_%!TYPE_IDENTIFIER%::reader_rangeForAxis (%?^%const GALGAS_uint & inAxisIndex,
                %!^%C_Compiler * inCompiler
@@ -286,7 +286,7 @@ end
   return result ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_uint GALGAS_%!TYPE_IDENTIFIER%::reader_sizeForAxis (%?^%const GALGAS_uint & inAxisIndex,
                %!^%C_Compiler * inCompiler
@@ -307,7 +307,7 @@ end
   return result ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::reader_isValueValidAtIndex (%?^
 foreach DIMENSION_LIST
@@ -331,7 +331,7 @@ end
   return result ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_%!ELEMENT_TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_valueAtIndex (%?^
 foreach DIMENSION_LIST
@@ -365,7 +365,7 @@ end
   return result ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_%!TYPE_IDENTIFIER%::insulate (LOCATION_ARGS) {
   if (isValid () && (mSharedObject->retainCount () > 1)) {
@@ -377,7 +377,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::insulate (LOCATION_ARGS) {
   }
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_%!TYPE_IDENTIFIER%::modifier_setValueAtIndex (%?^%GALGAS_%!ELEMENT_TYPE_IDENTIFIER% inValue,
 %
@@ -402,7 +402,7 @@ end
   }
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_%!TYPE_IDENTIFIER%::modifier_forceValueAtIndex (%?^%GALGAS_%!ELEMENT_TYPE_IDENTIFIER% inValue,
 %foreach DIMENSION_LIST
@@ -436,7 +436,7 @@ end
   }
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_%!TYPE_IDENTIFIER%::modifier_setSizeForAxis (%?^%GALGAS_uint inNewSize,
         %!^%GALGAS_uint inAxisIndex,
@@ -462,7 +462,7 @@ end
   }
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_%!TYPE_IDENTIFIER%::modifier_invalidateValueAtIndex (%
 foreach DIMENSION_LIST
@@ -487,7 +487,7 @@ end
   }
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_%!TYPE_IDENTIFIER%::modifier_setSize (%?^
 foreach DIMENSION_LIST
@@ -509,7 +509,7 @@ end
   }
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_%!TYPE_IDENTIFIER%::objectCompare (const cPtr_%!TYPE_IDENTIFIER% * inOperand) const {
   typeComparisonResult result =  kOperandEqual ;
@@ -536,7 +536,7 @@ typeComparisonResult cPtr_%!TYPE_IDENTIFIER%::objectCompare (const cPtr_%!TYPE_I
   return result ;
 }
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {
   typeComparisonResult result = (isValid () && inOperand.isValid ()) ? kOperandEqual : kOperandNotValid ;

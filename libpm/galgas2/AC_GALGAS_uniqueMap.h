@@ -1,38 +1,38 @@
-//-----------------------------------------------------------------------------*
-//                                                                             *
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //  AC_GALGAS_uniqueMap : Base class for GALGAS map                            *
-//                                                                             *
+//                                                                                                                     *
 //  This file is part of libpm library                                         *
-//                                                                             *
+//                                                                                                                     *
 //  Copyright (C) 2008, ..., 2014 Pierre Molinaro.                             *
-//                                                                             *
-//  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                               *
-//                                                                             *
-//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
-//  ECN, École Centrale de Nantes (France)                                     *
-//                                                                             *
-//  This library is free software; you can redistribute it and/or modify it    *
-//  under the terms of the GNU Lesser General Public License as published      *
-//  by the Free Software Foundation; either version 2 of the License, or       *
-//  (at your option) any later version.                                        *
-//                                                                             *
-//  This program is distributed in the hope it will be useful, but WITHOUT     *
-//  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or      *
-//  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for   *
-//  more details.                                                              *
-//                                                                             *
-//-----------------------------------------------------------------------------*
+//                                                                                                                     *
+//  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
+//                                                                                                                     *
+//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes                                          *
+//  ECN, École Centrale de Nantes (France)                                                                             *
+//                                                                                                                     *
+//  This library is free software; you can redistribute it and/or modify it                                            *
+//  under the terms of the GNU Lesser General Public License as published                                              *
+//  by the Free Software Foundation; either version 2 of the License, or                                               *
+//  (at your option) any later version.                                                                                *
+//                                                                                                                     *
+//  This program is distributed in the hope it will be useful, but WITHOUT                                             *
+//  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or                                              *
+//  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for                                           *
+//  more details.                                                                                                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
 #ifndef UNIQUE_MAP_BASE_CLASS_DEFINED
 #define UNIQUE_MAP_BASE_CLASS_DEFINED
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 #include "galgas2/AC_GALGAS_root.h"
 #include "galgas2/typeComparisonResult.h"
 #include "collections/TC_UniqueArray.h"
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 class cSharedUniqueMapRoot ;
 class cMapElement ;
@@ -54,11 +54,11 @@ class capCollectionElementArray ;
 class cUniqueMapNode ;
 class cSharedProxy ;
 
-//-----------------------------------------------------------------------------*
-//                                                                             *
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                    Data structures for map automaton                        *
-//                                                                             *
-//-----------------------------------------------------------------------------*
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
 typedef enum {
   kMapAutomatonNoIssue,
@@ -66,14 +66,14 @@ typedef enum {
   kMapAutomatonIssueError
 } mapAutomatonIssueEnum ;
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 typedef struct {
   const mapAutomatonIssueEnum mIssue ;
   const char * mIssueMessage ;
 } cMapAutomatonFinalIssue ;
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 typedef struct {
   const uint32_t mTargetStateIndex ;
@@ -81,7 +81,7 @@ typedef struct {
   const char * mIssueMessage ;
 } cMapAutomatonTransition ;
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 typedef struct {
   const uint32_t mFirstStateIndex ;
@@ -91,7 +91,7 @@ typedef struct {
   const char * mIssueMessage ;
 }cBranchOverrideTransformationDescriptor ;
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 typedef struct {
   const uint32_t mFirstCandidateStateIndex ;
@@ -101,18 +101,18 @@ typedef struct {
   const char * mIssueMessage ;
 }cBranchOverrideCompatibilityDescriptor ;
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 typedef struct {
   uint32_t mInitialStateIndex ;
   uint32_t mResultingStateIndex ;
 }cOverrideStateDescriptor ;
 
-//-----------------------------------------------------------------------------*
-//                                                                             *
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //     M A P    P R O X Y                                                      *
-//                                                                             *
-//-----------------------------------------------------------------------------*
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
 class AC_GALGAS_uniqueMapProxy : public AC_GALGAS_root {
   private : typedef enum {kNotValid, kIsNull, kIsRegular} enumMapProxyState ;
@@ -190,11 +190,11 @@ class AC_GALGAS_uniqueMapProxy : public AC_GALGAS_root {
 
 } ;
 
-//-----------------------------------------------------------------------------*
-//                                                                             *
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //     M A P                                                                   *
-//                                                                             *
-//-----------------------------------------------------------------------------*
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
 class AC_GALGAS_uniqueMap : public AC_GALGAS_root {
 //--------------------------------- Constructor
@@ -357,6 +357,6 @@ class AC_GALGAS_uniqueMap : public AC_GALGAS_root {
   friend class AC_GALGAS_uniqueMapProxy ;
 } ;
 
-//-----------------------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 #endif
