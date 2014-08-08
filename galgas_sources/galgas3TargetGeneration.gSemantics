@@ -76,7 +76,7 @@ filewrapper applicationGalgas3UpdateFileWrapper in "../generation_templates/coco
 #---------------------------------------------------------------------------*
 
 filewrapper targetGalgas3GenerationFileWrapper in "../generation_templates/target_generation" {
- "bat", "command", "rtf", "py"
+ "bat", "rtf", "py"
 }{
 }{
   template makefile_macosx_makefile "makefile-macosx/makefile.gTemplate" ?@string PROJECT_NAME ;
@@ -89,7 +89,7 @@ filewrapper targetGalgas3GenerationFileWrapper in "../generation_templates/targe
 
   template makefile_win32_on_macosx_makefile "makefile-win32-on-macosx/makefile.gTemplate" ?@string PROJECT_NAME ;
 
-  template makefile_msys_on_win32_makefile "makefile_msys_on_win32/makefile" ?@string PROJECT_NAME ;
+  template makefile_msys32_on_windows_makefile "makefile-msys32-on-windows/makefile.gTemplate" ?@string PROJECT_NAME ;
 
   template makefile_info_plist "project_xcode/Info.plist.txt"
     ?@string PROJECT_NAME
@@ -122,12 +122,12 @@ routine generateGalgas3MsysOnWin32Target
   ??@string inProjectDirectory
   ??@string inProjectName
 :
-  const @string dir := inProjectDirectory . "/makefile-msys-on-win32" ;
+  const @string dir := inProjectDirectory . "/makefile-msys32-on-windows" ;
   [dir makeDirectory] ;
   [[filewrapper targetGalgas3GenerationFileWrapper."makefile_msys_on_win32/build.bat"] writeToFileWhenDifferentContents !dir ."/build.bat" ?*] ;
   [[filewrapper targetGalgas3GenerationFileWrapper."makefile_msys_on_win32/clean.bat"] writeToFileWhenDifferentContents !dir ."/clean.bat" ?*] ;
   [[filewrapper targetGalgas3GenerationFileWrapper."makefile_msys_on_win32/install.bat"] writeToFileWhenDifferentContents !dir ."/install.bat" ?*] ;
-  [[filewrapper targetGalgas3GenerationFileWrapper.makefile_msys_on_win32_makefile !inProjectName] writeToFileWhenDifferentContents !dir ."/makefile" ?*] ;
+  [[filewrapper targetGalgas3GenerationFileWrapper.makefile_msys32_on_windows_makefile !inProjectName] writeToFileWhenDifferentContents !dir ."/makefile" ?*] ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -266,7 +266,7 @@ routine updateGalgas3Targets
   availableGenerationFeatures += !"makefile-x86linux32-on-macosx" ;
   availableGenerationFeatures += !"makefile-x86linux64-on-macosx" ;
   availableGenerationFeatures += !"makefile-win32-on-macosx" ;
-  availableGenerationFeatures += !"makefile-msys-on-win32" ;
+  availableGenerationFeatures += !"makefile-msys32-on-windows" ;
   availableGenerationFeatures += !"SnowLeopard" ;
   availableGenerationFeatures += !"Lion" ;
   availableGenerationFeatures += !"MountainLion" ;
@@ -362,7 +362,7 @@ routine updateGalgas3Targets
   if [generationFeatures hasKey !"makefile-win32-on-macosx"] then
     generateGalgas3MinGWOnMacOSXTarget !projectDirectory !inTargetName ;
   end if ;
-  if [generationFeatures hasKey !"makefile-msy-on-win32"] then
+  if [generationFeatures hasKey !"makefile-msys32-on-windows"] then
     generateGalgas3MsysOnWin32Target !projectDirectory !inTargetName ;
   end if ;
 #--- Update makefile file list
