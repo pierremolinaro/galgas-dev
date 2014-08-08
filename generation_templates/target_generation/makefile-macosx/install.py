@@ -8,6 +8,8 @@ import subprocess
 import sys
 import os
 import atexit
+if sys.version_info >= (2, 6) :
+  import multiprocessing
 
 #------------------------------------------------------------------------------*
 
@@ -21,8 +23,14 @@ def cleanup():
 atexit.register (cleanup)
 #--- Get script absolute path
 scriptDir = os.path.dirname (os.path.abspath (sys.argv [0]))
+#--- Getting core count
+if sys.version_info >= (2, 6) :
+  coreCount = multiprocessing.cpu_count ()
+else:
+  coreCount = 1
+#print coreCount
 #---
-childProcess = subprocess.Popen (["make", "install", "--warn-undefined-variables"], cwd=scriptDir)
+childProcess = subprocess.Popen (["make", "install", "-j" + str (coreCount), "--warn-undefined-variables"], cwd=scriptDir)
 #--- Wait for subprocess termination
 if childProcess.poll () == None :
   childProcess.wait ()
