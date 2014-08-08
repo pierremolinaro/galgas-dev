@@ -1,0 +1,105 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = ../galgas-book.tex
+
+%--------------------------------------------------------------
+\chapterLabel{Fonctions et procédures}{fonctions}
+%-------------------------------------------------------------
+
+GALGAS définit les sous-programmes suivants :
+\begin{itemize}
+  \item les \emph{fonctions} (dans ce chapitre, \refSectionPage{declarationFonction}) ;
+  \item les \emph{procédures} (dans ce chapitre, \refSectionPage{declarationProcedure}) ;
+  \item les \emph{méthodes} (\refSectionPage{categoryMethod}) ;
+  \item les \emph{getters} (\refSectionPage{categoryReader}) ;
+  \item les \emph{setters} (\refSectionPage{categoryModifier}).
+\end{itemize}
+
+\sectionLabel{Fonction}{declarationFonction}
+
+Une fonction GALGAS n'accepte que des arguments en entrée, et retourne une valeur. Elle est appelée dans une expression (\refSubsectionPage{appelFonction}).
+
+\subsection{déclaration d'une fonction}\index{Fonction!Déclaration}
+
+\lstset{emph={nom_fonction, liste_arguments_entree, var_resultat, liste_instructions}, emphstyle=\galgasEmphStyle}
+\begin{galgascode}
+internal # Optionnel
+func nom_fonction liste_arguments_entree -> @T var_resultat {
+  liste_instructions
+}
+\end{galgascode}
+
+Une fonction est désignée par \galgas{nom_fonction}. Ce nom est unique dans un projet GALGAS. La liste des paramètres d'entrée peut être vide (\refSectionPage{listeParametresEffectifsEntree}). La valeur renvoyée par l'exécution de la fonction est la valeur de \galgas{var_resultat} à l'issue de l'exécution de la \galgas{liste_instructions}. Aussi, l'exécution de la \galgas{liste_instructions} doit valuer \galgas{var_resultat}.
+
+Exemple :
+
+\begin{galgascode}
+func produit ?@uint a ?@uint b -> @uint resultat {
+  resultat = a * b
+}
+\end{galgascode}
+
+
+
+\subsection{Fonction interne à un fichier}
+
+En préfixant la déclaration d'une fonction par \galgas{internal}, on limite son appel aux expressions situées dans le même fichier que la déclaration.
+
+
+
+
+\subsection{Fonction \texttt{\%once}}
+
+Une fonction sans argument accepte le qualificatif \galgast{\%once} :
+
+\begin{galgascode}
+func %once masque-> @uint resultat {
+  resultat = 1 << 16
+}
+\end{galgascode}
+
+Le qualificatif \galgast{\%once} organise le cache du résultat : celui-ci est calculé lors du premier appel, est mémorisé internement, et est retourné directement lors des appels ultérieurs.
+
+Une fonction \galgast{\%once} peut être déclarée interne en la préfixant par \galgas{internal}.
+
+\begin{galgascode}
+internal func %once masque-> @uint resultat {
+  resultat = 1 << 16
+}
+\end{galgascode}
+
+
+
+
+
+\sectionLabel{Procédure}{declarationProcedure}\index{Procédure!Déclaration}
+
+Une procédure GALGAS accepte que des arguments en entrée, en sortie, en entrée/sortie. Elle est appelée dans une instruction (\refSectionPage{instructionAppelProcedure}).
+
+\subsection{déclaration d'une procédure}\index{Procédure!Déclaration}
+
+\lstset{emph={nom_procedure, liste_arguments, liste_instructions}, emphstyle=\galgasEmphStyle}
+\begin{galgascode}
+internal # Optionnel
+proc nom_procedure liste_arguments {
+  liste_instructions
+}
+\end{galgascode}
+
+Une procédure est désignée par \galgas{nom_procedure}. Ce nom est unique dans un projet GALGAS. La liste des paramètres en entrée, en sortie ou en entrée/sortie est décrite à la \refSectionPage{listeArgumentsFormels}).
+
+Exemple :
+
+\begin{galgascode}
+proc produit ?@uint a ?@uint b !@uint resultat {
+  resultat = a * b
+}
+\end{galgascode}
+
+
+
+\subsection{Procédure interne à un fichier}
+
+En préfixant la déclaration d'une procédure par \galgas{internal}, on limite son appel aux instruction situées dans le même fichier que la déclaration.
+
+
+
