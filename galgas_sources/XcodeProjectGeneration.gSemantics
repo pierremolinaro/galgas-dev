@@ -203,7 +203,6 @@ routine build_LIBPM_COCOA_GALGAS_group
   fileList += !"I_Stop.tiff" ;
   fileList += !"closeSourceFile.tiff" ;
   fileList += !"F_CocoaWrapperForGalgas.h" ;
-  fileList += !"PP_CocoaGalgasPrefix.pch" ;
 #--- Enter Resource files
   enter_xib_file_in_group
    !?ioXcodeProjectDescription
@@ -850,7 +849,6 @@ routine generateXcodeProject
   ??@bool inUsesARC
   ??@projectQualifiedFeatureMap inProjectQualifiedFeatureMap
 :
-  log inExternSourceNameSet_app ;
   const @bool handleUpdateFromInternet := [inProjectQualifiedFeatureMap hasKey !"repositoryURL"] ;
 #---
   @string bundleBaseName ;
@@ -1195,7 +1193,7 @@ routine generateXcodeProject
       !bundleBaseName . "." . inProjectName . ".updaterTool"
       !bundleBaseName . "." . inProjectName . ".updaterTool"
       !updaterToolTargetSettings
-      !"" # Precompiled header
+      !"" # No precompiled header
       !listForSourceBuildPhaseOfUpdaterTool
       !frameworkList
       ![@stringlist emptyList] # No Dependency
@@ -1318,7 +1316,9 @@ routine generateXcodeProject
   @stringlist toolTargetSettings [emptyList] ;
   toolTargetSettings += !"GCC_OPTIMIZATION_LEVEL = 2;" ;
   toolTargetSettings += !"GCC_PREPROCESSOR_DEFINITIONS = "
-  "\"LIBPM_MULTI_THREADING=" . if inMultiThreadingEnabled then "1" else "0" end . "\";" ;
+  "\"LIBPM_MULTI_THREADING=" + if inMultiThreadingEnabled then "1" else "0" end . "\""
+  " \"DO_NOT_GENERATE_CHECKINGS\""
+  + ";" ;
 #---
   @string toolTargetKey ;
   add_tool_target
@@ -1326,7 +1326,7 @@ routine generateXcodeProject
     !inProjectName
     ![inProjectName stringByCapitalizingFirstCharacter] . " Tool"
     !toolTargetSettings
-    !inLIBPMpath . "/galgas2/PP_GalgasPrefix.pch"
+    !"" # No precompiled header
     !listForSourceBuildPhaseOfTool
     !listForFrameworksBuildPhaseOfTool
     ![@stringlist emptyList] # No Dependency
@@ -1407,7 +1407,7 @@ routine generateXcodeProject
     !inProjectName . "_debug"
     ![inProjectName stringByCapitalizingFirstCharacter] . " Tool Debug"
     !debugToolTargetSettings
-    !"" # Precompiled header
+    !"" # No precompiled header
     !listForSourceBuildPhaseOfDebugTool
     !listForFrameworksBuildPhaseOfToolDebug
     ![@stringlist emptyList] # No Dependency

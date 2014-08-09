@@ -7,6 +7,7 @@
 //
 //--------------------------------------------------------------------------*
 
+#import "CocoaGalgasPrefix.h"
 #import "GGSUpdateCocoaGalgas.h"
 #import "OC_GGS_ApplicationDelegate.h"
 #import "PMDownloadData.h"

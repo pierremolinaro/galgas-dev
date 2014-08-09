@@ -2597,6 +2597,7 @@ override method @filewrapperDeclarationForGeneration appendSpecificImplementatio
   ?!@stringset ioInclusionSet
   !@string outImplementation
 :
+  ioInclusionSet += !"filewrapper-" + mFilewrapperName ;
   @string filewrapperImplementation := "" ;
   generateWrapperContents
     !mFilewrapperName
