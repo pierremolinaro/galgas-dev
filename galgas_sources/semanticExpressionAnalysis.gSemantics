@@ -1942,7 +1942,7 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
     end if ;
   end if ;
 #---
-  [filewrapperTemplateMap searchKey !mFilewrapperTemplateName ??@unifiedTypeMapProxyList templateSignature ?*] ;
+  [filewrapperTemplateMap searchKey !mFilewrapperTemplateName ??@functionSignature templateSignature ?*] ;
 #--- Analysis arguments
   @semanticExpressionListForGeneration effectiveParameterList ;
   if [mExpressions length] != [templateSignature length] then
@@ -1954,9 +1954,11 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
   else
     effectiveParameterList := [@semanticExpressionListForGeneration emptyList] ;
     foreach mExpressions, templateSignature do
-      @semanticExpressionForGeneration exp ;
-      [mExpression analyzeSemanticExpression !mType !inAnalysisContext !?ioVariableMap ?exp] ;
-      checkAssignmentTypes !mType ![exp mType] !mEndOfExpressionLocation ;
+      if mFormalSelector->string != mActualSelector->string then
+        error mActualSelector : "the selector should be '!" . mFormalSelector . if mFormalSelector->string != "" then ":" else "" end + "'" ;
+      end if ;
+      [mExpression analyzeSemanticExpression !mFormalArgumentType !inAnalysisContext !?ioVariableMap ??@semanticExpressionForGeneration exp] ;
+      checkAssignmentTypes !mFormalArgumentType ![exp mType] !mEndOfExpressionLocation ;
       effectiveParameterList += !exp ;
     end foreach ;
   end if ;

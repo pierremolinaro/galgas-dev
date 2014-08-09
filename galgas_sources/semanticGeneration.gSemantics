@@ -1832,6 +1832,9 @@ override method @routineImplementationForGeneration appendSpecificImplementation
   ?!@stringset ioInclusionSet
   !@string outImplementation
 :
+  if mhasHeader then
+    ioInclusionSet += !"proc-" . mRoutineName ;
+  end if ;
   generateProcedure
     !"routine_" . [mRoutineName identifierRepresentation]
     !?ioInclusionSet

@@ -56,6 +56,7 @@ filewrapper optionGenerationTemplates in "../generation_templates/option_generat
     ?@string OPTION_COMPONENT_NAME
   ;
   template optionImplementationCocoa "option-implementation-cocoa.gTemplate"
+    ?@string OPTION_HEADER_FILE_NAME
     ?@string OPTION_COMPONENT_NAME
     ?@commandLineOptionMap BOOL_OPTION_MAP
     ?@commandLineOptionMap UINT_OPTION_MAP
@@ -234,7 +235,8 @@ routine compileOptionComponentAST
       !"//"
       !"\n\n" # Defaut user zone1
       ![filewrapper optionGenerationTemplates.optionImplementationCocoa
-        ![inOptionComponentName string]
+        !inOptionComponentName->string . "-cocoa"
+        !inOptionComponentName->string
         !boolOptionMap
         !uintOptionMap
         !stringOptionMap
@@ -284,11 +286,10 @@ routine generateOptionComponentGalgas3
   ??@commandLineOptionMap uintOptionMap
   ??@commandLineOptionMap stringOptionMap
   ?!@stringlist ioToolProductFileList
-  ?!@stringlist ioAppProductFileList
   ?!@stringset ioAllProductFileSet
 :
   ioToolProductFileList += !"option-" . inOptionComponentName . ".cpp" ;
-  ioAppProductFileList += !"option-" . inOptionComponentName . "-cocoa.m" ;
+#  ioAppProductFileList += !"option-" . inOptionComponentName . "-cocoa.m" ;
 #--- Generate header
   if [@uint errorCount] == 0 then
     ioAllProductFileSet += !"option-" . inOptionComponentName . ".h" ;
@@ -353,6 +354,7 @@ routine generateOptionComponentGalgas3
       !"//"
       !"\n\n" # Defaut user zone1
       ![filewrapper optionGenerationTemplates.optionImplementationCocoa
+        !"option-" . inOptionComponentName . "-cocoa"
         !inOptionComponentName
         !boolOptionMap
         !uintOptionMap

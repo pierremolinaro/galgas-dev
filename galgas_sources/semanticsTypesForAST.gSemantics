@@ -1814,16 +1814,6 @@ list @galgas3OptionComponentListAST {
 
 #---------------------------------------------------------------------------*
 
-list @galgas3GUIComponentListAST {
-  @lstring mGUIComponentName  ;
-  @lstring mGUIClass ;
-  @lstringlist mImportedOptionList ;
-  @guiSimpleAttributeListAST mGlobalSimpleAttributeList ;
-  @withLexiqueListAST mWithLexiqueList ;
-}
-
-#---------------------------------------------------------------------------*
-
 list @galgas3SyntaxComponentListAST {
   @lstring mSyntaxComponentName ;
   @lstring mImportedLexiqueFilePath ; 
@@ -1875,6 +1865,15 @@ struct @programComponentAST {
   @prologueEpilogueList mEpilogueList ;
   @programRuleList mProgramRules ;
   @semanticDeclarationListAST mSemanticDeclarationList ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @galgas3GUIComponentListAST {
+  @lstring mGUIComponentName  ;
+  @lstringlist mImportedOptionList ;
+  @guiSimpleAttributeListAST mGlobalSimpleAttributeList ;
+  @withLexiqueListAST mWithLexiqueList ;
 }
 
 #---------------------------------------------------------------------------*

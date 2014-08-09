@@ -776,6 +776,7 @@ filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_gener
     ?@lexiqueAnalysisContext unused LEXIQUE_ANALYSIS_CONTEXT
   ;
   template cocoaImplementationZone2 "lexique_cocoa_implementation.m.gTemplate"
+    ?@string LEXIQUE_HEADER_FILE_NAME
     ?@string LEXIQUE_CLASS_NAME
     ?@lexicalAttributeMap LEXICAL_ATTRIBUTE_MAP
     ?@lexicalMessageMap unused LEXICAL_MESSAGE_MAP
@@ -1099,6 +1100,7 @@ routine compileLexiqueComponentFromAST
       !"//"
       !"\n\n" # Defaut user zone1
       ![filewrapper lexiqueGenerationTemplates.cocoaImplementationZone2
+         !lexiqueClassName . "-cocoa"
          !lexiqueClassName
          ![lexiqueAnalysisContext mLexicalAttributeMap]
          ![lexiqueAnalysisContext mLexicalMessageMap]
@@ -1398,6 +1400,7 @@ routine compileLexiqueComponentGalgas3
     ] ;
   #--- Cocoa implementation
     const cocoaImplementation := [filewrapper lexiqueGenerationTemplates.cocoaImplementationZone2
+      !"lexique-" + lexiqueClassName + "-cocoa"
       !lexiqueClassName
       ![lexiqueAnalysisContext mLexicalAttributeMap]
       ![lexiqueAnalysisContext mLexicalMessageMap]
@@ -1426,7 +1429,6 @@ routine generateLexiqueComponentsGalgas3
   ??@string inOutputDirectory
   ??@lexiqueComponentGenerationList inLexiqueComponentGenerationList
   ?!@stringlist ioToolProductFileList
-  ?!@stringlist ioAppProductFileList
   ?!@stringset ioAllProductFileSet
 :
   if [@uint errorCount] == 0 then
@@ -1466,7 +1468,7 @@ routine generateLexiqueComponentsGalgas3
         !"\n"
       ] ;
     #--- Generate Cocoa implementation file
-      ioAppProductFileList += !"lexique-" + mLexiqueComponentName + "-cocoa.m" ;
+#      ioAppProductFileList += !"lexique-" + mLexiqueComponentName + "-cocoa.m" ;
       ioAllProductFileSet += !"lexique-" + mLexiqueComponentName . "-cocoa.m" ;
       [@string generateFileWithPattern
         !inOutputDirectory

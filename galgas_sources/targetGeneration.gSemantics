@@ -242,12 +242,6 @@ routine updateTargets
 #---
   @stringset externSourceSet_app [emptySet] ;
   @stringset guiSourceSet_app [emptySet] ;
-  @stringset scannerSourceSet_app [emptySet] ;
-  @stringset optionSourceSet_app [emptySet] ;
-  @stringset semanticsSourceSet_app [emptySet] ;
-  @stringset syntaxSourceSet_app [emptySet] ;
-  @stringset grammarSourceSet_app [emptySet] ;
-  @stringset programSourceSet_app [emptySet] ;
 #---
   @stringset sourceFileSet [emptySet] ;
   @stringlist generatedFileListForMakefile [emptyList] ;
@@ -324,7 +318,7 @@ routine updateTargets
       generatedFileListForMakefile += !cppFile ;
       optionSourceSet_tool += !baseName ;
     when guiSourceFile :
-      guiSourceSet_app += !baseName ;
+      guiSourceSet_app += !baseName + ".m" ;
     end switch ;
   end foreach ;
 #--- Parse features
@@ -568,30 +562,27 @@ routine updateTargets
     const @string intermediateFilePath := [inProjectSourceFilePath stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT/file_list_for_xcode_project.txt" ;
   #---
     [xcodeProjectPath makeDirectory] ;
+  #--- Build set of all C++ files, both headers ans implementation files
+    @stringset all_h_cpp_files := {} ;
+    for s in guiSourceSet_tool | scannerSourceSet_tool | optionSourceSet_tool | semanticsSourceSet_tool | syntaxSourceSet_tool | grammarSourceSet_tool | programSourceSet_tool do
+      all_h_cpp_files += !s + ".h" ;
+      all_h_cpp_files += !s + ".cpp" ;
+    end for ;
   #--- Build intermediate
     generateXcodeProject
       !externSourceSet_tool
-      !guiSourceSet_tool
-      !scannerSourceSet_tool
-      !optionSourceSet_tool
-      !semanticsSourceSet_tool
-      !syntaxSourceSet_tool
-      !grammarSourceSet_tool
-      !programSourceSet_tool
+      !all_h_cpp_files
+      !"../galgas_sources/GALGAS_OUTPUT"
       !externSourceSet_app
       !guiSourceSet_app
-      !scannerSourceSet_app
-      !optionSourceSet_app
-      !semanticsSourceSet_app
-      !syntaxSourceSet_app
-      !grammarSourceSet_app
-      !programSourceSet_app
       !inTargetName # XCode project base name
+      !{}
       !xcodeProjectPath # Full Path of xxx.xcodeproj file
       !resourceFiles
       !intermediateFilePath
       !SDK
       !libpmPath
+      !"" # No additional headers
       !multiThreadingEnabled
       !usesARC
       !inProjectQualifiedFeatureMap
