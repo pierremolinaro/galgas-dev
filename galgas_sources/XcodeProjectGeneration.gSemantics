@@ -677,9 +677,10 @@ routine build_FRAMEWORKS_group
   ?!@XcodeObjectReferenceList ioFileListForGroup
   ??@stringset inExternSourceForTool
   ??@stringset inExternSourceForApp
+  ??@stringlist inHandCodedLinkAppFileList
   ??@bool inHandleUpdateFromInternet
 :
-  @stringset fileSet [emptySet] ;
+  @stringset fileSet [setWithStringList !inHandCodedLinkAppFileList] ;
   fileSet += !"AppKit.framework" ;
   fileSet += !"Cocoa.framework" ;
   if inHandleUpdateFromInternet then
@@ -1087,7 +1088,8 @@ routine generateXcodeProject
     !?XcodeProjectDescription
     !?fileListOf_FRAMEWORKS_group
     !inExternSourceNameSet_tool
-    !inExternSourceNameSet_app | [@stringset setWithStringList !inHandCodedLinkAppFileList]
+    !inExternSourceNameSet_app # | [@stringset setWithStringList !inHandCodedLinkAppFileList]
+    !inHandCodedLinkAppFileList
     !handleUpdateFromInternet
   ;
 #---
@@ -1315,10 +1317,10 @@ routine generateXcodeProject
 #--- Target settings
   @stringlist toolTargetSettings [emptyList] ;
   toolTargetSettings += !"GCC_OPTIMIZATION_LEVEL = 2;" ;
-  toolTargetSettings += !"GCC_PREPROCESSOR_DEFINITIONS = "
+  toolTargetSettings += !"GCC_PREPROCESSOR_DEFINITIONS = ("
   "\"LIBPM_MULTI_THREADING=" + if inMultiThreadingEnabled then "1" else "0" end . "\""
-  " \"DO_NOT_GENERATE_CHECKINGS\""
-  + ";" ;
+  ", DO_NOT_GENERATE_CHECKINGS"
+  + ") ;" ;
 #---
   @string toolTargetKey ;
   add_tool_target
@@ -1424,6 +1426,7 @@ routine generateXcodeProject
   ;
 #--- Frameworks Build Phase
   @Xcode_PBXBuildFile_list listForFrameworksBuildPhaseOfCocoaApp [emptyList] ;
+  log inHandCodedLinkAppFileList ;
   fileSet := [@stringset setWithStringList !inHandCodedLinkAppFileList] ;
   fileSet += !"AppKit.framework" ;
   fileSet += !"Cocoa.framework" ;
@@ -1466,7 +1469,7 @@ routine generateXcodeProject
     !"Cocoa" . [inProjectName stringByCapitalizingFirstCharacter]
     ![inProjectName stringByCapitalizingFirstCharacter] . " Cocoa"
     !cocoaAppTargetSettings
-    !inLIBPMpath . "/cocoa_galgas/PP_CocoaGalgasPrefix.pch" # Precompiled header (empty string if none)
+    !"" # Precompiled header (empty string if none)
     !"Info.plist" # Info.plist file (empty string if none)
     !listForSourceBuildPhaseOfCocoaApp
     !listForFrameworksBuildPhaseOfCocoaApp
