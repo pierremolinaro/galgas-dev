@@ -103,7 +103,7 @@ map @wrapperDirectoryMap { # Key is directory name
 #---------------------------------------------------------------------------*
 
 map @filewrapperTemplateMap {
-  @unifiedTypeMapProxyList mTemplateSignature ;
+  @functionSignature mTemplateSignature ;
   @lstring mFilewrapperTemplatePath ;
   insert insertKey error message "the '%K' filewrapper template has been already declared in %L" ;
   search searchKey error message "the '%K' filewrapper template is not declared" ;
@@ -1937,11 +1937,11 @@ override method @filewrapperDeclarationAST enterInSemanticContext
 #--- Templates
   @filewrapperTemplateMap filewrapperTemplateMap [emptyMap] ;
   foreach mFilewrapperTemplateList do
-    @unifiedTypeMapProxyList templateSignature [emptyList] ;
+    @functionSignature templateSignature [emptyList] ;
     foreach mFilewrapperTemplateFormalInputParameters do
       @unifiedTypeMapProxy parameterTypeIndex ;
       [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mFormalArgumentTypeName ?parameterTypeIndex] ;
-      templateSignature += !parameterTypeIndex ;
+      templateSignature += !mFormalTemplateSelector !parameterTypeIndex !mFormalArgumentName->string ;
     end foreach ;
     [!?filewrapperTemplateMap insertKey
       !mFilewrapperTemplateName

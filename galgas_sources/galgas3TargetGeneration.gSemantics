@@ -212,12 +212,14 @@ routine updateGalgas3Targets
   ??@projectQualifiedFeatureMap inProjectQualifiedFeatureMap
   ??@lstringlist inTargetFeatureList
   ??@stringlist inToolProductFileList
-  ??@stringlist unused inAppProductFileList
-  ??@stringlist inHandCodedSourceFileList
+  ??@stringlist inAppProductFileList
+  ??@stringlist inHandCodedSourceToolFileList
   ??@stringset inHandCodedSourceDirectorySet
   ??@stringset inHandledExtensionSet
   ??@stringlist inHandCodedLinkToolFileList
   ?!@stringset ioAllProductFileSet
+  ??@stringlist inHandCodedSourceAppFileList
+  ??@stringlist inHandCodedLinkAppFileList
 :
   const projectDirectory := [inProjectSourceFilePath stringByDeletingLastPathComponent] ;
 #--- Update project header
@@ -240,23 +242,8 @@ routine updateGalgas3Targets
   end with ;
 #--- 
 #--- Check target names, file base name uniqueness, and build target file list
-  var externSourceSet_tool := [@stringset emptySet] ;
-  @stringset guiSourceSet_tool [emptySet] ;
-  @stringset scannerSourceSet_tool [emptySet] ;
-  @stringset optionSourceSet_tool [emptySet] ;
-  @stringset semanticsSourceSet_tool [emptySet] ;
-  @stringset syntaxSourceSet_tool [emptySet] ;
-  @stringset grammarSourceSet_tool [emptySet] ;
-  @stringset programSourceSet_tool [emptySet] ;
 #---
-  @stringset externSourceSet_app [emptySet] ;
-  @stringset guiSourceSet_app [emptySet] ;
-  @stringset scannerSourceSet_app [emptySet] ;
-  @stringset optionSourceSet_app [emptySet] ;
-  @stringset semanticsSourceSet_app [emptySet] ;
-  @stringset syntaxSourceSet_app [emptySet] ;
-  @stringset grammarSourceSet_app [emptySet] ;
-  @stringset programSourceSet_app [emptySet] ;
+  @stringset guiSourceSet_app [setWithStringList !inAppProductFileList] ;
 #---
   @stringset sourceFileSet [emptySet] ;
 #--- Parse features
@@ -368,7 +355,7 @@ routine updateGalgas3Targets
 #--- Update makefile file list
   const @string newFileListContents := [filewrapper targetGalgas3GenerationFileWrapper.makefile_file_list
     !inHandCodedSourceDirectorySet
-    !inHandCodedSourceFileList
+    !inHandCodedSourceToolFileList
     !inToolProductFileList
     !inHandCodedLinkToolFileList
     !libpmPath
@@ -493,32 +480,25 @@ routine updateGalgas3Targets
     const @string xcodeProjectPath := dir . "/" . inTargetName . ".xcodeproj" ; # Actually a directory
     const @string intermediateFilePath := [inProjectSourceFilePath stringByDeletingLastPathComponent] . "/build/output/file-list-for-xcode-project.txt" ;
     ioAllProductFileSet += !"file-list-for-xcode-project.txt" ;
+  #--- Add sources for application
+    const externSourceSet_app := [@stringset setWithStringList !inHandCodedSourceAppFileList] ;
   #---
     [xcodeProjectPath makeDirectory] ;
   #--- Build intermediate
     generateXcodeProject
-      !externSourceSet_tool
-      !guiSourceSet_tool
-      !scannerSourceSet_tool
-      !optionSourceSet_tool
-      !semanticsSourceSet_tool
-      !syntaxSourceSet_tool
-      !grammarSourceSet_tool
-      !programSourceSet_tool
+      ![@stringset setWithStringList !inHandCodedSourceToolFileList]
+      ![@stringset setWithStringList !inToolProductFileList]
+      !"../build/output"
       !externSourceSet_app
       !guiSourceSet_app
-      !scannerSourceSet_app
-      !optionSourceSet_app
-      !semanticsSourceSet_app
-      !syntaxSourceSet_app
-      !grammarSourceSet_app
-      !programSourceSet_app
       !inTargetName # XCode project base name
+      !inHandCodedLinkAppFileList
       !xcodeProjectPath # Full Path of xxx.xcodeproj file
       !resourceFiles
       !intermediateFilePath
       !SDK
       !libpmPath
+      !"../build/user-headers"
       !multiThreadingEnabled
       !usesARC
       !inProjectQualifiedFeatureMap

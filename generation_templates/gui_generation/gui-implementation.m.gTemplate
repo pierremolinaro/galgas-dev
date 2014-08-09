@@ -2,7 +2,7 @@
 #import "OC_Token.h"
 #import "F_CocoaWrapperForGalgas.h"
 %foreach [GUI_CONTEXT mWithLexiqueList] do
-  %#import "%!mLexiqueClassName%-cocoa.m"\n%
+  %#import "%if GENERATE_FOR_GALGAS3 then %lexique-%end !mLexiqueClassName%-cocoa.m"\n%
 end
 foreach [GUI_CONTEXT mNibAndClassList] do
   %#import "%!mValue%.h"\n%
@@ -41,7 +41,7 @@ end%    nil
 
 %
 foreach [GUI_CONTEXT mImportedOptionComponentList] do
-  %#import "%!mValue%-cocoa.m"\n%
+  %#import "%if GENERATE_FOR_GALGAS3 then %option-%end!mValue%-cocoa.m"\n%
 end
 %
 //---------------------------------------------------------------------------------------------------------------------*

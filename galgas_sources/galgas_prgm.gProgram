@@ -554,6 +554,7 @@ routine compileProject
     end if ;
   end foreach ;
 #---------------------------------- Hand coded source files
+  var handCodedLinkAppFileList := [@stringlist emptyList] ;
   var handCodedSourceAppFileList := [@stringlist emptyList] ;
   var handCodedSourceToolFileList := [@stringlist emptyList] ;
   var handCodedLinkToolFileList := [@stringlist emptyList] ;
@@ -573,6 +574,8 @@ routine compileProject
       end if ;
     elsif mFeatureName->string == "tool-link" then
       handCodedLinkToolFileList += !mFeatureValue->string ;
+    elsif mFeatureName->string == "app-link" then
+      handCodedLinkAppFileList += !mFeatureValue->string ;
     end if ;
   end for ;
 #---------------------------------- Display result
@@ -641,6 +644,17 @@ routine compileProject
       end if ;
     end for ;
   end if ;
+#---------------------------------- Compile GUI components
+  @optionComponentMapForGeneration optionComponentMapForGeneration ;
+  if [@uint errorCount] == 0 then
+    compileAllGuiComponentFromASTGalgas3
+      !declarationAST->mGUIComponentList
+      !semanticContext
+      ?optionComponentMapForGeneration
+    ;
+  else
+    optionComponentMapForGeneration := {} ;
+  end if ;
 #---------------------------------- Compile program declarations
   var programHeaderContents := "" ;
   var programCppContents := "" ;
@@ -694,6 +708,7 @@ routine compileProject
       !productDirectory
       !programHeaderContents
       !programCppContents
+      !optionComponentMapForGeneration
       !grammarGenerationList
       !lexiqueComponentGenerationList
       !appProductFileList
@@ -706,6 +721,8 @@ routine compileProject
       !handCodedSourceDirectorySet
       !handCodedSourceToolFileList
       !handCodedLinkToolFileList
+      !handCodedSourceAppFileList
+      !handCodedLinkAppFileList
     ;
   end if ;
 end routine ;
@@ -720,6 +737,7 @@ routine projectGeneration
   ??@string inProductDirectory
   ??@string inProgramHeaderContents
   ??@string inProgramCppContents
+  ??@optionComponentMapForGeneration inOptionComponentMapForGeneration
   ??@grammarComponentGenerationList inGrammarGenerationList
   ??@lexiqueComponentGenerationList inLexiqueComponentGenerationList
   ??@stringlist inAppProductFileList
@@ -732,6 +750,8 @@ routine projectGeneration
   ??@stringset inHandCodedSourceDirectorySet
   ??@stringlist inHandCodedSourceToolFileList
   ??@stringlist inHandCodedLinkToolFileList
+  ??@stringlist inHandCodedSourceAppFileList
+  ??@stringlist inHandCodedLinkAppFileList
 :
   var appProductFileList := inAppProductFileList ;
 #---------------------------------- File generation
@@ -761,6 +781,14 @@ routine projectGeneration
       !inProductDirectory
       !inLexiqueComponentGenerationList
       !?toolCppFileList
+      !?allProductFileSet
+    ;
+  end if ;
+#---------------------------------- Generate GUI components
+  if [@uint errorCount] == 0 then
+    generateAllGuiComponentsGalgas3
+      !inOptionComponentMapForGeneration
+      !inProductDirectory
       !?appProductFileList
       !?allProductFileSet
     ;
@@ -776,7 +804,6 @@ routine projectGeneration
           !mUIntOptionMap
           !mStringOptionMap
           !?toolCppFileList
-          !?appProductFileList
           !?allProductFileSet
         ;
       end if ;
@@ -836,6 +863,8 @@ routine projectGeneration
       !handledExtensionSet
       !inHandCodedLinkToolFileList
       !?allProductFileSet
+      !inHandCodedSourceAppFileList
+      !inHandCodedLinkAppFileList
     ;
   end if ;
 #---------------------------------- Remove useless files
