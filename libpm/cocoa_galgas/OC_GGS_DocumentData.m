@@ -33,7 +33,7 @@ static NSMutableDictionary * gDocumentDataDictionary ;
 @synthesize fileURL ;
 
 //---------------------------------------------------------------------------------------------------------------------*
-//    -locationForLineInSource:                                                *
+//    -locationForLineInSource:                                                                                        *
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (NSUInteger) locationForLineInSource: (NSUInteger) inLine {
@@ -55,14 +55,14 @@ static NSMutableDictionary * gDocumentDataDictionary ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//    setIssueArray:                                                           *
+//    setIssueArray:                                                                                                   *
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (void) setIssueArray: (NSArray *) inIssueArray {
   mIssueArray = [NSMutableArray new] ;
   for (PMIssueDescriptor * issue in inIssueArray) {
-   //  NSLog (@"issue.issueURL %@, fileURL %@", issue.issueURL, fileURL) ;
-    if ([issue.issueURL isEqualTo:fileURL]) {
+    // NSLog (@"issue.issueURL %@, fileURL %@", issue.issueStandardizedURL, fileURL) ;
+    if ([issue.issueStandardizedURL isEqualTo:fileURL.standardizedURL]) {
       [issue setLocationInSourceString:[self locationForLineInSource:issue.issueLine] + issue.issueColumn - 1] ;
       [mIssueArray addObject:issue] ;
     }
@@ -71,7 +71,7 @@ static NSMutableDictionary * gDocumentDataDictionary ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//    broadcastIssueArray:                                                     *
+//    broadcastIssueArray:                                                                                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
 static NSArray * gIssueArray ;

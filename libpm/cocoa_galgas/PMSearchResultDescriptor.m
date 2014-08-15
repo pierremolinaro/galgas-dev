@@ -20,8 +20,8 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (PMSearchResultDescriptor *) initWithLine: (NSString *) inLine
-    range: (NSRange) inRange
-    sourceFilePath: (NSString *) inFilePath {
+                               range: (NSRange) inRange
+                               sourceFilePath: (NSString *) inFilePath {
   self = [self init] ;
   if (self) {
     mFoundItem = inLine ;
@@ -35,12 +35,12 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (PMSearchResultDescriptor *) initWithEntries: (NSArray *) inEntryArray
-    sourceFilePath: (NSString *) inFilePath {
+                               sourceFilePath: (NSString *) inFilePath {
   self = [self init] ;
   if (self) {
     mFoundItem = inFilePath.copy ;
     mEntryArray = inEntryArray ;
-    //mFilePath = inFilePath.copy ;
+    mFilePath = inFilePath.copy ;
     mColor = [NSColor blackColor] ;
   }
   return self ;

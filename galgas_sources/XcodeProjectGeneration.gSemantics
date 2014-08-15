@@ -681,6 +681,7 @@ routine build_FRAMEWORKS_group
   ??@bool inHandleUpdateFromInternet
 :
   @stringset fileSet [setWithStringList !inHandCodedLinkAppFileList] ;
+#  @stringset fileSet [emptySet] ;
   fileSet += !"AppKit.framework" ;
   fileSet += !"Cocoa.framework" ;
   if inHandleUpdateFromInternet then
@@ -1088,7 +1089,7 @@ routine generateXcodeProject
     !?XcodeProjectDescription
     !?fileListOf_FRAMEWORKS_group
     !inExternSourceNameSet_tool
-    !inExternSourceNameSet_app # | [@stringset setWithStringList !inHandCodedLinkAppFileList]
+    !inExternSourceNameSet_app
     !inHandCodedLinkAppFileList
     !handleUpdateFromInternet
   ;
@@ -1426,7 +1427,6 @@ routine generateXcodeProject
   ;
 #--- Frameworks Build Phase
   @Xcode_PBXBuildFile_list listForFrameworksBuildPhaseOfCocoaApp [emptyList] ;
-  log inHandCodedLinkAppFileList ;
   fileSet := [@stringset setWithStringList !inHandCodedLinkAppFileList] ;
   fileSet += !"AppKit.framework" ;
   fileSet += !"Cocoa.framework" ;

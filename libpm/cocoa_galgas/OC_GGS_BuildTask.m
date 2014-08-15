@@ -129,7 +129,6 @@
     mTask = nil ;
     mPipe = nil ;
     [mDocument buildCompleted] ;
-//    mDocument = nil ;
   }
 }
 
