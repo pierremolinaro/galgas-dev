@@ -52,10 +52,10 @@ Le \refTableau{ArgumentFormelEntree} liste les différentes formes d'un argument
   \subfloat[Argument formel]{
     \begin{tabular}{ll}
       \textbf{Syntaxe} & \textbf{Remarque} \\
-      \galgas{\?@T var} & \galgas{var} est modifiable localement \\
-      \galgas{\?@T unused var} & \galgas{var} n'est pas utilisée \\
-      \galgas{\?\?@T var} & \galgas{var} est une constante \\
-      \galgas{\?@T unused var} & \galgas{var} est une constante inutilisée \\
+      \galgast{?}\galgas{@T variable} & \galgas{variable} est modifiable localement \\
+      \galgast{?}\galgas{@T unused variable} & \galgas{variable} n'est pas utilisée \\
+      \galgast{?}\galgas{let @T constante} & \galgas{constante} est une constante \\
+      \galgast{?}\galgas{let @T unused constante} & \galgas{constante} est une constante inutilisée \\
     \end{tabular}
   }
   \subfloat[Paramètre effectif]{
@@ -81,14 +81,14 @@ Le \refTableau{ArgumentFormelEntreeSortie} liste les différentes formes d'un ar
   \subfloat[Argument formel]{
     \begin{tabular}{ll}
       \textbf{Syntaxe} & \textbf{Remarque} \\
-      \galgas{\?\!@T var} & \galgas{var} est modifiable \\
-      \galgas{\?\!@T unused var} & \galgas{var} n'est pas utilisée \\
+      \galgast{?!}\galgas{@T variable} & \galgas{variable} est modifiable \\
+      \galgast{?!}\galgas{@T unused variable} & \galgas{variable} n'est pas utilisée \\
     \end{tabular}
   }
   \subfloat[Paramètre effectif]{
     \begin{tabular}{l}
       \textbf{Syntaxe} \\
-      \galgast{!?cible}~~~~~~~~~~~\\
+      \galgast{!?}\galgas{cible}~~~~~~~~~~~\\
       \\
     \end{tabular}
   }
@@ -113,10 +113,10 @@ Le \refTableau{ArgumentFormelEntreeSortie} liste les différentes formes d'un ar
   \subfloat[Paramètre effectif]{
     \begin{tabular}{ll}
       \textbf{Syntaxe} & \textbf{Remarque} \\
-      \galgast{?nom} & Affectation d'une variable \\
-      \galgast{?@T nom} & Déclaration et affectation d'une variable \\
-      \galgast{?*} & Variable anonyme \\
-      \galgast{??@T nom} & Déclaration et affectation d'une constante \\
+      \galgast{?}\galgas{variable} & Affectation de variable \\
+      \galgast{?}\galgas{@T variable} & Déclaration et affectation de variable \\
+      \galgast{?}\galgas{*} & Variable anonyme \\
+      \galgast{?}\galgas{let @T constante} & Déclaration et affectation de constante \\
     \end{tabular}
   }
   \caption{Argument formel en sortie, paramètre effectif en entrée}
