@@ -234,10 +234,10 @@ GALGAS_uint_36__34_ GALGAS_uint_36__34_::right_shift_operation (const GALGAS_uin
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void product (const uint64_t inOperand1,
-                     const uint64_t inOperand2,
-                     uint64_t & outResult,
-                     bool & outOverflow) {
+static void productUint64 (const uint64_t inOperand1,
+                           const uint64_t inOperand2,
+                           uint64_t & outResult,
+                           bool & outOverflow) {
   const uint64_t lowWord1 = inOperand1 & UINT32_MAX ;
   const uint64_t highWord1 = inOperand1 >> 32 ;
   const uint64_t lowWord2 = inOperand2 & UINT32_MAX ;
@@ -258,7 +258,7 @@ GALGAS_uint_36__34_ GALGAS_uint_36__34_::multiply_operation (const GALGAS_uint_3
   if (isValid () && inOperand2.isValid ()) {
     uint64_t v ;
     bool overflow ;
-    product (mUInt64Value, inOperand2.mUInt64Value, v, overflow) ;
+    productUint64 (mUInt64Value, inOperand2.mUInt64Value, v, overflow) ;
     if (overflow) {
       inCompiler->onTheFlyRunTimeError ("* operation overflow" COMMA_THERE) ;
     }else{
