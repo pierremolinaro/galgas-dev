@@ -205,10 +205,10 @@ GALGAS_sint_36__34_ GALGAS_sint_36__34_::substract_operation (const GALGAS_sint_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static void product (const uint64_t inOperand1,
-                     const uint64_t inOperand2,
-                     uint64_t & outResult,
-                     bool & outOverflow) {
+static void productSint64 (const uint64_t inOperand1,
+                           const uint64_t inOperand2,
+                           uint64_t & outResult,
+                           bool & outOverflow) {
   const uint64_t lowWord1 = inOperand1 & UINT32_MAX ;
   const uint64_t highWord1 = inOperand1 >> 32 ;
   const uint64_t lowWord2 = inOperand2 & UINT32_MAX ;
@@ -246,7 +246,7 @@ GALGAS_sint_36__34_ GALGAS_sint_36__34_::multiply_operation (const GALGAS_sint_3
     bool resultIsPositive = (mSInt64Value >= 0) == (inOperand2.mSInt64Value >= 0) ;
     uint64_t unsignedResult ;
     bool overflow ;
-    product (operand1, operand2, unsignedResult, overflow) ;
+    productSint64 (operand1, operand2, unsignedResult, overflow) ;
     int64_t resultValue = 0 ;
     if (! overflow) {
       if (resultIsPositive) {

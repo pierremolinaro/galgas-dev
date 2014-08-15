@@ -43,9 +43,9 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  #define LINE_AND_SOURCE_FILE , sourceText ()->sourceFilePath ().cString (HERE), lineNumber ()
+  #define LINE_AND_SOURCE_FILE_FOR_LEXIQUE , sourceText ()->sourceFilePath ().cString (HERE), lineNumber ()
 #else
-  #define LINE_AND_SOURCE_FILE 
+  #define LINE_AND_SOURCE_FILE_FOR_LEXIQUE
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -972,7 +972,7 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
             #ifdef TRACE_LL1_PARSING
               co << expectedTerminalsArray.count () << " Token(s) in syntax error message\n" ; co.flush () ;
             #endif
-            parsingError (expectedTerminalsArray, currentToken LINE_AND_SOURCE_FILE) ;
+            parsingError (expectedTerminalsArray, currentToken LINE_AND_SOURCE_FILE_FOR_LEXIQUE) ;
             result = loop = false ;
             listForSecondPassParsing.makeListEmpty () ;
           }
@@ -1015,7 +1015,7 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
                                                     inDecisionTable,
                                                     inDecisionTableIndexes,
                                                     expectedTerminalsArray) ;
-          parsingError (expectedTerminalsArray, currentToken LINE_AND_SOURCE_FILE) ;
+          parsingError (expectedTerminalsArray, currentToken LINE_AND_SOURCE_FILE_FOR_LEXIQUE) ;
           result = loop = false ;
           listForSecondPassParsing.makeListEmpty () ;
         }
@@ -1052,7 +1052,7 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
                                                   inDecisionTable,
                                                   inDecisionTableIndexes,
                                                   expectedTerminalsArray) ;     
-        parsingError (expectedTerminalsArray, currentToken LINE_AND_SOURCE_FILE) ;
+        parsingError (expectedTerminalsArray, currentToken LINE_AND_SOURCE_FILE_FOR_LEXIQUE) ;
         result = loop = false ;
         listForSecondPassParsing.makeListEmpty () ;
       }
@@ -1384,7 +1384,7 @@ bool C_Lexique::performBottomUpParsing (const int16_t inActionTable [],
             expectedTerminalsArray.addObject (expectedTerminal) ;
           }
         }
-        parsingError (expectedTerminalsArray, currentToken LINE_AND_SOURCE_FILE) ;
+        parsingError (expectedTerminalsArray, currentToken LINE_AND_SOURCE_FILE_FOR_LEXIQUE) ;
       }
     }
     if (result) {
