@@ -36,7 +36,7 @@ static struct tm gDate ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static struct tm now (void) {
+static struct tm currentDate (void) {
   const time_t currentTime = ::time (NULL) ;
   gDate = * ::localtime (& currentTime) ;
   return gDate ;
@@ -52,7 +52,7 @@ static struct tm initWithSeconds (const time_t inTimeInSeconds) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_DateTime::C_DateTime (void) :
-mDate (now ()) {
+mDate (currentDate ()) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
