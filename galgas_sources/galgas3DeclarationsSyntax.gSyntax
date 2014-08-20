@@ -21,7 +21,7 @@ import "semanticsTypesForAST.gSemantics" ;
 
 #------------------------------------------------------------------------------*
 
-nonterminal <declaration_with_local>
+nonterminal <declaration_with_private>
   ??@bool inIsInternal
   ?!@galgas3DeclarationAST ioDeclarations
 ;
@@ -613,9 +613,9 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <declaration_with_local>
+rule <declaration_with_private>
   ??@bool inIsInternal
-   ?!@galgas3DeclarationAST ioDeclarations
+  ?!@galgas3DeclarationAST ioDeclarations
 :
   $filewrapper$ ;
   $identifier$ ? @lstring mFilewrapperName indexing filewrapperDefinition ;

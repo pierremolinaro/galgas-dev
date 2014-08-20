@@ -58,10 +58,10 @@ rule <declaration>
   select
     isLocal := false ;
   or
-    $internal$ ;
+    $private$ ;
     isLocal := true ;
   end select ;
-  <declaration_with_local> !isLocal !?ioDeclarations ;
+  <declaration_with_private> !isLocal !?ioDeclarations ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -96,7 +96,7 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <declaration_with_local>
+rule <declaration_with_private>
   ??@bool inIsInternal
   ?!@galgas3DeclarationAST ioDeclarations
 :
@@ -127,7 +127,7 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule  <declaration_with_local>
+rule  <declaration_with_private>
   ??@bool inIsInternal
   ?!@galgas3DeclarationAST ioDeclarations
 :
