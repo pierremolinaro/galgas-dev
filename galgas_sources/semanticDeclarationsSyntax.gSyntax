@@ -590,7 +590,7 @@ rule <semantic_declaration>
     isInternal := false ;
   or
     $local$ :> ?@string sep ?* ;
-    send sep + "internal" ;
+    send sep + "private" ;
     isInternal := true ;
   end select ;
   $filewrapper$ ;

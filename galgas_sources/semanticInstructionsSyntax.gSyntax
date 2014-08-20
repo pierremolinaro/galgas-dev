@@ -64,7 +64,7 @@ rule <local_declaration> !@bool outLocal :
     outLocal := false ;
   or
     $local$ :> ?@string sep ?* ;
-    send sep . "internal" ;
+    send sep . "private" ;
     outLocal := true ;
   end select ;
 end rule ;
