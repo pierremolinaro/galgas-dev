@@ -24,11 +24,11 @@ static uint32_t bitCountForCount (const uint32_t inCount) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//  C_RelationSingleType::cType                                                *
+//  C_RelationSingleType::cType                                                                                        *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static C_RelationSingleType::cType * gFirst ;
-static C_RelationSingleType::cType * gLast ;
+static C_RelationSingleType::cType * gFirstRelation ;
+static C_RelationSingleType::cType * gLastRelation ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -40,23 +40,23 @@ class C_RelationSingleType::cType : public C_SharedObject {
   C_SharedObject (THERE),
   mTypeName (inTypeName),
   mBDDBitCount (inBDDBitCount),
-  mNextPtr (gFirst),
+  mNextPtr (gFirstRelation),
   mPreviousPtr (NULL) {
-    if (NULL != gFirst) {
-      gFirst->mPreviousPtr = this ;
+    if (NULL != gFirstRelation) {
+      gFirstRelation->mPreviousPtr = this ;
     }
-    gFirst = this ;
+    gFirstRelation = this ;
   }
 
 //--- Desctructor
   public : inline virtual ~cType (void) {
     if (NULL == mNextPtr) {
-      gLast = mPreviousPtr ;
+      gLastRelation = mPreviousPtr ;
     }else{
       mNextPtr->mPreviousPtr = mPreviousPtr ;
     }
     if (NULL == mPreviousPtr) {
-      gFirst = mNextPtr ;
+      gFirstRelation = mNextPtr ;
     }else{
       mPreviousPtr->mNextPtr = mNextPtr ;
     }
@@ -79,7 +79,7 @@ class C_RelationSingleType::cType : public C_SharedObject {
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
-//  C_EnumeratedTypeInRelation                                                 *
+//  C_EnumeratedTypeInRelation                                                                                         *
 //---------------------------------------------------------------------------------------------------------------------*
 
 class C_EnumeratedTypeInRelation : public C_RelationSingleType::cType {
@@ -126,7 +126,7 @@ C_RelationSingleType (const C_String & inTypeName,
 mTypePtr (NULL) {
 //--- Check type is unique
   cType * result = NULL ;
-  cType * p = gFirst ;
+  cType * p = gFirstRelation ;
   while ((NULL == result) && (NULL != p)) {
     C_EnumeratedTypeInRelation * ptr = dynamic_cast <C_EnumeratedTypeInRelation *> (p) ;
     if ((NULL != ptr) && (ptr->mTypeName == inTypeName) && (ptr->isConstantArrayEqualTo (inConstantNameArray))) {
@@ -185,7 +185,7 @@ C_RelationSingleType (const C_String & inTypeName,
 mTypePtr (NULL) {
 //--- Check type is unique
   cType * result = NULL ;
-  cType * p = gFirst ;
+  cType * p = gFirstRelation ;
   while ((NULL == result) && (NULL != p)) {
     C_UnsignedTypeInRelation * ptr = dynamic_cast <C_UnsignedTypeInRelation *> (p) ;
     if ((NULL != ptr) && (ptr->mTypeName == inTypeName) && (ptr->constantCount () == inValueCount)) {

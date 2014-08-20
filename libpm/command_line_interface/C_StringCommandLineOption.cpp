@@ -33,8 +33,8 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-static C_StringCommandLineOption * gFirst ;
-static C_StringCommandLineOption * gLast ;
+static C_StringCommandLineOption * gFirstStringOption ;
+static C_StringCommandLineOption * gLastStringOption ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -48,12 +48,12 @@ C_CommandLineOption (inDomainName, inIdentifier, inChar, inString, inComment),
 mNext (NULL),
 mValue (inDefaultValue),
 mDefaultValue (inDefaultValue) {
-  if (NULL == gFirst) {
-    gFirst = this ;
+  if (NULL == gFirstStringOption) {
+    gFirstStringOption = this ;
   }else{
-    gLast->mNext = this ;
+    gLastStringOption->mNext = this ;
   }
-  gLast = this ;
+  gLastStringOption = this ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -66,7 +66,7 @@ setStringOptionForCommandChar (const char * inCommandString,
   // printf ("[COMMAND STRING '%s', valid %d]\n", inCommandString, outCommandLineOptionStringIsValid) ;
   outFound = false ;
   if (outCommandLineOptionStringIsValid) {
-    C_StringCommandLineOption * p = gFirst ;
+    C_StringCommandLineOption * p = gFirstStringOption ;
     while ((p != NULL) && ! outFound) {
       outFound = inCommandString [0] == p->mCommandChar ;
       if (outFound) {
@@ -102,7 +102,7 @@ setStringOptionForCommandString (const char * inCommandString,
 //--- Search option
   outFound = false ;
   if (outCommandLineOptionStringIsValid) {
-    C_StringCommandLineOption * p = gFirst ;
+    C_StringCommandLineOption * p = gFirstStringOption ;
     while ((p != NULL) && ! outFound) {
       outFound = (strlen (p->mCommandString) == equalSignIndex) && 
                  (strncmp (p->mCommandString, inCommandString, equalSignIndex) == 0) ;
@@ -119,7 +119,7 @@ setStringOptionForCommandString (const char * inCommandString,
 
 void C_StringCommandLineOption::
 printUsageOfStringOptions (void) {
-  C_StringCommandLineOption * p = gFirst ;
+  C_StringCommandLineOption * p = gFirstStringOption ;
   while (p != NULL) {
     const char c = p->mCommandChar ;
     if (c != '\0') {
@@ -136,7 +136,7 @@ printUsageOfStringOptions (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 void C_StringCommandLineOption::printStringOptions (const uint32_t inDisplayLength) {
-  C_StringCommandLineOption * p = gFirst ;
+  C_StringCommandLineOption * p = gFirstStringOption ;
   while (p != NULL) {
     uint32_t charCount = 0 ;
     if (p->mCommandChar != '\0') {
@@ -174,7 +174,7 @@ void C_StringCommandLineOption::printStringOptions (const uint32_t inDisplayLeng
 //---------------------------------------------------------------------------------------------------------------------*
 
 void C_StringCommandLineOption::releaseStrings (void) {
-  C_StringCommandLineOption * p = gFirst ;
+  C_StringCommandLineOption * p = gFirstStringOption ;
   while (p != NULL) {
     p->mValue.releaseString () ;
     p = p->mNext ;
@@ -188,7 +188,7 @@ C_PrologueEpilogue gReleaseString (NULL, C_StringCommandLineOption::releaseStrin
 //---------------------------------------------------------------------------------------------------------------------*
 
 void C_StringCommandLineOption::getStringOptionNameList (TC_UniqueArray <C_String> & outArray) {
-  C_StringCommandLineOption * p = gFirst ;
+  C_StringCommandLineOption * p = gFirstStringOption ;
   while (p != NULL) {
     outArray.addObject (p->mDomainName) ;
     outArray.addObject (p->mIdentifier) ;
@@ -201,7 +201,7 @@ void C_StringCommandLineOption::getStringOptionNameList (TC_UniqueArray <C_Strin
 utf32 C_StringCommandLineOption::getStringOptionInvocationLetter (const C_String & inDomainName,
                                                        const C_String & inIdentifier) {
   utf32 result = TO_UNICODE (0) ;
-  C_StringCommandLineOption * p = gFirst ;
+  C_StringCommandLineOption * p = gFirstStringOption ;
   bool found = false ;
   while ((p != NULL) && not found) {
     found = (inDomainName == p->mDomainName) && (inIdentifier == p->mIdentifier) ;
@@ -216,7 +216,7 @@ utf32 C_StringCommandLineOption::getStringOptionInvocationLetter (const C_String
 C_String C_StringCommandLineOption::getStringOptionInvocationString (const C_String & inDomainName,
                                                        const C_String & inIdentifier) {
   C_String result ;
-  C_StringCommandLineOption * p = gFirst ;
+  C_StringCommandLineOption * p = gFirstStringOption ;
   bool found = false ;
   while ((p != NULL) && not found) {
     found = (inDomainName == p->mDomainName) && (inIdentifier == p->mIdentifier) ;
@@ -231,7 +231,7 @@ C_String C_StringCommandLineOption::getStringOptionInvocationString (const C_Str
 C_String C_StringCommandLineOption::getStringOptionCommentString (const C_String & inDomainName,
                                                        const C_String & inIdentifier) {
   C_String result ;
-  C_StringCommandLineOption * p = gFirst ;
+  C_StringCommandLineOption * p = gFirstStringOption ;
   bool found = false ;
   while ((p != NULL) && not found) {
     found = (inDomainName == p->mDomainName) && (inIdentifier == p->mIdentifier) ;

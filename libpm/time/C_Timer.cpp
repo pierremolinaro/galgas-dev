@@ -46,11 +46,6 @@ C_Timer::C_Timer (void) :
 mStart (now ()),
 mEnd (now ()),
 mRunning (true) {
-//  #ifdef LIBPM_USES_TIMEVAL_STRUCT
-//    gettimeofday (& mStart, NULL) ;
-//  #else
-//    mStart = ::clock () ;
-//  #endif
   mEnd = mStart ;
 }
 
