@@ -325,6 +325,12 @@ end routine ;
 #! Generation
 #---------------------------------------------------------------------------*
 
+local once definitionGroupAmount -> @uint outResult :
+  outResult := 100 ;
+end once ;
+
+#---------------------------------------------------------------------------*
+
 routine generateSemanticDeclarationsGalgas3
   ??@string inProductDirectory
   ??@semanticContext inSemanticContext
@@ -346,7 +352,7 @@ routine generateSemanticDeclarationsGalgas3
         !?ioAllProductFileSet
       ;
     end if ;
-   if [option galgas_cli_options.generateManyFiles value] then
+    if [option galgas_cli_options.generateManyFiles value] then
       generateManyImplementationFiles
         !inProductDirectory
         !inSemanticContext
@@ -531,19 +537,18 @@ routine generateFewImplementationFiles
   ?!@stringset ioAllProductFileSet
 :
   const useOneHugeHeader := [option galgas_cli_options.generateOneHeader value] ;
-#  var includeConfigurationSet := [@stringset emptySet] ;
 #------------- all-declarations.cpp
   var n := 0 ;
   var fileIdx := 0 ;
   var implementationString := "" ;
-  var inclusionSet := [@stringset emptySet] ;
+  @stringset inclusionSet := {} ;
   foreach inSemanticDeclarationSortedListForGeneration do
     if not [mDeclaration isPredefined] then
       [mDeclaration appendSpecificImplementation !?inclusionSet ??@string code] ;
       implementationString += code ;
       implementationString .= [mDeclaration appendTypeGenericImplementation] ;
       n ++ ;
-      if n == 100 then
+      if n == definitionGroupAmount [] then
         if useOneHugeHeader then
           inclusionSet := [@stringset setWithString !"all-declarations"] ;
         end if ;
