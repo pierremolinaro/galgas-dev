@@ -28,13 +28,13 @@ rule <declaration>
 :
   $option$ ;
   $identifier$ ??@lstring optionComponentName ;
-  $:$ ;
+  ${$ ;
   @commandLineOptionListAST options [emptyList] ;
   repeat
   while 
     <option> !?options ;
   end repeat ;
-  $end$ ;
+  $}$ ;
   ioDeclarations->mOptionComponentList +=
     !optionComponentName
     !options
