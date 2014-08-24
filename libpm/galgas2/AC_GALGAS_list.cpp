@@ -217,7 +217,7 @@ void cSharedList::removeObjectAtIndex (capCollectionElement & outObjectAttribute
   macroUniqueSharedObject (this) ;
   if (mObjectArray.count () <= inRemoveIndex) {
     C_String message ;
-    message << "'removeAtIndex' with index " << inRemoveIndex << " >= list length (" << mObjectArray.count () << ")" ;
+    message << "'removeAtIndex' with index " << cStringWithUnsigned (inRemoveIndex) << " >= list length (" << cStringWithSigned (mObjectArray.count ()) << ")" ;
     inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
   }else{
     outObjectAttributeArray = mObjectArray.objectAtIndex (inRemoveIndex COMMA_HERE) ;

@@ -41,13 +41,13 @@ typedef UInt32 utf32 ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-typedef UInt8  uint8_t  ;
+/*typedef UInt8  uint8_t  ;
 typedef UInt16 uint16_t ;
 typedef UInt32 uint32_t ;
 typedef SInt32 int32_t ;
 typedef UInt64 uint64_t ;
 typedef SInt64 int64_t ;
-
+*/
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 // D E F I N E    M I N    A N D    M A X     F O R    I N T    T Y P E S      *

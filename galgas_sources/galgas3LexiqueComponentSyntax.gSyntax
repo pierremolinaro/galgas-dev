@@ -43,7 +43,7 @@ rule <declaration>
     $in$ ;
     $literal_string$ ? indexingDirectory ;
   end select ;
-  $:$ ;
+  ${$ ;
 #--- Parse lexique body
   @metamodelTemplateDelimitorListAST templateDelimitorList [emptyList] ;
   @templateReplacementListAST templateReplacementList [emptyList] ;
@@ -78,7 +78,6 @@ rule <declaration>
     or
       <lexical_implicit_rule> !? lexicalRuleList ;
     end select ;
-    $;$ ;
   while
     <lexical_message_declaration> !? lexicalMessageDeclarationList ;
   while
@@ -87,9 +86,8 @@ rule <declaration>
     $:$ ;
     $literal_string$ ?@lstring indexComment ;
     indexingListAST += !indexName !indexComment ;
-    $;$ ;
   end repeat ;
-  $end$ ;
+  $}$ ;
   ioDeclarations->mLexiqueComponentList +=
     !lexiqueComponentName
     !isTemplate
@@ -121,7 +119,6 @@ rule <template_delimitor> ?!@metamodelTemplateDelimitorListAST ioTemplateDelimit
   end repeat ;
   $...$ ;
   $literal_string$ ??@lstring endString ;
-  $;$ ;
   ioTemplateDelimitorList += !startString !optionList !endString ;
 end rule ;
 
@@ -142,7 +139,6 @@ rule <template_replacement> ?!@templateReplacementListAST ioTemplateReplacement 
     $literal_string$ ?replacementString ;
     replacementFunction := [@lstring new !"" !here] ;
   end select ;
-  $;$ ;
   ioTemplateReplacement += !matchString !replacementString !replacementFunction ;
 end rule ;
 
@@ -155,7 +151,6 @@ rule <lexical_message_declaration>
   $identifier$ ??@lstring messageName ;
   $:$ ;
   $literal_string$ ??@lstring messageValue ;
-  $;$ ;
   ioLexicalMessageDeclarationList += !messageName !messageValue ;
 end rule ;
 
@@ -171,14 +166,13 @@ end rule ;
 
 rule <lexical_explicit_rule> ?!@lexicalRuleListAST ioLexicalExplicitRuleList :
   <lexical_expression> ??@lexicalExpressionAST lexicalRuleExpression ;
-  $:$ ;
+  ${$ ;
   @lexicalInstructionListAST instructionList [emptyList] ;
   repeat
   while
     <lexical_instruction> !?instructionList ;
   end repeat ;
-  $end$ ;
-  $rule$ ;
+  $}$ ;
   ioLexicalExplicitRuleList += ![@lexicalExplicitRuleAST new !lexicalRuleExpression !instructionList] ;
 end rule ;
 
@@ -188,7 +182,6 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList :
   $send$ ;
   <lexical_send_instruction> ??@lexicalInstructionAST instruction ;
   ioInstructionList += !instruction ;
-  $;$ ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -242,8 +235,13 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList :
   while
   end repeat ;
   $end$ ;
-  $repeat$ ;
-  $;$ ;
+  select
+  or
+    $attribute$ ?const endRepeat ;
+    if endRepeat->string != "repeat" then
+      error endRepeat : "the attribute should be '%repeat'" ;
+    end if ;
+  end select ;
   @lexicalInstructionAST i := [@lexicalRepeatInstructionAST new
     !repeatedInstructionList
     !lexicalWhileBranchList
@@ -290,8 +288,13 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList :
     <lexical_instruction> !?defaultInstructionList ;
   end repeat ;
   $end$ ;
-  $select$ ;
-  $;$ ;
+  select
+  or
+    $attribute$ ?const endSelect ;
+    if endSelect->string != "select" then
+      error endSelect : "the attribute should be '%select'" ;
+    end if ;
+  end select ;
   @lexicalInstructionAST i := [@lexicalSelectInstructionAST new
     !lexicalWhileBranchList
     !defaultInstructionList
@@ -302,9 +305,9 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList :
-  @lstring actionName ;
-  $identifier$ ? actionName ;
+  $identifier$ ??@lstring actionName ;
   @lexicalRoutineCallActualArgumentListAST actualArgumentList [emptyList] ;
+  $($ ;
   repeat
   while
     $!$ ?const selector ;
@@ -324,25 +327,23 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList :
     @lexicalAttributeInputOutputArgumentAST arg [new !passingModeLocation !attributeName] ;
     actualArgumentList += !arg ;
   end repeat ;
-  @lstringlist errorMessageList := [@lstringlist emptyList] ;
+  @lstringlist errorMessageList := {} ;
   select
   or
     $error$ ;
     repeat
-      @lstring errorMessageName ;
-      $identifier$ ? errorMessageName ;
+      $identifier$ ??@lstring errorMessageName ;
       errorMessageList += !errorMessageName ;
     while
       $,$ ;
     end repeat ;
   end select ;
-  $;$ ;
-  @lexicalInstructionAST i := [@lexicalRoutineInstructionAST new
+  $)$ ;
+  ioInstructionList += ![@lexicalRoutineInstructionAST new
     !actionName
     !actualArgumentList
     !errorMessageList
   ] ;
-  ioInstructionList += !i ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -413,7 +414,6 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList :
   $error$ ;
   @lstring errorMessageName ;
   $identifier$ ? errorMessageName ;
-  $;$ ;
   ioInstructionList += ![@lexicalErrorInstructionAST new !errorMessageName] ;
 end rule ;
 
@@ -422,7 +422,6 @@ end rule ;
 rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList :
   $warning$ ;
   $identifier$ ? @lstring warningMessageName ;
-  $;$ ;
   ioInstructionList += ![@lexicalWarningInstructionAST new !warningMessageName] ;
 end rule ;
 
@@ -432,7 +431,6 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList :
   $drop$ ;
   @lstring terminalName ;
   $terminal$ ? terminalName ;
-  $;$ ;
   ioInstructionList += ![@lexicalDropInstructionAST new !terminalName] ;
 end rule ;
 
@@ -442,7 +440,6 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList :
   $tag$ ;
   @lstring tagName ;
   $identifier$ ? tagName ;
-  $;$ ;
   ioInstructionList += ![@lexicalTagInstructionAST new !tagName] ;
 end rule ;
 
@@ -455,7 +452,6 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList :
   $send$ ;
   @lstring terminalName ;
   $terminal$ ? terminalName ;
-  $;$ ;
   ioInstructionList += ![@lexicalRewindInstructionAST new !tagName !terminalName] ;
 end rule ;
 
@@ -463,7 +459,6 @@ end rule ;
 
 rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList :
   $log$ ;
-  $;$ ;
   ioInstructionList += ![@lexicalLogInstructionAST new] ;
 end rule ;
 
@@ -545,14 +540,14 @@ rule <lexical_list_declaration> ?!@lexicalListDeclarationListAST ioLexicalListDe
   or
     theStyle := [@lstring new !"" !here] ;
   end select ;
-  $:$ ;
+  ${$ ;
   @lexicalListEntryListAST entryList [emptyList] ;
   repeat
     <lexical_list_entry> !?entryList ;
   while
     $,$ ;
   end repeat ;
-  $;$ ;
+  $}$ ;
   ioLexicalListDeclarationList += !name !theStyle !errorMessage !sentAttributeList !entryList ;
 end rule ;
 
@@ -581,7 +576,6 @@ end rule ;
 rule <lexical_attribute_declaration> ?!@lexicalAttributeListAST ioLexicalAttributeList :
   $type_name$ ??@lstring typeName  ;
   $identifier$ ??@lstring name ;
-  $;$ ;
   ioLexicalAttributeList += !typeName !name ;
 end rule ;
 
@@ -593,9 +587,10 @@ rule <terminal_declaration> ?!@terminalDeclarationListAST ioTerminalDeclarationL
   repeat
   while
     $!$ ?const selector ;
-    $identifier$ ??@lstring sentAttribute ;
+    $identifier$ ?const sentAttribute ;
     sentAttributeList += !selector !sentAttribute ;
   end repeat ;
+  ${$ ;
   $error$ ;
   $message$ ;
   $literal_string$ ??@lstring errorMessage ;
@@ -606,13 +601,13 @@ rule <terminal_declaration> ?!@terminalDeclarationListAST ioTerminalDeclarationL
   or
     theStyle := [@lstring new !"" !here] ;
   end select ;
-  @lstringlist optionList [emptyList] ;
+  @lstringlist optionList := {} ;
   repeat
   while
-    $attribute$ ?? @lstring optionName ;
+    $attribute$ ??@lstring optionName ;
     optionList += !optionName ;
   end repeat ;
-  $;$ ;
+  $}$ ;
   ioTerminalDeclarationList += !name !sentAttributeList !errorMessage !theStyle !optionList ;
 end rule ;
 
@@ -620,10 +615,9 @@ end rule ;
 
 rule <style_declaration> ?!@lexicalStyleListAST ioLexicalStyleList :
   $style$ ;
-  $identifier$ ?@lstring name  ;
+  $identifier$ ??@lstring name  ;
   $->$ ;
-  $literal_string$ ?@lstring comment ;
-  $;$ ;
+  $literal_string$ ??@lstring comment ;
   ioLexicalStyleList += !name !comment ;
 end rule ;
 
@@ -669,7 +663,6 @@ rule <extern_routine_or_function_declaration>
         $,$ ;
       end repeat ;
     end select ;
-    $;$ ;      
     ioExternRoutineList += !routineName !lexicalRoutineFormalArgumentList !errorMessageList ;
   or
     $func$ ;
@@ -687,7 +680,6 @@ rule <extern_routine_or_function_declaration>
     end repeat ;
     $->$ ;
     $type_name$ ?@lstring returnedTypeName ;
-    $;$ ;      
     ioExternFunctionList += !functionName !lexicalFunctionFormalArgumentList !returnedTypeName ;
   end select ;
 end rule ;

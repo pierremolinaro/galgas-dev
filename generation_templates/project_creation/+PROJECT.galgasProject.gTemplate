@@ -1,0 +1,23 @@
+project (0:0:1) -> %![PROJECT_NAME utf8Representation]%:
+#--- Targets
+  \%makefile-macosx
+  \%makefile-unix
+  \%makefile-x86-linux32-on-macosx
+  \%makefile-x86-linux64-on-macosx
+  \%makefile-win32-on-macosx
+  \%makefile-msys32-on-windonws
+  \%SnowLeopard
+  \%applicationBundleBase : "fr.what"
+
+#--- Source files (relative path from 'galgas_sources' directory)
+  "%!PROJECT_NAME%-lexique.galgas"
+  "%!PROJECT_NAME%-options.galgas"
+  "%!PROJECT_NAME%-semantics.galgas"
+  "%!PROJECT_NAME%-syntax.galgas"
+  "%!PROJECT_NAME%-grammar.galgas"
+  "%!PROJECT_NAME%-cocoa.galgas"
+  "%!PROJECT_NAME%-program.galgas"
+
+#--- Extern source file
+  \%tool-source : "hand-coded-sources/%!PROJECT_NAME%-computations.cpp" ;
+end project ;

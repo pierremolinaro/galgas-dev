@@ -80,13 +80,13 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (NSColor *) errorHiliteColor {
-  return [NSColor colorWithCalibratedRed:1.0 green:0.0 blue:0.0 alpha:0.2] ;
+  return [NSColor colorWithCalibratedRed:1.0 green:0.0 blue:0.0 alpha:0.2F] ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (NSColor *) warningHiliteColor {
-  return [NSColor colorWithCalibratedRed:1.0 green:0.5 blue:0.0 alpha:0.2] ;
+  return [NSColor colorWithCalibratedRed:1.0 green:0.5 blue:0.0 alpha:0.2F] ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
