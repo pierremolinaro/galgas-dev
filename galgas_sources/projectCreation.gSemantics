@@ -36,7 +36,7 @@ filewrapper projectCreationFileWrapper in "../generation_templates/project_creat
   template PROJECT_program "PROJECT-program.galgas.gTemplate" ?@string PROJECT_NAME ;
   template PROJECT_semantics "PROJECT-semantics.galgas.gTemplate" ?@string PROJECT_NAME ;
   template PROJECT_syntax "PROJECT-syntax.galgas.gTemplate" ?@string PROJECT_NAME ;
-  template PROJECT_computations "PROJECT-computations.cpp.gTemplate" ?@string PROJECT_NAME ;
+#  template PROJECT_computations "PROJECT-computations.cpp.gTemplate" ?@string PROJECT_NAME ;
 }
 
 
@@ -55,10 +55,10 @@ routine performProjectCreation ??@string inProjectPath :
   [[filewrapper projectCreationFileWrapper.PROJECT_program !projectName] writeToFile !galgas_sources_DIR ."/" .projectName ."-program.galgas"] ;
   [[filewrapper projectCreationFileWrapper.PROJECT_semantics !projectName] writeToFile !galgas_sources_DIR ."/" .projectName ."-semantics.galgas"] ;
   [[filewrapper projectCreationFileWrapper.PROJECT_syntax !projectName] writeToFile !galgas_sources_DIR ."/" .projectName ."-syntax.galgas"] ;
-#--- hand_coded_sources
-  const @string hand_coded_sources_DIR := inProjectPath ."/hand-coded-sources" ;
-  [hand_coded_sources_DIR makeDirectory] ;
-  [[filewrapper projectCreationFileWrapper.PROJECT_computations !projectName] writeToFile !hand_coded_sources_DIR ."/" .projectName ."-computations.cpp"] ;
+##--- hand_coded_sources
+#  const @string hand_coded_sources_DIR := inProjectPath ."/hand_coded_sources" ;
+#  [hand_coded_sources_DIR makeDirectory] ;
+#  [[filewrapper projectCreationFileWrapper.PROJECT_computations !projectName] writeToFile !hand_coded_sources_DIR ."/" .projectName ."-computations.cpp"] ;
 #---
    message "*** DONE ***\n" ;
 end routine ;

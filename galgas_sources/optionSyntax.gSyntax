@@ -28,14 +28,16 @@ rule <option_component_start_symbol>
   $option$ ;
 #--- Option Component Name
   $identifier$ ??@lstring mOptionComponentName indexing optionComponentDefinition ;
-  $:$ ;
+  $:$ :> ?* ?* ;
+  send " {" ;
 #--- Parse the option list
   @commandLineOptionListAST mOptions [emptyList] ;
   repeat
   while 
     <option> !?mOptions ;
   end repeat ;
-  $end$ ;
+  $end$ :> ??@string sep ?* ;
+  send sep . "}" ;
   $option$ :> ?* ?* ;
   $;$ :> ?* ?* ;
   outOptionComponentRoot := [@optionComponentAST new

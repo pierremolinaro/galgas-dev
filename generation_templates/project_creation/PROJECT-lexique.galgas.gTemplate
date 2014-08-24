@@ -4,100 +4,101 @@ lexique %!PROJECT_NAME%_lexique {
 #   Identifiers and keywords                                                 *
 #----------------------------------------------------------------------------*
 
-@string tokenString ;
+@string tokenString
 
-style keywordsStyle -> "Keywords" ;
+style keywordsStyle -> "Keywords"
 
-$identifier$ ! tokenString error message "an identifier" ;
+$identifier$ ! tokenString {error message "an identifier"}
 
 #--- This is the keyword list
-list keyWordList error message "the '\%K' keyword" style keywordsStyle :
+list keyWordList error message "the '\%K' keyword" style keywordsStyle {
   "begin",
   "end"
-;
+}
 
-rule 'a'->'z' |  'A'->'Z' :
+rule 'a'->'z' |  'A'->'Z' {
   repeat
-    enterCharacterIntoString !?tokenString !* ;
+    enterCharacterIntoString (!?tokenString !*)
   while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
-  end repeat ;
-  send search tokenString in keyWordList default $identifier$ ;
-end rule ;
+  end
+  send search tokenString in keyWordList default $identifier$
+}
 
 #----------------------------------------------------------------------------*
 #   Literal decimal integers                                                 *
 #----------------------------------------------------------------------------*
 
-style integerStyle -> "Integer Constants" ;
-@uint uint32value ;
-$integer$ !uint32value error message "a 32-bit unsigned decimal number" style integerStyle ;
+style integerStyle -> "Integer Constants"
+@uint uint32value
+$integer$ !uint32value {error message "a 32-bit unsigned decimal number" style integerStyle}
 
-message decimalNumberTooLarge : "decimal number too large" ;
-message internalError : "internal error" ;
+message decimalNumberTooLarge : "decimal number too large"
+message internalError : "internal error"
 
-rule '0'->'9' :
-  enterCharacterIntoString !?tokenString !* ;
+rule '0'->'9' {
+  enterCharacterIntoString (!?tokenString !*)
   repeat
   while '0'->'9' :
-    enterCharacterIntoString !?tokenString !* ;
+    enterCharacterIntoString (!?tokenString !*)
   while '_' :
-  end repeat ;
-  convertDecimalStringIntoUInt !tokenString !?uint32value error decimalNumberTooLarge, internalError ;
-  send $integer$ ;
-end rule ;
+  end
+  convertDecimalStringIntoUInt (!tokenString !?uint32value error decimalNumberTooLarge, internalError)
+  send $integer$
+}
 
 #----------------------------------------------------------------------------*
 #   Literal character strings                                                *
 #----------------------------------------------------------------------------*
 
-style stringStyle -> "String Constants" ;
-$literal_string$ ! tokenString error message "a character string constant \"...\"" style stringStyle feature nonAtomicSelection ;
+style stringStyle -> "String Constants"
+$literal_string$ ! tokenString { error message "a character string constant \"...\"" style stringStyle \%nonAtomicSelection}
 
 
-message incorrectStringEnd : "string does not end with '\"'" ;
+message incorrectStringEnd : "string does not end with '\"'"
 
-rule '"' :
+rule '"' {
   repeat
    while ' ' | '!' | '#'-> '\uFFFD' :
-    enterCharacterIntoString !?tokenString !* ;
-  end repeat ;
+    enterCharacterIntoString (!?tokenString !*)
+  end
   select
-  when '"' :
-    send $literal_string$ ;
+  case '"' :
+    send $literal_string$
   default
-    error incorrectStringEnd ;
-  end select ;
-end rule ;
+    error incorrectStringEnd
+  end
+}
 
 #----------------------------------------------------------------------------*
 #   Delimiters                                                               *
 #----------------------------------------------------------------------------*
 
-style delimitersStyle -> "Delimiters" ;
-list delimitorsList error message "the '\%K' delimitor" style delimitersStyle :
-  ":",    ",",    ";",   "!",  "{",  "}", "->", "@", "*", "-" ;
+style delimitersStyle -> "Delimiters"
+list delimitorsList error message "the '\%K' delimitor" style delimitersStyle {
+  ":",    ",",    ";",   "!",  "{",  "}", "->", "@", "*", "-"
+}
 
-rule list delimitorsList ;
+rule list delimitorsList
 
 #----------------------------------------------------------------------------*
 #   Comments                                                                 *
 #----------------------------------------------------------------------------*
 
-style commentStyle -> "Comments" ;
-$comment$ error message "a comment" style commentStyle feature nonAtomicSelection ;
-rule '#' :
+style commentStyle -> "Comments"
+$comment$ {error message "a comment" style commentStyle \%nonAtomicSelection}
+rule '#' {
   repeat
   while '\u0001' -> '\u0009' | '\u000B' | '\u000C' | '\u000E' -> '\uFFFD' :
-  end repeat ;
-  drop $comment$ ;
-end rule ;
+  end
+  drop $comment$
+}
 
 #----------------------------------------------------------------------------*
 #   Separators                                                               *
 #----------------------------------------------------------------------------*
 
-rule '\u0001' -> ' ' :
-end rule ;
+rule '\u0001' -> ' ' {
+}
 
 #----------------------------------------------------------------------------*
 
