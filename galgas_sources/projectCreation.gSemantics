@@ -28,15 +28,15 @@ filewrapper projectCreationFileWrapper in "../generation_templates/project_creat
 }{
 }{
 #--- Project
-  template PROJECT_project "all_PROJECT.gProject.gTemplate" ?@string PROJECT_NAME ;
-  template PROJECT_cocoa "PROJECT_cocoa.gGui.gTemplate" ?@string PROJECT_NAME ;
-  template PROJECT_grammar "PROJECT_grammar.gGrammar.gTemplate" ?@string PROJECT_NAME ;
-  template PROJECT_lexique "PROJECT_lexique.gLexique.gTemplate" ?@string PROJECT_NAME ;
-  template PROJECT_options "PROJECT_options.gOption.gTemplate" ?@string PROJECT_NAME ;
-  template PROJECT_program "PROJECT_program.gProgram.gTemplate" ?@string PROJECT_NAME ;
-  template PROJECT_semantics "PROJECT_semantics.gSemantics.gTemplate" ?@string PROJECT_NAME ;
-  template PROJECT_syntax "PROJECT_syntax.gSyntax.gTemplate" ?@string PROJECT_NAME ;
-  template PROJECT_computations "PROJECT_computations.cpp.gTemplate" ?@string PROJECT_NAME ;
+  template PROJECT_project "+PROJECT.galgasProject.gTemplate" ?@string PROJECT_NAME ;
+  template PROJECT_cocoa "PROJECT-cocoa.galgas.gTemplate" ?@string PROJECT_NAME ;
+  template PROJECT_grammar "PROJECT-grammar.galgas.gTemplate" ?@string PROJECT_NAME ;
+  template PROJECT_lexique "PROJECT-lexique.galgas.gTemplate" ?@string PROJECT_NAME ;
+  template PROJECT_options "PROJECT-options.galgas.gTemplate" ?@string PROJECT_NAME ;
+  template PROJECT_program "PROJECT-program.galgas.gTemplate" ?@string PROJECT_NAME ;
+  template PROJECT_semantics "PROJECT-semantics.galgas.gTemplate" ?@string PROJECT_NAME ;
+  template PROJECT_syntax "PROJECT-syntax.galgas.gTemplate" ?@string PROJECT_NAME ;
+  template PROJECT_computations "PROJECT-computations.cpp.gTemplate" ?@string PROJECT_NAME ;
 }
 
 
@@ -45,20 +45,20 @@ filewrapper projectCreationFileWrapper in "../generation_templates/project_creat
 routine performProjectCreation ??@string inProjectPath :
   const @string projectName := [inProjectPath lastPathComponent] ;
 #--- galgas_sources
-  @string galgas_sources_DIR := inProjectPath ."/galgas_sources" ;
+  @string galgas_sources_DIR := inProjectPath ."/galgas-sources" ;
   [galgas_sources_DIR makeDirectory] ;
-  [[filewrapper projectCreationFileWrapper.PROJECT_project !projectName] writeToFile !galgas_sources_DIR ."/all_" .projectName .".gProject"] ;
-  [[filewrapper projectCreationFileWrapper.PROJECT_cocoa !projectName] writeToFile !galgas_sources_DIR ."/" .projectName ."_cocoa.gGui"] ;
-  [[filewrapper projectCreationFileWrapper.PROJECT_grammar !projectName] writeToFile !galgas_sources_DIR ."/" .projectName ."_grammar.gGrammar"] ;
-  [[filewrapper projectCreationFileWrapper.PROJECT_lexique !projectName] writeToFile !galgas_sources_DIR ."/" .projectName ."_lexique.gLexique"] ;
-  [[filewrapper projectCreationFileWrapper.PROJECT_options !projectName] writeToFile !galgas_sources_DIR ."/" .projectName ."_options.gOption"] ;
-  [[filewrapper projectCreationFileWrapper.PROJECT_program !projectName] writeToFile !galgas_sources_DIR ."/" .projectName ."_program.gProgram"] ;
-  [[filewrapper projectCreationFileWrapper.PROJECT_semantics !projectName] writeToFile !galgas_sources_DIR ."/" .projectName ."_semantics.gSemantics"] ;
-  [[filewrapper projectCreationFileWrapper.PROJECT_syntax !projectName] writeToFile !galgas_sources_DIR ."/" .projectName ."_syntax.gSyntax"] ;
+  [[filewrapper projectCreationFileWrapper.PROJECT_project !projectName] writeToFile !inProjectPath ."/+" .projectName .".galgasProject"] ;
+  [[filewrapper projectCreationFileWrapper.PROJECT_cocoa !projectName] writeToFile !galgas_sources_DIR ."/" .projectName ."-cocoa.galgas"] ;
+  [[filewrapper projectCreationFileWrapper.PROJECT_grammar !projectName] writeToFile !galgas_sources_DIR ."/" .projectName ."-grammar.galgas"] ;
+  [[filewrapper projectCreationFileWrapper.PROJECT_lexique !projectName] writeToFile !galgas_sources_DIR ."/" .projectName ."-lexique.galgas"] ;
+  [[filewrapper projectCreationFileWrapper.PROJECT_options !projectName] writeToFile !galgas_sources_DIR ."/" .projectName ."-options.galgas"] ;
+  [[filewrapper projectCreationFileWrapper.PROJECT_program !projectName] writeToFile !galgas_sources_DIR ."/" .projectName ."-program.galgas"] ;
+  [[filewrapper projectCreationFileWrapper.PROJECT_semantics !projectName] writeToFile !galgas_sources_DIR ."/" .projectName ."-semantics.galgas"] ;
+  [[filewrapper projectCreationFileWrapper.PROJECT_syntax !projectName] writeToFile !galgas_sources_DIR ."/" .projectName ."-syntax.galgas"] ;
 #--- hand_coded_sources
-  const @string hand_coded_sources_DIR := inProjectPath ."/hand_coded_sources" ;
+  const @string hand_coded_sources_DIR := inProjectPath ."/hand-coded-sources" ;
   [hand_coded_sources_DIR makeDirectory] ;
-  [[filewrapper projectCreationFileWrapper.PROJECT_computations !projectName] writeToFile !hand_coded_sources_DIR ."/" .projectName ."_computations.cpp"] ;
+  [[filewrapper projectCreationFileWrapper.PROJECT_computations !projectName] writeToFile !hand_coded_sources_DIR ."/" .projectName ."-computations.cpp"] ;
 #---
    message "*** DONE ***\n" ;
 end routine ;

@@ -22,7 +22,7 @@ Une fonction GALGAS n'accepte que des arguments en entrée, et retourne une vale
 
 \lstset{emph={nom_fonction, liste_arguments_entree, var_resultat, liste_instructions}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
-internal # Optionnel
+private # Optionnel
 func nom_fonction liste_arguments_entree -> @T var_resultat {
   liste_instructions
 }
@@ -42,7 +42,7 @@ func produit ?@uint a ?@uint b -> @uint resultat {
 
 \subsection{Fonction interne à un fichier}
 
-En préfixant la déclaration d'une fonction par \galgas{internal}, on limite son appel aux expressions situées dans le même fichier que la déclaration.
+En préfixant la déclaration d'une fonction par \galgas{private}, on limite son appel aux expressions situées dans le même fichier que la déclaration.
 
 
 
@@ -59,10 +59,10 @@ func %once masque-> @uint resultat {
 
 Le qualificatif \galgast{\%once} organise le cache du résultat : celui-ci est calculé lors du premier appel, est mémorisé internement, et est retourné directement lors des appels ultérieurs.
 
-Une fonction \galgast{\%once} peut être déclarée interne en la préfixant par \galgas{internal}.
+Une fonction \galgast{\%once} peut être déclarée interne en la préfixant par \galgas{private}.
 
 \begin{galgascode}
-internal func %once masque-> @uint resultat {
+private func %once masque-> @uint resultat {
   resultat = 1 << 16
 }
 \end{galgascode}
@@ -79,7 +79,7 @@ Une procédure GALGAS accepte que des arguments en entrée, en sortie, en entré
 
 \lstset{emph={nom_procedure, liste_arguments, liste_instructions}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
-internal # Optionnel
+private # Optionnel
 proc nom_procedure liste_arguments {
   liste_instructions
 }
@@ -99,7 +99,7 @@ proc produit ?@uint a ?@uint b !@uint resultat {
 
 \subsection{Procédure interne à un fichier}
 
-En préfixant la déclaration d'une procédure par \galgas{internal}, on limite son appel aux instruction situées dans le même fichier que la déclaration.
+En préfixant la déclaration d'une procédure par \galgas{private}, on limite son appel aux instructions situées dans le même fichier que la déclaration.
 
 
 

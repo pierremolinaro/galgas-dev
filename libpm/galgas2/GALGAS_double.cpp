@@ -290,7 +290,7 @@ GALGAS_sint GALGAS_double::reader_sint (C_Compiler * inCompiler
     s << ") to @sint" ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
-    result = GALGAS_sint ((int32_t) (lround (mDoubleValue) & UINT32_MAX)) ;
+    result = GALGAS_sint ((int32_t) (lround (mDoubleValue) & INT32_MAX)) ;
   }
   return result ;
 }

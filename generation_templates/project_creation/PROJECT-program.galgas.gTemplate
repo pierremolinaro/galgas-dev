@@ -1,0 +1,22 @@
+program %!PROJECT_NAME%_program:
+import "%!PROJECT_NAME%_semantics.gSemantics" ;
+import "%!PROJECT_NAME%_grammar.gGrammar" ;
+
+#--- Prologue routine
+before {
+}
+
+#--- 'when' clauses
+when . "%!PROJECT_NAME%"
+message "a source text file with the .%!PROJECT_NAME% extension"
+??@lstring inSourceFile {
+  grammar %!PROJECT_NAME%_grammar in inSourceFile ;
+}
+
+#--- Epilogue routine
+after {
+}
+
+#---
+
+end program ;

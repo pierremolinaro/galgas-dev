@@ -1159,9 +1159,10 @@ int32_t C_FileManager::filePosixPermissions (const C_String & inFilePath) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 int32_t C_FileManager::setFilePosixPermissions (const C_String & inFilePath,
-                                                 const int32_t inNewFilePosixPermissions) {
+                                                const int32_t inNewFilePosixPermissions) {
   int32_t newMode = -1 ; // Error Code
-  if ((inNewFilePosixPermissions & 0xFFFFF000L) == 0) {
+  const int32_t v = inNewFilePosixPermissions & (int32_t) 0xFFFFF000 ;
+  if (v == 0) {
     const C_String nativePath = nativePathWithUnixPath (inFilePath) ;
     newMode = ::chmod (nativePath.cString (HERE), (uint16_t) (inNewFilePosixPermissions & UINT16_MAX)) ;
   }

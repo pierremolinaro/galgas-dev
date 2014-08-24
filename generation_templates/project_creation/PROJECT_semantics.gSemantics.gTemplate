@@ -1,6 +1,0 @@
-semantics %!PROJECT_NAME%_semantics :
-  import "%!PROJECT_NAME%_options.gOption" ;
-
-# ADD YOUR CODE
-
-end semantics ;

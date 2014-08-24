@@ -1,0 +1,5 @@
+grammar %!PROJECT_NAME%_grammar "LL1" {
+  syntax %!PROJECT_NAME%_syntax
+  <start_symbol>
+}
+

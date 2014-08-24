@@ -1,6 +1,0 @@
-grammar %!PROJECT_NAME%_grammar "LL1":
-with "%!PROJECT_NAME%_syntax.gSyntax" ;
-
-root <start_symbol> ;
-
-end grammar ;
