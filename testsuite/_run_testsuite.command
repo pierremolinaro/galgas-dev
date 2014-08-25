@@ -13,7 +13,7 @@ if [ "`cat results.txt`" != "`cat results_reference.txt`" ]; then
   echo "*************************"
 else
   echo "*** Running test suite (debug mode)" &&
-  cd `dirname $0` && ./makefile-macosx/testsuite_debug &&
+  cd `dirname $0` && ./makefile-macosx/testsuite-debug &&
   echo "*************************"
   echo "*        SUCCESS        *"
   echo "*************************"
