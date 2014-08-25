@@ -355,6 +355,31 @@
   [cellMenu insertItem:item atIndex:3];
   id searchCell = [mGlobalSearchTextField cell];
   [searchCell setSearchMenuTemplate:cellMenu];
+
+//---
+  mExcludedDirectoryArrayController = [NSArrayController new] ;
+  mAddExcludedDirectoryButton.action = @selector (addExcludedDirectoryAction:) ;
+  mAddExcludedDirectoryButton.target = self ;
+  mRemoveExcludedDirectoryButton.action = @selector (remove:) ;
+  mRemoveExcludedDirectoryButton.target = mExcludedDirectoryArrayController ;
+  [mExcludedDirectoryArrayController
+    bind:@"contentArray"
+    toObject:[NSUserDefaultsController sharedUserDefaultsController]
+    withKeyPath:[NSString stringWithFormat:@"values.excludedDirectoryArray--%@", self.fileURL.absoluteString]
+    options:nil
+  ] ;
+  [mRemoveExcludedDirectoryButton
+    bind:@"enabled"
+    toObject:mExcludedDirectoryArrayController
+    withKeyPath:@"canRemove"
+    options:nil
+  ] ;
+  [[mExcludedDirectoryTableView tableColumnWithIdentifier:@"path"]
+    bind:@"value"
+    toObject:mExcludedDirectoryArrayController
+    withKeyPath:@"arrangedObjects"
+    options:nil
+  ] ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -458,6 +483,11 @@
 //---
   mSourceDisplayArrayController = nil ;
   mDisplayDescriptorArray = nil ;
+//---
+  [mRemoveExcludedDirectoryButton unbind:@"enabled"] ;
+  [[mExcludedDirectoryTableView tableColumnWithIdentifier:@"path"] unbind:@"value"] ;
+  [mExcludedDirectoryArrayController unbind:@"contentArray"] ;
+  mExcludedDirectoryArrayController = nil ;
 //--- Last call
   [OC_GGS_DocumentData cocoaDocumentWillClose:mDocumentData] ;
 //---
@@ -1780,15 +1810,19 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-//--- Get all dir set
+//---------------------------------------------------------- Get all dir set
+  NSSet * directoryToExcludeSet = [NSSet setWithArray:mExcludedDirectoryArrayController.content] ;
+  // NSLog (@"directoryToExcludeSet %@", directoryToExcludeSet) ;
   NSMutableSet * directoryPathSet = [NSMutableSet new] ;
   for (OC_GGS_TextDisplayDescriptor * d in mSourceDisplayArrayController.arrangedObjects) {
     NSString * dir = d.sourceURL.path.stringByDeletingLastPathComponent ;
     // NSLog (@"dir %@", dir) ;
-    [directoryPathSet addObject:dir] ;
+    if (![directoryToExcludeSet containsObject:dir]) {
+      [directoryPathSet addObject:dir] ;
+    }
   }
   // NSLog (@"directoryPathSet %@", directoryPathSet) ;
-//--- Retain only base directories, eliminate sub directories
+//---------------------------------------- Retain only base directories, eliminate sub directories
   NSMutableArray * directoryPathArray = [NSMutableArray new] ;
   for (NSString * directoryPath in directoryPathSet) {
     if (! [directoryPathArray containsObject:directoryPath]) {
@@ -1808,7 +1842,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
     }
   }
   // NSLog (@"directoryPathArray %@", directoryPathArray) ;
-//--- Explore dirs
+//------------------------- Explore dirs
   for (NSString * directoryPath in directoryPathArray) {
     [self
       recursiveSearchInDirectory:directoryPath
@@ -2046,6 +2080,40 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
         const NSRange r = entry.range ;
         // NSLog (@"r [%lu, %lu]", r.location, r.length) ;
         [documentData replaceCharactersInRange:r withString:replaceString] ;
+      }
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+- (void) addExcludedDirectoryAction: (id) inSender {
+  NSOpenPanel * panel = [NSOpenPanel openPanel] ;
+  panel.title = @"Select the directory to Exclude from search:" ;
+  panel.canChooseFiles = NO ;
+  panel.canChooseDirectories = YES ;
+  panel.canCreateDirectories = YES ;
+  panel.allowsMultipleSelection = YES ;
+  [panel
+    beginSheetForDirectory:nil
+    file:nil
+    types:[NSArray array]
+    modalForWindow:self.windowForSheet
+    modalDelegate:self
+    didEndSelector:@selector (addExcludedDirectoryPanelDidEnd:returnCode:contextInfo:)
+    contextInfo:nil
+  ] ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+- (void) addExcludedDirectoryPanelDidEnd: (NSOpenPanel *) inPanel
+         returnCode: (int) inReturnCode
+         contextInfo: (void  *) inContextInfo {
+  if (NSOKButton == inReturnCode) {
+    for (NSURL * url in inPanel.URLs) {
+      if (url.isFileURL) {
+        [mExcludedDirectoryArrayController addObject:url.path] ;
       }
     }
   }
