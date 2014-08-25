@@ -1,26 +1,25 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  Declaration of macros and routines for handling dynamic allocation         *
-//  checking.                                                                  *
+//  Declaration of macros and routines for handling dynamic allocation checking.                                       *
 //                                                                                                                     *
-//  This file is part of libpm library                                         *
+//  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 1994, ..., 2012 Pierre Molinaro.                             *
+//  Copyright (C) 1994, ..., 2012 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
-//  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                               *
+//  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
-//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes*
-//  ECN, École Centrale de Nantes (France)                                     *
+//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes                                         *
+//  ECN, �cole Centrale de Nantes (France)                                                                             *
 //                                                                                                                     *
-//  This library is free software; you can redistribute it and/or modify it    *
-//  under the terms of the GNU Lesser General Public License as published      *
-//  by the Free Software Foundation; either version 2 of the License, or       *
-//  (at your option) any later version.                                        *
+//  This library is free software; you can redistribute it and/or modify it                                            *
+//  under the terms of the GNU Lesser General Public License as published                                              *
+//  by the Free Software Foundation; either version 2 of the License, or                                               *
+//  (at your option) any later version.                                                                                *
 //                                                                                                                     *
-//  This program is distributed in the hope it will be useful, but WITHOUT     *
-//  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or      *
-//  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for   *
-//  more details.                                                              *
+//  This program is distributed in the hope it will be useful, but WITHOUT                                             *
+//  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or                                              *
+//  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for                                           *
+//  more details.                                                                                                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -42,7 +41,7 @@ macroDeclareExternMutex (gAllocationMutex)
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//         User macros for allocation                                          *
+//         User macros for allocation                                                                                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -188,7 +187,7 @@ macroDeclareExternMutex (gAllocationMutex)
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//         User macros for deallocation                                        *
+//         User macros for deallocation                                                                                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -241,7 +240,7 @@ macroDeclareExternMutex (gAllocationMutex)
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//         Assertion macros for checking pointers                              *
+//         Assertion macros for checking pointers                                                                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -261,7 +260,7 @@ macroDeclareExternMutex (gAllocationMutex)
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//         Assertion for checking if a pointer is void                         *
+//         Assertion for checking if a pointer is void                                                                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -281,7 +280,7 @@ macroDeclareExternMutex (gAllocationMutex)
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//         Routine to call for displaying currently allocated pointers         *
+//         Routine to call for displaying currently allocated pointers                                                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -289,7 +288,7 @@ void displayAllocatedBlocksInfo (void) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//         Internal routines (do not call them directly)                       *
+//         Internal routines (do not call them directly)                                                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 

@@ -75,10 +75,8 @@
 		CF27F1DF1279FE7A0068C230 /* C_galgas_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF27F1DD1279FE7A0068C230 /* C_galgas_CLI_Options.cpp */; };
 		CF27F1E01279FE7A0068C230 /* C_galgas_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF27F1DD1279FE7A0068C230 /* C_galgas_CLI_Options.cpp */; };
 		CF288E6D111DECA5004E4E82 /* programSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26D180C1327B90066ACB3 /* programSLRgrammar.cpp */; };
-		CF288E6E111DECA5004E4E82 /* programMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26CD70C12FD100066ACB3 /* programMetamodel.cpp */; };
 		CF288E6F111DECA6004E4E82 /* programModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26CD90C12FD100066ACB3 /* programModelBuilder.cpp */; };
 		CF288E70111DECAC004E4E82 /* programSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26D180C1327B90066ACB3 /* programSLRgrammar.cpp */; };
-		CF288E71111DECAD004E4E82 /* programMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26CD70C12FD100066ACB3 /* programMetamodel.cpp */; };
 		CF288E72111DECAD004E4E82 /* programModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26CD90C12FD100066ACB3 /* programModelBuilder.cpp */; };
 		CF288E77111DECFB004E4E82 /* projectLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDC56A10C186FBB00DF8818 /* projectLL1grammar.cpp */; };
 		CF288E78111DECFC004E4E82 /* projectModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDC56A30C186FBB00DF8818 /* projectModelBuilder.cpp */; };
@@ -243,6 +241,42 @@
 		CF8D51970E46334400CFF259 /* GGSUpdateCocoaGalgas.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8D51950E46334400CFF259 /* GGSUpdateCocoaGalgas.m */; };
 		CF8E30240D9EE03700EF3764 /* projectCreation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8E30220D9EE03700EF3764 /* projectCreation.cpp */; };
 		CF8E30260D9EE03700EF3764 /* projectCreation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8E30220D9EE03700EF3764 /* projectCreation.cpp */; };
+		CF93813C19ABB1450074E798 /* galgas3DeclarationsSyntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93811819ABB1450074E798 /* galgas3DeclarationsSyntax.cpp */; };
+		CF93813D19ABB1450074E798 /* galgas3DeclarationsSyntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93811819ABB1450074E798 /* galgas3DeclarationsSyntax.cpp */; };
+		CF93813E19ABB1450074E798 /* galgas3ExpressionSyntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93811A19ABB1450074E798 /* galgas3ExpressionSyntax.cpp */; };
+		CF93813F19ABB1450074E798 /* galgas3ExpressionSyntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93811A19ABB1450074E798 /* galgas3ExpressionSyntax.cpp */; };
+		CF93814019ABB1450074E798 /* galgas3Grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93811C19ABB1450074E798 /* galgas3Grammar.cpp */; };
+		CF93814119ABB1450074E798 /* galgas3Grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93811C19ABB1450074E798 /* galgas3Grammar.cpp */; };
+		CF93814219ABB1450074E798 /* galgas3GrammarComponentSyntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93811E19ABB1450074E798 /* galgas3GrammarComponentSyntax.cpp */; };
+		CF93814319ABB1450074E798 /* galgas3GrammarComponentSyntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93811E19ABB1450074E798 /* galgas3GrammarComponentSyntax.cpp */; };
+		CF93814419ABB1450074E798 /* galgas3GuiComponentSyntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93812019ABB1450074E798 /* galgas3GuiComponentSyntax.cpp */; };
+		CF93814519ABB1450074E798 /* galgas3GuiComponentSyntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93812019ABB1450074E798 /* galgas3GuiComponentSyntax.cpp */; };
+		CF93814619ABB1450074E798 /* galgas3InstructionsSyntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93812219ABB1450074E798 /* galgas3InstructionsSyntax.cpp */; };
+		CF93814719ABB1450074E798 /* galgas3InstructionsSyntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93812219ABB1450074E798 /* galgas3InstructionsSyntax.cpp */; };
+		CF93814819ABB1450074E798 /* galgas3LexiqueComponentSyntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93812419ABB1450074E798 /* galgas3LexiqueComponentSyntax.cpp */; };
+		CF93814919ABB1450074E798 /* galgas3LexiqueComponentSyntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93812419ABB1450074E798 /* galgas3LexiqueComponentSyntax.cpp */; };
+		CF93814A19ABB1450074E798 /* galgas3OptionComponentSyntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93812619ABB1450074E798 /* galgas3OptionComponentSyntax.cpp */; };
+		CF93814B19ABB1450074E798 /* galgas3OptionComponentSyntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93812619ABB1450074E798 /* galgas3OptionComponentSyntax.cpp */; };
+		CF93814C19ABB1450074E798 /* galgas3ParameterArgumentSyntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93812819ABB1450074E798 /* galgas3ParameterArgumentSyntax.cpp */; };
+		CF93814D19ABB1450074E798 /* galgas3ParameterArgumentSyntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93812819ABB1450074E798 /* galgas3ParameterArgumentSyntax.cpp */; };
+		CF93814E19ABB1450074E798 /* galgas3ProgramDeclarations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93812A19ABB1450074E798 /* galgas3ProgramDeclarations.cpp */; };
+		CF93814F19ABB1450074E798 /* galgas3ProgramDeclarations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93812A19ABB1450074E798 /* galgas3ProgramDeclarations.cpp */; };
+		CF93815019ABB1450074E798 /* galgas3projectAST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93812C19ABB1450074E798 /* galgas3projectAST.cpp */; };
+		CF93815119ABB1450074E798 /* galgas3projectAST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93812C19ABB1450074E798 /* galgas3projectAST.cpp */; };
+		CF93815219ABB1450074E798 /* galgas3ProjectGrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93812E19ABB1450074E798 /* galgas3ProjectGrammar.cpp */; };
+		CF93815319ABB1450074E798 /* galgas3ProjectGrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93812E19ABB1450074E798 /* galgas3ProjectGrammar.cpp */; };
+		CF93815419ABB1450074E798 /* galgas3ProjectSyntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93813019ABB1450074E798 /* galgas3ProjectSyntax.cpp */; };
+		CF93815519ABB1450074E798 /* galgas3ProjectSyntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93813019ABB1450074E798 /* galgas3ProjectSyntax.cpp */; };
+		CF93815819ABB1450074E798 /* galgas3Scanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93813419ABB1450074E798 /* galgas3Scanner.cpp */; };
+		CF93815919ABB1450074E798 /* galgas3Scanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93813419ABB1450074E798 /* galgas3Scanner.cpp */; };
+		CF93815A19ABB1450074E798 /* galgas3SemanticDeclarationCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93813619ABB1450074E798 /* galgas3SemanticDeclarationCompilation.cpp */; };
+		CF93815B19ABB1450074E798 /* galgas3SemanticDeclarationCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93813619ABB1450074E798 /* galgas3SemanticDeclarationCompilation.cpp */; };
+		CF93815C19ABB1450074E798 /* galgas3SyntaxComponentSyntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93813819ABB1450074E798 /* galgas3SyntaxComponentSyntax.cpp */; };
+		CF93815D19ABB1450074E798 /* galgas3SyntaxComponentSyntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93813819ABB1450074E798 /* galgas3SyntaxComponentSyntax.cpp */; };
+		CF93815E19ABB1450074E798 /* galgas3TargetGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93813A19ABB1450074E798 /* galgas3TargetGeneration.cpp */; };
+		CF93815F19ABB1450074E798 /* galgas3TargetGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93813A19ABB1450074E798 /* galgas3TargetGeneration.cpp */; };
+		CF93816219ABB22A0074E798 /* C_HTMLString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93816019ABB22A0074E798 /* C_HTMLString.cpp */; };
+		CF93816319ABB22A0074E798 /* C_HTMLString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF93816019ABB22A0074E798 /* C_HTMLString.cpp */; };
 		CF976F0B0AD9954600D81E5D /* galgas in Resources */ = {isa = PBXBuildFile; fileRef = CFF98D73058CCD4700176BCE /* galgas */; };
 		CF976F0D0AD9954B00D81E5D /* galgas-debug in Resources */ = {isa = PBXBuildFile; fileRef = CF7A1403058CEFE2007126C1 /* galgas-debug */; };
 		CF9BDF6D0585C5C900FC7DD7 /* galgasApplication.icns in Resources */ = {isa = PBXBuildFile; fileRef = CF9BDF6B0585C5C900FC7DD7 /* galgasApplication.icns */; };
@@ -303,7 +337,6 @@
 		CFCB12610D9D74330016BE3F /* galgasTemplateScanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB125B0D9D74330016BE3F /* galgasTemplateScanner.cpp */; };
 		CFCB12670D9D74330016BE3F /* galgasTemplateScanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB125B0D9D74330016BE3F /* galgasTemplateScanner.cpp */; };
 		CFCD021C1066412100EA0463 /* semanticsCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF31B53A0DFE88C7001C97A7 /* semanticsCompilation.cpp */; };
-		CFCD021F1066414000EA0463 /* syntaxMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52540C10268B00B81CF3 /* syntaxMetamodel.cpp */; };
 		CFCD02201066414100EA0463 /* syntaxModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52560C10268B00B81CF3 /* syntaxModelBuilder.cpp */; };
 		CFCD02211066414200EA0463 /* syntaxSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52580C10268B00B81CF3 /* syntaxSLRgrammar.cpp */; };
 		CFCD02271066417900EA0463 /* semanticsSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB822110BC2D8DE009B1920 /* semanticsSLRgrammar.cpp */; };
@@ -311,7 +344,6 @@
 		CFCD02291066418300EA0463 /* grammarModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD30710C11C9440089A9F3 /* grammarModelBuilder.cpp */; };
 		CFCD023A1066421000EA0463 /* semanticsCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF31B53A0DFE88C7001C97A7 /* semanticsCompilation.cpp */; };
 		CFCD023B1066421200EA0463 /* semanticsSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB822110BC2D8DE009B1920 /* semanticsSLRgrammar.cpp */; };
-		CFCD023D1066421D00EA0463 /* syntaxMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52540C10268B00B81CF3 /* syntaxMetamodel.cpp */; };
 		CFCD023E1066421E00EA0463 /* syntaxModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52560C10268B00B81CF3 /* syntaxModelBuilder.cpp */; };
 		CFCD023F1066421E00EA0463 /* syntaxSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52580C10268B00B81CF3 /* syntaxSLRgrammar.cpp */; };
 		CFCD02401066422000EA0463 /* grammarMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD306F0C11C9440089A9F3 /* grammarMetamodel.cpp */; };
@@ -676,6 +708,44 @@
 		CF8D51950E46334400CFF259 /* GGSUpdateCocoaGalgas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGSUpdateCocoaGalgas.m; sourceTree = "<group>"; };
 		CF8E30220D9EE03700EF3764 /* projectCreation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = projectCreation.cpp; sourceTree = "<group>"; };
 		CF8E30230D9EE03700EF3764 /* projectCreation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = projectCreation.h; sourceTree = "<group>"; };
+		CF93811819ABB1450074E798 /* galgas3DeclarationsSyntax.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = galgas3DeclarationsSyntax.cpp; sourceTree = "<group>"; };
+		CF93811919ABB1450074E798 /* galgas3DeclarationsSyntax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = galgas3DeclarationsSyntax.h; sourceTree = "<group>"; };
+		CF93811A19ABB1450074E798 /* galgas3ExpressionSyntax.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = galgas3ExpressionSyntax.cpp; sourceTree = "<group>"; };
+		CF93811B19ABB1450074E798 /* galgas3ExpressionSyntax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = galgas3ExpressionSyntax.h; sourceTree = "<group>"; };
+		CF93811C19ABB1450074E798 /* galgas3Grammar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = galgas3Grammar.cpp; sourceTree = "<group>"; };
+		CF93811D19ABB1450074E798 /* galgas3Grammar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = galgas3Grammar.h; sourceTree = "<group>"; };
+		CF93811E19ABB1450074E798 /* galgas3GrammarComponentSyntax.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = galgas3GrammarComponentSyntax.cpp; sourceTree = "<group>"; };
+		CF93811F19ABB1450074E798 /* galgas3GrammarComponentSyntax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = galgas3GrammarComponentSyntax.h; sourceTree = "<group>"; };
+		CF93812019ABB1450074E798 /* galgas3GuiComponentSyntax.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = galgas3GuiComponentSyntax.cpp; sourceTree = "<group>"; };
+		CF93812119ABB1450074E798 /* galgas3GuiComponentSyntax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = galgas3GuiComponentSyntax.h; sourceTree = "<group>"; };
+		CF93812219ABB1450074E798 /* galgas3InstructionsSyntax.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = galgas3InstructionsSyntax.cpp; sourceTree = "<group>"; };
+		CF93812319ABB1450074E798 /* galgas3InstructionsSyntax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = galgas3InstructionsSyntax.h; sourceTree = "<group>"; };
+		CF93812419ABB1450074E798 /* galgas3LexiqueComponentSyntax.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = galgas3LexiqueComponentSyntax.cpp; sourceTree = "<group>"; };
+		CF93812519ABB1450074E798 /* galgas3LexiqueComponentSyntax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = galgas3LexiqueComponentSyntax.h; sourceTree = "<group>"; };
+		CF93812619ABB1450074E798 /* galgas3OptionComponentSyntax.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = galgas3OptionComponentSyntax.cpp; sourceTree = "<group>"; };
+		CF93812719ABB1450074E798 /* galgas3OptionComponentSyntax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = galgas3OptionComponentSyntax.h; sourceTree = "<group>"; };
+		CF93812819ABB1450074E798 /* galgas3ParameterArgumentSyntax.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = galgas3ParameterArgumentSyntax.cpp; sourceTree = "<group>"; };
+		CF93812919ABB1450074E798 /* galgas3ParameterArgumentSyntax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = galgas3ParameterArgumentSyntax.h; sourceTree = "<group>"; };
+		CF93812A19ABB1450074E798 /* galgas3ProgramDeclarations.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = galgas3ProgramDeclarations.cpp; sourceTree = "<group>"; };
+		CF93812B19ABB1450074E798 /* galgas3ProgramDeclarations.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = galgas3ProgramDeclarations.h; sourceTree = "<group>"; };
+		CF93812C19ABB1450074E798 /* galgas3projectAST.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = galgas3projectAST.cpp; sourceTree = "<group>"; };
+		CF93812D19ABB1450074E798 /* galgas3projectAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = galgas3projectAST.h; sourceTree = "<group>"; };
+		CF93812E19ABB1450074E798 /* galgas3ProjectGrammar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = galgas3ProjectGrammar.cpp; sourceTree = "<group>"; };
+		CF93812F19ABB1450074E798 /* galgas3ProjectGrammar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = galgas3ProjectGrammar.h; sourceTree = "<group>"; };
+		CF93813019ABB1450074E798 /* galgas3ProjectSyntax.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = galgas3ProjectSyntax.cpp; sourceTree = "<group>"; };
+		CF93813119ABB1450074E798 /* galgas3ProjectSyntax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = galgas3ProjectSyntax.h; sourceTree = "<group>"; };
+		CF93813219ABB1450074E798 /* galgas3Scanner-cocoa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "galgas3Scanner-cocoa.h"; sourceTree = "<group>"; };
+		CF93813319ABB1450074E798 /* galgas3Scanner-cocoa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "galgas3Scanner-cocoa.m"; sourceTree = "<group>"; };
+		CF93813419ABB1450074E798 /* galgas3Scanner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = galgas3Scanner.cpp; sourceTree = "<group>"; };
+		CF93813519ABB1450074E798 /* galgas3Scanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = galgas3Scanner.h; sourceTree = "<group>"; };
+		CF93813619ABB1450074E798 /* galgas3SemanticDeclarationCompilation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = galgas3SemanticDeclarationCompilation.cpp; sourceTree = "<group>"; };
+		CF93813719ABB1450074E798 /* galgas3SemanticDeclarationCompilation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = galgas3SemanticDeclarationCompilation.h; sourceTree = "<group>"; };
+		CF93813819ABB1450074E798 /* galgas3SyntaxComponentSyntax.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = galgas3SyntaxComponentSyntax.cpp; sourceTree = "<group>"; };
+		CF93813919ABB1450074E798 /* galgas3SyntaxComponentSyntax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = galgas3SyntaxComponentSyntax.h; sourceTree = "<group>"; };
+		CF93813A19ABB1450074E798 /* galgas3TargetGeneration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = galgas3TargetGeneration.cpp; sourceTree = "<group>"; };
+		CF93813B19ABB1450074E798 /* galgas3TargetGeneration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = galgas3TargetGeneration.h; sourceTree = "<group>"; };
+		CF93816019ABB22A0074E798 /* C_HTMLString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_HTMLString.cpp; sourceTree = "<group>"; };
+		CF93816119ABB22A0074E798 /* C_HTMLString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_HTMLString.h; sourceTree = "<group>"; };
 		CF9BDF6B0585C5C900FC7DD7 /* galgasApplication.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = galgasApplication.icns; sourceTree = "<group>"; };
 		CF9BDF6C0585C5C900FC7DD7 /* galgasDocuments.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = galgasDocuments.icns; sourceTree = "<group>"; };
 		CF9E55F90FF5372D007692D1 /* OC_Token.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_Token.h; sourceTree = "<group>"; };
@@ -923,8 +993,6 @@
 		CFDD30720C11C9440089A9F3 /* grammarModelBuilder.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = grammarModelBuilder.h; sourceTree = "<group>"; };
 		CFE10E73111738CF00E972AA /* GALGAS_char.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_char.cpp; sourceTree = "<group>"; };
 		CFE167820E8E7A2B00AFDAFC /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		CFE26CD70C12FD100066ACB3 /* programMetamodel.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = programMetamodel.cpp; sourceTree = "<group>"; };
-		CFE26CD80C12FD100066ACB3 /* programMetamodel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = programMetamodel.h; sourceTree = "<group>"; };
 		CFE26CD90C12FD100066ACB3 /* programModelBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = programModelBuilder.cpp; sourceTree = "<group>"; };
 		CFE26CDA0C12FD100066ACB3 /* programModelBuilder.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = programModelBuilder.h; sourceTree = "<group>"; };
 		CFE26D180C1327B90066ACB3 /* programSLRgrammar.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = programSLRgrammar.cpp; sourceTree = "<group>"; };
@@ -948,8 +1016,6 @@
 		CFF9E2911310429D0012D41A /* C_ColoredConsole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_ColoredConsole.h; sourceTree = "<group>"; };
 		CFFA4045118CAEC300E56DE2 /* semanticInstructionsAnalysis.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticInstructionsAnalysis.cpp; sourceTree = "<group>"; };
 		CFFA4046118CAEC300E56DE2 /* semanticInstructionsAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticInstructionsAnalysis.h; sourceTree = "<group>"; };
-		CFFA52540C10268B00B81CF3 /* syntaxMetamodel.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = syntaxMetamodel.cpp; sourceTree = "<group>"; };
-		CFFA52550C10268B00B81CF3 /* syntaxMetamodel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = syntaxMetamodel.h; sourceTree = "<group>"; };
 		CFFA52560C10268B00B81CF3 /* syntaxModelBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = syntaxModelBuilder.cpp; sourceTree = "<group>"; };
 		CFFA52570C10268B00B81CF3 /* syntaxModelBuilder.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = syntaxModelBuilder.h; sourceTree = "<group>"; };
 		CFFA52580C10268B00B81CF3 /* syntaxSLRgrammar.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = syntaxSLRgrammar.cpp; sourceTree = "<group>"; };
@@ -1135,6 +1201,49 @@
 				CFDD30720C11C9440089A9F3 /* grammarModelBuilder.h */,
 			);
 			name = "Grammar Component";
+			sourceTree = "<group>";
+		};
+		CF93811719ABB1310074E798 /* Galgas 3 */ = {
+			isa = PBXGroup;
+			children = (
+				CF93811819ABB1450074E798 /* galgas3DeclarationsSyntax.cpp */,
+				CF93811919ABB1450074E798 /* galgas3DeclarationsSyntax.h */,
+				CF93811A19ABB1450074E798 /* galgas3ExpressionSyntax.cpp */,
+				CF93811B19ABB1450074E798 /* galgas3ExpressionSyntax.h */,
+				CF93811C19ABB1450074E798 /* galgas3Grammar.cpp */,
+				CF93811D19ABB1450074E798 /* galgas3Grammar.h */,
+				CF93811E19ABB1450074E798 /* galgas3GrammarComponentSyntax.cpp */,
+				CF93811F19ABB1450074E798 /* galgas3GrammarComponentSyntax.h */,
+				CF93812019ABB1450074E798 /* galgas3GuiComponentSyntax.cpp */,
+				CF93812119ABB1450074E798 /* galgas3GuiComponentSyntax.h */,
+				CF93812219ABB1450074E798 /* galgas3InstructionsSyntax.cpp */,
+				CF93812319ABB1450074E798 /* galgas3InstructionsSyntax.h */,
+				CF93812419ABB1450074E798 /* galgas3LexiqueComponentSyntax.cpp */,
+				CF93812519ABB1450074E798 /* galgas3LexiqueComponentSyntax.h */,
+				CF93812619ABB1450074E798 /* galgas3OptionComponentSyntax.cpp */,
+				CF93812719ABB1450074E798 /* galgas3OptionComponentSyntax.h */,
+				CF93812819ABB1450074E798 /* galgas3ParameterArgumentSyntax.cpp */,
+				CF93812919ABB1450074E798 /* galgas3ParameterArgumentSyntax.h */,
+				CF93812A19ABB1450074E798 /* galgas3ProgramDeclarations.cpp */,
+				CF93812B19ABB1450074E798 /* galgas3ProgramDeclarations.h */,
+				CF93812C19ABB1450074E798 /* galgas3projectAST.cpp */,
+				CF93812D19ABB1450074E798 /* galgas3projectAST.h */,
+				CF93812E19ABB1450074E798 /* galgas3ProjectGrammar.cpp */,
+				CF93812F19ABB1450074E798 /* galgas3ProjectGrammar.h */,
+				CF93813019ABB1450074E798 /* galgas3ProjectSyntax.cpp */,
+				CF93813119ABB1450074E798 /* galgas3ProjectSyntax.h */,
+				CF93813219ABB1450074E798 /* galgas3Scanner-cocoa.h */,
+				CF93813319ABB1450074E798 /* galgas3Scanner-cocoa.m */,
+				CF93813419ABB1450074E798 /* galgas3Scanner.cpp */,
+				CF93813519ABB1450074E798 /* galgas3Scanner.h */,
+				CF93813619ABB1450074E798 /* galgas3SemanticDeclarationCompilation.cpp */,
+				CF93813719ABB1450074E798 /* galgas3SemanticDeclarationCompilation.h */,
+				CF93813819ABB1450074E798 /* galgas3SyntaxComponentSyntax.cpp */,
+				CF93813919ABB1450074E798 /* galgas3SyntaxComponentSyntax.h */,
+				CF93813A19ABB1450074E798 /* galgas3TargetGeneration.cpp */,
+				CF93813B19ABB1450074E798 /* galgas3TargetGeneration.h */,
+			);
+			name = "Galgas 3";
 			sourceTree = "<group>";
 		};
 		CFA5890010D285C800B7E541 /* galgas2 */ = {
@@ -1481,6 +1590,8 @@
 		CFD3E8510FA0C0F800C4995E /* strings */ = {
 			isa = PBXGroup;
 			children = (
+				CF93816019ABB22A0074E798 /* C_HTMLString.cpp */,
+				CF93816119ABB22A0074E798 /* C_HTMLString.h */,
 				CF7FD6AB0FF13CFB001EA1B7 /* unicode_character_m.h */,
 				CF7FD6AC0FF13CFB001EA1B7 /* unicode_character_m.m */,
 				CF7FD69C0FF13C1C001EA1B7 /* unicode_character_base.h */,
@@ -1602,6 +1713,7 @@
 		CFF53732057A4E5000854C83 /* GALGAS_OUTPUT */ = {
 			isa = PBXGroup;
 			children = (
+				CF93811719ABB1310074E798 /* Galgas 3 */,
 				CF6A7BF9114858E30034A94E /* include-files */,
 				CF8E30210D9EE01900EF3764 /* Project Creation */,
 				CFDE72200D85C5DE00596413 /* Template Scanner */,
@@ -1734,8 +1846,6 @@
 				CFC07E0C11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.h */,
 				CF0EA32410654C9A00679ABC /* syntaxCompilation.cpp */,
 				CF0EA32510654C9A00679ABC /* syntaxCompilation.h */,
-				CFFA52540C10268B00B81CF3 /* syntaxMetamodel.cpp */,
-				CFFA52550C10268B00B81CF3 /* syntaxMetamodel.h */,
 				CFFA52560C10268B00B81CF3 /* syntaxModelBuilder.cpp */,
 				CFFA52570C10268B00B81CF3 /* syntaxModelBuilder.h */,
 				CFFA52580C10268B00B81CF3 /* syntaxSLRgrammar.cpp */,
@@ -1784,8 +1894,6 @@
 				CF34D4B811ABD1EA0020730A /* programComponentCompilation.h */,
 				CFE26D180C1327B90066ACB3 /* programSLRgrammar.cpp */,
 				CFE26D190C1327B90066ACB3 /* programSLRgrammar.h */,
-				CFE26CD70C12FD100066ACB3 /* programMetamodel.cpp */,
-				CFE26CD80C12FD100066ACB3 /* programMetamodel.h */,
 				CFE26CD90C12FD100066ACB3 /* programModelBuilder.cpp */,
 				CFE26CDA0C12FD100066ACB3 /* programModelBuilder.h */,
 			);
@@ -2125,7 +2233,6 @@
 				CF0EA2FA1065320F00679ABC /* grammarCompilation.cpp in Sources */,
 				CF0EA32610654C9A00679ABC /* syntaxCompilation.cpp in Sources */,
 				CFCD021C1066412100EA0463 /* semanticsCompilation.cpp in Sources */,
-				CFCD021F1066414000EA0463 /* syntaxMetamodel.cpp in Sources */,
 				CFCD02201066414100EA0463 /* syntaxModelBuilder.cpp in Sources */,
 				CFCD02211066414200EA0463 /* syntaxSLRgrammar.cpp in Sources */,
 				CFCD02271066417900EA0463 /* semanticsSLRgrammar.cpp in Sources */,
@@ -2152,7 +2259,6 @@
 				CF085E5111176CDA00A23487 /* GALGAS_location.cpp in Sources */,
 				CFC92D7F11181F6300ACA25F /* GALGAS_binaryset.cpp in Sources */,
 				CF288E6D111DECA5004E4E82 /* programSLRgrammar.cpp in Sources */,
-				CF288E6E111DECA5004E4E82 /* programMetamodel.cpp in Sources */,
 				CF288E6F111DECA6004E4E82 /* programModelBuilder.cpp in Sources */,
 				CF288E77111DECFB004E4E82 /* projectLL1grammar.cpp in Sources */,
 				CF288E78111DECFC004E4E82 /* projectModelBuilder.cpp in Sources */,
@@ -2260,6 +2366,24 @@
 				CFD5BB6A1936719F002FF9FD /* C_Relation.cpp in Sources */,
 				CFB566C2193730F10042E6E5 /* C_RelationSingleType.cpp in Sources */,
 				CF8224DB1937A8EC00942F69 /* C_RelationConfiguration.cpp in Sources */,
+				CF93813C19ABB1450074E798 /* galgas3DeclarationsSyntax.cpp in Sources */,
+				CF93813E19ABB1450074E798 /* galgas3ExpressionSyntax.cpp in Sources */,
+				CF93814019ABB1450074E798 /* galgas3Grammar.cpp in Sources */,
+				CF93814219ABB1450074E798 /* galgas3GrammarComponentSyntax.cpp in Sources */,
+				CF93814419ABB1450074E798 /* galgas3GuiComponentSyntax.cpp in Sources */,
+				CF93814619ABB1450074E798 /* galgas3InstructionsSyntax.cpp in Sources */,
+				CF93814819ABB1450074E798 /* galgas3LexiqueComponentSyntax.cpp in Sources */,
+				CF93814A19ABB1450074E798 /* galgas3OptionComponentSyntax.cpp in Sources */,
+				CF93814C19ABB1450074E798 /* galgas3ParameterArgumentSyntax.cpp in Sources */,
+				CF93814E19ABB1450074E798 /* galgas3ProgramDeclarations.cpp in Sources */,
+				CF93815019ABB1450074E798 /* galgas3projectAST.cpp in Sources */,
+				CF93815219ABB1450074E798 /* galgas3ProjectGrammar.cpp in Sources */,
+				CF93815419ABB1450074E798 /* galgas3ProjectSyntax.cpp in Sources */,
+				CF93815819ABB1450074E798 /* galgas3Scanner.cpp in Sources */,
+				CF93815A19ABB1450074E798 /* galgas3SemanticDeclarationCompilation.cpp in Sources */,
+				CF93815C19ABB1450074E798 /* galgas3SyntaxComponentSyntax.cpp in Sources */,
+				CF93815E19ABB1450074E798 /* galgas3TargetGeneration.cpp in Sources */,
+				CF93816219ABB22A0074E798 /* C_HTMLString.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2311,7 +2435,6 @@
 				CF0EA32710654C9A00679ABC /* syntaxCompilation.cpp in Sources */,
 				CFCD023A1066421000EA0463 /* semanticsCompilation.cpp in Sources */,
 				CFCD023B1066421200EA0463 /* semanticsSLRgrammar.cpp in Sources */,
-				CFCD023D1066421D00EA0463 /* syntaxMetamodel.cpp in Sources */,
 				CFCD023E1066421E00EA0463 /* syntaxModelBuilder.cpp in Sources */,
 				CFCD023F1066421E00EA0463 /* syntaxSLRgrammar.cpp in Sources */,
 				CFCD02401066422000EA0463 /* grammarMetamodel.cpp in Sources */,
@@ -2337,7 +2460,6 @@
 				CF085E5211176CDA00A23487 /* GALGAS_location.cpp in Sources */,
 				CFC92D8011181F6300ACA25F /* GALGAS_binaryset.cpp in Sources */,
 				CF288E70111DECAC004E4E82 /* programSLRgrammar.cpp in Sources */,
-				CF288E71111DECAD004E4E82 /* programMetamodel.cpp in Sources */,
 				CF288E72111DECAD004E4E82 /* programModelBuilder.cpp in Sources */,
 				CF288E79111DED00004E4E82 /* projectLL1grammar.cpp in Sources */,
 				CF288E7A111DED01004E4E82 /* projectModelBuilder.cpp in Sources */,
@@ -2445,6 +2567,24 @@
 				CFD5BB6B1936719F002FF9FD /* C_Relation.cpp in Sources */,
 				CFB566C3193730F10042E6E5 /* C_RelationSingleType.cpp in Sources */,
 				CF8224DC1937A8EC00942F69 /* C_RelationConfiguration.cpp in Sources */,
+				CF93813D19ABB1450074E798 /* galgas3DeclarationsSyntax.cpp in Sources */,
+				CF93813F19ABB1450074E798 /* galgas3ExpressionSyntax.cpp in Sources */,
+				CF93814119ABB1450074E798 /* galgas3Grammar.cpp in Sources */,
+				CF93814319ABB1450074E798 /* galgas3GrammarComponentSyntax.cpp in Sources */,
+				CF93814519ABB1450074E798 /* galgas3GuiComponentSyntax.cpp in Sources */,
+				CF93814719ABB1450074E798 /* galgas3InstructionsSyntax.cpp in Sources */,
+				CF93814919ABB1450074E798 /* galgas3LexiqueComponentSyntax.cpp in Sources */,
+				CF93814B19ABB1450074E798 /* galgas3OptionComponentSyntax.cpp in Sources */,
+				CF93814D19ABB1450074E798 /* galgas3ParameterArgumentSyntax.cpp in Sources */,
+				CF93814F19ABB1450074E798 /* galgas3ProgramDeclarations.cpp in Sources */,
+				CF93815119ABB1450074E798 /* galgas3projectAST.cpp in Sources */,
+				CF93815319ABB1450074E798 /* galgas3ProjectGrammar.cpp in Sources */,
+				CF93815519ABB1450074E798 /* galgas3ProjectSyntax.cpp in Sources */,
+				CF93815919ABB1450074E798 /* galgas3Scanner.cpp in Sources */,
+				CF93815B19ABB1450074E798 /* galgas3SemanticDeclarationCompilation.cpp in Sources */,
+				CF93815D19ABB1450074E798 /* galgas3SyntaxComponentSyntax.cpp in Sources */,
+				CF93815F19ABB1450074E798 /* galgas3TargetGeneration.cpp in Sources */,
+				CF93816319ABB22A0074E798 /* C_HTMLString.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2522,8 +2662,10 @@
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_OPTIMIZATION_LEVEL = 2;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ../libpm/galgas2/PP_GalgasPrefix.pch;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"LIBPM_MULTI_THREADING=0",
+					DO_NOT_GENERATE_CHECKINGS,
+				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				HEADER_SEARCH_PATHS = (
 					../galgas_sources/GALGAS_OUTPUT,
@@ -2568,8 +2710,6 @@
 				GCC_ENABLE_TRIGRAPHS = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_OPTIMIZATION_LEVEL = 2;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = ../libpm/cocoa_galgas/PP_CocoaGalgasPrefix.pch;
 				GCC_SHORT_ENUMS = NO;
 				GCC_WARN_SHADOW = YES;
 				GCC_WARN_UNUSED_PARAMETER = NO;
