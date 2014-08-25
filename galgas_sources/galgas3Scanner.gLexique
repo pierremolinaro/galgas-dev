@@ -16,7 +16,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-lexique galgas3Scanner indexing in "GALGAS_INDEXES" :
+lexique galgas3Scanner indexing in "../build/indexes" :
 #--- Indexing keys
 indexing classDefinition : "Class Definition" ;
 indexing enumDefinition : "Enum Definition" ;
