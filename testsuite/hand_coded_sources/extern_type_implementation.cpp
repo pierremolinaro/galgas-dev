@@ -1,5 +1,5 @@
 
-#include "testsuite_extern_type.h"
+#include "all-declarations.h"
 
 //---------------------------------------------------------------------------*
 
