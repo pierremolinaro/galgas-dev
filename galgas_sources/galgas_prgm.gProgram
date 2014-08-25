@@ -523,7 +523,7 @@ indexing with projectLL1grammar
 
 when . "galgasProject"
 message "a GALGAS project source file"
-indexing with galgas3ProjectGrammar
+#indexing with galgas3ProjectGrammar
 ??@lstring inProjectSourceFile {
   compileProject !inProjectSourceFile !"" ;
 }
@@ -888,7 +888,7 @@ end routine ;
 
 when . "galgas"
 message "a GALGAS source file"
-indexing with projectLL1grammar
+indexing with galgas3Grammar
 ??@lstring inSourceFile {
 #--- Search for a project file in parent directory
   const parentDirectory := [[inSourceFile->string stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] ;

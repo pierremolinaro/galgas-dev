@@ -63,7 +63,7 @@ with lexique "galgas_scanner.gLexique" {
 
   
   textMacro "Types/Class" :
-    "class @aClassName : extends @superClassName {\n"
+    "class @aClassName extends @superClassName {\n"
     "  @aType mAnAttribute ;\n"
     "}\n"
   ;

@@ -1003,7 +1003,7 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
 
 - (void) parseSourceFileForBuildingIndexFile: (NSString *) inSourceFileFullPath {
   #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+    NSLog (@"%s, file %@", __PRETTY_FUNCTION__, inSourceFileFullPath) ;
   #endif
   NSString * compilerToolPath = gCocoaApplicationDelegate.compilerToolPath ;
 //--- Command line tool does actually exist ? (First argument is not "?")
@@ -1048,6 +1048,7 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
     }
   //--- Handled extensions
     NSSet * handledExtensions = [self handledExtensions] ;
+    // NSLog (@"handledExtensions '%@'", handledExtensions) ;
   //--- All files in source directory
     NSFileManager * fm = [[NSFileManager alloc] init] ;
     NSArray * files = [fm contentsOfDirectoryAtPath:sourceDirectory error:NULL] ;
