@@ -90,6 +90,11 @@
   @private NSMutableArray * mResultArray ;
   @private NSUInteger mResultCount ;
   @private NSTreeController * mFoundEntryTreeController ;
+//---
+  @private IBOutlet NSTableView * mExcludedDirectoryTableView ;
+  @private NSArrayController * mExcludedDirectoryArrayController ;
+  @private IBOutlet NSButton * mAddExcludedDirectoryButton ;
+  @private IBOutlet NSButton * mRemoveExcludedDirectoryButton ;
 }
 
 @property (assign PROPERTY_COMMA_ATOMIC) BOOL mBuildTaskIsRunning ;

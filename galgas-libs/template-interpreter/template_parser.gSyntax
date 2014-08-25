@@ -41,10 +41,6 @@ nonterminal <sorting_order>
   !@lsint order
 ;
 
-#nonterminal <struct_path>
-#  ?!@lstringlist path
-##;
-
 nonterminal <variable>
   ??@string inPrefix
   ??@string inPath
