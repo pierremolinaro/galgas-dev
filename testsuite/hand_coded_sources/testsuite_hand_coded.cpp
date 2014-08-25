@@ -1,10 +1,5 @@
 
-#include "testsuite_list.h"
-#include "testsuite_functions.h"
-#include "galgas2/predefined-types.h"
-#include "galgas2/C_Compiler.h"
-#include "utilities/MF_MemoryControl.h"
-#include "testsuite_array.h"
+#include "all-declarations.h"
 
 //---------------------------------------------------------------------------*
 
