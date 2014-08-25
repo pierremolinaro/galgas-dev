@@ -1780,12 +1780,36 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
+//--- Get all dir set
   NSMutableSet * directoryPathSet = [NSMutableSet new] ;
   for (OC_GGS_TextDisplayDescriptor * d in mSourceDisplayArrayController.arrangedObjects) {
-    NSString * filePath = d.sourceURL.path ;
-    [directoryPathSet addObject:filePath.stringByDeletingLastPathComponent] ;
+    NSString * dir = d.sourceURL.path.stringByDeletingLastPathComponent ;
+    // NSLog (@"dir %@", dir) ;
+    [directoryPathSet addObject:dir] ;
   }
+  // NSLog (@"directoryPathSet %@", directoryPathSet) ;
+//--- Retain only base directories, eliminate sub directories
+  NSMutableArray * directoryPathArray = [NSMutableArray new] ;
   for (NSString * directoryPath in directoryPathSet) {
+    if (! [directoryPathArray containsObject:directoryPath]) {
+      BOOL insert = YES ;
+      for (NSUInteger i=0 ; (i<directoryPathArray.count) && insert ; i++) {
+        NSString * dir = [directoryPathArray objectAtIndex:i] ;
+        if ([dir hasPrefix:directoryPath]) {
+          [directoryPathArray replaceObjectAtIndex:i withObject:directoryPath] ;
+          insert = NO ;
+        }else if ([directoryPath hasPrefix:dir]) {
+          insert = NO ;
+        }
+      }
+      if (insert) {
+        [directoryPathArray addObject:directoryPath] ;
+      }
+    }
+  }
+  // NSLog (@"directoryPathArray %@", directoryPathArray) ;
+//--- Explore dirs
+  for (NSString * directoryPath in directoryPathArray) {
     [self
       recursiveSearchInDirectory:directoryPath
       recursive:YES
