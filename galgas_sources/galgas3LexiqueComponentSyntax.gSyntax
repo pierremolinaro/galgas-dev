@@ -58,7 +58,9 @@ rule <declaration>
   @indexingListAST indexingListAST [emptyList] ;
   repeat
   while 
-    <extern_routine_or_function_declaration> !? externRoutineList !? externFunctionList ;
+    <extern_routine_declaration> !?externRoutineList ;
+  while 
+    <extern_function_declaration> !?externFunctionList ;
   while 
     <template_delimitor> !? templateDelimitorList ;
   while 
@@ -590,24 +592,28 @@ rule <terminal_declaration> ?!@terminalDeclarationListAST ioTerminalDeclarationL
     $identifier$ ?const sentAttribute ;
     sentAttributeList += !selector !sentAttribute ;
   end repeat ;
-  ${$ ;
   $error$ ;
   $message$ ;
   $literal_string$ ??@lstring errorMessage ;
   @lstring theStyle ; # Empty string if no style
-  select
-    $style$ ;
-    $identifier$ ? theStyle ;
-  or
-    theStyle := [@lstring new !"" !here] ;
-  end select ;
   @lstringlist optionList := {} ;
-  repeat
-  while
-    $attribute$ ??@lstring optionName ;
-    optionList += !optionName ;
-  end repeat ;
-  $}$ ;
+  select
+    theStyle := [""nowhere] ;
+  or
+    ${$ ;
+    select
+      $style$ ;
+      $identifier$ ? theStyle ;
+    or
+      theStyle :=  [""nowhere] ;
+    end select ;
+    repeat
+    while
+      $attribute$ ??@lstring optionName ;
+      optionList += !optionName ;
+    end repeat ;
+    $}$ ;
+  end select ;
   ioTerminalDeclarationList += !name !sentAttributeList !errorMessage !theStyle !optionList ;
 end rule ;
 
@@ -623,65 +629,69 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <extern_routine_or_function_declaration>
+rule <extern_routine_declaration>
   ?!@externRoutineListAST ioExternRoutineList
-  ?!@externFunctionListAST ioExternFunctionList
 :
   $extern$ ;
-  select
-    $proc$ ;
-    $identifier$ ?@lstring routineName ;
-    @lexicalExternRoutineFormalArgumentListAST lexicalRoutineFormalArgumentList [emptyList] ;
-    repeat
-    while
-      @lexicalArgumentModeAST lexicalArgumentMode ;
-      select
-        $?!$ ?const selector ;
-        if selector->string != "" then
-          error selector : "the selector should be '?!'" ;
-        end if ;
-        lexicalArgumentMode := [@lexicalArgumentModeAST lexicalInputOutputMode] ;
-      or
-        $?$ ?const selector ;
-        if selector->string != "" then
-          error selector : "the selector should be '?'" ;
-        end if ;
-        lexicalArgumentMode := [@lexicalArgumentModeAST lexicalInputMode] ;
-      end select ;
-      $type_name$ ?@lstring lexicalTypeName ;
-      $identifier$ ?@lstring formalArgumentName ;
-      lexicalRoutineFormalArgumentList += !lexicalArgumentMode !lexicalTypeName !formalArgumentName ;
-    end repeat ;
-    @stringlist errorMessageList [emptyList] ;
+  $proc$ ;
+  $identifier$ ?@lstring routineName ;
+  @lexicalExternRoutineFormalArgumentListAST lexicalRoutineFormalArgumentList [emptyList] ;
+  repeat
+  while
+    @lexicalArgumentModeAST lexicalArgumentMode ;
     select
+      $?!$ ?const selector ;
+      if selector->string != "" then
+        error selector : "the selector should be '?!'" ;
+      end if ;
+      lexicalArgumentMode := [@lexicalArgumentModeAST lexicalInputOutputMode] ;
     or
-      $error$ ;
-      repeat
-        $identifier$ ?@lstring errorMessageName ;
-        errorMessageList += ![errorMessageName string] ;
-      while
-        $,$ ;
-      end repeat ;
-    end select ;
-    ioExternRoutineList += !routineName !lexicalRoutineFormalArgumentList !errorMessageList ;
-  or
-    $func$ ;
-    $identifier$ ?@lstring functionName ;
-    @lexicalExternFunctionFormalArgumentListAST lexicalFunctionFormalArgumentList [emptyList] ;
-    repeat
-    while
       $?$ ?const selector ;
       if selector->string != "" then
         error selector : "the selector should be '?'" ;
       end if ;
-      $type_name$ ?@lstring lexicalTypeName ;
-      $identifier$ ?@lstring formalArgumentName ;
-      lexicalFunctionFormalArgumentList += !lexicalTypeName !formalArgumentName ;
+      lexicalArgumentMode := [@lexicalArgumentModeAST lexicalInputMode] ;
+    end select ;
+    $type_name$ ?@lstring lexicalTypeName ;
+    $identifier$ ?@lstring formalArgumentName ;
+    lexicalRoutineFormalArgumentList += !lexicalArgumentMode !lexicalTypeName !formalArgumentName ;
+  end repeat ;
+  @stringlist errorMessageList [emptyList] ;
+  select
+  or
+    $error$ ;
+    repeat
+      $identifier$ ?@lstring errorMessageName ;
+      errorMessageList += ![errorMessageName string] ;
+    while
+      $,$ ;
     end repeat ;
-    $->$ ;
-    $type_name$ ?@lstring returnedTypeName ;
-    ioExternFunctionList += !functionName !lexicalFunctionFormalArgumentList !returnedTypeName ;
   end select ;
+  ioExternRoutineList += !routineName !lexicalRoutineFormalArgumentList !errorMessageList ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <extern_function_declaration>
+  ?!@externFunctionListAST ioExternFunctionList
+:
+  $extern$ ;
+  $func$ ;
+  $identifier$ ?@lstring functionName ;
+  @lexicalExternFunctionFormalArgumentListAST lexicalFunctionFormalArgumentList [emptyList] ;
+  repeat
+  while
+    $?$ ?const selector ;
+    if selector->string != "" then
+      error selector : "the selector should be '?'" ;
+    end if ;
+    $type_name$ ?@lstring lexicalTypeName ;
+    $identifier$ ?@lstring formalArgumentName ;
+    lexicalFunctionFormalArgumentList += !lexicalTypeName !formalArgumentName ;
+  end repeat ;
+  $->$ ;
+  $type_name$ ?@lstring returnedTypeName ;
+  ioExternFunctionList += !functionName !lexicalFunctionFormalArgumentList !returnedTypeName ;
 end rule ;
 
 #---------------------------------------------------------------------------*
