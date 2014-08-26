@@ -618,10 +618,10 @@ rule <terminal_declaration> ?!@terminalDeclarationListAST ioTerminalDeclarationL
     $identifier$ ??@lstring sentAttribute ;
     sentAttributeList += !selector !sentAttribute ;
   end repeat ;
-  send " {" ;
   $error$ ;
   $message$ ;
   $literal_string$ ??@lstring errorMessage ;
+  send " {" ;
   @lstring theStyle ; # Empty string if no style
   select
     $style$ ;
