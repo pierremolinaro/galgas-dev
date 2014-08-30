@@ -1627,7 +1627,7 @@ bool C_String::parseUTF8 (const C_Data & inDataString,
       foundCR = false ;
       idx ++ ;
     }else{
-      const utf32 uc = utf32CharacterForPointer (inDataString.dataPointer (), idx, inDataString.length (), ok) ;
+      const utf32 uc = utf32CharacterForPointer (inDataString.unsafeDataPointer (), idx, inDataString.length (), ok) ;
       outString.appendUnicodeCharacter (uc COMMA_HERE) ;
       foundCR = false ;
     }
