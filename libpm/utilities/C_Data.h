@@ -1,10 +1,10 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  C_Data : a class for handling arbitrary data array                         *
+//  C_Data : a class for handling arbitrary data array                                                                 *
 //                                                                                                                     *
-//  This file is part of libpm library                                         *
+//  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2012, ..., 2013 Pierre Molinaro.                             *
+//  Copyright (C) 2012, ..., 2013 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -47,7 +47,7 @@ class C_Data {
   
   public : void setLengthToZero (void) ;
 
-  public : const uint8_t * dataPointer (void) const { return mBinaryData.arrayPointer () ; }
+  public : const uint8_t * unsafeDataPointer (void) const { return mBinaryData.unsafeArrayPointer () ; }
 
 //--- Free
   public : void free (void) ;

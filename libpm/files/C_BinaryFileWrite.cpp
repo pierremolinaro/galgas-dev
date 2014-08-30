@@ -1,10 +1,10 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  'C_TextFileWrite' : a class for stream writing text files                  *
+//  'C_TextFileWrite' : a class for stream writing text files                                                          *
 //                                                                                                                     *
-//  This file is part of libpm library                                         *
+//  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 1999, ..., 2011 Pierre Molinaro.                             *
+//  Copyright (C) 1999, ..., 2011 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -39,7 +39,7 @@ AC_FileHandleForWriting (inFileName, "wb") {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                Close                                        *
+//                                Close                                                                                *
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool C_BinaryFileWrite::close (void) {
@@ -60,8 +60,7 @@ void C_BinaryFileWrite::flush (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                             Destructor                                      *
-// Cannot call the virtual 'close' method in destructor                        *
+//    Destructor (cannot call the virtual 'close' method in destructor)                                                *
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_BinaryFileWrite::~C_BinaryFileWrite (void) {
@@ -74,7 +73,7 @@ C_BinaryFileWrite::~C_BinaryFileWrite (void) {
 
 void C_BinaryFileWrite::appendData (const C_Data & inData) {
   if (NULL != mFilePtr) {
-    ::fwrite (inData.dataPointer (), 1, (size_t) inData.length (), mFilePtr) ;
+    ::fwrite (inData.unsafeDataPointer (), 1, (size_t) inData.length (), mFilePtr) ;
   }
 }
 
