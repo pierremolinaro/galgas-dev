@@ -323,9 +323,16 @@
   [mSearchMatrix
     bind:@"selectedIndex"
     toObject:[NSUserDefaultsController sharedUserDefaultsController] 
-    withKeyPath:@"values.SEARCH-MATRIX" 
+    withKeyPath:[NSString stringWithFormat:@"values.%@", [self searchMatrixPreferenceKey]]
     options:nil
   ] ;
+  [[NSUserDefaults standardUserDefaults]
+    addObserver:self
+    forKeyPath:[self searchMatrixPreferenceKey]
+    options:0
+    context:NULL
+  ] ;
+  [self updateDirectoryListVisibility] ;
 //--- Configuring recent search menu
   NSMenu * cellMenu = [[NSMenu alloc]
     initWithTitle:NSLocalizedString(@"Search Menu", @"Search Menu title")
@@ -356,7 +363,7 @@
   id searchCell = [mGlobalSearchTextField cell];
   [searchCell setSearchMenuTemplate:cellMenu];
 
-//---
+//--- Excluded directories
   mExcludedDirectoryArrayController = [NSArrayController new] ;
   mAddExcludedDirectoryButton.action = @selector (addExcludedDirectoryAction:) ;
   mAddExcludedDirectoryButton.target = self ;
@@ -365,7 +372,7 @@
   [mExcludedDirectoryArrayController
     bind:@"contentArray"
     toObject:[NSUserDefaultsController sharedUserDefaultsController]
-    withKeyPath:[NSString stringWithFormat:@"values.excludedDirectoryArray--%@", self.fileURL.absoluteString]
+    withKeyPath:[NSString stringWithFormat:@"values.excludedDirectoryArray-%lu", self.fileURL.absoluteString.hash]
     options:nil
   ] ;
   [mRemoveExcludedDirectoryButton
@@ -377,6 +384,31 @@
   [[mExcludedDirectoryTableView tableColumnWithIdentifier:@"path"]
     bind:@"value"
     toObject:mExcludedDirectoryArrayController
+    withKeyPath:@"arrangedObjects"
+    options:nil
+  ] ;
+
+//--- Excplicit search in directories
+  mExplicitSearchDirectoryArrayController = [NSArrayController new] ;
+  mAddExplicitSearchDirectoryButton.action = @selector (addExplicitSearchDirectoryAction:) ;
+  mAddExplicitSearchDirectoryButton.target = self ;
+  mRemoveExplicitSearchDirectoryButton.action = @selector (remove:) ;
+  mRemoveExplicitSearchDirectoryButton.target = mExplicitSearchDirectoryArrayController ;
+  [mExplicitSearchDirectoryArrayController
+    bind:@"contentArray"
+    toObject:[NSUserDefaultsController sharedUserDefaultsController]
+    withKeyPath:[NSString stringWithFormat:@"values.searchDirectoryArray-%lu", self.fileURL.absoluteString.hash]
+    options:nil
+  ] ;
+  [mRemoveExplicitSearchDirectoryButton
+    bind:@"enabled"
+    toObject:mExplicitSearchDirectoryArrayController
+    withKeyPath:@"canRemove"
+    options:nil
+  ] ;
+  [[mExplicitSearchDirectoryTableView tableColumnWithIdentifier:@"path"]
+    bind:@"value"
+    toObject:mExplicitSearchDirectoryArrayController
     withKeyPath:@"arrangedObjects"
     options:nil
   ] ;
@@ -479,6 +511,10 @@
   ] ;
   [mSearchMatrix
     unbind:@"selectedIndex"
+  ] ;
+  [ud
+    removeObserver:self
+    forKeyPath:[self searchMatrixPreferenceKey]
   ] ;
 //---
   mSourceDisplayArrayController = nil ;
@@ -1500,7 +1536,9 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
     NSLog (@"%s, keyPath: %@", __PRETTY_FUNCTION__, inKeyPath) ;
   #endif
   NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
-  if ((inObject == ud) && [inKeyPath isEqualToString:GGS_build_text_font]) {
+  if ((inObject == ud) && [inKeyPath isEqualToString:[self searchMatrixPreferenceKey]]) {
+    [self updateDirectoryListVisibility] ;
+  }else if ((inObject == ud) && [inKeyPath isEqualToString:GGS_build_text_font]) {
     NSData * data = [ud objectForKey:GGS_build_text_font] ;
     if (nil != data) {
       mBuildTextFont = [NSUnarchiver unarchiveObjectWithData:data] ;
@@ -1632,7 +1670,25 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
 
 #pragma mark Search and Replace
 
+//---------------------------------------------------------------------------------------------------------------------*
+
 //https://github.com/malcommac/NSSplitView-Animatable
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+- (NSString *) searchMatrixPreferenceKey {
+  return [NSString stringWithFormat:@"searchMatrixFor_%lu", self.fileURL.path.hash] ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+- (void) updateDirectoryListVisibility {
+  const NSInteger sel = [[NSUserDefaults standardUserDefaults] integerForKey:[self searchMatrixPreferenceKey]] ;
+  [mExcludedDirectoryView setHidden:sel != 1] ;
+  [mExplicitSearchDirectoryView setHidden:sel != 2] ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
 
 - (double) positionOfDividerAtIndex:(NSInteger)dividerIndex {
   #ifdef DEBUG_MESSAGES
@@ -1795,12 +1851,48 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
   mResultCount = 0 ;
   [self updateOccurrenceFoundTextField] ;
   switch (mSearchMatrix.selectedRow) {
-  case 0 :
-    [self findInOpenedFiles] ;
-    break ;
-  case 1 :
-    [self findInOpenedFileDirectories] ;
-    break ;
+  case 0 : [self findInOpenedFiles] ; break ;
+  case 1 : [self findInOpenedFileDirectories] ; break ;
+  case 2 : [self findInExplicitDirectories] ; break ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+- (void) findInExplicitDirectories {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
+//---------------------------------------------------------- Get all dir set
+  NSMutableSet * directoryPathSet = [NSMutableSet setWithArray:mExplicitSearchDirectoryArrayController.arrangedObjects] ;
+  // NSLog (@"directoryPathSet %@", directoryPathSet) ;
+//---------------------------------------- Retain only base directories, eliminate sub directories
+  NSMutableArray * directoryPathArray = [NSMutableArray new] ;
+  for (NSString * directoryPath in directoryPathSet) {
+    if (! [directoryPathArray containsObject:directoryPath]) {
+      BOOL insert = YES ;
+      for (NSUInteger i=0 ; (i<directoryPathArray.count) && insert ; i++) {
+        NSString * dir = [directoryPathArray objectAtIndex:i] ;
+        if ([dir hasPrefix:directoryPath]) {
+          [directoryPathArray replaceObjectAtIndex:i withObject:directoryPath] ;
+          insert = NO ;
+        }else if ([directoryPath hasPrefix:dir]) {
+          insert = NO ;
+        }
+      }
+      if (insert) {
+        [directoryPathArray addObject:directoryPath] ;
+      }
+    }
+  }
+  // NSLog (@"directoryPathArray %@", directoryPathArray) ;
+//------------------------- Explore dirs
+  for (NSString * directoryPath in directoryPathArray) {
+    [self
+      recursiveSearchInDirectory:directoryPath
+      recursive:YES
+      extensionList:self.allTypesOfCurrentApplication
+    ] ;
   }
 }
 
@@ -2087,6 +2179,40 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+- (void) addExplicitSearchDirectoryAction: (id) inSender {
+  NSOpenPanel * panel = [NSOpenPanel openPanel] ;
+  panel.title = @"Select a search directory:" ;
+  panel.canChooseFiles = NO ;
+  panel.canChooseDirectories = YES ;
+  panel.canCreateDirectories = YES ;
+  panel.allowsMultipleSelection = YES ;
+  [panel
+    beginSheetForDirectory:nil
+    file:nil
+    types:[NSArray array]
+    modalForWindow:self.windowForSheet
+    modalDelegate:self
+    didEndSelector:@selector (addSearchDirectoryPanelDidEnd:returnCode:contextInfo:)
+    contextInfo:nil
+  ] ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+- (void) addSearchDirectoryPanelDidEnd: (NSOpenPanel *) inPanel
+         returnCode: (int) inReturnCode
+         contextInfo: (void  *) inContextInfo {
+  if (NSOKButton == inReturnCode) {
+    for (NSURL * url in inPanel.URLs) {
+      if (url.isFileURL) {
+        [mExplicitSearchDirectoryArrayController addObject:url.path] ;
+      }
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 - (void) addExcludedDirectoryAction: (id) inSender {
   NSOpenPanel * panel = [NSOpenPanel openPanel] ;
   panel.title = @"Select the directory to Exclude from search:" ;
@@ -2104,6 +2230,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
     contextInfo:nil
   ] ;
 }
+
 
 //---------------------------------------------------------------------------------------------------------------------*
 
