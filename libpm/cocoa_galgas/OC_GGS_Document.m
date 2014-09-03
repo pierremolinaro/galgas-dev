@@ -512,10 +512,10 @@
   [mSearchMatrix
     unbind:@"selectedIndex"
   ] ;
-  [ud
+/*  [ud
     removeObserver:self
     forKeyPath:[self searchMatrixPreferenceKey]
-  ] ;
+  ] ;*/
 //---
   mSourceDisplayArrayController = nil ;
   mDisplayDescriptorArray = nil ;

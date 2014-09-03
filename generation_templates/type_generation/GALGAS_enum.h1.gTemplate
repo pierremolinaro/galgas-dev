@@ -11,7 +11,7 @@ class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 //--------------------------------- Enumeration
   public : typedef enum {
     kNotBuilt%
-    foreach CONSTANT_LIST do
+    for () in CONSTANT_LIST do
       %,\n    kEnum_%![mValue identifierRepresentation]
     end
 %

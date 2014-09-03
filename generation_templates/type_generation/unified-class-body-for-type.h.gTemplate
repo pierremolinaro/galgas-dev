@@ -11,9 +11,9 @@
 %
 if [CONSTRUCTOR_MAP count] > 0 then
   %//--------------------------------- GALGAS constructors\n%
-  foreach CONSTRUCTOR_MAP do
+  for () in CONSTRUCTOR_MAP do
     %  public : static GALGAS_%![mReturnedType identifierRepresentation]% constructor_%![[lkey string] identifierRepresentation]% (%?^
-    foreach mArgumentTypeList
+    for () in mArgumentTypeList
       do index IDX %const class GALGAS_% ![mFormalArgumentType identifierRepresentation] % & inOperand%![IDX string]
       between %,\n%!^
     end
@@ -54,7 +54,7 @@ end
 if [ADD_ASSIGN_ARGUMENT_LIST length] > 0 then
 %//--------------------------------- += operator (with list of field expressions)
   public : VIRTUAL_IN_DEBUG void addAssign_operation (%?^
-  foreach ADD_ASSIGN_ARGUMENT_LIST
+  for () in ADD_ASSIGN_ARGUMENT_LIST
   do index IDX %const class GALGAS_%![mFormalArgumentType identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
   end
@@ -162,11 +162,11 @@ if (SUPPORTED_OPERATORS & doNotGenererateObjectCompare []) == 0 then
 %
 //--------------------------------- Setters
 %
-foreach MODIFIER_MAP do
+for () in MODIFIER_MAP do
   if mKind == [@methodKind definedAsMember] then
     if (mErrorMessage == "") & ((mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isBasic]) | (mQualifier == [@methodQualifier isBasicFinal])) then
       %  public : VIRTUAL_IN_DEBUG void modifier_%![[lkey string] identifierRepresentation]% (%?^
-      foreach mParameterList do index IDX
+      for () in mParameterList do index IDX
         if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
           %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
         elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
@@ -200,11 +200,11 @@ end
 %
 //--------------------------------- Instance Methods
 %
-foreach INSTANCE_METHOD_MAP do
+for () in INSTANCE_METHOD_MAP do
   if mKind == [@methodKind definedAsMember] then
     if (mErrorMessage == "") & ((mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isBasic]) | (mQualifier == [@methodQualifier isBasicFinal])) then
       %  public : VIRTUAL_IN_DEBUG void method_%![[lkey string] identifierRepresentation]% (%?^
-      foreach mParameterList do index IDX
+      for () in mParameterList do index IDX
         if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
           %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
         elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
@@ -237,9 +237,9 @@ foreach INSTANCE_METHOD_MAP do
 end
 %//--------------------------------- Class Methods
 %
-foreach CLASS_METHOD_MAP do
+for () in CLASS_METHOD_MAP do
   %  public : static void class_method_%![[lkey string] identifierRepresentation]% (%?^
-  foreach mParameterList do index IDX
+  for () in mParameterList do index IDX
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
       %class GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
     elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
@@ -271,11 +271,11 @@ end
 %
 //--------------------------------- Getters
 %
-foreach READER_MAP do
+for () in READER_MAP do
   if mKind == [@methodKind definedAsMember] then
     if (mErrorMessage == "") & ((mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isBasic]) | (mQualifier == [@methodQualifier isBasicFinal])) then
       %  public : VIRTUAL_IN_DEBUG class GALGAS_% ![mReturnedType identifierRepresentation] % reader_% ![[lkey string] identifierRepresentation] % (%?^
-      foreach mArgumentTypeList
+      for () in mArgumentTypeList
         do index IDX %const class GALGAS_%![mFormalArgumentType identifierRepresentation]% & constinOperand% ![IDX string]
         between %,\n% !^
       end
@@ -331,7 +331,7 @@ class cEnumerator_%!TYPE_IDENTIFIER% : public cGenericAbstractEnumerator {
      %!^%const typeEnumerationOrder inOrder) ;
 
 //--- Current element access\n%
-  foreach ENUMERATION_DESCRIPTOR_LIST do
+  for () in ENUMERATION_DESCRIPTOR_LIST do
 %  public : class GALGAS_%![mEnumeratedType identifierRepresentation]% current_%![mEnumerationName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
   end
   if not [ENUMERATED_OBJECT_TYPE isNull] then

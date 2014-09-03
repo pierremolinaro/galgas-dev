@@ -7,7 +7,7 @@
 class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 //--------------------------------- Public data members
 %
-foreach ATTRIBUTE_LIST
+for () in ATTRIBUTE_LIST
   do %  public : GALGAS_%![mAttributeTypeProxy identifierRepresentation]% mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
 end%
 
@@ -29,7 +29,7 @@ end
 
 //--------------------------------- Native constructor
   public : GALGAS_%!TYPE_IDENTIFIER% (%?^
-foreach ATTRIBUTE_LIST
+for () in ATTRIBUTE_LIST
   do %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
   between %,\n%!^
 end%) ;

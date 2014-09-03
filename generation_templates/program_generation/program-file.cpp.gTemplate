@@ -13,7 +13,7 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-% foreach IMPORTED_COMPONENT_LIST do
+% for () in IMPORTED_COMPONENT_LIST do
     %#include "%!mValue%.h"\n%
   end%
 //---------------------------------------------------------------------------------------------------------------------*
@@ -30,7 +30,7 @@ static void print_tool_help_message (void) {
 
 static const char * kSourceFileExtensions [] = {
 %
-foreach PROGRAM_RULE_LIST do
+for () in PROGRAM_RULE_LIST do
   %  %![mSourceFileExtension utf8Representation]%,\n%
 end
 %  NULL
@@ -40,7 +40,7 @@ end
 
 static const char * kSourceFileHelpMessages [] = {
 %
-foreach PROGRAM_RULE_LIST do
+for () in PROGRAM_RULE_LIST do
   %  %![mSourceFileHelp utf8Representation]%,\n%
 end
 %  NULL
@@ -96,7 +96,7 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
         const GALGAS_lstring sourceFilePath (sfp, location) ;
         int16_t r = 0 ;
         %
-          foreach PROGRAM_RULE_LIST 
+          for () in PROGRAM_RULE_LIST 
           do index IDX
             %if (fileExtension == %![mSourceFileExtension utf8Representation]%) {\n%
             if HAS_INDEXING then

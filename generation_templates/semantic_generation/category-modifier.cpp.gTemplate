@@ -16,7 +16,7 @@ void enterCategoryModifier_%![MODIFIER_NAME identifierRepresentation]% (%?^%cons
 //---------------------------------------------------------------------------------------------------------------------*
 
 void callCategoryModifier_%![MODIFIER_NAME identifierRepresentation]% (%?^%cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
-  foreach FORMAL_ARGUMENT_LIST do
+  for () in FORMAL_ARGUMENT_LIST do
     %,\n%!^
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
       %const GALGAS_%![mFormalArgumentType identifierRepresentation]% constin_%![mFormalArgumentName identifierRepresentation]
@@ -32,7 +32,7 @@ void callCategoryModifier_%![MODIFIER_NAME identifierRepresentation]% (%?^%cPtr_
   %\n%!^%COMMA_LOCATION_ARGS) {
 //--- Drop output arguments
 %
-  foreach FORMAL_ARGUMENT_LIST do
+  for () in FORMAL_ARGUMENT_LIST do
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
       %  out_%![mFormalArgumentName identifierRepresentation]%.drop () ;\n%
     end
@@ -57,7 +57,7 @@ void callCategoryModifier_%![MODIFIER_NAME identifierRepresentation]% (%?^%cPtr_
        gCategoryModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     f (inObject, %
-    foreach FORMAL_ARGUMENT_LIST do
+    for () in FORMAL_ARGUMENT_LIST do
       if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
         %constin_%![mFormalArgumentName identifierRepresentation]
       elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then

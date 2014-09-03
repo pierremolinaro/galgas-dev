@@ -7,7 +7,7 @@
 
 //-----------------------------------------------------------------------------*
 
-% foreach INCLUSION_SET do
+% for () in INCLUSION_SET do
     %#include "%!key%.h"\n%
   end%
 

@@ -55,7 +55,7 @@ tr.result_line {
 <h1>Types of %!PROJECT_NAME%</h1>
 <p>This document lists all %![[UNIFIED_TYPE_MAP count] string]% defined types, sorted by name.</p>
 <p>%
-foreach FIRST_LETTER_SET
+for () in FIRST_LETTER_SET
 do %<a class="header_link" href="#%![[[key characterAtIndex!0] uint] string]%">%!key%</a>%
 between % - %
 end
@@ -64,7 +64,7 @@ end
 !TABLE_OF_TYPES_STRING%
 </p>
 <table class="result">
-%foreach UNIFIED_TYPE_MAP : type_ do%
+%for () in UNIFIED_TYPE_MAP : type_ do%
 <tr><td colspan="2" class="result_title"><a name="%!type_lkey->string%">@%!type_lkey->string%</a></td></tr>
 
 <tr class="result_line">
@@ -152,7 +152,7 @@ end%
 % 
 if [type_mAddAssignOperatorArguments length] > 0 then
   %<tr class="result_line"><td>+= !... !...</td><td>%
-  foreach type_mAddAssignOperatorArguments do
+  for () in type_mAddAssignOperatorArguments do
     %<span class="selecteur">?%if mFormalSelector->string != "" then !mFormalSelector->string + ":" end%</span>%
     !linkForType [![mFormalArgumentType key]] % % !mFormalArgumentName %<br>%
   end
@@ -160,7 +160,7 @@ if [type_mAddAssignOperatorArguments length] > 0 then
 end
 if [type_mEnumerationDescriptor length] > 0 then
   %<tr class="result_line"><td><b>for</b> constants</td><td>%
-  foreach type_mEnumerationDescriptor do
+  for () in type_mEnumerationDescriptor do
     !linkForType [![mEnumeratedType key]]% %!mEnumerationName%<br>%
   end
   %</td></tr>%
@@ -171,9 +171,9 @@ end
 #--- Constructors
 if [type_mConstructorMap count] > 0 then
   %<tr class="result_line"><td>Constructors</td><td>%
-  foreach type_mConstructorMap do
+  for () in type_mConstructorMap do
     %<b>constructor</b> %!lkey->string
-    foreach mArgumentTypeList do
+    for () in mArgumentTypeList do
       %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
       % <span class="selecteur">?%if mFormalSelector->string != "" then !mFormalSelector->string + ":" end !%</span>%
       linkForType [![mFormalArgumentType key]] % % !mFormalArgumentName
@@ -184,7 +184,7 @@ end
 #--- Readers
 if [type_mReaderMap count] > 0 then
   %<tr class="result_line"><td>Getters</td><td>%
-  foreach type_mReaderMap do
+  for () in type_mReaderMap do
     switch mKind
     case definedAsMember :
     case definedAsCategory : %(extension) %
@@ -198,7 +198,7 @@ if [type_mReaderMap count] > 0 then
     case isOverridingAbstract : %<b>abstract override</b> %
     end
     %<b>getter</b> %!lkey->string
-    foreach mArgumentTypeList do
+    for () in mArgumentTypeList do
       %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
       % ?<span class="selecteur">%if mFormalSelector->string != "" then !mFormalSelector->string + ":" end%</span>%
       !linkForType [![mFormalArgumentType key]] % % !mFormalArgumentName
@@ -210,7 +210,7 @@ end
 #--- Methods
 if [type_mInstanceMethodMap count] > 0 then
   %<tr class="result_line"><td>Methods</td><td>%
-  foreach type_mInstanceMethodMap do
+  for () in type_mInstanceMethodMap do
     switch mKind
     case definedAsMember :
     case definedAsCategory : %(extension) %
@@ -224,7 +224,7 @@ if [type_mInstanceMethodMap count] > 0 then
     case isOverridingAbstract : %<b>abstract override</b> %
     end
     %<b>method</b> %!lkey->string
-    foreach mParameterList do
+    for () in mParameterList do
       %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
       switch mFormalArgumentPassingMode
       case argumentConstantIn : % <span class="selecteur">?%
@@ -242,7 +242,7 @@ end
 #--- Modifiers
 if [type_mModifierMap count] > 0 then
   %<tr class="result_line"><td>Setters</td><td>%
-  foreach type_mModifierMap do
+  for () in type_mModifierMap do
     switch mKind
     case definedAsMember :
     case definedAsCategory : %(extension) %
@@ -256,7 +256,7 @@ if [type_mModifierMap count] > 0 then
     case isOverridingAbstract : %<b>abstract override</b> %
     end
     %<b>setter</b> %!lkey->string
-    foreach mParameterList do
+    for () in mParameterList do
       %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
       switch mFormalArgumentPassingMode
       case argumentConstantIn : % <span class="selecteur">?%
@@ -274,9 +274,9 @@ end
 #--- type proc
 if [type_mClassMethodMap count] > 0 then
   %<tr class="result_line"><td>Type procs</td><td>%
-  foreach type_mClassMethodMap do
+  for () in type_mClassMethodMap do
     %<b>proc</b> @%!type_lkey->string% %!lkey->string
-    foreach mParameterList do
+    for () in mParameterList do
       %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
       switch mFormalArgumentPassingMode
       case argumentConstantIn : % <span class="selecteur">?%

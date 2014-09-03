@@ -6,7 +6,7 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-%foreach BOOL_OPTION_MAP do
+%for () in BOOL_OPTION_MAP do
   %C_BoolCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![lkey identifierRepresentation]% ("%!OPTION_COMPONENT_NAME%",\n%
   %                                         %![lkey utf8Representation]%,\n%
   %                                         %![[mOptionChar uint] string]%,\n%
@@ -19,7 +19,7 @@ end
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-%foreach UINT_OPTION_MAP do
+%for () in UINT_OPTION_MAP do
   %C_UIntCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![lkey identifierRepresentation]% ("%!OPTION_COMPONENT_NAME%",\n%
   %                                         %![lkey utf8Representation]%,\n%
   %                                         %![[mOptionChar uint] string]%,\n%
@@ -33,7 +33,7 @@ end
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-%foreach STRING_OPTION_MAP do
+%for () in STRING_OPTION_MAP do
   %C_StringCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![lkey identifierRepresentation]% ("%!OPTION_COMPONENT_NAME%",\n%
   %                                         %![lkey utf8Representation]%,\n%
   %                                         %![[mOptionChar uint] string]%,\n%

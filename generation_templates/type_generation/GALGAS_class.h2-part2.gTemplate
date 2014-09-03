@@ -1,12 +1,12 @@
 //--- Attributes
 %
-  foreach CURRENT_ATTRIBUTE_LIST do
+  for () in CURRENT_ATTRIBUTE_LIST do
     %  public : GALGAS_%![mAttributeTypeProxy identifierRepresentation]% mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   end
 %
 //--- Constructor
   public : cPtr_%!TYPE_IDENTIFIER% (%?^
-  foreach ALL_ATTRIBUTE_LIST
+  for () in ALL_ATTRIBUTE_LIST
     do %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
     between %,\n%!^
   end
@@ -19,7 +19,7 @@
 
 //--- Attribute accessors
 %
-  foreach CURRENT_ATTRIBUTE_LIST do
+  for () in CURRENT_ATTRIBUTE_LIST do
     if mHasGetter then
       %  public : VIRTUAL_IN_DEBUG GALGAS_%![mAttributeTypeProxy identifierRepresentation]% reader_%![mAttributeName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const ;\n%
     end

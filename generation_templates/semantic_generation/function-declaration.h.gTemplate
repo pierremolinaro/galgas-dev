@@ -5,7 +5,7 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_%!RETURN_TYPE_IDENTIFIER% function_%![FUNCTION_NAME identifierRepresentation]% (%?^
-  foreach FORMAL_ARGUMENT_LIST do index IDX
+  for () in FORMAL_ARGUMENT_LIST do index IDX
     if mIsConstant then
       %const class GALGAS_% ![mFormalArgumentType identifierRepresentation] % & constinArgument% ![IDX string]%,\n%!^
     else

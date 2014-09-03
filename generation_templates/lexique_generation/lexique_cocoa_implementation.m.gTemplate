@@ -32,14 +32,14 @@ end%
   if (self) {
     noteObjectAllocation (self) ;
 %
-  foreach LEXICAL_ATTRIBUTE_MAP do
+  for () in LEXICAL_ATTRIBUTE_MAP do
     %    mLexicalAttribute_%![lkey string]% = % ![mLexicalType cocoaInitializationCode] % ;\n%
   end
 %  }
 % if [[LEXIQUE_ANALYSIS_CONTEXT mTemplateDelimitorList] length] > 0 then
 %  if (nil == kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]%) {\n%
 %    kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% = [NSArray arrayWithObjects:\n%
-  foreach [LEXIQUE_ANALYSIS_CONTEXT mTemplateDelimitorList] do
+  for () in [LEXIQUE_ANALYSIS_CONTEXT mTemplateDelimitorList] do
   %      [[OC_GGS_TemplateDelimiter alloc] initWithStartString:@%![mStartString utf8Representation]% endString:%
       if [mEndString length] == 0 then
         %nil%
@@ -57,7 +57,7 @@ end%
   if [[LEXIQUE_COMPONENT_ROOT mTemplateReplacementList] length] > 0 then
   %  if (nil == kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]%) {\n\n%
   %    kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% = [NSArray arrayWithObjects:\n%
-  foreach [LEXIQUE_COMPONENT_ROOT mTemplateReplacementList] do
+  for () in [LEXIQUE_COMPONENT_ROOT mTemplateReplacementList] do
     %      @%![mMatchString utf8Representation]%, %
   end
   %      nil\n%
@@ -93,7 +93,7 @@ end%
 - (NSArray *) indexingTitles { // Array of NSString
   return [NSArray arrayWithObjects:
 %
-  foreach [LEXIQUE_COMPONENT_ROOT mIndexingListAST] do
+  for () in [LEXIQUE_COMPONENT_ROOT mIndexingListAST] do
     %    @%![mIndexComment utf8Representation]%,\n%
   end
 %    NULL
@@ -107,7 +107,7 @@ end%
 //---------------------------------------------------------------------------------------------------------------------*
 
 % if [[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] > 0 then
-   foreach [LEXIQUE_ANALYSIS_CONTEXT mTerminalList]
+   for () in [LEXIQUE_ANALYSIS_CONTEXT mTerminalList]
       before %static const BOOL kEndOfScriptInTemplateArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% [%![[[LEXIQUE_ANALYSIS_CONTEXT mTerminalList] length] string]%] = {\n%
       do %  %![mIsEndOfTemplateMark ocString]% /* %![mTerminalName string]% */%
       between %,\n%
@@ -117,7 +117,7 @@ end%
 %
 
 %
-  foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalTokenListMap] : tokenList_ do
+  for () in [LEXIQUE_ANALYSIS_CONTEXT mLexicalTokenListMap] : tokenList_ do
     if tokenList_mShouldBeGenerated then
       %//---------------------------------------------------------------------------------------------------------------------*\n%
       %//                                                                                                                     *\n%
@@ -125,7 +125,7 @@ end%
       %//                                                                                                                     *\n%
       %//---------------------------------------------------------------------------------------------------------------------*\n\n%
       %static const C_cocoa_lexique_table_entry ktable_for_%![LEXIQUE_CLASS_NAME identifierRepresentation]%_%![tokenList_lkey string]% [%![[tokenList_mExplicitTokenListMap count] string]%] = {\n%
-        foreach tokenList_mTokenSortedList
+        for () in tokenList_mTokenSortedList
         do %  {%![mName utf8Representation]%, %!LEXIQUE_CLASS_NAME%_1_%![mTerminalName identifierRepresentation]%}%
         between %,\n%
         end
@@ -167,13 +167,13 @@ end%
       }
     }
     if ((mMatchedTemplateDelimiterIndex >= 0) && (mTokenCode == 0) && (mCurrentChar != '\0') && scanningOk) {
-%  foreach LEXICAL_ATTRIBUTE_MAP do
+%  for () in LEXICAL_ATTRIBUTE_MAP do
     %      %![mLexicalType cocoaResetPrefix]%mLexicalAttribute_%![lkey string] ![mLexicalType cocoaReset] % ;\n%
   end
 %      mTokenStartLocation = mCurrentLocation ;
 %
   block 6 :
-    foreach LEXICAL_RULE_LIST do
+    for () in LEXICAL_RULE_LIST do
       ![mLexicalRule generateCocoaCode !LEXIQUE_CLASS_NAME !LEXIQUE_ANALYSIS_CONTEXT]
     end
   end block
@@ -191,13 +191,13 @@ end%
       mTokenCode = -1 ;
       [self advance] ;
     }%else
-  foreach LEXICAL_ATTRIBUTE_MAP do
+  for () in LEXICAL_ATTRIBUTE_MAP do
     %    %![mLexicalType cocoaResetPrefix]%mLexicalAttribute_%![lkey string] ![mLexicalType cocoaReset] % ;\n%
   end
 %    mTokenStartLocation = mCurrentLocation ;
 %
   block 4 :
-    foreach LEXICAL_RULE_LIST do
+    for () in LEXICAL_RULE_LIST do
       ![mLexicalRule generateCocoaCode !LEXIQUE_CLASS_NAME !LEXIQUE_ANALYSIS_CONTEXT]
     end
   end block
@@ -252,7 +252,7 @@ end%
 
 - (NSUInteger) styleIndexForTerminal: (NSInteger) inTerminal {
   static const NSUInteger kTerminalSymbolStyles [%![[[LEXIQUE_ANALYSIS_CONTEXT mTerminalList] length] + 1 string]%] = {0%
-foreach [LEXIQUE_ANALYSIS_CONTEXT mTerminalList] do
+for () in [LEXIQUE_ANALYSIS_CONTEXT mTerminalList] do
   %,\n    %![mStyleIndex string]% /* %!LEXIQUE_CLASS_NAME%_1_%![[mTerminalName string] identifierRepresentation]% */%
 end%\n  } ;
   return kTerminalSymbolStyles [inTerminal] ;
@@ -266,7 +266,7 @@ end%\n  } ;
 
 - (BOOL) atomicSelectionForToken: (NSUInteger) inTokenIndex {
   static const BOOL kTerminalAtomicSelection [%![[[LEXIQUE_ANALYSIS_CONTEXT mTerminalList] length] + 1 string]%] = {NO%
-foreach [LEXIQUE_ANALYSIS_CONTEXT mTerminalList] do
+for () in [LEXIQUE_ANALYSIS_CONTEXT mTerminalList] do
   %,\n    %![mAtomicSelection ocString]% /* %!LEXIQUE_CLASS_NAME%_1_%![[mTerminalName string] identifierRepresentation]% */%
 end%\n  } ;
   return kTerminalAtomicSelection [inTokenIndex] ;
@@ -283,7 +283,7 @@ end%\n  } ;
   if ((inIndex >= 0) && (inIndex < %![[[LEXIQUE_COMPONENT_ROOT mLexicalStyleList] length] + 1 string]%)) {
     NSString * kStyleArray [%![[[LEXIQUE_COMPONENT_ROOT mLexicalStyleList] length] + 1 string]%] = {
       @"Default Style"%
-foreach [LEXIQUE_COMPONENT_ROOT mLexicalStyleList] do
+for () in [LEXIQUE_COMPONENT_ROOT mLexicalStyleList] do
   %,\n      @%![[mComment string] utf8Representation]
 end%\n    } ;
     result = kStyleArray [inIndex] ;
@@ -302,7 +302,7 @@ end%\n    } ;
   if ((inIndex >= 0) && (inIndex < %![[[LEXIQUE_COMPONENT_ROOT mLexicalStyleList] length] + 1 string]%)) {
     NSString * kStyleArray [%![[[LEXIQUE_COMPONENT_ROOT mLexicalStyleList] length] + 1 string]%] = {
       @"%!LEXIQUE_CLASS_NAME%"%
-foreach [LEXIQUE_COMPONENT_ROOT mLexicalStyleList] do
+for () in [LEXIQUE_COMPONENT_ROOT mLexicalStyleList] do
   %,\n      @"%!LEXIQUE_CLASS_NAME%-%![mName string]%"%
 end
 %\n    } ;

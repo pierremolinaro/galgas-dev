@@ -5,7 +5,7 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 void routine_%![ROUTINE_NAME identifierRepresentation]% (%?^
-  foreach FORMAL_ARGUMENT_LIST do index IDX
+  for () in FORMAL_ARGUMENT_LIST do index IDX
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
       %const class GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
     elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then

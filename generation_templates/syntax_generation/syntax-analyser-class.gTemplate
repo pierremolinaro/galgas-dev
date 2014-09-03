@@ -9,10 +9,10 @@ class cParser_%![COMPONENT_NAME identifierRepresentation]% {
   public : virtual ~ cParser_%![COMPONENT_NAME identifierRepresentation]% (void) {}
 
 //--- Non terminal declarations
-%foreach NONTERMINAL_MAP do
-  foreach mLabelMap : label_ do
+%for () in NONTERMINAL_MAP do
+  for () in mLabelMap : label_ do
   %  protected : virtual void nt_%![lkey identifierRepresentation]%_%![label_lkey identifierRepresentation]% (%?^
-    foreach label_mSignature do index IDX
+    for () in label_mSignature do index IDX
       if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
         %const class GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
       elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
@@ -41,10 +41,10 @@ class cParser_%![COMPONENT_NAME identifierRepresentation]% {
   end
 end%
 //--- Rule declarations
-%foreach RULE_DECLARATION_LIST do
-  foreach mLabelImplementationList do
+%for () in RULE_DECLARATION_LIST do
+  for () in mLabelImplementationList do
     %  protected : void rule_%![COMPONENT_NAME identifierRepresentation]%_%![mNonterminalName identifierRepresentation]%_i%![mRuleIndex string]%_%![mLabelName identifierRepresentation]% (%?^
-    foreach mSignature do index IDX
+    for () in mSignature do index IDX
       if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
         %const GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
       elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
@@ -72,7 +72,7 @@ end%
 end%
 
 //--- Select methods
-%foreach SELECT_METHOD_LIST do
+%for () in SELECT_METHOD_LIST do
   %  protected : virtual int32_t select_%![COMPONENT_NAME identifierRepresentation]%_%![mValue string]% (C_Lexique_%!LEXIQUE_NAME% *) = 0 ;\n\n%
 end%
 } ;

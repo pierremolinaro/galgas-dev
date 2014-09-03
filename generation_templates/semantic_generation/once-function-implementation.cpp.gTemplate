@@ -41,7 +41,7 @@ C_PrologueEpilogue gEpilogueForOnceFunction_%![FUNCTION_NAME identifierRepresent
 
 static const C_galgas_type_descriptor * functionArgs_%![FUNCTION_NAME identifierRepresentation]% [%![[FORMAL_ARGUMENT_LIST length] + 1 string]%] = {
 %
-  foreach FORMAL_ARGUMENT_LIST do
+  for () in FORMAL_ARGUMENT_LIST do
     %  & kTypeDescriptor_GALGAS_%![mFormalArgumentType identifierRepresentation]%,\n%
   end
 %  NULL
@@ -62,11 +62,11 @@ else
                                              !^%const cObjectArray & inEffectiveParameterArray,\n%
                                              !^%const GALGAS_location & /* §§ inErrorLocation*/\n%
                                              !^%COMMA_LOCATION_ARGS) {\n%
-  foreach FORMAL_ARGUMENT_LIST do index IDX
+  for () in FORMAL_ARGUMENT_LIST do index IDX
     %  const GALGAS_%![mFormalArgumentType identifierRepresentation]% operand%![IDX string]% = GALGAS_%![mFormalArgumentType identifierRepresentation]%::extractObject (inEffectiveParameterArray.objectAtIndex (%![IDX string]% COMMA_HERE), inCompiler COMMA_THERE) ;\n%
   end
   %  return function_%![FUNCTION_NAME identifierRepresentation]% (%
-  foreach FORMAL_ARGUMENT_LIST do index IDX
+  for () in FORMAL_ARGUMENT_LIST do index IDX
     %operand%![IDX string]%, %
   end
   %inCompiler COMMA_THERE).reader_object (THERE) ;\n%

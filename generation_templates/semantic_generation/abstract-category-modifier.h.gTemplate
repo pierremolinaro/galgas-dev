@@ -6,7 +6,7 @@
 
 typedef void (*categoryModifierSignature_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%) (%?^
 %class cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
-  foreach FORMAL_ARGUMENT_LIST do index IDX
+  for () in FORMAL_ARGUMENT_LIST do index IDX
     %,\n%!^
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
       %const class GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
@@ -29,7 +29,7 @@ void enterCategoryModifier_%![MODIFIER_NAME identifierRepresentation]% (%?^%cons
 //---------------------------------------------------------------------------------------------------------------------*
 
 void callCategoryModifier_%![MODIFIER_NAME identifierRepresentation]% (%?^%class cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
-  foreach FORMAL_ARGUMENT_LIST do
+  for () in FORMAL_ARGUMENT_LIST do
     %,\n%!^
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
       %const GALGAS_%![mFormalArgumentType identifierRepresentation]% constin_%![mFormalArgumentName identifierRepresentation]

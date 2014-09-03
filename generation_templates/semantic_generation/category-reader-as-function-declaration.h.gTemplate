@@ -5,7 +5,7 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_%!RETURN_TYPE_IDENTIFIER% categoryReader_%![READER_NAME identifierRepresentation]% (%?^%const class GALGAS_%![TYPE_NAME identifierRepresentation]% & inObject%
-  foreach FORMAL_ARGUMENT_LIST do index IDX
+  for () in FORMAL_ARGUMENT_LIST do index IDX
     %,\n%!^
     if mIsConstant then
       %const class GALGAS_% ![mFormalArgumentType identifierRepresentation] % & constinArgument% ![IDX string]

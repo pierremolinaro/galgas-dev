@@ -1,12 +1,12 @@
 
 //--- Terminal symbols enumeration
   public : enum {kToken_%
-    foreach [LEXIQUE_ANALYSIS_CONTEXT mTerminalList] do
+    for () in [LEXIQUE_ANALYSIS_CONTEXT mTerminalList] do
       %,\n   kToken_% ![[mTerminalName string] identifierRepresentation]
     end
   %} ;
 %
-  foreach DELIMITOR_LIST_LIST do
+  for () in DELIMITOR_LIST_LIST do
     %\n//--- Key words table '%![mName string]%'\n%
     %  public : static int16_t search_into_%![mName string]% (const C_String & inSearchedString) ;\n%
   end
@@ -14,21 +14,21 @@
 
 //--- Assign from attribute
 %
-  foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalAttributeMap] do
+  for () in [LEXIQUE_ANALYSIS_CONTEXT mLexicalAttributeMap] do
     %  public : GALGAS_l%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]% synthetizedAttribute_%![lkey identifierRepresentation]% (void) const ;\n%
   end
 %
 
 //--- Attribute access
 %
-  foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalAttributeMap] do
+  for () in [LEXIQUE_ANALYSIS_CONTEXT mLexicalAttributeMap] do
     %  public : %![mLexicalType cppTypeName]% attributeValue_%![lkey identifierRepresentation]% (void) const ;\n%
   end
 %
 
 //--- Indexing keys
 %
-  foreach INDEXING_LIST
+  for () in INDEXING_LIST
   before %  public : enum {%
   do %\n    kIndexing_%![mIndexName identifierRepresentation]
   between %,%

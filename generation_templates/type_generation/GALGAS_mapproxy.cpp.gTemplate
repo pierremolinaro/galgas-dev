@@ -30,7 +30,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::class_method_makeProxyFromString (%?^%GALGAS_%!A
   outProxy.internalMakeProxyFromString (ioMap, inKey COMMA_THERE) ;
 }
 
-%foreach ATTRIBUTE_LIST do index IDX
+%for () in ATTRIBUTE_LIST do index IDX
   %//---------------------------------------------------------------------------------------------------------------------*\n\n%
   %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]% (%?^%C_Compiler * inCompiler\n%
   %                                       %!^%COMMA_LOCATION_ARGS) const {\n%
@@ -44,7 +44,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::class_method_makeProxyFromString (%?^%GALGAS_%!A
   %}\n\n%
 end
 
-foreach SEARCH_METHOD_LIST do index IDX
+for () in SEARCH_METHOD_LIST do index IDX
   %//---------------------------------------------------------------------------------------------------------------------*\n\n%
   %GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_%![mSearchMethodName identifierRepresentation]% (%?^%const GALGAS_%!ASSOCIATED_MAP_TYPE_IDENTIFIER% & inMap,\n%
   %                                                %!^%const GALGAS_lstring & inKey,\n%
