@@ -1,13 +1,13 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement_%!TYPE_IDENTIFIER%::cMapElement_%!TYPE_IDENTIFIER% (%?^%const GALGAS_lstring & inKey%
-  foreach ATTRIBUTE_LIST
+  for () in ATTRIBUTE_LIST
     do %,\n%!^%const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
   end
 %\n%
 !^%COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE)%
-foreach ATTRIBUTE_LIST
+for () in ATTRIBUTE_LIST
   do %,\n%  %mAttribute_%![mAttributeName identifierRepresentation]% (in_%![mAttributeName identifierRepresentation]%)%
 end
 % {
@@ -17,7 +17,7 @@ end
 
 bool cMapElement_%!TYPE_IDENTIFIER%::isValid (void) const {
   return mAttribute_lkey.isValid ()%
-    foreach ATTRIBUTE_LIST
+    for () in ATTRIBUTE_LIST
       do % && mAttribute_%![mAttributeName identifierRepresentation]%.isValid ()%
     end
   % ;
@@ -28,7 +28,7 @@ bool cMapElement_%!TYPE_IDENTIFIER%::isValid (void) const {
 cMapElement * cMapElement_%!TYPE_IDENTIFIER%::copy (void) {
   cMapElement * result = NULL ;
   macroMyNew (result, cMapElement_%!TYPE_IDENTIFIER% (mAttribute_lkey%
-    foreach ATTRIBUTE_LIST
+    for () in ATTRIBUTE_LIST
       do %, mAttribute_%![mAttributeName identifierRepresentation]
     end
   % COMMA_HERE)) ;
@@ -41,7 +41,7 @@ cMapElement * cMapElement_%!TYPE_IDENTIFIER%::copy (void) {
   %void cMapElement_%!TYPE_IDENTIFIER%::description (C_String & /* ioString */, const int32_t /* inIndentation */) const {\n%
 else
   %void cMapElement_%!TYPE_IDENTIFIER%::description (C_String & ioString, const int32_t inIndentation) const {\n%
-  foreach ATTRIBUTE_LIST do
+  for () in ATTRIBUTE_LIST do
     %  ioString << "\\n" ;\n%
     %  ioString.writeStringMultiple ("| ", inIndentation) ;\n%
     %  ioString << %![mAttributeName utf8Representation]% ":" ;\n%
@@ -55,7 +55,7 @@ end
 typeComparisonResult cMapElement_%!TYPE_IDENTIFIER%::compare (const cCollectionElement * inOperand) const {
   cMapElement_%!TYPE_IDENTIFIER% * operand = (cMapElement_%!TYPE_IDENTIFIER% *) inOperand ;
   typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
-%  foreach ATTRIBUTE_LIST do
+%  for () in ATTRIBUTE_LIST do
      %  if (kOperandEqual == result) {\n%
      %    result = mAttribute_%![mAttributeName identifierRepresentation]%.objectCompare (operand->mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
      %  }\n%
@@ -95,7 +95,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyMap (LOCAT
 //---------------------------------------------------------------------------------------------------------------------*
 
 %
-foreach MAP_AUTOMATON_STATE_MAP
+for () in MAP_AUTOMATON_STATE_MAP
 before
   %#ifndef DO_NOT_GENERATE_CHECKINGS\n%
   %  static const uint32_t kMapStateCount_%!TYPE_IDENTIFIER% = %![[MAP_AUTOMATON_STATE_MAP count] string]% ;\n%
@@ -109,7 +109,7 @@ end
 //---------------------------------------------------------------------------------------------------------------------*
 
 %
-foreach MAP_AUTOMATON_STATE_MAP_ORDERED_LIST
+for () in MAP_AUTOMATON_STATE_MAP_ORDERED_LIST
 before
   %static const char * kMapStateNames_%!TYPE_IDENTIFIER% [%![[MAP_AUTOMATON_STATE_MAP_ORDERED_LIST length] string]%] = {\n%
 do
@@ -125,7 +125,7 @@ end
 //---------------------------------------------------------------------------------------------------------------------*
 
 %
-foreach MAP_AUTOMATON_ACTION_MAP
+for () in MAP_AUTOMATON_ACTION_MAP
 before
   %static const uint32_t kMapActionCount_%!TYPE_IDENTIFIER% = %![[MAP_AUTOMATON_ACTION_MAP count] string]% ;\n%
 do
@@ -137,7 +137,7 @@ end
 //---------------------------------------------------------------------------------------------------------------------*
 
 %
-foreach MAP_AUTOMATON_ACTION_MAP
+for () in MAP_AUTOMATON_ACTION_MAP
 before
   %static const char * kMapActionNames_%!TYPE_IDENTIFIER% [%![[MAP_AUTOMATON_ACTION_MAP count] string]%] = {\n%
 do
@@ -153,7 +153,7 @@ end
 //---------------------------------------------------------------------------------------------------------------------*
 
 %
-foreach MAP_AUTOMATON_DEFINITION_SORTEDLIST
+for () in MAP_AUTOMATON_DEFINITION_SORTEDLIST
 before
   %static const cMapAutomatonTransition kMapTransitions_%!TYPE_IDENTIFIER% [%
   ![[MAP_AUTOMATON_DEFINITION_SORTEDLIST length] string]
@@ -162,7 +162,7 @@ before
   %] = {\n%
 do
   %// State '%!mStateName%', index %![mStateIndex string]% \n%
-  foreach mTransitionList do
+  for () in mTransitionList do
     %  {kMapState_%!TYPE_IDENTIFIER%_%![mTargetStateName identifierRepresentation]% /* %![mTargetStateIndex string]% */, %
     switch mTransitionMessageKind
     case noMessage :
@@ -185,7 +185,7 @@ end
 //---------------------------------------------------------------------------------------------------------------------*
 
 %
-foreach MAP_AUTOMATON_DEFINITION_SORTEDLIST
+for () in MAP_AUTOMATON_DEFINITION_SORTEDLIST
 before
   %static const cMapAutomatonFinalIssue kMapAutomatonFinalIssue_%!TYPE_IDENTIFIER% [%![[MAP_AUTOMATON_DEFINITION_SORTEDLIST length] string]%] = {\n%
 do
@@ -228,7 +228,7 @@ if [MAP_AUTOMATON_DEFINITION_SORTEDLIST length] > 0 then
   %}\n\n%
 end
 
-foreach MAP_OVERRIDE_LIST do
+for () in MAP_OVERRIDE_LIST do
   %//---------------------------------------------------------------------------------------------------------------------*\n%
   %//%!["map override '" + mOverrideName + "'" stringByLeftAndRightPadding !117 !' ']%*\n%
   %//---------------------------------------------------------------------------------------------------------------------*\n\n%
@@ -237,7 +237,7 @@ foreach MAP_OVERRIDE_LIST do
   %_%
   ![mOverrideName identifierRepresentation]
   % [%![[mBranchBehaviourSortedListForMapOverride length] string]%] = {\n%
-  foreach mBranchBehaviourSortedListForMapOverride do
+  for () in mBranchBehaviourSortedListForMapOverride do
     %  {kMapState_%!TYPE_IDENTIFIER%_%![mStartStateName identifierRepresentation]% /* %![mStartStateIndex string]% */%
     %, kMapState_%!TYPE_IDENTIFIER%_%![mCurrentStateName identifierRepresentation]% /* %![mCurrentStateIndex string]% */%
     %, kMapState_%!TYPE_IDENTIFIER%_%![mFinalStateName identifierRepresentation]% /* %![mFinalStateIndex string]% */%
@@ -261,7 +261,7 @@ foreach MAP_OVERRIDE_LIST do
   %_%
   ![mOverrideName identifierRepresentation]
   % [%![[mBranchCombinationSortedListForMapOverride length] string]%] = {\n%
-  foreach mBranchCombinationSortedListForMapOverride do
+  for () in mBranchCombinationSortedListForMapOverride do
     %  {kMapState_%!TYPE_IDENTIFIER%_%![mStartStateName identifierRepresentation]% /* %![mStartStateIndex string]% */%
     %, kMapState_%!TYPE_IDENTIFIER%_%![mCurrentStateName identifierRepresentation]% /* %![mCurrentStateIndex string]% */%
     %, kMapState_%!TYPE_IDENTIFIER%_%![mFinalStateName identifierRepresentation]% /* %![mFinalStateIndex string]% */%
@@ -291,17 +291,17 @@ foreach MAP_OVERRIDE_LIST do
 end
 
 %
-%foreach INSERT_METHOD_LIST do
+%for () in INSERT_METHOD_LIST do
   %//---------------------------------------------------------------------------------------------------------------------*\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::modifier_%![mInsertMethodName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
-    foreach ATTRIBUTE_LIST
+    for () in ATTRIBUTE_LIST
       do index IDX %,\n%!^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inArgument%![IDX string]
     end
     %,\n %!^%C_Compiler * inCompiler%
     %\n %!^%COMMA_LOCATION_ARGS) {\n%
     %  cMapElement_%!TYPE_IDENTIFIER% * p = NULL ;\n%
     %  macroMyNew (p, cMapElement_%!TYPE_IDENTIFIER% (inKey%
-  foreach ATTRIBUTE_LIST
+  for () in ATTRIBUTE_LIST
     do index IDX %, inArgument%![IDX string]
   end
   % COMMA_HERE)) ;\n%
@@ -332,7 +332,7 @@ end
   %}\n\n%
 end
 
-foreach SEARCH_METHOD_LIST do
+for () in SEARCH_METHOD_LIST do
   %//---------------------------------------------------------------------------------------------------------------------*\n\n%
   %const char * kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![mSearchMethodName identifierRepresentation]% = %![mErrorMessage utf8Representation]% ;\n\n%
   %//---------------------------------------------------------------------------------------------------------------------*\n\n%
@@ -343,7 +343,7 @@ foreach SEARCH_METHOD_LIST do
       %modifier_%
     end
     ![mSearchMethodName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
-    foreach ATTRIBUTE_LIST
+    for () in ATTRIBUTE_LIST
       do index IDX %,\n%!^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outArgument%![IDX string]
     end
     %,\n %!^%C_Compiler * inCompiler%
@@ -368,12 +368,12 @@ foreach SEARCH_METHOD_LIST do
     !^%kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![mSearchMethodName identifierRepresentation]%\n%
     !^%COMMA_THERE) ;\n%
     %if (NULL == p) {\n%
-    foreach ATTRIBUTE_LIST do index IDX
+    for () in ATTRIBUTE_LIST do index IDX
       %  outArgument%![IDX string]%.drop () ;\n%
     end
     %}else{\n%
     %  macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
-    foreach ATTRIBUTE_LIST do index IDX
+    for () in ATTRIBUTE_LIST do index IDX
       %  outArgument%![IDX string]% = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
     end
     %}\n%
@@ -381,7 +381,7 @@ foreach SEARCH_METHOD_LIST do
   %}\n\n%
 end
 
-foreach ATTRIBUTE_LIST do index IDX
+for () in ATTRIBUTE_LIST do index IDX
   %//---------------------------------------------------------------------------------------------------------------------*\n\n%
   %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]%ForKey (%?^%const GALGAS_string & inKey,\n%
   %                                               %!^%C_Compiler * inCompiler\n%
@@ -397,7 +397,7 @@ foreach ATTRIBUTE_LIST do index IDX
   %}\n\n%
 end 
 
-foreach ATTRIBUTE_LIST do index IDX
+for () in ATTRIBUTE_LIST do index IDX
   %//---------------------------------------------------------------------------------------------------------------------*\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::modifier_set%![[mAttributeName stringByCapitalizingFirstCharacter] identifierRepresentation]%ForKey (%?^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inAttributeValue,\n%
   %                           %!^%GALGAS_string inKey,\n%
@@ -438,7 +438,7 @@ GALGAS_lstring cEnumerator_%!TYPE_IDENTIFIER%::current_lkey (LOCATION_ARGS) cons
   return p->mAttribute_lkey ;
 }
 
-%foreach ATTRIBUTE_LIST do index IDX
+%for () in ATTRIBUTE_LIST do index IDX
   %//---------------------------------------------------------------------------------------------------------------------*\n\n%
   %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mAttributeName identifierRepresentation]% (LOCATION_ARGS) const {\n%
   %  const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;\n%

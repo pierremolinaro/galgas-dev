@@ -5,7 +5,7 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 void categoryMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const class GALGAS_%![TYPE_NAME identifierRepresentation]% inObject%
-  foreach FORMAL_ARGUMENT_LIST do
+  for () in FORMAL_ARGUMENT_LIST do
     %,\n%!^
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
       %const class GALGAS_%![mFormalArgumentType identifierRepresentation]% constin_%![mFormalArgumentName identifierRepresentation]

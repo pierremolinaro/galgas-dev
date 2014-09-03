@@ -13,7 +13,7 @@ class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_list {
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (%?^%capCollectionElement & outAttributes%
-  foreach ATTRIBUTE_LIST
+  for () in ATTRIBUTE_LIST
     do %,\n%!^%const class GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
   end
 %\n%

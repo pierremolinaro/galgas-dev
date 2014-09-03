@@ -7,6 +7,6 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-% foreach IMPORTED_COMPONENT_LIST do
+% for () in IMPORTED_COMPONENT_LIST do
     %#include "%!mValue%.h"\n%
   end%

@@ -43,7 +43,14 @@ En GALGAS, \emph{méthodes}, \emph{getters} et \emph{setters} s'appliquent sur u
 
 \sectionLabel{Arguments formels et paramètres effectifs}{correspondanceArgFormelsParametresEffectifs}
 
-\subsection{Argument formel en entrée}
+GALGAS distingue trois sortes d'arguments formels :
+\begin{itemize}
+  \item en entrée (\refSubsectionPage{argumentFormelEntree}) ;
+  \item en entrée/sortie (\refSubsectionPage{argumentFormelEntreeSortie}) ;
+  \item en sortie (\refSubsectionPage{argumentFormelSortie}).
+\end{itemize}
+
+\subsectionLabel{Argument formel en entrée}{argumentFormelEntree}
 
 Le \refTableau{ArgumentFormelEntree} liste les différentes formes d'un argument formel en entrée. Le paramètre effectif correspondant est une expression précédée par \galgas{\!}.
 
@@ -72,7 +79,7 @@ Le \refTableau{ArgumentFormelEntree} liste les différentes formes d'un argument
   \ligne
 \end{table}
 
-\subsection{Argument formel en entrée/sortie}
+\subsectionLabel{Argument formel en entrée/sortie}{argumentFormelEntreeSortie}
 
 Le \refTableau{ArgumentFormelEntreeSortie} liste les différentes formes d'un argument formel en entrée. Le paramètre effectif correspondant est une \emph{cible} précédée par \galgast{!?}. Une \emph{cible} est soit une variable, soit l'accès à un champ d'une variable de type \galgas{struct}.
 
@@ -97,14 +104,14 @@ Le \refTableau{ArgumentFormelEntreeSortie} liste les différentes formes d'un ar
   \ligne
 \end{table}
 
-\subsection{Argument formel en sortie}
+\subsectionLabel{Argument formel en sortie}{argumentFormelSortie}
 
 \begin{table}[t]
   \centering
   \subfloat[Argument formel]{
     \begin{tabular}{ll}
       \textbf{Syntaxe} \\
-      \galgas{\!@T var}~~~~~~~~~~~~\\
+      \galgas{\!@T variable}~~~~~~~~\\
       \\
       \\
       \\
@@ -124,6 +131,7 @@ Le \refTableau{ArgumentFormelEntreeSortie} liste les différentes formes d'un ar
   \ligne
 \end{table}
 
+Le \refTableau{ArgumentFormelSortie} liste l'unique forme d'un argument formel en sortie. Le compilateur vérifie que les instructions du sous-programme fixent une valeur à chaque argument formel en sortie.Le paramètre effectif correspondant est une \emph{cible} précédée par \galgast{?}. Une \emph{cible} est soit une variable, soit l'accès à un champ d'une variable de type \galgas{struct}.
 
 
 

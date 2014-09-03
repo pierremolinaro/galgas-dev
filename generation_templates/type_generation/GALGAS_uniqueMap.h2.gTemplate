@@ -7,13 +7,13 @@
 class cMapElement_%!TYPE_IDENTIFIER% : public cMapElement {
 //--- Map attributes
 %
-    foreach ATTRIBUTE_LIST
+    for () in ATTRIBUTE_LIST
       do %  public : GALGAS_%![mAttributeTypeProxy identifierRepresentation]% mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
     end
 %
 //--- Constructor
   public : cMapElement_%!TYPE_IDENTIFIER% (%?^%const GALGAS_lstring & inKey%
-  foreach ATTRIBUTE_LIST
+  for () in ATTRIBUTE_LIST
     do %,\n%!^%const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
   end
 %\n%

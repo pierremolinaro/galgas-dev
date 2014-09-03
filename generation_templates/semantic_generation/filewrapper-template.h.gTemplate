@@ -5,7 +5,7 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_%![FILEWRAPPER_NAME identifierRepresentation]%_%![TEMPLATE_NAME identifierRepresentation]% (%?^%class C_Compiler * inCompiler%
-  foreach FORMAL_ARGUMENT_LIST do
+  for () in FORMAL_ARGUMENT_LIST do
     %,\n%!^%const class GALGAS_%![mFormalArgumentType identifierRepresentation]% & %!mFormalArgumentCppName
   end
 %\n %!^%COMMA_LOCATION_ARGS) ;

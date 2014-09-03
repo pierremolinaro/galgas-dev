@@ -4,25 +4,25 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-%foreach TEXT_CONTENT_INDEX_STRING_LIST do index idx
+%for () in TEXT_CONTENT_INDEX_STRING_LIST do index idx
 %extern const char * gWrapperFileContent_%!mValue%_%![FILEWRAPPER_NAME identifierRepresentation]% ;\n%
 end
 %
 //---------------------------------------------------------------------------------------------------------------------*
 
-%foreach BINARY_CONTENT_INDEX_STRING_LIST do index idx
+%for () in BINARY_CONTENT_INDEX_STRING_LIST do index idx
 %extern const uint8_t gWrapperFileContent_%!mValue%_%![FILEWRAPPER_NAME identifierRepresentation]% [] ;\n%
 end
 %
 //---------------------------------------------------------------------------------------------------------------------*
 
-%foreach FILE_INDEX_STRING_LIST do index idx
+%for () in FILE_INDEX_STRING_LIST do index idx
 %extern const cRegularFileWrapper gWrapperFile_%!mValue%_%![FILEWRAPPER_NAME identifierRepresentation]% ;\n%
 end
 %
 //---------------------------------------------------------------------------------------------------------------------*
 
-%foreach DIRECTORY_INDEX_STRING_LIST do
+%for () in DIRECTORY_INDEX_STRING_LIST do
 %extern const cDirectoryWrapper gWrapperDirectory_%!mValue%_%![FILEWRAPPER_NAME identifierRepresentation]% ;\n%
 end
 %

@@ -13,16 +13,16 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 %
-  foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalRoutineMessageMap] do
+  for () in [LEXIQUE_ANALYSIS_CONTEXT mLexicalRoutineMessageMap] do
     if mIsExtern then
       %\nvoid scanner_routine_%![lkey string]% (C_Lexique & inLexique%
-      foreach mLexicalRoutineFormalArgumentList do
+      for () in mLexicalRoutineFormalArgumentList do
         %,\n                %![mLexicalFormalArgumentMode cppConstInFormalArgument]
                              ![mLexicalFormalArgumentType cppTypeName]
                              ![mLexicalFormalArgumentMode cppReferenceInFormalArgument]
                              % %!mArgumentNameForComment
       end
-      foreach mErrorMessageList do
+      for () in mErrorMessageList do
         %,\n                const char * %!mValue
       end
       %) ;\n%
@@ -35,10 +35,10 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 %
-  foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalFunctionMap] do
+  for () in [LEXIQUE_ANALYSIS_CONTEXT mLexicalFunctionMap] do
     if mIsExtern then
       %\n%![mReturnedLexicalType cppTypeName]% scanner_function_%![lkey string]% (C_Lexique & inLexique%
-      foreach mLexicalTypeList do
+      for () in mLexicalTypeList do
         %,\n                const %![mLexicalType cppTypeName]% %!mArgumentNameForComment
       end
       %) ;\n%
@@ -53,7 +53,7 @@
 
 class cTokenFor_%!LEXIQUE_IDENTIFIER% : public cToken {
 %
-  foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalAttributeMap] do
+  for () in [LEXIQUE_ANALYSIS_CONTEXT mLexicalAttributeMap] do
     %  public : %![mLexicalType cppTypeName]% mLexicalAttribute_%![lkey identifierRepresentation]% ;\n%
   end
 %

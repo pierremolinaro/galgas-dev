@@ -16,7 +16,7 @@ if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] > 0) then
   typeComparisonResult result = kOperandEqual ;
   const cPtr_%!TYPE_IDENTIFIER% * p = (const cPtr_%!TYPE_IDENTIFIER% *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_%!TYPE_IDENTIFIER%) ;
-% foreach ALL_ATTRIBUTE_LIST do
+% for () in ALL_ATTRIBUTE_LIST do
     %  if (kOperandEqual == result) {\n%
     %    result = mAttribute_%![mAttributeName identifierRepresentation]%.objectCompare (p->mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
     %  }\n%
@@ -55,7 +55,7 @@ GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_default (LOCATION_ARGS) {
   return GALGAS_%!TYPE_IDENTIFIER%::constructor_new (%?^
 if [ALL_ATTRIBUTE_LIST length] > 0 then
-foreach ALL_ATTRIBUTE_LIST do
+for () in ALL_ATTRIBUTE_LIST do
    %GALGAS_%![mAttributeTypeProxy identifierRepresentation]%::constructor_%![[mAttributeTypeProxy mDefaultConstructorName] identifierRepresentation]% (HERE)%
   between %,\n%!^
 end%\n%!^%COMMA_THERE%
@@ -86,7 +86,7 @@ end
 if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] > 0) then
   %//---------------------------------------------------------------------------------------------------------------------*\n\n%
   %GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_new (%?^
-  foreach ALL_ATTRIBUTE_LIST
+  for () in ALL_ATTRIBUTE_LIST
     do %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & inAttribute_%![mAttributeName identifierRepresentation]
     between %,\n%!^
   end
@@ -98,13 +98,13 @@ if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] > 0) then
   %) {
   GALGAS_%!TYPE_IDENTIFIER% result ;
   if (%
-    foreach ALL_ATTRIBUTE_LIST
+    for () in ALL_ATTRIBUTE_LIST
       do %inAttribute_%![mAttributeName identifierRepresentation]%.isValid ()%
       between % && %
     end
   %) {
     macroMyNew (result.mObjectPtr, cPtr_%!TYPE_IDENTIFIER% (%
-    foreach ALL_ATTRIBUTE_LIST
+    for () in ALL_ATTRIBUTE_LIST
       do %inAttribute_%![mAttributeName identifierRepresentation]
       between %, %
     end
@@ -123,7 +123,7 @@ if ([ALL_ATTRIBUTE_LIST length] > 0) & not IS_ABSTRACT then
   %    macroValidSharedObject (p, cPtr_%!TYPE_IDENTIFIER%) ;\n%
   %    cPtr_%!TYPE_IDENTIFIER% * r = NULL ;\n%
   %    macroMyNew (r, cPtr_%!TYPE_IDENTIFIER% (%
-  foreach ALL_ATTRIBUTE_LIST
+  for () in ALL_ATTRIBUTE_LIST
     do %p->mAttribute_%![mAttributeName identifierRepresentation]
     between %, %
   end
@@ -135,7 +135,7 @@ if ([ALL_ATTRIBUTE_LIST length] > 0) & not IS_ABSTRACT then
   %}\n\n%
 end
 
-foreach CURRENT_ATTRIBUTE_LIST do
+for () in CURRENT_ATTRIBUTE_LIST do
   if mHasGetter then
     %//---------------------------------------------------------------------------------------------------------------------*\n\n%
     %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
@@ -154,7 +154,7 @@ foreach CURRENT_ATTRIBUTE_LIST do
   end
 end
 
-foreach CURRENT_ATTRIBUTE_LIST do
+for () in CURRENT_ATTRIBUTE_LIST do
   if mHasSetter then
     %//---------------------------------------------------------------------------------------------------------------------*\n\n%
     %void GALGAS_%!TYPE_IDENTIFIER%::modifier_set%![[mAttributeName stringByCapitalizingFirstCharacter] identifierRepresentation]% (%?^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inValue\n%
@@ -179,7 +179,7 @@ end
 //---------------------------------------------------------------------------------------------------------------------*
 
 cPtr_%!TYPE_IDENTIFIER%::cPtr_%!TYPE_IDENTIFIER% (%?^
-  foreach ALL_ATTRIBUTE_LIST
+  for () in ALL_ATTRIBUTE_LIST
     do %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
     between %,\n%!^
   end
@@ -190,7 +190,7 @@ cPtr_%!TYPE_IDENTIFIER%::cPtr_%!TYPE_IDENTIFIER% (%?^
   end
 %) :
 %if SUPER_TYPE_IDENTIFIER == "" then %acPtr_class% else %cPtr_%!SUPER_TYPE_IDENTIFIER end% (%
-  foreach INHERITED_ATTRIBUTE_LIST
+  for () in INHERITED_ATTRIBUTE_LIST
     do %in_%![mAttributeName identifierRepresentation]
     between %, %
   end
@@ -200,7 +200,7 @@ cPtr_%!TYPE_IDENTIFIER%::cPtr_%!TYPE_IDENTIFIER% (%?^
     %THERE%
   end
 %)%
-  foreach CURRENT_ATTRIBUTE_LIST
+  for () in CURRENT_ATTRIBUTE_LIST
     do %,\n% %mAttribute_%![mAttributeName identifierRepresentation]% (in_%![mAttributeName identifierRepresentation]%)%
   end
 % {
@@ -221,7 +221,7 @@ if not IS_ABSTRACT then
     %void cPtr_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,\n%
                                !^%const int32_t inIndentation) const {\n%
     %  ioString << "[@%!TYPE_NAME%:" ;\n%
-    foreach ALL_ATTRIBUTE_LIST
+    for () in ALL_ATTRIBUTE_LIST
       do %  mAttribute_%![mAttributeName identifierRepresentation]%.description (ioString, inIndentation+1) ;\n%
       between %  ioString << ", " ;\n%
     end

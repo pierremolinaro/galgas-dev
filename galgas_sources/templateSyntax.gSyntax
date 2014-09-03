@@ -623,7 +623,7 @@ end rule ;
 rule <template_instruction>
   ?!@templateInstructionListAST ioResultingInstructionList
 :
-  $foreach$ ;
+  $for$ ;
   @bool ascending ;
   select
     ascending := true ;
@@ -634,8 +634,10 @@ rule <template_instruction>
     $>$ ;
     ascending := false ;
   end select ;
-  @templateExpressionAST expression ;
-  <expression> ? expression ;
+  $($ ;
+  $)$ ;
+  $in$ ;
+  <expression> ??@templateExpressionAST expression ;
   @string foreachPrefix ;
   select
     foreachPrefix := "" ;

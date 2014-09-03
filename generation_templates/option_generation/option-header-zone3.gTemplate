@@ -5,7 +5,7 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-%foreach BOOL_OPTION_MAP do
+%for () in BOOL_OPTION_MAP do
   %extern C_BoolCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![lkey identifierRepresentation]% ;\n\n%
 end
 %//---------------------------------------------------------------------------------------------------------------------*
@@ -14,7 +14,7 @@ end
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-%foreach UINT_OPTION_MAP do
+%for () in UINT_OPTION_MAP do
   %extern C_UIntCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![lkey identifierRepresentation]% ;\n\n%
 end
 %//---------------------------------------------------------------------------------------------------------------------*
@@ -23,7 +23,7 @@ end
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-%foreach STRING_OPTION_MAP do
+%for () in STRING_OPTION_MAP do
   %extern C_StringCommandLineOption gOption_%![OPTION_COMPONENT_NAME identifierRepresentation]%_%![lkey identifierRepresentation]% ;\n\n%
 end
 %//---------------------------------------------------------------------------------------------------------------------*

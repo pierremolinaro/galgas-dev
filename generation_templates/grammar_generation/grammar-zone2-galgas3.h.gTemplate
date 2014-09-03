@@ -3,7 +3,7 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-%foreach GRAMMAR_COMPONENT_ROOT->mSyntaxComponents do
+%for () in GRAMMAR_COMPONENT_ROOT->mSyntaxComponents do
 %#include "syntax-%!mValue->string%.h"\n%
 end%
 

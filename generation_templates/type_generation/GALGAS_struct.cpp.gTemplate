@@ -2,7 +2,7 @@
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
 %
-foreach ATTRIBUTE_LIST
+for () in ATTRIBUTE_LIST
   do %mAttribute_%![mAttributeName identifierRepresentation]% ()%
   between %,\n%
 end% {
@@ -16,11 +16,11 @@ GALGAS_%!TYPE_IDENTIFIER%::~ GALGAS_%!TYPE_IDENTIFIER% (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (%?^
-foreach ATTRIBUTE_LIST
+for () in ATTRIBUTE_LIST
   do index IDX %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
 end%) :\n%
-foreach ATTRIBUTE_LIST do index IDX
+for () in ATTRIBUTE_LIST do index IDX
   %mAttribute_%![mAttributeName identifierRepresentation]% (inOperand%![IDX string]%)%
   between %,\n%
 end
@@ -32,7 +32,7 @@ end
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_default (UNUSED_LOCATION_ARGS) {
   return GALGAS_%!TYPE_IDENTIFIER% (%?^
-foreach ATTRIBUTE_LIST do
+for () in ATTRIBUTE_LIST do
    %GALGAS_%![mAttributeTypeProxy identifierRepresentation]%::constructor_%![[mAttributeTypeProxy mDefaultConstructorName] identifierRepresentation]% (HERE)%
   between %,\n%!^
 end%) ;
@@ -42,19 +42,19 @@ end%) ;
 %//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_new (%?^
-foreach ATTRIBUTE_LIST
+for () in ATTRIBUTE_LIST
   do index IDX %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
 end% \n%!^%COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% result ;
   if (%
-foreach ATTRIBUTE_LIST
+for () in ATTRIBUTE_LIST
   do index IDX %inOperand%![IDX string]%.isValid ()%
   between % && %
 end
 %) {
     result = GALGAS_%!TYPE_IDENTIFIER% (%
-foreach ATTRIBUTE_LIST
+for () in ATTRIBUTE_LIST
   do index IDX %inOperand%![IDX string]
   between %, %
 end
@@ -68,7 +68,7 @@ end
 
 typeComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
-%foreach ATTRIBUTE_LIST do
+%for () in ATTRIBUTE_LIST do
   %  if (result == kOperandEqual) {\n%
   %    result = mAttribute_%![mAttributeName identifierRepresentation]%.objectCompare (inOperand.mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
   %  }\n%
@@ -80,7 +80,7 @@ end
 
 bool GALGAS_%!TYPE_IDENTIFIER%::isValid (void) const {
   return %
-    foreach ATTRIBUTE_LIST
+    for () in ATTRIBUTE_LIST
       do %mAttribute_%![mAttributeName identifierRepresentation]%.isValid ()%
       between % && %
     end
@@ -90,7 +90,7 @@ bool GALGAS_%!TYPE_IDENTIFIER%::isValid (void) const {
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_%!TYPE_IDENTIFIER%::drop (void) {
-%  foreach ATTRIBUTE_LIST
+%  for () in ATTRIBUTE_LIST
     do %  mAttribute_%![mAttributeName identifierRepresentation]%.drop () ;\n%
   end
 %}
@@ -104,7 +104,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
     ioString << " not built" ;
   }else{
 %
-foreach ATTRIBUTE_LIST
+for () in ATTRIBUTE_LIST
   do index IDX %    mAttribute_%![mAttributeName identifierRepresentation]%.description (ioString, inIndentation+1) ;\n%
   between %    ioString << ", " ;\n%
 end
@@ -112,7 +112,7 @@ end
   ioString << ">" ;
 }
 
-%foreach ATTRIBUTE_LIST do
+%for () in ATTRIBUTE_LIST do
   %//---------------------------------------------------------------------------------------------------------------------*\n\n%
   %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
   %  return mAttribute_%![mAttributeName identifierRepresentation]% ;\n%

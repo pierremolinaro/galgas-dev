@@ -25,7 +25,7 @@ class C_Compiler ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 %
-foreach TYPE_LIST do
+for () in TYPE_LIST do
   %class GALGAS_%![key identifierRepresentation]% ;\n%
 end
 
