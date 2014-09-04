@@ -6,9 +6,9 @@ class GALGAS_string ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cGrammar_%![GRAMMAR_COMPONENT_ROOT->mGrammarComponentName identifierRepresentation]% : %?^
+class cGrammar_%![GRAMMAR_COMPONENT_ROOT.mGrammarComponentName identifierRepresentation]% : %?^
 for () in [GRAMMAR_COMPONENT_ROOT mSyntaxComponents]
-  do %public cParser_% ![mValue->string identifierRepresentation]
+  do %public cParser_% ![mValue.string identifierRepresentation]
   between %,\n%!^
 end
 % {
@@ -18,8 +18,8 @@ for () in NON_TERMINAL_MAP do
   #--- Parse
     %//--- 'parse' label\n%
     %  public : virtual void nt_%![lkey identifierRepresentation]%_parse (%?^
-    if GRAMMAR_COMPONENT_ROOT->mHasTranslateFeature then
-      %C_String & %!syntaxDirectedTranslationResultVarName []%,\n%!^ 
+    if GRAMMAR_COMPONENT_ROOT.mHasTranslateFeature then
+      %C_String & %!syntaxDirectedTranslationResultVarName ()%,\n%!^ 
     end
     %C_Lexique_%!LEXIQUE_IDENTIFIER% * inCompiler) ;\n\n%
   #--- indexing ?
@@ -43,8 +43,8 @@ for () in NON_TERMINAL_MAP do
       end
       %,\n%!^
     end
-    if GRAMMAR_COMPONENT_ROOT->mHasTranslateFeature then
-      %C_String & %!syntaxDirectedTranslationResultVarName []%,\n%!^ 
+    if GRAMMAR_COMPONENT_ROOT.mHasTranslateFeature then
+      %C_String & %!syntaxDirectedTranslationResultVarName ()%,\n%!^ 
     end
     %C_Lexique_%!LEXIQUE_IDENTIFIER% * inCompiler) ;\n\n%
   #--- Start symbol ?
@@ -52,8 +52,8 @@ for () in NON_TERMINAL_MAP do
       %//--- Start symbol\n%
       %  public : static void _performSourceFileParsing_%![label_lkey identifierRepresentation]% (%?^
       %C_Compiler * inCompiler,\n%!^
-      if GRAMMAR_COMPONENT_ROOT->mHasTranslateFeature then
-        %C_String & %!syntaxDirectedTranslationResultVarName []%,\n%!^ 
+      if GRAMMAR_COMPONENT_ROOT.mHasTranslateFeature then
+        %C_String & %!syntaxDirectedTranslationResultVarName ()%,\n%!^ 
       end
       %GALGAS_lstring inFileName%
       for () in label_mFormalParametersList do index IDX
@@ -71,8 +71,8 @@ for () in NON_TERMINAL_MAP do
       %\n%!^%COMMA_LOCATION_ARGS) ;\n\n%
       %  public : static void _performSourceStringParsing_%![label_lkey identifierRepresentation]% (%?^
       %C_Compiler * inCompiler,\n%!^
-      if GRAMMAR_COMPONENT_ROOT->mHasTranslateFeature then
-        %C_String & %!syntaxDirectedTranslationResultVarName []%,\n%!^ 
+      if GRAMMAR_COMPONENT_ROOT.mHasTranslateFeature then
+        %C_String & %!syntaxDirectedTranslationResultVarName ()%,\n%!^ 
       end
       %GALGAS_string inSourceString%
       for () in label_mFormalParametersList do index IDX

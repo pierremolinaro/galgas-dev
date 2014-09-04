@@ -124,14 +124,6 @@ class @templateXorOperationAST extends @templateExpressionAST {
  
 #---------------------------------------------------------------------------*
 
-class @templateConcatOperationAST extends @templateExpressionAST {
-  @location mOperatorLocation ;
-  @templateExpressionAST mLeftExpression ;
-  @templateExpressionAST mRightExpression ;
-}
- 
-#---------------------------------------------------------------------------*
-
 class @templateTrueBoolAST extends @templateExpressionAST {
   @location mLocation ;
 }

@@ -9,7 +9,7 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#include "lexique-%!LEXIQUE_COMPONENT_ROOT->mLexiqueComponentName->string%.h"
+#include "lexique-%!LEXIQUE_COMPONENT_ROOT.mLexiqueComponentName.string%.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 

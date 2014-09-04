@@ -28,26 +28,6 @@ import "templateTypesForAST.gSemantics" ;
 #------------------------------------------------------------------------------*
 
 rule <expression>
-  !@templateExpressionAST unused outExpression
-:
-  <concatenation_term> ?outExpression ;
-  repeat
-  while
-    @location operatorLocation := here ;
-    $.$ ; warning here : "obsolete : use '+'" ;
-    @templateExpressionAST rightOperand ;
-    <concatenation_term> ?rightOperand  ;
-    outExpression := [@templateConcatOperationAST new !operatorLocation !outExpression !rightOperand] ;
-  end repeat ;
-end rule ;
-
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   C O N C A T E N A T I O N    T E R M                                       *
-#                                                                              *
-#------------------------------------------------------------------------------*
-
-rule <concatenation_term>
   !@templateExpressionAST outExpression
 :
   <relation_term> ?outExpression ;
@@ -235,8 +215,8 @@ rule <factor>
   <primary> ?outExpression ;
   repeat
   while
-    $->$ ;
-    $identifier$ ? @lstring structFieldName ;
+    $.$ ;
+    $identifier$ ??@lstring structFieldName ;
     outExpression := [@structFieldAccessTemplateExpressionAST new !structFieldName->location !outExpression !structFieldName] ;
   end repeat ;
 end rule ;
@@ -522,18 +502,17 @@ end rule ;
 #------------------------------------------------------------------------------*
 #                                                                              *
 #                         F A C T O R                                          *
-#   function call        :   function_name [!... ]                             *
+#   function call        :   function_name (!... )                             *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
 rule <primary>
   !@templateExpressionAST outExpression
 :
-  $identifier$ ?@lstring functionName ;
-  @templateExpressionListAST expressionList ;
-  $[$ ;
-  <output_expression_list> ?expressionList ;
-  $]$ ;
+  $identifier$ ??@lstring functionName ;
+  $($ ;
+  <output_expression_list> ??@templateExpressionListAST expressionList ;
+  $)$ ;
   outExpression := [@templateFunctionCallAST new !functionName !expressionList] ;
 end rule ;
 

@@ -35,6 +35,7 @@
 #import "OC_GGS_Scroller.h"
 #import "PMDebug.h"
 #import "PMSearchResultDescriptor.h"
+#import "NSString+identifierRepresentation.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -320,15 +321,16 @@
     withKeyPath:@"values.GLOBAL-REPLACE-FIELD" 
     options:nil
   ] ;
+  mSearchMatrixPreferenceKey = [NSString stringWithFormat:@"searchMatrixFor_%@", self.fileURL.path.identifierRepresentation] ;
   [mSearchMatrix
     bind:@"selectedIndex"
     toObject:[NSUserDefaultsController sharedUserDefaultsController] 
-    withKeyPath:[NSString stringWithFormat:@"values.%@", [self searchMatrixPreferenceKey]]
+    withKeyPath:[NSString stringWithFormat:@"values.%@", mSearchMatrixPreferenceKey]
     options:nil
   ] ;
   [[NSUserDefaults standardUserDefaults]
     addObserver:self
-    forKeyPath:[self searchMatrixPreferenceKey]
+    forKeyPath:mSearchMatrixPreferenceKey
     options:0
     context:NULL
   ] ;
@@ -372,7 +374,7 @@
   [mExcludedDirectoryArrayController
     bind:@"contentArray"
     toObject:[NSUserDefaultsController sharedUserDefaultsController]
-    withKeyPath:[NSString stringWithFormat:@"values.excludedDirectoryArray-%lu", self.fileURL.absoluteString.hash]
+    withKeyPath:[NSString stringWithFormat:@"values.excludedDirectoryArray-%@", self.fileURL.absoluteString.identifierRepresentation]
     options:nil
   ] ;
   [mRemoveExcludedDirectoryButton
@@ -397,7 +399,7 @@
   [mExplicitSearchDirectoryArrayController
     bind:@"contentArray"
     toObject:[NSUserDefaultsController sharedUserDefaultsController]
-    withKeyPath:[NSString stringWithFormat:@"values.searchDirectoryArray-%lu", self.fileURL.absoluteString.hash]
+    withKeyPath:[NSString stringWithFormat:@"values.searchDirectoryArray-%@", self.fileURL.absoluteString.identifierRepresentation]
     options:nil
   ] ;
   [mRemoveExplicitSearchDirectoryButton
@@ -512,10 +514,10 @@
   [mSearchMatrix
     unbind:@"selectedIndex"
   ] ;
-/*  [ud
+  [ud
     removeObserver:self
-    forKeyPath:[self searchMatrixPreferenceKey]
-  ] ;*/
+    forKeyPath:mSearchMatrixPreferenceKey
+  ] ;
 //---
   mSourceDisplayArrayController = nil ;
   mDisplayDescriptorArray = nil ;
@@ -1536,7 +1538,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
     NSLog (@"%s, keyPath: %@", __PRETTY_FUNCTION__, inKeyPath) ;
   #endif
   NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
-  if ((inObject == ud) && [inKeyPath isEqualToString:[self searchMatrixPreferenceKey]]) {
+  if ((inObject == ud) && [inKeyPath isEqualToString:mSearchMatrixPreferenceKey]) {
     [self updateDirectoryListVisibility] ;
   }else if ((inObject == ud) && [inKeyPath isEqualToString:GGS_build_text_font]) {
     NSData * data = [ud objectForKey:GGS_build_text_font] ;
@@ -1676,14 +1678,8 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-- (NSString *) searchMatrixPreferenceKey {
-  return [NSString stringWithFormat:@"searchMatrixFor_%lu", self.fileURL.path.hash] ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 - (void) updateDirectoryListVisibility {
-  const NSInteger sel = [[NSUserDefaults standardUserDefaults] integerForKey:[self searchMatrixPreferenceKey]] ;
+  const NSInteger sel = [[NSUserDefaults standardUserDefaults] integerForKey:mSearchMatrixPreferenceKey] ;
   [mExcludedDirectoryView setHidden:sel != 1] ;
   [mExplicitSearchDirectoryView setHidden:sel != 2] ;
 }
