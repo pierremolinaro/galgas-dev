@@ -361,37 +361,6 @@ end method ;
  
 #---------------------------------------------------------------------------*
 
-override method @templateConcatOperationAST templateExpressionAnalysis
-  ??@templateAnalysisContext inAnalysisContext
-  !@semanticExpressionForGeneration outExpression
-:
-#--- Left expression analysis
-  @semanticExpressionForGeneration leftExpression ;
-  [mLeftExpression templateExpressionAnalysis !inAnalysisContext ?leftExpression] ;
-#--- Right expression analysis
-  @semanticExpressionForGeneration rightExpression ;
-  [mRightExpression templateExpressionAnalysis !inAnalysisContext ?rightExpression] ;
-#--- Check operator availability
-  const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
-  checkDiadicOperator
-    !leftType
-    ![rightExpression mType]
-    !([leftType mHandledOperatorFlags] & binaryConcatOperator []) != 0
-    !"."
-    !mOperatorLocation
-    !?rightExpression
-  ;  
-#--- Generate expression
-  outExpression := [@concatExpressionForGeneration new
-    !leftType
-    !mOperatorLocation
-    !leftExpression
-    !rightExpression
-  ] ;
-end method ;
- 
-#---------------------------------------------------------------------------*
-
 override method @templateTrueBoolAST templateExpressionAnalysis
   ??@templateAnalysisContext inAnalysisContext
   !@semanticExpressionForGeneration outExpression

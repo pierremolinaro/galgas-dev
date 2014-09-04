@@ -315,6 +315,7 @@
 		CFB3190517B38D98009424C2 /* C_DirectedGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB3190317B38D98009424C2 /* C_DirectedGraph.cpp */; };
 		CFB3190817B3C553009424C2 /* C_UIntSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB3190717B3C553009424C2 /* C_UIntSet.cpp */; };
 		CFB3190917B3C553009424C2 /* C_UIntSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB3190717B3C553009424C2 /* C_UIntSet.cpp */; };
+		CFB6882E19B8DAB2003F006C /* NSString+identifierRepresentation.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB6882D19B8DAB2003F006C /* NSString+identifierRepresentation.m */; };
 		CFB697DF1483D47900BCAE41 /* PMIssueInRuler.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB697DE1483D47900BCAE41 /* PMIssueInRuler.m */; };
 		CFB6B6DC1160D26100604D8C /* predefinedTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB6B6D81160D26100604D8C /* predefinedTypes.cpp */; };
 		CFB6B6DD1160D26100604D8C /* predefinedTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB6B6D81160D26100604D8C /* predefinedTypes.cpp */; };
@@ -801,6 +802,8 @@
 		CFB3190317B38D98009424C2 /* C_DirectedGraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_DirectedGraph.cpp; sourceTree = "<group>"; };
 		CFB3190617B3C545009424C2 /* C_UIntSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_UIntSet.h; sourceTree = "<group>"; };
 		CFB3190717B3C553009424C2 /* C_UIntSet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_UIntSet.cpp; sourceTree = "<group>"; };
+		CFB6882C19B8DAB2003F006C /* NSString+identifierRepresentation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+identifierRepresentation.h"; sourceTree = "<group>"; };
+		CFB6882D19B8DAB2003F006C /* NSString+identifierRepresentation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+identifierRepresentation.m"; sourceTree = "<group>"; };
 		CFB697DD1483D47900BCAE41 /* PMIssueInRuler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PMIssueInRuler.h; sourceTree = "<group>"; };
 		CFB697DE1483D47900BCAE41 /* PMIssueInRuler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PMIssueInRuler.m; sourceTree = "<group>"; };
 		CFB6B6D81160D26100604D8C /* predefinedTypes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = predefinedTypes.cpp; sourceTree = "<group>"; };
@@ -1387,6 +1390,8 @@
 				CF82596C08536A130077AEAF /* F_CocoaWrapperForGalgas.h */,
 				CF82596F08536A130077AEAF /* I_Stop.tiff */,
 				CF06F5C51049592F005F03FA /* MainMenu.xib */,
+				CFB6882C19B8DAB2003F006C /* NSString+identifierRepresentation.h */,
+				CFB6882D19B8DAB2003F006C /* NSString+identifierRepresentation.m */,
 				CFCAEE65160E5D3D0081F715 /* OC_GGS_ApplicationDelegate.h */,
 				CFCAEE66160E5D3D0081F715 /* OC_GGS_ApplicationDelegate.m */,
 				CF3C17A614E97CCC0016A381 /* OC_GGS_BuildTask.h */,
@@ -2685,6 +2690,7 @@
 				CFDAE70A0AD19F3E00713406 /* PMDownloadData.m in Sources */,
 				CFDAE70C0AD19F3E00713406 /* PMDownloadFile.m in Sources */,
 				CF4397FD0ADFE16D0085F47C /* PMCancelButtonForPanel.m in Sources */,
+				CFB6882E19B8DAB2003F006C /* NSString+identifierRepresentation.m in Sources */,
 				CF4397FF0ADFE16D0085F47C /* PMOkButtonForPanel.m in Sources */,
 				CF8D51990E46334400CFF259 /* GGSUpdateCocoaGalgas.m in Sources */,
 				CFE167840E8E7A2B00AFDAFC /* main.m in Sources */,

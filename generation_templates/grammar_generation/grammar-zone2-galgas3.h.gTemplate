@@ -1,10 +1,10 @@
-#ifndef GRAMMAR_%![GRAMMAR_COMPONENT_ROOT->mGrammarComponentName identifierRepresentation]%_HAS_BEEN_DEFINED
-#define GRAMMAR_%![GRAMMAR_COMPONENT_ROOT->mGrammarComponentName identifierRepresentation]%_HAS_BEEN_DEFINED
+#ifndef GRAMMAR_%![GRAMMAR_COMPONENT_ROOT.mGrammarComponentName identifierRepresentation]%_HAS_BEEN_DEFINED
+#define GRAMMAR_%![GRAMMAR_COMPONENT_ROOT.mGrammarComponentName identifierRepresentation]%_HAS_BEEN_DEFINED
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-%for () in GRAMMAR_COMPONENT_ROOT->mSyntaxComponents do
-%#include "syntax-%!mValue->string%.h"\n%
+%for () in GRAMMAR_COMPONENT_ROOT.mSyntaxComponents do
+%#include "syntax-%!mValue.string%.h"\n%
 end%
 
 

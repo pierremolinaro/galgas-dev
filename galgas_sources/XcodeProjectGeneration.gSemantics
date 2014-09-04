@@ -180,6 +180,7 @@ routine build_LIBPM_COCOA_GALGAS_group
 :
   @stringlist fileList [emptyList] ;
   append_m_h_files !?fileList !"PMSearchResultDescriptor" ;
+  append_m_h_files !?fileList !"NSString+identifierRepresentation" ;
   append_m_h_files !?fileList !"PMDebug" ;
   append_m_h_files !?fileList !"PMFontButton" ;
   append_m_h_files !?fileList !"OC_Token" ;
@@ -772,6 +773,7 @@ local routine build_COCOA_APP_files_for_sources_build_phase
 :
   @stringlist fileList [emptyList] ;
   fileList += !"main.m" ;
+  fileList += !"NSString+identifierRepresentation.m" ;
   fileList += !"PMDebug.m" ;
   fileList += !"PMCancelButtonForPanel.m" ;
   fileList += !"PMOkButtonForPanel.m" ;
