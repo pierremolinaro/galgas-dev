@@ -321,7 +321,7 @@
     withKeyPath:@"values.GLOBAL-REPLACE-FIELD" 
     options:nil
   ] ;
-  mSearchMatrixPreferenceKey = [NSString stringWithFormat:@"searchMatrixFor_%@", self.fileURL.path.identifierRepresentation] ;
+  mSearchMatrixPreferenceKey = [NSString stringWithFormat:@"searchMatrixFor:%@", self.lastComponentOfFileName] ; // self.fileURL.path.identifierRepresentation] ;
   [mSearchMatrix
     bind:@"selectedIndex"
     toObject:[NSUserDefaultsController sharedUserDefaultsController] 
@@ -374,7 +374,7 @@
   [mExcludedDirectoryArrayController
     bind:@"contentArray"
     toObject:[NSUserDefaultsController sharedUserDefaultsController]
-    withKeyPath:[NSString stringWithFormat:@"values.excludedDirectoryArray-%@", self.fileURL.absoluteString.identifierRepresentation]
+    withKeyPath:[NSString stringWithFormat:@"values.excludedDirectoryArray:%@", self.lastComponentOfFileName] // self.fileURL.absoluteString.identifierRepresentation]
     options:nil
   ] ;
   [mRemoveExcludedDirectoryButton
@@ -399,7 +399,7 @@
   [mExplicitSearchDirectoryArrayController
     bind:@"contentArray"
     toObject:[NSUserDefaultsController sharedUserDefaultsController]
-    withKeyPath:[NSString stringWithFormat:@"values.searchDirectoryArray-%@", self.fileURL.absoluteString.identifierRepresentation]
+    withKeyPath:[NSString stringWithFormat:@"values.searchDirectoryArray:%@", self.lastComponentOfFileName] // self.fileURL.absoluteString.identifierRepresentation]
     options:nil
   ] ;
   [mRemoveExplicitSearchDirectoryButton
