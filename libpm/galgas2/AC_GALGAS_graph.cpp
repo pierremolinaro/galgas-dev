@@ -1,10 +1,10 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  AC_GALGAS_graph : Base class for GALGAS graph                              *
+//  AC_GALGAS_graph : Base class for GALGAS graph                                                                      *
 //                                                                                                                     *
-//  This file is part of libpm library                                         *
+//  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2008, ..., 2013 Pierre Molinaro.                             *
+//  Copyright (C) 2008, ..., 2014 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -248,7 +248,7 @@ void cSharedGraph::description (C_String & ioString,
 #endif
 
 //---------------------------------------------------------------------------------------------------------------------*
-//    AC_GALGAS_graph                                                          *
+//    AC_GALGAS_graph                                                                                                  *
 //---------------------------------------------------------------------------------------------------------------------*
 
 AC_GALGAS_graph::AC_GALGAS_graph (void) :

@@ -152,7 +152,7 @@ C_String C_DirectedGraph::graphvizString (const TC_UniqueArray <C_String> & inNo
   C_String s = "digraph G {\n" ;
   for (int32_t i=0 ; i<mEdges.count () ; i++) {
     if (isNodeDefined ((uint32_t) i)) {
-      s << "  \"" << inNodeNameArray (i COMMA_HERE) << "\" ;\n" ;
+      s << "  \"" << inNodeNameArray (i COMMA_HERE) << "\" [shape=rectangle] ;\n" ;
       const C_UIntSet targetSet = mEdges (i COMMA_HERE) ;
       TC_Array <uint32_t> targetList ; targetSet.getValueArray (targetList) ;
       for (int32_t j=0 ; j<targetList.count () ; j++) {
