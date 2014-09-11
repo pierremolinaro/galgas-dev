@@ -133,14 +133,14 @@
 //--- Tell to window controller that closing the source text window closes the document
   [inWindowController setShouldCloseDocument: YES] ;
 //--- Set up windows location
-  NSString * key = [NSString stringWithFormat: @"frame_for_source:%@", self.lastComponentOfFileName] ;
+  NSString * key = [NSString stringWithFormat: @"frame_for_source:%@", mBaseFilePreferenceKey] ;
   [self.windowForSheet setFrameAutosaveName:key] ;
 
 //--- Add Split view binding
 // Note : use [self lastComponentOfFileName] instead of [window title], because window title may not set at this point
-  key = [NSString stringWithFormat:@"values.issue-split-fraction:%@", self.lastComponentOfFileName] ;
+  key = [NSString stringWithFormat:@"values.issue-split-fraction:%@", mBaseFilePreferenceKey] ;
   [mFirstSplitView setAutosaveName:key] ;
-  key = [NSString stringWithFormat:@"values.build-split-fraction:%@", self.lastComponentOfFileName] ;
+  key = [NSString stringWithFormat:@"values.build-split-fraction:%@", mBaseFilePreferenceKey] ;
   [mSecondSplitView setAutosaveName:key] ;
 //---
   mFirstSplitView.delegate = self ;
@@ -321,16 +321,15 @@
     withKeyPath:@"values.GLOBAL-REPLACE-FIELD" 
     options:nil
   ] ;
-  mSearchMatrixPreferenceKey = [NSString stringWithFormat:@"searchMatrixFor:%@", self.lastComponentOfFileName] ; // self.fileURL.path.identifierRepresentation] ;
   [mSearchMatrix
     bind:@"selectedIndex"
     toObject:[NSUserDefaultsController sharedUserDefaultsController] 
-    withKeyPath:[NSString stringWithFormat:@"values.%@", mSearchMatrixPreferenceKey]
+    withKeyPath:[NSString stringWithFormat:@"values.searchMatrixFor:%@", mBaseFilePreferenceKey]
     options:nil
   ] ;
   [[NSUserDefaults standardUserDefaults]
     addObserver:self
-    forKeyPath:mSearchMatrixPreferenceKey
+    forKeyPath:[NSString stringWithFormat:@"searchMatrixFor:%@", mBaseFilePreferenceKey]
     options:0
     context:NULL
   ] ;
@@ -374,7 +373,7 @@
   [mExcludedDirectoryArrayController
     bind:@"contentArray"
     toObject:[NSUserDefaultsController sharedUserDefaultsController]
-    withKeyPath:[NSString stringWithFormat:@"values.excludedDirectoryArray:%@", self.lastComponentOfFileName] // self.fileURL.absoluteString.identifierRepresentation]
+    withKeyPath:[NSString stringWithFormat:@"values.excludedDirectoryArray:%@", mBaseFilePreferenceKey] // self.fileURL.absoluteString.identifierRepresentation]
     options:nil
   ] ;
   [mRemoveExcludedDirectoryButton
@@ -399,7 +398,7 @@
   [mExplicitSearchDirectoryArrayController
     bind:@"contentArray"
     toObject:[NSUserDefaultsController sharedUserDefaultsController]
-    withKeyPath:[NSString stringWithFormat:@"values.searchDirectoryArray:%@", self.lastComponentOfFileName] // self.fileURL.absoluteString.identifierRepresentation]
+    withKeyPath:[NSString stringWithFormat:@"values.searchDirectoryArray:%@", mBaseFilePreferenceKey] // self.fileURL.absoluteString.identifierRepresentation]
     options:nil
   ] ;
   [mRemoveExplicitSearchDirectoryButton
@@ -516,7 +515,7 @@
   ] ;
   [ud
     removeObserver:self
-    forKeyPath:mSearchMatrixPreferenceKey
+    forKeyPath:[NSString stringWithFormat:@"searchMatrixFor:%@", mBaseFilePreferenceKey]
   ] ;
 //---
   mSourceDisplayArrayController = nil ;
@@ -1023,8 +1022,9 @@
          ofType:(NSString *) inTypeName
          error:(NSError * macroAutoreleasingInARC *) outError {
   #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+    NSLog (@"%s, URL '%@'", __PRETTY_FUNCTION__, inAbsoluteURL) ;
   #endif
+  mBaseFilePreferenceKey = [inAbsoluteURL.path identifierRepresentation] ;
 //---
   mDocumentData = [OC_GGS_DocumentData
     findOrAddDataForDocumentURL:inAbsoluteURL
@@ -1538,7 +1538,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
     NSLog (@"%s, keyPath: %@", __PRETTY_FUNCTION__, inKeyPath) ;
   #endif
   NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
-  if ((inObject == ud) && [inKeyPath isEqualToString:mSearchMatrixPreferenceKey]) {
+  if ((inObject == ud) && [inKeyPath isEqualToString:[NSString stringWithFormat:@"searchMatrixFor:%@", mBaseFilePreferenceKey]]) {
     [self updateDirectoryListVisibility] ;
   }else if ((inObject == ud) && [inKeyPath isEqualToString:GGS_build_text_font]) {
     NSData * data = [ud objectForKey:GGS_build_text_font] ;
@@ -1679,7 +1679,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (void) updateDirectoryListVisibility {
-  const NSInteger sel = [[NSUserDefaults standardUserDefaults] integerForKey:mSearchMatrixPreferenceKey] ;
+  const NSInteger sel = [[NSUserDefaults standardUserDefaults] integerForKey:[NSString stringWithFormat:@"searchMatrixFor:%@", mBaseFilePreferenceKey]] ;
   [mExcludedDirectoryView setHidden:sel != 1] ;
   [mExplicitSearchDirectoryView setHidden:sel != 2] ;
 }

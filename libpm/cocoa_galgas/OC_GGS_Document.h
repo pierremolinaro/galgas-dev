@@ -102,7 +102,8 @@
   @private NSArrayController *mExplicitSearchDirectoryArrayController ;
   @private IBOutlet NSButton * mAddExplicitSearchDirectoryButton ;
   @private IBOutlet NSButton * mRemoveExplicitSearchDirectoryButton ;
-  @private NSString * mSearchMatrixPreferenceKey ;
+
+  @private NSString * mBaseFilePreferenceKey ;
 }
 
 @property (assign PROPERTY_COMMA_ATOMIC) BOOL mBuildTaskIsRunning ;
