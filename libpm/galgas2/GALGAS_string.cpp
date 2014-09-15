@@ -1202,7 +1202,7 @@ void GALGAS_string::method_writeToFile (GALGAS_string inFilePath,
       if (ok && verboseOptionOn && fileAlreadyExists) {
         ggs_printFileOperationSuccess (C_String ("Replaced '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
       }else if (ok && verboseOptionOn && ! fileAlreadyExists) {
-        ggs_printFileOperationSuccess (C_String ("Created '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
+        ggs_printFileCreationSuccess (C_String ("Created '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
       }else if (! ok) {
         C_String message ;
         message << "cannot write '" << inFilePath.mString << "' file" ;
@@ -1243,7 +1243,7 @@ void GALGAS_string::method_writeToFileWhenDifferentContents (GALGAS_string inFil
           if (ok && verboseOptionOn && fileAlreadyExists) {
             ggs_printFileOperationSuccess (C_String ("Replaced '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
           }else if (ok && verboseOptionOn && ! fileAlreadyExists) {
-            ggs_printFileOperationSuccess (C_String ("Created '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
+            ggs_printFileCreationSuccess (C_String ("Created '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
           }else if (! ok) {
             C_String message ;
             message << "cannot write '" << inFilePath.mString << "' file" ;
@@ -1272,7 +1272,7 @@ void GALGAS_string::method_writeToExecutableFile (GALGAS_string inFilePath,
       if (ok && verboseOptionOn && fileAlreadyExists) {
         ggs_printFileOperationSuccess (C_String ("Replaced '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
       }else if (ok && verboseOptionOn && ! fileAlreadyExists) {
-        ggs_printFileOperationSuccess (C_String ("Created '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
+        ggs_printFileCreationSuccess (C_String ("Created '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
       }else if (! ok) {
         C_String message ;
         message << "cannot write '" << inFilePath.mString << "' file" ;
@@ -1313,7 +1313,7 @@ void GALGAS_string::method_writeToExecutableFileWhenDifferentContents (GALGAS_st
           if (ok && verboseOptionOn && fileAlreadyExists) {
             ggs_printFileOperationSuccess (C_String ("Replaced '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
           }else if (ok && verboseOptionOn && ! fileAlreadyExists) {
-            ggs_printFileOperationSuccess (C_String ("Created '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
+            ggs_printFileCreationSuccess (C_String ("Created '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
           }else if (! ok) {
             C_String message ;
             message << "cannot write '" << inFilePath.mString << "' file" ;
