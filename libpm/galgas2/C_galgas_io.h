@@ -1,10 +1,10 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  'C_galgas_io'                                                              *
+//  'C_galgas_io'                                                                                                      *
 //                                                                                                                     *
-//  This file is part of libpm library                                         *
+//  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 1996, ..., 2011 Pierre Molinaro.                             *
+//  Copyright (C) 1996, ..., 2014 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -40,7 +40,7 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  Exception raised when maximum error count is reached                       *
+//  Exception raised when maximum error count is reached                                                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -50,7 +50,7 @@ class max_error_count_reached_exception : public ::std:: exception {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  Exception raised when maximum warning count is reached                     *
+//  Exception raised when maximum warning count is reached                                                             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -60,7 +60,7 @@ class max_warning_count_reached_exception : public ::std:: exception {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//     Internal exception thrown when a lexical error has been detected        *
+//     Internal exception thrown when a lexical error has been detected                                                *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -75,7 +75,7 @@ class C_UserCancelException : public ::std::exception {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//   Class used for defining a reserved words table entry                      *
+//   Class used for defining a reserved words table entry                                                              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -95,7 +95,7 @@ class C_unicode_lexique_table_entry {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Token class                                                 *
+//                 Token class                                                                                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -117,8 +117,8 @@ class cToken {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Class for handling parsing context                          *
-//          (used by parse ... rewind ... end parse ; instruction)             *
+//                 Class for handling parsing context                                                                  *
+//          (used by parse ... rewind ... end parse ; instruction)                                                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -141,7 +141,7 @@ class C_parsingContext {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//         Abstract class for GALGAS input/output                              *
+//         Abstract class for GALGAS input/output                                                                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -212,23 +212,22 @@ void fatalError (const C_String & inErrorMessage,
                  const char * inSourceFile,
                  const int inSourceLine) ;
 
-//--- Method called for printing an error
 void ggs_printError (const C_SourceTextInString * inSourceTextPtr,
                      const C_LocationInSource & inErrorLocation,
                      const C_String & inMessage
                      COMMA_LOCATION_ARGS) ;
 
-//--- Method called for printing a warning
 void ggs_printWarning (const C_SourceTextInString * inSourceTextPtr,
                        const C_LocationInSource & inWarningLocation,
                        const C_String & inMessage
                        COMMA_LOCATION_ARGS) ;
 
-//--- Method called for printing a file success message
 void ggs_printFileOperationSuccess (const C_String & inMessage
                                     COMMA_LOCATION_ARGS) ;
 
-//--- Method called for printing a message
+void ggs_printFileCreationSuccess (const C_String & inMessage
+                                   COMMA_UNUSED_LOCATION_ARGS) ;
+
 void ggs_printMessage (const C_String & inMessage
                        COMMA_LOCATION_ARGS) ;
 

@@ -267,7 +267,7 @@ void GALGAS_data::method_writeToFileWhenDifferentContents (GALGAS_string inFileP
           if (ok && verboseOptionOn && fileAlreadyExists) {
             ggs_printFileOperationSuccess (C_String ("Replaced '") + inFilePath.stringValue () + "'.\n" COMMA_THERE) ;
           }else if (ok && verboseOptionOn && ! fileAlreadyExists) {
-            ggs_printFileOperationSuccess (C_String ("Created '") + inFilePath.stringValue () + "'.\n" COMMA_HERE) ;
+            ggs_printFileCreationSuccess (C_String ("Created '") + inFilePath.stringValue () + "'.\n" COMMA_HERE) ;
           }else if (! ok) {
             C_String message ;
             message << "cannot write '" << inFilePath.stringValue () << "' file" ;
@@ -308,7 +308,7 @@ void GALGAS_data::method_writeToFile (GALGAS_string inFilePath,
         if (ok && verboseOptionOn && fileAlreadyExists) {
           ggs_printFileOperationSuccess (C_String ("Replaced '") + filePath + "'.\n" COMMA_THERE) ;
         }else if (ok && verboseOptionOn && ! fileAlreadyExists) {
-          ggs_printFileOperationSuccess (C_String ("Created '") + filePath + "'.\n" COMMA_THERE) ;
+          ggs_printFileCreationSuccess (C_String ("Created '") + filePath + "'.\n" COMMA_THERE) ;
         }else if (! ok) {
           C_String message ;
           message << "cannot write '" << filePath << "' file" ;
