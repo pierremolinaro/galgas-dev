@@ -1235,7 +1235,7 @@ override method @listmapTypeForGeneration appendDeclaration1
   ?!@stringset ioInclusionSet
   !@string outHeader
 :
-  ioInclusionSet += !"galgas2/AC_GALGAS_map" ;
+#  ioInclusionSet += !"galgas2/AC_GALGAS_map" ;
   for (t ...) in mAssociatedListTypedAttributeList do
     [t addHeaderFileName1 !?ioInclusionSet] ;
   end for ;
@@ -1281,10 +1281,10 @@ override method @listmapTypeForGeneration appendSpecificImplementation
 #---------------------------------------------------------------------------*
 
 override method @mapTypeForGeneration appendDeclaration1
-  ?!@stringset ioInclusionSet
+  ?!@stringset unused ioInclusionSet
   !@string outHeader
 :
-  ioInclusionSet += !"galgas2/AC_GALGAS_map" ;
+#  ioInclusionSet += !"galgas2/AC_GALGAS_map" ;
 #  for (t ...) in mTypedAttributeList do
 #    [t addHeaderFileName1 !?ioInclusionSet] ;
 #  end for ;
@@ -1358,7 +1358,7 @@ override method @uniqueMapTypeForGeneration appendDeclaration1
   ?!@stringset ioInclusionSet
   !@string outHeader
 :
-  ioInclusionSet += !"galgas2/AC_GALGAS_uniqueMap" ;
+#  ioInclusionSet += !"galgas2/AC_GALGAS_uniqueMap" ;
   for (t ...) in mTypedAttributeList do
     [t addHeaderFileName1 !?ioInclusionSet] ;
   end for ;
@@ -1526,6 +1526,10 @@ override method @mapProxyTypeForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader
 :
+#  for (t ...) in [mTypeProxy mCurrentTypedAttributeList] do
+#    [t addHeaderFileName1 !?ioInclusionSet] ;
+#  end for ;
+
   outHeader := [filewrapper typeGenerationTemplate.mapProxyTypeHeader1
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
@@ -1542,7 +1546,6 @@ override method @mapProxyTypeForGeneration appendDeclaration1
     ![mTypeProxy mEnumerationDescriptor]
     ![mTypeProxy mHandledOperatorFlags]
     ![mTypeProxy mAddAssignOperatorArguments]
-#    ![mTypeProxy mWithAccessorMap]
     ![mTypeProxy mTypeForEnumeratedElement]
   ] ;
 end method ;
@@ -1740,7 +1743,6 @@ override method @classTypeForGeneration appendDeclaration1
     ![mTypeProxy mEnumerationDescriptor]
     ![mTypeProxy mHandledOperatorFlags]
     ![mTypeProxy mAddAssignOperatorArguments]
-#    ![mTypeProxy mWithAccessorMap]
     ![mTypeProxy mTypeForEnumeratedElement]
   ] ;
  end method ;
