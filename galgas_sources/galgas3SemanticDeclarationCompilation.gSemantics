@@ -331,6 +331,12 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
+local once generateFewHeaderFiles -> @bool outResult :
+  outResult := false ;
+end once ;
+
+#---------------------------------------------------------------------------*
+
 routine generateSemanticDeclarationsGalgas3
   ??@string inProductDirectory
   ??@semanticContext inSemanticContext
@@ -345,8 +351,14 @@ routine generateSemanticDeclarationsGalgas3
         !inSemanticDeclarationSortedListForGeneration
         !?ioAllProductFileSet
       ;
+    elsif generateFewHeaderFiles [] then
+      generateFewHeaders
+        !inProductDirectory
+        !inSemanticDeclarationSortedListForGeneration
+        !?ioAllProductFileSet
+      ;
     else
-       generateManyHeaders
+      generateManyHeaders
         !inProductDirectory
         !inSemanticDeclarationSortedListForGeneration
         !?ioAllProductFileSet
@@ -374,7 +386,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine generateManyHeaders
+local routine generateManyHeaders
   ??@string inProductDirectory
   ??@semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
   ?!@stringset ioAllProductFileSet
@@ -490,7 +502,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine generateOneBigHeader
+local routine generateOneBigHeader
   ??@string inProductDirectory
   ??@semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
   ?!@stringset ioAllProductFileSet
@@ -529,7 +541,81 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine generateFewImplementationFiles
+local routine generateFewHeaders
+  ??@string inProductDirectory
+  ??@semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
+  ?!@stringset ioAllProductFileSet
+:
+  var n := 0 ;
+  var fileIdx := 0 ;
+  var implementationString1 := "" ;
+  var implementationString2 := "" ;
+#--- Declaration 1
+  foreach inSemanticDeclarationSortedListForGeneration do
+    n ++ ;
+    if not [mDeclaration isPredefined] then
+      var inclusionSet1 := [@stringset emptySet] ; # Unused
+      [mDeclaration appendDeclaration1 !?inclusionSet1 ??@string headerString1] ;
+      implementationString1 .= headerString1 ;
+      var inclusionSet2 := [@stringset emptySet] ; # Unused
+      [mDeclaration appendDeclaration2 !true !inProductDirectory !?inclusionSet2 ??@string headerString2] ;
+      implementationString2 .= headerString2 ;
+    end if ;
+    if n == definitionGroupAmount [] then
+      const headerString := [filewrapper semanticFileGenerationTemplate.semanticFileHeader
+        !"all-declarations-" + fileIdx
+        !if fileIdx == 0 then {} else {!"all-declarations-" + (fileIdx-1)} end
+      ] ;
+      [@string generateFileWithPattern
+        !inProductDirectory
+        !"all-declarations-" + fileIdx + ".h"
+        !"//"
+        !"\n\n" # Defaut user zone1
+        !headerString + implementationString1 + implementationString2
+        !"\n\n" # Defaut user zone2
+        !"#endif\n"
+      ] ;
+      ioAllProductFileSet += !"all-declarations-" + fileIdx + ".h" ;
+      n := 0 ;
+      fileIdx ++ ;
+      implementationString1 := "" ;
+      implementationString2 := "" ;
+    end if ;
+  end foreach ;
+#---
+  const headerString := [filewrapper semanticFileGenerationTemplate.semanticFileHeader
+    !"all-declarations-" + fileIdx
+    !{!"all-declarations-" + (fileIdx-1)}
+  ] ;
+  [@string generateFileWithPattern
+    !inProductDirectory
+    !"all-declarations-" + fileIdx + ".h"
+    !"//"
+    !"\n\n" # Defaut user zone1
+    !headerString + implementationString1 + implementationString2
+    !"\n\n" # Defaut user zone2
+    !"#endif\n"
+  ] ;
+  ioAllProductFileSet += !"all-declarations-" + fileIdx + ".h" ;
+#---
+  [@string generateFileWithPattern
+    !inProductDirectory
+    !"all-declarations.h"
+    !"//"
+    !"\n\n" # Defaut user zone1
+    ![filewrapper semanticFileGenerationTemplate.semanticFileHeader
+       !"all-declarations"
+       !{!"all-declarations-" + fileIdx}
+     ] 
+    !"\n\n" # Defaut user zone2
+    !"#endif\n"
+  ] ;
+  ioAllProductFileSet += !"all-declarations.h" ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+local routine generateFewImplementationFiles
   ??@string inProductDirectory
   ??@semanticContext inSemanticContext
   ??@semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
@@ -561,7 +647,7 @@ routine generateFewImplementationFiles
           inclusionSet += !"grammar-" . lkey->string ;
         end for ;
         const header := [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
-          ![inclusionSet stringList]
+          !if generateFewHeaderFiles [] then {!"all-declarations-" . fileIdx} else [inclusionSet stringList] end
         ] ;
         const fileName := "all-declarations-" . fileIdx . ".cpp" ;
         ioToolProductFileList := [@stringlist listWithValue !fileName] + ioToolProductFileList ;
@@ -597,7 +683,7 @@ routine generateFewImplementationFiles
       inclusionSet += !"grammar-" . lkey->string ;
     end for ;
     const header := [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
-      ![inclusionSet stringList]
+      !if generateFewHeaderFiles [] then {!"all-declarations-" . fileIdx} else [inclusionSet stringList] end
     ] ;
     const fileName := "all-declarations-" . fileIdx . ".cpp" ;
     ioToolProductFileList := [@stringlist listWithValue !fileName] + ioToolProductFileList ;
@@ -616,7 +702,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine generateManyImplementationFiles
+local routine generateManyImplementationFiles
   ??@string inProductDirectory
   ??@semanticContext inSemanticContext
   ??@semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
