@@ -320,7 +320,7 @@ uniquemap @unifiedTypeMap @unifiedTypeMapProxy {
   @uint mHandledOperatorFlags ;
   @functionSignature mAddAssignOperatorArguments ; # Empty list if += operator is not supported
   @stringset mEnumConstantSet ;
-  @lstringlist mEnumConstantList ;
+  @enumConstantList mEnumConstantList ;
   @mapSearchMethodListAST mMapSearchMethodList ; # For a map, the list of search methods
   @mapSearchMethodListAST mMapProxySearchConstructorList ; # For a map proxy, the list of search methods of the associated map
   @bool mGenerateHeaderInSeparateFile ; # Significant only for classes

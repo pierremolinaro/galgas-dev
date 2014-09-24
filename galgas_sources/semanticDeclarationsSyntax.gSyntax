@@ -559,12 +559,24 @@ rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
   $enum$ ;
-  $type_name$ ? @lstring mEnumTypeName indexing enumDefinition ;
+  $type_name$ ??@lstring mEnumTypeName indexing enumDefinition ;
   ${$ ;
-  @lstringlist mConstantList [emptyList] ;
+  @enumConstantList mConstantList [emptyList] ;
   repeat
     $identifier$ ?@lstring constantName ;
-    mConstantList += !constantName ;
+    @lstringlist associatedValueTypeList := {} ;
+    select
+    or
+      $($ ;
+      repeat
+        $type_name$ ??@lstring associatedValueType ;
+        associatedValueTypeList += !associatedValueType ;
+      while
+        $,$ ;
+      end repeat ;
+      $)$ ;
+    end select ;
+    mConstantList += !constantName !associatedValueTypeList ;
   while
    $,$ ;
   end repeat ;

@@ -786,7 +786,7 @@ override method @predefinedTypeAST enterInSemanticContext
     ![selfcopy getSupportedOperatorFlags]
     !addAssignArgumentList
     ![@stringset emptySet]
-    ![@lstringlist emptyList]
+    !{}
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
     !false # Do not generate header in separate file
@@ -993,7 +993,7 @@ override method @mapDeclarationAST enterInSemanticContext
     !doNotGenererateObjectCompare [] | plusEqualOperatorWithFieldListNeedsCompilerArg [] | supportWithAccessor []
     !argumentTypeListForAddAssignWithFieldExpressionList
     ![@stringset emptySet]
-    ![@lstringlist emptyList]
+    !{}
     !mSearchMethodList
     ![@mapSearchMethodListAST emptyList]
     !false # Do not generate header in separate file
@@ -1241,7 +1241,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     !doNotGenererateObjectCompare [] | supportWithAccessor []
     ![@functionSignature emptyList]
     ![@stringset emptySet]
-    ![@lstringlist emptyList]
+    !{}
     !mSearchMethodList
     ![@mapSearchMethodListAST emptyList]
     !false # Do not generate header in separate file
@@ -1389,7 +1389,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     !doNotGenererateObjectCompare []
     ![@functionSignature emptyList]
     ![@stringset emptySet]
-    ![@lstringlist emptyList]
+    !{}
     ![@mapSearchMethodListAST emptyList]
     !searchMethodList
     !false # Do not generate header in separate file
@@ -1521,7 +1521,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
     !0
     ![@functionSignature emptyList]
     ![@stringset emptySet]
-    ![@lstringlist emptyList]
+    !{}
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
     !false # Do not generate header in separate file
@@ -1774,7 +1774,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !doNotGenererateObjectCompare []
     ![@functionSignature emptyList]
     ![@stringset emptySet]
-    ![@lstringlist emptyList]
+    !{}
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
     !false # Do not generate header in separate file
@@ -1793,24 +1793,32 @@ override method @enumDeclarationAST enterInSemanticContext
   ??@categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
-#  message "@enumDeclarationAST enterInSemanticContext\n" ;
 #---
   @constructorMap constructorMap [emptyMap] ;
   @modifierMap modifierMap [emptyMap] ;
   @instanceMethodMap instanceMethodMap [emptyMap] ;
   @classMethodMap classMethodMap [emptyMap] ;
 #--- currentType type index
-  @unifiedTypeMapProxy currentTypeIndex ;
-  [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mEnumTypeName ?currentTypeIndex] ;
+  [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mEnumTypeName ??@unifiedTypeMapProxy enumTypeProxy] ;
 #--- Constructors
   @stringset constantSet [emptySet] ;
   foreach mConstantList do
-    constantSet += ![mValue string] ;
-    enterConstructorWithoutArgument !?constructorMap !?ioSemanticContext->mTypeMap ![mValue string] ![mEnumTypeName string] !false ;
+    constantSet += !mConstantName->string ;
+    @functionSignature argumentTypeList := {} ;
+    for (t) in mAssociatedValueTypeList do
+      [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !t ??@unifiedTypeMapProxy associatedTypeIndex] ;
+      argumentTypeList += !t !associatedTypeIndex !t->string ;
+    end for ;
+ #   enterConstructorWithoutArgument !?constructorMap !?ioSemanticContext->mTypeMap !mConstantName->string ![mEnumTypeName string] !false ;
+    [!?constructorMap insertOrReplace
+      !mConstantName
+      !argumentTypeList
+      !false
+      !enumTypeProxy
+    ] ;
   end foreach ;
 #--- readers
-  @readerMap readerMap ;
-  commonReaderMapForAllTypes !?ioSemanticContext->mTypeMap ?readerMap  ;
+  commonReaderMapForAllTypes !?ioSemanticContext->mTypeMap ?@readerMap readerMap  ;
 #--- Add Categories
   addCategories
     !inCategoryMethodMapForBuildingContext
@@ -1848,7 +1856,7 @@ override method @enumDeclarationAST enterInSemanticContext
     ![@mapSearchMethodListAST emptyList]
     !false # Do not generate header in separate file
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
-    ![mConstantList mValueAtIndex !0]->string # Default constructor
+    !"" # No default constructor [mConstantList mConstantNameAtIndex !0]->string # Default constructor
     !"enum-" . mEnumTypeName
     ![@headerKind oneHeader]
   ] ;
@@ -2185,7 +2193,7 @@ override method @listDeclarationAST enterInSemanticContext
     !binaryConcatOperator [] | doNotGenererateObjectCompare [] | plusEqualOperatorWithExpression [] | binaryAddOperator []
     !constructorAttributeTypeList
     ![@stringset emptySet]
-    ![@lstringlist emptyList]
+    !{}
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
     !false # Do not generate header in separate file
@@ -2312,7 +2320,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !binaryConcatOperator [] | doNotGenererateObjectCompare [] | plusEqualOperatorWithExpression []
     !constructorAttributeTypeList
     ![@stringset emptySet]
-    ![@lstringlist emptyList]
+    !{}
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
 #    !{} # 'with" accessor is not handled
@@ -2423,7 +2431,7 @@ override method @structDeclarationAST enterInSemanticContext
     !generateDescriptionReaderUtilityMethod []
     ![@functionSignature emptyList]
     ![@stringset emptySet]
-    ![@lstringlist emptyList]
+    !{}
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
     !false # Do not generate header in separate file
@@ -2648,7 +2656,7 @@ override method @classDeclarationAST enterInSemanticContext
     !0
     ![@functionSignature emptyList]
     ![@stringset emptySet]
-    ![@lstringlist emptyList]
+    !{}
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
     !generateHeaderInSeparateFile
@@ -2863,7 +2871,7 @@ override method @arrayDeclarationAST enterInSemanticContext
     !0
     ![@functionSignature emptyList] # addAssignOperatorDescription
     ![@stringset emptySet]
-    ![@lstringlist emptyList]
+    !{}
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
     !false # Do not generate header in separate file
@@ -2963,7 +2971,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     !doNotGenererateObjectCompare []
     !addAssignOperatorDescription
     ![@stringset emptySet]
-    ![@lstringlist emptyList]
+    !{}
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
     !false # Do not generate header in separate file

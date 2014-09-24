@@ -4,7 +4,26 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
+%
+for () in CONSTANT_LIST do
+  if [mAssociatedValueTypeList length] > 0 then
+    %class cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName.string% : public cEnumAssociatedValues {\n%
+    for () in mAssociatedValueTypeList do index idx
+      %  private : GALGAS_%!mValue.string% mAssociatedValue%![idx string]% ;\n%
+    end
+    %\n%
+    %//--- Constructor\n%
+    %  public : cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName.string% (%?^
+    for () in mAssociatedValueTypeList
+    do index idx %const GALGAS_%!mValue.string% & inAssociatedValue%![idx string]
+    between %,\n%!^
+    end
+    %\n%!^% COMMA_LOCATION_ARGS) ;\n%
+    %} ;\n\n%
+    %//---------------------------------------------------------------------------------------------------------------------*\n\n%
+  end
+end
+%class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
 
@@ -12,12 +31,13 @@ class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
   public : typedef enum {
     kNotBuilt%
     for () in CONSTANT_LIST do
-      %,\n    kEnum_%![mValue identifierRepresentation]
+      %,\n    kEnum_%![mConstantName identifierRepresentation]
     end
 %
   } enumeration ;
   
 //--------------------------------- Private data member
+  private : AC_GALGAS_enumAssociatedValues mAssociatedValues ;
   private : enumeration mEnum ;
 
 //--------------------------------- Accessors

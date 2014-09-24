@@ -366,15 +366,15 @@ override method @enumDeclarationAST semanticAnalysis
   @stringlist constantList [emptyList] ;
   @constantIndexMap constantMap [emptyMap] ;
   foreach mConstantList do
-    constantList += ![mValue string] ;
-    [!?constantMap insertKey !mValue ![constantMap count]] ;
+    constantList += !mConstantName->string ;
+    [!?constantMap insertKey !mConstantName ![constantMap count]] ;
   end foreach ;
 #---
   ioSemanticDeclarationListForGeneration +=
     !"enum " . mEnumTypeName
     ![@enumTypeForGeneration new
       ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mEnumTypeName]
-      !constantList
+      !mConstantList
     ]
     !""
   ;

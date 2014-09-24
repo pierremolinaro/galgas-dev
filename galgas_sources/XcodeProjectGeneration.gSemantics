@@ -109,6 +109,8 @@ routine getGALGAS_2_source_file_list
   out_fileList += !"AC_GALGAS_uniqueMap.h" ;
   out_fileList += !"AC_GALGAS_class.cpp" ;
   out_fileList += !"AC_GALGAS_class.h" ;
+  out_fileList += !"AC_GALGAS_enumAssociatedValues.cpp" ;
+  out_fileList += !"AC_GALGAS_enumAssociatedValues.h" ;
   out_fileList += !"acPtr_class.cpp" ;
   out_fileList += !"acPtr_class.h" ;
   out_fileList += !"cPtr_object.cpp" ;
