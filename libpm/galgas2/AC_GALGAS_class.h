@@ -1,10 +1,10 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  acPtr_class : Base class for GALGAS class                                  *
+//  AC_GALGAS_class : Base class for GALGAS class                                                                      *
 //                                                                                                                     *
-//  This file is part of libpm library                                         *
+//  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2008, ..., 2010 Pierre Molinaro.                             *
+//  Copyright (C) 2008, ..., 2014 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -38,7 +38,7 @@ class acPtr_class ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-class AC_GALGAS_class : public AC_GALGAS_root {
+class AC_GALGAS_class : public AC_GALGAS_root { // AC_GALGAS_class est une classe abstraite
 //--- Attribute
   protected : acPtr_class * mObjectPtr ;
   public : inline const acPtr_class * ptr (void) const { return mObjectPtr ; }

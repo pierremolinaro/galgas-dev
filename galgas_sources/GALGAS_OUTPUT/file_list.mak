@@ -227,6 +227,7 @@ SOURCES += AC_GALGAS_map.cpp
 SOURCES += AC_GALGAS_uniqueMap.cpp
 SOURCES += AC_GALGAS_class.cpp
 SOURCES += AC_GALGAS_graph.cpp
+SOURCES += AC_GALGAS_enumAssociatedValues.cpp
 SOURCES += acPtr_class.cpp
 SOURCES += cPtr_object.cpp
 

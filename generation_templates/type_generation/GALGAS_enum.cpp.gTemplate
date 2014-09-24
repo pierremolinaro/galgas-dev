@@ -1,15 +1,56 @@
-//---------------------------------------------------------------------------------------------------------------------*
+%
+for () in CONSTANT_LIST do
+  if [mAssociatedValueTypeList length] > 0 then
+    %//---------------------------------------------------------------------------------------------------------------------*\n\n%
+    %cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName.string%::cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName.string% (%?^
+    for () in mAssociatedValueTypeList
+    do index idx %const GALGAS_%!mValue.string% & inAssociatedValue%![idx string]
+    between %,\n%!^
+    end
+    %\n%!^%COMMA_LOCATION_ARGS) :\n%
+    %cEnumAssociatedValues (THERE)%
+    for () in mAssociatedValueTypeList do index idx
+    %,\nmAssociatedValue%![idx string]% (inAssociatedValue%![idx string]%)%
+    end
+    % {\n%   
+    %} ;\n\n%
+  end
+end
+
+%//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
+mAssociatedValues (),
 mEnum (kNotBuilt) {
 }
 
 %
 for () in CONSTANT_LIST do
   %//---------------------------------------------------------------------------------------------------------------------*\n\n%
-  %GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_%![mValue identifierRepresentation]% (UNUSED_LOCATION_ARGS) {\n%
+  %GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_%![mConstantName identifierRepresentation]% (%?^
+  if [mAssociatedValueTypeList length] == 0 then
+    %UNUSED_LOCATION_ARGS%
+  else
+    for () in mAssociatedValueTypeList
+    do index idx %const GALGAS_%!mValue.string% & inAssociatedValue%![idx string]
+    between %,\n%!^
+    end
+    %\n%!^%COMMA_LOCATION_ARGS%
+  end
+  %) {\n%
   %  GALGAS_%!TYPE_IDENTIFIER% result ;\n%
-  %  result.mEnum = kEnum_%![mValue identifierRepresentation]% ;\n%
+  %  result.mEnum = kEnum_%![mConstantName identifierRepresentation]% ;\n%
+  if [mAssociatedValueTypeList length] > 0 then
+    %  cEnumAssociatedValues * ptr = NULL ;\n%
+    %  macroMyNew (ptr, cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName.string% (%
+    for () in mAssociatedValueTypeList
+    do index idx %inAssociatedValue%![idx string]
+    between %, %
+    end
+    % COMMA_THERE)) ;\n%
+    %  result.mAssociatedValues.setPointer (ptr) ;\n%
+    %  macroDetachSharedObject (ptr) ;\n%
+  end
   %  return result ;\n%
   %}\n\n%
 end
@@ -19,7 +60,7 @@ end
 static const char * gEnumNameArrayFor_%!TYPE_IDENTIFIER% [%![[CONSTANT_LIST length] + 1 string]%] = {
   "(not built)"%
 for () in CONSTANT_LIST
-   do %,\n  %![mValue utf8Representation]
+   do %,\n  %![mConstantName utf8Representation]
 end%
 } ;
 

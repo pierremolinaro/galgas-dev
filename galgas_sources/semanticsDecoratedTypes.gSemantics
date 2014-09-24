@@ -1380,7 +1380,7 @@ class @sortedListTypeForGeneration extends @semanticTypeForGeneration {
 #---------------------------------------------------------------------------*
 
 class @enumTypeForGeneration extends @semanticTypeForGeneration {
-  @stringlist mConstantList ;
+  @enumConstantList mConstantList ;
 }
 
 #---------------------------------------------------------------------------*

@@ -695,13 +695,13 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
   template enumTypeHeader1 "GALGAS_enum.h1.gTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
-    ?@stringlist CONSTANT_LIST
+    ?@enumConstantList CONSTANT_LIST
   ;
 
   template enumTypeSpecificImplementation "GALGAS_enum.cpp.gTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
-    ?@stringlist CONSTANT_LIST
+    ?@enumConstantList CONSTANT_LIST
   ;
 
 #---------- MAP PROXY
@@ -1499,7 +1499,6 @@ override method @enumTypeForGeneration appendDeclaration1
     ![mTypeProxy mEnumerationDescriptor]
     ![mTypeProxy mHandledOperatorFlags]
     ![mTypeProxy mAddAssignOperatorArguments]
-#    ![mTypeProxy mWithAccessorMap]
     ![mTypeProxy mTypeForEnumeratedElement]
   ] ;
  end method ;

@@ -1469,7 +1469,14 @@ class @sortedListDeclarationAST extends @semanticDeclarationAST {
 
 class @enumDeclarationAST extends @semanticDeclarationAST {
   @lstring mEnumTypeName ;
-  @lstringlist mConstantList ;
+  @enumConstantList mConstantList ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @enumConstantList {
+  @lstring mConstantName ;
+  @lstringlist mAssociatedValueTypeList ;
 }
 
 #---------------------------------------------------------------------------*
