@@ -15,14 +15,25 @@ for () in CONSTANT_LIST do
     % {\n%   
     %} ;\n\n%
   %//---------------------------------------------------------------------------------------------------------------------*\n\n%
-  %void cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName.string%::description (%?^%C_String & ioString,\n%
+    %void cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName.string%::description (%?^%C_String & ioString,\n%
                        !^%const int32_t inIndentation) const {\n%
-  %  ioString << "(\\n" ;\n%
-  for () in mAssociatedValueTypeList do index idx
-    %  mAssociatedValue%![idx string]%.description (ioString, inIndentation) ;\n%
-  end
-  %  ioString << ")" ;\n%
-  %}\n\n%
+    %  ioString << "(\\n" ;\n%
+    for () in mAssociatedValueTypeList do index idx
+      %  mAssociatedValue%![idx string]%.description (ioString, inIndentation) ;\n%
+    end
+    %  ioString << ")" ;\n%
+    %}\n\n%
+    %typeComparisonResult cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName.string%::compare (const cEnumAssociatedValues * inOperand) const {\n%
+    %  const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName.string% * ptr = dynamic_cast<const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName.string% *> (inOperand) ;\n%
+    %  macroValidPointer (ptr) ;\n%
+    %  typeComparisonResult result = kOperandEqual ;\n%
+    for () in mAssociatedValueTypeList do index idx
+      %  if (result == kOperandEqual) {\n%
+      %    result = mAssociatedValue%![idx string]%.objectCompare (ptr->mAssociatedValue%![idx string]%) ;\n%
+      %  }\n%
+    end
+    %  return result ;\n%
+    %}\n\n%
   end
 end
 
@@ -51,17 +62,26 @@ for () in CONSTANT_LIST do
   end
   %) {\n%
   %  GALGAS_%!TYPE_IDENTIFIER% result ;\n%
-  %  result.mEnum = kEnum_%![mConstantName identifierRepresentation]% ;\n%
-  if [mAssociatedValueTypeList length] > 0 then
-    %  cEnumAssociatedValues * ptr = NULL ;\n%
-    %  macroMyNew (ptr, cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName.string% (%
+  if [mAssociatedValueTypeList length] == 0 then
+    %  result.mEnum = kEnum_%![mConstantName identifierRepresentation]% ;\n%
+  else
+    %  if (%
+    for () in mAssociatedValueTypeList
+    do index idx %inAssociatedValue%![idx string]%.isValid ()%
+    between % && %
+    end
+    %) {\n%
+    %    result.mEnum = kEnum_%![mConstantName identifierRepresentation]% ;\n%
+    %    cEnumAssociatedValues * ptr = NULL ;\n%
+    %    macroMyNew (ptr, cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName.string% (%
     for () in mAssociatedValueTypeList
     do index idx %inAssociatedValue%![idx string]
     between %, %
     end
     % COMMA_THERE)) ;\n%
-    %  result.mAssociatedValues.setPointer (ptr) ;\n%
-    %  macroDetachSharedObject (ptr) ;\n%
+    %    result.mAssociatedValues.setPointer (ptr) ;\n%
+    %    macroDetachSharedObject (ptr) ;\n%
+    %  }\n%
   end
   %  return result ;\n%
   %}\n\n%
@@ -112,8 +132,13 @@ typeComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TY
     }else if (mEnum > inOperand.mEnum) {
       result = kFirstOperandGreaterThanSecond ;
     }else{
-      result = kOperandEqual ;
-    }
+%
+if HAS_ASSOCIATED_VALUES then
+%      result = mAssociatedValues.objectCompare (inOperand.mAssociatedValues) ;\n%
+else
+%      result = kOperandEqual ;\n%
+end
+%    }
   }
   return result ;
 }

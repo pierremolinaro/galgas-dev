@@ -76,3 +76,14 @@ void AC_GALGAS_enumAssociatedValues::description (C_String & ioString,
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult AC_GALGAS_enumAssociatedValues::objectCompare (const AC_GALGAS_enumAssociatedValues & inOperand) const {
+  typeComparisonResult result = kOperandEqual ;
+  if (mSharedPtr != inOperand.mSharedPtr) {
+    macroValidPointer (mSharedPtr) ;
+    result = mSharedPtr->compare (inOperand.mSharedPtr) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
