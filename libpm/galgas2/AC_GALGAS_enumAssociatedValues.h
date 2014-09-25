@@ -29,6 +29,8 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 #include "utilities/C_SharedObject.h"
+#include "galgas2/AC_GALGAS_root.h"
+#include "galgas2/typeComparisonResult.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -37,6 +39,9 @@ class cEnumAssociatedValues : public C_SharedObject {
 
   public : virtual void description (class C_String & ioString,
                                      const int32_t inIndentation) const = 0 ;
+  public : virtual typeComparisonResult compare (const cEnumAssociatedValues * inOperand) const = 0 ;
+  
+  public : virtual ~ cEnumAssociatedValues (void) {}
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -58,9 +63,11 @@ class AC_GALGAS_enumAssociatedValues {
   public : virtual ~ AC_GALGAS_enumAssociatedValues (void) ;
 
 //---
-  public : void description (C_String & ioString,
-                             const int32_t inIndentation) const ;
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
 
+
+  public : VIRTUAL_IN_DEBUG typeComparisonResult objectCompare (const AC_GALGAS_enumAssociatedValues & inOperand) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*

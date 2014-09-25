@@ -21,6 +21,7 @@ for () in CONSTANT_LIST do
     %\n%!^% COMMA_LOCATION_ARGS) ;\n\n%
     %  public : virtual void description (%?^%C_String & ioString,\n%
                        !^%const int32_t inIndentation) const ;\n%
+    %  public : virtual typeComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;\n%
     %} ;\n\n%
 %//---------------------------------------------------------------------------------------------------------------------*\n\n%
   end
