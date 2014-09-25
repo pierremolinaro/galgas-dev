@@ -28,8 +28,9 @@ class GALGAS_bool : public AC_GALGAS_root {
 //--------------------------------- Default GALGAS constructor
   public : static GALGAS_bool constructor_default (LOCATION_ARGS) ;
 
-//--------------------------------- Native constructor
-  public : GALGAS_bool (const bool inValue) ;
+//--------------------------------- Native constructors
+  public : GALGAS_bool (const bool inValue) ; // Is built
+  public : GALGAS_bool (const bool inBuilt, const bool inValue) ;
 
 //--------------------------------- Constructor for comparison result
   public : GALGAS_bool (const typeComparisonKind inComparisonKind,

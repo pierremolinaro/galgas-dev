@@ -76,7 +76,15 @@ for () in CONSTANT_LIST
 end%
 } ;
 
-//---------------------------------------------------------------------------------------------------------------------*
+%
+for () in CONSTANT_LIST do
+%//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::reader_is%![[mConstantName stringByCapitalizingFirstCharacter] identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_%![mConstantName identifierRepresentation]% == mEnum) ;
+}\n\n%
+end
+%//---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
 %                                       !^%const int32_t %

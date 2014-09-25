@@ -9785,6 +9785,18 @@ static const char * gEnumNameArrayFor_lexicalArgumentModeAST [3] = {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_bool GALGAS_lexicalArgumentModeAST::reader_isLexicalInputMode (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_lexicalInputMode == mEnum) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_lexicalArgumentModeAST::reader_isLexicalInputOutputMode (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_lexicalInputOutputMode == mEnum) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void GALGAS_lexicalArgumentModeAST::description (C_String & ioString,
                                                  const int32_t /* inIndentation */) const {
   ioString << "<enum @lexicalArgumentModeAST: " << gEnumNameArrayFor_lexicalArgumentModeAST [mEnum] ;
@@ -12954,6 +12966,48 @@ static const char * gEnumNameArrayFor_lexicalTypeEnum [8] = {
   "lexicalType_sint64",
   "lexicalType_double"
 } ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_lexicalTypeEnum::reader_isLexicalType_5F_string (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_lexicalType_5F_string == mEnum) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_lexicalTypeEnum::reader_isLexicalType_5F_char (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_lexicalType_5F_char == mEnum) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_lexicalTypeEnum::reader_isLexicalType_5F_uint (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_lexicalType_5F_uint == mEnum) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_lexicalTypeEnum::reader_isLexicalType_5F_uint_36__34_ (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_lexicalType_5F_uint_36__34_ == mEnum) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_lexicalTypeEnum::reader_isLexicalType_5F_sint (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_lexicalType_5F_sint == mEnum) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_lexicalTypeEnum::reader_isLexicalType_5F_sint_36__34_ (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_lexicalType_5F_sint_36__34_ == mEnum) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_lexicalTypeEnum::reader_isLexicalType_5F_double (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_lexicalType_5F_double == mEnum) ;
+}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -19781,6 +19835,24 @@ static const char * gEnumNameArrayFor_optionDefaultValueEnumAST [4] = {
   "unsignedDefaultValue",
   "stringDefaultValue"
 } ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_optionDefaultValueEnumAST::reader_isNoDefaultValue (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_noDefaultValue == mEnum) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_optionDefaultValueEnumAST::reader_isUnsignedDefaultValue (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_unsignedDefaultValue == mEnum) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_optionDefaultValueEnumAST::reader_isStringDefaultValue (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_stringDefaultValue == mEnum) ;
+}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -28210,6 +28282,24 @@ static const char * gEnumNameArrayFor_dynamicTypeComparisonKind [4] = {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_bool GALGAS_dynamicTypeComparisonKind::reader_isEqual (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_equal == mEnum) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_dynamicTypeComparisonKind::reader_isInherited (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_inherited == mEnum) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_dynamicTypeComparisonKind::reader_isStrictlyInherited (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_strictlyInherited == mEnum) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void GALGAS_dynamicTypeComparisonKind::description (C_String & ioString,
                                                     const int32_t /* inIndentation */) const {
   ioString << "<enum @dynamicTypeComparisonKind: " << gEnumNameArrayFor_dynamicTypeComparisonKind [mEnum] ;
@@ -28322,6 +28412,30 @@ static const char * gEnumNameArrayFor_formalArgumentPassingModeAST [5] = {
   "argumentInOut",
   "argumentConstantIn"
 } ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_formalArgumentPassingModeAST::reader_isArgumentIn (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_argumentIn == mEnum) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_formalArgumentPassingModeAST::reader_isArgumentOut (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_argumentOut == mEnum) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_formalArgumentPassingModeAST::reader_isArgumentInOut (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_argumentInOut == mEnum) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_formalArgumentPassingModeAST::reader_isArgumentConstantIn (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_argumentConstantIn == mEnum) ;
+}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -34160,6 +34274,24 @@ static const char * gEnumNameArrayFor_mapAutomatonMessageKind [4] = {
   "warningMessage",
   "errorMessage"
 } ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_mapAutomatonMessageKind::reader_isNoMessage (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_noMessage == mEnum) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_mapAutomatonMessageKind::reader_isWarningMessage (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_warningMessage == mEnum) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_mapAutomatonMessageKind::reader_isErrorMessage (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_errorMessage == mEnum) ;
+}
 
 //---------------------------------------------------------------------------------------------------------------------*
 
