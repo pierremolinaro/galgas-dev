@@ -67,14 +67,12 @@ AC_GALGAS_enumAssociatedValues::~ AC_GALGAS_enumAssociatedValues (void) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-/*AC_GALGAS_root * AC_GALGAS_enumAssociatedValues::clonedObject (void) const {
-  return NULL ;
-}*/
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-/*const C_galgas_type_descriptor * AC_GALGAS_enumAssociatedValues::staticTypeDescriptor (void) const {
-  return NULL ;
-}*/
+void AC_GALGAS_enumAssociatedValues::description (C_String & ioString,
+                                                  const int32_t inIndentation) const {
+  if (NULL != mSharedPtr) {
+    macroValidSharedObject (mSharedPtr, cEnumAssociatedValues) ;
+    mSharedPtr->description (ioString, inIndentation) ;
+  }
+}
 
 //---------------------------------------------------------------------------------------------------------------------*

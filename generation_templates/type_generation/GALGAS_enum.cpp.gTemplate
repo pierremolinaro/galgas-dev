@@ -14,14 +14,26 @@ for () in CONSTANT_LIST do
     end
     % {\n%   
     %} ;\n\n%
+  %//---------------------------------------------------------------------------------------------------------------------*\n\n%
+  %void cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName.string%::description (%?^%C_String & ioString,\n%
+                       !^%const int32_t inIndentation) const {\n%
+  %  ioString << "(\\n" ;\n%
+  for () in mAssociatedValueTypeList do index idx
+    %  mAssociatedValue%![idx string]%.description (ioString, inIndentation) ;\n%
+  end
+  %  ioString << ")" ;\n%
+  %}\n\n%
   end
 end
 
 %//---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
-mAssociatedValues (),
-mEnum (kNotBuilt) {
+%
+if HAS_ASSOCIATED_VALUES then
+  %mAssociatedValues (),\n%
+end
+%mEnum (kNotBuilt) {
 }
 
 %
@@ -67,8 +79,19 @@ end%
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
-%                                       !^%const int32_t /* inIndentation */) const {
-  ioString << "<enum @%!TYPE_NAME%: " << gEnumNameArrayFor_%!TYPE_IDENTIFIER% [mEnum] << ">" ;
+%                                       !^%const int32_t %
+if HAS_ASSOCIATED_VALUES then
+  %inIndentation%
+else
+  %/* inIndentation */%
+end
+%) const {
+  ioString << "<enum @%!TYPE_NAME%: " << gEnumNameArrayFor_%!TYPE_IDENTIFIER% [mEnum] ;
+%
+if HAS_ASSOCIATED_VALUES then
+  %  mAssociatedValues.description (ioString, inIndentation) ;\n%
+end
+%  ioString << ">" ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

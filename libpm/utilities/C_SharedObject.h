@@ -4,7 +4,7 @@
 //                                                                                                                     *
 //  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2009, ..., 2010 Pierre Molinaro.                                                                     *
+//  Copyright (C) 2009, ..., 2014 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -23,12 +23,13 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-#ifndef C_OBJECT_CLASS_DEFINED
-#define C_OBJECT_CLASS_DEFINED
+#ifndef C_SHARED_OBJECT_CLASS_DEFINED
+#define C_SHARED_OBJECT_CLASS_DEFINED
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 #include "utilities/MF_Assert.h"
+#include "utilities/MF_MemoryControl.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 

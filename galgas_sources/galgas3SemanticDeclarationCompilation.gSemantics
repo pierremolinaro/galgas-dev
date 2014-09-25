@@ -448,14 +448,10 @@ local routine generateManyHeaders
         const headerFileName := [mDeclaration implementationCppFileName] + if [mDeclaration headerKind] == [@headerKind twoHeaders] then "-1" else "" end ;
         headerInclusionList1 += !headerFileName ;
         ioAllProductFileSet += !headerFileName . ".h" ;
-        [@string generateFileWithPattern
+        [@string generateFile
           !inProductDirectory
           !headerFileName . ".h"
-          !"//"
-          !"\n\n" # Defaut user zone1
           !headerString
-          !"\n\n" # Defaut user zone2
-          !"\n"
         ] ;
       end if ;
     #--- Header 2
@@ -471,14 +467,10 @@ local routine generateManyHeaders
         headerString .= "#endif\n\n" ;
         headerInclusionList2 += ![mDeclaration implementationCppFileName] ;
         ioAllProductFileSet += ![mDeclaration implementationCppFileName] . ".h" ;
-        [@string generateFileWithPattern
+        [@string generateFile
           !inProductDirectory
           ![mDeclaration implementationCppFileName] . ".h"
-          !"//"
-          !"\n\n" # Defaut user zone1
           !headerString
-          !"\n\n" # Defaut user zone2
-          !"\n"
         ] ;
       end if  ;
     end if ;
@@ -489,14 +481,10 @@ local routine generateManyHeaders
     !headerInclusionList1 + headerInclusionList2
   ] ;
   ioAllProductFileSet += !"all-declarations.h" ;
-  [@string generateFileWithPattern
+  [@string generateFile
     !inProductDirectory
     !"all-declarations.h"
-    !"//"
-    !"\n\n" # Defaut user zone1
-    !headerString
-    !"\n\n" # Defaut user zone2
-    !"#endif\n"
+    !headerString + "#endif\n"
   ] ;
 end routine ;
 
@@ -528,14 +516,10 @@ local routine generateOneBigHeader
     end if ;
   end foreach ;
   ioAllProductFileSet += !"all-declarations.h" ;
-  [@string generateFileWithPattern
+  [@string generateFile
     !inProductDirectory
     !"all-declarations.h"
-    !"//"
-    !"\n\n" # Defaut user zone1
-    !headerString
-    !"\n\n" # Defaut user zone2
-    !"#endif\n"
+    !headerString + "#endif\n"
   ] ;
 end routine ;
 
@@ -646,14 +630,10 @@ local routine generateFewHeaders
         !headerFileName
         !if fileIdx == 0 then {} else {!"all-declarations-" + (fileIdx-1)} end
       ] ;
-      [@string generateFileWithPattern
+      [@string generateFile
         !inProductDirectory
         !headerFileName + ".h"
-        !"//"
-        !"\n\n" # Defaut user zone1
-        !headerString + implementationString
-        !"\n\n" # Defaut user zone2
-        !"#endif\n"
+        !headerString + implementationString + "#endif\n"
       ] ;
       ioAllProductFileSet += !headerFileName + ".h" ;
       n := 0 ;
@@ -667,28 +647,20 @@ local routine generateFewHeaders
     !headerFileName
     !{!"all-declarations-" + (fileIdx-1)}
   ] ;
-  [@string generateFileWithPattern
+  [@string generateFile
     !inProductDirectory
     !headerFileName + ".h"
-    !"//"
-    !"\n\n" # Defaut user zone1
-    !headerString + implementationString
-    !"\n\n" # Defaut user zone2
-    !"#endif\n"
+    !headerString + implementationString + "#endif\n"
   ] ;
   ioAllProductFileSet += !headerFileName + ".h" ;
 #---
-  [@string generateFileWithPattern
+  [@string generateFile
     !inProductDirectory
     !"all-declarations.h"
-    !"//"
-    !"\n\n" # Defaut user zone1
     ![filewrapper semanticFileGenerationTemplate.semanticFileHeader
        !"all-declarations"
        !{!"all-declarations-" + fileIdx}
-     ]
-    !"\n\n" # Defaut user zone2
-    !"#endif\n"
+     ] + "#endif\n"
   ] ;
   ioAllProductFileSet += !"all-declarations.h" ;
 end routine ;
@@ -734,14 +706,10 @@ local routine generateFewImplementationFiles
         const fileName := "all-declarations-" . fileIdx . ".cpp" ;
         ioToolProductFileList := [@stringlist listWithValue !fileName] + ioToolProductFileList ;
         ioAllProductFileSet += !fileName ;
-        [@string generateFileWithPattern
+        [@string generateFile
           !inProductDirectory
           !fileName
-          !"//"
-          !"\n\n" # Defaut user zone1
           !header + implementationString
-          !"\n\n" # Defaut user zone2
-          !"\n"
         ] ;
         n := 0 ;
         fileIdx ++ ;
@@ -770,14 +738,10 @@ local routine generateFewImplementationFiles
     const fileName := "all-declarations-" . fileIdx . ".cpp" ;
     ioToolProductFileList := [@stringlist listWithValue !fileName] + ioToolProductFileList ;
     ioAllProductFileSet += !fileName ;
-    [@string generateFileWithPattern
+    [@string generateFile
       !inProductDirectory
       !fileName
-      !"//"
-      !"\n\n" # Defaut user zone1
       !header + implementationString
-      !"\n\n" # Defaut user zone2
-      !"\n"
     ] ;
   end if ;
 end routine ;
@@ -815,14 +779,10 @@ local routine generateManyImplementationFiles
       ] ;
       implementationString .= [mDeclaration appendTypeGenericImplementation] ;
       ioAllProductFileSet += ![mDeclaration implementationCppFileName] . ".cpp" ;
-      [@string generateFileWithPattern
+      [@string generateFile
         !inProductDirectory
         ![mDeclaration implementationCppFileName] . ".cpp"
-        !"//"
-        !"\n\n" # Defaut user zone1
         !header + implementationString
-        !"\n\n" # Defaut user zone2
-        !"\n"
       ] ;
       ioToolProductFileList += ![mDeclaration implementationCppFileName] . ".cpp" ;
     end if ;

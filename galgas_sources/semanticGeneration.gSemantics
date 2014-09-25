@@ -696,12 +696,14 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@enumConstantList CONSTANT_LIST
+    ?@bool HAS_ASSOCIATED_VALUES
   ;
 
   template enumTypeSpecificImplementation "GALGAS_enum.cpp.gTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@enumConstantList CONSTANT_LIST
+    ?@bool HAS_ASSOCIATED_VALUES
   ;
 
 #---------- MAP PROXY
@@ -1482,10 +1484,15 @@ override method @enumTypeForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
   !@string outHeader
 :
+  @bool hasAssociatedValues := false ;
+  for () in mConstantList while not hasAssociatedValues do
+    hasAssociatedValues := [mAssociatedValueTypeList length] > 0 ;
+  end for ;
   outHeader := [filewrapper typeGenerationTemplate.enumTypeHeader1
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
     !mConstantList
+    !hasAssociatedValues
   ] ;
   outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     ![mTypeProxy key]
@@ -1509,11 +1516,16 @@ override method @enumTypeForGeneration appendSpecificImplementation
   ?!@stringset ioInclusionSet
   !@string outImplementation
 :
+  @bool hasAssociatedValues := false ;
+  for () in mConstantList while not hasAssociatedValues do
+    hasAssociatedValues := [mAssociatedValueTypeList length] > 0 ;
+  end for ;
   [mTypeProxy addHeaderFileName !?ioInclusionSet] ;
   outImplementation := [filewrapper typeGenerationTemplate.enumTypeSpecificImplementation
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
     !mConstantList
+    !hasAssociatedValues
   ] ;
  end method ;
 
