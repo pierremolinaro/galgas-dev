@@ -349,14 +349,6 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-map @constantIndexMap {
-  @uint mIndex ;
-  insert insertKey error message "the '%K' constant is already declared" ;
-  search searchKey error message "the '%K' constant is not declared" ;
-}
-
-#---------------------------------------------------------------------------*
-
 override method @enumDeclarationAST semanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
@@ -367,7 +359,12 @@ override method @enumDeclarationAST semanticAnalysis
   @constantIndexMap constantMap [emptyMap] ;
   foreach mConstantList do
     constantList += !mConstantName->string ;
-    [!?constantMap insertKey !mConstantName ![constantMap count]] ;
+    @unifiedTypeMapProxyList associatedTypeList := {} ;
+    for () in mAssociatedValueTypeList do
+      const associatedTypeProxy := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mValue] ;
+      associatedTypeList += !associatedTypeProxy ;
+    end for ;
+    [!?constantMap insertKey !mConstantName ![constantMap count] !associatedTypeList] ;
   end foreach ;
 #---
   ioSemanticDeclarationListForGeneration +=

@@ -296,6 +296,15 @@ enum @headerKind {
 }
 
 #---------------------------------------------------------------------------*
+
+map @constantIndexMap {
+  @uint mIndex ;
+  @unifiedTypeMapProxyList mAssociatedTypeList ;
+  insert insertKey error message "the '%K' constant is already declared" ;
+  search searchKey error message "the '%K' constant is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 #  U N I F I E D    T Y P E    M A P                                        *
 #                                                                           *
@@ -319,7 +328,7 @@ uniquemap @unifiedTypeMap @unifiedTypeMapProxy {
   @stringlist mEnumeratorVariants ; # Empty List if cannot be enumerated; first item is default item
   @uint mHandledOperatorFlags ;
   @functionSignature mAddAssignOperatorArguments ; # Empty list if += operator is not supported
-  @stringset mEnumConstantSet ;
+  @constantIndexMap mEnumConstantMap ;
   @enumConstantList mEnumConstantList ;
   @mapSearchMethodListAST mMapSearchMethodList ; # For a map, the list of search methods
   @mapSearchMethodListAST mMapProxySearchConstructorList ; # For a map proxy, the list of search methods of the associated map

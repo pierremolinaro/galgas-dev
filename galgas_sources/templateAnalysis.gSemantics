@@ -1412,13 +1412,13 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
   if [[switchExpression mType] mTypeKindEnum] != [@typeKindEnum enumType] then
     error [switchExpression mLocation] : "'switch' expression type should be an enumeration (it is a " . [[[switchExpression mType] mTypeKindEnum] kind] . " type)" ;
   end if ;
-  const @stringset enumConstantSet := [[switchExpression mType] mEnumConstantSet] ;
+  const enumConstantMap := [[switchExpression mType] mEnumConstantMap] ;
 #---
   @templateInstructionSwitchBranchListForGeneration templateInstructionSwitchBranchList [emptyList] ;
   @stringset namedConstantSet [emptySet] ;
   foreach mTemplateInstructionSwitchBranchList do
     foreach mConstantList do
-      if not [enumConstantSet hasKey ![mValue string]] then
+      if not [enumConstantMap hasKey ![mValue string]] then
         error mValue : "the '" . mValue . "' is not a contant of '@" . [[switchExpression mType] key] . "' enumeration type" ;
       end if ;
       if [namedConstantSet hasKey ![mValue string]] then
@@ -1431,7 +1431,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
     templateInstructionSwitchBranchList += !mConstantList !instructionList ;
   end foreach ;
 #--- Check every constant is named
-  @stringset missingConstants := enumConstantSet - namedConstantSet ;
+  @stringset missingConstants := [enumConstantMap keySet] - namedConstantSet ;
   if [missingConstants count] > 0 then
     @string m := "all constants should be named in a switch instruction; the following constants are missing:" ;
     foreach missingConstants do

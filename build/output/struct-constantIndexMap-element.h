@@ -7,6 +7,7 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+#include "list-unifiedTypeMapProxyList.h"
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                         @constantIndexMap_2D_element struct                                         *
@@ -17,6 +18,7 @@ class GALGAS_constantIndexMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
   public : GALGAS_lstring mAttribute_lkey ;
   public : GALGAS_uint mAttribute_mIndex ;
+  public : GALGAS_unifiedTypeMapProxyList mAttribute_mAssociatedTypeList ;
 
 
 //--------------------------------- Accessors
@@ -34,7 +36,8 @@ class GALGAS_constantIndexMap_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Native constructor
   public : GALGAS_constantIndexMap_2D_element (const GALGAS_lstring & in_lkey,
-                                               const GALGAS_uint & in_mIndex) ;
+                                               const GALGAS_uint & in_mIndex,
+                                               const GALGAS_unifiedTypeMapProxyList & in_mAssociatedTypeList) ;
 
 //-- Start of generic part --*
 
@@ -48,7 +51,8 @@ class GALGAS_constantIndexMap_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- GALGAS constructors
   public : static GALGAS_constantIndexMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                      const class GALGAS_uint & inOperand1
+                                                                      const class GALGAS_uint & inOperand1,
+                                                                      const class GALGAS_unifiedTypeMapProxyList & inOperand2
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of reader 'description'
@@ -64,6 +68,8 @@ class GALGAS_constantIndexMap_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Getters
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_lkey (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapProxyList reader_mAssociatedTypeList (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_uint reader_mIndex (LOCATION_ARGS) const ;
 

@@ -678,6 +678,10 @@ class @foreachInstructionAST extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+#! for, foreach
+
+#---------------------------------------------------------------------------*
+
 abstract class @abstractEnumeratedCollectionAST {
 }
 
@@ -1067,8 +1071,13 @@ class @readWriteAccessWithInstructionAST extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+#! switch
+
+#---------------------------------------------------------------------------*
+
 list @switchBranchesAST {
   @lstringlist mSwitchConstantList ;
+  @foreachInstructionEnumeratedObjectElementListAST mAssociatedValuesExtraction ;
   @semanticInstructionListAST mInstructions ;
   @location mEndOfBranch ;
 }
@@ -1465,6 +1474,10 @@ class @sortedListDeclarationAST extends @semanticDeclarationAST {
 #                                                                           *
 #    E N U M    D E C L A R A T I O N                                       *
 #                                                                           *
+#---------------------------------------------------------------------------*
+
+#! enum
+
 #---------------------------------------------------------------------------*
 
 class @enumDeclarationAST extends @semanticDeclarationAST {
