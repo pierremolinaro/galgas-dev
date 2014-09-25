@@ -17,11 +17,13 @@
 #include "class-actualParameterAST.h"
 #include "class-semanticDeclarationAST.h"
 #include "class-semanticDeclarationForGeneration.h"
+#include "class-semanticExpressionAST.h"
 #include "class-semanticExpressionForGeneration.h"
 #include "class-semanticInstructionAST.h"
 #include "class-semanticInstructionForGeneration.h"
 #include "class-syntaxInstructionAST.h"
 #include "enum-formalArgumentPassingModeAST.h"
+#include "enum-headerKind.h"
 #include "enum-lexicalTypeEnum.h"
 #include "func-getPBXFileReferenceKey.h"
 #include "getter-formalArgumentPassingModeAST-correspondingEffectiveParameterString.h"
@@ -29,6 +31,7 @@
 #include "getter-location-sourceFile.h"
 #include "getter-semanticDeclarationForGeneration-appendPrimitiveTypeDeclaration.h"
 #include "getter-semanticDeclarationForGeneration-appendTypeGenericImplementation.h"
+#include "getter-semanticDeclarationForGeneration-headerKind.h"
 #include "getter-semanticInstructionForGeneration-compareSyntaxInstruction.h"
 #include "grammar-galgas3Grammar.h"
 #include "grammar-galgas3ProjectGrammar.h"
@@ -72,6 +75,7 @@
 #include "method-semanticDeclarationForGeneration-appendDeclaration1.h"
 #include "method-semanticDeclarationForGeneration-appendDeclaration2.h"
 #include "method-semanticDeclarationForGeneration-appendSpecificImplementation.h"
+#include "method-semanticExpressionAST-analyzeSemanticExpression.h"
 #include "method-semanticInstructionAST-analyzeSemanticInstruction.h"
 #include "method-semanticInstructionForGeneration-appendSyntaxSignature.h"
 #include "method-semanticInstructionForGeneration-generateInstruction.h"
@@ -100,9 +104,7 @@
 #include "struct-descendantClassListMap-element.h"
 #include "struct-filewrapperTemplateListForGeneration-element.h"
 #include "struct-forInstructionEnumeratedObjectListAST-element.h"
-#include "struct-galgas3GrammarComponentListAST-element.h"
 #include "struct-galgas3LexiqueComponentListAST-element.h"
-#include "struct-galgas3SyntaxComponentListAST-element.h"
 #include "struct-genericCategoryMethodListMap-element.h"
 #include "struct-grammarComponentGenerationList-element.h"
 #include "struct-guiCommandLineOptionList-element.h"
@@ -154,6 +156,130 @@
 #include "struct-tokenSortedlist-element.h"
 #include "uniquemap-variableMap.h"
 
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                       Abstract category reader '@semanticDeclarationForGeneration headerKind'                       *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static TC_UniqueArray <categoryReaderSignature_semanticDeclarationForGeneration_headerKind> gCategoryReaderTable_semanticDeclarationForGeneration_headerKind ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void enterCategoryReader_headerKind (const int32_t inClassIndex,
+                                     categoryReaderSignature_semanticDeclarationForGeneration_headerKind inReader) {
+  gCategoryReaderTable_semanticDeclarationForGeneration_headerKind.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void freeCategoryReader_semanticDeclarationForGeneration_headerKind (void) {
+  gCategoryReaderTable_semanticDeclarationForGeneration_headerKind.free () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gReader_semanticDeclarationForGeneration_headerKind (NULL,
+                                                                        freeCategoryReader_semanticDeclarationForGeneration_headerKind) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_headerKind callCategoryReader_headerKind (const cPtr_semanticDeclarationForGeneration * inObject,
+                                                 C_Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) {
+  GALGAS_headerKind result ;
+//--- Find Reader
+  if (NULL != inObject) {
+    macroValidSharedObject (inObject, cPtr_semanticDeclarationForGeneration) ;
+    const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
+    const int32_t classIndex = info->mSlotID ;
+    categoryReaderSignature_semanticDeclarationForGeneration_headerKind f = NULL ;
+    if (classIndex < gCategoryReaderTable_semanticDeclarationForGeneration_headerKind.count ()) {
+      f = gCategoryReaderTable_semanticDeclarationForGeneration_headerKind (classIndex COMMA_HERE) ;
+    }
+    if (NULL == f) {
+       const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
+       while ((NULL == f) && (NULL != p)) {
+         if (p->mSlotID < gCategoryReaderTable_semanticDeclarationForGeneration_headerKind.count ()) {
+           f = gCategoryReaderTable_semanticDeclarationForGeneration_headerKind (p->mSlotID COMMA_HERE) ;
+         }
+         p = p->mSuperclassDescriptor ;
+       }
+       gCategoryReaderTable_semanticDeclarationForGeneration_headerKind.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+    }
+    if (NULL == f) {
+      fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
+    }else{
+      result = f (inObject, inCompiler COMMA_THERE) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                     Abstract category method '@semanticExpressionAST analyzeSemanticExpression'                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static TC_UniqueArray <categoryMethodSignature_semanticExpressionAST_analyzeSemanticExpression> gCategoryMethodTable_semanticExpressionAST_analyzeSemanticExpression ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void enterCategoryMethod_analyzeSemanticExpression (const int32_t inClassIndex,
+                                                    categoryMethodSignature_semanticExpressionAST_analyzeSemanticExpression inMethod) {
+  gCategoryMethodTable_semanticExpressionAST_analyzeSemanticExpression.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void freeCategoryMethod_semanticExpressionAST_analyzeSemanticExpression (void) {
+  gCategoryMethodTable_semanticExpressionAST_analyzeSemanticExpression.free () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gMethod_semanticExpressionAST_analyzeSemanticExpression (NULL,
+                                                                            freeCategoryMethod_semanticExpressionAST_analyzeSemanticExpression) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void callCategoryMethod_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
+                                                   const GALGAS_unifiedTypeMapProxy constin_inType,
+                                                   const GALGAS_analysisContext constin_inAnalysisContext,
+                                                   GALGAS_variableMap & io_ioVariableMap,
+                                                   GALGAS_semanticExpressionForGeneration & out_outExpression,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) {
+//--- Drop output arguments
+  out_outExpression.drop () ;
+//--- Find method
+  if (NULL != inObject) {
+    macroValidSharedObject (inObject, cPtr_semanticExpressionAST) ;
+    const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
+    const int32_t classIndex = info->mSlotID ;
+    categoryMethodSignature_semanticExpressionAST_analyzeSemanticExpression f = NULL ;
+    if (classIndex < gCategoryMethodTable_semanticExpressionAST_analyzeSemanticExpression.count ()) {
+      f = gCategoryMethodTable_semanticExpressionAST_analyzeSemanticExpression (classIndex COMMA_HERE) ;
+    }
+    if (NULL == f) {
+       const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
+       while ((NULL == f) && (NULL != p)) {
+         if (p->mSlotID < gCategoryMethodTable_semanticExpressionAST_analyzeSemanticExpression.count ()) {
+           f = gCategoryMethodTable_semanticExpressionAST_analyzeSemanticExpression (p->mSlotID COMMA_HERE) ;
+         }
+         p = p->mSuperclassDescriptor ;
+       }
+       gCategoryMethodTable_semanticExpressionAST_analyzeSemanticExpression.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+    }
+    if (NULL == f) {
+      fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
+    }else{
+      f (inObject, constin_inType, constin_inAnalysisContext, io_ioVariableMap, out_outExpression, inCompiler COMMA_THERE) ;
+    }
+  }
+}
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -5579,7 +5705,7 @@ GALGAS_switchBranchesAST_2D_element::~ GALGAS_switchBranchesAST_2D_element (void
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_switchBranchesAST_2D_element::GALGAS_switchBranchesAST_2D_element (const GALGAS_lstringlist & inOperand0,
-                                                                          const GALGAS_foreachInstructionEnumeratedObjectElementListAST & inOperand1,
+                                                                          const GALGAS__32_lstringlist & inOperand1,
                                                                           const GALGAS_semanticInstructionListAST & inOperand2,
                                                                           const GALGAS_location & inOperand3) :
 mAttribute_mSwitchConstantList (inOperand0),
@@ -5592,7 +5718,7 @@ mAttribute_mEndOfBranch (inOperand3) {
 
 GALGAS_switchBranchesAST_2D_element GALGAS_switchBranchesAST_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
   return GALGAS_switchBranchesAST_2D_element (GALGAS_lstringlist::constructor_emptyList (HERE),
-                                              GALGAS_foreachInstructionEnumeratedObjectElementListAST::constructor_emptyList (HERE),
+                                              GALGAS__32_lstringlist::constructor_emptyList (HERE),
                                               GALGAS_semanticInstructionListAST::constructor_emptyList (HERE),
                                               GALGAS_location::constructor_nowhere (HERE)) ;
 }
@@ -5600,7 +5726,7 @@ GALGAS_switchBranchesAST_2D_element GALGAS_switchBranchesAST_2D_element::constru
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_switchBranchesAST_2D_element GALGAS_switchBranchesAST_2D_element::constructor_new (const GALGAS_lstringlist & inOperand0,
-                                                                                          const GALGAS_foreachInstructionEnumeratedObjectElementListAST & inOperand1,
+                                                                                          const GALGAS__32_lstringlist & inOperand1,
                                                                                           const GALGAS_semanticInstructionListAST & inOperand2,
                                                                                           const GALGAS_location & inOperand3 
                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
@@ -5672,7 +5798,7 @@ GALGAS_lstringlist GALGAS_switchBranchesAST_2D_element::reader_mSwitchConstantLi
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_foreachInstructionEnumeratedObjectElementListAST GALGAS_switchBranchesAST_2D_element::reader_mAssociatedValuesExtraction (UNUSED_LOCATION_ARGS) const {
+GALGAS__32_lstringlist GALGAS_switchBranchesAST_2D_element::reader_mAssociatedValuesExtraction (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mAssociatedValuesExtraction ;
 }
 
@@ -7195,6 +7321,8 @@ GALGAS_terminalCheckAssignementList_2D_element GALGAS_terminalCheckAssignementLi
 
 GALGAS_switchBranchesForGeneration_2D_element::GALGAS_switchBranchesForGeneration_2D_element (void) :
 mAttribute_mSwitchConstantList (),
+mAttribute_mExtractedAssociatedValuesForGeneration (),
+mAttribute_mLocationIndex (),
 mAttribute_mInstructions () {
 }
 
@@ -7206,26 +7334,34 @@ GALGAS_switchBranchesForGeneration_2D_element::~ GALGAS_switchBranchesForGenerat
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_switchBranchesForGeneration_2D_element::GALGAS_switchBranchesForGeneration_2D_element (const GALGAS_lstringlist & inOperand0,
-                                                                                              const GALGAS_semanticInstructionListForGeneration & inOperand1) :
+                                                                                              const GALGAS_extractedAssociatedValuesForGeneration & inOperand1,
+                                                                                              const GALGAS_uint & inOperand2,
+                                                                                              const GALGAS_semanticInstructionListForGeneration & inOperand3) :
 mAttribute_mSwitchConstantList (inOperand0),
-mAttribute_mInstructions (inOperand1) {
+mAttribute_mExtractedAssociatedValuesForGeneration (inOperand1),
+mAttribute_mLocationIndex (inOperand2),
+mAttribute_mInstructions (inOperand3) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_switchBranchesForGeneration_2D_element GALGAS_switchBranchesForGeneration_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
   return GALGAS_switchBranchesForGeneration_2D_element (GALGAS_lstringlist::constructor_emptyList (HERE),
+                                                        GALGAS_extractedAssociatedValuesForGeneration::constructor_emptyList (HERE),
+                                                        GALGAS_uint::constructor_default (HERE),
                                                         GALGAS_semanticInstructionListForGeneration::constructor_emptyList (HERE)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_switchBranchesForGeneration_2D_element GALGAS_switchBranchesForGeneration_2D_element::constructor_new (const GALGAS_lstringlist & inOperand0,
-                                                                                                              const GALGAS_semanticInstructionListForGeneration & inOperand1 
+                                                                                                              const GALGAS_extractedAssociatedValuesForGeneration & inOperand1,
+                                                                                                              const GALGAS_uint & inOperand2,
+                                                                                                              const GALGAS_semanticInstructionListForGeneration & inOperand3 
                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_switchBranchesForGeneration_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_switchBranchesForGeneration_2D_element (inOperand0, inOperand1) ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
+    result = GALGAS_switchBranchesForGeneration_2D_element (inOperand0, inOperand1, inOperand2, inOperand3) ;
   }
   return result ;
 }
@@ -7238,6 +7374,12 @@ typeComparisonResult GALGAS_switchBranchesForGeneration_2D_element::objectCompar
     result = mAttribute_mSwitchConstantList.objectCompare (inOperand.mAttribute_mSwitchConstantList) ;
   }
   if (result == kOperandEqual) {
+    result = mAttribute_mExtractedAssociatedValuesForGeneration.objectCompare (inOperand.mAttribute_mExtractedAssociatedValuesForGeneration) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mLocationIndex.objectCompare (inOperand.mAttribute_mLocationIndex) ;
+  }
+  if (result == kOperandEqual) {
     result = mAttribute_mInstructions.objectCompare (inOperand.mAttribute_mInstructions) ;
   }
   return result ;
@@ -7246,13 +7388,15 @@ typeComparisonResult GALGAS_switchBranchesForGeneration_2D_element::objectCompar
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool GALGAS_switchBranchesForGeneration_2D_element::isValid (void) const {
-  return mAttribute_mSwitchConstantList.isValid () && mAttribute_mInstructions.isValid () ;
+  return mAttribute_mSwitchConstantList.isValid () && mAttribute_mExtractedAssociatedValuesForGeneration.isValid () && mAttribute_mLocationIndex.isValid () && mAttribute_mInstructions.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_switchBranchesForGeneration_2D_element::drop (void) {
   mAttribute_mSwitchConstantList.drop () ;
+  mAttribute_mExtractedAssociatedValuesForGeneration.drop () ;
+  mAttribute_mLocationIndex.drop () ;
   mAttribute_mInstructions.drop () ;
 }
 
@@ -7266,6 +7410,10 @@ void GALGAS_switchBranchesForGeneration_2D_element::description (C_String & ioSt
   }else{
     mAttribute_mSwitchConstantList.description (ioString, inIndentation+1) ;
     ioString << ", " ;
+    mAttribute_mExtractedAssociatedValuesForGeneration.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mLocationIndex.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
     mAttribute_mInstructions.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
@@ -7275,6 +7423,18 @@ void GALGAS_switchBranchesForGeneration_2D_element::description (C_String & ioSt
 
 GALGAS_lstringlist GALGAS_switchBranchesForGeneration_2D_element::reader_mSwitchConstantList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSwitchConstantList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_extractedAssociatedValuesForGeneration GALGAS_switchBranchesForGeneration_2D_element::reader_mExtractedAssociatedValuesForGeneration (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mExtractedAssociatedValuesForGeneration ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uint GALGAS_switchBranchesForGeneration_2D_element::reader_mLocationIndex (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mLocationIndex ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12628,467 +12788,6 @@ GALGAS_galgas_33_LexiqueComponentListAST_2D_element GALGAS_galgas_33_LexiqueComp
       result = *p ;
     }else{
       inCompiler->castError ("galgas3LexiqueComponentListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_galgas_33_GrammarComponentListAST_2D_element::GALGAS_galgas_33_GrammarComponentListAST_2D_element (void) :
-mAttribute_mHasIndexing (),
-mAttribute_mGrammarComponentName (),
-mAttribute_mGrammarClass (),
-mAttribute_mSyntaxComponents (),
-mAttribute_mStartSymbolName (),
-mAttribute_mStartSymbolLabelList (),
-mAttribute_mUnusedNonterminalList (),
-mAttribute_mHasTranslateFeature () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_galgas_33_GrammarComponentListAST_2D_element::~ GALGAS_galgas_33_GrammarComponentListAST_2D_element (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_galgas_33_GrammarComponentListAST_2D_element::GALGAS_galgas_33_GrammarComponentListAST_2D_element (const GALGAS_lbool & inOperand0,
-                                                                                                          const GALGAS_lstring & inOperand1,
-                                                                                                          const GALGAS_lstring & inOperand2,
-                                                                                                          const GALGAS_lstringlist & inOperand3,
-                                                                                                          const GALGAS_lstring & inOperand4,
-                                                                                                          const GALGAS_nonTerminalLabelListAST & inOperand5,
-                                                                                                          const GALGAS_lstringlist & inOperand6,
-                                                                                                          const GALGAS_bool & inOperand7) :
-mAttribute_mHasIndexing (inOperand0),
-mAttribute_mGrammarComponentName (inOperand1),
-mAttribute_mGrammarClass (inOperand2),
-mAttribute_mSyntaxComponents (inOperand3),
-mAttribute_mStartSymbolName (inOperand4),
-mAttribute_mStartSymbolLabelList (inOperand5),
-mAttribute_mUnusedNonterminalList (inOperand6),
-mAttribute_mHasTranslateFeature (inOperand7) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_galgas_33_GrammarComponentListAST_2D_element GALGAS_galgas_33_GrammarComponentListAST_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_galgas_33_GrammarComponentListAST_2D_element (GALGAS_lbool::constructor_default (HERE),
-                                                              GALGAS_lstring::constructor_default (HERE),
-                                                              GALGAS_lstring::constructor_default (HERE),
-                                                              GALGAS_lstringlist::constructor_emptyList (HERE),
-                                                              GALGAS_lstring::constructor_default (HERE),
-                                                              GALGAS_nonTerminalLabelListAST::constructor_emptyList (HERE),
-                                                              GALGAS_lstringlist::constructor_emptyList (HERE),
-                                                              GALGAS_bool::constructor_default (HERE)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_galgas_33_GrammarComponentListAST_2D_element GALGAS_galgas_33_GrammarComponentListAST_2D_element::constructor_new (const GALGAS_lbool & inOperand0,
-                                                                                                                          const GALGAS_lstring & inOperand1,
-                                                                                                                          const GALGAS_lstring & inOperand2,
-                                                                                                                          const GALGAS_lstringlist & inOperand3,
-                                                                                                                          const GALGAS_lstring & inOperand4,
-                                                                                                                          const GALGAS_nonTerminalLabelListAST & inOperand5,
-                                                                                                                          const GALGAS_lstringlist & inOperand6,
-                                                                                                                          const GALGAS_bool & inOperand7 
-                                                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_galgas_33_GrammarComponentListAST_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid () && inOperand7.isValid ()) {
-    result = GALGAS_galgas_33_GrammarComponentListAST_2D_element (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_galgas_33_GrammarComponentListAST_2D_element::objectCompare (const GALGAS_galgas_33_GrammarComponentListAST_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mAttribute_mHasIndexing.objectCompare (inOperand.mAttribute_mHasIndexing) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mGrammarComponentName.objectCompare (inOperand.mAttribute_mGrammarComponentName) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mGrammarClass.objectCompare (inOperand.mAttribute_mGrammarClass) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mSyntaxComponents.objectCompare (inOperand.mAttribute_mSyntaxComponents) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mStartSymbolName.objectCompare (inOperand.mAttribute_mStartSymbolName) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mStartSymbolLabelList.objectCompare (inOperand.mAttribute_mStartSymbolLabelList) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mUnusedNonterminalList.objectCompare (inOperand.mAttribute_mUnusedNonterminalList) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mHasTranslateFeature.objectCompare (inOperand.mAttribute_mHasTranslateFeature) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool GALGAS_galgas_33_GrammarComponentListAST_2D_element::isValid (void) const {
-  return mAttribute_mHasIndexing.isValid () && mAttribute_mGrammarComponentName.isValid () && mAttribute_mGrammarClass.isValid () && mAttribute_mSyntaxComponents.isValid () && mAttribute_mStartSymbolName.isValid () && mAttribute_mStartSymbolLabelList.isValid () && mAttribute_mUnusedNonterminalList.isValid () && mAttribute_mHasTranslateFeature.isValid () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_galgas_33_GrammarComponentListAST_2D_element::drop (void) {
-  mAttribute_mHasIndexing.drop () ;
-  mAttribute_mGrammarComponentName.drop () ;
-  mAttribute_mGrammarClass.drop () ;
-  mAttribute_mSyntaxComponents.drop () ;
-  mAttribute_mStartSymbolName.drop () ;
-  mAttribute_mStartSymbolLabelList.drop () ;
-  mAttribute_mUnusedNonterminalList.drop () ;
-  mAttribute_mHasTranslateFeature.drop () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_galgas_33_GrammarComponentListAST_2D_element::description (C_String & ioString,
-                                                                       const int32_t inIndentation) const {
-  ioString << "<struct @galgas3GrammarComponentListAST-element:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    mAttribute_mHasIndexing.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mGrammarComponentName.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mGrammarClass.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mSyntaxComponents.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mStartSymbolName.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mStartSymbolLabelList.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mUnusedNonterminalList.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mHasTranslateFeature.description (ioString, inIndentation+1) ;
-  }
-  ioString << ">" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lbool GALGAS_galgas_33_GrammarComponentListAST_2D_element::reader_mHasIndexing (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mHasIndexing ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_galgas_33_GrammarComponentListAST_2D_element::reader_mGrammarComponentName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mGrammarComponentName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_galgas_33_GrammarComponentListAST_2D_element::reader_mGrammarClass (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mGrammarClass ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstringlist GALGAS_galgas_33_GrammarComponentListAST_2D_element::reader_mSyntaxComponents (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mSyntaxComponents ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_galgas_33_GrammarComponentListAST_2D_element::reader_mStartSymbolName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mStartSymbolName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_nonTerminalLabelListAST GALGAS_galgas_33_GrammarComponentListAST_2D_element::reader_mStartSymbolLabelList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mStartSymbolLabelList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstringlist GALGAS_galgas_33_GrammarComponentListAST_2D_element::reader_mUnusedNonterminalList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mUnusedNonterminalList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_bool GALGAS_galgas_33_GrammarComponentListAST_2D_element::reader_mHasTranslateFeature (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mHasTranslateFeature ;
-}
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                    @galgas3GrammarComponentListAST-element type                                     *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_galgas_33_GrammarComponentListAST_2D_element ("galgas3GrammarComponentListAST-element",
-                                                                     NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_galgas_33_GrammarComponentListAST_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_galgas_33_GrammarComponentListAST_2D_element ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_galgas_33_GrammarComponentListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_galgas_33_GrammarComponentListAST_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_galgas_33_GrammarComponentListAST_2D_element GALGAS_galgas_33_GrammarComponentListAST_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                                                        C_Compiler * inCompiler
-                                                                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_galgas_33_GrammarComponentListAST_2D_element result ;
-  const GALGAS_galgas_33_GrammarComponentListAST_2D_element * p = (const GALGAS_galgas_33_GrammarComponentListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_galgas_33_GrammarComponentListAST_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("galgas3GrammarComponentListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_galgas_33_SyntaxComponentListAST_2D_element::GALGAS_galgas_33_SyntaxComponentListAST_2D_element (void) :
-mAttribute_mSyntaxComponentName (),
-mAttribute_mImportedLexiqueFilePath (),
-mAttribute_mImportedComponentFileNameList (),
-mAttribute_mNonterminalDeclarationList (),
-mAttribute_mRuleList (),
-mAttribute_mSemanticDeclarationList (),
-mAttribute_mHasTranslateFeature () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_galgas_33_SyntaxComponentListAST_2D_element::~ GALGAS_galgas_33_SyntaxComponentListAST_2D_element (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_galgas_33_SyntaxComponentListAST_2D_element::GALGAS_galgas_33_SyntaxComponentListAST_2D_element (const GALGAS_lstring & inOperand0,
-                                                                                                        const GALGAS_lstring & inOperand1,
-                                                                                                        const GALGAS_lstringlist & inOperand2,
-                                                                                                        const GALGAS_nonterminalDeclarationListAST & inOperand3,
-                                                                                                        const GALGAS_syntaxRuleListAST & inOperand4,
-                                                                                                        const GALGAS_semanticDeclarationListAST & inOperand5,
-                                                                                                        const GALGAS_bool & inOperand6) :
-mAttribute_mSyntaxComponentName (inOperand0),
-mAttribute_mImportedLexiqueFilePath (inOperand1),
-mAttribute_mImportedComponentFileNameList (inOperand2),
-mAttribute_mNonterminalDeclarationList (inOperand3),
-mAttribute_mRuleList (inOperand4),
-mAttribute_mSemanticDeclarationList (inOperand5),
-mAttribute_mHasTranslateFeature (inOperand6) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_galgas_33_SyntaxComponentListAST_2D_element GALGAS_galgas_33_SyntaxComponentListAST_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_galgas_33_SyntaxComponentListAST_2D_element (GALGAS_lstring::constructor_default (HERE),
-                                                             GALGAS_lstring::constructor_default (HERE),
-                                                             GALGAS_lstringlist::constructor_emptyList (HERE),
-                                                             GALGAS_nonterminalDeclarationListAST::constructor_emptyList (HERE),
-                                                             GALGAS_syntaxRuleListAST::constructor_emptyList (HERE),
-                                                             GALGAS_semanticDeclarationListAST::constructor_emptyList (HERE),
-                                                             GALGAS_bool::constructor_default (HERE)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_galgas_33_SyntaxComponentListAST_2D_element GALGAS_galgas_33_SyntaxComponentListAST_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                                                        const GALGAS_lstring & inOperand1,
-                                                                                                                        const GALGAS_lstringlist & inOperand2,
-                                                                                                                        const GALGAS_nonterminalDeclarationListAST & inOperand3,
-                                                                                                                        const GALGAS_syntaxRuleListAST & inOperand4,
-                                                                                                                        const GALGAS_semanticDeclarationListAST & inOperand5,
-                                                                                                                        const GALGAS_bool & inOperand6 
-                                                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_galgas_33_SyntaxComponentListAST_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid ()) {
-    result = GALGAS_galgas_33_SyntaxComponentListAST_2D_element (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_galgas_33_SyntaxComponentListAST_2D_element::objectCompare (const GALGAS_galgas_33_SyntaxComponentListAST_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mAttribute_mSyntaxComponentName.objectCompare (inOperand.mAttribute_mSyntaxComponentName) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mImportedLexiqueFilePath.objectCompare (inOperand.mAttribute_mImportedLexiqueFilePath) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mImportedComponentFileNameList.objectCompare (inOperand.mAttribute_mImportedComponentFileNameList) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mNonterminalDeclarationList.objectCompare (inOperand.mAttribute_mNonterminalDeclarationList) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mRuleList.objectCompare (inOperand.mAttribute_mRuleList) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mSemanticDeclarationList.objectCompare (inOperand.mAttribute_mSemanticDeclarationList) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mHasTranslateFeature.objectCompare (inOperand.mAttribute_mHasTranslateFeature) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool GALGAS_galgas_33_SyntaxComponentListAST_2D_element::isValid (void) const {
-  return mAttribute_mSyntaxComponentName.isValid () && mAttribute_mImportedLexiqueFilePath.isValid () && mAttribute_mImportedComponentFileNameList.isValid () && mAttribute_mNonterminalDeclarationList.isValid () && mAttribute_mRuleList.isValid () && mAttribute_mSemanticDeclarationList.isValid () && mAttribute_mHasTranslateFeature.isValid () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_galgas_33_SyntaxComponentListAST_2D_element::drop (void) {
-  mAttribute_mSyntaxComponentName.drop () ;
-  mAttribute_mImportedLexiqueFilePath.drop () ;
-  mAttribute_mImportedComponentFileNameList.drop () ;
-  mAttribute_mNonterminalDeclarationList.drop () ;
-  mAttribute_mRuleList.drop () ;
-  mAttribute_mSemanticDeclarationList.drop () ;
-  mAttribute_mHasTranslateFeature.drop () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_galgas_33_SyntaxComponentListAST_2D_element::description (C_String & ioString,
-                                                                      const int32_t inIndentation) const {
-  ioString << "<struct @galgas3SyntaxComponentListAST-element:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    mAttribute_mSyntaxComponentName.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mImportedLexiqueFilePath.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mImportedComponentFileNameList.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mNonterminalDeclarationList.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mRuleList.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mSemanticDeclarationList.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mHasTranslateFeature.description (ioString, inIndentation+1) ;
-  }
-  ioString << ">" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_galgas_33_SyntaxComponentListAST_2D_element::reader_mSyntaxComponentName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mSyntaxComponentName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_galgas_33_SyntaxComponentListAST_2D_element::reader_mImportedLexiqueFilePath (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mImportedLexiqueFilePath ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstringlist GALGAS_galgas_33_SyntaxComponentListAST_2D_element::reader_mImportedComponentFileNameList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mImportedComponentFileNameList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_nonterminalDeclarationListAST GALGAS_galgas_33_SyntaxComponentListAST_2D_element::reader_mNonterminalDeclarationList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mNonterminalDeclarationList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_syntaxRuleListAST GALGAS_galgas_33_SyntaxComponentListAST_2D_element::reader_mRuleList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mRuleList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticDeclarationListAST GALGAS_galgas_33_SyntaxComponentListAST_2D_element::reader_mSemanticDeclarationList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mSemanticDeclarationList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_bool GALGAS_galgas_33_SyntaxComponentListAST_2D_element::reader_mHasTranslateFeature (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mHasTranslateFeature ;
-}
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                     @galgas3SyntaxComponentListAST-element type                                     *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_galgas_33_SyntaxComponentListAST_2D_element ("galgas3SyntaxComponentListAST-element",
-                                                                    NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_galgas_33_SyntaxComponentListAST_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_galgas_33_SyntaxComponentListAST_2D_element ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_galgas_33_SyntaxComponentListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_galgas_33_SyntaxComponentListAST_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_galgas_33_SyntaxComponentListAST_2D_element GALGAS_galgas_33_SyntaxComponentListAST_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                                                      C_Compiler * inCompiler
-                                                                                                                      COMMA_LOCATION_ARGS) {
-  GALGAS_galgas_33_SyntaxComponentListAST_2D_element result ;
-  const GALGAS_galgas_33_SyntaxComponentListAST_2D_element * p = (const GALGAS_galgas_33_SyntaxComponentListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_galgas_33_SyntaxComponentListAST_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("galgas3SyntaxComponentListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

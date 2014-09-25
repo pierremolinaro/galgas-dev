@@ -23,7 +23,7 @@ class GALGAS_switchBranchesAST : public AC_GALGAS_list {
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                   const class GALGAS_lstringlist & in_mSwitchConstantList,
-                                                  const class GALGAS_foreachInstructionEnumeratedObjectElementListAST & in_mAssociatedValuesExtraction,
+                                                  const class GALGAS__32_lstringlist & in_mAssociatedValuesExtraction,
                                                   const class GALGAS_semanticInstructionListAST & in_mInstructions,
                                                   const class GALGAS_location & in_mEndOfBranch
                                                   COMMA_LOCATION_ARGS) ;
@@ -42,7 +42,7 @@ class GALGAS_switchBranchesAST : public AC_GALGAS_list {
   public : static GALGAS_switchBranchesAST constructor_emptyList (LOCATION_ARGS) ;
 
   public : static GALGAS_switchBranchesAST constructor_listWithValue (const class GALGAS_lstringlist & inOperand0,
-                                                                      const class GALGAS_foreachInstructionEnumeratedObjectElementListAST & inOperand1,
+                                                                      const class GALGAS__32_lstringlist & inOperand1,
                                                                       const class GALGAS_semanticInstructionListAST & inOperand2,
                                                                       const class GALGAS_location & inOperand3
                                                                       COMMA_LOCATION_ARGS) ;
@@ -53,7 +53,7 @@ class GALGAS_switchBranchesAST : public AC_GALGAS_list {
 
 //--------------------------------- += operator (with list of field expressions)
   public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstringlist & inOperand0,
-                                                      const class GALGAS_foreachInstructionEnumeratedObjectElementListAST & inOperand1,
+                                                      const class GALGAS__32_lstringlist & inOperand1,
                                                       const class GALGAS_semanticInstructionListAST & inOperand2,
                                                       const class GALGAS_location & inOperand3
                                                       COMMA_LOCATION_ARGS) ;
@@ -69,7 +69,7 @@ class GALGAS_switchBranchesAST : public AC_GALGAS_list {
 
 //--------------------------------- Setters
   public : VIRTUAL_IN_DEBUG void modifier_insertAtIndex (class GALGAS_lstringlist constinArgument0,
-                                                         class GALGAS_foreachInstructionEnumeratedObjectElementListAST constinArgument1,
+                                                         class GALGAS__32_lstringlist constinArgument1,
                                                          class GALGAS_semanticInstructionListAST constinArgument2,
                                                          class GALGAS_location constinArgument3,
                                                          class GALGAS_uint constinArgument4,
@@ -77,21 +77,21 @@ class GALGAS_switchBranchesAST : public AC_GALGAS_list {
                                                          COMMA_LOCATION_ARGS) ;
 
   public : VIRTUAL_IN_DEBUG void modifier_popFirst (class GALGAS_lstringlist & outArgument0,
-                                                    class GALGAS_foreachInstructionEnumeratedObjectElementListAST & outArgument1,
+                                                    class GALGAS__32_lstringlist & outArgument1,
                                                     class GALGAS_semanticInstructionListAST & outArgument2,
                                                     class GALGAS_location & outArgument3,
                                                     C_Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
 
   public : VIRTUAL_IN_DEBUG void modifier_popLast (class GALGAS_lstringlist & outArgument0,
-                                                   class GALGAS_foreachInstructionEnumeratedObjectElementListAST & outArgument1,
+                                                   class GALGAS__32_lstringlist & outArgument1,
                                                    class GALGAS_semanticInstructionListAST & outArgument2,
                                                    class GALGAS_location & outArgument3,
                                                    C_Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
 
   public : VIRTUAL_IN_DEBUG void modifier_removeAtIndex (class GALGAS_lstringlist & outArgument0,
-                                                         class GALGAS_foreachInstructionEnumeratedObjectElementListAST & outArgument1,
+                                                         class GALGAS__32_lstringlist & outArgument1,
                                                          class GALGAS_semanticInstructionListAST & outArgument2,
                                                          class GALGAS_location & outArgument3,
                                                          class GALGAS_uint constinArgument4,
@@ -101,14 +101,14 @@ class GALGAS_switchBranchesAST : public AC_GALGAS_list {
 
 //--------------------------------- Instance Methods
   public : VIRTUAL_IN_DEBUG void method_first (class GALGAS_lstringlist & outArgument0,
-                                               class GALGAS_foreachInstructionEnumeratedObjectElementListAST & outArgument1,
+                                               class GALGAS__32_lstringlist & outArgument1,
                                                class GALGAS_semanticInstructionListAST & outArgument2,
                                                class GALGAS_location & outArgument3,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG void method_last (class GALGAS_lstringlist & outArgument0,
-                                              class GALGAS_foreachInstructionEnumeratedObjectElementListAST & outArgument1,
+                                              class GALGAS__32_lstringlist & outArgument1,
                                               class GALGAS_semanticInstructionListAST & outArgument2,
                                               class GALGAS_location & outArgument3,
                                               C_Compiler * inCompiler
@@ -117,9 +117,9 @@ class GALGAS_switchBranchesAST : public AC_GALGAS_list {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_foreachInstructionEnumeratedObjectElementListAST reader_mAssociatedValuesExtractionAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                                                                     C_Compiler * inCompiler
-                                                                                                                                     COMMA_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS__32_lstringlist reader_mAssociatedValuesExtractionAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                                                    C_Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_location reader_mEndOfBranchAtIndex (const class GALGAS_uint & constinOperand0,
                                                                               C_Compiler * inCompiler
@@ -160,7 +160,7 @@ class cEnumerator_switchBranchesAST : public cGenericAbstractEnumerator {
 
 //--- Current element access
   public : class GALGAS_lstringlist current_mSwitchConstantList (LOCATION_ARGS) const ;
-  public : class GALGAS_foreachInstructionEnumeratedObjectElementListAST current_mAssociatedValuesExtraction (LOCATION_ARGS) const ;
+  public : class GALGAS__32_lstringlist current_mAssociatedValuesExtraction (LOCATION_ARGS) const ;
   public : class GALGAS_semanticInstructionListAST current_mInstructions (LOCATION_ARGS) const ;
   public : class GALGAS_location current_mEndOfBranch (LOCATION_ARGS) const ;
 //--- Current element access

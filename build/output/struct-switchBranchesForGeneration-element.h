@@ -7,6 +7,7 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+#include "list-extractedAssociatedValuesForGeneration.h"
 #include "list-semanticInstructionListForGeneration.h"
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -17,6 +18,8 @@
 class GALGAS_switchBranchesForGeneration_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
   public : GALGAS_lstringlist mAttribute_mSwitchConstantList ;
+  public : GALGAS_extractedAssociatedValuesForGeneration mAttribute_mExtractedAssociatedValuesForGeneration ;
+  public : GALGAS_uint mAttribute_mLocationIndex ;
   public : GALGAS_semanticInstructionListForGeneration mAttribute_mInstructions ;
 
 
@@ -35,6 +38,8 @@ class GALGAS_switchBranchesForGeneration_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Native constructor
   public : GALGAS_switchBranchesForGeneration_2D_element (const GALGAS_lstringlist & in_mSwitchConstantList,
+                                                          const GALGAS_extractedAssociatedValuesForGeneration & in_mExtractedAssociatedValuesForGeneration,
+                                                          const GALGAS_uint & in_mLocationIndex,
                                                           const GALGAS_semanticInstructionListForGeneration & in_mInstructions) ;
 
 //-- Start of generic part --*
@@ -49,7 +54,9 @@ class GALGAS_switchBranchesForGeneration_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- GALGAS constructors
   public : static GALGAS_switchBranchesForGeneration_2D_element constructor_new (const class GALGAS_lstringlist & inOperand0,
-                                                                                 const class GALGAS_semanticInstructionListForGeneration & inOperand1
+                                                                                 const class GALGAS_extractedAssociatedValuesForGeneration & inOperand1,
+                                                                                 const class GALGAS_uint & inOperand2,
+                                                                                 const class GALGAS_semanticInstructionListForGeneration & inOperand3
                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of reader 'description'
@@ -64,7 +71,11 @@ class GALGAS_switchBranchesForGeneration_2D_element : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_extractedAssociatedValuesForGeneration reader_mExtractedAssociatedValuesForGeneration (LOCATION_ARGS) const ;
+
   public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListForGeneration reader_mInstructions (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_uint reader_mLocationIndex (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist reader_mSwitchConstantList (LOCATION_ARGS) const ;
 

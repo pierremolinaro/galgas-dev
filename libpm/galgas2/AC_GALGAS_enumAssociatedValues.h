@@ -68,6 +68,10 @@ class AC_GALGAS_enumAssociatedValues {
 
 
   public : VIRTUAL_IN_DEBUG typeComparisonResult objectCompare (const AC_GALGAS_enumAssociatedValues & inOperand) const ;
+
+  public : VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {
+    return mSharedPtr ;
+  }
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*

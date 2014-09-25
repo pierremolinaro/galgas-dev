@@ -23,6 +23,8 @@ class GALGAS_switchBranchesForGeneration : public AC_GALGAS_list {
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                   const class GALGAS_lstringlist & in_mSwitchConstantList,
+                                                  const class GALGAS_extractedAssociatedValuesForGeneration & in_mExtractedAssociatedValuesForGeneration,
+                                                  const class GALGAS_uint & in_mLocationIndex,
                                                   const class GALGAS_semanticInstructionListForGeneration & in_mInstructions
                                                   COMMA_LOCATION_ARGS) ;
 
@@ -40,7 +42,9 @@ class GALGAS_switchBranchesForGeneration : public AC_GALGAS_list {
   public : static GALGAS_switchBranchesForGeneration constructor_emptyList (LOCATION_ARGS) ;
 
   public : static GALGAS_switchBranchesForGeneration constructor_listWithValue (const class GALGAS_lstringlist & inOperand0,
-                                                                                const class GALGAS_semanticInstructionListForGeneration & inOperand1
+                                                                                const class GALGAS_extractedAssociatedValuesForGeneration & inOperand1,
+                                                                                const class GALGAS_uint & inOperand2,
+                                                                                const class GALGAS_semanticInstructionListForGeneration & inOperand3
                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
@@ -49,7 +53,9 @@ class GALGAS_switchBranchesForGeneration : public AC_GALGAS_list {
 
 //--------------------------------- += operator (with list of field expressions)
   public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstringlist & inOperand0,
-                                                      const class GALGAS_semanticInstructionListForGeneration & inOperand1
+                                                      const class GALGAS_extractedAssociatedValuesForGeneration & inOperand1,
+                                                      const class GALGAS_uint & inOperand2,
+                                                      const class GALGAS_semanticInstructionListForGeneration & inOperand3
                                                       COMMA_LOCATION_ARGS) ;
 //--------------------------------- . (concat) operator
   public : VIRTUAL_IN_DEBUG GALGAS_switchBranchesForGeneration operator_concat (const GALGAS_switchBranchesForGeneration & inOperand
@@ -63,45 +69,65 @@ class GALGAS_switchBranchesForGeneration : public AC_GALGAS_list {
 
 //--------------------------------- Setters
   public : VIRTUAL_IN_DEBUG void modifier_insertAtIndex (class GALGAS_lstringlist constinArgument0,
-                                                         class GALGAS_semanticInstructionListForGeneration constinArgument1,
+                                                         class GALGAS_extractedAssociatedValuesForGeneration constinArgument1,
                                                          class GALGAS_uint constinArgument2,
+                                                         class GALGAS_semanticInstructionListForGeneration constinArgument3,
+                                                         class GALGAS_uint constinArgument4,
                                                          C_Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) ;
 
   public : VIRTUAL_IN_DEBUG void modifier_popFirst (class GALGAS_lstringlist & outArgument0,
-                                                    class GALGAS_semanticInstructionListForGeneration & outArgument1,
+                                                    class GALGAS_extractedAssociatedValuesForGeneration & outArgument1,
+                                                    class GALGAS_uint & outArgument2,
+                                                    class GALGAS_semanticInstructionListForGeneration & outArgument3,
                                                     C_Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
 
   public : VIRTUAL_IN_DEBUG void modifier_popLast (class GALGAS_lstringlist & outArgument0,
-                                                   class GALGAS_semanticInstructionListForGeneration & outArgument1,
+                                                   class GALGAS_extractedAssociatedValuesForGeneration & outArgument1,
+                                                   class GALGAS_uint & outArgument2,
+                                                   class GALGAS_semanticInstructionListForGeneration & outArgument3,
                                                    C_Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) ;
 
   public : VIRTUAL_IN_DEBUG void modifier_removeAtIndex (class GALGAS_lstringlist & outArgument0,
-                                                         class GALGAS_semanticInstructionListForGeneration & outArgument1,
-                                                         class GALGAS_uint constinArgument2,
+                                                         class GALGAS_extractedAssociatedValuesForGeneration & outArgument1,
+                                                         class GALGAS_uint & outArgument2,
+                                                         class GALGAS_semanticInstructionListForGeneration & outArgument3,
+                                                         class GALGAS_uint constinArgument4,
                                                          C_Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Instance Methods
   public : VIRTUAL_IN_DEBUG void method_first (class GALGAS_lstringlist & outArgument0,
-                                               class GALGAS_semanticInstructionListForGeneration & outArgument1,
+                                               class GALGAS_extractedAssociatedValuesForGeneration & outArgument1,
+                                               class GALGAS_uint & outArgument2,
+                                               class GALGAS_semanticInstructionListForGeneration & outArgument3,
                                                C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG void method_last (class GALGAS_lstringlist & outArgument0,
-                                              class GALGAS_semanticInstructionListForGeneration & outArgument1,
+                                              class GALGAS_extractedAssociatedValuesForGeneration & outArgument1,
+                                              class GALGAS_uint & outArgument2,
+                                              class GALGAS_semanticInstructionListForGeneration & outArgument3,
                                               C_Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_extractedAssociatedValuesForGeneration reader_mExtractedAssociatedValuesForGenerationAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                                                                                       C_Compiler * inCompiler
+                                                                                                                                       COMMA_LOCATION_ARGS) const ;
+
   public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListForGeneration reader_mInstructionsAtIndex (const class GALGAS_uint & constinOperand0,
                                                                                                            C_Compiler * inCompiler
                                                                                                            COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_uint reader_mLocationIndexAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                            C_Compiler * inCompiler
+                                                                            COMMA_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist reader_mSwitchConstantListAtIndex (const class GALGAS_uint & constinOperand0,
                                                                                         C_Compiler * inCompiler
@@ -134,6 +160,8 @@ class cEnumerator_switchBranchesForGeneration : public cGenericAbstractEnumerato
 
 //--- Current element access
   public : class GALGAS_lstringlist current_mSwitchConstantList (LOCATION_ARGS) const ;
+  public : class GALGAS_extractedAssociatedValuesForGeneration current_mExtractedAssociatedValuesForGeneration (LOCATION_ARGS) const ;
+  public : class GALGAS_uint current_mLocationIndex (LOCATION_ARGS) const ;
   public : class GALGAS_semanticInstructionListForGeneration current_mInstructions (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_switchBranchesForGeneration_2D_element current (LOCATION_ARGS) const ;

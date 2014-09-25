@@ -1077,7 +1077,7 @@ class @readWriteAccessWithInstructionAST extends @semanticInstructionAST {
 
 list @switchBranchesAST {
   @lstringlist mSwitchConstantList ;
-  @foreachInstructionEnumeratedObjectElementListAST mAssociatedValuesExtraction ;
+  @2lstringlist mAssociatedValuesExtraction ;
   @semanticInstructionListAST mInstructions ;
   @location mEndOfBranch ;
 }
