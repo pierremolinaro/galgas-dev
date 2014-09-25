@@ -9,7 +9,7 @@ for () in CONSTANT_LIST do
   if [mAssociatedValueTypeList length] > 0 then
     %class cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName.string% : public cEnumAssociatedValues {\n%
     for () in mAssociatedValueTypeList do index idx
-      %  private : GALGAS_%!mValue.string% mAssociatedValue%![idx string]% ;\n%
+      %  private : class GALGAS_%!mValue.string% mAssociatedValue%![idx string]% ;\n%
     end
     %\n%
     %//--- Constructor\n%
@@ -18,9 +18,11 @@ for () in CONSTANT_LIST do
     do index idx %const GALGAS_%!mValue.string% & inAssociatedValue%![idx string]
     between %,\n%!^
     end
-    %\n%!^% COMMA_LOCATION_ARGS) ;\n%
+    %\n%!^% COMMA_LOCATION_ARGS) ;\n\n%
+    %  public : virtual void description (%?^%C_String & ioString,\n%
+                       !^%const int32_t inIndentation) const ;\n%
     %} ;\n\n%
-    %//---------------------------------------------------------------------------------------------------------------------*\n\n%
+%//---------------------------------------------------------------------------------------------------------------------*\n\n%
   end
 end
 %class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
@@ -37,8 +39,11 @@ end
   } enumeration ;
   
 //--------------------------------- Private data member
-  private : AC_GALGAS_enumAssociatedValues mAssociatedValues ;
-  private : enumeration mEnum ;
+%
+if HAS_ASSOCIATED_VALUES then
+  %  private : AC_GALGAS_enumAssociatedValues mAssociatedValues ;\n%
+end
+%  private : enumeration mEnum ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return kNotBuilt != mEnum ; }

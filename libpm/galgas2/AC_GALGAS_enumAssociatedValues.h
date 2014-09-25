@@ -34,6 +34,9 @@
 
 class cEnumAssociatedValues : public C_SharedObject {
   public : cEnumAssociatedValues (LOCATION_ARGS) ;
+
+  public : virtual void description (class C_String & ioString,
+                                     const int32_t inIndentation) const = 0 ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -53,9 +56,10 @@ class AC_GALGAS_enumAssociatedValues {
 
 //--- Destructor
   public : virtual ~ AC_GALGAS_enumAssociatedValues (void) ;
+
 //---
-//  public : virtual AC_GALGAS_root * clonedObject (void) const ;
-//  public : virtual const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+  public : void description (C_String & ioString,
+                             const int32_t inIndentation) const ;
 
 } ;
 
