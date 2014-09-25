@@ -554,6 +554,8 @@ end rule ;
 #    E N U M    D E C L A R A T I O N                                       *
 #                                                                           *
 #---------------------------------------------------------------------------*
+#! enum
+#---------------------------------------------------------------------------*
 
 rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
@@ -564,13 +566,14 @@ rule <semantic_declaration>
   @enumConstantList mConstantList [emptyList] ;
   repeat
     $identifier$ ?@lstring constantName ;
-    @lstringlist associatedValueTypeList := {} ;
+    @2lstringlist associatedValueTypeList := {} ;
     select
     or
       $($ ;
       repeat
         $type_name$ ??@lstring associatedValueType ;
-        associatedValueTypeList += !associatedValueType ;
+        $identifier$ ?@lstring associatedValueName ;
+        associatedValueTypeList += !associatedValueType !associatedValueName ;
       while
         $,$ ;
       end repeat ;

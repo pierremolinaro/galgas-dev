@@ -591,13 +591,14 @@ rule <declaration>
   @enumConstantList mConstantList [emptyList] ;
   repeat
     $identifier$ ??@lstring constantName ;
-    @lstringlist associatedValueTypeList := {} ;
+    @2lstringlist associatedValueTypeList := {} ;
     select
     or
       $($ ;
       repeat
         $type_name$ ??@lstring associatedValueType ;
-        associatedValueTypeList += !associatedValueType ;
+        $identifier$ ?@lstring associatedValueName ;
+        associatedValueTypeList += !associatedValueType !associatedValueName ;
       while
         $,$ ;
       end repeat ;

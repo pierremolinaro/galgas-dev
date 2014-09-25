@@ -6,16 +6,16 @@
 
 %
 for () in CONSTANT_LIST do
-  if [mAssociatedValueTypeList length] > 0 then
+  if [mAssociatedValueDefinitionList length] > 0 then
     %class cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName.string% : public cEnumAssociatedValues {\n%
-    for () in mAssociatedValueTypeList do index idx
-      %  public : const class GALGAS_%!mValue.string% mAssociatedValue%![idx string]% ;\n%
+    for () in mAssociatedValueDefinitionList do index idx
+      %  public : const class GALGAS_%!mValue0.string% mAssociatedValue%![idx string]% ;\n%
     end
     %\n%
     %//--- Constructor\n%
     %  public : cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName.string% (%?^
-    for () in mAssociatedValueTypeList
-    do index idx %const GALGAS_%!mValue.string% & inAssociatedValue%![idx string]
+    for () in mAssociatedValueDefinitionList
+    do index idx %const GALGAS_%!mValue0.string% & inAssociatedValue%![idx string]
     between %,\n%!^
     end
     %\n%!^% COMMA_LOCATION_ARGS) ;\n\n%
