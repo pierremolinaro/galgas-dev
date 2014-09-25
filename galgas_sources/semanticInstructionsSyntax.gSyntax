@@ -2108,7 +2108,7 @@ rule <semantic_instruction>
     while
       $,$ ;
     end repeat ;
-    @foreachInstructionEnumeratedObjectElementListAST associatedValuesExtraction := {} ;
+    @2lstringlist associatedValuesExtraction := {} ;
     select
     or
       $($ ;

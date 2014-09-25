@@ -33319,7 +33319,7 @@ class cCollectionElement_switchBranchesAST : public cCollectionElement {
 
 //--- Constructor
   public : cCollectionElement_switchBranchesAST (const GALGAS_lstringlist & in_mSwitchConstantList,
-                                                 const GALGAS_foreachInstructionEnumeratedObjectElementListAST & in_mAssociatedValuesExtraction,
+                                                 const GALGAS__32_lstringlist & in_mAssociatedValuesExtraction,
                                                  const GALGAS_semanticInstructionListAST & in_mInstructions,
                                                  const GALGAS_location & in_mEndOfBranch
                                                  COMMA_LOCATION_ARGS) ;
@@ -33340,7 +33340,7 @@ class cCollectionElement_switchBranchesAST : public cCollectionElement {
 //---------------------------------------------------------------------------------------------------------------------*
 
 cCollectionElement_switchBranchesAST::cCollectionElement_switchBranchesAST (const GALGAS_lstringlist & in_mSwitchConstantList,
-                                                                            const GALGAS_foreachInstructionEnumeratedObjectElementListAST & in_mAssociatedValuesExtraction,
+                                                                            const GALGAS__32_lstringlist & in_mAssociatedValuesExtraction,
                                                                             const GALGAS_semanticInstructionListAST & in_mInstructions,
                                                                             const GALGAS_location & in_mEndOfBranch
                                                                             COMMA_LOCATION_ARGS) :
@@ -33417,7 +33417,7 @@ GALGAS_switchBranchesAST GALGAS_switchBranchesAST::constructor_emptyList (LOCATI
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_switchBranchesAST GALGAS_switchBranchesAST::constructor_listWithValue (const GALGAS_lstringlist & inOperand0,
-                                                                              const GALGAS_foreachInstructionEnumeratedObjectElementListAST & inOperand1,
+                                                                              const GALGAS__32_lstringlist & inOperand1,
                                                                               const GALGAS_semanticInstructionListAST & inOperand2,
                                                                               const GALGAS_location & inOperand3
                                                                               COMMA_LOCATION_ARGS) {
@@ -33435,7 +33435,7 @@ GALGAS_switchBranchesAST GALGAS_switchBranchesAST::constructor_listWithValue (co
 
 void GALGAS_switchBranchesAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                           const GALGAS_lstringlist & in_mSwitchConstantList,
-                                                          const GALGAS_foreachInstructionEnumeratedObjectElementListAST & in_mAssociatedValuesExtraction,
+                                                          const GALGAS__32_lstringlist & in_mAssociatedValuesExtraction,
                                                           const GALGAS_semanticInstructionListAST & in_mInstructions,
                                                           const GALGAS_location & in_mEndOfBranch
                                                           COMMA_LOCATION_ARGS) {
@@ -33451,7 +33451,7 @@ void GALGAS_switchBranchesAST::makeAttributesFromObjects (capCollectionElement &
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_switchBranchesAST::addAssign_operation (const GALGAS_lstringlist & inOperand0,
-                                                    const GALGAS_foreachInstructionEnumeratedObjectElementListAST & inOperand1,
+                                                    const GALGAS__32_lstringlist & inOperand1,
                                                     const GALGAS_semanticInstructionListAST & inOperand2,
                                                     const GALGAS_location & inOperand3
                                                     COMMA_LOCATION_ARGS) {
@@ -33468,7 +33468,7 @@ void GALGAS_switchBranchesAST::addAssign_operation (const GALGAS_lstringlist & i
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_switchBranchesAST::modifier_insertAtIndex (const GALGAS_lstringlist inOperand0,
-                                                       const GALGAS_foreachInstructionEnumeratedObjectElementListAST inOperand1,
+                                                       const GALGAS__32_lstringlist inOperand1,
                                                        const GALGAS_semanticInstructionListAST inOperand2,
                                                        const GALGAS_location inOperand3,
                                                        const GALGAS_uint inInsertionIndex,
@@ -33487,7 +33487,7 @@ void GALGAS_switchBranchesAST::modifier_insertAtIndex (const GALGAS_lstringlist 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_switchBranchesAST::modifier_removeAtIndex (GALGAS_lstringlist & outOperand0,
-                                                       GALGAS_foreachInstructionEnumeratedObjectElementListAST & outOperand1,
+                                                       GALGAS__32_lstringlist & outOperand1,
                                                        GALGAS_semanticInstructionListAST & outOperand2,
                                                        GALGAS_location & outOperand3,
                                                        const GALGAS_uint inRemoveIndex,
@@ -33515,7 +33515,7 @@ void GALGAS_switchBranchesAST::modifier_removeAtIndex (GALGAS_lstringlist & outO
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_switchBranchesAST::modifier_popFirst (GALGAS_lstringlist & outOperand0,
-                                                  GALGAS_foreachInstructionEnumeratedObjectElementListAST & outOperand1,
+                                                  GALGAS__32_lstringlist & outOperand1,
                                                   GALGAS_semanticInstructionListAST & outOperand2,
                                                   GALGAS_location & outOperand3,
                                                   C_Compiler * inCompiler
@@ -33540,7 +33540,7 @@ void GALGAS_switchBranchesAST::modifier_popFirst (GALGAS_lstringlist & outOperan
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_switchBranchesAST::modifier_popLast (GALGAS_lstringlist & outOperand0,
-                                                 GALGAS_foreachInstructionEnumeratedObjectElementListAST & outOperand1,
+                                                 GALGAS__32_lstringlist & outOperand1,
                                                  GALGAS_semanticInstructionListAST & outOperand2,
                                                  GALGAS_location & outOperand3,
                                                  C_Compiler * inCompiler
@@ -33565,7 +33565,7 @@ void GALGAS_switchBranchesAST::modifier_popLast (GALGAS_lstringlist & outOperand
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_switchBranchesAST::method_first (GALGAS_lstringlist & outOperand0,
-                                             GALGAS_foreachInstructionEnumeratedObjectElementListAST & outOperand1,
+                                             GALGAS__32_lstringlist & outOperand1,
                                              GALGAS_semanticInstructionListAST & outOperand2,
                                              GALGAS_location & outOperand3,
                                              C_Compiler * inCompiler
@@ -33590,7 +33590,7 @@ void GALGAS_switchBranchesAST::method_first (GALGAS_lstringlist & outOperand0,
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_switchBranchesAST::method_last (GALGAS_lstringlist & outOperand0,
-                                            GALGAS_foreachInstructionEnumeratedObjectElementListAST & outOperand1,
+                                            GALGAS__32_lstringlist & outOperand1,
                                             GALGAS_semanticInstructionListAST & outOperand2,
                                             GALGAS_location & outOperand3,
                                             C_Compiler * inCompiler
@@ -33681,12 +33681,12 @@ GALGAS_lstringlist GALGAS_switchBranchesAST::reader_mSwitchConstantListAtIndex (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_foreachInstructionEnumeratedObjectElementListAST GALGAS_switchBranchesAST::reader_mAssociatedValuesExtractionAtIndex (const GALGAS_uint & inIndex,
-                                                                                                                             C_Compiler * inCompiler
-                                                                                                                             COMMA_LOCATION_ARGS) const {
+GALGAS__32_lstringlist GALGAS_switchBranchesAST::reader_mAssociatedValuesExtractionAtIndex (const GALGAS_uint & inIndex,
+                                                                                            C_Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
   cCollectionElement_switchBranchesAST * p = (cCollectionElement_switchBranchesAST *) attributes.ptr () ;
-  GALGAS_foreachInstructionEnumeratedObjectElementListAST result ;
+  GALGAS__32_lstringlist result ;
   if (NULL != p) {
     macroValidSharedObject (p, cCollectionElement_switchBranchesAST) ;
     result = p->mObject.mAttribute_mAssociatedValuesExtraction ;
@@ -33753,7 +33753,7 @@ GALGAS_lstringlist cEnumerator_switchBranchesAST::current_mSwitchConstantList (L
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_foreachInstructionEnumeratedObjectElementListAST cEnumerator_switchBranchesAST::current_mAssociatedValuesExtraction (LOCATION_ARGS) const {
+GALGAS__32_lstringlist cEnumerator_switchBranchesAST::current_mAssociatedValuesExtraction (LOCATION_ARGS) const {
   const cCollectionElement_switchBranchesAST * p = (const cCollectionElement_switchBranchesAST *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_switchBranchesAST) ;
   return p->mObject.mAttribute_mAssociatedValuesExtraction ;

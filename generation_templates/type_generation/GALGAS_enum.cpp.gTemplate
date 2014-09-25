@@ -14,7 +14,7 @@ for () in CONSTANT_LIST do
     end
     % {\n%   
     %} ;\n\n%
-  %//---------------------------------------------------------------------------------------------------------------------*\n\n%
+    %//---------------------------------------------------------------------------------------------------------------------*\n\n%
     %void cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName.string%::description (%?^%C_String & ioString,\n%
                        !^%const int32_t inIndentation) const {\n%
     %  ioString << "(\\n" ;\n%
@@ -23,6 +23,7 @@ for () in CONSTANT_LIST do
     end
     %  ioString << ")" ;\n%
     %}\n\n%
+    %//---------------------------------------------------------------------------------------------------------------------*\n\n%
     %typeComparisonResult cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName.string%::compare (const cEnumAssociatedValues * inOperand) const {\n%
     %  const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName.string% * ptr = dynamic_cast<const cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName.string% *> (inOperand) ;\n%
     %  macroValidPointer (ptr) ;\n%

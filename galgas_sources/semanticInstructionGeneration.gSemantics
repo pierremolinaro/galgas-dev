@@ -1326,6 +1326,14 @@ override method @switchInstructionForGeneration generateInstruction
       ioGeneratedCode .= "case GALGAS_" . [[mSwitchExpression mType] identifierRepresentation] . "::kEnum_" . [[mValue string] identifierRepresentation] . ": " ;
     end foreach ;
     ioGeneratedCode .= "{\n" ;
+    if [mExtractedAssociatedValuesForGeneration length] > 0 then
+      const type := "const cEnumAssociatedValues_" + [mEnumType identifierRepresentation] + "_" + [mSwitchConstantList mValueAtIndex!0]->string + " *" ;
+      const varPtr := "extractPtr_" + mLocationIndex ;
+      ioGeneratedCode += "  " + type + " " + varPtr + " = dynamic_cast<" + type + "> (" + switchVar + ".unsafePointer ()) ;\n" ;
+      for () in mExtractedAssociatedValuesForGeneration do index idx
+        ioGeneratedCode += "  const GALGAS_" + [mType identifierRepresentation] + " " + mCppName + " = " + varPtr + "->mAssociatedValue" + idx + " ;\n" ;
+      end for ;
+    end if ;
     generateInstructionList
       !?ioInclusionSet
       !mInstructions

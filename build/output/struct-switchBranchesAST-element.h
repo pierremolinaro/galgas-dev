@@ -7,7 +7,6 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#include "list-foreachInstructionEnumeratedObjectElementListAST.h"
 #include "list-semanticInstructionListAST.h"
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -18,7 +17,7 @@
 class GALGAS_switchBranchesAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
   public : GALGAS_lstringlist mAttribute_mSwitchConstantList ;
-  public : GALGAS_foreachInstructionEnumeratedObjectElementListAST mAttribute_mAssociatedValuesExtraction ;
+  public : GALGAS__32_lstringlist mAttribute_mAssociatedValuesExtraction ;
   public : GALGAS_semanticInstructionListAST mAttribute_mInstructions ;
   public : GALGAS_location mAttribute_mEndOfBranch ;
 
@@ -38,7 +37,7 @@ class GALGAS_switchBranchesAST_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Native constructor
   public : GALGAS_switchBranchesAST_2D_element (const GALGAS_lstringlist & in_mSwitchConstantList,
-                                                const GALGAS_foreachInstructionEnumeratedObjectElementListAST & in_mAssociatedValuesExtraction,
+                                                const GALGAS__32_lstringlist & in_mAssociatedValuesExtraction,
                                                 const GALGAS_semanticInstructionListAST & in_mInstructions,
                                                 const GALGAS_location & in_mEndOfBranch) ;
 
@@ -54,7 +53,7 @@ class GALGAS_switchBranchesAST_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- GALGAS constructors
   public : static GALGAS_switchBranchesAST_2D_element constructor_new (const class GALGAS_lstringlist & inOperand0,
-                                                                       const class GALGAS_foreachInstructionEnumeratedObjectElementListAST & inOperand1,
+                                                                       const class GALGAS__32_lstringlist & inOperand1,
                                                                        const class GALGAS_semanticInstructionListAST & inOperand2,
                                                                        const class GALGAS_location & inOperand3
                                                                        COMMA_LOCATION_ARGS) ;
@@ -71,7 +70,7 @@ class GALGAS_switchBranchesAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_foreachInstructionEnumeratedObjectElementListAST reader_mAssociatedValuesExtraction (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS__32_lstringlist reader_mAssociatedValuesExtraction (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_location reader_mEndOfBranch (LOCATION_ARGS) const ;
 

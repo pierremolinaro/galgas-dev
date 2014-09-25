@@ -9,7 +9,7 @@ for () in CONSTANT_LIST do
   if [mAssociatedValueTypeList length] > 0 then
     %class cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName.string% : public cEnumAssociatedValues {\n%
     for () in mAssociatedValueTypeList do index idx
-      %  private : class GALGAS_%!mValue.string% mAssociatedValue%![idx string]% ;\n%
+      %  public : const class GALGAS_%!mValue.string% mAssociatedValue%![idx string]% ;\n%
     end
     %\n%
     %//--- Constructor\n%
@@ -43,6 +43,9 @@ end
 %
 if HAS_ASSOCIATED_VALUES then
   %  private : AC_GALGAS_enumAssociatedValues mAssociatedValues ;\n%
+  %  public : VIRTUAL_IN_DEBUG const cEnumAssociatedValues * unsafePointer (void) const {\n%
+  %    return mAssociatedValues.unsafePointer () ;\n%
+  %  }\n\n%
 end
 %  private : enumeration mEnum ;
 

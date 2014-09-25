@@ -1151,14 +1151,24 @@ class @syntaxSendInstructionForGeneration extends @syntaxInstructionForGeneratio
 
 #---------------------------------------------------------------------------*
 
+list @extractedAssociatedValuesForGeneration {
+  @unifiedTypeMapProxy mType ;
+  @string mCppName ;
+}
+
+#---------------------------------------------------------------------------*
+
 list @switchBranchesForGeneration {
   @lstringlist mSwitchConstantList ;
+  @extractedAssociatedValuesForGeneration mExtractedAssociatedValuesForGeneration ;
+  @uint mLocationIndex ;
   @semanticInstructionListForGeneration mInstructions ;
 }
 
 #---------------------------------------------------------------------------*
 
 class @switchInstructionForGeneration extends @semanticInstructionForGeneration {
+  @unifiedTypeMapProxy mEnumType ;
   @semanticExpressionForGeneration mSwitchExpression ;
   @switchBranchesForGeneration mBranches ;
 }

@@ -22,7 +22,7 @@ semantics predefinedTypes :
 
 #---------------------------------------------------------------------------*
 
-routine appendPredefinedListTypeAST
+local routine appendPredefinedListTypeAST
   ?!@semanticDeclarationListAST ioDeclarationListASTs
   ??@string inElementTypeName
 :
@@ -43,7 +43,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine appendPredefined2StringListTypeAST
+local routine appendPredefined2StringListTypeAST
   ?!@semanticDeclarationListAST ioDeclarationListASTs
 :
   @attributeInCollectionListAST attributeList [emptyList] ;
@@ -69,7 +69,33 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine appendStructASTForTypeWithLocation
+local routine appendPredefined2LStringListTypeAST
+  ?!@semanticDeclarationListAST ioDeclarationListASTs
+:
+  @attributeInCollectionListAST attributeList [emptyList] ;
+  @lstringlist attributeFeatureList [emptyList] ;
+  attributeFeatureList += ![@lstring new !"setter" !here] ;
+  attributeList +=
+    ![@lstring new !"lstring" !here]
+    ![@lstring new !"mValue0" !here]
+    !attributeFeatureList
+  ;
+  attributeList +=
+    ![@lstring new !"lstring" !here]
+    ![@lstring new !"mValue1" !here]
+    !attributeFeatureList
+  ;
+
+  ioDeclarationListASTs += ![@listDeclarationAST new
+    !true # Is predefined
+    ![@lstring new !"2lstringlist" !here]
+    !attributeList
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+local routine appendStructASTForTypeWithLocation
   ?!@semanticDeclarationListAST ioDeclarationListASTs
   ??@string inElementTypeName
 :
@@ -144,6 +170,7 @@ routine appendPredefinedTypesASTs
   appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"string" ;
 
   appendPredefined2StringListTypeAST !?ioDeclarationListASTs ;
+  appendPredefined2LStringListTypeAST !?ioDeclarationListASTs ;
 
   appendStructASTForRangeType !?ioDeclarationListASTs ;
 #--- Enumeration predefined type (used only for testing type generation)

@@ -2797,6 +2797,8 @@ override method @switchInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap openOverrideForSelectBlock] ;
   @switchBranchesForGeneration switchBranchesForGeneration [emptyList] ;
   foreach mBranches do
+    @extractedAssociatedValuesForGeneration extractedAssociatedValuesForGeneration := {} ;
+    @bool firstConstant := true ;
     foreach mSwitchConstantList do
       if [enumConstantMap hasKey ![mValue string]] then
         if [constantsNamedInSwitchInstruction hasKey ![mValue string]] then
@@ -2814,12 +2816,31 @@ override method @switchInstructionAST analyzeSemanticInstruction
           error mValue
             :"the '" . mValue . "' constant has no associated value"
           ;
+        elsif [associatedTypeList length]  != [mAssociatedValuesExtraction length] then
+          error mValue
+            :"the '" . mValue . "' constant requires " + [associatedTypeList length] + "  associated value"
+            + if [associatedTypeList length] > 1 then "s" else "" end
+          ;
+        else
+          for () in associatedTypeList, () in mAssociatedValuesExtraction do
+            if mValue0->string != "" then # Explicit type ?
+              if [mType key] != mValue0->string then
+                error mValue0 : "the required type is '@" . [mType key] . "'" ;
+              end if ;
+            end if ;
+            if firstConstant & (mValue1->string != "") then
+              const cppName := "extractedValue_" + mValue1  ;
+              extractedAssociatedValuesForGeneration += !mType !cppName ;
+              [!?ioVariableMap insertLocalConstant !mValue1 !mType !cppName !cppName] ;
+            end if ;
+          end for ;
         end if ;
       else
         error mValue
         :"'" . mValue . "' is not a constant of '@" . [[switchExpression mType] key] . "' enumeration type"
         ;
       end if ;
+      firstConstant := false ;
     end foreach ;
     analyzeSemanticInstructionList
       !inAnalysisContext
@@ -2830,7 +2851,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
       !?ioVariableMap
       ??@semanticInstructionListForGeneration instructionList
     ;
-    switchBranchesForGeneration += !mSwitchConstantList !instructionList ;
+    switchBranchesForGeneration += !mSwitchConstantList !extractedAssociatedValuesForGeneration ![mEndOfBranch locationIndex] !instructionList ;
   end foreach ;
   [!?ioVariableMap closeOverride !mEndOf_switch_instruction] ;
 #--- Check all constants have been named
@@ -2846,6 +2867,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
   end if ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@switchInstructionForGeneration new
+    ![switchExpression mType]
     !switchExpression
     !switchBranchesForGeneration
   ] ;

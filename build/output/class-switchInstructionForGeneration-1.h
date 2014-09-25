@@ -39,8 +39,9 @@ class GALGAS_switchInstructionForGeneration : public GALGAS_semanticInstructionF
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_switchInstructionForGeneration constructor_new (const class GALGAS_semanticExpressionForGeneration & inOperand0,
-                                                                         const class GALGAS_switchBranchesForGeneration & inOperand1
+  public : static GALGAS_switchInstructionForGeneration constructor_new (const class GALGAS_unifiedTypeMapProxy & inOperand0,
+                                                                         const class GALGAS_semanticExpressionForGeneration & inOperand1,
+                                                                         const class GALGAS_switchBranchesForGeneration & inOperand2
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -53,6 +54,8 @@ class GALGAS_switchInstructionForGeneration : public GALGAS_semanticInstructionF
 
 //--------------------------------- Getters
   public : VIRTUAL_IN_DEBUG class GALGAS_switchBranchesForGeneration reader_mBranches (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapProxy reader_mEnumType (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionForGeneration reader_mSwitchExpression (LOCATION_ARGS) const ;
 
