@@ -11243,7 +11243,7 @@ GALGAS_sortedListSortDescriptorListAST_2D_element GALGAS_sortedListSortDescripto
 
 GALGAS_enumConstantList_2D_element::GALGAS_enumConstantList_2D_element (void) :
 mAttribute_mConstantName (),
-mAttribute_mAssociatedValueTypeList () {
+mAttribute_mAssociatedValueDefinitionList () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11254,22 +11254,22 @@ GALGAS_enumConstantList_2D_element::~ GALGAS_enumConstantList_2D_element (void) 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_enumConstantList_2D_element::GALGAS_enumConstantList_2D_element (const GALGAS_lstring & inOperand0,
-                                                                        const GALGAS_lstringlist & inOperand1) :
+                                                                        const GALGAS__32_lstringlist & inOperand1) :
 mAttribute_mConstantName (inOperand0),
-mAttribute_mAssociatedValueTypeList (inOperand1) {
+mAttribute_mAssociatedValueDefinitionList (inOperand1) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_enumConstantList_2D_element GALGAS_enumConstantList_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
   return GALGAS_enumConstantList_2D_element (GALGAS_lstring::constructor_default (HERE),
-                                             GALGAS_lstringlist::constructor_emptyList (HERE)) ;
+                                             GALGAS__32_lstringlist::constructor_emptyList (HERE)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_enumConstantList_2D_element GALGAS_enumConstantList_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                        const GALGAS_lstringlist & inOperand1 
+                                                                                        const GALGAS__32_lstringlist & inOperand1 
                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_enumConstantList_2D_element result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
@@ -11286,7 +11286,7 @@ typeComparisonResult GALGAS_enumConstantList_2D_element::objectCompare (const GA
     result = mAttribute_mConstantName.objectCompare (inOperand.mAttribute_mConstantName) ;
   }
   if (result == kOperandEqual) {
-    result = mAttribute_mAssociatedValueTypeList.objectCompare (inOperand.mAttribute_mAssociatedValueTypeList) ;
+    result = mAttribute_mAssociatedValueDefinitionList.objectCompare (inOperand.mAttribute_mAssociatedValueDefinitionList) ;
   }
   return result ;
 }
@@ -11294,14 +11294,14 @@ typeComparisonResult GALGAS_enumConstantList_2D_element::objectCompare (const GA
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool GALGAS_enumConstantList_2D_element::isValid (void) const {
-  return mAttribute_mConstantName.isValid () && mAttribute_mAssociatedValueTypeList.isValid () ;
+  return mAttribute_mConstantName.isValid () && mAttribute_mAssociatedValueDefinitionList.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_enumConstantList_2D_element::drop (void) {
   mAttribute_mConstantName.drop () ;
-  mAttribute_mAssociatedValueTypeList.drop () ;
+  mAttribute_mAssociatedValueDefinitionList.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11314,7 +11314,7 @@ void GALGAS_enumConstantList_2D_element::description (C_String & ioString,
   }else{
     mAttribute_mConstantName.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mAttribute_mAssociatedValueTypeList.description (ioString, inIndentation+1) ;
+    mAttribute_mAssociatedValueDefinitionList.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
@@ -11327,8 +11327,8 @@ GALGAS_lstring GALGAS_enumConstantList_2D_element::reader_mConstantName (UNUSED_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist GALGAS_enumConstantList_2D_element::reader_mAssociatedValueTypeList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mAssociatedValueTypeList ;
+GALGAS__32_lstringlist GALGAS_enumConstantList_2D_element::reader_mAssociatedValueDefinitionList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mAssociatedValueDefinitionList ;
 }
 
 

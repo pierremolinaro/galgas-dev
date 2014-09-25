@@ -1805,9 +1805,9 @@ override method @enumDeclarationAST enterInSemanticContext
   foreach mConstantList do
     @unifiedTypeMapProxyList associatedTypeList := {} ;
     @functionSignature argumentTypeList := {} ;
-    for (t) in mAssociatedValueTypeList do
-      [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !t ??@unifiedTypeMapProxy associatedTypeProxy] ;
-      argumentTypeList += !t !associatedTypeProxy !t->string ;
+    for (typeName *) in mAssociatedValueDefinitionList do
+      [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !typeName ??@unifiedTypeMapProxy associatedTypeProxy] ;
+      argumentTypeList += !typeName !associatedTypeProxy !typeName->string ;
       associatedTypeList += !associatedTypeProxy ;
     end for ;
     [!?constantMap insertKey !mConstantName ![constantMap count] !associatedTypeList] ;

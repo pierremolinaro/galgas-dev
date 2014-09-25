@@ -1489,7 +1489,7 @@ class @enumDeclarationAST extends @semanticDeclarationAST {
 
 list @enumConstantList {
   @lstring mConstantName ;
-  @lstringlist mAssociatedValueTypeList ;
+  @2lstringlist mAssociatedValueDefinitionList ;
 }
 
 #---------------------------------------------------------------------------*

@@ -360,9 +360,14 @@ override method @enumDeclarationAST semanticAnalysis
   foreach mConstantList do
     constantList += !mConstantName->string ;
     @unifiedTypeMapProxyList associatedTypeList := {} ;
-    for () in mAssociatedValueTypeList do
-      const associatedTypeProxy := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mValue] ;
+    @stringset associatedValueNameSet := {} ;
+    for () in mAssociatedValueDefinitionList do
+      const associatedTypeProxy := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mValue0] ;
       associatedTypeList += !associatedTypeProxy ;
+      if [associatedValueNameSet hasKey !mValue1->string] then
+        error mValue1 : "duplicated name" ;
+      end if ;
+      associatedValueNameSet += !mValue1->string ;
     end for ;
     [!?constantMap insertKey !mConstantName ![constantMap count] !associatedTypeList] ;
   end foreach ;
