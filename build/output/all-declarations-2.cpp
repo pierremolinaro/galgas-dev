@@ -4689,6 +4689,54 @@ static const char * gEnumNameArrayFor_sourceFileKind [9] = {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_bool GALGAS_sourceFileKind::reader_isExternSourceFile (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_externSourceFile == mEnum) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_sourceFileKind::reader_isLexiqueSourceFile (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_lexiqueSourceFile == mEnum) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_sourceFileKind::reader_isGuiSourceFile (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_guiSourceFile == mEnum) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_sourceFileKind::reader_isOptionSourceFile (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_optionSourceFile == mEnum) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_sourceFileKind::reader_isSyntaxSourceFile (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_syntaxSourceFile == mEnum) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_sourceFileKind::reader_isSemanticsSourceFile (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_semanticsSourceFile == mEnum) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_sourceFileKind::reader_isGrammarSourceFile (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_grammarSourceFile == mEnum) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_sourceFileKind::reader_isProgramSourceFile (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_bool (kNotBuilt != mEnum, kEnum_programSourceFile == mEnum) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 void GALGAS_sourceFileKind::description (C_String & ioString,
                                          const int32_t /* inIndentation */) const {
   ioString << "<enum @sourceFileKind: " << gEnumNameArrayFor_sourceFileKind [mEnum] ;

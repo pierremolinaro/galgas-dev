@@ -1,10 +1,10 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//   GALGAS_bool : this class implements the GALGAS 'bool' native type         *
+//   GALGAS_bool : this class implements the GALGAS 'bool' native type                                                 *
 //                                                                                                                     *
-//  This file is part of libpm library                                         *
+//  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2009, ..., 2010 Pierre Molinaro.                             *
+//  Copyright (C) 2009, ..., 2014 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -28,7 +28,7 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                     'GALGAS_bool' class                                     *
+//                     'GALGAS_bool' class                                                                             *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -51,6 +51,14 @@ mBoolValue (inValue) {
   if (traceIsEnabled ()) {
     appendTrace ("bool", true, inValue ? "true" : "false") ;
   }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool::GALGAS_bool (const bool inIsBuilt,
+                          const bool inValue) :
+mIsValid (inIsBuilt),
+mBoolValue (inValue) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
