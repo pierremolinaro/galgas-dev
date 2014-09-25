@@ -2108,9 +2108,31 @@ rule <semantic_instruction>
     while
       $,$ ;
     end repeat ;
+    @foreachInstructionEnumeratedObjectElementListAST associatedValuesExtraction := {} ;
+    select
+    or
+      $($ ;
+      repeat
+        select
+          $*$ ;
+          associatedValuesExtraction += !["" nowhere] !["" nowhere] ;
+         or
+          @lstring typeName ;
+          select
+            $type_name$ ?typeName ;
+          or
+            typeName := ["" nowhere] ;
+          end select ;
+          $identifier$ ??@lstring constantName ;
+          associatedValuesExtraction += !typeName !constantName ;
+        end select ;
+      while
+      end repeat ;
+      $)$ ;
+    end select ;
     $:$ ;
     <semantic_instruction_list> ??@semanticInstructionListAST instructions ;
-    switchBranches += !constantNameList !instructions !here ;
+    switchBranches += !constantNameList !associatedValuesExtraction !instructions !here ;
   while
   end repeat ;
   $end$ ;

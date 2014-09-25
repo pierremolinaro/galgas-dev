@@ -1147,6 +1147,10 @@ class @syntaxSendInstructionForGeneration extends @syntaxInstructionForGeneratio
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+#! switch
+
+#---------------------------------------------------------------------------*
+
 list @switchBranchesForGeneration {
   @lstringlist mSwitchConstantList ;
   @semanticInstructionListForGeneration mInstructions ;

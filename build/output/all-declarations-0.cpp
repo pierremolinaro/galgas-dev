@@ -33319,6 +33319,7 @@ class cCollectionElement_switchBranchesAST : public cCollectionElement {
 
 //--- Constructor
   public : cCollectionElement_switchBranchesAST (const GALGAS_lstringlist & in_mSwitchConstantList,
+                                                 const GALGAS_foreachInstructionEnumeratedObjectElementListAST & in_mAssociatedValuesExtraction,
                                                  const GALGAS_semanticInstructionListAST & in_mInstructions,
                                                  const GALGAS_location & in_mEndOfBranch
                                                  COMMA_LOCATION_ARGS) ;
@@ -33339,11 +33340,12 @@ class cCollectionElement_switchBranchesAST : public cCollectionElement {
 //---------------------------------------------------------------------------------------------------------------------*
 
 cCollectionElement_switchBranchesAST::cCollectionElement_switchBranchesAST (const GALGAS_lstringlist & in_mSwitchConstantList,
+                                                                            const GALGAS_foreachInstructionEnumeratedObjectElementListAST & in_mAssociatedValuesExtraction,
                                                                             const GALGAS_semanticInstructionListAST & in_mInstructions,
                                                                             const GALGAS_location & in_mEndOfBranch
                                                                             COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (in_mSwitchConstantList, in_mInstructions, in_mEndOfBranch) {
+mObject (in_mSwitchConstantList, in_mAssociatedValuesExtraction, in_mInstructions, in_mEndOfBranch) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -33356,7 +33358,7 @@ bool cCollectionElement_switchBranchesAST::isValid (void) const {
 
 cCollectionElement * cCollectionElement_switchBranchesAST::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_switchBranchesAST (mObject.mAttribute_mSwitchConstantList, mObject.mAttribute_mInstructions, mObject.mAttribute_mEndOfBranch COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_switchBranchesAST (mObject.mAttribute_mSwitchConstantList, mObject.mAttribute_mAssociatedValuesExtraction, mObject.mAttribute_mInstructions, mObject.mAttribute_mEndOfBranch COMMA_HERE)) ;
   return result ;
 }
 
@@ -33367,6 +33369,10 @@ void cCollectionElement_switchBranchesAST::description (C_String & ioString, con
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mSwitchConstantList" ":" ;
   mObject.mAttribute_mSwitchConstantList.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mAssociatedValuesExtraction" ":" ;
+  mObject.mAttribute_mAssociatedValuesExtraction.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mInstructions" ":" ;
@@ -33411,14 +33417,15 @@ GALGAS_switchBranchesAST GALGAS_switchBranchesAST::constructor_emptyList (LOCATI
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_switchBranchesAST GALGAS_switchBranchesAST::constructor_listWithValue (const GALGAS_lstringlist & inOperand0,
-                                                                              const GALGAS_semanticInstructionListAST & inOperand1,
-                                                                              const GALGAS_location & inOperand2
+                                                                              const GALGAS_foreachInstructionEnumeratedObjectElementListAST & inOperand1,
+                                                                              const GALGAS_semanticInstructionListAST & inOperand2,
+                                                                              const GALGAS_location & inOperand3
                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_switchBranchesAST result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
     result.createNewEmptyList (THERE) ;
     capCollectionElement attributes ;
-    GALGAS_switchBranchesAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
+    GALGAS_switchBranchesAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE) ;
     result.addObject (attributes) ;
   }
   return result ;
@@ -33428,11 +33435,13 @@ GALGAS_switchBranchesAST GALGAS_switchBranchesAST::constructor_listWithValue (co
 
 void GALGAS_switchBranchesAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                           const GALGAS_lstringlist & in_mSwitchConstantList,
+                                                          const GALGAS_foreachInstructionEnumeratedObjectElementListAST & in_mAssociatedValuesExtraction,
                                                           const GALGAS_semanticInstructionListAST & in_mInstructions,
                                                           const GALGAS_location & in_mEndOfBranch
                                                           COMMA_LOCATION_ARGS) {
   cCollectionElement_switchBranchesAST * p = NULL ;
   macroMyNew (p, cCollectionElement_switchBranchesAST (in_mSwitchConstantList,
+                                                       in_mAssociatedValuesExtraction,
                                                        in_mInstructions,
                                                        in_mEndOfBranch COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
@@ -33442,12 +33451,13 @@ void GALGAS_switchBranchesAST::makeAttributesFromObjects (capCollectionElement &
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_switchBranchesAST::addAssign_operation (const GALGAS_lstringlist & inOperand0,
-                                                    const GALGAS_semanticInstructionListAST & inOperand1,
-                                                    const GALGAS_location & inOperand2
+                                                    const GALGAS_foreachInstructionEnumeratedObjectElementListAST & inOperand1,
+                                                    const GALGAS_semanticInstructionListAST & inOperand2,
+                                                    const GALGAS_location & inOperand3
                                                     COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
+  if (isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
     cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_switchBranchesAST (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+    macroMyNew (p, cCollectionElement_switchBranchesAST (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -33458,14 +33468,15 @@ void GALGAS_switchBranchesAST::addAssign_operation (const GALGAS_lstringlist & i
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_switchBranchesAST::modifier_insertAtIndex (const GALGAS_lstringlist inOperand0,
-                                                       const GALGAS_semanticInstructionListAST inOperand1,
-                                                       const GALGAS_location inOperand2,
+                                                       const GALGAS_foreachInstructionEnumeratedObjectElementListAST inOperand1,
+                                                       const GALGAS_semanticInstructionListAST inOperand2,
+                                                       const GALGAS_location inOperand3,
                                                        const GALGAS_uint inInsertionIndex,
                                                        C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) {
-  if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
+  if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
     cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_switchBranchesAST (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
+    macroMyNew (p, cCollectionElement_switchBranchesAST (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -33476,8 +33487,9 @@ void GALGAS_switchBranchesAST::modifier_insertAtIndex (const GALGAS_lstringlist 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_switchBranchesAST::modifier_removeAtIndex (GALGAS_lstringlist & outOperand0,
-                                                       GALGAS_semanticInstructionListAST & outOperand1,
-                                                       GALGAS_location & outOperand2,
+                                                       GALGAS_foreachInstructionEnumeratedObjectElementListAST & outOperand1,
+                                                       GALGAS_semanticInstructionListAST & outOperand2,
+                                                       GALGAS_location & outOperand3,
                                                        const GALGAS_uint inRemoveIndex,
                                                        C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) {
@@ -33489,11 +33501,13 @@ void GALGAS_switchBranchesAST::modifier_removeAtIndex (GALGAS_lstringlist & outO
       outOperand0.drop () ;
       outOperand1.drop () ;
       outOperand2.drop () ;
+      outOperand3.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_switchBranchesAST) ;
       outOperand0 = p->mObject.mAttribute_mSwitchConstantList ;
-      outOperand1 = p->mObject.mAttribute_mInstructions ;
-      outOperand2 = p->mObject.mAttribute_mEndOfBranch ;
+      outOperand1 = p->mObject.mAttribute_mAssociatedValuesExtraction ;
+      outOperand2 = p->mObject.mAttribute_mInstructions ;
+      outOperand3 = p->mObject.mAttribute_mEndOfBranch ;
     }
   }
 }
@@ -33501,8 +33515,9 @@ void GALGAS_switchBranchesAST::modifier_removeAtIndex (GALGAS_lstringlist & outO
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_switchBranchesAST::modifier_popFirst (GALGAS_lstringlist & outOperand0,
-                                                  GALGAS_semanticInstructionListAST & outOperand1,
-                                                  GALGAS_location & outOperand2,
+                                                  GALGAS_foreachInstructionEnumeratedObjectElementListAST & outOperand1,
+                                                  GALGAS_semanticInstructionListAST & outOperand2,
+                                                  GALGAS_location & outOperand3,
                                                   C_Compiler * inCompiler
                                                   COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
@@ -33512,19 +33527,22 @@ void GALGAS_switchBranchesAST::modifier_popFirst (GALGAS_lstringlist & outOperan
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
+    outOperand3.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_switchBranchesAST) ;
     outOperand0 = p->mObject.mAttribute_mSwitchConstantList ;
-    outOperand1 = p->mObject.mAttribute_mInstructions ;
-    outOperand2 = p->mObject.mAttribute_mEndOfBranch ;
+    outOperand1 = p->mObject.mAttribute_mAssociatedValuesExtraction ;
+    outOperand2 = p->mObject.mAttribute_mInstructions ;
+    outOperand3 = p->mObject.mAttribute_mEndOfBranch ;
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_switchBranchesAST::modifier_popLast (GALGAS_lstringlist & outOperand0,
-                                                 GALGAS_semanticInstructionListAST & outOperand1,
-                                                 GALGAS_location & outOperand2,
+                                                 GALGAS_foreachInstructionEnumeratedObjectElementListAST & outOperand1,
+                                                 GALGAS_semanticInstructionListAST & outOperand2,
+                                                 GALGAS_location & outOperand3,
                                                  C_Compiler * inCompiler
                                                  COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
@@ -33534,19 +33552,22 @@ void GALGAS_switchBranchesAST::modifier_popLast (GALGAS_lstringlist & outOperand
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
+    outOperand3.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_switchBranchesAST) ;
     outOperand0 = p->mObject.mAttribute_mSwitchConstantList ;
-    outOperand1 = p->mObject.mAttribute_mInstructions ;
-    outOperand2 = p->mObject.mAttribute_mEndOfBranch ;
+    outOperand1 = p->mObject.mAttribute_mAssociatedValuesExtraction ;
+    outOperand2 = p->mObject.mAttribute_mInstructions ;
+    outOperand3 = p->mObject.mAttribute_mEndOfBranch ;
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_switchBranchesAST::method_first (GALGAS_lstringlist & outOperand0,
-                                             GALGAS_semanticInstructionListAST & outOperand1,
-                                             GALGAS_location & outOperand2,
+                                             GALGAS_foreachInstructionEnumeratedObjectElementListAST & outOperand1,
+                                             GALGAS_semanticInstructionListAST & outOperand2,
+                                             GALGAS_location & outOperand3,
                                              C_Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
@@ -33556,19 +33577,22 @@ void GALGAS_switchBranchesAST::method_first (GALGAS_lstringlist & outOperand0,
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
+    outOperand3.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_switchBranchesAST) ;
     outOperand0 = p->mObject.mAttribute_mSwitchConstantList ;
-    outOperand1 = p->mObject.mAttribute_mInstructions ;
-    outOperand2 = p->mObject.mAttribute_mEndOfBranch ;
+    outOperand1 = p->mObject.mAttribute_mAssociatedValuesExtraction ;
+    outOperand2 = p->mObject.mAttribute_mInstructions ;
+    outOperand3 = p->mObject.mAttribute_mEndOfBranch ;
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_switchBranchesAST::method_last (GALGAS_lstringlist & outOperand0,
-                                            GALGAS_semanticInstructionListAST & outOperand1,
-                                            GALGAS_location & outOperand2,
+                                            GALGAS_foreachInstructionEnumeratedObjectElementListAST & outOperand1,
+                                            GALGAS_semanticInstructionListAST & outOperand2,
+                                            GALGAS_location & outOperand3,
                                             C_Compiler * inCompiler
                                             COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
@@ -33578,11 +33602,13 @@ void GALGAS_switchBranchesAST::method_last (GALGAS_lstringlist & outOperand0,
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
+    outOperand3.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_switchBranchesAST) ;
     outOperand0 = p->mObject.mAttribute_mSwitchConstantList ;
-    outOperand1 = p->mObject.mAttribute_mInstructions ;
-    outOperand2 = p->mObject.mAttribute_mEndOfBranch ;
+    outOperand1 = p->mObject.mAttribute_mAssociatedValuesExtraction ;
+    outOperand2 = p->mObject.mAttribute_mInstructions ;
+    outOperand3 = p->mObject.mAttribute_mEndOfBranch ;
   }
 }
 
@@ -33655,6 +33681,21 @@ GALGAS_lstringlist GALGAS_switchBranchesAST::reader_mSwitchConstantListAtIndex (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_foreachInstructionEnumeratedObjectElementListAST GALGAS_switchBranchesAST::reader_mAssociatedValuesExtractionAtIndex (const GALGAS_uint & inIndex,
+                                                                                                                             C_Compiler * inCompiler
+                                                                                                                             COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_switchBranchesAST * p = (cCollectionElement_switchBranchesAST *) attributes.ptr () ;
+  GALGAS_foreachInstructionEnumeratedObjectElementListAST result ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_switchBranchesAST) ;
+    result = p->mObject.mAttribute_mAssociatedValuesExtraction ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_semanticInstructionListAST GALGAS_switchBranchesAST::reader_mInstructionsAtIndex (const GALGAS_uint & inIndex,
                                                                                          C_Compiler * inCompiler
                                                                                          COMMA_LOCATION_ARGS) const {
@@ -33708,6 +33749,14 @@ GALGAS_lstringlist cEnumerator_switchBranchesAST::current_mSwitchConstantList (L
   const cCollectionElement_switchBranchesAST * p = (const cCollectionElement_switchBranchesAST *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_switchBranchesAST) ;
   return p->mObject.mAttribute_mSwitchConstantList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_foreachInstructionEnumeratedObjectElementListAST cEnumerator_switchBranchesAST::current_mAssociatedValuesExtraction (LOCATION_ARGS) const {
+  const cCollectionElement_switchBranchesAST * p = (const cCollectionElement_switchBranchesAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_switchBranchesAST) ;
+  return p->mObject.mAttribute_mAssociatedValuesExtraction ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

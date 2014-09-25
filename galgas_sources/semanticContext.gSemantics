@@ -785,7 +785,7 @@ override method @predefinedTypeAST enterInSemanticContext
     !enumerationVariants
     ![selfcopy getSupportedOperatorFlags]
     !addAssignArgumentList
-    ![@stringset emptySet]
+    !{}
     !{}
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
@@ -992,7 +992,7 @@ override method @mapDeclarationAST enterInSemanticContext
     !enumerationVariants
     !doNotGenererateObjectCompare [] | plusEqualOperatorWithFieldListNeedsCompilerArg [] | supportWithAccessor []
     !argumentTypeListForAddAssignWithFieldExpressionList
-    ![@stringset emptySet]
+    !{}
     !{}
     !mSearchMethodList
     ![@mapSearchMethodListAST emptyList]
@@ -1240,7 +1240,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     !enumerationVariants
     !doNotGenererateObjectCompare [] | supportWithAccessor []
     ![@functionSignature emptyList]
-    ![@stringset emptySet]
+    !{}
     !{}
     !mSearchMethodList
     ![@mapSearchMethodListAST emptyList]
@@ -1388,7 +1388,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     ![@stringlist emptyList]
     !doNotGenererateObjectCompare []
     ![@functionSignature emptyList]
-    ![@stringset emptySet]
+    !{}
     !{}
     ![@mapSearchMethodListAST emptyList]
     !searchMethodList
@@ -1520,7 +1520,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
     ![@stringlist emptyList]
     !0
     ![@functionSignature emptyList]
-    ![@stringset emptySet]
+    !{}
     !{}
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
@@ -1773,7 +1773,7 @@ override method @graphDeclarationAST enterInSemanticContext
     ![@stringlist emptyList]
     !doNotGenererateObjectCompare []
     ![@functionSignature emptyList]
-    ![@stringset emptySet]
+    !{}
     !{}
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
@@ -1801,14 +1801,16 @@ override method @enumDeclarationAST enterInSemanticContext
 #--- currentType type index
   [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mEnumTypeName ??@unifiedTypeMapProxy enumTypeProxy] ;
 #--- Constructors
-  @stringset constantSet [emptySet] ;
+  @constantIndexMap constantMap [emptyMap] ;
   foreach mConstantList do
-    constantSet += !mConstantName->string ;
+    @unifiedTypeMapProxyList associatedTypeList := {} ;
     @functionSignature argumentTypeList := {} ;
     for (t) in mAssociatedValueTypeList do
-      [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !t ??@unifiedTypeMapProxy associatedTypeIndex] ;
-      argumentTypeList += !t !associatedTypeIndex !t->string ;
+      [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !t ??@unifiedTypeMapProxy associatedTypeProxy] ;
+      argumentTypeList += !t !associatedTypeProxy !t->string ;
+      associatedTypeList += !associatedTypeProxy ;
     end for ;
+    [!?constantMap insertKey !mConstantName ![constantMap count] !associatedTypeList] ;
     [!?constructorMap insertOrReplace
       !mConstantName
       !argumentTypeList
@@ -1858,7 +1860,7 @@ override method @enumDeclarationAST enterInSemanticContext
     ![@stringlist emptyList]
     !generateDescriptionReaderUtilityMethod [] | isComparable []
     ![@functionSignature emptyList]
-    !constantSet
+    !constantMap
     !mConstantList
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
@@ -2200,7 +2202,7 @@ override method @listDeclarationAST enterInSemanticContext
     !enumerationVariants
     !binaryConcatOperator [] | doNotGenererateObjectCompare [] | plusEqualOperatorWithExpression [] | binaryAddOperator []
     !constructorAttributeTypeList
-    ![@stringset emptySet]
+    !{}
     !{}
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
@@ -2327,7 +2329,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !enumerationVariants
     !binaryConcatOperator [] | doNotGenererateObjectCompare [] | plusEqualOperatorWithExpression []
     !constructorAttributeTypeList
-    ![@stringset emptySet]
+    !{}
     !{}
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
@@ -2438,7 +2440,7 @@ override method @structDeclarationAST enterInSemanticContext
     ![@stringlist emptyList]
     !generateDescriptionReaderUtilityMethod []
     ![@functionSignature emptyList]
-    ![@stringset emptySet]
+    !{}
     !{}
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
@@ -2663,7 +2665,7 @@ override method @classDeclarationAST enterInSemanticContext
     ![@stringlist emptyList]
     !0
     ![@functionSignature emptyList]
-    ![@stringset emptySet]
+    !{}
     !{}
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
@@ -2878,7 +2880,7 @@ override method @arrayDeclarationAST enterInSemanticContext
     ![@stringlist emptyList]
     !0
     ![@functionSignature emptyList] # addAssignOperatorDescription
-    ![@stringset emptySet]
+    !{}
     !{}
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
@@ -2978,7 +2980,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     !enumerationVariants
     !doNotGenererateObjectCompare []
     !addAssignOperatorDescription
-    ![@stringset emptySet]
+    !{}
     !{}
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]

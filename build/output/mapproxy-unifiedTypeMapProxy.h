@@ -76,8 +76,8 @@ class GALGAS_unifiedTypeMapProxy : public AC_GALGAS_uniqueMapProxy {
   public : VIRTUAL_IN_DEBUG class GALGAS_enumConstantList reader_mEnumConstantList (C_Compiler * inCompiler
                                                                                     COMMA_LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_stringset reader_mEnumConstantSet (C_Compiler * inCompiler
-                                                                            COMMA_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_constantIndexMap reader_mEnumConstantMap (C_Compiler * inCompiler
+                                                                                   COMMA_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_enumerationDescriptorList reader_mEnumerationDescriptor (C_Compiler * inCompiler
                                                                                                   COMMA_LOCATION_ARGS) const ;

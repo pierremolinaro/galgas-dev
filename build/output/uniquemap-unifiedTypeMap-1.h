@@ -16,6 +16,7 @@
 #include "list-typedAttributeList.h"
 #include "map-attributeMap-1.h"
 #include "map-classMethodMap-1.h"
+#include "map-constantIndexMap-1.h"
 #include "map-constructorMap-1.h"
 #include "map-instanceMethodMap-1.h"
 #include "map-modifierMap-1.h"
@@ -76,7 +77,7 @@ class GALGAS_unifiedTypeMap : public AC_GALGAS_uniqueMap {
                                                      class GALGAS_stringlist constinArgument15,
                                                      class GALGAS_uint constinArgument16,
                                                      class GALGAS_functionSignature constinArgument17,
-                                                     class GALGAS_stringset constinArgument18,
+                                                     class GALGAS_constantIndexMap constinArgument18,
                                                      class GALGAS_enumConstantList constinArgument19,
                                                      class GALGAS_mapSearchMethodListAST constinArgument20,
                                                      class GALGAS_mapSearchMethodListAST constinArgument21,
@@ -128,7 +129,7 @@ class GALGAS_unifiedTypeMap : public AC_GALGAS_uniqueMap {
                                                                       C_Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
-  public : VIRTUAL_IN_DEBUG void modifier_setMEnumConstantSetForKey (class GALGAS_stringset constinArgument0,
+  public : VIRTUAL_IN_DEBUG void modifier_setMEnumConstantMapForKey (class GALGAS_constantIndexMap constinArgument0,
                                                                      class GALGAS_string constinArgument1,
                                                                      C_Compiler * inCompiler
                                                                      COMMA_LOCATION_ARGS) ;
@@ -238,7 +239,7 @@ class GALGAS_unifiedTypeMap : public AC_GALGAS_uniqueMap {
                                                    class GALGAS_stringlist & outArgument15,
                                                    class GALGAS_uint & outArgument16,
                                                    class GALGAS_functionSignature & outArgument17,
-                                                   class GALGAS_stringset & outArgument18,
+                                                   class GALGAS_constantIndexMap & outArgument18,
                                                    class GALGAS_enumConstantList & outArgument19,
                                                    class GALGAS_mapSearchMethodListAST & outArgument20,
                                                    class GALGAS_mapSearchMethodListAST & outArgument21,
@@ -285,9 +286,9 @@ class GALGAS_unifiedTypeMap : public AC_GALGAS_uniqueMap {
                                                                                           C_Compiler * inCompiler
                                                                                           COMMA_LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_stringset reader_mEnumConstantSetForKey (const class GALGAS_string & constinOperand0,
-                                                                                  C_Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_constantIndexMap reader_mEnumConstantMapForKey (const class GALGAS_string & constinOperand0,
+                                                                                         C_Compiler * inCompiler
+                                                                                         COMMA_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_enumerationDescriptorList reader_mEnumerationDescriptorForKey (const class GALGAS_string & constinOperand0,
                                                                                                         C_Compiler * inCompiler
@@ -397,7 +398,7 @@ class cEnumerator_unifiedTypeMap : public cGenericAbstractEnumerator {
   public : class GALGAS_stringlist current_mEnumeratorVariants (LOCATION_ARGS) const ;
   public : class GALGAS_uint current_mHandledOperatorFlags (LOCATION_ARGS) const ;
   public : class GALGAS_functionSignature current_mAddAssignOperatorArguments (LOCATION_ARGS) const ;
-  public : class GALGAS_stringset current_mEnumConstantSet (LOCATION_ARGS) const ;
+  public : class GALGAS_constantIndexMap current_mEnumConstantMap (LOCATION_ARGS) const ;
   public : class GALGAS_enumConstantList current_mEnumConstantList (LOCATION_ARGS) const ;
   public : class GALGAS_mapSearchMethodListAST current_mMapSearchMethodList (LOCATION_ARGS) const ;
   public : class GALGAS_mapSearchMethodListAST current_mMapProxySearchConstructorList (LOCATION_ARGS) const ;

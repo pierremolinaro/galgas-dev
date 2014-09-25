@@ -5566,6 +5566,7 @@ GALGAS_forInstructionEnumeratedObjectListAST_2D_element GALGAS_forInstructionEnu
 
 GALGAS_switchBranchesAST_2D_element::GALGAS_switchBranchesAST_2D_element (void) :
 mAttribute_mSwitchConstantList (),
+mAttribute_mAssociatedValuesExtraction (),
 mAttribute_mInstructions (),
 mAttribute_mEndOfBranch () {
 }
@@ -5578,17 +5579,20 @@ GALGAS_switchBranchesAST_2D_element::~ GALGAS_switchBranchesAST_2D_element (void
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_switchBranchesAST_2D_element::GALGAS_switchBranchesAST_2D_element (const GALGAS_lstringlist & inOperand0,
-                                                                          const GALGAS_semanticInstructionListAST & inOperand1,
-                                                                          const GALGAS_location & inOperand2) :
+                                                                          const GALGAS_foreachInstructionEnumeratedObjectElementListAST & inOperand1,
+                                                                          const GALGAS_semanticInstructionListAST & inOperand2,
+                                                                          const GALGAS_location & inOperand3) :
 mAttribute_mSwitchConstantList (inOperand0),
-mAttribute_mInstructions (inOperand1),
-mAttribute_mEndOfBranch (inOperand2) {
+mAttribute_mAssociatedValuesExtraction (inOperand1),
+mAttribute_mInstructions (inOperand2),
+mAttribute_mEndOfBranch (inOperand3) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_switchBranchesAST_2D_element GALGAS_switchBranchesAST_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
   return GALGAS_switchBranchesAST_2D_element (GALGAS_lstringlist::constructor_emptyList (HERE),
+                                              GALGAS_foreachInstructionEnumeratedObjectElementListAST::constructor_emptyList (HERE),
                                               GALGAS_semanticInstructionListAST::constructor_emptyList (HERE),
                                               GALGAS_location::constructor_nowhere (HERE)) ;
 }
@@ -5596,12 +5600,13 @@ GALGAS_switchBranchesAST_2D_element GALGAS_switchBranchesAST_2D_element::constru
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_switchBranchesAST_2D_element GALGAS_switchBranchesAST_2D_element::constructor_new (const GALGAS_lstringlist & inOperand0,
-                                                                                          const GALGAS_semanticInstructionListAST & inOperand1,
-                                                                                          const GALGAS_location & inOperand2 
+                                                                                          const GALGAS_foreachInstructionEnumeratedObjectElementListAST & inOperand1,
+                                                                                          const GALGAS_semanticInstructionListAST & inOperand2,
+                                                                                          const GALGAS_location & inOperand3 
                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_switchBranchesAST_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_switchBranchesAST_2D_element (inOperand0, inOperand1, inOperand2) ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
+    result = GALGAS_switchBranchesAST_2D_element (inOperand0, inOperand1, inOperand2, inOperand3) ;
   }
   return result ;
 }
@@ -5612,6 +5617,9 @@ typeComparisonResult GALGAS_switchBranchesAST_2D_element::objectCompare (const G
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
     result = mAttribute_mSwitchConstantList.objectCompare (inOperand.mAttribute_mSwitchConstantList) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mAssociatedValuesExtraction.objectCompare (inOperand.mAttribute_mAssociatedValuesExtraction) ;
   }
   if (result == kOperandEqual) {
     result = mAttribute_mInstructions.objectCompare (inOperand.mAttribute_mInstructions) ;
@@ -5625,13 +5633,14 @@ typeComparisonResult GALGAS_switchBranchesAST_2D_element::objectCompare (const G
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool GALGAS_switchBranchesAST_2D_element::isValid (void) const {
-  return mAttribute_mSwitchConstantList.isValid () && mAttribute_mInstructions.isValid () && mAttribute_mEndOfBranch.isValid () ;
+  return mAttribute_mSwitchConstantList.isValid () && mAttribute_mAssociatedValuesExtraction.isValid () && mAttribute_mInstructions.isValid () && mAttribute_mEndOfBranch.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_switchBranchesAST_2D_element::drop (void) {
   mAttribute_mSwitchConstantList.drop () ;
+  mAttribute_mAssociatedValuesExtraction.drop () ;
   mAttribute_mInstructions.drop () ;
   mAttribute_mEndOfBranch.drop () ;
 }
@@ -5646,6 +5655,8 @@ void GALGAS_switchBranchesAST_2D_element::description (C_String & ioString,
   }else{
     mAttribute_mSwitchConstantList.description (ioString, inIndentation+1) ;
     ioString << ", " ;
+    mAttribute_mAssociatedValuesExtraction.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
     mAttribute_mInstructions.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mAttribute_mEndOfBranch.description (ioString, inIndentation+1) ;
@@ -5657,6 +5668,12 @@ void GALGAS_switchBranchesAST_2D_element::description (C_String & ioString,
 
 GALGAS_lstringlist GALGAS_switchBranchesAST_2D_element::reader_mSwitchConstantList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSwitchConstantList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_foreachInstructionEnumeratedObjectElementListAST GALGAS_switchBranchesAST_2D_element::reader_mAssociatedValuesExtraction (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mAssociatedValuesExtraction ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

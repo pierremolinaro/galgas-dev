@@ -2790,28 +2790,37 @@ override method @switchInstructionAST analyzeSemanticInstruction
     error mEndOfSwitchExpression
     : "the switch expression type should be an instance of an enumeration type (the '@" . [[switchExpression mType] key] . "' type is not an enumeration type)" ;
   end if ;
-#--- Enum constant stringset
-  const enumConstantStringSet := [[switchExpression mType] mEnumConstantSet] ;
+#--- Enum constant map
+  const enumConstantMap := [[switchExpression mType] mEnumConstantMap] ;
   @stringset constantsNamedInSwitchInstruction [emptySet] ;
 #--- Analyze branches
   [!?ioVariableMap openOverrideForSelectBlock] ;
   @switchBranchesForGeneration switchBranchesForGeneration [emptyList] ;
   foreach mBranches do
     foreach mSwitchConstantList do
-      if [enumConstantStringSet hasKey ![mValue string]] then
+      if [enumConstantMap hasKey ![mValue string]] then
         if [constantsNamedInSwitchInstruction hasKey ![mValue string]] then
           error mValue
           :"the '" . mValue . "' constant is already named in this switch instruction"
           ;
         end if ;
         constantsNamedInSwitchInstruction += ![mValue string] ;
+        [enumConstantMap searchKey !mValue ?* ??@unifiedTypeMapProxyList associatedTypeList] ;
+        if ([associatedTypeList length] > 0) & ([mAssociatedValuesExtraction length] == 0) then
+          error mValue
+            :"the associated values of '" . mValue . "' constant should be extracted"
+          ;
+        elsif ([associatedTypeList length] == 0) & ([mAssociatedValuesExtraction length] > 0) then
+          error mValue
+            :"the '" . mValue . "' constant has no associated value"
+          ;
+        end if ;
       else
         error mValue
         :"'" . mValue . "' is not a constant of '@" . [[switchExpression mType] key] . "' enumeration type"
         ;
       end if ;
     end foreach ;
-    @semanticInstructionListForGeneration instructionList ;
     analyzeSemanticInstructionList
       !inAnalysisContext
       ![@localConstantList emptyList]
@@ -2819,13 +2828,13 @@ override method @switchInstructionAST analyzeSemanticInstruction
       !mInstructions
       !mEndOfBranch
       !?ioVariableMap
-      ?instructionList
+      ??@semanticInstructionListForGeneration instructionList
     ;
     switchBranchesForGeneration += !mSwitchConstantList !instructionList ;
   end foreach ;
   [!?ioVariableMap closeOverride !mEndOf_switch_instruction] ;
 #--- Check all constants have been named
-  const forgottenConstants := enumConstantStringSet - constantsNamedInSwitchInstruction ;
+  const forgottenConstants := [enumConstantMap keySet] - constantsNamedInSwitchInstruction ;
   if [forgottenConstants count] > 0 then
     @string s := "" ;
     foreach forgottenConstants do
@@ -2908,7 +2917,7 @@ override method @matchInstructionAST analyzeSemanticInstruction
             error mTypeNameOrEnumerationConstantName
             :"a constant of the '@" . [[mExpression mType] key] . "' enumeration type is expected here"
             ;          
-          elsif not [[type mEnumConstantSet] hasKey ![mTypeNameOrEnumerationConstantName string]] then
+          elsif not [[type mEnumConstantMap] hasKey ![mTypeNameOrEnumerationConstantName string]] then
             error mTypeNameOrEnumerationConstantName
             :"the '" . mTypeNameOrEnumerationConstantName . "' symbol is not a constant of the '@" . [[mExpression mType] key] . "' enumeration type"
             ;

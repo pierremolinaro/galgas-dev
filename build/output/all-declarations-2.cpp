@@ -12681,13 +12681,13 @@ GALGAS_functionSignature GALGAS_unifiedTypeMapProxy::reader_mAddAssignOperatorAr
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringset GALGAS_unifiedTypeMapProxy::reader_mEnumConstantSet (C_Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) const {
-  GALGAS_stringset result ;
-  const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) getAttributeListPointer (inCompiler, "mEnumConstantSet" COMMA_THERE) ;
+GALGAS_constantIndexMap GALGAS_unifiedTypeMapProxy::reader_mEnumConstantMap (C_Compiler * inCompiler
+                                                                             COMMA_LOCATION_ARGS) const {
+  GALGAS_constantIndexMap result ;
+  const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) getAttributeListPointer (inCompiler, "mEnumConstantMap" COMMA_THERE) ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
-    result = p->mAttribute_mEnumConstantSet;
+    result = p->mAttribute_mEnumConstantMap;
   }
   return result ;
 }

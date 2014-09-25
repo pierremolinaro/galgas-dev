@@ -32,7 +32,7 @@ class cMapElement_unifiedTypeMap : public cMapElement {
   public : GALGAS_stringlist mAttribute_mEnumeratorVariants ;
   public : GALGAS_uint mAttribute_mHandledOperatorFlags ;
   public : GALGAS_functionSignature mAttribute_mAddAssignOperatorArguments ;
-  public : GALGAS_stringset mAttribute_mEnumConstantSet ;
+  public : GALGAS_constantIndexMap mAttribute_mEnumConstantMap ;
   public : GALGAS_enumConstantList mAttribute_mEnumConstantList ;
   public : GALGAS_mapSearchMethodListAST mAttribute_mMapSearchMethodList ;
   public : GALGAS_mapSearchMethodListAST mAttribute_mMapProxySearchConstructorList ;
@@ -61,7 +61,7 @@ class cMapElement_unifiedTypeMap : public cMapElement {
                                        const GALGAS_stringlist & in_mEnumeratorVariants,
                                        const GALGAS_uint & in_mHandledOperatorFlags,
                                        const GALGAS_functionSignature & in_mAddAssignOperatorArguments,
-                                       const GALGAS_stringset & in_mEnumConstantSet,
+                                       const GALGAS_constantIndexMap & in_mEnumConstantMap,
                                        const GALGAS_enumConstantList & in_mEnumConstantList,
                                        const GALGAS_mapSearchMethodListAST & in_mMapSearchMethodList,
                                        const GALGAS_mapSearchMethodListAST & in_mMapProxySearchConstructorList,

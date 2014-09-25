@@ -7,6 +7,7 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+#include "list-unifiedTypeMapProxyList.h"
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                    Class for element of '@constantIndexMap' map                                     *
@@ -16,10 +17,12 @@
 class cMapElement_constantIndexMap : public cMapElement {
 //--- Map attributes
   public : GALGAS_uint mAttribute_mIndex ;
+  public : GALGAS_unifiedTypeMapProxyList mAttribute_mAssociatedTypeList ;
 
 //--- Constructor
   public : cMapElement_constantIndexMap (const GALGAS_lstring & inKey,
-                                         const GALGAS_uint & in_mIndex
+                                         const GALGAS_uint & in_mIndex,
+                                         const GALGAS_unifiedTypeMapProxyList & in_mAssociatedTypeList
                                          COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
