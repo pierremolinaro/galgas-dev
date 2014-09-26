@@ -1393,8 +1393,15 @@ class @sortedListTypeForGeneration extends @semanticTypeForGeneration {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
+list @enumConstantListForGeneration {
+  @string mConstantName ;
+  @unifiedTypeMapProxyList mAssociatedValueTypeList ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @enumTypeForGeneration extends @semanticTypeForGeneration {
-  @enumConstantList mConstantList ;
+  @enumConstantListForGeneration mConstantList ;
 }
 
 #---------------------------------------------------------------------------*
