@@ -43,6 +43,123 @@ Un type enuméré accpete les six opérateurs de comparaison (\galgas{==}, \galg
 \end{galgascode}
 
 
+\sectionLabel{Tester une valeur}{testerValeurEnum}
+
+Il y a deux façons de tester une valeur d'un type énuméré. La première consiste à comparer avec une valeur obtenue par un constructeur, par exemple :
+\begin{galgascode}
+  if feu == [@feuTricolore orange] then ...
+\end{galgascode}
+
+La seconde possibilité est d'appeler les \emph{getter} implicitement déclarés : pour chaque constante, un \emph{getter} sans argument nommé  \galgas{is<Constante>} (le préfixe \galgas{is} suivi du nom de la constante, dont le premier caractère est en majuscule) est déclaré ; il renvoie une valeur de type \galgas{@bool} qui est vrai si le récepteur a la valeur correspondante :
+\begin{galgascode}
+  if [feu isOrange] then ...
+\end{galgascode}
+
 \section{L'instruction \texttt{switch}}
 
-L'instruction \galgas{switch} (\refSectionPage{instructionSwitch}) est dédiée aux types énumérés.
+L'instruction \galgas{switch} (\refSectionPage{instructionSwitch}) est dédiée aux types énumérés. On écrit par exemple :
+
+\begin{galgascode}
+@feuTricolore feu = ...
+switch feu
+case vert : message "vert"
+case orange : message "orange"
+case rouge : message "rouge" 
+end
+\end{galgascode}
+
+
+\section{Valeurs associées}
+
+Il est possible d'associer des valeurs à chaque constante, ce qui permet d'alléger dans certains cas le code à écrire. Supposons par exemple que l'on ait dans un langage une construction optionnelle :
+
+\begin{galgascode}
+rule regleProduction {
+  select
+  or
+    $option$
+    $identifier$ ?let nomOption
+  end
+}
+\end{galgascode}
+
+Comment construire l'arbre syntaxique ? Il y a en fait trois possibilités.
+
+La première consiste à considérer la chaîne vide comme significative de l'absence d'option :
+\begin{galgascode}
+rule regleProduction {
+  @lstring nomOption
+  select
+    nomOption = ["" nowhere]
+  or
+    $option$
+    $identifier$ ?nomOption
+  end
+}
+\end{galgascode}
+
+Évidemment, cette solution est acceptable uniquement si l'information associée est simple, et si une valeur particulière peut être considéré comme l'absence d'option.
+
+La deuxième solution fait appel à trois classes :
+\begin{galgascode}
+abstract class @abstractOption {}
+
+class @noOption : @abstractOption {}
+
+class @option : @abstractOption { @lstring mOptionName }
+\end{galgascode}
+
+La construction de l'arbre est réalisée par :
+\begin{galgascode}
+rule regleProduction {
+  @abstractOption optionAST
+  select
+    optionAST = @noOption.new
+  or
+    $option$
+    $identifier$ ?let nomOption
+    optionAST = @option.new {!nomOption}
+  end
+}
+\end{galgascode}
+
+Cette solution, plus générale, est plus lourde à mettre en œuvre : trois classes, et analyser l'option nécessite d'écrire un \emph{getter} abstrait ou une méthode abstraite pour la classe abstraite de base \galgas{@abstractOption}, et les redéfinir dans les deux classes héritières \galgas{@noOption} et \galgas{@option}.
+
+La troisième et dernière solution consiste à écrire un type énuméré possédant des valeurs associées :
+
+\begin{galgascode}
+enum @option {
+  noOption,
+  optionPresente (@lstring optionName)
+}
+\end{galgascode}
+
+La construction de l'arbre syntaxique est réalisée par :
+\begin{galgascode}
+rule regleProduction {
+  @option optionAST
+  select
+    optionAST = @option.noOption
+  or
+    $option$
+    $identifier$ ?let nomOption
+    optionAST = @option.optionPresente {!nomOption}
+  end
+}
+\end{galgascode}
+
+Pour tester un type énuméré avec des valeurs associées, on peut appliquer les \emph{getter} décrits à \refSectionPage{testerValeurEnum}, mais on n'a pas accès aux valeurs associées.
+
+Les six opérateurs de comparaison (\galgas{==}, \galgas{\!=}, \galgas{<}, \galgas{<=}, \galgas{>} et \galgas{>}) sont définis sur des types énumérés avec des valeurs associées : l'ordre est celui de la déclaration des constantes, et, en cas d'égalité, les valeurs associées sont comparées les unes après les autres, dans leur ordre de déclaration.
+
+Il n'y a qu'une façon d'extraire les valeurs associées, l'instruction \galgas{switch} :
+
+\begin{galgascode}
+switch optionAST
+case noOption : ...
+case optionPresente (@lstring nomOption) : ...
+end
+\end{galgascode}
+
+\galgas{nomOption} est une constante dont la portée s'étend jusqu'à la fin de la branche \galgas{case} courante.
+ 
