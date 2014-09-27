@@ -1827,6 +1827,13 @@ class @collectionValueAST extends @semanticExpressionAST {
 
 #---------------------------------------------------------------------------*
 
+#class @optionComponentDeclarationAST extends @semanticDeclarationAST {
+#  @lstring mOptionComponentName  ;
+#  @commandLineOptionListAST mOptions  ;
+#}
+
+#---------------------------------------------------------------------------*
+
 list @galgas3OptionComponentListAST {
   @lstring mOptionComponentName  ;
   @commandLineOptionListAST mOptions  ;

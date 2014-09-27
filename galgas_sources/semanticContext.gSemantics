@@ -206,7 +206,7 @@ map @categoryMethodMapForBuildingContext {
 
 map @categoryModifierMapForType {
   @formalParameterListAST mFormalParameterList ;
-  insert insertKey error message "the '%K' modifier has been already declared in %L" ;
+  insert insertKey error message "the '%K' setter has been already declared in %L" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -251,7 +251,7 @@ abstract reader @semanticDeclarationAST keyRepresentation -> @string outString
 override reader @abstractCategoryModifierAST keyRepresentation
   ->@string outString
 :
-  outString := "abstract category modifier @" . mTypeName . " " . mAbstractCategoryModifierName ;
+  outString := "abstract category setter @" . mTypeName . " " . mAbstractCategoryModifierName ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -259,7 +259,7 @@ end reader ;
 override reader @categoryModifierAST keyRepresentation
   ->@string outString
 :
-  outString := "category modifier @" . mTypeName . " " . mCategoryModifierName ;
+  outString := "category setter @" . mTypeName . " " . mCategoryModifierName ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -267,7 +267,7 @@ end reader ;
 override reader @overridingCategoryModifierAST keyRepresentation
   ->@string outString
 :
-  outString := "overriding category modifier @" . mTypeName . " " . mOverridingCategoryModifierName ;
+  outString := "overriding category setter @" . mTypeName . " " . mOverridingCategoryModifierName ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -275,7 +275,7 @@ end reader ;
 override reader @overridingAbstractCategoryModifierAST keyRepresentation
   ->@string outString
 :
-  outString := "overriding category modifier @" . mTypeName . " " . mOverridingCategoryModifierName ;
+  outString := "overriding category setter @" . mTypeName . " " . mOverridingCategoryModifierName ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -886,7 +886,7 @@ override method @mapDeclarationAST enterInSemanticContext
 #--- Handle remove modifiers
   foreach mRemoveMethodList do
     if [modifierMap hasKey ![mMethodName string]] then
-      error mMethodName:"the '" . mMethodName . "' method is already declared as an insert modifier or a remove modifier" ;
+      error mMethodName:"the '" . mMethodName . "' method is already declared as an insert setter or a remove setter" ;
     else
       [!?modifierMap insertOrReplace
         !mMethodName
@@ -926,7 +926,7 @@ override method @mapDeclarationAST enterInSemanticContext
       !"" # No Error message
     ] ;
   end foreach ;
-#---------- Handle "insertOrReplace" modifier
+#---------- Handle "insertOrReplace" setter
   if [mInsertOrReplaceDeclarationListAST length] >= 1 then
     @location insertOrReplaceLocation ;
     [mInsertOrReplaceDeclarationListAST first ?insertOrReplaceLocation] ;
@@ -1079,7 +1079,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
       ] ;
     end if ;
   end foreach ;
-#--------------------------- EnterEdge Modifier
+#--------------------------- EnterEdge setter
   @formalParameterSignature enterEdgeFormalArgumentList [emptyList] ;
   enterEdgeFormalArgumentList += !["" nowhere] !lstringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !"inSource" ;
   enterEdgeFormalArgumentList += !["" nowhere] !lstringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !"inTarget" ;
@@ -1679,7 +1679,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !false # No compiler argument
     !graphTypeProxy
   ] ;
-#--- Modifier 'enterNode'
+#--- setter 'enterNode'
   formalParameterList := [@formalParameterSignature emptyList] ;
   formalParameterList += !["" nowhere] !lstringTypeProxy ![@formalArgumentPassingModeAST argumentIn] !"inLKey" ;
   foreach [associatedListTypeProxy mAddAssignOperatorArguments] do
@@ -1696,7 +1696,7 @@ override method @graphDeclarationAST enterInSemanticContext
     ] ;
   end foreach ;
   drop formalParameterList ;
-#--- Modifier 'removeEdgeToDominators'
+#--- setter 'removeEdgeToDominators'
   [!?modifierMap insertKey
     ![@lstring new !"removeEdgesToDominators" !here]
     ![@methodKind definedAsMember]
@@ -1705,7 +1705,7 @@ override method @graphDeclarationAST enterInSemanticContext
     ![@methodQualifier isInherited]
     !"" # No error message
   ] ;
-#--- Modifier 'removeEdgesToNode'
+#--- setter 'removeEdgesToNode'
   formalParameterList := [@formalParameterSignature emptyList] ;
   formalParameterList += !["" nowhere] !stringTypeProxy ![@formalArgumentPassingModeAST argumentIn] !"inNodeName" ;
   [!?modifierMap insertKey
@@ -1717,7 +1717,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !"" # No error message
   ] ;
   drop formalParameterList ;
-#--- Modifier 'addEdge'
+#--- setter 'addEdge'
   formalParameterList := [@formalParameterSignature emptyList] ;
   formalParameterList += !["" nowhere] !lstringTypeProxy ![@formalArgumentPassingModeAST argumentIn] !"inSourceNodeLKey" ;
   formalParameterList += !["" nowhere] !lstringTypeProxy ![@formalArgumentPassingModeAST argumentIn] !"inTargetNodeLKey" ;
@@ -1730,7 +1730,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !"" # No error message
   ] ;
   drop formalParameterList ;
-#--- Modifier 'noteNode'
+#--- setter 'noteNode'
   formalParameterList := [@formalParameterSignature emptyList] ;
   formalParameterList += !["" nowhere] !lstringTypeProxy ![@formalArgumentPassingModeAST argumentIn] !"inNodeLKey" ;
   [!?modifierMap insertKey
@@ -1868,7 +1868,7 @@ override method @enumDeclarationAST enterInSemanticContext
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
     !"" # No default constructor [mConstantList mConstantNameAtIndex !0]->string # Default constructor
     !"enum-" . mEnumTypeName
-    ![@headerKind oneHeader]
+    ![@headerKind twoHeaders]
   ] ;
 end method ;
 
@@ -2156,7 +2156,7 @@ override method @listDeclarationAST enterInSemanticContext
       ] ;
     end if ;
   end foreach ;
-#--- Modifier 'insertAtIndex'
+#--- setter 'insertAtIndex'
   modifierInputFormalArgumentList += !["" nowhere] !uintType ![@formalArgumentPassingModeAST argumentConstantIn] !"inInsertionIndex" ;
   [!?modifierMap insertOrReplace
     ![@lstring new !"insertAtIndex" !here]
@@ -2609,7 +2609,7 @@ override method @classDeclarationAST enterInSemanticContext
       ] ;
     end if ;
   end foreach ;
-#--- set...attribute modifier
+#--- set...attribute setter
   foreach currentClassTypedAttributeList do
     if mHasSetter then
       [!?modifierMap insertKey
@@ -3091,6 +3091,11 @@ override method @enumDeclarationAST enterDeclarationInGraph
 :
   const key := [@lstring new !"@" . mEnumTypeName ![mEnumTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
+  for () in mConstantList do
+    for () in mAssociatedValueDefinitionList do
+      [!?ioSemanticTypePrecedenceGraph addEdge !key ![@lstring new !"@" . mValue0 ![mValue0 location]]] ;
+    end for ;
+  end for ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -3382,7 +3387,7 @@ override method @categoryModifierAST enterDeclarationInGraph
   ?!@categoryModifierMapForBuildingContext ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
-  const key := [@lstring new !"category modifier @" . mTypeName . " " . mCategoryModifierName ![mCategoryModifierName location]] ;
+  const key := [@lstring new !"category setter @" . mTypeName . " " . mCategoryModifierName ![mCategoryModifierName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
   [!?ioSemanticTypePrecedenceGraph addEdge !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
 #---
@@ -3476,7 +3481,7 @@ override method @abstractCategoryModifierAST enterDeclarationInGraph
   ?!@categoryModifierMapForBuildingContext ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
-  const key := [@lstring new !"category modifier @" . mTypeName . " " . mAbstractCategoryModifierName ![mAbstractCategoryModifierName location]] ;
+  const key := [@lstring new !"category setter @" . mTypeName . " " . mAbstractCategoryModifierName ![mAbstractCategoryModifierName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
   [!?ioSemanticTypePrecedenceGraph addEdge !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
 #---

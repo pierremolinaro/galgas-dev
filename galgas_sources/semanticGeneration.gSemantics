@@ -699,6 +699,13 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@bool HAS_ASSOCIATED_VALUES
   ;
 
+  template enumTypeHeader2 "GALGAS_enum.h2.gTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@enumConstantListForGeneration CONSTANT_LIST
+    ?@bool HAS_ASSOCIATED_VALUES
+  ;
+
   template enumTypeSpecificImplementation "GALGAS_enum.cpp.gTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
@@ -1512,9 +1519,11 @@ override method @enumTypeForGeneration appendDeclaration1
 
 #---------------------------------------------------------------------------*
 
-override method @enumTypeForGeneration appendSpecificImplementation
+override method @enumTypeForGeneration appendDeclaration2
+  ??@bool unused inGenerateForGalgas3
+  ??@string unused inOutputDirectory
   ?!@stringset ioInclusionSet
-  !@string outImplementation
+  !@string outHeader
 :
   @bool hasAssociatedValues := false ;
   for () in mConstantList while not hasAssociatedValues do
@@ -1524,6 +1533,24 @@ override method @enumTypeForGeneration appendSpecificImplementation
     for () in mAssociatedValueTypeList do
       [mType addHeaderFileName !?ioInclusionSet] ;
     end for ;
+  end for ;
+  outHeader := [filewrapper typeGenerationTemplate.enumTypeHeader2
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    !mConstantList
+    !hasAssociatedValues
+  ] ;
+ end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @enumTypeForGeneration appendSpecificImplementation
+  ?!@stringset ioInclusionSet
+  !@string outImplementation
+:
+  @bool hasAssociatedValues := false ;
+  for () in mConstantList while not hasAssociatedValues do
+    hasAssociatedValues := [mAssociatedValueTypeList length] > 0 ;
   end for ;
   [mTypeProxy addHeaderFileName !?ioInclusionSet] ;
   outImplementation := [filewrapper typeGenerationTemplate.enumTypeSpecificImplementation
