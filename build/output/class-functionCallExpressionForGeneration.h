@@ -20,7 +20,7 @@ class cPtr_functionCallExpressionForGeneration : public cPtr_semanticExpressionF
   public : GALGAS_semanticExpressionListForGeneration mAttribute_mExpressions ;
 
 //--- Constructor
-  public : cPtr_functionCallExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mType,
+  public : cPtr_functionCallExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
                                                      const GALGAS_location & in_mLocation,
                                                      const GALGAS_string & in_mFunctionName,
                                                      const GALGAS_semanticExpressionListForGeneration & in_mExpressions

@@ -1144,9 +1144,9 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
     !?ioVariableMap
     ?variant_expression
   ] ;
-  if [variant_expression mType] != inAnalysisContext->mPredefinedTypes->mUIntType then
+  if [variant_expression mResultType] != inAnalysisContext->mPredefinedTypes->mUIntType then
     error mEndOfVariantExpression
-    :"the variant expression type is '@" . [[variant_expression mType] key]
+    :"the variant expression type is '@" . [[variant_expression mResultType] key]
     . "', but it should be '@" . [inAnalysisContext->mPredefinedTypes->mUIntType key] . "' type"
     ;
   end if ;
@@ -1158,9 +1158,9 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
     !?ioVariableMap
     ?while_expression
   ] ;
-  if [while_expression mType] != inAnalysisContext->mPredefinedTypes->mBoolType then
+  if [while_expression mResultType] != inAnalysisContext->mPredefinedTypes->mBoolType then
     error mEndOfWhileExpression
-    :"the variant expression type is '@" . [[variant_expression mType] key]
+    :"the variant expression type is '@" . [[variant_expression mResultType] key]
     . "', but it should be '@" . [inAnalysisContext->mPredefinedTypes->mBoolType key] . "' type"
     ;
   end if ;
@@ -1389,7 +1389,7 @@ override method @syntaxSendInstruction analyzeSyntaxInstruction
     ??@semanticExpressionForGeneration expression
   ] ;
 #--- Check expression type
-  if [expression mType] != inAnalysisContext->mPredefinedTypes->mStringType  then
+  if [expression mResultType] != inAnalysisContext->mPredefinedTypes->mStringType  then
     error mInstructionLocation: "'send' expresion should be an @string expression" ;
   end if ;
 #---

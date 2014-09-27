@@ -20,7 +20,7 @@ class cPtr_structFieldAccessExpressionForGeneration : public cPtr_semanticExpres
   public : GALGAS_string mAttribute_mStructFieldName ;
 
 //--- Constructor
-  public : cPtr_structFieldAccessExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mType,
+  public : cPtr_structFieldAccessExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
                                                           const GALGAS_location & in_mLocation,
                                                           const GALGAS_semanticExpressionForGeneration & in_mExpression,
                                                           const GALGAS_string & in_mStructFieldName

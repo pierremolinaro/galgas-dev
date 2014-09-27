@@ -21,7 +21,7 @@ class cPtr_filewrapperTemplateInExpressionForGeneration : public cPtr_semanticEx
   public : GALGAS_semanticExpressionListForGeneration mAttribute_mActualOutputParameterList ;
 
 //--- Constructor
-  public : cPtr_filewrapperTemplateInExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mType,
+  public : cPtr_filewrapperTemplateInExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
                                                               const GALGAS_location & in_mLocation,
                                                               const GALGAS_string & in_mFilewrapperName,
                                                               const GALGAS_string & in_mFilewrapperTemplateName,

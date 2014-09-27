@@ -26,7 +26,7 @@ class cPtr_readerCallExpressionForGeneration : public cPtr_semanticExpressionFor
   public : GALGAS_bool mAttribute_mHasCompilerArgument ;
 
 //--- Constructor
-  public : cPtr_readerCallExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mType,
+  public : cPtr_readerCallExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
                                                    const GALGAS_location & in_mLocation,
                                                    const GALGAS_methodKind & in_mKind,
                                                    const GALGAS_semanticExpressionForGeneration & in_mReceiverExpression,

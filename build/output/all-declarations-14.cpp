@@ -35,9 +35,11 @@
 #include "class-lexicalImplicitRuleAST.h"
 #include "class-lexicalInstructionAST.h"
 #include "class-lexicalLogInstructionAST.h"
+#include "class-lexicalRepeatInstructionAST.h"
 #include "class-lexicalRewindInstructionAST.h"
 #include "class-lexicalRoutineInstructionAST.h"
 #include "class-lexicalSelectInstructionAST.h"
+#include "class-lexicalSimpleSendInstructionAST.h"
 #include "class-lexicalTagInstructionAST.h"
 #include "class-lexicalWarningInstructionAST.h"
 #include "class-listDeclarationAST.h"
@@ -110,6 +112,7 @@
 #include "list-lexicalRoutineFormalArgumentList.h"
 #include "list-lexicalSelectBranchListAST.h"
 #include "list-lexicalSentValueList.h"
+#include "list-lexicalWhileBranchListAST.h"
 #include "map-categoryMethodMapForBuildingContext.h"
 #include "map-categoryModifierMapForBuildingContext.h"
 #include "map-categoryReaderMapForBuildingContext.h"
@@ -160,6 +163,75 @@
 #include "struct-semanticContext.h"
 #include "uniquemap-unifiedTypeMap.h"
 
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                Overriding category method '@lexicalSimpleSendInstructionAST checkLexicalInstruction'                *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void categoryMethod_lexicalSimpleSendInstructionAST_checkLexicalInstruction (const cPtr_lexicalInstructionAST * inObject,
+                                                                                    GALGAS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
+                                                                                    GALGAS_lexicalTagMap & /* ioArgument_ioTagMap */,
+                                                                                    C_Compiler * inCompiler
+                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_lexicalSimpleSendInstructionAST * object = (const cPtr_lexicalSimpleSendInstructionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_lexicalSimpleSendInstructionAST) ;
+  GALGAS_lexicalSentValueList joker_22099_0 ; // Joker input parameter
+  ioArgument_ioLexiqueAnalysisContext.reader_mTerminalMap (SOURCE_FILE ("lexiqueCompilation.galgas", 518)).method_searchKey (object->mAttribute_mSentTerminal, joker_22099_0, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 518)) ;
+}
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineCategoryMethod_lexicalSimpleSendInstructionAST_checkLexicalInstruction (void) {
+  enterCategoryMethod_checkLexicalInstruction (kTypeDescriptor_GALGAS_lexicalSimpleSendInstructionAST.mSlotID,
+                                               categoryMethod_lexicalSimpleSendInstructionAST_checkLexicalInstruction) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gMethod_lexicalSimpleSendInstructionAST_checkLexicalInstruction (defineCategoryMethod_lexicalSimpleSendInstructionAST_checkLexicalInstruction, NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                  Overriding category method '@lexicalRepeatInstructionAST checkLexicalInstruction'                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void categoryMethod_lexicalRepeatInstructionAST_checkLexicalInstruction (const cPtr_lexicalInstructionAST * inObject,
+                                                                                GALGAS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
+                                                                                GALGAS_lexicalTagMap & ioArgument_ioTagMap,
+                                                                                C_Compiler * inCompiler
+                                                                                COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_lexicalRepeatInstructionAST * object = (const cPtr_lexicalRepeatInstructionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_lexicalRepeatInstructionAST) ;
+  cEnumerator_lexicalWhileBranchListAST enumerator_22372 (object->mAttribute_mLexicalWhileBranchList, kEnumeration_up) ;
+  while (enumerator_22372.hasCurrentObject ()) {
+    callCategoryMethod_checkLexicalExpression ((const cPtr_lexicalExpressionAST *) enumerator_22372.current_mWhileExpression (HERE).ptr (), ioArgument_ioLexiqueAnalysisContext, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 527)) ;
+    GALGAS_lexicalTagMap var_tagMap = GALGAS_lexicalTagMap::constructor_mapWithMapToOverride (ioArgument_ioTagMap  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 528)) ;
+    cEnumerator_lexicalInstructionListAST enumerator_22549 (enumerator_22372.current_mWhileInstructionList (HERE), kEnumeration_up) ;
+    while (enumerator_22549.hasCurrentObject ()) {
+      callCategoryMethod_checkLexicalInstruction ((const cPtr_lexicalInstructionAST *) enumerator_22549.current_mInstruction (HERE).ptr (), ioArgument_ioLexiqueAnalysisContext, var_tagMap, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 530)) ;
+      enumerator_22549.gotoNextObject () ;
+    }
+    enumerator_22372.gotoNextObject () ;
+  }
+  GALGAS_lexicalTagMap var_tagMap = GALGAS_lexicalTagMap::constructor_mapWithMapToOverride (ioArgument_ioTagMap  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 533)) ;
+  cEnumerator_lexicalInstructionListAST enumerator_22747 (object->mAttribute_mRepeatedInstructionList, kEnumeration_up) ;
+  while (enumerator_22747.hasCurrentObject ()) {
+    callCategoryMethod_checkLexicalInstruction ((const cPtr_lexicalInstructionAST *) enumerator_22747.current_mInstruction (HERE).ptr (), ioArgument_ioLexiqueAnalysisContext, var_tagMap, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 535)) ;
+    enumerator_22747.gotoNextObject () ;
+  }
+}
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineCategoryMethod_lexicalRepeatInstructionAST_checkLexicalInstruction (void) {
+  enterCategoryMethod_checkLexicalInstruction (kTypeDescriptor_GALGAS_lexicalRepeatInstructionAST.mSlotID,
+                                               categoryMethod_lexicalRepeatInstructionAST_checkLexicalInstruction) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gMethod_lexicalRepeatInstructionAST_checkLexicalInstruction (defineCategoryMethod_lexicalRepeatInstructionAST_checkLexicalInstruction, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -3759,54 +3831,4 @@ static void defineCategoryMethod_categoryMethodAST_enterInSemanticContext (void)
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_categoryMethodAST_enterInSemanticContext (defineCategoryMethod_categoryMethodAST_enterInSemanticContext, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                  Overriding category method '@overridingCategoryMethodAST enterInSemanticContext'                   *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void categoryMethod_overridingCategoryMethodAST_enterInSemanticContext (const cPtr_semanticDeclarationAST * /* inObject */,
-                                                                               const GALGAS_categoryMethodMapForBuildingContext /* constinArgument_inCategoryMethodMapForBuildingContext */,
-                                                                               const GALGAS_categoryReaderMapForBuildingContext /* constinArgument_inCategoryReaderMapForBuildingContext */,
-                                                                               const GALGAS_categoryModifierMapForBuildingContext /* constinArgument_inCategoryModifierMapForBuildingContext */,
-                                                                               GALGAS_semanticContext & /* ioArgument_ioSemanticContext */,
-                                                                               C_Compiler * /* inCompiler */
-                                                                               COMMA_UNUSED_LOCATION_ARGS) {
-}
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineCategoryMethod_overridingCategoryMethodAST_enterInSemanticContext (void) {
-  enterCategoryMethod_enterInSemanticContext (kTypeDescriptor_GALGAS_overridingCategoryMethodAST.mSlotID,
-                                              categoryMethod_overridingCategoryMethodAST_enterInSemanticContext) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gMethod_overridingCategoryMethodAST_enterInSemanticContext (defineCategoryMethod_overridingCategoryMethodAST_enterInSemanticContext, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//              Overriding category method '@overridingAbstractCategoryMethodAST enterInSemanticContext'               *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void categoryMethod_overridingAbstractCategoryMethodAST_enterInSemanticContext (const cPtr_semanticDeclarationAST * /* inObject */,
-                                                                                       const GALGAS_categoryMethodMapForBuildingContext /* constinArgument_inCategoryMethodMapForBuildingContext */,
-                                                                                       const GALGAS_categoryReaderMapForBuildingContext /* constinArgument_inCategoryReaderMapForBuildingContext */,
-                                                                                       const GALGAS_categoryModifierMapForBuildingContext /* constinArgument_inCategoryModifierMapForBuildingContext */,
-                                                                                       GALGAS_semanticContext & /* ioArgument_ioSemanticContext */,
-                                                                                       C_Compiler * /* inCompiler */
-                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-}
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineCategoryMethod_overridingAbstractCategoryMethodAST_enterInSemanticContext (void) {
-  enterCategoryMethod_enterInSemanticContext (kTypeDescriptor_GALGAS_overridingAbstractCategoryMethodAST.mSlotID,
-                                              categoryMethod_overridingAbstractCategoryMethodAST_enterInSemanticContext) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gMethod_overridingAbstractCategoryMethodAST_enterInSemanticContext (defineCategoryMethod_overridingAbstractCategoryMethodAST_enterInSemanticContext, NULL) ;
 

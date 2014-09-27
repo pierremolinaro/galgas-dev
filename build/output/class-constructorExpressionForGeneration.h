@@ -23,7 +23,7 @@ class cPtr_constructorExpressionForGeneration : public cPtr_semanticExpressionFo
   public : GALGAS_bool mAttribute_mHasCompilerArgument ;
 
 //--- Constructor
-  public : cPtr_constructorExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mType,
+  public : cPtr_constructorExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
                                                     const GALGAS_location & in_mLocation,
                                                     const GALGAS_unifiedTypeMapProxy & in_mConstructorType,
                                                     const GALGAS_string & in_mConstructorName,

@@ -17,7 +17,7 @@ class cPtr_defaultConstructorExpressionForGeneration : public cPtr_semanticExpre
 //--- Attributes
 
 //--- Constructor
-  public : cPtr_defaultConstructorExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mType,
+  public : cPtr_defaultConstructorExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
                                                            const GALGAS_location & in_mLocation
                                                            COMMA_LOCATION_ARGS) ;
 

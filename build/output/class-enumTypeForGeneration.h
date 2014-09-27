@@ -7,7 +7,7 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#include "list-enumConstantList.h"
+#include "list-enumConstantListForGeneration.h"
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                   Pointer class for @enumTypeForGeneration class                                    *
@@ -16,15 +16,15 @@
 
 class cPtr_enumTypeForGeneration : public cPtr_semanticTypeForGeneration {
 //--- Attributes
-  public : GALGAS_enumConstantList mAttribute_mConstantList ;
+  public : GALGAS_enumConstantListForGeneration mAttribute_mConstantList ;
 
 //--- Constructor
   public : cPtr_enumTypeForGeneration (const GALGAS_unifiedTypeMapProxy & in_mTypeProxy,
-                                       const GALGAS_enumConstantList & in_mConstantList
+                                       const GALGAS_enumConstantListForGeneration & in_mConstantList
                                        COMMA_LOCATION_ARGS) ;
 
 //--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_enumConstantList reader_mConstantList (UNUSED_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_enumConstantListForGeneration reader_mConstantList (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

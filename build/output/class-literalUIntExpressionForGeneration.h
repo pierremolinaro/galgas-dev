@@ -18,7 +18,7 @@ class cPtr_literalUIntExpressionForGeneration : public cPtr_semanticExpressionFo
   public : GALGAS_uint mAttribute_mValue ;
 
 //--- Constructor
-  public : cPtr_literalUIntExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mType,
+  public : cPtr_literalUIntExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
                                                     const GALGAS_location & in_mLocation,
                                                     const GALGAS_uint & in_mValue
                                                     COMMA_LOCATION_ARGS) ;

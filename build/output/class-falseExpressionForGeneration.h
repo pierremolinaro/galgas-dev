@@ -17,7 +17,7 @@ class cPtr_falseExpressionForGeneration : public cPtr_semanticExpressionForGener
 //--- Attributes
 
 //--- Constructor
-  public : cPtr_falseExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mType,
+  public : cPtr_falseExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
                                               const GALGAS_location & in_mLocation
                                               COMMA_LOCATION_ARGS) ;
 

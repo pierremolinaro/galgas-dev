@@ -94,7 +94,7 @@ override method @selfCopyInExpressionForGeneration generateExpression
   !@string outCppExpression
 :
   outCppExpression := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-  ioGeneratedCode .= "const GALGAS_" . [mType identifierRepresentation] . " " . outCppExpression . " = " . mSelfCppName . " ;\n" ;
+  ioGeneratedCode .= "const GALGAS_" . [mResultType identifierRepresentation] . " " . outCppExpression . " = " . mSelfCppName . " ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !mSelfCppName] ;
 end method ;
 
@@ -232,11 +232,11 @@ override method @defaultConstructorExpressionForGeneration generateExpression
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
-  [mType addHeaderFileName !?ioInclusionSet] ;
+  [mResultType addHeaderFileName !?ioInclusionSet] ;
   outCppExpression :=
-    "GALGAS_"  . [mType identifierRepresentation]
+    "GALGAS_"  . [mResultType identifierRepresentation]
   . "::constructor_"
-  . [[mType mDefaultConstructorName] identifierRepresentation]
+  . [[mResultType mDefaultConstructorName] identifierRepresentation]
   . " (" . [mLocation sourceFile] . ")"
   ;
 end method ;
@@ -250,7 +250,7 @@ override method @constructorExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
-  [mType addHeaderFileName !?ioInclusionSet] ;
+  [mResultType addHeaderFileName !?ioInclusionSet] ;
   @stringlist parameterList [emptyList] ;
   foreach mEffectiveParameterList do
     @string parameter ;
@@ -296,7 +296,7 @@ override method @optionValueExpressionForGeneration generateExpression
   if not mOptionComponentIsPredefined then
     ioInclusionSet += !"option-" . mOptionComponentName ;
   end if ;
-  outCppExpression := "GALGAS_" . [mType identifierRepresentation] . " (gOption_" . [mOptionComponentName identifierRepresentation]
+  outCppExpression := "GALGAS_" . [mResultType identifierRepresentation] . " (gOption_" . [mOptionComponentName identifierRepresentation]
                    . "_" . [mOptionEntryName identifierRepresentation] . ".reader_value ())" ;
 end method ;
 
@@ -377,7 +377,7 @@ override method @orExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
-  [[mLeftExpression mType] addHeaderFileName !?ioInclusionSet] ;
+  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet] ;
 #--- Left operand
   @string leftTemporaryOperand ;
   [mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand] ;
@@ -398,7 +398,7 @@ override method @xorExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
-  [[mLeftExpression mType] addHeaderFileName !?ioInclusionSet] ;
+  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet] ;
 #--- Left operand
   @string leftTemporaryOperand ;
   [mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand] ;
@@ -419,7 +419,7 @@ override method @andExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
-  [[mLeftExpression mType] addHeaderFileName !?ioInclusionSet] ;
+  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet] ;
 #--- Left operand
   @string leftTemporaryOperand ;
   [mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand] ;
@@ -440,7 +440,7 @@ override method @equalExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
-  [[mLeftExpression mType] addHeaderFileName !?ioInclusionSet] ;
+  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet] ;
 #--- Left operand
   @string leftTemporaryOperand ;
   [mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand] ;
@@ -460,7 +460,7 @@ override method @notEqualExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
-  [[mLeftExpression mType] addHeaderFileName !?ioInclusionSet] ;
+  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet] ;
 #--- Left operand
   @string leftTemporaryOperand ;
   [mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand] ;
@@ -480,7 +480,7 @@ override method @lowerOrEqualExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
-  [[mLeftExpression mType] addHeaderFileName !?ioInclusionSet] ;
+  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet] ;
 #--- Left operand
   @string leftTemporaryOperand ;
   [mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand] ;
@@ -500,7 +500,7 @@ override method @greaterOrEqualExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
-  [[mLeftExpression mType] addHeaderFileName !?ioInclusionSet] ;
+  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet] ;
 #--- Left operand
   @string leftTemporaryOperand ;
   [mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand] ;
@@ -520,7 +520,7 @@ override method @strictGreaterExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
-  [[mLeftExpression mType] addHeaderFileName !?ioInclusionSet] ;
+  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet] ;
 #--- Left operand
   @string leftTemporaryOperand ;
   [mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand] ;
@@ -540,7 +540,7 @@ override method @strictLowerExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
-  [[mLeftExpression mType] addHeaderFileName !?ioInclusionSet] ;
+  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet] ;
 #--- Left operand
   @string leftTemporaryOperand ;
   [mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand] ;
@@ -560,7 +560,7 @@ override method @rightShiftExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
-  [[mLeftExpression mType] addHeaderFileName !?ioInclusionSet] ;
+  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet] ;
 #--- Left operand
   @string leftTemporaryOperand ;
   [mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand] ;
@@ -581,7 +581,7 @@ override method @leftShiftExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
-  [[mLeftExpression mType] addHeaderFileName !?ioInclusionSet] ;
+  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet] ;
 #--- Left operand
   @string leftTemporaryOperand ;
   [mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand] ;
@@ -602,7 +602,7 @@ override method @addExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
-  [[mLeftExpression mType] addHeaderFileName !?ioInclusionSet] ;
+  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet] ;
 #--- Left operand
   @string leftTemporaryOperand ;
   [mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand] ;
@@ -624,7 +624,7 @@ override method @subExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
-  [[mLeftExpression mType] addHeaderFileName !?ioInclusionSet] ;
+  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet] ;
 #--- Left operand
   @string leftTemporaryOperand ;
   [mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand] ;
@@ -646,7 +646,7 @@ override method @multiplicationExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
-  [[mLeftExpression mType] addHeaderFileName !?ioInclusionSet] ;
+  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet] ;
 #--- Left operand
   @string leftTemporaryOperand ;
   [mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand] ;
@@ -668,7 +668,7 @@ override method @divisionExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
-  [[mLeftExpression mType] addHeaderFileName !?ioInclusionSet] ;
+  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet] ;
 #--- Left operand
   @string leftTemporaryOperand ;
   [mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand] ;
@@ -690,7 +690,7 @@ override method @moduloExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
-  [[mLeftExpression mType] addHeaderFileName !?ioInclusionSet] ;
+  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet] ;
 #--- Left operand
   @string leftTemporaryOperand ;
   [mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand] ;
@@ -712,7 +712,7 @@ override method @unaryMinusExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
-  [[mExpression mType] addHeaderFileName !?ioInclusionSet] ;
+  [[mExpression mResultType] addHeaderFileName !?ioInclusionSet] ;
 #--- Left operand
   @string operand ;
   [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?operand] ;
@@ -731,7 +731,7 @@ override method @notExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
-  [[mExpression mType] addHeaderFileName !?ioInclusionSet] ;
+  [[mExpression mResultType] addHeaderFileName !?ioInclusionSet] ;
 #--- Operand
   @string operand ;
   [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?operand] ;
@@ -748,8 +748,7 @@ override method @structFieldAccessExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
- # [[mExpression mType] addHeaderFileName !?ioInclusionSet] ;
-  [mType addHeaderFileName !?ioInclusionSet] ;
+  [mResultType addHeaderFileName !?ioInclusionSet] ;
 #--- Operand
   [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ??@string operand] ;
 #--- Generate
@@ -765,7 +764,7 @@ override method @tildeExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
-  [[mExpression mType] addHeaderFileName !?ioInclusionSet] ;
+  [[mExpression mResultType] addHeaderFileName !?ioInclusionSet] ;
 #--- Operand
   @string operand ;
   [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?operand] ;
@@ -787,7 +786,7 @@ override method @ifExpressionForGeneration generateExpression
   [mIfExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?ifExpression] ;
 #--- Result variable
   outCppExpression := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-  ioGeneratedCode .= "GALGAS_" . [[mThenExpression mType] identifierRepresentation] . " " . outCppExpression . " ;\n" ;
+  ioGeneratedCode .= "GALGAS_" . [[mThenExpression mResultType] identifierRepresentation] . " " . outCppExpression . " ;\n" ;
   const @string testVar := "test_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "const enumGalgasBool " . testVar . " = " . ifExpression . ".boolEnum () ;\n" ;
   ioGeneratedCode .= "if (kBoolTrue == " . testVar . ") {\n" ;
@@ -839,7 +838,7 @@ override method @extractObjectInExpressionForGeneration generateExpression
     ?@string receiverExpression
   ] ;
 #--- Generate code
-  outCppExpression := "GALGAS_" . [mType identifierRepresentation]
+  outCppExpression := "GALGAS_" . [mResultType identifierRepresentation]
   . "::extractObject (" . receiverExpression
   . ", " . compilerCppName []
   . [mLocation commaSourceFile] . ")" ;
@@ -939,7 +938,7 @@ override method @varInExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
-  [mType addHeaderFileName !?ioInclusionSet] ;
+  [mResultType addHeaderFileName !?ioInclusionSet] ;
   outCppExpression := mCppVarName ;
   [!?ioUnusedVariableCppNameSet removeKey !mNameForCheckingFormalParameterUsing] ;
 end method ;
@@ -955,9 +954,10 @@ override method @readerCallExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
+#--- Add return type header
+  [mResultType addHeaderFileName !?ioInclusionSet] ;
 #--- Receiver expression
-  @string receiverCppName ;
-  [mReceiverExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?receiverCppName] ;
+  [mReceiverExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ??@string receiverCppName] ;
 #--- Reader operands
   @stringlist readerArgumentCppNameList [emptyList] ;
   foreach mExpressions do
@@ -968,8 +968,8 @@ override method @readerCallExpressionForGeneration generateExpression
 #--- Generate Reader call
   switch mKind
   when definedAsCategory :
- #   ioInclusionSet += !"getter-" . [[[mReceiverExpression mType] baseType] key] . "-" . mReaderName ;
-    @unifiedTypeMapProxy baseType := [mReceiverExpression mType] ;
+   [[[mReceiverExpression mResultType] baseType] addHeaderFileName !?ioInclusionSet] ;
+    @unifiedTypeMapProxy baseType := [mReceiverExpression mResultType] ;
     @bool searching := true ;
     loop [@uint max] : while searching do
       if not [[baseType mSuperType] isNull] then
@@ -984,11 +984,11 @@ override method @readerCallExpressionForGeneration generateExpression
     end loop ;
     ioInclusionSet += !"getter-" . [baseType key] . "-" . mReaderName ;
     [!?ioUnusedVariableCppNameSet removeKey !receiverCppName] ;
-    if [[mReceiverExpression mType] mTypeKindEnum] == [@typeKindEnum classType] then
+    if [[mReceiverExpression mResultType] mTypeKindEnum] == [@typeKindEnum classType] then
       outCppExpression := "callCategoryReader_" . [mReaderName identifierRepresentation]
-         . " ((const cPtr_" . [[mReceiverExpression mType] identifierRepresentation] . " *) " . receiverCppName . ".ptr (), " ;
+         . " ((const cPtr_" . [[mReceiverExpression mResultType] identifierRepresentation] . " *) " . receiverCppName . ".ptr (), " ;
     else
-      [[mReceiverExpression mType] addHeaderFileName !?ioInclusionSet] ;
+      [[mReceiverExpression mResultType] addHeaderFileName !?ioInclusionSet] ;
       outCppExpression := "categoryReader_" . [mReaderName identifierRepresentation] . " (" . receiverCppName . ", " ;
     end if ;
   when definedAsMember :
@@ -996,7 +996,7 @@ override method @readerCallExpressionForGeneration generateExpression
     foreach mFieldList do
       outCppExpression .= ".mAttribute_" . [mValue identifierRepresentation] ;
     end foreach ;
-    [mType addHeaderFileName !?ioInclusionSet] ;
+    [mResultType addHeaderFileName !?ioInclusionSet] ;
     outCppExpression .=  ".reader_" . [mReaderName identifierRepresentation] . " (" ;
   end switch ;
   foreach readerArgumentCppNameList
@@ -1026,6 +1026,9 @@ override method @functionCallExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
+#--- Add return type header
+  [mResultType addHeaderFileName !?ioInclusionSet] ;
+#--- Add function header
   ioInclusionSet += !"func-" . mFunctionName ;
 #---
   @stringlist parameterList [emptyList] ;
@@ -1204,16 +1207,16 @@ override method @expressionCollectionForGeneration generateExpression
   !@string outCppExpression
 :
 #---
-  [mType addHeaderFileName !?ioInclusionSet] ;
+  [mResultType addHeaderFileName !?ioInclusionSet] ;
 #--- Create temporary variable variable
   outCppExpression := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
 #--- Declare variable and apply default constructor
-  ioGeneratedCode .= "GALGAS_" . [mType identifierRepresentation] . " " . outCppExpression
-     . " = GALGAS_" .  [mType identifierRepresentation] . "::constructor_" . [[mType mDefaultConstructorName] identifierRepresentation] . " (" . [mLocation sourceFile] . ") ;\n" ;
+  ioGeneratedCode .= "GALGAS_" . [mResultType identifierRepresentation] . " " . outCppExpression
+     . " = GALGAS_" .  [mResultType identifierRepresentation] . "::constructor_" . [[mResultType mDefaultConstructorName] identifierRepresentation] . " (" . [mLocation sourceFile] . ") ;\n" ;
 #--- Add Elements
   for () in mElementList do
     [mElement generateCollectionElementCode
-      !mType
+      !mResultType
       !?ioGeneratedCode
       !?ioInclusionSet
       !?ioTemporaryVariableIndex

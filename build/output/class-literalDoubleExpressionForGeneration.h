@@ -18,7 +18,7 @@ class cPtr_literalDoubleExpressionForGeneration : public cPtr_semanticExpression
   public : GALGAS_double mAttribute_mValue ;
 
 //--- Constructor
-  public : cPtr_literalDoubleExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mType,
+  public : cPtr_literalDoubleExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
                                                       const GALGAS_location & in_mLocation,
                                                       const GALGAS_double & in_mValue
                                                       COMMA_LOCATION_ARGS) ;

@@ -19,7 +19,7 @@ class cPtr_varInExpressionForGeneration : public cPtr_semanticExpressionForGener
   public : GALGAS_string mAttribute_mNameForCheckingFormalParameterUsing ;
 
 //--- Constructor
-  public : cPtr_varInExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mType,
+  public : cPtr_varInExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
                                               const GALGAS_location & in_mLocation,
                                               const GALGAS_string & in_mCppVarName,
                                               const GALGAS_string & in_mNameForCheckingFormalParameterUsing

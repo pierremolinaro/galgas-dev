@@ -18,7 +18,7 @@ class cPtr_literalCharExpressionForGeneration : public cPtr_semanticExpressionFo
   public : GALGAS_char mAttribute_mCharacter ;
 
 //--- Constructor
-  public : cPtr_literalCharExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mType,
+  public : cPtr_literalCharExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
                                                     const GALGAS_location & in_mLocation,
                                                     const GALGAS_char & in_mCharacter
                                                     COMMA_LOCATION_ARGS) ;

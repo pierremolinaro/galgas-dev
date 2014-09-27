@@ -415,26 +415,33 @@ routine compileProgramComponentGalgas3
 #------ Build Header File
   outHeaderContents := "" ;
   if [@uint errorCount] == 0 then
-    var inclusionSet1 := [@stringset emptySet] ;
-    var inclusionSet2 := [@stringset emptySet] ;
-    var headerString := "" ;
-    foreach decoratedDeclarationListForGeneration do
-      [mDeclaration appendDeclaration1 !?inclusionSet1 ??@string code] ;
-      headerString .= code ;
-    end foreach ;
-    foreach decoratedDeclarationListForGeneration do
-      [mDeclaration appendDeclaration2 !true !inOutputDirectory !?inclusionSet2 ??@string headerString2] ;
-      headerString .= headerString2 ;
-    end foreach ;
-    if useOneHugeHeader then
-      inclusionSet1 := [@stringset setWithString !"all-declarations"] ;
-      inclusionSet2 := [@stringset emptySet] ;
+    if generateFewHeaderFiles [] then
+      outHeaderContents := [filewrapper programFileGenerationTemplate.programFileHeader
+        !"program"
+        !{!"all-declarations"}
+      ] ;
+    else
+      var inclusionSet1 := [@stringset emptySet] ;
+      var inclusionSet2 := [@stringset emptySet] ;
+      var headerString := "" ;
+      foreach decoratedDeclarationListForGeneration do
+        [mDeclaration appendDeclaration1 !?inclusionSet1 ??@string code] ;
+        headerString .= code ;
+      end foreach ;
+      foreach decoratedDeclarationListForGeneration do
+        [mDeclaration appendDeclaration2 !true !inOutputDirectory !?inclusionSet2 ??@string headerString2] ;
+        headerString .= headerString2 ;
+      end foreach ;
+      if useOneHugeHeader then
+        inclusionSet1 := [@stringset setWithString !"all-declarations"] ;
+        inclusionSet2 := [@stringset emptySet] ;
+      end if ;
+      outHeaderContents := [filewrapper programFileGenerationTemplate.programFileHeader
+        !"program"
+        ![inclusionSet1 stringList] + [inclusionSet2 stringList]
+      ] ;
+      outHeaderContents += headerString ;
     end if ;
-    outHeaderContents := [filewrapper programFileGenerationTemplate.programFileHeader
-      !"program"
-      ![inclusionSet1 stringList] + [inclusionSet2 stringList]
-    ] ;
-    outHeaderContents += headerString ;
   end if ;
 #------------ Build Implementation File
   outCppContents := "" ;

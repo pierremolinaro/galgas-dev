@@ -19,7 +19,7 @@ class cPtr_filewrapperInExpressionForGeneration : public cPtr_semanticExpression
   public : GALGAS_string mAttribute_mFilewrapperPath ;
 
 //--- Constructor
-  public : cPtr_filewrapperInExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mType,
+  public : cPtr_filewrapperInExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
                                                       const GALGAS_location & in_mLocation,
                                                       const GALGAS_string & in_mFilewrapperName,
                                                       const GALGAS_string & in_mFilewrapperPath

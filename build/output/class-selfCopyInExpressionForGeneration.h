@@ -18,7 +18,7 @@ class cPtr_selfCopyInExpressionForGeneration : public cPtr_semanticExpressionFor
   public : GALGAS_string mAttribute_mSelfCppName ;
 
 //--- Constructor
-  public : cPtr_selfCopyInExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mType,
+  public : cPtr_selfCopyInExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
                                                    const GALGAS_location & in_mLocation,
                                                    const GALGAS_string & in_mSelfCppName
                                                    COMMA_LOCATION_ARGS) ;

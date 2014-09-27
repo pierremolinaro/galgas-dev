@@ -34,7 +34,7 @@ list @templateInstructionListForGeneration {
 #---------------------------------------------------------------------------*
 
 abstract class @semanticExpressionForGeneration {
-  @unifiedTypeMapProxy mType ;
+  @unifiedTypeMapProxy mResultType ;
   @location mLocation ;
 }
 

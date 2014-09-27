@@ -34,6 +34,7 @@
 #include "class-templateInstructionStringForGeneration.h"
 #include "class-templateInstructionSwitchAST.h"
 #include "class-templateInstructionSwitchForGeneration.h"
+#include "class-templateLeftShiftOperationAST.h"
 #include "class-templateLiteralCharExpressionAST.h"
 #include "class-templateLiteralDoubleExpressionAST.h"
 #include "class-templateLiteralSInt64ExpressionAST.h"
@@ -96,7 +97,6 @@
 #include "getter-semanticDeclarationAST-keyRepresentation.h"
 #include "getter-semanticDeclarationForGeneration-hasCppHeaderFile.h"
 #include "getter-semanticDeclarationForGeneration-implementationCppFileName.h"
-#include "getter-semanticDeclarationForGeneration-isPredefined.h"
 #include "getter-typeKindEnum-kind.h"
 #include "grammar-galgas3Grammar.h"
 #include "grammar-galgas3ProjectGrammar.h"
@@ -152,6 +152,216 @@
 #include "struct-templateAnalysisContext.h"
 #include "uniquemap-unifiedTypeMap.h"
 
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   Object comparison                                                         *
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult cPtr_templateLeftShiftOperationAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_templateLeftShiftOperationAST * p = (const cPtr_templateLeftShiftOperationAST *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_templateLeftShiftOperationAST) ;
+  if (kOperandEqual == result) {
+    result = mAttribute_mOperatorLocation.objectCompare (p->mAttribute_mOperatorLocation) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mLeftExpression.objectCompare (p->mAttribute_mLeftExpression) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mRightExpression.objectCompare (p->mAttribute_mRightExpression) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+typeComparisonResult GALGAS_templateLeftShiftOperationAST::objectCompare (const GALGAS_templateLeftShiftOperationAST & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateLeftShiftOperationAST::GALGAS_templateLeftShiftOperationAST (void) :
+GALGAS_templateExpressionAST () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateLeftShiftOperationAST::GALGAS_templateLeftShiftOperationAST (const cPtr_templateLeftShiftOperationAST * inSourcePtr) :
+GALGAS_templateExpressionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_templateLeftShiftOperationAST) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateLeftShiftOperationAST GALGAS_templateLeftShiftOperationAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                                            const GALGAS_templateExpressionAST & inAttribute_mLeftExpression,
+                                                                                            const GALGAS_templateExpressionAST & inAttribute_mRightExpression
+                                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_templateLeftShiftOperationAST result ;
+  if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_templateLeftShiftOperationAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_templateLeftShiftOperationAST::insulate (LOCATION_ARGS) {
+  macroMutexLock (gInsulationMutex) ;
+  if (isValid () && (mObjectPtr->retainCount () > 1)) {
+    cPtr_templateLeftShiftOperationAST * p = (cPtr_templateLeftShiftOperationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateLeftShiftOperationAST) ;
+    cPtr_templateLeftShiftOperationAST * r = NULL ;
+    macroMyNew (r, cPtr_templateLeftShiftOperationAST (p->mAttribute_mOperatorLocation, p->mAttribute_mLeftExpression, p->mAttribute_mRightExpression COMMA_THERE)) ;
+    macroAssignSharedObject (mObjectPtr, r) ;
+    macroDetachSharedObject (r) ;
+  }
+  macroMutexUnlock (gInsulationMutex) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location GALGAS_templateLeftShiftOperationAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+  GALGAS_location result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_templateLeftShiftOperationAST * p = (const cPtr_templateLeftShiftOperationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateLeftShiftOperationAST) ;
+    result = p->mAttribute_mOperatorLocation ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location cPtr_templateLeftShiftOperationAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mOperatorLocation ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateExpressionAST GALGAS_templateLeftShiftOperationAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_templateExpressionAST result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_templateLeftShiftOperationAST * p = (const cPtr_templateLeftShiftOperationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateLeftShiftOperationAST) ;
+    result = p->mAttribute_mLeftExpression ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateExpressionAST cPtr_templateLeftShiftOperationAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mLeftExpression ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateExpressionAST GALGAS_templateLeftShiftOperationAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_templateExpressionAST result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_templateLeftShiftOperationAST * p = (const cPtr_templateLeftShiftOperationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_templateLeftShiftOperationAST) ;
+    result = p->mAttribute_mRightExpression ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateExpressionAST cPtr_templateLeftShiftOperationAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mRightExpression ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                               Pointer class for @templateLeftShiftOperationAST class                                *
+//---------------------------------------------------------------------------------------------------------------------*
+
+cPtr_templateLeftShiftOperationAST::cPtr_templateLeftShiftOperationAST (const GALGAS_location & in_mOperatorLocation,
+                                                                        const GALGAS_templateExpressionAST & in_mLeftExpression,
+                                                                        const GALGAS_templateExpressionAST & in_mRightExpression
+                                                                        COMMA_LOCATION_ARGS) :
+cPtr_templateExpressionAST (THERE),
+mAttribute_mOperatorLocation (in_mOperatorLocation),
+mAttribute_mLeftExpression (in_mLeftExpression),
+mAttribute_mRightExpression (in_mRightExpression) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * cPtr_templateLeftShiftOperationAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateLeftShiftOperationAST ;
+}
+
+void cPtr_templateLeftShiftOperationAST::description (C_String & ioString,
+                                                      const int32_t inIndentation) const {
+  ioString << "[@templateLeftShiftOperationAST:" ;
+  mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mLeftExpression.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mRightExpression.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                         @templateLeftShiftOperationAST type                                         *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_templateLeftShiftOperationAST ("templateLeftShiftOperationAST",
+                                                      & kTypeDescriptor_GALGAS_templateExpressionAST) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_templateLeftShiftOperationAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_templateLeftShiftOperationAST ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_templateLeftShiftOperationAST::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_templateLeftShiftOperationAST (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateLeftShiftOperationAST GALGAS_templateLeftShiftOperationAST::extractObject (const GALGAS_object & inObject,
+                                                                                          C_Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_templateLeftShiftOperationAST result ;
+  const GALGAS_templateLeftShiftOperationAST * p = (const GALGAS_templateLeftShiftOperationAST *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_templateLeftShiftOperationAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("templateLeftShiftOperationAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
 
 //---------------------------------------------------------------------------------------------------------------------*
 //   Object comparison                                                         *
@@ -10741,7 +10951,7 @@ static void categoryMethod_predefinedTypeAST_getConstructorMap (const cPtr_prede
                                                                 GALGAS_constructorMap & outArgument_outConstructorMap,
                                                                 C_Compiler * /* inCompiler */
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outConstructorMap = GALGAS_constructorMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 429)) ;
+  outArgument_outConstructorMap = GALGAS_constructorMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 435)) ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -10817,7 +11027,7 @@ static void categoryMethod_predefinedTypeAST_getReaderMap (const cPtr_predefined
                                                            GALGAS_readerMap & outArgument_outReaderMap,
                                                            C_Compiler * /* inCompiler */
                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outReaderMap = GALGAS_readerMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 437)) ;
+  outArgument_outReaderMap = GALGAS_readerMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 443)) ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -10893,7 +11103,7 @@ static void categoryMethod_predefinedTypeAST_getModifierMap (const cPtr_predefin
                                                              GALGAS_modifierMap & outArgument_outModifierMap,
                                                              C_Compiler * /* inCompiler */
                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outModifierMap = GALGAS_modifierMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 445)) ;
+  outArgument_outModifierMap = GALGAS_modifierMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 451)) ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -10969,7 +11179,7 @@ static void categoryMethod_predefinedTypeAST_getInstanceMethodMap (const cPtr_pr
                                                                    GALGAS_instanceMethodMap & outArgument_outInstanceMethodMap,
                                                                    C_Compiler * /* inCompiler */
                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outInstanceMethodMap = GALGAS_instanceMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 453)) ;
+  outArgument_outInstanceMethodMap = GALGAS_instanceMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 459)) ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -11045,7 +11255,7 @@ static void categoryMethod_predefinedTypeAST_getClassMethodMap (const cPtr_prede
                                                                 GALGAS_classMethodMap & outArgument_outClassMethodMap,
                                                                 C_Compiler * /* inCompiler */
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outClassMethodMap = GALGAS_classMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 461)) ;
+  outArgument_outClassMethodMap = GALGAS_classMethodMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 467)) ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -11200,7 +11410,7 @@ static void categoryMethod_predefinedTypeAST_getAddAssignArgumentList (const cPt
                                                                        GALGAS_functionSignature & outArgument_outAddAssignArgumentList,
                                                                        C_Compiler * /* inCompiler */
                                                                        COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outAddAssignArgumentList = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticsTypes.galgas", 476)) ;
+  outArgument_outAddAssignArgumentList = GALGAS_functionSignature::constructor_emptyList (SOURCE_FILE ("semanticsTypes.galgas", 482)) ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -11282,8 +11492,8 @@ static void categoryMethod_predefinedTypeAST_getEnumerationList (const cPtr_pred
                                                                  GALGAS_string & outArgument_outEnumeratedType,
                                                                  C_Compiler * /* inCompiler */
                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outEnumerationList = GALGAS_enumerationDescriptorList::constructor_emptyList (SOURCE_FILE ("semanticsTypes.galgas", 490)) ;
-  outArgument_outEnumerationVariant = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("semanticsTypes.galgas", 491)) ;
+  outArgument_outEnumerationList = GALGAS_enumerationDescriptorList::constructor_emptyList (SOURCE_FILE ("semanticsTypes.galgas", 496)) ;
+  outArgument_outEnumerationVariant = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("semanticsTypes.galgas", 497)) ;
   outArgument_outEnumeratedType = GALGAS_string::makeEmptyString () ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11727,66 +11937,6 @@ GALGAS_bool callCategoryReader_hasCppHeaderFile (const cPtr_semanticDeclarationF
          p = p->mSuperclassDescriptor ;
        }
        gCategoryReaderTable_semanticDeclarationForGeneration_hasCppHeaderFile.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
-    }
-    if (NULL == f) {
-      fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
-    }else{
-      result = f (inObject, inCompiler COMMA_THERE) ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                      Abstract category reader '@semanticDeclarationForGeneration isPredefined'                      *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static TC_UniqueArray <categoryReaderSignature_semanticDeclarationForGeneration_isPredefined> gCategoryReaderTable_semanticDeclarationForGeneration_isPredefined ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void enterCategoryReader_isPredefined (const int32_t inClassIndex,
-                                       categoryReaderSignature_semanticDeclarationForGeneration_isPredefined inReader) {
-  gCategoryReaderTable_semanticDeclarationForGeneration_isPredefined.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void freeCategoryReader_semanticDeclarationForGeneration_isPredefined (void) {
-  gCategoryReaderTable_semanticDeclarationForGeneration_isPredefined.free () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gReader_semanticDeclarationForGeneration_isPredefined (NULL,
-                                                                          freeCategoryReader_semanticDeclarationForGeneration_isPredefined) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_bool callCategoryReader_isPredefined (const cPtr_semanticDeclarationForGeneration * inObject,
-                                             C_Compiler * inCompiler
-                                             COMMA_LOCATION_ARGS) {
-  GALGAS_bool result ;
-//--- Find Reader
-  if (NULL != inObject) {
-    macroValidSharedObject (inObject, cPtr_semanticDeclarationForGeneration) ;
-    const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
-    const int32_t classIndex = info->mSlotID ;
-    categoryReaderSignature_semanticDeclarationForGeneration_isPredefined f = NULL ;
-    if (classIndex < gCategoryReaderTable_semanticDeclarationForGeneration_isPredefined.count ()) {
-      f = gCategoryReaderTable_semanticDeclarationForGeneration_isPredefined (classIndex COMMA_HERE) ;
-    }
-    if (NULL == f) {
-       const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
-       while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryReaderTable_semanticDeclarationForGeneration_isPredefined.count ()) {
-           f = gCategoryReaderTable_semanticDeclarationForGeneration_isPredefined (p->mSlotID COMMA_HERE) ;
-         }
-         p = p->mSuperclassDescriptor ;
-       }
-       gCategoryReaderTable_semanticDeclarationForGeneration_isPredefined.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
       fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;

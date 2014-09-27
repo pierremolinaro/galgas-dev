@@ -151,7 +151,7 @@ override method @templateInstructionForeachForGeneration templateCodeGeneration
 #---
   ioGeneratedCode .= "if (" . foreachVarCppName . ".isValid ()) {\n" ;
   [!?ioGeneratedCode incIndentation !2] ;
-  ioGeneratedCode .= "cEnumerator_" . [[mExpression mType] identifierRepresentation] . " " . mEnumeratorCppName . " (" . foreachVarCppName . ", "
+  ioGeneratedCode .= "cEnumerator_" . [[mExpression mResultType] identifierRepresentation] . " " . mEnumeratorCppName . " (" . foreachVarCppName . ", "
                   . if mIsAscending then "kEnumeration_up" else "kEnumeration_down" end . ") ;\n" ;
 #--- Before
   if ([mBeforeInstructionList length] + [mAfterInstructionList length]) > 0 then
@@ -283,12 +283,12 @@ override method @templateInstructionSwitchForGeneration templateCodeGeneration
   [mSwitchExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?switchVarCppName] ;
 #---
   ioGeneratedCode .= "switch (" . switchVarCppName . ".enumValue ()) {\n" ;
-  ioGeneratedCode .= "case GALGAS_" . [[mSwitchExpression mType] identifierRepresentation] . "::kNotBuilt :\n" ;
+  ioGeneratedCode .= "case GALGAS_" . [[mSwitchExpression mResultType] identifierRepresentation] . "::kNotBuilt :\n" ;
   ioGeneratedCode .= "break ;\n" ;
 #---
   foreach mTemplateInstructionSwitchBranchList do
     foreach mConstantList do
-      ioGeneratedCode .= "case GALGAS_" . [[mSwitchExpression mType] identifierRepresentation] . "::kEnum_" . [[mValue string] identifierRepresentation] . " : {\n" ;
+      ioGeneratedCode .= "case GALGAS_" . [[mSwitchExpression mResultType] identifierRepresentation] . "::kEnum_" . [[mValue string] identifierRepresentation] . " : {\n" ;
     end foreach ;
     [!?ioGeneratedCode incIndentation !2] ;
     templateCodeGenerationForListInstruction
