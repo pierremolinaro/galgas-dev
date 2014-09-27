@@ -19,7 +19,7 @@ class cPtr_notExpressionForGeneration : public cPtr_semanticExpressionForGenerat
   public : GALGAS_semanticExpressionForGeneration mAttribute_mExpression ;
 
 //--- Constructor
-  public : cPtr_notExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mType,
+  public : cPtr_notExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
                                             const GALGAS_location & in_mLocation,
                                             const GALGAS_semanticExpressionForGeneration & in_mExpression
                                             COMMA_LOCATION_ARGS) ;

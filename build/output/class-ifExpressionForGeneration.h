@@ -21,7 +21,7 @@ class cPtr_ifExpressionForGeneration : public cPtr_semanticExpressionForGenerati
   public : GALGAS_semanticExpressionForGeneration mAttribute_mElseExpression ;
 
 //--- Constructor
-  public : cPtr_ifExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mType,
+  public : cPtr_ifExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
                                            const GALGAS_location & in_mLocation,
                                            const GALGAS_semanticExpressionForGeneration & in_mIfExpression,
                                            const GALGAS_semanticExpressionForGeneration & in_mThenExpression,

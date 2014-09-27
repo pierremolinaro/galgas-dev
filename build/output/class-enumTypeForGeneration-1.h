@@ -43,7 +43,7 @@ class GALGAS_enumTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 
 //--------------------------------- GALGAS constructors
   public : static GALGAS_enumTypeForGeneration constructor_new (const class GALGAS_unifiedTypeMapProxy & inOperand0,
-                                                                const class GALGAS_enumConstantList & inOperand1
+                                                                const class GALGAS_enumConstantListForGeneration & inOperand1
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -55,7 +55,7 @@ class GALGAS_enumTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_enumConstantList reader_mConstantList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_enumConstantListForGeneration reader_mConstantList (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection

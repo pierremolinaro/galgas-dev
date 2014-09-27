@@ -228,7 +228,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_sortedlistTypeSpecificI
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_enumTypeHeader_31_ (class C_Compiler * inCompiler,
                                                                              const class GALGAS_string & in_TYPE_5F_NAME,
                                                                              const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                             const class GALGAS_enumConstantList & in_CONSTANT_5F_LIST,
+                                                                             const class GALGAS_enumConstantListForGeneration & in_CONSTANT_5F_LIST,
                                                                              const class GALGAS_bool & in_HAS_5F_ASSOCIATED_5F_VALUES
                                                                              COMMA_LOCATION_ARGS) ;
 
@@ -241,7 +241,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_enumTypeHeader_31_ (cla
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_enumTypeSpecificImplementation (class C_Compiler * inCompiler,
                                                                                          const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                          const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                         const class GALGAS_enumConstantList & in_CONSTANT_5F_LIST,
+                                                                                         const class GALGAS_enumConstantListForGeneration & in_CONSTANT_5F_LIST,
                                                                                          const class GALGAS_bool & in_HAS_5F_ASSOCIATED_5F_VALUES
                                                                                          COMMA_LOCATION_ARGS) ;
 

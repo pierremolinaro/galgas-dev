@@ -23,7 +23,7 @@ class cPtr_testDynamicClassInExpressionForGeneration : public cPtr_semanticExpre
   public : GALGAS_unifiedTypeMapProxy mAttribute_mCastType ;
 
 //--- Constructor
-  public : cPtr_testDynamicClassInExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mType,
+  public : cPtr_testDynamicClassInExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
                                                            const GALGAS_location & in_mLocation,
                                                            const GALGAS_semanticExpressionForGeneration & in_mReceiverExpression,
                                                            const GALGAS_dynamicTypeComparisonKind & in_mTypeComparisonKind,

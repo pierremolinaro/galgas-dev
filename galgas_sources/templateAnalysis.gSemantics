@@ -65,7 +65,7 @@ override method @templateReaderCallInExpressionAST templateExpressionAnalysis
 #--- Expression analysis
   @semanticExpressionForGeneration receiverExpression ;
   [mReceiverExpression templateExpressionAnalysis !inAnalysisContext ?receiverExpression] ;
-  const @unifiedTypeMapProxy receiverType := [receiverExpression mType] ;
+  const @unifiedTypeMapProxy receiverType := [receiverExpression mResultType] ;
 #--- Get reader map
   const @readerMap readerMap := [receiverType mReaderMap] ;
 #--- Search contructor
@@ -153,7 +153,7 @@ override method @templateReaderCallInExpressionAST templateExpressionAnalysis
       if mFormalSelector->string != mActualSelector->string then
         error mActualSelector : "the selector should be '!" . mFormalSelector . if mFormalSelector->string != "" then ":" else "" end + "'" ;
       end if ;
-      checkAssignmentTypes !mFormalArgumentType ![exp mType] !mEndOfExpressionLocation ;
+      checkAssignmentTypes !mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation ;
       constructorEffectiveParameterList += !exp ;
     end foreach ;
     outExpression := [@readerCallExpressionForGeneration new
@@ -227,7 +227,7 @@ override method @templateConstructorAST templateExpressionAnalysis
       if mFormalSelector->string != mActualSelector->string then
         error mActualSelector : "the selector should be '!" . mFormalSelector . if mFormalSelector->string != "" then ":" else "" end + "'" ;
       end if ;
-      checkAssignmentTypes !mFormalArgumentType ![exp mType] !mEndOfExpressionLocation ;
+      checkAssignmentTypes !mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation ;
       constructorEffectiveParameterList += !exp ;
     end foreach ;
   end if ;
@@ -279,10 +279,10 @@ override method @templateAndOperationAST templateExpressionAnalysis
   @semanticExpressionForGeneration rightExpression ;
   [mRightExpression templateExpressionAnalysis !inAnalysisContext ?rightExpression] ;
 #--- Check operator availability
-  const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
+  const @unifiedTypeMapProxy leftType := [leftExpression mResultType] ;
   checkDiadicOperator
     !leftType
-    ![rightExpression mType]
+    ![rightExpression mResultType]
     !([leftType mHandledOperatorFlags] & binaryAndOperator []) != 0
     !"&"
     !mOperatorLocation
@@ -310,10 +310,10 @@ override method @templateOrOperationAST templateExpressionAnalysis
   @semanticExpressionForGeneration rightExpression ;
   [mRightExpression templateExpressionAnalysis !inAnalysisContext ?rightExpression] ;
 #--- Check operator availability
-  const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
+  const @unifiedTypeMapProxy leftType := [leftExpression mResultType] ;
   checkDiadicOperator
     !leftType
-    ![rightExpression mType]
+    ![rightExpression mResultType]
     !([leftType mHandledOperatorFlags] & binaryOrOperator []) != 0
     !"|"
     !mOperatorLocation
@@ -341,10 +341,10 @@ override method @templateXorOperationAST templateExpressionAnalysis
   @semanticExpressionForGeneration rightExpression ;
   [mRightExpression templateExpressionAnalysis !inAnalysisContext ?rightExpression] ;
 #--- Check operator availability
-  const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
+  const @unifiedTypeMapProxy leftType := [leftExpression mResultType] ;
   checkDiadicOperator
     !leftType
-    ![rightExpression mType]
+    ![rightExpression mResultType]
     !([leftType mHandledOperatorFlags] & binaryXorOperator []) != 0
     !"^"
     !mOperatorLocation
@@ -484,20 +484,20 @@ override method @templateIfThenElseExpressionAST templateExpressionAnalysis
   @semanticExpressionForGeneration else_expression ;
   [mElseExpression templateExpressionAnalysis !inAnalysisContext ?else_expression] ;
 #--- Check 'if' expression is boolean
-  if [[if_expression mType] key] != "bool" then
+  if [[if_expression mResultType] key] != "bool" then
     error mOperatorLocation
-    :"the test expression type is '@" . [[if_expression mType] key] . "', it should be '@bool'"
+    :"the test expression type is '@" . [[if_expression mResultType] key] . "', it should be '@bool'"
     :outExpression
     ;
-  elsif [then_expression mType] != [else_expression mType] then
+  elsif [then_expression mResultType] != [else_expression mResultType] then
     error mOperatorLocation
-    :"operand expression types are '@" . [[then_expression mType] key] . "' and '@". [[else_expression mType] key] . "': they should be the same"
+    :"operand expression types are '@" . [[then_expression mResultType] key] . "' and '@". [[else_expression mResultType] key] . "': they should be the same"
     :outExpression
     ;
   else
   #--- Generate expression
     outExpression := [@ifExpressionForGeneration new
-      ![then_expression mType]
+      ![then_expression mResultType]
       !mOperatorLocation
       !if_expression
       !then_expression
@@ -516,7 +516,7 @@ override method @templateNotOperatorAST templateExpressionAnalysis
   @semanticExpressionForGeneration expression ;
   [mExpression templateExpressionAnalysis !inAnalysisContext ?expression] ;
 #--- Check operator availability
-  const @unifiedTypeMapProxy type := [expression mType] ;
+  const @unifiedTypeMapProxy type := [expression mResultType] ;
   if ([type mHandledOperatorFlags] & unaryNotOperator []) == 0 then
     error mOperatorLocation
     : "operand type is '@" . [type key] . "' and does not support the 'not' operator"
@@ -542,7 +542,7 @@ override method @templateLogicalNegateAST templateExpressionAnalysis
   @semanticExpressionForGeneration expression ;
   [mExpression templateExpressionAnalysis !inAnalysisContext ?expression] ;
 #--- Check operator availability
-  const @unifiedTypeMapProxy type := [expression mType] ;
+  const @unifiedTypeMapProxy type := [expression mResultType] ;
   if ([type mHandledOperatorFlags] & unaryTildeOperator []) == 0 then
     error mOperatorLocation
     : "operand type is '@" . [type key] . "' and does not support the '~' operator"
@@ -672,7 +672,7 @@ override method @templateFunctionCallAST templateExpressionAnalysis
     @semanticExpressionListForGeneration semanticExpressionListForGeneration [emptyList] ;
     foreach functionSignature, mExpressionList do
       [mExpression templateExpressionAnalysis !inAnalysisContext ??@semanticExpressionForGeneration expression] ;
-      checkAssignmentTypes !mFormalArgumentType ![expression mType] !mEndOfExpressionLocation ;
+      checkAssignmentTypes !mFormalArgumentType ![expression mResultType] !mEndOfExpressionLocation ;
       semanticExpressionListForGeneration += !expression ;
       if mFormalSelector->string != mActualSelector->string then
         error mActualSelector : "the selector should be '!" . if mFormalSelector->string != "" then mFormalSelector->string + ":" else "" end + "'" ;
@@ -735,10 +735,10 @@ override method @templateAddOperationAST templateExpressionAnalysis
   @semanticExpressionForGeneration rightExpression ;
   [mRightExpression templateExpressionAnalysis !inAnalysisContext ?rightExpression] ;
 #--- Check operator availability
-  const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
+  const @unifiedTypeMapProxy leftType := [leftExpression mResultType] ;
   checkDiadicOperator
     !leftType
-    ![rightExpression mType]
+    ![rightExpression mResultType]
     !([leftType mHandledOperatorFlags] & binaryAddOperator []) != 0
     !"+"
     !mOperatorLocation
@@ -768,10 +768,10 @@ override method @templateSubOperationAST templateExpressionAnalysis
   @semanticExpressionForGeneration rightExpression ;
   [mRightExpression templateExpressionAnalysis !inAnalysisContext ?rightExpression] ;
 #--- Check operator availability
-  const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
+  const @unifiedTypeMapProxy leftType := [leftExpression mResultType] ;
   checkDiadicOperator
     !leftType
-    ![rightExpression mType]
+    ![rightExpression mResultType]
     !([leftType mHandledOperatorFlags] & binarySubOperator []) != 0
     !"-"
     !mOperatorLocation
@@ -801,10 +801,10 @@ override method @templateMultiplyOperationAST templateExpressionAnalysis
   @semanticExpressionForGeneration rightExpression ;
   [mRightExpression templateExpressionAnalysis !inAnalysisContext ?rightExpression] ;
 #--- Check operator availability
-  const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
+  const @unifiedTypeMapProxy leftType := [leftExpression mResultType] ;
   checkDiadicOperator
     !leftType
-    ![rightExpression mType]
+    ![rightExpression mResultType]
     !([leftType mHandledOperatorFlags] & binaryMulOperator []) != 0
     !"*"
     !mOperatorLocation
@@ -834,10 +834,10 @@ override method @templateDivideOperationAST templateExpressionAnalysis
   @semanticExpressionForGeneration rightExpression ;
   [mRightExpression templateExpressionAnalysis !inAnalysisContext ?rightExpression] ;
 #--- Check operator availability
-  const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
+  const @unifiedTypeMapProxy leftType := [leftExpression mResultType] ;
   checkDiadicOperator
     !leftType
-    ![rightExpression mType]
+    ![rightExpression mResultType]
     !([leftType mHandledOperatorFlags] & binaryDivOperator []) != 0
     !"/"
     !mOperatorLocation
@@ -867,10 +867,10 @@ override method @templateModuloOperationAST templateExpressionAnalysis
   @semanticExpressionForGeneration rightExpression ;
   [mRightExpression templateExpressionAnalysis !inAnalysisContext ?rightExpression] ;
 #--- Check operator availability
-  const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
+  const @unifiedTypeMapProxy leftType := [leftExpression mResultType] ;
   checkDiadicOperator
     !leftType
-    ![rightExpression mType]
+    ![rightExpression mResultType]
     !([leftType mHandledOperatorFlags] & binaryModOperator []) != 0
     !"mod"
     !mOperatorLocation
@@ -897,7 +897,7 @@ override method @templateUnaryMinusOperationAST templateExpressionAnalysis
   @semanticExpressionForGeneration expression ;
   [mExpression templateExpressionAnalysis !inAnalysisContext ?expression] ;
 #--- Check operator availability
-  const @unifiedTypeMapProxy type := [expression mType] ;
+  const @unifiedTypeMapProxy type := [expression mResultType] ;
   if ([type mHandledOperatorFlags] & unaryMinusOperator []) == 0 then
     error mOperatorLocation
     : "operand type is '@" . [type key] . "' and does not support the unary minus operator"
@@ -925,7 +925,7 @@ override method @structFieldAccessTemplateExpressionAST templateExpressionAnalys
   @semanticExpressionForGeneration expression ;
   [mExpression templateExpressionAnalysis !inAnalysisContext ?expression] ;
 #--- Check field access availability
-  @unifiedTypeMapProxy type := [expression mType] ;
+  @unifiedTypeMapProxy type := [expression mResultType] ;
   if [type mTypeKindEnum] != [@typeKindEnum structType] then
     error mStructFieldName:"the '->' operator requires the receiver to be a struct" ;
   end if ;
@@ -955,8 +955,8 @@ override method @templateEqualTestAST templateExpressionAnalysis
   @semanticExpressionForGeneration rightExpression ;
   [mRightExpression templateExpressionAnalysis !inAnalysisContext ?rightExpression] ;
 #--- Check operator availability
-  const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
-  const @unifiedTypeMapProxy rightType := [rightExpression mType] ;
+  const @unifiedTypeMapProxy leftType := [leftExpression mResultType] ;
+  const @unifiedTypeMapProxy rightType := [rightExpression mResultType] ;
   if [[leftType lkey] string] != [[rightType lkey] string] then
     error mOperatorLocation
     : "left operand type is '@" . [leftType lkey] . "', right operand type is '@" . [rightType lkey] . "': '==' operator requires the types are the same"
@@ -986,8 +986,8 @@ override method @templateNonEqualTestAST templateExpressionAnalysis
   @semanticExpressionForGeneration rightExpression ;
   [mRightExpression templateExpressionAnalysis !inAnalysisContext ?rightExpression] ;
 #--- Check operator availability
-  const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
-  const @unifiedTypeMapProxy rightType := [rightExpression mType] ;
+  const @unifiedTypeMapProxy leftType := [leftExpression mResultType] ;
+  const @unifiedTypeMapProxy rightType := [rightExpression mResultType] ;
   if [[leftType lkey] string] != [[rightType lkey] string] then
     error mOperatorLocation
     : "left operand type is '@" . [leftType key] . "', right operand type is '@" . [rightType key] . "': '!=' operator requires the types are the same"
@@ -1017,8 +1017,8 @@ override method @templateStrictInfTestAST templateExpressionAnalysis
   @semanticExpressionForGeneration rightExpression ;
   [mRightExpression templateExpressionAnalysis !inAnalysisContext ?rightExpression] ;
 #--- Check operator availability
-  const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
-  const @unifiedTypeMapProxy rightType := [rightExpression mType] ;
+  const @unifiedTypeMapProxy leftType := [leftExpression mResultType] ;
+  const @unifiedTypeMapProxy rightType := [rightExpression mResultType] ;
   if ([leftType mHandledOperatorFlags] & isComparable []) == 0 then
     error mOperatorLocation
     : "left operand type is '@" . [leftType key] . "' and does not support the '<' operator"
@@ -1053,8 +1053,8 @@ override method @templateInfOrEqualTestAST templateExpressionAnalysis
   @semanticExpressionForGeneration rightExpression ;
   [mRightExpression templateExpressionAnalysis !inAnalysisContext ?rightExpression] ;
 #--- Check operator availability
-  const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
-  const @unifiedTypeMapProxy rightType := [rightExpression mType] ;
+  const @unifiedTypeMapProxy leftType := [leftExpression mResultType] ;
+  const @unifiedTypeMapProxy rightType := [rightExpression mResultType] ;
   if ([leftType mHandledOperatorFlags] & isComparable []) == 0 then
     error mOperatorLocation
     : "left operand type is '@" . [leftType key] . "' and does not support the '<=' operator"
@@ -1089,8 +1089,8 @@ override method @templateStrictSupTestAST templateExpressionAnalysis
   @semanticExpressionForGeneration rightExpression ;
   [mRightExpression templateExpressionAnalysis !inAnalysisContext ?rightExpression] ;
 #--- Check operator availability
-  const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
-  const @unifiedTypeMapProxy rightType := [rightExpression mType] ;
+  const @unifiedTypeMapProxy leftType := [leftExpression mResultType] ;
+  const @unifiedTypeMapProxy rightType := [rightExpression mResultType] ;
   if ([leftType mHandledOperatorFlags] & isComparable []) == 0 then
     error mOperatorLocation
     : "left operand type is '@" . [leftType key] . "' and does not support the '>' operator"
@@ -1125,8 +1125,8 @@ override method @templateSupOrEqualTestAST templateExpressionAnalysis
   @semanticExpressionForGeneration rightExpression ;
   [mRightExpression templateExpressionAnalysis !inAnalysisContext ?rightExpression] ;
 #--- Check operator availability
-  const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
-  const @unifiedTypeMapProxy rightType := [rightExpression mType] ;
+  const @unifiedTypeMapProxy leftType := [leftExpression mResultType] ;
+  const @unifiedTypeMapProxy rightType := [rightExpression mResultType] ;
   if ([leftType mHandledOperatorFlags] & isComparable []) == 0 then
     error mOperatorLocation
     : "left operand type is '@" . [leftType key] . "' and does not support the '>=' operator"
@@ -1161,8 +1161,8 @@ override method @templateLeftShiftOperationAST templateExpressionAnalysis
   @semanticExpressionForGeneration rightExpression ;
   [mRightExpression templateExpressionAnalysis !inAnalysisContext ?rightExpression] ;
 #--- Check operator availability
-  const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
-  const @unifiedTypeMapProxy rightType := [rightExpression mType] ;
+  const @unifiedTypeMapProxy leftType := [leftExpression mResultType] ;
+  const @unifiedTypeMapProxy rightType := [rightExpression mResultType] ;
   if ([leftType mHandledOperatorFlags] & binaryShiftOperator []) == 0 then
     error mOperatorLocation
     : "left operand type is '@" . [leftType key] . "' and does not support a shift operator"
@@ -1197,8 +1197,8 @@ override method @templateRightShiftOperationAST templateExpressionAnalysis
   @semanticExpressionForGeneration rightExpression ;
   [mRightExpression templateExpressionAnalysis !inAnalysisContext ?rightExpression] ;
 #--- Check operator availability
-  const @unifiedTypeMapProxy leftType := [leftExpression mType] ;
-  const @unifiedTypeMapProxy rightType := [rightExpression mType] ;
+  const @unifiedTypeMapProxy leftType := [leftExpression mResultType] ;
+  const @unifiedTypeMapProxy rightType := [rightExpression mResultType] ;
   if ([leftType mHandledOperatorFlags] & binaryShiftOperator []) == 0 then
     error mOperatorLocation
     : "left operand type is '@" . [leftType key] . "' and does not support a shift operator"
@@ -1276,8 +1276,8 @@ override method @templateInstructionExpressionAST templateInstructionAnalysis
 :
   @semanticExpressionForGeneration expression ;
   [mExpression templateExpressionAnalysis !inAnalysisContext ?expression] ;
-  if [[expression mType] key] != "string" then
-    error mLocation:"expression type should be '@string' (it is '@" . [[expression mType] key] . "')" ;
+  if [[expression mResultType] key] != "string" then
+    error mLocation:"expression type should be '@string' (it is '@" . [[expression mResultType] key] . "')" ;
   end if ;
   ioInstructionList += ![@templateInstructionExpressionForGeneration new !expression] ;
 end method ;
@@ -1290,8 +1290,8 @@ override method @templateBlockInstructionAST templateInstructionAnalysis
 :
   @semanticExpressionForGeneration expression ;
   [mExpression templateExpressionAnalysis !inAnalysisContext ?expression] ;
-  if [[expression mType] key] != "uint" then
-    error mLocation:"expression type should be '@uint' (it is '@" . [[expression mType] key] . "')" ;
+  if [[expression mResultType] key] != "uint" then
+    error mLocation:"expression type should be '@uint' (it is '@" . [[expression mResultType] key] . "')" ;
   end if ;
   @templateInstructionListForGeneration blockInstructionList [emptyList] ;
   templateInstructionListAnalysis !inAnalysisContext !mBlockInstructionList !?blockInstructionList ;
@@ -1326,9 +1326,9 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
   @semanticExpressionForGeneration expression ;
   [mExpression templateExpressionAnalysis !inAnalysisContext ?expression] ;
 #--- Check expression is enumerable
-  const @enumerationDescriptorList enumerationDescriptor := [[expression mType] mEnumerationDescriptor] ; # Empty List if cannot be enumerated
+  const @enumerationDescriptorList enumerationDescriptor := [[expression mResultType] mEnumerationDescriptor] ; # Empty List if cannot be enumerated
   if [enumerationDescriptor length] == 0 then
-    error [expression mLocation] : "expression of '@" . [[expression mType] key] . "' cannot be enumerated" ;
+    error [expression mLocation] : "expression of '@" . [[expression mResultType] key] . "' cannot be enumerated" ;
   end if ;
 #--- Before instructions
   @templateInstructionListForGeneration beforeInstructionList [emptyList] ;
@@ -1383,8 +1383,8 @@ override method @templateInstructionIfAST templateInstructionAnalysis
   foreach mTemplateInstructionIfBranchList do
     @semanticExpressionForGeneration expression ;
     [mExpression templateExpressionAnalysis !inAnalysisContext ?expression] ;
-    if [[expression mType] key] != "bool" then
-      error [expression mLocation] : "'if' expression type should be '@bool' (it is '@" . [[expression mType] key] . "')" ;
+    if [[expression mResultType] key] != "bool" then
+      error [expression mLocation] : "'if' expression type should be '@bool' (it is '@" . [[expression mResultType] key] . "')" ;
     end if ;
     @templateInstructionListForGeneration instructionList [emptyList] ;
     templateInstructionListAnalysis !inAnalysisContext !mInstructionList !?instructionList ;
@@ -1409,17 +1409,17 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
 #---
   @semanticExpressionForGeneration switchExpression ;
   [mSwitchExpression templateExpressionAnalysis !inAnalysisContext ?switchExpression] ;
-  if [[switchExpression mType] mTypeKindEnum] != [@typeKindEnum enumType] then
-    error [switchExpression mLocation] : "'switch' expression type should be an enumeration (it is a " . [[[switchExpression mType] mTypeKindEnum] kind] . " type)" ;
+  if [[switchExpression mResultType] mTypeKindEnum] != [@typeKindEnum enumType] then
+    error [switchExpression mLocation] : "'switch' expression type should be an enumeration (it is a " . [[[switchExpression mResultType] mTypeKindEnum] kind] . " type)" ;
   end if ;
-  const enumConstantMap := [[switchExpression mType] mEnumConstantMap] ;
+  const enumConstantMap := [[switchExpression mResultType] mEnumConstantMap] ;
 #---
   @templateInstructionSwitchBranchListForGeneration templateInstructionSwitchBranchList [emptyList] ;
   @stringset namedConstantSet [emptySet] ;
   foreach mTemplateInstructionSwitchBranchList do
     foreach mConstantList do
       if not [enumConstantMap hasKey ![mValue string]] then
-        error mValue : "the '" . mValue . "' is not a contant of '@" . [[switchExpression mType] key] . "' enumeration type" ;
+        error mValue : "the '" . mValue . "' is not a contant of '@" . [[switchExpression mResultType] key] . "' enumeration type" ;
       end if ;
       if [namedConstantSet hasKey ![mValue string]] then
         error mValue : "the '" . mValue . "' constant is already named in the switch instruction" ;

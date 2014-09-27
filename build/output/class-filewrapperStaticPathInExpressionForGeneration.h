@@ -20,7 +20,7 @@ class cPtr_filewrapperStaticPathInExpressionForGeneration : public cPtr_semantic
   public : GALGAS_bool mAttribute_mIsTextFile ;
 
 //--- Constructor
-  public : cPtr_filewrapperStaticPathInExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mType,
+  public : cPtr_filewrapperStaticPathInExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
                                                                 const GALGAS_location & in_mLocation,
                                                                 const GALGAS_string & in_mFilewrapperName,
                                                                 const GALGAS_uint & in_mFilewrapperFileIndex,

@@ -20,7 +20,7 @@ class cPtr_optionStringExpressionForGeneration : public cPtr_semanticExpressionF
   public : GALGAS_string mAttribute_mOptionEntryName ;
 
 //--- Constructor
-  public : cPtr_optionStringExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mType,
+  public : cPtr_optionStringExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
                                                      const GALGAS_location & in_mLocation,
                                                      const GALGAS_bool & in_mOptionComponentIsPredefined,
                                                      const GALGAS_string & in_mOptionComponentName,

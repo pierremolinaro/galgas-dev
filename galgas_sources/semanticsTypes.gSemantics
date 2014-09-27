@@ -22,6 +22,12 @@ import "semanticsTypesForAST.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
+once generateFewHeaderFiles -> @bool outResult :
+  outResult := false ;
+end once ;
+
+#---------------------------------------------------------------------------*
+
 list @functionSignature {
   @lstring mFormalSelector ;
   @unifiedTypeMapProxy mFormalArgumentType ;

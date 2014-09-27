@@ -17,7 +17,7 @@ class cPtr_hereExpressionForGeneration : public cPtr_semanticExpressionForGenera
 //--- Attributes
 
 //--- Constructor
-  public : cPtr_hereExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mType,
+  public : cPtr_hereExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
                                              const GALGAS_location & in_mLocation
                                              COMMA_LOCATION_ARGS) ;
 

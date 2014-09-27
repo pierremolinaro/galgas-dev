@@ -331,12 +331,6 @@ end once ;
 
 #---------------------------------------------------------------------------*
 
-local once generateFewHeaderFiles -> @bool outResult :
-  outResult := false ;
-end once ;
-
-#---------------------------------------------------------------------------*
-
 routine generateSemanticDeclarationsGalgas3
   ??@string inProductDirectory
   ??@semanticContext inSemanticContext
@@ -351,13 +345,14 @@ routine generateSemanticDeclarationsGalgas3
         !inSemanticDeclarationSortedListForGeneration
         !?ioAllProductFileSet
       ;
-    elsif generateFewHeaderFiles [] then
-      generateFewHeaders
-        !inProductDirectory
-        !inSemanticDeclarationSortedListForGeneration
-        !?ioAllProductFileSet
-      ;
-    else
+    elsif not generateFewHeaderFiles [] then
+#    elsif generateFewHeaderFiles [] then
+#      generateFewHeaders
+#        !inProductDirectory
+#        !inSemanticDeclarationSortedListForGeneration
+#        !?ioAllProductFileSet
+#      ;
+#    else
       generateManyHeaders
         !inProductDirectory
         !inSemanticDeclarationSortedListForGeneration
@@ -366,6 +361,14 @@ routine generateSemanticDeclarationsGalgas3
     end if ;
     if [option galgas_cli_options.generateManyFiles value] then
       generateManyImplementationFiles
+        !inProductDirectory
+        !inSemanticContext
+        !inSemanticDeclarationSortedListForGeneration
+        !?ioToolProductFileList
+        !?ioAllProductFileSet
+      ;
+    elsif generateFewHeaderFiles [] then
+      generateFewImplementationFilesWithFewHeaders
         !inProductDirectory
         !inSemanticContext
         !inSemanticDeclarationSortedListForGeneration
@@ -552,26 +555,30 @@ local routine buildHeader
 #---
   if not [ioHeaderRepartitionMap hasKey !inDeclarationName] then
     [!?ioHeaderRepartitionMap insertKey ![inDeclarationName nowhere] !inHeaderFileName] ;
-    [inHeaderCompositionMap searchKey
-      ![inDeclarationName nowhere]
-      ??@stringset inclusionSet
-      ??@string headerString
-    ] ;
-    ioHeaderString += "//START--- " + inDeclarationName + "\n" ;
-    for (s) in inclusionSet do
-      buildHeader
-        !inHeaderCompositionMap
-        !inHeaderFileName
-        !s
-        !?ioHeaderRepartitionMap
-        !?ioHeaderString
-      ;
-    end for ;
-    ioHeaderString += "//--- " + inDeclarationName + "\n" ;
-    for (s) in inclusionSet do
-      ioHeaderString += "  // " + s + "\n" ;
-    end for ;
-    ioHeaderString += headerString ;
+    if [inHeaderCompositionMap hasKey !inDeclarationName] then
+      [inHeaderCompositionMap searchKey
+        ![inDeclarationName nowhere]
+        ??@stringset inclusionSet
+        ??@string headerString
+      ] ;
+      ioHeaderString += "//START--- " + inDeclarationName + "\n" ;
+      for (s) in inclusionSet do
+        buildHeader
+          !inHeaderCompositionMap
+          !inHeaderFileName
+          !s
+          !?ioHeaderRepartitionMap
+          !?ioHeaderString
+        ;
+      end for ;
+      ioHeaderString += "//--- " + inDeclarationName + "\n" ;
+      for (s) in inclusionSet do
+        ioHeaderString += "  // " + s + "\n" ;
+      end for ;
+      ioHeaderString += headerString ;
+    else
+      ioHeaderString += "#include \"" + inDeclarationName + ".h\"\n" ;
+    end if ;
   else
     ioHeaderString += "//--- " + inDeclarationName + " already included\n" ;
   end if ;
@@ -579,92 +586,131 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-local routine generateFewHeaders
-  ??@string inProductDirectory
-  ??@semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
-  ?!@stringset ioAllProductFileSet
-:
-#--- Build header composition map
-  @headerCompositionMap headerCompositionMap := {} ;
-  foreach inSemanticDeclarationSortedListForGeneration do
-    if not [mDeclaration isPredefined] then
-      var inclusionSet1 := [@stringset emptySet] ;
-      [mDeclaration appendDeclaration1 !?inclusionSet1 ??@string headerString1] ;
-      var inclusionSet2 := [@stringset emptySet] ;
-      [mDeclaration appendDeclaration2 !true !inProductDirectory !?inclusionSet2 ??@string headerString2] ;
-      if [mDeclaration headerKind] != [@headerKind noHeader] then
-        const headerFileName := [mDeclaration implementationCppFileName] + if [mDeclaration headerKind] == [@headerKind twoHeaders] then "-1" else "" end ;
-        [!?headerCompositionMap insertKey
-          ![headerFileName nowhere]
-          !inclusionSet1
-          !headerString1
-        ] ;
-      end if ;
-      if [mDeclaration headerKind] == [@headerKind twoHeaders] then
-        [!?headerCompositionMap insertKey
-          ![[mDeclaration implementationCppFileName] nowhere]
-          !inclusionSet2 | @stringset {![mDeclaration implementationCppFileName] + "-1"}
-          !headerString2
-        ] ;
-      end if ;
-    end if ;
-  end foreach ;
-#---
-  var n := 0 ;
-  var fileIdx := 0 ;
-  var headerFileName := "all-declarations-" + fileIdx ;
-  var implementationString := "" ;
-  @headerRepartitionMap headerRepartitionMap := {} ;
-  foreach inSemanticDeclarationSortedListForGeneration do
-    n ++ ;
-    if not [mDeclaration isPredefined] then
-      if [mDeclaration headerKind] == [@headerKind twoHeaders] then
-        buildHeader !headerCompositionMap !headerFileName ![mDeclaration implementationCppFileName] +"-1" !?headerRepartitionMap !?implementationString ;
-        buildHeader !headerCompositionMap !headerFileName ![mDeclaration implementationCppFileName]  !?headerRepartitionMap !?implementationString ;
-      elsif [mDeclaration headerKind] == [@headerKind oneHeader] then
-        buildHeader !headerCompositionMap !headerFileName ![mDeclaration implementationCppFileName]  !?headerRepartitionMap !?implementationString ;
-      end if ;
-    end if ;
-    if n == definitionGroupAmount [] then
-      const headerString := [filewrapper semanticFileGenerationTemplate.semanticFileHeader
-        !headerFileName
-        !if fileIdx == 0 then {} else {!"all-declarations-" + (fileIdx-1)} end
-      ] ;
-      [@string generateFile
-        !inProductDirectory
-        !headerFileName + ".h"
-        !headerString + implementationString + "#endif\n"
-      ] ;
-      ioAllProductFileSet += !headerFileName + ".h" ;
-      n := 0 ;
-      fileIdx ++ ;
-      headerFileName := "all-declarations-" + fileIdx ;
-      implementationString := "" ;
-    end if ;
-  end foreach ;
-#---
-  const headerString := [filewrapper semanticFileGenerationTemplate.semanticFileHeader
-    !headerFileName
-    !{!"all-declarations-" + (fileIdx-1)}
-  ] ;
-  [@string generateFile
-    !inProductDirectory
-    !headerFileName + ".h"
-    !headerString + implementationString + "#endif\n"
-  ] ;
-  ioAllProductFileSet += !headerFileName + ".h" ;
-#---
-  [@string generateFile
-    !inProductDirectory
-    !"all-declarations.h"
-    ![filewrapper semanticFileGenerationTemplate.semanticFileHeader
-       !"all-declarations"
-       !{!"all-declarations-" + fileIdx}
-     ] + "#endif\n"
-  ] ;
-  ioAllProductFileSet += !"all-declarations.h" ;
-end routine ;
+#local routine buildSpecificHeader
+#  ??@headerCompositionMap inHeaderCompositionMap
+#  ??@string inHeaderFileName
+#  ??@stringset inInclusionSet
+#  ?!@headerRepartitionMap ioHeaderRepartitionMap
+#  ?!@string ioHeaderString
+#:
+##---
+#  for (s) in inInclusionSet do
+#    if not [ioHeaderRepartitionMap hasKey !inDeclarationName] then
+#      [!?ioHeaderRepartitionMap insertKey ![inDeclarationName nowhere] !inHeaderFileName] ;
+#      [inHeaderCompositionMap searchKey
+#        ![inDeclarationName nowhere]
+#        ??@stringset inclusionSet
+#        ??@string headerString
+#      ] ;
+#      ioHeaderString += "//START--- " + inDeclarationName + "\n" ;
+#      for (s) in inclusionSet do
+#        buildHeader
+#          !inHeaderCompositionMap
+#          !inHeaderFileName
+#          !s
+#          !?ioHeaderRepartitionMap
+#          !?ioHeaderString
+#        ;
+#      end for ;
+#      ioHeaderString += "//--- " + inDeclarationName + "\n" ;
+#      for (s) in inclusionSet do
+#        ioHeaderString += "  // " + s + "\n" ;
+#      end for ;
+#      ioHeaderString += headerString ;
+#    else
+#      ioHeaderString += "//--- " + inDeclarationName + " already included\n" ;
+#    end if ;
+#  end for ;
+#end routine ;
 
+#---------------------------------------------------------------------------*
+
+#local routine generateFewHeaders
+#  ??@string inProductDirectory
+#  ??@semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
+#  ?!@stringset ioAllProductFileSet
+#:
+##--- Build header composition map
+#  @headerCompositionMap headerCompositionMap := {} ;
+#  foreach inSemanticDeclarationSortedListForGeneration do
+#    if not [mDeclaration isPredefined] then
+#      var inclusionSet1 := [@stringset emptySet] ;
+#      [mDeclaration appendDeclaration1 !?inclusionSet1 ??@string headerString1] ;
+#      var inclusionSet2 := [@stringset emptySet] ;
+#      [mDeclaration appendDeclaration2 !true !inProductDirectory !?inclusionSet2 ??@string headerString2] ;
+#      if [mDeclaration headerKind] != [@headerKind noHeader] then
+#        const headerFileName := [mDeclaration implementationCppFileName] + if [mDeclaration headerKind] == [@headerKind twoHeaders] then "-1" else "" end ;
+#        [!?headerCompositionMap insertKey
+#          ![headerFileName nowhere]
+#          !inclusionSet1
+#          !headerString1
+#        ] ;
+#      end if ;
+#      if [mDeclaration headerKind] == [@headerKind twoHeaders] then
+#        [!?headerCompositionMap insertKey
+#          ![[mDeclaration implementationCppFileName] nowhere]
+#          !inclusionSet2 | @stringset {![mDeclaration implementationCppFileName] + "-1"}
+#          !headerString2
+#        ] ;
+#      end if ;
+#    end if ;
+#  end foreach ;
+##---
+#  var n := 0 ;
+#  var fileIdx := 0 ;
+#  var headerFileName := "all-declarations-" + fileIdx ;
+#  var implementationString := "" ;
+#  @headerRepartitionMap headerRepartitionMap := {} ;
+#  foreach inSemanticDeclarationSortedListForGeneration do
+#    n ++ ;
+#    if not [mDeclaration isPredefined] then
+#      if [mDeclaration headerKind] == [@headerKind twoHeaders] then
+#        buildHeader !headerCompositionMap !headerFileName ![mDeclaration implementationCppFileName] +"-1" !?headerRepartitionMap !?implementationString ;
+#        buildHeader !headerCompositionMap !headerFileName ![mDeclaration implementationCppFileName]  !?headerRepartitionMap !?implementationString ;
+#      elsif [mDeclaration headerKind] == [@headerKind oneHeader] then
+#        buildHeader !headerCompositionMap !headerFileName ![mDeclaration implementationCppFileName]  !?headerRepartitionMap !?implementationString ;
+#      end if ;
+#    end if ;
+#    if n == definitionGroupAmount [] then
+#      const headerString := [filewrapper semanticFileGenerationTemplate.semanticFileHeader
+#        !headerFileName
+#        !if fileIdx == 0 then {} else {!"all-declarations-" + (fileIdx-1)} end
+#      ] ;
+#      [@string generateFile
+#        !inProductDirectory
+#        !headerFileName + ".h"
+#        !headerString + implementationString + "#endif\n"
+#      ] ;
+#      ioAllProductFileSet += !headerFileName + ".h" ;
+#      n := 0 ;
+#      fileIdx ++ ;
+#      headerFileName := "all-declarations-" + fileIdx ;
+#      implementationString := "" ;
+#    end if ;
+#  end foreach ;
+##---
+#  const headerString := [filewrapper semanticFileGenerationTemplate.semanticFileHeader
+#    !headerFileName
+#    !{!"all-declarations-" + (fileIdx-1)}
+#  ] ;
+#  [@string generateFile
+#    !inProductDirectory
+#    !headerFileName + ".h"
+#    !headerString + implementationString + "#endif\n"
+#  ] ;
+#  ioAllProductFileSet += !headerFileName + ".h" ;
+##---
+#  [@string generateFile
+#    !inProductDirectory
+#    !"all-declarations.h"
+#    ![filewrapper semanticFileGenerationTemplate.semanticFileHeader
+#       !"all-declarations"
+#       !{!"all-declarations-" + fileIdx}
+#     ] + "#endif\n"
+#  ] ;
+#  ioAllProductFileSet += !"all-declarations.h" ;
+#end routine ;
+#
 #---------------------------------------------------------------------------*
 
 local routine generateFewImplementationFiles
@@ -689,8 +735,8 @@ local routine generateFewImplementationFiles
       if n == definitionGroupAmount [] then
         if useOneHugeHeader then
           inclusionSet := [@stringset setWithString !"all-declarations"] ;
-        elsif generateFewHeaderFiles [] then
-          inclusionSet := {!"all-declarations-" . fileIdx} ;
+#        elsif generateFewHeaderFiles [] then
+#          inclusionSet := {!"all-declarations-" . fileIdx} ;
         end if ;
         for () in inSemanticContext->mOptionComponentMapForSemanticAnalysis do
           if not mIsPredefined then
@@ -718,6 +764,138 @@ local routine generateFewImplementationFiles
       end if ;
     end if ;
   end foreach ;
+#--- Last file
+  if implementationString != "" then
+    if useOneHugeHeader then
+      inclusionSet := [@stringset setWithString !"all-declarations"] ;
+    end if ;
+    for () in inSemanticContext->mOptionComponentMapForSemanticAnalysis do
+      if not mIsPredefined then
+        inclusionSet += !"option-" + lkey->string ;
+      end if ;
+    end for ;
+    for () in inSemanticContext->mGrammarMap do
+      inclusionSet += !"grammar-" . lkey->string ;
+    end for ;
+    const header := [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
+#      !if generateFewHeaderFiles [] then {!"all-declarations-" . fileIdx} else [inclusionSet stringList] end
+      ![inclusionSet stringList]
+    ] ;
+    const fileName := "all-declarations-" . fileIdx . ".cpp" ;
+    ioToolProductFileList := [@stringlist listWithValue !fileName] + ioToolProductFileList ;
+    ioAllProductFileSet += !fileName ;
+    [@string generateFile
+      !inProductDirectory
+      !fileName
+      !header + implementationString
+    ] ;
+  end if ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+local routine generateFewImplementationFilesWithFewHeaders
+  ??@string inProductDirectory
+  ??@semanticContext inSemanticContext
+  ??@semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
+  ?!@stringlist ioToolProductFileList
+  ?!@stringset ioAllProductFileSet
+:
+  const useOneHugeHeader := [option galgas_cli_options.generateOneHeader value] ;
+  @headerCompositionMap headerCompositionMap := {} ;
+  foreach inSemanticDeclarationSortedListForGeneration do
+    if not [mDeclaration isPredefined] then
+      var inclusionSet1 := [@stringset emptySet] ;
+      [mDeclaration appendDeclaration1 !?inclusionSet1 ??@string headerString1] ;
+      var inclusionSet2 := [@stringset emptySet] ;
+      [mDeclaration appendDeclaration2 !true !inProductDirectory !?inclusionSet2 ??@string headerString2] ;
+      if [mDeclaration headerKind] != [@headerKind noHeader] then
+        const headerFileName := [mDeclaration implementationCppFileName] + if [mDeclaration headerKind] == [@headerKind twoHeaders] then "-1" else "" end ;
+        [!?headerCompositionMap insertKey
+          ![headerFileName nowhere]
+          !inclusionSet1
+          !headerString1
+        ] ;
+      end if ;
+      if [mDeclaration headerKind] == [@headerKind twoHeaders] then
+        [!?headerCompositionMap insertKey
+          ![[mDeclaration implementationCppFileName] nowhere]
+          !inclusionSet2 | @stringset {![mDeclaration implementationCppFileName] + "-1"}
+          !headerString2
+        ] ;
+      end if ;
+    end if ;
+  end foreach ;
+#------------- all-declarations.cpp
+  @headerRepartitionMap headerRepartitionMap := {} ;
+  var fileIdx := 0 ;
+  var implementationString := "" ;
+  var headerString := "" ;
+  @stringset inclusionSet := {} ;
+  var headerFileName := "all-declarations-" + fileIdx ;
+  foreach inSemanticDeclarationSortedListForGeneration do
+    if not [mDeclaration isPredefined] then
+      if not [mDeclaration isPredefined] then
+        if [mDeclaration headerKind] == [@headerKind twoHeaders] then
+          buildHeader !headerCompositionMap !headerFileName ![mDeclaration implementationCppFileName] +"-1" !?headerRepartitionMap !?headerString ;
+          buildHeader !headerCompositionMap !headerFileName ![mDeclaration implementationCppFileName] !?headerRepartitionMap !?headerString ;
+        elsif [mDeclaration headerKind] == [@headerKind oneHeader] then
+          buildHeader !headerCompositionMap !headerFileName ![mDeclaration implementationCppFileName] !?headerRepartitionMap !?headerString ;
+        end if ;
+      end if ;
+      [mDeclaration appendSpecificImplementation !?inclusionSet ??@string code] ;
+      for (s) in inclusionSet do
+        buildHeader !headerCompositionMap !headerFileName !s !?headerRepartitionMap !?headerString ;
+      end for ;
+      implementationString += code ;
+      implementationString .= [mDeclaration appendTypeGenericImplementation] ;
+      if [implementationString length] > 1000000 then
+        if useOneHugeHeader then
+          inclusionSet := [@stringset setWithString !"all-declarations"] ;
+#        elsif generateFewHeaderFiles [] then
+        else
+          inclusionSet := {!"all-declarations-" . fileIdx} ;
+        end if ;
+        for () in inSemanticContext->mOptionComponentMapForSemanticAnalysis do
+          if not mIsPredefined then
+            inclusionSet += !"option-" + lkey->string ;
+          end if ;
+        end for ;
+        for () in inSemanticContext->mGrammarMap do
+          inclusionSet += !"grammar-" . lkey->string ;
+        end for ;
+     #---
+        const cppHeader := [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
+          ![inclusionSet stringList]
+        ] ;
+        const fileName := "all-declarations-" . fileIdx . ".cpp" ;
+        ioToolProductFileList := [@stringlist listWithValue !fileName] + ioToolProductFileList ;
+        ioAllProductFileSet += !fileName ;
+        [@string generateFile
+          !inProductDirectory
+          !fileName
+          !cppHeader + implementationString
+        ] ;
+      #---
+        ioAllProductFileSet += !headerFileName + ".h" ;
+        const startOfHeader := [filewrapper semanticFileGenerationTemplate.semanticFileHeader
+          !headerFileName
+          !if fileIdx == 0 then {} else {!"all-declarations-" + (fileIdx-1)} end
+        ] ;
+        [@string generateFile
+          !inProductDirectory
+          !headerFileName + ".h"
+          !startOfHeader + headerString + "#endif\n"
+        ] ;
+      #---
+        fileIdx ++ ;
+        implementationString := "" ;
+        headerString := "" ;
+        headerFileName := "all-declarations-" + fileIdx ;
+        inclusionSet := [@stringset emptySet] ;
+      end if ;
+    end if ;
+  end foreach ;
 #  message [[includeConfigurationSet count] string] . " include header configurations.\n" ;
 #--- Last file
   if implementationString != "" then
@@ -733,7 +911,8 @@ local routine generateFewImplementationFiles
       inclusionSet += !"grammar-" . lkey->string ;
     end for ;
     const header := [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
-      !if generateFewHeaderFiles [] then {!"all-declarations-" . fileIdx} else [inclusionSet stringList] end
+#      !if generateFewHeaderFiles [] then {!"all-declarations-" . fileIdx} else [inclusionSet stringList] end
+      !{!"all-declarations-" . fileIdx}
     ] ;
     const fileName := "all-declarations-" . fileIdx . ".cpp" ;
     ioToolProductFileList := [@stringlist listWithValue !fileName] + ioToolProductFileList ;
@@ -743,7 +922,29 @@ local routine generateFewImplementationFiles
       !fileName
       !header + implementationString
     ] ;
+  #---
+    ioAllProductFileSet += !headerFileName + ".h" ;
+    const startOfHeader := [filewrapper semanticFileGenerationTemplate.semanticFileHeader
+      !headerFileName
+      !if fileIdx == 0 then {} else {!"all-declarations-" + (fileIdx-1)} end
+    ] ;
+    [@string generateFile
+      !inProductDirectory
+      !headerFileName + ".h"
+      !startOfHeader + headerString + "#endif\n"
+    ] ;
   end if ;
+#--- all declarations header
+  ioAllProductFileSet += !"all-declarations.h" ;
+  const startOfAllDeclarationsHeader := [filewrapper semanticFileGenerationTemplate.semanticFileHeader
+    !headerFileName
+    !{!"all-declarations-" + fileIdx}
+  ] ;
+  [@string generateFile
+    !inProductDirectory
+    !"all-declarations.h"
+    !startOfAllDeclarationsHeader + "#endif\n"
+  ] ;
 end routine ;
 
 #---------------------------------------------------------------------------*

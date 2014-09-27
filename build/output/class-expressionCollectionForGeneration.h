@@ -19,7 +19,7 @@ class cPtr_expressionCollectionForGeneration : public cPtr_semanticExpressionFor
   public : GALGAS_collectionValueElementListForGeneration mAttribute_mElementList ;
 
 //--- Constructor
-  public : cPtr_expressionCollectionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mType,
+  public : cPtr_expressionCollectionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
                                                    const GALGAS_location & in_mLocation,
                                                    const GALGAS_collectionValueElementListForGeneration & in_mElementList
                                                    COMMA_LOCATION_ARGS) ;

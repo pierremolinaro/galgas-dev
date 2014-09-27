@@ -187,13 +187,13 @@ override method @localVariableDeclarationWithAssignmentAST analyzeSemanticInstru
 #  if mIsConstant then
 #    [!?ioVariableMap insertLocalConstant !mVariableName !targetType !targetVariableCppName !targetVariableCppName] ;
 #  else
-    [!?ioVariableMap insertDefinedLocalVariable !mVariableName ![expression mType] !targetVariableCppName !targetVariableCppName] ;
+    [!?ioVariableMap insertDefinedLocalVariable !mVariableName ![expression mResultType] !targetVariableCppName !targetVariableCppName] ;
 #  end if ;
 #--- Check assignment type compatibility
-#  checkAssignmentTypes !targetType ![expression mType] !mInstructionLocation ;
+#  checkAssignmentTypes !targetType ![expression mResultType] !mInstructionLocation ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@localVariableOrConstantDeclarationWithSourceExpressionForGeneration new
-    ![expression mType]
+    ![expression mResultType]
     !false
     !targetVariableCppName
     !expression
@@ -223,7 +223,7 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
     [!?ioVariableMap insertDefinedLocalVariable !mVariableName !targetType !targetVariableCppName !targetVariableCppName] ;
   end if ;
 #--- Check assignment type compatibility
-  checkAssignmentTypes !targetType ![expression mType] !mInstructionLocation ;
+  checkAssignmentTypes !targetType ![expression mResultType] !mInstructionLocation ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@localVariableOrConstantDeclarationWithSourceExpressionForGeneration new
     !targetType
@@ -249,10 +249,10 @@ override method @localConstantDeclarationWithAssignmentAST analyzeSemanticInstru
   ] ;
 #--- Enter target variable
   const targetVariableCppName := "var_" . [mVariableName identifierRepresentation] ;
-    [!?ioVariableMap insertLocalConstant !mVariableName ![expression mType] !targetVariableCppName !targetVariableCppName] ;
+    [!?ioVariableMap insertLocalConstant !mVariableName ![expression mResultType] !targetVariableCppName !targetVariableCppName] ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@localVariableOrConstantDeclarationWithSourceExpressionForGeneration new
-    ![expression mType]
+    ![expression mResultType]
     !true
     !targetVariableCppName
     !expression
@@ -309,7 +309,7 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
     ??@semanticExpressionForGeneration expression
   ] ;
 #--- Check assignment type compatibility
-  checkAssignmentTypes !targetType ![expression mType] !mInstructionLocation ;
+  checkAssignmentTypes !targetType ![expression mResultType] !mInstructionLocation ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@assignmentInstructionForGeneration new
     !targetType
@@ -341,7 +341,7 @@ override method @selfAssignmentInstructionAST analyzeSemanticInstruction
     error mInstructionLocation: "'self' assignment is not allowed for class instances" ;
   end if ;
 #--- Check assignment type compatibility
-  checkAssignmentTypes !inAnalysisContext->mSelfTypeProxy ![expression mType] !mInstructionLocation ;
+  checkAssignmentTypes !inAnalysisContext->mSelfTypeProxy ![expression mResultType] !mInstructionLocation ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@assignmentInstructionForGeneration new
     !inAnalysisContext->mSelfTypeProxy
@@ -373,25 +373,25 @@ local routine analyzeErrorOrWarningInstruction
     ?outLocationExpression
   ] ;
 #--- Check location expression type is either @location either has a correct location reader
-  outUseLocationReader := [outLocationExpression mType] != inAnalysisContext->mPredefinedTypes->mLocationType ;
+  outUseLocationReader := [outLocationExpression mResultType] != inAnalysisContext->mPredefinedTypes->mLocationType ;
   if outUseLocationReader then
-    const readerMap := [[outLocationExpression mType] mReaderMap] ;
+    const readerMap := [[outLocationExpression mResultType] mReaderMap] ;
     with readerMap hasKey !"location" do
       if [mArgumentTypeList length] != 0 then
         error inErrorLocation
-        :"the " . inErrorOrWarningString . " location expression type is '@" . [[outLocationExpression mType] key]
+        :"the " . inErrorOrWarningString . " location expression type is '@" . [[outLocationExpression mResultType] key]
         . "' and defines a 'location' reader with arguments; it should be either of the '@location' type, either defines a 'location' reader without argument that returns an '@location' object"
         ;      
       elsif mReturnedType != inAnalysisContext->mPredefinedTypes->mLocationType then
         error inErrorLocation
-        :"the " . inErrorOrWarningString . " location expression type is '@" . [[outLocationExpression mType] key]
+        :"the " . inErrorOrWarningString . " location expression type is '@" . [[outLocationExpression mResultType] key]
         . "' and defines a 'location' reader that returns an '@" . [mReturnedType key]
         . "' object; it should be either of the '@location' type, either defines a 'location' reader without argument that returns an '@location' object"
         ;      
       end if ;
     else
       error inErrorLocation
-      :"the " . inErrorOrWarningString . " location expression type is '@" . [[outLocationExpression mType] key]
+      :"the " . inErrorOrWarningString . " location expression type is '@" . [[outLocationExpression mResultType] key]
       . "' and does not define a 'location' reader; it should be either of the '@location' type, either defines a 'location' reader without argument that returns an '@location' object"
       ;
     end with ;
@@ -404,9 +404,9 @@ local routine analyzeErrorOrWarningInstruction
     ?outMessageExpression
   ] ;
 #--- Check message expression type is @string
-  if [outMessageExpression mType] != inAnalysisContext->mPredefinedTypes->mStringType then
+  if [outMessageExpression mResultType] != inAnalysisContext->mPredefinedTypes->mStringType then
     error inErrorLocation
-    :"the " . inErrorOrWarningString . " message expression type is '@" . [[outMessageExpression mType] key] . "'; it should be of the '@string' type"
+    :"the " . inErrorOrWarningString . " message expression type is '@" . [[outMessageExpression mResultType] key] . "'; it should be of the '@string' type"
     ;
   end if ;
 end routine ;
@@ -535,7 +535,7 @@ override method @outputActualParameterAST checkAgainstFormalArgument
       ??@semanticExpressionForGeneration expression
     ] ;
   #--- Check effective expression type against formal argument type
-    checkAssignmentTypes !inFormalArgumentType ![expression mType] !mEndOfExpressionLocation ;
+    checkAssignmentTypes !inFormalArgumentType ![expression mResultType] !mEndOfExpressionLocation ;
   #--- Generate actual parameter
     ioActualParameterListForGeneration += ![@outputActualParameterForGeneration new
       !inFormalArgumentType
@@ -923,7 +923,7 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
   @bool hasCompilerArgument ;
   @methodKind kind ;
   @string errorMessage ;
-  [[[receiverExpression mType] mInstanceMethodMap] searchKey !mMethodName ?kind ?routineSignature ?* ?hasCompilerArgument ?* ?errorMessage] ;
+  [[[receiverExpression mResultType] mInstanceMethodMap] searchKey !mMethodName ?kind ?routineSignature ?* ?hasCompilerArgument ?* ?errorMessage] ;
   if errorMessage != "" then
     error mMethodName : errorMessage ;
   end if ;
@@ -940,7 +940,7 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
     ??@actualParameterListForGeneration actualParameterListForGeneration
   ;
 #--- Search base type that declares the method
-  var baseType := [receiverExpression mType] ;
+  var baseType := [receiverExpression mResultType] ;
   var searching := true ;
   if [@uint errorCount] == 0 then
     loop [@uint max] : while searching do
@@ -964,7 +964,7 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
   end for ;
   ioInstructionListForGeneration += ![@methodCallInstructionForGeneration new
     !mInstructionLocation
-    ![receiverExpression mType]
+    ![receiverExpression mResultType]
     !receiverExpression
     ![mMethodName string]
     !kind
@@ -1173,7 +1173,7 @@ override method @concatInstructionAST analyzeSemanticInstruction
     ;
   end if ;
 #--- Check assignment type compatibility
-  checkAssignmentTypes !targetType ![expression mType] !mInstructionLocation ;
+  checkAssignmentTypes !targetType ![expression mResultType] !mInstructionLocation ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@concatInstructionForGeneration new
     !mInstructionLocation
@@ -1216,7 +1216,7 @@ override method @selfConcatInstructionAST analyzeSemanticInstruction
     ?expression
   ] ;
 #--- Check assignment type compatibility
-  checkAssignmentTypes !selfTypeProxy ![expression mType] !mInstructionLocation ;
+  checkAssignmentTypes !selfTypeProxy ![expression mResultType] !mInstructionLocation ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@concatInstructionForGeneration new
     !mInstructionLocation
@@ -1273,7 +1273,7 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
       if mFormalSelector->string != mActualSelector->string then
         error mActualSelector : "the selector should be '!" . mFormalSelector . if mFormalSelector->string != "" then ":" else "" end + "'" ;
       end if ;
-      checkAssignmentTypes !mFormalArgumentType ![exp mType] !mEndOfExpressionLocation ;
+      checkAssignmentTypes !mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation ;
       effectiveParameterList += !exp ;
     end foreach ;
   #--- Generate instruction
@@ -1318,7 +1318,7 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
     ??@semanticExpressionForGeneration expression
   ] ;
 #--- Check assignment type compatibility
-  checkAssignmentTypes !targetType ![expression mType] !mInstructionLocation ;
+  checkAssignmentTypes !targetType ![expression mResultType] !mInstructionLocation ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@concatInstructionForGeneration new
     !mInstructionLocation
@@ -1371,7 +1371,7 @@ override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
       if mFormalSelector->string != mActualSelector->string then
         error mActualSelector : "the selector should be '!" . if mFormalSelector->string != "" then mFormalSelector->string + ":" else "" end + "'" ;
       end if ;
-      checkAssignmentTypes !mFormalArgumentType ![exp mType] !mEndOfExpressionLocation ;
+      checkAssignmentTypes !mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation ;
       effectiveParameterList += !exp ;
     end foreach ;
   #--- Generate instruction
@@ -1416,7 +1416,7 @@ override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstructio
     ??@semanticExpressionForGeneration expression
   ] ;
 #--- Check assignment type compatibility
-  checkAssignmentTypes !selfTypeProxy ![expression mType] !mInstructionLocation ;
+  checkAssignmentTypes !selfTypeProxy ![expression mResultType] !mInstructionLocation ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@concatInstructionForGeneration new
     !mInstructionLocation
@@ -1566,9 +1566,9 @@ override method @messageInstructionAST analyzeSemanticInstruction
     ?expression
   ] ;
 #--- Check message type is @string
-  if [expression mType] != inAnalysisContext->mPredefinedTypes->mStringType then
+  if [expression mResultType] != inAnalysisContext->mPredefinedTypes->mStringType then
     error mInstructionLocation
-    :"the expression has the '@" . [[expression mType] key] . "' type, but the 'message' instruction requires an '@string' expression"
+    :"the expression has the '@" . [[expression mResultType] key] . "' type, but the 'message' instruction requires an '@string' expression"
     ;
   end if ;
 #--- Generate instruction
@@ -1633,7 +1633,7 @@ local routine checkExpressionIsBoolean
   ??@semanticExpressionForGeneration inExpression
   !@semanticExpressionForGeneration outExpression
 :
-  const expressionType := [inExpression mType] ;
+  const expressionType := [inExpression mResultType] ;
 #--- Boolean type
   const boolType := inAnalysisContext->mPredefinedTypes->mBoolType ;
   if expressionType == boolType then
@@ -1794,9 +1794,9 @@ override method @enumeratedCollectionImplicitVarInExpAST analyzeEnumeration
   ] ;
 #--- Check object can be enumerated
   outEnumeratorCppName := "enumerator_" . [[mEndOfEnumerationExpression locationIndex] string] ;
-  const enumerationDescriptorList := [[outEnumerationExpression mType] mEnumerationDescriptor] ;
+  const enumerationDescriptorList := [[outEnumerationExpression mResultType] mEnumerationDescriptor] ;
   if [enumerationDescriptorList length] == 0 then
-    error mEndOfEnumerationExpression : "an '@" . [[outEnumerationExpression mType] key] . "' object cannot be enumerated" ;
+    error mEndOfEnumerationExpression : "an '@" . [[outEnumerationExpression mResultType] key] . "' object cannot be enumerated" ;
   end if ;
 #--- Declare implicit constants
   foreach enumerationDescriptorList do
@@ -1825,13 +1825,13 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
   ] ;
 #--- Check object can be enumerated
   outEnumeratorCppName := "enumerator_" . [[mEndOfEnumerationExpression locationIndex] string] ;
-  const enumerationDescriptorList := [[outEnumerationExpression mType] mEnumerationDescriptor] ;
+  const enumerationDescriptorList := [[outEnumerationExpression mResultType] mEnumerationDescriptor] ;
   if [enumerationDescriptorList length] == 0 then
-    error mEndOfEnumerationExpression : "an '@" . [[outEnumerationExpression mType] key] . "' object cannot be enumerated" ;
+    error mEndOfEnumerationExpression : "an '@" . [[outEnumerationExpression mResultType] key] . "' object cannot be enumerated" ;
   else
 #--- Arguments
     if ([mElementList length] == 0) & not mEndsWithEllipsis then
-      const currentTypedAttributeList := [[outEnumerationExpression mType] mEnumerationDescriptor] ;
+      const currentTypedAttributeList := [[outEnumerationExpression mResultType] mEnumerationDescriptor] ;
       foreach currentTypedAttributeList do 
        [!?ioVariableMap insertUsedLocalConstant
          ![@lstring new !mEnumerationName !mEndOfEnumerationExpression]
@@ -1842,7 +1842,7 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
       end foreach ;
     elsif (not mEndsWithEllipsis) & ([mElementList length] != [enumerationDescriptorList length]) then
       error mEndOfEnumerationExpression
-      :"the '@" . [[outEnumerationExpression mType] key] . "' type requires "
+      :"the '@" . [[outEnumerationExpression mResultType] key] . "' type requires "
       . [[enumerationDescriptorList length] string] . " argument"
       . if ([enumerationDescriptorList length] > 1) then "s" else "" end
       . " for enumeration: this list provides "
@@ -1850,7 +1850,7 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
       ;
     elsif (mEndsWithEllipsis) & ([mElementList length] > [enumerationDescriptorList length]) then
       error mEndOfEnumerationExpression
-      :"the '@" . [[outEnumerationExpression mType] key] . "' type requires "
+      :"the '@" . [[outEnumerationExpression mResultType] key] . "' type requires "
       . [[enumerationDescriptorList length] string] . " argument"
       . if ([enumerationDescriptorList length] > 1) then "s" else "" end
       . " or less for enumeration: this list provides "
@@ -1889,9 +1889,9 @@ override method @enumeratedCollectionVarInExpAST analyzeEnumeration
   ] ;
 #--- Check object can be enumerated
   outEnumeratorCppName := "enumerator_" . [[mEndOfEnumerationExpression locationIndex] string] ;
-  const enumeratedElementType := [[outEnumerationExpression mType] mTypeForEnumeratedElement] ;
+  const enumeratedElementType := [[outEnumerationExpression mResultType] mTypeForEnumeratedElement] ;
   if [enumeratedElementType isNull] then
-    error mEndOfEnumerationExpression : "an '@" . [[outEnumerationExpression mType] key] . "' object cannot be enumerated" ;
+    error mEndOfEnumerationExpression : "an '@" . [[outEnumerationExpression mResultType] key] . "' object cannot be enumerated" ;
   else
     ioLocalConstantListForDoBranch += !enumeratedElementType !mEnumerationVariable !outEnumeratorCppName . ".current (HERE)" ;
   end if ;
@@ -2099,17 +2099,17 @@ override method @foreachInstructionAST analyzeSemanticInstruction
   #--- Check object can be enumerated
     @string enumerationOrder := [mEnumerationOrder string] ;
     const enumeratorCppName := "enumerator_" . [[mEndOfEnumerationExpression locationIndex] string] ;
-    const enumerationDescriptorList := [[enumerationExpression mType] mEnumerationDescriptor] ;
+    const enumerationDescriptorList := [[enumerationExpression mResultType] mEnumerationDescriptor] ;
     if [enumerationDescriptorList length] == 0 then
-      error mEndOfEnumerationExpression : "an '@" . [[enumerationExpression mType] key] . "' object cannot be enumerated" ;
+      error mEndOfEnumerationExpression : "an '@" . [[enumerationExpression mResultType] key] . "' object cannot be enumerated" ;
     else
   #--- Check enumeration variant
       if enumerationOrder == "" then
-        enumerationOrder := [[[enumerationExpression mType] mEnumeratorVariants] mValueAtIndex !0] ;
+        enumerationOrder := [[[enumerationExpression mResultType] mEnumeratorVariants] mValueAtIndex !0] ;
       else
         @bool found := false ;
         @string s := "" ;
-        foreach [[enumerationExpression mType] mEnumeratorVariants] while not found do
+        foreach [[enumerationExpression mResultType] mEnumeratorVariants] while not found do
           found := enumerationOrder == mValue ;
           s .= "\n  \\" . mValue ;
         end foreach ;
@@ -2119,7 +2119,7 @@ override method @foreachInstructionAST analyzeSemanticInstruction
       end if ;
   #--- Arguments
       if ([mElementList length] == 0) & not mEndsWithEllipsis then
-        const currentTypedAttributeList := [[enumerationExpression mType] mEnumerationDescriptor] ;
+        const currentTypedAttributeList := [[enumerationExpression mResultType] mEnumerationDescriptor] ;
         foreach currentTypedAttributeList do 
          [!?ioVariableMap insertUsedLocalConstant
            ![@lstring new !mPrefix->string . mEnumerationName !mEndOfEnumerationExpression]
@@ -2130,7 +2130,7 @@ override method @foreachInstructionAST analyzeSemanticInstruction
         end foreach ;
       elsif (not mEndsWithEllipsis) & ([mElementList length] != [enumerationDescriptorList length]) then
         error mEndOfElementList
-        :"the '@" . [[enumerationExpression mType] key] . "' type requires "
+        :"the '@" . [[enumerationExpression mResultType] key] . "' type requires "
         . [[enumerationDescriptorList length] string] . " argument"
         . if ([enumerationDescriptorList length] > 1) then "s" else "" end
         . " for enumeration: this list provides "
@@ -2138,7 +2138,7 @@ override method @foreachInstructionAST analyzeSemanticInstruction
         ;
       elsif (mEndsWithEllipsis) & ([mElementList length] > [enumerationDescriptorList length]) then
         error mEndOfElementList
-        :"the '@" . [[enumerationExpression mType] key] . "' type requires "
+        :"the '@" . [[enumerationExpression mResultType] key] . "' type requires "
         . [[enumerationDescriptorList length] string] . " argument"
         . if ([enumerationDescriptorList length] > 1) then "s" else "" end
         . " or less for enumeration: this list provides "
@@ -2239,9 +2239,9 @@ override method @loopInstructionAST analyzeSemanticInstruction
     ?variantExpression
   ] ;
 #--- Check variant expression type is @uint
-  if [variantExpression mType] != inAnalysisContext->mPredefinedTypes->mUIntType then
+  if [variantExpression mResultType] != inAnalysisContext->mPredefinedTypes->mUIntType then
     error mEndOfVariantExpression
-    : "the variant expression type should be '@" . [inAnalysisContext->mPredefinedTypes->mUIntType key] . "', but it has '@" . [[variantExpression mType] key] . "' type" ;
+    : "the variant expression type should be '@" . [inAnalysisContext->mPredefinedTypes->mUIntType key] . "', but it has '@" . [[variantExpression mResultType] key] . "' type" ;
   end if ;
 #--- Loop expression
   @semanticExpressionForGeneration loopExpression ;
@@ -2252,9 +2252,9 @@ override method @loopInstructionAST analyzeSemanticInstruction
     ?loopExpression
   ] ;
 #--- Check loop expression type is @bool
-  if [loopExpression mType] != inAnalysisContext->mPredefinedTypes->mBoolType then
+  if [loopExpression mResultType] != inAnalysisContext->mPredefinedTypes->mBoolType then
     error mEndOfLoopExpression
-    : "the loop expression type should be '@" . [inAnalysisContext->mPredefinedTypes->mBoolType key] . "', but it has '@" . [[loopExpression mType] key] . "' type" ;
+    : "the loop expression type should be '@" . [inAnalysisContext->mPredefinedTypes->mBoolType key] . "', but it has '@" . [[loopExpression mResultType] key] . "' type" ;
   end if ;
 #--- Begin override for analyze loop instruction list
   [!?ioVariableMap openOverrideForRepeatBlock] ;
@@ -2316,15 +2316,15 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
     const type := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
   #--- Check named type is a descendant of receiver type
     @unifiedTypeMapProxy t := type ;
-    @bool found := t == [castExpression mType] ;
+    @bool found := t == [castExpression mResultType] ;
     loop [inAnalysisContext->mSemanticContext->mTypeMap count] + 1 :
     while (not found) & not [[t mSuperType] isNull] do
       t := [t mSuperType] ;
-      found := t == [castExpression mType] ;
+      found := t == [castExpression mResultType] ;
     end loop ;
     if not found then
       error mTypeName
-      :"the '@" . mTypeName . "' is not a descendant of the '@" . [[castExpression mType] key] . "' type of the cast expression"
+      :"the '@" . mTypeName . "' is not a descendant of the '@" . [[castExpression mResultType] key] . "' type of the cast expression"
       ;
     end if ;
   #--- Declare a local constant ?
@@ -2523,14 +2523,14 @@ override method @grammarInstructionAST analyzeSemanticInstruction
   ] ;
 #--- Check source expression type: @lstring for file, @string for source string itself
   if mSourceExpressionIsFile then
-    if [sourceExpression mType] != inAnalysisContext->mPredefinedTypes->mLStringType then
+    if [sourceExpression mResultType] != inAnalysisContext->mPredefinedTypes->mLStringType then
       error mEndOfSourceExpression
-      :"this expression is the source file path and its type should be '@lstring', but it is '@" . [[sourceExpression mType] key] . "'"
+      :"this expression is the source file path and its type should be '@lstring', but it is '@" . [[sourceExpression mResultType] key] . "'"
       ;
     end if ;
-  elsif [sourceExpression mType] != inAnalysisContext->mPredefinedTypes->mStringType then
+  elsif [sourceExpression mResultType] != inAnalysisContext->mPredefinedTypes->mStringType then
     error mEndOfSourceExpression
-    :"this expression is the source string and its type should be '@string', but it is '@" . [[sourceExpression mType] key] . "'"
+    :"this expression is the source string and its type should be '@string', but it is '@" . [[sourceExpression mResultType] key] . "'"
     ;
   end if ;
 #--- Check syntax directed translation result parameter
@@ -2592,7 +2592,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
     !?ioVariableMap
     ??@semanticExpressionForGeneration receiverExpression
   ] ;
-  const receiverType := [receiverExpression mType] ;
+  const receiverType := [receiverExpression mResultType] ;
 #--- Check search method
   if mSearchMethodNameForErrorSignaling->string != "" then
     @bool found := false ;
@@ -2683,11 +2683,11 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   ] ;
 #--- Check key is an @lstring or @string object
   if mSearchMethodNameForErrorSignaling->string == "" then
-    if [[keyExpression mType] key] != "string" then
-      error mEndOfKeyExpression : "the key type is '@" . [[keyExpression mType] key] . "', it should be '@string'" ;
+    if [[keyExpression mResultType] key] != "string" then
+      error mEndOfKeyExpression : "the key type is '@" . [[keyExpression mResultType] key] . "', it should be '@string'" ;
     end if ;
-  elsif [[keyExpression mType] key] != "lstring" then
-    error mEndOfKeyExpression : "the key type is '@" . [[keyExpression mType] key] . "', it should be '@lstring'" ;
+  elsif [[keyExpression mResultType] key] != "lstring" then
+    error mEndOfKeyExpression : "the key type is '@" . [[keyExpression mResultType] key] . "', it should be '@lstring'" ;
   end if ;
 #--- Object Array cpp name
   const objectArrayCppName := "objectArray_" . [[mInstructionLocation locationIndex] string] ;
@@ -2786,12 +2786,12 @@ override method @switchInstructionAST analyzeSemanticInstruction
     ?switchExpression
   ] ;
 #--- Check switch expression type is and enum instance
-  if [[switchExpression mType] mTypeKindEnum] != [@typeKindEnum enumType] then
+  if [[switchExpression mResultType] mTypeKindEnum] != [@typeKindEnum enumType] then
     error mEndOfSwitchExpression
-    : "the switch expression type should be an instance of an enumeration type (the '@" . [[switchExpression mType] key] . "' type is not an enumeration type)" ;
+    : "the switch expression type should be an instance of an enumeration type (the '@" . [[switchExpression mResultType] key] . "' type is not an enumeration type)" ;
   end if ;
 #--- Enum constant map
-  const enumConstantMap := [[switchExpression mType] mEnumConstantMap] ;
+  const enumConstantMap := [[switchExpression mResultType] mEnumConstantMap] ;
   @stringset constantsNamedInSwitchInstruction [emptySet] ;
 #--- Analyze branches
   [!?ioVariableMap openOverrideForSelectBlock] ;
@@ -2837,7 +2837,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
         end if ;
       else
         error mValue
-        :"'" . mValue . "' is not a constant of '@" . [[switchExpression mType] key] . "' enumeration type"
+        :"'" . mValue . "' is not a constant of '@" . [[switchExpression mResultType] key] . "' enumeration type"
         ;
       end if ;
       firstConstant := false ;
@@ -2867,7 +2867,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
   end if ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@switchInstructionForGeneration new
-    ![switchExpression mType]
+    ![switchExpression mResultType]
     !switchExpression
     !switchBranchesForGeneration
   ] ;
@@ -2894,7 +2894,7 @@ override method @matchInstructionAST analyzeSemanticInstruction
     ] ;
     expressionList += !matchedExpression ;
   #--- Check expression is an enum or a class instance
-    const type := [matchedExpression mType] ;
+    const type := [matchedExpression mResultType] ;
     if ([type mTypeKindEnum] != [@typeKindEnum classType]) & ([type mTypeKindEnum] != [@typeKindEnum enumType]) then
       error mEndOfExpressionLocation
       :"this expression is an instance of '@" . [type key] . "' type, but this type is neither an enumeration, neither a class"
@@ -2910,7 +2910,7 @@ override method @matchInstructionAST analyzeSemanticInstruction
     @matchListForGeneration matchListForGeneration [emptyList] ;
     if [expressionList length] == [mMatchEntryList length] then
       foreach expressionList, mMatchEntryList do
-        const type := [mExpression mType] ;
+        const type := [mExpression mResultType] ;
         if [type mTypeKindEnum] == [@typeKindEnum classType] then
           if mIsType then
             const namedType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeNameOrEnumerationConstantName] ;
@@ -2930,24 +2930,24 @@ override method @matchInstructionAST analyzeSemanticInstruction
             end if ;
           else
             error mTypeNameOrEnumerationConstantName
-            :"a type that inherits from '@" . [[mExpression mType] key] . "' class is expected here"
+            :"a type that inherits from '@" . [[mExpression mResultType] key] . "' class is expected here"
             ;
           end if ;
           matchListForGeneration += !true ![mTypeNameOrEnumerationConstantName string] ![mLocalConstantName string] ;
         elsif [type mTypeKindEnum] == [@typeKindEnum enumType] then
           if mIsType then
             error mTypeNameOrEnumerationConstantName
-            :"a constant of the '@" . [[mExpression mType] key] . "' enumeration type is expected here"
+            :"a constant of the '@" . [[mExpression mResultType] key] . "' enumeration type is expected here"
             ;          
           elsif not [[type mEnumConstantMap] hasKey ![mTypeNameOrEnumerationConstantName string]] then
             error mTypeNameOrEnumerationConstantName
-            :"the '" . mTypeNameOrEnumerationConstantName . "' symbol is not a constant of the '@" . [[mExpression mType] key] . "' enumeration type"
+            :"the '" . mTypeNameOrEnumerationConstantName . "' symbol is not a constant of the '@" . [[mExpression mResultType] key] . "' enumeration type"
             ;
           end if ;
           matchListForGeneration +=
             !false
             ![mTypeNameOrEnumerationConstantName string]
-            ![[mExpression mType] key]
+            ![[mExpression mResultType] key]
           ;
         else
           error mTypeNameOrEnumerationConstantName: "internal error" ;

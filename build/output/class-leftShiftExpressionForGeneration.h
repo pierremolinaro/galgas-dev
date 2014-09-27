@@ -20,7 +20,7 @@ class cPtr_leftShiftExpressionForGeneration : public cPtr_semanticExpressionForG
   public : GALGAS_semanticExpressionForGeneration mAttribute_mRightExpression ;
 
 //--- Constructor
-  public : cPtr_leftShiftExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mType,
+  public : cPtr_leftShiftExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
                                                   const GALGAS_location & in_mLocation,
                                                   const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
                                                   const GALGAS_semanticExpressionForGeneration & in_mRightExpression

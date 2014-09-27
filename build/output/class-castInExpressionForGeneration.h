@@ -20,7 +20,7 @@ class cPtr_castInExpressionForGeneration : public cPtr_semanticExpressionForGene
   public : GALGAS_string mAttribute_mTypeName ;
 
 //--- Constructor
-  public : cPtr_castInExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mType,
+  public : cPtr_castInExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
                                                const GALGAS_location & in_mLocation,
                                                const GALGAS_semanticExpressionForGeneration & in_mReceiverExpression,
                                                const GALGAS_string & in_mTypeName

@@ -552,7 +552,7 @@ override method @methodCallInstructionForGeneration generateInstruction
     ioInclusionSet += !"method-" . [mMethodBaseType key] . "-" . mMethodName ;
     if [mReceiverType mTypeKindEnum] == [@typeKindEnum classType] then
       ioGeneratedCode .= "callCategoryMethod_" . [mMethodName identifierRepresentation]
-                      . " ((const cPtr_" . [[mReceiverExpression mType] identifierRepresentation] . " *) " . receiverCppName . ".ptr (), " ;
+                      . " ((const cPtr_" . [[mReceiverExpression mResultType] identifierRepresentation] . " *) " . receiverCppName . ".ptr (), " ;
     else
       ioGeneratedCode .= "categoryMethod_" . [mMethodName identifierRepresentation] . " (" . receiverCppName . ", " ;
     end if ;
@@ -1026,7 +1026,7 @@ override method @readOnlyWithInstructionForGeneration generateInstruction
 :
 #--- Receiver expression
   [mReceiverExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ??@string receiverVarCppName] ;
-  const receiverType := [mReceiverExpression mType] ;
+  const receiverType := [mReceiverExpression mResultType] ;
 #--- key expression
   [mKeyExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ??@string keyVarCppName] ;
 #---
@@ -1136,7 +1136,7 @@ override method @foreachInstructionForGeneration generateInstruction
     enumerationVarCppNameList += !enumerationVar ;
   end foreach ;
   foreach mEnumeratedObjectList, enumerationVarCppNameList do
-    ioGeneratedCode .= "cEnumerator_" . [[mEnumeratedExpression mType] identifierRepresentation] . " " . mEnumeratorCppName . " (" . mValue
+    ioGeneratedCode .= "cEnumerator_" . [[mEnumeratedExpression mResultType] identifierRepresentation] . " " . mEnumeratorCppName . " (" . mValue
                     . ", kEnumeration_" . mEnumerationOrder . ") ;\n" ;
   end foreach ;
 #--- Analyse 'while' expression
@@ -1319,11 +1319,11 @@ override method @switchInstructionForGeneration generateInstruction
   ioGeneratedCode .= "if (" . switchVar . ".isValid ()) {\n" ;
   [!?ioGeneratedCode incIndentation !2] ;
   ioGeneratedCode .= "switch (" . switchVar . ".enumValue ()) {\n" ;
-  ioGeneratedCode .= "case GALGAS_" . [[mSwitchExpression mType] identifierRepresentation] . "::kNotBuilt:\n" ;
+  ioGeneratedCode .= "case GALGAS_" . [[mSwitchExpression mResultType] identifierRepresentation] . "::kNotBuilt:\n" ;
   ioGeneratedCode .= "  break ;\n" ;
   foreach mBranches do
     foreach mSwitchConstantList do
-      ioGeneratedCode .= "case GALGAS_" . [[mSwitchExpression mType] identifierRepresentation] . "::kEnum_" . [[mValue string] identifierRepresentation] . ": " ;
+      ioGeneratedCode .= "case GALGAS_" . [[mSwitchExpression mResultType] identifierRepresentation] . "::kEnum_" . [[mValue string] identifierRepresentation] . ": " ;
     end foreach ;
     ioGeneratedCode .= "{\n" ;
     if [mExtractedAssociatedValuesForGeneration length] > 0 then
