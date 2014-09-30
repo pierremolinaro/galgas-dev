@@ -1,0 +1,29 @@
+%if HAS_ASSOCIATED_VALUES then
+%//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//%!["@" + TYPE_IDENTIFIER + " enum, associated values" stringByLeftAndRightPadding !117 !' ']%*
+//                                                                                                                     *
+%
+for () in CONSTANT_LIST do
+  if [mAssociatedValueTypeList length] > 0 then
+    %//---------------------------------------------------------------------------------------------------------------------*\n\n%
+    %class cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% : public cEnumAssociatedValues {\n%
+    for () in mAssociatedValueTypeList do index idx
+      %  public : const GALGAS_%![mType identifierRepresentation]% mAssociatedValue%![idx string]% ;\n%
+    end
+    %\n%
+    %//--- Constructor\n%
+    %  public : cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% (%?^
+    for () in mAssociatedValueTypeList
+    do index idx %const GALGAS_%![mType identifierRepresentation]% & inAssociatedValue%![idx string]
+    between %,\n%!^
+    end
+    %\n%!^%COMMA_LOCATION_ARGS) ;\n\n%
+    %  public : virtual void description (%?^%C_String & ioString,\n%
+                       !^%const int32_t inIndentation) const ;\n%
+    %  public : virtual typeComparisonResult compare (const cEnumAssociatedValues * inOperand) const ;\n\n%
+    %  public : virtual ~ cEnumAssociatedValues_%!TYPE_IDENTIFIER%_%!mConstantName% (void) {}\n%
+    %} ;\n\n%
+  end
+end
+end

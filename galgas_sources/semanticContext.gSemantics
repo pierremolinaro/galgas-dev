@@ -1802,6 +1802,7 @@ override method @enumDeclarationAST enterInSemanticContext
   [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mEnumTypeName ??@unifiedTypeMapProxy enumTypeProxy] ;
 #--- Constructors
   @constantIndexMap constantMap [emptyMap] ;
+  @bool hasAssociatedValues := false ;
   foreach mConstantList do
     @unifiedTypeMapProxyList associatedTypeList := {} ;
     @functionSignature argumentTypeList := {} ;
@@ -1809,6 +1810,7 @@ override method @enumDeclarationAST enterInSemanticContext
       [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !typeName ??@unifiedTypeMapProxy associatedTypeProxy] ;
       argumentTypeList += !selectorName !associatedTypeProxy !typeName->string ;
       associatedTypeList += !associatedTypeProxy ;
+      hasAssociatedValues := true ;
     end for ;
     [!?constantMap insertKey !mConstantName ![constantMap count] !associatedTypeList] ;
     [!?constructorMap insertOrReplace
@@ -1868,7 +1870,7 @@ override method @enumDeclarationAST enterInSemanticContext
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
     !"" # No default constructor [mConstantList mConstantNameAtIndex !0]->string # Default constructor
     !"enum-" . mEnumTypeName
-    ![@headerKind twoHeaders]
+    !if hasAssociatedValues then [@headerKind twoHeaders] else [@headerKind oneHeader] end
   ] ;
 end method ;
 

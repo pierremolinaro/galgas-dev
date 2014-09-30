@@ -23118,7 +23118,7 @@ void GALGAS_categoryModifierMapForType::modifier_insertKey (GALGAS_lstring inKey
   capCollectionElement attributes ;
   attributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "the '%K' modifier has been already declared in %L" ;
+  const char * kInsertErrorMessage = "the '%K' setter has been already declared in %L" ;
   const char * kShadowErrorMessage = "" ;
   performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
 }
