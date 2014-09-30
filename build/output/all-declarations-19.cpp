@@ -41,6 +41,7 @@
 #include "class-repeatInstructionForGrammarAnalysis.h"
 #include "class-selectInstruction.h"
 #include "class-selectInstructionForGrammarAnalysis.h"
+#include "class-semanticInstructionAST.h"
 #include "class-syntaxSendInstruction.h"
 #include "class-terminalCheckInstruction.h"
 #include "class-terminalInstructionForGrammarAnalysis.h"
@@ -71,6 +72,31 @@
 #include "option-galgas_cli_options.h"
 #include "proc-transformInstructionList.h"
 
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                      Overriding category method '@semanticInstructionAST transformInstruction'                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void categoryMethod_semanticInstructionAST_transformInstruction (const cPtr_syntaxInstructionAST * /* inObject */,
+                                                                        GALGAS_terminalSymbolsMapForGrammarAnalysis & /* ioArgument_ioActuallyUsedTerminalSymbolMap */,
+                                                                        const GALGAS_nonTerminalSymbolMapForGrammarAnalysis /* constinArgument_inNonTerminalSymbolMap */,
+                                                                        GALGAS_uint & /* ioArgument_ioAddedNonTerminalIndex */,
+                                                                        GALGAS_syntaxInstructionListForGrammarAnalysis & /* ioArgument_ioSyntaxInstructionList */,
+                                                                        C_Compiler * /* inCompiler */
+                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+}
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineCategoryMethod_semanticInstructionAST_transformInstruction (void) {
+  enterCategoryMethod_transformInstruction (kTypeDescriptor_GALGAS_semanticInstructionAST.mSlotID,
+                                            categoryMethod_semanticInstructionAST_transformInstruction) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gMethod_semanticInstructionAST_transformInstruction (defineCategoryMethod_semanticInstructionAST_transformInstruction, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *

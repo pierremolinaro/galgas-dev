@@ -2953,7 +2953,7 @@ static GALGAS_string categoryReader_abstractCategoryModifierAST_keyRepresentatio
   GALGAS_string result_outString ; // Returned variable
   const cPtr_abstractCategoryModifierAST * object = (const cPtr_abstractCategoryModifierAST *) inObject ;
   macroValidSharedObject (object, cPtr_abstractCategoryModifierAST) ;
-  result_outString = GALGAS_string ("abstract category modifier @").add_operation (object->mAttribute_mTypeName.reader_string (SOURCE_FILE ("semanticContext.galgas", 245)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 245)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 245)).add_operation (object->mAttribute_mAbstractCategoryModifierName.reader_string (SOURCE_FILE ("semanticContext.galgas", 245)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 245)) ;
+  result_outString = GALGAS_string ("abstract category setter @").add_operation (object->mAttribute_mTypeName.reader_string (SOURCE_FILE ("semanticContext.galgas", 245)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 245)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 245)).add_operation (object->mAttribute_mAbstractCategoryModifierName.reader_string (SOURCE_FILE ("semanticContext.galgas", 245)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 245)) ;
 //---
   return result_outString ;
 }
@@ -2982,7 +2982,7 @@ static GALGAS_string categoryReader_categoryModifierAST_keyRepresentation (const
   GALGAS_string result_outString ; // Returned variable
   const cPtr_categoryModifierAST * object = (const cPtr_categoryModifierAST *) inObject ;
   macroValidSharedObject (object, cPtr_categoryModifierAST) ;
-  result_outString = GALGAS_string ("category modifier @").add_operation (object->mAttribute_mTypeName.reader_string (SOURCE_FILE ("semanticContext.galgas", 252)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 252)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 252)).add_operation (object->mAttribute_mCategoryModifierName.reader_string (SOURCE_FILE ("semanticContext.galgas", 252)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 252)) ;
+  result_outString = GALGAS_string ("category setter @").add_operation (object->mAttribute_mTypeName.reader_string (SOURCE_FILE ("semanticContext.galgas", 252)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 252)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 252)).add_operation (object->mAttribute_mCategoryModifierName.reader_string (SOURCE_FILE ("semanticContext.galgas", 252)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 252)) ;
 //---
   return result_outString ;
 }
@@ -3011,7 +3011,7 @@ static GALGAS_string categoryReader_overridingCategoryModifierAST_keyRepresentat
   GALGAS_string result_outString ; // Returned variable
   const cPtr_overridingCategoryModifierAST * object = (const cPtr_overridingCategoryModifierAST *) inObject ;
   macroValidSharedObject (object, cPtr_overridingCategoryModifierAST) ;
-  result_outString = GALGAS_string ("overriding category modifier @").add_operation (object->mAttribute_mTypeName.reader_string (SOURCE_FILE ("semanticContext.galgas", 259)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 259)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 259)).add_operation (object->mAttribute_mOverridingCategoryModifierName.reader_string (SOURCE_FILE ("semanticContext.galgas", 259)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 259)) ;
+  result_outString = GALGAS_string ("overriding category setter @").add_operation (object->mAttribute_mTypeName.reader_string (SOURCE_FILE ("semanticContext.galgas", 259)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 259)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 259)).add_operation (object->mAttribute_mOverridingCategoryModifierName.reader_string (SOURCE_FILE ("semanticContext.galgas", 259)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 259)) ;
 //---
   return result_outString ;
 }
@@ -3040,7 +3040,7 @@ static GALGAS_string categoryReader_overridingAbstractCategoryModifierAST_keyRep
   GALGAS_string result_outString ; // Returned variable
   const cPtr_overridingAbstractCategoryModifierAST * object = (const cPtr_overridingAbstractCategoryModifierAST *) inObject ;
   macroValidSharedObject (object, cPtr_overridingAbstractCategoryModifierAST) ;
-  result_outString = GALGAS_string ("overriding category modifier @").add_operation (object->mAttribute_mTypeName.reader_string (SOURCE_FILE ("semanticContext.galgas", 266)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 266)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 266)).add_operation (object->mAttribute_mOverridingCategoryModifierName.reader_string (SOURCE_FILE ("semanticContext.galgas", 266)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 266)) ;
+  result_outString = GALGAS_string ("overriding category setter @").add_operation (object->mAttribute_mTypeName.reader_string (SOURCE_FILE ("semanticContext.galgas", 266)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 266)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 266)).add_operation (object->mAttribute_mOverridingCategoryModifierName.reader_string (SOURCE_FILE ("semanticContext.galgas", 266)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 266)) ;
 //---
   return result_outString ;
 }

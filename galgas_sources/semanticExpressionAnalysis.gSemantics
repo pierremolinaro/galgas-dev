@@ -597,6 +597,9 @@ routine analyzeConstructorInvocation
       @semanticExpressionForGeneration exp ;
       [mExpression analyzeSemanticExpression !mFormalArgumentType !inAnalysisContext !?ioVariableMap ?exp] ;
       checkAssignmentTypes !mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation ;
+      if mFormalSelector->string != mActualSelector->string then
+        error mActualSelector : "the selector should be '!" . if mFormalSelector->string != "" then mFormalSelector->string + ":" else "" end + "'" ;
+      end if ;
       outConstructorEffectiveParameterList += !exp ;
     end foreach ;
   end if ;
