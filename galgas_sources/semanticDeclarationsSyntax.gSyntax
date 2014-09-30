@@ -572,7 +572,12 @@ rule <semantic_declaration>
       $($ ;
       repeat
         $type_name$ ??@lstring associatedValueType ;
-        $identifier$ ?@lstring associatedValueName ;
+        @lstring associatedValueName ;
+        select
+          associatedValueName := ["" nowhere] ;
+        or
+          $identifier$ ?associatedValueName ;
+        end select ;
         associatedValueTypeList += !associatedValueType !associatedValueName ;
       while
         $,$ ;
