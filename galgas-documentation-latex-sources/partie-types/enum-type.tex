@@ -83,7 +83,7 @@ rule regleProduction {
 }
 \end{galgascode}
 
-Comment construire l'arbre syntaxique ? Il y a en fait trois possibilités.
+Comment construire l'arbre syntaxique abstrait ? Il y a en fait trois possibilités.
 
 La première consiste à considérer la chaîne vide comme significative de l'absence d'option :
 \begin{galgascode}
@@ -143,10 +143,12 @@ rule regleProduction {
   or
     $option$
     $identifier$ ?let nomOption
-    optionAST = @option.optionPresente {!nomOption}
+    optionAST = @option.optionPresente {!optionName:nomOption}
   end
 }
 \end{galgascode}
+
+
 
 Pour tester un type énuméré avec des valeurs associées, on peut appliquer les \emph{getter} décrits à \refSectionPage{testerValeurEnum}, mais on n'a pas accès aux valeurs associées.
 
