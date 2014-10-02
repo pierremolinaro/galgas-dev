@@ -606,7 +606,6 @@ rule <declaration>
         end select ;
         associatedValueTypeList += !associatedValueType !associatedValueName ;
       while
-        $,$ ;
       end repeat ;
       $)$ ;
     end select ;
