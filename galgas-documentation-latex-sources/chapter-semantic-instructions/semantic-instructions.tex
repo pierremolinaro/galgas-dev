@@ -1810,7 +1810,7 @@ Aussi, elle peut être appelée par :
 
 
 
-\sectionLabel{L'instruction d'appel de \emph{setter}}{modifierCallInstruction}
+\sectionLabel{L'instruction d'appel de \emph{setter}}{setterCallInstruction}
 
 
 En GALGAS, un \emph{setter} est un sous-programme qui s'applique à un objet, et qui peut modifier cet objet. La syntaxe de l'appel d'un  \emph{setter} est :
@@ -1862,7 +1862,9 @@ Par exemple, avec la déclaration :
 
 \begin{galgascode}
 enum @feuTricolore {
-  vert, orange, rouge   
+  case vert
+  case orange
+  case rouge
 }
 \end{galgascode}
 
@@ -1879,15 +1881,55 @@ case rouge :
 end
 \end{galgascode}
 
+Si des constantes déclarées dans l'énumération ont des valeurs associées, alors les branches \galgas{case} nommant ces constantes doivent adopter une syntaxe particulière. 
+
+En prenant pour exemple une constante possédant daux valeurs associées, la forme la plus générale est :
+
+\begin{galgascode}
+case constante (@type1 nom1 @type2 nom2) :
+\end{galgascode}
+
+\galgas{nom1} et \galgas{nom2} sont des constantes qui reçoivent les valeurs associées.
+
+Si on n'est pas intéressé par une valeur, on peut substituer \galgas{*} au nom :
+
+\begin{galgascode}
+case constante (@type1 nom1 @type2 *) :
+\end{galgascode}
+
+De même, l'annotation du type est optionnel : le type de \galgas{nom1}, \galgas{nom2} peut être déduit de la déclaration de la valeur associée :
+
+\begin{galgascode}
+case constante (nom1 *) :
+\end{galgascode}
+
+Ainsi, si l'on n'est pas intéressé par les valeurs associées, on peut écrire :
+\begin{galgascode}
+case constante (* *) :
+\end{galgascode}
 
 
+Enfin, on peut mentionner dans le même branche \galgas{case} plusieurs constantes déclarant des valeurs associées, à la condition que ces valeurs associées soient de même nombre et de même type. Par exemple :
 
+\begin{galgascode}
+enum @erreur {
+  case ok
+  case erreur1 (@string unMessage)
+  case erreur2 (@string autreMessage) 
+}
+\end{galgascode}
 
+On peut écrire l'instruction \galgas{switch} correspondante :
+\begin{galgascode}
+@erreur erreur = ... ;
 
-
-
-
-
+switch erreur
+case ok:
+  ...
+case erreur1, erreur2 (@string m) :
+  ...
+end
+\end{galgascode}
 
 
 

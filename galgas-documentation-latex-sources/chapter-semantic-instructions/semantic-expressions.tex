@@ -21,12 +21,12 @@ Dans une expression, \galgas{self} représente une copie de l'objet courant. On 
 
 \galgas{self} effectue un accès en lecture seule de l'objet courant. 
 
-Voici un exemple extrait de la section décrivant les \emph{extensions de getter} (\refSectionPage{categoryReader}) :
-\begin{lstlisting}[language=galgas]
+Voici un exemple extrait de la section décrivant les \emph{extensions de getter} (\refSectionPage{categoryGetter}) :
+\begin{galgascode}
 getter @uint64 square -> @uint64 outResult {
-  outResult := self * self
+  outResult = self * self
 }
-\end{lstlisting}
+\end{galgascode}
 
 
 

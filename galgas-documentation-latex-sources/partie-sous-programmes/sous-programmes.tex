@@ -10,8 +10,8 @@ GALGAS définit les sous-programmes suivants :
   \item les \emph{fonctions} (dans ce chapitre, \refSectionPage{declarationFonction}) ;
   \item les \emph{procédures} (dans ce chapitre, \refSectionPage{declarationProcedure}) ;
   \item les \emph{méthodes} (\refSectionPage{categoryMethod}) ;
-  \item les \emph{getters} (\refSectionPage{categoryReader}) ;
-  \item les \emph{setters} (\refSectionPage{categoryModifier}).
+  \item les \emph{getters} (\refSectionPage{categoryGetter}) ;
+  \item les \emph{setters} (\refSectionPage{categorySetter}).
 \end{itemize}
 
 En GALGAS, \emph{méthodes}, \emph{getters} et \emph{setters} s'appliquent sur un objet d'un type quelconque (qui n'est donc pas forcément un type \emph{classe}). Pour les types définis par l'utilisateur, \emph{méthodes}, \emph{getters} et \emph{setters} sont toujours déclarés en dehors de la déclaration du type auquel ils s'appliquent.
@@ -27,7 +27,7 @@ En GALGAS, \emph{méthodes}, \emph{getters} et \emph{setters} s'appliquent sur u
       \emph{fonction} & Appel de fonction (dans une expression) & \refSubsectionPage{appelFonction} \\
       \emph{méthode} & Instruction d'appel de méthode & \refSectionPage{methodCallInstruction} \\
       \emph{getter} & Appel de getter (dans une expression) & \refSubsectionPage{appelReader} \\
-      \emph{setter} & Instruction d'appel de setter & \refSectionPage{modifierCallInstruction} \\
+      \emph{setter} & Instruction d'appel de setter & \refSectionPage{setterCallInstruction} \\
     \end{tabular}
   \caption{Constructions d'appel de sous programme}
   \labelTableau{appelSousProgramme}
@@ -146,5 +146,35 @@ Le \refTableau{ArgumentFormelSortie} liste l'unique forme d'un argument formel e
 
 \sectionLabel{Liste de paramètres effectifs en entrée}{listeParametresEffectifsEntree}
 
+
+
+\section{Sélecteur}
+
+Il est possible d'associer un nom avec chaque symbole \galgast{?}, \galgast{?!}, \galgast{!} et \galgast{!?}. Ce nom est appelé \emph{sélecteur}.
+
+Un sélecteur commence par une lettre et est suivi par zéro, un ou plusieurs lettres ou chiffres, et termine obligatoirement par deux points \galgast{:}. Aucun espace n'est autorisé. Par exemple :
+
+\galgast{?valeur:}
+
+\galgast{!par2:}
+
+Les sélecteurs peuvent être utilisés à chaque fois que le symbole \galgast{?}, \galgast{?!}, \galgast{!} et \galgast{!?} apparaît. Quand un argument formel est déclaré avec un sélecteur, alors le paramètre effectif doit nommer le même sélecteur.
+
+Par exemple, si on considère une routine déclarée par :
+
+\begin{galgascode}
+proc aireRectangle
+  ?longueur: @uint inA
+  ?largeur: @uint inA
+  !aire: @uint outAire 
+{
+  ...
+}
+\end{galgascode}
+
+Alors son appel s'exprimera par :
+\begin{galgascode}
+  aireRectangle (!longueur: 2 !largeur: 3 ?aire: let aire) 
+\end{galgascode}
 
 

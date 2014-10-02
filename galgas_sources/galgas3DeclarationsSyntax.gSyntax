@@ -590,6 +590,7 @@ rule <declaration>
   ${$ ;
   @enumConstantList mConstantList [emptyList] ;
   repeat
+    $case$ ;
     $identifier$ ??@lstring constantName ;
     @2lstringlist associatedValueTypeList := {} ;
     select
@@ -611,7 +612,6 @@ rule <declaration>
     end select ;
     mConstantList += !constantName !associatedValueTypeList ;
   while
-   $,$ ;
   end repeat ;
   $}$ ;
   ioDeclarations->mSemanticDeclarationList += ![@enumDeclarationAST new

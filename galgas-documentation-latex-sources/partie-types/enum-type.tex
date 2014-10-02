@@ -15,7 +15,9 @@ Par exemple :
 
 \begin{galgascode}
 enum @feuTricolore {
-  vert, orange, rouge   
+  case vert
+  case orange
+  case rouge
 }
 \end{galgascode}
 
@@ -85,7 +87,7 @@ rule regleProduction {
 
 Comment construire l'arbre syntaxique abstrait ? Il y a en fait trois possibilités.
 
-La première consiste à considérer la chaîne vide comme significative de l'absence d'option :
+\textbf{Première solution.} La première consiste à considérer la chaîne vide comme significative de l'absence d'option :
 \begin{galgascode}
 rule regleProduction {
   @lstring nomOption
@@ -100,7 +102,7 @@ rule regleProduction {
 
 Évidemment, cette solution est acceptable uniquement si l'information associée est simple, et si une valeur particulière peut être considéré comme l'absence d'option.
 
-La deuxième solution fait appel à trois classes :
+\textbf{Deuxième solution.} La deuxième solution fait appel à trois classes :
 \begin{galgascode}
 abstract class @abstractOption {}
 
@@ -125,16 +127,16 @@ rule regleProduction {
 
 Cette solution, plus générale, est plus lourde à mettre en œuvre : trois classes, et analyser l'option nécessite d'écrire un \emph{getter} abstrait ou une méthode abstraite pour la classe abstraite de base \galgas{@abstractOption}, et les redéfinir dans les deux classes héritières \galgas{@noOption} et \galgas{@option}.
 
-La troisième et dernière solution consiste à écrire un type énuméré possédant des valeurs associées :
+\textbf{Troisième solution.} La troisième et dernière solution consiste à écrire un type énuméré possédant des valeurs associées :
 
 \begin{galgascode}
 enum @option {
-  noOption,
-  optionPresente (@lstring optionName)
+  case noOption
+  case optionPresente (@lstring optionName)
 }
 \end{galgascode}
 
-La construction de l'arbre syntaxique est réalisée par :
+À la constante \galgas{optionPresente} est associée une valeur de type \galgas{@lstring}, identifiée par le nom \galgas{optionName}. Ce nom est optionnel, on pourrait écrire \galgas{optionPresente (@lstring)}. La construction de l'arbre syntaxique est maintenant réalisée par :
 \begin{galgascode}
 rule regleProduction {
   @option optionAST
@@ -148,7 +150,7 @@ rule regleProduction {
 }
 \end{galgascode}
 
-
+À la constante \galgas{optionPresente} correspond un constructeur de même nom, avec un argument qui correspond à la valeur associée \galgas{@lstring optionName}. Le nom \galgas{optionName} est utilisé comme sélecteur. Si on avait déclaré la valeur associée sans nom par \galgas{optionPresente (@lstring)}, alors l'appel du constructeur serait \galgas{@option.optionPresente \{!nomOption\}}.
 
 Pour tester un type énuméré avec des valeurs associées, on peut appliquer les \emph{getter} décrits à \refSectionPage{testerValeurEnum}, mais on n'a pas accès aux valeurs associées.
 
