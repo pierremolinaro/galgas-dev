@@ -23,14 +23,16 @@
   showstringspaces=false  % do not underline spaces within strings
 }
 
-\newcommand\couleurCodeGALGAS{green!25}
+\newcommand\couleurCodeGALGAS{white}
 
 
 \ifthenelse{\equal{\sortieEnCouleur}{true}}{
   \lstdefinestyle{galgas}{
     basicstyle=\ttfamily,
 %    keywordstyle=\color{red}\textbf,
-%    frame=l,
+    frame=l,
+    framerule=2pt,
+    rulecolor=\color{blue!25},
     upquote=true,
     xleftmargin=16pt,
     keywordstyle=[2]\bfseries\color{blue},

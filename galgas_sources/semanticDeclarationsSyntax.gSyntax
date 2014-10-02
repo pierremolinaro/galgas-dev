@@ -582,12 +582,14 @@ rule <semantic_declaration>
         associatedValueTypeList += !associatedValueType !associatedValueName ;
       while
         $,$ :> ?* ?* ;
+        send " " ;
       end repeat ;
       $)$ ;
     end select ;
     mConstantList += !constantName !associatedValueTypeList ;
   while
-   $,$ :>?* ?* ;
+    $,$ :>?* ?* ;
+    send " " ;
   end repeat ;
   $}$ ;
   ioSemanticDeclarations += ![@enumDeclarationAST new
