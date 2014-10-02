@@ -565,7 +565,8 @@ rule <semantic_declaration>
   ${$ ;
   @enumConstantList mConstantList [emptyList] ;
   repeat
-    $identifier$ ?@lstring constantName ;
+    $identifier$ ?@lstring constantName :> ?@string sep ?*;
+    send sep + "case " + constantName ;
     @2lstringlist associatedValueTypeList := {} ;
     select
     or
@@ -580,13 +581,13 @@ rule <semantic_declaration>
         end select ;
         associatedValueTypeList += !associatedValueType !associatedValueName ;
       while
-        $,$ ;
+        $,$ :> ?* ?* ;
       end repeat ;
       $)$ ;
     end select ;
     mConstantList += !constantName !associatedValueTypeList ;
   while
-   $,$ ;
+   $,$ :>?* ?* ;
   end repeat ;
   $}$ ;
   ioSemanticDeclarations += ![@enumDeclarationAST new

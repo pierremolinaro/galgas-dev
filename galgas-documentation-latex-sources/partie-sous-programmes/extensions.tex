@@ -5,43 +5,41 @@
 \chapterLabel{Extensions}{extensions}\index{Extensions}
 %-------------------------------------------------------------
 
-\emph{Categories} are the way for adding \emph{readers}, \emph{methods} and \emph{modifiers} to any type. They are defined outside type declarations.
+\emph{Categories} are the way for adding \emph{getters}, \emph{methods} and \emph{setters} to any type. They are defined outside type declarations.
 
 You can declare for any type:
 \begin{itemize}
-\item \emph{category readers};
+\item \emph{category getters};
 \item \emph{category methods};
-\item \emph{category modifiers}.
+\item \emph{category setters}.
 \end{itemize}
 
 Additional features are available for classes and are described in \refSectionPage{categoriesAndClasses}.
 
 
-A \emph{category reader} is called in an expression. As expressions have no side-effect, a category reader cannot change current object's value.
+A \emph{category getter} is called in an expression. As expressions have no side-effect, a category getter cannot change current object's value.
 
 A \emph{category method} is called by the \emph{method call instruction} (\refSectionPage{methodCallInstruction}). A category method cannot modify current object's value.
 
-A \emph{category modifier} is called by the \emph{modifier call instruction} (\refSectionPage{modifierCallInstruction}). A category modifier can modify current object's value.
+A \emph{category setter} is called by the \emph{setter call instruction} (\refSectionPage{setterCallInstruction}). A category setter can modify current object's value.
 
-Within the category reader, method and modifier instruction list, the \lstinline[language=galgas]!selfcopy! key word is allowed in any expression. It represents a copy of the current object. Of course, the current is lazily copied only when required.
+Within the category getter, method and setter instruction list, the \lstinline[language=galgas]!self! key word is allowed in any expression. It represents a copy of the current object. Of course, the current is lazily copied only when required.
 
-The \lstinline[language=galgas]!self! key word is just a syntactic tag for representing a write or a read/write access to the current object. Using \lstinline[language=galgas]!self! is not allowed in category methods and category readers since they cannot modify the current object. Using \lstinline[language=galgas]!self! in category modifiers is explained in \refSectionPage{categoryModifier}. 
+The \lstinline[language=galgas]!self! key word is just a syntactic tag for representing a write or a read/write access to the current object. Using \lstinline[language=galgas]!self! is not allowed in category methods and category getters since they cannot modify the current object. Using \lstinline[language=galgas]!self! in category setters is explained in \refSectionPage{categorySetter}. 
 
 
-A category reader, method and modifier can be declared in:
+A category getter, method and setter can be declared in:
 \begin{itemize}
 \item a \emph{semantics} component;
 \item a \emph{syntax} component;
 \item a \emph{program} component.
 \end{itemize}
 
-A declared category reader, method and modifier has a global scope, meaning it is available in the current component, and in any component that includes it directly or indirectly.
+A declared category getter, method and setter has a global scope, meaning it is available in the current component, and in any component that includes it directly or indirectly.
 
-A type does not accept several category readers with the same name. During compilation of the project file, the project global checking mechanism detects such declarations and issues an error. Consequently, it is forbidden to declare a category reader with the same name than a predefined reader: the compiler issues an error on on a such declaration. The same rules apply on category methods and category modifiers.
+A type does not accept several category getters with the same name. During compilation of the project file, the project global checking mechanism detects such declarations and issues an error. Consequently, it is forbidden to declare a category getter with the same name than a predefined getter: the compiler issues an error on on a such declaration. The same rules apply on category methods and category setters.
 
-However, it is safe to declare for a given type a category reader, a category method and a category modifier with the same name. GALGAS compiler uses different naming spaces for them, and call syntax are different, so there is no ambiguity.
-
-
+However, it is safe to declare for a given type a category getter, a category method and a category setter with the same name. GALGAS compiler uses different naming spaces for them, and call syntax are different, so there is no ambiguity.
 
 
 
@@ -50,53 +48,55 @@ However, it is safe to declare for a given type a category reader, a category me
 
 
 
-\sectionLabel{Category reader}{categoryReader}
 
-A category reader is declared like a function, but its header names a type and a reader name. As a function, it accepts zero, one or more input and constant input formal parameters.
 
-For example, the following code add a reader to the \refTypePredefini{uint64} that computes the square of its value:
+\sectionLabel{Category getter}{categoryGetter}
+
+A category getter is declared like a function, but its header names a type and a getter name. As a function, it accepts zero, one or more input and constant input formal parameters.
+
+For example, the following code add a getter to the \refTypePredefini{uint64} that computes the square of its value:
 \begin{lstlisting}[language=galgas]
-reader @uint64 square -> @uint64 outResult :
-  outResult := selfcopy * selfcopy ;
-end reader ;
+getter @uint64 square -> @uint64 outResult {
+  outResult = self * self
+}
 \end{lstlisting}
 
-This reader is called like a predefined reader:
+This getter is called like a predefined getter:
 \begin{lstlisting}[language=galgas]
-@uint64 v := 7L ;
-log "Square of 7": [v square] ; # LOGGING Square of 7 : <@uint64:49>
+@uint64 v = 7L
+log "Square of 7": [v square] # LOGGING Square of 7 : <@uint64:49>
 \end{lstlisting}
 
-You can add a category reader to a list :
+You can add a category getter to a list :
 \begin{lstlisting}[language=galgas]
-reader @uintlist sum -> @uint outResult :
-  outResult := 0 ;
-  foreach selfcopy do
-    outResult := outResult + mValue ;
-  end foreach ;
-end reader ;
+getter @uintlist sum -> @uint outResult {
+  outResult = 0
+  for self do
+    outResult = outResult + mValue
+  }
+}
 \end{lstlisting}
 
 For counting the number of element values greater than the value given in argument:
 \begin{lstlisting}[language=galgas]
-reader @uintlist countValuesGreaterThan
-  ??@uint inTestValue -> @uint outResult
-:
-  outResult := 0 ;
-  foreach selfcopy do
+getter @uintlist countValuesGreaterThan
+  ?let @uint inTestValue -> @uint outResult
+{
+  outResult = 0
+  for self do
     if mValue > inTestValue then
-      outResult ++ ;
-    end if ;
-  end foreach ;
-end reader ;
+      outResult ++
+    end if
+  }
+}
 \end{lstlisting}
 
 When used with a struct or class type, current object attributes values can be read by naming the attribute in an expression. For example, the \refTypePredefini{lstring} has an attribute 
-\lstinline[language=galgas]!string! whose type is \galgas{@string}. The following reader returns the value of this attribute, appended with the \lstinline[language=galgas]?" !"? string:
+\lstinline[language=galgas]!string! whose type is \galgas{@string}. The following getter returns the value of this attribute, appended with the \lstinline[language=galgas]?" !"? string:
 \begin{lstlisting}[language=galgas]
-reader @lstring op -> @string outResult :
-  outResult := string . " !" ;
-end reader ;
+getter @lstring op -> @string outResult {
+  outResult = string . " !"
+}
 \end{lstlisting}
 
 
@@ -111,49 +111,49 @@ A category method is declared like a routine, but its header names a type and a 
 
 For example, the following code add a method to the \refTypePredefini{uint64} that computes the square of its value:
 \begin{lstlisting}[language=galgas]
-method @uint64 square !@uint64 outResult :
-  outResult := selfcopy * selfcopy ;
-end method ;
+method @uint64 square !@uint64 outResult {
+  outResult = self * self
+}
 \end{lstlisting}
 
-This reader is called like a predefined method:
+This getter is called like a predefined method:
 \begin{lstlisting}[language=galgas]
-@uint64 v ;
-[7L square ?v] ;
-log "Square of 7": v ; # LOGGING Square of 7 : <@uint64:49>
+@uint64 v
+[7L square ?v]
+log "Square of 7": v # LOGGING Square of 7 : <@uint64:49>
 \end{lstlisting}
 
 You can add a category method to a list :
 \begin{lstlisting}[language=galgas]
-method @uintlist sum !@uint outResult :
-  outResult := 0 ;
-  foreach selfcopy do
-    outResult := outResult + mValue ;
-  end foreach ;
-end method ;
+method @uintlist sum !@uint outResult {
+  outResult = 0
+  for self do
+    outResult = outResult + mValue
+  }
+}
 \end{lstlisting}
 
 For counting the number of element values greater than the value given in argument:
 \begin{lstlisting}[language=galgas]
 method @uintlist countValuesGreaterThan
-  ??@uint inTestValue
+  ?let @uint inTestValue
   !@uint outResult
-:
-  outResult := 0 ;
-  foreach selfcopy do
+{
+  outResult = 0
+  for self do
     if mValue > inTestValue then
-      outResult ++ ;
-    end if ;
-  end foreach ;
-end method ;
+      outResult ++
+    end if
+  }
+}
 \end{lstlisting}
 
 When used with a struct or class type, current object attributes values can be read by naming the attribute in an expression. For example, the \refTypePredefini{lstring} has an attribute 
 \lstinline[language=galgas]!string! whose type is \galgas{@string}. The following method returns the value of this attribute, appended with the \lstinline[language=galgas]?" !"? string:
 \begin{lstlisting}[language=galgas]
-method @lstring op !@string outResult :
-  outResult := string . " !" ;
-end method ;
+method @lstring op !@string outResult {
+  outResult = string . " !"
+}
 \end{lstlisting}
 
 
@@ -166,62 +166,62 @@ end method ;
 
 
 
-\sectionLabel{Category modifier}{categoryModifier}
+\sectionLabel{Category setter}{categorySetter}
 
-A category method is declared like a routine, but its header names a type and a modifier name. As a routine, it accepts zero, one or more output, input/output, input and constant input formal parameters. Unlike a category method, a category modifier can change the value of the current object.
+A category method is declared like a routine, but its header names a type and a setter name. As a routine, it accepts zero, one or more output, input/output, input and constant input formal parameters. Unlike a category method, a category setter can change the value of the current object.
 
 For structure and classes types, attributes can be read, written, read / written. For example :
 \begin{lstlisting}[language=galgas]
-modifier @lstring appendInt ??@uint inValue :
-  string .= [inValue string] ;
-end modifier ;
+setter @lstring appendInt ?let @uint inValue {
+  string .= [inValue string]
+}
 \end{lstlisting}
 
 
 The \lstinline[language=galgas]!self! key word is used as a syntactic tag for denoting a read/write or a write access on the current object. This key word is syntactically accepted in the following constructs:
 \begin{enumerate}
-\item the \emph{modifier call instruction} (\refSectionPage{modifierCallInstruction});
+\item the \emph{setter call instruction} (\refSectionPage{setterCallInstruction});
 \item the \emph{concat instruction} (\refSectionPage{concatInstruction});
 \item the \emph{increment instruction} (\refSectionPage{incrementInstruction});
 \item the \emph{decrement instruction} (\refSectionPage{decrementInstruction});
 \item the \emph{assignment instruction} (\refSectionPage{assignmentInstruction}).
 \end{enumerate}
 
-Example of using \lstinline[language=galgas]!self! in modifier call instruction; this modifier prepends the square of argument value to the \galgas{@uint64list} value:
+Example of using \lstinline[language=galgas]!self! in setter call instruction; this setter prepends the square of argument value to the \galgas{@uint64list} value:
 \begin{lstlisting}[language=galgas]
-modifier @uint64list prependSquare ??@uint64 inValue :
-  [!?self prependValue !inValue * inValue] ;
-end modifier ;
+setter @uint64list prependSquare ?let @uint64 inValue {
+  [!?self prependValue !inValue * inValue]
+}
 \end{lstlisting}
 
 
-Example of using \lstinline[language=galgas]!self! in the append instruction; this modifier appends the square of argument value to the \galgas{@uintlist} value:
+Example of using \lstinline[language=galgas]!self! in the append instruction; this setter appends the square of argument value to the \galgas{@uintlist} value:
 \begin{lstlisting}[language=galgas]
-modifier @uintlist appendSquare ??@uint inValue :
-  self += !inValue * inValue ;
-end modifier ;
+setter @uintlist appendSquare ?let @uint inValue {
+  self += !inValue * inValue
+}
 \end{lstlisting}
 This construct is valid only for types that handle the \lstinline[language=galgas]!+=! operator.
 
 
-Example of using \lstinline[language=galgas]!self! in the concat instruction; this modifier appends to the string all items of the \galgas{@stringlist} argument value:
+Example of using \lstinline[language=galgas]!self! in the concat instruction; this setter appends to the string all items of the \galgas{@stringlist} argument value:
 \begin{lstlisting}[language=galgas]
-modifier @string concatList ??@stringlist inList :
-  foreach inList do
-    self .= mValue ;
-  end foreach ;
-end modifier ;
+setter @string concatList ?let @stringlist inList {
+  for inList do
+    self .= mValue
+  }
+}
 \end{lstlisting}
 This construct is valid only for types that handle the \lstinline[language=galgas]!.=! operator.
 
 
 
 
-Example of using \lstinline[language=galgas]!self! in the increment instruction; this modifier increments the receiver's value:
+Example of using \lstinline[language=galgas]!self! in the increment instruction; this setter increments the receiver's value:
 \begin{lstlisting}[language=galgas]
-modifier @uint increment :
-  self ++ ;
-end modifier ;
+setter @uint increment {
+  self ++
+}
 \end{lstlisting}
 This construct is valid only for types that handle the \lstinline[language=galgas]!++! operator, such as \refTypePredefini{uint}, \refTypePredefini{uint64}, \refTypePredefini{sint}, \refTypePredefini{sint64}.
 
@@ -229,17 +229,17 @@ This construct is valid only for types that handle the \lstinline[language=galga
 
 
 
-Example of using \lstinline[language=galgas]!self! in the assignment instruction; this modifier removes all odd values of the receiver:
+Example of using \lstinline[language=galgas]!self! in the assignment instruction; this setter removes all odd values of the receiver:
 \begin{lstlisting}[language=galgas]
-modifier @uintlist removeOddValues :
-  @uintlist listWithEvenValues [emptyList] ;
-  foreach selfcopy do
+setter @uintlist removeOddValues {
+  @uintlist listWithEvenValues [emptyList]
+  for self do
     if (mValue & 1) == 0 then
-      listWithEvenValues += !mValue ;
-    end if ;
-  end foreach ;
-  self := listWithEvenValues ;
-end modifier ;
+      listWithEvenValues += !mValue
+    end if
+  }
+  self = listWithEvenValues
+}
 \end{lstlisting}
 This construct is valid only for types, but class types.
 
@@ -255,19 +255,19 @@ This construct is valid only for types, but class types.
 \sectionLabel{Categories and classes}{categoriesAndClasses}
 
 
-Additional features are available only for classes; in addition to category readers, methods and modifiers described in the above sections, you can declare:
+Additional features are available only for classes; in addition to category getters, methods and setters described in the above sections, you can declare:
 \begin{itemize}
-\item \emph{abstract} category readers, methods, modifiers;
-\item \emph{overriding} category readers, methods, modifiers;
-\item \emph{overriding abstract} category readers, methods, modifiers.
+\item \emph{abstract} category getters, methods, setters;
+\item \emph{overriding} category getters, methods, setters;
+\item \emph{overriding abstract} category getters, methods, setters.
 \end{itemize}
 
-\emph{Abstract} category readers, methods, modifiers and \emph{overriding abstract} category readers, methods, modifiers do not contain any instruction list: they act as \emph{prototypes}.
+\emph{Abstract} category getters, methods, setters and \emph{overriding abstract} category getters, methods, setters do not contain any instruction list: they act as \emph{prototypes}.
 
-Examples of \emph{abstract} category readers, methods, modifiers declarations :
-{\lstset{emph={readerName, methodName, modifierName}, emphstyle=\galgasEmphStyle}
+Examples of \emph{abstract} category getters, methods, setters declarations :
+{\lstset{emph={getterName, methodName, setterName}, emphstyle=\galgasEmphStyle}
 \begin{lstlisting}[language=galgas]
-abstract reader @aType readerName
+abstract getter @aType getterName
   ?anOtherType aParameter
   -> @resultType outResult
 ;
@@ -276,41 +276,41 @@ abstract method @aType methodName
   ?anOtherType aParameter
 ;
 
-abstract modifier @aType modifierName
+abstract setter @aType setterName
   ?anOtherType aParameter
 ;
 \end{lstlisting}
 }
 
-Examples of \emph{overriding} category readers, methods, modifiers declarations :
-{\lstset{emph={instructions, readerName, methodName, modifierName}, emphstyle=\galgasEmphStyle}
+Examples of \emph{overriding} category getters, methods, setters declarations :
+{\lstset{emph={instructions, getterName, methodName, setterName}, emphstyle=\galgasEmphStyle}
 \begin{lstlisting}[language=galgas]
-override reader @aType readerName
+override getter @aType getterName
   ?anOtherType aParameter
   -> @resultType outResult
-:
+{
   instructions
-;
+}
 
 override method @aType methodName
   ?anOtherType aParameter
-:
+{
   instructions
-;
+}
 
-override modifier @aType modifierName
+override setter @aType setterName
   ?anOtherType aParameter
-:
+{
   instructions
-;
+}
 \end{lstlisting}
 }
 
-Examples of \emph{overriding abstract} category readers, methods, modifiers declarations :
-{\lstset{emph={readerName, methodName, modifierName}, emphstyle=\galgasEmphStyle}
+Examples of \emph{overriding abstract} category getters, methods, setters declarations :
+{\lstset{emph={getterName, methodName, setterName}, emphstyle=\galgasEmphStyle}
 \begin{lstlisting}[language=galgas]
-override abstract reader @aType readerName
-  ?anOtherType aParameter
+override abstract getter @aType getterName
+  ?@anOtherType aParameter
   -> @resultType outResult
 ;
 
@@ -318,22 +318,22 @@ override abstract method @aType methodName
   ?anOtherType aParameter
 ;
 
-override abstract modifier @aType modifierName
+override abstract setter @aType setterName
   ?anOtherType aParameter
 ;
 \end{lstlisting}
 }
 
 
-Neither \emph{abstract} category readers, methods, modifiers, neither \emph{overriding abstract} category readers, methods, modifiers cannot be declared for concrete classes. Any kind of category reader, method, modifier can be declared for abstract classes.
+Neither \emph{abstract} category getters, methods, setters, neither \emph{overriding abstract} category getters, methods, setters cannot be declared for concrete classes. Any kind of category getter, method, setter can be declared for abstract classes.
 
-If an \emph{abstract} category reader, method, modifier, or an \emph{overriding abstract} category reader, method, modifier is declared for an abstract class, it should be also declared as \emph{overriding} with the same name for every first concrete successor class.
+If an \emph{abstract} category getter, method, setter, or an \emph{overriding abstract} category getter, method, setter is declared for an abstract class, it should be also declared as \emph{overriding} with the same name for every first concrete successor class.
 
-A category reader, method, modifier that has the same name as a category reader, method, modifier declared for one of its super classes should be declared as \emph{overriding}.
+A category getter, method, setter that has the same name as a category getter, method, setter declared for one of its super classes should be declared as \emph{overriding}.
 
-An abstract category reader, method, modifier that has the same name as a category reader, method, modifier declared for one of its super classes should be declared as \emph{overriding abstract}.
+An abstract category getter, method, setter that has the same name as a category getter, method, setter declared for one of its super classes should be declared as \emph{overriding abstract}.
 
-The following example illustrates how theses rules should be applied. In the \refFigure{}{figureCategoryExample}, four classes are shown. An arrow links a class to its super class. The \lstinline[language=galgas]!@A! and \lstinline[language=galgas]!@C! classes are abstract. \lstinline[language=galgas]!m1! is a name for any reader, method or modifier.
+The following example illustrates how theses rules should be applied. In the \refFigure{}{figureCategoryExample}, four classes are shown. An arrow links a class to its super class. The \lstinline[language=galgas]!@A! and \lstinline[language=galgas]!@C! classes are abstract. \lstinline[language=galgas]!m1! is a name for any getter, method or setter.
 
 \begin{figure}[t]
   \centering
