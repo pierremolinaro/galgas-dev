@@ -1883,10 +1883,13 @@ end
 
 Si des constantes déclarées dans l'énumération ont des valeurs associées, alors les branches \galgas{case} nommant ces constantes doivent adopter une syntaxe particulière. 
 
-En prenant pour exemple une constante possédant daux valeurs associées, la forme la plus générale est :
+En prenant pour exemple une constante possédant deux valeurs associées, la forme la plus générale est :
 
 \begin{galgascode}
+switch expression
 case constante (@type1 nom1 @type2 nom2) :
+...
+end
 \end{galgascode}
 
 \galgas{nom1} et \galgas{nom2} sont des constantes qui reçoivent les valeurs associées.
@@ -1894,18 +1897,27 @@ case constante (@type1 nom1 @type2 nom2) :
 Si on n'est pas intéressé par une valeur, on peut substituer \galgas{*} au nom :
 
 \begin{galgascode}
+switch expression
 case constante (@type1 nom1 @type2 *) :
+...
+end
 \end{galgascode}
 
-De même, l'annotation du type est optionnel : le type de \galgas{nom1}, \galgas{nom2} peut être déduit de la déclaration de la valeur associée :
+De même, l'annotation du type est optionnel : les types \galgas{@type1}, \galgas{@type2} peuvent être déduits de la déclaration de la valeur associée :
 
 \begin{galgascode}
+switch expression
 case constante (nom1 *) :
+...
+end
 \end{galgascode}
 
 Ainsi, si l'on n'est pas intéressé par les valeurs associées, on peut écrire :
 \begin{galgascode}
+switch expression
 case constante (* *) :
+...
+end
 \end{galgascode}
 
 
@@ -1980,8 +1992,10 @@ L'instruction \galgas{with} permet d'associer un test de recherche dans une tabl
 Accès en lecture, tolérance de l'échec de la recherche (\refSubsectionPage{instructionWithEnLectureTolerante}) :
 \begin{galgascode}
 with expression_cle prefixe_optionnel in expression_table
-do liste_instructions_do
-else liste_instructions_else # Optionnel
+do
+  liste_instructions_do
+else
+  liste_instructions_else # Optionnel
 end
 \end{galgascode}
 
@@ -1989,7 +2003,8 @@ Accès en lecture, signalement d'erreur si échec de la recherche (\refSubsectio
 \begin{galgascode}
 with expression_cle prefixe_optionnel in expression_table
 error message methode_recherche
-do liste_instructions_do
+do
+  liste_instructions_do
 end
 \end{galgascode}
 
@@ -1998,8 +2013,10 @@ end
 Accès en lecture/écriture, tolérance de l'échec de la recherche (\refSubsectionPage{instructionWithEnLectureEcritureTolerante}) :
 \begin{galgascode}
 with expression_cle prefixe_optionnel in !?cible_table
-do liste_instructions_do
-else liste_instructions_else # Optionnel
+do
+  liste_instructions_do
+else
+  liste_instructions_else # Optionnel
 end
 \end{galgascode}
 
@@ -2007,7 +2024,8 @@ Accès en lecture/écriture, signalement d'erreur si échec de la recherche (\re
 \begin{galgascode}
 with expression_cle prefixe_optionnel in !?cible_table
 error message methode_recherche
-do liste_instructions_do
+do
+  liste_instructions_do
 end
 \end{galgascode}
 
@@ -2019,8 +2037,10 @@ end
 
 \begin{galgascode}
 with expression_cle prefixe_optionnel in expression_table
-do liste_instructions_do
-else liste_instructions_else # Optionnel
+do
+  liste_instructions_do
+else
+  liste_instructions_else # Optionnel
 end
 \end{galgascode}
 
@@ -2107,7 +2127,8 @@ end
 \begin{galgascode}
 with expression_cle prefixe_optionnel in expression_table
 error message methode_recherche
-do liste_instructions_do
+do
+  liste_instructions_do
 end
 \end{galgascode}
 
@@ -2160,8 +2181,10 @@ end
 
 \begin{galgascode}
 with expression_cle prefixe_optionnel in !?cible_table
-do liste_instructions_do
-else liste_instructions_else # Optionnel
+do
+  liste_instructions_do
+else
+  liste_instructions_else # Optionnel
 end
 \end{galgascode}
 
@@ -2215,7 +2238,8 @@ end
 \begin{galgascode}
 with expression_cle prefixe_optionnel in !?cible_table
 error message methode_recherche
-do liste_instructions_do
+do
+  liste_instructions_do
 end
 \end{galgascode}
 
