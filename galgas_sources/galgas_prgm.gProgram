@@ -656,17 +656,15 @@ routine compileProject
     optionComponentMapForGeneration := {} ;
   end if ;
 #---------------------------------- Compile program declarations
-  var programHeaderContents := "" ;
   var programCppContents := "" ;
   if [@uint errorCount] == 0 then
     compileProgramComponentGalgas3
-      !productDirectory
       !declarationAST->mPrologueDeclarationList
       !declarationAST->mSourceRuleList
       !declarationAST->mEpilogueDeclarationList
       !semanticContext
-      ?programHeaderContents
       ?programCppContents
+      ??@programComponentForGeneration programComponentForGeneration
     ;
   end if ;
 #------------------------------------ Build a text file that contains all declared types
@@ -706,7 +704,6 @@ routine compileProject
   if (0 == [@uint errorCount]) & (inSourceToAnalyze == "") then
     projectGeneration
       !productDirectory
-      !programHeaderContents
       !programCppContents
       !optionComponentMapForGeneration
       !grammarGenerationList
@@ -735,7 +732,6 @@ end routine ;
 
 routine projectGeneration
   ??@string inProductDirectory
-  ??@string inProgramHeaderContents
   ??@string inProgramCppContents
   ??@optionComponentMapForGeneration inOptionComponentMapForGeneration
   ??@grammarComponentGenerationList inGrammarGenerationList
@@ -763,7 +759,6 @@ routine projectGeneration
 #---------------------------------- Generate program component
   generateProgramComponentGalgas3
     !inProductDirectory
-    !inProgramHeaderContents
     !inProgramCppContents
     !?toolCppFileList
     !?allProductFileSet
@@ -793,22 +788,6 @@ routine projectGeneration
       !?allProductFileSet
     ;
   end if ;
-#---------------------------------- Generate option components
-#  if [@uint errorCount] == 0 then
-#    foreach inSemanticContext->mOptionComponentMapForSemanticAnalysis do
-#      if not mIsPredefined then
-#        generateOptionComponentGalgas3
-#          !inProductDirectory
-#          !lkey->string
-#          !mBoolOptionMap
-#          !mUIntOptionMap
-#          !mStringOptionMap
-#          !?toolCppFileList
-#          !?allProductFileSet
-#        ;
-#      end if ;
-#    end foreach ;
-#  end if ;
 #---------------------------------- Generate syntax components
   if 0 == [@uint errorCount] then
     for s in inSyntaxListForGeneration do

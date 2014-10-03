@@ -29,6 +29,7 @@ semantics semanticGeneration :
 #---------------------------------------------------------------------------*
 
 routine generateProcedure
+  ??static:@bool inGenerateStatic
   ??@string inProcedureName
   ?!@stringset ioInclusionSet
   ?@formalParameterListForGeneration inFormalArgumentList
@@ -72,7 +73,11 @@ routine generateProcedure
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet] ;
   end foreach ;
 #--- Generate header
-  outGeneratedCode := "void " . inProcedureName . " (" ;
+  outGeneratedCode := "" ;
+  if inGenerateStatic then
+    outGeneratedCode += "static " ;
+  end if ;
+  outGeneratedCode += "void " . inProcedureName . " (" ;
   const @uint colRef := [outGeneratedCode currentColumn] ;
 #---
   foreach inFormalArgumentList do
@@ -1889,6 +1894,7 @@ override method @routineImplementationForGeneration appendSpecificImplementation
     ioInclusionSet += !"proc-" . mRoutineName ;
   end if ;
   generateProcedure
+    !static:mGenerateStatic
     !"routine_" . [mRoutineName identifierRepresentation]
     !?ioInclusionSet
     !mFormalArgumentList
@@ -2044,6 +2050,7 @@ override method @categoryMethodForGeneration appendSpecificImplementation
     ] ;
     ioInclusionSet += !"method-" . [mReceiverType key]. "-" . mCategoryMethodName ;
     generateProcedure
+      !static:false
       !"categoryMethod_" . [mCategoryMethodName identifierRepresentation]
       !?ioInclusionSet
       !categoryMethodFormalParameterList
@@ -2208,6 +2215,7 @@ override method @categoryModifierForGeneration appendSpecificImplementation
     ] ;
     ioInclusionSet += !"setter-" . [mReceiverType key] . "-" . mCategoryModifierName ;
     generateProcedure
+      !static:false
       !"categoryModifier_" . [mCategoryModifierName identifierRepresentation]
       !?ioInclusionSet
       !categoryModifierFormalParameterList

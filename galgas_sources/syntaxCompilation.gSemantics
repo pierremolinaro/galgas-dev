@@ -189,6 +189,7 @@ routine compileSyntaxComponentFromAST
             ;
             implementationString .= "//---------------------------------------------------------------------------------------------------------------------*\n\n" ;
             generateProcedure
+              !static:false
               !ruleName
               !?inclusionSet
               !mSignatureForGeneration
@@ -211,6 +212,7 @@ routine compileSyntaxComponentFromAST
           . "_i" . [mRuleIndex string] . "_parse" ;
           implementationString .= "//---------------------------------------------------------------------------------------------------------------------*\n\n" ;
           generateProcedure
+            !static:false
             !ruleName
             !?inclusionSet
             ![@formalParameterListForGeneration emptyList]
@@ -233,6 +235,7 @@ routine compileSyntaxComponentFromAST
             . "_i" . [mRuleIndex string] . "_indexing" ;
             implementationString .= "//---------------------------------------------------------------------------------------------------------------------*\n\n" ;
             generateProcedure
+              !static:false
               !ruleName
               !?inclusionSet
               ![@formalParameterListForGeneration emptyList]
@@ -454,6 +457,7 @@ routine generateSyntaxComponentGalgas3
       ;
       implementationString .= "//---------------------------------------------------------------------------------------------------------------------*\n\n" ;
       generateProcedure
+        !static:false
         !ruleName
         !?cppInclusionSet
         !mSignatureForGeneration
@@ -476,6 +480,7 @@ routine generateSyntaxComponentGalgas3
     . "_i" . [mRuleIndex string] . "_parse" ;
     implementationString .= "//---------------------------------------------------------------------------------------------------------------------*\n\n" ;
     generateProcedure
+      !static:false
       !ruleName
       !?cppInclusionSet
       ![@formalParameterListForGeneration emptyList]
@@ -498,6 +503,7 @@ routine generateSyntaxComponentGalgas3
       . "_i" . [mRuleIndex string] . "_indexing" ;
       implementationString .= "//---------------------------------------------------------------------------------------------------------------------*\n\n" ;
       generateProcedure
+        !static:false
         !ruleName
         !?cppInclusionSet
         ![@formalParameterListForGeneration emptyList]

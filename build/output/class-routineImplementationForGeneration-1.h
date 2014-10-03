@@ -46,7 +46,8 @@ class GALGAS_routineImplementationForGeneration : public GALGAS_routinePrototype
                                                                              const class GALGAS_string & inOperand1,
                                                                              const class GALGAS_string & inOperand2,
                                                                              const class GALGAS_formalParameterListForGeneration & inOperand3,
-                                                                             const class GALGAS_semanticInstructionListForGeneration & inOperand4
+                                                                             const class GALGAS_bool & inOperand4,
+                                                                             const class GALGAS_semanticInstructionListForGeneration & inOperand5
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -58,6 +59,8 @@ class GALGAS_routineImplementationForGeneration : public GALGAS_routinePrototype
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_mGenerateStatic (LOCATION_ARGS) const ;
+
   public : VIRTUAL_IN_DEBUG class GALGAS_semanticInstructionListForGeneration reader_mRoutineInstructionList (LOCATION_ARGS) const ;
 
 
