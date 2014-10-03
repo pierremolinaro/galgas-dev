@@ -418,7 +418,6 @@
 #include "proc-compileProgramComponentFromAST.h"
 #include "proc-compileProgramComponentFromSourceFile.h"
 #include "proc-compileProgramComponentGalgas3.h"
-#include "proc-generateProgramComponentGalgas3.h"
 #include "proc-compileProject.h"
 #include "proc-projectGeneration.h"
 #include "filewrapper-updaterApplicationFileWrapper.h"

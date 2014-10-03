@@ -518,7 +518,6 @@ routine compileProgramComponentGalgas3
   ??@programRuleList inProgramRules
   ??@prologueEpilogueList inEpilogueList
   ??@semanticContext inSemanticContext
-  !@string outCppContents
   !@programComponentForGeneration outProgramComponentForGeneration
 :
   const useOneHugeHeader := [option galgas_cli_options.generateOneHeader value] ;
@@ -583,9 +582,8 @@ routine compileProgramComponentGalgas3
 #    end if ;
 #  end if ;
 #------------ Build Implementation File
-  @stringset inclusionSet := {} ;
-  outCppContents := "" ;
-  if [@uint errorCount] == 0 then
+#  if [@uint errorCount] == 0 then
+    @stringset inclusionSet := {} ;
     var beforeAfterRulesString := "" ;
     foreach decoratedDeclarationListForGeneration do
       beforeAfterRulesString += [mDeclaration appendTypeGenericImplementation] ;
@@ -606,22 +604,21 @@ routine compileProgramComponentGalgas3
         inclusionSet += !"grammar-" . lkey->string ;
       end for ;
     end if ;
-    outCppContents := [filewrapper programFileGenerationTemplate.programFileImplementation
+    const cppContents := [filewrapper programFileGenerationTemplate.programFileImplementation
       !"program"
       ![inclusionSet stringList]
       !beforeAfterRulesString
       !inProgramRules
       !hasIndexing
     ] ;
-
-  end if ;
-#---
-   outProgramComponentForGeneration := [@programComponentForGeneration new
-     !false # No header
-     !"program"
-     !inclusionSet
-     !outCppContents
-   ] ;
+  #---
+    outProgramComponentForGeneration := [@programComponentForGeneration new
+      !false # No header
+      !"program"
+      !inclusionSet
+      !cppContents
+    ] ;
+#  end if ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -630,14 +627,14 @@ end routine ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-routine generateProgramComponentGalgas3
-  ??@string inOutputDirectory
-  ??@string inCppContents
-  ?!@stringlist ioToolProductFileList
-  ?!@stringset ioAllProductFileSet
-:
-#------ Generate Header File
-  const programFileName := "program" ;
+#routine generateProgramComponentGalgas3
+#  ??@string inOutputDirectory
+#  ??@string inCppContents
+#  ?!@stringlist ioToolProductFileList
+#  ?!@stringset ioAllProductFileSet
+#:
+##------ Generate Header File
+#  const programFileName := "program" ;
 #  if [@uint errorCount] == 0 then
 #    ioAllProductFileSet += !programFileName + ".h" ;
 #    [@string generateFileWithPattern
@@ -651,20 +648,20 @@ routine generateProgramComponentGalgas3
 #    ] ;
 #  end if ;
 #-------------------------------------------------------- Generate Implementation File
-  if [@uint errorCount] == 0 then
-    ioToolProductFileList += !programFileName . ".cpp" ;
-    ioAllProductFileSet += !programFileName + ".cpp" ;
-    [@string generateFileWithPattern
-      !inOutputDirectory
-      !programFileName . ".cpp"
-      !"//"
-      !"\n\n" # Defaut user zone1
-      !inCppContents
-      !"\n\n" # Defaut user zone2
-      !"\n"
-    ] ;
-  end if ;
-end routine ;
+#  if [@uint errorCount] == 0 then
+#    ioToolProductFileList += !programFileName . ".cpp" ;
+#    ioAllProductFileSet += !programFileName + ".cpp" ;
+#    [@string generateFileWithPattern
+#      !inOutputDirectory
+#      !programFileName . ".cpp"
+#      !"//"
+#      !"\n\n" # Defaut user zone1
+#      !inCppContents
+#      !"\n\n" # Defaut user zone2
+#      !"\n"
+#    ] ;
+#  end if ;
+#end routine ;
 
 #---------------------------------------------------------------------------*
 

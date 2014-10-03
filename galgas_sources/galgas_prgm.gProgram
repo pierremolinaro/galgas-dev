@@ -656,15 +656,18 @@ routine compileProject
     optionComponentMapForGeneration := {} ;
   end if ;
 #---------------------------------- Compile program declarations
-  var programCppContents := "" ;
   if [@uint errorCount] == 0 then
     compileProgramComponentGalgas3
       !declarationAST->mPrologueDeclarationList
       !declarationAST->mSourceRuleList
       !declarationAST->mEpilogueDeclarationList
       !semanticContext
-      ?programCppContents
       ??@programComponentForGeneration programComponentForGeneration
+    ;
+    semanticDeclarationSortedListForGeneration +=
+      !"zprogram"
+      !programComponentForGeneration
+      !"z"
     ;
   end if ;
 #------------------------------------ Build a text file that contains all declared types
@@ -704,7 +707,6 @@ routine compileProject
   if (0 == [@uint errorCount]) & (inSourceToAnalyze == "") then
     projectGeneration
       !productDirectory
-      !programCppContents
       !optionComponentMapForGeneration
       !grammarGenerationList
       !lexiqueComponentGenerationList
@@ -732,7 +734,6 @@ end routine ;
 
 routine projectGeneration
   ??@string inProductDirectory
-  ??@string inProgramCppContents
   ??@optionComponentMapForGeneration inOptionComponentMapForGeneration
   ??@grammarComponentGenerationList inGrammarGenerationList
   ??@lexiqueComponentGenerationList inLexiqueComponentGenerationList
@@ -757,12 +758,12 @@ routine projectGeneration
   var toolCppFileList := [@stringlist emptyList] ;
   var allProductFileSet := [@stringset emptySet] ;
 #---------------------------------- Generate program component
-  generateProgramComponentGalgas3
-    !inProductDirectory
-    !inProgramCppContents
-    !?toolCppFileList
-    !?allProductFileSet
-  ;
+#  generateProgramComponentGalgas3
+#    !inProductDirectory
+#    !inProgramCppContents
+#    !?toolCppFileList
+#    !?allProductFileSet
+#  ;
 #---------------------------------- Generate grammar components
   generateGrammarComponentGalgas3
     !inProductDirectory

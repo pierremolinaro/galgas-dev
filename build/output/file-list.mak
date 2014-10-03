@@ -49,7 +49,6 @@ SOURCES += all-declarations-3.cpp
 SOURCES += all-declarations-2.cpp
 SOURCES += all-declarations-1.cpp
 SOURCES += all-declarations-0.cpp
-SOURCES += program.cpp
 SOURCES += grammar-templateGrammar.cpp
 SOURCES += grammar-lexiqueLL1grammar.cpp
 SOURCES += grammar-optionLL1grammar.cpp
