@@ -785,11 +785,11 @@ local routine generateFewImplementationFiles
 #        elsif generateFewHeaderFiles [] then
 #          inclusionSet := {!"all-declarations-" . fileIdx} ;
         end if ;
-        for () in inSemanticContext->mOptionComponentMapForSemanticAnalysis do
-          if not mIsPredefined then
-            inclusionSet += !"option-" + lkey->string ;
-          end if ;
-        end for ;
+#        for () in inSemanticContext->mOptionComponentMapForSemanticAnalysis do
+#          if not mIsPredefined then
+#            inclusionSet += !"option-" + lkey->string ;
+#          end if ;
+#        end for ;
         for () in inSemanticContext->mGrammarMap do
           inclusionSet += !"grammar-" . lkey->string ;
         end for ;
@@ -816,11 +816,11 @@ local routine generateFewImplementationFiles
     if useOneHugeHeader then
       inclusionSet := [@stringset setWithString !"all-declarations"] ;
     end if ;
-    for () in inSemanticContext->mOptionComponentMapForSemanticAnalysis do
-      if not mIsPredefined then
-        inclusionSet += !"option-" + lkey->string ;
-      end if ;
-    end for ;
+#    for () in inSemanticContext->mOptionComponentMapForSemanticAnalysis do
+#      if not mIsPredefined then
+#        inclusionSet += !"option-" + lkey->string ;
+#      end if ;
+#    end for ;
     for () in inSemanticContext->mGrammarMap do
       inclusionSet += !"grammar-" . lkey->string ;
     end for ;
@@ -903,11 +903,11 @@ local routine generateFewImplementationFilesWithFewHeaders
         else
           inclusionSet := {!"all-declarations-" . fileIdx} ;
         end if ;
-        for () in inSemanticContext->mOptionComponentMapForSemanticAnalysis do
-          if not mIsPredefined then
-            inclusionSet += !"option-" + lkey->string ;
-          end if ;
-        end for ;
+#        for () in inSemanticContext->mOptionComponentMapForSemanticAnalysis do
+#          if not mIsPredefined then
+#            inclusionSet += !"option-" + lkey->string ;
+#          end if ;
+#        end for ;
         for () in inSemanticContext->mGrammarMap do
           inclusionSet += !"grammar-" . lkey->string ;
         end for ;
@@ -949,11 +949,11 @@ local routine generateFewImplementationFilesWithFewHeaders
     if useOneHugeHeader then
       inclusionSet := [@stringset setWithString !"all-declarations"] ;
     end if ;
-    for () in inSemanticContext->mOptionComponentMapForSemanticAnalysis do
-      if not mIsPredefined then
-        inclusionSet += !"option-" + lkey->string ;
-      end if ;
-    end for ;
+#    for () in inSemanticContext->mOptionComponentMapForSemanticAnalysis do
+#      if not mIsPredefined then
+#        inclusionSet += !"option-" + lkey->string ;
+#      end if ;
+#    end for ;
     for () in inSemanticContext->mGrammarMap do
       inclusionSet += !"grammar-" . lkey->string ;
     end for ;
@@ -1013,11 +1013,11 @@ local routine generateManyImplementationFiles
       end if ;
       if useOneHugeHeader then
         inclusionSet := [@stringset setWithString !"all-declarations"] ;
-        for () in inSemanticContext->mOptionComponentMapForSemanticAnalysis do
-          if not mIsPredefined then
-            inclusionSet += !"option-" + lkey->string ;
-          end if ;
-        end for ;
+#        for () in inSemanticContext->mOptionComponentMapForSemanticAnalysis do
+#          if not mIsPredefined then
+#            inclusionSet += !"option-" + lkey->string ;
+#          end if ;
+#        end for ;
         for () in inSemanticContext->mGrammarMap do
           inclusionSet += !"grammar-" . lkey->string ;
         end for ;

@@ -23,7 +23,7 @@ class cPtr_optionComponentForGeneration : public cPtr_semanticDeclarationWithHea
   public : GALGAS_commandLineOptionMap mAttribute_mStringOptionMap ;
 
 //--- Constructor
-  public : cPtr_optionComponentForGeneration (const GALGAS_bool & in_mhasHeader,
+  public : cPtr_optionComponentForGeneration (const GALGAS_bool & in_mHasHeader,
                                               const GALGAS_string & in_mImplementationCppFileName,
                                               const GALGAS_bool & in_mIsPredefined,
                                               const GALGAS_string & in_mOptionComponentName,

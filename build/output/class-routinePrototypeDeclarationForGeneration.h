@@ -20,7 +20,7 @@ class cPtr_routinePrototypeDeclarationForGeneration : public cPtr_semanticDeclar
   public : GALGAS_formalParameterListForGeneration mAttribute_mFormalArgumentList ;
 
 //--- Constructor
-  public : cPtr_routinePrototypeDeclarationForGeneration (const GALGAS_bool & in_mhasHeader,
+  public : cPtr_routinePrototypeDeclarationForGeneration (const GALGAS_bool & in_mHasHeader,
                                                           const GALGAS_string & in_mImplementationCppFileName,
                                                           const GALGAS_string & in_mRoutineName,
                                                           const GALGAS_formalParameterListForGeneration & in_mFormalArgumentList

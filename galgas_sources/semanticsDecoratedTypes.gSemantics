@@ -463,7 +463,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 abstract class @semanticDeclarationWithHeaderForGeneration extends @semanticDeclarationForGeneration {
-  @bool mhasHeader ;
+  @bool mHasHeader ;
   @string mImplementationCppFileName ;
 }
 
@@ -478,7 +478,7 @@ end reader ;
 
 override reader @semanticDeclarationWithHeaderForGeneration hasCppHeaderFile -> @bool outHasHeader
 :
-  outHasHeader := mhasHeader ;
+  outHasHeader := mHasHeader ;
 end reader ;
 
 #---------------------------------------------------------------------------*

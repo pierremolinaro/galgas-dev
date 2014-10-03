@@ -22,7 +22,7 @@ class cPtr_abstractCategoryMethodForGeneration : public cPtr_semanticDeclaration
   public : GALGAS_formalParameterListForGeneration mAttribute_mAbstractCategoryMethodFormalParameterList ;
 
 //--- Constructor
-  public : cPtr_abstractCategoryMethodForGeneration (const GALGAS_bool & in_mhasHeader,
+  public : cPtr_abstractCategoryMethodForGeneration (const GALGAS_bool & in_mHasHeader,
                                                      const GALGAS_string & in_mImplementationCppFileName,
                                                      const GALGAS_unifiedTypeMapProxy & in_mReceiverType,
                                                      const GALGAS_string & in_mAbstractCategoryMethodName,

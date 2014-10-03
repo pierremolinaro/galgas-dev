@@ -19,7 +19,7 @@ class cPtr_routineImplementationForGeneration : public cPtr_routinePrototypeDecl
   public : GALGAS_semanticInstructionListForGeneration mAttribute_mRoutineInstructionList ;
 
 //--- Constructor
-  public : cPtr_routineImplementationForGeneration (const GALGAS_bool & in_mhasHeader,
+  public : cPtr_routineImplementationForGeneration (const GALGAS_bool & in_mHasHeader,
                                                     const GALGAS_string & in_mImplementationCppFileName,
                                                     const GALGAS_string & in_mRoutineName,
                                                     const GALGAS_formalParameterListForGeneration & in_mFormalArgumentList,

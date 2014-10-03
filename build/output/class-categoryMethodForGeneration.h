@@ -27,7 +27,7 @@ class cPtr_categoryMethodForGeneration : public cPtr_semanticDeclarationWithHead
   public : GALGAS_semanticInstructionListForGeneration mAttribute_mSemanticInstructionListForGeneration ;
 
 //--- Constructor
-  public : cPtr_categoryMethodForGeneration (const GALGAS_bool & in_mhasHeader,
+  public : cPtr_categoryMethodForGeneration (const GALGAS_bool & in_mHasHeader,
                                              const GALGAS_string & in_mImplementationCppFileName,
                                              const GALGAS_unifiedTypeMapProxy & in_mReceiverType,
                                              const GALGAS_string & in_mCategoryMethodName,

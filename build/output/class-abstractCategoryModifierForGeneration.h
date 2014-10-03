@@ -22,7 +22,7 @@ class cPtr_abstractCategoryModifierForGeneration : public cPtr_semanticDeclarati
   public : GALGAS_formalParameterListForGeneration mAttribute_mAbstractCategoryModifierFormalParameterList ;
 
 //--- Constructor
-  public : cPtr_abstractCategoryModifierForGeneration (const GALGAS_bool & in_mhasHeader,
+  public : cPtr_abstractCategoryModifierForGeneration (const GALGAS_bool & in_mHasHeader,
                                                        const GALGAS_string & in_mImplementationCppFileName,
                                                        const GALGAS_unifiedTypeMapProxy & in_mReceiverType,
                                                        const GALGAS_string & in_mAbstractCategoryModifierName,
