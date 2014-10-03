@@ -1,4 +1,3 @@
-#include "%!COMPONENT_NAME%.h"
 #include "galgas2/C_galgas_CLI_Options.h"
 #include "galgas2/C_Compiler.h"
 #include "galgas2/C_galgas_io.h"
@@ -54,7 +53,8 @@ end
   static const char * kVersionString = "version " PROJECT_VERSION_STRING ;
 #endif
 
-//---------------------------------------------------------------------------------------------------------------------*
+%!BEFORE_AFTER_RULE_IMPLEMENTATION_STRING
+%//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                      M A I N    F O R    L I B P M                                                                  *
 //                                                                                                                     *

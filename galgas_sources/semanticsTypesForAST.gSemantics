@@ -1836,13 +1836,6 @@ class @optionComponentDeclarationAST extends @semanticDeclarationAST {
 
 #---------------------------------------------------------------------------*
 
-#list @galgas3OptionComponentListAST {
-#  @lstring mOptionComponentName  ;
-#  @commandLineOptionListAST mOptions  ;
-#}
-
-#---------------------------------------------------------------------------*
-
 list @galgas3SyntaxComponentListAST {
   @lstring mSyntaxComponentName ;
   @lstring mImportedLexiqueFilePath ; 
@@ -1913,7 +1906,6 @@ struct @galgas3DeclarationAST {
   @galgas3SyntaxComponentListAST mSyntaxComponentList ;
   @galgas3GrammarComponentListAST mGrammarComponentList ;
   @galgas3GUIComponentListAST mGUIComponentList ;
-#  @galgas3OptionComponentListAST mOptionComponentList ;
   @prologueEpilogueList mPrologueDeclarationList ;
   @programRuleList mSourceRuleList ;
   @prologueEpilogueList mEpilogueDeclarationList ;

@@ -13,16 +13,17 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_generateProcedure (const class GALGAS_string constinArgument0,
-                                class GALGAS_stringset & ioArgument1,
-                                class GALGAS_formalParameterListForGeneration inArgument2,
-                                const class GALGAS_semanticInstructionListForGeneration constinArgument3,
-                                const class GALGAS_bool constinArgument4,
-                                const class GALGAS_string constinArgument5,
-                                const class GALGAS_bool constinArgument6,
+void routine_generateProcedure (const class GALGAS_bool constinArgument0,
+                                const class GALGAS_string constinArgument1,
+                                class GALGAS_stringset & ioArgument2,
+                                class GALGAS_formalParameterListForGeneration inArgument3,
+                                const class GALGAS_semanticInstructionListForGeneration constinArgument4,
+                                const class GALGAS_bool constinArgument5,
+                                const class GALGAS_string constinArgument6,
                                 const class GALGAS_bool constinArgument7,
                                 const class GALGAS_bool constinArgument8,
-                                class GALGAS_string & outArgument9,
+                                const class GALGAS_bool constinArgument9,
+                                class GALGAS_string & outArgument10,
                                 class C_Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) ;
 

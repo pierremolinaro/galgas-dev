@@ -1179,6 +1179,7 @@ override method @routineDeclarationAST semanticAnalysis
       !"proc-" . mRoutineName
       ![mRoutineName string]
       !formalArgumentList
+      !false # Do not generate static
       !instructionList
     ]
     !""

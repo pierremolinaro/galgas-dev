@@ -13,13 +13,12 @@
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_compileProgramComponentGalgas_33_ (const class GALGAS_string constinArgument0,
-                                                const class GALGAS_prologueEpilogueList constinArgument1,
-                                                const class GALGAS_programRuleList constinArgument2,
-                                                const class GALGAS_prologueEpilogueList constinArgument3,
-                                                const class GALGAS_semanticContext constinArgument4,
-                                                class GALGAS_string & outArgument5,
-                                                class GALGAS_string & outArgument6,
+void routine_compileProgramComponentGalgas_33_ (const class GALGAS_prologueEpilogueList constinArgument0,
+                                                const class GALGAS_programRuleList constinArgument1,
+                                                const class GALGAS_prologueEpilogueList constinArgument2,
+                                                const class GALGAS_semanticContext constinArgument3,
+                                                class GALGAS_string & outArgument4,
+                                                class GALGAS_programComponentForGeneration & outArgument5,
                                                 class C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 

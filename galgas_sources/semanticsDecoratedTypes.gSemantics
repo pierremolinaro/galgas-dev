@@ -512,6 +512,7 @@ class @routinePrototypeDeclarationForGeneration extends @semanticDeclarationWith
 #---------------------------------------------------------------------------*
 
 class @routineImplementationForGeneration extends @routinePrototypeDeclarationForGeneration {
+  @bool mGenerateStatic ;
   @semanticInstructionListForGeneration mRoutineInstructionList ;
 }
 
@@ -1488,6 +1489,10 @@ class @filewrapperDeclarationForGeneration extends @semanticDeclarationWithHeade
 }
 
 #---------------------------------------------------------------------------*
+#                                                                           *
+#    O P T I O N    D E C L A R A T I O N                                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
 
 class @optionComponentForGeneration extends @semanticDeclarationWithHeaderForGeneration {
   @bool mIsPredefined ;
@@ -1495,6 +1500,17 @@ class @optionComponentForGeneration extends @semanticDeclarationWithHeaderForGen
   @commandLineOptionMap mBoolOptionMap ;
   @commandLineOptionMap mUIntOptionMap ;
   @commandLineOptionMap mStringOptionMap ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    P R O G R A M    D E C L A R A T I O N                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @programComponentForGeneration extends @semanticDeclarationWithHeaderForGeneration {
+  @stringset mInclusionSet ;
+  @string mImplementationString ;
 }
 
 #---------------------------------------------------------------------------*

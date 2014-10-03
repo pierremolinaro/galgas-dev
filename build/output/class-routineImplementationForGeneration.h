@@ -16,6 +16,7 @@
 
 class cPtr_routineImplementationForGeneration : public cPtr_routinePrototypeDeclarationForGeneration {
 //--- Attributes
+  public : GALGAS_bool mAttribute_mGenerateStatic ;
   public : GALGAS_semanticInstructionListForGeneration mAttribute_mRoutineInstructionList ;
 
 //--- Constructor
@@ -23,10 +24,12 @@ class cPtr_routineImplementationForGeneration : public cPtr_routinePrototypeDecl
                                                     const GALGAS_string & in_mImplementationCppFileName,
                                                     const GALGAS_string & in_mRoutineName,
                                                     const GALGAS_formalParameterListForGeneration & in_mFormalArgumentList,
+                                                    const GALGAS_bool & in_mGenerateStatic,
                                                     const GALGAS_semanticInstructionListForGeneration & in_mRoutineInstructionList
                                                     COMMA_LOCATION_ARGS) ;
 
 //--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_bool reader_mGenerateStatic (UNUSED_LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_semanticInstructionListForGeneration reader_mRoutineInstructionList (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
