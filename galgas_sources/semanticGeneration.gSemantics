@@ -2585,6 +2585,24 @@ override method @optionComponentForGeneration appendSpecificFiles
 end method ;
 
 #---------------------------------------------------------------------------*
+#! program
+#---------------------------------------------------------------------------*
+
+override reader @programComponentForGeneration headerKind ->@headerKind outResult :
+  outResult := [@headerKind noHeader] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override method @programComponentForGeneration appendSpecificImplementation
+  ?!@stringset ioInclusionSet
+  !@string outImplementation
+:
+  ioInclusionSet += mInclusionSet ;
+  outImplementation := mImplementationString ;
+end method ;
+
+#---------------------------------------------------------------------------*
 
 #! Filewrapper
 
