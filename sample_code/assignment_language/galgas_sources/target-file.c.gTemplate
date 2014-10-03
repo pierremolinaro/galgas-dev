@@ -2,7 +2,7 @@
 
 int main (void) {
 %
-foreach INSTRUCTION_LIST do
+for () in INSTRUCTION_LIST do
   %  %![mInstruction generateCcode]% ;\n%
 end
 %  return 0 ;

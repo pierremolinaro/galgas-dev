@@ -28,8 +28,6 @@ map @boxTypeMap {
   search searchKey error message "the '%K' box type is not declared" ;
 }
 
-mapproxy @boxInstanceProxy (@boxInstanceMap) ;
-
 map @connectionMap {
   @boxInstanceProxy mBoxProxy ;
   @lstring mOppositePortName ;
@@ -37,7 +35,7 @@ map @connectionMap {
   search searchKey error message "the '%K' connection is not declared" ;
 }
 
-uniquemap @boxInstanceMap {
+uniquemap @boxInstanceMap @boxInstanceProxy {
   @connectionMap mConnectionMap ;
   insert insertKey error message "the '%K' box is already declared" ;
   search searchKey error message "the '%K' box is not declared" ;
