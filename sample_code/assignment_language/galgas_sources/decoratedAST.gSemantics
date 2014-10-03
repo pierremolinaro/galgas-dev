@@ -50,7 +50,7 @@ class @printVariableForGeneration extends @instructionForGeneration {
 
 #---------------------------------------------------------------------------*
 
-uniquemap @variableMap {
+uniquemap @variableMap @variableMapProxy {
   @string mCppName ;
 
 #--- Variable states
