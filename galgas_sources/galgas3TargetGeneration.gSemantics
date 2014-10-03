@@ -80,14 +80,19 @@ filewrapper targetGalgas3GenerationFileWrapper in "../generation_templates/targe
 }{
 }{
   template makefile_macosx_makefile "makefile-macosx/makefile.gTemplate" ?@string PROJECT_NAME ;
+  template clean_macosx_makefile "makefile-macosx/clean.py.gTemplate" ?@string PROJECT_NAME ;
 
   template makefile_unix_makefile "makefile-unix/makefile.gTemplate" ?@string PROJECT_NAME ;
+  template clean_unix_makefile "makefile-unix/clean.py.gTemplate" ?@string PROJECT_NAME ;
 
   template makefile_x86_linux32_on_macosx_makefile "makefile-x86linux32-on-macosx/makefile.gTemplate" ?@string PROJECT_NAME ;
+  template clean_x86_linux32_on_macosx_makefile "makefile-x86linux32-on-macosx/clean.py.gTemplate" ?@string PROJECT_NAME ;
 
   template makefile_x86_linux64_on_macosx_makefile "makefile-x86linux64-on-macosx/makefile.gTemplate" ?@string PROJECT_NAME ;
+  template clean_x86_linux64_on_macosx_makefile "makefile-x86linux64-on-macosx/clean.py.gTemplate" ?@string PROJECT_NAME ;
 
   template makefile_win32_on_macosx_makefile "makefile-win32-on-macosx/makefile.gTemplate" ?@string PROJECT_NAME ;
+  template clean_win32_on_macosx_makefile "makefile-win32-on-macosx/clean.py.gTemplate" ?@string PROJECT_NAME ;
 
   template makefile_msys32_on_windows_makefile "makefile-msys32-on-windows/makefile.gTemplate" ?@string PROJECT_NAME ;
 
@@ -140,7 +145,10 @@ routine generateGalgas3MinGWOnMacOSXTarget
   [dir makeDirectory] ;
   [[filewrapper targetGalgas3GenerationFileWrapper."makefile-win32-on-macosx/build.py"] writeToExecutableFileWhenDifferentContents !dir ."/build.py" ?*] ;
   [[filewrapper targetGalgas3GenerationFileWrapper."makefile-win32-on-macosx/verbose-build.py"] writeToExecutableFileWhenDifferentContents !dir ."/verbose-build.py" ?*] ;
-  [[filewrapper targetGalgas3GenerationFileWrapper."makefile-win32-on-macosx/clean.py"] writeToExecutableFileWhenDifferentContents !dir ."/clean.py" ?*] ;
+  [[filewrapper targetGalgas3GenerationFileWrapper.clean_win32_on_macosx_makefile !inProjectName] writeToExecutableFileWhenDifferentContents
+    !dir ."/clean.py"
+    ?*
+  ] ;
   [[filewrapper targetGalgas3GenerationFileWrapper.makefile_win32_on_macosx_makefile !inProjectName] writeToFileWhenDifferentContents !dir ."/makefile" ?*] ;
 end routine ;
 
@@ -154,7 +162,7 @@ routine generateGalgas3MakefileMacOSXTarget
   [dir makeDirectory] ;
   [[filewrapper targetGalgas3GenerationFileWrapper."makefile-macosx/build.py"] writeToExecutableFileWhenDifferentContents !dir ."/build.py" ?*] ;
   [[filewrapper targetGalgas3GenerationFileWrapper."makefile-macosx/verbose-build.py"] writeToExecutableFileWhenDifferentContents !dir ."/verbose-build.py" ?*] ;
-  [[filewrapper targetGalgas3GenerationFileWrapper."makefile-macosx/clean.py"] writeToExecutableFileWhenDifferentContents !dir ."/clean.py" ?*] ;
+  [[filewrapper targetGalgas3GenerationFileWrapper.clean_macosx_makefile !inProjectName] writeToExecutableFileWhenDifferentContents !dir ."/clean.py" ?*] ;
   [[filewrapper targetGalgas3GenerationFileWrapper."makefile-macosx/install.py"] writeToExecutableFileWhenDifferentContents !dir ."/install.py" ?*] ;
   [[filewrapper targetGalgas3GenerationFileWrapper.makefile_macosx_makefile !inProjectName] writeToFileWhenDifferentContents !dir ."/makefile" ?*] ;
 end routine ;
@@ -170,7 +178,7 @@ routine generateGalgas3MakefileUnixTarget
   [[filewrapper targetGalgas3GenerationFileWrapper."makefile-unix/build.py"] writeToExecutableFileWhenDifferentContents !dir ."/build.py" ?*] ;
   [[filewrapper targetGalgas3GenerationFileWrapper."makefile-unix/verbose-build.py"] writeToExecutableFileWhenDifferentContents !dir ."/verbose-build.py" ?*] ;
   [[filewrapper targetGalgas3GenerationFileWrapper."makefile-unix/install.py"] writeToExecutableFileWhenDifferentContents !dir ."/install.py" ?*] ;
-  [[filewrapper targetGalgas3GenerationFileWrapper."makefile-unix/clean.py"] writeToExecutableFileWhenDifferentContents !dir ."/clean.py" ?*] ;
+  [[filewrapper targetGalgas3GenerationFileWrapper.clean_unix_makefile !inProjectName] writeToExecutableFileWhenDifferentContents !dir ."/clean.py" ?*] ;
   [[filewrapper targetGalgas3GenerationFileWrapper.makefile_unix_makefile !inProjectName] writeToFileWhenDifferentContents !dir ."/makefile" ?*] ;
 end routine ;
 
@@ -183,7 +191,7 @@ routine generateGalgas3Linux32OnMacOSXTarget
   const @string dir := inProjectDirectory . "/makefile-x86linux32-on-macosx" ;
   [dir makeDirectory] ;
   [[filewrapper targetGalgas3GenerationFileWrapper."makefile-x86linux32-on-macosx/build.py"] writeToExecutableFileWhenDifferentContents !dir ."/build.py" ?*] ;
-  [[filewrapper targetGalgas3GenerationFileWrapper."makefile-x86linux32-on-macosx/clean.py"] writeToExecutableFileWhenDifferentContents !dir ."/clean.py" ?*] ;
+  [[filewrapper targetGalgas3GenerationFileWrapper.clean_x86_linux32_on_macosx_makefile !inProjectName] writeToExecutableFileWhenDifferentContents !dir ."/clean.py" ?*] ;
   [[filewrapper targetGalgas3GenerationFileWrapper."makefile-x86linux32-on-macosx/verbose-build.py"] writeToExecutableFileWhenDifferentContents !dir ."/verbose-build.py" ?*] ;
   [[filewrapper targetGalgas3GenerationFileWrapper.makefile_x86_linux32_on_macosx_makefile !inProjectName] writeToFileWhenDifferentContents !dir ."/makefile" ?*] ;
 end routine ;
@@ -197,7 +205,7 @@ routine generateGalgas3Linux64OnMacOSXTarget
   const @string dir := inProjectDirectory . "/makefile-x86linux64-on-macosx" ;
   [dir makeDirectory] ;
   [[filewrapper targetGalgas3GenerationFileWrapper."makefile-x86linux64-on-macosx/build.py"] writeToExecutableFileWhenDifferentContents !dir ."/build.py" ?*] ;
-  [[filewrapper targetGalgas3GenerationFileWrapper."makefile-x86linux64-on-macosx/clean.py"] writeToExecutableFileWhenDifferentContents !dir ."/clean.py" ?*] ;
+  [[filewrapper targetGalgas3GenerationFileWrapper.clean_x86_linux64_on_macosx_makefile !inProjectName] writeToExecutableFileWhenDifferentContents !dir ."/clean.py" ?*] ;
   [[filewrapper targetGalgas3GenerationFileWrapper."makefile-x86linux64-on-macosx/verbose-build.py"] writeToExecutableFileWhenDifferentContents !dir ."/verbose-build.py" ?*] ;
   [[filewrapper targetGalgas3GenerationFileWrapper.makefile_x86_linux64_on_macosx_makefile !inProjectName] writeToFileWhenDifferentContents !dir ."/makefile" ?*] ;
 end routine ;
