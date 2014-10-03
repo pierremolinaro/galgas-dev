@@ -525,11 +525,6 @@ routine generateSyntaxComponentGalgas3
   for () in inSemanticContext->mGrammarMap do
     cppInclusionSet += !"grammar-" . lkey->string ;
   end for ;
-  for () in inSemanticContext->mOptionComponentMapForSemanticAnalysis do
-    if not mIsPredefined then
-      cppInclusionSet += !"option-" . lkey->string ;
-    end if ;
-  end for ;
   const headerOfCppFile := [filewrapper syntaxFileGenerationTemplate.syntaxFileImplementationGalgas3
     !cppInclusionSet
   ] ;

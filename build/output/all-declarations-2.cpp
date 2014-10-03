@@ -13685,8 +13685,6 @@ GALGAS_unifiedTypeMapProxy GALGAS_unifiedTypeMapProxy::extractObject (const GALG
   return result ;
 }
 
-#include "option-galgas_cli_options.h"
-
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                               Bool options                                                                          *
@@ -18451,42 +18449,38 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementation
                                                                                             const GALGAS_commandLineOptionMap & in_STRING_5F_OPTION_5F_MAP
                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
   C_String result ;
-  result << "#include \"option-" ;
-  result << in_OPTION_5F_COMPONENT_5F_NAME.stringValue () ;
-  result << ".h\"\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
     "//                                                                                                                     *\n"
     "//                               Bool options                                                                          *\n"
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n" ;
-  GALGAS_uint index_680_ (0) ;
+  GALGAS_uint index_634_ (0) ;
   if (in_BOOL_5F_OPTION_5F_MAP.isValid ()) {
-    cEnumerator_commandLineOptionMap enumerator_680 (in_BOOL_5F_OPTION_5F_MAP, kEnumeration_up) ;
-    while (enumerator_680.hasCurrentObject ()) {
+    cEnumerator_commandLineOptionMap enumerator_634 (in_BOOL_5F_OPTION_5F_MAP, kEnumeration_up) ;
+    while (enumerator_634.hasCurrentObject ()) {
       result << "C_BoolCommandLineOption gOption_" ;
-      result << in_OPTION_5F_COMPONENT_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 10)).stringValue () ;
+      result << in_OPTION_5F_COMPONENT_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 8)).stringValue () ;
       result << "_" ;
-      result << enumerator_680.current_lkey (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 10)).stringValue () ;
+      result << enumerator_634.current_lkey (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 8)).stringValue () ;
       result << " (\"" ;
       result << in_OPTION_5F_COMPONENT_5F_NAME.stringValue () ;
       result << "\",\n"
         "                                         " ;
-      result << enumerator_680.current_lkey (HERE).mAttribute_string.reader_utf_38_Representation (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 11)).stringValue () ;
+      result << enumerator_634.current_lkey (HERE).mAttribute_string.reader_utf_38_Representation (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 9)).stringValue () ;
       result << ",\n"
         "                                         " ;
-      result << enumerator_680.current_mOptionChar (HERE).reader_uint (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 12)).reader_string (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 12)).stringValue () ;
+      result << enumerator_634.current_mOptionChar (HERE).reader_uint (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 10)).reader_string (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 10)).stringValue () ;
       result << ",\n"
         "                                         " ;
-      result << enumerator_680.current_mOptionString (HERE).reader_utf_38_Representation (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 13)).stringValue () ;
+      result << enumerator_634.current_mOptionString (HERE).reader_utf_38_Representation (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 11)).stringValue () ;
       result << ",\n"
         "                                         " ;
-      result << enumerator_680.current_mComment (HERE).reader_utf_38_Representation (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 14)).stringValue () ;
+      result << enumerator_634.current_mComment (HERE).reader_utf_38_Representation (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 12)).stringValue () ;
       result << ") ;\n"
         "\n" ;
-      index_680_.increment () ;
-      enumerator_680.gotoNextObject () ;
+      index_634_.increment () ;
+      enumerator_634.gotoNextObject () ;
     }
   }
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -18495,35 +18489,35 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementation
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n" ;
-  GALGAS_uint index_1802_ (0) ;
+  GALGAS_uint index_1756_ (0) ;
   if (in_UINT_5F_OPTION_5F_MAP.isValid ()) {
-    cEnumerator_commandLineOptionMap enumerator_1802 (in_UINT_5F_OPTION_5F_MAP, kEnumeration_up) ;
-    while (enumerator_1802.hasCurrentObject ()) {
+    cEnumerator_commandLineOptionMap enumerator_1756 (in_UINT_5F_OPTION_5F_MAP, kEnumeration_up) ;
+    while (enumerator_1756.hasCurrentObject ()) {
       result << "C_UIntCommandLineOption gOption_" ;
-      result << in_OPTION_5F_COMPONENT_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 23)).stringValue () ;
+      result << in_OPTION_5F_COMPONENT_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 21)).stringValue () ;
       result << "_" ;
-      result << enumerator_1802.current_lkey (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 23)).stringValue () ;
+      result << enumerator_1756.current_lkey (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 21)).stringValue () ;
       result << " (\"" ;
       result << in_OPTION_5F_COMPONENT_5F_NAME.stringValue () ;
       result << "\",\n"
         "                                         " ;
-      result << enumerator_1802.current_lkey (HERE).mAttribute_string.reader_utf_38_Representation (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 24)).stringValue () ;
+      result << enumerator_1756.current_lkey (HERE).mAttribute_string.reader_utf_38_Representation (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 22)).stringValue () ;
       result << ",\n"
         "                                         " ;
-      result << enumerator_1802.current_mOptionChar (HERE).reader_uint (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 25)).reader_string (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 25)).stringValue () ;
+      result << enumerator_1756.current_mOptionChar (HERE).reader_uint (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 23)).reader_string (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 23)).stringValue () ;
       result << ",\n"
         "                                         " ;
-      result << enumerator_1802.current_mOptionString (HERE).reader_utf_38_Representation (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 26)).stringValue () ;
+      result << enumerator_1756.current_mOptionString (HERE).reader_utf_38_Representation (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 24)).stringValue () ;
       result << ",\n"
         "                                         " ;
-      result << enumerator_1802.current_mComment (HERE).reader_utf_38_Representation (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 27)).stringValue () ;
+      result << enumerator_1756.current_mComment (HERE).reader_utf_38_Representation (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 25)).stringValue () ;
       result << ",\n"
         "                                         " ;
-      result << enumerator_1802.current_mDefaultValue (HERE).stringValue () ;
+      result << enumerator_1756.current_mDefaultValue (HERE).stringValue () ;
       result << ") ;\n"
         "\n" ;
-      index_1802_.increment () ;
-      enumerator_1802.gotoNextObject () ;
+      index_1756_.increment () ;
+      enumerator_1756.gotoNextObject () ;
     }
   }
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"
@@ -18532,35 +18526,35 @@ GALGAS_string filewrapperTemplate_optionGenerationTemplates_optionImplementation
     "//                                                                                                                     *\n"
     "//---------------------------------------------------------------------------------------------------------------------*\n"
     "\n" ;
-  GALGAS_uint index_2991_ (0) ;
+  GALGAS_uint index_2945_ (0) ;
   if (in_STRING_5F_OPTION_5F_MAP.isValid ()) {
-    cEnumerator_commandLineOptionMap enumerator_2991 (in_STRING_5F_OPTION_5F_MAP, kEnumeration_up) ;
-    while (enumerator_2991.hasCurrentObject ()) {
+    cEnumerator_commandLineOptionMap enumerator_2945 (in_STRING_5F_OPTION_5F_MAP, kEnumeration_up) ;
+    while (enumerator_2945.hasCurrentObject ()) {
       result << "C_StringCommandLineOption gOption_" ;
-      result << in_OPTION_5F_COMPONENT_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 37)).stringValue () ;
+      result << in_OPTION_5F_COMPONENT_5F_NAME.reader_identifierRepresentation (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 35)).stringValue () ;
       result << "_" ;
-      result << enumerator_2991.current_lkey (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 37)).stringValue () ;
+      result << enumerator_2945.current_lkey (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 35)).stringValue () ;
       result << " (\"" ;
       result << in_OPTION_5F_COMPONENT_5F_NAME.stringValue () ;
       result << "\",\n"
         "                                         " ;
-      result << enumerator_2991.current_lkey (HERE).mAttribute_string.reader_utf_38_Representation (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 38)).stringValue () ;
+      result << enumerator_2945.current_lkey (HERE).mAttribute_string.reader_utf_38_Representation (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 36)).stringValue () ;
       result << ",\n"
         "                                         " ;
-      result << enumerator_2991.current_mOptionChar (HERE).reader_uint (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 39)).reader_string (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 39)).stringValue () ;
+      result << enumerator_2945.current_mOptionChar (HERE).reader_uint (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 37)).reader_string (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 37)).stringValue () ;
       result << ",\n"
         "                                         " ;
-      result << enumerator_2991.current_mOptionString (HERE).reader_utf_38_Representation (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 40)).stringValue () ;
+      result << enumerator_2945.current_mOptionString (HERE).reader_utf_38_Representation (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 38)).stringValue () ;
       result << ",\n"
         "                                         " ;
-      result << enumerator_2991.current_mComment (HERE).reader_utf_38_Representation (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 41)).stringValue () ;
+      result << enumerator_2945.current_mComment (HERE).reader_utf_38_Representation (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 39)).stringValue () ;
       result << ",\n"
         "                                         " ;
-      result << enumerator_2991.current_mDefaultValue (HERE).reader_utf_38_Representation (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 42)).stringValue () ;
+      result << enumerator_2945.current_mDefaultValue (HERE).reader_utf_38_Representation (SOURCE_FILE ("option-implementation-galgas3.cpp.gTemplate", 40)).stringValue () ;
       result << ") ;\n"
         "\n" ;
-      index_2991_.increment () ;
-      enumerator_2991.gotoNextObject () ;
+      index_2945_.increment () ;
+      enumerator_2945.gotoNextObject () ;
     }
   }
   result << "//---------------------------------------------------------------------------------------------------------------------*\n"

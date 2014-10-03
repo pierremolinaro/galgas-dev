@@ -595,11 +595,6 @@ routine compileProgramComponentGalgas3
     end foreach ;
     if useOneHugeHeader then
       inclusionSet := [@stringset emptySet] ;
-#      for () in inSemanticContext->mOptionComponentMapForSemanticAnalysis do
-#        if not mIsPredefined then
-#          inclusionSet += !"option-" . lkey->string ;
-#        end if ;
-#      end for ;
       for () in inSemanticContext->mGrammarMap do
         inclusionSet += !"grammar-" . lkey->string ;
       end for ;
