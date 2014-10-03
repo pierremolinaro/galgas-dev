@@ -166,119 +166,25 @@ class @optionCommentExpressionForGeneration extends @semanticExpressionForGenera
 
 #---------------------------------------------------------------------------*
 
-class @concatExpressionForGeneration extends @semanticExpressionForGeneration {
-  @semanticExpressionForGeneration mLeftExpression ;
-  @semanticExpressionForGeneration mRightExpression ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @orExpressionForGeneration extends @semanticExpressionForGeneration {
-  @semanticExpressionForGeneration mLeftExpression ;
-  @semanticExpressionForGeneration mRightExpression ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @xorExpressionForGeneration extends @semanticExpressionForGeneration {
-  @semanticExpressionForGeneration mLeftExpression ;
-  @semanticExpressionForGeneration mRightExpression ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @andExpressionForGeneration extends @semanticExpressionForGeneration {
-  @semanticExpressionForGeneration mLeftExpression ;
-  @semanticExpressionForGeneration mRightExpression ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @equalExpressionForGeneration extends @semanticExpressionForGeneration {
-  @semanticExpressionForGeneration mLeftExpression ;
-  @semanticExpressionForGeneration mRightExpression ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @notEqualExpressionForGeneration extends @semanticExpressionForGeneration {
-  @semanticExpressionForGeneration mLeftExpression ;
-  @semanticExpressionForGeneration mRightExpression ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @lowerOrEqualExpressionForGeneration extends @semanticExpressionForGeneration {
-  @semanticExpressionForGeneration mLeftExpression ;
-  @semanticExpressionForGeneration mRightExpression ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @greaterOrEqualExpressionForGeneration extends @semanticExpressionForGeneration {
-  @semanticExpressionForGeneration mLeftExpression ;
-  @semanticExpressionForGeneration mRightExpression ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @strictGreaterExpressionForGeneration extends @semanticExpressionForGeneration {
-  @semanticExpressionForGeneration mLeftExpression ;
-  @semanticExpressionForGeneration mRightExpression ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @strictLowerExpressionForGeneration extends @semanticExpressionForGeneration {
-  @semanticExpressionForGeneration mLeftExpression ;
-  @semanticExpressionForGeneration mRightExpression ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @rightShiftExpressionForGeneration extends @semanticExpressionForGeneration {
-  @semanticExpressionForGeneration mLeftExpression ;
-  @semanticExpressionForGeneration mRightExpression ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @leftShiftExpressionForGeneration extends @semanticExpressionForGeneration {
-  @semanticExpressionForGeneration mLeftExpression ;
-  @semanticExpressionForGeneration mRightExpression ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @addExpressionForGeneration extends @semanticExpressionForGeneration {
-  @semanticExpressionForGeneration mLeftExpression ;
-  @semanticExpressionForGeneration mRightExpression ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @subExpressionForGeneration extends @semanticExpressionForGeneration {
-  @semanticExpressionForGeneration mLeftExpression ;
-  @semanticExpressionForGeneration mRightExpression ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @multiplicationExpressionForGeneration extends @semanticExpressionForGeneration {
-  @semanticExpressionForGeneration mLeftExpression ;
-  @semanticExpressionForGeneration mRightExpression ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @divisionExpressionForGeneration extends @semanticExpressionForGeneration {
-  @semanticExpressionForGeneration mLeftExpression ;
-  @semanticExpressionForGeneration mRightExpression ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @moduloExpressionForGeneration extends @semanticExpressionForGeneration {
+class @concatExpressionForGeneration,
+      @orShortExpressionForGeneration,
+      @orExpressionForGeneration,
+      @xorExpressionForGeneration,
+      @andExpressionForGeneration,
+      @andShortExpressionForGeneration,
+      @equalExpressionForGeneration,
+      @notEqualExpressionForGeneration,
+      @lowerOrEqualExpressionForGeneration,
+      @greaterOrEqualExpressionForGeneration,
+      @strictGreaterExpressionForGeneration,
+      @strictLowerExpressionForGeneration,
+      @rightShiftExpressionForGeneration,
+      @leftShiftExpressionForGeneration,
+      @addExpressionForGeneration,
+      @subExpressionForGeneration,
+      @multiplicationExpressionForGeneration,
+      @divisionExpressionForGeneration,
+      @moduloExpressionForGeneration extends @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mLeftExpression ;
   @semanticExpressionForGeneration mRightExpression ;
 }

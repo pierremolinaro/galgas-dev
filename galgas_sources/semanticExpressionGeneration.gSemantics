@@ -391,6 +391,43 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @orShortExpressionForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppExpression
+:
+  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet] ;
+#--- Left operand
+  [mLeftExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ??@string leftTemporaryOperand
+  ] ;
+#--- Generate Comparison
+  const testVar := "test_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+  ioGeneratedCode .= "GALGAS_bool " . testVar . " = " . leftTemporaryOperand . " ;\n" ;
+  ioGeneratedCode .= "if (kBoolTrue != " . testVar . ".boolEnum ()) {\n" ;
+#--- Right operand
+  [!?ioGeneratedCode incIndentation !2] ;
+  [mRightExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ??@string rightTemporaryOperand
+  ] ;
+  ioGeneratedCode .= testVar . " = " . rightTemporaryOperand . " ;\n" ;
+  [!?ioGeneratedCode decIndentation !2] ;
+  ioGeneratedCode .= "}\n" ;
+  outCppExpression := testVar ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @xorExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
@@ -421,14 +458,61 @@ override method @andExpressionForGeneration generateExpression
 :
   [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet] ;
 #--- Left operand
-  @string leftTemporaryOperand ;
-  [mLeftExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?leftTemporaryOperand] ;
+  [mLeftExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ??@string leftTemporaryOperand
+  ] ;
 #--- Right operand
-  @string rightTemporaryOperand ;
-  [mRightExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand] ;
+  [mRightExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ??@string rightTemporaryOperand
+  ] ;
 #--- Generate Comparison
   outCppExpression := leftTemporaryOperand . ".operator_and ("
                   . rightTemporaryOperand . [mLocation commaSourceFile] . ")" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @andShortExpressionForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppExpression
+:
+  [[mLeftExpression mResultType] addHeaderFileName !?ioInclusionSet] ;
+#--- Left operand
+  [mLeftExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ??@string leftTemporaryOperand
+  ] ;
+#--- Generate Comparison
+  const testVar := "test_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+  ioGeneratedCode .= "GALGAS_bool " . testVar . " = " . leftTemporaryOperand . " ;\n" ;
+  ioGeneratedCode .= "if (kBoolTrue == " . testVar . ".boolEnum ()) {\n" ;
+#--- Right operand
+  [!?ioGeneratedCode incIndentation !2] ;
+  [mRightExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ??@string rightTemporaryOperand
+  ] ;
+  ioGeneratedCode .= testVar . " = " . rightTemporaryOperand . " ;\n" ;
+  [!?ioGeneratedCode decIndentation !2] ;
+  ioGeneratedCode .= "}\n" ;
+  outCppExpression := testVar ;
 end method ;
 
 #---------------------------------------------------------------------------*

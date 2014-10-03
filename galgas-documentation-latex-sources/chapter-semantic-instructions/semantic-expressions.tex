@@ -333,9 +333,11 @@ La priorité des opérateurs est définie dans le \refTableau{prioriteOperateurs
   \begin{tabular}{llll}
   \textbf{Priorité} & \textbf{Opérateur}  & \textbf{Commentaire} & \textbf{Référence}\\
   0 (plus faible) & \galgas{\|} & « ou » logique & \refSubsectionPage{operateursLogiques}\\
+    & \galgas{\|\|} & « ou », évaluation en court-circuit & \refSubsectionPage{operateursCourtCircuit}\\
     & \galgas{\^} & « ou exclusif » logique & \refSubsectionPage{operateursLogiques}\\
   1 & \galgas{\&} & « et » logique & \refSubsectionPage{operateursLogiques}\\
-  2 & \galgas{==}, \galgas{\!=} & Comparaison & \refSubsectionPage{operateursComparaison}\\
+    & \galgas{\&\&} & « et », évaluation en court-circuit & \refSubsectionPage{operateursCourtCircuit}\\
+  2 & \galgas{==}, \galgas{\!=} & Test d'identité & \refSubsectionPage{operateursComparaison}\\
     & \galgas{<}, \galgas{<=} & Comparaison & \refSubsectionPage{operateursComparaison}\\
     & \galgas{>}, \galgas{>=} & Comparaison & \refSubsectionPage{operateursComparaison}\\
   3 & \galgas{<<}, \galgas{>>} & Décalage & \refSubsectionPage{operateursDecalage}\\
@@ -357,6 +359,10 @@ La priorité des opérateurs est définie dans le \refTableau{prioriteOperateurs
 \subsectionLabel{Logique}{operateursLogiques}
 
 \galgas{\|}, \galgas{\^}, \galgas{\&}, \galgas{not}
+
+\subsectionLabel{Logique, évaluation en court-circuit}{operateursCourtCircuit}
+
+\galgas{\|\|} et \galgas{\&\&}
 
 \subsectionLabel{Complémentation bit-à-bit}{complementationBitABit}
 
