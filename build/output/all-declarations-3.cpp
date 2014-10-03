@@ -19195,21 +19195,13 @@ void routine_generateSyntaxComponentGalgas_33_ (const GALGAS_string constinArgum
     var_cppInclusionSet.addAssign_operation (GALGAS_string ("grammar-").add_operation (enumerator_23253.current_lkey (HERE).mAttribute_string, inCompiler COMMA_SOURCE_FILE ("syntaxCompilation.galgas", 510))  COMMA_SOURCE_FILE ("syntaxCompilation.galgas", 510)) ;
     enumerator_23253.gotoNextObject () ;
   }
-  cEnumerator_optionComponentMapForSemanticAnalysis enumerator_23380 (constinArgument_inSemanticContext.mAttribute_mOptionComponentMapForSemanticAnalysis, kEnumeration_up) ;
-  while (enumerator_23380.hasCurrentObject ()) {
-    const enumGalgasBool test_3 = enumerator_23380.current_mIsPredefined (HERE).operator_not (SOURCE_FILE ("syntaxCompilation.galgas", 513)).boolEnum () ;
-    if (kBoolTrue == test_3) {
-      var_cppInclusionSet.addAssign_operation (GALGAS_string ("option-").add_operation (enumerator_23380.current_lkey (HERE).mAttribute_string, inCompiler COMMA_SOURCE_FILE ("syntaxCompilation.galgas", 514))  COMMA_SOURCE_FILE ("syntaxCompilation.galgas", 514)) ;
-    }
-    enumerator_23380.gotoNextObject () ;
-  }
-  GALGAS_string var_headerOfCppFile = GALGAS_string (filewrapperTemplate_syntaxFileGenerationTemplate_syntaxFileImplementationGalgas_33_ (inCompiler, var_cppInclusionSet COMMA_SOURCE_FILE ("syntaxCompilation.galgas", 517))) ;
-  ioArgument_ioToolProductFileList.addAssign_operation (GALGAS_string ("syntax-").add_operation (var_componentName, inCompiler COMMA_SOURCE_FILE ("syntaxCompilation.galgas", 520)).add_operation (GALGAS_string (".cpp"), inCompiler COMMA_SOURCE_FILE ("syntaxCompilation.galgas", 520))  COMMA_SOURCE_FILE ("syntaxCompilation.galgas", 520)) ;
-  ioArgument_ioAllProductFileSet.addAssign_operation (GALGAS_string ("syntax-").add_operation (var_componentName, inCompiler COMMA_SOURCE_FILE ("syntaxCompilation.galgas", 521)).add_operation (GALGAS_string (".cpp"), inCompiler COMMA_SOURCE_FILE ("syntaxCompilation.galgas", 521))  COMMA_SOURCE_FILE ("syntaxCompilation.galgas", 521)) ;
+  GALGAS_string var_headerOfCppFile = GALGAS_string (filewrapperTemplate_syntaxFileGenerationTemplate_syntaxFileImplementationGalgas_33_ (inCompiler, var_cppInclusionSet COMMA_SOURCE_FILE ("syntaxCompilation.galgas", 512))) ;
+  ioArgument_ioToolProductFileList.addAssign_operation (GALGAS_string ("syntax-").add_operation (var_componentName, inCompiler COMMA_SOURCE_FILE ("syntaxCompilation.galgas", 515)).add_operation (GALGAS_string (".cpp"), inCompiler COMMA_SOURCE_FILE ("syntaxCompilation.galgas", 515))  COMMA_SOURCE_FILE ("syntaxCompilation.galgas", 515)) ;
+  ioArgument_ioAllProductFileSet.addAssign_operation (GALGAS_string ("syntax-").add_operation (var_componentName, inCompiler COMMA_SOURCE_FILE ("syntaxCompilation.galgas", 516)).add_operation (GALGAS_string (".cpp"), inCompiler COMMA_SOURCE_FILE ("syntaxCompilation.galgas", 516))  COMMA_SOURCE_FILE ("syntaxCompilation.galgas", 516)) ;
   {
-  GALGAS_string::class_method_generateFileWithPattern (constinArgument_inOutputDirectory, GALGAS_string ("syntax-").add_operation (var_componentName, inCompiler COMMA_SOURCE_FILE ("syntaxCompilation.galgas", 524)).add_operation (GALGAS_string (".cpp"), inCompiler COMMA_SOURCE_FILE ("syntaxCompilation.galgas", 524)), GALGAS_string ("//"), GALGAS_string ("\n"
-    "\n"), var_headerOfCppFile.add_operation (var_implementationString, inCompiler COMMA_SOURCE_FILE ("syntaxCompilation.galgas", 527)), GALGAS_string ("\n"
-    "\n"), GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("syntaxCompilation.galgas", 522)) ;
+  GALGAS_string::class_method_generateFileWithPattern (constinArgument_inOutputDirectory, GALGAS_string ("syntax-").add_operation (var_componentName, inCompiler COMMA_SOURCE_FILE ("syntaxCompilation.galgas", 519)).add_operation (GALGAS_string (".cpp"), inCompiler COMMA_SOURCE_FILE ("syntaxCompilation.galgas", 519)), GALGAS_string ("//"), GALGAS_string ("\n"
+    "\n"), var_headerOfCppFile.add_operation (var_implementationString, inCompiler COMMA_SOURCE_FILE ("syntaxCompilation.galgas", 522)), GALGAS_string ("\n"
+    "\n"), GALGAS_string ("\n"), inCompiler COMMA_SOURCE_FILE ("syntaxCompilation.galgas", 517)) ;
   }
 }
 
