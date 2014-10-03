@@ -64,7 +64,6 @@ SOURCES += grammar-galgas3Grammar.cpp
 SOURCES += lexique-galgas_scanner.cpp
 SOURCES += lexique-galgasTemplateScanner.cpp
 SOURCES += lexique-galgas3Scanner.cpp
-SOURCES += option-galgas_cli_options.cpp
 SOURCES += syntax-expressionSyntax.cpp
 SOURCES += syntax-galgas3DeclarationsSyntax.cpp
 SOURCES += syntax-galgas3ExpressionSyntax.cpp

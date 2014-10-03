@@ -27,7 +27,7 @@ import "projectGlobalCheckings.gSemantics" ;
 routine compileSemanticDeclarationsGalgas3
   ??@location inEndOfProjectSourceFile
   ??@semanticDeclarationListAST inSemanticDeclarationList
-  ??@galgas3OptionComponentListAST inOptionComponentList
+#  ??@galgas3OptionComponentListAST inOptionComponentList
   ??@galgas3LexiqueComponentListAST inLexiqueComponentList
   ??@galgas3GrammarComponentListAST inGrammarComponentList
   !@semanticContext outSemanticContext
@@ -37,6 +37,46 @@ routine compileSemanticDeclarationsGalgas3
 #------ Add predefined types to semantics declarations
   @semanticDeclarationListAST semanticDeclarationListWithPredefinedTypes := inSemanticDeclarationList ;
   appendPredefinedTypesASTs !?semanticDeclarationListWithPredefinedTypes ;
+#---- Add predefined option component
+  @commandLineOptionListAST options := {} ;
+  foreach [@application boolOptionNameList] do
+    options +=
+      !["bool" nowhere]
+      ![@lstring new !mValue1 !here]
+      ![@lchar new ![@application boolOptionInvocationLetter !mValue0 !mValue1] ![@location nowhere]]
+      ![[@application boolOptionInvocationString !mValue0 !mValue1] nowhere]
+      ![[@application boolOptionCommentString !mValue0 !mValue1] nowhere]
+      !["" nowhere]
+      ![@optionDefaultValueEnumAST noDefaultValue]
+    ;
+  end foreach ;
+  foreach [@application uintOptionNameList] do
+    options +=
+      !["uint" nowhere]
+      ![@lstring new !mValue1 !here]
+      ![@lchar new ![@application boolOptionInvocationLetter !mValue0 !mValue1] ![@location nowhere]]
+      ![[@application boolOptionInvocationString !mValue0 !mValue1] nowhere]
+      ![[@application boolOptionCommentString !mValue0 !mValue1] nowhere]
+      !["" nowhere]
+      ![@optionDefaultValueEnumAST noDefaultValue]
+    ;
+  end foreach ;
+  foreach [@application stringOptionNameList] do
+    options +=
+      !["string" nowhere]
+      ![@lstring new !mValue1 !here]
+      ![@lchar new ![@application boolOptionInvocationLetter !mValue0 !mValue1] ![@location nowhere]]
+      ![[@application boolOptionInvocationString !mValue0 !mValue1] nowhere]
+      ![[@application boolOptionCommentString !mValue0 !mValue1] nowhere]
+      !["" nowhere]
+      ![@optionDefaultValueEnumAST noDefaultValue]
+    ;
+  end foreach ;
+  semanticDeclarationListWithPredefinedTypes += ![@optionComponentDeclarationAST new
+    !true # Is predefined
+    !["galgas_builtin_options" nowhere]
+    !options
+  ] ;
 #------ Build semantic context
   buildGalgas3SemanticContext
     !semanticDeclarationListWithPredefinedTypes
@@ -50,16 +90,16 @@ routine compileSemanticDeclarationsGalgas3
   end if ;
 #------ Build option component map for analysis
   var implementationFileIncludeList := [@stringlist emptyList] ;
-  buildGalgas3OptionComponentMapForSemanticAnalysis
-    !inOptionComponentList
-    ??@optionComponentMapForSemanticAnalysis optionComponentMapForSemanticAnalysis
-  ;
-  outSemanticContext->mOptionComponentMapForSemanticAnalysis := optionComponentMapForSemanticAnalysis ;
-  for () in optionComponentMapForSemanticAnalysis do
-    if not mIsPredefined then
-      implementationFileIncludeList += !"option-" + lkey->string ;
-    end if ;
-  end for ;
+#  buildGalgas3OptionComponentMapForSemanticAnalysis
+#    !inOptionComponentList
+#    ??@optionComponentMapForSemanticAnalysis optionComponentMapForSemanticAnalysis
+#  ;
+#  outSemanticContext->mOptionComponentMapForSemanticAnalysis := optionComponentMapForSemanticAnalysis ;
+#  for () in optionComponentMapForSemanticAnalysis do
+#    if not mIsPredefined then
+#      implementationFileIncludeList += !"option-" + lkey->string ;
+#    end if ;
+#  end for ;
 #--- Build lexique component map for semantic analysis
   for lexiqueAST in inLexiqueComponentList do
     buildTerminalMap !lexiqueAST ??@terminalMap terminalMap ;
@@ -214,112 +254,112 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine buildGalgas3OptionComponentMapForSemanticAnalysis
-  ??@galgas3OptionComponentListAST inOptionComponentList
-  !@optionComponentMapForSemanticAnalysis outOptionComponentMapForSemanticAnalysis
-:
-  outOptionComponentMapForSemanticAnalysis := [@optionComponentMapForSemanticAnalysis emptyMap] ;
-  foreach inOptionComponentList do
-    var boolOptionMap := [@commandLineOptionMap emptyMap] ;
-    var uintOptionMap := [@commandLineOptionMap emptyMap] ;
-    var stringOptionMap := [@commandLineOptionMap emptyMap] ;
-    @stringset optionNameSet [emptySet] ;
-    foreach mOptions do
-      if [optionNameSet hasKey ![mOptionInternalName string]] then
-        error mOptionInternalName: "the '" + [mOptionInternalName string] + "' command line option has been already declared" ;
-      elsif [mOptionTypeName string] == "bool" then
-        [!?boolOptionMap insertKey
-          !mOptionInternalName
-          ![mOptionInvocationLetter char]
-          ![mOptionInvocationString string]
-          ![mOptionComment string]
-          !"false"
-        ] ;
-        if mOptionDefaultValueKind != [@optionDefaultValueEnumAST noDefaultValue] then
-          error mOptionDefaultValue:"an @bool option cannot have a default value (default value is allways false)" ;      
-        end if ;
-      elsif [mOptionTypeName string] == "uint" then
-        [!?uintOptionMap insertKey
-          !mOptionInternalName
-          ![mOptionInvocationLetter char]
-          ![mOptionInvocationString string]
-          ![mOptionComment string]
-          !if [mOptionDefaultValue string] == "" then "0" else [mOptionDefaultValue string] end
-        ] ;
-        if mOptionDefaultValueKind == [@optionDefaultValueEnumAST stringDefaultValue] then
-          error mOptionDefaultValue:"an @uint option default value cannot be an @string value" ;      
-        end if ;
-      elsif [mOptionTypeName string] == "string" then
-        [!?stringOptionMap insertKey
-          !mOptionInternalName
-          ![mOptionInvocationLetter char]
-          ![mOptionInvocationString string]
-          ![mOptionComment string]
-          ![mOptionDefaultValue string]
-        ] ;
-        if mOptionDefaultValueKind == [@optionDefaultValueEnumAST unsignedDefaultValue] then
-          error mOptionDefaultValue:"an @string option default value cannot be an @uint value" ;      
-        end if ;
-      else
-        error mOptionTypeName: "only the @bool, @uint or @string types are allowed here" ;
-      end if ;
-      optionNameSet += ![mOptionInternalName string] ;
-    end foreach ;
-    [!?outOptionComponentMapForSemanticAnalysis insertKey
-      !mOptionComponentName
-      !false # Is not predefined
-      !boolOptionMap
-      !uintOptionMap
-      !stringOptionMap
-    ] ;
-  end foreach ;
-#--- Add predefined option component
-  if not [outOptionComponentMapForSemanticAnalysis hasKey !"galgas_builtin_options"] then
-    @2stringlist optionNameList := [@application boolOptionNameList] ;
-    @commandLineOptionMap boolOptionMap [emptyMap] ;
-    foreach optionNameList do
-      [!?boolOptionMap insertKey
-        ![@lstring new !mValue1 !here]
-        ![@application boolOptionInvocationLetter !mValue0 !mValue1]
-        ![@application boolOptionInvocationString !mValue0 !mValue1]
-        ![@application boolOptionCommentString !mValue0 !mValue1]
-        !"" # Not used
-      ] ;
-    end foreach ;
-  #--- 
-    optionNameList := [@application uintOptionNameList] ;
-    @commandLineOptionMap uintOptionMap [emptyMap] ;
-    foreach optionNameList do
-      [!?uintOptionMap insertKey
-        ![@lstring new !mValue1 !here]
-        ![@application uintOptionInvocationLetter !mValue0 !mValue1]
-        ![@application uintOptionInvocationString !mValue0 !mValue1]
-        ![@application uintOptionCommentString !mValue0 !mValue1]
-        !"" # Not used
-      ] ;
-    end foreach ;
-  #--- 
-    optionNameList := [@application stringOptionNameList] ;
-    @commandLineOptionMap stringOptionMap [emptyMap] ;
-    foreach optionNameList do
-      [!?stringOptionMap insertKey
-        ![@lstring new !mValue1 !here]
-        ![@application stringOptionInvocationLetter !mValue0 !mValue1]
-        ![@application stringOptionInvocationString !mValue0 !mValue1]
-        ![@application stringOptionCommentString !mValue0 !mValue1]
-        !"" # Not used
-      ] ;
-    end foreach ;
-  #---
-    [!?outOptionComponentMapForSemanticAnalysis insertKey
-      ![@lstring new !"galgas_builtin_options" !here]
-      !true # Is predefined
-      !boolOptionMap
-      !uintOptionMap
-      !stringOptionMap
-    ] ;
-  end if ;
-end routine ;
+#routine buildGalgas3OptionComponentMapForSemanticAnalysis
+#  ??@galgas3OptionComponentListAST inOptionComponentList
+#  !@optionComponentMapForSemanticAnalysis outOptionComponentMapForSemanticAnalysis
+#:
+#  outOptionComponentMapForSemanticAnalysis := [@optionComponentMapForSemanticAnalysis emptyMap] ;
+#  foreach inOptionComponentList do
+#    var boolOptionMap := [@commandLineOptionMap emptyMap] ;
+#    var uintOptionMap := [@commandLineOptionMap emptyMap] ;
+#    var stringOptionMap := [@commandLineOptionMap emptyMap] ;
+#    @stringset optionNameSet [emptySet] ;
+#    foreach mOptions do
+#      if [optionNameSet hasKey ![mOptionInternalName string]] then
+#        error mOptionInternalName: "the '" + [mOptionInternalName string] + "' command line option has been already declared" ;
+#      elsif [mOptionTypeName string] == "bool" then
+#        [!?boolOptionMap insertKey
+#          !mOptionInternalName
+#          ![mOptionInvocationLetter char]
+#          ![mOptionInvocationString string]
+#          ![mOptionComment string]
+#          !"false"
+#        ] ;
+#        if mOptionDefaultValueKind != [@optionDefaultValueEnumAST noDefaultValue] then
+#          error mOptionDefaultValue:"an @bool option cannot have a default value (default value is allways false)" ;      
+#        end if ;
+#      elsif [mOptionTypeName string] == "uint" then
+#        [!?uintOptionMap insertKey
+#          !mOptionInternalName
+#          ![mOptionInvocationLetter char]
+#          ![mOptionInvocationString string]
+#          ![mOptionComment string]
+#          !if [mOptionDefaultValue string] == "" then "0" else [mOptionDefaultValue string] end
+#        ] ;
+#        if mOptionDefaultValueKind == [@optionDefaultValueEnumAST stringDefaultValue] then
+#          error mOptionDefaultValue:"an @uint option default value cannot be an @string value" ;      
+#        end if ;
+#      elsif [mOptionTypeName string] == "string" then
+#        [!?stringOptionMap insertKey
+#          !mOptionInternalName
+#          ![mOptionInvocationLetter char]
+#          ![mOptionInvocationString string]
+#          ![mOptionComment string]
+#          ![mOptionDefaultValue string]
+#        ] ;
+#        if mOptionDefaultValueKind == [@optionDefaultValueEnumAST unsignedDefaultValue] then
+#          error mOptionDefaultValue:"an @string option default value cannot be an @uint value" ;      
+#        end if ;
+#      else
+#        error mOptionTypeName: "only the @bool, @uint or @string types are allowed here" ;
+#      end if ;
+#      optionNameSet += ![mOptionInternalName string] ;
+#    end foreach ;
+#    [!?outOptionComponentMapForSemanticAnalysis insertKey
+#      !mOptionComponentName
+#      !false # Is not predefined
+#      !boolOptionMap
+#      !uintOptionMap
+#      !stringOptionMap
+#    ] ;
+#  end foreach ;
+##--- Add predefined option component
+#  if not [outOptionComponentMapForSemanticAnalysis hasKey !"galgas_builtin_options"] then
+#    @2stringlist optionNameList := [@application boolOptionNameList] ;
+#    @commandLineOptionMap boolOptionMap [emptyMap] ;
+#    foreach optionNameList do
+#      [!?boolOptionMap insertKey
+#        ![@lstring new !mValue1 !here]
+#        ![@application boolOptionInvocationLetter !mValue0 !mValue1]
+#        ![@application boolOptionInvocationString !mValue0 !mValue1]
+#        ![@application boolOptionCommentString !mValue0 !mValue1]
+#        !"" # Not used
+#      ] ;
+#    end foreach ;
+#  #--- 
+#    optionNameList := [@application uintOptionNameList] ;
+#    @commandLineOptionMap uintOptionMap [emptyMap] ;
+#    foreach optionNameList do
+#      [!?uintOptionMap insertKey
+#        ![@lstring new !mValue1 !here]
+#        ![@application uintOptionInvocationLetter !mValue0 !mValue1]
+#        ![@application uintOptionInvocationString !mValue0 !mValue1]
+#        ![@application uintOptionCommentString !mValue0 !mValue1]
+#        !"" # Not used
+#      ] ;
+#    end foreach ;
+#  #--- 
+#    optionNameList := [@application stringOptionNameList] ;
+#    @commandLineOptionMap stringOptionMap [emptyMap] ;
+#    foreach optionNameList do
+#      [!?stringOptionMap insertKey
+#        ![@lstring new !mValue1 !here]
+#        ![@application stringOptionInvocationLetter !mValue0 !mValue1]
+#        ![@application stringOptionInvocationString !mValue0 !mValue1]
+#        ![@application stringOptionCommentString !mValue0 !mValue1]
+#        !"" # Not used
+#      ] ;
+#    end foreach ;
+#  #---
+#    [!?outOptionComponentMapForSemanticAnalysis insertKey
+#      ![@lstring new !"galgas_builtin_options" !here]
+#      !true # Is predefined
+#      !boolOptionMap
+#      !uintOptionMap
+#      !stringOptionMap
+#    ] ;
+#  end if ;
+#end routine ;
 
 #---------------------------------------------------------------------------*
 #! Generation
@@ -338,6 +378,13 @@ routine generateSemanticDeclarationsGalgas3
   ?!@stringlist ioToolProductFileList
   ?!@stringset ioAllProductFileSet
 :
+#--- Generate specific file
+  for () in inSemanticDeclarationSortedListForGeneration do
+    [mDeclaration appendSpecificFiles
+      !inProductDirectory
+      !?ioAllProductFileSet
+    ] ;
+  end for ;
   if [@uint errorCount] == 0 then
     if [option galgas_cli_options.generateOneHeader value] then
        generateOneBigHeader

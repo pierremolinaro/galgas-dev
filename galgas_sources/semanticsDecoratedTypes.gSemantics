@@ -1488,6 +1488,16 @@ class @filewrapperDeclarationForGeneration extends @semanticDeclarationWithHeade
 }
 
 #---------------------------------------------------------------------------*
+
+class @optionComponentForGeneration extends @semanticDeclarationWithHeaderForGeneration {
+  @bool mIsPredefined ;
+  @string mOptionComponentName ;
+  @commandLineOptionMap mBoolOptionMap ;
+  @commandLineOptionMap mUIntOptionMap ;
+  @commandLineOptionMap mStringOptionMap ;
+}
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 #    M A T C H    I N S T R U C T I O N                                     *
 #                                                                           *

@@ -599,7 +599,7 @@ routine compileProject
     compileSemanticDeclarationsGalgas3
       !projectComponentAST->mEndOfSourceFile
       !declarationAST->mSemanticDeclarationList
-      !declarationAST->mOptionComponentList
+#      !declarationAST->mOptionComponentList
       !declarationAST->mLexiqueComponentList
       !declarationAST->mGrammarComponentList
       ?semanticContext
@@ -794,21 +794,21 @@ routine projectGeneration
     ;
   end if ;
 #---------------------------------- Generate option components
-  if [@uint errorCount] == 0 then
-    foreach inSemanticContext->mOptionComponentMapForSemanticAnalysis do
-      if not mIsPredefined then
-        generateOptionComponentGalgas3
-          !inProductDirectory
-          !lkey->string
-          !mBoolOptionMap
-          !mUIntOptionMap
-          !mStringOptionMap
-          !?toolCppFileList
-          !?allProductFileSet
-        ;
-      end if ;
-    end foreach ;
-  end if ;
+#  if [@uint errorCount] == 0 then
+#    foreach inSemanticContext->mOptionComponentMapForSemanticAnalysis do
+#      if not mIsPredefined then
+#        generateOptionComponentGalgas3
+#          !inProductDirectory
+#          !lkey->string
+#          !mBoolOptionMap
+#          !mUIntOptionMap
+#          !mStringOptionMap
+#          !?toolCppFileList
+#          !?allProductFileSet
+#        ;
+#      end if ;
+#    end foreach ;
+#  end if ;
 #---------------------------------- Generate syntax components
   if 0 == [@uint errorCount] then
     for s in inSyntaxListForGeneration do

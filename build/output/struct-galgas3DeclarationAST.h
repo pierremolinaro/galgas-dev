@@ -10,7 +10,6 @@
 #include "list-galgas3GUIComponentListAST.h"
 #include "list-galgas3GrammarComponentListAST.h"
 #include "list-galgas3LexiqueComponentListAST.h"
-#include "list-galgas3OptionComponentListAST.h"
 #include "list-galgas3SyntaxComponentListAST.h"
 #include "list-programRuleList.h"
 #include "list-prologueEpilogueList.h"
@@ -28,7 +27,6 @@ class GALGAS_galgas_33_DeclarationAST : public AC_GALGAS_root {
   public : GALGAS_galgas_33_SyntaxComponentListAST mAttribute_mSyntaxComponentList ;
   public : GALGAS_galgas_33_GrammarComponentListAST mAttribute_mGrammarComponentList ;
   public : GALGAS_galgas_33_GUIComponentListAST mAttribute_mGUIComponentList ;
-  public : GALGAS_galgas_33_OptionComponentListAST mAttribute_mOptionComponentList ;
   public : GALGAS_prologueEpilogueList mAttribute_mPrologueDeclarationList ;
   public : GALGAS_programRuleList mAttribute_mSourceRuleList ;
   public : GALGAS_prologueEpilogueList mAttribute_mEpilogueDeclarationList ;
@@ -53,7 +51,6 @@ class GALGAS_galgas_33_DeclarationAST : public AC_GALGAS_root {
                                             const GALGAS_galgas_33_SyntaxComponentListAST & in_mSyntaxComponentList,
                                             const GALGAS_galgas_33_GrammarComponentListAST & in_mGrammarComponentList,
                                             const GALGAS_galgas_33_GUIComponentListAST & in_mGUIComponentList,
-                                            const GALGAS_galgas_33_OptionComponentListAST & in_mOptionComponentList,
                                             const GALGAS_prologueEpilogueList & in_mPrologueDeclarationList,
                                             const GALGAS_programRuleList & in_mSourceRuleList,
                                             const GALGAS_prologueEpilogueList & in_mEpilogueDeclarationList) ;
@@ -74,10 +71,9 @@ class GALGAS_galgas_33_DeclarationAST : public AC_GALGAS_root {
                                                                    const class GALGAS_galgas_33_SyntaxComponentListAST & inOperand2,
                                                                    const class GALGAS_galgas_33_GrammarComponentListAST & inOperand3,
                                                                    const class GALGAS_galgas_33_GUIComponentListAST & inOperand4,
-                                                                   const class GALGAS_galgas_33_OptionComponentListAST & inOperand5,
-                                                                   const class GALGAS_prologueEpilogueList & inOperand6,
-                                                                   const class GALGAS_programRuleList & inOperand7,
-                                                                   const class GALGAS_prologueEpilogueList & inOperand8
+                                                                   const class GALGAS_prologueEpilogueList & inOperand5,
+                                                                   const class GALGAS_programRuleList & inOperand6,
+                                                                   const class GALGAS_prologueEpilogueList & inOperand7
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of reader 'description'
@@ -99,8 +95,6 @@ class GALGAS_galgas_33_DeclarationAST : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_galgas_33_GrammarComponentListAST reader_mGrammarComponentList (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_galgas_33_LexiqueComponentListAST reader_mLexiqueComponentList (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_galgas_33_OptionComponentListAST reader_mOptionComponentList (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_prologueEpilogueList reader_mPrologueDeclarationList (LOCATION_ARGS) const ;
 

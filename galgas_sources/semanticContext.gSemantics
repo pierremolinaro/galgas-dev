@@ -440,6 +440,14 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
+override reader @optionComponentDeclarationAST keyRepresentation
+  ->@string outString
+:
+  outString := "option " . mOptionComponentName ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
 override reader @graphDeclarationAST keyRepresentation
   ->@string outString
 :
@@ -2024,6 +2032,69 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @optionComponentDeclarationAST enterInSemanticContext
+  ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
+  ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ??@categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
+  ?!@semanticContext ioSemanticContext
+:
+  @commandLineOptionMap boolOptionMap :={} ;
+  @commandLineOptionMap uintOptionMap :={} ;
+  @commandLineOptionMap stringOptionMap :={} ;
+  @stringset optionNameSet [emptySet] ;
+  foreach mOptions do
+    if [optionNameSet hasKey ![mOptionInternalName string]] then
+      error mOptionInternalName: "the '" + [mOptionInternalName string] + "' command line option has been already declared" ;
+    elsif [mOptionTypeName string] == "bool" then
+      [!?boolOptionMap insertKey
+        !mOptionInternalName
+        ![mOptionInvocationLetter char]
+        ![mOptionInvocationString string]
+        ![mOptionComment string]
+        !"false"
+      ] ;
+      if mOptionDefaultValueKind != [@optionDefaultValueEnumAST noDefaultValue] then
+        error mOptionDefaultValue:"an @bool option cannot have a default value (default value is allways false)" ;      
+      end if ;
+    elsif [mOptionTypeName string] == "uint" then
+      [!?uintOptionMap insertKey
+        !mOptionInternalName
+        ![mOptionInvocationLetter char]
+        ![mOptionInvocationString string]
+        ![mOptionComment string]
+        !if [mOptionDefaultValue string] == "" then "0" else [mOptionDefaultValue string] end
+      ] ;
+      if mOptionDefaultValueKind == [@optionDefaultValueEnumAST stringDefaultValue] then
+        error mOptionDefaultValue:"an @uint option default value cannot be an @string value" ;      
+      end if ;
+    elsif [mOptionTypeName string] == "string" then
+      [!?stringOptionMap insertKey
+        !mOptionInternalName
+        ![mOptionInvocationLetter char]
+        ![mOptionInvocationString string]
+        ![mOptionComment string]
+        ![mOptionDefaultValue string]
+      ] ;
+      if mOptionDefaultValueKind == [@optionDefaultValueEnumAST unsignedDefaultValue] then
+        error mOptionDefaultValue:"an @string option default value cannot be an @uint value" ;      
+      end if ;
+    else
+      error mOptionTypeName: "only the @bool, @uint or @string types are allowed here" ;
+    end if ;
+    optionNameSet += ![mOptionInternalName string] ;
+  end foreach ;
+#--- Insert option
+  [!?ioSemanticContext->mOptionComponentMapForSemanticAnalysis insertKey
+    !mOptionComponentName
+    !mIsPredefined
+    !boolOptionMap
+    !uintOptionMap
+    !stringOptionMap
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @listDeclarationAST enterInSemanticContext
   ??@categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
   ??@categoryReaderMapForBuildingContext inCategoryReaderMapForBuildingContext
@@ -3256,6 +3327,18 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @filewrapperDeclarationAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
+  ?!@semanticDeclarationListAST ioCategoryOverrideDefinitionList
+:
+  ioCategoryOverrideDefinitionList += !selfcopy ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @optionComponentDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext

@@ -1829,17 +1829,17 @@ class @collectionValueAST extends @semanticExpressionAST {
 
 #---------------------------------------------------------------------------*
 
-#class @optionComponentDeclarationAST extends @semanticDeclarationAST {
-#  @lstring mOptionComponentName  ;
-#  @commandLineOptionListAST mOptions  ;
-#}
-
-#---------------------------------------------------------------------------*
-
-list @galgas3OptionComponentListAST {
+class @optionComponentDeclarationAST extends @semanticDeclarationAST {
   @lstring mOptionComponentName  ;
   @commandLineOptionListAST mOptions  ;
 }
+
+#---------------------------------------------------------------------------*
+
+#list @galgas3OptionComponentListAST {
+#  @lstring mOptionComponentName  ;
+#  @commandLineOptionListAST mOptions  ;
+#}
 
 #---------------------------------------------------------------------------*
 
@@ -1913,7 +1913,7 @@ struct @galgas3DeclarationAST {
   @galgas3SyntaxComponentListAST mSyntaxComponentList ;
   @galgas3GrammarComponentListAST mGrammarComponentList ;
   @galgas3GUIComponentListAST mGUIComponentList ;
-  @galgas3OptionComponentListAST mOptionComponentList ;
+#  @galgas3OptionComponentListAST mOptionComponentList ;
   @prologueEpilogueList mPrologueDeclarationList ;
   @programRuleList mSourceRuleList ;
   @prologueEpilogueList mEpilogueDeclarationList ;
