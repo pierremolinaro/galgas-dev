@@ -1539,6 +1539,40 @@ override method @filewrapperDeclarationAST semanticAnalysis
 end method ;
 
 #---------------------------------------------------------------------------*
+#                                                                           *
+#     O P T I O N    C O M P O N E N T    A N A L Y S I S                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+override method @optionComponentDeclarationAST semanticAnalysis
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+:
+  [inSemanticContext->mOptionComponentMapForSemanticAnalysis searchKey
+    !mOptionComponentName
+    ??@bool isPredefined
+    ??@commandLineOptionMap boolOptionMap
+    ??@commandLineOptionMap uintOptionMap
+    ??@commandLineOptionMap stringOptionMap
+  ] ; 
+#---- Enter filewrapper in generated list
+  ioSemanticDeclarationListForGeneration +=
+    !"option " . mOptionComponentName
+    ![@optionComponentForGeneration new
+      !true # Generate Cpp header file
+      !"option-" . mOptionComponentName
+      !isPredefined
+      !mOptionComponentName->string
+      !boolOptionMap
+      !uintOptionMap
+      !stringOptionMap
+    ]
+  !""
+;
+end method ;
+
+#---------------------------------------------------------------------------*
 
 override method @abstractCategoryMethodAST semanticAnalysis
   ??@semanticContext inSemanticContext

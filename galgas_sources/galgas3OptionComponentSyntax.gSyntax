@@ -35,10 +35,11 @@ rule <declaration>
     <option> !?options ;
   end repeat ;
   $}$ ;
-  ioDeclarations->mOptionComponentList +=
+  ioDeclarations->mSemanticDeclarationList += ![@optionComponentDeclarationAST new
+    !false
     !optionComponentName
     !options
-  ;
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*

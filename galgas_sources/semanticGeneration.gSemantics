@@ -1078,6 +1078,14 @@ method @semanticDeclarationForGeneration appendSpecificImplementation
 end method ;
 
 #---------------------------------------------------------------------------*
+
+method @semanticDeclarationForGeneration appendSpecificFiles
+  ??@string unused inProductDirectory
+  ?!@stringset unused ioAllProductFileSet
+:
+end method ;
+
+#---------------------------------------------------------------------------*
 #! Proc
 #---------------------------------------------------------------------------*
 
@@ -2471,6 +2479,95 @@ override method @overrideCategoryReaderForGeneration appendSpecificImplementatio
     !mResultType
     !categoryReaderCode
   ] ; 
+end method ;
+
+#---------------------------------------------------------------------------*
+
+#! Option component
+
+#---------------------------------------------------------------------------*
+
+override reader @optionComponentForGeneration headerKind ->@headerKind outResult :
+  outResult := if mIsPredefined then [@headerKind noHeader] else [@headerKind oneHeader] end ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override method @optionComponentForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader
+:
+  if mIsPredefined then
+    outHeader := "" ;
+  else
+    outHeader := [filewrapper optionGenerationTemplates.optionHeaderZone3
+      !mOptionComponentName
+      !mBoolOptionMap
+      !mUIntOptionMap
+      !mStringOptionMap
+    ] ;
+  end if ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @optionComponentForGeneration appendSpecificImplementation
+  ?!@stringset ioInclusionSet
+  !@string outImplementation
+:
+  if mIsPredefined then
+    outImplementation := "" ;
+  else
+    ioInclusionSet += !"option-" + mOptionComponentName ;
+    outImplementation := [filewrapper optionGenerationTemplates.optionImplementationGalgas3
+      !mOptionComponentName
+      !mBoolOptionMap
+      !mUIntOptionMap
+      !mStringOptionMap
+    ] ;
+  end if ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @optionComponentForGeneration appendSpecificFiles
+  ??@string inProductDirectory
+  ?!@stringset ioAllProductFileSet
+:
+#--- Generate Cocoa header
+  if [@uint errorCount] == 0 && not mIsPredefined then
+    ioAllProductFileSet += !"option-" . mOptionComponentName . "-cocoa.h" ;
+    [@string generateFileWithPattern
+      !inProductDirectory
+      !"option-" . mOptionComponentName . "-cocoa.h"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      ![filewrapper optionGenerationTemplates.optionHeaderCocoaZone2
+        !mOptionComponentName
+      ]
+      !"\n\n" # Defaut user zone2
+      ![filewrapper optionGenerationTemplates.optionHeaderCocoaZone3
+        !mOptionComponentName
+      ]
+    ] ;
+  #--- Generate Cocoa Implementation
+    ioAllProductFileSet += !"option-" . mOptionComponentName . "-cocoa.m" ;
+    [@string generateFileWithPattern
+      !inProductDirectory
+      !"option-" . mOptionComponentName . "-cocoa.m"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      ![filewrapper optionGenerationTemplates.optionImplementationCocoa
+        !"option-" . mOptionComponentName . "-cocoa"
+        !mOptionComponentName
+        !mBoolOptionMap
+        !mUIntOptionMap
+        !mStringOptionMap
+      ]
+      !"\n\n" # Defaut user zone2
+      !"\n\n" # User Zone 3
+    ] ;
+ end if ;
 end method ;
 
 #---------------------------------------------------------------------------*
