@@ -105,7 +105,6 @@
 #include "method-semanticInstructionForGeneration-generateInstruction.h"
 #include "method-syntaxInstructionAST-analyzeSyntaxInstruction.h"
 #include "method-syntaxInstructionAST-transformInstruction.h"
-#include "option-galgas_cli_options.h"
 #include "proc-analyzeSyntaxInstructionList.h"
 #include "proc-generateInstructionList.h"
 #include "proc-transformInstructionList.h"

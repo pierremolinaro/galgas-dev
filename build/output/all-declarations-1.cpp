@@ -126,7 +126,6 @@
 #include "map-wrapperFileMap.h"
 #include "mapproxy-unifiedTypeMapProxy.h"
 #include "mapproxy-variableMapProxy.h"
-#include "option-galgas_cli_options.h"
 #include "sortedlist-branchBehaviourSortedListForMapOverride.h"
 #include "sortedlist-keySortedList.h"
 #include "sortedlist-mapStateSortedList.h"

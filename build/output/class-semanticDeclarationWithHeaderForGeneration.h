@@ -15,16 +15,16 @@
 
 class cPtr_semanticDeclarationWithHeaderForGeneration : public cPtr_semanticDeclarationForGeneration {
 //--- Attributes
-  public : GALGAS_bool mAttribute_mhasHeader ;
+  public : GALGAS_bool mAttribute_mHasHeader ;
   public : GALGAS_string mAttribute_mImplementationCppFileName ;
 
 //--- Constructor
-  public : cPtr_semanticDeclarationWithHeaderForGeneration (const GALGAS_bool & in_mhasHeader,
+  public : cPtr_semanticDeclarationWithHeaderForGeneration (const GALGAS_bool & in_mHasHeader,
                                                             const GALGAS_string & in_mImplementationCppFileName
                                                             COMMA_LOCATION_ARGS) ;
 
 //--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_bool reader_mhasHeader (UNUSED_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_bool reader_mHasHeader (UNUSED_LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_string reader_mImplementationCppFileName (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,

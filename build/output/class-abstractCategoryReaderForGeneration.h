@@ -23,7 +23,7 @@ class cPtr_abstractCategoryReaderForGeneration : public cPtr_semanticDeclaration
   public : GALGAS_formalInputParameterListForGeneration mAttribute_mAbstractCategoryReaderFormalParameterList ;
 
 //--- Constructor
-  public : cPtr_abstractCategoryReaderForGeneration (const GALGAS_bool & in_mhasHeader,
+  public : cPtr_abstractCategoryReaderForGeneration (const GALGAS_bool & in_mHasHeader,
                                                      const GALGAS_string & in_mImplementationCppFileName,
                                                      const GALGAS_unifiedTypeMapProxy & in_mReceiverType,
                                                      const GALGAS_string & in_mAbstractCategoryReaderName,

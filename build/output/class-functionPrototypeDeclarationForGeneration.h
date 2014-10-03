@@ -22,7 +22,7 @@ class cPtr_functionPrototypeDeclarationForGeneration : public cPtr_semanticDecla
   public : GALGAS_unifiedTypeMapProxy mAttribute_mReturnType ;
 
 //--- Constructor
-  public : cPtr_functionPrototypeDeclarationForGeneration (const GALGAS_bool & in_mhasHeader,
+  public : cPtr_functionPrototypeDeclarationForGeneration (const GALGAS_bool & in_mHasHeader,
                                                            const GALGAS_string & in_mImplementationCppFileName,
                                                            const GALGAS_string & in_mFunctionName,
                                                            const GALGAS_formalInputParameterListForGeneration & in_mFormalArgumentList,

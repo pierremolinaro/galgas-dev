@@ -13,6 +13,7 @@
 #include "class-abstractCategoryReaderForGeneration.h"
 #include "class-addExpressionAST.h"
 #include "class-andExpressionAST.h"
+#include "class-andShortExpressionAST.h"
 #include "class-applicationPredefinedTypeAST.h"
 #include "class-arrayDeclarationAST.h"
 #include "class-arrayTypeForGeneration.h"
@@ -52,7 +53,6 @@
 #include "class-lexicalRoutineOrFunctionFormalInputArgumentAST.h"
 #include "class-lexicalSendDefaultActionAST.h"
 #include "class-lexicalSendTerminalByDefaultAST.h"
-#include "class-lexicalSimpleSendInstructionAST.h"
 #include "class-lexicalStructuredSendInstructionAST.h"
 #include "class-lexicalTagInstructionAST.h"
 #include "class-lexicalUnsignedInputArgumentAST.h"
@@ -116,173 +116,7 @@
 #include "grammar-semanticsSLRgrammar.h"
 #include "grammar-syntaxSLRgrammar.h"
 #include "grammar-templateGrammar.h"
-#include "option-galgas_cli_options.h"
 
-
-//---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult cPtr_lexicalSimpleSendInstructionAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_lexicalSimpleSendInstructionAST * p = (const cPtr_lexicalSimpleSendInstructionAST *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_lexicalSimpleSendInstructionAST) ;
-  if (kOperandEqual == result) {
-    result = mAttribute_mSentTerminal.objectCompare (p->mAttribute_mSentTerminal) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-
-typeComparisonResult GALGAS_lexicalSimpleSendInstructionAST::objectCompare (const GALGAS_lexicalSimpleSendInstructionAST & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lexicalSimpleSendInstructionAST::GALGAS_lexicalSimpleSendInstructionAST (void) :
-GALGAS_lexicalInstructionAST () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lexicalSimpleSendInstructionAST GALGAS_lexicalSimpleSendInstructionAST::constructor_default (LOCATION_ARGS) {
-  return GALGAS_lexicalSimpleSendInstructionAST::constructor_new (GALGAS_lstring::constructor_default (HERE)
-                                                                  COMMA_THERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lexicalSimpleSendInstructionAST::GALGAS_lexicalSimpleSendInstructionAST (const cPtr_lexicalSimpleSendInstructionAST * inSourcePtr) :
-GALGAS_lexicalInstructionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_lexicalSimpleSendInstructionAST) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lexicalSimpleSendInstructionAST GALGAS_lexicalSimpleSendInstructionAST::constructor_new (const GALGAS_lstring & inAttribute_mSentTerminal
-                                                                                                COMMA_LOCATION_ARGS) {
-  GALGAS_lexicalSimpleSendInstructionAST result ;
-  if (inAttribute_mSentTerminal.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_lexicalSimpleSendInstructionAST (inAttribute_mSentTerminal COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_lexicalSimpleSendInstructionAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_lexicalSimpleSendInstructionAST * p = (cPtr_lexicalSimpleSendInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexicalSimpleSendInstructionAST) ;
-    cPtr_lexicalSimpleSendInstructionAST * r = NULL ;
-    macroMyNew (r, cPtr_lexicalSimpleSendInstructionAST (p->mAttribute_mSentTerminal COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_lexicalSimpleSendInstructionAST::reader_mSentTerminal (UNUSED_LOCATION_ARGS) const {
-  GALGAS_lstring result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_lexicalSimpleSendInstructionAST * p = (const cPtr_lexicalSimpleSendInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexicalSimpleSendInstructionAST) ;
-    result = p->mAttribute_mSentTerminal ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring cPtr_lexicalSimpleSendInstructionAST::reader_mSentTerminal (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mSentTerminal ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                              Pointer class for @lexicalSimpleSendInstructionAST class                               *
-//---------------------------------------------------------------------------------------------------------------------*
-
-cPtr_lexicalSimpleSendInstructionAST::cPtr_lexicalSimpleSendInstructionAST (const GALGAS_lstring & in_mSentTerminal
-                                                                            COMMA_LOCATION_ARGS) :
-cPtr_lexicalInstructionAST (THERE),
-mAttribute_mSentTerminal (in_mSentTerminal) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * cPtr_lexicalSimpleSendInstructionAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalSimpleSendInstructionAST ;
-}
-
-void cPtr_lexicalSimpleSendInstructionAST::description (C_String & ioString,
-                                                        const int32_t inIndentation) const {
-  ioString << "[@lexicalSimpleSendInstructionAST:" ;
-  mAttribute_mSentTerminal.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                        @lexicalSimpleSendInstructionAST type                                        *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_lexicalSimpleSendInstructionAST ("lexicalSimpleSendInstructionAST",
-                                                        & kTypeDescriptor_GALGAS_lexicalInstructionAST) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_lexicalSimpleSendInstructionAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_lexicalSimpleSendInstructionAST ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_lexicalSimpleSendInstructionAST::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_lexicalSimpleSendInstructionAST (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lexicalSimpleSendInstructionAST GALGAS_lexicalSimpleSendInstructionAST::extractObject (const GALGAS_object & inObject,
-                                                                                              C_Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) {
-  GALGAS_lexicalSimpleSendInstructionAST result ;
-  const GALGAS_lexicalSimpleSendInstructionAST * p = (const GALGAS_lexicalSimpleSendInstructionAST *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_lexicalSimpleSendInstructionAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("lexicalSimpleSendInstructionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
 
 //---------------------------------------------------------------------------------------------------------------------*
 //   Object comparison                                                         *
@@ -13142,20 +12976,20 @@ GALGAS_semanticDeclarationForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool GALGAS_semanticDeclarationWithHeaderForGeneration::reader_mhasHeader (UNUSED_LOCATION_ARGS) const {
+GALGAS_bool GALGAS_semanticDeclarationWithHeaderForGeneration::reader_mHasHeader (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (NULL != mObjectPtr) {
     const cPtr_semanticDeclarationWithHeaderForGeneration * p = (const cPtr_semanticDeclarationWithHeaderForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_semanticDeclarationWithHeaderForGeneration) ;
-    result = p->mAttribute_mhasHeader ;
+    result = p->mAttribute_mHasHeader ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_bool cPtr_semanticDeclarationWithHeaderForGeneration::reader_mhasHeader (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mhasHeader ;
+GALGAS_bool cPtr_semanticDeclarationWithHeaderForGeneration::reader_mHasHeader (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mHasHeader ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13180,11 +13014,11 @@ GALGAS_string cPtr_semanticDeclarationWithHeaderForGeneration::reader_mImplement
 //                         Pointer class for @semanticDeclarationWithHeaderForGeneration class                         *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_semanticDeclarationWithHeaderForGeneration::cPtr_semanticDeclarationWithHeaderForGeneration (const GALGAS_bool & in_mhasHeader,
+cPtr_semanticDeclarationWithHeaderForGeneration::cPtr_semanticDeclarationWithHeaderForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                                                   const GALGAS_string & in_mImplementationCppFileName
                                                                                                   COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationForGeneration (THERE),
-mAttribute_mhasHeader (in_mhasHeader),
+mAttribute_mHasHeader (in_mHasHeader),
 mAttribute_mImplementationCppFileName (in_mImplementationCppFileName) {
 }
 
@@ -13242,7 +13076,7 @@ typeComparisonResult cPtr_abstractCategoryMethodForGeneration::dynamicObjectComp
   const cPtr_abstractCategoryMethodForGeneration * p = (const cPtr_abstractCategoryMethodForGeneration *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_abstractCategoryMethodForGeneration) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mhasHeader.objectCompare (p->mAttribute_mhasHeader) ;
+    result = mAttribute_mHasHeader.objectCompare (p->mAttribute_mHasHeader) ;
   }
   if (kOperandEqual == result) {
     result = mAttribute_mImplementationCppFileName.objectCompare (p->mAttribute_mImplementationCppFileName) ;
@@ -13304,15 +13138,15 @@ GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_abstractCategoryMethodForGeneration GALGAS_abstractCategoryMethodForGeneration::constructor_new (const GALGAS_bool & inAttribute_mhasHeader,
+GALGAS_abstractCategoryMethodForGeneration GALGAS_abstractCategoryMethodForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                                                         const GALGAS_string & inAttribute_mImplementationCppFileName,
                                                                                                         const GALGAS_unifiedTypeMapProxy & inAttribute_mReceiverType,
                                                                                                         const GALGAS_string & inAttribute_mAbstractCategoryMethodName,
                                                                                                         const GALGAS_formalParameterListForGeneration & inAttribute_mAbstractCategoryMethodFormalParameterList
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_abstractCategoryMethodForGeneration result ;
-  if (inAttribute_mhasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mAbstractCategoryMethodName.isValid () && inAttribute_mAbstractCategoryMethodFormalParameterList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_abstractCategoryMethodForGeneration (inAttribute_mhasHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mAbstractCategoryMethodName, inAttribute_mAbstractCategoryMethodFormalParameterList COMMA_THERE)) ;
+  if (inAttribute_mHasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mAbstractCategoryMethodName.isValid () && inAttribute_mAbstractCategoryMethodFormalParameterList.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_abstractCategoryMethodForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mAbstractCategoryMethodName, inAttribute_mAbstractCategoryMethodFormalParameterList COMMA_THERE)) ;
   }
   return result ;
 }
@@ -13325,7 +13159,7 @@ void GALGAS_abstractCategoryMethodForGeneration::insulate (LOCATION_ARGS) {
     cPtr_abstractCategoryMethodForGeneration * p = (cPtr_abstractCategoryMethodForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_abstractCategoryMethodForGeneration) ;
     cPtr_abstractCategoryMethodForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_abstractCategoryMethodForGeneration (p->mAttribute_mhasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mReceiverType, p->mAttribute_mAbstractCategoryMethodName, p->mAttribute_mAbstractCategoryMethodFormalParameterList COMMA_THERE)) ;
+    macroMyNew (r, cPtr_abstractCategoryMethodForGeneration (p->mAttribute_mHasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mReceiverType, p->mAttribute_mAbstractCategoryMethodName, p->mAttribute_mAbstractCategoryMethodFormalParameterList COMMA_THERE)) ;
     macroAssignSharedObject (mObjectPtr, r) ;
     macroDetachSharedObject (r) ;
   }
@@ -13390,13 +13224,13 @@ GALGAS_formalParameterListForGeneration cPtr_abstractCategoryMethodForGeneration
 //                            Pointer class for @abstractCategoryMethodForGeneration class                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_abstractCategoryMethodForGeneration::cPtr_abstractCategoryMethodForGeneration (const GALGAS_bool & in_mhasHeader,
+cPtr_abstractCategoryMethodForGeneration::cPtr_abstractCategoryMethodForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                                     const GALGAS_string & in_mImplementationCppFileName,
                                                                                     const GALGAS_unifiedTypeMapProxy & in_mReceiverType,
                                                                                     const GALGAS_string & in_mAbstractCategoryMethodName,
                                                                                     const GALGAS_formalParameterListForGeneration & in_mAbstractCategoryMethodFormalParameterList
                                                                                     COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationWithHeaderForGeneration (in_mhasHeader, in_mImplementationCppFileName COMMA_THERE),
+cPtr_semanticDeclarationWithHeaderForGeneration (in_mHasHeader, in_mImplementationCppFileName COMMA_THERE),
 mAttribute_mReceiverType (in_mReceiverType),
 mAttribute_mAbstractCategoryMethodName (in_mAbstractCategoryMethodName),
 mAttribute_mAbstractCategoryMethodFormalParameterList (in_mAbstractCategoryMethodFormalParameterList) {
@@ -13411,7 +13245,7 @@ const C_galgas_type_descriptor * cPtr_abstractCategoryMethodForGeneration::class
 void cPtr_abstractCategoryMethodForGeneration::description (C_String & ioString,
                                                             const int32_t inIndentation) const {
   ioString << "[@abstractCategoryMethodForGeneration:" ;
-  mAttribute_mhasHeader.description (ioString, inIndentation+1) ;
+  mAttribute_mHasHeader.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mImplementationCppFileName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -13477,7 +13311,7 @@ typeComparisonResult cPtr_abstractCategoryModifierForGeneration::dynamicObjectCo
   const cPtr_abstractCategoryModifierForGeneration * p = (const cPtr_abstractCategoryModifierForGeneration *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_abstractCategoryModifierForGeneration) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mhasHeader.objectCompare (p->mAttribute_mhasHeader) ;
+    result = mAttribute_mHasHeader.objectCompare (p->mAttribute_mHasHeader) ;
   }
   if (kOperandEqual == result) {
     result = mAttribute_mImplementationCppFileName.objectCompare (p->mAttribute_mImplementationCppFileName) ;
@@ -13539,15 +13373,15 @@ GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_abstractCategoryModifierForGeneration GALGAS_abstractCategoryModifierForGeneration::constructor_new (const GALGAS_bool & inAttribute_mhasHeader,
+GALGAS_abstractCategoryModifierForGeneration GALGAS_abstractCategoryModifierForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                                                             const GALGAS_string & inAttribute_mImplementationCppFileName,
                                                                                                             const GALGAS_unifiedTypeMapProxy & inAttribute_mReceiverType,
                                                                                                             const GALGAS_string & inAttribute_mAbstractCategoryModifierName,
                                                                                                             const GALGAS_formalParameterListForGeneration & inAttribute_mAbstractCategoryModifierFormalParameterList
                                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_abstractCategoryModifierForGeneration result ;
-  if (inAttribute_mhasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mAbstractCategoryModifierName.isValid () && inAttribute_mAbstractCategoryModifierFormalParameterList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_abstractCategoryModifierForGeneration (inAttribute_mhasHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mAbstractCategoryModifierName, inAttribute_mAbstractCategoryModifierFormalParameterList COMMA_THERE)) ;
+  if (inAttribute_mHasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mAbstractCategoryModifierName.isValid () && inAttribute_mAbstractCategoryModifierFormalParameterList.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_abstractCategoryModifierForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mAbstractCategoryModifierName, inAttribute_mAbstractCategoryModifierFormalParameterList COMMA_THERE)) ;
   }
   return result ;
 }
@@ -13560,7 +13394,7 @@ void GALGAS_abstractCategoryModifierForGeneration::insulate (LOCATION_ARGS) {
     cPtr_abstractCategoryModifierForGeneration * p = (cPtr_abstractCategoryModifierForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_abstractCategoryModifierForGeneration) ;
     cPtr_abstractCategoryModifierForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_abstractCategoryModifierForGeneration (p->mAttribute_mhasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mReceiverType, p->mAttribute_mAbstractCategoryModifierName, p->mAttribute_mAbstractCategoryModifierFormalParameterList COMMA_THERE)) ;
+    macroMyNew (r, cPtr_abstractCategoryModifierForGeneration (p->mAttribute_mHasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mReceiverType, p->mAttribute_mAbstractCategoryModifierName, p->mAttribute_mAbstractCategoryModifierFormalParameterList COMMA_THERE)) ;
     macroAssignSharedObject (mObjectPtr, r) ;
     macroDetachSharedObject (r) ;
   }
@@ -13625,13 +13459,13 @@ GALGAS_formalParameterListForGeneration cPtr_abstractCategoryModifierForGenerati
 //                           Pointer class for @abstractCategoryModifierForGeneration class                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_abstractCategoryModifierForGeneration::cPtr_abstractCategoryModifierForGeneration (const GALGAS_bool & in_mhasHeader,
+cPtr_abstractCategoryModifierForGeneration::cPtr_abstractCategoryModifierForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                                         const GALGAS_string & in_mImplementationCppFileName,
                                                                                         const GALGAS_unifiedTypeMapProxy & in_mReceiverType,
                                                                                         const GALGAS_string & in_mAbstractCategoryModifierName,
                                                                                         const GALGAS_formalParameterListForGeneration & in_mAbstractCategoryModifierFormalParameterList
                                                                                         COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationWithHeaderForGeneration (in_mhasHeader, in_mImplementationCppFileName COMMA_THERE),
+cPtr_semanticDeclarationWithHeaderForGeneration (in_mHasHeader, in_mImplementationCppFileName COMMA_THERE),
 mAttribute_mReceiverType (in_mReceiverType),
 mAttribute_mAbstractCategoryModifierName (in_mAbstractCategoryModifierName),
 mAttribute_mAbstractCategoryModifierFormalParameterList (in_mAbstractCategoryModifierFormalParameterList) {
@@ -13646,7 +13480,7 @@ const C_galgas_type_descriptor * cPtr_abstractCategoryModifierForGeneration::cla
 void cPtr_abstractCategoryModifierForGeneration::description (C_String & ioString,
                                                               const int32_t inIndentation) const {
   ioString << "[@abstractCategoryModifierForGeneration:" ;
-  mAttribute_mhasHeader.description (ioString, inIndentation+1) ;
+  mAttribute_mHasHeader.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mImplementationCppFileName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -13712,7 +13546,7 @@ typeComparisonResult cPtr_abstractCategoryReaderForGeneration::dynamicObjectComp
   const cPtr_abstractCategoryReaderForGeneration * p = (const cPtr_abstractCategoryReaderForGeneration *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_abstractCategoryReaderForGeneration) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mhasHeader.objectCompare (p->mAttribute_mhasHeader) ;
+    result = mAttribute_mHasHeader.objectCompare (p->mAttribute_mHasHeader) ;
   }
   if (kOperandEqual == result) {
     result = mAttribute_mImplementationCppFileName.objectCompare (p->mAttribute_mImplementationCppFileName) ;
@@ -13778,7 +13612,7 @@ GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_abstractCategoryReaderForGeneration GALGAS_abstractCategoryReaderForGeneration::constructor_new (const GALGAS_bool & inAttribute_mhasHeader,
+GALGAS_abstractCategoryReaderForGeneration GALGAS_abstractCategoryReaderForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                                                         const GALGAS_string & inAttribute_mImplementationCppFileName,
                                                                                                         const GALGAS_unifiedTypeMapProxy & inAttribute_mReceiverType,
                                                                                                         const GALGAS_string & inAttribute_mAbstractCategoryReaderName,
@@ -13786,8 +13620,8 @@ GALGAS_abstractCategoryReaderForGeneration GALGAS_abstractCategoryReaderForGener
                                                                                                         const GALGAS_formalInputParameterListForGeneration & inAttribute_mAbstractCategoryReaderFormalParameterList
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_abstractCategoryReaderForGeneration result ;
-  if (inAttribute_mhasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mAbstractCategoryReaderName.isValid () && inAttribute_mResultType.isValid () && inAttribute_mAbstractCategoryReaderFormalParameterList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_abstractCategoryReaderForGeneration (inAttribute_mhasHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mAbstractCategoryReaderName, inAttribute_mResultType, inAttribute_mAbstractCategoryReaderFormalParameterList COMMA_THERE)) ;
+  if (inAttribute_mHasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mAbstractCategoryReaderName.isValid () && inAttribute_mResultType.isValid () && inAttribute_mAbstractCategoryReaderFormalParameterList.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_abstractCategoryReaderForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mAbstractCategoryReaderName, inAttribute_mResultType, inAttribute_mAbstractCategoryReaderFormalParameterList COMMA_THERE)) ;
   }
   return result ;
 }
@@ -13800,7 +13634,7 @@ void GALGAS_abstractCategoryReaderForGeneration::insulate (LOCATION_ARGS) {
     cPtr_abstractCategoryReaderForGeneration * p = (cPtr_abstractCategoryReaderForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_abstractCategoryReaderForGeneration) ;
     cPtr_abstractCategoryReaderForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_abstractCategoryReaderForGeneration (p->mAttribute_mhasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mReceiverType, p->mAttribute_mAbstractCategoryReaderName, p->mAttribute_mResultType, p->mAttribute_mAbstractCategoryReaderFormalParameterList COMMA_THERE)) ;
+    macroMyNew (r, cPtr_abstractCategoryReaderForGeneration (p->mAttribute_mHasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mReceiverType, p->mAttribute_mAbstractCategoryReaderName, p->mAttribute_mResultType, p->mAttribute_mAbstractCategoryReaderFormalParameterList COMMA_THERE)) ;
     macroAssignSharedObject (mObjectPtr, r) ;
     macroDetachSharedObject (r) ;
   }
@@ -13883,14 +13717,14 @@ GALGAS_formalInputParameterListForGeneration cPtr_abstractCategoryReaderForGener
 //                            Pointer class for @abstractCategoryReaderForGeneration class                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_abstractCategoryReaderForGeneration::cPtr_abstractCategoryReaderForGeneration (const GALGAS_bool & in_mhasHeader,
+cPtr_abstractCategoryReaderForGeneration::cPtr_abstractCategoryReaderForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                                     const GALGAS_string & in_mImplementationCppFileName,
                                                                                     const GALGAS_unifiedTypeMapProxy & in_mReceiverType,
                                                                                     const GALGAS_string & in_mAbstractCategoryReaderName,
                                                                                     const GALGAS_unifiedTypeMapProxy & in_mResultType,
                                                                                     const GALGAS_formalInputParameterListForGeneration & in_mAbstractCategoryReaderFormalParameterList
                                                                                     COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationWithHeaderForGeneration (in_mhasHeader, in_mImplementationCppFileName COMMA_THERE),
+cPtr_semanticDeclarationWithHeaderForGeneration (in_mHasHeader, in_mImplementationCppFileName COMMA_THERE),
 mAttribute_mReceiverType (in_mReceiverType),
 mAttribute_mAbstractCategoryReaderName (in_mAbstractCategoryReaderName),
 mAttribute_mResultType (in_mResultType),
@@ -13906,7 +13740,7 @@ const C_galgas_type_descriptor * cPtr_abstractCategoryReaderForGeneration::class
 void cPtr_abstractCategoryReaderForGeneration::description (C_String & ioString,
                                                             const int32_t inIndentation) const {
   ioString << "[@abstractCategoryReaderForGeneration:" ;
-  mAttribute_mhasHeader.description (ioString, inIndentation+1) ;
+  mAttribute_mHasHeader.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mImplementationCppFileName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -13974,7 +13808,7 @@ typeComparisonResult cPtr_categoryMethodForGeneration::dynamicObjectCompare (con
   const cPtr_categoryMethodForGeneration * p = (const cPtr_categoryMethodForGeneration *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_categoryMethodForGeneration) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mhasHeader.objectCompare (p->mAttribute_mhasHeader) ;
+    result = mAttribute_mHasHeader.objectCompare (p->mAttribute_mHasHeader) ;
   }
   if (kOperandEqual == result) {
     result = mAttribute_mImplementationCppFileName.objectCompare (p->mAttribute_mImplementationCppFileName) ;
@@ -14048,7 +13882,7 @@ GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryMethodForGeneration GALGAS_categoryMethodForGeneration::constructor_new (const GALGAS_bool & inAttribute_mhasHeader,
+GALGAS_categoryMethodForGeneration GALGAS_categoryMethodForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                                         const GALGAS_string & inAttribute_mImplementationCppFileName,
                                                                                         const GALGAS_unifiedTypeMapProxy & inAttribute_mReceiverType,
                                                                                         const GALGAS_string & inAttribute_mCategoryMethodName,
@@ -14058,8 +13892,8 @@ GALGAS_categoryMethodForGeneration GALGAS_categoryMethodForGeneration::construct
                                                                                         const GALGAS_semanticInstructionListForGeneration & inAttribute_mSemanticInstructionListForGeneration
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_categoryMethodForGeneration result ;
-  if (inAttribute_mhasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mCategoryMethodName.isValid () && inAttribute_mImplementedAsFunction.isValid () && inAttribute_mCategoryMethodFormalParameterList.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mSemanticInstructionListForGeneration.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_categoryMethodForGeneration (inAttribute_mhasHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mCategoryMethodName, inAttribute_mImplementedAsFunction, inAttribute_mCategoryMethodFormalParameterList, inAttribute_mTypedAttributeList, inAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
+  if (inAttribute_mHasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mCategoryMethodName.isValid () && inAttribute_mImplementedAsFunction.isValid () && inAttribute_mCategoryMethodFormalParameterList.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mSemanticInstructionListForGeneration.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_categoryMethodForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mCategoryMethodName, inAttribute_mImplementedAsFunction, inAttribute_mCategoryMethodFormalParameterList, inAttribute_mTypedAttributeList, inAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
   }
   return result ;
 }
@@ -14072,7 +13906,7 @@ void GALGAS_categoryMethodForGeneration::insulate (LOCATION_ARGS) {
     cPtr_categoryMethodForGeneration * p = (cPtr_categoryMethodForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_categoryMethodForGeneration) ;
     cPtr_categoryMethodForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_categoryMethodForGeneration (p->mAttribute_mhasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mReceiverType, p->mAttribute_mCategoryMethodName, p->mAttribute_mImplementedAsFunction, p->mAttribute_mCategoryMethodFormalParameterList, p->mAttribute_mTypedAttributeList, p->mAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
+    macroMyNew (r, cPtr_categoryMethodForGeneration (p->mAttribute_mHasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mReceiverType, p->mAttribute_mCategoryMethodName, p->mAttribute_mImplementedAsFunction, p->mAttribute_mCategoryMethodFormalParameterList, p->mAttribute_mTypedAttributeList, p->mAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
     macroAssignSharedObject (mObjectPtr, r) ;
     macroDetachSharedObject (r) ;
   }
@@ -14191,7 +14025,7 @@ GALGAS_semanticInstructionListForGeneration cPtr_categoryMethodForGeneration::re
 //                                Pointer class for @categoryMethodForGeneration class                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_categoryMethodForGeneration::cPtr_categoryMethodForGeneration (const GALGAS_bool & in_mhasHeader,
+cPtr_categoryMethodForGeneration::cPtr_categoryMethodForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                     const GALGAS_string & in_mImplementationCppFileName,
                                                                     const GALGAS_unifiedTypeMapProxy & in_mReceiverType,
                                                                     const GALGAS_string & in_mCategoryMethodName,
@@ -14200,7 +14034,7 @@ cPtr_categoryMethodForGeneration::cPtr_categoryMethodForGeneration (const GALGAS
                                                                     const GALGAS_typedAttributeList & in_mTypedAttributeList,
                                                                     const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration
                                                                     COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationWithHeaderForGeneration (in_mhasHeader, in_mImplementationCppFileName COMMA_THERE),
+cPtr_semanticDeclarationWithHeaderForGeneration (in_mHasHeader, in_mImplementationCppFileName COMMA_THERE),
 mAttribute_mReceiverType (in_mReceiverType),
 mAttribute_mCategoryMethodName (in_mCategoryMethodName),
 mAttribute_mImplementedAsFunction (in_mImplementedAsFunction),
@@ -14218,7 +14052,7 @@ const C_galgas_type_descriptor * cPtr_categoryMethodForGeneration::classDescript
 void cPtr_categoryMethodForGeneration::description (C_String & ioString,
                                                     const int32_t inIndentation) const {
   ioString << "[@categoryMethodForGeneration:" ;
-  mAttribute_mhasHeader.description (ioString, inIndentation+1) ;
+  mAttribute_mHasHeader.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mImplementationCppFileName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -14290,7 +14124,7 @@ typeComparisonResult cPtr_categoryModifierForGeneration::dynamicObjectCompare (c
   const cPtr_categoryModifierForGeneration * p = (const cPtr_categoryModifierForGeneration *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_categoryModifierForGeneration) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mhasHeader.objectCompare (p->mAttribute_mhasHeader) ;
+    result = mAttribute_mHasHeader.objectCompare (p->mAttribute_mHasHeader) ;
   }
   if (kOperandEqual == result) {
     result = mAttribute_mImplementationCppFileName.objectCompare (p->mAttribute_mImplementationCppFileName) ;
@@ -14364,7 +14198,7 @@ GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryModifierForGeneration GALGAS_categoryModifierForGeneration::constructor_new (const GALGAS_bool & inAttribute_mhasHeader,
+GALGAS_categoryModifierForGeneration GALGAS_categoryModifierForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                                             const GALGAS_string & inAttribute_mImplementationCppFileName,
                                                                                             const GALGAS_unifiedTypeMapProxy & inAttribute_mReceiverType,
                                                                                             const GALGAS_string & inAttribute_mCategoryModifierName,
@@ -14374,8 +14208,8 @@ GALGAS_categoryModifierForGeneration GALGAS_categoryModifierForGeneration::const
                                                                                             const GALGAS_semanticInstructionListForGeneration & inAttribute_mSemanticInstructionListForGeneration
                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_categoryModifierForGeneration result ;
-  if (inAttribute_mhasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mCategoryModifierName.isValid () && inAttribute_mImplementedAsFunction.isValid () && inAttribute_mCategoryModifierFormalParameterList.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mSemanticInstructionListForGeneration.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_categoryModifierForGeneration (inAttribute_mhasHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mCategoryModifierName, inAttribute_mImplementedAsFunction, inAttribute_mCategoryModifierFormalParameterList, inAttribute_mTypedAttributeList, inAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
+  if (inAttribute_mHasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mCategoryModifierName.isValid () && inAttribute_mImplementedAsFunction.isValid () && inAttribute_mCategoryModifierFormalParameterList.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mSemanticInstructionListForGeneration.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_categoryModifierForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mCategoryModifierName, inAttribute_mImplementedAsFunction, inAttribute_mCategoryModifierFormalParameterList, inAttribute_mTypedAttributeList, inAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
   }
   return result ;
 }
@@ -14388,7 +14222,7 @@ void GALGAS_categoryModifierForGeneration::insulate (LOCATION_ARGS) {
     cPtr_categoryModifierForGeneration * p = (cPtr_categoryModifierForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_categoryModifierForGeneration) ;
     cPtr_categoryModifierForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_categoryModifierForGeneration (p->mAttribute_mhasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mReceiverType, p->mAttribute_mCategoryModifierName, p->mAttribute_mImplementedAsFunction, p->mAttribute_mCategoryModifierFormalParameterList, p->mAttribute_mTypedAttributeList, p->mAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
+    macroMyNew (r, cPtr_categoryModifierForGeneration (p->mAttribute_mHasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mReceiverType, p->mAttribute_mCategoryModifierName, p->mAttribute_mImplementedAsFunction, p->mAttribute_mCategoryModifierFormalParameterList, p->mAttribute_mTypedAttributeList, p->mAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
     macroAssignSharedObject (mObjectPtr, r) ;
     macroDetachSharedObject (r) ;
   }
@@ -14507,7 +14341,7 @@ GALGAS_semanticInstructionListForGeneration cPtr_categoryModifierForGeneration::
 //                               Pointer class for @categoryModifierForGeneration class                                *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_categoryModifierForGeneration::cPtr_categoryModifierForGeneration (const GALGAS_bool & in_mhasHeader,
+cPtr_categoryModifierForGeneration::cPtr_categoryModifierForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                         const GALGAS_string & in_mImplementationCppFileName,
                                                                         const GALGAS_unifiedTypeMapProxy & in_mReceiverType,
                                                                         const GALGAS_string & in_mCategoryModifierName,
@@ -14516,7 +14350,7 @@ cPtr_categoryModifierForGeneration::cPtr_categoryModifierForGeneration (const GA
                                                                         const GALGAS_typedAttributeList & in_mTypedAttributeList,
                                                                         const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration
                                                                         COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationWithHeaderForGeneration (in_mhasHeader, in_mImplementationCppFileName COMMA_THERE),
+cPtr_semanticDeclarationWithHeaderForGeneration (in_mHasHeader, in_mImplementationCppFileName COMMA_THERE),
 mAttribute_mReceiverType (in_mReceiverType),
 mAttribute_mCategoryModifierName (in_mCategoryModifierName),
 mAttribute_mImplementedAsFunction (in_mImplementedAsFunction),
@@ -14534,7 +14368,7 @@ const C_galgas_type_descriptor * cPtr_categoryModifierForGeneration::classDescri
 void cPtr_categoryModifierForGeneration::description (C_String & ioString,
                                                       const int32_t inIndentation) const {
   ioString << "[@categoryModifierForGeneration:" ;
-  mAttribute_mhasHeader.description (ioString, inIndentation+1) ;
+  mAttribute_mHasHeader.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mImplementationCppFileName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -14606,7 +14440,7 @@ typeComparisonResult cPtr_categoryReaderForGeneration::dynamicObjectCompare (con
   const cPtr_categoryReaderForGeneration * p = (const cPtr_categoryReaderForGeneration *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_categoryReaderForGeneration) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mhasHeader.objectCompare (p->mAttribute_mhasHeader) ;
+    result = mAttribute_mHasHeader.objectCompare (p->mAttribute_mHasHeader) ;
   }
   if (kOperandEqual == result) {
     result = mAttribute_mImplementationCppFileName.objectCompare (p->mAttribute_mImplementationCppFileName) ;
@@ -14688,7 +14522,7 @@ GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_categoryReaderForGeneration GALGAS_categoryReaderForGeneration::constructor_new (const GALGAS_bool & inAttribute_mhasHeader,
+GALGAS_categoryReaderForGeneration GALGAS_categoryReaderForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                                         const GALGAS_string & inAttribute_mImplementationCppFileName,
                                                                                         const GALGAS_unifiedTypeMapProxy & inAttribute_mReceiverType,
                                                                                         const GALGAS_string & inAttribute_mCategoryReaderName,
@@ -14700,8 +14534,8 @@ GALGAS_categoryReaderForGeneration GALGAS_categoryReaderForGeneration::construct
                                                                                         const GALGAS_semanticInstructionListForGeneration & inAttribute_mSemanticInstructionListForGeneration
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_categoryReaderForGeneration result ;
-  if (inAttribute_mhasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mCategoryReaderName.isValid () && inAttribute_mImplementedAsFunction.isValid () && inAttribute_mResultType.isValid () && inAttribute_mResultVarCppName.isValid () && inAttribute_mCategoryReaderFormalParameterList.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mSemanticInstructionListForGeneration.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_categoryReaderForGeneration (inAttribute_mhasHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mCategoryReaderName, inAttribute_mImplementedAsFunction, inAttribute_mResultType, inAttribute_mResultVarCppName, inAttribute_mCategoryReaderFormalParameterList, inAttribute_mTypedAttributeList, inAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
+  if (inAttribute_mHasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mCategoryReaderName.isValid () && inAttribute_mImplementedAsFunction.isValid () && inAttribute_mResultType.isValid () && inAttribute_mResultVarCppName.isValid () && inAttribute_mCategoryReaderFormalParameterList.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mSemanticInstructionListForGeneration.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_categoryReaderForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mCategoryReaderName, inAttribute_mImplementedAsFunction, inAttribute_mResultType, inAttribute_mResultVarCppName, inAttribute_mCategoryReaderFormalParameterList, inAttribute_mTypedAttributeList, inAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
   }
   return result ;
 }
@@ -14714,7 +14548,7 @@ void GALGAS_categoryReaderForGeneration::insulate (LOCATION_ARGS) {
     cPtr_categoryReaderForGeneration * p = (cPtr_categoryReaderForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_categoryReaderForGeneration) ;
     cPtr_categoryReaderForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_categoryReaderForGeneration (p->mAttribute_mhasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mReceiverType, p->mAttribute_mCategoryReaderName, p->mAttribute_mImplementedAsFunction, p->mAttribute_mResultType, p->mAttribute_mResultVarCppName, p->mAttribute_mCategoryReaderFormalParameterList, p->mAttribute_mTypedAttributeList, p->mAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
+    macroMyNew (r, cPtr_categoryReaderForGeneration (p->mAttribute_mHasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mReceiverType, p->mAttribute_mCategoryReaderName, p->mAttribute_mImplementedAsFunction, p->mAttribute_mResultType, p->mAttribute_mResultVarCppName, p->mAttribute_mCategoryReaderFormalParameterList, p->mAttribute_mTypedAttributeList, p->mAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
     macroAssignSharedObject (mObjectPtr, r) ;
     macroDetachSharedObject (r) ;
   }
@@ -14869,7 +14703,7 @@ GALGAS_semanticInstructionListForGeneration cPtr_categoryReaderForGeneration::re
 //                                Pointer class for @categoryReaderForGeneration class                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_categoryReaderForGeneration::cPtr_categoryReaderForGeneration (const GALGAS_bool & in_mhasHeader,
+cPtr_categoryReaderForGeneration::cPtr_categoryReaderForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                     const GALGAS_string & in_mImplementationCppFileName,
                                                                     const GALGAS_unifiedTypeMapProxy & in_mReceiverType,
                                                                     const GALGAS_string & in_mCategoryReaderName,
@@ -14880,7 +14714,7 @@ cPtr_categoryReaderForGeneration::cPtr_categoryReaderForGeneration (const GALGAS
                                                                     const GALGAS_typedAttributeList & in_mTypedAttributeList,
                                                                     const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration
                                                                     COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationWithHeaderForGeneration (in_mhasHeader, in_mImplementationCppFileName COMMA_THERE),
+cPtr_semanticDeclarationWithHeaderForGeneration (in_mHasHeader, in_mImplementationCppFileName COMMA_THERE),
 mAttribute_mReceiverType (in_mReceiverType),
 mAttribute_mCategoryReaderName (in_mCategoryReaderName),
 mAttribute_mImplementedAsFunction (in_mImplementedAsFunction),
@@ -14900,7 +14734,7 @@ const C_galgas_type_descriptor * cPtr_categoryReaderForGeneration::classDescript
 void cPtr_categoryReaderForGeneration::description (C_String & ioString,
                                                     const int32_t inIndentation) const {
   ioString << "[@categoryReaderForGeneration:" ;
-  mAttribute_mhasHeader.description (ioString, inIndentation+1) ;
+  mAttribute_mHasHeader.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mImplementationCppFileName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -14976,7 +14810,7 @@ typeComparisonResult cPtr_filewrapperDeclarationForGeneration::dynamicObjectComp
   const cPtr_filewrapperDeclarationForGeneration * p = (const cPtr_filewrapperDeclarationForGeneration *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_filewrapperDeclarationForGeneration) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mhasHeader.objectCompare (p->mAttribute_mhasHeader) ;
+    result = mAttribute_mHasHeader.objectCompare (p->mAttribute_mHasHeader) ;
   }
   if (kOperandEqual == result) {
     result = mAttribute_mImplementationCppFileName.objectCompare (p->mAttribute_mImplementationCppFileName) ;
@@ -15046,7 +14880,7 @@ GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_filewrapperDeclarationForGeneration GALGAS_filewrapperDeclarationForGeneration::constructor_new (const GALGAS_bool & inAttribute_mhasHeader,
+GALGAS_filewrapperDeclarationForGeneration GALGAS_filewrapperDeclarationForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                                                         const GALGAS_string & inAttribute_mImplementationCppFileName,
                                                                                                         const GALGAS_string & inAttribute_mFilewrapperName,
                                                                                                         const GALGAS_string & inAttribute_mFilewrapperAbsolutePath,
@@ -15055,8 +14889,8 @@ GALGAS_filewrapperDeclarationForGeneration GALGAS_filewrapperDeclarationForGener
                                                                                                         const GALGAS_filewrapperTemplateListForGeneration & inAttribute_mFilewrapperTemplateListForGeneration
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_filewrapperDeclarationForGeneration result ;
-  if (inAttribute_mhasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mFilewrapperName.isValid () && inAttribute_mFilewrapperAbsolutePath.isValid () && inAttribute_mFilewrapperFileMap.isValid () && inAttribute_mFilewrapperDirectoryMap.isValid () && inAttribute_mFilewrapperTemplateListForGeneration.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_filewrapperDeclarationForGeneration (inAttribute_mhasHeader, inAttribute_mImplementationCppFileName, inAttribute_mFilewrapperName, inAttribute_mFilewrapperAbsolutePath, inAttribute_mFilewrapperFileMap, inAttribute_mFilewrapperDirectoryMap, inAttribute_mFilewrapperTemplateListForGeneration COMMA_THERE)) ;
+  if (inAttribute_mHasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mFilewrapperName.isValid () && inAttribute_mFilewrapperAbsolutePath.isValid () && inAttribute_mFilewrapperFileMap.isValid () && inAttribute_mFilewrapperDirectoryMap.isValid () && inAttribute_mFilewrapperTemplateListForGeneration.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_filewrapperDeclarationForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mFilewrapperName, inAttribute_mFilewrapperAbsolutePath, inAttribute_mFilewrapperFileMap, inAttribute_mFilewrapperDirectoryMap, inAttribute_mFilewrapperTemplateListForGeneration COMMA_THERE)) ;
   }
   return result ;
 }
@@ -15069,7 +14903,7 @@ void GALGAS_filewrapperDeclarationForGeneration::insulate (LOCATION_ARGS) {
     cPtr_filewrapperDeclarationForGeneration * p = (cPtr_filewrapperDeclarationForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_filewrapperDeclarationForGeneration) ;
     cPtr_filewrapperDeclarationForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_filewrapperDeclarationForGeneration (p->mAttribute_mhasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mFilewrapperName, p->mAttribute_mFilewrapperAbsolutePath, p->mAttribute_mFilewrapperFileMap, p->mAttribute_mFilewrapperDirectoryMap, p->mAttribute_mFilewrapperTemplateListForGeneration COMMA_THERE)) ;
+    macroMyNew (r, cPtr_filewrapperDeclarationForGeneration (p->mAttribute_mHasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mFilewrapperName, p->mAttribute_mFilewrapperAbsolutePath, p->mAttribute_mFilewrapperFileMap, p->mAttribute_mFilewrapperDirectoryMap, p->mAttribute_mFilewrapperTemplateListForGeneration COMMA_THERE)) ;
     macroAssignSharedObject (mObjectPtr, r) ;
     macroDetachSharedObject (r) ;
   }
@@ -15170,7 +15004,7 @@ GALGAS_filewrapperTemplateListForGeneration cPtr_filewrapperDeclarationForGenera
 //                            Pointer class for @filewrapperDeclarationForGeneration class                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_filewrapperDeclarationForGeneration::cPtr_filewrapperDeclarationForGeneration (const GALGAS_bool & in_mhasHeader,
+cPtr_filewrapperDeclarationForGeneration::cPtr_filewrapperDeclarationForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                                     const GALGAS_string & in_mImplementationCppFileName,
                                                                                     const GALGAS_string & in_mFilewrapperName,
                                                                                     const GALGAS_string & in_mFilewrapperAbsolutePath,
@@ -15178,7 +15012,7 @@ cPtr_filewrapperDeclarationForGeneration::cPtr_filewrapperDeclarationForGenerati
                                                                                     const GALGAS_wrapperDirectoryMap & in_mFilewrapperDirectoryMap,
                                                                                     const GALGAS_filewrapperTemplateListForGeneration & in_mFilewrapperTemplateListForGeneration
                                                                                     COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationWithHeaderForGeneration (in_mhasHeader, in_mImplementationCppFileName COMMA_THERE),
+cPtr_semanticDeclarationWithHeaderForGeneration (in_mHasHeader, in_mImplementationCppFileName COMMA_THERE),
 mAttribute_mFilewrapperName (in_mFilewrapperName),
 mAttribute_mFilewrapperAbsolutePath (in_mFilewrapperAbsolutePath),
 mAttribute_mFilewrapperFileMap (in_mFilewrapperFileMap),
@@ -15195,7 +15029,7 @@ const C_galgas_type_descriptor * cPtr_filewrapperDeclarationForGeneration::class
 void cPtr_filewrapperDeclarationForGeneration::description (C_String & ioString,
                                                             const int32_t inIndentation) const {
   ioString << "[@filewrapperDeclarationForGeneration:" ;
-  mAttribute_mhasHeader.description (ioString, inIndentation+1) ;
+  mAttribute_mHasHeader.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mImplementationCppFileName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -15265,7 +15099,7 @@ typeComparisonResult cPtr_functionPrototypeDeclarationForGeneration::dynamicObje
   const cPtr_functionPrototypeDeclarationForGeneration * p = (const cPtr_functionPrototypeDeclarationForGeneration *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_functionPrototypeDeclarationForGeneration) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mhasHeader.objectCompare (p->mAttribute_mhasHeader) ;
+    result = mAttribute_mHasHeader.objectCompare (p->mAttribute_mHasHeader) ;
   }
   if (kOperandEqual == result) {
     result = mAttribute_mImplementationCppFileName.objectCompare (p->mAttribute_mImplementationCppFileName) ;
@@ -15327,15 +15161,15 @@ GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_functionPrototypeDeclarationForGeneration GALGAS_functionPrototypeDeclarationForGeneration::constructor_new (const GALGAS_bool & inAttribute_mhasHeader,
+GALGAS_functionPrototypeDeclarationForGeneration GALGAS_functionPrototypeDeclarationForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                                                                     const GALGAS_string & inAttribute_mImplementationCppFileName,
                                                                                                                     const GALGAS_string & inAttribute_mFunctionName,
                                                                                                                     const GALGAS_formalInputParameterListForGeneration & inAttribute_mFormalArgumentList,
                                                                                                                     const GALGAS_unifiedTypeMapProxy & inAttribute_mReturnType
                                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_functionPrototypeDeclarationForGeneration result ;
-  if (inAttribute_mhasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mFunctionName.isValid () && inAttribute_mFormalArgumentList.isValid () && inAttribute_mReturnType.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_functionPrototypeDeclarationForGeneration (inAttribute_mhasHeader, inAttribute_mImplementationCppFileName, inAttribute_mFunctionName, inAttribute_mFormalArgumentList, inAttribute_mReturnType COMMA_THERE)) ;
+  if (inAttribute_mHasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mFunctionName.isValid () && inAttribute_mFormalArgumentList.isValid () && inAttribute_mReturnType.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_functionPrototypeDeclarationForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mFunctionName, inAttribute_mFormalArgumentList, inAttribute_mReturnType COMMA_THERE)) ;
   }
   return result ;
 }
@@ -15348,7 +15182,7 @@ void GALGAS_functionPrototypeDeclarationForGeneration::insulate (LOCATION_ARGS) 
     cPtr_functionPrototypeDeclarationForGeneration * p = (cPtr_functionPrototypeDeclarationForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_functionPrototypeDeclarationForGeneration) ;
     cPtr_functionPrototypeDeclarationForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_functionPrototypeDeclarationForGeneration (p->mAttribute_mhasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mFunctionName, p->mAttribute_mFormalArgumentList, p->mAttribute_mReturnType COMMA_THERE)) ;
+    macroMyNew (r, cPtr_functionPrototypeDeclarationForGeneration (p->mAttribute_mHasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mFunctionName, p->mAttribute_mFormalArgumentList, p->mAttribute_mReturnType COMMA_THERE)) ;
     macroAssignSharedObject (mObjectPtr, r) ;
     macroDetachSharedObject (r) ;
   }
@@ -15413,13 +15247,13 @@ GALGAS_unifiedTypeMapProxy cPtr_functionPrototypeDeclarationForGeneration::reade
 //                         Pointer class for @functionPrototypeDeclarationForGeneration class                          *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_functionPrototypeDeclarationForGeneration::cPtr_functionPrototypeDeclarationForGeneration (const GALGAS_bool & in_mhasHeader,
+cPtr_functionPrototypeDeclarationForGeneration::cPtr_functionPrototypeDeclarationForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                                                 const GALGAS_string & in_mImplementationCppFileName,
                                                                                                 const GALGAS_string & in_mFunctionName,
                                                                                                 const GALGAS_formalInputParameterListForGeneration & in_mFormalArgumentList,
                                                                                                 const GALGAS_unifiedTypeMapProxy & in_mReturnType
                                                                                                 COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationWithHeaderForGeneration (in_mhasHeader, in_mImplementationCppFileName COMMA_THERE),
+cPtr_semanticDeclarationWithHeaderForGeneration (in_mHasHeader, in_mImplementationCppFileName COMMA_THERE),
 mAttribute_mFunctionName (in_mFunctionName),
 mAttribute_mFormalArgumentList (in_mFormalArgumentList),
 mAttribute_mReturnType (in_mReturnType) {
@@ -15434,7 +15268,7 @@ const C_galgas_type_descriptor * cPtr_functionPrototypeDeclarationForGeneration:
 void cPtr_functionPrototypeDeclarationForGeneration::description (C_String & ioString,
                                                                   const int32_t inIndentation) const {
   ioString << "[@functionPrototypeDeclarationForGeneration:" ;
-  mAttribute_mhasHeader.description (ioString, inIndentation+1) ;
+  mAttribute_mHasHeader.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mImplementationCppFileName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -15500,7 +15334,7 @@ typeComparisonResult cPtr_functionImplementationForGeneration::dynamicObjectComp
   const cPtr_functionImplementationForGeneration * p = (const cPtr_functionImplementationForGeneration *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_functionImplementationForGeneration) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mhasHeader.objectCompare (p->mAttribute_mhasHeader) ;
+    result = mAttribute_mHasHeader.objectCompare (p->mAttribute_mHasHeader) ;
   }
   if (kOperandEqual == result) {
     result = mAttribute_mImplementationCppFileName.objectCompare (p->mAttribute_mImplementationCppFileName) ;
@@ -15570,7 +15404,7 @@ GALGAS_functionPrototypeDeclarationForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_functionImplementationForGeneration GALGAS_functionImplementationForGeneration::constructor_new (const GALGAS_bool & inAttribute_mhasHeader,
+GALGAS_functionImplementationForGeneration GALGAS_functionImplementationForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                                                         const GALGAS_string & inAttribute_mImplementationCppFileName,
                                                                                                         const GALGAS_string & inAttribute_mFunctionName,
                                                                                                         const GALGAS_formalInputParameterListForGeneration & inAttribute_mFormalArgumentList,
@@ -15579,8 +15413,8 @@ GALGAS_functionImplementationForGeneration GALGAS_functionImplementationForGener
                                                                                                         const GALGAS_semanticInstructionListForGeneration & inAttribute_mFunctionInstructionList
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_functionImplementationForGeneration result ;
-  if (inAttribute_mhasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mFunctionName.isValid () && inAttribute_mFormalArgumentList.isValid () && inAttribute_mReturnType.isValid () && inAttribute_mResultVariableCppName.isValid () && inAttribute_mFunctionInstructionList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_functionImplementationForGeneration (inAttribute_mhasHeader, inAttribute_mImplementationCppFileName, inAttribute_mFunctionName, inAttribute_mFormalArgumentList, inAttribute_mReturnType, inAttribute_mResultVariableCppName, inAttribute_mFunctionInstructionList COMMA_THERE)) ;
+  if (inAttribute_mHasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mFunctionName.isValid () && inAttribute_mFormalArgumentList.isValid () && inAttribute_mReturnType.isValid () && inAttribute_mResultVariableCppName.isValid () && inAttribute_mFunctionInstructionList.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_functionImplementationForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mFunctionName, inAttribute_mFormalArgumentList, inAttribute_mReturnType, inAttribute_mResultVariableCppName, inAttribute_mFunctionInstructionList COMMA_THERE)) ;
   }
   return result ;
 }
@@ -15593,7 +15427,7 @@ void GALGAS_functionImplementationForGeneration::insulate (LOCATION_ARGS) {
     cPtr_functionImplementationForGeneration * p = (cPtr_functionImplementationForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_functionImplementationForGeneration) ;
     cPtr_functionImplementationForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_functionImplementationForGeneration (p->mAttribute_mhasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mFunctionName, p->mAttribute_mFormalArgumentList, p->mAttribute_mReturnType, p->mAttribute_mResultVariableCppName, p->mAttribute_mFunctionInstructionList COMMA_THERE)) ;
+    macroMyNew (r, cPtr_functionImplementationForGeneration (p->mAttribute_mHasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mFunctionName, p->mAttribute_mFormalArgumentList, p->mAttribute_mReturnType, p->mAttribute_mResultVariableCppName, p->mAttribute_mFunctionInstructionList COMMA_THERE)) ;
     macroAssignSharedObject (mObjectPtr, r) ;
     macroDetachSharedObject (r) ;
   }
@@ -15640,7 +15474,7 @@ GALGAS_semanticInstructionListForGeneration cPtr_functionImplementationForGenera
 //                            Pointer class for @functionImplementationForGeneration class                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_functionImplementationForGeneration::cPtr_functionImplementationForGeneration (const GALGAS_bool & in_mhasHeader,
+cPtr_functionImplementationForGeneration::cPtr_functionImplementationForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                                     const GALGAS_string & in_mImplementationCppFileName,
                                                                                     const GALGAS_string & in_mFunctionName,
                                                                                     const GALGAS_formalInputParameterListForGeneration & in_mFormalArgumentList,
@@ -15648,7 +15482,7 @@ cPtr_functionImplementationForGeneration::cPtr_functionImplementationForGenerati
                                                                                     const GALGAS_string & in_mResultVariableCppName,
                                                                                     const GALGAS_semanticInstructionListForGeneration & in_mFunctionInstructionList
                                                                                     COMMA_LOCATION_ARGS) :
-cPtr_functionPrototypeDeclarationForGeneration (in_mhasHeader, in_mImplementationCppFileName, in_mFunctionName, in_mFormalArgumentList, in_mReturnType COMMA_THERE),
+cPtr_functionPrototypeDeclarationForGeneration (in_mHasHeader, in_mImplementationCppFileName, in_mFunctionName, in_mFormalArgumentList, in_mReturnType COMMA_THERE),
 mAttribute_mResultVariableCppName (in_mResultVariableCppName),
 mAttribute_mFunctionInstructionList (in_mFunctionInstructionList) {
 }
@@ -15662,7 +15496,7 @@ const C_galgas_type_descriptor * cPtr_functionImplementationForGeneration::class
 void cPtr_functionImplementationForGeneration::description (C_String & ioString,
                                                             const int32_t inIndentation) const {
   ioString << "[@functionImplementationForGeneration:" ;
-  mAttribute_mhasHeader.description (ioString, inIndentation+1) ;
+  mAttribute_mHasHeader.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mImplementationCppFileName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -15732,7 +15566,7 @@ typeComparisonResult cPtr_onceFunctionDeclarationForGeneration::dynamicObjectCom
   const cPtr_onceFunctionDeclarationForGeneration * p = (const cPtr_onceFunctionDeclarationForGeneration *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_onceFunctionDeclarationForGeneration) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mhasHeader.objectCompare (p->mAttribute_mhasHeader) ;
+    result = mAttribute_mHasHeader.objectCompare (p->mAttribute_mHasHeader) ;
   }
   if (kOperandEqual == result) {
     result = mAttribute_mImplementationCppFileName.objectCompare (p->mAttribute_mImplementationCppFileName) ;
@@ -15798,7 +15632,7 @@ GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_onceFunctionDeclarationForGeneration GALGAS_onceFunctionDeclarationForGeneration::constructor_new (const GALGAS_bool & inAttribute_mhasHeader,
+GALGAS_onceFunctionDeclarationForGeneration GALGAS_onceFunctionDeclarationForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                                                           const GALGAS_string & inAttribute_mImplementationCppFileName,
                                                                                                           const GALGAS_string & inAttribute_mFunctionName,
                                                                                                           const GALGAS_unifiedTypeMapProxy & inAttribute_mReturnType,
@@ -15806,8 +15640,8 @@ GALGAS_onceFunctionDeclarationForGeneration GALGAS_onceFunctionDeclarationForGen
                                                                                                           const GALGAS_semanticInstructionListForGeneration & inAttribute_mFunctionInstructionList
                                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_onceFunctionDeclarationForGeneration result ;
-  if (inAttribute_mhasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mFunctionName.isValid () && inAttribute_mReturnType.isValid () && inAttribute_mResultVariableCppName.isValid () && inAttribute_mFunctionInstructionList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_onceFunctionDeclarationForGeneration (inAttribute_mhasHeader, inAttribute_mImplementationCppFileName, inAttribute_mFunctionName, inAttribute_mReturnType, inAttribute_mResultVariableCppName, inAttribute_mFunctionInstructionList COMMA_THERE)) ;
+  if (inAttribute_mHasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mFunctionName.isValid () && inAttribute_mReturnType.isValid () && inAttribute_mResultVariableCppName.isValid () && inAttribute_mFunctionInstructionList.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_onceFunctionDeclarationForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mFunctionName, inAttribute_mReturnType, inAttribute_mResultVariableCppName, inAttribute_mFunctionInstructionList COMMA_THERE)) ;
   }
   return result ;
 }
@@ -15820,7 +15654,7 @@ void GALGAS_onceFunctionDeclarationForGeneration::insulate (LOCATION_ARGS) {
     cPtr_onceFunctionDeclarationForGeneration * p = (cPtr_onceFunctionDeclarationForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_onceFunctionDeclarationForGeneration) ;
     cPtr_onceFunctionDeclarationForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_onceFunctionDeclarationForGeneration (p->mAttribute_mhasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mFunctionName, p->mAttribute_mReturnType, p->mAttribute_mResultVariableCppName, p->mAttribute_mFunctionInstructionList COMMA_THERE)) ;
+    macroMyNew (r, cPtr_onceFunctionDeclarationForGeneration (p->mAttribute_mHasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mFunctionName, p->mAttribute_mReturnType, p->mAttribute_mResultVariableCppName, p->mAttribute_mFunctionInstructionList COMMA_THERE)) ;
     macroAssignSharedObject (mObjectPtr, r) ;
     macroDetachSharedObject (r) ;
   }
@@ -15903,14 +15737,14 @@ GALGAS_semanticInstructionListForGeneration cPtr_onceFunctionDeclarationForGener
 //                            Pointer class for @onceFunctionDeclarationForGeneration class                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_onceFunctionDeclarationForGeneration::cPtr_onceFunctionDeclarationForGeneration (const GALGAS_bool & in_mhasHeader,
+cPtr_onceFunctionDeclarationForGeneration::cPtr_onceFunctionDeclarationForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                                       const GALGAS_string & in_mImplementationCppFileName,
                                                                                       const GALGAS_string & in_mFunctionName,
                                                                                       const GALGAS_unifiedTypeMapProxy & in_mReturnType,
                                                                                       const GALGAS_string & in_mResultVariableCppName,
                                                                                       const GALGAS_semanticInstructionListForGeneration & in_mFunctionInstructionList
                                                                                       COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationWithHeaderForGeneration (in_mhasHeader, in_mImplementationCppFileName COMMA_THERE),
+cPtr_semanticDeclarationWithHeaderForGeneration (in_mHasHeader, in_mImplementationCppFileName COMMA_THERE),
 mAttribute_mFunctionName (in_mFunctionName),
 mAttribute_mReturnType (in_mReturnType),
 mAttribute_mResultVariableCppName (in_mResultVariableCppName),
@@ -15926,7 +15760,7 @@ const C_galgas_type_descriptor * cPtr_onceFunctionDeclarationForGeneration::clas
 void cPtr_onceFunctionDeclarationForGeneration::description (C_String & ioString,
                                                              const int32_t inIndentation) const {
   ioString << "[@onceFunctionDeclarationForGeneration:" ;
-  mAttribute_mhasHeader.description (ioString, inIndentation+1) ;
+  mAttribute_mHasHeader.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mImplementationCppFileName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -15994,7 +15828,7 @@ typeComparisonResult cPtr_optionComponentForGeneration::dynamicObjectCompare (co
   const cPtr_optionComponentForGeneration * p = (const cPtr_optionComponentForGeneration *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_optionComponentForGeneration) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mhasHeader.objectCompare (p->mAttribute_mhasHeader) ;
+    result = mAttribute_mHasHeader.objectCompare (p->mAttribute_mHasHeader) ;
   }
   if (kOperandEqual == result) {
     result = mAttribute_mImplementationCppFileName.objectCompare (p->mAttribute_mImplementationCppFileName) ;
@@ -16064,7 +15898,7 @@ GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_optionComponentForGeneration GALGAS_optionComponentForGeneration::constructor_new (const GALGAS_bool & inAttribute_mhasHeader,
+GALGAS_optionComponentForGeneration GALGAS_optionComponentForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                                           const GALGAS_string & inAttribute_mImplementationCppFileName,
                                                                                           const GALGAS_bool & inAttribute_mIsPredefined,
                                                                                           const GALGAS_string & inAttribute_mOptionComponentName,
@@ -16073,8 +15907,8 @@ GALGAS_optionComponentForGeneration GALGAS_optionComponentForGeneration::constru
                                                                                           const GALGAS_commandLineOptionMap & inAttribute_mStringOptionMap
                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_optionComponentForGeneration result ;
-  if (inAttribute_mhasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mIsPredefined.isValid () && inAttribute_mOptionComponentName.isValid () && inAttribute_mBoolOptionMap.isValid () && inAttribute_mUIntOptionMap.isValid () && inAttribute_mStringOptionMap.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_optionComponentForGeneration (inAttribute_mhasHeader, inAttribute_mImplementationCppFileName, inAttribute_mIsPredefined, inAttribute_mOptionComponentName, inAttribute_mBoolOptionMap, inAttribute_mUIntOptionMap, inAttribute_mStringOptionMap COMMA_THERE)) ;
+  if (inAttribute_mHasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mIsPredefined.isValid () && inAttribute_mOptionComponentName.isValid () && inAttribute_mBoolOptionMap.isValid () && inAttribute_mUIntOptionMap.isValid () && inAttribute_mStringOptionMap.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_optionComponentForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mIsPredefined, inAttribute_mOptionComponentName, inAttribute_mBoolOptionMap, inAttribute_mUIntOptionMap, inAttribute_mStringOptionMap COMMA_THERE)) ;
   }
   return result ;
 }
@@ -16087,7 +15921,7 @@ void GALGAS_optionComponentForGeneration::insulate (LOCATION_ARGS) {
     cPtr_optionComponentForGeneration * p = (cPtr_optionComponentForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_optionComponentForGeneration) ;
     cPtr_optionComponentForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_optionComponentForGeneration (p->mAttribute_mhasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mIsPredefined, p->mAttribute_mOptionComponentName, p->mAttribute_mBoolOptionMap, p->mAttribute_mUIntOptionMap, p->mAttribute_mStringOptionMap COMMA_THERE)) ;
+    macroMyNew (r, cPtr_optionComponentForGeneration (p->mAttribute_mHasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mIsPredefined, p->mAttribute_mOptionComponentName, p->mAttribute_mBoolOptionMap, p->mAttribute_mUIntOptionMap, p->mAttribute_mStringOptionMap COMMA_THERE)) ;
     macroAssignSharedObject (mObjectPtr, r) ;
     macroDetachSharedObject (r) ;
   }
@@ -16188,7 +16022,7 @@ GALGAS_commandLineOptionMap cPtr_optionComponentForGeneration::reader_mStringOpt
 //                                Pointer class for @optionComponentForGeneration class                                *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_optionComponentForGeneration::cPtr_optionComponentForGeneration (const GALGAS_bool & in_mhasHeader,
+cPtr_optionComponentForGeneration::cPtr_optionComponentForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                       const GALGAS_string & in_mImplementationCppFileName,
                                                                       const GALGAS_bool & in_mIsPredefined,
                                                                       const GALGAS_string & in_mOptionComponentName,
@@ -16196,7 +16030,7 @@ cPtr_optionComponentForGeneration::cPtr_optionComponentForGeneration (const GALG
                                                                       const GALGAS_commandLineOptionMap & in_mUIntOptionMap,
                                                                       const GALGAS_commandLineOptionMap & in_mStringOptionMap
                                                                       COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationWithHeaderForGeneration (in_mhasHeader, in_mImplementationCppFileName COMMA_THERE),
+cPtr_semanticDeclarationWithHeaderForGeneration (in_mHasHeader, in_mImplementationCppFileName COMMA_THERE),
 mAttribute_mIsPredefined (in_mIsPredefined),
 mAttribute_mOptionComponentName (in_mOptionComponentName),
 mAttribute_mBoolOptionMap (in_mBoolOptionMap),
@@ -16213,7 +16047,7 @@ const C_galgas_type_descriptor * cPtr_optionComponentForGeneration::classDescrip
 void cPtr_optionComponentForGeneration::description (C_String & ioString,
                                                      const int32_t inIndentation) const {
   ioString << "[@optionComponentForGeneration:" ;
-  mAttribute_mhasHeader.description (ioString, inIndentation+1) ;
+  mAttribute_mHasHeader.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mImplementationCppFileName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -16283,7 +16117,7 @@ typeComparisonResult cPtr_overrideCategoryReaderForGeneration::dynamicObjectComp
   const cPtr_overrideCategoryReaderForGeneration * p = (const cPtr_overrideCategoryReaderForGeneration *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_overrideCategoryReaderForGeneration) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mhasHeader.objectCompare (p->mAttribute_mhasHeader) ;
+    result = mAttribute_mHasHeader.objectCompare (p->mAttribute_mHasHeader) ;
   }
   if (kOperandEqual == result) {
     result = mAttribute_mImplementationCppFileName.objectCompare (p->mAttribute_mImplementationCppFileName) ;
@@ -16365,7 +16199,7 @@ GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_overrideCategoryReaderForGeneration GALGAS_overrideCategoryReaderForGeneration::constructor_new (const GALGAS_bool & inAttribute_mhasHeader,
+GALGAS_overrideCategoryReaderForGeneration GALGAS_overrideCategoryReaderForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                                                         const GALGAS_string & inAttribute_mImplementationCppFileName,
                                                                                                         const GALGAS_unifiedTypeMapProxy & inAttribute_mReceiverType,
                                                                                                         const GALGAS_string & inAttribute_mBaseTypeName,
@@ -16377,8 +16211,8 @@ GALGAS_overrideCategoryReaderForGeneration GALGAS_overrideCategoryReaderForGener
                                                                                                         const GALGAS_semanticInstructionListForGeneration & inAttribute_mSemanticInstructionListForGeneration
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_overrideCategoryReaderForGeneration result ;
-  if (inAttribute_mhasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mBaseTypeName.isValid () && inAttribute_mOverridingCategoryReaderName.isValid () && inAttribute_mResultType.isValid () && inAttribute_mResultVarCppName.isValid () && inAttribute_mOverridingCategoryReaderFormalParameterList.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mSemanticInstructionListForGeneration.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_overrideCategoryReaderForGeneration (inAttribute_mhasHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mBaseTypeName, inAttribute_mOverridingCategoryReaderName, inAttribute_mResultType, inAttribute_mResultVarCppName, inAttribute_mOverridingCategoryReaderFormalParameterList, inAttribute_mTypedAttributeList, inAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
+  if (inAttribute_mHasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mBaseTypeName.isValid () && inAttribute_mOverridingCategoryReaderName.isValid () && inAttribute_mResultType.isValid () && inAttribute_mResultVarCppName.isValid () && inAttribute_mOverridingCategoryReaderFormalParameterList.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mSemanticInstructionListForGeneration.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_overrideCategoryReaderForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mBaseTypeName, inAttribute_mOverridingCategoryReaderName, inAttribute_mResultType, inAttribute_mResultVarCppName, inAttribute_mOverridingCategoryReaderFormalParameterList, inAttribute_mTypedAttributeList, inAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
   }
   return result ;
 }
@@ -16391,7 +16225,7 @@ void GALGAS_overrideCategoryReaderForGeneration::insulate (LOCATION_ARGS) {
     cPtr_overrideCategoryReaderForGeneration * p = (cPtr_overrideCategoryReaderForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_overrideCategoryReaderForGeneration) ;
     cPtr_overrideCategoryReaderForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_overrideCategoryReaderForGeneration (p->mAttribute_mhasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mReceiverType, p->mAttribute_mBaseTypeName, p->mAttribute_mOverridingCategoryReaderName, p->mAttribute_mResultType, p->mAttribute_mResultVarCppName, p->mAttribute_mOverridingCategoryReaderFormalParameterList, p->mAttribute_mTypedAttributeList, p->mAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
+    macroMyNew (r, cPtr_overrideCategoryReaderForGeneration (p->mAttribute_mHasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mReceiverType, p->mAttribute_mBaseTypeName, p->mAttribute_mOverridingCategoryReaderName, p->mAttribute_mResultType, p->mAttribute_mResultVarCppName, p->mAttribute_mOverridingCategoryReaderFormalParameterList, p->mAttribute_mTypedAttributeList, p->mAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
     macroAssignSharedObject (mObjectPtr, r) ;
     macroDetachSharedObject (r) ;
   }
@@ -16546,7 +16380,7 @@ GALGAS_semanticInstructionListForGeneration cPtr_overrideCategoryReaderForGenera
 //                            Pointer class for @overrideCategoryReaderForGeneration class                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_overrideCategoryReaderForGeneration::cPtr_overrideCategoryReaderForGeneration (const GALGAS_bool & in_mhasHeader,
+cPtr_overrideCategoryReaderForGeneration::cPtr_overrideCategoryReaderForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                                     const GALGAS_string & in_mImplementationCppFileName,
                                                                                     const GALGAS_unifiedTypeMapProxy & in_mReceiverType,
                                                                                     const GALGAS_string & in_mBaseTypeName,
@@ -16557,7 +16391,7 @@ cPtr_overrideCategoryReaderForGeneration::cPtr_overrideCategoryReaderForGenerati
                                                                                     const GALGAS_typedAttributeList & in_mTypedAttributeList,
                                                                                     const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration
                                                                                     COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationWithHeaderForGeneration (in_mhasHeader, in_mImplementationCppFileName COMMA_THERE),
+cPtr_semanticDeclarationWithHeaderForGeneration (in_mHasHeader, in_mImplementationCppFileName COMMA_THERE),
 mAttribute_mReceiverType (in_mReceiverType),
 mAttribute_mBaseTypeName (in_mBaseTypeName),
 mAttribute_mOverridingCategoryReaderName (in_mOverridingCategoryReaderName),
@@ -16577,7 +16411,7 @@ const C_galgas_type_descriptor * cPtr_overrideCategoryReaderForGeneration::class
 void cPtr_overrideCategoryReaderForGeneration::description (C_String & ioString,
                                                             const int32_t inIndentation) const {
   ioString << "[@overrideCategoryReaderForGeneration:" ;
-  mAttribute_mhasHeader.description (ioString, inIndentation+1) ;
+  mAttribute_mHasHeader.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mImplementationCppFileName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -16653,7 +16487,7 @@ typeComparisonResult cPtr_overridingCategoryMethodForGeneration::dynamicObjectCo
   const cPtr_overridingCategoryMethodForGeneration * p = (const cPtr_overridingCategoryMethodForGeneration *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_overridingCategoryMethodForGeneration) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mhasHeader.objectCompare (p->mAttribute_mhasHeader) ;
+    result = mAttribute_mHasHeader.objectCompare (p->mAttribute_mHasHeader) ;
   }
   if (kOperandEqual == result) {
     result = mAttribute_mImplementationCppFileName.objectCompare (p->mAttribute_mImplementationCppFileName) ;
@@ -16727,7 +16561,7 @@ GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_overridingCategoryMethodForGeneration GALGAS_overridingCategoryMethodForGeneration::constructor_new (const GALGAS_bool & inAttribute_mhasHeader,
+GALGAS_overridingCategoryMethodForGeneration GALGAS_overridingCategoryMethodForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                                                             const GALGAS_string & inAttribute_mImplementationCppFileName,
                                                                                                             const GALGAS_unifiedTypeMapProxy & inAttribute_mReceiverType,
                                                                                                             const GALGAS_string & inAttribute_mBaseTypeName,
@@ -16737,8 +16571,8 @@ GALGAS_overridingCategoryMethodForGeneration GALGAS_overridingCategoryMethodForG
                                                                                                             const GALGAS_semanticInstructionListForGeneration & inAttribute_mSemanticInstructionListForGeneration
                                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_overridingCategoryMethodForGeneration result ;
-  if (inAttribute_mhasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mBaseTypeName.isValid () && inAttribute_mCategoryMethodName.isValid () && inAttribute_mCategoryMethodFormalParameterList.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mSemanticInstructionListForGeneration.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_overridingCategoryMethodForGeneration (inAttribute_mhasHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mBaseTypeName, inAttribute_mCategoryMethodName, inAttribute_mCategoryMethodFormalParameterList, inAttribute_mTypedAttributeList, inAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
+  if (inAttribute_mHasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mBaseTypeName.isValid () && inAttribute_mCategoryMethodName.isValid () && inAttribute_mCategoryMethodFormalParameterList.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mSemanticInstructionListForGeneration.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_overridingCategoryMethodForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mBaseTypeName, inAttribute_mCategoryMethodName, inAttribute_mCategoryMethodFormalParameterList, inAttribute_mTypedAttributeList, inAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
   }
   return result ;
 }
@@ -16751,7 +16585,7 @@ void GALGAS_overridingCategoryMethodForGeneration::insulate (LOCATION_ARGS) {
     cPtr_overridingCategoryMethodForGeneration * p = (cPtr_overridingCategoryMethodForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_overridingCategoryMethodForGeneration) ;
     cPtr_overridingCategoryMethodForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_overridingCategoryMethodForGeneration (p->mAttribute_mhasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mReceiverType, p->mAttribute_mBaseTypeName, p->mAttribute_mCategoryMethodName, p->mAttribute_mCategoryMethodFormalParameterList, p->mAttribute_mTypedAttributeList, p->mAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
+    macroMyNew (r, cPtr_overridingCategoryMethodForGeneration (p->mAttribute_mHasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mReceiverType, p->mAttribute_mBaseTypeName, p->mAttribute_mCategoryMethodName, p->mAttribute_mCategoryMethodFormalParameterList, p->mAttribute_mTypedAttributeList, p->mAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
     macroAssignSharedObject (mObjectPtr, r) ;
     macroDetachSharedObject (r) ;
   }
@@ -16870,7 +16704,7 @@ GALGAS_semanticInstructionListForGeneration cPtr_overridingCategoryMethodForGene
 //                           Pointer class for @overridingCategoryMethodForGeneration class                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_overridingCategoryMethodForGeneration::cPtr_overridingCategoryMethodForGeneration (const GALGAS_bool & in_mhasHeader,
+cPtr_overridingCategoryMethodForGeneration::cPtr_overridingCategoryMethodForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                                         const GALGAS_string & in_mImplementationCppFileName,
                                                                                         const GALGAS_unifiedTypeMapProxy & in_mReceiverType,
                                                                                         const GALGAS_string & in_mBaseTypeName,
@@ -16879,7 +16713,7 @@ cPtr_overridingCategoryMethodForGeneration::cPtr_overridingCategoryMethodForGene
                                                                                         const GALGAS_typedAttributeList & in_mTypedAttributeList,
                                                                                         const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration
                                                                                         COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationWithHeaderForGeneration (in_mhasHeader, in_mImplementationCppFileName COMMA_THERE),
+cPtr_semanticDeclarationWithHeaderForGeneration (in_mHasHeader, in_mImplementationCppFileName COMMA_THERE),
 mAttribute_mReceiverType (in_mReceiverType),
 mAttribute_mBaseTypeName (in_mBaseTypeName),
 mAttribute_mCategoryMethodName (in_mCategoryMethodName),
@@ -16897,7 +16731,7 @@ const C_galgas_type_descriptor * cPtr_overridingCategoryMethodForGeneration::cla
 void cPtr_overridingCategoryMethodForGeneration::description (C_String & ioString,
                                                               const int32_t inIndentation) const {
   ioString << "[@overridingCategoryMethodForGeneration:" ;
-  mAttribute_mhasHeader.description (ioString, inIndentation+1) ;
+  mAttribute_mHasHeader.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mImplementationCppFileName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -16969,7 +16803,7 @@ typeComparisonResult cPtr_overridingCategoryModifierForGeneration::dynamicObject
   const cPtr_overridingCategoryModifierForGeneration * p = (const cPtr_overridingCategoryModifierForGeneration *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_overridingCategoryModifierForGeneration) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mhasHeader.objectCompare (p->mAttribute_mhasHeader) ;
+    result = mAttribute_mHasHeader.objectCompare (p->mAttribute_mHasHeader) ;
   }
   if (kOperandEqual == result) {
     result = mAttribute_mImplementationCppFileName.objectCompare (p->mAttribute_mImplementationCppFileName) ;
@@ -17043,7 +16877,7 @@ GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_overridingCategoryModifierForGeneration GALGAS_overridingCategoryModifierForGeneration::constructor_new (const GALGAS_bool & inAttribute_mhasHeader,
+GALGAS_overridingCategoryModifierForGeneration GALGAS_overridingCategoryModifierForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                                                                 const GALGAS_string & inAttribute_mImplementationCppFileName,
                                                                                                                 const GALGAS_unifiedTypeMapProxy & inAttribute_mReceiverType,
                                                                                                                 const GALGAS_string & inAttribute_mBaseTypeName,
@@ -17053,8 +16887,8 @@ GALGAS_overridingCategoryModifierForGeneration GALGAS_overridingCategoryModifier
                                                                                                                 const GALGAS_semanticInstructionListForGeneration & inAttribute_mSemanticInstructionListForGeneration
                                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_overridingCategoryModifierForGeneration result ;
-  if (inAttribute_mhasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mBaseTypeName.isValid () && inAttribute_mCategoryModifierName.isValid () && inAttribute_mCategoryModifierFormalParameterList.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mSemanticInstructionListForGeneration.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_overridingCategoryModifierForGeneration (inAttribute_mhasHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mBaseTypeName, inAttribute_mCategoryModifierName, inAttribute_mCategoryModifierFormalParameterList, inAttribute_mTypedAttributeList, inAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
+  if (inAttribute_mHasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mBaseTypeName.isValid () && inAttribute_mCategoryModifierName.isValid () && inAttribute_mCategoryModifierFormalParameterList.isValid () && inAttribute_mTypedAttributeList.isValid () && inAttribute_mSemanticInstructionListForGeneration.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_overridingCategoryModifierForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mBaseTypeName, inAttribute_mCategoryModifierName, inAttribute_mCategoryModifierFormalParameterList, inAttribute_mTypedAttributeList, inAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
   }
   return result ;
 }
@@ -17067,7 +16901,7 @@ void GALGAS_overridingCategoryModifierForGeneration::insulate (LOCATION_ARGS) {
     cPtr_overridingCategoryModifierForGeneration * p = (cPtr_overridingCategoryModifierForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_overridingCategoryModifierForGeneration) ;
     cPtr_overridingCategoryModifierForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_overridingCategoryModifierForGeneration (p->mAttribute_mhasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mReceiverType, p->mAttribute_mBaseTypeName, p->mAttribute_mCategoryModifierName, p->mAttribute_mCategoryModifierFormalParameterList, p->mAttribute_mTypedAttributeList, p->mAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
+    macroMyNew (r, cPtr_overridingCategoryModifierForGeneration (p->mAttribute_mHasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mReceiverType, p->mAttribute_mBaseTypeName, p->mAttribute_mCategoryModifierName, p->mAttribute_mCategoryModifierFormalParameterList, p->mAttribute_mTypedAttributeList, p->mAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
     macroAssignSharedObject (mObjectPtr, r) ;
     macroDetachSharedObject (r) ;
   }
@@ -17186,7 +17020,7 @@ GALGAS_semanticInstructionListForGeneration cPtr_overridingCategoryModifierForGe
 //                          Pointer class for @overridingCategoryModifierForGeneration class                           *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_overridingCategoryModifierForGeneration::cPtr_overridingCategoryModifierForGeneration (const GALGAS_bool & in_mhasHeader,
+cPtr_overridingCategoryModifierForGeneration::cPtr_overridingCategoryModifierForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                                             const GALGAS_string & in_mImplementationCppFileName,
                                                                                             const GALGAS_unifiedTypeMapProxy & in_mReceiverType,
                                                                                             const GALGAS_string & in_mBaseTypeName,
@@ -17195,7 +17029,7 @@ cPtr_overridingCategoryModifierForGeneration::cPtr_overridingCategoryModifierFor
                                                                                             const GALGAS_typedAttributeList & in_mTypedAttributeList,
                                                                                             const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration
                                                                                             COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationWithHeaderForGeneration (in_mhasHeader, in_mImplementationCppFileName COMMA_THERE),
+cPtr_semanticDeclarationWithHeaderForGeneration (in_mHasHeader, in_mImplementationCppFileName COMMA_THERE),
 mAttribute_mReceiverType (in_mReceiverType),
 mAttribute_mBaseTypeName (in_mBaseTypeName),
 mAttribute_mCategoryModifierName (in_mCategoryModifierName),
@@ -17213,7 +17047,7 @@ const C_galgas_type_descriptor * cPtr_overridingCategoryModifierForGeneration::c
 void cPtr_overridingCategoryModifierForGeneration::description (C_String & ioString,
                                                                 const int32_t inIndentation) const {
   ioString << "[@overridingCategoryModifierForGeneration:" ;
-  mAttribute_mhasHeader.description (ioString, inIndentation+1) ;
+  mAttribute_mHasHeader.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mImplementationCppFileName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -17285,7 +17119,7 @@ typeComparisonResult cPtr_routinePrototypeDeclarationForGeneration::dynamicObjec
   const cPtr_routinePrototypeDeclarationForGeneration * p = (const cPtr_routinePrototypeDeclarationForGeneration *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_routinePrototypeDeclarationForGeneration) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mhasHeader.objectCompare (p->mAttribute_mhasHeader) ;
+    result = mAttribute_mHasHeader.objectCompare (p->mAttribute_mHasHeader) ;
   }
   if (kOperandEqual == result) {
     result = mAttribute_mImplementationCppFileName.objectCompare (p->mAttribute_mImplementationCppFileName) ;
@@ -17343,14 +17177,14 @@ GALGAS_semanticDeclarationWithHeaderForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_routinePrototypeDeclarationForGeneration GALGAS_routinePrototypeDeclarationForGeneration::constructor_new (const GALGAS_bool & inAttribute_mhasHeader,
+GALGAS_routinePrototypeDeclarationForGeneration GALGAS_routinePrototypeDeclarationForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                                                                   const GALGAS_string & inAttribute_mImplementationCppFileName,
                                                                                                                   const GALGAS_string & inAttribute_mRoutineName,
                                                                                                                   const GALGAS_formalParameterListForGeneration & inAttribute_mFormalArgumentList
                                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_routinePrototypeDeclarationForGeneration result ;
-  if (inAttribute_mhasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mRoutineName.isValid () && inAttribute_mFormalArgumentList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_routinePrototypeDeclarationForGeneration (inAttribute_mhasHeader, inAttribute_mImplementationCppFileName, inAttribute_mRoutineName, inAttribute_mFormalArgumentList COMMA_THERE)) ;
+  if (inAttribute_mHasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mRoutineName.isValid () && inAttribute_mFormalArgumentList.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_routinePrototypeDeclarationForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mRoutineName, inAttribute_mFormalArgumentList COMMA_THERE)) ;
   }
   return result ;
 }
@@ -17363,7 +17197,7 @@ void GALGAS_routinePrototypeDeclarationForGeneration::insulate (LOCATION_ARGS) {
     cPtr_routinePrototypeDeclarationForGeneration * p = (cPtr_routinePrototypeDeclarationForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_routinePrototypeDeclarationForGeneration) ;
     cPtr_routinePrototypeDeclarationForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_routinePrototypeDeclarationForGeneration (p->mAttribute_mhasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mRoutineName, p->mAttribute_mFormalArgumentList COMMA_THERE)) ;
+    macroMyNew (r, cPtr_routinePrototypeDeclarationForGeneration (p->mAttribute_mHasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mRoutineName, p->mAttribute_mFormalArgumentList COMMA_THERE)) ;
     macroAssignSharedObject (mObjectPtr, r) ;
     macroDetachSharedObject (r) ;
   }
@@ -17410,12 +17244,12 @@ GALGAS_formalParameterListForGeneration cPtr_routinePrototypeDeclarationForGener
 //                          Pointer class for @routinePrototypeDeclarationForGeneration class                          *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_routinePrototypeDeclarationForGeneration::cPtr_routinePrototypeDeclarationForGeneration (const GALGAS_bool & in_mhasHeader,
+cPtr_routinePrototypeDeclarationForGeneration::cPtr_routinePrototypeDeclarationForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                                               const GALGAS_string & in_mImplementationCppFileName,
                                                                                               const GALGAS_string & in_mRoutineName,
                                                                                               const GALGAS_formalParameterListForGeneration & in_mFormalArgumentList
                                                                                               COMMA_LOCATION_ARGS) :
-cPtr_semanticDeclarationWithHeaderForGeneration (in_mhasHeader, in_mImplementationCppFileName COMMA_THERE),
+cPtr_semanticDeclarationWithHeaderForGeneration (in_mHasHeader, in_mImplementationCppFileName COMMA_THERE),
 mAttribute_mRoutineName (in_mRoutineName),
 mAttribute_mFormalArgumentList (in_mFormalArgumentList) {
 }
@@ -17429,7 +17263,7 @@ const C_galgas_type_descriptor * cPtr_routinePrototypeDeclarationForGeneration::
 void cPtr_routinePrototypeDeclarationForGeneration::description (C_String & ioString,
                                                                  const int32_t inIndentation) const {
   ioString << "[@routinePrototypeDeclarationForGeneration:" ;
-  mAttribute_mhasHeader.description (ioString, inIndentation+1) ;
+  mAttribute_mHasHeader.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mImplementationCppFileName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -17493,7 +17327,7 @@ typeComparisonResult cPtr_routineImplementationForGeneration::dynamicObjectCompa
   const cPtr_routineImplementationForGeneration * p = (const cPtr_routineImplementationForGeneration *) inOperandPtr ;
   macroValidSharedObject (p, cPtr_routineImplementationForGeneration) ;
   if (kOperandEqual == result) {
-    result = mAttribute_mhasHeader.objectCompare (p->mAttribute_mhasHeader) ;
+    result = mAttribute_mHasHeader.objectCompare (p->mAttribute_mHasHeader) ;
   }
   if (kOperandEqual == result) {
     result = mAttribute_mImplementationCppFileName.objectCompare (p->mAttribute_mImplementationCppFileName) ;
@@ -17555,15 +17389,15 @@ GALGAS_routinePrototypeDeclarationForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_routineImplementationForGeneration GALGAS_routineImplementationForGeneration::constructor_new (const GALGAS_bool & inAttribute_mhasHeader,
+GALGAS_routineImplementationForGeneration GALGAS_routineImplementationForGeneration::constructor_new (const GALGAS_bool & inAttribute_mHasHeader,
                                                                                                       const GALGAS_string & inAttribute_mImplementationCppFileName,
                                                                                                       const GALGAS_string & inAttribute_mRoutineName,
                                                                                                       const GALGAS_formalParameterListForGeneration & inAttribute_mFormalArgumentList,
                                                                                                       const GALGAS_semanticInstructionListForGeneration & inAttribute_mRoutineInstructionList
                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_routineImplementationForGeneration result ;
-  if (inAttribute_mhasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mRoutineName.isValid () && inAttribute_mFormalArgumentList.isValid () && inAttribute_mRoutineInstructionList.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_routineImplementationForGeneration (inAttribute_mhasHeader, inAttribute_mImplementationCppFileName, inAttribute_mRoutineName, inAttribute_mFormalArgumentList, inAttribute_mRoutineInstructionList COMMA_THERE)) ;
+  if (inAttribute_mHasHeader.isValid () && inAttribute_mImplementationCppFileName.isValid () && inAttribute_mRoutineName.isValid () && inAttribute_mFormalArgumentList.isValid () && inAttribute_mRoutineInstructionList.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_routineImplementationForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mRoutineName, inAttribute_mFormalArgumentList, inAttribute_mRoutineInstructionList COMMA_THERE)) ;
   }
   return result ;
 }
@@ -17576,7 +17410,7 @@ void GALGAS_routineImplementationForGeneration::insulate (LOCATION_ARGS) {
     cPtr_routineImplementationForGeneration * p = (cPtr_routineImplementationForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_routineImplementationForGeneration) ;
     cPtr_routineImplementationForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_routineImplementationForGeneration (p->mAttribute_mhasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mRoutineName, p->mAttribute_mFormalArgumentList, p->mAttribute_mRoutineInstructionList COMMA_THERE)) ;
+    macroMyNew (r, cPtr_routineImplementationForGeneration (p->mAttribute_mHasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mRoutineName, p->mAttribute_mFormalArgumentList, p->mAttribute_mRoutineInstructionList COMMA_THERE)) ;
     macroAssignSharedObject (mObjectPtr, r) ;
     macroDetachSharedObject (r) ;
   }
@@ -17605,13 +17439,13 @@ GALGAS_semanticInstructionListForGeneration cPtr_routineImplementationForGenerat
 //                             Pointer class for @routineImplementationForGeneration class                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_routineImplementationForGeneration::cPtr_routineImplementationForGeneration (const GALGAS_bool & in_mhasHeader,
+cPtr_routineImplementationForGeneration::cPtr_routineImplementationForGeneration (const GALGAS_bool & in_mHasHeader,
                                                                                   const GALGAS_string & in_mImplementationCppFileName,
                                                                                   const GALGAS_string & in_mRoutineName,
                                                                                   const GALGAS_formalParameterListForGeneration & in_mFormalArgumentList,
                                                                                   const GALGAS_semanticInstructionListForGeneration & in_mRoutineInstructionList
                                                                                   COMMA_LOCATION_ARGS) :
-cPtr_routinePrototypeDeclarationForGeneration (in_mhasHeader, in_mImplementationCppFileName, in_mRoutineName, in_mFormalArgumentList COMMA_THERE),
+cPtr_routinePrototypeDeclarationForGeneration (in_mHasHeader, in_mImplementationCppFileName, in_mRoutineName, in_mFormalArgumentList COMMA_THERE),
 mAttribute_mRoutineInstructionList (in_mRoutineInstructionList) {
 }
 
@@ -17624,7 +17458,7 @@ const C_galgas_type_descriptor * cPtr_routineImplementationForGeneration::classD
 void cPtr_routineImplementationForGeneration::description (C_String & ioString,
                                                            const int32_t inIndentation) const {
   ioString << "[@routineImplementationForGeneration:" ;
-  mAttribute_mhasHeader.description (ioString, inIndentation+1) ;
+  mAttribute_mHasHeader.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mImplementationCppFileName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -21696,6 +21530,216 @@ GALGAS_andExpressionAST GALGAS_andExpressionAST::extractObject (const GALGAS_obj
       result = *p ;
     }else{
       inCompiler->castError ("andExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//   Object comparison                                                         *
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult cPtr_andShortExpressionAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_andShortExpressionAST * p = (const cPtr_andShortExpressionAST *) inOperandPtr ;
+  macroValidSharedObject (p, cPtr_andShortExpressionAST) ;
+  if (kOperandEqual == result) {
+    result = mAttribute_mOperatorLocation.objectCompare (p->mAttribute_mOperatorLocation) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mLeftExpression.objectCompare (p->mAttribute_mLeftExpression) ;
+  }
+  if (kOperandEqual == result) {
+    result = mAttribute_mRightExpression.objectCompare (p->mAttribute_mRightExpression) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+typeComparisonResult GALGAS_andShortExpressionAST::objectCompare (const GALGAS_andShortExpressionAST & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_andShortExpressionAST::GALGAS_andShortExpressionAST (void) :
+GALGAS_semanticExpressionAST () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_andShortExpressionAST::GALGAS_andShortExpressionAST (const cPtr_andShortExpressionAST * inSourcePtr) :
+GALGAS_semanticExpressionAST (inSourcePtr) {
+  macroNullOrValidSharedObject (inSourcePtr, cPtr_andShortExpressionAST) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_andShortExpressionAST GALGAS_andShortExpressionAST::constructor_new (const GALGAS_location & inAttribute_mOperatorLocation,
+                                                                            const GALGAS_semanticExpressionAST & inAttribute_mLeftExpression,
+                                                                            const GALGAS_semanticExpressionAST & inAttribute_mRightExpression
+                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_andShortExpressionAST result ;
+  if (inAttribute_mOperatorLocation.isValid () && inAttribute_mLeftExpression.isValid () && inAttribute_mRightExpression.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_andShortExpressionAST (inAttribute_mOperatorLocation, inAttribute_mLeftExpression, inAttribute_mRightExpression COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_andShortExpressionAST::insulate (LOCATION_ARGS) {
+  macroMutexLock (gInsulationMutex) ;
+  if (isValid () && (mObjectPtr->retainCount () > 1)) {
+    cPtr_andShortExpressionAST * p = (cPtr_andShortExpressionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_andShortExpressionAST) ;
+    cPtr_andShortExpressionAST * r = NULL ;
+    macroMyNew (r, cPtr_andShortExpressionAST (p->mAttribute_mOperatorLocation, p->mAttribute_mLeftExpression, p->mAttribute_mRightExpression COMMA_THERE)) ;
+    macroAssignSharedObject (mObjectPtr, r) ;
+    macroDetachSharedObject (r) ;
+  }
+  macroMutexUnlock (gInsulationMutex) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location GALGAS_andShortExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+  GALGAS_location result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_andShortExpressionAST * p = (const cPtr_andShortExpressionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_andShortExpressionAST) ;
+    result = p->mAttribute_mOperatorLocation ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_location cPtr_andShortExpressionAST::reader_mOperatorLocation (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mOperatorLocation ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_semanticExpressionAST GALGAS_andShortExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticExpressionAST result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_andShortExpressionAST * p = (const cPtr_andShortExpressionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_andShortExpressionAST) ;
+    result = p->mAttribute_mLeftExpression ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_semanticExpressionAST cPtr_andShortExpressionAST::reader_mLeftExpression (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mLeftExpression ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_semanticExpressionAST GALGAS_andShortExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+  GALGAS_semanticExpressionAST result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_andShortExpressionAST * p = (const cPtr_andShortExpressionAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_andShortExpressionAST) ;
+    result = p->mAttribute_mRightExpression ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_semanticExpressionAST cPtr_andShortExpressionAST::reader_mRightExpression (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mRightExpression ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                   Pointer class for @andShortExpressionAST class                                    *
+//---------------------------------------------------------------------------------------------------------------------*
+
+cPtr_andShortExpressionAST::cPtr_andShortExpressionAST (const GALGAS_location & in_mOperatorLocation,
+                                                        const GALGAS_semanticExpressionAST & in_mLeftExpression,
+                                                        const GALGAS_semanticExpressionAST & in_mRightExpression
+                                                        COMMA_LOCATION_ARGS) :
+cPtr_semanticExpressionAST (THERE),
+mAttribute_mOperatorLocation (in_mOperatorLocation),
+mAttribute_mLeftExpression (in_mLeftExpression),
+mAttribute_mRightExpression (in_mRightExpression) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * cPtr_andShortExpressionAST::classDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_andShortExpressionAST ;
+}
+
+void cPtr_andShortExpressionAST::description (C_String & ioString,
+                                              const int32_t inIndentation) const {
+  ioString << "[@andShortExpressionAST:" ;
+  mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mLeftExpression.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
+  mAttribute_mRightExpression.description (ioString, inIndentation+1) ;
+  ioString << "]" ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                             @andShortExpressionAST type                                             *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_andShortExpressionAST ("andShortExpressionAST",
+                                              & kTypeDescriptor_GALGAS_semanticExpressionAST) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_andShortExpressionAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_andShortExpressionAST ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_andShortExpressionAST::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_andShortExpressionAST (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_andShortExpressionAST GALGAS_andShortExpressionAST::extractObject (const GALGAS_object & inObject,
+                                                                          C_Compiler * inCompiler
+                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_andShortExpressionAST result ;
+  const GALGAS_andShortExpressionAST * p = (const GALGAS_andShortExpressionAST *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_andShortExpressionAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("andShortExpressionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

@@ -45,9 +45,9 @@ class GALGAS_semanticDeclarationWithHeaderForGeneration : public GALGAS_semantic
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mImplementationCppFileName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_mHasHeader (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_mhasHeader (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mImplementationCppFileName (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection

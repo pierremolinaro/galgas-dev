@@ -25,12 +25,10 @@
 #include "enum-formalArgumentPassingModeAST.h"
 #include "enum-headerKind.h"
 #include "enum-lexicalTypeEnum.h"
-#include "enum-predefinedTypeKindEnum.h"
 #include "func-getPBXFileReferenceKey.h"
 #include "getter-formalArgumentPassingModeAST-correspondingEffectiveParameterString.h"
 #include "getter-location-commaSourceFile.h"
 #include "getter-location-sourceFile.h"
-#include "getter-predefinedTypeKindEnum-defaultConstructorName.h"
 #include "getter-semanticDeclarationForGeneration-appendPrimitiveTypeDeclaration.h"
 #include "getter-semanticDeclarationForGeneration-appendTypeGenericImplementation.h"
 #include "getter-semanticDeclarationForGeneration-hasCppHeaderFile.h"
@@ -94,7 +92,6 @@
 #include "method-semanticInstructionForGeneration-generateInstruction.h"
 #include "method-syntaxInstructionAST-analyzeSyntaxInstruction.h"
 #include "method-syntaxInstructionAST-transformInstruction.h"
-#include "option-galgas_cli_options.h"
 #include "sortedlist-semanticDeclarationSortedListForGeneration.h"
 #include "struct-XcodeObjectReferenceList-element.h"
 #include "struct-XcodeProjectDescription.h"
@@ -105,6 +102,7 @@
 #include "struct-Xcode_PBXNativeTarget_list-element.h"
 #include "struct-Xcode_PBXResourcesBuildPhase_list-element.h"
 #include "struct-Xcode_PBXSourcesBuildPhase_list-element.h"
+#include "struct-Xcode_PBXVariantGroup_list-element.h"
 #include "struct-Xcode_XCBuildConfiguration_list-element.h"
 #include "struct-Xcode_targetDependencyDescription_list-element.h"
 #include "struct-actualParameterListAST-element.h"
@@ -163,60 +161,6 @@
 #include "struct-textMacroList-element.h"
 #include "struct-tokenSortedlist-element.h"
 #include "uniquemap-variableMap.h"
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                          Category Reader '@predefinedTypeKindEnum defaultConstructorName'                           *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string categoryReader_defaultConstructorName (const GALGAS_predefinedTypeKindEnum & inObject,
-                                                     C_Compiler * /* inCompiler */
-                                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outName ; // Returned variable
-  const GALGAS_predefinedTypeKindEnum temp_0 = inObject ;
-  if (temp_0.isValid ()) {
-    switch (temp_0.enumValue ()) {
-    case GALGAS_predefinedTypeKindEnum::kNotBuilt:
-      break ;
-    case GALGAS_predefinedTypeKindEnum::kEnum_predefined_5F_bool: case GALGAS_predefinedTypeKindEnum::kEnum_predefined_5F_char: case GALGAS_predefinedTypeKindEnum::kEnum_predefined_5F_double: case GALGAS_predefinedTypeKindEnum::kEnum_predefined_5F_sint: case GALGAS_predefinedTypeKindEnum::kEnum_predefined_5F_sint_36__34_: case GALGAS_predefinedTypeKindEnum::kEnum_predefined_5F_string: case GALGAS_predefinedTypeKindEnum::kEnum_predefined_5F_uint: case GALGAS_predefinedTypeKindEnum::kEnum_predefined_5F_uint_36__34_: {
-      result_outName = GALGAS_string ("default") ;
-      } break ;
-    case GALGAS_predefinedTypeKindEnum::kEnum_predefined_5F_binaryset: {
-      result_outName = GALGAS_string ("emptyBinarySet") ;
-      } break ;
-    case GALGAS_predefinedTypeKindEnum::kEnum_predefined_5F_stringset: {
-      result_outName = GALGAS_string ("emptySet") ;
-      } break ;
-    case GALGAS_predefinedTypeKindEnum::kEnum_predefined_5F_type: {
-      result_outName = GALGAS_string::makeEmptyString () ;
-      } break ;
-    case GALGAS_predefinedTypeKindEnum::kEnum_predefined_5F_application: {
-      result_outName = GALGAS_string::makeEmptyString () ;
-      } break ;
-    case GALGAS_predefinedTypeKindEnum::kEnum_predefined_5F_data: {
-      result_outName = GALGAS_string ("emptyData") ;
-      } break ;
-    case GALGAS_predefinedTypeKindEnum::kEnum_predefined_5F_location: {
-      result_outName = GALGAS_string ("nowhere") ;
-      } break ;
-    case GALGAS_predefinedTypeKindEnum::kEnum_predefined_5F_function: {
-      result_outName = GALGAS_string::makeEmptyString () ;
-      } break ;
-    case GALGAS_predefinedTypeKindEnum::kEnum_predefined_5F_object: {
-      result_outName = GALGAS_string::makeEmptyString () ;
-      } break ;
-    case GALGAS_predefinedTypeKindEnum::kEnum_predefined_5F_filewrapper: {
-      result_outName = GALGAS_string::makeEmptyString () ;
-      } break ;
-    }
-  }
-//---
-  return result_outName ;
-}
-
-
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11516,6 +11460,160 @@ GALGAS_Xcode_5F_targetDependencyDescription_5F_list_2D_element GALGAS_Xcode_5F_t
       result = *p ;
     }else{
       inCompiler->castError ("Xcode_targetDependencyDescription_list-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_Xcode_5F_PBXVariantGroup_5F_list_2D_element::GALGAS_Xcode_5F_PBXVariantGroup_5F_list_2D_element (void) :
+mAttribute_mPBXVariantKey (),
+mAttribute_mPBXFileReferenceKey (),
+mAttribute_mName () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_Xcode_5F_PBXVariantGroup_5F_list_2D_element::~ GALGAS_Xcode_5F_PBXVariantGroup_5F_list_2D_element (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_Xcode_5F_PBXVariantGroup_5F_list_2D_element::GALGAS_Xcode_5F_PBXVariantGroup_5F_list_2D_element (const GALGAS_string & inOperand0,
+                                                                                                        const GALGAS_string & inOperand1,
+                                                                                                        const GALGAS_string & inOperand2) :
+mAttribute_mPBXVariantKey (inOperand0),
+mAttribute_mPBXFileReferenceKey (inOperand1),
+mAttribute_mName (inOperand2) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_Xcode_5F_PBXVariantGroup_5F_list_2D_element GALGAS_Xcode_5F_PBXVariantGroup_5F_list_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_Xcode_5F_PBXVariantGroup_5F_list_2D_element (GALGAS_string::constructor_default (HERE),
+                                                             GALGAS_string::constructor_default (HERE),
+                                                             GALGAS_string::constructor_default (HERE)) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_Xcode_5F_PBXVariantGroup_5F_list_2D_element GALGAS_Xcode_5F_PBXVariantGroup_5F_list_2D_element::constructor_new (const GALGAS_string & inOperand0,
+                                                                                                                        const GALGAS_string & inOperand1,
+                                                                                                                        const GALGAS_string & inOperand2 
+                                                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_Xcode_5F_PBXVariantGroup_5F_list_2D_element result ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
+    result = GALGAS_Xcode_5F_PBXVariantGroup_5F_list_2D_element (inOperand0, inOperand1, inOperand2) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult GALGAS_Xcode_5F_PBXVariantGroup_5F_list_2D_element::objectCompare (const GALGAS_Xcode_5F_PBXVariantGroup_5F_list_2D_element & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
+  if (result == kOperandEqual) {
+    result = mAttribute_mPBXVariantKey.objectCompare (inOperand.mAttribute_mPBXVariantKey) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mPBXFileReferenceKey.objectCompare (inOperand.mAttribute_mPBXFileReferenceKey) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mName.objectCompare (inOperand.mAttribute_mName) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool GALGAS_Xcode_5F_PBXVariantGroup_5F_list_2D_element::isValid (void) const {
+  return mAttribute_mPBXVariantKey.isValid () && mAttribute_mPBXFileReferenceKey.isValid () && mAttribute_mName.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_Xcode_5F_PBXVariantGroup_5F_list_2D_element::drop (void) {
+  mAttribute_mPBXVariantKey.drop () ;
+  mAttribute_mPBXFileReferenceKey.drop () ;
+  mAttribute_mName.drop () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_Xcode_5F_PBXVariantGroup_5F_list_2D_element::description (C_String & ioString,
+                                                                      const int32_t inIndentation) const {
+  ioString << "<struct @Xcode_PBXVariantGroup_list-element:" ;
+  if (! isValid ()) {
+    ioString << " not built" ;
+  }else{
+    mAttribute_mPBXVariantKey.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mPBXFileReferenceKey.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mName.description (ioString, inIndentation+1) ;
+  }
+  ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_Xcode_5F_PBXVariantGroup_5F_list_2D_element::reader_mPBXVariantKey (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mPBXVariantKey ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_Xcode_5F_PBXVariantGroup_5F_list_2D_element::reader_mPBXFileReferenceKey (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mPBXFileReferenceKey ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_Xcode_5F_PBXVariantGroup_5F_list_2D_element::reader_mName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mName ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                      @Xcode_PBXVariantGroup_list-element type                                       *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_Xcode_5F_PBXVariantGroup_5F_list_2D_element ("Xcode_PBXVariantGroup_list-element",
+                                                                    NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_Xcode_5F_PBXVariantGroup_5F_list_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_Xcode_5F_PBXVariantGroup_5F_list_2D_element ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_Xcode_5F_PBXVariantGroup_5F_list_2D_element::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_Xcode_5F_PBXVariantGroup_5F_list_2D_element (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_Xcode_5F_PBXVariantGroup_5F_list_2D_element GALGAS_Xcode_5F_PBXVariantGroup_5F_list_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                                                      C_Compiler * inCompiler
+                                                                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_Xcode_5F_PBXVariantGroup_5F_list_2D_element result ;
+  const GALGAS_Xcode_5F_PBXVariantGroup_5F_list_2D_element * p = (const GALGAS_Xcode_5F_PBXVariantGroup_5F_list_2D_element *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_Xcode_5F_PBXVariantGroup_5F_list_2D_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("Xcode_PBXVariantGroup_list-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

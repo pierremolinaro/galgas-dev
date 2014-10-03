@@ -130,7 +130,6 @@
 #include "map-styleMap.h"
 #include "map-templateVariableMap.h"
 #include "map-terminalMap.h"
-#include "option-galgas_cli_options.h"
 #include "sortedlist-tokenSortedlist.h"
 #include "struct-actualInputParameterListAST-element.h"
 #include "struct-actualOutputExpressionList-element.h"

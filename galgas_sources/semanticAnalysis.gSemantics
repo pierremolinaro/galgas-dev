@@ -1568,8 +1568,8 @@ override method @optionComponentDeclarationAST semanticAnalysis
       !uintOptionMap
       !stringOptionMap
     ]
-  !""
-;
+    !""
+  ;
 end method ;
 
 #---------------------------------------------------------------------------*

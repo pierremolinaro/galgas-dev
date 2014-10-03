@@ -20,7 +20,7 @@ class cPtr_functionImplementationForGeneration : public cPtr_functionPrototypeDe
   public : GALGAS_semanticInstructionListForGeneration mAttribute_mFunctionInstructionList ;
 
 //--- Constructor
-  public : cPtr_functionImplementationForGeneration (const GALGAS_bool & in_mhasHeader,
+  public : cPtr_functionImplementationForGeneration (const GALGAS_bool & in_mHasHeader,
                                                      const GALGAS_string & in_mImplementationCppFileName,
                                                      const GALGAS_string & in_mFunctionName,
                                                      const GALGAS_formalInputParameterListForGeneration & in_mFormalArgumentList,

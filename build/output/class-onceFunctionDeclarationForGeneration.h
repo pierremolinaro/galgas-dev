@@ -23,7 +23,7 @@ class cPtr_onceFunctionDeclarationForGeneration : public cPtr_semanticDeclaratio
   public : GALGAS_semanticInstructionListForGeneration mAttribute_mFunctionInstructionList ;
 
 //--- Constructor
-  public : cPtr_onceFunctionDeclarationForGeneration (const GALGAS_bool & in_mhasHeader,
+  public : cPtr_onceFunctionDeclarationForGeneration (const GALGAS_bool & in_mHasHeader,
                                                       const GALGAS_string & in_mImplementationCppFileName,
                                                       const GALGAS_string & in_mFunctionName,
                                                       const GALGAS_unifiedTypeMapProxy & in_mReturnType,

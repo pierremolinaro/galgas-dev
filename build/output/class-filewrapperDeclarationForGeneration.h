@@ -25,7 +25,7 @@ class cPtr_filewrapperDeclarationForGeneration : public cPtr_semanticDeclaration
   public : GALGAS_filewrapperTemplateListForGeneration mAttribute_mFilewrapperTemplateListForGeneration ;
 
 //--- Constructor
-  public : cPtr_filewrapperDeclarationForGeneration (const GALGAS_bool & in_mhasHeader,
+  public : cPtr_filewrapperDeclarationForGeneration (const GALGAS_bool & in_mHasHeader,
                                                      const GALGAS_string & in_mImplementationCppFileName,
                                                      const GALGAS_string & in_mFilewrapperName,
                                                      const GALGAS_string & in_mFilewrapperAbsolutePath,

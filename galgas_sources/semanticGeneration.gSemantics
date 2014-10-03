@@ -1885,7 +1885,7 @@ override method @routineImplementationForGeneration appendSpecificImplementation
   ?!@stringset ioInclusionSet
   !@string outImplementation
 :
-  if mhasHeader then
+  if mHasHeader then
     ioInclusionSet += !"proc-" . mRoutineName ;
   end if ;
   generateProcedure
@@ -2484,6 +2484,12 @@ end method ;
 #---------------------------------------------------------------------------*
 
 #! Option component
+
+#---------------------------------------------------------------------------*
+
+override reader @optionComponentForGeneration isPredefined -> @bool outResult :
+  outResult := mIsPredefined ;
+end reader ;
 
 #---------------------------------------------------------------------------*
 
