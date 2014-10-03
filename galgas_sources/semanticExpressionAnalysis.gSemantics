@@ -1018,6 +1018,39 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @orShortExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
+  ??@analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+:
+#--- Left expression analysis
+  @semanticExpressionForGeneration leftExpression ;
+  [mLeftExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?leftExpression] ;
+#--- Right expression analysis
+  @semanticExpressionForGeneration rightExpression ;
+  [mRightExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?rightExpression] ;
+#--- Check operator availability
+  const @unifiedTypeMapProxy leftType := [leftExpression mResultType] ;
+  checkDiadicOperator
+    !leftType
+    ![rightExpression mResultType]
+    !([leftType mHandledOperatorFlags] & binaryOrOperator []) != 0
+    !"|"
+    !mOperatorLocation
+    !?rightExpression
+  ;  
+#--- Generate expression
+  outExpression := [@orShortExpressionForGeneration new
+    !leftType
+    !mOperatorLocation
+    !leftExpression
+    !rightExpression
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @andExpressionAST analyzeSemanticExpression
   ??@unifiedTypeMapProxy unused inType
   ??@analysisContext inAnalysisContext
@@ -1042,6 +1075,39 @@ override method @andExpressionAST analyzeSemanticExpression
   ;  
 #--- Generate expression
   outExpression := [@andExpressionForGeneration new
+    !leftType
+    !mOperatorLocation
+    !leftExpression
+    !rightExpression
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @andShortExpressionAST analyzeSemanticExpression
+  ??@unifiedTypeMapProxy unused inType
+  ??@analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+:
+#--- Left expression analysis
+  @semanticExpressionForGeneration leftExpression ;
+  [mLeftExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?leftExpression] ;
+#--- Right expression analysis
+  @semanticExpressionForGeneration rightExpression ;
+  [mRightExpression analyzeSemanticExpression ![@unifiedTypeMapProxy null] !inAnalysisContext !?ioVariableMap ?rightExpression] ;
+#--- Check operator availability
+  const @unifiedTypeMapProxy leftType := [leftExpression mResultType] ;
+  checkDiadicOperator
+    !leftType
+    ![rightExpression mResultType]
+    !([leftType mHandledOperatorFlags] & binaryAndOperator []) != 0
+    !"&"
+    !mOperatorLocation
+    !?rightExpression
+  ;  
+#--- Generate expression
+  outExpression := [@andShortExpressionForGeneration new
     !leftType
     !mOperatorLocation
     !leftExpression

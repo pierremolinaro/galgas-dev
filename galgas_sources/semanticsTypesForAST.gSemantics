@@ -154,7 +154,9 @@ class @lexiqueIntrospectionExpressionAST extends @semanticExpressionAST {
 
 class @concatExpressionAST,
       @orExpressionAST,
+      @orShortExpressionAST,
       @xorExpressionAST,
+      @andShortExpressionAST,
       @andExpressionAST,
       @equalExpressionAST,
       @notEqualExpressionAST,

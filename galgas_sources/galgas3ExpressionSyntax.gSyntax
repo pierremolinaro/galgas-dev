@@ -96,6 +96,13 @@ rule <casted_expression> !@semanticExpressionAST outExpression :
     outExpression := [@orExpressionAST new !operatorLocation !leftOperand !rightOperand] ;
   while
     @location operatorLocation := here ;
+    $||$ ;
+    @semanticExpressionAST leftOperand := outExpression ;
+    @semanticExpressionAST rightOperand ;
+    <relation_term> ? rightOperand ;
+    outExpression := [@orShortExpressionAST new !operatorLocation !leftOperand !rightOperand] ;
+  while
+    @location operatorLocation := here ;
     $^$ ;
     @semanticExpressionAST leftOperand := outExpression ;
     @semanticExpressionAST rightOperand ;
@@ -120,6 +127,13 @@ rule <relation_term> !@semanticExpressionAST outExpression :
     @semanticExpressionAST rightOperand ;
     <relation_factor> ? rightOperand ;
     outExpression := [@andExpressionAST new !operatorLocation !leftOperand !rightOperand] ;
+  while
+    @location operatorLocation := here ;
+    $&&$ ;
+    @semanticExpressionAST leftOperand := outExpression ;
+    @semanticExpressionAST rightOperand ;
+    <relation_factor> ? rightOperand ;
+    outExpression := [@andShortExpressionAST new !operatorLocation !leftOperand !rightOperand] ;
   end repeat ;
 end rule ;
 
