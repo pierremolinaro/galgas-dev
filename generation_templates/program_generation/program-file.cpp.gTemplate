@@ -1,17 +1,8 @@
-#include "galgas2/C_galgas_CLI_Options.h"
-#include "galgas2/C_Compiler.h"
-#include "galgas2/C_galgas_io.h"
-#include "utilities/F_DisplayException.h"
-#include "utilities/basic-allocation.h"
-#include "utilities/cpp-allocation.h"
-#include "utilities/C_PrologueEpilogue.h"
-#include "command_line_interface/F_mainForLIBPM.h"
-#include "command_line_interface/C_builtin_CLI_Options.h"
-#include "command_line_interface/F_Analyze_CLI_Options.h"
 #include "project_header.h"
-
-//---------------------------------------------------------------------------------------------------------------------*
-
+#include "command_line_interface/F_mainForLIBPM.h"
+#include "command_line_interface/F_Analyze_CLI_Options.h"
+#include "utilities/F_DisplayException.h"
+#include "galgas2/C_galgas_CLI_Options.h"
 % for () in IMPORTED_COMPONENT_LIST do
     %#include "%!mValue%.h"\n%
   end%

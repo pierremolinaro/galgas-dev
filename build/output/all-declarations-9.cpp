@@ -9821,20 +9821,11 @@ GALGAS_templateInstructionSwitchForGeneration GALGAS_templateInstructionSwitchFo
   return result ;
 }
 
-#include "galgas2/C_galgas_CLI_Options.h"
-#include "galgas2/C_Compiler.h"
-#include "galgas2/C_galgas_io.h"
-#include "utilities/F_DisplayException.h"
-#include "utilities/basic-allocation.h"
-#include "utilities/cpp-allocation.h"
-#include "utilities/C_PrologueEpilogue.h"
-#include "command_line_interface/F_mainForLIBPM.h"
-#include "command_line_interface/C_builtin_CLI_Options.h"
-#include "command_line_interface/F_Analyze_CLI_Options.h"
 #include "project_header.h"
-
-//---------------------------------------------------------------------------------------------------------------------*
-
+#include "command_line_interface/F_mainForLIBPM.h"
+#include "command_line_interface/F_Analyze_CLI_Options.h"
+#include "utilities/F_DisplayException.h"
+#include "galgas2/C_galgas_CLI_Options.h"
 #include "class-optionComponentAST.h"
 #include "class-semanticsComponentAST.h"
 #include "enum-sourceFileKind.h"
