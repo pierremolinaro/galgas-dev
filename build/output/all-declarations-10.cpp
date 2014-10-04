@@ -70,10 +70,8 @@
 #include "map-categoryReaderMapForBuildingContext.h"
 #include "map-classMethodMap.h"
 #include "map-instanceMethodMap.h"
-#include "map-modifierMap.h"
 #include "map-nonTerminalSymbolMapForGrammarAnalysis.h"
 #include "map-nonterminalMap.h"
-#include "map-readerMap.h"
 #include "map-terminalMap.h"
 #include "map-terminalSymbolsMapForGrammarAnalysis.h"
 #include "mapproxy-unifiedTypeMapProxy.h"
@@ -93,8 +91,6 @@
 #include "method-predefinedTypeAST-getClassMethodMap.h"
 #include "method-predefinedTypeAST-getEnumerationList.h"
 #include "method-predefinedTypeAST-getInstanceMethodMap.h"
-#include "method-predefinedTypeAST-getModifierMap.h"
-#include "method-predefinedTypeAST-getReaderMap.h"
 #include "method-semanticDeclarationAST-addAssociatedElement.h"
 #include "method-semanticDeclarationAST-buildCategoryListMaps.h"
 #include "method-semanticDeclarationAST-enterDeclarationInGraph.h"
@@ -111,7 +107,9 @@
 #include "method-syntaxInstructionAST-analyzeSyntaxInstruction.h"
 #include "method-syntaxInstructionAST-transformInstruction.h"
 #include "sortedlist-semanticDeclarationSortedListForGeneration.h"
+#include "struct-XcodeObjectReferenceList-element.h"
 #include "struct-XcodeProjectDescription.h"
+#include "struct-Xcode_PBXBuildFile_list-element.h"
 #include "struct-actualParameterListAST-element.h"
 #include "struct-analysisContext.h"
 #include "struct-branchBehaviourSortedListForMapOverride-element.h"
@@ -171,158 +169,6 @@
 #include "uniquemap-unifiedTypeMap.h"
 #include "uniquemap-variableMap.h"
 
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                  Category method '@predefinedTypeAST getReaderMap'                                  *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static TC_UniqueArray <categoryMethodSignature_predefinedTypeAST_getReaderMap> gCategoryMethodTable_predefinedTypeAST_getReaderMap ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void enterCategoryMethod_getReaderMap (const int32_t inClassIndex,
-                                       categoryMethodSignature_predefinedTypeAST_getReaderMap inMethod) {
-  gCategoryMethodTable_predefinedTypeAST_getReaderMap.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void callCategoryMethod_getReaderMap (const cPtr_predefinedTypeAST * inObject,
-                                      GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
-                                      GALGAS_readerMap & out_outReaderMap,
-                                      C_Compiler * inCompiler
-                                      COMMA_LOCATION_ARGS) {
-  out_outReaderMap.drop () ;
-  if (NULL != inObject) {
-    macroValidSharedObject (inObject, cPtr_predefinedTypeAST) ;
-    const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
-    const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_predefinedTypeAST_getReaderMap f = NULL ;
-    if (classIndex < gCategoryMethodTable_predefinedTypeAST_getReaderMap.count ()) {
-      f = gCategoryMethodTable_predefinedTypeAST_getReaderMap (classIndex COMMA_HERE) ;
-    }
-    if (NULL == f) {
-       const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
-       while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_predefinedTypeAST_getReaderMap.count ()) {
-           f = gCategoryMethodTable_predefinedTypeAST_getReaderMap (p->mSlotID COMMA_HERE) ;
-         }
-         p = p->mSuperclassDescriptor ;
-       }
-       gCategoryMethodTable_predefinedTypeAST_getReaderMap.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
-    }
-    if (NULL == f) {
-      fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
-    }else{
-      f (inObject, io_ioUnifiedTypeMap, out_outReaderMap, inCompiler COMMA_THERE) ;
-    }
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void categoryMethod_predefinedTypeAST_getReaderMap (const cPtr_predefinedTypeAST * /* inObject */,
-                                                           GALGAS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
-                                                           GALGAS_readerMap & outArgument_outReaderMap,
-                                                           C_Compiler * /* inCompiler */
-                                                           COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outReaderMap = GALGAS_readerMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 443)) ;
-}
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineCategoryMethod_predefinedTypeAST_getReaderMap (void) {
-  enterCategoryMethod_getReaderMap (kTypeDescriptor_GALGAS_predefinedTypeAST.mSlotID,
-                                    categoryMethod_predefinedTypeAST_getReaderMap) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void freeCategoryMethod_predefinedTypeAST_getReaderMap (void) {
-  gCategoryMethodTable_predefinedTypeAST_getReaderMap.free () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gMethod_predefinedTypeAST_getReaderMap (defineCategoryMethod_predefinedTypeAST_getReaderMap,
-                                                           freeCategoryMethod_predefinedTypeAST_getReaderMap) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                 Category method '@predefinedTypeAST getModifierMap'                                 *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static TC_UniqueArray <categoryMethodSignature_predefinedTypeAST_getModifierMap> gCategoryMethodTable_predefinedTypeAST_getModifierMap ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void enterCategoryMethod_getModifierMap (const int32_t inClassIndex,
-                                         categoryMethodSignature_predefinedTypeAST_getModifierMap inMethod) {
-  gCategoryMethodTable_predefinedTypeAST_getModifierMap.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void callCategoryMethod_getModifierMap (const cPtr_predefinedTypeAST * inObject,
-                                        GALGAS_unifiedTypeMap & io_ioUnifiedTypeMap,
-                                        GALGAS_modifierMap & out_outModifierMap,
-                                        C_Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) {
-  out_outModifierMap.drop () ;
-  if (NULL != inObject) {
-    macroValidSharedObject (inObject, cPtr_predefinedTypeAST) ;
-    const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
-    const int32_t classIndex = info->mSlotID ;
-    categoryMethodSignature_predefinedTypeAST_getModifierMap f = NULL ;
-    if (classIndex < gCategoryMethodTable_predefinedTypeAST_getModifierMap.count ()) {
-      f = gCategoryMethodTable_predefinedTypeAST_getModifierMap (classIndex COMMA_HERE) ;
-    }
-    if (NULL == f) {
-       const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
-       while ((NULL == f) && (NULL != p)) {
-         if (p->mSlotID < gCategoryMethodTable_predefinedTypeAST_getModifierMap.count ()) {
-           f = gCategoryMethodTable_predefinedTypeAST_getModifierMap (p->mSlotID COMMA_HERE) ;
-         }
-         p = p->mSuperclassDescriptor ;
-       }
-       gCategoryMethodTable_predefinedTypeAST_getModifierMap.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
-    }
-    if (NULL == f) {
-      fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
-    }else{
-      f (inObject, io_ioUnifiedTypeMap, out_outModifierMap, inCompiler COMMA_THERE) ;
-    }
-  }
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void categoryMethod_predefinedTypeAST_getModifierMap (const cPtr_predefinedTypeAST * /* inObject */,
-                                                             GALGAS_unifiedTypeMap & /* ioArgument_ioUnifiedTypeMap */,
-                                                             GALGAS_modifierMap & outArgument_outModifierMap,
-                                                             C_Compiler * /* inCompiler */
-                                                             COMMA_UNUSED_LOCATION_ARGS) {
-  outArgument_outModifierMap = GALGAS_modifierMap::constructor_emptyMap (SOURCE_FILE ("semanticsTypes.galgas", 451)) ;
-}
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineCategoryMethod_predefinedTypeAST_getModifierMap (void) {
-  enterCategoryMethod_getModifierMap (kTypeDescriptor_GALGAS_predefinedTypeAST.mSlotID,
-                                      categoryMethod_predefinedTypeAST_getModifierMap) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void freeCategoryMethod_predefinedTypeAST_getModifierMap (void) {
-  gCategoryMethodTable_predefinedTypeAST_getModifierMap.free () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gMethod_predefinedTypeAST_getModifierMap (defineCategoryMethod_predefinedTypeAST_getModifierMap,
-                                                             freeCategoryMethod_predefinedTypeAST_getModifierMap) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -10986,6 +10832,257 @@ GALGAS_programListForGeneration_2D_element GALGAS_programListForGeneration_2D_el
       result = *p ;
     }else{
       inCompiler->castError ("programListForGeneration-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XcodeObjectReferenceList_2D_element::GALGAS_XcodeObjectReferenceList_2D_element (void) :
+mAttribute_mRefString (),
+mAttribute_mComment () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XcodeObjectReferenceList_2D_element::~ GALGAS_XcodeObjectReferenceList_2D_element (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XcodeObjectReferenceList_2D_element::GALGAS_XcodeObjectReferenceList_2D_element (const GALGAS_string & inOperand0,
+                                                                                        const GALGAS_string & inOperand1) :
+mAttribute_mRefString (inOperand0),
+mAttribute_mComment (inOperand1) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XcodeObjectReferenceList_2D_element GALGAS_XcodeObjectReferenceList_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_XcodeObjectReferenceList_2D_element (GALGAS_string::constructor_default (HERE),
+                                                     GALGAS_string::constructor_default (HERE)) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XcodeObjectReferenceList_2D_element GALGAS_XcodeObjectReferenceList_2D_element::constructor_new (const GALGAS_string & inOperand0,
+                                                                                                        const GALGAS_string & inOperand1 
+                                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_XcodeObjectReferenceList_2D_element result ;
+  if (inOperand0.isValid () && inOperand1.isValid ()) {
+    result = GALGAS_XcodeObjectReferenceList_2D_element (inOperand0, inOperand1) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult GALGAS_XcodeObjectReferenceList_2D_element::objectCompare (const GALGAS_XcodeObjectReferenceList_2D_element & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
+  if (result == kOperandEqual) {
+    result = mAttribute_mRefString.objectCompare (inOperand.mAttribute_mRefString) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mComment.objectCompare (inOperand.mAttribute_mComment) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool GALGAS_XcodeObjectReferenceList_2D_element::isValid (void) const {
+  return mAttribute_mRefString.isValid () && mAttribute_mComment.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_XcodeObjectReferenceList_2D_element::drop (void) {
+  mAttribute_mRefString.drop () ;
+  mAttribute_mComment.drop () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_XcodeObjectReferenceList_2D_element::description (C_String & ioString,
+                                                              const int32_t inIndentation) const {
+  ioString << "<struct @XcodeObjectReferenceList-element:" ;
+  if (! isValid ()) {
+    ioString << " not built" ;
+  }else{
+    mAttribute_mRefString.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mComment.description (ioString, inIndentation+1) ;
+  }
+  ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_XcodeObjectReferenceList_2D_element::reader_mRefString (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mRefString ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_XcodeObjectReferenceList_2D_element::reader_mComment (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mComment ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                       @XcodeObjectReferenceList-element type                                        *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_XcodeObjectReferenceList_2D_element ("XcodeObjectReferenceList-element",
+                                                            NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_XcodeObjectReferenceList_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_XcodeObjectReferenceList_2D_element ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_XcodeObjectReferenceList_2D_element::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_XcodeObjectReferenceList_2D_element (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XcodeObjectReferenceList_2D_element GALGAS_XcodeObjectReferenceList_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                                      C_Compiler * inCompiler
+                                                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_XcodeObjectReferenceList_2D_element result ;
+  const GALGAS_XcodeObjectReferenceList_2D_element * p = (const GALGAS_XcodeObjectReferenceList_2D_element *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_XcodeObjectReferenceList_2D_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("XcodeObjectReferenceList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_Xcode_5F_PBXBuildFile_5F_list_2D_element::GALGAS_Xcode_5F_PBXBuildFile_5F_list_2D_element (void) :
+mAttribute_mFile () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_Xcode_5F_PBXBuildFile_5F_list_2D_element::~ GALGAS_Xcode_5F_PBXBuildFile_5F_list_2D_element (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_Xcode_5F_PBXBuildFile_5F_list_2D_element::GALGAS_Xcode_5F_PBXBuildFile_5F_list_2D_element (const GALGAS_Xcode_5F_PBXBuildFile & inOperand0) :
+mAttribute_mFile (inOperand0) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_Xcode_5F_PBXBuildFile_5F_list_2D_element GALGAS_Xcode_5F_PBXBuildFile_5F_list_2D_element::constructor_new (const GALGAS_Xcode_5F_PBXBuildFile & inOperand0 
+                                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_Xcode_5F_PBXBuildFile_5F_list_2D_element result ;
+  if (inOperand0.isValid ()) {
+    result = GALGAS_Xcode_5F_PBXBuildFile_5F_list_2D_element (inOperand0) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult GALGAS_Xcode_5F_PBXBuildFile_5F_list_2D_element::objectCompare (const GALGAS_Xcode_5F_PBXBuildFile_5F_list_2D_element & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
+  if (result == kOperandEqual) {
+    result = mAttribute_mFile.objectCompare (inOperand.mAttribute_mFile) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool GALGAS_Xcode_5F_PBXBuildFile_5F_list_2D_element::isValid (void) const {
+  return mAttribute_mFile.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_Xcode_5F_PBXBuildFile_5F_list_2D_element::drop (void) {
+  mAttribute_mFile.drop () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_Xcode_5F_PBXBuildFile_5F_list_2D_element::description (C_String & ioString,
+                                                                   const int32_t inIndentation) const {
+  ioString << "<struct @Xcode_PBXBuildFile_list-element:" ;
+  if (! isValid ()) {
+    ioString << " not built" ;
+  }else{
+    mAttribute_mFile.description (ioString, inIndentation+1) ;
+  }
+  ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_Xcode_5F_PBXBuildFile GALGAS_Xcode_5F_PBXBuildFile_5F_list_2D_element::reader_mFile (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mFile ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                        @Xcode_PBXBuildFile_list-element type                                        *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_Xcode_5F_PBXBuildFile_5F_list_2D_element ("Xcode_PBXBuildFile_list-element",
+                                                                 NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_Xcode_5F_PBXBuildFile_5F_list_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_Xcode_5F_PBXBuildFile_5F_list_2D_element ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_Xcode_5F_PBXBuildFile_5F_list_2D_element::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_Xcode_5F_PBXBuildFile_5F_list_2D_element (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_Xcode_5F_PBXBuildFile_5F_list_2D_element GALGAS_Xcode_5F_PBXBuildFile_5F_list_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                                                C_Compiler * inCompiler
+                                                                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_Xcode_5F_PBXBuildFile_5F_list_2D_element result ;
+  const GALGAS_Xcode_5F_PBXBuildFile_5F_list_2D_element * p = (const GALGAS_Xcode_5F_PBXBuildFile_5F_list_2D_element *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_Xcode_5F_PBXBuildFile_5F_list_2D_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("Xcode_PBXBuildFile_list-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

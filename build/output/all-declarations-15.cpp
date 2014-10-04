@@ -13,6 +13,10 @@
 #include "class-categoryModifierAST.h"
 #include "class-categoryReaderAST.h"
 #include "class-classDeclarationAST.h"
+#include "class-constructorExpressionAST.h"
+#include "class-constructorExpressionForGeneration.h"
+#include "class-defaultConstructorExpressionAST.h"
+#include "class-defaultConstructorExpressionForGeneration.h"
 #include "class-enumDeclarationAST.h"
 #include "class-externFunctionDeclarationAST.h"
 #include "class-externRoutineDeclarationAST.h"
@@ -99,6 +103,7 @@
 #include "grammar-syntaxSLRgrammar.h"
 #include "grammar-templateGrammar.h"
 #include "graph-semanticTypePrecedenceGraph.h"
+#include "list-actualOutputExpressionList.h"
 #include "list-attributeInCollectionListAST.h"
 #include "list-commandLineOptionListAST.h"
 #include "list-enumConstantList.h"
@@ -126,6 +131,7 @@
 #include "list-mapSearchMethodListAST.h"
 #include "list-mapStateList.h"
 #include "list-semanticDeclarationListAST.h"
+#include "list-semanticExpressionListForGeneration.h"
 #include "list-sentLexicalAttributeListAST.h"
 #include "list-terminalDeclarationListAST.h"
 #include "list-typeNameFormalParameterNameList.h"
@@ -170,6 +176,7 @@
 #include "method-semanticDeclarationAST-enterInSemanticContext.h"
 #include "method-semanticExpressionAST-analyzeSemanticExpression.h"
 #include "proc-addCategories.h"
+#include "proc-analyzeConstructorInvocation.h"
 #include "proc-buildLexicalAttributeMap.h"
 #include "proc-commonReaderMapForAllTypes.h"
 #include "proc-enterBaseFinalReaderWithoutArgument.h"
@@ -188,64 +195,6 @@
 #include "uniquemap-unifiedTypeMap.h"
 #include "uniquemap-variableMap.h"
 
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                       Overriding category reader '@mapProxyDeclarationAST keyRepresentation'                        *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static GALGAS_string categoryReader_mapProxyDeclarationAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
-                                                                              C_Compiler * inCompiler
-                                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outString ; // Returned variable
-  const cPtr_mapProxyDeclarationAST * object = (const cPtr_mapProxyDeclarationAST *) inObject ;
-  macroValidSharedObject (object, cPtr_mapProxyDeclarationAST) ;
-  result_outString = GALGAS_string ("map proxy @").add_operation (object->mAttribute_mMapProxyTypeName.reader_string (SOURCE_FILE ("semanticContext.galgas", 357)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 357)) ;
-//---
-  return result_outString ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineCategoryReader_mapProxyDeclarationAST_keyRepresentation (void) {
-  enterCategoryReader_keyRepresentation (kTypeDescriptor_GALGAS_mapProxyDeclarationAST.mSlotID,
-                                         categoryReader_mapProxyDeclarationAST_keyRepresentation) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gReader_mapProxyDeclarationAST_keyRepresentation (defineCategoryReader_mapProxyDeclarationAST_keyRepresentation, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                         Overriding category reader '@enumDeclarationAST keyRepresentation'                          *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static GALGAS_string categoryReader_enumDeclarationAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
-                                                                          C_Compiler * inCompiler
-                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outString ; // Returned variable
-  const cPtr_enumDeclarationAST * object = (const cPtr_enumDeclarationAST *) inObject ;
-  macroValidSharedObject (object, cPtr_enumDeclarationAST) ;
-  result_outString = GALGAS_string ("enum @").add_operation (object->mAttribute_mEnumTypeName.reader_string (SOURCE_FILE ("semanticContext.galgas", 364)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 364)) ;
-//---
-  return result_outString ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineCategoryReader_enumDeclarationAST_keyRepresentation (void) {
-  enterCategoryReader_keyRepresentation (kTypeDescriptor_GALGAS_enumDeclarationAST.mSlotID,
-                                         categoryReader_enumDeclarationAST_keyRepresentation) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gReader_enumDeclarationAST_keyRepresentation (defineCategoryReader_enumDeclarationAST_keyRepresentation, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -4913,4 +4862,90 @@ static void defineCategoryMethod_literalSInt_36__34_ExpressionAST_analyzeSemanti
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_literalSInt_36__34_ExpressionAST_analyzeSemanticExpression (defineCategoryMethod_literalSInt_36__34_ExpressionAST_analyzeSemanticExpression, NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//               Overriding category method '@defaultConstructorExpressionAST analyzeSemanticExpression'               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void categoryMethod_defaultConstructorExpressionAST_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
+                                                                                      const GALGAS_unifiedTypeMapProxy constinArgument_inType,
+                                                                                      const GALGAS_analysisContext constinArgument_inAnalysisContext,
+                                                                                      GALGAS_variableMap & /* ioArgument_ioVariableMap */,
+                                                                                      GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                                      C_Compiler * inCompiler
+                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_defaultConstructorExpressionAST * object = (const cPtr_defaultConstructorExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_defaultConstructorExpressionAST) ;
+  GALGAS_unifiedTypeMapProxy var_type = constinArgument_inType ;
+  const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, object->mAttribute_mTypeName.mAttribute_string.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+  if (kBoolTrue == test_0) {
+    var_type = GALGAS_unifiedTypeMapProxy::constructor_searchKey (constinArgument_inAnalysisContext.mAttribute_mSemanticContext.mAttribute_mTypeMap, object->mAttribute_mTypeName, inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 600)) ;
+  }
+  const enumGalgasBool test_1 = var_type.reader_isNull (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 602)).boolEnum () ;
+  if (kBoolTrue == test_1) {
+    GALGAS_location location_2 (object->mAttribute_mTypeName.reader_location (HERE)) ; // Implicit use of 'location' reader
+    inCompiler->emitSemanticError (location_2, GALGAS_string ("cannot infer type")  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 603)) ;
+    outArgument_outExpression.drop () ; // Release error dropped variable
+  }else if (kBoolFalse == test_1) {
+    const enumGalgasBool test_3 = var_type.reader_mIsConcrete (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 606)).operator_not (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 606)).boolEnum () ;
+    if (kBoolTrue == test_3) {
+      GALGAS_location location_4 (object->mAttribute_mTypeName.reader_location (HERE)) ; // Implicit use of 'location' reader
+      inCompiler->emitSemanticError (location_4, GALGAS_string ("an abstract class does not support the default constructor")  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 607)) ;
+    }else if (kBoolFalse == test_3) {
+      const enumGalgasBool test_5 = GALGAS_bool (kIsEqual, var_type.reader_mDefaultConstructorName (inCompiler COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 608)).objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+      if (kBoolTrue == test_5) {
+        GALGAS_location location_6 (object->mAttribute_mTypeName.reader_location (HERE)) ; // Implicit use of 'location' reader
+        inCompiler->emitSemanticError (location_6, GALGAS_string ("this class does not support the default constructor")  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 609)) ;
+      }
+    }
+    outArgument_outExpression = GALGAS_defaultConstructorExpressionForGeneration::constructor_new (var_type, object->mAttribute_mTypeName.mAttribute_location  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 612)) ;
+  }
+}
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineCategoryMethod_defaultConstructorExpressionAST_analyzeSemanticExpression (void) {
+  enterCategoryMethod_analyzeSemanticExpression (kTypeDescriptor_GALGAS_defaultConstructorExpressionAST.mSlotID,
+                                                 categoryMethod_defaultConstructorExpressionAST_analyzeSemanticExpression) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gMethod_defaultConstructorExpressionAST_analyzeSemanticExpression (defineCategoryMethod_defaultConstructorExpressionAST_analyzeSemanticExpression, NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                  Overriding category method '@constructorExpressionAST analyzeSemanticExpression'                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void categoryMethod_constructorExpressionAST_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
+                                                                               const GALGAS_unifiedTypeMapProxy constinArgument_inType,
+                                                                               const GALGAS_analysisContext constinArgument_inAnalysisContext,
+                                                                               GALGAS_variableMap & ioArgument_ioVariableMap,
+                                                                               GALGAS_semanticExpressionForGeneration & outArgument_outExpression,
+                                                                               C_Compiler * inCompiler
+                                                                               COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_constructorExpressionAST * object = (const cPtr_constructorExpressionAST *) inObject ;
+  macroValidSharedObject (object, cPtr_constructorExpressionAST) ;
+  GALGAS_unifiedTypeMapProxy var_returnedType ;
+  GALGAS_unifiedTypeMapProxy var_constructorType ;
+  GALGAS_semanticExpressionListForGeneration var_constructorEffectiveParameterList ;
+  GALGAS_bool var_hasCompilerArgument ;
+  {
+  routine_analyzeConstructorInvocation (constinArgument_inType, constinArgument_inAnalysisContext, ioArgument_ioVariableMap, object->mAttribute_mTypeName, object->mAttribute_mConstructorName, object->mAttribute_mExpressions, var_returnedType, var_constructorType, var_constructorEffectiveParameterList, var_hasCompilerArgument, inCompiler  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 625)) ;
+  }
+  outArgument_outExpression = GALGAS_constructorExpressionForGeneration::constructor_new (var_returnedType, object->mAttribute_mConstructorName.reader_location (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 640)), var_constructorType, object->mAttribute_mConstructorName.reader_string (SOURCE_FILE ("semanticExpressionAnalysis.galgas", 642)), var_constructorEffectiveParameterList, var_hasCompilerArgument  COMMA_SOURCE_FILE ("semanticExpressionAnalysis.galgas", 638)) ;
+}
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineCategoryMethod_constructorExpressionAST_analyzeSemanticExpression (void) {
+  enterCategoryMethod_analyzeSemanticExpression (kTypeDescriptor_GALGAS_constructorExpressionAST.mSlotID,
+                                                 categoryMethod_constructorExpressionAST_analyzeSemanticExpression) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gMethod_constructorExpressionAST_analyzeSemanticExpression (defineCategoryMethod_constructorExpressionAST_analyzeSemanticExpression, NULL) ;
 

@@ -18,6 +18,7 @@
 #include "class-charPredefinedTypeAST.h"
 #include "class-dataPredefinedTypeAST.h"
 #include "class-doublePredefinedTypeAST.h"
+#include "class-enumDeclarationAST.h"
 #include "class-filewrapperPredefinedTypeAST.h"
 #include "class-functionPredefinedTypeAST.h"
 #include "class-lexicalAttributeInputArgumentAST.h"
@@ -40,8 +41,6 @@
 #include "class-lexicalSelectInstructionAST.h"
 #include "class-lexicalSendDefaultActionAST.h"
 #include "class-lexicalSimpleSendInstructionAST.h"
-#include "class-lexicalStringMatchAST.h"
-#include "class-lexicalStringNotMatchAST.h"
 #include "class-lexicalStructuredSendInstructionAST.h"
 #include "class-lexicalTagInstructionAST.h"
 #include "class-lexicalUnsignedInputArgumentAST.h"
@@ -49,6 +48,7 @@
 #include "class-lexiqueComponentAST.h"
 #include "class-locationPredefinedTypeAST.h"
 #include "class-mapDeclarationAST.h"
+#include "class-mapProxyDeclarationAST.h"
 #include "class-objectPredefinedTypeAST.h"
 #include "class-overridingAbstractCategoryMethodAST.h"
 #include "class-overridingAbstractCategoryModifierAST.h"
@@ -165,59 +165,6 @@
 #include "struct-lexiqueAnalysisContext.h"
 #include "uniquemap-unifiedTypeMap.h"
 
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                     Overriding category method '@lexicalStringMatchAST checkLexicalExpression'                      *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void categoryMethod_lexicalStringMatchAST_checkLexicalExpression (const cPtr_lexicalExpressionAST * inObject,
-                                                                         GALGAS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
-                                                                         C_Compiler * /* inCompiler */
-                                                                         COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_lexicalStringMatchAST * object = (const cPtr_lexicalStringMatchAST *) inObject ;
-  macroValidSharedObject (object, cPtr_lexicalStringMatchAST) ;
-  ioArgument_ioLexiqueAnalysisContext.mAttribute_mUnicodeStringToGenerate.addAssign_operation (object->mAttribute_mString.reader_string (SOURCE_FILE ("lexiqueCompilation.galgas", 200))  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 200)) ;
-}
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineCategoryMethod_lexicalStringMatchAST_checkLexicalExpression (void) {
-  enterCategoryMethod_checkLexicalExpression (kTypeDescriptor_GALGAS_lexicalStringMatchAST.mSlotID,
-                                              categoryMethod_lexicalStringMatchAST_checkLexicalExpression) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gMethod_lexicalStringMatchAST_checkLexicalExpression (defineCategoryMethod_lexicalStringMatchAST_checkLexicalExpression, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                    Overriding category method '@lexicalStringNotMatchAST checkLexicalExpression'                    *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void categoryMethod_lexicalStringNotMatchAST_checkLexicalExpression (const cPtr_lexicalExpressionAST * inObject,
-                                                                            GALGAS_lexiqueAnalysisContext & ioArgument_ioLexiqueAnalysisContext,
-                                                                            C_Compiler * inCompiler
-                                                                            COMMA_UNUSED_LOCATION_ARGS) {
-  const cPtr_lexicalStringNotMatchAST * object = (const cPtr_lexicalStringNotMatchAST *) inObject ;
-  macroValidSharedObject (object, cPtr_lexicalStringNotMatchAST) ;
-  ioArgument_ioLexiqueAnalysisContext.mAttribute_mUnicodeStringToGenerate.addAssign_operation (object->mAttribute_mString.reader_string (SOURCE_FILE ("lexiqueCompilation.galgas", 207))  COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 207)) ;
-  {
-  ioArgument_ioLexiqueAnalysisContext.mAttribute_mLexicalMessageMap.modifier_setMMessageIsUsedForKey (GALGAS_bool (true), object->mAttribute_mErrorMessage.mAttribute_string, inCompiler COMMA_SOURCE_FILE ("lexiqueCompilation.galgas", 208)) ;
-  }
-}
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineCategoryMethod_lexicalStringNotMatchAST_checkLexicalExpression (void) {
-  enterCategoryMethod_checkLexicalExpression (kTypeDescriptor_GALGAS_lexicalStringNotMatchAST.mSlotID,
-                                              categoryMethod_lexicalStringNotMatchAST_checkLexicalExpression) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gMethod_lexicalStringNotMatchAST_checkLexicalExpression (defineCategoryMethod_lexicalStringNotMatchAST_checkLexicalExpression, NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -3908,4 +3855,62 @@ static void defineCategoryReader_mapDeclarationAST_keyRepresentation (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_PrologueEpilogue gReader_mapDeclarationAST_keyRepresentation (defineCategoryReader_mapDeclarationAST_keyRepresentation, NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                       Overriding category reader '@mapProxyDeclarationAST keyRepresentation'                        *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static GALGAS_string categoryReader_mapProxyDeclarationAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_string result_outString ; // Returned variable
+  const cPtr_mapProxyDeclarationAST * object = (const cPtr_mapProxyDeclarationAST *) inObject ;
+  macroValidSharedObject (object, cPtr_mapProxyDeclarationAST) ;
+  result_outString = GALGAS_string ("map proxy @").add_operation (object->mAttribute_mMapProxyTypeName.reader_string (SOURCE_FILE ("semanticContext.galgas", 357)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 357)) ;
+//---
+  return result_outString ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineCategoryReader_mapProxyDeclarationAST_keyRepresentation (void) {
+  enterCategoryReader_keyRepresentation (kTypeDescriptor_GALGAS_mapProxyDeclarationAST.mSlotID,
+                                         categoryReader_mapProxyDeclarationAST_keyRepresentation) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gReader_mapProxyDeclarationAST_keyRepresentation (defineCategoryReader_mapProxyDeclarationAST_keyRepresentation, NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                         Overriding category reader '@enumDeclarationAST keyRepresentation'                          *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static GALGAS_string categoryReader_enumDeclarationAST_keyRepresentation (const cPtr_semanticDeclarationAST * inObject,
+                                                                          C_Compiler * inCompiler
+                                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_string result_outString ; // Returned variable
+  const cPtr_enumDeclarationAST * object = (const cPtr_enumDeclarationAST *) inObject ;
+  macroValidSharedObject (object, cPtr_enumDeclarationAST) ;
+  result_outString = GALGAS_string ("enum @").add_operation (object->mAttribute_mEnumTypeName.reader_string (SOURCE_FILE ("semanticContext.galgas", 364)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 364)) ;
+//---
+  return result_outString ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineCategoryReader_enumDeclarationAST_keyRepresentation (void) {
+  enterCategoryReader_keyRepresentation (kTypeDescriptor_GALGAS_enumDeclarationAST.mSlotID,
+                                         categoryReader_enumDeclarationAST_keyRepresentation) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gReader_enumDeclarationAST_keyRepresentation (defineCategoryReader_enumDeclarationAST_keyRepresentation, NULL) ;
 
