@@ -871,6 +871,7 @@ routine compileLexiqueComponentFromAST
   } ;
 #---------------------------------------
   @lexiqueAnalysisContext lexiqueAnalysisContext [new
+    !componentName->string
     !lexicalRoutineMap
     !lexicalFunctionMap
     ![@lexicalMessageMap emptyMap]
@@ -1209,6 +1210,7 @@ routine compileLexiqueComponentGalgas3
   } ;
 #---------------------------------------
   @lexiqueAnalysisContext lexiqueAnalysisContext [new
+    !inLexiqueComponentAST->mLexiqueComponentName->string
     !lexicalRoutineMap
     !lexicalFunctionMap
     ![@lexicalMessageMap emptyMap]

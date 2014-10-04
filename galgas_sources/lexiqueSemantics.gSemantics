@@ -123,6 +123,7 @@ map @lexicalTagMap {
 #---------------------------------------------------------------------------*
 
 struct @lexiqueAnalysisContext {
+  @string mLexiqueName ;
   @lexicalRoutineMap mLexicalRoutineMessageMap ;
   @lexicalFunctionMap mLexicalFunctionMap ;
   @lexicalMessageMap mLexicalMessageMap ;

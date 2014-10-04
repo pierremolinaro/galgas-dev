@@ -24,6 +24,7 @@
 
 class GALGAS_lexiqueAnalysisContext : public AC_GALGAS_root {
 //--------------------------------- Public data members
+  public : GALGAS_string mAttribute_mLexiqueName ;
   public : GALGAS_lexicalRoutineMap mAttribute_mLexicalRoutineMessageMap ;
   public : GALGAS_lexicalFunctionMap mAttribute_mLexicalFunctionMap ;
   public : GALGAS_lexicalMessageMap mAttribute_mLexicalMessageMap ;
@@ -51,7 +52,8 @@ class GALGAS_lexiqueAnalysisContext : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG ~ GALGAS_lexiqueAnalysisContext (void) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_lexiqueAnalysisContext (const GALGAS_lexicalRoutineMap & in_mLexicalRoutineMessageMap,
+  public : GALGAS_lexiqueAnalysisContext (const GALGAS_string & in_mLexiqueName,
+                                          const GALGAS_lexicalRoutineMap & in_mLexicalRoutineMessageMap,
                                           const GALGAS_lexicalFunctionMap & in_mLexicalFunctionMap,
                                           const GALGAS_lexicalMessageMap & in_mLexicalMessageMap,
                                           const GALGAS_terminalMap & in_mTerminalMap,
@@ -74,17 +76,18 @@ class GALGAS_lexiqueAnalysisContext : public AC_GALGAS_root {
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_lexiqueAnalysisContext constructor_new (const class GALGAS_lexicalRoutineMap & inOperand0,
-                                                                 const class GALGAS_lexicalFunctionMap & inOperand1,
-                                                                 const class GALGAS_lexicalMessageMap & inOperand2,
-                                                                 const class GALGAS_terminalMap & inOperand3,
-                                                                 const class GALGAS_terminalList & inOperand4,
-                                                                 const class GALGAS_lexicalAttributeMap & inOperand5,
-                                                                 const class GALGAS_lexicalExplicitTokenListMapMap & inOperand6,
-                                                                 const class GALGAS_stringset & inOperand7,
-                                                                 const class GALGAS_templateDelimitorList & inOperand8,
-                                                                 const class GALGAS_styleMap & inOperand9,
-                                                                 const class GALGAS_stringset & inOperand10
+  public : static GALGAS_lexiqueAnalysisContext constructor_new (const class GALGAS_string & inOperand0,
+                                                                 const class GALGAS_lexicalRoutineMap & inOperand1,
+                                                                 const class GALGAS_lexicalFunctionMap & inOperand2,
+                                                                 const class GALGAS_lexicalMessageMap & inOperand3,
+                                                                 const class GALGAS_terminalMap & inOperand4,
+                                                                 const class GALGAS_terminalList & inOperand5,
+                                                                 const class GALGAS_lexicalAttributeMap & inOperand6,
+                                                                 const class GALGAS_lexicalExplicitTokenListMapMap & inOperand7,
+                                                                 const class GALGAS_stringset & inOperand8,
+                                                                 const class GALGAS_templateDelimitorList & inOperand9,
+                                                                 const class GALGAS_styleMap & inOperand10,
+                                                                 const class GALGAS_stringset & inOperand11
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of reader 'description'
@@ -110,6 +113,8 @@ class GALGAS_lexiqueAnalysisContext : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_lexicalRoutineMap reader_mLexicalRoutineMessageMap (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lexicalExplicitTokenListMapMap reader_mLexicalTokenListMap (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mLexiqueName (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_styleMap reader_mStyleMap (LOCATION_ARGS) const ;
 

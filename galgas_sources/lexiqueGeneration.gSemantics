@@ -57,10 +57,10 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @lexicalStringMatchAST generateConditionCode
-  ?context:@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  ?context:@lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "testForInputUTF32String (kUnicodeString_" . [mString identifierRepresentation] ;
+  outGeneratedCode := "testForInputUTF32String (kUnicodeString_" + [inLexiqueAnalysisContext->mLexiqueName identifierRepresentation] + "_" + [mString identifierRepresentation] ;
   outGeneratedCode .= ", " ;
   outGeneratedCode .= [[mString length] string] ;
   outGeneratedCode .= ", true)" ;
@@ -69,14 +69,15 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @lexicalStringNotMatchAST generateConditionCode
-  ?context:@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  ?context:@lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "notTestForInputUTF32String (kUnicodeString_" ;
+  outGeneratedCode := "notTestForInputUTF32String (kUnicodeString_" + [inLexiqueAnalysisContext->mLexiqueName identifierRepresentation] + "_" ;
   outGeneratedCode .= [mString identifierRepresentation] ;
   outGeneratedCode .= ", " ;
   outGeneratedCode .= [[mString length] string] ;
   outGeneratedCode .= ", gLexicalMessage_" ;
+  outGeneratedCode .= [inLexiqueAnalysisContext->mLexiqueName identifierRepresentation] + "_" ;
   outGeneratedCode .= [mErrorMessage string] ;
   outGeneratedCode .= " COMMA_LINE_AND_SOURCE_FILE)" ;
 end reader ;
@@ -200,10 +201,10 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @lexicalErrorByDefaultAST generateDefaultSendCode
-  ?@string unused inScannerClassName
+  ?@string inScannerClassName
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "lexicalError (gLexicalMessage_" . mDefaultErrorMessageName . " COMMA_LINE_AND_SOURCE_FILE) ;\n" ;
+  outGeneratedCode := "lexicalError (gLexicalMessage_" + [inScannerClassName identifierRepresentation] + "_" + mDefaultErrorMessageName + " COMMA_LINE_AND_SOURCE_FILE) ;\n" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -318,7 +319,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @lexicalRoutineInstructionAST generateInstructionCode
-  ?@string unused inScannerClassName
+  ?@string inScannerClassName
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
@@ -327,7 +328,7 @@ override reader @lexicalRoutineInstructionAST generateInstructionCode
     outGeneratedCode .= ", " . [mLexicalRoutineActualArgument generateRoutineArgument] ;
   end foreach ;
   foreach mErrorMessageList do
-    outGeneratedCode .= ", gLexicalMessage_" . mValue ;
+    outGeneratedCode .= ", gLexicalMessage_" + inScannerClassName + "_" + mValue ;
   end foreach ;
   outGeneratedCode .= ") ;\n" ;
 end reader ;
@@ -345,21 +346,21 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @lexicalErrorInstructionAST generateInstructionCode
-  ?@string unused inScannerClassName
+  ?@string inScannerClassName
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "lexicalError (gLexicalMessage_" . mErrorMessageName . " COMMA_LINE_AND_SOURCE_FILE) ;\n" ;
+  outGeneratedCode := "lexicalError (gLexicalMessage_" + inScannerClassName + "_" + mErrorMessageName + " COMMA_LINE_AND_SOURCE_FILE) ;\n" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
 override reader @lexicalWarningInstructionAST generateInstructionCode
-  ?@string unused inScannerClassName
+  ?@string inScannerClassName
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
-  outGeneratedCode := "lexicalWarning (gLexicalMessage_" . mWarningMessageName . " COMMA_LINE_AND_SOURCE_FILE) ;\n" ;
+  outGeneratedCode := "lexicalWarning (gLexicalMessage_" + inScannerClassName + "_" + mWarningMessageName + " COMMA_LINE_AND_SOURCE_FILE) ;\n" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -411,7 +412,7 @@ abstract reader @abstractLexicalRuleAST generateCode
 #---------------------------------------------------------------------------*
 
 override reader @lexicalImplicitRuleAST generateCode
-  ?@string unused inScannerClassName
+  ?@string inScannerClassName
   ?@lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode
 :
@@ -419,7 +420,7 @@ override reader @lexicalImplicitRuleAST generateCode
   [[inLexiqueAnalysisContext mLexicalTokenListMap] searchKey !mListName ?* ?tokenSortedList ?*] ;
   outGeneratedCode := "" ;
   foreach > tokenSortedList do
-    outGeneratedCode .= "if (testForInputUTF32String (kUnicodeString_" ;
+    outGeneratedCode .= "if (testForInputUTF32String (kUnicodeString_" + inScannerClassName + "_" ;
     outGeneratedCode .= [mName identifierRepresentation] ;
     outGeneratedCode .= ", " ;
     outGeneratedCode .= [[mName length] string] ;
