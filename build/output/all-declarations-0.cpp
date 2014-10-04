@@ -225,28 +225,9 @@
 #include "struct-withLexiqueListAST-element.h"
 
 
-#include <ctype.h>
-#include <string.h>
 
-//---------------------------------------------------------------------------------------------------------------------*
-
-#include "utilities/MF_MemoryControl.h"
 #include "strings/unicode_character_cpp.h"
 #include "galgas2/scanner_actions.h"
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-#include "lexique-galgas_scanner.h"
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  #define LINE_AND_SOURCE_FILE sourceText ()->sourceFilePath ().cString (HERE), lineNumber ()
-  #define COMMA_LINE_AND_SOURCE_FILE , LINE_AND_SOURCE_FILE
-#else
-  #define LINE_AND_SOURCE_FILE
-  #define COMMA_LINE_AND_SOURCE_FILE
-#endif
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -8390,28 +8371,9 @@ GALGAS_stringlist C_Lexique_galgas_5F_scanner::symbols (LOCATION_ARGS) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#include <ctype.h>
-#include <string.h>
 
-//---------------------------------------------------------------------------------------------------------------------*
-
-#include "utilities/MF_MemoryControl.h"
 #include "strings/unicode_character_cpp.h"
 #include "galgas2/scanner_actions.h"
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-#include "lexique-galgasTemplateScanner.h"
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  #define LINE_AND_SOURCE_FILE sourceText ()->sourceFilePath ().cString (HERE), lineNumber ()
-  #define COMMA_LINE_AND_SOURCE_FILE , LINE_AND_SOURCE_FILE
-#else
-  #define LINE_AND_SOURCE_FILE
-  #define COMMA_LINE_AND_SOURCE_FILE
-#endif
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *

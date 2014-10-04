@@ -1,25 +1,24 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  scanner_actions:                                                           *
-//  hand-coded routines for building attribute values during scanning.         *
+//  scanner_actions:  hand-coded routines for building attribute values during scanning.                               *
 //                                                                                                                     *
-//  This file is part of libpm library                                         *
+//  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2009, ..., 2010 Pierre Molinaro.                             *
+//  Copyright (C) 2009, ..., 2014 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
-//  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                               *
-//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
-//  ECN, École Centrale de Nantes (France)                                     *
+//  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
+//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes                                          *
+//  ECN, École Centrale de Nantes (France)                                                                             *
 //                                                                                                                     *
-//  This library is free software; you can redistribute it and/or modify it    *
-//  under the terms of the GNU Lesser General Public License as published      *
-//  by the Free Software Foundation; either version 2 of the License, or       *
-//  (at your option) any later version.                                        *
+//  This library is free software; you can redistribute it and/or modify it                                            *
+//  under the terms of the GNU Lesser General Public License as published                                              *
+//  by the Free Software Foundation; either version 2 of the License, or                                               *
+//  (at your option) any later version.                                                                                *
 //                                                                                                                     *
-//  This program is distributed in the hope it will be useful, but WITHOUT     *
-//  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or      *
-//  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for   *
-//  more details.                                                              *
+//  This program is distributed in the hope it will be useful, but WITHOUT                                             *
+//  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or                                              *
+//  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for                                           *
+//  more details.                                                                                                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -31,8 +30,18 @@
 #include "galgas2/C_Lexique.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  #define LINE_AND_SOURCE_FILE sourceText ()->sourceFilePath ().cString (HERE), lineNumber ()
+  #define COMMA_LINE_AND_SOURCE_FILE , LINE_AND_SOURCE_FILE
+#else
+  #define LINE_AND_SOURCE_FILE
+  #define COMMA_LINE_AND_SOURCE_FILE
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  S C A N N E R    A C T I O N S                                             *
+//  S C A N N E R    A C T I O N S                                                                                     *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
