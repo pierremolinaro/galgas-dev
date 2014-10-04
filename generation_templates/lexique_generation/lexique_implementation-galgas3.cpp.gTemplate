@@ -9,7 +9,7 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#include "lexique-%!LEXIQUE_COMPONENT_ROOT.mLexiqueComponentName.string%.h"
+#include "lexique-%!LEXIQUE_COMPONENT_NAME%.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -23,7 +23,7 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                               Constructors                                  *
+//                               Constructors                                                                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -44,7 +44,7 @@ C_Lexique_%!LEXIQUE_IDENTIFIER%::C_Lexique_%!LEXIQUE_IDENTIFIER% (C_Compiler * i
                 const C_String & inSourceFileName
                 COMMA_LOCATION_ARGS) :
 C_Lexique (inCallerCompiler, inDependencyFileExtension, inDependencyFilePath, inSourceFileName COMMA_THERE)%
-  if [[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] > 0 then
+  if [TEMPLATE_DELIMITOR_LIST length] > 0 then
     %,\nmMatchedTemplateDelimiterIndex (-1)%
   end
 % {
@@ -57,7 +57,7 @@ C_Lexique_%!LEXIQUE_IDENTIFIER%::C_Lexique_%!LEXIQUE_IDENTIFIER% (C_Compiler * i
                 const C_String & inStringForError
                 COMMA_LOCATION_ARGS) :
 C_Lexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE)%
-  if [[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] > 0 then
+  if [TEMPLATE_DELIMITOR_LIST length] > 0 then
     %,\nmMatchedTemplateDelimiterIndex (-1)%
   end
 % {
@@ -70,7 +70,7 @@ C_Lexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE)%
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::indexingDirectory (void) const {
-  return %![[LEXIQUE_COMPONENT_ROOT mIndexingDirectory] utf8Representation]% ;
+  return %![INDEXING_DIRECTORY utf8Representation]% ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -182,7 +182,7 @@ end
 //---------------------------------------------------------------------------------------------------------------------*
 
 % for () in [LEXIQUE_ANALYSIS_CONTEXT mTemplateDelimitorList]
-    before %static const cTemplateDelimiter kTemplateDefinitionArray [%![[[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] string]%] = {\n%
+    before %static const cTemplateDelimiter kTemplateDefinitionArray [%![[TEMPLATE_DELIMITOR_LIST length] string]%] = {\n%
     do %  cTemplateDelimiter (kUnicodeString_%![mStartString identifierRepresentation]%, %![[mStartString length] string]%, %
       if [mEndString length] == 0 then
         %NULL, 0,%
@@ -202,8 +202,8 @@ end
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-% for () in [LEXIQUE_COMPONENT_ROOT mTemplateReplacementList]
-    before %static const cTemplateDelimiter kTemplateReplacementArray [%![[[LEXIQUE_COMPONENT_ROOT mTemplateReplacementList] length] string]%] = {\n%
+% for () in TEMPLATE_REPLACEMENT_LIST
+    before %static const cTemplateDelimiter kTemplateReplacementArray [%![[TEMPLATE_REPLACEMENT_LIST length] string]%] = {\n%
     do
       %  cTemplateDelimiter (kUnicodeString_%![mMatchString identifierRepresentation]%, %![[mMatchString length] string]%, %
       %kUnicodeString_%![mReplacementString identifierRepresentation]%, %![[mReplacementString length] string]%, %
@@ -223,7 +223,7 @@ end
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-% if [[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] > 0 then
+% if [TEMPLATE_DELIMITOR_LIST length] > 0 then
     for () in [LEXIQUE_ANALYSIS_CONTEXT mTerminalList]
       before %static const bool kEndOfScriptInTemplateArray [%![[[LEXIQUE_ANALYSIS_CONTEXT mTerminalList] length] string]%] = {\n%
       do %  %![mIsEndOfTemplateMark cString]% /* %![mTerminalName string]% */%
@@ -245,7 +245,7 @@ bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
   token.mTokenCode = -1 ;
   while ((token.mTokenCode < 0) && (UNICODE_VALUE (mCurrentChar) != '\0')) {
 %
-  if [[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] > 0 then
+  if [TEMPLATE_DELIMITOR_LIST length] > 0 then
 %    if ((mMatchedTemplateDelimiterIndex >= 0)
      && (kTemplateDefinitionArray [mMatchedTemplateDelimiterIndex].mEndStringLength > 0)
      && (UNICODE_VALUE (mCurrentChar) != '\0')) {
@@ -259,7 +259,7 @@ bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
     while ((mMatchedTemplateDelimiterIndex < 0) && (UNICODE_VALUE (mCurrentChar) != '\0')) {
       int32_t replacementIndex = 0 ;
       while (replacementIndex >= 0) {
-        replacementIndex = findTemplateDelimiterIndex (kTemplateReplacementArray, %![[[LEXIQUE_COMPONENT_ROOT mTemplateReplacementList] length] string]%) ;
+        replacementIndex = findTemplateDelimiterIndex (kTemplateReplacementArray, %![[TEMPLATE_REPLACEMENT_LIST length] string]%) ;
         if (replacementIndex >= 0) {
           if (kTemplateReplacementArray [replacementIndex].mReplacementFunction == NULL) {
             token.mTemplateStringBeforeToken << kTemplateReplacementArray [replacementIndex].mEndString ;
@@ -275,7 +275,7 @@ bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
           }
         }
       }
-      mMatchedTemplateDelimiterIndex = findTemplateDelimiterIndex (kTemplateDefinitionArray, %![[[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] string]%) ;
+      mMatchedTemplateDelimiterIndex = findTemplateDelimiterIndex (kTemplateDefinitionArray, %![[TEMPLATE_DELIMITOR_LIST length] string]%) ;
       if (mMatchedTemplateDelimiterIndex < 0) {
         token.mTemplateStringBeforeToken.appendUnicodeCharacter (mCurrentChar COMMA_HERE) ;
         advance () ;

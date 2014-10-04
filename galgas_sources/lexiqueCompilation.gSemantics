@@ -677,9 +677,6 @@ override method @lexicalErrorInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?!@lexicalTagMap unused ioTagMap
 :
-#  with !?ioLexiqueAnalysisContext->mLexicalMessageMap searchKey !mErrorMessageName do
-#    mMessageIsUsed := true ;
-#  end with ;
   [!?ioLexiqueAnalysisContext->mLexicalMessageMap setMMessageIsUsedForKey !true !mErrorMessageName->string] ;
 end method ;
 
@@ -689,9 +686,6 @@ override method @lexicalWarningInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?!@lexicalTagMap unused ioTagMap
 :
-#  with !?ioLexiqueAnalysisContext->mLexicalMessageMap searchKey !mWarningMessageName do
-#    mMessageIsUsed := true ;
-#  end with ;
   [!?ioLexiqueAnalysisContext->mLexicalMessageMap setMMessageIsUsedForKey !true !mWarningMessageName->string] ;
 end method ;
 
@@ -733,7 +727,7 @@ filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_gener
   template newHeaderZone2 "lexique_header_template_zone_2.new.h.gTemplate"
     ?@string LEXIQUE_IDENTIFIER
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
-    ?@galgas3LexiqueComponentListAST-element LEXIQUE_COMPONENT_ROOT
+    ?@metamodelTemplateDelimitorListAST TEMPLATE_DELIMITOR_LIST
   ;
 
   template newHeaderZone3 "lexique_header_template_zone_3.new.h.gTemplate"
@@ -752,7 +746,10 @@ filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_gener
     ?@stringset STRINGS_IN_EXPLICIT_RULES
     ?@lexicalRuleListAST LEXICAL_RULE_LIST
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
-    ?@galgas3LexiqueComponentListAST-element LEXIQUE_COMPONENT_ROOT
+    ?@string INDEXING_DIRECTORY
+    ?@metamodelTemplateDelimitorListAST TEMPLATE_DELIMITOR_LIST
+    ?@string LEXIQUE_COMPONENT_NAME
+    ?@templateReplacementListAST TEMPLATE_REPLACEMENT_LIST
   ;
 
   template newImplementationZone2 "lexique_implementation.new.cpp.gTemplate"
@@ -779,12 +776,16 @@ filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_gener
     ?@string LEXIQUE_HEADER_FILE_NAME
     ?@string LEXIQUE_CLASS_NAME
     ?@lexicalAttributeMap LEXICAL_ATTRIBUTE_MAP
-    ?@lexicalMessageMap unused LEXICAL_MESSAGE_MAP
-    ?@terminalList unused TERMINAL_LIST
-    ?@stringset unused STRINGS_IN_EXPLICIT_RULES
+    ?@lexicalMessageMap LEXICAL_MESSAGE_MAP
+    ?@terminalList TERMINAL_LIST
+    ?@stringset STRINGS_IN_EXPLICIT_RULES
     ?@lexicalRuleListAST LEXICAL_RULE_LIST
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
-    ?@galgas3LexiqueComponentListAST-element LEXIQUE_COMPONENT_ROOT
+    ?@templateReplacementListAST TEMPLATE_REPLACEMENT_LIST
+    ?@string INDEXING_DIRECTORY
+    ?@indexingListAST INDEXING_LIST
+    ?@lexicalStyleListAST LEXICAL_STYLE_LIST
+    ?@metamodelTemplateDelimitorListAST TEMPLATE_DELIMITOR_LIST
   ;
 }
 
@@ -1041,7 +1042,7 @@ routine compileLexiqueComponentFromAST
       ![filewrapper lexiqueGenerationTemplates.newHeaderZone2
          ![lexiqueClassName identifierRepresentation]
          !lexiqueAnalysisContext
-         !inLexiqueComponentRoot
+         !inLexiqueComponentRoot->mTemplateDelimitorList
        ]
       !"\n\n" # Defaut user zone2
       ![filewrapper lexiqueGenerationTemplates.newHeaderZone3
@@ -1108,8 +1109,12 @@ routine compileLexiqueComponentFromAST
          ![lexiqueAnalysisContext mUnicodeStringToGenerate]
          ![inLexiqueComponentRoot mLexicalRuleList]
          !lexiqueAnalysisContext
-         !inLexiqueComponentRoot
-       ]
+         !inLexiqueComponentRoot->mTemplateReplacementList
+         !inLexiqueComponentRoot->mIndexingDirectory->string
+         !inLexiqueComponentRoot->mIndexingListAST
+         !inLexiqueComponentRoot->mLexicalStyleList
+         !inLexiqueComponentRoot->mTemplateDelimitorList
+      ]
       !"\n\n" # Defaut user zone2
       !"\n\n" # Zone 3
     ] ;
@@ -1149,6 +1154,7 @@ list @lexiqueComponentGenerationList {
   @string mCocoaHeaderContents ;
   @string mCocoaContents ;
 }
+
 
 #---------------------------------------------------------------------------*
 
@@ -1369,7 +1375,7 @@ routine compileLexiqueComponentGalgas3
     var headerContents := [filewrapper lexiqueGenerationTemplates.newHeaderZone2
        ![lexiqueClassName identifierRepresentation]
        !lexiqueAnalysisContext
-       !inLexiqueComponentAST
+       !inLexiqueComponentAST->mTemplateDelimitorList
     ] ;
     headerContents += [filewrapper lexiqueGenerationTemplates.newHeaderZone3
       ![lexiqueClassName identifierRepresentation]
@@ -1387,7 +1393,10 @@ routine compileLexiqueComponentGalgas3
       ![lexiqueAnalysisContext mUnicodeStringToGenerate]
       !inLexiqueComponentAST->mLexicalRuleList
       !lexiqueAnalysisContext
-      !inLexiqueComponentAST
+      !inLexiqueComponentAST->mIndexingDirectory->string
+      !inLexiqueComponentAST->mTemplateDelimitorList
+      !lexiqueClassName
+      !inLexiqueComponentAST->mTemplateReplacementList
     ] ;
   #--- Cocoa header
     var cocoaHeader := [filewrapper lexiqueGenerationTemplates.cocoaHeaderZone2
@@ -1408,7 +1417,11 @@ routine compileLexiqueComponentGalgas3
       ![lexiqueAnalysisContext mUnicodeStringToGenerate]
       !inLexiqueComponentAST->mLexicalRuleList
       !lexiqueAnalysisContext
-      !inLexiqueComponentAST
+      !inLexiqueComponentAST->mTemplateReplacementList
+      !inLexiqueComponentAST->mIndexingDirectory->string
+      !inLexiqueComponentAST->mIndexingListAST
+      !inLexiqueComponentAST->mLexicalStyleList
+      !inLexiqueComponentAST->mTemplateDelimitorList
     ] ;
   #---
     ioLexiqueComponentGenerationList +=

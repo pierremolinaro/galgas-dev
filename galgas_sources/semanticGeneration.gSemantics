@@ -2585,7 +2585,65 @@ override method @optionComponentForGeneration appendSpecificFiles
 end method ;
 
 #---------------------------------------------------------------------------*
-#! program
+#! Lexique
+#---------------------------------------------------------------------------*
+
+override reader @lexiqueDeclarationForGeneration headerKind ->@headerKind outResult :
+  outResult := [@headerKind oneHeader] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override method @lexiqueDeclarationForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader
+:
+  outHeader := mHeaderContents ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @lexiqueDeclarationForGeneration appendSpecificImplementation
+  ?!@stringset ioInclusionSet
+  !@string outHeader
+:
+  ioInclusionSet += !"lexique-" + mLexiqueName ;
+  outHeader := mCppContents ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @lexiqueDeclarationForGeneration appendSpecificFiles
+  ??@string inProductDirectory
+  ?!@stringset ioAllProductFileSet
+:
+#--- Generate cocoa header file
+  ioAllProductFileSet += !"lexique-" + mLexiqueName . "-cocoa.h" ;
+  [@string generateFileWithPattern
+    !inProductDirectory
+    !"lexique-" + mLexiqueName . "-cocoa.h"
+    !"//"
+    !"\n\n" # Defaut user zone1
+    !mCocoaHeader
+    !"\n\n" # Defaut user zone2
+    !"\n"
+  ] ;
+#--- Generate Cocoa implementation file
+#      ioAppProductFileList += !"lexique-" + mLexiqueName + "-cocoa.m" ;
+  ioAllProductFileSet += !"lexique-" + mLexiqueName . "-cocoa.m" ;
+  [@string generateFileWithPattern
+    !inProductDirectory
+    !"lexique-" + mLexiqueName . "-cocoa.m"
+    !"//"
+    !"\n\n" # Defaut user zone1
+    !mCocoaImplementation
+    !"\n\n" # Defaut user zone2
+    !"\n\n" # Zone 3
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+#! Program
 #---------------------------------------------------------------------------*
 
 override reader @programComponentForGeneration headerKind ->@headerKind outResult :

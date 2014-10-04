@@ -7,6 +7,8 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+#include "lexique-galgas_scanner.h"
+#include "lexique-galgasTemplateScanner.h"
 #include "list-templateInstructionListAST.h"
 #include "list-templateExpressionListAST.h"
 #include "list-templateInstructionIfBranchListAST.h"
@@ -242,6 +244,7 @@
 #include "map-categoryMethodMapForGlobalCheckings-1.h"
 #include "map-categoryModifierMapForGlobalCheckings-1.h"
 #include "map-categoryReaderMapForGlobalCheckings-1.h"
+#include "lexique-galgas3Scanner.h"
 #include "list-galgas3QualifiedFeatureList.h"
 #include "map-headerCompositionMap-1.h"
 #include "map-headerRepartitionMap-1.h"
@@ -640,6 +643,7 @@
 #include "class-externTypeDeclarationAST-1.h"
 #include "class-filewrapperDeclarationAST-1.h"
 #include "class-graphDeclarationAST-1.h"
+#include "class-lexiqueComponentAST-1.h"
 #include "class-listDeclarationAST-1.h"
 #include "class-listmapDeclarationAST-1.h"
 #include "class-mapDeclarationAST-1.h"
@@ -684,6 +688,7 @@
 #include "class-filewrapperDeclarationForGeneration-1.h"
 #include "class-functionPrototypeDeclarationForGeneration-1.h"
 #include "class-functionImplementationForGeneration-1.h"
+#include "class-lexiqueDeclarationForGeneration-1.h"
 #include "class-onceFunctionDeclarationForGeneration-1.h"
 #include "class-optionComponentForGeneration-1.h"
 #include "class-overrideCategoryReaderForGeneration-1.h"
@@ -1466,6 +1471,7 @@
 #include "class-externTypeDeclarationAST.h"
 #include "class-filewrapperDeclarationAST.h"
 #include "class-graphDeclarationAST.h"
+#include "class-lexiqueComponentAST.h"
 #include "class-listDeclarationAST.h"
 #include "class-listmapDeclarationAST.h"
 #include "class-mapDeclarationAST.h"
@@ -1510,6 +1516,7 @@
 #include "class-filewrapperDeclarationForGeneration.h"
 #include "class-functionPrototypeDeclarationForGeneration.h"
 #include "class-functionImplementationForGeneration.h"
+#include "class-lexiqueDeclarationForGeneration.h"
 #include "class-onceFunctionDeclarationForGeneration.h"
 #include "class-optionComponentForGeneration.h"
 #include "class-overrideCategoryReaderForGeneration.h"

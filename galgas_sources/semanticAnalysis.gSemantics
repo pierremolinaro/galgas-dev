@@ -2328,6 +2328,291 @@ override method @overridingAbstractCategoryReaderAST semanticAnalysis
 end method ;
 
 #---------------------------------------------------------------------------*
+
+override method @lexiqueComponentAST semanticAnalysis
+  ??@semanticContext unused inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+:
+#--------------------------------------- Lexical attribute type name map
+  const @lexicalTypeMap lexicalTypeMap := buildLexicalTypeMap [] ;
+#--------------------------------------- Build lexical routine map
+  @lexicalRoutineMap lexicalRoutineMap ;
+  buildLexicalRoutineMap ?lexicalRoutineMap ;
+#--------------------------------------- Add extern routines
+  foreach mExternRoutineList do
+    @lexicalRoutineFormalArgumentList lexicalRoutineFormalArgumentList [emptyList] ;
+    foreach mLexicalRoutineFormalArgumentList do
+      @lexicalTypeEnum lexicalFormalArgumentType ;
+      [lexicalTypeMap searchKey !mLexicalTypeName ?lexicalFormalArgumentType] ;
+      lexicalRoutineFormalArgumentList += !mPassingMode !lexicalFormalArgumentType ![mFormalArgumentName string] ;
+    end foreach ;
+    [!?lexicalRoutineMap insertKey !mRoutineName !lexicalRoutineFormalArgumentList !mErrorMessageList !true] ;
+  end foreach ;
+#--------------------------------------- Build lexical function map
+  @lexicalFunctionMap lexicalFunctionMap ;
+  buildLexicalFunctionMap ?lexicalFunctionMap ;
+#--------------------------------------- Add extern functions
+  foreach mExternFunctionList do
+    @lexicalFunctionFormalArgumentList lexicalFunctionFormalArgumentList [emptyList] ;
+    foreach mLexicalFunctionFormalArgumentList do
+      @lexicalTypeEnum lexicalFormalArgumentType ;
+      [lexicalTypeMap searchKey !mLexicalTypeName ?lexicalFormalArgumentType] ;
+      lexicalFunctionFormalArgumentList += !lexicalFormalArgumentType ![mFormalArgumentName string] ;
+    end foreach ;
+    @lexicalTypeEnum returnedArgumentType ;
+    [lexicalTypeMap searchKey !mReturnedTypeName ? returnedArgumentType] ;
+    [!?lexicalFunctionMap insertKey !mFunctionName !lexicalFunctionFormalArgumentList !returnedArgumentType !"" !true] ;
+  end foreach ;
+#--------------------------------------- Unicode test functions
+  const @stringset externUnicodeTestFunctions := {
+   !"unicodeToLower",
+   !"unicodeToUpper",
+   !"unicodeToUpper",
+   !"isUnicodeLetter",
+   !"isUnicodeMark",
+   !"isUnicodeNumber",
+   !"isUnicodeDecimalDigit",
+   !"isUnicodeASCIIHexDigit",
+   !"isUnicodeSeparator",
+   !"isUnicodeCommand",
+   !"isUnicodePunctuation",
+   !"isUnicodeSymbol"
+  } ;
+#---------------------------------------
+  @lexiqueAnalysisContext lexiqueAnalysisContext [new
+    !lexicalRoutineMap
+    !lexicalFunctionMap
+    ![@lexicalMessageMap emptyMap]
+    ![@terminalMap emptyMap]
+    ![@terminalList emptyList]
+    ![@lexicalAttributeMap emptyMap]
+    ![@lexicalExplicitTokenListMapMap emptyMap]
+    ![@stringset emptySet]
+    ![@templateDelimitorList emptyList]
+    ![@styleMap emptyMap]
+    !externUnicodeTestFunctions
+  ] ;
+#--------------------------------------- Build style map
+  @uint styleIndex := 1 ;
+  foreach mLexicalStyleList do
+    [!?lexiqueAnalysisContext->mStyleMap insertKey !mName !mComment !styleIndex] ;
+    styleIndex ++ ;
+  end foreach ;
+#--------------------------------------- Build lexical attribute map
+  buildLexicalAttributeMap
+   !lexicalTypeMap
+   !mLexicalAttributeList
+   !?lexiqueAnalysisContext->mLexicalAttributeMap
+  ;
+#--------------------------------------- Build terminal map
+  foreach mTerminalDeclarationList do
+    @uint terminalStyleIndex := 0 ;
+    if [[mStyle string] length] > 0 then
+      [[lexiqueAnalysisContext mStyleMap] searchKey !mStyle ?* ?terminalStyleIndex] ;
+    end if ;
+    @lexicalSentValueList argumentTypeList [emptyList] ;
+    foreach mSentAttributeList do
+      @lexicalTypeEnum attributeLexicalType ;
+      [lexiqueAnalysisContext->mLexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType] ;
+      argumentTypeList += !mFormalSelector !mAttributeName->string !attributeLexicalType ;
+    end foreach ;
+    [!?lexiqueAnalysisContext->mTerminalMap insertKey !mName !argumentTypeList] ;
+    @bool isEndOfTemplateMark := false ;
+    @bool atomicSelection := true ;
+    foreach mOptionList do
+      if [mValue string] == "nonAtomicSelection" then
+        if atomicSelection then
+          atomicSelection := false ;
+        else
+          error mValue: "the 'nonAtomicSelection' feature is already set" ;
+        end if ;
+      elsif [mValue string] != "templateEndMark" then
+        error mValue:"only the 'templateEndMark' and 'nonAtomicSelection' features are allowed here" ;
+      elsif isEndOfTemplateMark then
+        error mValue:"the 'templateEndMark' feature is already set" ;
+      else
+        isEndOfTemplateMark := true ;
+      end if ;
+    end foreach ;
+    lexiqueAnalysisContext->mTerminalList +=
+      !mName
+      !argumentTypeList
+      ![mSyntaxErrorMessage string]
+      !isEndOfTemplateMark
+      !atomicSelection
+      !terminalStyleIndex
+    ;
+  end foreach ;
+  foreach mLexicalListDeclarationList do
+    @uint terminalStyleIndex := 0 ;
+    if [[mStyle string] length] > 0 then
+      [[lexiqueAnalysisContext mStyleMap] searchKey !mStyle ?* ?terminalStyleIndex] ;
+    end if ;
+    @lexicalSentValueList argumentTypeList [emptyList] ;
+    foreach mSentAttributeList do
+      @lexicalTypeEnum attributeLexicalType ;
+      [lexiqueAnalysisContext->mLexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType] ;
+      argumentTypeList += !mFormalSelector !mAttributeName->string !attributeLexicalType ;
+    end foreach ;
+    @lexicalExplicitTokenListMap lexicalTokenListMap [emptyMap] ;
+    @tokenSortedlist tokenSortedlist [emptySortedList] ;
+    foreach mEntryList do
+      @string syntaxErrorMessage := [[mSyntaxErrorMessage string] stringByReplacingStringByString !"%K" ![mTerminalSpelling string]] ;
+      @bool isEndOfTemplateMark := false ;
+      @bool atomicSelection := true ;
+      foreach mFeatureList do
+        if [mValue string] == "nonAtomicSelection" then
+          if atomicSelection then
+            atomicSelection := false ;
+          else
+            error mValue: "the 'nonAtomicSelection' feature is already set" ;
+          end if ;
+        elsif [mValue string] != "templateEndMark" then
+          error mValue:"only the 'templateEndMark' and 'nonAtomicSelection' features are allowed here" ;
+        elsif isEndOfTemplateMark then
+          error mValue:"the 'templateEndMark' feature is already set" ;
+        else
+          isEndOfTemplateMark := true ;
+        end if ;
+      end foreach ;
+      lexiqueAnalysisContext->mTerminalList +=
+        !mTerminalSpelling
+        !argumentTypeList
+        !syntaxErrorMessage
+        !isEndOfTemplateMark
+        !atomicSelection
+        !terminalStyleIndex
+      ;
+      [!?lexiqueAnalysisContext->mTerminalMap insertKey !mTerminalSpelling !argumentTypeList] ;
+      [!?lexicalTokenListMap insertKey !mEntrySpelling !mTerminalSpelling !mFeatureList] ;
+      tokenSortedlist += ![[mEntrySpelling string] length] ![mEntrySpelling string] ![mTerminalSpelling string] ;
+      lexiqueAnalysisContext->mUnicodeStringToGenerate += ![mEntrySpelling string] ;
+    end foreach ;
+    [!?lexiqueAnalysisContext->mLexicalTokenListMap insertKey !mName !lexicalTokenListMap !tokenSortedlist !false] ;
+  end foreach ;
+#--------------------------------------- Build Message map
+  foreach mLexicalMessageDeclarationList do
+    [!?lexiqueAnalysisContext->mLexicalMessageMap insertKey !mMessageName !mMessageValue !false] ;
+  end foreach ;
+#--------------------------------------- Check rules
+  foreach mLexicalRuleList do
+    [mLexicalRule checkLexicalRule !?lexiqueAnalysisContext] ;
+  end foreach ;
+#--------------------------------------- Warn for unused messages
+  foreach [lexiqueAnalysisContext mLexicalMessageMap] do
+    if not mMessageIsUsed then
+      warning lkey:"unused message" ;
+    end if ;
+  end foreach ;
+#--------------------------------------- Template delimiters
+  foreach mTemplateDelimitorList do
+   lexiqueAnalysisContext->mUnicodeStringToGenerate += ![mStartString string] ;
+   lexiqueAnalysisContext->mUnicodeStringToGenerate += ![mEndString string] ;
+   @bool preservesStartDelimiter := false ;
+   foreach mOptionList do
+     if [mValue string] != "preserved" then
+       error mValue:"only the 'preserved' feature is allowed here" ;
+     elsif preservesStartDelimiter then
+       error mValue:"the 'preserved' feature is already set" ;
+     else
+       preservesStartDelimiter := true ;
+     end if ;
+   end foreach ;
+   lexiqueAnalysisContext->mTemplateDelimitorList += !mStartString !mEndString !preservesStartDelimiter ;
+  end foreach ;
+#--------------------------------------- Check "indexing" declarations
+  if [mIndexingDirectory isNowhere] then
+    foreach mIndexingListAST do
+      error mIndexName : "indexing declaration requires one 'indexing in \"path\";' declaration" ;
+    end foreach ;
+  end if ;
+  @stringset indexNameSet [emptySet] ;
+  foreach mIndexingListAST do
+    if [indexNameSet hasKey ![mIndexName string]] then
+      error mIndexName : "the '" . mIndexName . "' index is already declared" ;
+    end if ;
+    indexNameSet += ![mIndexName string] ;
+  end foreach ;
+#--------------------------------------- Template replacements
+  foreach mTemplateReplacementList do
+   lexiqueAnalysisContext->mUnicodeStringToGenerate += ![mMatchString string] ;
+   lexiqueAnalysisContext->mUnicodeStringToGenerate += ![mReplacementString string] ;
+   # § TODO Check replacement function
+  end foreach ;
+#--------------------------------------- Build header and Cpp contents
+  if [@uint errorCount] == 0 then
+    const lexiqueClassName := mLexiqueComponentName->string ;
+  #--- Header
+    var headerContents := [filewrapper lexiqueGenerationTemplates.newHeaderZone2
+       ![lexiqueClassName identifierRepresentation]
+       !lexiqueAnalysisContext
+       !mTemplateDelimitorList
+    ] ;
+    headerContents += [filewrapper lexiqueGenerationTemplates.newHeaderZone3
+      ![lexiqueClassName identifierRepresentation]
+      !mLexicalListDeclarationList
+      !lexiqueAnalysisContext
+      !mIndexingListAST
+    ] ;
+  #--- Cpp
+    const cppContents :=  [filewrapper lexiqueGenerationTemplates.newImplementationZone2Galgas3
+      ![lexiqueClassName identifierRepresentation]
+      ![lexiqueAnalysisContext mLexicalAttributeMap]
+      ![lexiqueAnalysisContext mLexicalMessageMap]
+      ![lexiqueAnalysisContext mTerminalList]
+      ![lexiqueAnalysisContext mLexicalTokenListMap]
+      ![lexiqueAnalysisContext mUnicodeStringToGenerate]
+      !mLexicalRuleList
+      !lexiqueAnalysisContext
+      !mIndexingDirectory->string
+      !mTemplateDelimitorList
+      !lexiqueClassName
+      !mTemplateReplacementList
+    ] ;
+  #--- Cocoa header
+    var cocoaHeader := [filewrapper lexiqueGenerationTemplates.cocoaHeaderZone2
+         !lexiqueClassName
+         !lexiqueAnalysisContext
+    ] ;
+    cocoaHeader += [filewrapper lexiqueGenerationTemplates.cocoaHeaderZone3
+      !lexiqueClassName
+      !lexiqueAnalysisContext
+    ] ;
+  #--- Cocoa implementation
+    const cocoaImplementation := [filewrapper lexiqueGenerationTemplates.cocoaImplementationZone2
+      !"lexique-" + lexiqueClassName + "-cocoa"
+      !lexiqueClassName
+      ![lexiqueAnalysisContext mLexicalAttributeMap]
+      ![lexiqueAnalysisContext mLexicalMessageMap]
+      ![lexiqueAnalysisContext mTerminalList]
+      ![lexiqueAnalysisContext mUnicodeStringToGenerate]
+      !mLexicalRuleList
+      !lexiqueAnalysisContext
+      !mTemplateReplacementList
+      !mIndexingDirectory->string
+      !mIndexingListAST
+      !mLexicalStyleList
+      !mTemplateDelimitorList
+    ] ;
+  #---
+    ioSemanticDeclarationListForGeneration +=
+      !""
+      ![@lexiqueDeclarationForGeneration new
+        !true # has header
+        !"lexique-" + lexiqueClassName
+        !lexiqueClassName
+        !headerContents
+        !cppContents
+        !cocoaHeader
+        !cocoaImplementation
+      ]
+      !""
+    ;  
+  end if ;
+end method ;
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 #    P R E D E F I N E D    T Y P E S                                       *
 #                                                                           *
