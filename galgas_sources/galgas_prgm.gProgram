@@ -607,16 +607,6 @@ routine compileProject
   else
     semanticDeclarationSortedListForGeneration := [@semanticDeclarationSortedListForGeneration emptySortedList] ;
   end if ;
-#---------------------------------- Compile lexique components
-  var lexiqueComponentGenerationList := [@lexiqueComponentGenerationList emptyList] ;
-  if [@uint errorCount] == 0 then
-    for scanner in declarationAST->mLexiqueComponentList do
-      compileLexiqueComponentGalgas3
-        !scanner
-        !?lexiqueComponentGenerationList
-      ;
-    end for ;
-  end if ;
 #---------------------------------- Compile syntax components
   var parsedSyntaxComponentMap := [@parsedSyntaxComponentMap emptyMap] ;
   var syntaxListForGeneration := [@syntaxListForGeneration emptyList] ;
@@ -708,7 +698,6 @@ routine compileProject
       !productDirectory
       !optionComponentMapForGeneration
       !grammarGenerationList
-      !lexiqueComponentGenerationList
       !appProductFileList
       !semanticContext
       !syntaxListForGeneration
@@ -735,7 +724,6 @@ routine projectGeneration
   ??@string inProductDirectory
   ??@optionComponentMapForGeneration inOptionComponentMapForGeneration
   ??@grammarComponentGenerationList inGrammarGenerationList
-  ??@lexiqueComponentGenerationList inLexiqueComponentGenerationList
   ??@stringlist inAppProductFileList
   ??@semanticContext inSemanticContext
   ??@syntaxListForGeneration inSyntaxListForGeneration
@@ -756,13 +744,6 @@ routine projectGeneration
   end if ;
   var toolCppFileList := [@stringlist emptyList] ;
   var allProductFileSet := [@stringset emptySet] ;
-#---------------------------------- Generate program component
-#  generateProgramComponentGalgas3
-#    !inProductDirectory
-#    !inProgramCppContents
-#    !?toolCppFileList
-#    !?allProductFileSet
-#  ;
 #---------------------------------- Generate grammar components
   generateGrammarComponentGalgas3
     !inProductDirectory
@@ -770,15 +751,6 @@ routine projectGeneration
     !?toolCppFileList
     !?allProductFileSet
   ;
-#---------------------------------- Generate lexique components
-  if [@uint errorCount] == 0 then
-    generateLexiqueComponentsGalgas3
-      !inProductDirectory
-      !inLexiqueComponentGenerationList
-      !?toolCppFileList
-      !?allProductFileSet
-    ;
-  end if ;
 #---------------------------------- Generate GUI components
   if [@uint errorCount] == 0 then
     generateAllGuiComponentsGalgas3

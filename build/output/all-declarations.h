@@ -266,8 +266,6 @@
 #include "proc-parseLexiqueComponent.h"
 #include "proc-compileLexiqueComponentFromAST.h"
 #include "proc-compileLexiqueComponentFromSource.h"
-#include "proc-compileLexiqueComponentGalgas3.h"
-#include "proc-generateLexiqueComponentsGalgas3.h"
 #include "filewrapper-optionGenerationTemplates.h"
 #include "proc-semanticAnalysisOfOptionComponent.h"
 #include "proc-parseOptionComponent.h"
