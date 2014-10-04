@@ -26,10 +26,6 @@ class GALGAS_Xcode_5F_PBXCopyBuildPhase : public AC_GALGAS_class {
 //--------------------------------- Constructor from pointer
   public : GALGAS_Xcode_5F_PBXCopyBuildPhase (const cPtr_Xcode_5F_PBXCopyBuildPhase * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

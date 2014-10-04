@@ -27,10 +27,6 @@ class GALGAS_falseExpressionForGeneration : public GALGAS_semanticExpressionForG
 //--------------------------------- Constructor from pointer
   public : GALGAS_falseExpressionForGeneration (const cPtr_falseExpressionForGeneration * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

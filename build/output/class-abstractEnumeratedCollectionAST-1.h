@@ -23,8 +23,6 @@ class GALGAS_abstractEnumeratedCollectionAST : public AC_GALGAS_class {
 //--------------------------------- Constructor from pointer
   public : GALGAS_abstractEnumeratedCollectionAST (const cPtr_abstractEnumeratedCollectionAST * inSourcePtr) ;
 
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

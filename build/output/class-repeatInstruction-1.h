@@ -27,10 +27,6 @@ class GALGAS_repeatInstruction : public GALGAS_syntaxInstructionAST {
 //--------------------------------- Constructor from pointer
   public : GALGAS_repeatInstruction (const cPtr_repeatInstruction * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

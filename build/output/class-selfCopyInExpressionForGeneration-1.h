@@ -27,10 +27,6 @@ class GALGAS_selfCopyInExpressionForGeneration : public GALGAS_semanticExpressio
 //--------------------------------- Constructor from pointer
   public : GALGAS_selfCopyInExpressionForGeneration (const cPtr_selfCopyInExpressionForGeneration * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

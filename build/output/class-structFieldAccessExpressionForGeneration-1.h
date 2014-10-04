@@ -24,10 +24,6 @@ class GALGAS_structFieldAccessExpressionForGeneration : public GALGAS_semanticEx
 //--------------------------------- Constructor from pointer
   public : GALGAS_structFieldAccessExpressionForGeneration (const cPtr_structFieldAccessExpressionForGeneration * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

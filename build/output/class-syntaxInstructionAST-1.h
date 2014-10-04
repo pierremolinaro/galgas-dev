@@ -23,8 +23,6 @@ class GALGAS_syntaxInstructionAST : public AC_GALGAS_class {
 //--------------------------------- Constructor from pointer
   public : GALGAS_syntaxInstructionAST (const cPtr_syntaxInstructionAST * inSourcePtr) ;
 
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

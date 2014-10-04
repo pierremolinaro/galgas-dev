@@ -23,10 +23,6 @@ class GALGAS_Xcode_5F_PBXBuildFile : public AC_GALGAS_class {
 //--------------------------------- Constructor from pointer
   public : GALGAS_Xcode_5F_PBXBuildFile (const cPtr_Xcode_5F_PBXBuildFile * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

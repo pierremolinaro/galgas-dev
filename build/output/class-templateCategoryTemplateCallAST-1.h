@@ -24,10 +24,6 @@ class GALGAS_templateCategoryTemplateCallAST : public GALGAS_templateExpressionA
 //--------------------------------- Constructor from pointer
   public : GALGAS_templateCategoryTemplateCallAST (const cPtr_templateCategoryTemplateCallAST * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

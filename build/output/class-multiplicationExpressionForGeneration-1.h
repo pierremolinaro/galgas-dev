@@ -24,10 +24,6 @@ class GALGAS_multiplicationExpressionForGeneration : public GALGAS_semanticExpre
 //--------------------------------- Constructor from pointer
   public : GALGAS_multiplicationExpressionForGeneration (const cPtr_multiplicationExpressionForGeneration * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

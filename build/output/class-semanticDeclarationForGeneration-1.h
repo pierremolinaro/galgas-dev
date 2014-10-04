@@ -23,8 +23,6 @@ class GALGAS_semanticDeclarationForGeneration : public AC_GALGAS_class {
 //--------------------------------- Constructor from pointer
   public : GALGAS_semanticDeclarationForGeneration (const cPtr_semanticDeclarationForGeneration * inSourcePtr) ;
 
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

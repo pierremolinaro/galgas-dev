@@ -27,10 +27,6 @@ class GALGAS_overridingCategoryModifierForGeneration : public GALGAS_semanticDec
 //--------------------------------- Constructor from pointer
   public : GALGAS_overridingCategoryModifierForGeneration (const cPtr_overridingCategoryModifierForGeneration * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

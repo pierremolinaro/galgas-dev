@@ -23,8 +23,6 @@ class GALGAS_templateInstructionAST : public AC_GALGAS_class {
 //--------------------------------- Constructor from pointer
   public : GALGAS_templateInstructionAST (const cPtr_templateInstructionAST * inSourcePtr) ;
 
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

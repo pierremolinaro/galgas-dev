@@ -23,8 +23,6 @@ class GALGAS_actualParameterForGeneration : public AC_GALGAS_class {
 //--------------------------------- Constructor from pointer
   public : GALGAS_actualParameterForGeneration (const cPtr_actualParameterForGeneration * inSourcePtr) ;
 
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

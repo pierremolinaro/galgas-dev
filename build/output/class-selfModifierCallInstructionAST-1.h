@@ -27,10 +27,6 @@ class GALGAS_selfModifierCallInstructionAST : public GALGAS_semanticInstructionA
 //--------------------------------- Constructor from pointer
   public : GALGAS_selfModifierCallInstructionAST (const cPtr_selfModifierCallInstructionAST * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

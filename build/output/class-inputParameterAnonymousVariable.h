@@ -19,6 +19,9 @@ class cPtr_inputParameterAnonymousVariable : public cPtr_abstractInputParameter 
 //--- Constructor
   public : cPtr_inputParameterAnonymousVariable (LOCATION_ARGS) ;
 
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,

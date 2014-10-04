@@ -27,8 +27,6 @@ class GALGAS_inputParameterAnonymousVariable : public GALGAS_abstractInputParame
 //--------------------------------- Constructor from pointer
   public : GALGAS_inputParameterAnonymousVariable (const cPtr_inputParameterAnonymousVariable * inSourcePtr) ;
 
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

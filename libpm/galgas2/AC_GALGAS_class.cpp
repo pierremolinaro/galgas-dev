@@ -83,7 +83,7 @@ AC_GALGAS_class & AC_GALGAS_class::operator = (const AC_GALGAS_class & inSource)
 //---------------------------------------------------------------------------------------------------------------------*
 
 void AC_GALGAS_class::description (C_String & ioString,
-                                const int32_t inIndentation) const {
+                                   const int32_t inIndentation) const {
   ioString << "<@"
            << staticTypeDescriptor ()->mGalgasTypeName
            << ":" ;
@@ -93,6 +93,16 @@ void AC_GALGAS_class::description (C_String & ioString,
     ioString << "not built" ;
   }
   ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void AC_GALGAS_class::insulate (LOCATION_ARGS) {
+  if (isValid () && (mObjectPtr->retainCount () > 1)) {
+    acPtr_class * ptr = mObjectPtr->duplicate (THERE) ;
+    macroAssignSharedObject (mObjectPtr, ptr) ;
+    macroDetachSharedObject (ptr) ;
+  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

@@ -114,27 +114,6 @@ if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] > 0) then
   %}\n\n%
 end
 
-if ([ALL_ATTRIBUTE_LIST length] > 0) & not IS_ABSTRACT then
-  %//---------------------------------------------------------------------------------------------------------------------*\n\n%
-  %void GALGAS_%!TYPE_IDENTIFIER%::insulate (LOCATION_ARGS) {\n%
-  %  macroMutexLock (gInsulationMutex) ;\n%
-  %  if (isValid () && (mObjectPtr->retainCount () > 1)) {\n%
-  %    cPtr_%!TYPE_IDENTIFIER% * p = (cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ;\n%
-  %    macroValidSharedObject (p, cPtr_%!TYPE_IDENTIFIER%) ;\n%
-  %    cPtr_%!TYPE_IDENTIFIER% * r = NULL ;\n%
-  %    macroMyNew (r, cPtr_%!TYPE_IDENTIFIER% (%
-  for () in ALL_ATTRIBUTE_LIST
-    do %p->mAttribute_%![mAttributeName identifierRepresentation]
-    between %, %
-  end
-  % COMMA_THERE)) ;\n%
-  %    macroAssignSharedObject (mObjectPtr, r) ;\n%
-  %    macroDetachSharedObject (r) ;\n%
-  %  }\n%
-  %  macroMutexUnlock (gInsulationMutex) ;\n%
-  %}\n\n%
-end
-
 for () in CURRENT_ATTRIBUTE_LIST do
   if mHasGetter then
     %//---------------------------------------------------------------------------------------------------------------------*\n\n%
@@ -229,5 +208,22 @@ if not IS_ABSTRACT then
     %}\n\n%
   end
 end
-%
 
+if not IS_ABSTRACT then
+%//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_%!TYPE_IDENTIFIER%::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_%!TYPE_IDENTIFIER% (%
+  for () in ALL_ATTRIBUTE_LIST
+  do  %mAttribute_%![mAttributeName identifierRepresentation]
+  between %, %
+  after % COMMA_%
+  end
+  
+  %THERE)) ;
+  return ptr ;
+}
+
+%end
+%

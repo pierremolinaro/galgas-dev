@@ -27,10 +27,6 @@ class GALGAS_abstractCategoryModifierForGeneration : public GALGAS_semanticDecla
 //--------------------------------- Constructor from pointer
   public : GALGAS_abstractCategoryModifierForGeneration (const cPtr_abstractCategoryModifierForGeneration * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

@@ -23,8 +23,11 @@ class cPtr_literalUInt_36__34_ExpressionForGeneration : public cPtr_semanticExpr
                                                             const GALGAS_uint_36__34_ & in_mValue
                                                             COMMA_LOCATION_ARGS) ;
 
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
 //--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_uint_36__34_ reader_mValue (UNUSED_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_uint_36__34_ reader_mValue (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

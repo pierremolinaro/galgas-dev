@@ -27,10 +27,6 @@ class GALGAS_categoryMethodForGeneration : public GALGAS_semanticDeclarationWith
 //--------------------------------- Constructor from pointer
   public : GALGAS_categoryMethodForGeneration (const cPtr_categoryMethodForGeneration * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning
