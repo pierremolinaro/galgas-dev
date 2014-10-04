@@ -23,8 +23,6 @@ class GALGAS_abstractCollectionValueElementForGeneration : public AC_GALGAS_clas
 //--------------------------------- Constructor from pointer
   public : GALGAS_abstractCollectionValueElementForGeneration (const cPtr_abstractCollectionValueElementForGeneration * inSourcePtr) ;
 
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

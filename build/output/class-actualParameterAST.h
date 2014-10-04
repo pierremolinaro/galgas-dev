@@ -22,7 +22,7 @@ class cPtr_actualParameterAST : public acPtr_class {
                                     COMMA_LOCATION_ARGS) ;
 
 //--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_location reader_mQualifierLocation (UNUSED_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_location reader_mQualifierLocation (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const = 0 ;

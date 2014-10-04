@@ -26,9 +26,12 @@ class cPtr_routinePrototypeDeclarationForGeneration : public cPtr_semanticDeclar
                                                           const GALGAS_formalParameterListForGeneration & in_mFormalArgumentList
                                                           COMMA_LOCATION_ARGS) ;
 
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
 //--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mRoutineName (UNUSED_LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_formalParameterListForGeneration reader_mFormalArgumentList (UNUSED_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mRoutineName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_formalParameterListForGeneration reader_mFormalArgumentList (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

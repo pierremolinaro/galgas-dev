@@ -24,10 +24,6 @@ class GALGAS_testDynamicClassInExpressionAST : public GALGAS_semanticExpressionA
 //--------------------------------- Constructor from pointer
   public : GALGAS_testDynamicClassInExpressionAST (const cPtr_testDynamicClassInExpressionAST * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

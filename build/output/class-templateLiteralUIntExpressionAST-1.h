@@ -27,10 +27,6 @@ class GALGAS_templateLiteralUIntExpressionAST : public GALGAS_templateExpression
 //--------------------------------- Constructor from pointer
   public : GALGAS_templateLiteralUIntExpressionAST (const cPtr_templateLiteralUIntExpressionAST * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

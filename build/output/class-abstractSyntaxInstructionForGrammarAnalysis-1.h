@@ -23,8 +23,6 @@ class GALGAS_abstractSyntaxInstructionForGrammarAnalysis : public AC_GALGAS_clas
 //--------------------------------- Constructor from pointer
   public : GALGAS_abstractSyntaxInstructionForGrammarAnalysis (const cPtr_abstractSyntaxInstructionForGrammarAnalysis * inSourcePtr) ;
 
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

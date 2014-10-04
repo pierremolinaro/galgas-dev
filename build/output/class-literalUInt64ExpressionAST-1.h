@@ -27,10 +27,6 @@ class GALGAS_literalUInt_36__34_ExpressionAST : public GALGAS_semanticExpression
 //--------------------------------- Constructor from pointer
   public : GALGAS_literalUInt_36__34_ExpressionAST (const cPtr_literalUInt_36__34_ExpressionAST * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

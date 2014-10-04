@@ -27,10 +27,6 @@ class GALGAS_templateFileWrapperWithStaticPathAST : public GALGAS_templateExpres
 //--------------------------------- Constructor from pointer
   public : GALGAS_templateFileWrapperWithStaticPathAST (const cPtr_templateFileWrapperWithStaticPathAST * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

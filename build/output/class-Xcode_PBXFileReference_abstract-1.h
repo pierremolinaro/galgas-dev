@@ -23,8 +23,6 @@ class GALGAS_Xcode_5F_PBXFileReference_5F_abstract : public AC_GALGAS_class {
 //--------------------------------- Constructor from pointer
   public : GALGAS_Xcode_5F_PBXFileReference_5F_abstract (const cPtr_Xcode_5F_PBXFileReference_5F_abstract * inSourcePtr) ;
 
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

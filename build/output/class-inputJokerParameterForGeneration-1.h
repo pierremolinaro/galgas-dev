@@ -27,10 +27,6 @@ class GALGAS_inputJokerParameterForGeneration : public GALGAS_actualParameterFor
 //--------------------------------- Constructor from pointer
   public : GALGAS_inputJokerParameterForGeneration (const cPtr_inputJokerParameterForGeneration * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

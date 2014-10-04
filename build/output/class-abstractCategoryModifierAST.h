@@ -27,10 +27,13 @@ class cPtr_abstractCategoryModifierAST : public cPtr_semanticDeclarationAST {
                                              const GALGAS_formalParameterListAST & in_mAbstractCategoryModifierFormalParameterList
                                              COMMA_LOCATION_ARGS) ;
 
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
 //--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mTypeName (UNUSED_LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mAbstractCategoryModifierName (UNUSED_LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_formalParameterListAST reader_mAbstractCategoryModifierFormalParameterList (UNUSED_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mTypeName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mAbstractCategoryModifierName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_formalParameterListAST reader_mAbstractCategoryModifierFormalParameterList (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

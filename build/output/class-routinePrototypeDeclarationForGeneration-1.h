@@ -27,10 +27,6 @@ class GALGAS_routinePrototypeDeclarationForGeneration : public GALGAS_semanticDe
 //--------------------------------- Constructor from pointer
   public : GALGAS_routinePrototypeDeclarationForGeneration (const cPtr_routinePrototypeDeclarationForGeneration * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

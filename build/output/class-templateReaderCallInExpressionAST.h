@@ -27,10 +27,13 @@ class cPtr_templateReaderCallInExpressionAST : public cPtr_templateExpressionAST
                                                    const GALGAS_templateExpressionListAST & in_mExpressionList
                                                    COMMA_LOCATION_ARGS) ;
 
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
 //--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_templateExpressionAST reader_mReceiverExpression (UNUSED_LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mReaderName (UNUSED_LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_templateExpressionListAST reader_mExpressionList (UNUSED_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_templateExpressionAST reader_mReceiverExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mReaderName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_templateExpressionListAST reader_mExpressionList (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

@@ -24,10 +24,6 @@ class GALGAS_nonterminalInstructionForGeneration : public GALGAS_syntaxInstructi
 //--------------------------------- Constructor from pointer
   public : GALGAS_nonterminalInstructionForGeneration (const cPtr_nonterminalInstructionForGeneration * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

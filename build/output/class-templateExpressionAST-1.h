@@ -23,8 +23,6 @@ class GALGAS_templateExpressionAST : public AC_GALGAS_class {
 //--------------------------------- Constructor from pointer
   public : GALGAS_templateExpressionAST (const cPtr_templateExpressionAST * inSourcePtr) ;
 
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

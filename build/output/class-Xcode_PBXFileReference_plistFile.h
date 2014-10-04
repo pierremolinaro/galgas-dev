@@ -21,6 +21,9 @@ class cPtr_Xcode_5F_PBXFileReference_5F_plistFile : public cPtr_Xcode_5F_PBXFile
                                                         const GALGAS_string & in_mFileName
                                                         COMMA_LOCATION_ARGS) ;
 
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,

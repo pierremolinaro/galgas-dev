@@ -27,10 +27,6 @@ class GALGAS_optionComponentDeclarationAST : public GALGAS_semanticDeclarationAS
 //--------------------------------- Constructor from pointer
   public : GALGAS_optionComponentDeclarationAST (const cPtr_optionComponentDeclarationAST * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

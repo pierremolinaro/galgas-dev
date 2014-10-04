@@ -30,11 +30,14 @@ class cPtr_repeatInstruction : public cPtr_syntaxInstructionAST {
                                    const GALGAS_location & in_mEndOf_5F_repeat_5F_instruction
                                    COMMA_LOCATION_ARGS) ;
 
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
 //--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_syntaxInstructionList reader_mRepeatedInstructionList (UNUSED_LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_location reader_mEndOf_5F_repeated_5F_instructions_5F_branch (UNUSED_LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_listOfSyntaxInstructionList reader_mRepeatBranchList (UNUSED_LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_location reader_mEndOf_5F_repeat_5F_instruction (UNUSED_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_syntaxInstructionList reader_mRepeatedInstructionList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_location reader_mEndOf_5F_repeated_5F_instructions_5F_branch (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_listOfSyntaxInstructionList reader_mRepeatBranchList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_location reader_mEndOf_5F_repeat_5F_instruction (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

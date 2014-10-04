@@ -21,8 +21,11 @@ class cPtr_templateInstructionStringAST : public cPtr_templateInstructionAST {
   public : cPtr_templateInstructionStringAST (const GALGAS_string & in_mTemplateString
                                               COMMA_LOCATION_ARGS) ;
 
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
 //--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mTemplateString (UNUSED_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mTemplateString (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

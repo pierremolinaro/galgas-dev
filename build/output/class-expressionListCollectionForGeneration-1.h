@@ -27,10 +27,6 @@ class GALGAS_expressionListCollectionForGeneration : public GALGAS_abstractColle
 //--------------------------------- Constructor from pointer
   public : GALGAS_expressionListCollectionForGeneration (const cPtr_expressionListCollectionForGeneration * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

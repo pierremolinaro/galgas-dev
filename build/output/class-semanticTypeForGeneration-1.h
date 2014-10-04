@@ -24,8 +24,6 @@ class GALGAS_semanticTypeForGeneration : public GALGAS_semanticDeclarationForGen
 //--------------------------------- Constructor from pointer
   public : GALGAS_semanticTypeForGeneration (const cPtr_semanticTypeForGeneration * inSourcePtr) ;
 
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

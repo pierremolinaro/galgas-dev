@@ -194,21 +194,6 @@ GALGAS_lexicalRoutineInstructionAST GALGAS_lexicalRoutineInstructionAST::constru
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_lexicalRoutineInstructionAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_lexicalRoutineInstructionAST * p = (cPtr_lexicalRoutineInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexicalRoutineInstructionAST) ;
-    cPtr_lexicalRoutineInstructionAST * r = NULL ;
-    macroMyNew (r, cPtr_lexicalRoutineInstructionAST (p->mAttribute_mRoutineName, p->mAttribute_mActualArgumentList, p->mAttribute_mErrorMessageList COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_lstring GALGAS_lexicalRoutineInstructionAST::reader_mRoutineName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
@@ -292,6 +277,13 @@ void cPtr_lexicalRoutineInstructionAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_lexicalRoutineInstructionAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_lexicalRoutineInstructionAST (mAttribute_mRoutineName, mAttribute_mActualArgumentList, mAttribute_mErrorMessageList COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -408,21 +400,6 @@ GALGAS_lexicalSelectInstructionAST GALGAS_lexicalSelectInstructionAST::construct
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_lexicalSelectInstructionAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_lexicalSelectInstructionAST * p = (cPtr_lexicalSelectInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexicalSelectInstructionAST) ;
-    cPtr_lexicalSelectInstructionAST * r = NULL ;
-    macroMyNew (r, cPtr_lexicalSelectInstructionAST (p->mAttribute_mLexicalSelectBranchList, p->mAttribute_mDefaultInstructionList COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_lexicalSelectBranchListAST GALGAS_lexicalSelectInstructionAST::reader_mLexicalSelectBranchList (UNUSED_LOCATION_ARGS) const {
   GALGAS_lexicalSelectBranchListAST result ;
   if (NULL != mObjectPtr) {
@@ -484,6 +461,13 @@ void cPtr_lexicalSelectInstructionAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_lexicalSelectInstructionAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_lexicalSelectInstructionAST (mAttribute_mLexicalSelectBranchList, mAttribute_mDefaultInstructionList COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -595,21 +579,6 @@ GALGAS_lexicalSimpleSendInstructionAST GALGAS_lexicalSimpleSendInstructionAST::c
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_lexicalSimpleSendInstructionAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_lexicalSimpleSendInstructionAST * p = (cPtr_lexicalSimpleSendInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexicalSimpleSendInstructionAST) ;
-    cPtr_lexicalSimpleSendInstructionAST * r = NULL ;
-    macroMyNew (r, cPtr_lexicalSimpleSendInstructionAST (p->mAttribute_mSentTerminal COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_lstring GALGAS_lexicalSimpleSendInstructionAST::reader_mSentTerminal (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
@@ -649,6 +618,13 @@ void cPtr_lexicalSimpleSendInstructionAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_lexicalSimpleSendInstructionAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_lexicalSimpleSendInstructionAST (mAttribute_mSentTerminal COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -757,21 +733,6 @@ GALGAS_lexicalStructuredSendInstructionAST GALGAS_lexicalStructuredSendInstructi
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_lexicalStructuredSendInstructionAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_lexicalStructuredSendInstructionAST * p = (cPtr_lexicalStructuredSendInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexicalStructuredSendInstructionAST) ;
-    cPtr_lexicalStructuredSendInstructionAST * r = NULL ;
-    macroMyNew (r, cPtr_lexicalStructuredSendInstructionAST (p->mAttribute_mLexicalSendSearchList, p->mAttribute_mLexicalSendDefaultAction COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_lexicalSendSearchListAST GALGAS_lexicalStructuredSendInstructionAST::reader_mLexicalSendSearchList (UNUSED_LOCATION_ARGS) const {
   GALGAS_lexicalSendSearchListAST result ;
   if (NULL != mObjectPtr) {
@@ -833,6 +794,13 @@ void cPtr_lexicalStructuredSendInstructionAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_lexicalStructuredSendInstructionAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_lexicalStructuredSendInstructionAST (mAttribute_mLexicalSendSearchList, mAttribute_mLexicalSendDefaultAction COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -944,21 +912,6 @@ GALGAS_lexicalTagInstructionAST GALGAS_lexicalTagInstructionAST::constructor_new
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_lexicalTagInstructionAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_lexicalTagInstructionAST * p = (cPtr_lexicalTagInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexicalTagInstructionAST) ;
-    cPtr_lexicalTagInstructionAST * r = NULL ;
-    macroMyNew (r, cPtr_lexicalTagInstructionAST (p->mAttribute_mLexicalTagName COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_lstring GALGAS_lexicalTagInstructionAST::reader_mLexicalTagName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
@@ -998,6 +951,13 @@ void cPtr_lexicalTagInstructionAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_lexicalTagInstructionAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_lexicalTagInstructionAST (mAttribute_mLexicalTagName COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1109,21 +1069,6 @@ GALGAS_lexicalWarningInstructionAST GALGAS_lexicalWarningInstructionAST::constru
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_lexicalWarningInstructionAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_lexicalWarningInstructionAST * p = (cPtr_lexicalWarningInstructionAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexicalWarningInstructionAST) ;
-    cPtr_lexicalWarningInstructionAST * r = NULL ;
-    macroMyNew (r, cPtr_lexicalWarningInstructionAST (p->mAttribute_mWarningMessageName COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_lstring GALGAS_lexicalWarningInstructionAST::reader_mWarningMessageName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
@@ -1163,6 +1108,13 @@ void cPtr_lexicalWarningInstructionAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_lexicalWarningInstructionAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_lexicalWarningInstructionAST (mAttribute_mWarningMessageName COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1250,7 +1202,6 @@ AC_GALGAS_class (inSourcePtr) {
 cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST::cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST (LOCATION_ARGS) :
 acPtr_class (THERE) {
 }
-
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1362,21 +1313,6 @@ GALGAS_lexicalAttributeInputArgumentAST GALGAS_lexicalAttributeInputArgumentAST:
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_lexicalAttributeInputArgumentAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_lexicalAttributeInputArgumentAST * p = (cPtr_lexicalAttributeInputArgumentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexicalAttributeInputArgumentAST) ;
-    cPtr_lexicalAttributeInputArgumentAST * r = NULL ;
-    macroMyNew (r, cPtr_lexicalAttributeInputArgumentAST (p->mAttribute_mAttributeName COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_lstring GALGAS_lexicalAttributeInputArgumentAST::reader_mAttributeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
@@ -1416,6 +1352,13 @@ void cPtr_lexicalAttributeInputArgumentAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_lexicalAttributeInputArgumentAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_lexicalAttributeInputArgumentAST (mAttribute_mAttributeName COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1527,21 +1470,6 @@ GALGAS_lexicalCharacterInputArgumentAST GALGAS_lexicalCharacterInputArgumentAST:
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_lexicalCharacterInputArgumentAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_lexicalCharacterInputArgumentAST * p = (cPtr_lexicalCharacterInputArgumentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexicalCharacterInputArgumentAST) ;
-    cPtr_lexicalCharacterInputArgumentAST * r = NULL ;
-    macroMyNew (r, cPtr_lexicalCharacterInputArgumentAST (p->mAttribute_mCharacter COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_lchar GALGAS_lexicalCharacterInputArgumentAST::reader_mCharacter (UNUSED_LOCATION_ARGS) const {
   GALGAS_lchar result ;
   if (NULL != mObjectPtr) {
@@ -1581,6 +1509,13 @@ void cPtr_lexicalCharacterInputArgumentAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_lexicalCharacterInputArgumentAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_lexicalCharacterInputArgumentAST (mAttribute_mCharacter COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1692,21 +1627,6 @@ GALGAS_lexicalCurrentCharacterInputArgumentAST GALGAS_lexicalCurrentCharacterInp
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_lexicalCurrentCharacterInputArgumentAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_lexicalCurrentCharacterInputArgumentAST * p = (cPtr_lexicalCurrentCharacterInputArgumentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexicalCurrentCharacterInputArgumentAST) ;
-    cPtr_lexicalCurrentCharacterInputArgumentAST * r = NULL ;
-    macroMyNew (r, cPtr_lexicalCurrentCharacterInputArgumentAST (p->mAttribute_mLocation COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_location GALGAS_lexicalCurrentCharacterInputArgumentAST::reader_mLocation (UNUSED_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (NULL != mObjectPtr) {
@@ -1746,6 +1666,13 @@ void cPtr_lexicalCurrentCharacterInputArgumentAST::description (C_String & ioStr
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_lexicalCurrentCharacterInputArgumentAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_lexicalCurrentCharacterInputArgumentAST (mAttribute_mLocation COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1862,21 +1789,6 @@ GALGAS_lexicalFunctionInputArgumentAST GALGAS_lexicalFunctionInputArgumentAST::c
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_lexicalFunctionInputArgumentAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_lexicalFunctionInputArgumentAST * p = (cPtr_lexicalFunctionInputArgumentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexicalFunctionInputArgumentAST) ;
-    cPtr_lexicalFunctionInputArgumentAST * r = NULL ;
-    macroMyNew (r, cPtr_lexicalFunctionInputArgumentAST (p->mAttribute_mFunctionName, p->mAttribute_mFunctionActualArgumentList COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_lstring GALGAS_lexicalFunctionInputArgumentAST::reader_mFunctionName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
@@ -1938,6 +1850,13 @@ void cPtr_lexicalFunctionInputArgumentAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_lexicalFunctionInputArgumentAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_lexicalFunctionInputArgumentAST (mAttribute_mFunctionName, mAttribute_mFunctionActualArgumentList COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2049,21 +1968,6 @@ GALGAS_lexicalUnsignedInputArgumentAST GALGAS_lexicalUnsignedInputArgumentAST::c
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_lexicalUnsignedInputArgumentAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_lexicalUnsignedInputArgumentAST * p = (cPtr_lexicalUnsignedInputArgumentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexicalUnsignedInputArgumentAST) ;
-    cPtr_lexicalUnsignedInputArgumentAST * r = NULL ;
-    macroMyNew (r, cPtr_lexicalUnsignedInputArgumentAST (p->mAttribute_mUnsigned COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_luint GALGAS_lexicalUnsignedInputArgumentAST::reader_mUnsigned (UNUSED_LOCATION_ARGS) const {
   GALGAS_luint result ;
   if (NULL != mObjectPtr) {
@@ -2103,6 +2007,13 @@ void cPtr_lexicalUnsignedInputArgumentAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_lexicalUnsignedInputArgumentAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_lexicalUnsignedInputArgumentAST (mAttribute_mUnsigned COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2190,7 +2101,6 @@ AC_GALGAS_class (inSourcePtr) {
 cPtr_lexicalSendDefaultActionAST::cPtr_lexicalSendDefaultActionAST (LOCATION_ARGS) :
 acPtr_class (THERE) {
 }
-
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2302,21 +2212,6 @@ GALGAS_lexicalErrorByDefaultAST GALGAS_lexicalErrorByDefaultAST::constructor_new
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_lexicalErrorByDefaultAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_lexicalErrorByDefaultAST * p = (cPtr_lexicalErrorByDefaultAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexicalErrorByDefaultAST) ;
-    cPtr_lexicalErrorByDefaultAST * r = NULL ;
-    macroMyNew (r, cPtr_lexicalErrorByDefaultAST (p->mAttribute_mDefaultErrorMessageName COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_lstring GALGAS_lexicalErrorByDefaultAST::reader_mDefaultErrorMessageName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
@@ -2356,6 +2251,13 @@ void cPtr_lexicalErrorByDefaultAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_lexicalErrorByDefaultAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_lexicalErrorByDefaultAST (mAttribute_mDefaultErrorMessageName COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2467,21 +2369,6 @@ GALGAS_lexicalSendTerminalByDefaultAST GALGAS_lexicalSendTerminalByDefaultAST::c
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_lexicalSendTerminalByDefaultAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_lexicalSendTerminalByDefaultAST * p = (cPtr_lexicalSendTerminalByDefaultAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_lexicalSendTerminalByDefaultAST) ;
-    cPtr_lexicalSendTerminalByDefaultAST * r = NULL ;
-    macroMyNew (r, cPtr_lexicalSendTerminalByDefaultAST (p->mAttribute_mDefaultSentTerminal COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_lstring GALGAS_lexicalSendTerminalByDefaultAST::reader_mDefaultSentTerminal (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
@@ -2521,6 +2408,13 @@ void cPtr_lexicalSendTerminalByDefaultAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_lexicalSendTerminalByDefaultAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_lexicalSendTerminalByDefaultAST (mAttribute_mDefaultSentTerminal COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2637,21 +2531,6 @@ GALGAS_optionComponentAST GALGAS_optionComponentAST::constructor_new (const GALG
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_optionComponentAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_optionComponentAST * p = (cPtr_optionComponentAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_optionComponentAST) ;
-    cPtr_optionComponentAST * r = NULL ;
-    macroMyNew (r, cPtr_optionComponentAST (p->mAttribute_mOptionComponentName, p->mAttribute_mOptions COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_lstring GALGAS_optionComponentAST::reader_mOptionComponentName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
@@ -2713,6 +2592,13 @@ void cPtr_optionComponentAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_optionComponentAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_optionComponentAST (mAttribute_mOptionComponentName, mAttribute_mOptions COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2820,7 +2706,6 @@ cPtr_semanticDeclarationAST::cPtr_semanticDeclarationAST (const GALGAS_bool & in
 acPtr_class (THERE),
 mAttribute_mIsPredefined (in_mIsPredefined) {
 }
-
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -2947,21 +2832,6 @@ GALGAS_abstractCategoryMethodAST GALGAS_abstractCategoryMethodAST::constructor_n
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_abstractCategoryMethodAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_abstractCategoryMethodAST * p = (cPtr_abstractCategoryMethodAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_abstractCategoryMethodAST) ;
-    cPtr_abstractCategoryMethodAST * r = NULL ;
-    macroMyNew (r, cPtr_abstractCategoryMethodAST (p->mAttribute_mIsPredefined, p->mAttribute_mTypeName, p->mAttribute_mAbstractCategoryMethodName, p->mAttribute_mAbstractCategoryMethodFormalParameterList COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_lstring GALGAS_abstractCategoryMethodAST::reader_mTypeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
@@ -3048,6 +2918,13 @@ void cPtr_abstractCategoryMethodAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_abstractCategoryMethodAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_abstractCategoryMethodAST (mAttribute_mIsPredefined, mAttribute_mTypeName, mAttribute_mAbstractCategoryMethodName, mAttribute_mAbstractCategoryMethodFormalParameterList COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3174,21 +3051,6 @@ GALGAS_abstractCategoryModifierAST GALGAS_abstractCategoryModifierAST::construct
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_abstractCategoryModifierAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_abstractCategoryModifierAST * p = (cPtr_abstractCategoryModifierAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_abstractCategoryModifierAST) ;
-    cPtr_abstractCategoryModifierAST * r = NULL ;
-    macroMyNew (r, cPtr_abstractCategoryModifierAST (p->mAttribute_mIsPredefined, p->mAttribute_mTypeName, p->mAttribute_mAbstractCategoryModifierName, p->mAttribute_mAbstractCategoryModifierFormalParameterList COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_lstring GALGAS_abstractCategoryModifierAST::reader_mTypeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
@@ -3275,6 +3137,13 @@ void cPtr_abstractCategoryModifierAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_abstractCategoryModifierAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_abstractCategoryModifierAST (mAttribute_mIsPredefined, mAttribute_mTypeName, mAttribute_mAbstractCategoryModifierName, mAttribute_mAbstractCategoryModifierFormalParameterList COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3406,21 +3275,6 @@ GALGAS_abstractCategoryReaderAST GALGAS_abstractCategoryReaderAST::constructor_n
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_abstractCategoryReaderAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_abstractCategoryReaderAST * p = (cPtr_abstractCategoryReaderAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_abstractCategoryReaderAST) ;
-    cPtr_abstractCategoryReaderAST * r = NULL ;
-    macroMyNew (r, cPtr_abstractCategoryReaderAST (p->mAttribute_mIsPredefined, p->mAttribute_mTypeName, p->mAttribute_mAbstractCategoryReaderName, p->mAttribute_mAbstractCategoryReaderFormalInputParameterList, p->mAttribute_mAbstractCategoryReaderReturnedTypeName COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_lstring GALGAS_abstractCategoryReaderAST::reader_mTypeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
@@ -3529,6 +3383,13 @@ void cPtr_abstractCategoryReaderAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_abstractCategoryReaderAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_abstractCategoryReaderAST (mAttribute_mIsPredefined, mAttribute_mTypeName, mAttribute_mAbstractCategoryReaderName, mAttribute_mAbstractCategoryReaderFormalInputParameterList, mAttribute_mAbstractCategoryReaderReturnedTypeName COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3655,21 +3516,6 @@ GALGAS_arrayDeclarationAST GALGAS_arrayDeclarationAST::constructor_new (const GA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_arrayDeclarationAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_arrayDeclarationAST * p = (cPtr_arrayDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_arrayDeclarationAST) ;
-    cPtr_arrayDeclarationAST * r = NULL ;
-    macroMyNew (r, cPtr_arrayDeclarationAST (p->mAttribute_mIsPredefined, p->mAttribute_mArrayTypeName, p->mAttribute_mElementTypeName, p->mAttribute_mDimension COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_lstring GALGAS_arrayDeclarationAST::reader_mArrayTypeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
@@ -3756,6 +3602,13 @@ void cPtr_arrayDeclarationAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_arrayDeclarationAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_arrayDeclarationAST (mAttribute_mIsPredefined, mAttribute_mArrayTypeName, mAttribute_mElementTypeName, mAttribute_mDimension COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3892,21 +3745,6 @@ GALGAS_categoryMethodAST GALGAS_categoryMethodAST::constructor_new (const GALGAS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_categoryMethodAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_categoryMethodAST * p = (cPtr_categoryMethodAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_categoryMethodAST) ;
-    cPtr_categoryMethodAST * r = NULL ;
-    macroMyNew (r, cPtr_categoryMethodAST (p->mAttribute_mIsPredefined, p->mAttribute_mTypeName, p->mAttribute_mCategoryMethodName, p->mAttribute_mCategoryMethodFormalParameterList, p->mAttribute_mCategoryMethodInstructionList, p->mAttribute_mEndOfMethodLocation COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_lstring GALGAS_categoryMethodAST::reader_mTypeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
@@ -4037,6 +3875,13 @@ void cPtr_categoryMethodAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_categoryMethodAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_categoryMethodAST (mAttribute_mIsPredefined, mAttribute_mTypeName, mAttribute_mCategoryMethodName, mAttribute_mCategoryMethodFormalParameterList, mAttribute_mCategoryMethodInstructionList, mAttribute_mEndOfMethodLocation COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4173,21 +4018,6 @@ GALGAS_categoryModifierAST GALGAS_categoryModifierAST::constructor_new (const GA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_categoryModifierAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_categoryModifierAST * p = (cPtr_categoryModifierAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_categoryModifierAST) ;
-    cPtr_categoryModifierAST * r = NULL ;
-    macroMyNew (r, cPtr_categoryModifierAST (p->mAttribute_mIsPredefined, p->mAttribute_mTypeName, p->mAttribute_mCategoryModifierName, p->mAttribute_mCategoryModifierFormalParameterList, p->mAttribute_mCategoryModifierInstructionList, p->mAttribute_mEndOfModifierLocation COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_lstring GALGAS_categoryModifierAST::reader_mTypeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
@@ -4318,6 +4148,13 @@ void cPtr_categoryModifierAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_categoryModifierAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_categoryModifierAST (mAttribute_mIsPredefined, mAttribute_mTypeName, mAttribute_mCategoryModifierName, mAttribute_mCategoryModifierFormalParameterList, mAttribute_mCategoryModifierInstructionList, mAttribute_mEndOfModifierLocation COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4460,21 +4297,6 @@ GALGAS_categoryReaderAST GALGAS_categoryReaderAST::constructor_new (const GALGAS
     macroMyNew (result.mObjectPtr, cPtr_categoryReaderAST (inAttribute_mIsPredefined, inAttribute_mTypeName, inAttribute_mCategoryReaderName, inAttribute_mCategoryReaderFormalInputParameterList, inAttribute_mCategoryReaderReturnedTypeName, inAttribute_mCategoryReaderReturnedVariableName, inAttribute_mCategoryReaderInstructionList, inAttribute_mEndOfReaderLocation COMMA_THERE)) ;
   }
   return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_categoryReaderAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_categoryReaderAST * p = (cPtr_categoryReaderAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_categoryReaderAST) ;
-    cPtr_categoryReaderAST * r = NULL ;
-    macroMyNew (r, cPtr_categoryReaderAST (p->mAttribute_mIsPredefined, p->mAttribute_mTypeName, p->mAttribute_mCategoryReaderName, p->mAttribute_mCategoryReaderFormalInputParameterList, p->mAttribute_mCategoryReaderReturnedTypeName, p->mAttribute_mCategoryReaderReturnedVariableName, p->mAttribute_mCategoryReaderInstructionList, p->mAttribute_mEndOfReaderLocation COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4653,6 +4475,13 @@ void cPtr_categoryReaderAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_categoryReaderAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_categoryReaderAST (mAttribute_mIsPredefined, mAttribute_mTypeName, mAttribute_mCategoryReaderName, mAttribute_mCategoryReaderFormalInputParameterList, mAttribute_mCategoryReaderReturnedTypeName, mAttribute_mCategoryReaderReturnedVariableName, mAttribute_mCategoryReaderInstructionList, mAttribute_mEndOfReaderLocation COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4788,21 +4617,6 @@ GALGAS_classDeclarationAST GALGAS_classDeclarationAST::constructor_new (const GA
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_classDeclarationAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_classDeclarationAST * p = (cPtr_classDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_classDeclarationAST) ;
-    cPtr_classDeclarationAST * r = NULL ;
-    macroMyNew (r, cPtr_classDeclarationAST (p->mAttribute_mIsPredefined, p->mAttribute_mIsAbstract, p->mAttribute_mClassTypeName, p->mAttribute_mSuperClassName, p->mAttribute_mClassFeatureList, p->mAttribute_mAttributeList COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
 //                                    Pointer class for @classDeclarationAST class                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -4844,6 +4658,13 @@ void cPtr_classDeclarationAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_classDeclarationAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_classDeclarationAST (mAttribute_mIsPredefined, mAttribute_mIsAbstract, mAttribute_mClassTypeName, mAttribute_mSuperClassName, mAttribute_mClassFeatureList, mAttribute_mAttributeList COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4965,21 +4786,6 @@ GALGAS_enumDeclarationAST GALGAS_enumDeclarationAST::constructor_new (const GALG
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_enumDeclarationAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_enumDeclarationAST * p = (cPtr_enumDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_enumDeclarationAST) ;
-    cPtr_enumDeclarationAST * r = NULL ;
-    macroMyNew (r, cPtr_enumDeclarationAST (p->mAttribute_mIsPredefined, p->mAttribute_mEnumTypeName, p->mAttribute_mConstantList COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_lstring GALGAS_enumDeclarationAST::reader_mEnumTypeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
@@ -5044,6 +4850,13 @@ void cPtr_enumDeclarationAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_enumDeclarationAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_enumDeclarationAST (mAttribute_mIsPredefined, mAttribute_mEnumTypeName, mAttribute_mConstantList COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5175,21 +4988,6 @@ GALGAS_externFunctionDeclarationAST GALGAS_externFunctionDeclarationAST::constru
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_externFunctionDeclarationAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_externFunctionDeclarationAST * p = (cPtr_externFunctionDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_externFunctionDeclarationAST) ;
-    cPtr_externFunctionDeclarationAST * r = NULL ;
-    macroMyNew (r, cPtr_externFunctionDeclarationAST (p->mAttribute_mIsPredefined, p->mAttribute_mFunctionName, p->mAttribute_mFormalArgumentList, p->mAttribute_mResultTypeName, p->mAttribute_mResultVariableName COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_lstring GALGAS_externFunctionDeclarationAST::reader_mFunctionName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
@@ -5298,6 +5096,13 @@ void cPtr_externFunctionDeclarationAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_externFunctionDeclarationAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_externFunctionDeclarationAST (mAttribute_mIsPredefined, mAttribute_mFunctionName, mAttribute_mFormalArgumentList, mAttribute_mResultTypeName, mAttribute_mResultVariableName COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5444,21 +5249,6 @@ GALGAS_functionDeclarationAST GALGAS_functionDeclarationAST::constructor_new (co
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_functionDeclarationAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_functionDeclarationAST * p = (cPtr_functionDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_functionDeclarationAST) ;
-    cPtr_functionDeclarationAST * r = NULL ;
-    macroMyNew (r, cPtr_functionDeclarationAST (p->mAttribute_mIsPredefined, p->mAttribute_mFunctionName, p->mAttribute_mFormalArgumentList, p->mAttribute_mResultTypeName, p->mAttribute_mResultVariableName, p->mAttribute_mFunctionInstructionList, p->mAttribute_mEndOfFunctionInstructionList, p->mAttribute_mIsInternal COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_semanticInstructionListAST GALGAS_functionDeclarationAST::reader_mFunctionInstructionList (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticInstructionListAST result ;
   if (NULL != mObjectPtr) {
@@ -5557,6 +5347,13 @@ void cPtr_functionDeclarationAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_functionDeclarationAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_functionDeclarationAST (mAttribute_mIsPredefined, mAttribute_mFunctionName, mAttribute_mFormalArgumentList, mAttribute_mResultTypeName, mAttribute_mResultVariableName, mAttribute_mFunctionInstructionList, mAttribute_mEndOfFunctionInstructionList, mAttribute_mIsInternal COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5683,21 +5480,6 @@ GALGAS_externRoutineDeclarationAST GALGAS_externRoutineDeclarationAST::construct
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_externRoutineDeclarationAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_externRoutineDeclarationAST * p = (cPtr_externRoutineDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_externRoutineDeclarationAST) ;
-    cPtr_externRoutineDeclarationAST * r = NULL ;
-    macroMyNew (r, cPtr_externRoutineDeclarationAST (p->mAttribute_mIsPredefined, p->mAttribute_mIsInternal, p->mAttribute_mRoutineName, p->mAttribute_mFormalArgumentList COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_bool GALGAS_externRoutineDeclarationAST::reader_mIsInternal (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (NULL != mObjectPtr) {
@@ -5784,6 +5566,13 @@ void cPtr_externRoutineDeclarationAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_externRoutineDeclarationAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_externRoutineDeclarationAST (mAttribute_mIsPredefined, mAttribute_mIsInternal, mAttribute_mRoutineName, mAttribute_mFormalArgumentList COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -5920,21 +5709,6 @@ GALGAS_routineDeclarationAST GALGAS_routineDeclarationAST::constructor_new (cons
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_routineDeclarationAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_routineDeclarationAST * p = (cPtr_routineDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_routineDeclarationAST) ;
-    cPtr_routineDeclarationAST * r = NULL ;
-    macroMyNew (r, cPtr_routineDeclarationAST (p->mAttribute_mIsPredefined, p->mAttribute_mIsInternal, p->mAttribute_mRoutineName, p->mAttribute_mFormalArgumentList, p->mAttribute_mRoutineInstructionList, p->mAttribute_mEndOfRoutineInstructionList COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_semanticInstructionListAST GALGAS_routineDeclarationAST::reader_mRoutineInstructionList (UNUSED_LOCATION_ARGS) const {
   GALGAS_semanticInstructionListAST result ;
   if (NULL != mObjectPtr) {
@@ -6008,6 +5782,13 @@ void cPtr_routineDeclarationAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_routineDeclarationAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_routineDeclarationAST (mAttribute_mIsPredefined, mAttribute_mIsInternal, mAttribute_mRoutineName, mAttribute_mFormalArgumentList, mAttribute_mRoutineInstructionList, mAttribute_mEndOfRoutineInstructionList COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6150,21 +5931,6 @@ GALGAS_externTypeDeclarationAST GALGAS_externTypeDeclarationAST::constructor_new
     macroMyNew (result.mObjectPtr, cPtr_externTypeDeclarationAST (inAttribute_mIsPredefined, inAttribute_mExternTypeName, inAttribute_mCppPreDeclarationCode, inAttribute_mCppClassCode, inAttribute_mExternTypeConstructorList, inAttribute_mExternTypeReaderList, inAttribute_mExternTypeModifierList, inAttribute_mExternTypeMethodList COMMA_THERE)) ;
   }
   return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_externTypeDeclarationAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_externTypeDeclarationAST * p = (cPtr_externTypeDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_externTypeDeclarationAST) ;
-    cPtr_externTypeDeclarationAST * r = NULL ;
-    macroMyNew (r, cPtr_externTypeDeclarationAST (p->mAttribute_mIsPredefined, p->mAttribute_mExternTypeName, p->mAttribute_mCppPreDeclarationCode, p->mAttribute_mCppClassCode, p->mAttribute_mExternTypeConstructorList, p->mAttribute_mExternTypeReaderList, p->mAttribute_mExternTypeModifierList, p->mAttribute_mExternTypeMethodList COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6343,6 +6109,13 @@ void cPtr_externTypeDeclarationAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_externTypeDeclarationAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_externTypeDeclarationAST (mAttribute_mIsPredefined, mAttribute_mExternTypeName, mAttribute_mCppPreDeclarationCode, mAttribute_mCppClassCode, mAttribute_mExternTypeConstructorList, mAttribute_mExternTypeReaderList, mAttribute_mExternTypeModifierList, mAttribute_mExternTypeMethodList COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6485,21 +6258,6 @@ GALGAS_filewrapperDeclarationAST GALGAS_filewrapperDeclarationAST::constructor_n
     macroMyNew (result.mObjectPtr, cPtr_filewrapperDeclarationAST (inAttribute_mIsPredefined, inAttribute_mIsInternal, inAttribute_mSourceFileAbsolutePath, inAttribute_mFilewrapperName, inAttribute_mFilewrapperPath, inAttribute_mFilewrapperTextFileExtensionList, inAttribute_mFilewrapperBinaryFileExtensionList, inAttribute_mFilewrapperTemplateList COMMA_THERE)) ;
   }
   return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_filewrapperDeclarationAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_filewrapperDeclarationAST * p = (cPtr_filewrapperDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_filewrapperDeclarationAST) ;
-    cPtr_filewrapperDeclarationAST * r = NULL ;
-    macroMyNew (r, cPtr_filewrapperDeclarationAST (p->mAttribute_mIsPredefined, p->mAttribute_mIsInternal, p->mAttribute_mSourceFileAbsolutePath, p->mAttribute_mFilewrapperName, p->mAttribute_mFilewrapperPath, p->mAttribute_mFilewrapperTextFileExtensionList, p->mAttribute_mFilewrapperBinaryFileExtensionList, p->mAttribute_mFilewrapperTemplateList COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6678,6 +6436,13 @@ void cPtr_filewrapperDeclarationAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_filewrapperDeclarationAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_filewrapperDeclarationAST (mAttribute_mIsPredefined, mAttribute_mIsInternal, mAttribute_mSourceFileAbsolutePath, mAttribute_mFilewrapperName, mAttribute_mFilewrapperPath, mAttribute_mFilewrapperTextFileExtensionList, mAttribute_mFilewrapperBinaryFileExtensionList, mAttribute_mFilewrapperTemplateList COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6804,21 +6569,6 @@ GALGAS_graphDeclarationAST GALGAS_graphDeclarationAST::constructor_new (const GA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_graphDeclarationAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_graphDeclarationAST * p = (cPtr_graphDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_graphDeclarationAST) ;
-    cPtr_graphDeclarationAST * r = NULL ;
-    macroMyNew (r, cPtr_graphDeclarationAST (p->mAttribute_mIsPredefined, p->mAttribute_mGraphTypeName, p->mAttribute_mAssociatedListTypeName, p->mAttribute_mInsertModifierList COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_lstring GALGAS_graphDeclarationAST::reader_mGraphTypeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
@@ -6905,6 +6655,13 @@ void cPtr_graphDeclarationAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_graphDeclarationAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_graphDeclarationAST (mAttribute_mIsPredefined, mAttribute_mGraphTypeName, mAttribute_mAssociatedListTypeName, mAttribute_mInsertModifierList COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7025,21 +6782,6 @@ GALGAS_listDeclarationAST GALGAS_listDeclarationAST::constructor_new (const GALG
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_listDeclarationAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_listDeclarationAST * p = (cPtr_listDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_listDeclarationAST) ;
-    cPtr_listDeclarationAST * r = NULL ;
-    macroMyNew (r, cPtr_listDeclarationAST (p->mAttribute_mIsPredefined, p->mAttribute_mListTypeName, p->mAttribute_mAttributeList COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
 //                                     Pointer class for @listDeclarationAST class                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -7069,6 +6811,13 @@ void cPtr_listDeclarationAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_listDeclarationAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_listDeclarationAST (mAttribute_mIsPredefined, mAttribute_mListTypeName, mAttribute_mAttributeList COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7190,21 +6939,6 @@ GALGAS_listmapDeclarationAST GALGAS_listmapDeclarationAST::constructor_new (cons
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_listmapDeclarationAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_listmapDeclarationAST * p = (cPtr_listmapDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_listmapDeclarationAST) ;
-    cPtr_listmapDeclarationAST * r = NULL ;
-    macroMyNew (r, cPtr_listmapDeclarationAST (p->mAttribute_mIsPredefined, p->mAttribute_mListmapTypeName, p->mAttribute_mAssociatedListTypeName COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_lstring GALGAS_listmapDeclarationAST::reader_mListmapTypeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
@@ -7269,6 +7003,13 @@ void cPtr_listmapDeclarationAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_listmapDeclarationAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_listmapDeclarationAST (mAttribute_mIsPredefined, mAttribute_mListmapTypeName, mAttribute_mAssociatedListTypeName COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7406,21 +7147,6 @@ GALGAS_mapDeclarationAST GALGAS_mapDeclarationAST::constructor_new (const GALGAS
     macroMyNew (result.mObjectPtr, cPtr_mapDeclarationAST (inAttribute_mIsPredefined, inAttribute_mMapTypeName, inAttribute_mAttributeList, inAttribute_mInsertMethodList, inAttribute_mSearchMethodList, inAttribute_mRemoveMethodList, inAttribute_mInsertOrReplaceDeclarationListAST COMMA_THERE)) ;
   }
   return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_mapDeclarationAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_mapDeclarationAST * p = (cPtr_mapDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_mapDeclarationAST) ;
-    cPtr_mapDeclarationAST * r = NULL ;
-    macroMyNew (r, cPtr_mapDeclarationAST (p->mAttribute_mIsPredefined, p->mAttribute_mMapTypeName, p->mAttribute_mAttributeList, p->mAttribute_mInsertMethodList, p->mAttribute_mSearchMethodList, p->mAttribute_mRemoveMethodList, p->mAttribute_mInsertOrReplaceDeclarationListAST COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7577,6 +7303,13 @@ void cPtr_mapDeclarationAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_mapDeclarationAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_mapDeclarationAST (mAttribute_mIsPredefined, mAttribute_mMapTypeName, mAttribute_mAttributeList, mAttribute_mInsertMethodList, mAttribute_mSearchMethodList, mAttribute_mRemoveMethodList, mAttribute_mInsertOrReplaceDeclarationListAST COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7698,21 +7431,6 @@ GALGAS_mapProxyDeclarationAST GALGAS_mapProxyDeclarationAST::constructor_new (co
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_mapProxyDeclarationAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_mapProxyDeclarationAST * p = (cPtr_mapProxyDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_mapProxyDeclarationAST) ;
-    cPtr_mapProxyDeclarationAST * r = NULL ;
-    macroMyNew (r, cPtr_mapProxyDeclarationAST (p->mAttribute_mIsPredefined, p->mAttribute_mMapProxyTypeName, p->mAttribute_mAssociatedMapTypeName COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_lstring GALGAS_mapProxyDeclarationAST::reader_mMapProxyTypeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
@@ -7777,6 +7495,13 @@ void cPtr_mapProxyDeclarationAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_mapProxyDeclarationAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_mapProxyDeclarationAST (mAttribute_mIsPredefined, mAttribute_mMapProxyTypeName, mAttribute_mAssociatedMapTypeName COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7914,21 +7639,6 @@ GALGAS_onceFunctionDeclarationAST GALGAS_onceFunctionDeclarationAST::constructor
     macroMyNew (result.mObjectPtr, cPtr_onceFunctionDeclarationAST (inAttribute_mIsPredefined, inAttribute_mFunctionName, inAttribute_mResultTypeName, inAttribute_mResultVariableName, inAttribute_mFunctionInstructionList, inAttribute_mEndOfFunctionInstructionList, inAttribute_mIsInternal COMMA_THERE)) ;
   }
   return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_onceFunctionDeclarationAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_onceFunctionDeclarationAST * p = (cPtr_onceFunctionDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_onceFunctionDeclarationAST) ;
-    cPtr_onceFunctionDeclarationAST * r = NULL ;
-    macroMyNew (r, cPtr_onceFunctionDeclarationAST (p->mAttribute_mIsPredefined, p->mAttribute_mFunctionName, p->mAttribute_mResultTypeName, p->mAttribute_mResultVariableName, p->mAttribute_mFunctionInstructionList, p->mAttribute_mEndOfFunctionInstructionList, p->mAttribute_mIsInternal COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8085,6 +7795,13 @@ void cPtr_onceFunctionDeclarationAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_onceFunctionDeclarationAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_onceFunctionDeclarationAST (mAttribute_mIsPredefined, mAttribute_mFunctionName, mAttribute_mResultTypeName, mAttribute_mResultVariableName, mAttribute_mFunctionInstructionList, mAttribute_mEndOfFunctionInstructionList, mAttribute_mIsInternal COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8206,21 +7923,6 @@ GALGAS_optionComponentDeclarationAST GALGAS_optionComponentDeclarationAST::const
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_optionComponentDeclarationAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_optionComponentDeclarationAST * p = (cPtr_optionComponentDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_optionComponentDeclarationAST) ;
-    cPtr_optionComponentDeclarationAST * r = NULL ;
-    macroMyNew (r, cPtr_optionComponentDeclarationAST (p->mAttribute_mIsPredefined, p->mAttribute_mOptionComponentName, p->mAttribute_mOptions COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_lstring GALGAS_optionComponentDeclarationAST::reader_mOptionComponentName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
@@ -8285,6 +7987,13 @@ void cPtr_optionComponentDeclarationAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_optionComponentDeclarationAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_optionComponentDeclarationAST (mAttribute_mIsPredefined, mAttribute_mOptionComponentName, mAttribute_mOptions COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8411,21 +8120,6 @@ GALGAS_overridingAbstractCategoryMethodAST GALGAS_overridingAbstractCategoryMeth
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_overridingAbstractCategoryMethodAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_overridingAbstractCategoryMethodAST * p = (cPtr_overridingAbstractCategoryMethodAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_overridingAbstractCategoryMethodAST) ;
-    cPtr_overridingAbstractCategoryMethodAST * r = NULL ;
-    macroMyNew (r, cPtr_overridingAbstractCategoryMethodAST (p->mAttribute_mIsPredefined, p->mAttribute_mTypeName, p->mAttribute_mOverridingCategoryMethodName, p->mAttribute_mOverridingCategoryMethodFormalParameterList COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_lstring GALGAS_overridingAbstractCategoryMethodAST::reader_mTypeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
@@ -8512,6 +8206,13 @@ void cPtr_overridingAbstractCategoryMethodAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_overridingAbstractCategoryMethodAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_overridingAbstractCategoryMethodAST (mAttribute_mIsPredefined, mAttribute_mTypeName, mAttribute_mOverridingCategoryMethodName, mAttribute_mOverridingCategoryMethodFormalParameterList COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8638,21 +8339,6 @@ GALGAS_overridingAbstractCategoryModifierAST GALGAS_overridingAbstractCategoryMo
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_overridingAbstractCategoryModifierAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_overridingAbstractCategoryModifierAST * p = (cPtr_overridingAbstractCategoryModifierAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_overridingAbstractCategoryModifierAST) ;
-    cPtr_overridingAbstractCategoryModifierAST * r = NULL ;
-    macroMyNew (r, cPtr_overridingAbstractCategoryModifierAST (p->mAttribute_mIsPredefined, p->mAttribute_mTypeName, p->mAttribute_mOverridingCategoryModifierName, p->mAttribute_mOverridingCategoryModifierFormalParameterList COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_lstring GALGAS_overridingAbstractCategoryModifierAST::reader_mTypeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
@@ -8739,6 +8425,13 @@ void cPtr_overridingAbstractCategoryModifierAST::description (C_String & ioStrin
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_overridingAbstractCategoryModifierAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_overridingAbstractCategoryModifierAST (mAttribute_mIsPredefined, mAttribute_mTypeName, mAttribute_mOverridingCategoryModifierName, mAttribute_mOverridingCategoryModifierFormalParameterList COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8870,21 +8563,6 @@ GALGAS_overridingAbstractCategoryReaderAST GALGAS_overridingAbstractCategoryRead
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_overridingAbstractCategoryReaderAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_overridingAbstractCategoryReaderAST * p = (cPtr_overridingAbstractCategoryReaderAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_overridingAbstractCategoryReaderAST) ;
-    cPtr_overridingAbstractCategoryReaderAST * r = NULL ;
-    macroMyNew (r, cPtr_overridingAbstractCategoryReaderAST (p->mAttribute_mIsPredefined, p->mAttribute_mTypeName, p->mAttribute_mAbstractCategoryReaderName, p->mAttribute_mAbstractCategoryReaderFormalInputParameterList, p->mAttribute_mAbstractCategoryReaderReturnedTypeName COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_lstring GALGAS_overridingAbstractCategoryReaderAST::reader_mTypeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
@@ -8993,6 +8671,13 @@ void cPtr_overridingAbstractCategoryReaderAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_overridingAbstractCategoryReaderAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_overridingAbstractCategoryReaderAST (mAttribute_mIsPredefined, mAttribute_mTypeName, mAttribute_mAbstractCategoryReaderName, mAttribute_mAbstractCategoryReaderFormalInputParameterList, mAttribute_mAbstractCategoryReaderReturnedTypeName COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9129,21 +8814,6 @@ GALGAS_overridingCategoryMethodAST GALGAS_overridingCategoryMethodAST::construct
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_overridingCategoryMethodAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_overridingCategoryMethodAST * p = (cPtr_overridingCategoryMethodAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_overridingCategoryMethodAST) ;
-    cPtr_overridingCategoryMethodAST * r = NULL ;
-    macroMyNew (r, cPtr_overridingCategoryMethodAST (p->mAttribute_mIsPredefined, p->mAttribute_mTypeName, p->mAttribute_mOverridingCategoryMethodName, p->mAttribute_mOverridingCategoryMethodFormalParameterList, p->mAttribute_mOverridingCategoryMethodInstructionList, p->mAttribute_mEndOfMethodLocation COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_lstring GALGAS_overridingCategoryMethodAST::reader_mTypeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
@@ -9274,6 +8944,13 @@ void cPtr_overridingCategoryMethodAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_overridingCategoryMethodAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_overridingCategoryMethodAST (mAttribute_mIsPredefined, mAttribute_mTypeName, mAttribute_mOverridingCategoryMethodName, mAttribute_mOverridingCategoryMethodFormalParameterList, mAttribute_mOverridingCategoryMethodInstructionList, mAttribute_mEndOfMethodLocation COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9410,21 +9087,6 @@ GALGAS_overridingCategoryModifierAST GALGAS_overridingCategoryModifierAST::const
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_overridingCategoryModifierAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_overridingCategoryModifierAST * p = (cPtr_overridingCategoryModifierAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_overridingCategoryModifierAST) ;
-    cPtr_overridingCategoryModifierAST * r = NULL ;
-    macroMyNew (r, cPtr_overridingCategoryModifierAST (p->mAttribute_mIsPredefined, p->mAttribute_mTypeName, p->mAttribute_mOverridingCategoryModifierName, p->mAttribute_mOverridingCategoryModifierFormalParameterList, p->mAttribute_mOverridingCategoryModifierInstructionList, p->mAttribute_mEndOfModifierLocation COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_lstring GALGAS_overridingCategoryModifierAST::reader_mTypeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
@@ -9555,6 +9217,13 @@ void cPtr_overridingCategoryModifierAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_overridingCategoryModifierAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_overridingCategoryModifierAST (mAttribute_mIsPredefined, mAttribute_mTypeName, mAttribute_mOverridingCategoryModifierName, mAttribute_mOverridingCategoryModifierFormalParameterList, mAttribute_mOverridingCategoryModifierInstructionList, mAttribute_mEndOfModifierLocation COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9697,21 +9366,6 @@ GALGAS_overridingCategoryReaderAST GALGAS_overridingCategoryReaderAST::construct
     macroMyNew (result.mObjectPtr, cPtr_overridingCategoryReaderAST (inAttribute_mIsPredefined, inAttribute_mTypeName, inAttribute_mOverridingCategoryReaderName, inAttribute_mOverridingCategoryReaderFormalInputParameterList, inAttribute_mOverridingCategoryReaderReturnedTypeName, inAttribute_mOverridingCategoryReaderReturnedVariableName, inAttribute_mOverridingCategoryReaderInstructionList, inAttribute_mEndOfReaderLocation COMMA_THERE)) ;
   }
   return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_overridingCategoryReaderAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_overridingCategoryReaderAST * p = (cPtr_overridingCategoryReaderAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_overridingCategoryReaderAST) ;
-    cPtr_overridingCategoryReaderAST * r = NULL ;
-    macroMyNew (r, cPtr_overridingCategoryReaderAST (p->mAttribute_mIsPredefined, p->mAttribute_mTypeName, p->mAttribute_mOverridingCategoryReaderName, p->mAttribute_mOverridingCategoryReaderFormalInputParameterList, p->mAttribute_mOverridingCategoryReaderReturnedTypeName, p->mAttribute_mOverridingCategoryReaderReturnedVariableName, p->mAttribute_mOverridingCategoryReaderInstructionList, p->mAttribute_mEndOfReaderLocation COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9890,6 +9544,13 @@ void cPtr_overridingCategoryReaderAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_overridingCategoryReaderAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_overridingCategoryReaderAST (mAttribute_mIsPredefined, mAttribute_mTypeName, mAttribute_mOverridingCategoryReaderName, mAttribute_mOverridingCategoryReaderFormalInputParameterList, mAttribute_mOverridingCategoryReaderReturnedTypeName, mAttribute_mOverridingCategoryReaderReturnedVariableName, mAttribute_mOverridingCategoryReaderInstructionList, mAttribute_mEndOfReaderLocation COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10020,7 +9681,6 @@ mAttribute_mKind (in_mKind) {
 }
 
 
-
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                               @predefinedTypeAST type                                               *
@@ -10130,21 +9790,6 @@ GALGAS_applicationPredefinedTypeAST GALGAS_applicationPredefinedTypeAST::constru
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_applicationPredefinedTypeAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_applicationPredefinedTypeAST * p = (cPtr_applicationPredefinedTypeAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_applicationPredefinedTypeAST) ;
-    cPtr_applicationPredefinedTypeAST * r = NULL ;
-    macroMyNew (r, cPtr_applicationPredefinedTypeAST (p->mAttribute_mIsPredefined, p->mAttribute_mPredefinedTypeName, p->mAttribute_mKind COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
 //                                Pointer class for @applicationPredefinedTypeAST class                                *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -10172,6 +9817,13 @@ void cPtr_applicationPredefinedTypeAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_applicationPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_applicationPredefinedTypeAST (mAttribute_mIsPredefined, mAttribute_mPredefinedTypeName, mAttribute_mKind COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10283,21 +9935,6 @@ GALGAS_binarysetPredefinedTypeAST GALGAS_binarysetPredefinedTypeAST::constructor
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_binarysetPredefinedTypeAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_binarysetPredefinedTypeAST * p = (cPtr_binarysetPredefinedTypeAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_binarysetPredefinedTypeAST) ;
-    cPtr_binarysetPredefinedTypeAST * r = NULL ;
-    macroMyNew (r, cPtr_binarysetPredefinedTypeAST (p->mAttribute_mIsPredefined, p->mAttribute_mPredefinedTypeName, p->mAttribute_mKind COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
 //                                 Pointer class for @binarysetPredefinedTypeAST class                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -10325,6 +9962,13 @@ void cPtr_binarysetPredefinedTypeAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_binarysetPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_binarysetPredefinedTypeAST (mAttribute_mIsPredefined, mAttribute_mPredefinedTypeName, mAttribute_mKind COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10436,21 +10080,6 @@ GALGAS_boolPredefinedTypeAST GALGAS_boolPredefinedTypeAST::constructor_new (cons
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_boolPredefinedTypeAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_boolPredefinedTypeAST * p = (cPtr_boolPredefinedTypeAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_boolPredefinedTypeAST) ;
-    cPtr_boolPredefinedTypeAST * r = NULL ;
-    macroMyNew (r, cPtr_boolPredefinedTypeAST (p->mAttribute_mIsPredefined, p->mAttribute_mPredefinedTypeName, p->mAttribute_mKind COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
 //                                   Pointer class for @boolPredefinedTypeAST class                                    *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -10478,6 +10107,13 @@ void cPtr_boolPredefinedTypeAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_boolPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_boolPredefinedTypeAST (mAttribute_mIsPredefined, mAttribute_mPredefinedTypeName, mAttribute_mKind COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10589,21 +10225,6 @@ GALGAS_charPredefinedTypeAST GALGAS_charPredefinedTypeAST::constructor_new (cons
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_charPredefinedTypeAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_charPredefinedTypeAST * p = (cPtr_charPredefinedTypeAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_charPredefinedTypeAST) ;
-    cPtr_charPredefinedTypeAST * r = NULL ;
-    macroMyNew (r, cPtr_charPredefinedTypeAST (p->mAttribute_mIsPredefined, p->mAttribute_mPredefinedTypeName, p->mAttribute_mKind COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
 //                                   Pointer class for @charPredefinedTypeAST class                                    *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -10631,6 +10252,13 @@ void cPtr_charPredefinedTypeAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_charPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_charPredefinedTypeAST (mAttribute_mIsPredefined, mAttribute_mPredefinedTypeName, mAttribute_mKind COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10742,21 +10370,6 @@ GALGAS_dataPredefinedTypeAST GALGAS_dataPredefinedTypeAST::constructor_new (cons
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_dataPredefinedTypeAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_dataPredefinedTypeAST * p = (cPtr_dataPredefinedTypeAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_dataPredefinedTypeAST) ;
-    cPtr_dataPredefinedTypeAST * r = NULL ;
-    macroMyNew (r, cPtr_dataPredefinedTypeAST (p->mAttribute_mIsPredefined, p->mAttribute_mPredefinedTypeName, p->mAttribute_mKind COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
 //                                   Pointer class for @dataPredefinedTypeAST class                                    *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -10784,6 +10397,13 @@ void cPtr_dataPredefinedTypeAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_dataPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_dataPredefinedTypeAST (mAttribute_mIsPredefined, mAttribute_mPredefinedTypeName, mAttribute_mKind COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -10895,21 +10515,6 @@ GALGAS_doublePredefinedTypeAST GALGAS_doublePredefinedTypeAST::constructor_new (
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_doublePredefinedTypeAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_doublePredefinedTypeAST * p = (cPtr_doublePredefinedTypeAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_doublePredefinedTypeAST) ;
-    cPtr_doublePredefinedTypeAST * r = NULL ;
-    macroMyNew (r, cPtr_doublePredefinedTypeAST (p->mAttribute_mIsPredefined, p->mAttribute_mPredefinedTypeName, p->mAttribute_mKind COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
 //                                  Pointer class for @doublePredefinedTypeAST class                                   *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -10937,6 +10542,13 @@ void cPtr_doublePredefinedTypeAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_doublePredefinedTypeAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_doublePredefinedTypeAST (mAttribute_mIsPredefined, mAttribute_mPredefinedTypeName, mAttribute_mKind COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11048,21 +10660,6 @@ GALGAS_filewrapperPredefinedTypeAST GALGAS_filewrapperPredefinedTypeAST::constru
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_filewrapperPredefinedTypeAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_filewrapperPredefinedTypeAST * p = (cPtr_filewrapperPredefinedTypeAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_filewrapperPredefinedTypeAST) ;
-    cPtr_filewrapperPredefinedTypeAST * r = NULL ;
-    macroMyNew (r, cPtr_filewrapperPredefinedTypeAST (p->mAttribute_mIsPredefined, p->mAttribute_mPredefinedTypeName, p->mAttribute_mKind COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
 //                                Pointer class for @filewrapperPredefinedTypeAST class                                *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -11090,6 +10687,13 @@ void cPtr_filewrapperPredefinedTypeAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_filewrapperPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_filewrapperPredefinedTypeAST (mAttribute_mIsPredefined, mAttribute_mPredefinedTypeName, mAttribute_mKind COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11201,21 +10805,6 @@ GALGAS_functionPredefinedTypeAST GALGAS_functionPredefinedTypeAST::constructor_n
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_functionPredefinedTypeAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_functionPredefinedTypeAST * p = (cPtr_functionPredefinedTypeAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_functionPredefinedTypeAST) ;
-    cPtr_functionPredefinedTypeAST * r = NULL ;
-    macroMyNew (r, cPtr_functionPredefinedTypeAST (p->mAttribute_mIsPredefined, p->mAttribute_mPredefinedTypeName, p->mAttribute_mKind COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
 //                                 Pointer class for @functionPredefinedTypeAST class                                  *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -11243,6 +10832,13 @@ void cPtr_functionPredefinedTypeAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_functionPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_functionPredefinedTypeAST (mAttribute_mIsPredefined, mAttribute_mPredefinedTypeName, mAttribute_mKind COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11354,21 +10950,6 @@ GALGAS_locationPredefinedTypeAST GALGAS_locationPredefinedTypeAST::constructor_n
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_locationPredefinedTypeAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_locationPredefinedTypeAST * p = (cPtr_locationPredefinedTypeAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_locationPredefinedTypeAST) ;
-    cPtr_locationPredefinedTypeAST * r = NULL ;
-    macroMyNew (r, cPtr_locationPredefinedTypeAST (p->mAttribute_mIsPredefined, p->mAttribute_mPredefinedTypeName, p->mAttribute_mKind COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
 //                                 Pointer class for @locationPredefinedTypeAST class                                  *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -11396,6 +10977,13 @@ void cPtr_locationPredefinedTypeAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_locationPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_locationPredefinedTypeAST (mAttribute_mIsPredefined, mAttribute_mPredefinedTypeName, mAttribute_mKind COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11507,21 +11095,6 @@ GALGAS_objectPredefinedTypeAST GALGAS_objectPredefinedTypeAST::constructor_new (
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_objectPredefinedTypeAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_objectPredefinedTypeAST * p = (cPtr_objectPredefinedTypeAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_objectPredefinedTypeAST) ;
-    cPtr_objectPredefinedTypeAST * r = NULL ;
-    macroMyNew (r, cPtr_objectPredefinedTypeAST (p->mAttribute_mIsPredefined, p->mAttribute_mPredefinedTypeName, p->mAttribute_mKind COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
 //                                  Pointer class for @objectPredefinedTypeAST class                                   *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -11549,6 +11122,13 @@ void cPtr_objectPredefinedTypeAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_objectPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_objectPredefinedTypeAST (mAttribute_mIsPredefined, mAttribute_mPredefinedTypeName, mAttribute_mKind COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11660,21 +11240,6 @@ GALGAS_sint_36__34_PredefinedTypeAST GALGAS_sint_36__34_PredefinedTypeAST::const
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_sint_36__34_PredefinedTypeAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_sint_36__34_PredefinedTypeAST * p = (cPtr_sint_36__34_PredefinedTypeAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_sint_36__34_PredefinedTypeAST) ;
-    cPtr_sint_36__34_PredefinedTypeAST * r = NULL ;
-    macroMyNew (r, cPtr_sint_36__34_PredefinedTypeAST (p->mAttribute_mIsPredefined, p->mAttribute_mPredefinedTypeName, p->mAttribute_mKind COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
 //                                  Pointer class for @sint64PredefinedTypeAST class                                   *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -11702,6 +11267,13 @@ void cPtr_sint_36__34_PredefinedTypeAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_sint_36__34_PredefinedTypeAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_sint_36__34_PredefinedTypeAST (mAttribute_mIsPredefined, mAttribute_mPredefinedTypeName, mAttribute_mKind COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11813,21 +11385,6 @@ GALGAS_sintPredefinedTypeAST GALGAS_sintPredefinedTypeAST::constructor_new (cons
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_sintPredefinedTypeAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_sintPredefinedTypeAST * p = (cPtr_sintPredefinedTypeAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_sintPredefinedTypeAST) ;
-    cPtr_sintPredefinedTypeAST * r = NULL ;
-    macroMyNew (r, cPtr_sintPredefinedTypeAST (p->mAttribute_mIsPredefined, p->mAttribute_mPredefinedTypeName, p->mAttribute_mKind COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
 //                                   Pointer class for @sintPredefinedTypeAST class                                    *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -11855,6 +11412,13 @@ void cPtr_sintPredefinedTypeAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_sintPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_sintPredefinedTypeAST (mAttribute_mIsPredefined, mAttribute_mPredefinedTypeName, mAttribute_mKind COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -11966,21 +11530,6 @@ GALGAS_stringPredefinedTypeAST GALGAS_stringPredefinedTypeAST::constructor_new (
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_stringPredefinedTypeAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_stringPredefinedTypeAST * p = (cPtr_stringPredefinedTypeAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_stringPredefinedTypeAST) ;
-    cPtr_stringPredefinedTypeAST * r = NULL ;
-    macroMyNew (r, cPtr_stringPredefinedTypeAST (p->mAttribute_mIsPredefined, p->mAttribute_mPredefinedTypeName, p->mAttribute_mKind COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
 //                                  Pointer class for @stringPredefinedTypeAST class                                   *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -12008,6 +11557,13 @@ void cPtr_stringPredefinedTypeAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_stringPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_stringPredefinedTypeAST (mAttribute_mIsPredefined, mAttribute_mPredefinedTypeName, mAttribute_mKind COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12119,21 +11675,6 @@ GALGAS_stringsetPredefinedTypeAST GALGAS_stringsetPredefinedTypeAST::constructor
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_stringsetPredefinedTypeAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_stringsetPredefinedTypeAST * p = (cPtr_stringsetPredefinedTypeAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_stringsetPredefinedTypeAST) ;
-    cPtr_stringsetPredefinedTypeAST * r = NULL ;
-    macroMyNew (r, cPtr_stringsetPredefinedTypeAST (p->mAttribute_mIsPredefined, p->mAttribute_mPredefinedTypeName, p->mAttribute_mKind COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
 //                                 Pointer class for @stringsetPredefinedTypeAST class                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -12161,6 +11702,13 @@ void cPtr_stringsetPredefinedTypeAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_stringsetPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_stringsetPredefinedTypeAST (mAttribute_mIsPredefined, mAttribute_mPredefinedTypeName, mAttribute_mKind COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12272,21 +11820,6 @@ GALGAS_typePredefinedTypeAST GALGAS_typePredefinedTypeAST::constructor_new (cons
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_typePredefinedTypeAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_typePredefinedTypeAST * p = (cPtr_typePredefinedTypeAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_typePredefinedTypeAST) ;
-    cPtr_typePredefinedTypeAST * r = NULL ;
-    macroMyNew (r, cPtr_typePredefinedTypeAST (p->mAttribute_mIsPredefined, p->mAttribute_mPredefinedTypeName, p->mAttribute_mKind COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
 //                                   Pointer class for @typePredefinedTypeAST class                                    *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -12314,6 +11847,13 @@ void cPtr_typePredefinedTypeAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_typePredefinedTypeAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_typePredefinedTypeAST (mAttribute_mIsPredefined, mAttribute_mPredefinedTypeName, mAttribute_mKind COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12425,21 +11965,6 @@ GALGAS_uint_36__34_PredefinedTypeAST GALGAS_uint_36__34_PredefinedTypeAST::const
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_uint_36__34_PredefinedTypeAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_uint_36__34_PredefinedTypeAST * p = (cPtr_uint_36__34_PredefinedTypeAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_uint_36__34_PredefinedTypeAST) ;
-    cPtr_uint_36__34_PredefinedTypeAST * r = NULL ;
-    macroMyNew (r, cPtr_uint_36__34_PredefinedTypeAST (p->mAttribute_mIsPredefined, p->mAttribute_mPredefinedTypeName, p->mAttribute_mKind COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
 //                                  Pointer class for @uint64PredefinedTypeAST class                                   *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -12467,6 +11992,13 @@ void cPtr_uint_36__34_PredefinedTypeAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_uint_36__34_PredefinedTypeAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_uint_36__34_PredefinedTypeAST (mAttribute_mIsPredefined, mAttribute_mPredefinedTypeName, mAttribute_mKind COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12578,21 +12110,6 @@ GALGAS_uintPredefinedTypeAST GALGAS_uintPredefinedTypeAST::constructor_new (cons
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_uintPredefinedTypeAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_uintPredefinedTypeAST * p = (cPtr_uintPredefinedTypeAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_uintPredefinedTypeAST) ;
-    cPtr_uintPredefinedTypeAST * r = NULL ;
-    macroMyNew (r, cPtr_uintPredefinedTypeAST (p->mAttribute_mIsPredefined, p->mAttribute_mPredefinedTypeName, p->mAttribute_mKind COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
 //                                   Pointer class for @uintPredefinedTypeAST class                                    *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -12620,6 +12137,13 @@ void cPtr_uintPredefinedTypeAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_uintPredefinedTypeAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_uintPredefinedTypeAST (mAttribute_mIsPredefined, mAttribute_mPredefinedTypeName, mAttribute_mKind COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12746,21 +12270,6 @@ GALGAS_sortedListDeclarationAST GALGAS_sortedListDeclarationAST::constructor_new
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_sortedListDeclarationAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_sortedListDeclarationAST * p = (cPtr_sortedListDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_sortedListDeclarationAST) ;
-    cPtr_sortedListDeclarationAST * r = NULL ;
-    macroMyNew (r, cPtr_sortedListDeclarationAST (p->mAttribute_mIsPredefined, p->mAttribute_mSortedListTypeName, p->mAttribute_mAttributeList, p->mAttribute_mSortDescriptorList COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_lstring GALGAS_sortedListDeclarationAST::reader_mSortedListTypeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
@@ -12847,6 +12356,13 @@ void cPtr_sortedListDeclarationAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_sortedListDeclarationAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_sortedListDeclarationAST (mAttribute_mIsPredefined, mAttribute_mSortedListTypeName, mAttribute_mAttributeList, mAttribute_mSortDescriptorList COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12973,21 +12489,6 @@ GALGAS_structDeclarationAST GALGAS_structDeclarationAST::constructor_new (const 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_structDeclarationAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_structDeclarationAST * p = (cPtr_structDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_structDeclarationAST) ;
-    cPtr_structDeclarationAST * r = NULL ;
-    macroMyNew (r, cPtr_structDeclarationAST (p->mAttribute_mIsPredefined, p->mAttribute_mStructTypeName, p->mAttribute_mAttributeList, p->mAttribute_mEnumeratedElementTypeName COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_lstring GALGAS_structDeclarationAST::reader_mStructTypeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
@@ -13074,6 +12575,13 @@ void cPtr_structDeclarationAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_structDeclarationAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_structDeclarationAST (mAttribute_mIsPredefined, mAttribute_mStructTypeName, mAttribute_mAttributeList, mAttribute_mEnumeratedElementTypeName COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13211,21 +12719,6 @@ GALGAS_uniqueMapDeclarationAST GALGAS_uniqueMapDeclarationAST::constructor_new (
     macroMyNew (result.mObjectPtr, cPtr_uniqueMapDeclarationAST (inAttribute_mIsPredefined, inAttribute_mMapTypeName, inAttribute_mAttributeList, inAttribute_mInsertMethodList, inAttribute_mSearchMethodList, inAttribute_mMapStateList, inAttribute_mMapOverrideBlockListAST COMMA_THERE)) ;
   }
   return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_uniqueMapDeclarationAST::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_uniqueMapDeclarationAST * p = (cPtr_uniqueMapDeclarationAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_uniqueMapDeclarationAST) ;
-    cPtr_uniqueMapDeclarationAST * r = NULL ;
-    macroMyNew (r, cPtr_uniqueMapDeclarationAST (p->mAttribute_mIsPredefined, p->mAttribute_mMapTypeName, p->mAttribute_mAttributeList, p->mAttribute_mInsertMethodList, p->mAttribute_mSearchMethodList, p->mAttribute_mMapStateList, p->mAttribute_mMapOverrideBlockListAST COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13382,6 +12875,13 @@ void cPtr_uniqueMapDeclarationAST::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_uniqueMapDeclarationAST::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_uniqueMapDeclarationAST (mAttribute_mIsPredefined, mAttribute_mMapTypeName, mAttribute_mAttributeList, mAttribute_mInsertMethodList, mAttribute_mSearchMethodList, mAttribute_mMapStateList, mAttribute_mMapOverrideBlockListAST COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13469,7 +12969,6 @@ AC_GALGAS_class (inSourcePtr) {
 cPtr_semanticDeclarationForGeneration::cPtr_semanticDeclarationForGeneration (LOCATION_ARGS) :
 acPtr_class (THERE) {
 }
-
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13597,7 +13096,6 @@ cPtr_semanticDeclarationForGeneration (THERE),
 mAttribute_mHasHeader (in_mHasHeader),
 mAttribute_mImplementationCppFileName (in_mImplementationCppFileName) {
 }
-
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13729,21 +13227,6 @@ GALGAS_abstractCategoryMethodForGeneration GALGAS_abstractCategoryMethodForGener
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_abstractCategoryMethodForGeneration::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_abstractCategoryMethodForGeneration * p = (cPtr_abstractCategoryMethodForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_abstractCategoryMethodForGeneration) ;
-    cPtr_abstractCategoryMethodForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_abstractCategoryMethodForGeneration (p->mAttribute_mHasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mReceiverType, p->mAttribute_mAbstractCategoryMethodName, p->mAttribute_mAbstractCategoryMethodFormalParameterList COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_unifiedTypeMapProxy GALGAS_abstractCategoryMethodForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
   GALGAS_unifiedTypeMapProxy result ;
   if (NULL != mObjectPtr) {
@@ -13833,6 +13316,13 @@ void cPtr_abstractCategoryMethodForGeneration::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_abstractCategoryMethodForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_abstractCategoryMethodForGeneration (mAttribute_mHasHeader, mAttribute_mImplementationCppFileName, mAttribute_mReceiverType, mAttribute_mAbstractCategoryMethodName, mAttribute_mAbstractCategoryMethodFormalParameterList COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -13964,21 +13454,6 @@ GALGAS_abstractCategoryModifierForGeneration GALGAS_abstractCategoryModifierForG
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_abstractCategoryModifierForGeneration::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_abstractCategoryModifierForGeneration * p = (cPtr_abstractCategoryModifierForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_abstractCategoryModifierForGeneration) ;
-    cPtr_abstractCategoryModifierForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_abstractCategoryModifierForGeneration (p->mAttribute_mHasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mReceiverType, p->mAttribute_mAbstractCategoryModifierName, p->mAttribute_mAbstractCategoryModifierFormalParameterList COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_unifiedTypeMapProxy GALGAS_abstractCategoryModifierForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
   GALGAS_unifiedTypeMapProxy result ;
   if (NULL != mObjectPtr) {
@@ -14068,6 +13543,13 @@ void cPtr_abstractCategoryModifierForGeneration::description (C_String & ioStrin
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_abstractCategoryModifierForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_abstractCategoryModifierForGeneration (mAttribute_mHasHeader, mAttribute_mImplementationCppFileName, mAttribute_mReceiverType, mAttribute_mAbstractCategoryModifierName, mAttribute_mAbstractCategoryModifierFormalParameterList COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14204,21 +13686,6 @@ GALGAS_abstractCategoryReaderForGeneration GALGAS_abstractCategoryReaderForGener
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_abstractCategoryReaderForGeneration::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_abstractCategoryReaderForGeneration * p = (cPtr_abstractCategoryReaderForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_abstractCategoryReaderForGeneration) ;
-    cPtr_abstractCategoryReaderForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_abstractCategoryReaderForGeneration (p->mAttribute_mHasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mReceiverType, p->mAttribute_mAbstractCategoryReaderName, p->mAttribute_mResultType, p->mAttribute_mAbstractCategoryReaderFormalParameterList COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_unifiedTypeMapProxy GALGAS_abstractCategoryReaderForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
   GALGAS_unifiedTypeMapProxy result ;
   if (NULL != mObjectPtr) {
@@ -14330,6 +13797,13 @@ void cPtr_abstractCategoryReaderForGeneration::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_abstractCategoryReaderForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_abstractCategoryReaderForGeneration (mAttribute_mHasHeader, mAttribute_mImplementationCppFileName, mAttribute_mReceiverType, mAttribute_mAbstractCategoryReaderName, mAttribute_mResultType, mAttribute_mAbstractCategoryReaderFormalParameterList COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14472,21 +13946,6 @@ GALGAS_categoryMethodForGeneration GALGAS_categoryMethodForGeneration::construct
     macroMyNew (result.mObjectPtr, cPtr_categoryMethodForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mCategoryMethodName, inAttribute_mImplementedAsFunction, inAttribute_mCategoryMethodFormalParameterList, inAttribute_mTypedAttributeList, inAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
   }
   return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_categoryMethodForGeneration::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_categoryMethodForGeneration * p = (cPtr_categoryMethodForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_categoryMethodForGeneration) ;
-    cPtr_categoryMethodForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_categoryMethodForGeneration (p->mAttribute_mHasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mReceiverType, p->mAttribute_mCategoryMethodName, p->mAttribute_mImplementedAsFunction, p->mAttribute_mCategoryMethodFormalParameterList, p->mAttribute_mTypedAttributeList, p->mAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14646,6 +14105,13 @@ void cPtr_categoryMethodForGeneration::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_categoryMethodForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_categoryMethodForGeneration (mAttribute_mHasHeader, mAttribute_mImplementationCppFileName, mAttribute_mReceiverType, mAttribute_mCategoryMethodName, mAttribute_mImplementedAsFunction, mAttribute_mCategoryMethodFormalParameterList, mAttribute_mTypedAttributeList, mAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14788,21 +14254,6 @@ GALGAS_categoryModifierForGeneration GALGAS_categoryModifierForGeneration::const
     macroMyNew (result.mObjectPtr, cPtr_categoryModifierForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mCategoryModifierName, inAttribute_mImplementedAsFunction, inAttribute_mCategoryModifierFormalParameterList, inAttribute_mTypedAttributeList, inAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
   }
   return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_categoryModifierForGeneration::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_categoryModifierForGeneration * p = (cPtr_categoryModifierForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_categoryModifierForGeneration) ;
-    cPtr_categoryModifierForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_categoryModifierForGeneration (p->mAttribute_mHasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mReceiverType, p->mAttribute_mCategoryModifierName, p->mAttribute_mImplementedAsFunction, p->mAttribute_mCategoryModifierFormalParameterList, p->mAttribute_mTypedAttributeList, p->mAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -14962,6 +14413,13 @@ void cPtr_categoryModifierForGeneration::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_categoryModifierForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_categoryModifierForGeneration (mAttribute_mHasHeader, mAttribute_mImplementationCppFileName, mAttribute_mReceiverType, mAttribute_mCategoryModifierName, mAttribute_mImplementedAsFunction, mAttribute_mCategoryModifierFormalParameterList, mAttribute_mTypedAttributeList, mAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -15114,21 +14572,6 @@ GALGAS_categoryReaderForGeneration GALGAS_categoryReaderForGeneration::construct
     macroMyNew (result.mObjectPtr, cPtr_categoryReaderForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mCategoryReaderName, inAttribute_mImplementedAsFunction, inAttribute_mResultType, inAttribute_mResultVarCppName, inAttribute_mCategoryReaderFormalParameterList, inAttribute_mTypedAttributeList, inAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
   }
   return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_categoryReaderForGeneration::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_categoryReaderForGeneration * p = (cPtr_categoryReaderForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_categoryReaderForGeneration) ;
-    cPtr_categoryReaderForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_categoryReaderForGeneration (p->mAttribute_mHasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mReceiverType, p->mAttribute_mCategoryReaderName, p->mAttribute_mImplementedAsFunction, p->mAttribute_mResultType, p->mAttribute_mResultVarCppName, p->mAttribute_mCategoryReaderFormalParameterList, p->mAttribute_mTypedAttributeList, p->mAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -15332,6 +14775,13 @@ void cPtr_categoryReaderForGeneration::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_categoryReaderForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_categoryReaderForGeneration (mAttribute_mHasHeader, mAttribute_mImplementationCppFileName, mAttribute_mReceiverType, mAttribute_mCategoryReaderName, mAttribute_mImplementedAsFunction, mAttribute_mResultType, mAttribute_mResultVarCppName, mAttribute_mCategoryReaderFormalParameterList, mAttribute_mTypedAttributeList, mAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -15473,21 +14923,6 @@ GALGAS_filewrapperDeclarationForGeneration GALGAS_filewrapperDeclarationForGener
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_filewrapperDeclarationForGeneration::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_filewrapperDeclarationForGeneration * p = (cPtr_filewrapperDeclarationForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_filewrapperDeclarationForGeneration) ;
-    cPtr_filewrapperDeclarationForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_filewrapperDeclarationForGeneration (p->mAttribute_mHasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mFilewrapperName, p->mAttribute_mFilewrapperAbsolutePath, p->mAttribute_mFilewrapperFileMap, p->mAttribute_mFilewrapperDirectoryMap, p->mAttribute_mFilewrapperTemplateListForGeneration COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_string GALGAS_filewrapperDeclarationForGeneration::reader_mFilewrapperName (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (NULL != mObjectPtr) {
@@ -15621,6 +15056,13 @@ void cPtr_filewrapperDeclarationForGeneration::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_filewrapperDeclarationForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_filewrapperDeclarationForGeneration (mAttribute_mHasHeader, mAttribute_mImplementationCppFileName, mAttribute_mFilewrapperName, mAttribute_mFilewrapperAbsolutePath, mAttribute_mFilewrapperFileMap, mAttribute_mFilewrapperDirectoryMap, mAttribute_mFilewrapperTemplateListForGeneration COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -15752,21 +15194,6 @@ GALGAS_functionPrototypeDeclarationForGeneration GALGAS_functionPrototypeDeclara
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_functionPrototypeDeclarationForGeneration::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_functionPrototypeDeclarationForGeneration * p = (cPtr_functionPrototypeDeclarationForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_functionPrototypeDeclarationForGeneration) ;
-    cPtr_functionPrototypeDeclarationForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_functionPrototypeDeclarationForGeneration (p->mAttribute_mHasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mFunctionName, p->mAttribute_mFormalArgumentList, p->mAttribute_mReturnType COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_string GALGAS_functionPrototypeDeclarationForGeneration::reader_mFunctionName (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (NULL != mObjectPtr) {
@@ -15856,6 +15283,13 @@ void cPtr_functionPrototypeDeclarationForGeneration::description (C_String & ioS
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_functionPrototypeDeclarationForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_functionPrototypeDeclarationForGeneration (mAttribute_mHasHeader, mAttribute_mImplementationCppFileName, mAttribute_mFunctionName, mAttribute_mFormalArgumentList, mAttribute_mReturnType COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -15997,21 +15431,6 @@ GALGAS_functionImplementationForGeneration GALGAS_functionImplementationForGener
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_functionImplementationForGeneration::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_functionImplementationForGeneration * p = (cPtr_functionImplementationForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_functionImplementationForGeneration) ;
-    cPtr_functionImplementationForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_functionImplementationForGeneration (p->mAttribute_mHasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mFunctionName, p->mAttribute_mFormalArgumentList, p->mAttribute_mReturnType, p->mAttribute_mResultVariableCppName, p->mAttribute_mFunctionInstructionList COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_string GALGAS_functionImplementationForGeneration::reader_mResultVariableCppName (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (NULL != mObjectPtr) {
@@ -16088,6 +15507,13 @@ void cPtr_functionImplementationForGeneration::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_functionImplementationForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_functionImplementationForGeneration (mAttribute_mHasHeader, mAttribute_mImplementationCppFileName, mAttribute_mFunctionName, mAttribute_mFormalArgumentList, mAttribute_mReturnType, mAttribute_mResultVariableCppName, mAttribute_mFunctionInstructionList COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -16224,21 +15650,6 @@ GALGAS_onceFunctionDeclarationForGeneration GALGAS_onceFunctionDeclarationForGen
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_onceFunctionDeclarationForGeneration::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_onceFunctionDeclarationForGeneration * p = (cPtr_onceFunctionDeclarationForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_onceFunctionDeclarationForGeneration) ;
-    cPtr_onceFunctionDeclarationForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_onceFunctionDeclarationForGeneration (p->mAttribute_mHasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mFunctionName, p->mAttribute_mReturnType, p->mAttribute_mResultVariableCppName, p->mAttribute_mFunctionInstructionList COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_string GALGAS_onceFunctionDeclarationForGeneration::reader_mFunctionName (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (NULL != mObjectPtr) {
@@ -16350,6 +15761,13 @@ void cPtr_onceFunctionDeclarationForGeneration::description (C_String & ioString
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_onceFunctionDeclarationForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_onceFunctionDeclarationForGeneration (mAttribute_mHasHeader, mAttribute_mImplementationCppFileName, mAttribute_mFunctionName, mAttribute_mReturnType, mAttribute_mResultVariableCppName, mAttribute_mFunctionInstructionList COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -16491,21 +15909,6 @@ GALGAS_optionComponentForGeneration GALGAS_optionComponentForGeneration::constru
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_optionComponentForGeneration::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_optionComponentForGeneration * p = (cPtr_optionComponentForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_optionComponentForGeneration) ;
-    cPtr_optionComponentForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_optionComponentForGeneration (p->mAttribute_mHasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mIsPredefined, p->mAttribute_mOptionComponentName, p->mAttribute_mBoolOptionMap, p->mAttribute_mUIntOptionMap, p->mAttribute_mStringOptionMap COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_bool GALGAS_optionComponentForGeneration::reader_mIsPredefined (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (NULL != mObjectPtr) {
@@ -16639,6 +16042,13 @@ void cPtr_optionComponentForGeneration::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_optionComponentForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_optionComponentForGeneration (mAttribute_mHasHeader, mAttribute_mImplementationCppFileName, mAttribute_mIsPredefined, mAttribute_mOptionComponentName, mAttribute_mBoolOptionMap, mAttribute_mUIntOptionMap, mAttribute_mStringOptionMap COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -16791,21 +16201,6 @@ GALGAS_overrideCategoryReaderForGeneration GALGAS_overrideCategoryReaderForGener
     macroMyNew (result.mObjectPtr, cPtr_overrideCategoryReaderForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mBaseTypeName, inAttribute_mOverridingCategoryReaderName, inAttribute_mResultType, inAttribute_mResultVarCppName, inAttribute_mOverridingCategoryReaderFormalParameterList, inAttribute_mTypedAttributeList, inAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
   }
   return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_overrideCategoryReaderForGeneration::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_overrideCategoryReaderForGeneration * p = (cPtr_overrideCategoryReaderForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_overrideCategoryReaderForGeneration) ;
-    cPtr_overrideCategoryReaderForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_overrideCategoryReaderForGeneration (p->mAttribute_mHasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mReceiverType, p->mAttribute_mBaseTypeName, p->mAttribute_mOverridingCategoryReaderName, p->mAttribute_mResultType, p->mAttribute_mResultVarCppName, p->mAttribute_mOverridingCategoryReaderFormalParameterList, p->mAttribute_mTypedAttributeList, p->mAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -17009,6 +16404,13 @@ void cPtr_overrideCategoryReaderForGeneration::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_overrideCategoryReaderForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_overrideCategoryReaderForGeneration (mAttribute_mHasHeader, mAttribute_mImplementationCppFileName, mAttribute_mReceiverType, mAttribute_mBaseTypeName, mAttribute_mOverridingCategoryReaderName, mAttribute_mResultType, mAttribute_mResultVarCppName, mAttribute_mOverridingCategoryReaderFormalParameterList, mAttribute_mTypedAttributeList, mAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -17151,21 +16553,6 @@ GALGAS_overridingCategoryMethodForGeneration GALGAS_overridingCategoryMethodForG
     macroMyNew (result.mObjectPtr, cPtr_overridingCategoryMethodForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mBaseTypeName, inAttribute_mCategoryMethodName, inAttribute_mCategoryMethodFormalParameterList, inAttribute_mTypedAttributeList, inAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
   }
   return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_overridingCategoryMethodForGeneration::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_overridingCategoryMethodForGeneration * p = (cPtr_overridingCategoryMethodForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_overridingCategoryMethodForGeneration) ;
-    cPtr_overridingCategoryMethodForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_overridingCategoryMethodForGeneration (p->mAttribute_mHasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mReceiverType, p->mAttribute_mBaseTypeName, p->mAttribute_mCategoryMethodName, p->mAttribute_mCategoryMethodFormalParameterList, p->mAttribute_mTypedAttributeList, p->mAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -17325,6 +16712,13 @@ void cPtr_overridingCategoryMethodForGeneration::description (C_String & ioStrin
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_overridingCategoryMethodForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_overridingCategoryMethodForGeneration (mAttribute_mHasHeader, mAttribute_mImplementationCppFileName, mAttribute_mReceiverType, mAttribute_mBaseTypeName, mAttribute_mCategoryMethodName, mAttribute_mCategoryMethodFormalParameterList, mAttribute_mTypedAttributeList, mAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -17467,21 +16861,6 @@ GALGAS_overridingCategoryModifierForGeneration GALGAS_overridingCategoryModifier
     macroMyNew (result.mObjectPtr, cPtr_overridingCategoryModifierForGeneration (inAttribute_mHasHeader, inAttribute_mImplementationCppFileName, inAttribute_mReceiverType, inAttribute_mBaseTypeName, inAttribute_mCategoryModifierName, inAttribute_mCategoryModifierFormalParameterList, inAttribute_mTypedAttributeList, inAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
   }
   return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_overridingCategoryModifierForGeneration::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_overridingCategoryModifierForGeneration * p = (cPtr_overridingCategoryModifierForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_overridingCategoryModifierForGeneration) ;
-    cPtr_overridingCategoryModifierForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_overridingCategoryModifierForGeneration (p->mAttribute_mHasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mReceiverType, p->mAttribute_mBaseTypeName, p->mAttribute_mCategoryModifierName, p->mAttribute_mCategoryModifierFormalParameterList, p->mAttribute_mTypedAttributeList, p->mAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -17641,6 +17020,13 @@ void cPtr_overridingCategoryModifierForGeneration::description (C_String & ioStr
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_overridingCategoryModifierForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_overridingCategoryModifierForGeneration (mAttribute_mHasHeader, mAttribute_mImplementationCppFileName, mAttribute_mReceiverType, mAttribute_mBaseTypeName, mAttribute_mCategoryModifierName, mAttribute_mCategoryModifierFormalParameterList, mAttribute_mTypedAttributeList, mAttribute_mSemanticInstructionListForGeneration COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -17767,21 +17153,6 @@ GALGAS_programComponentForGeneration GALGAS_programComponentForGeneration::const
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_programComponentForGeneration::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_programComponentForGeneration * p = (cPtr_programComponentForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_programComponentForGeneration) ;
-    cPtr_programComponentForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_programComponentForGeneration (p->mAttribute_mHasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mInclusionSet, p->mAttribute_mImplementationString COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_stringset GALGAS_programComponentForGeneration::reader_mInclusionSet (UNUSED_LOCATION_ARGS) const {
   GALGAS_stringset result ;
   if (NULL != mObjectPtr) {
@@ -17849,6 +17220,13 @@ void cPtr_programComponentForGeneration::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_programComponentForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_programComponentForGeneration (mAttribute_mHasHeader, mAttribute_mImplementationCppFileName, mAttribute_mInclusionSet, mAttribute_mImplementationString COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -17975,21 +17353,6 @@ GALGAS_routinePrototypeDeclarationForGeneration GALGAS_routinePrototypeDeclarati
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_routinePrototypeDeclarationForGeneration::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_routinePrototypeDeclarationForGeneration * p = (cPtr_routinePrototypeDeclarationForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_routinePrototypeDeclarationForGeneration) ;
-    cPtr_routinePrototypeDeclarationForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_routinePrototypeDeclarationForGeneration (p->mAttribute_mHasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mRoutineName, p->mAttribute_mFormalArgumentList COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_string GALGAS_routinePrototypeDeclarationForGeneration::reader_mRoutineName (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (NULL != mObjectPtr) {
@@ -18057,6 +17420,13 @@ void cPtr_routinePrototypeDeclarationForGeneration::description (C_String & ioSt
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_routinePrototypeDeclarationForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_routinePrototypeDeclarationForGeneration (mAttribute_mHasHeader, mAttribute_mImplementationCppFileName, mAttribute_mRoutineName, mAttribute_mFormalArgumentList COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -18193,21 +17563,6 @@ GALGAS_routineImplementationForGeneration GALGAS_routineImplementationForGenerat
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_routineImplementationForGeneration::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_routineImplementationForGeneration * p = (cPtr_routineImplementationForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_routineImplementationForGeneration) ;
-    cPtr_routineImplementationForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_routineImplementationForGeneration (p->mAttribute_mHasHeader, p->mAttribute_mImplementationCppFileName, p->mAttribute_mRoutineName, p->mAttribute_mFormalArgumentList, p->mAttribute_mGenerateStatic, p->mAttribute_mRoutineInstructionList COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_bool GALGAS_routineImplementationForGeneration::reader_mGenerateStatic (UNUSED_LOCATION_ARGS) const {
   GALGAS_bool result ;
   if (NULL != mObjectPtr) {
@@ -18281,6 +17636,13 @@ void cPtr_routineImplementationForGeneration::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_routineImplementationForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_routineImplementationForGeneration (mAttribute_mHasHeader, mAttribute_mImplementationCppFileName, mAttribute_mRoutineName, mAttribute_mFormalArgumentList, mAttribute_mGenerateStatic, mAttribute_mRoutineInstructionList COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -18388,7 +17750,6 @@ cPtr_semanticTypeForGeneration::cPtr_semanticTypeForGeneration (const GALGAS_uni
 cPtr_semanticDeclarationForGeneration (THERE),
 mAttribute_mTypeProxy (in_mTypeProxy) {
 }
-
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -18510,21 +17871,6 @@ GALGAS_arrayTypeForGeneration GALGAS_arrayTypeForGeneration::constructor_new (co
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_arrayTypeForGeneration::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_arrayTypeForGeneration * p = (cPtr_arrayTypeForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_arrayTypeForGeneration) ;
-    cPtr_arrayTypeForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_arrayTypeForGeneration (p->mAttribute_mTypeProxy, p->mAttribute_mElementTypeProxy, p->mAttribute_mDimension COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_unifiedTypeMapProxy GALGAS_arrayTypeForGeneration::reader_mElementTypeProxy (UNUSED_LOCATION_ARGS) const {
   GALGAS_unifiedTypeMapProxy result ;
   if (NULL != mObjectPtr) {
@@ -18589,6 +17935,13 @@ void cPtr_arrayTypeForGeneration::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_arrayTypeForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_arrayTypeForGeneration (mAttribute_mTypeProxy, mAttribute_mElementTypeProxy, mAttribute_mDimension COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -18726,21 +18079,6 @@ GALGAS_classTypeForGeneration GALGAS_classTypeForGeneration::constructor_new (co
     macroMyNew (result.mObjectPtr, cPtr_classTypeForGeneration (inAttribute_mTypeProxy, inAttribute_mIsAbstract, inAttribute_mClassTypeName, inAttribute_mSuperClass, inAttribute_mAllTypedAttributeList, inAttribute_mTypedAttributeList, inAttribute_mGenerateHeaderInSeparateFile COMMA_THERE)) ;
   }
   return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_classTypeForGeneration::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_classTypeForGeneration * p = (cPtr_classTypeForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_classTypeForGeneration) ;
-    cPtr_classTypeForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_classTypeForGeneration (p->mAttribute_mTypeProxy, p->mAttribute_mIsAbstract, p->mAttribute_mClassTypeName, p->mAttribute_mSuperClass, p->mAttribute_mAllTypedAttributeList, p->mAttribute_mTypedAttributeList, p->mAttribute_mGenerateHeaderInSeparateFile COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -18897,6 +18235,13 @@ void cPtr_classTypeForGeneration::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_classTypeForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_classTypeForGeneration (mAttribute_mTypeProxy, mAttribute_mIsAbstract, mAttribute_mClassTypeName, mAttribute_mSuperClass, mAttribute_mAllTypedAttributeList, mAttribute_mTypedAttributeList, mAttribute_mGenerateHeaderInSeparateFile COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -19013,21 +18358,6 @@ GALGAS_enumTypeForGeneration GALGAS_enumTypeForGeneration::constructor_new (cons
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_enumTypeForGeneration::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_enumTypeForGeneration * p = (cPtr_enumTypeForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_enumTypeForGeneration) ;
-    cPtr_enumTypeForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_enumTypeForGeneration (p->mAttribute_mTypeProxy, p->mAttribute_mConstantList COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_enumConstantListForGeneration GALGAS_enumTypeForGeneration::reader_mConstantList (UNUSED_LOCATION_ARGS) const {
   GALGAS_enumConstantListForGeneration result ;
   if (NULL != mObjectPtr) {
@@ -19070,6 +18400,13 @@ void cPtr_enumTypeForGeneration::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_enumTypeForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_enumTypeForGeneration (mAttribute_mTypeProxy, mAttribute_mConstantList COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -19196,21 +18533,6 @@ GALGAS_externTypeDeclarationForGeneration GALGAS_externTypeDeclarationForGenerat
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_externTypeDeclarationForGeneration::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_externTypeDeclarationForGeneration * p = (cPtr_externTypeDeclarationForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_externTypeDeclarationForGeneration) ;
-    cPtr_externTypeDeclarationForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_externTypeDeclarationForGeneration (p->mAttribute_mTypeProxy, p->mAttribute_mExternTypeName, p->mAttribute_mCppPreDeclarationCode, p->mAttribute_mCppClassCode COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_string GALGAS_externTypeDeclarationForGeneration::reader_mExternTypeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (NULL != mObjectPtr) {
@@ -19297,6 +18619,13 @@ void cPtr_externTypeDeclarationForGeneration::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_externTypeDeclarationForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_externTypeDeclarationForGeneration (mAttribute_mTypeProxy, mAttribute_mExternTypeName, mAttribute_mCppPreDeclarationCode, mAttribute_mCppClassCode COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -19423,21 +18752,6 @@ GALGAS_graphDeclarationForGeneration GALGAS_graphDeclarationForGeneration::const
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_graphDeclarationForGeneration::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_graphDeclarationForGeneration * p = (cPtr_graphDeclarationForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_graphDeclarationForGeneration) ;
-    cPtr_graphDeclarationForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_graphDeclarationForGeneration (p->mAttribute_mTypeProxy, p->mAttribute_mAssociatedListTypeProxy, p->mAttribute_mAssociatedListElementTypeProxy, p->mAttribute_mInsertModifierList COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_unifiedTypeMapProxy GALGAS_graphDeclarationForGeneration::reader_mAssociatedListTypeProxy (UNUSED_LOCATION_ARGS) const {
   GALGAS_unifiedTypeMapProxy result ;
   if (NULL != mObjectPtr) {
@@ -19524,6 +18838,13 @@ void cPtr_graphDeclarationForGeneration::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_graphDeclarationForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_graphDeclarationForGeneration (mAttribute_mTypeProxy, mAttribute_mAssociatedListTypeProxy, mAttribute_mAssociatedListElementTypeProxy, mAttribute_mInsertModifierList COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -19645,21 +18966,6 @@ GALGAS_listTypeForGeneration GALGAS_listTypeForGeneration::constructor_new (cons
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_listTypeForGeneration::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_listTypeForGeneration * p = (cPtr_listTypeForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_listTypeForGeneration) ;
-    cPtr_listTypeForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_listTypeForGeneration (p->mAttribute_mTypeProxy, p->mAttribute_mListElementTypeIndex, p->mAttribute_mTypedAttributeList COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_unifiedTypeMapProxy GALGAS_listTypeForGeneration::reader_mListElementTypeIndex (UNUSED_LOCATION_ARGS) const {
   GALGAS_unifiedTypeMapProxy result ;
   if (NULL != mObjectPtr) {
@@ -19724,6 +19030,13 @@ void cPtr_listTypeForGeneration::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_listTypeForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_listTypeForGeneration (mAttribute_mTypeProxy, mAttribute_mListElementTypeIndex, mAttribute_mTypedAttributeList COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -19850,21 +19163,6 @@ GALGAS_listmapTypeForGeneration GALGAS_listmapTypeForGeneration::constructor_new
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_listmapTypeForGeneration::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_listmapTypeForGeneration * p = (cPtr_listmapTypeForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_listmapTypeForGeneration) ;
-    cPtr_listmapTypeForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_listmapTypeForGeneration (p->mAttribute_mTypeProxy, p->mAttribute_mAssociatedListTypeIndex, p->mAttribute_mAssociatedListTypedAttributeList, p->mAttribute_mAssociatedListMapElementTypeIndex COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_unifiedTypeMapProxy GALGAS_listmapTypeForGeneration::reader_mAssociatedListTypeIndex (UNUSED_LOCATION_ARGS) const {
   GALGAS_unifiedTypeMapProxy result ;
   if (NULL != mObjectPtr) {
@@ -19951,6 +19249,13 @@ void cPtr_listmapTypeForGeneration::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_listmapTypeForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_listmapTypeForGeneration (mAttribute_mTypeProxy, mAttribute_mAssociatedListTypeIndex, mAttribute_mAssociatedListTypedAttributeList, mAttribute_mAssociatedListMapElementTypeIndex COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -20077,21 +19382,6 @@ GALGAS_mapProxyTypeForGeneration GALGAS_mapProxyTypeForGeneration::constructor_n
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_mapProxyTypeForGeneration::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_mapProxyTypeForGeneration * p = (cPtr_mapProxyTypeForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_mapProxyTypeForGeneration) ;
-    cPtr_mapProxyTypeForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_mapProxyTypeForGeneration (p->mAttribute_mTypeProxy, p->mAttribute_mAssociatedMapTypeProxy, p->mAttribute_mAssociatedMapTypedAttributeList, p->mAttribute_mSearchMethodList COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_unifiedTypeMapProxy GALGAS_mapProxyTypeForGeneration::reader_mAssociatedMapTypeProxy (UNUSED_LOCATION_ARGS) const {
   GALGAS_unifiedTypeMapProxy result ;
   if (NULL != mObjectPtr) {
@@ -20178,6 +19468,13 @@ void cPtr_mapProxyTypeForGeneration::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_mapProxyTypeForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_mapProxyTypeForGeneration (mAttribute_mTypeProxy, mAttribute_mAssociatedMapTypeProxy, mAttribute_mAssociatedMapTypedAttributeList, mAttribute_mSearchMethodList COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -20320,21 +19617,6 @@ GALGAS_mapTypeForGeneration GALGAS_mapTypeForGeneration::constructor_new (const 
     macroMyNew (result.mObjectPtr, cPtr_mapTypeForGeneration (inAttribute_mTypeProxy, inAttribute_mElementTypeProxy, inAttribute_mMapTypeName, inAttribute_mTypedAttributeList, inAttribute_mInsertMethodList, inAttribute_mSearchMethodList, inAttribute_mRemoveMethodList, inAttribute_mHasInsertOrReplaceModifier COMMA_THERE)) ;
   }
   return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_mapTypeForGeneration::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_mapTypeForGeneration * p = (cPtr_mapTypeForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_mapTypeForGeneration) ;
-    cPtr_mapTypeForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_mapTypeForGeneration (p->mAttribute_mTypeProxy, p->mAttribute_mElementTypeProxy, p->mAttribute_mMapTypeName, p->mAttribute_mTypedAttributeList, p->mAttribute_mInsertMethodList, p->mAttribute_mSearchMethodList, p->mAttribute_mRemoveMethodList, p->mAttribute_mHasInsertOrReplaceModifier COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -20513,6 +19795,13 @@ void cPtr_mapTypeForGeneration::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_mapTypeForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_mapTypeForGeneration (mAttribute_mTypeProxy, mAttribute_mElementTypeProxy, mAttribute_mMapTypeName, mAttribute_mTypedAttributeList, mAttribute_mInsertMethodList, mAttribute_mSearchMethodList, mAttribute_mRemoveMethodList, mAttribute_mHasInsertOrReplaceModifier COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -20625,21 +19914,6 @@ GALGAS_primitiveTypeForGeneration GALGAS_primitiveTypeForGeneration::constructor
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_primitiveTypeForGeneration::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_primitiveTypeForGeneration * p = (cPtr_primitiveTypeForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_primitiveTypeForGeneration) ;
-    cPtr_primitiveTypeForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_primitiveTypeForGeneration (p->mAttribute_mTypeProxy, p->mAttribute_mPredefinedTypeName, p->mAttribute_mKind COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_string GALGAS_primitiveTypeForGeneration::reader_mPredefinedTypeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (NULL != mObjectPtr) {
@@ -20704,6 +19978,13 @@ void cPtr_primitiveTypeForGeneration::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_primitiveTypeForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_primitiveTypeForGeneration (mAttribute_mTypeProxy, mAttribute_mPredefinedTypeName, mAttribute_mKind COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -20830,21 +20111,6 @@ GALGAS_sortedListTypeForGeneration GALGAS_sortedListTypeForGeneration::construct
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_sortedListTypeForGeneration::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_sortedListTypeForGeneration * p = (cPtr_sortedListTypeForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_sortedListTypeForGeneration) ;
-    cPtr_sortedListTypeForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_sortedListTypeForGeneration (p->mAttribute_mTypeProxy, p->mAttribute_mListElementTypeIndex, p->mAttribute_mTypedAttributeList, p->mAttribute_mSortDescriptorList COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_unifiedTypeMapProxy GALGAS_sortedListTypeForGeneration::reader_mListElementTypeIndex (UNUSED_LOCATION_ARGS) const {
   GALGAS_unifiedTypeMapProxy result ;
   if (NULL != mObjectPtr) {
@@ -20931,6 +20197,13 @@ void cPtr_sortedListTypeForGeneration::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_sortedListTypeForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_sortedListTypeForGeneration (mAttribute_mTypeProxy, mAttribute_mListElementTypeIndex, mAttribute_mTypedAttributeList, mAttribute_mSortDescriptorList COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -21047,21 +20320,6 @@ GALGAS_structTypeForGeneration GALGAS_structTypeForGeneration::constructor_new (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_structTypeForGeneration::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_structTypeForGeneration * p = (cPtr_structTypeForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_structTypeForGeneration) ;
-    cPtr_structTypeForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_structTypeForGeneration (p->mAttribute_mTypeProxy, p->mAttribute_mTypedAttributeList COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 GALGAS_typedAttributeList GALGAS_structTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
   GALGAS_typedAttributeList result ;
   if (NULL != mObjectPtr) {
@@ -21104,6 +20362,13 @@ void cPtr_structTypeForGeneration::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_structTypeForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_structTypeForGeneration (mAttribute_mTypeProxy, mAttribute_mTypedAttributeList COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -21251,21 +20516,6 @@ GALGAS_uniqueMapTypeForGeneration GALGAS_uniqueMapTypeForGeneration::constructor
     macroMyNew (result.mObjectPtr, cPtr_uniqueMapTypeForGeneration (inAttribute_mTypeProxy, inAttribute_mMapTypeName, inAttribute_mTypedAttributeList, inAttribute_mInsertMethodList, inAttribute_mSearchMethodList, inAttribute_mMapAutomatonStateMap, inAttribute_mMapAutomatonActionMap, inAttribute_mMapStateSortedList, inAttribute_mMapOverrideList COMMA_THERE)) ;
   }
   return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_uniqueMapTypeForGeneration::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_uniqueMapTypeForGeneration * p = (cPtr_uniqueMapTypeForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_uniqueMapTypeForGeneration) ;
-    cPtr_uniqueMapTypeForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_uniqueMapTypeForGeneration (p->mAttribute_mTypeProxy, p->mAttribute_mMapTypeName, p->mAttribute_mTypedAttributeList, p->mAttribute_mInsertMethodList, p->mAttribute_mSearchMethodList, p->mAttribute_mMapAutomatonStateMap, p->mAttribute_mMapAutomatonActionMap, p->mAttribute_mMapStateSortedList, p->mAttribute_mMapOverrideList COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -21466,6 +20716,13 @@ void cPtr_uniqueMapTypeForGeneration::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_uniqueMapTypeForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_uniqueMapTypeForGeneration (mAttribute_mTypeProxy, mAttribute_mMapTypeName, mAttribute_mTypedAttributeList, mAttribute_mInsertMethodList, mAttribute_mSearchMethodList, mAttribute_mMapAutomatonStateMap, mAttribute_mMapAutomatonActionMap, mAttribute_mMapStateSortedList, mAttribute_mMapOverrideList COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -21603,21 +20860,6 @@ GALGAS_syntaxDeclarationForGeneration GALGAS_syntaxDeclarationForGeneration::con
     macroMyNew (result.mObjectPtr, cPtr_syntaxDeclarationForGeneration (inAttribute_mComponentName, inAttribute_mLexiqueName, inAttribute_mNonterminalDeclarationMap, inAttribute_mRuleDeclarationList, inAttribute_mSelectMethodCount, inAttribute_mHasIndexing, inAttribute_mHasTranslateFeature COMMA_THERE)) ;
   }
   return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_syntaxDeclarationForGeneration::insulate (LOCATION_ARGS) {
-  macroMutexLock (gInsulationMutex) ;
-  if (isValid () && (mObjectPtr->retainCount () > 1)) {
-    cPtr_syntaxDeclarationForGeneration * p = (cPtr_syntaxDeclarationForGeneration *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_syntaxDeclarationForGeneration) ;
-    cPtr_syntaxDeclarationForGeneration * r = NULL ;
-    macroMyNew (r, cPtr_syntaxDeclarationForGeneration (p->mAttribute_mComponentName, p->mAttribute_mLexiqueName, p->mAttribute_mNonterminalDeclarationMap, p->mAttribute_mRuleDeclarationList, p->mAttribute_mSelectMethodCount, p->mAttribute_mHasIndexing, p->mAttribute_mHasTranslateFeature COMMA_THERE)) ;
-    macroAssignSharedObject (mObjectPtr, r) ;
-    macroDetachSharedObject (r) ;
-  }
-  macroMutexUnlock (gInsulationMutex) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -21793,6 +21035,13 @@ void cPtr_syntaxDeclarationForGeneration::description (C_String & ioString,
   ioString << "]" ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+acPtr_class * cPtr_syntaxDeclarationForGeneration::duplicate (LOCATION_ARGS) const {
+  acPtr_class * ptr = NULL ;
+  macroMyNew (ptr, cPtr_syntaxDeclarationForGeneration (mAttribute_mComponentName, mAttribute_mLexiqueName, mAttribute_mNonterminalDeclarationMap, mAttribute_mRuleDeclarationList, mAttribute_mSelectMethodCount, mAttribute_mHasIndexing, mAttribute_mHasTranslateFeature COMMA_THERE)) ;
+  return ptr ;
+}
 
 
 //---------------------------------------------------------------------------------------------------------------------*

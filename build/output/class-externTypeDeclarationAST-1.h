@@ -27,10 +27,6 @@ class GALGAS_externTypeDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public : GALGAS_externTypeDeclarationAST (const cPtr_externTypeDeclarationAST * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

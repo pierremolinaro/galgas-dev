@@ -67,6 +67,9 @@ class AC_GALGAS_class : public AC_GALGAS_root { // AC_GALGAS_class est une class
 
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
+
+//--- Insulate
+  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*

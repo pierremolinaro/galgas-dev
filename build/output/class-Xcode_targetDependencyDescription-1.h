@@ -26,10 +26,6 @@ class GALGAS_Xcode_5F_targetDependencyDescription : public AC_GALGAS_class {
 //--------------------------------- Constructor from pointer
   public : GALGAS_Xcode_5F_targetDependencyDescription (const cPtr_Xcode_5F_targetDependencyDescription * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

@@ -27,10 +27,6 @@ class GALGAS_mapDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public : GALGAS_mapDeclarationAST (const cPtr_mapDeclarationAST * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

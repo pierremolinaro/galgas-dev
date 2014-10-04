@@ -27,10 +27,6 @@ class GALGAS_nonTerminalInstructionForGrammarAnalysis : public GALGAS_abstractSy
 //--------------------------------- Constructor from pointer
   public : GALGAS_nonTerminalInstructionForGrammarAnalysis (const cPtr_nonTerminalInstructionForGrammarAnalysis * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

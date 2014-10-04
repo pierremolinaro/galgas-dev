@@ -24,10 +24,6 @@ class GALGAS_ifExpressionForGeneration : public GALGAS_semanticExpressionForGene
 //--------------------------------- Constructor from pointer
   public : GALGAS_ifExpressionForGeneration (const cPtr_ifExpressionForGeneration * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

@@ -27,10 +27,6 @@ class GALGAS_optionCommentExpressionForGeneration : public GALGAS_semanticExpres
 //--------------------------------- Constructor from pointer
   public : GALGAS_optionCommentExpressionForGeneration (const cPtr_optionCommentExpressionForGeneration * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

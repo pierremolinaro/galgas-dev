@@ -24,10 +24,6 @@ class GALGAS_templateSubOperationAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Constructor from pointer
   public : GALGAS_templateSubOperationAST (const cPtr_templateSubOperationAST * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

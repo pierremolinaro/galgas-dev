@@ -27,10 +27,6 @@ class GALGAS_templateInstructionIfAST : public GALGAS_templateInstructionAST {
 //--------------------------------- Constructor from pointer
   public : GALGAS_templateInstructionIfAST (const cPtr_templateInstructionIfAST * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

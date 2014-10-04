@@ -24,8 +24,6 @@ class GALGAS_semanticInstructionAST : public GALGAS_syntaxInstructionAST {
 //--------------------------------- Constructor from pointer
   public : GALGAS_semanticInstructionAST (const cPtr_semanticInstructionAST * inSourcePtr) ;
 
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

@@ -24,10 +24,6 @@ class GALGAS_parseLoopInstruction : public GALGAS_syntaxInstructionAST {
 //--------------------------------- Constructor from pointer
   public : GALGAS_parseLoopInstruction (const cPtr_parseLoopInstruction * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

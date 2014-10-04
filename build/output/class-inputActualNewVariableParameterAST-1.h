@@ -27,10 +27,6 @@ class GALGAS_inputActualNewVariableParameterAST : public GALGAS_actualParameterA
 //--------------------------------- Constructor from pointer
   public : GALGAS_inputActualNewVariableParameterAST (const cPtr_inputActualNewVariableParameterAST * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

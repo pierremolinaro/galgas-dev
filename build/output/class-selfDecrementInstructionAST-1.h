@@ -27,10 +27,6 @@ class GALGAS_selfDecrementInstructionAST : public GALGAS_semanticInstructionAST 
 //--------------------------------- Constructor from pointer
   public : GALGAS_selfDecrementInstructionAST (const cPtr_selfDecrementInstructionAST * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

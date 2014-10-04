@@ -27,10 +27,6 @@ class GALGAS_abstractCategoryReaderForGeneration : public GALGAS_semanticDeclara
 //--------------------------------- Constructor from pointer
   public : GALGAS_abstractCategoryReaderForGeneration (const cPtr_abstractCategoryReaderForGeneration * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

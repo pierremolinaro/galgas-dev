@@ -27,10 +27,6 @@ class GALGAS_decrementInstructionForGeneration : public GALGAS_semanticInstructi
 //--------------------------------- Constructor from pointer
   public : GALGAS_decrementInstructionForGeneration (const cPtr_decrementInstructionForGeneration * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

@@ -24,10 +24,6 @@ class GALGAS_concatInstructionAST : public GALGAS_semanticInstructionAST {
 //--------------------------------- Constructor from pointer
   public : GALGAS_concatInstructionAST (const cPtr_concatInstructionAST * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

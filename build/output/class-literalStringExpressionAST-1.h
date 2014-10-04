@@ -27,10 +27,6 @@ class GALGAS_literalStringExpressionAST : public GALGAS_semanticExpressionAST {
 //--------------------------------- Constructor from pointer
   public : GALGAS_literalStringExpressionAST (const cPtr_literalStringExpressionAST * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

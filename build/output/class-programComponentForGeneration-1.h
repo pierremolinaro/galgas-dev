@@ -27,10 +27,6 @@ class GALGAS_programComponentForGeneration : public GALGAS_semanticDeclarationWi
 //--------------------------------- Constructor from pointer
   public : GALGAS_programComponentForGeneration (const cPtr_programComponentForGeneration * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

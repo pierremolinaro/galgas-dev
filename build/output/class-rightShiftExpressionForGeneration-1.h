@@ -24,10 +24,6 @@ class GALGAS_rightShiftExpressionForGeneration : public GALGAS_semanticExpressio
 //--------------------------------- Constructor from pointer
   public : GALGAS_rightShiftExpressionForGeneration (const cPtr_rightShiftExpressionForGeneration * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

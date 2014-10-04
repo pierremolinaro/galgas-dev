@@ -23,8 +23,11 @@ class cPtr_selfPlusEqualElementsInstructionAST : public cPtr_semanticInstruction
                                                      const GALGAS_actualOutputExpressionList & in_mExpressions
                                                      COMMA_LOCATION_ARGS) ;
 
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
 //--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_actualOutputExpressionList reader_mExpressions (UNUSED_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_actualOutputExpressionList reader_mExpressions (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

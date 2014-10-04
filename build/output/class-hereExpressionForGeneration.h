@@ -21,6 +21,9 @@ class cPtr_hereExpressionForGeneration : public cPtr_semanticExpressionForGenera
                                              const GALGAS_location & in_mLocation
                                              COMMA_LOCATION_ARGS) ;
 
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,

@@ -27,10 +27,6 @@ class GALGAS_lexicalStringMatchAST : public GALGAS_lexicalExpressionAST {
 //--------------------------------- Constructor from pointer
   public : GALGAS_lexicalStringMatchAST (const cPtr_lexicalStringMatchAST * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

@@ -32,12 +32,15 @@ class cPtr_optionComponentForGeneration : public cPtr_semanticDeclarationWithHea
                                               const GALGAS_commandLineOptionMap & in_mStringOptionMap
                                               COMMA_LOCATION_ARGS) ;
 
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
 //--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_bool reader_mIsPredefined (UNUSED_LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mOptionComponentName (UNUSED_LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_commandLineOptionMap reader_mBoolOptionMap (UNUSED_LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_commandLineOptionMap reader_mUIntOptionMap (UNUSED_LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_commandLineOptionMap reader_mStringOptionMap (UNUSED_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_bool reader_mIsPredefined (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mOptionComponentName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_commandLineOptionMap reader_mBoolOptionMap (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_commandLineOptionMap reader_mUIntOptionMap (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_commandLineOptionMap reader_mStringOptionMap (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

@@ -23,8 +23,6 @@ class GALGAS_lexicalSendDefaultActionAST : public AC_GALGAS_class {
 //--------------------------------- Constructor from pointer
   public : GALGAS_lexicalSendDefaultActionAST (const cPtr_lexicalSendDefaultActionAST * inSourcePtr) ;
 
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

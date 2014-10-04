@@ -27,10 +27,6 @@ class GALGAS_dropInstructionForGeneration : public GALGAS_semanticInstructionFor
 //--------------------------------- Constructor from pointer
   public : GALGAS_dropInstructionForGeneration (const cPtr_dropInstructionForGeneration * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

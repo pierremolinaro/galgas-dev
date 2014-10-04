@@ -27,8 +27,6 @@ class GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone : public GALG
 //--------------------------------- Constructor from pointer
   public : GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone (const cPtr_grammarInstructionSyntaxDirectedTranslationResultNone * inSourcePtr) ;
 
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

@@ -26,10 +26,13 @@ class cPtr_templateFileWrapperTemplateCallAST : public cPtr_templateExpressionAS
                                                     const GALGAS_templateExpressionListAST & in_mOutExpressionList
                                                     COMMA_LOCATION_ARGS) ;
 
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
 //--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mFileWrapperName (UNUSED_LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mTemplateName (UNUSED_LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_templateExpressionListAST reader_mOutExpressionList (UNUSED_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mFileWrapperName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mTemplateName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_templateExpressionListAST reader_mOutExpressionList (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

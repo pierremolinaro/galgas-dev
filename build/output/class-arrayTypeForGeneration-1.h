@@ -27,10 +27,6 @@ class GALGAS_arrayTypeForGeneration : public GALGAS_semanticTypeForGeneration {
 //--------------------------------- Constructor from pointer
   public : GALGAS_arrayTypeForGeneration (const cPtr_arrayTypeForGeneration * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

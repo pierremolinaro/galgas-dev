@@ -24,8 +24,6 @@ class GALGAS_predefinedTypeAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Constructor from pointer
   public : GALGAS_predefinedTypeAST (const cPtr_predefinedTypeAST * inSourcePtr) ;
 
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

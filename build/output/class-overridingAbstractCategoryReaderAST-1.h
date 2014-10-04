@@ -27,10 +27,6 @@ class GALGAS_overridingAbstractCategoryReaderAST : public GALGAS_semanticDeclara
 //--------------------------------- Constructor from pointer
   public : GALGAS_overridingAbstractCategoryReaderAST (const cPtr_overridingAbstractCategoryReaderAST * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

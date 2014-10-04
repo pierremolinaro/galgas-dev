@@ -27,10 +27,6 @@ class GALGAS_graphDeclarationForGeneration : public GALGAS_semanticTypeForGenera
 //--------------------------------- Constructor from pointer
   public : GALGAS_graphDeclarationForGeneration (const cPtr_graphDeclarationForGeneration * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

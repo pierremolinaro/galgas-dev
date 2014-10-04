@@ -24,10 +24,6 @@ class GALGAS_notEqualExpressionForGeneration : public GALGAS_semanticExpressionF
 //--------------------------------- Constructor from pointer
   public : GALGAS_notEqualExpressionForGeneration (const cPtr_notEqualExpressionForGeneration * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

@@ -19,6 +19,9 @@ class cPtr_templateInstructionGotoColumnLocationForGeneration : public cPtr_temp
 //--- Constructor
   public : cPtr_templateInstructionGotoColumnLocationForGeneration (LOCATION_ARGS) ;
 
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,

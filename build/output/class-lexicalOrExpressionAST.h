@@ -24,9 +24,12 @@ class cPtr_lexicalOrExpressionAST : public cPtr_lexicalExpressionAST {
                                         const GALGAS_lexicalExpressionAST & in_mRightOperand
                                         COMMA_LOCATION_ARGS) ;
 
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
 //--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lexicalExpressionAST reader_mLeftOperand (UNUSED_LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lexicalExpressionAST reader_mRightOperand (UNUSED_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lexicalExpressionAST reader_mLeftOperand (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lexicalExpressionAST reader_mRightOperand (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

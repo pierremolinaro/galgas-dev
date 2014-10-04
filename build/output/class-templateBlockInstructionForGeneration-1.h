@@ -24,10 +24,6 @@ class GALGAS_templateBlockInstructionForGeneration : public GALGAS_templateInstr
 //--------------------------------- Constructor from pointer
   public : GALGAS_templateBlockInstructionForGeneration (const cPtr_templateBlockInstructionForGeneration * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

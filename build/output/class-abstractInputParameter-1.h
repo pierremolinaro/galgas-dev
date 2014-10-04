@@ -23,8 +23,6 @@ class GALGAS_abstractInputParameter : public AC_GALGAS_class {
 //--------------------------------- Constructor from pointer
   public : GALGAS_abstractInputParameter (const cPtr_abstractInputParameter * inSourcePtr) ;
 
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

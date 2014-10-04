@@ -27,10 +27,6 @@ class GALGAS_lexiqueIntrospectionForGeneration : public GALGAS_semanticExpressio
 //--------------------------------- Constructor from pointer
   public : GALGAS_lexiqueIntrospectionForGeneration (const cPtr_lexiqueIntrospectionForGeneration * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

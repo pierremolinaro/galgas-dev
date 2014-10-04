@@ -27,8 +27,6 @@ class GALGAS_templateInstructionGotoColumnLocationForGeneration : public GALGAS_
 //--------------------------------- Constructor from pointer
   public : GALGAS_templateInstructionGotoColumnLocationForGeneration (const cPtr_templateInstructionGotoColumnLocationForGeneration * inSourcePtr) ;
 
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

@@ -22,8 +22,11 @@ class cPtr_inputJokerActualParameterAST : public cPtr_actualParameterAST {
                                               const GALGAS_uint & in_mJokerIndex
                                               COMMA_LOCATION_ARGS) ;
 
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
 //--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_uint reader_mJokerIndex (UNUSED_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_uint reader_mJokerIndex (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

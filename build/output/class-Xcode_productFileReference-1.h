@@ -24,8 +24,6 @@ class GALGAS_Xcode_5F_productFileReference : public GALGAS_Xcode_5F_PBXFileRefer
 //--------------------------------- Constructor from pointer
   public : GALGAS_Xcode_5F_productFileReference (const cPtr_Xcode_5F_productFileReference * inSourcePtr) ;
 
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

@@ -47,6 +47,8 @@ class acPtr_class : public C_SharedObject {
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const = 0 ;
 
   public : virtual const C_galgas_type_descriptor * classDescriptor (void) const = 0 ;
+
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const = 0 ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*

@@ -27,10 +27,6 @@ class GALGAS_localVariableOrConstantDeclarationWithDefaultConstructorAST : publi
 //--------------------------------- Constructor from pointer
   public : GALGAS_localVariableOrConstantDeclarationWithDefaultConstructorAST (const cPtr_localVariableOrConstantDeclarationWithDefaultConstructorAST * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

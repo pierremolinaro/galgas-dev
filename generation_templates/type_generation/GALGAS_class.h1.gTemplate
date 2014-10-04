@@ -20,9 +20,3 @@ end
 //--------------------------------- Constructor from pointer
   public : GALGAS_%!TYPE_IDENTIFIER% (const cPtr_%!TYPE_IDENTIFIER% * inSourcePtr) ;
 
-%if ([ALL_ATTRIBUTE_LIST length] > 0) & not IS_ABSTRACT then
-%//--- Insulate\n%
-%  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;\n%
-end
-%
-

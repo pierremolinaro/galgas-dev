@@ -27,8 +27,6 @@ class GALGAS_lexicalLogInstructionAST : public GALGAS_lexicalInstructionAST {
 //--------------------------------- Constructor from pointer
   public : GALGAS_lexicalLogInstructionAST (const cPtr_lexicalLogInstructionAST * inSourcePtr) ;
 
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

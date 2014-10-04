@@ -24,10 +24,6 @@ class GALGAS_uintPredefinedTypeAST : public GALGAS_predefinedTypeAST {
 //--------------------------------- Constructor from pointer
   public : GALGAS_uintPredefinedTypeAST (const cPtr_uintPredefinedTypeAST * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

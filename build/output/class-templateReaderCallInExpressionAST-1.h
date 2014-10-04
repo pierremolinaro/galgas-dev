@@ -24,10 +24,6 @@ class GALGAS_templateReaderCallInExpressionAST : public GALGAS_templateExpressio
 //--------------------------------- Constructor from pointer
   public : GALGAS_templateReaderCallInExpressionAST (const cPtr_templateReaderCallInExpressionAST * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

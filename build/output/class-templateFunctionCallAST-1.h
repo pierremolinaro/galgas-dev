@@ -27,10 +27,6 @@ class GALGAS_templateFunctionCallAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Constructor from pointer
   public : GALGAS_templateFunctionCallAST (const cPtr_templateFunctionCallAST * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

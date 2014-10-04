@@ -24,10 +24,6 @@ class GALGAS_outputActualParameterForGeneration : public GALGAS_actualParameterF
 //--------------------------------- Constructor from pointer
   public : GALGAS_outputActualParameterForGeneration (const cPtr_outputActualParameterForGeneration * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

@@ -23,8 +23,6 @@ class GALGAS_abstractLexicalRuleAST : public AC_GALGAS_class {
 //--------------------------------- Constructor from pointer
   public : GALGAS_abstractLexicalRuleAST (const cPtr_abstractLexicalRuleAST * inSourcePtr) ;
 
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

@@ -24,10 +24,6 @@ class GALGAS_templateSupOrEqualTestAST : public GALGAS_templateExpressionAST {
 //--------------------------------- Constructor from pointer
   public : GALGAS_templateSupOrEqualTestAST (const cPtr_templateSupOrEqualTestAST * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

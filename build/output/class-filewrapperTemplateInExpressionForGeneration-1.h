@@ -27,10 +27,6 @@ class GALGAS_filewrapperTemplateInExpressionForGeneration : public GALGAS_semant
 //--------------------------------- Constructor from pointer
   public : GALGAS_filewrapperTemplateInExpressionForGeneration (const cPtr_filewrapperTemplateInExpressionForGeneration * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

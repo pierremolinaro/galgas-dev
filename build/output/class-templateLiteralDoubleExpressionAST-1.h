@@ -27,10 +27,6 @@ class GALGAS_templateLiteralDoubleExpressionAST : public GALGAS_templateExpressi
 //--------------------------------- Constructor from pointer
   public : GALGAS_templateLiteralDoubleExpressionAST (const cPtr_templateLiteralDoubleExpressionAST * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

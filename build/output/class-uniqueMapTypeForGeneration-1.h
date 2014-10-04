@@ -27,10 +27,6 @@ class GALGAS_uniqueMapTypeForGeneration : public GALGAS_semanticTypeForGeneratio
 //--------------------------------- Constructor from pointer
   public : GALGAS_uniqueMapTypeForGeneration (const cPtr_uniqueMapTypeForGeneration * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

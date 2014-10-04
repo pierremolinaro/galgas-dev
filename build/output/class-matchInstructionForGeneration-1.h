@@ -27,10 +27,6 @@ class GALGAS_matchInstructionForGeneration : public GALGAS_semanticInstructionFo
 //--------------------------------- Constructor from pointer
   public : GALGAS_matchInstructionForGeneration (const cPtr_matchInstructionForGeneration * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

@@ -27,10 +27,6 @@ class GALGAS_plusEqualElementsInstructionAST : public GALGAS_semanticInstruction
 //--------------------------------- Constructor from pointer
   public : GALGAS_plusEqualElementsInstructionAST (const cPtr_plusEqualElementsInstructionAST * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

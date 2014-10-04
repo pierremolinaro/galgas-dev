@@ -23,9 +23,12 @@ class cPtr_lexicalCharacterIntervalMatchAST : public cPtr_lexicalExpressionAST {
                                                   const GALGAS_lchar & in_mUpperBound
                                                   COMMA_LOCATION_ARGS) ;
 
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
 //--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lchar reader_mLowerBound (UNUSED_LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lchar reader_mUpperBound (UNUSED_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lchar reader_mLowerBound (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lchar reader_mUpperBound (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

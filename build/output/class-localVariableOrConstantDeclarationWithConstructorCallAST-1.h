@@ -27,10 +27,6 @@ class GALGAS_localVariableOrConstantDeclarationWithConstructorCallAST : public G
 //--------------------------------- Constructor from pointer
   public : GALGAS_localVariableOrConstantDeclarationWithConstructorCallAST (const cPtr_localVariableOrConstantDeclarationWithConstructorCallAST * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

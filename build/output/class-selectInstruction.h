@@ -25,9 +25,12 @@ class cPtr_selectInstruction : public cPtr_syntaxInstructionAST {
                                    const GALGAS_location & in_mEndOf_5F_select_5F_instruction
                                    COMMA_LOCATION_ARGS) ;
 
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
 //--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_listOfSyntaxInstructionList reader_mSelectBranchList (UNUSED_LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_location reader_mEndOf_5F_select_5F_instruction (UNUSED_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_listOfSyntaxInstructionList reader_mSelectBranchList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_location reader_mEndOf_5F_select_5F_instruction (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

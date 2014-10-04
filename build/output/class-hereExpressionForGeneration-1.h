@@ -27,10 +27,6 @@ class GALGAS_hereExpressionForGeneration : public GALGAS_semanticExpressionForGe
 //--------------------------------- Constructor from pointer
   public : GALGAS_hereExpressionForGeneration (const cPtr_hereExpressionForGeneration * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

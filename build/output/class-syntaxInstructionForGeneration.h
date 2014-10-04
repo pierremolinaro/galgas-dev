@@ -22,7 +22,7 @@ class cPtr_syntaxInstructionForGeneration : public cPtr_semanticInstructionForGe
                                                 COMMA_LOCATION_ARGS) ;
 
 //--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_location reader_mInstructionLocation (UNUSED_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_location reader_mInstructionLocation (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const = 0 ;

@@ -27,10 +27,6 @@ class GALGAS_inputParameterDeclaredConstant : public GALGAS_abstractInputParamet
 //--------------------------------- Constructor from pointer
   public : GALGAS_inputParameterDeclaredConstant (const cPtr_inputParameterDeclaredConstant * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

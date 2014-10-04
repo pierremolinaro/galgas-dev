@@ -27,10 +27,6 @@ class GALGAS_lexicalRoutineInstructionAST : public GALGAS_lexicalInstructionAST 
 //--------------------------------- Constructor from pointer
   public : GALGAS_lexicalRoutineInstructionAST (const cPtr_lexicalRoutineInstructionAST * inSourcePtr) ;
 
-//--- Insulate
-  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
-
-
 //-- Start of generic part --*
 
 //--------------------------------- Object cloning

@@ -24,9 +24,12 @@ class cPtr_Xcode_5F_PBXBuildFile : public acPtr_class {
                                        const GALGAS_Xcode_5F_PBXFileReference_5F_abstract & in_mSourceFile
                                        COMMA_LOCATION_ARGS) ;
 
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
 //--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_uint reader_mSequenceNumber (UNUSED_LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_Xcode_5F_PBXFileReference_5F_abstract reader_mSourceFile (UNUSED_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_uint reader_mSequenceNumber (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_Xcode_5F_PBXFileReference_5F_abstract reader_mSourceFile (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
