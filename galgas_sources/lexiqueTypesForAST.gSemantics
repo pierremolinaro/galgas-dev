@@ -21,6 +21,12 @@ semantics lexiqueTypesForAST :
 
 #---------------------------------------------------------------------------*
 
+abstract class @semanticDeclarationAST {
+  @bool mIsPredefined ;
+}
+
+#---------------------------------------------------------------------------*
+
 abstract class @lexicalExpressionAST {
 }
 
@@ -418,6 +424,23 @@ list @indexingListAST {
 }
 
 #---------------------------------------------------------------------------*
+
+class @lexiqueComponentAST extends @semanticDeclarationAST {
+  @lstring mLexiqueComponentName  ;
+  @bool mIsTemplate ;
+  @metamodelTemplateDelimitorListAST mTemplateDelimitorList ;
+  @templateReplacementListAST mTemplateReplacementList ;
+  @lexicalAttributeListAST mLexicalAttributeList ;
+  @lexicalStyleListAST mLexicalStyleList ;
+  @terminalDeclarationListAST mTerminalDeclarationList  ;
+  @lexicalMessageDeclarationListAST mLexicalMessageDeclarationList ;
+  @lexicalListDeclarationListAST mLexicalListDeclarationList  ;
+  @lexicalRuleListAST mLexicalRuleList ;
+  @externRoutineListAST mExternRoutineList ;
+  @externFunctionListAST mExternFunctionList  ;
+  @indexingListAST mIndexingListAST ;
+  @lstring mIndexingDirectory ;
+}
 
 list @galgas3LexiqueComponentListAST {
   @lstring mLexiqueComponentName  ;

@@ -25,6 +25,8 @@ semantics semanticContext :
   import "semanticsConstructors.gSemantics" ;
   import "optionCompilation.gSemantics" ;
   import "lexiqueSemantics.gSemantics" ;
+  import "predefinedLexicalActions.gSemantics" ;
+  import "lexiqueCompilation.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -245,6 +247,14 @@ map @categoryReaderMapForBuildingContext {
 
 abstract reader @semanticDeclarationAST keyRepresentation -> @string outString
 ;
+
+#---------------------------------------------------------------------------*
+
+override reader @lexiqueComponentAST keyRepresentation
+  ->@string outString
+:
+  outString := "lexique" . mLexiqueComponentName ;
+end reader ;
 
 #---------------------------------------------------------------------------*
 
@@ -3066,6 +3076,54 @@ override method @listmapDeclarationAST enterInSemanticContext
 end method ;
 
 #---------------------------------------------------------------------------*
+
+override method @lexiqueComponentAST enterInSemanticContext
+  ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
+  ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ??@categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
+  ?!@semanticContext ioSemanticContext
+:
+#--------------------------------------- Build lexical attribute map
+  const @lexicalTypeMap lexicalTypeMap := buildLexicalTypeMap [] ;
+  @lexicalAttributeMap lexicalAttributeMap := {} ;
+  buildLexicalAttributeMap
+   !lexicalTypeMap
+   !mLexicalAttributeList
+   !?lexicalAttributeMap
+  ;
+#--------------------------------------- 
+  @terminalMap terminalMap := {} ;
+  foreach mTerminalDeclarationList do
+    @lexicalSentValueList argumentTypeList [emptyList] ;
+    foreach mSentAttributeList do
+      @lexicalTypeEnum attributeLexicalType ;
+      [lexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType] ;
+      argumentTypeList += !mFormalSelector !mAttributeName->string !attributeLexicalType ;
+    end foreach ;
+    [!?terminalMap insertKey !mName !argumentTypeList] ;
+  end foreach ;
+#---
+  foreach mLexicalListDeclarationList do
+    @lexicalSentValueList argumentTypeList [emptyList] ;
+    foreach mSentAttributeList do
+      @lexicalTypeEnum attributeLexicalType ;
+      [lexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType] ;
+      argumentTypeList += !mFormalSelector !mAttributeName->string !attributeLexicalType ;
+    end foreach ;
+    foreach mEntryList do
+      [!?terminalMap insertKey !mTerminalSpelling !argumentTypeList] ;
+    end foreach ;
+  end foreach ;
+#---
+  [!?ioSemanticContext->mLexiqueComponentMapForSemanticAnalysis insertKey
+     !mLexiqueComponentName
+     !terminalMap
+     !mIndexingListAST
+     !mIndexingDirectory
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 #    B U I L D    O R D E R E D     S E M A N T I C    L I S T              *
 #                                                                           *
@@ -3099,6 +3157,19 @@ override method @predefinedTypeAST enterDeclarationInGraph
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
   const key := [@lstring new !"@" . mPredefinedTypeName !here] ;
+  [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @lexiqueComponentAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
+:
+  const key := [@lstring new !"lexique " . mLexiqueComponentName !mLexiqueComponentName->location] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
 end method ;
 

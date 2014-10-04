@@ -496,6 +496,20 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#    L E X I Q U E    D E C L A R A T I O N                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @lexiqueDeclarationForGeneration extends @semanticDeclarationWithHeaderForGeneration {
+  @string mLexiqueName ;
+  @string mHeaderContents ;
+  @string mCppContents ;
+  @string mCocoaHeader ;
+  @string mCocoaImplementation ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #    R O U T I N E    D E C L A R A T I O N                                 *
 #                                                                           *
 #---------------------------------------------------------------------------*

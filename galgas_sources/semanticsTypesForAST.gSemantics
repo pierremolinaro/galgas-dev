@@ -459,12 +459,6 @@ list @semanticInstructionListAST {
 
 #---------------------------------------------------------------------------*
 
-abstract class @semanticDeclarationAST {
-  @bool mIsPredefined ;
-}
-
-#---------------------------------------------------------------------------*
-
 list @semanticDeclarationListAST {
   @semanticDeclarationAST mSemanticDeclaration feature nogetter ;
 }

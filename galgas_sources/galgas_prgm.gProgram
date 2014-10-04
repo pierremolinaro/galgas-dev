@@ -599,7 +599,6 @@ routine compileProject
     compileSemanticDeclarationsGalgas3
       !projectComponentAST->mEndOfSourceFile
       !declarationAST->mSemanticDeclarationList
-#      !declarationAST->mOptionComponentList
       !declarationAST->mLexiqueComponentList
       !declarationAST->mGrammarComponentList
       ?semanticContext

@@ -27,7 +27,6 @@ import "projectGlobalCheckings.gSemantics" ;
 routine compileSemanticDeclarationsGalgas3
   ??@location inEndOfProjectSourceFile
   ??@semanticDeclarationListAST inSemanticDeclarationList
-#  ??@galgas3OptionComponentListAST inOptionComponentList
   ??@galgas3LexiqueComponentListAST inLexiqueComponentList
   ??@galgas3GrammarComponentListAST inGrammarComponentList
   !@semanticContext outSemanticContext

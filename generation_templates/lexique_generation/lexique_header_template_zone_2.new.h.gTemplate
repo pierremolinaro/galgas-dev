@@ -88,7 +88,7 @@ class C_Lexique_%!LEXIQUE_IDENTIFIER% : public C_Lexique {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     protected : virtual ~ C_Lexique_%!LEXIQUE_IDENTIFIER% (void) {}
   #endif
-%if [[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] > 0 then%
+%if [TEMPLATE_DELIMITOR_LIST length] > 0 then%
 //--- Scanner mode for template scanner
   private : int32_t mMatchedTemplateDelimiterIndex ;
 %end%
