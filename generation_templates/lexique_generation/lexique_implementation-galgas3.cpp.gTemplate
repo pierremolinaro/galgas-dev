@@ -1,25 +1,6 @@
-#include <ctype.h>
-#include <string.h>
 
-//---------------------------------------------------------------------------------------------------------------------*
-
-#include "utilities/MF_MemoryControl.h"
 #include "strings/unicode_character_cpp.h"
 #include "galgas2/scanner_actions.h"
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-#include "lexique-%!LEXIQUE_COMPONENT_NAME%.h"
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  #define LINE_AND_SOURCE_FILE sourceText ()->sourceFilePath ().cString (HERE), lineNumber ()
-  #define COMMA_LINE_AND_SOURCE_FILE , LINE_AND_SOURCE_FILE
-#else
-  #define LINE_AND_SOURCE_FILE
-  #define COMMA_LINE_AND_SOURCE_FILE
-#endif
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
