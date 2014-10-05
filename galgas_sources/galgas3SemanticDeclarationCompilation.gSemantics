@@ -242,27 +242,38 @@ routine generateSemanticDeclarationsGalgas3
   end for ;
 #---
   if [@uint errorCount] == 0 then
-    if [option galgas_cli_options.generateOneHeader value] then
+    if [option galgas_cli_options.generateOneHeader value] & [option galgas_cli_options.generateManyFiles value] then
        generateOneBigHeader
         !inProductDirectory
         !inSemanticDeclarationSortedListForGeneration
         !?ioAllProductFileSet
       ;
-    elsif not generateFewHeaderFiles [] then
-#    elsif generateFewHeaderFiles [] then
-#      generateFewHeaders
-#        !inProductDirectory
-#        !inSemanticDeclarationSortedListForGeneration
-#        !?ioAllProductFileSet
-#      ;
-#    else
+      generateManyImplementationFiles
+        !inUnifiedTypeMap
+        !inProductDirectory
+        !inSemanticDeclarationSortedListForGeneration
+        !?ioToolProductFileList
+        !?ioAllProductFileSet
+      ;
+    elsif [option galgas_cli_options.generateOneHeader value] & not [option galgas_cli_options.generateManyFiles value] then
+       generateOneBigHeader
+        !inProductDirectory
+        !inSemanticDeclarationSortedListForGeneration
+        !?ioAllProductFileSet
+      ;
+      generateFewImplementationFiles
+        !inUnifiedTypeMap
+        !inProductDirectory
+        !inSemanticDeclarationSortedListForGeneration
+        !?ioToolProductFileList
+        !?ioAllProductFileSet
+      ;
+    elsif (not [option galgas_cli_options.generateOneHeader value]) & [option galgas_cli_options.generateManyFiles value] then
       generateManyHeaders
         !inProductDirectory
         !inSemanticDeclarationSortedListForGeneration
         !?ioAllProductFileSet
       ;
-    end if ;
-    if [option galgas_cli_options.generateManyFiles value] then
       generateManyImplementationFiles
         !inUnifiedTypeMap
         !inProductDirectory
@@ -279,15 +290,20 @@ routine generateSemanticDeclarationsGalgas3
         !?ioAllProductFileSet
       ;
     else
-      generateFewImplementationFiles
+      generateManyHeaders
+        !inProductDirectory
+        !inSemanticDeclarationSortedListForGeneration
+        !?ioAllProductFileSet
+      ;
+      generateManyImplementationFiles
         !inUnifiedTypeMap
         !inProductDirectory
         !inSemanticDeclarationSortedListForGeneration
         !?ioToolProductFileList
         !?ioAllProductFileSet
       ;
-    end if ;
-  end if ;
+     end if ;
+   end if ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -702,7 +718,7 @@ local routine generateFewImplementationFilesWithFewHeaders
 #--- all declarations header
   ioAllProductFileSet += !"all-declarations.h" ;
   const startOfAllDeclarationsHeader := [filewrapper semanticFileGenerationTemplate.semanticFileHeader
-    !headerFileName
+    !"all-declarations"
     !{!"all-declarations-" + fileIdx}
   ] ;
   [@string generateFile

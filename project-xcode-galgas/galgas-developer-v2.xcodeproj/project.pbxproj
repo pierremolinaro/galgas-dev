@@ -2837,7 +2837,7 @@
 				GCC_WARN_UNUSED_VALUE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				HEADER_SEARCH_PATHS = (
-					"../galgas_sources/GALGAS_OUTPUT/**",
+					../galgas_sources/GALGAS_OUTPUT,
 					../hand_coded_sources,
 					"../libpm/**",
 				);
