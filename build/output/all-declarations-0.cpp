@@ -225,14 +225,15 @@
 #include "struct-withLexiqueListAST-element.h"
 
 
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//     L E X I Q U E                                                                                                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
 #include "strings/unicode_character_cpp.h"
 #include "galgas2/scanner_actions.h"
 
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                               Constructors                                                                          *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 cTokenFor_galgas_5F_scanner::cTokenFor_galgas_5F_scanner (void) :
@@ -266,9 +267,7 @@ C_Lexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                 I N D E X I N G    D I R E C T O R Y                                                                *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_Lexique_galgas_5F_scanner::indexingDirectory (void) const {
@@ -276,9 +275,7 @@ C_String C_Lexique_galgas_5F_scanner::indexingDirectory (void) const {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                        Lexical error message list                                                                   *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 static const utf32 gLexicalMessage_galgas_5F_scanner_ASCIIcodeTooLargeError [] = {
@@ -971,9 +968,7 @@ static const utf32 gLexicalMessage_galgas_5F_scanner_unknownHTMLescapeSequence [
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //          Syntax error messages, for every terminal symbol                                                           *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 //--- Syntax error message for terminal '$identifier$' :
@@ -4830,9 +4825,7 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner__7E_ [] = {
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                getMessageForTerminal                                                                                *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_Lexique_galgas_5F_scanner::getMessageForTerminal (const int16_t inTerminalIndex) const {
@@ -4997,9 +4990,7 @@ C_String C_Lexique_galgas_5F_scanner::getMessageForTerminal (const int16_t inTer
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                      U N I C O D E    S T R I N G S                                                                 *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 //--- Unicode string for '$_21__3D_$'
@@ -6271,9 +6262,7 @@ static const utf32 kUnicodeString_galgas_5F_scanner__7E_ [] = {
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //             Key words table 'galgasDelimitorsList'                            *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 static const int32_t ktable_size_galgas_5F_scanner_galgasDelimitorsList = 32 ;
@@ -6318,9 +6307,7 @@ int16_t C_Lexique_galgas_5F_scanner::search_into_galgasDelimitorsList (const C_S
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //             Key words table 'galgasKeyWordList'                            *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 static const int32_t ktable_size_galgas_5F_scanner_galgasKeyWordList = 99 ;
@@ -6433,9 +6420,7 @@ int16_t C_Lexique_galgas_5F_scanner::search_into_galgasKeyWordList (const C_Stri
 
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                          getCurrentTokenString                                                                      *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_Lexique_galgas_5F_scanner::getCurrentTokenString (const cToken * inTokenPtr) const {
@@ -7270,31 +7255,23 @@ C_String C_Lexique_galgas_5F_scanner::getCurrentTokenString (const cToken * inTo
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                           Template Delimiters                                                                       *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                           Template Replacements                                                                     *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //            Terminal Symbols as end of script in template mark                                                       *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //               P A R S E    L E X I C A L    T O K E N                                                               *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool C_Lexique_galgas_5F_scanner::parseLexicalToken (void) {
@@ -8027,9 +8004,7 @@ bool C_Lexique_galgas_5F_scanner::parseLexicalToken (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                         E N T E R    T O K E N                                                                      *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 void C_Lexique_galgas_5F_scanner::enterToken (const cTokenFor_galgas_5F_scanner & inToken) {
@@ -8051,9 +8026,7 @@ void C_Lexique_galgas_5F_scanner::enterToken (const cTokenFor_galgas_5F_scanner 
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //               A T T R I B U T E   A C C E S S                                                                       *
-//                                                                                                                     *
 //-----------------------------------------------------------------------------*
 
 utf32 C_Lexique_galgas_5F_scanner::attributeValue_charValue (void) const {
@@ -8111,9 +8084,7 @@ uint64_t C_Lexique_galgas_5F_scanner::attributeValue_uint_36__34_value (void) co
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //         A S S I G N    F R O M    A T T R I B U T E                                                                 *
-//                                                                                                                     *
 //-----------------------------------------------------------------------------*
 
 GALGAS_lchar C_Lexique_galgas_5F_scanner::synthetizedAttribute_charValue (void) const {
@@ -8203,9 +8174,7 @@ GALGAS_luint_36__34_ C_Lexique_galgas_5F_scanner::synthetizedAttribute_uint_36__
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                         I N T R O S P E C T I O N                                                                   *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_stringlist C_Lexique_galgas_5F_scanner::symbols (LOCATION_ARGS) {
@@ -8371,14 +8340,15 @@ GALGAS_stringlist C_Lexique_galgas_5F_scanner::symbols (LOCATION_ARGS) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//     L E X I Q U E                                                                                                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
 #include "strings/unicode_character_cpp.h"
 #include "galgas2/scanner_actions.h"
 
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                               Constructors                                                                          *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 cTokenFor_galgasTemplateScanner::cTokenFor_galgasTemplateScanner (void) :
@@ -8414,9 +8384,7 @@ mMatchedTemplateDelimiterIndex (-1) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                 I N D E X I N G    D I R E C T O R Y                                                                *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_Lexique_galgasTemplateScanner::indexingDirectory (void) const {
@@ -8424,9 +8392,7 @@ C_String C_Lexique_galgasTemplateScanner::indexingDirectory (void) const {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                        Lexical error message list                                                                   *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 static const utf32 gLexicalMessage_galgasTemplateScanner_ASCIIcodeTooLargeError [] = {
@@ -9020,9 +8986,7 @@ static const utf32 gLexicalMessage_galgasTemplateScanner_unknownHTMLescapeSequen
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //          Syntax error messages, for every terminal symbol                                                           *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 //--- Syntax error message for terminal '$identifier$' :
@@ -12717,9 +12681,7 @@ static const utf32 gSyntaxErrorMessage_galgasTemplateScanner__7E_ [] = {
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                getMessageForTerminal                                                                                *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_Lexique_galgasTemplateScanner::getMessageForTerminal (const int16_t inTerminalIndex) const {
@@ -12878,9 +12840,7 @@ C_String C_Lexique_galgasTemplateScanner::getMessageForTerminal (const int16_t i
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                      U N I C O D E    S T R I N G S                                                                 *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 //--- Unicode string for '$_A_$'
@@ -14178,9 +14138,7 @@ static const utf32 kUnicodeString_galgasTemplateScanner__7E_ [] = {
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //             Key words table 'galgasDelimitorsList'                            *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 static const int32_t ktable_size_galgasTemplateScanner_galgasDelimitorsList = 31 ;
@@ -14224,9 +14182,7 @@ int16_t C_Lexique_galgasTemplateScanner::search_into_galgasDelimitorsList (const
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //             Key words table 'galgasKeyWordList'                            *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 static const int32_t ktable_size_galgasTemplateScanner_galgasKeyWordList = 99 ;
@@ -14339,9 +14295,7 @@ int16_t C_Lexique_galgasTemplateScanner::search_into_galgasKeyWordList (const C_
 
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                          getCurrentTokenString                                                                      *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_Lexique_galgasTemplateScanner::getCurrentTokenString (const cToken * inTokenPtr) const {
@@ -15140,9 +15094,7 @@ C_String C_Lexique_galgasTemplateScanner::getCurrentTokenString (const cToken * 
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                           Template Delimiters                                                                       *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 static const cTemplateDelimiter kTemplateDefinitionArray [1] = {
@@ -15150,9 +15102,7 @@ static const cTemplateDelimiter kTemplateDefinitionArray [1] = {
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                           Template Replacements                                                                     *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 static const cTemplateDelimiter kTemplateReplacementArray [3] = {
@@ -15162,9 +15112,7 @@ static const cTemplateDelimiter kTemplateReplacementArray [3] = {
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //            Terminal Symbols as end of script in template mark                                                       *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 static const bool kEndOfScriptInTemplateArray [150] = {
@@ -15322,9 +15270,7 @@ static const bool kEndOfScriptInTemplateArray [150] = {
 
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //               P A R S E    L E X I C A L    T O K E N                                                               *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool C_Lexique_galgasTemplateScanner::parseLexicalToken (void) {
@@ -15982,9 +15928,7 @@ bool C_Lexique_galgasTemplateScanner::parseLexicalToken (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                         E N T E R    T O K E N                                                                      *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 void C_Lexique_galgasTemplateScanner::enterToken (const cTokenFor_galgasTemplateScanner & inToken) {
@@ -16006,9 +15950,7 @@ void C_Lexique_galgasTemplateScanner::enterToken (const cTokenFor_galgasTemplate
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //               A T T R I B U T E   A C C E S S                                                                       *
-//                                                                                                                     *
 //-----------------------------------------------------------------------------*
 
 utf32 C_Lexique_galgasTemplateScanner::attributeValue_charValue (void) const {
@@ -16066,9 +16008,7 @@ uint64_t C_Lexique_galgasTemplateScanner::attributeValue_uint_36__34_value (void
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //         A S S I G N    F R O M    A T T R I B U T E                                                                 *
-//                                                                                                                     *
 //-----------------------------------------------------------------------------*
 
 GALGAS_lchar C_Lexique_galgasTemplateScanner::synthetizedAttribute_charValue (void) const {
@@ -16158,9 +16098,7 @@ GALGAS_luint_36__34_ C_Lexique_galgasTemplateScanner::synthetizedAttribute_uint_
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                         I N T R O S P E C T I O N                                                                   *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_stringlist C_Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {

@@ -1,11 +1,12 @@
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//     L E X I Q U E                                                                                                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
 #include "strings/unicode_character_cpp.h"
 #include "galgas2/scanner_actions.h"
 
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                               Constructors                                                                          *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 cTokenFor_%!LEXIQUE_IDENTIFIER%::cTokenFor_%!LEXIQUE_IDENTIFIER% (void)%
@@ -45,9 +46,7 @@ C_Lexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE)%
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                 I N D E X I N G    D I R E C T O R Y                                                                *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::indexingDirectory (void) const {
@@ -55,9 +54,7 @@ C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::indexingDirectory (void) const {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                        Lexical error message list                                                                   *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 %
   for () in LEXICAL_MESSAGE_MAP do
@@ -65,9 +62,7 @@ C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::indexingDirectory (void) const {
   end
 %
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //          Syntax error messages, for every terminal symbol                                                           *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 %
   for () in TERMINAL_LIST do
@@ -76,9 +71,7 @@ C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::indexingDirectory (void) const {
   end
 %
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                getMessageForTerminal                                                                                *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::getMessageForTerminal (const int16_t inTerminalIndex) const {
@@ -91,9 +84,7 @@ C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::getMessageForTerminal (const int16_t i
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                      U N I C O D E    S T R I N G S                                                                 *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 %
   for () in STRINGS_IN_EXPLICIT_RULES do
@@ -106,9 +97,7 @@ C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::getMessageForTerminal (const int16_t i
 %
   for () in LEXICAL_TOKEN_LIST_MAP : tokenList_ do
     %//---------------------------------------------------------------------------------------------------------------------*\n%
-    %//                                                                                                                     *\n%
     %//             Key words table '%![tokenList_lkey string]%'                            *\n%
-    %//                                                                                                                     *\n%
     %//---------------------------------------------------------------------------------------------------------------------*\n%
     %\nstatic const int32_t ktable_size_%!LEXIQUE_IDENTIFIER%_%![tokenList_lkey string]% = %![[tokenList_mExplicitTokenListMap count] string]% ;\n\n%
     %static const C_unicode_lexique_table_entry ktable_for_%!LEXIQUE_IDENTIFIER%_%![tokenList_lkey string]% [ktable_size_%!LEXIQUE_IDENTIFIER%_%![tokenList_lkey string]%] = {\n%
@@ -123,9 +112,7 @@ C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::getMessageForTerminal (const int16_t i
   end
 %
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                          getCurrentTokenString                                                                      *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::getCurrentTokenString (const cToken * inTokenPtr) const {
@@ -157,9 +144,7 @@ end
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                           Template Delimiters                                                                       *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 % for () in [LEXIQUE_ANALYSIS_CONTEXT mTemplateDelimitorList]
@@ -178,9 +163,7 @@ end
   end
 %
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                           Template Replacements                                                                     *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 % for () in TEMPLATE_REPLACEMENT_LIST
@@ -199,9 +182,7 @@ end
   end
 %
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //            Terminal Symbols as end of script in template mark                                                       *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 % if [TEMPLATE_DELIMITOR_LIST length] > 0 then
@@ -215,9 +196,7 @@ end
 %
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //               P A R S E    L E X I C A L    T O K E N                                                               *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
@@ -317,9 +296,7 @@ bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                         E N T E R    T O K E N                                                                      *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (const cTokenFor_%!LEXIQUE_IDENTIFIER% & inToken) {
@@ -337,9 +314,7 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (const cTokenFor_%!LEXIQUE_IDEN
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //               A T T R I B U T E   A C C E S S                                                                       *
-//                                                                                                                     *
 %
   for () in LEXICAL_ATTRIBUTE_MAP do
     %//-----------------------------------------------------------------------------*\n\n%
@@ -349,9 +324,7 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (const cTokenFor_%!LEXIQUE_IDEN
     %}\n\n%
   end
 %//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //         A S S I G N    F R O M    A T T R I B U T E                                                                 *
-//                                                                                                                     *
 %
   for () in LEXICAL_ATTRIBUTE_MAP do
     %//-----------------------------------------------------------------------------*\n\n%
@@ -365,9 +338,7 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (const cTokenFor_%!LEXIQUE_IDEN
     %}\n\n%
   end
 %//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                         I N T R O S P E C T I O N                                                                   *
-//                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_stringlist C_Lexique_%!LEXIQUE_IDENTIFIER%::symbols (LOCATION_ARGS) {

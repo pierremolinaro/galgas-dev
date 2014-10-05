@@ -599,7 +599,7 @@ routine compileProject
     compileSemanticDeclarationsGalgas3
       !projectComponentAST->mEndOfSourceFile
       !declarationAST->mSemanticDeclarationList
-      !declarationAST->mLexiqueComponentList
+#      !declarationAST->mLexiqueComponentList
       !declarationAST->mGrammarComponentList
       ?semanticContext
       ?semanticDeclarationSortedListForGeneration

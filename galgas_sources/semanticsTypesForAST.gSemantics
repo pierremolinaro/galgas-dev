@@ -1896,7 +1896,7 @@ list @galgas3GUIComponentListAST {
 
 struct @galgas3DeclarationAST {
   @semanticDeclarationListAST mSemanticDeclarationList ;
-  @galgas3LexiqueComponentListAST mLexiqueComponentList ;
+#  @galgas3LexiqueComponentListAST mLexiqueComponentList ;
   @galgas3SyntaxComponentListAST mSyntaxComponentList ;
   @galgas3GrammarComponentListAST mGrammarComponentList ;
   @galgas3GUIComponentListAST mGUIComponentList ;

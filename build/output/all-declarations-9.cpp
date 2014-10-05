@@ -10748,11 +10748,11 @@ static void routine_programRule_5F__31__30_ (const GALGAS_lstring constinArgumen
     const enumGalgasBool test_3 = GALGAS_bool (kIsStrictSup, var_candidateProjectFiles.reader_length (SOURCE_FILE ("galgas_prgm.galgas", 828)).objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
     if (kBoolTrue == test_3) {
       GALGAS_string var_s = GALGAS_string ("several project files in source file parent directory:") ;
-      cEnumerator_stringlist enumerator_35475 (var_candidateProjectFiles, kEnumeration_up) ;
-      while (enumerator_35475.hasCurrentObject ()) {
+      cEnumerator_stringlist enumerator_35477 (var_candidateProjectFiles, kEnumeration_up) ;
+      while (enumerator_35477.hasCurrentObject ()) {
         var_s.dotAssign_operation (GALGAS_string ("\n"
-          "  - ").add_operation (enumerator_35475.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 831))  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 831)) ;
-        enumerator_35475.gotoNextObject () ;
+          "  - ").add_operation (enumerator_35477.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 831))  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 831)) ;
+        enumerator_35477.gotoNextObject () ;
       }
       GALGAS_location location_4 (constinArgument_inSourceFile.reader_location (HERE)) ; // Implicit use of 'location' reader
       inCompiler->emitSemanticError (location_4, var_s  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 833)) ;
@@ -13352,7 +13352,6 @@ GALGAS_string categoryReader_formalArgumentString (const GALGAS_formalArgumentPa
 
 GALGAS_galgas_33_DeclarationAST::GALGAS_galgas_33_DeclarationAST (void) :
 mAttribute_mSemanticDeclarationList (),
-mAttribute_mLexiqueComponentList (),
 mAttribute_mSyntaxComponentList (),
 mAttribute_mGrammarComponentList (),
 mAttribute_mGUIComponentList (),
@@ -13369,28 +13368,25 @@ GALGAS_galgas_33_DeclarationAST::~ GALGAS_galgas_33_DeclarationAST (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_galgas_33_DeclarationAST::GALGAS_galgas_33_DeclarationAST (const GALGAS_semanticDeclarationListAST & inOperand0,
-                                                                  const GALGAS_galgas_33_LexiqueComponentListAST & inOperand1,
-                                                                  const GALGAS_galgas_33_SyntaxComponentListAST & inOperand2,
-                                                                  const GALGAS_galgas_33_GrammarComponentListAST & inOperand3,
-                                                                  const GALGAS_galgas_33_GUIComponentListAST & inOperand4,
-                                                                  const GALGAS_prologueEpilogueList & inOperand5,
-                                                                  const GALGAS_programRuleList & inOperand6,
-                                                                  const GALGAS_prologueEpilogueList & inOperand7) :
+                                                                  const GALGAS_galgas_33_SyntaxComponentListAST & inOperand1,
+                                                                  const GALGAS_galgas_33_GrammarComponentListAST & inOperand2,
+                                                                  const GALGAS_galgas_33_GUIComponentListAST & inOperand3,
+                                                                  const GALGAS_prologueEpilogueList & inOperand4,
+                                                                  const GALGAS_programRuleList & inOperand5,
+                                                                  const GALGAS_prologueEpilogueList & inOperand6) :
 mAttribute_mSemanticDeclarationList (inOperand0),
-mAttribute_mLexiqueComponentList (inOperand1),
-mAttribute_mSyntaxComponentList (inOperand2),
-mAttribute_mGrammarComponentList (inOperand3),
-mAttribute_mGUIComponentList (inOperand4),
-mAttribute_mPrologueDeclarationList (inOperand5),
-mAttribute_mSourceRuleList (inOperand6),
-mAttribute_mEpilogueDeclarationList (inOperand7) {
+mAttribute_mSyntaxComponentList (inOperand1),
+mAttribute_mGrammarComponentList (inOperand2),
+mAttribute_mGUIComponentList (inOperand3),
+mAttribute_mPrologueDeclarationList (inOperand4),
+mAttribute_mSourceRuleList (inOperand5),
+mAttribute_mEpilogueDeclarationList (inOperand6) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_galgas_33_DeclarationAST GALGAS_galgas_33_DeclarationAST::constructor_default (UNUSED_LOCATION_ARGS) {
   return GALGAS_galgas_33_DeclarationAST (GALGAS_semanticDeclarationListAST::constructor_emptyList (HERE),
-                                          GALGAS_galgas_33_LexiqueComponentListAST::constructor_emptyList (HERE),
                                           GALGAS_galgas_33_SyntaxComponentListAST::constructor_emptyList (HERE),
                                           GALGAS_galgas_33_GrammarComponentListAST::constructor_emptyList (HERE),
                                           GALGAS_galgas_33_GUIComponentListAST::constructor_emptyList (HERE),
@@ -13402,17 +13398,16 @@ GALGAS_galgas_33_DeclarationAST GALGAS_galgas_33_DeclarationAST::constructor_def
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_galgas_33_DeclarationAST GALGAS_galgas_33_DeclarationAST::constructor_new (const GALGAS_semanticDeclarationListAST & inOperand0,
-                                                                                  const GALGAS_galgas_33_LexiqueComponentListAST & inOperand1,
-                                                                                  const GALGAS_galgas_33_SyntaxComponentListAST & inOperand2,
-                                                                                  const GALGAS_galgas_33_GrammarComponentListAST & inOperand3,
-                                                                                  const GALGAS_galgas_33_GUIComponentListAST & inOperand4,
-                                                                                  const GALGAS_prologueEpilogueList & inOperand5,
-                                                                                  const GALGAS_programRuleList & inOperand6,
-                                                                                  const GALGAS_prologueEpilogueList & inOperand7 
+                                                                                  const GALGAS_galgas_33_SyntaxComponentListAST & inOperand1,
+                                                                                  const GALGAS_galgas_33_GrammarComponentListAST & inOperand2,
+                                                                                  const GALGAS_galgas_33_GUIComponentListAST & inOperand3,
+                                                                                  const GALGAS_prologueEpilogueList & inOperand4,
+                                                                                  const GALGAS_programRuleList & inOperand5,
+                                                                                  const GALGAS_prologueEpilogueList & inOperand6 
                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_galgas_33_DeclarationAST result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid () && inOperand7.isValid ()) {
-    result = GALGAS_galgas_33_DeclarationAST (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7) ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid ()) {
+    result = GALGAS_galgas_33_DeclarationAST (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6) ;
   }
   return result ;
 }
@@ -13423,9 +13418,6 @@ typeComparisonResult GALGAS_galgas_33_DeclarationAST::objectCompare (const GALGA
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
     result = mAttribute_mSemanticDeclarationList.objectCompare (inOperand.mAttribute_mSemanticDeclarationList) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mLexiqueComponentList.objectCompare (inOperand.mAttribute_mLexiqueComponentList) ;
   }
   if (result == kOperandEqual) {
     result = mAttribute_mSyntaxComponentList.objectCompare (inOperand.mAttribute_mSyntaxComponentList) ;
@@ -13451,14 +13443,13 @@ typeComparisonResult GALGAS_galgas_33_DeclarationAST::objectCompare (const GALGA
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool GALGAS_galgas_33_DeclarationAST::isValid (void) const {
-  return mAttribute_mSemanticDeclarationList.isValid () && mAttribute_mLexiqueComponentList.isValid () && mAttribute_mSyntaxComponentList.isValid () && mAttribute_mGrammarComponentList.isValid () && mAttribute_mGUIComponentList.isValid () && mAttribute_mPrologueDeclarationList.isValid () && mAttribute_mSourceRuleList.isValid () && mAttribute_mEpilogueDeclarationList.isValid () ;
+  return mAttribute_mSemanticDeclarationList.isValid () && mAttribute_mSyntaxComponentList.isValid () && mAttribute_mGrammarComponentList.isValid () && mAttribute_mGUIComponentList.isValid () && mAttribute_mPrologueDeclarationList.isValid () && mAttribute_mSourceRuleList.isValid () && mAttribute_mEpilogueDeclarationList.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_galgas_33_DeclarationAST::drop (void) {
   mAttribute_mSemanticDeclarationList.drop () ;
-  mAttribute_mLexiqueComponentList.drop () ;
   mAttribute_mSyntaxComponentList.drop () ;
   mAttribute_mGrammarComponentList.drop () ;
   mAttribute_mGUIComponentList.drop () ;
@@ -13476,8 +13467,6 @@ void GALGAS_galgas_33_DeclarationAST::description (C_String & ioString,
     ioString << " not built" ;
   }else{
     mAttribute_mSemanticDeclarationList.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mLexiqueComponentList.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mAttribute_mSyntaxComponentList.description (ioString, inIndentation+1) ;
     ioString << ", " ;
@@ -13498,12 +13487,6 @@ void GALGAS_galgas_33_DeclarationAST::description (C_String & ioString,
 
 GALGAS_semanticDeclarationListAST GALGAS_galgas_33_DeclarationAST::reader_mSemanticDeclarationList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSemanticDeclarationList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_galgas_33_LexiqueComponentListAST GALGAS_galgas_33_DeclarationAST::reader_mLexiqueComponentList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mLexiqueComponentList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
