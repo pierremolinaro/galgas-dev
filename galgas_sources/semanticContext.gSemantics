@@ -18,15 +18,40 @@
 #---------------------------------------------------------------------------*
 
 semantics semanticContext :
-  import "semanticsClassMethods.gSemantics" ;
-  import "semanticsInstanceMethods.gSemantics" ;
-  import "semanticsModifiers.gSemantics" ;
   import "semanticsReaders.gSemantics" ;
   import "semanticsConstructors.gSemantics" ;
-  import "optionCompilation.gSemantics" ;
-  import "lexiqueSemantics.gSemantics" ;
-  import "predefinedLexicalActions.gSemantics" ;
-  import "lexiqueCompilation.gSemantics" ;
+  import "semanticsTypes.gSemantics" ;
+  import "optionSemantics.gSemantics" ;
+
+#---------------------------------------------------------------------------*
+
+reader @location sourceFile -> @string outResult
+:
+  if [selfcopy isNowhere] then
+    outResult := "SOURCE_FILE (\"\", 0)" ;
+  else
+    outResult := "SOURCE_FILE (" . [[[selfcopy file] lastPathComponent] utf8Representation] . ", " .  [[selfcopy line] string] . ")" ;
+  end if ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+reader @location commaSourceFile -> @string outResult
+:
+  outResult := " COMMA_" . [selfcopy sourceFile] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+once compilerCppName ->@string outCompilerCppName :
+  outCompilerCppName := "inCompiler" ;
+end once ;
+
+#---------------------------------------------------------------------------*
+
+once syntaxDirectedTranslationResultVarName ->@string outName :
+  outName := "ioSyntaxDirectedTranslationResult" ;
+end once ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -153,7 +178,7 @@ map @optionMapForSemanticAnalysis {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  O P T I O N   M A P                                                      *
+#  L E X I Q U E   M A P                                                    *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -163,6 +188,21 @@ map @lexiqueComponentMapForSemanticAnalysis {
   @lstring mIndexingDirectory ;
   insert insertKey error message "redefinition of the '%K' lexique component: it has been already declared in %L" ;
   search searchKey error message "the '%K' lexique component is not imported" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  S Y N T A X   M A P                                                      *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @syntaxComponentMap {
+  @lstring mLexiqueName ; 
+  @nonterminalDeclarationListAST mNonterminalDeclarationList ;
+  @syntaxRuleListAST mRuleList ;
+  @bool mHasTranslateFeature ;
+  insert insertKey error message "the '%K' syntax component has already been parsed" ;
+  search searchKey error message "the '%K' syntax component is not parsed" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -179,6 +219,7 @@ struct @semanticContext {
   @grammarMap mGrammarMap ;
   @optionComponentMapForSemanticAnalysis mOptionComponentMapForSemanticAnalysis ;
   @lexiqueComponentMapForSemanticAnalysis mLexiqueComponentMapForSemanticAnalysis ;
+  @syntaxComponentMap mSyntaxComponentMapForSemanticAnalysis ;
 }
 
 #---------------------------------------------------------------------------*
@@ -250,10 +291,18 @@ abstract reader @semanticDeclarationAST keyRepresentation -> @string outString
 
 #---------------------------------------------------------------------------*
 
+override reader @galgas3SyntaxComponentAST keyRepresentation
+  ->@string outString
+:
+  outString := "syntax " . mSyntaxComponentName ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
 override reader @lexiqueComponentAST keyRepresentation
   ->@string outString
 :
-  outString := "lexique" . mLexiqueComponentName ;
+  outString := "lexique " . mLexiqueComponentName ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -3077,6 +3126,23 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @galgas3SyntaxComponentAST enterInSemanticContext
+  ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
+  ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ??@categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
+  ?!@semanticContext ioSemanticContext
+:
+  [!?ioSemanticContext->mSyntaxComponentMapForSemanticAnalysis insertKey
+    !mSyntaxComponentName
+    !mLexiqueName
+    !mNonterminalDeclarationList
+    !mRuleList
+    !mHasTranslateFeature
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @lexiqueComponentAST enterInSemanticContext
   ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
   ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
@@ -3158,6 +3224,20 @@ override method @predefinedTypeAST enterDeclarationInGraph
 :
   const key := [@lstring new !"@" . mPredefinedTypeName !here] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @galgas3SyntaxComponentAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
+:
+  const key := [@lstring new !"syntax " . mSyntaxComponentName !mSyntaxComponentName->location] ;
+  [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
+  [!?ioSemanticTypePrecedenceGraph addEdge !key ![@lstring new !"lexique " . mLexiqueName !mLexiqueName->location]] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -3810,15 +3890,7 @@ routine buildSemanticContext
     #--- Add category override
       sortedSemanticDeclarationListAST .= categoryOverrideDefinitionList ;
     #--- Build initial semantic context
-      outSemanticContext := [@semanticContext new
-        ![@unifiedTypeMap emptyMap]
-        ![@routineMap emptyMap]
-        ![@functionMap emptyMap]
-        ![@filewrapperMap emptyMap]
-        ![@grammarMap emptyMap]
-        ![@optionComponentMapForSemanticAnalysis emptyMap]
-        ![@lexiqueComponentMapForSemanticAnalysis emptyMap]
-      ] ;
+      outSemanticContext := [@semanticContext default] ;
     #--- Loop throught all declarations
       foreach sortedSemanticDeclarationListAST do
         [mSemanticDeclaration enterInSemanticContext

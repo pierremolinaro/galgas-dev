@@ -22,18 +22,6 @@ semantics semanticInstructionGeneration :
 
 #---------------------------------------------------------------------------*
 
-abstract method @actualParameterForGeneration generateActualParameter
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@string ioImplementation
-  ?!@stringlist ioJokerParametersToReleaseList
-  ?!@stringlist ioOutputVariableList
-  ?!@stringset unused ioUnusedVariableCppNameSet
-  !@string outCppName
-;
-
-#---------------------------------------------------------------------------*
-
 override method @outputActualParameterForGeneration generateActualParameter
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
@@ -101,43 +89,6 @@ override method @inputJokerParameterForGeneration generateActualParameter
   ioJokerParametersToReleaseList += !mInputActualCppName ;
   ioOutputVariableList += !mInputActualCppName ;
 end method ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#           I N S T R U C T I O N    G E N E R A T I O N                    *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-abstract method @semanticInstructionForGeneration generateInstruction
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  ??@bool inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode
-;
-
-#---------------------------------------------------------------------------*
-
-routine generateInstructionList
-  ?!@stringset ioInclusionSet
-  ??@semanticInstructionListForGeneration inInstructionList
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  ??@bool inGenerateSyntaxDirectedTranslationString
-  ?!@string ioGeneratedCode
-:
-  [!?ioGeneratedCode incIndentation !2] ;
-  for element in inInstructionList do
-    [element->mInstruction generateInstruction
-      !?ioInclusionSet
-      !?ioTemporaryVariableIndex
-      !?ioUnusedVariableCppNameSet
-      !inGenerateSyntaxDirectedTranslationString
-      !?ioGeneratedCode
-    ] ;
-  end for ;
-  [!?ioGeneratedCode decIndentation !2] ;
-end routine ;
 
 #---------------------------------------------------------------------------*
 

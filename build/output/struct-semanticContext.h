@@ -13,6 +13,7 @@
 #include "map-lexiqueComponentMapForSemanticAnalysis-1.h"
 #include "map-optionComponentMapForSemanticAnalysis-1.h"
 #include "map-routineMap-1.h"
+#include "map-syntaxComponentMap-1.h"
 #include "uniquemap-unifiedTypeMap-1.h"
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -29,6 +30,7 @@ class GALGAS_semanticContext : public AC_GALGAS_root {
   public : GALGAS_grammarMap mAttribute_mGrammarMap ;
   public : GALGAS_optionComponentMapForSemanticAnalysis mAttribute_mOptionComponentMapForSemanticAnalysis ;
   public : GALGAS_lexiqueComponentMapForSemanticAnalysis mAttribute_mLexiqueComponentMapForSemanticAnalysis ;
+  public : GALGAS_syntaxComponentMap mAttribute_mSyntaxComponentMapForSemanticAnalysis ;
 
 
 //--------------------------------- Accessors
@@ -51,7 +53,8 @@ class GALGAS_semanticContext : public AC_GALGAS_root {
                                    const GALGAS_filewrapperMap & in_mFilewrapperMap,
                                    const GALGAS_grammarMap & in_mGrammarMap,
                                    const GALGAS_optionComponentMapForSemanticAnalysis & in_mOptionComponentMapForSemanticAnalysis,
-                                   const GALGAS_lexiqueComponentMapForSemanticAnalysis & in_mLexiqueComponentMapForSemanticAnalysis) ;
+                                   const GALGAS_lexiqueComponentMapForSemanticAnalysis & in_mLexiqueComponentMapForSemanticAnalysis,
+                                   const GALGAS_syntaxComponentMap & in_mSyntaxComponentMapForSemanticAnalysis) ;
 
 //-- Start of generic part --*
 
@@ -70,7 +73,8 @@ class GALGAS_semanticContext : public AC_GALGAS_root {
                                                           const class GALGAS_filewrapperMap & inOperand3,
                                                           const class GALGAS_grammarMap & inOperand4,
                                                           const class GALGAS_optionComponentMapForSemanticAnalysis & inOperand5,
-                                                          const class GALGAS_lexiqueComponentMapForSemanticAnalysis & inOperand6
+                                                          const class GALGAS_lexiqueComponentMapForSemanticAnalysis & inOperand6,
+                                                          const class GALGAS_syntaxComponentMap & inOperand7
                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of reader 'description'
@@ -96,6 +100,8 @@ class GALGAS_semanticContext : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_optionComponentMapForSemanticAnalysis reader_mOptionComponentMapForSemanticAnalysis (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_routineMap reader_mRoutineMap (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_syntaxComponentMap reader_mSyntaxComponentMapForSemanticAnalysis (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap reader_mTypeMap (LOCATION_ARGS) const ;
 

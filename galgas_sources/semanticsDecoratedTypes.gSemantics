@@ -21,6 +21,33 @@ semantics semanticsDecoratedTypes :
   import "semanticContext.gSemantics" ;
 
 #---------------------------------------------------------------------------*
+#                                                                           *
+#           I N S T R U C T I O N    G E N E R A T I O N                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+routine generateInstructionList
+  ?!@stringset ioInclusionSet
+  ??@semanticInstructionListForGeneration inInstructionList
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode
+:
+  [!?ioGeneratedCode incIndentation !2] ;
+  for element in inInstructionList do
+    [element->mInstruction generateInstruction
+      !?ioInclusionSet
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
+      !?ioGeneratedCode
+    ] ;
+  end for ;
+  [!?ioGeneratedCode decIndentation !2] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
 
 abstract class @templateInstructionForGeneration {
 }
@@ -37,6 +64,16 @@ abstract class @semanticExpressionForGeneration {
   @unifiedTypeMapProxy mResultType ;
   @location mLocation ;
 }
+
+#---------------------------------------------------------------------------*
+
+abstract method @semanticExpressionForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppExpression
+;
 
 #---------------------------------------------------------------------------*
 
@@ -334,6 +371,18 @@ abstract class @actualParameterForGeneration {
 
 #---------------------------------------------------------------------------*
 
+abstract method @actualParameterForGeneration generateActualParameter
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@string ioImplementation
+  ?!@stringlist ioJokerParametersToReleaseList
+  ?!@stringlist ioOutputVariableList
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  !@string outCppName
+;
+
+#---------------------------------------------------------------------------*
+
 class @outputActualParameterForGeneration extends @actualParameterForGeneration {
   @semanticExpressionForGeneration mOutputActualParameterExpression ;
 }
@@ -371,6 +420,16 @@ abstract class @semanticInstructionForGeneration {
 
 #---------------------------------------------------------------------------*
 
+abstract method @semanticInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ??@bool inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode
+;
+
+#---------------------------------------------------------------------------*
+
 list @semanticInstructionListForGeneration {
   @semanticInstructionForGeneration mInstruction ;
 }
@@ -392,6 +451,12 @@ list @listOfSemanticInstructionListForGeneration {
 
 abstract class @semanticDeclarationForGeneration {
 }
+
+#---------------------------------------------------------------------------*
+
+reader @semanticDeclarationForGeneration appendPrimitiveTypeDeclaration -> @string outHeader :
+  outHeader := "" ;
+end reader ;
 
 #---------------------------------------------------------------------------*
 
@@ -1553,6 +1618,57 @@ class @matchInstructionForGeneration extends @semanticInstructionForGeneration {
   @matchInstructionBranchListForGeneration mMatchInstructionBranchList ;
   @semanticInstructionListForGeneration mElseInstructionList ;
 }
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# A P P E N D    D E C L A R A T I O N    1                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+method @semanticDeclarationForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader
+:
+  outHeader := "" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# A P P E N D    D E C L A R A T I O N    2                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+method @semanticDeclarationForGeneration appendDeclaration2
+  ??@bool unused inGenerateForGalgas3
+  ??@string unused inOutputDirectory
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader
+:
+  outHeader := "" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+reader @semanticDeclarationForGeneration appendTypeGenericImplementation ->@string outImplementation :
+  outImplementation := "" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+method @semanticDeclarationForGeneration appendSpecificImplementation
+  ?!@stringset unused  ioInclusionSet
+  !@string outImplementation
+:
+  outImplementation := "" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+method @semanticDeclarationForGeneration appendSpecificFiles
+  ??@string unused inProductDirectory
+  ?!@stringset unused ioAllProductFileSet
+:
+end method ;
 
 #---------------------------------------------------------------------------*
 

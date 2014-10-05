@@ -19,11 +19,10 @@
 semantics grammarCompilation :
 import "allASTTypes.gSemantics" ;
 import "grammarSemantics.gSemantics" ;
-import "galgas_cli_options.gOption" ;
 import "grammarLL1grammar.gGrammar" ;
 import "syntaxSLRgrammar.gGrammar" ;
 import "lexiqueCompilation.gSemantics" ;
-import "semanticExpressionGeneration.gSemantics" ;
+import "semanticContext.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
@@ -713,7 +712,6 @@ list @grammarComponentGenerationList {
 routine compileGrammarComponentGalgas3
   ??@string inOutputDirectory
   ??@galgas3GrammarComponentListAST-element inGrammarComponentRoot
-  ??@parsedSyntaxComponentMap inParsedSyntaxComponentMap
   ??@semanticContext inSemanticContext
   ?!@grammarComponentGenerationList ioGrammarGenerationList
 :
@@ -729,38 +727,43 @@ routine compileGrammarComponentGalgas3
   @uint addedNonTerminalCount := 0 ;
   foreach inGrammarComponentRoot->mSyntaxComponents do
     const @uint addedNonTerminalCountRef := addedNonTerminalCount ;
-    @string syntaxComponentName := mValue->string ;
-    [inParsedSyntaxComponentMap searchKey !mValue ?* ??@galgas3SyntaxComponentListAST-element syntaxComponentRoot] ;
+    const syntaxComponentName := mValue->string ;
+    [inSemanticContext->mSyntaxComponentMapForSemanticAnalysis searchKey
+      !mValue
+      ??@lstring lexiqueName
+      ??@nonterminalDeclarationListAST nonterminalDeclarationList
+      ??@syntaxRuleListAST ruleList
+      ??@bool hasTranslateFeature
+    ] ;
   #--- Check translate feature
-    if inGrammarComponentRoot->mHasTranslateFeature & not syntaxComponentRoot->mHasTranslateFeature then
-      error syntaxComponentRoot->mSyntaxComponentName : "as '" . inGrammarComponentRoot->mGrammarComponentName . "' grammar declares 'translate' feature, this syntax component should do so" ;
-    elsif syntaxComponentRoot->mHasTranslateFeature & not inGrammarComponentRoot->mHasTranslateFeature then
-      error inGrammarComponentRoot->mGrammarComponentName : "as '" . syntaxComponentRoot->mSyntaxComponentName . "' syntax component declares 'translate' feature, this grammar should do so" ;
+    if inGrammarComponentRoot->mHasTranslateFeature & not hasTranslateFeature then
+      error mValue : "as '" . inGrammarComponentRoot->mGrammarComponentName . "' grammar declares 'translate' feature, this syntax component should do so" ;
+    elsif hasTranslateFeature & not inGrammarComponentRoot->mHasTranslateFeature then
+      error inGrammarComponentRoot->mGrammarComponentName : "as '" . mValue . "' syntax component declares 'translate' feature, this grammar should do so" ;
     end if ;
   #--- Handle lexique component
-    const currentLexiqueName := syntaxComponentRoot->mImportedLexiqueFilePath ;
     if lexiqueComponentName->string == "" then
-      lexiqueComponentName := currentLexiqueName ;
-    elsif lexiqueComponentName->string != currentLexiqueName->string then
+      lexiqueComponentName := lexiqueName ;
+    elsif lexiqueName->string != lexiqueComponentName->string then
       error mValue : "this syntax component uses '"
-        . currentLexiqueName . "' lexique component, but the first syntax component uses the '"
+        . lexiqueName . "' lexique component, but the first syntax component uses the '"
         . lexiqueComponentName . "' lexique component (they should be the same)" ;
     end if ;
   #--- Handle non terminal declarations
     handleNonTerminalDeclarations
       !?nonTerminalMapForGrammarAnalysis
-      ![syntaxComponentRoot mNonterminalDeclarationList]
+      !nonterminalDeclarationList
     ;
   #--- Enter non terminal definition from rule list
     handleNonTerminalDeclarationsFromRuleList
       !?nonTerminalMapForGrammarAnalysis
-      ![syntaxComponentRoot mRuleList]
+      !ruleList
     ;
   #--- Handle syntax rules
     buildRuleList
       !nonTerminalMapForGrammarAnalysis
-      !syntaxComponentRoot->mSyntaxComponentName
-      ![syntaxComponentRoot mRuleList]
+      !mValue
+      !ruleList
       !?actuallyUsedTerminalSymbolMap
       !?syntaxComponentListForGrammarAnalysis
       !?addedNonTerminalCount
@@ -828,8 +831,8 @@ routine compileGrammarComponentGalgas3
   if [option galgas_cli_options.generateOneHeader value] then
     implementationFileHeader := [@stringset emptySet] ;
   end if ;
-  implementationFileHeader += !"grammar-" . inGrammarComponentRoot->mGrammarComponentName->string ;
-  implementationFileHeader += !"lexique-" . lexiqueComponentName->string ;
+  implementationFileHeader += !"grammar-" . inGrammarComponentRoot->mGrammarComponentName ;
+  implementationFileHeader += !"lexique-" . lexiqueComponentName ;
 #---------------------------------------------------------- Analyze grammar
   const HTMLFilePath := inOutputDirectory . "/../helpers/" . inGrammarComponentRoot->mGrammarComponentName . ".html" ;
   grammarAnalysisAndGeneration

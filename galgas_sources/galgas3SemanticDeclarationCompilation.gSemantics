@@ -27,7 +27,6 @@ import "projectGlobalCheckings.gSemantics" ;
 routine compileSemanticDeclarationsGalgas3
   ??@location inEndOfProjectSourceFile
   ??@semanticDeclarationListAST inSemanticDeclarationList
-#  ??@galgas3LexiqueComponentListAST inLexiqueComponentList
   ??@galgas3GrammarComponentListAST inGrammarComponentList
   !@semanticContext outSemanticContext
   !@semanticDeclarationSortedListForGeneration outSemanticDeclarationSortedListForGeneration
@@ -213,15 +212,7 @@ routine buildGalgas3SemanticContext
     #--- Add category override
       outSortedSemanticDeclarationListAST .= categoryOverrideDefinitionList ;
     #--- Build initial semantic context
-      outSemanticContext := [@semanticContext new
-        ![@unifiedTypeMap emptyMap]
-        ![@routineMap emptyMap]
-        ![@functionMap emptyMap]
-        ![@filewrapperMap emptyMap]
-        ![@grammarMap emptyMap]
-        ![@optionComponentMapForSemanticAnalysis emptyMap]
-        ![@lexiqueComponentMapForSemanticAnalysis emptyMap]
-      ] ;
+      outSemanticContext := [@semanticContext default] ;
     #--- Loop throught all declarations
       foreach outSortedSemanticDeclarationListAST do
         [mSemanticDeclaration enterInSemanticContext
@@ -238,115 +229,6 @@ routine buildGalgas3SemanticContext
 #  const graphvizFilePath := [inProjectSourceFile stringByDeletingPathExtension] . "+type-precedence.dot" ;
 #  [graphvizText writeToFileWhenDifferentContents !graphvizFilePath ?*] ;
 end routine ;
-
-#---------------------------------------------------------------------------*
-
-#routine buildGalgas3OptionComponentMapForSemanticAnalysis
-#  ??@galgas3OptionComponentListAST inOptionComponentList
-#  !@optionComponentMapForSemanticAnalysis outOptionComponentMapForSemanticAnalysis
-#:
-#  outOptionComponentMapForSemanticAnalysis := [@optionComponentMapForSemanticAnalysis emptyMap] ;
-#  foreach inOptionComponentList do
-#    var boolOptionMap := [@commandLineOptionMap emptyMap] ;
-#    var uintOptionMap := [@commandLineOptionMap emptyMap] ;
-#    var stringOptionMap := [@commandLineOptionMap emptyMap] ;
-#    @stringset optionNameSet [emptySet] ;
-#    foreach mOptions do
-#      if [optionNameSet hasKey ![mOptionInternalName string]] then
-#        error mOptionInternalName: "the '" + [mOptionInternalName string] + "' command line option has been already declared" ;
-#      elsif [mOptionTypeName string] == "bool" then
-#        [!?boolOptionMap insertKey
-#          !mOptionInternalName
-#          ![mOptionInvocationLetter char]
-#          ![mOptionInvocationString string]
-#          ![mOptionComment string]
-#          !"false"
-#        ] ;
-#        if mOptionDefaultValueKind != [@optionDefaultValueEnumAST noDefaultValue] then
-#          error mOptionDefaultValue:"an @bool option cannot have a default value (default value is allways false)" ;      
-#        end if ;
-#      elsif [mOptionTypeName string] == "uint" then
-#        [!?uintOptionMap insertKey
-#          !mOptionInternalName
-#          ![mOptionInvocationLetter char]
-#          ![mOptionInvocationString string]
-#          ![mOptionComment string]
-#          !if [mOptionDefaultValue string] == "" then "0" else [mOptionDefaultValue string] end
-#        ] ;
-#        if mOptionDefaultValueKind == [@optionDefaultValueEnumAST stringDefaultValue] then
-#          error mOptionDefaultValue:"an @uint option default value cannot be an @string value" ;      
-#        end if ;
-#      elsif [mOptionTypeName string] == "string" then
-#        [!?stringOptionMap insertKey
-#          !mOptionInternalName
-#          ![mOptionInvocationLetter char]
-#          ![mOptionInvocationString string]
-#          ![mOptionComment string]
-#          ![mOptionDefaultValue string]
-#        ] ;
-#        if mOptionDefaultValueKind == [@optionDefaultValueEnumAST unsignedDefaultValue] then
-#          error mOptionDefaultValue:"an @string option default value cannot be an @uint value" ;      
-#        end if ;
-#      else
-#        error mOptionTypeName: "only the @bool, @uint or @string types are allowed here" ;
-#      end if ;
-#      optionNameSet += ![mOptionInternalName string] ;
-#    end foreach ;
-#    [!?outOptionComponentMapForSemanticAnalysis insertKey
-#      !mOptionComponentName
-#      !false # Is not predefined
-#      !boolOptionMap
-#      !uintOptionMap
-#      !stringOptionMap
-#    ] ;
-#  end foreach ;
-##--- Add predefined option component
-#  if not [outOptionComponentMapForSemanticAnalysis hasKey !"galgas_builtin_options"] then
-#    @2stringlist optionNameList := [@application boolOptionNameList] ;
-#    @commandLineOptionMap boolOptionMap [emptyMap] ;
-#    foreach optionNameList do
-#      [!?boolOptionMap insertKey
-#        ![@lstring new !mValue1 !here]
-#        ![@application boolOptionInvocationLetter !mValue0 !mValue1]
-#        ![@application boolOptionInvocationString !mValue0 !mValue1]
-#        ![@application boolOptionCommentString !mValue0 !mValue1]
-#        !"" # Not used
-#      ] ;
-#    end foreach ;
-#  #--- 
-#    optionNameList := [@application uintOptionNameList] ;
-#    @commandLineOptionMap uintOptionMap [emptyMap] ;
-#    foreach optionNameList do
-#      [!?uintOptionMap insertKey
-#        ![@lstring new !mValue1 !here]
-#        ![@application uintOptionInvocationLetter !mValue0 !mValue1]
-#        ![@application uintOptionInvocationString !mValue0 !mValue1]
-#        ![@application uintOptionCommentString !mValue0 !mValue1]
-#        !"" # Not used
-#      ] ;
-#    end foreach ;
-#  #--- 
-#    optionNameList := [@application stringOptionNameList] ;
-#    @commandLineOptionMap stringOptionMap [emptyMap] ;
-#    foreach optionNameList do
-#      [!?stringOptionMap insertKey
-#        ![@lstring new !mValue1 !here]
-#        ![@application stringOptionInvocationLetter !mValue0 !mValue1]
-#        ![@application stringOptionInvocationString !mValue0 !mValue1]
-#        ![@application stringOptionCommentString !mValue0 !mValue1]
-#        !"" # Not used
-#      ] ;
-#    end foreach ;
-#  #---
-#    [!?outOptionComponentMapForSemanticAnalysis insertKey
-#      ![@lstring new !"galgas_builtin_options" !here]
-#      !true # Is predefined
-#      !boolOptionMap
-#      !uintOptionMap
-#      !stringOptionMap
-#    ] ;
-#  end if ;
-#end routine ;
 
 #---------------------------------------------------------------------------*
 #! Generation
@@ -436,6 +318,9 @@ local routine generateManyHeaders
       var inclusionSet1 := [@stringset emptySet] ;
       [mDeclaration appendDeclaration1 !?inclusionSet1 ??@string headerDef1] ;
       var headerIncludes1 := "" ;
+      if [inclusionSet1 hasKey !""] then
+        message "Empty inclusion in " . [mDeclaration implementationCppFileName] . "headers 1\n" ;
+      end if ;
       for (s) in inclusionSet1 do
         headerIncludes1 .= "#include \"" . s . ".h\"\n" ;
       end for ;
@@ -443,6 +328,9 @@ local routine generateManyHeaders
       var inclusionSet2 := [@stringset emptySet] ;
       [mDeclaration appendDeclaration2 !true !inProductDirectory !?inclusionSet2 ??@string headerDef2] ;
       var headerIncludes2 := "" ;
+      if [inclusionSet2 hasKey !""] then
+        message "Empty inclusion in " . [mDeclaration implementationCppFileName] . "headers 2\n" ;
+      end if ;
       for (s) in inclusionSet2 do
         headerIncludes2 .= "#include \"" . s . ".h\"\n" ;
       end for ;
@@ -763,6 +651,9 @@ local routine generateFewImplementationFiles
   foreach inSemanticDeclarationSortedListForGeneration do
     if not [mDeclaration isPredefined] then
       [mDeclaration appendSpecificImplementation !?inclusionSet ??@string code] ;
+      if [inclusionSet hasKey !""] then
+        message "Empty inclusion in " . [mDeclaration implementationCppFileName] . " cpp headers\n" ;
+      end if ;
       implementationString += code ;
       implementationString .= [mDeclaration appendTypeGenericImplementation] ;
       n ++ ;
