@@ -35,7 +35,7 @@ rule <declaration>
     <option> !?options ;
   end repeat ;
   $}$ ;
-  ioDeclarations->mSemanticDeclarationList += ![@optionComponentDeclarationAST new
+  ioDeclarations->mDeclarationList += ![@optionComponentDeclarationAST new
     !false
     !optionComponentName
     !options

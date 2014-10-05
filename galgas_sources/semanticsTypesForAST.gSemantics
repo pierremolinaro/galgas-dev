@@ -1918,9 +1918,9 @@ list @galgas3GUIComponentListAST {
 #---------------------------------------------------------------------------*
 
 struct @galgas3DeclarationAST {
-  @semanticDeclarationListAST mSemanticDeclarationList ;
+  @semanticDeclarationListAST mDeclarationList ;
   @galgas3SyntaxComponentListAST mSyntaxComponentList ;
-  @galgas3GrammarComponentListAST mGrammarComponentList ;
+#  @galgas3GrammarComponentListAST mGrammarComponentList ;
   @galgas3GUIComponentListAST mGUIComponentList ;
   @prologueEpilogueList mPrologueDeclarationList ;
   @programRuleList mSourceRuleList ;

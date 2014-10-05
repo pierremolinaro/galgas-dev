@@ -78,7 +78,7 @@ rule <declaration>
   $proc$ ;
   $identifier$ ??@lstring mActionName indexing routineDefinition ;
   <formal_parameter_list> ??@formalParameterListAST mFormalParameterList ;
-  ioDeclarations->mSemanticDeclarationList += ![@externRoutineDeclarationAST new
+  ioDeclarations->mDeclarationList += ![@externRoutineDeclarationAST new
     !false # Is not predefined
     !false # Is not internal
     !mActionName
@@ -107,7 +107,7 @@ rule <declaration_with_private>
   <semantic_instruction_list> ?@semanticInstructionListAST mRoutineInstructionList ;
   $}$ ;
   const endOfInstructionList := here ;
-  ioDeclarations->mSemanticDeclarationList += ![@routineDeclarationAST new
+  ioDeclarations->mDeclarationList += ![@routineDeclarationAST new
     !false # Is not predefined
     !inIsInternal
     !mRoutineName
@@ -155,7 +155,7 @@ rule  <declaration_with_private>
   $}$ ;
   const endOfFunctionInstructionList := here ;
   if isOnce then
-    ioDeclarations->mSemanticDeclarationList += ![@onceFunctionDeclarationAST new
+    ioDeclarations->mDeclarationList += ![@onceFunctionDeclarationAST new
       !false # Is not predefined
       !functionName
       !resultTypeName
@@ -165,7 +165,7 @@ rule  <declaration_with_private>
       !inIsInternal
     ] ;
   else
-    ioDeclarations->mSemanticDeclarationList += ![@functionDeclarationAST new
+    ioDeclarations->mDeclarationList += ![@functionDeclarationAST new
       !false # Is not predefined
       !functionName
       !formalInputParameterList
@@ -200,7 +200,7 @@ rule <declaration>
   $->$ ;
   $type_name$ ?@lstring resultTypeName ;
   $identifier$ ?@lstring resultVariableName ;
-  ioDeclarations->mSemanticDeclarationList += ![@externFunctionDeclarationAST new
+  ioDeclarations->mDeclarationList += ![@externFunctionDeclarationAST new
     !false # Is not predefined
     !mActionName
     !formalInputParameterList

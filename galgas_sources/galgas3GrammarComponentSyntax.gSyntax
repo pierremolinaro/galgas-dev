@@ -78,17 +78,7 @@ rule <declaration>
   end repeat ;
 #---
   $}$ ;
-#  ioDeclarations->mGrammarComponentList +=
-#    !hasIndexing
-#    !mGrammarName
-#    !mGrammarClass
-#    !syntaxComponents
-#    !mStartSymbol
-#    !mLabelList
-#    !mUnusedNonterminalList
-#    !hasTranslateFeature
-#  ;
-  ioDeclarations->mSemanticDeclarationList += ![@galgas3GrammarComponentAST new
+  ioDeclarations->mDeclarationList += ![@galgas3GrammarComponentAST new
     !false # Is not predefined
     !hasIndexing
     !mGrammarName

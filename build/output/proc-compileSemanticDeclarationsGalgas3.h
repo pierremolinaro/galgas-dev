@@ -16,9 +16,8 @@
 void routine_compileSemanticDeclarationsGalgas_33_ (const class GALGAS_string constinArgument0,
                                                     const class GALGAS_location constinArgument1,
                                                     const class GALGAS_semanticDeclarationListAST constinArgument2,
-                                                    const class GALGAS_galgas_33_GrammarComponentListAST constinArgument3,
-                                                    class GALGAS_semanticContext & outArgument4,
-                                                    class GALGAS_semanticDeclarationSortedListForGeneration & outArgument5,
+                                                    class GALGAS_semanticContext & outArgument3,
+                                                    class GALGAS_semanticDeclarationSortedListForGeneration & outArgument4,
                                                     class C_Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
 
