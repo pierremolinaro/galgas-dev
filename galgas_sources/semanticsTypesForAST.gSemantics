@@ -1833,10 +1833,21 @@ class @optionComponentDeclarationAST extends @semanticDeclarationAST {
 class @galgas3SyntaxComponentAST extends @semanticDeclarationAST {
   @lstring mSyntaxComponentName ;
   @lstring mLexiqueName ; 
-#  @lstringlist mImportedComponentFileNameList ;
   @nonterminalDeclarationListAST mNonterminalDeclarationList ;
   @syntaxRuleListAST mRuleList ;
-#  @semanticDeclarationListAST mSemanticDeclarationList ;
+  @bool mHasTranslateFeature ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @galgas3GrammarComponentAST extends @semanticDeclarationAST {
+  @lbool mHasIndexing ;
+  @lstring mGrammarComponentName ;
+  @lstring mGrammarClass ;
+  @lstringlist mSyntaxComponents ;
+  @lstring mStartSymbolName ;
+  @nonTerminalLabelListAST mStartSymbolLabelList ;
+  @lstringlist mUnusedNonterminalList ;
   @bool mHasTranslateFeature ;
 }
 
@@ -1908,7 +1919,6 @@ list @galgas3GUIComponentListAST {
 
 struct @galgas3DeclarationAST {
   @semanticDeclarationListAST mSemanticDeclarationList ;
-#  @galgas3LexiqueComponentListAST mLexiqueComponentList ;
   @galgas3SyntaxComponentListAST mSyntaxComponentList ;
   @galgas3GrammarComponentListAST mGrammarComponentList ;
   @galgas3GUIComponentListAST mGUIComponentList ;

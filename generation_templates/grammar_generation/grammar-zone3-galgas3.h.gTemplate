@@ -6,8 +6,8 @@ class GALGAS_string ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cGrammar_%![GRAMMAR_COMPONENT_ROOT.mGrammarComponentName identifierRepresentation]% : %?^
-for () in [GRAMMAR_COMPONENT_ROOT mSyntaxComponents]
+class cGrammar_%![GRAMMAR_NAME identifierRepresentation]% : %?^
+for () in SYNTAX_COMPONENTS
   do %public cParser_% ![mValue.string identifierRepresentation]
   between %,\n%!^
 end
@@ -18,7 +18,7 @@ for () in NON_TERMINAL_MAP do
   #--- Parse
     %//--- 'parse' label\n%
     %  public : virtual void nt_%![lkey identifierRepresentation]%_parse (%?^
-    if GRAMMAR_COMPONENT_ROOT.mHasTranslateFeature then
+    if HAS_TRANSLATE_FEATURE then
       %C_String & %!syntaxDirectedTranslationResultVarName ()%,\n%!^ 
     end
     %C_Lexique_%!LEXIQUE_IDENTIFIER% * inCompiler) ;\n\n%
@@ -43,16 +43,16 @@ for () in NON_TERMINAL_MAP do
       end
       %,\n%!^
     end
-    if GRAMMAR_COMPONENT_ROOT.mHasTranslateFeature then
+    if HAS_TRANSLATE_FEATURE then
       %C_String & %!syntaxDirectedTranslationResultVarName ()%,\n%!^ 
     end
     %C_Lexique_%!LEXIQUE_IDENTIFIER% * inCompiler) ;\n\n%
   #--- Start symbol ?
-    if [[GRAMMAR_COMPONENT_ROOT mStartSymbolName] string] == [lkey string] then
+    if START_SYMBOL_NAME == [lkey string] then
       %//--- Start symbol\n%
       %  public : static void _performSourceFileParsing_%![label_lkey identifierRepresentation]% (%?^
       %C_Compiler * inCompiler,\n%!^
-      if GRAMMAR_COMPONENT_ROOT.mHasTranslateFeature then
+      if HAS_TRANSLATE_FEATURE then
         %C_String & %!syntaxDirectedTranslationResultVarName ()%,\n%!^ 
       end
       %GALGAS_lstring inFileName%
@@ -71,7 +71,7 @@ for () in NON_TERMINAL_MAP do
       %\n%!^%COMMA_LOCATION_ARGS) ;\n\n%
       %  public : static void _performSourceStringParsing_%![label_lkey identifierRepresentation]% (%?^
       %C_Compiler * inCompiler,\n%!^
-      if GRAMMAR_COMPONENT_ROOT.mHasTranslateFeature then
+      if HAS_TRANSLATE_FEATURE then
         %C_String & %!syntaxDirectedTranslationResultVarName ()%,\n%!^ 
       end
       %GALGAS_string inSourceString%
@@ -91,7 +91,7 @@ for () in NON_TERMINAL_MAP do
     end
   end
  #--- Start symbol ?
-  if HAS_INDEXING & [[GRAMMAR_COMPONENT_ROOT mStartSymbolName] string] == [lkey string] then
+  if HAS_INDEXING & (START_SYMBOL_NAME == [lkey string]) then
     %//--- Start symbol indexing\n%
     %  public : static void performIndexing (%?^%C_Compiler * inCompiler,\n%
     !^%const C_String & inSourceFilePath) ;\n\n%
@@ -105,5 +105,3 @@ end
 %} ;
 
 //---------------------------------------------------------------------------------------------------------------------*
-
-#endif

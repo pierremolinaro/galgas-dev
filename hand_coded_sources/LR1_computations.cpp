@@ -1134,7 +1134,7 @@ generate_LR1_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
 
 //--- Print non-terminal symbols --------------------------------------
   ioCppFileContents.appendCppTitleComment ("N O N    T E R M I N A L    N A M E S") ;
-  ioCppFileContents << "static const char * gNonTerminalNames ["
+  ioCppFileContents << "static const char * gNonTerminalNames_" << inTargetFileName << " ["
                  << cStringWithSigned (inVocabulary.getNonTerminalSymbolsCount ()) << "] = {\n" ;
   for (int32_t i=inVocabulary.getTerminalSymbolsCount () ; i<inVocabulary.getAllSymbolsCount () ; i++) {
     ioCppFileContents << "  \"<" << inVocabulary.getSymbol (i COMMA_HERE) << ">\""
@@ -1157,7 +1157,7 @@ generate_LR1_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
                     "#define REDUCE(a) (-(a) - 1)\n"
                     "#define ACCEPT (1)\n"
                     "#define END (-1)\n\n" ;
-  ioCppFileContents << "static const int16_t gActionTable [] = {" ;
+  ioCppFileContents << "static const int16_t gActionTable_" << inTargetFileName << " [] = {" ;
   bool isFirst = true ;
   int32_t startIndex = 0 ;
   for (int32_t i=0 ; i<rowsCount ; i++) {
@@ -1191,7 +1191,7 @@ generate_LR1_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
     startIndex ++ ;
   }
   ioCppFileContents << "} ;\n\n"
-                    "static const uint32_t gActionTableIndex [" << cStringWithSigned (rowsCount) << "] = {" ;
+                    "static const uint32_t gActionTableIndex_" << inTargetFileName << " [" << cStringWithSigned (rowsCount) << "] = {" ;
   isFirst = true ;
   for (int32_t i=0 ; i<rowsCount ; i++) {
     ioCppFileContents << "\n" ;
@@ -1229,7 +1229,7 @@ generate_LR1_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
         if (currentSourceState >= 0) {
           ioCppFileContents << ", -1} ;\n\n" ;
         }
-        ioCppFileContents << "static const int16_t gSuccessorTable"
+        ioCppFileContents << "static const int16_t gSuccessorTable_" << inTargetFileName << "_"
                 << cStringWithSigned (sourceState) << " ["
                 << cStringWithSigned ((int32_t)(2 * stateSuccessorsCount (sourceState COMMA_HERE) + 1))
                 << "] = {" ;
@@ -1240,7 +1240,7 @@ generate_LR1_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
   }
   ioCppFileContents << ", -1} ;\n\n" ;
 //--- Write global state successor table
-  ioCppFileContents << "static const int16_t * gSuccessorTable ["
+  ioCppFileContents << "static const int16_t * gSuccessorTable_" << inTargetFileName << " ["
           << cStringWithSigned (rowsCount)
           << "] = {\n" ;
   int32_t itemInSameLineCount = 0 ;
@@ -1254,7 +1254,7 @@ generate_LR1_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
     if (stateSuccessorsCount (r COMMA_HERE) == 0) {
       ioCppFileContents << "NULL" ;
     }else{
-      ioCppFileContents << "gSuccessorTable" << cStringWithSigned (r) ;
+      ioCppFileContents << "gSuccessorTable_" << inTargetFileName << "_" << cStringWithSigned (r) ;
     }
   }
   ioCppFileContents << "} ;\n\n" ;
@@ -1263,7 +1263,7 @@ generate_LR1_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
 //    and the size of right string
   const int32_t productionsCount = inProductionRules.length () ;
   ioCppFileContents.appendCppTitleComment ("Production rules infos (left non terminal, size of right string)") ;
-  ioCppFileContents << "static const int16_t gProductionsTable ["
+  ioCppFileContents << "static const int16_t gProductionsTable_" << inTargetFileName << " ["
           << cStringWithSigned (productionsCount)
           << " * 2] = {\n" ;
   for (int32_t p=0 ; p<productionsCount ; p++) {
@@ -1417,9 +1417,9 @@ generate_LR1_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
                         "  macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, \"\", \"\", inSourceFilePath COMMA_HERE)) ;\n"
                         "  scanner->enableIndexing () ;\n"
                         "  if (scanner->sourceText () != NULL) {\n"
-                        "    const bool ok = scanner->performBottomUpParsing (gActionTable, gNonTerminalNames,\n"
-                        "                                                     gActionTableIndex, gSuccessorTable,\n"
-                        "                                                     gProductionsTable) ;\n"
+                        "    const bool ok = scanner->performBottomUpParsing (gActionTable_" << inTargetFileName << ", gNonTerminalNames_" << inTargetFileName << ",\n"
+                        "                                                     gActionTableIndex_" << inTargetFileName << ", gSuccessorTable_" << inTargetFileName << ",\n"
+                        "                                                     gProductionsTable_" << inTargetFileName << ") ;\n"
                         "    if (ok) {\n"
                         "      cGrammar_" << inTargetFileName.identifierRepresentation () << " grammar ;\n"
                         "      grammar.nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation () << "_indexing (scanner) ;\n"
@@ -1482,9 +1482,9 @@ generate_LR1_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
                           "      C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
                           "      macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, \"\", \"\", filePath COMMA_HERE)) ;\n"
                           "      if (scanner->sourceText () != NULL) {\n"
-                          "        const bool ok = scanner->performBottomUpParsing (gActionTable, gNonTerminalNames,\n"
-                          "                                                         gActionTableIndex, gSuccessorTable,\n"
-                          "                                                         gProductionsTable) ;\n"
+                          "        const bool ok = scanner->performBottomUpParsing (gActionTable_" << inTargetFileName << ", gNonTerminalNames_" << inTargetFileName << ",\n"
+                          "                                                         gActionTableIndex_" << inTargetFileName << ", gSuccessorTable_" << inTargetFileName << ",\n"
+                          "                                                         gProductionsTable_" << inTargetFileName << ") ;\n"
                           "        if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {\n"
                           "          cGrammar_" << inTargetFileName.identifierRepresentation () << " grammar ;\n"
                           "          " ;
@@ -1560,9 +1560,9 @@ generate_LR1_grammar_cpp_file (const TC_UniqueArray <C_String> & inImplementatio
         ioCppFileContents << "  C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
                           "  macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation ()
                        << " (inCompiler, inSourceString.stringValue (), \"\" COMMA_HERE)) ;\n"
-                          "  const bool ok = scanner->performBottomUpParsing (gActionTable, gNonTerminalNames,\n"
-                          "                                                   gActionTableIndex, gSuccessorTable,\n"
-                          "                                                   gProductionsTable) ;\n"
+                          "  const bool ok = scanner->performBottomUpParsing (gActionTable_" << inTargetFileName << ", gNonTerminalNames_" << inTargetFileName << ",\n"
+                          "                                                   gActionTableIndex_" << inTargetFileName << ", gSuccessorTable_" << inTargetFileName << ",\n"
+                          "                                                   gProductionsTable_" << inTargetFileName << ") ;\n"
                           "  if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {\n"
                           "    cGrammar_" << inTargetFileName.identifierRepresentation () << " grammar ;\n"
                           "    " ;

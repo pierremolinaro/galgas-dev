@@ -470,7 +470,7 @@ generate_LL1_grammar_Cpp_file (const TC_UniqueArray <C_String> & inImplementatio
   ioCppFileContents << "#define TERMINAL(t)     ((t)+1)\n"
                     "#define NONTERMINAL(nt) ((-nt)-1)\n"
                     "#define END_PRODUCTION  (0)\n\n"
-                    "static const int16_t gProductions [] = {\n" ;
+                    "static const int16_t gProductions_" << inTargetFileName << " [] = {\n" ;
   cEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis nonTerminal (inNonTerminalSymbolSortedListForGrammarAnalysis, kEnumeration_up) ;
   int16_t productionIndex = 0 ;
   bool first = true ;
@@ -495,7 +495,7 @@ generate_LL1_grammar_Cpp_file (const TC_UniqueArray <C_String> & inImplementatio
 
 //--- Generate productions names table
   ioCppFileContents.appendCppTitleComment ("P R O D U C T I O N    N A M E S") ;
-  ioCppFileContents << "static const cProductionNameDescriptor gProductionNames ["
+  ioCppFileContents << "static const cProductionNameDescriptor gProductionNames_" << inTargetFileName << " ["
                  << cStringWithSigned (productionRuleDescription.count ())
                  << "] = {\n" ;
   for (int32_t p=0 ; p<productionRuleDescription.count () ; p++) {
@@ -512,7 +512,7 @@ generate_LL1_grammar_Cpp_file (const TC_UniqueArray <C_String> & inImplementatio
 
 //--- Generate productions indexes table
   ioCppFileContents.appendCppTitleComment ("L L ( 1 )    P R O D U C T I O N    I N D E X E S") ;
-  ioCppFileContents << "static const int16_t gProductionIndexes ["
+  ioCppFileContents << "static const int16_t gProductionIndexes_" << inTargetFileName << " ["
                  << cStringWithSigned (productionRulesIndex.count ())
                  << "] = {\n" ;
   for (int32_t p=0 ; p<productionRulesIndex.count () ; p++) {
@@ -527,7 +527,7 @@ generate_LL1_grammar_Cpp_file (const TC_UniqueArray <C_String> & inImplementatio
 
 //--- Generate decision tables indexes
   ioCppFileContents.appendCppTitleComment ("L L ( 1 )    F I R S T    P R O D U C T I O N    I N D E X E S") ;
-  ioCppFileContents << "static const int16_t gFirstProductionIndexes ["
+  ioCppFileContents << "static const int16_t gFirstProductionIndexes_" << inTargetFileName << " ["
           << cStringWithSigned ((int32_t)(firstProductionRuleIndex.count () + 1))
           << "] = {\n" ;
   { for (int32_t i=0 ; i<firstProductionRuleIndex.count () ; i++) {
@@ -542,7 +542,7 @@ generate_LL1_grammar_Cpp_file (const TC_UniqueArray <C_String> & inImplementatio
 //--- Generate decision tables  
   TC_UniqueArray <int16_t> productionDecisionIndex (500 COMMA_HERE) ;
   ioCppFileContents.appendCppTitleComment ("L L ( 1 )    D E C I S I O N    T A B L E S") ;
-  ioCppFileContents << "static const int16_t gDecision [] = {\n" ;
+  ioCppFileContents << "static const int16_t gDecision_" << inTargetFileName << " [] = {\n" ;
   int16_t decisionTableIndex = 0 ;
   nonTerminal.rewind () ;
   while (nonTerminal.hasCurrentObject ()) {
@@ -562,7 +562,7 @@ generate_LL1_grammar_Cpp_file (const TC_UniqueArray <C_String> & inImplementatio
 
 //--- Generate decision tables indexes
   ioCppFileContents.appendCppTitleComment ("L L ( 1 )    D E C I S I O N    T A B L E S    I N D E X E S") ;
-  ioCppFileContents << "static const int16_t gDecisionIndexes ["
+  ioCppFileContents << "static const int16_t gDecisionIndexes_" << inTargetFileName << " ["
           << cStringWithSigned ((int32_t)(productionDecisionIndex.count () + 1))
           << "] = {\n" ;
   for (int32_t i=0 ; i<productionDecisionIndex.count () ; i++) {
@@ -662,8 +662,8 @@ generate_LL1_grammar_Cpp_file (const TC_UniqueArray <C_String> & inImplementatio
                         "  macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, \"\", \"\", inSourceFilePath COMMA_HERE)) ;\n"
                         "  scanner->enableIndexing () ;\n"
                         "  if (scanner->sourceText () != NULL) {\n"
-                        "    const bool ok = scanner->performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,\n"
-                        "                                                    gFirstProductionIndexes, gDecision, gDecisionIndexes, "
+                        "    const bool ok = scanner->performTopDownParsing (gProductions_" << inTargetFileName << ", gProductionNames_" << inTargetFileName << ", gProductionIndexes_" << inTargetFileName << ",\n"
+                        "                                                    gFirstProductionIndexes_" << inTargetFileName << ", gDecision_" << inTargetFileName << ", gDecisionIndexes_" << inTargetFileName << ", "
                        << cStringWithSigned (productionRulesIndex (productionRulesIndex.count () - 1 COMMA_HERE))
                        << ") ;\n"
                         "    if (ok) {\n"
@@ -727,8 +727,8 @@ generate_LL1_grammar_Cpp_file (const TC_UniqueArray <C_String> & inImplementatio
                           "    C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
                           "    macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, \"\", \"\", filePath COMMA_HERE)) ;\n"
                           "    if (scanner->sourceText () != NULL) {\n"
-                          "      const bool ok = scanner->performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,\n"
-                          "                                                      gFirstProductionIndexes, gDecision, gDecisionIndexes, "
+                          "      const bool ok = scanner->performTopDownParsing (gProductions_" << inTargetFileName << ", gProductionNames_" << inTargetFileName << ", gProductionIndexes_" << inTargetFileName << ",\n"
+                          "                                                      gFirstProductionIndexes_" << inTargetFileName << ", gDecision_" << inTargetFileName << ", gDecisionIndexes_" << inTargetFileName << ", "
                        << cStringWithSigned (productionRulesIndex (productionRulesIndex.count () - 1 COMMA_HERE))
                        << ") ;\n"
                           "      if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {\n"
@@ -811,8 +811,8 @@ generate_LL1_grammar_Cpp_file (const TC_UniqueArray <C_String> & inImplementatio
                           "    const C_String sourceString = inSourceString.stringValue () ;\n"
                           "    C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
                           "    macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, sourceString, \"\" COMMA_HERE)) ;\n"
-                          "    const bool ok = scanner->performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,\n"
-                          "                                                    gFirstProductionIndexes, gDecision, gDecisionIndexes, "
+                          "    const bool ok = scanner->performTopDownParsing (gProductions_" << inTargetFileName << ", gProductionNames_" << inTargetFileName << ", gProductionIndexes_" << inTargetFileName << ",\n"
+                          "                                                    gFirstProductionIndexes_" << inTargetFileName << ", gDecision_" << inTargetFileName << ", gDecisionIndexes_" << inTargetFileName << ", "
                        << cStringWithSigned (productionRulesIndex (productionRulesIndex.count () - 1 COMMA_HERE))
                        << ") ;\n"
                           "    if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {\n"

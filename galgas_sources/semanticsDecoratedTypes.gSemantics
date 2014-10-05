@@ -575,6 +575,66 @@ class @lexiqueDeclarationForGeneration extends @semanticDeclarationWithHeaderFor
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#   A C T I O N ,    M E T H O D    S I G N A T U R E                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @signatureForGrammarAnalysis {
+  @formalArgumentPassingModeAST mFormalArgumentPassingModeForGrammarAnalysis ;
+  @lstring mGalgasTypeNameForGrammarAnalysis ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  N O N    T E R M I N A L    S Y M B O L    M A P                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @nonterminalSymbolLabelMapForGrammarAnalysis {
+  @signatureForGrammarAnalysis mFormalParametersList ;
+
+  insert insertKey error message "the rule label '%K' has been already declared in %L" ;
+  search searchKey error message "the rule label '%K' is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#             nonterminal symbols map                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @nonTerminalSymbolMapForGrammarAnalysis {
+  @uint mNonTerminalIndex ;
+  @nonterminalSymbolLabelMapForGrammarAnalysis mNonterminalSymbolParametersMap ;
+
+  insert insertKey error message "the '<%K>' non terminal symbol has already been declared in %L" ;
+  search searchKey error message "the '<%K>' non terminal symbol is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @nonTerminalToAddList {
+  @string mSyntaxComponentName ;
+  @uint mNonTerminalToAddCount ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @grammarForGeneration extends @semanticDeclarationWithHeaderForGeneration {
+  @string mGrammarName ;
+  @string mLexiqueName ;
+  @nonTerminalSymbolMapForGrammarAnalysis mNonTerminalMapForGrammarAnalysis ;
+  @nonTerminalToAddList mNonTerminalToAddList ;
+  @bool mHasIndexing ;
+  @lstringlist mSyntaxComponents ;
+  @string mStartSymbolName ;
+  @bool mHasTranslateFeature ;
+  @string mCppFileContents ;
+  @string mHTLMHelperContents ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #    R O U T I N E    D E C L A R A T I O N                                 *
 #                                                                           *
 #---------------------------------------------------------------------------*

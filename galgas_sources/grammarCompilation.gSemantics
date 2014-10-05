@@ -408,13 +408,6 @@ routine buildRuleList
 end routine ;
 
 #---------------------------------------------------------------------------*
-
-list @nonTerminalToAddList {
-  @string mSyntaxComponentName ;
-  @uint mNonTerminalToAddCount ;
-}
-
-#---------------------------------------------------------------------------*
 #                                                                           *
 #    G R A M M A R    H E A D E R    F I L E    G E N E R A T I O N         *
 #                                                                           *
@@ -438,10 +431,13 @@ filewrapper grammarGenerationTemplate in "../generation_templates/grammar_genera
   ;
   template grammarZone3HeaderGalgas3 "grammar-zone3-galgas3.h.gTemplate"
     ?@string LEXIQUE_IDENTIFIER
-    ?@galgas3GrammarComponentListAST-element GRAMMAR_COMPONENT_ROOT
     ?@nonTerminalSymbolMapForGrammarAnalysis NON_TERMINAL_MAP
     ?@nonTerminalToAddList ADDED_NON_TERMINAL_LIST
     ?@bool HAS_INDEXING
+    ?@string START_SYMBOL_NAME
+    ?@bool HAS_TRANSLATE_FEATURE
+    ?@string GRAMMAR_NAME
+    ?@lstringlist SYNTAX_COMPONENTS
   ;
 }
 
@@ -859,10 +855,13 @@ routine compileGrammarComponentGalgas3
     ] ;
     headerContents += [filewrapper grammarGenerationTemplate.grammarZone3HeaderGalgas3
       ![lexiqueComponentName identifierRepresentation]
-      !inGrammarComponentRoot
       !nonTerminalMapForGrammarAnalysis
       !nonTerminalToAddList
       !hasIndexing
+      !inGrammarComponentRoot->mStartSymbolName->string
+      !inGrammarComponentRoot->mHasTranslateFeature
+      !inGrammarComponentRoot->mGrammarComponentName->string
+      !inGrammarComponentRoot->mSyntaxComponents
     ] ;
   end if ;
 #---------------------------------------------------------- Write HTML file

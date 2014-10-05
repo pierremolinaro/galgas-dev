@@ -18,31 +18,7 @@
 #---------------------------------------------------------------------------*
 
 semantics grammarSemantics :
-  import "semanticsTypesForAST.gSemantics" ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#   A C T I O N ,    M E T H O D    S I G N A T U R E                       *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-list @signatureForGrammarAnalysis {
-  @formalArgumentPassingModeAST mFormalArgumentPassingModeForGrammarAnalysis ;
-  @lstring mGalgasTypeNameForGrammarAnalysis ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  N O N    T E R M I N A L    S Y M B O L    M A P                         *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-map @nonterminalSymbolLabelMapForGrammarAnalysis {
-  @signatureForGrammarAnalysis mFormalParametersList ;
-
-  insert insertKey error message "the rule label '%K' has been already declared in %L" ;
-  search searchKey error message "the rule label '%K' is not declared" ;
-}
+  import "semanticsDecoratedTypes.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -83,20 +59,6 @@ list @productionRuleListForGrammarAnalysis {
 map @unusedNonTerminalSymbolMapForGrammarAnalysis {
   @uint mNonTerminalIndex ;
   insert insertKey error message "the '<%K>' non terminal symbol has already been declared as unused in %L" ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#             nonterminal symbols map                                       *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-map @nonTerminalSymbolMapForGrammarAnalysis {
-  @uint mNonTerminalIndex ;
-  @nonterminalSymbolLabelMapForGrammarAnalysis mNonterminalSymbolParametersMap ;
-
-  insert insertKey error message "the '<%K>' non terminal symbol has already been declared in %L" ;
-  search searchKey error message "the '<%K>' non terminal symbol is not declared" ;
 }
 
 #---------------------------------------------------------------------------*

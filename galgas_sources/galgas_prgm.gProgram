@@ -603,6 +603,7 @@ routine compileProject
   @semanticDeclarationSortedListForGeneration semanticDeclarationSortedListForGeneration ;
   if [@uint errorCount] == 0 then
     compileSemanticDeclarationsGalgas3
+      !productDirectory
       !projectComponentAST->mEndOfSourceFile
       !declarationAST->mSemanticDeclarationList
       !declarationAST->mGrammarComponentList

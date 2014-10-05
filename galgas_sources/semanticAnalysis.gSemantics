@@ -22,8 +22,11 @@ semantics semanticAnalysis :
   import "templateGrammar.gGrammar" ;
   import "templateAnalysis.gSemantics" ;
   import "lexiqueSemantics.gSemantics" ;
+  import "grammarSemantics.gSemantics" ;
   import "lexiqueCompilation.gSemantics" ;
   import "syntaxSignature.gSemantics" ;
+
+  import "grammarCompilation.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -110,6 +113,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 abstract method @semanticDeclarationAST semanticAnalysis
+  ??@string inProductDirectory
   ??@semanticContext unused inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration unused ioSemanticDeclarationListForGeneration
@@ -118,6 +122,7 @@ abstract method @semanticDeclarationAST semanticAnalysis
 #---------------------------------------------------------------------------*
 
 override method @predefinedTypeAST semanticAnalysis
+  ??@string unused inProductDirectory
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -145,6 +150,7 @@ map @attributeIndexMap {
 #---------------------------------------------------------------------------*
 
 override method @listDeclarationAST semanticAnalysis
+  ??@string unused inProductDirectory
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -193,6 +199,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @sortedListDeclarationAST semanticAnalysis
+  ??@string unused inProductDirectory
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -248,6 +255,7 @@ end once ;
 #---------------------------------------------------------------------------*
 
 override method @structDeclarationAST semanticAnalysis
+  ??@string unused inProductDirectory
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -293,6 +301,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @graphDeclarationAST semanticAnalysis
+  ??@string unused inProductDirectory
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -332,6 +341,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @externTypeDeclarationAST semanticAnalysis
+  ??@string unused inProductDirectory
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -353,6 +363,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @enumDeclarationAST semanticAnalysis
+  ??@string unused inProductDirectory
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -390,6 +401,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @arrayDeclarationAST semanticAnalysis
+  ??@string unused inProductDirectory
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -411,6 +423,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @listmapDeclarationAST semanticAnalysis
+  ??@string unused inProductDirectory
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -509,6 +522,7 @@ end once ;
 #---------------------------------------------------------------------------*
 
 override method @mapDeclarationAST semanticAnalysis
+  ??@string unused inProductDirectory
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -596,6 +610,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @uniqueMapDeclarationAST semanticAnalysis
+  ??@string unused inProductDirectory
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -951,6 +966,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @mapProxyDeclarationAST semanticAnalysis
+  ??@string unused inProductDirectory
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -1089,6 +1105,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 override method @externFunctionDeclarationAST semanticAnalysis
+  ??@string unused inProductDirectory
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -1119,6 +1136,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @externRoutineDeclarationAST semanticAnalysis
+  ??@string unused inProductDirectory
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -1148,6 +1166,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @routineDeclarationAST semanticAnalysis
+  ??@string unused inProductDirectory
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -1192,6 +1211,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @classDeclarationAST semanticAnalysis
+  ??@string unused inProductDirectory
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -1368,6 +1388,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 override method @functionDeclarationAST semanticAnalysis
+  ??@string unused inProductDirectory
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -1417,6 +1438,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @onceFunctionDeclarationAST semanticAnalysis
+  ??@string unused inProductDirectory
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -1468,6 +1490,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @filewrapperDeclarationAST semanticAnalysis
+  ??@string unused inProductDirectory
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -1549,6 +1572,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @optionComponentDeclarationAST semanticAnalysis
+  ??@string unused inProductDirectory
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -1579,6 +1603,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @abstractCategoryMethodAST semanticAnalysis
+  ??@string unused inProductDirectory
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -1619,6 +1644,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @categoryMethodAST semanticAnalysis
+  ??@string unused inProductDirectory
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -1683,6 +1709,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @overridingCategoryMethodAST semanticAnalysis
+  ??@string unused inProductDirectory
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -1766,6 +1793,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @overridingAbstractCategoryMethodAST semanticAnalysis
+  ??@string unused inProductDirectory
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration unused ioSemanticDeclarationListForGeneration
@@ -1820,6 +1848,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @abstractCategoryModifierAST semanticAnalysis
+  ??@string unused inProductDirectory
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -1860,6 +1889,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @categoryModifierAST semanticAnalysis
+  ??@string unused inProductDirectory
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -1921,6 +1951,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @overridingCategoryModifierAST semanticAnalysis
+  ??@string unused inProductDirectory
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -2001,6 +2032,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @overridingAbstractCategoryModifierAST semanticAnalysis
+  ??@string unused inProductDirectory
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration unused ioSemanticDeclarationListForGeneration
@@ -2055,6 +2087,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @abstractCategoryReaderAST semanticAnalysis
+  ??@string unused inProductDirectory
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -2097,6 +2130,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @categoryReaderAST semanticAnalysis
+  ??@string unused inProductDirectory
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -2168,6 +2202,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @overridingCategoryReaderAST semanticAnalysis
+  ??@string unused inProductDirectory
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -2264,6 +2299,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @overridingAbstractCategoryReaderAST semanticAnalysis
+  ??@string unused inProductDirectory
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration unused ioSemanticDeclarationListForGeneration
@@ -2333,6 +2369,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @galgas3SyntaxComponentAST semanticAnalysis
+  ??@string unused inProductDirectory
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -2379,7 +2416,237 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @galgas3GrammarComponentAST semanticAnalysis
+  ??@string inProductDirectory
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+:
+  if [option .verbose_output value] then
+    message "*** Analyzing '" + mGrammarComponentName + "' grammar\n" ;
+  end if ;
+#---------------------------------------------------------- Parse syntax components
+  @terminalSymbolsMapForGrammarAnalysis actuallyUsedTerminalSymbolMap [emptyMap] ;
+  @nonTerminalSymbolMapForGrammarAnalysis nonTerminalMapForGrammarAnalysis [emptyMap] ;
+  @lstring lexiqueComponentName :=  ["" nowhere] ; # Empty string means unknown
+  @syntaxComponentListForGrammarAnalysis syntaxComponentListForGrammarAnalysis [emptyList] ;
+  @nonTerminalToAddList nonTerminalToAddList [emptyList] ;
+  @uint addedNonTerminalCount := 0 ;
+  foreach mSyntaxComponents do
+    const @uint addedNonTerminalCountRef := addedNonTerminalCount ;
+    const syntaxComponentName := mValue->string ;
+    [inSemanticContext->mSyntaxComponentMapForSemanticAnalysis searchKey
+      !mValue
+      ??@lstring lexiqueName
+      ??@nonterminalDeclarationListAST nonterminalDeclarationList
+      ??@syntaxRuleListAST ruleList
+      ??@bool hasTranslateFeature
+    ] ;
+  #--- Check translate feature
+    if mHasTranslateFeature & not hasTranslateFeature then
+      error mValue : "as '" . mGrammarComponentName . "' grammar declares 'translate' feature, this syntax component should do so" ;
+    elsif hasTranslateFeature & not mHasTranslateFeature then
+      error mGrammarComponentName : "as '" . mValue . "' syntax component declares 'translate' feature, this grammar should do so" ;
+    end if ;
+  #--- Handle lexique component
+    if lexiqueComponentName->string == "" then
+      lexiqueComponentName := lexiqueName ;
+    elsif lexiqueName->string != lexiqueComponentName->string then
+      error mValue : "this syntax component uses '"
+        . lexiqueName . "' lexique component, but the first syntax component uses the '"
+        . lexiqueComponentName . "' lexique component (they should be the same)" ;
+    end if ;
+  #--- Handle non terminal declarations
+    handleNonTerminalDeclarations
+      !?nonTerminalMapForGrammarAnalysis
+      !nonterminalDeclarationList
+    ;
+  #--- Enter non terminal definition from rule list
+    handleNonTerminalDeclarationsFromRuleList
+      !?nonTerminalMapForGrammarAnalysis
+      !ruleList
+    ;
+  #--- Handle syntax rules
+    buildRuleList
+      !nonTerminalMapForGrammarAnalysis
+      !mValue
+      !ruleList
+      !?actuallyUsedTerminalSymbolMap
+      !?syntaxComponentListForGrammarAnalysis
+      !?addedNonTerminalCount
+    ;
+    @uint i := 0 ;
+    loop addedNonTerminalCount : while i < (addedNonTerminalCount - addedNonTerminalCountRef) do
+      nonTerminalToAddList += !syntaxComponentName !i ;
+      i++ ;
+    end loop ;
+  end foreach ;
+#------------------------ Get lexique component, for knowing if there are "indexing" declaration
+  var lexiqueComponentSet := [@stringset emptySet] ;
+  [inSemanticContext->mLexiqueComponentMapForSemanticAnalysis searchKey
+    !lexiqueComponentName
+    ?* # @terminalMap inTerminalMap
+    ?* # @indexingListAST inIndexingListAST
+    ??@lstring inIndexingDirectory
+  ] ;
+  const @bool hasIndexing := not [inIndexingDirectory isNowhere] ;
+  if hasIndexing & not mHasIndexing->bool then
+    error mGrammarComponentName : "the grammar does not enable indexing, but the '" . lexiqueComponentName . "' does" ;
+  elsif (not hasIndexing) & mHasIndexing->bool then
+    error mHasIndexing : "the grammar enables indexing, but the '" . lexiqueComponentName . "' does not" ;
+  end if ;
+#---------------------------------------------------------- Start symbol
+#--- Search start symbol in non terminal map
+  @nonterminalSymbolLabelMapForGrammarAnalysis startSymbolAltMap ;
+  @uint startSymbolIndex ;
+  [nonTerminalMapForGrammarAnalysis searchKey !mStartSymbolName ?startSymbolIndex ?startSymbolAltMap] ;
+#--- Check signatures
+  checkLabelMap
+    !mStartSymbolName->location
+    !mStartSymbolLabelList
+    ![nonTerminalMapForGrammarAnalysis locationForKey !mStartSymbolName->string]
+    !startSymbolAltMap
+  ;
+#---------------------------------------------------------- Unused Non Terminal Symbols
+  @unusedNonTerminalSymbolMapForGrammarAnalysis unusedNonTerminalSymbolsForGrammar [emptyMap] ;
+  foreach mUnusedNonterminalList do
+    @uint nonterminalIndex ;
+    [nonTerminalMapForGrammarAnalysis searchKey !mValue ?nonterminalIndex ?*] ;
+    [!?unusedNonTerminalSymbolsForGrammar insertKey !mValue !nonterminalIndex] ;
+  end foreach ;
+#---------------------------------------------------------- Non terminal symbols, sorted by index
+  @nonTerminalSymbolSortedListForGrammarAnalysis nonTerminalSymbolSortedListForGrammarAnalysis [emptySortedList] ;
+  foreach nonTerminalMapForGrammarAnalysis do
+    nonTerminalSymbolSortedListForGrammarAnalysis += !lkey !mNonTerminalIndex !mNonterminalSymbolParametersMap ;
+  end foreach ;
+#---------------------------------------------------------- Header of implementation file
+#  Loop throuht all rules for detecting input arguments: as the generated C++ code uses a copy constructor
+# for these arguments, we need to include the corresponding type declaration.
+  var implementationFileHeader := [@stringset emptySet] ;
+  for () in nonTerminalMapForGrammarAnalysis do
+    for () in mNonterminalSymbolParametersMap do
+      for () in mFormalParametersList do
+        switch mFormalArgumentPassingModeForGrammarAnalysis
+        when argumentIn, argumentConstantIn :
+          const t := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mGalgasTypeNameForGrammarAnalysis] ;
+          [t addHeaderFileName !?implementationFileHeader] ;
+        when argumentInOut, argumentOut :
+        end switch ;
+      end for ;
+    end for ;
+  end for ;
+  if [option galgas_cli_options.generateOneHeader value] then
+    implementationFileHeader := [@stringset emptySet] ;
+  end if ;
+  implementationFileHeader += !"grammar-" . mGrammarComponentName ;
+  implementationFileHeader += !"lexique-" . lexiqueComponentName ;
+#---------------------------------------------------------- Analyze grammar
+  const HTMLFilePath := inProductDirectory . "/../helpers/" . mGrammarComponentName . ".html" ;
+  grammarAnalysisAndGeneration
+    !implementationFileHeader
+    !mGrammarComponentName
+    !mGrammarClass
+    !startSymbolIndex
+    !lexiqueComponentName->string
+    !actuallyUsedTerminalSymbolMap
+    !syntaxComponentListForGrammarAnalysis
+    !unusedNonTerminalSymbolsForGrammar
+    !HTMLFilePath
+    !nonTerminalSymbolSortedListForGrammarAnalysis
+    !hasIndexing
+    !if mHasTranslateFeature then syntaxDirectedTranslationResultVarName [] else "" end
+    ??@string grammarCppFile
+    ??@string grammarHTMLHelperContents
+  ;
+#---
+  ioSemanticDeclarationListForGeneration +=
+    !""   
+    ![@grammarForGeneration new
+      !true # has header
+      !"grammar-" + mGrammarComponentName    
+      !mGrammarComponentName->string
+      !lexiqueComponentName->string
+      !nonTerminalMapForGrammarAnalysis
+      !nonTerminalToAddList
+      !hasIndexing
+      !mSyntaxComponents
+      !mStartSymbolName->string
+      !mHasTranslateFeature
+      !grammarCppFile
+      !grammarHTMLHelperContents
+     ]
+    !"" ;
+#---------------------------------------------------------- Build header contents
+#  var headerContents := "" ;
+#  if [@uint errorCount] == 0 then
+#    headerContents := [filewrapper grammarGenerationTemplate.grammarZone2HeaderGalgas3
+#      !inGrammarComponentRoot
+#    ] ;
+#    headerContents += [filewrapper grammarGenerationTemplate.grammarZone3HeaderGalgas3
+#      ![lexiqueComponentName identifierRepresentation]
+#      !inGrammarComponentRoot
+#      !nonTerminalMapForGrammarAnalysis
+#      !nonTerminalToAddList
+#      !hasIndexing
+#    ] ;
+#  end if ;
+##---------------------------------------------------------- Write HTML file
+#  if [option galgas_cli_options.outputHTMLgrammarFile value] then
+#    [grammarHTMLHelperContents writeToFileWhenDifferentContents !HTMLFilePath ?*] ;
+#  else
+#    [@string deleteFileIfExists !HTMLFilePath] ;
+#  end if ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @grammarForGeneration appendDeclaration1
+  ?!@stringset ioInclusionSet
+  !@string outHeader
+:
+  for (s) in mSyntaxComponents do
+    ioInclusionSet += !"syntax-" + s ;
+  end for ;
+  outHeader := [filewrapper grammarGenerationTemplate.grammarZone3HeaderGalgas3
+    ![mLexiqueName identifierRepresentation]
+    !mNonTerminalMapForGrammarAnalysis
+    !mNonTerminalToAddList
+    !mHasIndexing
+    !mStartSymbolName
+    !mHasTranslateFeature
+    !mGrammarName
+    !mSyntaxComponents
+   ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @grammarForGeneration appendSpecificImplementation
+  ?!@stringset ioInclusionSet
+  !@string outImplementation
+:
+  ioInclusionSet += !"grammar-" + mGrammarName ;
+  outImplementation := mCppFileContents ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @grammarForGeneration appendSpecificFiles
+  ??@string inProductDirectory
+  ?!@stringset unused ioAllProductFileSet
+:
+  const HTMLFilePath := inProductDirectory . "/../helpers/" . mGrammarName . ".html" ;
+  if [option galgas_cli_options.outputHTMLgrammarFile value] then
+    [mHTLMHelperContents writeToFileWhenDifferentContents !HTMLFilePath ?*] ;
+  else
+    [@string deleteFileIfExists !HTMLFilePath] ;
+  end if ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @lexiqueComponentAST semanticAnalysis
+  ??@string unused inProductDirectory
   ??@semanticContext unused inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -2700,6 +2967,7 @@ function buildPredefinedTypes
 #---------------------------------------------------------------------------*
 
 routine performSemanticAnalysis
+  ??@string inProductDirectory
   ??@semanticDeclarationListAST inDeclarationList
   ??@semanticContext inSemanticContext
   !@semanticDeclarationSortedListForGeneration outDecoratedDeclarationListForGeneration
@@ -2719,6 +2987,7 @@ routine performSemanticAnalysis
     const @predefinedTypes predefinedTypes := buildPredefinedTypes [!inSemanticContext] ;
     foreach semanticDeclarationList do
       [mSemanticDeclaration semanticAnalysis
+        !inProductDirectory
         !inSemanticContext
         !predefinedTypes
         !?outDecoratedDeclarationListForGeneration
