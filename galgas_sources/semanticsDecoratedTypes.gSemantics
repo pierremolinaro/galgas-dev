@@ -1716,6 +1716,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 method @semanticDeclarationForGeneration appendSpecificImplementation
+  ??@unifiedTypeMap unused inUnifiedTypeMap
   ?!@stringset unused  ioInclusionSet
   !@string outImplementation
 :

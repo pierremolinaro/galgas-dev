@@ -431,9 +431,8 @@ routine compileSemanticsComponentAST
     ] ;
     foreach decoratedDeclarationListForGeneration do
       var unusedInclusionSet := [@stringset emptySet] ;
-      [mDeclaration appendSpecificImplementation !?unusedInclusionSet ??@string code] ;
+      [mDeclaration appendSpecificImplementation !semanticContext->mTypeMap !?unusedInclusionSet ??@string code] ;
       implementationString += code ;
-#      implementationString .= [mDeclaration appendSpecificImplementation !false] ;
       implementationString .= [mDeclaration appendTypeGenericImplementation] ;
     end foreach ;
     [@string generateFileWithPattern

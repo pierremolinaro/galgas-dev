@@ -14,8 +14,9 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 typedef void (*categoryMethodSignature_semanticDeclarationForGeneration_appendSpecificImplementation) (const class cPtr_semanticDeclarationForGeneration * inObject,
-                                                                                                       class GALGAS_stringset & ioArgument0,
-                                                                                                       class GALGAS_string & outArgument1,
+                                                                                                       const class GALGAS_unifiedTypeMap constinArgument0,
+                                                                                                       class GALGAS_stringset & ioArgument1,
+                                                                                                       class GALGAS_string & outArgument2,
                                                                                                        class C_Compiler * inCompiler
                                                                                                        COMMA_LOCATION_ARGS) ;
 
@@ -27,6 +28,7 @@ void enterCategoryMethod_appendSpecificImplementation (const int32_t inClassInde
 //---------------------------------------------------------------------------------------------------------------------*
 
 void callCategoryMethod_appendSpecificImplementation (const class cPtr_semanticDeclarationForGeneration * inObject,
+                                                      const GALGAS_unifiedTypeMap constin_inUnifiedTypeMap,
                                                       GALGAS_stringset & io_ioInclusionSet,
                                                       GALGAS_string & out_outImplementation,
                                                       C_Compiler * inCompiler

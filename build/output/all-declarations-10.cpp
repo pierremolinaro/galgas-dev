@@ -3942,6 +3942,7 @@ void enterCategoryMethod_appendSpecificImplementation (const int32_t inClassInde
 //---------------------------------------------------------------------------------------------------------------------*
 
 void callCategoryMethod_appendSpecificImplementation (const cPtr_semanticDeclarationForGeneration * inObject,
+                                                      const GALGAS_unifiedTypeMap constin_inUnifiedTypeMap,
                                                       GALGAS_stringset & io_ioInclusionSet,
                                                       GALGAS_string & out_outImplementation,
                                                       C_Compiler * inCompiler
@@ -3968,7 +3969,7 @@ void callCategoryMethod_appendSpecificImplementation (const cPtr_semanticDeclara
     if (NULL == f) {
       fatalError ("FATAL CATEGORY METHOD CALL ERROR", __FILE__, __LINE__) ;
     }else{
-      f (inObject, io_ioInclusionSet, out_outImplementation, inCompiler COMMA_THERE) ;
+      f (inObject, constin_inUnifiedTypeMap, io_ioInclusionSet, out_outImplementation, inCompiler COMMA_THERE) ;
     }
   }
 }
@@ -3976,6 +3977,7 @@ void callCategoryMethod_appendSpecificImplementation (const cPtr_semanticDeclara
 //---------------------------------------------------------------------------------------------------------------------*
 
 static void categoryMethod_semanticDeclarationForGeneration_appendSpecificImplementation (const cPtr_semanticDeclarationForGeneration * /* inObject */,
+                                                                                          const GALGAS_unifiedTypeMap /* constinArgument_inUnifiedTypeMap */,
                                                                                           GALGAS_stringset & /* ioArgument_ioInclusionSet */,
                                                                                           GALGAS_string & outArgument_outImplementation,
                                                                                           C_Compiler * /* inCompiler */

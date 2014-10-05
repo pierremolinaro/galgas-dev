@@ -49,10 +49,23 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @grammarForGeneration appendSpecificImplementation
+  ??@unifiedTypeMap inUnifiedTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation
 :
   ioInclusionSet += !"grammar-" + mGrammarName ;
+  for () in mNonTerminalMapForGrammarAnalysis do
+    for () in mNonterminalSymbolParametersMap do
+      for () in mFormalParametersList do
+        switch mFormalArgumentPassingModeForGrammarAnalysis
+        when argumentConstantIn, argumentIn :
+          const t := [@unifiedTypeMapProxy searchKey !inUnifiedTypeMap !mGalgasTypeNameForGrammarAnalysis] ;
+          [t addHeaderFileName !?ioInclusionSet] ;
+        when argumentInOut, argumentOut :
+        end switch ;     
+      end for ;
+    end for ;
+  end for ;
   outImplementation := mCppFileContents ;
 end method ;
 
@@ -154,6 +167,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @syntaxDeclarationForGeneration appendSpecificImplementation
+  ??@unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation
 :
@@ -1391,6 +1405,7 @@ override method @arrayTypeForGeneration appendDeclaration1
 #---------------------------------------------------------------------------*
 
 override method @arrayTypeForGeneration appendSpecificImplementation
+  ??@unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation
 :
@@ -1449,6 +1464,7 @@ override method @listmapTypeForGeneration appendDeclaration1
 #---------------------------------------------------------------------------*
 
 override method @listmapTypeForGeneration appendSpecificImplementation
+  ??@unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation
 :
@@ -1519,6 +1535,7 @@ override method @mapTypeForGeneration appendDeclaration2
 #---------------------------------------------------------------------------*
 
 override method @mapTypeForGeneration appendSpecificImplementation
+  ??@unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation
 :
@@ -1589,6 +1606,7 @@ override method @uniqueMapTypeForGeneration appendDeclaration2
 #---------------------------------------------------------------------------*
 
 override method @uniqueMapTypeForGeneration appendSpecificImplementation
+  ??@unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation
 :
@@ -1644,6 +1662,7 @@ override method @sortedListTypeForGeneration appendDeclaration1
 #---------------------------------------------------------------------------*
 
 override method @sortedListTypeForGeneration appendSpecificImplementation
+  ??@unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation
 :
@@ -1721,6 +1740,7 @@ override method @enumTypeForGeneration appendDeclaration2
 #---------------------------------------------------------------------------*
 
 override method @enumTypeForGeneration appendSpecificImplementation
+  ??@unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation
 :
@@ -1772,6 +1792,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @mapProxyTypeForGeneration appendSpecificImplementation
+  ??@unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation
 :
@@ -1824,6 +1845,7 @@ override method @structTypeForGeneration appendDeclaration1
 #---------------------------------------------------------------------------*
 
 override method @structTypeForGeneration appendSpecificImplementation
+  ??@unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation
 :
@@ -1869,6 +1891,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @listTypeForGeneration appendSpecificImplementation
+  ??@unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation
 :
@@ -1916,6 +1939,7 @@ override method @graphDeclarationForGeneration appendDeclaration1
 #---------------------------------------------------------------------------*
 
 override method @graphDeclarationForGeneration appendSpecificImplementation
+  ??@unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation
 :
@@ -2029,6 +2053,7 @@ override method @classTypeForGeneration appendDeclaration2
 #---------------------------------------------------------------------------*
 
 override method @classTypeForGeneration appendSpecificImplementation
+  ??@unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation
 :
@@ -2050,6 +2075,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @routineImplementationForGeneration appendSpecificImplementation
+  ??@unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation
 :
@@ -2078,6 +2104,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @functionImplementationForGeneration appendSpecificImplementation
+  ??@unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation
 :
@@ -2104,6 +2131,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @onceFunctionDeclarationForGeneration appendSpecificImplementation
+  ??@unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation
 :
@@ -2153,6 +2181,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override method @abstractCategoryMethodForGeneration appendSpecificImplementation
+  ??@unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation
 :
@@ -2198,6 +2227,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @categoryMethodForGeneration appendSpecificImplementation
+  ??@unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation
 :
@@ -2276,6 +2306,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override method @overridingCategoryMethodForGeneration appendSpecificImplementation
+  ??@unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation
 :
@@ -2321,6 +2352,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @abstractCategoryModifierForGeneration appendSpecificImplementation
+  ??@unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation
 :
@@ -2363,6 +2395,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @categoryModifierForGeneration appendSpecificImplementation
+  ??@unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation
 :
@@ -2438,6 +2471,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override method @overridingCategoryModifierForGeneration appendSpecificImplementation
+  ??@unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation
 :
@@ -2499,6 +2533,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @abstractCategoryReaderForGeneration appendSpecificImplementation
+  ??@unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation
 :
@@ -2548,6 +2583,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @categoryReaderForGeneration appendSpecificImplementation
+  ??@unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation
 :
@@ -2629,6 +2665,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override method @overrideCategoryReaderForGeneration appendSpecificImplementation
+  ??@unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation
 :
@@ -2689,6 +2726,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @optionComponentForGeneration appendSpecificImplementation
+  ??@unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation
 :
@@ -2767,6 +2805,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @lexiqueDeclarationForGeneration appendSpecificImplementation
+  ??@unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outHeader
 :
@@ -2816,6 +2855,7 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override method @programComponentForGeneration appendSpecificImplementation
+  ??@unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation
 :
@@ -2989,6 +3029,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 override method @filewrapperDeclarationForGeneration appendSpecificImplementation
+  ??@unifiedTypeMap unused inTypeMap
   ?!@stringset ioInclusionSet
   !@string outImplementation
 :
@@ -3206,7 +3247,7 @@ routine generatePredefinedTypeFiles ??@string inDirectory :
       foreach decoratedDeclarationListForGeneration do
         generatedCode .= [mDeclaration appendTypeGenericImplementation] ;
         var unusedInclusionSet := [@stringset emptySet] ;
-        [mDeclaration appendSpecificImplementation !?unusedInclusionSet ??@string code] ;
+        [mDeclaration appendSpecificImplementation ![@unifiedTypeMap emptyMap] !?unusedInclusionSet ??@string code] ;
         generatedCode += code ;
       end foreach ;
       if [@uint errorCount] == 0 then
