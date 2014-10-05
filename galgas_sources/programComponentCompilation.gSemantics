@@ -193,7 +193,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine compileProgramRulesGalgas3
+local routine compileProgramRulesGalgas3
   ??@analysisContext inAnalysisContext
   ??@programRuleList inProgramRules
   ?!@programListForGeneration ioDecoratedDeclarationListForGeneration
@@ -521,7 +521,7 @@ routine compileProgramComponentGalgas3
   ??@semanticContext inSemanticContext
   !@programComponentForGeneration outProgramComponentForGeneration
 :
-  const useOneHugeHeader := [option galgas_cli_options.generateOneHeader value] ;
+#  const useOneHugeHeader := [option galgas_cli_options.generateOneHeader value] ;
 #--- Analysis context
   const analysisContext := [@analysisContext new
     !inSemanticContext
@@ -559,15 +559,20 @@ routine compileProgramComponentGalgas3
     [mDeclaration appendSpecificImplementation !?inclusionSet ??@string code] ;
     beforeAfterRulesString += code ;
   end foreach ;
-  foreach inSemanticContext->mGrammarMap do
-    inclusionSet += !"grammar-" . lkey ;
-  end foreach ;
-  if useOneHugeHeader then
-    inclusionSet := [@stringset emptySet] ;
-    for () in inSemanticContext->mGrammarMap do
-      inclusionSet += !"grammar-" . lkey->string ;
-    end for ;
-  end if ;
+#  foreach inSemanticContext->mGrammarMap do
+#    inclusionSet += !"grammar-" . lkey ;
+#  end foreach ;
+#  if useOneHugeHeader then
+#    inclusionSet := [@stringset emptySet] ;
+#    for () in inSemanticContext->mGrammarMap do
+#      inclusionSet += !"grammar-" . lkey->string ;
+#    end for ;
+#  end if ;
+  for () in inProgramRules do
+    if mIndexingGrammar->string != "" then
+      inclusionSet += !"grammar-" + mIndexingGrammar ;
+    end if ;
+  end for ;
   const cppContents := [filewrapper programFileGenerationTemplate.programFileImplementation
     !"program"
     ![inclusionSet stringList]

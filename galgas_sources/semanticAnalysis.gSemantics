@@ -2538,12 +2538,12 @@ override method @galgas3GrammarComponentAST semanticAnalysis
   if [option galgas_cli_options.generateOneHeader value] then
     implementationFileHeader := [@stringset emptySet] ;
   end if ;
-  implementationFileHeader += !"grammar-" . mGrammarComponentName ;
-  implementationFileHeader += !"lexique-" . lexiqueComponentName ;
+#  implementationFileHeader += !"grammar-" . mGrammarComponentName ;
+#  implementationFileHeader += !"lexique-" . lexiqueComponentName ;
 #---------------------------------------------------------- Analyze grammar
   const HTMLFilePath := inProductDirectory . "/../helpers/" . mGrammarComponentName . ".html" ;
   grammarAnalysisAndGeneration
-    !implementationFileHeader
+    !{}
     !mGrammarComponentName
     !mGrammarClass
     !startSymbolIndex
@@ -2596,51 +2596,6 @@ override method @galgas3GrammarComponentAST semanticAnalysis
 #  else
 #    [@string deleteFileIfExists !HTMLFilePath] ;
 #  end if ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @grammarForGeneration appendDeclaration1
-  ?!@stringset ioInclusionSet
-  !@string outHeader
-:
-  for (s) in mSyntaxComponents do
-    ioInclusionSet += !"syntax-" + s ;
-  end for ;
-  outHeader := [filewrapper grammarGenerationTemplate.grammarZone3HeaderGalgas3
-    ![mLexiqueName identifierRepresentation]
-    !mNonTerminalMapForGrammarAnalysis
-    !mNonTerminalToAddList
-    !mHasIndexing
-    !mStartSymbolName
-    !mHasTranslateFeature
-    !mGrammarName
-    !mSyntaxComponents
-   ] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @grammarForGeneration appendSpecificImplementation
-  ?!@stringset ioInclusionSet
-  !@string outImplementation
-:
-  ioInclusionSet += !"grammar-" + mGrammarName ;
-  outImplementation := mCppFileContents ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @grammarForGeneration appendSpecificFiles
-  ??@string inProductDirectory
-  ?!@stringset unused ioAllProductFileSet
-:
-  const HTMLFilePath := inProductDirectory . "/../helpers/" . mGrammarName . ".html" ;
-  if [option galgas_cli_options.outputHTMLgrammarFile value] then
-    [mHTLMHelperContents writeToFileWhenDifferentContents !HTMLFilePath ?*] ;
-  else
-    [@string deleteFileIfExists !HTMLFilePath] ;
-  end if ;
 end method ;
 
 #---------------------------------------------------------------------------*

@@ -14,10 +14,9 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 void routine_generateFewImplementationFiles (const class GALGAS_string constinArgument0,
-                                             const class GALGAS_semanticContext constinArgument1,
-                                             const class GALGAS_semanticDeclarationSortedListForGeneration constinArgument2,
-                                             class GALGAS_stringlist & ioArgument3,
-                                             class GALGAS_stringset & ioArgument4,
+                                             const class GALGAS_semanticDeclarationSortedListForGeneration constinArgument1,
+                                             class GALGAS_stringlist & ioArgument2,
+                                             class GALGAS_stringset & ioArgument3,
                                              class C_Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) ;
 

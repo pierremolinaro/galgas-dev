@@ -677,7 +677,6 @@ routine compileProject
       !productDirectory
       !optionComponentMapForGeneration
       !appProductFileList
-      !semanticContext
       !semanticDeclarationSortedListForGeneration
       !declarationAST->mSourceRuleList
       !projectComponentAST
@@ -701,7 +700,6 @@ routine projectGeneration
   ??@string inProductDirectory
   ??@optionComponentMapForGeneration inOptionComponentMapForGeneration
   ??@stringlist inAppProductFileList
-  ??@semanticContext inSemanticContext
   ??@semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
   ??@programRuleList inSourceRuleList
   ??@galgas3ProjectComponentAST inProjectComponentAST
@@ -719,14 +717,6 @@ routine projectGeneration
   end if ;
   var toolCppFileList := [@stringlist emptyList] ;
   var allProductFileSet := [@stringset emptySet] ;
-#---------------------------------- Generate grammar components
-#  message "*** Generate grammars\n" ;
-#  generateGrammarComponentGalgas3
-#    !inProductDirectory
-#    !inGrammarGenerationList
-#    !?toolCppFileList
-#    !?allProductFileSet
-#  ;
 #---------------------------------- Generate GUI components
 #  message "*** Generate GUI\n" ;
   if [@uint errorCount] == 0 then
@@ -741,7 +731,6 @@ routine projectGeneration
 #  message "*** Generate semantic\n" ;
   generateSemanticDeclarationsGalgas3
     !inProductDirectory
-    !inSemanticContext
     !inSemanticDeclarationSortedListForGeneration
     !?toolCppFileList
     !?allProductFileSet

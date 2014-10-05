@@ -228,7 +228,6 @@ end once ;
 
 routine generateSemanticDeclarationsGalgas3
   ??@string inProductDirectory
-  ??@semanticContext inSemanticContext
   ??@semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
   ?!@stringlist ioToolProductFileList
   ?!@stringset ioAllProductFileSet
@@ -264,7 +263,6 @@ routine generateSemanticDeclarationsGalgas3
     if [option galgas_cli_options.generateManyFiles value] then
       generateManyImplementationFiles
         !inProductDirectory
-        !inSemanticContext
         !inSemanticDeclarationSortedListForGeneration
         !?ioToolProductFileList
         !?ioAllProductFileSet
@@ -272,7 +270,6 @@ routine generateSemanticDeclarationsGalgas3
     elsif generateFewHeaderFiles [] then
       generateFewImplementationFilesWithFewHeaders
         !inProductDirectory
-        !inSemanticContext
         !inSemanticDeclarationSortedListForGeneration
         !?ioToolProductFileList
         !?ioAllProductFileSet
@@ -280,7 +277,6 @@ routine generateSemanticDeclarationsGalgas3
     else
       generateFewImplementationFiles
         !inProductDirectory
-        !inSemanticContext
         !inSemanticDeclarationSortedListForGeneration
         !?ioToolProductFileList
         !?ioAllProductFileSet
@@ -623,7 +619,6 @@ end routine ;
 
 local routine generateFewImplementationFiles
   ??@string inProductDirectory
-  ??@semanticContext inSemanticContext
   ??@semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
   ?!@stringlist ioToolProductFileList
   ?!@stringset ioAllProductFileSet
@@ -649,9 +644,9 @@ local routine generateFewImplementationFiles
 #        elsif generateFewHeaderFiles [] then
 #          inclusionSet := {!"all-declarations-" . fileIdx} ;
         end if ;
-        for () in inSemanticContext->mGrammarMap do
-          inclusionSet += !"grammar-" . lkey->string ;
-        end for ;
+#        for () in inSemanticContext->mGrammarMap do
+#          inclusionSet += !"grammar-" . lkey->string ;
+#        end for ;
         const header := [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
           ![inclusionSet stringList]
         ] ;
@@ -675,9 +670,9 @@ local routine generateFewImplementationFiles
     if useOneHugeHeader then
       inclusionSet := [@stringset setWithString !"all-declarations"] ;
     end if ;
-    for () in inSemanticContext->mGrammarMap do
-      inclusionSet += !"grammar-" . lkey->string ;
-    end for ;
+#    for () in inSemanticContext->mGrammarMap do
+#      inclusionSet += !"grammar-" . lkey->string ;
+#    end for ;
     const header := [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
 #      !if generateFewHeaderFiles [] then {!"all-declarations-" . fileIdx} else [inclusionSet stringList] end
       ![inclusionSet stringList]
@@ -697,7 +692,6 @@ end routine ;
 
 local routine generateFewImplementationFilesWithFewHeaders
   ??@string inProductDirectory
-  ??@semanticContext inSemanticContext
   ??@semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
   ?!@stringlist ioToolProductFileList
   ?!@stringset ioAllProductFileSet
@@ -757,9 +751,9 @@ local routine generateFewImplementationFilesWithFewHeaders
         else
           inclusionSet := {!"all-declarations-" . fileIdx} ;
         end if ;
-        for () in inSemanticContext->mGrammarMap do
-          inclusionSet += !"grammar-" . lkey->string ;
-        end for ;
+#        for () in inSemanticContext->mGrammarMap do
+#          inclusionSet += !"grammar-" . lkey->string ;
+#        end for ;
      #---
         const cppHeader := [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
           ![inclusionSet stringList]
@@ -798,9 +792,9 @@ local routine generateFewImplementationFilesWithFewHeaders
     if useOneHugeHeader then
       inclusionSet := [@stringset setWithString !"all-declarations"] ;
     end if ;
-    for () in inSemanticContext->mGrammarMap do
-      inclusionSet += !"grammar-" . lkey->string ;
-    end for ;
+#    for () in inSemanticContext->mGrammarMap do
+#      inclusionSet += !"grammar-" . lkey->string ;
+#    end for ;
     const header := [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
 #      !if generateFewHeaderFiles [] then {!"all-declarations-" . fileIdx} else [inclusionSet stringList] end
       !{!"all-declarations-" . fileIdx}
@@ -842,7 +836,6 @@ end routine ;
 
 local routine generateManyImplementationFiles
   ??@string inProductDirectory
-  ??@semanticContext inSemanticContext
   ??@semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
   ?!@stringlist ioToolProductFileList
   ?!@stringset ioAllProductFileSet
@@ -857,9 +850,9 @@ local routine generateManyImplementationFiles
       end if ;
       if useOneHugeHeader then
         inclusionSet := [@stringset setWithString !"all-declarations"] ;
-        for () in inSemanticContext->mGrammarMap do
-          inclusionSet += !"grammar-" . lkey->string ;
-        end for ;
+#        for () in inSemanticContext->mGrammarMap do
+#          inclusionSet += !"grammar-" . lkey->string ;
+#        end for ;
       end if ;
       const header := [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
         ![inclusionSet stringList]

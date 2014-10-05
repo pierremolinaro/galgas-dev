@@ -5,17 +5,6 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-#include "grammar-galgas3Grammar.h"
-#include "grammar-galgas3ProjectGrammar.h"
-#include "grammar-grammarLL1grammar.h"
-#include "grammar-guiGrammar.h"
-#include "grammar-lexiqueLL1grammar.h"
-#include "grammar-optionLL1grammar.h"
-#include "grammar-programSLRgrammar.h"
-#include "grammar-projectLL1grammar.h"
-#include "grammar-semanticsSLRgrammar.h"
-#include "grammar-syntaxSLRgrammar.h"
-#include "grammar-templateGrammar.h"
 #include "struct-abstractMethodDefinitionListForGeneration-element.h"
 #include "struct-actualInputParameterListAST-element.h"
 #include "struct-actualOutputExpressionList-element.h"
