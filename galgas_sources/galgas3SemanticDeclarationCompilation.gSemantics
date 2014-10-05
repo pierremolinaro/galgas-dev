@@ -27,7 +27,7 @@ import "projectGlobalCheckings.gSemantics" ;
 routine compileSemanticDeclarationsGalgas3
   ??@location inEndOfProjectSourceFile
   ??@semanticDeclarationListAST inSemanticDeclarationList
-  ??@galgas3LexiqueComponentListAST inLexiqueComponentList
+#  ??@galgas3LexiqueComponentListAST inLexiqueComponentList
   ??@galgas3GrammarComponentListAST inGrammarComponentList
   !@semanticContext outSemanticContext
   !@semanticDeclarationSortedListForGeneration outSemanticDeclarationSortedListForGeneration
@@ -87,16 +87,16 @@ routine compileSemanticDeclarationsGalgas3
   if [option .verbose_output value] then
     message "*** Semantic analysis\n" ;
   end if ;
-#--- Build lexique component map for semantic analysis
-  for lexiqueAST in inLexiqueComponentList do
-    buildTerminalMap !lexiqueAST ??@terminalMap terminalMap ;
-    [!?outSemanticContext->mLexiqueComponentMapForSemanticAnalysis insertKey
-       !lexiqueAST->mLexiqueComponentName
-       !terminalMap
-       !lexiqueAST->mIndexingListAST
-       !lexiqueAST->mIndexingDirectory
-    ] ;
-  end for ;
+##--- Build lexique component map for semantic analysis
+#  for lexiqueAST in inLexiqueComponentList do
+#    buildTerminalMap !lexiqueAST ??@terminalMap terminalMap ;
+#    [!?outSemanticContext->mLexiqueComponentMapForSemanticAnalysis insertKey
+#       !lexiqueAST->mLexiqueComponentName
+#       !terminalMap
+#       !lexiqueAST->mIndexingListAST
+#       !lexiqueAST->mIndexingDirectory
+#    ] ;
+#  end for ;
 #------ Perform semantic analysis of grammar components
   buildGalgas3GrammarComponentMapForSemanticAnalysis
     !inGrammarComponentList

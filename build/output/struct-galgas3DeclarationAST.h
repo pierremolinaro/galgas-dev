@@ -9,7 +9,6 @@
 
 #include "list-galgas3GUIComponentListAST.h"
 #include "list-galgas3GrammarComponentListAST.h"
-#include "list-galgas3LexiqueComponentListAST.h"
 #include "list-galgas3SyntaxComponentListAST.h"
 #include "list-programRuleList.h"
 #include "list-prologueEpilogueList.h"
@@ -23,7 +22,6 @@
 class GALGAS_galgas_33_DeclarationAST : public AC_GALGAS_root {
 //--------------------------------- Public data members
   public : GALGAS_semanticDeclarationListAST mAttribute_mSemanticDeclarationList ;
-  public : GALGAS_galgas_33_LexiqueComponentListAST mAttribute_mLexiqueComponentList ;
   public : GALGAS_galgas_33_SyntaxComponentListAST mAttribute_mSyntaxComponentList ;
   public : GALGAS_galgas_33_GrammarComponentListAST mAttribute_mGrammarComponentList ;
   public : GALGAS_galgas_33_GUIComponentListAST mAttribute_mGUIComponentList ;
@@ -47,7 +45,6 @@ class GALGAS_galgas_33_DeclarationAST : public AC_GALGAS_root {
 
 //--------------------------------- Native constructor
   public : GALGAS_galgas_33_DeclarationAST (const GALGAS_semanticDeclarationListAST & in_mSemanticDeclarationList,
-                                            const GALGAS_galgas_33_LexiqueComponentListAST & in_mLexiqueComponentList,
                                             const GALGAS_galgas_33_SyntaxComponentListAST & in_mSyntaxComponentList,
                                             const GALGAS_galgas_33_GrammarComponentListAST & in_mGrammarComponentList,
                                             const GALGAS_galgas_33_GUIComponentListAST & in_mGUIComponentList,
@@ -67,13 +64,12 @@ class GALGAS_galgas_33_DeclarationAST : public AC_GALGAS_root {
 
 //--------------------------------- GALGAS constructors
   public : static GALGAS_galgas_33_DeclarationAST constructor_new (const class GALGAS_semanticDeclarationListAST & inOperand0,
-                                                                   const class GALGAS_galgas_33_LexiqueComponentListAST & inOperand1,
-                                                                   const class GALGAS_galgas_33_SyntaxComponentListAST & inOperand2,
-                                                                   const class GALGAS_galgas_33_GrammarComponentListAST & inOperand3,
-                                                                   const class GALGAS_galgas_33_GUIComponentListAST & inOperand4,
-                                                                   const class GALGAS_prologueEpilogueList & inOperand5,
-                                                                   const class GALGAS_programRuleList & inOperand6,
-                                                                   const class GALGAS_prologueEpilogueList & inOperand7
+                                                                   const class GALGAS_galgas_33_SyntaxComponentListAST & inOperand1,
+                                                                   const class GALGAS_galgas_33_GrammarComponentListAST & inOperand2,
+                                                                   const class GALGAS_galgas_33_GUIComponentListAST & inOperand3,
+                                                                   const class GALGAS_prologueEpilogueList & inOperand4,
+                                                                   const class GALGAS_programRuleList & inOperand5,
+                                                                   const class GALGAS_prologueEpilogueList & inOperand6
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of reader 'description'
@@ -93,8 +89,6 @@ class GALGAS_galgas_33_DeclarationAST : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_galgas_33_GUIComponentListAST reader_mGUIComponentList (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_galgas_33_GrammarComponentListAST reader_mGrammarComponentList (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_galgas_33_LexiqueComponentListAST reader_mLexiqueComponentList (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_prologueEpilogueList reader_mPrologueDeclarationList (LOCATION_ARGS) const ;
 
