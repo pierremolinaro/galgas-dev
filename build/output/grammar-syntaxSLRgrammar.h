@@ -14,9 +14,9 @@
 #include "syntax-syntaxModelBuilder.h"
 //---------------------------------------------------------------------------------------------------------------------*
 
-class C_Compiler ;
-class GALGAS_lstring ;
-class GALGAS_string ;
+//class C_Compiler ;
+//class GALGAS_lstring ;
+//class GALGAS_string ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 

@@ -90,23 +90,7 @@ rule <declaration>
     indexingListAST += !indexName !indexComment ;
   end repeat ;
   $}$ ;
-#  ioDeclarations->mLexiqueComponentList +=
-#    !lexiqueComponentName
-#    !isTemplate
-#    !templateDelimitorList
-#    !templateReplacementList
-#    !lexicalAttributeList
-#    !lexicalStyleList
-#    !terminalDeclarationList
-#    !lexicalMessageDeclarationList
-#    !lexicalListDeclarationList
-#    !lexicalRuleList
-#    !externRoutineList
-#    !externFunctionList
-#    !indexingListAST
-#    !indexingDirectory
-#  ;
-  ioDeclarations->mSemanticDeclarationList += ![@lexiqueComponentAST new
+  ioDeclarations->mDeclarationList += ![@lexiqueComponentAST new
     !false # Is not predefined
     !lexiqueComponentName
     !isTemplate

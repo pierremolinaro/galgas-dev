@@ -21,6 +21,7 @@
 #include "enum-methodQualifier.h"
 #include "enum-typeKindEnum.h"
 #include "filewrapper-guiGenerationTemplates.h"
+#include "filewrapper-predefinedTypeGenerationTemplate.h"
 #include "filewrapper-semanticComponentGenerationTemplate.h"
 #include "filewrapper-syntaxFileGenerationTemplate.h"
 #include "filewrapper-typeGenerationTemplate.h"
@@ -236,403 +237,6 @@
 #include "uniquemap-unifiedTypeMap.h"
 #include "uniquemap-variableMap.h"
 
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                        Filewrapper 'guiGenerationTemplates'                                         *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-//--- All files of '' directory
-
-static const cRegularFileWrapper * gWrapperAllFiles_guiGenerationTemplates_0 [1] = {
-  NULL
-} ;
-
-//--- All sub-directories of '' directory
-
-static const cDirectoryWrapper * gWrapperAllDirectories_guiGenerationTemplates_0 [1] = {
-  NULL
-} ;
-
-//--- Directory ''
-
-const cDirectoryWrapper gWrapperDirectory_0_guiGenerationTemplates (
-  "",
-  0,
-  gWrapperAllFiles_guiGenerationTemplates_0,
-  0,
-  gWrapperAllDirectories_guiGenerationTemplates_0
-) ;
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                          Filewrapper template 'guiGenerationTemplates gui_implementation'                           *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string filewrapperTemplate_guiGenerationTemplates_gui_5F_implementation (C_Compiler * inCompiler,
-                                                                                const GALGAS_bool & in_GENERATE_5F_FOR_5F_GALGAS_33_,
-                                                                                const GALGAS_guiAnalysisContext & in_GUI_5F_CONTEXT
-                                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  C_String result ;
-  result << "\n"
-    "#import \"OC_Token.h\"\n"
-    "#import \"F_CocoaWrapperForGalgas.h\"\n" ;
-  GALGAS_uint index_101_ (0) ;
-  if (in_GUI_5F_CONTEXT.reader_mWithLexiqueList (SOURCE_FILE ("gui-implementation.m.gTemplate", 4)).isValid ()) {
-    cEnumerator_importedLexiqueList enumerator_101 (in_GUI_5F_CONTEXT.reader_mWithLexiqueList (SOURCE_FILE ("gui-implementation.m.gTemplate", 4)), kEnumeration_up) ;
-    while (enumerator_101.hasCurrentObject ()) {
-      result << "#import \"" ;
-      const enumGalgasBool test_0 = in_GENERATE_5F_FOR_5F_GALGAS_33_.boolEnum () ;
-      if (kBoolTrue == test_0) {
-        result << "lexique-" ;
-      }else if (kBoolFalse == test_0) {
-      }
-      result << enumerator_101.current_mLexiqueClassName (HERE).stringValue () ;
-      result << "-cocoa.m\"\n" ;
-      index_101_.increment () ;
-      enumerator_101.gotoNextObject () ;
-    }
-  }
-  GALGAS_uint index_237_ (0) ;
-  if (in_GUI_5F_CONTEXT.reader_mNibAndClassList (SOURCE_FILE ("gui-implementation.m.gTemplate", 7)).isValid ()) {
-    cEnumerator_stringlist enumerator_237 (in_GUI_5F_CONTEXT.reader_mNibAndClassList (SOURCE_FILE ("gui-implementation.m.gTemplate", 7)), kEnumeration_up) ;
-    while (enumerator_237.hasCurrentObject ()) {
-      result << "#import \"" ;
-      result << enumerator_237.current_mValue (HERE).stringValue () ;
-      result << ".h\"\n" ;
-      index_237_.increment () ;
-      enumerator_237.gotoNextObject () ;
-    }
-  }
-  result << "\n"
-    "#ifdef USER_DEFAULT_COLORS_DEFINED\n"
-    "  #import \"user_default_colors.h\"\n"
-    "#endif\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "#pragma mark Nibs\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "//                                                                                                                     *\n"
-    "//          N I B S   A N D   T H E I R   M A I N   C L A S S E S                                                      *\n"
-    "//                                                                                                                     *\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "NSArray * nibsAndClasses (void) {\n"
-    "  return [NSArray arrayWithObjects:\n" ;
-  GALGAS_uint index_1209_ (0) ;
-  if (in_GUI_5F_CONTEXT.reader_mNibAndClassList (SOURCE_FILE ("gui-implementation.m.gTemplate", 26)).isValid ()) {
-    cEnumerator_stringlist enumerator_1209 (in_GUI_5F_CONTEXT.reader_mNibAndClassList (SOURCE_FILE ("gui-implementation.m.gTemplate", 26)), kEnumeration_up) ;
-    while (enumerator_1209.hasCurrentObject ()) {
-      result << "    [NSArray arrayWithObjects:@\"" ;
-      result << enumerator_1209.current_mValue (HERE).stringValue () ;
-      result << "\", [" ;
-      result << enumerator_1209.current_mValue (HERE).stringValue () ;
-      result << " class], nil],\n" ;
-      index_1209_.increment () ;
-      enumerator_1209.gotoNextObject () ;
-    }
-  }
-  result << "    nil\n"
-    "  ] ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "#pragma mark Command Line Options\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "//                                                                                                                     *\n"
-    "//                       Command Line Options                                                                          *\n"
-    "//                                                                                                                     *\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n" ;
-  GALGAS_uint index_2126_ (0) ;
-  if (in_GUI_5F_CONTEXT.reader_mImportedOptionComponentList (SOURCE_FILE ("gui-implementation.m.gTemplate", 43)).isValid ()) {
-    cEnumerator_stringlist enumerator_2126 (in_GUI_5F_CONTEXT.reader_mImportedOptionComponentList (SOURCE_FILE ("gui-implementation.m.gTemplate", 43)), kEnumeration_up) ;
-    while (enumerator_2126.hasCurrentObject ()) {
-      result << "#import \"" ;
-      const enumGalgasBool test_1 = in_GENERATE_5F_FOR_5F_GALGAS_33_.boolEnum () ;
-      if (kBoolTrue == test_1) {
-        result << "option-" ;
-      }else if (kBoolFalse == test_1) {
-      }
-      result << enumerator_2126.current_mValue (HERE).stringValue () ;
-      result << "-cocoa.m\"\n" ;
-      index_2126_.increment () ;
-      enumerator_2126.gotoNextObject () ;
-    }
-  }
-  result << "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "void enterOptions (NSMutableArray * ioBoolOptionArray,\n"
-    "                   NSMutableArray * ioUIntOptionArray,\n"
-    "                   NSMutableArray * ioStringOptionArray) {\n" ;
-  GALGAS_uint index_2556_ (0) ;
-  if (in_GUI_5F_CONTEXT.reader_mImportedOptionComponentList (SOURCE_FILE ("gui-implementation.m.gTemplate", 53)).isValid ()) {
-    cEnumerator_stringlist enumerator_2556 (in_GUI_5F_CONTEXT.reader_mImportedOptionComponentList (SOURCE_FILE ("gui-implementation.m.gTemplate", 53)), kEnumeration_up) ;
-    while (enumerator_2556.hasCurrentObject ()) {
-      result << "  enterOptionsFor_" ;
-      result << enumerator_2556.current_mValue (HERE).reader_identifierRepresentation (SOURCE_FILE ("gui-implementation.m.gTemplate", 54)).stringValue () ;
-      result << " (ioBoolOptionArray, ioUIntOptionArray, ioStringOptionArray) ;\n" ;
-      index_2556_.increment () ;
-      enumerator_2556.gotoNextObject () ;
-    }
-  }
-  result << "}\n"
-    "\n" ;
-  GALGAS_uint index_2732_ (0) ;
-  if (in_GUI_5F_CONTEXT.reader_mWithLexiqueList (SOURCE_FILE ("gui-implementation.m.gTemplate", 58)).isValid ()) {
-    cEnumerator_importedLexiqueList enumerator_2732 (in_GUI_5F_CONTEXT.reader_mWithLexiqueList (SOURCE_FILE ("gui-implementation.m.gTemplate", 58)), kEnumeration_up) ;
-    while (enumerator_2732.hasCurrentObject ()) {
-      result << "//---------------------------------------------------------------------------------------------------------------------*\n"
-        "\n"
-        "#pragma mark Lexique " ;
-      result << enumerator_2732.current_mLexiqueClassName (HERE).stringValue () ;
-      result << "\n"
-        "\n"
-        "//---------------------------------------------------------------------------------------------------------------------*\n"
-        "//                                                                                                                     *\n"
-        "//                     P O P    U P    L I S T    D A T A                                                              *\n"
-        "//                                                                                                                     *\n"
-        "//---------------------------------------------------------------------------------------------------------------------*\n"
-        "\n" ;
-      GALGAS_uint index_3571_ (0) ;
-      if (enumerator_2732.current_mLabels (HERE).isValid ()) {
-        cEnumerator_guiLabelListAST enumerator_3571 (enumerator_2732.current_mLabels (HERE), kEnumeration_up) ;
-        while (enumerator_3571.hasCurrentObject ()) {
-          result << "static const UInt16 gPopUpData_" ;
-          result << enumerator_2732.current_mLexiqueClassName (HERE).reader_identifierRepresentation (SOURCE_FILE ("gui-implementation.m.gTemplate", 67)).stringValue () ;
-          result << "_" ;
-          result << enumerator_3571.current_mLocation (HERE).reader_locationIndex (inCompiler COMMA_SOURCE_FILE ("gui-implementation.m.gTemplate", 67)).reader_string (SOURCE_FILE ("gui-implementation.m.gTemplate", 67)).stringValue () ;
-          result << " [" ;
-          result << GALGAS_uint ((uint32_t) 2U).multiply_operation (enumerator_3571.current_mTerminalList (HERE).reader_length (SOURCE_FILE ("gui-implementation.m.gTemplate", 67)), inCompiler COMMA_SOURCE_FILE ("gui-implementation.m.gTemplate", 67)).add_operation (GALGAS_uint ((uint32_t) 2U), inCompiler COMMA_SOURCE_FILE ("gui-implementation.m.gTemplate", 67)).reader_string (SOURCE_FILE ("gui-implementation.m.gTemplate", 67)).stringValue () ;
-          result << "] = {\n"
-            "  " ;
-          result << enumerator_3571.current_mLeadingCharacterStrippedCount (HERE).reader_string (SOURCE_FILE ("gui-implementation.m.gTemplate", 68)).stringValue () ;
-          result << ", // Leading character count to strip\n" ;
-          GALGAS_uint index_3869_ (0) ;
-          if (enumerator_3571.current_mTerminalList (HERE).isValid ()) {
-            cEnumerator_terminalLabelListAST enumerator_3869 (enumerator_3571.current_mTerminalList (HERE), kEnumeration_up) ;
-            while (enumerator_3869.hasCurrentObject ()) {
-              result << "  " ;
-              result << enumerator_2732.current_mLexiqueClassName (HERE).stringValue () ;
-              result << "_1_" ;
-              result << enumerator_3869.current_mTerminal (HERE).mAttribute_string.reader_identifierRepresentation (SOURCE_FILE ("gui-implementation.m.gTemplate", 70)).stringValue () ;
-              result << ", " ;
-              result << enumerator_3869.current_mDisplayFlags (HERE).reader_string (SOURCE_FILE ("gui-implementation.m.gTemplate", 70)).stringValue () ;
-              result << ",\n" ;
-              index_3869_.increment () ;
-              enumerator_3869.gotoNextObject () ;
-            }
-          }
-          result << "  0\n"
-            "} ;\n"
-            "\n" ;
-          index_3571_.increment () ;
-          enumerator_3571.gotoNextObject () ;
-        }
-      }
-      result << "static const UInt16 * gPopUpData_" ;
-      result << enumerator_2732.current_mLexiqueClassName (HERE).reader_identifierRepresentation (SOURCE_FILE ("gui-implementation.m.gTemplate", 75)).stringValue () ;
-      result << " [" ;
-      result << enumerator_2732.current_mLabels (HERE).reader_length (SOURCE_FILE ("gui-implementation.m.gTemplate", 75)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("gui-implementation.m.gTemplate", 75)).reader_string (SOURCE_FILE ("gui-implementation.m.gTemplate", 75)).stringValue () ;
-      result << "] = {\n" ;
-      GALGAS_uint index_4169_ (0) ;
-      if (enumerator_2732.current_mLabels (HERE).isValid ()) {
-        cEnumerator_guiLabelListAST enumerator_4169 (enumerator_2732.current_mLabels (HERE), kEnumeration_up) ;
-        while (enumerator_4169.hasCurrentObject ()) {
-          result << "  gPopUpData_" ;
-          result << enumerator_2732.current_mLexiqueClassName (HERE).reader_identifierRepresentation (SOURCE_FILE ("gui-implementation.m.gTemplate", 77)).stringValue () ;
-          result << "_" ;
-          result << enumerator_4169.current_mLocation (HERE).reader_locationIndex (inCompiler COMMA_SOURCE_FILE ("gui-implementation.m.gTemplate", 77)).reader_string (SOURCE_FILE ("gui-implementation.m.gTemplate", 77)).stringValue () ;
-          result << ",\n" ;
-          index_4169_.increment () ;
-          enumerator_4169.gotoNextObject () ;
-        }
-      }
-      result << "  NULL\n"
-        "} ;\n"
-        "\n"
-        "//---------------------------------------------------------------------------------------------------------------------*\n"
-        "//                                                                                                                     *\n"
-        "//                            Lexique interface                                                                        *\n"
-        "//                                                                                                                     *\n"
-        "//---------------------------------------------------------------------------------------------------------------------*\n"
-        "\n"
-        "@interface OC_Tokenizer_" ;
-      result << enumerator_2732.current_mLexiqueClassName (HERE).stringValue () ;
-      result << " : OC_Lexique_" ;
-      result << enumerator_2732.current_mLexiqueClassName (HERE).stringValue () ;
-      result << " {\n"
-        "\n"
-        "}\n"
-        "\n"
-        "- (NSString *) blockComment ;\n"
-        "\n"
-        "- (const UInt16 * *) popupListData ;\n"
-        "\n"
-        "- (NSUInteger) textMacroCount ;\n"
-        "\n"
-        "- (NSString *) textMacroTitleAtIndex: (const UInt32) inIndex ;\n"
-        "\n"
-        "- (NSString *) textMacroContentAtIndex: (const UInt32) inIndex ;\n"
-        "\n"
-        "- (NSString *) tabItemTitle ;\n"
-        "\n"
-        "@end\n"
-        "\n"
-        "//---------------------------------------------------------------------------------------------------------------------*\n"
-        "\n"
-        "@implementation OC_Tokenizer_" ;
-      result << enumerator_2732.current_mLexiqueClassName (HERE).stringValue () ;
-      result << "\n"
-        "\n"
-        "//---------------------------------------------------------------------------------------------------------------------*\n"
-        "\n"
-        "- (NSString *) blockComment {\n"
-        "  return @" ;
-      result << enumerator_2732.current_mBlockComment (HERE).reader_utf_38_Representation (SOURCE_FILE ("gui-implementation.m.gTemplate", 99)).stringValue () ;
-      result << " ;\n"
-        "}\n"
-        "\n"
-        "//---------------------------------------------------------------------------------------------------------------------*\n"
-        "\n"
-        "- (const UInt16 * *) popupListData {\n"
-        "  return gPopUpData_" ;
-      result << enumerator_2732.current_mLexiqueClassName (HERE).reader_identifierRepresentation (SOURCE_FILE ("gui-implementation.m.gTemplate", 103)).stringValue () ;
-      result << " ;\n"
-        "}\n"
-        "\n"
-        "//---------------------------------------------------------------------------------------------------------------------*\n"
-        "\n"
-        "- (NSUInteger) textMacroCount {\n"
-        "  return " ;
-      result << enumerator_2732.current_mTextMacroList (HERE).reader_length (SOURCE_FILE ("gui-implementation.m.gTemplate", 107)).reader_string (SOURCE_FILE ("gui-implementation.m.gTemplate", 107)).stringValue () ;
-      result << " ;\n"
-        "}\n"
-        "\n"
-        "//---------------------------------------------------------------------------------------------------------------------*\n"
-        "\n"
-        "- (NSString *) tabItemTitle {\n"
-        "  return @" ;
-      result << enumerator_2732.current_mTitle (HERE).reader_utf_38_Representation (SOURCE_FILE ("gui-implementation.m.gTemplate", 111)).stringValue () ;
-      result << " ;\n"
-        "}\n"
-        "\n"
-        "//---------------------------------------------------------------------------------------------------------------------*\n"
-        "\n"
-        "- (NSString *) textMacroTitleAtIndex: (const UInt32) inIndex {\n"
-        "  static NSString * kTextMacroTitle [" ;
-      result << enumerator_2732.current_mTextMacroList (HERE).reader_length (SOURCE_FILE ("gui-implementation.m.gTemplate", 115)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("gui-implementation.m.gTemplate", 115)).reader_string (SOURCE_FILE ("gui-implementation.m.gTemplate", 115)).stringValue () ;
-      result << "] = {\n" ;
-      GALGAS_uint index_6812_ (0) ;
-      if (enumerator_2732.current_mTextMacroList (HERE).isValid ()) {
-        cEnumerator_textMacroList enumerator_6812 (enumerator_2732.current_mTextMacroList (HERE), kEnumeration_up) ;
-        while (enumerator_6812.hasCurrentObject ()) {
-          result << "    @" ;
-          result << enumerator_6812.current_mKey (HERE).reader_utf_38_Representation (SOURCE_FILE ("gui-implementation.m.gTemplate", 117)).stringValue () ;
-          result << ",\n" ;
-          index_6812_.increment () ;
-          enumerator_6812.gotoNextObject () ;
-        }
-      }
-      result << "    NULL\n"
-        "  } ;\n"
-        "  return kTextMacroTitle [inIndex] ;\n"
-        "}\n"
-        "\n"
-        "//---------------------------------------------------------------------------------------------------------------------*\n"
-        "\n"
-        "- (NSString *) textMacroContentAtIndex: (const UInt32) inIndex {\n"
-        "  static NSString * kTextMacroContent [" ;
-      result << enumerator_2732.current_mTextMacroList (HERE).reader_length (SOURCE_FILE ("gui-implementation.m.gTemplate", 125)).add_operation (GALGAS_uint ((uint32_t) 1U), inCompiler COMMA_SOURCE_FILE ("gui-implementation.m.gTemplate", 125)).reader_string (SOURCE_FILE ("gui-implementation.m.gTemplate", 125)).stringValue () ;
-      result << "] = {\n" ;
-      GALGAS_uint index_7261_ (0) ;
-      if (enumerator_2732.current_mTextMacroList (HERE).isValid ()) {
-        cEnumerator_textMacroList enumerator_7261 (enumerator_2732.current_mTextMacroList (HERE), kEnumeration_up) ;
-        while (enumerator_7261.hasCurrentObject ()) {
-          result << "    @" ;
-          result << enumerator_7261.current_mContents (HERE).reader_utf_38_Representation (SOURCE_FILE ("gui-implementation.m.gTemplate", 127)).stringValue () ;
-          result << ",\n" ;
-          index_7261_.increment () ;
-          enumerator_7261.gotoNextObject () ;
-        }
-      }
-      result << "    NULL\n"
-        "  } ;\n"
-        "  return kTextMacroContent [inIndex] ;\n"
-        "}\n"
-        "\n"
-        "//---------------------------------------------------------------------------------------------------------------------*\n"
-        "\n"
-        "@end\n"
-        "\n" ;
-      index_2732_.increment () ;
-      enumerator_2732.gotoNextObject () ;
-    }
-  }
-  result << "\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "OC_Lexique * tokenizerForExtension (const NSString * inExtension) {\n"
-    "  OC_Lexique * result = nil ;\n" ;
-  GALGAS_uint index_7828_ (0) ;
-  if (in_GUI_5F_CONTEXT.reader_mExtensionMap (SOURCE_FILE ("gui-implementation.m.gTemplate", 142)).isValid ()) {
-    cEnumerator_extensionMap enumerator_7828 (in_GUI_5F_CONTEXT.reader_mExtensionMap (SOURCE_FILE ("gui-implementation.m.gTemplate", 142)), kEnumeration_up) ;
-    const bool nonEmpty_enumerator_7828 = enumerator_7828.hasCurrentObject () ;
-    if (nonEmpty_enumerator_7828) {
-      result << "  if" ;
-    }
-    while (enumerator_7828.hasCurrentObject ()) {
-      result << " ([inExtension isEqualToString:@" ;
-      result << enumerator_7828.current_lkey (HERE).mAttribute_string.reader_utf_38_Representation (SOURCE_FILE ("gui-implementation.m.gTemplate", 144)).stringValue () ;
-      result << "]) {\n"
-        "    result = [OC_Tokenizer_" ;
-      result << enumerator_7828.current_mLexiqueName (HERE).stringValue () ;
-      result << " new] ;\n" ;
-      if (enumerator_7828.hasNextObject ()) {
-        result << "  }else if" ;
-      }
-      index_7828_.increment () ;
-      enumerator_7828.gotoNextObject () ;
-    }
-    if (nonEmpty_enumerator_7828) {
-      result << "  }\n" ;
-    }
-  }
-  result << "  return result ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n"
-    "NSArray * tokenizers (void) {\n"
-    "  return [NSArray arrayWithObjects:\n" ;
-  GALGAS_uint index_8254_ (0) ;
-  if (in_GUI_5F_CONTEXT.reader_mWithLexiqueList (SOURCE_FILE ("gui-implementation.m.gTemplate", 156)).isValid ()) {
-    cEnumerator_importedLexiqueList enumerator_8254 (in_GUI_5F_CONTEXT.reader_mWithLexiqueList (SOURCE_FILE ("gui-implementation.m.gTemplate", 156)), kEnumeration_up) ;
-    while (enumerator_8254.hasCurrentObject ()) {
-      result << "    [OC_Tokenizer_" ;
-      result << enumerator_8254.current_mLexiqueClassName (HERE).stringValue () ;
-      result << " new],\n" ;
-      index_8254_.increment () ;
-      enumerator_8254.gotoNextObject () ;
-    }
-  }
-  result << "    nil\n"
-    "  ] ;\n"
-    "}\n"
-    "\n"
-    "//---------------------------------------------------------------------------------------------------------------------*\n"
-    "\n" ;
-  return GALGAS_string (result) ;
-}
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -19357,4 +18961,934 @@ void routine_generateWrapperContents (const GALGAS_string constinArgument_inFile
     "\n"), inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2804))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2797)) ;
 }
 
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                   Filewrapper 'predefinedTypeGenerationTemplate'                                    *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+//--- All files of '' directory
+
+static const cRegularFileWrapper * gWrapperAllFiles_predefinedTypeGenerationTemplate_0 [1] = {
+  NULL
+} ;
+
+//--- All sub-directories of '' directory
+
+static const cDirectoryWrapper * gWrapperAllDirectories_predefinedTypeGenerationTemplate_0 [1] = {
+  NULL
+} ;
+
+//--- Directory ''
+
+const cDirectoryWrapper gWrapperDirectory_0_predefinedTypeGenerationTemplate (
+  "",
+  0,
+  gWrapperAllFiles_predefinedTypeGenerationTemplate_0,
+  0,
+  gWrapperAllDirectories_predefinedTypeGenerationTemplate_0
+) ;
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                Filewrapper template 'predefinedTypeGenerationTemplate predefinedTypesImplementation'                *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_predefinedTypesImplementation (C_Compiler * /* inCompiler */
+                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+  C_String result ;
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "#include \"galgas2/predefined-types.h\"\n"
+    "#include \"galgas2/cCollectionElement.h\"\n"
+    "#include \"galgas2/cSortedListElement.h\"\n"
+    "#include \"galgas2/capSortedListElement.h\"\n"
+    "#include \"galgas2/C_Compiler.h\"\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "cMapElement::cMapElement (const GALGAS_lstring & inLKey\n"
+    "                          COMMA_LOCATION_ARGS) :\n"
+    "cCollectionElement (THERE),\n"
+    "mAttribute_lkey (inLKey) {\n"
+    "}\n"
+    "\n" ;
+  return GALGAS_string (result) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                Filewrapper template 'predefinedTypeGenerationTemplate primitiveTypesHeaderPrologue'                 *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_primitiveTypesHeaderPrologue (C_Compiler * /* inCompiler */,
+                                                                                                 const GALGAS_stringset & in_TYPE_5F_LIST
+                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  C_String result ;
+  result << "\n"
+    "#ifndef GALGAS2_PREDEFINED_TYPES\n"
+    "#define GALGAS2_PREDEFINED_TYPES\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "#include \"strings/C_String.h\"\n"
+    "#include \"galgas2/AC_GALGAS_root.h\"\n"
+    "#include \"galgas2/C_galgas_type_descriptor.h\"\n"
+    "#include \"galgas2/typeComparisonResult.h\"\n"
+    "#include \"galgas2/cGenericAbstractEnumerator.h\"\n"
+    "#include \"galgas2/cEnumerator_range.h\"\n"
+    "#include \"galgas2/AC_GALGAS_list.h\"\n"
+    "#include \"galgas2/AC_GALGAS_sortedlist.h\"\n"
+    "#include \"galgas2/AC_GALGAS_map.h\"\n"
+    "#include \"galgas2/AC_GALGAS_uniqueMap.h\"\n"
+    "#include \"galgas2/AC_GALGAS_class.h\"\n"
+    "#include \"galgas2/AC_GALGAS_enumAssociatedValues.h\"\n"
+    "#include \"galgas2/AC_GALGAS_graph.h\"\n"
+    "#include \"galgas2/acPtr_class.h\"\n"
+    "#include \"command_line_interface/C_BoolCommandLineOption.h\"\n"
+    "#include \"command_line_interface/C_UIntCommandLineOption.h\"\n"
+    "#include \"command_line_interface/C_StringCommandLineOption.h\"\n"
+    "#include \"utilities/C_PrologueEpilogue.h\"\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "class C_Compiler ;\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n" ;
+  GALGAS_uint index_1256_ (0) ;
+  if (in_TYPE_5F_LIST.isValid ()) {
+    cEnumerator_stringset enumerator_1256 (in_TYPE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_1256.hasCurrentObject ()) {
+      result << "class GALGAS_" ;
+      result << enumerator_1256.current_key (HERE).reader_identifierRepresentation (SOURCE_FILE ("predefined-types-file-header.h.gTemplate", 34)).stringValue () ;
+      result << " ;\n" ;
+      index_1256_.increment () ;
+      enumerator_1256.gotoNextObject () ;
+    }
+  }
+  result << "\n" ;
+  return GALGAS_string (result) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                  Filewrapper template 'predefinedTypeGenerationTemplate predefinedTypeSeparation'                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_predefinedTypeSeparation (C_Compiler * /* inCompiler */
+                                                                                             COMMA_UNUSED_LOCATION_ARGS) {
+  C_String result ;
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "#include \"galgas2/cCollectionElement.h\"\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "class cMapElement : public cCollectionElement {\n"
+    "//--- Attribut\n"
+    "  public : GALGAS_lstring mAttribute_lkey ;\n"
+    "\n"
+    "//--- Default constructor\n"
+    "  public : cMapElement (const GALGAS_lstring & inLKey\n"
+    "                        COMMA_LOCATION_ARGS) ;\n"
+    "\n"
+    "//--- No copy\n"
+    "  private : cMapElement (const cMapElement &) ;\n"
+    "  private : cMapElement & operator = (const cMapElement &) ;\n"
+    "} ;\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "#include \"galgas2/cSortedListElement.h\"\n"
+    "#include \"galgas2/capSortedListElement.h\"\n"
+    "#include \"galgas2/C_galgas_function_descriptor.h\"\n"
+    "#include \"galgas2/cObjectArray.h\"\n"
+    "\n"
+    "\n" ;
+  return GALGAS_string (result) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                          Filewrapper template 'predefinedTypeGenerationTemplate sint_type'                          *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_sint_5F_type (C_Compiler * /* inCompiler */
+                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  C_String result ;
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//                                                                                                                     *\n"
+    "//" ;
+  result << GALGAS_string ("@sint type").reader_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("sint-type.h.gTemplate", 3)).stringValue () ;
+  result << "*\n"
+    "//                                                                                                                     *\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "class GALGAS_sint : public AC_GALGAS_root {\n"
+    "//--------------------------------- Private data members\n"
+    "  private : bool mIsValid ;\n"
+    "  private : int32_t mSIntValue ;\n"
+    "\n"
+    "//--------------------------------- Accessors\n"
+    "  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mIsValid ; }\n"
+    "  public : VIRTUAL_IN_DEBUG inline void drop (void) { mIsValid = false ; }\n"
+    "  public : inline int32_t sintValue (void) const { return mSIntValue ; }\n"
+    "\n"
+    "//--------------------------------- Default constructor\n"
+    "  public : GALGAS_sint (void) ;\n"
+    "\n"
+    "//--------------------------------- Default GALGAS constructor\n"
+    "  public : static GALGAS_sint constructor_default (LOCATION_ARGS) ;\n"
+    "\n"
+    "//--------------------------------- Native constructor\n"
+    "  public : GALGAS_sint (const int32_t inValue) ;\n"
+    "\n" ;
+  return GALGAS_string (result) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                         Filewrapper template 'predefinedTypeGenerationTemplate sint64_type'                         *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_sint_36__34__5F_type (C_Compiler * /* inCompiler */
+                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  C_String result ;
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//                                                                                                                     *\n"
+    "//" ;
+  result << GALGAS_string ("@sint64 type").reader_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("sint64-type.h.gTemplate", 3)).stringValue () ;
+  result << "*\n"
+    "//                                                                                                                     *\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "class GALGAS_sint_36__34_ : public AC_GALGAS_root {\n"
+    "//--------------------------------- Private data members\n"
+    "  private : bool mIsValid ;\n"
+    "  private : int64_t mSInt64Value ;\n"
+    "\n"
+    "//--------------------------------- Accessors\n"
+    "  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mIsValid ; }\n"
+    "  public : VIRTUAL_IN_DEBUG inline void drop (void) { mIsValid = false ; }\n"
+    "  public : inline int64_t uint64Value (void) const { return mSInt64Value ; }\n"
+    "\n"
+    "//--------------------------------- Default constructor\n"
+    "  public : GALGAS_sint_36__34_ (void) ;\n"
+    "\n"
+    "//--------------------------------- Default GALGAS constructor\n"
+    "  public : static GALGAS_sint_36__34_ constructor_default (LOCATION_ARGS) ;\n"
+    "\n"
+    "//--------------------------------- Native constructor\n"
+    "  public : GALGAS_sint_36__34_ (const int64_t inValue) ;\n"
+    "\n" ;
+  return GALGAS_string (result) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                         Filewrapper template 'predefinedTypeGenerationTemplate object_type'                         *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_object_5F_type (C_Compiler * /* inCompiler */
+                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  C_String result ;
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//                                                                                                                     *\n"
+    "//" ;
+  result << GALGAS_string ("@object type").reader_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("object-type.h.gTemplate", 3)).stringValue () ;
+  result << "*\n"
+    "//                                                                                                                     *\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "class cPtr_object ;\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "class GALGAS_object : public AC_GALGAS_root {\n"
+    "//--------------------------------- Private data member\n"
+    "  private : cPtr_object * mSharedObject ;\n"
+    "\n"
+    "//--------------------------------- Accessors\n"
+    "  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mSharedObject != NULL ; }\n"
+    "  public : VIRTUAL_IN_DEBUG void drop (void) ;\n"
+    "\n"
+    "//--------------------------------- Default constructor\n"
+    "  public : GALGAS_object (void) ;\n"
+    "\n"
+    "//--------------------------------- Constructor from pointer\n"
+    "  public : GALGAS_object (AC_GALGAS_root * inObjectPointer\n"
+    "                          COMMA_LOCATION_ARGS) ;\n"
+    "\n"
+    "//--------------------------------- Destructor (virtual in debug mode)\n"
+    "  public : VIRTUAL_IN_DEBUG ~ GALGAS_object (void) ;\n"
+    "\n"
+    "//--------------------------------- Handle copy\n"
+    "  public : GALGAS_object (const GALGAS_object & inSource) ;\n"
+    "  public : GALGAS_object & operator = (const GALGAS_object & inSource) ;\n"
+    "\n"
+    "//--------------------------------- Embedded Object\n"
+    "  public : const AC_GALGAS_root * embeddedObject (void) const ;\n"
+    "\n" ;
+  return GALGAS_string (result) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                          Filewrapper template 'predefinedTypeGenerationTemplate uint_type'                          *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_uint_5F_type (C_Compiler * /* inCompiler */
+                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  C_String result ;
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//                                                                                                                     *\n"
+    "//" ;
+  result << GALGAS_string ("@uint type").reader_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("uint-type.h.gTemplate", 3)).stringValue () ;
+  result << "*\n"
+    "//                                                                                                                     *\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "class GALGAS_uint : public AC_GALGAS_root {\n"
+    "//--------------------------------- Private data members\n"
+    "  private : bool mIsValid ;\n"
+    "  private : uint32_t mUIntValue ;\n"
+    "\n"
+    "//--------------------------------- Accessors\n"
+    "  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mIsValid ; }\n"
+    "  public : VIRTUAL_IN_DEBUG inline void drop (void) { mIsValid = false ; }\n"
+    "  public : inline uint32_t uintValue (void) const { return mUIntValue ; }\n"
+    "  public : inline void increment (void) { mUIntValue ++ ; }\n"
+    "\n"
+    "//--------------------------------- Default constructor\n"
+    "  public : GALGAS_uint (void) ;\n"
+    "\n"
+    "//--------------------------------- Default GALGAS constructor\n"
+    "  public : static GALGAS_uint constructor_default (LOCATION_ARGS) ;\n"
+    "\n"
+    "//--------------------------------- Native constructors\n"
+    "  public : GALGAS_uint (const uint32_t inValue) ;\n"
+    "  public : GALGAS_uint (const bool inValid, const uint32_t inValue) ;\n"
+    "\n" ;
+  return GALGAS_string (result) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                         Filewrapper template 'predefinedTypeGenerationTemplate uint64_type'                         *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_uint_36__34__5F_type (C_Compiler * /* inCompiler */
+                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
+  C_String result ;
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//                                                                                                                     *\n"
+    "//" ;
+  result << GALGAS_string ("@uint64 type").reader_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("uint64-type.h.gTemplate", 3)).stringValue () ;
+  result << "*\n"
+    "//                                                                                                                     *\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "class GALGAS_uint_36__34_ : public AC_GALGAS_root\n"
+    " {\n"
+    "//--------------------------------- Private data members\n"
+    "  private : bool mIsValid ;\n"
+    "  private : uint64_t mUInt64Value ;\n"
+    "\n"
+    "//--------------------------------- Accessors\n"
+    "  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mIsValid ; }\n"
+    "  public : VIRTUAL_IN_DEBUG inline void drop (void) { mIsValid = false ; }\n"
+    "  public : inline uint64_t uint64Value (void) const { return mUInt64Value ; }\n"
+    "\n"
+    "//--------------------------------- Default constructor\n"
+    "  public : GALGAS_uint_36__34_ (void) ;\n"
+    "\n"
+    "//--------------------------------- Default GALGAS constructor\n"
+    "  public : static GALGAS_uint_36__34_ constructor_default (LOCATION_ARGS) ;\n"
+    "\n"
+    "//--------------------------------- Native constructor\n"
+    "  public : GALGAS_uint_36__34_ (const uint64_t inValue) ;\n"
+    "\n" ;
+  return GALGAS_string (result) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                          Filewrapper template 'predefinedTypeGenerationTemplate bool_type'                          *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_bool_5F_type (C_Compiler * /* inCompiler */
+                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  C_String result ;
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//                                                                                                                     *\n"
+    "//" ;
+  result << GALGAS_string ("@bool type").reader_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("bool-type.h.gTemplate", 3)).stringValue () ;
+  result << "*\n"
+    "//                                                                                                                     *\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "typedef enum {kBoolNotValid, kBoolFalse, kBoolTrue} enumGalgasBool ;\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "class GALGAS_bool : public AC_GALGAS_root {\n"
+    "//--------------------------------- Private data members\n"
+    "  private : bool mIsValid ;\n"
+    "  private : bool mBoolValue ;\n"
+    "\n"
+    "//--------------------------------- Accessors\n"
+    "  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mIsValid ; }\n"
+    "  public : inline bool isValidAndTrue (void) const { return mIsValid && mBoolValue ; }\n"
+    "  public : inline bool boolValue (void) const { return mBoolValue ; }\n"
+    "  public : enumGalgasBool boolEnum (void) const ;\n"
+    "\n"
+    "//--------------------------------- Drop\n"
+    "  public : VIRTUAL_IN_DEBUG inline void drop (void) { mIsValid = false ; }\n"
+    "\n"
+    "//--------------------------------- Default constructor\n"
+    "  public : GALGAS_bool (void) ;\n"
+    "\n"
+    "//--------------------------------- Default GALGAS constructor\n"
+    "  public : static GALGAS_bool constructor_default (LOCATION_ARGS) ;\n"
+    "\n"
+    "//--------------------------------- Native constructors\n"
+    "  public : GALGAS_bool (const bool inValue) ; // Is built\n"
+    "  public : GALGAS_bool (const bool inBuilt, const bool inValue) ;\n"
+    "\n"
+    "//--------------------------------- Constructor for comparison result\n"
+    "  public : GALGAS_bool (const typeComparisonKind inComparisonKind,\n"
+    "                        const typeComparisonResult inComparisonResult) ;\n"
+    "\n" ;
+  return GALGAS_string (result) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                       Filewrapper template 'predefinedTypeGenerationTemplate binaryset_type'                        *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_binaryset_5F_type (C_Compiler * /* inCompiler */
+                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  C_String result ;
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//                                                                                                                     *\n"
+    "//" ;
+  result << GALGAS_string ("@binaryset type").reader_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("binaryset-type.h.gTemplate", 3)).stringValue () ;
+  result << "*\n"
+    "//                                                                                                                     *\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "#include \"bdd/C_BDD.h\"\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "class GALGAS_binaryset : public AC_GALGAS_root {\n"
+    "//--------------------------------- Private data members\n"
+    "  private : bool mIsValid ;\n"
+    "  private : C_BDD mBDD ;\n"
+    "\n"
+    "//--------------------------------- Accessors\n"
+    "  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mIsValid ; }\n"
+    "  public : VIRTUAL_IN_DEBUG inline void drop (void) { mIsValid = false ; }\n"
+    "  public : inline C_BDD bddValue (void) const { return mBDD ; }\n"
+    "\n"
+    "//--------------------------------- Default constructor\n"
+    "  public : GALGAS_binaryset (void) ;\n"
+    "\n"
+    "//--------------------------------- Native constructor\n"
+    "  public : GALGAS_binaryset (const C_BDD & inValue) ;\n"
+    "\n" ;
+  return GALGAS_string (result) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                        Filewrapper template 'predefinedTypeGenerationTemplate function_type'                        *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_function_5F_type (C_Compiler * /* inCompiler */
+                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  C_String result ;
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//                                                                                                                     *\n"
+    "//" ;
+  result << GALGAS_string ("@function type").reader_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("function-type.h.gTemplate", 3)).stringValue () ;
+  result << "*\n"
+    "//                                                                                                                     *\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "class C_galgas_function_descriptor ;\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "class GALGAS_function : public AC_GALGAS_root {\n"
+    "//--------------------------------- Private data member\n"
+    "  private : const C_galgas_function_descriptor * mFunctionDescriptor ;\n"
+    "\n"
+    "//--------------------------------- Accessors\n"
+    "  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return NULL != mFunctionDescriptor ; }\n"
+    "  public : VIRTUAL_IN_DEBUG inline void drop (void) { mFunctionDescriptor = NULL ; }\n"
+    "  public : VIRTUAL_IN_DEBUG inline const C_galgas_function_descriptor * functionValue (void) const { return mFunctionDescriptor ; }\n"
+    "\n"
+    "//--------------------------------- Default constructor\n"
+    "  public : GALGAS_function (void) ;\n"
+    "\n"
+    "//--------------------------------- Destructor (virtual in debug mode)\n"
+    "  public : VIRTUAL_IN_DEBUG ~ GALGAS_function (void) ;\n"
+    "\n"
+    "//--------------------------------- Handle copy\n"
+    "  public : GALGAS_function (const GALGAS_function & inSource) ;\n"
+    "  public : GALGAS_function & operator = (const GALGAS_function & inSource) ;\n"
+    "\n"
+    "//--------------------------------- Native constructor\n"
+    "  public : GALGAS_function (const C_galgas_function_descriptor * inValue) ;\n"
+    "\n" ;
+  return GALGAS_string (result) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                          Filewrapper template 'predefinedTypeGenerationTemplate type_type'                          *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_type_5F_type (C_Compiler * /* inCompiler */
+                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  C_String result ;
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//                                                                                                                     *\n"
+    "//" ;
+  result << GALGAS_string ("@type type").reader_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("type-type.h.gTemplate", 3)).stringValue () ;
+  result << "*\n"
+    "//                                                                                                                     *\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "class GALGAS_type : public AC_GALGAS_root\n"
+    " {\n"
+    "//--------------------------------- Private data members\n"
+    "  private : const C_galgas_type_descriptor * mTypeDescriptor ;\n"
+    "\n"
+    "//--------------------------------- Accessors\n"
+    "  public : inline bool isValid (void) const { return NULL != mTypeDescriptor ; }\n"
+    "  public : inline void drop (void) { mTypeDescriptor = NULL ; }\n"
+    "  public : inline const C_galgas_type_descriptor * typeValue (void) const { return mTypeDescriptor ; }\n"
+    "\n"
+    "//--------------------------------- Default constructor\n"
+    "  public : GALGAS_type (void) ;\n"
+    "\n"
+    "//--------------------------------- Destructor (virtual in debug mode)\n"
+    "  public : VIRTUAL_IN_DEBUG ~ GALGAS_type (void) ;\n"
+    "\n"
+    "//--------------------------------- Handle copy\n"
+    "  public : GALGAS_type (const GALGAS_type & inSource) ;\n"
+    "  public : GALGAS_type & operator = (const GALGAS_type & inSource) ;\n"
+    "\n"
+    "//--------------------------------- Native constructor\n"
+    "  public : GALGAS_type (const C_galgas_type_descriptor * inValue) ;\n"
+    "\n" ;
+  return GALGAS_string (result) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                        Filewrapper template 'predefinedTypeGenerationTemplate location_type'                        *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_location_5F_type (C_Compiler * /* inCompiler */
+                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
+  C_String result ;
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//                                                                                                                     *\n"
+    "//" ;
+  result << GALGAS_string ("@location type").reader_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("location-type.h.gTemplate", 3)).stringValue () ;
+  result << "*\n"
+    "//                                                                                                                     *\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "class C_SourceTextInString ;\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "#include \"galgas2/C_LocationInSource.h\"\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "class GALGAS_location : public AC_GALGAS_root {\n"
+    "//--------------------------------- Private data members\n"
+    "  private : C_LocationInSource mStartLocationInSource ;\n"
+    "  private : C_LocationInSource mEndLocationInSource ;\n"
+    "  private : C_SourceTextInString * mSourceText ;\n"
+    "  private : bool mIsValid ;\n"
+    "\n"
+    "//--------------------------------- Accessors\n"
+    "  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mIsValid ; }\n"
+    "  public : VIRTUAL_IN_DEBUG bool isValidAndNotNowhere (void) const ;\n"
+    "  public : VIRTUAL_IN_DEBUG void drop (void) ;\n"
+    "  public : C_LocationInSource startLocation (void) const { return mStartLocationInSource ; }\n"
+    "  public : C_LocationInSource endLocation (void) const { return mEndLocationInSource ; }\n"
+    "  public : C_SourceTextInString * sourceText (void) const { return mSourceText ; }\n"
+    "\n"
+    "//--------------------------------- Default constructor\n"
+    "  public : GALGAS_location (void) ;\n"
+    "\n"
+    "//--------------------------------- Destructor (virtual in debug mode)\n"
+    "  public : VIRTUAL_IN_DEBUG ~ GALGAS_location (void) ;\n"
+    "\n"
+    "//--------------------------------- Handle copy\n"
+    "  public : GALGAS_location (const GALGAS_location & inSource) ;\n"
+    "  public : GALGAS_location & operator = (const GALGAS_location & inSource) ;\n"
+    "\n"
+    "//--------------------------------- Native constructor\n"
+    "  public : GALGAS_location (const C_LocationInSource & inStartLocationInSource,\n"
+    "                            const C_LocationInSource & inEndLocationInSource,\n"
+    "                            C_SourceTextInString * inSourceText) ;\n"
+    "\n" ;
+  return GALGAS_string (result) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                          Filewrapper template 'predefinedTypeGenerationTemplate data_type'                          *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_data_5F_type (C_Compiler * /* inCompiler */
+                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  C_String result ;
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//                                                                                                                     *\n"
+    "//" ;
+  result << GALGAS_string ("@data type").reader_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("data-type.h.gTemplate", 3)).stringValue () ;
+  result << "*\n"
+    "//                                                                                                                     *\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "class GALGAS_data : public AC_GALGAS_root {\n"
+    "//--------------------------------- Private data members\n"
+    "  private : bool mIsValid ;\n"
+    "  private : C_Data mData ;\n"
+    "\n"
+    "//--------------------------------- Accessors\n"
+    "  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mIsValid ; }\n"
+    "  public : VIRTUAL_IN_DEBUG inline void drop (void) { mIsValid = false ; }\n"
+    "  public : inline C_Data dataValue (void) const { return mData ; }\n"
+    "\n"
+    "//--------------------------------- Default constructor\n"
+    "  public : GALGAS_data (void) ;\n"
+    "\n"
+    "//--------------------------------- Native constructors\n"
+    "  public : GALGAS_data (const C_Data & inData) ;\n"
+    "\n" ;
+  return GALGAS_string (result) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                          Filewrapper template 'predefinedTypeGenerationTemplate char_type'                          *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_char_5F_type (C_Compiler * /* inCompiler */
+                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
+  C_String result ;
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//                                                                                                                     *\n"
+    "//" ;
+  result << GALGAS_string ("@char type").reader_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("char-type.h.gTemplate", 3)).stringValue () ;
+  result << "*\n"
+    "//                                                                                                                     *\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "class GALGAS_char : public AC_GALGAS_root {\n"
+    "//--------------------------------- Private data members\n"
+    "  private : bool mIsValid ;\n"
+    "  private : utf32 mCharValue ;\n"
+    "\n"
+    "//--------------------------------- Accessors\n"
+    "  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mIsValid ; }\n"
+    "  public : VIRTUAL_IN_DEBUG inline void drop (void) { mIsValid = false ; }\n"
+    "  public : inline utf32 charValue (void) const { return mCharValue ; }\n"
+    "\n"
+    "//--------------------------------- Default constructor\n"
+    "  public : GALGAS_char (void) ;\n"
+    "\n"
+    "//--------------------------------- Default GALGAS constructor\n"
+    "  public : static GALGAS_char constructor_default (LOCATION_ARGS) ;\n"
+    "\n"
+    "//--------------------------------- Native constructor\n"
+    "  public : GALGAS_char (const utf32 inValue) ;\n"
+    "\n" ;
+  return GALGAS_string (result) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                         Filewrapper template 'predefinedTypeGenerationTemplate double_type'                         *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_double_5F_type (C_Compiler * /* inCompiler */
+                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  C_String result ;
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//                                                                                                                     *\n"
+    "//" ;
+  result << GALGAS_string ("@double type").reader_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("double-type.h.gTemplate", 3)).stringValue () ;
+  result << "*\n"
+    "//                                                                                                                     *\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "class GALGAS_double : public AC_GALGAS_root {\n"
+    "//--------------------------------- Private data members\n"
+    "  private : bool mIsValid ;\n"
+    "  private : double mDoubleValue ;\n"
+    "\n"
+    "//--------------------------------- Accessors\n"
+    "  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mIsValid ; }\n"
+    "  public : VIRTUAL_IN_DEBUG inline void drop (void) { mIsValid = false ; }\n"
+    "  public : inline double doubleValue (void) const { return mDoubleValue ; }\n"
+    "\n"
+    "//--------------------------------- Default constructor\n"
+    "  public : GALGAS_double (void) ;\n"
+    "\n"
+    "//--------------------------------- Default GALGAS constructor\n"
+    "  public : static GALGAS_double constructor_default (LOCATION_ARGS) ;\n"
+    "\n"
+    "//--------------------------------- Native constructor\n"
+    "  public : GALGAS_double (const double inValue) ;\n"
+    "\n" ;
+  return GALGAS_string (result) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                         Filewrapper template 'predefinedTypeGenerationTemplate string_type'                         *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_string_5F_type (C_Compiler * /* inCompiler */
+                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  C_String result ;
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//                                                                                                                     *\n"
+    "//" ;
+  result << GALGAS_string ("@string type").reader_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("string-type.h.gTemplate", 3)).stringValue () ;
+  result << "*\n"
+    "//                                                                                                                     *\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "AC_OutputStream & operator << (AC_OutputStream & inStream,\n"
+    "                               const GALGAS_string & inString) ;\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "AC_OutputStream & operator << (AC_OutputStream & inStream,\n"
+    "                               const GALGAS_lstring & inString) ;\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "class GALGAS_string : public AC_GALGAS_root\n"
+    " {\n"
+    "//--------------------------------- Private data members\n"
+    "  private : bool mIsValid ;\n"
+    "  private : C_String mString ;\n"
+    "\n"
+    "//--------------------------------- Accessors\n"
+    "  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mIsValid ; }\n"
+    "  public : VIRTUAL_IN_DEBUG void drop (void) ;\n"
+    "  public : inline C_String stringValue (void) const { return mString ; }\n"
+    "\n"
+    "//--------------------------------- Default constructor\n"
+    "  public : GALGAS_string (void) ;\n"
+    "\n"
+    "//--------------------------------- Default GALGAS constructor\n"
+    "  public : static GALGAS_string constructor_default (LOCATION_ARGS) ;\n"
+    "\n"
+    "//--------------------------------- Constructor for making an empty string\n"
+    "  public : static GALGAS_string makeEmptyString (void) ;\n"
+    "\n"
+    "//--------------------------------- Native constructor\n"
+    "  public : GALGAS_string (const C_String & inValue) ;\n"
+    "\n" ;
+  return GALGAS_string (result) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                       Filewrapper template 'predefinedTypeGenerationTemplate stringset_type'                        *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_stringset_5F_type (C_Compiler * /* inCompiler */
+                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  C_String result ;
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//                                                                                                                     *\n"
+    "//" ;
+  result << GALGAS_string ("@stringset type").reader_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("stringset-type.h.gTemplate", 3)).stringValue () ;
+  result << "*\n"
+    "//                                                                                                                     *\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "class cSharedStringsetRoot ;\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "class GALGAS_stringset : public AC_GALGAS_root\n"
+    " {\n"
+    "//--------------------------------- Private data members\n"
+    "  private : cSharedStringsetRoot * mSharedRoot ;\n"
+    "\n"
+    "//--------------------------------- Accessors\n"
+    "  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mSharedRoot != NULL ; }\n"
+    "  public : VIRTUAL_IN_DEBUG void drop (void) ;\n"
+    "\n"
+    "//--------------------------------- Default constructor\n"
+    "  public : GALGAS_stringset (void) ;\n"
+    "\n"
+    "//--------------------------------- Destructor (virtual in debug mode)\n"
+    "  public : VIRTUAL_IN_DEBUG ~ GALGAS_stringset (void) ;\n"
+    "\n"
+    "//--------------------------------- In debug mode : check method\n"
+    "  #ifndef DO_NOT_GENERATE_CHECKINGS\n"
+    "    protected : void checkStringset (LOCATION_ARGS) const ;\n"
+    "  #endif\n"
+    "\n"
+    "//--------------------------------- Insulate\n"
+    "  protected : void insulate (LOCATION_ARGS) ;\n"
+    "\n" ;
+  return GALGAS_string (result) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                      Filewrapper template 'predefinedTypeGenerationTemplate filewrapper_type'                       *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_filewrapper_5F_type (C_Compiler * /* inCompiler */
+                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+  C_String result ;
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//                                                                                                                     *\n"
+    "//" ;
+  result << GALGAS_string ("@filewrapper type").reader_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("filewrapper-type.h.gTemplate", 3)).stringValue () ;
+  result << "*\n"
+    "//                                                                                                                     *\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "class cRegularFileWrapper {\n"
+    "  public : const char * mName ;\n"
+    "  public : const char * mExtension ;\n"
+    "  public : const bool mIsTextFile ; // True: text file, false: binary file\n"
+    "  public : const uint32_t mFileLength ;\n"
+    "  public : const char * mContents ;\n"
+    "\n"
+    "//--- Constructor\n"
+    "  public : cRegularFileWrapper (const char * inName,\n"
+    "                                const char * inExtension,\n"
+    "                                const bool inIsTextFile,\n"
+    "                                const uint32_t inFileLength,\n"
+    "                                const char * inContents) ;\n"
+    "\n"
+    "//--- No copy\n"
+    "  private : cRegularFileWrapper (const cRegularFileWrapper &) ;\n"
+    "  private : cRegularFileWrapper & operator = (const cRegularFileWrapper &) ;\n"
+    "} ;\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "class cDirectoryWrapper {\n"
+    "  public : const char * mDirectoryName ;\n"
+    "  public : const uint32_t mFileCount ;\n"
+    "  public : const cRegularFileWrapper * * const mFiles ;\n"
+    "  public : const uint32_t mDirectoryCount ;\n"
+    "  public : const cDirectoryWrapper * * mDirectories ;\n"
+    "\n"
+    "//--- Constructor\n"
+    "  public : cDirectoryWrapper (const char * inDirectoryName,\n"
+    "                              const uint32_t inFileCount,\n"
+    "                              const cRegularFileWrapper * * const inFiles,\n"
+    "                              const uint32_t inDirectoryCount,\n"
+    "                              const cDirectoryWrapper * * inDirectories) ;\n"
+    "\n"
+    "//--- No copy\n"
+    "  private : cDirectoryWrapper (const cDirectoryWrapper &) ;\n"
+    "  private : cDirectoryWrapper & operator = (const cDirectoryWrapper &) ;\n"
+    "} ;\n"
+    "\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "class GALGAS_filewrapper : public AC_GALGAS_root {\n"
+    "//--------------------------------- Private data members\n"
+    "  private : const cDirectoryWrapper * mRootDirectoryPtr ;\n"
+    "  private : C_String mCurrentDirectory ;\n"
+    "\n"
+    "//--------------------------------- Accessors\n"
+    "  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return NULL != mRootDirectoryPtr ; }\n"
+    "  public : VIRTUAL_IN_DEBUG inline void drop (void) { mRootDirectoryPtr = NULL ; }\n"
+    "\n"
+    "//--------------------------------- Default constructor\n"
+    "  public : GALGAS_filewrapper (void) ;\n"
+    "\n"
+    "//--------------------------------- Native constructor\n"
+    "  public : GALGAS_filewrapper (const cDirectoryWrapper & inRootDirectory) ;\n"
+    "\n"
+    "//--------------------------------- Handle copy\n"
+    "  public : GALGAS_filewrapper (const GALGAS_filewrapper & inSource) ;\n"
+    "  public : GALGAS_filewrapper & operator = (const GALGAS_filewrapper & inSource) ;\n"
+    "\n" ;
+  return GALGAS_string (result) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                      Filewrapper template 'predefinedTypeGenerationTemplate application_type'                       *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_predefinedTypeGenerationTemplate_application_5F_type (C_Compiler * /* inCompiler */
+                                                                                        COMMA_UNUSED_LOCATION_ARGS) {
+  C_String result ;
+  result << "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "//                                                                                                                     *\n"
+    "//" ;
+  result << GALGAS_string ("@application type").reader_stringByLeftAndRightPadding (GALGAS_uint ((uint32_t) 117U), GALGAS_char (TO_UNICODE (32)) COMMA_SOURCE_FILE ("application-type.h.gTemplate", 3)).stringValue () ;
+  result << "*\n"
+    "//                                                                                                                     *\n"
+    "//---------------------------------------------------------------------------------------------------------------------*\n"
+    "\n"
+    "class GALGAS_application : public AC_GALGAS_root\n"
+    " {\n"
+    "//--------------------------------- Accessors\n"
+    "  public : inline bool isValid (void) const { return false ; }\n"
+    "  public : inline void drop (void) { }\n"
+    "\n"
+    "//--------------------------------- Default constructor\n"
+    "  public : GALGAS_application (void) ;\n"
+    "\n"
+    "//--------------------------------- Destructor (virtual in debug mode)\n"
+    "  public : VIRTUAL_IN_DEBUG ~ GALGAS_application (void) ;\n"
+    "\n"
+    "//--------------------------------- Handle copy\n"
+    "  public : GALGAS_application (const GALGAS_application & inSource) ;\n"
+    "  public : GALGAS_application & operator = (const GALGAS_application & inSource) ;\n"
+    "\n" ;
+  return GALGAS_string (result) ;
+}
 

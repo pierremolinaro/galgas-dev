@@ -92,7 +92,7 @@ rule <declaration>
   $($ ;
   $type_name$ ? @lstring mAssociatedListTypeName ;
   $)$ ;
-  ioDeclarations->mSemanticDeclarationList += ![@listmapDeclarationAST new
+  ioDeclarations->mDeclarationList += ![@listmapDeclarationAST new
     !false # Is not predefined
     !mListmapTypeName
     !mAssociatedListTypeName
@@ -120,7 +120,7 @@ rule <declaration>
   $[$ ;
   $unsigned_literal_integer$ ? @luint dimension ;
   $]$ ;
-  ioDeclarations->mSemanticDeclarationList += ![@arrayDeclarationAST new
+  ioDeclarations->mDeclarationList += ![@arrayDeclarationAST new
     !false # Is not predefined
     !arrayTypeName
     !elementListTypeName
@@ -214,7 +214,7 @@ rule <declaration>
     insertOrReplaceDeclarationListAST += !here ;
   end repeat ;
   $}$ ;
-  ioDeclarations->mSemanticDeclarationList += ![@mapDeclarationAST new
+  ioDeclarations->mDeclarationList += ![@mapDeclarationAST new
     !false # Is not predefined
     !mMapTypeName
     !mAttributeList
@@ -380,7 +380,7 @@ rule <declaration>
   end repeat ;
   $}$ ;
 #--- Declare map
-  ioDeclarations->mSemanticDeclarationList += ![@uniqueMapDeclarationAST new
+  ioDeclarations->mDeclarationList += ![@uniqueMapDeclarationAST new
     !false # Is not predefined
     !mMapTypeName
     !mAttributeList
@@ -390,7 +390,7 @@ rule <declaration>
     !mapOverrideBlockListAST
   ] ;
 #--- Declare map proxy
-  ioDeclarations->mSemanticDeclarationList += ![@mapProxyDeclarationAST new
+  ioDeclarations->mDeclarationList += ![@mapProxyDeclarationAST new
     !false # Is not predefined
     !mapProxyTypeName
     !mMapTypeName
@@ -448,7 +448,7 @@ rule <declaration>
   end repeat ;
   $}$ ;
   foreach classNameList do
-    ioDeclarations->mSemanticDeclarationList += ![@classDeclarationAST new
+    ioDeclarations->mDeclarationList += ![@classDeclarationAST new
       !false # Is not predefined
       !mIsAbstract
       !mValue
@@ -482,7 +482,7 @@ rule <declaration>
     <attribute_declaration> !? mAttributeList ;
   end repeat ;
   $}$ ;
-  ioDeclarations->mSemanticDeclarationList += ![@structDeclarationAST new
+  ioDeclarations->mDeclarationList += ![@structDeclarationAST new
     !false # Is not predefined
     !mListTypeName
     !mAttributeList
@@ -512,7 +512,7 @@ rule <declaration>
     <attribute_declaration> !? mAttributeList ;
   end repeat ;
   $}$ ;
-  ioDeclarations->mSemanticDeclarationList += ![@listDeclarationAST new
+  ioDeclarations->mDeclarationList += ![@listDeclarationAST new
     !false # Is not predefined
     !mListTypeName
     !mAttributeList
@@ -564,7 +564,7 @@ rule <declaration>
     $,$ ;
   end repeat ;
   $}$ ;
-  ioDeclarations->mSemanticDeclarationList += ![@sortedListDeclarationAST new
+  ioDeclarations->mDeclarationList += ![@sortedListDeclarationAST new
     !false # Is not predefined
     !mSortedListTypeName
     !mAttributeList
@@ -613,7 +613,7 @@ rule <declaration>
   while
   end repeat ;
   $}$ ;
-  ioDeclarations->mSemanticDeclarationList += ![@enumDeclarationAST new
+  ioDeclarations->mDeclarationList += ![@enumDeclarationAST new
     !false # Is not predefined
     !mEnumTypeName
     !mConstantList
@@ -691,7 +691,7 @@ rule <declaration_with_private>
     ;
   end repeat ;
   $}$ ;
-  ioDeclarations->mSemanticDeclarationList += ![@filewrapperDeclarationAST new
+  ioDeclarations->mDeclarationList += ![@filewrapperDeclarationAST new
     !false # Is not predefined
     !inIsInternal
     ![@string stringWithSourceFilePath]
@@ -721,7 +721,7 @@ rule <declaration>
   $type_name$ ? @lstring className indexing typeReferenceAbstractCategoryMethod ;
   $identifier$ ? @lstring mMethodName indexing abstractCategoryMethodDefinition ;
   <formal_parameter_list> ??@formalParameterListAST formalParameterList ;
-  ioDeclarations->mSemanticDeclarationList += ![@abstractCategoryMethodAST new
+  ioDeclarations->mDeclarationList += ![@abstractCategoryMethodAST new
     !false # Is not predefined
     !className
     !mMethodName
@@ -749,7 +749,7 @@ rule <declaration>
   $type_name$ ? @lstring className indexing typeReferenceOverrideAbstractCategoryMethod ;
   $identifier$ ? @lstring mMethodName indexing overrideAbstractCategoryMethodDefinition ;
   <formal_parameter_list> ??@formalParameterListAST formalParameterList ;
-  ioDeclarations->mSemanticDeclarationList += ![@overridingAbstractCategoryMethodAST new
+  ioDeclarations->mDeclarationList += ![@overridingAbstractCategoryMethodAST new
     !false # Is not predefined
     !className
     !mMethodName
@@ -778,7 +778,7 @@ rule <declaration>
   <semantic_instruction_list> ??@semanticInstructionListAST routineInstructionList ;
   const endOfMethodLocation := here ;
   $}$ ;
-  ioDeclarations->mSemanticDeclarationList += ![@categoryMethodAST new
+  ioDeclarations->mDeclarationList += ![@categoryMethodAST new
     !false # Is not predefined
     !className
     !mMethodName
@@ -810,7 +810,7 @@ rule <declaration>
   <semantic_instruction_list> ??@semanticInstructionListAST routineInstructionList ;
   const @location endOfMethodLocation := here ;
   $}$ ;
-  ioDeclarations->mSemanticDeclarationList += ![@overridingCategoryMethodAST new
+  ioDeclarations->mDeclarationList += ![@overridingCategoryMethodAST new
     !false # Is not predefined
     !className
     !mMethodName
@@ -842,7 +842,7 @@ rule <declaration>
   $->$ ;
   $type_name$ ? @lstring mReturnedTypeName ;
   $identifier$ ? * ;
-  ioDeclarations->mSemanticDeclarationList += ![@abstractCategoryReaderAST new
+  ioDeclarations->mDeclarationList += ![@abstractCategoryReaderAST new
     !false # Is not predefined
     !className
     !mReaderName
@@ -876,7 +876,7 @@ rule <declaration>
   <semantic_instruction_list> ??@semanticInstructionListAST routineInstructionList ;
   const @location endOfInstructionList := here ;
   $}$ ;
-  ioDeclarations->mSemanticDeclarationList += ![@categoryReaderAST new
+  ioDeclarations->mDeclarationList += ![@categoryReaderAST new
     !false # Is not predefined
     !className
     !mMethodName
@@ -914,7 +914,7 @@ rule <declaration>
   <semantic_instruction_list> ??@semanticInstructionListAST routineInstructionList ;
   const @location endOfInstructionList := here ;
   $}$ ;
-  ioDeclarations->mSemanticDeclarationList += ![@overridingCategoryReaderAST new
+  ioDeclarations->mDeclarationList += ![@overridingCategoryReaderAST new
     !false # Is not predefined
     !className
     !mMethodName
@@ -950,7 +950,7 @@ rule <declaration>
   $->$ ;
   $type_name$ ? @lstring mReturnedTypeName ;
   $identifier$ ? * ;
-  ioDeclarations->mSemanticDeclarationList += ![@overridingAbstractCategoryReaderAST new
+  ioDeclarations->mDeclarationList += ![@overridingAbstractCategoryReaderAST new
     !false # Is not predefined
     !className
     !mReaderName
@@ -977,7 +977,7 @@ rule <declaration>
   $type_name$ ? @lstring className indexing typeReferenceAbstractCategoryModifier ;
   $identifier$ ? @lstring modifierName indexing abstractCategoryModifierDefinition ;
   <formal_parameter_list> ??@formalParameterListAST formalParameterList ;
-  ioDeclarations->mSemanticDeclarationList += ![@abstractCategoryModifierAST new
+  ioDeclarations->mDeclarationList += ![@abstractCategoryModifierAST new
     !false # Is not predefined
     !className
     !modifierName
@@ -1005,7 +1005,7 @@ rule <declaration>
   $type_name$ ? @lstring className indexing typeReferenceOverrideAbstractCategoryModifier ;
   $identifier$ ? @lstring modifierName indexing overrideAbstractCategoryModifierDefinition ;
   <formal_parameter_list> ??@formalParameterListAST formalParameterList ;
-  ioDeclarations->mSemanticDeclarationList += ![@overridingAbstractCategoryModifierAST new
+  ioDeclarations->mDeclarationList += ![@overridingAbstractCategoryModifierAST new
     !false # Is not predefined
     !className
     !modifierName
@@ -1034,7 +1034,7 @@ rule <declaration>
   <semantic_instruction_list> ??@semanticInstructionListAST routineInstructionList ;
   const @location endOfModifierLocation := here ;
   $}$ ;
-  ioDeclarations->mSemanticDeclarationList += ![@categoryModifierAST new
+  ioDeclarations->mDeclarationList += ![@categoryModifierAST new
     !false # Is not predefined
     !className
     !modifierName
@@ -1066,7 +1066,7 @@ rule <declaration>
   <semantic_instruction_list> ??@semanticInstructionListAST routineInstructionList ;
   const @location endOfModifierLocation := here ;
   $}$ ;
-  ioDeclarations->mSemanticDeclarationList += ![@overridingCategoryModifierAST new
+  ioDeclarations->mDeclarationList += ![@overridingCategoryModifierAST new
     !false # Is not predefined
     !className
     !modifierName
@@ -1106,7 +1106,7 @@ rule <declaration>
     graphInsertModifierList += !insertName !errorMessage ;
   end repeat ;
   $}$ ;
-  ioDeclarations->mSemanticDeclarationList += ![@graphDeclarationAST new
+  ioDeclarations->mDeclarationList += ![@graphDeclarationAST new
     !false # Is not predefined
     !graphTypeName
     !associatedListTypeName
@@ -1206,7 +1206,7 @@ rule <declaration>
     ;
   end repeat ;
   $}$ ;
-  ioDeclarations->mSemanticDeclarationList += ![@externTypeDeclarationAST new
+  ioDeclarations->mDeclarationList += ![@externTypeDeclarationAST new
     !false # Is not predefined
     !externTypeName
     !cppPredeclarationCode

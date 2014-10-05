@@ -28,7 +28,6 @@ routine compileSemanticDeclarationsGalgas3
   ??@string inProductDirectory
   ??@location inEndOfProjectSourceFile
   ??@semanticDeclarationListAST inSemanticDeclarationList
-  ??@galgas3GrammarComponentListAST inGrammarComponentList
   !@semanticContext outSemanticContext
   !@semanticDeclarationSortedListForGeneration outSemanticDeclarationSortedListForGeneration
 :
@@ -87,11 +86,6 @@ routine compileSemanticDeclarationsGalgas3
   if [option .verbose_output value] then
     message "*** Semantic analysis\n" ;
   end if ;
-#------ Perform semantic analysis of grammar components
-  buildGalgas3GrammarComponentMapForSemanticAnalysis
-    !inGrammarComponentList
-    !?outSemanticContext
-  ;
 #------ Check there is no undefined types
   foreach [outSemanticContext->mTypeMap unsolvedProxyList] do
     error mValue : "the '" . mValue . "' type is undefined" ;
@@ -113,39 +107,39 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine buildGalgas3GrammarComponentMapForSemanticAnalysis
-  ??@galgas3GrammarComponentListAST inGrammarComponentList
-  ?!@semanticContext ioSemanticContext
-:
-#--- Perform semantic analysis of grammar components
-  foreach inGrammarComponentList do
-  #--- Analyze start symbol labels
-    @grammarLabelMap grammarLabelMap [emptyMap] ;
-    foreach mStartSymbolLabelList do
-    #--- Analyze signature
-      @formalParameterSignature formalArgumentList [emptyList] ;
-      foreach mFormalArgumentList do
-        formalArgumentList +=
-          !mFormalSelector
-          ![@unifiedTypeMapProxy searchKey !ioSemanticContext->mTypeMap !mFormalArgumentTypeName]
-          !mFormalArgumentPassingMode
-          !mFormalArgumentName->string
-        ;
-      end foreach ;
-      [!?grammarLabelMap insertKey
-        !mLabelName
-        !formalArgumentList
-      ] ;
-    end foreach ;
-  #--- Insert grammar in grammar map
-    [!?ioSemanticContext->mGrammarMap insertGrammar
-      !mGrammarComponentName
-      !grammarLabelMap
-      !mHasIndexing->bool
-      !mHasTranslateFeature
-    ] ;
-  end foreach ;
-end routine ;
+#routine buildGalgas3GrammarComponentMapForSemanticAnalysis
+#  ??@galgas3GrammarComponentListAST inGrammarComponentList
+#  ?!@semanticContext ioSemanticContext
+#:
+##--- Perform semantic analysis of grammar components
+#  foreach inGrammarComponentList do
+#  #--- Analyze start symbol labels
+#    @grammarLabelMap grammarLabelMap [emptyMap] ;
+#    foreach mStartSymbolLabelList do
+#    #--- Analyze signature
+#      @formalParameterSignature formalArgumentList [emptyList] ;
+#      foreach mFormalArgumentList do
+#        formalArgumentList +=
+#          !mFormalSelector
+#          ![@unifiedTypeMapProxy searchKey !ioSemanticContext->mTypeMap !mFormalArgumentTypeName]
+#          !mFormalArgumentPassingMode
+#          !mFormalArgumentName->string
+#        ;
+#      end foreach ;
+#      [!?grammarLabelMap insertKey
+#        !mLabelName
+#        !formalArgumentList
+#      ] ;
+#    end foreach ;
+#  #--- Insert grammar in grammar map
+#    [!?ioSemanticContext->mGrammarMap insertGrammar
+#      !mGrammarComponentName
+#      !grammarLabelMap
+#      !mHasIndexing->bool
+#      !mHasTranslateFeature
+#    ] ;
+#  end foreach ;
+#end routine ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
