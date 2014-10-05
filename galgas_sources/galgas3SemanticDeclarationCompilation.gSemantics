@@ -227,6 +227,7 @@ end once ;
 #---------------------------------------------------------------------------*
 
 routine generateSemanticDeclarationsGalgas3
+  ??@unifiedTypeMap inUnifiedTypeMap
   ??@string inProductDirectory
   ??@semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
   ?!@stringlist ioToolProductFileList
@@ -262,6 +263,7 @@ routine generateSemanticDeclarationsGalgas3
     end if ;
     if [option galgas_cli_options.generateManyFiles value] then
       generateManyImplementationFiles
+        !inUnifiedTypeMap
         !inProductDirectory
         !inSemanticDeclarationSortedListForGeneration
         !?ioToolProductFileList
@@ -269,6 +271,7 @@ routine generateSemanticDeclarationsGalgas3
       ;
     elsif generateFewHeaderFiles [] then
       generateFewImplementationFilesWithFewHeaders
+        !inUnifiedTypeMap
         !inProductDirectory
         !inSemanticDeclarationSortedListForGeneration
         !?ioToolProductFileList
@@ -276,6 +279,7 @@ routine generateSemanticDeclarationsGalgas3
       ;
     else
       generateFewImplementationFiles
+        !inUnifiedTypeMap
         !inProductDirectory
         !inSemanticDeclarationSortedListForGeneration
         !?ioToolProductFileList
@@ -618,6 +622,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 local routine generateFewImplementationFiles
+  ??@unifiedTypeMap inUnifiedTypeMap
   ??@string inProductDirectory
   ??@semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
   ?!@stringlist ioToolProductFileList
@@ -631,7 +636,7 @@ local routine generateFewImplementationFiles
   @stringset inclusionSet := {} ;
   foreach inSemanticDeclarationSortedListForGeneration do
     if not [mDeclaration isPredefined] then
-      [mDeclaration appendSpecificImplementation !?inclusionSet ??@string code] ;
+      [mDeclaration appendSpecificImplementation !inUnifiedTypeMap !?inclusionSet ??@string code] ;
       if [inclusionSet hasKey !""] then
         message "Empty inclusion in " . [mDeclaration implementationCppFileName] . " cpp headers\n" ;
       end if ;
@@ -691,6 +696,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 local routine generateFewImplementationFilesWithFewHeaders
+  ??@unifiedTypeMap inUnifiedTypeMap
   ??@string inProductDirectory
   ??@semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
   ?!@stringlist ioToolProductFileList
@@ -738,7 +744,7 @@ local routine generateFewImplementationFilesWithFewHeaders
           buildHeader !headerCompositionMap !headerFileName ![mDeclaration implementationCppFileName] !?headerRepartitionMap !?headerString ;
         end if ;
       end if ;
-      [mDeclaration appendSpecificImplementation !?inclusionSet ??@string code] ;
+      [mDeclaration appendSpecificImplementation !inUnifiedTypeMap !?inclusionSet ??@string code] ;
       for (s) in inclusionSet do
         buildHeader !headerCompositionMap !headerFileName !s !?headerRepartitionMap !?headerString ;
       end for ;
@@ -835,6 +841,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 local routine generateManyImplementationFiles
+  ??@unifiedTypeMap inUnifiedTypeMap
   ??@string inProductDirectory
   ??@semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
   ?!@stringlist ioToolProductFileList
@@ -844,7 +851,7 @@ local routine generateManyImplementationFiles
   foreach inSemanticDeclarationSortedListForGeneration do
     var inclusionSet := [@stringset emptySet] ;
     if not [mDeclaration isPredefined] then
-      [mDeclaration appendSpecificImplementation !?inclusionSet ?@string implementationString] ;
+      [mDeclaration appendSpecificImplementation !inUnifiedTypeMap !?inclusionSet ?@string implementationString] ;
       if [mDeclaration hasCppHeaderFile] then
         inclusionSet += ![mDeclaration implementationCppFileName] ;
       end if ;

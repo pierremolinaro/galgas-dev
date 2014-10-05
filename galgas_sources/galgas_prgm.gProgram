@@ -674,6 +674,7 @@ routine compileProject
 #---------------------------------- File generation
   if (0 == [@uint errorCount]) & (inSourceToAnalyze == "") then
     projectGeneration
+      !semanticContext->mTypeMap
       !productDirectory
       !optionComponentMapForGeneration
       !appProductFileList
@@ -697,6 +698,7 @@ end routine ;
 #----------------------------------------------------------------------------*
 
 routine projectGeneration
+  ??@unifiedTypeMap inTypeMap
   ??@string inProductDirectory
   ??@optionComponentMapForGeneration inOptionComponentMapForGeneration
   ??@stringlist inAppProductFileList
@@ -730,6 +732,7 @@ routine projectGeneration
 #---------------------------------- Generate semantic files
 #  message "*** Generate semantic\n" ;
   generateSemanticDeclarationsGalgas3
+    !inTypeMap
     !inProductDirectory
     !inSemanticDeclarationSortedListForGeneration
     !?toolCppFileList

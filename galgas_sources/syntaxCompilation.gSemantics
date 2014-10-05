@@ -171,7 +171,7 @@ routine compileSyntaxComponentFromAST
         foreach decoratedDeclarationListForGeneration do
           implementationString .= [mDeclaration appendTypeGenericImplementation] ;
           var unusedInclusionSet := [@stringset emptySet] ;
-          [mDeclaration appendSpecificImplementation !?unusedInclusionSet ??@string code] ;
+          [mDeclaration appendSpecificImplementation ![@unifiedTypeMap emptyMap] !?unusedInclusionSet ??@string code] ;
           implementationString += code ;
         end foreach ;
 #        const @string lexiqueCppName := "C_Lexique_"

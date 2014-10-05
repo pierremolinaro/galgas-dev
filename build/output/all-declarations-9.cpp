@@ -17263,63 +17263,6 @@ GALGAS_templateInstructionSwitchForGeneration GALGAS_templateInstructionSwitchFo
 #include "command_line_interface/F_Analyze_CLI_Options.h"
 #include "utilities/F_DisplayException.h"
 #include "galgas2/C_galgas_CLI_Options.h"
-#include "class-optionComponentAST.h"
-#include "class-semanticsComponentAST.h"
-#include "enum-sourceFileKind.h"
-#include "func-outputDirectory.h"
-#include "grammar-galgas3Grammar.h"
-#include "grammar-grammarLL1grammar.h"
-#include "grammar-guiGrammar.h"
-#include "grammar-lexiqueLL1grammar.h"
-#include "grammar-optionLL1grammar.h"
-#include "grammar-programSLRgrammar.h"
-#include "grammar-projectLL1grammar.h"
-#include "grammar-semanticsSLRgrammar.h"
-#include "grammar-syntaxSLRgrammar.h"
-#include "grammar-templateGrammar.h"
-#include "list-programRuleList.h"
-#include "list-projectSourceList.h"
-#include "list-qualifiedFeatureList.h"
-#include "list-templateInstructionListAST.h"
-#include "map-commandLineOptionMap.h"
-#include "map-parsedGrammarComponentMap.h"
-#include "map-parsedGuiComponentMap.h"
-#include "map-parsedLexiqueComponentMap.h"
-#include "map-parsedOptionComponentMap.h"
-#include "map-parsedProgramComponentMap.h"
-#include "map-parsedSemanticsComponentMap.h"
-#include "map-parsedSyntaxComponentMap.h"
-#include "map-projectQualifiedFeatureMap.h"
-#include "option-galgas_cli_options.h"
-#include "proc-compileGrammarComponentFromAST.h"
-#include "proc-compileGrammarComponentFromSourceFile.h"
-#include "proc-compileGuiComponentFromAST.h"
-#include "proc-compileGuiComponentFromSourceFile.h"
-#include "proc-compileLexiqueComponentFromAST.h"
-#include "proc-compileLexiqueComponentFromSource.h"
-#include "proc-compileOptionComponentAST.h"
-#include "proc-compileOptionComponentFromSourceFile.h"
-#include "proc-compileProgramComponentFromAST.h"
-#include "proc-compileProgramComponentFromSourceFile.h"
-#include "proc-compileProject.h"
-#include "proc-compileSemanticsComponentAST.h"
-#include "proc-compileSemanticsComponentFromSourceFile.h"
-#include "proc-compileSyntaxComponentFromAST.h"
-#include "proc-compileSyntaxComponentFromSourceFile.h"
-#include "proc-generatePredefinedTypeFiles.h"
-#include "proc-performProjectGlobalCheckings.h"
-#include "proc-printPredefinedLexicalActions.h"
-#include "proc-projectCreation.h"
-#include "proc-semanticAnalysisOfOptionComponent.h"
-#include "proc-updateLIBPMatPath.h"
-#include "proc-updateTargets.h"
-#include "struct-galgas3GrammarComponentListAST-element.h"
-#include "struct-galgas3LexiqueComponentListAST-element.h"
-#include "struct-galgas3SyntaxComponentListAST-element.h"
-#include "struct-guiComponentAST.h"
-#include "struct-parsedComponentStruct.h"
-#include "struct-programComponentAST.h"
-#include "struct-projectComponentAST.h"
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -17938,30 +17881,30 @@ static void routine_programRule_5F__39_ (const GALGAS_lstring constinArgument_in
 static void routine_programRule_5F__31__30_ (const GALGAS_lstring constinArgument_inSourceFile,
                                              C_Compiler * inCompiler
                                              COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string var_parentDirectory = constinArgument_inSourceFile.mAttribute_string.reader_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas_prgm.galgas", 779)).reader_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas_prgm.galgas", 779)) ;
-  GALGAS_stringlist temp_0 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas_prgm.galgas", 780)) ;
-  temp_0.addAssign_operation (GALGAS_string ("galgasProject")  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 780)) ;
-  GALGAS_stringlist var_candidateProjectFiles = var_parentDirectory.reader_regularFilesWithExtensions (GALGAS_bool (false), temp_0 COMMA_SOURCE_FILE ("galgas_prgm.galgas", 780)) ;
-  const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, var_candidateProjectFiles.reader_length (SOURCE_FILE ("galgas_prgm.galgas", 781)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  GALGAS_string var_parentDirectory = constinArgument_inSourceFile.mAttribute_string.reader_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas_prgm.galgas", 782)).reader_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas_prgm.galgas", 782)) ;
+  GALGAS_stringlist temp_0 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas_prgm.galgas", 783)) ;
+  temp_0.addAssign_operation (GALGAS_string ("galgasProject")  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 783)) ;
+  GALGAS_stringlist var_candidateProjectFiles = var_parentDirectory.reader_regularFilesWithExtensions (GALGAS_bool (false), temp_0 COMMA_SOURCE_FILE ("galgas_prgm.galgas", 783)) ;
+  const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, var_candidateProjectFiles.reader_length (SOURCE_FILE ("galgas_prgm.galgas", 784)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_1) {
     GALGAS_location location_2 (constinArgument_inSourceFile.reader_location (HERE)) ; // Implicit use of 'location' reader
-    inCompiler->emitSemanticError (location_2, GALGAS_string ("no project file in parent directory of source file")  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 782)) ;
+    inCompiler->emitSemanticError (location_2, GALGAS_string ("no project file in parent directory of source file")  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 785)) ;
   }else if (kBoolFalse == test_1) {
-    const enumGalgasBool test_3 = GALGAS_bool (kIsStrictSup, var_candidateProjectFiles.reader_length (SOURCE_FILE ("galgas_prgm.galgas", 783)).objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
+    const enumGalgasBool test_3 = GALGAS_bool (kIsStrictSup, var_candidateProjectFiles.reader_length (SOURCE_FILE ("galgas_prgm.galgas", 786)).objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
     if (kBoolTrue == test_3) {
       GALGAS_string var_s = GALGAS_string ("several project files in source file parent directory:") ;
-      cEnumerator_stringlist enumerator_33878 (var_candidateProjectFiles, kEnumeration_up) ;
-      while (enumerator_33878.hasCurrentObject ()) {
+      cEnumerator_stringlist enumerator_33958 (var_candidateProjectFiles, kEnumeration_up) ;
+      while (enumerator_33958.hasCurrentObject ()) {
         var_s.dotAssign_operation (GALGAS_string ("\n"
-          "  - ").add_operation (enumerator_33878.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 786))  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 786)) ;
-        enumerator_33878.gotoNextObject () ;
+          "  - ").add_operation (enumerator_33958.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 789))  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 789)) ;
+        enumerator_33958.gotoNextObject () ;
       }
       GALGAS_location location_4 (constinArgument_inSourceFile.reader_location (HERE)) ; // Implicit use of 'location' reader
-      inCompiler->emitSemanticError (location_4, var_s  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 788)) ;
+      inCompiler->emitSemanticError (location_4, var_s  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 791)) ;
     }else if (kBoolFalse == test_3) {
-      GALGAS_string var_projectFilePath = var_parentDirectory.add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 790)).add_operation (var_candidateProjectFiles.reader_mValueAtIndex (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 790)), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 790)) ;
+      GALGAS_string var_projectFilePath = var_parentDirectory.add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 793)).add_operation (var_candidateProjectFiles.reader_mValueAtIndex (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 793)), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 793)) ;
       {
-      routine_compileProject (GALGAS_lstring::constructor_new (var_projectFilePath, constinArgument_inSourceFile.mAttribute_location  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 791)), constinArgument_inSourceFile.mAttribute_string, inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 791)) ;
+      routine_compileProject (GALGAS_lstring::constructor_new (var_projectFilePath, constinArgument_inSourceFile.mAttribute_location  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 794)), constinArgument_inSourceFile.mAttribute_string, inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 794)) ;
       }
     }
   }

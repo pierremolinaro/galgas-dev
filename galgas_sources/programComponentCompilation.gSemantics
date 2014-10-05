@@ -460,7 +460,7 @@ routine compileProgramComponentFromAST
     foreach decoratedDeclarationListForGeneration do
       beforAfterRulesImplementationString .= [mDeclaration appendTypeGenericImplementation] ;
       var unusedInclusionSet := [@stringset emptySet] ;
-      [mDeclaration appendSpecificImplementation !?unusedInclusionSet ??@string code] ;
+      [mDeclaration appendSpecificImplementation !semanticContext->mTypeMap !?unusedInclusionSet ??@string code] ;
       beforAfterRulesImplementationString += code ;
     end foreach ;
     const implementationString := [filewrapper programFileGenerationTemplate.programFileImplementation
@@ -556,7 +556,7 @@ routine compileProgramComponentGalgas3
   var beforeAfterRulesString := "" ;
   foreach decoratedDeclarationListForGeneration do
     beforeAfterRulesString += [mDeclaration appendTypeGenericImplementation] ;
-    [mDeclaration appendSpecificImplementation !?inclusionSet ??@string code] ;
+    [mDeclaration appendSpecificImplementation !inSemanticContext->mTypeMap !?inclusionSet ??@string code] ;
     beforeAfterRulesString += code ;
   end foreach ;
 #  foreach inSemanticContext->mGrammarMap do
@@ -575,7 +575,7 @@ routine compileProgramComponentGalgas3
   end for ;
   const cppContents := [filewrapper programFileGenerationTemplate.programFileImplementation
     !"program"
-    ![inclusionSet stringList]
+    !{} # [inclusionSet stringList]
     !beforeAfterRulesString
     !inProgramRules
     !hasIndexing
