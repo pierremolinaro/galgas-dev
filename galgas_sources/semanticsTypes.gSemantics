@@ -23,7 +23,7 @@ import "semanticsTypesForAST.gSemantics" ;
 #---------------------------------------------------------------------------*
 
 once generateFewHeaderFiles -> @bool outResult :
-  outResult := false ;
+  outResult := true ;
 end once ;
 
 #---------------------------------------------------------------------------*
