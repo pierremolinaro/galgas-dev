@@ -582,6 +582,11 @@ class @lexiqueDeclarationForGeneration extends @semanticDeclarationWithHeaderFor
 list @signatureForGrammarAnalysis {
   @formalArgumentPassingModeAST mFormalArgumentPassingModeForGrammarAnalysis ;
   @lstring mGalgasTypeNameForGrammarAnalysis ;
+#--- TODO GALGAS3
+#  Ajouter cet argument ; ceci permettrait de supprimer l'argument
+#     ??@unifiedTypeMap inUnifiedTypeMap
+# des méthodes appendSpecificImplementation de generation
+#  @unifiedTypeMapProxy mArgumentType ;
 }
 
 #---------------------------------------------------------------------------*
