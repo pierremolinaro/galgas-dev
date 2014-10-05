@@ -1,8 +1,8 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  Routines for checking LL(1) condition                                      *
+//  Routines for checking LL(1) condition                                                                              *
 //                                                                                                                     *
-//  Copyright (C) 1994, ..., 2014 Pierre Molinaro.                             *
+//  Copyright (C) 1994, ..., 2014 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                                                              *
 //                                                                                                                     *
