@@ -126,6 +126,7 @@ routine compileSyntaxComponentFromAST
     ;
   #------ Semantic Analysis
     performSemanticAnalysis
+      !inOutputDirectory
       ![inSyntaxComponentRoot mSemanticDeclarationList]
       !semanticContext
       ?decoratedDeclarationListForGeneration

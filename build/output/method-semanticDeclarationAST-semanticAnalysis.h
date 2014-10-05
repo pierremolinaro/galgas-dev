@@ -14,9 +14,10 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 typedef void (*categoryMethodSignature_semanticDeclarationAST_semanticAnalysis) (const class cPtr_semanticDeclarationAST * inObject,
-                                                                                 const class GALGAS_semanticContext constinArgument0,
-                                                                                 const class GALGAS_predefinedTypes constinArgument1,
-                                                                                 class GALGAS_semanticDeclarationSortedListForGeneration & ioArgument2,
+                                                                                 const class GALGAS_string constinArgument0,
+                                                                                 const class GALGAS_semanticContext constinArgument1,
+                                                                                 const class GALGAS_predefinedTypes constinArgument2,
+                                                                                 class GALGAS_semanticDeclarationSortedListForGeneration & ioArgument3,
                                                                                  class C_Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) ;
 
@@ -28,6 +29,7 @@ void enterCategoryMethod_semanticAnalysis (const int32_t inClassIndex,
 //---------------------------------------------------------------------------------------------------------------------*
 
 void callCategoryMethod_semanticAnalysis (const class cPtr_semanticDeclarationAST * inObject,
+                                          const GALGAS_string constin_inProductDirectory,
                                           const GALGAS_semanticContext constin_inSemanticContext,
                                           const GALGAS_predefinedTypes constin_inPredefinedTypes,
                                           GALGAS_semanticDeclarationSortedListForGeneration & io_ioSemanticDeclarationListForGeneration,

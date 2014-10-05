@@ -23,6 +23,36 @@ semantics semanticGeneration :
   import "optionCompilation.gSemantics" ;
   import "predefinedTypes.gSemantics" ;
 
+
+#---------------------------------------------------------------------------*
+#! Grammar
+#---------------------------------------------------------------------------*
+
+override reader @grammarForGeneration implementationCppFileName -> @string outName
+:
+  outName := "grammar-" + mGrammarName ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @grammarForGeneration hasCppHeaderFile -> @bool outHasHeader
+:
+  outHasHeader := false ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @grammarForGeneration headerKind -> @headerKind outHeaderKind
+:
+  outHeaderKind := [@headerKind oneHeader] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @grammarForGeneration isPredefined -> @bool outResult :
+  outResult := false ;
+end reader ;
+
 #---------------------------------------------------------------------------*
 #! Syntax
 #---------------------------------------------------------------------------*
@@ -89,10 +119,6 @@ override method @syntaxDeclarationForGeneration appendSpecificImplementation
   ] ;
 #---
   const lexiqueCppName := "C_Lexique_" . [mLexiqueName identifierRepresentation] ;
-#  var implementationString := [inSyntaxStructForGeneration->mSyntaxGeneration appendTypeGenericImplementation] ;
-#  var cppInclusionSet := [@stringset emptySet] ;
-#  [inSyntaxStructForGeneration->mSyntaxGeneration appendSpecificImplementation !?cppInclusionSet ??@string code] ;
-#  implementationString += code ;
   foreach mRuleDeclarationList do
   #--- Generate rule label implementation
     foreach mLabelImplementationList do
@@ -3097,6 +3123,7 @@ routine generatePredefinedTypeFiles ??@string inDirectory :
     #------ Semantic Analysis
       @semanticDeclarationSortedListForGeneration decoratedDeclarationListForGeneration ;
       performSemanticAnalysis
+        !inDirectory
         !predefinedTypeASTlist
         !semanticContext
         ?decoratedDeclarationListForGeneration

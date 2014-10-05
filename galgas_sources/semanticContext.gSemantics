@@ -291,6 +291,14 @@ abstract reader @semanticDeclarationAST keyRepresentation -> @string outString
 
 #---------------------------------------------------------------------------*
 
+override reader @galgas3GrammarComponentAST keyRepresentation
+  ->@string outString
+:
+  outString := "grammar " . mGrammarComponentName ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
 override reader @galgas3SyntaxComponentAST keyRepresentation
   ->@string outString
 :
@@ -3143,6 +3151,42 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @galgas3GrammarComponentAST enterInSemanticContext
+  ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
+  ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ??@categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
+  ?!@semanticContext ioSemanticContext
+:
+#--- Analyze start symbol labels
+  @grammarLabelMap grammarLabelMap [emptyMap] ;
+  foreach mStartSymbolLabelList do
+  #--- Analyze signature
+    @formalParameterSignature formalArgumentList [emptyList] ;
+    foreach mFormalArgumentList do
+      [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mFormalArgumentTypeName ??@unifiedTypeMapProxy argumentType] ;
+      formalArgumentList +=
+        !mFormalSelector
+        !argumentType
+        !mFormalArgumentPassingMode
+        !mFormalArgumentName->string
+      ;
+    end foreach ;
+    [!?grammarLabelMap insertKey
+      !mLabelName
+      !formalArgumentList
+    ] ;
+  end foreach ;
+#--- Insert grammar in grammar map
+  [!?ioSemanticContext->mGrammarMap insertGrammar
+    !mGrammarComponentName
+    !grammarLabelMap
+    !mHasIndexing->bool
+    !mHasTranslateFeature
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @lexiqueComponentAST enterInSemanticContext
   ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
   ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
@@ -3228,6 +3272,22 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @galgas3GrammarComponentAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
+:
+  const key := [@lstring new !"grammar " . mGrammarComponentName !mGrammarComponentName->location] ;
+  [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
+  for (s) in mSyntaxComponents do
+    [!?ioSemanticTypePrecedenceGraph addEdge !key ![@lstring new !"syntax " . s !s->location]] ;
+  end for ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @galgas3SyntaxComponentAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
@@ -3238,6 +3298,16 @@ override method @galgas3SyntaxComponentAST enterDeclarationInGraph
   const key := [@lstring new !"syntax " . mSyntaxComponentName !mSyntaxComponentName->location] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
   [!?ioSemanticTypePrecedenceGraph addEdge !key ![@lstring new !"lexique " . mLexiqueName !mLexiqueName->location]] ;
+  for () in mRuleList do
+    for () in mLabelList do
+      for () in mFormalArguments do
+        switch mFormalArgumentPassingMode
+          when argumentIn : [!?ioSemanticTypePrecedenceGraph addEdge !key ![@lstring new !"@" . mFormalArgumentTypeName !mFormalArgumentTypeName->location]] ; ;
+          when argumentOut, argumentInOut, argumentConstantIn :
+        end switch ;
+      end for ;
+    end for ;
+  end for ;
 end method ;
 
 #---------------------------------------------------------------------------*

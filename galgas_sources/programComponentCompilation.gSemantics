@@ -335,7 +335,7 @@ end routine ;
 
 routine compileProgramComponentFromAST
   ??@lstring inSourceFile
-  ??@string inOutputDirectory
+  ??@string inProductDirectory
   ??@programComponentAST inProgramComponentAST
   ?!@parsedComponentStruct ioParsedComponentStruct
 :
@@ -395,6 +395,7 @@ routine compileProgramComponentFromAST
 #------ Semantic Analysis
   @semanticDeclarationSortedListForGeneration decoratedDeclarationListForGeneration ;
   performSemanticAnalysis
+    !inProductDirectory
     ![inProgramComponentAST mSemanticDeclarationList]
     !semanticContext
     ?decoratedDeclarationListForGeneration
@@ -440,11 +441,11 @@ routine compileProgramComponentFromAST
     end foreach ;
     foreach decoratedDeclarationListForGeneration do
       var inclusionSet2 := [@stringset emptySet] ;
-      [mDeclaration appendDeclaration2 !false !inOutputDirectory !?inclusionSet2 ??@string headerString2] ;
+      [mDeclaration appendDeclaration2 !false !inProductDirectory !?inclusionSet2 ??@string headerString2] ;
       headerString .= headerString2 ;
     end foreach ;
     [@string generateFileWithPattern
-      !inOutputDirectory
+      !inProductDirectory
       ![componentName string] . ".h"
       !"//"
       !"\n\n" # Defaut user zone1
@@ -470,7 +471,7 @@ routine compileProgramComponentFromAST
       !hasIndexing
     ] ;
     [@string generateFileWithPattern
-      !inOutputDirectory
+      !inProductDirectory
       ![componentName string] . ".cpp"
       !"//"
       !"\n\n" # Defaut user zone1
@@ -485,7 +486,7 @@ end routine ;
 
 routine compileProgramComponentFromSourceFile
   ??@lstring inSourceFile
-  ??@string inOutputDirectory
+  ??@string inProductDirectory
   ?!@parsedComponentStruct ioParsedComponentStruct
 :
 #--- Parse source file
@@ -501,7 +502,7 @@ routine compileProgramComponentFromSourceFile
 #---
   compileProgramComponentFromAST
     !inSourceFile
-    !inOutputDirectory
+    !inProductDirectory
     !programComponentAST
     !?ioParsedComponentStruct
   ;
@@ -550,113 +551,38 @@ routine compileProgramComponentGalgas3
     !?decoratedDeclarationListForGeneration
     !?hasIndexing
   ;
-#------ Build Header File
-#  outHeaderContents := "" ;
-#  if [@uint errorCount] == 0 then
-#    if generateFewHeaderFiles [] then
-#      outHeaderContents := [filewrapper programFileGenerationTemplate.programFileHeader
-#        !"program"
-#        !{!"all-declarations"}
-#      ] ;
-#    else
-#      var inclusionSet1 := [@stringset emptySet] ;
-#      var inclusionSet2 := [@stringset emptySet] ;
-#      var headerString := "" ;
-#      foreach decoratedDeclarationListForGeneration do
-#        [mDeclaration appendDeclaration1 !?inclusionSet1 ??@string code] ;
-#        headerString .= code ;
-#      end foreach ;
-#      foreach decoratedDeclarationListForGeneration do
-#        [mDeclaration appendDeclaration2 !true !inOutputDirectory !?inclusionSet2 ??@string headerString2] ;
-#        headerString .= headerString2 ;
-#      end foreach ;
-#      if useOneHugeHeader then
-#        inclusionSet1 := [@stringset setWithString !"all-declarations"] ;
-#        inclusionSet2 := [@stringset emptySet] ;
-#      end if ;
-#      outHeaderContents := [filewrapper programFileGenerationTemplate.programFileHeader
-#        !"program"
-#        ![inclusionSet1 stringList] + [inclusionSet2 stringList]
-#      ] ;
-#      outHeaderContents += headerString ;
-#    end if ;
-#  end if ;
 #------------ Build Implementation File
-#  if [@uint errorCount] == 0 then
-    @stringset inclusionSet := {} ;
-    var beforeAfterRulesString := "" ;
-    foreach decoratedDeclarationListForGeneration do
-      beforeAfterRulesString += [mDeclaration appendTypeGenericImplementation] ;
-      [mDeclaration appendSpecificImplementation !?inclusionSet ??@string code] ;
-      beforeAfterRulesString += code ;
-    end foreach ;
-    foreach inSemanticContext->mGrammarMap do
-      inclusionSet += !"grammar-" . lkey ;
-    end foreach ;
-    if useOneHugeHeader then
-      inclusionSet := [@stringset emptySet] ;
-      for () in inSemanticContext->mGrammarMap do
-        inclusionSet += !"grammar-" . lkey->string ;
-      end for ;
-    end if ;
-    const cppContents := [filewrapper programFileGenerationTemplate.programFileImplementation
-      !"program"
-      ![inclusionSet stringList]
-      !beforeAfterRulesString
-      !inProgramRules
-      !hasIndexing
-    ] ;
-  #---
-    outProgramComponentForGeneration := [@programComponentForGeneration new
-      !false # No header
-      !"program"
-      !inclusionSet
-      !cppContents
-    ] ;
-#  end if ;
+  @stringset inclusionSet := {} ;
+  var beforeAfterRulesString := "" ;
+  foreach decoratedDeclarationListForGeneration do
+    beforeAfterRulesString += [mDeclaration appendTypeGenericImplementation] ;
+    [mDeclaration appendSpecificImplementation !?inclusionSet ??@string code] ;
+    beforeAfterRulesString += code ;
+  end foreach ;
+  foreach inSemanticContext->mGrammarMap do
+    inclusionSet += !"grammar-" . lkey ;
+  end foreach ;
+  if useOneHugeHeader then
+    inclusionSet := [@stringset emptySet] ;
+    for () in inSemanticContext->mGrammarMap do
+      inclusionSet += !"grammar-" . lkey->string ;
+    end for ;
+  end if ;
+  const cppContents := [filewrapper programFileGenerationTemplate.programFileImplementation
+    !"program"
+    ![inclusionSet stringList]
+    !beforeAfterRulesString
+    !inProgramRules
+    !hasIndexing
+  ] ;
+#---
+  outProgramComponentForGeneration := [@programComponentForGeneration new
+    !false # No header
+    !"program"
+    !inclusionSet
+    !cppContents
+  ] ;
 end routine ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#         G E N E R A T E    P R O G R A M    C O M P O N E N T             *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-#routine generateProgramComponentGalgas3
-#  ??@string inOutputDirectory
-#  ??@string inCppContents
-#  ?!@stringlist ioToolProductFileList
-#  ?!@stringset ioAllProductFileSet
-#:
-##------ Generate Header File
-#  const programFileName := "program" ;
-#  if [@uint errorCount] == 0 then
-#    ioAllProductFileSet += !programFileName + ".h" ;
-#    [@string generateFileWithPattern
-#      !inOutputDirectory
-#      !programFileName + ".h"
-#      !"//"
-#      !"\n\n" # Defaut user zone1
-#      !inHeaderContents
-#      !"\n\n" # Defaut user zone2
-#      !"#endif\n"
-#    ] ;
-#  end if ;
-#-------------------------------------------------------- Generate Implementation File
-#  if [@uint errorCount] == 0 then
-#    ioToolProductFileList += !programFileName . ".cpp" ;
-#    ioAllProductFileSet += !programFileName + ".cpp" ;
-#    [@string generateFileWithPattern
-#      !inOutputDirectory
-#      !programFileName . ".cpp"
-#      !"//"
-#      !"\n\n" # Defaut user zone1
-#      !inCppContents
-#      !"\n\n" # Defaut user zone2
-#      !"\n"
-#    ] ;
-#  end if ;
-#end routine ;
 
 #---------------------------------------------------------------------------*
 

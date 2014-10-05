@@ -391,6 +391,7 @@ routine compileSemanticsComponentAST
 #------ Semantic Analysis
   @semanticDeclarationSortedListForGeneration decoratedDeclarationListForGeneration ;
   performSemanticAnalysis
+    !inOutputDirectory
     ![inSemanticsComponentRoot mSemanticDeclarationList]
     !semanticContext
     ?decoratedDeclarationListForGeneration

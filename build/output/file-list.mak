@@ -50,17 +50,6 @@ SOURCES += all-declarations-3.cpp
 SOURCES += all-declarations-2.cpp
 SOURCES += all-declarations-1.cpp
 SOURCES += all-declarations-0.cpp
-SOURCES += grammar-templateGrammar.cpp
-SOURCES += grammar-lexiqueLL1grammar.cpp
-SOURCES += grammar-optionLL1grammar.cpp
-SOURCES += grammar-guiGrammar.cpp
-SOURCES += grammar-semanticsSLRgrammar.cpp
-SOURCES += grammar-syntaxSLRgrammar.cpp
-SOURCES += grammar-grammarLL1grammar.cpp
-SOURCES += grammar-programSLRgrammar.cpp
-SOURCES += grammar-projectLL1grammar.cpp
-SOURCES += grammar-galgas3ProjectGrammar.cpp
-SOURCES += grammar-galgas3Grammar.cpp
 
 #--- Hand-coded files ---------------------------------------------------------*
 SOURCES += cDecisionTableElement.cpp
