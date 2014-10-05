@@ -21,36 +21,6 @@ semantics semanticExpressionGeneration :
   import "semanticAnalysis.gSemantics" ;
 
 #---------------------------------------------------------------------------*
-
-reader @location sourceFile -> @string outResult
-:
-  if [selfcopy isNowhere] then
-    outResult := "SOURCE_FILE (\"\", 0)" ;
-  else
-    outResult := "SOURCE_FILE (" . [[[selfcopy file] lastPathComponent] utf8Representation] . ", " .  [[selfcopy line] string] . ")" ;
-  end if ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-reader @location commaSourceFile -> @string outResult
-:
-  outResult := " COMMA_" . [selfcopy sourceFile] ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-once compilerCppName ->@string outCompilerCppName :
-  outCompilerCppName := "inCompiler" ;
-end once ;
-
-#---------------------------------------------------------------------------*
-
-once syntaxDirectedTranslationResultVarName ->@string outName :
-  outName := "ioSyntaxDirectedTranslationResult" ;
-end once ;
-
-#---------------------------------------------------------------------------*
 #                                                                           *
 #           D E T E C T    ' T R U E '    E X P R E S S I O N               *
 #                                                                           *
@@ -74,16 +44,6 @@ end reader ;
 #                                                                           *
 #           E X P R E S S I O N    G E N E R A T I O N                      *
 #                                                                           *
-#---------------------------------------------------------------------------*
-
-abstract method @semanticExpressionForGeneration generateExpression
-  ?!@string ioGeneratedCode
-  ?!@stringset ioInclusionSet
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression
-;
-
 #---------------------------------------------------------------------------*
 
 override method @selfCopyInExpressionForGeneration generateExpression

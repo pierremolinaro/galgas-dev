@@ -17,10 +17,8 @@
 #---------------------------------------------------------------------------*
 
 semantics syntaxCompilation :
-import "semanticAnalysisOfSyntaxComponent.gSemantics" ;
-import "lexiqueCompilation.gSemantics" ;
-import "syntaxSLRgrammar.gGrammar" ;
-import "galgas_cli_options.gOptions" ;
+import "semanticsCompilation.gSemantics" ;
+import "semanticGeneration.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -117,7 +115,7 @@ routine compileSyntaxComponentFromAST
       ![inSyntaxComponentRoot mNonterminalDeclarationList]
       ![inSyntaxComponentRoot mRuleList]
       ![componentName string]
-      ![lexiqueName identifierRepresentation]
+      !lexiqueName
       !semanticContext
       !predefinedTypes
       !terminalMap
@@ -174,82 +172,81 @@ routine compileSyntaxComponentFromAST
           var unusedInclusionSet := [@stringset emptySet] ;
           [mDeclaration appendSpecificImplementation !?unusedInclusionSet ??@string code] ;
           implementationString += code ;
-#          implementationString .= [mDeclaration appendSpecificImplementation !false] ;
         end foreach ;
-        const @string lexiqueCppName := "C_Lexique_"
-        . [[[[inSyntaxComponentRoot mImportedLexiqueFilePath] lastPathComponent] stringByDeletingPathExtension] identifierRepresentation] ;
-        var inclusionSet := [@stringset emptySet] ;
-        foreach [syntaxDeclarationForGeneration mRuleDeclarationList] do
-        #--- Generate rule label implementation
-          foreach mLabelImplementationList do
-            const @string ruleName := "cParser_" . [componentName identifierRepresentation]
-              . "::rule_" . [componentName identifierRepresentation] . "_"
-              . [mNonterminalName identifierRepresentation]
-              . "_i" . [mRuleIndex string] . "_" . [mLabelName identifierRepresentation]
-            ;
-            implementationString .= "//---------------------------------------------------------------------------------------------------------------------*\n\n" ;
-            generateProcedure
-              !static:false
-              !ruleName
-              !?inclusionSet
-              !mSignatureForGeneration
-              !mInstructionListForGeneration
-              !false
-              !lexiqueCppName
-              !false # Do not generate location Argument
-              !false # Do not generate 'resetTemplateString'
-              !inSyntaxComponentRoot->mHasTranslateFeature
-              ??@string code
-            ;
-            implementationString .= code ;
-          end foreach ;
-        #--- Generate "parse" label
-          @semanticInstructionListForGeneration instructionList ;
-          [mLabelImplementationList first ?* ?* ?* ?* ?instructionList] ;
-          const @string ruleName := "cParser_" . [componentName identifierRepresentation]
-          . "::rule_" . [componentName identifierRepresentation] . "_"
-          . [mNonterminalName identifierRepresentation]
-          . "_i" . [mRuleIndex string] . "_parse" ;
-          implementationString .= "//---------------------------------------------------------------------------------------------------------------------*\n\n" ;
-          generateProcedure
-            !static:false
-            !ruleName
-            !?inclusionSet
-            ![@formalParameterListForGeneration emptyList]
-            !syntaxSignatureOfInstructionList [!"parse" !instructionList]
-            !false
-            !lexiqueCppName
-            !false # Do not generate location Argument
-            !true # Generate 'resetTemplateString'
-            !inSyntaxComponentRoot->mHasTranslateFeature
-            ??@string code
-          ;
-          implementationString .= code ;
-        #--- Generate indexing code
-          if hasIndexing then
-            @semanticInstructionListForGeneration instructionList ;
-            [mLabelImplementationList first ?* ?* ?* ?* ?instructionList] ;
-            const @string ruleName := "cParser_" . [componentName identifierRepresentation]
-            . "::rule_" . [componentName identifierRepresentation] . "_"
-            . [mNonterminalName identifierRepresentation]
-            . "_i" . [mRuleIndex string] . "_indexing" ;
-            implementationString .= "//---------------------------------------------------------------------------------------------------------------------*\n\n" ;
-            generateProcedure
-              !static:false
-              !ruleName
-              !?inclusionSet
-              ![@formalParameterListForGeneration emptyList]
-              !syntaxSignatureOfInstructionList [!"indexing" !instructionList]
-              !false
-              !lexiqueCppName
-              !false # Do not generate location Argument
-              !false # Do not generate 'resetTemplateString'
-              !false # Do not generate syntaxDirectedTranslationString argument
-              ??@string code
-            ;
-            implementationString .= code ;
-          end if ;
-        end foreach ;
+#        const @string lexiqueCppName := "C_Lexique_"
+#        . [[[[inSyntaxComponentRoot mImportedLexiqueFilePath] lastPathComponent] stringByDeletingPathExtension] identifierRepresentation] ;
+#        var inclusionSet := [@stringset emptySet] ;
+#        foreach [syntaxDeclarationForGeneration mRuleDeclarationList] do
+#        #--- Generate rule label implementation
+#          foreach mLabelImplementationList do
+#            const @string ruleName := "cParser_" . [componentName identifierRepresentation]
+#              . "::rule_" . [componentName identifierRepresentation] . "_"
+#              . [mNonterminalName identifierRepresentation]
+#              . "_i" . [mRuleIndex string] . "_" . [mLabelName identifierRepresentation]
+#            ;
+#            implementationString .= "//---------------------------------------------------------------------------------------------------------------------*\n\n" ;
+#            generateProcedure
+#              !static:false
+#              !ruleName
+#              !?inclusionSet
+#              !mSignatureForGeneration
+#              !mInstructionListForGeneration
+#              !false
+#              !lexiqueCppName
+#              !false # Do not generate location Argument
+#              !false # Do not generate 'resetTemplateString'
+#              !inSyntaxComponentRoot->mHasTranslateFeature
+#              ??@string code
+#            ;
+#            implementationString .= code ;
+#          end foreach ;
+#        #--- Generate "parse" label
+#          @semanticInstructionListForGeneration instructionList ;
+#          [mLabelImplementationList first ?* ?* ?* ?* ?instructionList] ;
+#          const @string ruleName := "cParser_" . [componentName identifierRepresentation]
+#          . "::rule_" . [componentName identifierRepresentation] . "_"
+#          . [mNonterminalName identifierRepresentation]
+#          . "_i" . [mRuleIndex string] . "_parse" ;
+#          implementationString .= "//---------------------------------------------------------------------------------------------------------------------*\n\n" ;
+#          generateProcedure
+#            !static:false
+#            !ruleName
+#            !?inclusionSet
+#            ![@formalParameterListForGeneration emptyList]
+#            !syntaxSignatureOfInstructionList [!"parse" !instructionList]
+#            !false
+#            !lexiqueCppName
+#            !false # Do not generate location Argument
+#            !true # Generate 'resetTemplateString'
+#            !inSyntaxComponentRoot->mHasTranslateFeature
+#            ??@string code
+#          ;
+#          implementationString .= code ;
+#        #--- Generate indexing code
+#          if hasIndexing then
+#            @semanticInstructionListForGeneration instructionList ;
+#            [mLabelImplementationList first ?* ?* ?* ?* ?instructionList] ;
+#            const @string ruleName := "cParser_" . [componentName identifierRepresentation]
+#            . "::rule_" . [componentName identifierRepresentation] . "_"
+#            . [mNonterminalName identifierRepresentation]
+#            . "_i" . [mRuleIndex string] . "_indexing" ;
+#            implementationString .= "//---------------------------------------------------------------------------------------------------------------------*\n\n" ;
+#            generateProcedure
+#              !static:false
+#              !ruleName
+#              !?inclusionSet
+#              ![@formalParameterListForGeneration emptyList]
+#              !syntaxSignatureOfInstructionList [!"indexing" !instructionList]
+#              !false
+#              !lexiqueCppName
+#              !false # Do not generate location Argument
+#              !false # Do not generate 'resetTemplateString'
+#              !false # Do not generate syntaxDirectedTranslationString argument
+#              ??@string code
+#            ;
+#            implementationString .= code ;
+#          end if ;
+#        end foreach ;
         [@string generateFileWithPattern
           !inOutputDirectory
           ![componentName string] . ".cpp"
@@ -292,15 +289,13 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#           C O M P I L E    S Y N T A X    C O M P O N E N T               *
+#           G R O U P    S Y N T A X    C O M P O N E N T S                 *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-routine compileAllSyntaxComponentsGalgas3
+routine groupSyntaxComponentsGalgas3
   ??@galgas3SyntaxComponentListAST inAllSyntaxComponents
-  ??@semanticContext inSemanticContext
-  ?!@parsedSyntaxComponentMap ioParsedSyntaxComponentMap
-  ?!@syntaxListForGeneration ioSyntaxListForGeneration
+  ?!@semanticDeclarationListAST ioDeclarationList
 :
 #--- get together syntax components with the same name
   var syntaxComponentNames := [@stringset emptySet] ; 
@@ -330,26 +325,75 @@ routine compileAllSyntaxComponentsGalgas3
         end if ;
       end if ;
     end for ;
-    allGroupedSyntaxComponents +=
+    ioDeclarationList += ![@galgas3SyntaxComponentAST new
+      !false # Is not predefined
       !componentName
       !importedLexiqueName
-      ![@lstringlist emptyList] # Unused in GALGAS 3
       !nonterminalDeclarationList
       !ruleList
-      ![@semanticDeclarationListAST emptyList] # Unused in GALGAS 3
       !hasTranslateFeature
-    ;
-  end for ;
-#---- Compile
-  for component in allGroupedSyntaxComponents do
-    compileSyntaxComponentGalgas3
-      !component
-      !inSemanticContext
-      !?ioParsedSyntaxComponentMap
-      !?ioSyntaxListForGeneration
-    ;
+    ] ;
   end for ;
 end routine ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#           C O M P I L E    S Y N T A X    C O M P O N E N T               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#routine compileAllSyntaxComponentsGalgas3
+#  ??@galgas3SyntaxComponentListAST inAllSyntaxComponents
+#  ??@semanticContext inSemanticContext
+#  ?!@parsedSyntaxComponentMap ioParsedSyntaxComponentMap
+#:
+##--- get together syntax components with the same name
+#  var syntaxComponentNames := [@stringset emptySet] ; 
+#  for component in inAllSyntaxComponents do
+#    syntaxComponentNames += !component->mSyntaxComponentName->string ;
+#  end for ;
+#  var allGroupedSyntaxComponents := [@galgas3SyntaxComponentListAST emptyList] ;
+#  for (name) in syntaxComponentNames do
+#    var componentName := ["" nowhere] ;
+#    var importedLexiqueName := ["" nowhere] ; 
+#    var nonterminalDeclarationList := [@nonterminalDeclarationListAST emptyList] ;
+#    var ruleList := [@syntaxRuleListAST emptyList] ;
+#    var hasTranslateFeature := false ;
+#    for component in inAllSyntaxComponents do
+#      if component->mSyntaxComponentName->string == name then
+#        componentName := component->mSyntaxComponentName ;
+#        if importedLexiqueName->string == "" then
+#          importedLexiqueName := component->mImportedLexiqueFilePath ;
+#        elsif (component->mImportedLexiqueFilePath->string != "") & (importedLexiqueName->string != component->mImportedLexiqueFilePath->string) then
+#          error component->mImportedLexiqueFilePath : "lexique name is different from that previously declared ('" .  importedLexiqueName . "')" ;
+#          error importedLexiqueName : "previously declaration is here" ;
+#        end if ;
+#        nonterminalDeclarationList += component->mNonterminalDeclarationList ;
+#        ruleList += component->mRuleList ;
+#        if component->mHasTranslateFeature then
+#          hasTranslateFeature := true ;
+#        end if ;
+#      end if ;
+#    end for ;
+#    allGroupedSyntaxComponents +=
+#      !componentName
+#      !importedLexiqueName
+#      ![@lstringlist emptyList] # Unused in GALGAS 3
+#      !nonterminalDeclarationList
+#      !ruleList
+#      ![@semanticDeclarationListAST emptyList] # Unused in GALGAS 3
+#      !hasTranslateFeature
+#    ;
+#  end for ;
+##---- Compile
+#  for component in allGroupedSyntaxComponents do
+#    compileSyntaxComponentGalgas3
+#      !component
+#      !inSemanticContext
+#      !?ioParsedSyntaxComponentMap
+#    ;
+#  end for ;
+#end routine ;
 
 #---------------------------------------------------------------------------*
 
@@ -357,7 +401,6 @@ routine compileSyntaxComponentGalgas3
   ??@galgas3SyntaxComponentListAST-element inSyntaxComponentRoot
   ??@semanticContext inSemanticContext
   ?!@parsedSyntaxComponentMap ioParsedSyntaxComponentMap
-  ?!@syntaxListForGeneration ioSyntaxListForGeneration
 :
   const componentName := inSyntaxComponentRoot->mSyntaxComponentName->string ;
 #--------------------------------------- Build terminal map
@@ -381,19 +424,14 @@ routine compileSyntaxComponentGalgas3
       !inSyntaxComponentRoot->mNonterminalDeclarationList
       !inSyntaxComponentRoot->mRuleList
       !componentName
-      ![lexiqueName identifierRepresentation]
+      !lexiqueName
       !inSemanticContext
       !predefinedTypes
       !terminalMap
       !indexNameSet
       !hasIndexing
       !inSyntaxComponentRoot->mHasTranslateFeature
-      ??@syntaxDeclarationForGeneration syntaxDeclarationForGeneration
-    ;
-    ioSyntaxListForGeneration +=
-      !inSyntaxComponentRoot
-      !syntaxDeclarationForGeneration
-      !hasIndexing
+      ?*
     ;
   #------
     [!?ioParsedSyntaxComponentMap insertKey
@@ -402,143 +440,6 @@ routine compileSyntaxComponentGalgas3
       !inSyntaxComponentRoot     
     ] ;
   end if ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-routine generateSyntaxComponentGalgas3
-  ??@string inOutputDirectory
-  ??@syntaxListForGeneration-element inSyntaxStructForGeneration
-  ??@semanticContext inSemanticContext
-  ?!@stringlist ioToolProductFileList
-  ?!@stringset ioAllProductFileSet
-:
-  const generateOneHugeHeader := [option galgas_cli_options.generateOneHeader value] ;
-  const componentName := inSyntaxStructForGeneration->mSyntaxComponentRoot->mSyntaxComponentName->string ;
-  const lexiqueName := inSyntaxStructForGeneration->mSyntaxComponentRoot->mImportedLexiqueFilePath->string ;
-#------ Generate Header File
-  var headerInclusionSet := [@stringset emptySet] ;
-  [inSyntaxStructForGeneration->mSyntaxGeneration appendDeclaration1 !?headerInclusionSet ?@string headerString] ;
-  [inSyntaxStructForGeneration->mSyntaxGeneration appendDeclaration2 !true !inOutputDirectory !?headerInclusionSet ??@string headerString2] ;
-  headerString .= headerString2 ;
-  if generateOneHugeHeader then
-    headerInclusionSet := [@stringset setWithString !"all-declarations"] ;
-  end if ;
-  headerInclusionSet += !"syntax-" + componentName ;
-  headerInclusionSet += !"lexique-" + lexiqueName ;
-  const header := [filewrapper syntaxFileGenerationTemplate.syntaxFileHeaderGalgas3
-    !componentName
-    !headerInclusionSet
-  ] ;
-  ioAllProductFileSet += !"syntax-" . componentName . ".h" ;
-  [@string generateFileWithPattern
-    !inOutputDirectory
-    !"syntax-" . componentName . ".h"
-    !"//"
-    !"\n\n" # Defaut user zone1
-    !header + headerString
-    !"\n\n" # Defaut user zone2
-    !"#endif\n"
-  ] ;
-#---------------------------------- Generate implementation file
-  const lexiqueCppName := "C_Lexique_" . [inSyntaxStructForGeneration->mSyntaxComponentRoot->mImportedLexiqueFilePath  identifierRepresentation] ;
-  var implementationString := [inSyntaxStructForGeneration->mSyntaxGeneration appendTypeGenericImplementation] ;
-  var cppInclusionSet := [@stringset emptySet] ;
-  [inSyntaxStructForGeneration->mSyntaxGeneration appendSpecificImplementation !?cppInclusionSet ??@string code] ;
-  implementationString += code ;
-#  implementationString .= [inSyntaxStructForGeneration->mSyntaxGeneration appendSpecificImplementation !false] ;
-  foreach [inSyntaxStructForGeneration->mSyntaxGeneration mRuleDeclarationList] do
-  #--- Generate rule label implementation
-    foreach mLabelImplementationList do
-      const @string ruleName := "cParser_" . [componentName identifierRepresentation]
-        . "::rule_" . [componentName identifierRepresentation] . "_"
-        . [mNonterminalName identifierRepresentation]
-        . "_i" . [mRuleIndex string] . "_" . [mLabelName identifierRepresentation]
-      ;
-      implementationString .= "//---------------------------------------------------------------------------------------------------------------------*\n\n" ;
-      generateProcedure
-        !static:false
-        !ruleName
-        !?cppInclusionSet
-        !mSignatureForGeneration
-        !mInstructionListForGeneration
-        !false
-        !lexiqueCppName
-        !false # Do not generate location Argument
-        !false # Do not generate 'resetTemplateString'
-        !inSyntaxStructForGeneration->mSyntaxComponentRoot->mHasTranslateFeature
-        ??@string code
-      ;
-      implementationString .= code ;
-    end foreach ;
-  #--- Generate "parse" label
-    @semanticInstructionListForGeneration instructionList ;
-    [mLabelImplementationList first ?* ?* ?* ?* ?instructionList] ;
-    const @string ruleName := "cParser_" . [componentName identifierRepresentation]
-    . "::rule_" . [componentName identifierRepresentation] . "_"
-    . [mNonterminalName identifierRepresentation]
-    . "_i" . [mRuleIndex string] . "_parse" ;
-    implementationString .= "//---------------------------------------------------------------------------------------------------------------------*\n\n" ;
-    generateProcedure
-      !static:false
-      !ruleName
-      !?cppInclusionSet
-      ![@formalParameterListForGeneration emptyList]
-      !syntaxSignatureOfInstructionList [!"parse" !instructionList]
-      !false
-      !lexiqueCppName
-      !false # Do not generate location Argument
-      !true # Generate 'resetTemplateString'
-      !inSyntaxStructForGeneration->mSyntaxComponentRoot->mHasTranslateFeature
-      ??@string code
-    ;
-    implementationString .= code ;
-  #--- Generate indexing code
-    if inSyntaxStructForGeneration->mHasIndexing then
-      @semanticInstructionListForGeneration instructionList ;
-      [mLabelImplementationList first ?* ?* ?* ?* ?instructionList] ;
-      const @string ruleName := "cParser_" . [componentName identifierRepresentation]
-      . "::rule_" . [componentName identifierRepresentation] . "_"
-      . [mNonterminalName identifierRepresentation]
-      . "_i" . [mRuleIndex string] . "_indexing" ;
-      implementationString .= "//---------------------------------------------------------------------------------------------------------------------*\n\n" ;
-      generateProcedure
-        !static:false
-        !ruleName
-        !?cppInclusionSet
-        ![@formalParameterListForGeneration emptyList]
-        !syntaxSignatureOfInstructionList [!"indexing" !instructionList]
-        !false
-        !lexiqueCppName
-        !false # Do not generate location Argument
-        !false # Do not generate 'resetTemplateString'
-        !false # Do not generate syntaxDirectedTranslationString argument
-        ??@string code
-      ;  
-      implementationString .= code ;
-    end if ;
-  end foreach ;
-#--- Generate headers
-  if generateOneHugeHeader then
-    cppInclusionSet := [@stringset setWithString !"syntax-" + componentName] ;
-  end if ;
-  for () in inSemanticContext->mGrammarMap do
-    cppInclusionSet += !"grammar-" . lkey->string ;
-  end for ;
-  const headerOfCppFile := [filewrapper syntaxFileGenerationTemplate.syntaxFileImplementationGalgas3
-    !cppInclusionSet
-  ] ;
-  ioToolProductFileList += !"syntax-" . componentName . ".cpp" ;
-  ioAllProductFileSet += !"syntax-" . componentName . ".cpp" ;
-  [@string generateFileWithPattern
-    !inOutputDirectory
-    !"syntax-" . componentName . ".cpp"
-    !"//"
-    !"\n\n" # Defaut user zone1
-    !headerOfCppFile + implementationString
-    !"\n\n" # Defaut user zone2
-    !"\n"
-  ] ;
 end routine ;
 
 #---------------------------------------------------------------------------*

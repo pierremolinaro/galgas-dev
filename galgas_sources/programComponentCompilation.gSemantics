@@ -17,8 +17,8 @@
 #---------------------------------------------------------------------------*
 
 semantics programComponentCompilation :
-import "semanticAnalysisOfSyntaxComponent.gSemantics" ;
 import "programSLRgrammar.gGrammar" ;
+import "semanticsCompilation.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 

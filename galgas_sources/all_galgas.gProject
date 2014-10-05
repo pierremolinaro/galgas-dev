@@ -106,7 +106,6 @@ project all_galgas (3:0:0) -> "galgas" :
   syntax    "syntaxModelBuilder.gSyntax" ;
   grammar   "syntaxSLRgrammar.gGrammar" ;
   semantics "syntaxSignature.gSemantics" ;
-  semantics "semanticAnalysisOfSyntaxComponent.gSemantics" ;
   semantics "syntaxCompilation.gSemantics" ;
 
 #--- Grammar component

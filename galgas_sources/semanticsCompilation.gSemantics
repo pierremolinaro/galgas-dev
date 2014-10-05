@@ -17,9 +17,10 @@
 #---------------------------------------------------------------------------*
 
 semantics semanticsCompilation :
-  import "allASTTypes.gSemantics" ;
   import "predefinedTypes.gSemantics" ;
+  import "optionCompilation.gSemantics" ;
   import "grammarCompilation.gSemantics" ;
+  import "semanticAnalysis.gSemantics" ;
   import "semanticsSLRgrammar.gGrammar" ;
 
 #---------------------------------------------------------------------------*
@@ -60,12 +61,6 @@ routine parseSemanticComponent
     [!?ioParsedComponentStruct->mParsedSemanticsComponentMap insertKey !basenameKey !inSourceFile !outSemanticsComponentRoot] ;
   end if ;
 end routine ;
-
-#---------------------------------------------------------------------------*
-
-list @grammarComponentASTList {
-  @galgas3GrammarComponentListAST-element mGrammarComponentAST ;
-}
 
 #---------------------------------------------------------------------------*
 

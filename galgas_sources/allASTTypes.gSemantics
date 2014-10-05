@@ -103,5 +103,11 @@ struct @parsedComponentStruct {
 
 #---------------------------------------------------------------------------*
 
+list @grammarComponentASTList {
+  @galgas3GrammarComponentListAST-element mGrammarComponentAST ;
+}
+
+#---------------------------------------------------------------------------*
+
 end semantics ;
 

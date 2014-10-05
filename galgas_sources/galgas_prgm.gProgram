@@ -19,7 +19,6 @@
 
 program galgas_prgm :
   import "lexiqueSemantics.gSemantics" ;
-  import "projectGlobalCheckings.gSemantics" ;
   import "projectCreation.gSemantics" ;
   import "lexiqueCompilation.gSemantics" ;
   import "guiCompilation.gSemantics" ;
@@ -27,12 +26,14 @@ program galgas_prgm :
   import "predefinedTypes.gSemantics" ;
   import "programComponentCompilation.gSemantics" ;
   import "projectLL1grammar.gGrammar" ;
+  import "grammarCompilation.gSemantics" ;
   import "targetGeneration.gSemantics" ;
   import "galgas3projectAST.gSemantics" ;
   import "galgas3ProjectGrammar.gGrammar" ;
   import "galgas3Grammar.gGrammar" ;
   import "galgas3SemanticDeclarationCompilation.gSemantics" ;
   import "galgas3TargetGeneration.gSemantics" ;
+  import "semanticAnalysis.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
@@ -590,6 +591,11 @@ routine compileProject
 #    message "  Prologue procs: " . [declarationAST->mPrologueDeclarationList length] . "\n" ;
 #    message "  Epilogue procs: " . [declarationAST->mEpilogueDeclarationList length] . "\n" ;
 #  end if ;
+#---------------------------------- Group syntax components and their extensions
+  groupSyntaxComponentsGalgas3
+      !declarationAST->mSyntaxComponentList
+      !?declarationAST->mSemanticDeclarationList
+  ;
 #---------------------------------- Compile semantic declarations
   const productDirectory := [inProjectSourceFile stringByDeletingLastPathComponent] . "/build/output" ;
   var appProductFileList := [@stringlist emptyList] ;
@@ -599,24 +605,12 @@ routine compileProject
     compileSemanticDeclarationsGalgas3
       !projectComponentAST->mEndOfSourceFile
       !declarationAST->mSemanticDeclarationList
-#      !declarationAST->mLexiqueComponentList
       !declarationAST->mGrammarComponentList
       ?semanticContext
       ?semanticDeclarationSortedListForGeneration
     ;
   else
-    semanticDeclarationSortedListForGeneration := [@semanticDeclarationSortedListForGeneration emptySortedList] ;
-  end if ;
-#---------------------------------- Compile syntax components
-  var parsedSyntaxComponentMap := [@parsedSyntaxComponentMap emptyMap] ;
-  var syntaxListForGeneration := [@syntaxListForGeneration emptyList] ;
-  if [@uint errorCount] == 0 then
-    compileAllSyntaxComponentsGalgas3
-      !declarationAST->mSyntaxComponentList
-      !semanticContext
-      !?parsedSyntaxComponentMap
-      !?syntaxListForGeneration
-    ;
+    semanticDeclarationSortedListForGeneration := {} ;
   end if ;
 #---------------------------------- Compile grammar components
   var grammarGenerationList := [@grammarComponentGenerationList emptyList] ;
@@ -626,7 +620,6 @@ routine compileProject
         compileGrammarComponentGalgas3
           !productDirectory
           !component
-          !parsedSyntaxComponentMap
           !semanticContext
           !?grammarGenerationList
         ;
@@ -700,7 +693,6 @@ routine compileProject
       !grammarGenerationList
       !appProductFileList
       !semanticContext
-      !syntaxListForGeneration
       !semanticDeclarationSortedListForGeneration
       !declarationAST->mSourceRuleList
       !projectComponentAST
@@ -726,7 +718,6 @@ routine projectGeneration
   ??@grammarComponentGenerationList inGrammarGenerationList
   ??@stringlist inAppProductFileList
   ??@semanticContext inSemanticContext
-  ??@syntaxListForGeneration inSyntaxListForGeneration
   ??@semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
   ??@programRuleList inSourceRuleList
   ??@galgas3ProjectComponentAST inProjectComponentAST
@@ -745,6 +736,7 @@ routine projectGeneration
   var toolCppFileList := [@stringlist emptyList] ;
   var allProductFileSet := [@stringset emptySet] ;
 #---------------------------------- Generate grammar components
+  message "*** Generate grammars\n" ;
   generateGrammarComponentGalgas3
     !inProductDirectory
     !inGrammarGenerationList
@@ -752,6 +744,7 @@ routine projectGeneration
     !?allProductFileSet
   ;
 #---------------------------------- Generate GUI components
+  message "*** Generate GUI\n" ;
   if [@uint errorCount] == 0 then
     generateAllGuiComponentsGalgas3
       !inOptionComponentMapForGeneration
@@ -760,19 +753,8 @@ routine projectGeneration
       !?allProductFileSet
     ;
   end if ;
-#---------------------------------- Generate syntax components
-  if 0 == [@uint errorCount] then
-    for s in inSyntaxListForGeneration do
-      generateSyntaxComponentGalgas3
-        !inProductDirectory
-        !s
-        !inSemanticContext
-        !?toolCppFileList
-        !?allProductFileSet
-      ;
-    end for ;
-  end if ;
 #---------------------------------- Generate semantic files
+  message "*** Generate semantic\n" ;
   generateSemanticDeclarationsGalgas3
     !inProductDirectory
     !inSemanticContext
@@ -781,6 +763,7 @@ routine projectGeneration
     !?allProductFileSet
   ;
 #---------------------------------- Update targets
+  message "*** update targets\n" ;
   if 0 == [@uint errorCount] then
     @stringset handledExtensionSet [emptySet] ;
     for () in inSourceRuleList do

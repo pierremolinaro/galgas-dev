@@ -15,9 +15,8 @@
 
 void routine_compileGrammarComponentGalgas_33_ (const class GALGAS_string constinArgument0,
                                                 const class GALGAS_galgas_33_GrammarComponentListAST_2D_element constinArgument1,
-                                                const class GALGAS_parsedSyntaxComponentMap constinArgument2,
-                                                const class GALGAS_semanticContext constinArgument3,
-                                                class GALGAS_grammarComponentGenerationList & ioArgument4,
+                                                const class GALGAS_semanticContext constinArgument2,
+                                                class GALGAS_grammarComponentGenerationList & ioArgument3,
                                                 class C_Compiler * inCompiler
                                                 COMMA_LOCATION_ARGS) ;
 

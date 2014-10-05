@@ -1830,6 +1830,18 @@ class @optionComponentDeclarationAST extends @semanticDeclarationAST {
 
 #---------------------------------------------------------------------------*
 
+class @galgas3SyntaxComponentAST extends @semanticDeclarationAST {
+  @lstring mSyntaxComponentName ;
+  @lstring mLexiqueName ; 
+#  @lstringlist mImportedComponentFileNameList ;
+  @nonterminalDeclarationListAST mNonterminalDeclarationList ;
+  @syntaxRuleListAST mRuleList ;
+#  @semanticDeclarationListAST mSemanticDeclarationList ;
+  @bool mHasTranslateFeature ;
+}
+
+#---------------------------------------------------------------------------*
+
 list @galgas3SyntaxComponentListAST {
   @lstring mSyntaxComponentName ;
   @lstring mImportedLexiqueFilePath ; 

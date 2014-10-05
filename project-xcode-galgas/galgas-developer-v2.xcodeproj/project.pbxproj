@@ -332,8 +332,6 @@
 		CFBC4D1311523723006CAD14 /* semanticContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBC4D0F11523723006CAD14 /* semanticContext.cpp */; };
 		CFBC4D1411523723006CAD14 /* semanticContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBC4D0F11523723006CAD14 /* semanticContext.cpp */; };
 		CFBF7006179ACAD400789D8A /* PMUndoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBF7005179ACAD400789D8A /* PMUndoManager.m */; };
-		CFC07E0F11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC07E0B11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp */; };
-		CFC07E1011A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC07E0B11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp */; };
 		CFC1042C161DFE2000253307 /* PMUInt128.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC1042A161DFE2000253307 /* PMUInt128.cpp */; };
 		CFC1042D161DFE2000253307 /* PMUInt128.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC1042A161DFE2000253307 /* PMUInt128.cpp */; };
 		CFC153050FF6A76700A61DE8 /* guiGrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC153010FF6A76700A61DE8 /* guiGrammar.cpp */; };
@@ -947,8 +945,6 @@
 		CFBDACEB137BD130008FB334 /* unified-class-body-for-type.h.gTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "unified-class-body-for-type.h.gTemplate"; sourceTree = "<group>"; };
 		CFBF7004179ACAD400789D8A /* PMUndoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMUndoManager.h; sourceTree = "<group>"; };
 		CFBF7005179ACAD400789D8A /* PMUndoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMUndoManager.m; sourceTree = "<group>"; };
-		CFC07E0B11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticAnalysisOfSyntaxComponent.cpp; sourceTree = "<group>"; };
-		CFC07E0C11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticAnalysisOfSyntaxComponent.h; sourceTree = "<group>"; };
 		CFC1042A161DFE2000253307 /* PMUInt128.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = PMUInt128.cpp; sourceTree = "<group>"; };
 		CFC1042B161DFE2000253307 /* PMUInt128.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PMUInt128.h; sourceTree = "<group>"; };
 		CFC153010FF6A76700A61DE8 /* guiGrammar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = guiGrammar.cpp; sourceTree = "<group>"; };
@@ -1967,8 +1963,6 @@
 			children = (
 				CF22211611AEE9EF000CEDFF /* syntaxSignature.cpp */,
 				CF22211711AEE9EF000CEDFF /* syntaxSignature.h */,
-				CFC07E0B11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp */,
-				CFC07E0C11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.h */,
 				CF0EA32410654C9A00679ABC /* syntaxCompilation.cpp */,
 				CF0EA32510654C9A00679ABC /* syntaxCompilation.h */,
 				CFFA52560C10268B00B81CF3 /* syntaxModelBuilder.cpp */,
@@ -2386,7 +2380,6 @@
 				CFC7E11A119DB92900CC87F8 /* semanticInstructionGeneration.cpp in Sources */,
 				CFC7E13C119DC04E00CC87F8 /* semanticExpressionGeneration.cpp in Sources */,
 				CF697C4C19695B66002DFCE1 /* galgas3Scanner.cpp in Sources */,
-				CFC07E0F11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp in Sources */,
 				CF34D4BB11ABD1EA0020730A /* programComponentCompilation.cpp in Sources */,
 				CF22211A11AEE9EF000CEDFF /* syntaxSignature.cpp in Sources */,
 				CFFC0F1D11EDC44200C97B85 /* C_BDD-and-operation.cpp in Sources */,
@@ -2589,7 +2582,6 @@
 				CFC7E11B119DB92900CC87F8 /* semanticInstructionGeneration.cpp in Sources */,
 				CFC7E13D119DC04E00CC87F8 /* semanticExpressionGeneration.cpp in Sources */,
 				CF697C4D19695B66002DFCE1 /* galgas3Scanner.cpp in Sources */,
-				CFC07E1011A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp in Sources */,
 				CF34D4BC11ABD1EA0020730A /* programComponentCompilation.cpp in Sources */,
 				CF22211B11AEE9EF000CEDFF /* syntaxSignature.cpp in Sources */,
 				CFFC0F2011EDC44200C97B85 /* C_BDD-and-operation.cpp in Sources */,

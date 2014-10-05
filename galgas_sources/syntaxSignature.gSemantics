@@ -17,8 +17,9 @@
 #---------------------------------------------------------------------------*
 
 semantics syntaxSignature :
-import "semanticsCompilation.gSemantics" ;
-    
+#import "semanticsCompilation.gSemantics" ;
+   import "semanticsDecoratedTypes.gSemantics" ;
+
 #---------------------------------------------------------------------------*
 #                                                                           *
 #    S Y N T A X    S I G N A T U R E                                       *

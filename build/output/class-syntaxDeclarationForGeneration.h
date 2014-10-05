@@ -17,7 +17,7 @@
 
 class cPtr_syntaxDeclarationForGeneration : public cPtr_semanticDeclarationForGeneration {
 //--- Attributes
-  public : GALGAS_string mAttribute_mComponentName ;
+  public : GALGAS_string mAttribute_mSyntaxComponentName ;
   public : GALGAS_string mAttribute_mLexiqueName ;
   public : GALGAS_nonterminalMap mAttribute_mNonterminalDeclarationMap ;
   public : GALGAS_ruleDeclarationList mAttribute_mRuleDeclarationList ;
@@ -26,7 +26,7 @@ class cPtr_syntaxDeclarationForGeneration : public cPtr_semanticDeclarationForGe
   public : GALGAS_bool mAttribute_mHasTranslateFeature ;
 
 //--- Constructor
-  public : cPtr_syntaxDeclarationForGeneration (const GALGAS_string & in_mComponentName,
+  public : cPtr_syntaxDeclarationForGeneration (const GALGAS_string & in_mSyntaxComponentName,
                                                 const GALGAS_string & in_mLexiqueName,
                                                 const GALGAS_nonterminalMap & in_mNonterminalDeclarationMap,
                                                 const GALGAS_ruleDeclarationList & in_mRuleDeclarationList,
@@ -39,7 +39,7 @@ class cPtr_syntaxDeclarationForGeneration : public cPtr_semanticDeclarationForGe
   public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mComponentName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_string reader_mSyntaxComponentName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_string reader_mLexiqueName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_nonterminalMap reader_mNonterminalDeclarationMap (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_ruleDeclarationList reader_mRuleDeclarationList (LOCATION_ARGS) const ;
