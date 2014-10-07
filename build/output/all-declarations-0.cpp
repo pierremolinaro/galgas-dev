@@ -7646,6 +7646,8 @@ bool C_Lexique_galgas_5F_scanner::parseLexicalToken (void) {
               ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('\"')) ;
             }else if (testForInputUTF32Char (TO_UNICODE ('\''))) {
               ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('\'')) ;
+            }else if (testForInputUTF32Char (TO_UNICODE ('\?'))) {
+              ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('\?')) ;
             }else if (testForInputUTF32Char (TO_UNICODE ('&'))) {
               do {
                 if (notTestForInputUTF32String (kUnicodeString_galgas_5F_scanner__3B_, 1, gLexicalMessage_galgas_5F_scanner_incorrectHTMLescapeSequence COMMA_LINE_AND_SOURCE_FILE)) {
@@ -15359,6 +15361,8 @@ bool C_Lexique_galgasTemplateScanner::parseLexicalToken (void) {
                 ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('\"')) ;
               }else if (testForInputUTF32Char (TO_UNICODE ('\''))) {
                 ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('\'')) ;
+              }else if (testForInputUTF32Char (TO_UNICODE ('\?'))) {
+                ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('\?')) ;
               }else if (testForInputUTF32Char (TO_UNICODE ('&'))) {
                 do {
                   if (notTestForInputUTF32String (kUnicodeString_galgasTemplateScanner__3B_, 1, gLexicalMessage_galgasTemplateScanner_incorrectHTMLescapeSequence COMMA_LINE_AND_SOURCE_FILE)) {

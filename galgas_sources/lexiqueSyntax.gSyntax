@@ -618,10 +618,9 @@ rule <terminal_declaration> ?!@terminalDeclarationListAST ioTerminalDeclarationL
     $identifier$ ??@lstring sentAttribute ;
     sentAttributeList += !selector !sentAttribute ;
   end repeat ;
-  $error$ ;
-  $message$ ;
-  $literal_string$ ??@lstring errorMessage ;
-  send " {" ;
+  $error$ :> ?* ?* ;
+  $message$ :> ?* ?* ;
+  $literal_string$ ??@lstring errorMessage :> ?* ?* ;
   @lstring theStyle ; # Empty string if no style
   select
     $style$ ;
@@ -643,7 +642,7 @@ rule <terminal_declaration> ?!@terminalDeclarationListAST ioTerminalDeclarationL
     end repeat ;
   end select ;
   $;$ :> ?* ?* ;
-  send "}" ;
+  send " error message " + [errorMessage utf8Representation] ;
   ioTerminalDeclarationList += !name !sentAttributeList !errorMessage !theStyle !optionList ;
 end rule ;
 

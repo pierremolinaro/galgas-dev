@@ -22768,6 +22768,8 @@ bool C_Lexique_galgas_33_Scanner::parseLexicalToken (void) {
               ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('\"')) ;
             }else if (testForInputUTF32Char (TO_UNICODE ('\''))) {
               ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('\'')) ;
+            }else if (testForInputUTF32Char (TO_UNICODE ('\?'))) {
+              ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, TO_UNICODE ('\?')) ;
             }else if (testForInputUTF32Char (TO_UNICODE ('&'))) {
               do {
                 if (notTestForInputUTF32String (kUnicodeString_galgas_33_Scanner__3B_, 1, gLexicalMessage_galgas_33_Scanner_incorrectHTMLescapeSequence COMMA_LINE_AND_SOURCE_FILE)) {

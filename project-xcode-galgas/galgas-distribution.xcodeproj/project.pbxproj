@@ -323,8 +323,6 @@
 		CFBC4D1111523723006CAD14 /* semanticContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBC4D0F11523723006CAD14 /* semanticContext.cpp */; };
 		CFBC4D1211523723006CAD14 /* semanticContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBC4D0F11523723006CAD14 /* semanticContext.cpp */; };
 		CFBF7012179AF06800789D8A /* PMUndoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBF7011179AF06800789D8A /* PMUndoManager.m */; };
-		CFC07E0D11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC07E0B11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp */; };
-		CFC07E0E11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC07E0B11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp */; };
 		CFC153030FF6A76700A61DE8 /* guiGrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC153010FF6A76700A61DE8 /* guiGrammar.cpp */; };
 		CFC153040FF6A76700A61DE8 /* guiGrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC153010FF6A76700A61DE8 /* guiGrammar.cpp */; };
 		CFC3A1BE119059210021E9A1 /* semanticExpressionAnalysis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC3A1BC119059210021E9A1 /* semanticExpressionAnalysis.cpp */; };
@@ -914,8 +912,6 @@
 		CFBDACEB137BD130008FB334 /* unified-class-body-for-type.h.gTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "unified-class-body-for-type.h.gTemplate"; sourceTree = "<group>"; };
 		CFBF7010179AF06800789D8A /* PMUndoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMUndoManager.h; sourceTree = "<group>"; };
 		CFBF7011179AF06800789D8A /* PMUndoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMUndoManager.m; sourceTree = "<group>"; };
-		CFC07E0B11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticAnalysisOfSyntaxComponent.cpp; sourceTree = "<group>"; };
-		CFC07E0C11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticAnalysisOfSyntaxComponent.h; sourceTree = "<group>"; };
 		CFC153010FF6A76700A61DE8 /* guiGrammar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = guiGrammar.cpp; sourceTree = "<group>"; };
 		CFC153020FF6A76700A61DE8 /* guiGrammar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = guiGrammar.h; sourceTree = "<group>"; };
 		CFC30F92058A225E003D0386 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
@@ -1851,8 +1847,6 @@
 			children = (
 				CF22211611AEE9EF000CEDFF /* syntaxSignature.cpp */,
 				CF22211711AEE9EF000CEDFF /* syntaxSignature.h */,
-				CFC07E0B11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp */,
-				CFC07E0C11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.h */,
 				CF0EA32410654C9A00679ABC /* syntaxCompilation.cpp */,
 				CF0EA32510654C9A00679ABC /* syntaxCompilation.h */,
 				CFFA52560C10268B00B81CF3 /* syntaxModelBuilder.cpp */,
@@ -2305,7 +2299,6 @@
 				CFC3A1BE119059210021E9A1 /* semanticExpressionAnalysis.cpp in Sources */,
 				CFC7E118119DB92900CC87F8 /* semanticInstructionGeneration.cpp in Sources */,
 				CFC7E13A119DC04E00CC87F8 /* semanticExpressionGeneration.cpp in Sources */,
-				CFC07E0D11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp in Sources */,
 				CF34D4B911ABD1EA0020730A /* programComponentCompilation.cpp in Sources */,
 				CF22211811AEE9EF000CEDFF /* syntaxSignature.cpp in Sources */,
 				CF337C9811C3F8C7007E7736 /* capCollectionElementArray.cpp in Sources */,
@@ -2507,7 +2500,6 @@
 				CFC3A1BF119059210021E9A1 /* semanticExpressionAnalysis.cpp in Sources */,
 				CFC7E119119DB92900CC87F8 /* semanticInstructionGeneration.cpp in Sources */,
 				CFC7E13B119DC04E00CC87F8 /* semanticExpressionGeneration.cpp in Sources */,
-				CFC07E0E11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp in Sources */,
 				CF34D4BA11ABD1EA0020730A /* programComponentCompilation.cpp in Sources */,
 				CF22211911AEE9EF000CEDFF /* syntaxSignature.cpp in Sources */,
 				CF337C9911C3F8C7007E7736 /* capCollectionElementArray.cpp in Sources */,

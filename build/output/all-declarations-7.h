@@ -2495,10 +2495,6 @@ class cParser_galgas_33_LexiqueComponentSyntax {
 
   protected : virtual int32_t select_galgas_33_LexiqueComponentSyntax_34 (C_Lexique_galgas_33_Scanner *) = 0 ;
 
-  protected : virtual int32_t select_galgas_33_LexiqueComponentSyntax_35 (C_Lexique_galgas_33_Scanner *) = 0 ;
-
-  protected : virtual int32_t select_galgas_33_LexiqueComponentSyntax_36 (C_Lexique_galgas_33_Scanner *) = 0 ;
-
 
 } ;
 

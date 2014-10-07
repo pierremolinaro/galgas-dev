@@ -8,7 +8,7 @@ lexique %!PROJECT_NAME%_lexique {
 
 style keywordsStyle -> "Keywords"
 
-$identifier$ ! tokenString {error message "an identifier"}
+$identifier$ ! tokenString error message "an identifier"
 
 #--- This is the keyword list
 list keyWordList error message "the '\%K' keyword" style keywordsStyle {
@@ -30,7 +30,7 @@ rule 'a'->'z' |  'A'->'Z' {
 
 style integerStyle -> "Integer Constants"
 @uint uint32value
-$integer$ !uint32value {error message "a 32-bit unsigned decimal number" style integerStyle}
+$integer$ !uint32value style integerStyle error message "a 32-bit unsigned decimal number"
 
 message decimalNumberTooLarge : "decimal number too large"
 message internalError : "internal error"
@@ -51,7 +51,7 @@ rule '0'->'9' {
 #----------------------------------------------------------------------------*
 
 style stringStyle -> "String Constants"
-$literal_string$ ! tokenString { error message "a character string constant \"...\"" style stringStyle \%nonAtomicSelection}
+$literal_string$ ! tokenString style stringStyle \%nonAtomicSelection error message "a character string constant \"...\""
 
 
 message incorrectStringEnd : "string does not end with '\"'"
@@ -85,7 +85,7 @@ rule list delimitorsList
 #----------------------------------------------------------------------------*
 
 style commentStyle -> "Comments"
-$comment$ {error message "a comment" style commentStyle \%nonAtomicSelection}
+$comment$ style commentStyle \%nonAtomicSelection error message "a comment"
 rule '#' {
   repeat
   while '\u0001' -> '\u0009' | '\u000B' | '\u000C' | '\u000E' -> '\uFFFD' :
