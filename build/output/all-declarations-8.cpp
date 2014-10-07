@@ -5917,14 +5917,14 @@ static const int16_t gProductions_lexiqueLL1grammar [] = {
 , NONTERMINAL (49) // <select_lexiqueSyntax_29>
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) // $;$
 , END_PRODUCTION
-// At index 166 : <style_declaration>, in file 'lexiqueSyntax.ggs', line 639
+// At index 166 : <style_declaration>, in file 'lexiqueSyntax.ggs', line 640
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_style) // $style$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2D__3E_) // $->$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) // $literal_string$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) // $;$
 , END_PRODUCTION
-// At index 172 : <extern_routine_or_function_declaration>, in file 'lexiqueSyntax.ggs', line 650
+// At index 172 : <extern_routine_or_function_declaration>, in file 'lexiqueSyntax.ggs', line 651
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_extern) // $extern$
 , NONTERMINAL (51) // <select_lexiqueSyntax_31>
 , END_PRODUCTION
@@ -6172,28 +6172,28 @@ static const int16_t gProductions_lexiqueLL1grammar [] = {
 , END_PRODUCTION
 // At index 349 : <select_lexiqueSyntax_28>, in file 'lexiqueSyntax.ggs', line 613
 , END_PRODUCTION
-// At index 350 : <select_lexiqueSyntax_29>, in file 'lexiqueSyntax.ggs', line 620
+// At index 350 : <select_lexiqueSyntax_29>, in file 'lexiqueSyntax.ggs', line 621
 , END_PRODUCTION
-// At index 351 : <select_lexiqueSyntax_29>, in file 'lexiqueSyntax.ggs', line 620
+// At index 351 : <select_lexiqueSyntax_29>, in file 'lexiqueSyntax.ggs', line 621
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_feature) // $feature$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (50) // <select_lexiqueSyntax_30>
 , END_PRODUCTION
-// At index 355 : <select_lexiqueSyntax_30>, in file 'lexiqueSyntax.ggs', line 624
+// At index 355 : <select_lexiqueSyntax_30>, in file 'lexiqueSyntax.ggs', line 625
 , END_PRODUCTION
-// At index 356 : <select_lexiqueSyntax_30>, in file 'lexiqueSyntax.ggs', line 624
+// At index 356 : <select_lexiqueSyntax_30>, in file 'lexiqueSyntax.ggs', line 625
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2C_) // $,$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (50) // <select_lexiqueSyntax_30>
 , END_PRODUCTION
-// At index 360 : <select_lexiqueSyntax_31>, in file 'lexiqueSyntax.ggs', line 654
+// At index 360 : <select_lexiqueSyntax_31>, in file 'lexiqueSyntax.ggs', line 655
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_routine) // $routine$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (52) // <select_lexiqueSyntax_32>
 , NONTERMINAL (54) // <select_lexiqueSyntax_34>
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) // $;$
 , END_PRODUCTION
-// At index 366 : <select_lexiqueSyntax_31>, in file 'lexiqueSyntax.ggs', line 654
+// At index 366 : <select_lexiqueSyntax_31>, in file 'lexiqueSyntax.ggs', line 655
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_function) // $function$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (56) // <select_lexiqueSyntax_36>
@@ -6201,37 +6201,37 @@ static const int16_t gProductions_lexiqueLL1grammar [] = {
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) // $type_name$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) // $;$
 , END_PRODUCTION
-// At index 373 : <select_lexiqueSyntax_32>, in file 'lexiqueSyntax.ggs', line 659
+// At index 373 : <select_lexiqueSyntax_32>, in file 'lexiqueSyntax.ggs', line 660
 , END_PRODUCTION
-// At index 374 : <select_lexiqueSyntax_32>, in file 'lexiqueSyntax.ggs', line 659
+// At index 374 : <select_lexiqueSyntax_32>, in file 'lexiqueSyntax.ggs', line 660
 , NONTERMINAL (53) // <select_lexiqueSyntax_33>
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) // $type_name$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (52) // <select_lexiqueSyntax_32>
 , END_PRODUCTION
-// At index 379 : <select_lexiqueSyntax_33>, in file 'lexiqueSyntax.ggs', line 662
+// At index 379 : <select_lexiqueSyntax_33>, in file 'lexiqueSyntax.ggs', line 663
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F__21_) // $?!$
 , END_PRODUCTION
-// At index 381 : <select_lexiqueSyntax_33>, in file 'lexiqueSyntax.ggs', line 662
+// At index 381 : <select_lexiqueSyntax_33>, in file 'lexiqueSyntax.ggs', line 663
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) // $?$
 , END_PRODUCTION
-// At index 383 : <select_lexiqueSyntax_34>, in file 'lexiqueSyntax.ggs', line 680
+// At index 383 : <select_lexiqueSyntax_34>, in file 'lexiqueSyntax.ggs', line 681
 , END_PRODUCTION
-// At index 384 : <select_lexiqueSyntax_34>, in file 'lexiqueSyntax.ggs', line 680
+// At index 384 : <select_lexiqueSyntax_34>, in file 'lexiqueSyntax.ggs', line 681
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_error) // $error$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (55) // <select_lexiqueSyntax_35>
 , END_PRODUCTION
-// At index 388 : <select_lexiqueSyntax_35>, in file 'lexiqueSyntax.ggs', line 683
+// At index 388 : <select_lexiqueSyntax_35>, in file 'lexiqueSyntax.ggs', line 684
 , END_PRODUCTION
-// At index 389 : <select_lexiqueSyntax_35>, in file 'lexiqueSyntax.ggs', line 683
+// At index 389 : <select_lexiqueSyntax_35>, in file 'lexiqueSyntax.ggs', line 684
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2C_) // $,$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (55) // <select_lexiqueSyntax_35>
 , END_PRODUCTION
-// At index 393 : <select_lexiqueSyntax_36>, in file 'lexiqueSyntax.ggs', line 697
+// At index 393 : <select_lexiqueSyntax_36>, in file 'lexiqueSyntax.ggs', line 698
 , END_PRODUCTION
-// At index 394 : <select_lexiqueSyntax_36>, in file 'lexiqueSyntax.ggs', line 697
+// At index 394 : <select_lexiqueSyntax_36>, in file 'lexiqueSyntax.ggs', line 698
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) // $?$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) // $type_name$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
@@ -6415,8 +6415,8 @@ static const int16_t gProductionIndexes_lexiqueLL1grammar [122] = {
 149, // index 32 : <lexical_list_entry>, in file 'lexiqueSyntax.ggs', line 568
 153, // index 33 : <lexical_attribute_declaration>, in file 'lexiqueSyntax.ggs', line 591
 157, // index 34 : <terminal_declaration>, in file 'lexiqueSyntax.ggs', line 600
-166, // index 35 : <style_declaration>, in file 'lexiqueSyntax.ggs', line 639
-172, // index 36 : <extern_routine_or_function_declaration>, in file 'lexiqueSyntax.ggs', line 650
+166, // index 35 : <style_declaration>, in file 'lexiqueSyntax.ggs', line 640
+172, // index 36 : <extern_routine_or_function_declaration>, in file 'lexiqueSyntax.ggs', line 651
 175, // index 37 : <select_lexiqueSyntax_0>, in file 'lexiqueSyntax.ggs', line 26
 177, // index 38 : <select_lexiqueSyntax_0>, in file 'lexiqueSyntax.ggs', line 26
 178, // index 39 : <select_lexiqueSyntax_1>, in file 'lexiqueSyntax.ggs', line 37
@@ -6485,22 +6485,22 @@ static const int16_t gProductionIndexes_lexiqueLL1grammar [122] = {
 342, // index 102 : <select_lexiqueSyntax_27>, in file 'lexiqueSyntax.ggs', line 603
 346, // index 103 : <select_lexiqueSyntax_28>, in file 'lexiqueSyntax.ggs', line 613
 349, // index 104 : <select_lexiqueSyntax_28>, in file 'lexiqueSyntax.ggs', line 613
-350, // index 105 : <select_lexiqueSyntax_29>, in file 'lexiqueSyntax.ggs', line 620
-351, // index 106 : <select_lexiqueSyntax_29>, in file 'lexiqueSyntax.ggs', line 620
-355, // index 107 : <select_lexiqueSyntax_30>, in file 'lexiqueSyntax.ggs', line 624
-356, // index 108 : <select_lexiqueSyntax_30>, in file 'lexiqueSyntax.ggs', line 624
-360, // index 109 : <select_lexiqueSyntax_31>, in file 'lexiqueSyntax.ggs', line 654
-366, // index 110 : <select_lexiqueSyntax_31>, in file 'lexiqueSyntax.ggs', line 654
-373, // index 111 : <select_lexiqueSyntax_32>, in file 'lexiqueSyntax.ggs', line 659
-374, // index 112 : <select_lexiqueSyntax_32>, in file 'lexiqueSyntax.ggs', line 659
-379, // index 113 : <select_lexiqueSyntax_33>, in file 'lexiqueSyntax.ggs', line 662
-381, // index 114 : <select_lexiqueSyntax_33>, in file 'lexiqueSyntax.ggs', line 662
-383, // index 115 : <select_lexiqueSyntax_34>, in file 'lexiqueSyntax.ggs', line 680
-384, // index 116 : <select_lexiqueSyntax_34>, in file 'lexiqueSyntax.ggs', line 680
-388, // index 117 : <select_lexiqueSyntax_35>, in file 'lexiqueSyntax.ggs', line 683
-389, // index 118 : <select_lexiqueSyntax_35>, in file 'lexiqueSyntax.ggs', line 683
-393, // index 119 : <select_lexiqueSyntax_36>, in file 'lexiqueSyntax.ggs', line 697
-394, // index 120 : <select_lexiqueSyntax_36>, in file 'lexiqueSyntax.ggs', line 697
+350, // index 105 : <select_lexiqueSyntax_29>, in file 'lexiqueSyntax.ggs', line 621
+351, // index 106 : <select_lexiqueSyntax_29>, in file 'lexiqueSyntax.ggs', line 621
+355, // index 107 : <select_lexiqueSyntax_30>, in file 'lexiqueSyntax.ggs', line 625
+356, // index 108 : <select_lexiqueSyntax_30>, in file 'lexiqueSyntax.ggs', line 625
+360, // index 109 : <select_lexiqueSyntax_31>, in file 'lexiqueSyntax.ggs', line 655
+366, // index 110 : <select_lexiqueSyntax_31>, in file 'lexiqueSyntax.ggs', line 655
+373, // index 111 : <select_lexiqueSyntax_32>, in file 'lexiqueSyntax.ggs', line 660
+374, // index 112 : <select_lexiqueSyntax_32>, in file 'lexiqueSyntax.ggs', line 660
+379, // index 113 : <select_lexiqueSyntax_33>, in file 'lexiqueSyntax.ggs', line 663
+381, // index 114 : <select_lexiqueSyntax_33>, in file 'lexiqueSyntax.ggs', line 663
+383, // index 115 : <select_lexiqueSyntax_34>, in file 'lexiqueSyntax.ggs', line 681
+384, // index 116 : <select_lexiqueSyntax_34>, in file 'lexiqueSyntax.ggs', line 681
+388, // index 117 : <select_lexiqueSyntax_35>, in file 'lexiqueSyntax.ggs', line 684
+389, // index 118 : <select_lexiqueSyntax_35>, in file 'lexiqueSyntax.ggs', line 684
+393, // index 119 : <select_lexiqueSyntax_36>, in file 'lexiqueSyntax.ggs', line 698
+394, // index 120 : <select_lexiqueSyntax_36>, in file 'lexiqueSyntax.ggs', line 698
 399 // index 121 : <>, in file '.ggs', line 0
 } ;
 
