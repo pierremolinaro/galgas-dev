@@ -440,6 +440,8 @@ rule '"' :
       enterCharacterIntoString !?tokenString !'"' ;
     when '\'' :
       enterCharacterIntoString !?tokenString !'\'' ;
+    when '?' :
+      enterCharacterIntoString !?tokenString !'?' ;
     when '&' :
       repeat
       while ~ ";" error incorrectHTMLescapeSequence :

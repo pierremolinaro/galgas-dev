@@ -593,28 +593,22 @@ rule <terminal_declaration> ?!@terminalDeclarationListAST ioTerminalDeclarationL
     $identifier$ ?const sentAttribute ;
     sentAttributeList += !selector !sentAttribute ;
   end repeat ;
+  @lstring theStyle := [""nowhere] ; # Empty string if no style
+  @lstringlist optionList := {} ;
+  repeat
+  while
+    $style$ ;
+    if theStyle->string != "" then
+      error here : "duplicated style reference" ;
+    end if ;
+    $identifier$ ? theStyle ;
+  while
+    $attribute$ ??@lstring optionName ;
+    optionList += !optionName ;
+  end repeat ;
   $error$ ;
   $message$ ;
   $literal_string$ ??@lstring errorMessage ;
-  @lstring theStyle ; # Empty string if no style
-  @lstringlist optionList := {} ;
-  select
-    theStyle := [""nowhere] ;
-  or
-    ${$ ;
-    select
-      $style$ ;
-      $identifier$ ? theStyle ;
-    or
-      theStyle :=  [""nowhere] ;
-    end select ;
-    repeat
-    while
-      $attribute$ ??@lstring optionName ;
-      optionList += !optionName ;
-    end repeat ;
-    $}$ ;
-  end select ;
   ioTerminalDeclarationList += !name !sentAttributeList !errorMessage !theStyle !optionList ;
 end rule ;
 
