@@ -64,41 +64,41 @@ var gr := [@monGraphe emptyGraph] ;
 
 \section{Construire un graphe}
 
-Trois modifiers permettent de construire un graphe :
+Trois setters permettent de construire un graphe :
 \begin{itemize}
-  \item un \emph{modifier d'insertion} (\refSubsectionPage{modifier-insertion-graphe}), défini par l'utilisateur, réalise l'ajout d'un nœud ;
-  \item le \emph{modifier} \galgas{addEdge} (\refSubsectionPage{modifier-addEdge}), implicitement défini, réalise l'ajout d'un arc ;
-  \item le \emph{modifier} \galgas{noteNode} (\refSubsectionPage{modifier-noteNode}), implicitement défini, indique qu'un nœud doit être défini.
+  \item un \emph{setter d'insertion} (\refSubsectionPage{setter-insertion-graphe}), défini par l'utilisateur, réalise l'ajout d'un nœud ;
+  \item le \emph{setter} \galgas{addEdge} (\refSubsectionPage{setter-addEdge}), implicitement défini, réalise l'ajout d'un arc ;
+  \item le \emph{setter} \galgas{noteNode} (\refSubsectionPage{setter-noteNode}), implicitement défini, indique qu'un nœud doit être défini.
 \end{itemize}
 
-Ces trois modifiers peuvent être appelés dans un ordre quelconque. Il est possible d'entrer un arc alors que ni le nœud origine, ni le nœud destination ne sont définis. Il faudra simplement qu'ils le soient avant que les calculs soient entrepris sur le graphe.
+Ces trois setters peuvent être appelés dans un ordre quelconque. Il est possible d'entrer un arc alors que ni le nœud origine, ni le nœud destination ne sont définis. Il faudra simplement qu'ils le soient avant que les calculs soient entrepris sur le graphe.
 
-\subsectionLabel{Modifier d'insertion}{modifier-insertion-graphe}
+\subsectionLabel{Setter d'insertion}{setter-insertion-graphe}
 
-Pour pouvoir entrer un nœud, il faut déclarer explicitement un \emph{modifier d'insertion} :
+Pour pouvoir entrer un nœud, il faut déclarer explicitement un \emph{setter d'insertion} :
 \begin{galgascode}
 graph @monGraphe (@maListe) {
   insert addNode error message "the '%K' node is already declared at %L" ;
 }
 \end{galgascode}
 
-\galgas{addNode} est le nom donné au \emph{modifier} d'insertion de nœud. Comme dans un graphe, un nœud est unique, la chaîne de caractères qui suit \galgas{error message} est le message d'erreur qui est affiché en cas de tentative d'insertion d'un nœud déjà existant. Dans cette chaîne, deux séquences particulières peuvent être utilisées :
+\galgas{addNode} est le nom donné au \emph{setter} d'insertion de nœud. Comme dans un graphe, un nœud est unique, la chaîne de caractères qui suit \galgas{error message} est le message d'erreur qui est affiché en cas de tentative d'insertion d'un nœud déjà existant. Dans cette chaîne, deux séquences particulières peuvent être utilisées :
 \begin{itemize}
   \item \colorbox{\couleurCodeGALGAS}{\texttt{\%K}}, qui est remplacée par le nom du nœud ;
   \item \colorbox{\couleurCodeGALGAS}{\texttt{\%L}}, qui est remplacée par la désignation de l'endroit dans le texte source où est déclaré le nœud déjà existant.
 \end{itemize}
 
-Un modifier d'insertion présente que des arguments d'entrée :
+Un setter d'insertion présente que des arguments d'entrée :
 \begin{itemize}
   \item le premier est toujours de type \galgas{@lstring} ; la composante \galgas{@string} est le nom du nœud (qui est unique dans un graphe donné), et la composante \galgas{@location} est la position dans le texte source où est déclaré le nœud, et est ajoutée à la liste correspondante du nœud ;
   \item Les arguments suivants correspondent en nombre et en type aux champs du type liste qui définit les informations associées.
 \end{itemize}
 
-Ainsi, le modifier d'insertion \galgas{addNode} du type de graphe \galgas{@monGraphe} possède trois arguments en entrée ;
+Ainsi, le setter d'insertion \galgas{addNode} du type de graphe \galgas{@monGraphe} possède trois arguments en entrée ;
 \begin{itemize}
   \item le premier de type \galgas{@lstring} ;
   \item le deuxième de type \galgas{@uint}, qui correspond au premier champ \galgas{monInfo1} du type liste \galgas{@maListe} ;
-  \item le troisième de type \galgas{@string}, qui correspond au premier champ \galgas{monInfo2} du type liste \galgas{@maListe}.
+  \item le troisième de type \galgas{@string}, qui correspond au second champ \galgas{monInfo2} du type liste \galgas{@maListe}.
 \end{itemize}
 
 Il est par exemple appelé comme suit :
@@ -111,13 +111,13 @@ var gr := [@monGraphe emptyGraph] ;
 
 
 
-\subsectionLabel{Entrer un arc : modifier \texttt{addEdge}}{modifier-addEdge}
+\subsectionLabel{Entrer un arc : setter \texttt{addEdge}}{setter-addEdge}
 
 \begin{galgascode}
-modifier addEdge ??@lstring inSourceNode ??@lstring inTargetNode ;
+setter addEdge ??@lstring inSourceNode ??@lstring inTargetNode ;
 \end{galgascode}
 
-Pour entrer un arc, appeler le modifier prédéfini \galgas{addEdge}. Celui-ci possède deux arguments d'entrée de type \galgas{@lstring} :
+Pour entrer un arc, appeler le setter prédéfini \galgas{addEdge}. Celui-ci possède deux arguments d'entrée de type \galgas{@lstring} :
 \begin{itemize}
   \item le premier spécifie le nœud origine de l'arc ; la composante \galgas{@string} est le nom du nœud origine, et la composante \galgas{@location} est ajoutée à la liste du nœud origine ;
   \item le second spécifie le nœud destination de l'arc ; la composante \galgas{@string} est le nom du nœud destination, et la composante \galgas{@location} est ajoutée à la liste du nœud destination.
@@ -129,123 +129,109 @@ Pour entrer un arc, appeler le modifier prédéfini \galgas{addEdge}. Celui-ci p
 
 
 
-\subsectionLabel{Modifier \texttt{noteNode}}{modifier-noteNode}
+\subsectionLabel{setter \texttt{noteNode}}{setter-noteNode}
 
 \begin{galgascode}
-modifier noteNode ??@lstring inNode ;
+setter noteNode ??@lstring inNode ;
 \end{galgascode}
 
-Le modifier prédéfini \galgas{noteNode} permet d'indiquer qu'un nœud doit être défini : il possède un seul argument en entrée, de type \galgas{@lstring}, dont la composante \galgas{@string} désigne le nom du nœud, et dont la composante \galgas{@location} est ajoutée à la liste de ce nœud.
+Le setter prédéfini \galgas{noteNode} permet d'indiquer qu'un nœud doit être défini : il possède un seul argument en entrée, de type \galgas{@lstring}, dont la composante \galgas{@string} désigne le nom du nœud, et dont la composante \galgas{@location} est ajoutée à la liste de ce nœud.
 
 
 
 \section{Enlever des arcs}
 
-Deux \emph{modifiers} permettent d'enlever des arcs à un graphe :
+Deux \emph{setters} permettent d'enlever des arcs à un graphe :
 \begin{itemize}
-  \item le \emph{modifier} \galgas{removeEdgesToNode} (\refSubsectionPage{modifier-graphe-removeEdgesToNode}) retire tous les arcs qui arrivent à un nœud ;
-  \item le \emph{modifier} \galgas{removeEdgesToDominators} (\refSubsectionPage{modifier-graphe-removeEdgesToDominators}) retire tous les arcs qui arrivent à un nœud \emph{dominateur}.
+  \item le \emph{setter} \galgas{removeEdgesToNode} (\refSubsectionPage{setter-graphe-removeEdgesToNode}) retire tous les arcs qui arrivent à un nœud ;
+  \item le \emph{setter} \galgas{removeEdgesToDominators} (\refSubsectionPage{setter-graphe-removeEdgesToDominators}) retire tous les arcs qui arrivent à un nœud \emph{dominateur}.
 \end{itemize}
 
 
 
-\subsectionLabel{Modifier \texttt{removeEdgesToNode}}{modifier-graphe-removeEdgesToNode}
+\subsectionLabel{Setter \texttt{removeEdgesToNode}}{setter-graphe-removeEdgesToNode}
 
 \begin{galgascode}
-modifier removeEdgesToNode ??@string inTargetNode ;
+setter removeEdgesToNode ??@string inTargetNode ;
 \end{galgascode}
 
-Ce \emph{modifier} ne présente qu'un seul argument, une chaîne qui désigne un nœud du graphe. Son exécution supprime tous les arcs dont le nœud destination est le nœud nommé en argument.
+Ce \emph{setter} ne présente qu'un seul argument, une chaîne qui désigne un nœud du graphe. Son exécution supprime tous les arcs dont le nœud destination est le nœud nommé en argument.
 
-\subsectionLabel{Modifier \texttt{removeEdgesToDominators}}{modifier-graphe-removeEdgesToDominators}
+\subsectionLabel{Setter \texttt{removeEdgesToDominators}}{setter-graphe-removeEdgesToDominators}
 
 \begin{galgascode}
-modifier removeEdgesToDominators ;
+setter removeEdgesToDominators ;
 \end{galgascode}
 
 Dans un graphe, un nœud $d$ domine un autre nœud $n$ si chaque chemin à partir du nœud d'entrée vers le nœud $n$ doit passer par $d$ \footnote{\url{http://en.wikipedia.org/wiki/Dominator_(graph_theory)}}.
 
-Ce \emph{modifier} considère que les nœuds d'entrée sont les nœuds sans prédécesseur, et retire tous les arcs d'un nœud vers son dominateur.
+Ce \emph{setter} considère que les nœuds d'entrée sont les nœuds sans prédécesseur, et retire tous les arcs d'un nœud vers son dominateur.
 
-\section{Readers}
+\section{Getters}
 
-\subsection{Reader \texttt{edges}}
+\subsection{Getter \texttt{edges}}
 
 \begin{galgascode}
-reader edges -> @2stringlist ;
+getter edges -> @2stringlist ;
 \end{galgascode}
 
-Ce reader retourne la liste des arcs.
+Ce getter retourne la liste des arcs.
 
 
-\subsection{Reader \texttt{graphviz}}
+\subsection{Getter \texttt{graphviz}}
 
 \begin{galgascode}
-reader graphviz -> @string ;
+getter graphviz -> @string ;
 \end{galgascode}
 
-Ce reader retourne une chaîne de caractères contenant une description compatible \emph{GraphViz}\footnote{\url{http://www.graphviz.org/}} du graphe.
+Ce getter retourne une chaîne de caractères contenant une description compatible \emph{GraphViz}\footnote{\url{http://www.graphviz.org/}} du graphe.
 
 
-\subsection{Reader \texttt{keyList}}
+\subsection{Getter \texttt{keyList}}
 
 \begin{galgascode}
-reader keyList -> @stringlist ;
+getter keyList -> @stringlist ;
 \end{galgascode}
 
-Ce reader retourne la liste des noms de nœuds, aussi bien les nœuds définis (c'est à dire les nœuds pour lesquels un modifier d'insertion a été appelé, \refSubsectionPage{modifier-insertion-graphe}), que les nœuds indéfinis.
+Ce getter retourne la liste des noms de nœuds, aussi bien les nœuds définis (c'est à dire les nœuds pour lesquels un setter d'insertion a été appelé, \refSubsectionPage{setter-insertion-graphe}), que les nœuds indéfinis.
 
 
 
-\subsection{Reader \texttt{reversedGraph}}
+\subsection{Getter \texttt{reversedGraph}}
 
 \begin{galgascode}
-reader reversedGraph -> @T ;
+getter reversedGraph -> @T ;
 \end{galgascode}
 
-Ce reader retourne un graphe de même type que le receiveur, mais dont les arcs sont inversés.
+Ce getter retourne un graphe de même type que le receiveur, mais dont les arcs sont inversés.
 
 
 
 
 
-\subsection{Reader \texttt{subgraphFromNode}}
+\subsection{Getter \texttt{subgraphFromNode}}
 
 \begin{galgascode}
-reader subgraphFromNode
+getter subgraphFromNode
   ??@lstringlist inStartNodes
   ??@stringset inNodesToExclude
   -> @self ;
 \end{galgascode}
 
-Ce reader retourne le graphe défini par la partie accessible du receveur à partir des nœuds nommés dans \galgas{inStartNodes}, en excluant les nœuds nommés dans \galgas{inNodesToExclude}.
+Ce getter retourne le graphe défini par la partie accessible du receveur à partir des nœuds nommés dans \galgas{inStartNodes}, en excluant les nœuds nommés dans \galgas{inNodesToExclude}.
 
 
 
 
 
 
-\subsection{Reader \texttt{undefinedNodeCount}}
-
-\begin{galgascode}
-reader undefinedNodeCount -> @uint ;
-\end{galgascode}
-
-Ce reader retourne le nombre de nœuds indéfinis (c'est à dire les nœuds pour lesquels un modifier d'insertion n'a été appelé, \refSubsectionPage{modifier-insertion-graphe}).
-
-
-
-
-
-
-
-\subsection{Reader \texttt{undefinedNodeKeyList}}
+\subsection{Getter \texttt{undefinedNodeCount}}
 
 \begin{galgascode}
-reader undefinedNodeKeyList -> @stringlist ;
+getter undefinedNodeCount -> @uint ;
 \end{galgascode}
 
-Ce reader retourne la liste des noms des nœuds indéfinis (c'est à dire les nœuds pour lesquels un modifier d'insertion n'a été appelé, \refSubsectionPage{modifier-insertion-graphe}).
+Ce getter retourne le nombre de nœuds indéfinis (c'est à dire les nœuds pour lesquels un setter d'insertion n'a été appelé, \refSubsectionPage{setter-insertion-graphe}).
 
 
 
@@ -253,14 +239,28 @@ Ce reader retourne la liste des noms des nœuds indéfinis (c'est à dire les n�
 
 
 
-
-\subsection{Reader \texttt{undefinedNodeReferenceList}}
+\subsection{Getter \texttt{undefinedNodeKeyList}}
 
 \begin{galgascode}
-reader undefinedNodeReferenceList -> @lstringlist ;
+getter undefinedNodeKeyList -> @stringlist ;
 \end{galgascode}
 
-Ce reader retourne la liste des références des nœuds indéfinis (c'est à dire les nœuds pour lesquels un modifier d'insertion n'a été appelé, \refSubsectionPage{modifier-insertion-graphe}). Une référence à un nœud est un \galgas{@lstring} dont la chaîne est le nom du nœud, et la composante \galgas{@location} une position dans le texte source, définie par un appel à \galgas{addEdge} (\refSubsectionPage{modifier-addEdge}) ou \galgas{noteNode} (\refSubsectionPage{modifier-noteNode}).
+Ce getter retourne la liste des noms des nœuds indéfinis (c'est à dire les nœuds pour lesquels un setter d'insertion n'a été appelé, \refSubsectionPage{setter-insertion-graphe}).
+
+
+
+
+
+
+
+
+\subsection{Getter \texttt{undefinedNodeReferenceList}}
+
+\begin{galgascode}
+getter undefinedNodeReferenceList -> @lstringlist ;
+\end{galgascode}
+
+Ce getter retourne la liste des références des nœuds indéfinis (c'est à dire les nœuds pour lesquels un setter d'insertion n'a été appelé, \refSubsectionPage{setter-insertion-graphe}). Une référence à un nœud est un \galgas{@lstring} dont la chaîne est le nom du nœud, et la composante \galgas{@location} une position dans le texte source, définie par un appel à \galgas{addEdge} (\refSubsectionPage{setter-addEdge}) ou \galgas{noteNode} (\refSubsectionPage{setter-noteNode}).
 
 
 
