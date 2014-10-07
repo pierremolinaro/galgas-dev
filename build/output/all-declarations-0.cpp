@@ -24725,3 +24725,875 @@ GALGAS_lexicalListEntryListAST GALGAS_lexicalListEntryListAST::extractObject (co
   return result ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                             Class for element of '@lexicalListDeclarationListAST' list                              *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cCollectionElement_lexicalListDeclarationListAST : public cCollectionElement {
+  public : GALGAS_lexicalListDeclarationListAST_2D_element mObject ;
+
+//--- Constructor
+  public : cCollectionElement_lexicalListDeclarationListAST (const GALGAS_lstring & in_mName,
+                                                             const GALGAS_lstring & in_mStyle,
+                                                             const GALGAS_lstring & in_mSyntaxErrorMessage,
+                                                             const GALGAS_sentLexicalAttributeListAST & in_mSentAttributeList,
+                                                             const GALGAS_lexicalListEntryListAST & in_mEntryList
+                                                             COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement_lexicalListDeclarationListAST::cCollectionElement_lexicalListDeclarationListAST (const GALGAS_lstring & in_mName,
+                                                                                                    const GALGAS_lstring & in_mStyle,
+                                                                                                    const GALGAS_lstring & in_mSyntaxErrorMessage,
+                                                                                                    const GALGAS_sentLexicalAttributeListAST & in_mSentAttributeList,
+                                                                                                    const GALGAS_lexicalListEntryListAST & in_mEntryList
+                                                                                                    COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mName, in_mStyle, in_mSyntaxErrorMessage, in_mSentAttributeList, in_mEntryList) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cCollectionElement_lexicalListDeclarationListAST::isValid (void) const {
+  return mObject.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement * cCollectionElement_lexicalListDeclarationListAST::copy (void) {
+  cCollectionElement * result = NULL ;
+  macroMyNew (result, cCollectionElement_lexicalListDeclarationListAST (mObject.mAttribute_mName, mObject.mAttribute_mStyle, mObject.mAttribute_mSyntaxErrorMessage, mObject.mAttribute_mSentAttributeList, mObject.mAttribute_mEntryList COMMA_HERE)) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cCollectionElement_lexicalListDeclarationListAST::description (C_String & ioString, const int32_t inIndentation) const {
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mName" ":" ;
+  mObject.mAttribute_mName.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mStyle" ":" ;
+  mObject.mAttribute_mStyle.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mSyntaxErrorMessage" ":" ;
+  mObject.mAttribute_mSyntaxErrorMessage.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mSentAttributeList" ":" ;
+  mObject.mAttribute_mSentAttributeList.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mEntryList" ":" ;
+  mObject.mAttribute_mEntryList.description (ioString, inIndentation) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult cCollectionElement_lexicalListDeclarationListAST::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_lexicalListDeclarationListAST * operand = (cCollectionElement_lexicalListDeclarationListAST *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_lexicalListDeclarationListAST) ;
+  return mObject.objectCompare (operand->mObject) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalListDeclarationListAST::GALGAS_lexicalListDeclarationListAST (void) :
+AC_GALGAS_list () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalListDeclarationListAST::GALGAS_lexicalListDeclarationListAST (cSharedList * inSharedListPtr) :
+AC_GALGAS_list (inSharedListPtr) {
+  if (NULL == inSharedListPtr) {
+    createNewEmptyList (HERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalListDeclarationListAST GALGAS_lexicalListDeclarationListAST::constructor_emptyList (LOCATION_ARGS) {
+  GALGAS_lexicalListDeclarationListAST result ;
+  result.createNewEmptyList (THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalListDeclarationListAST GALGAS_lexicalListDeclarationListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
+                                                                                                      const GALGAS_lstring & inOperand1,
+                                                                                                      const GALGAS_lstring & inOperand2,
+                                                                                                      const GALGAS_sentLexicalAttributeListAST & inOperand3,
+                                                                                                      const GALGAS_lexicalListEntryListAST & inOperand4
+                                                                                                      COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalListDeclarationListAST result ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
+    result.createNewEmptyList (THERE) ;
+    capCollectionElement attributes ;
+    GALGAS_lexicalListDeclarationListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE) ;
+    result.addObject (attributes) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalListDeclarationListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                                      const GALGAS_lstring & in_mName,
+                                                                      const GALGAS_lstring & in_mStyle,
+                                                                      const GALGAS_lstring & in_mSyntaxErrorMessage,
+                                                                      const GALGAS_sentLexicalAttributeListAST & in_mSentAttributeList,
+                                                                      const GALGAS_lexicalListEntryListAST & in_mEntryList
+                                                                      COMMA_LOCATION_ARGS) {
+  cCollectionElement_lexicalListDeclarationListAST * p = NULL ;
+  macroMyNew (p, cCollectionElement_lexicalListDeclarationListAST (in_mName,
+                                                                   in_mStyle,
+                                                                   in_mSyntaxErrorMessage,
+                                                                   in_mSentAttributeList,
+                                                                   in_mEntryList COMMA_THERE)) ;
+  outAttributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalListDeclarationListAST::addAssign_operation (const GALGAS_lstring & inOperand0,
+                                                                const GALGAS_lstring & inOperand1,
+                                                                const GALGAS_lstring & inOperand2,
+                                                                const GALGAS_sentLexicalAttributeListAST & inOperand3,
+                                                                const GALGAS_lexicalListEntryListAST & inOperand4
+                                                                COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_lexicalListDeclarationListAST (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObject (attributes) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalListDeclarationListAST::modifier_insertAtIndex (const GALGAS_lstring inOperand0,
+                                                                   const GALGAS_lstring inOperand1,
+                                                                   const GALGAS_lstring inOperand2,
+                                                                   const GALGAS_sentLexicalAttributeListAST inOperand3,
+                                                                   const GALGAS_lexicalListEntryListAST inOperand4,
+                                                                   const GALGAS_uint inInsertionIndex,
+                                                                   C_Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) {
+  if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_lexicalListDeclarationListAST (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalListDeclarationListAST::modifier_removeAtIndex (GALGAS_lstring & outOperand0,
+                                                                   GALGAS_lstring & outOperand1,
+                                                                   GALGAS_lstring & outOperand2,
+                                                                   GALGAS_sentLexicalAttributeListAST & outOperand3,
+                                                                   GALGAS_lexicalListEntryListAST & outOperand4,
+                                                                   const GALGAS_uint inRemoveIndex,
+                                                                   C_Compiler * inCompiler
+                                                                   COMMA_LOCATION_ARGS) {
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_lexicalListDeclarationListAST * p = (cCollectionElement_lexicalListDeclarationListAST *) attributes.ptr () ;
+    if (NULL == p) {
+      outOperand0.drop () ;
+      outOperand1.drop () ;
+      outOperand2.drop () ;
+      outOperand3.drop () ;
+      outOperand4.drop () ;
+    }else{
+      macroValidSharedObject (p, cCollectionElement_lexicalListDeclarationListAST) ;
+      outOperand0 = p->mObject.mAttribute_mName ;
+      outOperand1 = p->mObject.mAttribute_mStyle ;
+      outOperand2 = p->mObject.mAttribute_mSyntaxErrorMessage ;
+      outOperand3 = p->mObject.mAttribute_mSentAttributeList ;
+      outOperand4 = p->mObject.mAttribute_mEntryList ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalListDeclarationListAST::modifier_popFirst (GALGAS_lstring & outOperand0,
+                                                              GALGAS_lstring & outOperand1,
+                                                              GALGAS_lstring & outOperand2,
+                                                              GALGAS_sentLexicalAttributeListAST & outOperand3,
+                                                              GALGAS_lexicalListEntryListAST & outOperand4,
+                                                              C_Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalListDeclarationListAST * p = (cCollectionElement_lexicalListDeclarationListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+    outOperand4.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalListDeclarationListAST) ;
+    outOperand0 = p->mObject.mAttribute_mName ;
+    outOperand1 = p->mObject.mAttribute_mStyle ;
+    outOperand2 = p->mObject.mAttribute_mSyntaxErrorMessage ;
+    outOperand3 = p->mObject.mAttribute_mSentAttributeList ;
+    outOperand4 = p->mObject.mAttribute_mEntryList ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalListDeclarationListAST::modifier_popLast (GALGAS_lstring & outOperand0,
+                                                             GALGAS_lstring & outOperand1,
+                                                             GALGAS_lstring & outOperand2,
+                                                             GALGAS_sentLexicalAttributeListAST & outOperand3,
+                                                             GALGAS_lexicalListEntryListAST & outOperand4,
+                                                             C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalListDeclarationListAST * p = (cCollectionElement_lexicalListDeclarationListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+    outOperand4.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalListDeclarationListAST) ;
+    outOperand0 = p->mObject.mAttribute_mName ;
+    outOperand1 = p->mObject.mAttribute_mStyle ;
+    outOperand2 = p->mObject.mAttribute_mSyntaxErrorMessage ;
+    outOperand3 = p->mObject.mAttribute_mSentAttributeList ;
+    outOperand4 = p->mObject.mAttribute_mEntryList ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalListDeclarationListAST::method_first (GALGAS_lstring & outOperand0,
+                                                         GALGAS_lstring & outOperand1,
+                                                         GALGAS_lstring & outOperand2,
+                                                         GALGAS_sentLexicalAttributeListAST & outOperand3,
+                                                         GALGAS_lexicalListEntryListAST & outOperand4,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalListDeclarationListAST * p = (cCollectionElement_lexicalListDeclarationListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+    outOperand4.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalListDeclarationListAST) ;
+    outOperand0 = p->mObject.mAttribute_mName ;
+    outOperand1 = p->mObject.mAttribute_mStyle ;
+    outOperand2 = p->mObject.mAttribute_mSyntaxErrorMessage ;
+    outOperand3 = p->mObject.mAttribute_mSentAttributeList ;
+    outOperand4 = p->mObject.mAttribute_mEntryList ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalListDeclarationListAST::method_last (GALGAS_lstring & outOperand0,
+                                                        GALGAS_lstring & outOperand1,
+                                                        GALGAS_lstring & outOperand2,
+                                                        GALGAS_sentLexicalAttributeListAST & outOperand3,
+                                                        GALGAS_lexicalListEntryListAST & outOperand4,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalListDeclarationListAST * p = (cCollectionElement_lexicalListDeclarationListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+    outOperand2.drop () ;
+    outOperand3.drop () ;
+    outOperand4.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalListDeclarationListAST) ;
+    outOperand0 = p->mObject.mAttribute_mName ;
+    outOperand1 = p->mObject.mAttribute_mStyle ;
+    outOperand2 = p->mObject.mAttribute_mSyntaxErrorMessage ;
+    outOperand3 = p->mObject.mAttribute_mSentAttributeList ;
+    outOperand4 = p->mObject.mAttribute_mEntryList ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalListDeclarationListAST GALGAS_lexicalListDeclarationListAST::operator_concat (const GALGAS_lexicalListDeclarationListAST & inOperand
+                                                                                            COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_lexicalListDeclarationListAST result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalListDeclarationListAST GALGAS_lexicalListDeclarationListAST::add_operation (const GALGAS_lexicalListDeclarationListAST & inOperand,
+                                                                                          C_Compiler * /* inCompiler */
+                                                                                          COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_lexicalListDeclarationListAST result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalListDeclarationListAST GALGAS_lexicalListDeclarationListAST::reader_subListWithRange (const GALGAS_range & inRange,
+                                                                                                    C_Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) const {
+  GALGAS_lexicalListDeclarationListAST result = GALGAS_lexicalListDeclarationListAST::constructor_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalListDeclarationListAST GALGAS_lexicalListDeclarationListAST::reader_subListFromIndex (const GALGAS_uint & inIndex,
+                                                                                                    C_Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) const {
+  GALGAS_lexicalListDeclarationListAST result = GALGAS_lexicalListDeclarationListAST::constructor_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalListDeclarationListAST::dotAssign_operation (const GALGAS_lexicalListDeclarationListAST inOperand
+                                                                COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_lexicalListDeclarationListAST::cEnumerator_lexicalListDeclarationListAST (const GALGAS_lexicalListDeclarationListAST & inEnumeratedObject,
+                                                                                      const typeEnumerationOrder inOrder) :
+cGenericAbstractEnumerator () {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalListDeclarationListAST_2D_element cEnumerator_lexicalListDeclarationListAST::current (LOCATION_ARGS) const {
+  const cCollectionElement_lexicalListDeclarationListAST * p = (const cCollectionElement_lexicalListDeclarationListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lexicalListDeclarationListAST) ;
+  return p->mObject ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cEnumerator_lexicalListDeclarationListAST::current_mName (LOCATION_ARGS) const {
+  const cCollectionElement_lexicalListDeclarationListAST * p = (const cCollectionElement_lexicalListDeclarationListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lexicalListDeclarationListAST) ;
+  return p->mObject.mAttribute_mName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cEnumerator_lexicalListDeclarationListAST::current_mStyle (LOCATION_ARGS) const {
+  const cCollectionElement_lexicalListDeclarationListAST * p = (const cCollectionElement_lexicalListDeclarationListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lexicalListDeclarationListAST) ;
+  return p->mObject.mAttribute_mStyle ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cEnumerator_lexicalListDeclarationListAST::current_mSyntaxErrorMessage (LOCATION_ARGS) const {
+  const cCollectionElement_lexicalListDeclarationListAST * p = (const cCollectionElement_lexicalListDeclarationListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lexicalListDeclarationListAST) ;
+  return p->mObject.mAttribute_mSyntaxErrorMessage ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_sentLexicalAttributeListAST cEnumerator_lexicalListDeclarationListAST::current_mSentAttributeList (LOCATION_ARGS) const {
+  const cCollectionElement_lexicalListDeclarationListAST * p = (const cCollectionElement_lexicalListDeclarationListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lexicalListDeclarationListAST) ;
+  return p->mObject.mAttribute_mSentAttributeList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalListEntryListAST cEnumerator_lexicalListDeclarationListAST::current_mEntryList (LOCATION_ARGS) const {
+  const cCollectionElement_lexicalListDeclarationListAST * p = (const cCollectionElement_lexicalListDeclarationListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lexicalListDeclarationListAST) ;
+  return p->mObject.mAttribute_mEntryList ;
+}
+
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                         @lexicalListDeclarationListAST type                                         *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_lexicalListDeclarationListAST ("lexicalListDeclarationListAST",
+                                                      NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_lexicalListDeclarationListAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalListDeclarationListAST ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_lexicalListDeclarationListAST::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_lexicalListDeclarationListAST (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalListDeclarationListAST GALGAS_lexicalListDeclarationListAST::extractObject (const GALGAS_object & inObject,
+                                                                                          C_Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalListDeclarationListAST result ;
+  const GALGAS_lexicalListDeclarationListAST * p = (const GALGAS_lexicalListDeclarationListAST *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_lexicalListDeclarationListAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("lexicalListDeclarationListAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                Class for element of '@lexicalSendSearchListAST' list                                *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cCollectionElement_lexicalSendSearchListAST : public cCollectionElement {
+  public : GALGAS_lexicalSendSearchListAST_2D_element mObject ;
+
+//--- Constructor
+  public : cCollectionElement_lexicalSendSearchListAST (const GALGAS_lstring & in_mAttributeName,
+                                                        const GALGAS_lstring & in_mSearchListName
+                                                        COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cCollectionElement * copy (void) ;
+
+//--- Description
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement_lexicalSendSearchListAST::cCollectionElement_lexicalSendSearchListAST (const GALGAS_lstring & in_mAttributeName,
+                                                                                          const GALGAS_lstring & in_mSearchListName
+                                                                                          COMMA_LOCATION_ARGS) :
+cCollectionElement (THERE),
+mObject (in_mAttributeName, in_mSearchListName) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool cCollectionElement_lexicalSendSearchListAST::isValid (void) const {
+  return mObject.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cCollectionElement * cCollectionElement_lexicalSendSearchListAST::copy (void) {
+  cCollectionElement * result = NULL ;
+  macroMyNew (result, cCollectionElement_lexicalSendSearchListAST (mObject.mAttribute_mAttributeName, mObject.mAttribute_mSearchListName COMMA_HERE)) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void cCollectionElement_lexicalSendSearchListAST::description (C_String & ioString, const int32_t inIndentation) const {
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mAttributeName" ":" ;
+  mObject.mAttribute_mAttributeName.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mSearchListName" ":" ;
+  mObject.mAttribute_mSearchListName.description (ioString, inIndentation) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult cCollectionElement_lexicalSendSearchListAST::compare (const cCollectionElement * inOperand) const {
+  cCollectionElement_lexicalSendSearchListAST * operand = (cCollectionElement_lexicalSendSearchListAST *) inOperand ;
+  macroValidSharedObject (operand, cCollectionElement_lexicalSendSearchListAST) ;
+  return mObject.objectCompare (operand->mObject) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalSendSearchListAST::GALGAS_lexicalSendSearchListAST (void) :
+AC_GALGAS_list () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalSendSearchListAST::GALGAS_lexicalSendSearchListAST (cSharedList * inSharedListPtr) :
+AC_GALGAS_list (inSharedListPtr) {
+  if (NULL == inSharedListPtr) {
+    createNewEmptyList (HERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalSendSearchListAST GALGAS_lexicalSendSearchListAST::constructor_emptyList (LOCATION_ARGS) {
+  GALGAS_lexicalSendSearchListAST result ;
+  result.createNewEmptyList (THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalSendSearchListAST GALGAS_lexicalSendSearchListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
+                                                                                            const GALGAS_lstring & inOperand1
+                                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalSendSearchListAST result ;
+  if (inOperand0.isValid () && inOperand1.isValid ()) {
+    result.createNewEmptyList (THERE) ;
+    capCollectionElement attributes ;
+    GALGAS_lexicalSendSearchListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
+    result.addObject (attributes) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalSendSearchListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
+                                                                 const GALGAS_lstring & in_mAttributeName,
+                                                                 const GALGAS_lstring & in_mSearchListName
+                                                                 COMMA_LOCATION_ARGS) {
+  cCollectionElement_lexicalSendSearchListAST * p = NULL ;
+  macroMyNew (p, cCollectionElement_lexicalSendSearchListAST (in_mAttributeName,
+                                                              in_mSearchListName COMMA_THERE)) ;
+  outAttributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalSendSearchListAST::addAssign_operation (const GALGAS_lstring & inOperand0,
+                                                           const GALGAS_lstring & inOperand1
+                                                           COMMA_LOCATION_ARGS) {
+  if (isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_lexicalSendSearchListAST (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObject (attributes) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalSendSearchListAST::modifier_insertAtIndex (const GALGAS_lstring inOperand0,
+                                                              const GALGAS_lstring inOperand1,
+                                                              const GALGAS_uint inInsertionIndex,
+                                                              C_Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) {
+  if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_lexicalSendSearchListAST (inOperand0, inOperand1 COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalSendSearchListAST::modifier_removeAtIndex (GALGAS_lstring & outOperand0,
+                                                              GALGAS_lstring & outOperand1,
+                                                              const GALGAS_uint inRemoveIndex,
+                                                              C_Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) {
+  if (isValid () && inRemoveIndex.isValid ()) {
+    capCollectionElement attributes ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_lexicalSendSearchListAST * p = (cCollectionElement_lexicalSendSearchListAST *) attributes.ptr () ;
+    if (NULL == p) {
+      outOperand0.drop () ;
+      outOperand1.drop () ;
+    }else{
+      macroValidSharedObject (p, cCollectionElement_lexicalSendSearchListAST) ;
+      outOperand0 = p->mObject.mAttribute_mAttributeName ;
+      outOperand1 = p->mObject.mAttribute_mSearchListName ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalSendSearchListAST::modifier_popFirst (GALGAS_lstring & outOperand0,
+                                                         GALGAS_lstring & outOperand1,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeFirstObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalSendSearchListAST * p = (cCollectionElement_lexicalSendSearchListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalSendSearchListAST) ;
+    outOperand0 = p->mObject.mAttribute_mAttributeName ;
+    outOperand1 = p->mObject.mAttribute_mSearchListName ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalSendSearchListAST::modifier_popLast (GALGAS_lstring & outOperand0,
+                                                        GALGAS_lstring & outOperand1,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) {
+  capCollectionElement attributes ;
+  removeLastObject (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalSendSearchListAST * p = (cCollectionElement_lexicalSendSearchListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalSendSearchListAST) ;
+    outOperand0 = p->mObject.mAttribute_mAttributeName ;
+    outOperand1 = p->mObject.mAttribute_mSearchListName ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalSendSearchListAST::method_first (GALGAS_lstring & outOperand0,
+                                                    GALGAS_lstring & outOperand1,
+                                                    C_Compiler * inCompiler
+                                                    COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readFirst (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalSendSearchListAST * p = (cCollectionElement_lexicalSendSearchListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalSendSearchListAST) ;
+    outOperand0 = p->mObject.mAttribute_mAttributeName ;
+    outOperand1 = p->mObject.mAttribute_mSearchListName ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalSendSearchListAST::method_last (GALGAS_lstring & outOperand0,
+                                                   GALGAS_lstring & outOperand1,
+                                                   C_Compiler * inCompiler
+                                                   COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes ;
+  readLast (attributes, inCompiler COMMA_THERE) ;
+  cCollectionElement_lexicalSendSearchListAST * p = (cCollectionElement_lexicalSendSearchListAST *) attributes.ptr () ;
+  if (NULL == p) {
+    outOperand0.drop () ;
+    outOperand1.drop () ;
+  }else{
+    macroValidSharedObject (p, cCollectionElement_lexicalSendSearchListAST) ;
+    outOperand0 = p->mObject.mAttribute_mAttributeName ;
+    outOperand1 = p->mObject.mAttribute_mSearchListName ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalSendSearchListAST GALGAS_lexicalSendSearchListAST::operator_concat (const GALGAS_lexicalSendSearchListAST & inOperand
+                                                                                  COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_lexicalSendSearchListAST result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalSendSearchListAST GALGAS_lexicalSendSearchListAST::add_operation (const GALGAS_lexicalSendSearchListAST & inOperand,
+                                                                                C_Compiler * /* inCompiler */
+                                                                                COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_lexicalSendSearchListAST result ;
+  if (isValid () && inOperand.isValid ()) {
+    result = *this ;
+    result.appendList (inOperand) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalSendSearchListAST GALGAS_lexicalSendSearchListAST::reader_subListWithRange (const GALGAS_range & inRange,
+                                                                                          C_Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) const {
+  GALGAS_lexicalSendSearchListAST result = GALGAS_lexicalSendSearchListAST::constructor_emptyList (THERE) ;
+  subListWithRange (result, inRange, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalSendSearchListAST GALGAS_lexicalSendSearchListAST::reader_subListFromIndex (const GALGAS_uint & inIndex,
+                                                                                          C_Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) const {
+  GALGAS_lexicalSendSearchListAST result = GALGAS_lexicalSendSearchListAST::constructor_emptyList (THERE) ;
+  subListFromIndex (result, inIndex, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_lexicalSendSearchListAST::dotAssign_operation (const GALGAS_lexicalSendSearchListAST inOperand
+                                                           COMMA_UNUSED_LOCATION_ARGS) {
+  appendList (inOperand) ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+cEnumerator_lexicalSendSearchListAST::cEnumerator_lexicalSendSearchListAST (const GALGAS_lexicalSendSearchListAST & inEnumeratedObject,
+                                                                            const typeEnumerationOrder inOrder) :
+cGenericAbstractEnumerator () {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalSendSearchListAST_2D_element cEnumerator_lexicalSendSearchListAST::current (LOCATION_ARGS) const {
+  const cCollectionElement_lexicalSendSearchListAST * p = (const cCollectionElement_lexicalSendSearchListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lexicalSendSearchListAST) ;
+  return p->mObject ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cEnumerator_lexicalSendSearchListAST::current_mAttributeName (LOCATION_ARGS) const {
+  const cCollectionElement_lexicalSendSearchListAST * p = (const cCollectionElement_lexicalSendSearchListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lexicalSendSearchListAST) ;
+  return p->mObject.mAttribute_mAttributeName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstring cEnumerator_lexicalSendSearchListAST::current_mSearchListName (LOCATION_ARGS) const {
+  const cCollectionElement_lexicalSendSearchListAST * p = (const cCollectionElement_lexicalSendSearchListAST *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_lexicalSendSearchListAST) ;
+  return p->mObject.mAttribute_mSearchListName ;
+}
+
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                           @lexicalSendSearchListAST type                                            *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_lexicalSendSearchListAST ("lexicalSendSearchListAST",
+                                                 NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_lexicalSendSearchListAST::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_lexicalSendSearchListAST ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_lexicalSendSearchListAST::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_lexicalSendSearchListAST (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lexicalSendSearchListAST GALGAS_lexicalSendSearchListAST::extractObject (const GALGAS_object & inObject,
+                                                                                C_Compiler * inCompiler
+                                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_lexicalSendSearchListAST result ;
+  const GALGAS_lexicalSendSearchListAST * p = (const GALGAS_lexicalSendSearchListAST *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_lexicalSendSearchListAST *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("lexicalSendSearchListAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
