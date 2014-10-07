@@ -623,6 +623,7 @@ rule <terminal_declaration> ?!@terminalDeclarationListAST ioTerminalDeclarationL
   $literal_string$ ??@lstring errorMessage :> ?* ?* ;
   @lstring theStyle ; # Empty string if no style
   select
+    send " " ;
     $style$ ;
     $identifier$ ? theStyle ;
   or
