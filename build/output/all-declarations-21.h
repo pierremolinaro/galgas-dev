@@ -11,58 +11,54 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                   Category Reader '@unifiedTypeMapProxy baseType'                                   *
+//                   Abstract category method '@semanticExpressionForGeneration generateExpression'                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_unifiedTypeMapProxy categoryReader_baseType (const class GALGAS_unifiedTypeMapProxy & inObject,
-                                                          class C_Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) ;
+typedef void (*categoryMethodSignature_semanticExpressionForGeneration_generateExpression) (const class cPtr_semanticExpressionForGeneration * inObject,
+                                                                                            class GALGAS_string & ioArgument0,
+                                                                                            class GALGAS_stringset & ioArgument1,
+                                                                                            class GALGAS_uint & ioArgument2,
+                                                                                            class GALGAS_stringset & ioArgument3,
+                                                                                            class GALGAS_string & outArgument4,
+                                                                                            class C_Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void enterCategoryMethod_generateExpression (const int32_t inClassIndex,
+                                             categoryMethodSignature_semanticExpressionForGeneration_generateExpression inMethod) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void callCategoryMethod_generateExpression (const class cPtr_semanticExpressionForGeneration * inObject,
+                                            GALGAS_string & io_ioGeneratedCode,
+                                            GALGAS_stringset & io_ioInclusionSet,
+                                            GALGAS_uint & io_ioTemporaryVariableIndex,
+                                            GALGAS_stringset & io_ioUnusedVariableCppNameSet,
+                                            GALGAS_string & out_outCppExpression,
+                                            C_Compiler * inCompiler
+                                            COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                              Category method '@unifiedTypeMapProxy addHeaderFileName1'                              *
+//                         Category reader '@semanticExpressionForGeneration isTrueExpression'                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void categoryMethod_addHeaderFileName_31_ (const class GALGAS_unifiedTypeMapProxy inObject,
-                                           class GALGAS_stringset & io_ioInclusions,
-                                           class C_Compiler * inCompiler
-                                           COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                  Abstract category method '@actualParameterForGeneration generateActualParameter'                   *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-typedef void (*categoryMethodSignature_actualParameterForGeneration_generateActualParameter) (const class cPtr_actualParameterForGeneration * inObject,
-                                                                                              class GALGAS_stringset & ioArgument0,
-                                                                                              class GALGAS_uint & ioArgument1,
-                                                                                              class GALGAS_string & ioArgument2,
-                                                                                              class GALGAS_stringlist & ioArgument3,
-                                                                                              class GALGAS_stringlist & ioArgument4,
-                                                                                              class GALGAS_stringset & ioArgument5,
-                                                                                              class GALGAS_string & outArgument6,
-                                                                                              class C_Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) ;
+typedef class GALGAS_bool (*categoryReaderSignature_semanticExpressionForGeneration_isTrueExpression) (const class cPtr_semanticExpressionForGeneration * inObject,
+                                                                                                       C_Compiler * inCompiler
+                                                                                                       COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void enterCategoryMethod_generateActualParameter (const int32_t inClassIndex,
-                                                  categoryMethodSignature_actualParameterForGeneration_generateActualParameter inMethod) ;
+void enterCategoryReader_isTrueExpression (const int32_t inClassIndex,
+                                           categoryReaderSignature_semanticExpressionForGeneration_isTrueExpression inReader) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void callCategoryMethod_generateActualParameter (const class cPtr_actualParameterForGeneration * inObject,
-                                                 GALGAS_stringset & io_ioInclusionSet,
-                                                 GALGAS_uint & io_ioTemporaryVariableIndex,
-                                                 GALGAS_string & io_ioImplementation,
-                                                 GALGAS_stringlist & io_ioJokerParametersToReleaseList,
-                                                 GALGAS_stringlist & io_ioOutputVariableList,
-                                                 GALGAS_stringset & io_ioUnusedVariableCppNameSet,
-                                                 GALGAS_string & out_outCppName,
-                                                 C_Compiler * inCompiler
-                                                 COMMA_LOCATION_ARGS) ;
+class GALGAS_bool callCategoryReader_isTrueExpression (const cPtr_semanticExpressionForGeneration * inObject,
+                                                       class C_Compiler * inCompiler
+                                                       COMMA_LOCATION_ARGS) ;
 
 #endif
