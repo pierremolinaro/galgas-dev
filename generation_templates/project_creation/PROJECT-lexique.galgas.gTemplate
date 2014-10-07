@@ -11,7 +11,7 @@ style keywordsStyle -> "Keywords"
 $identifier$ ! tokenString error message "an identifier"
 
 #--- This is the keyword list
-list keyWordList error message "the '\%K' keyword" style keywordsStyle {
+list keyWordList style keywordsStyle error message "the '\%K' keyword" {
   "begin",
   "end"
 }
@@ -74,7 +74,7 @@ rule '"' {
 #----------------------------------------------------------------------------*
 
 style delimitersStyle -> "Delimiters"
-list delimitorsList error message "the '\%K' delimitor" style delimitersStyle {
+list delimitorsList style delimitersStyle error message "the '\%K' delimitor" {
   ":",    ",",    ";",   "!",  "{",  "}", "->", "@", "*", "-"
 }
 

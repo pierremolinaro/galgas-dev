@@ -8456,15 +8456,9 @@ void cParser_lexiqueSyntax::rule_lexiqueSyntax_lexical_5F_list_5F_declaration_i3
       break ;
     }
   }
-  ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
-  ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_error) COMMA_SOURCE_FILE ("lexiqueSyntax.galgas", 543)) ;
-  ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
-  ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_message) COMMA_SOURCE_FILE ("lexiqueSyntax.galgas", 544)) ;
   GALGAS_lstring var_errorMessage = inCompiler->synthetizedAttribute_tokenString () ;
-  ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
-  ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("lexiqueSyntax.galgas", 545)) ;
   GALGAS_lstring var_theStyle ;
   switch (select_lexiqueSyntax_23 (inCompiler)) {
@@ -8483,17 +8477,16 @@ void cParser_lexiqueSyntax::rule_lexiqueSyntax_lexical_5F_list_5F_declaration_i3
   default:
     break ;
   }
-  GALGAS_string var_sep (inCompiler->preceedingSeparatorString ()) ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("lexiqueSyntax.galgas", 553)) ;
-  if (var_sep.add_operation (GALGAS_string ("{"), inCompiler COMMA_SOURCE_FILE ("lexiqueSyntax.galgas", 554)).isValid ()) {
-    ioSyntaxDirectedTranslationResult << var_sep.add_operation (GALGAS_string ("{"), inCompiler COMMA_SOURCE_FILE ("lexiqueSyntax.galgas", 554)).stringValue () ;
+  if (GALGAS_string (" error message ").add_operation (var_errorMessage.mAttribute_string.reader_utf_38_Representation (SOURCE_FILE ("lexiqueSyntax.galgas", 554)), inCompiler COMMA_SOURCE_FILE ("lexiqueSyntax.galgas", 554)).add_operation (GALGAS_string ("{"), inCompiler COMMA_SOURCE_FILE ("lexiqueSyntax.galgas", 554)).isValid ()) {
+    ioSyntaxDirectedTranslationResult << GALGAS_string (" error message ").add_operation (var_errorMessage.mAttribute_string.reader_utf_38_Representation (SOURCE_FILE ("lexiqueSyntax.galgas", 554)), inCompiler COMMA_SOURCE_FILE ("lexiqueSyntax.galgas", 554)).add_operation (GALGAS_string ("{"), inCompiler COMMA_SOURCE_FILE ("lexiqueSyntax.galgas", 554)).stringValue () ;
   }
   GALGAS_lexicalListEntryListAST var_entryList = GALGAS_lexicalListEntryListAST::constructor_emptyList (SOURCE_FILE ("lexiqueSyntax.galgas", 555)) ;
   bool repeatFlag_1 = true ;
   while (repeatFlag_1) {
-    C_String syntaxDirectedTranslationResult_18334 ;
-    nt_lexical_5F_list_5F_entry_ (var_entryList, syntaxDirectedTranslationResult_18334, inCompiler) ;
-    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_18334 ;
+    C_String syntaxDirectedTranslationResult_18401 ;
+    nt_lexical_5F_list_5F_entry_ (var_entryList, syntaxDirectedTranslationResult_18401, inCompiler) ;
+    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_18401 ;
     switch (select_lexiqueSyntax_24 (inCompiler)) {
     case 2: {
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
@@ -8505,7 +8498,7 @@ void cParser_lexiqueSyntax::rule_lexiqueSyntax_lexical_5F_list_5F_declaration_i3
       break ;
     }
   }
-  var_sep = GALGAS_string (inCompiler->preceedingSeparatorString ()) ;
+  GALGAS_string var_sep (inCompiler->preceedingSeparatorString ()) ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("lexiqueSyntax.galgas", 561)) ;
   if (var_sep.add_operation (GALGAS_string ("}"), inCompiler COMMA_SOURCE_FILE ("lexiqueSyntax.galgas", 562)).isValid ()) {
     ioSyntaxDirectedTranslationResult << var_sep.add_operation (GALGAS_string ("}"), inCompiler COMMA_SOURCE_FILE ("lexiqueSyntax.galgas", 562)).stringValue () ;
@@ -8567,9 +8560,9 @@ void cParser_lexiqueSyntax::rule_lexiqueSyntax_lexical_5F_list_5F_declaration_i3
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("lexiqueSyntax.galgas", 553)) ;
   bool repeatFlag_1 = true ;
   while (repeatFlag_1) {
-    C_String syntaxDirectedTranslationResult_18334 ;
-    nt_lexical_5F_list_5F_entry_parse (syntaxDirectedTranslationResult_18334, inCompiler) ;
-    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_18334 ;
+    C_String syntaxDirectedTranslationResult_18401 ;
+    nt_lexical_5F_list_5F_entry_parse (syntaxDirectedTranslationResult_18401, inCompiler) ;
+    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_18401 ;
     switch (select_lexiqueSyntax_24 (inCompiler)) {
     case 2: {
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;

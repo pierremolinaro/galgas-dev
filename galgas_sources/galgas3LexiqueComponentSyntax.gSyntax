@@ -533,9 +533,6 @@ rule <lexical_list_declaration> ?!@lexicalListDeclarationListAST ioLexicalListDe
     $identifier$ ?const sentAttribute ;
     sentAttributeList += !selector !sentAttribute ;
   end repeat ;
-  $error$ ;
-  $message$ ;
-  $literal_string$ ??@lstring errorMessage ;
   @lstring theStyle ; # Empty string if no style
   select
     $style$ ;
@@ -543,6 +540,9 @@ rule <lexical_list_declaration> ?!@lexicalListDeclarationListAST ioLexicalListDe
   or
     theStyle := [@lstring new !"" !here] ;
   end select ;
+  $error$ ;
+  $message$ ;
+  $literal_string$ ??@lstring errorMessage ;
   ${$ ;
   @lexicalListEntryListAST entryList [emptyList] ;
   repeat
