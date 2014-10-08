@@ -23,12 +23,45 @@ Par exemple :
 
 \begin{galgascode}
 map @MaTable {
-  @string mPremier ;
-  @bool mSecond ;
-  insert insertKey error message "the '%K' key is already declared in %L";
-  search searchKey error message "the '%K' key is not defined" ;
-  remove removeKey error message "the '%K' key is not defined" ;
+  @string mPremier
+  @bool mSecond
+  insert insertKey error message "the '%K' key is already declared in %L"
+  search searchKey error message "the '%K' key is not defined"
+  remove removeKey error message "the '%K' key is not defined"
 }
+\end{galgascode}
+
+
+
+
+
+
+
+\section{Constructeurs}
+
+\subsection{Constructeur \texttt{emptyMap}}
+
+\begin{galgascode}
+constructor emptyMap -> @T
+\end{galgascode}
+
+Ce constructeur permet d'instancier une table vide. Exemple :
+\begin{galgascode}
+@MaTable uneTable = .emptyMap
+\end{galgascode}
+
+ 
+
+\subsection{Constructeur \texttt{mapWithMapToOverride}}
+
+\begin{galgascode}
+constructor mapWithMapToOverride ?@T inMapToOverride -> @T
+\end{galgascode}
+
+Ce constructeur permet d'instancier une table vide, qui surcharge la table \galgas{inMapToOverride} citée en argument. Exemple :
+\begin{galgascode}
+@MaTable uneTable = .emptyMap
+@MaTable autreTableTable = .mapWithMapToOverride {!uneTable}
 \end{galgascode}
 
 
@@ -41,11 +74,11 @@ map @MaTable {
 Une \galgas{map} peut déclarer zéro, un ou plusieurs \emph{setters} d'insertion. Un \emph{setter} d'insertion permet d'insérer une nouvelle entrée à une table. Une erreur est déclenchée en cas de tentative d'une clé déjà existante.
 
 
-Un \emph{Setter} d'insertion est déclaré par :
+Un \emph{setter} d'insertion est déclaré par :
 
 \lstset{emph={nom}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
-insert nom error message "message_erreur" ;
+insert nom error message "message_erreur"
 \end{galgascode}
 
 L'identificateur \galgas{nom} donne un nom au \emph{setter} d'insertion ; ce nom doit être unique parmi les \emph{setters} d'insertion et de retrait. La chaîne de caractères \galgas{"message_erreur"} définit le message d'erreur qui est affiché en cas de tentative d'une clé déjà existante. Cette chaîne accepte deux séquences d'échappement :
@@ -63,11 +96,11 @@ Un \emph{setter} d'insertion est appelé dans une \emph{instruction d'appel de s
 
 Par exemple :
 \begin{galgascode}
-@MaTable uneTable [emptyMap] ;
-@lstring clef := ... ;
-@string s := ... ;
-@uint v := ... ;
-[!?uneTable insertKey !clef !s !v] ;
+@MaTable uneTable = {}
+@lstring clef = ...
+@string s = ...
+@uint v = ...
+[!?uneTable insertKey !clef !s !v]
 \end{galgascode}
 
 
@@ -89,7 +122,7 @@ Une \emph{méthode} de recherche est déclarée par :
 
 \lstset{emph={nom}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
-search nom error message "message_erreur" ;
+search nom error message "message_erreur"
 \end{galgascode}
 
 L'identificateur \galgas{nom} donne un nom à la \emph{méthode} de recherche ; ce nom doit être unique parmi ces \emph{méthodes}. La chaîne de caractères \galgas{"message_erreur"} définit le message d'erreur qui est affiché en cas de recherche d'une clé inexistante. Cette chaîne accepte une séquence d'échappement :
@@ -106,10 +139,10 @@ Une \emph{méthode} de recherche est appelée dans une \emph{instruction d'appel
 
 Par exemple :
 \begin{galgascode}
-@MaTable uneTable [emptyMap] ;
+@MaTable uneTable = {}
 ...
-@lstring clef := ... ;
-[!?uneTable searchKey !clef ?@string s ?@uint v] ;
+@lstring clef = ...
+[!?uneTable searchKey !clef ?@string s ?@uint v]
 \end{galgascode}
 
 
@@ -133,7 +166,7 @@ Un \emph{setter} de retrait est déclaré par :
 
 \lstset{emph={nom}, emphstyle=\galgasEmphStyle}
 \begin{galgascode}
-remove nom error message "message_erreur" ;
+remove nom error message "message_erreur"
 \end{galgascode}
 
 L'identificateur \galgas{nom} donne un nom au \emph{setter} de retrait ; ce nom doit être unique parmi les \emph{setters} d'insertion et de retrait. La chaîne de caractères \galgas{"message_erreur"} définit le message d'erreur qui est affiché en cas de recherche d'une clé inexistante. Cette chaîne accepte une séquence d'échappement :
@@ -150,42 +183,10 @@ Un \emph{setter} de retrait est appelé dans une \emph{instruction d'appel de se
 
 Par exemple :
 \begin{galgascode}
-@MaTable uneTable [emptyMap] ;
+@MaTable uneTable = {}
 ...
-@lstring clef := ... ;
-[!?uneTable removeKey !clef ?@string s ?@uint v] ;
-\end{galgascode}
-
-
-
-
-
-
-\section{Constructeurs}
-
-\subsection{Constructeur \texttt{emptyMap}}
-
-\begin{galgascode}
-constructor emptyMap -> @T ;
-\end{galgascode}
-
-Ce constructeur permet d'instancier une table vide. Exemple :
-\begin{galgascode}
-@MaTable uneTable = .emptyMap
-\end{galgascode}
-
- 
-
-\subsection{Constructeur \texttt{mapWithMapToOverride}}
-
-\begin{galgascode}
-constructor mapWithMapToOverride ?@T inMapToOverride -> @T ;
-\end{galgascode}
-
-Ce constructeur permet d'instancier une table vide, qui surcharge la table \galgas{inMapToOverride} citée en argument. Exemple :
-\begin{galgascode}
-@MaTable uneTable = .emptyMap
-@MaTable autreTableTable = .mapWithMapToOverride {!uneTable}
+@lstring clef = ...
+[!?uneTable removeKey !clef ?@string s ?@uint v]
 \end{galgascode}
 
 \section{getters}
@@ -205,7 +206,7 @@ Ce constructeur permet d'instancier une table vide, qui surcharge la table \galg
 \subsection{Le getter \texttt{count}}
 
 \begin{galgascode}
-getter @T count -> @uint ;
+getter count -> @uint
 \end{galgascode}
 
 
@@ -216,7 +217,7 @@ Le \emph{getter} \galgas{count} retourne un \galgas{@uint} qui contient le nombr
 \subsection{Le getter \texttt{hasKey}}
 
 \begin{galgascode}
-getter @T hasKey ??@string inKey -> @bool ;
+getter hasKey ??@string inKey -> @bool
 \end{galgascode}
 
 
@@ -227,7 +228,7 @@ Le \emph{getter} \galgas{hasKey} retourne un \galgas{@bool} qui est \galgas{true
 \subsection{Le getter \texttt{keyList}}
 
 \begin{galgascode}
-getter @T keyList -> @lstringlist ;
+getter keyList -> @lstringlist
 \end{galgascode}
 
 
@@ -238,7 +239,7 @@ Le \emph{getter} \galgas{keyList} retourne la liste construite avec toutes les c
 \subsection{Le getter \texttt{keySet}}
 
 \begin{galgascode}
-getter @T keySet -> @stringset ;
+getter keySet -> @stringset
 \end{galgascode}
 
 
@@ -251,7 +252,7 @@ Le \emph{getter} \galgas{keySet} retourne l'ensemble de toutes les clés de la t
 \subsection{Le getter \texttt{locationForKey}}
 
 \begin{galgascode}
-getter @T locationForKey ??@string inKey -> @location ;
+getter locationForKey ??@string inKey -> @location
 \end{galgascode}
 
 
@@ -267,7 +268,7 @@ Le \emph{getter} \galgas{locationForKey} retourne un \galgas{@location} qui cont
 \subsection{Le getter \texttt{overriddenMap}}
 
 \begin{galgascode}
-getter @T overriddenMap -> @T ;
+getter overriddenMap -> @T
 \end{galgascode}
 
 
@@ -289,12 +290,12 @@ L'instruction \galgas{foreach} permet d'énumérer des objets de type \galgas{ma
 
 Par exemple :
 \begin{galgascode}
-@MaTable uneTable [emptyMap] ;
-[!?uneTable insertKey ![@lstring new !"z" !here] !"world" !5] ;
-[!?uneTable insertKey ![@lstring new !"a" !here] !"hello" !10] ;
-foreach aMap do
+@MaTable uneTable = {}
+[!?uneTable insertKey ![@lstring new !"z" !here] !"world" !5]
+[!?uneTable insertKey ![@lstring new !"a" !here] !"hello" !10]
+for () in aMap do
   message lkey->string . " " . mPremier . " " . mSecond . "\n" ;
-end foreach ;
+end
 \end{galgascode}
 
 L'affichage produit est :
@@ -330,9 +331,9 @@ z world 5
 %
 %For example:
 %
-%@MaTable aMap := ... ;
-%@string s := ... ;
-%@bool v := ... ;
+%@MaTable aMap = ... ;
+%@string s = ... ;
+%@bool v = ... ;
 %[!?aMap setmSecondForKey !s !v] ;
 %
 %A run-time error is raised if the key value does not exist in the map.
@@ -370,8 +371,8 @@ z world 5
 %
 %You can write:
 %
-%@MaTable aMap := ... ;
-%@lstring aKey := ... ;
+%@MaTable aMap = ... ;
+%@lstring aKey = ... ;
 %with !?aMap searchKey !aKey do
 %  # ... 
 %else
@@ -385,11 +386,11 @@ z world 5
 %If the aKey object value corresponds to an existing entry, the do part is executed. The entry's attributes can be fully accessed in this part (you can read, write or modify them), using directly their names. The entry's key (an @lstring object) can be accessed in read mode (you cannot modify it), using the key identifier. For example:
 %
 %
-%@MaTable aMap := ... ;
-%@lstring aKey := ... ;
+%@MaTable aMap = ... ;
+%@lstring aKey = ... ;
 %with !?aMap searchKey !aKey do
 %  mPremier .= %%"xyz"%% ; # mPremier is accessed in read/write mode
-%  mSecond := true ; # mSecond is accessed in write mode
+%  mSecond = true ; # mSecond is accessed in write mode
 %  log key ; # key is can only be accessed in read mode
 %end with ;
 %
@@ -409,8 +410,8 @@ z world 5
 %
 %You can write:
 %
-%@MaTable aMap := ... ;
-%@string aKey := ... ;
+%@MaTable aMap = ... ;
+%@string aKey = ... ;
 %with !?aMap hasKey !aKey do
 %  # ... 
 %else
@@ -439,11 +440,11 @@ z world 5
 %
 %You can write:
 %
-%@MaTable aMap := ... ;
-%@string aKey := ... ;
+%@MaTable aMap = ... ;
+%@string aKey = ... ;
 %with xyz_ : !?aMap hasKey !aKey do
 %  xyz_mPremier .= %%"xyz"%% ; # mPremier is accessed in read/write mode
-%  xyz_mSecond := true ; # mSecond is accessed in write mode
+%  xyz_mSecond = true ; # mSecond is accessed in write mode
 %  log xyz_key ; # key is can only be accessed in read mode
 %end with ;
 %
