@@ -1487,12 +1487,13 @@ void C_Lexique::acceptTerminal (FORMAL_ARG_ACCEPT_TERMINAL COMMA_LOCATION_ARGS) 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void C_Lexique::enterIndexing (const uint32_t inIndexingKind) {
+void C_Lexique::enterIndexing (const uint32_t inIndexingKind,
+                               const char * inIndexedKeyPosfix) {
   if ((NULL != mIndexingDictionary) && (sourceText ()->sourceFilePath ().length () > 0)) {
     const uint32_t tokenStartLocation = (uint32_t) mCurrentTokenPtr->mStartLocation.index () ;
     const uint32_t tokenLine = (uint32_t) mCurrentTokenPtr->mStartLocation.lineNumber () ;
     const uint32_t tokenLength  = ((uint32_t) mCurrentTokenPtr->mEndLocation.index ()) - tokenStartLocation + 1 ;
-    C_String indexedKey = sourceText ()->mSourceString.subString ((int32_t) tokenStartLocation, (int32_t) tokenLength) ;
+    C_String indexedKey = sourceText ()->mSourceString.subString ((int32_t) tokenStartLocation, (int32_t) tokenLength) + inIndexedKeyPosfix ;
     mIndexingDictionary->addIndexedKey (inIndexingKind,
                                         indexedKey,
                                         sourceText ()->sourceFilePath (),

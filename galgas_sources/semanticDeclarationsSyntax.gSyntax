@@ -155,7 +155,7 @@ rule <semantic_declaration>
 :
   $map$ ;
 #--- Map type name
-  $type_name$ ? @lstring mMapTypeName indexing mapDefinition ;
+  $type_name$ ? @lstring mMapTypeName indexing mapDefinition, structDefinition "-element" ;
 #--- Map properties
   ${$ ;
   @attributeInCollectionListAST mAttributeList [emptyList] ;
@@ -483,7 +483,7 @@ rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
   $list$ ;
-  $type_name$ ?@lstring mListTypeName indexing listDefinition ;
+  $type_name$ ?@lstring mListTypeName indexing listDefinition, structDefinition "-element" ;
   ${$ ;
   @attributeInCollectionListAST mAttributeList [emptyList] ;
   repeat
@@ -525,7 +525,7 @@ rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
   $sortedlist$ ;
-  $type_name$ ?@lstring mSortedListTypeName indexing sortedListDefinition ;
+  $type_name$ ?@lstring mSortedListTypeName indexing sortedListDefinition, structDefinition "-element" ;
   ${$ ;
   @attributeInCollectionListAST mAttributeList [emptyList] ;
   repeat

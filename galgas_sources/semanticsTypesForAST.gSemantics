@@ -1694,7 +1694,7 @@ class @nonterminalCallInstruction extends @syntaxInstructionAST {
 class @terminalCheckInstruction extends @syntaxInstructionAST {
   @lstring mTerminalName ;
   @actualInputParameterListAST mActualInputParameterList ;
-  @lstringlist mIndexingKeyList ; # Empty list if no index
+  @2lstringlist mIndexingKeyList ; # Empty list if no index
   @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor ;
   @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationToken ;
 }

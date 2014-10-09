@@ -10,6 +10,71 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
+//Overriding category method '@localVariableOrConstantDeclarationWithConstructorCallForGeneration generateInstruction' *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void categoryMethod_localVariableOrConstantDeclarationWithConstructorCallForGeneration_generateInstruction (const cPtr_semanticInstructionForGeneration * inObject,
+                                                                                                                   GALGAS_stringset & ioArgument_ioInclusionSet,
+                                                                                                                   GALGAS_uint & ioArgument_ioTemporaryVariableIndex,
+                                                                                                                   GALGAS_stringset & ioArgument_ioUnusedVariableCppNameSet,
+                                                                                                                   const GALGAS_bool /* constinArgument_inGenerateSyntaxDirectedTranslationString */,
+                                                                                                                   GALGAS_string & ioArgument_ioGeneratedCode,
+                                                                                                                   C_Compiler * inCompiler
+                                                                                                                   COMMA_UNUSED_LOCATION_ARGS) {
+  const cPtr_localVariableOrConstantDeclarationWithConstructorCallForGeneration * object = (const cPtr_localVariableOrConstantDeclarationWithConstructorCallForGeneration *) inObject ;
+  macroValidSharedObject (object, cPtr_localVariableOrConstantDeclarationWithConstructorCallForGeneration) ;
+  categoryMethod_addHeaderFileName (object->mAttribute_mTargetType, ioArgument_ioInclusionSet, inCompiler COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 164)) ;
+  GALGAS_stringlist var_parameterList = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("semanticInstructionGeneration.galgas", 165)) ;
+  cEnumerator_semanticExpressionListForGeneration enumerator_7332 (object->mAttribute_mConstructorArguments, kEnumeration_up) ;
+  while (enumerator_7332.hasCurrentObject ()) {
+    GALGAS_string var_parameter ;
+    callCategoryMethod_generateExpression ((const cPtr_semanticExpressionForGeneration *) enumerator_7332.current_mExpression (HERE).ptr (), ioArgument_ioGeneratedCode, ioArgument_ioInclusionSet, ioArgument_ioTemporaryVariableIndex, ioArgument_ioUnusedVariableCppNameSet, var_parameter, inCompiler COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 168)) ;
+    var_parameterList.addAssign_operation (var_parameter  COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 169)) ;
+    enumerator_7332.gotoNextObject () ;
+  }
+  ioArgument_ioGeneratedCode.dotAssign_operation (GALGAS_string ("GALGAS_").add_operation (object->mAttribute_mTargetType.reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 171)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 171)).add_operation (GALGAS_string (" "), inCompiler COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 171)).add_operation (object->mAttribute_mTargetVariableCppName, inCompiler COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 172)).add_operation (GALGAS_string (" = GALGAS_"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 172)).add_operation (object->mAttribute_mTargetType.reader_identifierRepresentation (inCompiler COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 173)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 173)).add_operation (GALGAS_string ("::constructor_"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 173)).add_operation (object->mAttribute_mConstructorName.reader_identifierRepresentation (SOURCE_FILE ("semanticInstructionGeneration.galgas", 174)), inCompiler COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 174)).add_operation (GALGAS_string (" ("), inCompiler COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 174))  COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 171)) ;
+  cEnumerator_stringlist enumerator_7871 (var_parameterList, kEnumeration_up) ;
+  while (enumerator_7871.hasCurrentObject ()) {
+    ioArgument_ioGeneratedCode.dotAssign_operation (enumerator_7871.current_mValue (HERE)  COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 177)) ;
+    if (enumerator_7871.hasNextObject ()) {
+      ioArgument_ioGeneratedCode.dotAssign_operation (GALGAS_string (", ")  COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 178)) ;
+    }
+    enumerator_7871.gotoNextObject () ;
+  }
+  GALGAS_bool var_needsComma = GALGAS_bool (kIsStrictSup, var_parameterList.reader_length (SOURCE_FILE ("semanticInstructionGeneration.galgas", 180)).objectCompare (GALGAS_uint ((uint32_t) 0U))) ;
+  const enumGalgasBool test_0 = object->mAttribute_mHasCompilerArgument.boolEnum () ;
+  if (kBoolTrue == test_0) {
+    const enumGalgasBool test_1 = var_needsComma.boolEnum () ;
+    if (kBoolTrue == test_1) {
+      ioArgument_ioGeneratedCode.dotAssign_operation (GALGAS_string (", ")  COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 183)) ;
+    }
+    {
+    ioArgument_ioUnusedVariableCppNameSet.modifier_removeKey (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 185)) COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 185)) ;
+    }
+    ioArgument_ioGeneratedCode.dotAssign_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 186))  COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 186)) ;
+    var_needsComma = GALGAS_bool (true) ;
+  }
+  const enumGalgasBool test_2 = var_needsComma.boolEnum () ;
+  if (kBoolTrue == test_2) {
+    ioArgument_ioGeneratedCode.dotAssign_operation (categoryReader_commaSourceFile (object->mAttribute_mInstructionLocation, inCompiler COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 190)).add_operation (GALGAS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 190))  COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 190)) ;
+  }else if (kBoolFalse == test_2) {
+    ioArgument_ioGeneratedCode.dotAssign_operation (categoryReader_sourceFile (object->mAttribute_mInstructionLocation, inCompiler COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 192)).add_operation (GALGAS_string (") ;\n"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 192))  COMMA_SOURCE_FILE ("semanticInstructionGeneration.galgas", 192)) ;
+  }
+}
+//---------------------------------------------------------------------------------------------------------------------*
+
+static void defineCategoryMethod_localVariableOrConstantDeclarationWithConstructorCallForGeneration_generateInstruction (void) {
+  enterCategoryMethod_generateInstruction (kTypeDescriptor_GALGAS_localVariableOrConstantDeclarationWithConstructorCallForGeneration.mSlotID,
+                                           categoryMethod_localVariableOrConstantDeclarationWithConstructorCallForGeneration_generateInstruction) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+C_PrologueEpilogue gMethod_localVariableOrConstantDeclarationWithConstructorCallForGeneration_generateInstruction (defineCategoryMethod_localVariableOrConstantDeclarationWithConstructorCallForGeneration_generateInstruction, NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                Overriding category method '@assignmentInstructionForGeneration generateInstruction'                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*

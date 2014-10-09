@@ -9784,7 +9784,7 @@ void cParser_expressionSyntax::rule_expressionSyntax_primary_i28_ (GALGAS_semant
     ioSyntaxDirectedTranslationResult << var_sep.stringValue () ;
   }
   GALGAS_lstring var_className = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_typeReferenceInConstructor) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_typeReferenceInConstructor, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("expressionSyntax.galgas", 555)) ;
@@ -9820,7 +9820,7 @@ void cParser_expressionSyntax::rule_expressionSyntax_primary_i28_parse (C_String
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5B_) COMMA_SOURCE_FILE ("expressionSyntax.galgas", 552)) ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_typeReferenceInConstructor) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_typeReferenceInConstructor, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("expressionSyntax.galgas", 555)) ;
@@ -9840,7 +9840,7 @@ void cParser_expressionSyntax::rule_expressionSyntax_primary_i28_parse (C_String
 
 void cParser_expressionSyntax::rule_expressionSyntax_primary_i28_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5B_) COMMA_SOURCE_FILE ("expressionSyntax.galgas", 552)) ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_typeReferenceInConstructor) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_typeReferenceInConstructor, "") ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("expressionSyntax.galgas", 555)) ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("expressionSyntax.galgas", 558)) ;
   nt_output_5F_expression_5F_list_indexing (inCompiler) ;
@@ -9859,7 +9859,7 @@ void cParser_expressionSyntax::rule_expressionSyntax_primary_i29_ (GALGAS_semant
     ioSyntaxDirectedTranslationResult << var_sep.stringValue () ;
   }
   GALGAS_lstring var_className = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_typeReferenceInConstructor) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_typeReferenceInConstructor, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("expressionSyntax.galgas", 574)) ;
@@ -9878,7 +9878,7 @@ void cParser_expressionSyntax::rule_expressionSyntax_primary_i29_parse (C_String
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5B_) COMMA_SOURCE_FILE ("expressionSyntax.galgas", 572)) ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_typeReferenceInConstructor) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_typeReferenceInConstructor, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("expressionSyntax.galgas", 574)) ;
@@ -9895,7 +9895,7 @@ void cParser_expressionSyntax::rule_expressionSyntax_primary_i29_parse (C_String
 
 void cParser_expressionSyntax::rule_expressionSyntax_primary_i29_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5B_) COMMA_SOURCE_FILE ("expressionSyntax.galgas", 572)) ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_typeReferenceInConstructor) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_typeReferenceInConstructor, "") ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("expressionSyntax.galgas", 574)) ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_default) COMMA_SOURCE_FILE ("expressionSyntax.galgas", 575)) ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5D_) COMMA_SOURCE_FILE ("expressionSyntax.galgas", 578)) ;
@@ -9930,7 +9930,7 @@ void cParser_expressionSyntax::rule_expressionSyntax_primary_i30_ (GALGAS_semant
   } break ;
   case 2: {
     GALGAS_lstring var_optionComponentName = inCompiler->synthetizedAttribute_tokenString () ;
-    inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_optionComponentReference) ;
+    inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_optionComponentReference, "") ;
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
     inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("expressionSyntax.galgas", 592)) ;
@@ -9978,7 +9978,7 @@ void cParser_expressionSyntax::rule_expressionSyntax_primary_i30_parse (C_String
     inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("expressionSyntax.galgas", 589)) ;
   } break ;
   case 2: {
-    inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_optionComponentReference) ;
+    inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_optionComponentReference, "") ;
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
     inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("expressionSyntax.galgas", 592)) ;
@@ -10013,7 +10013,7 @@ void cParser_expressionSyntax::rule_expressionSyntax_primary_i30_indexing (C_Lex
     inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("expressionSyntax.galgas", 589)) ;
   } break ;
   case 2: {
-    inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_optionComponentReference) ;
+    inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_optionComponentReference, "") ;
     inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("expressionSyntax.galgas", 592)) ;
     inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2E_) COMMA_SOURCE_FILE ("expressionSyntax.galgas", 593)) ;
     inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("expressionSyntax.galgas", 594)) ;
@@ -10103,7 +10103,7 @@ void cParser_expressionSyntax::rule_expressionSyntax_primary_i32_ (GALGAS_semant
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_filewrapper) COMMA_SOURCE_FILE ("expressionSyntax.galgas", 617)) ;
   GALGAS_lstring var_filewrapperName = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_filewrapperReference) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_filewrapperReference, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("expressionSyntax.galgas", 618)) ;
@@ -10158,7 +10158,7 @@ void cParser_expressionSyntax::rule_expressionSyntax_primary_i32_parse (C_String
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_filewrapper) COMMA_SOURCE_FILE ("expressionSyntax.galgas", 617)) ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_filewrapperReference) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_filewrapperReference, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("expressionSyntax.galgas", 618)) ;
@@ -10201,7 +10201,7 @@ void cParser_expressionSyntax::rule_expressionSyntax_primary_i32_parse (C_String
 void cParser_expressionSyntax::rule_expressionSyntax_primary_i32_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5B_) COMMA_SOURCE_FILE ("expressionSyntax.galgas", 616)) ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_filewrapper) COMMA_SOURCE_FILE ("expressionSyntax.galgas", 617)) ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_filewrapperReference) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_filewrapperReference, "") ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("expressionSyntax.galgas", 618)) ;
   switch (select_expressionSyntax_11 (inCompiler)) {
   case 1: {
@@ -10233,7 +10233,7 @@ void cParser_expressionSyntax::rule_expressionSyntax_primary_i33_ (GALGAS_semant
                                                                    C_Lexique_galgas_5F_scanner * inCompiler) {
   outArgument_outExpression.drop () ; // Release 'out' argument
   GALGAS_lstring var_functionName = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_functionCall) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_functionCall, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("expressionSyntax.galgas", 652)) ;
@@ -10258,7 +10258,7 @@ void cParser_expressionSyntax::rule_expressionSyntax_primary_i33_ (GALGAS_semant
 
 void cParser_expressionSyntax::rule_expressionSyntax_primary_i33_parse (C_String & ioSyntaxDirectedTranslationResult,
                                                                         C_Lexique_galgas_5F_scanner * inCompiler) {
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_functionCall) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_functionCall, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("expressionSyntax.galgas", 652)) ;
@@ -10277,7 +10277,7 @@ void cParser_expressionSyntax::rule_expressionSyntax_primary_i33_parse (C_String
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_expressionSyntax::rule_expressionSyntax_primary_i33_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_functionCall) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_functionCall, "") ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("expressionSyntax.galgas", 652)) ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5B_) COMMA_SOURCE_FILE ("expressionSyntax.galgas", 653)) ;
   nt_output_5F_expression_5F_list_indexing (inCompiler) ;
@@ -11541,7 +11541,7 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
     ioSyntaxDirectedTranslationResult << var_sep.add_operation (GALGAS_string ("proc"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 79)).stringValue () ;
   }
   GALGAS_lstring var_mActionName = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_routineDefinition) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_routineDefinition, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 80)) ;
@@ -11563,7 +11563,7 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_routine) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 78)) ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_routineDefinition) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_routineDefinition, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 80)) ;
@@ -11581,7 +11581,7 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
 void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semantic_5F_declaration_i2_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_extern) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 77)) ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_routine) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 78)) ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_routineDefinition) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_routineDefinition, "") ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 80)) ;
   nt_formal_5F_parameter_5F_list_indexing (inCompiler) ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 83)) ;
@@ -11602,7 +11602,7 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
     ioSyntaxDirectedTranslationResult << var_sep.add_operation (GALGAS_string ("proc"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 105)).stringValue () ;
   }
   GALGAS_lstring var_mRoutineName = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_routineDefinition) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_routineDefinition, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 106)) ;
@@ -11639,7 +11639,7 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_routine) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 104)) ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_routineDefinition) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_routineDefinition, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 106)) ;
@@ -11669,7 +11669,7 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
 void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semantic_5F_declaration_i3_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
   nt_local_5F_declaration_indexing (inCompiler) ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_routine) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 104)) ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_routineDefinition) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_routineDefinition, "") ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 106)) ;
   nt_formal_5F_parameter_5F_list_indexing (inCompiler) ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 109)) ;
@@ -11694,7 +11694,7 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
     ioSyntaxDirectedTranslationResult << var_sep.add_operation (GALGAS_string ("proc"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 133)).stringValue () ;
   }
   GALGAS_lstring var_mRoutineName = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_routineDefinition) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_routineDefinition, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 134)) ;
@@ -11726,7 +11726,7 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_routine) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 132)) ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_routineDefinition) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_routineDefinition, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 134)) ;
@@ -11750,7 +11750,7 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
 void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semantic_5F_declaration_i4_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
   nt_local_5F_declaration_indexing (inCompiler) ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_routine) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 132)) ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_routineDefinition) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_routineDefinition, "") ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 134)) ;
   nt_formal_5F_parameter_5F_list_indexing (inCompiler) ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__7B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 137)) ;
@@ -11773,7 +11773,7 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
     ioSyntaxDirectedTranslationResult << var_sep.add_operation (GALGAS_string ("func"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 165)).stringValue () ;
   }
   GALGAS_lstring var_mRoutineName = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_functionDefinition) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_functionDefinition, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 166)) ;
@@ -11821,7 +11821,7 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_function) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 164)) ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_functionDefinition) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_functionDefinition, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 166)) ;
@@ -11860,7 +11860,7 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
 void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semantic_5F_declaration_i5_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
   nt_local_5F_declaration_indexing (inCompiler) ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_function) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 164)) ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_functionDefinition) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_functionDefinition, "") ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 166)) ;
   nt_formal_5F_input_5F_parameter_5F_list_indexing (inCompiler) ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2D__3E_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 168)) ;
@@ -11888,7 +11888,7 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
     ioSyntaxDirectedTranslationResult << var_sep.add_operation (GALGAS_string ("func"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 196)).stringValue () ;
   }
   GALGAS_lstring var_mRoutineName = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_functionDefinition) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_functionDefinition, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 197)) ;
@@ -11931,7 +11931,7 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_function) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 195)) ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_functionDefinition) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_functionDefinition, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 197)) ;
@@ -11964,7 +11964,7 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
 void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semantic_5F_declaration_i6_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
   nt_local_5F_declaration_indexing (inCompiler) ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_function) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 195)) ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_functionDefinition) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_functionDefinition, "") ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 197)) ;
   nt_formal_5F_input_5F_parameter_5F_list_indexing (inCompiler) ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2D__3E_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 199)) ;
@@ -11990,7 +11990,7 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
     ioSyntaxDirectedTranslationResult << var_sep.add_operation (GALGAS_string ("func %once"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 231)).stringValue () ;
   }
   GALGAS_lstring var_mRoutineName = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_functionDefinition) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_functionDefinition, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 232)) ;
@@ -12034,7 +12034,7 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_once) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 230)) ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_functionDefinition) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_functionDefinition, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 232)) ;
@@ -12070,7 +12070,7 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
 void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semantic_5F_declaration_i7_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
   nt_local_5F_declaration_indexing (inCompiler) ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_once) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 230)) ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_functionDefinition) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_functionDefinition, "") ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 232)) ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2D__3E_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 233)) ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 234)) ;
@@ -12096,7 +12096,7 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
     ioSyntaxDirectedTranslationResult << var_sep.add_operation (GALGAS_string ("func"), inCompiler COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 268)).stringValue () ;
   }
   GALGAS_lstring var_mActionName = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_functionDefinition) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_functionDefinition, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 269)) ;
@@ -12129,7 +12129,7 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_function) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 267)) ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_functionDefinition) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_functionDefinition, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 269)) ;
@@ -12156,7 +12156,7 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
 void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semantic_5F_declaration_i8_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_extern) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 266)) ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_function) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 267)) ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_functionDefinition) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_functionDefinition, "") ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 269)) ;
   nt_formal_5F_input_5F_parameter_5F_list_indexing (inCompiler) ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2D__3E_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 272)) ;
@@ -15868,7 +15868,7 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
                                                                                                        C_Lexique_galgas_5F_scanner * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
   GALGAS_lstring var_mRoutineName = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_routineCall) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_routineCall, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1385)) ;
@@ -15891,7 +15891,7 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
 
 void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semantic_5F_instruction_i47_parse (C_String & ioSyntaxDirectedTranslationResult,
                                                                                                             C_Lexique_galgas_5F_scanner * inCompiler) {
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_routineCall) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_routineCall, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1385)) ;
@@ -15907,7 +15907,7 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semantic_5F_instruction_i47_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_routineCall) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_routineCall, "") ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1385)) ;
   nt_actual_5F_parameter_5F_list_indexing (inCompiler) ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1388)) ;
@@ -17587,7 +17587,7 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_grammar) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1928)) ;
   GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1929)) ;
   GALGAS_lstring var_mGrammarComponentName = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_grammarComponentReference) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_grammarComponentReference, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1930)) ;
@@ -17661,7 +17661,7 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_grammar) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1928)) ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_grammarComponentReference) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_grammarComponentReference, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1930)) ;
@@ -17723,7 +17723,7 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
 
 void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semantic_5F_instruction_i64_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_grammar) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1928)) ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_grammarComponentReference) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_grammarComponentReference, "") ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 1930)) ;
   switch (select_semanticInstructionsSyntax_53 (inCompiler)) {
   case 1: {
@@ -18454,7 +18454,7 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2122)) ;
   GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2123)) ;
   GALGAS_lstring var_mTypeName = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_typeReferenceInTypeMethod) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_typeReferenceInTypeMethod, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2124)) ;
@@ -18480,7 +18480,7 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2122)) ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_typeReferenceInTypeMethod) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_typeReferenceInTypeMethod, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2124)) ;
@@ -18503,7 +18503,7 @@ void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semanti
 
 void cParser_semanticInstructionsSyntax::rule_semanticInstructionsSyntax_semantic_5F_instruction_i68_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__5B_) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2122)) ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_typeReferenceInTypeMethod) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_typeReferenceInTypeMethod, "") ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2124)) ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("semanticInstructionsSyntax.galgas", 2125)) ;
   nt_actual_5F_parameter_5F_list_indexing (inCompiler) ;

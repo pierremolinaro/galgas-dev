@@ -2208,6 +2208,8 @@ class cParser_syntaxModelBuilder {
 
   protected : virtual int32_t select_syntaxModelBuilder_13 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
+  protected : virtual int32_t select_syntaxModelBuilder_14 (C_Lexique_galgas_5F_scanner *) = 0 ;
+
 
 } ;
 
@@ -2939,7 +2941,7 @@ class GALGAS_terminalCheckInstruction : public GALGAS_syntaxInstructionAST {
   public : static GALGAS_terminalCheckInstruction constructor_new (const class GALGAS_location & inOperand0,
                                                                    const class GALGAS_lstring & inOperand1,
                                                                    const class GALGAS_actualInputParameterListAST & inOperand2,
-                                                                   const class GALGAS_lstringlist & inOperand3,
+                                                                   const class GALGAS__32_lstringlist & inOperand3,
                                                                    const class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand4,
                                                                    const class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inOperand5
                                                                    COMMA_LOCATION_ARGS) ;
@@ -2959,7 +2961,7 @@ class GALGAS_terminalCheckInstruction : public GALGAS_syntaxInstructionAST {
 
   public : VIRTUAL_IN_DEBUG class GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult reader_mGrammarInstructionSyntaxDirectedTranslationToken (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist reader_mIndexingKeyList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS__32_lstringlist reader_mIndexingKeyList (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mTerminalName (LOCATION_ARGS) const ;
 
@@ -2984,7 +2986,7 @@ class cPtr_terminalCheckInstruction : public cPtr_syntaxInstructionAST {
 //--- Attributes
   public : GALGAS_lstring mAttribute_mTerminalName ;
   public : GALGAS_actualInputParameterListAST mAttribute_mActualInputParameterList ;
-  public : GALGAS_lstringlist mAttribute_mIndexingKeyList ;
+  public : GALGAS__32_lstringlist mAttribute_mIndexingKeyList ;
   public : GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult mAttribute_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor ;
   public : GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult mAttribute_mGrammarInstructionSyntaxDirectedTranslationToken ;
 
@@ -2992,7 +2994,7 @@ class cPtr_terminalCheckInstruction : public cPtr_syntaxInstructionAST {
   public : cPtr_terminalCheckInstruction (const GALGAS_location & in_mInstructionLocation,
                                           const GALGAS_lstring & in_mTerminalName,
                                           const GALGAS_actualInputParameterListAST & in_mActualInputParameterList,
-                                          const GALGAS_lstringlist & in_mIndexingKeyList,
+                                          const GALGAS__32_lstringlist & in_mIndexingKeyList,
                                           const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & in_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor,
                                           const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & in_mGrammarInstructionSyntaxDirectedTranslationToken
                                           COMMA_LOCATION_ARGS) ;
@@ -3003,7 +3005,7 @@ class cPtr_terminalCheckInstruction : public cPtr_syntaxInstructionAST {
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mTerminalName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_actualInputParameterListAST reader_mActualInputParameterList (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstringlist reader_mIndexingKeyList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS__32_lstringlist reader_mIndexingKeyList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult reader_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult reader_mGrammarInstructionSyntaxDirectedTranslationToken (LOCATION_ARGS) const ;
 //--- Description

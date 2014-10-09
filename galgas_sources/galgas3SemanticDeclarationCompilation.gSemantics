@@ -31,7 +31,9 @@ routine compileSemanticDeclarationsGalgas3
   !@semanticContext outSemanticContext
   !@semanticDeclarationSortedListForGeneration outSemanticDeclarationSortedListForGeneration
 :
-  message "*** Building context\n" ;
+  if [option .verbose_output value] then
+    message "*** Building context\n" ;
+  end if ;
 #------ Add predefined types to semantics declarations
   @semanticDeclarationListAST semanticDeclarationListWithPredefinedTypes := inSemanticDeclarationList ;
   appendPredefinedTypesASTs !?semanticDeclarationListWithPredefinedTypes ;
@@ -104,42 +106,6 @@ routine compileSemanticDeclarationsGalgas3
     end foreach ;
   end if ;
 end routine ;
-
-#---------------------------------------------------------------------------*
-
-#routine buildGalgas3GrammarComponentMapForSemanticAnalysis
-#  ??@galgas3GrammarComponentListAST inGrammarComponentList
-#  ?!@semanticContext ioSemanticContext
-#:
-##--- Perform semantic analysis of grammar components
-#  foreach inGrammarComponentList do
-#  #--- Analyze start symbol labels
-#    @grammarLabelMap grammarLabelMap [emptyMap] ;
-#    foreach mStartSymbolLabelList do
-#    #--- Analyze signature
-#      @formalParameterSignature formalArgumentList [emptyList] ;
-#      foreach mFormalArgumentList do
-#        formalArgumentList +=
-#          !mFormalSelector
-#          ![@unifiedTypeMapProxy searchKey !ioSemanticContext->mTypeMap !mFormalArgumentTypeName]
-#          !mFormalArgumentPassingMode
-#          !mFormalArgumentName->string
-#        ;
-#      end foreach ;
-#      [!?grammarLabelMap insertKey
-#        !mLabelName
-#        !formalArgumentList
-#      ] ;
-#    end foreach ;
-#  #--- Insert grammar in grammar map
-#    [!?ioSemanticContext->mGrammarMap insertGrammar
-#      !mGrammarComponentName
-#      !grammarLabelMap
-#      !mHasIndexing->bool
-#      !mHasTranslateFeature
-#    ] ;
-#  end foreach ;
-#end routine ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -486,7 +452,6 @@ local routine buildHeader
         ??@stringset inclusionSet
         ??@string headerString
       ] ;
-#      ioHeaderString += "//START--- " + inDeclarationName + "\n" ;
       for (s) in inclusionSet do
         buildHeader
           !inHeaderCompositionMap
@@ -496,16 +461,11 @@ local routine buildHeader
           !?ioHeaderString
         ;
       end for ;
-#      ioHeaderString += "//--- " + inDeclarationName + "\n" ;
-#      for (s) in inclusionSet do
-#        ioHeaderString += "  // " + s + "\n" ;
-#      end for ;
       ioHeaderString += headerString ;
     else
       ioHeaderString += "#include \"" + inDeclarationName + ".h\"\n" ;
     end if ;
   else
-#    ioHeaderString += "//--- " + inDeclarationName + " already included\n" ;
   end if ;
 end routine ;
 
@@ -536,12 +496,7 @@ local routine generateFewImplementationFiles
       if n == definitionGroupAmount [] then
         if useOneHugeHeader then
           inclusionSet := [@stringset setWithString !"all-declarations"] ;
-#        elsif generateFewHeaderFiles [] then
-#          inclusionSet := {!"all-declarations-" . fileIdx} ;
         end if ;
-#        for () in inSemanticContext->mGrammarMap do
-#          inclusionSet += !"grammar-" . lkey->string ;
-#        end for ;
         const header := [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
           ![inclusionSet stringList]
         ] ;
@@ -677,17 +632,12 @@ local routine generateFewImplementationFilesWithFewHeaders
       end if ;
     end if ;
   end foreach ;
-#  message [[includeConfigurationSet count] string] . " include header configurations.\n" ;
 #--- Last file
   if implementationString != "" then
     if useOneHugeHeader then
       inclusionSet := [@stringset setWithString !"all-declarations"] ;
     end if ;
-#    for () in inSemanticContext->mGrammarMap do
-#      inclusionSet += !"grammar-" . lkey->string ;
-#    end for ;
     const header := [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
-#      !if generateFewHeaderFiles [] then {!"all-declarations-" . fileIdx} else [inclusionSet stringList] end
       !{!"all-declarations-" . fileIdx}
     ] ;
     const fileName := "all-declarations-" . fileIdx . ".cpp" ;
@@ -742,9 +692,6 @@ local routine generateManyImplementationFiles
       end if ;
       if useOneHugeHeader then
         inclusionSet := [@stringset setWithString !"all-declarations"] ;
-#        for () in inSemanticContext->mGrammarMap do
-#          inclusionSet += !"grammar-" . lkey->string ;
-#        end for ;
       end if ;
       const header := [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
         ![inclusionSet stringList]

@@ -454,7 +454,7 @@ GALGAS_terminalCheckInstructionForGeneration GALGAS_terminalCheckInstructionForG
                                                                                                             const GALGAS_lstring & inAttribute_mTerminalName,
                                                                                                             const GALGAS_string & inAttribute_mLexiqueIdentifier,
                                                                                                             const GALGAS_terminalCheckAssignementList & inAttribute_mTerminalCheckAssignementList,
-                                                                                                            const GALGAS_lstringlist & inAttribute_mIndexingKeyList,
+                                                                                                            const GALGAS__32_lstringlist & inAttribute_mIndexingKeyList,
                                                                                                             const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inAttribute_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor,
                                                                                                             const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inAttribute_mGrammarInstructionSyntaxDirectedTranslationToken
                                                                                                             COMMA_LOCATION_ARGS) {
@@ -521,8 +521,8 @@ GALGAS_terminalCheckAssignementList cPtr_terminalCheckInstructionForGeneration::
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist GALGAS_terminalCheckInstructionForGeneration::reader_mIndexingKeyList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_lstringlist result ;
+GALGAS__32_lstringlist GALGAS_terminalCheckInstructionForGeneration::reader_mIndexingKeyList (UNUSED_LOCATION_ARGS) const {
+  GALGAS__32_lstringlist result ;
   if (NULL != mObjectPtr) {
     const cPtr_terminalCheckInstructionForGeneration * p = (const cPtr_terminalCheckInstructionForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_terminalCheckInstructionForGeneration) ;
@@ -533,7 +533,7 @@ GALGAS_lstringlist GALGAS_terminalCheckInstructionForGeneration::reader_mIndexin
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist cPtr_terminalCheckInstructionForGeneration::reader_mIndexingKeyList (UNUSED_LOCATION_ARGS) const {
+GALGAS__32_lstringlist cPtr_terminalCheckInstructionForGeneration::reader_mIndexingKeyList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mIndexingKeyList ;
 }
 
@@ -581,7 +581,7 @@ cPtr_terminalCheckInstructionForGeneration::cPtr_terminalCheckInstructionForGene
                                                                                         const GALGAS_lstring & in_mTerminalName,
                                                                                         const GALGAS_string & in_mLexiqueIdentifier,
                                                                                         const GALGAS_terminalCheckAssignementList & in_mTerminalCheckAssignementList,
-                                                                                        const GALGAS_lstringlist & in_mIndexingKeyList,
+                                                                                        const GALGAS__32_lstringlist & in_mIndexingKeyList,
                                                                                         const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & in_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor,
                                                                                         const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & in_mGrammarInstructionSyntaxDirectedTranslationToken
                                                                                         COMMA_LOCATION_ARGS) :
@@ -12024,7 +12024,7 @@ GALGAS_syntaxInstructionAST (inSourcePtr) {
 GALGAS_terminalCheckInstruction GALGAS_terminalCheckInstruction::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
                                                                                   const GALGAS_lstring & inAttribute_mTerminalName,
                                                                                   const GALGAS_actualInputParameterListAST & inAttribute_mActualInputParameterList,
-                                                                                  const GALGAS_lstringlist & inAttribute_mIndexingKeyList,
+                                                                                  const GALGAS__32_lstringlist & inAttribute_mIndexingKeyList,
                                                                                   const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inAttribute_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor,
                                                                                   const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & inAttribute_mGrammarInstructionSyntaxDirectedTranslationToken
                                                                                   COMMA_LOCATION_ARGS) {
@@ -12073,8 +12073,8 @@ GALGAS_actualInputParameterListAST cPtr_terminalCheckInstruction::reader_mActual
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist GALGAS_terminalCheckInstruction::reader_mIndexingKeyList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_lstringlist result ;
+GALGAS__32_lstringlist GALGAS_terminalCheckInstruction::reader_mIndexingKeyList (UNUSED_LOCATION_ARGS) const {
+  GALGAS__32_lstringlist result ;
   if (NULL != mObjectPtr) {
     const cPtr_terminalCheckInstruction * p = (const cPtr_terminalCheckInstruction *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_terminalCheckInstruction) ;
@@ -12085,7 +12085,7 @@ GALGAS_lstringlist GALGAS_terminalCheckInstruction::reader_mIndexingKeyList (UNU
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstringlist cPtr_terminalCheckInstruction::reader_mIndexingKeyList (UNUSED_LOCATION_ARGS) const {
+GALGAS__32_lstringlist cPtr_terminalCheckInstruction::reader_mIndexingKeyList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mIndexingKeyList ;
 }
 
@@ -12132,7 +12132,7 @@ GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult cPtr_terminalCh
 cPtr_terminalCheckInstruction::cPtr_terminalCheckInstruction (const GALGAS_location & in_mInstructionLocation,
                                                               const GALGAS_lstring & in_mTerminalName,
                                                               const GALGAS_actualInputParameterListAST & in_mActualInputParameterList,
-                                                              const GALGAS_lstringlist & in_mIndexingKeyList,
+                                                              const GALGAS__32_lstringlist & in_mIndexingKeyList,
                                                               const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & in_mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor,
                                                               const GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult & in_mGrammarInstructionSyntaxDirectedTranslationToken
                                                               COMMA_LOCATION_ARGS) :
