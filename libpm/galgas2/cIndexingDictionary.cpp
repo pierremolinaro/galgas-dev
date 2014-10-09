@@ -1,10 +1,10 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  'cIndexingDictionary': dictionary for indexing soures                      *
+//  'cIndexingDictionary': dictionary for indexing soures                                                              *
 //                                                                                                                     *
-//  This file is part of libpm library                                         *
+//  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2010, ..., 2012 Pierre Molinaro.                             *
+//  Copyright (C) 2010, ..., 2012 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -35,7 +35,7 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  c I n d e x E n t r y N o d e                                            *
+//  c I n d e x E n t r y N o d e                                                                                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -172,7 +172,7 @@ cIndexEntryNode * cIndexingDictionary::findOrAddEntry (cIndexEntryNode * & ioRoo
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 cIndexingDictionary                                       *
+//                 cIndexingDictionary                                                                                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 

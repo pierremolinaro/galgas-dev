@@ -577,6 +577,8 @@ class cGrammar_syntaxSLRgrammar : public cParser_syntaxModelBuilder,
 
   public : virtual int32_t select_syntaxModelBuilder_13 (C_Lexique_galgas_5F_scanner *) ;
 
+  public : virtual int32_t select_syntaxModelBuilder_14 (C_Lexique_galgas_5F_scanner *) ;
+
   public : virtual int32_t select_expressionSyntax_0 (C_Lexique_galgas_5F_scanner *) ;
 
   public : virtual int32_t select_expressionSyntax_1 (C_Lexique_galgas_5F_scanner *) ;

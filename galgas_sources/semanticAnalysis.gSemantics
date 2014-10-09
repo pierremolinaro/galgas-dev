@@ -3619,12 +3619,12 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
   end foreach ;
 #---
   foreach mIndexingKeyList do
-    if not [inIndexNameSet hasKey ![mValue string]] then
+    if not [inIndexNameSet hasKey ![mValue0 string]] then
       var s := "" ;
       foreach inIndexNameSet do
         s .= "\n  - " . key  ;
       end foreach ;
-      error mValue : "the '" . mValue . "' indexing name is not declared by the lexique; available names are:" . s ;
+      error mValue0 : "the '" . mValue0 . "' indexing name is not declared by the lexique; available names are:" . s ;
     end if ;
   end foreach ;
 #--- Check syntax directed translation destination variable
@@ -3671,7 +3671,9 @@ override method @terminalCheckInstructionForGeneration generateInstruction
   end foreach ;
 #--- Indexing
   foreach mIndexingKeyList do
-    ioGeneratedCode .= compilerCppName [] . "->enterIndexing (C_Lexique_" . mLexiqueIdentifier . "::kIndexing_" . [mValue identifierRepresentation] . ") ;\n" ;
+    ioGeneratedCode += compilerCppName []
+                    + "->enterIndexing (C_Lexique_" + mLexiqueIdentifier . "::kIndexing_" + [mValue0 identifierRepresentation]
+                    + ", " + [mValue1 utf8Representation] + ") ;\n" ;
   end foreach ;
 #--- Syntax directed translation
   [mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor generateCode

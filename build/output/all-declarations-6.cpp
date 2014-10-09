@@ -3245,7 +3245,7 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_nonterminal_5F_declarat
     ioSyntaxDirectedTranslationResult << var_sep.add_operation (GALGAS_string ("rule"), inCompiler COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 129)).stringValue () ;
   }
   GALGAS_lstring var_mNonterminalName = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_ruleDefinition) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_ruleDefinition, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_non_5F_terminal_5F_symbol) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 130)) ;
@@ -3284,7 +3284,7 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_nonterminal_5F_declarat
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_nonterminal) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 128)) ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_ruleDefinition) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_ruleDefinition, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_non_5F_terminal_5F_symbol) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 130)) ;
@@ -3320,7 +3320,7 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_nonterminal_5F_declarat
 
 void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_nonterminal_5F_declaration_i2_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_nonterminal) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 128)) ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_ruleDefinition) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_ruleDefinition, "") ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_non_5F_terminal_5F_symbol) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 130)) ;
   nt_nonterminal_5F_label_5F_declaration_indexing (inCompiler) ;
   bool repeatFlag_0 = true ;
@@ -3399,7 +3399,7 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_rule_5F_decla
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_rule) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 173)) ;
   GALGAS_lstring var_mNonterminalName = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_ruleDefinition) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_ruleDefinition, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_non_5F_terminal_5F_symbol) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 174)) ;
@@ -3438,7 +3438,7 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_rule_5F_decla
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_rule) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 173)) ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_ruleDefinition) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_ruleDefinition, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_non_5F_terminal_5F_symbol) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 174)) ;
@@ -3477,7 +3477,7 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_rule_5F_decla
 
 void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_rule_5F_declaration_i4_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_rule) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 173)) ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_ruleDefinition) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_ruleDefinition, "") ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_non_5F_terminal_5F_symbol) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 174)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
@@ -3592,7 +3592,7 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i
                                                                                     C_Lexique_galgas_5F_scanner * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
   GALGAS_lstring var_mNonterminalName = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_ruleReference) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_ruleReference, "") ;
   GALGAS_string var_sep (inCompiler->preceedingSeparatorString ()) ;
   GALGAS_string var_nonTerminalSymbol (inCompiler->tokenString ()) ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_non_5F_terminal_5F_symbol) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 223)) ;
@@ -3653,7 +3653,7 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i
 
 void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i6_parse (C_String & ioSyntaxDirectedTranslationResult,
                                                                                          C_Lexique_galgas_5F_scanner * inCompiler) {
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_ruleReference) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_ruleReference, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_non_5F_terminal_5F_symbol) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 223)) ;
@@ -3699,7 +3699,7 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i6_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_ruleReference) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_ruleReference, "") ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_non_5F_terminal_5F_symbol) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 223)) ;
   switch (select_syntaxModelBuilder_6 (inCompiler)) {
   case 1: {
@@ -3734,7 +3734,7 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i
                                                                                     C_Lexique_galgas_5F_scanner * inCompiler) {
   outArgument_outInstruction.drop () ; // Release 'out' argument
   GALGAS_lstring var_terminalName = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_terminalReference) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_terminalReference, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_terminal) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 276)) ;
@@ -3742,7 +3742,7 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i
   C_String syntaxDirectedTranslationResult_10940 ;
   nt_actual_5F_input_5F_parameter_5F_list_ (var_actualInputParameterList, syntaxDirectedTranslationResult_10940, inCompiler) ;
   ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_10940 ;
-  GALGAS_lstringlist var_indexNameList = GALGAS_lstringlist::constructor_emptyList (SOURCE_FILE ("syntaxModelBuilder.galgas", 278)) ;
+  GALGAS__32_lstringlist var_indexNameList = GALGAS__32_lstringlist::constructor_emptyList (SOURCE_FILE ("syntaxModelBuilder.galgas", 278)) ;
   switch (select_syntaxModelBuilder_8 (inCompiler)) {
   case 1: {
   } break ;
@@ -3753,16 +3753,30 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i
     bool repeatFlag_0 = true ;
     while (repeatFlag_0) {
       GALGAS_lstring var_indexName = inCompiler->synthetizedAttribute_tokenString () ;
-      inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_indexingNameReference) ;
+      inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_indexingNameReference, "") ;
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
       inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 283)) ;
-      var_indexNameList.addAssign_operation (var_indexName  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 284)) ;
+      GALGAS_lstring var_postfixName ;
+      switch (select_syntaxModelBuilder_10 (inCompiler)) {
+      case 1: {
+        var_postfixName = GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("syntaxModelBuilder.galgas", 286)) ;
+      } break ;
+      case 2: {
+        var_postfixName = inCompiler->synthetizedAttribute_tokenString () ;
+        ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
+        ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
+        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 288)) ;
+      } break ;
+      default:
+        break ;
+      }
+      var_indexNameList.addAssign_operation (var_indexName, var_postfixName  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 290)) ;
       switch (select_syntaxModelBuilder_9 (inCompiler)) {
       case 2: {
         ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
         ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 286)) ;
+        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 292)) ;
       } break ;
       default:
         repeatFlag_0 = false ;
@@ -3775,34 +3789,34 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i
   }
   GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult var_grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor ;
   GALGAS_abstractGrammarInstructionSyntaxDirectedTranslationResult var_grammarInstructionSyntaxDirectedTranslationPreceedingToken ;
-  switch (select_syntaxModelBuilder_10 (inCompiler)) {
+  switch (select_syntaxModelBuilder_11 (inCompiler)) {
   case 1: {
-    var_grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor = GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone::constructor_new (SOURCE_FILE ("syntaxModelBuilder.galgas", 293)) ;
-    var_grammarInstructionSyntaxDirectedTranslationPreceedingToken = GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone::constructor_new (SOURCE_FILE ("syntaxModelBuilder.galgas", 294)) ;
+    var_grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor = GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone::constructor_new (SOURCE_FILE ("syntaxModelBuilder.galgas", 299)) ;
+    var_grammarInstructionSyntaxDirectedTranslationPreceedingToken = GALGAS_grammarInstructionSyntaxDirectedTranslationResultNone::constructor_new (SOURCE_FILE ("syntaxModelBuilder.galgas", 300)) ;
   } break ;
   case 2: {
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A__3E_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 296)) ;
-    C_String syntaxDirectedTranslationResult_11840 ;
-    nt_syntax_5F_directed_5F_translation_5F_result_ (var_grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor, syntaxDirectedTranslationResult_11840, inCompiler) ;
-    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_11840 ;
-    C_String syntaxDirectedTranslationResult_11945 ;
-    nt_syntax_5F_directed_5F_translation_5F_result_ (var_grammarInstructionSyntaxDirectedTranslationPreceedingToken, syntaxDirectedTranslationResult_11945, inCompiler) ;
-    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_11945 ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A__3E_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 302)) ;
+    C_String syntaxDirectedTranslationResult_11986 ;
+    nt_syntax_5F_directed_5F_translation_5F_result_ (var_grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor, syntaxDirectedTranslationResult_11986, inCompiler) ;
+    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_11986 ;
+    C_String syntaxDirectedTranslationResult_12091 ;
+    nt_syntax_5F_directed_5F_translation_5F_result_ (var_grammarInstructionSyntaxDirectedTranslationPreceedingToken, syntaxDirectedTranslationResult_12091, inCompiler) ;
+    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_12091 ;
   } break ;
   default:
     break ;
   }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 300)) ;
-  outArgument_outInstruction = GALGAS_terminalCheckInstruction::constructor_new (var_terminalName.reader_location (SOURCE_FILE ("syntaxModelBuilder.galgas", 302)), var_terminalName, var_actualInputParameterList, var_indexNameList, var_grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor, var_grammarInstructionSyntaxDirectedTranslationPreceedingToken  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 301)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 306)) ;
+  outArgument_outInstruction = GALGAS_terminalCheckInstruction::constructor_new (var_terminalName.reader_location (SOURCE_FILE ("syntaxModelBuilder.galgas", 308)), var_terminalName, var_actualInputParameterList, var_indexNameList, var_grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor, var_grammarInstructionSyntaxDirectedTranslationPreceedingToken  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 307)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i7_parse (C_String & ioSyntaxDirectedTranslationResult,
                                                                                          C_Lexique_galgas_5F_scanner * inCompiler) {
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_terminalReference) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_terminalReference, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_terminal) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 276)) ;
@@ -3818,15 +3832,26 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i
     inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_indexing) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 281)) ;
     bool repeatFlag_0 = true ;
     while (repeatFlag_0) {
-      inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_indexingNameReference) ;
+      inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_indexingNameReference, "") ;
       ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
       ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
       inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 283)) ;
+      switch (select_syntaxModelBuilder_10 (inCompiler)) {
+      case 1: {
+      } break ;
+      case 2: {
+        ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
+        ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
+        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 288)) ;
+      } break ;
+      default:
+        break ;
+      }
       switch (select_syntaxModelBuilder_9 (inCompiler)) {
       case 2: {
         ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
         ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 286)) ;
+        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 292)) ;
       } break ;
       default:
         repeatFlag_0 = false ;
@@ -3837,33 +3862,33 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i
   default:
     break ;
   }
-  switch (select_syntaxModelBuilder_10 (inCompiler)) {
+  switch (select_syntaxModelBuilder_11 (inCompiler)) {
   case 1: {
   } break ;
   case 2: {
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A__3E_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 296)) ;
-    C_String syntaxDirectedTranslationResult_11840 ;
-    nt_syntax_5F_directed_5F_translation_5F_result_parse (syntaxDirectedTranslationResult_11840, inCompiler) ;
-    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_11840 ;
-    C_String syntaxDirectedTranslationResult_11945 ;
-    nt_syntax_5F_directed_5F_translation_5F_result_parse (syntaxDirectedTranslationResult_11945, inCompiler) ;
-    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_11945 ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A__3E_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 302)) ;
+    C_String syntaxDirectedTranslationResult_11986 ;
+    nt_syntax_5F_directed_5F_translation_5F_result_parse (syntaxDirectedTranslationResult_11986, inCompiler) ;
+    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_11986 ;
+    C_String syntaxDirectedTranslationResult_12091 ;
+    nt_syntax_5F_directed_5F_translation_5F_result_parse (syntaxDirectedTranslationResult_12091, inCompiler) ;
+    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_12091 ;
   } break ;
   default:
     break ;
   }
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 300)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 306)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i7_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_terminalReference) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_terminalReference, "") ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_terminal) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 276)) ;
   nt_actual_5F_input_5F_parameter_5F_list_indexing (inCompiler) ;
   switch (select_syntaxModelBuilder_8 (inCompiler)) {
@@ -3873,11 +3898,20 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i
     inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_indexing) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 281)) ;
     bool repeatFlag_0 = true ;
     while (repeatFlag_0) {
-      inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_indexingNameReference) ;
+      inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_indexingNameReference, "") ;
       inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 283)) ;
+      switch (select_syntaxModelBuilder_10 (inCompiler)) {
+      case 1: {
+      } break ;
+      case 2: {
+        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 288)) ;
+      } break ;
+      default:
+        break ;
+      }
       switch (select_syntaxModelBuilder_9 (inCompiler)) {
       case 2: {
-        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 286)) ;
+        inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2C_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 292)) ;
       } break ;
       default:
         repeatFlag_0 = false ;
@@ -3888,18 +3922,18 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i
   default:
     break ;
   }
-  switch (select_syntaxModelBuilder_10 (inCompiler)) {
+  switch (select_syntaxModelBuilder_11 (inCompiler)) {
   case 1: {
   } break ;
   case 2: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A__3E_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 296)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A__3E_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 302)) ;
     nt_syntax_5F_directed_5F_translation_5F_result_indexing (inCompiler) ;
     nt_syntax_5F_directed_5F_translation_5F_result_indexing (inCompiler) ;
   } break ;
   default:
     break ;
   }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 300)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 306)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3910,25 +3944,25 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i
   outArgument_outInstruction.drop () ; // Release 'out' argument
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_repeat) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 322)) ;
-  GALGAS_location var_mRepeatInstructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 323)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_repeat) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 328)) ;
+  GALGAS_location var_mRepeatInstructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 329)) ;
   GALGAS_syntaxInstructionList var_mRepeatedInstructionList ;
-  C_String syntaxDirectedTranslationResult_12978 ;
-  nt_syntax_5F_instruction_5F_list_ (var_mRepeatedInstructionList, syntaxDirectedTranslationResult_12978, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_12978 ;
-  GALGAS_location var_endOf_5F_repeated_5F_instructions = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 325)) ;
-  GALGAS_listOfSyntaxInstructionList var_mRepeatBranchList = GALGAS_listOfSyntaxInstructionList::constructor_emptyList (SOURCE_FILE ("syntaxModelBuilder.galgas", 326)) ;
+  C_String syntaxDirectedTranslationResult_13124 ;
+  nt_syntax_5F_instruction_5F_list_ (var_mRepeatedInstructionList, syntaxDirectedTranslationResult_13124, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_13124 ;
+  GALGAS_location var_endOf_5F_repeated_5F_instructions = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 331)) ;
+  GALGAS_listOfSyntaxInstructionList var_mRepeatBranchList = GALGAS_listOfSyntaxInstructionList::constructor_emptyList (SOURCE_FILE ("syntaxModelBuilder.galgas", 332)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_while) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 328)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_while) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 334)) ;
     GALGAS_syntaxInstructionList var_mInstructionList ;
-    C_String syntaxDirectedTranslationResult_13199 ;
-    nt_syntax_5F_instruction_5F_list_ (var_mInstructionList, syntaxDirectedTranslationResult_13199, inCompiler) ;
-    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_13199 ;
-    var_mRepeatBranchList.addAssign_operation (var_mInstructionList, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 330))  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 330)) ;
-    switch (select_syntaxModelBuilder_11 (inCompiler)) {
+    C_String syntaxDirectedTranslationResult_13345 ;
+    nt_syntax_5F_instruction_5F_list_ (var_mInstructionList, syntaxDirectedTranslationResult_13345, inCompiler) ;
+    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_13345 ;
+    var_mRepeatBranchList.addAssign_operation (var_mInstructionList, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 336))  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 336)) ;
+    switch (select_syntaxModelBuilder_12 (inCompiler)) {
     case 2: {
     } break ;
     default:
@@ -3938,12 +3972,12 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i
   }
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 333)) ;
-  GALGAS_location var_endOf_5F_repeat_5F_instruction = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 334)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_repeat) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 335)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 336)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 339)) ;
+  GALGAS_location var_endOf_5F_repeat_5F_instruction = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 340)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_repeat) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 341)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 342)) ;
   GALGAS_string temp_1 ;
-  const enumGalgasBool test_2 = function_generateGalgas_33_InstructionTerminator (inCompiler COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 337)).boolEnum () ;
+  const enumGalgasBool test_2 = function_generateGalgas_33_InstructionTerminator (inCompiler COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 343)).boolEnum () ;
   if (kBoolTrue == test_2) {
     temp_1 = GALGAS_string ("%repeat") ;
   }else if (kBoolFalse == test_2) {
@@ -3952,7 +3986,7 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i
   if (temp_1.isValid ()) {
     ioSyntaxDirectedTranslationResult << temp_1.stringValue () ;
   }
-  outArgument_outInstruction = GALGAS_repeatInstruction::constructor_new (var_mRepeatInstructionLocation, var_mRepeatedInstructionList, var_endOf_5F_repeated_5F_instructions, var_mRepeatBranchList, var_endOf_5F_repeat_5F_instruction  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 338)) ;
+  outArgument_outInstruction = GALGAS_repeatInstruction::constructor_new (var_mRepeatInstructionLocation, var_mRepeatedInstructionList, var_endOf_5F_repeated_5F_instructions, var_mRepeatBranchList, var_endOf_5F_repeat_5F_instruction  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 344)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3961,19 +3995,19 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i
                                                                                          C_Lexique_galgas_5F_scanner * inCompiler) {
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_repeat) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 322)) ;
-  C_String syntaxDirectedTranslationResult_12978 ;
-  nt_syntax_5F_instruction_5F_list_parse (syntaxDirectedTranslationResult_12978, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_12978 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_repeat) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 328)) ;
+  C_String syntaxDirectedTranslationResult_13124 ;
+  nt_syntax_5F_instruction_5F_list_parse (syntaxDirectedTranslationResult_13124, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_13124 ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_while) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 328)) ;
-    C_String syntaxDirectedTranslationResult_13199 ;
-    nt_syntax_5F_instruction_5F_list_parse (syntaxDirectedTranslationResult_13199, inCompiler) ;
-    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_13199 ;
-    switch (select_syntaxModelBuilder_11 (inCompiler)) {
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_while) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 334)) ;
+    C_String syntaxDirectedTranslationResult_13345 ;
+    nt_syntax_5F_instruction_5F_list_parse (syntaxDirectedTranslationResult_13345, inCompiler) ;
+    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_13345 ;
+    switch (select_syntaxModelBuilder_12 (inCompiler)) {
     case 2: {
     } break ;
     default:
@@ -3983,26 +4017,26 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i
   }
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 333)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 339)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_repeat) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 335)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_repeat) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 341)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 336)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 342)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i8_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_repeat) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 322)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_repeat) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 328)) ;
   nt_syntax_5F_instruction_5F_list_indexing (inCompiler) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_while) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 328)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_while) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 334)) ;
     nt_syntax_5F_instruction_5F_list_indexing (inCompiler) ;
-    switch (select_syntaxModelBuilder_11 (inCompiler)) {
+    switch (select_syntaxModelBuilder_12 (inCompiler)) {
     case 2: {
     } break ;
     default:
@@ -4010,9 +4044,9 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i
       break ;
     }
   }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 333)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_repeat) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 335)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 336)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 339)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_repeat) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 341)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 342)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4023,25 +4057,25 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i
   outArgument_outInstruction.drop () ; // Release 'out' argument
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_select) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 358)) ;
-  GALGAS_location var_mSelectInstructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 359)) ;
-  GALGAS_listOfSyntaxInstructionList var_mSelectBranchList = GALGAS_listOfSyntaxInstructionList::constructor_emptyList (SOURCE_FILE ("syntaxModelBuilder.galgas", 360)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_select) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 364)) ;
+  GALGAS_location var_mSelectInstructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 365)) ;
+  GALGAS_listOfSyntaxInstructionList var_mSelectBranchList = GALGAS_listOfSyntaxInstructionList::constructor_emptyList (SOURCE_FILE ("syntaxModelBuilder.galgas", 366)) ;
   GALGAS_syntaxInstructionList var_il ;
-  C_String syntaxDirectedTranslationResult_14417 ;
-  nt_syntax_5F_instruction_5F_list_ (var_il, syntaxDirectedTranslationResult_14417, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_14417 ;
-  var_mSelectBranchList.addAssign_operation (var_il, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 362))  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 362)) ;
+  C_String syntaxDirectedTranslationResult_14563 ;
+  nt_syntax_5F_instruction_5F_list_ (var_il, syntaxDirectedTranslationResult_14563, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_14563 ;
+  var_mSelectBranchList.addAssign_operation (var_il, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 368))  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 368)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_or) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 364)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_or) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 370)) ;
     GALGAS_syntaxInstructionList var_instructionList ;
-    C_String syntaxDirectedTranslationResult_14539 ;
-    nt_syntax_5F_instruction_5F_list_ (var_instructionList, syntaxDirectedTranslationResult_14539, inCompiler) ;
-    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_14539 ;
-    var_mSelectBranchList.addAssign_operation (var_instructionList, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 366))  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 366)) ;
-    switch (select_syntaxModelBuilder_12 (inCompiler)) {
+    C_String syntaxDirectedTranslationResult_14685 ;
+    nt_syntax_5F_instruction_5F_list_ (var_instructionList, syntaxDirectedTranslationResult_14685, inCompiler) ;
+    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_14685 ;
+    var_mSelectBranchList.addAssign_operation (var_instructionList, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 372))  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 372)) ;
+    switch (select_syntaxModelBuilder_13 (inCompiler)) {
     case 2: {
     } break ;
     default:
@@ -4051,12 +4085,12 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i
   }
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 369)) ;
-  GALGAS_location var_endOf_5F_select_5F_instruction = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 370)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_select) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 371)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 372)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 375)) ;
+  GALGAS_location var_endOf_5F_select_5F_instruction = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 376)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_select) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 377)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 378)) ;
   GALGAS_string temp_1 ;
-  const enumGalgasBool test_2 = function_generateGalgas_33_InstructionTerminator (inCompiler COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 373)).boolEnum () ;
+  const enumGalgasBool test_2 = function_generateGalgas_33_InstructionTerminator (inCompiler COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 379)).boolEnum () ;
   if (kBoolTrue == test_2) {
     temp_1 = GALGAS_string ("%select") ;
   }else if (kBoolFalse == test_2) {
@@ -4065,7 +4099,7 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i
   if (temp_1.isValid ()) {
     ioSyntaxDirectedTranslationResult << temp_1.stringValue () ;
   }
-  outArgument_outInstruction = GALGAS_selectInstruction::constructor_new (var_mSelectInstructionLocation, var_mSelectBranchList, var_endOf_5F_select_5F_instruction  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 374)) ;
+  outArgument_outInstruction = GALGAS_selectInstruction::constructor_new (var_mSelectInstructionLocation, var_mSelectBranchList, var_endOf_5F_select_5F_instruction  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 380)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4074,19 +4108,19 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i
                                                                                          C_Lexique_galgas_5F_scanner * inCompiler) {
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_select) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 358)) ;
-  C_String syntaxDirectedTranslationResult_14417 ;
-  nt_syntax_5F_instruction_5F_list_parse (syntaxDirectedTranslationResult_14417, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_14417 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_select) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 364)) ;
+  C_String syntaxDirectedTranslationResult_14563 ;
+  nt_syntax_5F_instruction_5F_list_parse (syntaxDirectedTranslationResult_14563, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_14563 ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_or) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 364)) ;
-    C_String syntaxDirectedTranslationResult_14539 ;
-    nt_syntax_5F_instruction_5F_list_parse (syntaxDirectedTranslationResult_14539, inCompiler) ;
-    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_14539 ;
-    switch (select_syntaxModelBuilder_12 (inCompiler)) {
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_or) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 370)) ;
+    C_String syntaxDirectedTranslationResult_14685 ;
+    nt_syntax_5F_instruction_5F_list_parse (syntaxDirectedTranslationResult_14685, inCompiler) ;
+    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_14685 ;
+    switch (select_syntaxModelBuilder_13 (inCompiler)) {
     case 2: {
     } break ;
     default:
@@ -4096,26 +4130,26 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i
   }
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 369)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 375)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_select) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 371)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_select) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 377)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 372)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 378)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i9_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_select) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 358)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_select) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 364)) ;
   nt_syntax_5F_instruction_5F_list_indexing (inCompiler) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_or) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 364)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_or) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 370)) ;
     nt_syntax_5F_instruction_5F_list_indexing (inCompiler) ;
-    switch (select_syntaxModelBuilder_12 (inCompiler)) {
+    switch (select_syntaxModelBuilder_13 (inCompiler)) {
     case 2: {
     } break ;
     default:
@@ -4123,9 +4157,9 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i
       break ;
     }
   }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 369)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_select) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 371)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 372)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 375)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_select) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 377)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 378)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4136,28 +4170,28 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i
   outArgument_outInstruction.drop () ; // Release 'out' argument
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_parse) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 392)) ;
-  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 393)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_parse) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 398)) ;
+  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 399)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_do) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 394)) ;
-  GALGAS_listOfSyntaxInstructionList var_mParseDoBranchList = GALGAS_listOfSyntaxInstructionList::constructor_emptyList (SOURCE_FILE ("syntaxModelBuilder.galgas", 395)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_do) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 400)) ;
+  GALGAS_listOfSyntaxInstructionList var_mParseDoBranchList = GALGAS_listOfSyntaxInstructionList::constructor_emptyList (SOURCE_FILE ("syntaxModelBuilder.galgas", 401)) ;
   GALGAS_syntaxInstructionList var_il ;
-  C_String syntaxDirectedTranslationResult_15690 ;
-  nt_syntax_5F_instruction_5F_list_ (var_il, syntaxDirectedTranslationResult_15690, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_15690 ;
-  var_mParseDoBranchList.addAssign_operation (var_il, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 397))  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 397)) ;
+  C_String syntaxDirectedTranslationResult_15836 ;
+  nt_syntax_5F_instruction_5F_list_ (var_il, syntaxDirectedTranslationResult_15836, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_15836 ;
+  var_mParseDoBranchList.addAssign_operation (var_il, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 403))  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 403)) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_rewind) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 399)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_rewind) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 405)) ;
     GALGAS_syntaxInstructionList var_instructionList ;
-    C_String syntaxDirectedTranslationResult_15817 ;
-    nt_syntax_5F_instruction_5F_list_ (var_instructionList, syntaxDirectedTranslationResult_15817, inCompiler) ;
-    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_15817 ;
-    var_mParseDoBranchList.addAssign_operation (var_instructionList, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 401))  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 401)) ;
-    switch (select_syntaxModelBuilder_13 (inCompiler)) {
+    C_String syntaxDirectedTranslationResult_15963 ;
+    nt_syntax_5F_instruction_5F_list_ (var_instructionList, syntaxDirectedTranslationResult_15963, inCompiler) ;
+    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_15963 ;
+    var_mParseDoBranchList.addAssign_operation (var_instructionList, GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 407))  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 407)) ;
+    switch (select_syntaxModelBuilder_14 (inCompiler)) {
     case 2: {
     } break ;
     default:
@@ -4167,12 +4201,12 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i
   }
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 404)) ;
-  GALGAS_location var_endOfInstruction = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 405)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_parse) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 406)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 407)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 410)) ;
+  GALGAS_location var_endOfInstruction = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 411)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_parse) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 412)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 413)) ;
   GALGAS_string temp_1 ;
-  const enumGalgasBool test_2 = function_generateGalgas_33_InstructionTerminator (inCompiler COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 408)).boolEnum () ;
+  const enumGalgasBool test_2 = function_generateGalgas_33_InstructionTerminator (inCompiler COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 414)).boolEnum () ;
   if (kBoolTrue == test_2) {
     temp_1 = GALGAS_string ("%parse") ;
   }else if (kBoolFalse == test_2) {
@@ -4181,7 +4215,7 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i
   if (temp_1.isValid ()) {
     ioSyntaxDirectedTranslationResult << temp_1.stringValue () ;
   }
-  outArgument_outInstruction = GALGAS_parseRewindInstruction::constructor_new (var_instructionLocation, var_mParseDoBranchList, var_endOfInstruction  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 409)) ;
+  outArgument_outInstruction = GALGAS_parseRewindInstruction::constructor_new (var_instructionLocation, var_mParseDoBranchList, var_endOfInstruction  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 415)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4190,22 +4224,22 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i
                                                                                           C_Lexique_galgas_5F_scanner * inCompiler) {
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_parse) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 392)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_parse) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 398)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_do) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 394)) ;
-  C_String syntaxDirectedTranslationResult_15690 ;
-  nt_syntax_5F_instruction_5F_list_parse (syntaxDirectedTranslationResult_15690, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_15690 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_do) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 400)) ;
+  C_String syntaxDirectedTranslationResult_15836 ;
+  nt_syntax_5F_instruction_5F_list_parse (syntaxDirectedTranslationResult_15836, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_15836 ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
     ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
     ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_rewind) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 399)) ;
-    C_String syntaxDirectedTranslationResult_15817 ;
-    nt_syntax_5F_instruction_5F_list_parse (syntaxDirectedTranslationResult_15817, inCompiler) ;
-    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_15817 ;
-    switch (select_syntaxModelBuilder_13 (inCompiler)) {
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_rewind) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 405)) ;
+    C_String syntaxDirectedTranslationResult_15963 ;
+    nt_syntax_5F_instruction_5F_list_parse (syntaxDirectedTranslationResult_15963, inCompiler) ;
+    ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_15963 ;
+    switch (select_syntaxModelBuilder_14 (inCompiler)) {
     case 2: {
     } break ;
     default:
@@ -4215,27 +4249,27 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i
   }
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 404)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 410)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_parse) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 406)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_parse) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 412)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 407)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 413)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i10_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_parse) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 392)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_do) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 394)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_parse) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 398)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_do) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 400)) ;
   nt_syntax_5F_instruction_5F_list_indexing (inCompiler) ;
   bool repeatFlag_0 = true ;
   while (repeatFlag_0) {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_rewind) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 399)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_rewind) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 405)) ;
     nt_syntax_5F_instruction_5F_list_indexing (inCompiler) ;
-    switch (select_syntaxModelBuilder_13 (inCompiler)) {
+    switch (select_syntaxModelBuilder_14 (inCompiler)) {
     case 2: {
     } break ;
     default:
@@ -4243,9 +4277,9 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i
       break ;
     }
   }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 404)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_parse) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 406)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 407)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 410)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_parse) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 412)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 413)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4256,10 +4290,10 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_branchOfParseWhenInstru
   outArgument_outElseInstructionList.drop () ; // Release 'out' argument
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_else) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 422)) ;
-  C_String syntaxDirectedTranslationResult_16746 ;
-  nt_syntax_5F_instruction_5F_list_ (outArgument_outElseInstructionList, syntaxDirectedTranslationResult_16746, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_16746 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_else) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 428)) ;
+  C_String syntaxDirectedTranslationResult_16892 ;
+  nt_syntax_5F_instruction_5F_list_ (outArgument_outElseInstructionList, syntaxDirectedTranslationResult_16892, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_16892 ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4268,17 +4302,17 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_branchOfParseWhenInstru
                                                                                                  C_Lexique_galgas_5F_scanner * inCompiler) {
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_else) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 422)) ;
-  C_String syntaxDirectedTranslationResult_16746 ;
-  nt_syntax_5F_instruction_5F_list_parse (syntaxDirectedTranslationResult_16746, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_16746 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_else) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 428)) ;
+  C_String syntaxDirectedTranslationResult_16892 ;
+  nt_syntax_5F_instruction_5F_list_parse (syntaxDirectedTranslationResult_16892, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_16892 ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_branchOfParseWhenInstruction_i11_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_else) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 422)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_else) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 428)) ;
   nt_syntax_5F_instruction_5F_list_indexing (inCompiler) ;
 }
 
@@ -4289,31 +4323,31 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_branchOfParseWhenInstru
                                                                                             C_Lexique_galgas_5F_scanner * inCompiler) {
   outArgument_outElseInstructionList.drop () ; // Release 'out' argument
   const GALGAS_string var_sep (inCompiler->preceedingSeparatorString ()) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_when) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 429)) ;
-  if (var_sep.add_operation (GALGAS_string ("case"), inCompiler COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 430)).isValid ()) {
-    ioSyntaxDirectedTranslationResult << var_sep.add_operation (GALGAS_string ("case"), inCompiler COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 430)).stringValue () ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_when) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 435)) ;
+  if (var_sep.add_operation (GALGAS_string ("case"), inCompiler COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 436)).isValid ()) {
+    ioSyntaxDirectedTranslationResult << var_sep.add_operation (GALGAS_string ("case"), inCompiler COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 436)).stringValue () ;
   }
-  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 431)) ;
+  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 437)) ;
   GALGAS_semanticExpressionAST var_whenExpression ;
-  C_String syntaxDirectedTranslationResult_17093 ;
-  nt_expression_ (var_whenExpression, syntaxDirectedTranslationResult_17093, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_17093 ;
-  GALGAS_location var_endOfWhenExpression = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 434)) ;
+  C_String syntaxDirectedTranslationResult_17239 ;
+  nt_expression_ (var_whenExpression, syntaxDirectedTranslationResult_17239, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_17239 ;
+  GALGAS_location var_endOfWhenExpression = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 440)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 435)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 441)) ;
   GALGAS_syntaxInstructionList var_whenInstructionList ;
-  C_String syntaxDirectedTranslationResult_17232 ;
-  nt_syntax_5F_instruction_5F_list_ (var_whenInstructionList, syntaxDirectedTranslationResult_17232, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_17232 ;
-  GALGAS_location var_endOfWhenInstructions = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 438)) ;
+  C_String syntaxDirectedTranslationResult_17378 ;
+  nt_syntax_5F_instruction_5F_list_ (var_whenInstructionList, syntaxDirectedTranslationResult_17378, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_17378 ;
+  GALGAS_location var_endOfWhenInstructions = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 444)) ;
   GALGAS_syntaxInstructionList var_elseInstructionList ;
-  C_String syntaxDirectedTranslationResult_17392 ;
-  nt_branchOfParseWhenInstruction_ (var_elseInstructionList, syntaxDirectedTranslationResult_17392, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_17392 ;
-  GALGAS_location var_endOfElseInstructions = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 442)) ;
-  outArgument_outElseInstructionList = GALGAS_syntaxInstructionList::constructor_emptyList (SOURCE_FILE ("syntaxModelBuilder.galgas", 443)) ;
-  outArgument_outElseInstructionList.addAssign_operation (GALGAS_parseWhenInstruction::constructor_new (var_instructionLocation, var_whenExpression, var_endOfWhenExpression, var_whenInstructionList, var_endOfWhenInstructions, var_elseInstructionList, var_endOfElseInstructions  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 444))  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 444)) ;
+  C_String syntaxDirectedTranslationResult_17538 ;
+  nt_branchOfParseWhenInstruction_ (var_elseInstructionList, syntaxDirectedTranslationResult_17538, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_17538 ;
+  GALGAS_location var_endOfElseInstructions = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 448)) ;
+  outArgument_outElseInstructionList = GALGAS_syntaxInstructionList::constructor_emptyList (SOURCE_FILE ("syntaxModelBuilder.galgas", 449)) ;
+  outArgument_outElseInstructionList.addAssign_operation (GALGAS_parseWhenInstruction::constructor_new (var_instructionLocation, var_whenExpression, var_endOfWhenExpression, var_whenInstructionList, var_endOfWhenInstructions, var_elseInstructionList, var_endOfElseInstructions  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 450))  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 450)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4322,28 +4356,28 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_branchOfParseWhenInstru
                                                                                                  C_Lexique_galgas_5F_scanner * inCompiler) {
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_when) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 429)) ;
-  C_String syntaxDirectedTranslationResult_17093 ;
-  nt_expression_parse (syntaxDirectedTranslationResult_17093, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_17093 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_when) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 435)) ;
+  C_String syntaxDirectedTranslationResult_17239 ;
+  nt_expression_parse (syntaxDirectedTranslationResult_17239, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_17239 ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 435)) ;
-  C_String syntaxDirectedTranslationResult_17232 ;
-  nt_syntax_5F_instruction_5F_list_parse (syntaxDirectedTranslationResult_17232, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_17232 ;
-  C_String syntaxDirectedTranslationResult_17392 ;
-  nt_branchOfParseWhenInstruction_parse (syntaxDirectedTranslationResult_17392, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_17392 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 441)) ;
+  C_String syntaxDirectedTranslationResult_17378 ;
+  nt_syntax_5F_instruction_5F_list_parse (syntaxDirectedTranslationResult_17378, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_17378 ;
+  C_String syntaxDirectedTranslationResult_17538 ;
+  nt_branchOfParseWhenInstruction_parse (syntaxDirectedTranslationResult_17538, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_17538 ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_branchOfParseWhenInstruction_i12_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_when) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 429)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_when) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 435)) ;
   nt_expression_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 435)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 441)) ;
   nt_syntax_5F_instruction_5F_list_indexing (inCompiler) ;
   nt_branchOfParseWhenInstruction_indexing (inCompiler) ;
 }
@@ -4356,38 +4390,38 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i
   outArgument_outInstruction.drop () ; // Release 'out' argument
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_parse) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 458)) ;
-  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 459)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_parse) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 464)) ;
+  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 465)) ;
   const GALGAS_string var_sep (inCompiler->preceedingSeparatorString ()) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_when) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 460)) ;
-  if (var_sep.add_operation (GALGAS_string ("with"), inCompiler COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 461)).isValid ()) {
-    ioSyntaxDirectedTranslationResult << var_sep.add_operation (GALGAS_string ("with"), inCompiler COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 461)).stringValue () ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_when) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 466)) ;
+  if (var_sep.add_operation (GALGAS_string ("with"), inCompiler COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 467)).isValid ()) {
+    ioSyntaxDirectedTranslationResult << var_sep.add_operation (GALGAS_string ("with"), inCompiler COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 467)).stringValue () ;
   }
   GALGAS_semanticExpressionAST var_whenExpression ;
-  C_String syntaxDirectedTranslationResult_18026 ;
-  nt_expression_ (var_whenExpression, syntaxDirectedTranslationResult_18026, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_18026 ;
-  GALGAS_location var_endOfWhenExpression = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 463)) ;
+  C_String syntaxDirectedTranslationResult_18172 ;
+  nt_expression_ (var_whenExpression, syntaxDirectedTranslationResult_18172, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_18172 ;
+  GALGAS_location var_endOfWhenExpression = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 469)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 464)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 470)) ;
   GALGAS_syntaxInstructionList var_whenInstructionList ;
-  C_String syntaxDirectedTranslationResult_18146 ;
-  nt_syntax_5F_instruction_5F_list_ (var_whenInstructionList, syntaxDirectedTranslationResult_18146, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_18146 ;
-  GALGAS_location var_endOfWhenInstructions = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 466)) ;
+  C_String syntaxDirectedTranslationResult_18292 ;
+  nt_syntax_5F_instruction_5F_list_ (var_whenInstructionList, syntaxDirectedTranslationResult_18292, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_18292 ;
+  GALGAS_location var_endOfWhenInstructions = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 472)) ;
   GALGAS_syntaxInstructionList var_elseInstructionList ;
-  C_String syntaxDirectedTranslationResult_18287 ;
-  nt_branchOfParseWhenInstruction_ (var_elseInstructionList, syntaxDirectedTranslationResult_18287, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_18287 ;
-  GALGAS_location var_endOfElseInstructions = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 469)) ;
+  C_String syntaxDirectedTranslationResult_18433 ;
+  nt_branchOfParseWhenInstruction_ (var_elseInstructionList, syntaxDirectedTranslationResult_18433, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_18433 ;
+  GALGAS_location var_endOfElseInstructions = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 475)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 470)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_parse) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 471)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 472)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 476)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_parse) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 477)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 478)) ;
   GALGAS_string temp_0 ;
-  const enumGalgasBool test_1 = function_generateGalgas_33_InstructionTerminator (inCompiler COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 473)).boolEnum () ;
+  const enumGalgasBool test_1 = function_generateGalgas_33_InstructionTerminator (inCompiler COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 479)).boolEnum () ;
   if (kBoolTrue == test_1) {
     temp_0 = GALGAS_string ("%parse") ;
   }else if (kBoolFalse == test_1) {
@@ -4396,7 +4430,7 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i
   if (temp_0.isValid ()) {
     ioSyntaxDirectedTranslationResult << temp_0.stringValue () ;
   }
-  outArgument_outInstruction = GALGAS_parseWhenInstruction::constructor_new (var_instructionLocation, var_whenExpression, var_endOfWhenExpression, var_whenInstructionList, var_endOfWhenInstructions, var_elseInstructionList, var_endOfElseInstructions  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 474)) ;
+  outArgument_outInstruction = GALGAS_parseWhenInstruction::constructor_new (var_instructionLocation, var_whenExpression, var_endOfWhenExpression, var_whenInstructionList, var_endOfWhenInstructions, var_elseInstructionList, var_endOfElseInstructions  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 480)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4405,46 +4439,46 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i
                                                                                           C_Lexique_galgas_5F_scanner * inCompiler) {
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_parse) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 458)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_parse) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 464)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_when) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 460)) ;
-  C_String syntaxDirectedTranslationResult_18026 ;
-  nt_expression_parse (syntaxDirectedTranslationResult_18026, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_18026 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_when) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 466)) ;
+  C_String syntaxDirectedTranslationResult_18172 ;
+  nt_expression_parse (syntaxDirectedTranslationResult_18172, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_18172 ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 464)) ;
-  C_String syntaxDirectedTranslationResult_18146 ;
-  nt_syntax_5F_instruction_5F_list_parse (syntaxDirectedTranslationResult_18146, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_18146 ;
-  C_String syntaxDirectedTranslationResult_18287 ;
-  nt_branchOfParseWhenInstruction_parse (syntaxDirectedTranslationResult_18287, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_18287 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 470)) ;
+  C_String syntaxDirectedTranslationResult_18292 ;
+  nt_syntax_5F_instruction_5F_list_parse (syntaxDirectedTranslationResult_18292, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_18292 ;
+  C_String syntaxDirectedTranslationResult_18433 ;
+  nt_branchOfParseWhenInstruction_parse (syntaxDirectedTranslationResult_18433, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_18433 ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 470)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 476)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_parse) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 471)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_parse) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 477)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 472)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 478)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i13_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_parse) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 458)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_when) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 460)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_parse) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 464)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_when) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 466)) ;
   nt_expression_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 464)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 470)) ;
   nt_syntax_5F_instruction_5F_list_indexing (inCompiler) ;
   nt_branchOfParseWhenInstruction_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 470)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_parse) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 471)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 472)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 476)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_parse) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 477)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 478)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4455,39 +4489,39 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i
   outArgument_outInstruction.drop () ; // Release 'out' argument
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_parse) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 492)) ;
-  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 493)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_parse) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 498)) ;
+  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 499)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_loop) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 494)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_loop) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 500)) ;
   GALGAS_semanticExpressionAST var_variantExpression ;
-  C_String syntaxDirectedTranslationResult_19275 ;
-  nt_expression_ (var_variantExpression, syntaxDirectedTranslationResult_19275, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_19275 ;
-  GALGAS_location var_endOfVariantExpression = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 496)) ;
+  C_String syntaxDirectedTranslationResult_19421 ;
+  nt_expression_ (var_variantExpression, syntaxDirectedTranslationResult_19421, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_19421 ;
+  GALGAS_location var_endOfVariantExpression = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 502)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_while) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 497)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_while) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 503)) ;
   GALGAS_semanticExpressionAST var_whileExpression ;
-  C_String syntaxDirectedTranslationResult_19392 ;
-  nt_expression_ (var_whileExpression, syntaxDirectedTranslationResult_19392, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_19392 ;
-  GALGAS_location var_endOfWhileExpression = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 499)) ;
+  C_String syntaxDirectedTranslationResult_19538 ;
+  nt_expression_ (var_whileExpression, syntaxDirectedTranslationResult_19538, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_19538 ;
+  GALGAS_location var_endOfWhileExpression = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 505)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_do) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 500)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_do) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 506)) ;
   GALGAS_syntaxInstructionList var_instructionList ;
-  C_String syntaxDirectedTranslationResult_19515 ;
-  nt_syntax_5F_instruction_5F_list_ (var_instructionList, syntaxDirectedTranslationResult_19515, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_19515 ;
+  C_String syntaxDirectedTranslationResult_19661 ;
+  nt_syntax_5F_instruction_5F_list_ (var_instructionList, syntaxDirectedTranslationResult_19661, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_19661 ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 502)) ;
-  GALGAS_location var_endOfInstructionList = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 503)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_parse) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 504)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 505)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 508)) ;
+  GALGAS_location var_endOfInstructionList = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 509)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_parse) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 510)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 511)) ;
   GALGAS_string temp_0 ;
-  const enumGalgasBool test_1 = function_generateGalgas_33_InstructionTerminator (inCompiler COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 506)).boolEnum () ;
+  const enumGalgasBool test_1 = function_generateGalgas_33_InstructionTerminator (inCompiler COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 512)).boolEnum () ;
   if (kBoolTrue == test_1) {
     temp_0 = GALGAS_string ("%parse") ;
   }else if (kBoolFalse == test_1) {
@@ -4496,7 +4530,7 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i
   if (temp_0.isValid ()) {
     ioSyntaxDirectedTranslationResult << temp_0.stringValue () ;
   }
-  outArgument_outInstruction = GALGAS_parseLoopInstruction::constructor_new (var_instructionLocation, var_variantExpression, var_endOfVariantExpression, var_whileExpression, var_endOfWhileExpression, var_instructionList, var_endOfInstructionList  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 507)) ;
+  outArgument_outInstruction = GALGAS_parseLoopInstruction::constructor_new (var_instructionLocation, var_variantExpression, var_endOfVariantExpression, var_whileExpression, var_endOfWhileExpression, var_instructionList, var_endOfInstructionList  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 513)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4505,50 +4539,50 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i
                                                                                           C_Lexique_galgas_5F_scanner * inCompiler) {
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_parse) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 492)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_parse) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 498)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_loop) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 494)) ;
-  C_String syntaxDirectedTranslationResult_19275 ;
-  nt_expression_parse (syntaxDirectedTranslationResult_19275, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_19275 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_loop) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 500)) ;
+  C_String syntaxDirectedTranslationResult_19421 ;
+  nt_expression_parse (syntaxDirectedTranslationResult_19421, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_19421 ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_while) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 497)) ;
-  C_String syntaxDirectedTranslationResult_19392 ;
-  nt_expression_parse (syntaxDirectedTranslationResult_19392, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_19392 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_while) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 503)) ;
+  C_String syntaxDirectedTranslationResult_19538 ;
+  nt_expression_parse (syntaxDirectedTranslationResult_19538, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_19538 ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_do) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 500)) ;
-  C_String syntaxDirectedTranslationResult_19515 ;
-  nt_syntax_5F_instruction_5F_list_parse (syntaxDirectedTranslationResult_19515, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_19515 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_do) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 506)) ;
+  C_String syntaxDirectedTranslationResult_19661 ;
+  nt_syntax_5F_instruction_5F_list_parse (syntaxDirectedTranslationResult_19661, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_19661 ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 502)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 508)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_parse) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 504)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_parse) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 510)) ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 505)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 511)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i14_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_parse) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 492)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_loop) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 494)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_parse) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 498)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_loop) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 500)) ;
   nt_expression_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_while) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 497)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_while) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 503)) ;
   nt_expression_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_do) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 500)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_do) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 506)) ;
   nt_syntax_5F_instruction_5F_list_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 502)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_parse) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 504)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 505)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 508)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_parse) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 510)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 511)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4559,14 +4593,14 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i
   outArgument_outInstruction.drop () ; // Release 'out' argument
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_send) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 529)) ;
-  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 530)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_send) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 535)) ;
+  GALGAS_location var_instructionLocation = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 536)) ;
   GALGAS_semanticExpressionAST var_sentExpression ;
-  C_String syntaxDirectedTranslationResult_20587 ;
-  nt_expression_ (var_sentExpression, syntaxDirectedTranslationResult_20587, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_20587 ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 532)) ;
-  outArgument_outInstruction = GALGAS_syntaxSendInstruction::constructor_new (var_instructionLocation, var_sentExpression  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 533)) ;
+  C_String syntaxDirectedTranslationResult_20733 ;
+  nt_expression_ (var_sentExpression, syntaxDirectedTranslationResult_20733, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_20733 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 538)) ;
+  outArgument_outInstruction = GALGAS_syntaxSendInstruction::constructor_new (var_instructionLocation, var_sentExpression  COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 539)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -4575,22 +4609,22 @@ void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i
                                                                                           C_Lexique_galgas_5F_scanner * inCompiler) {
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_send) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 529)) ;
-  C_String syntaxDirectedTranslationResult_20587 ;
-  nt_expression_parse (syntaxDirectedTranslationResult_20587, inCompiler) ;
-  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_20587 ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_send) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 535)) ;
+  C_String syntaxDirectedTranslationResult_20733 ;
+  nt_expression_parse (syntaxDirectedTranslationResult_20733, inCompiler) ;
+  ioSyntaxDirectedTranslationResult << syntaxDirectedTranslationResult_20733 ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 532)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 538)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_syntaxModelBuilder::rule_syntaxModelBuilder_syntax_5F_instruction_i15_indexing (C_Lexique_galgas_5F_scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_send) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 529)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_send) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 535)) ;
   nt_expression_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 532)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) COMMA_SOURCE_FILE ("syntaxModelBuilder.galgas", 538)) ;
 }
 
 
@@ -4619,7 +4653,7 @@ void cParser_grammarModelBuilder::rule_grammarModelBuilder_grammar_5F_component_
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_grammar) COMMA_SOURCE_FILE ("grammarModelBuilder.galgas", 37)) ;
   GALGAS_lstring var_mGrammarName = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_grammarComponentDefinition) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_grammarComponentDefinition, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("grammarModelBuilder.galgas", 38)) ;
@@ -4684,7 +4718,7 @@ void cParser_grammarModelBuilder::rule_grammarModelBuilder_grammar_5F_component_
     ioSyntaxDirectedTranslationResult << var_sep.stringValue () ;
   }
   GALGAS_lstring var_mStartSymbol = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_ruleReference) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_ruleReference, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_non_5F_terminal_5F_symbol) COMMA_SOURCE_FILE ("grammarModelBuilder.galgas", 69)) ;
@@ -4775,7 +4809,7 @@ void cParser_grammarModelBuilder::rule_grammarModelBuilder_grammar_5F_component_
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_grammar) COMMA_SOURCE_FILE ("grammarModelBuilder.galgas", 37)) ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_grammarComponentDefinition) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_grammarComponentDefinition, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("grammarModelBuilder.galgas", 38)) ;
@@ -4821,7 +4855,7 @@ void cParser_grammarModelBuilder::rule_grammarModelBuilder_grammar_5F_component_
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_root) COMMA_SOURCE_FILE ("grammarModelBuilder.galgas", 67)) ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_ruleReference) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_ruleReference, "") ;
   ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
   ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_non_5F_terminal_5F_symbol) COMMA_SOURCE_FILE ("grammarModelBuilder.galgas", 69)) ;
@@ -4907,7 +4941,7 @@ void cParser_grammarModelBuilder::rule_grammarModelBuilder_grammar_5F_component_
     break ;
   }
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_grammar) COMMA_SOURCE_FILE ("grammarModelBuilder.galgas", 37)) ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_grammarComponentDefinition) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_grammarComponentDefinition, "") ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("grammarModelBuilder.galgas", 38)) ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("grammarModelBuilder.galgas", 39)) ;
   switch (select_grammarModelBuilder_1 (inCompiler)) {
@@ -4935,7 +4969,7 @@ void cParser_grammarModelBuilder::rule_grammarModelBuilder_grammar_5F_component_
     }
   }
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_root) COMMA_SOURCE_FILE ("grammarModelBuilder.galgas", 67)) ;
-  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_ruleReference) ;
+  inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_ruleReference, "") ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_non_5F_terminal_5F_symbol) COMMA_SOURCE_FILE ("grammarModelBuilder.galgas", 69)) ;
   nt_grammar_5F_start_5F_symbol_5F_label_indexing (inCompiler) ;
   bool repeatFlag_1 = true ;
@@ -7927,7 +7961,7 @@ void cParser_programModelBuilder::rule_programModelBuilder_program_5F_component_
         ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
         inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_with) COMMA_SOURCE_FILE ("programModelBuilder.galgas", 84)) ;
         var_indexingGrammar = inCompiler->synthetizedAttribute_tokenString () ;
-        inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_grammarComponentReference) ;
+        inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_grammarComponentReference, "") ;
         ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
         ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
         inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("programModelBuilder.galgas", 85)) ;
@@ -8091,7 +8125,7 @@ void cParser_programModelBuilder::rule_programModelBuilder_program_5F_component_
         ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
         ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
         inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_with) COMMA_SOURCE_FILE ("programModelBuilder.galgas", 84)) ;
-        inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_grammarComponentReference) ;
+        inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_grammarComponentReference, "") ;
         ioSyntaxDirectedTranslationResult << inCompiler->preceedingSeparatorString () ;
         ioSyntaxDirectedTranslationResult << inCompiler->tokenString () ;
         inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("programModelBuilder.galgas", 85)) ;
@@ -8197,7 +8231,7 @@ void cParser_programModelBuilder::rule_programModelBuilder_program_5F_component_
       case 2: {
         inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_indexing) COMMA_SOURCE_FILE ("programModelBuilder.galgas", 83)) ;
         inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_with) COMMA_SOURCE_FILE ("programModelBuilder.galgas", 84)) ;
-        inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_grammarComponentReference) ;
+        inCompiler->enterIndexing (C_Lexique_galgas_5F_scanner::kIndexing_grammarComponentReference, "") ;
         inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) COMMA_SOURCE_FILE ("programModelBuilder.galgas", 85)) ;
       } break ;
       default:

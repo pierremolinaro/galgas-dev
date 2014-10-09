@@ -290,13 +290,19 @@ rule <syntax_instruction>
 :
   $terminal$ ??@lstring terminalName indexing terminalReference ;
   <actual_input_parameter_list> ??@actualInputParameterListAST actualInputParameterList ;
-  @lstringlist indexNameList [emptyList] ;
+  @2lstringlist indexNameList [emptyList] ;
   select
   or
     $indexing$ ;
     repeat
       $identifier$ ??@lstring indexName indexing indexingNameReference ;
-      indexNameList += !indexName ;
+      @lstring postfixName ;
+      select
+        postfixName := ["" nowhere] ;
+      or
+        $literal_string$ ?postfixName ;
+      end select ;
+      indexNameList += !indexName !postfixName ;
     while
       $,$ ;
     end repeat ;
