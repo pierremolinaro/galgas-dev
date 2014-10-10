@@ -302,7 +302,7 @@ routine buildGrammarComponentMapForSemanticAnalysis
       foreach mFormalArgumentList do
         formalArgumentList +=
           !mFormalSelector
-          ![@unifiedTypeMapProxy searchKey !ioSemanticContext->mTypeMap !mFormalArgumentTypeName]
+          ![@unifiedTypeMap-proxy searchKey !ioSemanticContext->mTypeMap !mFormalArgumentTypeName]
           !mFormalArgumentPassingMode
           !mFormalArgumentName->string
         ;

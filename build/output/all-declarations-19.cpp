@@ -8415,7 +8415,7 @@ C_PrologueEpilogue gMethod_semanticExpressionAST_analyzeSemanticExpression (NULL
 //---------------------------------------------------------------------------------------------------------------------*
 
 void callCategoryMethod_analyzeSemanticExpression (const cPtr_semanticExpressionAST * inObject,
-                                                   const GALGAS_unifiedTypeMapProxy constin_inType,
+                                                   const GALGAS_unifiedTypeMap_2D_proxy constin_inType,
                                                    const GALGAS_analysisContext constin_inAnalysisContext,
                                                    GALGAS_variableMap & io_ioVariableMap,
                                                    GALGAS_semanticExpressionForGeneration & out_outExpression,
@@ -8480,7 +8480,7 @@ C_PrologueEpilogue gMethod_abstractCollectionValueElement_analyze (NULL,
 
 void callCategoryMethod_analyze (const cPtr_abstractCollectionValueElement * inObject,
                                  const GALGAS_analysisContext constin_inAnalysisContext,
-                                 const GALGAS_unifiedTypeMapProxy constin_inElementType,
+                                 const GALGAS_unifiedTypeMap_2D_proxy constin_inElementType,
                                  GALGAS_variableMap & io_ioVariableMap,
                                  GALGAS_collectionValueElementListForGeneration & io_ioCollectionValueElementListForGeneration,
                                  C_Compiler * inCompiler
@@ -8606,7 +8606,7 @@ C_PrologueEpilogue gMethod_actualParameterAST_checkAgainstFormalArgument (NULL,
 void callCategoryMethod_checkAgainstFormalArgument (const cPtr_actualParameterAST * inObject,
                                                     const GALGAS_analysisContext constin_inAnalysisContext,
                                                     const GALGAS_lstring constin_inFormalSelector,
-                                                    const GALGAS_unifiedTypeMapProxy constin_inFormalArgumentType,
+                                                    const GALGAS_unifiedTypeMap_2D_proxy constin_inFormalArgumentType,
                                                     const GALGAS_formalArgumentPassingModeAST constin_inFormalArgumentPassingMode,
                                                     GALGAS_variableMap & io_ioVariableMap,
                                                     GALGAS_actualParameterListForGeneration & io_ioActualParameterListForGeneration,
@@ -9158,7 +9158,7 @@ C_PrologueEpilogue gMethod_abstractCollectionValueElementForGeneration_generateC
 //---------------------------------------------------------------------------------------------------------------------*
 
 void callCategoryMethod_generateCollectionElementCode (const cPtr_abstractCollectionValueElementForGeneration * inObject,
-                                                       const GALGAS_unifiedTypeMapProxy constin_inTargetType,
+                                                       const GALGAS_unifiedTypeMap_2D_proxy constin_inTargetType,
                                                        GALGAS_string & io_ioGeneratedCode,
                                                        GALGAS_stringset & io_ioInclusionSet,
                                                        GALGAS_uint & io_ioTemporaryVariableIndex,

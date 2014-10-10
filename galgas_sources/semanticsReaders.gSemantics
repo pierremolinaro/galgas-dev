@@ -29,8 +29,8 @@ routine enterBaseFinalReaderWithoutArgument
   ??@string inReturnedTypeName
   ??@bool inHasLexiqueAndLocationArguments
 :
-  @unifiedTypeMapProxy returnedTypeIndex ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
+  @unifiedTypeMap-proxy returnedTypeIndex ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
     ![@methodKind definedAsMember]
@@ -52,8 +52,8 @@ routine enterInheritedReaderWithoutArgument
   ??@string inReturnedTypeName
   ??@bool inHasLexiqueAndLocationArguments
 :
-  @unifiedTypeMapProxy returnedTypeIndex ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
+  @unifiedTypeMap-proxy returnedTypeIndex ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
     ![@methodKind definedAsMember]
@@ -77,11 +77,11 @@ routine enterInheritedReaderWithArgument
   ??@string inReturnedTypeName
   ??@bool inHasLexiqueAndLocationArguments
 :
-  @unifiedTypeMapProxy returnedTypeIndex ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
+  @unifiedTypeMap-proxy returnedTypeIndex ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
   @functionSignature argList [emptyList] ;
-  @unifiedTypeMapProxy t ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
+  @unifiedTypeMap-proxy t ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
   argList += !["" nowhere] !t !inArgument1Name ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
@@ -108,13 +108,13 @@ routine enterInheritedReaderWith2Arguments
   ??@string inReturnedTypeName
   ??@bool inHasLexiqueAndLocationArguments
 :
-  @unifiedTypeMapProxy returnedTypeIndex ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
+  @unifiedTypeMap-proxy returnedTypeIndex ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
   @functionSignature argList [emptyList] ;
-  @unifiedTypeMapProxy t ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
+  @unifiedTypeMap-proxy t ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
   argList += !["" nowhere] !t !inArgument1Name ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t] ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t] ;
   argList += !["" nowhere] !t !inArgument2Name ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
@@ -137,8 +137,8 @@ routine enterBaseReaderWithoutArgument
   ??@string inReturnedTypeName
   ??@bool inHasLexiqueAndLocationArguments
 :
-  @unifiedTypeMapProxy returnedTypeIndex ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
+  @unifiedTypeMap-proxy returnedTypeIndex ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
     ![@methodKind definedAsMember]
@@ -162,11 +162,11 @@ routine enterBaseReaderWithArgument
   ??@string inReturnedTypeName
   ??@bool inHasLexiqueAndLocationArguments
 :
-  @unifiedTypeMapProxy returnedTypeIndex ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
+  @unifiedTypeMap-proxy returnedTypeIndex ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
   @functionSignature argList := {} ;
-  @unifiedTypeMapProxy t ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
+  @unifiedTypeMap-proxy t ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
   argList += !["" nowhere] !t !inArgument1Name ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
@@ -192,11 +192,11 @@ routine enterBaseReaderWithArgumentAndMessage
   ??@bool inHasLexiqueAndLocationArguments
   ??@string inMessage
 :
-  @unifiedTypeMapProxy returnedTypeIndex ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
+  @unifiedTypeMap-proxy returnedTypeIndex ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
   @functionSignature argList := {} ;
-  @unifiedTypeMapProxy t ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
+  @unifiedTypeMap-proxy t ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
   argList += !["" nowhere] !t !inArgument1Name ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
@@ -221,11 +221,11 @@ routine enterBaseFinalReaderWithArgument
   ??@string inReturnedTypeName
   ??@bool inHasLexiqueAndLocationArguments
 :
-  @unifiedTypeMapProxy returnedTypeIndex ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
+  @unifiedTypeMap-proxy returnedTypeIndex ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
   @functionSignature argList := {} ;
-  @unifiedTypeMapProxy t ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
+  @unifiedTypeMap-proxy t ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
   argList += !["" nowhere] !t !inArgument1Name ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
@@ -252,13 +252,13 @@ routine enterBaseReaderWith2Arguments
   ??@string inReturnedTypeName
   ??@bool inHasLexiqueAndLocationArguments
 :
-  @unifiedTypeMapProxy returnedTypeIndex ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
+  @unifiedTypeMap-proxy returnedTypeIndex ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
   @functionSignature argList := {} ;
-  @unifiedTypeMapProxy t ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
+  @unifiedTypeMap-proxy t ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
   argList += !["" nowhere] !t !inArgument1Name ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t] ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t] ;
   argList += !["" nowhere] !t !inArgument2Name ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
@@ -286,13 +286,13 @@ routine enterBaseReaderWith2ArgumentsAndMessage
   ??@bool inHasLexiqueAndLocationArguments
   ??@string inMessage
 :
-  @unifiedTypeMapProxy returnedTypeIndex ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
+  @unifiedTypeMap-proxy returnedTypeIndex ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
   @functionSignature argList := {} ;
-  @unifiedTypeMapProxy t ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
+  @unifiedTypeMap-proxy t ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
   argList += !["" nowhere] !t !inArgument1Name ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t] ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t] ;
   argList += !["" nowhere] !t !inArgument2Name ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
@@ -319,13 +319,13 @@ routine enterBaseFinalReaderWith2Arguments
   ??@string inReturnedTypeName
   ??@bool inHasLexiqueAndLocationArguments
 :
-  @unifiedTypeMapProxy returnedTypeIndex ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
+  @unifiedTypeMap-proxy returnedTypeIndex ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
   @functionSignature argList := {} ;
-  @unifiedTypeMapProxy t ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
+  @unifiedTypeMap-proxy t ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
   argList += !["" nowhere] !t !inArgument1Name ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t] ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t] ;
   argList += !["" nowhere] !t !inArgument2Name ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
@@ -354,15 +354,15 @@ routine enterBaseReaderWith3Arguments
   ??@string inReturnedTypeName
   ??@bool inHasLexiqueAndLocationArguments
 :
-  @unifiedTypeMapProxy returnedTypeIndex ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
+  @unifiedTypeMap-proxy returnedTypeIndex ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
   @functionSignature argList := {} ;
-  @unifiedTypeMapProxy t ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
+  @unifiedTypeMap-proxy t ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
   argList += !["" nowhere] !t !inArgument1Name ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t] ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t] ;
   argList += !["" nowhere] !t !inArgument2Name ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument3TypeName ?t] ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument3TypeName ?t] ;
   argList += !["" nowhere] !t !inArgument3Name ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
@@ -391,15 +391,15 @@ routine enterBaseFinalReaderWith3Arguments
   ??@string inReturnedTypeName
   ??@bool inHasLexiqueAndLocationArguments
 :
-  @unifiedTypeMapProxy returnedTypeIndex ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
+  @unifiedTypeMap-proxy returnedTypeIndex ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
   @functionSignature argList := {} ;
-  @unifiedTypeMapProxy t ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
+  @unifiedTypeMap-proxy t ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
   argList += !["" nowhere] !t !inArgument1Name ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t] ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t] ;
   argList += !["" nowhere] !t !inArgument2Name ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument3TypeName ?t] ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument3TypeName ?t] ;
   argList += !["" nowhere] !t !inArgument3Name ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]

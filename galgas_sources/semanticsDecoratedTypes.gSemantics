@@ -61,7 +61,7 @@ list @templateInstructionListForGeneration {
 #---------------------------------------------------------------------------*
 
 abstract class @semanticExpressionForGeneration {
-  @unifiedTypeMapProxy mResultType ;
+  @unifiedTypeMap-proxy mResultType ;
   @location mLocation ;
 }
 
@@ -152,7 +152,7 @@ class @defaultConstructorExpressionForGeneration extends @semanticExpressionForG
 #---------------------------------------------------------------------------*
 
 class @constructorExpressionForGeneration extends @semanticExpressionForGeneration {
-  @unifiedTypeMapProxy mConstructorType ;
+  @unifiedTypeMap-proxy mConstructorType ;
   @string mConstructorName ;
   @semanticExpressionListForGeneration mEffectiveParameterList ;
   @bool mHasCompilerArgument ;
@@ -291,7 +291,7 @@ class @castInExpressionForGeneration extends @semanticExpressionForGeneration {
 class @testDynamicClassInExpressionForGeneration extends @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mReceiverExpression ;
   @dynamicTypeComparisonKind mTypeComparisonKind ;
-  @unifiedTypeMapProxy mCastType ;
+  @unifiedTypeMap-proxy mCastType ;
 }
 
 #---------------------------------------------------------------------------*
@@ -340,7 +340,7 @@ class @lexiqueIntrospectionForGeneration extends @semanticExpressionForGeneratio
 list @formalParameterListForGeneration {
   @lstring mFormalSelector ;
   @formalArgumentPassingModeAST mFormalArgumentPassingMode ;
-  @unifiedTypeMapProxy mFormalArgumentType ;
+  @unifiedTypeMap-proxy mFormalArgumentType ;
   @lstring mFormalArgumentName ;
   @string mFormalArgumentCppName ;
 }
@@ -353,7 +353,7 @@ list @formalParameterListForGeneration {
 
 list @formalInputParameterListForGeneration {
   @lstring mFormalSelector ;
-  @unifiedTypeMapProxy mFormalArgumentType ;
+  @unifiedTypeMap-proxy mFormalArgumentType ;
   @string mFormalArgumentCppName ;
   @lstring mFormalArgumentName ;
   @bool mIsConstant ;
@@ -366,7 +366,7 @@ list @formalInputParameterListForGeneration {
 #---------------------------------------------------------------------------*
 
 abstract class @actualParameterForGeneration {
-  @unifiedTypeMapProxy mFormalArgumentType ;
+  @unifiedTypeMap-proxy mFormalArgumentType ;
 }
 
 #---------------------------------------------------------------------------*
@@ -491,7 +491,7 @@ sortedlist @semanticDeclarationSortedListForGeneration {
 #---------------------------------------------------------------------------*
 
 abstract class @semanticTypeForGeneration extends @semanticDeclarationForGeneration {
-  @unifiedTypeMapProxy mTypeProxy ;
+  @unifiedTypeMap-proxy mTypeProxy ;
 }
 
 #---------------------------------------------------------------------------*
@@ -586,7 +586,7 @@ list @signatureForGrammarAnalysis {
 #  Ajouter cet argument ; ceci permettrait de supprimer l'argument
 #     ??@unifiedTypeMap inUnifiedTypeMap
 # des méthodes appendSpecificImplementation de generation
-#  @unifiedTypeMapProxy mArgumentType ;
+#  @unifiedTypeMap-proxy mArgumentType ;
 }
 
 #---------------------------------------------------------------------------*
@@ -669,7 +669,7 @@ class @routineImplementationForGeneration extends @routinePrototypeDeclarationFo
 class @functionPrototypeDeclarationForGeneration extends @semanticDeclarationWithHeaderForGeneration {
   @string mFunctionName ;
   @formalInputParameterListForGeneration mFormalArgumentList ;
-  @unifiedTypeMapProxy mReturnType ;
+  @unifiedTypeMap-proxy mReturnType ;
 }
 
 #---------------------------------------------------------------------------*
@@ -691,7 +691,7 @@ class @functionImplementationForGeneration extends @functionPrototypeDeclaration
 
 class @onceFunctionDeclarationForGeneration extends @semanticDeclarationWithHeaderForGeneration {
   @string mFunctionName ;
-  @unifiedTypeMapProxy mReturnType ;
+  @unifiedTypeMap-proxy mReturnType ;
   @string mResultVariableCppName ;
   @semanticInstructionListForGeneration mFunctionInstructionList ;
 }
@@ -703,14 +703,14 @@ class @onceFunctionDeclarationForGeneration extends @semanticDeclarationWithHead
 #---------------------------------------------------------------------------*
 
 class @localVariableDeclarationForGeneration extends @semanticInstructionForGeneration {
-  @unifiedTypeMapProxy mVariableType ;
+  @unifiedTypeMap-proxy mVariableType ;
   @string mCppVariableName ;
 }
 
 #---------------------------------------------------------------------------*
 
 class @localVariableOrConstantDeclarationWithSourceExpressionForGeneration extends @semanticInstructionForGeneration {
-  @unifiedTypeMapProxy mTargetType ;
+  @unifiedTypeMap-proxy mTargetType ;
   @bool mIsConstant ;
   @string mCppVariableName ;
   @semanticExpressionForGeneration mSourceExpression ;
@@ -720,7 +720,7 @@ class @localVariableOrConstantDeclarationWithSourceExpressionForGeneration exten
 
 class @localVariableOrConstantDeclarationWithDefaultConstructorForGeneration extends @semanticInstructionForGeneration {
   @location mInstructionLocation ;
-  @unifiedTypeMapProxy mTargetType ;
+  @unifiedTypeMap-proxy mTargetType ;
   @bool mIsConstant ;
   @string mTargetVariableCppName ;
 }
@@ -729,7 +729,7 @@ class @localVariableOrConstantDeclarationWithDefaultConstructorForGeneration ext
 
 class @localVariableOrConstantDeclarationWithConstructorCallForGeneration extends @semanticInstructionForGeneration {
   @location mInstructionLocation ;
-  @unifiedTypeMapProxy mTargetType ;
+  @unifiedTypeMap-proxy mTargetType ;
   @bool mIsConstant ;
   @string mTargetVariableCppName ;
   @string mConstructorName ;
@@ -744,7 +744,7 @@ class @localVariableOrConstantDeclarationWithConstructorCallForGeneration extend
 #---------------------------------------------------------------------------*
 
 class @assignmentInstructionForGeneration extends @semanticInstructionForGeneration {
-  @unifiedTypeMapProxy mTargetType ;
+  @unifiedTypeMap-proxy mTargetType ;
   @string mTargetCppName ;
   @string mNameForCheckingFormalParameterUsing ;
   @lstringlist mStructAttributeList ;
@@ -773,7 +773,7 @@ class @dropInstructionForGeneration extends @semanticInstructionForGeneration {
 
 class @concatInstructionForGeneration extends @semanticInstructionForGeneration {
   @location mInstructionLocation ;
-  @unifiedTypeMapProxy mTargetType ;
+  @unifiedTypeMap-proxy mTargetType ;
   @string mTargetVariableCppName ;
   @string mNameForCheckingFormalParameterUsing ;
   @lstringlist mStructAttributeList ;
@@ -877,13 +877,13 @@ class @typeMethodInstructionForGeneration extends @semanticInstructionForGenerat
 
 class @methodCallInstructionForGeneration extends @semanticInstructionForGeneration {
   @location mInstructionLocation ;
-  @unifiedTypeMapProxy mReceiverType ;
+  @unifiedTypeMap-proxy mReceiverType ;
   @semanticExpressionForGeneration mReceiverExpression ;
   @string mMethodName ;
   @methodKind mKind ;
   @actualParameterListForGeneration mActualParameterList ;
   @bool mHasCompilerArgument ;
-  @unifiedTypeMapProxy mMethodBaseType ;
+  @unifiedTypeMap-proxy mMethodBaseType ;
 }
 
 #---------------------------------------------------------------------------*
@@ -896,12 +896,12 @@ class @modifierCallInstructionForGeneration extends @semanticInstructionForGener
   @string mReceiverCppName ;
   @string mReceiverBaseName ;
   @lstringlist mReceiverStructAttributes ;
-  @unifiedTypeMapProxy mReceiverType ;
+  @unifiedTypeMap-proxy mReceiverType ;
   @lstring mModifierName ;
   @methodKind mKind ;
   @actualParameterListForGeneration mActualParameterList ;
   @bool mHasCompilerArgument ;
-  @unifiedTypeMapProxy mMethodBaseType ;
+  @unifiedTypeMap-proxy mMethodBaseType ;
 }
 
 #---------------------------------------------------------------------------*
@@ -912,7 +912,7 @@ class @modifierCallInstructionForGeneration extends @semanticInstructionForGener
 
 class @selfModifierCallInstructionForGeneration extends @semanticInstructionForGeneration {
   @string mSelfCppName ;
-  @unifiedTypeMapProxy mReceiverType ;
+  @unifiedTypeMap-proxy mReceiverType ;
   @lstring mModifierName ;
   @methodKind mKind ;
   @actualParameterListForGeneration mActualParameterList ;
@@ -927,7 +927,7 @@ class @selfModifierCallInstructionForGeneration extends @semanticInstructionForG
 
 list @castInstructionBranchListForGeneration {
   @dynamicTypeComparisonKind mTypeComparisonKind ;
-  @unifiedTypeMapProxy mType ;
+  @unifiedTypeMap-proxy mType ;
   @string mCastedVarCppName ; # Empty string if no var
   @semanticInstructionListForGeneration mInstructionList ;
 }
@@ -948,7 +948,7 @@ class @structuredCastInstructionForGeneration extends @semanticInstructionForGen
 
 class @plusEqualnstructionForGeneration extends @semanticInstructionForGeneration {
   @string mReceiverCppName ;
-  @unifiedTypeMapProxy mTargetType ;
+  @unifiedTypeMap-proxy mTargetType ;
   @string mNameForCheckingFormalParameterUsing ;
   @location mInstructionLocation ;
   @lstringlist mStructAttributeList ;
@@ -964,7 +964,7 @@ class @plusEqualnstructionForGeneration extends @semanticInstructionForGeneratio
 class @incrementInstructionForGeneration extends @semanticInstructionForGeneration {
   @location mInstructionLocation ;
   @string mReceiverCppName ;
-  @unifiedTypeMapProxy mReceiverType ;
+  @unifiedTypeMap-proxy mReceiverType ;
   @lstringlist mStructAttributeList ;
 }
 
@@ -977,7 +977,7 @@ class @incrementInstructionForGeneration extends @semanticInstructionForGenerati
 class @decrementInstructionForGeneration extends @semanticInstructionForGeneration {
   @location mInstructionLocation ;
   @string mReceiverCppName ;
-  @unifiedTypeMapProxy mReceiverType ;
+  @unifiedTypeMap-proxy mReceiverType ;
   @lstringlist mStructAttributeList ;
 }
 
@@ -1056,7 +1056,7 @@ class @grammarInstructionWithSourceExpressionForGeneration extends @semanticInst
 class @readWriteWithInstructionForGeneration extends @semanticInstructionForGeneration {
   @location mInstructionLocation ;
   @string mReceiverVariableCppName ;
-  @unifiedTypeMapProxy mReceiverType ;
+  @unifiedTypeMap-proxy mReceiverType ;
   @lstringlist mStructAttributeList ;
   @string mObjectArrayCppName ;
   @semanticExpressionForGeneration mKeyExpression ;
@@ -1203,7 +1203,7 @@ class @syntaxSendInstructionForGeneration extends @syntaxInstructionForGeneratio
 #---------------------------------------------------------------------------*
 
 list @extractedAssociatedValuesForGeneration {
-  @unifiedTypeMapProxy mType ;
+  @unifiedTypeMap-proxy mType ;
   @string mCppName ;
 }
 
@@ -1219,7 +1219,7 @@ list @switchBranchesForGeneration {
 #---------------------------------------------------------------------------*
 
 class @switchInstructionForGeneration extends @semanticInstructionForGeneration {
-  @unifiedTypeMapProxy mEnumType ;
+  @unifiedTypeMap-proxy mEnumType ;
   @semanticExpressionForGeneration mSwitchExpression ;
   @switchBranchesForGeneration mBranches ;
 }
@@ -1295,7 +1295,7 @@ list @mapOverrideList {
 #---------------------------------------------------------------------------*
 
 class @mapTypeForGeneration extends @semanticTypeForGeneration {
-  @unifiedTypeMapProxy mElementTypeProxy ;
+  @unifiedTypeMap-proxy mElementTypeProxy ;
   @lstring mMapTypeName ;
   @typedAttributeList mTypedAttributeList ;
   @insertMethodListAST mInsertMethodList ;
@@ -1326,7 +1326,7 @@ class @uniqueMapTypeForGeneration extends @semanticTypeForGeneration {
 #---------------------------------------------------------------------------*
 
 class @arrayTypeForGeneration extends @semanticTypeForGeneration {
-  @unifiedTypeMapProxy mElementTypeProxy ;
+  @unifiedTypeMap-proxy mElementTypeProxy ;
   @uint mDimension ;
 }
 
@@ -1337,7 +1337,7 @@ class @arrayTypeForGeneration extends @semanticTypeForGeneration {
 #---------------------------------------------------------------------------*
 
 class @mapProxyTypeForGeneration extends @semanticTypeForGeneration {
-  @unifiedTypeMapProxy mAssociatedMapTypeProxy ;
+  @unifiedTypeMap-proxy mAssociatedMapTypeProxy ;
   @typedAttributeList mAssociatedMapTypedAttributeList ;
   @mapSearchMethodListAST mSearchMethodList ;
 }
@@ -1368,7 +1368,7 @@ list @methodDefinitionListForGeneration {
 class @classTypeForGeneration extends @semanticTypeForGeneration {
   @bool mIsAbstract ;
   @lstring mClassTypeName ;
-  @unifiedTypeMapProxy mSuperClass ; # Null if no super class
+  @unifiedTypeMap-proxy mSuperClass ; # Null if no super class
   @typedAttributeList mAllTypedAttributeList ; # Inherited followed by current attributes
   @typedAttributeList mTypedAttributeList ;
   @bool mGenerateHeaderInSeparateFile ; # Significant only for classes
@@ -1381,9 +1381,9 @@ class @classTypeForGeneration extends @semanticTypeForGeneration {
 #---------------------------------------------------------------------------*
 
 class @listmapTypeForGeneration extends @semanticTypeForGeneration {
-  @unifiedTypeMapProxy mAssociatedListTypeIndex ;
+  @unifiedTypeMap-proxy mAssociatedListTypeIndex ;
   @typedAttributeList mAssociatedListTypedAttributeList ;
-  @unifiedTypeMapProxy mAssociatedListMapElementTypeIndex ;
+  @unifiedTypeMap-proxy mAssociatedListMapElementTypeIndex ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1404,7 +1404,7 @@ class @primitiveTypeForGeneration extends @semanticTypeForGeneration {
 #---------------------------------------------------------------------------*
 
 class @listTypeForGeneration extends @semanticTypeForGeneration {
-  @unifiedTypeMapProxy mListElementTypeIndex ;
+  @unifiedTypeMap-proxy mListElementTypeIndex ;
   @typedAttributeList mTypedAttributeList ;
 }
 
@@ -1425,7 +1425,7 @@ class @structTypeForGeneration extends @semanticTypeForGeneration {
 #---------------------------------------------------------------------------*
 
 list @sortDescriptorListForGeneration {
-  @unifiedTypeMapProxy mAttributeTypeIndex ;
+  @unifiedTypeMap-proxy mAttributeTypeIndex ;
   @string mAttributeName ;
   @bool mAscendingOrder ;
 }
@@ -1433,7 +1433,7 @@ list @sortDescriptorListForGeneration {
 #---------------------------------------------------------------------------*
 
 class @sortedListTypeForGeneration extends @semanticTypeForGeneration {
-  @unifiedTypeMapProxy mListElementTypeIndex ;
+  @unifiedTypeMap-proxy mListElementTypeIndex ;
   @typedAttributeList mTypedAttributeList ;
   @sortDescriptorListForGeneration mSortDescriptorList ;
 }
@@ -1462,8 +1462,8 @@ class @enumTypeForGeneration extends @semanticTypeForGeneration {
 #---------------------------------------------------------------------------*
 
 class @graphDeclarationForGeneration extends @semanticTypeForGeneration {
-  @unifiedTypeMapProxy mAssociatedListTypeProxy ;
-  @unifiedTypeMapProxy mAssociatedListElementTypeProxy ;
+  @unifiedTypeMap-proxy mAssociatedListTypeProxy ;
+  @unifiedTypeMap-proxy mAssociatedListElementTypeProxy ;
   @graphInsertModifierList mInsertModifierList ;
 }
 
@@ -1486,7 +1486,7 @@ class @externTypeDeclarationForGeneration extends @semanticTypeForGeneration {
 #---------------------------------------------------------------------------*
 
 class @abstractCategoryMethodForGeneration extends @semanticDeclarationWithHeaderForGeneration {
-  @unifiedTypeMapProxy mReceiverType ;
+  @unifiedTypeMap-proxy mReceiverType ;
   @string mAbstractCategoryMethodName ;
   @formalParameterListForGeneration mAbstractCategoryMethodFormalParameterList ;
 }
@@ -1498,7 +1498,7 @@ class @abstractCategoryMethodForGeneration extends @semanticDeclarationWithHeade
 #---------------------------------------------------------------------------*
 
 class @categoryMethodForGeneration extends @semanticDeclarationWithHeaderForGeneration {
-  @unifiedTypeMapProxy mReceiverType ;
+  @unifiedTypeMap-proxy mReceiverType ;
   @string mCategoryMethodName ;
   @bool mImplementedAsFunction ;
   @formalParameterListForGeneration mCategoryMethodFormalParameterList ;
@@ -1513,7 +1513,7 @@ class @categoryMethodForGeneration extends @semanticDeclarationWithHeaderForGene
 #---------------------------------------------------------------------------*
 
 class @overridingCategoryMethodForGeneration extends @semanticDeclarationWithHeaderForGeneration {
-  @unifiedTypeMapProxy mReceiverType ;
+  @unifiedTypeMap-proxy mReceiverType ;
   @string mBaseTypeName ;
   @string mCategoryMethodName ;
   @formalParameterListForGeneration mCategoryMethodFormalParameterList ;
@@ -1528,7 +1528,7 @@ class @overridingCategoryMethodForGeneration extends @semanticDeclarationWithHea
 #---------------------------------------------------------------------------*
 
 class @abstractCategoryModifierForGeneration extends @semanticDeclarationWithHeaderForGeneration {
-  @unifiedTypeMapProxy mReceiverType ;
+  @unifiedTypeMap-proxy mReceiverType ;
   @string mAbstractCategoryModifierName ;
   @formalParameterListForGeneration mAbstractCategoryModifierFormalParameterList ;
 }
@@ -1540,7 +1540,7 @@ class @abstractCategoryModifierForGeneration extends @semanticDeclarationWithHea
 #---------------------------------------------------------------------------*
 
 class @categoryModifierForGeneration extends @semanticDeclarationWithHeaderForGeneration {
-  @unifiedTypeMapProxy mReceiverType ;
+  @unifiedTypeMap-proxy mReceiverType ;
   @string mCategoryModifierName ;
   @bool mImplementedAsFunction ;
   @formalParameterListForGeneration mCategoryModifierFormalParameterList ;
@@ -1555,7 +1555,7 @@ class @categoryModifierForGeneration extends @semanticDeclarationWithHeaderForGe
 #---------------------------------------------------------------------------*
 
 class @overridingCategoryModifierForGeneration extends @semanticDeclarationWithHeaderForGeneration {
-  @unifiedTypeMapProxy mReceiverType ;
+  @unifiedTypeMap-proxy mReceiverType ;
   @string mBaseTypeName ;
   @string mCategoryModifierName ;
   @formalParameterListForGeneration mCategoryModifierFormalParameterList ;
@@ -1570,9 +1570,9 @@ class @overridingCategoryModifierForGeneration extends @semanticDeclarationWithH
 #---------------------------------------------------------------------------*
 
 class @abstractCategoryReaderForGeneration extends @semanticDeclarationWithHeaderForGeneration {
-  @unifiedTypeMapProxy mReceiverType ;
+  @unifiedTypeMap-proxy mReceiverType ;
   @string mAbstractCategoryReaderName ;
-  @unifiedTypeMapProxy mResultType ;
+  @unifiedTypeMap-proxy mResultType ;
   @formalInputParameterListForGeneration mAbstractCategoryReaderFormalParameterList ;
 }
 
@@ -1583,10 +1583,10 @@ class @abstractCategoryReaderForGeneration extends @semanticDeclarationWithHeade
 #---------------------------------------------------------------------------*
 
 class @categoryReaderForGeneration extends @semanticDeclarationWithHeaderForGeneration {
-  @unifiedTypeMapProxy mReceiverType ;
+  @unifiedTypeMap-proxy mReceiverType ;
   @string mCategoryReaderName ;
   @bool mImplementedAsFunction ;
-  @unifiedTypeMapProxy mResultType ;
+  @unifiedTypeMap-proxy mResultType ;
   @string mResultVarCppName ;
   @formalInputParameterListForGeneration mCategoryReaderFormalParameterList ;
   @typedAttributeList mTypedAttributeList ;
@@ -1600,10 +1600,10 @@ class @categoryReaderForGeneration extends @semanticDeclarationWithHeaderForGene
 #---------------------------------------------------------------------------*
 
 class @overrideCategoryReaderForGeneration extends @semanticDeclarationWithHeaderForGeneration {
-  @unifiedTypeMapProxy mReceiverType ;
+  @unifiedTypeMap-proxy mReceiverType ;
   @string mBaseTypeName ;
   @string mOverridingCategoryReaderName ;
-  @unifiedTypeMapProxy mResultType ;
+  @unifiedTypeMap-proxy mResultType ;
   @string mResultVarCppName ;
   @formalInputParameterListForGeneration mOverridingCategoryReaderFormalParameterList ;
   @typedAttributeList mTypedAttributeList ;

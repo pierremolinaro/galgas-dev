@@ -3836,8 +3836,8 @@ AC_GALGAS_class (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_actualParameterForGeneration::reader_mFormalArgumentType (UNUSED_LOCATION_ARGS) const {
-  GALGAS_unifiedTypeMapProxy result ;
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_actualParameterForGeneration::reader_mFormalArgumentType (UNUSED_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != mObjectPtr) {
     const cPtr_actualParameterForGeneration * p = (const cPtr_actualParameterForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_actualParameterForGeneration) ;
@@ -3848,7 +3848,7 @@ GALGAS_unifiedTypeMapProxy GALGAS_actualParameterForGeneration::reader_mFormalAr
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy cPtr_actualParameterForGeneration::reader_mFormalArgumentType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy cPtr_actualParameterForGeneration::reader_mFormalArgumentType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFormalArgumentType ;
 }
 
@@ -3856,7 +3856,7 @@ GALGAS_unifiedTypeMapProxy cPtr_actualParameterForGeneration::reader_mFormalArgu
 //                                Pointer class for @actualParameterForGeneration class                                *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_actualParameterForGeneration::cPtr_actualParameterForGeneration (const GALGAS_unifiedTypeMapProxy & in_mFormalArgumentType
+cPtr_actualParameterForGeneration::cPtr_actualParameterForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mFormalArgumentType
                                                                       COMMA_LOCATION_ARGS) :
 acPtr_class (THERE),
 mAttribute_mFormalArgumentType (in_mFormalArgumentType) {
@@ -3951,7 +3951,7 @@ GALGAS_actualParameterForGeneration () {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_inputActualParameterForGeneration GALGAS_inputActualParameterForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_inputActualParameterForGeneration::constructor_new (GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+  return GALGAS_inputActualParameterForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                                     GALGAS_string::constructor_default (HERE)
                                                                     COMMA_THERE) ;
 }
@@ -3965,7 +3965,7 @@ GALGAS_actualParameterForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_inputActualParameterForGeneration GALGAS_inputActualParameterForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mFormalArgumentType,
+GALGAS_inputActualParameterForGeneration GALGAS_inputActualParameterForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mFormalArgumentType,
                                                                                                     const GALGAS_string & inAttribute_mInputActualCppName
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_inputActualParameterForGeneration result ;
@@ -3997,7 +3997,7 @@ GALGAS_string cPtr_inputActualParameterForGeneration::reader_mInputActualCppName
 //                             Pointer class for @inputActualParameterForGeneration class                              *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_inputActualParameterForGeneration::cPtr_inputActualParameterForGeneration (const GALGAS_unifiedTypeMapProxy & in_mFormalArgumentType,
+cPtr_inputActualParameterForGeneration::cPtr_inputActualParameterForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mFormalArgumentType,
                                                                                 const GALGAS_string & in_mInputActualCppName
                                                                                 COMMA_LOCATION_ARGS) :
 cPtr_actualParameterForGeneration (in_mFormalArgumentType COMMA_THERE),
@@ -4116,7 +4116,7 @@ GALGAS_actualParameterForGeneration () {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_inputJokerParameterForGeneration GALGAS_inputJokerParameterForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_inputJokerParameterForGeneration::constructor_new (GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+  return GALGAS_inputJokerParameterForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                                    GALGAS_string::constructor_default (HERE)
                                                                    COMMA_THERE) ;
 }
@@ -4130,7 +4130,7 @@ GALGAS_actualParameterForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_inputJokerParameterForGeneration GALGAS_inputJokerParameterForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mFormalArgumentType,
+GALGAS_inputJokerParameterForGeneration GALGAS_inputJokerParameterForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mFormalArgumentType,
                                                                                                   const GALGAS_string & inAttribute_mInputActualCppName
                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_inputJokerParameterForGeneration result ;
@@ -4162,7 +4162,7 @@ GALGAS_string cPtr_inputJokerParameterForGeneration::reader_mInputActualCppName 
 //                              Pointer class for @inputJokerParameterForGeneration class                              *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_inputJokerParameterForGeneration::cPtr_inputJokerParameterForGeneration (const GALGAS_unifiedTypeMapProxy & in_mFormalArgumentType,
+cPtr_inputJokerParameterForGeneration::cPtr_inputJokerParameterForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mFormalArgumentType,
                                                                               const GALGAS_string & in_mInputActualCppName
                                                                               COMMA_LOCATION_ARGS) :
 cPtr_actualParameterForGeneration (in_mFormalArgumentType COMMA_THERE),
@@ -4287,7 +4287,7 @@ GALGAS_actualParameterForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_outputActualParameterForGeneration GALGAS_outputActualParameterForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mFormalArgumentType,
+GALGAS_outputActualParameterForGeneration GALGAS_outputActualParameterForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mFormalArgumentType,
                                                                                                       const GALGAS_semanticExpressionForGeneration & inAttribute_mOutputActualParameterExpression
                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_outputActualParameterForGeneration result ;
@@ -4319,7 +4319,7 @@ GALGAS_semanticExpressionForGeneration cPtr_outputActualParameterForGeneration::
 //                             Pointer class for @outputActualParameterForGeneration class                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_outputActualParameterForGeneration::cPtr_outputActualParameterForGeneration (const GALGAS_unifiedTypeMapProxy & in_mFormalArgumentType,
+cPtr_outputActualParameterForGeneration::cPtr_outputActualParameterForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mFormalArgumentType,
                                                                                   const GALGAS_semanticExpressionForGeneration & in_mOutputActualParameterExpression
                                                                                   COMMA_LOCATION_ARGS) :
 cPtr_actualParameterForGeneration (in_mFormalArgumentType COMMA_THERE),
@@ -4444,7 +4444,7 @@ GALGAS_actualParameterForGeneration () {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_outputInputActualParameterForGeneration GALGAS_outputInputActualParameterForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_outputInputActualParameterForGeneration::constructor_new (GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+  return GALGAS_outputInputActualParameterForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                                           GALGAS_string::constructor_default (HERE),
                                                                           GALGAS_lstringlist::constructor_emptyList (HERE),
                                                                           GALGAS_unifiedTypeMapProxyList::constructor_emptyList (HERE)
@@ -4460,7 +4460,7 @@ GALGAS_actualParameterForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_outputInputActualParameterForGeneration GALGAS_outputInputActualParameterForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mFormalArgumentType,
+GALGAS_outputInputActualParameterForGeneration GALGAS_outputInputActualParameterForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mFormalArgumentType,
                                                                                                                 const GALGAS_string & inAttribute_mOutputInputVariableCppName,
                                                                                                                 const GALGAS_lstringlist & inAttribute_mStructAttributeList,
                                                                                                                 const GALGAS_unifiedTypeMapProxyList & inAttribute_mTypeList
@@ -4530,7 +4530,7 @@ GALGAS_unifiedTypeMapProxyList cPtr_outputInputActualParameterForGeneration::rea
 //                          Pointer class for @outputInputActualParameterForGeneration class                           *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_outputInputActualParameterForGeneration::cPtr_outputInputActualParameterForGeneration (const GALGAS_unifiedTypeMapProxy & in_mFormalArgumentType,
+cPtr_outputInputActualParameterForGeneration::cPtr_outputInputActualParameterForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mFormalArgumentType,
                                                                                             const GALGAS_string & in_mOutputInputVariableCppName,
                                                                                             const GALGAS_lstringlist & in_mStructAttributeList,
                                                                                             const GALGAS_unifiedTypeMapProxyList & in_mTypeList

@@ -404,9 +404,9 @@ routine compileProgramComponentFromAST
   const analysisContext :=  [@analysisContext new
     !semanticContext
     !buildPredefinedTypes [!semanticContext]
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
     !""
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
   ] ;
 #--- Analyse 'before' instructions
   compileBeforeClause
@@ -526,9 +526,9 @@ routine compileProgramComponentGalgas3
   const analysisContext := [@analysisContext new
     !inSemanticContext
     !buildPredefinedTypes [!inSemanticContext]
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
     !""
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
   ] ;
 #--- Analyse 'before' instructions
   var decoratedDeclarationListForGeneration := [@programListForGeneration emptyList] ;

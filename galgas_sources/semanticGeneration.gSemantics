@@ -59,7 +59,7 @@ override method @grammarForGeneration appendSpecificImplementation
       for () in mFormalParametersList do
         switch mFormalArgumentPassingModeForGrammarAnalysis
         when argumentConstantIn, argumentIn :
-          const t := [@unifiedTypeMapProxy searchKey !inUnifiedTypeMap !mGalgasTypeNameForGrammarAnalysis] ;
+          const t := [@unifiedTypeMap-proxy searchKey !inUnifiedTypeMap !mGalgasTypeNameForGrammarAnalysis] ;
           [t addHeaderFileName !?ioInclusionSet] ;
         when argumentInOut, argumentOut :
         end switch ;     
@@ -383,7 +383,7 @@ routine generateFunction
   ??@formalInputParameterListForGeneration inFormalArgumentList
   ??@semanticInstructionListForGeneration inInstructionList
   ??@string inCompilerTypeName
-  ??@unifiedTypeMapProxy inResultType
+  ??@unifiedTypeMap-proxy inResultType
   ??@string inResultVariableCppName
   ??@bool inIsStatic
   !@string outGeneratedCode
@@ -560,7 +560,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 routine generateCategoryMethod
-  ??@unifiedTypeMapProxy inReceiverType
+  ??@unifiedTypeMap-proxy inReceiverType
   ??@string inBaseClassName
   ?!@stringset ioInclusionSet
   ??@string inMethodName
@@ -591,7 +591,7 @@ routine generateCategoryMethod
   end foreach ;
   [!?routineBody decIndentation !2] ;
 #--- Generate inclusions
-  @unifiedTypeMapProxy baseType := inReceiverType ;
+  @unifiedTypeMap-proxy baseType := inReceiverType ;
   @bool searching := true ;
   loop [@uint max] : while searching do
     if not [[baseType mSuperType] isNull] then
@@ -677,7 +677,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 routine generateCategoryReader
-  ??@unifiedTypeMapProxy inReceiverType
+  ??@unifiedTypeMap-proxy inReceiverType
   ??@string inBaseClassName
   ?!@stringset ioInclusionSet
   ??@string inReaderName
@@ -712,7 +712,7 @@ routine generateCategoryReader
   [!?routineBody decIndentation !2] ;
 #--- Generate inclusions
   [inReceiverType addHeaderFileName !?ioInclusionSet] ;
-  @unifiedTypeMapProxy baseType := inReceiverType ;
+  @unifiedTypeMap-proxy baseType := inReceiverType ;
   @bool searching := true ;
   loop [@uint max] : while searching do
     if not [[baseType mSuperType] isNull] then
@@ -823,13 +823,13 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST # Empty List if cannot be enumerated
     ?@uint SUPPORTED_OPERATORS
     ?@functionSignature ADD_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
-    ?@unifiedTypeMapProxy ENUMERATED_OBJECT_TYPE
+    ?@unifiedTypeMap-proxy ENUMERATED_OBJECT_TYPE
   ;
 
   template genericTypeImplementation "generic-type.cpp.gTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
-    ?@unifiedTypeMapProxy SUPER_TYPE_INDEX
+    ?@unifiedTypeMap-proxy SUPER_TYPE_INDEX
     ?@uint SUPPORTED_OPERATORS
   ;
 
@@ -864,9 +864,9 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
   ;
 
   template graphTypeSpecificImplementation "GALGAS_graph.cpp.gTemplate"
-    ?@unifiedTypeMapProxy TYPE
+    ?@unifiedTypeMap-proxy TYPE
     ?@string TYPE_IDENTIFIER
-    ?@unifiedTypeMapProxy ASSOCIATED_LIST_TYPE
+    ?@unifiedTypeMap-proxy ASSOCIATED_LIST_TYPE
     ?@graphInsertModifierList INSERT_MODIFIER_LIST
   ;
 
@@ -1066,35 +1066,35 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
     ?@string CLASS_NAME
     ?@string READER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
-    ?@unifiedTypeMapProxy RETURN_TYPE
+    ?@unifiedTypeMap-proxy RETURN_TYPE
   ;
   
   template abstractCategoryReaderImplementation "abstract-category-reader.cpp.gTemplate"
     ?@string CLASS_NAME
     ?@string READER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
-    ?@unifiedTypeMapProxy RETURN_TYPE
+    ?@unifiedTypeMap-proxy RETURN_TYPE
   ;
   
   template categoryReaderDeclaration "category-reader.h.gTemplate"
     ?@string CLASS_NAME
     ?@string READER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
-    ?@unifiedTypeMapProxy RETURN_TYPE
+    ?@unifiedTypeMap-proxy RETURN_TYPE
   ;
 
   template categoryReaderImplementation "category-reader.cpp.gTemplate"
     ?@string CLASS_NAME
     ?@string READER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
-    ?@unifiedTypeMapProxy RETURN_TYPE
+    ?@unifiedTypeMap-proxy RETURN_TYPE
     ?@string READER_IMPLEMENTATION
   ;
   
   template overridingCategoryReaderImplementation "overriding-category-reader.cpp.gTemplate"
     ?@string CLASS_NAME
     ?@string READER_NAME
-    ?@unifiedTypeMapProxy RETURN_TYPE
+    ?@unifiedTypeMap-proxy RETURN_TYPE
     ?@string READER_IMPLEMENTATION
   ;
   
@@ -1139,7 +1139,7 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
   ;
   
   template abstractCategoryMethodImplementation "abstract-category-method.cpp.gTemplate"
-    ?@unifiedTypeMapProxy RECEIVER_TYPE
+    ?@unifiedTypeMap-proxy RECEIVER_TYPE
     ?@string METHOD_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
   ;
@@ -2265,7 +2265,7 @@ override method @categoryMethodForGeneration appendSpecificImplementation
     for () in mCategoryMethodFormalParameterList do
       [mFormalArgumentType addHeaderFileName !?ioInclusionSet] ;
     end for ;
-    @unifiedTypeMapProxy baseType := mReceiverType ;
+    @unifiedTypeMap-proxy baseType := mReceiverType ;
     @bool searching := true ;
     loop [@uint max] : while searching do
       if not [[baseType mSuperType] isNull] then
@@ -2429,7 +2429,7 @@ override method @categoryModifierForGeneration appendSpecificImplementation
       !code
     ] ; 
   else
-    @unifiedTypeMapProxy baseType := mReceiverType ;
+    @unifiedTypeMap-proxy baseType := mReceiverType ;
     @bool searching := true ;
     loop [@uint max] : while searching do
       if not [[baseType mSuperType] isNull] then
@@ -2484,7 +2484,7 @@ override method @overridingCategoryModifierForGeneration appendSpecificImplement
     !mSemanticInstructionListForGeneration
     ??@string methodImplementation
   ;
-  @unifiedTypeMapProxy baseType := mReceiverType ;
+  @unifiedTypeMap-proxy baseType := mReceiverType ;
   @bool searching := true ;
   loop [@uint max] : while searching do
     if not [[baseType mSuperType] isNull] then
@@ -2620,7 +2620,7 @@ override method @categoryReaderForGeneration appendSpecificImplementation
     for () in mCategoryReaderFormalParameterList do
       [mFormalArgumentType addHeaderFileName !?ioInclusionSet] ;
     end for ;
-    @unifiedTypeMapProxy baseType := mReceiverType ;
+    @unifiedTypeMap-proxy baseType := mReceiverType ;
     @bool searching := true ;
     loop [@uint max] : while searching do
       if not [[baseType mSuperType] isNull] then

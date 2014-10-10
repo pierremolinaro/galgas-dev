@@ -1362,7 +1362,7 @@ class GALGAS_string categoryReader_defaultConstructorName (const class GALGAS_pr
 
 typedef void (*categoryMethodSignature_abstractCollectionValueElement_analyze) (const class cPtr_abstractCollectionValueElement * inObject,
                                                                                 const class GALGAS_analysisContext constinArgument0,
-                                                                                const class GALGAS_unifiedTypeMapProxy constinArgument1,
+                                                                                const class GALGAS_unifiedTypeMap_2D_proxy constinArgument1,
                                                                                 class GALGAS_variableMap & ioArgument2,
                                                                                 class GALGAS_collectionValueElementListForGeneration & ioArgument3,
                                                                                 class C_Compiler * inCompiler
@@ -1377,7 +1377,7 @@ void enterCategoryMethod_analyze (const int32_t inClassIndex,
 
 void callCategoryMethod_analyze (const class cPtr_abstractCollectionValueElement * inObject,
                                  const GALGAS_analysisContext constin_inAnalysisContext,
-                                 const GALGAS_unifiedTypeMapProxy constin_inElementType,
+                                 const GALGAS_unifiedTypeMap_2D_proxy constin_inElementType,
                                  GALGAS_variableMap & io_ioVariableMap,
                                  GALGAS_collectionValueElementListForGeneration & io_ioCollectionValueElementListForGeneration,
                                  C_Compiler * inCompiler
@@ -1549,7 +1549,7 @@ void callCategoryMethod_generateCode (const class cPtr_abstractGrammarInstructio
 //---------------------------------------------------------------------------------------------------------------------*
 
 typedef void (*categoryMethodSignature_abstractCollectionValueElementForGeneration_generateCollectionElementCode) (const class cPtr_abstractCollectionValueElementForGeneration * inObject,
-                                                                                                                   const class GALGAS_unifiedTypeMapProxy constinArgument0,
+                                                                                                                   const class GALGAS_unifiedTypeMap_2D_proxy constinArgument0,
                                                                                                                    class GALGAS_string & ioArgument1,
                                                                                                                    class GALGAS_stringset & ioArgument2,
                                                                                                                    class GALGAS_uint & ioArgument3,
@@ -1566,7 +1566,7 @@ void enterCategoryMethod_generateCollectionElementCode (const int32_t inClassInd
 //---------------------------------------------------------------------------------------------------------------------*
 
 void callCategoryMethod_generateCollectionElementCode (const class cPtr_abstractCollectionValueElementForGeneration * inObject,
-                                                       const GALGAS_unifiedTypeMapProxy constin_inTargetType,
+                                                       const GALGAS_unifiedTypeMap_2D_proxy constin_inTargetType,
                                                        GALGAS_string & io_ioGeneratedCode,
                                                        GALGAS_stringset & io_ioInclusionSet,
                                                        GALGAS_uint & io_ioTemporaryVariableIndex,

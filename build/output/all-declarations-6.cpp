@@ -15331,7 +15331,7 @@ GALGAS_descendantClassListMap GALGAS_descendantClassListMap::constructor_emptyMa
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_descendantClassListMap::addAssign_operation (const GALGAS_string & inKey,
-                                                         const GALGAS_unifiedTypeMapProxy & inOperand0
+                                                         const GALGAS_unifiedTypeMap_2D_proxy & inOperand0
                                                          COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid () && inOperand0.isValid ()) {
     capCollectionElement attributes ;
@@ -19296,19 +19296,19 @@ static const utf32 gSyntaxErrorMessage_galgas_33_Scanner_true [] = {
   TO_UNICODE (0)
 } ;
 
-//--- Syntax error message for terminal '$uniquemap$' :
-static const utf32 gSyntaxErrorMessage_galgas_33_Scanner_uniquemap [] = {
+//--- Syntax error message for terminal '$sharedmap$' :
+static const utf32 gSyntaxErrorMessage_galgas_33_Scanner_sharedmap [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
   TO_UNICODE (' '),
   TO_UNICODE ('\''),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('q'),
-  TO_UNICODE ('u'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('r'),
   TO_UNICODE ('e'),
+  TO_UNICODE ('d'),
   TO_UNICODE ('m'),
   TO_UNICODE ('a'),
   TO_UNICODE ('p'),
@@ -20242,7 +20242,7 @@ C_String C_Lexique_galgas_33_Scanner::getMessageForTerminal (const int16_t inTer
     gSyntaxErrorMessage_galgas_33_Scanner_template,
     gSyntaxErrorMessage_galgas_33_Scanner_then,
     gSyntaxErrorMessage_galgas_33_Scanner_true,
-    gSyntaxErrorMessage_galgas_33_Scanner_uniquemap,
+    gSyntaxErrorMessage_galgas_33_Scanner_sharedmap,
     gSyntaxErrorMessage_galgas_33_Scanner_unused,
     gSyntaxErrorMessage_galgas_33_Scanner_var,
     gSyntaxErrorMessage_galgas_33_Scanner_warning,
@@ -21138,6 +21138,20 @@ static const utf32 kUnicodeString_galgas_33_Scanner_setter [] = {
   TO_UNICODE (0)
 } ;
 
+//--- Unicode string for '$sharedmap$'
+static const utf32 kUnicodeString_galgas_33_Scanner_sharedmap [] = {
+  TO_UNICODE ('s'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('p'),
+  TO_UNICODE (0)
+} ;
+
 //--- Unicode string for '$sortedlist$'
 static const utf32 kUnicodeString_galgas_33_Scanner_sortedlist [] = {
   TO_UNICODE ('s'),
@@ -21242,20 +21256,6 @@ static const utf32 kUnicodeString_galgas_33_Scanner_true [] = {
   TO_UNICODE ('r'),
   TO_UNICODE ('u'),
   TO_UNICODE ('e'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$uniquemap$'
-static const utf32 kUnicodeString_galgas_33_Scanner_uniquemap [] = {
-  TO_UNICODE ('u'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('q'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('p'),
   TO_UNICODE (0)
 } ;
 
@@ -21469,7 +21469,7 @@ static const C_unicode_lexique_table_entry ktable_for_galgas_33_Scanner_galgasKe
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_operator, 8, C_Lexique_galgas_33_Scanner::kToken_operator),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_override, 8, C_Lexique_galgas_33_Scanner::kToken_override),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_template, 8, C_Lexique_galgas_33_Scanner::kToken_template),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_uniquemap, 9, C_Lexique_galgas_33_Scanner::kToken_uniquemap),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_sharedmap, 9, C_Lexique_galgas_33_Scanner::kToken_sharedmap),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_sortedlist, 10, C_Lexique_galgas_33_Scanner::kToken_sortedlist),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_constructor, 11, C_Lexique_galgas_33_Scanner::kToken_constructor),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_filewrapper, 11, C_Lexique_galgas_33_Scanner::kToken_filewrapper)
@@ -22023,9 +22023,9 @@ C_String C_Lexique_galgas_33_Scanner::getCurrentTokenString (const cToken * inTo
       s.appendCString ("true") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
-    case kToken_uniquemap:
+    case kToken_sharedmap:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("uniquemap") ;
+      s.appendCString ("sharedmap") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
     case kToken_unused:
@@ -23219,7 +23219,7 @@ GALGAS_stringlist C_Lexique_galgas_33_Scanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("template") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("then") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("true") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("uniquemap") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("sharedmap") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("unused") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("var") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("warning") COMMA_THERE) ;

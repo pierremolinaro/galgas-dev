@@ -65,7 +65,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_andExpressionForGeneration GALGAS_andExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_andExpressionForGeneration GALGAS_andExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                       const GALGAS_location & inAttribute_mLocation,
                                                                                       const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
                                                                                       const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
@@ -117,7 +117,7 @@ GALGAS_semanticExpressionForGeneration cPtr_andExpressionForGeneration::reader_m
 //                                 Pointer class for @andExpressionForGeneration class                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_andExpressionForGeneration::cPtr_andExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_andExpressionForGeneration::cPtr_andExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                   const GALGAS_location & in_mLocation,
                                                                   const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
                                                                   const GALGAS_semanticExpressionForGeneration & in_mRightExpression
@@ -255,7 +255,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_andShortExpressionForGeneration GALGAS_andShortExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_andShortExpressionForGeneration GALGAS_andShortExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                 const GALGAS_location & inAttribute_mLocation,
                                                                                                 const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
                                                                                                 const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
@@ -307,7 +307,7 @@ GALGAS_semanticExpressionForGeneration cPtr_andShortExpressionForGeneration::rea
 //                              Pointer class for @andShortExpressionForGeneration class                               *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_andShortExpressionForGeneration::cPtr_andShortExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_andShortExpressionForGeneration::cPtr_andShortExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                             const GALGAS_location & in_mLocation,
                                                                             const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
                                                                             const GALGAS_semanticExpressionForGeneration & in_mRightExpression
@@ -445,7 +445,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_castInExpressionForGeneration GALGAS_castInExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_castInExpressionForGeneration GALGAS_castInExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                             const GALGAS_location & inAttribute_mLocation,
                                                                                             const GALGAS_semanticExpressionForGeneration & inAttribute_mReceiverExpression,
                                                                                             const GALGAS_string & inAttribute_mTypeName
@@ -497,7 +497,7 @@ GALGAS_string cPtr_castInExpressionForGeneration::reader_mTypeName (UNUSED_LOCAT
 //                               Pointer class for @castInExpressionForGeneration class                                *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_castInExpressionForGeneration::cPtr_castInExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_castInExpressionForGeneration::cPtr_castInExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                         const GALGAS_location & in_mLocation,
                                                                         const GALGAS_semanticExpressionForGeneration & in_mReceiverExpression,
                                                                         const GALGAS_string & in_mTypeName
@@ -635,7 +635,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_concatExpressionForGeneration GALGAS_concatExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_concatExpressionForGeneration GALGAS_concatExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                             const GALGAS_location & inAttribute_mLocation,
                                                                                             const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
                                                                                             const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
@@ -687,7 +687,7 @@ GALGAS_semanticExpressionForGeneration cPtr_concatExpressionForGeneration::reade
 //                               Pointer class for @concatExpressionForGeneration class                                *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_concatExpressionForGeneration::cPtr_concatExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_concatExpressionForGeneration::cPtr_concatExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                         const GALGAS_location & in_mLocation,
                                                                         const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
                                                                         const GALGAS_semanticExpressionForGeneration & in_mRightExpression
@@ -825,9 +825,9 @@ GALGAS_semanticExpressionForGeneration () {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_constructorExpressionForGeneration GALGAS_constructorExpressionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_constructorExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+  return GALGAS_constructorExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                                      GALGAS_location::constructor_nowhere (HERE),
-                                                                     GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+                                                                     GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                                      GALGAS_string::constructor_default (HERE),
                                                                      GALGAS_semanticExpressionListForGeneration::constructor_emptyList (HERE),
                                                                      GALGAS_bool::constructor_default (HERE)
@@ -843,9 +843,9 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_constructorExpressionForGeneration GALGAS_constructorExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_constructorExpressionForGeneration GALGAS_constructorExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                       const GALGAS_location & inAttribute_mLocation,
-                                                                                                      const GALGAS_unifiedTypeMapProxy & inAttribute_mConstructorType,
+                                                                                                      const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mConstructorType,
                                                                                                       const GALGAS_string & inAttribute_mConstructorName,
                                                                                                       const GALGAS_semanticExpressionListForGeneration & inAttribute_mEffectiveParameterList,
                                                                                                       const GALGAS_bool & inAttribute_mHasCompilerArgument
@@ -859,8 +859,8 @@ GALGAS_constructorExpressionForGeneration GALGAS_constructorExpressionForGenerat
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_constructorExpressionForGeneration::reader_mConstructorType (UNUSED_LOCATION_ARGS) const {
-  GALGAS_unifiedTypeMapProxy result ;
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_constructorExpressionForGeneration::reader_mConstructorType (UNUSED_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != mObjectPtr) {
     const cPtr_constructorExpressionForGeneration * p = (const cPtr_constructorExpressionForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_constructorExpressionForGeneration) ;
@@ -871,7 +871,7 @@ GALGAS_unifiedTypeMapProxy GALGAS_constructorExpressionForGeneration::reader_mCo
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy cPtr_constructorExpressionForGeneration::reader_mConstructorType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy cPtr_constructorExpressionForGeneration::reader_mConstructorType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mConstructorType ;
 }
 
@@ -933,9 +933,9 @@ GALGAS_bool cPtr_constructorExpressionForGeneration::reader_mHasCompilerArgument
 //                             Pointer class for @constructorExpressionForGeneration class                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_constructorExpressionForGeneration::cPtr_constructorExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_constructorExpressionForGeneration::cPtr_constructorExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                                   const GALGAS_location & in_mLocation,
-                                                                                  const GALGAS_unifiedTypeMapProxy & in_mConstructorType,
+                                                                                  const GALGAS_unifiedTypeMap_2D_proxy & in_mConstructorType,
                                                                                   const GALGAS_string & in_mConstructorName,
                                                                                   const GALGAS_semanticExpressionListForGeneration & in_mEffectiveParameterList,
                                                                                   const GALGAS_bool & in_mHasCompilerArgument
@@ -1067,7 +1067,7 @@ GALGAS_semanticExpressionForGeneration () {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_defaultConstructorExpressionForGeneration GALGAS_defaultConstructorExpressionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_defaultConstructorExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+  return GALGAS_defaultConstructorExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                                             GALGAS_location::constructor_nowhere (HERE)
                                                                             COMMA_THERE) ;
 }
@@ -1081,7 +1081,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_defaultConstructorExpressionForGeneration GALGAS_defaultConstructorExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_defaultConstructorExpressionForGeneration GALGAS_defaultConstructorExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                                     const GALGAS_location & inAttribute_mLocation
                                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_defaultConstructorExpressionForGeneration result ;
@@ -1095,7 +1095,7 @@ GALGAS_defaultConstructorExpressionForGeneration GALGAS_defaultConstructorExpres
 //                         Pointer class for @defaultConstructorExpressionForGeneration class                          *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_defaultConstructorExpressionForGeneration::cPtr_defaultConstructorExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_defaultConstructorExpressionForGeneration::cPtr_defaultConstructorExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                                                 const GALGAS_location & in_mLocation
                                                                                                 COMMA_LOCATION_ARGS) :
 cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE) {
@@ -1225,7 +1225,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_divisionExpressionForGeneration GALGAS_divisionExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_divisionExpressionForGeneration GALGAS_divisionExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                 const GALGAS_location & inAttribute_mLocation,
                                                                                                 const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
                                                                                                 const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
@@ -1277,7 +1277,7 @@ GALGAS_semanticExpressionForGeneration cPtr_divisionExpressionForGeneration::rea
 //                              Pointer class for @divisionExpressionForGeneration class                               *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_divisionExpressionForGeneration::cPtr_divisionExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_divisionExpressionForGeneration::cPtr_divisionExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                             const GALGAS_location & in_mLocation,
                                                                             const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
                                                                             const GALGAS_semanticExpressionForGeneration & in_mRightExpression
@@ -1415,7 +1415,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_equalExpressionForGeneration GALGAS_equalExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_equalExpressionForGeneration GALGAS_equalExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                           const GALGAS_location & inAttribute_mLocation,
                                                                                           const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
                                                                                           const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
@@ -1467,7 +1467,7 @@ GALGAS_semanticExpressionForGeneration cPtr_equalExpressionForGeneration::reader
 //                                Pointer class for @equalExpressionForGeneration class                                *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_equalExpressionForGeneration::cPtr_equalExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_equalExpressionForGeneration::cPtr_equalExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                       const GALGAS_location & in_mLocation,
                                                                       const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
                                                                       const GALGAS_semanticExpressionForGeneration & in_mRightExpression
@@ -1596,7 +1596,7 @@ GALGAS_semanticExpressionForGeneration () {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_expressionCollectionForGeneration GALGAS_expressionCollectionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_expressionCollectionForGeneration::constructor_new (GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+  return GALGAS_expressionCollectionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                                     GALGAS_location::constructor_nowhere (HERE),
                                                                     GALGAS_collectionValueElementListForGeneration::constructor_emptyList (HERE)
                                                                     COMMA_THERE) ;
@@ -1611,7 +1611,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_expressionCollectionForGeneration GALGAS_expressionCollectionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_expressionCollectionForGeneration GALGAS_expressionCollectionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                     const GALGAS_location & inAttribute_mLocation,
                                                                                                     const GALGAS_collectionValueElementListForGeneration & inAttribute_mElementList
                                                                                                     COMMA_LOCATION_ARGS) {
@@ -1644,7 +1644,7 @@ GALGAS_collectionValueElementListForGeneration cPtr_expressionCollectionForGener
 //                             Pointer class for @expressionCollectionForGeneration class                              *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_expressionCollectionForGeneration::cPtr_expressionCollectionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_expressionCollectionForGeneration::cPtr_expressionCollectionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                                 const GALGAS_location & in_mLocation,
                                                                                 const GALGAS_collectionValueElementListForGeneration & in_mElementList
                                                                                 COMMA_LOCATION_ARGS) :
@@ -1778,7 +1778,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_extractObjectInExpressionForGeneration GALGAS_extractObjectInExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_extractObjectInExpressionForGeneration GALGAS_extractObjectInExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                               const GALGAS_location & inAttribute_mLocation,
                                                                                                               const GALGAS_semanticExpressionForGeneration & inAttribute_mReceiverExpression,
                                                                                                               const GALGAS_string & inAttribute_mTypeName
@@ -1830,7 +1830,7 @@ GALGAS_string cPtr_extractObjectInExpressionForGeneration::reader_mTypeName (UNU
 //                           Pointer class for @extractObjectInExpressionForGeneration class                           *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_extractObjectInExpressionForGeneration::cPtr_extractObjectInExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_extractObjectInExpressionForGeneration::cPtr_extractObjectInExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                                           const GALGAS_location & in_mLocation,
                                                                                           const GALGAS_semanticExpressionForGeneration & in_mReceiverExpression,
                                                                                           const GALGAS_string & in_mTypeName
@@ -1956,7 +1956,7 @@ GALGAS_semanticExpressionForGeneration () {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_falseExpressionForGeneration GALGAS_falseExpressionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_falseExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+  return GALGAS_falseExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                                GALGAS_location::constructor_nowhere (HERE)
                                                                COMMA_THERE) ;
 }
@@ -1970,7 +1970,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_falseExpressionForGeneration GALGAS_falseExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_falseExpressionForGeneration GALGAS_falseExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                           const GALGAS_location & inAttribute_mLocation
                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_falseExpressionForGeneration result ;
@@ -1984,7 +1984,7 @@ GALGAS_falseExpressionForGeneration GALGAS_falseExpressionForGeneration::constru
 //                                Pointer class for @falseExpressionForGeneration class                                *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_falseExpressionForGeneration::cPtr_falseExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_falseExpressionForGeneration::cPtr_falseExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                       const GALGAS_location & in_mLocation
                                                                       COMMA_LOCATION_ARGS) :
 cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE) {
@@ -2108,7 +2108,7 @@ GALGAS_semanticExpressionForGeneration () {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_filewrapperInExpressionForGeneration GALGAS_filewrapperInExpressionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_filewrapperInExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+  return GALGAS_filewrapperInExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                                        GALGAS_location::constructor_nowhere (HERE),
                                                                        GALGAS_string::constructor_default (HERE),
                                                                        GALGAS_string::constructor_default (HERE)
@@ -2124,7 +2124,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_filewrapperInExpressionForGeneration GALGAS_filewrapperInExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_filewrapperInExpressionForGeneration GALGAS_filewrapperInExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                           const GALGAS_location & inAttribute_mLocation,
                                                                                                           const GALGAS_string & inAttribute_mFilewrapperName,
                                                                                                           const GALGAS_string & inAttribute_mFilewrapperPath
@@ -2176,7 +2176,7 @@ GALGAS_string cPtr_filewrapperInExpressionForGeneration::reader_mFilewrapperPath
 //                            Pointer class for @filewrapperInExpressionForGeneration class                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_filewrapperInExpressionForGeneration::cPtr_filewrapperInExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_filewrapperInExpressionForGeneration::cPtr_filewrapperInExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                                       const GALGAS_location & in_mLocation,
                                                                                       const GALGAS_string & in_mFilewrapperName,
                                                                                       const GALGAS_string & in_mFilewrapperPath
@@ -2311,7 +2311,7 @@ GALGAS_semanticExpressionForGeneration () {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_filewrapperStaticPathInExpressionForGeneration GALGAS_filewrapperStaticPathInExpressionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_filewrapperStaticPathInExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+  return GALGAS_filewrapperStaticPathInExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                                                  GALGAS_location::constructor_nowhere (HERE),
                                                                                  GALGAS_string::constructor_default (HERE),
                                                                                  GALGAS_uint::constructor_default (HERE),
@@ -2328,7 +2328,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_filewrapperStaticPathInExpressionForGeneration GALGAS_filewrapperStaticPathInExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_filewrapperStaticPathInExpressionForGeneration GALGAS_filewrapperStaticPathInExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                                               const GALGAS_location & inAttribute_mLocation,
                                                                                                                               const GALGAS_string & inAttribute_mFilewrapperName,
                                                                                                                               const GALGAS_uint & inAttribute_mFilewrapperFileIndex,
@@ -2399,7 +2399,7 @@ GALGAS_bool cPtr_filewrapperStaticPathInExpressionForGeneration::reader_mIsTextF
 //                       Pointer class for @filewrapperStaticPathInExpressionForGeneration class                       *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_filewrapperStaticPathInExpressionForGeneration::cPtr_filewrapperStaticPathInExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_filewrapperStaticPathInExpressionForGeneration::cPtr_filewrapperStaticPathInExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                                                           const GALGAS_location & in_mLocation,
                                                                                                           const GALGAS_string & in_mFilewrapperName,
                                                                                                           const GALGAS_uint & in_mFilewrapperFileIndex,
@@ -2538,7 +2538,7 @@ GALGAS_semanticExpressionForGeneration () {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_filewrapperTemplateInExpressionForGeneration GALGAS_filewrapperTemplateInExpressionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_filewrapperTemplateInExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+  return GALGAS_filewrapperTemplateInExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                                                GALGAS_location::constructor_nowhere (HERE),
                                                                                GALGAS_string::constructor_default (HERE),
                                                                                GALGAS_string::constructor_default (HERE),
@@ -2555,7 +2555,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_filewrapperTemplateInExpressionForGeneration GALGAS_filewrapperTemplateInExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_filewrapperTemplateInExpressionForGeneration GALGAS_filewrapperTemplateInExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                                           const GALGAS_location & inAttribute_mLocation,
                                                                                                                           const GALGAS_string & inAttribute_mFilewrapperName,
                                                                                                                           const GALGAS_string & inAttribute_mFilewrapperTemplateName,
@@ -2626,7 +2626,7 @@ GALGAS_semanticExpressionListForGeneration cPtr_filewrapperTemplateInExpressionF
 //                        Pointer class for @filewrapperTemplateInExpressionForGeneration class                        *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_filewrapperTemplateInExpressionForGeneration::cPtr_filewrapperTemplateInExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_filewrapperTemplateInExpressionForGeneration::cPtr_filewrapperTemplateInExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                                                       const GALGAS_location & in_mLocation,
                                                                                                       const GALGAS_string & in_mFilewrapperName,
                                                                                                       const GALGAS_string & in_mFilewrapperTemplateName,
@@ -2762,7 +2762,7 @@ GALGAS_semanticExpressionForGeneration () {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_functionCallExpressionForGeneration GALGAS_functionCallExpressionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_functionCallExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+  return GALGAS_functionCallExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                                       GALGAS_location::constructor_nowhere (HERE),
                                                                       GALGAS_string::constructor_default (HERE),
                                                                       GALGAS_semanticExpressionListForGeneration::constructor_emptyList (HERE)
@@ -2778,7 +2778,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_functionCallExpressionForGeneration GALGAS_functionCallExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_functionCallExpressionForGeneration GALGAS_functionCallExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                         const GALGAS_location & inAttribute_mLocation,
                                                                                                         const GALGAS_string & inAttribute_mFunctionName,
                                                                                                         const GALGAS_semanticExpressionListForGeneration & inAttribute_mExpressions
@@ -2830,7 +2830,7 @@ GALGAS_semanticExpressionListForGeneration cPtr_functionCallExpressionForGenerat
 //                            Pointer class for @functionCallExpressionForGeneration class                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_functionCallExpressionForGeneration::cPtr_functionCallExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_functionCallExpressionForGeneration::cPtr_functionCallExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                                     const GALGAS_location & in_mLocation,
                                                                                     const GALGAS_string & in_mFunctionName,
                                                                                     const GALGAS_semanticExpressionListForGeneration & in_mExpressions
@@ -2968,7 +2968,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_greaterOrEqualExpressionForGeneration GALGAS_greaterOrEqualExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_greaterOrEqualExpressionForGeneration GALGAS_greaterOrEqualExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                             const GALGAS_location & inAttribute_mLocation,
                                                                                                             const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
                                                                                                             const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
@@ -3020,7 +3020,7 @@ GALGAS_semanticExpressionForGeneration cPtr_greaterOrEqualExpressionForGeneratio
 //                           Pointer class for @greaterOrEqualExpressionForGeneration class                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_greaterOrEqualExpressionForGeneration::cPtr_greaterOrEqualExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_greaterOrEqualExpressionForGeneration::cPtr_greaterOrEqualExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                                         const GALGAS_location & in_mLocation,
                                                                                         const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
                                                                                         const GALGAS_semanticExpressionForGeneration & in_mRightExpression
@@ -3146,7 +3146,7 @@ GALGAS_semanticExpressionForGeneration () {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_hereExpressionForGeneration GALGAS_hereExpressionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_hereExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+  return GALGAS_hereExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                               GALGAS_location::constructor_nowhere (HERE)
                                                               COMMA_THERE) ;
 }
@@ -3160,7 +3160,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_hereExpressionForGeneration GALGAS_hereExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_hereExpressionForGeneration GALGAS_hereExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                         const GALGAS_location & inAttribute_mLocation
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_hereExpressionForGeneration result ;
@@ -3174,7 +3174,7 @@ GALGAS_hereExpressionForGeneration GALGAS_hereExpressionForGeneration::construct
 //                                Pointer class for @hereExpressionForGeneration class                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_hereExpressionForGeneration::cPtr_hereExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_hereExpressionForGeneration::cPtr_hereExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                     const GALGAS_location & in_mLocation
                                                                     COMMA_LOCATION_ARGS) :
 cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE) {
@@ -3307,7 +3307,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_ifExpressionForGeneration GALGAS_ifExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_ifExpressionForGeneration GALGAS_ifExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                     const GALGAS_location & inAttribute_mLocation,
                                                                                     const GALGAS_semanticExpressionForGeneration & inAttribute_mIfExpression,
                                                                                     const GALGAS_semanticExpressionForGeneration & inAttribute_mThenExpression,
@@ -3378,7 +3378,7 @@ GALGAS_semanticExpressionForGeneration cPtr_ifExpressionForGeneration::reader_mE
 //                                 Pointer class for @ifExpressionForGeneration class                                  *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_ifExpressionForGeneration::cPtr_ifExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_ifExpressionForGeneration::cPtr_ifExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                 const GALGAS_location & in_mLocation,
                                                                 const GALGAS_semanticExpressionForGeneration & in_mIfExpression,
                                                                 const GALGAS_semanticExpressionForGeneration & in_mThenExpression,
@@ -3520,7 +3520,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_leftShiftExpressionForGeneration GALGAS_leftShiftExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_leftShiftExpressionForGeneration GALGAS_leftShiftExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                   const GALGAS_location & inAttribute_mLocation,
                                                                                                   const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
                                                                                                   const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
@@ -3572,7 +3572,7 @@ GALGAS_semanticExpressionForGeneration cPtr_leftShiftExpressionForGeneration::re
 //                              Pointer class for @leftShiftExpressionForGeneration class                              *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_leftShiftExpressionForGeneration::cPtr_leftShiftExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_leftShiftExpressionForGeneration::cPtr_leftShiftExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                               const GALGAS_location & in_mLocation,
                                                                               const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
                                                                               const GALGAS_semanticExpressionForGeneration & in_mRightExpression
@@ -3704,7 +3704,7 @@ GALGAS_semanticExpressionForGeneration () {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_lexiqueIntrospectionForGeneration GALGAS_lexiqueIntrospectionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_lexiqueIntrospectionForGeneration::constructor_new (GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+  return GALGAS_lexiqueIntrospectionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                                     GALGAS_location::constructor_nowhere (HERE),
                                                                     GALGAS_string::constructor_default (HERE),
                                                                     GALGAS_string::constructor_default (HERE)
@@ -3720,7 +3720,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lexiqueIntrospectionForGeneration GALGAS_lexiqueIntrospectionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_lexiqueIntrospectionForGeneration GALGAS_lexiqueIntrospectionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                     const GALGAS_location & inAttribute_mLocation,
                                                                                                     const GALGAS_string & inAttribute_mLexiqueComponentName,
                                                                                                     const GALGAS_string & inAttribute_mLexiqueReaderName
@@ -3772,7 +3772,7 @@ GALGAS_string cPtr_lexiqueIntrospectionForGeneration::reader_mLexiqueReaderName 
 //                             Pointer class for @lexiqueIntrospectionForGeneration class                              *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_lexiqueIntrospectionForGeneration::cPtr_lexiqueIntrospectionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_lexiqueIntrospectionForGeneration::cPtr_lexiqueIntrospectionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                                 const GALGAS_location & in_mLocation,
                                                                                 const GALGAS_string & in_mLexiqueComponentName,
                                                                                 const GALGAS_string & in_mLexiqueReaderName
@@ -3901,7 +3901,7 @@ GALGAS_semanticExpressionForGeneration () {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_literalCharExpressionForGeneration GALGAS_literalCharExpressionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_literalCharExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+  return GALGAS_literalCharExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                                      GALGAS_location::constructor_nowhere (HERE),
                                                                      GALGAS_char::constructor_default (HERE)
                                                                      COMMA_THERE) ;
@@ -3916,7 +3916,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_literalCharExpressionForGeneration GALGAS_literalCharExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_literalCharExpressionForGeneration GALGAS_literalCharExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                       const GALGAS_location & inAttribute_mLocation,
                                                                                                       const GALGAS_char & inAttribute_mCharacter
                                                                                                       COMMA_LOCATION_ARGS) {
@@ -3949,7 +3949,7 @@ GALGAS_char cPtr_literalCharExpressionForGeneration::reader_mCharacter (UNUSED_L
 //                             Pointer class for @literalCharExpressionForGeneration class                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_literalCharExpressionForGeneration::cPtr_literalCharExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_literalCharExpressionForGeneration::cPtr_literalCharExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                                   const GALGAS_location & in_mLocation,
                                                                                   const GALGAS_char & in_mCharacter
                                                                                   COMMA_LOCATION_ARGS) :
@@ -4074,7 +4074,7 @@ GALGAS_semanticExpressionForGeneration () {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_literalDoubleExpressionForGeneration GALGAS_literalDoubleExpressionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_literalDoubleExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+  return GALGAS_literalDoubleExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                                        GALGAS_location::constructor_nowhere (HERE),
                                                                        GALGAS_double::constructor_default (HERE)
                                                                        COMMA_THERE) ;
@@ -4089,7 +4089,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_literalDoubleExpressionForGeneration GALGAS_literalDoubleExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_literalDoubleExpressionForGeneration GALGAS_literalDoubleExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                           const GALGAS_location & inAttribute_mLocation,
                                                                                                           const GALGAS_double & inAttribute_mValue
                                                                                                           COMMA_LOCATION_ARGS) {
@@ -4122,7 +4122,7 @@ GALGAS_double cPtr_literalDoubleExpressionForGeneration::reader_mValue (UNUSED_L
 //                            Pointer class for @literalDoubleExpressionForGeneration class                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_literalDoubleExpressionForGeneration::cPtr_literalDoubleExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_literalDoubleExpressionForGeneration::cPtr_literalDoubleExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                                       const GALGAS_location & in_mLocation,
                                                                                       const GALGAS_double & in_mValue
                                                                                       COMMA_LOCATION_ARGS) :
@@ -4247,7 +4247,7 @@ GALGAS_semanticExpressionForGeneration () {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_literalSInt_36__34_ExpressionForGeneration GALGAS_literalSInt_36__34_ExpressionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_literalSInt_36__34_ExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+  return GALGAS_literalSInt_36__34_ExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                                              GALGAS_location::constructor_nowhere (HERE),
                                                                              GALGAS_sint_36__34_::constructor_default (HERE)
                                                                              COMMA_THERE) ;
@@ -4262,7 +4262,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_literalSInt_36__34_ExpressionForGeneration GALGAS_literalSInt_36__34_ExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_literalSInt_36__34_ExpressionForGeneration GALGAS_literalSInt_36__34_ExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                                       const GALGAS_location & inAttribute_mLocation,
                                                                                                                       const GALGAS_sint_36__34_ & inAttribute_mValue
                                                                                                                       COMMA_LOCATION_ARGS) {
@@ -4295,7 +4295,7 @@ GALGAS_sint_36__34_ cPtr_literalSInt_36__34_ExpressionForGeneration::reader_mVal
 //                            Pointer class for @literalSInt64ExpressionForGeneration class                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_literalSInt_36__34_ExpressionForGeneration::cPtr_literalSInt_36__34_ExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_literalSInt_36__34_ExpressionForGeneration::cPtr_literalSInt_36__34_ExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                                                   const GALGAS_location & in_mLocation,
                                                                                                   const GALGAS_sint_36__34_ & in_mValue
                                                                                                   COMMA_LOCATION_ARGS) :
@@ -4420,7 +4420,7 @@ GALGAS_semanticExpressionForGeneration () {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_literalSIntExpressionForGeneration GALGAS_literalSIntExpressionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_literalSIntExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+  return GALGAS_literalSIntExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                                      GALGAS_location::constructor_nowhere (HERE),
                                                                      GALGAS_sint::constructor_default (HERE)
                                                                      COMMA_THERE) ;
@@ -4435,7 +4435,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_literalSIntExpressionForGeneration GALGAS_literalSIntExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_literalSIntExpressionForGeneration GALGAS_literalSIntExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                       const GALGAS_location & inAttribute_mLocation,
                                                                                                       const GALGAS_sint & inAttribute_mValue
                                                                                                       COMMA_LOCATION_ARGS) {
@@ -4468,7 +4468,7 @@ GALGAS_sint cPtr_literalSIntExpressionForGeneration::reader_mValue (UNUSED_LOCAT
 //                             Pointer class for @literalSIntExpressionForGeneration class                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_literalSIntExpressionForGeneration::cPtr_literalSIntExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_literalSIntExpressionForGeneration::cPtr_literalSIntExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                                   const GALGAS_location & in_mLocation,
                                                                                   const GALGAS_sint & in_mValue
                                                                                   COMMA_LOCATION_ARGS) :
@@ -4593,7 +4593,7 @@ GALGAS_semanticExpressionForGeneration () {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_literalStringExpressionForGeneration GALGAS_literalStringExpressionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_literalStringExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+  return GALGAS_literalStringExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                                        GALGAS_location::constructor_nowhere (HERE),
                                                                        GALGAS_string::constructor_default (HERE)
                                                                        COMMA_THERE) ;
@@ -4608,7 +4608,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_literalStringExpressionForGeneration GALGAS_literalStringExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_literalStringExpressionForGeneration GALGAS_literalStringExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                           const GALGAS_location & inAttribute_mLocation,
                                                                                                           const GALGAS_string & inAttribute_mString
                                                                                                           COMMA_LOCATION_ARGS) {
@@ -4641,7 +4641,7 @@ GALGAS_string cPtr_literalStringExpressionForGeneration::reader_mString (UNUSED_
 //                            Pointer class for @literalStringExpressionForGeneration class                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_literalStringExpressionForGeneration::cPtr_literalStringExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_literalStringExpressionForGeneration::cPtr_literalStringExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                                       const GALGAS_location & in_mLocation,
                                                                                       const GALGAS_string & in_mString
                                                                                       COMMA_LOCATION_ARGS) :
@@ -4766,7 +4766,7 @@ GALGAS_semanticExpressionForGeneration () {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_literalTypeInExpressionForGeneration GALGAS_literalTypeInExpressionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_literalTypeInExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+  return GALGAS_literalTypeInExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                                        GALGAS_location::constructor_nowhere (HERE),
                                                                        GALGAS_string::constructor_default (HERE)
                                                                        COMMA_THERE) ;
@@ -4781,7 +4781,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_literalTypeInExpressionForGeneration GALGAS_literalTypeInExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_literalTypeInExpressionForGeneration GALGAS_literalTypeInExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                           const GALGAS_location & inAttribute_mLocation,
                                                                                                           const GALGAS_string & inAttribute_mTypeName
                                                                                                           COMMA_LOCATION_ARGS) {
@@ -4814,7 +4814,7 @@ GALGAS_string cPtr_literalTypeInExpressionForGeneration::reader_mTypeName (UNUSE
 //                            Pointer class for @literalTypeInExpressionForGeneration class                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_literalTypeInExpressionForGeneration::cPtr_literalTypeInExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_literalTypeInExpressionForGeneration::cPtr_literalTypeInExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                                       const GALGAS_location & in_mLocation,
                                                                                       const GALGAS_string & in_mTypeName
                                                                                       COMMA_LOCATION_ARGS) :
@@ -4939,7 +4939,7 @@ GALGAS_semanticExpressionForGeneration () {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_literalUInt_36__34_ExpressionForGeneration GALGAS_literalUInt_36__34_ExpressionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_literalUInt_36__34_ExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+  return GALGAS_literalUInt_36__34_ExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                                              GALGAS_location::constructor_nowhere (HERE),
                                                                              GALGAS_uint_36__34_::constructor_default (HERE)
                                                                              COMMA_THERE) ;
@@ -4954,7 +4954,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_literalUInt_36__34_ExpressionForGeneration GALGAS_literalUInt_36__34_ExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_literalUInt_36__34_ExpressionForGeneration GALGAS_literalUInt_36__34_ExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                                       const GALGAS_location & inAttribute_mLocation,
                                                                                                                       const GALGAS_uint_36__34_ & inAttribute_mValue
                                                                                                                       COMMA_LOCATION_ARGS) {
@@ -4987,7 +4987,7 @@ GALGAS_uint_36__34_ cPtr_literalUInt_36__34_ExpressionForGeneration::reader_mVal
 //                            Pointer class for @literalUInt64ExpressionForGeneration class                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_literalUInt_36__34_ExpressionForGeneration::cPtr_literalUInt_36__34_ExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_literalUInt_36__34_ExpressionForGeneration::cPtr_literalUInt_36__34_ExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                                                   const GALGAS_location & in_mLocation,
                                                                                                   const GALGAS_uint_36__34_ & in_mValue
                                                                                                   COMMA_LOCATION_ARGS) :
@@ -5112,7 +5112,7 @@ GALGAS_semanticExpressionForGeneration () {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_literalUIntExpressionForGeneration GALGAS_literalUIntExpressionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_literalUIntExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+  return GALGAS_literalUIntExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                                      GALGAS_location::constructor_nowhere (HERE),
                                                                      GALGAS_uint::constructor_default (HERE)
                                                                      COMMA_THERE) ;
@@ -5127,7 +5127,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_literalUIntExpressionForGeneration GALGAS_literalUIntExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_literalUIntExpressionForGeneration GALGAS_literalUIntExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                       const GALGAS_location & inAttribute_mLocation,
                                                                                                       const GALGAS_uint & inAttribute_mValue
                                                                                                       COMMA_LOCATION_ARGS) {
@@ -5160,7 +5160,7 @@ GALGAS_uint cPtr_literalUIntExpressionForGeneration::reader_mValue (UNUSED_LOCAT
 //                             Pointer class for @literalUIntExpressionForGeneration class                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_literalUIntExpressionForGeneration::cPtr_literalUIntExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_literalUIntExpressionForGeneration::cPtr_literalUIntExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                                   const GALGAS_location & in_mLocation,
                                                                                   const GALGAS_uint & in_mValue
                                                                                   COMMA_LOCATION_ARGS) :
@@ -5294,7 +5294,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lowerOrEqualExpressionForGeneration GALGAS_lowerOrEqualExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_lowerOrEqualExpressionForGeneration GALGAS_lowerOrEqualExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                         const GALGAS_location & inAttribute_mLocation,
                                                                                                         const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
                                                                                                         const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
@@ -5346,7 +5346,7 @@ GALGAS_semanticExpressionForGeneration cPtr_lowerOrEqualExpressionForGeneration:
 //                            Pointer class for @lowerOrEqualExpressionForGeneration class                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_lowerOrEqualExpressionForGeneration::cPtr_lowerOrEqualExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_lowerOrEqualExpressionForGeneration::cPtr_lowerOrEqualExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                                     const GALGAS_location & in_mLocation,
                                                                                     const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
                                                                                     const GALGAS_semanticExpressionForGeneration & in_mRightExpression
@@ -5484,7 +5484,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_moduloExpressionForGeneration GALGAS_moduloExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_moduloExpressionForGeneration GALGAS_moduloExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                             const GALGAS_location & inAttribute_mLocation,
                                                                                             const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
                                                                                             const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
@@ -5536,7 +5536,7 @@ GALGAS_semanticExpressionForGeneration cPtr_moduloExpressionForGeneration::reade
 //                               Pointer class for @moduloExpressionForGeneration class                                *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_moduloExpressionForGeneration::cPtr_moduloExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_moduloExpressionForGeneration::cPtr_moduloExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                         const GALGAS_location & in_mLocation,
                                                                         const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
                                                                         const GALGAS_semanticExpressionForGeneration & in_mRightExpression
@@ -5674,7 +5674,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_multiplicationExpressionForGeneration GALGAS_multiplicationExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_multiplicationExpressionForGeneration GALGAS_multiplicationExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                             const GALGAS_location & inAttribute_mLocation,
                                                                                                             const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
                                                                                                             const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
@@ -5726,7 +5726,7 @@ GALGAS_semanticExpressionForGeneration cPtr_multiplicationExpressionForGeneratio
 //                           Pointer class for @multiplicationExpressionForGeneration class                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_multiplicationExpressionForGeneration::cPtr_multiplicationExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_multiplicationExpressionForGeneration::cPtr_multiplicationExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                                         const GALGAS_location & in_mLocation,
                                                                                         const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
                                                                                         const GALGAS_semanticExpressionForGeneration & in_mRightExpression
@@ -5864,7 +5864,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_notEqualExpressionForGeneration GALGAS_notEqualExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_notEqualExpressionForGeneration GALGAS_notEqualExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                 const GALGAS_location & inAttribute_mLocation,
                                                                                                 const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
                                                                                                 const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
@@ -5916,7 +5916,7 @@ GALGAS_semanticExpressionForGeneration cPtr_notEqualExpressionForGeneration::rea
 //                              Pointer class for @notEqualExpressionForGeneration class                               *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_notEqualExpressionForGeneration::cPtr_notEqualExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_notEqualExpressionForGeneration::cPtr_notEqualExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                             const GALGAS_location & in_mLocation,
                                                                             const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
                                                                             const GALGAS_semanticExpressionForGeneration & in_mRightExpression
@@ -6051,7 +6051,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_notExpressionForGeneration GALGAS_notExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_notExpressionForGeneration GALGAS_notExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                       const GALGAS_location & inAttribute_mLocation,
                                                                                       const GALGAS_semanticExpressionForGeneration & inAttribute_mExpression
                                                                                       COMMA_LOCATION_ARGS) {
@@ -6084,7 +6084,7 @@ GALGAS_semanticExpressionForGeneration cPtr_notExpressionForGeneration::reader_m
 //                                 Pointer class for @notExpressionForGeneration class                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_notExpressionForGeneration::cPtr_notExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_notExpressionForGeneration::cPtr_notExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                   const GALGAS_location & in_mLocation,
                                                                   const GALGAS_semanticExpressionForGeneration & in_mExpression
                                                                   COMMA_LOCATION_ARGS) :
@@ -6215,7 +6215,7 @@ GALGAS_semanticExpressionForGeneration () {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_optionCharExpressionForGeneration GALGAS_optionCharExpressionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_optionCharExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+  return GALGAS_optionCharExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                                     GALGAS_location::constructor_nowhere (HERE),
                                                                     GALGAS_bool::constructor_default (HERE),
                                                                     GALGAS_string::constructor_default (HERE),
@@ -6232,7 +6232,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_optionCharExpressionForGeneration GALGAS_optionCharExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_optionCharExpressionForGeneration GALGAS_optionCharExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                     const GALGAS_location & inAttribute_mLocation,
                                                                                                     const GALGAS_bool & inAttribute_mOptionComponentIsPredefined,
                                                                                                     const GALGAS_string & inAttribute_mOptionComponentName,
@@ -6303,7 +6303,7 @@ GALGAS_string cPtr_optionCharExpressionForGeneration::reader_mOptionEntryName (U
 //                             Pointer class for @optionCharExpressionForGeneration class                              *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_optionCharExpressionForGeneration::cPtr_optionCharExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_optionCharExpressionForGeneration::cPtr_optionCharExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                                 const GALGAS_location & in_mLocation,
                                                                                 const GALGAS_bool & in_mOptionComponentIsPredefined,
                                                                                 const GALGAS_string & in_mOptionComponentName,
@@ -6442,7 +6442,7 @@ GALGAS_semanticExpressionForGeneration () {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_optionCommentExpressionForGeneration GALGAS_optionCommentExpressionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_optionCommentExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+  return GALGAS_optionCommentExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                                        GALGAS_location::constructor_nowhere (HERE),
                                                                        GALGAS_bool::constructor_default (HERE),
                                                                        GALGAS_string::constructor_default (HERE),
@@ -6459,7 +6459,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_optionCommentExpressionForGeneration GALGAS_optionCommentExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_optionCommentExpressionForGeneration GALGAS_optionCommentExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                           const GALGAS_location & inAttribute_mLocation,
                                                                                                           const GALGAS_bool & inAttribute_mOptionComponentIsPredefined,
                                                                                                           const GALGAS_string & inAttribute_mOptionComponentName,
@@ -6530,7 +6530,7 @@ GALGAS_string cPtr_optionCommentExpressionForGeneration::reader_mOptionEntryName
 //                            Pointer class for @optionCommentExpressionForGeneration class                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_optionCommentExpressionForGeneration::cPtr_optionCommentExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_optionCommentExpressionForGeneration::cPtr_optionCommentExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                                       const GALGAS_location & in_mLocation,
                                                                                       const GALGAS_bool & in_mOptionComponentIsPredefined,
                                                                                       const GALGAS_string & in_mOptionComponentName,
@@ -6669,7 +6669,7 @@ GALGAS_semanticExpressionForGeneration () {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_optionStringExpressionForGeneration GALGAS_optionStringExpressionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_optionStringExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+  return GALGAS_optionStringExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                                       GALGAS_location::constructor_nowhere (HERE),
                                                                       GALGAS_bool::constructor_default (HERE),
                                                                       GALGAS_string::constructor_default (HERE),
@@ -6686,7 +6686,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_optionStringExpressionForGeneration GALGAS_optionStringExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_optionStringExpressionForGeneration GALGAS_optionStringExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                         const GALGAS_location & inAttribute_mLocation,
                                                                                                         const GALGAS_bool & inAttribute_mOptionComponentIsPredefined,
                                                                                                         const GALGAS_string & inAttribute_mOptionComponentName,
@@ -6757,7 +6757,7 @@ GALGAS_string cPtr_optionStringExpressionForGeneration::reader_mOptionEntryName 
 //                            Pointer class for @optionStringExpressionForGeneration class                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_optionStringExpressionForGeneration::cPtr_optionStringExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_optionStringExpressionForGeneration::cPtr_optionStringExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                                     const GALGAS_location & in_mLocation,
                                                                                     const GALGAS_bool & in_mOptionComponentIsPredefined,
                                                                                     const GALGAS_string & in_mOptionComponentName,
@@ -6896,7 +6896,7 @@ GALGAS_semanticExpressionForGeneration () {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_optionValueExpressionForGeneration GALGAS_optionValueExpressionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_optionValueExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+  return GALGAS_optionValueExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                                      GALGAS_location::constructor_nowhere (HERE),
                                                                      GALGAS_bool::constructor_default (HERE),
                                                                      GALGAS_string::constructor_default (HERE),
@@ -6913,7 +6913,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_optionValueExpressionForGeneration GALGAS_optionValueExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_optionValueExpressionForGeneration GALGAS_optionValueExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                       const GALGAS_location & inAttribute_mLocation,
                                                                                                       const GALGAS_bool & inAttribute_mOptionComponentIsPredefined,
                                                                                                       const GALGAS_string & inAttribute_mOptionComponentName,
@@ -6984,7 +6984,7 @@ GALGAS_string cPtr_optionValueExpressionForGeneration::reader_mOptionEntryName (
 //                             Pointer class for @optionValueExpressionForGeneration class                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_optionValueExpressionForGeneration::cPtr_optionValueExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_optionValueExpressionForGeneration::cPtr_optionValueExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                                   const GALGAS_location & in_mLocation,
                                                                                   const GALGAS_bool & in_mOptionComponentIsPredefined,
                                                                                   const GALGAS_string & in_mOptionComponentName,
@@ -7126,7 +7126,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_orExpressionForGeneration GALGAS_orExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_orExpressionForGeneration GALGAS_orExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                     const GALGAS_location & inAttribute_mLocation,
                                                                                     const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
                                                                                     const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
@@ -7178,7 +7178,7 @@ GALGAS_semanticExpressionForGeneration cPtr_orExpressionForGeneration::reader_mR
 //                                 Pointer class for @orExpressionForGeneration class                                  *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_orExpressionForGeneration::cPtr_orExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_orExpressionForGeneration::cPtr_orExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                 const GALGAS_location & in_mLocation,
                                                                 const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
                                                                 const GALGAS_semanticExpressionForGeneration & in_mRightExpression
@@ -7316,7 +7316,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_orShortExpressionForGeneration GALGAS_orShortExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_orShortExpressionForGeneration GALGAS_orShortExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                               const GALGAS_location & inAttribute_mLocation,
                                                                                               const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
                                                                                               const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
@@ -7368,7 +7368,7 @@ GALGAS_semanticExpressionForGeneration cPtr_orShortExpressionForGeneration::read
 //                               Pointer class for @orShortExpressionForGeneration class                               *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_orShortExpressionForGeneration::cPtr_orShortExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_orShortExpressionForGeneration::cPtr_orShortExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                           const GALGAS_location & in_mLocation,
                                                                           const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
                                                                           const GALGAS_semanticExpressionForGeneration & in_mRightExpression
@@ -7518,7 +7518,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_readerCallExpressionForGeneration GALGAS_readerCallExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_readerCallExpressionForGeneration GALGAS_readerCallExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                     const GALGAS_location & inAttribute_mLocation,
                                                                                                     const GALGAS_methodKind & inAttribute_mKind,
                                                                                                     const GALGAS_semanticExpressionForGeneration & inAttribute_mReceiverExpression,
@@ -7646,7 +7646,7 @@ GALGAS_bool cPtr_readerCallExpressionForGeneration::reader_mHasCompilerArgument 
 //                             Pointer class for @readerCallExpressionForGeneration class                              *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_readerCallExpressionForGeneration::cPtr_readerCallExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_readerCallExpressionForGeneration::cPtr_readerCallExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                                 const GALGAS_location & in_mLocation,
                                                                                 const GALGAS_methodKind & in_mKind,
                                                                                 const GALGAS_semanticExpressionForGeneration & in_mReceiverExpression,
@@ -7800,7 +7800,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_rightShiftExpressionForGeneration GALGAS_rightShiftExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_rightShiftExpressionForGeneration GALGAS_rightShiftExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                     const GALGAS_location & inAttribute_mLocation,
                                                                                                     const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
                                                                                                     const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
@@ -7852,7 +7852,7 @@ GALGAS_semanticExpressionForGeneration cPtr_rightShiftExpressionForGeneration::r
 //                             Pointer class for @rightShiftExpressionForGeneration class                              *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_rightShiftExpressionForGeneration::cPtr_rightShiftExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_rightShiftExpressionForGeneration::cPtr_rightShiftExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                                 const GALGAS_location & in_mLocation,
                                                                                 const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
                                                                                 const GALGAS_semanticExpressionForGeneration & in_mRightExpression
@@ -7981,7 +7981,7 @@ GALGAS_semanticExpressionForGeneration () {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_selfCopyInExpressionForGeneration GALGAS_selfCopyInExpressionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_selfCopyInExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+  return GALGAS_selfCopyInExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                                     GALGAS_location::constructor_nowhere (HERE),
                                                                     GALGAS_string::constructor_default (HERE)
                                                                     COMMA_THERE) ;
@@ -7996,7 +7996,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_selfCopyInExpressionForGeneration GALGAS_selfCopyInExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_selfCopyInExpressionForGeneration GALGAS_selfCopyInExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                     const GALGAS_location & inAttribute_mLocation,
                                                                                                     const GALGAS_string & inAttribute_mSelfCppName
                                                                                                     COMMA_LOCATION_ARGS) {
@@ -8029,7 +8029,7 @@ GALGAS_string cPtr_selfCopyInExpressionForGeneration::reader_mSelfCppName (UNUSE
 //                             Pointer class for @selfCopyInExpressionForGeneration class                              *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_selfCopyInExpressionForGeneration::cPtr_selfCopyInExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_selfCopyInExpressionForGeneration::cPtr_selfCopyInExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                                 const GALGAS_location & in_mLocation,
                                                                                 const GALGAS_string & in_mSelfCppName
                                                                                 COMMA_LOCATION_ARGS) :
@@ -8163,7 +8163,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_strictGreaterExpressionForGeneration GALGAS_strictGreaterExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_strictGreaterExpressionForGeneration GALGAS_strictGreaterExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                           const GALGAS_location & inAttribute_mLocation,
                                                                                                           const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
                                                                                                           const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
@@ -8215,7 +8215,7 @@ GALGAS_semanticExpressionForGeneration cPtr_strictGreaterExpressionForGeneration
 //                            Pointer class for @strictGreaterExpressionForGeneration class                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_strictGreaterExpressionForGeneration::cPtr_strictGreaterExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_strictGreaterExpressionForGeneration::cPtr_strictGreaterExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                                       const GALGAS_location & in_mLocation,
                                                                                       const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
                                                                                       const GALGAS_semanticExpressionForGeneration & in_mRightExpression
@@ -8353,7 +8353,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_strictLowerExpressionForGeneration GALGAS_strictLowerExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_strictLowerExpressionForGeneration GALGAS_strictLowerExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                       const GALGAS_location & inAttribute_mLocation,
                                                                                                       const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
                                                                                                       const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
@@ -8405,7 +8405,7 @@ GALGAS_semanticExpressionForGeneration cPtr_strictLowerExpressionForGeneration::
 //                             Pointer class for @strictLowerExpressionForGeneration class                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_strictLowerExpressionForGeneration::cPtr_strictLowerExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_strictLowerExpressionForGeneration::cPtr_strictLowerExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                                   const GALGAS_location & in_mLocation,
                                                                                   const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
                                                                                   const GALGAS_semanticExpressionForGeneration & in_mRightExpression
@@ -8543,7 +8543,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_structFieldAccessExpressionForGeneration GALGAS_structFieldAccessExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_structFieldAccessExpressionForGeneration GALGAS_structFieldAccessExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                                   const GALGAS_location & inAttribute_mLocation,
                                                                                                                   const GALGAS_semanticExpressionForGeneration & inAttribute_mExpression,
                                                                                                                   const GALGAS_string & inAttribute_mStructFieldName
@@ -8595,7 +8595,7 @@ GALGAS_string cPtr_structFieldAccessExpressionForGeneration::reader_mStructField
 //                          Pointer class for @structFieldAccessExpressionForGeneration class                          *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_structFieldAccessExpressionForGeneration::cPtr_structFieldAccessExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_structFieldAccessExpressionForGeneration::cPtr_structFieldAccessExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                                               const GALGAS_location & in_mLocation,
                                                                                               const GALGAS_semanticExpressionForGeneration & in_mExpression,
                                                                                               const GALGAS_string & in_mStructFieldName
@@ -8733,7 +8733,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_subExpressionForGeneration GALGAS_subExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_subExpressionForGeneration GALGAS_subExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                       const GALGAS_location & inAttribute_mLocation,
                                                                                       const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
                                                                                       const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
@@ -8785,7 +8785,7 @@ GALGAS_semanticExpressionForGeneration cPtr_subExpressionForGeneration::reader_m
 //                                 Pointer class for @subExpressionForGeneration class                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_subExpressionForGeneration::cPtr_subExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_subExpressionForGeneration::cPtr_subExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                   const GALGAS_location & in_mLocation,
                                                                   const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
                                                                   const GALGAS_semanticExpressionForGeneration & in_mRightExpression
@@ -8926,11 +8926,11 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_testDynamicClassInExpressionForGeneration GALGAS_testDynamicClassInExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_testDynamicClassInExpressionForGeneration GALGAS_testDynamicClassInExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                                     const GALGAS_location & inAttribute_mLocation,
                                                                                                                     const GALGAS_semanticExpressionForGeneration & inAttribute_mReceiverExpression,
                                                                                                                     const GALGAS_dynamicTypeComparisonKind & inAttribute_mTypeComparisonKind,
-                                                                                                                    const GALGAS_unifiedTypeMapProxy & inAttribute_mCastType
+                                                                                                                    const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mCastType
                                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_testDynamicClassInExpressionForGeneration result ;
   if (inAttribute_mResultType.isValid () && inAttribute_mLocation.isValid () && inAttribute_mReceiverExpression.isValid () && inAttribute_mTypeComparisonKind.isValid () && inAttribute_mCastType.isValid ()) {
@@ -8977,8 +8977,8 @@ GALGAS_dynamicTypeComparisonKind cPtr_testDynamicClassInExpressionForGeneration:
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_testDynamicClassInExpressionForGeneration::reader_mCastType (UNUSED_LOCATION_ARGS) const {
-  GALGAS_unifiedTypeMapProxy result ;
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_testDynamicClassInExpressionForGeneration::reader_mCastType (UNUSED_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != mObjectPtr) {
     const cPtr_testDynamicClassInExpressionForGeneration * p = (const cPtr_testDynamicClassInExpressionForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_testDynamicClassInExpressionForGeneration) ;
@@ -8989,7 +8989,7 @@ GALGAS_unifiedTypeMapProxy GALGAS_testDynamicClassInExpressionForGeneration::rea
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy cPtr_testDynamicClassInExpressionForGeneration::reader_mCastType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy cPtr_testDynamicClassInExpressionForGeneration::reader_mCastType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mCastType ;
 }
 
@@ -8997,11 +8997,11 @@ GALGAS_unifiedTypeMapProxy cPtr_testDynamicClassInExpressionForGeneration::reade
 //                         Pointer class for @testDynamicClassInExpressionForGeneration class                          *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_testDynamicClassInExpressionForGeneration::cPtr_testDynamicClassInExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_testDynamicClassInExpressionForGeneration::cPtr_testDynamicClassInExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                                                 const GALGAS_location & in_mLocation,
                                                                                                 const GALGAS_semanticExpressionForGeneration & in_mReceiverExpression,
                                                                                                 const GALGAS_dynamicTypeComparisonKind & in_mTypeComparisonKind,
-                                                                                                const GALGAS_unifiedTypeMapProxy & in_mCastType
+                                                                                                const GALGAS_unifiedTypeMap_2D_proxy & in_mCastType
                                                                                                 COMMA_LOCATION_ARGS) :
 cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE),
 mAttribute_mReceiverExpression (in_mReceiverExpression),
@@ -9136,7 +9136,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_tildeExpressionForGeneration GALGAS_tildeExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_tildeExpressionForGeneration GALGAS_tildeExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                           const GALGAS_location & inAttribute_mLocation,
                                                                                           const GALGAS_semanticExpressionForGeneration & inAttribute_mExpression
                                                                                           COMMA_LOCATION_ARGS) {
@@ -9169,7 +9169,7 @@ GALGAS_semanticExpressionForGeneration cPtr_tildeExpressionForGeneration::reader
 //                                Pointer class for @tildeExpressionForGeneration class                                *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_tildeExpressionForGeneration::cPtr_tildeExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_tildeExpressionForGeneration::cPtr_tildeExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                       const GALGAS_location & in_mLocation,
                                                                       const GALGAS_semanticExpressionForGeneration & in_mExpression
                                                                       COMMA_LOCATION_ARGS) :
@@ -9291,7 +9291,7 @@ GALGAS_semanticExpressionForGeneration () {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_trueExpressionForGeneration GALGAS_trueExpressionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_trueExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+  return GALGAS_trueExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                               GALGAS_location::constructor_nowhere (HERE)
                                                               COMMA_THERE) ;
 }
@@ -9305,7 +9305,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_trueExpressionForGeneration GALGAS_trueExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_trueExpressionForGeneration GALGAS_trueExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                         const GALGAS_location & inAttribute_mLocation
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_trueExpressionForGeneration result ;
@@ -9319,7 +9319,7 @@ GALGAS_trueExpressionForGeneration GALGAS_trueExpressionForGeneration::construct
 //                                Pointer class for @trueExpressionForGeneration class                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_trueExpressionForGeneration::cPtr_trueExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_trueExpressionForGeneration::cPtr_trueExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                     const GALGAS_location & in_mLocation
                                                                     COMMA_LOCATION_ARGS) :
 cPtr_semanticExpressionForGeneration (in_mResultType, in_mLocation COMMA_THERE) {
@@ -9446,7 +9446,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unaryMinusExpressionForGeneration GALGAS_unaryMinusExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_unaryMinusExpressionForGeneration GALGAS_unaryMinusExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                     const GALGAS_location & inAttribute_mLocation,
                                                                                                     const GALGAS_semanticExpressionForGeneration & inAttribute_mExpression
                                                                                                     COMMA_LOCATION_ARGS) {
@@ -9479,7 +9479,7 @@ GALGAS_semanticExpressionForGeneration cPtr_unaryMinusExpressionForGeneration::r
 //                             Pointer class for @unaryMinusExpressionForGeneration class                              *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_unaryMinusExpressionForGeneration::cPtr_unaryMinusExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_unaryMinusExpressionForGeneration::cPtr_unaryMinusExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                                 const GALGAS_location & in_mLocation,
                                                                                 const GALGAS_semanticExpressionForGeneration & in_mExpression
                                                                                 COMMA_LOCATION_ARGS) :
@@ -9607,7 +9607,7 @@ GALGAS_semanticExpressionForGeneration () {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_varInExpressionForGeneration GALGAS_varInExpressionForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_varInExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+  return GALGAS_varInExpressionForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                                GALGAS_location::constructor_nowhere (HERE),
                                                                GALGAS_string::constructor_default (HERE),
                                                                GALGAS_string::constructor_default (HERE)
@@ -9623,7 +9623,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_varInExpressionForGeneration GALGAS_varInExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_varInExpressionForGeneration GALGAS_varInExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                           const GALGAS_location & inAttribute_mLocation,
                                                                                           const GALGAS_string & inAttribute_mCppVarName,
                                                                                           const GALGAS_string & inAttribute_mNameForCheckingFormalParameterUsing
@@ -9675,7 +9675,7 @@ GALGAS_string cPtr_varInExpressionForGeneration::reader_mNameForCheckingFormalPa
 //                                Pointer class for @varInExpressionForGeneration class                                *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_varInExpressionForGeneration::cPtr_varInExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_varInExpressionForGeneration::cPtr_varInExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                       const GALGAS_location & in_mLocation,
                                                                       const GALGAS_string & in_mCppVarName,
                                                                       const GALGAS_string & in_mNameForCheckingFormalParameterUsing
@@ -9813,7 +9813,7 @@ GALGAS_semanticExpressionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_xorExpressionForGeneration GALGAS_xorExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mResultType,
+GALGAS_xorExpressionForGeneration GALGAS_xorExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                       const GALGAS_location & inAttribute_mLocation,
                                                                                       const GALGAS_semanticExpressionForGeneration & inAttribute_mLeftExpression,
                                                                                       const GALGAS_semanticExpressionForGeneration & inAttribute_mRightExpression
@@ -9865,7 +9865,7 @@ GALGAS_semanticExpressionForGeneration cPtr_xorExpressionForGeneration::reader_m
 //                                 Pointer class for @xorExpressionForGeneration class                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_xorExpressionForGeneration::cPtr_xorExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+cPtr_xorExpressionForGeneration::cPtr_xorExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                   const GALGAS_location & in_mLocation,
                                                                   const GALGAS_semanticExpressionForGeneration & in_mLeftExpression,
                                                                   const GALGAS_semanticExpressionForGeneration & in_mRightExpression
@@ -10093,7 +10093,7 @@ GALGAS_semanticInstructionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_assignmentInstructionForGeneration GALGAS_assignmentInstructionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mTargetType,
+GALGAS_assignmentInstructionForGeneration GALGAS_assignmentInstructionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mTargetType,
                                                                                                       const GALGAS_string & inAttribute_mTargetCppName,
                                                                                                       const GALGAS_string & inAttribute_mNameForCheckingFormalParameterUsing,
                                                                                                       const GALGAS_lstringlist & inAttribute_mStructAttributeList,
@@ -10108,8 +10108,8 @@ GALGAS_assignmentInstructionForGeneration GALGAS_assignmentInstructionForGenerat
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_assignmentInstructionForGeneration::reader_mTargetType (UNUSED_LOCATION_ARGS) const {
-  GALGAS_unifiedTypeMapProxy result ;
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_assignmentInstructionForGeneration::reader_mTargetType (UNUSED_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != mObjectPtr) {
     const cPtr_assignmentInstructionForGeneration * p = (const cPtr_assignmentInstructionForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_assignmentInstructionForGeneration) ;
@@ -10120,7 +10120,7 @@ GALGAS_unifiedTypeMapProxy GALGAS_assignmentInstructionForGeneration::reader_mTa
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy cPtr_assignmentInstructionForGeneration::reader_mTargetType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy cPtr_assignmentInstructionForGeneration::reader_mTargetType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTargetType ;
 }
 
@@ -10200,7 +10200,7 @@ GALGAS_semanticExpressionForGeneration cPtr_assignmentInstructionForGeneration::
 //                             Pointer class for @assignmentInstructionForGeneration class                             *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_assignmentInstructionForGeneration::cPtr_assignmentInstructionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mTargetType,
+cPtr_assignmentInstructionForGeneration::cPtr_assignmentInstructionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mTargetType,
                                                                                   const GALGAS_string & in_mTargetCppName,
                                                                                   const GALGAS_string & in_mNameForCheckingFormalParameterUsing,
                                                                                   const GALGAS_lstringlist & in_mStructAttributeList,
@@ -10351,7 +10351,7 @@ GALGAS_semanticInstructionForGeneration (inSourcePtr) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_concatInstructionForGeneration GALGAS_concatInstructionForGeneration::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
-                                                                                              const GALGAS_unifiedTypeMapProxy & inAttribute_mTargetType,
+                                                                                              const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mTargetType,
                                                                                               const GALGAS_string & inAttribute_mTargetVariableCppName,
                                                                                               const GALGAS_string & inAttribute_mNameForCheckingFormalParameterUsing,
                                                                                               const GALGAS_lstringlist & inAttribute_mStructAttributeList,
@@ -10384,8 +10384,8 @@ GALGAS_location cPtr_concatInstructionForGeneration::reader_mInstructionLocation
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_concatInstructionForGeneration::reader_mTargetType (UNUSED_LOCATION_ARGS) const {
-  GALGAS_unifiedTypeMapProxy result ;
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_concatInstructionForGeneration::reader_mTargetType (UNUSED_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != mObjectPtr) {
     const cPtr_concatInstructionForGeneration * p = (const cPtr_concatInstructionForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_concatInstructionForGeneration) ;
@@ -10396,7 +10396,7 @@ GALGAS_unifiedTypeMapProxy GALGAS_concatInstructionForGeneration::reader_mTarget
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy cPtr_concatInstructionForGeneration::reader_mTargetType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy cPtr_concatInstructionForGeneration::reader_mTargetType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTargetType ;
 }
 
@@ -10477,7 +10477,7 @@ GALGAS_semanticExpressionForGeneration cPtr_concatInstructionForGeneration::read
 //---------------------------------------------------------------------------------------------------------------------*
 
 cPtr_concatInstructionForGeneration::cPtr_concatInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
-                                                                          const GALGAS_unifiedTypeMapProxy & in_mTargetType,
+                                                                          const GALGAS_unifiedTypeMap_2D_proxy & in_mTargetType,
                                                                           const GALGAS_string & in_mTargetVariableCppName,
                                                                           const GALGAS_string & in_mNameForCheckingFormalParameterUsing,
                                                                           const GALGAS_lstringlist & in_mStructAttributeList,
@@ -10620,7 +10620,7 @@ GALGAS_semanticInstructionForGeneration () {
 GALGAS_decrementInstructionForGeneration GALGAS_decrementInstructionForGeneration::constructor_default (LOCATION_ARGS) {
   return GALGAS_decrementInstructionForGeneration::constructor_new (GALGAS_location::constructor_nowhere (HERE),
                                                                     GALGAS_string::constructor_default (HERE),
-                                                                    GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+                                                                    GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                                     GALGAS_lstringlist::constructor_emptyList (HERE)
                                                                     COMMA_THERE) ;
 }
@@ -10636,7 +10636,7 @@ GALGAS_semanticInstructionForGeneration (inSourcePtr) {
 
 GALGAS_decrementInstructionForGeneration GALGAS_decrementInstructionForGeneration::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
                                                                                                     const GALGAS_string & inAttribute_mReceiverCppName,
-                                                                                                    const GALGAS_unifiedTypeMapProxy & inAttribute_mReceiverType,
+                                                                                                    const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mReceiverType,
                                                                                                     const GALGAS_lstringlist & inAttribute_mStructAttributeList
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_decrementInstructionForGeneration result ;
@@ -10684,8 +10684,8 @@ GALGAS_string cPtr_decrementInstructionForGeneration::reader_mReceiverCppName (U
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_decrementInstructionForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
-  GALGAS_unifiedTypeMapProxy result ;
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_decrementInstructionForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != mObjectPtr) {
     const cPtr_decrementInstructionForGeneration * p = (const cPtr_decrementInstructionForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_decrementInstructionForGeneration) ;
@@ -10696,7 +10696,7 @@ GALGAS_unifiedTypeMapProxy GALGAS_decrementInstructionForGeneration::reader_mRec
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy cPtr_decrementInstructionForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy cPtr_decrementInstructionForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mReceiverType ;
 }
 
@@ -10724,7 +10724,7 @@ GALGAS_lstringlist cPtr_decrementInstructionForGeneration::reader_mStructAttribu
 
 cPtr_decrementInstructionForGeneration::cPtr_decrementInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
                                                                                 const GALGAS_string & in_mReceiverCppName,
-                                                                                const GALGAS_unifiedTypeMapProxy & in_mReceiverType,
+                                                                                const GALGAS_unifiedTypeMap_2D_proxy & in_mReceiverType,
                                                                                 const GALGAS_lstringlist & in_mStructAttributeList
                                                                                 COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionForGeneration (THERE),
@@ -12547,7 +12547,7 @@ GALGAS_semanticInstructionForGeneration () {
 GALGAS_incrementInstructionForGeneration GALGAS_incrementInstructionForGeneration::constructor_default (LOCATION_ARGS) {
   return GALGAS_incrementInstructionForGeneration::constructor_new (GALGAS_location::constructor_nowhere (HERE),
                                                                     GALGAS_string::constructor_default (HERE),
-                                                                    GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+                                                                    GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                                     GALGAS_lstringlist::constructor_emptyList (HERE)
                                                                     COMMA_THERE) ;
 }
@@ -12563,7 +12563,7 @@ GALGAS_semanticInstructionForGeneration (inSourcePtr) {
 
 GALGAS_incrementInstructionForGeneration GALGAS_incrementInstructionForGeneration::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
                                                                                                     const GALGAS_string & inAttribute_mReceiverCppName,
-                                                                                                    const GALGAS_unifiedTypeMapProxy & inAttribute_mReceiverType,
+                                                                                                    const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mReceiverType,
                                                                                                     const GALGAS_lstringlist & inAttribute_mStructAttributeList
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_incrementInstructionForGeneration result ;
@@ -12611,8 +12611,8 @@ GALGAS_string cPtr_incrementInstructionForGeneration::reader_mReceiverCppName (U
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_incrementInstructionForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
-  GALGAS_unifiedTypeMapProxy result ;
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_incrementInstructionForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != mObjectPtr) {
     const cPtr_incrementInstructionForGeneration * p = (const cPtr_incrementInstructionForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_incrementInstructionForGeneration) ;
@@ -12623,7 +12623,7 @@ GALGAS_unifiedTypeMapProxy GALGAS_incrementInstructionForGeneration::reader_mRec
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy cPtr_incrementInstructionForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy cPtr_incrementInstructionForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mReceiverType ;
 }
 
@@ -12651,7 +12651,7 @@ GALGAS_lstringlist cPtr_incrementInstructionForGeneration::reader_mStructAttribu
 
 cPtr_incrementInstructionForGeneration::cPtr_incrementInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
                                                                                 const GALGAS_string & in_mReceiverCppName,
-                                                                                const GALGAS_unifiedTypeMapProxy & in_mReceiverType,
+                                                                                const GALGAS_unifiedTypeMap_2D_proxy & in_mReceiverType,
                                                                                 const GALGAS_lstringlist & in_mStructAttributeList
                                                                                 COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionForGeneration (THERE),
@@ -12777,7 +12777,7 @@ GALGAS_semanticInstructionForGeneration () {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_localVariableDeclarationForGeneration GALGAS_localVariableDeclarationForGeneration::constructor_default (LOCATION_ARGS) {
-  return GALGAS_localVariableDeclarationForGeneration::constructor_new (GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+  return GALGAS_localVariableDeclarationForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                                         GALGAS_string::constructor_default (HERE)
                                                                         COMMA_THERE) ;
 }
@@ -12791,7 +12791,7 @@ GALGAS_semanticInstructionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_localVariableDeclarationForGeneration GALGAS_localVariableDeclarationForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mVariableType,
+GALGAS_localVariableDeclarationForGeneration GALGAS_localVariableDeclarationForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mVariableType,
                                                                                                             const GALGAS_string & inAttribute_mCppVariableName
                                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_localVariableDeclarationForGeneration result ;
@@ -12803,8 +12803,8 @@ GALGAS_localVariableDeclarationForGeneration GALGAS_localVariableDeclarationForG
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_localVariableDeclarationForGeneration::reader_mVariableType (UNUSED_LOCATION_ARGS) const {
-  GALGAS_unifiedTypeMapProxy result ;
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_localVariableDeclarationForGeneration::reader_mVariableType (UNUSED_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != mObjectPtr) {
     const cPtr_localVariableDeclarationForGeneration * p = (const cPtr_localVariableDeclarationForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_localVariableDeclarationForGeneration) ;
@@ -12815,7 +12815,7 @@ GALGAS_unifiedTypeMapProxy GALGAS_localVariableDeclarationForGeneration::reader_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy cPtr_localVariableDeclarationForGeneration::reader_mVariableType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy cPtr_localVariableDeclarationForGeneration::reader_mVariableType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mVariableType ;
 }
 
@@ -12841,7 +12841,7 @@ GALGAS_string cPtr_localVariableDeclarationForGeneration::reader_mCppVariableNam
 //                           Pointer class for @localVariableDeclarationForGeneration class                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_localVariableDeclarationForGeneration::cPtr_localVariableDeclarationForGeneration (const GALGAS_unifiedTypeMapProxy & in_mVariableType,
+cPtr_localVariableDeclarationForGeneration::cPtr_localVariableDeclarationForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mVariableType,
                                                                                         const GALGAS_string & in_mCppVariableName
                                                                                         COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionForGeneration (THERE),
@@ -12977,7 +12977,7 @@ GALGAS_semanticInstructionForGeneration () {
 
 GALGAS_localVariableOrConstantDeclarationWithConstructorCallForGeneration GALGAS_localVariableOrConstantDeclarationWithConstructorCallForGeneration::constructor_default (LOCATION_ARGS) {
   return GALGAS_localVariableOrConstantDeclarationWithConstructorCallForGeneration::constructor_new (GALGAS_location::constructor_nowhere (HERE),
-                                                                                                     GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+                                                                                                     GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                                                                      GALGAS_bool::constructor_default (HERE),
                                                                                                      GALGAS_string::constructor_default (HERE),
                                                                                                      GALGAS_string::constructor_default (HERE),
@@ -12996,7 +12996,7 @@ GALGAS_semanticInstructionForGeneration (inSourcePtr) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_localVariableOrConstantDeclarationWithConstructorCallForGeneration GALGAS_localVariableOrConstantDeclarationWithConstructorCallForGeneration::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
-                                                                                                                                                                      const GALGAS_unifiedTypeMapProxy & inAttribute_mTargetType,
+                                                                                                                                                                      const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mTargetType,
                                                                                                                                                                       const GALGAS_bool & inAttribute_mIsConstant,
                                                                                                                                                                       const GALGAS_string & inAttribute_mTargetVariableCppName,
                                                                                                                                                                       const GALGAS_string & inAttribute_mConstructorName,
@@ -13030,8 +13030,8 @@ GALGAS_location cPtr_localVariableOrConstantDeclarationWithConstructorCallForGen
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_localVariableOrConstantDeclarationWithConstructorCallForGeneration::reader_mTargetType (UNUSED_LOCATION_ARGS) const {
-  GALGAS_unifiedTypeMapProxy result ;
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_localVariableOrConstantDeclarationWithConstructorCallForGeneration::reader_mTargetType (UNUSED_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != mObjectPtr) {
     const cPtr_localVariableOrConstantDeclarationWithConstructorCallForGeneration * p = (const cPtr_localVariableOrConstantDeclarationWithConstructorCallForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_localVariableOrConstantDeclarationWithConstructorCallForGeneration) ;
@@ -13042,7 +13042,7 @@ GALGAS_unifiedTypeMapProxy GALGAS_localVariableOrConstantDeclarationWithConstruc
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy cPtr_localVariableOrConstantDeclarationWithConstructorCallForGeneration::reader_mTargetType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy cPtr_localVariableOrConstantDeclarationWithConstructorCallForGeneration::reader_mTargetType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTargetType ;
 }
 
@@ -13141,7 +13141,7 @@ GALGAS_bool cPtr_localVariableOrConstantDeclarationWithConstructorCallForGenerat
 //---------------------------------------------------------------------------------------------------------------------*
 
 cPtr_localVariableOrConstantDeclarationWithConstructorCallForGeneration::cPtr_localVariableOrConstantDeclarationWithConstructorCallForGeneration (const GALGAS_location & in_mInstructionLocation,
-                                                                                                                                                  const GALGAS_unifiedTypeMapProxy & in_mTargetType,
+                                                                                                                                                  const GALGAS_unifiedTypeMap_2D_proxy & in_mTargetType,
                                                                                                                                                   const GALGAS_bool & in_mIsConstant,
                                                                                                                                                   const GALGAS_string & in_mTargetVariableCppName,
                                                                                                                                                   const GALGAS_string & in_mConstructorName,
@@ -13287,7 +13287,7 @@ GALGAS_semanticInstructionForGeneration () {
 
 GALGAS_localVariableOrConstantDeclarationWithDefaultConstructorForGeneration GALGAS_localVariableOrConstantDeclarationWithDefaultConstructorForGeneration::constructor_default (LOCATION_ARGS) {
   return GALGAS_localVariableOrConstantDeclarationWithDefaultConstructorForGeneration::constructor_new (GALGAS_location::constructor_nowhere (HERE),
-                                                                                                        GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+                                                                                                        GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                                                                         GALGAS_bool::constructor_default (HERE),
                                                                                                         GALGAS_string::constructor_default (HERE)
                                                                                                         COMMA_THERE) ;
@@ -13303,7 +13303,7 @@ GALGAS_semanticInstructionForGeneration (inSourcePtr) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_localVariableOrConstantDeclarationWithDefaultConstructorForGeneration GALGAS_localVariableOrConstantDeclarationWithDefaultConstructorForGeneration::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
-                                                                                                                                                                            const GALGAS_unifiedTypeMapProxy & inAttribute_mTargetType,
+                                                                                                                                                                            const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mTargetType,
                                                                                                                                                                             const GALGAS_bool & inAttribute_mIsConstant,
                                                                                                                                                                             const GALGAS_string & inAttribute_mTargetVariableCppName
                                                                                                                                                                             COMMA_LOCATION_ARGS) {
@@ -13334,8 +13334,8 @@ GALGAS_location cPtr_localVariableOrConstantDeclarationWithDefaultConstructorFor
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_localVariableOrConstantDeclarationWithDefaultConstructorForGeneration::reader_mTargetType (UNUSED_LOCATION_ARGS) const {
-  GALGAS_unifiedTypeMapProxy result ;
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_localVariableOrConstantDeclarationWithDefaultConstructorForGeneration::reader_mTargetType (UNUSED_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != mObjectPtr) {
     const cPtr_localVariableOrConstantDeclarationWithDefaultConstructorForGeneration * p = (const cPtr_localVariableOrConstantDeclarationWithDefaultConstructorForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_localVariableOrConstantDeclarationWithDefaultConstructorForGeneration) ;
@@ -13346,7 +13346,7 @@ GALGAS_unifiedTypeMapProxy GALGAS_localVariableOrConstantDeclarationWithDefaultC
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy cPtr_localVariableOrConstantDeclarationWithDefaultConstructorForGeneration::reader_mTargetType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy cPtr_localVariableOrConstantDeclarationWithDefaultConstructorForGeneration::reader_mTargetType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTargetType ;
 }
 
@@ -13391,7 +13391,7 @@ GALGAS_string cPtr_localVariableOrConstantDeclarationWithDefaultConstructorForGe
 //---------------------------------------------------------------------------------------------------------------------*
 
 cPtr_localVariableOrConstantDeclarationWithDefaultConstructorForGeneration::cPtr_localVariableOrConstantDeclarationWithDefaultConstructorForGeneration (const GALGAS_location & in_mInstructionLocation,
-                                                                                                                                                        const GALGAS_unifiedTypeMapProxy & in_mTargetType,
+                                                                                                                                                        const GALGAS_unifiedTypeMap_2D_proxy & in_mTargetType,
                                                                                                                                                         const GALGAS_bool & in_mIsConstant,
                                                                                                                                                         const GALGAS_string & in_mTargetVariableCppName
                                                                                                                                                         COMMA_LOCATION_ARGS) :
@@ -13530,7 +13530,7 @@ GALGAS_semanticInstructionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mTargetType,
+GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mTargetType,
                                                                                                                                                                         const GALGAS_bool & inAttribute_mIsConstant,
                                                                                                                                                                         const GALGAS_string & inAttribute_mCppVariableName,
                                                                                                                                                                         const GALGAS_semanticExpressionForGeneration & inAttribute_mSourceExpression
@@ -13544,8 +13544,8 @@ GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration GALGA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::reader_mTargetType (UNUSED_LOCATION_ARGS) const {
-  GALGAS_unifiedTypeMapProxy result ;
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::reader_mTargetType (UNUSED_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != mObjectPtr) {
     const cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration * p = (const cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration) ;
@@ -13556,7 +13556,7 @@ GALGAS_unifiedTypeMapProxy GALGAS_localVariableOrConstantDeclarationWithSourceEx
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::reader_mTargetType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::reader_mTargetType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTargetType ;
 }
 
@@ -13618,7 +13618,7 @@ GALGAS_semanticExpressionForGeneration cPtr_localVariableOrConstantDeclarationWi
 //            Pointer class for @localVariableOrConstantDeclarationWithSourceExpressionForGeneration class             *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mTargetType,
+cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mTargetType,
                                                                                                                                                     const GALGAS_bool & in_mIsConstant,
                                                                                                                                                     const GALGAS_string & in_mCppVariableName,
                                                                                                                                                     const GALGAS_semanticExpressionForGeneration & in_mSourceExpression
@@ -14588,13 +14588,13 @@ GALGAS_semanticInstructionForGeneration (inSourcePtr) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_methodCallInstructionForGeneration GALGAS_methodCallInstructionForGeneration::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
-                                                                                                      const GALGAS_unifiedTypeMapProxy & inAttribute_mReceiverType,
+                                                                                                      const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mReceiverType,
                                                                                                       const GALGAS_semanticExpressionForGeneration & inAttribute_mReceiverExpression,
                                                                                                       const GALGAS_string & inAttribute_mMethodName,
                                                                                                       const GALGAS_methodKind & inAttribute_mKind,
                                                                                                       const GALGAS_actualParameterListForGeneration & inAttribute_mActualParameterList,
                                                                                                       const GALGAS_bool & inAttribute_mHasCompilerArgument,
-                                                                                                      const GALGAS_unifiedTypeMapProxy & inAttribute_mMethodBaseType
+                                                                                                      const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mMethodBaseType
                                                                                                       COMMA_LOCATION_ARGS) {
   GALGAS_methodCallInstructionForGeneration result ;
   if (inAttribute_mInstructionLocation.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mReceiverExpression.isValid () && inAttribute_mMethodName.isValid () && inAttribute_mKind.isValid () && inAttribute_mActualParameterList.isValid () && inAttribute_mHasCompilerArgument.isValid () && inAttribute_mMethodBaseType.isValid ()) {
@@ -14623,8 +14623,8 @@ GALGAS_location cPtr_methodCallInstructionForGeneration::reader_mInstructionLoca
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_methodCallInstructionForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
-  GALGAS_unifiedTypeMapProxy result ;
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_methodCallInstructionForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != mObjectPtr) {
     const cPtr_methodCallInstructionForGeneration * p = (const cPtr_methodCallInstructionForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_methodCallInstructionForGeneration) ;
@@ -14635,7 +14635,7 @@ GALGAS_unifiedTypeMapProxy GALGAS_methodCallInstructionForGeneration::reader_mRe
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy cPtr_methodCallInstructionForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy cPtr_methodCallInstructionForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mReceiverType ;
 }
 
@@ -14731,8 +14731,8 @@ GALGAS_bool cPtr_methodCallInstructionForGeneration::reader_mHasCompilerArgument
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_methodCallInstructionForGeneration::reader_mMethodBaseType (UNUSED_LOCATION_ARGS) const {
-  GALGAS_unifiedTypeMapProxy result ;
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_methodCallInstructionForGeneration::reader_mMethodBaseType (UNUSED_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != mObjectPtr) {
     const cPtr_methodCallInstructionForGeneration * p = (const cPtr_methodCallInstructionForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_methodCallInstructionForGeneration) ;
@@ -14743,7 +14743,7 @@ GALGAS_unifiedTypeMapProxy GALGAS_methodCallInstructionForGeneration::reader_mMe
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy cPtr_methodCallInstructionForGeneration::reader_mMethodBaseType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy cPtr_methodCallInstructionForGeneration::reader_mMethodBaseType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mMethodBaseType ;
 }
 
@@ -14752,13 +14752,13 @@ GALGAS_unifiedTypeMapProxy cPtr_methodCallInstructionForGeneration::reader_mMeth
 //---------------------------------------------------------------------------------------------------------------------*
 
 cPtr_methodCallInstructionForGeneration::cPtr_methodCallInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
-                                                                                  const GALGAS_unifiedTypeMapProxy & in_mReceiverType,
+                                                                                  const GALGAS_unifiedTypeMap_2D_proxy & in_mReceiverType,
                                                                                   const GALGAS_semanticExpressionForGeneration & in_mReceiverExpression,
                                                                                   const GALGAS_string & in_mMethodName,
                                                                                   const GALGAS_methodKind & in_mKind,
                                                                                   const GALGAS_actualParameterListForGeneration & in_mActualParameterList,
                                                                                   const GALGAS_bool & in_mHasCompilerArgument,
-                                                                                  const GALGAS_unifiedTypeMapProxy & in_mMethodBaseType
+                                                                                  const GALGAS_unifiedTypeMap_2D_proxy & in_mMethodBaseType
                                                                                   COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionForGeneration (THERE),
 mAttribute_mInstructionLocation (in_mInstructionLocation),
@@ -14925,12 +14925,12 @@ GALGAS_semanticInstructionForGeneration (inSourcePtr) {
 GALGAS_modifierCallInstructionForGeneration GALGAS_modifierCallInstructionForGeneration::constructor_new (const GALGAS_string & inAttribute_mReceiverCppName,
                                                                                                           const GALGAS_string & inAttribute_mReceiverBaseName,
                                                                                                           const GALGAS_lstringlist & inAttribute_mReceiverStructAttributes,
-                                                                                                          const GALGAS_unifiedTypeMapProxy & inAttribute_mReceiverType,
+                                                                                                          const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mReceiverType,
                                                                                                           const GALGAS_lstring & inAttribute_mModifierName,
                                                                                                           const GALGAS_methodKind & inAttribute_mKind,
                                                                                                           const GALGAS_actualParameterListForGeneration & inAttribute_mActualParameterList,
                                                                                                           const GALGAS_bool & inAttribute_mHasCompilerArgument,
-                                                                                                          const GALGAS_unifiedTypeMapProxy & inAttribute_mMethodBaseType
+                                                                                                          const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mMethodBaseType
                                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_modifierCallInstructionForGeneration result ;
   if (inAttribute_mReceiverCppName.isValid () && inAttribute_mReceiverBaseName.isValid () && inAttribute_mReceiverStructAttributes.isValid () && inAttribute_mReceiverType.isValid () && inAttribute_mModifierName.isValid () && inAttribute_mKind.isValid () && inAttribute_mActualParameterList.isValid () && inAttribute_mHasCompilerArgument.isValid () && inAttribute_mMethodBaseType.isValid ()) {
@@ -14995,8 +14995,8 @@ GALGAS_lstringlist cPtr_modifierCallInstructionForGeneration::reader_mReceiverSt
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_modifierCallInstructionForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
-  GALGAS_unifiedTypeMapProxy result ;
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_modifierCallInstructionForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != mObjectPtr) {
     const cPtr_modifierCallInstructionForGeneration * p = (const cPtr_modifierCallInstructionForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_modifierCallInstructionForGeneration) ;
@@ -15007,7 +15007,7 @@ GALGAS_unifiedTypeMapProxy GALGAS_modifierCallInstructionForGeneration::reader_m
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy cPtr_modifierCallInstructionForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy cPtr_modifierCallInstructionForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mReceiverType ;
 }
 
@@ -15085,8 +15085,8 @@ GALGAS_bool cPtr_modifierCallInstructionForGeneration::reader_mHasCompilerArgume
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_modifierCallInstructionForGeneration::reader_mMethodBaseType (UNUSED_LOCATION_ARGS) const {
-  GALGAS_unifiedTypeMapProxy result ;
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_modifierCallInstructionForGeneration::reader_mMethodBaseType (UNUSED_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != mObjectPtr) {
     const cPtr_modifierCallInstructionForGeneration * p = (const cPtr_modifierCallInstructionForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_modifierCallInstructionForGeneration) ;
@@ -15097,7 +15097,7 @@ GALGAS_unifiedTypeMapProxy GALGAS_modifierCallInstructionForGeneration::reader_m
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy cPtr_modifierCallInstructionForGeneration::reader_mMethodBaseType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy cPtr_modifierCallInstructionForGeneration::reader_mMethodBaseType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mMethodBaseType ;
 }
 
@@ -15108,12 +15108,12 @@ GALGAS_unifiedTypeMapProxy cPtr_modifierCallInstructionForGeneration::reader_mMe
 cPtr_modifierCallInstructionForGeneration::cPtr_modifierCallInstructionForGeneration (const GALGAS_string & in_mReceiverCppName,
                                                                                       const GALGAS_string & in_mReceiverBaseName,
                                                                                       const GALGAS_lstringlist & in_mReceiverStructAttributes,
-                                                                                      const GALGAS_unifiedTypeMapProxy & in_mReceiverType,
+                                                                                      const GALGAS_unifiedTypeMap_2D_proxy & in_mReceiverType,
                                                                                       const GALGAS_lstring & in_mModifierName,
                                                                                       const GALGAS_methodKind & in_mKind,
                                                                                       const GALGAS_actualParameterListForGeneration & in_mActualParameterList,
                                                                                       const GALGAS_bool & in_mHasCompilerArgument,
-                                                                                      const GALGAS_unifiedTypeMapProxy & in_mMethodBaseType
+                                                                                      const GALGAS_unifiedTypeMap_2D_proxy & in_mMethodBaseType
                                                                                       COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionForGeneration (THERE),
 mAttribute_mReceiverCppName (in_mReceiverCppName),
@@ -15266,7 +15266,7 @@ GALGAS_semanticInstructionForGeneration () {
 
 GALGAS_plusEqualnstructionForGeneration GALGAS_plusEqualnstructionForGeneration::constructor_default (LOCATION_ARGS) {
   return GALGAS_plusEqualnstructionForGeneration::constructor_new (GALGAS_string::constructor_default (HERE),
-                                                                   GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+                                                                   GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                                    GALGAS_string::constructor_default (HERE),
                                                                    GALGAS_location::constructor_nowhere (HERE),
                                                                    GALGAS_lstringlist::constructor_emptyList (HERE),
@@ -15284,7 +15284,7 @@ GALGAS_semanticInstructionForGeneration (inSourcePtr) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_plusEqualnstructionForGeneration GALGAS_plusEqualnstructionForGeneration::constructor_new (const GALGAS_string & inAttribute_mReceiverCppName,
-                                                                                                  const GALGAS_unifiedTypeMapProxy & inAttribute_mTargetType,
+                                                                                                  const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mTargetType,
                                                                                                   const GALGAS_string & inAttribute_mNameForCheckingFormalParameterUsing,
                                                                                                   const GALGAS_location & inAttribute_mInstructionLocation,
                                                                                                   const GALGAS_lstringlist & inAttribute_mStructAttributeList,
@@ -15317,8 +15317,8 @@ GALGAS_string cPtr_plusEqualnstructionForGeneration::reader_mReceiverCppName (UN
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_plusEqualnstructionForGeneration::reader_mTargetType (UNUSED_LOCATION_ARGS) const {
-  GALGAS_unifiedTypeMapProxy result ;
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_plusEqualnstructionForGeneration::reader_mTargetType (UNUSED_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != mObjectPtr) {
     const cPtr_plusEqualnstructionForGeneration * p = (const cPtr_plusEqualnstructionForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_plusEqualnstructionForGeneration) ;
@@ -15329,7 +15329,7 @@ GALGAS_unifiedTypeMapProxy GALGAS_plusEqualnstructionForGeneration::reader_mTarg
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy cPtr_plusEqualnstructionForGeneration::reader_mTargetType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy cPtr_plusEqualnstructionForGeneration::reader_mTargetType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTargetType ;
 }
 
@@ -15410,7 +15410,7 @@ GALGAS_semanticExpressionListForGeneration cPtr_plusEqualnstructionForGeneration
 //---------------------------------------------------------------------------------------------------------------------*
 
 cPtr_plusEqualnstructionForGeneration::cPtr_plusEqualnstructionForGeneration (const GALGAS_string & in_mReceiverCppName,
-                                                                              const GALGAS_unifiedTypeMapProxy & in_mTargetType,
+                                                                              const GALGAS_unifiedTypeMap_2D_proxy & in_mTargetType,
                                                                               const GALGAS_string & in_mNameForCheckingFormalParameterUsing,
                                                                               const GALGAS_location & in_mInstructionLocation,
                                                                               const GALGAS_lstringlist & in_mStructAttributeList,
@@ -15880,7 +15880,7 @@ GALGAS_semanticInstructionForGeneration (inSourcePtr) {
 
 GALGAS_readWriteWithInstructionForGeneration GALGAS_readWriteWithInstructionForGeneration::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
                                                                                                             const GALGAS_string & inAttribute_mReceiverVariableCppName,
-                                                                                                            const GALGAS_unifiedTypeMapProxy & inAttribute_mReceiverType,
+                                                                                                            const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mReceiverType,
                                                                                                             const GALGAS_lstringlist & inAttribute_mStructAttributeList,
                                                                                                             const GALGAS_string & inAttribute_mObjectArrayCppName,
                                                                                                             const GALGAS_semanticExpressionForGeneration & inAttribute_mKeyExpression,
@@ -15933,8 +15933,8 @@ GALGAS_string cPtr_readWriteWithInstructionForGeneration::reader_mReceiverVariab
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_readWriteWithInstructionForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
-  GALGAS_unifiedTypeMapProxy result ;
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_readWriteWithInstructionForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != mObjectPtr) {
     const cPtr_readWriteWithInstructionForGeneration * p = (const cPtr_readWriteWithInstructionForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_readWriteWithInstructionForGeneration) ;
@@ -15945,7 +15945,7 @@ GALGAS_unifiedTypeMapProxy GALGAS_readWriteWithInstructionForGeneration::reader_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy cPtr_readWriteWithInstructionForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy cPtr_readWriteWithInstructionForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mReceiverType ;
 }
 
@@ -16063,7 +16063,7 @@ GALGAS_semanticInstructionListForGeneration cPtr_readWriteWithInstructionForGene
 
 cPtr_readWriteWithInstructionForGeneration::cPtr_readWriteWithInstructionForGeneration (const GALGAS_location & in_mInstructionLocation,
                                                                                         const GALGAS_string & in_mReceiverVariableCppName,
-                                                                                        const GALGAS_unifiedTypeMapProxy & in_mReceiverType,
+                                                                                        const GALGAS_unifiedTypeMap_2D_proxy & in_mReceiverType,
                                                                                         const GALGAS_lstringlist & in_mStructAttributeList,
                                                                                         const GALGAS_string & in_mObjectArrayCppName,
                                                                                         const GALGAS_semanticExpressionForGeneration & in_mKeyExpression,
@@ -16412,7 +16412,7 @@ GALGAS_semanticInstructionForGeneration (inSourcePtr) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_selfModifierCallInstructionForGeneration GALGAS_selfModifierCallInstructionForGeneration::constructor_new (const GALGAS_string & inAttribute_mSelfCppName,
-                                                                                                                  const GALGAS_unifiedTypeMapProxy & inAttribute_mReceiverType,
+                                                                                                                  const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mReceiverType,
                                                                                                                   const GALGAS_lstring & inAttribute_mModifierName,
                                                                                                                   const GALGAS_methodKind & inAttribute_mKind,
                                                                                                                   const GALGAS_actualParameterListForGeneration & inAttribute_mActualParameterList,
@@ -16445,8 +16445,8 @@ GALGAS_string cPtr_selfModifierCallInstructionForGeneration::reader_mSelfCppName
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_selfModifierCallInstructionForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
-  GALGAS_unifiedTypeMapProxy result ;
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_selfModifierCallInstructionForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != mObjectPtr) {
     const cPtr_selfModifierCallInstructionForGeneration * p = (const cPtr_selfModifierCallInstructionForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_selfModifierCallInstructionForGeneration) ;
@@ -16457,7 +16457,7 @@ GALGAS_unifiedTypeMapProxy GALGAS_selfModifierCallInstructionForGeneration::read
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy cPtr_selfModifierCallInstructionForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy cPtr_selfModifierCallInstructionForGeneration::reader_mReceiverType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mReceiverType ;
 }
 
@@ -16538,7 +16538,7 @@ GALGAS_bool cPtr_selfModifierCallInstructionForGeneration::reader_mHasCompilerAr
 //---------------------------------------------------------------------------------------------------------------------*
 
 cPtr_selfModifierCallInstructionForGeneration::cPtr_selfModifierCallInstructionForGeneration (const GALGAS_string & in_mSelfCppName,
-                                                                                              const GALGAS_unifiedTypeMapProxy & in_mReceiverType,
+                                                                                              const GALGAS_unifiedTypeMap_2D_proxy & in_mReceiverType,
                                                                                               const GALGAS_lstring & in_mModifierName,
                                                                                               const GALGAS_methodKind & in_mKind,
                                                                                               const GALGAS_actualParameterListForGeneration & in_mActualParameterList,
@@ -17041,7 +17041,7 @@ GALGAS_semanticInstructionForGeneration (inSourcePtr) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_switchInstructionForGeneration GALGAS_switchInstructionForGeneration::constructor_new (const GALGAS_unifiedTypeMapProxy & inAttribute_mEnumType,
+GALGAS_switchInstructionForGeneration GALGAS_switchInstructionForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mEnumType,
                                                                                               const GALGAS_semanticExpressionForGeneration & inAttribute_mSwitchExpression,
                                                                                               const GALGAS_switchBranchesForGeneration & inAttribute_mBranches
                                                                                               COMMA_LOCATION_ARGS) {
@@ -17054,8 +17054,8 @@ GALGAS_switchInstructionForGeneration GALGAS_switchInstructionForGeneration::con
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_switchInstructionForGeneration::reader_mEnumType (UNUSED_LOCATION_ARGS) const {
-  GALGAS_unifiedTypeMapProxy result ;
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_switchInstructionForGeneration::reader_mEnumType (UNUSED_LOCATION_ARGS) const {
+  GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != mObjectPtr) {
     const cPtr_switchInstructionForGeneration * p = (const cPtr_switchInstructionForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_switchInstructionForGeneration) ;
@@ -17066,7 +17066,7 @@ GALGAS_unifiedTypeMapProxy GALGAS_switchInstructionForGeneration::reader_mEnumTy
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy cPtr_switchInstructionForGeneration::reader_mEnumType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy cPtr_switchInstructionForGeneration::reader_mEnumType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mEnumType ;
 }
 
@@ -17110,7 +17110,7 @@ GALGAS_switchBranchesForGeneration cPtr_switchInstructionForGeneration::reader_m
 //                               Pointer class for @switchInstructionForGeneration class                               *
 //---------------------------------------------------------------------------------------------------------------------*
 
-cPtr_switchInstructionForGeneration::cPtr_switchInstructionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mEnumType,
+cPtr_switchInstructionForGeneration::cPtr_switchInstructionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mEnumType,
                                                                           const GALGAS_semanticExpressionForGeneration & in_mSwitchExpression,
                                                                           const GALGAS_switchBranchesForGeneration & in_mBranches
                                                                           COMMA_LOCATION_ARGS) :

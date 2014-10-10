@@ -30,8 +30,8 @@ routine enterModifierWithInputArgument
   ??@string inModifierName
   ??@bool inHasCompilerArgument
 :
-  @unifiedTypeMapProxy argumentTypeIndex ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgumentTypeName ?argumentTypeIndex] ;
+  @unifiedTypeMap-proxy argumentTypeIndex ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgumentTypeName ?argumentTypeIndex] ;
   @formalParameterSignature argList [emptyList] ;
   argList += !["" nowhere] !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !inInputArgumentName ;
   [!?ioModifierMap insertOrReplace
@@ -54,8 +54,8 @@ routine enterModifierWithOutputArgument
   ??@string inModifierName
   ??@bool inHasCompilerArgument
 :
-  @unifiedTypeMapProxy argumentTypeIndex ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inOutputArgumentTypeName ?argumentTypeIndex] ;
+  @unifiedTypeMap-proxy argumentTypeIndex ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inOutputArgumentTypeName ?argumentTypeIndex] ;
   @formalParameterSignature argList [emptyList] ;
   argList += !["" nowhere] !argumentTypeIndex ![@formalArgumentPassingModeAST argumentOut] !inOutputArgumentName ;
   [!?ioModifierMap insertOrReplace
@@ -81,10 +81,10 @@ routine enterModifierWith2InputArguments
   ??@bool inHasCompilerArgument
 :
   @formalParameterSignature argList [emptyList] ;
-  @unifiedTypeMapProxy argumentTypeIndex ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgument1TypeName ?argumentTypeIndex] ;
+  @unifiedTypeMap-proxy argumentTypeIndex ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgument1TypeName ?argumentTypeIndex] ;
   argList += !["" nowhere] !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !inInputArgument1Name ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgument2TypeName ?argumentTypeIndex] ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgument2TypeName ?argumentTypeIndex] ;
   argList += !["" nowhere] !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !inInputArgument2Name ;
   [!?ioModifierMap insertOrReplace
     ![@lstring new !inModifierName !here]

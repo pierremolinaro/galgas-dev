@@ -74,10 +74,10 @@ end routine ;
 
 routine checkReaderSignatures
   ??@formalInputParameterListForGeneration inTestedSignature
-  ??@unifiedTypeMapProxy inReturnType
+  ??@unifiedTypeMap-proxy inReturnType
   ??@location inErrorLocation
   ??@functionSignature inReferenceSignature
-  ??@unifiedTypeMapProxy inInheritedReturnType
+  ??@unifiedTypeMap-proxy inInheritedReturnType
   ??@location inReferenceLocation
 :
   if [inReturnType key] != [inInheritedReturnType key] then
@@ -130,7 +130,7 @@ override method @predefinedTypeAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"Predefined type " . mPredefinedTypeName
     ![@primitiveTypeForGeneration new
-      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !mPredefinedTypeName !here]]
+      ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap ![@lstring new !mPredefinedTypeName !here]]
       !mPredefinedTypeName
       !mKind
     ]
@@ -142,7 +142,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 map @attributeIndexMap {
-  @unifiedTypeMapProxy mAttributeTypeIndex ;
+  @unifiedTypeMap-proxy mAttributeTypeIndex ;
   insert insertKey error message "the '%K' attribute is already declared" ;
   search searchKey error message "the '%K' attribute is not declared" ;
 }
@@ -158,7 +158,7 @@ override method @listDeclarationAST semanticAnalysis
   @typedAttributeList typedAttributeList [emptyList] ;
   @attributeIndexMap attributeMap [emptyMap] ;
   foreach mAttributeList do
-    const @unifiedTypeMapProxy t [searchKey !inSemanticContext->mTypeMap !mAttributeTypeName] ;
+    const @unifiedTypeMap-proxy t [searchKey !inSemanticContext->mTypeMap !mAttributeTypeName] ;
     var hasGetter := true ;
     var hasSetter := false ;
     foreach mFeatureList do
@@ -188,8 +188,8 @@ override method @listDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"list type " . mListTypeName
     ![@listTypeForGeneration new
-      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mListTypeName]
-      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !mListTypeName->string . elementTypeNameSuffix [] !mListTypeName->location]]
+      ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mListTypeName]
+      ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap ![@lstring new !mListTypeName->string . elementTypeNameSuffix [] !mListTypeName->location]]
       !typedAttributeList
     ]
   !""
@@ -208,7 +208,7 @@ override method @sortedListDeclarationAST semanticAnalysis
   @typedAttributeList typedAttributeList [emptyList] ;
   @attributeIndexMap attributeMap [emptyMap] ;
   foreach mAttributeList do
-    const t := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAttributeTypeName] ;
+    const t := [@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mAttributeTypeName] ;
     @bool hasSetter := true ;
     @bool hasGetter := true ;
     typedAttributeList +=
@@ -223,7 +223,7 @@ override method @sortedListDeclarationAST semanticAnalysis
   @stringset attributesUsedForSorting [emptySet] ;
   @sortDescriptorListForGeneration sortDescriptorList [emptyList] ;
   foreach mSortDescriptorList do
-    [attributeMap searchKey !mSortedAttributeName ??@unifiedTypeMapProxy type] ;
+    [attributeMap searchKey !mSortedAttributeName ??@unifiedTypeMap-proxy type] ;
     sortDescriptorList += !type ![mSortedAttributeName string] !mAscending ;
     if [attributesUsedForSorting hasKey ![mSortedAttributeName string]] then
       error mSortedAttributeName : "the '" . mSortedAttributeName . "' is already used for sorting" ;
@@ -234,8 +234,8 @@ override method @sortedListDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"sorted list " . mSortedListTypeName
     ![@sortedListTypeForGeneration new
-      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mSortedListTypeName]
-      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !mSortedListTypeName->string . elementTypeNameSuffix [] !mSortedListTypeName->location]]
+      ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mSortedListTypeName]
+      ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap ![@lstring new !mSortedListTypeName->string . elementTypeNameSuffix [] !mSortedListTypeName->location]]
       !typedAttributeList
       !sortDescriptorList
     ]
@@ -266,7 +266,7 @@ override method @structDeclarationAST semanticAnalysis
   @typedAttributeList typedAttributeList [emptyList] ;
   @attributeIndexMap attributeMap [emptyMap] ;
   foreach mAttributeList do
-    const t := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAttributeTypeName] ;
+    const t := [@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mAttributeTypeName] ;
     foreach mFeatureList do
       error mValue : "a struct attribute does not accept any feature" ;
     end foreach ;
@@ -291,7 +291,7 @@ override method @structDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"struct " . mStructTypeName
     ![@structTypeForGeneration new
-      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mStructTypeName]
+      ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mStructTypeName]
       !typedAttributeList
     ]
     !"~"
@@ -306,9 +306,9 @@ override method @graphDeclarationAST semanticAnalysis
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
-  const graphTypeProxy := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mGraphTypeName] ;
-  const associatedListTypeProxy := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAssociatedListTypeName] ;
-  const associatedListElementTypeProxy := [@unifiedTypeMapProxy searchKey 
+  const graphTypeProxy := [@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mGraphTypeName] ;
+  const associatedListTypeProxy := [@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mAssociatedListTypeName] ;
+  const associatedListElementTypeProxy := [@unifiedTypeMap-proxy searchKey 
     !inSemanticContext->mTypeMap
     ![@lstring new !mAssociatedListTypeName->string .elementTypeNameSuffix [] !mAssociatedListTypeName->location]
   ] ;
@@ -346,7 +346,7 @@ override method @externTypeDeclarationAST semanticAnalysis
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
-  const externTypeProxy := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mExternTypeName] ;
+  const externTypeProxy := [@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mExternTypeName] ;
 #---
   ioSemanticDeclarationListForGeneration +=
     !"extern type " . mExternTypeName
@@ -377,7 +377,7 @@ override method @enumDeclarationAST semanticAnalysis
     @unifiedTypeMapProxyList associatedTypeList := {} ;
     @stringset associatedValueNameSet := {} ;
     for () in mAssociatedValueDefinitionList do
-      const associatedTypeProxy := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mValue0] ;
+      const associatedTypeProxy := [@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mValue0] ;
       associatedTypeList += !associatedTypeProxy ;
       if [associatedValueNameSet hasKey !mValue1->string] then
         error mValue1 : "duplicated name" ;
@@ -391,7 +391,7 @@ override method @enumDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"enum " . mEnumTypeName
     ![@enumTypeForGeneration new
-      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mEnumTypeName]
+      ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mEnumTypeName]
       !enumConstantListForGeneration
     ]
     !""
@@ -410,8 +410,8 @@ override method @arrayDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"array " . mArrayTypeName
     ![@arrayTypeForGeneration new
-      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mArrayTypeName]
-      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mElementTypeName]
+      ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mArrayTypeName]
+      ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mElementTypeName]
       ![mDimension uint]
     ]
     !""
@@ -445,10 +445,10 @@ override method @listmapDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"list map " . mListmapTypeName
     ![@listmapTypeForGeneration new
-      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mListmapTypeName]
-      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAssociatedListTypeName]
+      ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mListmapTypeName]
+      ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mAssociatedListTypeName]
       !listTypeAttributeList
-      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !mListmapTypeName->string . elementTypeNameSuffix [] !mListmapTypeName->location]]
+      ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap ![@lstring new !mListmapTypeName->string . elementTypeNameSuffix [] !mListmapTypeName->location]]
     ]
     !""
   ;
@@ -531,7 +531,7 @@ override method @mapDeclarationAST semanticAnalysis
   @typedAttributeList typedAttributeList [emptyList] ;
   @attributeIndexMap attributeMap [emptyMap] ;
   foreach mAttributeList do
-    @unifiedTypeMapProxy t [searchKey !inSemanticContext->mTypeMap !mAttributeTypeName] ;
+    @unifiedTypeMap-proxy t [searchKey !inSemanticContext->mTypeMap !mAttributeTypeName] ;
     @bool hasSetter := true ;
     @bool hasGetter := true ;
     typedAttributeList +=
@@ -593,8 +593,8 @@ override method @mapDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"map " . mMapTypeName
     ![@mapTypeForGeneration new
-      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mMapTypeName]
-      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !mMapTypeName->string . elementTypeNameSuffix [] !mMapTypeName->location]]
+      ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mMapTypeName]
+      ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap ![@lstring new !mMapTypeName->string . elementTypeNameSuffix [] !mMapTypeName->location]]
       !mMapTypeName
       !typedAttributeList
       !mInsertMethodList
@@ -871,7 +871,7 @@ override method @uniqueMapDeclarationAST semanticAnalysis
   @typedAttributeList typedAttributeList [emptyList] ;
   @attributeIndexMap attributeMap [emptyMap] ;
   foreach mAttributeList do
-    @unifiedTypeMapProxy t [searchKey !inSemanticContext->mTypeMap !mAttributeTypeName] ;
+    @unifiedTypeMap-proxy t [searchKey !inSemanticContext->mTypeMap !mAttributeTypeName] ;
     @bool hasSetter := true ;
     @bool hasGetter := true ;
     typedAttributeList +=
@@ -948,7 +948,7 @@ override method @uniqueMapDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"unique map " . mMapTypeName
     ![@uniqueMapTypeForGeneration new
-      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mMapTypeName]
+      ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mMapTypeName]
       !mMapTypeName
       !typedAttributeList
       !mInsertMethodList
@@ -984,8 +984,8 @@ override method @mapProxyDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"map proxy " . mMapProxyTypeName
     ![@mapProxyTypeForGeneration new
-      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mMapProxyTypeName]
-      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAssociatedMapTypeName]
+      ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mMapProxyTypeName]
+      ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mAssociatedMapTypeName]
       !listTypeAttributeList
       !searchMethodList
     ]
@@ -1009,7 +1009,7 @@ routine buildLocalVariableMapAndSignature
 :
   outRoutineSignature := [@formalParameterListForGeneration emptyList] ;
   foreach inRoutineSignatureAST do
-    const type := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
+    const type := [@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
     @string formalArgumentCppName ;
     switch mFormalArgumentPassingMode
     when argumentIn :
@@ -1114,7 +1114,7 @@ override method @externFunctionDeclarationAST semanticAnalysis
   foreach mFormalArgumentList do
     formalArgumentList +=
       !mFormalSelector
-      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName]
+      ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName]
       ![mFormalArgumentName string]
       !mFormalArgumentName
       !mIsConstant
@@ -1127,7 +1127,7 @@ override method @externFunctionDeclarationAST semanticAnalysis
       !"func-" . mFunctionName
       ![mFunctionName string]
       !formalArgumentList
-      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mResultTypeName]
+      ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mResultTypeName]
     ]
     !""
   ;
@@ -1146,7 +1146,7 @@ override method @externRoutineDeclarationAST semanticAnalysis
     formalArgumentList +=
       !mFormalSelector
       !mFormalArgumentPassingMode
-      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName]
+      ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName]
       !mFormalArgumentName
       ![mFormalArgumentName string]
     ;
@@ -1177,9 +1177,9 @@ override method @routineDeclarationAST semanticAnalysis
   const analysisContext := [@analysisContext new
     !inSemanticContext
     !inPredefinedTypes
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
     !""
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
   ] ;
   analyzeRoutineBody
     !analysisContext
@@ -1217,14 +1217,14 @@ override method @classDeclarationAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
 #------ Self type
-  const @unifiedTypeMapProxy selfType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mClassTypeName] ;
+  const @unifiedTypeMap-proxy selfType := [@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mClassTypeName] ;
 #------ Super type, and class features
 # A class that has a super may not have any feature
 # A class without a super class admits the 'generatedInSeparateFile' feature
-  @unifiedTypeMapProxy superClassProxy ;
+  @unifiedTypeMap-proxy superClassProxy ;
   @typedAttributeList allAttributeList ;
   if [mSuperClassName string] == "" then
-    superClassProxy := [@unifiedTypeMapProxy null] ;
+    superClassProxy := [@unifiedTypeMap-proxy null] ;
     allAttributeList := [@typedAttributeList emptyList] ;
     @bool generatedInSeparateFileFeature := false ;
     if [mClassFeatureList length] > 0 then
@@ -1240,7 +1240,7 @@ override method @classDeclarationAST semanticAnalysis
       end foreach ;
     end if ;
   else
-    superClassProxy := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mSuperClassName] ;
+    superClassProxy := [@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mSuperClassName] ;
     allAttributeList := [superClassProxy mAllTypedAttributeList] ;
     if [mClassFeatureList length] > 0 then
       foreach mClassFeatureList do
@@ -1252,7 +1252,7 @@ override method @classDeclarationAST semanticAnalysis
   @typedAttributeList typedAttributeList [emptyList] ;
   @attributeIndexMap attributeMap [emptyMap] ;
   foreach mAttributeList do
-    const t := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAttributeTypeName] ;
+    const t := [@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mAttributeTypeName] ;
     @bool hasSetter := false ;
     @bool hasGetter := true ;
     foreach mFeatureList do
@@ -1286,7 +1286,7 @@ override method @classDeclarationAST semanticAnalysis
   end foreach ;
 #------ Compute sort string (used for sorting generated code)
   @string sortString := [selfType key] ;
-  @unifiedTypeMapProxy t := [selfType mSuperType] ;
+  @unifiedTypeMap-proxy t := [selfType mSuperType] ;
   loop [inSemanticContext->mTypeMap count] + 1 :
   while not [t isNull] do
     sortString := [t key] . "." . sortString ;
@@ -1296,7 +1296,7 @@ override method @classDeclarationAST semanticAnalysis
   ioSemanticDeclarationListForGeneration +=
     !"class " . mClassTypeName
     ![@classTypeForGeneration new
-      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mClassTypeName]
+      ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mClassTypeName]
       !mIsAbstract
       !mClassTypeName
       !superClassProxy
@@ -1320,7 +1320,7 @@ routine analyzeFunctionBody
   ??@lstring inResultTypeName
   ??@location inEndOfFunctionLocation
   !@formalInputParameterListForGeneration outSignatureForGeneration
-  !@unifiedTypeMapProxy outReturnedType
+  !@unifiedTypeMap-proxy outReturnedType
   !@string outResultVariableCppName
   !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration
 :
@@ -1337,7 +1337,7 @@ routine analyzeFunctionBody
 #--- Enter formal parameters
   outSignatureForGeneration := [@formalInputParameterListForGeneration emptyList] ;
   foreach inFunctionSignature do
-    const parameterType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
+    const parameterType := [@unifiedTypeMap-proxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
     if mIsConstant then
       const @string cppName := "constinArgument_" . [[mFormalArgumentName string] identifierRepresentation] ;
       outSignatureForGeneration +=
@@ -1369,7 +1369,7 @@ routine analyzeFunctionBody
     end if ;
   end foreach ;
 #--- Enter return variable
-  outReturnedType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !inResultTypeName] ;
+  outReturnedType := [@unifiedTypeMap-proxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !inResultTypeName] ;
   outResultVariableCppName := "result_" . [inReturnVariableName identifierRepresentation] ;
   [!?variableMap insertOutputFormalArgument !inReturnVariableName !outReturnedType !outResultVariableCppName !outResultVariableCppName] ;
 #---  Analyze instruction list
@@ -1396,14 +1396,14 @@ override method @functionDeclarationAST semanticAnalysis
 #--- Analyse function body  
   @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
   @formalInputParameterListForGeneration formalInputParameterList ;
-  @unifiedTypeMapProxy returnType ;
+  @unifiedTypeMap-proxy returnType ;
   @string resultVariableCppName ;
   const analysisContext := [@analysisContext new
     !inSemanticContext
     !inPredefinedTypes
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
     !""
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
   ] ;
   analyzeFunctionBody
     !analysisContext
@@ -1445,14 +1445,14 @@ override method @onceFunctionDeclarationAST semanticAnalysis
 :
 #--- Analyse function body  
   @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
-  @unifiedTypeMapProxy returnType ;
+  @unifiedTypeMap-proxy returnType ;
   @string resultVariableCppName ;
   const analysisContext := [@analysisContext new
     !inSemanticContext
     !inPredefinedTypes
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
     !""
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
   ] ;
   analyzeFunctionBody
     !analysisContext
@@ -1528,7 +1528,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
       @templateVariableMap templateVariableMap := {} ;
       @formalInputParameterListForGeneration filewrapperTemplateFormalInputParameters [emptyList] ;
       foreach mFilewrapperTemplateFormalInputParameters do
-        @unifiedTypeMapProxy type [searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
+        @unifiedTypeMap-proxy type [searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
         const @string cppVarName := "in_" . [[mFormalArgumentName string] identifierRepresentation] ;
         [!?templateVariableMap insertKey !mFormalArgumentName !type !cppVarName] ;
         filewrapperTemplateFormalInputParameters += !mFormalTemplateSelector !type !cppVarName !mFormalArgumentName !true ;
@@ -1609,7 +1609,7 @@ override method @abstractCategoryMethodAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
 #--- Self type
-  const @unifiedTypeMapProxy selfType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
+  const @unifiedTypeMap-proxy selfType := [@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
 #--- Check self type is an abstract class
   if [selfType mTypeKindEnum] != [@typeKindEnum classType] then
     error mAbstractCategoryMethodName: "cannot declare a category method: '@" . [selfType key] . "' is not a class" ;
@@ -1622,7 +1622,7 @@ override method @abstractCategoryMethodAST semanticAnalysis
     formalParameterListForGeneration +=
       !mFormalSelector
       !mFormalArgumentPassingMode
-      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName]
+      ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName]
       !mFormalArgumentName
       ![mFormalArgumentName string]
     ;
@@ -1650,7 +1650,7 @@ override method @categoryMethodAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
 #--- Self type
-  const @unifiedTypeMapProxy selfType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
+  const @unifiedTypeMap-proxy selfType := [@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
   @string selfObjectName ;
   @string selfObjectAccessor ;
   @bool implementedAsFunction ;
@@ -1672,7 +1672,7 @@ override method @categoryMethodAST semanticAnalysis
     !inPredefinedTypes
     !selfType
     !selfObjectName
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
   ] ;
   analyzeRoutineBody
     !analysisContext
@@ -1715,14 +1715,14 @@ override method @overridingCategoryMethodAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
 #--- Self type
-  const @unifiedTypeMapProxy selfType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
+  const @unifiedTypeMap-proxy selfType := [@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
 #--- Check self type is a class
   if [selfType mTypeKindEnum] != [@typeKindEnum classType] then
     error mOverridingCategoryMethodName: "cannot declare a category method: '@" . [selfType key] . "' is not a class" ;
   end if ;
 #--- Find base type name
   @string baseTypeName := "" ;
-  @unifiedTypeMapProxy superType := [selfType mSuperType] ;
+  @unifiedTypeMap-proxy superType := [selfType mSuperType] ;
   @formalParameterSignature inheritedSignature [emptyList] ;
   @location inheritedDeclarationLocation := here ;
   loop [inSemanticContext->mTypeMap count] + 1 :
@@ -1747,7 +1747,7 @@ override method @overridingCategoryMethodAST semanticAnalysis
     !inPredefinedTypes
     !selfType
     !"object"
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
   ] ;
   analyzeRoutineBody
     !analysisContext
@@ -1799,7 +1799,7 @@ override method @overridingAbstractCategoryMethodAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration unused ioSemanticDeclarationListForGeneration
 :
 #--- Self type
-  const @unifiedTypeMapProxy selfType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
+  const @unifiedTypeMap-proxy selfType := [@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
 #--- Check type is an abstract class
   if [selfType mTypeKindEnum] != [@typeKindEnum classType] then
     error mOverridingCategoryMethodName: "cannot declare a category method: '@" . [selfType key] . "' is not a class" ;
@@ -1808,7 +1808,7 @@ override method @overridingAbstractCategoryMethodAST semanticAnalysis
   end if ;
 #--- Find base type name
   @string baseTypeName := "" ;
-  @unifiedTypeMapProxy superType := [selfType mSuperType] ;
+  @unifiedTypeMap-proxy superType := [selfType mSuperType] ;
   @formalParameterSignature inheritedSignature [emptyList] ;
   @location inheritedDeclarationLocation := here ;
   loop [inSemanticContext->mTypeMap count] + 1 :
@@ -1854,7 +1854,7 @@ override method @abstractCategoryModifierAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
 #--- Self type
-  const @unifiedTypeMapProxy selfType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
+  const @unifiedTypeMap-proxy selfType := [@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
 #--- Check self type is an abstract class
   if [selfType mTypeKindEnum] != [@typeKindEnum classType] then
     error mAbstractCategoryModifierName: "cannot declare a category modifier: '@" . [selfType key] . "' is not a class" ;
@@ -1867,7 +1867,7 @@ override method @abstractCategoryModifierAST semanticAnalysis
     formalParameterListForGeneration +=
       !mFormalSelector
       !mFormalArgumentPassingMode
-      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName]
+      ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName]
       !mFormalArgumentName
       ![mFormalArgumentName string]
     ;
@@ -1895,7 +1895,7 @@ override method @categoryModifierAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
 #--- Self type
-  const @unifiedTypeMapProxy selfType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
+  const @unifiedTypeMap-proxy selfType := [@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
   @string selfObjectName ;
   @string selfObjectAccessor ;
   @bool implementedAsFunction ;
@@ -1957,14 +1957,14 @@ override method @overridingCategoryModifierAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
 #--- Self type
-  const @unifiedTypeMapProxy selfType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
+  const @unifiedTypeMap-proxy selfType := [@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
 #--- Check self type is a class
   if [selfType mTypeKindEnum] != [@typeKindEnum classType] then
     error mOverridingCategoryModifierName: "cannot declare a category modifier: '@" . [selfType key] . "' is not a class" ;
   end if ;
 #--- Find base type name
   @string baseTypeName := "" ;
-  @unifiedTypeMapProxy superType := [selfType mSuperType] ;
+  @unifiedTypeMap-proxy superType := [selfType mSuperType] ;
   @formalParameterSignature inheritedSignature [emptyList] ;
   @location inheritedDeclarationLocation := here ;
   loop [inSemanticContext->mTypeMap count] + 1 :
@@ -2038,7 +2038,7 @@ override method @overridingAbstractCategoryModifierAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration unused ioSemanticDeclarationListForGeneration
 :
 #--- Self type
-  const @unifiedTypeMapProxy selfType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
+  const @unifiedTypeMap-proxy selfType := [@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
 #--- Check type is an abstract class
   if [selfType mTypeKindEnum] != [@typeKindEnum classType] then
     error mOverridingCategoryModifierName: "cannot declare a category modifier: '@" . [selfType key] . "' is not a class" ;
@@ -2047,7 +2047,7 @@ override method @overridingAbstractCategoryModifierAST semanticAnalysis
   end if ;
 #--- Find base type name
   @string baseTypeName := "" ;
-  @unifiedTypeMapProxy superType := [selfType mSuperType] ;
+  @unifiedTypeMap-proxy superType := [selfType mSuperType] ;
   @formalParameterSignature inheritedSignature [emptyList] ;
   @location inheritedDeclarationLocation := here ;
   loop [inSemanticContext->mTypeMap count] + 1 :
@@ -2093,7 +2093,7 @@ override method @abstractCategoryReaderAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
 #--- Self type
-  const @unifiedTypeMapProxy selfType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
+  const @unifiedTypeMap-proxy selfType := [@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
 #--- Check self type is an abstract class
   if [selfType mTypeKindEnum] != [@typeKindEnum classType] then
     error mAbstractCategoryReaderName: "cannot declare a category reader: '@" . [selfType key] . "' is not a class" ;
@@ -2105,7 +2105,7 @@ override method @abstractCategoryReaderAST semanticAnalysis
   foreach mAbstractCategoryReaderFormalInputParameterList do
     formalParameterListForGeneration +=
       !mFormalSelector
-      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName]
+      ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName]
       ![mFormalArgumentName string]
       !mFormalArgumentName
       !mIsConstant
@@ -2119,7 +2119,7 @@ override method @abstractCategoryReaderAST semanticAnalysis
       !"getter-" . mTypeName . "-" . mAbstractCategoryReaderName
       !selfType
       ![mAbstractCategoryReaderName string]
-      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAbstractCategoryReaderReturnedTypeName]
+      ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mAbstractCategoryReaderReturnedTypeName]
       !formalParameterListForGeneration
     ]
     !"~" # So that category are declared at the end of the file
@@ -2137,7 +2137,7 @@ override method @categoryReaderAST semanticAnalysis
 :
 
 #--- Self type
-  const @unifiedTypeMapProxy selfType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
+  const @unifiedTypeMap-proxy selfType := [@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
   @string selfObjectName ;
   @string selfObjectAccessor ;
   @bool implementedAsFunction ;
@@ -2157,9 +2157,9 @@ override method @categoryReaderAST semanticAnalysis
     !inPredefinedTypes
     !selfType
     !selfObjectName
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
   ] ;
-  @unifiedTypeMapProxy returnType ;
+  @unifiedTypeMap-proxy returnType ;
   @string returnVariableCppName ;
   @formalInputParameterListForGeneration formalParameterListForGeneration ;
   @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
@@ -2208,16 +2208,16 @@ override method @overridingCategoryReaderAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
 #--- Self type
-  const @unifiedTypeMapProxy selfType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
+  const @unifiedTypeMap-proxy selfType := [@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
 #--- Check self type is a class
   if [selfType mTypeKindEnum] != [@typeKindEnum classType] then
     error mOverridingCategoryReaderName: "cannot declare a category reader: '@" . [selfType key] . "' is not a class" ;
   end if ;
 #--- Find base type name
   @string baseTypeName := "" ;
-  @unifiedTypeMapProxy superType := [selfType mSuperType] ;
+  @unifiedTypeMap-proxy superType := [selfType mSuperType] ;
   @functionSignature inheritedSignature := {} ;
-  @unifiedTypeMapProxy inheritedReturnType [null] ;
+  @unifiedTypeMap-proxy inheritedReturnType [null] ;
   @location inheritedDeclarationLocation := here ;
   loop [inSemanticContext->mTypeMap count] + 1 :
   while (not [superType isNull]) & (baseTypeName == "") do
@@ -2247,7 +2247,7 @@ override method @overridingCategoryReaderAST semanticAnalysis
     !inPredefinedTypes
     !selfType
     !"object"
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
   ] ;
   analyzeFunctionBody
     !analysisContext
@@ -2262,7 +2262,7 @@ override method @overridingCategoryReaderAST semanticAnalysis
     !mOverridingCategoryReaderReturnedTypeName
     !mEndOfReaderLocation
     ??@formalInputParameterListForGeneration formalParameterListForGeneration
-    ??@unifiedTypeMapProxy returnType
+    ??@unifiedTypeMap-proxy returnType
     ??@string returnVariableCppName
     ??@semanticInstructionListForGeneration semanticInstructionListForGeneration
   ;
@@ -2305,9 +2305,9 @@ override method @overridingAbstractCategoryReaderAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration unused ioSemanticDeclarationListForGeneration
 :
 #--- Self type
-  const @unifiedTypeMapProxy selfType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
+  const @unifiedTypeMap-proxy selfType := [@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
 #--- Return type
-  const @unifiedTypeMapProxy returnType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAbstractCategoryReaderReturnedTypeName] ;
+  const @unifiedTypeMap-proxy returnType := [@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mAbstractCategoryReaderReturnedTypeName] ;
 #--- Check type is an abstract class
   if [selfType mTypeKindEnum] != [@typeKindEnum classType] then
     error mAbstractCategoryReaderName: "cannot declare a category reader: '@" . [selfType key] . "' is not a class" ;
@@ -2316,9 +2316,9 @@ override method @overridingAbstractCategoryReaderAST semanticAnalysis
   end if ;
 #--- Find base type name
   @string baseTypeName := "" ;
-  @unifiedTypeMapProxy superType := [selfType mSuperType] ;
+  @unifiedTypeMap-proxy superType := [selfType mSuperType] ;
   @functionSignature inheritedSignature := {} ;
-  @unifiedTypeMapProxy inheritedReturnType [null] ;
+  @unifiedTypeMap-proxy inheritedReturnType [null] ;
   @location inheritedDeclarationLocation := here ;
   loop [inSemanticContext->mTypeMap count] + 1 :
   while (not [superType isNull]) & (baseTypeName == "") do
@@ -2349,7 +2349,7 @@ override method @overridingAbstractCategoryReaderAST semanticAnalysis
     foreach mAbstractCategoryReaderFormalInputParameterList do
       formalParameterListForGeneration +=
         !mFormalSelector
-        ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName]
+        ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName]
         ![mFormalArgumentName string]
         !mFormalArgumentName
         !mIsConstant
@@ -2528,7 +2528,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
       for () in mFormalParametersList do
         switch mFormalArgumentPassingModeForGrammarAnalysis
         when argumentIn, argumentConstantIn :
-          const t := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mGalgasTypeNameForGrammarAnalysis] ;
+          const t := [@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mGalgasTypeNameForGrammarAnalysis] ;
           [t addHeaderFileName !?implementationFileHeader] ;
         when argumentInOut, argumentOut :
         end switch ;
@@ -2895,23 +2895,23 @@ function buildPredefinedTypes
   ??@semanticContext inSemanticContext
   ->@predefinedTypes outPredefinedTypes {
   outPredefinedTypes := [@predefinedTypes new
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"location" !here]]
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"bool" !here]]
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"char" !here]]
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"string" !here]]
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"uint" !here]]
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"sint" !here]]
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"uint64" !here]]
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"sint64" !here]]
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"double" !here]]
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"lbool" !here]]
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"lchar" !here]]
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"lstring" !here]]
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"luint" !here]]
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"lsint" !here]]
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"luint64" !here]]
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"lsint64" !here]]
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"ldouble" !here]]
+    ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"location" !here]]
+    ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"bool" !here]]
+    ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"char" !here]]
+    ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"string" !here]]
+    ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"uint" !here]]
+    ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"sint" !here]]
+    ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"uint64" !here]]
+    ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"sint64" !here]]
+    ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"double" !here]]
+    ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"lbool" !here]]
+    ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"lchar" !here]]
+    ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"lstring" !here]]
+    ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"luint" !here]]
+    ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"lsint" !here]]
+    ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"luint64" !here]]
+    ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"lsint64" !here]]
+    ![@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap ![@lstring new !"ldouble" !here]]
   ] ;
 }
 
@@ -3119,7 +3119,7 @@ routine buildNonterminalDeclarationsMap
       @formalParameterListForGeneration signatureForGeneration [emptyList] ;
       @formalParameterSignature signature [emptyList] ;
       foreach mFormalArgumentList do
-        const t := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
+        const t := [@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
         signatureForGeneration += !mFormalSelector !mFormalArgumentPassingMode !t !mFormalArgumentName ![mFormalArgumentName string] ;
         signature += !mFormalSelector !t !mFormalArgumentPassingMode !mFormalArgumentName->string ;
       end foreach ;
@@ -3310,8 +3310,8 @@ override method @inputParameterVariable analyzeInputParameter
   ?!@terminalCheckAssignementList ioTerminalCheckAssignementList
   ?!@variableMap ioVariableMap
 :
-  [!?ioVariableMap searchForWriteAccess !mActualParameterName ??@unifiedTypeMapProxy type ??@string cppName ?*] ;
-  @unifiedTypeMapProxy expectedType ;
+  [!?ioVariableMap searchForWriteAccess !mActualParameterName ??@unifiedTypeMap-proxy type ??@string cppName ?*] ;
+  @unifiedTypeMap-proxy expectedType ;
   switch inRequiredLexicalType
   when lexicalType_string : expectedType := inAnalysisContext->mPredefinedTypes->mLStringType ;
   when lexicalType_char : expectedType := inAnalysisContext->mPredefinedTypes->mLCharType ;
@@ -3344,7 +3344,7 @@ override method @inputParameterDeclaredVariable analyzeInputParameter
   ?!@variableMap ioVariableMap
 :
 #--- Expected type
-  @unifiedTypeMapProxy expectedType ;
+  @unifiedTypeMap-proxy expectedType ;
   switch inRequiredLexicalType
   when lexicalType_string : expectedType := inAnalysisContext->mPredefinedTypes->mLStringType ;
   when lexicalType_char : expectedType := inAnalysisContext->mPredefinedTypes->mLCharType ;
@@ -3356,7 +3356,7 @@ override method @inputParameterDeclaredVariable analyzeInputParameter
   end switch ;
 #--- Type is named, or should be infered ?
   if mActualParameterTypeName->string != "" then
-    const type := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mActualParameterTypeName] ;
+    const type := [@unifiedTypeMap-proxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mActualParameterTypeName] ;
     if expectedType != type then
       error mActualParameterName
       : "the '" . mActualParameterName . "' formal argument has the '@" . [type key]
@@ -3384,7 +3384,7 @@ override method @inputParameterDeclaredConstant analyzeInputParameter
   ?!@variableMap ioVariableMap
 :
 #--- Expected type
-  @unifiedTypeMapProxy expectedType ;
+  @unifiedTypeMap-proxy expectedType ;
   switch inRequiredLexicalType
   when lexicalType_string : expectedType := inAnalysisContext->mPredefinedTypes->mLStringType ;
   when lexicalType_char : expectedType := inAnalysisContext->mPredefinedTypes->mLCharType ;
@@ -3396,7 +3396,7 @@ override method @inputParameterDeclaredConstant analyzeInputParameter
   end switch ;
 #--- Type is named, or should be infered ?
   if mActualParameterTypeName->string != "" then
-    const type := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mActualParameterTypeName] ;
+    const type := [@unifiedTypeMap-proxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mActualParameterTypeName] ;
     if expectedType != type then
       error mActualParameterName
       : "the '" . mActualParameterName . "' formal argument has the '@" . [type key]
@@ -3454,7 +3454,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInVar  analyze
   if not inHasTranslateFeature then
     error mActualParameterName : "the ':>' construct requires the syntax component to be declared with 'translate' feature" ;
   end if ;
-  [!?ioVariableMap searchForWriteAccess !mActualParameterName ??@unifiedTypeMapProxy type ?* ?*] ;
+  [!?ioVariableMap searchForWriteAccess !mActualParameterName ??@unifiedTypeMap-proxy type ?* ?*] ;
   const expectedType := inAnalysisContext->mPredefinedTypes->mStringType ;
   if expectedType != type then
     error mActualParameterName
@@ -3475,7 +3475,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
     error mActualParameterName : "the ':>' construct requires the syntax component to be declared with 'translate' feature" ;
   end if ;
   const cppName := "var_" . [mActualParameterName identifierRepresentation] ;
-  const type := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mActualParameterTypeName] ;
+  const type := [@unifiedTypeMap-proxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mActualParameterTypeName] ;
   [!?ioVariableMap insertDefinedLocalVariable !mActualParameterName !type !cppName !cppName] ;
   const expectedType := inAnalysisContext->mPredefinedTypes->mStringType ;
   if expectedType != type then
@@ -3497,7 +3497,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredCons
     error mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature" ;
   end if ;
   const cppName := "var_" . [mActualParameterName identifierRepresentation] ;
-  const type := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mActualParameterTypeName] ;
+  const type := [@unifiedTypeMap-proxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mActualParameterTypeName] ;
   [!?ioVariableMap insertLocalConstant !mActualParameterName !type !cppName !cppName] ;
   const expectedType := inAnalysisContext->mPredefinedTypes->mStringType ;
   if expectedType != type then
@@ -4022,7 +4022,7 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
 #--- Variant expression
   @semanticExpressionForGeneration variant_expression ;
   [mVariantExpression analyzeSemanticExpression
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
     !inAnalysisContext
     !?ioVariableMap
     ?variant_expression
@@ -4036,7 +4036,7 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
 #--- While expression
   @semanticExpressionForGeneration while_expression ;
   [mWhileExpression analyzeSemanticExpression
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
     !inAnalysisContext
     !?ioVariableMap
     ?while_expression
@@ -4155,7 +4155,7 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
 #--- When expression
   @semanticExpressionForGeneration when_expression ;
   [mWhenExpression analyzeSemanticExpression
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
     !inAnalysisContext
     !?ioVariableMap
     ?when_expression
@@ -4266,7 +4266,7 @@ override method @syntaxSendInstruction analyzeSyntaxInstruction
   end if ;
 #--- Analyze source expression
   [mExpression analyzeSemanticExpression
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
     !inAnalysisContext
     !?ioVariableMap
     ??@semanticExpressionForGeneration expression
@@ -4387,7 +4387,7 @@ routine semanticAnalysisOfSyntaxComponent
       @formalParameterListForGeneration signatureForGeneration [emptyList] ;
       @formalParameterSignature signature [emptyList] ;
       foreach mFormalArguments do
-        const type := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
+        const type := [@unifiedTypeMap-proxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
         signatureForGeneration += !mFormalSelector !mFormalArgumentPassingMode !type !mFormalArgumentName !"argument_" . mFormalArgumentName ;
         signature += !mFormalSelector !type !mFormalArgumentPassingMode !mFormalArgumentName->string ;
       end foreach ;
@@ -4399,9 +4399,9 @@ routine semanticAnalysisOfSyntaxComponent
   const analysisContext := [@analysisContext new
     !inSemanticContext
     !inPredefinedTypes
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
     !""
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
   ] ;
 #--- Rule list
   @uint selectMethodCount := 0 ;

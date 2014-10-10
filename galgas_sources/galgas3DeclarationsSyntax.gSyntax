@@ -234,10 +234,11 @@ end rule ;
 rule <declaration>
  ?!@galgas3DeclarationAST ioDeclarations
 :
-  $uniquemap$ ;
+  $sharedmap$ ;
 #--- Map type name
-  $type_name$ ? @lstring mMapTypeName indexing uniquemapDefinition ;
-  $type_name$ ??@lstring mapProxyTypeName indexing mapProxyDefinition ;
+  $type_name$ ??@lstring mMapTypeName indexing uniquemapDefinition, mapProxyDefinition "-proxy" ;
+  const mapProxyTypeName := [@lstring new !mMapTypeName->string + "-proxy" !mMapTypeName->location] ;
+#  $type_name$ ??@lstring mapProxyTypeName indexing mapProxyDefinition ;
 #--- Map properties
   ${$ ;
   @attributeInCollectionListAST mAttributeList [emptyList] ;

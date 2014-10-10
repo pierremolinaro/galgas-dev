@@ -11,21 +11,21 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                   Category Reader '@unifiedTypeMapProxy baseType'                                   *
+//                                  Category Reader '@unifiedTypeMap-proxy baseType'                                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_unifiedTypeMapProxy categoryReader_baseType (const class GALGAS_unifiedTypeMapProxy & inObject,
-                                                          class C_Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) ;
+class GALGAS_unifiedTypeMap_2D_proxy categoryReader_baseType (const class GALGAS_unifiedTypeMap_2D_proxy & inObject,
+                                                              class C_Compiler * inCompiler
+                                                              COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                              Category method '@unifiedTypeMapProxy addHeaderFileName1'                              *
+//                             Category method '@unifiedTypeMap-proxy addHeaderFileName1'                              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void categoryMethod_addHeaderFileName_31_ (const class GALGAS_unifiedTypeMapProxy inObject,
+void categoryMethod_addHeaderFileName_31_ (const class GALGAS_unifiedTypeMap_2D_proxy inObject,
                                            class GALGAS_stringset & io_ioInclusions,
                                            class C_Compiler * inCompiler
                                            COMMA_LOCATION_ARGS) ;

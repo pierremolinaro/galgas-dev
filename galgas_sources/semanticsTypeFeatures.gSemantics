@@ -32,8 +32,8 @@ override method @stringsetPredefinedTypeAST getEnumerationList
   !@stringlist outEnumerationVariant
   !@string outEnumeratedType
 :
-  @unifiedTypeMapProxy stringTypeIndex ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?stringTypeIndex] ;
+  @unifiedTypeMap-proxy stringTypeIndex ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?stringTypeIndex] ;
   outEnumerationList := [@enumerationDescriptorList emptyList] ;
   outEnumerationList += !stringTypeIndex !"key" ;
   outEnumerationVariant := [@stringlist emptyList] ;
@@ -50,8 +50,8 @@ override method @dataPredefinedTypeAST getEnumerationList
   !@stringlist outEnumerationVariant
   !@string outEnumeratedType
 :
-  @unifiedTypeMapProxy uintTypeIndex ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !"uint" ?uintTypeIndex] ;
+  @unifiedTypeMap-proxy uintTypeIndex ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"uint" ?uintTypeIndex] ;
   outEnumerationList := [@enumerationDescriptorList emptyList] ;
   outEnumerationList += !uintTypeIndex !"data" ;
   outEnumerationVariant := [@stringlist emptyList] ;
@@ -70,8 +70,8 @@ override method @stringsetPredefinedTypeAST getModifierMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@modifierMap outModifierMap
 :
-  @unifiedTypeMapProxy stringType ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?stringType] ;
+  @unifiedTypeMap-proxy stringType ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?stringType] ;
   outModifierMap := [@modifierMap emptyMap] ;
   [!?outModifierMap insertKey
     ![@lstring new !"removeKey" !here]
@@ -252,7 +252,7 @@ override method @stringsetPredefinedTypeAST getAddAssignArgumentList
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@functionSignature outAddAssignArgumentList
 :
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !"string" ??@unifiedTypeMapProxy stringTypeIndex] ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ??@unifiedTypeMap-proxy stringTypeIndex] ;
   outAddAssignArgumentList := {!["" nowhere] !stringTypeIndex !"inString"} ;
 end method ;
 
