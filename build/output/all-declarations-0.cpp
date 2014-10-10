@@ -3719,19 +3719,19 @@ static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_true [] = {
   TO_UNICODE (0)
 } ;
 
-//--- Syntax error message for terminal '$uniquemap$' :
-static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_uniquemap [] = {
+//--- Syntax error message for terminal '$sharedmap$' :
+static const utf32 gSyntaxErrorMessage_galgas_5F_scanner_sharedmap [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
   TO_UNICODE (' '),
   TO_UNICODE ('\''),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('q'),
-  TO_UNICODE ('u'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('r'),
   TO_UNICODE ('e'),
+  TO_UNICODE ('d'),
   TO_UNICODE ('m'),
   TO_UNICODE ('a'),
   TO_UNICODE ('p'),
@@ -4730,7 +4730,7 @@ C_String C_Lexique_galgas_5F_scanner::getMessageForTerminal (const int16_t inTer
     gSyntaxErrorMessage_galgas_5F_scanner_template,
     gSyntaxErrorMessage_galgas_5F_scanner_then,
     gSyntaxErrorMessage_galgas_5F_scanner_true,
-    gSyntaxErrorMessage_galgas_5F_scanner_uniquemap,
+    gSyntaxErrorMessage_galgas_5F_scanner_sharedmap,
     gSyntaxErrorMessage_galgas_5F_scanner_unused,
     gSyntaxErrorMessage_galgas_5F_scanner_var,
     gSyntaxErrorMessage_galgas_5F_scanner_warning,
@@ -5833,6 +5833,20 @@ static const utf32 kUnicodeString_galgas_5F_scanner_setter [] = {
   TO_UNICODE (0)
 } ;
 
+//--- Unicode string for '$sharedmap$'
+static const utf32 kUnicodeString_galgas_5F_scanner_sharedmap [] = {
+  TO_UNICODE ('s'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('p'),
+  TO_UNICODE (0)
+} ;
+
 //--- Unicode string for '$sortedlist$'
 static const utf32 kUnicodeString_galgas_5F_scanner_sortedlist [] = {
   TO_UNICODE ('s'),
@@ -5937,20 +5951,6 @@ static const utf32 kUnicodeString_galgas_5F_scanner_true [] = {
   TO_UNICODE ('r'),
   TO_UNICODE ('u'),
   TO_UNICODE ('e'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$uniquemap$'
-static const utf32 kUnicodeString_galgas_5F_scanner_uniquemap [] = {
-  TO_UNICODE ('u'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('q'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('p'),
   TO_UNICODE (0)
 } ;
 
@@ -6190,7 +6190,7 @@ static const C_unicode_lexique_table_entry ktable_for_galgas_5F_scanner_galgasKe
   C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_selfcopy, 8, C_Lexique_galgas_5F_scanner::kToken_selfcopy),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_template, 8, C_Lexique_galgas_5F_scanner::kToken_template),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_semantics, 9, C_Lexique_galgas_5F_scanner::kToken_semantics),
-  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_uniquemap, 9, C_Lexique_galgas_5F_scanner::kToken_uniquemap),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_sharedmap, 9, C_Lexique_galgas_5F_scanner::kToken_sharedmap),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_sortedlist, 10, C_Lexique_galgas_5F_scanner::kToken_sortedlist),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_constructor, 11, C_Lexique_galgas_5F_scanner::kToken_constructor),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_5F_scanner_filewrapper, 11, C_Lexique_galgas_5F_scanner::kToken_filewrapper),
@@ -6835,9 +6835,9 @@ C_String C_Lexique_galgas_5F_scanner::getCurrentTokenString (const cToken * inTo
       s.appendCString ("true") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
-    case kToken_uniquemap:
+    case kToken_sharedmap:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("uniquemap") ;
+      s.appendCString ("sharedmap") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
     case kToken_unused:
@@ -8081,7 +8081,7 @@ GALGAS_stringlist C_Lexique_galgas_5F_scanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("template") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("then") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("true") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("uniquemap") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("sharedmap") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("unused") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("var") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("warning") COMMA_THERE) ;
@@ -11599,19 +11599,19 @@ static const utf32 gSyntaxErrorMessage_galgasTemplateScanner_true [] = {
   TO_UNICODE (0)
 } ;
 
-//--- Syntax error message for terminal '$uniquemap$' :
-static const utf32 gSyntaxErrorMessage_galgasTemplateScanner_uniquemap [] = {
+//--- Syntax error message for terminal '$sharedmap$' :
+static const utf32 gSyntaxErrorMessage_galgasTemplateScanner_sharedmap [] = {
   TO_UNICODE ('t'),
   TO_UNICODE ('h'),
   TO_UNICODE ('e'),
   TO_UNICODE (' '),
   TO_UNICODE ('\''),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('q'),
-  TO_UNICODE ('u'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('r'),
   TO_UNICODE ('e'),
+  TO_UNICODE ('d'),
   TO_UNICODE ('m'),
   TO_UNICODE ('a'),
   TO_UNICODE ('p'),
@@ -12583,7 +12583,7 @@ C_String C_Lexique_galgasTemplateScanner::getMessageForTerminal (const int16_t i
     gSyntaxErrorMessage_galgasTemplateScanner_template,
     gSyntaxErrorMessage_galgasTemplateScanner_then,
     gSyntaxErrorMessage_galgasTemplateScanner_true,
-    gSyntaxErrorMessage_galgasTemplateScanner_uniquemap,
+    gSyntaxErrorMessage_galgasTemplateScanner_sharedmap,
     gSyntaxErrorMessage_galgasTemplateScanner_unused,
     gSyntaxErrorMessage_galgasTemplateScanner_var,
     gSyntaxErrorMessage_galgasTemplateScanner_warning,
@@ -13718,6 +13718,20 @@ static const utf32 kUnicodeString_galgasTemplateScanner_setter [] = {
   TO_UNICODE (0)
 } ;
 
+//--- Unicode string for '$sharedmap$'
+static const utf32 kUnicodeString_galgasTemplateScanner_sharedmap [] = {
+  TO_UNICODE ('s'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('d'),
+  TO_UNICODE ('m'),
+  TO_UNICODE ('a'),
+  TO_UNICODE ('p'),
+  TO_UNICODE (0)
+} ;
+
 //--- Unicode string for '$sortedlist$'
 static const utf32 kUnicodeString_galgasTemplateScanner_sortedlist [] = {
   TO_UNICODE ('s'),
@@ -13822,20 +13836,6 @@ static const utf32 kUnicodeString_galgasTemplateScanner_true [] = {
   TO_UNICODE ('r'),
   TO_UNICODE ('u'),
   TO_UNICODE ('e'),
-  TO_UNICODE (0)
-} ;
-
-//--- Unicode string for '$uniquemap$'
-static const utf32 kUnicodeString_galgasTemplateScanner_uniquemap [] = {
-  TO_UNICODE ('u'),
-  TO_UNICODE ('n'),
-  TO_UNICODE ('i'),
-  TO_UNICODE ('q'),
-  TO_UNICODE ('u'),
-  TO_UNICODE ('e'),
-  TO_UNICODE ('m'),
-  TO_UNICODE ('a'),
-  TO_UNICODE ('p'),
   TO_UNICODE (0)
 } ;
 
@@ -14067,7 +14067,7 @@ static const C_unicode_lexique_table_entry ktable_for_galgasTemplateScanner_galg
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_selfcopy, 8, C_Lexique_galgasTemplateScanner::kToken_selfcopy),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_template, 8, C_Lexique_galgasTemplateScanner::kToken_template),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_semantics, 9, C_Lexique_galgasTemplateScanner::kToken_semantics),
-  C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_uniquemap, 9, C_Lexique_galgasTemplateScanner::kToken_uniquemap),
+  C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_sharedmap, 9, C_Lexique_galgasTemplateScanner::kToken_sharedmap),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_sortedlist, 10, C_Lexique_galgasTemplateScanner::kToken_sortedlist),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_constructor, 11, C_Lexique_galgasTemplateScanner::kToken_constructor),
   C_unicode_lexique_table_entry (kUnicodeString_galgasTemplateScanner_filewrapper, 11, C_Lexique_galgasTemplateScanner::kToken_filewrapper),
@@ -14681,9 +14681,9 @@ C_String C_Lexique_galgasTemplateScanner::getCurrentTokenString (const cToken * 
       s.appendCString ("true") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
-    case kToken_uniquemap:
+    case kToken_sharedmap:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
-      s.appendCString ("uniquemap") ;
+      s.appendCString ("sharedmap") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
     case kToken_unused:
@@ -15013,7 +15013,7 @@ static const bool kEndOfScriptInTemplateArray [150] = {
   false /* template */,
   false /* then */,
   false /* true */,
-  false /* uniquemap */,
+  false /* sharedmap */,
   false /* unused */,
   false /* var */,
   false /* warning */,
@@ -16002,7 +16002,7 @@ GALGAS_stringlist C_Lexique_galgasTemplateScanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("template") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("then") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("true") COMMA_THERE) ;
-  result.addAssign_operation (GALGAS_string ("uniquemap") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("sharedmap") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("unused") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("var") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("warning") COMMA_THERE) ;
@@ -20407,7 +20407,7 @@ GALGAS_templateInstructionSwitchBranchListForGeneration GALGAS_templateInstructi
 //---------------------------------------------------------------------------------------------------------------------*
 
 cMapElement_templateVariableMap::cMapElement_templateVariableMap (const GALGAS_lstring & inKey,
-                                                                  const GALGAS_unifiedTypeMapProxy & in_mTypeProxy,
+                                                                  const GALGAS_unifiedTypeMap_2D_proxy & in_mTypeProxy,
                                                                   const GALGAS_string & in_mCppName
                                                                   COMMA_LOCATION_ARGS) :
 cMapElement (inKey COMMA_THERE),
@@ -20504,7 +20504,7 @@ GALGAS_templateVariableMap GALGAS_templateVariableMap::reader_overriddenMap (C_C
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_templateVariableMap::addAssign_operation (const GALGAS_lstring & inKey,
-                                                      const GALGAS_unifiedTypeMapProxy & inArgument0,
+                                                      const GALGAS_unifiedTypeMap_2D_proxy & inArgument0,
                                                       const GALGAS_string & inArgument1,
                                                       C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) {
@@ -20521,7 +20521,7 @@ void GALGAS_templateVariableMap::addAssign_operation (const GALGAS_lstring & inK
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_templateVariableMap::modifier_insertKey (GALGAS_lstring inKey,
-                                                     GALGAS_unifiedTypeMapProxy inArgument0,
+                                                     GALGAS_unifiedTypeMap_2D_proxy inArgument0,
                                                      GALGAS_string inArgument1,
                                                      C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) {
@@ -20542,7 +20542,7 @@ const char * kSearchErrorMessage_templateVariableMap_searchKey = "the '%K' varia
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_templateVariableMap::method_searchKey (GALGAS_lstring inKey,
-                                                   GALGAS_unifiedTypeMapProxy & outArgument0,
+                                                   GALGAS_unifiedTypeMap_2D_proxy & outArgument0,
                                                    GALGAS_string & outArgument1,
                                                    C_Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) const {
@@ -20562,12 +20562,12 @@ void GALGAS_templateVariableMap::method_searchKey (GALGAS_lstring inKey,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_templateVariableMap::reader_mTypeProxyForKey (const GALGAS_string & inKey,
-                                                                                C_Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_templateVariableMap::reader_mTypeProxyForKey (const GALGAS_string & inKey,
+                                                                                    C_Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) const {
   const cCollectionElement * attributes = searchForReadingAttribute (inKey, inCompiler COMMA_THERE) ;
   const cMapElement_templateVariableMap * p = (const cMapElement_templateVariableMap *) attributes ;
-  GALGAS_unifiedTypeMapProxy result ;
+  GALGAS_unifiedTypeMap_2D_proxy result ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_templateVariableMap) ;
     result = p->mAttribute_mTypeProxy ;
@@ -20592,7 +20592,7 @@ GALGAS_string GALGAS_templateVariableMap::reader_mCppNameForKey (const GALGAS_st
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_templateVariableMap::modifier_setMTypeProxyForKey (GALGAS_unifiedTypeMapProxy inAttributeValue,
+void GALGAS_templateVariableMap::modifier_setMTypeProxyForKey (GALGAS_unifiedTypeMap_2D_proxy inAttributeValue,
                                                                GALGAS_string inKey,
                                                                C_Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) {
@@ -20654,7 +20654,7 @@ GALGAS_lstring cEnumerator_templateVariableMap::current_lkey (LOCATION_ARGS) con
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy cEnumerator_templateVariableMap::current_mTypeProxy (LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy cEnumerator_templateVariableMap::current_mTypeProxy (LOCATION_ARGS) const {
   const cMapElement_templateVariableMap * p = (const cMapElement_templateVariableMap *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cMapElement_templateVariableMap) ;
   return p->mAttribute_mTypeProxy ;

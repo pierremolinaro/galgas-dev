@@ -201,7 +201,7 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "template",
   "then",
   "true",
-  "uniquemap",
+  "sharedmap",
   "unused",
   "var",
   "warning",

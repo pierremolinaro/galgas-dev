@@ -198,7 +198,7 @@ class C_Lexique_galgas_5F_scanner : public C_Lexique {
    kToken_template,
    kToken_then,
    kToken_true,
-   kToken_uniquemap,
+   kToken_sharedmap,
    kToken_unused,
    kToken_var,
    kToken_warning,
@@ -533,7 +533,7 @@ class C_Lexique_galgasTemplateScanner : public C_Lexique {
    kToken_template,
    kToken_then,
    kToken_true,
-   kToken_uniquemap,
+   kToken_sharedmap,
    kToken_unused,
    kToken_var,
    kToken_warning,
@@ -6195,7 +6195,7 @@ class GALGAS_semanticExpressionForGeneration : public AC_GALGAS_class {
 //--------------------------------- Getters
   public : VIRTUAL_IN_DEBUG class GALGAS_location reader_mLocation (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapProxy reader_mResultType (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mResultType (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
@@ -6210,13 +6210,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_semanticExpressionF
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                           @unifiedTypeMapProxy map proxy                                            *
+//                                         @unifiedTypeMap_2D_proxy map proxy                                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_unifiedTypeMapProxy : public AC_GALGAS_uniqueMapProxy {
+class GALGAS_unifiedTypeMap_2D_proxy : public AC_GALGAS_uniqueMapProxy {
 //--------------------------------- Default constructor
-  public : GALGAS_unifiedTypeMapProxy (void) ;
+  public : GALGAS_unifiedTypeMap_2D_proxy (void) ;
 
 //-- Start of generic part --*
 
@@ -6224,17 +6224,17 @@ class GALGAS_unifiedTypeMapProxy : public AC_GALGAS_uniqueMapProxy {
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_unifiedTypeMapProxy extractObject (const GALGAS_object & inObject,
-                                                            C_Compiler * inCompiler
-                                                            COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_unifiedTypeMap_2D_proxy extractObject (const GALGAS_object & inObject,
+                                                                C_Compiler * inCompiler
+                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_unifiedTypeMapProxy constructor_null (LOCATION_ARGS) ;
+  public : static GALGAS_unifiedTypeMap_2D_proxy constructor_null (LOCATION_ARGS) ;
 
-  public : static GALGAS_unifiedTypeMapProxy constructor_searchKey (const class GALGAS_unifiedTypeMap & inOperand0,
-                                                                    const class GALGAS_lstring & inOperand1,
-                                                                    class C_Compiler * inCompiler
-                                                                    COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_unifiedTypeMap_2D_proxy constructor_searchKey (const class GALGAS_unifiedTypeMap & inOperand0,
+                                                                        const class GALGAS_lstring & inOperand1,
+                                                                        class C_Compiler * inCompiler
+                                                                        COMMA_LOCATION_ARGS) ;
 
 
 //--------------------------------- Setters
@@ -6243,12 +6243,12 @@ class GALGAS_unifiedTypeMapProxy : public AC_GALGAS_uniqueMapProxy {
 //--------------------------------- Class Methods
   public : static void class_method_makeProxy (class GALGAS_unifiedTypeMap & ioArgument0,
                                                class GALGAS_lstring constinArgument1,
-                                               class GALGAS_unifiedTypeMapProxy & outArgument2
+                                               class GALGAS_unifiedTypeMap_2D_proxy & outArgument2
                                                COMMA_LOCATION_ARGS) ;
 
   public : static void class_method_makeProxyFromString (class GALGAS_unifiedTypeMap & ioArgument0,
                                                          class GALGAS_string constinArgument1,
-                                                         class GALGAS_unifiedTypeMapProxy & outArgument2
+                                                         class GALGAS_unifiedTypeMap_2D_proxy & outArgument2
                                                          COMMA_LOCATION_ARGS) ;
 
 
@@ -6319,14 +6319,14 @@ class GALGAS_unifiedTypeMapProxy : public AC_GALGAS_uniqueMapProxy {
   public : VIRTUAL_IN_DEBUG class GALGAS_readerMap reader_mReaderMap (C_Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapProxy reader_mSuperType (C_Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mSuperType (C_Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_mSupportCollectionValue (C_Compiler * inCompiler
                                                                               COMMA_LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapProxy reader_mTypeForEnumeratedElement (C_Compiler * inCompiler
-                                                                                               COMMA_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mTypeForEnumeratedElement (C_Compiler * inCompiler
+                                                                                                   COMMA_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_typeKindEnum reader_mTypeKindEnum (C_Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) const ;
@@ -6335,12 +6335,12 @@ class GALGAS_unifiedTypeMapProxy : public AC_GALGAS_uniqueMapProxy {
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_unifiedTypeMapProxy class
+} ; // End of GALGAS_unifiedTypeMap_2D_proxy class
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMapProxy ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMap_2D_proxy ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -6350,16 +6350,16 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_unifiedTypeMapProxy
 
 class cPtr_semanticExpressionForGeneration : public acPtr_class {
 //--- Attributes
-  public : GALGAS_unifiedTypeMapProxy mAttribute_mResultType ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mResultType ;
   public : GALGAS_location mAttribute_mLocation ;
 
 //--- Constructor
-  public : cPtr_semanticExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+  public : cPtr_semanticExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                  const GALGAS_location & in_mLocation
                                                  COMMA_LOCATION_ARGS) ;
 
 //--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_unifiedTypeMapProxy reader_mResultType (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_unifiedTypeMap_2D_proxy reader_mResultType (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_location reader_mLocation (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
@@ -6686,14 +6686,14 @@ class GALGAS_templateVariableMap : public AC_GALGAS_map {
 
 //--------------------------------- += operator (with list of field expressions)
   public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
-                                                      const class GALGAS_unifiedTypeMapProxy & inOperand1,
+                                                      const class GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
                                                       const class GALGAS_string & inOperand2,
                                                       C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Setters
   public : VIRTUAL_IN_DEBUG void modifier_insertKey (class GALGAS_lstring constinArgument0,
-                                                     class GALGAS_unifiedTypeMapProxy constinArgument1,
+                                                     class GALGAS_unifiedTypeMap_2D_proxy constinArgument1,
                                                      class GALGAS_string constinArgument2,
                                                      C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
@@ -6703,7 +6703,7 @@ class GALGAS_templateVariableMap : public AC_GALGAS_map {
                                                              C_Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) ;
 
-  public : VIRTUAL_IN_DEBUG void modifier_setMTypeProxyForKey (class GALGAS_unifiedTypeMapProxy constinArgument0,
+  public : VIRTUAL_IN_DEBUG void modifier_setMTypeProxyForKey (class GALGAS_unifiedTypeMap_2D_proxy constinArgument0,
                                                                class GALGAS_string constinArgument1,
                                                                C_Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) ;
@@ -6711,7 +6711,7 @@ class GALGAS_templateVariableMap : public AC_GALGAS_map {
 
 //--------------------------------- Instance Methods
   public : VIRTUAL_IN_DEBUG void method_searchKey (class GALGAS_lstring constinArgument0,
-                                                   class GALGAS_unifiedTypeMapProxy & outArgument1,
+                                                   class GALGAS_unifiedTypeMap_2D_proxy & outArgument1,
                                                    class GALGAS_string & outArgument2,
                                                    C_Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) const ;
@@ -6723,9 +6723,9 @@ class GALGAS_templateVariableMap : public AC_GALGAS_map {
                                                                        C_Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapProxy reader_mTypeProxyForKey (const class GALGAS_string & constinOperand0,
-                                                                                      C_Compiler * inCompiler
-                                                                                      COMMA_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mTypeProxyForKey (const class GALGAS_string & constinOperand0,
+                                                                                          C_Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_templateVariableMap reader_overriddenMap (C_Compiler * inCompiler
                                                                                    COMMA_LOCATION_ARGS) const ;
@@ -6753,7 +6753,7 @@ class cEnumerator_templateVariableMap : public cGenericAbstractEnumerator {
 
 //--- Current element access
   public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
-  public : class GALGAS_unifiedTypeMapProxy current_mTypeProxy (LOCATION_ARGS) const ;
+  public : class GALGAS_unifiedTypeMap_2D_proxy current_mTypeProxy (LOCATION_ARGS) const ;
   public : class GALGAS_string current_mCppName (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_templateVariableMap_2D_element current (LOCATION_ARGS) const ;
@@ -6771,12 +6771,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_templateVariableMap
 
 class cMapElement_templateVariableMap : public cMapElement {
 //--- Map attributes
-  public : GALGAS_unifiedTypeMapProxy mAttribute_mTypeProxy ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mTypeProxy ;
   public : GALGAS_string mAttribute_mCppName ;
 
 //--- Constructor
   public : cMapElement_templateVariableMap (const GALGAS_lstring & inKey,
-                                            const GALGAS_unifiedTypeMapProxy & in_mTypeProxy,
+                                            const GALGAS_unifiedTypeMap_2D_proxy & in_mTypeProxy,
                                             const GALGAS_string & in_mCppName
                                             COMMA_LOCATION_ARGS) ;
 
@@ -6802,7 +6802,7 @@ class cMapElement_templateVariableMap : public cMapElement {
 class GALGAS_templateVariableMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
   public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_unifiedTypeMapProxy mAttribute_mTypeProxy ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mTypeProxy ;
   public : GALGAS_string mAttribute_mCppName ;
 
 
@@ -6821,7 +6821,7 @@ class GALGAS_templateVariableMap_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Native constructor
   public : GALGAS_templateVariableMap_2D_element (const GALGAS_lstring & in_lkey,
-                                                  const GALGAS_unifiedTypeMapProxy & in_mTypeProxy,
+                                                  const GALGAS_unifiedTypeMap_2D_proxy & in_mTypeProxy,
                                                   const GALGAS_string & in_mCppName) ;
 
 //-- Start of generic part --*
@@ -6836,7 +6836,7 @@ class GALGAS_templateVariableMap_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- GALGAS constructors
   public : static GALGAS_templateVariableMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                         const class GALGAS_unifiedTypeMapProxy & inOperand1,
+                                                                         const class GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
                                                                          const class GALGAS_string & inOperand2
                                                                          COMMA_LOCATION_ARGS) ;
 
@@ -6856,7 +6856,7 @@ class GALGAS_templateVariableMap_2D_element : public AC_GALGAS_root {
 
   public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mCppName (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapProxy reader_mTypeProxy (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mTypeProxy (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection

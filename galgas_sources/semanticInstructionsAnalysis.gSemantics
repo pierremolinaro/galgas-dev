@@ -35,7 +35,7 @@ abstract method @semanticInstructionAST analyzeSemanticInstruction
 #---------------------------------------------------------------------------*
 
 list @localConstantList {
-  @unifiedTypeMapProxy mType ;
+  @unifiedTypeMap-proxy mType ;
   @lstring mName ;
   @bool mNoWarningIfUnused ;
   @string mCppName ;
@@ -44,7 +44,7 @@ list @localConstantList {
 #---------------------------------------------------------------------------*
 
 list @localInitializedVariableList {
-  @unifiedTypeMapProxy mType ;
+  @unifiedTypeMap-proxy mType ;
   @lstring mName ;
   @string mCppName ;
 }
@@ -95,7 +95,7 @@ override method @localVariableOrConstantDeclarationWithDefaultConstructorAST ana
   ?!@variableMap ioVariableMap
 :
 #--- Check variable type
-  const targetType := [@unifiedTypeMapProxy searchKey
+  const targetType := [@unifiedTypeMap-proxy searchKey
     !inAnalysisContext->mSemanticContext->mTypeMap
     !mTypeName
   ] ;
@@ -128,7 +128,7 @@ override method @localVariableOrConstantDeclarationWithConstructorCallAST analyz
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
 :
-  const targetType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
+  const targetType := [@unifiedTypeMap-proxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
 #--- Analyze constructor call
   analyzeConstructorInvocation
     !targetType
@@ -137,7 +137,7 @@ override method @localVariableOrConstantDeclarationWithConstructorCallAST analyz
     !mTypeName
     !mConstructorName
     !mConstructorExpressions
-    ?@unifiedTypeMapProxy returnedType
+    ?@unifiedTypeMap-proxy returnedType
     ?*
     ??@semanticExpressionListForGeneration constructorEffectiveParameterList
     ?@bool hasCompilerArgument
@@ -176,13 +176,13 @@ override method @localVariableDeclarationWithAssignmentAST analyzeSemanticInstru
 :
 #--- Analyze source expression
   [mSourceExpression analyzeSemanticExpression
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration expression
   ] ;
 #--- Check target variable
-#  const targetType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
+#  const targetType := [@unifiedTypeMap-proxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
   const targetVariableCppName := "var_" . [mVariableName identifierRepresentation] ;
 #  if mIsConstant then
 #    [!?ioVariableMap insertLocalConstant !mVariableName !targetType !targetVariableCppName !targetVariableCppName] ;
@@ -207,7 +207,7 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
 :
-  const targetType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
+  const targetType := [@unifiedTypeMap-proxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
 #--- Analyze source expression
   [mSourceExpression analyzeSemanticExpression
     !targetType
@@ -242,7 +242,7 @@ override method @localConstantDeclarationWithAssignmentAST analyzeSemanticInstru
 :
 #--- Analyze source expression
   [mSourceExpression analyzeSemanticExpression
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
     !inAnalysisContext
     !?ioVariableMap
     ?@semanticExpressionForGeneration expression
@@ -267,7 +267,7 @@ override method @localVariableDeclarationAST analyzeSemanticInstruction
   ?!@variableMap ioVariableMap
 :
 #--- Check target variable
-  const targetType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
+  const targetType := [@unifiedTypeMap-proxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
   const targetVariableCppName := "var_" . [mVariableName identifierRepresentation] ;
   if mIsUndefinedConstant then
     [!?ioVariableMap insertUndefinedLocalConstant !mVariableName !targetType !targetVariableCppName !targetVariableCppName] ;
@@ -289,7 +289,7 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
   ?!@variableMap ioVariableMap
 :
 #--- Get target variable
-  @unifiedTypeMapProxy targetType ;
+  @unifiedTypeMap-proxy targetType ;
   @string targetVariableCppName ;
   @string nameForCheckingFormalParameterUsing ;
   if [mStructAttributeList length] == 0 then
@@ -367,7 +367,7 @@ local routine analyzeErrorOrWarningInstruction
 :
 #--- Analyze location expression
   [inLocationExpression analyzeSemanticExpression
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
     !inAnalysisContext
     !?ioVariableMap
     ?outLocationExpression
@@ -398,7 +398,7 @@ local routine analyzeErrorOrWarningInstruction
   end if ;
 #--- Analyze message expression
   [inMessageExpression analyzeSemanticExpression
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
     !inAnalysisContext
     !?ioVariableMap
     ?outMessageExpression
@@ -486,7 +486,7 @@ end method ;
 abstract method @actualParameterAST checkAgainstFormalArgument
   ??@analysisContext inAnalysisContext
   ??@lstring inFormalSelector
-  ??@unifiedTypeMapProxy inFormalArgumentType
+  ??@unifiedTypeMap-proxy inFormalArgumentType
   ??@formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@variableMap ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
@@ -511,7 +511,7 @@ end reader ;
 override method @outputActualParameterAST checkAgainstFormalArgument
   ??@analysisContext inAnalysisContext
   ??@lstring inFormalSelector
-  ??@unifiedTypeMapProxy inFormalArgumentType
+  ??@unifiedTypeMap-proxy inFormalArgumentType
   ??@formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@variableMap ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
@@ -549,7 +549,7 @@ end method ;
 override method @outputInputActualParameterAST checkAgainstFormalArgument
   ??@analysisContext unused inAnalysisContext
   ??@lstring inFormalSelector
-  ??@unifiedTypeMapProxy inFormalArgumentType
+  ??@unifiedTypeMap-proxy inFormalArgumentType
   ??@formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@variableMap ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
@@ -566,7 +566,7 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
   end if ;
 #--- Analyze input/output variable
   @string variableCppName ;
-  [!?ioVariableMap searchForReadWriteAccess !mOutputInputActualParameterName ?@unifiedTypeMapProxy parameterType ?variableCppName ?*] ;
+  [!?ioVariableMap searchForReadWriteAccess !mOutputInputActualParameterName ?@unifiedTypeMap-proxy parameterType ?variableCppName ?*] ;
   var typeList := [@unifiedTypeMapProxyList listWithValue !parameterType] ;
   foreach mStructAttributeList do
     const attributeMap := [parameterType mAttributeMap] ;
@@ -601,7 +601,7 @@ end method ;
 override method @inputActualExistingVariableParameterAST checkAgainstFormalArgument
   ??@analysisContext unused inAnalysisContext
   ??@lstring inFormalSelector
-  ??@unifiedTypeMapProxy inFormalArgumentType
+  ??@unifiedTypeMap-proxy inFormalArgumentType
   ??@formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@variableMap ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
@@ -648,7 +648,7 @@ end method ;
 override method @inputActualNewVariableParameterAST checkAgainstFormalArgument
   ??@analysisContext inAnalysisContext
   ??@lstring inFormalSelector
-  ??@unifiedTypeMapProxy inFormalArgumentType
+  ??@unifiedTypeMap-proxy inFormalArgumentType
   ??@formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@variableMap ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
@@ -667,7 +667,7 @@ override method @inputActualNewVariableParameterAST checkAgainstFormalArgument
 #--- Analyze or infer type
 
   if mInputActualTypeName->string != "" then
-    const parameterType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mInputActualTypeName] ;
+    const parameterType := [@unifiedTypeMap-proxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mInputActualTypeName] ;
     if inFormalArgumentType != parameterType then
       error mInputActualParameterName
       :"the parameter object has the '@" . [parameterType key]
@@ -704,7 +704,7 @@ end method ;
 override method @inputActualNewConstantParameterAST checkAgainstFormalArgument
   ??@analysisContext inAnalysisContext
   ??@lstring inFormalSelector
-  ??@unifiedTypeMapProxy inFormalArgumentType
+  ??@unifiedTypeMap-proxy inFormalArgumentType
   ??@formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@variableMap ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
@@ -723,7 +723,7 @@ override method @inputActualNewConstantParameterAST checkAgainstFormalArgument
 #--- Analyze or infer type
 
   if mInputActualTypeName->string != "" then
-    const parameterType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mInputActualTypeName] ;
+    const parameterType := [@unifiedTypeMap-proxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mInputActualTypeName] ;
     if inFormalArgumentType != parameterType then
       error mInputActualParameterName
       :"the parameter object has the '@" . [parameterType key]
@@ -760,7 +760,7 @@ end method ;
 override method @inputJokerActualParameterAST checkAgainstFormalArgument
   ??@analysisContext unused inAnalysisContext
   ??@lstring unused inFormalSelector
-  ??@unifiedTypeMapProxy inFormalArgumentType
+  ??@unifiedTypeMap-proxy inFormalArgumentType
   ??@formalArgumentPassingModeAST inFormalArgumentPassingMode
   ?!@variableMap unused ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
@@ -872,7 +872,7 @@ override method @typeMethodCallInstructionAST analyzeSemanticInstruction
   ?!@variableMap ioVariableMap
 :
 #--- Get type method map for the named type
-  const type := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
+  const type := [@unifiedTypeMap-proxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
 #--- Get type method signature
   @formalParameterSignature routineSignature ;
   @bool hasCompilerArgument ;
@@ -913,7 +913,7 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
 :
 #--- Analyze receiver expression
   [mReceiverExpression analyzeSemanticExpression
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
     !inAnalysisContext
     !?ioVariableMap
     ??@semanticExpressionForGeneration receiverExpression
@@ -978,7 +978,7 @@ end method ;
 
 function checkMethodImplementationInSuperClasses
   ??@lstring inMethodName
-  ??@unifiedTypeMapProxy inSuperClass
+  ??@unifiedTypeMap-proxy inSuperClass
   -> @string outResult
 :
   if [inSuperClass isNull] then
@@ -1004,7 +1004,7 @@ override method @modifierCallInstructionAST analyzeSemanticInstruction
   ?!@variableMap ioVariableMap
 :
 #--- Check receiver object
-  @unifiedTypeMapProxy receiverType ;
+  @unifiedTypeMap-proxy receiverType ;
   @string receiverVariableCppName ;
   @string receiverVariableBaseName ;
   [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?receiverType ?receiverVariableCppName ?receiverVariableBaseName] ;
@@ -1077,7 +1077,7 @@ override method @selfModifierCallInstructionAST analyzeSemanticInstruction
   ?!@variableMap ioVariableMap
 :
 #--- Analyze "self", as receiver expression
-  @unifiedTypeMapProxy selfTypeProxy ;
+  @unifiedTypeMap-proxy selfTypeProxy ;
   @string selfObjectCppName ;
   if [inAnalysisContext->mSelfTypeProxy isNull] then
     error mModifierName: "'self' can be used only in category modifiers" : selfObjectCppName, selfTypeProxy ;
@@ -1123,7 +1123,7 @@ end method ;
 
 function checkModifierImplementationInSuperClasses
   ??@lstring inModifierName
-  ??@unifiedTypeMapProxy inSuperClass
+  ??@unifiedTypeMap-proxy inSuperClass
   -> @string outResult
 :
   if [inSuperClass isNull] then
@@ -1150,7 +1150,7 @@ override method @concatInstructionAST analyzeSemanticInstruction
   ?!@variableMap ioVariableMap
 :
 #--- Check target variable
-  @unifiedTypeMapProxy targetType ;
+  @unifiedTypeMap-proxy targetType ;
   @string targetVariableCppName ;
   @string nameForCheckingFormalParameterUsing ;
   [!?ioVariableMap searchForReadWriteAccess !mTargetVariableName ?targetType ?targetVariableCppName ?nameForCheckingFormalParameterUsing] ;
@@ -1193,7 +1193,7 @@ override method @selfConcatInstructionAST analyzeSemanticInstruction
   ?!@variableMap ioVariableMap
 :
 #--- Analyze "self", as receiver expression
-  @unifiedTypeMapProxy selfTypeProxy ;
+  @unifiedTypeMap-proxy selfTypeProxy ;
   @string selfObjectCppName ;
   if [inAnalysisContext->mSelfTypeProxy isNull] then
     error mInstructionLocation: "'self' can be used only in category modifiers" : selfObjectCppName, selfTypeProxy ;
@@ -1240,7 +1240,7 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
   ?!@variableMap ioVariableMap
 :
 #--- Check target variable
-  @unifiedTypeMapProxy targetType ;
+  @unifiedTypeMap-proxy targetType ;
   @string targetVariableCppName ;
   @string nameForCheckingFormalParameterUsing ;
   [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName ?nameForCheckingFormalParameterUsing] ;
@@ -1296,7 +1296,7 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
   ?!@variableMap ioVariableMap
 :
 #--- Check target variable
-  @unifiedTypeMapProxy targetType ;
+  @unifiedTypeMap-proxy targetType ;
   @string targetVariableCppName ;
   @string nameForCheckingFormalParameterUsing ;
   [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName ?nameForCheckingFormalParameterUsing] ;
@@ -1338,7 +1338,7 @@ override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
   ?!@variableMap ioVariableMap
 :
 #--- Analyze "self", as receiver expression
-  @unifiedTypeMapProxy selfTypeProxy ;
+  @unifiedTypeMap-proxy selfTypeProxy ;
   @string selfObjectCppName ;
   if [inAnalysisContext->mSelfTypeProxy isNull] then
     error mInstructionLocation: "'self' can be used only in category modifiers" : selfObjectCppName, selfTypeProxy ;
@@ -1394,7 +1394,7 @@ override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstructio
   ?!@variableMap ioVariableMap
 :
 #--- Analyze "self", as receiver expression
-  @unifiedTypeMapProxy selfTypeProxy ;
+  @unifiedTypeMap-proxy selfTypeProxy ;
   @string selfObjectCppName ;
   if [inAnalysisContext->mSelfTypeProxy isNull] then
     error mInstructionLocation: "'self' can be used only in category modifiers" : selfObjectCppName, selfTypeProxy ;
@@ -1436,7 +1436,7 @@ override method @incrementInstructionAST analyzeSemanticInstruction
   ?!@variableMap ioVariableMap
 :
 #--- Check target variable
-  @unifiedTypeMapProxy targetType ;
+  @unifiedTypeMap-proxy targetType ;
   @string targetVariableCppName ;
   [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName ?*] ;
   foreach mStructAttributeList do
@@ -1466,7 +1466,7 @@ override method @selfIncrementInstructionAST analyzeSemanticInstruction
   ?!@variableMap unused ioVariableMap
 :
 #--- Analyze "self", as receiver expression
-  @unifiedTypeMapProxy selfTypeProxy ;
+  @unifiedTypeMap-proxy selfTypeProxy ;
   @string selfObjectCppName ;
   if [inAnalysisContext->mSelfTypeProxy isNull] then
     error mInstructionLocation: "'self' can be used only in category modifiers" : selfObjectCppName, selfTypeProxy ;
@@ -1497,7 +1497,7 @@ override method @decrementInstructionAST analyzeSemanticInstruction
   ?!@variableMap ioVariableMap
 :
 #--- Check target variable
-  @unifiedTypeMapProxy targetType ;
+  @unifiedTypeMap-proxy targetType ;
   @string targetVariableCppName ;
   [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName ?*] ;
   foreach mStructAttributeList do
@@ -1527,7 +1527,7 @@ override method @selfDecrementInstructionAST analyzeSemanticInstruction
   ?!@variableMap unused ioVariableMap
 :
 #--- Analyze "self", as receiver expression
-  @unifiedTypeMapProxy selfTypeProxy ;
+  @unifiedTypeMap-proxy selfTypeProxy ;
   @string selfObjectCppName ;
   if [inAnalysisContext->mSelfTypeProxy isNull] then
     error mInstructionLocation: "'self' can be used only in category modifiers" : selfObjectCppName, selfTypeProxy ;
@@ -1560,7 +1560,7 @@ override method @messageInstructionAST analyzeSemanticInstruction
 #--- Analyze source expression
   @semanticExpressionForGeneration expression ;
   [mExpression analyzeSemanticExpression
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
     !inAnalysisContext
     !?ioVariableMap
     ?expression
@@ -1589,7 +1589,7 @@ override method @logInstructionAST analyzeSemanticInstruction
   #--- Analyze source expression
     @semanticExpressionForGeneration expression ;
     [mLogExpression analyzeSemanticExpression
-      ![@unifiedTypeMapProxy null]
+      ![@unifiedTypeMap-proxy null]
       !inAnalysisContext
       !?ioVariableMap
       ?expression
@@ -1613,7 +1613,7 @@ override method @dropInstructionAST analyzeSemanticInstruction
   var dropTypeList := [@unifiedTypeMapProxyList emptyList] ;
   foreach mDropList do
     @string variableCppName ;
-    [!?ioVariableMap searchForDropAccess !mValue ??@unifiedTypeMapProxy t ?variableCppName ?*] ;
+    [!?ioVariableMap searchForDropAccess !mValue ??@unifiedTypeMap-proxy t ?variableCppName ?*] ;
     cppNameDropList += !variableCppName ;
     dropTypeList += !t ;
   end foreach ;
@@ -1640,7 +1640,7 @@ local routine checkExpressionIsBoolean
     outExpression := inExpression ;
   elsif [expressionType mTypeKindEnum] == [@typeKindEnum structType] then
     if [[expressionType mAttributeMap] hasKey !"bool"] then
-      @unifiedTypeMapProxy attributeType ;
+      @unifiedTypeMap-proxy attributeType ;
       [[expressionType mAttributeMap] searchKey ![@lstring new !"bool" !here] ?attributeType] ;
       if attributeType == boolType then
         outExpression := [@structFieldAccessExpressionForGeneration new
@@ -1717,7 +1717,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
 #--- Test expression
   @semanticExpressionForGeneration analyzed_if_expression ;
   [m_if_expression analyzeSemanticExpression
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
     !inAnalysisContext
     !?ioVariableMap
     ?analyzed_if_expression
@@ -1787,7 +1787,7 @@ override method @enumeratedCollectionImplicitVarInExpAST analyzeEnumeration
   !@semanticExpressionForGeneration outEnumerationExpression
 :
   [mEnumeratedExpression analyzeSemanticExpression
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
     !inAnalysisContext
     !?ioVariableMap
     ?outEnumerationExpression
@@ -1818,7 +1818,7 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
   !@semanticExpressionForGeneration outEnumerationExpression
 :
   [mEnumeratedExpression analyzeSemanticExpression
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
     !inAnalysisContext
     !?ioVariableMap
     ?outEnumerationExpression
@@ -1860,7 +1860,7 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
       foreach mElementList, enumerationDescriptorList do
         if [mConstantName string] != "" then # Empty string if joker
           if mTypeName->string != "" then
-            const foundType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
+            const foundType := [@unifiedTypeMap-proxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
             if foundType != mEnumeratedType then
               error mTypeName : "incorrect '@" . [foundType key] . "' type: '@" . [mEnumeratedType key] . "' type required here" ;
             end if ;
@@ -1882,7 +1882,7 @@ override method @enumeratedCollectionVarInExpAST analyzeEnumeration
   !@semanticExpressionForGeneration outEnumerationExpression
 :
   [mEnumeratedExpression analyzeSemanticExpression
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
     !inAnalysisContext
     !?ioVariableMap
     ?outEnumerationExpression
@@ -1897,7 +1897,7 @@ override method @enumeratedCollectionVarInExpAST analyzeEnumeration
   end if ;
 #--- Check enumeration type
   if mEnumerationTypeName->string != "" then
-    const explicitType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mEnumerationTypeName] ;
+    const explicitType := [@unifiedTypeMap-proxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mEnumerationTypeName] ;
     if [enumeratedElementType key] != [explicitType key] then
       error mEnumerationTypeName: "the '@" . [enumeratedElementType key] . "' type is expected here" ;
     end if ;
@@ -1980,7 +1980,7 @@ override method @forInstructionAST analyzeSemanticInstruction
   end foreach ;
 #---
   [mWhileExpression analyzeSemanticExpression
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
     !inAnalysisContext
     !?ioVariableMap
     ??@semanticExpressionForGeneration uncheckedWhileExpression
@@ -2091,7 +2091,7 @@ override method @foreachInstructionAST analyzeSemanticInstruction
   #--- Enumeration expression
     @semanticExpressionForGeneration enumerationExpression ;
     [mEnumeratedExpression analyzeSemanticExpression
-      ![@unifiedTypeMapProxy null]
+      ![@unifiedTypeMap-proxy null]
       !inAnalysisContext
       !?ioVariableMap
       ?enumerationExpression
@@ -2148,7 +2148,7 @@ override method @foreachInstructionAST analyzeSemanticInstruction
         foreach mElementList, enumerationDescriptorList do
           if [mConstantName string] != "" then # Empty string if joker
             if mTypeName->string != "" then
-              const foundType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
+              const foundType := [@unifiedTypeMap-proxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
               if foundType != mEnumeratedType then
                 error mTypeName : "incorrect '@" . [foundType key] . "' type: '@" . [mEnumeratedType key] . "' type required here" ;
               end if ;
@@ -2169,7 +2169,7 @@ override method @foreachInstructionAST analyzeSemanticInstruction
 #--- While expression
   @semanticExpressionForGeneration uncheckedWhileExpression ;
   [mWhileExpression analyzeSemanticExpression
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
     !inAnalysisContext
     !?ioVariableMap
     ?uncheckedWhileExpression
@@ -2233,7 +2233,7 @@ override method @loopInstructionAST analyzeSemanticInstruction
 #--- Variant expression
   @semanticExpressionForGeneration variantExpression ;
   [mVariantExpression analyzeSemanticExpression
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
     !inAnalysisContext
     !?ioVariableMap
     ?variantExpression
@@ -2246,7 +2246,7 @@ override method @loopInstructionAST analyzeSemanticInstruction
 #--- Loop expression
   @semanticExpressionForGeneration loopExpression ;
   [mLoopExpression analyzeSemanticExpression
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
     !inAnalysisContext
     !?ioVariableMap
     ?loopExpression
@@ -2302,7 +2302,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
 #--- Expression
   @semanticExpressionForGeneration castExpression ;
   [mCastExpression analyzeSemanticExpression
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
     !inAnalysisContext
     !?ioVariableMap
     ?castExpression
@@ -2313,9 +2313,9 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
   @castInstructionBranchListForGeneration castBranchList [emptyList] ;
   foreach mCastInstructionBranchList do
   #--- Get named type
-    const type := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
+    const type := [@unifiedTypeMap-proxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
   #--- Check named type is a descendant of receiver type
-    @unifiedTypeMapProxy t := type ;
+    @unifiedTypeMap-proxy t := type ;
     @bool found := t == [castExpression mResultType] ;
     loop [inAnalysisContext->mSemanticContext->mTypeMap count] + 1 :
     while (not found) & not [[t mSuperType] isNull] do
@@ -2422,7 +2422,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInVar  analyze
   if not inHasTranslateFeature then
     error mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature" ;
   end if ;
-  [!?ioVariableMap searchForWriteAccess !mActualParameterName ??@unifiedTypeMapProxy type ??@string cppName ?*] ;
+  [!?ioVariableMap searchForWriteAccess !mActualParameterName ??@unifiedTypeMap-proxy type ??@string cppName ?*] ;
   const expectedType := inAnalysisContext->mPredefinedTypes->mStringType ;
   if expectedType != type then
     error mActualParameterName
@@ -2446,7 +2446,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
     error mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature" ;
   end if ;
   const cppName := "var_" . [mActualParameterName identifierRepresentation] ;
-  const type := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mActualParameterTypeName] ;
+  const type := [@unifiedTypeMap-proxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mActualParameterTypeName] ;
   [!?ioVariableMap insertDefinedLocalVariable !mActualParameterName !type !cppName !cppName] ;
   const expectedType := inAnalysisContext->mPredefinedTypes->mStringType ;
   if expectedType != type then
@@ -2471,7 +2471,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredCons
     error mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature" ;
   end if ;
   const cppName := "var_" . [mActualParameterName identifierRepresentation] ;
-  const type := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mActualParameterTypeName] ;
+  const type := [@unifiedTypeMap-proxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mActualParameterTypeName] ;
   [!?ioVariableMap insertLocalConstant !mActualParameterName !type !cppName !cppName] ;
   const expectedType := inAnalysisContext->mPredefinedTypes->mStringType ;
   if expectedType != type then
@@ -2516,7 +2516,7 @@ override method @grammarInstructionAST analyzeSemanticInstruction
   ;
 #--- Parse source expression
   [mSourceExpression analyzeSemanticExpression
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
     !inAnalysisContext
     !?ioVariableMap
     ??@semanticExpressionForGeneration sourceExpression
@@ -2587,7 +2587,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
 :
 #--- Analyze receiver expression
   [mReceiverExpression analyzeSemanticExpression
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
     !inAnalysisContext
     !?ioVariableMap
     ??@semanticExpressionForGeneration receiverExpression
@@ -2605,7 +2605,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
   end if ;
 #--- Analyze key expression
   [mKeyExpression analyzeSemanticExpression
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
     !inAnalysisContext
     !?ioVariableMap
     ??@semanticExpressionForGeneration keyExpression
@@ -2630,7 +2630,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
   end foreach ;
 #--- Add lkey as @lstring constant
   localConstantList +=
-    ![@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !["lstring" nowhere]]
+    ![@unifiedTypeMap-proxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !["lstring" nowhere]]
     ![@lstring new !mPrefix->string . "lkey" !mEndOfReceiverExpression]
     !true # Do not warn if unused
     !objectArrayCppName . "->mAttribute_lkey"
@@ -2676,7 +2676,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
 :
 #--- Analyze source expression
   [mKeyExpression analyzeSemanticExpression
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
     !inAnalysisContext
     !?ioVariableMap
     ??@semanticExpressionForGeneration keyExpression
@@ -2694,7 +2694,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
 #--- Read/write access to receiver variable
   [!?ioVariableMap searchForReadWriteAccess
     !mReceiverName
-    ?@unifiedTypeMapProxy targetType
+    ?@unifiedTypeMap-proxy targetType
     ??@string receiverVariableCppName
     ?*
   ] ;
@@ -2728,7 +2728,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
     ;
   end foreach ;
   const localConstantList := @localConstantList {
-    ![@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !["lstring" nowhere]]
+    ![@unifiedTypeMap-proxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !["lstring" nowhere]]
     ![@lstring new !mPrefix->string . "lkey" !mEndOfReceiverExpression]
     !true # Do not warn if unused
     !objectArrayCppName . "->mAttribute_lkey"
@@ -2780,7 +2780,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
 #--- Analyze switch expression
   @semanticExpressionForGeneration switchExpression ;
   [mSwitchExpression analyzeSemanticExpression
-    ![@unifiedTypeMapProxy null]
+    ![@unifiedTypeMap-proxy null]
     !inAnalysisContext
     !?ioVariableMap
     ?switchExpression
@@ -2887,7 +2887,7 @@ override method @matchInstructionAST analyzeSemanticInstruction
   #--- Analyze expression
     @semanticExpressionForGeneration matchedExpression ;
     [mExpression analyzeSemanticExpression
-      ![@unifiedTypeMapProxy null]
+      ![@unifiedTypeMap-proxy null]
       !inAnalysisContext
       !?ioVariableMap
       ?matchedExpression
@@ -2913,8 +2913,8 @@ override method @matchInstructionAST analyzeSemanticInstruction
         const type := [mExpression mResultType] ;
         if [type mTypeKindEnum] == [@typeKindEnum classType] then
           if mIsType then
-            const namedType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeNameOrEnumerationConstantName] ;
-            @unifiedTypeMapProxy t := type ;
+            const namedType := [@unifiedTypeMap-proxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeNameOrEnumerationConstantName] ;
+            @unifiedTypeMap-proxy t := type ;
             @bool found := t == namedType ;
             loop [inAnalysisContext->mSemanticContext->mTypeMap count] + 1 :
             while (not found) & not [[t mSuperType] isNull] do

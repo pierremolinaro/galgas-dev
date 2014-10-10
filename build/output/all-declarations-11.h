@@ -294,23 +294,23 @@ void callCategoryMethod_templateInstructionAnalysis (const class cPtr_templateIn
 
 class GALGAS_predefinedTypes : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_unifiedTypeMapProxy mAttribute_mLocationType ;
-  public : GALGAS_unifiedTypeMapProxy mAttribute_mBoolType ;
-  public : GALGAS_unifiedTypeMapProxy mAttribute_mCharType ;
-  public : GALGAS_unifiedTypeMapProxy mAttribute_mStringType ;
-  public : GALGAS_unifiedTypeMapProxy mAttribute_mUIntType ;
-  public : GALGAS_unifiedTypeMapProxy mAttribute_mSIntType ;
-  public : GALGAS_unifiedTypeMapProxy mAttribute_mUInt_36__34_Type ;
-  public : GALGAS_unifiedTypeMapProxy mAttribute_mSInt_36__34_Type ;
-  public : GALGAS_unifiedTypeMapProxy mAttribute_mDoubleType ;
-  public : GALGAS_unifiedTypeMapProxy mAttribute_mLBoolType ;
-  public : GALGAS_unifiedTypeMapProxy mAttribute_mLCharType ;
-  public : GALGAS_unifiedTypeMapProxy mAttribute_mLStringType ;
-  public : GALGAS_unifiedTypeMapProxy mAttribute_mLUIntType ;
-  public : GALGAS_unifiedTypeMapProxy mAttribute_mLSIntType ;
-  public : GALGAS_unifiedTypeMapProxy mAttribute_mLUInt_36__34_Type ;
-  public : GALGAS_unifiedTypeMapProxy mAttribute_mLSInt_36__34_Type ;
-  public : GALGAS_unifiedTypeMapProxy mAttribute_mLDoubleType ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mLocationType ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mBoolType ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mCharType ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mStringType ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mUIntType ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mSIntType ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mUInt_36__34_Type ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mSInt_36__34_Type ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mDoubleType ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mLBoolType ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mLCharType ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mLStringType ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mLUIntType ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mLSIntType ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mLUInt_36__34_Type ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mLSInt_36__34_Type ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mLDoubleType ;
 
 
 //--------------------------------- Accessors
@@ -327,23 +327,23 @@ class GALGAS_predefinedTypes : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG ~ GALGAS_predefinedTypes (void) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_predefinedTypes (const GALGAS_unifiedTypeMapProxy & in_mLocationType,
-                                   const GALGAS_unifiedTypeMapProxy & in_mBoolType,
-                                   const GALGAS_unifiedTypeMapProxy & in_mCharType,
-                                   const GALGAS_unifiedTypeMapProxy & in_mStringType,
-                                   const GALGAS_unifiedTypeMapProxy & in_mUIntType,
-                                   const GALGAS_unifiedTypeMapProxy & in_mSIntType,
-                                   const GALGAS_unifiedTypeMapProxy & in_mUInt_36__34_Type,
-                                   const GALGAS_unifiedTypeMapProxy & in_mSInt_36__34_Type,
-                                   const GALGAS_unifiedTypeMapProxy & in_mDoubleType,
-                                   const GALGAS_unifiedTypeMapProxy & in_mLBoolType,
-                                   const GALGAS_unifiedTypeMapProxy & in_mLCharType,
-                                   const GALGAS_unifiedTypeMapProxy & in_mLStringType,
-                                   const GALGAS_unifiedTypeMapProxy & in_mLUIntType,
-                                   const GALGAS_unifiedTypeMapProxy & in_mLSIntType,
-                                   const GALGAS_unifiedTypeMapProxy & in_mLUInt_36__34_Type,
-                                   const GALGAS_unifiedTypeMapProxy & in_mLSInt_36__34_Type,
-                                   const GALGAS_unifiedTypeMapProxy & in_mLDoubleType) ;
+  public : GALGAS_predefinedTypes (const GALGAS_unifiedTypeMap_2D_proxy & in_mLocationType,
+                                   const GALGAS_unifiedTypeMap_2D_proxy & in_mBoolType,
+                                   const GALGAS_unifiedTypeMap_2D_proxy & in_mCharType,
+                                   const GALGAS_unifiedTypeMap_2D_proxy & in_mStringType,
+                                   const GALGAS_unifiedTypeMap_2D_proxy & in_mUIntType,
+                                   const GALGAS_unifiedTypeMap_2D_proxy & in_mSIntType,
+                                   const GALGAS_unifiedTypeMap_2D_proxy & in_mUInt_36__34_Type,
+                                   const GALGAS_unifiedTypeMap_2D_proxy & in_mSInt_36__34_Type,
+                                   const GALGAS_unifiedTypeMap_2D_proxy & in_mDoubleType,
+                                   const GALGAS_unifiedTypeMap_2D_proxy & in_mLBoolType,
+                                   const GALGAS_unifiedTypeMap_2D_proxy & in_mLCharType,
+                                   const GALGAS_unifiedTypeMap_2D_proxy & in_mLStringType,
+                                   const GALGAS_unifiedTypeMap_2D_proxy & in_mLUIntType,
+                                   const GALGAS_unifiedTypeMap_2D_proxy & in_mLSIntType,
+                                   const GALGAS_unifiedTypeMap_2D_proxy & in_mLUInt_36__34_Type,
+                                   const GALGAS_unifiedTypeMap_2D_proxy & in_mLSInt_36__34_Type,
+                                   const GALGAS_unifiedTypeMap_2D_proxy & in_mLDoubleType) ;
 
 //-- Start of generic part --*
 
@@ -356,23 +356,23 @@ class GALGAS_predefinedTypes : public AC_GALGAS_root {
                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_predefinedTypes constructor_new (const class GALGAS_unifiedTypeMapProxy & inOperand0,
-                                                          const class GALGAS_unifiedTypeMapProxy & inOperand1,
-                                                          const class GALGAS_unifiedTypeMapProxy & inOperand2,
-                                                          const class GALGAS_unifiedTypeMapProxy & inOperand3,
-                                                          const class GALGAS_unifiedTypeMapProxy & inOperand4,
-                                                          const class GALGAS_unifiedTypeMapProxy & inOperand5,
-                                                          const class GALGAS_unifiedTypeMapProxy & inOperand6,
-                                                          const class GALGAS_unifiedTypeMapProxy & inOperand7,
-                                                          const class GALGAS_unifiedTypeMapProxy & inOperand8,
-                                                          const class GALGAS_unifiedTypeMapProxy & inOperand9,
-                                                          const class GALGAS_unifiedTypeMapProxy & inOperand10,
-                                                          const class GALGAS_unifiedTypeMapProxy & inOperand11,
-                                                          const class GALGAS_unifiedTypeMapProxy & inOperand12,
-                                                          const class GALGAS_unifiedTypeMapProxy & inOperand13,
-                                                          const class GALGAS_unifiedTypeMapProxy & inOperand14,
-                                                          const class GALGAS_unifiedTypeMapProxy & inOperand15,
-                                                          const class GALGAS_unifiedTypeMapProxy & inOperand16
+  public : static GALGAS_predefinedTypes constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
+                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
+                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand2,
+                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand3,
+                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand4,
+                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand5,
+                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand6,
+                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand7,
+                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand8,
+                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand9,
+                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand10,
+                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand11,
+                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand12,
+                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand13,
+                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand14,
+                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand15,
+                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand16
                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of reader 'description'
@@ -387,39 +387,39 @@ class GALGAS_predefinedTypes : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapProxy reader_mBoolType (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mBoolType (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapProxy reader_mCharType (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mCharType (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapProxy reader_mDoubleType (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mDoubleType (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapProxy reader_mLBoolType (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mLBoolType (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapProxy reader_mLCharType (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mLCharType (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapProxy reader_mLDoubleType (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mLDoubleType (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapProxy reader_mLSInt_36__34_Type (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mLSInt_36__34_Type (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapProxy reader_mLSIntType (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mLSIntType (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapProxy reader_mLStringType (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mLStringType (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapProxy reader_mLUInt_36__34_Type (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mLUInt_36__34_Type (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapProxy reader_mLUIntType (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mLUIntType (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapProxy reader_mLocationType (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mLocationType (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapProxy reader_mSInt_36__34_Type (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mSInt_36__34_Type (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapProxy reader_mSIntType (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mSIntType (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapProxy reader_mStringType (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mStringType (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapProxy reader_mUInt_36__34_Type (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mUInt_36__34_Type (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapProxy reader_mUIntType (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mUIntType (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
@@ -2399,8 +2399,8 @@ void callCategoryMethod_generateInstruction (const class cPtr_semanticInstructio
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_checkAssignmentTypes (const class GALGAS_unifiedTypeMapProxy constinArgument0,
-                                   const class GALGAS_unifiedTypeMapProxy constinArgument1,
+void routine_checkAssignmentTypes (const class GALGAS_unifiedTypeMap_2D_proxy constinArgument0,
+                                   const class GALGAS_unifiedTypeMap_2D_proxy constinArgument1,
                                    const class GALGAS_location constinArgument2,
                                    class C_Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
@@ -2411,14 +2411,14 @@ void routine_checkAssignmentTypes (const class GALGAS_unifiedTypeMapProxy consti
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_analyzeConstructorInvocation (const class GALGAS_unifiedTypeMapProxy constinArgument0,
+void routine_analyzeConstructorInvocation (const class GALGAS_unifiedTypeMap_2D_proxy constinArgument0,
                                            const class GALGAS_analysisContext constinArgument1,
                                            class GALGAS_variableMap & ioArgument2,
                                            const class GALGAS_lstring constinArgument3,
                                            const class GALGAS_lstring constinArgument4,
                                            const class GALGAS_actualOutputExpressionList constinArgument5,
-                                           class GALGAS_unifiedTypeMapProxy & outArgument6,
-                                           class GALGAS_unifiedTypeMapProxy & outArgument7,
+                                           class GALGAS_unifiedTypeMap_2D_proxy & outArgument6,
+                                           class GALGAS_unifiedTypeMap_2D_proxy & outArgument7,
                                            class GALGAS_semanticExpressionListForGeneration & outArgument8,
                                            class GALGAS_bool & outArgument9,
                                            class C_Compiler * inCompiler
@@ -2431,7 +2431,7 @@ void routine_analyzeConstructorInvocation (const class GALGAS_unifiedTypeMapProx
 //---------------------------------------------------------------------------------------------------------------------*
 
 typedef void (*categoryMethodSignature_semanticExpressionAST_analyzeSemanticExpression) (const class cPtr_semanticExpressionAST * inObject,
-                                                                                         const class GALGAS_unifiedTypeMapProxy constinArgument0,
+                                                                                         const class GALGAS_unifiedTypeMap_2D_proxy constinArgument0,
                                                                                          const class GALGAS_analysisContext constinArgument1,
                                                                                          class GALGAS_variableMap & ioArgument2,
                                                                                          class GALGAS_semanticExpressionForGeneration & outArgument3,
@@ -2446,7 +2446,7 @@ void enterCategoryMethod_analyzeSemanticExpression (const int32_t inClassIndex,
 //---------------------------------------------------------------------------------------------------------------------*
 
 void callCategoryMethod_analyzeSemanticExpression (const class cPtr_semanticExpressionAST * inObject,
-                                                   const GALGAS_unifiedTypeMapProxy constin_inType,
+                                                   const GALGAS_unifiedTypeMap_2D_proxy constin_inType,
                                                    const GALGAS_analysisContext constin_inAnalysisContext,
                                                    GALGAS_variableMap & io_ioVariableMap,
                                                    GALGAS_semanticExpressionForGeneration & out_outExpression,
@@ -2463,9 +2463,9 @@ class GALGAS_analysisContext : public AC_GALGAS_root {
 //--------------------------------- Public data members
   public : GALGAS_semanticContext mAttribute_mSemanticContext ;
   public : GALGAS_predefinedTypes mAttribute_mPredefinedTypes ;
-  public : GALGAS_unifiedTypeMapProxy mAttribute_mSelfCopyTypeProxy ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mSelfCopyTypeProxy ;
   public : GALGAS_string mAttribute_mSelfObjectCppName ;
-  public : GALGAS_unifiedTypeMapProxy mAttribute_mSelfTypeProxy ;
+  public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mSelfTypeProxy ;
 
 
 //--------------------------------- Accessors
@@ -2484,9 +2484,9 @@ class GALGAS_analysisContext : public AC_GALGAS_root {
 //--------------------------------- Native constructor
   public : GALGAS_analysisContext (const GALGAS_semanticContext & in_mSemanticContext,
                                    const GALGAS_predefinedTypes & in_mPredefinedTypes,
-                                   const GALGAS_unifiedTypeMapProxy & in_mSelfCopyTypeProxy,
+                                   const GALGAS_unifiedTypeMap_2D_proxy & in_mSelfCopyTypeProxy,
                                    const GALGAS_string & in_mSelfObjectCppName,
-                                   const GALGAS_unifiedTypeMapProxy & in_mSelfTypeProxy) ;
+                                   const GALGAS_unifiedTypeMap_2D_proxy & in_mSelfTypeProxy) ;
 
 //-- Start of generic part --*
 
@@ -2501,9 +2501,9 @@ class GALGAS_analysisContext : public AC_GALGAS_root {
 //--------------------------------- GALGAS constructors
   public : static GALGAS_analysisContext constructor_new (const class GALGAS_semanticContext & inOperand0,
                                                           const class GALGAS_predefinedTypes & inOperand1,
-                                                          const class GALGAS_unifiedTypeMapProxy & inOperand2,
+                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand2,
                                                           const class GALGAS_string & inOperand3,
-                                                          const class GALGAS_unifiedTypeMapProxy & inOperand4
+                                                          const class GALGAS_unifiedTypeMap_2D_proxy & inOperand4
                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of reader 'description'
@@ -2520,11 +2520,11 @@ class GALGAS_analysisContext : public AC_GALGAS_root {
 //--------------------------------- Getters
   public : VIRTUAL_IN_DEBUG class GALGAS_predefinedTypes reader_mPredefinedTypes (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapProxy reader_mSelfCopyTypeProxy (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mSelfCopyTypeProxy (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mSelfObjectCppName (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMapProxy reader_mSelfTypeProxy (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mSelfTypeProxy (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_semanticContext reader_mSemanticContext (LOCATION_ARGS) const ;
 
@@ -2546,7 +2546,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_analysisContext ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_string function_checkReaderImplementationInSuperClasses (const class GALGAS_lstring & constinArgument0,
-                                                                      const class GALGAS_unifiedTypeMapProxy & constinArgument1,
+                                                                      const class GALGAS_unifiedTypeMap_2D_proxy & constinArgument1,
                                                                       class C_Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
@@ -2556,8 +2556,8 @@ class GALGAS_string function_checkReaderImplementationInSuperClasses (const clas
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_checkDiadicOperator (const class GALGAS_unifiedTypeMapProxy constinArgument0,
-                                  const class GALGAS_unifiedTypeMapProxy constinArgument1,
+void routine_checkDiadicOperator (const class GALGAS_unifiedTypeMap_2D_proxy constinArgument0,
+                                  const class GALGAS_unifiedTypeMap_2D_proxy constinArgument1,
                                   const class GALGAS_bool constinArgument2,
                                   const class GALGAS_string constinArgument3,
                                   const class GALGAS_location constinArgument4,
@@ -2592,7 +2592,7 @@ class GALGAS_readerCallExpressionForGeneration : public GALGAS_semanticExpressio
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_readerCallExpressionForGeneration constructor_new (const class GALGAS_unifiedTypeMapProxy & inOperand0,
+  public : static GALGAS_readerCallExpressionForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
                                                                             const class GALGAS_location & inOperand1,
                                                                             const class GALGAS_methodKind & inOperand2,
                                                                             const class GALGAS_semanticExpressionForGeneration & inOperand3,
@@ -2650,7 +2650,7 @@ class cPtr_readerCallExpressionForGeneration : public cPtr_semanticExpressionFor
   public : GALGAS_bool mAttribute_mHasCompilerArgument ;
 
 //--- Constructor
-  public : cPtr_readerCallExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+  public : cPtr_readerCallExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                    const GALGAS_location & in_mLocation,
                                                    const GALGAS_methodKind & in_mKind,
                                                    const GALGAS_semanticExpressionForGeneration & in_mReceiverExpression,
@@ -2767,7 +2767,7 @@ void routine_analyzeRoutineArguments (const class GALGAS_analysisContext constin
 typedef void (*categoryMethodSignature_actualParameterAST_checkAgainstFormalArgument) (const class cPtr_actualParameterAST * inObject,
                                                                                        const class GALGAS_analysisContext constinArgument0,
                                                                                        const class GALGAS_lstring constinArgument1,
-                                                                                       const class GALGAS_unifiedTypeMapProxy constinArgument2,
+                                                                                       const class GALGAS_unifiedTypeMap_2D_proxy constinArgument2,
                                                                                        const class GALGAS_formalArgumentPassingModeAST constinArgument3,
                                                                                        class GALGAS_variableMap & ioArgument4,
                                                                                        class GALGAS_actualParameterListForGeneration & ioArgument5,
@@ -2786,7 +2786,7 @@ void enterCategoryMethod_checkAgainstFormalArgument (const int32_t inClassIndex,
 void callCategoryMethod_checkAgainstFormalArgument (const class cPtr_actualParameterAST * inObject,
                                                     const GALGAS_analysisContext constin_inAnalysisContext,
                                                     const GALGAS_lstring constin_inFormalSelector,
-                                                    const GALGAS_unifiedTypeMapProxy constin_inFormalArgumentType,
+                                                    const GALGAS_unifiedTypeMap_2D_proxy constin_inFormalArgumentType,
                                                     const GALGAS_formalArgumentPassingModeAST constin_inFormalArgumentPassingMode,
                                                     GALGAS_variableMap & io_ioVariableMap,
                                                     GALGAS_actualParameterListForGeneration & io_ioActualParameterListForGeneration,
@@ -2802,7 +2802,7 @@ void callCategoryMethod_checkAgainstFormalArgument (const class cPtr_actualParam
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_string function_checkMethodImplementationInSuperClasses (const class GALGAS_lstring & constinArgument0,
-                                                                      const class GALGAS_unifiedTypeMapProxy & constinArgument1,
+                                                                      const class GALGAS_unifiedTypeMap_2D_proxy & constinArgument1,
                                                                       class C_Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) ;
 
@@ -2813,7 +2813,7 @@ class GALGAS_string function_checkMethodImplementationInSuperClasses (const clas
 //---------------------------------------------------------------------------------------------------------------------*
 
 class GALGAS_string function_checkModifierImplementationInSuperClasses (const class GALGAS_lstring & constinArgument0,
-                                                                        const class GALGAS_unifiedTypeMapProxy & constinArgument1,
+                                                                        const class GALGAS_unifiedTypeMap_2D_proxy & constinArgument1,
                                                                         class C_Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) ;
 
@@ -2857,7 +2857,7 @@ class GALGAS_structFieldAccessExpressionForGeneration : public GALGAS_semanticEx
                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_structFieldAccessExpressionForGeneration constructor_new (const class GALGAS_unifiedTypeMapProxy & inOperand0,
+  public : static GALGAS_structFieldAccessExpressionForGeneration constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
                                                                                    const class GALGAS_location & inOperand1,
                                                                                    const class GALGAS_semanticExpressionForGeneration & inOperand2,
                                                                                    const class GALGAS_string & inOperand3
@@ -2899,7 +2899,7 @@ class cPtr_structFieldAccessExpressionForGeneration : public cPtr_semanticExpres
   public : GALGAS_string mAttribute_mStructFieldName ;
 
 //--- Constructor
-  public : cPtr_structFieldAccessExpressionForGeneration (const GALGAS_unifiedTypeMapProxy & in_mResultType,
+  public : cPtr_structFieldAccessExpressionForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                           const GALGAS_location & in_mLocation,
                                                           const GALGAS_semanticExpressionForGeneration & in_mExpression,
                                                           const GALGAS_string & in_mStructFieldName
@@ -2961,10 +2961,10 @@ class GALGAS_string categoryReader_string (const class GALGAS_formalArgumentPass
 //---------------------------------------------------------------------------------------------------------------------*
 
 void routine_checkReaderSignatures (const class GALGAS_formalInputParameterListForGeneration constinArgument0,
-                                    const class GALGAS_unifiedTypeMapProxy constinArgument1,
+                                    const class GALGAS_unifiedTypeMap_2D_proxy constinArgument1,
                                     const class GALGAS_location constinArgument2,
                                     const class GALGAS_functionSignature constinArgument3,
-                                    const class GALGAS_unifiedTypeMapProxy constinArgument4,
+                                    const class GALGAS_unifiedTypeMap_2D_proxy constinArgument4,
                                     const class GALGAS_location constinArgument5,
                                     class C_Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) ;
@@ -3054,7 +3054,7 @@ void routine_analyzeFunctionBody (const class GALGAS_analysisContext constinArgu
                                   const class GALGAS_lstring constinArgument6,
                                   const class GALGAS_location constinArgument7,
                                   class GALGAS_formalInputParameterListForGeneration & outArgument8,
-                                  class GALGAS_unifiedTypeMapProxy & outArgument9,
+                                  class GALGAS_unifiedTypeMap_2D_proxy & outArgument9,
                                   class GALGAS_string & outArgument10,
                                   class GALGAS_semanticInstructionListForGeneration & outArgument11,
                                   class C_Compiler * inCompiler
@@ -3340,11 +3340,11 @@ void routine_generateProcedure (const class GALGAS_bool constinArgument0,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                              Category method '@unifiedTypeMapProxy addHeaderFileName'                               *
+//                              Category method '@unifiedTypeMap-proxy addHeaderFileName'                              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void categoryMethod_addHeaderFileName (const class GALGAS_unifiedTypeMapProxy inObject,
+void categoryMethod_addHeaderFileName (const class GALGAS_unifiedTypeMap_2D_proxy inObject,
                                        class GALGAS_stringset & io_ioInclusions,
                                        class C_Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) ;
@@ -3360,7 +3360,7 @@ void routine_generateFunction (const class GALGAS_string constinArgument0,
                                const class GALGAS_formalInputParameterListForGeneration constinArgument2,
                                const class GALGAS_semanticInstructionListForGeneration constinArgument3,
                                const class GALGAS_string constinArgument4,
-                               const class GALGAS_unifiedTypeMapProxy constinArgument5,
+                               const class GALGAS_unifiedTypeMap_2D_proxy constinArgument5,
                                const class GALGAS_string constinArgument6,
                                const class GALGAS_bool constinArgument7,
                                class GALGAS_string & outArgument8,
@@ -3389,7 +3389,7 @@ void routine_generateCategoryModifier (const class GALGAS_string constinArgument
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_generateCategoryMethod (const class GALGAS_unifiedTypeMapProxy constinArgument0,
+void routine_generateCategoryMethod (const class GALGAS_unifiedTypeMap_2D_proxy constinArgument0,
                                      const class GALGAS_string constinArgument1,
                                      class GALGAS_stringset & ioArgument2,
                                      const class GALGAS_string constinArgument3,
@@ -3405,7 +3405,7 @@ void routine_generateCategoryMethod (const class GALGAS_unifiedTypeMapProxy cons
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void routine_generateCategoryReader (const class GALGAS_unifiedTypeMapProxy constinArgument0,
+void routine_generateCategoryReader (const class GALGAS_unifiedTypeMap_2D_proxy constinArgument0,
                                      const class GALGAS_string constinArgument1,
                                      class GALGAS_stringset & ioArgument2,
                                      const class GALGAS_string constinArgument3,
@@ -3453,7 +3453,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
                                                                                   const class GALGAS_enumerationDescriptorList & in_ENUMERATION_5F_DESCRIPTOR_5F_LIST,
                                                                                   const class GALGAS_uint & in_SUPPORTED_5F_OPERATORS,
                                                                                   const class GALGAS_functionSignature & in_ADD_5F_ASSIGN_5F_ARGUMENT_5F_LIST,
-                                                                                  const class GALGAS_unifiedTypeMapProxy & in_ENUMERATED_5F_OBJECT_5F_TYPE
+                                                                                  const class GALGAS_unifiedTypeMap_2D_proxy & in_ENUMERATED_5F_OBJECT_5F_TYPE
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3465,7 +3465,7 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_unifiedClassBodyForType
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_genericTypeImplementation (class C_Compiler * inCompiler,
                                                                                     const class GALGAS_string & in_TYPE_5F_NAME,
                                                                                     const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                    const class GALGAS_unifiedTypeMapProxy & in_SUPER_5F_TYPE_5F_INDEX,
+                                                                                    const class GALGAS_unifiedTypeMap_2D_proxy & in_SUPER_5F_TYPE_5F_INDEX,
                                                                                     const class GALGAS_uint & in_SUPPORTED_5F_OPERATORS
                                                                                     COMMA_LOCATION_ARGS) ;
 
@@ -3526,9 +3526,9 @@ GALGAS_string filewrapperTemplate_typeGenerationTemplate_graphTypeHeader_31_ (cl
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_typeGenerationTemplate_graphTypeSpecificImplementation (class C_Compiler * inCompiler,
-                                                                                          const class GALGAS_unifiedTypeMapProxy & in_TYPE,
+                                                                                          const class GALGAS_unifiedTypeMap_2D_proxy & in_TYPE,
                                                                                           const class GALGAS_string & in_TYPE_5F_IDENTIFIER,
-                                                                                          const class GALGAS_unifiedTypeMapProxy & in_ASSOCIATED_5F_LIST_5F_TYPE,
+                                                                                          const class GALGAS_unifiedTypeMap_2D_proxy & in_ASSOCIATED_5F_LIST_5F_TYPE,
                                                                                           const class GALGAS_graphInsertModifierList & in_INSERT_5F_MODIFIER_5F_LIST
                                                                                           COMMA_LOCATION_ARGS) ;
 

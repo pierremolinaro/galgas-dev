@@ -1013,7 +1013,7 @@ override method @readerCallExpressionForGeneration generateExpression
   switch mKind
   when definedAsCategory :
    [[[mReceiverExpression mResultType] baseType] addHeaderFileName !?ioInclusionSet] ;
-    @unifiedTypeMapProxy baseType := [mReceiverExpression mResultType] ;
+    @unifiedTypeMap-proxy baseType := [mReceiverExpression mResultType] ;
     @bool searching := true ;
     loop [@uint max] : while searching do
       if not [[baseType mSuperType] isNull] then
@@ -1175,7 +1175,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 abstract method @abstractCollectionValueElementForGeneration generateCollectionElementCode
-  ??@unifiedTypeMapProxy inTargetType
+  ??@unifiedTypeMap-proxy inTargetType
   ?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
@@ -1186,7 +1186,7 @@ abstract method @abstractCollectionValueElementForGeneration generateCollectionE
 #---------------------------------------------------------------------------*
 
 override method @expressionCollectionValueForGeneration generateCollectionElementCode
-  ??@unifiedTypeMapProxy unused inTargetType
+  ??@unifiedTypeMap-proxy unused inTargetType
   ?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
@@ -1207,7 +1207,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @expressionListCollectionForGeneration generateCollectionElementCode
-  ??@unifiedTypeMapProxy inTargetType
+  ??@unifiedTypeMap-proxy inTargetType
   ?!@string ioGeneratedCode
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex

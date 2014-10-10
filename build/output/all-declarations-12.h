@@ -36,7 +36,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCa
                                                                                                          const class GALGAS_string & in_CLASS_5F_NAME,
                                                                                                          const class GALGAS_string & in_READER_5F_NAME,
                                                                                                          const class GALGAS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
-                                                                                                         const class GALGAS_unifiedTypeMapProxy & in_RETURN_5F_TYPE
+                                                                                                         const class GALGAS_unifiedTypeMap_2D_proxy & in_RETURN_5F_TYPE
                                                                                                          COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -49,7 +49,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCa
                                                                                                             const class GALGAS_string & in_CLASS_5F_NAME,
                                                                                                             const class GALGAS_string & in_READER_5F_NAME,
                                                                                                             const class GALGAS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
-                                                                                                            const class GALGAS_unifiedTypeMapProxy & in_RETURN_5F_TYPE
+                                                                                                            const class GALGAS_unifiedTypeMap_2D_proxy & in_RETURN_5F_TYPE
                                                                                                             COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -62,7 +62,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryRe
                                                                                                  const class GALGAS_string & in_CLASS_5F_NAME,
                                                                                                  const class GALGAS_string & in_READER_5F_NAME,
                                                                                                  const class GALGAS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
-                                                                                                 const class GALGAS_unifiedTypeMapProxy & in_RETURN_5F_TYPE
+                                                                                                 const class GALGAS_unifiedTypeMap_2D_proxy & in_RETURN_5F_TYPE
                                                                                                  COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -75,7 +75,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryRe
                                                                                                     const class GALGAS_string & in_CLASS_5F_NAME,
                                                                                                     const class GALGAS_string & in_READER_5F_NAME,
                                                                                                     const class GALGAS_formalInputParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST,
-                                                                                                    const class GALGAS_unifiedTypeMapProxy & in_RETURN_5F_TYPE,
+                                                                                                    const class GALGAS_unifiedTypeMap_2D_proxy & in_RETURN_5F_TYPE,
                                                                                                     const class GALGAS_string & in_READER_5F_IMPLEMENTATION
                                                                                                     COMMA_LOCATION_ARGS) ;
 
@@ -88,7 +88,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_categoryRe
 GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_overridingCategoryReaderImplementation (class C_Compiler * inCompiler,
                                                                                                               const class GALGAS_string & in_CLASS_5F_NAME,
                                                                                                               const class GALGAS_string & in_READER_5F_NAME,
-                                                                                                              const class GALGAS_unifiedTypeMapProxy & in_RETURN_5F_TYPE,
+                                                                                                              const class GALGAS_unifiedTypeMap_2D_proxy & in_RETURN_5F_TYPE,
                                                                                                               const class GALGAS_string & in_READER_5F_IMPLEMENTATION
                                                                                                               COMMA_LOCATION_ARGS) ;
 
@@ -172,7 +172,7 @@ GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCa
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string filewrapperTemplate_semanticComponentGenerationTemplate_abstractCategoryMethodImplementation (class C_Compiler * inCompiler,
-                                                                                                            const class GALGAS_unifiedTypeMapProxy & in_RECEIVER_5F_TYPE,
+                                                                                                            const class GALGAS_unifiedTypeMap_2D_proxy & in_RECEIVER_5F_TYPE,
                                                                                                             const class GALGAS_string & in_METHOD_5F_NAME,
                                                                                                             const class GALGAS_formalParameterListForGeneration & in_FORMAL_5F_ARGUMENT_5F_LIST
                                                                                                             COMMA_LOCATION_ARGS) ;

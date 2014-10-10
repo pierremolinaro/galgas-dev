@@ -9236,7 +9236,7 @@ class GALGAS_descendantClassListMap : public AC_GALGAS_listmap {
 
 //--------------------------------- += operator (with list of field expressions)
   public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_string & inOperand0,
-                                                      const class GALGAS_unifiedTypeMapProxy & inOperand1
+                                                      const class GALGAS_unifiedTypeMap_2D_proxy & inOperand1
                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Setters
@@ -10044,7 +10044,7 @@ class C_Lexique_galgas_33_Scanner : public C_Lexique {
    kToken_template,
    kToken_then,
    kToken_true,
-   kToken_uniquemap,
+   kToken_sharedmap,
    kToken_unused,
    kToken_var,
    kToken_warning,

@@ -29,8 +29,8 @@ routine enterClassMethodWithStringInputArgument
   ??@string inStringArgumentName
   ??@bool inHasCompilerArgument
 :
-  @unifiedTypeMapProxy argumentTypeIndex ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?argumentTypeIndex] ;
+  @unifiedTypeMap-proxy argumentTypeIndex ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?argumentTypeIndex] ;
   @formalParameterSignature argList [emptyList] ;
   argList += !["" nowhere] !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ! inStringArgumentName ;
   [!?ioClassMethodMap insertOrReplace
@@ -51,8 +51,8 @@ override method @stringPredefinedTypeAST getClassMethodMap
   enterClassMethodWithStringInputArgument !?outClassMethodMap !?ioUnifiedTypeMap !"deleteFileIfExists" !"inFilePath" !true ;
   enterClassMethodWithStringInputArgument !?outClassMethodMap !?ioUnifiedTypeMap !"removeEmptyDirectory" !"inDirectoryPath" !true ;
   enterClassMethodWithStringInputArgument !?outClassMethodMap !?ioUnifiedTypeMap !"removeDirectoryRecursively" !"inDirectoryPath" !true ;
-  @unifiedTypeMapProxy stringType ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?stringType] ;
+  @unifiedTypeMap-proxy stringType ;
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?stringType] ;
   @formalParameterSignature argList [emptyList] ;
   argList += !["" nowhere] !stringType ![@formalArgumentPassingModeAST argumentConstantIn] !"inStartPath" ;
   argList += !["" nowhere] !stringType ![@formalArgumentPassingModeAST argumentConstantIn] !"inFileName" ;

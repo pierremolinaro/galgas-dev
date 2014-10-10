@@ -30,27 +30,27 @@ end once ;
 
 list @functionSignature {
   @lstring mFormalSelector ;
-  @unifiedTypeMapProxy mFormalArgumentType ;
+  @unifiedTypeMap-proxy mFormalArgumentType ;
   @string mFormalArgumentName ;
 }
 
 #---------------------------------------------------------------------------*
 
 list @unifiedTypeMapProxyList {
-  @unifiedTypeMapProxy mType ;
+  @unifiedTypeMap-proxy mType ;
 }
 
 #---------------------------------------------------------------------------*
 
 list @unifiedTypeMapProxyAndParameterList {
-  @unifiedTypeMapProxy mType ;
+  @unifiedTypeMap-proxy mType ;
   @string mFormalArgumentName ;
 }
 
 #---------------------------------------------------------------------------*
 
 list @unifiedTypeMapProxyAndLocalVariableList {
-  @unifiedTypeMapProxy mType ;
+  @unifiedTypeMap-proxy mType ;
   @string mLocalVariableName ;
 }
 
@@ -63,7 +63,7 @@ list @unifiedTypeMapProxyAndLocalVariableList {
 map @constructorMap {
   @functionSignature mArgumentTypeList ;
   @bool mHasCompilerArgument ;
-  @unifiedTypeMapProxy mReturnedType ;
+  @unifiedTypeMap-proxy mReturnedType ;
   insert or replace ;
   insert insertKey error message "the '%K' constructor has been already defined" ;
   search searchKey error message "the '%K' constuctor is not declared" ;
@@ -92,7 +92,7 @@ map @readerMap {
   @functionSignature mArgumentTypeList ;
   @location mDeclarationLocation ;
   @bool mHasCompilerArgument ;
-  @unifiedTypeMapProxy mReturnedType ;
+  @unifiedTypeMap-proxy mReturnedType ;
   @methodQualifier mQualifier ;
   @string mErrorMessage ; # If not empty, calling the method raises an error with this message
  
@@ -110,7 +110,7 @@ map @readerMap {
 
 list @formalParameterSignature {
   @lstring mFormalSelector ;
-  @unifiedTypeMapProxy mFormalArgumentType ;
+  @unifiedTypeMap-proxy mFormalArgumentType ;
   @formalArgumentPassingModeAST mFormalArgumentPassingMode ;
   @string mFormalArgumentName ;
 }
@@ -167,7 +167,7 @@ map @classMethodMap {
 #---------------------------------------------------------------------------*
 
 list @enumerationDescriptorList {
-  @unifiedTypeMapProxy mEnumeratedType ;
+  @unifiedTypeMap-proxy mEnumeratedType ;
   @string mEnumerationName ;
 }
 
@@ -178,7 +178,7 @@ list @enumerationDescriptorList {
 #---------------------------------------------------------------------------*
 
 list @typedAttributeList {
-  @unifiedTypeMapProxy mAttributeTypeProxy ;
+  @unifiedTypeMap-proxy mAttributeTypeProxy ;
   @lstring mAttributeName ;
   @bool mHasSetter ;
   @bool mHasGetter ;
@@ -290,7 +290,7 @@ once generateCopyConstructorAndAssignmentOperator   -> @uint outMask : outMask :
 #---------------------------------------------------------------------------*
 
 map @attributeMap {
-  @unifiedTypeMapProxy mAttributeType ;
+  @unifiedTypeMap-proxy mAttributeType ;
   insert insertKey error message "the '%K' attribute has been already declared in %L" ;
   search searchKey error message "the '%K' attribute is not declared" ;
 }
@@ -316,10 +316,10 @@ map @constantIndexMap {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-uniquemap @unifiedTypeMap @unifiedTypeMapProxy {
+sharedmap @unifiedTypeMap {
   @bool mIsPredefined ;
   @bool mIsConcrete ; # false if abstract class
-  @unifiedTypeMapProxy mSuperType ;
+  @unifiedTypeMap-proxy mSuperType ;
   @typeKindEnum mTypeKindEnum ;
   @bool mSupportCollectionValue ;
   @typedAttributeList mAllTypedAttributeList ;
@@ -339,7 +339,7 @@ uniquemap @unifiedTypeMap @unifiedTypeMapProxy {
   @mapSearchMethodListAST mMapSearchMethodList ; # For a map, the list of search methods
   @mapSearchMethodListAST mMapProxySearchConstructorList ; # For a map proxy, the list of search methods of the associated map
   @bool mGenerateHeaderInSeparateFile ; # Significant only for classes
-  @unifiedTypeMapProxy mTypeForEnumeratedElement ;
+  @unifiedTypeMap-proxy mTypeForEnumeratedElement ;
   @string mDefaultConstructorName ; # Used in [@xxx default] (empty string if no default constructor)
   @string mHeaderFileName feature nogetter ; # Name of C++ header file that contains type declaration
   @headerKind mHeaderKind ;
@@ -350,7 +350,7 @@ uniquemap @unifiedTypeMap @unifiedTypeMapProxy {
 
 #---------------------------------------------------------------------------*
 
-reader @unifiedTypeMapProxy baseType -> @unifiedTypeMapProxy outBaseType :
+reader @unifiedTypeMap-proxy baseType -> @unifiedTypeMap-proxy outBaseType :
   outBaseType := selfcopy ;
   loop [@uint max] : while not [[outBaseType mSuperType] isNull] do
     outBaseType := [outBaseType mSuperType] ;
@@ -359,7 +359,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-method @unifiedTypeMapProxy addHeaderFileName
+method @unifiedTypeMap-proxy addHeaderFileName
  ?!@stringset ioInclusions
 :
   if (not [selfcopy mIsPredefined]) & ([selfcopy mHeaderKind] != [@headerKind noHeader]) then
@@ -369,7 +369,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-method @unifiedTypeMapProxy addHeaderFileName1
+method @unifiedTypeMap-proxy addHeaderFileName1
  ?!@stringset ioInclusions
 :
   if not [selfcopy mIsPredefined] then

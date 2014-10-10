@@ -1290,23 +1290,23 @@ GALGAS_predefinedTypes::~ GALGAS_predefinedTypes (void) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_predefinedTypes::GALGAS_predefinedTypes (const GALGAS_unifiedTypeMapProxy & inOperand0,
-                                                const GALGAS_unifiedTypeMapProxy & inOperand1,
-                                                const GALGAS_unifiedTypeMapProxy & inOperand2,
-                                                const GALGAS_unifiedTypeMapProxy & inOperand3,
-                                                const GALGAS_unifiedTypeMapProxy & inOperand4,
-                                                const GALGAS_unifiedTypeMapProxy & inOperand5,
-                                                const GALGAS_unifiedTypeMapProxy & inOperand6,
-                                                const GALGAS_unifiedTypeMapProxy & inOperand7,
-                                                const GALGAS_unifiedTypeMapProxy & inOperand8,
-                                                const GALGAS_unifiedTypeMapProxy & inOperand9,
-                                                const GALGAS_unifiedTypeMapProxy & inOperand10,
-                                                const GALGAS_unifiedTypeMapProxy & inOperand11,
-                                                const GALGAS_unifiedTypeMapProxy & inOperand12,
-                                                const GALGAS_unifiedTypeMapProxy & inOperand13,
-                                                const GALGAS_unifiedTypeMapProxy & inOperand14,
-                                                const GALGAS_unifiedTypeMapProxy & inOperand15,
-                                                const GALGAS_unifiedTypeMapProxy & inOperand16) :
+GALGAS_predefinedTypes::GALGAS_predefinedTypes (const GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
+                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
+                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand2,
+                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand3,
+                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand4,
+                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand5,
+                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand6,
+                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand7,
+                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand8,
+                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand9,
+                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand10,
+                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand11,
+                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand12,
+                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand13,
+                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand14,
+                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand15,
+                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand16) :
 mAttribute_mLocationType (inOperand0),
 mAttribute_mBoolType (inOperand1),
 mAttribute_mCharType (inOperand2),
@@ -1329,44 +1329,44 @@ mAttribute_mLDoubleType (inOperand16) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_predefinedTypes GALGAS_predefinedTypes::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_predefinedTypes (GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
-                                 GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
-                                 GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
-                                 GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
-                                 GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
-                                 GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
-                                 GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
-                                 GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
-                                 GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
-                                 GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
-                                 GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
-                                 GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
-                                 GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
-                                 GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
-                                 GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
-                                 GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
-                                 GALGAS_unifiedTypeMapProxy::constructor_null (HERE)) ;
+  return GALGAS_predefinedTypes (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
+                                 GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
+                                 GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
+                                 GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
+                                 GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
+                                 GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
+                                 GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
+                                 GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
+                                 GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
+                                 GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
+                                 GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
+                                 GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
+                                 GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
+                                 GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
+                                 GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
+                                 GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
+                                 GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_predefinedTypes GALGAS_predefinedTypes::constructor_new (const GALGAS_unifiedTypeMapProxy & inOperand0,
-                                                                const GALGAS_unifiedTypeMapProxy & inOperand1,
-                                                                const GALGAS_unifiedTypeMapProxy & inOperand2,
-                                                                const GALGAS_unifiedTypeMapProxy & inOperand3,
-                                                                const GALGAS_unifiedTypeMapProxy & inOperand4,
-                                                                const GALGAS_unifiedTypeMapProxy & inOperand5,
-                                                                const GALGAS_unifiedTypeMapProxy & inOperand6,
-                                                                const GALGAS_unifiedTypeMapProxy & inOperand7,
-                                                                const GALGAS_unifiedTypeMapProxy & inOperand8,
-                                                                const GALGAS_unifiedTypeMapProxy & inOperand9,
-                                                                const GALGAS_unifiedTypeMapProxy & inOperand10,
-                                                                const GALGAS_unifiedTypeMapProxy & inOperand11,
-                                                                const GALGAS_unifiedTypeMapProxy & inOperand12,
-                                                                const GALGAS_unifiedTypeMapProxy & inOperand13,
-                                                                const GALGAS_unifiedTypeMapProxy & inOperand14,
-                                                                const GALGAS_unifiedTypeMapProxy & inOperand15,
-                                                                const GALGAS_unifiedTypeMapProxy & inOperand16 
+GALGAS_predefinedTypes GALGAS_predefinedTypes::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
+                                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
+                                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand2,
+                                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand3,
+                                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand4,
+                                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand5,
+                                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand6,
+                                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand7,
+                                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand8,
+                                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand9,
+                                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand10,
+                                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand11,
+                                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand12,
+                                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand13,
+                                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand14,
+                                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand15,
+                                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand16 
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_predefinedTypes result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid () && inOperand7.isValid () && inOperand8.isValid () && inOperand9.isValid () && inOperand10.isValid () && inOperand11.isValid () && inOperand12.isValid () && inOperand13.isValid () && inOperand14.isValid () && inOperand15.isValid () && inOperand16.isValid ()) {
@@ -1508,103 +1508,103 @@ void GALGAS_predefinedTypes::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_predefinedTypes::reader_mLocationType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mLocationType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLocationType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_predefinedTypes::reader_mBoolType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mBoolType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mBoolType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_predefinedTypes::reader_mCharType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mCharType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mCharType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_predefinedTypes::reader_mStringType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mStringType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mStringType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_predefinedTypes::reader_mUIntType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mUIntType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mUIntType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_predefinedTypes::reader_mSIntType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mSIntType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSIntType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_predefinedTypes::reader_mUInt_36__34_Type (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mUInt_36__34_Type (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mUInt_36__34_Type ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_predefinedTypes::reader_mSInt_36__34_Type (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mSInt_36__34_Type (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSInt_36__34_Type ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_predefinedTypes::reader_mDoubleType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mDoubleType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mDoubleType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_predefinedTypes::reader_mLBoolType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mLBoolType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLBoolType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_predefinedTypes::reader_mLCharType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mLCharType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLCharType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_predefinedTypes::reader_mLStringType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mLStringType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLStringType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_predefinedTypes::reader_mLUIntType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mLUIntType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLUIntType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_predefinedTypes::reader_mLSIntType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mLSIntType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLSIntType ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_predefinedTypes::reader_mLUInt_36__34_Type (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mLUInt_36__34_Type (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLUInt_36__34_Type ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_predefinedTypes::reader_mLSInt_36__34_Type (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mLSInt_36__34_Type (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLSInt_36__34_Type ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_predefinedTypes::reader_mLDoubleType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_predefinedTypes::reader_mLDoubleType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mLDoubleType ;
 }
 
@@ -3157,30 +3157,30 @@ GALGAS_programComponentAST GALGAS_programComponentAST::extractObject (const GALG
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                   Category Reader '@unifiedTypeMapProxy baseType'                                   *
+//                                  Category Reader '@unifiedTypeMap-proxy baseType'                                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy categoryReader_baseType (const GALGAS_unifiedTypeMapProxy & inObject,
-                                                    C_Compiler * inCompiler
-                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_unifiedTypeMapProxy result_outBaseType ; // Returned variable
-  const GALGAS_unifiedTypeMapProxy temp_0 = inObject ;
+GALGAS_unifiedTypeMap_2D_proxy categoryReader_baseType (const GALGAS_unifiedTypeMap_2D_proxy & inObject,
+                                                        C_Compiler * inCompiler
+                                                        COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_unifiedTypeMap_2D_proxy result_outBaseType ; // Returned variable
+  const GALGAS_unifiedTypeMap_2D_proxy temp_0 = inObject ;
   result_outBaseType = temp_0 ;
   if (GALGAS_uint::constructor_max (SOURCE_FILE ("semanticsTypes.galgas", 354)).isValid ()) {
-    uint32_t variant_15487 = GALGAS_uint::constructor_max (SOURCE_FILE ("semanticsTypes.galgas", 354)).uintValue () ;
-    bool loop_15487 = true ;
-    while (loop_15487) {
-      loop_15487 = result_outBaseType.reader_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 354)).reader_isNull (SOURCE_FILE ("semanticsTypes.galgas", 354)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 354)).isValid () ;
-      if (loop_15487) {
-        loop_15487 = result_outBaseType.reader_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 354)).reader_isNull (SOURCE_FILE ("semanticsTypes.galgas", 354)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 354)).boolValue () ;
+    uint32_t variant_15480 = GALGAS_uint::constructor_max (SOURCE_FILE ("semanticsTypes.galgas", 354)).uintValue () ;
+    bool loop_15480 = true ;
+    while (loop_15480) {
+      loop_15480 = result_outBaseType.reader_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 354)).reader_isNull (SOURCE_FILE ("semanticsTypes.galgas", 354)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 354)).isValid () ;
+      if (loop_15480) {
+        loop_15480 = result_outBaseType.reader_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 354)).reader_isNull (SOURCE_FILE ("semanticsTypes.galgas", 354)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 354)).boolValue () ;
       }
-      if (loop_15487 && (0 == variant_15487)) {
-        loop_15487 = false ;
+      if (loop_15480 && (0 == variant_15480)) {
+        loop_15480 = false ;
         inCompiler->loopRunTimeVariantError (SOURCE_FILE ("semanticsTypes.galgas", 354)) ;
       }
-      if (loop_15487) {
-        variant_15487 -- ;
+      if (loop_15480) {
+        variant_15480 -- ;
         result_outBaseType = result_outBaseType.reader_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 355)) ;
       }
     }
@@ -3194,19 +3194,19 @@ GALGAS_unifiedTypeMapProxy categoryReader_baseType (const GALGAS_unifiedTypeMapP
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                              Category method '@unifiedTypeMapProxy addHeaderFileName'                               *
+//                              Category method '@unifiedTypeMap-proxy addHeaderFileName'                              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void categoryMethod_addHeaderFileName (const GALGAS_unifiedTypeMapProxy inObject,
+void categoryMethod_addHeaderFileName (const GALGAS_unifiedTypeMap_2D_proxy inObject,
                                        GALGAS_stringset & ioArgument_ioInclusions,
                                        C_Compiler * inCompiler
                                        COMMA_UNUSED_LOCATION_ARGS) {
-  const GALGAS_unifiedTypeMapProxy temp_0 = inObject ;
-  const GALGAS_unifiedTypeMapProxy temp_1 = inObject ;
+  const GALGAS_unifiedTypeMap_2D_proxy temp_0 = inObject ;
+  const GALGAS_unifiedTypeMap_2D_proxy temp_1 = inObject ;
   const enumGalgasBool test_2 = temp_0.reader_mIsPredefined (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 363)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 363)).operator_and (GALGAS_bool (kIsNotEqual, temp_1.reader_mHeaderKind (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 363)).objectCompare (GALGAS_headerKind::constructor_noHeader (SOURCE_FILE ("semanticsTypes.galgas", 363)))) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 363)).boolEnum () ;
   if (kBoolTrue == test_2) {
-    const GALGAS_unifiedTypeMapProxy temp_3 = inObject ;
+    const GALGAS_unifiedTypeMap_2D_proxy temp_3 = inObject ;
     ioArgument_ioInclusions.addAssign_operation (temp_3.reader_mHeaderFileName (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 364))  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 364)) ;
   }
 }
@@ -3214,18 +3214,18 @@ void categoryMethod_addHeaderFileName (const GALGAS_unifiedTypeMapProxy inObject
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                              Category method '@unifiedTypeMapProxy addHeaderFileName1'                              *
+//                             Category method '@unifiedTypeMap-proxy addHeaderFileName1'                              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void categoryMethod_addHeaderFileName_31_ (const GALGAS_unifiedTypeMapProxy inObject,
+void categoryMethod_addHeaderFileName_31_ (const GALGAS_unifiedTypeMap_2D_proxy inObject,
                                            GALGAS_stringset & ioArgument_ioInclusions,
                                            C_Compiler * inCompiler
                                            COMMA_UNUSED_LOCATION_ARGS) {
-  const GALGAS_unifiedTypeMapProxy temp_0 = inObject ;
+  const GALGAS_unifiedTypeMap_2D_proxy temp_0 = inObject ;
   const enumGalgasBool test_1 = temp_0.reader_mIsPredefined (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 372)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 372)).boolEnum () ;
   if (kBoolTrue == test_1) {
-    const GALGAS_unifiedTypeMapProxy temp_2 = inObject ;
+    const GALGAS_unifiedTypeMap_2D_proxy temp_2 = inObject ;
     if (temp_2.reader_mHeaderKind (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 373)).isValid ()) {
       switch (temp_2.reader_mHeaderKind (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 373)).enumValue ()) {
       case GALGAS_headerKind::kNotBuilt:
@@ -3233,11 +3233,11 @@ void categoryMethod_addHeaderFileName_31_ (const GALGAS_unifiedTypeMapProxy inOb
       case GALGAS_headerKind::kEnum_noHeader: {
         } break ;
       case GALGAS_headerKind::kEnum_oneHeader: {
-        const GALGAS_unifiedTypeMapProxy temp_3 = inObject ;
+        const GALGAS_unifiedTypeMap_2D_proxy temp_3 = inObject ;
         ioArgument_ioInclusions.addAssign_operation (temp_3.reader_mHeaderFileName (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 376))  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 376)) ;
         } break ;
       case GALGAS_headerKind::kEnum_twoHeaders: {
-        const GALGAS_unifiedTypeMapProxy temp_4 = inObject ;
+        const GALGAS_unifiedTypeMap_2D_proxy temp_4 = inObject ;
         ioArgument_ioInclusions.addAssign_operation (temp_4.reader_mHeaderFileName (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 378)).add_operation (GALGAS_string ("-1"), inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 378))  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 378)) ;
         } break ;
       }
@@ -3332,9 +3332,9 @@ GALGAS_analysisContext::~ GALGAS_analysisContext (void) {
 
 GALGAS_analysisContext::GALGAS_analysisContext (const GALGAS_semanticContext & inOperand0,
                                                 const GALGAS_predefinedTypes & inOperand1,
-                                                const GALGAS_unifiedTypeMapProxy & inOperand2,
+                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand2,
                                                 const GALGAS_string & inOperand3,
-                                                const GALGAS_unifiedTypeMapProxy & inOperand4) :
+                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand4) :
 mAttribute_mSemanticContext (inOperand0),
 mAttribute_mPredefinedTypes (inOperand1),
 mAttribute_mSelfCopyTypeProxy (inOperand2),
@@ -3347,18 +3347,18 @@ mAttribute_mSelfTypeProxy (inOperand4) {
 GALGAS_analysisContext GALGAS_analysisContext::constructor_default (UNUSED_LOCATION_ARGS) {
   return GALGAS_analysisContext (GALGAS_semanticContext::constructor_default (HERE),
                                  GALGAS_predefinedTypes::constructor_default (HERE),
-                                 GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+                                 GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                  GALGAS_string::constructor_default (HERE),
-                                 GALGAS_unifiedTypeMapProxy::constructor_null (HERE)) ;
+                                 GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_analysisContext GALGAS_analysisContext::constructor_new (const GALGAS_semanticContext & inOperand0,
                                                                 const GALGAS_predefinedTypes & inOperand1,
-                                                                const GALGAS_unifiedTypeMapProxy & inOperand2,
+                                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand2,
                                                                 const GALGAS_string & inOperand3,
-                                                                const GALGAS_unifiedTypeMapProxy & inOperand4 
+                                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand4 
                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_analysisContext result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
@@ -3440,7 +3440,7 @@ GALGAS_predefinedTypes GALGAS_analysisContext::reader_mPredefinedTypes (UNUSED_L
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_analysisContext::reader_mSelfCopyTypeProxy (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_analysisContext::reader_mSelfCopyTypeProxy (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSelfCopyTypeProxy ;
 }
 
@@ -3452,7 +3452,7 @@ GALGAS_string GALGAS_analysisContext::reader_mSelfObjectCppName (UNUSED_LOCATION
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_analysisContext::reader_mSelfTypeProxy (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_analysisContext::reader_mSelfTypeProxy (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mSelfTypeProxy ;
 }
 
@@ -4158,7 +4158,7 @@ GALGAS_templateVariableMap_2D_element::~ GALGAS_templateVariableMap_2D_element (
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateVariableMap_2D_element::GALGAS_templateVariableMap_2D_element (const GALGAS_lstring & inOperand0,
-                                                                              const GALGAS_unifiedTypeMapProxy & inOperand1,
+                                                                              const GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
                                                                               const GALGAS_string & inOperand2) :
 mAttribute_lkey (inOperand0),
 mAttribute_mTypeProxy (inOperand1),
@@ -4169,14 +4169,14 @@ mAttribute_mCppName (inOperand2) {
 
 GALGAS_templateVariableMap_2D_element GALGAS_templateVariableMap_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
   return GALGAS_templateVariableMap_2D_element (GALGAS_lstring::constructor_default (HERE),
-                                                GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+                                                GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                 GALGAS_string::constructor_default (HERE)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_templateVariableMap_2D_element GALGAS_templateVariableMap_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                              const GALGAS_unifiedTypeMapProxy & inOperand1,
+                                                                                              const GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
                                                                                               const GALGAS_string & inOperand2 
                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_templateVariableMap_2D_element result ;
@@ -4241,7 +4241,7 @@ GALGAS_lstring GALGAS_templateVariableMap_2D_element::reader_lkey (UNUSED_LOCATI
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_templateVariableMap_2D_element::reader_mTypeProxy (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_templateVariableMap_2D_element::reader_mTypeProxy (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTypeProxy ;
 }
 
@@ -16257,7 +16257,7 @@ GALGAS_functionSignature_2D_element::~ GALGAS_functionSignature_2D_element (void
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_functionSignature_2D_element::GALGAS_functionSignature_2D_element (const GALGAS_lstring & inOperand0,
-                                                                          const GALGAS_unifiedTypeMapProxy & inOperand1,
+                                                                          const GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
                                                                           const GALGAS_string & inOperand2) :
 mAttribute_mFormalSelector (inOperand0),
 mAttribute_mFormalArgumentType (inOperand1),
@@ -16268,14 +16268,14 @@ mAttribute_mFormalArgumentName (inOperand2) {
 
 GALGAS_functionSignature_2D_element GALGAS_functionSignature_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
   return GALGAS_functionSignature_2D_element (GALGAS_lstring::constructor_default (HERE),
-                                              GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+                                              GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                               GALGAS_string::constructor_default (HERE)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_functionSignature_2D_element GALGAS_functionSignature_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                          const GALGAS_unifiedTypeMapProxy & inOperand1,
+                                                                                          const GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
                                                                                           const GALGAS_string & inOperand2 
                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_functionSignature_2D_element result ;
@@ -16340,7 +16340,7 @@ GALGAS_lstring GALGAS_functionSignature_2D_element::reader_mFormalSelector (UNUS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_functionSignature_2D_element::reader_mFormalArgumentType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_functionSignature_2D_element::reader_mFormalArgumentType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFormalArgumentType ;
 }
 
@@ -16408,19 +16408,19 @@ GALGAS_unifiedTypeMapProxyList_2D_element::~ GALGAS_unifiedTypeMapProxyList_2D_e
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxyList_2D_element::GALGAS_unifiedTypeMapProxyList_2D_element (const GALGAS_unifiedTypeMapProxy & inOperand0) :
+GALGAS_unifiedTypeMapProxyList_2D_element::GALGAS_unifiedTypeMapProxyList_2D_element (const GALGAS_unifiedTypeMap_2D_proxy & inOperand0) :
 mAttribute_mType (inOperand0) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_unifiedTypeMapProxyList_2D_element GALGAS_unifiedTypeMapProxyList_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_unifiedTypeMapProxyList_2D_element (GALGAS_unifiedTypeMapProxy::constructor_null (HERE)) ;
+  return GALGAS_unifiedTypeMapProxyList_2D_element (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxyList_2D_element GALGAS_unifiedTypeMapProxyList_2D_element::constructor_new (const GALGAS_unifiedTypeMapProxy & inOperand0 
+GALGAS_unifiedTypeMapProxyList_2D_element GALGAS_unifiedTypeMapProxyList_2D_element::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inOperand0 
                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMapProxyList_2D_element result ;
   if (inOperand0.isValid ()) {
@@ -16466,7 +16466,7 @@ void GALGAS_unifiedTypeMapProxyList_2D_element::description (C_String & ioString
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_unifiedTypeMapProxyList_2D_element::reader_mType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_unifiedTypeMapProxyList_2D_element::reader_mType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mType ;
 }
 
@@ -16529,7 +16529,7 @@ GALGAS_unifiedTypeMapProxyAndParameterList_2D_element::~ GALGAS_unifiedTypeMapPr
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxyAndParameterList_2D_element::GALGAS_unifiedTypeMapProxyAndParameterList_2D_element (const GALGAS_unifiedTypeMapProxy & inOperand0,
+GALGAS_unifiedTypeMapProxyAndParameterList_2D_element::GALGAS_unifiedTypeMapProxyAndParameterList_2D_element (const GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
                                                                                                               const GALGAS_string & inOperand1) :
 mAttribute_mType (inOperand0),
 mAttribute_mFormalArgumentName (inOperand1) {
@@ -16538,13 +16538,13 @@ mAttribute_mFormalArgumentName (inOperand1) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_unifiedTypeMapProxyAndParameterList_2D_element GALGAS_unifiedTypeMapProxyAndParameterList_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_unifiedTypeMapProxyAndParameterList_2D_element (GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+  return GALGAS_unifiedTypeMapProxyAndParameterList_2D_element (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                                 GALGAS_string::constructor_default (HERE)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxyAndParameterList_2D_element GALGAS_unifiedTypeMapProxyAndParameterList_2D_element::constructor_new (const GALGAS_unifiedTypeMapProxy & inOperand0,
+GALGAS_unifiedTypeMapProxyAndParameterList_2D_element GALGAS_unifiedTypeMapProxyAndParameterList_2D_element::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
                                                                                                                               const GALGAS_string & inOperand1 
                                                                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMapProxyAndParameterList_2D_element result ;
@@ -16597,7 +16597,7 @@ void GALGAS_unifiedTypeMapProxyAndParameterList_2D_element::description (C_Strin
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_unifiedTypeMapProxyAndParameterList_2D_element::reader_mType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_unifiedTypeMapProxyAndParameterList_2D_element::reader_mType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mType ;
 }
 
@@ -16666,7 +16666,7 @@ GALGAS_unifiedTypeMapProxyAndLocalVariableList_2D_element::~ GALGAS_unifiedTypeM
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxyAndLocalVariableList_2D_element::GALGAS_unifiedTypeMapProxyAndLocalVariableList_2D_element (const GALGAS_unifiedTypeMapProxy & inOperand0,
+GALGAS_unifiedTypeMapProxyAndLocalVariableList_2D_element::GALGAS_unifiedTypeMapProxyAndLocalVariableList_2D_element (const GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
                                                                                                                       const GALGAS_string & inOperand1) :
 mAttribute_mType (inOperand0),
 mAttribute_mLocalVariableName (inOperand1) {
@@ -16675,13 +16675,13 @@ mAttribute_mLocalVariableName (inOperand1) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_unifiedTypeMapProxyAndLocalVariableList_2D_element GALGAS_unifiedTypeMapProxyAndLocalVariableList_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_unifiedTypeMapProxyAndLocalVariableList_2D_element (GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+  return GALGAS_unifiedTypeMapProxyAndLocalVariableList_2D_element (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                                     GALGAS_string::constructor_default (HERE)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxyAndLocalVariableList_2D_element GALGAS_unifiedTypeMapProxyAndLocalVariableList_2D_element::constructor_new (const GALGAS_unifiedTypeMapProxy & inOperand0,
+GALGAS_unifiedTypeMapProxyAndLocalVariableList_2D_element GALGAS_unifiedTypeMapProxyAndLocalVariableList_2D_element::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
                                                                                                                                       const GALGAS_string & inOperand1 
                                                                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_unifiedTypeMapProxyAndLocalVariableList_2D_element result ;
@@ -16734,7 +16734,7 @@ void GALGAS_unifiedTypeMapProxyAndLocalVariableList_2D_element::description (C_S
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_unifiedTypeMapProxyAndLocalVariableList_2D_element::reader_mType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_unifiedTypeMapProxyAndLocalVariableList_2D_element::reader_mType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mType ;
 }
 
@@ -16808,7 +16808,7 @@ GALGAS_constructorMap_2D_element::~ GALGAS_constructorMap_2D_element (void) {
 GALGAS_constructorMap_2D_element::GALGAS_constructorMap_2D_element (const GALGAS_lstring & inOperand0,
                                                                     const GALGAS_functionSignature & inOperand1,
                                                                     const GALGAS_bool & inOperand2,
-                                                                    const GALGAS_unifiedTypeMapProxy & inOperand3) :
+                                                                    const GALGAS_unifiedTypeMap_2D_proxy & inOperand3) :
 mAttribute_lkey (inOperand0),
 mAttribute_mArgumentTypeList (inOperand1),
 mAttribute_mHasCompilerArgument (inOperand2),
@@ -16821,7 +16821,7 @@ GALGAS_constructorMap_2D_element GALGAS_constructorMap_2D_element::constructor_d
   return GALGAS_constructorMap_2D_element (GALGAS_lstring::constructor_default (HERE),
                                            GALGAS_functionSignature::constructor_emptyList (HERE),
                                            GALGAS_bool::constructor_default (HERE),
-                                           GALGAS_unifiedTypeMapProxy::constructor_null (HERE)) ;
+                                           GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -16829,7 +16829,7 @@ GALGAS_constructorMap_2D_element GALGAS_constructorMap_2D_element::constructor_d
 GALGAS_constructorMap_2D_element GALGAS_constructorMap_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
                                                                                     const GALGAS_functionSignature & inOperand1,
                                                                                     const GALGAS_bool & inOperand2,
-                                                                                    const GALGAS_unifiedTypeMapProxy & inOperand3 
+                                                                                    const GALGAS_unifiedTypeMap_2D_proxy & inOperand3 
                                                                                     COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_constructorMap_2D_element result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
@@ -16911,7 +16911,7 @@ GALGAS_bool GALGAS_constructorMap_2D_element::reader_mHasCompilerArgument (UNUSE
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_constructorMap_2D_element::reader_mReturnedType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_constructorMap_2D_element::reader_mReturnedType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mReturnedType ;
 }
 
@@ -16985,7 +16985,7 @@ GALGAS_readerMap_2D_element::GALGAS_readerMap_2D_element (const GALGAS_lstring &
                                                           const GALGAS_functionSignature & inOperand2,
                                                           const GALGAS_location & inOperand3,
                                                           const GALGAS_bool & inOperand4,
-                                                          const GALGAS_unifiedTypeMapProxy & inOperand5,
+                                                          const GALGAS_unifiedTypeMap_2D_proxy & inOperand5,
                                                           const GALGAS_methodQualifier & inOperand6,
                                                           const GALGAS_string & inOperand7) :
 mAttribute_lkey (inOperand0),
@@ -17005,7 +17005,7 @@ GALGAS_readerMap_2D_element GALGAS_readerMap_2D_element::constructor_new (const 
                                                                           const GALGAS_functionSignature & inOperand2,
                                                                           const GALGAS_location & inOperand3,
                                                                           const GALGAS_bool & inOperand4,
-                                                                          const GALGAS_unifiedTypeMapProxy & inOperand5,
+                                                                          const GALGAS_unifiedTypeMap_2D_proxy & inOperand5,
                                                                           const GALGAS_methodQualifier & inOperand6,
                                                                           const GALGAS_string & inOperand7 
                                                                           COMMA_UNUSED_LOCATION_ARGS) {
@@ -17125,7 +17125,7 @@ GALGAS_bool GALGAS_readerMap_2D_element::reader_mHasCompilerArgument (UNUSED_LOC
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_readerMap_2D_element::reader_mReturnedType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_readerMap_2D_element::reader_mReturnedType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mReturnedType ;
 }
 
@@ -17203,7 +17203,7 @@ GALGAS_formalParameterSignature_2D_element::~ GALGAS_formalParameterSignature_2D
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_formalParameterSignature_2D_element::GALGAS_formalParameterSignature_2D_element (const GALGAS_lstring & inOperand0,
-                                                                                        const GALGAS_unifiedTypeMapProxy & inOperand1,
+                                                                                        const GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
                                                                                         const GALGAS_formalArgumentPassingModeAST & inOperand2,
                                                                                         const GALGAS_string & inOperand3) :
 mAttribute_mFormalSelector (inOperand0),
@@ -17215,7 +17215,7 @@ mAttribute_mFormalArgumentName (inOperand3) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_formalParameterSignature_2D_element GALGAS_formalParameterSignature_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                                        const GALGAS_unifiedTypeMapProxy & inOperand1,
+                                                                                                        const GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
                                                                                                         const GALGAS_formalArgumentPassingModeAST & inOperand2,
                                                                                                         const GALGAS_string & inOperand3 
                                                                                                         COMMA_UNUSED_LOCATION_ARGS) {
@@ -17287,7 +17287,7 @@ GALGAS_lstring GALGAS_formalParameterSignature_2D_element::reader_mFormalSelecto
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_formalParameterSignature_2D_element::reader_mFormalArgumentType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_formalParameterSignature_2D_element::reader_mFormalArgumentType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mFormalArgumentType ;
 }
 
@@ -17920,7 +17920,7 @@ GALGAS_enumerationDescriptorList_2D_element::~ GALGAS_enumerationDescriptorList_
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_enumerationDescriptorList_2D_element::GALGAS_enumerationDescriptorList_2D_element (const GALGAS_unifiedTypeMapProxy & inOperand0,
+GALGAS_enumerationDescriptorList_2D_element::GALGAS_enumerationDescriptorList_2D_element (const GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
                                                                                           const GALGAS_string & inOperand1) :
 mAttribute_mEnumeratedType (inOperand0),
 mAttribute_mEnumerationName (inOperand1) {
@@ -17929,13 +17929,13 @@ mAttribute_mEnumerationName (inOperand1) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_enumerationDescriptorList_2D_element GALGAS_enumerationDescriptorList_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_enumerationDescriptorList_2D_element (GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+  return GALGAS_enumerationDescriptorList_2D_element (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                       GALGAS_string::constructor_default (HERE)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_enumerationDescriptorList_2D_element GALGAS_enumerationDescriptorList_2D_element::constructor_new (const GALGAS_unifiedTypeMapProxy & inOperand0,
+GALGAS_enumerationDescriptorList_2D_element GALGAS_enumerationDescriptorList_2D_element::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
                                                                                                           const GALGAS_string & inOperand1 
                                                                                                           COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_enumerationDescriptorList_2D_element result ;
@@ -17988,7 +17988,7 @@ void GALGAS_enumerationDescriptorList_2D_element::description (C_String & ioStri
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_enumerationDescriptorList_2D_element::reader_mEnumeratedType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_enumerationDescriptorList_2D_element::reader_mEnumeratedType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mEnumeratedType ;
 }
 
@@ -18059,7 +18059,7 @@ GALGAS_typedAttributeList_2D_element::~ GALGAS_typedAttributeList_2D_element (vo
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedAttributeList_2D_element::GALGAS_typedAttributeList_2D_element (const GALGAS_unifiedTypeMapProxy & inOperand0,
+GALGAS_typedAttributeList_2D_element::GALGAS_typedAttributeList_2D_element (const GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
                                                                             const GALGAS_lstring & inOperand1,
                                                                             const GALGAS_bool & inOperand2,
                                                                             const GALGAS_bool & inOperand3) :
@@ -18072,7 +18072,7 @@ mAttribute_mHasGetter (inOperand3) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_typedAttributeList_2D_element GALGAS_typedAttributeList_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_typedAttributeList_2D_element (GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+  return GALGAS_typedAttributeList_2D_element (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                GALGAS_lstring::constructor_default (HERE),
                                                GALGAS_bool::constructor_default (HERE),
                                                GALGAS_bool::constructor_default (HERE)) ;
@@ -18080,7 +18080,7 @@ GALGAS_typedAttributeList_2D_element GALGAS_typedAttributeList_2D_element::const
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedAttributeList_2D_element GALGAS_typedAttributeList_2D_element::constructor_new (const GALGAS_unifiedTypeMapProxy & inOperand0,
+GALGAS_typedAttributeList_2D_element GALGAS_typedAttributeList_2D_element::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
                                                                                             const GALGAS_lstring & inOperand1,
                                                                                             const GALGAS_bool & inOperand2,
                                                                                             const GALGAS_bool & inOperand3 
@@ -18147,7 +18147,7 @@ void GALGAS_typedAttributeList_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_typedAttributeList_2D_element::reader_mAttributeTypeProxy (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_typedAttributeList_2D_element::reader_mAttributeTypeProxy (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mAttributeTypeProxy ;
 }
 
@@ -18229,7 +18229,7 @@ GALGAS_attributeMap_2D_element::~ GALGAS_attributeMap_2D_element (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_attributeMap_2D_element::GALGAS_attributeMap_2D_element (const GALGAS_lstring & inOperand0,
-                                                                const GALGAS_unifiedTypeMapProxy & inOperand1) :
+                                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand1) :
 mAttribute_lkey (inOperand0),
 mAttribute_mAttributeType (inOperand1) {
 }
@@ -18238,13 +18238,13 @@ mAttribute_mAttributeType (inOperand1) {
 
 GALGAS_attributeMap_2D_element GALGAS_attributeMap_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
   return GALGAS_attributeMap_2D_element (GALGAS_lstring::constructor_default (HERE),
-                                         GALGAS_unifiedTypeMapProxy::constructor_null (HERE)) ;
+                                         GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_attributeMap_2D_element GALGAS_attributeMap_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                const GALGAS_unifiedTypeMapProxy & inOperand1 
+                                                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand1 
                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_attributeMap_2D_element result ;
   if (inOperand0.isValid () && inOperand1.isValid ()) {
@@ -18302,7 +18302,7 @@ GALGAS_lstring GALGAS_attributeMap_2D_element::reader_lkey (UNUSED_LOCATION_ARGS
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_attributeMap_2D_element::reader_mAttributeType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_attributeMap_2D_element::reader_mAttributeType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mAttributeType ;
 }
 
@@ -18985,7 +18985,7 @@ GALGAS_functionMap_2D_element::~ GALGAS_functionMap_2D_element (void) {
 
 GALGAS_functionMap_2D_element::GALGAS_functionMap_2D_element (const GALGAS_lstring & inOperand0,
                                                               const GALGAS_functionSignature & inOperand1,
-                                                              const GALGAS_unifiedTypeMapProxy & inOperand2,
+                                                              const GALGAS_unifiedTypeMap_2D_proxy & inOperand2,
                                                               const GALGAS_bool & inOperand3) :
 mAttribute_lkey (inOperand0),
 mAttribute_mFunctionSignature (inOperand1),
@@ -18998,7 +18998,7 @@ mAttribute_mIsInternal (inOperand3) {
 GALGAS_functionMap_2D_element GALGAS_functionMap_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
   return GALGAS_functionMap_2D_element (GALGAS_lstring::constructor_default (HERE),
                                         GALGAS_functionSignature::constructor_emptyList (HERE),
-                                        GALGAS_unifiedTypeMapProxy::constructor_null (HERE),
+                                        GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                         GALGAS_bool::constructor_default (HERE)) ;
 }
 
@@ -19006,7 +19006,7 @@ GALGAS_functionMap_2D_element GALGAS_functionMap_2D_element::constructor_default
 
 GALGAS_functionMap_2D_element GALGAS_functionMap_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
                                                                               const GALGAS_functionSignature & inOperand1,
-                                                                              const GALGAS_unifiedTypeMapProxy & inOperand2,
+                                                                              const GALGAS_unifiedTypeMap_2D_proxy & inOperand2,
                                                                               const GALGAS_bool & inOperand3 
                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_functionMap_2D_element result ;
@@ -19083,7 +19083,7 @@ GALGAS_functionSignature GALGAS_functionMap_2D_element::reader_mFunctionSignatur
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_unifiedTypeMapProxy GALGAS_functionMap_2D_element::reader_mResultType (UNUSED_LOCATION_ARGS) const {
+GALGAS_unifiedTypeMap_2D_proxy GALGAS_functionMap_2D_element::reader_mResultType (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mResultType ;
 }
 
