@@ -1,0 +1,347 @@
+// !$*UTF8*$!
+{
+ archiveVersion = 1;
+ classes = {
+ };
+ objectVersion = 42;
+ objects = {
+
+/*------------------------------------------------------------------------------------------------------------------------- PBXBuildFile */
+%
+for () in BUILD_FILE_LIST do
+%  %!mBuildReference% /* %!mFileName% */ = {\n%
+%    isa = PBXBuildFile;\n%
+%    fileRef = %!mFileReference% ;\n%
+%    settings = {ATTRIBUTES = (); };\n%
+%  };\n%
+end
+%
+
+/*------------------------------------------------------------------------------------------------------------------------- PBXFileReference */
+%
+for () in CPP_FILE_LIST do
+%  %!mValue0% /* %!mValue1% */ = {\n%
+%    isa = PBXBuildFile;\n%
+%    fileEncoding = 4;\n%
+%    lastKnownFileType = sourcecode.cpp.cpp;\n%
+%    name = %![mValue1 utf8Representation]%;\n%
+%    path = %![mValue1 utf8Representation]%;\n%
+%    sourceTree = "<group>";\n%
+%  };\n%
+end
+for () in HEADER_FILE_LIST do
+%  %!mValue0% /* %!mValue1% */ = {\n%
+%    isa = PBXBuildFile;\n%
+%    fileEncoding = 4;\n%
+%    lastKnownFileType = sourcecode.c.h;\n%
+%    name = %![mValue1 utf8Representation]%;\n%
+%    path = %![mValue1 utf8Representation]%;\n%
+%    sourceTree = "<group>";\n%
+%  };\n%
+end
+for () in MACH_O_FILE_LIST do
+%  %!mFileReference% = {\n%
+%    isa = PBXFileReference;\n%
+%    explicitFileType = "compiled.mach-o.executable";\n%
+%    includeInIndex = 0;\n%
+%    path = %![mFileName utf8Representation]%;\n%
+%    sourceTree = BUILT_PRODUCTS_DIR;\n%
+%  };\n%
+end
+%
+/*------------------------------------------------------------------------------------------------------------------------- PBXFrameworksBuildPhase */
+
+/*------------------------------------------------------------------------------------------------------------------------- PBXGroup section */
+%
+for () in GROUPS do
+%  %!mGroupReference% /* %!mGroupName% */ = {\n%
+%    isa = PBXGroup;\n%
+%    children = (\n%
+for () in mChildrenRefs
+do %      %!mValue
+between %, \n%
+end
+%    );\n%
+%    name = %![mGroupName utf8Representation]%;\n%
+%    path = %![mGroupPath utf8Representation]%;\n%
+%    sourceTree = "<group>";\n%
+%  };\n%
+end
+%
+  %!MAIN_GROUP_REF% /* Main Group */ = {
+    isa = PBXGroup;
+    children = (
+%
+for () in MAIN_GROUP_CHILDREN_REFS
+do %      %!mValue
+between %, \n%
+end
+
+%    );
+    sourceTree = "<group>";
+  };
+
+/*------------------------------------------------------------------------------------------------------------------------- PBXNativeTarget */
+  5462084C5F4E7E85A093E6D7 /* Essai Tool */ = {
+   isa = PBXNativeTarget;
+   buildConfigurationList = 5D7027454A783C841250BA71 /* Build configuration list for PBXNativeTarget "Essai Tool" */;
+   buildPhases = (
+    2E2CAD213179A3992C0BE53C ,
+   );
+   buildRules = (
+   );
+   dependencies = (
+   );
+   name = "Essai Tool";
+   productInstallPath = "$(HOME)/bin";
+   productName = "essai";
+   productReference = 6595B338AFBAB333C555292A ;
+   productType = "com.apple.product-type.tool";
+  };
+
+/*------------------------------------------------------------------------------------------------------------------------- PBXProject */
+  %!PROJECT_REF% /* Project object */ = {
+   isa = PBXProject;
+   buildConfigurationList = E8752B27EDA3A12363109E80 /* Build configuration list for PBXProject "essai" */;
+   compatibilityVersion = "Xcode 2.4";
+   hasScannedForEncodings = 1;
+   mainGroup = %!MAIN_GROUP_REF%;
+   projectDirPath = "";
+   projectRoot = "";
+   targets = (
+%
+for () in TARGET_REF_LIST
+do %    %!mValue
+between %,\n%
+end
+%   );
+  };
+/* End PBXProject section */
+
+/*------------------------------------------------------------------------------------------------------------------------- PBXResourcesBuildPhase */
+
+/*------------------------------------------------------------------------------------------------------------------------- PBXSourcesBuildPhase */
+  2E2CAD213179A3992C0BE53C /* Sources */ = {
+   isa = PBXSourcesBuildPhase;
+   buildActionMask = 2147483647;
+   files = (
+    E1833F3FDB077CA70BBD5D66 ,
+    5FC9A3002CE38BBE070EC3F5 ,
+    856B4DE58A219BCF4E27EBA3 ,
+    E251E61CB8DD3612F26D5ECF ,
+    0B240CE177CF70DA146C8DC8 ,
+    F6347E897F954495EAB16A88 ,
+    CC52BC6F3D620BCEDC94A4B6 ,
+    5B344BC40F3BC04F65B7A357 ,
+    7D74717E0B1F21D122E04521 ,
+    AF6023646EDE0E1F7C1EAC75 ,
+    F73A9969845DFE4146C5660E ,
+    36092FB9B06DFB4FAC360931 ,
+    6C325499F1680B9896BEEDEB ,
+    3DE83D861C3176A6273CAC6D ,
+    A885DB0D477D707121934FF8 ,
+    E5241343AA7ACB6A06A751E7 ,
+    CB3ACA1AE2D0018624204529 ,
+    C6FCB220FFE637CDA29BB3F6 ,
+    373B17C6B337251C22B7EA57 ,
+    85AAB05244A4FB8FD91BF4EE ,
+    4C37100777C7190B76D28233 ,
+    38835DA0B6F6EA37BCF8BCB7 ,
+    C689C1D0E3B9CCC3AB651BC5 ,
+    1E7298BB9930789C8ED59D48 ,
+    6976570B0353203EC4474217 ,
+    C48A2CFB5F2217FBFB00722D ,
+    362B8D27A1D8F8C7B78B4330 ,
+    7931B6B7A7D29490FE5EC9F9 ,
+    80CAB8C45637ABC7493ECDDD ,
+    20B524AFDA05122893C2FE8E ,
+    5C640289D0A29417BCB63A37 ,
+    45B2AD1094D42F4EF36764F6 ,
+    63A49DA13542E0726B7BB758 ,
+    6E43BE4F209556518C2FCB54 ,
+    D8F918A4AA29BE29D2C386FB ,
+    E6A13CF5EAA496D51FEA6406 ,
+    DAA88A51F6CA8CFC1AC79B50 ,
+    AD7F202F26C1A174C7357585 ,
+    3860DB1D11B6ACCA57D8EA88 ,
+    A7B6C95BD2B32ED45989C61F ,
+    4A4D452035300F18B984988C ,
+    F378EFACC9B924EC161E7639 ,
+    4F9E55D5E4E4F82F9F00E7D4 ,
+    0A271FF252C1903E7132CD68 ,
+    BF1BCFE8450A1A41C200364C ,
+    AEA0A9C4655800E8A7B9EA28 ,
+    035754953B57A32E2841BDA5 ,
+    8217304975CCB23337BB5761 ,
+    55F636E4A163A5E3D16ADAB7 ,
+    D2755B24C4E168C5FC2EBD40 ,
+    39A0CEFEE4967C67CCB099DC ,
+    58DFA04AAF37F137A1D9D3E5 ,
+    C2B4AA3AD78BDD6B366CC179 ,
+    A435B314A80BDCB024F8E422 ,
+    8F5BD0C393DA094E1967A72B ,
+    7CA4B7642959DC0C4C740AB6 ,
+    2317B5F9259F82690AEEA4CD ,
+    5D98B1A652EA7FD72D942DAC ,
+    1E345E339F35A30C8F65EDCE ,
+    25E7C98C50F52CA1B52D3735 ,
+    9D1751CF3F247855F937B982 ,
+    B505FFED0D024130F58C5CFA ,
+    2E0716F3D8A7A5C4E0DE0D9A ,
+    743DC5D013B1ABAEBD2FAED2 ,
+    65C712C49D51A18A32B39F0C ,
+    927D466D6EC9A21B9AC34FFA ,
+    FDA6E89AEC274A3657558A27 ,
+    B9528732C23CC7352950E880 ,
+    3BFE59267D5ECFAC5310286C ,
+    DA20EF399B63A72D0E4AB575 ,
+    E5BC5280214E0486B273A5F9 ,
+    139AA4D9AA55B8D237EC5D4A ,
+    68F23406C6CECF84A7EBB0FE ,
+    4CCE62F762A2AAA148D556BD ,
+    25D76A6704B08093C652FD79 ,
+    3289AF4DD08DE5D1DE54F68F ,
+    2FE46A9D49D3D3AF4F57443D ,
+    7642BF815A88822C447D9DC4 ,
+    2C25763A55CC642422644317 ,
+    B191F8F9DE3F924F0940515F ,
+    5380FCACCE3976BF7C08AF5B ,
+    1D016FFCBF3314DF2B3CB9CE ,
+    E2DD305D79C2EBC8C1883422 ,
+    B96FCBA7CDA0CF54A2E802F5 ,
+    938DC2A6340E258630FEBD5A ,
+    E2E08964BF9F24B15F0E4900 ,
+    F61279C928F19721878FAC41 ,
+    B53F4CC0AD3819A36752467B ,
+    D8E091C2AB4C7C7DE644D37B ,
+    710521C12EE76289D9440817 ,
+    FF9806D4BCD1EF555BE766CD ,
+    0E95574250DABE07151BDC23 ,
+    C83817B7893BCDEED13799B5 ,
+   );
+   runOnlyForDeploymentPostprocessing = 0;
+  };
+
+/*------------------------------------------------------------------------------------------------------------------------- PBXTargetDependency */
+ 
+ /*------------------------------------------------------------------------------------------------------------------------- PBXVariantGroup */
+ 
+ /*------------------------------------------------------------------------------------------------------------------------- XCBuildConfiguration */
+  96D4281B7C95CD7E74623496 /* Default */ = {
+   isa = XCBuildConfiguration;
+   buildSettings = {
+    GCC_OPTIMIZATION_LEVEL = 2;
+    GCC_PREPROCESSOR_DEFINITIONS = ("LIBPM_MULTI_THREADING=0", DO_NOT_GENERATE_CHECKINGS) ;
+    PRODUCT_NAME = "essai";
+   };
+   name = Default;
+  };
+  3F67C759BF4FC791BA842AA2 /* Default */ = {
+   isa = XCBuildConfiguration;
+   buildSettings = {
+    GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+    GCC_OPTIMIZATION_LEVEL = 0;
+    GCC_WARN_UNINITIALIZED_AUTOS = NO;
+    GCC_PREPROCESSOR_DEFINITIONS = "LIBPM_MULTI_THREADING=0";
+    PRODUCT_NAME = "essai_debug";
+   };
+   name = Default;
+  };
+  1C2EC9232F3A2F028AD5C89B /* Default */ = {
+   isa = XCBuildConfiguration;
+   buildSettings = {
+    GCC_OPTIMIZATION_LEVEL = 2;
+    INFOPLIST_FILE = "Info.plist";
+    GCC_WARN_UNUSED_PARAMETER = NO;
+    GCC_WARN_PROTOTYPE_CONVERSION = NO;
+
+    PRODUCT_NAME = "CocoaEssai";
+   };
+   name = Default;
+  };
+  0BEDED7D215102B49D5C09A0 /* Default */ = {
+   isa = XCBuildConfiguration;
+   buildSettings = {
+    ALWAYS_SEARCH_USER_PATHS = NO;
+    ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+    CLANG_ENABLE_OBJC_ARC = YES;
+    GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+    GCC_PRECOMPILE_PREFIX_HEADER = YES;
+    GCC_THREADSAFE_STATICS = NO;
+    GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
+    GCC_TREAT_WARNINGS_AS_ERRORS = YES;
+    GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+    GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
+    GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = YES;
+    CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
+    GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
+    GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+    GCC_WARN_ABOUT_RETURN_TYPE = YES;
+    GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
+    GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
+    GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
+    GCC_WARN_INHIBIT_ALL_WARNINGS = NO;
+    GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
+    GCC_WARN_MISSING_PARENTHESES = YES;
+    GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
+    GCC_WARN_PEDANTIC = NO;
+    GCC_WARN_SHADOW = NO;
+    GCC_WARN_SIGN_COMPARE = YES;
+    GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
+    GCC_WARN_UNINITIALIZED_AUTOS = YES;
+    GCC_WARN_UNKNOWN_PRAGMAS = YES;
+    GCC_WARN_UNUSED_FUNCTION = YES;
+    GCC_WARN_UNUSED_LABEL = YES;
+    GCC_WARN_UNUSED_PARAMETER = YES;
+    GCC_WARN_UNUSED_VALUE = YES;
+    GCC_WARN_UNUSED_VARIABLE = YES;
+    HEADER_SEARCH_PATHS = (
+     "../build/output",
+     "../build/libpm",
+     "../build/user-headers",
+     "../hand_coded_sources/**",
+    );
+    SDKROOT = macosx ;
+    COPY_PHASE_STRIP = NO ;
+   };
+   name = Default;
+  };
+/* End XCBuildConfiguration section */
+
+/*------------------------------------------------------------------------------------------------------------------------- XCConfigurationList section */
+  5D7027454A783C841250BA71 /* Build configuration list for PBXProject "essai" */ = {
+   isa = XCConfigurationList;
+   buildConfigurations = (
+    96D4281B7C95CD7E74623496 /* Default */,
+   );
+   defaultConfigurationIsVisible = 0;
+   defaultConfigurationName = Default;
+  };
+  EC53BCEA3B7513CCEF5857AC /* Build configuration list for PBXProject "essai" */ = {
+   isa = XCConfigurationList;
+   buildConfigurations = (
+    3F67C759BF4FC791BA842AA2 /* Default */,
+   );
+   defaultConfigurationIsVisible = 0;
+   defaultConfigurationName = Default;
+  };
+  83065D403869739AE7F0995E /* Build configuration list for PBXProject "essai" */ = {
+   isa = XCConfigurationList;
+   buildConfigurations = (
+    1C2EC9232F3A2F028AD5C89B /* Default */,
+   );
+   defaultConfigurationIsVisible = 0;
+   defaultConfigurationName = Default;
+  };
+  E8752B27EDA3A12363109E80 /* Build configuration list for PBXProject "essai" */ = {
+   isa = XCConfigurationList;
+   buildConfigurations = (
+    0BEDED7D215102B49D5C09A0 /* Default */,
+   );
+   defaultConfigurationIsVisible = 0;
+   defaultConfigurationName = Default;
+  };
+
+ };
+ rootObject = %!PROJECT_REF% /* Project object */;
+}

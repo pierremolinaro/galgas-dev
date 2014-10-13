@@ -1,0 +1,152 @@
+semantics XcodeProjectNewGeneration :
+
+#---------------------------------------------------------------------------*
+
+modifier @XcodeProjectDescriptor addCppFile
+  ??fileName:@string inFileName
+  !fileRef:@string outFileRef
+:
+  [!?self getReferenceKey ?ref:outFileRef] ;
+  mCppFileList += !outFileRef !inFileName ;
+end modifier ;
+
+#---------------------------------------------------------------------------*
+
+modifier @XcodeProjectDescriptor addHeaderFile
+  ??fileName:@string inFileName
+  !fileRef:@string outFileRef
+:
+  [!?self getReferenceKey ?ref:outFileRef] ;
+  mHeaderFileList += !outFileRef !inFileName ;
+end modifier ;
+
+#---------------------------------------------------------------------------*
+
+modifier @XcodeProjectDescriptor addBuildFile
+  ??fileRef:@string inFileReference
+  ??fileName:@string inFileName
+  !buildRef:@string outBuildRef
+:
+  [!?self getReferenceKey ?ref:outBuildRef] ;
+  mBuildFileList += !inFileReference !inFileName !outBuildRef ;
+end modifier ;
+
+#---------------------------------------------------------------------------*
+
+modifier @XcodeProjectDescriptor addMachOTarget
+  ??fileName:@string inFileName
+  ??sources:@stringlist inSourceList
+  !fileRef:@string outFileRef
+:
+  [!?self getReferenceKey ?ref:outFileRef] ;
+  mMachOFileList += !outFileRef !inFileName ;
+  mTargetRefList += !outFileRef ;
+end modifier ;
+
+#---------------------------------------------------------------------------*
+
+modifier @XcodeProjectDescriptor addGroup
+  ??groupName:@string inGroupName
+  ??groupPath:@string inGroupPath
+  ??childrenRefs:@stringlist inChildrenRefs
+  !groupRef:@string outGroupRef
+:
+  if mMainGroupReference == "" then
+    [!?self getReferenceKey ?ref:mMainGroupReference] ;
+  end if ;
+  [!?self getReferenceKey ?ref:outGroupRef] ;
+  mGroupList += !outGroupRef !inGroupName !inGroupPath !inChildrenRefs ;
+  mMainGroupChildrenRefs += !outGroupRef ;
+end modifier ;
+
+#---------------------------------------------------------------------------*
+
+method @XcodeProjectDescriptor generateAtPath ??@string inPath :
+  const contents := [filewrapper xcodeProjectGenerationFilewrapper.xcodeproj
+    !mProjectObjectReference
+    !mMainGroupReference
+    !mGroupList
+    !mMainGroupChildrenRefs
+    !mMachOFileList
+    !mCppFileList
+    !mHeaderFileList
+    !mBuildFileList
+    !mTargetRefList
+  ] ;
+  [contents makeDirectoryAndWriteToFile !inPath + "/project.pbxproj"] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+list @XCodeGroupList {
+  @string mGroupReference ;
+  @string mGroupName ;
+  @string mGroupPath ;
+  @stringlist mChildrenRefs ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @XCodeMachOFileList {
+  @string mFileReference ;
+  @string mFileName ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @BuildFileList {
+  @string mBuildReference ;
+  @string mFileReference ;
+  @string mFileName ;
+}
+
+#---------------------------------------------------------------------------*
+
+struct @XcodeProjectDescriptor {
+  @uint mSequenceNumber ;
+  @string mMainGroupReference ;
+  @stringlist mMainGroupChildrenRefs ;
+  @string mProjectObjectReference ;
+  @XCodeGroupList mGroupList ;
+  @XCodeMachOFileList mMachOFileList ;
+  @2stringlist mCppFileList ;
+  @2stringlist mHeaderFileList ;
+  @BuildFileList mBuildFileList ;
+  @stringlist mTargetRefList ;
+}
+
+#---------------------------------------------------------------------------*
+
+modifier @XcodeProjectDescriptor getReferenceKey
+  !ref:@string outRef
+:
+  if mProjectObjectReference == "" then
+    mProjectObjectReference := [[[mSequenceNumber string] md5] rightSubString!24] ;
+    mSequenceNumber ++ ;
+  end if ;
+  outRef := [[[mSequenceNumber string] md5] rightSubString!24] ;
+  mSequenceNumber ++ ;
+end modifier ;
+
+#---------------------------------------------------------------------------*
+
+local filewrapper xcodeProjectGenerationFilewrapper in "../generation_templates/target_generation/project_xcode" {
+}{
+}{
+  template xcodeproj "project.pbxproj.gTemplate"
+    ?@string PROJECT_REF
+    ?@string MAIN_GROUP_REF
+    ?@XCodeGroupList GROUPS
+    ?@stringlist MAIN_GROUP_CHILDREN_REFS
+    ?@XCodeMachOFileList MACH_O_FILE_LIST
+    ?@2stringlist CPP_FILE_LIST
+    ?@2stringlist HEADER_FILE_LIST
+    ?@BuildFileList BUILD_FILE_LIST
+    ?@stringlist TARGET_REF_LIST
+  ;
+}
+
+#---------------------------------------------------------------------------*
+
+end semantics ;
+

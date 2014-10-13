@@ -128,6 +128,7 @@ SOURCES += galgas3GrammarComponentSyntax.cpp
 SOURCES += galgas3ProgramDeclarations.cpp
 SOURCES += galgas3Grammar.cpp
 SOURCES += galgas3SemanticDeclarationCompilation.cpp
+SOURCES += XcodeProjectNewGeneration.cpp
 SOURCES += galgas3TargetGeneration.cpp
 
 
