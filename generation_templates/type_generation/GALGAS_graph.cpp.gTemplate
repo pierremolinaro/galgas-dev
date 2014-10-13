@@ -114,3 +114,21 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_subgraphFromNodes (%
   return result ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstringlist GALGAS_%!TYPE_IDENTIFIER%::reader_accessibleNodesFromNodes (%?^%const GALGAS_lstringlist & inStartKeyList,
+                                        %!^%C_Compiler * inCompiler
+                                        %!^%COMMA_LOCATION_ARGS) const {
+  GALGAS_lstringlist result ;
+  GALGAS_%!TYPE_IDENTIFIER% resultingGraph ;
+  subGraph (resultingGraph,
+            inStartKeyList,
+            GALGAS_stringset::constructor_emptySet (HERE),
+            inCompiler
+            COMMA_THERE) ;
+  if (resultingGraph.isValid ()) {
+    result = resultingGraph.reader_lkeyList (THERE) ;
+  }
+  return result ;
+}
+

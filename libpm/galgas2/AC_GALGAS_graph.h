@@ -82,6 +82,8 @@ class AC_GALGAS_graph : public AC_GALGAS_root {
 
   public : VIRTUAL_IN_DEBUG GALGAS_stringlist reader_keyList (LOCATION_ARGS) const ;
 
+  public : VIRTUAL_IN_DEBUG GALGAS_lstringlist reader_lkeyList (LOCATION_ARGS) const ;
+
   public : VIRTUAL_IN_DEBUG GALGAS_uint reader_undefinedNodeCount (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG GALGAS_stringlist reader_undefinedNodeKeyList (LOCATION_ARGS) const ;

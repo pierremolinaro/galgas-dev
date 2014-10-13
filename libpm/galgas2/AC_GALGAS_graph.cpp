@@ -136,6 +136,8 @@ class cSharedGraph : public C_SharedObject {
 
   public : GALGAS_stringlist keyList (void) const ;
 
+  public : GALGAS_lstringlist lkeyList (void) const ;
+
   public : C_String reader_graphviz (void) const ;
 
   public : void edges (GALGAS__32_stringlist & ioList) const ;
@@ -358,6 +360,37 @@ GALGAS_stringlist AC_GALGAS_graph::reader_keyList (UNUSED_LOCATION_ARGS) const {
   GALGAS_stringlist result ;
   if (isValid ()) {
     result = mSharedGraph->keyList () ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark reader_lkeyList
+#endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstringlist cSharedGraph::lkeyList (void) const {
+  GALGAS_lstringlist result = GALGAS_lstringlist::constructor_emptyList (HERE) ;
+  for (int32_t i=0 ; i<mNodeArray.count () ; i++) {
+    const cGraphNode * p = mNodeArray (i COMMA_HERE) ;
+    GALGAS_location loc = p->mDefinitionLocation ;
+    if (! loc.isValid ()) {
+      loc = GALGAS_location::constructor_nowhere (HERE) ;
+    }
+    result.addAssign_operation (GALGAS_lstring (p->mKey, loc) COMMA_HERE) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_lstringlist AC_GALGAS_graph::reader_lkeyList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_lstringlist result ;
+  if (isValid ()) {
+    result = mSharedGraph->lkeyList () ;
   }
   return result ;
 }
