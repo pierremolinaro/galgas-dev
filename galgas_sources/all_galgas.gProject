@@ -154,6 +154,7 @@ project all_galgas (3:0:0) -> "galgas" :
 
   semantics "galgas3SemanticDeclarationCompilation.gSemantics" ;
 
+  semantics "XcodeProjectNewGeneration.gSemantics" ;
   semantics "galgas3TargetGeneration.gSemantics" ;
 
 #--- Hand coded sources
