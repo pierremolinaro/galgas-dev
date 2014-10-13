@@ -25,7 +25,7 @@ graph @nom_du_type_graph (@nom_liste_information) {
 
 Le nom \galgas{@nom_du_type_graph} est le nom donné au type. Le nom \galgas{@nom_liste_information} nomme un type qui spécifie l'information utilisateur associée à chaque nœud.
 
-Attention, le type \galgas{@nom_liste_information} est un type \emph{liste}, et l'information utilisateur a pour type l'élement associé, c'est à dire \galgas{@nom_liste_information.element}. 
+Attention, le type \galgas{@nom_liste_information} est un type \emph{liste}, et l'information utilisateur a pour type l'élement associé, c'est à dire \galgas{@nom_liste_information-element}. 
 
 Par exemple, si l'on veut manipuler des graphes dont l'information associée est un entier \galgas{@uint}, on déclarera :
 \begin{galgascode}
@@ -197,6 +197,16 @@ Ce getter retourne la liste des noms de nœuds, aussi bien les nœuds définis (
 
 
 
+\subsection{Getter \texttt{lkeyList}}
+
+\begin{galgascode}
+getter lkeyList -> @stringlist ;
+\end{galgascode}
+
+Ce getter retourne la liste des noms de nœuds, aussi bien les nœuds définis (c'est à dire les nœuds pour lesquels un setter d'insertion a été appelé, \refSubsectionPage{setter-insertion-graphe}), que les nœuds indéfinis. Chaque nœud défini est accompagné de sa position de définition, les nœuds indéfinis sont accompagnés d'une position non définie (équivalente à celle obtenue par le constructeur \galgas{nowhere}).
+
+
+
 \subsection{Getter \texttt{reversedGraph}}
 
 \begin{galgascode}
@@ -209,16 +219,31 @@ Ce getter retourne un graphe de même type que le receiveur, mais dont les arcs 
 
 
 
-\subsection{Getter \texttt{subgraphFromNode}}
+\subsection{Getter \texttt{subgraphFromNodes}}
 
 \begin{galgascode}
-getter subgraphFromNode
+getter subgraphFromNodes
   ??@lstringlist inStartNodes
   ??@stringset inNodesToExclude
   -> @self ;
 \end{galgascode}
 
 Ce getter retourne le graphe défini par la partie accessible du receveur à partir des nœuds nommés dans \galgas{inStartNodes}, en excluant les nœuds nommés dans \galgas{inNodesToExclude}.
+
+
+
+
+
+
+\subsection{Getter \texttt{accessibleNodesFromNodes}}
+
+\begin{galgascode}
+getter accessibleNodesFromNodes
+  ??@lstringlist inStartNodes
+  -> @lstringlist ;
+\end{galgascode}
+
+Ce getter retourne la liste des nœuds accessibles à partir des nœuds nommés dans \galgas{inStartNodes}.
 
 
 
