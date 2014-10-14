@@ -34,13 +34,28 @@ end modifier ;
 #---------------------------------------------------------------------------*
 
 modifier @XcodeProjectDescriptor addMachOTarget
-  ??fileName:@string inFileName
+  ??targetName:@string inTargetName
+  ??productFileName:@string inProductFileName
   ??sources:@stringlist inSourceList
-  !fileRef:@string outFileRef
+  ??buildConfigurationSettingList:@stringlist inBuildConfigurationSettingList
+  !productFileRef:@string outProductFileRef
 :
-  [!?self getReferenceKey ?ref:outFileRef] ;
-  mMachOFileList += !outFileRef !inFileName ;
-  mTargetRefList += !outFileRef ;
+  [!?self getReferenceKey ?ref:outProductFileRef] ;
+  [!?self getReferenceKey ??ref:buildPhaseRef] ;
+  [!?self getReferenceKey ??ref:targetRef] ;
+  [!?self getReferenceKey ??ref:buildConfigurationListRef] ;
+  [!?self getReferenceKey ??ref:buildConfigurationRef] ;
+  mMachOTargetList +=
+    !targetRef
+    !inTargetName
+    !outProductFileRef
+    !inProductFileName
+    !inSourceList
+    !buildPhaseRef
+    !buildConfigurationListRef
+    !inBuildConfigurationSettingList
+    !buildConfigurationRef
+  ;
 end modifier ;
 
 #---------------------------------------------------------------------------*
@@ -51,30 +66,34 @@ modifier @XcodeProjectDescriptor addGroup
   ??childrenRefs:@stringlist inChildrenRefs
   !groupRef:@string outGroupRef
 :
+  if mDefaultConfigurationRef == "" then
+    [!?self getReferenceKey ?ref:mDefaultConfigurationRef] ;
+  end if ;
+  if mProjectBuildConfigurationRef == "" then
+    [!?self getReferenceKey ?ref:mProjectBuildConfigurationRef] ;
+  end if ;
   if mMainGroupReference == "" then
     [!?self getReferenceKey ?ref:mMainGroupReference] ;
   end if ;
   [!?self getReferenceKey ?ref:outGroupRef] ;
   mGroupList += !outGroupRef !inGroupName !inGroupPath !inChildrenRefs ;
-  mMainGroupChildrenRefs += !outGroupRef ;
 end modifier ;
 
 #---------------------------------------------------------------------------*
 
-method @XcodeProjectDescriptor generateAtPath ??@string inPath :
-  const contents := [filewrapper xcodeProjectGenerationFilewrapper.xcodeproj
-    !mProjectObjectReference
-    !mMainGroupReference
-    !mGroupList
-    !mMainGroupChildrenRefs
-    !mMachOFileList
-    !mCppFileList
-    !mHeaderFileList
-    !mBuildFileList
-    !mTargetRefList
-  ] ;
-  [contents makeDirectoryAndWriteToFile !inPath + "/project.pbxproj"] ;
-end method ;
+modifier @XcodeProjectDescriptor placeGroupAsMainGroup
+  ??groupRef:@string inGroupRef
+:
+  mMainGroupChildrenRefs += !inGroupRef ;
+end modifier ;
+
+#---------------------------------------------------------------------------*
+
+modifier @XcodeProjectDescriptor addSettingsToDefaultConfiguration
+  ??settingList:@stringlist inSettingList
+:
+  mDefaultConfigurationSettingList += inSettingList ;
+end modifier ;
 
 #---------------------------------------------------------------------------*
 
@@ -87,32 +106,24 @@ list @XCodeGroupList {
 
 #---------------------------------------------------------------------------*
 
-list @XCodeMachOFileList {
-  @string mFileReference ;
-  @string mFileName ;
+list @XCodeMachOTargetList {
+  @string mTargetRef ;
+  @string mTargetName ;
+  @string mProductFileReference ;
+  @string mProductFileName ;
+  @stringlist mBuildPhaseRefList ;
+  @string mBuildPhaseRef ;
+  @string mBuildConfigurationListRef ;
+  @stringlist mBuildConfigurationSettingList ;
+  @string mBuildConfigurationRef ;
 }
 
 #---------------------------------------------------------------------------*
 
 list @BuildFileList {
-  @string mBuildReference ;
   @string mFileReference ;
   @string mFileName ;
-}
-
-#---------------------------------------------------------------------------*
-
-struct @XcodeProjectDescriptor {
-  @uint mSequenceNumber ;
-  @string mMainGroupReference ;
-  @stringlist mMainGroupChildrenRefs ;
-  @string mProjectObjectReference ;
-  @XCodeGroupList mGroupList ;
-  @XCodeMachOFileList mMachOFileList ;
-  @2stringlist mCppFileList ;
-  @2stringlist mHeaderFileList ;
-  @BuildFileList mBuildFileList ;
-  @stringlist mTargetRefList ;
+  @string mBuildReference ;
 }
 
 #---------------------------------------------------------------------------*
@@ -130,6 +141,24 @@ end modifier ;
 
 #---------------------------------------------------------------------------*
 
+struct @XcodeProjectDescriptor {
+  @uint mSequenceNumber ;
+  @string mMainGroupReference ;
+  @stringlist mMainGroupChildrenRefs ;
+  @string mProjectObjectReference ;
+  @XCodeGroupList mGroupList ;
+  @XCodeMachOTargetList mMachOTargetList ;
+  @2stringlist mCppFileList ;
+  @2stringlist mHeaderFileList ;
+  @BuildFileList mBuildFileList ;
+#--- Default configuration
+  @string mDefaultConfigurationRef ;
+  @stringlist mDefaultConfigurationSettingList ;
+  @string mProjectBuildConfigurationRef ;
+}
+
+#---------------------------------------------------------------------------*
+
 local filewrapper xcodeProjectGenerationFilewrapper in "../generation_templates/target_generation/project_xcode" {
 }{
 }{
@@ -138,13 +167,34 @@ local filewrapper xcodeProjectGenerationFilewrapper in "../generation_templates/
     ?@string MAIN_GROUP_REF
     ?@XCodeGroupList GROUPS
     ?@stringlist MAIN_GROUP_CHILDREN_REFS
-    ?@XCodeMachOFileList MACH_O_FILE_LIST
+    ?@XCodeMachOTargetList MACH_O_TARGET_LIST
     ?@2stringlist CPP_FILE_LIST
     ?@2stringlist HEADER_FILE_LIST
     ?@BuildFileList BUILD_FILE_LIST
-    ?@stringlist TARGET_REF_LIST
+    ?@string DEFAULT_CONFIGURATION_REF
+    ?@stringlist DEFAULT_CONFIGURATION_SETTING_LIST
+    ?@string PROJECT_BUILD_DEFAULT_CONFIGURATION_REF
   ;
 }
+
+#---------------------------------------------------------------------------*
+
+method @XcodeProjectDescriptor generateAtPath ??@string inPath :
+  const contents := [filewrapper xcodeProjectGenerationFilewrapper.xcodeproj
+    !mProjectObjectReference
+    !mMainGroupReference
+    !mGroupList
+    !mMainGroupChildrenRefs
+    !mMachOTargetList
+    !mCppFileList
+    !mHeaderFileList
+    !mBuildFileList
+    !mDefaultConfigurationRef
+    !mDefaultConfigurationSettingList
+    !mProjectBuildConfigurationRef
+  ] ;
+  [contents makeDirectoryAndWriteToFile !inPath + "/project.pbxproj"] ;
+end method ;
 
 #---------------------------------------------------------------------------*
 

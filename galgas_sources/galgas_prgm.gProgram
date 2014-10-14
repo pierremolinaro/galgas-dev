@@ -717,7 +717,6 @@ routine projectGeneration
   if [option .verbose_output value] then
     message "*** Generating files\n" ;
   end if ;
-  var toolCppFileList := [@stringlist emptyList] ;
   var allProductFileSet := [@stringset emptySet] ;
 #---------------------------------- Generate GUI components
 #  message "*** Generate GUI\n" ;
@@ -731,11 +730,14 @@ routine projectGeneration
   end if ;
 #---------------------------------- Generate semantic files
 #  message "*** Generate semantic\n" ;
+  var toolCppFileList := [@stringlist emptyList] ;
+  var toolHeaderFileList := [@stringlist emptyList] ;
   generateSemanticDeclarationsGalgas3
     !inTypeMap
     !inProductDirectory
     !inSemanticDeclarationSortedListForGeneration
     !?toolCppFileList
+    !?toolHeaderFileList
     !?allProductFileSet
   ;
 #---------------------------------- Update targets
@@ -767,6 +769,7 @@ routine projectGeneration
       !projectQualifiedFeatureMap
       !inProjectComponentAST->mGenerationFeatureList
       !toolCppFileList
+      !toolHeaderFileList
       !appProductFileList
       !inHandCodedSourceToolFileList
       !inHandCodedSourceDirectorySet
