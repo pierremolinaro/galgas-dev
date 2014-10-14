@@ -197,6 +197,7 @@ routine generateSemanticDeclarationsGalgas3
   ??@string inProductDirectory
   ??@semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
   ?!@stringlist ioToolProductFileList
+  ?!@stringlist ioToolHeaderFileList
   ?!@stringset ioAllProductFileSet
 :
 #--- Generate specific files
@@ -213,6 +214,7 @@ routine generateSemanticDeclarationsGalgas3
         !inProductDirectory
         !inSemanticDeclarationSortedListForGeneration
         !?ioAllProductFileSet
+        !?ioToolHeaderFileList
       ;
       generateManyImplementationFiles
         !inUnifiedTypeMap
@@ -226,6 +228,7 @@ routine generateSemanticDeclarationsGalgas3
         !inProductDirectory
         !inSemanticDeclarationSortedListForGeneration
         !?ioAllProductFileSet
+        !?ioToolHeaderFileList
       ;
       generateFewImplementationFiles
         !inUnifiedTypeMap
@@ -239,6 +242,7 @@ routine generateSemanticDeclarationsGalgas3
         !inProductDirectory
         !inSemanticDeclarationSortedListForGeneration
         !?ioAllProductFileSet
+        !?ioToolHeaderFileList
       ;
       generateManyImplementationFiles
         !inUnifiedTypeMap
@@ -254,12 +258,14 @@ routine generateSemanticDeclarationsGalgas3
         !inSemanticDeclarationSortedListForGeneration
         !?ioToolProductFileList
         !?ioAllProductFileSet
+        !?ioToolHeaderFileList
       ;
     else
       generateManyHeaders
         !inProductDirectory
         !inSemanticDeclarationSortedListForGeneration
         !?ioAllProductFileSet
+        !?ioToolHeaderFileList
       ;
       generateManyImplementationFiles
         !inUnifiedTypeMap
@@ -278,6 +284,7 @@ local routine generateManyHeaders
   ??@string inProductDirectory
   ??@semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
   ?!@stringset ioAllProductFileSet
+  ?!@stringlist ioToolHeaderFileList
 :
 #--- Header files
   var headerInclusionList1 := [@stringlist emptyList] ;
@@ -342,6 +349,7 @@ local routine generateManyHeaders
         const headerFileName := [mDeclaration implementationCppFileName] + if [mDeclaration headerKind] == [@headerKind twoHeaders] then "-1" else "" end ;
         headerInclusionList1 += !headerFileName ;
         ioAllProductFileSet += !headerFileName . ".h" ;
+        ioToolHeaderFileList += !headerFileName . ".h" ;
         [@string generateFile
           !inProductDirectory
           !headerFileName . ".h"
@@ -361,6 +369,7 @@ local routine generateManyHeaders
         headerString .= "#endif\n\n" ;
         headerInclusionList2 += ![mDeclaration implementationCppFileName] ;
         ioAllProductFileSet += ![mDeclaration implementationCppFileName] . ".h" ;
+        ioToolHeaderFileList += ![mDeclaration implementationCppFileName] . ".h" ;
         [@string generateFile
           !inProductDirectory
           ![mDeclaration implementationCppFileName] . ".h"
@@ -375,6 +384,7 @@ local routine generateManyHeaders
     !headerInclusionList1 + headerInclusionList2
   ] ;
   ioAllProductFileSet += !"all-declarations.h" ;
+  ioToolHeaderFileList += !"all-declarations.h" ;
   [@string generateFile
     !inProductDirectory
     !"all-declarations.h"
@@ -388,6 +398,7 @@ local routine generateOneBigHeader
   ??@string inProductDirectory
   ??@semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
   ?!@stringset ioAllProductFileSet
+  ?!@stringlist ioToolHeaderFileList
 :
   var headerString := [filewrapper semanticFileGenerationTemplate.semanticFileHeader
     !"all-declarations"
@@ -410,6 +421,7 @@ local routine generateOneBigHeader
     end if ;
   end foreach ;
   ioAllProductFileSet += !"all-declarations.h" ;
+  ioToolHeaderFileList += !"all-declarations.h" ;
   [@string generateFile
     !inProductDirectory
     !"all-declarations.h"
@@ -546,6 +558,7 @@ local routine generateFewImplementationFilesWithFewHeaders
   ??@semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
   ?!@stringlist ioToolProductFileList
   ?!@stringset ioAllProductFileSet
+  ?!@stringlist ioToolHeaderFileList
 :
   const useOneHugeHeader := [option galgas_cli_options.generateOneHeader value] ;
   @headerCompositionMap headerCompositionMap := {} ;
@@ -614,6 +627,7 @@ local routine generateFewImplementationFilesWithFewHeaders
         ] ;
       #---
         ioAllProductFileSet += !headerFileName + ".h" ;
+        ioToolHeaderFileList += !headerFileName + ".h" ;
         const startOfHeader := [filewrapper semanticFileGenerationTemplate.semanticFileHeader
           !headerFileName
           !if fileIdx == 0 then {} else {!"all-declarations-" + (fileIdx-1)} end
@@ -650,6 +664,7 @@ local routine generateFewImplementationFilesWithFewHeaders
     ] ;
   #---
     ioAllProductFileSet += !headerFileName + ".h" ;
+    ioToolHeaderFileList += !headerFileName + ".h" ;
     const startOfHeader := [filewrapper semanticFileGenerationTemplate.semanticFileHeader
       !headerFileName
       !if fileIdx == 0 then {} else {!"all-declarations-" + (fileIdx-1)} end
@@ -662,6 +677,7 @@ local routine generateFewImplementationFilesWithFewHeaders
   end if ;
 #--- all declarations header
   ioAllProductFileSet += !"all-declarations.h" ;
+  ioToolHeaderFileList += !"all-declarations.h" ;
   const startOfAllDeclarationsHeader := [filewrapper semanticFileGenerationTemplate.semanticFileHeader
     !"all-declarations"
     !{!"all-declarations-" + fileIdx}

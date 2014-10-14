@@ -56,6 +56,9 @@ with lexique "galgas_scanner.gLexique" {
   label $abstract$, $reader$, $type_name$, $identifier$ ;
   label $override$, $reader$, $type_name$, $identifier$ ;
   label $reader$, $type_name$, $identifier$ ;
+  label $abstract$, $modifier$, $type_name$, $identifier$ ;
+  label $override$, $modifier$, $type_name$, $identifier$ ;
+  label $modifier$, $type_name$, $identifier$ ;
   label $when$, $.$, $literal_string$ ;
   label * $commentMark$ (2, 0) ;
   label $terminal$, $!$ - ;
@@ -140,12 +143,19 @@ with lexique "galgas3Scanner.gLexique" {
   label $func$, $identifier$ ;
   label $func$, $attribute$, $identifier$ ;
   label $filewrapper$, $identifier$, $in$ ;
+
   label $abstract$, $method$, $type_name$, $identifier$ ;
   label $override$, $method$, $type_name$, $identifier$ ;
   label $method$, $type_name$, $identifier$ ;
+
   label $abstract$, $getter$, $type_name$, $identifier$ ;
   label $override$,  $getter$, $type_name$, $identifier$ ;
   label $getter$, $type_name$, $identifier$ ;
+
+  label $abstract$, $setter$, $type_name$, $identifier$ ;
+  label $override$,  $setter$, $type_name$, $identifier$ ;
+  label $setter$, $type_name$, $identifier$ ;
+
   label $case$, $.$, $literal_string$ ;
   label * $commentMark$ (2, 0) ;
   label $terminal$, $!$ - ;
