@@ -1,10 +1,10 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  'C_ErrorOut' : a class for console output                                  *
+//  'C_ErrorOut' : a class for console output                                                                          *
 //                                                                                                                     *
-//  This file is part of libpm library                                         *
+//  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2006, ..., 2011 Pierre Molinaro.                             *
+//  Copyright (C) 2006, ..., 2011 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -51,7 +51,7 @@ class C_ErrorOut : public C_ColoredConsole {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  C O N S O L E    O U T    G L O B A L   V A R I A B L E                  *
+//  C O N S O L E    O U T    G L O B A L   V A R I A B L E                                                            *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 

@@ -1,10 +1,10 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  'C_ColoredConsole' : a class for colored console output                    *
+//  'C_ColoredConsole' : a class for colored console output                                                            *
 //                                                                                                                     *
-//  This file is part of libpm library                                         *
+//  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2011, ..., 2011 Pierre Molinaro.                             *
+//  Copyright (C) 2011, ..., 2011 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -51,13 +51,13 @@ bool C_ColoredConsole::usesTextAttributes (void) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-// http://ascii-table.com/ansi-escape-sequences.php                            *
+// http://ascii-table.com/ansi-escape-sequences.php                                                                    *
 //                                                                                                                     *
-// Win32 console:                                                              *
-//   http://www.adrianxw.dk/SoftwareSite/Consoles/Consoles1.html               *
-//   http://www.adrianxw.dk/SoftwareSite/Consoles/Consoles2.html               *
-//   http://www.adrianxw.dk/SoftwareSite/Consoles/Consoles3.html               *
-//   http://www.adrianxw.dk/SoftwareSite/Consoles/Consoles4.html               *
+// Win32 console:                                                                                                      *
+//   http://www.adrianxw.dk/SoftwareSite/Consoles/Consoles1.html                                                       *
+//   http://www.adrianxw.dk/SoftwareSite/Consoles/Consoles2.html                                                       *
+//   http://www.adrianxw.dk/SoftwareSite/Consoles/Consoles3.html                                                       *
+//   http://www.adrianxw.dk/SoftwareSite/Consoles/Consoles4.html                                                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
