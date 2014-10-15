@@ -56,28 +56,18 @@ Le \refTableau{ArgumentFormelEntree} liste les différentes formes d'un argument
 
 \begin{table}[t]
   \centering
-  \subfloat[Argument formel]{
-    \begin{tabular}{ll}
-      \textbf{Syntaxe} & \textbf{Remarque} \\
-      \galgast{?}\galgas{@T variable} & \galgas{variable} est modifiable localement \\
-      \galgast{?}\galgas{@T unused variable} & \galgas{variable} n'est pas utilisée \\
-      \galgast{?}\galgas{let @T constante} & \galgas{constante} est une constante \\
-      \galgast{?}\galgas{let @T unused constante} & \galgas{constante} est une constante inutilisée \\
-    \end{tabular}
-  }
-  \subfloat[Paramètre effectif]{
-    \begin{tabular}{ll}
-      \textbf{Syntaxe} \\
-      \galgas{\!expression}~~~~~~~~~~~\\
-      \\
-      \\
-      \\
-    \end{tabular}
-  }
+  \begin{tabular}{lll}
+    \textbf{Argument formel  en entrée} & \textbf{Remarque} & \textbf{Paramètre effectif en sortie} \\
+    \galgast{?selector:}\galgas{@T variable} & Variable (modifiable) & \galgas{\!selector:expression} \\
+    \galgast{?selector:}\galgas{@T unused variable} & Variable inutilisée &  \\
+    \galgast{?selector:}\galgas{let @T constante} & Constante & \\
+    \galgast{?selector:}\galgas{let @T unused constante} & Constante inutilisée & \\
+  \end{tabular}
   \caption{Argument formel en entrée, paramètre effectif en sortie}
   \labelTableau{ArgumentFormelEntree}
   \ligne
 \end{table}
+
 
 \subsectionLabel{Argument formel en entrée/sortie}{argumentFormelEntreeSortie}
 
@@ -85,20 +75,12 @@ Le \refTableau{ArgumentFormelEntreeSortie} liste les différentes formes d'un ar
 
 \begin{table}[t]
   \centering
-  \subfloat[Argument formel]{
-    \begin{tabular}{ll}
-      \textbf{Syntaxe} & \textbf{Remarque} \\
-      \galgast{?!}\galgas{@T variable} & \galgas{variable} est modifiable \\
-      \galgast{?!}\galgas{@T unused variable} & \galgas{variable} n'est pas utilisée \\
-    \end{tabular}
-  }
-  \subfloat[Paramètre effectif]{
-    \begin{tabular}{l}
-      \textbf{Syntaxe} \\
-      \galgast{!?}\galgas{cible}~~~~~~~~~~~\\
-      \\
-    \end{tabular}
-  }
+  \begin{tabular}{lll}
+    \textbf{Argument formel en entrée/sortie} & \textbf{Paramètre effectif en sortie/entrée} & \textbf{Remarque}\\
+    \galgast{?!selector:}\galgas{@T variable} & \galgast{!?selector:}\galgas{cible} & \\
+    \galgast{?!selector:}\galgas{@T unused variable} & \galgast{!?selector:*} & Variable anonyme\\
+    & \galgast{!?}$n$\galgast{*} & $n$ variables anonymes\\
+  \end{tabular}
   \caption{Argument formel en entrée/sortie, paramètre effectif en sortie/entrée}
   \labelTableau{ArgumentFormelEntreeSortie}
   \ligne
@@ -108,24 +90,26 @@ Le \refTableau{ArgumentFormelEntreeSortie} liste les différentes formes d'un ar
 
 \begin{table}[t]
   \centering
-  \subfloat[Argument formel]{
-    \begin{tabular}{ll}
-      \textbf{Syntaxe} \\
-      \galgas{\!@T variable}~~~~~~~~\\
-      \\
-      \\
-      \\
+%  \subfloat[Argument formel]{
+%    \begin{tabular}{ll}
+%      \textbf{Syntaxe} \\
+%      \galgas{\!selector:@T variable}\\
+%      \\
+%      \\
+%      \\
+%    \end{tabular}
+%  }
+%  \subfloat[Paramètre effectif]{
+    \begin{tabular}{lll}
+      \textbf{Argument formel en sortie} & \textbf{Paramètre effectif en entrée} & \textbf{Remarque} \\
+      \galgas{\!selector:@T variable} & \galgast{?selector:}\galgas{variable} & Affectation \\
+      & \galgast{?selector:}\galgas{@T variable} & Déclaration et affectation de variable \\
+      & \galgast{?selector:}\galgas{let @T constante} & Déclaration et affectation \\
+      & \galgast{?selector:}\galgas{let constante} & Déclaration et affectation \\
+      & \galgast{?selector:}\galgas{*} & Variable anonyme \\
+      & \galgast{?}$n$\galgast{*} & $n$ variables anonymes \\
     \end{tabular}
-  }
-  \subfloat[Paramètre effectif]{
-    \begin{tabular}{ll}
-      \textbf{Syntaxe} & \textbf{Remarque} \\
-      \galgast{?}\galgas{variable} & Affectation de variable \\
-      \galgast{?}\galgas{@T variable} & Déclaration et affectation de variable \\
-      \galgast{?}\galgas{*} & Variable anonyme \\
-      \galgast{?}\galgas{let @T constante} & Déclaration et affectation de constante \\
-    \end{tabular}
-  }
+%  }
   \caption{Argument formel en sortie, paramètre effectif en entrée}
   \labelTableau{ArgumentFormelSortie}
   \ligne
