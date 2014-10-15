@@ -3192,7 +3192,6 @@ override method @nonterminalCallInstruction analyzeSyntaxInstruction
     [labelMap searchKey !mLabelName ?* ?signature ?*] ;
   end if ;
 #--- call arguments
-  var localVariableDeclarationList := @unifiedTypeMapProxyAndLocalVariableList {} ;
   analyzeRoutineArguments
     !inAnalysisContext
     !mNonterminalName
@@ -3200,7 +3199,7 @@ override method @nonterminalCallInstruction analyzeSyntaxInstruction
     !signature
     !mActualParameterList
     !?ioVariableMap
-    !?localVariableDeclarationList
+    !?ioInstructionListForGeneration
     ??@actualParameterListForGeneration actualParameterListForGeneration
   ;
 #--- Check syntax directed translation destination variable
@@ -3210,12 +3209,6 @@ override method @nonterminalCallInstruction analyzeSyntaxInstruction
     !?ioVariableMap
   ] ;
 #--- Generate instructions
-  for () in localVariableDeclarationList do
-    ioInstructionListForGeneration += ![@localVariableDeclarationForGeneration new
-      !mType
-      !mLocalVariableName
-    ] ;
-  end for ;
   ioInstructionListForGeneration += ![@nonterminalInstructionForGeneration new
     !mInstructionLocation
     ![mNonterminalName string]

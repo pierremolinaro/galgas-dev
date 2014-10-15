@@ -48,13 +48,6 @@ list @unifiedTypeMapProxyAndParameterList {
 }
 
 #---------------------------------------------------------------------------*
-
-list @unifiedTypeMapProxyAndLocalVariableList {
-  @unifiedTypeMap-proxy mType ;
-  @string mLocalVariableName ;
-}
-
-#---------------------------------------------------------------------------*
 #                                                                           *
 #  C O N S T R U C T O R    M A P                                           *
 #                                                                           *
