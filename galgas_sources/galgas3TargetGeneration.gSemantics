@@ -490,6 +490,8 @@ routine updateGalgas3Targets
     const @string xcodeProjectPath := dir . "/" . inTargetName . ".xcodeproj" ; # Actually a directory
     const @string intermediateFilePath := [inProjectSourceFilePath stringByDeletingLastPathComponent] . "/build/output/file-list-for-xcode-project.txt" ;
     ioAllProductFileSet += !"file-list-for-xcode-project.txt" ;
+    const @string newIntermediateFilePath := [inProjectSourceFilePath stringByDeletingLastPathComponent] . "/build/output/file-list-for-xcode-project-new.txt" ;
+    ioAllProductFileSet += !"file-list-for-xcode-project-new.txt" ;
   #--- Add sources for application
     const externSourceSet_app := [@stringset setWithStringList !inHandCodedSourceAppFileList] ;
   #---
@@ -892,7 +894,9 @@ routine updateGalgas3Targets
       ?* # ??productFileRef:@string machOTargetRef
     ] ;
   #--- Generate project
-    [xcodeProject generateAtPath !dir . "/" . inTargetName . "_NEW.xcodeproj"] ;
+    [xcodeProject generateAtPath
+      !xcodeprojPath:dir . "/" . inTargetName . "_NEW.xcodeproj"
+      !cacheFilePath:newIntermediateFilePath] ;
   end if ;
 end routine ;
 
