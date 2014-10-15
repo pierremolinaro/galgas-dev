@@ -565,7 +565,7 @@ routine updateGalgas3Targets
       !groupPath:"../build/output"
       !fileNames:[@stringset setWithStringList !inToolCppFileList + inToolHeaderFileList]
       !?cppFileRefs:buildFileRefListForTool
-      !?mFileRefs:m_FileRefList
+      !?1* #m_FileRefList
       ?groupRef:@string groupRef
     ] ;
     [!?xcodeProject placeGroupAsMainGroup !groupRef:groupRef] ;
@@ -901,7 +901,7 @@ routine updateGalgas3Targets
         !"GCC_OPTIMIZATION_LEVEL = 2",
         !"GCC_PREPROCESSOR_DEFINITIONS = (\"LIBPM_MULTI_THREADING=0\", DO_NOT_GENERATE_CHECKINGS)"
       }
-      ?* # ??productFileRef:@string machOTargetRef
+      ?productFileRef:*
     ] ;
   #--- Add Mach O debug target
     [!?xcodeProject addMachOTarget
@@ -912,7 +912,7 @@ routine updateGalgas3Targets
         !"GCC_OPTIMIZATION_LEVEL = 0",
         !"GCC_PREPROCESSOR_DEFINITIONS = (\"LIBPM_MULTI_THREADING=0\")"
       }
-      ?* # ??productFileRef:@string machOTargetRef
+      ?productFileRef:*
     ] ;
   #--- Generate project
     [xcodeProject generateAtPath
