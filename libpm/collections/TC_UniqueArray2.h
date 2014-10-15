@@ -1,14 +1,14 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  Declaration and implementation of the template class 'TC_UniqueArray2'     *
+//  Declaration and implementation of the template class 'TC_UniqueArray2'                                             *
 //                                                                                                                     *
-//  It implements a generic two dimensions dynamic sized array.                *
+//  It implements a generic two dimensions dynamic sized array.                                                        *
 //                                                                                                                     *
-//  COPY OF ITS INSTANCES IS NOT ALLOWED.                                      *
+//  COPY OF ITS INSTANCES IS NOT ALLOWED.                                                                              *
 //                                                                                                                     *
-//  This file is part of libpm library                                         *
+//  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2008, ..., 2014 Pierre Molinaro.                             *
+//  Copyright (C) 2008, ..., 2014 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -105,7 +105,7 @@ template <typename TYPE> class TC_UniqueArray2 {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                         Implementation                                      *
+//                         Implementation                                                                              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 

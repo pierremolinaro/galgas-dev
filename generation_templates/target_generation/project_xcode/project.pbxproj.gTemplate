@@ -157,7 +157,7 @@ for () in MACH_O_TARGET_LIST do
 for () in mBuildConfigurationSettingList do
 %      %!mValue% ;\n%
 end
-%      PRODUCT_NAME = %![mTargetName utf8Representation]% ;\n%
+%      PRODUCT_NAME = %![mProductFileName utf8Representation]% ;\n%
 %    };\n%
 %    name = Default;\n%
 %  };\n\n%

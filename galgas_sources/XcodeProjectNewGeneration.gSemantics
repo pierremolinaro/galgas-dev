@@ -217,7 +217,10 @@ local filewrapper xcodeProjectGenerationFilewrapper in "../generation_templates/
 
 #---------------------------------------------------------------------------*
 
-method @XcodeProjectDescriptor generateAtPath ??@string inPath :
+method @XcodeProjectDescriptor generateAtPath
+  ??xcodeprojPath:@string inPath
+  ??cacheFilePath:@string inCacheFilePath
+:
   const contents := [filewrapper xcodeProjectGenerationFilewrapper.xcodeproj
     !mProjectObjectReference
     !mMainGroupReference
@@ -231,7 +234,10 @@ method @XcodeProjectDescriptor generateAtPath ??@string inPath :
     !mDefaultConfigurationSettingList
     !mProjectBuildConfigurationRef
   ] ;
-  [contents makeDirectoryAndWriteToFile !inPath + "/project.pbxproj"] ;
+  if not ([inCacheFilePath fileExists] && ([@string stringWithContentsOfFile !inCacheFilePath] == contents)) then 
+    [contents writeToFile !inCacheFilePath] ;
+    [contents makeDirectoryAndWriteToFile !inPath + "/project.pbxproj"] ;
+  end if ;
 end method ;
 
 #---------------------------------------------------------------------------*
