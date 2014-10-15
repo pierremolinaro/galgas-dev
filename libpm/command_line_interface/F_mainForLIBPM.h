@@ -1,10 +1,10 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  Declaration of 'mainForLIBPM' routine prototype.                           *
+//  Declaration of 'mainForLIBPM' routine prototype.                                                                   *
 //                                                                                                                     *
-//  This file is part of libpm library                                         *
+//  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2002, ..., 2012 Pierre Molinaro.                             *
+//  Copyright (C) 2002, ..., 2012 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *

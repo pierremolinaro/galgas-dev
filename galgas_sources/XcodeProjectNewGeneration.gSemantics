@@ -81,6 +81,44 @@ end modifier ;
 
 #---------------------------------------------------------------------------*
 
+modifier @XcodeProjectDescriptor addGroupWithFiles
+  ??groupName:@string inGroupName
+  ??groupPath:@string inGroupPath
+  ??fileNames:@stringset inFileNames
+  !cppFileRefs:@stringlist outCppFileBuildRefs
+  !groupRef:@string outGroupRef
+:
+  if mDefaultConfigurationRef == "" then
+    [!?self getReferenceKey ?ref:mDefaultConfigurationRef] ;
+  end if ;
+  if mProjectBuildConfigurationRef == "" then
+    [!?self getReferenceKey ?ref:mProjectBuildConfigurationRef] ;
+  end if ;
+  if mMainGroupReference == "" then
+    [!?self getReferenceKey ?ref:mMainGroupReference] ;
+  end if ;
+  [!?self getReferenceKey ?ref:outGroupRef] ;
+#---
+  @stringlist childrenRefs := {} ;
+  outCppFileBuildRefs := {} ;
+  for (f) in inFileNames do
+    if [f pathExtension] == "cpp" then
+      [!?self addCppFile !fileName:f ??fileRef:@string cppFileRef] ;
+      childrenRefs += !cppFileRef ;
+      [!?self addBuildFile !fileRef:cppFileRef !fileName:f ??buildRef:@string buildRef] ;
+      outCppFileBuildRefs += !buildRef ;
+    elsif [f pathExtension] == "h" then
+      [!?self addHeaderFile !fileName:f ??fileRef:@string headerFileRef] ;
+      childrenRefs += !headerFileRef ;
+    else
+      error [@location nowhere] : "unhandled extension for file '" + f + "'" ;
+    end if ;
+  end for ;
+  mGroupList += !outGroupRef !inGroupName !inGroupPath !childrenRefs ;
+end modifier ;
+
+#---------------------------------------------------------------------------*
+
 modifier @XcodeProjectDescriptor placeGroupAsMainGroup
   ??groupRef:@string inGroupRef
 :

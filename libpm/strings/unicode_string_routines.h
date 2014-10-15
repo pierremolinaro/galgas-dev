@@ -1,12 +1,12 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  unicode_string_routines: this file implements uint32_t * string routines,  *
-//  that are in direct correspondance with char * C string routines of C       *
-//  library.                                                                   *
+//  unicode_string_routines: this file implements uint32_t * string routines,                                          *
+//  that are in direct correspondance with char * C string routines of C                                               *
+//  library.                                                                                                           *
 //                                                                                                                     *
-//  This file is part of libpm library                                         *
+//  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2008, ..., 2008 Pierre Molinaro.                             *
+//  Copyright (C) 2008, ..., 2008 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
