@@ -491,7 +491,7 @@ abstract method @actualParameterAST checkAgainstFormalArgument
   ?!@variableMap ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
   ?!@stringset ioExclusiveVariableSet
-  ?!@unifiedTypeMapProxyAndLocalVariableList ioLocalVariableDeclarationList
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
 ;
 
 #---------------------------------------------------------------------------*
@@ -516,7 +516,7 @@ override method @outputActualParameterAST checkAgainstFormalArgument
   ?!@variableMap ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
   ?!@stringset unused ioExclusiveVariableSet
-  ?!@unifiedTypeMapProxyAndLocalVariableList unused ioLocalVariableDeclarationList
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
 :
   if (inFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentIn])
    & (inFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentConstantIn]) then
@@ -554,7 +554,7 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
   ?!@variableMap ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
   ?!@stringset ioExclusiveVariableSet
-  ?!@unifiedTypeMapProxyAndLocalVariableList unused ioLocalVariableDeclarationList
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
 :
   if inFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentInOut] then
     error mActualSelector
@@ -606,7 +606,7 @@ override method @outputInputSingleJokerParameterAST checkAgainstFormalArgument
   ?!@variableMap unused ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
   ?!@stringset unused ioExclusiveVariableSet
-  ?!@unifiedTypeMapProxyAndLocalVariableList ioLocalVariableDeclarationList
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
 :
   if inFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentInOut] then
     error mActualSelector
@@ -622,7 +622,12 @@ override method @outputInputSingleJokerParameterAST checkAgainstFormalArgument
   end if ;
 #--- Generate actual parameter
   const cppVarName := "joker_" . [mActualSelector->location locationIndex] ;
-  ioLocalVariableDeclarationList += !inFormalArgumentType !cppVarName ;
+  ioInstructionListForGeneration += ![@localVariableOrConstantDeclarationWithSourceExpressionForGeneration new
+    !inFormalArgumentType
+    !false # Is not constant
+    !cppVarName
+    ![@defaultConstructorExpressionForGeneration new !inFormalArgumentType !mActualSelector->location]
+  ] ;
   ioActualParameterListForGeneration += ![@outputInputActualParameterForGeneration new
     !inFormalArgumentType
     !cppVarName
@@ -641,7 +646,7 @@ override method @outputInputJokerParameterAST checkAgainstFormalArgument
   ?!@variableMap unused ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
   ?!@stringset unused ioExclusiveVariableSet
-  ?!@unifiedTypeMapProxyAndLocalVariableList ioLocalVariableDeclarationList
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
 :
   if inFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentInOut] then
     error mQualifierLocation
@@ -655,7 +660,12 @@ override method @outputInputJokerParameterAST checkAgainstFormalArgument
   end if ;
 #--- Generate actual parameter
   const cppVarName := "joker_" . [mQualifierLocation locationIndex] . "_" . mJokerIndex ;
-  ioLocalVariableDeclarationList += !inFormalArgumentType !cppVarName ;
+  ioInstructionListForGeneration += ![@localVariableOrConstantDeclarationWithSourceExpressionForGeneration new
+    !inFormalArgumentType
+    !false # Is not constant
+    !cppVarName
+    ![@defaultConstructorExpressionForGeneration new !inFormalArgumentType !mQualifierLocation]
+  ] ;
   ioActualParameterListForGeneration += ![@outputInputActualParameterForGeneration new
     !inFormalArgumentType
     !cppVarName
@@ -674,7 +684,7 @@ override method @inputActualExistingVariableParameterAST checkAgainstFormalArgum
   ?!@variableMap ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
   ?!@stringset ioExclusiveVariableSet
-  ?!@unifiedTypeMapProxyAndLocalVariableList unused ioLocalVariableDeclarationList
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
 :
   if inFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentOut] then
     error mActualSelector
@@ -721,7 +731,7 @@ override method @inputActualNewVariableParameterAST checkAgainstFormalArgument
   ?!@variableMap ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
   ?!@stringset ioExclusiveVariableSet
-  ?!@unifiedTypeMapProxyAndLocalVariableList ioLocalVariableDeclarationList
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
 :
 #--- Check passing mode
   if inFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentOut] then
@@ -752,7 +762,10 @@ override method @inputActualNewVariableParameterAST checkAgainstFormalArgument
     !targetVariableCppName
   ] ;
 #--- Generate local variable declaration
-  ioLocalVariableDeclarationList += !inFormalArgumentType !targetVariableCppName ;
+  ioInstructionListForGeneration += ![@localVariableDeclarationForGeneration new
+    !inFormalArgumentType
+    !targetVariableCppName
+  ] ;
 #--- Check for exclusive access
   if [ioExclusiveVariableSet hasKey !mInputActualParameterName->string] then
     error mInputActualParameterName
@@ -777,7 +790,7 @@ override method @inputActualNewConstantParameterAST checkAgainstFormalArgument
   ?!@variableMap ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
   ?!@stringset ioExclusiveVariableSet
-  ?!@unifiedTypeMapProxyAndLocalVariableList ioLocalVariableDeclarationList
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
 :
 #--- Check passing mode
   if inFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentOut] then
@@ -808,7 +821,10 @@ override method @inputActualNewConstantParameterAST checkAgainstFormalArgument
     !targetVariableCppName
   ] ;
 #--- Generate local variable declaration
-  ioLocalVariableDeclarationList += !inFormalArgumentType !targetVariableCppName ;
+  ioInstructionListForGeneration += ![@localVariableDeclarationForGeneration new
+    !inFormalArgumentType
+    !targetVariableCppName
+  ] ;
 #--- Check for exclusive access
   if [ioExclusiveVariableSet hasKey !mInputActualParameterName->string] then
     error mInputActualParameterName
@@ -833,7 +849,7 @@ override method @inputSingleJokerActualParameterAST checkAgainstFormalArgument
   ?!@variableMap unused ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
   ?!@stringset unused ioExclusiveVariableSet
-  ?!@unifiedTypeMapProxyAndLocalVariableList unused ioLocalVariableDeclarationList
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
 :
   if inFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentOut] then
     error mActualSelector
@@ -862,7 +878,7 @@ override method @inputJokerActualParameterAST checkAgainstFormalArgument
   ?!@variableMap unused ioVariableMap
   ?!@actualParameterListForGeneration ioActualParameterListForGeneration
   ?!@stringset unused ioExclusiveVariableSet
-  ?!@unifiedTypeMapProxyAndLocalVariableList unused ioLocalVariableDeclarationList
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
 :
   if inFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentOut] then
     error mQualifierLocation
@@ -888,7 +904,7 @@ routine analyzeRoutineArguments
   ??@formalParameterSignature inRoutineSignature
   ??@actualParameterListAST inActualParameterList
   ?!@variableMap ioVariableMap
-  ?!@unifiedTypeMapProxyAndLocalVariableList ioLocalVariableDeclarationList
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   !@actualParameterListForGeneration outActualParameterListForGeneration
 :
   if [inRoutineSignature length] != [inActualParameterList length] then
@@ -910,7 +926,7 @@ routine analyzeRoutineArguments
         !?ioVariableMap
         !?outActualParameterListForGeneration
         !?exclusiveVariableSet
-        !?ioLocalVariableDeclarationList
+        !?ioInstructionListForGeneration
       ] ;
     end foreach ;
   end if ;
@@ -937,7 +953,6 @@ override method @routineCallInstructionAST analyzeSemanticInstruction
     end if ;
   end if ;
 #--- Check effective parameters
-  var localVariableDeclarationList := @unifiedTypeMapProxyAndLocalVariableList {} ;
   analyzeRoutineArguments
     !inAnalysisContext
     !mRoutineName
@@ -945,16 +960,16 @@ override method @routineCallInstructionAST analyzeSemanticInstruction
     !routineSignature
     !mActualParameterList
     !?ioVariableMap
-    !?localVariableDeclarationList
+    !?ioInstructionListForGeneration
     ??@actualParameterListForGeneration actualParameterListForGeneration
   ;
 #--- Generate instructions
-  for () in localVariableDeclarationList do
-    ioInstructionListForGeneration += ![@localVariableDeclarationForGeneration new
-      !mType
-      !mLocalVariableName
-    ] ;
-  end for ;
+#  for () in localVariableDeclarationList do
+#    ioInstructionListForGeneration += ![@localVariableDeclarationForGeneration new
+#      !mType
+#      !mLocalVariableName
+#    ] ;
+#  end for ;
   ioInstructionListForGeneration += ![@routineCallInstructionForGeneration new
     !mRoutineName
     !actualParameterListForGeneration
@@ -975,7 +990,6 @@ override method @typeMethodCallInstructionAST analyzeSemanticInstruction
   @bool hasCompilerArgument ;
   [[type mClassMethodMap] searchKey !mMethodName ?routineSignature ?hasCompilerArgument] ;
 #--- Check effective parameters
-  var localVariableDeclarationList := @unifiedTypeMapProxyAndLocalVariableList {} ;
   analyzeRoutineArguments
     !inAnalysisContext
     !mMethodName
@@ -983,16 +997,10 @@ override method @typeMethodCallInstructionAST analyzeSemanticInstruction
     !routineSignature
     !mActualParameterList
     !?ioVariableMap
-    !?localVariableDeclarationList
+    !?ioInstructionListForGeneration
     ?? @actualParameterListForGeneration actualParameterListForGeneration
   ;
 #--- Generate instructions
-  for () in localVariableDeclarationList do
-    ioInstructionListForGeneration += ![@localVariableDeclarationForGeneration new
-      !mType
-      !mLocalVariableName
-    ] ;
-  end for ;
   ioInstructionListForGeneration += ![@typeMethodInstructionForGeneration new
     !mTypeName
     !mMethodName
@@ -1025,7 +1033,6 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
     error mMethodName : errorMessage ;
   end if ;
 #--- Check effective parameters
-  var localVariableDeclarationList := @unifiedTypeMapProxyAndLocalVariableList {} ;
   analyzeRoutineArguments
     !inAnalysisContext
     !mMethodName
@@ -1033,7 +1040,7 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
     !routineSignature
     !mActualParameterList
     !?ioVariableMap
-    !?localVariableDeclarationList
+    !?ioInstructionListForGeneration
     ??@actualParameterListForGeneration actualParameterListForGeneration
   ;
 #--- Search base type that declares the method
@@ -1053,12 +1060,6 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
     end loop ;
   end if ;
 #--- Generate instructions
-  for () in localVariableDeclarationList do
-    ioInstructionListForGeneration += ![@localVariableDeclarationForGeneration new
-      !mType
-      !mLocalVariableName
-    ] ;
-  end for ;
   ioInstructionListForGeneration += ![@methodCallInstructionForGeneration new
     !mInstructionLocation
     ![receiverExpression mResultType]
@@ -1119,7 +1120,6 @@ override method @modifierCallInstructionAST analyzeSemanticInstruction
     error mModifierName : modifierErrorMessage ;
   end if ;
 #--- Check effective parameters
-  var localVariableDeclarationList := @unifiedTypeMapProxyAndLocalVariableList {} ;
   analyzeRoutineArguments
     !inAnalysisContext
     !mModifierName
@@ -1127,7 +1127,7 @@ override method @modifierCallInstructionAST analyzeSemanticInstruction
     !routineSignature
     !mActualParameterList
     !?ioVariableMap
-    !?localVariableDeclarationList
+    !?ioInstructionListForGeneration
     ??@actualParameterListForGeneration actualParameterListForGeneration
   ;
 #--- Search base type that declares the method
@@ -1147,12 +1147,6 @@ override method @modifierCallInstructionAST analyzeSemanticInstruction
     end loop ;
   end if ;
 #--- Generate instructions
-  for () in localVariableDeclarationList do
-    ioInstructionListForGeneration += ![@localVariableDeclarationForGeneration new
-      !mType
-      !mLocalVariableName
-    ] ;
-  end for ;
   ioInstructionListForGeneration += ![@modifierCallInstructionForGeneration new
     !receiverVariableCppName
     !receiverVariableBaseName
@@ -1188,7 +1182,6 @@ override method @selfModifierCallInstructionAST analyzeSemanticInstruction
   @methodKind kind ;
   [[selfTypeProxy mModifierMap] searchKey !mModifierName ?kind ?routineSignature ?hasCompilerArgument ?* ?*] ;
 #--- Check effective parameters
-  var localVariableDeclarationList := @unifiedTypeMapProxyAndLocalVariableList {} ;
   analyzeRoutineArguments
     !inAnalysisContext
     !mModifierName
@@ -1196,16 +1189,10 @@ override method @selfModifierCallInstructionAST analyzeSemanticInstruction
     !routineSignature
     !mActualParameterList
     !?ioVariableMap
-    !?localVariableDeclarationList
+    !?ioInstructionListForGeneration
     ??@actualParameterListForGeneration actualParameterListForGeneration
   ;
 #--- Generate instructions
-  for () in localVariableDeclarationList do
-    ioInstructionListForGeneration += ![@localVariableDeclarationForGeneration new
-      !mType
-      !mLocalVariableName
-    ] ;
-  end for ;
   ioInstructionListForGeneration += ![@selfModifierCallInstructionForGeneration new
     !selfObjectCppName
     !selfTypeProxy
@@ -2600,7 +2587,6 @@ override method @grammarInstructionAST analyzeSemanticInstruction
     ??@formalParameterSignature labelSignature
   ] ;
 #--- Check actual parameters
-  var localVariableDeclarationList := @unifiedTypeMapProxyAndLocalVariableList {} ;
   analyzeRoutineArguments
     !inAnalysisContext
     !mLabelName
@@ -2608,7 +2594,7 @@ override method @grammarInstructionAST analyzeSemanticInstruction
     !labelSignature
     !mActualParameterList
     !?ioVariableMap
-    !?localVariableDeclarationList
+    !?ioInstructionListForGeneration
     ??@actualParameterListForGeneration actualParameterListForGeneration
   ;
 #--- Parse source expression
@@ -2641,12 +2627,6 @@ override method @grammarInstructionAST analyzeSemanticInstruction
     !?ioVariableMap
   ] ;
 #--- Generate instructions
-  for () in localVariableDeclarationList do
-    ioInstructionListForGeneration += ![@localVariableDeclarationForGeneration new
-      !mType
-      !mLocalVariableName
-    ] ;
-  end for ;
   if mSourceExpressionIsFile then
     ioInstructionListForGeneration += ![@grammarInstructionWithSourceFileForGeneration new
       !mInstructionLocation

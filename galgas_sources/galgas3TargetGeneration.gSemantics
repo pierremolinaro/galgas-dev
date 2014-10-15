@@ -565,7 +565,7 @@ routine updateGalgas3Targets
       !groupPath:"../build/output"
       !fileNames:[@stringset setWithStringList !inToolCppFileList + inToolHeaderFileList]
       !?cppFileRefs:buildFileRefListForTool
-      !?1* #m_FileRefList
+      !?mFileRefs:m_FileRefList
       ?groupRef:@string groupRef
     ] ;
     [!?xcodeProject placeGroupAsMainGroup !groupRef:groupRef] ;
