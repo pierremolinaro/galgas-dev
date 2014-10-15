@@ -1740,12 +1740,12 @@
 				CFE167820E8E7A2B00AFDAFC /* main.m */,
 				CF4397F40ADFE16D0085F47C /* PMCancelButtonForPanel.h */,
 				CF4397F50ADFE16D0085F47C /* PMCancelButtonForPanel.m */,
-				CF4397F60ADFE16D0085F47C /* PMOkButtonForPanel.h */,
-				CF4397F70ADFE16D0085F47C /* PMOkButtonForPanel.m */,
 				CFDAE7050AD19F3E00713406 /* PMDownloadData.h */,
 				CFDAE7060AD19F3E00713406 /* PMDownloadData.m */,
 				CFDAE7070AD19F3E00713406 /* PMDownloadFile.h */,
 				CFDAE7080AD19F3E00713406 /* PMDownloadFile.m */,
+				CF4397F60ADFE16D0085F47C /* PMOkButtonForPanel.h */,
+				CF4397F70ADFE16D0085F47C /* PMOkButtonForPanel.m */,
 			);
 			path = cocoa_utilities;
 			sourceTree = "<group>";
@@ -2039,11 +2039,11 @@
 		CFF5381C057A545B00854C83 /* libpm */ = {
 			isa = PBXGroup;
 			children = (
-				CF443911144E144600E38AA4 /* cache */,
-				CFB9E4850DF28AC500885084 /* collections */,
-				CFDAE7040AD19F3E00713406 /* cocoa_utilities */,
 				CFF538F7057A560F00854C83 /* BDD */,
+				CF443911144E144600E38AA4 /* cache */,
 				CFAD482E0591BCF700BF8381 /* cocoa_galgas */,
+				CFDAE7040AD19F3E00713406 /* cocoa_utilities */,
+				CFB9E4850DF28AC500885084 /* collections */,
 				CF31E0ED0598DF5400814123 /* command_line_interface */,
 				CFF538CC057A559D00854C83 /* files */,
 				CFA5890010D285C800B7E541 /* galgas2 */,

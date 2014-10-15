@@ -27,6 +27,16 @@ for () in CPP_FILE_LIST do
 %    sourceTree = "<group>";\n%
 %  };\n\n%
 end
+for () in M_FILE_LIST do
+%  %!mValue0% /* %!mValue1% */ = {\n%
+%    isa = PBXFileReference;\n%
+%    fileEncoding = 4;\n%
+%    lastKnownFileType = sourcecode.c.obj;\n%
+%    name = %![mValue1 utf8Representation]%;\n%
+%    path = %![mValue1 utf8Representation]%;\n%
+%    sourceTree = "<group>";\n%
+%  };\n\n%
+end
 for () in HEADER_FILE_LIST do
 %  %!mValue0% /* %!mValue1% */ = {\n%
 %    isa = PBXFileReference;\n%

@@ -2,6 +2,16 @@ semantics XcodeProjectNewGeneration :
 
 #---------------------------------------------------------------------------*
 
+modifier @XcodeProjectDescriptor addMFile
+  ??fileName:@string inFileName
+  !fileRef:@string outFileRef
+:
+  [!?self getReferenceKey ?ref:outFileRef] ;
+  m_M_FileList += !outFileRef !inFileName ;
+end modifier ;
+
+#---------------------------------------------------------------------------*
+
 modifier @XcodeProjectDescriptor addCppFile
   ??fileName:@string inFileName
   !fileRef:@string outFileRef
@@ -85,7 +95,8 @@ modifier @XcodeProjectDescriptor addGroupWithFiles
   ??groupName:@string inGroupName
   ??groupPath:@string inGroupPath
   ??fileNames:@stringset inFileNames
-  !cppFileRefs:@stringlist outCppFileBuildRefs
+  ?!cppFileRefs:@stringlist ioCppFileBuildRefs
+  ?!mFileRefs:@stringlist ioMFileBuildRefs
   !groupRef:@string outGroupRef
 :
   if mDefaultConfigurationRef == "" then
@@ -100,16 +111,20 @@ modifier @XcodeProjectDescriptor addGroupWithFiles
   [!?self getReferenceKey ?ref:outGroupRef] ;
 #---
   @stringlist childrenRefs := {} ;
-  outCppFileBuildRefs := {} ;
   for (f) in inFileNames do
     if [f pathExtension] == "cpp" then
       [!?self addCppFile !fileName:f ??fileRef:@string cppFileRef] ;
       childrenRefs += !cppFileRef ;
       [!?self addBuildFile !fileRef:cppFileRef !fileName:f ??buildRef:@string buildRef] ;
-      outCppFileBuildRefs += !buildRef ;
+      ioCppFileBuildRefs += !buildRef ;
     elsif [f pathExtension] == "h" then
       [!?self addHeaderFile !fileName:f ??fileRef:@string headerFileRef] ;
       childrenRefs += !headerFileRef ;
+    elsif [f pathExtension] == "m" then
+      [!?self addMFile !fileName:f ??fileRef:@string m_FileRef] ;
+      [!?self addBuildFile !fileRef:m_FileRef !fileName:f ??buildRef:@string buildRef] ;
+      childrenRefs += !m_FileRef ;
+      ioMFileBuildRefs += !buildRef ;
     else
       error [@location nowhere] : "unhandled extension for file '" + f + "'" ;
     end if ;
@@ -187,6 +202,7 @@ struct @XcodeProjectDescriptor {
   @XCodeGroupList mGroupList ;
   @XCodeMachOTargetList mMachOTargetList ;
   @2stringlist mCppFileList ;
+  @2stringlist m_M_FileList ;
   @2stringlist mHeaderFileList ;
   @BuildFileList mBuildFileList ;
 #--- Default configuration
@@ -207,6 +223,7 @@ local filewrapper xcodeProjectGenerationFilewrapper in "../generation_templates/
     ?@stringlist MAIN_GROUP_CHILDREN_REFS
     ?@XCodeMachOTargetList MACH_O_TARGET_LIST
     ?@2stringlist CPP_FILE_LIST
+    ?@2stringlist M_FILE_LIST
     ?@2stringlist HEADER_FILE_LIST
     ?@BuildFileList BUILD_FILE_LIST
     ?@string DEFAULT_CONFIGURATION_REF
@@ -228,6 +245,7 @@ method @XcodeProjectDescriptor generateAtPath
     !mMainGroupChildrenRefs
     !mMachOTargetList
     !mCppFileList
+    !m_M_FileList
     !mHeaderFileList
     !mBuildFileList
     !mDefaultConfigurationRef
