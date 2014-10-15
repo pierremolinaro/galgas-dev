@@ -345,7 +345,6 @@ list @formalInputParameterListAST {
 #---------------------------------------------------------------------------*
 
 abstract class @actualParameterAST {
-  @location mQualifierLocation ;
 }
 
 #---------------------------------------------------------------------------*
@@ -362,6 +361,19 @@ class @outputInputActualParameterAST extends @actualParameterAST {
   @lstring mActualSelector ;
   @lstring mOutputInputActualParameterName ;
   @lstringlist mStructAttributeList ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @outputInputSingleJokerParameterAST extends @actualParameterAST {
+  @lstring mActualSelector ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @outputInputJokerParameterAST extends @actualParameterAST {
+  @location mQualifierLocation ;
+  @uint mJokerIndex ;
 }
 
 #---------------------------------------------------------------------------*
@@ -389,7 +401,14 @@ class @inputActualNewConstantParameterAST extends @actualParameterAST {
 
 #---------------------------------------------------------------------------*
 
+class @inputSingleJokerActualParameterAST extends @actualParameterAST {
+  @lstring mActualSelector ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @inputJokerActualParameterAST extends @actualParameterAST {
+  @location mQualifierLocation ;
   @uint mJokerIndex ;
 }
 

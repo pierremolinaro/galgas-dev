@@ -81,46 +81,38 @@ rule <actual_parameter_list>
   repeat
   while
     $?$ ?const selector ;
-    const @location qualifierLocation := here ;
     select
       $*$ ;
-      if selector->string != "" then
-        error selector : "the selector should be '?*'" ;
-      end if ;
-      outActualParameterList += ![@inputJokerActualParameterAST new !qualifierLocation !0] ;
+      outActualParameterList += ![@inputSingleJokerActualParameterAST new !selector] ;
     or
       @luint count ;
       $unsigned_literal_integer$ ? count ;
       $*$ ;
       var n := [count uint] ;
       if selector->string != "" then
-        error selector : "the selector should be '?" . n . "*'" ;
+        error selector : "the selector should be '?'" ;
       end if ;
      if n == 0 then
         error count: "the count value should be > 0" ;
       else
         loop n :
         while n > 0 do
-          outActualParameterList += ![@inputJokerActualParameterAST new !qualifierLocation !n] ;
+          outActualParameterList += ![@inputJokerActualParameterAST new !selector->location !n] ;
           n -- ;
         end loop ;
       end if ;
     end select ;
   while
     $!$ ?const selector ;
-    const @location qualifierLocation := here ;
-    @semanticExpressionAST e ;
-    <expression> ? e ;
+    <expression> ??@semanticExpressionAST e ;
     const @location endOfExpressionLocation := here ;
     outActualParameterList += ![@outputActualParameterAST new
-      !qualifierLocation
       !selector
       !e
       !endOfExpressionLocation
     ] ;
   while
     $!?$ ?const selector ;
-    const @location qualifierLocation := here ;
     @lstring outputInputActualParameterName ;
     $identifier$ ?outputInputActualParameterName ;
     @lstringlist structAttributeList [emptyList] ;
@@ -131,23 +123,42 @@ rule <actual_parameter_list>
       structAttributeList += !structAttributeName ;
     end repeat ;
     outActualParameterList += ![@outputInputActualParameterAST new 
-      !qualifierLocation
       !selector
       !outputInputActualParameterName
       !structAttributeList
     ] ;
+  while
+    $!?$ ?const selector ;
+    $*$ ;
+    outActualParameterList += ![@outputInputSingleJokerParameterAST new 
+      !selector
+    ] ;
+  while
+    $!?$ ?const selector ;
+    $unsigned_literal_integer$ ??@luint count ;
+    $*$ ;
+    var n := [count uint] ;
+    if selector->string != "" then
+      error selector : "the selector should be '!?'" ;
+    end if ;
+    if n == 0 then
+      error count: "the count value should be > 0" ;
+    else
+      loop n :
+      while n > 0 do
+        outActualParameterList += ![@outputInputJokerParameterAST new !selector->location !n] ;
+        n -- ;
+      end loop ;
+    end if ;
   while # input parameter, existing variable
     $?$ ?const selector ;
-    const @location qualifierLocation := here ;
     $identifier$ ?const inputActualParameterName ;
     outActualParameterList += ![@inputActualExistingVariableParameterAST new
-      !qualifierLocation
       !selector
       !inputActualParameterName
     ] ;
   while  # input parameter, new variable
     $?$ ?const selector ;
-    const @location qualifierLocation := here ;
     $var$ ;
     @lstring declarationTypeName ;
     select
@@ -157,25 +168,21 @@ rule <actual_parameter_list>
     end select ;
     $identifier$ ?const inputActualParameterName ;
     outActualParameterList += ![@inputActualNewVariableParameterAST new
-      !qualifierLocation
       !selector
       !declarationTypeName
       !inputActualParameterName
     ] ;
   while  # input parameter, new variable, explicit type
     $?$ ?const selector ;
-    const @location qualifierLocation := here ;
-    $type_name$ ?const declarationTypeName ;
+    $type_name$ ??@lstring declarationTypeName ;
     $identifier$ ?const inputActualParameterName ;
     outActualParameterList += ![@inputActualNewVariableParameterAST new
-      !qualifierLocation
       !selector
       !declarationTypeName
       !inputActualParameterName
     ] ;
   while # input parameter, new constant
     $?$ ?const selector ;
-    const @location qualifierLocation := here ;
     $let$ ;
     @lstring declarationTypeName ;
     select
@@ -185,7 +192,6 @@ rule <actual_parameter_list>
     end select ;
     $identifier$ ?const inputActualParameterName ;
     outActualParameterList += ![@inputActualNewConstantParameterAST new
-      !qualifierLocation
       !selector
       !declarationTypeName
       !inputActualParameterName

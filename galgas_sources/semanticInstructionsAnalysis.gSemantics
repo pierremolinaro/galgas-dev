@@ -520,7 +520,7 @@ override method @outputActualParameterAST checkAgainstFormalArgument
 :
   if (inFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentIn])
    & (inFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentConstantIn]) then
-    error mQualifierLocation
+    error mActualSelector
     :"the corresponding formal argument has the '" . [inFormalArgumentPassingMode string]
     . "' passing mode: this parameter should be passed with '" . [inFormalArgumentPassingMode correspondingEffectiveParameterString] . "'"
     ;
@@ -557,7 +557,7 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
   ?!@unifiedTypeMapProxyAndLocalVariableList unused ioLocalVariableDeclarationList
 :
   if inFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentInOut] then
-    error mQualifierLocation
+    error mActualSelector
     :"the corresponding formal argument has the '" . [inFormalArgumentPassingMode string]
     . "' passing mode: this parameter should be passed with '" . [inFormalArgumentPassingMode correspondingEffectiveParameterString] . "'"
     ;
@@ -598,6 +598,74 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @outputInputSingleJokerParameterAST checkAgainstFormalArgument
+  ??@analysisContext unused inAnalysisContext
+  ??@lstring inFormalSelector
+  ??@unifiedTypeMap-proxy inFormalArgumentType
+  ??@formalArgumentPassingModeAST inFormalArgumentPassingMode
+  ?!@variableMap unused ioVariableMap
+  ?!@actualParameterListForGeneration ioActualParameterListForGeneration
+  ?!@stringset unused ioExclusiveVariableSet
+  ?!@unifiedTypeMapProxyAndLocalVariableList ioLocalVariableDeclarationList
+:
+  if inFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentInOut] then
+    error mActualSelector
+    :"the corresponding formal argument has the '" . [inFormalArgumentPassingMode string]
+    . "' passing mode: this parameter should be passed with '" . [inFormalArgumentPassingMode correspondingEffectiveParameterString] . "'"
+    ;
+  elsif inFormalSelector->string != mActualSelector->string then
+    error mActualSelector : "the selector should be '!?" + inFormalSelector . if inFormalSelector->string != "" then ":" else "" end + "'" ;
+  end if ;
+  const defaultConstructorName := [inFormalArgumentType mDefaultConstructorName] ;
+  if defaultConstructorName == "" then
+    error mActualSelector : "the formal parameter type @" . [inFormalArgumentType key] . " should support the default constructor" ;
+  end if ;
+#--- Generate actual parameter
+  const cppVarName := "joker_" . [mActualSelector->location locationIndex] ;
+  ioLocalVariableDeclarationList += !inFormalArgumentType !cppVarName ;
+  ioActualParameterListForGeneration += ![@outputInputActualParameterForGeneration new
+    !inFormalArgumentType
+    !cppVarName
+    !{}
+    ![@unifiedTypeMapProxyList listWithValue !inFormalArgumentType]
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @outputInputJokerParameterAST checkAgainstFormalArgument
+  ??@analysisContext unused inAnalysisContext
+  ??@lstring unused inFormalSelector
+  ??@unifiedTypeMap-proxy inFormalArgumentType
+  ??@formalArgumentPassingModeAST inFormalArgumentPassingMode
+  ?!@variableMap unused ioVariableMap
+  ?!@actualParameterListForGeneration ioActualParameterListForGeneration
+  ?!@stringset unused ioExclusiveVariableSet
+  ?!@unifiedTypeMapProxyAndLocalVariableList ioLocalVariableDeclarationList
+:
+  if inFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentInOut] then
+    error mQualifierLocation
+    :"the corresponding formal argument has the '" . [inFormalArgumentPassingMode string]
+    . "' passing mode: this parameter should be passed with '" . [inFormalArgumentPassingMode correspondingEffectiveParameterString] . "'"
+    ;
+  end if ;
+  const defaultConstructorName := [inFormalArgumentType mDefaultConstructorName] ;
+  if defaultConstructorName == "" then
+    error mQualifierLocation : "the formal parameter type @" . [inFormalArgumentType key] . " should support the default constructor" ;
+  end if ;
+#--- Generate actual parameter
+  const cppVarName := "joker_" . [mQualifierLocation locationIndex] . "_" . mJokerIndex ;
+  ioLocalVariableDeclarationList += !inFormalArgumentType !cppVarName ;
+  ioActualParameterListForGeneration += ![@outputInputActualParameterForGeneration new
+    !inFormalArgumentType
+    !cppVarName
+    !{}
+    ![@unifiedTypeMapProxyList listWithValue !inFormalArgumentType]
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @inputActualExistingVariableParameterAST checkAgainstFormalArgument
   ??@analysisContext unused inAnalysisContext
   ??@lstring inFormalSelector
@@ -609,7 +677,7 @@ override method @inputActualExistingVariableParameterAST checkAgainstFormalArgum
   ?!@unifiedTypeMapProxyAndLocalVariableList unused ioLocalVariableDeclarationList
 :
   if inFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentOut] then
-    error mQualifierLocation
+    error mActualSelector
     :"the corresponding formal argument has the '" . [inFormalArgumentPassingMode string]
     . "' passing mode: this parameter should be passed with '" . [inFormalArgumentPassingMode correspondingEffectiveParameterString] . "'"
     ;
@@ -657,7 +725,7 @@ override method @inputActualNewVariableParameterAST checkAgainstFormalArgument
 :
 #--- Check passing mode
   if inFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentOut] then
-    error mQualifierLocation
+    error mActualSelector
     :"the corresponding formal argument has the '" . [inFormalArgumentPassingMode string]
     . "' passing mode: this parameter should be passed with '" . [inFormalArgumentPassingMode correspondingEffectiveParameterString] . "'"
     ;
@@ -713,7 +781,7 @@ override method @inputActualNewConstantParameterAST checkAgainstFormalArgument
 :
 #--- Check passing mode
   if inFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentOut] then
-    error mQualifierLocation
+    error mActualSelector
     :"the corresponding formal argument has the '" . [inFormalArgumentPassingMode string]
     . "' passing mode: this parameter should be passed with '" . [inFormalArgumentPassingMode correspondingEffectiveParameterString] . "'"
     ;
@@ -757,6 +825,35 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @inputSingleJokerActualParameterAST checkAgainstFormalArgument
+  ??@analysisContext unused inAnalysisContext
+  ??@lstring inFormalSelector
+  ??@unifiedTypeMap-proxy inFormalArgumentType
+  ??@formalArgumentPassingModeAST inFormalArgumentPassingMode
+  ?!@variableMap unused ioVariableMap
+  ?!@actualParameterListForGeneration ioActualParameterListForGeneration
+  ?!@stringset unused ioExclusiveVariableSet
+  ?!@unifiedTypeMapProxyAndLocalVariableList unused ioLocalVariableDeclarationList
+:
+  if inFormalArgumentPassingMode != [@formalArgumentPassingModeAST argumentOut] then
+    error mActualSelector
+    :"the corresponding formal argument has the '" . [inFormalArgumentPassingMode string]
+    . "' passing mode: this parameter should be passed with '" . [inFormalArgumentPassingMode correspondingEffectiveParameterString] . "'"
+    ;
+  elsif inFormalSelector->string != mActualSelector->string then
+     error mActualSelector : "the selector should be '?" + inFormalSelector + if inFormalSelector->string != "" then ":" else "" end + "'" ;
+  else
+    const cppVarName := "joker_" . [mActualSelector->location locationIndex] ;
+  #--- Generate actual parameter
+    ioActualParameterListForGeneration += ![@inputJokerParameterForGeneration new
+      !inFormalArgumentType
+      !cppVarName
+    ] ;
+  end if ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @inputJokerActualParameterAST checkAgainstFormalArgument
   ??@analysisContext unused inAnalysisContext
   ??@lstring unused inFormalSelector
@@ -773,7 +870,7 @@ override method @inputJokerActualParameterAST checkAgainstFormalArgument
     . "' passing mode: this parameter should be passed with '" . [inFormalArgumentPassingMode correspondingEffectiveParameterString] . "'"
     ;
   else
-    const cppVarName := "joker_" . [[mQualifierLocation locationIndex] string] . "_" . [mJokerIndex string] ;
+    const cppVarName := "joker_" . [mQualifierLocation locationIndex] . "_" . mJokerIndex ;
   #--- Generate actual parameter
     ioActualParameterListForGeneration += ![@inputJokerParameterForGeneration new
       !inFormalArgumentType
@@ -1793,7 +1890,7 @@ override method @enumeratedCollectionImplicitVarInExpAST analyzeEnumeration
     ?outEnumerationExpression
   ] ;
 #--- Check object can be enumerated
-  outEnumeratorCppName := "enumerator_" . [[mEndOfEnumerationExpression locationIndex] string] ;
+  outEnumeratorCppName := "enumerator_" . [mEndOfEnumerationExpression locationIndex] ;
   const enumerationDescriptorList := [[outEnumerationExpression mResultType] mEnumerationDescriptor] ;
   if [enumerationDescriptorList length] == 0 then
     error mEndOfEnumerationExpression : "an '@" . [[outEnumerationExpression mResultType] key] . "' object cannot be enumerated" ;
@@ -1824,7 +1921,7 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
     ?outEnumerationExpression
   ] ;
 #--- Check object can be enumerated
-  outEnumeratorCppName := "enumerator_" . [[mEndOfEnumerationExpression locationIndex] string] ;
+  outEnumeratorCppName := "enumerator_" . [mEndOfEnumerationExpression locationIndex] ;
   const enumerationDescriptorList := [[outEnumerationExpression mResultType] mEnumerationDescriptor] ;
   if [enumerationDescriptorList length] == 0 then
     error mEndOfEnumerationExpression : "an '@" . [[outEnumerationExpression mResultType] key] . "' object cannot be enumerated" ;
@@ -1888,7 +1985,7 @@ override method @enumeratedCollectionVarInExpAST analyzeEnumeration
     ?outEnumerationExpression
   ] ;
 #--- Check object can be enumerated
-  outEnumeratorCppName := "enumerator_" . [[mEndOfEnumerationExpression locationIndex] string] ;
+  outEnumeratorCppName := "enumerator_" . [mEndOfEnumerationExpression locationIndex] ;
   const enumeratedElementType := [[outEnumerationExpression mResultType] mTypeForEnumeratedElement] ;
   if [enumeratedElementType isNull] then
     error mEndOfEnumerationExpression : "an '@" . [[outEnumerationExpression mResultType] key] . "' object cannot be enumerated" ;
@@ -1999,7 +2096,7 @@ override method @forInstructionAST analyzeSemanticInstruction
   @string indexCppName := "" ;
   @localConstantList indexDeclaration [emptyList] ;
   if [mIndexVariableName string] != "" then
-    indexCppName := "index_" . [[mInstructionLocation locationIndex] string] ;
+    indexCppName := "index_" . [mInstructionLocation locationIndex] ;
     indexDeclaration +=
       !inAnalysisContext->mPredefinedTypes->mUIntType
       !mIndexVariableName
@@ -2098,7 +2195,7 @@ override method @foreachInstructionAST analyzeSemanticInstruction
     ] ;
   #--- Check object can be enumerated
     @string enumerationOrder := [mEnumerationOrder string] ;
-    const enumeratorCppName := "enumerator_" . [[mEndOfEnumerationExpression locationIndex] string] ;
+    const enumeratorCppName := "enumerator_" . [mEndOfEnumerationExpression locationIndex] ;
     const enumerationDescriptorList := [[enumerationExpression mResultType] mEnumerationDescriptor] ;
     if [enumerationDescriptorList length] == 0 then
       error mEndOfEnumerationExpression : "an '@" . [[enumerationExpression mResultType] key] . "' object cannot be enumerated" ;
@@ -2186,7 +2283,7 @@ override method @foreachInstructionAST analyzeSemanticInstruction
   @string indexCppName := "" ;
   @localConstantList indexDeclaration [emptyList] ;
   if [mIndexVariableName string] != "" then
-    indexCppName := "index_" . [[mInstructionLocation locationIndex] string] ;
+    indexCppName := "index_" . [mInstructionLocation locationIndex] ;
     indexDeclaration +=
       !inAnalysisContext->mPredefinedTypes->mUIntType
       !mIndexVariableName
@@ -2331,7 +2428,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
     @string localConstantName ;
     @localConstantList localConstantList [emptyList] ;
     if [mConstantVarName length] > 0 then
-      localConstantName := "cast_" . [[[mConstantVarName location] locationIndex] string] . "_" . mConstantVarName ;
+      localConstantName := "cast_" . [mConstantVarName->location locationIndex] . "_" . mConstantVarName ;
       localConstantList +=
         !type
         !mConstantVarName
@@ -2611,7 +2708,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
     ??@semanticExpressionForGeneration keyExpression
   ] ;
 #--- Object Array cpp name
-  const objectArrayCppName := "objectArray_" . [[mInstructionLocation locationIndex] string] ;
+  const objectArrayCppName := "objectArray_" . [mInstructionLocation locationIndex] ;
 #--- Check this type handle 'with' access
   if ([receiverType mHandledOperatorFlags] & supportWithAccessor []) == 0 then
     error mEndOfReceiverExpression : "the '@". [receiverType key] . "' type cannot be used in a 'with' instruction" ;
@@ -2690,7 +2787,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
     error mEndOfKeyExpression : "the key type is '@" . [[keyExpression mResultType] key] . "', it should be '@lstring'" ;
   end if ;
 #--- Object Array cpp name
-  const objectArrayCppName := "objectArray_" . [[mInstructionLocation locationIndex] string] ;
+  const objectArrayCppName := "objectArray_" . [mInstructionLocation locationIndex] ;
 #--- Read/write access to receiver variable
   [!?ioVariableMap searchForReadWriteAccess
     !mReceiverName
