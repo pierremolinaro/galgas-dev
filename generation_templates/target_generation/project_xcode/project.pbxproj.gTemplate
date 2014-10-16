@@ -47,7 +47,25 @@ for () in HEADER_FILE_LIST do
 %    sourceTree = "<group>";\n%
 %  };\n\n%
 end
-for () in MACH_O_TARGET_LIST do
+for () in FRAMEWORK_FILE_LIST do
+%  %!mValue0% /* %!mValue1% */ = {\n%
+%    isa = PBXFileReference;\n%
+%    lastKnownFileType = wrapper.framework;\n%
+%    name = %![mValue1 utf8Representation]%;\n%
+%    path = %![mValue1 utf8Representation]%;\n%
+%    sourceTree = "<group>";\n%
+%  };\n\n%
+end
+for () in TOOL_TARGET_LIST do
+%  %!mProductFileReference% = {\n%
+%    isa = PBXFileReference;\n%
+%    explicitFileType = "compiled.mach-o.executable";\n%
+%    includeInIndex = 0;\n%
+%    path = %![mProductFileName utf8Representation]%;\n%
+%    sourceTree = BUILT_PRODUCTS_DIR;\n%
+%  };\n\n%
+end
+for () in APP_TARGET_LIST do
 %  %!mProductFileReference% = {\n%
 %    isa = PBXFileReference;\n%
 %    explicitFileType = "compiled.mach-o.executable";\n%
@@ -58,7 +76,20 @@ for () in MACH_O_TARGET_LIST do
 end
 %  /*------------------------------------------------------------------------------------------------------------------------- PBXFrameworksBuildPhase */
 
-  /*------------------------------------------------------------------------------------------------------------------------- PBXGroup section */
+%
+for () in APP_TARGET_LIST do
+%  %!mFrameworkBuildPhaseRef% = {\n%
+%    isa = PBXFrameworksBuildPhase;\n%
+%    buildActionMask = 2147483647;\n%
+%    files = (\n%
+for () in mFrameworksFileRefList do
+%      %!mValue%,\n%
+end
+%    );\n%
+%    runOnlyForDeploymentPostprocessing = 0;\n%
+%  };\n\n%
+end
+%  /*------------------------------------------------------------------------------------------------------------------------- PBXGroup section */
 %
 for () in GROUPS do
 %  %!mGroupReference% /* %!mGroupName% */ = {\n%
@@ -87,7 +118,7 @@ end
 
   /*------------------------------------------------------------------------------------------------------------------------- PBXNativeTarget */
 %
-for () in MACH_O_TARGET_LIST do
+for () in TOOL_TARGET_LIST do
 %  %!mTargetRef% /* %!mTargetName% */ = {
    isa = PBXNativeTarget;
    buildConfigurationList = %!mBuildConfigurationListRef% ;
@@ -100,14 +131,35 @@ for () in MACH_O_TARGET_LIST do
    );
    name = %![mTargetName utf8Representation]%;
    productInstallPath = "$(HOME)/bin";
-   productName = "essai";
+   productName = %![mTargetName utf8Representation]%;
    productReference = %!mProductFileReference% ;
    productType = "com.apple.product-type.tool";
   };
+ 
 %
 end
+for () in APP_TARGET_LIST do
+%  %!mTargetRef% /* %!mTargetName% */ = {
+   isa = PBXNativeTarget;
+   buildConfigurationList = %!mBuildConfigurationListRef% ;
+   buildPhases = (
+    %!mBuildPhaseRef% , /* Sources */
+    %!mFrameworkBuildPhaseRef% , /* Frameworks */
+   );
+   buildRules = (
+   );
+   dependencies = (
+   );
+   name = %![mTargetName utf8Representation]%;
+   productInstallPath = "$(HOME)/bin";
+   productName = %![mTargetName utf8Representation]%;
+   productReference = %!mProductFileReference% ;
+   productType = "com.apple.product-type.application";
+  };
+
 %
-  /*------------------------------------------------------------------------------------------------------------------------- PBXProject */
+end
+%  /*------------------------------------------------------------------------------------------------------------------------- PBXProject */
   %!PROJECT_REF% /* Project object */ = {
    isa = PBXProject;
    buildConfigurationList = %!PROJECT_BUILD_DEFAULT_CONFIGURATION_REF% /* Build configuration list for PBXProject */;
@@ -118,7 +170,10 @@ end
    projectRoot = "";
    targets = (
 %
-for () in MACH_O_TARGET_LIST do
+for () in TOOL_TARGET_LIST do
+%    %!mTargetRef%, \n%
+end
+for () in APP_TARGET_LIST do
 %    %!mTargetRef%, \n%
 end
 %   );
@@ -128,7 +183,20 @@ end
 
   /*------------------------------------------------------------------------------------------------------------------------- PBXSourcesBuildPhase */
 %
-for () in MACH_O_TARGET_LIST do
+for () in TOOL_TARGET_LIST do
+%    %!mBuildPhaseRef% /* Sources */ = {
+      isa = PBXSourcesBuildPhase;
+      buildActionMask = 2147483647;
+      files = (
+%
+for () in mBuildPhaseRefList do
+%        %!mValue%,\n%
+end
+%      );
+      runOnlyForDeploymentPostprocessing = 0;
+    };
+%end
+for () in APP_TARGET_LIST do
 %    %!mBuildPhaseRef% /* Sources */ = {
       isa = PBXSourcesBuildPhase;
       buildActionMask = 2147483647;
@@ -160,7 +228,19 @@ end
   };
 
 %
-for () in MACH_O_TARGET_LIST do
+for () in TOOL_TARGET_LIST do
+%    %!mBuildConfigurationRef% /* Default */ = {\n%
+%      isa = XCBuildConfiguration;\n%
+%      buildSettings = {\n%
+for () in mBuildConfigurationSettingList do
+%      %!mValue% ;\n%
+end
+%      PRODUCT_NAME = %![mProductFileName utf8Representation]% ;\n%
+%    };\n%
+%    name = Default;\n%
+%  };\n\n%
+end
+for () in APP_TARGET_LIST do
 %    %!mBuildConfigurationRef% /* Default */ = {\n%
 %      isa = XCBuildConfiguration;\n%
 %      buildSettings = {\n%
@@ -183,7 +263,20 @@ end
       defaultConfigurationName = Default;
     };
 
-%for () in MACH_O_TARGET_LIST do
+%
+for () in TOOL_TARGET_LIST do
+%    %!mBuildConfigurationListRef% /* Default */ = {
+      isa = XCConfigurationList;
+      buildConfigurations = (
+        %!mBuildConfigurationRef% /* Default */,
+      );
+      defaultConfigurationIsVisible = 0;
+      defaultConfigurationName = Default;
+    };
+
+%
+end
+for () in APP_TARGET_LIST do
 %    %!mBuildConfigurationListRef% /* Default */ = {
       isa = XCConfigurationList;
       buildConfigurations = (

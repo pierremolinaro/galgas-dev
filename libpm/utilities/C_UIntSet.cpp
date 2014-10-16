@@ -1,10 +1,10 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  C_UIntSet : algorithms on sets of uint32_t                                 *
+//  C_UIntSet : algorithms on sets of uint32_t                                                                         *
 //                                                                                                                     *
-//  This file is part of libpm library                                         *
+//  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2013, ..., 2013 Pierre Molinaro.                             *
+//  Copyright (C) 2013, ..., 2013 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *

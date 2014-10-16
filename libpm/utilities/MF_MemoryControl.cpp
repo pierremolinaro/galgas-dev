@@ -1,10 +1,10 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//  Implementation of routines for handling dynamic allocation checking.       *
+//  Implementation of routines for handling dynamic allocation checking.                                               *
 //                                                                                                                     *
-//  This file is part of libpm library                                         *
+//  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 1994, ..., 2010 Pierre Molinaro.                             *
+//  Copyright (C) 1994, ..., 2010 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -38,7 +38,7 @@ macroDeclareMutex (gAllocationMutex)
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//         Enum for describing a pointer                                       *
+//         Enum for describing a pointer                                                                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -151,7 +151,7 @@ macroDeclareMutex (gAllocationMutex)
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//          Localisation de l'appel du deallocateur 'delete'                 *
+//          Localisation de l'appel du deallocateur 'delete'                                                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -197,12 +197,12 @@ macroDeclareMutex (gAllocationMutex)
   #pragma mark -
 #endif
 
-//-----------------------------------------------------------------*
-//                                                                 *
-//            Specification des types de donnees                   *
-//               pour l'ioRoot binaire equilibre                    *
-//                                                                 *
-//-----------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//            Specification des types de donnees                                                                       *
+//               pour l'ioRoot binaire equilibre                                                                       *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   class cPointerDescriptor {
@@ -222,7 +222,7 @@ macroDeclareMutex (gAllocationMutex)
    } ; 
 #endif
 
-//-----------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   static const int32_t TAILLE_TABLE_RACINES = 262145 ;
@@ -232,19 +232,19 @@ macroDeclareMutex (gAllocationMutex)
   static bool gRootInited = false ;
 #endif 
 
-//-----------------------------------------------------------------*
-//                                                                 *
-//                Comparaison de deux clefs                        *
-//                                                                 *
-//-----------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                Comparaison de deux clefs                                                                            *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
    enum enumResultatComparaison {ClefGaucheSup, ClefsEgales, ClefDroiteSup} ; 
 #endif
 
-//-----------------------------------------------------------------*
-//                     Prototypes                                  *
-//-----------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
+//                     Prototypes                                                                                      *
+//---------------------------------------------------------------------------------------------------------------------*
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   static enumResultatComparaison comparerPointeurs (const void * Pgauche,
@@ -283,9 +283,9 @@ macroDeclareMutex (gAllocationMutex)
   }
 #endif 
 
-//-----------------------------------------------------------------*
-//     Rotations elementaires de reequilibrage d'un ioRoot binaire  *
-//-----------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
+//     Rotations elementaires de reequilibrage d'un ioRoot binaire                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   static void rotationGauche (cPointerDescriptor * & a) {
@@ -308,7 +308,7 @@ macroDeclareMutex (gAllocationMutex)
   } 
 #endif
 
-//-----------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   static void rotationDroite (cPointerDescriptor * & a) {
@@ -331,9 +331,9 @@ macroDeclareMutex (gAllocationMutex)
   }
 #endif
  
-//-----------------------------------------------------------------*
-//    Suppression d'un element dans un ioRoot binaire equilibre     *
-//-----------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
+//    Suppression d'un element dans un ioRoot binaire equilibre                                                        *
+//---------------------------------------------------------------------------------------------------------------------*
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   static void diminutionBrancheSup (cPointerDescriptor * & a, bool & h) {
@@ -363,7 +363,7 @@ macroDeclareMutex (gAllocationMutex)
   }
 #endif
  
-//-----------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   static void infBranchDecreased (cPointerDescriptor * & a, bool & h) {
@@ -393,7 +393,7 @@ macroDeclareMutex (gAllocationMutex)
   }
 #endif
 
-//-----------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   static void obtenirElementPrecedent (cPointerDescriptor * & arbreEquilibre,
@@ -412,7 +412,7 @@ macroDeclareMutex (gAllocationMutex)
   }
 #endif
 
-//-----------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   static void suppressionRecursiveDansArbreBinaireEquilibre
@@ -467,7 +467,7 @@ macroDeclareMutex (gAllocationMutex)
   }
 #endif
 
-//-----------------------------------------------------------------*
+//---------------------------------------------------------------------------------------------------------------------*
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   static void executerInsertionRecursiveDansArbreEquilibre (
@@ -675,7 +675,7 @@ macroDeclareMutex (gAllocationMutex)
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//             Routine garantissant la nullite d'un pointeur                 *
+//             Routine garantissant la nullite d'un pointeur                                                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -689,7 +689,7 @@ macroDeclareMutex (gAllocationMutex)
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//            Routine garantissant la validite d'un pointeur                 *
+//            Routine garantissant la validite d'un pointeur                                                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
