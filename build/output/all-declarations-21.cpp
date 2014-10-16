@@ -1040,7 +1040,6 @@ GALGAS_typedAttributeList_2D_element GALGAS_typedAttributeList_2D_element::extra
 
 GALGAS_attributeMap_2D_element::GALGAS_attributeMap_2D_element (void) :
 mAttribute_lkey (),
-mAttribute_mIsPrivate (),
 mAttribute_mAttributeType () {
 }
 
@@ -1052,30 +1051,26 @@ GALGAS_attributeMap_2D_element::~ GALGAS_attributeMap_2D_element (void) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_attributeMap_2D_element::GALGAS_attributeMap_2D_element (const GALGAS_lstring & inOperand0,
-                                                                const GALGAS_bool & inOperand1,
-                                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand2) :
+                                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand1) :
 mAttribute_lkey (inOperand0),
-mAttribute_mIsPrivate (inOperand1),
-mAttribute_mAttributeType (inOperand2) {
+mAttribute_mAttributeType (inOperand1) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_attributeMap_2D_element GALGAS_attributeMap_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
   return GALGAS_attributeMap_2D_element (GALGAS_lstring::constructor_default (HERE),
-                                         GALGAS_bool::constructor_default (HERE),
                                          GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_attributeMap_2D_element GALGAS_attributeMap_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                const GALGAS_bool & inOperand1,
-                                                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand2 
+                                                                                const GALGAS_unifiedTypeMap_2D_proxy & inOperand1 
                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_attributeMap_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_attributeMap_2D_element (inOperand0, inOperand1, inOperand2) ;
+  if (inOperand0.isValid () && inOperand1.isValid ()) {
+    result = GALGAS_attributeMap_2D_element (inOperand0, inOperand1) ;
   }
   return result ;
 }
@@ -1088,9 +1083,6 @@ typeComparisonResult GALGAS_attributeMap_2D_element::objectCompare (const GALGAS
     result = mAttribute_lkey.objectCompare (inOperand.mAttribute_lkey) ;
   }
   if (result == kOperandEqual) {
-    result = mAttribute_mIsPrivate.objectCompare (inOperand.mAttribute_mIsPrivate) ;
-  }
-  if (result == kOperandEqual) {
     result = mAttribute_mAttributeType.objectCompare (inOperand.mAttribute_mAttributeType) ;
   }
   return result ;
@@ -1099,14 +1091,13 @@ typeComparisonResult GALGAS_attributeMap_2D_element::objectCompare (const GALGAS
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool GALGAS_attributeMap_2D_element::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mIsPrivate.isValid () && mAttribute_mAttributeType.isValid () ;
+  return mAttribute_lkey.isValid () && mAttribute_mAttributeType.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_attributeMap_2D_element::drop (void) {
   mAttribute_lkey.drop () ;
-  mAttribute_mIsPrivate.drop () ;
   mAttribute_mAttributeType.drop () ;
 }
 
@@ -1120,8 +1111,6 @@ void GALGAS_attributeMap_2D_element::description (C_String & ioString,
   }else{
     mAttribute_lkey.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mAttribute_mIsPrivate.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
     mAttribute_mAttributeType.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
@@ -1131,12 +1120,6 @@ void GALGAS_attributeMap_2D_element::description (C_String & ioString,
 
 GALGAS_lstring GALGAS_attributeMap_2D_element::reader_lkey (UNUSED_LOCATION_ARGS) const {
   return mAttribute_lkey ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_bool GALGAS_attributeMap_2D_element::reader_mIsPrivate (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mIsPrivate ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
