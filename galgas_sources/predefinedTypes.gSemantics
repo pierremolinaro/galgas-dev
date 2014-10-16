@@ -31,6 +31,7 @@ local routine appendPredefinedListTypeAST
   @lstringlist attributeFeatureList [emptyList] ;
   attributeFeatureList += ![@lstring new !"setter" !here] ;
   attributeList +=
+    !false # Is not private
     ![@lstring new !inElementTypeName !here]
     ![@lstring new !"mValue" !here]
     !attributeFeatureList
@@ -51,11 +52,13 @@ local routine appendPredefined2StringListTypeAST
   @lstringlist attributeFeatureList [emptyList] ;
   attributeFeatureList += ![@lstring new !"setter" !here] ;
   attributeList +=
+    !false # Is not private
     ![@lstring new !"string" !here]
     ![@lstring new !"mValue0" !here]
     !attributeFeatureList
   ;
   attributeList +=
+    !false # Is not private
     ![@lstring new !"string" !here]
     ![@lstring new !"mValue1" !here]
     !attributeFeatureList
@@ -77,11 +80,13 @@ local routine appendPredefined2LStringListTypeAST
   @lstringlist attributeFeatureList [emptyList] ;
   attributeFeatureList += ![@lstring new !"setter" !here] ;
   attributeList +=
+    !false # Is not private
     ![@lstring new !"lstring" !here]
     ![@lstring new !"mValue0" !here]
     !attributeFeatureList
   ;
   attributeList +=
+    !false # Is not private
     ![@lstring new !"lstring" !here]
     ![@lstring new !"mValue1" !here]
     !attributeFeatureList
@@ -102,8 +107,18 @@ local routine appendStructASTForTypeWithLocation
 :
   @lstringlist featureList [emptyList] ;
   @attributeInCollectionListAST attributeList [emptyList] ;
-  attributeList += ![@lstring new !inElementTypeName !here] ![@lstring new !inElementTypeName !here] !featureList ;
-  attributeList += ![@lstring new !"location" !here] ![@lstring new !"location" !here] !featureList ;
+  attributeList += 
+    !false # Is not private
+    ![@lstring new !inElementTypeName !here]
+    ![@lstring new !inElementTypeName !here]
+    !featureList
+  ;
+  attributeList +=
+    !false # Is not private
+    ![@lstring new !"location" !here]
+    ![@lstring new !"location" !here]
+    !featureList
+  ;
   ioDeclarationListASTs += ![@structDeclarationAST new
     !true # Is prefined
     ![@lstring new !"l" . inElementTypeName !here]
@@ -119,8 +134,18 @@ routine appendStructASTForRangeType
 :
   @lstringlist featureList [emptyList] ;
   @attributeInCollectionListAST attributeList [emptyList] ;
-  attributeList += ![@lstring new !"uint" !here] ![@lstring new !"start" !here] !featureList ;
-  attributeList += ![@lstring new !"uint" !here] ![@lstring new !"length" !here] !featureList ;
+  attributeList +=
+    !false # Is not private
+    ![@lstring new !"uint" !here]
+    ![@lstring new !"start" !here]
+    !featureList
+  ;
+  attributeList +=
+    !false # Is not private
+    ![@lstring new !"uint" !here]
+    ![@lstring new !"length" !here]
+    !featureList
+  ;
   ioDeclarationListASTs += ![@structDeclarationAST new
     !true # Is prefined
     ![@lstring new !"range" !here]

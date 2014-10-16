@@ -8277,9 +8277,8 @@ class GALGAS_inputActualExistingVariableParameterAST : public GALGAS_actualParam
                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_inputActualExistingVariableParameterAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                                  const class GALGAS_lstring & inOperand1,
-                                                                                  const class GALGAS_lstring & inOperand2
+  public : static GALGAS_inputActualExistingVariableParameterAST constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                                  const class GALGAS_lstring & inOperand1
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -8318,8 +8317,7 @@ class cPtr_inputActualExistingVariableParameterAST : public cPtr_actualParameter
   public : GALGAS_lstring mAttribute_mInputActualParameterName ;
 
 //--- Constructor
-  public : cPtr_inputActualExistingVariableParameterAST (const GALGAS_location & in_mQualifierLocation,
-                                                         const GALGAS_lstring & in_mActualSelector,
+  public : cPtr_inputActualExistingVariableParameterAST (const GALGAS_lstring & in_mActualSelector,
                                                          const GALGAS_lstring & in_mInputActualParameterName
                                                          COMMA_LOCATION_ARGS) ;
 
@@ -8369,10 +8367,9 @@ class GALGAS_inputActualNewConstantParameterAST : public GALGAS_actualParameterA
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_inputActualNewConstantParameterAST constructor_new (const class GALGAS_location & inOperand0,
+  public : static GALGAS_inputActualNewConstantParameterAST constructor_new (const class GALGAS_lstring & inOperand0,
                                                                              const class GALGAS_lstring & inOperand1,
-                                                                             const class GALGAS_lstring & inOperand2,
-                                                                             const class GALGAS_lstring & inOperand3
+                                                                             const class GALGAS_lstring & inOperand2
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -8414,8 +8411,7 @@ class cPtr_inputActualNewConstantParameterAST : public cPtr_actualParameterAST {
   public : GALGAS_lstring mAttribute_mInputActualParameterName ;
 
 //--- Constructor
-  public : cPtr_inputActualNewConstantParameterAST (const GALGAS_location & in_mQualifierLocation,
-                                                    const GALGAS_lstring & in_mActualSelector,
+  public : cPtr_inputActualNewConstantParameterAST (const GALGAS_lstring & in_mActualSelector,
                                                     const GALGAS_lstring & in_mInputActualTypeName,
                                                     const GALGAS_lstring & in_mInputActualParameterName
                                                     COMMA_LOCATION_ARGS) ;
@@ -8467,10 +8463,9 @@ class GALGAS_inputActualNewVariableParameterAST : public GALGAS_actualParameterA
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_inputActualNewVariableParameterAST constructor_new (const class GALGAS_location & inOperand0,
+  public : static GALGAS_inputActualNewVariableParameterAST constructor_new (const class GALGAS_lstring & inOperand0,
                                                                              const class GALGAS_lstring & inOperand1,
-                                                                             const class GALGAS_lstring & inOperand2,
-                                                                             const class GALGAS_lstring & inOperand3
+                                                                             const class GALGAS_lstring & inOperand2
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -8512,8 +8507,7 @@ class cPtr_inputActualNewVariableParameterAST : public cPtr_actualParameterAST {
   public : GALGAS_lstring mAttribute_mInputActualParameterName ;
 
 //--- Constructor
-  public : cPtr_inputActualNewVariableParameterAST (const GALGAS_location & in_mQualifierLocation,
-                                                    const GALGAS_lstring & in_mActualSelector,
+  public : cPtr_inputActualNewVariableParameterAST (const GALGAS_lstring & in_mActualSelector,
                                                     const GALGAS_lstring & in_mInputActualTypeName,
                                                     const GALGAS_lstring & in_mInputActualParameterName
                                                     COMMA_LOCATION_ARGS) ;
@@ -8580,6 +8574,8 @@ class GALGAS_inputJokerActualParameterAST : public GALGAS_actualParameterAST {
 //--------------------------------- Getters
   public : VIRTUAL_IN_DEBUG class GALGAS_uint reader_mJokerIndex (LOCATION_ARGS) const ;
 
+  public : VIRTUAL_IN_DEBUG class GALGAS_location reader_mQualifierLocation (LOCATION_ARGS) const ;
+
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
@@ -8599,6 +8595,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputJokerActualPar
 
 class cPtr_inputJokerActualParameterAST : public cPtr_actualParameterAST {
 //--- Attributes
+  public : GALGAS_location mAttribute_mQualifierLocation ;
   public : GALGAS_uint mAttribute_mJokerIndex ;
 
 //--- Constructor
@@ -8610,7 +8607,92 @@ class cPtr_inputJokerActualParameterAST : public cPtr_actualParameterAST {
   public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_location reader_mQualifierLocation (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_uint reader_mJokerIndex (LOCATION_ARGS) const ;
+//--- Description
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
+
+  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                      @inputSingleJokerActualParameterAST class                                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_inputSingleJokerActualParameterAST : public GALGAS_actualParameterAST {
+//--- Constructor
+  public : GALGAS_inputSingleJokerActualParameterAST (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public : static GALGAS_inputSingleJokerActualParameterAST constructor_default (LOCATION_ARGS) ;
+
+//---
+  public : inline const class cPtr_inputSingleJokerActualParameterAST * ptr (void) const { return (const cPtr_inputSingleJokerActualParameterAST *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_inputSingleJokerActualParameterAST (const cPtr_inputSingleJokerActualParameterAST * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_inputSingleJokerActualParameterAST extractObject (const GALGAS_object & inObject,
+                                                                           C_Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static GALGAS_inputSingleJokerActualParameterAST constructor_new (const class GALGAS_lstring & inOperand0
+                                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_inputSingleJokerActualParameterAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mActualSelector (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_inputSingleJokerActualParameterAST class
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputSingleJokerActualParameterAST ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                             Pointer class for @inputSingleJokerActualParameterAST class                             *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cPtr_inputSingleJokerActualParameterAST : public cPtr_actualParameterAST {
+//--- Attributes
+  public : GALGAS_lstring mAttribute_mActualSelector ;
+
+//--- Constructor
+  public : cPtr_inputSingleJokerActualParameterAST (const GALGAS_lstring & in_mActualSelector
+                                                    COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mActualSelector (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;
@@ -8648,10 +8730,9 @@ class GALGAS_outputActualParameterAST : public GALGAS_actualParameterAST {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_outputActualParameterAST constructor_new (const class GALGAS_location & inOperand0,
-                                                                   const class GALGAS_lstring & inOperand1,
-                                                                   const class GALGAS_semanticExpressionAST & inOperand2,
-                                                                   const class GALGAS_location & inOperand3
+  public : static GALGAS_outputActualParameterAST constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                   const class GALGAS_semanticExpressionAST & inOperand1,
+                                                                   const class GALGAS_location & inOperand2
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -8693,8 +8774,7 @@ class cPtr_outputActualParameterAST : public cPtr_actualParameterAST {
   public : GALGAS_location mAttribute_mEndOfExpressionLocation ;
 
 //--- Constructor
-  public : cPtr_outputActualParameterAST (const GALGAS_location & in_mQualifierLocation,
-                                          const GALGAS_lstring & in_mActualSelector,
+  public : cPtr_outputActualParameterAST (const GALGAS_lstring & in_mActualSelector,
                                           const GALGAS_semanticExpressionAST & in_mOutputActualParameterExpression,
                                           const GALGAS_location & in_mEndOfExpressionLocation
                                           COMMA_LOCATION_ARGS) ;
@@ -8746,10 +8826,9 @@ class GALGAS_outputInputActualParameterAST : public GALGAS_actualParameterAST {
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_outputInputActualParameterAST constructor_new (const class GALGAS_location & inOperand0,
+  public : static GALGAS_outputInputActualParameterAST constructor_new (const class GALGAS_lstring & inOperand0,
                                                                         const class GALGAS_lstring & inOperand1,
-                                                                        const class GALGAS_lstring & inOperand2,
-                                                                        const class GALGAS_lstringlist & inOperand3
+                                                                        const class GALGAS_lstringlist & inOperand2
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -8791,8 +8870,7 @@ class cPtr_outputInputActualParameterAST : public cPtr_actualParameterAST {
   public : GALGAS_lstringlist mAttribute_mStructAttributeList ;
 
 //--- Constructor
-  public : cPtr_outputInputActualParameterAST (const GALGAS_location & in_mQualifierLocation,
-                                               const GALGAS_lstring & in_mActualSelector,
+  public : cPtr_outputInputActualParameterAST (const GALGAS_lstring & in_mActualSelector,
                                                const GALGAS_lstring & in_mOutputInputActualParameterName,
                                                const GALGAS_lstringlist & in_mStructAttributeList
                                                COMMA_LOCATION_ARGS) ;
@@ -8804,6 +8882,180 @@ class cPtr_outputInputActualParameterAST : public cPtr_actualParameterAST {
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mActualSelector (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mOutputInputActualParameterName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstringlist reader_mStructAttributeList (LOCATION_ARGS) const ;
+//--- Description
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
+
+  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                         @outputInputJokerParameterAST class                                         *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_outputInputJokerParameterAST : public GALGAS_actualParameterAST {
+//--- Constructor
+  public : GALGAS_outputInputJokerParameterAST (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public : static GALGAS_outputInputJokerParameterAST constructor_default (LOCATION_ARGS) ;
+
+//---
+  public : inline const class cPtr_outputInputJokerParameterAST * ptr (void) const { return (const cPtr_outputInputJokerParameterAST *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_outputInputJokerParameterAST (const cPtr_outputInputJokerParameterAST * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_outputInputJokerParameterAST extractObject (const GALGAS_object & inObject,
+                                                                     C_Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static GALGAS_outputInputJokerParameterAST constructor_new (const class GALGAS_location & inOperand0,
+                                                                       const class GALGAS_uint & inOperand1
+                                                                       COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_outputInputJokerParameterAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_uint reader_mJokerIndex (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_location reader_mQualifierLocation (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_outputInputJokerParameterAST class
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputInputJokerParameterAST ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                Pointer class for @outputInputJokerParameterAST class                                *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cPtr_outputInputJokerParameterAST : public cPtr_actualParameterAST {
+//--- Attributes
+  public : GALGAS_location mAttribute_mQualifierLocation ;
+  public : GALGAS_uint mAttribute_mJokerIndex ;
+
+//--- Constructor
+  public : cPtr_outputInputJokerParameterAST (const GALGAS_location & in_mQualifierLocation,
+                                              const GALGAS_uint & in_mJokerIndex
+                                              COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_location reader_mQualifierLocation (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_uint reader_mJokerIndex (LOCATION_ARGS) const ;
+//--- Description
+  public : virtual void description (C_String & ioString,
+                                     const int32_t inIndentation) const ;
+
+  public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
+
+  public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
+
+} ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                      @outputInputSingleJokerParameterAST class                                      *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_outputInputSingleJokerParameterAST : public GALGAS_actualParameterAST {
+//--- Constructor
+  public : GALGAS_outputInputSingleJokerParameterAST (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public : static GALGAS_outputInputSingleJokerParameterAST constructor_default (LOCATION_ARGS) ;
+
+//---
+  public : inline const class cPtr_outputInputSingleJokerParameterAST * ptr (void) const { return (const cPtr_outputInputSingleJokerParameterAST *) mObjectPtr ; }
+
+//--------------------------------- Constructor from pointer
+  public : GALGAS_outputInputSingleJokerParameterAST (const cPtr_outputInputSingleJokerParameterAST * inSourcePtr) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_outputInputSingleJokerParameterAST extractObject (const GALGAS_object & inObject,
+                                                                           C_Compiler * inCompiler
+                                                                           COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static GALGAS_outputInputSingleJokerParameterAST constructor_new (const class GALGAS_lstring & inOperand0
+                                                                             COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_outputInputSingleJokerParameterAST & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mActualSelector (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_outputInputSingleJokerParameterAST class
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_outputInputSingleJokerParameterAST ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                             Pointer class for @outputInputSingleJokerParameterAST class                             *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class cPtr_outputInputSingleJokerParameterAST : public cPtr_actualParameterAST {
+//--- Attributes
+  public : GALGAS_lstring mAttribute_mActualSelector ;
+
+//--- Constructor
+  public : cPtr_outputInputSingleJokerParameterAST (const GALGAS_lstring & in_mActualSelector
+                                                    COMMA_LOCATION_ARGS) ;
+
+//--- Duplication
+  public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
+
+//--- Attribute accessors
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mActualSelector (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
                                      const int32_t inIndentation) const ;

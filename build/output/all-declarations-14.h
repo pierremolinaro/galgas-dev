@@ -81,6 +81,7 @@ void routine_generateFewImplementationFilesWithFewHeaders (const class GALGAS_un
                                                            const class GALGAS_semanticDeclarationSortedListForGeneration constinArgument2,
                                                            class GALGAS_stringlist & ioArgument3,
                                                            class GALGAS_stringset & ioArgument4,
+                                                           class GALGAS_stringlist & ioArgument5,
                                                            class C_Compiler * inCompiler
                                                            COMMA_LOCATION_ARGS) ;
 
@@ -93,6 +94,7 @@ void routine_generateFewImplementationFilesWithFewHeaders (const class GALGAS_un
 void routine_generateManyHeaders (const class GALGAS_string constinArgument0,
                                   const class GALGAS_semanticDeclarationSortedListForGeneration constinArgument1,
                                   class GALGAS_stringset & ioArgument2,
+                                  class GALGAS_stringlist & ioArgument3,
                                   class C_Compiler * inCompiler
                                   COMMA_LOCATION_ARGS) ;
 
@@ -119,6 +121,7 @@ void routine_generateManyImplementationFiles (const class GALGAS_unifiedTypeMap 
 void routine_generateOneBigHeader (const class GALGAS_string constinArgument0,
                                    const class GALGAS_semanticDeclarationSortedListForGeneration constinArgument1,
                                    class GALGAS_stringset & ioArgument2,
+                                   class GALGAS_stringlist & ioArgument3,
                                    class C_Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
 
@@ -219,6 +222,45 @@ void enterCategoryReader_hasCppHeaderFile (const int32_t inClassIndex,
 class GALGAS_bool callCategoryReader_hasCppHeaderFile (const class cPtr_semanticDeclarationForGeneration * inObject,
                                                        C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                   Filewrapper 'xcodeProjectGenerationFilewrapper'                                   *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const cDirectoryWrapper gWrapperDirectory_0_xcodeProjectGenerationFilewrapper ;
+extern const cDirectoryWrapper gWrapperDirectory_1_xcodeProjectGenerationFilewrapper ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                         Filewrapper template 'xcodeProjectGenerationFilewrapper xcodeproj'                          *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (class C_Compiler * inCompiler,
+                                                                               const class GALGAS_string & in_PROJECT_5F_REF,
+                                                                               const class GALGAS_string & in_MAIN_5F_GROUP_5F_REF,
+                                                                               const class GALGAS_XCodeGroupList & in_GROUPS,
+                                                                               const class GALGAS_stringlist & in_MAIN_5F_GROUP_5F_CHILDREN_5F_REFS,
+                                                                               const class GALGAS_XCodeMachOTargetList & in_MACH_5F_O_5F_TARGET_5F_LIST,
+                                                                               const class GALGAS__32_stringlist & in_CPP_5F_FILE_5F_LIST,
+                                                                               const class GALGAS__32_stringlist & in_M_5F_FILE_5F_LIST,
+                                                                               const class GALGAS__32_stringlist & in_HEADER_5F_FILE_5F_LIST,
+                                                                               const class GALGAS_BuildFileList & in_BUILD_5F_FILE_5F_LIST,
+                                                                               const class GALGAS_string & in_DEFAULT_5F_CONFIGURATION_5F_REF,
+                                                                               const class GALGAS_stringlist & in_DEFAULT_5F_CONFIGURATION_5F_SETTING_5F_LIST,
+                                                                               const class GALGAS_string & in_PROJECT_5F_BUILD_5F_DEFAULT_5F_CONFIGURATION_5F_REF
+                                                                               COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -789,6 +831,211 @@ void routine_generateGalgas_33_Linux_36__34_OnMacOSXTarget (const class GALGAS_s
                                                             const class GALGAS_string constinArgument1,
                                                             class C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                              Category method '@XcodeProjectDescriptor generateAtPath'                               *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void categoryMethod_generateAtPath (const class GALGAS_XcodeProjectDescriptor inObject,
+                                    const class GALGAS_string constin_inPath,
+                                    const class GALGAS_string constin_inCacheFilePath,
+                                    class C_Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                Category modifier '@XcodeProjectDescriptor addGroup'                                 *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void categoryModifier_addGroup (class GALGAS_XcodeProjectDescriptor & ioObject,
+                                const class GALGAS_string constin_inGroupName,
+                                const class GALGAS_string constin_inGroupPath,
+                                const class GALGAS_stringlist constin_inChildrenRefs,
+                                class GALGAS_string & out_outGroupRef,
+                                class C_Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                            Category modifier '@XcodeProjectDescriptor addGroupWithFiles'                            *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void categoryModifier_addGroupWithFiles (class GALGAS_XcodeProjectDescriptor & ioObject,
+                                         const class GALGAS_string constin_inGroupName,
+                                         const class GALGAS_string constin_inGroupPath,
+                                         const class GALGAS_stringset constin_inFileNames,
+                                         class GALGAS_stringlist & io_ioCppFileBuildRefs,
+                                         class GALGAS_stringlist & io_ioMFileBuildRefs,
+                                         class GALGAS_string & out_outGroupRef,
+                                         class C_Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                             Category modifier '@XcodeProjectDescriptor addMachOTarget'                              *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void categoryModifier_addMachOTarget (class GALGAS_XcodeProjectDescriptor & ioObject,
+                                      const class GALGAS_string constin_inTargetName,
+                                      const class GALGAS_string constin_inProductFileName,
+                                      const class GALGAS_stringlist constin_inSourceList,
+                                      const class GALGAS_stringlist constin_inBuildConfigurationSettingList,
+                                      class GALGAS_string & out_outProductFileRef,
+                                      class C_Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                    Category modifier '@XcodeProjectDescriptor addSettingsToDefaultConfiguration'                    *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void categoryModifier_addSettingsToDefaultConfiguration (class GALGAS_XcodeProjectDescriptor & ioObject,
+                                                         const class GALGAS_stringlist constin_inSettingList,
+                                                         class C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                          Category modifier '@XcodeProjectDescriptor placeGroupAsMainGroup'                          *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void categoryModifier_placeGroupAsMainGroup (class GALGAS_XcodeProjectDescriptor & ioObject,
+                                             const class GALGAS_string constin_inGroupRef,
+                                             class C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                           @XcodeProjectDescriptor struct                                            *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+class GALGAS_XcodeProjectDescriptor : public AC_GALGAS_root {
+//--------------------------------- Public data members
+  public : GALGAS_uint mAttribute_mSequenceNumber ;
+  public : GALGAS_string mAttribute_mMainGroupReference ;
+  public : GALGAS_stringlist mAttribute_mMainGroupChildrenRefs ;
+  public : GALGAS_string mAttribute_mProjectObjectReference ;
+  public : GALGAS_XCodeGroupList mAttribute_mGroupList ;
+  public : GALGAS_XCodeMachOTargetList mAttribute_mMachOTargetList ;
+  public : GALGAS__32_stringlist mAttribute_mCppFileList ;
+  public : GALGAS__32_stringlist mAttribute_m_5F_M_5F_FileList ;
+  public : GALGAS__32_stringlist mAttribute_mHeaderFileList ;
+  public : GALGAS_BuildFileList mAttribute_mBuildFileList ;
+  public : GALGAS_string mAttribute_mDefaultConfigurationRef ;
+  public : GALGAS_stringlist mAttribute_mDefaultConfigurationSettingList ;
+  public : GALGAS_string mAttribute_mProjectBuildConfigurationRef ;
+
+
+//--------------------------------- Accessors
+  public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
+  public : VIRTUAL_IN_DEBUG void drop (void) ;
+
+//--------------------------------- Default GALGAS constructor
+  public : static GALGAS_XcodeProjectDescriptor constructor_default (LOCATION_ARGS) ;
+
+//--------------------------------- Default constructor
+  public : GALGAS_XcodeProjectDescriptor (void) ;
+
+//--------------------------------- Virtual destructor (in debug mode)
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_XcodeProjectDescriptor (void) ;
+
+//--------------------------------- Native constructor
+  public : GALGAS_XcodeProjectDescriptor (const GALGAS_uint & in_mSequenceNumber,
+                                          const GALGAS_string & in_mMainGroupReference,
+                                          const GALGAS_stringlist & in_mMainGroupChildrenRefs,
+                                          const GALGAS_string & in_mProjectObjectReference,
+                                          const GALGAS_XCodeGroupList & in_mGroupList,
+                                          const GALGAS_XCodeMachOTargetList & in_mMachOTargetList,
+                                          const GALGAS__32_stringlist & in_mCppFileList,
+                                          const GALGAS__32_stringlist & in_m_5F_M_5F_FileList,
+                                          const GALGAS__32_stringlist & in_mHeaderFileList,
+                                          const GALGAS_BuildFileList & in_mBuildFileList,
+                                          const GALGAS_string & in_mDefaultConfigurationRef,
+                                          const GALGAS_stringlist & in_mDefaultConfigurationSettingList,
+                                          const GALGAS_string & in_mProjectBuildConfigurationRef) ;
+
+//-- Start of generic part --*
+
+//--------------------------------- Object cloning
+  protected : virtual AC_GALGAS_root * clonedObject (void) const ;
+
+//--------------------------------- Object extraction
+  public : static GALGAS_XcodeProjectDescriptor extractObject (const GALGAS_object & inObject,
+                                                               C_Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- GALGAS constructors
+  public : static GALGAS_XcodeProjectDescriptor constructor_new (const class GALGAS_uint & inOperand0,
+                                                                 const class GALGAS_string & inOperand1,
+                                                                 const class GALGAS_stringlist & inOperand2,
+                                                                 const class GALGAS_string & inOperand3,
+                                                                 const class GALGAS_XCodeGroupList & inOperand4,
+                                                                 const class GALGAS_XCodeMachOTargetList & inOperand5,
+                                                                 const class GALGAS__32_stringlist & inOperand6,
+                                                                 const class GALGAS__32_stringlist & inOperand7,
+                                                                 const class GALGAS__32_stringlist & inOperand8,
+                                                                 const class GALGAS_BuildFileList & inOperand9,
+                                                                 const class GALGAS_string & inOperand10,
+                                                                 const class GALGAS_stringlist & inOperand11,
+                                                                 const class GALGAS_string & inOperand12
+                                                                 COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- Implementation of reader 'description'
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const int32_t inIndentation) const ;
+//--------------------------------- Comparison
+  public : typeComparisonResult objectCompare (const GALGAS_XcodeProjectDescriptor & inOperand) const ;
+
+//--------------------------------- Setters
+
+//--------------------------------- Instance Methods
+//--------------------------------- Class Methods
+
+//--------------------------------- Getters
+  public : VIRTUAL_IN_DEBUG class GALGAS_BuildFileList reader_mBuildFileList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS__32_stringlist reader_mCppFileList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mDefaultConfigurationRef (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_stringlist reader_mDefaultConfigurationSettingList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_XCodeGroupList reader_mGroupList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS__32_stringlist reader_mHeaderFileList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_XCodeMachOTargetList reader_mMachOTargetList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_stringlist reader_mMainGroupChildrenRefs (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mMainGroupReference (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mProjectBuildConfigurationRef (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mProjectObjectReference (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_uint reader_mSequenceNumber (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS__32_stringlist reader_m_5F_M_5F_FileList (LOCATION_ARGS) const ;
+
+
+//--------------------------------- Introspection
+  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
+ 
+} ; // End of GALGAS_XcodeProjectDescriptor class
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_XcodeProjectDescriptor ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *

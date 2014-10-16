@@ -195,20 +195,20 @@ end modifier ;
 #---------------------------------------------------------------------------*
 
 struct @XcodeProjectDescriptor {
-  @uint mSequenceNumber ;
-  @string mMainGroupReference ;
-  @stringlist mMainGroupChildrenRefs ;
-  @string mProjectObjectReference ;
-  @XCodeGroupList mGroupList ;
-  @XCodeMachOTargetList mMachOTargetList ;
-  @2stringlist mCppFileList ;
-  @2stringlist m_M_FileList ;
-  @2stringlist mHeaderFileList ;
-  @BuildFileList mBuildFileList ;
+  local @uint mSequenceNumber ;
+  local @string mMainGroupReference ;
+  local @stringlist mMainGroupChildrenRefs ;
+  local @string mProjectObjectReference ;
+  local @XCodeGroupList mGroupList ;
+  local @XCodeMachOTargetList mMachOTargetList ;
+  local @2stringlist mCppFileList ;
+  local @2stringlist m_M_FileList ;
+  local @2stringlist mHeaderFileList ;
+  local @BuildFileList mBuildFileList ;
 #--- Default configuration
-  @string mDefaultConfigurationRef ;
-  @stringlist mDefaultConfigurationSettingList ;
-  @string mProjectBuildConfigurationRef ;
+  local @string mDefaultConfigurationRef ;
+  local @stringlist mDefaultConfigurationSettingList ;
+  local @string mProjectBuildConfigurationRef ;
 }
 
 #---------------------------------------------------------------------------*

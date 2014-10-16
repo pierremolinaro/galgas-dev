@@ -1919,23 +1919,6 @@ void routine_enterBaseReaderWithArgument (class GALGAS_readerMap & ioArgument0,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                   Routine 'enterBaseReaderWithArgumentAndMessage'                                   *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-void routine_enterBaseReaderWithArgumentAndMessage (class GALGAS_readerMap & ioArgument0,
-                                                    class GALGAS_unifiedTypeMap & ioArgument1,
-                                                    const class GALGAS_string constinArgument2,
-                                                    const class GALGAS_string constinArgument3,
-                                                    const class GALGAS_string constinArgument4,
-                                                    const class GALGAS_string constinArgument5,
-                                                    const class GALGAS_bool constinArgument6,
-                                                    const class GALGAS_string constinArgument7,
-                                                    class C_Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                                     Routine 'enterBaseFinalReaderWithArgument'                                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -1967,25 +1950,6 @@ void routine_enterBaseReaderWith_32_Arguments (class GALGAS_readerMap & ioArgume
                                                const class GALGAS_bool constinArgument8,
                                                class C_Compiler * inCompiler
                                                COMMA_LOCATION_ARGS) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                  Routine 'enterBaseReaderWith2ArgumentsAndMessage'                                  *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-void routine_enterBaseReaderWith_32_ArgumentsAndMessage (class GALGAS_readerMap & ioArgument0,
-                                                         class GALGAS_unifiedTypeMap & ioArgument1,
-                                                         const class GALGAS_string constinArgument2,
-                                                         const class GALGAS_string constinArgument3,
-                                                         const class GALGAS_string constinArgument4,
-                                                         const class GALGAS_string constinArgument5,
-                                                         const class GALGAS_string constinArgument6,
-                                                         const class GALGAS_string constinArgument7,
-                                                         const class GALGAS_bool constinArgument8,
-                                                         const class GALGAS_string constinArgument9,
-                                                         class C_Compiler * inCompiler
-                                                         COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -2753,7 +2717,7 @@ void routine_analyzeRoutineArguments (const class GALGAS_analysisContext constin
                                       const class GALGAS_formalParameterSignature constinArgument3,
                                       const class GALGAS_actualParameterListAST constinArgument4,
                                       class GALGAS_variableMap & ioArgument5,
-                                      class GALGAS_unifiedTypeMapProxyAndLocalVariableList & ioArgument6,
+                                      class GALGAS_semanticInstructionListForGeneration & ioArgument6,
                                       class GALGAS_actualParameterListForGeneration & outArgument7,
                                       class C_Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) ;
@@ -2772,7 +2736,7 @@ typedef void (*categoryMethodSignature_actualParameterAST_checkAgainstFormalArgu
                                                                                        class GALGAS_variableMap & ioArgument4,
                                                                                        class GALGAS_actualParameterListForGeneration & ioArgument5,
                                                                                        class GALGAS_stringset & ioArgument6,
-                                                                                       class GALGAS_unifiedTypeMapProxyAndLocalVariableList & ioArgument7,
+                                                                                       class GALGAS_semanticInstructionListForGeneration & ioArgument7,
                                                                                        class C_Compiler * inCompiler
                                                                                        COMMA_LOCATION_ARGS) ;
 
@@ -2791,7 +2755,7 @@ void callCategoryMethod_checkAgainstFormalArgument (const class cPtr_actualParam
                                                     GALGAS_variableMap & io_ioVariableMap,
                                                     GALGAS_actualParameterListForGeneration & io_ioActualParameterListForGeneration,
                                                     GALGAS_stringset & io_ioExclusiveVariableSet,
-                                                    GALGAS_unifiedTypeMapProxyAndLocalVariableList & io_ioLocalVariableDeclarationList,
+                                                    GALGAS_semanticInstructionListForGeneration & io_ioInstructionListForGeneration,
                                                     C_Compiler * inCompiler
                                                     COMMA_LOCATION_ARGS) ;
 
