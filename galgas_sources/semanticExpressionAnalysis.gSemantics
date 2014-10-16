@@ -508,7 +508,11 @@ override method @literalUInt64ExpressionAST analyzeSemanticExpression
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  outExpression := [@literalUInt64ExpressionForGeneration new !inAnalysisContext->mPredefinedTypes->mUInt64Type ![mValue location] ![mValue uint64]] ;
+  outExpression := [@literalUInt64ExpressionForGeneration new
+    !inAnalysisContext->mPredefinedTypes->mUInt64Type
+    ![mValue location]
+    ![mValue uint64]
+  ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -1672,15 +1676,19 @@ override method @structFieldAccessExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression
 :
 #--- Expression analysis
-  @semanticExpressionForGeneration expression ;
-  [mExpression analyzeSemanticExpression ![@unifiedTypeMap-proxy null] !inAnalysisContext !?ioVariableMap ?expression] ;
+  [mExpression analyzeSemanticExpression
+    ![@unifiedTypeMap-proxy null]
+    !inAnalysisContext
+    !?ioVariableMap
+    ??@semanticExpressionForGeneration expression
+  ] ;
 #--- Check field access availability
   @unifiedTypeMap-proxy type := [expression mResultType] ;
   if [type mTypeKindEnum] != [@typeKindEnum structType] then
-    error mStructFieldName:"the '->' operator requires the receiver to be a struct" ;
+    error mStructFieldName:"the '.' operator requires the receiver to be a struct" ;
   end if ;
   const @attributeMap attributeMap := [type mAttributeMap] ;
-  [attributeMap searchKey !mStructFieldName ?type] ;
+  [attributeMap searchKey !mStructFieldName ?@bool isPrivate ?type] ;
 #--- Generate expression
   outExpression := [@structFieldAccessExpressionForGeneration new
     !type

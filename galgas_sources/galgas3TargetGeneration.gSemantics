@@ -385,7 +385,7 @@ routine updateGalgas3Targets
     else
       applicationBundleBase := "fr.irccyn" ;
     end with ;
-    @string InfoPlistContents := [filewrapper targetGalgas3GenerationFileWrapper.makefile_info_plist
+    const InfoPlistContents := [filewrapper targetGalgas3GenerationFileWrapper.makefile_info_plist
       !inTargetName
       !applicationBundleBase
       !inProjectVersionString
@@ -458,7 +458,7 @@ routine updateGalgas3Targets
         ?*
       ] ;
     #--- Updater application
-      const @string updaterApplicationDir := projectDirectory . "/xcode-project/cocoa-application-update/updater-application";
+      const updaterApplicationDir := projectDirectory . "/xcode-project/cocoa-application-update/updater-application";
       [updaterApplicationDir makeDirectory] ;
       [[filewrapper updaterGalgas3ApplicationFileWrapper.credits] writeToFileWhenDifferentContents !updaterApplicationDir . "/English.lproj/UpdaterAppCredits.rtf" ?*] ;
       [[filewrapper updaterGalgas3ApplicationFileWrapper.info_plist_strings] writeToFileWhenDifferentContents !updaterApplicationDir . "/English.lproj/UpdaterAppInfoPlist.strings" ?*] ;
@@ -481,7 +481,7 @@ routine updateGalgas3Targets
       [[filewrapper updaterGalgas3ApplicationFileWrapper.prefix] writeToFileWhenDifferentContents !updaterApplicationDir . "/updater-app-Prefix.pch" ?*] ;
     end with ;
   #--- Enumerate icons files in "userResources" directory
-    const @string userResourceDir := projectDirectory . "/xcode-project/userResources";
+    const userResourceDir := projectDirectory . "/xcode-project/userResources";
     [userResourceDir makeDirectory] ;
     @stringlist extensionList [emptyList] ;
     extensionList += !"icns" ;

@@ -62,15 +62,22 @@ nonterminal <formal_input_parameter_list> !@formalInputParameterListAST outForma
 #---------------------------------------------------------------------------*
 
 rule <attribute_declaration> ?!@attributeInCollectionListAST ioAttributeInCollectionList :
+  @bool isPrivate ;
+  select
+    isPrivate := false ;
+  or
+    $private$ ;
+    isPrivate := true ;
+  end select ;
   $type_name$ ? @lstring mAttributeTypeName ;
   $identifier$ ? @lstring mAttributeName ;
   @lstringlist featureList [emptyList] ;
   repeat
   while
-    $attribute$ ? @lstring featureName ;
+    $attribute$ ??@lstring featureName ;
     featureList += !featureName ;
   end repeat ;
-  ioAttributeInCollectionList += !mAttributeTypeName !mAttributeName !featureList ;
+  ioAttributeInCollectionList += !isPrivate !mAttributeTypeName !mAttributeName !featureList ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -475,18 +482,18 @@ rule <declaration>
  ?!@galgas3DeclarationAST ioDeclarations
 :
   $struct$ ;
-  $type_name$ ?@lstring mListTypeName indexing structDefinition ;
+  $type_name$ ??@lstring structTypeName indexing structDefinition ;
   ${$ ;
-  @attributeInCollectionListAST mAttributeList [emptyList] ;
+  @attributeInCollectionListAST attributeList [emptyList] ;
   repeat
   while
-    <attribute_declaration> !? mAttributeList ;
+    <attribute_declaration> !?attributeList ;
   end repeat ;
   $}$ ;
   ioDeclarations->mDeclarationList += ![@structDeclarationAST new
     !false # Is not predefined
-    !mListTypeName
-    !mAttributeList
+    !structTypeName
+    !attributeList
     !""
   ] ;
 end rule ;

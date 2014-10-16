@@ -3726,7 +3726,8 @@ void routine_generateSemanticDeclarationsGalgas_33_ (const class GALGAS_unifiedT
                                                      const class GALGAS_string constinArgument1,
                                                      const class GALGAS_semanticDeclarationSortedListForGeneration constinArgument2,
                                                      class GALGAS_stringlist & ioArgument3,
-                                                     class GALGAS_stringset & ioArgument4,
+                                                     class GALGAS_stringlist & ioArgument4,
+                                                     class GALGAS_stringset & ioArgument5,
                                                      class C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 
@@ -3745,12 +3746,13 @@ void routine_updateGalgas_33_Targets (const class GALGAS_string constinArgument0
                                       const class GALGAS_stringlist constinArgument6,
                                       const class GALGAS_stringlist constinArgument7,
                                       const class GALGAS_stringlist constinArgument8,
-                                      const class GALGAS_stringset constinArgument9,
+                                      const class GALGAS_stringlist constinArgument9,
                                       const class GALGAS_stringset constinArgument10,
-                                      const class GALGAS_stringlist constinArgument11,
-                                      class GALGAS_stringset & ioArgument12,
-                                      const class GALGAS_stringlist constinArgument13,
+                                      const class GALGAS_stringset constinArgument11,
+                                      const class GALGAS_stringlist constinArgument12,
+                                      class GALGAS_stringset & ioArgument13,
                                       const class GALGAS_stringlist constinArgument14,
+                                      const class GALGAS_stringlist constinArgument15,
                                       class C_Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) ;
 
