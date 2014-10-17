@@ -58,17 +58,17 @@ modifier @XcodeProjectDescriptor addToolTarget
   ??productFileName:@string inProductFileName
   ??sources:@stringlist inSourceList
   ??buildConfigurationSettingList:@stringlist inBuildConfigurationSettingList
-  !productFileRef:@string outProductFileRef
+  !targetRef:@string outTargetRef
 :
-  [!?self getReferenceKey ?ref:outProductFileRef] ;
+  [!?self getReferenceKey ??ref:productFileRef] ;
   [!?self getReferenceKey ??ref:buildPhaseRef] ;
-  [!?self getReferenceKey ??ref:targetRef] ;
+  [!?self getReferenceKey ?ref:outTargetRef] ;
   [!?self getReferenceKey ??ref:buildConfigurationListRef] ;
   [!?self getReferenceKey ??ref:buildConfigurationRef] ;
   mToolTargetList +=
-    !targetRef
+    !outTargetRef
     !inTargetName
-    !outProductFileRef
+    !productFileRef
     !inProductFileName
     !inSourceList
     !buildPhaseRef
@@ -86,6 +86,7 @@ modifier @XcodeProjectDescriptor addAppTarget
   ??sources:@stringlist inSourceList
   ??frameworkFileRefs:@stringlist inFrameworksFileRefList
   ??buildConfigurationSettingList:@stringlist inBuildConfigurationSettingList
+  ??dependantTargetList:@stringlist inDependentTargetRefList
   !productFileRef:@string outProductFileRef
 :
   [!?self getReferenceKey ?ref:outProductFileRef] ;
@@ -94,6 +95,11 @@ modifier @XcodeProjectDescriptor addAppTarget
   [!?self getReferenceKey ??ref:buildConfigurationListRef] ;
   [!?self getReferenceKey ??ref:buildConfigurationRef] ;
   [!?self getReferenceKey ??ref:frameworkBuildRef] ;
+  @2stringlist dependentTargets := {} ;
+  for (ref) in inDependentTargetRefList do
+    [!?self getReferenceKey ??ref:dependencyBuildRef] ;
+    dependentTargets += !dependencyBuildRef !ref ;
+  end for ;
   mAppTargetList +=
     !targetRef
     !inTargetName
@@ -106,6 +112,7 @@ modifier @XcodeProjectDescriptor addAppTarget
     !buildConfigurationRef
     !inFrameworksFileRefList
     !frameworkBuildRef
+    !dependentTargets
   ;
 end modifier ;
 
@@ -232,6 +239,7 @@ list @XCodeAppTargetList {
   @string mBuildConfigurationRef ;
   @stringlist mFrameworksFileRefList ;
   @string mFrameworkBuildPhaseRef ;
+  @2stringlist mDependentTargets ;
 }
 
 #---------------------------------------------------------------------------*
