@@ -28,7 +28,6 @@
 		CF063F97195EB29400353F6E /* galgas3projectAST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF063F94195EB29400353F6E /* galgas3projectAST.cpp */; };
 		CF0676460E7EE037008B9D1F /* md5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0676430E7EE037008B9D1F /* md5.cpp */; };
 		CF0676470E7EE037008B9D1F /* md5.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0676430E7EE037008B9D1F /* md5.cpp */; };
-		CF06F5CB1049592F005F03FA /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF06F5C51049592F005F03FA /* MainMenu.xib */; };
 		CF074BC71000BB6E00F45986 /* C_BoolCommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF074BC31000BB6E00F45986 /* C_BoolCommandLineOption.cpp */; };
 		CF074BC81000BB6E00F45986 /* C_BoolCommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF074BC31000BB6E00F45986 /* C_BoolCommandLineOption.cpp */; };
 		CF074C341000E29F00F45986 /* C_UIntCommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF074C2E1000E29F00F45986 /* C_UIntCommandLineOption.cpp */; };
@@ -53,6 +52,9 @@
 		CF0955FD19689C1A00162C60 /* galgas3OptionComponentSyntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0955F819689C1A00162C60 /* galgas3OptionComponentSyntax.cpp */; };
 		CF09560419689F3200162C60 /* galgas3LexiqueComponentSyntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF09560019689F3200162C60 /* galgas3LexiqueComponentSyntax.cpp */; };
 		CF09560519689F3200162C60 /* galgas3LexiqueComponentSyntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF09560019689F3200162C60 /* galgas3LexiqueComponentSyntax.cpp */; };
+		CF09C78919F175FD009A9D6A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF09C78319F175FD009A9D6A /* MainMenu.xib */; };
+		CF09C78A19F175FD009A9D6A /* OC_GGS_Document.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF09C78519F175FD009A9D6A /* OC_GGS_Document.xib */; };
+		CF09C78B19F175FD009A9D6A /* PMDebug.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF09C78719F175FD009A9D6A /* PMDebug.xib */; };
 		CF0AF9130FED2CCB0007E6B2 /* lexiqueGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0AF90F0FED2CCB0007E6B2 /* lexiqueGeneration.cpp */; };
 		CF0AF9140FED2CCB0007E6B2 /* lexiqueGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0AF90F0FED2CCB0007E6B2 /* lexiqueGeneration.cpp */; };
 		CF0AF9360FED32DB0007E6B2 /* lexiqueCocoaGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0AF9320FED32DB0007E6B2 /* lexiqueCocoaGeneration.cpp */; };
@@ -158,7 +160,6 @@
 		CF497E331145A1EE00263347 /* semanticsTypesForAST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF497E121145A1EE00263347 /* semanticsTypesForAST.cpp */; };
 		CF4A264D10A9832B00A2A903 /* grammarLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4A264910A9832B00A2A903 /* grammarLL1grammar.cpp */; };
 		CF4A264E10A9832B00A2A903 /* grammarLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4A264910A9832B00A2A903 /* grammarLL1grammar.cpp */; };
-		CF51F02315C9200E00387A48 /* PMDebug.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF51F02115C9200E00387A48 /* PMDebug.xib */; };
 		CF51F02715C9201800387A48 /* PMDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = CF51F02615C9201800387A48 /* PMDebug.m */; };
 		CF5283B2196C1C9A0010D0B7 /* galgas3SemanticDeclarationCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5283B0196C1C9A0010D0B7 /* galgas3SemanticDeclarationCompilation.cpp */; };
 		CF5283B3196C1C9A0010D0B7 /* galgas3SemanticDeclarationCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5283B0196C1C9A0010D0B7 /* galgas3SemanticDeclarationCompilation.cpp */; };
@@ -445,7 +446,6 @@
 		CFFE065311443BA800BE7C52 /* lexiqueTypesForAST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFE064C11443BA800BE7C52 /* lexiqueTypesForAST.cpp */; };
 		CFFE065411443BA800BE7C52 /* lexiqueSyntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFE064A11443BA800BE7C52 /* lexiqueSyntax.cpp */; };
 		CFFE065511443BA800BE7C52 /* lexiqueTypesForAST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFE064C11443BA800BE7C52 /* lexiqueTypesForAST.cpp */; };
-		CFFE6C9014861DFB00FD9FF8 /* OC_GGS_Document.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFFE6C8E14861DFB00FD9FF8 /* OC_GGS_Document.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -497,7 +497,6 @@
 		CF063F95195EB29400353F6E /* galgas3projectAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = galgas3projectAST.h; sourceTree = "<group>"; };
 		CF0676080E7EDE29008B9D1F /* md5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = md5.h; sourceTree = "<group>"; };
 		CF0676430E7EE037008B9D1F /* md5.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = md5.cpp; sourceTree = "<group>"; };
-		CF06F5C61049592F005F03FA /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		CF074BC21000BB6E00F45986 /* C_BoolCommandLineOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = C_BoolCommandLineOption.h; sourceTree = "<group>"; };
 		CF074BC31000BB6E00F45986 /* C_BoolCommandLineOption.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = C_BoolCommandLineOption.cpp; sourceTree = "<group>"; };
 		CF074C2D1000E29F00F45986 /* C_UIntCommandLineOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = C_UIntCommandLineOption.h; sourceTree = "<group>"; };
@@ -523,6 +522,9 @@
 		CF0955F919689C1A00162C60 /* galgas3OptionComponentSyntax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = galgas3OptionComponentSyntax.h; sourceTree = "<group>"; };
 		CF09560019689F3200162C60 /* galgas3LexiqueComponentSyntax.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = galgas3LexiqueComponentSyntax.cpp; sourceTree = "<group>"; };
 		CF09560119689F3200162C60 /* galgas3LexiqueComponentSyntax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = galgas3LexiqueComponentSyntax.h; sourceTree = "<group>"; };
+		CF09C78419F175FD009A9D6A /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = MainMenu.xib; sourceTree = "<group>"; };
+		CF09C78619F175FD009A9D6A /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = OC_GGS_Document.xib; sourceTree = "<group>"; };
+		CF09C78819F175FD009A9D6A /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = PMDebug.xib; sourceTree = "<group>"; };
 		CF0AF90F0FED2CCB0007E6B2 /* lexiqueGeneration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lexiqueGeneration.cpp; sourceTree = "<group>"; };
 		CF0AF9100FED2CCB0007E6B2 /* lexiqueGeneration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lexiqueGeneration.h; sourceTree = "<group>"; };
 		CF0AF9320FED32DB0007E6B2 /* lexiqueCocoaGeneration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lexiqueCocoaGeneration.cpp; sourceTree = "<group>"; };
@@ -651,7 +653,6 @@
 		CF497E131145A1EE00263347 /* semanticsTypesForAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticsTypesForAST.h; sourceTree = "<group>"; };
 		CF4A264910A9832B00A2A903 /* grammarLL1grammar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = grammarLL1grammar.cpp; sourceTree = "<group>"; };
 		CF4A264A10A9832B00A2A903 /* grammarLL1grammar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = grammarLL1grammar.h; sourceTree = "<group>"; };
-		CF51F02215C9200E00387A48 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/PMDebug.xib; sourceTree = "<group>"; };
 		CF51F02515C9201800387A48 /* PMDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PMDebug.h; sourceTree = "<group>"; };
 		CF51F02615C9201800387A48 /* PMDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PMDebug.m; sourceTree = "<group>"; };
 		CF5283B0196C1C9A0010D0B7 /* galgas3SemanticDeclarationCompilation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = galgas3SemanticDeclarationCompilation.cpp; sourceTree = "<group>"; };
@@ -1086,7 +1087,6 @@
 		CFFE064B11443BA800BE7C52 /* lexiqueSyntax.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lexiqueSyntax.h; sourceTree = "<group>"; };
 		CFFE064C11443BA800BE7C52 /* lexiqueTypesForAST.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lexiqueTypesForAST.cpp; sourceTree = "<group>"; };
 		CFFE064D11443BA800BE7C52 /* lexiqueTypesForAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lexiqueTypesForAST.h; sourceTree = "<group>"; };
-		CFFE6C8F14861DFB00FD9FF8 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/OC_GGS_Document.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1232,6 +1232,16 @@
 				CF24383C19EC27A60027D6AB /* XcodeProjectNewGeneration.h */,
 			);
 			name = "galgas3 Files";
+			sourceTree = "<group>";
+		};
+		CF09C78219F175FD009A9D6A /* English.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				CF09C78319F175FD009A9D6A /* MainMenu.xib */,
+				CF09C78519F175FD009A9D6A /* OC_GGS_Document.xib */,
+				CF09C78719F175FD009A9D6A /* PMDebug.xib */,
+			);
+			path = English.lproj;
 			sourceTree = "<group>";
 		};
 		CF31E0ED0598DF5400814123 /* command_line_interface */ = {
@@ -1393,11 +1403,11 @@
 			isa = PBXGroup;
 			children = (
 				CFC8FE1518637C510035BBBE /* closeSourceFile.tiff */,
+				CF09C78219F175FD009A9D6A /* English.lproj */,
 				CFAE5B1910024AA50068DEC9 /* enterDefaultCommandLineOptions.h */,
 				CFAE5B1A10024AA50068DEC9 /* enterDefaultCommandLineOptions.m */,
 				CF82596C08536A130077AEAF /* F_CocoaWrapperForGalgas.h */,
 				CF82596F08536A130077AEAF /* I_Stop.tiff */,
-				CF06F5C51049592F005F03FA /* MainMenu.xib */,
 				CFB6882C19B8DAB2003F006C /* NSString+identifierRepresentation.h */,
 				CFB6882D19B8DAB2003F006C /* NSString+identifierRepresentation.m */,
 				CFCAEE65160E5D3D0081F715 /* OC_GGS_ApplicationDelegate.h */,
@@ -1408,7 +1418,6 @@
 				CFAE5A9F10021A400068DEC9 /* OC_GGS_CommandLineOption.m */,
 				CF82597308536A130077AEAF /* OC_GGS_Document.h */,
 				CF82597408536A130077AEAF /* OC_GGS_Document.m */,
-				CFFE6C8E14861DFB00FD9FF8 /* OC_GGS_Document.xib */,
 				CF59565A15C81988000E6B8B /* OC_GGS_DocumentData.h */,
 				CF59565B15C81988000E6B8B /* OC_GGS_DocumentData.m */,
 				CF9DE67C15C8766600D44EE3 /* OC_GGS_RulerViewForBuildOutput.h */,
@@ -1429,7 +1438,6 @@
 				CF9E55FA0FF5372D007692D1 /* OC_Token.m */,
 				CF51F02515C9201800387A48 /* PMDebug.h */,
 				CF51F02615C9201800387A48 /* PMDebug.m */,
-				CF51F02115C9200E00387A48 /* PMDebug.xib */,
 				CF3CFB2B0FEBEA6C00CE4488 /* PMFontButton.h */,
 				CF3CFB2C0FEBEA6C00CE4488 /* PMFontButton.m */,
 				CFFCE7BB14686081009DB6D5 /* PMIssueDescriptor.h */,
@@ -2264,15 +2272,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				CF560733199679410074A7B2 /* galgas-developer-debug in Resources */,
+				CF09C78919F175FD009A9D6A /* MainMenu.xib in Resources */,
 				CF560731199679270074A7B2 /* galgas-developer in Resources */,
 				CF6DF22909E3F3A700506859 /* Credits.rtf in Resources */,
+				CF09C78B19F175FD009A9D6A /* PMDebug.xib in Resources */,
 				CF6DF22A09E3F3A700506859 /* InfoPlist.strings in Resources */,
+				CF09C78A19F175FD009A9D6A /* OC_GGS_Document.xib in Resources */,
 				CF6DF22B09E3F3A700506859 /* galgasApplication.icns in Resources */,
 				CF6DF22C09E3F3A700506859 /* galgasDocuments.icns in Resources */,
 				CF6DF23009E3F3A700506859 /* I_Stop.tiff in Resources */,
-				CF06F5CB1049592F005F03FA /* MainMenu.xib in Resources */,
-				CFFE6C9014861DFB00FD9FF8 /* OC_GGS_Document.xib in Resources */,
-				CF51F02315C9200E00387A48 /* PMDebug.xib in Resources */,
 				CF20C0AD160DE46800AC054C /* GGSUpdateCocoaGalgas.xib in Resources */,
 				CFC8FE1618637C510035BBBE /* closeSourceFile.tiff in Resources */,
 			);
@@ -2758,12 +2766,28 @@
 			name = Credits.rtf;
 			sourceTree = SOURCE_ROOT;
 		};
-		CF06F5C51049592F005F03FA /* MainMenu.xib */ = {
+		CF09C78319F175FD009A9D6A /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				CF06F5C61049592F005F03FA /* English */,
+				CF09C78419F175FD009A9D6A /* English */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		CF09C78519F175FD009A9D6A /* OC_GGS_Document.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF09C78619F175FD009A9D6A /* English */,
+			);
+			name = OC_GGS_Document.xib;
+			sourceTree = "<group>";
+		};
+		CF09C78719F175FD009A9D6A /* PMDebug.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF09C78819F175FD009A9D6A /* English */,
+			);
+			name = PMDebug.xib;
 			sourceTree = "<group>";
 		};
 		CF20C0AB160DE46800AC054C /* GGSUpdateCocoaGalgas.xib */ = {
@@ -2772,22 +2796,6 @@
 				CF20C0AC160DE46800AC054C /* English */,
 			);
 			name = GGSUpdateCocoaGalgas.xib;
-			sourceTree = "<group>";
-		};
-		CF51F02115C9200E00387A48 /* PMDebug.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CF51F02215C9200E00387A48 /* English */,
-			);
-			name = PMDebug.xib;
-			sourceTree = "<group>";
-		};
-		CFFE6C8E14861DFB00FD9FF8 /* OC_GGS_Document.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CFFE6C8F14861DFB00FD9FF8 /* English */,
-			);
-			name = OC_GGS_Document.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

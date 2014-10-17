@@ -2,6 +2,36 @@ semantics XcodeProjectNewGeneration :
 
 #---------------------------------------------------------------------------*
 
+modifier @XcodeProjectDescriptor addTIFF_file
+  ??fileName:@string inFileName
+  !fileRef:@string outFileRef
+:
+  [!?self getReferenceKey ?ref:outFileRef] ;
+  mTIFF_fileList += !outFileRef !inFileName ;
+end modifier ;
+
+#---------------------------------------------------------------------------*
+
+modifier @XcodeProjectDescriptor addInfoPlistFile
+  ??fileName:@string inFileName
+  !fileRef:@string outFileRef
+:
+  [!?self getReferenceKey ?ref:outFileRef] ;
+  mInfoPlistFileList += !outFileRef !inFileName ;
+end modifier ;
+
+#---------------------------------------------------------------------------*
+
+modifier @XcodeProjectDescriptor addXIBFile
+  ??fileName:@string inFileName
+  !fileRef:@string outFileRef
+:
+  [!?self getReferenceKey ?ref:outFileRef] ;
+  mXIB_fileList += !outFileRef !inFileName ;
+end modifier ;
+
+#---------------------------------------------------------------------------*
+
 modifier @XcodeProjectDescriptor addFrameworkFile
   ??fileName:@string inFileName
   !fileRef:@string outFileRef
@@ -59,8 +89,9 @@ modifier @XcodeProjectDescriptor addToolTarget
   ??sources:@stringlist inSourceList
   ??buildConfigurationSettingList:@stringlist inBuildConfigurationSettingList
   !targetRef:@string outTargetRef
+  !productFileRef:@string outProductFileRef
 :
-  [!?self getReferenceKey ??ref:productFileRef] ;
+  [!?self getReferenceKey ?ref:outProductFileRef] ;
   [!?self getReferenceKey ??ref:buildPhaseRef] ;
   [!?self getReferenceKey ?ref:outTargetRef] ;
   [!?self getReferenceKey ??ref:buildConfigurationListRef] ;
@@ -68,7 +99,7 @@ modifier @XcodeProjectDescriptor addToolTarget
   mToolTargetList +=
     !outTargetRef
     !inTargetName
-    !productFileRef
+    !outProductFileRef
     !inProductFileName
     !inSourceList
     !buildPhaseRef
@@ -85,8 +116,10 @@ modifier @XcodeProjectDescriptor addAppTarget
   ??productFileName:@string inProductFileName
   ??sources:@stringlist inSourceList
   ??frameworkFileRefs:@stringlist inFrameworksFileRefList
+  ??resourceFileRefs:@stringlist inResourceFileBuildRefs
   ??buildConfigurationSettingList:@stringlist inBuildConfigurationSettingList
   ??dependantTargetList:@stringlist inDependentTargetRefList
+  ??productCopyList:@2stringlist inProductCopyList
   !productFileRef:@string outProductFileRef
 :
   [!?self getReferenceKey ?ref:outProductFileRef] ;
@@ -95,10 +128,16 @@ modifier @XcodeProjectDescriptor addAppTarget
   [!?self getReferenceKey ??ref:buildConfigurationListRef] ;
   [!?self getReferenceKey ??ref:buildConfigurationRef] ;
   [!?self getReferenceKey ??ref:frameworkBuildRef] ;
+  [!?self getReferenceKey ??ref:resourceBuildRef] ;
   @2stringlist dependentTargets := {} ;
   for (ref) in inDependentTargetRefList do
     [!?self getReferenceKey ??ref:dependencyBuildRef] ;
     dependentTargets += !dependencyBuildRef !ref ;
+  end for ;
+  @stringlist resourceFileBuildRefs := inResourceFileBuildRefs ;
+  for (ref name) in inProductCopyList do
+    [!?self addBuildFile !fileRef:ref !fileName:name ??buildRef:@string buildRef] ;
+    resourceFileBuildRefs += !buildRef ;
   end for ;
   mAppTargetList +=
     !targetRef
@@ -113,6 +152,8 @@ modifier @XcodeProjectDescriptor addAppTarget
     !inFrameworksFileRefList
     !frameworkBuildRef
     !dependentTargets
+    !resourceBuildRef
+    !resourceFileBuildRefs
   ;
 end modifier ;
 
@@ -142,10 +183,12 @@ end modifier ;
 modifier @XcodeProjectDescriptor addGroupWithFiles
   ??groupName:@string inGroupName
   ??groupPath:@string inGroupPath
+  ??subGroups:@stringlist inSubgroupRefs
   ??fileNames:@stringset inFileNames
   ?!cppFileRefs:@stringlist ioCppFileBuildRefs
   ?!mFileRefs:@stringlist ioMFileBuildRefs
   ?!frameworkFileRefs:@stringlist ioFrameWorkFileBuildRefs
+  ?!resourceFileRefs:@stringlist ioResourceFileBuildRefs
   !groupRef:@string outGroupRef
 :
   if mDefaultConfigurationRef == "" then
@@ -159,7 +202,7 @@ modifier @XcodeProjectDescriptor addGroupWithFiles
   end if ;
   [!?self getReferenceKey ?ref:outGroupRef] ;
 #---
-  @stringlist childrenRefs := {} ;
+  @stringlist childrenRefs := inSubgroupRefs ;
   for (f) in inFileNames do
     if [f pathExtension] == "cpp" then
       [!?self addCppFile !fileName:f ??fileRef:@string cppFileRef] ;
@@ -179,6 +222,19 @@ modifier @XcodeProjectDescriptor addGroupWithFiles
       [!?self addBuildFile !fileRef:framework_FileRef !fileName:f ??buildRef:@string buildRef] ;
       childrenRefs += !framework_FileRef ;
       ioFrameWorkFileBuildRefs += !buildRef ;
+    elsif [f pathExtension] == "plist" then
+      [!?self addInfoPlistFile !fileName:f ??fileRef:@string resource_FileRef] ;
+      childrenRefs += !resource_FileRef ;
+    elsif [f pathExtension] == "xib" then
+      [!?self addXIBFile !fileName:f ??fileRef:@string resource_FileRef] ;
+      childrenRefs += !resource_FileRef ;
+      [!?self addBuildFile !fileRef:resource_FileRef !fileName:f ??buildRef:@string buildRef] ;
+      ioResourceFileBuildRefs += !buildRef ;
+    elsif [f pathExtension] == "tiff" then
+      [!?self addTIFF_file !fileName:f ??fileRef:@string resource_FileRef] ;
+      childrenRefs += !resource_FileRef ;
+      [!?self addBuildFile !fileRef:resource_FileRef !fileName:f ??buildRef:@string buildRef] ;
+      ioResourceFileBuildRefs += !buildRef ;
     else
       error [@location nowhere] : "unhandled extension for file '" + f + "'" ;
     end if ;
@@ -240,6 +296,8 @@ list @XCodeAppTargetList {
   @stringlist mFrameworksFileRefList ;
   @string mFrameworkBuildPhaseRef ;
   @2stringlist mDependentTargets ;
+  @string mResourceBuildRef ;
+  @stringlist mResourceFileBuildRefs ;
 }
 
 #---------------------------------------------------------------------------*
@@ -282,6 +340,10 @@ struct @XcodeProjectDescriptor {
   local @string mDefaultConfigurationRef ;
   local @stringlist mDefaultConfigurationSettingList ;
   local @string mProjectBuildConfigurationRef ;
+#--- Resource files
+  local @2stringlist mInfoPlistFileList ;
+  local @2stringlist mXIB_fileList ;
+  local @2stringlist mTIFF_fileList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -300,6 +362,9 @@ local filewrapper xcodeProjectGenerationFilewrapper in "../generation_templates/
     ?@2stringlist M_FILE_LIST
     ?@2stringlist FRAMEWORK_FILE_LIST
     ?@2stringlist HEADER_FILE_LIST
+    ?@2stringlist PLIST_FILE_LIST
+    ?@2stringlist TIFF_FILE_LIST
+    ?@2stringlist XIB_FILE_LIST
     ?@BuildFileList BUILD_FILE_LIST
     ?@string DEFAULT_CONFIGURATION_REF
     ?@stringlist DEFAULT_CONFIGURATION_SETTING_LIST
@@ -324,6 +389,9 @@ method @XcodeProjectDescriptor generateAtPath
     !m_M_FileList
     !mFrameworkFileList
     !mHeaderFileList
+    !mInfoPlistFileList
+    !mTIFF_fileList
+    !mXIB_fileList
     !mBuildFileList
     !mDefaultConfigurationRef
     !mDefaultConfigurationSettingList

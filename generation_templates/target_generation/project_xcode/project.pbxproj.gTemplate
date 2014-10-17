@@ -22,7 +22,7 @@ for () in CPP_FILE_LIST do
 %    isa = PBXFileReference;\n%
 %    fileEncoding = 4;\n%
 %    lastKnownFileType = sourcecode.cpp.cpp;\n%
-%    name = %![mValue1 utf8Representation]%;\n%
+%    name = %![[mValue1 lastPathComponent] utf8Representation]%;\n%
 %    path = %![mValue1 utf8Representation]%;\n%
 %    sourceTree = "<group>";\n%
 %  };\n\n%
@@ -32,7 +32,7 @@ for () in M_FILE_LIST do
 %    isa = PBXFileReference;\n%
 %    fileEncoding = 4;\n%
 %    lastKnownFileType = sourcecode.c.obj;\n%
-%    name = %![mValue1 utf8Representation]%;\n%
+%    name = %![[mValue1 lastPathComponent] utf8Representation]%;\n%
 %    path = %![mValue1 utf8Representation]%;\n%
 %    sourceTree = "<group>";\n%
 %  };\n\n%
@@ -42,7 +42,7 @@ for () in HEADER_FILE_LIST do
 %    isa = PBXFileReference;\n%
 %    fileEncoding = 4;\n%
 %    lastKnownFileType = sourcecode.c.h;\n%
-%    name = %![mValue1 utf8Representation]%;\n%
+%    name = %![[mValue1 lastPathComponent] utf8Representation]%;\n%
 %    path = %![mValue1 utf8Representation]%;\n%
 %    sourceTree = "<group>";\n%
 %  };\n\n%
@@ -51,7 +51,7 @@ for () in FRAMEWORK_FILE_LIST do
 %  %!mValue0% /* %!mValue1% */ = {\n%
 %    isa = PBXFileReference;\n%
 %    lastKnownFileType = wrapper.framework;\n%
-%    name = %![mValue1 utf8Representation]%;\n%
+%    name = %![[mValue1 lastPathComponent] utf8Representation]%;\n%
 %    path = %![mValue1 utf8Representation]%;\n%
 %    sourceTree = "<group>";\n%
 %  };\n\n%
@@ -72,6 +72,35 @@ for () in APP_TARGET_LIST do
 %    includeInIndex = 0;\n%
 %    path = %![mProductFileName utf8Representation]%;\n%
 %    sourceTree = BUILT_PRODUCTS_DIR;\n%
+%  };\n\n%
+end
+for () in PLIST_FILE_LIST do
+%  %!mValue0% = {\n%
+%    isa = PBXFileReference;\n%
+%    fileEncoding = 4;\n%
+%    lastKnownFileType = text.plist;\n%
+%    name = %![[mValue1 lastPathComponent] utf8Representation]%;\n%
+%    path = %![mValue1 utf8Representation]%;\n%
+%    sourceTree = "<group>";\n%
+%  };\n\n%
+end
+for () in XIB_FILE_LIST do
+%  %!mValue0% = {\n%
+%    isa = PBXFileReference;\n%
+%    fileEncoding = 4;\n%
+%    lastKnownFileType = wrapper.xib;\n%
+%    name = %![[mValue1 lastPathComponent] utf8Representation]%;\n%
+%    path = %![mValue1 utf8Representation]%;\n%
+%    sourceTree = "<group>";\n%
+%  };\n\n%
+end
+for () in TIFF_FILE_LIST do
+%  %!mValue0% = {\n%
+%    isa = PBXFileReference;\n%
+%    lastKnownFileType = image.tiff;\n%
+%    name = %![[mValue1 lastPathComponent] utf8Representation]%;\n%
+%    path = %![mValue1 utf8Representation]%;\n%
+%    sourceTree = "<group>";\n%
 %  };\n\n%
 end
 %  /*------------------------------------------------------------------ PBXFrameworksBuildPhase */
@@ -140,25 +169,26 @@ for () in TOOL_TARGET_LIST do
 end
 for () in APP_TARGET_LIST do
 %  %!mTargetRef% /* %!mTargetName% */ = {
-   isa = PBXNativeTarget;
-   buildConfigurationList = %!mBuildConfigurationListRef% ;
-   buildPhases = (
-    %!mBuildPhaseRef% , /* Sources */
-    %!mFrameworkBuildPhaseRef% , /* Frameworks */
-   );
-   buildRules = (
-   );
-   dependencies = (
+    isa = PBXNativeTarget;
+    buildConfigurationList = %!mBuildConfigurationListRef% ;
+    buildPhases = (
+      %!mResourceBuildRef% , /* Resources */
+      %!mFrameworkBuildPhaseRef% , /* Frameworks */
+      %!mBuildPhaseRef% , /* Sources */
+    );
+    buildRules = (
+    );
+    dependencies = (
 %
 for () in mDependentTargets do
-  %      %!mValue0%,\n%
+  %      %!mValue0% ,\n%
 end
-%   );
-   name = %![mTargetName utf8Representation]%;
-   productInstallPath = "$(HOME)/bin";
-   productName = %![mTargetName utf8Representation]%;
-   productReference = %!mProductFileReference% ;
-   productType = "com.apple.product-type.application";
+%    );
+    name = %![mTargetName utf8Representation]%;
+    productInstallPath = "$(HOME)/bin";
+    productName = %![mTargetName utf8Representation]%;
+    productReference = %!mProductFileReference% ;
+    productType = "com.apple.product-type.application";
   };
 
 %
@@ -185,7 +215,20 @@ end
 
   /*------------------------------------------------------------------ PBXResourcesBuildPhase */
 
-  /*------------------------------------------------------------------ PBXSourcesBuildPhase */
+%
+for () in APP_TARGET_LIST do
+%  %!mResourceBuildRef% /* Resources */ = {\n%
+%    isa = PBXResourcesBuildPhase;\n%
+%    buildActionMask = 2147483647;\n%
+%    files = (\n%
+for () in mResourceFileBuildRefs do
+%      %!mValue%,\n%
+end
+%    );\n%
+%    runOnlyForDeploymentPostprocessing = 0;\n%
+%  };\n\n%
+end
+%  /*------------------------------------------------------------------ PBXSourcesBuildPhase */
 %
 for () in TOOL_TARGET_LIST do
 %    %!mBuildPhaseRef% /* Sources */ = {
@@ -262,6 +305,7 @@ for () in APP_TARGET_LIST do
 for () in mBuildConfigurationSettingList do
 %      %!mValue% ;\n%
 end
+%      INFOPLIST_FILE = "Info.plist";\n%
 %      PRODUCT_NAME = %![mProductFileName utf8Representation]% ;\n%
 %    };\n%
 %    name = Default;\n%

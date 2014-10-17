@@ -926,10 +926,15 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
                                                                                const GALGAS_string & in_MAIN_5F_GROUP_5F_REF,
                                                                                const GALGAS_XCodeGroupList & in_GROUPS,
                                                                                const GALGAS_stringlist & in_MAIN_5F_GROUP_5F_CHILDREN_5F_REFS,
-                                                                               const GALGAS_XCodeMachOTargetList & in_MACH_5F_O_5F_TARGET_5F_LIST,
+                                                                               const GALGAS_XCodeToolTargetList & in_TOOL_5F_TARGET_5F_LIST,
+                                                                               const GALGAS_XCodeAppTargetList & in_APP_5F_TARGET_5F_LIST,
                                                                                const GALGAS__32_stringlist & in_CPP_5F_FILE_5F_LIST,
                                                                                const GALGAS__32_stringlist & in_M_5F_FILE_5F_LIST,
+                                                                               const GALGAS__32_stringlist & in_FRAMEWORK_5F_FILE_5F_LIST,
                                                                                const GALGAS__32_stringlist & in_HEADER_5F_FILE_5F_LIST,
+                                                                               const GALGAS__32_stringlist & in_PLIST_5F_FILE_5F_LIST,
+                                                                               const GALGAS__32_stringlist & in_TIFF_5F_FILE_5F_LIST,
+                                                                               const GALGAS__32_stringlist & in_XIB_5F_FILE_5F_LIST,
                                                                                const GALGAS_BuildFileList & in_BUILD_5F_FILE_5F_LIST,
                                                                                const GALGAS_string & in_DEFAULT_5F_CONFIGURATION_5F_REF,
                                                                                const GALGAS_stringlist & in_DEFAULT_5F_CONFIGURATION_5F_SETTING_5F_LIST,
@@ -944,160 +949,300 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
     "  objectVersion = 42;\n"
     "  objects = {\n"
     "\n"
-    "  /*------------------------------------------------------------------------------------------------------------------------- PBXBuildFile */\n" ;
-  GALGAS_uint index_265_ (0) ;
+    "  /*------------------------------------------------------------------ PBXBuildFile */\n" ;
+  GALGAS_uint index_210_ (0) ;
   if (in_BUILD_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator_BuildFileList enumerator_265 (in_BUILD_5F_FILE_5F_LIST, kEnumeration_up) ;
-    while (enumerator_265.hasCurrentObject ()) {
+    cEnumerator_BuildFileList enumerator_210 (in_BUILD_5F_FILE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_210.hasCurrentObject ()) {
       result << "  " ;
-      result << enumerator_265.current_mBuildReference (HERE).stringValue () ;
+      result << enumerator_210.current_mBuildReference (HERE).stringValue () ;
       result << " /* " ;
-      result << enumerator_265.current_mFileName (HERE).stringValue () ;
+      result << enumerator_210.current_mFileName (HERE).stringValue () ;
       result << " */ = {\n"
         "    isa = PBXBuildFile;\n"
         "    fileRef = " ;
-      result << enumerator_265.current_mFileReference (HERE).stringValue () ;
+      result << enumerator_210.current_mFileReference (HERE).stringValue () ;
       result << " ;\n"
         "    settings = {ATTRIBUTES = (); };\n"
         "  };\n"
         "\n" ;
-      index_265_.increment () ;
-      enumerator_265.gotoNextObject () ;
+      index_210_.increment () ;
+      enumerator_210.gotoNextObject () ;
     }
   }
-  result << "  /*------------------------------------------------------------------------------------------------------------------------- PBXFileReference */\n" ;
-  GALGAS_uint index_610_ (0) ;
+  result << "  /*------------------------------------------------------------------ PBXFileReference */\n" ;
+  GALGAS_uint index_500_ (0) ;
   if (in_CPP_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator__32_stringlist enumerator_610 (in_CPP_5F_FILE_5F_LIST, kEnumeration_up) ;
-    while (enumerator_610.hasCurrentObject ()) {
+    cEnumerator__32_stringlist enumerator_500 (in_CPP_5F_FILE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_500.hasCurrentObject ()) {
       result << "  " ;
-      result << enumerator_610.current_mValue_30_ (HERE).stringValue () ;
+      result << enumerator_500.current_mValue_30_ (HERE).stringValue () ;
       result << " /* " ;
-      result << enumerator_610.current_mValue_31_ (HERE).stringValue () ;
+      result << enumerator_500.current_mValue_31_ (HERE).stringValue () ;
       result << " */ = {\n"
         "    isa = PBXFileReference;\n"
         "    fileEncoding = 4;\n"
         "    lastKnownFileType = sourcecode.cpp.cpp;\n"
         "    name = " ;
-      result << enumerator_610.current_mValue_31_ (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.gTemplate", 25)).stringValue () ;
+      result << enumerator_500.current_mValue_31_ (HERE).reader_lastPathComponent (SOURCE_FILE ("project.pbxproj.gTemplate", 25)).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.gTemplate", 25)).stringValue () ;
       result << ";\n"
         "    path = " ;
-      result << enumerator_610.current_mValue_31_ (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.gTemplate", 26)).stringValue () ;
+      result << enumerator_500.current_mValue_31_ (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.gTemplate", 26)).stringValue () ;
       result << ";\n"
         "    sourceTree = \"<group>\";\n"
         "  };\n"
         "\n" ;
-      index_610_.increment () ;
-      enumerator_610.gotoNextObject () ;
+      index_500_.increment () ;
+      enumerator_500.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_922_ (0) ;
+  GALGAS_uint index_832_ (0) ;
   if (in_M_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator__32_stringlist enumerator_922 (in_M_5F_FILE_5F_LIST, kEnumeration_up) ;
-    while (enumerator_922.hasCurrentObject ()) {
+    cEnumerator__32_stringlist enumerator_832 (in_M_5F_FILE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_832.hasCurrentObject ()) {
       result << "  " ;
-      result << enumerator_922.current_mValue_30_ (HERE).stringValue () ;
+      result << enumerator_832.current_mValue_30_ (HERE).stringValue () ;
       result << " /* " ;
-      result << enumerator_922.current_mValue_31_ (HERE).stringValue () ;
+      result << enumerator_832.current_mValue_31_ (HERE).stringValue () ;
       result << " */ = {\n"
         "    isa = PBXFileReference;\n"
         "    fileEncoding = 4;\n"
         "    lastKnownFileType = sourcecode.c.obj;\n"
         "    name = " ;
-      result << enumerator_922.current_mValue_31_ (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.gTemplate", 35)).stringValue () ;
+      result << enumerator_832.current_mValue_31_ (HERE).reader_lastPathComponent (SOURCE_FILE ("project.pbxproj.gTemplate", 35)).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.gTemplate", 35)).stringValue () ;
       result << ";\n"
         "    path = " ;
-      result << enumerator_922.current_mValue_31_ (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.gTemplate", 36)).stringValue () ;
+      result << enumerator_832.current_mValue_31_ (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.gTemplate", 36)).stringValue () ;
       result << ";\n"
         "    sourceTree = \"<group>\";\n"
         "  };\n"
         "\n" ;
-      index_922_.increment () ;
-      enumerator_922.gotoNextObject () ;
+      index_832_.increment () ;
+      enumerator_832.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_1237_ (0) ;
+  GALGAS_uint index_1167_ (0) ;
   if (in_HEADER_5F_FILE_5F_LIST.isValid ()) {
-    cEnumerator__32_stringlist enumerator_1237 (in_HEADER_5F_FILE_5F_LIST, kEnumeration_up) ;
-    while (enumerator_1237.hasCurrentObject ()) {
+    cEnumerator__32_stringlist enumerator_1167 (in_HEADER_5F_FILE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_1167.hasCurrentObject ()) {
       result << "  " ;
-      result << enumerator_1237.current_mValue_30_ (HERE).stringValue () ;
+      result << enumerator_1167.current_mValue_30_ (HERE).stringValue () ;
       result << " /* " ;
-      result << enumerator_1237.current_mValue_31_ (HERE).stringValue () ;
+      result << enumerator_1167.current_mValue_31_ (HERE).stringValue () ;
       result << " */ = {\n"
         "    isa = PBXFileReference;\n"
         "    fileEncoding = 4;\n"
         "    lastKnownFileType = sourcecode.c.h;\n"
         "    name = " ;
-      result << enumerator_1237.current_mValue_31_ (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.gTemplate", 45)).stringValue () ;
+      result << enumerator_1167.current_mValue_31_ (HERE).reader_lastPathComponent (SOURCE_FILE ("project.pbxproj.gTemplate", 45)).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.gTemplate", 45)).stringValue () ;
       result << ";\n"
         "    path = " ;
-      result << enumerator_1237.current_mValue_31_ (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.gTemplate", 46)).stringValue () ;
+      result << enumerator_1167.current_mValue_31_ (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.gTemplate", 46)).stringValue () ;
       result << ";\n"
         "    sourceTree = \"<group>\";\n"
         "  };\n"
         "\n" ;
-      index_1237_.increment () ;
-      enumerator_1237.gotoNextObject () ;
+      index_1167_.increment () ;
+      enumerator_1167.gotoNextObject () ;
     }
   }
-  GALGAS_uint index_1552_ (0) ;
-  if (in_MACH_5F_O_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeMachOTargetList enumerator_1552 (in_MACH_5F_O_5F_TARGET_5F_LIST, kEnumeration_up) ;
-    while (enumerator_1552.hasCurrentObject ()) {
+  GALGAS_uint index_1503_ (0) ;
+  if (in_FRAMEWORK_5F_FILE_5F_LIST.isValid ()) {
+    cEnumerator__32_stringlist enumerator_1503 (in_FRAMEWORK_5F_FILE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_1503.hasCurrentObject ()) {
       result << "  " ;
-      result << enumerator_1552.current_mProductFileReference (HERE).stringValue () ;
+      result << enumerator_1503.current_mValue_30_ (HERE).stringValue () ;
+      result << " /* " ;
+      result << enumerator_1503.current_mValue_31_ (HERE).stringValue () ;
+      result << " */ = {\n"
+        "    isa = PBXFileReference;\n"
+        "    lastKnownFileType = wrapper.framework;\n"
+        "    name = " ;
+      result << enumerator_1503.current_mValue_31_ (HERE).reader_lastPathComponent (SOURCE_FILE ("project.pbxproj.gTemplate", 54)).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.gTemplate", 54)).stringValue () ;
+      result << ";\n"
+        "    path = " ;
+      result << enumerator_1503.current_mValue_31_ (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.gTemplate", 55)).stringValue () ;
+      result << ";\n"
+        "    sourceTree = \"<group>\";\n"
+        "  };\n"
+        "\n" ;
+      index_1503_.increment () ;
+      enumerator_1503.gotoNextObject () ;
+    }
+  }
+  GALGAS_uint index_1813_ (0) ;
+  if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
+    cEnumerator_XCodeToolTargetList enumerator_1813 (in_TOOL_5F_TARGET_5F_LIST, kEnumeration_up) ;
+    while (enumerator_1813.hasCurrentObject ()) {
+      result << "  " ;
+      result << enumerator_1813.current_mProductFileReference (HERE).stringValue () ;
       result << " = {\n"
         "    isa = PBXFileReference;\n"
         "    explicitFileType = \"compiled.mach-o.executable\";\n"
         "    includeInIndex = 0;\n"
         "    path = " ;
-      result << enumerator_1552.current_mProductFileName (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.gTemplate", 55)).stringValue () ;
+      result << enumerator_1813.current_mProductFileName (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.gTemplate", 64)).stringValue () ;
       result << ";\n"
         "    sourceTree = BUILT_PRODUCTS_DIR;\n"
         "  };\n"
         "\n" ;
-      index_1552_.increment () ;
-      enumerator_1552.gotoNextObject () ;
+      index_1813_.increment () ;
+      enumerator_1813.gotoNextObject () ;
     }
   }
-  result << "  /*------------------------------------------------------------------------------------------------------------------------- PBXFrameworksBuildPhase *"
-    "/\n"
-    "\n"
-    "  /*------------------------------------------------------------------------------------------------------------------------- PBXGroup section */\n" ;
-  GALGAS_uint index_2140_ (0) ;
-  if (in_GROUPS.isValid ()) {
-    cEnumerator_XCodeGroupList enumerator_2140 (in_GROUPS, kEnumeration_up) ;
-    while (enumerator_2140.hasCurrentObject ()) {
+  GALGAS_uint index_2107_ (0) ;
+  if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
+    cEnumerator_XCodeAppTargetList enumerator_2107 (in_APP_5F_TARGET_5F_LIST, kEnumeration_up) ;
+    while (enumerator_2107.hasCurrentObject ()) {
       result << "  " ;
-      result << enumerator_2140.current_mGroupReference (HERE).stringValue () ;
+      result << enumerator_2107.current_mProductFileReference (HERE).stringValue () ;
+      result << " = {\n"
+        "    isa = PBXFileReference;\n"
+        "    explicitFileType = \"compiled.mach-o.executable\";\n"
+        "    includeInIndex = 0;\n"
+        "    path = " ;
+      result << enumerator_2107.current_mProductFileName (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.gTemplate", 73)).stringValue () ;
+      result << ";\n"
+        "    sourceTree = BUILT_PRODUCTS_DIR;\n"
+        "  };\n"
+        "\n" ;
+      index_2107_.increment () ;
+      enumerator_2107.gotoNextObject () ;
+    }
+  }
+  GALGAS_uint index_2401_ (0) ;
+  if (in_PLIST_5F_FILE_5F_LIST.isValid ()) {
+    cEnumerator__32_stringlist enumerator_2401 (in_PLIST_5F_FILE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_2401.hasCurrentObject ()) {
+      result << "  " ;
+      result << enumerator_2401.current_mValue_30_ (HERE).stringValue () ;
+      result << " = {\n"
+        "    isa = PBXFileReference;\n"
+        "    fileEncoding = 4;\n"
+        "    lastKnownFileType = text.plist;\n"
+        "    name = " ;
+      result << enumerator_2401.current_mValue_31_ (HERE).reader_lastPathComponent (SOURCE_FILE ("project.pbxproj.gTemplate", 82)).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.gTemplate", 82)).stringValue () ;
+      result << ";\n"
+        "    path = " ;
+      result << enumerator_2401.current_mValue_31_ (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.gTemplate", 83)).stringValue () ;
+      result << ";\n"
+        "    sourceTree = \"<group>\";\n"
+        "  };\n"
+        "\n" ;
+      index_2401_.increment () ;
+      enumerator_2401.gotoNextObject () ;
+    }
+  }
+  GALGAS_uint index_2710_ (0) ;
+  if (in_XIB_5F_FILE_5F_LIST.isValid ()) {
+    cEnumerator__32_stringlist enumerator_2710 (in_XIB_5F_FILE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_2710.hasCurrentObject ()) {
+      result << "  " ;
+      result << enumerator_2710.current_mValue_30_ (HERE).stringValue () ;
+      result << " = {\n"
+        "    isa = PBXFileReference;\n"
+        "    fileEncoding = 4;\n"
+        "    lastKnownFileType = wrapper.xib;\n"
+        "    name = " ;
+      result << enumerator_2710.current_mValue_31_ (HERE).reader_lastPathComponent (SOURCE_FILE ("project.pbxproj.gTemplate", 92)).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.gTemplate", 92)).stringValue () ;
+      result << ";\n"
+        "    path = " ;
+      result << enumerator_2710.current_mValue_31_ (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.gTemplate", 93)).stringValue () ;
+      result << ";\n"
+        "    sourceTree = \"<group>\";\n"
+        "  };\n"
+        "\n" ;
+      index_2710_.increment () ;
+      enumerator_2710.gotoNextObject () ;
+    }
+  }
+  GALGAS_uint index_3021_ (0) ;
+  if (in_TIFF_5F_FILE_5F_LIST.isValid ()) {
+    cEnumerator__32_stringlist enumerator_3021 (in_TIFF_5F_FILE_5F_LIST, kEnumeration_up) ;
+    while (enumerator_3021.hasCurrentObject ()) {
+      result << "  " ;
+      result << enumerator_3021.current_mValue_30_ (HERE).stringValue () ;
+      result << " = {\n"
+        "    isa = PBXFileReference;\n"
+        "    lastKnownFileType = image.tiff;\n"
+        "    name = " ;
+      result << enumerator_3021.current_mValue_31_ (HERE).reader_lastPathComponent (SOURCE_FILE ("project.pbxproj.gTemplate", 101)).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.gTemplate", 101)).stringValue () ;
+      result << ";\n"
+        "    path = " ;
+      result << enumerator_3021.current_mValue_31_ (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.gTemplate", 102)).stringValue () ;
+      result << ";\n"
+        "    sourceTree = \"<group>\";\n"
+        "  };\n"
+        "\n" ;
+      index_3021_.increment () ;
+      enumerator_3021.gotoNextObject () ;
+    }
+  }
+  result << "  /*------------------------------------------------------------------ PBXFrameworksBuildPhase */\n"
+    "\n" ;
+  GALGAS_uint index_3408_ (0) ;
+  if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
+    cEnumerator_XCodeAppTargetList enumerator_3408 (in_APP_5F_TARGET_5F_LIST, kEnumeration_up) ;
+    while (enumerator_3408.hasCurrentObject ()) {
+      result << "  " ;
+      result << enumerator_3408.current_mFrameworkBuildPhaseRef (HERE).stringValue () ;
+      result << " = {\n"
+        "    isa = PBXFrameworksBuildPhase;\n"
+        "    buildActionMask = 2147483647;\n"
+        "    files = (\n" ;
+      GALGAS_uint index_3576_ (0) ;
+      if (enumerator_3408.current_mFrameworksFileRefList (HERE).isValid ()) {
+        cEnumerator_stringlist enumerator_3576 (enumerator_3408.current_mFrameworksFileRefList (HERE), kEnumeration_up) ;
+        while (enumerator_3576.hasCurrentObject ()) {
+          result << "      " ;
+          result << enumerator_3576.current_mValue (HERE).stringValue () ;
+          result << ",\n" ;
+          index_3576_.increment () ;
+          enumerator_3576.gotoNextObject () ;
+        }
+      }
+      result << "    );\n"
+        "    runOnlyForDeploymentPostprocessing = 0;\n"
+        "  };\n"
+        "\n" ;
+      index_3408_.increment () ;
+      enumerator_3408.gotoNextObject () ;
+    }
+  }
+  result << "  /*------------------------------------------------------------------ PBXGroup section */\n" ;
+  GALGAS_uint index_3789_ (0) ;
+  if (in_GROUPS.isValid ()) {
+    cEnumerator_XCodeGroupList enumerator_3789 (in_GROUPS, kEnumeration_up) ;
+    while (enumerator_3789.hasCurrentObject ()) {
+      result << "  " ;
+      result << enumerator_3789.current_mGroupReference (HERE).stringValue () ;
       result << " /* " ;
-      result << enumerator_2140.current_mGroupName (HERE).stringValue () ;
+      result << enumerator_3789.current_mGroupName (HERE).stringValue () ;
       result << " */ = {\n"
         "    isa = PBXGroup;\n"
         "    children = (\n" ;
-      GALGAS_uint index_2261_ (0) ;
-      if (enumerator_2140.current_mChildrenRefs (HERE).isValid ()) {
-        cEnumerator_stringlist enumerator_2261 (enumerator_2140.current_mChildrenRefs (HERE), kEnumeration_up) ;
-        while (enumerator_2261.hasCurrentObject ()) {
+      GALGAS_uint index_3910_ (0) ;
+      if (enumerator_3789.current_mChildrenRefs (HERE).isValid ()) {
+        cEnumerator_stringlist enumerator_3910 (enumerator_3789.current_mChildrenRefs (HERE), kEnumeration_up) ;
+        while (enumerator_3910.hasCurrentObject ()) {
           result << "      " ;
-          result << enumerator_2261.current_mValue (HERE).stringValue () ;
+          result << enumerator_3910.current_mValue (HERE).stringValue () ;
           result << ", \n" ;
-          index_2261_.increment () ;
-          enumerator_2261.gotoNextObject () ;
+          index_3910_.increment () ;
+          enumerator_3910.gotoNextObject () ;
         }
       }
       result << "    );\n"
         "    name = " ;
-      result << enumerator_2140.current_mGroupName (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.gTemplate", 71)).stringValue () ;
+      result << enumerator_3789.current_mGroupName (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.gTemplate", 131)).stringValue () ;
       result << ";\n"
         "    path = " ;
-      result << enumerator_2140.current_mGroupPath (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.gTemplate", 72)).stringValue () ;
+      result << enumerator_3789.current_mGroupPath (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.gTemplate", 132)).stringValue () ;
       result << ";\n"
         "    sourceTree = \"<group>\";\n"
         "  };\n" ;
-      index_2140_.increment () ;
-      enumerator_2140.gotoNextObject () ;
+      index_3789_.increment () ;
+      enumerator_3789.gotoNextObject () ;
     }
   }
   result << "\n"
@@ -1106,38 +1251,38 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
   result << " /* Main Group */ = {\n"
     "    isa = PBXGroup;\n"
     "    children = (\n" ;
-  GALGAS_uint index_2567_ (0) ;
+  GALGAS_uint index_4216_ (0) ;
   if (in_MAIN_5F_GROUP_5F_CHILDREN_5F_REFS.isValid ()) {
-    cEnumerator_stringlist enumerator_2567 (in_MAIN_5F_GROUP_5F_CHILDREN_5F_REFS, kEnumeration_up) ;
-    while (enumerator_2567.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_4216 (in_MAIN_5F_GROUP_5F_CHILDREN_5F_REFS, kEnumeration_up) ;
+    while (enumerator_4216.hasCurrentObject ()) {
       result << "      " ;
-      result << enumerator_2567.current_mValue (HERE).stringValue () ;
+      result << enumerator_4216.current_mValue (HERE).stringValue () ;
       result << ",\n" ;
-      index_2567_.increment () ;
-      enumerator_2567.gotoNextObject () ;
+      index_4216_.increment () ;
+      enumerator_4216.gotoNextObject () ;
     }
   }
   result << "    );\n"
     "    sourceTree = \"<group>\";\n"
     "  };\n"
     "\n"
-    "  /*------------------------------------------------------------------------------------------------------------------------- PBXNativeTarget */\n" ;
-  GALGAS_uint index_2815_ (0) ;
-  if (in_MACH_5F_O_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeMachOTargetList enumerator_2815 (in_MACH_5F_O_5F_TARGET_5F_LIST, kEnumeration_up) ;
-    while (enumerator_2815.hasCurrentObject ()) {
+    "  /*------------------------------------------------------------------ PBXNativeTarget */\n" ;
+  GALGAS_uint index_4407_ (0) ;
+  if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
+    cEnumerator_XCodeToolTargetList enumerator_4407 (in_TOOL_5F_TARGET_5F_LIST, kEnumeration_up) ;
+    while (enumerator_4407.hasCurrentObject ()) {
       result << "  " ;
-      result << enumerator_2815.current_mTargetRef (HERE).stringValue () ;
+      result << enumerator_4407.current_mTargetRef (HERE).stringValue () ;
       result << " /* " ;
-      result << enumerator_2815.current_mTargetName (HERE).stringValue () ;
+      result << enumerator_4407.current_mTargetName (HERE).stringValue () ;
       result << " */ = {\n"
         "   isa = PBXNativeTarget;\n"
         "   buildConfigurationList = " ;
-      result << enumerator_2815.current_mBuildConfigurationListRef (HERE).stringValue () ;
+      result << enumerator_4407.current_mBuildConfigurationListRef (HERE).stringValue () ;
       result << " ;\n"
         "   buildPhases = (\n"
         "    " ;
-      result << enumerator_2815.current_mBuildPhaseRef (HERE).stringValue () ;
+      result << enumerator_4407.current_mBuildPhaseRef (HERE).stringValue () ;
       result << " ,\n"
         "   );\n"
         "   buildRules = (\n"
@@ -1145,21 +1290,79 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
         "   dependencies = (\n"
         "   );\n"
         "   name = " ;
-      result << enumerator_2815.current_mTargetName (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.gTemplate", 101)).stringValue () ;
+      result << enumerator_4407.current_mTargetName (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.gTemplate", 161)).stringValue () ;
       result << ";\n"
         "   productInstallPath = \"$(HOME)/bin\";\n"
-        "   productName = \"essai\";\n"
+        "   productName = " ;
+      result << enumerator_4407.current_mTargetName (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.gTemplate", 163)).stringValue () ;
+      result << ";\n"
         "   productReference = " ;
-      result << enumerator_2815.current_mProductFileReference (HERE).stringValue () ;
+      result << enumerator_4407.current_mProductFileReference (HERE).stringValue () ;
       result << " ;\n"
         "   productType = \"com.apple.product-type.tool\";\n"
-        "  };\n" ;
-      index_2815_.increment () ;
-      enumerator_2815.gotoNextObject () ;
+        "  };\n"
+        " \n" ;
+      index_4407_.increment () ;
+      enumerator_4407.gotoNextObject () ;
     }
   }
-  result << "\n"
-    "  /*------------------------------------------------------------------------------------------------------------------------- PBXProject */\n"
+  GALGAS_uint index_4913_ (0) ;
+  if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
+    cEnumerator_XCodeAppTargetList enumerator_4913 (in_APP_5F_TARGET_5F_LIST, kEnumeration_up) ;
+    while (enumerator_4913.hasCurrentObject ()) {
+      result << "  " ;
+      result << enumerator_4913.current_mTargetRef (HERE).stringValue () ;
+      result << " /* " ;
+      result << enumerator_4913.current_mTargetName (HERE).stringValue () ;
+      result << " */ = {\n"
+        "    isa = PBXNativeTarget;\n"
+        "    buildConfigurationList = " ;
+      result << enumerator_4913.current_mBuildConfigurationListRef (HERE).stringValue () ;
+      result << " ;\n"
+        "    buildPhases = (\n"
+        "      " ;
+      result << enumerator_4913.current_mResourceBuildRef (HERE).stringValue () ;
+      result << " , /* Resources */\n"
+        "      " ;
+      result << enumerator_4913.current_mFrameworkBuildPhaseRef (HERE).stringValue () ;
+      result << " , /* Frameworks */\n"
+        "      " ;
+      result << enumerator_4913.current_mBuildPhaseRef (HERE).stringValue () ;
+      result << " , /* Sources */\n"
+        "    );\n"
+        "    buildRules = (\n"
+        "    );\n"
+        "    dependencies = (\n" ;
+      GALGAS_uint index_5287_ (0) ;
+      if (enumerator_4913.current_mDependentTargets (HERE).isValid ()) {
+        cEnumerator__32_stringlist enumerator_5287 (enumerator_4913.current_mDependentTargets (HERE), kEnumeration_up) ;
+        while (enumerator_5287.hasCurrentObject ()) {
+          result << "      " ;
+          result << enumerator_5287.current_mValue_30_ (HERE).stringValue () ;
+          result << " ,\n" ;
+          index_5287_.increment () ;
+          enumerator_5287.gotoNextObject () ;
+        }
+      }
+      result << "    );\n"
+        "    name = " ;
+      result << enumerator_4913.current_mTargetName (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.gTemplate", 187)).stringValue () ;
+      result << ";\n"
+        "    productInstallPath = \"$(HOME)/bin\";\n"
+        "    productName = " ;
+      result << enumerator_4913.current_mTargetName (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.gTemplate", 189)).stringValue () ;
+      result << ";\n"
+        "    productReference = " ;
+      result << enumerator_4913.current_mProductFileReference (HERE).stringValue () ;
+      result << " ;\n"
+        "    productType = \"com.apple.product-type.application\";\n"
+        "  };\n"
+        "\n" ;
+      index_4913_.increment () ;
+      enumerator_4913.gotoNextObject () ;
+    }
+  }
+  result << "  /*------------------------------------------------------------------ PBXProject */\n"
     "  " ;
   result << in_PROJECT_5F_REF.stringValue () ;
   result << " /* Project object */ = {\n"
@@ -1175,112 +1378,235 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
     "   projectDirPath = \"\";\n"
     "   projectRoot = \"\";\n"
     "   targets = (\n" ;
-  GALGAS_uint index_3783_ (0) ;
-  if (in_MACH_5F_O_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeMachOTargetList enumerator_3783 (in_MACH_5F_O_5F_TARGET_5F_LIST, kEnumeration_up) ;
-    while (enumerator_3783.hasCurrentObject ()) {
+  GALGAS_uint index_6048_ (0) ;
+  if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
+    cEnumerator_XCodeToolTargetList enumerator_6048 (in_TOOL_5F_TARGET_5F_LIST, kEnumeration_up) ;
+    while (enumerator_6048.hasCurrentObject ()) {
       result << "    " ;
-      result << enumerator_3783.current_mTargetRef (HERE).stringValue () ;
+      result << enumerator_6048.current_mTargetRef (HERE).stringValue () ;
       result << ", \n" ;
-      index_3783_.increment () ;
-      enumerator_3783.gotoNextObject () ;
+      index_6048_.increment () ;
+      enumerator_6048.gotoNextObject () ;
+    }
+  }
+  GALGAS_uint index_6105_ (0) ;
+  if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
+    cEnumerator_XCodeAppTargetList enumerator_6105 (in_APP_5F_TARGET_5F_LIST, kEnumeration_up) ;
+    while (enumerator_6105.hasCurrentObject ()) {
+      result << "    " ;
+      result << enumerator_6105.current_mTargetRef (HERE).stringValue () ;
+      result << ", \n" ;
+      index_6105_.increment () ;
+      enumerator_6105.gotoNextObject () ;
     }
   }
   result << "   );\n"
     "  };\n"
     "\n"
-    "  /*------------------------------------------------------------------------------------------------------------------------- PBXResourcesBuildPhase *"
-    "/\n"
-    "\n"
-    "  /*------------------------------------------------------------------------------------------------------------------------- PBXSourcesBuildPhase */\n" ;
-  GALGAS_uint index_4161_ (0) ;
-  if (in_MACH_5F_O_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeMachOTargetList enumerator_4161 (in_MACH_5F_O_5F_TARGET_5F_LIST, kEnumeration_up) ;
-    while (enumerator_4161.hasCurrentObject ()) {
+    "  /*------------------------------------------------------------------ PBXResourcesBuildPhase */\n"
+    "\n" ;
+  GALGAS_uint index_6275_ (0) ;
+  if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
+    cEnumerator_XCodeAppTargetList enumerator_6275 (in_APP_5F_TARGET_5F_LIST, kEnumeration_up) ;
+    while (enumerator_6275.hasCurrentObject ()) {
+      result << "  " ;
+      result << enumerator_6275.current_mResourceBuildRef (HERE).stringValue () ;
+      result << " /* Resources */ = {\n"
+        "    isa = PBXResourcesBuildPhase;\n"
+        "    buildActionMask = 2147483647;\n"
+        "    files = (\n" ;
+      GALGAS_uint index_6452_ (0) ;
+      if (enumerator_6275.current_mResourceFileBuildRefs (HERE).isValid ()) {
+        cEnumerator_stringlist enumerator_6452 (enumerator_6275.current_mResourceFileBuildRefs (HERE), kEnumeration_up) ;
+        while (enumerator_6452.hasCurrentObject ()) {
+          result << "      " ;
+          result << enumerator_6452.current_mValue (HERE).stringValue () ;
+          result << ",\n" ;
+          index_6452_.increment () ;
+          enumerator_6452.gotoNextObject () ;
+        }
+      }
+      result << "    );\n"
+        "    runOnlyForDeploymentPostprocessing = 0;\n"
+        "  };\n"
+        "\n" ;
+      index_6275_.increment () ;
+      enumerator_6275.gotoNextObject () ;
+    }
+  }
+  result << "  /*------------------------------------------------------------------ PBXSourcesBuildPhase */\n" ;
+  GALGAS_uint index_6679_ (0) ;
+  if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
+    cEnumerator_XCodeToolTargetList enumerator_6679 (in_TOOL_5F_TARGET_5F_LIST, kEnumeration_up) ;
+    while (enumerator_6679.hasCurrentObject ()) {
       result << "    " ;
-      result << enumerator_4161.current_mBuildPhaseRef (HERE).stringValue () ;
+      result << enumerator_6679.current_mBuildPhaseRef (HERE).stringValue () ;
       result << " /* Sources */ = {\n"
         "      isa = PBXSourcesBuildPhase;\n"
         "      buildActionMask = 2147483647;\n"
         "      files = (\n" ;
-      GALGAS_uint index_4322_ (0) ;
-      if (enumerator_4161.current_mBuildPhaseRefList (HERE).isValid ()) {
-        cEnumerator_stringlist enumerator_4322 (enumerator_4161.current_mBuildPhaseRefList (HERE), kEnumeration_up) ;
-        while (enumerator_4322.hasCurrentObject ()) {
+      GALGAS_uint index_6840_ (0) ;
+      if (enumerator_6679.current_mBuildPhaseRefList (HERE).isValid ()) {
+        cEnumerator_stringlist enumerator_6840 (enumerator_6679.current_mBuildPhaseRefList (HERE), kEnumeration_up) ;
+        while (enumerator_6840.hasCurrentObject ()) {
           result << "        " ;
-          result << enumerator_4322.current_mValue (HERE).stringValue () ;
+          result << enumerator_6840.current_mValue (HERE).stringValue () ;
           result << ",\n" ;
-          index_4322_.increment () ;
-          enumerator_4322.gotoNextObject () ;
+          index_6840_.increment () ;
+          enumerator_6840.gotoNextObject () ;
         }
       }
       result << "      );\n"
         "      runOnlyForDeploymentPostprocessing = 0;\n"
         "    };\n" ;
-      index_4161_.increment () ;
-      enumerator_4161.gotoNextObject () ;
+      index_6679_.increment () ;
+      enumerator_6679.gotoNextObject () ;
+    }
+  }
+  GALGAS_uint index_6964_ (0) ;
+  if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
+    cEnumerator_XCodeAppTargetList enumerator_6964 (in_APP_5F_TARGET_5F_LIST, kEnumeration_up) ;
+    while (enumerator_6964.hasCurrentObject ()) {
+      result << "    " ;
+      result << enumerator_6964.current_mBuildPhaseRef (HERE).stringValue () ;
+      result << " /* Sources */ = {\n"
+        "      isa = PBXSourcesBuildPhase;\n"
+        "      buildActionMask = 2147483647;\n"
+        "      files = (\n" ;
+      GALGAS_uint index_7125_ (0) ;
+      if (enumerator_6964.current_mBuildPhaseRefList (HERE).isValid ()) {
+        cEnumerator_stringlist enumerator_7125 (enumerator_6964.current_mBuildPhaseRefList (HERE), kEnumeration_up) ;
+        while (enumerator_7125.hasCurrentObject ()) {
+          result << "        " ;
+          result << enumerator_7125.current_mValue (HERE).stringValue () ;
+          result << ",\n" ;
+          index_7125_.increment () ;
+          enumerator_7125.gotoNextObject () ;
+        }
+      }
+      result << "      );\n"
+        "      runOnlyForDeploymentPostprocessing = 0;\n"
+        "    };\n" ;
+      index_6964_.increment () ;
+      enumerator_6964.gotoNextObject () ;
     }
   }
   result << "\n"
     "\n"
-    "  /*------------------------------------------------------------------------------------------------------------------------- PBXTargetDependency */\n"
+    "  /*------------------------------------------------------------------ PBXTargetDependency */\n"
+    " \n" ;
+  GALGAS_uint index_7350_ (0) ;
+  if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
+    cEnumerator_XCodeAppTargetList enumerator_7350 (in_APP_5F_TARGET_5F_LIST, kEnumeration_up) ;
+    while (enumerator_7350.hasCurrentObject ()) {
+      GALGAS_uint index_7383_ (0) ;
+      if (enumerator_7350.current_mDependentTargets (HERE).isValid ()) {
+        cEnumerator__32_stringlist enumerator_7383 (enumerator_7350.current_mDependentTargets (HERE), kEnumeration_up) ;
+        while (enumerator_7383.hasCurrentObject ()) {
+          result << "  " ;
+          result << enumerator_7383.current_mValue_30_ (HERE).stringValue () ;
+          result << " = {\n"
+            "    isa = PBXTargetDependency;\n"
+            "    target = " ;
+          result << enumerator_7383.current_mValue_31_ (HERE).stringValue () ;
+          result << ";\n"
+            "  };\n"
+            "\n" ;
+          index_7383_.increment () ;
+          enumerator_7383.gotoNextObject () ;
+        }
+      }
+      index_7350_.increment () ;
+      enumerator_7350.gotoNextObject () ;
+    }
+  }
+  result << "  /*------------------------------------------------------------------ PBXVariantGroup */\n"
     " \n"
-    "  /*------------------------------------------------------------------------------------------------------------------------- PBXVariantGroup */\n"
-    " \n"
-    "  /*------------------------------------------------------------------------------------------------------------------------- XCBuildConfiguration */\n"
+    "  /*------------------------------------------------------------------ XCBuildConfiguration */\n"
     "    " ;
   result << in_DEFAULT_5F_CONFIGURATION_5F_REF.stringValue () ;
   result << " /* Default */ = {\n"
     "      isa = XCBuildConfiguration;\n"
     "      buildSettings = {\n" ;
-  GALGAS_uint index_5027_ (0) ;
+  GALGAS_uint index_7854_ (0) ;
   if (in_DEFAULT_5F_CONFIGURATION_5F_SETTING_5F_LIST.isValid ()) {
-    cEnumerator_stringlist enumerator_5027 (in_DEFAULT_5F_CONFIGURATION_5F_SETTING_5F_LIST, kEnumeration_up) ;
-    while (enumerator_5027.hasCurrentObject ()) {
+    cEnumerator_stringlist enumerator_7854 (in_DEFAULT_5F_CONFIGURATION_5F_SETTING_5F_LIST, kEnumeration_up) ;
+    while (enumerator_7854.hasCurrentObject ()) {
       result << "      " ;
-      result << enumerator_5027.current_mValue (HERE).stringValue () ;
+      result << enumerator_7854.current_mValue (HERE).stringValue () ;
       result << " ;\n" ;
-      index_5027_.increment () ;
-      enumerator_5027.gotoNextObject () ;
+      index_7854_.increment () ;
+      enumerator_7854.gotoNextObject () ;
     }
   }
   result << "    };\n"
     "    name = Default;\n"
     "  };\n"
     "\n" ;
-  GALGAS_uint index_5121_ (0) ;
-  if (in_MACH_5F_O_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeMachOTargetList enumerator_5121 (in_MACH_5F_O_5F_TARGET_5F_LIST, kEnumeration_up) ;
-    while (enumerator_5121.hasCurrentObject ()) {
+  GALGAS_uint index_7946_ (0) ;
+  if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
+    cEnumerator_XCodeToolTargetList enumerator_7946 (in_TOOL_5F_TARGET_5F_LIST, kEnumeration_up) ;
+    while (enumerator_7946.hasCurrentObject ()) {
       result << "    " ;
-      result << enumerator_5121.current_mBuildConfigurationRef (HERE).stringValue () ;
+      result << enumerator_7946.current_mBuildConfigurationRef (HERE).stringValue () ;
       result << " /* Default */ = {\n"
         "      isa = XCBuildConfiguration;\n"
         "      buildSettings = {\n" ;
-      GALGAS_uint index_5283_ (0) ;
-      if (enumerator_5121.current_mBuildConfigurationSettingList (HERE).isValid ()) {
-        cEnumerator_stringlist enumerator_5283 (enumerator_5121.current_mBuildConfigurationSettingList (HERE), kEnumeration_up) ;
-        while (enumerator_5283.hasCurrentObject ()) {
+      GALGAS_uint index_8108_ (0) ;
+      if (enumerator_7946.current_mBuildConfigurationSettingList (HERE).isValid ()) {
+        cEnumerator_stringlist enumerator_8108 (enumerator_7946.current_mBuildConfigurationSettingList (HERE), kEnumeration_up) ;
+        while (enumerator_8108.hasCurrentObject ()) {
           result << "      " ;
-          result << enumerator_5283.current_mValue (HERE).stringValue () ;
+          result << enumerator_8108.current_mValue (HERE).stringValue () ;
           result << " ;\n" ;
-          index_5283_.increment () ;
-          enumerator_5283.gotoNextObject () ;
+          index_8108_.increment () ;
+          enumerator_8108.gotoNextObject () ;
         }
       }
       result << "      PRODUCT_NAME = " ;
-      result << enumerator_5121.current_mProductFileName (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.gTemplate", 170)).stringValue () ;
+      result << enumerator_7946.current_mProductFileName (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.gTemplate", 296)).stringValue () ;
       result << " ;\n"
         "    };\n"
         "    name = Default;\n"
         "  };\n"
         "\n" ;
-      index_5121_.increment () ;
-      enumerator_5121.gotoNextObject () ;
+      index_7946_.increment () ;
+      enumerator_7946.gotoNextObject () ;
     }
   }
-  result << "  /*------------------------------------------------------------------------------------------------------------------------- XCConfigurationList secti"
-    "on */\n"
+  GALGAS_uint index_8281_ (0) ;
+  if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
+    cEnumerator_XCodeAppTargetList enumerator_8281 (in_APP_5F_TARGET_5F_LIST, kEnumeration_up) ;
+    while (enumerator_8281.hasCurrentObject ()) {
+      result << "    " ;
+      result << enumerator_8281.current_mBuildConfigurationRef (HERE).stringValue () ;
+      result << " /* Default */ = {\n"
+        "      isa = XCBuildConfiguration;\n"
+        "      buildSettings = {\n" ;
+      GALGAS_uint index_8443_ (0) ;
+      if (enumerator_8281.current_mBuildConfigurationSettingList (HERE).isValid ()) {
+        cEnumerator_stringlist enumerator_8443 (enumerator_8281.current_mBuildConfigurationSettingList (HERE), kEnumeration_up) ;
+        while (enumerator_8443.hasCurrentObject ()) {
+          result << "      " ;
+          result << enumerator_8443.current_mValue (HERE).stringValue () ;
+          result << " ;\n" ;
+          index_8443_.increment () ;
+          enumerator_8443.gotoNextObject () ;
+        }
+      }
+      result << "      INFOPLIST_FILE = \"Info.plist\";\n"
+        "      PRODUCT_NAME = " ;
+      result << enumerator_8281.current_mProductFileName (HERE).reader_utf_38_Representation (SOURCE_FILE ("project.pbxproj.gTemplate", 309)).stringValue () ;
+      result << " ;\n"
+        "    };\n"
+        "    name = Default;\n"
+        "  };\n"
+        "\n" ;
+      index_8281_.increment () ;
+      enumerator_8281.gotoNextObject () ;
+    }
+  }
+  result << "  /*------------------------------------------------------------------ XCConfigurationList section */\n"
     "\n"
     "    " ;
   result << in_PROJECT_5F_BUILD_5F_DEFAULT_5F_CONFIGURATION_5F_REF.stringValue () ;
@@ -1295,28 +1621,49 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (C
     "      defaultConfigurationName = Default;\n"
     "    };\n"
     "\n" ;
-  GALGAS_uint index_5931_ (0) ;
-  if (in_MACH_5F_O_5F_TARGET_5F_LIST.isValid ()) {
-    cEnumerator_XCodeMachOTargetList enumerator_5931 (in_MACH_5F_O_5F_TARGET_5F_LIST, kEnumeration_up) ;
-    while (enumerator_5931.hasCurrentObject ()) {
+  GALGAS_uint index_9076_ (0) ;
+  if (in_TOOL_5F_TARGET_5F_LIST.isValid ()) {
+    cEnumerator_XCodeToolTargetList enumerator_9076 (in_TOOL_5F_TARGET_5F_LIST, kEnumeration_up) ;
+    while (enumerator_9076.hasCurrentObject ()) {
       result << "    " ;
-      result << enumerator_5931.current_mBuildConfigurationListRef (HERE).stringValue () ;
+      result << enumerator_9076.current_mBuildConfigurationListRef (HERE).stringValue () ;
       result << " /* Default */ = {\n"
         "      isa = XCConfigurationList;\n"
         "      buildConfigurations = (\n"
         "        " ;
-      result << enumerator_5931.current_mBuildConfigurationRef (HERE).stringValue () ;
+      result << enumerator_9076.current_mBuildConfigurationRef (HERE).stringValue () ;
       result << " /* Default */,\n"
         "      );\n"
         "      defaultConfigurationIsVisible = 0;\n"
         "      defaultConfigurationName = Default;\n"
         "    };\n"
         "\n" ;
-      index_5931_.increment () ;
-      enumerator_5931.gotoNextObject () ;
+      index_9076_.increment () ;
+      enumerator_9076.gotoNextObject () ;
     }
   }
-  result << "/*------------------------------------------------------------------------------------------------------------------------- End */\n"
+  GALGAS_uint index_9376_ (0) ;
+  if (in_APP_5F_TARGET_5F_LIST.isValid ()) {
+    cEnumerator_XCodeAppTargetList enumerator_9376 (in_APP_5F_TARGET_5F_LIST, kEnumeration_up) ;
+    while (enumerator_9376.hasCurrentObject ()) {
+      result << "    " ;
+      result << enumerator_9376.current_mBuildConfigurationListRef (HERE).stringValue () ;
+      result << " /* Default */ = {\n"
+        "      isa = XCConfigurationList;\n"
+        "      buildConfigurations = (\n"
+        "        " ;
+      result << enumerator_9376.current_mBuildConfigurationRef (HERE).stringValue () ;
+      result << " /* Default */,\n"
+        "      );\n"
+        "      defaultConfigurationIsVisible = 0;\n"
+        "      defaultConfigurationName = Default;\n"
+        "    };\n"
+        "\n" ;
+      index_9376_.increment () ;
+      enumerator_9376.gotoNextObject () ;
+    }
+  }
+  result << "/*------------------------------------------------------------------ End */\n"
     "  };\n"
     "\n"
     "  rootObject = " ;
@@ -11026,82 +11373,82 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
       var_applicationBundleBase = GALGAS_string ("fr.irccyn") ;
     }
     GALGAS_string var_InfoPlistContents = GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_info_5F_plist (inCompiler, constinArgument_inTargetName, var_applicationBundleBase, constinArgument_inProjectVersionString, constinArgument_inHandledExtensionSet COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 366))) ;
-    GALGAS_bool joker_18195 ; // Joker input parameter
-    var_InfoPlistContents.method_writeToFileWhenDifferentContents (var_dir.add_operation (GALGAS_string ("/Info.plist"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 372)), joker_18195, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 372)) ;
+    GALGAS_bool joker_18191 ; // Joker input parameter
+    var_InfoPlistContents.method_writeToFileWhenDifferentContents (var_dir.add_operation (GALGAS_string ("/Info.plist"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 372)), joker_18191, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 372)) ;
     const enumGalgasBool test_37 = var_dir.add_operation (GALGAS_string ("/build.command"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 374)).reader_fileExists (SOURCE_FILE ("galgas3TargetGeneration.galgas", 374)).operator_not (SOURCE_FILE ("galgas3TargetGeneration.galgas", 374)).boolEnum () ;
     if (kBoolTrue == test_37) {
       GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_build_5F_xcode (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 375))).method_writeToExecutableFile (var_dir.add_operation (GALGAS_string ("/build.command"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 375)), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 375)) ;
     }
     var_dir.add_operation (GALGAS_string ("/English.lproj"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 378)).method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 378)) ;
     GALGAS_string var_InfoPlist_5F_strings_5F_path = var_dir.add_operation (GALGAS_string ("/English.lproj/InfoPlist.strings"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 379)) ;
-    GALGAS_bool joker_18680 ; // Joker input parameter
-    GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_info_5F_plist_5F_strings (inCompiler, constinArgument_inTargetName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 380))).method_writeToFileWhenDifferentContents (var_InfoPlist_5F_strings_5F_path, joker_18680, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 380)) ;
+    GALGAS_bool joker_18676 ; // Joker input parameter
+    GALGAS_string (filewrapperTemplate_targetGalgas_33_GenerationFileWrapper_makefile_5F_info_5F_plist_5F_strings (inCompiler, constinArgument_inTargetName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 380))).method_writeToFileWhenDifferentContents (var_InfoPlist_5F_strings_5F_path, joker_18676, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 380)) ;
     GALGAS_string var_Credits_5F_rtf_5F_path = var_dir.add_operation (GALGAS_string ("/English.lproj/Credits.rtf"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 381)) ;
     const enumGalgasBool test_38 = var_Credits_5F_rtf_5F_path.reader_fileExists (SOURCE_FILE ("galgas3TargetGeneration.galgas", 382)).operator_not (SOURCE_FILE ("galgas3TargetGeneration.galgas", 382)).boolEnum () ;
     if (kBoolTrue == test_38) {
       GALGAS_string (gWrapperFileContent_19_targetGalgas_33_GenerationFileWrapper).method_writeToFile (var_Credits_5F_rtf_5F_path, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 383)) ;
     }
-    const cMapElement_projectQualifiedFeatureMap * objectArray_18975 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction (GALGAS_string ("repositoryURL")) ;
-    if (NULL != objectArray_18975) {
-        macroValidSharedObject (objectArray_18975, cMapElement_projectQualifiedFeatureMap) ;
+    const cMapElement_projectQualifiedFeatureMap * objectArray_18971 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction (GALGAS_string ("repositoryURL")) ;
+    if (NULL != objectArray_18971) {
+        macroValidSharedObject (objectArray_18971, cMapElement_projectQualifiedFeatureMap) ;
       GALGAS_string var_applicationUpdateDir = var_projectDirectory.add_operation (GALGAS_string ("/xcode-project/cocoa-application-update/application"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 387)) ;
       var_applicationUpdateDir.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 388)) ;
-      GALGAS_bool joker_19353 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_application_5F_update_5F_header (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 389))).method_writeToFileWhenDifferentContents (var_applicationUpdateDir.add_operation (GALGAS_string ("/PMApplicationUpdate.h"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 389)), joker_19353, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 389)) ;
-      GALGAS_bool joker_19657 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_application_5F_update_5F_implementation (inCompiler, constinArgument_inTargetName, objectArray_18975->mAttribute_mFeatureValue.mAttribute_string, var_applicationBundleBase COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 390))).method_writeToFileWhenDifferentContents (var_applicationUpdateDir.add_operation (GALGAS_string ("/PMApplicationUpdate.m"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 395)), joker_19657, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 390)) ;
-      GALGAS_bool joker_19860 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_application_5F_update_5F_nib (inCompiler, constinArgument_inTargetName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 398))).method_writeToFileWhenDifferentContents (var_applicationUpdateDir.add_operation (GALGAS_string ("/English.lproj/PMApplicationUpdate.xib"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 398)), joker_19860, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 398)) ;
-      GALGAS_bool joker_20019 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_download_5F_data_5F_header (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 399))).method_writeToFileWhenDifferentContents (var_applicationUpdateDir.add_operation (GALGAS_string ("/PMDownloadData.h"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 399)), joker_20019, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 399)) ;
-      GALGAS_bool joker_20186 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_download_5F_data_5F_implementation (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 400))).method_writeToFileWhenDifferentContents (var_applicationUpdateDir.add_operation (GALGAS_string ("/PMDownloadData.m"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 400)), joker_20186, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 400)) ;
-      GALGAS_bool joker_20345 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_download_5F_file_5F_header (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 401))).method_writeToFileWhenDifferentContents (var_applicationUpdateDir.add_operation (GALGAS_string ("/PMDownloadFile.h"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 401)), joker_20345, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 401)) ;
-      GALGAS_bool joker_20512 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_download_5F_file_5F_implementation (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 402))).method_writeToFileWhenDifferentContents (var_applicationUpdateDir.add_operation (GALGAS_string ("/PMDownloadFile.m"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 402)), joker_20512, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 402)) ;
-      GALGAS_bool joker_20687 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_compatibility_5F_header (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 403))).method_writeToFileWhenDifferentContents (var_applicationUpdateDir.add_operation (GALGAS_string ("/PMSnowLeopardLionCompatibility.h"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 403)), joker_20687, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 403)) ;
+      GALGAS_bool joker_19349 ; // Joker input parameter
+      GALGAS_string (filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_application_5F_update_5F_header (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 389))).method_writeToFileWhenDifferentContents (var_applicationUpdateDir.add_operation (GALGAS_string ("/PMApplicationUpdate.h"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 389)), joker_19349, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 389)) ;
+      GALGAS_bool joker_19653 ; // Joker input parameter
+      GALGAS_string (filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_application_5F_update_5F_implementation (inCompiler, constinArgument_inTargetName, objectArray_18971->mAttribute_mFeatureValue.mAttribute_string, var_applicationBundleBase COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 390))).method_writeToFileWhenDifferentContents (var_applicationUpdateDir.add_operation (GALGAS_string ("/PMApplicationUpdate.m"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 395)), joker_19653, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 390)) ;
+      GALGAS_bool joker_19856 ; // Joker input parameter
+      GALGAS_string (filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_application_5F_update_5F_nib (inCompiler, constinArgument_inTargetName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 398))).method_writeToFileWhenDifferentContents (var_applicationUpdateDir.add_operation (GALGAS_string ("/English.lproj/PMApplicationUpdate.xib"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 398)), joker_19856, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 398)) ;
+      GALGAS_bool joker_20015 ; // Joker input parameter
+      GALGAS_string (filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_download_5F_data_5F_header (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 399))).method_writeToFileWhenDifferentContents (var_applicationUpdateDir.add_operation (GALGAS_string ("/PMDownloadData.h"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 399)), joker_20015, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 399)) ;
+      GALGAS_bool joker_20182 ; // Joker input parameter
+      GALGAS_string (filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_download_5F_data_5F_implementation (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 400))).method_writeToFileWhenDifferentContents (var_applicationUpdateDir.add_operation (GALGAS_string ("/PMDownloadData.m"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 400)), joker_20182, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 400)) ;
+      GALGAS_bool joker_20341 ; // Joker input parameter
+      GALGAS_string (filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_download_5F_file_5F_header (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 401))).method_writeToFileWhenDifferentContents (var_applicationUpdateDir.add_operation (GALGAS_string ("/PMDownloadFile.h"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 401)), joker_20341, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 401)) ;
+      GALGAS_bool joker_20508 ; // Joker input parameter
+      GALGAS_string (filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_download_5F_file_5F_implementation (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 402))).method_writeToFileWhenDifferentContents (var_applicationUpdateDir.add_operation (GALGAS_string ("/PMDownloadFile.m"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 402)), joker_20508, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 402)) ;
+      GALGAS_bool joker_20683 ; // Joker input parameter
+      GALGAS_string (filewrapperTemplate_applicationGalgas_33_UpdateFileWrapper_compatibility_5F_header (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 403))).method_writeToFileWhenDifferentContents (var_applicationUpdateDir.add_operation (GALGAS_string ("/PMSnowLeopardLionCompatibility.h"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 403)), joker_20683, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 403)) ;
       GALGAS_string var_codeSignIdentity ;
-      const cMapElement_projectQualifiedFeatureMap * objectArray_20753 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction (GALGAS_string ("codeSigning")) ;
-      if (NULL != objectArray_20753) {
-          macroValidSharedObject (objectArray_20753, cMapElement_projectQualifiedFeatureMap) ;
-        var_codeSignIdentity = objectArray_20753->mAttribute_mFeatureValue.mAttribute_string ;
+      const cMapElement_projectQualifiedFeatureMap * objectArray_20749 = (const cMapElement_projectQualifiedFeatureMap *) constinArgument_inProjectQualifiedFeatureMap.readAccessForWithInstruction (GALGAS_string ("codeSigning")) ;
+      if (NULL != objectArray_20749) {
+          macroValidSharedObject (objectArray_20749, cMapElement_projectQualifiedFeatureMap) ;
+        var_codeSignIdentity = objectArray_20749->mAttribute_mFeatureValue.mAttribute_string ;
       }else{
         var_codeSignIdentity = GALGAS_string::makeEmptyString () ;
       }
       GALGAS_string var_updaterToolDir = var_projectDirectory.add_operation (GALGAS_string ("/xcode-project/cocoa-application-update/updater-tool"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 411)) ;
       var_updaterToolDir.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 412)) ;
-      GALGAS_bool joker_21206 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_object_5F_protocol (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 413))).method_writeToFileWhenDifferentContents (var_updaterToolDir.add_operation (GALGAS_string ("/PMUpdaterServerProtocol.h"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 413)), joker_21206, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 413)) ;
-      GALGAS_bool joker_21361 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_object_5F_header (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 414))).method_writeToFileWhenDifferentContents (var_updaterToolDir.add_operation (GALGAS_string ("/PMUpdaterServerObject.h"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 414)), joker_21361, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 414)) ;
-      GALGAS_bool joker_21524 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_object_5F_implementation (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 415))).method_writeToFileWhenDifferentContents (var_updaterToolDir.add_operation (GALGAS_string ("/PMUpdaterServerObject.m"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 415)), joker_21524, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 415)) ;
-      GALGAS_bool joker_21787 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_tool_5F_info_5F_plist (inCompiler, var_applicationBundleBase, constinArgument_inTargetName, var_codeSignIdentity COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 416))).method_writeToFileWhenDifferentContents (var_updaterToolDir.add_operation (GALGAS_string ("/updater-tool-Info.plist"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 421)), joker_21787, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 416)) ;
-      GALGAS_bool joker_22036 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_tool_5F_launchd_5F_plist (inCompiler, var_applicationBundleBase, constinArgument_inTargetName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 424))).method_writeToFileWhenDifferentContents (var_updaterToolDir.add_operation (GALGAS_string ("/updater-tool-Launchd.plist"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 428)), joker_22036, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 424)) ;
-      GALGAS_bool joker_22271 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_object_5F_main (inCompiler, var_applicationBundleBase, constinArgument_inTargetName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 431))).method_writeToFileWhenDifferentContents (var_updaterToolDir.add_operation (GALGAS_string ("/updater-tool-main.m"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 435)), joker_22271, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 431)) ;
+      GALGAS_bool joker_21202 ; // Joker input parameter
+      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_object_5F_protocol (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 413))).method_writeToFileWhenDifferentContents (var_updaterToolDir.add_operation (GALGAS_string ("/PMUpdaterServerProtocol.h"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 413)), joker_21202, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 413)) ;
+      GALGAS_bool joker_21357 ; // Joker input parameter
+      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_object_5F_header (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 414))).method_writeToFileWhenDifferentContents (var_updaterToolDir.add_operation (GALGAS_string ("/PMUpdaterServerObject.h"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 414)), joker_21357, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 414)) ;
+      GALGAS_bool joker_21520 ; // Joker input parameter
+      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_object_5F_implementation (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 415))).method_writeToFileWhenDifferentContents (var_updaterToolDir.add_operation (GALGAS_string ("/PMUpdaterServerObject.m"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 415)), joker_21520, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 415)) ;
+      GALGAS_bool joker_21783 ; // Joker input parameter
+      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_tool_5F_info_5F_plist (inCompiler, var_applicationBundleBase, constinArgument_inTargetName, var_codeSignIdentity COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 416))).method_writeToFileWhenDifferentContents (var_updaterToolDir.add_operation (GALGAS_string ("/updater-tool-Info.plist"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 421)), joker_21783, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 416)) ;
+      GALGAS_bool joker_22032 ; // Joker input parameter
+      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_tool_5F_launchd_5F_plist (inCompiler, var_applicationBundleBase, constinArgument_inTargetName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 424))).method_writeToFileWhenDifferentContents (var_updaterToolDir.add_operation (GALGAS_string ("/updater-tool-Launchd.plist"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 428)), joker_22032, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 424)) ;
+      GALGAS_bool joker_22267 ; // Joker input parameter
+      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ToolFileWrapper_updater_5F_object_5F_main (inCompiler, var_applicationBundleBase, constinArgument_inTargetName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 431))).method_writeToFileWhenDifferentContents (var_updaterToolDir.add_operation (GALGAS_string ("/updater-tool-main.m"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 435)), joker_22267, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 431)) ;
       GALGAS_string var_updaterApplicationDir = var_projectDirectory.add_operation (GALGAS_string ("/xcode-project/cocoa-application-update/updater-application"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 439)) ;
       var_updaterApplicationDir.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 440)) ;
-      GALGAS_bool joker_22641 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_credits (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 441))).method_writeToFileWhenDifferentContents (var_updaterApplicationDir.add_operation (GALGAS_string ("/English.lproj/UpdaterAppCredits.rtf"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 441)), joker_22641, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 441)) ;
-      GALGAS_bool joker_22825 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_info_5F_plist_5F_strings (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 442))).method_writeToFileWhenDifferentContents (var_updaterApplicationDir.add_operation (GALGAS_string ("/English.lproj/UpdaterAppInfoPlist.strings"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 442)), joker_22825, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 442)) ;
-      GALGAS_bool joker_23013 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_main_5F_menu_5F_xib (inCompiler, constinArgument_inTargetName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 443))).method_writeToFileWhenDifferentContents (var_updaterApplicationDir.add_operation (GALGAS_string ("/English.lproj/UpdaterAppMainMenu.xib"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 443)), joker_23013, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 443)) ;
-      GALGAS_bool joker_23187 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_application_5F_delegate_5F_header (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 444))).method_writeToFileWhenDifferentContents (var_updaterApplicationDir.add_operation (GALGAS_string ("/PMUpdaterAppDelegate.h"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 444)), joker_23187, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 444)) ;
-      GALGAS_bool joker_23439 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_application_5F_delegate_5F_implementation (inCompiler, var_applicationBundleBase, constinArgument_inTargetName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 445))).method_writeToFileWhenDifferentContents (var_updaterApplicationDir.add_operation (GALGAS_string ("/PMUpdaterAppDelegate.m"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 449)), joker_23439, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 445)) ;
-      GALGAS_bool joker_23700 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_info_5F_plist (inCompiler, var_applicationBundleBase, constinArgument_inTargetName, var_codeSignIdentity COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 451))).method_writeToFileWhenDifferentContents (var_updaterApplicationDir.add_operation (GALGAS_string ("/updater-app-Info.plist"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 456)), joker_23700, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 451)) ;
-      GALGAS_bool joker_23854 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_main (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 458))).method_writeToFileWhenDifferentContents (var_updaterApplicationDir.add_operation (GALGAS_string ("/updater-app-main.m"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 458)), joker_23854, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 458)) ;
-      GALGAS_bool joker_24007 ; // Joker input parameter
-      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_prefix (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 459))).method_writeToFileWhenDifferentContents (var_updaterApplicationDir.add_operation (GALGAS_string ("/updater-app-Prefix.pch"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 459)), joker_24007, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 459)) ;
+      GALGAS_bool joker_22629 ; // Joker input parameter
+      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_credits (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 441))).method_writeToFileWhenDifferentContents (var_updaterApplicationDir.add_operation (GALGAS_string ("/English.lproj/UpdaterAppCredits.rtf"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 441)), joker_22629, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 441)) ;
+      GALGAS_bool joker_22813 ; // Joker input parameter
+      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_info_5F_plist_5F_strings (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 442))).method_writeToFileWhenDifferentContents (var_updaterApplicationDir.add_operation (GALGAS_string ("/English.lproj/UpdaterAppInfoPlist.strings"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 442)), joker_22813, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 442)) ;
+      GALGAS_bool joker_23001 ; // Joker input parameter
+      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_main_5F_menu_5F_xib (inCompiler, constinArgument_inTargetName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 443))).method_writeToFileWhenDifferentContents (var_updaterApplicationDir.add_operation (GALGAS_string ("/English.lproj/UpdaterAppMainMenu.xib"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 443)), joker_23001, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 443)) ;
+      GALGAS_bool joker_23175 ; // Joker input parameter
+      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_application_5F_delegate_5F_header (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 444))).method_writeToFileWhenDifferentContents (var_updaterApplicationDir.add_operation (GALGAS_string ("/PMUpdaterAppDelegate.h"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 444)), joker_23175, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 444)) ;
+      GALGAS_bool joker_23427 ; // Joker input parameter
+      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_application_5F_delegate_5F_implementation (inCompiler, var_applicationBundleBase, constinArgument_inTargetName COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 445))).method_writeToFileWhenDifferentContents (var_updaterApplicationDir.add_operation (GALGAS_string ("/PMUpdaterAppDelegate.m"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 449)), joker_23427, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 445)) ;
+      GALGAS_bool joker_23688 ; // Joker input parameter
+      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_info_5F_plist (inCompiler, var_applicationBundleBase, constinArgument_inTargetName, var_codeSignIdentity COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 451))).method_writeToFileWhenDifferentContents (var_updaterApplicationDir.add_operation (GALGAS_string ("/updater-app-Info.plist"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 456)), joker_23688, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 451)) ;
+      GALGAS_bool joker_23842 ; // Joker input parameter
+      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_main (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 458))).method_writeToFileWhenDifferentContents (var_updaterApplicationDir.add_operation (GALGAS_string ("/updater-app-main.m"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 458)), joker_23842, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 458)) ;
+      GALGAS_bool joker_23995 ; // Joker input parameter
+      GALGAS_string (filewrapperTemplate_updaterGalgas_33_ApplicationFileWrapper_prefix (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 459))).method_writeToFileWhenDifferentContents (var_updaterApplicationDir.add_operation (GALGAS_string ("/updater-app-Prefix.pch"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 459)), joker_23995, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 459)) ;
     }
     GALGAS_string var_userResourceDir = var_projectDirectory.add_operation (GALGAS_string ("/xcode-project/userResources"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 462)) ;
     var_userResourceDir.method_makeDirectory (inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 463)) ;
@@ -11120,7 +11467,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
     }
     GALGAS_XcodeProjectDescriptor var_xcodeProject = GALGAS_XcodeProjectDescriptor::constructor_default (SOURCE_FILE ("galgas3TargetGeneration.galgas", 497)) ;
     {
-    GALGAS_stringlist temp_39 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 535)) ;
+    GALGAS_stringlist temp_39 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 534)) ;
     temp_39.addAssign_operation (GALGAS_string ("ALWAYS_SEARCH_USER_PATHS = NO")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 500)) ;
     temp_39.addAssign_operation (GALGAS_string ("ARCHS = \"$(ARCHS_STANDARD_64_BIT)\"")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 501)) ;
     temp_39.addAssign_operation (GALGAS_string ("CLANG_ENABLE_OBJC_ARC = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 502)) ;
@@ -11151,301 +11498,393 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
     temp_39.addAssign_operation (GALGAS_string ("GCC_WARN_UNKNOWN_PRAGMAS = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 527)) ;
     temp_39.addAssign_operation (GALGAS_string ("GCC_WARN_UNUSED_FUNCTION = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 528)) ;
     temp_39.addAssign_operation (GALGAS_string ("GCC_WARN_UNUSED_LABEL = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 529)) ;
-    temp_39.addAssign_operation (GALGAS_string ("GCC_WARN_UNUSED_PARAMETER = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 530)) ;
-    temp_39.addAssign_operation (GALGAS_string ("GCC_WARN_UNUSED_VALUE = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 531)) ;
-    temp_39.addAssign_operation (GALGAS_string ("GCC_WARN_UNUSED_VARIABLE = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 532)) ;
-    temp_39.addAssign_operation (GALGAS_string ("HEADER_SEARCH_PATHS = (\"../build/output\", \"../build/libpm\", \"../build/user-headers\", \"../hand_coded_sources/**\")")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 533)) ;
-    temp_39.addAssign_operation (GALGAS_string ("SDKROOT = macosx")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 534)) ;
-    temp_39.addAssign_operation (GALGAS_string ("COPY_PHASE_STRIP = NO")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 535)) ;
+    temp_39.addAssign_operation (GALGAS_string ("GCC_WARN_UNUSED_VALUE = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 530)) ;
+    temp_39.addAssign_operation (GALGAS_string ("GCC_WARN_UNUSED_VARIABLE = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 531)) ;
+    temp_39.addAssign_operation (GALGAS_string ("HEADER_SEARCH_PATHS = (\"../build/output\", \"../build/libpm\", \"../build/user-headers\", \"../hand_coded_sources/**\")")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 532)) ;
+    temp_39.addAssign_operation (GALGAS_string ("SDKROOT = ").add_operation (var_SDK, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 533))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 533)) ;
+    temp_39.addAssign_operation (GALGAS_string ("COPY_PHASE_STRIP = NO")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 534)) ;
     categoryModifier_addSettingsToDefaultConfiguration (var_xcodeProject, temp_39, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 499)) ;
     }
-    GALGAS_stringlist var_buildFileRefListForTool = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 538)) ;
-    GALGAS_stringlist var_m_5F_FileRefList = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 539)) ;
+    GALGAS_stringlist var_buildFileRefListForTool = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 537)) ;
+    GALGAS_stringlist var_m_5F_FileRefList = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 538)) ;
+    GALGAS_stringlist var_frameworksFileRefList = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 539)) ;
+    GALGAS_stringlist var_resourceFileBuildRefs = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 540)) ;
     GALGAS_string var_groupRef ;
     {
-    categoryModifier_addGroupWithFiles (var_xcodeProject, GALGAS_string ("Generated by GALGAS"), GALGAS_string ("../build/output"), GALGAS_stringset::constructor_setWithStringList (constinArgument_inToolCppFileList.add_operation (constinArgument_inToolHeaderFileList, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 544))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 544)), var_buildFileRefListForTool, var_m_5F_FileRefList, var_groupRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 541)) ;
+    categoryModifier_addGroupWithFiles (var_xcodeProject, GALGAS_string ("Generated by GALGAS"), GALGAS_string ("../build/output"), GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 545)), GALGAS_stringset::constructor_setWithStringList (constinArgument_inToolCppFileList.add_operation (constinArgument_inToolHeaderFileList, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 546)).add_operation (constinArgument_inAppProductFileList, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 546))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 546)), var_buildFileRefListForTool, var_m_5F_FileRefList, var_frameworksFileRefList, var_resourceFileBuildRefs, var_groupRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 542)) ;
     }
     {
-    categoryModifier_placeGroupAsMainGroup (var_xcodeProject, var_groupRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 549)) ;
+    categoryModifier_placeGroupAsMainGroup (var_xcodeProject, var_groupRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 553)) ;
     }
-    GALGAS_stringlist var_libpmReferenceGroupList = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 550)) ;
+    GALGAS_stringlist var_libpmReferenceGroupList = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 554)) ;
     {
-    GALGAS_stringset temp_40 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 567)) ;
-    temp_40.addAssign_operation (GALGAS_string ("C_RelationConfiguration.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 556)) ;
-    temp_40.addAssign_operation (GALGAS_string ("C_RelationConfiguration.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 557)) ;
-    temp_40.addAssign_operation (GALGAS_string ("C_Relation.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 558)) ;
-    temp_40.addAssign_operation (GALGAS_string ("C_Relation.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 559)) ;
-    temp_40.addAssign_operation (GALGAS_string ("C_RelationSingleType.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 560)) ;
-    temp_40.addAssign_operation (GALGAS_string ("C_RelationSingleType.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 561)) ;
-    temp_40.addAssign_operation (GALGAS_string ("C_BDD-and-operation.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 562)) ;
-    temp_40.addAssign_operation (GALGAS_string ("C_BDD-find-or-add.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 563)) ;
-    temp_40.addAssign_operation (GALGAS_string ("C_BDD-node.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 564)) ;
-    temp_40.addAssign_operation (GALGAS_string ("C_BDD-single-operand-ops.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 565)) ;
-    temp_40.addAssign_operation (GALGAS_string ("C_BDD.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 566)) ;
-    temp_40.addAssign_operation (GALGAS_string ("C_BDD.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 567)) ;
-    categoryModifier_addGroupWithFiles (var_xcodeProject, GALGAS_string ("Binary Decision Diagrams"), GALGAS_string ("bdd"), temp_40, var_buildFileRefListForTool, var_m_5F_FileRefList, var_groupRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 552)) ;
+    GALGAS_stringset temp_40 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 572)) ;
+    temp_40.addAssign_operation (GALGAS_string ("C_RelationConfiguration.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 561)) ;
+    temp_40.addAssign_operation (GALGAS_string ("C_RelationConfiguration.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 562)) ;
+    temp_40.addAssign_operation (GALGAS_string ("C_Relation.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 563)) ;
+    temp_40.addAssign_operation (GALGAS_string ("C_Relation.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 564)) ;
+    temp_40.addAssign_operation (GALGAS_string ("C_RelationSingleType.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 565)) ;
+    temp_40.addAssign_operation (GALGAS_string ("C_RelationSingleType.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 566)) ;
+    temp_40.addAssign_operation (GALGAS_string ("C_BDD-and-operation.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 567)) ;
+    temp_40.addAssign_operation (GALGAS_string ("C_BDD-find-or-add.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 568)) ;
+    temp_40.addAssign_operation (GALGAS_string ("C_BDD-node.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 569)) ;
+    temp_40.addAssign_operation (GALGAS_string ("C_BDD-single-operand-ops.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 570)) ;
+    temp_40.addAssign_operation (GALGAS_string ("C_BDD.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 571)) ;
+    temp_40.addAssign_operation (GALGAS_string ("C_BDD.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 572)) ;
+    categoryModifier_addGroupWithFiles (var_xcodeProject, GALGAS_string ("Binary Decision Diagrams"), GALGAS_string ("bdd"), GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 559)), temp_40, var_buildFileRefListForTool, var_m_5F_FileRefList, var_frameworksFileRefList, var_resourceFileBuildRefs, var_groupRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 556)) ;
     }
-    var_libpmReferenceGroupList.addAssign_operation (var_groupRef  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 573)) ;
+    var_libpmReferenceGroupList.addAssign_operation (var_groupRef  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 580)) ;
     {
-    GALGAS_stringset temp_41 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 578)) ;
-    temp_41.addAssign_operation (GALGAS_string ("TC_prime_cache2.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 578)) ;
-    categoryModifier_addGroupWithFiles (var_xcodeProject, GALGAS_string ("Cache"), GALGAS_string ("cache"), temp_41, var_buildFileRefListForTool, var_m_5F_FileRefList, var_groupRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 575)) ;
+    GALGAS_stringset temp_41 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 586)) ;
+    temp_41.addAssign_operation (GALGAS_string ("TC_prime_cache2.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 586)) ;
+    categoryModifier_addGroupWithFiles (var_xcodeProject, GALGAS_string ("Cache"), GALGAS_string ("cache"), GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 585)), temp_41, var_buildFileRefListForTool, var_m_5F_FileRefList, var_frameworksFileRefList, var_resourceFileBuildRefs, var_groupRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 582)) ;
     }
-    var_libpmReferenceGroupList.addAssign_operation (var_groupRef  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 583)) ;
+    var_libpmReferenceGroupList.addAssign_operation (var_groupRef  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 593)) ;
     {
-    GALGAS_stringset temp_42 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 597)) ;
-    temp_42.addAssign_operation (GALGAS_string ("main.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 589)) ;
-    temp_42.addAssign_operation (GALGAS_string ("PMCancelButtonForPanel.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 590)) ;
-    temp_42.addAssign_operation (GALGAS_string ("PMCancelButtonForPanel.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 591)) ;
-    temp_42.addAssign_operation (GALGAS_string ("PMDownloadData.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 592)) ;
-    temp_42.addAssign_operation (GALGAS_string ("PMDownloadData.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 593)) ;
-    temp_42.addAssign_operation (GALGAS_string ("PMDownloadFile.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 594)) ;
-    temp_42.addAssign_operation (GALGAS_string ("PMDownloadFile.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 595)) ;
-    temp_42.addAssign_operation (GALGAS_string ("PMOkButtonForPanel.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 596)) ;
-    temp_42.addAssign_operation (GALGAS_string ("PMOkButtonForPanel.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 597)) ;
-    categoryModifier_addGroupWithFiles (var_xcodeProject, GALGAS_string ("Cocoa Utilities"), GALGAS_string ("cocoa_utilities"), temp_42, var_buildFileRefListForTool, var_m_5F_FileRefList, var_groupRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 585)) ;
+    GALGAS_stringset temp_42 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 608)) ;
+    temp_42.addAssign_operation (GALGAS_string ("main.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 600)) ;
+    temp_42.addAssign_operation (GALGAS_string ("PMCancelButtonForPanel.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 601)) ;
+    temp_42.addAssign_operation (GALGAS_string ("PMCancelButtonForPanel.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 602)) ;
+    temp_42.addAssign_operation (GALGAS_string ("PMDownloadData.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 603)) ;
+    temp_42.addAssign_operation (GALGAS_string ("PMDownloadData.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 604)) ;
+    temp_42.addAssign_operation (GALGAS_string ("PMDownloadFile.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 605)) ;
+    temp_42.addAssign_operation (GALGAS_string ("PMDownloadFile.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 606)) ;
+    temp_42.addAssign_operation (GALGAS_string ("PMOkButtonForPanel.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 607)) ;
+    temp_42.addAssign_operation (GALGAS_string ("PMOkButtonForPanel.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 608)) ;
+    categoryModifier_addGroupWithFiles (var_xcodeProject, GALGAS_string ("Cocoa Utilities"), GALGAS_string ("cocoa_utilities"), GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 598)), temp_42, var_buildFileRefListForTool, var_m_5F_FileRefList, var_frameworksFileRefList, var_resourceFileBuildRefs, var_groupRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 595)) ;
     }
-    var_libpmReferenceGroupList.addAssign_operation (var_groupRef  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 603)) ;
+    var_libpmReferenceGroupList.addAssign_operation (var_groupRef  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 616)) ;
     {
-    GALGAS_stringset temp_43 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 615)) ;
-    temp_43.addAssign_operation (GALGAS_string ("TC_LinkedList.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 609)) ;
-    temp_43.addAssign_operation (GALGAS_string ("TC_FIFO.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 610)) ;
-    temp_43.addAssign_operation (GALGAS_string ("TC_UniqueSparseArray.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 611)) ;
-    temp_43.addAssign_operation (GALGAS_string ("TC_Array.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 612)) ;
-    temp_43.addAssign_operation (GALGAS_string ("TC_Array2.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 613)) ;
-    temp_43.addAssign_operation (GALGAS_string ("TC_UniqueArray.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 614)) ;
-    temp_43.addAssign_operation (GALGAS_string ("TC_UniqueArray2.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 615)) ;
-    categoryModifier_addGroupWithFiles (var_xcodeProject, GALGAS_string ("Collections"), GALGAS_string ("collections"), temp_43, var_buildFileRefListForTool, var_m_5F_FileRefList, var_groupRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 605)) ;
+    GALGAS_stringset temp_43 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 672)) ;
+    temp_43.addAssign_operation (GALGAS_string ("English.lproj/OC_GGS_Document.xib")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 623)) ;
+    temp_43.addAssign_operation (GALGAS_string ("English.lproj/PMDebug.xib")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 624)) ;
+    temp_43.addAssign_operation (GALGAS_string ("English.lproj/MainMenu.xib")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 625)) ;
+    temp_43.addAssign_operation (GALGAS_string ("closeSourceFile.tiff")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 626)) ;
+    temp_43.addAssign_operation (GALGAS_string ("enterDefaultCommandLineOptions.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 627)) ;
+    temp_43.addAssign_operation (GALGAS_string ("enterDefaultCommandLineOptions.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 628)) ;
+    temp_43.addAssign_operation (GALGAS_string ("F_CocoaWrapperForGalgas.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 629)) ;
+    temp_43.addAssign_operation (GALGAS_string ("I_Stop.tiff")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 630)) ;
+    temp_43.addAssign_operation (GALGAS_string ("NSString+identifierRepresentation.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 631)) ;
+    temp_43.addAssign_operation (GALGAS_string ("NSString+identifierRepresentation.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 632)) ;
+    temp_43.addAssign_operation (GALGAS_string ("OC_GGS_ApplicationDelegate.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 633)) ;
+    temp_43.addAssign_operation (GALGAS_string ("OC_GGS_ApplicationDelegate.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 634)) ;
+    temp_43.addAssign_operation (GALGAS_string ("OC_GGS_BuildTask.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 635)) ;
+    temp_43.addAssign_operation (GALGAS_string ("OC_GGS_BuildTask.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 636)) ;
+    temp_43.addAssign_operation (GALGAS_string ("OC_GGS_CommandLineOption.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 637)) ;
+    temp_43.addAssign_operation (GALGAS_string ("OC_GGS_CommandLineOption.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 638)) ;
+    temp_43.addAssign_operation (GALGAS_string ("OC_GGS_Document.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 639)) ;
+    temp_43.addAssign_operation (GALGAS_string ("OC_GGS_Document.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 640)) ;
+    temp_43.addAssign_operation (GALGAS_string ("OC_GGS_DocumentData.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 641)) ;
+    temp_43.addAssign_operation (GALGAS_string ("OC_GGS_DocumentData.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 642)) ;
+    temp_43.addAssign_operation (GALGAS_string ("OC_GGS_RulerViewForBuildOutput.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 643)) ;
+    temp_43.addAssign_operation (GALGAS_string ("OC_GGS_RulerViewForBuildOutput.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 644)) ;
+    temp_43.addAssign_operation (GALGAS_string ("OC_GGS_RulerViewForTextView.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 645)) ;
+    temp_43.addAssign_operation (GALGAS_string ("OC_GGS_RulerViewForTextView.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 646)) ;
+    temp_43.addAssign_operation (GALGAS_string ("OC_GGS_Scroller.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 647)) ;
+    temp_43.addAssign_operation (GALGAS_string ("OC_GGS_Scroller.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 648)) ;
+    temp_43.addAssign_operation (GALGAS_string ("OC_GGS_TextDisplayDescriptor.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 649)) ;
+    temp_43.addAssign_operation (GALGAS_string ("OC_GGS_TextDisplayDescriptor.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 650)) ;
+    temp_43.addAssign_operation (GALGAS_string ("OC_GGS_TextSyntaxColoring.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 651)) ;
+    temp_43.addAssign_operation (GALGAS_string ("OC_GGS_TextSyntaxColoring.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 652)) ;
+    temp_43.addAssign_operation (GALGAS_string ("OC_GGS_TextView.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 653)) ;
+    temp_43.addAssign_operation (GALGAS_string ("OC_GGS_TextView.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 654)) ;
+    temp_43.addAssign_operation (GALGAS_string ("OC_Lexique.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 655)) ;
+    temp_43.addAssign_operation (GALGAS_string ("OC_Lexique.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 656)) ;
+    temp_43.addAssign_operation (GALGAS_string ("OC_Token.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 657)) ;
+    temp_43.addAssign_operation (GALGAS_string ("OC_Token.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 658)) ;
+    temp_43.addAssign_operation (GALGAS_string ("PMDebug.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 659)) ;
+    temp_43.addAssign_operation (GALGAS_string ("PMDebug.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 660)) ;
+    temp_43.addAssign_operation (GALGAS_string ("PMFontButton.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 661)) ;
+    temp_43.addAssign_operation (GALGAS_string ("PMFontButton.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 662)) ;
+    temp_43.addAssign_operation (GALGAS_string ("PMIssueDescriptor.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 663)) ;
+    temp_43.addAssign_operation (GALGAS_string ("PMIssueDescriptor.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 664)) ;
+    temp_43.addAssign_operation (GALGAS_string ("PMIssueInRuler.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 665)) ;
+    temp_43.addAssign_operation (GALGAS_string ("PMIssueInRuler.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 666)) ;
+    temp_43.addAssign_operation (GALGAS_string ("PMSearchResultDescriptor.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 667)) ;
+    temp_43.addAssign_operation (GALGAS_string ("PMSearchResultDescriptor.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 668)) ;
+    temp_43.addAssign_operation (GALGAS_string ("PMTableViewRefusesFirstResponder.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 669)) ;
+    temp_43.addAssign_operation (GALGAS_string ("PMTableViewRefusesFirstResponder.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 670)) ;
+    temp_43.addAssign_operation (GALGAS_string ("PMUndoManager.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 671)) ;
+    temp_43.addAssign_operation (GALGAS_string ("PMUndoManager.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 672)) ;
+    categoryModifier_addGroupWithFiles (var_xcodeProject, GALGAS_string ("Cocoa GALGAS"), GALGAS_string ("cocoa_galgas"), GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 621)), temp_43, var_buildFileRefListForTool, var_m_5F_FileRefList, var_frameworksFileRefList, var_resourceFileBuildRefs, var_groupRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 618)) ;
     }
-    var_libpmReferenceGroupList.addAssign_operation (var_groupRef  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 621)) ;
+    var_libpmReferenceGroupList.addAssign_operation (var_groupRef  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 680)) ;
     {
-    GALGAS_stringset temp_44 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 640)) ;
-    temp_44.addAssign_operation (GALGAS_string ("F_mainForLIBPM.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 627)) ;
-    temp_44.addAssign_operation (GALGAS_string ("F_mainForLIBPM.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 628)) ;
-    temp_44.addAssign_operation (GALGAS_string ("C_builtin_CLI_Options.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 629)) ;
-    temp_44.addAssign_operation (GALGAS_string ("C_builtin_CLI_Options.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 630)) ;
-    temp_44.addAssign_operation (GALGAS_string ("F_Analyze_CLI_Options.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 631)) ;
-    temp_44.addAssign_operation (GALGAS_string ("F_Analyze_CLI_Options.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 632)) ;
-    temp_44.addAssign_operation (GALGAS_string ("C_CommandLineOption.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 633)) ;
-    temp_44.addAssign_operation (GALGAS_string ("C_CommandLineOption.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 634)) ;
-    temp_44.addAssign_operation (GALGAS_string ("C_BoolCommandLineOption.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 635)) ;
-    temp_44.addAssign_operation (GALGAS_string ("C_BoolCommandLineOption.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 636)) ;
-    temp_44.addAssign_operation (GALGAS_string ("C_UIntCommandLineOption.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 637)) ;
-    temp_44.addAssign_operation (GALGAS_string ("C_UIntCommandLineOption.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 638)) ;
-    temp_44.addAssign_operation (GALGAS_string ("C_StringCommandLineOption.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 639)) ;
-    temp_44.addAssign_operation (GALGAS_string ("C_StringCommandLineOption.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 640)) ;
-    categoryModifier_addGroupWithFiles (var_xcodeProject, GALGAS_string ("Command line Interface"), GALGAS_string ("command_line_interface"), temp_44, var_buildFileRefListForTool, var_m_5F_FileRefList, var_groupRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 623)) ;
+    GALGAS_stringset temp_44 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 693)) ;
+    temp_44.addAssign_operation (GALGAS_string ("TC_LinkedList.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 687)) ;
+    temp_44.addAssign_operation (GALGAS_string ("TC_FIFO.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 688)) ;
+    temp_44.addAssign_operation (GALGAS_string ("TC_UniqueSparseArray.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 689)) ;
+    temp_44.addAssign_operation (GALGAS_string ("TC_Array.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 690)) ;
+    temp_44.addAssign_operation (GALGAS_string ("TC_Array2.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 691)) ;
+    temp_44.addAssign_operation (GALGAS_string ("TC_UniqueArray.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 692)) ;
+    temp_44.addAssign_operation (GALGAS_string ("TC_UniqueArray2.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 693)) ;
+    categoryModifier_addGroupWithFiles (var_xcodeProject, GALGAS_string ("Collections"), GALGAS_string ("collections"), GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 685)), temp_44, var_buildFileRefListForTool, var_m_5F_FileRefList, var_frameworksFileRefList, var_resourceFileBuildRefs, var_groupRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 682)) ;
     }
-    var_libpmReferenceGroupList.addAssign_operation (var_groupRef  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 646)) ;
+    var_libpmReferenceGroupList.addAssign_operation (var_groupRef  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 701)) ;
     {
-    GALGAS_stringset temp_45 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 663)) ;
-    temp_45.addAssign_operation (GALGAS_string ("C_FileManager.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 652)) ;
-    temp_45.addAssign_operation (GALGAS_string ("C_FileManager.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 653)) ;
-    temp_45.addAssign_operation (GALGAS_string ("AC_FileHandle.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 654)) ;
-    temp_45.addAssign_operation (GALGAS_string ("AC_FileHandle.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 655)) ;
-    temp_45.addAssign_operation (GALGAS_string ("AC_FileHandleForWriting.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 656)) ;
-    temp_45.addAssign_operation (GALGAS_string ("AC_FileHandleForWriting.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 657)) ;
-    temp_45.addAssign_operation (GALGAS_string ("C_BinaryFileWrite.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 658)) ;
-    temp_45.addAssign_operation (GALGAS_string ("C_BinaryFileWrite.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 659)) ;
-    temp_45.addAssign_operation (GALGAS_string ("C_TextFileWrite.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 660)) ;
-    temp_45.addAssign_operation (GALGAS_string ("C_TextFileWrite.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 661)) ;
-    temp_45.addAssign_operation (GALGAS_string ("C_HTML_FileWrite.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 662)) ;
-    temp_45.addAssign_operation (GALGAS_string ("C_HTML_FileWrite.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 663)) ;
-    categoryModifier_addGroupWithFiles (var_xcodeProject, GALGAS_string ("File"), GALGAS_string ("files"), temp_45, var_buildFileRefListForTool, var_m_5F_FileRefList, var_groupRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 648)) ;
+    GALGAS_stringset temp_45 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 721)) ;
+    temp_45.addAssign_operation (GALGAS_string ("F_mainForLIBPM.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 708)) ;
+    temp_45.addAssign_operation (GALGAS_string ("F_mainForLIBPM.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 709)) ;
+    temp_45.addAssign_operation (GALGAS_string ("C_builtin_CLI_Options.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 710)) ;
+    temp_45.addAssign_operation (GALGAS_string ("C_builtin_CLI_Options.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 711)) ;
+    temp_45.addAssign_operation (GALGAS_string ("F_Analyze_CLI_Options.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 712)) ;
+    temp_45.addAssign_operation (GALGAS_string ("F_Analyze_CLI_Options.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 713)) ;
+    temp_45.addAssign_operation (GALGAS_string ("C_CommandLineOption.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 714)) ;
+    temp_45.addAssign_operation (GALGAS_string ("C_CommandLineOption.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 715)) ;
+    temp_45.addAssign_operation (GALGAS_string ("C_BoolCommandLineOption.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 716)) ;
+    temp_45.addAssign_operation (GALGAS_string ("C_BoolCommandLineOption.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 717)) ;
+    temp_45.addAssign_operation (GALGAS_string ("C_UIntCommandLineOption.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 718)) ;
+    temp_45.addAssign_operation (GALGAS_string ("C_UIntCommandLineOption.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 719)) ;
+    temp_45.addAssign_operation (GALGAS_string ("C_StringCommandLineOption.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 720)) ;
+    temp_45.addAssign_operation (GALGAS_string ("C_StringCommandLineOption.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 721)) ;
+    categoryModifier_addGroupWithFiles (var_xcodeProject, GALGAS_string ("Command line Interface"), GALGAS_string ("command_line_interface"), GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 706)), temp_45, var_buildFileRefListForTool, var_m_5F_FileRefList, var_frameworksFileRefList, var_resourceFileBuildRefs, var_groupRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 703)) ;
     }
-    var_libpmReferenceGroupList.addAssign_operation (var_groupRef  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 669)) ;
+    var_libpmReferenceGroupList.addAssign_operation (var_groupRef  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 729)) ;
     {
-    GALGAS_stringset temp_46 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 755)) ;
-    temp_46.addAssign_operation (GALGAS_string ("AC_GALGAS_class.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 675)) ;
-    temp_46.addAssign_operation (GALGAS_string ("AC_GALGAS_class.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 676)) ;
-    temp_46.addAssign_operation (GALGAS_string ("AC_GALGAS_enumAssociatedValues.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 677)) ;
-    temp_46.addAssign_operation (GALGAS_string ("AC_GALGAS_enumAssociatedValues.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 678)) ;
-    temp_46.addAssign_operation (GALGAS_string ("AC_GALGAS_graph.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 679)) ;
-    temp_46.addAssign_operation (GALGAS_string ("AC_GALGAS_graph.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 680)) ;
-    temp_46.addAssign_operation (GALGAS_string ("AC_GALGAS_list.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 681)) ;
-    temp_46.addAssign_operation (GALGAS_string ("AC_GALGAS_list.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 682)) ;
-    temp_46.addAssign_operation (GALGAS_string ("AC_GALGAS_map.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 683)) ;
-    temp_46.addAssign_operation (GALGAS_string ("AC_GALGAS_map.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 684)) ;
-    temp_46.addAssign_operation (GALGAS_string ("AC_GALGAS_root.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 685)) ;
-    temp_46.addAssign_operation (GALGAS_string ("AC_GALGAS_root.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 686)) ;
-    temp_46.addAssign_operation (GALGAS_string ("AC_GALGAS_sortedlist.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 687)) ;
-    temp_46.addAssign_operation (GALGAS_string ("AC_GALGAS_sortedlist.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 688)) ;
-    temp_46.addAssign_operation (GALGAS_string ("AC_GALGAS_uniqueMap.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 689)) ;
-    temp_46.addAssign_operation (GALGAS_string ("AC_GALGAS_uniqueMap.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 690)) ;
-    temp_46.addAssign_operation (GALGAS_string ("acPtr_class.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 691)) ;
-    temp_46.addAssign_operation (GALGAS_string ("acPtr_class.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 692)) ;
-    temp_46.addAssign_operation (GALGAS_string ("C_Compiler.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 693)) ;
-    temp_46.addAssign_operation (GALGAS_string ("C_Compiler.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 694)) ;
-    temp_46.addAssign_operation (GALGAS_string ("C_galgas_class_inspector.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 695)) ;
-    temp_46.addAssign_operation (GALGAS_string ("C_galgas_class_inspector.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 696)) ;
-    temp_46.addAssign_operation (GALGAS_string ("C_galgas_CLI_Options.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 697)) ;
-    temp_46.addAssign_operation (GALGAS_string ("C_galgas_CLI_Options.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 698)) ;
-    temp_46.addAssign_operation (GALGAS_string ("C_galgas_function_descriptor.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 699)) ;
-    temp_46.addAssign_operation (GALGAS_string ("C_galgas_function_descriptor.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 700)) ;
-    temp_46.addAssign_operation (GALGAS_string ("C_galgas_io.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 701)) ;
-    temp_46.addAssign_operation (GALGAS_string ("C_galgas_io.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 702)) ;
-    temp_46.addAssign_operation (GALGAS_string ("C_galgas_type_descriptor.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 703)) ;
-    temp_46.addAssign_operation (GALGAS_string ("C_galgas_type_descriptor.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 704)) ;
-    temp_46.addAssign_operation (GALGAS_string ("C_Lexique.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 705)) ;
-    temp_46.addAssign_operation (GALGAS_string ("C_Lexique.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 706)) ;
-    temp_46.addAssign_operation (GALGAS_string ("C_LocationInSource.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 707)) ;
-    temp_46.addAssign_operation (GALGAS_string ("C_LocationInSource.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 708)) ;
-    temp_46.addAssign_operation (GALGAS_string ("C_SourceTextInString.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 709)) ;
-    temp_46.addAssign_operation (GALGAS_string ("C_SourceTextInString.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 710)) ;
-    temp_46.addAssign_operation (GALGAS_string ("capCollectionElement.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 711)) ;
-    temp_46.addAssign_operation (GALGAS_string ("capCollectionElement.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 712)) ;
-    temp_46.addAssign_operation (GALGAS_string ("capCollectionElementArray.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 713)) ;
-    temp_46.addAssign_operation (GALGAS_string ("capCollectionElementArray.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 714)) ;
-    temp_46.addAssign_operation (GALGAS_string ("capSortedListElement.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 715)) ;
-    temp_46.addAssign_operation (GALGAS_string ("capSortedListElement.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 716)) ;
-    temp_46.addAssign_operation (GALGAS_string ("cCollectionElement.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 717)) ;
-    temp_46.addAssign_operation (GALGAS_string ("cCollectionElement.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 718)) ;
-    temp_46.addAssign_operation (GALGAS_string ("cEnumerator_range.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 719)) ;
-    temp_46.addAssign_operation (GALGAS_string ("cEnumerator_range.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 720)) ;
-    temp_46.addAssign_operation (GALGAS_string ("cGenericAbstractEnumerator.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 721)) ;
-    temp_46.addAssign_operation (GALGAS_string ("cGenericAbstractEnumerator.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 722)) ;
-    temp_46.addAssign_operation (GALGAS_string ("cIndexingDictionary.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 723)) ;
-    temp_46.addAssign_operation (GALGAS_string ("cIndexingDictionary.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 724)) ;
-    temp_46.addAssign_operation (GALGAS_string ("cObjectArray.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 725)) ;
-    temp_46.addAssign_operation (GALGAS_string ("cObjectArray.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 726)) ;
-    temp_46.addAssign_operation (GALGAS_string ("cProductionNameDescriptor.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 727)) ;
-    temp_46.addAssign_operation (GALGAS_string ("cPtr_object.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 728)) ;
-    temp_46.addAssign_operation (GALGAS_string ("cPtr_object.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 729)) ;
-    temp_46.addAssign_operation (GALGAS_string ("cSortedListElement.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 730)) ;
-    temp_46.addAssign_operation (GALGAS_string ("cSortedListElement.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 731)) ;
-    temp_46.addAssign_operation (GALGAS_string ("cTemplateDelimiter.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 732)) ;
-    temp_46.addAssign_operation (GALGAS_string ("GALGAS_application.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 733)) ;
-    temp_46.addAssign_operation (GALGAS_string ("GALGAS_binaryset.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 734)) ;
-    temp_46.addAssign_operation (GALGAS_string ("GALGAS_bool.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 735)) ;
-    temp_46.addAssign_operation (GALGAS_string ("GALGAS_char.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 736)) ;
-    temp_46.addAssign_operation (GALGAS_string ("GALGAS_data.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 737)) ;
-    temp_46.addAssign_operation (GALGAS_string ("GALGAS_double.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 738)) ;
-    temp_46.addAssign_operation (GALGAS_string ("GALGAS_filewrapper.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 739)) ;
-    temp_46.addAssign_operation (GALGAS_string ("GALGAS_function.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 740)) ;
-    temp_46.addAssign_operation (GALGAS_string ("GALGAS_location.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 741)) ;
-    temp_46.addAssign_operation (GALGAS_string ("GALGAS_object.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 742)) ;
-    temp_46.addAssign_operation (GALGAS_string ("GALGAS_sint_36__34_.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 743)) ;
-    temp_46.addAssign_operation (GALGAS_string ("GALGAS_sint.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 744)) ;
-    temp_46.addAssign_operation (GALGAS_string ("GALGAS_string.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 745)) ;
-    temp_46.addAssign_operation (GALGAS_string ("GALGAS_stringset.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 746)) ;
-    temp_46.addAssign_operation (GALGAS_string ("GALGAS_type.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 747)) ;
-    temp_46.addAssign_operation (GALGAS_string ("GALGAS_uint_36__34_.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 748)) ;
-    temp_46.addAssign_operation (GALGAS_string ("GALGAS_uint.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 749)) ;
-    temp_46.addAssign_operation (GALGAS_string ("predefined-types.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 750)) ;
-    temp_46.addAssign_operation (GALGAS_string ("predefined-types.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 751)) ;
-    temp_46.addAssign_operation (GALGAS_string ("scanner_actions.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 752)) ;
-    temp_46.addAssign_operation (GALGAS_string ("scanner_actions.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 753)) ;
-    temp_46.addAssign_operation (GALGAS_string ("typeComparisonResult.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 754)) ;
-    temp_46.addAssign_operation (GALGAS_string ("typeComparisonResult.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 755)) ;
-    categoryModifier_addGroupWithFiles (var_xcodeProject, GALGAS_string ("Galgas 2"), GALGAS_string ("galgas2"), temp_46, var_buildFileRefListForTool, var_m_5F_FileRefList, var_groupRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 671)) ;
+    GALGAS_stringset temp_46 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 747)) ;
+    temp_46.addAssign_operation (GALGAS_string ("C_FileManager.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 736)) ;
+    temp_46.addAssign_operation (GALGAS_string ("C_FileManager.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 737)) ;
+    temp_46.addAssign_operation (GALGAS_string ("AC_FileHandle.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 738)) ;
+    temp_46.addAssign_operation (GALGAS_string ("AC_FileHandle.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 739)) ;
+    temp_46.addAssign_operation (GALGAS_string ("AC_FileHandleForWriting.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 740)) ;
+    temp_46.addAssign_operation (GALGAS_string ("AC_FileHandleForWriting.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 741)) ;
+    temp_46.addAssign_operation (GALGAS_string ("C_BinaryFileWrite.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 742)) ;
+    temp_46.addAssign_operation (GALGAS_string ("C_BinaryFileWrite.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 743)) ;
+    temp_46.addAssign_operation (GALGAS_string ("C_TextFileWrite.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 744)) ;
+    temp_46.addAssign_operation (GALGAS_string ("C_TextFileWrite.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 745)) ;
+    temp_46.addAssign_operation (GALGAS_string ("C_HTML_FileWrite.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 746)) ;
+    temp_46.addAssign_operation (GALGAS_string ("C_HTML_FileWrite.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 747)) ;
+    categoryModifier_addGroupWithFiles (var_xcodeProject, GALGAS_string ("File"), GALGAS_string ("files"), GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 734)), temp_46, var_buildFileRefListForTool, var_m_5F_FileRefList, var_frameworksFileRefList, var_resourceFileBuildRefs, var_groupRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 731)) ;
     }
-    var_libpmReferenceGroupList.addAssign_operation (var_groupRef  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 761)) ;
+    var_libpmReferenceGroupList.addAssign_operation (var_groupRef  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 755)) ;
     {
-    GALGAS_stringset temp_47 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 776)) ;
-    temp_47.addAssign_operation (GALGAS_string ("C_ErrorOut.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 767)) ;
-    temp_47.addAssign_operation (GALGAS_string ("C_ErrorOut.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 768)) ;
-    temp_47.addAssign_operation (GALGAS_string ("AC_OutputStream.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 769)) ;
-    temp_47.addAssign_operation (GALGAS_string ("AC_OutputStream.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 770)) ;
-    temp_47.addAssign_operation (GALGAS_string ("C_ConsoleOut.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 771)) ;
-    temp_47.addAssign_operation (GALGAS_string ("C_ConsoleOut.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 772)) ;
-    temp_47.addAssign_operation (GALGAS_string ("C_ColoredConsole.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 773)) ;
-    temp_47.addAssign_operation (GALGAS_string ("C_ColoredConsole.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 774)) ;
-    temp_47.addAssign_operation (GALGAS_string ("C_TCPSocketOut.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 775)) ;
-    temp_47.addAssign_operation (GALGAS_string ("C_TCPSocketOut.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 776)) ;
-    categoryModifier_addGroupWithFiles (var_xcodeProject, GALGAS_string ("Streams"), GALGAS_string ("streams"), temp_47, var_buildFileRefListForTool, var_m_5F_FileRefList, var_groupRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 763)) ;
+    GALGAS_stringset temp_47 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 842)) ;
+    temp_47.addAssign_operation (GALGAS_string ("AC_GALGAS_class.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 762)) ;
+    temp_47.addAssign_operation (GALGAS_string ("AC_GALGAS_class.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 763)) ;
+    temp_47.addAssign_operation (GALGAS_string ("AC_GALGAS_enumAssociatedValues.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 764)) ;
+    temp_47.addAssign_operation (GALGAS_string ("AC_GALGAS_enumAssociatedValues.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 765)) ;
+    temp_47.addAssign_operation (GALGAS_string ("AC_GALGAS_graph.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 766)) ;
+    temp_47.addAssign_operation (GALGAS_string ("AC_GALGAS_graph.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 767)) ;
+    temp_47.addAssign_operation (GALGAS_string ("AC_GALGAS_list.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 768)) ;
+    temp_47.addAssign_operation (GALGAS_string ("AC_GALGAS_list.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 769)) ;
+    temp_47.addAssign_operation (GALGAS_string ("AC_GALGAS_map.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 770)) ;
+    temp_47.addAssign_operation (GALGAS_string ("AC_GALGAS_map.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 771)) ;
+    temp_47.addAssign_operation (GALGAS_string ("AC_GALGAS_root.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 772)) ;
+    temp_47.addAssign_operation (GALGAS_string ("AC_GALGAS_root.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 773)) ;
+    temp_47.addAssign_operation (GALGAS_string ("AC_GALGAS_sortedlist.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 774)) ;
+    temp_47.addAssign_operation (GALGAS_string ("AC_GALGAS_sortedlist.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 775)) ;
+    temp_47.addAssign_operation (GALGAS_string ("AC_GALGAS_uniqueMap.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 776)) ;
+    temp_47.addAssign_operation (GALGAS_string ("AC_GALGAS_uniqueMap.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 777)) ;
+    temp_47.addAssign_operation (GALGAS_string ("acPtr_class.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 778)) ;
+    temp_47.addAssign_operation (GALGAS_string ("acPtr_class.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 779)) ;
+    temp_47.addAssign_operation (GALGAS_string ("C_Compiler.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 780)) ;
+    temp_47.addAssign_operation (GALGAS_string ("C_Compiler.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 781)) ;
+    temp_47.addAssign_operation (GALGAS_string ("C_galgas_class_inspector.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 782)) ;
+    temp_47.addAssign_operation (GALGAS_string ("C_galgas_class_inspector.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 783)) ;
+    temp_47.addAssign_operation (GALGAS_string ("C_galgas_CLI_Options.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 784)) ;
+    temp_47.addAssign_operation (GALGAS_string ("C_galgas_CLI_Options.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 785)) ;
+    temp_47.addAssign_operation (GALGAS_string ("C_galgas_function_descriptor.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 786)) ;
+    temp_47.addAssign_operation (GALGAS_string ("C_galgas_function_descriptor.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 787)) ;
+    temp_47.addAssign_operation (GALGAS_string ("C_galgas_io.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 788)) ;
+    temp_47.addAssign_operation (GALGAS_string ("C_galgas_io.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 789)) ;
+    temp_47.addAssign_operation (GALGAS_string ("C_galgas_type_descriptor.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 790)) ;
+    temp_47.addAssign_operation (GALGAS_string ("C_galgas_type_descriptor.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 791)) ;
+    temp_47.addAssign_operation (GALGAS_string ("C_Lexique.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 792)) ;
+    temp_47.addAssign_operation (GALGAS_string ("C_Lexique.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 793)) ;
+    temp_47.addAssign_operation (GALGAS_string ("C_LocationInSource.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 794)) ;
+    temp_47.addAssign_operation (GALGAS_string ("C_LocationInSource.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 795)) ;
+    temp_47.addAssign_operation (GALGAS_string ("C_SourceTextInString.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 796)) ;
+    temp_47.addAssign_operation (GALGAS_string ("C_SourceTextInString.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 797)) ;
+    temp_47.addAssign_operation (GALGAS_string ("capCollectionElement.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 798)) ;
+    temp_47.addAssign_operation (GALGAS_string ("capCollectionElement.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 799)) ;
+    temp_47.addAssign_operation (GALGAS_string ("capCollectionElementArray.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 800)) ;
+    temp_47.addAssign_operation (GALGAS_string ("capCollectionElementArray.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 801)) ;
+    temp_47.addAssign_operation (GALGAS_string ("capSortedListElement.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 802)) ;
+    temp_47.addAssign_operation (GALGAS_string ("capSortedListElement.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 803)) ;
+    temp_47.addAssign_operation (GALGAS_string ("cCollectionElement.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 804)) ;
+    temp_47.addAssign_operation (GALGAS_string ("cCollectionElement.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 805)) ;
+    temp_47.addAssign_operation (GALGAS_string ("cEnumerator_range.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 806)) ;
+    temp_47.addAssign_operation (GALGAS_string ("cEnumerator_range.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 807)) ;
+    temp_47.addAssign_operation (GALGAS_string ("cGenericAbstractEnumerator.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 808)) ;
+    temp_47.addAssign_operation (GALGAS_string ("cGenericAbstractEnumerator.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 809)) ;
+    temp_47.addAssign_operation (GALGAS_string ("cIndexingDictionary.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 810)) ;
+    temp_47.addAssign_operation (GALGAS_string ("cIndexingDictionary.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 811)) ;
+    temp_47.addAssign_operation (GALGAS_string ("cObjectArray.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 812)) ;
+    temp_47.addAssign_operation (GALGAS_string ("cObjectArray.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 813)) ;
+    temp_47.addAssign_operation (GALGAS_string ("cProductionNameDescriptor.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 814)) ;
+    temp_47.addAssign_operation (GALGAS_string ("cPtr_object.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 815)) ;
+    temp_47.addAssign_operation (GALGAS_string ("cPtr_object.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 816)) ;
+    temp_47.addAssign_operation (GALGAS_string ("cSortedListElement.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 817)) ;
+    temp_47.addAssign_operation (GALGAS_string ("cSortedListElement.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 818)) ;
+    temp_47.addAssign_operation (GALGAS_string ("cTemplateDelimiter.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 819)) ;
+    temp_47.addAssign_operation (GALGAS_string ("GALGAS_application.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 820)) ;
+    temp_47.addAssign_operation (GALGAS_string ("GALGAS_binaryset.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 821)) ;
+    temp_47.addAssign_operation (GALGAS_string ("GALGAS_bool.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 822)) ;
+    temp_47.addAssign_operation (GALGAS_string ("GALGAS_char.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 823)) ;
+    temp_47.addAssign_operation (GALGAS_string ("GALGAS_data.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 824)) ;
+    temp_47.addAssign_operation (GALGAS_string ("GALGAS_double.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 825)) ;
+    temp_47.addAssign_operation (GALGAS_string ("GALGAS_filewrapper.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 826)) ;
+    temp_47.addAssign_operation (GALGAS_string ("GALGAS_function.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 827)) ;
+    temp_47.addAssign_operation (GALGAS_string ("GALGAS_location.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 828)) ;
+    temp_47.addAssign_operation (GALGAS_string ("GALGAS_object.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 829)) ;
+    temp_47.addAssign_operation (GALGAS_string ("GALGAS_sint_36__34_.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 830)) ;
+    temp_47.addAssign_operation (GALGAS_string ("GALGAS_sint.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 831)) ;
+    temp_47.addAssign_operation (GALGAS_string ("GALGAS_string.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 832)) ;
+    temp_47.addAssign_operation (GALGAS_string ("GALGAS_stringset.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 833)) ;
+    temp_47.addAssign_operation (GALGAS_string ("GALGAS_type.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 834)) ;
+    temp_47.addAssign_operation (GALGAS_string ("GALGAS_uint_36__34_.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 835)) ;
+    temp_47.addAssign_operation (GALGAS_string ("GALGAS_uint.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 836)) ;
+    temp_47.addAssign_operation (GALGAS_string ("predefined-types.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 837)) ;
+    temp_47.addAssign_operation (GALGAS_string ("predefined-types.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 838)) ;
+    temp_47.addAssign_operation (GALGAS_string ("scanner_actions.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 839)) ;
+    temp_47.addAssign_operation (GALGAS_string ("scanner_actions.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 840)) ;
+    temp_47.addAssign_operation (GALGAS_string ("typeComparisonResult.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 841)) ;
+    temp_47.addAssign_operation (GALGAS_string ("typeComparisonResult.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 842)) ;
+    categoryModifier_addGroupWithFiles (var_xcodeProject, GALGAS_string ("Galgas 2"), GALGAS_string ("galgas2"), GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 760)), temp_47, var_buildFileRefListForTool, var_m_5F_FileRefList, var_frameworksFileRefList, var_resourceFileBuildRefs, var_groupRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 757)) ;
     }
-    var_libpmReferenceGroupList.addAssign_operation (var_groupRef  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 782)) ;
+    var_libpmReferenceGroupList.addAssign_operation (var_groupRef  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 850)) ;
     {
-    GALGAS_stringset temp_48 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 801)) ;
-    temp_48.addAssign_operation (GALGAS_string ("C_HTMLString.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 788)) ;
-    temp_48.addAssign_operation (GALGAS_string ("C_HTMLString.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 789)) ;
-    temp_48.addAssign_operation (GALGAS_string ("C_String.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 790)) ;
-    temp_48.addAssign_operation (GALGAS_string ("C_String.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 791)) ;
-    temp_48.addAssign_operation (GALGAS_string ("cUnicodeData.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 792)) ;
-    temp_48.addAssign_operation (GALGAS_string ("string_encodings.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 793)) ;
-    temp_48.addAssign_operation (GALGAS_string ("unicode_character_base.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 794)) ;
-    temp_48.addAssign_operation (GALGAS_string ("unicode_character_cpp.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 795)) ;
-    temp_48.addAssign_operation (GALGAS_string ("unicode_character_cpp.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 796)) ;
-    temp_48.addAssign_operation (GALGAS_string ("unicode_character_implementation.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 797)) ;
-    temp_48.addAssign_operation (GALGAS_string ("unicode_character_m.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 798)) ;
-    temp_48.addAssign_operation (GALGAS_string ("unicode_character_m.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 799)) ;
-    temp_48.addAssign_operation (GALGAS_string ("unicode_string_routines.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 800)) ;
-    temp_48.addAssign_operation (GALGAS_string ("unicode_string_routines.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 801)) ;
-    categoryModifier_addGroupWithFiles (var_xcodeProject, GALGAS_string ("Strings"), GALGAS_string ("strings"), temp_48, var_buildFileRefListForTool, var_m_5F_FileRefList, var_groupRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 784)) ;
+    GALGAS_stringset temp_48 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 866)) ;
+    temp_48.addAssign_operation (GALGAS_string ("C_ErrorOut.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 857)) ;
+    temp_48.addAssign_operation (GALGAS_string ("C_ErrorOut.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 858)) ;
+    temp_48.addAssign_operation (GALGAS_string ("AC_OutputStream.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 859)) ;
+    temp_48.addAssign_operation (GALGAS_string ("AC_OutputStream.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 860)) ;
+    temp_48.addAssign_operation (GALGAS_string ("C_ConsoleOut.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 861)) ;
+    temp_48.addAssign_operation (GALGAS_string ("C_ConsoleOut.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 862)) ;
+    temp_48.addAssign_operation (GALGAS_string ("C_ColoredConsole.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 863)) ;
+    temp_48.addAssign_operation (GALGAS_string ("C_ColoredConsole.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 864)) ;
+    temp_48.addAssign_operation (GALGAS_string ("C_TCPSocketOut.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 865)) ;
+    temp_48.addAssign_operation (GALGAS_string ("C_TCPSocketOut.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 866)) ;
+    categoryModifier_addGroupWithFiles (var_xcodeProject, GALGAS_string ("Streams"), GALGAS_string ("streams"), GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 855)), temp_48, var_buildFileRefListForTool, var_m_5F_FileRefList, var_frameworksFileRefList, var_resourceFileBuildRefs, var_groupRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 852)) ;
     }
-    var_libpmReferenceGroupList.addAssign_operation (var_groupRef  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 807)) ;
+    var_libpmReferenceGroupList.addAssign_operation (var_groupRef  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 874)) ;
     {
-    GALGAS_stringset temp_49 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 816)) ;
-    temp_49.addAssign_operation (GALGAS_string ("C_DateTime.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 813)) ;
-    temp_49.addAssign_operation (GALGAS_string ("C_DateTime.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 814)) ;
-    temp_49.addAssign_operation (GALGAS_string ("C_Timer.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 815)) ;
-    temp_49.addAssign_operation (GALGAS_string ("C_Timer.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 816)) ;
-    categoryModifier_addGroupWithFiles (var_xcodeProject, GALGAS_string ("Time"), GALGAS_string ("time"), temp_49, var_buildFileRefListForTool, var_m_5F_FileRefList, var_groupRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 809)) ;
+    GALGAS_stringset temp_49 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 894)) ;
+    temp_49.addAssign_operation (GALGAS_string ("C_HTMLString.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 881)) ;
+    temp_49.addAssign_operation (GALGAS_string ("C_HTMLString.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 882)) ;
+    temp_49.addAssign_operation (GALGAS_string ("C_String.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 883)) ;
+    temp_49.addAssign_operation (GALGAS_string ("C_String.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 884)) ;
+    temp_49.addAssign_operation (GALGAS_string ("cUnicodeData.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 885)) ;
+    temp_49.addAssign_operation (GALGAS_string ("string_encodings.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 886)) ;
+    temp_49.addAssign_operation (GALGAS_string ("unicode_character_base.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 887)) ;
+    temp_49.addAssign_operation (GALGAS_string ("unicode_character_cpp.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 888)) ;
+    temp_49.addAssign_operation (GALGAS_string ("unicode_character_cpp.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 889)) ;
+    temp_49.addAssign_operation (GALGAS_string ("unicode_character_implementation.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 890)) ;
+    temp_49.addAssign_operation (GALGAS_string ("unicode_character_m.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 891)) ;
+    temp_49.addAssign_operation (GALGAS_string ("unicode_character_m.m")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 892)) ;
+    temp_49.addAssign_operation (GALGAS_string ("unicode_string_routines.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 893)) ;
+    temp_49.addAssign_operation (GALGAS_string ("unicode_string_routines.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 894)) ;
+    categoryModifier_addGroupWithFiles (var_xcodeProject, GALGAS_string ("Strings"), GALGAS_string ("strings"), GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 879)), temp_49, var_buildFileRefListForTool, var_m_5F_FileRefList, var_frameworksFileRefList, var_resourceFileBuildRefs, var_groupRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 876)) ;
     }
-    var_libpmReferenceGroupList.addAssign_operation (var_groupRef  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 822)) ;
+    var_libpmReferenceGroupList.addAssign_operation (var_groupRef  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 902)) ;
     {
-    GALGAS_stringset temp_50 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 863)) ;
-    temp_50.addAssign_operation (GALGAS_string ("basic-allocation.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 828)) ;
-    temp_50.addAssign_operation (GALGAS_string ("basic-allocation.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 829)) ;
-    temp_50.addAssign_operation (GALGAS_string ("C_CRC32.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 830)) ;
-    temp_50.addAssign_operation (GALGAS_string ("C_CRC32.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 831)) ;
-    temp_50.addAssign_operation (GALGAS_string ("C_Data.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 832)) ;
-    temp_50.addAssign_operation (GALGAS_string ("C_Data.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 833)) ;
-    temp_50.addAssign_operation (GALGAS_string ("C_DirectedGraph.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 834)) ;
-    temp_50.addAssign_operation (GALGAS_string ("C_DirectedGraph.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 835)) ;
-    temp_50.addAssign_operation (GALGAS_string ("C_PrologueEpilogue.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 836)) ;
-    temp_50.addAssign_operation (GALGAS_string ("C_PrologueEpilogue.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 837)) ;
-    temp_50.addAssign_operation (GALGAS_string ("C_SharedObject.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 838)) ;
-    temp_50.addAssign_operation (GALGAS_string ("C_SharedObject.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 839)) ;
-    temp_50.addAssign_operation (GALGAS_string ("C_UIntSet.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 840)) ;
-    temp_50.addAssign_operation (GALGAS_string ("C_UIntSet.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 841)) ;
-    temp_50.addAssign_operation (GALGAS_string ("cpp-allocation.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 842)) ;
-    temp_50.addAssign_operation (GALGAS_string ("cpp-allocation.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 843)) ;
-    temp_50.addAssign_operation (GALGAS_string ("F_DisplayException.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 844)) ;
-    temp_50.addAssign_operation (GALGAS_string ("F_DisplayException.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 845)) ;
-    temp_50.addAssign_operation (GALGAS_string ("F_GetPrime.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 846)) ;
-    temp_50.addAssign_operation (GALGAS_string ("F_GetPrime.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 847)) ;
-    temp_50.addAssign_operation (GALGAS_string ("M_machine.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 848)) ;
-    temp_50.addAssign_operation (GALGAS_string ("M_SourceLocation.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 849)) ;
-    temp_50.addAssign_operation (GALGAS_string ("M_Threads.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 850)) ;
-    temp_50.addAssign_operation (GALGAS_string ("md5.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 851)) ;
-    temp_50.addAssign_operation (GALGAS_string ("md5.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 852)) ;
-    temp_50.addAssign_operation (GALGAS_string ("MF_Assert.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 853)) ;
-    temp_50.addAssign_operation (GALGAS_string ("MF_Assert.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 854)) ;
-    temp_50.addAssign_operation (GALGAS_string ("MF_MemoryControl.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 855)) ;
-    temp_50.addAssign_operation (GALGAS_string ("MF_MemoryControl.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 856)) ;
-    temp_50.addAssign_operation (GALGAS_string ("PMUInt128.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 857)) ;
-    temp_50.addAssign_operation (GALGAS_string ("PMUInt128.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 858)) ;
-    temp_50.addAssign_operation (GALGAS_string ("PMUInt128.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 859)) ;
-    temp_50.addAssign_operation (GALGAS_string ("PMUInt128.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 860)) ;
-    temp_50.addAssign_operation (GALGAS_string ("TF_inf.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 861)) ;
-    temp_50.addAssign_operation (GALGAS_string ("TF_sup.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 862)) ;
-    temp_50.addAssign_operation (GALGAS_string ("TF_Swap.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 863)) ;
-    categoryModifier_addGroupWithFiles (var_xcodeProject, GALGAS_string ("Utilities"), GALGAS_string ("utilities"), temp_50, var_buildFileRefListForTool, var_m_5F_FileRefList, var_groupRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 824)) ;
+    GALGAS_stringset temp_50 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 912)) ;
+    temp_50.addAssign_operation (GALGAS_string ("C_DateTime.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 909)) ;
+    temp_50.addAssign_operation (GALGAS_string ("C_DateTime.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 910)) ;
+    temp_50.addAssign_operation (GALGAS_string ("C_Timer.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 911)) ;
+    temp_50.addAssign_operation (GALGAS_string ("C_Timer.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 912)) ;
+    categoryModifier_addGroupWithFiles (var_xcodeProject, GALGAS_string ("Time"), GALGAS_string ("time"), GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 907)), temp_50, var_buildFileRefListForTool, var_m_5F_FileRefList, var_frameworksFileRefList, var_resourceFileBuildRefs, var_groupRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 904)) ;
     }
-    var_libpmReferenceGroupList.addAssign_operation (var_groupRef  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 869)) ;
+    var_libpmReferenceGroupList.addAssign_operation (var_groupRef  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 920)) ;
+    {
+    GALGAS_stringset temp_51 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 962)) ;
+    temp_51.addAssign_operation (GALGAS_string ("basic-allocation.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 927)) ;
+    temp_51.addAssign_operation (GALGAS_string ("basic-allocation.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 928)) ;
+    temp_51.addAssign_operation (GALGAS_string ("C_CRC32.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 929)) ;
+    temp_51.addAssign_operation (GALGAS_string ("C_CRC32.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 930)) ;
+    temp_51.addAssign_operation (GALGAS_string ("C_Data.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 931)) ;
+    temp_51.addAssign_operation (GALGAS_string ("C_Data.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 932)) ;
+    temp_51.addAssign_operation (GALGAS_string ("C_DirectedGraph.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 933)) ;
+    temp_51.addAssign_operation (GALGAS_string ("C_DirectedGraph.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 934)) ;
+    temp_51.addAssign_operation (GALGAS_string ("C_PrologueEpilogue.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 935)) ;
+    temp_51.addAssign_operation (GALGAS_string ("C_PrologueEpilogue.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 936)) ;
+    temp_51.addAssign_operation (GALGAS_string ("C_SharedObject.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 937)) ;
+    temp_51.addAssign_operation (GALGAS_string ("C_SharedObject.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 938)) ;
+    temp_51.addAssign_operation (GALGAS_string ("C_UIntSet.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 939)) ;
+    temp_51.addAssign_operation (GALGAS_string ("C_UIntSet.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 940)) ;
+    temp_51.addAssign_operation (GALGAS_string ("cpp-allocation.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 941)) ;
+    temp_51.addAssign_operation (GALGAS_string ("cpp-allocation.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 942)) ;
+    temp_51.addAssign_operation (GALGAS_string ("F_DisplayException.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 943)) ;
+    temp_51.addAssign_operation (GALGAS_string ("F_DisplayException.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 944)) ;
+    temp_51.addAssign_operation (GALGAS_string ("F_GetPrime.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 945)) ;
+    temp_51.addAssign_operation (GALGAS_string ("F_GetPrime.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 946)) ;
+    temp_51.addAssign_operation (GALGAS_string ("M_machine.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 947)) ;
+    temp_51.addAssign_operation (GALGAS_string ("M_SourceLocation.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 948)) ;
+    temp_51.addAssign_operation (GALGAS_string ("M_Threads.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 949)) ;
+    temp_51.addAssign_operation (GALGAS_string ("md5.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 950)) ;
+    temp_51.addAssign_operation (GALGAS_string ("md5.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 951)) ;
+    temp_51.addAssign_operation (GALGAS_string ("MF_Assert.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 952)) ;
+    temp_51.addAssign_operation (GALGAS_string ("MF_Assert.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 953)) ;
+    temp_51.addAssign_operation (GALGAS_string ("MF_MemoryControl.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 954)) ;
+    temp_51.addAssign_operation (GALGAS_string ("MF_MemoryControl.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 955)) ;
+    temp_51.addAssign_operation (GALGAS_string ("PMUInt128.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 956)) ;
+    temp_51.addAssign_operation (GALGAS_string ("PMUInt128.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 957)) ;
+    temp_51.addAssign_operation (GALGAS_string ("PMUInt128.cpp")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 958)) ;
+    temp_51.addAssign_operation (GALGAS_string ("PMUInt128.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 959)) ;
+    temp_51.addAssign_operation (GALGAS_string ("TF_inf.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 960)) ;
+    temp_51.addAssign_operation (GALGAS_string ("TF_sup.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 961)) ;
+    temp_51.addAssign_operation (GALGAS_string ("TF_Swap.h")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 962)) ;
+    categoryModifier_addGroupWithFiles (var_xcodeProject, GALGAS_string ("Utilities"), GALGAS_string ("utilities"), GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 925)), temp_51, var_buildFileRefListForTool, var_m_5F_FileRefList, var_frameworksFileRefList, var_resourceFileBuildRefs, var_groupRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 922)) ;
+    }
+    var_libpmReferenceGroupList.addAssign_operation (var_groupRef  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 970)) ;
     GALGAS_string var_libpmGroupRef ;
     {
-    categoryModifier_addGroup (var_xcodeProject, GALGAS_string ("libpm"), GALGAS_string ("../build/libpm"), var_libpmReferenceGroupList, var_libpmGroupRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 871)) ;
+    categoryModifier_addGroup (var_xcodeProject, GALGAS_string ("libpm"), GALGAS_string ("../build/libpm"), var_libpmReferenceGroupList, var_libpmGroupRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 972)) ;
     }
     {
-    categoryModifier_placeGroupAsMainGroup (var_xcodeProject, var_libpmGroupRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 872)) ;
+    categoryModifier_placeGroupAsMainGroup (var_xcodeProject, var_libpmGroupRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 973)) ;
+    }
+    GALGAS_string var_resourcesGroupRef ;
+    {
+    GALGAS_stringset temp_52 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 980)) ;
+    temp_52.addAssign_operation (GALGAS_string ("Info.plist")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 980)) ;
+    categoryModifier_addGroupWithFiles (var_xcodeProject, GALGAS_string ("Resources"), GALGAS_string ("."), GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 978)), temp_52, var_buildFileRefListForTool, var_m_5F_FileRefList, var_frameworksFileRefList, var_resourceFileBuildRefs, var_resourcesGroupRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 975)) ;
     }
     {
-    GALGAS_stringlist temp_51 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 880)) ;
-    temp_51.addAssign_operation (GALGAS_string ("GCC_OPTIMIZATION_LEVEL = 2")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 879)) ;
-    temp_51.addAssign_operation (GALGAS_string ("GCC_PREPROCESSOR_DEFINITIONS = (\"LIBPM_MULTI_THREADING=0\", DO_NOT_GENERATE_CHECKINGS)")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 880)) ;
-    GALGAS_string joker_38421 ; // Joker input parameter
-    categoryModifier_addMachOTarget (var_xcodeProject, constinArgument_inTargetName.add_operation (GALGAS_string (" tool"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 875)), constinArgument_inTargetName, var_buildFileRefListForTool, temp_51, joker_38421, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 874)) ;
+    categoryModifier_placeGroupAsMainGroup (var_xcodeProject, var_resourcesGroupRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 988)) ;
+    }
+    GALGAS_string var_frameworkGroupRef ;
+    {
+    GALGAS_stringset temp_53 = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas3TargetGeneration.galgas", 996)) ;
+    temp_53.addAssign_operation (GALGAS_string ("AppKit.framework")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 995)) ;
+    temp_53.addAssign_operation (GALGAS_string ("Cocoa.framework")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 996)) ;
+    categoryModifier_addGroupWithFiles (var_xcodeProject, GALGAS_string ("Frameworks"), GALGAS_string ("/System/Library/Frameworks"), GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 993)), temp_53, var_buildFileRefListForTool, var_m_5F_FileRefList, var_frameworksFileRefList, var_resourceFileBuildRefs, var_frameworkGroupRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 990)) ;
     }
     {
-    GALGAS_stringlist temp_52 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 891)) ;
-    temp_52.addAssign_operation (GALGAS_string ("GCC_OPTIMIZATION_LEVEL = 0")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 890)) ;
-    temp_52.addAssign_operation (GALGAS_string ("GCC_PREPROCESSOR_DEFINITIONS = (\"LIBPM_MULTI_THREADING=0\")")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 891)) ;
-    GALGAS_string joker_38806 ; // Joker input parameter
-    categoryModifier_addMachOTarget (var_xcodeProject, constinArgument_inTargetName.add_operation (GALGAS_string (" tool debug"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 886)), constinArgument_inTargetName.add_operation (GALGAS_string ("-debug"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 887)), var_buildFileRefListForTool, temp_52, joker_38806, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 885)) ;
+    categoryModifier_placeGroupAsMainGroup (var_xcodeProject, var_frameworkGroupRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1004)) ;
     }
-    categoryMethod_generateAtPath (var_xcodeProject, var_dir.add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 897)).add_operation (constinArgument_inTargetName, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 897)).add_operation (GALGAS_string ("_NEW.xcodeproj"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 897)), var_newIntermediateFilePath, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 896)) ;
+    GALGAS_string var_releaseTargetRef ;
+    GALGAS_string var_releaseProductFileRef ;
+    {
+    GALGAS_stringlist temp_54 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1013)) ;
+    temp_54.addAssign_operation (GALGAS_string ("GCC_OPTIMIZATION_LEVEL = 2")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1011)) ;
+    temp_54.addAssign_operation (GALGAS_string ("GCC_PREPROCESSOR_DEFINITIONS = (\"LIBPM_MULTI_THREADING=0\", DO_NOT_GENERATE_CHECKINGS)")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1012)) ;
+    temp_54.addAssign_operation (GALGAS_string ("GCC_WARN_UNUSED_PARAMETER = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1013)) ;
+    categoryModifier_addToolTarget (var_xcodeProject, constinArgument_inTargetName.add_operation (GALGAS_string (" tool"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1007)), constinArgument_inTargetName, var_buildFileRefListForTool, temp_54, var_releaseTargetRef, var_releaseProductFileRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1006)) ;
+    }
+    GALGAS_string var_debugTargetRef ;
+    GALGAS_string var_debugProductFileRef ;
+    {
+    GALGAS_stringlist temp_55 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1026)) ;
+    temp_55.addAssign_operation (GALGAS_string ("GCC_OPTIMIZATION_LEVEL = 0")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1024)) ;
+    temp_55.addAssign_operation (GALGAS_string ("GCC_PREPROCESSOR_DEFINITIONS = (\"LIBPM_MULTI_THREADING=0\")")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1025)) ;
+    temp_55.addAssign_operation (GALGAS_string ("GCC_WARN_UNUSED_PARAMETER = YES")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1026)) ;
+    categoryModifier_addToolTarget (var_xcodeProject, constinArgument_inTargetName.add_operation (GALGAS_string (" tool debug"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1020)), constinArgument_inTargetName.add_operation (GALGAS_string ("-debug"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1021)), var_buildFileRefListForTool, temp_55, var_debugTargetRef, var_debugProductFileRef, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1019)) ;
+    }
+    {
+    GALGAS_stringlist temp_56 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1040)) ;
+    temp_56.addAssign_operation (GALGAS_string ("GCC_OPTIMIZATION_LEVEL = 0")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1039)) ;
+    temp_56.addAssign_operation (GALGAS_string ("GCC_PREPROCESSOR_DEFINITIONS = (\"LIBPM_MULTI_THREADING=0\")")  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1040)) ;
+    GALGAS_stringlist temp_57 = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1042)) ;
+    temp_57.addAssign_operation (var_releaseTargetRef  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1042)) ;
+    temp_57.addAssign_operation (var_debugTargetRef  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1042)) ;
+    GALGAS__32_stringlist temp_58 = GALGAS__32_stringlist::constructor_emptyList (SOURCE_FILE ("galgas3TargetGeneration.galgas", 1043)) ;
+    temp_58.addAssign_operation (var_releaseProductFileRef, constinArgument_inTargetName  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1043)) ;
+    temp_58.addAssign_operation (var_debugProductFileRef, constinArgument_inTargetName.add_operation (GALGAS_string ("-debug"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1043))  COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1043)) ;
+    GALGAS_string joker_44267 ; // Joker input parameter
+    categoryModifier_addAppTarget (var_xcodeProject, GALGAS_string ("Cocoa ").add_operation (constinArgument_inTargetName, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1033)), constinArgument_inTargetName.add_operation (GALGAS_string ("-cocoa"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1034)), var_m_5F_FileRefList, var_frameworksFileRefList, var_resourceFileBuildRefs, temp_56, temp_57, temp_58, joker_44267, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1032)) ;
+    }
+    categoryMethod_generateAtPath (var_xcodeProject, var_dir.add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1048)).add_operation (constinArgument_inTargetName, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1048)).add_operation (GALGAS_string ("_NEW.xcodeproj"), inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1048)), var_newIntermediateFilePath, inCompiler COMMA_SOURCE_FILE ("galgas3TargetGeneration.galgas", 1047)) ;
   }
 }
 
@@ -16575,664 +17014,6 @@ GALGAS_abstractEnumeratedCollectionAST GALGAS_abstractEnumeratedCollectionAST::e
       result = *p ;
     }else{
       inCompiler->castError ("abstractEnumeratedCollectionAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult cPtr_enumeratedCollectionCstListInExpAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_enumeratedCollectionCstListInExpAST * p = (const cPtr_enumeratedCollectionCstListInExpAST *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_enumeratedCollectionCstListInExpAST) ;
-  if (kOperandEqual == result) {
-    result = mAttribute_mElementList.objectCompare (p->mAttribute_mElementList) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mEndsWithEllipsis.objectCompare (p->mAttribute_mEndsWithEllipsis) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mEnumeratedExpression.objectCompare (p->mAttribute_mEnumeratedExpression) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mEndOfEnumerationExpression.objectCompare (p->mAttribute_mEndOfEnumerationExpression) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-
-typeComparisonResult GALGAS_enumeratedCollectionCstListInExpAST::objectCompare (const GALGAS_enumeratedCollectionCstListInExpAST & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_enumeratedCollectionCstListInExpAST::GALGAS_enumeratedCollectionCstListInExpAST (void) :
-GALGAS_abstractEnumeratedCollectionAST () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_enumeratedCollectionCstListInExpAST::GALGAS_enumeratedCollectionCstListInExpAST (const cPtr_enumeratedCollectionCstListInExpAST * inSourcePtr) :
-GALGAS_abstractEnumeratedCollectionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_enumeratedCollectionCstListInExpAST) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_enumeratedCollectionCstListInExpAST GALGAS_enumeratedCollectionCstListInExpAST::constructor_new (const GALGAS_foreachInstructionEnumeratedObjectElementListAST & inAttribute_mElementList,
-                                                                                                        const GALGAS_bool & inAttribute_mEndsWithEllipsis,
-                                                                                                        const GALGAS_semanticExpressionAST & inAttribute_mEnumeratedExpression,
-                                                                                                        const GALGAS_location & inAttribute_mEndOfEnumerationExpression
-                                                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_enumeratedCollectionCstListInExpAST result ;
-  if (inAttribute_mElementList.isValid () && inAttribute_mEndsWithEllipsis.isValid () && inAttribute_mEnumeratedExpression.isValid () && inAttribute_mEndOfEnumerationExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_enumeratedCollectionCstListInExpAST (inAttribute_mElementList, inAttribute_mEndsWithEllipsis, inAttribute_mEnumeratedExpression, inAttribute_mEndOfEnumerationExpression COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_foreachInstructionEnumeratedObjectElementListAST GALGAS_enumeratedCollectionCstListInExpAST::reader_mElementList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_foreachInstructionEnumeratedObjectElementListAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_enumeratedCollectionCstListInExpAST * p = (const cPtr_enumeratedCollectionCstListInExpAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_enumeratedCollectionCstListInExpAST) ;
-    result = p->mAttribute_mElementList ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_foreachInstructionEnumeratedObjectElementListAST cPtr_enumeratedCollectionCstListInExpAST::reader_mElementList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mElementList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_bool GALGAS_enumeratedCollectionCstListInExpAST::reader_mEndsWithEllipsis (UNUSED_LOCATION_ARGS) const {
-  GALGAS_bool result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_enumeratedCollectionCstListInExpAST * p = (const cPtr_enumeratedCollectionCstListInExpAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_enumeratedCollectionCstListInExpAST) ;
-    result = p->mAttribute_mEndsWithEllipsis ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_bool cPtr_enumeratedCollectionCstListInExpAST::reader_mEndsWithEllipsis (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mEndsWithEllipsis ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticExpressionAST GALGAS_enumeratedCollectionCstListInExpAST::reader_mEnumeratedExpression (UNUSED_LOCATION_ARGS) const {
-  GALGAS_semanticExpressionAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_enumeratedCollectionCstListInExpAST * p = (const cPtr_enumeratedCollectionCstListInExpAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_enumeratedCollectionCstListInExpAST) ;
-    result = p->mAttribute_mEnumeratedExpression ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticExpressionAST cPtr_enumeratedCollectionCstListInExpAST::reader_mEnumeratedExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mEnumeratedExpression ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location GALGAS_enumeratedCollectionCstListInExpAST::reader_mEndOfEnumerationExpression (UNUSED_LOCATION_ARGS) const {
-  GALGAS_location result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_enumeratedCollectionCstListInExpAST * p = (const cPtr_enumeratedCollectionCstListInExpAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_enumeratedCollectionCstListInExpAST) ;
-    result = p->mAttribute_mEndOfEnumerationExpression ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location cPtr_enumeratedCollectionCstListInExpAST::reader_mEndOfEnumerationExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mEndOfEnumerationExpression ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                            Pointer class for @enumeratedCollectionCstListInExpAST class                             *
-//---------------------------------------------------------------------------------------------------------------------*
-
-cPtr_enumeratedCollectionCstListInExpAST::cPtr_enumeratedCollectionCstListInExpAST (const GALGAS_foreachInstructionEnumeratedObjectElementListAST & in_mElementList,
-                                                                                    const GALGAS_bool & in_mEndsWithEllipsis,
-                                                                                    const GALGAS_semanticExpressionAST & in_mEnumeratedExpression,
-                                                                                    const GALGAS_location & in_mEndOfEnumerationExpression
-                                                                                    COMMA_LOCATION_ARGS) :
-cPtr_abstractEnumeratedCollectionAST (THERE),
-mAttribute_mElementList (in_mElementList),
-mAttribute_mEndsWithEllipsis (in_mEndsWithEllipsis),
-mAttribute_mEnumeratedExpression (in_mEnumeratedExpression),
-mAttribute_mEndOfEnumerationExpression (in_mEndOfEnumerationExpression) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * cPtr_enumeratedCollectionCstListInExpAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_enumeratedCollectionCstListInExpAST ;
-}
-
-void cPtr_enumeratedCollectionCstListInExpAST::description (C_String & ioString,
-                                                            const int32_t inIndentation) const {
-  ioString << "[@enumeratedCollectionCstListInExpAST:" ;
-  mAttribute_mElementList.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mEndsWithEllipsis.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mEnumeratedExpression.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mEndOfEnumerationExpression.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-acPtr_class * cPtr_enumeratedCollectionCstListInExpAST::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_enumeratedCollectionCstListInExpAST (mAttribute_mElementList, mAttribute_mEndsWithEllipsis, mAttribute_mEnumeratedExpression, mAttribute_mEndOfEnumerationExpression COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                      @enumeratedCollectionCstListInExpAST type                                      *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_enumeratedCollectionCstListInExpAST ("enumeratedCollectionCstListInExpAST",
-                                                            & kTypeDescriptor_GALGAS_abstractEnumeratedCollectionAST) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_enumeratedCollectionCstListInExpAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_enumeratedCollectionCstListInExpAST ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_enumeratedCollectionCstListInExpAST::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_enumeratedCollectionCstListInExpAST (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_enumeratedCollectionCstListInExpAST GALGAS_enumeratedCollectionCstListInExpAST::extractObject (const GALGAS_object & inObject,
-                                                                                                      C_Compiler * inCompiler
-                                                                                                      COMMA_LOCATION_ARGS) {
-  GALGAS_enumeratedCollectionCstListInExpAST result ;
-  const GALGAS_enumeratedCollectionCstListInExpAST * p = (const GALGAS_enumeratedCollectionCstListInExpAST *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_enumeratedCollectionCstListInExpAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("enumeratedCollectionCstListInExpAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult cPtr_enumeratedCollectionImplicitVarInExpAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_enumeratedCollectionImplicitVarInExpAST * p = (const cPtr_enumeratedCollectionImplicitVarInExpAST *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_enumeratedCollectionImplicitVarInExpAST) ;
-  if (kOperandEqual == result) {
-    result = mAttribute_mPrefix.objectCompare (p->mAttribute_mPrefix) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mEnumeratedExpression.objectCompare (p->mAttribute_mEnumeratedExpression) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mEndOfEnumerationExpression.objectCompare (p->mAttribute_mEndOfEnumerationExpression) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-
-typeComparisonResult GALGAS_enumeratedCollectionImplicitVarInExpAST::objectCompare (const GALGAS_enumeratedCollectionImplicitVarInExpAST & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_enumeratedCollectionImplicitVarInExpAST::GALGAS_enumeratedCollectionImplicitVarInExpAST (void) :
-GALGAS_abstractEnumeratedCollectionAST () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_enumeratedCollectionImplicitVarInExpAST::GALGAS_enumeratedCollectionImplicitVarInExpAST (const cPtr_enumeratedCollectionImplicitVarInExpAST * inSourcePtr) :
-GALGAS_abstractEnumeratedCollectionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_enumeratedCollectionImplicitVarInExpAST) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_enumeratedCollectionImplicitVarInExpAST GALGAS_enumeratedCollectionImplicitVarInExpAST::constructor_new (const GALGAS_lstring & inAttribute_mPrefix,
-                                                                                                                const GALGAS_semanticExpressionAST & inAttribute_mEnumeratedExpression,
-                                                                                                                const GALGAS_location & inAttribute_mEndOfEnumerationExpression
-                                                                                                                COMMA_LOCATION_ARGS) {
-  GALGAS_enumeratedCollectionImplicitVarInExpAST result ;
-  if (inAttribute_mPrefix.isValid () && inAttribute_mEnumeratedExpression.isValid () && inAttribute_mEndOfEnumerationExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_enumeratedCollectionImplicitVarInExpAST (inAttribute_mPrefix, inAttribute_mEnumeratedExpression, inAttribute_mEndOfEnumerationExpression COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_enumeratedCollectionImplicitVarInExpAST::reader_mPrefix (UNUSED_LOCATION_ARGS) const {
-  GALGAS_lstring result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_enumeratedCollectionImplicitVarInExpAST * p = (const cPtr_enumeratedCollectionImplicitVarInExpAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_enumeratedCollectionImplicitVarInExpAST) ;
-    result = p->mAttribute_mPrefix ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring cPtr_enumeratedCollectionImplicitVarInExpAST::reader_mPrefix (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mPrefix ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticExpressionAST GALGAS_enumeratedCollectionImplicitVarInExpAST::reader_mEnumeratedExpression (UNUSED_LOCATION_ARGS) const {
-  GALGAS_semanticExpressionAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_enumeratedCollectionImplicitVarInExpAST * p = (const cPtr_enumeratedCollectionImplicitVarInExpAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_enumeratedCollectionImplicitVarInExpAST) ;
-    result = p->mAttribute_mEnumeratedExpression ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticExpressionAST cPtr_enumeratedCollectionImplicitVarInExpAST::reader_mEnumeratedExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mEnumeratedExpression ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location GALGAS_enumeratedCollectionImplicitVarInExpAST::reader_mEndOfEnumerationExpression (UNUSED_LOCATION_ARGS) const {
-  GALGAS_location result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_enumeratedCollectionImplicitVarInExpAST * p = (const cPtr_enumeratedCollectionImplicitVarInExpAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_enumeratedCollectionImplicitVarInExpAST) ;
-    result = p->mAttribute_mEndOfEnumerationExpression ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location cPtr_enumeratedCollectionImplicitVarInExpAST::reader_mEndOfEnumerationExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mEndOfEnumerationExpression ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                          Pointer class for @enumeratedCollectionImplicitVarInExpAST class                           *
-//---------------------------------------------------------------------------------------------------------------------*
-
-cPtr_enumeratedCollectionImplicitVarInExpAST::cPtr_enumeratedCollectionImplicitVarInExpAST (const GALGAS_lstring & in_mPrefix,
-                                                                                            const GALGAS_semanticExpressionAST & in_mEnumeratedExpression,
-                                                                                            const GALGAS_location & in_mEndOfEnumerationExpression
-                                                                                            COMMA_LOCATION_ARGS) :
-cPtr_abstractEnumeratedCollectionAST (THERE),
-mAttribute_mPrefix (in_mPrefix),
-mAttribute_mEnumeratedExpression (in_mEnumeratedExpression),
-mAttribute_mEndOfEnumerationExpression (in_mEndOfEnumerationExpression) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * cPtr_enumeratedCollectionImplicitVarInExpAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_enumeratedCollectionImplicitVarInExpAST ;
-}
-
-void cPtr_enumeratedCollectionImplicitVarInExpAST::description (C_String & ioString,
-                                                                const int32_t inIndentation) const {
-  ioString << "[@enumeratedCollectionImplicitVarInExpAST:" ;
-  mAttribute_mPrefix.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mEnumeratedExpression.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mEndOfEnumerationExpression.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-acPtr_class * cPtr_enumeratedCollectionImplicitVarInExpAST::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_enumeratedCollectionImplicitVarInExpAST (mAttribute_mPrefix, mAttribute_mEnumeratedExpression, mAttribute_mEndOfEnumerationExpression COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                    @enumeratedCollectionImplicitVarInExpAST type                                    *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_enumeratedCollectionImplicitVarInExpAST ("enumeratedCollectionImplicitVarInExpAST",
-                                                                & kTypeDescriptor_GALGAS_abstractEnumeratedCollectionAST) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_enumeratedCollectionImplicitVarInExpAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_enumeratedCollectionImplicitVarInExpAST ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_enumeratedCollectionImplicitVarInExpAST::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_enumeratedCollectionImplicitVarInExpAST (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_enumeratedCollectionImplicitVarInExpAST GALGAS_enumeratedCollectionImplicitVarInExpAST::extractObject (const GALGAS_object & inObject,
-                                                                                                              C_Compiler * inCompiler
-                                                                                                              COMMA_LOCATION_ARGS) {
-  GALGAS_enumeratedCollectionImplicitVarInExpAST result ;
-  const GALGAS_enumeratedCollectionImplicitVarInExpAST * p = (const GALGAS_enumeratedCollectionImplicitVarInExpAST *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_enumeratedCollectionImplicitVarInExpAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("enumeratedCollectionImplicitVarInExpAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult cPtr_enumeratedCollectionVarInExpAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
-  typeComparisonResult result = kOperandEqual ;
-  const cPtr_enumeratedCollectionVarInExpAST * p = (const cPtr_enumeratedCollectionVarInExpAST *) inOperandPtr ;
-  macroValidSharedObject (p, cPtr_enumeratedCollectionVarInExpAST) ;
-  if (kOperandEqual == result) {
-    result = mAttribute_mEnumerationTypeName.objectCompare (p->mAttribute_mEnumerationTypeName) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mEnumerationVariable.objectCompare (p->mAttribute_mEnumerationVariable) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mEnumeratedExpression.objectCompare (p->mAttribute_mEnumeratedExpression) ;
-  }
-  if (kOperandEqual == result) {
-    result = mAttribute_mEndOfEnumerationExpression.objectCompare (p->mAttribute_mEndOfEnumerationExpression) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-
-typeComparisonResult GALGAS_enumeratedCollectionVarInExpAST::objectCompare (const GALGAS_enumeratedCollectionVarInExpAST & inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (isValid () && inOperand.isValid ()) {
-    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
-    if (mySlot < operandSlot) {
-      result = kFirstOperandLowerThanSecond ;
-    }else if (mySlot > operandSlot) {
-      result = kFirstOperandGreaterThanSecond ;
-    }else{
-      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_enumeratedCollectionVarInExpAST::GALGAS_enumeratedCollectionVarInExpAST (void) :
-GALGAS_abstractEnumeratedCollectionAST () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_enumeratedCollectionVarInExpAST::GALGAS_enumeratedCollectionVarInExpAST (const cPtr_enumeratedCollectionVarInExpAST * inSourcePtr) :
-GALGAS_abstractEnumeratedCollectionAST (inSourcePtr) {
-  macroNullOrValidSharedObject (inSourcePtr, cPtr_enumeratedCollectionVarInExpAST) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_enumeratedCollectionVarInExpAST GALGAS_enumeratedCollectionVarInExpAST::constructor_new (const GALGAS_lstring & inAttribute_mEnumerationTypeName,
-                                                                                                const GALGAS_lstring & inAttribute_mEnumerationVariable,
-                                                                                                const GALGAS_semanticExpressionAST & inAttribute_mEnumeratedExpression,
-                                                                                                const GALGAS_location & inAttribute_mEndOfEnumerationExpression
-                                                                                                COMMA_LOCATION_ARGS) {
-  GALGAS_enumeratedCollectionVarInExpAST result ;
-  if (inAttribute_mEnumerationTypeName.isValid () && inAttribute_mEnumerationVariable.isValid () && inAttribute_mEnumeratedExpression.isValid () && inAttribute_mEndOfEnumerationExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_enumeratedCollectionVarInExpAST (inAttribute_mEnumerationTypeName, inAttribute_mEnumerationVariable, inAttribute_mEnumeratedExpression, inAttribute_mEndOfEnumerationExpression COMMA_THERE)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_enumeratedCollectionVarInExpAST::reader_mEnumerationTypeName (UNUSED_LOCATION_ARGS) const {
-  GALGAS_lstring result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_enumeratedCollectionVarInExpAST * p = (const cPtr_enumeratedCollectionVarInExpAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_enumeratedCollectionVarInExpAST) ;
-    result = p->mAttribute_mEnumerationTypeName ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring cPtr_enumeratedCollectionVarInExpAST::reader_mEnumerationTypeName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mEnumerationTypeName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_enumeratedCollectionVarInExpAST::reader_mEnumerationVariable (UNUSED_LOCATION_ARGS) const {
-  GALGAS_lstring result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_enumeratedCollectionVarInExpAST * p = (const cPtr_enumeratedCollectionVarInExpAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_enumeratedCollectionVarInExpAST) ;
-    result = p->mAttribute_mEnumerationVariable ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring cPtr_enumeratedCollectionVarInExpAST::reader_mEnumerationVariable (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mEnumerationVariable ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticExpressionAST GALGAS_enumeratedCollectionVarInExpAST::reader_mEnumeratedExpression (UNUSED_LOCATION_ARGS) const {
-  GALGAS_semanticExpressionAST result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_enumeratedCollectionVarInExpAST * p = (const cPtr_enumeratedCollectionVarInExpAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_enumeratedCollectionVarInExpAST) ;
-    result = p->mAttribute_mEnumeratedExpression ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticExpressionAST cPtr_enumeratedCollectionVarInExpAST::reader_mEnumeratedExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mEnumeratedExpression ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location GALGAS_enumeratedCollectionVarInExpAST::reader_mEndOfEnumerationExpression (UNUSED_LOCATION_ARGS) const {
-  GALGAS_location result ;
-  if (NULL != mObjectPtr) {
-    const cPtr_enumeratedCollectionVarInExpAST * p = (const cPtr_enumeratedCollectionVarInExpAST *) mObjectPtr ;
-    macroValidSharedObject (p, cPtr_enumeratedCollectionVarInExpAST) ;
-    result = p->mAttribute_mEndOfEnumerationExpression ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location cPtr_enumeratedCollectionVarInExpAST::reader_mEndOfEnumerationExpression (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mEndOfEnumerationExpression ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                              Pointer class for @enumeratedCollectionVarInExpAST class                               *
-//---------------------------------------------------------------------------------------------------------------------*
-
-cPtr_enumeratedCollectionVarInExpAST::cPtr_enumeratedCollectionVarInExpAST (const GALGAS_lstring & in_mEnumerationTypeName,
-                                                                            const GALGAS_lstring & in_mEnumerationVariable,
-                                                                            const GALGAS_semanticExpressionAST & in_mEnumeratedExpression,
-                                                                            const GALGAS_location & in_mEndOfEnumerationExpression
-                                                                            COMMA_LOCATION_ARGS) :
-cPtr_abstractEnumeratedCollectionAST (THERE),
-mAttribute_mEnumerationTypeName (in_mEnumerationTypeName),
-mAttribute_mEnumerationVariable (in_mEnumerationVariable),
-mAttribute_mEnumeratedExpression (in_mEnumeratedExpression),
-mAttribute_mEndOfEnumerationExpression (in_mEndOfEnumerationExpression) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * cPtr_enumeratedCollectionVarInExpAST::classDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_enumeratedCollectionVarInExpAST ;
-}
-
-void cPtr_enumeratedCollectionVarInExpAST::description (C_String & ioString,
-                                                        const int32_t inIndentation) const {
-  ioString << "[@enumeratedCollectionVarInExpAST:" ;
-  mAttribute_mEnumerationTypeName.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mEnumerationVariable.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mEnumeratedExpression.description (ioString, inIndentation+1) ;
-  ioString << ", " ;
-  mAttribute_mEndOfEnumerationExpression.description (ioString, inIndentation+1) ;
-  ioString << "]" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-acPtr_class * cPtr_enumeratedCollectionVarInExpAST::duplicate (LOCATION_ARGS) const {
-  acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_enumeratedCollectionVarInExpAST (mAttribute_mEnumerationTypeName, mAttribute_mEnumerationVariable, mAttribute_mEnumeratedExpression, mAttribute_mEndOfEnumerationExpression COMMA_THERE)) ;
-  return ptr ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                        @enumeratedCollectionVarInExpAST type                                        *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_enumeratedCollectionVarInExpAST ("enumeratedCollectionVarInExpAST",
-                                                        & kTypeDescriptor_GALGAS_abstractEnumeratedCollectionAST) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_enumeratedCollectionVarInExpAST::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_enumeratedCollectionVarInExpAST ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_enumeratedCollectionVarInExpAST::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_enumeratedCollectionVarInExpAST (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_enumeratedCollectionVarInExpAST GALGAS_enumeratedCollectionVarInExpAST::extractObject (const GALGAS_object & inObject,
-                                                                                              C_Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) {
-  GALGAS_enumeratedCollectionVarInExpAST result ;
-  const GALGAS_enumeratedCollectionVarInExpAST * p = (const GALGAS_enumeratedCollectionVarInExpAST *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_enumeratedCollectionVarInExpAST *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("enumeratedCollectionVarInExpAST", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
