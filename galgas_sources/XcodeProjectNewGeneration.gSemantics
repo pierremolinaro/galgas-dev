@@ -2,6 +2,16 @@ semantics XcodeProjectNewGeneration :
 
 #---------------------------------------------------------------------------*
 
+modifier @XcodeProjectDescriptor addICNS_file
+  ??fileName:@string inFileName
+  !fileRef:@string outFileRef
+:
+  [!?self getReferenceKey ?ref:outFileRef] ;
+  mICNS_fileList += !outFileRef !inFileName ;
+end modifier ;
+
+#---------------------------------------------------------------------------*
+
 modifier @XcodeProjectDescriptor addTIFF_file
   ??fileName:@string inFileName
   !fileRef:@string outFileRef
@@ -235,6 +245,11 @@ modifier @XcodeProjectDescriptor addGroupWithFiles
       childrenRefs += !resource_FileRef ;
       [!?self addBuildFile !fileRef:resource_FileRef !fileName:f ??buildRef:@string buildRef] ;
       ioResourceFileBuildRefs += !buildRef ;
+    elsif [f pathExtension] == "icns" then
+      [!?self addICNS_file !fileName:f ??fileRef:@string resource_FileRef] ;
+      childrenRefs += !resource_FileRef ;
+      [!?self addBuildFile !fileRef:resource_FileRef !fileName:f ??buildRef:@string buildRef] ;
+      ioResourceFileBuildRefs += !buildRef ;
     else
       error [@location nowhere] : "unhandled extension for file '" + f + "'" ;
     end if ;
@@ -344,6 +359,7 @@ struct @XcodeProjectDescriptor {
   local @2stringlist mInfoPlistFileList ;
   local @2stringlist mXIB_fileList ;
   local @2stringlist mTIFF_fileList ;
+  local @2stringlist mICNS_fileList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -364,6 +380,7 @@ local filewrapper xcodeProjectGenerationFilewrapper in "../generation_templates/
     ?@2stringlist HEADER_FILE_LIST
     ?@2stringlist PLIST_FILE_LIST
     ?@2stringlist TIFF_FILE_LIST
+    ?@2stringlist ICNS_FILE_LIST
     ?@2stringlist XIB_FILE_LIST
     ?@BuildFileList BUILD_FILE_LIST
     ?@string DEFAULT_CONFIGURATION_REF
@@ -391,15 +408,17 @@ method @XcodeProjectDescriptor generateAtPath
     !mHeaderFileList
     !mInfoPlistFileList
     !mTIFF_fileList
+    !mICNS_fileList
     !mXIB_fileList
     !mBuildFileList
     !mDefaultConfigurationRef
     !mDefaultConfigurationSettingList
     !mProjectBuildConfigurationRef
   ] ;
-  if not ([inCacheFilePath fileExists] && ([@string stringWithContentsOfFile !inCacheFilePath] == contents)) then 
-    [contents writeToFile !inCacheFilePath] ;
-    [contents makeDirectoryAndWriteToFile !inPath + "/project.pbxproj"] ;
+  const projectCoreFile := inPath + "/project.pbxproj" ;
+  if (not [projectCoreFile fileExists]) || (not [inCacheFilePath fileExists]) || ([@string stringWithContentsOfFile !inCacheFilePath] != contents) then 
+    [contents writeToFileWhenDifferentContents !inCacheFilePath ?*] ;
+    [contents makeDirectoryAndWriteToFile !projectCoreFile] ;
   end if ;
 end method ;
 

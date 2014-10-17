@@ -103,6 +103,15 @@ for () in TIFF_FILE_LIST do
 %    sourceTree = "<group>";\n%
 %  };\n\n%
 end
+for () in ICNS_FILE_LIST do
+%  %!mValue0% = {\n%
+%    isa = PBXFileReference;\n%
+%    lastKnownFileType = image.icns;\n%
+%    name = %![[mValue1 lastPathComponent] utf8Representation]%;\n%
+%    path = %![mValue1 utf8Representation]%;\n%
+%    sourceTree = "<group>";\n%
+%  };\n\n%
+end
 %  /*------------------------------------------------------------------ PBXFrameworksBuildPhase */
 
 %
