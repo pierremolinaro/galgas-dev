@@ -1008,6 +1008,19 @@ routine updateGalgas3Targets
       ??groupRef:@string resourcesGroupRef
     ] ;
     [!?xcodeProject placeGroupAsMainGroup !groupRef:resourcesGroupRef] ;
+  #--- Add "User Resources" group
+    [!?xcodeProject addGroupWithFiles
+      !groupName:"User Resources"
+      !groupPath:"userResources"
+      !subGroups:{}
+      !fileNames:[@stringset setWithStringList !resourceFiles]
+      !?cppFileRefs:buildFileRefListForTool
+      !?mFileRefs:m_FileRefList
+      !?frameworkFileRefs:frameworksFileRefList
+      !?resourceFileRefs:resourceFileBuildRefs
+      ??groupRef:@string userResourcesGroupRef
+    ] ;
+    [!?xcodeProject placeGroupAsMainGroup !groupRef:userResourcesGroupRef] ;
   #--- Add "framework" group
     [!?xcodeProject addGroupWithFiles
       !groupName:"Frameworks"
@@ -1053,7 +1066,7 @@ routine updateGalgas3Targets
   #--- Add Cocoa target
     [!?xcodeProject addAppTarget
       !targetName:"Cocoa " + inTargetName
-      !productFileName:inTargetName+"-cocoa"
+      !productFileName:"Cocoa" + [inTargetName stringByCapitalizingFirstCharacter]
       !sources:m_FileRefList
       !frameworkFileRefs:frameworksFileRefList
       !resourceFileRefs:resourceFileBuildRefs
