@@ -990,7 +990,7 @@ routine updateGalgas3Targets
         !"GCC_PREPROCESSOR_DEFINITIONS = (\"LIBPM_MULTI_THREADING=0\", DO_NOT_GENERATE_CHECKINGS)",
         !"GCC_WARN_UNUSED_PARAMETER = YES"
       }
-      ?productFileRef:*
+      ??targetRef:releaseTargetRef
     ] ;
   #--- Add Mach O debug target
     [!?xcodeProject addToolTarget
@@ -1002,7 +1002,7 @@ routine updateGalgas3Targets
         !"GCC_PREPROCESSOR_DEFINITIONS = (\"LIBPM_MULTI_THREADING=0\")",
         !"GCC_WARN_UNUSED_PARAMETER = YES"
       }
-      ?productFileRef:*
+      ??targetRef:debugTargetRef
     ] ;
   #--- Add Cocoa target
     [!?xcodeProject addAppTarget
@@ -1014,6 +1014,7 @@ routine updateGalgas3Targets
         !"GCC_OPTIMIZATION_LEVEL = 0",
         !"GCC_PREPROCESSOR_DEFINITIONS = (\"LIBPM_MULTI_THREADING=0\")"
       }
+      !dependantTargetList:{!releaseTargetRef, !debugTargetRef}
       ?productFileRef:*
     ] ;
   #--- Generate project

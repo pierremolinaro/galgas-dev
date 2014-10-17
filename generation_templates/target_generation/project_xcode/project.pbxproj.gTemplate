@@ -6,7 +6,7 @@
   objectVersion = 42;
   objects = {
 
-  /*------------------------------------------------------------------------------------------------------------------------- PBXBuildFile */
+  /*------------------------------------------------------------------ PBXBuildFile */
 %
 for () in BUILD_FILE_LIST do
 %  %!mBuildReference% /* %!mFileName% */ = {\n%
@@ -15,7 +15,7 @@ for () in BUILD_FILE_LIST do
 %    settings = {ATTRIBUTES = (); };\n%
 %  };\n\n%
 end
-%  /*------------------------------------------------------------------------------------------------------------------------- PBXFileReference */
+%  /*------------------------------------------------------------------ PBXFileReference */
 %
 for () in CPP_FILE_LIST do
 %  %!mValue0% /* %!mValue1% */ = {\n%
@@ -74,7 +74,7 @@ for () in APP_TARGET_LIST do
 %    sourceTree = BUILT_PRODUCTS_DIR;\n%
 %  };\n\n%
 end
-%  /*------------------------------------------------------------------------------------------------------------------------- PBXFrameworksBuildPhase */
+%  /*------------------------------------------------------------------ PBXFrameworksBuildPhase */
 
 %
 for () in APP_TARGET_LIST do
@@ -89,7 +89,7 @@ end
 %    runOnlyForDeploymentPostprocessing = 0;\n%
 %  };\n\n%
 end
-%  /*------------------------------------------------------------------------------------------------------------------------- PBXGroup section */
+%  /*------------------------------------------------------------------ PBXGroup section */
 %
 for () in GROUPS do
 %  %!mGroupReference% /* %!mGroupName% */ = {\n%
@@ -116,7 +116,7 @@ end
     sourceTree = "<group>";
   };
 
-  /*------------------------------------------------------------------------------------------------------------------------- PBXNativeTarget */
+  /*------------------------------------------------------------------ PBXNativeTarget */
 %
 for () in TOOL_TARGET_LIST do
 %  %!mTargetRef% /* %!mTargetName% */ = {
@@ -149,7 +149,11 @@ for () in APP_TARGET_LIST do
    buildRules = (
    );
    dependencies = (
-   );
+%
+for () in mDependentTargets do
+  %      %!mValue0%,\n%
+end
+%   );
    name = %![mTargetName utf8Representation]%;
    productInstallPath = "$(HOME)/bin";
    productName = %![mTargetName utf8Representation]%;
@@ -159,7 +163,7 @@ for () in APP_TARGET_LIST do
 
 %
 end
-%  /*------------------------------------------------------------------------------------------------------------------------- PBXProject */
+%  /*------------------------------------------------------------------ PBXProject */
   %!PROJECT_REF% /* Project object */ = {
    isa = PBXProject;
    buildConfigurationList = %!PROJECT_BUILD_DEFAULT_CONFIGURATION_REF% /* Build configuration list for PBXProject */;
@@ -179,9 +183,9 @@ end
 %   );
   };
 
-  /*------------------------------------------------------------------------------------------------------------------------- PBXResourcesBuildPhase */
+  /*------------------------------------------------------------------ PBXResourcesBuildPhase */
 
-  /*------------------------------------------------------------------------------------------------------------------------- PBXSourcesBuildPhase */
+  /*------------------------------------------------------------------ PBXSourcesBuildPhase */
 %
 for () in TOOL_TARGET_LIST do
 %    %!mBuildPhaseRef% /* Sources */ = {
@@ -211,11 +215,22 @@ end
 %end
 %
 
-  /*------------------------------------------------------------------------------------------------------------------------- PBXTargetDependency */
+  /*------------------------------------------------------------------ PBXTargetDependency */
  
-  /*------------------------------------------------------------------------------------------------------------------------- PBXVariantGroup */
+%
+for () in APP_TARGET_LIST do
+  for () in mDependentTargets do
+    %  %!mValue0% = {\n%
+    %    isa = PBXTargetDependency;\n%
+    %    target = %!mValue1%;\n%
+    %  };\n\n%
+  end
+end
+
+
+%  /*------------------------------------------------------------------ PBXVariantGroup */
  
-  /*------------------------------------------------------------------------------------------------------------------------- XCBuildConfiguration */
+  /*------------------------------------------------------------------ XCBuildConfiguration */
     %!DEFAULT_CONFIGURATION_REF% /* Default */ = {
       isa = XCBuildConfiguration;
       buildSettings = {
@@ -252,7 +267,7 @@ end
 %    name = Default;\n%
 %  };\n\n%
 end
-%  /*------------------------------------------------------------------------------------------------------------------------- XCConfigurationList section */
+%  /*------------------------------------------------------------------ XCConfigurationList section */
 
     %!PROJECT_BUILD_DEFAULT_CONFIGURATION_REF% /* Build configuration list for PBXProject */ = {
       isa = XCConfigurationList;
@@ -288,7 +303,7 @@ for () in APP_TARGET_LIST do
 
 %
 end
-%/*------------------------------------------------------------------------------------------------------------------------- End */
+%/*------------------------------------------------------------------ End */
   };
 
   rootObject = %!PROJECT_REF% /* Project object */;
