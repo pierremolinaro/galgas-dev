@@ -10,6 +10,605 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+GALGAS_mapOverrideList_2D_element::GALGAS_mapOverrideList_2D_element (void) :
+mAttribute_mOverrideName (),
+mAttribute_mBranchBehaviourSortedListForMapOverride (),
+mAttribute_mBranchCombinationSortedListForMapOverride () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_mapOverrideList_2D_element::~ GALGAS_mapOverrideList_2D_element (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_mapOverrideList_2D_element::GALGAS_mapOverrideList_2D_element (const GALGAS_string & inOperand0,
+                                                                      const GALGAS_branchBehaviourSortedListForMapOverride & inOperand1,
+                                                                      const GALGAS_branchBehaviourSortedListForMapOverride & inOperand2) :
+mAttribute_mOverrideName (inOperand0),
+mAttribute_mBranchBehaviourSortedListForMapOverride (inOperand1),
+mAttribute_mBranchCombinationSortedListForMapOverride (inOperand2) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_mapOverrideList_2D_element GALGAS_mapOverrideList_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_mapOverrideList_2D_element (GALGAS_string::constructor_default (HERE),
+                                            GALGAS_branchBehaviourSortedListForMapOverride::constructor_emptySortedList (HERE),
+                                            GALGAS_branchBehaviourSortedListForMapOverride::constructor_emptySortedList (HERE)) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_mapOverrideList_2D_element GALGAS_mapOverrideList_2D_element::constructor_new (const GALGAS_string & inOperand0,
+                                                                                      const GALGAS_branchBehaviourSortedListForMapOverride & inOperand1,
+                                                                                      const GALGAS_branchBehaviourSortedListForMapOverride & inOperand2 
+                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_mapOverrideList_2D_element result ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
+    result = GALGAS_mapOverrideList_2D_element (inOperand0, inOperand1, inOperand2) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult GALGAS_mapOverrideList_2D_element::objectCompare (const GALGAS_mapOverrideList_2D_element & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
+  if (result == kOperandEqual) {
+    result = mAttribute_mOverrideName.objectCompare (inOperand.mAttribute_mOverrideName) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mBranchBehaviourSortedListForMapOverride.objectCompare (inOperand.mAttribute_mBranchBehaviourSortedListForMapOverride) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mBranchCombinationSortedListForMapOverride.objectCompare (inOperand.mAttribute_mBranchCombinationSortedListForMapOverride) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool GALGAS_mapOverrideList_2D_element::isValid (void) const {
+  return mAttribute_mOverrideName.isValid () && mAttribute_mBranchBehaviourSortedListForMapOverride.isValid () && mAttribute_mBranchCombinationSortedListForMapOverride.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_mapOverrideList_2D_element::drop (void) {
+  mAttribute_mOverrideName.drop () ;
+  mAttribute_mBranchBehaviourSortedListForMapOverride.drop () ;
+  mAttribute_mBranchCombinationSortedListForMapOverride.drop () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_mapOverrideList_2D_element::description (C_String & ioString,
+                                                     const int32_t inIndentation) const {
+  ioString << "<struct @mapOverrideList-element:" ;
+  if (! isValid ()) {
+    ioString << " not built" ;
+  }else{
+    mAttribute_mOverrideName.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mBranchBehaviourSortedListForMapOverride.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mBranchCombinationSortedListForMapOverride.description (ioString, inIndentation+1) ;
+  }
+  ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_mapOverrideList_2D_element::reader_mOverrideName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mOverrideName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_branchBehaviourSortedListForMapOverride GALGAS_mapOverrideList_2D_element::reader_mBranchBehaviourSortedListForMapOverride (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mBranchBehaviourSortedListForMapOverride ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_branchBehaviourSortedListForMapOverride GALGAS_mapOverrideList_2D_element::reader_mBranchCombinationSortedListForMapOverride (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mBranchCombinationSortedListForMapOverride ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                            @mapOverrideList-element type                                            *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_mapOverrideList_2D_element ("mapOverrideList-element",
+                                                   NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_mapOverrideList_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_mapOverrideList_2D_element ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_mapOverrideList_2D_element::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_mapOverrideList_2D_element (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_mapOverrideList_2D_element GALGAS_mapOverrideList_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                    C_Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_mapOverrideList_2D_element result ;
+  const GALGAS_mapOverrideList_2D_element * p = (const GALGAS_mapOverrideList_2D_element *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_mapOverrideList_2D_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("mapOverrideList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_enumConstantListForGeneration_2D_element::GALGAS_enumConstantListForGeneration_2D_element (void) :
+mAttribute_mConstantName (),
+mAttribute_mAssociatedValueTypeList () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_enumConstantListForGeneration_2D_element::~ GALGAS_enumConstantListForGeneration_2D_element (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_enumConstantListForGeneration_2D_element::GALGAS_enumConstantListForGeneration_2D_element (const GALGAS_string & inOperand0,
+                                                                                                  const GALGAS_unifiedTypeMapProxyList & inOperand1) :
+mAttribute_mConstantName (inOperand0),
+mAttribute_mAssociatedValueTypeList (inOperand1) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_enumConstantListForGeneration_2D_element GALGAS_enumConstantListForGeneration_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_enumConstantListForGeneration_2D_element (GALGAS_string::constructor_default (HERE),
+                                                          GALGAS_unifiedTypeMapProxyList::constructor_emptyList (HERE)) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_enumConstantListForGeneration_2D_element GALGAS_enumConstantListForGeneration_2D_element::constructor_new (const GALGAS_string & inOperand0,
+                                                                                                                  const GALGAS_unifiedTypeMapProxyList & inOperand1 
+                                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_enumConstantListForGeneration_2D_element result ;
+  if (inOperand0.isValid () && inOperand1.isValid ()) {
+    result = GALGAS_enumConstantListForGeneration_2D_element (inOperand0, inOperand1) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult GALGAS_enumConstantListForGeneration_2D_element::objectCompare (const GALGAS_enumConstantListForGeneration_2D_element & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
+  if (result == kOperandEqual) {
+    result = mAttribute_mConstantName.objectCompare (inOperand.mAttribute_mConstantName) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mAssociatedValueTypeList.objectCompare (inOperand.mAttribute_mAssociatedValueTypeList) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool GALGAS_enumConstantListForGeneration_2D_element::isValid (void) const {
+  return mAttribute_mConstantName.isValid () && mAttribute_mAssociatedValueTypeList.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_enumConstantListForGeneration_2D_element::drop (void) {
+  mAttribute_mConstantName.drop () ;
+  mAttribute_mAssociatedValueTypeList.drop () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_enumConstantListForGeneration_2D_element::description (C_String & ioString,
+                                                                   const int32_t inIndentation) const {
+  ioString << "<struct @enumConstantListForGeneration-element:" ;
+  if (! isValid ()) {
+    ioString << " not built" ;
+  }else{
+    mAttribute_mConstantName.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mAssociatedValueTypeList.description (ioString, inIndentation+1) ;
+  }
+  ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_enumConstantListForGeneration_2D_element::reader_mConstantName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mConstantName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_unifiedTypeMapProxyList GALGAS_enumConstantListForGeneration_2D_element::reader_mAssociatedValueTypeList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mAssociatedValueTypeList ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                     @enumConstantListForGeneration-element type                                     *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_enumConstantListForGeneration_2D_element ("enumConstantListForGeneration-element",
+                                                                 NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_enumConstantListForGeneration_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_enumConstantListForGeneration_2D_element ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_enumConstantListForGeneration_2D_element::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_enumConstantListForGeneration_2D_element (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_enumConstantListForGeneration_2D_element GALGAS_enumConstantListForGeneration_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                                                C_Compiler * inCompiler
+                                                                                                                COMMA_LOCATION_ARGS) {
+  GALGAS_enumConstantListForGeneration_2D_element result ;
+  const GALGAS_enumConstantListForGeneration_2D_element * p = (const GALGAS_enumConstantListForGeneration_2D_element *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_enumConstantListForGeneration_2D_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("enumConstantListForGeneration-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_filewrapperTemplateListForGeneration_2D_element::GALGAS_filewrapperTemplateListForGeneration_2D_element (void) :
+mAttribute_mFilewrapperTemplateName (),
+mAttribute_mFilewrapperTemplateFormalInputParameters (),
+mAttribute_mTemplateInstructionListForGeneration () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_filewrapperTemplateListForGeneration_2D_element::~ GALGAS_filewrapperTemplateListForGeneration_2D_element (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_filewrapperTemplateListForGeneration_2D_element::GALGAS_filewrapperTemplateListForGeneration_2D_element (const GALGAS_string & inOperand0,
+                                                                                                                const GALGAS_formalInputParameterListForGeneration & inOperand1,
+                                                                                                                const GALGAS_templateInstructionListForGeneration & inOperand2) :
+mAttribute_mFilewrapperTemplateName (inOperand0),
+mAttribute_mFilewrapperTemplateFormalInputParameters (inOperand1),
+mAttribute_mTemplateInstructionListForGeneration (inOperand2) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_filewrapperTemplateListForGeneration_2D_element GALGAS_filewrapperTemplateListForGeneration_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_filewrapperTemplateListForGeneration_2D_element (GALGAS_string::constructor_default (HERE),
+                                                                 GALGAS_formalInputParameterListForGeneration::constructor_emptyList (HERE),
+                                                                 GALGAS_templateInstructionListForGeneration::constructor_emptyList (HERE)) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_filewrapperTemplateListForGeneration_2D_element GALGAS_filewrapperTemplateListForGeneration_2D_element::constructor_new (const GALGAS_string & inOperand0,
+                                                                                                                                const GALGAS_formalInputParameterListForGeneration & inOperand1,
+                                                                                                                                const GALGAS_templateInstructionListForGeneration & inOperand2 
+                                                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_filewrapperTemplateListForGeneration_2D_element result ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
+    result = GALGAS_filewrapperTemplateListForGeneration_2D_element (inOperand0, inOperand1, inOperand2) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult GALGAS_filewrapperTemplateListForGeneration_2D_element::objectCompare (const GALGAS_filewrapperTemplateListForGeneration_2D_element & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
+  if (result == kOperandEqual) {
+    result = mAttribute_mFilewrapperTemplateName.objectCompare (inOperand.mAttribute_mFilewrapperTemplateName) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mFilewrapperTemplateFormalInputParameters.objectCompare (inOperand.mAttribute_mFilewrapperTemplateFormalInputParameters) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mTemplateInstructionListForGeneration.objectCompare (inOperand.mAttribute_mTemplateInstructionListForGeneration) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool GALGAS_filewrapperTemplateListForGeneration_2D_element::isValid (void) const {
+  return mAttribute_mFilewrapperTemplateName.isValid () && mAttribute_mFilewrapperTemplateFormalInputParameters.isValid () && mAttribute_mTemplateInstructionListForGeneration.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_filewrapperTemplateListForGeneration_2D_element::drop (void) {
+  mAttribute_mFilewrapperTemplateName.drop () ;
+  mAttribute_mFilewrapperTemplateFormalInputParameters.drop () ;
+  mAttribute_mTemplateInstructionListForGeneration.drop () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_filewrapperTemplateListForGeneration_2D_element::description (C_String & ioString,
+                                                                          const int32_t inIndentation) const {
+  ioString << "<struct @filewrapperTemplateListForGeneration-element:" ;
+  if (! isValid ()) {
+    ioString << " not built" ;
+  }else{
+    mAttribute_mFilewrapperTemplateName.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mFilewrapperTemplateFormalInputParameters.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mTemplateInstructionListForGeneration.description (ioString, inIndentation+1) ;
+  }
+  ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_filewrapperTemplateListForGeneration_2D_element::reader_mFilewrapperTemplateName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mFilewrapperTemplateName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_formalInputParameterListForGeneration GALGAS_filewrapperTemplateListForGeneration_2D_element::reader_mFilewrapperTemplateFormalInputParameters (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mFilewrapperTemplateFormalInputParameters ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_templateInstructionListForGeneration GALGAS_filewrapperTemplateListForGeneration_2D_element::reader_mTemplateInstructionListForGeneration (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mTemplateInstructionListForGeneration ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                 @filewrapperTemplateListForGeneration-element type                                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_filewrapperTemplateListForGeneration_2D_element ("filewrapperTemplateListForGeneration-element",
+                                                                        NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_filewrapperTemplateListForGeneration_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_filewrapperTemplateListForGeneration_2D_element ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_filewrapperTemplateListForGeneration_2D_element::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_filewrapperTemplateListForGeneration_2D_element (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_filewrapperTemplateListForGeneration_2D_element GALGAS_filewrapperTemplateListForGeneration_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                                                              C_Compiler * inCompiler
+                                                                                                                              COMMA_LOCATION_ARGS) {
+  GALGAS_filewrapperTemplateListForGeneration_2D_element result ;
+  const GALGAS_filewrapperTemplateListForGeneration_2D_element * p = (const GALGAS_filewrapperTemplateListForGeneration_2D_element *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_filewrapperTemplateListForGeneration_2D_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("filewrapperTemplateListForGeneration-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_matchListForGeneration_2D_element::GALGAS_matchListForGeneration_2D_element (void) :
+mAttribute_mIsType (),
+mAttribute_mTypeNameOrEnumerationConstantName (),
+mAttribute_mLocalConstantName () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_matchListForGeneration_2D_element::~ GALGAS_matchListForGeneration_2D_element (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_matchListForGeneration_2D_element::GALGAS_matchListForGeneration_2D_element (const GALGAS_bool & inOperand0,
+                                                                                    const GALGAS_string & inOperand1,
+                                                                                    const GALGAS_string & inOperand2) :
+mAttribute_mIsType (inOperand0),
+mAttribute_mTypeNameOrEnumerationConstantName (inOperand1),
+mAttribute_mLocalConstantName (inOperand2) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_matchListForGeneration_2D_element GALGAS_matchListForGeneration_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_matchListForGeneration_2D_element (GALGAS_bool::constructor_default (HERE),
+                                                   GALGAS_string::constructor_default (HERE),
+                                                   GALGAS_string::constructor_default (HERE)) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_matchListForGeneration_2D_element GALGAS_matchListForGeneration_2D_element::constructor_new (const GALGAS_bool & inOperand0,
+                                                                                                    const GALGAS_string & inOperand1,
+                                                                                                    const GALGAS_string & inOperand2 
+                                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_matchListForGeneration_2D_element result ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
+    result = GALGAS_matchListForGeneration_2D_element (inOperand0, inOperand1, inOperand2) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult GALGAS_matchListForGeneration_2D_element::objectCompare (const GALGAS_matchListForGeneration_2D_element & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
+  if (result == kOperandEqual) {
+    result = mAttribute_mIsType.objectCompare (inOperand.mAttribute_mIsType) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mTypeNameOrEnumerationConstantName.objectCompare (inOperand.mAttribute_mTypeNameOrEnumerationConstantName) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mLocalConstantName.objectCompare (inOperand.mAttribute_mLocalConstantName) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool GALGAS_matchListForGeneration_2D_element::isValid (void) const {
+  return mAttribute_mIsType.isValid () && mAttribute_mTypeNameOrEnumerationConstantName.isValid () && mAttribute_mLocalConstantName.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_matchListForGeneration_2D_element::drop (void) {
+  mAttribute_mIsType.drop () ;
+  mAttribute_mTypeNameOrEnumerationConstantName.drop () ;
+  mAttribute_mLocalConstantName.drop () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_matchListForGeneration_2D_element::description (C_String & ioString,
+                                                            const int32_t inIndentation) const {
+  ioString << "<struct @matchListForGeneration-element:" ;
+  if (! isValid ()) {
+    ioString << " not built" ;
+  }else{
+    mAttribute_mIsType.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mTypeNameOrEnumerationConstantName.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mLocalConstantName.description (ioString, inIndentation+1) ;
+  }
+  ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_matchListForGeneration_2D_element::reader_mIsType (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mIsType ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_matchListForGeneration_2D_element::reader_mTypeNameOrEnumerationConstantName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mTypeNameOrEnumerationConstantName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_matchListForGeneration_2D_element::reader_mLocalConstantName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mLocalConstantName ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                        @matchListForGeneration-element type                                         *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_matchListForGeneration_2D_element ("matchListForGeneration-element",
+                                                          NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_matchListForGeneration_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_matchListForGeneration_2D_element ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_matchListForGeneration_2D_element::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_matchListForGeneration_2D_element (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_matchListForGeneration_2D_element GALGAS_matchListForGeneration_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                                  C_Compiler * inCompiler
+                                                                                                  COMMA_LOCATION_ARGS) {
+  GALGAS_matchListForGeneration_2D_element result ;
+  const GALGAS_matchListForGeneration_2D_element * p = (const GALGAS_matchListForGeneration_2D_element *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_matchListForGeneration_2D_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("matchListForGeneration-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_matchInstructionBranchListForGeneration_2D_element::GALGAS_matchInstructionBranchListForGeneration_2D_element (void) :
 mAttribute_mMatchListForGeneration (),
 mAttribute_mMatchBranchInstructionList () {
@@ -2816,7 +3415,7 @@ GALGAS_XCodeGroupList_2D_element GALGAS_XCodeGroupList_2D_element::extractObject
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_XCodeMachOTargetList_2D_element::GALGAS_XCodeMachOTargetList_2D_element (void) :
+GALGAS_XCodeToolTargetList_2D_element::GALGAS_XCodeToolTargetList_2D_element (void) :
 mAttribute_mTargetRef (),
 mAttribute_mTargetName (),
 mAttribute_mProductFileReference (),
@@ -2830,20 +3429,20 @@ mAttribute_mBuildConfigurationRef () {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_XCodeMachOTargetList_2D_element::~ GALGAS_XCodeMachOTargetList_2D_element (void) {
+GALGAS_XCodeToolTargetList_2D_element::~ GALGAS_XCodeToolTargetList_2D_element (void) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_XCodeMachOTargetList_2D_element::GALGAS_XCodeMachOTargetList_2D_element (const GALGAS_string & inOperand0,
-                                                                                const GALGAS_string & inOperand1,
-                                                                                const GALGAS_string & inOperand2,
-                                                                                const GALGAS_string & inOperand3,
-                                                                                const GALGAS_stringlist & inOperand4,
-                                                                                const GALGAS_string & inOperand5,
-                                                                                const GALGAS_string & inOperand6,
-                                                                                const GALGAS_stringlist & inOperand7,
-                                                                                const GALGAS_string & inOperand8) :
+GALGAS_XCodeToolTargetList_2D_element::GALGAS_XCodeToolTargetList_2D_element (const GALGAS_string & inOperand0,
+                                                                              const GALGAS_string & inOperand1,
+                                                                              const GALGAS_string & inOperand2,
+                                                                              const GALGAS_string & inOperand3,
+                                                                              const GALGAS_stringlist & inOperand4,
+                                                                              const GALGAS_string & inOperand5,
+                                                                              const GALGAS_string & inOperand6,
+                                                                              const GALGAS_stringlist & inOperand7,
+                                                                              const GALGAS_string & inOperand8) :
 mAttribute_mTargetRef (inOperand0),
 mAttribute_mTargetName (inOperand1),
 mAttribute_mProductFileReference (inOperand2),
@@ -2857,40 +3456,40 @@ mAttribute_mBuildConfigurationRef (inOperand8) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_XCodeMachOTargetList_2D_element GALGAS_XCodeMachOTargetList_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_XCodeMachOTargetList_2D_element (GALGAS_string::constructor_default (HERE),
-                                                 GALGAS_string::constructor_default (HERE),
-                                                 GALGAS_string::constructor_default (HERE),
-                                                 GALGAS_string::constructor_default (HERE),
-                                                 GALGAS_stringlist::constructor_emptyList (HERE),
-                                                 GALGAS_string::constructor_default (HERE),
-                                                 GALGAS_string::constructor_default (HERE),
-                                                 GALGAS_stringlist::constructor_emptyList (HERE),
-                                                 GALGAS_string::constructor_default (HERE)) ;
+GALGAS_XCodeToolTargetList_2D_element GALGAS_XCodeToolTargetList_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_XCodeToolTargetList_2D_element (GALGAS_string::constructor_default (HERE),
+                                                GALGAS_string::constructor_default (HERE),
+                                                GALGAS_string::constructor_default (HERE),
+                                                GALGAS_string::constructor_default (HERE),
+                                                GALGAS_stringlist::constructor_emptyList (HERE),
+                                                GALGAS_string::constructor_default (HERE),
+                                                GALGAS_string::constructor_default (HERE),
+                                                GALGAS_stringlist::constructor_emptyList (HERE),
+                                                GALGAS_string::constructor_default (HERE)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_XCodeMachOTargetList_2D_element GALGAS_XCodeMachOTargetList_2D_element::constructor_new (const GALGAS_string & inOperand0,
-                                                                                                const GALGAS_string & inOperand1,
-                                                                                                const GALGAS_string & inOperand2,
-                                                                                                const GALGAS_string & inOperand3,
-                                                                                                const GALGAS_stringlist & inOperand4,
-                                                                                                const GALGAS_string & inOperand5,
-                                                                                                const GALGAS_string & inOperand6,
-                                                                                                const GALGAS_stringlist & inOperand7,
-                                                                                                const GALGAS_string & inOperand8 
-                                                                                                COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_XCodeMachOTargetList_2D_element result ;
+GALGAS_XCodeToolTargetList_2D_element GALGAS_XCodeToolTargetList_2D_element::constructor_new (const GALGAS_string & inOperand0,
+                                                                                              const GALGAS_string & inOperand1,
+                                                                                              const GALGAS_string & inOperand2,
+                                                                                              const GALGAS_string & inOperand3,
+                                                                                              const GALGAS_stringlist & inOperand4,
+                                                                                              const GALGAS_string & inOperand5,
+                                                                                              const GALGAS_string & inOperand6,
+                                                                                              const GALGAS_stringlist & inOperand7,
+                                                                                              const GALGAS_string & inOperand8 
+                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_XCodeToolTargetList_2D_element result ;
   if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid () && inOperand7.isValid () && inOperand8.isValid ()) {
-    result = GALGAS_XCodeMachOTargetList_2D_element (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8) ;
+    result = GALGAS_XCodeToolTargetList_2D_element (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-typeComparisonResult GALGAS_XCodeMachOTargetList_2D_element::objectCompare (const GALGAS_XCodeMachOTargetList_2D_element & inOperand) const {
+typeComparisonResult GALGAS_XCodeToolTargetList_2D_element::objectCompare (const GALGAS_XCodeToolTargetList_2D_element & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
     result = mAttribute_mTargetRef.objectCompare (inOperand.mAttribute_mTargetRef) ;
@@ -2924,13 +3523,13 @@ typeComparisonResult GALGAS_XCodeMachOTargetList_2D_element::objectCompare (cons
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-bool GALGAS_XCodeMachOTargetList_2D_element::isValid (void) const {
+bool GALGAS_XCodeToolTargetList_2D_element::isValid (void) const {
   return mAttribute_mTargetRef.isValid () && mAttribute_mTargetName.isValid () && mAttribute_mProductFileReference.isValid () && mAttribute_mProductFileName.isValid () && mAttribute_mBuildPhaseRefList.isValid () && mAttribute_mBuildPhaseRef.isValid () && mAttribute_mBuildConfigurationListRef.isValid () && mAttribute_mBuildConfigurationSettingList.isValid () && mAttribute_mBuildConfigurationRef.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_XCodeMachOTargetList_2D_element::drop (void) {
+void GALGAS_XCodeToolTargetList_2D_element::drop (void) {
   mAttribute_mTargetRef.drop () ;
   mAttribute_mTargetName.drop () ;
   mAttribute_mProductFileReference.drop () ;
@@ -2944,9 +3543,9 @@ void GALGAS_XCodeMachOTargetList_2D_element::drop (void) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_XCodeMachOTargetList_2D_element::description (C_String & ioString,
-                                                          const int32_t inIndentation) const {
-  ioString << "<struct @XCodeMachOTargetList-element:" ;
+void GALGAS_XCodeToolTargetList_2D_element::description (C_String & ioString,
+                                                         const int32_t inIndentation) const {
+  ioString << "<struct @XCodeToolTargetList-element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
@@ -2973,55 +3572,55 @@ void GALGAS_XCodeMachOTargetList_2D_element::description (C_String & ioString,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeMachOTargetList_2D_element::reader_mTargetRef (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_XCodeToolTargetList_2D_element::reader_mTargetRef (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTargetRef ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeMachOTargetList_2D_element::reader_mTargetName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_XCodeToolTargetList_2D_element::reader_mTargetName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTargetName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeMachOTargetList_2D_element::reader_mProductFileReference (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_XCodeToolTargetList_2D_element::reader_mProductFileReference (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mProductFileReference ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeMachOTargetList_2D_element::reader_mProductFileName (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_XCodeToolTargetList_2D_element::reader_mProductFileName (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mProductFileName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist GALGAS_XCodeMachOTargetList_2D_element::reader_mBuildPhaseRefList (UNUSED_LOCATION_ARGS) const {
+GALGAS_stringlist GALGAS_XCodeToolTargetList_2D_element::reader_mBuildPhaseRefList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mBuildPhaseRefList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeMachOTargetList_2D_element::reader_mBuildPhaseRef (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_XCodeToolTargetList_2D_element::reader_mBuildPhaseRef (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mBuildPhaseRef ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeMachOTargetList_2D_element::reader_mBuildConfigurationListRef (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_XCodeToolTargetList_2D_element::reader_mBuildConfigurationListRef (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mBuildConfigurationListRef ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_stringlist GALGAS_XCodeMachOTargetList_2D_element::reader_mBuildConfigurationSettingList (UNUSED_LOCATION_ARGS) const {
+GALGAS_stringlist GALGAS_XCodeToolTargetList_2D_element::reader_mBuildConfigurationSettingList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mBuildConfigurationSettingList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_XCodeMachOTargetList_2D_element::reader_mBuildConfigurationRef (UNUSED_LOCATION_ARGS) const {
+GALGAS_string GALGAS_XCodeToolTargetList_2D_element::reader_mBuildConfigurationRef (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mBuildConfigurationRef ;
 }
 
@@ -3029,42 +3628,383 @@ GALGAS_string GALGAS_XCodeMachOTargetList_2D_element::reader_mBuildConfiguration
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                         @XCodeMachOTargetList-element type                                          *
+//                                          @XCodeToolTargetList-element type                                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_XCodeMachOTargetList_2D_element ("XCodeMachOTargetList-element",
-                                                        NULL) ;
+kTypeDescriptor_GALGAS_XCodeToolTargetList_2D_element ("XCodeToolTargetList-element",
+                                                       NULL) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-const C_galgas_type_descriptor * GALGAS_XCodeMachOTargetList_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_XCodeMachOTargetList_2D_element ;
+const C_galgas_type_descriptor * GALGAS_XCodeToolTargetList_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_XCodeToolTargetList_2D_element ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-AC_GALGAS_root * GALGAS_XCodeMachOTargetList_2D_element::clonedObject (void) const {
+AC_GALGAS_root * GALGAS_XCodeToolTargetList_2D_element::clonedObject (void) const {
   AC_GALGAS_root * result = NULL ;
   if (isValid ()) {
-    macroMyNew (result, GALGAS_XCodeMachOTargetList_2D_element (*this)) ;
+    macroMyNew (result, GALGAS_XCodeToolTargetList_2D_element (*this)) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_XCodeMachOTargetList_2D_element GALGAS_XCodeMachOTargetList_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                              C_Compiler * inCompiler
-                                                                                              COMMA_LOCATION_ARGS) {
-  GALGAS_XCodeMachOTargetList_2D_element result ;
-  const GALGAS_XCodeMachOTargetList_2D_element * p = (const GALGAS_XCodeMachOTargetList_2D_element *) inObject.embeddedObject () ;
+GALGAS_XCodeToolTargetList_2D_element GALGAS_XCodeToolTargetList_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                            C_Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) {
+  GALGAS_XCodeToolTargetList_2D_element result ;
+  const GALGAS_XCodeToolTargetList_2D_element * p = (const GALGAS_XCodeToolTargetList_2D_element *) inObject.embeddedObject () ;
   if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_XCodeMachOTargetList_2D_element *> (p)) {
+    if (NULL != dynamic_cast <const GALGAS_XCodeToolTargetList_2D_element *> (p)) {
       result = *p ;
     }else{
-      inCompiler->castError ("XCodeMachOTargetList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+      inCompiler->castError ("XCodeToolTargetList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XCodeAppTargetList_2D_element::GALGAS_XCodeAppTargetList_2D_element (void) :
+mAttribute_mTargetRef (),
+mAttribute_mTargetName (),
+mAttribute_mProductFileReference (),
+mAttribute_mProductFileName (),
+mAttribute_mBuildPhaseRefList (),
+mAttribute_mBuildPhaseRef (),
+mAttribute_mBuildConfigurationListRef (),
+mAttribute_mBuildConfigurationSettingList (),
+mAttribute_mBuildConfigurationRef (),
+mAttribute_mFrameworksFileRefList (),
+mAttribute_mFrameworkBuildPhaseRef (),
+mAttribute_mDependentTargets (),
+mAttribute_mResourceBuildRef (),
+mAttribute_mResourceFileBuildRefs () {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XCodeAppTargetList_2D_element::~ GALGAS_XCodeAppTargetList_2D_element (void) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XCodeAppTargetList_2D_element::GALGAS_XCodeAppTargetList_2D_element (const GALGAS_string & inOperand0,
+                                                                            const GALGAS_string & inOperand1,
+                                                                            const GALGAS_string & inOperand2,
+                                                                            const GALGAS_string & inOperand3,
+                                                                            const GALGAS_stringlist & inOperand4,
+                                                                            const GALGAS_string & inOperand5,
+                                                                            const GALGAS_string & inOperand6,
+                                                                            const GALGAS_stringlist & inOperand7,
+                                                                            const GALGAS_string & inOperand8,
+                                                                            const GALGAS_stringlist & inOperand9,
+                                                                            const GALGAS_string & inOperand10,
+                                                                            const GALGAS__32_stringlist & inOperand11,
+                                                                            const GALGAS_string & inOperand12,
+                                                                            const GALGAS_stringlist & inOperand13) :
+mAttribute_mTargetRef (inOperand0),
+mAttribute_mTargetName (inOperand1),
+mAttribute_mProductFileReference (inOperand2),
+mAttribute_mProductFileName (inOperand3),
+mAttribute_mBuildPhaseRefList (inOperand4),
+mAttribute_mBuildPhaseRef (inOperand5),
+mAttribute_mBuildConfigurationListRef (inOperand6),
+mAttribute_mBuildConfigurationSettingList (inOperand7),
+mAttribute_mBuildConfigurationRef (inOperand8),
+mAttribute_mFrameworksFileRefList (inOperand9),
+mAttribute_mFrameworkBuildPhaseRef (inOperand10),
+mAttribute_mDependentTargets (inOperand11),
+mAttribute_mResourceBuildRef (inOperand12),
+mAttribute_mResourceFileBuildRefs (inOperand13) {
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XCodeAppTargetList_2D_element GALGAS_XCodeAppTargetList_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_XCodeAppTargetList_2D_element (GALGAS_string::constructor_default (HERE),
+                                               GALGAS_string::constructor_default (HERE),
+                                               GALGAS_string::constructor_default (HERE),
+                                               GALGAS_string::constructor_default (HERE),
+                                               GALGAS_stringlist::constructor_emptyList (HERE),
+                                               GALGAS_string::constructor_default (HERE),
+                                               GALGAS_string::constructor_default (HERE),
+                                               GALGAS_stringlist::constructor_emptyList (HERE),
+                                               GALGAS_string::constructor_default (HERE),
+                                               GALGAS_stringlist::constructor_emptyList (HERE),
+                                               GALGAS_string::constructor_default (HERE),
+                                               GALGAS__32_stringlist::constructor_emptyList (HERE),
+                                               GALGAS_string::constructor_default (HERE),
+                                               GALGAS_stringlist::constructor_emptyList (HERE)) ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XCodeAppTargetList_2D_element GALGAS_XCodeAppTargetList_2D_element::constructor_new (const GALGAS_string & inOperand0,
+                                                                                            const GALGAS_string & inOperand1,
+                                                                                            const GALGAS_string & inOperand2,
+                                                                                            const GALGAS_string & inOperand3,
+                                                                                            const GALGAS_stringlist & inOperand4,
+                                                                                            const GALGAS_string & inOperand5,
+                                                                                            const GALGAS_string & inOperand6,
+                                                                                            const GALGAS_stringlist & inOperand7,
+                                                                                            const GALGAS_string & inOperand8,
+                                                                                            const GALGAS_stringlist & inOperand9,
+                                                                                            const GALGAS_string & inOperand10,
+                                                                                            const GALGAS__32_stringlist & inOperand11,
+                                                                                            const GALGAS_string & inOperand12,
+                                                                                            const GALGAS_stringlist & inOperand13 
+                                                                                            COMMA_UNUSED_LOCATION_ARGS) {
+  GALGAS_XCodeAppTargetList_2D_element result ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid () && inOperand7.isValid () && inOperand8.isValid () && inOperand9.isValid () && inOperand10.isValid () && inOperand11.isValid () && inOperand12.isValid () && inOperand13.isValid ()) {
+    result = GALGAS_XCodeAppTargetList_2D_element (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8, inOperand9, inOperand10, inOperand11, inOperand12, inOperand13) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+typeComparisonResult GALGAS_XCodeAppTargetList_2D_element::objectCompare (const GALGAS_XCodeAppTargetList_2D_element & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
+  if (result == kOperandEqual) {
+    result = mAttribute_mTargetRef.objectCompare (inOperand.mAttribute_mTargetRef) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mTargetName.objectCompare (inOperand.mAttribute_mTargetName) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mProductFileReference.objectCompare (inOperand.mAttribute_mProductFileReference) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mProductFileName.objectCompare (inOperand.mAttribute_mProductFileName) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mBuildPhaseRefList.objectCompare (inOperand.mAttribute_mBuildPhaseRefList) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mBuildPhaseRef.objectCompare (inOperand.mAttribute_mBuildPhaseRef) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mBuildConfigurationListRef.objectCompare (inOperand.mAttribute_mBuildConfigurationListRef) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mBuildConfigurationSettingList.objectCompare (inOperand.mAttribute_mBuildConfigurationSettingList) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mBuildConfigurationRef.objectCompare (inOperand.mAttribute_mBuildConfigurationRef) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mFrameworksFileRefList.objectCompare (inOperand.mAttribute_mFrameworksFileRefList) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mFrameworkBuildPhaseRef.objectCompare (inOperand.mAttribute_mFrameworkBuildPhaseRef) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mDependentTargets.objectCompare (inOperand.mAttribute_mDependentTargets) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mResourceBuildRef.objectCompare (inOperand.mAttribute_mResourceBuildRef) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mResourceFileBuildRefs.objectCompare (inOperand.mAttribute_mResourceFileBuildRefs) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+bool GALGAS_XCodeAppTargetList_2D_element::isValid (void) const {
+  return mAttribute_mTargetRef.isValid () && mAttribute_mTargetName.isValid () && mAttribute_mProductFileReference.isValid () && mAttribute_mProductFileName.isValid () && mAttribute_mBuildPhaseRefList.isValid () && mAttribute_mBuildPhaseRef.isValid () && mAttribute_mBuildConfigurationListRef.isValid () && mAttribute_mBuildConfigurationSettingList.isValid () && mAttribute_mBuildConfigurationRef.isValid () && mAttribute_mFrameworksFileRefList.isValid () && mAttribute_mFrameworkBuildPhaseRef.isValid () && mAttribute_mDependentTargets.isValid () && mAttribute_mResourceBuildRef.isValid () && mAttribute_mResourceFileBuildRefs.isValid () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_XCodeAppTargetList_2D_element::drop (void) {
+  mAttribute_mTargetRef.drop () ;
+  mAttribute_mTargetName.drop () ;
+  mAttribute_mProductFileReference.drop () ;
+  mAttribute_mProductFileName.drop () ;
+  mAttribute_mBuildPhaseRefList.drop () ;
+  mAttribute_mBuildPhaseRef.drop () ;
+  mAttribute_mBuildConfigurationListRef.drop () ;
+  mAttribute_mBuildConfigurationSettingList.drop () ;
+  mAttribute_mBuildConfigurationRef.drop () ;
+  mAttribute_mFrameworksFileRefList.drop () ;
+  mAttribute_mFrameworkBuildPhaseRef.drop () ;
+  mAttribute_mDependentTargets.drop () ;
+  mAttribute_mResourceBuildRef.drop () ;
+  mAttribute_mResourceFileBuildRefs.drop () ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_XCodeAppTargetList_2D_element::description (C_String & ioString,
+                                                        const int32_t inIndentation) const {
+  ioString << "<struct @XCodeAppTargetList-element:" ;
+  if (! isValid ()) {
+    ioString << " not built" ;
+  }else{
+    mAttribute_mTargetRef.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mTargetName.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mProductFileReference.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mProductFileName.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mBuildPhaseRefList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mBuildPhaseRef.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mBuildConfigurationListRef.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mBuildConfigurationSettingList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mBuildConfigurationRef.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mFrameworksFileRefList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mFrameworkBuildPhaseRef.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mDependentTargets.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mResourceBuildRef.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mResourceFileBuildRefs.description (ioString, inIndentation+1) ;
+  }
+  ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_XCodeAppTargetList_2D_element::reader_mTargetRef (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mTargetRef ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_XCodeAppTargetList_2D_element::reader_mTargetName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mTargetName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_XCodeAppTargetList_2D_element::reader_mProductFileReference (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mProductFileReference ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_XCodeAppTargetList_2D_element::reader_mProductFileName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mProductFileName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_stringlist GALGAS_XCodeAppTargetList_2D_element::reader_mBuildPhaseRefList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mBuildPhaseRefList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_XCodeAppTargetList_2D_element::reader_mBuildPhaseRef (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mBuildPhaseRef ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_XCodeAppTargetList_2D_element::reader_mBuildConfigurationListRef (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mBuildConfigurationListRef ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_stringlist GALGAS_XCodeAppTargetList_2D_element::reader_mBuildConfigurationSettingList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mBuildConfigurationSettingList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_XCodeAppTargetList_2D_element::reader_mBuildConfigurationRef (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mBuildConfigurationRef ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_stringlist GALGAS_XCodeAppTargetList_2D_element::reader_mFrameworksFileRefList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mFrameworksFileRefList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_XCodeAppTargetList_2D_element::reader_mFrameworkBuildPhaseRef (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mFrameworkBuildPhaseRef ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS__32_stringlist GALGAS_XCodeAppTargetList_2D_element::reader_mDependentTargets (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mDependentTargets ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_XCodeAppTargetList_2D_element::reader_mResourceBuildRef (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mResourceBuildRef ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_stringlist GALGAS_XCodeAppTargetList_2D_element::reader_mResourceFileBuildRefs (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mResourceFileBuildRefs ;
+}
+
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                          @XCodeAppTargetList-element type                                           *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor
+kTypeDescriptor_GALGAS_XCodeAppTargetList_2D_element ("XCodeAppTargetList-element",
+                                                      NULL) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+const C_galgas_type_descriptor * GALGAS_XCodeAppTargetList_2D_element::staticTypeDescriptor (void) const {
+  return & kTypeDescriptor_GALGAS_XCodeAppTargetList_2D_element ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+AC_GALGAS_root * GALGAS_XCodeAppTargetList_2D_element::clonedObject (void) const {
+  AC_GALGAS_root * result = NULL ;
+  if (isValid ()) {
+    macroMyNew (result, GALGAS_XCodeAppTargetList_2D_element (*this)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XCodeAppTargetList_2D_element GALGAS_XCodeAppTargetList_2D_element::extractObject (const GALGAS_object & inObject,
+                                                                                          C_Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) {
+  GALGAS_XCodeAppTargetList_2D_element result ;
+  const GALGAS_XCodeAppTargetList_2D_element * p = (const GALGAS_XCodeAppTargetList_2D_element *) inObject.embeddedObject () ;
+  if (NULL != p) {
+    if (NULL != dynamic_cast <const GALGAS_XCodeAppTargetList_2D_element *> (p)) {
+      result = *p ;
+    }else{
+      inCompiler->castError ("XCodeAppTargetList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
@@ -5369,21 +6309,21 @@ GALGAS_unifiedTypeMap_2D_proxy categoryReader_baseType (const GALGAS_unifiedType
   GALGAS_unifiedTypeMap_2D_proxy result_outBaseType ; // Returned variable
   const GALGAS_unifiedTypeMap_2D_proxy temp_0 = inObject ;
   result_outBaseType = temp_0 ;
-  if (GALGAS_uint::constructor_max (SOURCE_FILE ("semanticsTypes.galgas", 347)).isValid ()) {
-    uint32_t variant_15291 = GALGAS_uint::constructor_max (SOURCE_FILE ("semanticsTypes.galgas", 347)).uintValue () ;
-    bool loop_15291 = true ;
-    while (loop_15291) {
-      loop_15291 = result_outBaseType.reader_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 347)).reader_isNull (SOURCE_FILE ("semanticsTypes.galgas", 347)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 347)).isValid () ;
-      if (loop_15291) {
-        loop_15291 = result_outBaseType.reader_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 347)).reader_isNull (SOURCE_FILE ("semanticsTypes.galgas", 347)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 347)).boolValue () ;
+  if (GALGAS_uint::constructor_max (SOURCE_FILE ("semanticsTypes.galgas", 348)).isValid ()) {
+    uint32_t variant_15310 = GALGAS_uint::constructor_max (SOURCE_FILE ("semanticsTypes.galgas", 348)).uintValue () ;
+    bool loop_15310 = true ;
+    while (loop_15310) {
+      loop_15310 = result_outBaseType.reader_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 348)).reader_isNull (SOURCE_FILE ("semanticsTypes.galgas", 348)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 348)).isValid () ;
+      if (loop_15310) {
+        loop_15310 = result_outBaseType.reader_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 348)).reader_isNull (SOURCE_FILE ("semanticsTypes.galgas", 348)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 348)).boolValue () ;
       }
-      if (loop_15291 && (0 == variant_15291)) {
-        loop_15291 = false ;
-        inCompiler->loopRunTimeVariantError (SOURCE_FILE ("semanticsTypes.galgas", 347)) ;
+      if (loop_15310 && (0 == variant_15310)) {
+        loop_15310 = false ;
+        inCompiler->loopRunTimeVariantError (SOURCE_FILE ("semanticsTypes.galgas", 348)) ;
       }
-      if (loop_15291) {
-        variant_15291 -- ;
-        result_outBaseType = result_outBaseType.reader_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 348)) ;
+      if (loop_15310) {
+        variant_15310 -- ;
+        result_outBaseType = result_outBaseType.reader_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 349)) ;
       }
     }
   }
@@ -5406,10 +6346,10 @@ void categoryMethod_addHeaderFileName (const GALGAS_unifiedTypeMap_2D_proxy inOb
                                        COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_unifiedTypeMap_2D_proxy temp_0 = inObject ;
   const GALGAS_unifiedTypeMap_2D_proxy temp_1 = inObject ;
-  const enumGalgasBool test_2 = temp_0.reader_mIsPredefined (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 356)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 356)).operator_and (GALGAS_bool (kIsNotEqual, temp_1.reader_mHeaderKind (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 356)).objectCompare (GALGAS_headerKind::constructor_noHeader (SOURCE_FILE ("semanticsTypes.galgas", 356)))) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 356)).boolEnum () ;
+  const enumGalgasBool test_2 = temp_0.reader_mIsPredefined (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 357)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 357)).operator_and (GALGAS_bool (kIsNotEqual, temp_1.reader_mHeaderKind (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 357)).objectCompare (GALGAS_headerKind::constructor_noHeader (SOURCE_FILE ("semanticsTypes.galgas", 357)))) COMMA_SOURCE_FILE ("semanticsTypes.galgas", 357)).boolEnum () ;
   if (kBoolTrue == test_2) {
     const GALGAS_unifiedTypeMap_2D_proxy temp_3 = inObject ;
-    ioArgument_ioInclusions.addAssign_operation (temp_3.reader_mHeaderFileName (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 357))  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 357)) ;
+    ioArgument_ioInclusions.addAssign_operation (temp_3.reader_mHeaderFileName (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 358))  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 358)) ;
   }
 }
 
@@ -5425,22 +6365,22 @@ void categoryMethod_addHeaderFileName_31_ (const GALGAS_unifiedTypeMap_2D_proxy 
                                            C_Compiler * inCompiler
                                            COMMA_UNUSED_LOCATION_ARGS) {
   const GALGAS_unifiedTypeMap_2D_proxy temp_0 = inObject ;
-  const enumGalgasBool test_1 = temp_0.reader_mIsPredefined (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 365)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 365)).boolEnum () ;
+  const enumGalgasBool test_1 = temp_0.reader_mIsPredefined (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 366)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 366)).boolEnum () ;
   if (kBoolTrue == test_1) {
     const GALGAS_unifiedTypeMap_2D_proxy temp_2 = inObject ;
-    if (temp_2.reader_mHeaderKind (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 366)).isValid ()) {
-      switch (temp_2.reader_mHeaderKind (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 366)).enumValue ()) {
+    if (temp_2.reader_mHeaderKind (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 367)).isValid ()) {
+      switch (temp_2.reader_mHeaderKind (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 367)).enumValue ()) {
       case GALGAS_headerKind::kNotBuilt:
         break ;
       case GALGAS_headerKind::kEnum_noHeader: {
         } break ;
       case GALGAS_headerKind::kEnum_oneHeader: {
         const GALGAS_unifiedTypeMap_2D_proxy temp_3 = inObject ;
-        ioArgument_ioInclusions.addAssign_operation (temp_3.reader_mHeaderFileName (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 369))  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 369)) ;
+        ioArgument_ioInclusions.addAssign_operation (temp_3.reader_mHeaderFileName (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 370))  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 370)) ;
         } break ;
       case GALGAS_headerKind::kEnum_twoHeaders: {
         const GALGAS_unifiedTypeMap_2D_proxy temp_4 = inObject ;
-        ioArgument_ioInclusions.addAssign_operation (temp_4.reader_mHeaderFileName (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 371)).add_operation (GALGAS_string ("-1"), inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 371))  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 371)) ;
+        ioArgument_ioInclusions.addAssign_operation (temp_4.reader_mHeaderFileName (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 372)).add_operation (GALGAS_string ("-1"), inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 372))  COMMA_SOURCE_FILE ("semanticsTypes.galgas", 372)) ;
         } break ;
       }
     }
@@ -6206,14 +7146,19 @@ mAttribute_mMainGroupReference (),
 mAttribute_mMainGroupChildrenRefs (),
 mAttribute_mProjectObjectReference (),
 mAttribute_mGroupList (),
-mAttribute_mMachOTargetList (),
+mAttribute_mToolTargetList (),
+mAttribute_mAppTargetList (),
 mAttribute_mCppFileList (),
 mAttribute_m_5F_M_5F_FileList (),
+mAttribute_mFrameworkFileList (),
 mAttribute_mHeaderFileList (),
 mAttribute_mBuildFileList (),
 mAttribute_mDefaultConfigurationRef (),
 mAttribute_mDefaultConfigurationSettingList (),
-mAttribute_mProjectBuildConfigurationRef () {
+mAttribute_mProjectBuildConfigurationRef (),
+mAttribute_mInfoPlistFileList (),
+mAttribute_mXIB_5F_fileList (),
+mAttribute_mTIFF_5F_fileList () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6228,27 +7173,37 @@ GALGAS_XcodeProjectDescriptor::GALGAS_XcodeProjectDescriptor (const GALGAS_uint 
                                                               const GALGAS_stringlist & inOperand2,
                                                               const GALGAS_string & inOperand3,
                                                               const GALGAS_XCodeGroupList & inOperand4,
-                                                              const GALGAS_XCodeMachOTargetList & inOperand5,
-                                                              const GALGAS__32_stringlist & inOperand6,
+                                                              const GALGAS_XCodeToolTargetList & inOperand5,
+                                                              const GALGAS_XCodeAppTargetList & inOperand6,
                                                               const GALGAS__32_stringlist & inOperand7,
                                                               const GALGAS__32_stringlist & inOperand8,
-                                                              const GALGAS_BuildFileList & inOperand9,
-                                                              const GALGAS_string & inOperand10,
-                                                              const GALGAS_stringlist & inOperand11,
-                                                              const GALGAS_string & inOperand12) :
+                                                              const GALGAS__32_stringlist & inOperand9,
+                                                              const GALGAS__32_stringlist & inOperand10,
+                                                              const GALGAS_BuildFileList & inOperand11,
+                                                              const GALGAS_string & inOperand12,
+                                                              const GALGAS_stringlist & inOperand13,
+                                                              const GALGAS_string & inOperand14,
+                                                              const GALGAS__32_stringlist & inOperand15,
+                                                              const GALGAS__32_stringlist & inOperand16,
+                                                              const GALGAS__32_stringlist & inOperand17) :
 mAttribute_mSequenceNumber (inOperand0),
 mAttribute_mMainGroupReference (inOperand1),
 mAttribute_mMainGroupChildrenRefs (inOperand2),
 mAttribute_mProjectObjectReference (inOperand3),
 mAttribute_mGroupList (inOperand4),
-mAttribute_mMachOTargetList (inOperand5),
-mAttribute_mCppFileList (inOperand6),
-mAttribute_m_5F_M_5F_FileList (inOperand7),
-mAttribute_mHeaderFileList (inOperand8),
-mAttribute_mBuildFileList (inOperand9),
-mAttribute_mDefaultConfigurationRef (inOperand10),
-mAttribute_mDefaultConfigurationSettingList (inOperand11),
-mAttribute_mProjectBuildConfigurationRef (inOperand12) {
+mAttribute_mToolTargetList (inOperand5),
+mAttribute_mAppTargetList (inOperand6),
+mAttribute_mCppFileList (inOperand7),
+mAttribute_m_5F_M_5F_FileList (inOperand8),
+mAttribute_mFrameworkFileList (inOperand9),
+mAttribute_mHeaderFileList (inOperand10),
+mAttribute_mBuildFileList (inOperand11),
+mAttribute_mDefaultConfigurationRef (inOperand12),
+mAttribute_mDefaultConfigurationSettingList (inOperand13),
+mAttribute_mProjectBuildConfigurationRef (inOperand14),
+mAttribute_mInfoPlistFileList (inOperand15),
+mAttribute_mXIB_5F_fileList (inOperand16),
+mAttribute_mTIFF_5F_fileList (inOperand17) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6259,14 +7214,19 @@ GALGAS_XcodeProjectDescriptor GALGAS_XcodeProjectDescriptor::constructor_default
                                         GALGAS_stringlist::constructor_emptyList (HERE),
                                         GALGAS_string::constructor_default (HERE),
                                         GALGAS_XCodeGroupList::constructor_emptyList (HERE),
-                                        GALGAS_XCodeMachOTargetList::constructor_emptyList (HERE),
+                                        GALGAS_XCodeToolTargetList::constructor_emptyList (HERE),
+                                        GALGAS_XCodeAppTargetList::constructor_emptyList (HERE),
+                                        GALGAS__32_stringlist::constructor_emptyList (HERE),
                                         GALGAS__32_stringlist::constructor_emptyList (HERE),
                                         GALGAS__32_stringlist::constructor_emptyList (HERE),
                                         GALGAS__32_stringlist::constructor_emptyList (HERE),
                                         GALGAS_BuildFileList::constructor_emptyList (HERE),
                                         GALGAS_string::constructor_default (HERE),
                                         GALGAS_stringlist::constructor_emptyList (HERE),
-                                        GALGAS_string::constructor_default (HERE)) ;
+                                        GALGAS_string::constructor_default (HERE),
+                                        GALGAS__32_stringlist::constructor_emptyList (HERE),
+                                        GALGAS__32_stringlist::constructor_emptyList (HERE),
+                                        GALGAS__32_stringlist::constructor_emptyList (HERE)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6276,18 +7236,23 @@ GALGAS_XcodeProjectDescriptor GALGAS_XcodeProjectDescriptor::constructor_new (co
                                                                               const GALGAS_stringlist & inOperand2,
                                                                               const GALGAS_string & inOperand3,
                                                                               const GALGAS_XCodeGroupList & inOperand4,
-                                                                              const GALGAS_XCodeMachOTargetList & inOperand5,
-                                                                              const GALGAS__32_stringlist & inOperand6,
+                                                                              const GALGAS_XCodeToolTargetList & inOperand5,
+                                                                              const GALGAS_XCodeAppTargetList & inOperand6,
                                                                               const GALGAS__32_stringlist & inOperand7,
                                                                               const GALGAS__32_stringlist & inOperand8,
-                                                                              const GALGAS_BuildFileList & inOperand9,
-                                                                              const GALGAS_string & inOperand10,
-                                                                              const GALGAS_stringlist & inOperand11,
-                                                                              const GALGAS_string & inOperand12 
+                                                                              const GALGAS__32_stringlist & inOperand9,
+                                                                              const GALGAS__32_stringlist & inOperand10,
+                                                                              const GALGAS_BuildFileList & inOperand11,
+                                                                              const GALGAS_string & inOperand12,
+                                                                              const GALGAS_stringlist & inOperand13,
+                                                                              const GALGAS_string & inOperand14,
+                                                                              const GALGAS__32_stringlist & inOperand15,
+                                                                              const GALGAS__32_stringlist & inOperand16,
+                                                                              const GALGAS__32_stringlist & inOperand17 
                                                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_XcodeProjectDescriptor result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid () && inOperand7.isValid () && inOperand8.isValid () && inOperand9.isValid () && inOperand10.isValid () && inOperand11.isValid () && inOperand12.isValid ()) {
-    result = GALGAS_XcodeProjectDescriptor (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8, inOperand9, inOperand10, inOperand11, inOperand12) ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid () && inOperand7.isValid () && inOperand8.isValid () && inOperand9.isValid () && inOperand10.isValid () && inOperand11.isValid () && inOperand12.isValid () && inOperand13.isValid () && inOperand14.isValid () && inOperand15.isValid () && inOperand16.isValid () && inOperand17.isValid ()) {
+    result = GALGAS_XcodeProjectDescriptor (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7, inOperand8, inOperand9, inOperand10, inOperand11, inOperand12, inOperand13, inOperand14, inOperand15, inOperand16, inOperand17) ;
   }
   return result ;
 }
@@ -6312,13 +7277,19 @@ typeComparisonResult GALGAS_XcodeProjectDescriptor::objectCompare (const GALGAS_
     result = mAttribute_mGroupList.objectCompare (inOperand.mAttribute_mGroupList) ;
   }
   if (result == kOperandEqual) {
-    result = mAttribute_mMachOTargetList.objectCompare (inOperand.mAttribute_mMachOTargetList) ;
+    result = mAttribute_mToolTargetList.objectCompare (inOperand.mAttribute_mToolTargetList) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mAppTargetList.objectCompare (inOperand.mAttribute_mAppTargetList) ;
   }
   if (result == kOperandEqual) {
     result = mAttribute_mCppFileList.objectCompare (inOperand.mAttribute_mCppFileList) ;
   }
   if (result == kOperandEqual) {
     result = mAttribute_m_5F_M_5F_FileList.objectCompare (inOperand.mAttribute_m_5F_M_5F_FileList) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mFrameworkFileList.objectCompare (inOperand.mAttribute_mFrameworkFileList) ;
   }
   if (result == kOperandEqual) {
     result = mAttribute_mHeaderFileList.objectCompare (inOperand.mAttribute_mHeaderFileList) ;
@@ -6335,13 +7306,22 @@ typeComparisonResult GALGAS_XcodeProjectDescriptor::objectCompare (const GALGAS_
   if (result == kOperandEqual) {
     result = mAttribute_mProjectBuildConfigurationRef.objectCompare (inOperand.mAttribute_mProjectBuildConfigurationRef) ;
   }
+  if (result == kOperandEqual) {
+    result = mAttribute_mInfoPlistFileList.objectCompare (inOperand.mAttribute_mInfoPlistFileList) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mXIB_5F_fileList.objectCompare (inOperand.mAttribute_mXIB_5F_fileList) ;
+  }
+  if (result == kOperandEqual) {
+    result = mAttribute_mTIFF_5F_fileList.objectCompare (inOperand.mAttribute_mTIFF_5F_fileList) ;
+  }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool GALGAS_XcodeProjectDescriptor::isValid (void) const {
-  return mAttribute_mSequenceNumber.isValid () && mAttribute_mMainGroupReference.isValid () && mAttribute_mMainGroupChildrenRefs.isValid () && mAttribute_mProjectObjectReference.isValid () && mAttribute_mGroupList.isValid () && mAttribute_mMachOTargetList.isValid () && mAttribute_mCppFileList.isValid () && mAttribute_m_5F_M_5F_FileList.isValid () && mAttribute_mHeaderFileList.isValid () && mAttribute_mBuildFileList.isValid () && mAttribute_mDefaultConfigurationRef.isValid () && mAttribute_mDefaultConfigurationSettingList.isValid () && mAttribute_mProjectBuildConfigurationRef.isValid () ;
+  return mAttribute_mSequenceNumber.isValid () && mAttribute_mMainGroupReference.isValid () && mAttribute_mMainGroupChildrenRefs.isValid () && mAttribute_mProjectObjectReference.isValid () && mAttribute_mGroupList.isValid () && mAttribute_mToolTargetList.isValid () && mAttribute_mAppTargetList.isValid () && mAttribute_mCppFileList.isValid () && mAttribute_m_5F_M_5F_FileList.isValid () && mAttribute_mFrameworkFileList.isValid () && mAttribute_mHeaderFileList.isValid () && mAttribute_mBuildFileList.isValid () && mAttribute_mDefaultConfigurationRef.isValid () && mAttribute_mDefaultConfigurationSettingList.isValid () && mAttribute_mProjectBuildConfigurationRef.isValid () && mAttribute_mInfoPlistFileList.isValid () && mAttribute_mXIB_5F_fileList.isValid () && mAttribute_mTIFF_5F_fileList.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6352,14 +7332,19 @@ void GALGAS_XcodeProjectDescriptor::drop (void) {
   mAttribute_mMainGroupChildrenRefs.drop () ;
   mAttribute_mProjectObjectReference.drop () ;
   mAttribute_mGroupList.drop () ;
-  mAttribute_mMachOTargetList.drop () ;
+  mAttribute_mToolTargetList.drop () ;
+  mAttribute_mAppTargetList.drop () ;
   mAttribute_mCppFileList.drop () ;
   mAttribute_m_5F_M_5F_FileList.drop () ;
+  mAttribute_mFrameworkFileList.drop () ;
   mAttribute_mHeaderFileList.drop () ;
   mAttribute_mBuildFileList.drop () ;
   mAttribute_mDefaultConfigurationRef.drop () ;
   mAttribute_mDefaultConfigurationSettingList.drop () ;
   mAttribute_mProjectBuildConfigurationRef.drop () ;
+  mAttribute_mInfoPlistFileList.drop () ;
+  mAttribute_mXIB_5F_fileList.drop () ;
+  mAttribute_mTIFF_5F_fileList.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6380,11 +7365,15 @@ void GALGAS_XcodeProjectDescriptor::description (C_String & ioString,
     ioString << ", " ;
     mAttribute_mGroupList.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mAttribute_mMachOTargetList.description (ioString, inIndentation+1) ;
+    mAttribute_mToolTargetList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mAppTargetList.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mAttribute_mCppFileList.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mAttribute_m_5F_M_5F_FileList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mFrameworkFileList.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mAttribute_mHeaderFileList.description (ioString, inIndentation+1) ;
     ioString << ", " ;
@@ -6395,6 +7384,12 @@ void GALGAS_XcodeProjectDescriptor::description (C_String & ioString,
     mAttribute_mDefaultConfigurationSettingList.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mAttribute_mProjectBuildConfigurationRef.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mInfoPlistFileList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mXIB_5F_fileList.description (ioString, inIndentation+1) ;
+    ioString << ", " ;
+    mAttribute_mTIFF_5F_fileList.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
@@ -6431,8 +7426,14 @@ GALGAS_XCodeGroupList GALGAS_XcodeProjectDescriptor::reader_mGroupList (UNUSED_L
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_XCodeMachOTargetList GALGAS_XcodeProjectDescriptor::reader_mMachOTargetList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mMachOTargetList ;
+GALGAS_XCodeToolTargetList GALGAS_XcodeProjectDescriptor::reader_mToolTargetList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mToolTargetList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_XCodeAppTargetList GALGAS_XcodeProjectDescriptor::reader_mAppTargetList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mAppTargetList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6445,6 +7446,12 @@ GALGAS__32_stringlist GALGAS_XcodeProjectDescriptor::reader_mCppFileList (UNUSED
 
 GALGAS__32_stringlist GALGAS_XcodeProjectDescriptor::reader_m_5F_M_5F_FileList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_m_5F_M_5F_FileList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS__32_stringlist GALGAS_XcodeProjectDescriptor::reader_mFrameworkFileList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mFrameworkFileList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6475,6 +7482,24 @@ GALGAS_stringlist GALGAS_XcodeProjectDescriptor::reader_mDefaultConfigurationSet
 
 GALGAS_string GALGAS_XcodeProjectDescriptor::reader_mProjectBuildConfigurationRef (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mProjectBuildConfigurationRef ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS__32_stringlist GALGAS_XcodeProjectDescriptor::reader_mInfoPlistFileList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mInfoPlistFileList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS__32_stringlist GALGAS_XcodeProjectDescriptor::reader_mXIB_5F_fileList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mXIB_5F_fileList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS__32_stringlist GALGAS_XcodeProjectDescriptor::reader_mTIFF_5F_fileList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mTIFF_5F_fileList ;
 }
 
 
@@ -6524,6 +7549,82 @@ GALGAS_XcodeProjectDescriptor GALGAS_XcodeProjectDescriptor::extractObject (cons
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
+//                             Category method '@XcodeProjectDescriptor addInfoPlistFile'                              *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void categoryModifier_addInfoPlistFile (GALGAS_XcodeProjectDescriptor & ioObject,
+                                        const GALGAS_string constinArgument_inFileName,
+                                        GALGAS_string & outArgument_outFileRef,
+                                        C_Compiler * inCompiler
+                                        COMMA_UNUSED_LOCATION_ARGS) {
+  outArgument_outFileRef.drop () ; // Release 'out' argument
+  {
+  categoryModifier_getReferenceKey (ioObject, outArgument_outFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 17)) ;
+  }
+  ioObject.mAttribute_mInfoPlistFileList.addAssign_operation (outArgument_outFileRef, constinArgument_inFileName  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 18)) ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                Category method '@XcodeProjectDescriptor addXIBFile'                                 *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void categoryModifier_addXIBFile (GALGAS_XcodeProjectDescriptor & ioObject,
+                                  const GALGAS_string constinArgument_inFileName,
+                                  GALGAS_string & outArgument_outFileRef,
+                                  C_Compiler * inCompiler
+                                  COMMA_UNUSED_LOCATION_ARGS) {
+  outArgument_outFileRef.drop () ; // Release 'out' argument
+  {
+  categoryModifier_getReferenceKey (ioObject, outArgument_outFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 26)) ;
+  }
+  ioObject.mAttribute_mXIB_5F_fileList.addAssign_operation (outArgument_outFileRef, constinArgument_inFileName  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 27)) ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                             Category method '@XcodeProjectDescriptor addFrameworkFile'                              *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void categoryModifier_addFrameworkFile (GALGAS_XcodeProjectDescriptor & ioObject,
+                                        const GALGAS_string constinArgument_inFileName,
+                                        GALGAS_string & outArgument_outFileRef,
+                                        C_Compiler * inCompiler
+                                        COMMA_UNUSED_LOCATION_ARGS) {
+  outArgument_outFileRef.drop () ; // Release 'out' argument
+  {
+  categoryModifier_getReferenceKey (ioObject, outArgument_outFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 35)) ;
+  }
+  ioObject.mAttribute_mFrameworkFileList.addAssign_operation (outArgument_outFileRef, constinArgument_inFileName  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 36)) ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                 Category method '@XcodeProjectDescriptor addMFile'                                  *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void categoryModifier_addMFile (GALGAS_XcodeProjectDescriptor & ioObject,
+                                const GALGAS_string constinArgument_inFileName,
+                                GALGAS_string & outArgument_outFileRef,
+                                C_Compiler * inCompiler
+                                COMMA_UNUSED_LOCATION_ARGS) {
+  outArgument_outFileRef.drop () ; // Release 'out' argument
+  {
+  categoryModifier_getReferenceKey (ioObject, outArgument_outFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 44)) ;
+  }
+  ioObject.mAttribute_m_5F_M_5F_FileList.addAssign_operation (outArgument_outFileRef, constinArgument_inFileName  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 45)) ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
 //                                Category method '@XcodeProjectDescriptor addCppFile'                                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -6535,9 +7636,9 @@ void categoryModifier_addCppFile (GALGAS_XcodeProjectDescriptor & ioObject,
                                   COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outFileRef.drop () ; // Release 'out' argument
   {
-  categoryModifier_getReferenceKey (ioObject, outArgument_outFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 17)) ;
+  categoryModifier_getReferenceKey (ioObject, outArgument_outFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 53)) ;
   }
-  ioObject.mAttribute_mCppFileList.addAssign_operation (outArgument_outFileRef, constinArgument_inFileName  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 18)) ;
+  ioObject.mAttribute_mCppFileList.addAssign_operation (outArgument_outFileRef, constinArgument_inFileName  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 54)) ;
 }
 
 
@@ -6554,9 +7655,9 @@ void categoryModifier_addHeaderFile (GALGAS_XcodeProjectDescriptor & ioObject,
                                      COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outFileRef.drop () ; // Release 'out' argument
   {
-  categoryModifier_getReferenceKey (ioObject, outArgument_outFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 26)) ;
+  categoryModifier_getReferenceKey (ioObject, outArgument_outFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 62)) ;
   }
-  ioObject.mAttribute_mHeaderFileList.addAssign_operation (outArgument_outFileRef, constinArgument_inFileName  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 27)) ;
+  ioObject.mAttribute_mHeaderFileList.addAssign_operation (outArgument_outFileRef, constinArgument_inFileName  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 63)) ;
 }
 
 
@@ -6574,47 +7675,118 @@ void categoryModifier_addBuildFile (GALGAS_XcodeProjectDescriptor & ioObject,
                                     COMMA_UNUSED_LOCATION_ARGS) {
   outArgument_outBuildRef.drop () ; // Release 'out' argument
   {
-  categoryModifier_getReferenceKey (ioObject, outArgument_outBuildRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 36)) ;
+  categoryModifier_getReferenceKey (ioObject, outArgument_outBuildRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 72)) ;
   }
-  ioObject.mAttribute_mBuildFileList.addAssign_operation (constinArgument_inFileReference, constinArgument_inFileName, outArgument_outBuildRef  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 37)) ;
+  ioObject.mAttribute_mBuildFileList.addAssign_operation (constinArgument_inFileReference, constinArgument_inFileName, outArgument_outBuildRef  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 73)) ;
 }
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                              Category method '@XcodeProjectDescriptor addMachOTarget'                               *
+//                               Category method '@XcodeProjectDescriptor addToolTarget'                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void categoryModifier_addMachOTarget (GALGAS_XcodeProjectDescriptor & ioObject,
-                                      const GALGAS_string constinArgument_inTargetName,
-                                      const GALGAS_string constinArgument_inProductFileName,
-                                      const GALGAS_stringlist constinArgument_inSourceList,
-                                      const GALGAS_stringlist constinArgument_inBuildConfigurationSettingList,
-                                      GALGAS_string & outArgument_outProductFileRef,
-                                      C_Compiler * inCompiler
-                                      COMMA_UNUSED_LOCATION_ARGS) {
+void categoryModifier_addToolTarget (GALGAS_XcodeProjectDescriptor & ioObject,
+                                     const GALGAS_string constinArgument_inTargetName,
+                                     const GALGAS_string constinArgument_inProductFileName,
+                                     const GALGAS_stringlist constinArgument_inSourceList,
+                                     const GALGAS_stringlist constinArgument_inBuildConfigurationSettingList,
+                                     GALGAS_string & outArgument_outTargetRef,
+                                     GALGAS_string & outArgument_outProductFileRef,
+                                     C_Compiler * inCompiler
+                                     COMMA_UNUSED_LOCATION_ARGS) {
+  outArgument_outTargetRef.drop () ; // Release 'out' argument
   outArgument_outProductFileRef.drop () ; // Release 'out' argument
   {
-  categoryModifier_getReferenceKey (ioObject, outArgument_outProductFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 48)) ;
+  categoryModifier_getReferenceKey (ioObject, outArgument_outProductFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 85)) ;
   }
   GALGAS_string var_buildPhaseRef ;
   {
-  categoryModifier_getReferenceKey (ioObject, var_buildPhaseRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 49)) ;
+  categoryModifier_getReferenceKey (ioObject, var_buildPhaseRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 86)) ;
   }
-  GALGAS_string var_targetRef ;
   {
-  categoryModifier_getReferenceKey (ioObject, var_targetRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 50)) ;
+  categoryModifier_getReferenceKey (ioObject, outArgument_outTargetRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 87)) ;
   }
   GALGAS_string var_buildConfigurationListRef ;
   {
-  categoryModifier_getReferenceKey (ioObject, var_buildConfigurationListRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 51)) ;
+  categoryModifier_getReferenceKey (ioObject, var_buildConfigurationListRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 88)) ;
   }
   GALGAS_string var_buildConfigurationRef ;
   {
-  categoryModifier_getReferenceKey (ioObject, var_buildConfigurationRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 52)) ;
+  categoryModifier_getReferenceKey (ioObject, var_buildConfigurationRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 89)) ;
   }
-  ioObject.mAttribute_mMachOTargetList.addAssign_operation (var_targetRef, constinArgument_inTargetName, outArgument_outProductFileRef, constinArgument_inProductFileName, constinArgument_inSourceList, var_buildPhaseRef, var_buildConfigurationListRef, constinArgument_inBuildConfigurationSettingList, var_buildConfigurationRef  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 53)) ;
+  ioObject.mAttribute_mToolTargetList.addAssign_operation (outArgument_outTargetRef, constinArgument_inTargetName, outArgument_outProductFileRef, constinArgument_inProductFileName, constinArgument_inSourceList, var_buildPhaseRef, var_buildConfigurationListRef, constinArgument_inBuildConfigurationSettingList, var_buildConfigurationRef  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 90)) ;
+}
+
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                               Category method '@XcodeProjectDescriptor addAppTarget'                                *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void categoryModifier_addAppTarget (GALGAS_XcodeProjectDescriptor & ioObject,
+                                    const GALGAS_string constinArgument_inTargetName,
+                                    const GALGAS_string constinArgument_inProductFileName,
+                                    const GALGAS_stringlist constinArgument_inSourceList,
+                                    const GALGAS_stringlist constinArgument_inFrameworksFileRefList,
+                                    const GALGAS_stringlist constinArgument_inResourceFileBuildRefs,
+                                    const GALGAS_stringlist constinArgument_inBuildConfigurationSettingList,
+                                    const GALGAS_stringlist constinArgument_inDependentTargetRefList,
+                                    const GALGAS__32_stringlist constinArgument_inProductCopyList,
+                                    GALGAS_string & outArgument_outProductFileRef,
+                                    C_Compiler * inCompiler
+                                    COMMA_UNUSED_LOCATION_ARGS) {
+  outArgument_outProductFileRef.drop () ; // Release 'out' argument
+  {
+  categoryModifier_getReferenceKey (ioObject, outArgument_outProductFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 114)) ;
+  }
+  GALGAS_string var_buildPhaseRef ;
+  {
+  categoryModifier_getReferenceKey (ioObject, var_buildPhaseRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 115)) ;
+  }
+  GALGAS_string var_targetRef ;
+  {
+  categoryModifier_getReferenceKey (ioObject, var_targetRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 116)) ;
+  }
+  GALGAS_string var_buildConfigurationListRef ;
+  {
+  categoryModifier_getReferenceKey (ioObject, var_buildConfigurationListRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 117)) ;
+  }
+  GALGAS_string var_buildConfigurationRef ;
+  {
+  categoryModifier_getReferenceKey (ioObject, var_buildConfigurationRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 118)) ;
+  }
+  GALGAS_string var_frameworkBuildRef ;
+  {
+  categoryModifier_getReferenceKey (ioObject, var_frameworkBuildRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 119)) ;
+  }
+  GALGAS_string var_resourceBuildRef ;
+  {
+  categoryModifier_getReferenceKey (ioObject, var_resourceBuildRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 120)) ;
+  }
+  GALGAS__32_stringlist var_dependentTargets = GALGAS__32_stringlist::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 121)) ;
+  cEnumerator_stringlist enumerator_4288 (constinArgument_inDependentTargetRefList, kEnumeration_up) ;
+  while (enumerator_4288.hasCurrentObject ()) {
+    GALGAS_string var_dependencyBuildRef ;
+    {
+    categoryModifier_getReferenceKey (ioObject, var_dependencyBuildRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 123)) ;
+    }
+    var_dependentTargets.addAssign_operation (var_dependencyBuildRef, enumerator_4288.current_mValue (HERE)  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 124)) ;
+    enumerator_4288.gotoNextObject () ;
+  }
+  GALGAS_stringlist var_resourceFileBuildRefs = constinArgument_inResourceFileBuildRefs ;
+  cEnumerator__32_stringlist enumerator_4503 (constinArgument_inProductCopyList, kEnumeration_up) ;
+  while (enumerator_4503.hasCurrentObject ()) {
+    GALGAS_string var_buildRef ;
+    {
+    categoryModifier_addBuildFile (ioObject, enumerator_4503.current_mValue_30_ (HERE), enumerator_4503.current_mValue_31_ (HERE), var_buildRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 128)) ;
+    }
+    var_resourceFileBuildRefs.addAssign_operation (var_buildRef  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 129)) ;
+    enumerator_4503.gotoNextObject () ;
+  }
+  ioObject.mAttribute_mAppTargetList.addAssign_operation (var_targetRef, constinArgument_inTargetName, outArgument_outProductFileRef, constinArgument_inProductFileName, constinArgument_inSourceList, var_buildPhaseRef, var_buildConfigurationListRef, constinArgument_inBuildConfigurationSettingList, var_buildConfigurationRef, constinArgument_inFrameworksFileRefList, var_frameworkBuildRef, var_dependentTargets, var_resourceBuildRef, var_resourceFileBuildRefs  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 131)) ;
 }
 
 
@@ -6635,25 +7807,25 @@ void categoryModifier_addGroup (GALGAS_XcodeProjectDescriptor & ioObject,
   const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, ioObject.mAttribute_mDefaultConfigurationRef.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
   if (kBoolTrue == test_0) {
     {
-    categoryModifier_getReferenceKey (ioObject, ioObject.mAttribute_mDefaultConfigurationRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 73)) ;
+    categoryModifier_getReferenceKey (ioObject, ioObject.mAttribute_mDefaultConfigurationRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 156)) ;
     }
   }
   const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, ioObject.mAttribute_mProjectBuildConfigurationRef.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
   if (kBoolTrue == test_1) {
     {
-    categoryModifier_getReferenceKey (ioObject, ioObject.mAttribute_mProjectBuildConfigurationRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 76)) ;
+    categoryModifier_getReferenceKey (ioObject, ioObject.mAttribute_mProjectBuildConfigurationRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 159)) ;
     }
   }
   const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, ioObject.mAttribute_mMainGroupReference.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
   if (kBoolTrue == test_2) {
     {
-    categoryModifier_getReferenceKey (ioObject, ioObject.mAttribute_mMainGroupReference, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 79)) ;
+    categoryModifier_getReferenceKey (ioObject, ioObject.mAttribute_mMainGroupReference, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 162)) ;
     }
   }
   {
-  categoryModifier_getReferenceKey (ioObject, outArgument_outGroupRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 81)) ;
+  categoryModifier_getReferenceKey (ioObject, outArgument_outGroupRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 164)) ;
   }
-  ioObject.mAttribute_mGroupList.addAssign_operation (outArgument_outGroupRef, constinArgument_inGroupName, constinArgument_inGroupPath, constinArgument_inChildrenRefs  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 82)) ;
+  ioObject.mAttribute_mGroupList.addAssign_operation (outArgument_outGroupRef, constinArgument_inGroupName, constinArgument_inGroupPath, constinArgument_inChildrenRefs  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 165)) ;
 }
 
 
@@ -6666,9 +7838,12 @@ void categoryModifier_addGroup (GALGAS_XcodeProjectDescriptor & ioObject,
 void categoryModifier_addGroupWithFiles (GALGAS_XcodeProjectDescriptor & ioObject,
                                          const GALGAS_string constinArgument_inGroupName,
                                          const GALGAS_string constinArgument_inGroupPath,
+                                         const GALGAS_stringlist constinArgument_inSubgroupRefs,
                                          const GALGAS_stringset constinArgument_inFileNames,
                                          GALGAS_stringlist & ioArgument_ioCppFileBuildRefs,
                                          GALGAS_stringlist & ioArgument_ioMFileBuildRefs,
+                                         GALGAS_stringlist & ioArgument_ioFrameWorkFileBuildRefs,
+                                         GALGAS_stringlist & ioArgument_ioResourceFileBuildRefs,
                                          GALGAS_string & outArgument_outGroupRef,
                                          C_Compiler * inCompiler
                                          COMMA_UNUSED_LOCATION_ARGS) {
@@ -6676,68 +7851,119 @@ void categoryModifier_addGroupWithFiles (GALGAS_XcodeProjectDescriptor & ioObjec
   const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, ioObject.mAttribute_mDefaultConfigurationRef.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
   if (kBoolTrue == test_0) {
     {
-    categoryModifier_getReferenceKey (ioObject, ioObject.mAttribute_mDefaultConfigurationRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 95)) ;
+    categoryModifier_getReferenceKey (ioObject, ioObject.mAttribute_mDefaultConfigurationRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 181)) ;
     }
   }
   const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, ioObject.mAttribute_mProjectBuildConfigurationRef.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
   if (kBoolTrue == test_1) {
     {
-    categoryModifier_getReferenceKey (ioObject, ioObject.mAttribute_mProjectBuildConfigurationRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 98)) ;
+    categoryModifier_getReferenceKey (ioObject, ioObject.mAttribute_mProjectBuildConfigurationRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 184)) ;
     }
   }
   const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, ioObject.mAttribute_mMainGroupReference.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
   if (kBoolTrue == test_2) {
     {
-    categoryModifier_getReferenceKey (ioObject, ioObject.mAttribute_mMainGroupReference, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 101)) ;
+    categoryModifier_getReferenceKey (ioObject, ioObject.mAttribute_mMainGroupReference, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 187)) ;
     }
   }
   {
-  categoryModifier_getReferenceKey (ioObject, outArgument_outGroupRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 103)) ;
+  categoryModifier_getReferenceKey (ioObject, outArgument_outGroupRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 189)) ;
   }
-  GALGAS_stringlist var_childrenRefs = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 105)) ;
-  cEnumerator_stringset enumerator_3554 (constinArgument_inFileNames, kEnumeration_up) ;
-  while (enumerator_3554.hasCurrentObject ()) {
-    const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, enumerator_3554.current_key (HERE).reader_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 107)).objectCompare (GALGAS_string ("cpp"))).boolEnum () ;
+  GALGAS_stringlist var_childrenRefs = constinArgument_inSubgroupRefs ;
+  cEnumerator_stringset enumerator_6665 (constinArgument_inFileNames, kEnumeration_up) ;
+  while (enumerator_6665.hasCurrentObject ()) {
+    const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, enumerator_6665.current_key (HERE).reader_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 193)).objectCompare (GALGAS_string ("cpp"))).boolEnum () ;
     if (kBoolTrue == test_3) {
       GALGAS_string var_cppFileRef ;
       {
-      categoryModifier_addCppFile (ioObject, enumerator_3554.current_key (HERE), var_cppFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 108)) ;
+      categoryModifier_addCppFile (ioObject, enumerator_6665.current_key (HERE), var_cppFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 194)) ;
       }
-      var_childrenRefs.addAssign_operation (var_cppFileRef  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 109)) ;
+      var_childrenRefs.addAssign_operation (var_cppFileRef  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 195)) ;
       GALGAS_string var_buildRef ;
       {
-      categoryModifier_addBuildFile (ioObject, var_cppFileRef, enumerator_3554.current_key (HERE), var_buildRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 110)) ;
+      categoryModifier_addBuildFile (ioObject, var_cppFileRef, enumerator_6665.current_key (HERE), var_buildRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 196)) ;
       }
-      ioArgument_ioCppFileBuildRefs.addAssign_operation (var_buildRef  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 111)) ;
+      ioArgument_ioCppFileBuildRefs.addAssign_operation (var_buildRef  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 197)) ;
     }else if (kBoolFalse == test_3) {
-      const enumGalgasBool test_4 = GALGAS_bool (kIsEqual, enumerator_3554.current_key (HERE).reader_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 112)).objectCompare (GALGAS_string ("h"))).boolEnum () ;
+      const enumGalgasBool test_4 = GALGAS_bool (kIsEqual, enumerator_6665.current_key (HERE).reader_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 198)).objectCompare (GALGAS_string ("h"))).boolEnum () ;
       if (kBoolTrue == test_4) {
         GALGAS_string var_headerFileRef ;
         {
-        categoryModifier_addHeaderFile (ioObject, enumerator_3554.current_key (HERE), var_headerFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 113)) ;
+        categoryModifier_addHeaderFile (ioObject, enumerator_6665.current_key (HERE), var_headerFileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 199)) ;
         }
-        var_childrenRefs.addAssign_operation (var_headerFileRef  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 114)) ;
+        var_childrenRefs.addAssign_operation (var_headerFileRef  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 200)) ;
       }else if (kBoolFalse == test_4) {
-        const enumGalgasBool test_5 = GALGAS_bool (kIsEqual, enumerator_3554.current_key (HERE).reader_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 115)).objectCompare (GALGAS_string ("m"))).boolEnum () ;
+        const enumGalgasBool test_5 = GALGAS_bool (kIsEqual, enumerator_6665.current_key (HERE).reader_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 201)).objectCompare (GALGAS_string ("m"))).boolEnum () ;
         if (kBoolTrue == test_5) {
           GALGAS_string var_m_5F_FileRef ;
           {
-          categoryModifier_addMFile (ioObject, enumerator_3554.current_key (HERE), var_m_5F_FileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 116)) ;
+          categoryModifier_addMFile (ioObject, enumerator_6665.current_key (HERE), var_m_5F_FileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 202)) ;
           }
           GALGAS_string var_buildRef ;
           {
-          categoryModifier_addBuildFile (ioObject, var_m_5F_FileRef, enumerator_3554.current_key (HERE), var_buildRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 117)) ;
+          categoryModifier_addBuildFile (ioObject, var_m_5F_FileRef, enumerator_6665.current_key (HERE), var_buildRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 203)) ;
           }
-          var_childrenRefs.addAssign_operation (var_m_5F_FileRef  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 118)) ;
-          ioArgument_ioMFileBuildRefs.addAssign_operation (var_buildRef  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 119)) ;
+          var_childrenRefs.addAssign_operation (var_m_5F_FileRef  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 204)) ;
+          ioArgument_ioMFileBuildRefs.addAssign_operation (var_buildRef  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 205)) ;
         }else if (kBoolFalse == test_5) {
-          inCompiler->emitSemanticError (GALGAS_location::constructor_nowhere (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 121)), GALGAS_string ("unhandled extension for file '").add_operation (enumerator_3554.current_key (HERE), inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 121)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 121))  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 121)) ;
+          const enumGalgasBool test_6 = GALGAS_bool (kIsEqual, enumerator_6665.current_key (HERE).reader_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 206)).objectCompare (GALGAS_string ("framework"))).boolEnum () ;
+          if (kBoolTrue == test_6) {
+            GALGAS_string var_framework_5F_FileRef ;
+            {
+            categoryModifier_addFrameworkFile (ioObject, enumerator_6665.current_key (HERE), var_framework_5F_FileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 207)) ;
+            }
+            GALGAS_string var_buildRef ;
+            {
+            categoryModifier_addBuildFile (ioObject, var_framework_5F_FileRef, enumerator_6665.current_key (HERE), var_buildRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 208)) ;
+            }
+            var_childrenRefs.addAssign_operation (var_framework_5F_FileRef  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 209)) ;
+            ioArgument_ioFrameWorkFileBuildRefs.addAssign_operation (var_buildRef  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 210)) ;
+          }else if (kBoolFalse == test_6) {
+            const enumGalgasBool test_7 = GALGAS_bool (kIsEqual, enumerator_6665.current_key (HERE).reader_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 211)).objectCompare (GALGAS_string ("plist"))).boolEnum () ;
+            if (kBoolTrue == test_7) {
+              GALGAS_string var_resource_5F_FileRef ;
+              {
+              categoryModifier_addInfoPlistFile (ioObject, enumerator_6665.current_key (HERE), var_resource_5F_FileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 212)) ;
+              }
+              var_childrenRefs.addAssign_operation (var_resource_5F_FileRef  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 213)) ;
+            }else if (kBoolFalse == test_7) {
+              const enumGalgasBool test_8 = GALGAS_bool (kIsEqual, enumerator_6665.current_key (HERE).reader_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 214)).objectCompare (GALGAS_string ("xib"))).boolEnum () ;
+              if (kBoolTrue == test_8) {
+                GALGAS_string var_resource_5F_FileRef ;
+                {
+                categoryModifier_addXIBFile (ioObject, enumerator_6665.current_key (HERE), var_resource_5F_FileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 215)) ;
+                }
+                var_childrenRefs.addAssign_operation (var_resource_5F_FileRef  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 216)) ;
+                GALGAS_string var_buildRef ;
+                {
+                categoryModifier_addBuildFile (ioObject, var_resource_5F_FileRef, enumerator_6665.current_key (HERE), var_buildRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 217)) ;
+                }
+                ioArgument_ioResourceFileBuildRefs.addAssign_operation (var_buildRef  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 218)) ;
+              }else if (kBoolFalse == test_8) {
+                const enumGalgasBool test_9 = GALGAS_bool (kIsEqual, enumerator_6665.current_key (HERE).reader_pathExtension (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 219)).objectCompare (GALGAS_string ("tiff"))).boolEnum () ;
+                if (kBoolTrue == test_9) {
+                  GALGAS_string var_resource_5F_FileRef ;
+                  {
+                  categoryModifier_addTIFF_5F_file (ioObject, enumerator_6665.current_key (HERE), var_resource_5F_FileRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 220)) ;
+                  }
+                  var_childrenRefs.addAssign_operation (var_resource_5F_FileRef  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 221)) ;
+                  GALGAS_string var_buildRef ;
+                  {
+                  categoryModifier_addBuildFile (ioObject, var_resource_5F_FileRef, enumerator_6665.current_key (HERE), var_buildRef, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 222)) ;
+                  }
+                  ioArgument_ioResourceFileBuildRefs.addAssign_operation (var_buildRef  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 223)) ;
+                }else if (kBoolFalse == test_9) {
+                  inCompiler->emitSemanticError (GALGAS_location::constructor_nowhere (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 225)), GALGAS_string ("unhandled extension for file '").add_operation (enumerator_6665.current_key (HERE), inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 225)).add_operation (GALGAS_string ("'"), inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 225))  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 225)) ;
+                }
+              }
+            }
+          }
         }
       }
     }
-    enumerator_3554.gotoNextObject () ;
+    enumerator_6665.gotoNextObject () ;
   }
-  ioObject.mAttribute_mGroupList.addAssign_operation (outArgument_outGroupRef, constinArgument_inGroupName, constinArgument_inGroupPath, var_childrenRefs  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 124)) ;
+  ioObject.mAttribute_mGroupList.addAssign_operation (outArgument_outGroupRef, constinArgument_inGroupName, constinArgument_inGroupPath, var_childrenRefs  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 228)) ;
 }
 
 
@@ -6751,7 +7977,7 @@ void categoryModifier_placeGroupAsMainGroup (GALGAS_XcodeProjectDescriptor & ioO
                                              const GALGAS_string constinArgument_inGroupRef,
                                              C_Compiler * /* inCompiler */
                                              COMMA_UNUSED_LOCATION_ARGS) {
-  ioObject.mAttribute_mMainGroupChildrenRefs.addAssign_operation (constinArgument_inGroupRef  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 131)) ;
+  ioObject.mAttribute_mMainGroupChildrenRefs.addAssign_operation (constinArgument_inGroupRef  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 235)) ;
 }
 
 
@@ -6765,7 +7991,7 @@ void categoryModifier_addSettingsToDefaultConfiguration (GALGAS_XcodeProjectDesc
                                                          const GALGAS_stringlist constinArgument_inSettingList,
                                                          C_Compiler * /* inCompiler */
                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  ioObject.mAttribute_mDefaultConfigurationSettingList.dotAssign_operation (constinArgument_inSettingList  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 138)) ;
+  ioObject.mAttribute_mDefaultConfigurationSettingList.dotAssign_operation (constinArgument_inSettingList  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 242)) ;
 }
 
 
@@ -6782,11 +8008,11 @@ void categoryModifier_getReferenceKey (GALGAS_XcodeProjectDescriptor & ioObject,
   outArgument_outRef.drop () ; // Release 'out' argument
   const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, ioObject.mAttribute_mProjectObjectReference.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
   if (kBoolTrue == test_0) {
-    ioObject.mAttribute_mProjectObjectReference = ioObject.mAttribute_mSequenceNumber.reader_string (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 177)).reader_md_35_ (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 177)).reader_rightSubString (GALGAS_uint ((uint32_t) 24U) COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 177)) ;
-    ioObject.mAttribute_mSequenceNumber.increment_operation (inCompiler  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 178)) ;
+    ioObject.mAttribute_mProjectObjectReference = ioObject.mAttribute_mSequenceNumber.reader_string (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 300)).reader_md_35_ (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 300)).reader_rightSubString (GALGAS_uint ((uint32_t) 24U) COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 300)) ;
+    ioObject.mAttribute_mSequenceNumber.increment_operation (inCompiler  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 301)) ;
   }
-  outArgument_outRef = ioObject.mAttribute_mSequenceNumber.reader_string (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 180)).reader_md_35_ (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 180)).reader_rightSubString (GALGAS_uint ((uint32_t) 24U) COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 180)) ;
-  ioObject.mAttribute_mSequenceNumber.increment_operation (inCompiler  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 181)) ;
+  outArgument_outRef = ioObject.mAttribute_mSequenceNumber.reader_string (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 303)).reader_md_35_ (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 303)).reader_rightSubString (GALGAS_uint ((uint32_t) 24U) COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 303)) ;
+  ioObject.mAttribute_mSequenceNumber.increment_operation (inCompiler  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 304)) ;
 }
 
 
@@ -6801,15 +8027,15 @@ void categoryMethod_generateAtPath (const GALGAS_XcodeProjectDescriptor inObject
                                     const GALGAS_string constinArgument_inCacheFilePath,
                                     C_Compiler * inCompiler
                                     COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string var_contents = GALGAS_string (filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (inCompiler, inObject.mAttribute_mProjectObjectReference, inObject.mAttribute_mMainGroupReference, inObject.mAttribute_mGroupList, inObject.mAttribute_mMainGroupChildrenRefs, inObject.mAttribute_mMachOTargetList, inObject.mAttribute_mCppFileList, inObject.mAttribute_m_5F_M_5F_FileList, inObject.mAttribute_mHeaderFileList, inObject.mAttribute_mBuildFileList, inObject.mAttribute_mDefaultConfigurationRef, inObject.mAttribute_mDefaultConfigurationSettingList, inObject.mAttribute_mProjectBuildConfigurationRef COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 228))) ;
-  GALGAS_bool test_0 = constinArgument_inCacheFilePath.reader_fileExists (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 242)) ;
+  GALGAS_string var_contents = GALGAS_string (filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (inCompiler, inObject.mAttribute_mProjectObjectReference, inObject.mAttribute_mMainGroupReference, inObject.mAttribute_mGroupList, inObject.mAttribute_mMainGroupChildrenRefs, inObject.mAttribute_mToolTargetList, inObject.mAttribute_mAppTargetList, inObject.mAttribute_mCppFileList, inObject.mAttribute_m_5F_M_5F_FileList, inObject.mAttribute_mFrameworkFileList, inObject.mAttribute_mHeaderFileList, inObject.mAttribute_mInfoPlistFileList, inObject.mAttribute_mTIFF_5F_fileList, inObject.mAttribute_mXIB_5F_fileList, inObject.mAttribute_mBuildFileList, inObject.mAttribute_mDefaultConfigurationRef, inObject.mAttribute_mDefaultConfigurationSettingList, inObject.mAttribute_mProjectBuildConfigurationRef COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 362))) ;
+  GALGAS_bool test_0 = constinArgument_inCacheFilePath.reader_fileExists (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 381)) ;
   if (kBoolTrue == test_0.boolEnum ()) {
-    test_0 = GALGAS_bool (kIsEqual, GALGAS_string::constructor_stringWithContentsOfFile (constinArgument_inCacheFilePath, inCompiler  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 242)).objectCompare (var_contents)) ;
+    test_0 = GALGAS_bool (kIsEqual, GALGAS_string::constructor_stringWithContentsOfFile (constinArgument_inCacheFilePath, inCompiler  COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 381)).objectCompare (var_contents)) ;
   }
-  const enumGalgasBool test_1 = test_0.operator_not (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 242)).boolEnum () ;
+  const enumGalgasBool test_1 = test_0.operator_not (SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 381)).boolEnum () ;
   if (kBoolTrue == test_1) {
-    var_contents.method_writeToFile (constinArgument_inCacheFilePath, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 243)) ;
-    var_contents.method_makeDirectoryAndWriteToFile (constinArgument_inPath.add_operation (GALGAS_string ("/project.pbxproj"), inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 244)), inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 244)) ;
+    var_contents.method_writeToFile (constinArgument_inCacheFilePath, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 382)) ;
+    var_contents.method_makeDirectoryAndWriteToFile (constinArgument_inPath.add_operation (GALGAS_string ("/project.pbxproj"), inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 383)), inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 383)) ;
   }
 }
 
@@ -18353,1532 +19579,6 @@ GALGAS_nonterminalDeclarationListAST_2D_element GALGAS_nonterminalDeclarationLis
       result = *p ;
     }else{
       inCompiler->castError ("nonterminalDeclarationListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_syntaxRuleLabelListAST_2D_element::GALGAS_syntaxRuleLabelListAST_2D_element (void) :
-mAttribute_mLabelName (),
-mAttribute_mFormalArguments (),
-mAttribute_mEndOfArgumentLocation (),
-mAttribute_mSyntaxInstructionList (),
-mAttribute_mEndOfInstructionList () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_syntaxRuleLabelListAST_2D_element::~ GALGAS_syntaxRuleLabelListAST_2D_element (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_syntaxRuleLabelListAST_2D_element::GALGAS_syntaxRuleLabelListAST_2D_element (const GALGAS_lstring & inOperand0,
-                                                                                    const GALGAS_formalParameterListAST & inOperand1,
-                                                                                    const GALGAS_location & inOperand2,
-                                                                                    const GALGAS_syntaxInstructionList & inOperand3,
-                                                                                    const GALGAS_location & inOperand4) :
-mAttribute_mLabelName (inOperand0),
-mAttribute_mFormalArguments (inOperand1),
-mAttribute_mEndOfArgumentLocation (inOperand2),
-mAttribute_mSyntaxInstructionList (inOperand3),
-mAttribute_mEndOfInstructionList (inOperand4) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_syntaxRuleLabelListAST_2D_element GALGAS_syntaxRuleLabelListAST_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_syntaxRuleLabelListAST_2D_element (GALGAS_lstring::constructor_default (HERE),
-                                                   GALGAS_formalParameterListAST::constructor_emptyList (HERE),
-                                                   GALGAS_location::constructor_nowhere (HERE),
-                                                   GALGAS_syntaxInstructionList::constructor_emptyList (HERE),
-                                                   GALGAS_location::constructor_nowhere (HERE)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_syntaxRuleLabelListAST_2D_element GALGAS_syntaxRuleLabelListAST_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                                    const GALGAS_formalParameterListAST & inOperand1,
-                                                                                                    const GALGAS_location & inOperand2,
-                                                                                                    const GALGAS_syntaxInstructionList & inOperand3,
-                                                                                                    const GALGAS_location & inOperand4 
-                                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_syntaxRuleLabelListAST_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid ()) {
-    result = GALGAS_syntaxRuleLabelListAST_2D_element (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_syntaxRuleLabelListAST_2D_element::objectCompare (const GALGAS_syntaxRuleLabelListAST_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mAttribute_mLabelName.objectCompare (inOperand.mAttribute_mLabelName) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mFormalArguments.objectCompare (inOperand.mAttribute_mFormalArguments) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mEndOfArgumentLocation.objectCompare (inOperand.mAttribute_mEndOfArgumentLocation) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mSyntaxInstructionList.objectCompare (inOperand.mAttribute_mSyntaxInstructionList) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mEndOfInstructionList.objectCompare (inOperand.mAttribute_mEndOfInstructionList) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool GALGAS_syntaxRuleLabelListAST_2D_element::isValid (void) const {
-  return mAttribute_mLabelName.isValid () && mAttribute_mFormalArguments.isValid () && mAttribute_mEndOfArgumentLocation.isValid () && mAttribute_mSyntaxInstructionList.isValid () && mAttribute_mEndOfInstructionList.isValid () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_syntaxRuleLabelListAST_2D_element::drop (void) {
-  mAttribute_mLabelName.drop () ;
-  mAttribute_mFormalArguments.drop () ;
-  mAttribute_mEndOfArgumentLocation.drop () ;
-  mAttribute_mSyntaxInstructionList.drop () ;
-  mAttribute_mEndOfInstructionList.drop () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_syntaxRuleLabelListAST_2D_element::description (C_String & ioString,
-                                                            const int32_t inIndentation) const {
-  ioString << "<struct @syntaxRuleLabelListAST-element:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    mAttribute_mLabelName.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mFormalArguments.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mEndOfArgumentLocation.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mSyntaxInstructionList.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mEndOfInstructionList.description (ioString, inIndentation+1) ;
-  }
-  ioString << ">" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_syntaxRuleLabelListAST_2D_element::reader_mLabelName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mLabelName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_formalParameterListAST GALGAS_syntaxRuleLabelListAST_2D_element::reader_mFormalArguments (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mFormalArguments ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location GALGAS_syntaxRuleLabelListAST_2D_element::reader_mEndOfArgumentLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mEndOfArgumentLocation ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_syntaxInstructionList GALGAS_syntaxRuleLabelListAST_2D_element::reader_mSyntaxInstructionList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mSyntaxInstructionList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location GALGAS_syntaxRuleLabelListAST_2D_element::reader_mEndOfInstructionList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mEndOfInstructionList ;
-}
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                        @syntaxRuleLabelListAST-element type                                         *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_syntaxRuleLabelListAST_2D_element ("syntaxRuleLabelListAST-element",
-                                                          NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_syntaxRuleLabelListAST_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_syntaxRuleLabelListAST_2D_element ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_syntaxRuleLabelListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_syntaxRuleLabelListAST_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_syntaxRuleLabelListAST_2D_element GALGAS_syntaxRuleLabelListAST_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                                  C_Compiler * inCompiler
-                                                                                                  COMMA_LOCATION_ARGS) {
-  GALGAS_syntaxRuleLabelListAST_2D_element result ;
-  const GALGAS_syntaxRuleLabelListAST_2D_element * p = (const GALGAS_syntaxRuleLabelListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_syntaxRuleLabelListAST_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("syntaxRuleLabelListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_syntaxRuleListAST_2D_element::GALGAS_syntaxRuleListAST_2D_element (void) :
-mAttribute_mNonterminalName (),
-mAttribute_mLabelList () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_syntaxRuleListAST_2D_element::~ GALGAS_syntaxRuleListAST_2D_element (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_syntaxRuleListAST_2D_element::GALGAS_syntaxRuleListAST_2D_element (const GALGAS_lstring & inOperand0,
-                                                                          const GALGAS_syntaxRuleLabelListAST & inOperand1) :
-mAttribute_mNonterminalName (inOperand0),
-mAttribute_mLabelList (inOperand1) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_syntaxRuleListAST_2D_element GALGAS_syntaxRuleListAST_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_syntaxRuleListAST_2D_element (GALGAS_lstring::constructor_default (HERE),
-                                              GALGAS_syntaxRuleLabelListAST::constructor_emptyList (HERE)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_syntaxRuleListAST_2D_element GALGAS_syntaxRuleListAST_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                          const GALGAS_syntaxRuleLabelListAST & inOperand1 
-                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_syntaxRuleListAST_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_syntaxRuleListAST_2D_element (inOperand0, inOperand1) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_syntaxRuleListAST_2D_element::objectCompare (const GALGAS_syntaxRuleListAST_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mAttribute_mNonterminalName.objectCompare (inOperand.mAttribute_mNonterminalName) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mLabelList.objectCompare (inOperand.mAttribute_mLabelList) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool GALGAS_syntaxRuleListAST_2D_element::isValid (void) const {
-  return mAttribute_mNonterminalName.isValid () && mAttribute_mLabelList.isValid () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_syntaxRuleListAST_2D_element::drop (void) {
-  mAttribute_mNonterminalName.drop () ;
-  mAttribute_mLabelList.drop () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_syntaxRuleListAST_2D_element::description (C_String & ioString,
-                                                       const int32_t inIndentation) const {
-  ioString << "<struct @syntaxRuleListAST-element:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    mAttribute_mNonterminalName.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mLabelList.description (ioString, inIndentation+1) ;
-  }
-  ioString << ">" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_syntaxRuleListAST_2D_element::reader_mNonterminalName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mNonterminalName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_syntaxRuleLabelListAST GALGAS_syntaxRuleListAST_2D_element::reader_mLabelList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mLabelList ;
-}
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                           @syntaxRuleListAST-element type                                           *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_syntaxRuleListAST_2D_element ("syntaxRuleListAST-element",
-                                                     NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_syntaxRuleListAST_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_syntaxRuleListAST_2D_element ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_syntaxRuleListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_syntaxRuleListAST_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_syntaxRuleListAST_2D_element GALGAS_syntaxRuleListAST_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                        C_Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_syntaxRuleListAST_2D_element result ;
-  const GALGAS_syntaxRuleListAST_2D_element * p = (const GALGAS_syntaxRuleListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_syntaxRuleListAST_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("syntaxRuleListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_programRuleList_2D_element::GALGAS_programRuleList_2D_element (void) :
-mAttribute_mSourceFileExtension (),
-mAttribute_mSourceFileHelp (),
-mAttribute_mSourceFileVariableName (),
-mAttribute_mSourceFileVariableNameIsUnused (),
-mAttribute_mIndexingGrammar (),
-mAttribute_mInstructionList (),
-mAttribute_mEndOfInstructionList () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_programRuleList_2D_element::~ GALGAS_programRuleList_2D_element (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_programRuleList_2D_element::GALGAS_programRuleList_2D_element (const GALGAS_lstring & inOperand0,
-                                                                      const GALGAS_lstring & inOperand1,
-                                                                      const GALGAS_lstring & inOperand2,
-                                                                      const GALGAS_bool & inOperand3,
-                                                                      const GALGAS_lstring & inOperand4,
-                                                                      const GALGAS_semanticInstructionListAST & inOperand5,
-                                                                      const GALGAS_location & inOperand6) :
-mAttribute_mSourceFileExtension (inOperand0),
-mAttribute_mSourceFileHelp (inOperand1),
-mAttribute_mSourceFileVariableName (inOperand2),
-mAttribute_mSourceFileVariableNameIsUnused (inOperand3),
-mAttribute_mIndexingGrammar (inOperand4),
-mAttribute_mInstructionList (inOperand5),
-mAttribute_mEndOfInstructionList (inOperand6) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_programRuleList_2D_element GALGAS_programRuleList_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_programRuleList_2D_element (GALGAS_lstring::constructor_default (HERE),
-                                            GALGAS_lstring::constructor_default (HERE),
-                                            GALGAS_lstring::constructor_default (HERE),
-                                            GALGAS_bool::constructor_default (HERE),
-                                            GALGAS_lstring::constructor_default (HERE),
-                                            GALGAS_semanticInstructionListAST::constructor_emptyList (HERE),
-                                            GALGAS_location::constructor_nowhere (HERE)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_programRuleList_2D_element GALGAS_programRuleList_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                      const GALGAS_lstring & inOperand1,
-                                                                                      const GALGAS_lstring & inOperand2,
-                                                                                      const GALGAS_bool & inOperand3,
-                                                                                      const GALGAS_lstring & inOperand4,
-                                                                                      const GALGAS_semanticInstructionListAST & inOperand5,
-                                                                                      const GALGAS_location & inOperand6 
-                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_programRuleList_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid ()) {
-    result = GALGAS_programRuleList_2D_element (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_programRuleList_2D_element::objectCompare (const GALGAS_programRuleList_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mAttribute_mSourceFileExtension.objectCompare (inOperand.mAttribute_mSourceFileExtension) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mSourceFileHelp.objectCompare (inOperand.mAttribute_mSourceFileHelp) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mSourceFileVariableName.objectCompare (inOperand.mAttribute_mSourceFileVariableName) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mSourceFileVariableNameIsUnused.objectCompare (inOperand.mAttribute_mSourceFileVariableNameIsUnused) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mIndexingGrammar.objectCompare (inOperand.mAttribute_mIndexingGrammar) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mInstructionList.objectCompare (inOperand.mAttribute_mInstructionList) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mEndOfInstructionList.objectCompare (inOperand.mAttribute_mEndOfInstructionList) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool GALGAS_programRuleList_2D_element::isValid (void) const {
-  return mAttribute_mSourceFileExtension.isValid () && mAttribute_mSourceFileHelp.isValid () && mAttribute_mSourceFileVariableName.isValid () && mAttribute_mSourceFileVariableNameIsUnused.isValid () && mAttribute_mIndexingGrammar.isValid () && mAttribute_mInstructionList.isValid () && mAttribute_mEndOfInstructionList.isValid () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_programRuleList_2D_element::drop (void) {
-  mAttribute_mSourceFileExtension.drop () ;
-  mAttribute_mSourceFileHelp.drop () ;
-  mAttribute_mSourceFileVariableName.drop () ;
-  mAttribute_mSourceFileVariableNameIsUnused.drop () ;
-  mAttribute_mIndexingGrammar.drop () ;
-  mAttribute_mInstructionList.drop () ;
-  mAttribute_mEndOfInstructionList.drop () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_programRuleList_2D_element::description (C_String & ioString,
-                                                     const int32_t inIndentation) const {
-  ioString << "<struct @programRuleList-element:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    mAttribute_mSourceFileExtension.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mSourceFileHelp.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mSourceFileVariableName.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mSourceFileVariableNameIsUnused.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mIndexingGrammar.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mInstructionList.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mEndOfInstructionList.description (ioString, inIndentation+1) ;
-  }
-  ioString << ">" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_programRuleList_2D_element::reader_mSourceFileExtension (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mSourceFileExtension ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_programRuleList_2D_element::reader_mSourceFileHelp (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mSourceFileHelp ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_programRuleList_2D_element::reader_mSourceFileVariableName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mSourceFileVariableName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_bool GALGAS_programRuleList_2D_element::reader_mSourceFileVariableNameIsUnused (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mSourceFileVariableNameIsUnused ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_programRuleList_2D_element::reader_mIndexingGrammar (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mIndexingGrammar ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_semanticInstructionListAST GALGAS_programRuleList_2D_element::reader_mInstructionList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mInstructionList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location GALGAS_programRuleList_2D_element::reader_mEndOfInstructionList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mEndOfInstructionList ;
-}
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                            @programRuleList-element type                                            *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_programRuleList_2D_element ("programRuleList-element",
-                                                   NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_programRuleList_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_programRuleList_2D_element ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_programRuleList_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_programRuleList_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_programRuleList_2D_element GALGAS_programRuleList_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                    C_Compiler * inCompiler
-                                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_programRuleList_2D_element result ;
-  const GALGAS_programRuleList_2D_element * p = (const GALGAS_programRuleList_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_programRuleList_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("programRuleList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_galgas_33_GUIComponentListAST_2D_element::GALGAS_galgas_33_GUIComponentListAST_2D_element (void) :
-mAttribute_mGUIComponentName (),
-mAttribute_mImportedOptionList (),
-mAttribute_mGlobalSimpleAttributeList (),
-mAttribute_mWithLexiqueList () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_galgas_33_GUIComponentListAST_2D_element::~ GALGAS_galgas_33_GUIComponentListAST_2D_element (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_galgas_33_GUIComponentListAST_2D_element::GALGAS_galgas_33_GUIComponentListAST_2D_element (const GALGAS_lstring & inOperand0,
-                                                                                                  const GALGAS_lstringlist & inOperand1,
-                                                                                                  const GALGAS_guiSimpleAttributeListAST & inOperand2,
-                                                                                                  const GALGAS_withLexiqueListAST & inOperand3) :
-mAttribute_mGUIComponentName (inOperand0),
-mAttribute_mImportedOptionList (inOperand1),
-mAttribute_mGlobalSimpleAttributeList (inOperand2),
-mAttribute_mWithLexiqueList (inOperand3) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_galgas_33_GUIComponentListAST_2D_element GALGAS_galgas_33_GUIComponentListAST_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_galgas_33_GUIComponentListAST_2D_element (GALGAS_lstring::constructor_default (HERE),
-                                                          GALGAS_lstringlist::constructor_emptyList (HERE),
-                                                          GALGAS_guiSimpleAttributeListAST::constructor_emptyList (HERE),
-                                                          GALGAS_withLexiqueListAST::constructor_emptyList (HERE)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_galgas_33_GUIComponentListAST_2D_element GALGAS_galgas_33_GUIComponentListAST_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                                                  const GALGAS_lstringlist & inOperand1,
-                                                                                                                  const GALGAS_guiSimpleAttributeListAST & inOperand2,
-                                                                                                                  const GALGAS_withLexiqueListAST & inOperand3 
-                                                                                                                  COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_galgas_33_GUIComponentListAST_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-    result = GALGAS_galgas_33_GUIComponentListAST_2D_element (inOperand0, inOperand1, inOperand2, inOperand3) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_galgas_33_GUIComponentListAST_2D_element::objectCompare (const GALGAS_galgas_33_GUIComponentListAST_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mAttribute_mGUIComponentName.objectCompare (inOperand.mAttribute_mGUIComponentName) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mImportedOptionList.objectCompare (inOperand.mAttribute_mImportedOptionList) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mGlobalSimpleAttributeList.objectCompare (inOperand.mAttribute_mGlobalSimpleAttributeList) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mWithLexiqueList.objectCompare (inOperand.mAttribute_mWithLexiqueList) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool GALGAS_galgas_33_GUIComponentListAST_2D_element::isValid (void) const {
-  return mAttribute_mGUIComponentName.isValid () && mAttribute_mImportedOptionList.isValid () && mAttribute_mGlobalSimpleAttributeList.isValid () && mAttribute_mWithLexiqueList.isValid () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_galgas_33_GUIComponentListAST_2D_element::drop (void) {
-  mAttribute_mGUIComponentName.drop () ;
-  mAttribute_mImportedOptionList.drop () ;
-  mAttribute_mGlobalSimpleAttributeList.drop () ;
-  mAttribute_mWithLexiqueList.drop () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_galgas_33_GUIComponentListAST_2D_element::description (C_String & ioString,
-                                                                   const int32_t inIndentation) const {
-  ioString << "<struct @galgas3GUIComponentListAST-element:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    mAttribute_mGUIComponentName.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mImportedOptionList.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mGlobalSimpleAttributeList.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mWithLexiqueList.description (ioString, inIndentation+1) ;
-  }
-  ioString << ">" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_galgas_33_GUIComponentListAST_2D_element::reader_mGUIComponentName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mGUIComponentName ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstringlist GALGAS_galgas_33_GUIComponentListAST_2D_element::reader_mImportedOptionList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mImportedOptionList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_guiSimpleAttributeListAST GALGAS_galgas_33_GUIComponentListAST_2D_element::reader_mGlobalSimpleAttributeList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mGlobalSimpleAttributeList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_withLexiqueListAST GALGAS_galgas_33_GUIComponentListAST_2D_element::reader_mWithLexiqueList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mWithLexiqueList ;
-}
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                      @galgas3GUIComponentListAST-element type                                       *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_galgas_33_GUIComponentListAST_2D_element ("galgas3GUIComponentListAST-element",
-                                                                 NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_galgas_33_GUIComponentListAST_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_galgas_33_GUIComponentListAST_2D_element ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_galgas_33_GUIComponentListAST_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_galgas_33_GUIComponentListAST_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_galgas_33_GUIComponentListAST_2D_element GALGAS_galgas_33_GUIComponentListAST_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                                                C_Compiler * inCompiler
-                                                                                                                COMMA_LOCATION_ARGS) {
-  GALGAS_galgas_33_GUIComponentListAST_2D_element result ;
-  const GALGAS_galgas_33_GUIComponentListAST_2D_element * p = (const GALGAS_galgas_33_GUIComponentListAST_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_galgas_33_GUIComponentListAST_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("galgas3GUIComponentListAST-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_functionSignature_2D_element::GALGAS_functionSignature_2D_element (void) :
-mAttribute_mFormalSelector (),
-mAttribute_mFormalArgumentType (),
-mAttribute_mFormalArgumentName () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_functionSignature_2D_element::~ GALGAS_functionSignature_2D_element (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_functionSignature_2D_element::GALGAS_functionSignature_2D_element (const GALGAS_lstring & inOperand0,
-                                                                          const GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
-                                                                          const GALGAS_string & inOperand2) :
-mAttribute_mFormalSelector (inOperand0),
-mAttribute_mFormalArgumentType (inOperand1),
-mAttribute_mFormalArgumentName (inOperand2) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_functionSignature_2D_element GALGAS_functionSignature_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_functionSignature_2D_element (GALGAS_lstring::constructor_default (HERE),
-                                              GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
-                                              GALGAS_string::constructor_default (HERE)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_functionSignature_2D_element GALGAS_functionSignature_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                          const GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
-                                                                                          const GALGAS_string & inOperand2 
-                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_functionSignature_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
-    result = GALGAS_functionSignature_2D_element (inOperand0, inOperand1, inOperand2) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_functionSignature_2D_element::objectCompare (const GALGAS_functionSignature_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mAttribute_mFormalSelector.objectCompare (inOperand.mAttribute_mFormalSelector) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mFormalArgumentType.objectCompare (inOperand.mAttribute_mFormalArgumentType) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mFormalArgumentName.objectCompare (inOperand.mAttribute_mFormalArgumentName) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool GALGAS_functionSignature_2D_element::isValid (void) const {
-  return mAttribute_mFormalSelector.isValid () && mAttribute_mFormalArgumentType.isValid () && mAttribute_mFormalArgumentName.isValid () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_functionSignature_2D_element::drop (void) {
-  mAttribute_mFormalSelector.drop () ;
-  mAttribute_mFormalArgumentType.drop () ;
-  mAttribute_mFormalArgumentName.drop () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_functionSignature_2D_element::description (C_String & ioString,
-                                                       const int32_t inIndentation) const {
-  ioString << "<struct @functionSignature-element:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    mAttribute_mFormalSelector.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mFormalArgumentType.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mFormalArgumentName.description (ioString, inIndentation+1) ;
-  }
-  ioString << ">" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_functionSignature_2D_element::reader_mFormalSelector (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mFormalSelector ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_functionSignature_2D_element::reader_mFormalArgumentType (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mFormalArgumentType ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string GALGAS_functionSignature_2D_element::reader_mFormalArgumentName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mFormalArgumentName ;
-}
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                           @functionSignature-element type                                           *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_functionSignature_2D_element ("functionSignature-element",
-                                                     NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_functionSignature_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_functionSignature_2D_element ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_functionSignature_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_functionSignature_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_functionSignature_2D_element GALGAS_functionSignature_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                        C_Compiler * inCompiler
-                                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_functionSignature_2D_element result ;
-  const GALGAS_functionSignature_2D_element * p = (const GALGAS_functionSignature_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_functionSignature_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("functionSignature-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_unifiedTypeMapProxyList_2D_element::GALGAS_unifiedTypeMapProxyList_2D_element (void) :
-mAttribute_mType () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_unifiedTypeMapProxyList_2D_element::~ GALGAS_unifiedTypeMapProxyList_2D_element (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_unifiedTypeMapProxyList_2D_element::GALGAS_unifiedTypeMapProxyList_2D_element (const GALGAS_unifiedTypeMap_2D_proxy & inOperand0) :
-mAttribute_mType (inOperand0) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_unifiedTypeMapProxyList_2D_element GALGAS_unifiedTypeMapProxyList_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_unifiedTypeMapProxyList_2D_element (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_unifiedTypeMapProxyList_2D_element GALGAS_unifiedTypeMapProxyList_2D_element::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inOperand0 
-                                                                                                      COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_unifiedTypeMapProxyList_2D_element result ;
-  if (inOperand0.isValid ()) {
-    result = GALGAS_unifiedTypeMapProxyList_2D_element (inOperand0) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_unifiedTypeMapProxyList_2D_element::objectCompare (const GALGAS_unifiedTypeMapProxyList_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mAttribute_mType.objectCompare (inOperand.mAttribute_mType) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool GALGAS_unifiedTypeMapProxyList_2D_element::isValid (void) const {
-  return mAttribute_mType.isValid () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_unifiedTypeMapProxyList_2D_element::drop (void) {
-  mAttribute_mType.drop () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_unifiedTypeMapProxyList_2D_element::description (C_String & ioString,
-                                                             const int32_t inIndentation) const {
-  ioString << "<struct @unifiedTypeMapProxyList-element:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    mAttribute_mType.description (ioString, inIndentation+1) ;
-  }
-  ioString << ">" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_unifiedTypeMapProxyList_2D_element::reader_mType (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mType ;
-}
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                        @unifiedTypeMapProxyList-element type                                        *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_unifiedTypeMapProxyList_2D_element ("unifiedTypeMapProxyList-element",
-                                                           NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_unifiedTypeMapProxyList_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_unifiedTypeMapProxyList_2D_element ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_unifiedTypeMapProxyList_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_unifiedTypeMapProxyList_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_unifiedTypeMapProxyList_2D_element GALGAS_unifiedTypeMapProxyList_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                                    C_Compiler * inCompiler
-                                                                                                    COMMA_LOCATION_ARGS) {
-  GALGAS_unifiedTypeMapProxyList_2D_element result ;
-  const GALGAS_unifiedTypeMapProxyList_2D_element * p = (const GALGAS_unifiedTypeMapProxyList_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_unifiedTypeMapProxyList_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("unifiedTypeMapProxyList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_unifiedTypeMapProxyAndParameterList_2D_element::GALGAS_unifiedTypeMapProxyAndParameterList_2D_element (void) :
-mAttribute_mType (),
-mAttribute_mFormalArgumentName () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_unifiedTypeMapProxyAndParameterList_2D_element::~ GALGAS_unifiedTypeMapProxyAndParameterList_2D_element (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_unifiedTypeMapProxyAndParameterList_2D_element::GALGAS_unifiedTypeMapProxyAndParameterList_2D_element (const GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
-                                                                                                              const GALGAS_string & inOperand1) :
-mAttribute_mType (inOperand0),
-mAttribute_mFormalArgumentName (inOperand1) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_unifiedTypeMapProxyAndParameterList_2D_element GALGAS_unifiedTypeMapProxyAndParameterList_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_unifiedTypeMapProxyAndParameterList_2D_element (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
-                                                                GALGAS_string::constructor_default (HERE)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_unifiedTypeMapProxyAndParameterList_2D_element GALGAS_unifiedTypeMapProxyAndParameterList_2D_element::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
-                                                                                                                              const GALGAS_string & inOperand1 
-                                                                                                                              COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_unifiedTypeMapProxyAndParameterList_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
-    result = GALGAS_unifiedTypeMapProxyAndParameterList_2D_element (inOperand0, inOperand1) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_unifiedTypeMapProxyAndParameterList_2D_element::objectCompare (const GALGAS_unifiedTypeMapProxyAndParameterList_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mAttribute_mType.objectCompare (inOperand.mAttribute_mType) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mFormalArgumentName.objectCompare (inOperand.mAttribute_mFormalArgumentName) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool GALGAS_unifiedTypeMapProxyAndParameterList_2D_element::isValid (void) const {
-  return mAttribute_mType.isValid () && mAttribute_mFormalArgumentName.isValid () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_unifiedTypeMapProxyAndParameterList_2D_element::drop (void) {
-  mAttribute_mType.drop () ;
-  mAttribute_mFormalArgumentName.drop () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_unifiedTypeMapProxyAndParameterList_2D_element::description (C_String & ioString,
-                                                                         const int32_t inIndentation) const {
-  ioString << "<struct @unifiedTypeMapProxyAndParameterList-element:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    mAttribute_mType.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mFormalArgumentName.description (ioString, inIndentation+1) ;
-  }
-  ioString << ">" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_unifiedTypeMapProxyAndParameterList_2D_element::reader_mType (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mType ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string GALGAS_unifiedTypeMapProxyAndParameterList_2D_element::reader_mFormalArgumentName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mFormalArgumentName ;
-}
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                  @unifiedTypeMapProxyAndParameterList-element type                                  *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_unifiedTypeMapProxyAndParameterList_2D_element ("unifiedTypeMapProxyAndParameterList-element",
-                                                                       NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_unifiedTypeMapProxyAndParameterList_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_unifiedTypeMapProxyAndParameterList_2D_element ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_unifiedTypeMapProxyAndParameterList_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_unifiedTypeMapProxyAndParameterList_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_unifiedTypeMapProxyAndParameterList_2D_element GALGAS_unifiedTypeMapProxyAndParameterList_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                                                            C_Compiler * inCompiler
-                                                                                                                            COMMA_LOCATION_ARGS) {
-  GALGAS_unifiedTypeMapProxyAndParameterList_2D_element result ;
-  const GALGAS_unifiedTypeMapProxyAndParameterList_2D_element * p = (const GALGAS_unifiedTypeMapProxyAndParameterList_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_unifiedTypeMapProxyAndParameterList_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("unifiedTypeMapProxyAndParameterList-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_constructorMap_2D_element::GALGAS_constructorMap_2D_element (void) :
-mAttribute_lkey (),
-mAttribute_mArgumentTypeList (),
-mAttribute_mHasCompilerArgument (),
-mAttribute_mReturnedType () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_constructorMap_2D_element::~ GALGAS_constructorMap_2D_element (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_constructorMap_2D_element::GALGAS_constructorMap_2D_element (const GALGAS_lstring & inOperand0,
-                                                                    const GALGAS_functionSignature & inOperand1,
-                                                                    const GALGAS_bool & inOperand2,
-                                                                    const GALGAS_unifiedTypeMap_2D_proxy & inOperand3) :
-mAttribute_lkey (inOperand0),
-mAttribute_mArgumentTypeList (inOperand1),
-mAttribute_mHasCompilerArgument (inOperand2),
-mAttribute_mReturnedType (inOperand3) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_constructorMap_2D_element GALGAS_constructorMap_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_constructorMap_2D_element (GALGAS_lstring::constructor_default (HERE),
-                                           GALGAS_functionSignature::constructor_emptyList (HERE),
-                                           GALGAS_bool::constructor_default (HERE),
-                                           GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE)) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_constructorMap_2D_element GALGAS_constructorMap_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                                    const GALGAS_functionSignature & inOperand1,
-                                                                                    const GALGAS_bool & inOperand2,
-                                                                                    const GALGAS_unifiedTypeMap_2D_proxy & inOperand3 
-                                                                                    COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_constructorMap_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-    result = GALGAS_constructorMap_2D_element (inOperand0, inOperand1, inOperand2, inOperand3) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_constructorMap_2D_element::objectCompare (const GALGAS_constructorMap_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mAttribute_lkey.objectCompare (inOperand.mAttribute_lkey) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mArgumentTypeList.objectCompare (inOperand.mAttribute_mArgumentTypeList) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mHasCompilerArgument.objectCompare (inOperand.mAttribute_mHasCompilerArgument) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mReturnedType.objectCompare (inOperand.mAttribute_mReturnedType) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool GALGAS_constructorMap_2D_element::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mArgumentTypeList.isValid () && mAttribute_mHasCompilerArgument.isValid () && mAttribute_mReturnedType.isValid () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_constructorMap_2D_element::drop (void) {
-  mAttribute_lkey.drop () ;
-  mAttribute_mArgumentTypeList.drop () ;
-  mAttribute_mHasCompilerArgument.drop () ;
-  mAttribute_mReturnedType.drop () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_constructorMap_2D_element::description (C_String & ioString,
-                                                    const int32_t inIndentation) const {
-  ioString << "<struct @constructorMap-element:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    mAttribute_lkey.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mArgumentTypeList.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mHasCompilerArgument.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mReturnedType.description (ioString, inIndentation+1) ;
-  }
-  ioString << ">" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_constructorMap_2D_element::reader_lkey (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_lkey ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_functionSignature GALGAS_constructorMap_2D_element::reader_mArgumentTypeList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mArgumentTypeList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_bool GALGAS_constructorMap_2D_element::reader_mHasCompilerArgument (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mHasCompilerArgument ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_constructorMap_2D_element::reader_mReturnedType (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mReturnedType ;
-}
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                            @constructorMap-element type                                             *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_constructorMap_2D_element ("constructorMap-element",
-                                                  NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_constructorMap_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_constructorMap_2D_element ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_constructorMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_constructorMap_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_constructorMap_2D_element GALGAS_constructorMap_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                                  C_Compiler * inCompiler
-                                                                                  COMMA_LOCATION_ARGS) {
-  GALGAS_constructorMap_2D_element result ;
-  const GALGAS_constructorMap_2D_element * p = (const GALGAS_constructorMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_constructorMap_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("constructorMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_readerMap_2D_element::GALGAS_readerMap_2D_element (void) :
-mAttribute_lkey (),
-mAttribute_mKind (),
-mAttribute_mArgumentTypeList (),
-mAttribute_mDeclarationLocation (),
-mAttribute_mHasCompilerArgument (),
-mAttribute_mReturnedType (),
-mAttribute_mQualifier (),
-mAttribute_mErrorMessage () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_readerMap_2D_element::~ GALGAS_readerMap_2D_element (void) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_readerMap_2D_element::GALGAS_readerMap_2D_element (const GALGAS_lstring & inOperand0,
-                                                          const GALGAS_methodKind & inOperand1,
-                                                          const GALGAS_functionSignature & inOperand2,
-                                                          const GALGAS_location & inOperand3,
-                                                          const GALGAS_bool & inOperand4,
-                                                          const GALGAS_unifiedTypeMap_2D_proxy & inOperand5,
-                                                          const GALGAS_methodQualifier & inOperand6,
-                                                          const GALGAS_string & inOperand7) :
-mAttribute_lkey (inOperand0),
-mAttribute_mKind (inOperand1),
-mAttribute_mArgumentTypeList (inOperand2),
-mAttribute_mDeclarationLocation (inOperand3),
-mAttribute_mHasCompilerArgument (inOperand4),
-mAttribute_mReturnedType (inOperand5),
-mAttribute_mQualifier (inOperand6),
-mAttribute_mErrorMessage (inOperand7) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_readerMap_2D_element GALGAS_readerMap_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
-                                                                          const GALGAS_methodKind & inOperand1,
-                                                                          const GALGAS_functionSignature & inOperand2,
-                                                                          const GALGAS_location & inOperand3,
-                                                                          const GALGAS_bool & inOperand4,
-                                                                          const GALGAS_unifiedTypeMap_2D_proxy & inOperand5,
-                                                                          const GALGAS_methodQualifier & inOperand6,
-                                                                          const GALGAS_string & inOperand7 
-                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_readerMap_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid () && inOperand4.isValid () && inOperand5.isValid () && inOperand6.isValid () && inOperand7.isValid ()) {
-    result = GALGAS_readerMap_2D_element (inOperand0, inOperand1, inOperand2, inOperand3, inOperand4, inOperand5, inOperand6, inOperand7) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult GALGAS_readerMap_2D_element::objectCompare (const GALGAS_readerMap_2D_element & inOperand) const {
-   typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mAttribute_lkey.objectCompare (inOperand.mAttribute_lkey) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mKind.objectCompare (inOperand.mAttribute_mKind) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mArgumentTypeList.objectCompare (inOperand.mAttribute_mArgumentTypeList) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mDeclarationLocation.objectCompare (inOperand.mAttribute_mDeclarationLocation) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mHasCompilerArgument.objectCompare (inOperand.mAttribute_mHasCompilerArgument) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mReturnedType.objectCompare (inOperand.mAttribute_mReturnedType) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mQualifier.objectCompare (inOperand.mAttribute_mQualifier) ;
-  }
-  if (result == kOperandEqual) {
-    result = mAttribute_mErrorMessage.objectCompare (inOperand.mAttribute_mErrorMessage) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool GALGAS_readerMap_2D_element::isValid (void) const {
-  return mAttribute_lkey.isValid () && mAttribute_mKind.isValid () && mAttribute_mArgumentTypeList.isValid () && mAttribute_mDeclarationLocation.isValid () && mAttribute_mHasCompilerArgument.isValid () && mAttribute_mReturnedType.isValid () && mAttribute_mQualifier.isValid () && mAttribute_mErrorMessage.isValid () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_readerMap_2D_element::drop (void) {
-  mAttribute_lkey.drop () ;
-  mAttribute_mKind.drop () ;
-  mAttribute_mArgumentTypeList.drop () ;
-  mAttribute_mDeclarationLocation.drop () ;
-  mAttribute_mHasCompilerArgument.drop () ;
-  mAttribute_mReturnedType.drop () ;
-  mAttribute_mQualifier.drop () ;
-  mAttribute_mErrorMessage.drop () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_readerMap_2D_element::description (C_String & ioString,
-                                               const int32_t inIndentation) const {
-  ioString << "<struct @readerMap-element:" ;
-  if (! isValid ()) {
-    ioString << " not built" ;
-  }else{
-    mAttribute_lkey.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mKind.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mArgumentTypeList.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mDeclarationLocation.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mHasCompilerArgument.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mReturnedType.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mQualifier.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
-    mAttribute_mErrorMessage.description (ioString, inIndentation+1) ;
-  }
-  ioString << ">" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring GALGAS_readerMap_2D_element::reader_lkey (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_lkey ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_methodKind GALGAS_readerMap_2D_element::reader_mKind (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mKind ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_functionSignature GALGAS_readerMap_2D_element::reader_mArgumentTypeList (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mArgumentTypeList ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_location GALGAS_readerMap_2D_element::reader_mDeclarationLocation (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mDeclarationLocation ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_bool GALGAS_readerMap_2D_element::reader_mHasCompilerArgument (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mHasCompilerArgument ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_unifiedTypeMap_2D_proxy GALGAS_readerMap_2D_element::reader_mReturnedType (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mReturnedType ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_methodQualifier GALGAS_readerMap_2D_element::reader_mQualifier (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mQualifier ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_string GALGAS_readerMap_2D_element::reader_mErrorMessage (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mErrorMessage ;
-}
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                               @readerMap-element type                                               *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_readerMap_2D_element ("readerMap-element",
-                                             NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_readerMap_2D_element::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_readerMap_2D_element ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_readerMap_2D_element::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_readerMap_2D_element (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_readerMap_2D_element GALGAS_readerMap_2D_element::extractObject (const GALGAS_object & inObject,
-                                                                        C_Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) {
-  GALGAS_readerMap_2D_element result ;
-  const GALGAS_readerMap_2D_element * p = (const GALGAS_readerMap_2D_element *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_readerMap_2D_element *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("readerMap-element", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;
