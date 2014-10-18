@@ -67,15 +67,15 @@ void callCategoryMethod_generateActualParameter (const class cPtr_actualParamete
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                            Category modifier '@XcodeProjectDescriptor addInfoPlistFile'                             *
+//                              Category modifier '@XcodeProjectDescriptor addTIFF_file'                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void categoryModifier_addInfoPlistFile (class GALGAS_XcodeProjectDescriptor & ioObject,
-                                        const class GALGAS_string constin_inFileName,
-                                        class GALGAS_string & out_outFileRef,
-                                        class C_Compiler * inCompiler
-                                        COMMA_LOCATION_ARGS) ;
+void categoryModifier_addTIFF_5F_file (class GALGAS_XcodeProjectDescriptor & ioObject,
+                                       const class GALGAS_string constin_inFileName,
+                                       class GALGAS_string & out_outFileRef,
+                                       class C_Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -87,6 +87,18 @@ void categoryModifier_getReferenceKey (class GALGAS_XcodeProjectDescriptor & ioO
                                        class GALGAS_string & out_outRef,
                                        class C_Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                            Category modifier '@XcodeProjectDescriptor addInfoPlistFile'                             *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void categoryModifier_addInfoPlistFile (class GALGAS_XcodeProjectDescriptor & ioObject,
+                                        const class GALGAS_string constin_inFileName,
+                                        class GALGAS_string & out_outFileRef,
+                                        class C_Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -123,6 +135,18 @@ void categoryModifier_addMFile (class GALGAS_XcodeProjectDescriptor & ioObject,
                                 class GALGAS_string & out_outFileRef,
                                 class C_Compiler * inCompiler
                                 COMMA_LOCATION_ARGS) ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+//                                                                                                                     *
+//                                Category modifier '@XcodeProjectDescriptor addMMFile'                                *
+//                                                                                                                     *
+//---------------------------------------------------------------------------------------------------------------------*
+
+void categoryModifier_addMMFile (class GALGAS_XcodeProjectDescriptor & ioObject,
+                                 const class GALGAS_string constin_inFileName,
+                                 class GALGAS_string & out_outFileRef,
+                                 class C_Compiler * inCompiler
+                                 COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -163,11 +187,11 @@ void categoryModifier_addBuildFile (class GALGAS_XcodeProjectDescriptor & ioObje
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                              Category modifier '@XcodeProjectDescriptor addTIFF_file'                               *
+//                              Category modifier '@XcodeProjectDescriptor addICNS_file'                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-void categoryModifier_addTIFF_5F_file (class GALGAS_XcodeProjectDescriptor & ioObject,
+void categoryModifier_addICNS_5F_file (class GALGAS_XcodeProjectDescriptor & ioObject,
                                        const class GALGAS_string constin_inFileName,
                                        class GALGAS_string & out_outFileRef,
                                        class C_Compiler * inCompiler

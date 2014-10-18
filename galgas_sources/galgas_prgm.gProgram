@@ -558,7 +558,7 @@ routine compileProject
   var handCodedLinkAppFileList := [@stringlist emptyList] ;
   var handCodedSourceAppFileList := [@stringlist emptyList] ;
   var handCodedSourceToolFileList := [@stringlist emptyList] ;
-  var handCodedLinkToolFileList := [@stringlist emptyList] ;
+  @stringlist frameworkToolFileList := {} ;
   var handCodedSourceDirectorySet := [@stringset emptySet] ;
   for () in projectComponentAST->mQualifiedFeatureList do
     if mFeatureName->string == "tool-source" then
@@ -567,14 +567,14 @@ routine compileProject
       if directory != "" then
         handCodedSourceDirectorySet += !"../" + directory ;
       end if ;
+    elsif mFeatureName->string == "tool-framework" then
+      frameworkToolFileList += ![mFeatureValue lastPathComponent] ;
     elsif mFeatureName->string == "app-source" then
       handCodedSourceAppFileList += ![mFeatureValue lastPathComponent] ;
       const directory := [mFeatureValue stringByDeletingLastPathComponent] ;
       if directory != "" then
         handCodedSourceDirectorySet += !"../" + directory ;
       end if ;
-    elsif mFeatureName->string == "tool-link" then
-      handCodedLinkToolFileList += !mFeatureValue->string ;
     elsif mFeatureName->string == "app-link" then
       handCodedLinkAppFileList += !mFeatureValue->string ;
     end if ;
@@ -684,7 +684,7 @@ routine compileProject
       !inProjectSourceFile->string
       !handCodedSourceDirectorySet
       !handCodedSourceToolFileList
-      !handCodedLinkToolFileList
+      !frameworkToolFileList
       !handCodedSourceAppFileList
       !handCodedLinkAppFileList
     ;
@@ -708,7 +708,7 @@ routine projectGeneration
   ??@string inProjectSourceFile
   ??@stringset inHandCodedSourceDirectorySet
   ??@stringlist inHandCodedSourceToolFileList
-  ??@stringlist inHandCodedLinkToolFileList
+  ??@stringlist inFrameworkToolFileList
   ??@stringlist inHandCodedSourceAppFileList
   ??@stringlist inHandCodedLinkAppFileList
 :
@@ -749,8 +749,8 @@ routine projectGeneration
     end for ;
   #--- Build qualified feature map
     var ignoredFeatureSet := [@stringset emptySet] ;
+    ignoredFeatureSet += !"tool-framework" ;
     ignoredFeatureSet += !"tool-source" ;
-    ignoredFeatureSet += !"tool-link" ;
     ignoredFeatureSet += !"app-source" ;
     @projectQualifiedFeatureMap projectQualifiedFeatureMap [emptyMap] ;
     foreach inProjectComponentAST->mQualifiedFeatureList do
@@ -772,9 +772,9 @@ routine projectGeneration
       !toolHeaderFileList
       !appProductFileList
       !inHandCodedSourceToolFileList
+      !inFrameworkToolFileList
       !inHandCodedSourceDirectorySet
       !handledExtensionSet
-      !inHandCodedLinkToolFileList
       !?allProductFileSet
       !inHandCodedSourceAppFileList
       !inHandCodedLinkAppFileList

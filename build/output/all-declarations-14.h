@@ -256,10 +256,12 @@ GALGAS_string filewrapperTemplate_xcodeProjectGenerationFilewrapper_xcodeproj (c
                                                                                const class GALGAS_XCodeAppTargetList & in_APP_5F_TARGET_5F_LIST,
                                                                                const class GALGAS__32_stringlist & in_CPP_5F_FILE_5F_LIST,
                                                                                const class GALGAS__32_stringlist & in_M_5F_FILE_5F_LIST,
+                                                                               const class GALGAS__32_stringlist & in_MM_5F_FILE_5F_LIST,
                                                                                const class GALGAS__32_stringlist & in_FRAMEWORK_5F_FILE_5F_LIST,
                                                                                const class GALGAS__32_stringlist & in_HEADER_5F_FILE_5F_LIST,
                                                                                const class GALGAS__32_stringlist & in_PLIST_5F_FILE_5F_LIST,
                                                                                const class GALGAS__32_stringlist & in_TIFF_5F_FILE_5F_LIST,
+                                                                               const class GALGAS__32_stringlist & in_ICNS_5F_FILE_5F_LIST,
                                                                                const class GALGAS__32_stringlist & in_XIB_5F_FILE_5F_LIST,
                                                                                const class GALGAS_BuildFileList & in_BUILD_5F_FILE_5F_LIST,
                                                                                const class GALGAS_string & in_DEFAULT_5F_CONFIGURATION_5F_REF,
@@ -891,10 +893,10 @@ void categoryModifier_addGroup (class GALGAS_XcodeProjectDescriptor & ioObject,
 void categoryModifier_addGroupWithFiles (class GALGAS_XcodeProjectDescriptor & ioObject,
                                          const class GALGAS_string constin_inGroupName,
                                          const class GALGAS_string constin_inGroupPath,
-                                         const class GALGAS_stringlist constin_inSubgroupRefs,
                                          const class GALGAS_stringset constin_inFileNames,
                                          class GALGAS_stringlist & io_ioCppFileBuildRefs,
                                          class GALGAS_stringlist & io_ioMFileBuildRefs,
+                                         class GALGAS_stringlist & io_ioMMFileBuildRefs,
                                          class GALGAS_stringlist & io_ioFrameWorkFileBuildRefs,
                                          class GALGAS_stringlist & io_ioResourceFileBuildRefs,
                                          class GALGAS_string & out_outGroupRef,
@@ -956,6 +958,7 @@ class GALGAS_XcodeProjectDescriptor : public AC_GALGAS_root {
   public : GALGAS_XCodeAppTargetList mAttribute_mAppTargetList ;
   public : GALGAS__32_stringlist mAttribute_mCppFileList ;
   public : GALGAS__32_stringlist mAttribute_m_5F_M_5F_FileList ;
+  public : GALGAS__32_stringlist mAttribute_m_5F_MM_5F_FileList ;
   public : GALGAS__32_stringlist mAttribute_mFrameworkFileList ;
   public : GALGAS__32_stringlist mAttribute_mHeaderFileList ;
   public : GALGAS_BuildFileList mAttribute_mBuildFileList ;
@@ -965,6 +968,7 @@ class GALGAS_XcodeProjectDescriptor : public AC_GALGAS_root {
   public : GALGAS__32_stringlist mAttribute_mInfoPlistFileList ;
   public : GALGAS__32_stringlist mAttribute_mXIB_5F_fileList ;
   public : GALGAS__32_stringlist mAttribute_mTIFF_5F_fileList ;
+  public : GALGAS__32_stringlist mAttribute_mICNS_5F_fileList ;
 
 
 //--------------------------------- Accessors
@@ -990,6 +994,7 @@ class GALGAS_XcodeProjectDescriptor : public AC_GALGAS_root {
                                           const GALGAS_XCodeAppTargetList & in_mAppTargetList,
                                           const GALGAS__32_stringlist & in_mCppFileList,
                                           const GALGAS__32_stringlist & in_m_5F_M_5F_FileList,
+                                          const GALGAS__32_stringlist & in_m_5F_MM_5F_FileList,
                                           const GALGAS__32_stringlist & in_mFrameworkFileList,
                                           const GALGAS__32_stringlist & in_mHeaderFileList,
                                           const GALGAS_BuildFileList & in_mBuildFileList,
@@ -998,7 +1003,8 @@ class GALGAS_XcodeProjectDescriptor : public AC_GALGAS_root {
                                           const GALGAS_string & in_mProjectBuildConfigurationRef,
                                           const GALGAS__32_stringlist & in_mInfoPlistFileList,
                                           const GALGAS__32_stringlist & in_mXIB_5F_fileList,
-                                          const GALGAS__32_stringlist & in_mTIFF_5F_fileList) ;
+                                          const GALGAS__32_stringlist & in_mTIFF_5F_fileList,
+                                          const GALGAS__32_stringlist & in_mICNS_5F_fileList) ;
 
 //-- Start of generic part --*
 
@@ -1022,13 +1028,15 @@ class GALGAS_XcodeProjectDescriptor : public AC_GALGAS_root {
                                                                  const class GALGAS__32_stringlist & inOperand8,
                                                                  const class GALGAS__32_stringlist & inOperand9,
                                                                  const class GALGAS__32_stringlist & inOperand10,
-                                                                 const class GALGAS_BuildFileList & inOperand11,
-                                                                 const class GALGAS_string & inOperand12,
-                                                                 const class GALGAS_stringlist & inOperand13,
-                                                                 const class GALGAS_string & inOperand14,
-                                                                 const class GALGAS__32_stringlist & inOperand15,
+                                                                 const class GALGAS__32_stringlist & inOperand11,
+                                                                 const class GALGAS_BuildFileList & inOperand12,
+                                                                 const class GALGAS_string & inOperand13,
+                                                                 const class GALGAS_stringlist & inOperand14,
+                                                                 const class GALGAS_string & inOperand15,
                                                                  const class GALGAS__32_stringlist & inOperand16,
-                                                                 const class GALGAS__32_stringlist & inOperand17
+                                                                 const class GALGAS__32_stringlist & inOperand17,
+                                                                 const class GALGAS__32_stringlist & inOperand18,
+                                                                 const class GALGAS__32_stringlist & inOperand19
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of reader 'description'
@@ -1059,6 +1067,8 @@ class GALGAS_XcodeProjectDescriptor : public AC_GALGAS_root {
 
   public : VIRTUAL_IN_DEBUG class GALGAS__32_stringlist reader_mHeaderFileList (LOCATION_ARGS) const ;
 
+  public : VIRTUAL_IN_DEBUG class GALGAS__32_stringlist reader_mICNS_5F_fileList (LOCATION_ARGS) const ;
+
   public : VIRTUAL_IN_DEBUG class GALGAS__32_stringlist reader_mInfoPlistFileList (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_stringlist reader_mMainGroupChildrenRefs (LOCATION_ARGS) const ;
@@ -1076,6 +1086,8 @@ class GALGAS_XcodeProjectDescriptor : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_XCodeToolTargetList reader_mToolTargetList (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS__32_stringlist reader_mXIB_5F_fileList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS__32_stringlist reader_m_5F_MM_5F_FileList (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS__32_stringlist reader_m_5F_M_5F_FileList (LOCATION_ARGS) const ;
 
