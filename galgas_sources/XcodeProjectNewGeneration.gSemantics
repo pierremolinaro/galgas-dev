@@ -62,6 +62,16 @@ end modifier ;
 
 #---------------------------------------------------------------------------*
 
+modifier @XcodeProjectDescriptor addMMFile
+  ??fileName:@string inFileName
+  !fileRef:@string outFileRef
+:
+  [!?self getReferenceKey ?ref:outFileRef] ;
+  m_MM_FileList += !outFileRef !inFileName ;
+end modifier ;
+
+#---------------------------------------------------------------------------*
+
 modifier @XcodeProjectDescriptor addCppFile
   ??fileName:@string inFileName
   !fileRef:@string outFileRef
@@ -97,6 +107,7 @@ modifier @XcodeProjectDescriptor addToolTarget
   ??targetName:@string inTargetName
   ??productFileName:@string inProductFileName
   ??sources:@stringlist inSourceList
+  ??frameworkRefs:@stringlist inToolFrameworksFileRefList
   ??buildConfigurationSettingList:@stringlist inBuildConfigurationSettingList
   !targetRef:@string outTargetRef
   !productFileRef:@string outProductFileRef
@@ -106,6 +117,7 @@ modifier @XcodeProjectDescriptor addToolTarget
   [!?self getReferenceKey ?ref:outTargetRef] ;
   [!?self getReferenceKey ??ref:buildConfigurationListRef] ;
   [!?self getReferenceKey ??ref:buildConfigurationRef] ;
+  [!?self getReferenceKey ??ref:frameworkBuildRef] ;
   mToolTargetList +=
     !outTargetRef
     !inTargetName
@@ -116,6 +128,8 @@ modifier @XcodeProjectDescriptor addToolTarget
     !buildConfigurationListRef
     !inBuildConfigurationSettingList
     !buildConfigurationRef
+    !inToolFrameworksFileRefList
+    !frameworkBuildRef
   ;
 end modifier ;
 
@@ -193,10 +207,10 @@ end modifier ;
 modifier @XcodeProjectDescriptor addGroupWithFiles
   ??groupName:@string inGroupName
   ??groupPath:@string inGroupPath
-  ??subGroups:@stringlist inSubgroupRefs
   ??fileNames:@stringset inFileNames
   ?!cppFileRefs:@stringlist ioCppFileBuildRefs
   ?!mFileRefs:@stringlist ioMFileBuildRefs
+  ?!mmFileRefs:@stringlist ioMMFileBuildRefs
   ?!frameworkFileRefs:@stringlist ioFrameWorkFileBuildRefs
   ?!resourceFileRefs:@stringlist ioResourceFileBuildRefs
   !groupRef:@string outGroupRef
@@ -212,7 +226,7 @@ modifier @XcodeProjectDescriptor addGroupWithFiles
   end if ;
   [!?self getReferenceKey ?ref:outGroupRef] ;
 #---
-  @stringlist childrenRefs := inSubgroupRefs ;
+  @stringlist childrenRefs := {} ;
   for (f) in inFileNames do
     if [f pathExtension] == "cpp" then
       [!?self addCppFile !fileName:f ??fileRef:@string cppFileRef] ;
@@ -227,6 +241,11 @@ modifier @XcodeProjectDescriptor addGroupWithFiles
       [!?self addBuildFile !fileRef:m_FileRef !fileName:f ??buildRef:@string buildRef] ;
       childrenRefs += !m_FileRef ;
       ioMFileBuildRefs += !buildRef ;
+    elsif [f pathExtension] == "mm" then
+      [!?self addMMFile !fileName:f ??fileRef:@string m_FileRef] ;
+      [!?self addBuildFile !fileRef:m_FileRef !fileName:f ??buildRef:@string buildRef] ;
+      childrenRefs += !m_FileRef ;
+      ioMMFileBuildRefs += !buildRef ;
     elsif [f pathExtension] == "framework" then
       [!?self addFrameworkFile !fileName:f ??fileRef:@string framework_FileRef] ;
       [!?self addBuildFile !fileRef:framework_FileRef !fileName:f ??buildRef:@string buildRef] ;
@@ -294,6 +313,8 @@ list @XCodeToolTargetList {
   @string mBuildConfigurationListRef ;
   @stringlist mBuildConfigurationSettingList ;
   @string mBuildConfigurationRef ;
+  @stringlist mFrameworksFileRefList ;
+  @string mFrameworkBuildPhaseRef ;
 }
 
 #---------------------------------------------------------------------------*
@@ -348,6 +369,7 @@ struct @XcodeProjectDescriptor {
   local @XCodeAppTargetList mAppTargetList ;
   local @2stringlist mCppFileList ;
   local @2stringlist m_M_FileList ;
+  local @2stringlist m_MM_FileList ;
   local @2stringlist mFrameworkFileList ;
   local @2stringlist mHeaderFileList ;
   local @BuildFileList mBuildFileList ;
@@ -376,6 +398,7 @@ local filewrapper xcodeProjectGenerationFilewrapper in "../generation_templates/
     ?@XCodeAppTargetList APP_TARGET_LIST
     ?@2stringlist CPP_FILE_LIST
     ?@2stringlist M_FILE_LIST
+    ?@2stringlist MM_FILE_LIST
     ?@2stringlist FRAMEWORK_FILE_LIST
     ?@2stringlist HEADER_FILE_LIST
     ?@2stringlist PLIST_FILE_LIST
@@ -404,6 +427,7 @@ method @XcodeProjectDescriptor generateAtPath
     !mAppTargetList
     !mCppFileList
     !m_M_FileList
+    !m_MM_FileList
     !mFrameworkFileList
     !mHeaderFileList
     !mInfoPlistFileList

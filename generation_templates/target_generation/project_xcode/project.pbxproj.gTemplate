@@ -37,6 +37,16 @@ for () in M_FILE_LIST do
 %    sourceTree = "<group>";\n%
 %  };\n\n%
 end
+for () in MM_FILE_LIST do
+%  %!mValue0% /* %!mValue1% */ = {\n%
+%    isa = PBXFileReference;\n%
+%    fileEncoding = 4;\n%
+%    lastKnownFileType = sourcecode.cpp.objcpp;\n%
+%    name = %![[mValue1 lastPathComponent] utf8Representation]%;\n%
+%    path = %![mValue1 utf8Representation]%;\n%
+%    sourceTree = "<group>";\n%
+%  };\n\n%
+end
 for () in HEADER_FILE_LIST do
 %  %!mValue0% /* %!mValue1% */ = {\n%
 %    isa = PBXFileReference;\n%
@@ -115,17 +125,31 @@ end
 %  /*------------------------------------------------------------------ PBXFrameworksBuildPhase */
 
 %
-for () in APP_TARGET_LIST do
-%  %!mFrameworkBuildPhaseRef% = {\n%
-%    isa = PBXFrameworksBuildPhase;\n%
-%    buildActionMask = 2147483647;\n%
-%    files = (\n%
-for () in mFrameworksFileRefList do
-%      %!mValue%,\n%
+for () in TOOL_TARGET_LIST do
+  if [mFrameworksFileRefList length] > 0 then
+    %  %!mFrameworkBuildPhaseRef% = {\n%
+    %    isa = PBXFrameworksBuildPhase;\n%
+    %    buildActionMask = 2147483647;\n%
+    %    files = (\n%
+    for () in mFrameworksFileRefList do
+      %      %!mValue%,\n%
+    end
+    %    );\n%
+    %    runOnlyForDeploymentPostprocessing = 0;\n%
+    %  };\n\n%
+  end
 end
-%    );\n%
-%    runOnlyForDeploymentPostprocessing = 0;\n%
-%  };\n\n%
+for () in APP_TARGET_LIST do
+  %  %!mFrameworkBuildPhaseRef% = {\n%
+  %    isa = PBXFrameworksBuildPhase;\n%
+  %    buildActionMask = 2147483647;\n%
+  %    files = (\n%
+  for () in mFrameworksFileRefList do
+    %      %!mValue%,\n%
+  end
+  %    );\n%
+  %    runOnlyForDeploymentPostprocessing = 0;\n%
+  %  };\n\n%
 end
 %  /*------------------------------------------------------------------ PBXGroup section */
 %
@@ -158,20 +182,24 @@ end
 %
 for () in TOOL_TARGET_LIST do
 %  %!mTargetRef% /* %!mTargetName% */ = {
-   isa = PBXNativeTarget;
-   buildConfigurationList = %!mBuildConfigurationListRef% ;
-   buildPhases = (
-    %!mBuildPhaseRef% ,
-   );
-   buildRules = (
-   );
-   dependencies = (
-   );
-   name = %![mTargetName utf8Representation]%;
-   productInstallPath = "$(HOME)/bin";
-   productName = %![mTargetName utf8Representation]%;
-   productReference = %!mProductFileReference% ;
-   productType = "com.apple.product-type.tool";
+    isa = PBXNativeTarget;
+    buildConfigurationList = %!mBuildConfigurationListRef% ;
+    buildPhases = (
+      %!mBuildPhaseRef% ,
+%
+  if [mFrameworksFileRefList length] > 0 then
+    %      %!mFrameworkBuildPhaseRef% , /* Frameworks */\n%
+  end
+%    );
+    buildRules = (
+    );
+    dependencies = (
+    );
+    name = %![mTargetName utf8Representation]%;
+    productInstallPath = "$(HOME)/bin";
+    productName = %![mTargetName utf8Representation]%;
+    productReference = %!mProductFileReference% ;
+    productType = "com.apple.product-type.tool";
   };
  
 %
