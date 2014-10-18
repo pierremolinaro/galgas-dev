@@ -12,7 +12,7 @@ LIBPM_DIRECTORY_PATH := ../libpm
 SOURCES_DIR := ../build/output
 SOURCES_DIR += ../build/user-headers
 SOURCES_DIR += $(LIBPM_DIRECTORY_PATH)
-SOURCES_DIR += ../hand_coded_sources/hand_coded_sources
+SOURCES_DIR += ../hand_coded_sources
 
 #------------------------------------------------------------------------------*
 #                                                                              *
