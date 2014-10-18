@@ -376,9 +376,15 @@ routine updateGalgas3Targets
     end for ;
   end if ;
 #--- Update makefile file list
+  @stringlist handCodedSourceToolFileList := {} ;
+  for (f) in inHandCodedSourceToolFileList do
+    if [f pathExtension] != "h" then
+      handCodedSourceToolFileList += ![f lastPathComponent] ;
+    end if ;
+  end for ;
   const @string newFileListContents := [filewrapper targetGalgas3GenerationFileWrapper.makefile_file_list
     !inHandCodedSourceDirectorySet
-    !inHandCodedSourceToolFileList
+    !handCodedSourceToolFileList
     !inToolCppFileList
     !linkOptionForLinkingFrameworkWithTool
     !libpmPath
@@ -500,11 +506,11 @@ routine updateGalgas3Targets
     extensionList += !"icns" ;
     const @stringlist resourceFiles := [userResourceDir regularFilesWithExtensions !false !extensionList] ;
   #--- Build pathes
-    const @string xcodeProjectPath := dir . "/" . inTargetName . ".xcodeproj" ; # Actually a directory
-    const @string intermediateFilePath := [inProjectSourceFilePath stringByDeletingLastPathComponent] . "/build/output/file-list-for-xcode-project.txt" ;
+    const @string xcodeProjectPath := dir . "/" . inTargetName . "_EX.xcodeproj" ; # Actually a directory
+    const @string intermediateFilePath := [inProjectSourceFilePath stringByDeletingLastPathComponent] . "/build/output/file-list-for-xcode-project_EX.txt" ;
+    ioAllProductFileSet += !"file-list-for-xcode-project_EX.txt" ;
+    const @string newIntermediateFilePath := [inProjectSourceFilePath stringByDeletingLastPathComponent] . "/build/output/file-list-for-xcode-project.txt" ;
     ioAllProductFileSet += !"file-list-for-xcode-project.txt" ;
-    const @string newIntermediateFilePath := [inProjectSourceFilePath stringByDeletingLastPathComponent] . "/build/output/file-list-for-xcode-project-new.txt" ;
-    ioAllProductFileSet += !"file-list-for-xcode-project-new.txt" ;
   #--- Add sources for application
     const externSourceSet_app := [@stringset setWithStringList !inHandCodedSourceAppFileList] ;
   #---
@@ -1128,7 +1134,7 @@ routine updateGalgas3Targets
     ] ;
   #--- Generate project
     [xcodeProject generateAtPath
-      !xcodeprojPath:dir . "/" . inTargetName . "_NEW.xcodeproj"
+      !xcodeprojPath:dir . "/" . inTargetName . ".xcodeproj"
       !cacheFilePath:newIntermediateFilePath] ;
   end if ;
 end routine ;

@@ -924,6 +924,7 @@ void categoryModifier_addToolTarget (class GALGAS_XcodeProjectDescriptor & ioObj
                                      const class GALGAS_string constin_inTargetName,
                                      const class GALGAS_string constin_inProductFileName,
                                      const class GALGAS_stringlist constin_inSourceList,
+                                     const class GALGAS_stringlist constin_inToolFrameworksFileRefList,
                                      const class GALGAS_stringlist constin_inBuildConfigurationSettingList,
                                      class GALGAS_string & out_outTargetRef,
                                      class GALGAS_string & out_outProductFileRef,
