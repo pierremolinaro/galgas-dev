@@ -7815,112 +7815,119 @@ void routine_compileProject (const GALGAS_lstring constinArgument_inProjectSourc
   GALGAS_stringlist var_handCodedLinkAppFileList = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas_prgm.galgas", 538)) ;
   GALGAS_stringlist var_handCodedSourceAppFileList = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas_prgm.galgas", 539)) ;
   GALGAS_stringlist var_handCodedSourceToolFileList = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas_prgm.galgas", 540)) ;
-  GALGAS_stringlist var_handCodedLinkToolFileList = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas_prgm.galgas", 541)) ;
+  GALGAS_stringlist var_frameworkToolFileList = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas_prgm.galgas", 541)) ;
   GALGAS_stringset var_handCodedSourceDirectorySet = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas_prgm.galgas", 542)) ;
-  cEnumerator_galgas_33_QualifiedFeatureList enumerator_23464 (var_projectComponentAST.mAttribute_mQualifiedFeatureList, kEnumeration_up) ;
-  while (enumerator_23464.hasCurrentObject ()) {
-    const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, enumerator_23464.current_mFeatureName (HERE).mAttribute_string.objectCompare (GALGAS_string ("tool-source"))).boolEnum () ;
+  cEnumerator_galgas_33_QualifiedFeatureList enumerator_23448 (var_projectComponentAST.mAttribute_mQualifiedFeatureList, kEnumeration_up) ;
+  while (enumerator_23448.hasCurrentObject ()) {
+    const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, enumerator_23448.current_mFeatureName (HERE).mAttribute_string.objectCompare (GALGAS_string ("tool-source"))).boolEnum () ;
     if (kBoolTrue == test_3) {
-      var_handCodedSourceToolFileList.addAssign_operation (enumerator_23464.current_mFeatureValue (HERE).mAttribute_string.reader_lastPathComponent (SOURCE_FILE ("galgas_prgm.galgas", 545))  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 545)) ;
-      GALGAS_string var_directory = enumerator_23464.current_mFeatureValue (HERE).mAttribute_string.reader_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas_prgm.galgas", 546)) ;
-      const enumGalgasBool test_4 = GALGAS_bool (kIsNotEqual, var_directory.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
+      var_handCodedSourceToolFileList.addAssign_operation (enumerator_23448.current_mFeatureValue (HERE).mAttribute_string  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 545)) ;
+      GALGAS_string var_directory = enumerator_23448.current_mFeatureValue (HERE).mAttribute_string.reader_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas_prgm.galgas", 546)) ;
+      const enumGalgasBool test_4 = GALGAS_bool (kIsEqual, var_directory.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
       if (kBoolTrue == test_4) {
-        var_handCodedSourceDirectorySet.addAssign_operation (GALGAS_string ("../").add_operation (var_directory, inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 548))  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 548)) ;
+        var_handCodedSourceDirectorySet.addAssign_operation (GALGAS_string ("../hand_coded_sources")  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 548)) ;
+      }else if (kBoolFalse == test_4) {
+        const enumGalgasBool test_5 = GALGAS_bool (kIsNotEqual, var_directory.reader_characterAtIndex (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 549)).objectCompare (GALGAS_char (TO_UNICODE (47)))).boolEnum () ;
+        if (kBoolTrue == test_5) {
+          var_handCodedSourceDirectorySet.addAssign_operation (GALGAS_string ("../hand_coded_sources/").add_operation (var_directory, inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 550))  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 550)) ;
+        }else if (kBoolFalse == test_5) {
+          var_handCodedSourceDirectorySet.addAssign_operation (var_directory  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 552)) ;
+        }
       }
     }else if (kBoolFalse == test_3) {
-      const enumGalgasBool test_5 = GALGAS_bool (kIsEqual, enumerator_23464.current_mFeatureName (HERE).mAttribute_string.objectCompare (GALGAS_string ("app-source"))).boolEnum () ;
-      if (kBoolTrue == test_5) {
-        var_handCodedSourceAppFileList.addAssign_operation (enumerator_23464.current_mFeatureValue (HERE).mAttribute_string.reader_lastPathComponent (SOURCE_FILE ("galgas_prgm.galgas", 551))  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 551)) ;
-        GALGAS_string var_directory = enumerator_23464.current_mFeatureValue (HERE).mAttribute_string.reader_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas_prgm.galgas", 552)) ;
-        const enumGalgasBool test_6 = GALGAS_bool (kIsNotEqual, var_directory.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
-        if (kBoolTrue == test_6) {
-          var_handCodedSourceDirectorySet.addAssign_operation (GALGAS_string ("../").add_operation (var_directory, inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 554))  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 554)) ;
-        }
-      }else if (kBoolFalse == test_5) {
-        const enumGalgasBool test_7 = GALGAS_bool (kIsEqual, enumerator_23464.current_mFeatureName (HERE).mAttribute_string.objectCompare (GALGAS_string ("tool-link"))).boolEnum () ;
+      const enumGalgasBool test_6 = GALGAS_bool (kIsEqual, enumerator_23448.current_mFeatureName (HERE).mAttribute_string.objectCompare (GALGAS_string ("tool-framework"))).boolEnum () ;
+      if (kBoolTrue == test_6) {
+        var_frameworkToolFileList.addAssign_operation (enumerator_23448.current_mFeatureValue (HERE).mAttribute_string.reader_lastPathComponent (SOURCE_FILE ("galgas_prgm.galgas", 555))  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 555)) ;
+      }else if (kBoolFalse == test_6) {
+        const enumGalgasBool test_7 = GALGAS_bool (kIsEqual, enumerator_23448.current_mFeatureName (HERE).mAttribute_string.objectCompare (GALGAS_string ("app-source"))).boolEnum () ;
         if (kBoolTrue == test_7) {
-          var_handCodedLinkToolFileList.addAssign_operation (enumerator_23464.current_mFeatureValue (HERE).mAttribute_string  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 557)) ;
-        }else if (kBoolFalse == test_7) {
-          const enumGalgasBool test_8 = GALGAS_bool (kIsEqual, enumerator_23464.current_mFeatureName (HERE).mAttribute_string.objectCompare (GALGAS_string ("app-link"))).boolEnum () ;
+          var_handCodedSourceAppFileList.addAssign_operation (enumerator_23448.current_mFeatureValue (HERE).mAttribute_string.reader_lastPathComponent (SOURCE_FILE ("galgas_prgm.galgas", 557))  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 557)) ;
+          GALGAS_string var_directory = enumerator_23448.current_mFeatureValue (HERE).mAttribute_string.reader_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas_prgm.galgas", 558)) ;
+          const enumGalgasBool test_8 = GALGAS_bool (kIsNotEqual, var_directory.objectCompare (GALGAS_string::makeEmptyString ())).boolEnum () ;
           if (kBoolTrue == test_8) {
-            var_handCodedLinkAppFileList.addAssign_operation (enumerator_23464.current_mFeatureValue (HERE).mAttribute_string  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 559)) ;
+            var_handCodedSourceDirectorySet.addAssign_operation (GALGAS_string ("../").add_operation (var_directory, inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 560))  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 560)) ;
+          }
+        }else if (kBoolFalse == test_7) {
+          const enumGalgasBool test_9 = GALGAS_bool (kIsEqual, enumerator_23448.current_mFeatureName (HERE).mAttribute_string.objectCompare (GALGAS_string ("app-link"))).boolEnum () ;
+          if (kBoolTrue == test_9) {
+            var_handCodedLinkAppFileList.addAssign_operation (enumerator_23448.current_mFeatureValue (HERE).mAttribute_string  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 563)) ;
           }
         }
       }
     }
-    enumerator_23464.gotoNextObject () ;
+    enumerator_23448.gotoNextObject () ;
   }
   {
-  routine_groupSyntaxComponentsGalgas_33_ (var_declarationAST.mAttribute_mSyntaxComponentList, var_declarationAST.mAttribute_mDeclarationList, inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 575)) ;
+  routine_groupSyntaxComponentsGalgas_33_ (var_declarationAST.mAttribute_mSyntaxComponentList, var_declarationAST.mAttribute_mDeclarationList, inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 579)) ;
   }
-  GALGAS_string var_productDirectory = constinArgument_inProjectSourceFile.mAttribute_string.reader_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas_prgm.galgas", 580)).add_operation (GALGAS_string ("/build/output"), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 580)) ;
-  GALGAS_stringlist var_appProductFileList = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas_prgm.galgas", 581)) ;
-  GALGAS_semanticContext var_semanticContext = GALGAS_semanticContext::constructor_default (SOURCE_FILE ("galgas_prgm.galgas", 582)) ;
+  GALGAS_string var_productDirectory = constinArgument_inProjectSourceFile.mAttribute_string.reader_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas_prgm.galgas", 584)).add_operation (GALGAS_string ("/build/output"), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 584)) ;
+  GALGAS_stringlist var_appProductFileList = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas_prgm.galgas", 585)) ;
+  GALGAS_semanticContext var_semanticContext = GALGAS_semanticContext::constructor_default (SOURCE_FILE ("galgas_prgm.galgas", 586)) ;
   GALGAS_semanticDeclarationSortedListForGeneration var_semanticDeclarationSortedListForGeneration ;
-  const enumGalgasBool test_9 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE ("galgas_prgm.galgas", 584)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
-  if (kBoolTrue == test_9) {
-    {
-    routine_compileSemanticDeclarationsGalgas_33_ (var_productDirectory, var_projectComponentAST.mAttribute_mEndOfSourceFile, var_declarationAST.mAttribute_mDeclarationList, var_semanticContext, var_semanticDeclarationSortedListForGeneration, inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 585)) ;
-    }
-  }else if (kBoolFalse == test_9) {
-    var_semanticDeclarationSortedListForGeneration = GALGAS_semanticDeclarationSortedListForGeneration::constructor_emptySortedList (SOURCE_FILE ("galgas_prgm.galgas", 593)) ;
-  }
-  GALGAS_optionComponentMapForGeneration var_optionComponentMapForGeneration ;
-  const enumGalgasBool test_10 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE ("galgas_prgm.galgas", 597)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  const enumGalgasBool test_10 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE ("galgas_prgm.galgas", 588)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_10) {
     {
-    routine_compileAllGuiComponentFromASTGalgas_33_ (var_declarationAST.mAttribute_mGUIComponentList, var_semanticContext, var_optionComponentMapForGeneration, inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 598)) ;
+    routine_compileSemanticDeclarationsGalgas_33_ (var_productDirectory, var_projectComponentAST.mAttribute_mEndOfSourceFile, var_declarationAST.mAttribute_mDeclarationList, var_semanticContext, var_semanticDeclarationSortedListForGeneration, inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 589)) ;
     }
   }else if (kBoolFalse == test_10) {
-    var_optionComponentMapForGeneration = GALGAS_optionComponentMapForGeneration::constructor_emptyMap (SOURCE_FILE ("galgas_prgm.galgas", 604)) ;
+    var_semanticDeclarationSortedListForGeneration = GALGAS_semanticDeclarationSortedListForGeneration::constructor_emptySortedList (SOURCE_FILE ("galgas_prgm.galgas", 597)) ;
   }
-  const enumGalgasBool test_11 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE ("galgas_prgm.galgas", 607)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  GALGAS_optionComponentMapForGeneration var_optionComponentMapForGeneration ;
+  const enumGalgasBool test_11 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE ("galgas_prgm.galgas", 601)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_11) {
+    {
+    routine_compileAllGuiComponentFromASTGalgas_33_ (var_declarationAST.mAttribute_mGUIComponentList, var_semanticContext, var_optionComponentMapForGeneration, inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 602)) ;
+    }
+  }else if (kBoolFalse == test_11) {
+    var_optionComponentMapForGeneration = GALGAS_optionComponentMapForGeneration::constructor_emptyMap (SOURCE_FILE ("galgas_prgm.galgas", 608)) ;
+  }
+  const enumGalgasBool test_12 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE ("galgas_prgm.galgas", 611)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  if (kBoolTrue == test_12) {
     GALGAS_programComponentForGeneration var_programComponentForGeneration ;
     {
-    routine_compileProgramComponentGalgas_33_ (var_declarationAST.mAttribute_mPrologueDeclarationList, var_declarationAST.mAttribute_mSourceRuleList, var_declarationAST.mAttribute_mEpilogueDeclarationList, var_semanticContext, var_programComponentForGeneration, inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 608)) ;
+    routine_compileProgramComponentGalgas_33_ (var_declarationAST.mAttribute_mPrologueDeclarationList, var_declarationAST.mAttribute_mSourceRuleList, var_declarationAST.mAttribute_mEpilogueDeclarationList, var_semanticContext, var_programComponentForGeneration, inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 612)) ;
     }
-    var_semanticDeclarationSortedListForGeneration.addAssign_operation (GALGAS_string ("zprogram"), var_programComponentForGeneration, GALGAS_string ("z")  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 615)) ;
+    var_semanticDeclarationSortedListForGeneration.addAssign_operation (GALGAS_string ("zprogram"), var_programComponentForGeneration, GALGAS_string ("z")  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 619)) ;
   }
-  GALGAS_string var_typeDumpFilePath = constinArgument_inProjectSourceFile.mAttribute_string.reader_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas_prgm.galgas", 621)).add_operation (GALGAS_string ("/build/helpers/"), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 621)).add_operation (constinArgument_inProjectSourceFile.mAttribute_string.reader_lastPathComponent (SOURCE_FILE ("galgas_prgm.galgas", 621)), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 621)).add_operation (GALGAS_string (".html"), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 621)) ;
-  const enumGalgasBool test_12 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_outputHTMLTypeListFile.reader_value ()).boolEnum () ;
-  if (kBoolTrue == test_12) {
-    GALGAS_stringset var_firstLetterSet = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas_prgm.galgas", 623)) ;
-    cEnumerator_unifiedTypeMap enumerator_27347 (var_semanticContext.mAttribute_mTypeMap, kEnumeration_up) ;
-    while (enumerator_27347.hasCurrentObject ()) {
-      var_firstLetterSet.addAssign_operation (enumerator_27347.current_lkey (HERE).mAttribute_string.reader_characterAtIndex (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 625)).reader_string (SOURCE_FILE ("galgas_prgm.galgas", 625))  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 625)) ;
-      enumerator_27347.gotoNextObject () ;
+  GALGAS_string var_typeDumpFilePath = constinArgument_inProjectSourceFile.mAttribute_string.reader_stringByDeletingLastPathComponent (SOURCE_FILE ("galgas_prgm.galgas", 625)).add_operation (GALGAS_string ("/build/helpers/"), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 625)).add_operation (constinArgument_inProjectSourceFile.mAttribute_string.reader_lastPathComponent (SOURCE_FILE ("galgas_prgm.galgas", 625)), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 625)).add_operation (GALGAS_string (".html"), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 625)) ;
+  const enumGalgasBool test_13 = GALGAS_bool (gOption_galgas_5F_cli_5F_options_outputHTMLTypeListFile.reader_value ()).boolEnum () ;
+  if (kBoolTrue == test_13) {
+    GALGAS_stringset var_firstLetterSet = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas_prgm.galgas", 627)) ;
+    cEnumerator_unifiedTypeMap enumerator_27532 (var_semanticContext.mAttribute_mTypeMap, kEnumeration_up) ;
+    while (enumerator_27532.hasCurrentObject ()) {
+      var_firstLetterSet.addAssign_operation (enumerator_27532.current_lkey (HERE).mAttribute_string.reader_characterAtIndex (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 629)).reader_string (SOURCE_FILE ("galgas_prgm.galgas", 629))  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 629)) ;
+      enumerator_27532.gotoNextObject () ;
     }
     GALGAS_string var_tableOfTypeString = GALGAS_string::makeEmptyString () ;
     GALGAS_char var_currentFirstLetter = GALGAS_char (TO_UNICODE (32)) ;
-    cEnumerator_unifiedTypeMap enumerator_27541 (var_semanticContext.mAttribute_mTypeMap, kEnumeration_up) ;
-    while (enumerator_27541.hasCurrentObject ()) {
-      const enumGalgasBool test_13 = GALGAS_bool (kIsNotEqual, var_currentFirstLetter.objectCompare (enumerator_27541.current_lkey (HERE).mAttribute_string.reader_characterAtIndex (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 630)))).boolEnum () ;
-      if (kBoolTrue == test_13) {
-        var_currentFirstLetter = enumerator_27541.current_lkey (HERE).mAttribute_string.reader_characterAtIndex (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 631)) ;
-        var_tableOfTypeString.dotAssign_operation (GALGAS_string ("<br><a name=\"").add_operation (var_currentFirstLetter.reader_uint (SOURCE_FILE ("galgas_prgm.galgas", 632)).reader_string (SOURCE_FILE ("galgas_prgm.galgas", 632)), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 632)).add_operation (GALGAS_string ("\"><b>"), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 632)).add_operation (var_currentFirstLetter.reader_string (SOURCE_FILE ("galgas_prgm.galgas", 632)), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 632)).add_operation (GALGAS_string ("</b></a><br>"), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 632))  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 632)) ;
+    cEnumerator_unifiedTypeMap enumerator_27726 (var_semanticContext.mAttribute_mTypeMap, kEnumeration_up) ;
+    while (enumerator_27726.hasCurrentObject ()) {
+      const enumGalgasBool test_14 = GALGAS_bool (kIsNotEqual, var_currentFirstLetter.objectCompare (enumerator_27726.current_lkey (HERE).mAttribute_string.reader_characterAtIndex (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 634)))).boolEnum () ;
+      if (kBoolTrue == test_14) {
+        var_currentFirstLetter = enumerator_27726.current_lkey (HERE).mAttribute_string.reader_characterAtIndex (GALGAS_uint ((uint32_t) 0U), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 635)) ;
+        var_tableOfTypeString.dotAssign_operation (GALGAS_string ("<br><a name=\"").add_operation (var_currentFirstLetter.reader_uint (SOURCE_FILE ("galgas_prgm.galgas", 636)).reader_string (SOURCE_FILE ("galgas_prgm.galgas", 636)), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 636)).add_operation (GALGAS_string ("\"><b>"), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 636)).add_operation (var_currentFirstLetter.reader_string (SOURCE_FILE ("galgas_prgm.galgas", 636)), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 636)).add_operation (GALGAS_string ("</b></a><br>"), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 636))  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 636)) ;
       }
-      var_tableOfTypeString.dotAssign_operation (function_linkForType (enumerator_27541.current_lkey (HERE).mAttribute_string, inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 634)).add_operation (GALGAS_string ("<br>"), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 634))  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 634)) ;
-      enumerator_27541.gotoNextObject () ;
+      var_tableOfTypeString.dotAssign_operation (function_linkForType (enumerator_27726.current_lkey (HERE).mAttribute_string, inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 638)).add_operation (GALGAS_string ("<br>"), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 638))  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 638)) ;
+      enumerator_27726.gotoNextObject () ;
     }
-    GALGAS_string var_typeDumpString = GALGAS_string (filewrapperTemplate_typeDumpGenerationTemplate_typeDump (inCompiler, constinArgument_inProjectSourceFile.mAttribute_string.reader_lastPathComponent (SOURCE_FILE ("galgas_prgm.galgas", 637)), var_semanticContext.mAttribute_mTypeMap, var_firstLetterSet, var_tableOfTypeString COMMA_SOURCE_FILE ("galgas_prgm.galgas", 636))) ;
-    GALGAS_bool joker_28183 ; // Joker input parameter
-    var_typeDumpString.method_writeToFileWhenDifferentContents (var_typeDumpFilePath, joker_28183, inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 642)) ;
-  }else if (kBoolFalse == test_12) {
+    GALGAS_string var_typeDumpString = GALGAS_string (filewrapperTemplate_typeDumpGenerationTemplate_typeDump (inCompiler, constinArgument_inProjectSourceFile.mAttribute_string.reader_lastPathComponent (SOURCE_FILE ("galgas_prgm.galgas", 641)), var_semanticContext.mAttribute_mTypeMap, var_firstLetterSet, var_tableOfTypeString COMMA_SOURCE_FILE ("galgas_prgm.galgas", 640))) ;
+    GALGAS_bool joker_28368 ; // Joker input parameter
+    var_typeDumpString.method_writeToFileWhenDifferentContents (var_typeDumpFilePath, joker_28368, inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 646)) ;
+  }else if (kBoolFalse == test_13) {
     {
-    GALGAS_string::class_method_deleteFileIfExists (var_typeDumpFilePath, inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 644)) ;
+    GALGAS_string::class_method_deleteFileIfExists (var_typeDumpFilePath, inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 648)) ;
     }
   }
-  const enumGalgasBool test_14 = GALGAS_bool (kIsEqual, GALGAS_uint ((uint32_t) 0U).objectCompare (GALGAS_uint::constructor_errorCount (SOURCE_FILE ("galgas_prgm.galgas", 647)))).operator_and (GALGAS_bool (kIsEqual, constinArgument_inSourceToAnalyze.objectCompare (GALGAS_string::makeEmptyString ())) COMMA_SOURCE_FILE ("galgas_prgm.galgas", 647)).boolEnum () ;
-  if (kBoolTrue == test_14) {
-    {
-    routine_performGalgas_33_ProjectGlobalCheckings (var_semanticContext, var_declarationAST.mAttribute_mDeclarationList, inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 648)) ;
-    }
-  }
-  const enumGalgasBool test_15 = GALGAS_bool (kIsEqual, GALGAS_uint ((uint32_t) 0U).objectCompare (GALGAS_uint::constructor_errorCount (SOURCE_FILE ("galgas_prgm.galgas", 654)))).operator_and (GALGAS_bool (kIsEqual, constinArgument_inSourceToAnalyze.objectCompare (GALGAS_string::makeEmptyString ())) COMMA_SOURCE_FILE ("galgas_prgm.galgas", 654)).boolEnum () ;
+  const enumGalgasBool test_15 = GALGAS_bool (kIsEqual, GALGAS_uint ((uint32_t) 0U).objectCompare (GALGAS_uint::constructor_errorCount (SOURCE_FILE ("galgas_prgm.galgas", 651)))).operator_and (GALGAS_bool (kIsEqual, constinArgument_inSourceToAnalyze.objectCompare (GALGAS_string::makeEmptyString ())) COMMA_SOURCE_FILE ("galgas_prgm.galgas", 651)).boolEnum () ;
   if (kBoolTrue == test_15) {
     {
-    routine_projectGeneration (var_semanticContext.mAttribute_mTypeMap, var_productDirectory, var_optionComponentMapForGeneration, var_appProductFileList, var_semanticDeclarationSortedListForGeneration, var_declarationAST.mAttribute_mSourceRuleList, var_projectComponentAST, constinArgument_inProjectSourceFile.mAttribute_string, var_handCodedSourceDirectorySet, var_handCodedSourceToolFileList, var_handCodedLinkToolFileList, var_handCodedSourceAppFileList, var_handCodedLinkAppFileList, inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 655)) ;
+    routine_performGalgas_33_ProjectGlobalCheckings (var_semanticContext, var_declarationAST.mAttribute_mDeclarationList, inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 652)) ;
+    }
+  }
+  const enumGalgasBool test_16 = GALGAS_bool (kIsEqual, GALGAS_uint ((uint32_t) 0U).objectCompare (GALGAS_uint::constructor_errorCount (SOURCE_FILE ("galgas_prgm.galgas", 658)))).operator_and (GALGAS_bool (kIsEqual, constinArgument_inSourceToAnalyze.objectCompare (GALGAS_string::makeEmptyString ())) COMMA_SOURCE_FILE ("galgas_prgm.galgas", 658)).boolEnum () ;
+  if (kBoolTrue == test_16) {
+    {
+    routine_projectGeneration (var_semanticContext.mAttribute_mTypeMap, var_productDirectory, var_optionComponentMapForGeneration, var_appProductFileList, var_semanticDeclarationSortedListForGeneration, var_declarationAST.mAttribute_mSourceRuleList, var_projectComponentAST, constinArgument_inProjectSourceFile.mAttribute_string, var_handCodedSourceDirectorySet, var_handCodedSourceToolFileList, var_frameworkToolFileList, var_handCodedSourceAppFileList, var_handCodedLinkAppFileList, inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 659)) ;
     }
   }
 }
@@ -7942,7 +7949,7 @@ void routine_projectGeneration (const GALGAS_unifiedTypeMap constinArgument_inTy
                                 const GALGAS_string constinArgument_inProjectSourceFile,
                                 const GALGAS_stringset constinArgument_inHandCodedSourceDirectorySet,
                                 const GALGAS_stringlist constinArgument_inHandCodedSourceToolFileList,
-                                const GALGAS_stringlist constinArgument_inHandCodedLinkToolFileList,
+                                const GALGAS_stringlist constinArgument_inFrameworkToolFileList,
                                 const GALGAS_stringlist constinArgument_inHandCodedSourceAppFileList,
                                 const GALGAS_stringlist constinArgument_inHandCodedLinkAppFileList,
                                 C_Compiler * inCompiler
@@ -7950,62 +7957,62 @@ void routine_projectGeneration (const GALGAS_unifiedTypeMap constinArgument_inTy
   GALGAS_stringlist var_appProductFileList = constinArgument_inAppProductFileList ;
   const enumGalgasBool test_0 = GALGAS_bool (gOption_galgas_5F_builtin_5F_options_verbose_5F_output.reader_value ()).boolEnum () ;
   if (kBoolTrue == test_0) {
-    inCompiler->printMessage (GALGAS_string ("*** Generating files\n")  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 696)) ;
+    inCompiler->printMessage (GALGAS_string ("*** Generating files\n")  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 700)) ;
   }
-  GALGAS_stringset var_allProductFileSet = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas_prgm.galgas", 698)) ;
-  const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE ("galgas_prgm.galgas", 701)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
+  GALGAS_stringset var_allProductFileSet = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas_prgm.galgas", 702)) ;
+  const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE ("galgas_prgm.galgas", 705)).objectCompare (GALGAS_uint ((uint32_t) 0U))).boolEnum () ;
   if (kBoolTrue == test_1) {
     {
-    routine_generateAllGuiComponentsGalgas_33_ (constinArgument_inOptionComponentMapForGeneration, constinArgument_inProductDirectory, var_appProductFileList, var_allProductFileSet, inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 702)) ;
+    routine_generateAllGuiComponentsGalgas_33_ (constinArgument_inOptionComponentMapForGeneration, constinArgument_inProductDirectory, var_appProductFileList, var_allProductFileSet, inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 706)) ;
     }
   }
-  GALGAS_stringlist var_toolCppFileList = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas_prgm.galgas", 711)) ;
-  GALGAS_stringlist var_toolHeaderFileList = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas_prgm.galgas", 712)) ;
+  GALGAS_stringlist var_toolCppFileList = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas_prgm.galgas", 715)) ;
+  GALGAS_stringlist var_toolHeaderFileList = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE ("galgas_prgm.galgas", 716)) ;
   {
-  routine_generateSemanticDeclarationsGalgas_33_ (constinArgument_inTypeMap, constinArgument_inProductDirectory, constinArgument_inSemanticDeclarationSortedListForGeneration, var_toolCppFileList, var_toolHeaderFileList, var_allProductFileSet, inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 713)) ;
+  routine_generateSemanticDeclarationsGalgas_33_ (constinArgument_inTypeMap, constinArgument_inProductDirectory, constinArgument_inSemanticDeclarationSortedListForGeneration, var_toolCppFileList, var_toolHeaderFileList, var_allProductFileSet, inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 717)) ;
   }
-  const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, GALGAS_uint ((uint32_t) 0U).objectCompare (GALGAS_uint::constructor_errorCount (SOURCE_FILE ("galgas_prgm.galgas", 723)))).boolEnum () ;
+  const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, GALGAS_uint ((uint32_t) 0U).objectCompare (GALGAS_uint::constructor_errorCount (SOURCE_FILE ("galgas_prgm.galgas", 727)))).boolEnum () ;
   if (kBoolTrue == test_2) {
-    GALGAS_stringset var_handledExtensionSet = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas_prgm.galgas", 724)) ;
-    cEnumerator_programRuleList enumerator_31282 (constinArgument_inSourceRuleList, kEnumeration_up) ;
-    while (enumerator_31282.hasCurrentObject ()) {
-      var_handledExtensionSet.addAssign_operation (enumerator_31282.current_mSourceFileExtension (HERE).mAttribute_string  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 726)) ;
-      enumerator_31282.gotoNextObject () ;
+    GALGAS_stringset var_handledExtensionSet = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas_prgm.galgas", 728)) ;
+    cEnumerator_programRuleList enumerator_31459 (constinArgument_inSourceRuleList, kEnumeration_up) ;
+    while (enumerator_31459.hasCurrentObject ()) {
+      var_handledExtensionSet.addAssign_operation (enumerator_31459.current_mSourceFileExtension (HERE).mAttribute_string  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 730)) ;
+      enumerator_31459.gotoNextObject () ;
     }
-    GALGAS_stringset var_ignoredFeatureSet = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas_prgm.galgas", 729)) ;
-    var_ignoredFeatureSet.addAssign_operation (GALGAS_string ("tool-source")  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 730)) ;
-    var_ignoredFeatureSet.addAssign_operation (GALGAS_string ("tool-link")  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 731)) ;
-    var_ignoredFeatureSet.addAssign_operation (GALGAS_string ("app-source")  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 732)) ;
-    GALGAS_projectQualifiedFeatureMap var_projectQualifiedFeatureMap = GALGAS_projectQualifiedFeatureMap::constructor_emptyMap (SOURCE_FILE ("galgas_prgm.galgas", 733)) ;
-    cEnumerator_galgas_33_QualifiedFeatureList enumerator_31686 (constinArgument_inProjectComponentAST.mAttribute_mQualifiedFeatureList, kEnumeration_up) ;
-    while (enumerator_31686.hasCurrentObject ()) {
-      const enumGalgasBool test_3 = var_ignoredFeatureSet.reader_hasKey (enumerator_31686.current_mFeatureName (HERE).mAttribute_string COMMA_SOURCE_FILE ("galgas_prgm.galgas", 735)).operator_not (SOURCE_FILE ("galgas_prgm.galgas", 735)).boolEnum () ;
+    GALGAS_stringset var_ignoredFeatureSet = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas_prgm.galgas", 733)) ;
+    var_ignoredFeatureSet.addAssign_operation (GALGAS_string ("tool-framework")  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 734)) ;
+    var_ignoredFeatureSet.addAssign_operation (GALGAS_string ("tool-source")  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 735)) ;
+    var_ignoredFeatureSet.addAssign_operation (GALGAS_string ("app-source")  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 736)) ;
+    GALGAS_projectQualifiedFeatureMap var_projectQualifiedFeatureMap = GALGAS_projectQualifiedFeatureMap::constructor_emptyMap (SOURCE_FILE ("galgas_prgm.galgas", 737)) ;
+    cEnumerator_galgas_33_QualifiedFeatureList enumerator_31868 (constinArgument_inProjectComponentAST.mAttribute_mQualifiedFeatureList, kEnumeration_up) ;
+    while (enumerator_31868.hasCurrentObject ()) {
+      const enumGalgasBool test_3 = var_ignoredFeatureSet.reader_hasKey (enumerator_31868.current_mFeatureName (HERE).mAttribute_string COMMA_SOURCE_FILE ("galgas_prgm.galgas", 739)).operator_not (SOURCE_FILE ("galgas_prgm.galgas", 739)).boolEnum () ;
       if (kBoolTrue == test_3) {
         {
-        var_projectQualifiedFeatureMap.modifier_insertKey (enumerator_31686.current_mFeatureName (HERE), enumerator_31686.current_mFeatureValue (HERE), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 736)) ;
+        var_projectQualifiedFeatureMap.modifier_insertKey (enumerator_31868.current_mFeatureName (HERE), enumerator_31868.current_mFeatureValue (HERE), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 740)) ;
         }
       }
-      enumerator_31686.gotoNextObject () ;
+      enumerator_31868.gotoNextObject () ;
     }
     {
-    routine_updateGalgas_33_Targets (constinArgument_inProjectSourceFile, constinArgument_inProjectComponentAST.mAttribute_mTargetName.mAttribute_string, constinArgument_inProjectComponentAST.mAttribute_mEndOfSourceFile, constinArgument_inProjectComponentAST.mAttribute_mMajorVersion.mAttribute_uint.reader_string (SOURCE_FILE ("galgas_prgm.galgas", 746)).add_operation (GALGAS_string ("."), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 746)).add_operation (constinArgument_inProjectComponentAST.mAttribute_mMinorVersion.mAttribute_uint.reader_string (SOURCE_FILE ("galgas_prgm.galgas", 746)), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 746)).add_operation (GALGAS_string ("."), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 746)).add_operation (constinArgument_inProjectComponentAST.mAttribute_mRevisionVersion.mAttribute_uint.reader_string (SOURCE_FILE ("galgas_prgm.galgas", 746)), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 746)), var_projectQualifiedFeatureMap, constinArgument_inProjectComponentAST.mAttribute_mGenerationFeatureList, var_toolCppFileList, var_toolHeaderFileList, var_appProductFileList, constinArgument_inHandCodedSourceToolFileList, constinArgument_inHandCodedSourceDirectorySet, var_handledExtensionSet, constinArgument_inHandCodedLinkToolFileList, var_allProductFileSet, constinArgument_inHandCodedSourceAppFileList, constinArgument_inHandCodedLinkAppFileList, inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 742)) ;
+    routine_updateGalgas_33_Targets (constinArgument_inProjectSourceFile, constinArgument_inProjectComponentAST.mAttribute_mTargetName.mAttribute_string, constinArgument_inProjectComponentAST.mAttribute_mEndOfSourceFile, constinArgument_inProjectComponentAST.mAttribute_mMajorVersion.mAttribute_uint.reader_string (SOURCE_FILE ("galgas_prgm.galgas", 750)).add_operation (GALGAS_string ("."), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 750)).add_operation (constinArgument_inProjectComponentAST.mAttribute_mMinorVersion.mAttribute_uint.reader_string (SOURCE_FILE ("galgas_prgm.galgas", 750)), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 750)).add_operation (GALGAS_string ("."), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 750)).add_operation (constinArgument_inProjectComponentAST.mAttribute_mRevisionVersion.mAttribute_uint.reader_string (SOURCE_FILE ("galgas_prgm.galgas", 750)), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 750)), var_projectQualifiedFeatureMap, constinArgument_inProjectComponentAST.mAttribute_mGenerationFeatureList, var_toolCppFileList, var_toolHeaderFileList, var_appProductFileList, constinArgument_inHandCodedSourceToolFileList, constinArgument_inFrameworkToolFileList, constinArgument_inHandCodedSourceDirectorySet, var_handledExtensionSet, var_allProductFileSet, constinArgument_inHandCodedSourceAppFileList, constinArgument_inHandCodedLinkAppFileList, inCompiler  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 746)) ;
     }
   }
-  const enumGalgasBool test_4 = GALGAS_bool (kIsEqual, GALGAS_uint ((uint32_t) 0U).objectCompare (GALGAS_uint::constructor_errorCount (SOURCE_FILE ("galgas_prgm.galgas", 762)))).boolEnum () ;
+  const enumGalgasBool test_4 = GALGAS_bool (kIsEqual, GALGAS_uint ((uint32_t) 0U).objectCompare (GALGAS_uint::constructor_errorCount (SOURCE_FILE ("galgas_prgm.galgas", 766)))).boolEnum () ;
   if (kBoolTrue == test_4) {
-    GALGAS_stringset var_allActualFileSet = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas_prgm.galgas", 763)) ;
-    cEnumerator_stringlist enumerator_32785 (constinArgument_inProductDirectory.reader_regularFiles (GALGAS_bool (false) COMMA_SOURCE_FILE ("galgas_prgm.galgas", 764)), kEnumeration_up) ;
-    while (enumerator_32785.hasCurrentObject ()) {
-      var_allActualFileSet.addAssign_operation (enumerator_32785.current_mValue (HERE)  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 765)) ;
-      enumerator_32785.gotoNextObject () ;
+    GALGAS_stringset var_allActualFileSet = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("galgas_prgm.galgas", 767)) ;
+    cEnumerator_stringlist enumerator_32963 (constinArgument_inProductDirectory.reader_regularFiles (GALGAS_bool (false) COMMA_SOURCE_FILE ("galgas_prgm.galgas", 768)), kEnumeration_up) ;
+    while (enumerator_32963.hasCurrentObject ()) {
+      var_allActualFileSet.addAssign_operation (enumerator_32963.current_mValue (HERE)  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 769)) ;
+      enumerator_32963.gotoNextObject () ;
     }
-    GALGAS_stringset var_uselessFileSet = var_allActualFileSet.substract_operation (var_allProductFileSet, inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 767)) ;
-    cEnumerator_stringset enumerator_32922 (var_uselessFileSet, kEnumeration_up) ;
-    while (enumerator_32922.hasCurrentObject ()) {
+    GALGAS_stringset var_uselessFileSet = var_allActualFileSet.substract_operation (var_allProductFileSet, inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 771)) ;
+    cEnumerator_stringset enumerator_33100 (var_uselessFileSet, kEnumeration_up) ;
+    while (enumerator_33100.hasCurrentObject ()) {
       {
-      GALGAS_string::class_method_deleteFile (constinArgument_inProductDirectory.add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 769)).add_operation (enumerator_32922.current_key (HERE), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 769)), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 769)) ;
+      GALGAS_string::class_method_deleteFile (constinArgument_inProductDirectory.add_operation (GALGAS_string ("/"), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 773)).add_operation (enumerator_33100.current_key (HERE), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 773)), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 773)) ;
       }
-      enumerator_32922.gotoNextObject () ;
+      enumerator_33100.gotoNextObject () ;
     }
   }
 }

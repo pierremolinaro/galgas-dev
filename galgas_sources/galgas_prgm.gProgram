@@ -562,10 +562,14 @@ routine compileProject
   var handCodedSourceDirectorySet := [@stringset emptySet] ;
   for () in projectComponentAST->mQualifiedFeatureList do
     if mFeatureName->string == "tool-source" then
-      handCodedSourceToolFileList += ![mFeatureValue lastPathComponent] ;
+      handCodedSourceToolFileList += !mFeatureValue->string ;
       const directory := [mFeatureValue stringByDeletingLastPathComponent] ;
-      if directory != "" then
-        handCodedSourceDirectorySet += !"../" + directory ;
+      if directory == "" then
+        handCodedSourceDirectorySet += !"../hand_coded_sources" ;
+      elsif [directory characterAtIndex !0] != '/' then
+        handCodedSourceDirectorySet += !"../hand_coded_sources/" + directory ;
+      else
+        handCodedSourceDirectorySet += !directory ;
       end if ;
     elsif mFeatureName->string == "tool-framework" then
       frameworkToolFileList += ![mFeatureValue lastPathComponent] ;
