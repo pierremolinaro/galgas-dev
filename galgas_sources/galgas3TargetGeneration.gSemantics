@@ -594,6 +594,7 @@ routine updateGalgas3Targets
     if [inFrameworkToolFileList length] > 0 then
       [!?xcodeProject addGroupWithFiles
         !groupName:"Frameworks for Tool"
+#        !groupPath:"/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/" + SDK + ".sdk/System/Library/Frameworks"
         !groupPath:"/System/Library/Frameworks"
         !fileNames:[@stringset setWithStringList !inFrameworkToolFileList]
         !?cppFileRefs:*
@@ -1100,7 +1101,7 @@ routine updateGalgas3Targets
     [!?xcodeProject addToolTarget
       !targetName:inTargetName + " tool debug"
       !productFileName:inTargetName+"-debug"
-      !sources:buildFileRefListForTool + mm_FileRefList + toolFrameworksFileRefList
+      !sources:buildFileRefListForTool + mm_FileRefList
       !frameworkRefs:toolFrameworksFileRefList
       !buildConfigurationSettingList:{
         !"GCC_OPTIMIZATION_LEVEL = 0",
