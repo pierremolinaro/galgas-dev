@@ -584,7 +584,7 @@ routine updateGalgas3Targets
     if [inHandCodedSourceToolFileList length] > 0 then
       [!?xcodeProject addGroupWithFiles
         !groupName:"Hand Coded Sources"
-        !groupPath:"../hand_coded_sources"
+        !groupPath:"../"
         !fileNames:[@stringset setWithStringList !inHandCodedSourceToolFileList]
         !?cppFileRefs:buildFileRefListForTool
         !?mFileRefs:m_FileRefList

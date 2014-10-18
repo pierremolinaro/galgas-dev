@@ -6264,11 +6264,11 @@ static void routine_programRule_5F__31__30_ (const GALGAS_lstring constinArgumen
     const enumGalgasBool test_3 = GALGAS_bool (kIsStrictSup, var_candidateProjectFiles.reader_length (SOURCE_FILE ("galgas_prgm.galgas", 793)).objectCompare (GALGAS_uint ((uint32_t) 1U))).boolEnum () ;
     if (kBoolTrue == test_3) {
       GALGAS_string var_s = GALGAS_string ("several project files in source file parent directory:") ;
-      cEnumerator_stringlist enumerator_34237 (var_candidateProjectFiles, kEnumeration_up) ;
-      while (enumerator_34237.hasCurrentObject ()) {
+      cEnumerator_stringlist enumerator_34200 (var_candidateProjectFiles, kEnumeration_up) ;
+      while (enumerator_34200.hasCurrentObject ()) {
         var_s.dotAssign_operation (GALGAS_string ("\n"
-          "  - ").add_operation (enumerator_34237.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 796))  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 796)) ;
-        enumerator_34237.gotoNextObject () ;
+          "  - ").add_operation (enumerator_34200.current_mValue (HERE), inCompiler COMMA_SOURCE_FILE ("galgas_prgm.galgas", 796))  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 796)) ;
+        enumerator_34200.gotoNextObject () ;
       }
       GALGAS_location location_4 (constinArgument_inSourceFile.reader_location (HERE)) ; // Implicit use of 'location' reader
       inCompiler->emitSemanticError (location_4, var_s  COMMA_SOURCE_FILE ("galgas_prgm.galgas", 798)) ;

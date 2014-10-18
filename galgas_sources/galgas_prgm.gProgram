@@ -565,9 +565,9 @@ routine compileProject
       handCodedSourceToolFileList += !mFeatureValue->string ;
       const directory := [mFeatureValue stringByDeletingLastPathComponent] ;
       if directory == "" then
-        handCodedSourceDirectorySet += !"../hand_coded_sources" ;
+        handCodedSourceDirectorySet += !"../" ;
       elsif [directory characterAtIndex !0] != '/' then
-        handCodedSourceDirectorySet += !"../hand_coded_sources/" + directory ;
+        handCodedSourceDirectorySet += !"../" + directory ;
       else
         handCodedSourceDirectorySet += !directory ;
       end if ;
