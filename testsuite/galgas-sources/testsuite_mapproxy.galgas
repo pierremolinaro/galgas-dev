@@ -2,7 +2,7 @@
 
 #-----------------------------------------------------------------------------
 
-uniquemap @maTable @monMapProxy {
+sharedmap @maTable {
   @uint mAttribut
   insert insertKey error message "internal error"
 }
@@ -12,8 +12,8 @@ uniquemap @maTable @monMapProxy {
 proc testsuite_mapproxy {
 message "*************************************** begin of maproxy test\n"
   var table = @maTable.emptyMap
-  @monMapProxy proxy
-  [@monMapProxy makeProxyFromString !?table !"abc" ?proxy]
+  @maTable-proxy proxy
+  [@maTable-proxy makeProxyFromString !?table !"abc" ?proxy]
   log "[table count]": [table count]
   log "Proxy: " : proxy
   log "[table unsolvedProxyCount]": [table unsolvedProxyCount]
