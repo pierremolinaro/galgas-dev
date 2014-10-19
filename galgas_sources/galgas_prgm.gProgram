@@ -574,10 +574,14 @@ routine compileProject
     elsif mFeatureName->string == "tool-framework" then
       frameworkToolFileList += ![mFeatureValue lastPathComponent] ;
     elsif mFeatureName->string == "app-source" then
-      handCodedSourceAppFileList += ![mFeatureValue lastPathComponent] ;
+      handCodedSourceAppFileList += !mFeatureValue->string ;
       const directory := [mFeatureValue stringByDeletingLastPathComponent] ;
-      if directory != "" then
+      if directory == "" then
+        handCodedSourceDirectorySet += !"../" ;
+      elsif [directory characterAtIndex !0] != '/' then
         handCodedSourceDirectorySet += !"../" + directory ;
+      else
+        handCodedSourceDirectorySet += !directory ;
       end if ;
     elsif mFeatureName->string == "app-link" then
       handCodedLinkAppFileList += !mFeatureValue->string ;
