@@ -1,0 +1,6 @@
+grammar LR1_grammar_grammar "LR1" {
+syntax LR1_grammar_syntax
+
+ <S>
+
+}

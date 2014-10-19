@@ -1,0 +1,19 @@
+
+
+abstract class @cExpression {
+}
+
+class @cConst : @cExpression {
+  @luint mValue
+}
+  
+class @cAdd : @cExpression {
+  @cExpression mLeftExpression
+  @cExpression mRightExpression
+}
+  
+class @cMult : @cExpression {
+  @cExpression mLeftExpression
+  @cExpression mRightExpression
+}
+

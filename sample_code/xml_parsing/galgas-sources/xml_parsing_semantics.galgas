@@ -1,0 +1,115 @@
+
+
+#------------------------------------------------------------*
+
+proc listUnicodeCharacterProperties {
+  message "---- Unassigned Unicode Characters\n"
+  @uint unicodeValue = 0
+  @uint matchedValue = 0
+  @bool found = false
+  loop( 0x10000 - unicodeValue)
+  while unicodeValue < 0x10000 do
+    if [unicodeValue isUnicodeValueAssigned] then
+      if found then
+        message "  - [" + [matchedValue hexString] + ", " + [unicodeValue - 1 hexString] + "]\n"
+        found = false
+      end
+    elsif not found then
+      matchedValue = unicodeValue
+      found = true
+    end
+    unicodeValue ++
+  end
+  if found then
+    message "  - [" + [matchedValue hexString] + ", " + [unicodeValue - 1 hexString] + "]\n"
+    found = false
+  end
+
+  message "---- Unicode Letters\n"
+  unicodeValue = 0
+  loop( 0x10000 - unicodeValue)
+  while unicodeValue < 0x10000 do
+    if [unicodeValue isUnicodeValueAssigned] then
+      var c =@char.unicodeCharacterWithUnsigned{! unicodeValue}
+      if [c isUnicodeLetter] then
+        message "  '" + [c string]
+          + "' (" + [unicodeValue hexString]
+          + "), name: '" + [c unicodeName]
+          + "', to upper: '" + [[c unicodeToUpper] string]
+          + "', to lower: '" + [[c unicodeToLower] string]
+          + "'\n"
+      end
+    end
+    unicodeValue ++
+  end
+
+  message "---- Unicode Numbers\n"
+  unicodeValue = 0
+  loop( 0x10000 - unicodeValue)
+  while unicodeValue < 0x10000 do
+    if [unicodeValue isUnicodeValueAssigned] then
+      var c =@char.unicodeCharacterWithUnsigned{! unicodeValue}
+      if [c isUnicodeNumber] then
+        message "  '" + [c string] + "' (" + [unicodeValue hexString] + "), name: '" + [c unicodeName] + "'\n"
+      end
+    end
+    unicodeValue ++
+  end
+
+  message "---- Unicode Separators\n"
+  unicodeValue = 0
+  loop( 0x10000 - unicodeValue)
+  while unicodeValue < 0x10000 do
+    if [unicodeValue isUnicodeValueAssigned] then
+      var c =@char.unicodeCharacterWithUnsigned{! unicodeValue}
+      if [c isUnicodeSeparator] then
+        message "  '" + [c string] + "' (" + [unicodeValue hexString] + "), name: '" + [c unicodeName] + "'\n"
+      end
+    end
+    unicodeValue ++
+  end
+
+  message "---- Unicode Punctuation\n"
+  unicodeValue = 0
+  loop( 0x10000 - unicodeValue)
+  while unicodeValue < 0x10000 do
+    if [unicodeValue isUnicodeValueAssigned] then
+      var c =@char.unicodeCharacterWithUnsigned{! unicodeValue}
+      if [c isUnicodePunctuation] then
+        message "  - " + [unicodeValue hexString] + ", name: '" + [c unicodeName] + "'\n"
+      end
+    end
+    unicodeValue ++
+  end
+
+  message "---- Unicode Command\n"
+  unicodeValue = 0
+  loop( 0x10000 - unicodeValue)
+  while unicodeValue < 0x10000 do
+    if [unicodeValue isUnicodeValueAssigned] then
+      var c =@char.unicodeCharacterWithUnsigned{! unicodeValue}
+      if [c isUnicodeCommand] then
+        message "  - " + [unicodeValue hexString] + ", name: '" + [c unicodeName] + "'\n"
+      end
+    end
+    unicodeValue ++
+  end
+
+  message "---- Unicode Mark\n"
+  unicodeValue = 0
+  loop( 0x10000 - unicodeValue)
+  while unicodeValue < 0x10000 do
+    if [unicodeValue isUnicodeValueAssigned] then
+      var c =@char.unicodeCharacterWithUnsigned{! unicodeValue}
+      if [c isUnicodeMark] then
+        message "  - " + [unicodeValue hexString] + ", name: '" + [c unicodeName] + "'\n"
+      end
+    end
+    unicodeValue ++
+  end
+
+  message "---- Done.\n"
+}
+
+#------------------------------------------------------------*
+

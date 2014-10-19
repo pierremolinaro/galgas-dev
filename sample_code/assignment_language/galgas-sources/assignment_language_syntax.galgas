@@ -1,0 +1,83 @@
+syntax assignment_language_syntax (assignment_language_lexique) {
+
+#----------------------------------------------------------------------------*
+
+rule <expression> !@expressionAST outExpressionAST {
+  <expression_term> ?outExpressionAST
+  repeat
+  while
+    $+$
+    @expressionAST rightExpression
+    <expression_term> ?rightExpression
+    outExpressionAST = @additionAST. new {
+      !outExpressionAST
+      !rightExpression}
+  end
+}
+
+#----------------------------------------------------------------------------*
+
+rule <expression_term> !@expressionAST outExpressionAST {
+  <expression_factor> ?outExpressionAST
+  repeat
+  while
+    $*$
+    @expressionAST rightExpression
+    <expression_factor> ?rightExpression
+    outExpressionAST = @multiplicationAST. new {
+      !outExpressionAST
+      !rightExpression}
+  end
+}
+
+#----------------------------------------------------------------------------*
+
+rule <expression_factor> !@expressionAST outExpressionAST {
+  select
+    $($
+    <expression> ?outExpressionAST
+    $)$
+  or
+    $identifier$ ?var  @lstring varName
+    outExpressionAST = @varInExpressionAST. new { !varName}
+  or
+    $unsigned_literal_integer$ ?var  @luint constant
+    outExpressionAST = @cstInExpressionAST. new { !constant}
+  end
+}
+
+
+rule <instruction> ?!@instructionListAST ioInstructionList {
+  $int$
+  $identifier$ ?var  @lstring varName
+  $;$
+  ioInstructionList += !@varDeclarationAST. new { !varName}
+}
+
+rule <instruction> ?!@instructionListAST ioInstructionList {
+  $identifier$ ?var  @lstring targetVarName
+  $:=$
+  @expressionAST expression
+  <expression> ? expression
+  $;$
+  ioInstructionList += !@assignmentAST. new { !targetVarName !expression}
+}
+
+rule <instruction> ?!@instructionListAST ioInstructionList {
+  $print$
+  $identifier$ ?var  @lstring targetVarName
+  $;$
+  ioInstructionList += !@printVariableAST. new { !targetVarName}
+}
+
+rule <start_symbol> !@programAST programAST {
+  var programInstructionList =@instructionListAST.emptyList{}
+  repeat
+  while 
+    <instruction> !?programInstructionList
+  end
+  $end$
+  programAST = @programAST. new { !programInstructionList !@location.here}
+}
+
+}

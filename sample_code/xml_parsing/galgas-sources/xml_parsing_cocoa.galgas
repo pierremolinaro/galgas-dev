@@ -1,0 +1,9 @@
+gui cocoa {
+
+with option xml_parsing_options
+
+with lexique xml_parsing_lexique {
+  fileExtension : "xml_file"
+  title: "XML File"
+}
+}

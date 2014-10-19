@@ -1,6 +1,0 @@
-grammar SLR_expression_grammar "":
-with "SLR_expression_syntax.gSyntax" ;
-
-root <StartSymbol> ;
-
-end grammar ;

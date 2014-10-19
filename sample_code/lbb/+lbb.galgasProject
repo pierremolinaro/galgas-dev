@@ -1,0 +1,16 @@
+project (1:0:0) -> "lbb"{
+#--- Targets
+  %makefile-macosx
+  %makefile-unix
+  %makefile-msys32-on-windows
+  %SnowLeopard
+  %applicationBundleBase : "fr.what"
+
+#--- Source files (relative path from 'galgas_sources' directory)
+  "galgas-sources/lbb_lexique.galgas"
+  "galgas-sources/lbb_semantics.galgas"
+  "galgas-sources/lbb_syntax.galgas"
+  "galgas-sources/lbb_grammar.galgas"
+  "galgas-sources/lbb_cocoa.galgas"
+  "galgas-sources/lbb_program.galgas"
+}

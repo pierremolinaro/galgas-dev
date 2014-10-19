@@ -1,0 +1,8 @@
+gui cocoa {
+
+with option dangling_else_solution_options
+with lexique dangling_else_solution_lexique {
+  fileExtension: "dangling_else_solution"
+  title:"Source"
+}
+}

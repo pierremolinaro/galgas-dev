@@ -1,0 +1,8 @@
+gui cocoa {
+
+with lexique lbb_lexique {
+  fileExtension: "lbb"
+  title: "Source"
+}
+
+}

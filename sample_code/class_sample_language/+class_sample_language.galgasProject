@@ -1,0 +1,16 @@
+project (1:0:0) -> "class_sample_language" {
+#--- Targets
+  %makefile-macosx
+  %makefile-unix
+  %makefile-msys32-on-windows
+  %SnowLeopard
+  %applicationBundleBase : "fr.what"
+#--- Sources
+  "galgas-sources/class_sample_language_lexique.galgas"
+  "galgas-sources/class_sample_language_semantics.galgas"
+  "galgas-sources/class_sample_language_syntax.galgas"
+  "galgas-sources/class_sample_language_grammar.galgas"
+  "galgas-sources/class_sample_language_cocoa.galgas"
+  "galgas-sources/class_sample_language_program.galgas"
+}
+

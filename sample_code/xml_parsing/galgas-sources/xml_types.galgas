@@ -1,0 +1,82 @@
+
+
+#------------------------------------------------------------*
+
+enum @xmlNodeType {
+  case element  case text  case comment
+}
+
+#------------------------------------------------------------*
+
+map @xmlAttributeMap {
+  @lstring value
+  insert insertKey error message "the '%K' attribute has been already declared"
+  search searchKey error message "the '%K' attribute is not declared"
+}
+
+#------------------------------------------------------------*
+
+class @xmlNode {
+  @xmlNodeType mType
+  @string name
+  @xmlAttributeMap attributeMap
+  @xmlNodeList nodeList
+}
+
+#------------------------------------------------------------*
+
+list @xmlNodeList {
+  @xmlNode node
+}
+
+#------------------------------------------------------------*
+
+proc internal_logXMLNodes
+  ?let @xmlNodeList inNodeList
+  ?let @string inIndentationString
+  ?!@string ioString {
+  for () in  inNodeList do
+    ioString += inIndentationString
+    switch [node mType]
+    case element :
+      ioString+= "ELEMENT '" + [node name] + "' {"
+      for () in  [node attributeMap] do
+        ioString += "'" + lkey + "' "
+        ioString += [[[lkey location] line] string]
+        ioString += ":" + [[[lkey location] column] string]
+        ioString += ":" + [[[lkey location] locationIndex] string]
+        ioString += " -> '" + value + "' "
+        ioString += [[[value location] line] string]
+        ioString += ":" + [[[value location] column] string]
+        ioString += ":" + [[[value location] locationIndex] string]
+      between ioString += ", "
+      end
+      ioString += "}\n"
+      internal_logXMLNodes ( ![node nodeList] ! inIndentationString + " " !?ioString )
+    case text :
+      ioString += "TEXT '" + [node name] + "'\n"
+    case comment :
+      ioString+= "COMMENT '" + [node name] + "'\n"
+    end
+  end
+}
+
+#------------------------------------------------------------*
+
+proc logXMLNodes ?let @xmlNodeList inNodeList {
+  @string s = ""
+  internal_logXMLNodes ( !inNodeList !"" !?s )
+  message s
+}
+
+#------------------------------------------------------------*
+
+extern proc parseXMLFile
+  ?let @lstring inFileName
+  !@xmlNodeList outRootNodeList
+  ?let @bool inIncludeComments
+  ?let @bool inDoNotCondenseWhiteSpaces
+  ?let @bool inPrintDuringParsing
+
+#------------------------------------------------------------*
+

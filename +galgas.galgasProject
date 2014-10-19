@@ -1,0 +1,176 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Compile all galgas sources                                               *
+#                                                                           *
+#  Copyright (C) 1997, ..., 2014 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+project (3:0:0) -> "galgas" {
+#  feature "multi-threading" ;
+  %libpmAtPath : "../libpm"
+#--- Targets
+  %makefile-macosx                                                                     
+  %makefile-unix
+  %makefile-x86linux32-on-macosx
+  %makefile-x86linux64-on-macosx
+  %makefile-win32-on-macosx
+  %makefile-msys32-on-windows
+
+#--- Command Line Options
+  "galgas-sources/galgas_cli_options.galgas"
+
+#--- Common Scanner
+  "galgas-sources/galgas_scanner.galgas" 
+
+#--- Cocoa Interface
+  "galgas-sources/cocoaGalgas.galgas"
+
+#--- Project Creation
+  "galgas-sources/projectCreation.galgas"
+
+#--- Template
+  "galgas-sources/galgasTemplateScanner.galgas"
+  "galgas-sources/templateTypesForAST.galgas"
+  "galgas-sources/templateSyntax.galgas"
+  "galgas-sources/templateGrammar.galgas"
+  "galgas-sources/templateDecoratedTypes.galgas"
+  "galgas-sources/templateAnalysis.galgas"
+  "galgas-sources/templateCodeGeneration.galgas"
+ 
+#--- Lexique Component
+  "galgas-sources/lexiqueTypesForAST.galgas"
+  "galgas-sources/lexiqueSyntax.galgas"
+  "galgas-sources/lexiqueLL1grammar.galgas"
+  "galgas-sources/lexiqueSemantics.galgas"
+  "galgas-sources/predefinedLexicalActions.galgas"
+  "galgas-sources/lexiqueGeneration.galgas"
+  "galgas-sources/lexiqueCocoaGeneration.galgas"
+  "galgas-sources/lexiqueCompilation.galgas"
+
+
+#--- Option Component
+  "galgas-sources/optionTypesForAST.galgas"
+  "galgas-sources/optionSyntax.galgas"
+  "galgas-sources/optionLL1grammar.galgas"
+  "galgas-sources/optionSemantics.galgas"
+  "galgas-sources/optionCompilation.galgas"
+
+#--- GUI component
+  "galgas-sources/guiTypesForAST.galgas"
+  "galgas-sources/guiSyntax.galgas"
+  "galgas-sources/guiGrammar.galgas"
+  "galgas-sources/guiCompilation.galgas"
+
+#--- All AST types
+  "galgas-sources/allASTTypes.galgas"
+
+#--- Semantics Component
+  "galgas-sources/semanticsTypesForAST.galgas"
+  "galgas-sources/expressionSyntax.galgas"
+  "galgas-sources/parameterArgumentSyntax.galgas"
+  "galgas-sources/semanticInstructionsSyntax.galgas"
+  "galgas-sources/semanticDeclarationsSyntax.galgas"
+  "galgas-sources/semanticsComponent.galgas"
+  "galgas-sources/semanticsSLRgrammar.galgas"
+  "galgas-sources/semanticsTypes.galgas"
+  "galgas-sources/semanticsTypeFeatures.galgas"
+  "galgas-sources/semanticsConstructors.galgas"
+  "galgas-sources/semanticsReaders.galgas"
+  "galgas-sources/semanticsModifiers.galgas"
+  "galgas-sources/semanticsInstanceMethods.galgas"
+  "galgas-sources/semanticsClassMethods.galgas"
+  "galgas-sources/semanticContext.galgas"
+  "galgas-sources/semanticsDecoratedTypes.galgas"
+  "galgas-sources/semanticExpressionAnalysis.galgas"
+  "galgas-sources/semanticInstructionsAnalysis.galgas"
+  "galgas-sources/semanticAnalysis.galgas"
+  "galgas-sources/semanticExpressionGeneration.galgas"
+  "galgas-sources/semanticInstructionGeneration.galgas"
+  "galgas-sources/semanticGeneration.galgas"
+  "galgas-sources/semanticsCompilation.galgas"
+  "galgas-sources/predefinedTypes.galgas"
+
+#--- Syntax Component
+  "galgas-sources/syntaxModelBuilder.galgas"
+  "galgas-sources/syntaxSLRgrammar.galgas"
+  "galgas-sources/syntaxSignature.galgas"
+  "galgas-sources/syntaxCompilation.galgas"
+
+#--- Grammar component
+  "galgas-sources/grammarMetamodel.galgas"
+  "galgas-sources/grammarModelBuilder.galgas"
+  "galgas-sources/grammarLL1grammar.galgas"
+  "galgas-sources/grammarSemantics.galgas"
+  "galgas-sources/grammarCompilation.galgas"
+
+#--- Program component
+  "galgas-sources/programModelBuilder.galgas"
+  "galgas-sources/programSLRgrammar.galgas"
+  "galgas-sources/programComponentCompilation.galgas"
+
+#--- Main program
+  "galgas-sources/galgas_prgm.galgas"
+
+#--- Project component
+  "galgas-sources/targetGeneration.galgas"
+  "galgas-sources/projectMetamodel.galgas"
+  "galgas-sources/baseForXcodeProjectGeneration.galgas"
+  "galgas-sources/XcodeProjectGeneration.galgas"
+  "galgas-sources/projectModelBuilder.galgas"
+  "galgas-sources/projectLL1grammar.galgas"
+  "galgas-sources/projectGlobalCheckings.galgas"
+  "galgas-sources/libpmHandling.galgas"
+
+#--- GALGAS 3 Project
+  "galgas-sources/galgas3Scanner.galgas"
+  "galgas-sources/galgas3ProjectSyntax.galgas"
+  "galgas-sources/galgas3ProjectGrammar.galgas"
+  "galgas-sources/galgas3projectAST.galgas"
+
+#--- GALGAS 3 File
+  "galgas-sources/galgas3ExpressionSyntax.galgas"
+  "galgas-sources/galgas3ParameterArgumentSyntax.galgas"
+  "galgas-sources/galgas3InstructionsSyntax.galgas"
+  "galgas-sources/galgas3DeclarationsSyntax.galgas"
+  "galgas-sources/galgas3OptionComponentSyntax.galgas"
+  "galgas-sources/galgas3LexiqueComponentSyntax.galgas"
+  "galgas-sources/galgas3GuiComponentSyntax.galgas"
+  "galgas-sources/galgas3SyntaxComponentSyntax.galgas"
+  "galgas-sources/galgas3GrammarComponentSyntax.galgas"
+  "galgas-sources/galgas3ProgramDeclarations.galgas"
+  "galgas-sources/galgas3Grammar.galgas"
+
+  "galgas-sources/galgas3SemanticDeclarationCompilation.galgas"
+
+  "galgas-sources/XcodeProjectNewGeneration.galgas"
+  "galgas-sources/galgas3TargetGeneration.galgas"
+
+#--- Hand coded sources
+  %tool-source : "hand_coded_sources/cDecisionTableElement.cpp"
+  %tool-source : "hand_coded_sources/cVocabulary.cpp"
+  %tool-source : "hand_coded_sources/buildPureBNFgrammar.cpp"
+  %tool-source : "hand_coded_sources/empty_strings_computations.cpp"
+  %tool-source : "hand_coded_sources/follow_by_empty_computation.cpp"
+  %tool-source : "hand_coded_sources/grammarComputations.cpp"
+  %tool-source : "hand_coded_sources/printOriginalGrammar.cpp"
+  %tool-source : "hand_coded_sources/useful_symbols_computations.cpp"
+  %tool-source : "hand_coded_sources/FIRST_computations.cpp"
+  %tool-source : "hand_coded_sources/FOLLOW_computations.cpp"
+  %tool-source : "hand_coded_sources/LL1_computations.cpp"
+  %tool-source : "hand_coded_sources/LR1_computations.cpp"
+  %tool-source : "hand_coded_sources/SLR_computations.cpp"
+}
+
+#---------------------------------------------------------------------------*

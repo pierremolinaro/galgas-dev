@@ -1,9 +1,0 @@
-gui xml_parsing_cocoa "cocoa" :
-
-with option "xml_parsing_options.gOption" ;
-
-with lexique "xml_parsing_lexique.gLexique" {
-  fileExtension : "xml_file" ;
-  title: "XML File" ;
-}
-end gui ;

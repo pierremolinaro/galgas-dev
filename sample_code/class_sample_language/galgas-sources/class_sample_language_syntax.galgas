@@ -1,0 +1,22 @@
+syntax class_sample_language_syntax (class_sample_language_lexique) {
+
+rule <start_symbol> !@declarationListAST outDeclarationListAST
+
+rule <start_symbol> !@declarationListAST outDeclarationListAST {
+  outDeclarationListAST = @declarationListAST. emptyList
+  repeat
+  while
+    $class$
+    $identifier$ ?var  @lstring className indexing classDefinition
+    select
+      outDeclarationListAST += !@classWithoutSuperClassAST. new { !className}
+    or
+      $:$
+      $identifier$ ?var  @lstring superClassName indexing superClassReference
+      outDeclarationListAST += !@classWithSuperClassAST. new { !className !superClassName}
+    end
+    $;$
+  end
+}
+
+}

@@ -1,0 +1,10 @@
+gui cocoa {
+
+with option assignment_language_options
+
+with lexique assignment_language_lexique {
+  fileExtension: "assignment_language"
+  title: "Source"
+}
+
+}

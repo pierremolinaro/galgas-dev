@@ -1,0 +1,43 @@
+
+
+list @boxTypeListAST {
+  @lstring mBoxTypeName
+  @lstringlist mPortNameList
+}
+
+list @connectionlistAST {
+  @lstring mConnectedBoxName
+  @lstring mOppositePortName
+}
+
+list @boxInstanceListAST {
+  @lstring mBoxTypeName
+  @lstring mBoxInstanceName
+  @connectionlistAST mConnectionList
+}
+
+struct @programAST {
+  @boxTypeListAST mBoxTypeListAST
+  @boxInstanceListAST mBoxInstanceListAST
+  @location mEndOfSourceLine
+}
+
+map @boxTypeMap {
+  @lstringlist mPortNameList
+  insert insertKey error message "the '%K' box type is already declared"
+  search searchKey error message "the '%K' box type is not declared"
+}
+
+map @connectionMap {
+  @boxInstanceMap-proxy mBoxProxy
+  @lstring mOppositePortName
+  insert insertKey error message "the '%K' connection is already declared"
+  search searchKey error message "the '%K' connection is not declared"
+}
+
+sharedmap @boxInstanceMap {
+  @connectionMap mConnectionMap
+  insert insertKey error message "the '%K' box is already declared"
+  search searchKey error message "the '%K' box is not declared"
+}
+

@@ -1,0 +1,25 @@
+lexique SLR_expression_lexique {
+
+@uint number
+$number$ ! number error message "a number"
+  
+list operator_list error message "the '%K' keyword"{
+  "+", "*", "(", ")" }
+
+rule list operator_list
+  
+message decimalNumberTooLarge : "Decimal number too large"
+
+message internalError : "internal error"
+  
+rule '0'->'9'{
+  enterDigitIntoUInt ( !* !?number error decimalNumberTooLarge, internalError)
+  repeat
+  while '0'->'9':
+    enterDigitIntoUInt ( !* !?number error decimalNumberTooLarge, internalError)
+  while '_' :
+  end
+  send $number$
+}
+
+}

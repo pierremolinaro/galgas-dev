@@ -1,7 +1,0 @@
-grammar dangling_else_solution_grammar "": # Try LL(1), SLR
-with "dangling_else_solution_syntax.gSyntax" ;
-
-# This grammar is not LL(1), but SLR.
-root <S> ;
-
-end grammar ;

@@ -1,8 +1,0 @@
-gui dangling_else_solution_cocoa "cocoa":
-
-with option "dangling_else_solution_options.gOption" ;
-with lexique "dangling_else_solution_lexique.gLexique" {
-  fileExtension: "dangling_else_solution" ;
-  title:"Source" ;
-}
-end gui ;

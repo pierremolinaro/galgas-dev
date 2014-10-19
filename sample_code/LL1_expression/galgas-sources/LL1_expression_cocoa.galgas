@@ -1,0 +1,7 @@
+gui cocoa {
+with option LL1_expression_options
+with lexique LL1_expression_lexique {
+  fileExtension: "LL1_expression"
+  title: "Source"
+}
+}

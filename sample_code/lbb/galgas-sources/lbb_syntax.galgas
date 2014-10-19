@@ -1,0 +1,43 @@
+syntax lbb_syntax (lbb_lexique) {
+
+
+rule <start_symbol> !@programAST outProgramAST {
+  var boxTypeListAST =@boxTypeListAST.emptyList{}
+  var boxInstanceListAST =@boxInstanceListAST.emptyList{ }
+  repeat
+  while
+    $identifier$ ?var  @lstring boxTypeName
+    $identifier$ ?var  @lstring boxInstanceName
+    ${$
+    var connectionList =@connectionlistAST.emptyList{}
+    repeat
+      $identifier$ ?var  @lstring boxInstanceName
+      $.$
+      $identifier$ ?var  @lstring portName
+      connectionList += !boxInstanceName !portName
+    while
+      $,$
+    end
+    $}$
+    boxInstanceListAST += !boxTypeName !boxInstanceName !connectionList
+  while
+    $type$
+    $identifier$ ?var  @lstring boxTypeName
+    $=$
+    var portNameList =@lstringlist.emptyList{}
+    repeat
+      $identifier$ ?var  @lstring portName
+      portNameList += !portName
+    while
+      $,$
+    end
+    $;$
+    boxTypeListAST += !boxTypeName !portNameList
+  end
+  outProgramAST = @programAST. new {
+    !boxTypeListAST
+    !boxInstanceListAST
+    !@location.here}
+}
+
+}

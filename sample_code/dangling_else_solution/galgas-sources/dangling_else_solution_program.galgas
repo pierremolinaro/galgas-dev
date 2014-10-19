@@ -1,0 +1,13 @@
+
+
+before {
+}
+
+case . "dangling_else_solution"
+message "an '.dangling_else_solution' source file"
+?sourceFilePath:@lstring inSourceFile {
+  grammar dangling_else_solution_grammar in inSourceFile
+}
+
+after {
+}

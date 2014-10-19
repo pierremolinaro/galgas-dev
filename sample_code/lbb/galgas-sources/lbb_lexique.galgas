@@ -1,0 +1,39 @@
+lexique lbb_lexique {
+
+@string tokenString
+
+style keywordsStyle -> "Keywords:"
+
+$identifier$ ! tokenString error message "an identifier"
+
+list keyWordList style keywordsStyle error message "the '%K' keyword"{
+ "type" }
+
+rule 'a'->'z' | 'A'->'Z' {
+  repeat
+    enterCharacterIntoString ( !?tokenString !* )
+  while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
+  end
+  send search tokenString in keyWordList default $identifier$
+}
+
+# ----------------------------- Delimitors ---------------------------------------
+style delimitersStyle -> "Delimiters:"
+
+list delimitorsList style delimitersStyle error message "the '%K' delimitor"{
+  ";", ",", "=", "{", "}", "."  }
+
+rule list delimitorsList
+
+# ------------------------------------ Comment ----------------------------
+rule '#' {
+  repeat
+  while '\u0001' -> '\u0009' | '\u000B' | '\u000C' | '\u000E' -> '\uFFFD' :
+  end
+}
+
+# --------------------- separators -----------------------------------------
+rule '\u0001' -> ' ' {
+}
+
+}

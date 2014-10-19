@@ -1,0 +1,7 @@
+gui cocoa {
+with option LR1_grammar_options
+with lexique LR1_grammar_lexique {
+  fileExtension: "LR1_grammar"
+  title: "Source"
+}
+}

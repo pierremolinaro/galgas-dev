@@ -1,0 +1,80 @@
+syntax SLR_expression_syntax (SLR_expression_lexique) {
+
+rule <StartSymbol>
+
+rule <Expression>
+  !@cExpression outExpressionTree
+  !@uint outValue
+rule <Terme>
+  !@cExpression outExpressionTree
+  !@uint outValue
+
+rule <Facteur>
+  !@cExpression outExpressionTree
+  !@uint outValue
+
+rule <Constant>
+  !@cExpression outExpressionTree
+  !@uint outValue
+
+rule <StartSymbol> {
+  @cExpression expressionTree
+  @uint value
+  <Expression> ?expressionTree ?value
+  log value
+}
+  
+rule <Constant>
+  !@cExpression outExpressionTree
+  !@uint outValue {
+  @luint cst
+  $number$ ? cst
+  outExpressionTree = @cConst. new { !cst}
+  outValue = [cst uint]
+}
+
+rule <Expression>
+  !@cExpression outExpressionTree
+  !@uint outValue {
+  select
+    <Terme> ?outExpressionTree ?outValue
+  or 
+    <Expression> ?outExpressionTree ?outValue
+    $+$
+    @cExpression rightOperand
+    @uint v
+    <Terme> ?rightOperand ?v
+    outExpressionTree = @cAdd. new { ! outExpressionTree !rightOperand}
+    outValue = outValue + v
+  end
+}
+
+rule <Terme>
+  !@cExpression outExpressionTree
+  !@uint outValue {
+  select
+    <Facteur> ?outExpressionTree ?outValue
+  or 
+    <Terme> ?outExpressionTree ?outValue
+    $*$
+    @cExpression rightOperand
+    @uint v
+    <Facteur> ?rightOperand ?v
+    outExpressionTree = @cAdd. new { ! outExpressionTree !rightOperand}
+    outValue = outValue * v
+  end
+}
+
+rule <Facteur>
+  !@cExpression outExpressionTree
+  !@uint outValue {
+  select
+    $($
+    <Expression> ?outExpressionTree ?outValue
+    $)$
+  or
+    <Constant> ?outExpressionTree ?outValue
+  end
+}
+
+}

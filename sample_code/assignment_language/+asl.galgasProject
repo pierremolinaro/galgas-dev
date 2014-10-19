@@ -1,0 +1,20 @@
+project (1:0:0) -> "asl"{
+#--- Targets
+  %makefile-macosx
+  %makefile-unix
+  %makefile-x86linux32-on-macosx
+  %makefile-win32-on-macosx
+  %SnowLeopard
+  %applicationBundleBase : "fr.what"
+
+#--- Source files (relative path from 'galgas_sources' directory)
+  "galgas-sources/assignment_language_lexique.galgas"
+  "galgas-sources/assignment_language_options.galgas"
+  "galgas-sources/typesForAST.galgas"
+  "galgas-sources/decoratedAST.galgas"
+  "galgas-sources/codeGeneration.galgas"
+  "galgas-sources/assignment_language_syntax.galgas"
+  "galgas-sources/assignment_language_grammar.galgas"
+  "galgas-sources/assignment_language_cocoa.galgas"
+  "galgas-sources/assignment_language_program.galgas"
+}

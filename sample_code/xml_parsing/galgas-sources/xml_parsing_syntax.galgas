@@ -1,0 +1,218 @@
+syntax xml_parsing_syntax (xml_parsing_lexique) {
+
+#----------------------------------------------------------------------------*
+
+rule <start_symbol>
+  !@xmlNodeList outRootNodes
+  ?let @bool inIncludeComments
+  ?let @bool inDoNotCondenseWhiteSpaces
+  ?let @bool inPrintDuringParsing
+
+rule <element_list>
+  ?!@xmlNodeList ioNodes
+  ?let @bool inIncludeComments
+  ?let @bool inDoNotCondenseWhiteSpaces
+  ?let @bool inPrintDuringParsing
+  ?let @string inIndendation
+rule <element>
+  ?!@xmlNodeList ioNodes
+  ?let @bool inIncludeComments
+  ?let @bool inDoNotCondenseWhiteSpaces
+  ?let @bool inPrintDuringParsing
+  ?let @string inIndendation
+
+#----------------------------------------------------------------------------*
+
+rule <start_symbol>
+  !@xmlNodeList outRootNodes
+  ?let @bool inIncludeComments
+  ?let @bool inDoNotCondenseWhiteSpaces
+  ?let @bool inPrintDuringParsing {
+  @string s = @string. retrieveAndResetTemplateString
+  if [s length] > 0 then
+    error @location.here: "No character is allowed before XML header"
+  end
+#--- XML header
+  $<?$
+  $name$ ?var  @lstring name
+  repeat
+  while 
+    $name$ ?var  @lstring attributeName
+    $=$
+    $value$ ?var  @lstring attributeValue
+  end
+  $?>$
+#--- Element list
+  outRootNodes = @xmlNodeList. emptyList
+  <element_list>
+    !?outRootNodes
+    !inIncludeComments
+    !inDoNotCondenseWhiteSpaces
+    !inPrintDuringParsing
+    !""
+}
+
+#----------------------------------------------------------------------------*
+
+rule <element_list>
+  ?!@xmlNodeList ioNodes
+  ?let @bool inIncludeComments
+  ?let @bool inDoNotCondenseWhiteSpaces
+  ?let @bool inPrintDuringParsing
+  ?let @string inIndendation {
+  repeat
+  while
+    addText (
+      !?ioNodes
+      !inDoNotCondenseWhiteSpaces
+      !inPrintDuringParsing
+      !inIndendation
+    )
+    <element>
+      !? ioNodes
+      !inIncludeComments
+      !inDoNotCondenseWhiteSpaces
+      !inPrintDuringParsing
+      !inIndendation
+  end
+}
+
+#----------------------------------------------------------------------------*
+
+rule <element>
+  ?!@xmlNodeList ioNodes
+  ?let @bool inIncludeComments
+  ?let @bool unused inDoNotCondenseWhiteSpaces
+  ?let @bool inPrintDuringParsing
+  ?let @string inIndendation {
+  $comment$ ?var  @lstring commentString
+  if inIncludeComments then
+    var node =@xmlNode.new{
+      !@xmlNodeType. comment
+      ![commentString string]
+      !@xmlAttributeMap. emptyMap
+      !@xmlNodeList. emptyList
+    }
+    ioNodes += !node
+  end
+  if inPrintDuringParsing then
+    @string discartedMessage
+    if inIncludeComments then
+      discartedMessage = ""
+    else
+      discartedMessage = "(discarted) "
+    end
+    @string s = inIndendation + "COMMENT " + discartedMessage + "'" + commentString + "' "
+    s += [[[commentString location] line] string]
+    s += ":" + [[[commentString location] column] string]
+    s += ":" + [[[commentString location] locationIndex] string] + "\n"
+    message s
+  end
+}
+
+#----------------------------------------------------------------------------*
+
+rule <element>
+  ?!@xmlNodeList ioNodes
+  ?let @bool inIncludeComments
+  ?let @bool inDoNotCondenseWhiteSpaces
+  ?let @bool inPrintDuringParsing
+  ?let @string inIndendation {
+  $<$
+  $name$ ?var  @lstring name
+  var attributeMap =@xmlAttributeMap.emptyMap{}
+  repeat
+  while 
+    $name$ ?var  @lstring attributeName
+    $=$
+    $value$ ?var  @lstring attributeValue
+    [!?attributeMap insertKey !attributeName !attributeValue]
+  end
+
+  if inPrintDuringParsing then
+    @string s = inIndendation
+    s += "ELEMENT '" + name + "' "
+    s += [[[name location] line] string]
+    s += ":" + [[[name location] column] string]
+    s += ":" + [[[name location] locationIndex] string] + " {"
+    for () in  attributeMap do
+      s += "'" + lkey + "' "
+      s += [[[lkey location] line] string]
+      s += ":" + [[[lkey location] column] string]
+      s += ":" + [[[lkey location] locationIndex] string]
+      s += " -> '" + value + "' "
+      s += [[[value location] line] string]
+      s += ":" + [[[value location] column] string]
+      s += ":" + [[[value location] locationIndex] string]
+    between s += ", "
+    end
+    s += "}\n"
+    message s
+  end
+
+  var nodeList =@xmlNodeList.emptyList{}
+  select
+    $/>$
+  or
+    $>$
+    <element_list>
+      !?nodeList
+      !inIncludeComments
+      !inDoNotCondenseWhiteSpaces
+      !inPrintDuringParsing
+      !inIndendation + " "
+    addText (
+      !?nodeList
+      !inDoNotCondenseWhiteSpaces
+      !inPrintDuringParsing
+      !inIndendation
+    )
+    $</$
+    $name$ ?var  @lstring closingName
+    if [closingName string] != [name string] then
+      error closingName:"incorrect closing tag </" + closingName + "> instead of </" + name + ">"
+    end
+    $>$
+  end
+  var node =@xmlNode.new{
+    !@xmlNodeType. element
+    ![name string]
+    !attributeMap
+    !nodeList
+  }
+  ioNodes += !node
+}
+
+#----------------------------------------------------------------------------*
+
+}
+
+#----------------------------------------------------------------------------*
+
+proc addText
+  ?!@xmlNodeList ioNodes
+  ?let @bool inDoNotCondenseWhiteSpaces
+  ?let @bool inPrintDuringParsing
+  ?let @string inIndendation {
+  @string s = @string. retrieveAndResetTemplateString
+  @string trimmedString = [s stringByTrimmingWhiteSpaces]
+  if [trimmedString length] > 0 then
+    @string ls
+    if inDoNotCondenseWhiteSpaces then
+      ls = s
+    else
+      ls = trimmedString
+    end
+    var node =@xmlNode.new{
+      !@xmlNodeType. text
+      !ls
+      !@xmlAttributeMap. emptyMap
+      !@xmlNodeList. emptyList
+    }
+    ioNodes += !node
+    if inPrintDuringParsing then
+      @string s = inIndendation + "TEXT " + "'" + ls + "'\n"
+      message s
+    end
+  end
+}

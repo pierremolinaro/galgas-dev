@@ -1,0 +1,6 @@
+indexing grammar class_sample_language_grammar "LL1" {
+syntax class_sample_language_syntax
+
+ <start_symbol> !@declarationListAST outDeclarationListAST
+
+}

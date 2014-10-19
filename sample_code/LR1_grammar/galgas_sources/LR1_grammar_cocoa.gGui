@@ -1,7 +1,0 @@
-gui LR1_grammar_cocoa "cocoa":
-with option "LR1_grammar_options.gOption" ;
-with lexique "LR1_grammar_lexique.gLexique" {
-  fileExtension: "LR1_grammar" ;
-  title: "Source" ;
-}
-end gui ;

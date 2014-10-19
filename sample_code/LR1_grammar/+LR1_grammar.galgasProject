@@ -1,0 +1,17 @@
+project (1:0:0) -> "LR1_grammar"{
+#--- Targets
+  %makefile-macosx
+  %makefile-unix
+  %makefile-msys32-on-windows
+  %SnowLeopard
+  %applicationBundleBase : "fr.what"
+#--- Sources
+  "galgas-sources/LR1_grammar_lexique.galgas"
+  "galgas-sources/LR1_grammar_options.galgas"
+  "galgas-sources/LR1_grammar_semantics.galgas"
+  "galgas-sources/LR1_grammar_syntax.galgas"
+  "galgas-sources/LR1_grammar_grammar.galgas"
+  "galgas-sources/LR1_grammar_cocoa.galgas"
+  "galgas-sources/LR1_grammar_program.galgas"
+}
+
