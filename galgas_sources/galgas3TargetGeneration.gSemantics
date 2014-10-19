@@ -506,34 +506,34 @@ routine updateGalgas3Targets
     extensionList += !"icns" ;
     const @stringlist resourceFiles := [userResourceDir regularFilesWithExtensions !false !extensionList] ;
   #--- Build pathes
-    const @string xcodeProjectPath := dir . "/" . inTargetName . "_EX.xcodeproj" ; # Actually a directory
-    const @string intermediateFilePath := [inProjectSourceFilePath stringByDeletingLastPathComponent] . "/build/output/file-list-for-xcode-project_EX.txt" ;
-    ioAllProductFileSet += !"file-list-for-xcode-project_EX.txt" ;
+#    const @string xcodeProjectPath := dir . "/" . inTargetName . "_EX.xcodeproj" ; # Actually a directory
+#    const @string intermediateFilePath := [inProjectSourceFilePath stringByDeletingLastPathComponent] . "/build/output/file-list-for-xcode-project_EX.txt" ;
+#    ioAllProductFileSet += !"file-list-for-xcode-project_EX.txt" ;
     const @string newIntermediateFilePath := [inProjectSourceFilePath stringByDeletingLastPathComponent] . "/build/output/file-list-for-xcode-project.txt" ;
     ioAllProductFileSet += !"file-list-for-xcode-project.txt" ;
   #--- Add sources for application
-    const externSourceSet_app := [@stringset setWithStringList !inHandCodedSourceAppFileList] ;
+#    const externSourceSet_app := [@stringset setWithStringList !inHandCodedSourceAppFileList] ;
   #---
-    [xcodeProjectPath makeDirectory] ;
-  #--- Build intermediate
-    generateXcodeProject
-      ![@stringset setWithStringList !inHandCodedSourceToolFileList]
-      ![@stringset setWithStringList !inToolCppFileList]
-      !"../build/output"
-      !externSourceSet_app
-      !guiSourceSet_app
-      !inTargetName # XCode project base name
-      !inHandCodedLinkAppFileList
-      !xcodeProjectPath # Full Path of xxx.xcodeproj file
-      !resourceFiles
-      !intermediateFilePath
-      !SDK
-      !libpmPath
-      !"../build/user-headers"
-      !multiThreadingEnabled
-      !usesARC
-      !inProjectQualifiedFeatureMap
-    ;
+#    [xcodeProjectPath makeDirectory] ;
+#  #--- Build intermediate
+#    generateXcodeProject
+#      ![@stringset setWithStringList !inHandCodedSourceToolFileList]
+#      ![@stringset setWithStringList !inToolCppFileList]
+#      !"../build/output"
+#      !externSourceSet_app
+#      !guiSourceSet_app
+#      !inTargetName # XCode project base name
+#      !inHandCodedLinkAppFileList
+#      !xcodeProjectPath # Full Path of xxx.xcodeproj file
+#      !resourceFiles
+#      !intermediateFilePath
+#      !SDK
+#      !libpmPath
+#      !"../build/user-headers"
+#      !multiThreadingEnabled
+#      !usesARC
+#      !inProjectQualifiedFeatureMap
+#    ;
   #-------------------------------------------------------- New Xcode project generation
     @XcodeProjectDescriptor xcodeProject [default] ;
   #--- Default build configuration
