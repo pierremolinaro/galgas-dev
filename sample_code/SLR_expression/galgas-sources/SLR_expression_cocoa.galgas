@@ -1,0 +1,10 @@
+gui cocoa {
+
+with option SLR_expression_options
+
+with lexique SLR_expression_lexique {
+  fileExtension: "SLR_expression"
+  title: "Source"
+}
+
+}

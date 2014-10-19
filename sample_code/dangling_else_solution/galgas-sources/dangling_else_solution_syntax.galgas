@@ -1,0 +1,38 @@
+syntax dangling_else_solution_syntax (dangling_else_solution_lexique) {
+
+rule <S>
+rule <non_closed_instruction>
+rule <closed_instruction>
+
+rule <S> {
+  <non_closed_instruction>
+}
+
+rule <S> {
+  <closed_instruction>
+}
+
+rule <closed_instruction> { # Other instruction
+  $O$
+}
+
+rule <closed_instruction> { # IF EXPR THEN <instruction> ELSE <instruction>
+  $I$
+  <closed_instruction>
+  $E$
+  <closed_instruction>
+}
+
+rule <non_closed_instruction> { # IF EXPR THEN <instruction>
+  $I$
+  <S>
+}
+
+rule <non_closed_instruction> { # IF EXPR THEN <instruction> ELSE <instruction>
+  $I$
+  <closed_instruction>
+  $E$
+  <non_closed_instruction>
+}
+
+}

@@ -1,6 +1,0 @@
-grammar LR1_grammar_grammar "LR1":
-with "LR1_grammar_syntax.gSyntax" ;
-
-root <S> ;
-
-end grammar ;

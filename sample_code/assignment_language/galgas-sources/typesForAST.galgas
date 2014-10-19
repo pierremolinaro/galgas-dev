@@ -1,0 +1,50 @@
+
+
+abstract class @expressionAST {
+}
+
+class @varInExpressionAST : @expressionAST {
+  @lstring mVarName
+}
+
+class @cstInExpressionAST : @expressionAST {
+  @luint mConstant
+}
+
+class @additionAST : @expressionAST {
+  @expressionAST mLeftExpression
+  @expressionAST mRightExpression
+}
+
+class @multiplicationAST : @expressionAST {
+  @expressionAST mLeftExpression
+  @expressionAST mRightExpression
+}
+
+abstract class @instructionAST {
+}
+
+list @instructionListAST {
+  @instructionAST mInstruction
+}
+
+class @assignmentAST : @instructionAST {
+  @lstring mTargetVarName
+  @expressionAST mSourceExpression
+}
+
+struct @programAST {
+  @instructionListAST mProgramInstructionList
+  @location mEndOfSourceFile
+}
+
+class @varDeclarationAST : @instructionAST {
+  @lstring mVarName
+}
+
+class @printVariableAST : @instructionAST {
+  @lstring mVarName
+}
+
+#---------------------------------------------------------------------------*
+

@@ -1,0 +1,18 @@
+project (1:0:0) -> "SLR_expression" {
+#--- Targets
+  %makefile-macosx
+  %makefile-unix
+  %makefile-msys32-on-windows
+  %SnowLeopard
+  %applicationBundleBase : "fr.what"
+#--- Sources
+  "galgas-sources/SLR_expression_lexique.galgas"
+  "galgas-sources/SLR_expression_options.galgas"
+  "galgas-sources/SLR_expression_semantics.galgas"
+  "galgas-sources/SLR_expression_syntax.galgas"
+  "galgas-sources/SLR_expression_grammar.galgas"
+  "galgas-sources/SLR_expression_cocoa.galgas"
+  "galgas-sources/SLR_expression_program.galgas"
+}
+
+

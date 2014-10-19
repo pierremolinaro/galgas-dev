@@ -1,0 +1,49 @@
+
+
+before {
+}
+
+case . "class_sample_language"
+message "an '.class_sample_language' source file"
+indexing with class_sample_language_grammar
+?sourceFilePath:@lstring inSourceFile {
+#--- Build Abstract Syntax Tree
+  @declarationListAST declarationListAST
+  grammar class_sample_language_grammar in inSourceFile
+    ?declarationListAST
+#--- Build dependence graph
+  var inheritanceGraph =@inheritanceGraph.emptyGraph{}
+  for () in  declarationListAST do
+    [mDeclaration buildGraph !?inheritanceGraph]
+  end
+#--- Undefined classes ?
+  if [inheritanceGraph undefinedNodeCount] > 0 then
+    for () in  [inheritanceGraph undefinedNodeReferenceList] do
+      error mValue : "the '" + mValue + "' class is not declared"
+    end
+  else
+  #--- Topologic sort
+    [inheritanceGraph topologicalSort
+      ?let @declarationListAST sortedDeclarationListAST
+      ?*
+      ?*
+      ?let @lstringlist circularDefinitionClassNameList
+    ]
+    if [circularDefinitionClassNameList length] > 0 then
+      for () in  circularDefinitionClassNameList do
+        error mValue : "the '" + mValue + "' class is involved in a circular definition"
+      end
+    else
+    #--- Generate code
+      @string codeToGenerate = ""
+      for () in  sortedDeclarationListAST do
+        [mDeclaration generateCode !?codeToGenerate]
+      end
+      let @string targetFile = [inSourceFile stringByDeletingPathExtension] + ".cpp"
+      [codeToGenerate writeToFile !targetFile]
+    end
+  end
+}
+
+after {
+}

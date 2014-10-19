@@ -1,6 +1,0 @@
-semantics LR1_grammar_semantics :
-  import "LR1_grammar_options.gOption" ;
-
-# ADD YOUR CODE HERE
-
-end semantics ;

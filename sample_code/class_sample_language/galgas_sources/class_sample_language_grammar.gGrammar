@@ -1,6 +1,0 @@
-indexing grammar class_sample_language_grammar "LL1":
-with "class_sample_language_syntax.gSyntax" ;
-
-root <start_symbol> !@declarationListAST outDeclarationListAST ;
-
-end grammar ;

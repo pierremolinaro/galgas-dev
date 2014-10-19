@@ -1,0 +1,29 @@
+
+
+#--- Prologue routine
+before {
+}
+
+#--- 'when' clauses
+case . "assignment_language"
+message "a source text file with the .assignment_language extension"
+?sourceFilePath:@lstring inSourceFile {
+  @programAST programAST
+  grammar assignment_language_grammar in inSourceFile ?programAST
+#--- Semantic analysis
+  var variableMap =@variableMap.emptyMap{}
+  var instructionListForGeneration =@instructionListForGeneration.emptyList{}
+  for () in  [programAST mProgramInstructionList] do
+    [mInstruction semanticAnalysis !?variableMap !?instructionListForGeneration]
+  end
+  [variableMap checkAutomatonStates ![programAST mEndOfSourceFile]]
+#--- Code generation
+  generateCfile (
+    ![inSourceFile stringByDeletingPathExtension] + ".c"
+    !instructionListForGeneration
+  )
+}
+
+#--- Epilogue routine
+after {
+}

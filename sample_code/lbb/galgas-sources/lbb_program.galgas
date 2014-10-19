@@ -1,0 +1,68 @@
+
+
+#--- Prologue routine
+before {
+}
+
+#--- 'when' clauses
+case . "lbb"
+message "a source text file with the .lbb extension"
+?sourceFilePath:@lstring inSourceFile {
+#--- Build AST
+  @programAST programAST
+  grammar lbb_grammar in inSourceFile ?programAST
+#--- Build box type map
+  var boxTypeMap =@boxTypeMap.emptyMap{}
+  for () in  [programAST mBoxTypeListAST] do
+    var portStringSet =@stringset.emptySet{}
+    for () in  mPortNameList do
+      if [portStringSet hasKey !mValue.string] then
+        error mValue : "the '" + mValue + "' port is already declared"
+      end
+      portStringSet += !mValue.string
+    end
+    [!?boxTypeMap insertKey !mBoxTypeName !mPortNameList]
+  end
+#--- Build box map and connections
+  var boxInstanceMap =@boxInstanceMap.emptyMap{}
+  for () in  [programAST mBoxInstanceListAST] do
+    @lstringlist portNameList
+    [boxTypeMap searchKey !mBoxTypeName ?portNameList]
+    if [portNameList length] != [mConnectionList length] then
+      error mBoxInstanceName: "this instance names " + [mConnectionList length]
+      + " connection(s), although the '" + mBoxTypeName + "' type declares "
+      + [portNameList length] + " ports"
+    end
+    var connectionMap =@connectionMap.emptyMap{}
+    for () in  portNameList, () in  mConnectionList do
+      @boxInstanceMap-proxy connectedBoxProxy
+      [@boxInstanceMap-proxy makeProxy !?boxInstanceMap !mConnectedBoxName ?connectedBoxProxy]
+      [!?connectionMap insertKey !mValue !connectedBoxProxy !mOppositePortName]
+    end
+    [!?boxInstanceMap insertKey !mBoxInstanceName !connectionMap]
+  end
+#--- Raise an error for every undefined box
+  for () in  [boxInstanceMap unsolvedProxyList] do
+    error mValue : "the '" + mValue + "' box is not defined"
+  end
+#--- Check connections
+  if @uint. errorCount == 0 then
+    for () box_ in  boxInstanceMap do
+      for () in  box_mConnectionMap do
+        @connectionMap oppositeConnectionMap = [mBoxProxy mConnectionMap]
+        @boxInstanceMap-proxy oppositeOfOppositeBox
+        @lstring myPortName
+        [oppositeConnectionMap searchKey !mOppositePortName ?oppositeOfOppositeBox ?myPortName]
+        if [oppositeOfOppositeBox key] != box_lkey.string then
+          error mOppositePortName : "the opposite connection does not name this box, but '" + [oppositeOfOppositeBox key] + "' box"
+        elsif lkey.string != myPortName.string then
+          error myPortName : "the opposite connection does not name this port"
+        end
+      end
+    end
+  end
+}
+
+#--- Epilogue routine
+after {
+}

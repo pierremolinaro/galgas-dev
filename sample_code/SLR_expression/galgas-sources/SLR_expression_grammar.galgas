@@ -1,0 +1,6 @@
+grammar SLR_expression_grammar "" {
+syntax SLR_expression_syntax
+
+ <StartSymbol>
+
+}

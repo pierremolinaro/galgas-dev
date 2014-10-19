@@ -1,0 +1,80 @@
+
+
+#---------------------------------------------------------------------------*
+
+proc generateCfile
+  ?let @string inTargetFilePath
+  ?let @instructionListForGeneration inInstructionListForGeneration {
+  if @uint. errorCount == 0 then
+    @string generatedCode = [filewrapper cCodeGeneration.cCodeFile !inInstructionListForGeneration]
+    [generatedCode writeToFileWhenDifferentContents !inTargetFilePath ?*]
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+private filewrapper cCodeGeneration in "." {
+}{
+}{
+  template cCodeFile "target-file.c.gTemplate"
+    ?@instructionListForGeneration INSTRUCTION_LIST
+}
+
+#---------------------------------------------------------------------------*
+
+abstract getter @instructionForGeneration generateCcode -> @string outGeneratedCode
+
+#---------------------------------------------------------------------------*
+
+override getter @assignmentForGeneration generateCcode
+  -> @string outGeneratedCode {
+  outGeneratedCode = mTargetVarCppName + " = " + [mSourceExpression generateExpCode]
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @varDeclarationForGeneration generateCcode
+  -> @string outGeneratedCode {
+  outGeneratedCode = "int " + mVarCppName
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @printVariableForGeneration generateCcode
+  -> @string outGeneratedCode {
+  outGeneratedCode = "printf (\"" + mSourceName + ": %d\\n\", " + mVarCppName + ")"
+}
+
+#---------------------------------------------------------------------------*
+
+abstract getter @expressionForGeneration generateExpCode
+  -> @string outGeneratedCode
+
+#---------------------------------------------------------------------------*
+
+override getter @varInExpressionForGeneration generateExpCode
+  -> @string outGeneratedCode {
+  outGeneratedCode = mVarCppName
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @cstInExpressionForGeneration generateExpCode
+  -> @string outGeneratedCode {
+  outGeneratedCode = [mConstantValue string]
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @diadicForGeneration generateExpCode
+  -> @string outGeneratedCode {
+  outGeneratedCode = "(" + [mLeftExpression generateExpCode] + ")"
+  switch mOperation
+  case addition : outGeneratedCode += " + "
+  case multiplication : outGeneratedCode += " * "
+  end
+  outGeneratedCode += "(" + [mRightExpression generateExpCode] + ")"
+}
+
+#---------------------------------------------------------------------------*
+

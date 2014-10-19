@@ -1,0 +1,10 @@
+grammar xml_parsing_grammar "LL1" {
+syntax xml_parsing_syntax
+
+ <start_symbol>
+  !@xmlNodeList outRootNodes
+  ?let @bool inIncludeComments
+  ?let @bool inDoNotCondenseWhiteSpaces
+  ?let @bool inPrintDuringParsing
+
+}

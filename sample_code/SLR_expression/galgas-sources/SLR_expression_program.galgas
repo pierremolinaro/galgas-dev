@@ -1,0 +1,13 @@
+
+
+before {
+}
+
+case . "SLR_expression"
+message "an '.SLR_expression' source file"
+?sourceFilePath:@lstring inSourceFile {
+  grammar SLR_expression_grammar in inSourceFile
+}
+
+after {
+}

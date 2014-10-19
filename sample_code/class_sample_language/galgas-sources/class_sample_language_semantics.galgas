@@ -1,0 +1,51 @@
+
+
+abstract class @declarationAST {
+}
+
+list @declarationListAST {
+  @declarationAST mDeclaration
+}
+
+class @classWithoutSuperClassAST : @declarationAST {
+  @lstring mClassName
+}
+
+class @classWithSuperClassAST : @declarationAST {
+  @lstring mClassName
+  @lstring mSuperClassName
+}
+
+
+graph @inheritanceGraph (@declarationListAST) {
+  insert addNode error message "the '%K' class is already declared"
+}
+
+abstract method @declarationAST buildGraph
+  ?!@inheritanceGraph ioGraph
+
+override method @classWithoutSuperClassAST buildGraph
+  ?!@inheritanceGraph ioGraph {
+  [!?ioGraph addNode !mClassName !self]
+}
+
+override method @classWithSuperClassAST buildGraph
+  ?!@inheritanceGraph ioGraph {
+  [!?ioGraph addNode !mClassName !self]
+  [!?ioGraph addEdge  !mClassName !mSuperClassName]
+}
+
+
+abstract method @declarationAST generateCode
+  ?!@string ioCodeToGenerate
+
+override method @classWithoutSuperClassAST generateCode
+  ?!@string ioCodeToGenerate {
+  ioCodeToGenerate += "class " + mClassName + " { } ;\n"
+}
+
+override method @classWithSuperClassAST generateCode
+  ?!@string ioCodeToGenerate {
+  ioCodeToGenerate += "class " + mClassName + " : " + mSuperClassName + " { } ;\n"
+}
+

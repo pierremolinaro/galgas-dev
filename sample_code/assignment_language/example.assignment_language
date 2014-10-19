@@ -1,7 +1,0 @@
-int n ;
-n := 2 ;
-int p ;
-p := n * n + 2 * n ;
-n := p ;
-print p ;
-end

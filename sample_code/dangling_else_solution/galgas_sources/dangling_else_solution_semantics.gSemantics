@@ -1,6 +1,0 @@
-semantics dangling_else_solution_semantics :
-  import "dangling_else_solution_options.gOption" ;
-
-# ADD YOUR CODE HERE
-
-end semantics ;
