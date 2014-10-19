@@ -1,0 +1,455 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Component for compiling a semantics component                            *
+#                                                                           *
+#  Copyright (C) 2007, ..., 2010 Pierre Molinaro.                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#           G E N E R A T I O N    F I L E W R A P P E R S                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+filewrapper semanticFileGenerationTemplate in "../generation_templates/semantic_generation" {
+}{
+}{
+  template semanticFileHeader "semantic-file.h.gTemplate"
+    ?@string COMPONENT_NAME
+    ?@stringlist IMPORTED_COMPONENT_LIST
+  template semanticFileImplementation "semantic-file.cpp.gTemplate"
+    ?@stringlist IMPORTED_COMPONENT_LIST
+}
+                            
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    C O M P I L E    S E M A N T I C S   C O M P O N E N T                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+proc parseSemanticComponent
+  ?let @lstring inSourceFile
+  ?!@parsedComponentStruct ioParsedComponentStruct
+  !@semanticsComponentAST outSemanticsComponentRoot {
+  @string basename = [[inSourceFile lastPathComponent] stringByDeletingPathExtension]
+  var basenameKey =@lstring.new{ !basename !@location.here}
+  if [[ioParsedComponentStruct mParsedSemanticsComponentMap] hasKey ! basename] then
+    [[ioParsedComponentStruct mParsedSemanticsComponentMap] searchKey !basenameKey ?* ?outSemanticsComponentRoot]
+  else
+    grammar semanticsSLRgrammar in inSourceFile ?outSemanticsComponentRoot
+    [!?ioParsedComponentStruct.mParsedSemanticsComponentMap insertKey !basenameKey !inSourceFile !outSemanticsComponentRoot]
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+graph @semanticImportDependenceGraph (@stringlist) {
+  insert insertNode error message "-- INTERNAL ERROR --"
+}
+
+#---------------------------------------------------------------------------*
+
+proc recursivelyImportSemanticComponent
+  ?let @lstring inFilePath
+  ?!@parsedComponentStruct ioParsedComponentStruct
+  ?!@semanticImportDependenceGraph ioSemanticImportDependenceGraph
+  ?!@lstringlist ioOptionComponentFileNameList
+  ?!@grammarComponentASTList ioGrammarComponentASTList
+  ?!@semanticDeclarationListAST ioSemanticDeclarationList
+  ?!@stringset ioParsedFileSet
+  ?!@stringlist ioHeaderIncludeList
+  ?!@stringlist ioImplementationIncludeList
+  ?let @lstringlist inListOfFilesToParse
+  ?let @string inDirectory {
+  [!?ioSemanticImportDependenceGraph insertNode
+    !@lstring. new { ![inFilePath lastPathComponent] ![inFilePath location]}
+    ![inFilePath lastPathComponent]
+  ]
+  for () in  inListOfFilesToParse do
+    let filePath = @lstring. new {
+      ![mValue absolutePathFromPath !inDirectory]
+      ![mValue location]}
+    let @string extension = [mValue pathExtension]
+    if not [ioParsedFileSet hasKey ![filePath string]] then
+      ioParsedFileSet += ![filePath string]
+      if extension == "gOption" then
+        ioOptionComponentFileNameList += !filePath
+        ioImplementationIncludeList += ![[filePath lastPathComponent] stringByDeletingPathExtension]
+      elsif extension == "gGrammar" then
+        @galgas3GrammarComponentListAST-element grammarComponentAST
+        parseGrammarComponent (
+          !filePath
+          !?ioParsedComponentStruct
+          ?grammarComponentAST
+        )
+        ioGrammarComponentASTList += !grammarComponentAST
+        ioImplementationIncludeList += !grammarComponentAST.mGrammarComponentName.string
+      elsif extension == "gSemantics" then
+        [!?ioSemanticImportDependenceGraph addEdge
+          !@lstring. new { ![inFilePath lastPathComponent] ![inFilePath location]}
+          !@lstring. new { ![mValue lastPathComponent] ![mValue location]}
+        ]
+      #--- Parse semantic component
+        @semanticsComponentAST semanticsComponentRoot
+        parseSemanticComponent (
+          !filePath
+          !?ioParsedComponentStruct
+          ?semanticsComponentRoot
+        )
+        ioHeaderIncludeList += ![[semanticsComponentRoot mSemanticsComponentName] string]
+      #--- Add declaration to declaration list (only if global)
+        for () in  [semanticsComponentRoot mSemanticDeclarationList] do
+          ioSemanticDeclarationList += !mSemanticDeclaration
+        end
+      #--- Import semantic components named in this file
+        recursivelyImportSemanticComponent (
+          !filePath
+          !?ioParsedComponentStruct
+          !?ioSemanticImportDependenceGraph
+          !?ioOptionComponentFileNameList
+          !?ioGrammarComponentASTList
+          !?ioSemanticDeclarationList
+          !?ioParsedFileSet
+          !?ioHeaderIncludeList
+          !?ioImplementationIncludeList
+          ![semanticsComponentRoot mImportedComponentFileNameList]
+          !inDirectory
+        )
+      end
+    elsif extension == "gSemantics" then
+        [!?ioSemanticImportDependenceGraph addEdge
+          !@lstring. new { ![inFilePath lastPathComponent] ![inFilePath location]}
+          !@lstring. new { ![mValue lastPathComponent] ![mValue location]}
+        ]
+    end
+  end
+}
+
+
+#---------------------------------------------------------------------------*
+
+proc recursivelyImportSemanticComponentAndCheckNoCircularityInImportSemantics
+  ?let @lstring inSourceFile
+  ?!@parsedComponentStruct ioParsedComponentStruct
+  ?!@lstringlist ioOptionComponentFileNameList
+  ?!@grammarComponentASTList ioGrammarComponentASTList
+  ?!@semanticDeclarationListAST ioSemanticDeclarationList
+  ?!@stringset ioParsedFileSet
+  ?!@stringlist ioHeaderIncludeList
+  ?!@stringlist ioImplementationIncludeList
+  ?let @lstringlist inListOfFilesToParse
+  ?let @string inDirectory {
+  var semanticImportDependenceGraph =@semanticImportDependenceGraph.emptyGraph{}
+  recursivelyImportSemanticComponent (
+    !inSourceFile
+    !?ioParsedComponentStruct
+    !?semanticImportDependenceGraph
+    !?ioOptionComponentFileNameList
+    !?ioGrammarComponentASTList
+    !?ioSemanticDeclarationList
+    !?ioParsedFileSet
+    !?ioHeaderIncludeList
+    !?ioImplementationIncludeList
+    !inListOfFilesToParse
+    !inDirectory
+  )
+#------ Check there is no import circularities
+  @lstringlist circularityList
+  [semanticImportDependenceGraph topologicalSort ?* ?* ?* ?circularityList]
+  if [circularityList length] > 0 then
+    @string s = "theses components are involved in a circular import:"
+    for () in  circularityList do
+      s += "\n  - '" + mValue + "'"
+    end
+    error @location.here : s
+    for () in  circularityList do
+      error mValue : "import was here"
+    end
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+proc buildLexiqueComponentMapForSemanticAnalysis
+  ?let @parsedComponentStruct inParsedComponentStruct
+  !@lexiqueComponentMapForSemanticAnalysis outLexiqueComponentMapForSemanticAnalysis {
+  outLexiqueComponentMapForSemanticAnalysis = @lexiqueComponentMapForSemanticAnalysis. emptyMap
+  for () in  inParsedComponentStruct.mParsedLexiqueComponentMap do
+    buildTerminalMap ( !mLexiqueComponentAST ?let @terminalMap terminalMap )
+    [!?outLexiqueComponentMapForSemanticAnalysis insertKey
+      !lkey
+      !terminalMap
+      !mLexiqueComponentAST.mIndexingListAST
+      !mLexiqueComponentAST.mIndexingDirectory
+    ]
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+proc buildOptionComponentMapForSemanticAnalysis
+  ?let @lstringlist inOptionComponentFileNameList
+  ?!@parsedComponentStruct ioParsedComponentStruct
+  ?!@optionComponentMapForSemanticAnalysis ioOptionComponentMapForSemanticAnalysis {
+  for () in  inOptionComponentFileNameList do
+    @lstring optionComponentName
+    @commandLineOptionMap boolOptionMap
+    @commandLineOptionMap uintOptionMap
+    @commandLineOptionMap stringOptionMap
+    parseOptionComponent (
+      !mValue
+      !?ioParsedComponentStruct
+      ?optionComponentName
+      ?boolOptionMap
+      ?uintOptionMap
+      ?stringOptionMap
+    )
+    [!?ioOptionComponentMapForSemanticAnalysis insertKey
+      !optionComponentName
+      !false # Is not predefined
+      !boolOptionMap
+      !uintOptionMap
+      !stringOptionMap
+    ]
+  end
+#--- Add predefined option component
+  if not [ioOptionComponentMapForSemanticAnalysis hasKey !"galgas_builtin_options"] then
+    @2stringlist optionNameList = @application. boolOptionNameList
+    var boolOptionMap =@commandLineOptionMap.emptyMap{}
+    for () in  optionNameList do
+      [!?boolOptionMap insertKey
+        !@lstring. new { !mValue1 !@location.here}
+        !@application. boolOptionInvocationLetter { !mValue0 !mValue1}
+        !@application. boolOptionInvocationString { !mValue0 !mValue1}
+        !@application. boolOptionCommentString { !mValue0 !mValue1}
+        !"" # Not used
+      ]
+    end
+  #--- 
+    optionNameList = @application. uintOptionNameList
+    var uintOptionMap =@commandLineOptionMap.emptyMap{}
+    for () in  optionNameList do
+      [!?uintOptionMap insertKey
+        !@lstring. new { !mValue1 !@location.here}
+        !@application. uintOptionInvocationLetter { !mValue0 !mValue1}
+        !@application. uintOptionInvocationString { !mValue0 !mValue1}
+        !@application. uintOptionCommentString { !mValue0 !mValue1}
+        !"" # Not used
+      ]
+    end
+  #--- 
+    optionNameList = @application. stringOptionNameList
+    var stringOptionMap =@commandLineOptionMap.emptyMap{}
+    for () in  optionNameList do
+      [!?stringOptionMap insertKey
+        !@lstring. new { !mValue1 !@location.here}
+        !@application. stringOptionInvocationLetter { !mValue0 !mValue1}
+        !@application. stringOptionInvocationString { !mValue0 !mValue1}
+        !@application. stringOptionCommentString { !mValue0 !mValue1}
+        !"" # Not used
+      ]
+    end
+  #---
+    [!?ioOptionComponentMapForSemanticAnalysis insertKey
+      !@lstring. new { !"galgas_builtin_options" !@location.here}
+      !true # Is predefined
+      !boolOptionMap
+      !uintOptionMap
+      !stringOptionMap
+    ]
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+proc buildGrammarComponentMapForSemanticAnalysis
+  ?let @grammarComponentASTList inGrammarComponentASTList
+  ?!@semanticContext ioSemanticContext {
+#--- Perform semantic analysis of grammar components
+  for () in  inGrammarComponentASTList do
+  #--- Analyze start symbol labels
+    var grammarLabelMap =@grammarLabelMap.emptyMap{}
+    for () in  [mGrammarComponentAST mStartSymbolLabelList] do
+    #--- Analyze signature
+      var formalArgumentList =@formalParameterSignature.emptyList{}
+      for () in  mFormalArgumentList do
+        formalArgumentList +=
+          !mFormalSelector
+          !@unifiedTypeMap-proxy. searchKey { !ioSemanticContext.mTypeMap !mFormalArgumentTypeName}
+          !mFormalArgumentPassingMode
+          !mFormalArgumentName.string
+      end
+      [!?grammarLabelMap insertKey
+        !mLabelName
+        !formalArgumentList
+      ]
+    end
+  #--- Insert grammar in grammar map
+    [!?ioSemanticContext.mGrammarMap insertGrammar
+      !mGrammarComponentAST.mGrammarComponentName
+      !grammarLabelMap
+      ![[mGrammarComponentAST mHasIndexing] bool]
+      !mGrammarComponentAST.mHasTranslateFeature
+    ]
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+proc compileSemanticsComponentAST
+  ?let @lstring inSourceFile
+  ?let @string inOutputDirectory
+  ?let @semanticsComponentAST inSemanticsComponentRoot
+  ?!@parsedComponentStruct ioParsedComponentStruct {
+#--- Check component name
+  let @string basename = [[inSourceFile lastPathComponent] stringByDeletingPathExtension]
+  let @lstring componentName = [inSemanticsComponentRoot mSemanticsComponentName]
+  if [componentName string] != basename then
+    warning componentName: "GALGAS checks "
+      "the component name ('" + [componentName string]
+    + "') against the source file base name ('" + basename + "'): they should be identical"
+  end 
+#--- Recursively parse all imported files
+  @semanticDeclarationListAST semanticDeclarationList = [inSemanticsComponentRoot mSemanticDeclarationList]
+  var parsedFileSet =@stringset.setWithString{ ![inSourceFile string]}
+  var optionComponentFileNameList =@lstringlist.emptyList{}
+  var grammarComponentASTList =@grammarComponentASTList.emptyList{}
+  var headerIncludeList =@stringlist.emptyList{}
+  var implementationIncludeList =@stringlist.emptyList{}
+  var semanticImportDependenceGraph =@semanticImportDependenceGraph.emptyGraph{}
+  recursivelyImportSemanticComponent (
+    !inSourceFile
+    !?ioParsedComponentStruct
+    !?semanticImportDependenceGraph
+    !?optionComponentFileNameList
+    !?grammarComponentASTList
+    !?semanticDeclarationList
+    !?parsedFileSet
+    !?headerIncludeList
+    !?implementationIncludeList
+    ![inSemanticsComponentRoot mImportedComponentFileNameList]
+    ![inSourceFile stringByDeletingLastPathComponent]
+  )
+#------ Check there is no import circularities
+  @lstringlist circularityList
+  [semanticImportDependenceGraph topologicalSort ?* ?* ?* ?circularityList]
+#------ Add predefined types to semantics declarations
+  @semanticDeclarationListAST semanticDeclarationListWithPredefinedTypes = semanticDeclarationList
+  appendPredefinedTypesASTs ( !?semanticDeclarationListWithPredefinedTypes )
+#------ Build semantic context
+  buildSemanticContext (
+    !semanticDeclarationListWithPredefinedTypes
+    ?var @semanticContext semanticContext
+  )
+#------ Build option component map for analysis
+  buildOptionComponentMapForSemanticAnalysis (
+    !optionComponentFileNameList
+    !?ioParsedComponentStruct
+    !?semanticContext.mOptionComponentMapForSemanticAnalysis
+  )
+#--- Build lexique component map for semantic analysis
+  buildLexiqueComponentMapForSemanticAnalysis (
+    !ioParsedComponentStruct
+    ?var @lexiqueComponentMapForSemanticAnalysis lexiqueMap
+  )
+  semanticContext.mLexiqueComponentMapForSemanticAnalysis = lexiqueMap
+#------ Perform semantic analysis of grammar components
+  buildGrammarComponentMapForSemanticAnalysis (
+    !grammarComponentASTList
+    !?semanticContext
+  )
+#------ Semantic Analysis
+  @semanticDeclarationSortedListForGeneration decoratedDeclarationListForGeneration
+  performSemanticAnalysis (
+    !inOutputDirectory
+    ![inSemanticsComponentRoot mSemanticDeclarationList]
+    !semanticContext
+    ?decoratedDeclarationListForGeneration
+  )
+#------ Generate Header File
+  if @uint. errorCount == 0 then
+    var typeList =@stringlist.emptyList{}
+    var headerString = [filewrapper semanticFileGenerationTemplate.semanticFileHeader
+      ![componentName string]
+      !headerIncludeList
+    ]
+    for () in  decoratedDeclarationListForGeneration do
+      var unusedInclusionSet = @stringset. emptySet
+      [mDeclaration appendDeclaration1 !?unusedInclusionSet ?let @string code]
+      headerString += code
+    end
+    for () in  decoratedDeclarationListForGeneration do
+      var inclusionSet2 = @stringset. emptySet
+      [mDeclaration appendDeclaration2 !false !inOutputDirectory !?inclusionSet2 ?let @string headerString2]
+      headerString += headerString2
+    end
+    [@string generateFileWithPattern
+      !inOutputDirectory
+      ![componentName string] + ".h"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      !headerString
+      !"\n\n" # Defaut user zone2
+      !"#endif\n"
+    ]
+  end
+#------ Generate Implementation File
+  if @uint. errorCount == 0 then
+    implementationIncludeList += !componentName.string
+    var implementationString = [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
+      !implementationIncludeList
+    ]
+    for () in  decoratedDeclarationListForGeneration do
+      var unusedInclusionSet = @stringset. emptySet
+      [mDeclaration appendSpecificImplementation !semanticContext.mTypeMap !?unusedInclusionSet ?let @string code]
+      implementationString += code
+      implementationString += [mDeclaration appendTypeGenericImplementation]
+    end
+    [@string generateFileWithPattern
+      !inOutputDirectory
+      ![componentName string] + ".cpp"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      !implementationString
+      !"\n\n" # Defaut user zone2
+      !"\n"
+    ]
+  end
+}
+#---------------------------------------------------------------------------*
+
+proc compileSemanticsComponentFromSourceFile
+  ?let @lstring inSourceFile
+  ?let @string inOutputDirectory
+  ?!@parsedComponentStruct ioParsedComponentStruct {
+#--- Parsing
+  @semanticsComponentAST semanticsComponentRoot
+  parseSemanticComponent (
+    !inSourceFile
+    !?ioParsedComponentStruct
+    ?semanticsComponentRoot
+  )
+#---
+  compileSemanticsComponentAST (
+    !inSourceFile
+    !inOutputDirectory
+    !semanticsComponentRoot
+    !?ioParsedComponentStruct
+  )
+}
+
+#---------------------------------------------------------------------------*
+

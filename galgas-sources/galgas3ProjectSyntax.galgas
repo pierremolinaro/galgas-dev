@@ -1,0 +1,68 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Galgas 3 'project' syntax                                                *
+#                                                                           *
+#  Copyright (C) 2014, ..., 2014 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+syntax galgas3ProjectSyntax (galgas3Scanner) {
+
+#---------------------------------------------------------------------------*
+
+rule <project_component_start_symbol>
+  !@galgas3ProjectComponentAST outProjectComponentAST {
+  $project$
+  $($
+  $unsigned_literal_integer$ ?let @luint majorVersion
+  $:$
+  $unsigned_literal_integer$ ?let @luint minorVersion
+  $:$
+  $unsigned_literal_integer$ ?let @luint revisionVersion
+  $)$
+  $->$
+  $literal_string$ ?var  @lstring targetName
+  ${$
+  var projectSourceList =@lstringlist.emptyList{}
+  var generateFeatureList =@lstringlist.emptyList{}
+  var qualifiedFeatureList =@galgas3QualifiedFeatureList. emptyList{}
+  repeat
+  while
+    $attribute$ ?let @lstring featureName
+    select
+      $:$
+      $literal_string$ ?let @lstring featureValue
+      qualifiedFeatureList += !featureName !featureValue
+    or
+      generateFeatureList += !featureName
+    end
+  while
+    $literal_string$ ?let @lstring filePath
+    projectSourceList += !filePath
+  end
+  $}$
+  outProjectComponentAST = @galgas3ProjectComponentAST. new {
+    !projectSourceList
+    !majorVersion
+    !minorVersion
+    !revisionVersion
+    !generateFeatureList
+    !qualifiedFeatureList
+    !targetName
+    !@location.here}
+}
+
+#---------------------------------------------------------------------------*
+
+}

@@ -1,0 +1,121 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  'program' component parser, as model builder                             *
+#                                                                           *
+#  Copyright (C) 2007, ..., 2014 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+syntax galgas3ProgramDeclarations (galgas3Scanner) {
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction_list> !@semanticInstructionListAST outInstructionsList
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   P R O L O G U E                                                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@galgas3DeclarationAST ioDeclarations {
+  $before$
+  ${$
+  <semantic_instruction_list> ?let @semanticInstructionListAST prologueInstructionList
+  let endOfPrologue = @location.here
+  $}$
+  ioDeclarations.mPrologueDeclarationList +=
+    !prologueInstructionList
+    !endOfPrologue
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   E P I L O G U E                                                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@galgas3DeclarationAST ioDeclarations {
+  $after$
+  ${$
+  <semantic_instruction_list> ?let @semanticInstructionListAST prologueInstructionList
+  let endOfPrologue = @location.here
+  $}$
+  ioDeclarations.mEpilogueDeclarationList +=
+    !prologueInstructionList
+    !endOfPrologue
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   S O U R C E    R U L E                                                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@galgas3DeclarationAST ioDeclarations {
+  $case$
+  $.$
+  $literal_string$ ?let @lstring mSourceFileExtension
+  $message$
+  $literal_string$ ?let @lstring mSourceFileHelp
+#--- Indexing
+  @lstring indexingGrammar # Empty string if no indexing
+  select
+    indexingGrammar = ["" nowhere]
+  or
+    $indexing$
+    $with$
+    $identifier$ ? indexingGrammar indexing grammarComponentReference
+  end
+#--- Source file
+  $?$ ?let selector
+  if selector.string != "sourceFilePath" then
+    error selector : "the selector should be '?sourceFilePath:'"
+  end
+  select
+  or
+    $type_name$ ?let typeName
+    if typeName.string != "lstring" then
+      error typeName : "the only type allowed here is '@lstring'"
+    end
+  end
+  @bool isUnused
+  select
+    isUnused = false
+  or
+    $unused$
+    isUnused = true
+  end
+  $identifier$ ?var  @lstring mSourceFileVariableName
+#---
+  ${$
+  <semantic_instruction_list> ?let @semanticInstructionListAST mInstructionList
+  let endOfInstructionList = @location.here
+  $}$
+  ioDeclarations.mSourceRuleList +=
+    !mSourceFileExtension
+    !mSourceFileHelp
+    !mSourceFileVariableName
+    !isUnused
+    !indexingGrammar
+    !mInstructionList
+    !endOfInstructionList
+}
+
+#---------------------------------------------------------------------------*
+
+}

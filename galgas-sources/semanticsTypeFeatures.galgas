@@ -1,0 +1,238 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  semantics definitions for semantics component                            *
+#                                                                           *
+#  Copyright (C) 1997, ..., 2010 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  G E T    E N U M E R A T I O N    L I S T                                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+override method @stringsetPredefinedTypeAST getEnumerationList
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@enumerationDescriptorList outEnumerationList
+  !@stringlist outEnumerationVariant
+  !@string outEnumeratedType {
+  @unifiedTypeMap-proxy stringTypeIndex
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?stringTypeIndex]
+  outEnumerationList = @enumerationDescriptorList. emptyList
+  outEnumerationList += !stringTypeIndex !"key"
+  outEnumerationVariant = @stringlist. emptyList
+  outEnumerationVariant += !"up"
+  outEnumerationVariant += !"down"
+  outEnumeratedType = "string"
+}
+
+#---------------------------------------------------------------------------*
+
+override method @dataPredefinedTypeAST getEnumerationList
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@enumerationDescriptorList outEnumerationList
+  !@stringlist outEnumerationVariant
+  !@string outEnumeratedType {
+  @unifiedTypeMap-proxy uintTypeIndex
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"uint" ?uintTypeIndex]
+  outEnumerationList = @enumerationDescriptorList. emptyList
+  outEnumerationList += !uintTypeIndex !"data"
+  outEnumerationVariant = @stringlist. emptyList
+  outEnumerationVariant += !"up"
+  outEnumerationVariant += !"down"
+  outEnumeratedType = "uint"
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  G E T    M O D I F I E R    M A P                                        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+override method @stringsetPredefinedTypeAST getModifierMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@modifierMap outModifierMap {
+  @unifiedTypeMap-proxy stringType
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?stringType]
+  outModifierMap = @modifierMap. emptyMap
+  [!?outModifierMap insertKey
+    !@lstring. new { !"removeKey" !@location.here}
+    !@methodKind. definedAsMember
+    !@formalParameterSignature. listWithValue { !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentIn !"inKey"}
+    !false # No Compiler argument
+    !@methodQualifier. isBasic
+    !""
+  ]
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  G E T    S U P P O R T E D    O P E R A T O R    F L A G S               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+override getter @applicationPredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags {
+  outFlags = generateDescriptionReaderUtilityMethod ()
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @objectPredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags {
+  outFlags = generateDescriptionReaderUtilityMethod ()
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @stringPredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags {
+  outFlags = binaryConcatOperator () | plusEqualOperatorWithExpression () | binaryAddOperator ()
+    | generateDescriptionReaderUtilityMethod () | isComparable ()
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @charPredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags {
+  outFlags = generateDescriptionReaderUtilityMethod () | isComparable ()
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @boolPredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags {
+  outFlags = binaryAndOperator () | binaryOrOperator () | binaryXorOperator () | unaryNotOperator ()
+    | generateDescriptionReaderUtilityMethod () | isComparable ()
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @uintPredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags {
+  outFlags = binaryAddOperator () | binarySubOperator () | binaryMulOperator () | binaryDivOperator ()
+    | binaryModOperator () | binaryShiftOperator () | unaryPlusOperator ()
+    | binaryAndOperator () | binaryOrOperator () | binaryXorOperator () | unaryTildeOperator ()
+    | generateDescriptionReaderUtilityMethod () | incDecOperator () | isComparable ()
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @sintPredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags {
+  outFlags = binaryAddOperator () | binarySubOperator () | binaryMulOperator () | binaryDivOperator ()
+    | binaryModOperator () | binaryShiftOperator () | unaryPlusOperator () | unaryMinusOperator ()
+    | binaryAndOperator () | binaryOrOperator () | binaryXorOperator () | unaryTildeOperator ()
+    | generateDescriptionReaderUtilityMethod ()  | incDecOperator () | isComparable ()
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @uint64PredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags {
+  outFlags = binaryAddOperator () | binarySubOperator () | binaryMulOperator () | binaryDivOperator ()
+    | binaryModOperator () | binaryShiftOperator () | unaryPlusOperator ()
+    | binaryAndOperator () | binaryOrOperator () | binaryXorOperator () | unaryTildeOperator ()
+    | generateDescriptionReaderUtilityMethod () | incDecOperator () | isComparable ()
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @sint64PredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags {
+  outFlags = binaryAddOperator () | binarySubOperator () | binaryMulOperator () | binaryDivOperator ()
+    | binaryModOperator () | binaryShiftOperator () | unaryPlusOperator () | unaryMinusOperator ()
+    | binaryAndOperator () | binaryOrOperator () | binaryXorOperator () | unaryTildeOperator ()
+    | incDecOperator ()  | generateDescriptionReaderUtilityMethod () | isComparable ()
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @doublePredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags {
+  outFlags = binaryAddOperator () | binarySubOperator () | binaryMulOperator () | binaryDivOperator ()
+    | unaryPlusOperator () | unaryMinusOperator () | binaryModOperator ()
+    | generateDescriptionReaderUtilityMethod () | isComparable ()
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @stringsetPredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags {
+  outFlags = binarySubOperator ()
+    | binaryAndOperator () | binaryOrOperator ()
+    | generateDescriptionReaderUtilityMethod () | plusEqualOperatorWithExpression ()
+    | generateEnumerationHelperMethods () | isComparable ()
+    | generateCopyConstructorAndAssignmentOperator ()
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @binarysetPredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags {
+  outFlags = binaryAndOperator () | binaryOrOperator () | binaryXorOperator ()
+    | unaryTildeOperator () | binaryShiftOperator ()
+    | generateDescriptionReaderUtilityMethod ()
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @typePredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags {
+  outFlags = generateDescriptionReaderUtilityMethod ()
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @dataPredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags {
+  outFlags = generateDescriptionReaderUtilityMethod ()
+    | generateEnumerationHelperMethods ()
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @functionPredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags {
+  outFlags = generateDescriptionReaderUtilityMethod ()
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @locationPredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags {
+  outFlags = generateDescriptionReaderUtilityMethod ()
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @filewrapperPredefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags {
+  outFlags = generateDescriptionReaderUtilityMethod ()
+}
+
+#---------------------------------------------------------------------------*
+
+override method @stringsetPredefinedTypeAST getAddAssignArgumentList
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@functionSignature outAddAssignArgumentList {
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?let @unifiedTypeMap-proxy stringTypeIndex]
+  outAddAssignArgumentList = {!["" nowhere] !stringTypeIndex !"inString"}
+}
+
+#---------------------------------------------------------------------------*
+

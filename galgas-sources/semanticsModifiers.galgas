@@ -1,0 +1,149 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  semantics definitions for semantics component                            *
+#                                                                           *
+#  Copyright (C) 2009, ..., 2009 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+
+
+#---------------------------------------------------------------------------*
+
+proc enterModifierWithInputArgument
+  ?!@modifierMap ioModifierMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  ?let @string inInputArgumentTypeName
+  ?let @string inInputArgumentName
+  ?let @string inModifierName
+  ?let @bool inHasCompilerArgument {
+  @unifiedTypeMap-proxy argumentTypeIndex
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgumentTypeName ?argumentTypeIndex]
+  var argList =@formalParameterSignature.emptyList{}
+  argList += !["" nowhere] !argumentTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !inInputArgumentName
+  [!?ioModifierMap insertOrReplace
+    !@lstring. new { !inModifierName !@location.here}
+    !@methodKind. definedAsMember
+    !argList
+    !inHasCompilerArgument
+    !@methodQualifier. isBasic
+    !""
+  ]
+}
+
+#---------------------------------------------------------------------------*
+
+proc enterModifierWithOutputArgument
+  ?!@modifierMap ioModifierMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  ?let @string inOutputArgumentTypeName
+  ?let @string inOutputArgumentName
+  ?let @string inModifierName
+  ?let @bool inHasCompilerArgument {
+  @unifiedTypeMap-proxy argumentTypeIndex
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inOutputArgumentTypeName ?argumentTypeIndex]
+  var argList =@formalParameterSignature.emptyList{}
+  argList += !["" nowhere] !argumentTypeIndex !@formalArgumentPassingModeAST. argumentOut !inOutputArgumentName
+  [!?ioModifierMap insertOrReplace
+    !@lstring. new { !inModifierName !@location.here}
+    !@methodKind. definedAsMember
+    !argList
+    !inHasCompilerArgument
+    !@methodQualifier. isBasic
+    !""
+  ]
+}
+
+#---------------------------------------------------------------------------*
+
+proc enterModifierWith2InputArguments
+  ?!@modifierMap ioModifierMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  ?let @string inInputArgument1TypeName
+  ?let @string inInputArgument1Name
+  ?let @string inInputArgument2TypeName
+  ?let @string inInputArgument2Name
+  ?let @string inModifierName
+  ?let @bool inHasCompilerArgument {
+  var argList =@formalParameterSignature.emptyList{}
+  @unifiedTypeMap-proxy argumentTypeIndex
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgument1TypeName ?argumentTypeIndex]
+  argList += !["" nowhere] !argumentTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !inInputArgument1Name
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgument2TypeName ?argumentTypeIndex]
+  argList += !["" nowhere] !argumentTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !inInputArgument2Name
+  [!?ioModifierMap insertOrReplace
+    !@lstring. new { !inModifierName !@location.here}
+    !@methodKind. definedAsMember
+    !argList
+    !inHasCompilerArgument
+    !@methodQualifier. isBasic
+    !""
+  ]
+}
+
+#---------------------------------------------------------------------------*
+
+proc enterModifierWithoutArgument
+  ?!@modifierMap ioModifierMap
+  ?let @string inModifierName
+  ?let @bool inHasCompilerArgument {
+  [!?ioModifierMap insertOrReplace
+    !@lstring. new { !inModifierName !@location.here}
+    !@methodKind. definedAsMember
+    !@formalParameterSignature. emptyList
+    !inHasCompilerArgument
+    !@methodQualifier. isBasic
+    !""
+  ]
+}
+
+#---------------------------------------------------------------------------*
+
+override method @stringPredefinedTypeAST getModifierMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@modifierMap outModifierMap {
+  outModifierMap = @modifierMap. emptyMap
+  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inCapacity" !"setCapacity" !true )
+  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inAmount" !"incIndentation" !true )
+  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inAmount" !"decIndentation" !true )
+  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inColumnIndex" !"appendSpacesUntilColumn" !true )
+  enterModifierWith2InputArguments ( !?outModifierMap !?ioUnifiedTypeMap !"char" !"inChar" !"uint" !"inIndex" !"setCharacterAtIndex" !true )
+}
+
+#---------------------------------------------------------------------------*
+
+override method @dataPredefinedTypeAST getModifierMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@modifierMap outModifierMap {
+  outModifierMap = @modifierMap. emptyMap
+  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inValue" !"appendByte" !true )
+  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inValue" !"appendShortBE" !true )
+  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inValue" !"appendShortLE" !true )
+  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inValue" !"appendUIntBE" !false )
+  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inValue" !"appendUIntLE" !false )
+  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"string" !"inValue" !"appendUTF8String" !false )
+  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"data" !"inValue" !"appendData" !false )
+}
+
+#---------------------------------------------------------------------------*
+
+override method @filewrapperPredefinedTypeAST getModifierMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@modifierMap outModifierMap {
+  outModifierMap = @modifierMap. emptyMap
+  enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"string" !"inDirectoryPath" !"setCurrentDirectory" !true )
+}
+
+#---------------------------------------------------------------------------*
+

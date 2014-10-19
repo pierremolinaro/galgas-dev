@@ -1,0 +1,1102 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  'lexique' component metamodel                                            *
+#                                                                           *
+#  Copyright (C) 2007, ..., 2009 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+
+
+#---------------------------------------------------------------------------*
+
+getter @lexicalTypeEnum cppTypeName -> @string outResult {
+  switch self
+    case lexicalType_string : outResult = "C_String"
+    case lexicalType_char   : outResult = "utf32"
+    case lexicalType_uint   : outResult = "uint32_t"
+    case lexicalType_uint64 : outResult = "uint64_t"
+    case lexicalType_sint   : outResult = "int32_t"
+    case lexicalType_sint64 : outResult = "int64_t"
+    case lexicalType_double : outResult = "double"
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+getter @lexicalTypeEnum appendMethodName -> @string outResult {
+  switch self
+    case lexicalType_string : outResult = "appendCLiteralStringConstant"
+    case lexicalType_char   : outResult = "appendUnicodeCharacter"
+    case lexicalType_uint   : outResult = "appendUnsigned"
+    case lexicalType_uint64 : outResult = "appendUnsigned"
+    case lexicalType_sint   : outResult = "appendSigned"
+    case lexicalType_sint64 : outResult = "appendSigned"
+    case lexicalType_double : outResult = "appendDouble"
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+getter @lexicalTypeEnum appendArgumentOfMethod -> @string outResult {
+  switch self
+    case lexicalType_string : outResult = ""
+    case lexicalType_char   : outResult = " COMMA_HERE"
+    case lexicalType_uint   : outResult = ""
+    case lexicalType_uint64 : outResult = ""
+    case lexicalType_sint   : outResult = ""
+    case lexicalType_sint64 : outResult = ""
+    case lexicalType_double : outResult = ""
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+getter @lexicalTypeEnum initialization -> @string outResult {
+  switch self
+    case lexicalType_string : outResult = ".setLengthToZero ()"
+    case lexicalType_char   : outResult = " = TO_UNICODE (0)"
+    case lexicalType_uint   : outResult = " = 0"
+    case lexicalType_uint64 : outResult = " = 0"
+    case lexicalType_sint   : outResult = " = 0"
+    case lexicalType_sint64 : outResult = " = 0"
+    case lexicalType_double : outResult = " = 0.0"
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+getter @lexicalTypeEnum cocoaTypeName -> @string outResult {
+  switch self
+    case lexicalType_string : outResult = "NSMutableString *"
+    case lexicalType_char   : outResult = "UInt32"
+    case lexicalType_uint   : outResult = "UInt32"
+    case lexicalType_uint64 : outResult = "UInt64"
+    case lexicalType_sint   : outResult = "SInt32"
+    case lexicalType_sint64 : outResult = "SInt64"
+    case lexicalType_double : outResult = "double"
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+getter @lexicalTypeEnum cocoaInitializationCode -> @string outResult {
+  switch self
+    case lexicalType_string : outResult = "[[NSMutableString alloc] init]"
+    case lexicalType_char   : outResult = "0"
+    case lexicalType_uint   : outResult = "0"
+    case lexicalType_uint64 : outResult = "0"
+    case lexicalType_sint   : outResult = "0"
+    case lexicalType_sint64 : outResult = "0"
+    case lexicalType_double : outResult = "0.0"
+  end
+}
+
+
+#---------------------------------------------------------------------------*
+
+getter @lexicalTypeEnum cocoaResetPrefix -> @string outResult {
+  switch self
+    case lexicalType_string : outResult = "["
+    case lexicalType_char   : outResult = ""
+    case lexicalType_uint   : outResult = ""
+    case lexicalType_uint64 : outResult = ""
+    case lexicalType_sint   : outResult = ""
+    case lexicalType_sint64 : outResult = ""
+    case lexicalType_double : outResult = ""
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+getter @lexicalTypeEnum cocoaReset -> @string outResult {
+  switch self
+    case lexicalType_string : outResult = " setString:@\"\"]"
+    case lexicalType_char   : outResult = " = 0"
+    case lexicalType_uint   : outResult = " = 0"
+    case lexicalType_uint64 : outResult = " = 0"
+    case lexicalType_sint   : outResult = " = 0"
+    case lexicalType_sint64 : outResult = " = 0"
+    case lexicalType_double : outResult = " = 0.0"
+  end
+}
+
+#---------------------------------------------------------------------------*
+#                     checkLexicalDefaultAction                             *
+#---------------------------------------------------------------------------*
+
+abstract method @lexicalSendDefaultActionAST checkLexicalDefaultAction
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalSendTerminalByDefaultAST checkLexicalDefaultAction
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext {
+  [[ioLexiqueAnalysisContext mTerminalMap] searchKey !mDefaultSentTerminal ?*]
+}
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalErrorByDefaultAST checkLexicalDefaultAction
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext {
+  [!?ioLexiqueAnalysisContext.mLexicalMessageMap setMMessageIsUsedForKey !true !mDefaultErrorMessageName.string]
+}
+
+#---------------------------------------------------------------------------*
+#                       checkLexicalExpression                              *
+#---------------------------------------------------------------------------*
+
+abstract method @lexicalExpressionAST checkLexicalExpression
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalOrExpressionAST checkLexicalExpression
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext {
+  [mLeftOperand checkLexicalExpression !? ioLexiqueAnalysisContext]
+  [mRightOperand checkLexicalExpression !? ioLexiqueAnalysisContext]
+}
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalCharacterMatchAST checkLexicalExpression
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext {
+}
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalCharacterSetMatchAST checkLexicalExpression
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext {
+  if not [ioLexiqueAnalysisContext.mExternUnicodeTestFunctions hasKey ![mCharacterSetName string]] then
+    @string s = "undefined test function; available functions are:"
+    for () in  ioLexiqueAnalysisContext.mExternUnicodeTestFunctions do
+      s += "\n-  " + key
+    end
+    error mCharacterSetName : s
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalCharacterIntervalMatchAST checkLexicalExpression
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext {
+}
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalStringMatchAST checkLexicalExpression
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext {
+  ioLexiqueAnalysisContext.mUnicodeStringToGenerate += ![mString string]
+}
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalStringNotMatchAST checkLexicalExpression
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext {
+  ioLexiqueAnalysisContext.mUnicodeStringToGenerate += ![mString string]
+  [!?ioLexiqueAnalysisContext.mLexicalMessageMap setMMessageIsUsedForKey !true !mErrorMessage.string]
+}
+
+#---------------------------------------------------------------------------*
+#                       checkLexicalFunctionCallArgument                    *
+#---------------------------------------------------------------------------*
+
+abstract method @lexicalRoutineOrFunctionFormalInputArgumentAST checkLexicalFunctionCallArgument
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  ?@lexicalTypeEnum unused inLexicalRoutineFormalArgumentType
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalAttributeInputArgumentAST checkLexicalFunctionCallArgument
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
+#--- Check attribute definition
+  @lexicalTypeEnum attributeLexicalType
+  [[ioLexiqueAnalysisContext mLexicalAttributeMap] searchKey
+    !mAttributeName
+    ?attributeLexicalType
+  ]
+#--- Type check
+  if attributeLexicalType != inLexicalRoutineFormalArgumentType then
+    error mAttributeName:"type error, attribute type is @"
+    + [attributeLexicalType lexicalTypeBaseName]
+    + " type, but lexical routine prototype requires @"
+    + [inLexicalRoutineFormalArgumentType lexicalTypeBaseName]
+    + " type"
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalCharacterInputArgumentAST checkLexicalFunctionCallArgument
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
+#--- Type check
+  if @lexicalTypeEnum. lexicalType_char != inLexicalRoutineFormalArgumentType then
+    error mCharacter:"type error, a literal character has @char"
+    + " type, but lexical routine prototype requires an @"
+    + [inLexicalRoutineFormalArgumentType lexicalTypeBaseName]
+    + " type value"
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalUnsignedInputArgumentAST checkLexicalFunctionCallArgument
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
+#--- Type check
+  if @lexicalTypeEnum. lexicalType_uint != inLexicalRoutineFormalArgumentType then
+    error mUnsigned:"type error, a literal character has @uint"
+    + " type, but lexical routine prototype requires an @"
+    + [inLexicalRoutineFormalArgumentType lexicalTypeBaseName]
+    + " type value"
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalCurrentCharacterInputArgumentAST checkLexicalFunctionCallArgument
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
+#--- Type check
+  if @lexicalTypeEnum. lexicalType_char != inLexicalRoutineFormalArgumentType then
+    error mLocation:"type error, current character value has @char"
+    + " type, but lexical routine prototype requires an @"
+    + [inLexicalRoutineFormalArgumentType lexicalTypeBaseName]
+    + " type value"
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalFunctionInputArgumentAST checkLexicalFunctionCallArgument
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
+#--- Check attribute definition
+  @lexicalFunctionFormalArgumentList lexicalFormalTypeList
+  @lexicalTypeEnum returnedLexicalFormalType
+  @string replacementFunctionName
+  [[ioLexiqueAnalysisContext mLexicalFunctionMap] searchKey
+    !mFunctionName
+    ?lexicalFormalTypeList
+    ?returnedLexicalFormalType
+    ?replacementFunctionName
+    ?*
+  ]
+#--- Obsolete function ?
+  if replacementFunctionName != "" then
+    warning mFunctionName:"obsolete lexical function, replaced by '" + replacementFunctionName + "'"
+  end
+#--- Returned type check
+  if returnedLexicalFormalType != inLexicalRoutineFormalArgumentType then
+    error mFunctionName:"type error, the function returns an @"
+    + [returnedLexicalFormalType lexicalTypeBaseName]
+    + " value, but lexical routine prototype requires an @"
+    + [inLexicalRoutineFormalArgumentType lexicalTypeBaseName]
+    + " value"
+  end
+#--- Check actual argument count
+  if [lexicalFormalTypeList length] != [mFunctionActualArgumentList length] then
+    error mFunctionName: "this lexical function names "
+    + [[mFunctionActualArgumentList length] string]
+    + " actual argument(s), but the prototype requires "
+    + [[lexicalFormalTypeList length] string] + " actual argument(s)"
+  end
+#--- Check actual argument against formal parameters
+  for () in  lexicalFormalTypeList, () in  mFunctionActualArgumentList do
+    [mLexicalActualInputArgument checkLexicalFunctionCallArgument
+      !?ioLexiqueAnalysisContext
+      !mLexicalType
+    ]
+  end
+}
+
+#---------------------------------------------------------------------------*
+#                       checkLexicalRoutineCallArgument                     *
+#---------------------------------------------------------------------------*
+
+abstract method @lexicalRoutineOrFunctionFormalInputArgumentAST checkLexicalRoutineCallArgument
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  ?@lexicalTypeEnum unused inLexicalRoutineFormalArgumentType
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalAttributeInputArgumentAST checkLexicalRoutineCallArgument
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
+#--- Check attribute definition
+  @lexicalTypeEnum attributeLexicalType
+  [[ioLexiqueAnalysisContext mLexicalAttributeMap] searchKey
+    !mAttributeName
+    ?attributeLexicalType
+  ]
+#--- Type check
+  if attributeLexicalType != inLexicalRoutineFormalArgumentType then
+    error mAttributeName:"type error, attribute type is @"
+    + [attributeLexicalType lexicalTypeBaseName]
+    + " type, but lexical routine prototype requires @"
+    + [inLexicalRoutineFormalArgumentType lexicalTypeBaseName]
+    + " type"
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalCharacterInputArgumentAST checkLexicalRoutineCallArgument
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
+#--- Type check
+  if @lexicalTypeEnum. lexicalType_char != inLexicalRoutineFormalArgumentType then
+    error mCharacter:"type error, a literal character has @char"
+    + " type, but lexical routine prototype requires an @"
+    + [inLexicalRoutineFormalArgumentType lexicalTypeBaseName]
+    + " type value"
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalUnsignedInputArgumentAST checkLexicalRoutineCallArgument
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
+#--- Type check
+  if @lexicalTypeEnum. lexicalType_uint != inLexicalRoutineFormalArgumentType then
+    error mUnsigned:"type error, a literal unsigned value has @uint"
+    + " type, but lexical routine prototype requires an @"
+    + [inLexicalRoutineFormalArgumentType lexicalTypeBaseName]
+    + " type value"
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalCurrentCharacterInputArgumentAST checkLexicalRoutineCallArgument
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
+#--- Type check
+  if @lexicalTypeEnum. lexicalType_char != inLexicalRoutineFormalArgumentType then
+    error mLocation:"type error, current character value has @char"
+    + " type, but lexical routine prototype requires an @"
+    + [inLexicalRoutineFormalArgumentType lexicalTypeBaseName]
+    + " type value"
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalFunctionInputArgumentAST checkLexicalRoutineCallArgument
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
+#--- Check attribute definition
+  @lexicalFunctionFormalArgumentList lexicalFormalTypeList
+  @lexicalTypeEnum returnedLexicalFormalType
+  @string replacementFunctionName
+  [[ioLexiqueAnalysisContext mLexicalFunctionMap] searchKey
+    !mFunctionName
+    ?lexicalFormalTypeList
+    ?returnedLexicalFormalType
+    ?replacementFunctionName
+    ?*
+  ]
+#--- Obsolete function ?
+  if replacementFunctionName != "" then
+    warning mFunctionName:"obsolete lexical function, replaced by '" + replacementFunctionName + "'"
+  end
+#--- Returned type check
+  if returnedLexicalFormalType != inLexicalRoutineFormalArgumentType then
+    error mFunctionName:"type error, the function returns an @"
+    + [returnedLexicalFormalType lexicalTypeBaseName]
+    + " value, but lexical routine prototype requires an @"
+    + [inLexicalRoutineFormalArgumentType lexicalTypeBaseName]
+    + " value"
+  end
+#--- Check actual argument count
+  if [lexicalFormalTypeList length] != [mFunctionActualArgumentList length] then
+    error mFunctionName: "this lexical function names "
+    + [[mFunctionActualArgumentList length] string]
+    + " actual argument(s), but the prototype requires "
+    + [[lexicalFormalTypeList length] string] + " actual argument(s)"
+  end
+#--- Check actual argument against formal parameters
+  for () in  lexicalFormalTypeList, () in  mFunctionActualArgumentList do
+    [mLexicalActualInputArgument checkLexicalFunctionCallArgument
+      !?ioLexiqueAnalysisContext
+      !mLexicalType
+    ]
+  end
+}
+
+#---------------------------------------------------------------------------*
+#                       checkLexicalRoutineCallArgument                     *
+#---------------------------------------------------------------------------*
+
+abstract method @abstractLexicalRoutineActualArgumentAST checkLexicalRoutineCallArgument
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  ?@lexicalArgumentModeAST unused inLexicalRoutineFormalArgumentMode
+  ?@lexicalTypeEnum unused inLexicalRoutineFormalArgumentType
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalAttributeInputOutputArgumentAST checkLexicalRoutineCallArgument
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+  ?@lexicalArgumentModeAST inLexicalRoutineFormalArgumentMode
+  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
+#--- Check attribute definition
+  @lexicalTypeEnum attributeLexicalType
+  [[ioLexiqueAnalysisContext mLexicalAttributeMap] searchKey
+    !mAttributeName
+    ?attributeLexicalType
+  ]
+#--- Type check
+  if attributeLexicalType != inLexicalRoutineFormalArgumentType then
+    error mAttributeName:"type error, attribute type is @"
+    + [attributeLexicalType lexicalTypeBaseName]
+    + " type, but lexical routine prototype requires @"
+    + [inLexicalRoutineFormalArgumentType lexicalTypeBaseName]
+    + " type"
+  end
+#--- Passing mode check
+  if inLexicalRoutineFormalArgumentMode != @lexicalArgumentModeAST. lexicalInputOutputMode then
+    error mActualPassingModeLocation:"the output mode (!) is required here, not an output/input mode"
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalFormalInputArgumentAST checkLexicalRoutineCallArgument
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+  ?@lexicalArgumentModeAST inLexicalRoutineFormalArgumentMode
+  ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType {
+#--- Check attribute definition
+  [mRoutineOrFunctionFormalInputArgument checkLexicalRoutineCallArgument
+    !?ioLexiqueAnalysisContext
+    !inLexicalRoutineFormalArgumentType
+  ]
+#--- Passing mode check
+  if inLexicalRoutineFormalArgumentMode != @lexicalArgumentModeAST. lexicalInputMode then
+    error mActualPassingModeLocation:"the output/input mode (!?) is required here, not an input mode"
+  end
+}
+
+#---------------------------------------------------------------------------*
+#                       checkLexicalInstruction                             *
+#---------------------------------------------------------------------------*
+
+abstract method @lexicalInstructionAST checkLexicalInstruction
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  ?!@lexicalTagMap unused ioTagMap
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalStructuredSendInstructionAST checkLexicalInstruction
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+  ?!@lexicalTagMap unused ioTagMap {
+  for () in  mLexicalSendSearchList do
+    [!?ioLexiqueAnalysisContext.mLexicalTokenListMap setMShouldBeGeneratedForKey !true !mSearchListName.string]
+    [[ioLexiqueAnalysisContext mLexicalAttributeMap] searchKey !mAttributeName ?*]
+  end
+  [mLexicalSendDefaultAction checkLexicalDefaultAction !?ioLexiqueAnalysisContext]
+}
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalSimpleSendInstructionAST checkLexicalInstruction
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+  ?!@lexicalTagMap unused ioTagMap {
+  [[ioLexiqueAnalysisContext mTerminalMap] searchKey !mSentTerminal ?*]
+}
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalRepeatInstructionAST checkLexicalInstruction
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+  ?!@lexicalTagMap ioTagMap {
+  for () in  mLexicalWhileBranchList do
+    [mWhileExpression checkLexicalExpression !?ioLexiqueAnalysisContext]
+    var tagMap =@lexicalTagMap.mapWithMapToOverride{ !ioTagMap}
+    for () in  mWhileInstructionList do
+      [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext !?tagMap]
+    end
+  end
+  var tagMap =@lexicalTagMap.mapWithMapToOverride{ !ioTagMap}
+  for () in  mRepeatedInstructionList do
+    [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext !?tagMap]
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalSelectInstructionAST checkLexicalInstruction
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+  ?!@lexicalTagMap  ioTagMap {
+  for () in  mLexicalSelectBranchList do
+    [mSelectExpression checkLexicalExpression !?ioLexiqueAnalysisContext]
+    var tagMap =@lexicalTagMap.mapWithMapToOverride{ !ioTagMap}
+    for () in  mSelectInstructionList do
+      [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext !?tagMap]
+    end
+  end
+  var tagMap =@lexicalTagMap.mapWithMapToOverride{ !ioTagMap}
+  for () in  mDefaultInstructionList do
+    [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext !?tagMap]
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalRoutineInstructionAST checkLexicalInstruction
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+  ?!@lexicalTagMap unused ioTagMap {
+  @lexicalRoutineFormalArgumentList lexicalRoutineFormalArgumentList
+  @stringlist routineErrorMessageList
+  [[ioLexiqueAnalysisContext mLexicalRoutineMessageMap] searchKey
+    !mRoutineName
+    ?lexicalRoutineFormalArgumentList
+    ?routineErrorMessageList
+    ?*
+  ]
+#--- Check actual argument count
+  if [lexicalRoutineFormalArgumentList length] != [mActualArgumentList length] then
+    error mRoutineName: "this lexical routine call names "
+    + [[mActualArgumentList length] string]
+    + " actual argument(s), but the lexical routine prototype requires "
+    + [[lexicalRoutineFormalArgumentList length] string] + " actual argument(s)"
+  end
+#--- Check actual argument against formal parameters
+  for () in  lexicalRoutineFormalArgumentList, () in  mActualArgumentList do
+    [mLexicalRoutineActualArgument checkLexicalRoutineCallArgument
+      !?ioLexiqueAnalysisContext
+      !mLexicalFormalArgumentMode
+      !mLexicalFormalArgumentType
+    ]
+  end
+#--- Check error message count
+  if [routineErrorMessageList length] != [mErrorMessageList length] then
+    error mRoutineName: "this lexical routine call names "
+    + [[mErrorMessageList length] string]
+    + " error message(s), but the lexical routine prototype requires "
+    + [[routineErrorMessageList length] string] + " error message(s)"
+  end
+#--- Check error messages are actually defined
+  for () in  mErrorMessageList do
+#    with !?ioLexiqueAnalysisContext->mLexicalMessageMap searchKey !mValue : xyz_ do
+#      xyz_mMessageIsUsed := true ;
+#    end with ;
+    [!?ioLexiqueAnalysisContext.mLexicalMessageMap setMMessageIsUsedForKey !true !mValue.string]
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalLogInstructionAST checkLexicalInstruction
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  ?!@lexicalTagMap unused ioTagMap {
+}
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalRewindInstructionAST checkLexicalInstruction
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+  ?!@lexicalTagMap ioTagMap {
+  [ioTagMap searchKey !mLexicalTagName]
+  [[ioLexiqueAnalysisContext mTerminalMap] searchKey !mTerminalName ?*]
+}
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalDropInstructionAST checkLexicalInstruction
+  ?!@lexiqueAnalysisContext  ioLexiqueAnalysisContext
+  ?!@lexicalTagMap unused ioTagMap {
+  [[ioLexiqueAnalysisContext mTerminalMap] searchKey !mTerminalName ?*]
+}
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalTagInstructionAST checkLexicalInstruction
+  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  ?!@lexicalTagMap ioTagMap {
+  [!?ioTagMap insertKey !mLexicalTagName]
+}
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalErrorInstructionAST checkLexicalInstruction
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+  ?!@lexicalTagMap unused ioTagMap {
+  [!?ioLexiqueAnalysisContext.mLexicalMessageMap setMMessageIsUsedForKey !true !mErrorMessageName.string]
+}
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalWarningInstructionAST checkLexicalInstruction
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+  ?!@lexicalTagMap unused ioTagMap {
+  [!?ioLexiqueAnalysisContext.mLexicalMessageMap setMMessageIsUsedForKey !true !mWarningMessageName.string]
+}
+
+#---------------------------------------------------------------------------*
+#                         compileLexiqueComponent                           *
+#---------------------------------------------------------------------------*
+
+abstract method @abstractLexicalRuleAST checkLexicalRule
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalImplicitRuleAST checkLexicalRule
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext {
+  [[ioLexiqueAnalysisContext mLexicalTokenListMap] searchKey !mListName ?* ?* ?*]
+}
+
+#---------------------------------------------------------------------------*
+
+override method @lexicalExplicitRuleAST checkLexicalRule
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext {
+  [mLexicalRuleExpression checkLexicalExpression !?ioLexiqueAnalysisContext]
+  var tagMap =@lexicalTagMap.emptyMap{}
+  for () in  mInstructionList do
+    [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext !?tagMap]
+  end
+}
+
+#---------------------------------------------------------------------------*
+#         G E N E R A T I O N    T E M P L A T E S                          *
+#---------------------------------------------------------------------------*
+
+filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_generation" {
+}{
+}{
+  template newHeaderZone2 "lexique_header_template_zone_2.new.h.gTemplate"
+    ?@string LEXIQUE_IDENTIFIER
+    ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
+    ?@metamodelTemplateDelimitorListAST TEMPLATE_DELIMITOR_LIST
+
+  template newHeaderZone3 "lexique_header_template_zone_3.new.h.gTemplate"
+    ?@string LEXIQUE_IDENTIFIER
+    ?@lexicalListDeclarationListAST DELIMITOR_LIST_LIST
+    ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
+    ?@indexingListAST INDEXING_LIST
+
+  template newImplementationZone2Galgas3 "lexique_implementation-galgas3.cpp.gTemplate"
+    ?@string LEXIQUE_IDENTIFIER
+    ?@lexicalAttributeMap LEXICAL_ATTRIBUTE_MAP
+    ?@lexicalMessageMap LEXICAL_MESSAGE_MAP
+    ?@terminalList TERMINAL_LIST
+    ?@lexicalExplicitTokenListMapMap LEXICAL_TOKEN_LIST_MAP
+    ?@stringset STRINGS_IN_EXPLICIT_RULES
+    ?@lexicalRuleListAST LEXICAL_RULE_LIST
+    ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
+    ?@string INDEXING_DIRECTORY
+    ?@metamodelTemplateDelimitorListAST TEMPLATE_DELIMITOR_LIST
+    ?@string LEXIQUE_COMPONENT_NAME
+    ?@templateReplacementListAST TEMPLATE_REPLACEMENT_LIST
+
+  template newImplementationZone2 "lexique_implementation.new.cpp.gTemplate"
+    ?@string LEXIQUE_IDENTIFIER
+    ?@lexicalAttributeMap LEXICAL_ATTRIBUTE_MAP
+    ?@lexicalMessageMap LEXICAL_MESSAGE_MAP
+    ?@terminalList TERMINAL_LIST
+    ?@lexicalExplicitTokenListMapMap LEXICAL_TOKEN_LIST_MAP
+    ?@stringset STRINGS_IN_EXPLICIT_RULES
+    ?@lexicalRuleListAST LEXICAL_RULE_LIST
+    ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
+    ?@galgas3LexiqueComponentListAST-element LEXIQUE_COMPONENT_ROOT
+
+  template cocoaHeaderZone2 "lexique_cocoa_header_template_zone_2.h.gTemplate"
+    ?@string LEXIQUE_CLASS_NAME
+    ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
+  template cocoaHeaderZone3 "lexique_cocoa_header_template_zone_3.h.gTemplate"
+    ?@string unused LEXIQUE_CLASS_NAME
+    ?@lexiqueAnalysisContext unused LEXIQUE_ANALYSIS_CONTEXT
+  template cocoaImplementationZone2 "lexique_cocoa_implementation.m.gTemplate"
+    ?@string LEXIQUE_HEADER_FILE_NAME
+    ?@string LEXIQUE_CLASS_NAME
+    ?@lexicalAttributeMap LEXICAL_ATTRIBUTE_MAP
+    ?@lexicalMessageMap LEXICAL_MESSAGE_MAP
+    ?@terminalList TERMINAL_LIST
+    ?@stringset STRINGS_IN_EXPLICIT_RULES
+    ?@lexicalRuleListAST LEXICAL_RULE_LIST
+    ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
+    ?@templateReplacementListAST TEMPLATE_REPLACEMENT_LIST
+    ?@string INDEXING_DIRECTORY
+    ?@indexingListAST INDEXING_LIST
+    ?@lexicalStyleListAST LEXICAL_STYLE_LIST
+    ?@metamodelTemplateDelimitorListAST TEMPLATE_DELIMITOR_LIST
+}
+
+#---------------------------------------------------------------------------*
+#                         parseLexiqueComponent                             *
+#---------------------------------------------------------------------------*
+
+proc parseLexiqueComponent
+  ?let @lstring inSourceFile
+  ?!@parsedComponentStruct ioParsedComponentStruct
+  !@galgas3LexiqueComponentListAST-element outLexiqueComponentRoot {
+  var key =@lstring.new{ ![[[inSourceFile string] lastPathComponent] stringByDeletingPathExtension] ![inSourceFile location]}
+  if [[ioParsedComponentStruct mParsedLexiqueComponentMap] hasKey ! [key string]] then
+    [[ioParsedComponentStruct mParsedLexiqueComponentMap] searchKey !key ?outLexiqueComponentRoot]
+  else
+    grammar lexiqueLL1grammar in inSourceFile ?outLexiqueComponentRoot
+    [!?ioParsedComponentStruct.mParsedLexiqueComponentMap insertKey !key !outLexiqueComponentRoot]
+  end
+}
+
+#---------------------------------------------------------------------------*
+#                         compileLexiqueComponentFromAST                    *
+#---------------------------------------------------------------------------*
+
+proc compileLexiqueComponentFromAST
+  ?let @string inComponentNameFromSourceFilePath
+  ?let @string inOutputDirectory
+  ?let @galgas3LexiqueComponentListAST-element inLexiqueComponentRoot {
+#--------------------------------------- Check component name
+  @lstring componentName = [inLexiqueComponentRoot mLexiqueComponentName]
+  if [componentName string] != inComponentNameFromSourceFilePath then
+    warning componentName: "GALGAS checks "
+      "the component name ('" + [componentName string]
+    + "') against the source file base name ('" + inComponentNameFromSourceFilePath + "'): they should be identical"
+  end 
+#--------------------------------------- Lexical attribute type name map
+  let @lexicalTypeMap lexicalTypeMap = buildLexicalTypeMap ()
+#--------------------------------------- Build lexical routine map
+  @lexicalRoutineMap lexicalRoutineMap
+  buildLexicalRoutineMap ( ?lexicalRoutineMap )
+#--------------------------------------- Add extern routines
+  for () in  [inLexiqueComponentRoot mExternRoutineList] do
+    var lexicalRoutineFormalArgumentList =@lexicalRoutineFormalArgumentList.emptyList{}
+    for () in  mLexicalRoutineFormalArgumentList do
+      @lexicalTypeEnum lexicalFormalArgumentType
+      [lexicalTypeMap searchKey !mLexicalTypeName ?lexicalFormalArgumentType]
+      lexicalRoutineFormalArgumentList += !mPassingMode !lexicalFormalArgumentType ![mFormalArgumentName string]
+    end
+    [!?lexicalRoutineMap insertKey !mRoutineName !lexicalRoutineFormalArgumentList !mErrorMessageList !true]
+  end
+#--------------------------------------- Build lexical function map
+  @lexicalFunctionMap lexicalFunctionMap
+  buildLexicalFunctionMap ( ?lexicalFunctionMap )
+#--------------------------------------- Add extern functions
+  for () in  [inLexiqueComponentRoot mExternFunctionList] do
+    var lexicalFunctionFormalArgumentList =@lexicalFunctionFormalArgumentList.emptyList{}
+    for () in  mLexicalFunctionFormalArgumentList do
+      @lexicalTypeEnum lexicalFormalArgumentType
+      [lexicalTypeMap searchKey !mLexicalTypeName ?lexicalFormalArgumentType]
+      lexicalFunctionFormalArgumentList += !lexicalFormalArgumentType ![mFormalArgumentName string]
+    end
+    @lexicalTypeEnum returnedArgumentType
+    [lexicalTypeMap searchKey !mReturnedTypeName ? returnedArgumentType]
+    [!?lexicalFunctionMap insertKey !mFunctionName !lexicalFunctionFormalArgumentList !returnedArgumentType !"" !true]
+  end
+#--------------------------------------- Unicode test functions
+  let @stringset externUnicodeTestFunctions = {
+   !"unicodeToLower",
+   !"unicodeToUpper",
+   !"unicodeToUpper",
+   !"isUnicodeLetter",
+   !"isUnicodeMark",
+   !"isUnicodeNumber",
+   !"isUnicodeDecimalDigit",
+   !"isUnicodeASCIIHexDigit",
+   !"isUnicodeSeparator",
+   !"isUnicodeCommand",
+   !"isUnicodePunctuation",
+   !"isUnicodeSymbol"
+  }
+#---------------------------------------
+  var lexiqueAnalysisContext =@lexiqueAnalysisContext.new{
+    !componentName.string
+    !lexicalRoutineMap
+    !lexicalFunctionMap
+    !@lexicalMessageMap. emptyMap
+    !@terminalMap. emptyMap
+    !@terminalList. emptyList
+    !@lexicalAttributeMap. emptyMap
+    !@lexicalExplicitTokenListMapMap. emptyMap
+    !@stringset. emptySet
+    !@templateDelimitorList. emptyList
+    !@styleMap. emptyMap
+    !externUnicodeTestFunctions
+  }
+#--------------------------------------- Build style map
+  @uint styleIndex = 1
+  for () in  [inLexiqueComponentRoot mLexicalStyleList] do
+    [!?lexiqueAnalysisContext.mStyleMap insertKey !mName !mComment !styleIndex]
+    styleIndex ++
+  end
+#--------------------------------------- Build lexical attribute map
+  buildLexicalAttributeMap (
+   !lexicalTypeMap
+   ![inLexiqueComponentRoot mLexicalAttributeList]
+   !?lexiqueAnalysisContext.mLexicalAttributeMap
+  )
+#--------------------------------------- Build terminal map
+  for () in  [inLexiqueComponentRoot mTerminalDeclarationList] do
+    @uint terminalStyleIndex = 0
+    if [[mStyle string] length] > 0 then
+      [[lexiqueAnalysisContext mStyleMap] searchKey !mStyle ?* ?terminalStyleIndex]
+    end
+    var argumentTypeList =@lexicalSentValueList.emptyList{}
+    for () in  mSentAttributeList do
+      @lexicalTypeEnum attributeLexicalType
+      [lexiqueAnalysisContext.mLexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType]
+      argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
+    end
+    [!?lexiqueAnalysisContext.mTerminalMap insertKey !mName !argumentTypeList]
+    @bool isEndOfTemplateMark = false
+    @bool atomicSelection = true
+    for () in  mOptionList do
+      if [mValue string] == "nonAtomicSelection" then
+        if atomicSelection then
+          atomicSelection = false
+        else
+          error mValue: "the 'nonAtomicSelection' feature is already set"
+        end
+      elsif [mValue string] != "templateEndMark" then
+        error mValue:"only the 'templateEndMark' and 'nonAtomicSelection' features are allowed here"
+      elsif isEndOfTemplateMark then
+        error mValue:"the 'templateEndMark' feature is already set"
+      else
+        isEndOfTemplateMark = true
+      end
+    end
+    lexiqueAnalysisContext.mTerminalList +=
+      !mName
+      !argumentTypeList
+      ![mSyntaxErrorMessage string]
+      !isEndOfTemplateMark
+      !atomicSelection
+      !terminalStyleIndex
+  end
+  for () in  [inLexiqueComponentRoot mLexicalListDeclarationList] do
+    @uint terminalStyleIndex = 0
+    if [[mStyle string] length] > 0 then
+      [[lexiqueAnalysisContext mStyleMap] searchKey !mStyle ?* ?terminalStyleIndex]
+    end
+    var argumentTypeList =@lexicalSentValueList.emptyList{}
+    for () in  mSentAttributeList do
+      @lexicalTypeEnum attributeLexicalType
+      [lexiqueAnalysisContext.mLexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType]
+      argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
+    end
+    var lexicalTokenListMap =@lexicalExplicitTokenListMap.emptyMap{}
+    var tokenSortedlist =@tokenSortedlist.emptySortedList{}
+    for () in  mEntryList do
+      @string syntaxErrorMessage = [[mSyntaxErrorMessage string] stringByReplacingStringByString !"%K" ![mTerminalSpelling string]]
+      @bool isEndOfTemplateMark = false
+      @bool atomicSelection = true
+      for () in  mFeatureList do
+        if [mValue string] == "nonAtomicSelection" then
+          if atomicSelection then
+            atomicSelection = false
+          else
+            error mValue: "the 'nonAtomicSelection' feature is already set"
+          end
+        elsif [mValue string] != "templateEndMark" then
+          error mValue:"only the 'templateEndMark' and 'nonAtomicSelection' features are allowed here"
+        elsif isEndOfTemplateMark then
+          error mValue:"the 'templateEndMark' feature is already set"
+        else
+          isEndOfTemplateMark = true
+        end
+      end
+      lexiqueAnalysisContext.mTerminalList +=
+        !mTerminalSpelling
+        !argumentTypeList
+        !syntaxErrorMessage
+        !isEndOfTemplateMark
+        !atomicSelection
+        !terminalStyleIndex
+      [!?lexiqueAnalysisContext.mTerminalMap insertKey !mTerminalSpelling !argumentTypeList]
+      [!?lexicalTokenListMap insertKey !mEntrySpelling !mTerminalSpelling !mFeatureList]
+      tokenSortedlist += ![[mEntrySpelling string] length] ![mEntrySpelling string] ![mTerminalSpelling string]
+      lexiqueAnalysisContext.mUnicodeStringToGenerate += ![mEntrySpelling string]
+    end
+    [!?lexiqueAnalysisContext.mLexicalTokenListMap insertKey !mName !lexicalTokenListMap !tokenSortedlist !false]
+  end
+#--------------------------------------- Build Message map
+  for () in  [inLexiqueComponentRoot mLexicalMessageDeclarationList] do
+    [!?lexiqueAnalysisContext.mLexicalMessageMap insertKey !mMessageName !mMessageValue !false]
+  end
+#--------------------------------------- Check rules
+  for () in  [inLexiqueComponentRoot mLexicalRuleList] do
+    [mLexicalRule checkLexicalRule !?lexiqueAnalysisContext]
+  end
+#--------------------------------------- Warn for unused messages
+  for () in  [lexiqueAnalysisContext mLexicalMessageMap] do
+    if not mMessageIsUsed then
+      warning lkey:"unused message"
+    end
+  end
+#--------------------------------------- Template delimiters
+  for () in  [inLexiqueComponentRoot mTemplateDelimitorList] do
+   lexiqueAnalysisContext.mUnicodeStringToGenerate += ![mStartString string]
+   lexiqueAnalysisContext.mUnicodeStringToGenerate += ![mEndString string]
+   @bool preservesStartDelimiter = false
+   for () in  mOptionList do
+     if [mValue string] != "preserved" then
+       error mValue:"only the 'preserved' feature is allowed here"
+     elsif preservesStartDelimiter then
+       error mValue:"the 'preserved' feature is already set"
+     else
+       preservesStartDelimiter = true
+     end
+   end
+   lexiqueAnalysisContext.mTemplateDelimitorList += !mStartString !mEndString !preservesStartDelimiter
+  end
+#--------------------------------------- Check "indexing" declarations
+  if [[inLexiqueComponentRoot mIndexingDirectory] isNowhere] then
+    for () in  [inLexiqueComponentRoot mIndexingListAST] do
+      error mIndexName : "indexing declaration requires one 'indexing in \"path\";' declaration"
+    end
+  end
+  var indexNameSet =@stringset.emptySet{}
+  for () in  [inLexiqueComponentRoot mIndexingListAST] do
+    if [indexNameSet hasKey ![mIndexName string]] then
+      error mIndexName : "the '" + mIndexName + "' index is already declared"
+    end
+    indexNameSet += ![mIndexName string]
+  end
+#--------------------------------------- Template replacements
+  for () in  [inLexiqueComponentRoot mTemplateReplacementList] do
+   lexiqueAnalysisContext.mUnicodeStringToGenerate += ![mMatchString string]
+   lexiqueAnalysisContext.mUnicodeStringToGenerate += ![mReplacementString string]
+   # § TODO Check replacement function
+  end
+#--------------------------------------- Build Header file
+  @string lexiqueClassName = [componentName string]
+#--- Generate header file
+  if @uint. errorCount == 0 then
+    [@string generateFileWithPattern
+      !inOutputDirectory
+      !lexiqueClassName + ".h"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      ![filewrapper lexiqueGenerationTemplates.newHeaderZone2
+         ![lexiqueClassName identifierRepresentation]
+         !lexiqueAnalysisContext
+         !inLexiqueComponentRoot.mTemplateDelimitorList
+       ]
+      !"\n\n" # Defaut user zone2
+      ![filewrapper lexiqueGenerationTemplates.newHeaderZone3
+         ![lexiqueClassName identifierRepresentation]
+         ![inLexiqueComponentRoot mLexicalListDeclarationList]
+         !lexiqueAnalysisContext
+         ![inLexiqueComponentRoot mIndexingListAST]
+       ]
+    ]
+  end
+#--- Generate implementation file
+  if @uint. errorCount == 0 then
+    [@string generateFileWithPattern
+      !inOutputDirectory
+      !lexiqueClassName + ".cpp"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      ![filewrapper lexiqueGenerationTemplates.newImplementationZone2
+         ![lexiqueClassName identifierRepresentation]
+         ![lexiqueAnalysisContext mLexicalAttributeMap]
+         ![lexiqueAnalysisContext mLexicalMessageMap]
+         ![lexiqueAnalysisContext mTerminalList]
+         ![lexiqueAnalysisContext mLexicalTokenListMap]
+         ![lexiqueAnalysisContext mUnicodeStringToGenerate]
+         ![inLexiqueComponentRoot mLexicalRuleList]
+         !lexiqueAnalysisContext
+         !inLexiqueComponentRoot
+       ]
+      !"\n\n" # Defaut user zone2
+      !"\n\n" # Zone 3
+    ]
+  end
+#--- Generate cocoa header file
+  if @uint. errorCount == 0 then
+    [@string generateFileWithPattern
+      !inOutputDirectory
+      !lexiqueClassName + "-cocoa.h"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      ![filewrapper lexiqueGenerationTemplates.cocoaHeaderZone2
+         !lexiqueClassName
+         !lexiqueAnalysisContext
+       ]
+      !"\n\n" # Defaut user zone2
+      ![filewrapper lexiqueGenerationTemplates.cocoaHeaderZone3
+         !lexiqueClassName
+         !lexiqueAnalysisContext
+       ]
+    ]
+  end
+#--- Generate Cocoa implementation file
+  if @uint. errorCount == 0 then
+    [@string generateFileWithPattern
+      !inOutputDirectory
+      !lexiqueClassName + "-cocoa.m"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      ![filewrapper lexiqueGenerationTemplates.cocoaImplementationZone2
+         !lexiqueClassName + "-cocoa"
+         !lexiqueClassName
+         ![lexiqueAnalysisContext mLexicalAttributeMap]
+         ![lexiqueAnalysisContext mLexicalMessageMap]
+         ![lexiqueAnalysisContext mTerminalList]
+         ![lexiqueAnalysisContext mUnicodeStringToGenerate]
+         ![inLexiqueComponentRoot mLexicalRuleList]
+         !lexiqueAnalysisContext
+         !inLexiqueComponentRoot.mTemplateReplacementList
+         !inLexiqueComponentRoot.mIndexingDirectory.string
+         !inLexiqueComponentRoot.mIndexingListAST
+         !inLexiqueComponentRoot.mLexicalStyleList
+         !inLexiqueComponentRoot.mTemplateDelimitorList
+      ]
+      !"\n\n" # Defaut user zone2
+      !"\n\n" # Zone 3
+    ]
+  end
+}
+
+#---------------------------------------------------------------------------*
+#                         compileLexiqueComponentFromSource                 *
+#---------------------------------------------------------------------------*
+
+proc compileLexiqueComponentFromSource
+  ?let @lstring inSourceFile
+  ?let @string inOutputDirectory
+  ?!@parsedComponentStruct ioParsedComponentStruct {
+  @galgas3LexiqueComponentListAST-element lexiqueComponentRoot
+  parseLexiqueComponent (
+    !inSourceFile
+    !?ioParsedComponentStruct
+    ?lexiqueComponentRoot
+  )
+  compileLexiqueComponentFromAST (
+    ![[[inSourceFile string] lastPathComponent] stringByDeletingPathExtension]
+    !inOutputDirectory
+    !lexiqueComponentRoot
+  )
+}
+
+#---------------------------------------------------------------------------*
+#                         compileLexiqueComponentGalgas3                    *
+#---------------------------------------------------------------------------*
+
+list @lexiqueComponentGenerationList {
+  @string mLexiqueComponentName
+  @string mCppHeaderContents
+  @string mCppContents
+  @string mCocoaHeaderContents
+  @string mCocoaContents
+}
+
+
+#---------------------------------------------------------------------------*
+

@@ -1,0 +1,155 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Grammar Semantics                                                        *
+#                                                                           *
+#  Copyright (C) 2009, ..., 2011 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#         Instruction abstract class for grammar component                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+abstract class @abstractSyntaxInstructionForGrammarAnalysis %generatedInSeparateFile {
+  @location mStartLocation
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#        Syntax signature                                                   *
+#      (sequence of terminal, nonterminal, select and repeat)               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @syntaxInstructionListForGrammarAnalysis {
+  @abstractSyntaxInstructionForGrammarAnalysis mInstruction
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   Production rules list (for a grammar component)                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @productionRuleListForGrammarAnalysis {
+  @lstring mLeftNonterminalSymbol
+  @uint mLeftNonterminalSymbolIndex
+  @syntaxInstructionListForGrammarAnalysis mInstructionList
+  @uint mProductionIndex
+}
+
+#---------------------------------------------------------------------------*
+
+map @unusedNonTerminalSymbolMapForGrammarAnalysis {
+  @uint mNonTerminalIndex
+  insert insertKey error message "the '<%K>' non terminal symbol has already been declared as unused in %L"
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#             nonterminal symbols sorted list                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+sortedlist @nonTerminalSymbolSortedListForGrammarAnalysis {
+  @lstring mNonTerminalSymbol
+  @uint mNonTerminalIndex
+  @nonterminalSymbolLabelMapForGrammarAnalysis mNonterminalSymbolParametersMap
+}{
+  mNonTerminalIndex <
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   Terminal call instruction                                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @terminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
+  @lstring mTerminalSymbolName
+  @uint mTerminalSymbolIndex
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   Nonterminal call instruction                                            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @nonTerminalInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
+  @lstring mNonterminalSymbolName
+  @uint mNonterminalSymbolIndex
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# Liste of branches of a 'select' or 'repeat' instruction                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @branchListForGrammarAnalysis {
+  @syntaxInstructionListForGrammarAnalysis mSyntaxInstructionList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   select instruction (for a grammar component)                            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @selectInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
+  @branchListForGrammarAnalysis mSelectBranchList
+  @uint mAddedNonTerminalSymbolIndex
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   repeat instruction                                                      *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @repeatInstructionForGrammarAnalysis : @abstractSyntaxInstructionForGrammarAnalysis {
+  @branchListForGrammarAnalysis mRepeatBranchList
+  @uint mAddedNonTerminalSymbolIndex
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    List of syntax components For Grammar                                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @syntaxComponentListForGrammarAnalysis {
+  @productionRuleListForGrammarAnalysis mProductionRulesList
+  @lstring mSyntaxComponentName
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#      Terminal symbol map                                                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @terminalSymbolsMapForGrammarAnalysis {
+  @uint mTerminalIndex
+  insert insertKey error message "the terminal symbol '$%K$' is already declared in %L"
+  search searchKey error message "the terminal symbol '$%K$' is not declared"
+}
+
+#---------------------------------------------------------------------------*
+

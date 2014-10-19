@@ -1,0 +1,409 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  'lexique' component metamodel                                            *
+#                                                                           *
+#  Copyright (C) 2007, ..., 2009 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+
+
+#---------------------------------------------------------------------------*
+#   L E X I C A L    E X P R E S S I O N    C O D E    G E N E R A T I O N  *
+#---------------------------------------------------------------------------*
+
+abstract getter @lexicalExpressionAST generateCocoaConditionCode
+  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalOrExpressionAST generateCocoaConditionCode
+  ?@lexiqueAnalysisContext inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = [mLeftOperand generateCocoaConditionCode !inLexiqueAnalysisContext]
+  outGeneratedCode += " || "
+  outGeneratedCode += [mRightOperand generateCocoaConditionCode !inLexiqueAnalysisContext]
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalCharacterIntervalMatchAST generateCocoaConditionCode
+  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = ""
+  outGeneratedCode = "[self testForInputFromChar:"
+  outGeneratedCode += [[[mLowerBound char] uint] string]
+  outGeneratedCode += " toChar:"
+  outGeneratedCode += [[[mUpperBound char] uint] string]
+  outGeneratedCode += "]"
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalStringMatchAST generateCocoaConditionCode
+  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "[self testForInputString:@" + [[mString string] utf8Representation]
+  outGeneratedCode += " advance:YES]"
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalStringNotMatchAST generateCocoaConditionCode
+  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "[self notTestForInputString:@"
+  outGeneratedCode += [[mString string] utf8Representation]
+  outGeneratedCode += " error:& scanningOk]"
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalCharacterMatchAST generateCocoaConditionCode
+  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "[self testForInputChar:"
+  outGeneratedCode += [[[mCharacter char] uint] string]
+  outGeneratedCode += "]"
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalCharacterSetMatchAST generateCocoaConditionCode
+  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "[self testForCharWithFunction:"
+  outGeneratedCode += [mCharacterSetName string]
+  outGeneratedCode += "]"
+}
+
+#---------------------------------------------------------------------------*
+#     R O U T I N E    O R    F U N C T I O N    A R G U M E N T            *
+#---------------------------------------------------------------------------*
+
+abstract getter @lexicalRoutineOrFunctionFormalInputArgumentAST generateCocoaRoutineOrFunctionArgument
+  -> @string outGeneratedCode
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalAttributeInputArgumentAST generateCocoaRoutineOrFunctionArgument
+  -> @string outGeneratedCode {
+  outGeneratedCode = "mLexicalAttribute_" + mAttributeName
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalCharacterInputArgumentAST generateCocoaRoutineOrFunctionArgument
+  -> @string outGeneratedCode {
+  outGeneratedCode = [[[mCharacter char] uint] string]
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalUnsignedInputArgumentAST generateCocoaRoutineOrFunctionArgument
+  -> @string outGeneratedCode {
+  outGeneratedCode = [[mUnsigned uint] string]
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalCurrentCharacterInputArgumentAST generateCocoaRoutineOrFunctionArgument
+  -> @string outGeneratedCode {
+  outGeneratedCode = "mPreviousChar"
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalFunctionInputArgumentAST generateCocoaRoutineOrFunctionArgument
+  -> @string outGeneratedCode {
+  outGeneratedCode = "scanner_cocoa_function_" + mFunctionName + " ("
+  for () in  mFunctionActualArgumentList
+  do outGeneratedCode += [mLexicalActualInputArgument generateCocoaRoutineOrFunctionArgument]
+  between outGeneratedCode += ", "
+  end
+  outGeneratedCode += ")"
+}
+
+#---------------------------------------------------------------------------*
+#                   R O U T I N E    A R G U M E N T                        *
+#---------------------------------------------------------------------------*
+
+abstract getter @abstractLexicalRoutineActualArgumentAST generateCocoaRoutineArgument
+  ?@lexiqueAnalysisContext inLexiqueAnalysisContext
+  -> @string outGeneratedCode
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalAttributeInputOutputArgumentAST generateCocoaRoutineArgument
+  ?@lexiqueAnalysisContext inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  @lexicalTypeEnum lexicalType
+  [[inLexiqueAnalysisContext mLexicalAttributeMap] searchKey !mAttributeName ?lexicalType]
+  outGeneratedCode = ""
+  if lexicalType != @lexicalTypeEnum. lexicalType_string then
+    outGeneratedCode += "& "
+  end
+  outGeneratedCode += "mLexicalAttribute_" + mAttributeName
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalFormalInputArgumentAST generateCocoaRoutineArgument
+  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = [mRoutineOrFunctionFormalInputArgument generateCocoaRoutineOrFunctionArgument]
+}
+
+#---------------------------------------------------------------------------*
+#  L E X I C A L    S E N D  I N S T R U C T I O N    D E F A U L T         *
+#---------------------------------------------------------------------------*
+
+abstract getter @lexicalSendDefaultActionAST generateCocoaDefaultSendCode
+  ?@string inScannerClassName
+  -> @string outGeneratedCode
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalSendTerminalByDefaultAST generateCocoaDefaultSendCode
+  ?@string inScannerClassName
+  -> @string outGeneratedCode {
+  outGeneratedCode = "mTokenCode = " + inScannerClassName + "_1_" + [[mDefaultSentTerminal string] identifierRepresentation] + " ;\n"
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalErrorByDefaultAST generateCocoaDefaultSendCode
+  ?@string unused inScannerClassName
+  -> @string outGeneratedCode {
+  outGeneratedCode = "scanningOk = NO ;\n"
+}
+
+#---------------------------------------------------------------------------*
+#  L E X I C A L    I N S T R U C T I O N    C O D E    G E N E R A T I O N *
+#---------------------------------------------------------------------------*
+
+abstract getter @lexicalInstructionAST generateCocoaInstructionCode
+  ?@string inScannerClassName
+  ?@lexiqueAnalysisContext inLexiqueAnalysisContext
+  -> @string outGeneratedCode
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalStructuredSendInstructionAST generateCocoaInstructionCode
+  ?@string inScannerClassName
+  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = ""
+  for () in  mLexicalSendSearchList do
+    outGeneratedCode += "if (mTokenCode == 0) {\n"
+    outGeneratedCode += "  mTokenCode = search_into_" + [inScannerClassName identifierRepresentation] + "_" + mSearchListName + " (mLexicalAttribute_" + mAttributeName + ") ;\n"
+    outGeneratedCode += "}\n"
+  end
+  outGeneratedCode += "if (mTokenCode == 0) {\n"
+  outGeneratedCode += "  " + [mLexicalSendDefaultAction generateCocoaDefaultSendCode !inScannerClassName]
+  outGeneratedCode += "}\n"
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalSimpleSendInstructionAST generateCocoaInstructionCode
+  ?@string inScannerClassName
+  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "mTokenCode = " + inScannerClassName + "_1_" + [[mSentTerminal string] identifierRepresentation] + " ;\n"
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalRepeatInstructionAST generateCocoaInstructionCode
+  ?@string inScannerClassName
+  ?@lexiqueAnalysisContext inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "do {\n"
+  [!?outGeneratedCode incIndentation !2]
+#--- Repeated instruction
+  for () in  mRepeatedInstructionList do
+    outGeneratedCode += [mInstruction generateCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
+  end
+#---
+  for () in  mLexicalWhileBranchList
+  do
+    outGeneratedCode += "if (scanningOk && ("
+    outGeneratedCode += [mWhileExpression generateCocoaConditionCode !inLexiqueAnalysisContext]
+    outGeneratedCode += ")) {\n"
+    [!?outGeneratedCode incIndentation !2]
+    for () in  mWhileInstructionList do
+      outGeneratedCode += [mInstruction generateCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
+    end
+    [!?outGeneratedCode decIndentation !2]
+  between
+    outGeneratedCode += "}else "
+  end
+  outGeneratedCode += "}else{\n"
+                      "  mLoop = NO ;\n"
+                      "}\n"
+  [!?outGeneratedCode decIndentation !2]
+  outGeneratedCode += "}while (mLoop && scanningOk) ;\n"
+                      "mLoop = YES ;\n"
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalSelectInstructionAST generateCocoaInstructionCode
+  ?@string inScannerClassName
+  ?@lexiqueAnalysisContext inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = ""
+#---
+  for () in  mLexicalSelectBranchList
+  do
+    outGeneratedCode += "if (scanningOk && ("
+    outGeneratedCode += [mSelectExpression generateCocoaConditionCode !inLexiqueAnalysisContext]
+    outGeneratedCode += ")) {\n"
+    [!?outGeneratedCode incIndentation !2]
+    for () in  mSelectInstructionList do
+      outGeneratedCode += [mInstruction generateCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
+    end
+    [!?outGeneratedCode decIndentation !2]
+  between
+    outGeneratedCode += "}else "
+  end
+#--- Default branch
+  if [mDefaultInstructionList length] > 0 then
+    outGeneratedCode += "}else{\n"
+    [!?outGeneratedCode incIndentation !2]
+    for () in  mDefaultInstructionList do
+      outGeneratedCode += [mInstruction generateCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
+    end
+    [!?outGeneratedCode decIndentation !2]
+  end
+  outGeneratedCode += "}\n"
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalRoutineInstructionAST generateCocoaInstructionCode
+  ?@string unused inScannerClassName
+  ?@lexiqueAnalysisContext inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "scanner_cocoa_routine_" + mRoutineName + " (& scanningOk"
+  for () in  mActualArgumentList do
+    outGeneratedCode += ", " + [mLexicalRoutineActualArgument generateCocoaRoutineArgument !inLexiqueAnalysisContext]
+  end
+  outGeneratedCode += ") ;\n"
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalDropInstructionAST generateCocoaInstructionCode
+  ?@string inScannerClassName
+  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "mTokenCode = " + inScannerClassName + "_1_" + [[mTerminalName string] identifierRepresentation] + " ;\n"
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalErrorInstructionAST generateCocoaInstructionCode
+  ?@string unused inScannerClassName
+  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "scanningOk = NO ;\n"
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalWarningInstructionAST generateCocoaInstructionCode
+  ?@string unused inScannerClassName
+  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "" # No generated code
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalTagInstructionAST generateCocoaInstructionCode
+  ?@string unused inScannerClassName
+  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "scanningPointStructForCocoa locationForTag_" + mLexicalTagName + " ;\n"
+  outGeneratedCode += "[self saveScanningPoint: & locationForTag_" + mLexicalTagName + "] ;\n"
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalRewindInstructionAST generateCocoaInstructionCode
+  ?@string inScannerClassName
+  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "[self restoreScanningPoint: & locationForTag_" + mLexicalTagName + "] ;\n"
+  outGeneratedCode += "mTokenCode = " + inScannerClassName + "_1_" + [[mTerminalName string] identifierRepresentation] + " ;\n"
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalLogInstructionAST generateCocoaInstructionCode
+  ?@string unused inScannerClassName
+  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "/* lexicalLog (LINE_AND_SOURCE_FILE) ; */\n"
+}
+
+#---------------------------------------------------------------------------*
+#        L E X I C A L    R U L E    C O D E    G E N E R A T I O N         *
+#---------------------------------------------------------------------------*
+
+abstract getter @abstractLexicalRuleAST generateCocoaCode
+  ?@string inScannerClassName
+  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalImplicitRuleAST generateCocoaCode
+  ?@string inScannerClassName
+  ?@lexiqueAnalysisContext inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  @tokenSortedlist tokenSortedList
+  [[inLexiqueAnalysisContext mLexicalTokenListMap] searchKey !mListName ?* ?tokenSortedList ?*]
+  outGeneratedCode = ""
+  for > () in  tokenSortedList do
+    outGeneratedCode += "if (scanningOk && [self testForInputString:@"
+    outGeneratedCode += [mName utf8Representation]
+    outGeneratedCode += " advance:YES]) {\n"
+    outGeneratedCode += "  mTokenCode = " + inScannerClassName + "_1_" + [mTerminalName identifierRepresentation] + " ;\n"
+    outGeneratedCode += "}else "
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalExplicitRuleAST generateCocoaCode
+  ?@string inScannerClassName
+  ?@lexiqueAnalysisContext inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "if (scanningOk && ("
+  outGeneratedCode += [mLexicalRuleExpression generateCocoaConditionCode !inLexiqueAnalysisContext]
+  outGeneratedCode += ")) {\n"
+  [!?outGeneratedCode incIndentation !2]
+  for () in  mInstructionList do
+    outGeneratedCode += [mInstruction generateCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
+  end
+  [!?outGeneratedCode decIndentation !2]
+  outGeneratedCode += "}else "
+}
+
+#---------------------------------------------------------------------------*
+

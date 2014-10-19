@@ -1,0 +1,1486 @@
+#---------------------------------------------------------------------------*
+
+
+
+#---------------------------------------------------------------------------*
+
+proc build_LIBPM_BDD_group
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ?!@XcodeObjectReferenceList ioFileListForGroup {
+  var fileList =@stringlist.emptyList{}
+  append_cpp_h_files ( !?fileList !"C_BDD" )
+  append_cpp_h_files ( !?fileList !"C_RelationSingleType" )
+  append_cpp_h_files ( !?fileList !"C_RelationConfiguration" )
+  append_cpp_h_files ( !?fileList !"C_Relation" )
+  fileList += !"C_BDD-find-or-add.cpp"
+  fileList += !"C_BDD-and-operation.cpp"
+  fileList += !"C_BDD-single-operand-ops.cpp"
+  fileList += !"C_BDD-node.h"
+#---
+  enter_files_in_group (
+   !?ioXcodeProjectDescription
+   !fileList
+   !?ioFileListForGroup
+  )
+}
+
+#---------------------------------------------------------------------------*
+
+proc build_LIBPM_BDD_source_files_for_sources_build_phase
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList {
+  var fileList =@stringlist.emptyList{}
+  fileList += !"C_BDD.cpp"
+  fileList += !"C_BDD-find-or-add.cpp"
+  fileList += !"C_BDD-and-operation.cpp"
+  fileList += !"C_BDD-single-operand-ops.cpp"
+  fileList += !"C_RelationSingleType.cpp"
+  fileList += !"C_RelationConfiguration.cpp"
+  fileList += !"C_Relation.cpp"
+#---
+  enter_file_list_for_sources_build_phase (
+   !?ioXcodeProjectDescription
+   !fileList
+   !?ioBuildPhaseList
+  )
+}
+
+#---------------------------------------------------------------------------*
+
+proc getGALGAS_2_source_file_list
+  !@stringlist out_fileList {
+
+  out_fileList = @stringlist. emptyList
+  out_fileList += !"typeComparisonResult.cpp"
+  out_fileList += !"typeComparisonResult.h"
+  out_fileList += !"cIndexingDictionary.cpp"
+  out_fileList += !"cIndexingDictionary.h"
+  out_fileList += !"C_Compiler.cpp"
+  out_fileList += !"C_Compiler.h"
+  out_fileList += !"C_Lexique.cpp"
+  out_fileList += !"C_Lexique.h"
+  out_fileList += !"scanner_actions.cpp"
+  out_fileList += !"scanner_actions.h"
+  out_fileList += !"C_galgas_io.cpp"
+  out_fileList += !"C_galgas_io.h"
+  out_fileList += !"C_LocationInSource.cpp"
+  out_fileList += !"C_LocationInSource.h"
+  out_fileList += !"C_SourceTextInString.cpp"
+  out_fileList += !"cCollectionElement.cpp"
+  out_fileList += !"cCollectionElement.h"
+  out_fileList += !"capCollectionElementArray.cpp"
+  out_fileList += !"capCollectionElementArray.h"
+  out_fileList += !"C_galgas_function_descriptor.cpp"
+  out_fileList += !"C_galgas_function_descriptor.h"
+  out_fileList += !"C_galgas_class_inspector.cpp"
+  out_fileList += !"C_galgas_class_inspector.h"
+  out_fileList += !"C_galgas_type_descriptor.cpp"
+  out_fileList += !"C_galgas_type_descriptor.h"
+  out_fileList += !"C_galgas_CLI_Options.cpp"
+  out_fileList += !"C_galgas_CLI_Options.h"
+  out_fileList += !"cGenericAbstractEnumerator.cpp"
+  out_fileList += !"cGenericAbstractEnumerator.h"
+  out_fileList += !"cEnumerator_range.cpp"
+  out_fileList += !"cEnumerator_range.h"
+  out_fileList += !"capSortedListElement.cpp"
+  out_fileList += !"capSortedListElement.h"
+  out_fileList += !"capCollectionElement.cpp"
+  out_fileList += !"capCollectionElement.h"
+  out_fileList += !"cObjectArray.cpp"
+  out_fileList += !"cObjectArray.h"
+  out_fileList += !"cSortedListElement.cpp"
+  out_fileList += !"cSortedListElement.h"
+  out_fileList += !"AC_GALGAS_root.cpp"
+  out_fileList += !"AC_GALGAS_root.h"
+  out_fileList += !"AC_GALGAS_graph.cpp"
+  out_fileList += !"AC_GALGAS_graph.h"
+  out_fileList += !"AC_GALGAS_list.cpp"
+  out_fileList += !"AC_GALGAS_list.h"
+  out_fileList += !"AC_GALGAS_sortedlist.cpp"
+  out_fileList += !"AC_GALGAS_sortedlist.h"
+  out_fileList += !"AC_GALGAS_map.cpp"
+  out_fileList += !"AC_GALGAS_map.h"
+  out_fileList += !"AC_GALGAS_uniqueMap.cpp"
+  out_fileList += !"AC_GALGAS_uniqueMap.h"
+  out_fileList += !"AC_GALGAS_class.cpp"
+  out_fileList += !"AC_GALGAS_class.h"
+  out_fileList += !"AC_GALGAS_enumAssociatedValues.cpp"
+  out_fileList += !"AC_GALGAS_enumAssociatedValues.h"
+  out_fileList += !"acPtr_class.cpp"
+  out_fileList += !"acPtr_class.h"
+  out_fileList += !"cPtr_object.cpp"
+  out_fileList += !"cPtr_object.h"
+  out_fileList += !"GALGAS_application.cpp"
+  out_fileList += !"GALGAS_binaryset.cpp"
+  out_fileList += !"GALGAS_bool.cpp"
+  out_fileList += !"GALGAS_char.cpp"
+  out_fileList += !"GALGAS_data.cpp"
+  out_fileList += !"GALGAS_double.cpp"
+  out_fileList += !"GALGAS_filewrapper.cpp"
+  out_fileList += !"GALGAS_function.cpp"
+  out_fileList += !"GALGAS_location.cpp"
+  out_fileList += !"GALGAS_object.cpp"
+  out_fileList += !"GALGAS_sint.cpp"
+  out_fileList += !"GALGAS_sint_36__34_.cpp"
+  out_fileList += !"GALGAS_string.cpp"
+  out_fileList += !"GALGAS_stringset.cpp"
+  out_fileList += !"GALGAS_type.cpp"
+  out_fileList += !"GALGAS_uint.cpp"
+  out_fileList += !"GALGAS_uint_36__34_.cpp"
+  out_fileList += !"predefined-types.cpp"
+  out_fileList += !"predefined-types.h"
+}
+
+#---------------------------------------------------------------------------*
+
+proc build_LIBPM_GALGAS_2_group
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ?!@XcodeObjectReferenceList ioFileListForGroup {
+  @stringlist fileList
+  getGALGAS_2_source_file_list ( ?fileList )
+#---
+  enter_files_in_group (
+   !?ioXcodeProjectDescription
+   !fileList
+   !?ioFileListForGroup
+  )
+}
+
+#---------------------------------------------------------------------------*
+
+proc build_LIBPM_GALGAS_2_files_for_sources_build_phase
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList {
+  @stringlist fileList
+  getGALGAS_2_source_file_list ( ?fileList )
+  var cppFileList =@stringlist.emptyList{}
+  for () in  fileList do
+    if [mValue pathExtension] == "cpp" then
+      cppFileList += !mValue
+    end
+  end
+#---
+  enter_file_list_for_sources_build_phase (
+   !?ioXcodeProjectDescription
+   !cppFileList
+   !?ioBuildPhaseList
+  )
+}
+
+#---------------------------------------------------------------------------*
+
+proc build_LIBPM_COCOA_GALGAS_group
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ?!@XcodeObjectReferenceList ioFileListForGroup {
+  var fileList =@stringlist.emptyList{}
+  append_m_h_files ( !?fileList !"PMSearchResultDescriptor" )
+  append_m_h_files ( !?fileList !"NSString+identifierRepresentation" )
+  append_m_h_files ( !?fileList !"PMDebug" )
+  append_m_h_files ( !?fileList !"PMFontButton" )
+  append_m_h_files ( !?fileList !"OC_Token" )
+  append_m_h_files ( !?fileList !"OC_Lexique" )
+  append_m_h_files ( !?fileList !"OC_GGS_CommandLineOption" )
+  append_m_h_files ( !?fileList !"enterDefaultCommandLineOptions" )
+  append_m_h_files ( !?fileList !"OC_GGS_Document" )
+  append_m_h_files ( !?fileList !"OC_GGS_DocumentData" )
+  append_m_h_files ( !?fileList !"OC_GGS_ApplicationDelegate" )
+  append_m_h_files ( !?fileList !"PMIssueDescriptor" )
+  append_m_h_files ( !?fileList !"OC_GGS_TextDisplayDescriptor" )
+  append_m_h_files ( !?fileList !"OC_GGS_TextSyntaxColoring" )
+  append_m_h_files ( !?fileList !"OC_GGS_TextView" )
+  append_m_h_files ( !?fileList !"OC_GGS_RulerViewForBuildOutput" )
+  append_m_h_files ( !?fileList !"OC_GGS_RulerViewForTextView" )
+  append_m_h_files ( !?fileList !"OC_GGS_Scroller" )
+  append_m_h_files ( !?fileList !"PMIssueInRuler" )
+  append_m_h_files ( !?fileList !"OC_GGS_BuildTask" )
+  append_m_h_files ( !?fileList !"PMUndoManager" )
+  append_m_h_files ( !?fileList !"PMTableViewRefusesFirstResponder" )
+  fileList += !"I_Stop.tiff"
+  fileList += !"closeSourceFile.tiff"
+  fileList += !"F_CocoaWrapperForGalgas.h"
+#--- Enter Resource files
+  enter_xib_file_in_group (
+   !?ioXcodeProjectDescription
+   !"English.lproj"
+   !"MainMenu.xib"
+   !?ioFileListForGroup
+  )
+  enter_xib_file_in_group (
+   !?ioXcodeProjectDescription
+   !"English.lproj"
+   !"PMDebug.xib"
+   !?ioFileListForGroup
+  )
+  ;
+  enter_xib_file_in_group (
+   !?ioXcodeProjectDescription
+   !"English.lproj"
+   !"OC_GGS_Document.xib"
+   !?ioFileListForGroup
+  )
+#---
+  enter_files_in_group (
+   !?ioXcodeProjectDescription
+   !fileList
+   !?ioFileListForGroup
+  )
+}
+
+
+#---------------------------------------------------------------------------*
+
+proc build_LIBPM_COCOA_UTILITIES_group
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ?!@XcodeObjectReferenceList ioFileListForGroup {
+  var fileList =@stringlist.emptyList{}
+  fileList += !"main.m"
+  fileList += !"PMCancelButtonForPanel.m"
+  fileList += !"PMOkButtonForPanel.m"
+#---
+  enter_files_in_group (
+   !?ioXcodeProjectDescription
+   !fileList
+   !?ioFileListForGroup
+  )
+}
+
+#---------------------------------------------------------------------------*
+
+proc build_LIBPM_FILES_group
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ?!@XcodeObjectReferenceList ioFileListForGroup {
+  var fileList =@stringlist.emptyList{}
+  append_cpp_h_files ( !?fileList !"C_FileManager" )
+  append_cpp_h_files ( !?fileList !"AC_FileHandle" )
+  append_cpp_h_files ( !?fileList !"AC_FileHandleForWriting" )
+  append_cpp_h_files ( !?fileList !"C_TextFileWrite" )
+  append_cpp_h_files ( !?fileList !"C_HTML_FileWrite" )
+  append_cpp_h_files ( !?fileList !"C_BinaryFileWrite" )
+#---
+  enter_files_in_group (
+   !?ioXcodeProjectDescription
+   !fileList
+   !?ioFileListForGroup
+  )
+}
+
+#---------------------------------------------------------------------------*
+
+proc build_LIBPM_FILES_files_for_sources_build_phase
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList {
+  var fileList =@stringlist.emptyList{}
+  fileList += !"C_FileManager.cpp"
+  fileList += !"AC_FileHandle.cpp"
+  fileList += !"AC_FileHandleForWriting.cpp"
+  fileList += !"C_TextFileWrite.cpp"
+  fileList += !"C_HTML_FileWrite.cpp"
+  fileList += !"C_BinaryFileWrite.cpp"
+#---
+  enter_file_list_for_sources_build_phase (
+   !?ioXcodeProjectDescription
+   !fileList
+   !?ioBuildPhaseList
+  )
+}
+
+#---------------------------------------------------------------------------*
+
+proc build_LIBPM_COMMAND_LINE_INTERFACE_group
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ?!@XcodeObjectReferenceList ioFileListForGroup {
+  var fileList =@stringlist.emptyList{}
+  append_cpp_h_files ( !?fileList !"C_CommandLineOption" )
+  append_cpp_h_files ( !?fileList !"C_BoolCommandLineOption" )
+  append_cpp_h_files ( !?fileList !"C_UIntCommandLineOption" )
+  append_cpp_h_files ( !?fileList !"C_StringCommandLineOption" )
+  append_cpp_h_files ( !?fileList !"C_builtin_CLI_Options" )
+  append_cpp_h_files ( !?fileList !"F_Analyze_CLI_Options" )
+  append_cpp_h_files ( !?fileList !"F_mainForLIBPM" )
+#---
+  enter_files_in_group (
+   !?ioXcodeProjectDescription
+   !fileList
+   !?ioFileListForGroup
+  )
+}
+
+#---------------------------------------------------------------------------*
+
+proc build_LIBPM_COMMAND_LINE_INTERFACE_files_for_sources_build_phase
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList {
+  var fileList =@stringlist.emptyList{}
+  fileList += !"C_builtin_CLI_Options.cpp"
+  fileList += !"C_CommandLineOption.cpp"
+  fileList += !"C_BoolCommandLineOption.cpp"
+  fileList += !"C_UIntCommandLineOption.cpp"
+  fileList += !"C_StringCommandLineOption.cpp"
+  fileList += !"F_Analyze_CLI_Options.cpp"
+  fileList += !"F_mainForLIBPM.cpp"
+#---
+  enter_file_list_for_sources_build_phase (
+   !?ioXcodeProjectDescription
+   !fileList
+   !?ioBuildPhaseList
+  )
+}
+
+#---------------------------------------------------------------------------*
+
+proc build_LIBPM_COLLECTIONS_group
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ?!@XcodeObjectReferenceList ioFileListForGroup {
+  var fileList =@stringlist.emptyList{}
+  fileList += !"TC_FIFO.h"
+  fileList += !"TC_LinkedList.h"
+  fileList += !"TC_Array.h"
+  fileList += !"TC_Array2.h"
+  fileList += !"TC_UniqueArray.h"
+  fileList += !"TC_UniqueArray2.h"
+#---
+  enter_files_in_group (
+   !?ioXcodeProjectDescription
+   !fileList
+   !?ioFileListForGroup
+  )
+}
+
+#---------------------------------------------------------------------------*
+
+proc build_PROJECT_RESOURCES_group
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ?!@XcodeObjectReferenceList ioFileListForGroup {
+#--- Enter Resources files
+  enter_xib_file_in_group (
+   !?ioXcodeProjectDescription
+   !"English.lproj"
+   !"Credits.rtf"
+   !?ioFileListForGroup
+  )
+  enter_plist_strings_in_group (
+   !?ioXcodeProjectDescription
+   !"English.lproj"
+   !"InfoPlist.strings"
+   !?ioFileListForGroup
+  )
+#---
+  enter_files_in_group (
+   !?ioXcodeProjectDescription
+   !@stringlist. listWithValue { !"Info.plist"}
+   !?ioFileListForGroup
+  )
+}
+
+#---------------------------------------------------------------------------*
+
+proc build_LIBPM_STRINGS_group
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ?!@XcodeObjectReferenceList ioFileListForGroup {
+  var fileList =@stringlist.emptyList{}
+  append_cpp_h_files ( !?fileList !"C_String" )
+  append_cpp_h_files ( !?fileList !"C_HTMLString" )
+  append_cpp_h_files ( !?fileList !"unicode_character_cpp" )
+  append_cpp_h_files ( !?fileList !"unicode_string_routines" )
+  append_m_h_files (   !?fileList !"unicode_character_m" )
+  fileList += !"cUnicodeData.h"
+#---
+  enter_files_in_group (
+   !?ioXcodeProjectDescription
+   !fileList
+   !?ioFileListForGroup
+  )
+}
+
+#---------------------------------------------------------------------------*
+
+proc build_LIBPM_STRINGS_files_for_sources_build_phase
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList {
+  var fileList =@stringlist.emptyList{}
+  fileList += !"C_String.cpp"
+  fileList += !"C_HTMLString.cpp"
+  fileList += !"unicode_character_cpp.cpp"
+  fileList += !"unicode_string_routines.cpp"
+#---
+  enter_file_list_for_sources_build_phase (
+   !?ioXcodeProjectDescription
+   !fileList
+   !?ioBuildPhaseList
+  )
+}
+
+#---------------------------------------------------------------------------*
+
+proc build_LIBPM_UTILITIES_group
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ?!@XcodeObjectReferenceList ioFileListForGroup {
+  var fileList =@stringlist.emptyList{}
+  fileList += !"M_Threads.h"
+  append_cpp_h_files ( !?fileList !"C_SharedObject" )
+  append_cpp_h_files ( !?fileList !"C_Data" )
+  append_cpp_h_files ( !?fileList !"md5" )
+  append_cpp_h_files ( !?fileList !"F_GetPrime" )
+  append_cpp_h_files ( !?fileList !"F_DisplayException" )
+  append_cpp_h_files ( !?fileList !"MF_Assert" )
+  append_cpp_h_files ( !?fileList !"cpp-allocation" )
+  append_cpp_h_files ( !?fileList !"basic-allocation" )
+  append_cpp_h_files ( !?fileList !"MF_MemoryControl" )
+  append_cpp_h_files ( !?fileList !"C_PrologueEpilogue" )
+  append_cpp_h_files ( !?fileList !"PMUInt128" )
+  append_cpp_h_files ( !?fileList !"C_UIntSet" )
+  append_cpp_h_files ( !?fileList !"C_DirectedGraph" )
+  fileList += !"M_SourceLocation.h"
+  fileList += !"M_machine.h"
+  fileList += !"TF_inf.h"
+  fileList += !"TF_sup.h"
+  fileList += !"TF_Swap.h"
+#---
+  enter_files_in_group (
+   !?ioXcodeProjectDescription
+   !fileList
+   !?ioFileListForGroup
+  )
+}
+
+#---------------------------------------------------------------------------*
+
+proc build_LIBPM_UTILITIES_files_for_sources_build_phase
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList {
+  var fileList =@stringlist.emptyList{}
+  fileList += !"C_SharedObject.cpp"
+  fileList += !"C_Data.cpp"
+  fileList += !"PMUInt128.cpp"
+  fileList += !"C_UIntSet.cpp"
+  fileList += !"C_DirectedGraph.cpp"
+  fileList += !"C_PrologueEpilogue.cpp"
+  fileList += !"md5.cpp"
+  fileList += !"F_GetPrime.cpp"
+  fileList += !"F_DisplayException.cpp"
+  fileList += !"MF_Assert.cpp"
+  fileList += !"MF_MemoryControl.cpp"
+  fileList += !"cpp-allocation.cpp"
+  fileList += !"basic-allocation.cpp"
+#---
+  enter_file_list_for_sources_build_phase (
+   !?ioXcodeProjectDescription
+   !fileList
+   !?ioBuildPhaseList
+  )
+}
+
+#---------------------------------------------------------------------------*
+
+proc build_LIBPM_STREAMS_group
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ?!@XcodeObjectReferenceList ioFileListForGroup {
+  var fileList =@stringlist.emptyList{}
+  append_cpp_h_files ( !?fileList !"C_ErrorOut" )
+  append_cpp_h_files ( !?fileList !"AC_OutputStream" )
+  append_cpp_h_files ( !?fileList !"C_ConsoleOut" )
+  append_cpp_h_files ( !?fileList !"C_ColoredConsole" )
+  append_cpp_h_files ( !?fileList !"C_TCPSocketOut" )
+#---
+  enter_files_in_group (
+   !?ioXcodeProjectDescription
+   !fileList
+   !?ioFileListForGroup
+  )
+}
+
+#---------------------------------------------------------------------------*
+
+proc build_LIBPM_STREAMS_files_for_sources_build_phase
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList {
+  var fileList =@stringlist.emptyList{}
+  fileList += !"AC_OutputStream.cpp"
+  fileList += !"C_ColoredConsole.cpp"
+  fileList += !"C_ErrorOut.cpp"
+  fileList += !"C_ConsoleOut.cpp"
+  fileList += !"C_TCPSocketOut.cpp"
+#---
+  enter_file_list_for_sources_build_phase (
+   !?ioXcodeProjectDescription
+   !fileList
+   !?ioBuildPhaseList
+  )
+}
+
+#---------------------------------------------------------------------------*
+
+proc build_LIBPM_TIME_group
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ?!@XcodeObjectReferenceList ioFileListForGroup {
+  var fileList =@stringlist.emptyList{}
+  append_cpp_h_files ( !?fileList !"C_DateTime" )
+  append_cpp_h_files ( !?fileList !"C_Timer" )
+#---
+  enter_files_in_group (
+   !?ioXcodeProjectDescription
+   !fileList
+   !?ioFileListForGroup
+  )
+}
+
+#---------------------------------------------------------------------------*
+
+proc build_LIBPM_TIME_files_for_sources_build_phase
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList {
+  var fileList =@stringlist.emptyList{}
+  fileList += !"C_DateTime.cpp"
+  fileList += !"C_Timer.cpp"
+#---
+  enter_file_list_for_sources_build_phase (
+   !?ioXcodeProjectDescription
+   !fileList
+   !?ioBuildPhaseList
+  )
+}
+
+#---------------------------------------------------------------------------*
+
+proc build_GENERATED_BY_GALGAS_files_for_sources_build_phase
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ?let @stringset inComponentNameSet
+  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList {
+  var fileList =@stringlist.emptyList{}
+  for () in  inComponentNameSet do
+    if [key pathExtension] != "h" then
+      fileList += !key
+    end
+  end
+#---
+  enter_file_list_for_sources_build_phase (
+   !?ioXcodeProjectDescription
+   !fileList
+   !?ioBuildPhaseList
+  )
+}
+
+#---------------------------------------------------------------------------*
+
+proc build_GENERATED_BY_GALGAS_group
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ?let @stringset inComponentNameSet
+  ?let @stringset inGUISourceNameSet
+  ?!@XcodeObjectReferenceList ioFileListForGroup {
+  var fileList =@stringlist.emptyList{}
+  for s in inComponentNameSet do
+    fileList += !s
+  end
+  for () in  inGUISourceNameSet do
+    fileList += !key
+  end
+#---
+  enter_files_in_group (
+   !?ioXcodeProjectDescription
+   !fileList
+   !?ioFileListForGroup
+  )
+}
+
+#---------------------------------------------------------------------------*
+
+proc build_HAND_CODED_source_files_for_sources_tool_build_phase
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ?let @stringset inExternSourceNameSet
+  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList {
+  var fileList =@stringlist.emptyList{}
+  for () in  inExternSourceNameSet do
+    @string extension = [key pathExtension]
+    if (extension == "cpp") | (extension == "c") | (extension == "m") | (extension == "mm") then
+      fileList += !key
+    end
+  end
+#---
+  enter_file_list_for_sources_build_phase (
+   !?ioXcodeProjectDescription
+   !fileList
+   !?ioBuildPhaseList
+  )
+}
+
+#---------------------------------------------------------------------------*
+
+proc build_HAND_CODED_source_files_for_sources_cocoa_build_phase
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ?let @stringset inExternSourceNameSet
+  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList {
+  var fileList =@stringlist.emptyList{}
+  for () in  inExternSourceNameSet do
+    @string extension = [key pathExtension]
+    if (extension == "cpp") | (extension == "c") | (extension == "m") | (extension == "mm") | (extension == "xib") then
+      fileList += !key
+    end
+  end
+#---
+  enter_file_list_for_sources_build_phase (
+   !?ioXcodeProjectDescription
+   !fileList
+   !?ioBuildPhaseList
+  )
+}
+
+#---------------------------------------------------------------------------*
+
+proc build_HAND_CODED_SOURCES_group
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ?let @stringset inExternSourceNameSet
+  ?!@XcodeObjectReferenceList ioFileListForGroup {
+  @stringlist fileList = {}
+  for () in  inExternSourceNameSet do
+    @string extension = [key pathExtension]
+    if (extension == "cpp") | (extension == "c") | (extension == "h") | (extension == "m") | (extension == "mm") | (extension == "xib") then
+      fileList += !key
+    end
+  end
+#---
+  enter_files_in_group (
+   !?ioXcodeProjectDescription
+   !fileList
+   !?ioFileListForGroup
+  )
+}
+
+#---------------------------------------------------------------------------*
+
+proc build_FRAMEWORKS_group
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ?!@XcodeObjectReferenceList ioFileListForGroup
+  ?let @stringset inExternSourceForTool
+  ?let @stringset inExternSourceForApp
+  ?let @stringlist inHandCodedLinkAppFileList
+  ?let @bool inHandleUpdateFromInternet {
+  var fileSet =@stringset.setWithStringList{ !inHandCodedLinkAppFileList}
+#  @stringset fileSet [emptySet] ;
+  fileSet += !"AppKit.framework"
+  fileSet += !"Cocoa.framework"
+  if inHandleUpdateFromInternet then
+    fileSet += !"WebKit.framework"
+    fileSet += !"Foundation.framework"
+    fileSet += !"Security.framework"
+    fileSet += !"ServiceManagement.framework"
+  end
+  for () in  inExternSourceForTool do
+    if [key pathExtension] == "framework" then
+      fileSet += !key
+    end
+  end
+  for () in  inExternSourceForApp do
+    if [key pathExtension] == "framework" then
+      fileSet += !key
+    end
+  end
+#---
+  enter_files_in_group (
+   !?ioXcodeProjectDescription
+   ![fileSet stringList]
+   !?ioFileListForGroup
+  )
+}
+
+#---------------------------------------------------------------------------*
+
+proc build_FRAMEWORKS_for_frameworks_build_phase
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ?let @stringset inExternFileSet
+  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList {
+  var fileList =@stringlist.emptyList{}
+  for () in  inExternFileSet do
+    if [key pathExtension] == "framework" then
+      fileList += !key
+    end
+  end
+#---
+  enter_files_for_frameworks_build_phase (
+   !?ioXcodeProjectDescription
+   !fileList
+   !?ioBuildPhaseList
+  )
+}
+
+#---------------------------------------------------------------------------*
+
+proc build_RESOURCES_for_resources_build_phase
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ?let @string inBundleBaseName
+  ?let @string inProjectName
+  ?let @stringlist inResourceFiles
+  ?let @bool inAddApplicationUpdateXib
+  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList {
+  @stringlist fileList = inResourceFiles
+  fileList += !inProjectName
+  fileList += !inProjectName + "_debug"
+  fileList += !"I_Stop.tiff"
+  fileList += !"closeSourceFile.tiff"
+  fileList += !"PMDebug.xib"
+  fileList += !"MainMenu.xib"
+  fileList += !"OC_GGS_Document.xib"
+  if inAddApplicationUpdateXib then
+    fileList += !inBundleBaseName + "." + inProjectName + ".updaterApp"
+    fileList += !"PMApplicationUpdate.xib"
+  end
+  fileList += !"InfoPlist.strings"
+  fileList += !"Credits.rtf"
+#---
+  enter_files_for_frameworks_build_phase (
+   !?ioXcodeProjectDescription
+   !fileList
+   !?ioBuildPhaseList
+  )
+}
+
+#---------------------------------------------------------------------------*
+
+private proc build_COCOA_APP_files_for_sources_build_phase
+  ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ?let @stringset inGUISourceNameSet
+#  ??@stringset inExternSourceNameSet_app
+  ?let @bool inImplementsUpdate
+  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList {
+  var fileList =@stringlist.emptyList{}
+  fileList += !"main.m"
+  fileList += !"NSString+identifierRepresentation.m"
+  fileList += !"PMDebug.m"
+  fileList += !"PMCancelButtonForPanel.m"
+  fileList += !"PMOkButtonForPanel.m"
+  fileList += !"unicode_character_m.m"
+  fileList += !"PMSearchResultDescriptor.m"
+  fileList += !"PMFontButton.m"
+  fileList += !"OC_Token.m"
+  fileList += !"OC_Lexique.m"
+  fileList += !"OC_GGS_CommandLineOption.m"
+  fileList += !"enterDefaultCommandLineOptions.m"
+  fileList += !"OC_GGS_Document.m"
+  fileList += !"OC_GGS_DocumentData.m"
+  fileList += !"OC_GGS_ApplicationDelegate.m"
+  fileList += !"PMIssueDescriptor.m"
+  fileList += !"OC_GGS_TextDisplayDescriptor.m"
+  fileList += !"OC_GGS_TextSyntaxColoring.m"
+  fileList += !"OC_GGS_TextView.m"
+  fileList += !"OC_GGS_RulerViewForTextView.m"
+  fileList += !"OC_GGS_RulerViewForBuildOutput.m"
+  fileList += !"OC_GGS_Scroller.m"
+  fileList += !"PMIssueInRuler.m"
+  fileList += !"OC_GGS_BuildTask.m"
+  fileList += !"PMUndoManager.m"
+  fileList += !"PMTableViewRefusesFirstResponder.m"
+#---------- "Application Update" Files
+  if inImplementsUpdate then
+    fileList += !"PMApplicationUpdate.m"
+    fileList += !"PMDownloadData.m"
+    fileList += !"PMDownloadFile.m"
+  end
+#--- Generated by GALGAS
+  for () in  inGUISourceNameSet do
+    if [key pathExtension] != "h" then
+      fileList += !key
+    end
+  end
+#--- Extern files
+#  foreach inExternSourceNameSet_app do
+#    @string extension := [key pathExtension] ;
+#    if (extension == "c") | (extension == "cpp") | (extension == "m") | (extension == "mm") then
+#      fileList += !key ;
+#    end if ;
+#  end foreach ;
+#---
+  enter_file_list_for_sources_build_phase (
+   !?ioXcodeProjectDescription
+   !fileList
+   !?ioBuildPhaseList
+  )
+}
+
+#----------------------------------------------------------------------------*
+
+map @projectQualifiedFeatureMap {
+  @lstring mFeatureValue
+  insert insertKey error message "the '%K' feature is already declared"
+  search searchKey error message "the '%K' feature is not declared"  
+}
+
+#---------------------------------------------------------------------------*
+
+proc generateXcodeProject
+  ?let @stringset inExternSourceNameSet_tool
+  ?let @stringset inSourceFileSetForTool
+  ?let @string inGeneratedByGalgasSourcePath
+  ?let @stringset inExternSourceNameSet_app
+  ?let @stringset inGUISourceNameSet_app
+  ?let @string inProjectName
+  ?let @stringlist inHandCodedLinkAppFileList
+  ?let @string in_xcodeproj_filePath
+  ?let @stringlist inResourceFiles
+  ?let @string inReferenceFilePath
+  ?let @string inSDK
+  ?let @string inLIBPMpath
+  ?let @string inAdditionalPathForTool
+  ?let @bool inMultiThreadingEnabled
+  ?let @bool inUsesARC
+  ?let @projectQualifiedFeatureMap inProjectQualifiedFeatureMap {
+  let @bool handleUpdateFromInternet = [inProjectQualifiedFeatureMap hasKey !"repositoryURL"]
+#---
+  @string bundleBaseName
+  with "applicationBundleBase" in  inProjectQualifiedFeatureMap  do
+    bundleBaseName = mFeatureValue.string
+  else
+    bundleBaseName = ""
+  end
+#---
+  @XcodeProjectDescription XcodeProjectDescription
+  initXcodeProjectDescription ( ?XcodeProjectDescription )
+#-------------------------------------------------- Build source lists
+#---------- HAND CODED SOURCES
+  var fileListOf_HAND_CODED_SOURCES_group =@XcodeObjectReferenceList.emptyList{}
+  @stringset fileSet = inExternSourceNameSet_tool | inExternSourceNameSet_app
+  [!?fileSet removeKey !"AppKit.framework"]
+  [!?fileSet removeKey !"Cocoa.framework"]
+  if [fileSet count] > 0 then
+    build_HAND_CODED_SOURCES_group (
+      !?XcodeProjectDescription
+      !fileSet
+      !?fileListOf_HAND_CODED_SOURCES_group
+    )
+  #---
+    enter_group (
+      !?XcodeProjectDescription
+      !"Hand Coded Sources"
+      !"../hand_coded_sources"
+      !fileListOf_HAND_CODED_SOURCES_group
+    )
+  end
+#---------- GENERATED BY GALGAS
+  var fileListOf_GENERATED_BY_GALGAS_group =@XcodeObjectReferenceList.emptyList{}
+  build_GENERATED_BY_GALGAS_group (
+    !?XcodeProjectDescription
+    !inSourceFileSetForTool
+    !inGUISourceNameSet_app 
+    !?fileListOf_GENERATED_BY_GALGAS_group
+  )
+#---
+  enter_group (
+    !?XcodeProjectDescription
+    !"Generated by GALGAS"
+    !inGeneratedByGalgasSourcePath
+    !fileListOf_GENERATED_BY_GALGAS_group
+  )
+#---------- "LIBPM" sub group list
+  var libpmGroupChildrenList =@XcodeObjectReferenceList.emptyList{}
+#---------- LIBPM / BDD
+  var fileListOf_LIBPM_BDD_group =@XcodeObjectReferenceList.emptyList{}
+  build_LIBPM_BDD_group (
+    !?XcodeProjectDescription
+    !?fileListOf_LIBPM_BDD_group
+  )
+#---
+  enter_subgroup (
+    !?XcodeProjectDescription
+    !"Binary Decision Diagrams"
+    !"bdd"
+    !fileListOf_LIBPM_BDD_group
+    !?libpmGroupChildrenList
+  )
+#---------- LIBPM / Cocoa GALGAS
+  var fileListOf_LIBPM_COCOA_GALGAS_group =@XcodeObjectReferenceList.emptyList{}
+  build_LIBPM_COCOA_GALGAS_group (
+    !?XcodeProjectDescription
+    !?fileListOf_LIBPM_COCOA_GALGAS_group
+  )
+  enter_subgroup (
+    !?XcodeProjectDescription
+    !"Cocoa GALGAS"
+    !"cocoa_galgas"
+    !fileListOf_LIBPM_COCOA_GALGAS_group
+    !?libpmGroupChildrenList
+  )
+#---------- LIBPM / Cocoa Utilities
+  var fileListOf_LIBPM_COCOA_UTILITIES_group =@XcodeObjectReferenceList.emptyList{}
+  build_LIBPM_COCOA_UTILITIES_group (
+    !?XcodeProjectDescription
+    !?fileListOf_LIBPM_COCOA_UTILITIES_group
+  )
+  enter_subgroup (
+    !?XcodeProjectDescription
+    !"Cocoa Utilities"
+    !"cocoa_utilities"
+    !fileListOf_LIBPM_COCOA_UTILITIES_group
+    !?libpmGroupChildrenList
+  )
+#---------- LIBPM / COLLECTIONS
+  var fileListOf_LIBPM_COLLECTIONS_group =@XcodeObjectReferenceList.emptyList{}
+  build_LIBPM_COLLECTIONS_group (
+    !?XcodeProjectDescription
+    !?fileListOf_LIBPM_COLLECTIONS_group
+  )
+#---
+  enter_subgroup (
+    !?XcodeProjectDescription
+    !"Collections"
+    !"collections"
+    !fileListOf_LIBPM_COLLECTIONS_group
+    !?libpmGroupChildrenList
+  )
+#---------- LIBPM / COMMAND LINE INTERFACE
+  var fileListOf_LIBPM_COMMAND_LINE_INTERFACE_group =@XcodeObjectReferenceList.emptyList{}
+  build_LIBPM_COMMAND_LINE_INTERFACE_group (
+    !?XcodeProjectDescription
+    !?fileListOf_LIBPM_COMMAND_LINE_INTERFACE_group
+  )
+#---
+  enter_subgroup (
+    !?XcodeProjectDescription
+    !"Command Line Interface"
+    !"command_line_interface"
+    !fileListOf_LIBPM_COMMAND_LINE_INTERFACE_group
+    !?libpmGroupChildrenList
+  )
+#---------- LIBPM / FILES
+  var fileListOf_LIBPM_FILE_group =@XcodeObjectReferenceList.emptyList{}
+  build_LIBPM_FILES_group (
+    !?XcodeProjectDescription
+    !?fileListOf_LIBPM_FILE_group
+  )
+#---
+  enter_subgroup (
+    !?XcodeProjectDescription
+    !"Files"
+    !"files"
+    !fileListOf_LIBPM_FILE_group
+    !?libpmGroupChildrenList
+  )
+#---------- LIBPM / GALGAS 2
+  var fileListOf_LIBPM_GALGAS_2_group =@XcodeObjectReferenceList.emptyList{}
+  build_LIBPM_GALGAS_2_group (
+    !?XcodeProjectDescription
+    !?fileListOf_LIBPM_GALGAS_2_group
+  )
+#---
+  enter_subgroup (
+    !?XcodeProjectDescription
+    !"GALGAS 2"
+    !"galgas2"
+    !fileListOf_LIBPM_GALGAS_2_group
+    !?libpmGroupChildrenList
+  )
+#---------- LIBPM / STREAMS
+  var fileListOf_LIBPM_STREAMS_group =@XcodeObjectReferenceList.emptyList{}
+  build_LIBPM_STREAMS_group (
+    !?XcodeProjectDescription
+    !?fileListOf_LIBPM_STREAMS_group
+  )
+#---
+  enter_subgroup (
+    !?XcodeProjectDescription
+    !"Streams"
+    !"streams"
+    !fileListOf_LIBPM_STREAMS_group
+    !?libpmGroupChildrenList
+  )
+#---------- LIBPM / TIME
+  var fileListOf_LIBPM_TIME_group =@XcodeObjectReferenceList.emptyList{}
+  build_LIBPM_TIME_group (
+    !?XcodeProjectDescription
+    !?fileListOf_LIBPM_TIME_group
+  )
+#---
+  enter_subgroup (
+    !?XcodeProjectDescription
+    !"Time"
+    !"time"
+    !fileListOf_LIBPM_TIME_group
+    !?libpmGroupChildrenList
+  )
+#---------- LIBPM / UTILITIES
+  var fileListOf_LIBPM_UTILITIES_group =@XcodeObjectReferenceList.emptyList{}
+  build_LIBPM_UTILITIES_group (
+    !?XcodeProjectDescription
+    !?fileListOf_LIBPM_UTILITIES_group
+  )
+#---
+  enter_subgroup (
+    !?XcodeProjectDescription
+    !"Utilities"
+    !"utilities"
+    !fileListOf_LIBPM_UTILITIES_group
+    !?libpmGroupChildrenList
+  )
+#---------- LIBPM / Strings
+  var fileListOf_LIBPM_STRINGS_group =@XcodeObjectReferenceList.emptyList{}
+  build_LIBPM_STRINGS_group (
+    !?XcodeProjectDescription
+    !? fileListOf_LIBPM_STRINGS_group
+  )
+#---
+  enter_subgroup (
+    !?XcodeProjectDescription
+    !"Strings"
+    !"strings"
+    ! fileListOf_LIBPM_STRINGS_group
+    !?libpmGroupChildrenList
+  )
+#---------- "LIBMP" Group
+  enter_group (
+    !?XcodeProjectDescription
+    !"LIBPM"
+    !inLIBPMpath
+    !libpmGroupChildrenList
+  )
+#---------- "Project Resources" Group
+  var fileListOf_PROJECT_RESOURCES_group =@XcodeObjectReferenceList.emptyList{}
+  build_PROJECT_RESOURCES_group (
+    !?XcodeProjectDescription
+    !?fileListOf_PROJECT_RESOURCES_group
+  )
+  enter_group (
+    !?XcodeProjectDescription
+    !"Project Resources"
+    !""
+    !fileListOf_PROJECT_RESOURCES_group
+  )
+#---------- "User Resources" Group
+  var fileListOf_USER_RESOURCES_group =@XcodeObjectReferenceList.emptyList{}
+  enter_files_in_group (
+   !?XcodeProjectDescription
+   !inResourceFiles
+   !?fileListOf_USER_RESOURCES_group
+  )
+  enter_group (
+    !?XcodeProjectDescription
+    !"User Resources"
+    !"userResources"
+    !fileListOf_USER_RESOURCES_group
+  )
+#---------- "Frameworks" Group
+  var fileListOf_FRAMEWORKS_group =@XcodeObjectReferenceList.emptyList{}
+  build_FRAMEWORKS_group (
+    !?XcodeProjectDescription
+    !?fileListOf_FRAMEWORKS_group
+    !inExternSourceNameSet_tool
+    !inExternSourceNameSet_app
+    !inHandCodedLinkAppFileList
+    !handleUpdateFromInternet
+  )
+#---
+  enter_group (
+    !?XcodeProjectDescription
+    !"Frameworks"
+    !"/System/Library/Frameworks"
+    !fileListOf_FRAMEWORKS_group
+  )
+#---------- "Application Update" Group
+  if handleUpdateFromInternet then
+  #--- Application update group
+    var fileListOf_APPLICATION_UPDATE_group =@XcodeObjectReferenceList.emptyList{}
+    enter_file_in_group ( !?XcodeProjectDescription !"PMApplicationUpdate.h" !?fileListOf_APPLICATION_UPDATE_group )
+    enter_file_in_group ( !?XcodeProjectDescription !"PMApplicationUpdate.m" !?fileListOf_APPLICATION_UPDATE_group )
+    enter_xib_file_in_group (
+     !?XcodeProjectDescription
+     !"English.lproj"
+     !"PMApplicationUpdate.xib"
+     !?fileListOf_APPLICATION_UPDATE_group
+    )
+    enter_file_in_group ( !?XcodeProjectDescription !"PMDownloadData.h" !?fileListOf_APPLICATION_UPDATE_group )
+    enter_file_in_group ( !?XcodeProjectDescription !"PMDownloadData.m" !?fileListOf_APPLICATION_UPDATE_group )
+    enter_file_in_group ( !?XcodeProjectDescription !"PMDownloadFile.h" !?fileListOf_APPLICATION_UPDATE_group )
+    enter_file_in_group ( !?XcodeProjectDescription !"PMDownloadFile.m" !?fileListOf_APPLICATION_UPDATE_group )
+    enter_file_in_group ( !?XcodeProjectDescription !"PMSnowLeopardLionCompatibility.h" !?fileListOf_APPLICATION_UPDATE_group )
+    enter_group (
+      !?XcodeProjectDescription
+      !"Application Update"
+      !"cocoa-application-update/application"
+      !fileListOf_APPLICATION_UPDATE_group
+    )
+  #--- Updater tool group
+    var fileListOf_UPDATER_TOOL_group =@XcodeObjectReferenceList.emptyList{}
+    enter_file_in_group ( !?XcodeProjectDescription !"PMUpdaterServerObject.h" !?fileListOf_UPDATER_TOOL_group )
+    enter_file_in_group ( !?XcodeProjectDescription !"PMUpdaterServerObject.m" !?fileListOf_UPDATER_TOOL_group )
+    enter_file_in_group ( !?XcodeProjectDescription !"PMUpdaterServerProtocol.h" !?fileListOf_UPDATER_TOOL_group )
+    enter_file_in_group ( !?XcodeProjectDescription !"updater-tool-Info.plist" !?fileListOf_UPDATER_TOOL_group )
+    enter_file_in_group ( !?XcodeProjectDescription !"updater-tool-Launchd.plist" !?fileListOf_UPDATER_TOOL_group )
+    enter_file_in_group ( !?XcodeProjectDescription !"updater-tool-main.m" !?fileListOf_UPDATER_TOOL_group )
+    enter_group (
+      !?XcodeProjectDescription
+      !"Updater Tool"
+      !"cocoa-application-update/updater-tool"
+      !fileListOf_UPDATER_TOOL_group
+    )
+  #--- Updater Application group
+    var fileListOf_UPDATER_APP_group =@XcodeObjectReferenceList.emptyList{}
+    enter_file_in_group ( !?XcodeProjectDescription !"PMUpdaterAppDelegate.h" !?fileListOf_UPDATER_APP_group )
+    enter_file_in_group ( !?XcodeProjectDescription !"PMUpdaterAppDelegate.m" !?fileListOf_UPDATER_APP_group )
+    enter_file_in_group ( !?XcodeProjectDescription !"updater-app-main.m" !?fileListOf_UPDATER_APP_group )
+    enter_file_in_group ( !?XcodeProjectDescription !"updater-app-Prefix.pch" !?fileListOf_UPDATER_APP_group )
+    enter_xib_file_in_group (
+     !?XcodeProjectDescription
+     !"English.lproj"
+     !"UpdaterAppCredits.rtf"
+     !?fileListOf_UPDATER_APP_group
+    )
+    enter_xib_file_in_group (
+     !?XcodeProjectDescription
+     !"English.lproj"
+     !"UpdaterAppInfoPlist.strings"
+     !?fileListOf_UPDATER_APP_group
+    )
+    enter_xib_file_in_group (
+     !?XcodeProjectDescription
+     !"English.lproj"
+     !"UpdaterAppMainMenu.xib"
+     !?fileListOf_UPDATER_APP_group
+    )
+    enter_group (
+      !?XcodeProjectDescription
+      !"Updater Application"
+      !"cocoa-application-update/updater-application"
+      !fileListOf_UPDATER_APP_group
+    )
+  end
+#--- Direct Dependancies
+  var updaterApplicationDependencyList =@stringlist.emptyList{}
+#-------------------------------------------------- Build "updater-tool" target
+  if handleUpdateFromInternet then
+  #--- Build Phase
+    var listForSourceBuildPhaseOfUpdaterTool =@Xcode_PBXBuildFile_list.emptyList{}
+    enter_file_for_sources_build_phase ( !?XcodeProjectDescription !"PMUpdaterServerObject.m" !?listForSourceBuildPhaseOfUpdaterTool )
+    enter_file_for_sources_build_phase ( !?XcodeProjectDescription !"updater-tool-main.m" !?listForSourceBuildPhaseOfUpdaterTool )
+  #--- Frameworks
+    var frameworkList =@Xcode_PBXBuildFile_list.emptyList{}
+    enter_files_for_frameworks_build_phase (
+      !?XcodeProjectDescription
+      !@stringlist. listWithValue { !"Foundation.framework"}
+      !?frameworkList
+    )
+  #--- Target settings
+    var updaterToolTargetSettings =@stringlist.emptyList{}
+    updaterToolTargetSettings += !"GCC_OPTIMIZATION_LEVEL = 2;"
+    updaterToolTargetSettings += !"GCC_ENABLE_OBJC_GC = Unsupported;"
+    updaterToolTargetSettings += !"GCC_WARN_UNUSED_PARAMETER = NO ;"
+    updaterToolTargetSettings += !"OTHER_LDFLAGS = \"-sectcreate __TEXT __info_plist cocoa-application-update/updater-tool/updater-tool-Info.plist -sectcreate __TEXT __launchd_plist cocoa-application-update/updater-tool/updater-tool-Launchd.plist\" ;"
+  #---
+    @string updaterToolTargetKey
+    add_tool_target (
+      !?XcodeProjectDescription
+      !bundleBaseName + "." + inProjectName + ".updaterTool"
+      !bundleBaseName + "." + inProjectName + ".updaterTool"
+      !updaterToolTargetSettings
+      !"" # No precompiled header
+      !listForSourceBuildPhaseOfUpdaterTool
+      !frameworkList
+      !@stringlist. emptyList # No Dependency
+      ?updaterToolTargetKey
+    )
+    updaterApplicationDependencyList += !updaterToolTargetKey
+  end
+#-------------------------------------------------- Build "updater-application" target
+  var CocoaApplicationDependencyList =@stringlist.emptyList{}
+  if handleUpdateFromInternet then
+  #--- Target settings
+    var updaterAppTargetSettings =@stringlist.emptyList{}
+    updaterAppTargetSettings += !"GCC_OPTIMIZATION_LEVEL = 2;"
+  #--- Frameworks
+    var frameworkList =@Xcode_PBXBuildFile_list.emptyList{}
+    var theList =@stringlist.emptyList{}
+    theList += !"Cocoa.framework"
+    theList += !"Security.framework"
+    theList += !"ServiceManagement.framework"
+    enter_files_for_frameworks_build_phase (
+      !?XcodeProjectDescription
+      !theList
+      !?frameworkList
+    )
+  #--- Build Phase
+    var listForSourceBuildPhaseOfUpdaterApp =@Xcode_PBXBuildFile_list.emptyList{}
+    enter_file_for_sources_build_phase ( !?XcodeProjectDescription !"PMUpdaterAppDelegate.m" !?listForSourceBuildPhaseOfUpdaterApp )
+    enter_file_for_sources_build_phase ( !?XcodeProjectDescription !"updater-app-main.m" !?listForSourceBuildPhaseOfUpdaterApp )
+  #--- Resource Build Phase
+    var listForResourcesBuildPhaseOfUpdaterApp =@Xcode_PBXBuildFile_list.emptyList{}
+    var fileList =@stringlist.emptyList{}
+    fileList += !"UpdaterAppMainMenu.xib"
+    fileList += !"UpdaterAppInfoPlist.strings"
+    fileList += !"UpdaterAppCredits.rtf"
+    enter_files_for_frameworks_build_phase (
+     !?XcodeProjectDescription
+     !fileList
+     !?listForResourcesBuildPhaseOfUpdaterApp
+    )
+  #---
+    @string updaterAppTargetKey
+    add_app_target (
+      !?XcodeProjectDescription
+      !bundleBaseName + "." + inProjectName + ".updaterApp"
+      !bundleBaseName + "." + inProjectName + ".updaterApp"
+      !updaterAppTargetSettings
+      !"cocoa-application-update/updater-application/updater-app-Prefix.pch" # Precompiled header (empty string if none)
+      !"cocoa-application-update/updater-application/updater-app-Info.plist" # Info.plist file (empty string if none)
+      !listForSourceBuildPhaseOfUpdaterApp
+      !frameworkList
+      !listForResourcesBuildPhaseOfUpdaterApp
+      !updaterApplicationDependencyList
+      !bundleBaseName + "." + inProjectName + ".updaterTool" # Copy to wrapper, Launch Services
+      ?updaterAppTargetKey
+    )
+    CocoaApplicationDependencyList += !updaterAppTargetKey
+  end
+#-------------------------------------------------- Build "tool" target
+  var listForSourceBuildPhaseOfTool =@Xcode_PBXBuildFile_list.emptyList{}
+# HAND CODED SOURCES
+  build_HAND_CODED_source_files_for_sources_tool_build_phase (
+    !?XcodeProjectDescription
+    !inExternSourceNameSet_tool
+    !?listForSourceBuildPhaseOfTool
+  )
+# GENERATED BY GALGAS
+  build_GENERATED_BY_GALGAS_files_for_sources_build_phase (
+    !?XcodeProjectDescription
+    !inSourceFileSetForTool
+    !?listForSourceBuildPhaseOfTool
+  )
+# LIBPM / BDD
+  build_LIBPM_BDD_source_files_for_sources_build_phase (
+    !?XcodeProjectDescription
+    !?listForSourceBuildPhaseOfTool
+  )
+# LIBPM / COMMAND LINE INTERFACE
+  build_LIBPM_COMMAND_LINE_INTERFACE_files_for_sources_build_phase (
+    !?XcodeProjectDescription
+    !?listForSourceBuildPhaseOfTool
+  )
+# LIBPM / FILES
+  build_LIBPM_FILES_files_for_sources_build_phase (
+    !?XcodeProjectDescription
+    !?listForSourceBuildPhaseOfTool
+  )
+# LIBPM / GALGAS 2
+  build_LIBPM_GALGAS_2_files_for_sources_build_phase (
+    !?XcodeProjectDescription
+    !?listForSourceBuildPhaseOfTool
+  )
+# LIBPM / STREAMS
+  build_LIBPM_STREAMS_files_for_sources_build_phase (
+    !?XcodeProjectDescription
+    !?listForSourceBuildPhaseOfTool
+  )
+# LIBPM / TIME
+  build_LIBPM_TIME_files_for_sources_build_phase (
+    !?XcodeProjectDescription
+    !?listForSourceBuildPhaseOfTool
+  )
+# LIBPM / UTILITIES
+  build_LIBPM_UTILITIES_files_for_sources_build_phase (
+    !?XcodeProjectDescription
+    !?listForSourceBuildPhaseOfTool
+  )
+# LIBPM / STRINGS
+  build_LIBPM_STRINGS_files_for_sources_build_phase (
+    !?XcodeProjectDescription
+    !?listForSourceBuildPhaseOfTool
+  )
+#--- Frameworks Build Phase
+  var listForFrameworksBuildPhaseOfTool =@Xcode_PBXBuildFile_list.emptyList{}
+  build_FRAMEWORKS_for_frameworks_build_phase (
+    !?XcodeProjectDescription
+    !inExternSourceNameSet_tool
+    !?listForFrameworksBuildPhaseOfTool
+  )
+#--- Target settings
+  var toolTargetSettings =@stringlist.emptyList{}
+  toolTargetSettings += !"GCC_OPTIMIZATION_LEVEL = 2;"
+  toolTargetSettings += !"GCC_PREPROCESSOR_DEFINITIONS = ("
+  "\"LIBPM_MULTI_THREADING=" + if inMultiThreadingEnabled then "1" else "0" end + "\""
+  ", DO_NOT_GENERATE_CHECKINGS"
+  + ") ;"
+#---
+  @string toolTargetKey
+  add_tool_target (
+    !?XcodeProjectDescription
+    !inProjectName
+    ![inProjectName stringByCapitalizingFirstCharacter] + " Tool"
+    !toolTargetSettings
+    !"" # No precompiled header
+    !listForSourceBuildPhaseOfTool
+    !listForFrameworksBuildPhaseOfTool
+    !@stringlist. emptyList # No Dependency
+    ?toolTargetKey
+  )
+#-------------------------------------------------- Build "tool_debug" target
+  var listForSourceBuildPhaseOfDebugTool =@Xcode_PBXBuildFile_list.emptyList{}
+# HAND CODED SOURCES
+  build_HAND_CODED_source_files_for_sources_tool_build_phase (
+    !?XcodeProjectDescription
+    !inExternSourceNameSet_tool
+    !?listForSourceBuildPhaseOfDebugTool
+  )
+# GENERATED BY GALGAS
+  build_GENERATED_BY_GALGAS_files_for_sources_build_phase (
+    !?XcodeProjectDescription
+    !inSourceFileSetForTool
+    !?listForSourceBuildPhaseOfDebugTool
+  )
+# LIBPM / BDD
+  build_LIBPM_BDD_source_files_for_sources_build_phase (
+    !?XcodeProjectDescription
+    !?listForSourceBuildPhaseOfDebugTool
+  )
+# LIBPM / COMMAND LINE INTERFACE
+  build_LIBPM_COMMAND_LINE_INTERFACE_files_for_sources_build_phase (
+    !?XcodeProjectDescription
+    !?listForSourceBuildPhaseOfDebugTool
+  )
+# LIBPM / FILES
+  build_LIBPM_FILES_files_for_sources_build_phase (
+    !?XcodeProjectDescription
+    !?listForSourceBuildPhaseOfDebugTool
+  )
+# LIBPM / GALGAS 2
+  build_LIBPM_GALGAS_2_files_for_sources_build_phase (
+    !?XcodeProjectDescription
+    !?listForSourceBuildPhaseOfDebugTool
+  )
+# LIBPM / STREAMS
+  build_LIBPM_STREAMS_files_for_sources_build_phase (
+    !?XcodeProjectDescription
+    !?listForSourceBuildPhaseOfDebugTool
+  )
+# LIBPM / TIME
+  build_LIBPM_TIME_files_for_sources_build_phase (
+    !?XcodeProjectDescription
+    !?listForSourceBuildPhaseOfDebugTool
+  )
+# LIBPM / UTILITIES
+  build_LIBPM_UTILITIES_files_for_sources_build_phase (
+    !?XcodeProjectDescription
+    !?listForSourceBuildPhaseOfDebugTool
+  )
+# LIBPM / STRINGS
+  build_LIBPM_STRINGS_files_for_sources_build_phase (
+    !?XcodeProjectDescription
+    !?listForSourceBuildPhaseOfDebugTool
+  )
+#--- Frameworks Build Phase
+  var listForFrameworksBuildPhaseOfToolDebug =@Xcode_PBXBuildFile_list.emptyList{}
+  build_FRAMEWORKS_for_frameworks_build_phase (
+    !?XcodeProjectDescription
+    !inExternSourceNameSet_tool
+    !?listForFrameworksBuildPhaseOfToolDebug
+  )
+#--- Target settings
+  var debugToolTargetSettings =@stringlist.emptyList{}
+  debugToolTargetSettings += !"GCC_GENERATE_DEBUGGING_SYMBOLS = YES;"
+  debugToolTargetSettings += !"GCC_OPTIMIZATION_LEVEL = 0;"
+  debugToolTargetSettings += !"GCC_WARN_UNINITIALIZED_AUTOS = NO;"
+  debugToolTargetSettings += !"GCC_PREPROCESSOR_DEFINITIONS = "
+  "\"LIBPM_MULTI_THREADING=" + if inMultiThreadingEnabled then "1" else "0" end + "\";"
+#---
+  @string toolDebugTargetKey
+  add_tool_target (
+    !?XcodeProjectDescription
+    !inProjectName + "_debug"
+    ![inProjectName stringByCapitalizingFirstCharacter] + " Tool Debug"
+    !debugToolTargetSettings
+    !"" # No precompiled header
+    !listForSourceBuildPhaseOfDebugTool
+    !listForFrameworksBuildPhaseOfToolDebug
+    !@stringlist. emptyList # No Dependency
+    ?toolDebugTargetKey
+  )
+#-------------------------------------------------- Build "Cocoa Application" target
+#--- Sources Build Phase
+  var listForSourceBuildPhaseOfCocoaApp =@Xcode_PBXBuildFile_list.emptyList{}
+  build_COCOA_APP_files_for_sources_build_phase (
+    !?XcodeProjectDescription
+    !inGUISourceNameSet_app | inExternSourceNameSet_app
+    !handleUpdateFromInternet
+    !?listForSourceBuildPhaseOfCocoaApp
+  )
+#--- Frameworks Build Phase
+  var listForFrameworksBuildPhaseOfCocoaApp =@Xcode_PBXBuildFile_list.emptyList{}
+  fileSet = @stringset. setWithStringList { !inHandCodedLinkAppFileList}
+  fileSet += !"AppKit.framework"
+  fileSet += !"Cocoa.framework"
+  if handleUpdateFromInternet then
+    fileSet += !"WebKit.framework"
+  end
+  build_FRAMEWORKS_for_frameworks_build_phase (
+    !?XcodeProjectDescription
+    !fileSet
+    !?listForFrameworksBuildPhaseOfCocoaApp
+  )
+#--- Resource Build Phase
+  var listForResourcesBuildPhaseOfCocoaApp =@Xcode_PBXBuildFile_list.emptyList{}
+  build_RESOURCES_for_resources_build_phase (
+    !?XcodeProjectDescription
+    !bundleBaseName
+    !inProjectName
+    !inResourceFiles
+    !handleUpdateFromInternet
+    !?listForResourcesBuildPhaseOfCocoaApp
+  )
+# HAND CODED SOURCES (only resources to copy)
+  build_HAND_CODED_source_files_for_sources_cocoa_build_phase (
+    !?XcodeProjectDescription
+    !inExternSourceNameSet_app
+    !?listForResourcesBuildPhaseOfCocoaApp
+  )
+#--- Direct Dependancies
+  CocoaApplicationDependencyList += !toolTargetKey
+  CocoaApplicationDependencyList += !toolDebugTargetKey
+#--- Target settings
+  var cocoaAppTargetSettings =@stringlist.emptyList{}
+  cocoaAppTargetSettings  += !"GCC_OPTIMIZATION_LEVEL = 2;"
+  if handleUpdateFromInternet then
+    cocoaAppTargetSettings += !"GCC_PREPROCESSOR_DEFINITIONS = \"PM_HANDLE_UPDATE\";"
+  end
+#---
+  add_app_target (
+    !?XcodeProjectDescription
+    !"Cocoa" + [inProjectName stringByCapitalizingFirstCharacter]
+    ![inProjectName stringByCapitalizingFirstCharacter] + " Cocoa"
+    !cocoaAppTargetSettings
+    !"" # Precompiled header (empty string if none)
+    !"Info.plist" # Info.plist file (empty string if none)
+    !listForSourceBuildPhaseOfCocoaApp
+    !listForFrameworksBuildPhaseOfCocoaApp
+    !listForResourcesBuildPhaseOfCocoaApp
+    !CocoaApplicationDependencyList
+    !"" # No copy build phase in Wrapper
+    ?*
+  )
+#-------------------------------------------------- Define project default configuration
+  var pathes =@stringlist.emptyList{}
+  pathes += !inGeneratedByGalgasSourcePath
+  pathes += !inLIBPMpath
+  if inAdditionalPathForTool != "" then
+    pathes += !inAdditionalPathForTool
+  end
+  if [fileSet count] > 0 then
+    pathes += !"../hand_coded_sources/**"
+  end
+  @stringlist projectDefaultSettings
+#---
+  enterProjectDefaultSettings (
+    !pathes
+    !inSDK
+    ?projectDefaultSettings
+    !inUsesARC
+  )
+  projectDefaultSettings += !"COPY_PHASE_STRIP = NO ;"
+#--- Code Signing ?
+  with "codeSigning" in  inProjectQualifiedFeatureMap  do
+    projectDefaultSettings += !"CODE_SIGN_IDENTITY = \"" + mFeatureValue + "\";"
+  end
+
+#-------------------------------------------------- Build Project file
+  generateXCodeFile (
+    !?XcodeProjectDescription
+    !in_xcodeproj_filePath
+    !projectDefaultSettings
+    !inReferenceFilePath
+  )
+}
+
+#---------------------------------------------------------------------------*
+

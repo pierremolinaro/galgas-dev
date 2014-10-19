@@ -1,0 +1,79 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  'option' component parser, as model builder                              *
+#                                                                           *
+#  Copyright (C) 2007, ..., 2010 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+syntax galgas3OptionComponentSyntax (galgas3Scanner) {
+
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@galgas3DeclarationAST ioDeclarations {
+  $option$
+  $identifier$ ?let @lstring optionComponentName
+  ${$
+  var options =@commandLineOptionListAST.emptyList{}
+  repeat
+  while 
+    <option> !?options
+  end
+  $}$
+  ioDeclarations.mDeclarationList += !@optionComponentDeclarationAST. new {
+    !false
+    !optionComponentName
+    !options}
+}
+
+#---------------------------------------------------------------------------*
+
+rule <option> ?!@commandLineOptionListAST ioCommandLineOptionList {
+  $type_name$ ?var @lstring mOptionTypeName
+  $identifier$ ?var @lstring mOptionInternalName
+  $:$
+  $literal_char$ ?var @lchar mOptionInvocationLetter
+  $,$
+  $literal_string$ ?var @lstring mOptionInvocationString
+  $->$
+  $literal_string$ ?var @lstring mOptionComment
+  var defaultValue =@lstring.new{ !"" !@location.here}
+  @optionDefaultValueEnumAST optionDefaultValueKind
+  select
+    optionDefaultValueKind = @optionDefaultValueEnumAST. noDefaultValue
+  or
+    $default$
+    select
+      $literal_string$ ? defaultValue
+      optionDefaultValueKind = @optionDefaultValueEnumAST. stringDefaultValue
+    or
+      $unsigned_literal_integer$ ?var  @luint v
+      defaultValue = @lstring. new { ![[v uint] string] ![v location]}
+      optionDefaultValueKind = @optionDefaultValueEnumAST. unsignedDefaultValue
+    end
+  end
+  ioCommandLineOptionList +=
+    !mOptionTypeName
+    !mOptionInternalName
+    !mOptionInvocationLetter
+    !mOptionInvocationString
+    !mOptionComment
+    !defaultValue
+    !optionDefaultValueKind
+}
+
+#---------------------------------------------------------------------------*
+
+}

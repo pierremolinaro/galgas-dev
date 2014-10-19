@@ -1,0 +1,1948 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Copyright (C) 2007, ..., 2014 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+
+
+#---------------------------------------------------------------------------*
+
+func %once generateGalgas3InstructionTerminator -> @bool outResult {
+  outResult = false
+}
+
+#---------------------------------------------------------------------------*
+
+abstract class @semanticExpressionAST {
+}
+
+#---------------------------------------------------------------------------*
+
+list @actualOutputExpressionList {
+  @lstring mActualSelector %nogetter
+  @semanticExpressionAST mExpression %nogetter
+  @location mEndOfExpressionLocation %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+list @semanticExpressionListAST {
+  @semanticExpressionAST mExpression %nogetter
+  @location mEndOfExpressionLocation %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+class @selfCopyInExpressionAST : @semanticExpressionAST {
+  @location mSelfLocation
+}
+
+#---------------------------------------------------------------------------*
+
+class @hereExpressionAST : @semanticExpressionAST {
+  @location mLocation
+}
+
+#---------------------------------------------------------------------------*
+
+class @trueExpressionAST : @semanticExpressionAST {
+  @location mLocation
+}
+
+#---------------------------------------------------------------------------*
+
+class @falseExpressionAST : @semanticExpressionAST {
+  @location mLocation
+}
+
+#---------------------------------------------------------------------------*
+
+class @literalCharExpressionAST : @semanticExpressionAST {
+  @lchar mCharacter
+}
+
+#---------------------------------------------------------------------------*
+
+class @literalStringExpressionAST : @semanticExpressionAST {
+  @location mLocation
+  @stringlist mStringSequence
+}
+
+#---------------------------------------------------------------------------*
+
+class @literalDoubleExpressionAST : @semanticExpressionAST {
+  @ldouble mValue
+}
+
+#---------------------------------------------------------------------------*
+
+class @literalUIntExpressionAST : @semanticExpressionAST {
+  @luint mValue
+}
+
+#---------------------------------------------------------------------------*
+
+class @literalUInt64ExpressionAST : @semanticExpressionAST {
+  @luint64 mValue
+}
+
+#---------------------------------------------------------------------------*
+
+class @literalSIntExpressionAST : @semanticExpressionAST {
+  @lsint mValue
+}
+
+#---------------------------------------------------------------------------*
+
+class @literalSInt64ExpressionAST : @semanticExpressionAST {
+  @lsint64 mValue
+}
+
+#---------------------------------------------------------------------------*
+
+class @constructorExpressionAST : @semanticExpressionAST {
+  @lstring mTypeName
+  @lstring mConstructorName
+  @actualOutputExpressionList mExpressions
+}
+
+#---------------------------------------------------------------------------*
+
+class @defaultConstructorExpressionAST : @semanticExpressionAST {
+  @lstring mTypeName
+}
+
+#---------------------------------------------------------------------------*
+
+class @readerCallExpressionAST : @semanticExpressionAST {
+  @semanticExpressionAST mReceiver
+  @lstring mReaderName
+  @actualOutputExpressionList mExpressions
+}
+
+#---------------------------------------------------------------------------*
+
+class @optionExpressionAST : @semanticExpressionAST {
+  @lstring mOptionComponentName
+  @lstring mOptionEntryName
+  @lstring mOptionReaderName
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexiqueIntrospectionExpressionAST : @semanticExpressionAST {
+  @lstring mLexiqueComponentName
+  @lstring mLexiqueReaderName
+}
+
+#---------------------------------------------------------------------------*
+
+class @concatExpressionAST,
+      @orExpressionAST,
+      @orShortExpressionAST,
+      @xorExpressionAST,
+      @andShortExpressionAST,
+      @andExpressionAST,
+      @equalExpressionAST,
+      @notEqualExpressionAST,
+      @lowerOrEqualExpressionAST,
+      @greaterOrEqualExpressionAST,
+      @strictGreaterExpressionAST,
+      @strictLowerExpressionAST,
+      @rightShiftExpressionAST,
+      @leftShiftExpressionAST,
+      @addExpressionAST,
+      @subExpressionAST,
+      @multiplicationExpressionAST,
+      @divisionExpressionAST,
+      @moduloExpressionAST : @semanticExpressionAST {
+  @location mOperatorLocation
+  @semanticExpressionAST mLeftExpression
+  @semanticExpressionAST mRightExpression
+}
+
+#---------------------------------------------------------------------------*
+
+class @unaryMinusExpressionAST,
+      @notExpressionAST,
+      @complementExpressionAST : @semanticExpressionAST {
+  @location mOperatorLocation
+  @semanticExpressionAST mExpression
+}
+
+#---------------------------------------------------------------------------*
+
+class @structFieldAccessExpressionAST : @semanticExpressionAST {
+  @location mOperatorLocation
+  @semanticExpressionAST mExpression
+  @lstring mStructFieldName
+}
+
+#---------------------------------------------------------------------------*
+
+class @ifExpressionAST : @semanticExpressionAST {
+  @location mOperatorLocation
+  @semanticExpressionAST mIfExpression
+  @semanticExpressionAST mThenExpression
+  @semanticExpressionAST mElseExpression
+}
+
+#---------------------------------------------------------------------------*
+
+class @functionCallExpressionAST : @semanticExpressionAST {
+  @lstring mFunctionName
+  @actualOutputExpressionList mExpressionList
+}
+
+#---------------------------------------------------------------------------*
+
+class @varInExpressionAST : @semanticExpressionAST {
+  @lstring mVarName
+}
+
+#---------------------------------------------------------------------------*
+
+class @literalTypeInExpressionAST : @semanticExpressionAST {
+  @lstring mLiteralTypeName
+}
+
+#---------------------------------------------------------------------------*
+
+class @castInExpressionAST : @semanticExpressionAST {
+  @semanticExpressionAST mReceiverExpression
+  @location mEndOfReceiverExpression
+  @lstring mTypeName
+}
+
+#---------------------------------------------------------------------------*
+
+enum @dynamicTypeComparisonKind {
+  case equal  # ==
+  case inherited  # >=
+  case strictlyInherited # >
+}
+
+#---------------------------------------------------------------------------*
+
+class @testDynamicClassInExpressionAST : @semanticExpressionAST {
+  @semanticExpressionAST mReceiverExpression
+  @location mEndOfReceiverExpression
+  @dynamicTypeComparisonKind mTypeComparisonKind
+  @lstring mTypeName
+}
+
+#---------------------------------------------------------------------------*
+
+class @filewrapperObjectInstanciationInExpressionAST : @semanticExpressionAST {
+  @lstring mFilewrapperName
+}
+
+#---------------------------------------------------------------------------*
+
+class @filewrapperInExpressionAST : @semanticExpressionAST {
+  @lstring mFilewrapperName
+  @lstring mFilewrapperPath
+}
+
+#---------------------------------------------------------------------------*
+
+class @filewrapperTemplateInExpressionAST : @semanticExpressionAST {
+  @lstring mFilewrapperName
+  @lstring mFilewrapperTemplateName
+  @actualOutputExpressionList mExpressions
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   F O R M A L    A R G U M E N T S    P A S S I N G    M O D E S          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+enum @formalArgumentPassingModeAST {
+  case argumentIn  case argumentOut  case argumentInOut  case argumentConstantIn
+}
+
+#---------------------------------------------------------------------------*
+
+getter @formalArgumentPassingModeAST string -> @string outResult {
+  switch self
+    case argumentConstantIn : outResult = "??"
+    case argumentIn : outResult = "?"
+    case argumentOut : outResult = "!"
+    case argumentInOut : outResult = "?!"
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+getter @formalArgumentPassingModeAST formalArgumentMessage -> @string outResult {
+  switch self
+    case argumentConstantIn : outResult = "a constant input (??) formal argument"
+    case argumentIn : outResult = "an input (?) formal argument"
+    case argumentOut : outResult = "an output (!) formal argument"
+    case argumentInOut : outResult = "an input/output (?!) formal argument"
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+getter @formalArgumentPassingModeAST formalArgumentString -> @string outResult {
+  switch self
+    case argumentConstantIn : outResult = "'??'"
+    case argumentIn : outResult = "'?'"
+    case argumentOut : outResult = "'!'"
+    case argumentInOut : outResult = "'?!'"
+  end
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  F O R M A L    P A R A M E T E R    L I S T                              *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @formalParameterListAST {
+  @lstring mFormalSelector
+  @formalArgumentPassingModeAST mFormalArgumentPassingMode %nogetter
+  @lstring mFormalArgumentTypeName %nogetter
+  @lstring mFormalArgumentName %nogetter
+  @bool mIsUnused %nogetter
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  F O R M A L    I N P U T    P A R A M E T E R    L I S T                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @formalInputParameterListAST {
+  @lstring mFormalSelector %nogetter
+  @lstring mFormalArgumentTypeName %nogetter
+  @lstring mFormalArgumentName %nogetter
+  @bool mIsUnused %nogetter
+  @bool mIsConstant %nogetter
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  A C T U A L    P A R A M E T E R                                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+abstract class @actualParameterAST {
+}
+
+#---------------------------------------------------------------------------*
+
+class @outputActualParameterAST : @actualParameterAST {
+  @lstring mActualSelector
+  @semanticExpressionAST mOutputActualParameterExpression
+  @location mEndOfExpressionLocation
+}
+
+#---------------------------------------------------------------------------*
+
+class @outputInputActualParameterAST : @actualParameterAST {
+  @lstring mActualSelector
+  @lstring mOutputInputActualParameterName
+  @lstringlist mStructAttributeList
+}
+
+#---------------------------------------------------------------------------*
+
+class @outputInputSingleJokerParameterAST : @actualParameterAST {
+  @lstring mActualSelector
+}
+
+#---------------------------------------------------------------------------*
+
+class @outputInputJokerParameterAST : @actualParameterAST {
+  @location mQualifierLocation
+  @uint mJokerIndex
+}
+
+#---------------------------------------------------------------------------*
+
+class @inputActualExistingVariableParameterAST : @actualParameterAST {
+  @lstring mActualSelector
+  @lstring mInputActualParameterName
+}
+
+#---------------------------------------------------------------------------*
+
+class @inputActualNewVariableParameterAST : @actualParameterAST {
+  @lstring mActualSelector
+  @lstring mInputActualTypeName
+  @lstring mInputActualParameterName
+}
+
+#---------------------------------------------------------------------------*
+
+class @inputActualNewConstantParameterAST : @actualParameterAST {
+  @lstring mActualSelector
+  @lstring mInputActualTypeName
+  @lstring mInputActualParameterName
+}
+
+#---------------------------------------------------------------------------*
+
+class @inputSingleJokerActualParameterAST : @actualParameterAST {
+  @lstring mActualSelector
+}
+
+#---------------------------------------------------------------------------*
+
+class @inputJokerActualParameterAST : @actualParameterAST {
+  @location mQualifierLocation
+  @uint mJokerIndex
+}
+
+#---------------------------------------------------------------------------*
+
+list @actualParameterListAST {
+  @actualParameterAST mActualParameter
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  A C T U A L    I N P U T    P A R A M E T E R    L I S T                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+abstract class @abstractInputParameter {
+}
+
+#---------------------------------------------------------------------------*
+
+class @inputParameterAnonymousVariable : @abstractInputParameter {
+}
+
+#---------------------------------------------------------------------------*
+
+class @inputParameterVariable : @abstractInputParameter {
+  @lstring mActualParameterName
+}
+
+#---------------------------------------------------------------------------*
+
+class @inputParameterDeclaredVariable : @abstractInputParameter {
+  @lstring mActualParameterTypeName
+  @lstring mActualParameterName
+}
+
+#---------------------------------------------------------------------------*
+
+class @inputParameterDeclaredConstant : @abstractInputParameter {
+  @lstring mActualParameterTypeName
+  @lstring mActualParameterName
+}
+
+#---------------------------------------------------------------------------*
+
+list @actualInputParameterListAST {
+  @lstring mActualSelector
+  @abstractInputParameter mInputParameter
+}
+
+#---------------------------------------------------------------------------*
+
+abstract class @syntaxInstructionAST {
+  @location mInstructionLocation
+}
+
+#---------------------------------------------------------------------------*
+
+abstract class @semanticInstructionAST : @syntaxInstructionAST {
+}
+
+#---------------------------------------------------------------------------*
+
+list @semanticInstructionListAST {
+  @semanticInstructionAST mInstruction %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+list @semanticDeclarationListAST {
+  @semanticDeclarationAST mSemanticDeclaration %nogetter
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    E X T E R N    R O U T I N E    D E C L A R A T I O N                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @externRoutineDeclarationAST : @semanticDeclarationAST {
+  @bool mIsInternal
+  @lstring mRoutineName
+  @formalParameterListAST mFormalArgumentList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    R O U T I N E    D E C L A R A T I O N                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @routineDeclarationAST : @externRoutineDeclarationAST {
+  @semanticInstructionListAST mRoutineInstructionList
+  @location mEndOfRoutineInstructionList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    E X T E R N    F U N C T I O N    D E C L A R A T I O N                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @externFunctionDeclarationAST : @semanticDeclarationAST {
+  @lstring mFunctionName
+  @formalInputParameterListAST mFormalArgumentList
+  @lstring mResultTypeName
+  @lstring mResultVariableName
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    F U N C T I O N    D E C L A R A T I O N                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @functionDeclarationAST : @externFunctionDeclarationAST {
+  @semanticInstructionListAST mFunctionInstructionList
+  @location mEndOfFunctionInstructionList
+  @bool mIsInternal
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    O N C E    F U N C T I O N    D E C L A R A T I O N                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @onceFunctionDeclarationAST : @semanticDeclarationAST {
+  @lstring mFunctionName
+  @lstring mResultTypeName
+  @lstring mResultVariableName
+  @semanticInstructionListAST mFunctionInstructionList
+  @location mEndOfFunctionInstructionList
+  @bool mIsInternal
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  L O C A L    V A R I A B L E    D E C L A R A T I O N                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @localVariableDeclarationAST : @semanticInstructionAST {
+  @lstring mTypeName
+  @lstring mVariableName
+  @bool mIsUndefinedConstant
+}
+
+#---------------------------------------------------------------------------*
+
+class @localVariableOrConstantDeclarationWithConstructorCallAST : @semanticInstructionAST {
+  @bool mIsConstant
+  @lstring mTypeName
+  @lstring mVariableName
+  @lstring mConstructorName
+  @actualOutputExpressionList mConstructorExpressions
+}
+
+#---------------------------------------------------------------------------*
+
+class @localVariableOrConstantDeclarationWithDefaultConstructorAST : @semanticInstructionAST {
+  @bool mIsConstant
+  @lstring mTypeName
+  @lstring mVariableName
+}
+
+#---------------------------------------------------------------------------*
+
+class @localVariableOrConstantDeclarationWithAssignmentAST : @semanticInstructionAST {
+  @bool mIsConstant
+  @lstring mTypeName
+  @lstring mVariableName
+  @semanticExpressionAST mSourceExpression
+}
+
+#---------------------------------------------------------------------------*
+
+class @localVariableDeclarationWithAssignmentAST : @semanticInstructionAST {
+  @lstring mVariableName
+  @semanticExpressionAST mSourceExpression
+}
+
+#---------------------------------------------------------------------------*
+
+class @localConstantDeclarationWithAssignmentAST : @semanticInstructionAST {
+  @lstring mVariableName
+  @semanticExpressionAST mSourceExpression
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  A S S I G N M E N T    I N S T R U C T I O N                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @assignmentInstructionAST : @semanticInstructionAST {
+  @lstring mTargetVariableName
+  @lstringlist mStructAttributeList
+  @semanticExpressionAST mSourceExpression
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  S E L F    A S S I G N M E N T    I N S T R U C T I O N                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @selfAssignmentInstructionAST : @semanticInstructionAST {
+  @semanticExpressionAST mSourceExpression
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  C O N C A T    I N S T R U C T I O N                                     *
+#                                                                           *
+#  VARIABLE .= EXPRESSION ;                                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @concatInstructionAST : @semanticInstructionAST {
+  @lstring mTargetVariableName
+  @lstringlist mStructAttributeList
+  @semanticExpressionAST mSourceExpression
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  S E L F    C O N C A T    I N S T R U C T I O N                          *
+#                                                                           *
+#  SELF .= EXPRESSION ;                                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @selfConcatInstructionAST : @semanticInstructionAST {
+  @semanticExpressionAST mSourceExpression
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  ( O L D )    F O R E A C H    I N S T R U C T I O N                      *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @foreachInstructionEnumeratedObjectElementListAST {
+  @lstring mTypeName %nogetter # Empty string if joker
+  @lstring mConstantName %nogetter  # Empty string if joker
+}
+
+#---------------------------------------------------------------------------*
+
+list @foreachInstructionEnumeratedObjectListAST {
+  @lstring mEnumerationOrder %nogetter
+  @semanticExpressionAST mEnumeratedExpression %nogetter
+  @location mEndOfEnumerationExpression %nogetter
+  @foreachInstructionEnumeratedObjectElementListAST mElementList %nogetter
+  @location mEndOfElementList %nogetter
+  @bool mEndsWithEllipsis %nogetter
+  @lstring mPrefix %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+class @foreachInstructionAST : @semanticInstructionAST {
+  @foreachInstructionEnumeratedObjectListAST mEnumeratedObjectList
+  @lstring mIndexVariableName
+  @semanticExpressionAST mWhileExpression
+  @location mEndOf_while_expression
+  @semanticInstructionListAST mBeforeInstructionList
+  @location mEndOf_before_branch
+  @semanticInstructionListAST mBetweenInstructionList
+  @location mEndOf_between_branch
+  @semanticInstructionListAST mDoInstructionList
+  @location mEndOf_do_branch
+  @semanticInstructionListAST mAfterInstructionList
+  @location mEndOf_after_branch
+  @location mEndOf_foreach_instruction
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  F O R E A C H    I N S T R U C T I O N                                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! for, foreach
+
+#---------------------------------------------------------------------------*
+
+abstract class @abstractEnumeratedCollectionAST {
+}
+
+#---------------------------------------------------------------------------*
+
+class @enumeratedCollectionImplicitVarInExpAST : @abstractEnumeratedCollectionAST {
+  @lstring mPrefix
+  @semanticExpressionAST mEnumeratedExpression
+  @location mEndOfEnumerationExpression
+}
+
+#---------------------------------------------------------------------------*
+
+class @enumeratedCollectionVarInExpAST : @abstractEnumeratedCollectionAST {
+  @lstring mEnumerationTypeName # Empty string if implicit
+  @lstring mEnumerationVariable
+  @semanticExpressionAST mEnumeratedExpression
+  @location mEndOfEnumerationExpression
+}
+
+#---------------------------------------------------------------------------*
+
+class @enumeratedCollectionCstListInExpAST : @abstractEnumeratedCollectionAST {
+  @foreachInstructionEnumeratedObjectElementListAST mElementList
+  @bool mEndsWithEllipsis
+  @semanticExpressionAST mEnumeratedExpression
+  @location mEndOfEnumerationExpression
+}
+
+#---------------------------------------------------------------------------*
+
+list @forInstructionEnumeratedObjectListAST {
+  @bool mAscending
+  @abstractEnumeratedCollectionAST mEnumeratedCollection
+}
+
+#---------------------------------------------------------------------------*
+
+class @forInstructionAST : @semanticInstructionAST {
+  @forInstructionEnumeratedObjectListAST mEnumeratedObjectList
+  @lstring mIndexVariableName
+  @semanticExpressionAST mWhileExpression
+  @location mEndOf_while_expression
+  @semanticInstructionListAST mBeforeInstructionList
+  @location mEndOf_before_branch
+  @semanticInstructionListAST mBetweenInstructionList
+  @location mEndOf_between_branch
+  @semanticInstructionListAST mDoInstructionList
+  @location mEndOf_do_branch
+  @semanticInstructionListAST mAfterInstructionList
+  @location mEndOf_after_branch
+  @location mEndOf_foreach_instruction
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  I F    I N S T R U C T I O N                                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @ifInstructionAST : @semanticInstructionAST {
+  @semanticExpressionAST m_if_expression
+  @semanticInstructionListAST m_then_instructionList
+  @location mEndOf_then_branch
+  @semanticInstructionListAST m_else_instructionList
+  @location mEndOf_if_instruction
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  M E T H O D    C A L L    I N S T R U C T I O N                          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @methodCallInstructionAST : @semanticInstructionAST {
+  @semanticExpressionAST mReceiverExpression
+  @lstring mMethodName
+  @actualParameterListAST mActualParameterList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  M O D I F I E R    C A L L    I N S T R U C T I O N                      *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @modifierCallInstructionAST : @semanticInstructionAST {
+  @lstring mReceiverName
+  @lstringlist mReceiverStructAttributes
+  @lstring mModifierName
+  @actualParameterListAST mActualParameterList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  " S E L F "   M O D I F I E R    C A L L    I N S T R U C T I O N        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @selfModifierCallInstructionAST : @semanticInstructionAST {
+  @lstring mModifierName
+  @actualParameterListAST mActualParameterList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    E R R O R    I N S T R U C T I O N                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @errorInstructionAST : @semanticInstructionAST {
+  @semanticExpressionAST mLocationExpression
+  @semanticExpressionAST mMessageExpression
+  @lstringlist mBuiltVariableList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    W A R N I N G    I N S T R U C T I O N                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @warningInstructionAST : @semanticInstructionAST {
+  @semanticExpressionAST mLocationExpression
+  @semanticExpressionAST mMessageExpression
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    R O U T I N E    C A L L    I N S T R U C T I O N                      *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @routineCallInstructionAST : @semanticInstructionAST {
+  @lstring mRoutineName
+  @actualParameterListAST mActualParameterList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    C A S T    I N S T R U C T I O N                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @castInstructionBranchListAST {
+  @lstring mTypeName
+  @lstring mConstantVarName # Empty string if no constant var
+  @semanticInstructionListAST mInstructionList
+  @dynamicTypeComparisonKind mTypeComparisonKind
+  @location mEndOfInstructions
+}
+
+#---------------------------------------------------------------------------*
+
+class @structuredCastInstructionAST : @semanticInstructionAST {
+  @semanticExpressionAST mCastExpression
+  @castInstructionBranchListAST mCastInstructionBranchList
+  @semanticInstructionListAST mElseInstructionList
+  @location mEndOfCastInstruction
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    + =    I N S T R U C T I O N                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @plusEqualElementsInstructionAST : @semanticInstructionAST {
+  @lstring mReceiverName
+  @lstringlist mStructAttributeList
+  @actualOutputExpressionList mExpressions
+}
+
+#---------------------------------------------------------------------------*
+
+class @plusEqualExpressionInstructionAST : @semanticInstructionAST {
+  @lstring mReceiverName
+  @lstringlist mStructAttributeList
+  @semanticExpressionAST mExpression
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    SELF +=    I N S T R U C T I O N                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @selfPlusEqualElementsInstructionAST : @semanticInstructionAST {
+  @actualOutputExpressionList mExpressions
+}
+
+#---------------------------------------------------------------------------*
+
+class @selfPlusEqualExpressionInstructionAST : @semanticInstructionAST {
+  @semanticExpressionAST mExpression
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    I N C R E M E N T    I N S T R U C T I O N                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @incrementInstructionAST : @semanticInstructionAST {
+  @lstring mReceiverName
+  @lstringlist mStructAttributeList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    S E L F    I N C R E M E N T    I N S T R U C T I O N                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @selfIncrementInstructionAST : @semanticInstructionAST {
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    D E C R E M E N T    I N S T R U C T I O N                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @decrementInstructionAST : @semanticInstructionAST {
+  @lstring mReceiverName
+  @lstringlist mStructAttributeList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    S E L F    D E C R E M E N T    I N S T R U C T I O N                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @selfDecrementInstructionAST : @semanticInstructionAST {
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    L O O P    I N S T R U C T I O N                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @loopInstructionAST : @semanticInstructionAST {
+  @semanticExpressionAST mVariantExpression
+  @location mEndOfVariantExpression
+  @semanticInstructionListAST mFirstInstructions
+  @location mEndOfFirstInstructions
+  @semanticExpressionAST mLoopExpression
+  @location mEndOfLoopExpression
+  @semanticInstructionListAST mSecondInstructions
+  @location mEndOfSecondInstructions
+  @location mEndOfLoopInstruction
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  M E S S A G E    I N S T R U C T I O N                                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @messageInstructionAST : @semanticInstructionAST {
+  @semanticExpressionAST mExpression
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  L O G    I N S T R U C T I O N                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @logListAST {
+  @lstring mLogMessage
+  @semanticExpressionAST mLogExpression
+}
+
+#---------------------------------------------------------------------------*
+
+class @logInstructionAST : @semanticInstructionAST {
+  @logListAST mLogList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  D R O P    I N S T R U C T I O N                                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @dropInstructionAST : @semanticInstructionAST {
+  @lstringlist mDropList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  G R A M M A R    I N S T R U C T I O N                                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+abstract class @abstractGrammarInstructionSyntaxDirectedTranslationResult {
+}
+
+#---------------------------------------------------------------------------*
+
+class @grammarInstructionSyntaxDirectedTranslationResultNone : @abstractGrammarInstructionSyntaxDirectedTranslationResult {
+}
+
+#---------------------------------------------------------------------------*
+
+class @grammarInstructionSyntaxDirectedTranslationDropResult : @abstractGrammarInstructionSyntaxDirectedTranslationResult {
+  @location mLocation
+}
+
+#---------------------------------------------------------------------------*
+
+class @grammarInstructionSyntaxDirectedTranslationResultInVar : @abstractGrammarInstructionSyntaxDirectedTranslationResult {
+  @lstring mActualParameterName
+}
+
+#---------------------------------------------------------------------------*
+
+class @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar : @abstractGrammarInstructionSyntaxDirectedTranslationResult {
+  @lstring mActualParameterTypeName
+  @lstring mActualParameterName
+}
+
+#---------------------------------------------------------------------------*
+
+class @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst : @abstractGrammarInstructionSyntaxDirectedTranslationResult {
+  @lstring mActualParameterTypeName
+  @lstring mActualParameterName
+}
+
+#---------------------------------------------------------------------------*
+
+class @grammarInstructionAST : @semanticInstructionAST {
+  @lstring mGrammarComponentName
+  @lstring mLabelName
+  @semanticExpressionAST mSourceExpression
+  @location mEndOfSourceExpression
+  @bool mSourceExpressionIsFile # If false, mSourceExpression should be the source string
+  @actualParameterListAST mActualParameterList
+  @abstractGrammarInstructionSyntaxDirectedTranslationResult mAbstractGrammarInstructionSyntaxDirectedTranslationResult
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  W I T H    I N S T R U C T I O N    ( R E A D    A C C E S S )           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @readAccessWithInstructionAST : @semanticInstructionAST {
+  @lstring mPrefix
+  @semanticExpressionAST mReceiverExpression
+  @location mEndOfReceiverExpression
+  @semanticExpressionAST mKeyExpression
+  @location mEndOfKeyExpression
+  @lstring mSearchMethodNameForErrorSignaling
+  @semanticInstructionListAST mDoBranchInstructions
+  @location mEndOf_do_instructions
+  @semanticInstructionListAST mElseBranchInstructions
+  @location mEndOf_else_instructions
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  W I T H    I N S T R U C T I O N   ( R E A D / W R I T E    A C C E S S )*
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @readWriteAccessWithInstructionAST : @semanticInstructionAST {
+  @lstring mPrefix
+  @lstring mReceiverName
+  @lstringlist mFieldList
+  @location mEndOfReceiverExpression
+  @semanticExpressionAST mKeyExpression
+  @location mEndOfKeyExpression
+  @lstring mSearchMethodNameForErrorSignaling
+  @semanticInstructionListAST m_do_Instructions
+  @location mEndOf_do_instructions
+  @semanticInstructionListAST m_else_Instructions
+  @location mEndOf_else_instructions
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  S W I T C H    I N S T R U C T I O N                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! switch
+
+#---------------------------------------------------------------------------*
+
+list @switchBranchesAST {
+  @lstringlist mSwitchConstantList
+  @2lstringlist mAssociatedValuesExtraction
+  @semanticInstructionListAST mInstructions
+  @location mEndOfBranch
+}
+
+#---------------------------------------------------------------------------*
+
+class @switchInstructionAST : @semanticInstructionAST {
+  @semanticExpressionAST mSwitchExpression
+  @location mEndOfSwitchExpression
+  @switchBranchesAST mBranches
+  @location mEndOf_switch_instruction
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  T Y P E    M E T H O D    C A L L    I N S T R U C T I O N               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @typeMethodCallInstructionAST : @semanticInstructionAST {
+  @lstring mTypeName
+  @lstring mMethodName
+  @actualParameterListAST mActualParameterList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# A B S T R A C T   C A T E G O R Y  M E T H O D    D E C L A R A T I O N   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @abstractCategoryMethodAST : @semanticDeclarationAST {
+  @lstring mTypeName
+  @lstring mAbstractCategoryMethodName
+  @formalParameterListAST mAbstractCategoryMethodFormalParameterList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#        C A T E G O R Y    M E T H O D    D E C L A R A T I O N            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @categoryMethodAST : @semanticDeclarationAST {
+  @lstring mTypeName
+  @lstring mCategoryMethodName
+  @formalParameterListAST mCategoryMethodFormalParameterList
+  @semanticInstructionListAST mCategoryMethodInstructionList
+  @location mEndOfMethodLocation
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  O V E R R I D I N G    C A T E G O R Y    M E T H O D    D E C L .       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @overridingCategoryMethodAST : @semanticDeclarationAST {
+  @lstring mTypeName
+  @lstring mOverridingCategoryMethodName
+  @formalParameterListAST mOverridingCategoryMethodFormalParameterList
+  @semanticInstructionListAST mOverridingCategoryMethodInstructionList
+  @location mEndOfMethodLocation
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  O V E R R I D I N G    A B S T R A C T    C A T E G O R Y    M E T H O D *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @overridingAbstractCategoryMethodAST : @semanticDeclarationAST {
+  @lstring mTypeName
+  @lstring mOverridingCategoryMethodName
+  @formalParameterListAST mOverridingCategoryMethodFormalParameterList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# A B S T R A C T   C A T E G O R Y  M O D I F I E R    D E C L A R A T I O N   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @abstractCategoryModifierAST : @semanticDeclarationAST {
+  @lstring mTypeName
+  @lstring mAbstractCategoryModifierName
+  @formalParameterListAST mAbstractCategoryModifierFormalParameterList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#        C A T E G O R Y    M O D I F I E R    D E C L A R A T I O N        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @categoryModifierAST : @semanticDeclarationAST {
+  @lstring mTypeName
+  @lstring mCategoryModifierName
+  @formalParameterListAST mCategoryModifierFormalParameterList
+  @semanticInstructionListAST mCategoryModifierInstructionList
+  @location mEndOfModifierLocation
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  O V E R R I D I N G    C A T E G O R Y    M O D I F I E R    D E C L .   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @overridingCategoryModifierAST : @semanticDeclarationAST {
+  @lstring mTypeName
+  @lstring mOverridingCategoryModifierName
+  @formalParameterListAST mOverridingCategoryModifierFormalParameterList
+  @semanticInstructionListAST mOverridingCategoryModifierInstructionList
+  @location mEndOfModifierLocation
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  O V E R R I D I N G    A B S T R A C T    C A T E G O R Y    M O D I F I E R *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @overridingAbstractCategoryModifierAST : @semanticDeclarationAST {
+  @lstring mTypeName
+  @lstring mOverridingCategoryModifierName
+  @formalParameterListAST mOverridingCategoryModifierFormalParameterList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# A B S T R A C T   C A T E G O R Y    R E A D E R    D E C L A R A T I O N *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @abstractCategoryReaderAST : @semanticDeclarationAST {
+  @lstring mTypeName
+  @lstring mAbstractCategoryReaderName
+  @formalInputParameterListAST mAbstractCategoryReaderFormalInputParameterList
+  @lstring mAbstractCategoryReaderReturnedTypeName
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#        C A T E G O R Y    R E A D E R    D E C L A R A T I O N            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @categoryReaderAST : @semanticDeclarationAST {
+  @lstring mTypeName
+  @lstring mCategoryReaderName
+  @formalInputParameterListAST mCategoryReaderFormalInputParameterList
+  @lstring mCategoryReaderReturnedTypeName
+  @lstring mCategoryReaderReturnedVariableName
+  @semanticInstructionListAST mCategoryReaderInstructionList
+  @location mEndOfReaderLocation
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#O V E R R I D I N G   C A T E G O R Y   R E A D E R   D E C L A R A T I O N*
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @overridingCategoryReaderAST : @semanticDeclarationAST {
+  @lstring mTypeName
+  @lstring mOverridingCategoryReaderName
+  @formalInputParameterListAST mOverridingCategoryReaderFormalInputParameterList
+  @lstring mOverridingCategoryReaderReturnedTypeName
+  @lstring mOverridingCategoryReaderReturnedVariableName
+  @semanticInstructionListAST mOverridingCategoryReaderInstructionList
+  @location mEndOfReaderLocation
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# O V E R R I D I N G    A B S T R A C T   C A T E G O R Y    R E A D E R   *
+#                     D E C L A R A T I O N                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @overridingAbstractCategoryReaderAST : @semanticDeclarationAST {
+  @lstring mTypeName
+  @lstring mAbstractCategoryReaderName
+  @formalInputParameterListAST mAbstractCategoryReaderFormalInputParameterList
+  @lstring mAbstractCategoryReaderReturnedTypeName
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    Common Rules                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @attributeInCollectionListAST {
+  @bool mIsPrivate
+  @lstring mAttributeTypeName
+  @lstring mAttributeName
+  @lstringlist mFeatureList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    A R R A Y    D E C L A R A T I O N                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @arrayDeclarationAST : @semanticDeclarationAST {
+  @lstring mArrayTypeName
+  @lstring mElementTypeName
+  @luint mDimension
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    L I S T M A P    D E C L A R A T I O N                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @listmapDeclarationAST : @semanticDeclarationAST {
+  @lstring mListmapTypeName
+  @lstring mAssociatedListTypeName
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    M A P    A U T O M A T O N                                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+enum @mapAutomatonMessageKind {
+  case noMessage  case warningMessage  case errorMessage
+}
+
+#---------------------------------------------------------------------------*
+
+list @mapStateTransitionList {
+  @lstring mActionName %nogetter
+  @lstring mTargetStateName %nogetter
+  @mapAutomatonMessageKind mTransitionMessageKind %nogetter
+  @lstring mTransitionMessage %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+list @mapStateList {
+  @lstring mStateName %nogetter
+  @mapAutomatonMessageKind mStateMessageKind %nogetter
+  @lstring mStateMessage %nogetter
+  @mapStateTransitionList mTransitionList %nogetter
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    M A P    D E C L A R A T I O N                                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @insertMethodListAST {
+  @lstring mInsertMethodName %nogetter
+  @lstring mErrorMessage %nogetter
+  @lstring mShadowErrorMessage %nogetter
+  @lstring mInitialStateName %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+list @mapSearchMethodListAST {
+  @lstring mSearchMethodName %nogetter
+  @lstring mErrorMessage %nogetter
+  @lstring mActionName %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+list @mapRemoveMethodListAST {
+  @lstring mMethodName %nogetter
+  @lstring mErrorMessage %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+list @insertOrReplaceDeclarationListAST {
+  @location mInsertOrReplaceDeclarationLocation %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+class @mapDeclarationAST : @semanticDeclarationAST {
+  @lstring mMapTypeName
+  @attributeInCollectionListAST mAttributeList
+  @insertMethodListAST mInsertMethodList
+  @mapSearchMethodListAST mSearchMethodList
+  @mapRemoveMethodListAST mRemoveMethodList
+  @insertOrReplaceDeclarationListAST mInsertOrReplaceDeclarationListAST
+}
+
+#---------------------------------------------------------------------------*
+
+list @mapOverrideBlockDescriptorAST {
+  @lstring mLeftState %nogetter
+  @lstring mRightState %nogetter
+  @lstring mResultingState %nogetter
+  @mapAutomatonMessageKind mMessageKind %nogetter
+  @lstring mTransitionMessage %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+list @mapOverrideBlockListAST {
+  @lstring mOverrideBlockName %nogetter
+  @mapOverrideBlockDescriptorAST mMapOverrideBlockDescriptor1AST %nogetter
+  @mapOverrideBlockDescriptorAST mMapOverrideBlockDescriptor2AST %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+class @uniqueMapDeclarationAST : @semanticDeclarationAST {
+  @lstring mMapTypeName
+  @attributeInCollectionListAST mAttributeList
+  @insertMethodListAST mInsertMethodList
+  @mapSearchMethodListAST mSearchMethodList
+  @mapStateList mMapStateList
+  @mapOverrideBlockListAST mMapOverrideBlockListAST
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    M A P    P R O X Y    D E C L A R A T I O N                            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @mapProxyDeclarationAST : @semanticDeclarationAST {
+  @lstring mMapProxyTypeName
+  @lstring mAssociatedMapTypeName
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    C L A S S    D E C L A R A T I O N                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @classDeclarationAST : @semanticDeclarationAST {
+  @bool mIsAbstract %nogetter
+  @lstring mClassTypeName %nogetter
+  @lstring mSuperClassName %nogetter # Empty if no super class
+  @lstringlist mClassFeatureList %nogetter
+  @attributeInCollectionListAST mAttributeList %nogetter
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    L I S T    D E C L A R A T I O N                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @listDeclarationAST : @semanticDeclarationAST {
+  @lstring mListTypeName %nogetter
+  @attributeInCollectionListAST mAttributeList %nogetter
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    S T R U C T    D E C L A R A T I O N                                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @structDeclarationAST : @semanticDeclarationAST {
+  @lstring mStructTypeName
+  @attributeInCollectionListAST mAttributeList
+  @string mEnumeratedElementTypeName # Empty string if not enumerable
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    S O R T E D    L I S T    D E C L A R A T I O N                        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @sortedListSortDescriptorListAST {
+  @lstring mSortedAttributeName %nogetter
+  @bool mAscending %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+class @sortedListDeclarationAST : @semanticDeclarationAST {
+  @lstring mSortedListTypeName
+  @attributeInCollectionListAST mAttributeList
+  @sortedListSortDescriptorListAST mSortDescriptorList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    E N U M    D E C L A R A T I O N                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! enum
+
+#---------------------------------------------------------------------------*
+
+class @enumDeclarationAST : @semanticDeclarationAST {
+  @lstring mEnumTypeName
+  @enumConstantList mConstantList
+}
+
+#---------------------------------------------------------------------------*
+
+list @enumConstantList {
+  @lstring mConstantName
+  @2lstringlist mAssociatedValueDefinitionList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    F I L E W R A P P E R    D E C L A R A T I O N                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @formalTemplateInputParameterListAST {
+  @lstring mFormalTemplateSelector
+  @lstring mFormalArgumentTypeName %nogetter
+  @lstring mFormalArgumentName %nogetter
+  @bool mIsUnused %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+list @filewrapperTemplateListAST {
+  @lstring mFilewrapperTemplateName %nogetter
+  @lstring mFilewrapperTemplatePath %nogetter
+  @formalTemplateInputParameterListAST mFilewrapperTemplateFormalInputParameters %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+class @filewrapperDeclarationAST : @semanticDeclarationAST {
+  @bool mIsInternal
+  @string mSourceFileAbsolutePath
+  @lstring mFilewrapperName
+  @lstring mFilewrapperPath
+  @lstringlist mFilewrapperTextFileExtensionList
+  @lstringlist mFilewrapperBinaryFileExtensionList
+  @filewrapperTemplateListAST mFilewrapperTemplateList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#     G R A P H                                                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @graphInsertModifierList {
+  @lstring mInsertModifierName %nogetter
+  @lstring mInsertErrorMessage %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+class @graphDeclarationAST : @semanticDeclarationAST {
+  @lstring mGraphTypeName
+  @lstring mAssociatedListTypeName
+  @graphInsertModifierList mInsertModifierList
+}
+
+#---------------------------------------------------------------------------*
+
+class @semanticsComponentAST {
+  @lstring mSemanticsComponentName
+  @lstringlist mImportedComponentFileNameList
+  @semanticDeclarationListAST mSemanticDeclarationList
+  @location mEndOfSourceFile
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    M A T C H    I N S T R U C T I O N                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @matchEntryListAST {
+  @bool mIsType %nogetter # true if type, false if enum
+  @lstring mTypeNameOrEnumerationConstantName %nogetter
+  @lstring mLocalConstantName %nogetter # Empty string if no constant
+}
+
+#---------------------------------------------------------------------------*
+
+list @matchInstructionBranchListAST {
+  @matchEntryListAST mMatchEntryList %nogetter
+  @location mEndOfMatchEntryList %nogetter
+  @semanticInstructionListAST mMatchBranchInstructionList %nogetter
+  @location mEndOf_instructionList %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+class @matchInstructionAST : @semanticInstructionAST {
+  @semanticExpressionListAST mMatchedExpressionList
+  @matchInstructionBranchListAST mMatchInstructionBranchList
+  @semanticInstructionListAST mElseInstructionList
+  @location mEndOf_match_instruction
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#     E X T E R N     T Y P E                                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @externTypeDeclarationAST : @semanticDeclarationAST {
+  @lstring mExternTypeName
+  @string mCppPreDeclarationCode
+  @string mCppClassCode
+  @externTypeConstructorList mExternTypeConstructorList
+  @externTypeReaderList mExternTypeReaderList
+  @externTypeModifierList mExternTypeModifierList
+  @externTypeMethodList mExternTypeMethodList
+}
+
+#---------------------------------------------------------------------------*
+
+list @typeNameFormalParameterNameList {
+  @lstring mFormalSelector
+  @lstring mFormalParameterTypeName
+  @lstring mFormalParameterName
+}
+
+#---------------------------------------------------------------------------*
+
+list @externTypeConstructorList {
+  @lstring mConstructorName
+  @lstring mResultTypeName
+  @typeNameFormalParameterNameList mParameterList
+}
+
+#---------------------------------------------------------------------------*
+
+list @externTypeReaderList {
+  @lstring mReaderName
+  @lstring mResultTypeName
+  @typeNameFormalParameterNameList mParameterList
+}
+
+#---------------------------------------------------------------------------*
+
+list @externTypeModifierList {
+  @lstring mModifierName
+  @formalParameterListAST mFormalParameterList
+}
+
+#---------------------------------------------------------------------------*
+
+list @externTypeMethodList {
+  @lstring mMethodName
+  @formalParameterListAST mFormalParameterList
+  @location mDeclarationLocation
+}
+
+#---------------------------------------------------------------------------*
+
+list @syntaxInstructionList {
+  @syntaxInstructionAST mInstruction %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+list @nonTerminalLabelListAST {
+  @lstring mLabelName %nogetter
+  @formalParameterListAST mFormalArgumentList %nogetter
+  @location mEndOfArgumentLocation %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+list @nonterminalDeclarationListAST {
+  @lstring mNonterminalName %nogetter
+  @nonTerminalLabelListAST mLabels %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+list @syntaxRuleLabelListAST {
+  @lstring mLabelName %nogetter
+  @formalParameterListAST mFormalArguments %nogetter
+  @location mEndOfArgumentLocation %nogetter
+  @syntaxInstructionList mSyntaxInstructionList %nogetter
+  @location mEndOfInstructionList %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+list @syntaxRuleListAST {
+  @lstring mNonterminalName %nogetter
+  @syntaxRuleLabelListAST mLabelList %nogetter
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   N O N T E R M I N A L    C A L L    I N S T R U C T I O N               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @nonterminalCallInstruction : @syntaxInstructionAST {
+  @lstring mNonterminalName
+  @lstring mLabelName # No label : empty string
+  @actualParameterListAST mActualParameterList
+  @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationResult
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   T E R M I N A L    C H E C K    I N S T R U C T I O N                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @terminalCheckInstruction : @syntaxInstructionAST {
+  @lstring mTerminalName
+  @actualInputParameterListAST mActualInputParameterList
+  @2lstringlist mIndexingKeyList # Empty list if no index
+  @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
+  @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationToken
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   R E P E A T    I N S T R U C T I O N                                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @listOfSyntaxInstructionList {
+  @syntaxInstructionList mSyntaxInstructionList %nogetter
+  @location mEndOf_instructions %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+class @repeatInstruction : @syntaxInstructionAST {
+  @syntaxInstructionList mRepeatedInstructionList
+  @location mEndOf_repeated_instructions_branch
+  @listOfSyntaxInstructionList mRepeatBranchList
+  @location mEndOf_repeat_instruction
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   S E L E C T    I N S T R U C T I O N                                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @selectInstruction : @syntaxInstructionAST {
+  @listOfSyntaxInstructionList mSelectBranchList
+  @location mEndOf_select_instruction
+}
+
+#---------------------------------------------------------------------------*
+
+class @syntaxSendInstruction : @syntaxInstructionAST {
+  @semanticExpressionAST mExpression
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   P A R S E   R E W I N D    I N S T R U C T I O N                        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @parseRewindInstruction : @syntaxInstructionAST {
+  @listOfSyntaxInstructionList mParseRewindBranchList
+  @location mEndOfParseDoInstruction
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   P A R S E   L O O P    I N S T R U C T I O N                            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @parseLoopInstruction : @syntaxInstructionAST {
+  @semanticExpressionAST mVariantExpression
+  @location mEndOfVariantExpression
+  @semanticExpressionAST mWhileExpression
+  @location mEndOfWhileExpression
+  @syntaxInstructionList mDoInstructionList
+  @location mEndOfInstructionList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   P A R S E   W H E N    I N S T R U C T I O N                            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @parseWhenInstruction : @syntaxInstructionAST {
+  @semanticExpressionAST mWhenExpression
+  @location mEndOfWhenExpression
+  @syntaxInstructionList mWhenInstructionList
+  @location mEndOfWhenInstructionList
+  @syntaxInstructionList mElseInstructionList
+  @location mEndOfElseInstructionList
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   Collection value                                                           *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+list @collectionValueElementList {
+  @abstractCollectionValueElement mElement
+}
+
+#------------------------------------------------------------------------------*
+
+abstract class @abstractCollectionValueElement {}
+
+#------------------------------------------------------------------------------*
+
+class @expressionCollectionValue : @abstractCollectionValueElement {
+  @semanticExpressionAST mExpression
+  @location mExpressionLocation
+}
+
+#------------------------------------------------------------------------------*
+
+class @expressionListCollectionValue : @abstractCollectionValueElement {
+  @actualOutputExpressionList mExpressionList
+  @location mEndOfExpressionLocation
+}
+
+#------------------------------------------------------------------------------*
+
+class @collectionValueAST : @semanticExpressionAST {
+  @lstring mTypeName # Empty string if infered
+  @collectionValueElementList mElementList
+  @location mEndOfCollectionValue
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   S Y N T A X    C O M P O N E N T    A S T                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! GALGAS 3 AST
+
+#---------------------------------------------------------------------------*
+
+class @optionComponentDeclarationAST : @semanticDeclarationAST {
+  @lstring mOptionComponentName
+  @commandLineOptionListAST mOptions
+}
+
+#---------------------------------------------------------------------------*
+
+class @galgas3SyntaxComponentAST : @semanticDeclarationAST {
+  @lstring mSyntaxComponentName
+  @lstring mLexiqueName 
+  @nonterminalDeclarationListAST mNonterminalDeclarationList
+  @syntaxRuleListAST mRuleList
+  @bool mHasTranslateFeature
+}
+
+#---------------------------------------------------------------------------*
+
+class @galgas3GrammarComponentAST : @semanticDeclarationAST {
+  @lbool mHasIndexing
+  @lstring mGrammarComponentName
+  @lstring mGrammarClass
+  @lstringlist mSyntaxComponents
+  @lstring mStartSymbolName
+  @nonTerminalLabelListAST mStartSymbolLabelList
+  @lstringlist mUnusedNonterminalList
+  @bool mHasTranslateFeature
+}
+
+#---------------------------------------------------------------------------*
+
+list @galgas3SyntaxComponentListAST {
+  @lstring mSyntaxComponentName
+  @lstring mImportedLexiqueFilePath 
+  @lstringlist mImportedComponentFileNameList
+  @nonterminalDeclarationListAST mNonterminalDeclarationList
+  @syntaxRuleListAST mRuleList
+  @semanticDeclarationListAST mSemanticDeclarationList
+  @bool mHasTranslateFeature
+}
+
+#---------------------------------------------------------------------------*
+
+list @galgas3GrammarComponentListAST {
+  @lbool mHasIndexing
+  @lstring mGrammarComponentName
+  @lstring mGrammarClass
+  @lstringlist mSyntaxComponents
+  @lstring mStartSymbolName
+  @nonTerminalLabelListAST mStartSymbolLabelList
+  @lstringlist mUnusedNonterminalList
+  @bool mHasTranslateFeature
+}
+
+#---------------------------------------------------------------------------*
+
+list @prologueEpilogueList {
+  @semanticInstructionListAST mInstructionList
+  @location mEndOfInstructionList
+}
+
+#---------------------------------------------------------------------------*
+
+list @programRuleList {
+  @lstring mSourceFileExtension
+  @lstring mSourceFileHelp
+  @lstring mSourceFileVariableName
+  @bool mSourceFileVariableNameIsUnused
+  @lstring mIndexingGrammar # Empty string if no indexing
+  @semanticInstructionListAST mInstructionList
+  @location mEndOfInstructionList
+}
+
+#---------------------------------------------------------------------------*
+
+struct @programComponentAST {
+  @lstring mProgramComponentName
+  @lstringlist mImportedComponentFileNameList
+  @prologueEpilogueList mPrologueList
+  @prologueEpilogueList mEpilogueList
+  @programRuleList mProgramRules
+  @semanticDeclarationListAST mSemanticDeclarationList
+}
+
+#---------------------------------------------------------------------------*
+
+list @galgas3GUIComponentListAST {
+  @lstring mGUIComponentName
+  @lstringlist mImportedOptionList
+  @guiSimpleAttributeListAST mGlobalSimpleAttributeList
+  @withLexiqueListAST mWithLexiqueList
+}
+
+#---------------------------------------------------------------------------*
+
+struct @galgas3DeclarationAST {
+  @semanticDeclarationListAST mDeclarationList
+  @galgas3SyntaxComponentListAST mSyntaxComponentList
+#  @galgas3GrammarComponentListAST mGrammarComponentList ;
+  @galgas3GUIComponentListAST mGUIComponentList
+  @prologueEpilogueList mPrologueDeclarationList
+  @programRuleList mSourceRuleList
+  @prologueEpilogueList mEpilogueDeclarationList
+}
+
+#---------------------------------------------------------------------------*
+

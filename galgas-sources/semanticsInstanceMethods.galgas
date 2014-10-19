@@ -1,0 +1,150 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  semantics definitions for semantics component                            *
+#                                                                           *
+#  Copyright (C) 2010, ..., 2012 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+
+
+#---------------------------------------------------------------------------*
+
+proc enterInstanceMethodWithoutArgument
+  ?!@instanceMethodMap ioInstanceMethodMap
+  ?let @lstring inInstanceMethodName
+  ?let @bool inHasCompilerArgument {
+  [!?ioInstanceMethodMap insertKey
+    !inInstanceMethodName
+    !@methodKind. definedAsMember
+    !@formalParameterSignature. emptyList
+    ![inInstanceMethodName location]
+    !inHasCompilerArgument
+    !@methodQualifier. isBasic
+    !"" # No error message
+  ]
+}
+
+#---------------------------------------------------------------------------*
+
+proc enterInstanceMethodWithInputArgument
+  ?!@instanceMethodMap ioInstanceMethodMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  ?let @string inInputArgumentTypeName
+  ?let @string inInputArgumentName
+  ?let @lstring inInstanceMethodName
+  ?let @bool inHasCompilerArgument {
+  @unifiedTypeMap-proxy argumentTypeIndex
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgumentTypeName ?argumentTypeIndex]
+  var argList =@formalParameterSignature.emptyList{}
+  argList += !["" nowhere] !argumentTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !inInputArgumentName
+  [!?ioInstanceMethodMap insertKey
+    !inInstanceMethodName
+    !@methodKind. definedAsMember
+    !argList
+    ![inInstanceMethodName location]
+    !inHasCompilerArgument
+    !@methodQualifier. isBasic
+    !"" # No error message
+  ]
+}
+
+#---------------------------------------------------------------------------*
+
+proc enterInstanceMethodWithOutputArgument
+  ?!@instanceMethodMap ioInstanceMethodMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  ?let @string inOutputArgumentTypeName
+  ?let @string inOutputArgumentName
+  ?let @lstring inInstanceMethodName
+  ?let @bool inHasCompilerArgument {
+  @unifiedTypeMap-proxy argumentTypeIndex
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inOutputArgumentTypeName ?argumentTypeIndex]
+  var argList =@formalParameterSignature.emptyList{}
+  argList += !["" nowhere] !argumentTypeIndex !@formalArgumentPassingModeAST. argumentOut !inOutputArgumentName
+  [!?ioInstanceMethodMap insertKey
+    !inInstanceMethodName
+    !@methodKind. definedAsMember
+    !argList
+    ![inInstanceMethodName location]
+    !inHasCompilerArgument
+    !@methodQualifier. isBasic
+    !"" # No error message
+  ]
+}
+
+#---------------------------------------------------------------------------*
+
+override method @dataPredefinedTypeAST getInstanceMethodMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@instanceMethodMap outInstanceMethodMap {
+  outInstanceMethodMap = @instanceMethodMap. emptyMap
+  enterInstanceMethodWithInputArgument ( !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" !"inFilePath" !["writeToFile" nowhere] !true )
+  enterInstanceMethodWithInputArgument ( !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" !"inFilePath" !["writeToExecutableFile" nowhere] !true )
+  var argList =@formalParameterSignature.emptyList{}
+  @unifiedTypeMap-proxy t
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?t]
+  argList += !["" nowhere] !t !@formalArgumentPassingModeAST. argumentConstantIn !"inFilePath"
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"bool" ?t]
+  argList += !["" nowhere] !t !@formalArgumentPassingModeAST. argumentOut !"outFileModified"
+  [!?outInstanceMethodMap insertKey
+    !@lstring. new { !"writeToFileWhenDifferentContents" !@location.here}
+    !@methodKind. definedAsMember
+    !argList
+    !@location.here
+    !true
+    !@methodQualifier. isBasic
+    !"" # No error message
+  ]
+}
+
+#---------------------------------------------------------------------------*
+
+override method @stringPredefinedTypeAST getInstanceMethodMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@instanceMethodMap outInstanceMethodMap {
+  outInstanceMethodMap = @instanceMethodMap. emptyMap
+  enterInstanceMethodWithInputArgument ( !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" !"inFilePath" !@lstring. new { !"writeToFile" !@location.here} !true )
+  enterInstanceMethodWithInputArgument ( !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" !"inFilePath" !@lstring. new { !"writeToExecutableFile" !@location.here} !true )
+  enterInstanceMethodWithInputArgument ( !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" !"inFilePath" !@lstring. new { !"makeDirectoryAndWriteToFile" !@location.here} !true )
+  enterInstanceMethodWithInputArgument ( !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" !"inFilePath" !@lstring. new { !"makeSymbolicLinkWithPath" !@location.here} !true )
+  enterInstanceMethodWithoutArgument ( !?outInstanceMethodMap !@lstring. new { !"makeDirectory" !@location.here} !true )
+  var argList =@formalParameterSignature.emptyList{}
+  @unifiedTypeMap-proxy t
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?t]
+  argList += !["" nowhere] !t !@formalArgumentPassingModeAST. argumentConstantIn !"inFilePath"
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"bool" ?t]
+  argList += !["" nowhere] !t !@formalArgumentPassingModeAST. argumentOut !"outFileModified"
+  [!?outInstanceMethodMap insertKey
+    !@lstring. new { !"writeToFileWhenDifferentContents" !@location.here}
+    !@methodKind. definedAsMember
+    !argList
+    !@location.here
+    !true
+    !@methodQualifier. isBasic
+    !"" # No error message
+  ]
+  [!?outInstanceMethodMap insertKey
+    !@lstring. new { !"writeToExecutableFileWhenDifferentContents" !@location.here}
+    !@methodKind. definedAsMember
+    !argList
+    !@location.here
+    !true
+    !@methodQualifier. isBasic
+    !"" # No error message
+  ]
+}
+
+#---------------------------------------------------------------------------*
+

@@ -1,0 +1,207 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  'grammar' component parser, as model builder                             *
+#                                                                           *
+#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+syntax grammarModelBuilder (galgas_scanner)  %translate{
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   G R A M M A R    C O M P O N E N T                                      *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <grammar_component_start_symbol>
+  !@galgas3GrammarComponentListAST-element outGrammarComponentRoot {
+  @lbool hasIndexing
+  select
+    hasIndexing = @lbool. new { !false !@location.here}
+  or
+    hasIndexing = @lbool. new { !true !@location.here}
+    $indexing$
+  end
+  $grammar$
+  $identifier$ ?var  @lstring mGrammarName indexing grammarComponentDefinition
+  $literal_string$ ?var  @lstring mGrammarClass
+#--- Feature translate
+  @bool hasTranslateFeature
+  select
+    hasTranslateFeature = false
+  or
+    $feature$ :> ?let @string sep ?*
+    $identifier$ ?let @lstring featureName :> ?* ?*
+    send sep + "%" + featureName
+    if featureName.string != "translate" then
+      error featureName: "only 'feature translate' can be declared here"
+    end
+    hasTranslateFeature = true
+  end
+  $:$ :> ?* ?*
+  send " {"
+#--- New style imports
+  var syntaxComponents =@lstringlist.emptyList{}
+  repeat
+    $with$ :>?@string sep ?*
+    send sep+ "syntax"
+    $literal_string$ ?var  @lstring syntaxComponent :> ?sep ?*
+    send sep + [syntaxComponent stringByDeletingPathExtension]
+    $;$ :> ?* ?*
+    syntaxComponents += !syntaxComponent
+  while
+  end
+#--- Root symbol
+  $root$ :> ?@string sep ?*
+  send sep
+  $non_terminal_symbol$ ?var @lstring  mStartSymbol indexing ruleReference
+  var mLabelList =@nonTerminalLabelListAST.emptyList{}
+  <grammar_start_symbol_label> !@lstring. new { !"" !@location.here} !?mLabelList
+  repeat
+  while
+    $label$
+    $identifier$ ?var @lstring labelName
+    <grammar_start_symbol_label> !labelName !?mLabelList
+  end
+  $;$ :> ?* ?*
+#--- Unused non terminal symbols
+  var mUnusedNonterminalList =@lstringlist.emptyList{}
+  repeat
+  while
+   $unused$ :> ?* ?*
+   repeat
+     send "\n unused"
+     $non_terminal_symbol$ ?var  @lstring nonterminalSymbolName
+     mUnusedNonterminalList += ! nonterminalSymbolName
+   while
+     $,$ :> ?* ?*
+   end
+   $;$ :> ?* ?*
+  end
+#---
+  $end$ :> ?sep ?*
+  send sep + "}"
+  outGrammarComponentRoot = @galgas3GrammarComponentListAST-element. new {
+    !hasIndexing
+    !mGrammarName
+    !mGrammarClass
+    !syntaxComponents
+    !mStartSymbol
+    !mLabelList
+    !mUnusedNonterminalList
+    !hasTranslateFeature}
+  $grammar$ :> ?* ?*
+  $;$ :> ?* ?*
+}
+
+#---------------------------------------------------------------------------*
+
+rule <grammar_start_symbol_label>
+  ?let @lstring inLabelName
+  ?!@nonTerminalLabelListAST ioLabelList {
+  var argumentNameSet =@stringset.emptySet{}
+  var mFormalParameterList =@formalParameterListAST.emptyList{}
+  repeat
+  while
+    @lstring argumentName
+    <label_formal_parameter> ?argumentName !?mFormalParameterList
+    if [argumentNameSet hasKey ![argumentName string]] then
+      error argumentName: "there is already an argument named '" + argumentName + "'"
+    end
+    argumentNameSet += ![argumentName string]
+  end
+  ioLabelList += !inLabelName !mFormalParameterList !@location.here
+}
+
+#---------------------------------------------------------------------------*
+
+rule <label_formal_parameter>
+  !@lstring outArgumentName
+  ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
+  $?$ ?let selector
+  $type_name$ ?var @lstring mTypeName
+  select
+  or
+   $unused$
+  end
+  $identifier$ ?outArgumentName
+  ioStartSymbolLabelFormalParameterList +=
+    !selector
+    !@formalArgumentPassingModeAST. argumentIn
+    !mTypeName
+    !outArgumentName
+    !false
+}
+
+#---------------------------------------------------------------------------*
+
+rule <label_formal_parameter>
+  !@lstring outArgumentName
+  ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
+  $??$ ?let selector :> ?let @string sep ?*
+  send sep + "?" + if selector.string != "" then selector.string + ":" else "" end + "let "
+  $type_name$ ?var @lstring mTypeName
+  select
+  or
+   $unused$
+  end
+  $identifier$ ?outArgumentName
+  ioStartSymbolLabelFormalParameterList +=
+    !selector
+    !@formalArgumentPassingModeAST. argumentConstantIn
+    !mTypeName
+    !outArgumentName
+    !false
+}
+
+#---------------------------------------------------------------------------*
+
+rule <label_formal_parameter>
+  !@lstring outArgumentName
+  ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
+  $?!$ ?let selector
+  $type_name$ ?var @lstring mTypeName
+  select
+  or
+   $unused$
+  end
+  $identifier$ ?outArgumentName
+  ioStartSymbolLabelFormalParameterList +=
+    !selector
+    !@formalArgumentPassingModeAST. argumentInOut
+    !mTypeName
+    !outArgumentName
+    !false
+}
+
+#---------------------------------------------------------------------------*
+
+rule <label_formal_parameter>
+  !@lstring outArgumentName
+  ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList {
+  $!$ ?let selector
+  $type_name$ ?var @lstring mTypeName
+  $identifier$ ?outArgumentName
+  ioStartSymbolLabelFormalParameterList +=
+    !selector
+    !@formalArgumentPassingModeAST. argumentOut
+    !mTypeName
+    !outArgumentName
+    !false
+}
+
+#---------------------------------------------------------------------------*
+
+}

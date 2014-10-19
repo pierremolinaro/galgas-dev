@@ -1,0 +1,546 @@
+#------------------------------------------------------------------------------*
+#                                                                              *
+#  'syntax' component parser                                                   *
+#                                                                              *
+#  Copyright (C) 2007, ..., 2014 Pierre Molinaro.                              *
+#                                                                              *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                       *
+#                                                                              *
+#  This program is free software; you can redistribute it and/or modify it     *
+#  under the terms of the GNU General Public License as published by the       *
+#  Free Software Foundation.                                                   *
+#                                                                              *
+#  This program is distributed in the hope it will be useful, but WITHOUT      *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or       *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for    *
+#   more details.                                                              *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+syntax syntaxModelBuilder (galgas_scanner)  %translate {
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#          Rules prototypes                                                    *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <expression> !@semanticExpressionAST outExpression
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction
+
+rule <formal_parameter_list> !@formalParameterListAST outFormalParameterList
+
+rule <actual_parameter_list>
+  !@actualParameterListAST outActualParameterList
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#      S Y N T A X    C O M P O N E N T                                        *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <syntax_component_start_symbol> !@galgas3SyntaxComponentListAST-element outSyntaxComponentRoot {
+  $syntax$
+#--- Semantics Component Name
+  $identifier$ ?let @lstring mSyntaxComponentName
+#--- Imported lexique
+  $($
+  $literal_string$ ?let @lstring importedLexiqueReference :> ?* ?*
+  send [importedLexiqueReference.string stringByDeletingPathExtension]
+  $)$
+#--- Feature 'translate'
+  @bool hasTranslateFeature
+  select
+    hasTranslateFeature = false
+  or
+    $feature$ :> ?@string sep ?*
+    send sep
+    $identifier$ ?let @lstring featureName :> ?* ?*
+    send "%" + featureName
+    if featureName.string != "translate" then
+      error featureName: "only 'feature translate' can be declared here"
+    end
+    hasTranslateFeature = true
+  end
+  $:$ :> ?@string sep ?*
+  send sep + "{"
+#--- Loop on import declarations
+  var importedComponentPathList =@lstringlist.emptyList{}
+  repeat
+  while
+    $import$ :> ?* ?*
+    $literal_string$ ?let @lstring path :> ?* ?*
+    importedComponentPathList += !path
+    $;$ :> ?* ?*
+  end
+#--- Loop on declarations
+  var mNonterminalDeclarationList =@nonterminalDeclarationListAST.emptyList{}
+  var mRuleList =@syntaxRuleListAST.emptyList{}
+  var mSemanticDeclarations =@semanticDeclarationListAST.emptyList{}
+  var semanticDeclarations = ""
+  repeat
+  while
+    <nonterminal_declaration> !? mNonterminalDeclarationList
+  while
+    <syntax_rule_declaration> !? mRuleList
+  while
+    <semantic_declaration> !?mSemanticDeclarations :> ?let @string dec
+    semanticDeclarations += dec
+  end
+#--- end
+  $end$ :> ?sep ?*
+  send sep + "}"
+  $syntax$ :> ?* ?*
+  $;$  :> ?* ?*
+  send semanticDeclarations
+  outSyntaxComponentRoot = @galgas3SyntaxComponentListAST-element. new {
+    !mSyntaxComponentName
+    !importedLexiqueReference
+    !importedComponentPathList
+    !mNonterminalDeclarationList
+    !mRuleList
+    !mSemanticDeclarations
+    !hasTranslateFeature}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#      N O N T E R M I N A L    D E C L A R A T I O N                          *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <nonterminal_label_declaration> ?let @lstring inLabelName ?!@nonTerminalLabelListAST ioNonTerminalLabelList {
+  <formal_parameter_list> ?let @formalParameterListAST mFormalParameters
+  ioNonTerminalLabelList +=
+    !inLabelName
+    !mFormalParameters
+    !@location.here
+}
+
+#------------------------------------------------------------------------------*
+
+rule <nonterminal_declaration> ?!@nonterminalDeclarationListAST ioNonterminalDeclarationList {
+  $nonterminal$  :> ?let @string sep ?*
+  send sep+ "rule"
+  $non_terminal_symbol$ ?let @lstring mNonterminalName indexing ruleDefinition
+  var mLabels =@nonTerminalLabelListAST.emptyList{}
+  <nonterminal_label_declaration> !@lstring. new { !"" !@location.here} !?mLabels
+  repeat
+  while
+    $label$
+    $identifier$ ?let @lstring labelName
+    <nonterminal_label_declaration> !labelName !?mLabels
+  end
+  $;$  :> ?* ?*
+  ioNonterminalDeclarationList +=
+    !mNonterminalName
+    !mLabels
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#      S Y N T A X    R U L E    D E C L A R A T I O N                         *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <syntax_rule_label>
+  ?let @lstring inLabelName
+  ?!@syntaxRuleLabelListAST ioLabelList {
+  @formalParameterListAST mFormalParameters
+  <formal_parameter_list> ? mFormalParameters
+  let endOfArguments = @location.here
+  $:$ :> ?* ?*
+  send " {"
+  @syntaxInstructionList mSyntaxInstructionList
+  <syntax_instruction_list> ? mSyntaxInstructionList
+  ioLabelList +=
+    !inLabelName
+    !mFormalParameters
+    !endOfArguments
+    !mSyntaxInstructionList
+    !@location.here
+  send "\n}"
+}
+
+#------------------------------------------------------------------------------*
+
+rule <syntax_rule_declaration> ?!@syntaxRuleListAST ioRuleList {
+  $rule$
+  $non_terminal_symbol$ ?var  @lstring mNonterminalName indexing ruleDefinition
+  var labelName =@lstring.new{ !"" !@location.here}
+  var mLabelList =@syntaxRuleLabelListAST.emptyList{}
+  repeat
+    <syntax_rule_label> !labelName !?mLabelList
+  while
+    $label$
+    $identifier$ ?labelName
+  end
+  $end$ :> ?* ?*
+  $rule$ :> ?* ?*
+  $;$ :> ?* ?*
+  ioRuleList +=
+    !mNonterminalName
+    !mLabelList
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   S Y N T A X    I N S T R U C T I O N    L I S T                            *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <syntax_instruction_list> !@syntaxInstructionList outSyntaxInstructionList {
+  outSyntaxInstructionList = @syntaxInstructionList. emptyList
+  repeat
+  while 
+    $;$
+  while
+    <semantic_instruction> ?let instruction
+    outSyntaxInstructionList += !instruction
+  while
+    <syntax_instruction> ?let instruction
+    outSyntaxInstructionList += !instruction
+  end
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   N O N T E R M I N A L    C A L L    I N S T R U C T I O N                  *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+#! Non terminal instruction
+
+#------------------------------------------------------------------------------*
+
+rule <syntax_instruction>
+  !@syntaxInstructionAST outInstruction {
+  $non_terminal_symbol$ ?var  @lstring mNonterminalName indexing ruleReference :> ?@string sep ?@string nonTerminalSymbol
+  send sep
+  @lstring mLabelName # No label : empty string
+  select
+    mLabelName = @lstring. new { !"" !@location.here}
+  or
+    $parse$
+    mLabelName = @lstring. new { !"parse" !@location.here}
+  or
+    send "parse "
+    $identifier$ ? mLabelName
+  end
+  send nonTerminalSymbol
+  <actual_parameter_list> ?let @actualParameterListAST mActualParameterList
+#--- Get syntax directed translation result string
+  @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
+  select
+    grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone. new
+  or
+    $:>$
+    <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationResult
+  end
+  $;$  :> ?* ?*
+  outInstruction = @nonterminalCallInstruction. new {
+    ![mNonterminalName location]
+    !mNonterminalName
+    !mLabelName
+    !mActualParameterList
+    !grammarInstructionSyntaxDirectedTranslationResult}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   T E R M I N A L    C H E C K    I N S T R U C T I O N                      *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+#! Terminal instruction
+
+#------------------------------------------------------------------------------*
+
+rule <actual_input_parameter_list>
+  !@actualInputParameterListAST outActualInputParameterList
+
+#------------------------------------------------------------------------------*
+
+rule <syntax_directed_translation_result>
+  !@abstractGrammarInstructionSyntaxDirectedTranslationResult outResult
+
+#------------------------------------------------------------------------------*
+
+rule <syntax_instruction>
+  !@syntaxInstructionAST outInstruction {
+  $terminal$ ?let @lstring terminalName indexing terminalReference
+  <actual_input_parameter_list> ?let @actualInputParameterListAST actualInputParameterList
+  var indexNameList =@2lstringlist.emptyList{}
+  select
+  or
+    $indexing$
+    repeat
+      $identifier$ ?let @lstring indexName indexing indexingNameReference
+      @lstring postfixName
+      select
+        postfixName = ["" nowhere]
+      or
+        $literal_string$ ?postfixName
+      end
+      indexNameList += !indexName !postfixName
+    while
+      $,$
+    end
+  end
+#--- Get syntax directed translation result string
+  @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
+  @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationPreceedingToken
+  select
+    grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor = @grammarInstructionSyntaxDirectedTranslationResultNone. new
+    grammarInstructionSyntaxDirectedTranslationPreceedingToken = @grammarInstructionSyntaxDirectedTranslationResultNone. new
+  or
+    $:>$
+    <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
+    <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationPreceedingToken
+  end
+  $;$ :> ?* ?*
+  outInstruction = @terminalCheckInstruction. new {
+    ![terminalName location]
+    !terminalName
+    !actualInputParameterList
+    !indexNameList
+    !grammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
+    !grammarInstructionSyntaxDirectedTranslationPreceedingToken}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   R E P E A T    I N S T R U C T I O N                                       *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+#! Repeat instruction
+
+#------------------------------------------------------------------------------*
+
+rule <syntax_instruction>
+  !@syntaxInstructionAST outInstruction {
+  $repeat$
+  let mRepeatInstructionLocation = @location.here
+  <syntax_instruction_list> ?let @syntaxInstructionList mRepeatedInstructionList
+  let endOf_repeated_instructions = @location.here
+  var mRepeatBranchList =@listOfSyntaxInstructionList.emptyList{}
+  repeat
+    $while$
+    <syntax_instruction_list> ?let @syntaxInstructionList mInstructionList
+    mRepeatBranchList += ! mInstructionList !@location.here
+  while
+  end
+  $end$
+  let endOf_repeat_instruction = @location.here
+  $repeat$ :> ?* ?*
+  $;$ :> ?* ?*
+  send if generateGalgas3InstructionTerminator () then "%repeat" else "" end
+  outInstruction = @repeatInstruction. new {
+    !mRepeatInstructionLocation
+    !mRepeatedInstructionList
+    !endOf_repeated_instructions
+    !mRepeatBranchList
+    !endOf_repeat_instruction}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   S E L E C T    I N S T R U C T I O N                                       *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+#! select instruction
+
+#------------------------------------------------------------------------------*
+
+rule <syntax_instruction>
+  !@syntaxInstructionAST outInstruction {
+  $select$
+  let mSelectInstructionLocation = @location.here
+  var mSelectBranchList =@listOfSyntaxInstructionList.emptyList{}
+  <syntax_instruction_list> ?let @syntaxInstructionList il
+  mSelectBranchList += !il !@location.here
+  repeat
+    $or$
+    <syntax_instruction_list> ?let @syntaxInstructionList instructionList
+    mSelectBranchList += !instructionList !@location.here
+  while
+  end
+  $end$
+  let endOf_select_instruction = @location.here
+  $select$ :> ?* ?*
+  $;$ :> ?* ?*
+  send if generateGalgas3InstructionTerminator () then "%select" else "" end
+  outInstruction = @selectInstruction. new {
+    !mSelectInstructionLocation
+    !mSelectBranchList
+    !endOf_select_instruction}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P A R S E    R E W I N D    I N S T R U C T I O N                          *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+#! parse instruction
+
+#------------------------------------------------------------------------------*
+
+rule <syntax_instruction>
+  !@syntaxInstructionAST outInstruction {
+  $parse$
+  let instructionLocation = @location.here
+  $do$
+  var mParseDoBranchList =@listOfSyntaxInstructionList.emptyList{}
+  <syntax_instruction_list> ?let @syntaxInstructionList il
+  mParseDoBranchList += !il !@location.here
+  repeat
+    $rewind$
+    <syntax_instruction_list> ?let @syntaxInstructionList instructionList
+    mParseDoBranchList += !instructionList  !@location.here
+  while
+  end
+  $end$
+  let endOfInstruction = @location.here
+  $parse$ :> ?* ?*
+  $;$ :> ?* ?*
+  send if generateGalgas3InstructionTerminator () then "%parse" else "" end
+  outInstruction = @parseRewindInstruction. new {
+    !instructionLocation
+    !mParseDoBranchList
+    !endOfInstruction}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P A R S E    W H E N    I N S T R U C T I O N                              *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <branchOfParseWhenInstruction> !@syntaxInstructionList outElseInstructionList {
+  $else$
+  <syntax_instruction_list> ? outElseInstructionList
+}
+
+#------------------------------------------------------------------------------*
+
+rule <branchOfParseWhenInstruction> !@syntaxInstructionList outElseInstructionList {
+  $when$ :> ?let @string sep ?*
+  send sep + "case" ;
+  let instructionLocation = @location.here
+  @semanticExpressionAST whenExpression
+  <expression> ? whenExpression
+  let endOfWhenExpression = @location.here
+  $:$
+  @syntaxInstructionList whenInstructionList
+  <syntax_instruction_list> ? whenInstructionList
+  let endOfWhenInstructions = @location.here
+#--- Else part
+  @syntaxInstructionList elseInstructionList
+  <branchOfParseWhenInstruction> ? elseInstructionList
+  let endOfElseInstructions = @location.here
+  outElseInstructionList = @syntaxInstructionList. emptyList
+  outElseInstructionList += !@parseWhenInstruction. new {
+    !instructionLocation
+    !whenExpression
+    !endOfWhenExpression
+    !whenInstructionList
+    !endOfWhenInstructions
+    !elseInstructionList
+    !endOfElseInstructions}
+}
+
+#------------------------------------------------------------------------------*
+
+rule <syntax_instruction>
+  !@syntaxInstructionAST outInstruction {
+  $parse$
+  let instructionLocation = @location.here
+  $when$ :> ?let @string sep ?*
+  send sep + "with"
+  <expression> ?var @semanticExpressionAST whenExpression
+  let endOfWhenExpression = @location.here
+  $:$
+  <syntax_instruction_list> ?let @syntaxInstructionList whenInstructionList
+  let endOfWhenInstructions = @location.here
+#--- Else part
+  <branchOfParseWhenInstruction> ?let @syntaxInstructionList elseInstructionList
+  let endOfElseInstructions = @location.here
+  $end$
+  $parse$ :> ?* ?*
+  $;$ :> ?* ?*
+  send if generateGalgas3InstructionTerminator () then "%parse" else "" end
+  outInstruction = @parseWhenInstruction. new {
+    !instructionLocation
+    !whenExpression
+    !endOfWhenExpression
+    !whenInstructionList
+    !endOfWhenInstructions
+    !elseInstructionList
+    !endOfElseInstructions}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P A R S E    L O O P    I N S T R U C T I O N                              *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <syntax_instruction>
+  !@syntaxInstructionAST outInstruction {
+  $parse$
+  let instructionLocation = @location.here
+  $loop$
+  <expression> ?let @semanticExpressionAST variantExpression
+  let endOfVariantExpression = @location.here
+  $while$
+  <expression> ?let @semanticExpressionAST whileExpression
+  let endOfWhileExpression = @location.here
+  $do$
+  <syntax_instruction_list> ?let @syntaxInstructionList instructionList
+  $end$
+  let endOfInstructionList = @location.here
+  $parse$ :> ?* ?*
+  $;$ :> ?* ?*
+  send if generateGalgas3InstructionTerminator () then "%parse" else "" end
+  outInstruction = @parseLoopInstruction. new {
+    !instructionLocation
+    !variantExpression
+    !endOfVariantExpression
+    !whileExpression
+    !endOfWhileExpression
+    !instructionList
+    !endOfInstructionList}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P A R S E    R E W I N D    I N S T R U C T I O N                          *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+#! send instruction
+
+#------------------------------------------------------------------------------*
+
+rule <syntax_instruction>
+  !@syntaxInstructionAST outInstruction {
+  $send$
+  let instructionLocation = @location.here
+  <expression> ?let @semanticExpressionAST sentExpression
+  $;$  :> ?* ?*
+  outInstruction = @syntaxSendInstruction. new {
+    !instructionLocation
+    !sentExpression}
+}
+
+#------------------------------------------------------------------------------*
+
+}

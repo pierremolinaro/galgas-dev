@@ -1,0 +1,41 @@
+#---------------------------------------------------------------------------*
+
+
+
+#------------------------------------------------------------------------------*
+
+enum @sourceFileKind {
+  case externSourceFile  case lexiqueSourceFile  case guiSourceFile  case optionSourceFile 
+  case syntaxSourceFile  case semanticsSourceFile  case grammarSourceFile  case programSourceFile
+}
+
+#------------------------------------------------------------------------------*
+
+list @projectSourceList {
+  @sourceFileKind mSourceKind
+  @lstring mFilePath
+}
+
+#------------------------------------------------------------------------------*
+
+list @qualifiedFeatureList {
+  @lstring mFeatureName
+  @lstring mFeatureValue
+}
+
+#------------------------------------------------------------------------------*
+
+struct @projectComponentAST {
+  @projectSourceList mProjectSourceList
+  @luint mMajorVersion
+  @luint mMinorVersion
+  @luint mRevisionVersion
+  @lstringlist mGenerationFeatureList
+  @qualifiedFeatureList mQualifiedFeatureList
+  @lstring mProjectName
+  @lstring mTargetName
+  @location mEndOfSourceFile
+}
+
+#------------------------------------------------------------------------------*
+

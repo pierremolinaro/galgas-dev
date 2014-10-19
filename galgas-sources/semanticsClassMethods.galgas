@@ -1,0 +1,78 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  semantics definitions for semantics component                            *
+#                                                                           *
+#  Copyright (C) 2010, ..., 2012 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+
+
+#---------------------------------------------------------------------------*
+
+proc enterClassMethodWithStringInputArgument
+  ?!@classMethodMap ioClassMethodMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  ?let @string inClassMethodName
+  ?let @string inStringArgumentName
+  ?let @bool inHasCompilerArgument {
+  @unifiedTypeMap-proxy argumentTypeIndex
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?argumentTypeIndex]
+  var argList =@formalParameterSignature.emptyList{}
+  argList += !["" nowhere] !argumentTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn ! inStringArgumentName
+  [!?ioClassMethodMap insertOrReplace
+    !@lstring. new { !inClassMethodName !@location.here}
+    !argList
+    !inHasCompilerArgument
+  ]
+}
+
+#---------------------------------------------------------------------------*
+
+override method @stringPredefinedTypeAST getClassMethodMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@classMethodMap outClassMethodMap {
+  outClassMethodMap = @classMethodMap. emptyMap
+  enterClassMethodWithStringInputArgument ( !?outClassMethodMap !?ioUnifiedTypeMap !"deleteFile" !"inFilePath" !true )
+  enterClassMethodWithStringInputArgument ( !?outClassMethodMap !?ioUnifiedTypeMap !"deleteFileIfExists" !"inFilePath" !true )
+  enterClassMethodWithStringInputArgument ( !?outClassMethodMap !?ioUnifiedTypeMap !"removeEmptyDirectory" !"inDirectoryPath" !true )
+  enterClassMethodWithStringInputArgument ( !?outClassMethodMap !?ioUnifiedTypeMap !"removeDirectoryRecursively" !"inDirectoryPath" !true )
+  @unifiedTypeMap-proxy stringType
+  [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?stringType]
+  var argList =@formalParameterSignature.emptyList{}
+  argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inStartPath"
+  argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inFileName"
+  argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inContents"
+  [!?outClassMethodMap insertOrReplace
+    !@lstring. new { !"generateFile" !@location.here}
+    !argList
+    !true
+  ]
+  argList = @formalParameterSignature. emptyList
+  argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inStartPath"
+  argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inFileName"
+  argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inLineCommentPrefix"
+  argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inDefaultUserZone1"
+  argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inGeneratedZone2"
+  argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inDefaultUserZone2"
+  argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inGeneratedZone3"
+  [!?outClassMethodMap insertOrReplace
+    !@lstring. new { !"generateFileWithPattern" !@location.here}
+    !argList
+    !true
+  ]
+}
+
+#---------------------------------------------------------------------------*
+

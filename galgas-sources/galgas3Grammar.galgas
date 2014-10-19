@@ -1,0 +1,36 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  galgas 3 project grammar                                                 *
+#                                                                           *
+#  Copyright (C) 2014, ..., 2014 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+indexing grammar galgas3Grammar "SLR" {
+  syntax galgas3ExpressionSyntax
+  syntax galgas3ParameterArgumentSyntax
+  syntax galgas3InstructionsSyntax
+  syntax galgas3DeclarationsSyntax
+  syntax galgas3LexiqueComponentSyntax
+  syntax galgas3OptionComponentSyntax
+  syntax galgas3GuiComponentSyntax
+  syntax galgas3SyntaxComponentSyntax
+  syntax galgas3GrammarComponentSyntax
+  syntax galgas3ProgramDeclarations
+
+   <start_symbol>
+    ?!@galgas3DeclarationAST ioDeclarations
+}
+
+#---------------------------------------------------------------------------*
