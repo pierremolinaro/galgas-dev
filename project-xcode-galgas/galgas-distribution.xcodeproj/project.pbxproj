@@ -246,6 +246,7 @@
 		CFB6E59712788349000F1772 /* GALGAS_application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB6E59612788349000F1772 /* GALGAS_application.cpp */; };
 		CFB6E59812788349000F1772 /* GALGAS_application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB6E59612788349000F1772 /* GALGAS_application.cpp */; };
 		CFBF7012179AF06800789D8A /* PMUndoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBF7011179AF06800789D8A /* PMUndoManager.m */; };
+		CFC2D98219F4231D000A5263 /* galgasDocuments.icns in Resources */ = {isa = PBXBuildFile; fileRef = CF9BDF6C0585C5C900FC7DD7 /* galgasDocuments.icns */; };
 		CFC92D7F11181F6300ACA25F /* GALGAS_binaryset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC92D7C11181F6300ACA25F /* GALGAS_binaryset.cpp */; };
 		CFC92D8011181F6300ACA25F /* GALGAS_binaryset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC92D7C11181F6300ACA25F /* GALGAS_binaryset.cpp */; };
 		CFD2567D1494FC2E00E63CAA /* C_TCPSocketOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD2567B1494FC2E00E63CAA /* C_TCPSocketOut.cpp */; };
@@ -1640,6 +1641,7 @@
 				CF51F03715C92B8C00387A48 /* PMDebug.xib in Resources */,
 				CF20C0B3160DE4B000AC054C /* GGSUpdateCocoaGalgas.xib in Resources */,
 				CF85AE5418679024002425BA /* closeSourceFile.tiff in Resources */,
+				CFC2D98219F4231D000A5263 /* galgasDocuments.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
