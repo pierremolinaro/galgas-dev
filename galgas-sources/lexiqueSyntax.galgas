@@ -1,0 +1,717 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  'lexique' component parser                                               *
+#                                                                           *
+#  Copyright (C) 2007, ..., 2014 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+syntax lexiqueSyntax (galgas_scanner)  %translate {
+
+#---------------------------------------------------------------------------*
+
+rule <lexique_component_start_symbol> !@galgas3LexiqueComponentListAST-element outLexiqueComponentRoot {
+  @bool isTemplate
+  select
+    isTemplate = true
+    $template$
+  or
+    isTemplate = false
+  end
+  $lexique$
+#--- Lexique Component Name
+  $identifier$ ?let @lstring lexiqueComponentName
+#--- Enable indexing ?
+  @lstring indexingDirectory
+  select
+    indexingDirectory = ["" nowhere]
+  or
+    $indexing$
+    $in$
+    $literal_string$ ? indexingDirectory
+  end
+  $:$ :> ?@string sep ?*
+  send sep + "{"
+#--- Parse lexique body
+  var templateDelimitorList =@metamodelTemplateDelimitorListAST.emptyList{}
+  var templateReplacementList =@templateReplacementListAST.emptyList{}
+  var lexicalAttributeList =@lexicalAttributeListAST.emptyList{}
+  var lexicalStyleList =@lexicalStyleListAST.emptyList{}
+  var terminalDeclarationList =@terminalDeclarationListAST.emptyList{}
+  var lexicalMessageDeclarationList =@lexicalMessageDeclarationListAST.emptyList{}
+  var lexicalListDeclarationList =@lexicalListDeclarationListAST.emptyList{}
+  var lexicalRuleList =@lexicalRuleListAST.emptyList{}
+  var externRoutineList =@externRoutineListAST.emptyList{}
+  var externFunctionList =@externFunctionListAST.emptyList{}
+  var indexingListAST =@indexingListAST.emptyList{}
+  repeat
+  while 
+    <extern_routine_or_function_declaration> !? externRoutineList !? externFunctionList
+  while 
+    <template_delimitor> !? templateDelimitorList
+  while 
+    <template_replacement> !? templateReplacementList
+  while 
+    <lexical_attribute_declaration> !? lexicalAttributeList
+  while 
+    <style_declaration> !? lexicalStyleList
+  while 
+    <terminal_declaration> !? terminalDeclarationList
+  while 
+    <lexical_list_declaration> !? lexicalListDeclarationList
+  while
+    $rule$
+    select
+      <lexical_explicit_rule> !? lexicalRuleList
+    or
+      <lexical_implicit_rule> !? lexicalRuleList
+    end
+    $;$ :> ?* ?*
+  while
+    <lexical_message_declaration> !? lexicalMessageDeclarationList
+  while
+    $indexing$
+    $identifier$ ?var @lstring indexName indexing indexingNameDefinition
+    $:$
+    $literal_string$ ?var @lstring indexComment
+    indexingListAST += !indexName !indexComment
+    $;$ :> ?* ?*
+  end
+  $end$ :> ?sep ?*
+  send sep + "}"
+  $lexique$ :> ?* ?*
+  $;$ :> ?* ?*
+  outLexiqueComponentRoot = @galgas3LexiqueComponentListAST-element. new {
+    !lexiqueComponentName
+    !isTemplate
+    !templateDelimitorList
+    !templateReplacementList
+    !lexicalAttributeList
+    !lexicalStyleList
+    !terminalDeclarationList
+    !lexicalMessageDeclarationList
+    !lexicalListDeclarationList
+    !lexicalRuleList
+    !externRoutineList
+    !externFunctionList
+    !indexingListAST
+    !indexingDirectory}
+}
+
+#---------------------------------------------------------------------------*
+
+rule <template_delimitor> ?!@metamodelTemplateDelimitorListAST ioTemplateDelimitorList {
+  $template$
+  $literal_string$ ?let @lstring startString
+  var optionList =@lstringlist.emptyList{}
+  select
+  or
+    $feature$ :> ?@string sep ?*
+    send sep
+    repeat
+      $identifier$ ?var  @lstring optionName :> ?sep ?*
+      send sep + "%" + optionName
+      optionList += !optionName
+    while
+      $,$ :> ?* ?*
+    end
+  end
+  $...$
+  $literal_string$ ?let @lstring endString
+  $;$ :> ?* ?*
+  ioTemplateDelimitorList += !startString !optionList !endString
+}
+
+#---------------------------------------------------------------------------*
+
+rule <template_replacement> ?!@templateReplacementListAST ioTemplateReplacement {
+  $replace$
+  $literal_string$ ?var @lstring matchString
+  @lstring replacementString
+  @lstring replacementFunction
+  select
+    $...$
+    $literal_string$ ?replacementString
+    $:$
+    $identifier$ ?replacementFunction
+  or
+    $->$
+    $literal_string$ ?replacementString
+    replacementFunction = @lstring. new { !"" !@location.here}
+  end
+  $;$ :> ?* ?*
+  ioTemplateReplacement += !matchString !replacementString !replacementFunction
+}
+
+#---------------------------------------------------------------------------*
+
+rule <lexical_message_declaration>
+  ?!@lexicalMessageDeclarationListAST ioLexicalMessageDeclarationList {
+  $message$
+  $identifier$ ?let @lstring messageName
+  $:$
+  $literal_string$ ?let @lstring messageValue
+  $;$ :> ?* ?*
+  ioLexicalMessageDeclarationList += !messageName !messageValue
+}
+
+#---------------------------------------------------------------------------*
+
+rule <lexical_implicit_rule> ?!@lexicalRuleListAST ioLexicalImplicitRuleList {
+  $list$
+  $identifier$ ?let @lstring listName
+  ioLexicalImplicitRuleList += !@lexicalImplicitRuleAST. new { !listName}
+}
+
+#---------------------------------------------------------------------------*
+
+rule <lexical_explicit_rule> ?!@lexicalRuleListAST ioLexicalExplicitRuleList {
+  <lexical_expression> ?let @lexicalExpressionAST lexicalRuleExpression
+  $:$ :> ?@string sep ?*
+  send sep + "{"
+  var instructionList =@lexicalInstructionListAST.emptyList{}
+  repeat
+  while
+    <lexical_instruction> !?instructionList
+  end
+  $end$ :> ?sep ?*
+  send sep + "}"
+  $rule$ :> ?* ?*
+  ioLexicalExplicitRuleList += !@lexicalExplicitRuleAST. new { !lexicalRuleExpression !instructionList}
+}
+
+#---------------------------------------------------------------------------*
+
+rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+  $send$
+  <lexical_send_instruction> ?let @lexicalInstructionAST instruction
+  ioInstructionList += !instruction
+  $;$ :> ?* ?*
+}
+
+#---------------------------------------------------------------------------*
+
+rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction {
+  $terminal$ ?let @lstring sentTerminal
+  outInstruction = @lexicalSimpleSendInstructionAST. new { !sentTerminal}
+}
+
+#---------------------------------------------------------------------------*
+
+rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction {
+  var lexicalSendSearchList =@lexicalSendSearchListAST.emptyList{}
+  $search$
+  repeat
+    $identifier$ ?let @lstring attributeName
+    $in$
+    $identifier$ ?let @lstring searchListName
+    lexicalSendSearchList += !attributeName !searchListName
+    $default$
+  while
+    $search$
+  end
+  @lexicalSendDefaultActionAST lexicalSendDefaultAction
+  select
+    $terminal$ ?let @lstring defaultSentTerminal
+    lexicalSendDefaultAction = @lexicalSendTerminalByDefaultAST. new { !defaultSentTerminal}
+  or
+    $error$
+    $identifier$ ?let @lstring defaultErrorMessageName
+    lexicalSendDefaultAction = @lexicalErrorByDefaultAST. new { !defaultErrorMessageName}
+  end
+  outInstruction = @lexicalStructuredSendInstructionAST. new {
+    !lexicalSendSearchList
+    !lexicalSendDefaultAction}
+}
+
+#---------------------------------------------------------------------------*
+
+rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+  $repeat$
+  var repeatedInstructionList =@lexicalInstructionListAST.emptyList{}
+  repeat
+  while
+    <lexical_instruction> !?repeatedInstructionList
+  end
+  var lexicalWhileBranchList =@lexicalWhileBranchListAST.emptyList{}
+  repeat
+    <repeat_while_branch> !?lexicalWhileBranchList
+  while
+  end
+  $end$
+  $repeat$ :> ?* ?*
+  $;$ :> ?* ?*
+  @lexicalInstructionAST i = @lexicalRepeatInstructionAST. new {
+    !repeatedInstructionList
+    !lexicalWhileBranchList}
+  ioInstructionList += !i
+}
+
+#---------------------------------------------------------------------------*
+
+rule <repeat_while_branch> ?!@lexicalWhileBranchListAST ioLexicalWhileBranchList {
+  $while$
+  @lexicalExpressionAST whileExpression
+  <lexical_expression> ?whileExpression
+  $:$
+  var whileInstructionList =@lexicalInstructionListAST.emptyList{}
+  repeat
+  while
+    <lexical_instruction> !?whileInstructionList
+  end
+  ioLexicalWhileBranchList += !whileExpression !whileInstructionList
+}
+
+#---------------------------------------------------------------------------*
+
+rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+  $select$
+  var lexicalWhileBranchList =@lexicalSelectBranchListAST.emptyList{}
+  repeat
+    $when$ :> ?let @string sep ?*
+    send sep + "case"
+    <lexical_expression> ?let @lexicalExpressionAST selectExpression
+    $:$
+    var selectInstructionList =@lexicalInstructionListAST.emptyList{}
+    repeat
+    while
+      <lexical_instruction> !?selectInstructionList
+    end
+    lexicalWhileBranchList += !selectExpression !selectInstructionList
+  while
+  end
+  $default$
+  var defaultInstructionList =@lexicalInstructionListAST.emptyList{}
+  repeat
+  while
+    <lexical_instruction> !?defaultInstructionList
+  end
+  $end$
+  $select$ :> ?* ?*
+  $;$ :> ?* ?*
+  @lexicalInstructionAST i = @lexicalSelectInstructionAST. new {
+    !lexicalWhileBranchList
+    !defaultInstructionList}
+  ioInstructionList += !i
+}
+
+#---------------------------------------------------------------------------*
+
+rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+  @lstring actionName
+  $identifier$ ? actionName
+  send " ("
+  var actualArgumentList =@lexicalRoutineCallActualArgumentListAST.emptyList{}
+  repeat
+  while
+    $!$ ?let selector
+    if selector.string != "" then
+      error selector : "the selector should be '!'"
+    end
+    @location passingModeLocation = @location.here
+    @lexicalRoutineOrFunctionFormalInputArgumentAST arg
+    <lexical_output_effective_argument> ?arg
+    actualArgumentList += !@lexicalFormalInputArgumentAST. new { !passingModeLocation !arg}
+  while
+    $!?$ ?let selector
+    if selector.string != "" then
+      error selector : "the selector should be '!'"
+    end
+    @location passingModeLocation = @location.here
+    $identifier$ ?let attributeName
+    var arg =@lexicalAttributeInputOutputArgumentAST.new{ !passingModeLocation !attributeName}
+    actualArgumentList += !arg
+  end
+  @lstringlist errorMessageList = @lstringlist. emptyList
+  select
+  or
+    $error$
+    repeat
+      @lstring errorMessageName
+      $identifier$ ? errorMessageName
+      errorMessageList += !errorMessageName
+    while
+      $,$
+    end
+  end
+  $;$ :> ?@string sep ?*
+  send sep + ")"
+  @lexicalInstructionAST i = @lexicalRoutineInstructionAST. new {
+    !actionName
+    !actualArgumentList
+    !errorMessageList}
+  ioInstructionList += !i
+}
+
+#---------------------------------------------------------------------------*
+
+rule <lexical_output_effective_argument>
+  !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument {
+  $literal_char$ ?var @lchar character
+  outEffectiveArgument = @lexicalCharacterInputArgumentAST. new { !character}
+}
+
+#---------------------------------------------------------------------------*
+
+rule <lexical_output_effective_argument>
+  !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument {
+  $unsigned_literal_integer$ ?var @luint unsignedValue
+  outEffectiveArgument = @lexicalUnsignedInputArgumentAST. new { !unsignedValue}
+}
+
+#---------------------------------------------------------------------------*
+
+rule <lexical_output_effective_argument>
+  !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument {
+  @location currentLocation = @location.here
+  $*$
+  outEffectiveArgument = @lexicalCurrentCharacterInputArgumentAST. new { !currentLocation}
+}
+
+#---------------------------------------------------------------------------*
+
+rule <lexical_output_effective_argument>
+  !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument {
+  $identifier$ ?var @lstring idf
+  <function_call_or_attribute> !idf ?outEffectiveArgument
+}
+
+#---------------------------------------------------------------------------*
+
+rule <function_call_or_attribute> ?let @lstring inIdf !@lexicalRoutineOrFunctionFormalInputArgumentAST outArgument {
+  outArgument = @lexicalAttributeInputArgumentAST. new { !inIdf}
+}
+
+#---------------------------------------------------------------------------*
+
+rule <function_call_or_attribute> ?let @lstring inIdf !@lexicalRoutineOrFunctionFormalInputArgumentAST outArgument {
+  $($
+  var functionActualArgumentList =@lexicalFunctionCallActualArgumentListAST.emptyList{}
+  repeat
+  while
+    $!$ ?let selector
+    if selector.string != "" then
+      error selector : "the selector should be '!'"
+    end
+    @lexicalRoutineOrFunctionFormalInputArgumentAST arg
+    <lexical_output_effective_argument> ?arg
+    functionActualArgumentList += !arg
+  end
+  $)$
+  outArgument = @lexicalFunctionInputArgumentAST. new { !inIdf !functionActualArgumentList}
+}
+
+#---------------------------------------------------------------------------*
+
+rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+  $error$
+  @lstring errorMessageName
+  $identifier$ ? errorMessageName
+  $;$ :> ?* ?*
+  ioInstructionList += !@lexicalErrorInstructionAST. new { !errorMessageName}
+}
+
+#---------------------------------------------------------------------------*
+
+rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+  $warning$
+  $identifier$ ?var  @lstring warningMessageName
+  $;$ :> ?* ?*
+  ioInstructionList += !@lexicalWarningInstructionAST. new { !warningMessageName}
+}
+
+#---------------------------------------------------------------------------*
+
+rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+  $drop$
+  @lstring terminalName
+  $terminal$ ? terminalName
+  $;$ :> ?* ?*
+  ioInstructionList += !@lexicalDropInstructionAST. new { !terminalName}
+}
+
+#---------------------------------------------------------------------------*
+
+rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+  $tag$
+  @lstring tagName
+  $identifier$ ? tagName
+  $;$ :> ?* ?*
+  ioInstructionList += !@lexicalTagInstructionAST. new { !tagName}
+}
+
+#---------------------------------------------------------------------------*
+
+rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+  $rewind$
+  @lstring tagName
+  $identifier$ ? tagName
+  $send$
+  @lstring terminalName
+  $terminal$ ? terminalName
+  $;$ :> ?* ?*
+  ioInstructionList += !@lexicalRewindInstructionAST. new { !tagName !terminalName}
+}
+
+#---------------------------------------------------------------------------*
+
+rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
+  $log$
+  $;$ :> ?* ?*
+  ioInstructionList += !@lexicalLogInstructionAST. new
+}
+
+#---------------------------------------------------------------------------*
+
+rule <lexical_expression> !@lexicalExpressionAST outExpression {
+  <lexical_term> ?outExpression
+}
+
+#---------------------------------------------------------------------------*
+
+rule <lexical_term> !@lexicalExpressionAST outExpression {
+  <lexical_factor> ?outExpression
+  repeat
+  while
+    $|$
+    @lexicalExpressionAST rightExpression
+    <lexical_factor> ?rightExpression
+    outExpression = @lexicalOrExpressionAST. new { !outExpression !rightExpression}
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+rule <lexical_factor>!@lexicalExpressionAST outExpression {
+  $literal_string$ ?let @lstring string
+  outExpression = @lexicalStringMatchAST. new { !string}
+}
+
+#---------------------------------------------------------------------------*
+
+rule <lexical_factor> !@lexicalExpressionAST outExpression {
+  $~$
+  $literal_string$ ?let @lstring string
+  $error$
+  $identifier$ ?let @lstring errorMessage
+  outExpression = @lexicalStringNotMatchAST. new { !string !errorMessage}
+}
+
+#---------------------------------------------------------------------------*
+
+rule <lexical_factor> !@lexicalExpressionAST outExpression {
+  $literal_char$ ?let @lchar character
+  select
+    outExpression = @lexicalCharacterMatchAST. new { !character}
+  or
+    $->$
+    $literal_char$ ?let @lchar upperBound
+    outExpression = @lexicalCharacterIntervalMatchAST. new { !character !upperBound}
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+rule <lexical_factor> !@lexicalExpressionAST outExpression {
+  $identifier$ ?let @lstring characterSet
+  outExpression = @lexicalCharacterSetMatchAST. new { !characterSet}
+}
+
+#---------------------------------------------------------------------------*
+
+rule <lexical_list_declaration> ?!@lexicalListDeclarationListAST ioLexicalListDeclarationList {
+  $list$
+  $identifier$ ?let @lstring name
+  var sentAttributeList =@sentLexicalAttributeListAST.emptyList{}
+  repeat
+  while
+    $!$ ?let selector
+    $identifier$ ?let @lstring sentAttribute
+    sentAttributeList += !selector !sentAttribute
+  end
+  $error$ :> ?* ?*
+  $message$ :> ?* ?*
+  $literal_string$ ?let @lstring errorMessage :> ?* ?*
+  @lstring theStyle # Empty string if no style
+  select
+    $style$
+    $identifier$ ? theStyle
+  or
+    theStyle = @lstring. new { !"" !@location.here}
+  end
+  $:$ :> ?* ?*
+  send " error message " + [errorMessage utf8Representation] + "{"
+  var entryList =@lexicalListEntryListAST.emptyList{}
+  repeat
+    <lexical_list_entry> !?entryList
+  while
+    $,$
+  end
+  $;$ :> ?@string sep ?*
+  send sep + "}"
+  ioLexicalListDeclarationList += !name !theStyle !errorMessage !sentAttributeList !entryList
+}
+
+#---------------------------------------------------------------------------*
+
+rule <lexical_list_entry> ?!@lexicalListEntryListAST ioLexicalListEntryList {
+  $literal_string$ ?var @lstring entrySpelling
+  var optionList =@lstringlist.emptyList{}
+  select
+  or
+    $feature$ :> ?@string sep ?*
+    send sep
+    $identifier$ ?var  @lstring optionName :> ?* ?*
+    send "%" + optionName
+    optionList += !optionName
+  end
+  @lstring terminalSpelling
+  select
+    $->$
+    $terminal$ ? terminalSpelling
+  or
+    terminalSpelling = entrySpelling
+  end
+  ioLexicalListEntryList += !entrySpelling !terminalSpelling !optionList
+}
+
+#---------------------------------------------------------------------------*
+
+rule <lexical_attribute_declaration> ?!@lexicalAttributeListAST ioLexicalAttributeList {
+  $type_name$ ?let @lstring typeName
+  $identifier$ ?let @lstring name
+  $;$ :> ?* ?*
+  ioLexicalAttributeList += !typeName !name
+}
+
+#---------------------------------------------------------------------------*
+
+rule <terminal_declaration> ?!@terminalDeclarationListAST ioTerminalDeclarationList {
+  $terminal$ ?let @lstring name indexing terminalDeclaration
+  var sentAttributeList =@sentLexicalAttributeListAST.emptyList{}
+  repeat
+  while
+    $!$ ?let selector
+    $identifier$ ?let @lstring sentAttribute
+    sentAttributeList += !selector !sentAttribute
+  end
+  $error$ :> ?* ?*
+  $message$ :> ?* ?*
+  $literal_string$ ?let @lstring errorMessage :> ?* ?*
+  @lstring theStyle # Empty string if no style
+  select
+    send " "
+    $style$
+    $identifier$ ? theStyle
+  or
+    theStyle = @lstring. new { !"" !@location.here}
+  end
+  var optionList =@lstringlist.emptyList{}
+  select
+  or
+    $feature$ :> ?@string sep ?*
+    send sep
+    repeat
+      $identifier$ ?let @lstring optionName :> ?* ?*
+      send "%" + optionName
+      optionList += !optionName
+    while
+      $,$ :> ?* ?*
+    end
+  end
+  $;$ :> ?* ?*
+  send " error message " + [errorMessage utf8Representation]
+  ioTerminalDeclarationList += !name !sentAttributeList !errorMessage !theStyle !optionList
+}
+
+#---------------------------------------------------------------------------*
+
+rule <style_declaration> ?!@lexicalStyleListAST ioLexicalStyleList {
+  $style$
+  $identifier$ ?var @lstring name
+  $->$
+  $literal_string$ ?var @lstring comment
+  $;$ :> ?* ?*
+  ioLexicalStyleList += !name !comment
+}
+
+#---------------------------------------------------------------------------*
+
+rule <extern_routine_or_function_declaration>
+  ?!@externRoutineListAST ioExternRoutineList
+  ?!@externFunctionListAST ioExternFunctionList {
+  $extern$
+  select
+    $routine$ :> ?let @string sep ?*
+    send sep + "proc"
+    $identifier$ ?var @lstring routineName
+    var lexicalRoutineFormalArgumentList =@lexicalExternRoutineFormalArgumentListAST.emptyList{}
+    repeat
+    while
+      @lexicalArgumentModeAST lexicalArgumentMode
+      select
+        $?!$ ?let selector
+        if selector.string != "" then
+          error selector : "the selector should be '?!'"
+        end
+        lexicalArgumentMode = @lexicalArgumentModeAST. lexicalInputOutputMode
+      or
+        $?$ ?let selector
+        if selector.string != "" then
+          error selector : "the selector should be '?'"
+        end
+        lexicalArgumentMode = @lexicalArgumentModeAST. lexicalInputMode
+      end
+      $type_name$ ?var @lstring lexicalTypeName
+      $identifier$ ?var @lstring formalArgumentName
+      lexicalRoutineFormalArgumentList += !lexicalArgumentMode !lexicalTypeName !formalArgumentName
+    end
+    var errorMessageList =@stringlist.emptyList{}
+    select
+    or
+      $error$
+      repeat
+        $identifier$ ?var @lstring errorMessageName
+        errorMessageList += ![errorMessageName string]
+      while
+        $,$
+      end
+    end
+    $;$ :> ?* ?*
+    ioExternRoutineList += !routineName !lexicalRoutineFormalArgumentList !errorMessageList
+  or
+    $function$ :> ?let @string sep ?*
+    send sep + "func"
+    $identifier$ ?var @lstring functionName
+    var lexicalFunctionFormalArgumentList =@lexicalExternFunctionFormalArgumentListAST.emptyList{}
+    repeat
+    while
+      $?$  ?let selector
+      if selector.string != "" then
+        error selector : "the selector should be '?'"
+      end
+      $type_name$ ?var @lstring lexicalTypeName
+      $identifier$ ?var @lstring formalArgumentName
+      lexicalFunctionFormalArgumentList += !lexicalTypeName !formalArgumentName
+    end
+    $->$
+    $type_name$ ?var @lstring returnedTypeName
+    $;$ :> ?* ?*
+    ioExternFunctionList += !functionName !lexicalFunctionFormalArgumentList !returnedTypeName
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+}

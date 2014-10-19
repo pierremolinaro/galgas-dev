@@ -1,0 +1,496 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  semantics definitions for semantics component                            *
+#                                                                           *
+#  Copyright (C) 1997, ..., 2014 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+
+
+#---------------------------------------------------------------------------*
+
+func %once generateFewHeaderFiles -> @bool outResult {
+  outResult = true
+}
+
+#---------------------------------------------------------------------------*
+
+list @functionSignature {
+  @lstring mFormalSelector
+  @unifiedTypeMap-proxy mFormalArgumentType
+  @string mFormalArgumentName
+}
+
+#---------------------------------------------------------------------------*
+
+list @unifiedTypeMapProxyList {
+  @unifiedTypeMap-proxy mType
+}
+
+#---------------------------------------------------------------------------*
+
+list @unifiedTypeMapProxyAndParameterList {
+  @unifiedTypeMap-proxy mType
+  @string mFormalArgumentName
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  C O N S T R U C T O R    M A P                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @constructorMap {
+  @functionSignature mArgumentTypeList
+  @bool mHasCompilerArgument
+  @unifiedTypeMap-proxy mReturnedType
+  insert or replace
+  insert insertKey error message "the '%K' constructor has been already defined"
+  search searchKey error message "the '%K' constuctor is not declared"
+}
+
+#---------------------------------------------------------------------------*
+
+enum @methodQualifier {
+  case isAbstract  case isBasic  case isBasicFinal  case isInherited  case isOverriding  case isOverridingAbstract
+}
+
+#---------------------------------------------------------------------------*
+
+enum @methodKind {
+  case definedAsMember  case definedAsCategory
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  R E A D E R    M A P                                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @readerMap {
+  @methodKind mKind
+  @functionSignature mArgumentTypeList
+  @location mDeclarationLocation
+  @bool mHasCompilerArgument
+  @unifiedTypeMap-proxy mReturnedType
+  @methodQualifier mQualifier
+  @string mErrorMessage # If not empty, calling the method raises an error with this message
+ 
+  insert insertKey error message "the '%K' reader is already declared"
+  search searchKey error message "the '%K' reader is not declared"
+
+  insert or replace
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  M O D I F I E R    M A P                                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @formalParameterSignature {
+  @lstring mFormalSelector
+  @unifiedTypeMap-proxy mFormalArgumentType
+  @formalArgumentPassingModeAST mFormalArgumentPassingMode
+  @string mFormalArgumentName
+}
+
+#---------------------------------------------------------------------------*
+
+map @modifierMap {
+  @methodKind mKind
+  @formalParameterSignature mParameterList
+  @bool mHasCompilerArgument
+  @methodQualifier mQualifier
+  @string mErrorMessage # If not empty, calling the modifier raises an error ith this message
+  insert or replace
+  insert insertKey error message "the '%K' modifier is already declared"
+  search searchKey error message "the '%K' modifier is not declared"
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  M E T H O D    M A P                                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @instanceMethodMap {
+  @methodKind mKind
+  @formalParameterSignature mParameterList
+  @location mDeclarationLocation
+  @bool mHasCompilerArgument
+  @methodQualifier mQualifier
+  @string mErrorMessage # If not empty, calling the method raises an error ith this message
+  insert insertKey error message "the '%K' instance method is already declared"
+  search searchKey error message "the '%K' instance method is not declared"
+  search searchInheritedKey error message "as the '%K' method is tagged as 'override', it should be declared in the super class"
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  C L A S S    M E T H O D    M A P                                        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @classMethodMap {
+  @formalParameterSignature mParameterList
+  @bool mHasCompilerArgument
+  insert or replace
+  insert insertKey error message "the '%K' type proc is already declared"
+  search searchKey error message "the '%K' type proc is not declared"
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  E N U M E R A T I O N    D E S C R I P T O R    L I S T                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @enumerationDescriptorList {
+  @unifiedTypeMap-proxy mEnumeratedType
+  @string mEnumerationName
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  T Y P E D    A T T R I B U T E    L I S T                                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @typedAttributeList {
+  @unifiedTypeMap-proxy mAttributeTypeProxy
+  @lstring mAttributeName
+  @bool mHasSetter
+  @bool mHasGetter
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  P R E D E F I N E D    T Y P E    K I N D    E N U M E R A T I O N       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+enum @predefinedTypeKindEnum {
+  case predefined_uint 
+  case predefined_uint64 
+  case predefined_sint 
+  case predefined_sint64 
+  case predefined_char 
+  case predefined_double 
+  case predefined_string 
+  case predefined_stringset 
+  case predefined_bool 
+  case predefined_binaryset 
+  case predefined_function 
+  case predefined_location 
+  case predefined_type 
+  case predefined_object 
+  case predefined_data 
+  case predefined_filewrapper 
+  case predefined_application
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  T Y P E    K I N D    E N U M E R A T I O N                              *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+enum @typeKindEnum {
+  case classType 
+  case enumType 
+  case listType 
+  case sortedListType 
+  case mapType 
+  case uniqueMapType 
+  case mapProxyType 
+  case listMapType 
+  case structType 
+  case graphType 
+  case externType 
+  case arrayType 
+  case predefinedType
+}
+
+#---------------------------------------------------------------------------*
+
+getter @typeKindEnum kind -> @string outResult {
+  switch self
+    case classType : outResult = "class"
+    case enumType : outResult = "enumeration"
+    case listType : outResult = "list"
+    case sortedListType : outResult = "sorted list"
+    case mapType : outResult = "map"
+    case uniqueMapType : outResult = "unique map"
+    case mapProxyType : outResult = "map proxy"
+    case listMapType : outResult = "list map"
+    case structType : outResult = "struct"
+    case graphType : outResult = "graph"
+    case predefinedType : outResult = "predefined"
+    case arrayType : outResult = "array"
+    case externType : outResult = "extern"
+  end
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  O P E R A T O R    F L A G S                                             *
+#                                                                           *
+# Theses masks are used for the mHandledOperatorFlags attribute of the      *
+# @unifiedTypeMap map, for indicating the handled operators.                *
+#---------------------------------------------------------------------------*
+
+func %once binaryAddOperator   -> @uint outMask { outMask = 1 }
+func %once binarySubOperator   -> @uint outMask { outMask = 1 << 1 }
+func %once binaryMulOperator   -> @uint outMask { outMask = 1 << 2 }
+func %once binaryDivOperator   -> @uint outMask { outMask = 1 << 3 }
+func %once binaryModOperator   -> @uint outMask { outMask = 1 << 4 }
+func %once binaryShiftOperator -> @uint outMask { outMask = 1 << 5 }
+func %once unaryPlusOperator   -> @uint outMask { outMask = 1 << 6 }
+func %once unaryMinusOperator  -> @uint outMask { outMask = 1 << 7 }
+func %once unaryTildeOperator  -> @uint outMask { outMask = 1 << 8 }
+func %once incDecOperator      -> @uint outMask { outMask = 1 << 9 }
+
+func %once binaryAndOperator -> @uint outMask { outMask = 1 << 10 }
+func %once binaryOrOperator  -> @uint outMask { outMask = 1 << 11 }
+func %once binaryXorOperator -> @uint outMask { outMask = 1 << 12 }
+func %once unaryNotOperator  -> @uint outMask { outMask = 1 << 13 }
+
+func %once binaryConcatOperator            -> @uint outMask { outMask = 1 << 14 } # exp1 . exp2
+func %once plusEqualOperatorWithExpression -> @uint outMask { outMask = 1 << 15 } # var .= exp ;
+func %once isComparable                    -> @uint outMask { outMask = 1 << 16 } # Supports <, <=, >, >= operators
+
+func %once supportWithAccessor                            -> @uint outMask { outMask = 1 << 26 }
+func %once plusEqualOperatorWithFieldListNeedsCompilerArg -> @uint outMask { outMask = 1 << 27 }
+func %once generateEnumerationHelperMethods               -> @uint outMask { outMask = 1 << 28 }
+func %once doNotGenererateObjectCompare                   -> @uint outMask { outMask = 1 << 29 }
+func %once generateDescriptionReaderUtilityMethod         -> @uint outMask { outMask = 1 << 30 }
+func %once generateCopyConstructorAndAssignmentOperator   -> @uint outMask { outMask = 1 << 31 }
+
+#---------------------------------------------------------------------------*
+
+map @attributeMap {
+  @bool mIsPrivate
+  @unifiedTypeMap-proxy mAttributeType
+  insert insertKey error message "the '%K' attribute has been already declared in %L"
+  search searchKey error message "the '%K' attribute is not declared"
+}
+
+#---------------------------------------------------------------------------*
+
+enum @headerKind {
+  case noHeader  case oneHeader  case twoHeaders
+}
+
+#---------------------------------------------------------------------------*
+
+map @constantIndexMap {
+  @uint mIndex
+  @unifiedTypeMapProxyList mAssociatedTypeList
+  insert insertKey error message "the '%K' constant is already declared"
+  search searchKey error message "the '%K' constant is not declared"
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  U N I F I E D    T Y P E    M A P                                        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+sharedmap @unifiedTypeMap {
+  @bool mIsPredefined
+  @bool mIsConcrete # false if abstract class
+  @unifiedTypeMap-proxy mSuperType
+  @typeKindEnum mTypeKindEnum
+  @bool mSupportCollectionValue
+  @typedAttributeList mAllTypedAttributeList
+  @attributeMap mAttributeMap # struct, class
+  @typedAttributeList mCurrentTypedAttributeList
+  @constructorMap mConstructorMap
+  @readerMap mReaderMap
+  @modifierMap mModifierMap
+  @instanceMethodMap mInstanceMethodMap
+  @classMethodMap mClassMethodMap
+  @enumerationDescriptorList mEnumerationDescriptor # Empty List if cannot be enumerated
+  @stringlist mEnumeratorVariants # Empty List if cannot be enumerated; first item is default item
+  @uint mHandledOperatorFlags
+  @functionSignature mAddAssignOperatorArguments # Empty list if += operator is not supported
+  @constantIndexMap mEnumConstantMap
+  @enumConstantList mEnumConstantList
+  @mapSearchMethodListAST mMapSearchMethodList # For a map, the list of search methods
+  @mapSearchMethodListAST mMapProxySearchConstructorList # For a map proxy, the list of search methods of the associated map
+  @bool mGenerateHeaderInSeparateFile # Significant only for classes
+  @unifiedTypeMap-proxy mTypeForEnumeratedElement
+  @string mDefaultConstructorName # Used in [@xxx default] (empty string if no default constructor)
+  @string mHeaderFileName %nogetter # Name of C++ header file that contains type declaration
+  @headerKind mHeaderKind
+
+  insert insertKey error message "the '@%K' type has been already declared in %L"
+  search searchKey error message "the '@%K' type is not declared"
+}
+
+#---------------------------------------------------------------------------*
+
+getter @unifiedTypeMap-proxy baseType -> @unifiedTypeMap-proxy outBaseType {
+  outBaseType = self
+  loop( @uint. max) while not [[outBaseType mSuperType] isNull] do
+    outBaseType = [outBaseType mSuperType]
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+method @unifiedTypeMap-proxy addHeaderFileName
+ ?!@stringset ioInclusions {
+  if (not [self mIsPredefined]) & ([self mHeaderKind] != @headerKind. noHeader) then
+    ioInclusions += ![self mHeaderFileName]
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+method @unifiedTypeMap-proxy addHeaderFileName1
+ ?!@stringset ioInclusions {
+  if not [self mIsPredefined] then
+    switch [self mHeaderKind]
+    case noHeader :
+    case oneHeader :
+      ioInclusions += ![self mHeaderFileName]
+    case twoHeaders :
+      ioInclusions += ![self mHeaderFileName] + "-1"
+    end
+  end
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  A S T   C L A S S E S    F O R    P R E D E F I N E D   T Y P E S        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+abstract class @predefinedTypeAST : @semanticDeclarationAST {
+  @string mPredefinedTypeName
+  @predefinedTypeKindEnum mKind
+}
+
+#---------------------------------------------------------------------------*
+
+class @applicationPredefinedTypeAST : @predefinedTypeAST {}
+
+class @objectPredefinedTypeAST : @predefinedTypeAST {}
+
+class @filewrapperPredefinedTypeAST : @predefinedTypeAST {}
+
+class @binarysetPredefinedTypeAST : @predefinedTypeAST {}
+
+class @boolPredefinedTypeAST : @predefinedTypeAST {}
+
+class @uintPredefinedTypeAST : @predefinedTypeAST {}
+
+class @uint64PredefinedTypeAST : @predefinedTypeAST {}
+
+class @sintPredefinedTypeAST : @predefinedTypeAST {}
+
+class @sint64PredefinedTypeAST : @predefinedTypeAST {}
+
+class @charPredefinedTypeAST : @predefinedTypeAST {}
+
+class @doublePredefinedTypeAST : @predefinedTypeAST {}
+
+class @stringPredefinedTypeAST : @predefinedTypeAST {}
+
+class @locationPredefinedTypeAST : @predefinedTypeAST {}
+
+class @stringsetPredefinedTypeAST : @predefinedTypeAST {}
+
+class @functionPredefinedTypeAST : @predefinedTypeAST {}
+
+class @typePredefinedTypeAST : @predefinedTypeAST {}
+
+class @dataPredefinedTypeAST : @predefinedTypeAST {}
+
+#---------------------------------------------------------------------------*
+
+method @predefinedTypeAST getConstructorMap
+  ?!@unifiedTypeMap unused ioUnifiedTypeMap
+  !@constructorMap outConstructorMap {
+  outConstructorMap = @constructorMap. emptyMap
+}
+
+#---------------------------------------------------------------------------*
+
+method @predefinedTypeAST getReaderMap
+  ?!@unifiedTypeMap unused ioUnifiedTypeMap
+  !@readerMap outReaderMap {
+  outReaderMap = @readerMap. emptyMap
+}
+
+#---------------------------------------------------------------------------*
+
+method @predefinedTypeAST getModifierMap
+  ?!@unifiedTypeMap unused ioUnifiedTypeMap
+  !@modifierMap outModifierMap {
+  outModifierMap = @modifierMap. emptyMap
+}
+
+#---------------------------------------------------------------------------*
+
+method @predefinedTypeAST getInstanceMethodMap
+  ?!@unifiedTypeMap unused ioUnifiedTypeMap
+  !@instanceMethodMap outInstanceMethodMap {
+  outInstanceMethodMap = @instanceMethodMap. emptyMap
+}
+
+#---------------------------------------------------------------------------*
+
+method @predefinedTypeAST getClassMethodMap
+  ?!@unifiedTypeMap unused ioUnifiedTypeMap
+  !@classMethodMap outClassMethodMap {
+  outClassMethodMap = @classMethodMap. emptyMap
+}
+
+#---------------------------------------------------------------------------*
+
+getter @predefinedTypeAST getSupportedOperatorFlags
+  ->@uint outFlags {
+  outFlags = 0 # No supported operator
+}
+
+#---------------------------------------------------------------------------*
+
+method @predefinedTypeAST getAddAssignArgumentList
+  ?!@unifiedTypeMap unused ioUnifiedTypeMap
+  !@functionSignature outAddAssignArgumentList {
+  outAddAssignArgumentList = {} # += is not supported
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  G E T    E N U M E R A T I O N    L I S T                                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+method @predefinedTypeAST getEnumerationList
+  ?!@unifiedTypeMap unused ioUnifiedTypeMap
+  !@enumerationDescriptorList outEnumerationList
+  !@stringlist outEnumerationVariant
+  !@string outEnumeratedType {
+  outEnumerationList = @enumerationDescriptorList. emptyList # Enumeration is not supported
+  outEnumerationVariant = @stringlist. emptyList # Enumeration is not supported
+  outEnumeratedType = "" # Enumeration is not supported
+}
+
+#---------------------------------------------------------------------------*
+

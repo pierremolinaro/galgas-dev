@@ -1,0 +1,429 @@
+
+
+#---------------------------------------------------------------------------*
+
+setter @XcodeProjectDescriptor addICNS_file
+  ?fileName:let @string inFileName
+  !fileRef:@string outFileRef {
+  [!?self getReferenceKey ?ref:outFileRef]
+  mICNS_fileList += !outFileRef !inFileName
+}
+
+#---------------------------------------------------------------------------*
+
+setter @XcodeProjectDescriptor addTIFF_file
+  ?fileName:let @string inFileName
+  !fileRef:@string outFileRef {
+  [!?self getReferenceKey ?ref:outFileRef]
+  mTIFF_fileList += !outFileRef !inFileName
+}
+
+#---------------------------------------------------------------------------*
+
+setter @XcodeProjectDescriptor addInfoPlistFile
+  ?fileName:let @string inFileName
+  !fileRef:@string outFileRef {
+  [!?self getReferenceKey ?ref:outFileRef]
+  mInfoPlistFileList += !outFileRef !inFileName
+}
+
+#---------------------------------------------------------------------------*
+
+setter @XcodeProjectDescriptor addXIBFile
+  ?fileName:let @string inFileName
+  !fileRef:@string outFileRef {
+  [!?self getReferenceKey ?ref:outFileRef]
+  mXIB_fileList += !outFileRef !inFileName
+}
+
+#---------------------------------------------------------------------------*
+
+setter @XcodeProjectDescriptor addFrameworkFile
+  ?fileName:let @string inFileName
+  !fileRef:@string outFileRef {
+  [!?self getReferenceKey ?ref:outFileRef]
+  mFrameworkFileList += !outFileRef !inFileName
+}
+
+#---------------------------------------------------------------------------*
+
+setter @XcodeProjectDescriptor addMFile
+  ?fileName:let @string inFileName
+  !fileRef:@string outFileRef {
+  [!?self getReferenceKey ?ref:outFileRef]
+  m_M_FileList += !outFileRef !inFileName
+}
+
+#---------------------------------------------------------------------------*
+
+setter @XcodeProjectDescriptor addMMFile
+  ?fileName:let @string inFileName
+  !fileRef:@string outFileRef {
+  [!?self getReferenceKey ?ref:outFileRef]
+  m_MM_FileList += !outFileRef !inFileName
+}
+
+#---------------------------------------------------------------------------*
+
+setter @XcodeProjectDescriptor addCppFile
+  ?fileName:let @string inFileName
+  !fileRef:@string outFileRef {
+  [!?self getReferenceKey ?ref:outFileRef]
+  mCppFileList += !outFileRef !inFileName
+}
+
+#---------------------------------------------------------------------------*
+
+setter @XcodeProjectDescriptor addHeaderFile
+  ?fileName:let @string inFileName
+  !fileRef:@string outFileRef {
+  [!?self getReferenceKey ?ref:outFileRef]
+  mHeaderFileList += !outFileRef !inFileName
+}
+
+#---------------------------------------------------------------------------*
+
+setter @XcodeProjectDescriptor addBuildFile
+  ?fileRef:let @string inFileReference
+  ?fileName:let @string inFileName
+  !buildRef:@string outBuildRef {
+  [!?self getReferenceKey ?ref:outBuildRef]
+  mBuildFileList += !inFileReference !inFileName !outBuildRef
+}
+
+#---------------------------------------------------------------------------*
+
+setter @XcodeProjectDescriptor addToolTarget
+  ?targetName:let @string inTargetName
+  ?productFileName:let @string inProductFileName
+  ?sources:let @stringlist inSourceList
+  ?frameworkRefs:let @stringlist inToolFrameworksFileRefList
+  ?buildConfigurationSettingList:let @stringlist inBuildConfigurationSettingList
+  !targetRef:@string outTargetRef
+  !productFileRef:@string outProductFileRef {
+  [!?self getReferenceKey ?ref:outProductFileRef]
+  [!?self getReferenceKey ?ref:let buildPhaseRef]
+  [!?self getReferenceKey ?ref:outTargetRef]
+  [!?self getReferenceKey ?ref:let buildConfigurationListRef]
+  [!?self getReferenceKey ?ref:let buildConfigurationRef]
+  [!?self getReferenceKey ?ref:let frameworkBuildRef]
+  mToolTargetList +=
+    !outTargetRef
+    !inTargetName
+    !outProductFileRef
+    !inProductFileName
+    !inSourceList
+    !buildPhaseRef
+    !buildConfigurationListRef
+    !inBuildConfigurationSettingList
+    !buildConfigurationRef
+    !inToolFrameworksFileRefList
+    !frameworkBuildRef
+}
+
+#---------------------------------------------------------------------------*
+
+setter @XcodeProjectDescriptor addAppTarget
+  ?targetName:let @string inTargetName
+  ?productFileName:let @string inProductFileName
+  ?sources:let @stringlist inSourceList
+  ?frameworkFileRefs:let @stringlist inFrameworksFileRefList
+  ?resourceFileRefs:let @stringlist inResourceFileBuildRefs
+  ?buildConfigurationSettingList:let @stringlist inBuildConfigurationSettingList
+  ?dependantTargetList:let @stringlist inDependentTargetRefList
+  ?productCopyList:let @2stringlist inProductCopyList
+  !productFileRef:@string outProductFileRef {
+  [!?self getReferenceKey ?ref:outProductFileRef]
+  [!?self getReferenceKey ?ref:let buildPhaseRef]
+  [!?self getReferenceKey ?ref:let targetRef]
+  [!?self getReferenceKey ?ref:let buildConfigurationListRef]
+  [!?self getReferenceKey ?ref:let buildConfigurationRef]
+  [!?self getReferenceKey ?ref:let frameworkBuildRef]
+  [!?self getReferenceKey ?ref:let resourceBuildRef]
+  @2stringlist dependentTargets = {}
+  for (ref) in inDependentTargetRefList do
+    [!?self getReferenceKey ?ref:let dependencyBuildRef]
+    dependentTargets += !dependencyBuildRef !ref
+  end
+  @stringlist resourceFileBuildRefs = inResourceFileBuildRefs
+  for (ref name) in inProductCopyList do
+    [!?self addBuildFile !fileRef:ref !fileName:name ?buildRef:let @string buildRef]
+    resourceFileBuildRefs += !buildRef
+  end
+  mAppTargetList +=
+    !targetRef
+    !inTargetName
+    !outProductFileRef
+    !inProductFileName
+    !inSourceList
+    !buildPhaseRef
+    !buildConfigurationListRef
+    !inBuildConfigurationSettingList
+    !buildConfigurationRef
+    !inFrameworksFileRefList
+    !frameworkBuildRef
+    !dependentTargets
+    !resourceBuildRef
+    !resourceFileBuildRefs
+}
+
+#---------------------------------------------------------------------------*
+
+setter @XcodeProjectDescriptor addGroup
+  ?groupName:let @string inGroupName
+  ?groupPath:let @string inGroupPath
+  ?childrenRefs:let @stringlist inChildrenRefs
+  !groupRef:@string outGroupRef {
+  if mDefaultConfigurationRef == "" then
+    [!?self getReferenceKey ?ref:mDefaultConfigurationRef]
+  end
+  if mProjectBuildConfigurationRef == "" then
+    [!?self getReferenceKey ?ref:mProjectBuildConfigurationRef]
+  end
+  if mMainGroupReference == "" then
+    [!?self getReferenceKey ?ref:mMainGroupReference]
+  end
+  [!?self getReferenceKey ?ref:outGroupRef]
+  mGroupList += !outGroupRef !inGroupName !inGroupPath !inChildrenRefs
+}
+
+#---------------------------------------------------------------------------*
+
+setter @XcodeProjectDescriptor addGroupWithFiles
+  ?groupName:let @string inGroupName
+  ?groupPath:let @string inGroupPath
+  ?fileNames:let @stringset inFileNames
+  ?!cppFileRefs:@stringlist ioCppFileBuildRefs
+  ?!mFileRefs:@stringlist ioMFileBuildRefs
+  ?!mmFileRefs:@stringlist ioMMFileBuildRefs
+  ?!frameworkFileRefs:@stringlist ioFrameWorkFileBuildRefs
+  ?!resourceFileRefs:@stringlist ioResourceFileBuildRefs
+  !groupRef:@string outGroupRef {
+  if mDefaultConfigurationRef == "" then
+    [!?self getReferenceKey ?ref:mDefaultConfigurationRef]
+  end
+  if mProjectBuildConfigurationRef == "" then
+    [!?self getReferenceKey ?ref:mProjectBuildConfigurationRef]
+  end
+  if mMainGroupReference == "" then
+    [!?self getReferenceKey ?ref:mMainGroupReference]
+  end
+  [!?self getReferenceKey ?ref:outGroupRef]
+#---
+  @stringlist childrenRefs = {}
+  for (f) in inFileNames do
+    if [f pathExtension] == "cpp" then
+      [!?self addCppFile !fileName:f ?fileRef:let @string cppFileRef]
+      childrenRefs += !cppFileRef
+      [!?self addBuildFile !fileRef:cppFileRef !fileName:f ?buildRef:let @string buildRef]
+      ioCppFileBuildRefs += !buildRef
+    elsif [f pathExtension] == "h" then
+      [!?self addHeaderFile !fileName:f ?fileRef:let @string headerFileRef]
+      childrenRefs += !headerFileRef
+    elsif [f pathExtension] == "m" then
+      [!?self addMFile !fileName:f ?fileRef:let @string m_FileRef]
+      [!?self addBuildFile !fileRef:m_FileRef !fileName:f ?buildRef:let @string buildRef]
+      childrenRefs += !m_FileRef
+      ioMFileBuildRefs += !buildRef
+    elsif [f pathExtension] == "mm" then
+      [!?self addMMFile !fileName:f ?fileRef:let @string m_FileRef]
+      [!?self addBuildFile !fileRef:m_FileRef !fileName:f ?buildRef:let @string buildRef]
+      childrenRefs += !m_FileRef
+      ioMMFileBuildRefs += !buildRef
+    elsif [f pathExtension] == "framework" then
+      [!?self addFrameworkFile !fileName:f ?fileRef:let @string framework_FileRef]
+      [!?self addBuildFile !fileRef:framework_FileRef !fileName:f ?buildRef:let @string buildRef]
+      childrenRefs += !framework_FileRef
+      ioFrameWorkFileBuildRefs += !buildRef
+    elsif [f pathExtension] == "plist" then
+      [!?self addInfoPlistFile !fileName:f ?fileRef:let @string resource_FileRef]
+      childrenRefs += !resource_FileRef
+    elsif [f pathExtension] == "xib" then
+      [!?self addXIBFile !fileName:f ?fileRef:let @string resource_FileRef]
+      childrenRefs += !resource_FileRef
+      [!?self addBuildFile !fileRef:resource_FileRef !fileName:f ?buildRef:let @string buildRef]
+      ioResourceFileBuildRefs += !buildRef
+    elsif [f pathExtension] == "tiff" then
+      [!?self addTIFF_file !fileName:f ?fileRef:let @string resource_FileRef]
+      childrenRefs += !resource_FileRef
+      [!?self addBuildFile !fileRef:resource_FileRef !fileName:f ?buildRef:let @string buildRef]
+      ioResourceFileBuildRefs += !buildRef
+    elsif [f pathExtension] == "icns" then
+      [!?self addICNS_file !fileName:f ?fileRef:let @string resource_FileRef]
+      childrenRefs += !resource_FileRef
+      [!?self addBuildFile !fileRef:resource_FileRef !fileName:f ?buildRef:let @string buildRef]
+      ioResourceFileBuildRefs += !buildRef
+    else
+      error @location. nowhere : "unhandled extension for file '" + f + "'"
+    end
+  end
+  mGroupList += !outGroupRef !inGroupName !inGroupPath !childrenRefs
+}
+
+#---------------------------------------------------------------------------*
+
+setter @XcodeProjectDescriptor placeGroupAsMainGroup
+  ?groupRef:let @string inGroupRef {
+  mMainGroupChildrenRefs += !inGroupRef
+}
+
+#---------------------------------------------------------------------------*
+
+setter @XcodeProjectDescriptor addSettingsToDefaultConfiguration
+  ?settingList:let @stringlist inSettingList {
+  mDefaultConfigurationSettingList += inSettingList
+}
+
+#---------------------------------------------------------------------------*
+
+list @XCodeGroupList {
+  @string mGroupReference
+  @string mGroupName
+  @string mGroupPath
+  @stringlist mChildrenRefs
+}
+
+#---------------------------------------------------------------------------*
+
+list @XCodeToolTargetList {
+  @string mTargetRef
+  @string mTargetName
+  @string mProductFileReference
+  @string mProductFileName
+  @stringlist mBuildPhaseRefList
+  @string mBuildPhaseRef
+  @string mBuildConfigurationListRef
+  @stringlist mBuildConfigurationSettingList
+  @string mBuildConfigurationRef
+  @stringlist mFrameworksFileRefList
+  @string mFrameworkBuildPhaseRef
+}
+
+#---------------------------------------------------------------------------*
+
+list @XCodeAppTargetList {
+  @string mTargetRef
+  @string mTargetName
+  @string mProductFileReference
+  @string mProductFileName
+  @stringlist mBuildPhaseRefList
+  @string mBuildPhaseRef
+  @string mBuildConfigurationListRef
+  @stringlist mBuildConfigurationSettingList
+  @string mBuildConfigurationRef
+  @stringlist mFrameworksFileRefList
+  @string mFrameworkBuildPhaseRef
+  @2stringlist mDependentTargets
+  @string mResourceBuildRef
+  @stringlist mResourceFileBuildRefs
+}
+
+#---------------------------------------------------------------------------*
+
+list @BuildFileList {
+  @string mFileReference
+  @string mFileName
+  @string mBuildReference
+}
+
+#---------------------------------------------------------------------------*
+
+setter @XcodeProjectDescriptor getReferenceKey
+  !ref:@string outRef {
+  if mProjectObjectReference == "" then
+    mProjectObjectReference = [[[mSequenceNumber string] md5] rightSubString!24]
+    mSequenceNumber ++
+  end
+  outRef = [[[mSequenceNumber string] md5] rightSubString!24]
+  mSequenceNumber ++
+}
+
+#---------------------------------------------------------------------------*
+
+struct @XcodeProjectDescriptor {
+  private @uint mSequenceNumber
+  private @string mMainGroupReference
+  private @stringlist mMainGroupChildrenRefs
+  private @string mProjectObjectReference
+  private @XCodeGroupList mGroupList
+  private @XCodeToolTargetList mToolTargetList
+  private @XCodeAppTargetList mAppTargetList
+  private @2stringlist mCppFileList
+  private @2stringlist m_M_FileList
+  private @2stringlist m_MM_FileList
+  private @2stringlist mFrameworkFileList
+  private @2stringlist mHeaderFileList
+  private @BuildFileList mBuildFileList
+#--- Default configuration
+  private @string mDefaultConfigurationRef
+  private @stringlist mDefaultConfigurationSettingList
+  private @string mProjectBuildConfigurationRef
+#--- Resource files
+  private @2stringlist mInfoPlistFileList
+  private @2stringlist mXIB_fileList
+  private @2stringlist mTIFF_fileList
+  private @2stringlist mICNS_fileList
+}
+
+#---------------------------------------------------------------------------*
+
+private filewrapper xcodeProjectGenerationFilewrapper in "../generation_templates/target_generation/project_xcode" {
+}{
+}{
+  template xcodeproj "project.pbxproj.gTemplate"
+    ?@string PROJECT_REF
+    ?@string MAIN_GROUP_REF
+    ?@XCodeGroupList GROUPS
+    ?@stringlist MAIN_GROUP_CHILDREN_REFS
+    ?@XCodeToolTargetList TOOL_TARGET_LIST
+    ?@XCodeAppTargetList APP_TARGET_LIST
+    ?@2stringlist CPP_FILE_LIST
+    ?@2stringlist M_FILE_LIST
+    ?@2stringlist MM_FILE_LIST
+    ?@2stringlist FRAMEWORK_FILE_LIST
+    ?@2stringlist HEADER_FILE_LIST
+    ?@2stringlist PLIST_FILE_LIST
+    ?@2stringlist TIFF_FILE_LIST
+    ?@2stringlist ICNS_FILE_LIST
+    ?@2stringlist XIB_FILE_LIST
+    ?@BuildFileList BUILD_FILE_LIST
+    ?@string DEFAULT_CONFIGURATION_REF
+    ?@stringlist DEFAULT_CONFIGURATION_SETTING_LIST
+    ?@string PROJECT_BUILD_DEFAULT_CONFIGURATION_REF
+}
+
+#---------------------------------------------------------------------------*
+
+method @XcodeProjectDescriptor generateAtPath
+  ?xcodeprojPath:let @string inPath
+  ?cacheFilePath:let @string inCacheFilePath {
+  let contents = [filewrapper xcodeProjectGenerationFilewrapper.xcodeproj
+    !mProjectObjectReference
+    !mMainGroupReference
+    !mGroupList
+    !mMainGroupChildrenRefs
+    !mToolTargetList
+    !mAppTargetList
+    !mCppFileList
+    !m_M_FileList
+    !m_MM_FileList
+    !mFrameworkFileList
+    !mHeaderFileList
+    !mInfoPlistFileList
+    !mTIFF_fileList
+    !mICNS_fileList
+    !mXIB_fileList
+    !mBuildFileList
+    !mDefaultConfigurationRef
+    !mDefaultConfigurationSettingList
+    !mProjectBuildConfigurationRef
+  ]
+  let projectCoreFile = inPath + "/project.pbxproj"
+  if (not [projectCoreFile fileExists]) || (not [inCacheFilePath fileExists]) || (@string. stringWithContentsOfFile { !inCacheFilePath} != contents) then 
+    [contents writeToFileWhenDifferentContents !inCacheFilePath ?*]
+    [contents makeDirectoryAndWriteToFile !projectCoreFile]
+  end
+}
+
+#---------------------------------------------------------------------------*
+

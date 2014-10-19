@@ -1,0 +1,2916 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  metamodel that defines expression                                        *
+#                                                                           *
+#  Copyright (C) 2010, ..., 2012 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    I N S T R U C T I O N    A N A L Y S I S                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+abstract method @semanticInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+
+#---------------------------------------------------------------------------*
+
+list @localConstantList {
+  @unifiedTypeMap-proxy mType
+  @lstring mName
+  @bool mNoWarningIfUnused
+  @string mCppName
+}
+
+#---------------------------------------------------------------------------*
+
+list @localInitializedVariableList {
+  @unifiedTypeMap-proxy mType
+  @lstring mName
+  @string mCppName
+}
+
+#---------------------------------------------------------------------------*
+
+private proc analyzeSemanticInstructionList
+  ?let @analysisContext inAnalysisContext
+  ?let @localConstantList inLocalConstantList
+  ?let @localInitializedVariableList inLocalInitializedVariableList
+  ?let @semanticInstructionListAST inSemanticInstructionListAST
+  ?let @location inEndOfBranchLocation
+  ?!@variableMap ioVariableMap
+  !@semanticInstructionListForGeneration outInstructionListForGeneration {
+  outInstructionListForGeneration = @semanticInstructionListForGeneration. emptyList
+#--- Begin branch
+  [!?ioVariableMap openBranch]
+#--- Declare local constants
+  for () in  inLocalConstantList do
+    if mNoWarningIfUnused then
+      [!?ioVariableMap insertUsedLocalConstant !mName !mType !mCppName !mCppName]
+    else
+      [!?ioVariableMap insertLocalConstant !mName !mType !mCppName !mCppName]
+    end
+  end
+#--- Declare local variables
+  for () in  inLocalInitializedVariableList do
+    [!?ioVariableMap insertDefinedLocalVariable !mName !mType !mCppName !mCppName]
+  end
+#--- Instruction list
+  for () in  inSemanticInstructionListAST do
+    [mInstruction analyzeSemanticInstruction
+      !inAnalysisContext
+      !?outInstructionListForGeneration
+      !?ioVariableMap
+    ]
+  end
+#--- Branch end
+  [!?ioVariableMap closeBranch !inEndOfBranchLocation]
+}
+
+#---------------------------------------------------------------------------*
+
+override method @localVariableOrConstantDeclarationWithDefaultConstructorAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Check variable type
+  let targetType = @unifiedTypeMap-proxy. searchKey {
+    !inAnalysisContext.mSemanticContext.mTypeMap
+    !mTypeName}
+#--- Check type accepts default constructor
+  if not [targetType mIsConcrete] then
+    error mTypeName: "an abstract class does not support the default constructor"
+  elsif [targetType mDefaultConstructorName] == "" then
+    error mTypeName: "this class does not support the default constructor"
+  end
+#--- Declare variable (or constant)
+  let targetVariableCppName = "var_" + [mVariableName identifierRepresentation]
+  if mIsConstant then
+    [!?ioVariableMap insertLocalConstant !mVariableName !targetType !targetVariableCppName !targetVariableCppName]
+  else
+    [!?ioVariableMap insertDefinedLocalVariable !mVariableName !targetType !targetVariableCppName !targetVariableCppName]
+  end
+#--- Generate instruction
+  ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithDefaultConstructorForGeneration. new {
+    !mInstructionLocation
+    !targetType
+    !mIsConstant
+    !targetVariableCppName}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @localVariableOrConstantDeclarationWithConstructorCallAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+  let targetType = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
+#--- Analyze constructor call
+  analyzeConstructorInvocation (
+    !targetType
+    !inAnalysisContext
+    !?ioVariableMap
+    !mTypeName
+    !mConstructorName
+    !mConstructorExpressions
+    ?var @unifiedTypeMap-proxy returnedType
+    ?*
+    ?let @semanticExpressionListForGeneration constructorEffectiveParameterList
+    ?var @bool hasCompilerArgument
+  )
+#--- Check variable type
+  if targetType != returnedType then
+    error mConstructorName
+    :"this constructor returns an '@" + [returnedType key] +"' object, you should use a constructor that return an '@" + mTypeName + "' object"
+  end
+#--- Declare variable (or constant)
+  let targetVariableCppName = "var_" + [mVariableName identifierRepresentation]
+  if mIsConstant then
+    [!?ioVariableMap insertLocalConstant !mVariableName !targetType !targetVariableCppName !targetVariableCppName]
+  else
+    [!?ioVariableMap insertDefinedLocalVariable !mVariableName !targetType !targetVariableCppName !targetVariableCppName]
+  end
+#--- Generate instruction
+  ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithConstructorCallForGeneration. new {
+    !mInstructionLocation
+    !targetType
+    !mIsConstant
+    !targetVariableCppName
+    ![mConstructorName string]
+    !constructorEffectiveParameterList
+    !hasCompilerArgument}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @localVariableDeclarationWithAssignmentAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Analyze source expression
+  [mSourceExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?var @semanticExpressionForGeneration expression
+  ]
+#--- Check target variable
+#  const targetType := [@unifiedTypeMap-proxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
+  let targetVariableCppName = "var_" + [mVariableName identifierRepresentation]
+#  if mIsConstant then
+#    [!?ioVariableMap insertLocalConstant !mVariableName !targetType !targetVariableCppName !targetVariableCppName] ;
+#  else
+    [!?ioVariableMap insertDefinedLocalVariable !mVariableName ![expression mResultType] !targetVariableCppName !targetVariableCppName]
+#  end if ;
+#--- Check assignment type compatibility
+#  checkAssignmentTypes !targetType ![expression mResultType] !mInstructionLocation ;
+#--- Generate instruction
+  ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration. new {
+    ![expression mResultType]
+    !false
+    !targetVariableCppName
+    !expression}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+  let targetType = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
+#--- Analyze source expression
+  [mSourceExpression analyzeSemanticExpression
+    !targetType
+    !inAnalysisContext
+    !?ioVariableMap
+    ?var @semanticExpressionForGeneration expression
+  ]
+#--- Check target variable
+  let targetVariableCppName = "var_" + [mVariableName identifierRepresentation]
+  if mIsConstant then
+    [!?ioVariableMap insertLocalConstant !mVariableName !targetType !targetVariableCppName !targetVariableCppName]
+  else
+    [!?ioVariableMap insertDefinedLocalVariable !mVariableName !targetType !targetVariableCppName !targetVariableCppName]
+  end
+#--- Check assignment type compatibility
+  checkAssignmentTypes ( !targetType ![expression mResultType] !mInstructionLocation )
+#--- Generate instruction
+  ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration. new {
+    !targetType
+    !mIsConstant
+    !targetVariableCppName
+    !expression}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @localConstantDeclarationWithAssignmentAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Analyze source expression
+  [mSourceExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?var @semanticExpressionForGeneration expression
+  ]
+#--- Enter target variable
+  let targetVariableCppName = "var_" + [mVariableName identifierRepresentation]
+    [!?ioVariableMap insertLocalConstant !mVariableName ![expression mResultType] !targetVariableCppName !targetVariableCppName]
+#--- Generate instruction
+  ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration. new {
+    ![expression mResultType]
+    !true
+    !targetVariableCppName
+    !expression}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @localVariableDeclarationAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Check target variable
+  let targetType = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
+  let targetVariableCppName = "var_" + [mVariableName identifierRepresentation]
+  if mIsUndefinedConstant then
+    [!?ioVariableMap insertUndefinedLocalConstant !mVariableName !targetType !targetVariableCppName !targetVariableCppName]
+  else
+    [!?ioVariableMap insertUndefinedLocalVariable !mVariableName !targetType !targetVariableCppName !targetVariableCppName]
+  end
+#--- Generate instruction
+  ioInstructionListForGeneration += !@localVariableDeclarationForGeneration. new {
+    !targetType
+    !targetVariableCppName}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @assignmentInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Get target variable
+  @unifiedTypeMap-proxy targetType
+  @string targetVariableCppName
+  @string nameForCheckingFormalParameterUsing
+  if [mStructAttributeList length] == 0 then
+    [!?ioVariableMap searchForWriteAccess !mTargetVariableName ?targetType ?targetVariableCppName ?nameForCheckingFormalParameterUsing]
+  else
+    [!?ioVariableMap searchForReadWriteAccess !mTargetVariableName ?targetType ?targetVariableCppName ?nameForCheckingFormalParameterUsing]
+    for () in  mStructAttributeList do
+      let attributeMap = [targetType mAttributeMap]
+      [attributeMap searchKey !mValue ?let @bool isPrivate ?targetType]
+      if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue.string] file]) then
+        error mValue : "this field is private"
+      end
+    end
+  end
+#--- Analyze source expression
+  [mSourceExpression analyzeSemanticExpression
+    !targetType
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration expression
+  ]
+#--- Check assignment type compatibility
+  checkAssignmentTypes ( !targetType ![expression mResultType] !mInstructionLocation )
+#--- Generate instruction
+  ioInstructionListForGeneration += !@assignmentInstructionForGeneration. new {
+    !targetType
+    !targetVariableCppName
+    !nameForCheckingFormalParameterUsing
+    !mStructAttributeList
+    !expression}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @selfAssignmentInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Analyze source expression
+  [mSourceExpression analyzeSemanticExpression
+    !inAnalysisContext.mSelfTypeProxy
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration expression
+  ]
+#--- Analyze "self", as receiver expression
+  if [inAnalysisContext.mSelfTypeProxy isNull] then
+    error mInstructionLocation: "'self' can be used only in category modifiers"
+  elsif [inAnalysisContext.mSelfTypeProxy mTypeKindEnum] == @typeKindEnum. classType then
+    error mInstructionLocation: "'self' assignment is not allowed for class instances"
+  end
+#--- Check assignment type compatibility
+  checkAssignmentTypes ( !inAnalysisContext.mSelfTypeProxy ![expression mResultType] !mInstructionLocation )
+#--- Generate instruction
+  ioInstructionListForGeneration += !@assignmentInstructionForGeneration. new {
+    !inAnalysisContext.mSelfTypeProxy
+    !inAnalysisContext.mSelfObjectCppName
+    !inAnalysisContext.mSelfObjectCppName
+    !@lstringlist. emptyList
+    !expression}
+}
+
+#---------------------------------------------------------------------------*
+
+private proc analyzeErrorOrWarningInstruction
+  ?let @analysisContext inAnalysisContext
+  ?let @semanticExpressionAST inLocationExpression
+  ?let @semanticExpressionAST inMessageExpression
+  ?let @location inErrorLocation
+  ?let @string inErrorOrWarningString
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outLocationExpression
+  !@semanticExpressionForGeneration outMessageExpression
+  !@bool outUseLocationReader {
+#--- Analyze location expression
+  [inLocationExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?outLocationExpression
+  ]
+#--- Check location expression type is either @location either has a correct location reader
+  outUseLocationReader = [outLocationExpression mResultType] != inAnalysisContext.mPredefinedTypes.mLocationType
+  if outUseLocationReader then
+    let readerMap = [[outLocationExpression mResultType] mReaderMap]
+    with "location" in  readerMap  do
+      if [mArgumentTypeList length] != 0 then
+        error inErrorLocation
+        :"the " + inErrorOrWarningString + " location expression type is '@" + [[outLocationExpression mResultType] key]
+        + "' and defines a 'location' reader with arguments; it should be either of the '@location' type, either defines a 'location' reader without argument that returns an '@location' object"      
+      elsif mReturnedType != inAnalysisContext.mPredefinedTypes.mLocationType then
+        error inErrorLocation
+        :"the " + inErrorOrWarningString + " location expression type is '@" + [[outLocationExpression mResultType] key]
+        + "' and defines a 'location' reader that returns an '@" + [mReturnedType key]
+        + "' object; it should be either of the '@location' type, either defines a 'location' reader without argument that returns an '@location' object"      
+      end
+    else
+      error inErrorLocation
+      :"the " + inErrorOrWarningString + " location expression type is '@" + [[outLocationExpression mResultType] key]
+      + "' and does not define a 'location' reader; it should be either of the '@location' type, either defines a 'location' reader without argument that returns an '@location' object"
+    end
+  end
+#--- Analyze message expression
+  [inMessageExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?outMessageExpression
+  ]
+#--- Check message expression type is @string
+  if [outMessageExpression mResultType] != inAnalysisContext.mPredefinedTypes.mStringType then
+    error inErrorLocation
+    :"the " + inErrorOrWarningString + " message expression type is '@" + [[outMessageExpression mResultType] key] + "'; it should be of the '@string' type"
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @errorInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#---
+  @semanticExpressionForGeneration locationExpression
+  @semanticExpressionForGeneration messageExpression
+  @bool useLocationReader
+  analyzeErrorOrWarningInstruction (
+    !inAnalysisContext
+    !mLocationExpression
+    !mMessageExpression
+    !mInstructionLocation
+    !"error"
+    !?ioVariableMap
+    ?locationExpression
+    ?messageExpression
+    ?useLocationReader
+  )
+#--- Handle dropped variables
+  var builtVariableCppNameList =@stringlist.emptyList{}
+  for () in  mBuiltVariableList do
+    @string varCppName
+    [!?ioVariableMap searchForWriteAccess !mValue ?* ?varCppName ?*]
+    builtVariableCppNameList += !varCppName
+  end
+#--- Generate instruction
+  ioInstructionListForGeneration += !@errorInstructionForGeneration. new {
+    !mInstructionLocation
+    !locationExpression
+    !useLocationReader
+    !messageExpression
+    !builtVariableCppNameList}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @warningInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#---
+  @semanticExpressionForGeneration locationExpression
+  @semanticExpressionForGeneration messageExpression
+  @bool useLocationReader
+  analyzeErrorOrWarningInstruction (
+    !inAnalysisContext
+    !mLocationExpression
+    !mMessageExpression
+    !mInstructionLocation
+    !"warning"
+    !?ioVariableMap
+    ?locationExpression
+    ?messageExpression
+    ?useLocationReader
+  )
+#--- Generate instruction
+  ioInstructionListForGeneration += !@warningInstructionForGeneration. new {
+    !mInstructionLocation
+    !locationExpression
+    !useLocationReader
+    !messageExpression}
+}
+
+#---------------------------------------------------------------------------*
+
+abstract method @actualParameterAST checkAgainstFormalArgument
+  ?let @analysisContext inAnalysisContext
+  ?let @lstring inFormalSelector
+  ?let @unifiedTypeMap-proxy inFormalArgumentType
+  ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
+  ?!@variableMap ioVariableMap
+  ?!@actualParameterListForGeneration ioActualParameterListForGeneration
+  ?!@stringset ioExclusiveVariableSet
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+
+#---------------------------------------------------------------------------*
+
+getter @formalArgumentPassingModeAST correspondingEffectiveParameterString -> @string outResult {
+  switch self
+    case argumentConstantIn : outResult = "!"
+    case argumentIn : outResult = "!"
+    case argumentOut : outResult = "?"
+    case argumentInOut : outResult = "!?"
+  end
+}
+
+
+#---------------------------------------------------------------------------*
+
+override method @outputActualParameterAST checkAgainstFormalArgument
+  ?let @analysisContext inAnalysisContext
+  ?let @lstring inFormalSelector
+  ?let @unifiedTypeMap-proxy inFormalArgumentType
+  ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
+  ?!@variableMap ioVariableMap
+  ?!@actualParameterListForGeneration ioActualParameterListForGeneration
+  ?!@stringset unused ioExclusiveVariableSet
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration {
+  if (inFormalArgumentPassingMode != @formalArgumentPassingModeAST. argumentIn)
+   & (inFormalArgumentPassingMode != @formalArgumentPassingModeAST. argumentConstantIn) then
+    error mActualSelector
+    :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
+    + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
+  else
+    if inFormalSelector.string != mActualSelector.string then
+       error mActualSelector : "the selector should be '!" + inFormalSelector + if inFormalSelector.string != "" then ":" else "" end + "'"
+     end
+    [mOutputActualParameterExpression analyzeSemanticExpression
+      !inFormalArgumentType
+      !inAnalysisContext
+      !?ioVariableMap
+      ?let @semanticExpressionForGeneration expression
+    ]
+  #--- Check effective expression type against formal argument type
+    checkAssignmentTypes ( !inFormalArgumentType ![expression mResultType] !mEndOfExpressionLocation )
+  #--- Generate actual parameter
+    ioActualParameterListForGeneration += !@outputActualParameterForGeneration. new {
+      !inFormalArgumentType
+      !expression}
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @outputInputActualParameterAST checkAgainstFormalArgument
+  ?let @analysisContext unused inAnalysisContext
+  ?let @lstring inFormalSelector
+  ?let @unifiedTypeMap-proxy inFormalArgumentType
+  ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
+  ?!@variableMap ioVariableMap
+  ?!@actualParameterListForGeneration ioActualParameterListForGeneration
+  ?!@stringset ioExclusiveVariableSet
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration {
+  if inFormalArgumentPassingMode != @formalArgumentPassingModeAST. argumentInOut then
+    error mActualSelector
+    :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
+    + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
+  elsif inFormalSelector.string != mActualSelector.string then
+    error mActualSelector : "the selector should be '!?" + inFormalSelector + if inFormalSelector.string != "" then ":" else "" end + "'"
+  end
+#--- Analyze input/output variable
+  @string variableCppName
+  [!?ioVariableMap searchForReadWriteAccess !mOutputInputActualParameterName ?var @unifiedTypeMap-proxy parameterType ?variableCppName ?*]
+  var typeList = @unifiedTypeMapProxyList. listWithValue { !parameterType}
+  for () in  mStructAttributeList do
+    let attributeMap = [parameterType mAttributeMap]
+    [attributeMap searchKey !mValue ?let @bool isPrivate ?parameterType]
+    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue.string] file]) then
+      error mValue : "this field is private"
+    end
+    typeList += !parameterType
+  end
+#--- Check type
+  if inFormalArgumentType != parameterType then
+    error mOutputInputActualParameterName
+    :"the parameter object has the '@" + [parameterType key]
+    + "', it should be the same as the corresponding formal argument: '@" + [inFormalArgumentType key] + "'"
+  end
+#--- Check for exclusive access
+  if [ioExclusiveVariableSet hasKey ![mOutputInputActualParameterName string]] then
+    error mOutputInputActualParameterName
+    :"this variable is already named as input or output/input effective parameter"
+  end
+  ioExclusiveVariableSet += ![mOutputInputActualParameterName string]
+#--- Generate actual parameter
+  ioActualParameterListForGeneration += !@outputInputActualParameterForGeneration. new {
+    !parameterType
+    !variableCppName
+    !mStructAttributeList
+    !typeList}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @outputInputSingleJokerParameterAST checkAgainstFormalArgument
+  ?let @analysisContext unused inAnalysisContext
+  ?let @lstring inFormalSelector
+  ?let @unifiedTypeMap-proxy inFormalArgumentType
+  ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
+  ?!@variableMap unused ioVariableMap
+  ?!@actualParameterListForGeneration ioActualParameterListForGeneration
+  ?!@stringset unused ioExclusiveVariableSet
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration {
+  if inFormalArgumentPassingMode != @formalArgumentPassingModeAST. argumentInOut then
+    error mActualSelector
+    :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
+    + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
+  elsif inFormalSelector.string != mActualSelector.string then
+    error mActualSelector : "the selector should be '!?" + inFormalSelector + if inFormalSelector.string != "" then ":" else "" end + "'"
+  end
+  let defaultConstructorName = [inFormalArgumentType mDefaultConstructorName]
+  if defaultConstructorName == "" then
+    error mActualSelector : "the formal parameter type @" + [inFormalArgumentType key] + " should support the default constructor"
+  end
+#--- Generate actual parameter
+  let cppVarName = "joker_" + [mActualSelector.location locationIndex]
+  ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration. new {
+    !inFormalArgumentType
+    !false # Is not constant
+    !cppVarName
+    !@defaultConstructorExpressionForGeneration. new { !inFormalArgumentType !mActualSelector.location}}
+  ioActualParameterListForGeneration += !@outputInputActualParameterForGeneration. new {
+    !inFormalArgumentType
+    !cppVarName
+    !{}
+    !@unifiedTypeMapProxyList. listWithValue { !inFormalArgumentType}}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @outputInputJokerParameterAST checkAgainstFormalArgument
+  ?let @analysisContext unused inAnalysisContext
+  ?let @lstring unused inFormalSelector
+  ?let @unifiedTypeMap-proxy inFormalArgumentType
+  ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
+  ?!@variableMap unused ioVariableMap
+  ?!@actualParameterListForGeneration ioActualParameterListForGeneration
+  ?!@stringset unused ioExclusiveVariableSet
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration {
+  if inFormalArgumentPassingMode != @formalArgumentPassingModeAST. argumentInOut then
+    error mQualifierLocation
+    :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
+    + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
+  end
+  let defaultConstructorName = [inFormalArgumentType mDefaultConstructorName]
+  if defaultConstructorName == "" then
+    error mQualifierLocation : "the formal parameter type @" + [inFormalArgumentType key] + " should support the default constructor"
+  end
+#--- Generate actual parameter
+  let cppVarName = "joker_" + [mQualifierLocation locationIndex] + "_" + mJokerIndex
+  ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration. new {
+    !inFormalArgumentType
+    !false # Is not constant
+    !cppVarName
+    !@defaultConstructorExpressionForGeneration. new { !inFormalArgumentType !mQualifierLocation}}
+  ioActualParameterListForGeneration += !@outputInputActualParameterForGeneration. new {
+    !inFormalArgumentType
+    !cppVarName
+    !{}
+    !@unifiedTypeMapProxyList. listWithValue { !inFormalArgumentType}}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @inputActualExistingVariableParameterAST checkAgainstFormalArgument
+  ?let @analysisContext unused inAnalysisContext
+  ?let @lstring inFormalSelector
+  ?let @unifiedTypeMap-proxy inFormalArgumentType
+  ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
+  ?!@variableMap ioVariableMap
+  ?!@actualParameterListForGeneration ioActualParameterListForGeneration
+  ?!@stringset ioExclusiveVariableSet
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration {
+  if inFormalArgumentPassingMode != @formalArgumentPassingModeAST. argumentOut then
+    error mActualSelector
+    :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
+    + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
+  elsif inFormalSelector.string != mActualSelector.string then
+     error mActualSelector : "the selector should be '?" + inFormalSelector + if inFormalSelector.string != "" then ":" else "" end + "'"
+  end
+  [!?ioVariableMap searchForWriteAccess
+    !mInputActualParameterName
+    ?let parameterType
+    ?let targetVariableCppName
+    ?*
+  ]
+#--- Check type
+  if inFormalArgumentType != parameterType then
+    error mInputActualParameterName
+    :"the parameter object has the '@" + [parameterType key]
+    + "', it should be the same as the corresponding formal argument: '@" + [inFormalArgumentType key] + "'"
+  end
+#--- Check for exclusive access
+  if [ioExclusiveVariableSet hasKey ![mInputActualParameterName string]] then
+    error mInputActualParameterName
+    :"this variable is already named as input or output/input effective parameter"
+  end
+  ioExclusiveVariableSet += ![mInputActualParameterName string]
+#--- Generate actual parameter
+  ioActualParameterListForGeneration += !@inputActualParameterForGeneration. new {
+    !parameterType
+    !targetVariableCppName}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @inputActualNewVariableParameterAST checkAgainstFormalArgument
+  ?let @analysisContext inAnalysisContext
+  ?let @lstring inFormalSelector
+  ?let @unifiedTypeMap-proxy inFormalArgumentType
+  ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
+  ?!@variableMap ioVariableMap
+  ?!@actualParameterListForGeneration ioActualParameterListForGeneration
+  ?!@stringset ioExclusiveVariableSet
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration {
+#--- Check passing mode
+  if inFormalArgumentPassingMode != @formalArgumentPassingModeAST. argumentOut then
+    error mActualSelector
+    :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
+    + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
+  elsif inFormalSelector.string != mActualSelector.string then
+     error mActualSelector : "the selector should be '?" + inFormalSelector + if inFormalSelector.string != "" then ":" else "" end + "'"
+  end
+#--- Analyze or infer type
+
+  if mInputActualTypeName.string != "" then
+    let parameterType = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mInputActualTypeName}
+    if inFormalArgumentType != parameterType then
+      error mInputActualParameterName
+      :"the parameter object has the '@" + [parameterType key]
+      + "', it should be the same as the corresponding formal argument: '@" + [inFormalArgumentType key] + "'"
+    end
+  end
+#--- Declare local variable
+  let targetVariableCppName = "var_" + [mInputActualParameterName identifierRepresentation]
+  [!?ioVariableMap insertDefinedLocalVariable
+    !mInputActualParameterName
+    !inFormalArgumentType
+    !targetVariableCppName
+    !targetVariableCppName
+  ]
+#--- Generate local variable declaration
+  ioInstructionListForGeneration += !@localVariableDeclarationForGeneration. new {
+    !inFormalArgumentType
+    !targetVariableCppName}
+#--- Check for exclusive access
+  if [ioExclusiveVariableSet hasKey !mInputActualParameterName.string] then
+    error mInputActualParameterName
+    :"this variable is already named as input or output/input effective parameter"
+  end
+  ioExclusiveVariableSet += !mInputActualParameterName.string
+#--- Generate actual parameter
+  ioActualParameterListForGeneration += !@inputActualParameterForGeneration. new {
+    !inFormalArgumentType
+    !targetVariableCppName}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @inputActualNewConstantParameterAST checkAgainstFormalArgument
+  ?let @analysisContext inAnalysisContext
+  ?let @lstring inFormalSelector
+  ?let @unifiedTypeMap-proxy inFormalArgumentType
+  ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
+  ?!@variableMap ioVariableMap
+  ?!@actualParameterListForGeneration ioActualParameterListForGeneration
+  ?!@stringset ioExclusiveVariableSet
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration {
+#--- Check passing mode
+  if inFormalArgumentPassingMode != @formalArgumentPassingModeAST. argumentOut then
+    error mActualSelector
+    :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
+    + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
+  elsif inFormalSelector.string != mActualSelector.string then
+     error mActualSelector : "the selector should be '?" + inFormalSelector + if inFormalSelector.string != "" then ":" else "" end + "'"
+  end
+#--- Analyze or infer type
+
+  if mInputActualTypeName.string != "" then
+    let parameterType = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mInputActualTypeName}
+    if inFormalArgumentType != parameterType then
+      error mInputActualParameterName
+      :"the parameter object has the '@" + [parameterType key]
+      + "', it should be the same as the corresponding formal argument: '@" + [inFormalArgumentType key] + "'"
+    end
+  end
+#--- Declare local constant
+  let targetVariableCppName = "var_" + [mInputActualParameterName identifierRepresentation]
+  [!?ioVariableMap insertLocalConstant
+    !mInputActualParameterName
+    !inFormalArgumentType
+    !targetVariableCppName
+    !targetVariableCppName
+  ]
+#--- Generate local variable declaration
+  ioInstructionListForGeneration += !@localVariableDeclarationForGeneration. new {
+    !inFormalArgumentType
+    !targetVariableCppName}
+#--- Check for exclusive access
+  if [ioExclusiveVariableSet hasKey !mInputActualParameterName.string] then
+    error mInputActualParameterName
+    :"this variable is already named as input or output/input effective parameter"
+  end
+  ioExclusiveVariableSet += !mInputActualParameterName.string
+#--- Generate actual parameter
+  ioActualParameterListForGeneration += !@inputActualParameterForGeneration. new {
+    !inFormalArgumentType
+    !targetVariableCppName}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @inputSingleJokerActualParameterAST checkAgainstFormalArgument
+  ?let @analysisContext unused inAnalysisContext
+  ?let @lstring inFormalSelector
+  ?let @unifiedTypeMap-proxy inFormalArgumentType
+  ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
+  ?!@variableMap unused ioVariableMap
+  ?!@actualParameterListForGeneration ioActualParameterListForGeneration
+  ?!@stringset unused ioExclusiveVariableSet
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration {
+  if inFormalArgumentPassingMode != @formalArgumentPassingModeAST. argumentOut then
+    error mActualSelector
+    :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
+    + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
+  elsif inFormalSelector.string != mActualSelector.string then
+     error mActualSelector : "the selector should be '?" + inFormalSelector + if inFormalSelector.string != "" then ":" else "" end + "'"
+  else
+    let cppVarName = "joker_" + [mActualSelector.location locationIndex]
+  #--- Generate actual parameter
+    ioActualParameterListForGeneration += !@inputJokerParameterForGeneration. new {
+      !inFormalArgumentType
+      !cppVarName}
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @inputJokerActualParameterAST checkAgainstFormalArgument
+  ?let @analysisContext unused inAnalysisContext
+  ?let @lstring unused inFormalSelector
+  ?let @unifiedTypeMap-proxy inFormalArgumentType
+  ?let @formalArgumentPassingModeAST inFormalArgumentPassingMode
+  ?!@variableMap unused ioVariableMap
+  ?!@actualParameterListForGeneration ioActualParameterListForGeneration
+  ?!@stringset unused ioExclusiveVariableSet
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration {
+  if inFormalArgumentPassingMode != @formalArgumentPassingModeAST. argumentOut then
+    error mQualifierLocation
+    :"the corresponding formal argument has the '" + [inFormalArgumentPassingMode string]
+    + "' passing mode: this parameter should be passed with '" + [inFormalArgumentPassingMode correspondingEffectiveParameterString] + "'"
+  else
+    let cppVarName = "joker_" + [mQualifierLocation locationIndex] + "_" + mJokerIndex
+  #--- Generate actual parameter
+    ioActualParameterListForGeneration += !@inputJokerParameterForGeneration. new {
+      !inFormalArgumentType
+      !cppVarName}
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+proc analyzeRoutineArguments
+  ?let @analysisContext inAnalysisContext
+  ?let @lstring inRoutineName
+  ?let @string inInvokedEntityName
+  ?let @formalParameterSignature inRoutineSignature
+  ?let @actualParameterListAST inActualParameterList
+  ?!@variableMap ioVariableMap
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  !@actualParameterListForGeneration outActualParameterListForGeneration {
+  if [inRoutineSignature length] != [inActualParameterList length] then
+    error inRoutineName
+    :"the " + inInvokedEntityName + " defines " + [[inRoutineSignature length] string] 
+    + " formal argument(s), but this invocation names "
+    + [[inActualParameterList length] string] + " argument(s)"
+    : outActualParameterListForGeneration
+  else
+    outActualParameterListForGeneration = @actualParameterListForGeneration. emptyList
+    var exclusiveVariableSet =@stringset.emptySet{}
+    for () in  inRoutineSignature, () in  inActualParameterList do
+      [mActualParameter checkAgainstFormalArgument
+        !inAnalysisContext
+        !mFormalSelector
+        !mFormalArgumentType
+        !mFormalArgumentPassingMode
+        !?ioVariableMap
+        !?outActualParameterListForGeneration
+        !?exclusiveVariableSet
+        !?ioInstructionListForGeneration
+      ]
+    end
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @routineCallInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Get routine signature
+  [inAnalysisContext.mSemanticContext.mRoutineMap searchKey
+     !mRoutineName
+     ?let @formalParameterSignature routineSignature
+     ?let @bool isInternal
+   ]
+#--- Check internal
+  if isInternal then
+    let procDeclarationLocation = [inAnalysisContext.mSemanticContext.mRoutineMap locationForKey !mRoutineName.string]
+    if [mRoutineName.location file] != [procDeclarationLocation file] then
+      error mRoutineName : "this proc is internal to '" + [procDeclarationLocation file] + "' file"
+    end
+  end
+#--- Check effective parameters
+  analyzeRoutineArguments (
+    !inAnalysisContext
+    !mRoutineName
+    !"'" + mRoutineName + "' routine header"
+    !routineSignature
+    !mActualParameterList
+    !?ioVariableMap
+    !?ioInstructionListForGeneration
+    ?let @actualParameterListForGeneration actualParameterListForGeneration
+  )
+#--- Generate instructions
+#  for () in localVariableDeclarationList do
+#    ioInstructionListForGeneration += ![@localVariableDeclarationForGeneration new
+#      !mType
+#      !mLocalVariableName
+#    ] ;
+#  end for ;
+  ioInstructionListForGeneration += !@routineCallInstructionForGeneration. new {
+    !mRoutineName
+    !actualParameterListForGeneration}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @typeMethodCallInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Get type method map for the named type
+  let type = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
+#--- Get type method signature
+  @formalParameterSignature routineSignature
+  @bool hasCompilerArgument
+  [[type mClassMethodMap] searchKey !mMethodName ?routineSignature ?hasCompilerArgument]
+#--- Check effective parameters
+  analyzeRoutineArguments (
+    !inAnalysisContext
+    !mMethodName
+    !"'" + mMethodName + "' type proc header"
+    !routineSignature
+    !mActualParameterList
+    !?ioVariableMap
+    !?ioInstructionListForGeneration
+    ?let  @actualParameterListForGeneration actualParameterListForGeneration
+  )
+#--- Generate instructions
+  ioInstructionListForGeneration += !@typeMethodInstructionForGeneration. new {
+    !mTypeName
+    !mMethodName
+    !actualParameterListForGeneration
+    !hasCompilerArgument}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @methodCallInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Analyze receiver expression
+  [mReceiverExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration receiverExpression
+  ]
+#--- Get type method signature
+  @formalParameterSignature routineSignature
+  @bool hasCompilerArgument
+  @methodKind kind
+  @string errorMessage
+  [[[receiverExpression mResultType] mInstanceMethodMap] searchKey !mMethodName ?kind ?routineSignature ?* ?hasCompilerArgument ?* ?errorMessage]
+  if errorMessage != "" then
+    error mMethodName : errorMessage
+  end
+#--- Check effective parameters
+  analyzeRoutineArguments (
+    !inAnalysisContext
+    !mMethodName
+    !"'" + mMethodName + "' instance method header"
+    !routineSignature
+    !mActualParameterList
+    !?ioVariableMap
+    !?ioInstructionListForGeneration
+    ?let @actualParameterListForGeneration actualParameterListForGeneration
+  )
+#--- Search base type that declares the method
+  var baseType = [receiverExpression mResultType]
+  var searching = true
+  if @uint. errorCount == 0 then
+    loop( @uint. max) while searching do
+      if [[baseType mSuperType] isNull] then
+        searching = false
+      else
+        if [[[baseType mSuperType] mInstanceMethodMap] hasKey !mMethodName.string] then
+          baseType = [baseType mSuperType]
+        else
+          searching = false
+        end
+      end  
+    end
+  end
+#--- Generate instructions
+  ioInstructionListForGeneration += !@methodCallInstructionForGeneration. new {
+    !mInstructionLocation
+    ![receiverExpression mResultType]
+    !receiverExpression
+    ![mMethodName string]
+    !kind
+    !actualParameterListForGeneration
+    !hasCompilerArgument
+    !baseType}
+}
+
+#---------------------------------------------------------------------------*
+
+func checkMethodImplementationInSuperClasses
+  ?let @lstring inMethodName
+  ?let @unifiedTypeMap-proxy inSuperClass
+  -> @string outResult {
+  if [inSuperClass isNull] then
+    outResult = ""
+  else
+    [[inSuperClass mInstanceMethodMap] searchKey !inMethodName ?* ?* ?* ?* ?let @methodQualifier qualifier ?*]
+    switch qualifier
+    case isAbstract :
+      outResult = ""
+    case isBasic, isBasicFinal, isOverriding : # Ok
+      outResult = [inSuperClass key]
+    case isInherited, isOverridingAbstract :
+      outResult = checkMethodImplementationInSuperClasses (!inMethodName ![inSuperClass mSuperType])
+    end
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @modifierCallInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Check receiver object
+  @unifiedTypeMap-proxy receiverType
+  @string receiverVariableCppName
+  @string receiverVariableBaseName
+  [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?receiverType ?receiverVariableCppName ?receiverVariableBaseName]
+  for () in  mReceiverStructAttributes do
+    let attributeMap = [receiverType mAttributeMap]
+    [attributeMap searchKey !mValue ?let @bool isPrivate ?receiverType]
+    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue.string] file]) then
+      error mValue : "this field is private"
+    end
+  end
+#--- Get modifier signature
+  @formalParameterSignature routineSignature
+  @bool hasCompilerArgument
+  @string modifierErrorMessage
+  @methodKind kind
+  [[receiverType mModifierMap] searchKey !mModifierName ?kind ?routineSignature ?hasCompilerArgument ?* ?modifierErrorMessage]
+  if modifierErrorMessage != "" then
+    error mModifierName : modifierErrorMessage
+  end
+#--- Check effective parameters
+  analyzeRoutineArguments (
+    !inAnalysisContext
+    !mModifierName
+    !"'" + mModifierName + "' modifier header"
+    !routineSignature
+    !mActualParameterList
+    !?ioVariableMap
+    !?ioInstructionListForGeneration
+    ?let @actualParameterListForGeneration actualParameterListForGeneration
+  )
+#--- Search base type that declares the method
+  var baseType = receiverType
+  var searching = true
+  if @uint. errorCount == 0 then
+    loop( @uint. max) while searching do
+      if [[baseType mSuperType] isNull] then
+        searching = false
+      else
+        if [[[baseType mSuperType] mModifierMap] hasKey !mModifierName.string] then
+          baseType = [baseType mSuperType]
+        else
+          searching = false
+        end
+      end  
+    end
+  end
+#--- Generate instructions
+  ioInstructionListForGeneration += !@modifierCallInstructionForGeneration. new {
+    !receiverVariableCppName
+    !receiverVariableBaseName
+    !mReceiverStructAttributes
+    !receiverType
+    !mModifierName
+    !kind
+    !actualParameterListForGeneration
+    !hasCompilerArgument
+    !baseType}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @selfModifierCallInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Analyze "self", as receiver expression
+  @unifiedTypeMap-proxy selfTypeProxy
+  @string selfObjectCppName
+  if [inAnalysisContext.mSelfTypeProxy isNull] then
+    error mModifierName: "'self' can be used only in category modifiers" : selfObjectCppName, selfTypeProxy
+  else
+    selfObjectCppName = inAnalysisContext.mSelfObjectCppName
+    selfTypeProxy = inAnalysisContext.mSelfTypeProxy
+  end
+#--- Get modifier signature
+  @formalParameterSignature routineSignature
+  @bool hasCompilerArgument
+  @methodKind kind
+  [[selfTypeProxy mModifierMap] searchKey !mModifierName ?kind ?routineSignature ?hasCompilerArgument ?* ?*]
+#--- Check effective parameters
+  analyzeRoutineArguments (
+    !inAnalysisContext
+    !mModifierName
+    !"'" + mModifierName + "' modifier header"
+    !routineSignature
+    !mActualParameterList
+    !?ioVariableMap
+    !?ioInstructionListForGeneration
+    ?let @actualParameterListForGeneration actualParameterListForGeneration
+  )
+#--- Generate instructions
+  ioInstructionListForGeneration += !@selfModifierCallInstructionForGeneration. new {
+    !selfObjectCppName
+    !selfTypeProxy
+    !mModifierName
+    !kind
+    !actualParameterListForGeneration
+    !hasCompilerArgument}
+}
+
+#---------------------------------------------------------------------------*
+
+func checkModifierImplementationInSuperClasses
+  ?let @lstring inModifierName
+  ?let @unifiedTypeMap-proxy inSuperClass
+  -> @string outResult {
+  if [inSuperClass isNull] then
+    outResult = ""
+  else
+    @methodQualifier qualifier
+    [[inSuperClass mModifierMap] searchKey !inModifierName ?3* ?qualifier ?*]
+    switch qualifier
+    case isAbstract :
+      outResult = ""
+    case isBasic, isBasicFinal, isOverriding : # Ok
+      outResult = [inSuperClass key]
+    case isInherited, isOverridingAbstract :
+      outResult = checkModifierImplementationInSuperClasses (!inModifierName ![inSuperClass mSuperType])
+    end
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @concatInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Check target variable
+  @unifiedTypeMap-proxy targetType
+  @string targetVariableCppName
+  @string nameForCheckingFormalParameterUsing
+  [!?ioVariableMap searchForReadWriteAccess !mTargetVariableName ?targetType ?targetVariableCppName ?nameForCheckingFormalParameterUsing]
+  for () in  mStructAttributeList do
+    let attributeMap = [targetType mAttributeMap]
+    [attributeMap searchKey !mValue ?let @bool isPrivate ?targetType]
+    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue.string] file]) then
+      error mValue : "this field is private"
+    end
+  end
+#--- Analyze source expression
+  @semanticExpressionForGeneration expression
+  [mSourceExpression analyzeSemanticExpression
+    !targetType
+    !inAnalysisContext
+    !?ioVariableMap
+    ?expression
+  ]
+#--- Check target variable type support '.=' operator
+  if ([targetType mHandledOperatorFlags] & plusEqualOperatorWithExpression ()) == 0 then
+    error mInstructionLocation
+    :"the target object has the '@" + [targetType key] + "' type, but this type does not support the '.=' operator"
+  end
+#--- Check assignment type compatibility
+  checkAssignmentTypes ( !targetType ![expression mResultType] !mInstructionLocation )
+#--- Generate instruction
+  ioInstructionListForGeneration += !@concatInstructionForGeneration. new {
+    !mInstructionLocation
+    !targetType
+    !targetVariableCppName
+    !nameForCheckingFormalParameterUsing
+    !mStructAttributeList
+    !expression}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @selfConcatInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Analyze "self", as receiver expression
+  @unifiedTypeMap-proxy selfTypeProxy
+  @string selfObjectCppName
+  if [inAnalysisContext.mSelfTypeProxy isNull] then
+    error mInstructionLocation: "'self' can be used only in category modifiers" : selfObjectCppName, selfTypeProxy
+  else
+    selfObjectCppName = inAnalysisContext.mSelfObjectCppName
+    selfTypeProxy = inAnalysisContext.mSelfTypeProxy
+  end
+#--- Check target variable type support '.=' operator
+  if ([selfTypeProxy mHandledOperatorFlags] & plusEqualOperatorWithExpression ()) == 0 then
+    error mInstructionLocation
+    :"the target object has the '@" + [selfTypeProxy key] + "' type, but this type does not support the '.=' operator"
+  end
+#--- Analyze source expression
+  @semanticExpressionForGeneration expression
+  [mSourceExpression analyzeSemanticExpression
+    !selfTypeProxy
+    !inAnalysisContext
+    !?ioVariableMap
+    ?expression
+  ]
+#--- Check assignment type compatibility
+  checkAssignmentTypes ( !selfTypeProxy ![expression mResultType] !mInstructionLocation )
+#--- Generate instruction
+  ioInstructionListForGeneration += !@concatInstructionForGeneration. new {
+    !mInstructionLocation
+    !selfTypeProxy
+    !selfObjectCppName
+    !selfObjectCppName
+    !@lstringlist. emptyList
+    !expression}
+}
+
+#---------------------------------------------------------------------------*
+
+#! += Instruction
+
+#---------------------------------------------------------------------------*
+
+override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # += !… !…
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Check target variable
+  @unifiedTypeMap-proxy targetType
+  @string targetVariableCppName
+  @string nameForCheckingFormalParameterUsing
+  [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName ?nameForCheckingFormalParameterUsing]
+  for () in  mStructAttributeList do
+    let attributeMap = [targetType mAttributeMap]
+    [attributeMap searchKey !mValue ?let @bool isPrivate ?targetType]
+    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue.string] file]) then
+      error mValue : "this field is private"
+    end
+  end
+#--- Check target variable type support '+=' operator
+  let addAssignOperatorArguments= [targetType mAddAssignOperatorArguments] # Empty list if += operator is not supported
+  if [addAssignOperatorArguments length] == 0 then
+    error mInstructionLocation
+    :"the target object has the '@" + [targetType key] + "' type, but this type does not support the '+=' operator"
+#--- Analyze source expressions
+  elsif [mExpressions length] != [addAssignOperatorArguments length] then
+    error mInstructionLocation
+    : "calling the '+=' operator on an '@" + [targetType key] + "' object requires "
+    + [[addAssignOperatorArguments length] string] + " parameter(s), while this invocation has "
+    + [[mExpressions length] string] + " parameter(s)"
+  else
+    var effectiveParameterList =@semanticExpressionListForGeneration.emptyList{}
+    for () in  mExpressions, () in  addAssignOperatorArguments do
+      [mExpression analyzeSemanticExpression
+        !mFormalArgumentType
+        !inAnalysisContext
+        !?ioVariableMap
+        ?let @semanticExpressionForGeneration exp
+      ]
+      if mFormalSelector.string != mActualSelector.string then
+        error mActualSelector : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
+      end
+      checkAssignmentTypes ( !mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation )
+      effectiveParameterList += !exp
+    end
+  #--- Generate instruction
+    ioInstructionListForGeneration += !@plusEqualnstructionForGeneration. new {
+      !targetVariableCppName
+      !targetType
+      !nameForCheckingFormalParameterUsing
+      !mInstructionLocation
+      !mStructAttributeList
+      !effectiveParameterList}
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # += exp
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Check target variable
+  @unifiedTypeMap-proxy targetType
+  @string targetVariableCppName
+  @string nameForCheckingFormalParameterUsing
+  [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName ?nameForCheckingFormalParameterUsing]
+  for () in  mStructAttributeList do
+    let attributeMap = [targetType mAttributeMap]
+    [attributeMap searchKey !mValue ?let @bool isPrivate ?targetType]
+    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue.string] file]) then
+      error mValue : "this field is private"
+    end
+  end
+#--- Check target variable type support '+= exp' operator
+  if ([targetType mHandledOperatorFlags] & plusEqualOperatorWithExpression ()) == 0 then
+    error mInstructionLocation
+    :"the target object has the '@" + [targetType key] + "' type, but this type does not support the '+=' operator"
+  end
+#--- Analyze source expression
+  [mExpression analyzeSemanticExpression
+    !targetType
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration expression
+  ]
+#--- Check assignment type compatibility
+  checkAssignmentTypes ( !targetType ![expression mResultType] !mInstructionLocation )
+#--- Generate instruction
+  ioInstructionListForGeneration += !@concatInstructionForGeneration. new {
+    !mInstructionLocation
+    !targetType
+    !targetVariableCppName
+    !nameForCheckingFormalParameterUsing
+    !mStructAttributeList
+    !expression}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Analyze "self", as receiver expression
+  @unifiedTypeMap-proxy selfTypeProxy
+  @string selfObjectCppName
+  if [inAnalysisContext.mSelfTypeProxy isNull] then
+    error mInstructionLocation: "'self' can be used only in category modifiers" : selfObjectCppName, selfTypeProxy
+  else
+    selfObjectCppName = inAnalysisContext.mSelfObjectCppName
+    selfTypeProxy = inAnalysisContext.mSelfTypeProxy
+  end
+#--- Check target variable type support '+=' operator
+  let addAssignOperatorArguments= [selfTypeProxy mAddAssignOperatorArguments] # Empty list if += operator is not supported
+  if [addAssignOperatorArguments length] == 0 then
+    error mInstructionLocation
+    :"the target object has the '@" + [selfTypeProxy key] + "' type, but this type does not support the '+=' operator"
+#--- Analyze source expressions
+  elsif [mExpressions length] != [addAssignOperatorArguments length] then
+    error mInstructionLocation
+    : "calling the '+=' operator on an '@" + [selfTypeProxy key] + "' object requires "
+    + [[addAssignOperatorArguments length] string] + " parameter(s), while this invocation has "
+    + [[mExpressions length] string] + " parameter(s)"
+  else
+    var effectiveParameterList =@semanticExpressionListForGeneration.emptyList{}
+    for () in  mExpressions, () in  addAssignOperatorArguments do
+      [mExpression analyzeSemanticExpression
+        !mFormalArgumentType
+        !inAnalysisContext
+        !?ioVariableMap
+        ?let @semanticExpressionForGeneration exp
+      ]
+      if mFormalSelector.string != mActualSelector.string then
+        error mActualSelector : "the selector should be '!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end + "'"
+      end
+      checkAssignmentTypes ( !mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation )
+      effectiveParameterList += !exp
+    end
+  #--- Generate instruction
+    ioInstructionListForGeneration += !@plusEqualnstructionForGeneration. new {
+      !selfObjectCppName
+      !selfTypeProxy
+      !""
+      !mInstructionLocation
+      !@lstringlist. emptyList
+      !effectiveParameterList}
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Analyze "self", as receiver expression
+  @unifiedTypeMap-proxy selfTypeProxy
+  @string selfObjectCppName
+  if [inAnalysisContext.mSelfTypeProxy isNull] then
+    error mInstructionLocation: "'self' can be used only in category modifiers" : selfObjectCppName, selfTypeProxy
+  else
+    selfObjectCppName = inAnalysisContext.mSelfObjectCppName
+    selfTypeProxy = inAnalysisContext.mSelfTypeProxy
+  end
+#--- Check target variable type support '+= exp' operator
+  if ([selfTypeProxy mHandledOperatorFlags] & plusEqualOperatorWithExpression ()) == 0 then
+    error mInstructionLocation
+    :"the target object has the '@" + [selfTypeProxy key] + "' type, but this type does not support the '+=' operator"
+  end
+#--- Analyze source expression
+  [mExpression analyzeSemanticExpression
+    !selfTypeProxy
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration expression
+  ]
+#--- Check assignment type compatibility
+  checkAssignmentTypes ( !selfTypeProxy ![expression mResultType] !mInstructionLocation )
+#--- Generate instruction
+  ioInstructionListForGeneration += !@concatInstructionForGeneration. new {
+    !mInstructionLocation
+    !selfTypeProxy
+    !selfObjectCppName
+    !""
+    !@lstringlist. emptyList
+    !expression}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @incrementInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext unused inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Check target variable
+  @unifiedTypeMap-proxy targetType
+  @string targetVariableCppName
+  [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName ?*]
+  for () in  mStructAttributeList do
+    let attributeMap = [targetType mAttributeMap]
+    [attributeMap searchKey !mValue ?let @bool isPrivate ?targetType]
+    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue.string] file]) then
+      error mValue : "this field is private"
+    end
+  end
+#--- Check target type accepts incrementation
+  if ([targetType mHandledOperatorFlags] & incDecOperator ()) == 0 then
+    error mInstructionLocation
+    :"the target object has the '@" + [targetType key] + "' type, but this type does not support the '++' operator"
+  end
+#--- Generate instruction
+  ioInstructionListForGeneration += !@incrementInstructionForGeneration. new {
+    !mInstructionLocation
+    !targetVariableCppName
+    !targetType
+    !mStructAttributeList}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @selfIncrementInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap {
+#--- Analyze "self", as receiver expression
+  @unifiedTypeMap-proxy selfTypeProxy
+  @string selfObjectCppName
+  if [inAnalysisContext.mSelfTypeProxy isNull] then
+    error mInstructionLocation: "'self' can be used only in category modifiers" : selfObjectCppName, selfTypeProxy
+  else
+    selfObjectCppName = inAnalysisContext.mSelfObjectCppName
+    selfTypeProxy = inAnalysisContext.mSelfTypeProxy
+  end
+#--- Check target type accepts incrementation
+  if ([selfTypeProxy mHandledOperatorFlags] & incDecOperator ()) == 0 then
+    error mInstructionLocation
+    :"the target object has the '@" + [selfTypeProxy key] + "' type, but this type does not support the '++' operator"
+  end
+#--- Generate instruction
+  ioInstructionListForGeneration += !@incrementInstructionForGeneration. new {
+    !mInstructionLocation
+    !selfObjectCppName
+    !selfTypeProxy
+    !@lstringlist. emptyList}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @decrementInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext unused inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Check target variable
+  @unifiedTypeMap-proxy targetType
+  @string targetVariableCppName
+  [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName ?*]
+  for () in  mStructAttributeList do
+    let attributeMap = [targetType mAttributeMap]
+    [attributeMap searchKey !mValue ?let @bool isPrivate ?targetType]
+    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue.string] file]) then
+      error mValue : "this field is private"
+    end
+  end
+#--- Check target type accepts incrementation
+  if ([targetType mHandledOperatorFlags] & incDecOperator ()) == 0 then
+    error mInstructionLocation
+    :"the target object has the '@" + [targetType key] + "' type, but this type does not support the '--' operator"
+  end
+#--- Generate instruction
+  ioInstructionListForGeneration += !@decrementInstructionForGeneration. new {
+    !mInstructionLocation
+    !targetVariableCppName
+    !targetType
+    !mStructAttributeList}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @selfDecrementInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap {
+#--- Analyze "self", as receiver expression
+  @unifiedTypeMap-proxy selfTypeProxy
+  @string selfObjectCppName
+  if [inAnalysisContext.mSelfTypeProxy isNull] then
+    error mInstructionLocation: "'self' can be used only in category modifiers" : selfObjectCppName, selfTypeProxy
+  else
+    selfObjectCppName = inAnalysisContext.mSelfObjectCppName
+    selfTypeProxy = inAnalysisContext.mSelfTypeProxy
+  end
+#--- Check target type accepts incrementation
+  if ([selfTypeProxy mHandledOperatorFlags] & incDecOperator ()) == 0 then
+    error mInstructionLocation
+    :"the target object has the '@" + [selfTypeProxy key] + "' type, but this type does not support the '--' operator"
+  end
+#--- Generate instruction
+  ioInstructionListForGeneration += !@decrementInstructionForGeneration. new {
+    !mInstructionLocation
+    !selfObjectCppName
+    !selfTypeProxy
+    !@lstringlist. emptyList}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @messageInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Analyze source expression
+  @semanticExpressionForGeneration expression
+  [mExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?expression
+  ]
+#--- Check message type is @string
+  if [expression mResultType] != inAnalysisContext.mPredefinedTypes.mStringType then
+    error mInstructionLocation
+    :"the expression has the '@" + [[expression mResultType] key] + "' type, but the 'message' instruction requires an '@string' expression"
+  end
+#--- Generate instruction
+  ioInstructionListForGeneration += !@messageInstructionForGeneration. new {
+    !expression
+    !mInstructionLocation}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @logInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+  for () in  mLogList do
+  #--- Analyze source expression
+    @semanticExpressionForGeneration expression
+    [mLogExpression analyzeSemanticExpression
+      !@unifiedTypeMap-proxy. null
+      !inAnalysisContext
+      !?ioVariableMap
+      ?expression
+    ]
+  #--- Generate instruction
+    ioInstructionListForGeneration += !@logInstructionForGeneration. new {
+      !mLogMessage
+      !expression}  
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @dropInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext unused inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+  var cppNameDropList =@stringlist.emptyList{}
+  var dropTypeList = @unifiedTypeMapProxyList. emptyList
+  for () in  mDropList do
+    @string variableCppName
+    [!?ioVariableMap searchForDropAccess !mValue ?let @unifiedTypeMap-proxy t ?variableCppName ?*]
+    cppNameDropList += !variableCppName
+    dropTypeList += !t
+  end
+#--- Generate instruction
+  ioInstructionListForGeneration += !@dropInstructionForGeneration. new {
+     !cppNameDropList
+     !"drop instruction"
+     !dropTypeList}  
+}
+
+#---------------------------------------------------------------------------*
+
+private proc checkExpressionIsBoolean
+  ?let @analysisContext inAnalysisContext
+  ?let @location inErrorLocation
+  ?let @semanticExpressionForGeneration inExpression
+  !@semanticExpressionForGeneration outExpression {
+  let expressionType = [inExpression mResultType]
+#--- Boolean type
+  let boolType = inAnalysisContext.mPredefinedTypes.mBoolType
+  if expressionType == boolType then
+    outExpression = inExpression
+  elsif [expressionType mTypeKindEnum] == @typeKindEnum. structType then
+    if [[expressionType mAttributeMap] hasKey !"bool"] then
+      [[expressionType mAttributeMap] searchKey
+        !@lstring. new { !"bool" !@location.here}
+        ?let @bool isPrivate
+        ?let @unifiedTypeMap-proxy attributeType
+      ]
+      if isPrivate && ([inErrorLocation file] != [[[expressionType mAttributeMap] locationForKey !"bool"] file]) then
+        error inErrorLocation : "this field is private"
+      end
+      if attributeType == boolType then
+        outExpression = @structFieldAccessExpressionForGeneration. new {
+          !boolType
+          !inErrorLocation
+          !inExpression
+          !"bool"}
+      else
+        error inErrorLocation
+        : "the '@"+ [expressionType key] + "' struct type defines an attribute named 'bool', but its type is not '@bool'"
+        : outExpression
+      end
+    else
+      error inErrorLocation
+      : "the '@"+ [expressionType key] + "' struct type does not define an attribute named 'bool'"
+      : outExpression
+    end
+  else
+    with "bool" in  [expressionType mReaderMap]  do
+      if mReturnedType != boolType then
+        error inErrorLocation: "the expression type is not @bool, it handles a 'bool' reader, but it does not return a '@bool' value" : outExpression
+      elsif [mArgumentTypeList length] > 0 then
+        error inErrorLocation: "the expression type is not @bool, it handles a 'bool' reader that requires argument(s)" : outExpression
+      elsif mErrorMessage != "" then
+        error inErrorLocation : mErrorMessage : outExpression
+      else
+        outExpression = @readerCallExpressionForGeneration. new {
+          !boolType
+          !inErrorLocation
+          !mKind
+          !inExpression
+          !@stringlist. emptyList
+          !"bool"
+          !@semanticExpressionListForGeneration. emptyList
+          !mHasCompilerArgument}
+      end
+    else
+      if [[expressionType mReaderMap] count] == 0 then
+        error inErrorLocation
+        : "the expression type is not '@bool', but '@"+ [expressionType key] + "', and this type does not define the 'bool' reader"
+        : outExpression
+      else
+        @string s = ""
+        for () in  [expressionType mReaderMap] do
+          s += "\n  - " + lkey
+          for () in  mArgumentTypeList do
+            s += " ?" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end + "@" + [mFormalArgumentType key]
+          end
+          s += " -> @" + [mReturnedType key]
+        end
+        error inErrorLocation
+        : "the expression type is not '@bool', but '@"+ [expressionType key] + "', and this type does not define the 'bool' reader; available "
+        + if [[expressionType mReaderMap] count] > 1 then "readers are" else "reader is" end
+        + ":" + s
+        : outExpression
+      end
+    end
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @ifInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Test expression
+  @semanticExpressionForGeneration analyzed_if_expression
+  [m_if_expression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?analyzed_if_expression
+  ]
+  [!?ioVariableMap openOverrideForSelectBlock]
+#--- Check tested expression type
+  @semanticExpressionForGeneration if_expression
+  checkExpressionIsBoolean (
+    !inAnalysisContext
+    !mEndOf_if_instruction
+    !analyzed_if_expression
+    ?if_expression
+  )
+#--- Then branch
+  @semanticInstructionListForGeneration then_instructionList
+  analyzeSemanticInstructionList (
+    !inAnalysisContext
+    !@localConstantList. emptyList
+    !@localInitializedVariableList. emptyList
+    !m_then_instructionList
+    !mEndOf_then_branch
+    !?ioVariableMap
+    ?then_instructionList
+  )
+#--- else branch
+  @semanticInstructionListForGeneration else_instructionList
+  analyzeSemanticInstructionList (
+    !inAnalysisContext
+    !@localConstantList. emptyList
+    !@localInitializedVariableList. emptyList
+    !m_else_instructionList
+    !mEndOf_if_instruction
+    !?ioVariableMap
+    ?else_instructionList
+  )
+  [!?ioVariableMap closeOverride !mEndOf_if_instruction]
+#--- Generate instruction
+  ioInstructionListForGeneration += !@ifInstructionForGeneration. new {
+    !mEndOf_then_branch
+    !if_expression
+    !then_instructionList
+    !else_instructionList}
+}
+
+#---------------------------------------------------------------------------*
+
+#! For instruction
+
+#---------------------------------------------------------------------------*
+
+abstract method @abstractEnumeratedCollectionAST analyzeEnumeration
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  ?!@localInitializedVariableList ioLocalConstantListForDoBranch
+  !@string outEnumeratorCppName
+  !@semanticExpressionForGeneration outEnumerationExpression
+
+#---------------------------------------------------------------------------*
+
+override method @enumeratedCollectionImplicitVarInExpAST analyzeEnumeration
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  ?!@localInitializedVariableList ioLocalConstantListForDoBranch
+  !@string outEnumeratorCppName
+  !@semanticExpressionForGeneration outEnumerationExpression {
+  [mEnumeratedExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?outEnumerationExpression
+  ]
+#--- Check object can be enumerated
+  outEnumeratorCppName = "enumerator_" + [mEndOfEnumerationExpression locationIndex]
+  let enumerationDescriptorList = [[outEnumerationExpression mResultType] mEnumerationDescriptor]
+  if [enumerationDescriptorList length] == 0 then
+    error mEndOfEnumerationExpression : "an '@" + [[outEnumerationExpression mResultType] key] + "' object cannot be enumerated"
+  end
+#--- Declare implicit constants
+  for () in  enumerationDescriptorList do
+    ioLocalConstantListForDoBranch +=
+      !mEnumeratedType
+      !@lstring. new { !mPrefix.string + mEnumerationName !mEndOfEnumerationExpression}
+      !outEnumeratorCppName + ".current_" + [mEnumerationName identifierRepresentation]+ " (HERE)"
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  ?!@localInitializedVariableList ioLocalConstantListForDoBranch
+  !@string outEnumeratorCppName
+  !@semanticExpressionForGeneration outEnumerationExpression {
+  [mEnumeratedExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?outEnumerationExpression
+  ]
+#--- Check object can be enumerated
+  outEnumeratorCppName = "enumerator_" + [mEndOfEnumerationExpression locationIndex]
+  let enumerationDescriptorList = [[outEnumerationExpression mResultType] mEnumerationDescriptor]
+  if [enumerationDescriptorList length] == 0 then
+    error mEndOfEnumerationExpression : "an '@" + [[outEnumerationExpression mResultType] key] + "' object cannot be enumerated"
+  else
+#--- Arguments
+    if ([mElementList length] == 0) & not mEndsWithEllipsis then
+      let currentTypedAttributeList = [[outEnumerationExpression mResultType] mEnumerationDescriptor]
+      for () in  currentTypedAttributeList do 
+       [!?ioVariableMap insertUsedLocalConstant
+         !@lstring. new { !mEnumerationName !mEndOfEnumerationExpression}
+         !mEnumeratedType
+         !outEnumeratorCppName +".current_" + [mEnumerationName identifierRepresentation] + " (HERE)"
+         !outEnumeratorCppName +".current_" + [mEnumerationName identifierRepresentation] + " (HERE)"
+       ]
+      end
+    elsif (not mEndsWithEllipsis) & ([mElementList length] != [enumerationDescriptorList length]) then
+      error mEndOfEnumerationExpression
+      :"the '@" + [[outEnumerationExpression mResultType] key] + "' type requires "
+      + [[enumerationDescriptorList length] string] + " argument"
+      + if ([enumerationDescriptorList length] > 1) then "s" else "" end
+      + " for enumeration: this list provides "
+      + [[mElementList length] string]
+    elsif (mEndsWithEllipsis) & ([mElementList length] > [enumerationDescriptorList length]) then
+      error mEndOfEnumerationExpression
+      :"the '@" + [[outEnumerationExpression mResultType] key] + "' type requires "
+      + [[enumerationDescriptorList length] string] + " argument"
+      + if ([enumerationDescriptorList length] > 1) then "s" else "" end
+      + " or less for enumeration: this list provides "
+      + [[mElementList length] string]
+    else
+      for () in  mElementList, () in  enumerationDescriptorList do
+        if [mConstantName string] != "" then # Empty string if joker
+          if mTypeName.string != "" then
+            let foundType = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
+            if foundType != mEnumeratedType then
+              error mTypeName : "incorrect '@" + [foundType key] + "' type: '@" + [mEnumeratedType key] + "' type required here"
+            end
+          end
+          ioLocalConstantListForDoBranch += !mEnumeratedType !mConstantName !outEnumeratorCppName + ".current_" + [mEnumerationName identifierRepresentation]+ " (HERE)"
+        end
+      end
+    end
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @enumeratedCollectionVarInExpAST analyzeEnumeration
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  ?!@localInitializedVariableList ioLocalConstantListForDoBranch
+  !@string outEnumeratorCppName
+  !@semanticExpressionForGeneration outEnumerationExpression {
+  [mEnumeratedExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?outEnumerationExpression
+  ]
+#--- Check object can be enumerated
+  outEnumeratorCppName = "enumerator_" + [mEndOfEnumerationExpression locationIndex]
+  let enumeratedElementType = [[outEnumerationExpression mResultType] mTypeForEnumeratedElement]
+  if [enumeratedElementType isNull] then
+    error mEndOfEnumerationExpression : "an '@" + [[outEnumerationExpression mResultType] key] + "' object cannot be enumerated"
+  else
+    ioLocalConstantListForDoBranch += !enumeratedElementType !mEnumerationVariable !outEnumeratorCppName + ".current (HERE)"
+  end
+#--- Check enumeration type
+  if mEnumerationTypeName.string != "" then
+    let explicitType = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mEnumerationTypeName}
+    if [enumeratedElementType key] != [explicitType key] then
+      error mEnumerationTypeName: "the '@" + [enumeratedElementType key] + "' type is expected here"
+    end
+  end
+#---
+}
+
+#---------------------------------------------------------------------------*
+
+override method @forInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Begin override for foreach defined constants
+  [!?ioVariableMap openOverrideForSelectBlock]
+  [!?ioVariableMap openBranch]
+#--- 'before' branch
+  [!?ioVariableMap openOverrideForRepeatBlock]
+  @semanticInstructionListForGeneration before_instructionList
+  analyzeSemanticInstructionList (
+    !inAnalysisContext
+    !@localConstantList. emptyList
+    !@localInitializedVariableList. emptyList
+    !mBeforeInstructionList
+    !mEndOf_before_branch
+    !?ioVariableMap
+    ?before_instructionList
+  )
+  [!?ioVariableMap closeOverride !mEndOf_before_branch]
+#--- 'between' branch
+  [!?ioVariableMap openOverrideForRepeatBlock]
+  @semanticInstructionListForGeneration between_instructionList
+  analyzeSemanticInstructionList (
+    !inAnalysisContext
+    !@localConstantList. emptyList
+    !@localInitializedVariableList. emptyList
+    !mBetweenInstructionList
+    !mEndOf_between_branch
+    !?ioVariableMap
+    ?between_instructionList
+  )
+  [!?ioVariableMap closeOverride !mEndOf_between_branch]
+#--- 'after' branch
+  [!?ioVariableMap openOverrideForRepeatBlock]
+  analyzeSemanticInstructionList (
+    !inAnalysisContext
+    !@localConstantList. emptyList
+    !@localInitializedVariableList. emptyList
+    !mAfterInstructionList
+    !mEndOf_after_branch
+    !?ioVariableMap
+    ?let @semanticInstructionListForGeneration after_instructionList
+  )
+  [!?ioVariableMap closeOverride !mEndOf_after_branch]
+#--- Analyze enumerated objects
+  var localConstantListForDoBranch =@localInitializedVariableList.emptyList{}
+  var enumerationList =@foreachInstructionEnumeratedObjectListForGeneration.emptyList{}
+  for () in  mEnumeratedObjectList do
+    [mEnumeratedCollection analyzeEnumeration
+      !inAnalysisContext
+      !?ioVariableMap
+      !?localConstantListForDoBranch
+      ?let @string enumeratorCppName
+      ?let @semanticExpressionForGeneration enumerationExpression
+    ]
+  #---
+    enumerationList +=
+      !if mAscending then "up" else "down" end
+      !enumerationExpression
+      !enumeratorCppName
+  end
+#--- While expression
+  [!?ioVariableMap openOverrideForRepeatBlock]
+  [!?ioVariableMap openBranch]
+#--- Declare local constants
+  for () in  localConstantListForDoBranch do
+   [!?ioVariableMap insertUsedLocalConstant !mName !mType !mCppName !mCppName]
+  end
+#---
+  [mWhileExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration uncheckedWhileExpression
+  ]
+  checkExpressionIsBoolean (
+    !inAnalysisContext
+    !mEndOf_while_expression
+    !uncheckedWhileExpression
+    ?let @semanticExpressionForGeneration whileExpression
+  )
+#---
+  [!?ioVariableMap closeBranch !mEndOf_while_expression]
+  [!?ioVariableMap closeOverride !mEndOf_while_expression]
+#--- Handle index
+  [!?ioVariableMap openOverrideForRepeatBlock]
+  @string indexCppName = ""
+  var indexDeclaration =@localConstantList.emptyList{}
+  if [mIndexVariableName string] != "" then
+    indexCppName = "index_" + [mInstructionLocation locationIndex]
+    indexDeclaration +=
+      !inAnalysisContext.mPredefinedTypes.mUIntType
+      !mIndexVariableName
+      !false # Warns if unused
+      !indexCppName
+  end
+#--- 'do' branch
+  @semanticInstructionListForGeneration do_instructionList
+  analyzeSemanticInstructionList (
+    !inAnalysisContext
+    !indexDeclaration
+    !localConstantListForDoBranch
+    !mDoInstructionList
+    !mEndOf_do_branch
+    !?ioVariableMap
+    ?do_instructionList
+  )
+#--- End override
+  [!?ioVariableMap closeOverride !mEndOf_foreach_instruction]
+#--- End override for foreach defined constants
+  [!?ioVariableMap closeBranch !mEndOf_foreach_instruction]
+  [!?ioVariableMap closeOverride !mEndOf_foreach_instruction]
+#--- Generate instruction
+  ioInstructionListForGeneration += !@foreachInstructionForGeneration. new {
+    !mInstructionLocation
+    !enumerationList
+    !indexCppName
+    !whileExpression
+    !before_instructionList
+    !between_instructionList
+    !do_instructionList
+    !after_instructionList}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @foreachInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Begin override for foreach defined constants
+  [!?ioVariableMap openOverrideForSelectBlock]
+  [!?ioVariableMap openBranch]
+#--- 'before' branch
+  [!?ioVariableMap openOverrideForRepeatBlock]
+  @semanticInstructionListForGeneration before_instructionList
+  analyzeSemanticInstructionList (
+    !inAnalysisContext
+    !@localConstantList. emptyList
+    !@localInitializedVariableList. emptyList
+    !mBeforeInstructionList
+    !mEndOf_before_branch
+    !?ioVariableMap
+    ?before_instructionList
+  )
+  [!?ioVariableMap closeOverride !mEndOf_before_branch]
+#--- 'between' branch
+  [!?ioVariableMap openOverrideForRepeatBlock]
+  @semanticInstructionListForGeneration between_instructionList
+  analyzeSemanticInstructionList (
+    !inAnalysisContext
+    !@localConstantList. emptyList
+    !@localInitializedVariableList. emptyList
+    !mBetweenInstructionList
+    !mEndOf_between_branch
+    !?ioVariableMap
+    ?between_instructionList
+  )
+  [!?ioVariableMap closeOverride !mEndOf_between_branch]
+#--- 'after' branch
+  [!?ioVariableMap openOverrideForRepeatBlock]
+  @semanticInstructionListForGeneration after_instructionList
+  analyzeSemanticInstructionList (
+    !inAnalysisContext
+    !@localConstantList. emptyList
+    !@localInitializedVariableList. emptyList
+    !mAfterInstructionList
+    !mEndOf_after_branch
+    !?ioVariableMap
+    ?after_instructionList
+  )
+  [!?ioVariableMap closeOverride !mEndOf_after_branch]
+#--- Analyze enumerated objects
+  var enumerationList =@foreachInstructionEnumeratedObjectListForGeneration.emptyList{}
+  for () in  mEnumeratedObjectList do
+  #--- Enumeration expression
+    @semanticExpressionForGeneration enumerationExpression
+    [mEnumeratedExpression analyzeSemanticExpression
+      !@unifiedTypeMap-proxy. null
+      !inAnalysisContext
+      !?ioVariableMap
+      ?enumerationExpression
+    ]
+  #--- Check object can be enumerated
+    @string enumerationOrder = [mEnumerationOrder string]
+    let enumeratorCppName = "enumerator_" + [mEndOfEnumerationExpression locationIndex]
+    let enumerationDescriptorList = [[enumerationExpression mResultType] mEnumerationDescriptor]
+    if [enumerationDescriptorList length] == 0 then
+      error mEndOfEnumerationExpression : "an '@" + [[enumerationExpression mResultType] key] + "' object cannot be enumerated"
+    else
+  #--- Check enumeration variant
+      if enumerationOrder == "" then
+        enumerationOrder = [[[enumerationExpression mResultType] mEnumeratorVariants] mValueAtIndex !0]
+      else
+        @bool found = false
+        @string s = ""
+        for () in  [[enumerationExpression mResultType] mEnumeratorVariants] while not found do
+          found = enumerationOrder == mValue
+          s += "\n  \\" + mValue
+        end
+        if not found then
+          error mEnumerationOrder: "unknown enumeration specifier; available ones are :" + s
+        end
+      end
+  #--- Arguments
+      if ([mElementList length] == 0) & not mEndsWithEllipsis then
+        let currentTypedAttributeList = [[enumerationExpression mResultType] mEnumerationDescriptor]
+        for () in  currentTypedAttributeList do 
+         [!?ioVariableMap insertUsedLocalConstant
+           !@lstring. new { !mPrefix.string + mEnumerationName !mEndOfEnumerationExpression}
+           !mEnumeratedType
+           !enumeratorCppName +".current_" + [mEnumerationName identifierRepresentation] + " (HERE)"
+           !enumeratorCppName +".current_" + [mEnumerationName identifierRepresentation] + " (HERE)"
+         ]
+        end
+      elsif (not mEndsWithEllipsis) & ([mElementList length] != [enumerationDescriptorList length]) then
+        error mEndOfElementList
+        :"the '@" + [[enumerationExpression mResultType] key] + "' type requires "
+        + [[enumerationDescriptorList length] string] + " argument"
+        + if ([enumerationDescriptorList length] > 1) then "s" else "" end
+        + " for enumeration: this list provides "
+        + [[mElementList length] string]
+      elsif (mEndsWithEllipsis) & ([mElementList length] > [enumerationDescriptorList length]) then
+        error mEndOfElementList
+        :"the '@" + [[enumerationExpression mResultType] key] + "' type requires "
+        + [[enumerationDescriptorList length] string] + " argument"
+        + if ([enumerationDescriptorList length] > 1) then "s" else "" end
+        + " or less for enumeration: this list provides "
+        + [[mElementList length] string]
+      else
+        for () in  mElementList, () in  enumerationDescriptorList do
+          if [mConstantName string] != "" then # Empty string if joker
+            if mTypeName.string != "" then
+              let foundType = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
+              if foundType != mEnumeratedType then
+                error mTypeName : "incorrect '@" + [foundType key] + "' type: '@" + [mEnumeratedType key] + "' type required here"
+              end
+            end
+            [!?ioVariableMap insertUsedLocalConstant
+              !mConstantName
+              !mEnumeratedType
+              !enumeratorCppName +".current_" + [mEnumerationName identifierRepresentation]+ " (HERE)"
+              !enumeratorCppName +".current_" + [mEnumerationName identifierRepresentation]+ " (HERE)"
+            ]
+          end
+        end
+      end
+    end
+  #---
+    enumerationList += !enumerationOrder !enumerationExpression !enumeratorCppName
+  end
+#--- While expression
+  @semanticExpressionForGeneration uncheckedWhileExpression
+  [mWhileExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?uncheckedWhileExpression
+  ]
+  @semanticExpressionForGeneration whileExpression
+  checkExpressionIsBoolean (
+    !inAnalysisContext
+    !mEndOf_while_expression
+    !uncheckedWhileExpression
+    ?whileExpression
+  )
+#--- Handle index
+  [!?ioVariableMap openOverrideForRepeatBlock]
+  @string indexCppName = ""
+  var indexDeclaration =@localConstantList.emptyList{}
+  if [mIndexVariableName string] != "" then
+    indexCppName = "index_" + [mInstructionLocation locationIndex]
+    indexDeclaration +=
+      !inAnalysisContext.mPredefinedTypes.mUIntType
+      !mIndexVariableName
+      !false # Warns if unused
+      !indexCppName
+  end
+#--- 'do' branch
+  @semanticInstructionListForGeneration do_instructionList
+  analyzeSemanticInstructionList (
+    !inAnalysisContext
+    !indexDeclaration
+    !@localInitializedVariableList. emptyList
+    !mDoInstructionList
+    !mEndOf_do_branch
+    !?ioVariableMap
+    ?do_instructionList
+  )
+#--- End override
+  [!?ioVariableMap closeOverride !mEndOf_foreach_instruction]
+#--- End override for foreach defined constants
+  [!?ioVariableMap closeBranch !mEndOf_foreach_instruction]
+  [!?ioVariableMap closeOverride !mEndOf_foreach_instruction]
+#--- Generate instruction
+  ioInstructionListForGeneration += !@foreachInstructionForGeneration. new {
+    !mInstructionLocation
+    !enumerationList
+    !indexCppName
+    !whileExpression
+    !before_instructionList
+    !between_instructionList
+    !do_instructionList
+    !after_instructionList}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @loopInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Variant expression
+  @semanticExpressionForGeneration variantExpression
+  [mVariantExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?variantExpression
+  ]
+#--- Check variant expression type is @uint
+  if [variantExpression mResultType] != inAnalysisContext.mPredefinedTypes.mUIntType then
+    error mEndOfVariantExpression
+    : "the variant expression type should be '@" + [inAnalysisContext.mPredefinedTypes.mUIntType key] + "', but it has '@" + [[variantExpression mResultType] key] + "' type"
+  end
+#--- Loop expression
+  @semanticExpressionForGeneration loopExpression
+  [mLoopExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?loopExpression
+  ]
+#--- Check loop expression type is @bool
+  if [loopExpression mResultType] != inAnalysisContext.mPredefinedTypes.mBoolType then
+    error mEndOfLoopExpression
+    : "the loop expression type should be '@" + [inAnalysisContext.mPredefinedTypes.mBoolType key] + "', but it has '@" + [[loopExpression mResultType] key] + "' type"
+  end
+#--- Begin override for analyze loop instruction list
+  [!?ioVariableMap openOverrideForRepeatBlock]
+#--- First branch
+  @semanticInstructionListForGeneration first_instructionList
+  analyzeSemanticInstructionList (
+    !inAnalysisContext
+    !@localConstantList. emptyList
+    !@localInitializedVariableList. emptyList
+    !mFirstInstructions
+    !mEndOfFirstInstructions
+    !?ioVariableMap
+    ?first_instructionList
+  )
+#--- Second branch
+  @semanticInstructionListForGeneration second_instructionList
+  analyzeSemanticInstructionList (
+    !inAnalysisContext
+    !@localConstantList. emptyList
+    !@localInitializedVariableList. emptyList
+    !mSecondInstructions
+    !mEndOfSecondInstructions
+    !?ioVariableMap
+    ?second_instructionList
+  )
+#--- End override
+  [!?ioVariableMap closeOverride !mEndOfLoopInstruction]
+#--- Generate instruction
+  ioInstructionListForGeneration += !@loopInstructionForGeneration. new {
+    !mInstructionLocation
+    !variantExpression
+    !first_instructionList
+    !loopExpression
+    !second_instructionList}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @structuredCastInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Expression
+  @semanticExpressionForGeneration castExpression
+  [mCastExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?castExpression
+  ]
+#--- Begin override for analyze loop instruction list
+  [!?ioVariableMap openOverrideForSelectBlock]
+#--- Branches
+  var castBranchList =@castInstructionBranchListForGeneration.emptyList{}
+  for () in  mCastInstructionBranchList do
+  #--- Get named type
+    let type = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
+  #--- Check named type is a descendant of receiver type
+    @unifiedTypeMap-proxy t = type
+    @bool found = t == [castExpression mResultType]
+    loop( [inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
+    while (not found) & not [[t mSuperType] isNull] do
+      t = [t mSuperType]
+      found = t == [castExpression mResultType]
+    end
+    if not found then
+      error mTypeName
+      :"the '@" + mTypeName + "' is not a descendant of the '@" + [[castExpression mResultType] key] + "' type of the cast expression"
+    end
+  #--- Declare a local constant ?
+    @string localConstantName
+    var localConstantList =@localConstantList.emptyList{}
+    if [mConstantVarName length] > 0 then
+      localConstantName = "cast_" + [mConstantVarName.location locationIndex] + "_" + mConstantVarName
+      localConstantList +=
+        !type
+        !mConstantVarName
+        !true # Warns if unused
+        !localConstantName
+    else
+      localConstantName = "" # No constant
+    end
+  #--- Analyze instruction list
+    @semanticInstructionListForGeneration instructionList
+    analyzeSemanticInstructionList (
+      !inAnalysisContext
+      !localConstantList
+      !@localInitializedVariableList. emptyList
+      !mInstructionList
+      !mEndOfInstructions
+      !?ioVariableMap
+      ?instructionList
+    )
+    castBranchList += !mTypeComparisonKind !type !localConstantName !instructionList
+  end
+#--- else or default branch
+  @semanticInstructionListForGeneration else_instructionList
+  analyzeSemanticInstructionList (
+    !inAnalysisContext
+    !@localConstantList. emptyList
+    !@localInitializedVariableList. emptyList
+    !mElseInstructionList
+    !mEndOfCastInstruction
+    !?ioVariableMap
+    ?else_instructionList
+  )
+#--- End override
+  [!?ioVariableMap closeOverride !mEndOfCastInstruction]
+#--- Generate instruction
+  ioInstructionListForGeneration += !@structuredCastInstructionForGeneration. new {
+    !castExpression
+    !castBranchList
+    !else_instructionList}
+}
+
+#---------------------------------------------------------------------------*
+
+abstract method @abstractGrammarInstructionSyntaxDirectedTranslationResult analyzeGrammarInstructionSDT
+  ?let @analysisContext inAnalysisContext
+  ?let @bool inHasTranslateFeature
+  ?let @string inSyntaxDirectedTranslationResultVarName
+  ?!@stringlist ioAssignementList
+  ?!@variableMap ioVariableMap
+
+#---------------------------------------------------------------------------*
+
+override method @grammarInstructionSyntaxDirectedTranslationResultNone analyzeGrammarInstructionSDT
+  ?let @analysisContext unused inAnalysisContext
+  ?let @bool unused inHasTranslateFeature
+  ?let @string unused inSyntaxDirectedTranslationResultVarName
+  ?!@stringlist unused ioAssignementList
+  ?!@variableMap unused ioVariableMap {
+}
+
+#---------------------------------------------------------------------------*
+
+override method @grammarInstructionSyntaxDirectedTranslationDropResult  analyzeGrammarInstructionSDT
+  ?let @analysisContext unused inAnalysisContext
+  ?let @bool inHasTranslateFeature
+  ?let @string unused inSyntaxDirectedTranslationResultVarName
+  ?!@stringlist unused ioAssignementList
+  ?!@variableMap unused ioVariableMap {
+  if not inHasTranslateFeature then
+    error mLocation : "the ':>' construct requires the grammar to be declared with 'translate' feature"
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @grammarInstructionSyntaxDirectedTranslationResultInVar  analyzeGrammarInstructionSDT
+  ?let @analysisContext inAnalysisContext
+  ?let @bool inHasTranslateFeature
+  ?let @string inSyntaxDirectedTranslationResultVarName
+  ?!@stringlist ioAssignementList
+  ?!@variableMap ioVariableMap {
+  if not inHasTranslateFeature then
+    error mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature"
+  end
+  [!?ioVariableMap searchForWriteAccess !mActualParameterName ?let @unifiedTypeMap-proxy type ?let @string cppName ?*]
+  let expectedType = inAnalysisContext.mPredefinedTypes.mStringType
+  if expectedType != type then
+    error mActualParameterName
+    : "the '" + mActualParameterName + "' parameter has the '@" + [type identifierRepresentation]
+    + ", bit an '@" + [expectedType identifierRepresentation] + "' parameter is required here"
+  end
+  ioAssignementList += !cppName + " = GALGAS_string (" + inSyntaxDirectedTranslationResultVarName + ") ;" 
+}
+
+#---------------------------------------------------------------------------*
+
+override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar  analyzeGrammarInstructionSDT
+  ?let @analysisContext inAnalysisContext
+  ?let @bool inHasTranslateFeature
+  ?let @string inSyntaxDirectedTranslationResultVarName
+  ?!@stringlist ioAssignementList
+  ?!@variableMap ioVariableMap {
+  if not inHasTranslateFeature then
+    error mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature"
+  end
+  let cppName = "var_" + [mActualParameterName identifierRepresentation]
+  let type = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mActualParameterTypeName}
+  [!?ioVariableMap insertDefinedLocalVariable !mActualParameterName !type !cppName !cppName]
+  let expectedType = inAnalysisContext.mPredefinedTypes.mStringType
+  if expectedType != type then
+    error mActualParameterName
+    : "the '" + mActualParameterName + "' parameter has the '@" + [type identifierRepresentation]
+    + ", bit an '@" + [expectedType identifierRepresentation] + "' parameter is required here"
+  end
+  ioAssignementList += !"GALGAS_string " + cppName + " (" + inSyntaxDirectedTranslationResultVarName + ") ;" 
+}
+
+#---------------------------------------------------------------------------*
+
+override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst  analyzeGrammarInstructionSDT
+  ?let @analysisContext inAnalysisContext
+  ?let @bool inHasTranslateFeature
+  ?let @string inSyntaxDirectedTranslationResultVarName
+  ?!@stringlist ioAssignementList
+  ?!@variableMap ioVariableMap {
+  if not inHasTranslateFeature then
+    error mActualParameterName : "the ':>' construct requires the grammar to be declared with 'translate' feature"
+  end
+  let cppName = "var_" + [mActualParameterName identifierRepresentation]
+  let type = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mActualParameterTypeName}
+  [!?ioVariableMap insertLocalConstant !mActualParameterName !type !cppName !cppName]
+  let expectedType = inAnalysisContext.mPredefinedTypes.mStringType
+  if expectedType != type then
+    error mActualParameterName
+    : "the '" + mActualParameterName + "' parameter has the '@" + [type identifierRepresentation]
+    + ", bit an '@" + [expectedType identifierRepresentation] + "' parameter is required here"
+  end
+  ioAssignementList += !"const GALGAS_string " + cppName + " (" + inSyntaxDirectedTranslationResultVarName + ") ;" 
+}
+
+#---------------------------------------------------------------------------*
+
+override method @grammarInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Search grammar in grammar map
+  [inAnalysisContext.mSemanticContext.mGrammarMap searchKey
+    !mGrammarComponentName
+    ?let @grammarLabelMap grammarLabelMap
+    ?*
+    ?let @bool hasTranslateFeature
+  ]
+#--- Search label
+  [grammarLabelMap searchKey
+    !mLabelName
+    ?let @formalParameterSignature labelSignature
+  ]
+#--- Check actual parameters
+  analyzeRoutineArguments (
+    !inAnalysisContext
+    !mLabelName
+    !"label of the " + mGrammarComponentName + " grammar"
+    !labelSignature
+    !mActualParameterList
+    !?ioVariableMap
+    !?ioInstructionListForGeneration
+    ?let @actualParameterListForGeneration actualParameterListForGeneration
+  )
+#--- Parse source expression
+  [mSourceExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration sourceExpression
+  ]
+#--- Check source expression type: @lstring for file, @string for source string itself
+  if mSourceExpressionIsFile then
+    if [sourceExpression mResultType] != inAnalysisContext.mPredefinedTypes.mLStringType then
+      error mEndOfSourceExpression
+      :"this expression is the source file path and its type should be '@lstring', but it is '@" + [[sourceExpression mResultType] key] + "'"
+    end
+  elsif [sourceExpression mResultType] != inAnalysisContext.mPredefinedTypes.mStringType then
+    error mEndOfSourceExpression
+    :"this expression is the source string and its type should be '@string', but it is '@" + [[sourceExpression mResultType] key] + "'"
+  end
+#--- Check syntax directed translation result parameter
+  let syntaxDirectedTranslationResultVarName = "syntaxDirectedTranslationResult_" + [mGrammarComponentName.location locationIndex]
+  var assignementList =@stringlist.emptyList{}
+  [mAbstractGrammarInstructionSyntaxDirectedTranslationResult analyzeGrammarInstructionSDT
+    !inAnalysisContext
+    !hasTranslateFeature
+    !syntaxDirectedTranslationResultVarName
+    !?assignementList
+    !?ioVariableMap
+  ]
+#--- Generate instructions
+  if mSourceExpressionIsFile then
+    ioInstructionListForGeneration += !@grammarInstructionWithSourceFileForGeneration. new {
+      !mInstructionLocation
+      ![mGrammarComponentName string]
+      ![mLabelName string]
+      !sourceExpression
+      !actualParameterListForGeneration
+      !hasTranslateFeature
+      !assignementList
+      !syntaxDirectedTranslationResultVarName}
+  else
+    ioInstructionListForGeneration += !@grammarInstructionWithSourceExpressionForGeneration. new {
+      !mInstructionLocation
+      ![mGrammarComponentName string]
+      ![mLabelName string]
+      !sourceExpression
+      !actualParameterListForGeneration
+      !hasTranslateFeature
+      !assignementList
+      !syntaxDirectedTranslationResultVarName}
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+#! With instruction
+#---------------------------------------------------------------------------*
+
+override method @readAccessWithInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Analyze receiver expression
+  [mReceiverExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration receiverExpression
+  ]
+  let receiverType = [receiverExpression mResultType]
+#--- Check search method
+  if mSearchMethodNameForErrorSignaling.string != "" then
+    @bool found = false
+    for () in [receiverType mMapSearchMethodList] while not found do
+      found = mSearchMethodName.string == mSearchMethodNameForErrorSignaling.string
+    end
+    if not found then
+      error mSearchMethodNameForErrorSignaling : "there is no '" + mSearchMethodNameForErrorSignaling + "' search method declared in the '@" + [receiverType key] + "' map"
+    end
+  end
+#--- Analyze key expression
+  [mKeyExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration keyExpression
+  ]
+#--- Object Array cpp name
+  let objectArrayCppName = "objectArray_" + [mInstructionLocation locationIndex]
+#--- Check this type handle 'with' access
+  if ([receiverType mHandledOperatorFlags] & supportWithAccessor ()) == 0 then
+    error mEndOfReceiverExpression : "the '@"+ [receiverType key] + "' type cannot be used in a 'with' instruction"
+  end  
+#--- Enter in a select block
+  [!?ioVariableMap openOverrideForSelectBlock]
+#--- 'do' branch : add attributes as constant
+  var localConstantList =@localConstantList.emptyList{}
+  for () in  [receiverType mCurrentTypedAttributeList] do
+    localConstantList +=
+      !mAttributeTypeProxy
+      !@lstring. new { !mPrefix.string + mAttributeName !mEndOfReceiverExpression}
+      !true # Do not warn if unused
+      !objectArrayCppName + "->mAttribute_" + [mAttributeName identifierRepresentation]
+  end
+#--- Add lkey as @lstring constant
+  localConstantList +=
+    !@unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !["lstring" nowhere]}
+    !@lstring. new { !mPrefix.string + "lkey" !mEndOfReceiverExpression}
+    !true # Do not warn if unused
+    !objectArrayCppName + "->mAttribute_lkey"
+  analyzeSemanticInstructionList (
+    !inAnalysisContext
+    !localConstantList
+    !@localInitializedVariableList. emptyList
+    !mDoBranchInstructions
+    !mEndOf_do_instructions
+    !?ioVariableMap
+    ?let @semanticInstructionListForGeneration do_instructionList
+  )
+#--- else branch
+  analyzeSemanticInstructionList (
+    !inAnalysisContext
+    !@localConstantList. emptyList
+    !@localInitializedVariableList. emptyList
+    !mElseBranchInstructions
+    !mEndOf_else_instructions
+    !?ioVariableMap
+    ?let @semanticInstructionListForGeneration else_instructionList
+  )
+  [!?ioVariableMap closeOverride !mEndOf_else_instructions]
+#--- Generate instruction
+  ioInstructionListForGeneration += !@readOnlyWithInstructionForGeneration. new {
+    !mInstructionLocation
+    !receiverExpression
+    !objectArrayCppName
+    !keyExpression
+    !mSearchMethodNameForErrorSignaling.string
+    !do_instructionList
+    !else_instructionList}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Analyze source expression
+  [mKeyExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration keyExpression
+  ]
+#--- Check key is an @lstring or @string object
+  if mSearchMethodNameForErrorSignaling.string == "" then
+    if [[keyExpression mResultType] key] != "string" then
+      error mEndOfKeyExpression : "the key type is '@" + [[keyExpression mResultType] key] + "', it should be '@string'"
+    end
+  elsif [[keyExpression mResultType] key] != "lstring" then
+    error mEndOfKeyExpression : "the key type is '@" + [[keyExpression mResultType] key] + "', it should be '@lstring'"
+  end
+#--- Object Array cpp name
+  let objectArrayCppName = "objectArray_" + [mInstructionLocation locationIndex]
+#--- Read/write access to receiver variable
+  [!?ioVariableMap searchForReadWriteAccess
+    !mReceiverName
+    ?var @unifiedTypeMap-proxy targetType
+    ?let @string receiverVariableCppName
+    ?*
+  ]
+  for () in  mFieldList do
+    let attributeMap = [targetType mAttributeMap]
+    [attributeMap searchKey !mValue ?let @bool isPrivate ?targetType]
+    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue.string] file]) then
+      error mValue : "this field is private"
+    end
+  end
+#--- Check this type handle 'with' access
+  if ([targetType mHandledOperatorFlags] & supportWithAccessor ()) == 0 then
+    error mEndOfReceiverExpression : "the '@"+ [targetType key] + "' type cannot be used in a 'with' instruction"
+  end  
+#--- Check search method
+  if mSearchMethodNameForErrorSignaling.string != "" then
+    @bool found = false
+    for () in [targetType mMapSearchMethodList] while not found do
+      found = mSearchMethodName.string == mSearchMethodNameForErrorSignaling.string
+    end
+    if not found then
+      error mSearchMethodNameForErrorSignaling : "there is no '" + mSearchMethodNameForErrorSignaling + "' search method declared in the '@" + [targetType key] + "' map"
+    end
+  end
+#--- Enter in a select block
+  [!?ioVariableMap openOverrideForSelectBlock]
+#--- 'do' branch
+  @localInitializedVariableList localInitializedVariableList = {}
+  for () in  [targetType mCurrentTypedAttributeList] do
+    localInitializedVariableList +=
+      !mAttributeTypeProxy
+      !@lstring. new { !mPrefix.string + mAttributeName !mEndOfReceiverExpression}
+      !objectArrayCppName + "->mAttribute_" + [mAttributeName identifierRepresentation]
+  end
+  let localConstantList = @localConstantList {
+    !@unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !["lstring" nowhere]}
+    !@lstring. new { !mPrefix.string + "lkey" !mEndOfReceiverExpression}
+    !true # Do not warn if unused
+    !objectArrayCppName + "->mAttribute_lkey"
+  }
+  analyzeSemanticInstructionList (
+    !inAnalysisContext
+    !localConstantList
+    !localInitializedVariableList
+    !m_do_Instructions
+    !mEndOf_do_instructions
+    !?ioVariableMap
+    ?let @semanticInstructionListForGeneration do_instructionList
+  )
+#--- else branch
+  @semanticInstructionListForGeneration else_instructionList
+  analyzeSemanticInstructionList (
+    !inAnalysisContext
+    !@localConstantList. emptyList
+    !@localInitializedVariableList. emptyList
+    !m_else_Instructions
+    !mEndOf_else_instructions
+    !?ioVariableMap
+    ?else_instructionList
+  )
+  [!?ioVariableMap closeOverride !mEndOf_else_instructions]
+#--- Generate instruction
+  ioInstructionListForGeneration += !@readWriteWithInstructionForGeneration. new {
+    !mInstructionLocation
+    !receiverVariableCppName
+    !targetType
+    !mFieldList
+    !objectArrayCppName
+    !keyExpression
+    !mSearchMethodNameForErrorSignaling.string
+    !do_instructionList
+    !else_instructionList}
+}
+
+#---------------------------------------------------------------------------*
+#! switch instruction
+#---------------------------------------------------------------------------*
+
+override method @switchInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+#--- Analyze switch expression
+  @semanticExpressionForGeneration switchExpression
+  [mSwitchExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?switchExpression
+  ]
+#--- Check switch expression type is and enum instance
+  if [[switchExpression mResultType] mTypeKindEnum] != @typeKindEnum. enumType then
+    error mEndOfSwitchExpression
+    : "the switch expression type should be an instance of an enumeration type (the '@" + [[switchExpression mResultType] key] + "' type is not an enumeration type)"
+  end
+#--- Enum constant map
+  let enumConstantMap = [[switchExpression mResultType] mEnumConstantMap]
+  var constantsNamedInSwitchInstruction =@stringset.emptySet{}
+#--- Analyze branches
+  [!?ioVariableMap openOverrideForSelectBlock]
+  var switchBranchesForGeneration =@switchBranchesForGeneration.emptyList{}
+  for () in  mBranches do
+    @extractedAssociatedValuesForGeneration extractedAssociatedValuesForGeneration = {}
+    @bool firstConstant = true
+    for () in  mSwitchConstantList do
+      if [enumConstantMap hasKey ![mValue string]] then
+        if [constantsNamedInSwitchInstruction hasKey ![mValue string]] then
+          error mValue
+          :"the '" + mValue + "' constant is already named in this switch instruction"
+        end
+        constantsNamedInSwitchInstruction += ![mValue string]
+        [enumConstantMap searchKey !mValue ?* ?let @unifiedTypeMapProxyList associatedTypeList]
+        if ([associatedTypeList length] > 0) & ([mAssociatedValuesExtraction length] == 0) then
+          error mValue
+            :"the associated values of '" + mValue + "' constant should be extracted"
+        elsif ([associatedTypeList length] == 0) & ([mAssociatedValuesExtraction length] > 0) then
+          error mValue
+            :"the '" + mValue + "' constant has no associated value"
+        elsif [associatedTypeList length]  != [mAssociatedValuesExtraction length] then
+          error mValue
+            :"the '" + mValue + "' constant requires " + [associatedTypeList length] + "  associated value"
+            + if [associatedTypeList length] > 1 then "s" else "" end
+        else
+          for () in associatedTypeList, () in mAssociatedValuesExtraction do
+            if mValue0.string != "" then # Explicit type ?
+              if [mType key] != mValue0.string then
+                error mValue0 : "the required type is '@" + [mType key] + "'"
+              end
+            end
+            if firstConstant & (mValue1.string != "") then
+              let cppName = "extractedValue_" + mValue1
+              extractedAssociatedValuesForGeneration += !mType !cppName
+              [!?ioVariableMap insertLocalConstant !mValue1 !mType !cppName !cppName]
+            end
+          end
+        end
+      else
+        error mValue
+        :"'" + mValue + "' is not a constant of '@" + [[switchExpression mResultType] key] + "' enumeration type"
+      end
+      firstConstant = false
+    end
+    analyzeSemanticInstructionList (
+      !inAnalysisContext
+      !@localConstantList. emptyList
+      !@localInitializedVariableList. emptyList
+      !mInstructions
+      !mEndOfBranch
+      !?ioVariableMap
+      ?let @semanticInstructionListForGeneration instructionList
+    )
+    switchBranchesForGeneration += !mSwitchConstantList !extractedAssociatedValuesForGeneration ![mEndOfBranch locationIndex] !instructionList
+  end
+  [!?ioVariableMap closeOverride !mEndOf_switch_instruction]
+#--- Check all constants have been named
+  let forgottenConstants = [enumConstantMap keySet] - constantsNamedInSwitchInstruction
+  if [forgottenConstants count] > 0 then
+    @string s = ""
+    for () in  forgottenConstants do
+      s += "\n  - " + key
+    end
+    error mEndOf_switch_instruction
+    : "the switch instruction should name all enumeration constants; missing constants are:" + s
+  end
+#--- Generate instruction
+  ioInstructionListForGeneration += !@switchInstructionForGeneration. new {
+    ![switchExpression mResultType]
+    !switchExpression
+    !switchBranchesForGeneration}
+}
+
+#---------------------------------------------------------------------------*
+#! Match
+#---------------------------------------------------------------------------*
+
+override method @matchInstructionAST analyzeSemanticInstruction
+  ?let @analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap {
+  var expressionList =@semanticExpressionListForGeneration.emptyList{}
+  for () in  mMatchedExpressionList do
+  #--- Analyze expression
+    @semanticExpressionForGeneration matchedExpression
+    [mExpression analyzeSemanticExpression
+      !@unifiedTypeMap-proxy. null
+      !inAnalysisContext
+      !?ioVariableMap
+      ?matchedExpression
+    ]
+    expressionList += !matchedExpression
+  #--- Check expression is an enum or a class instance
+    let type = [matchedExpression mResultType]
+    if ([type mTypeKindEnum] != @typeKindEnum. classType) & ([type mTypeKindEnum] != @typeKindEnum. enumType) then
+      error mEndOfExpressionLocation
+      :"this expression is an instance of '@" + [type key] + "' type, but this type is neither an enumeration, neither a class"
+    end
+  end
+#--- Analyze branches
+  [!?ioVariableMap openOverrideForSelectBlock]
+  var matchInstructionBranchList =@matchInstructionBranchListForGeneration.emptyList{}
+  for () in  mMatchInstructionBranchList do
+  #--- Match list
+    var localConstantList =@localConstantList.emptyList{}
+    var matchListForGeneration =@matchListForGeneration.emptyList{}
+    if [expressionList length] == [mMatchEntryList length] then
+      for () in  expressionList, () in  mMatchEntryList do
+        let type = [mExpression mResultType]
+        if [type mTypeKindEnum] == @typeKindEnum. classType then
+          if mIsType then
+            let namedType = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mTypeNameOrEnumerationConstantName}
+            @unifiedTypeMap-proxy t = type
+            @bool found = t == namedType
+            loop( [inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
+            while (not found) & not [[t mSuperType] isNull] do
+              t = [t mSuperType]
+              found = t == namedType
+            end
+            if not found then
+              error mTypeNameOrEnumerationConstantName
+              :"the '@" + mTypeNameOrEnumerationConstantName + "' is not a descendant of the '@" + [type key] + "' type of the cast expression"
+            elsif [[mLocalConstantName string] length] > 0 then
+              localConstantList += !t !mLocalConstantName !false !"match_instruction_constant_name"
+            end
+          else
+            error mTypeNameOrEnumerationConstantName
+            :"a type that inherits from '@" + [[mExpression mResultType] key] + "' class is expected here"
+          end
+          matchListForGeneration += !true ![mTypeNameOrEnumerationConstantName string] ![mLocalConstantName string]
+        elsif [type mTypeKindEnum] == @typeKindEnum. enumType then
+          if mIsType then
+            error mTypeNameOrEnumerationConstantName
+            :"a constant of the '@" + [[mExpression mResultType] key] + "' enumeration type is expected here"          
+          elsif not [[type mEnumConstantMap] hasKey ![mTypeNameOrEnumerationConstantName string]] then
+            error mTypeNameOrEnumerationConstantName
+            :"the '" + mTypeNameOrEnumerationConstantName + "' symbol is not a constant of the '@" + [[mExpression mResultType] key] + "' enumeration type"
+          end
+          matchListForGeneration +=
+            !false
+            ![mTypeNameOrEnumerationConstantName string]
+            ![[mExpression mResultType] key]
+        else
+          error mTypeNameOrEnumerationConstantName: "internal error"
+        end
+      end
+    else
+      error mEndOfMatchEntryList
+      : "this match list should contain " + [[expressionList length] string] + " elements, but it acually contains "
+      + [[mMatchEntryList length] string]
+    end
+  #--- Instruction list
+    @semanticInstructionListForGeneration instructionList
+    analyzeSemanticInstructionList (
+      !inAnalysisContext
+      !localConstantList
+      !@localInitializedVariableList. emptyList
+      !mMatchBranchInstructionList
+      !mEndOf_instructionList
+      !?ioVariableMap
+      ?instructionList
+    )
+  #---
+    matchInstructionBranchList += !matchListForGeneration !instructionList
+  end
+#--- 'else' branch
+  @semanticInstructionListForGeneration elseInstructionList
+  analyzeSemanticInstructionList (
+    !inAnalysisContext
+    !@localConstantList. emptyList
+    !@localInitializedVariableList. emptyList
+    !mElseInstructionList
+    !mEndOf_match_instruction
+    !?ioVariableMap
+    ?elseInstructionList
+  )
+#---
+  [!?ioVariableMap closeOverride !mEndOf_match_instruction]
+#--- Generate instruction
+  ioInstructionListForGeneration += !@matchInstructionForGeneration. new {
+    !expressionList
+    !matchInstructionBranchList
+    !elseInstructionList}
+}
+
+#---------------------------------------------------------------------------*
+

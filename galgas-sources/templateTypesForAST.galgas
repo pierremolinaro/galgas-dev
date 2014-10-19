@@ -1,0 +1,455 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Template Abstract Syntax Tree types                                      *
+#                                                                           *
+#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+
+
+#---------------------------------------------------------------------------*
+
+abstract class @templateInstructionAST {
+}
+
+#---------------------------------------------------------------------------*
+
+list @templateInstructionListAST {
+  @templateInstructionAST mInstruction
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   E X P R E S S I O N                                                        *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+abstract class @templateExpressionAST {
+}
+ 
+#---------------------------------------------------------------------------*
+
+list @templateExpressionListAST {
+  @lstring mActualSelector
+  @templateExpressionAST mExpression
+  @location mEndOfExpressionLocation
+}
+
+#---------------------------------------------------------------------------*
+#   R E A D E R    C A L L    O P E R A N D                                 *
+#---------------------------------------------------------------------------*
+
+class @templateReaderCallInExpressionAST : @templateExpressionAST {
+  @templateExpressionAST mReceiverExpression
+  @lstring mReaderName
+  @templateExpressionListAST mExpressionList
+}
+ 
+#---------------------------------------------------------------------------*
+#   C O N S T R U C T O R                                                   *
+#---------------------------------------------------------------------------*
+
+class @templateConstructorAST : @templateExpressionAST {
+  @lstring mTypeName
+  @lstring mConstructorName
+  @templateExpressionListAST mExpressionList
+}
+ 
+#---------------------------------------------------------------------------*
+#   F I L E W R A P P E R    W I T H    S T A T I C    P A T H              *
+#---------------------------------------------------------------------------*
+
+class @templateFileWrapperWithStaticPathAST : @templateExpressionAST {
+  @lstring mFileWrapperName
+  @uint mFileIndex
+}
+ 
+#---------------------------------------------------------------------------*
+#   F I L E W R A P P E R    T E M P L A T E     C A L L                    *
+#---------------------------------------------------------------------------*
+
+class @templateFileWrapperTemplateCallAST : @templateExpressionAST {
+  @lstring mFileWrapperName
+  @lstring mTemplateName
+  @templateExpressionListAST mOutExpressionList
+}
+ 
+#---------------------------------------------------------------------------*
+#   C A T E G O R Y    T E M P L A T E     C A L L                          *
+#---------------------------------------------------------------------------*
+
+class @templateCategoryTemplateCallAST : @templateExpressionAST {
+  @templateExpressionAST mExpressionValue
+  @lstring mTemplateName
+  @templateExpressionListAST mOutExpressionList
+}
+ 
+#---------------------------------------------------------------------------*
+#   B O O L E A N    O P E R A T I O N S                                    *
+#---------------------------------------------------------------------------*
+
+class @templateAndOperationAST : @templateExpressionAST {
+  @location mOperatorLocation
+  @templateExpressionAST mLeftExpression
+  @templateExpressionAST mRightExpression
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateOrOperationAST : @templateExpressionAST {
+  @location mOperatorLocation
+  @templateExpressionAST mLeftExpression
+  @templateExpressionAST mRightExpression
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateXorOperationAST : @templateExpressionAST {
+  @location mOperatorLocation
+  @templateExpressionAST mLeftExpression
+  @templateExpressionAST mRightExpression
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateTrueBoolAST : @templateExpressionAST {
+  @location mLocation
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateFalseBoolAST : @templateExpressionAST {
+  @location mLocation
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateLiteralStringExpressionAST : @templateExpressionAST {
+  @stringlist mLiteralStringList
+  @location mLocation
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateLiteralUIntExpressionAST : @templateExpressionAST {
+  @luint mLiteralInt
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateLiteralSIntExpressionAST : @templateExpressionAST {
+  @lsint mLiteralInt
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateLiteralUInt64ExpressionAST : @templateExpressionAST {
+  @luint64 mLiteralInt
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateLiteralSInt64ExpressionAST : @templateExpressionAST {
+  @lsint64 mLiteralInt
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateLiteralCharExpressionAST : @templateExpressionAST {
+  @lchar mLiteralChar
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateLiteralDoubleExpressionAST : @templateExpressionAST {
+  @ldouble mLiteralDouble
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateIfThenElseExpressionAST : @templateExpressionAST {
+  @location mOperatorLocation
+  @templateExpressionAST mIfExpression
+  @templateExpressionAST mThenExpression
+  @templateExpressionAST mElseExpression
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @structFieldAccessTemplateExpressionAST : @templateExpressionAST {
+  @location mOperatorLocation
+  @templateExpressionAST mExpression
+  @lstring mStructFieldName
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateNotOperatorAST : @templateExpressionAST {
+  @location mOperatorLocation
+  @templateExpressionAST mExpression
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateLogicalNegateAST : @templateExpressionAST {
+  @location mOperatorLocation
+  @templateExpressionAST mExpression
+}
+
+#---------------------------------------------------------------------------*
+
+class @templateOptionAccessAST : @templateExpressionAST {
+  @lstring mOptionComponentName
+  @lstring mOptionName
+  @lstring mReaderName
+}
+ 
+#---------------------------------------------------------------------------*
+#   F U N C T I O N    C A L L                                              *
+#---------------------------------------------------------------------------*
+
+class @templateFunctionCallAST : @templateExpressionAST {
+  @lstring mFunctionName
+  @templateExpressionListAST mExpressionList
+}
+ 
+#---------------------------------------------------------------------------*
+#   S I M P L E    V A R I A B L E                                          *
+#---------------------------------------------------------------------------*
+
+class @templateVarInExpressionAST : @templateExpressionAST {
+  @lstring mVarName
+}
+ 
+#---------------------------------------------------------------------------*
+#   A D D I T I O N    O P E R A T I O N                                    *
+#---------------------------------------------------------------------------*
+
+class @templateAddOperationAST : @templateExpressionAST {
+  @location mOperatorLocation
+  @templateExpressionAST mLeftExpression
+  @templateExpressionAST mRightExpression
+}
+ 
+#---------------------------------------------------------------------------*
+#   S U B S T R A C T I O N    O P E R A T I O N                            *
+#---------------------------------------------------------------------------*
+
+class @templateSubOperationAST : @templateExpressionAST {
+  @location mOperatorLocation
+  @templateExpressionAST mLeftExpression
+  @templateExpressionAST mRightExpression
+}
+ 
+#---------------------------------------------------------------------------*
+#   M U L T I P L I C A T I O N    O P E R A T I O N                        *
+#---------------------------------------------------------------------------*
+
+class @templateMultiplyOperationAST : @templateExpressionAST {
+  @location mOperatorLocation
+  @templateExpressionAST mLeftExpression
+  @templateExpressionAST mRightExpression
+}
+ 
+#---------------------------------------------------------------------------*
+#   D I V I S I O N    O P E R A T I O N                                    *
+#---------------------------------------------------------------------------*
+
+class @templateDivideOperationAST : @templateExpressionAST {
+  @location mOperatorLocation
+  @templateExpressionAST mLeftExpression
+  @templateExpressionAST mRightExpression
+}
+ 
+#---------------------------------------------------------------------------*
+#   M O D U L O    O P E R A T I O N                                        *
+#---------------------------------------------------------------------------*
+
+class @templateModuloOperationAST : @templateExpressionAST {
+  @location mOperatorLocation
+  @templateExpressionAST mLeftExpression
+  @templateExpressionAST mRightExpression
+}
+ 
+#---------------------------------------------------------------------------*
+#   U N A R Y   -    O P E R A T I O N                                      *
+#---------------------------------------------------------------------------*
+
+class @templateUnaryMinusOperationAST : @templateExpressionAST {
+  @location mOperatorLocation
+  @templateExpressionAST mExpression
+}
+ 
+#---------------------------------------------------------------------------*
+#  ==    O P E R A T I O N                                                  *
+#---------------------------------------------------------------------------*
+
+class @templateEqualTestAST : @templateExpressionAST {
+  @location mOperatorLocation
+  @templateExpressionAST mLeftExpression
+  @templateExpressionAST mRightExpression
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateNonEqualTestAST : @templateExpressionAST {
+  @location mOperatorLocation
+  @templateExpressionAST mLeftExpression
+  @templateExpressionAST mRightExpression
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateStrictInfTestAST : @templateExpressionAST {
+  @location mOperatorLocation
+  @templateExpressionAST mLeftExpression
+  @templateExpressionAST mRightExpression
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateInfOrEqualTestAST : @templateExpressionAST {
+  @location mOperatorLocation
+  @templateExpressionAST mLeftExpression
+  @templateExpressionAST mRightExpression
+}
+
+#---------------------------------------------------------------------------*
+
+class @templateStrictSupTestAST : @templateExpressionAST {
+  @location mOperatorLocation
+  @templateExpressionAST mLeftExpression
+  @templateExpressionAST mRightExpression
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateSupOrEqualTestAST : @templateExpressionAST {
+  @location mOperatorLocation
+  @templateExpressionAST mLeftExpression
+  @templateExpressionAST mRightExpression
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateLeftShiftOperationAST : @templateExpressionAST {
+  @location mOperatorLocation
+  @templateExpressionAST mLeftExpression
+  @templateExpressionAST mRightExpression
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateRightShiftOperationAST : @templateExpressionAST {
+  @location mOperatorLocation
+  @templateExpressionAST mLeftExpression
+  @templateExpressionAST mRightExpression
+}
+ 
+#---------------------------------------------------------------------------*
+
+class @templateClassToTypeOperandAST : @templateExpressionAST {
+  @lstring mTypeName
+}
+ 
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    I N S T R U C T I O N S                                                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @templateInstructionStringAST : @templateInstructionAST {
+  @string mTemplateString
+}
+
+#---------------------------------------------------------------------------*
+
+class @templateInstructionExpressionAST : @templateInstructionAST {
+  @templateExpressionAST mExpression
+  @location mLocation
+}
+
+#---------------------------------------------------------------------------*
+
+class @templateBlockInstructionAST : @templateInstructionAST {
+  @templateExpressionAST mExpression
+  @location mLocation
+  @templateInstructionListAST mBlockInstructionList
+}
+
+#---------------------------------------------------------------------------*
+
+class @templateInstructionGetColumnLocationAST : @templateInstructionAST {
+}
+
+#---------------------------------------------------------------------------*
+
+class @templateInstructionGotoColumnLocationAST : @templateInstructionAST {
+}
+
+#---------------------------------------------------------------------------*
+
+class @templateInstructionForeachAST : @templateInstructionAST {
+  @bool mIsAscending
+  @templateExpressionAST mExpression
+  @string mPrefix
+  @templateInstructionListAST mBeforeInstructionList
+  @templateInstructionListAST mDoInstructionList
+  @lstring mIndexIdentifier
+  @templateInstructionListAST mBetweenInstructionList
+  @templateInstructionListAST mAfterInstructionList
+}
+
+#---------------------------------------------------------------------------*
+
+list @templateInstructionIfBranchListAST {
+  @templateExpressionAST mExpression
+  @templateInstructionListAST mInstructionList
+}
+
+#---------------------------------------------------------------------------*
+
+class @templateInstructionIfAST : @templateInstructionAST {
+  @templateInstructionIfBranchListAST mTemplateInstructionIfBranchList
+  @templateInstructionListAST mElseInstructionList
+}
+
+#---------------------------------------------------------------------------*
+
+list @templateInstructionSwitchBranchListAST {
+  @lstringlist mConstantList
+  @templateInstructionListAST mInstructionList
+}
+
+#---------------------------------------------------------------------------*
+
+class @templateInstructionSwitchAST : @templateInstructionAST {
+  @templateExpressionAST mSwitchExpression
+  @location mSwitchExpressionEndLocation
+  @templateInstructionSwitchBranchListAST mTemplateInstructionSwitchBranchList
+}
+
+#---------------------------------------------------------------------------*
+
+proc enterTemplateString
+  ?!@templateInstructionListAST outResultingInstructionList {
+  let @string s = @string. retrieveAndResetTemplateString
+  if [s length] > 0 then
+    outResultingInstructionList += !@templateInstructionStringAST. new { !s}
+  end
+}
+
+#---------------------------------------------------------------------------*
+

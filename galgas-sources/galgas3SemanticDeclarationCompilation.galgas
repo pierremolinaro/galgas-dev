@@ -1,0 +1,710 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Copyright (C) 2014, ..., 2014 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+
+
+#---------------------------------------------------------------------------*
+
+proc compileSemanticDeclarationsGalgas3
+  ?let @string inProductDirectory
+  ?let @location inEndOfProjectSourceFile
+  ?let @semanticDeclarationListAST inSemanticDeclarationList
+  !@semanticContext outSemanticContext
+  !@semanticDeclarationSortedListForGeneration outSemanticDeclarationSortedListForGeneration {
+  if [option .verbose_output value] then
+    message "*** Building context\n"
+  end
+#------ Add predefined types to semantics declarations
+  @semanticDeclarationListAST semanticDeclarationListWithPredefinedTypes = inSemanticDeclarationList
+  appendPredefinedTypesASTs ( !?semanticDeclarationListWithPredefinedTypes )
+#---- Add predefined option component
+  @commandLineOptionListAST options = {}
+  for () in  @application. boolOptionNameList do
+    options +=
+      !["bool" nowhere]
+      !@lstring. new { !mValue1 !@location.here}
+      !@lchar. new { !@application. boolOptionInvocationLetter { !mValue0 !mValue1} !@location. nowhere}
+      ![@application. boolOptionInvocationString { !mValue0 !mValue1} nowhere]
+      ![@application. boolOptionCommentString { !mValue0 !mValue1} nowhere]
+      !["" nowhere]
+      !@optionDefaultValueEnumAST. noDefaultValue
+  end
+  for () in  @application. uintOptionNameList do
+    options +=
+      !["uint" nowhere]
+      !@lstring. new { !mValue1 !@location.here}
+      !@lchar. new { !@application. boolOptionInvocationLetter { !mValue0 !mValue1} !@location. nowhere}
+      ![@application. boolOptionInvocationString { !mValue0 !mValue1} nowhere]
+      ![@application. boolOptionCommentString { !mValue0 !mValue1} nowhere]
+      !["" nowhere]
+      !@optionDefaultValueEnumAST. noDefaultValue
+  end
+  for () in  @application. stringOptionNameList do
+    options +=
+      !["string" nowhere]
+      !@lstring. new { !mValue1 !@location.here}
+      !@lchar. new { !@application. boolOptionInvocationLetter { !mValue0 !mValue1} !@location. nowhere}
+      ![@application. boolOptionInvocationString { !mValue0 !mValue1} nowhere]
+      ![@application. boolOptionCommentString { !mValue0 !mValue1} nowhere]
+      !["" nowhere]
+      !@optionDefaultValueEnumAST. noDefaultValue
+  end
+  semanticDeclarationListWithPredefinedTypes += !@optionComponentDeclarationAST. new {
+    !true # Is predefined
+    !["galgas_builtin_options" nowhere]
+    !options}
+#------ Build semantic context
+  buildGalgas3SemanticContext (
+    !semanticDeclarationListWithPredefinedTypes
+    !inEndOfProjectSourceFile
+    ?outSemanticContext
+    ?let @semanticDeclarationListAST sortedSemanticDeclarationListAST
+  )
+#---
+  if [option .verbose_output value] then
+    message "*** Semantic analysis\n"
+  end
+#------ Check there is no undefined types
+  for () in  [outSemanticContext.mTypeMap unsolvedProxyList] do
+    error mValue : "the '" + mValue + "' type is undefined"
+  end
+#------ Semantic Analysis
+  outSemanticDeclarationSortedListForGeneration = @semanticDeclarationSortedListForGeneration. emptySortedList
+  if @uint. errorCount == 0 then
+    let @predefinedTypes predefinedTypes = buildPredefinedTypes (!outSemanticContext)
+    for () in  sortedSemanticDeclarationListAST do
+      [mSemanticDeclaration semanticAnalysis
+        !inProductDirectory
+        !outSemanticContext
+        !predefinedTypes
+        !?outSemanticDeclarationSortedListForGeneration
+      ]
+    end
+  end
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    B U I L D    S E M A N T I C    C O N T E X T                          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+proc buildGalgas3SemanticContext
+  ?let @semanticDeclarationListAST inSemanticDeclarationList
+  ?let @location inEndOfProjectSourceFile
+  !@semanticContext outSemanticContext
+  !@semanticDeclarationListAST outSortedSemanticDeclarationListAST {
+#------ Create associated type (@TYPE-element) for lists, maps, ...
+  @semanticDeclarationListAST semanticDeclarationList = inSemanticDeclarationList
+  for () in  inSemanticDeclarationList do
+    [mSemanticDeclaration addAssociatedElement !?semanticDeclarationList]
+  end
+#------ Build ordered types list, so that
+#  - a class appears after its super class
+#  - a map index appears after its associated map
+#  - a list map appears after its associated list
+  var semanticTypePrecedenceGraph =@semanticTypePrecedenceGraph.emptyGraph{}
+  var categoryMethodMapForBuildingContext =@categoryMethodMapForBuildingContext.emptyMap{}
+  var categoryReaderMapForBuildingContext =@categoryReaderMapForBuildingContext.emptyMap{}
+  var categoryModifierMapForBuildingContext =@categoryModifierMapForBuildingContext.emptyMap{}
+  var categoryOverrideDefinitionList =@semanticDeclarationListAST.emptyList{}
+  for () in  semanticDeclarationList do
+    [mSemanticDeclaration enterDeclarationInGraph
+      !?semanticTypePrecedenceGraph
+      !?categoryMethodMapForBuildingContext
+      !?categoryReaderMapForBuildingContext
+      !?categoryModifierMapForBuildingContext
+      !?categoryOverrideDefinitionList
+    ]  
+  end
+  if [semanticTypePrecedenceGraph undefinedNodeCount] > 0 then
+    for () in  [semanticTypePrecedenceGraph undefinedNodeReferenceList] do
+      error mValue : "the '" + mValue + "' type is not defined"
+    end
+    error inEndOfProjectSourceFile : "semantic analysis not performed, due to undefined type error(s)" : outSemanticContext, outSortedSemanticDeclarationListAST
+  else
+    [semanticTypePrecedenceGraph topologicalSort
+      ?outSortedSemanticDeclarationListAST
+      ?*
+      ?var @semanticDeclarationListAST unsortedSemanticDeclarationListAST
+      ?var @lstringlist unsortedNodeKeyList
+    ]
+    if [unsortedSemanticDeclarationListAST length] > 0 then
+      @string s = "semantic analysis not performed, " + [[unsortedSemanticDeclarationListAST length] string] + " declarations are involved in circular definition:"
+      for () in  unsortedSemanticDeclarationListAST do
+        s += "\n-  " + [mSemanticDeclaration keyRepresentation]
+      end
+      error inEndOfProjectSourceFile : s : outSemanticContext
+    else
+    #--- Add category override
+      outSortedSemanticDeclarationListAST += categoryOverrideDefinitionList
+    #--- Build initial semantic context
+      outSemanticContext = @semanticContext.default
+    #--- Loop throught all declarations
+      for () in  outSortedSemanticDeclarationListAST do
+        [mSemanticDeclaration enterInSemanticContext
+          !categoryMethodMapForBuildingContext
+          !categoryReaderMapForBuildingContext
+          !categoryModifierMapForBuildingContext
+          !?outSemanticContext
+        ]
+      end
+    end
+  end
+#--- Generate graphviz file
+#  const graphvizText := [semanticTypePrecedenceGraph graphviz] ;
+#  const graphvizFilePath := [inProjectSourceFile stringByDeletingPathExtension] . "+type-precedence.dot" ;
+#  [graphvizText writeToFileWhenDifferentContents !graphvizFilePath ?*] ;
+}
+
+#---------------------------------------------------------------------------*
+#! Generation
+#---------------------------------------------------------------------------*
+
+private func %once definitionGroupAmount -> @uint outResult {
+  outResult = 100
+}
+
+#---------------------------------------------------------------------------*
+
+proc generateSemanticDeclarationsGalgas3
+  ?let @unifiedTypeMap inUnifiedTypeMap
+  ?let @string inProductDirectory
+  ?let @semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
+  ?!@stringlist ioToolProductFileList
+  ?!@stringlist ioToolHeaderFileList
+  ?!@stringset ioAllProductFileSet {
+#--- Generate specific files
+  for () in inSemanticDeclarationSortedListForGeneration do
+    [mDeclaration appendSpecificFiles
+      !inProductDirectory
+      !?ioAllProductFileSet
+    ]
+  end
+#---
+  if @uint. errorCount == 0 then
+    if [option galgas_cli_options.generateOneHeader value] & [option galgas_cli_options.generateManyFiles value] then
+       generateOneBigHeader (
+        !inProductDirectory
+        !inSemanticDeclarationSortedListForGeneration
+        !?ioAllProductFileSet
+        !?ioToolHeaderFileList
+      )
+      generateManyImplementationFiles (
+        !inUnifiedTypeMap
+        !inProductDirectory
+        !inSemanticDeclarationSortedListForGeneration
+        !?ioToolProductFileList
+        !?ioAllProductFileSet
+      )
+    elsif [option galgas_cli_options.generateOneHeader value] & not [option galgas_cli_options.generateManyFiles value] then
+       generateOneBigHeader (
+        !inProductDirectory
+        !inSemanticDeclarationSortedListForGeneration
+        !?ioAllProductFileSet
+        !?ioToolHeaderFileList
+      )
+      generateFewImplementationFiles (
+        !inUnifiedTypeMap
+        !inProductDirectory
+        !inSemanticDeclarationSortedListForGeneration
+        !?ioToolProductFileList
+        !?ioAllProductFileSet
+      )
+    elsif (not [option galgas_cli_options.generateOneHeader value]) & [option galgas_cli_options.generateManyFiles value] then
+      generateManyHeaders (
+        !inProductDirectory
+        !inSemanticDeclarationSortedListForGeneration
+        !?ioAllProductFileSet
+        !?ioToolHeaderFileList
+      )
+      generateManyImplementationFiles (
+        !inUnifiedTypeMap
+        !inProductDirectory
+        !inSemanticDeclarationSortedListForGeneration
+        !?ioToolProductFileList
+        !?ioAllProductFileSet
+      )
+    elsif generateFewHeaderFiles () then
+      generateFewImplementationFilesWithFewHeaders (
+        !inUnifiedTypeMap
+        !inProductDirectory
+        !inSemanticDeclarationSortedListForGeneration
+        !?ioToolProductFileList
+        !?ioAllProductFileSet
+        !?ioToolHeaderFileList
+      )
+    else
+      generateManyHeaders (
+        !inProductDirectory
+        !inSemanticDeclarationSortedListForGeneration
+        !?ioAllProductFileSet
+        !?ioToolHeaderFileList
+      )
+      generateManyImplementationFiles (
+        !inUnifiedTypeMap
+        !inProductDirectory
+        !inSemanticDeclarationSortedListForGeneration
+        !?ioToolProductFileList
+        !?ioAllProductFileSet
+      )
+     end
+   end
+}
+
+#---------------------------------------------------------------------------*
+
+private proc generateManyHeaders
+  ?let @string inProductDirectory
+  ?let @semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
+  ?!@stringset ioAllProductFileSet
+  ?!@stringlist ioToolHeaderFileList {
+#--- Header files
+  var headerInclusionList1 = @stringlist. emptyList
+  var headerInclusionList2 = @stringlist. emptyList
+  for () in  inSemanticDeclarationSortedListForGeneration do
+    if not [mDeclaration isPredefined] then
+      var inclusionSet1 = @stringset. emptySet
+      [mDeclaration appendDeclaration1 !?inclusionSet1 ?let @string headerDef1]
+      var headerIncludes1 = ""
+      if [inclusionSet1 hasKey !""] then
+        message "Empty inclusion in " + [mDeclaration implementationCppFileName] + "headers 1\n"
+      end
+      for (s) in inclusionSet1 do
+        headerIncludes1 += "#include \"" + s + ".h\"\n"
+      end
+      headerIncludes1 += headerDef1
+      var inclusionSet2 = @stringset. emptySet
+      [mDeclaration appendDeclaration2 !true !inProductDirectory !?inclusionSet2 ?let @string headerDef2]
+      var headerIncludes2 = ""
+      if [inclusionSet2 hasKey !""] then
+        message "Empty inclusion in " + [mDeclaration implementationCppFileName] + "headers 2\n"
+      end
+      for (s) in inclusionSet2 do
+        headerIncludes2 += "#include \"" + s + ".h\"\n"
+      end
+      headerIncludes2 += headerDef2
+    #---
+      switch [mDeclaration headerKind]
+      case noHeader :
+        if headerIncludes1 != "" then
+          error ["" nowhere] : "'noHeader' setting for the '" + mMessage + "' declaration, and 'headerIncludes1' string is not empty"
+        end
+        if headerIncludes2 != "" then
+          error ["" nowhere] : "'noHeader' setting for the '" + mMessage + "' declaration, and 'headerIncludes2' string is not empty"
+        end
+      case oneHeader :
+        if headerIncludes1 == "" then
+          error ["" nowhere] : "'oneHeader' setting for the '" + mMessage + "' declaration, and 'headerIncludes1' string is empty"
+        end
+        if headerIncludes2 != "" then
+          warning ["" nowhere] : "'oneHeader' setting for the '" + mMessage + "' declaration, and 'headerIncludes2' string is not empty"
+        end
+      case twoHeaders :
+        if headerIncludes1 == "" then
+          warning ["" nowhere] : "'twoHeaders' setting for the '" + mMessage + "' declaration, and 'headerIncludes1' string is empty"
+        end
+        if headerIncludes2 == "" then
+          warning ["" nowhere] : "'twoHeaders' setting for the '" + mMessage + "' declaration, and 'headerIncludes2' string is empty"
+        end
+      end
+    #--- Header 1
+      if [mDeclaration headerKind] != @headerKind. noHeader then
+        var headerString = "#ifndef " + [[mDeclaration implementationCppFileName] identifierRepresentation] + "_1_DEFINED\n"
+        headerString += "#define " + [[mDeclaration implementationCppFileName] identifierRepresentation] + "_1_DEFINED\n\n"
+        headerString += "//---------------------------------------------------------------------------------------------------------------------*\n\n"
+        headerString += "#include \"galgas2/predefined-types.h\"\n\n"
+        headerString += "//---------------------------------------------------------------------------------------------------------------------*\n\n"
+        headerString += headerIncludes1
+        headerString += "\n"
+        headerString += "//---------------------------------------------------------------------------------------------------------------------*\n\n"
+        headerString += "#endif\n\n"
+        let headerFileName = [mDeclaration implementationCppFileName] + if [mDeclaration headerKind] == @headerKind. twoHeaders then "-1" else "" end
+        headerInclusionList1 += !headerFileName
+        ioAllProductFileSet += !headerFileName + ".h"
+        ioToolHeaderFileList += !headerFileName + ".h"
+        [@string generateFile
+          !inProductDirectory
+          !headerFileName + ".h"
+          !headerString
+        ]
+      end
+    #--- Header 2
+      if [mDeclaration headerKind] == @headerKind. twoHeaders then
+        var headerString = "#ifndef " + [[mDeclaration implementationCppFileName] identifierRepresentation] + "_DEFINED\n"
+        headerString += "#define " + [[mDeclaration implementationCppFileName] identifierRepresentation] + "_DEFINED\n\n"
+        headerString += "//---------------------------------------------------------------------------------------------------------------------*\n\n"
+        headerString += "#include \"" + [mDeclaration implementationCppFileName] + "-1.h\"\n"
+        headerString += "\n//---------------------------------------------------------------------------------------------------------------------*\n\n"
+        headerString += headerIncludes2
+        headerString += "\n"
+        headerString += "//---------------------------------------------------------------------------------------------------------------------*\n\n"
+        headerString += "#endif\n\n"
+        headerInclusionList2 += ![mDeclaration implementationCppFileName]
+        ioAllProductFileSet += ![mDeclaration implementationCppFileName] + ".h"
+        ioToolHeaderFileList += ![mDeclaration implementationCppFileName] + ".h"
+        [@string generateFile
+          !inProductDirectory
+          ![mDeclaration implementationCppFileName] + ".h"
+          !headerString
+        ]
+      end
+    end
+  end
+#-------------------------------------- all-declarations.h
+  var headerString = [filewrapper semanticFileGenerationTemplate.semanticFileHeader
+    !"all-declarations"
+    !headerInclusionList1 + headerInclusionList2
+  ]
+  ioAllProductFileSet += !"all-declarations.h"
+  ioToolHeaderFileList += !"all-declarations.h"
+  [@string generateFile
+    !inProductDirectory
+    !"all-declarations.h"
+    !headerString + "#endif\n"
+  ]
+}
+
+#---------------------------------------------------------------------------*
+
+private proc generateOneBigHeader
+  ?let @string inProductDirectory
+  ?let @semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
+  ?!@stringset ioAllProductFileSet
+  ?!@stringlist ioToolHeaderFileList {
+  var headerString = [filewrapper semanticFileGenerationTemplate.semanticFileHeader
+    !"all-declarations"
+    !@stringlist. emptyList
+  ]
+#--- Declaration 1
+  for () in  inSemanticDeclarationSortedListForGeneration do
+    if not [mDeclaration isPredefined] then
+      var inclusionSet1 = @stringset. emptySet
+      [mDeclaration appendDeclaration1 !?inclusionSet1 ?let @string headerString1]
+      headerString += headerString1
+    end
+  end
+#--- Declaration 2
+  for () in  inSemanticDeclarationSortedListForGeneration do
+    if not [mDeclaration isPredefined] then
+      var inclusionSet2 = @stringset. emptySet
+      [mDeclaration appendDeclaration2 !true !inProductDirectory !?inclusionSet2 ?let @string headerString2]
+      headerString += headerString2
+    end
+  end
+  ioAllProductFileSet += !"all-declarations.h"
+  ioToolHeaderFileList += !"all-declarations.h"
+  [@string generateFile
+    !inProductDirectory
+    !"all-declarations.h"
+    !headerString + "#endif\n"
+  ]
+}
+
+#---------------------------------------------------------------------------*
+
+map @headerCompositionMap {
+  @stringset mInclusion
+  @string mHeaderString
+  insert insertKey error message "the '%K' key is already declared in %L"
+  search searchKey error message "there is no '%K' key"
+}
+
+#---------------------------------------------------------------------------*
+
+map @headerRepartitionMap {
+  @string mHeaderFileName
+  insert insertKey error message "the '%K' key is already declared in %L"
+  search searchKey error message "there is no '%K' key"
+}
+
+#---------------------------------------------------------------------------*
+
+private proc buildHeader
+  ?let @headerCompositionMap inHeaderCompositionMap
+  ?let @string inHeaderFileName
+  ?let @string inDeclarationName
+  ?!@headerRepartitionMap ioHeaderRepartitionMap
+  ?!@string ioHeaderString {
+#---
+  if not [ioHeaderRepartitionMap hasKey !inDeclarationName] then
+    [!?ioHeaderRepartitionMap insertKey ![inDeclarationName nowhere] !inHeaderFileName]
+    if [inHeaderCompositionMap hasKey !inDeclarationName] then
+      [inHeaderCompositionMap searchKey
+        ![inDeclarationName nowhere]
+        ?let @stringset inclusionSet
+        ?let @string headerString
+      ]
+      for (s) in inclusionSet do
+        buildHeader (
+          !inHeaderCompositionMap
+          !inHeaderFileName
+          !s
+          !?ioHeaderRepartitionMap
+          !?ioHeaderString
+        )
+      end
+      ioHeaderString += headerString
+    else
+      ioHeaderString += "#include \"" + inDeclarationName + ".h\"\n"
+    end
+  else
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+private proc generateFewImplementationFiles
+  ?let @unifiedTypeMap inUnifiedTypeMap
+  ?let @string inProductDirectory
+  ?let @semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
+  ?!@stringlist ioToolProductFileList
+  ?!@stringset ioAllProductFileSet {
+  let useOneHugeHeader = [option galgas_cli_options.generateOneHeader value]
+#------------- all-declarations.cpp
+  var n = 0
+  var fileIdx = 0
+  var implementationString = ""
+  @stringset inclusionSet = {}
+  for () in  inSemanticDeclarationSortedListForGeneration do
+    if not [mDeclaration isPredefined] then
+      [mDeclaration appendSpecificImplementation !inUnifiedTypeMap !?inclusionSet ?let @string code]
+      if [inclusionSet hasKey !""] then
+        message "Empty inclusion in " + [mDeclaration implementationCppFileName] + " cpp headers\n"
+      end
+      implementationString += code
+      implementationString += [mDeclaration appendTypeGenericImplementation]
+      n ++
+      if n == definitionGroupAmount () then
+        if useOneHugeHeader then
+          inclusionSet = @stringset. setWithString { !"all-declarations"}
+        end
+        let header = [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
+          ![inclusionSet stringList]
+        ]
+        let fileName = "all-declarations-" + fileIdx + ".cpp"
+        ioToolProductFileList = @stringlist. listWithValue { !fileName} + ioToolProductFileList
+        ioAllProductFileSet += !fileName
+        [@string generateFile
+          !inProductDirectory
+          !fileName
+          !header + implementationString
+        ]
+        n = 0
+        fileIdx ++
+        implementationString = ""
+        inclusionSet = @stringset. emptySet
+      end
+    end
+  end
+#--- Last file
+  if implementationString != "" then
+    if useOneHugeHeader then
+      inclusionSet = @stringset. setWithString { !"all-declarations"}
+    end
+#    for () in inSemanticContext->mGrammarMap do
+#      inclusionSet += !"grammar-" . lkey->string ;
+#    end for ;
+    let header = [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
+#      !if generateFewHeaderFiles [] then {!"all-declarations-" . fileIdx} else [inclusionSet stringList] end
+      ![inclusionSet stringList]
+    ]
+    let fileName = "all-declarations-" + fileIdx + ".cpp"
+    ioToolProductFileList = @stringlist. listWithValue { !fileName} + ioToolProductFileList
+    ioAllProductFileSet += !fileName
+    [@string generateFile
+      !inProductDirectory
+      !fileName
+      !header + implementationString
+    ]
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+private proc generateFewImplementationFilesWithFewHeaders
+  ?let @unifiedTypeMap inUnifiedTypeMap
+  ?let @string inProductDirectory
+  ?let @semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
+  ?!@stringlist ioToolProductFileList
+  ?!@stringset ioAllProductFileSet
+  ?!@stringlist ioToolHeaderFileList {
+  let useOneHugeHeader = [option galgas_cli_options.generateOneHeader value]
+  @headerCompositionMap headerCompositionMap = {}
+  for () in  inSemanticDeclarationSortedListForGeneration do
+    if not [mDeclaration isPredefined] then
+      var inclusionSet1 = @stringset. emptySet
+      [mDeclaration appendDeclaration1 !?inclusionSet1 ?let @string headerString1]
+      var inclusionSet2 = @stringset. emptySet
+      [mDeclaration appendDeclaration2 !true !inProductDirectory !?inclusionSet2 ?let @string headerString2]
+      if [mDeclaration headerKind] != @headerKind. noHeader then
+        let headerFileName = [mDeclaration implementationCppFileName] + if [mDeclaration headerKind] == @headerKind. twoHeaders then "-1" else "" end
+        [!?headerCompositionMap insertKey
+          ![headerFileName nowhere]
+          !inclusionSet1
+          !headerString1
+        ]
+      end
+      if [mDeclaration headerKind] == @headerKind. twoHeaders then
+        [!?headerCompositionMap insertKey
+          ![[mDeclaration implementationCppFileName] nowhere]
+          !inclusionSet2 | @stringset {![mDeclaration implementationCppFileName] + "-1"}
+          !headerString2
+        ]
+      end
+    end
+  end
+#------------- all-declarations.cpp
+  @headerRepartitionMap headerRepartitionMap = {}
+  var fileIdx = 0
+  var implementationString = ""
+  var headerString = ""
+  @stringset inclusionSet = {}
+  var headerFileName = "all-declarations-" + fileIdx
+  for () in  inSemanticDeclarationSortedListForGeneration do
+    if not [mDeclaration isPredefined] then
+      if not [mDeclaration isPredefined] then
+        if [mDeclaration headerKind] == @headerKind. twoHeaders then
+          buildHeader ( !headerCompositionMap !headerFileName ![mDeclaration implementationCppFileName] +"-1" !?headerRepartitionMap !?headerString )
+          buildHeader ( !headerCompositionMap !headerFileName ![mDeclaration implementationCppFileName] !?headerRepartitionMap !?headerString )
+        elsif [mDeclaration headerKind] == @headerKind. oneHeader then
+          buildHeader ( !headerCompositionMap !headerFileName ![mDeclaration implementationCppFileName] !?headerRepartitionMap !?headerString )
+        end
+      end
+      [mDeclaration appendSpecificImplementation !inUnifiedTypeMap !?inclusionSet ?let @string code]
+      for (s) in inclusionSet do
+        buildHeader ( !headerCompositionMap !headerFileName !s !?headerRepartitionMap !?headerString )
+      end
+      implementationString += code
+      implementationString += [mDeclaration appendTypeGenericImplementation]
+      if [implementationString length] > 1048576 then
+        if useOneHugeHeader then
+          inclusionSet = @stringset. setWithString { !"all-declarations"}
+        else
+          inclusionSet = {!"all-declarations-" + fileIdx}
+        end
+        let cppHeader = [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
+          ![inclusionSet stringList]
+        ]
+        let fileName = "all-declarations-" + fileIdx + ".cpp"
+        ioToolProductFileList = @stringlist. listWithValue { !fileName} + ioToolProductFileList
+        ioAllProductFileSet += !fileName
+        [@string generateFile
+          !inProductDirectory
+          !fileName
+          !cppHeader + implementationString
+        ]
+      #---
+        ioAllProductFileSet += !headerFileName + ".h"
+        ioToolHeaderFileList += !headerFileName + ".h"
+        let startOfHeader = [filewrapper semanticFileGenerationTemplate.semanticFileHeader
+          !headerFileName
+          !if fileIdx == 0 then {} else {!"all-declarations-" + (fileIdx-1)} end
+        ]
+        [@string generateFile
+          !inProductDirectory
+          !headerFileName + ".h"
+          !startOfHeader + headerString + "#endif\n"
+        ]
+      #---
+        fileIdx ++
+        implementationString = ""
+        headerString = ""
+        headerFileName = "all-declarations-" + fileIdx
+        inclusionSet = @stringset. emptySet
+      end
+    end
+  end
+#--- Last file
+  if implementationString != "" then
+    if useOneHugeHeader then
+      inclusionSet = @stringset. setWithString { !"all-declarations"}
+    end
+    let header = [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
+      !{!"all-declarations-" + fileIdx}
+    ]
+    let fileName = "all-declarations-" + fileIdx + ".cpp"
+    ioToolProductFileList = @stringlist. listWithValue { !fileName} + ioToolProductFileList
+    ioAllProductFileSet += !fileName
+    [@string generateFile
+      !inProductDirectory
+      !fileName
+      !header + implementationString
+    ]
+  #---
+    ioAllProductFileSet += !headerFileName + ".h"
+    ioToolHeaderFileList += !headerFileName + ".h"
+    let startOfHeader = [filewrapper semanticFileGenerationTemplate.semanticFileHeader
+      !headerFileName
+      !if fileIdx == 0 then {} else {!"all-declarations-" + (fileIdx-1)} end
+    ]
+    [@string generateFile
+      !inProductDirectory
+      !headerFileName + ".h"
+      !startOfHeader + headerString + "#endif\n"
+    ]
+  end
+#--- all declarations header
+  ioAllProductFileSet += !"all-declarations.h"
+  ioToolHeaderFileList += !"all-declarations.h"
+  let startOfAllDeclarationsHeader = [filewrapper semanticFileGenerationTemplate.semanticFileHeader
+    !"all-declarations"
+    !{!"all-declarations-" + fileIdx}
+  ]
+  [@string generateFile
+    !inProductDirectory
+    !"all-declarations.h"
+    !startOfAllDeclarationsHeader + "#endif\n"
+  ]
+}
+
+#---------------------------------------------------------------------------*
+
+private proc generateManyImplementationFiles
+  ?let @unifiedTypeMap inUnifiedTypeMap
+  ?let @string inProductDirectory
+  ?let @semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
+  ?!@stringlist ioToolProductFileList
+  ?!@stringset ioAllProductFileSet {
+  let useOneHugeHeader = [option galgas_cli_options.generateOneHeader value]
+  for () in  inSemanticDeclarationSortedListForGeneration do
+    var inclusionSet = @stringset. emptySet
+    if not [mDeclaration isPredefined] then
+      [mDeclaration appendSpecificImplementation !inUnifiedTypeMap !?inclusionSet ?var @string implementationString]
+      if [mDeclaration hasCppHeaderFile] then
+        inclusionSet += ![mDeclaration implementationCppFileName]
+      end
+      if useOneHugeHeader then
+        inclusionSet = @stringset. setWithString { !"all-declarations"}
+      end
+      let header = [filewrapper semanticFileGenerationTemplate.semanticFileImplementation
+        ![inclusionSet stringList]
+      ]
+      implementationString += [mDeclaration appendTypeGenericImplementation]
+      ioAllProductFileSet += ![mDeclaration implementationCppFileName] + ".cpp"
+      [@string generateFile
+        !inProductDirectory
+        ![mDeclaration implementationCppFileName] + ".cpp"
+        !header + implementationString
+      ]
+      ioToolProductFileList += ![mDeclaration implementationCppFileName] + ".cpp"
+    end
+  end
+}
+
+#---------------------------------------------------------------------------*
+

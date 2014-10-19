@@ -1,0 +1,70 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  'syntax' component parser, as model builder                              *
+#                                                                           *
+#  Copyright (C) 2007, ..., 2014 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+syntax semanticsComponent (galgas_scanner) %translate {
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#          Rules prototypes                                                    *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <semantics_component_start_symbol>
+  !@semanticsComponentAST outSemanticsComponentRoot
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations
+
+#---------------------------------------------------------------------------*
+
+rule <semantics_component_start_symbol>
+  !@semanticsComponentAST outSemanticsComponentRoot {
+  $semantics$ :> ?let @string sep ?*
+  send sep
+#--- Semantics Component Name
+  $identifier$ ?let @lstring mSemanticsComponentName :> ?* ?*
+  $:$ :> ?* ?*
+#--- Loop on import and semantics declarations
+  var mImportedComponentFileNameList =@lstringlist.emptyList{}
+  var mSemanticDeclarations =@semanticDeclarationListAST.emptyList{}
+  repeat
+  while
+    $import$ :> ?* ?*
+    $literal_string$ ?let @lstring importedComponentFileName :> ?* ?*
+    mImportedComponentFileNameList += !importedComponentFileName
+    $;$ :> ?* ?*
+  while
+    <semantic_declaration> !?mSemanticDeclarations
+  end
+#--- end
+  $end$ :> ?let @string sepf ?*
+  send sepf
+  let endOfSourceFile = @location.here
+  $semantics$ :> ?* ?*
+  $;$ :> ?* ?*
+  outSemanticsComponentRoot = @semanticsComponentAST. new {
+    !mSemanticsComponentName
+    !mImportedComponentFileNameList
+    !mSemanticDeclarations
+    !endOfSourceFile}
+}
+
+#---------------------------------------------------------------------------*
+
+}

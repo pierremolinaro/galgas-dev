@@ -1,0 +1,812 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  GALGAS main program definition                                           *
+#                                                                           *
+#  Copyright (C) 2007, ..., 2014 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+
+
+#---------------------------------------------------------------------------*
+
+before {
+#--- Generate project
+  let creationProjectName = [option galgas_cli_options.create_project value]
+  projectCreation ( !creationProjectName )
+}
+
+before {
+#--- Print predefined lexical action
+  if [option galgas_cli_options.printPredefinedLexicalActions value] then
+    printPredefinedLexicalActions ( )
+  end
+}
+
+before {
+#--- Generate predefined files
+  generatePredefinedTypeFiles ( ![option galgas_cli_options.generatePredefinedTypes value] )
+}
+
+before {
+#--- Extract LIBPM
+  if [option galgas_cli_options.extractLIBPMOption value] != "" then
+    updateLIBPMatPath ( ![option galgas_cli_options.extractLIBPMOption value] )
+  end  
+}
+
+#----------------------------------------------------------------------------*
+#                                                                            *
+#          Template                                                          *
+#                                                                            *
+#----------------------------------------------------------------------------*
+
+case . "gTemplate"
+message "a GALGAS Template source file"
+indexing with projectLL1grammar
+?sourceFilePath:@lstring inSourceFile {
+  grammar templateGrammar in inSourceFile ?*
+}
+
+#---------------------------------------------------------------------------*
+
+case . "gOption"
+message "a GALGAS option source file"
+indexing with optionLL1grammar
+?sourceFilePath:@lstring inSourceFile {
+  var parsedComponentStruct =@parsedComponentStruct.new{
+    !@parsedSemanticsComponentMap. emptyMap
+    !@parsedLexiqueComponentMap. emptyMap
+    !@parsedSyntaxComponentMap. emptyMap
+    !@parsedOptionComponentMap. emptyMap
+    !@parsedGrammarComponentMap. emptyMap
+    !@parsedProgramComponentMap. emptyMap
+    !@parsedGuiComponentMap. emptyMap
+  }
+  compileOptionComponentFromSourceFile ( !inSourceFile !outputDirectory (!inSourceFile) !?parsedComponentStruct )
+}
+
+#---------------------------------------------------------------------------*
+
+case . "gLexique"
+message "a GALGAS lexique source file"
+indexing with lexiqueLL1grammar
+?sourceFilePath:@lstring inSourceFile {
+  var parsedComponentStruct =@parsedComponentStruct.new{
+    !@parsedSemanticsComponentMap. emptyMap
+    !@parsedLexiqueComponentMap. emptyMap
+    !@parsedSyntaxComponentMap. emptyMap
+    !@parsedOptionComponentMap. emptyMap
+    !@parsedGrammarComponentMap. emptyMap
+    !@parsedProgramComponentMap. emptyMap
+    !@parsedGuiComponentMap. emptyMap
+  }
+  compileLexiqueComponentFromSource ( !inSourceFile !outputDirectory (!inSourceFile) !?parsedComponentStruct )
+}
+
+#---------------------------------------------------------------------------*
+
+case . "gSemantics"
+message "a GALGAS semantics source file"
+indexing with semanticsSLRgrammar
+?sourceFilePath:@lstring inSourceFile {
+  var parsedComponentStruct =@parsedComponentStruct.new{
+    !@parsedSemanticsComponentMap. emptyMap
+    !@parsedLexiqueComponentMap. emptyMap
+    !@parsedSyntaxComponentMap. emptyMap
+    !@parsedOptionComponentMap. emptyMap
+    !@parsedGrammarComponentMap. emptyMap
+    !@parsedProgramComponentMap. emptyMap
+    !@parsedGuiComponentMap. emptyMap
+  }
+  compileSemanticsComponentFromSourceFile ( !inSourceFile !outputDirectory (!inSourceFile) !?parsedComponentStruct)
+}
+
+#---------------------------------------------------------------------------*
+
+case . "gSyntax"
+message "a GALGAS syntax source file"
+indexing with syntaxSLRgrammar
+?sourceFilePath:@lstring inSourceFile {
+  var parsedComponentStruct =@parsedComponentStruct.new{
+    !@parsedSemanticsComponentMap. emptyMap
+    !@parsedLexiqueComponentMap. emptyMap
+    !@parsedSyntaxComponentMap. emptyMap
+    !@parsedOptionComponentMap. emptyMap
+    !@parsedGrammarComponentMap. emptyMap
+    !@parsedProgramComponentMap. emptyMap
+    !@parsedGuiComponentMap. emptyMap
+  }
+  compileSyntaxComponentFromSourceFile ( !inSourceFile !outputDirectory (!inSourceFile) !?parsedComponentStruct)
+}
+
+#---------------------------------------------------------------------------*
+
+case . "gGrammar"
+message "a GALGAS grammar source file"
+indexing with grammarLL1grammar
+?sourceFilePath:@lstring inSourceFile {
+  var parsedComponentStruct =@parsedComponentStruct.new{
+    !@parsedSemanticsComponentMap. emptyMap
+    !@parsedLexiqueComponentMap. emptyMap
+    !@parsedSyntaxComponentMap. emptyMap
+    !@parsedOptionComponentMap. emptyMap
+    !@parsedGrammarComponentMap. emptyMap
+    !@parsedProgramComponentMap. emptyMap
+    !@parsedGuiComponentMap. emptyMap
+  }
+  compileGrammarComponentFromSourceFile (
+    !inSourceFile
+    !outputDirectory (!inSourceFile)
+    !?parsedComponentStruct)
+}
+
+#---------------------------------------------------------------------------*
+
+case . "gGui"
+message "a GALGAS GUI source file"
+indexing with guiGrammar
+?sourceFilePath:@lstring inSourceFile {
+  var parsedComponentStruct =@parsedComponentStruct.new{
+    !@parsedSemanticsComponentMap. emptyMap
+    !@parsedLexiqueComponentMap. emptyMap
+    !@parsedSyntaxComponentMap. emptyMap
+    !@parsedOptionComponentMap. emptyMap
+    !@parsedGrammarComponentMap. emptyMap
+    !@parsedProgramComponentMap. emptyMap
+    !@parsedGuiComponentMap. emptyMap
+  }
+  compileGuiComponentFromSourceFile ( !inSourceFile !outputDirectory (!inSourceFile) !?parsedComponentStruct )
+}
+
+#---------------------------------------------------------------------------*
+
+case . "gProgram"
+message "a GALGAS program source file"
+indexing with programSLRgrammar
+?sourceFilePath:@lstring inSourceFile {
+  var parsedComponentStruct =@parsedComponentStruct.new{
+    !@parsedSemanticsComponentMap. emptyMap
+    !@parsedLexiqueComponentMap. emptyMap
+    !@parsedSyntaxComponentMap. emptyMap
+    !@parsedOptionComponentMap. emptyMap
+    !@parsedGrammarComponentMap. emptyMap
+    !@parsedProgramComponentMap. emptyMap
+    !@parsedGuiComponentMap. emptyMap
+  }
+  compileProgramComponentFromSourceFile ( !inSourceFile !outputDirectory (!inSourceFile) !?parsedComponentStruct)
+}
+
+#----------------------------------------------------------------------------*
+#                                                                            *
+#          Project                                                           *
+#                                                                            *
+#----------------------------------------------------------------------------*
+
+case . "gProject"
+message "a GALGAS project source file"
+indexing with projectLL1grammar
+?sourceFilePath:@lstring inProjectSourceFile {
+  let @string outputDirectory = outputDirectory (!inProjectSourceFile)
+#--- Parse metamodel component
+  grammar projectLL1grammar in inProjectSourceFile ?let @projectComponentAST projectComponentAST :> ?let @string translatedProject
+  if [option galgas_cli_options.convertToGalgas3 value] then
+    let directory = [inProjectSourceFile stringByDeletingLastPathComponent] + "/../"
+    let newProjectFile = directory + "+" + projectComponentAST.mTargetName + ".galgasProject"
+    [translatedProject writeToFileWhenDifferentContents !newProjectFile ?*]
+  end
+#--- Check project name
+  if [[projectComponentAST mProjectName] string] != [[inProjectSourceFile lastPathComponent] stringByDeletingPathExtension] then
+    error [projectComponentAST mProjectName] 
+    :"the project name ('" + [projectComponentAST mProjectName] + "') should be the same as the source file base name ('"
+    + [[inProjectSourceFile lastPathComponent] stringByDeletingPathExtension] + "')"
+  end
+#--- Check target name
+  let @string targetName = [[projectComponentAST mTargetName] string]
+  if targetName == "" then
+    error [projectComponentAST mTargetName]: "the target name should not be empty"
+  end
+#--- Build qualified feature map
+  var projectQualifiedFeatureMap =@projectQualifiedFeatureMap.emptyMap{}
+  for () in  projectComponentAST.mQualifiedFeatureList do
+    [!?projectQualifiedFeatureMap insertKey
+      !mFeatureName
+      !mFeatureValue
+    ]
+  end
+#--- Parse Component struct
+  var parsedComponentStruct =@parsedComponentStruct.new{
+    !@parsedSemanticsComponentMap. emptyMap
+    !@parsedLexiqueComponentMap. emptyMap
+    !@parsedSyntaxComponentMap. emptyMap
+    !@parsedOptionComponentMap. emptyMap
+    !@parsedGrammarComponentMap. emptyMap
+    !@parsedProgramComponentMap. emptyMap
+    !@parsedGuiComponentMap. emptyMap
+  }
+#---------------------------------- Parse sources
+  for () in  [projectComponentAST mProjectSourceList] do
+    let extension = [mFilePath pathExtension]
+    let componentName = @lstring. new {
+      ![[mFilePath lastPathComponent] stringByDeletingPathExtension]
+      ![mFilePath location]}
+    let fullFilePath = @lstring. new {
+      ![inProjectSourceFile stringByDeletingLastPathComponent] + "/" + [mFilePath string]
+      ![mFilePath location]}
+    switch mSourceKind
+    case externSourceFile :
+    case guiSourceFile :
+      if extension == "gGui" then
+        if [option .verbose_output value] then
+          message "*** Parse '" + [fullFilePath lastPathComponent] + "'\n"
+        end
+        @guiComponentAST guiComponentRoot
+        grammar guiGrammar in fullFilePath ?guiComponentRoot :> ?let @string translatedGUI
+        if [option galgas_cli_options.convertToGalgas3 value] then
+          let projectName = [[fullFilePath lastPathComponent] stringByDeletingPathExtension]
+          let directory = [fullFilePath stringByDeletingLastPathComponent] + "/../galgas-sources/"
+          let newProjectFile = directory + projectName + ".galgas"
+          [translatedGUI writeToFileWhenDifferentContents !newProjectFile ?*]
+        end
+        [!?parsedComponentStruct.mParsedGuiComponentMap insertKey !componentName !fullFilePath !guiComponentRoot]
+      else
+        error mFilePath:"extension of a gui component should be '.gGui'."
+      end
+    case lexiqueSourceFile :
+      if extension == "gLexique" then
+        if [option .verbose_output value] then
+          message "*** Parse '" + [fullFilePath lastPathComponent] + "'\n"
+        end
+        @galgas3LexiqueComponentListAST-element lexiqueComponentRoot
+        grammar lexiqueLL1grammar in fullFilePath ?lexiqueComponentRoot :> ?let @string translatedSource
+        if [option galgas_cli_options.convertToGalgas3 value] then
+          let projectName = [[fullFilePath lastPathComponent] stringByDeletingPathExtension]
+          let directory = [fullFilePath stringByDeletingLastPathComponent] + "/../galgas-sources/"
+          let newProjectFile = directory + projectName + ".galgas"
+          [translatedSource writeToFileWhenDifferentContents !newProjectFile ?*]
+        end
+        [!?parsedComponentStruct.mParsedLexiqueComponentMap insertKey !componentName !lexiqueComponentRoot]
+      else
+        error mFilePath:"extension of a lexique component should be '.gLexique'."
+      end
+    case optionSourceFile :
+      if extension == "gOption" then
+        if [option .verbose_output value] then
+          message "*** Parse '" + [fullFilePath lastPathComponent] + "'\n"
+        end
+        @optionComponentAST optionComponentAST
+        grammar optionLL1grammar in fullFilePath ?optionComponentAST :> ?let @string translatedSource
+        if [option galgas_cli_options.convertToGalgas3 value] then
+          let projectName = [[fullFilePath lastPathComponent] stringByDeletingPathExtension]
+          let directory = [fullFilePath stringByDeletingLastPathComponent] + "/../galgas-sources/"
+          let newProjectFile = directory + projectName + ".galgas"
+          [translatedSource writeToFileWhenDifferentContents !newProjectFile ?*]
+        end
+      #--- Semantic Analysis of option component
+        @commandLineOptionMap boolOptionMap
+        @commandLineOptionMap UIntOptionMap
+        @commandLineOptionMap stringOptionMap
+        semanticAnalysisOfOptionComponent (
+          !optionComponentAST
+          ?boolOptionMap
+          ?UIntOptionMap
+          ?stringOptionMap
+        )
+        [!?parsedComponentStruct.mParsedOptionComponentMap insertKey
+          !componentName
+          !boolOptionMap
+          !UIntOptionMap
+          !stringOptionMap
+        ]
+      else
+        error mFilePath:"extension of an option component should be '.gOption'."
+      end
+    case semanticsSourceFile :
+      if extension == "gSemantics" then
+        if [option .verbose_output value] then
+          message "*** Parse '" + [fullFilePath lastPathComponent] + "'\n"
+        end
+        @semanticsComponentAST semanticsComponentRoot
+        grammar semanticsSLRgrammar in fullFilePath ?semanticsComponentRoot :> ?let @string translatedSource
+        if [option galgas_cli_options.convertToGalgas3 value] then
+          let projectName = [[fullFilePath lastPathComponent] stringByDeletingPathExtension]
+          let directory = [fullFilePath stringByDeletingLastPathComponent] + "/../galgas-sources/"
+          let newProjectFile = directory + projectName + ".galgas"
+          [translatedSource writeToFileWhenDifferentContents !newProjectFile ?*]
+        end
+        [!?parsedComponentStruct.mParsedSemanticsComponentMap insertKey !componentName !fullFilePath !semanticsComponentRoot]
+      else
+        error mFilePath:"extension of a semantics component should be '.gSemantics'."
+      end
+    case syntaxSourceFile :
+      if extension == "gSyntax" then
+        if [option .verbose_output value] then
+          message "*** Parse '" + [fullFilePath lastPathComponent] + "'\n"
+        end
+        @galgas3SyntaxComponentListAST-element syntaxComponentRoot
+        grammar syntaxSLRgrammar in fullFilePath ?syntaxComponentRoot :> ?let @string translatedSource
+        if [option galgas_cli_options.convertToGalgas3 value] then
+          let projectName = [[fullFilePath lastPathComponent] stringByDeletingPathExtension]
+          let directory = [fullFilePath stringByDeletingLastPathComponent] + "/../galgas-sources/"
+          let newProjectFile = directory + projectName + ".galgas"
+          [translatedSource writeToFileWhenDifferentContents !newProjectFile ?*]
+        end
+        [!?parsedComponentStruct.mParsedSyntaxComponentMap insertKey !componentName !fullFilePath !syntaxComponentRoot]
+      else
+        error mFilePath:"extension of a syntax component should be '.gSyntax'."
+      end
+    case grammarSourceFile :
+      if extension == "gGrammar" then
+        if [option .verbose_output value] then
+          message "*** Parse '" + [fullFilePath lastPathComponent] + "'\n"
+        end
+        @galgas3GrammarComponentListAST-element grammarComponentRoot
+        grammar grammarLL1grammar in fullFilePath ?grammarComponentRoot :> ?let @string translatedSource
+        if [option galgas_cli_options.convertToGalgas3 value] then
+          let projectName = [[fullFilePath lastPathComponent] stringByDeletingPathExtension]
+          let directory = [fullFilePath stringByDeletingLastPathComponent] + "/../galgas-sources/"
+          let newProjectFile = directory + projectName + ".galgas"
+          [translatedSource writeToFileWhenDifferentContents !newProjectFile ?*]
+        end
+        [!?parsedComponentStruct.mParsedGrammarComponentMap insertKey !componentName !fullFilePath !grammarComponentRoot]
+      else
+        error mFilePath:"extension of a grammar component should be '.gGrammar'."
+      end
+    case programSourceFile :
+      if extension == "gProgram" then
+        if [option .verbose_output value] then
+          message "*** Parse '" + [fullFilePath lastPathComponent] + "'\n"
+        end
+        @programComponentAST programComponentAST
+        grammar programSLRgrammar in fullFilePath ?programComponentAST :> ?let @string translatedSource
+        if [option galgas_cli_options.convertToGalgas3 value] then
+          let projectName = [[fullFilePath lastPathComponent] stringByDeletingPathExtension]
+          let directory = [fullFilePath stringByDeletingLastPathComponent] + "/../galgas-sources/"
+          let newProjectFile = directory + projectName + ".galgas"
+          [translatedSource writeToFileWhenDifferentContents !newProjectFile ?*]
+        end
+        [!?parsedComponentStruct.mParsedProgramComponentMap insertKey !componentName !fullFilePath !programComponentAST]
+      else
+        error mFilePath:"extension of a program component should be '.gProgram'."
+      end
+    end
+  end
+#---------------------------------- Compile galgas sources
+  var handledExtensionSet =@stringset.emptySet{}
+  if @uint. errorCount == 0 then
+  #--- Lexique components
+    for () in  parsedComponentStruct.mParsedLexiqueComponentMap do
+      if [option .verbose_output value] then
+        message "*** Compiling '" + lkey + ".gLexique'\n"
+      end
+      compileLexiqueComponentFromAST (
+        !lkey.string
+        !outputDirectory
+        !mLexiqueComponentAST
+      )
+    end
+  #--- GUI components
+    for () in  parsedComponentStruct.mParsedGuiComponentMap do
+      if [option .verbose_output value] then
+        message "*** Compiling '" + lkey + ".gGui'\n"
+      end
+      compileGuiComponentFromAST (
+        !mSourceFullFilePath
+        !outputDirectory
+        !mGuiComponentAST
+        !?parsedComponentStruct
+      )
+    end
+  #--- Option components
+    for () in  parsedComponentStruct.mParsedOptionComponentMap do
+      if [option .verbose_output value] then
+        message "*** Compiling '" + lkey + ".gOption'\n"
+      end
+      compileOptionComponentAST (
+        !outputDirectory
+        !lkey
+        !mBoolOptionMap
+        !mUIntOptionMap
+        !mStringOptionMap
+      )
+    end
+  #--- Semantic components
+    for () in  parsedComponentStruct.mParsedSemanticsComponentMap do
+      if [option .verbose_output value] then
+        message "*** Compiling '" + lkey + ".gSemantics'\n"
+      end
+      compileSemanticsComponentAST (
+        !mSourceFullFilePath
+        !outputDirectory
+        !mSemanticComponentRoot
+        !?parsedComponentStruct
+      )
+    end
+  #--- Syntax components
+    for () in  parsedComponentStruct.mParsedSyntaxComponentMap do
+      if [option .verbose_output value] then
+        message "*** Compiling '" + lkey + ".gSyntax'\n"
+      end
+      compileSyntaxComponentFromAST (
+        !mSourceFullFilePath
+        !outputDirectory
+        !mSyntaxComponentRoot
+        !?parsedComponentStruct
+      )
+    end
+  #--- Grammar components
+    for () in  parsedComponentStruct.mParsedGrammarComponentMap do
+      if [option .verbose_output value] then
+        message "*** Compiling '" + lkey + ".gGrammar'\n"
+      end
+      compileGrammarComponentFromAST (
+        !mSourceFullFilePath
+        !outputDirectory
+        !mGrammarComponentRoot
+        !?parsedComponentStruct
+      )
+    end
+  #--- Program components
+    for () in  parsedComponentStruct.mParsedProgramComponentMap do
+      for () in  mProgramComponentAST.mProgramRules do
+        handledExtensionSet += !mSourceFileExtension.string
+      end
+      if [option .verbose_output value] then
+        message "*** Compiling '" + lkey + ".gProgram'\n"
+      end
+      compileProgramComponentFromAST (
+        !mSourceFullFilePath
+        !outputDirectory
+        !mProgramComponentAST
+        !?parsedComponentStruct
+      )
+    end
+  end
+#---------------------------------- Perform global checkings
+  if @uint. errorCount == 0 then
+    if [option .verbose_output value] then
+      message "*** Perform global checkings\n"
+    end
+    performProjectGlobalCheckings (
+      !parsedComponentStruct
+      !inProjectSourceFile.string
+    )
+  end
+#--- Update targets
+  if 0 == @uint. errorCount then
+    updateTargets (
+      !inProjectSourceFile
+      ![projectComponentAST.mMajorVersion.uint string] + "." + projectComponentAST.mMinorVersion.uint + "." + projectComponentAST.mRevisionVersion.uint
+      ![projectComponentAST mProjectName]
+      !targetName
+      !projectQualifiedFeatureMap
+      ![projectComponentAST mGenerationFeatureList]
+      ![projectComponentAST mProjectSourceList]
+      !handledExtensionSet
+    )
+  end
+}
+
+#----------------------------------------------------------------------------*
+#                                                                            *
+#          galgasProject                                                     *
+#                                                                            *
+#----------------------------------------------------------------------------*
+
+case . "galgasProject"
+message "a GALGAS project source file"
+#indexing with galgas3ProjectGrammar
+?sourceFilePath:@lstring inProjectSourceFile {
+  compileProject ( !inProjectSourceFile !"" )
+}
+
+#----------------------------------------------------------------------------*
+#                                                                            *
+#          compileProject                                                    *
+#                                                                            *
+#----------------------------------------------------------------------------*
+
+proc compileProject
+  ?let @lstring inProjectSourceFile
+  ?let @string inSourceToAnalyze {
+  if [option .verbose_output value] then
+    message "*** Parsing project files\n"
+  end
+  grammar galgas3ProjectGrammar in inProjectSourceFile
+    ?let @galgas3ProjectComponentAST projectComponentAST
+  var declarationAST = @galgas3DeclarationAST.default 
+  for () in  projectComponentAST.mProjectSourceList do
+    if [mValue pathExtension] == "galgas" then
+      let absoluteSourcePath = [mValue absolutePathFromPath ![inProjectSourceFile stringByDeletingLastPathComponent]]
+      grammar galgas3Grammar in @lstring. new { !absoluteSourcePath !mValue.location} !?declarationAST
+    else
+      error mValue: "only \".galgas\" extension is allowed here"
+    end
+  end
+#---------------------------------- Hand coded source files
+  var handCodedLinkAppFileList = @stringlist. emptyList
+  var handCodedSourceAppFileList = @stringlist. emptyList
+  var handCodedSourceToolFileList = @stringlist. emptyList
+  @stringlist frameworkToolFileList = {}
+  var handCodedSourceDirectorySet = @stringset. emptySet
+  for () in projectComponentAST.mQualifiedFeatureList do
+    if mFeatureName.string == "tool-source" then
+      handCodedSourceToolFileList += !mFeatureValue.string
+      let directory = [mFeatureValue stringByDeletingLastPathComponent]
+      if directory == "" then
+        handCodedSourceDirectorySet += !"../"
+      elsif [directory characterAtIndex !0] != '/' then
+        handCodedSourceDirectorySet += !"../" + directory
+      else
+        handCodedSourceDirectorySet += !directory
+      end
+    elsif mFeatureName.string == "tool-framework" then
+      frameworkToolFileList += ![mFeatureValue lastPathComponent]
+    elsif mFeatureName.string == "app-source" then
+      handCodedSourceAppFileList += !mFeatureValue.string
+      let directory = [mFeatureValue stringByDeletingLastPathComponent]
+      if directory == "" then
+        handCodedSourceDirectorySet += !"../"
+      elsif [directory characterAtIndex !0] != '/' then
+        handCodedSourceDirectorySet += !"../" + directory
+      else
+        handCodedSourceDirectorySet += !directory
+      end
+    elsif mFeatureName.string == "app-link" then
+      handCodedLinkAppFileList += !mFeatureValue.string
+    end
+  end
+#---------------------------------- Display result
+#  if [@uint errorCount] == 0 then
+#    message "  Semantic declarations: " . [declarationAST->mDeclarationList length] . "\n" ;
+#    message "  Lexique components: " . [declarationAST->mLexiqueComponentList length] . "\n" ;
+#    message "  Syntax components: " . [declarationAST->mSyntaxComponentList length] . "\n" ;
+#    message "  Grammar components: " . [declarationAST->mGrammarComponentList length] . "\n" ;
+#    message "  GUI components: " . [declarationAST->mGUIComponentList length] . "\n" ;
+#    message "  Option components: " . [declarationAST->mOptionComponentList length] . "\n" ;
+#    message "  Source rules: " . [declarationAST->mSourceRuleList length] . "\n" ;
+#    message "  Prologue procs: " . [declarationAST->mPrologueDeclarationList length] . "\n" ;
+#    message "  Epilogue procs: " . [declarationAST->mEpilogueDeclarationList length] . "\n" ;
+#  end if ;
+#---------------------------------- Group syntax components and their extensions
+  groupSyntaxComponentsGalgas3 (
+      !declarationAST.mSyntaxComponentList
+      !?declarationAST.mDeclarationList
+  )
+#---------------------------------- Compile semantic declarations
+  let productDirectory = [inProjectSourceFile stringByDeletingLastPathComponent] + "/build/output"
+  var appProductFileList = @stringlist. emptyList
+  var semanticContext = @semanticContext.default
+  @semanticDeclarationSortedListForGeneration semanticDeclarationSortedListForGeneration
+  if @uint. errorCount == 0 then
+    compileSemanticDeclarationsGalgas3 (
+      !productDirectory
+      !projectComponentAST.mEndOfSourceFile
+      !declarationAST.mDeclarationList
+      ?semanticContext
+      ?semanticDeclarationSortedListForGeneration
+    )
+  else
+    semanticDeclarationSortedListForGeneration = {}
+  end
+#---------------------------------- Compile GUI components
+  @optionComponentMapForGeneration optionComponentMapForGeneration
+  if @uint. errorCount == 0 then
+    compileAllGuiComponentFromASTGalgas3 (
+      !declarationAST.mGUIComponentList
+      !semanticContext
+      ?optionComponentMapForGeneration
+    )
+  else
+    optionComponentMapForGeneration = {}
+  end
+#---------------------------------- Compile program declarations
+  if @uint. errorCount == 0 then
+    compileProgramComponentGalgas3 (
+      !declarationAST.mPrologueDeclarationList
+      !declarationAST.mSourceRuleList
+      !declarationAST.mEpilogueDeclarationList
+      !semanticContext
+      ?let @programComponentForGeneration programComponentForGeneration
+    )
+    semanticDeclarationSortedListForGeneration +=
+      !"zprogram"
+      !programComponentForGeneration
+      !"z"
+  end
+#------------------------------------ Build a text file that contains all declared types
+  let @string typeDumpFilePath = [inProjectSourceFile stringByDeletingLastPathComponent] + "/build/helpers/" +  [inProjectSourceFile lastPathComponent] + ".html"
+  if [option galgas_cli_options.outputHTMLTypeListFile value] then
+    var firstLetterSet =@stringset.emptySet{}
+    for () in  semanticContext.mTypeMap do
+      firstLetterSet += ![[lkey.string characterAtIndex!0] string]
+    end
+    @string tableOfTypeString = ""
+    @char currentFirstLetter = ' '
+    for () type_ in  semanticContext.mTypeMap do
+      if currentFirstLetter != [type_lkey.string characterAtIndex !0] then
+        currentFirstLetter = [type_lkey.string characterAtIndex !0]
+        tableOfTypeString += "<br><a name=\"" + [currentFirstLetter uint] + "\"><b>" + currentFirstLetter + "</b></a><br>"
+      end
+      tableOfTypeString += linkForType (!type_lkey.string) + "<br>"
+    end
+    let @string typeDumpString = [filewrapper typeDumpGenerationTemplate.typeDump
+      ![inProjectSourceFile lastPathComponent]
+      !semanticContext.mTypeMap
+      !firstLetterSet
+      !tableOfTypeString
+    ]
+    [typeDumpString writeToFileWhenDifferentContents !typeDumpFilePath ?*]
+  else
+    [@string deleteFileIfExists !typeDumpFilePath]
+  end
+#---------------------------------- Perform global checkings
+  if (0 == @uint. errorCount) & (inSourceToAnalyze == "") then
+    performGalgas3ProjectGlobalCheckings (
+      !semanticContext
+      !declarationAST.mDeclarationList
+    )
+  end
+#---------------------------------- File generation
+  if (0 == @uint. errorCount) & (inSourceToAnalyze == "") then
+    projectGeneration (
+      !semanticContext.mTypeMap
+      !productDirectory
+      !optionComponentMapForGeneration
+      !appProductFileList
+      !semanticDeclarationSortedListForGeneration
+      !declarationAST.mSourceRuleList
+      !projectComponentAST
+      !inProjectSourceFile.string
+      !handCodedSourceDirectorySet
+      !handCodedSourceToolFileList
+      !frameworkToolFileList
+      !handCodedSourceAppFileList
+      !handCodedLinkAppFileList
+    )
+  end
+}
+
+#----------------------------------------------------------------------------*
+#                                                                            *
+#          projectGeneration                                                 *
+#                                                                            *
+#----------------------------------------------------------------------------*
+
+proc projectGeneration
+  ?let @unifiedTypeMap inTypeMap
+  ?let @string inProductDirectory
+  ?let @optionComponentMapForGeneration inOptionComponentMapForGeneration
+  ?let @stringlist inAppProductFileList
+  ?let @semanticDeclarationSortedListForGeneration inSemanticDeclarationSortedListForGeneration
+  ?let @programRuleList inSourceRuleList
+  ?let @galgas3ProjectComponentAST inProjectComponentAST
+  ?let @string inProjectSourceFile
+  ?let @stringset inHandCodedSourceDirectorySet
+  ?let @stringlist inHandCodedSourceToolFileList
+  ?let @stringlist inFrameworkToolFileList
+  ?let @stringlist inHandCodedSourceAppFileList
+  ?let @stringlist inHandCodedLinkAppFileList {
+  var appProductFileList = inAppProductFileList
+#---------------------------------- File generation
+  if [option .verbose_output value] then
+    message "*** Generating files\n"
+  end
+  var allProductFileSet = @stringset. emptySet
+#---------------------------------- Generate GUI components
+#  message "*** Generate GUI\n" ;
+  if @uint. errorCount == 0 then
+    generateAllGuiComponentsGalgas3 (
+      !inOptionComponentMapForGeneration
+      !inProductDirectory
+      !?appProductFileList
+      !?allProductFileSet
+    )
+  end
+#---------------------------------- Generate semantic files
+#  message "*** Generate semantic\n" ;
+  var toolCppFileList = @stringlist. emptyList
+  var toolHeaderFileList = @stringlist. emptyList
+  generateSemanticDeclarationsGalgas3 (
+    !inTypeMap
+    !inProductDirectory
+    !inSemanticDeclarationSortedListForGeneration
+    !?toolCppFileList
+    !?toolHeaderFileList
+    !?allProductFileSet
+  )
+#---------------------------------- Update targets
+#  message "*** update targets\n" ;
+  if 0 == @uint. errorCount then
+    var handledExtensionSet =@stringset.emptySet{}
+    for () in inSourceRuleList do
+      handledExtensionSet += !mSourceFileExtension.string
+    end
+  #--- Build qualified feature map
+    var ignoredFeatureSet = @stringset. emptySet
+    ignoredFeatureSet += !"tool-framework"
+    ignoredFeatureSet += !"tool-source"
+    ignoredFeatureSet += !"app-source"
+    var projectQualifiedFeatureMap =@projectQualifiedFeatureMap.emptyMap{}
+    for () in  inProjectComponentAST.mQualifiedFeatureList do
+      if not [ignoredFeatureSet hasKey !mFeatureName.string] then
+        [!?projectQualifiedFeatureMap insertKey
+          !mFeatureName
+          !mFeatureValue
+        ]
+      end
+    end
+    updateGalgas3Targets (
+      !inProjectSourceFile
+      !inProjectComponentAST.mTargetName.string
+      !inProjectComponentAST.mEndOfSourceFile
+      ![inProjectComponentAST.mMajorVersion.uint string] + "." + inProjectComponentAST.mMinorVersion.uint + "." + inProjectComponentAST.mRevisionVersion.uint
+      !projectQualifiedFeatureMap
+      !inProjectComponentAST.mGenerationFeatureList
+      !toolCppFileList
+      !toolHeaderFileList
+      !appProductFileList
+      !inHandCodedSourceToolFileList
+      !inFrameworkToolFileList
+      !inHandCodedSourceDirectorySet
+      !handledExtensionSet
+      !?allProductFileSet
+      !inHandCodedSourceAppFileList
+      !inHandCodedLinkAppFileList
+    )
+  end
+#---------------------------------- Remove useless files
+  if 0 == @uint. errorCount then
+    var allActualFileSet = @stringset. emptySet
+    for () in  [inProductDirectory regularFiles !false] do
+      allActualFileSet += !mValue
+    end
+    let uselessFileSet = allActualFileSet - allProductFileSet
+    for () in  uselessFileSet do
+      [@string deleteFile !inProductDirectory + "/" + key]
+    end
+  end
+}
+
+#----------------------------------------------------------------------------*
+#                                                                            *
+#          galgas                                                            *
+#                                                                            *
+#----------------------------------------------------------------------------*
+
+case . "galgas"
+message "a GALGAS source file"
+indexing with galgas3Grammar
+?sourceFilePath:@lstring inSourceFile {
+#--- Search for a project file in parent directory
+  let parentDirectory = [[inSourceFile.string stringByDeletingLastPathComponent] stringByDeletingLastPathComponent]
+  let candidateProjectFiles = [parentDirectory regularFilesWithExtensions !false !{!"galgasProject"}]
+  if [candidateProjectFiles length] == 0 then
+    error inSourceFile : "no project file in parent directory of source file"
+  elsif [candidateProjectFiles length] > 1 then
+    var s = "several project files in source file parent directory:"
+    for () in candidateProjectFiles do
+      s += "\n  - " + mValue
+    end
+    error inSourceFile : s
+  else
+    let projectFilePath = parentDirectory + "/" + [candidateProjectFiles mValueAtIndex !0]
+    compileProject ( !@lstring. new { !projectFilePath !inSourceFile.location} !inSourceFile.string )
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+after {
+}

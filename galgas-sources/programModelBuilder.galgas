@@ -1,0 +1,137 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  'program' component parser, as model builder                             *
+#                                                                           *
+#  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+syntax programModelBuilder (galgas_scanner)  %translate{
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction_list> !@semanticInstructionListAST outInstructionsList
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   P R O G R A M    C O M P O N E N T                                      *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <program_component_start_symbol> !@programComponentAST outProgramComponentRoot {
+  $program$ :> ?@string sep ?*
+  send sep
+  $identifier$ ?var  @lstring mProgramName :> ?* ?*
+  $:$  :> ?* ?*
+#--- Loop on import declarations
+  var importedComponentFileNameList =@lstringlist.emptyList{}
+  repeat
+  while
+    $import$  :> ?* ?*
+    $literal_string$ ?var  @lstring importedComponentFileName  :> ?* ?*
+    importedComponentFileNameList += !importedComponentFileName
+    $;$ :> ?* ?*
+  end
+#--- Program rules
+  var mSemanticDeclarations =@semanticDeclarationListAST.emptyList{}
+  var mProgramRules =@programRuleList.emptyList{}
+  var prologueList =@prologueEpilogueList.emptyList{} # Zero or one is correct
+  var epilogueList =@prologueEpilogueList.emptyList{} # zero or one is correct
+  repeat
+  while
+    $before$
+    ${$
+    @semanticInstructionListAST prologueInstructionList
+    <semantic_instruction_list> ? prologueInstructionList
+    let @location endOfPrologue = @location.here
+    $}$
+    prologueList += !prologueInstructionList !endOfPrologue
+  while
+    $after$
+    ${$
+    @semanticInstructionListAST epilogueInstructionList
+    <semantic_instruction_list> ? epilogueInstructionList
+    let @location endOfEpilogue = @location.here
+    $}$
+    epilogueList += !epilogueInstructionList !endOfEpilogue
+  while
+    $when$ :> ?@string sep ?*
+    send sep + "case"
+    $.$
+    $literal_string$ ?var  @lstring mSourceFileExtension
+    $message$
+    $literal_string$ ?var  @lstring mSourceFileHelp
+  #--- Indexing
+    @lstring indexingGrammar # Empty string if no indexing
+    select
+      indexingGrammar = ["" nowhere]
+    or
+      $indexing$
+      $with$
+      $identifier$ ? indexingGrammar indexing grammarComponentReference
+    end
+  #--- Source file
+    $??$ ?let selector :> ?sep ?*
+    if selector.string != "" then
+      error selector : "The selector should be '??'"
+    end
+    send sep + "?sourceFilePath:"
+    $type_name$ ?var  @lstring typeName
+    @bool isUnused
+    select
+      isUnused = false
+    or
+      $unused$
+      isUnused = true
+    end
+    if [typeName string] != "lstring" then
+      error typeName : "the only type allowed here is '@lstring'"
+    end
+    $identifier$ ?var  @lstring mSourceFileVariableName
+  #---
+    ${$
+    @semanticInstructionListAST mInstructionList
+    <semantic_instruction_list> ? mInstructionList
+    let @location endOfInstructionList = @location.here
+    $}$
+    mProgramRules +=
+      !mSourceFileExtension
+      !mSourceFileHelp
+      !mSourceFileVariableName
+      !isUnused
+      !indexingGrammar
+      !mInstructionList
+      !endOfInstructionList
+  while
+    <semantic_declaration> !?mSemanticDeclarations
+  end
+#---
+  $end$ :> ?* ?*
+  $program$ :> ?* ?*
+  $;$ :> ?* ?*
+  outProgramComponentRoot = @programComponentAST. new {
+    !mProgramName
+    !importedComponentFileNameList
+    !prologueList
+    !epilogueList
+    !mProgramRules
+    !mSemanticDeclarations}
+}
+
+#---------------------------------------------------------------------------*
+
+}

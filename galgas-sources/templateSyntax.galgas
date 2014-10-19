@@ -1,0 +1,753 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Template parser                                                          *
+#                                                                           *
+#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+syntax templateSyntax (galgasTemplateScanner) {
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   E X P R E S S I O N                                                        *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <expression>
+  !@templateExpressionAST outExpression {
+  <relation_term> ?outExpression
+  repeat
+  while
+    @location operatorLocation = @location.here
+    $|$
+    @templateExpressionAST leftOperand = outExpression
+    @templateExpressionAST rightOperand
+    <relation_term> ?rightOperand
+    outExpression = @templateOrOperationAST. new { !operatorLocation !leftOperand !rightOperand}
+  while
+    @location operatorLocation = @location.here
+    $^$
+    @templateExpressionAST leftOperand = outExpression
+    @templateExpressionAST rightOperand
+    <relation_term> ?rightOperand
+    outExpression = @templateXorOperationAST. new { !operatorLocation !leftOperand !rightOperand}
+  end
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   R E L A T I O N    T E R M                                                 *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <relation_term>
+  !@templateExpressionAST outExpression {
+  <relation_factor> ?outExpression
+  repeat
+  while
+    @location operatorLocation = @location.here
+    $&$
+    @templateExpressionAST leftOperand = outExpression
+    @templateExpressionAST rightOperand
+    <relation_factor> ?rightOperand
+    outExpression = @templateAndOperationAST. new { !operatorLocation !leftOperand !rightOperand}
+  end
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   R E L A T I O N    F A C T O R                                             *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <relation_factor>
+  !@templateExpressionAST outExpression {
+  <simple_expression> ?outExpression
+  select
+  or
+    @location operatorLocation = @location.here
+    $==$
+    @templateExpressionAST leftExpression = outExpression
+    @templateExpressionAST rightExpression
+    <simple_expression> ?rightExpression
+    outExpression = @templateEqualTestAST. new { !operatorLocation !leftExpression !rightExpression}
+  or
+    @location operatorLocation = @location.here
+    $!=$
+    @templateExpressionAST leftExpression = outExpression
+    @templateExpressionAST rightExpression
+    <simple_expression> ?rightExpression
+    outExpression = @templateNonEqualTestAST. new { !operatorLocation !leftExpression !rightExpression}
+  or
+    @location operatorLocation = @location.here
+    $<=$
+    @templateExpressionAST leftExpression = outExpression
+    @templateExpressionAST rightExpression
+    <simple_expression> ?rightExpression
+    outExpression = @templateInfOrEqualTestAST. new { !operatorLocation !leftExpression !rightExpression}
+  or
+    @location operatorLocation = @location.here
+    $>=$
+    @templateExpressionAST leftExpression = outExpression
+    @templateExpressionAST rightExpression
+    <simple_expression> ?rightExpression
+    outExpression = @templateSupOrEqualTestAST. new { !operatorLocation !leftExpression !rightExpression}
+  or
+    @location operatorLocation = @location.here
+    $>$
+    @templateExpressionAST leftExpression = outExpression
+    @templateExpressionAST rightExpression
+    <simple_expression> ?rightExpression
+    outExpression = @templateStrictSupTestAST. new { !operatorLocation !leftExpression !rightExpression}
+  or
+    @location operatorLocation = @location.here
+    $<$
+    @templateExpressionAST leftExpression = outExpression
+    @templateExpressionAST rightExpression
+    <simple_expression> ?rightExpression
+    outExpression = @templateStrictInfTestAST. new { !operatorLocation !leftExpression !rightExpression}
+  end
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   S I M P L E    E X P R E S S I O N                                         *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <simple_expression>
+  !@templateExpressionAST outExpression {
+  <term> ?outExpression
+  repeat
+  while 
+    @location operatorLocation = @location.here
+    $<<$
+    @templateExpressionAST leftExpression = outExpression
+    @templateExpressionAST rightExpression
+    <term> ?rightExpression
+    outExpression = @templateLeftShiftOperationAST. new { !operatorLocation !leftExpression !rightExpression}
+  while 
+    @location operatorLocation = @location.here
+    $>>$
+    @templateExpressionAST leftExpression = outExpression
+    @templateExpressionAST rightExpression
+    <term> ?rightExpression
+    outExpression = @templateRightShiftOperationAST. new { !operatorLocation !leftExpression !rightExpression}
+  while 
+    @location operatorLocation = @location.here
+    $+$
+    @templateExpressionAST leftExpression = outExpression
+    @templateExpressionAST rightExpression
+    <term> ?rightExpression
+    outExpression = @templateAddOperationAST. new { !operatorLocation !leftExpression !rightExpression}
+  while 
+    @location operatorLocation = @location.here
+    $-$
+    @templateExpressionAST leftExpression = outExpression
+    @templateExpressionAST rightExpression
+    <term> ?rightExpression
+    outExpression = @templateSubOperationAST. new { !operatorLocation !leftExpression !rightExpression}
+  end
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   T E R M                                                                    *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <term>
+  !@templateExpressionAST outExpression {
+  <factor> ?outExpression
+  repeat
+  while 
+    @location operatorLocation = @location.here
+    $*$
+    @templateExpressionAST leftExpression = outExpression
+    @templateExpressionAST rightExpression
+    <factor> ?rightExpression
+    outExpression = @templateMultiplyOperationAST. new { !operatorLocation !leftExpression !rightExpression}
+  while 
+    @location operatorLocation = @location.here
+    $/$
+    @templateExpressionAST leftExpression = outExpression
+    @templateExpressionAST rightExpression
+    <factor> ?rightExpression
+    outExpression = @templateDivideOperationAST. new { !operatorLocation !leftExpression !rightExpression}
+  while 
+    @location operatorLocation = @location.here
+    $mod$
+    @templateExpressionAST leftExpression = outExpression
+    @templateExpressionAST rightExpression
+    <factor> ?rightExpression
+    outExpression = @templateModuloOperationAST. new { !operatorLocation !leftExpression !rightExpression}
+  end
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   F A C T O R    :    struct field access                                    *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor>
+  !@templateExpressionAST outExpression {
+  <primary> ?outExpression
+  repeat
+  while
+    $.$
+    $identifier$ ?let @lstring structFieldName
+    outExpression = @structFieldAccessTemplateExpressionAST. new { !structFieldName.location !outExpression !structFieldName}
+  end
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   F A C T O R    :    - factor                                               *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor>
+  !@templateExpressionAST outExpression {
+  @location operatorLocation = @location.here
+  $-$
+  @templateExpressionAST expression
+  <factor> ?expression
+  outExpression = @templateUnaryMinusOperationAST. new { !operatorLocation !expression}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   F A C T O R    :    not FACTOR                                             *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor>
+  !@templateExpressionAST outExpression {
+  @location operatorLocation = @location.here
+  $not$
+  @templateExpressionAST ifCondition
+  <factor> ?ifCondition
+  outExpression = @templateNotOperatorAST. new { !operatorLocation !ifCondition}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   F A C T O R    :    ~ FACTOR                                               *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor>
+  !@templateExpressionAST outExpression {
+  @location operatorLocation = @location.here
+  $~$
+  @templateExpressionAST ifCondition
+  <factor> ?ifCondition
+  outExpression = @templateLogicalNegateAST. new { !operatorLocation !ifCondition}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P R I M A R Y  :    <var>                                                  *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <primary>
+  !@templateExpressionAST outExpression {
+  $identifier$ ?var  @lstring identifier
+  outExpression = @templateVarInExpressionAST. new { !identifier}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P R I M A R Y  :    ( EXPRESSION )                                         *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <primary>
+  !@templateExpressionAST outExpression {
+  $($
+  <expression> ?outExpression
+  $)$
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P R I M A R Y  :    true                                                   *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <primary>
+  !@templateExpressionAST outExpression {
+  $true$
+  outExpression = @templateTrueBoolAST. new { !@location.here}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P R I M A R Y  :    false                                                  *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <primary>
+  !@templateExpressionAST outExpression {
+  $false$
+  outExpression = @templateFalseBoolAST. new { !@location.here}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P R I M A R Y  :    a 32-bit unsigned literal integer value                *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <primary>
+  !@templateExpressionAST outExpression {
+  @luint literalInt
+  $unsigned_literal_integer$ ?literalInt
+  outExpression = @templateLiteralUIntExpressionAST. new { !literalInt}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P R I M A R Y  :    a 32-bit signed literal integer value                  *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <primary>
+  !@templateExpressionAST outExpression {
+  @lsint literalInt
+  $signed_literal_integer$ ?literalInt
+  outExpression = @templateLiteralSIntExpressionAST. new { !literalInt}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P R I M A R Y  :    a 64-bit unsigned literal integer value                *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <primary>
+  !@templateExpressionAST outExpression {
+  @luint64 literalInt
+  $unsigned_literal_integer64$ ?literalInt
+  outExpression = @templateLiteralUInt64ExpressionAST. new { !literalInt}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P R I M A R Y  :    a 64-bit signed literal integer value                  *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <primary>
+  !@templateExpressionAST outExpression {
+  @lsint64 literalInt
+  $signed_literal_integer64$ ?literalInt
+  outExpression = @templateLiteralSInt64ExpressionAST. new { !literalInt}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P R I M A R Y  :    a double value                                         *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <primary>
+  !@templateExpressionAST outExpression {
+  @ldouble literalDouble
+  $literal_double$ ? literalDouble ?*
+  outExpression = @templateLiteralDoubleExpressionAST. new { !literalDouble}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P R I M A R Y  :    a literal character value                              *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <primary>
+  !@templateExpressionAST outExpression {
+  $literal_char$ ?var @lchar literalChar
+  outExpression = @templateLiteralCharExpressionAST. new { !literalChar}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P R I M A R Y  :    a literal character value                              *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <primary>
+  !@templateExpressionAST outExpression {
+  var literalStringList =@stringlist.emptyList{}
+  repeat
+    @lstring literalString
+    $literal_string$ ?literalString
+    literalStringList += ![literalString string]
+  while
+  end
+  outExpression = @templateLiteralStringExpressionAST. new { !literalStringList !@location.here}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#                         F A C T O R                                          *
+#   description          :   [expression description]                          *
+#   reader call          :   [expression reader !... ]                         *
+#   constructor call     :   [@class constructor !... ]                        *
+#   option value         :   [option option_component_name.option_name]        *
+#   filewrapper template :   [filewrapper fw.template_name !...]               *
+#   category template    :   [template expression template_name !...]          *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <primary>
+  !@templateExpressionAST outExpression {
+  $[$
+  select
+  #--------------------------------- Template
+    $template$
+    @templateExpressionAST receiverExpression
+    <expression> ?receiverExpression
+    $identifier$ ?var  @lstring templateName
+    @templateExpressionListAST expressionList
+    <output_expression_list> ?expressionList
+    outExpression = @templateCategoryTemplateCallAST. new {
+      !receiverExpression
+      !templateName
+      !expressionList}
+  or #------------ Constructor call
+    $type_name$ ?var @lstring typeName
+    $identifier$ ?var  @lstring constructorName
+    <output_expression_list> ?var @templateExpressionListAST expressionList
+    outExpression = @templateConstructorAST. new {
+      !typeName
+      !constructorName
+      !expressionList}
+  or #--------------------------------- Filewrapper
+    $filewrapper$
+    $identifier$ ?var @lstring filewrapperName
+    $.$
+    $identifier$ ?var @lstring templateName
+    @templateExpressionListAST expressionList
+    <output_expression_list> ?expressionList
+    outExpression = @templateFileWrapperTemplateCallAST. new { !filewrapperName !templateName !expressionList}
+  or #--------------------------------- Reader call
+    @templateExpressionAST receiverExpression
+    <expression> ?receiverExpression
+    $identifier$ ?var  @lstring readerName
+    @templateExpressionListAST expressionList
+    <output_expression_list> ?expressionList
+    outExpression = @templateReaderCallInExpressionAST. new {
+      !receiverExpression
+      !readerName
+      !expressionList}
+  or
+    $option$
+    select
+      $.$
+      $identifier$ ?var @lstring optionName
+      $identifier$ ?var @lstring readerName
+      outExpression = @templateOptionAccessAST. new { !@lstring. new { !"galgas_builtin_options" !@location.here} !optionName !readerName}
+    or
+      $identifier$ ?var @lstring optionComponentName
+      $.$
+      $identifier$ ?var @lstring optionName
+      $identifier$ ?var @lstring readerName
+      outExpression = @templateOptionAccessAST. new { !optionComponentName !optionName !readerName}
+    end
+  end
+  $]$
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#                         F A C T O R                                          *
+#   function call        :   function_name (!... )                             *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <primary>
+  !@templateExpressionAST outExpression {
+  $identifier$ ?let @lstring functionName
+  $($
+  <output_expression_list> ?let @templateExpressionListAST expressionList
+  $)$
+  outExpression = @templateFunctionCallAST. new { !functionName !expressionList}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   O U T P U T    E X P R E S S I O N    L I S T                              *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <output_expression_list>
+  !@templateExpressionListAST outExpressionList {
+  outExpressionList = @templateExpressionListAST. emptyList
+  repeat
+  while
+    $!$ ?let selector
+    @templateExpressionAST expression
+    <expression> ?expression
+    outExpressionList += !selector !expression !@location.here
+  end
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    I N S T R U C T I O N S                                                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <template_instruction>
+  ?!@templateInstructionListAST ioResultingInstructionList {
+  $!$ ?let selector
+  if selector.string != "" then
+    error selector : "the selector should be '!'"
+  end
+  <expression> ?let @templateExpressionAST expression
+  ioResultingInstructionList += !@templateInstructionExpressionAST. new { !expression !@location.here}
+}
+
+#---------------------------------------------------------------------------*
+
+rule <template_instruction>
+  ?!@templateInstructionListAST ioResultingInstructionList {
+  $?^$
+  ioResultingInstructionList += !@templateInstructionGetColumnLocationAST. new
+}
+
+#---------------------------------------------------------------------------*
+
+rule <template_instruction>
+  ?!@templateInstructionListAST ioResultingInstructionList {
+  $!^$
+  ioResultingInstructionList += !@templateInstructionGotoColumnLocationAST. new
+}
+
+#---------------------------------------------------------------------------*
+
+rule <template_instruction>
+  ?!@templateInstructionListAST ioResultingInstructionList {
+  $block$
+  @templateExpressionAST expression
+  <expression> ?expression
+  $:$
+#--- Instruction list
+  var blockInstructionList =@templateInstructionListAST.emptyList{}
+  enterTemplateString ( !? blockInstructionList )
+  repeat
+  while
+    <template_instruction> !?blockInstructionList
+    enterTemplateString ( !?blockInstructionList )
+  end
+#---
+  $end$
+  $block$
+  ioResultingInstructionList += !@templateBlockInstructionAST. new {
+   !expression
+   !@location.here
+   !blockInstructionList}
+}
+
+#---------------------------------------------------------------------------*
+
+rule <template_instruction>
+  ?!@templateInstructionListAST ioResultingInstructionList {
+  $for$
+  @bool ascending
+  select
+    ascending = true
+  or
+    $<$
+    ascending = true
+  or
+    $>$
+    ascending = false
+  end
+  $($
+  $)$
+  $in$
+  <expression> ?let @templateExpressionAST expression
+  @string foreachPrefix
+  select
+    foreachPrefix = ""
+  or
+    $:$
+    $identifier$ ?var  @lstring prefixString
+    foreachPrefix = [prefixString string]
+  end
+#--- before block
+  var beforeInstructionList =@templateInstructionListAST.emptyList{}
+  select
+  or
+    $before$
+    enterTemplateString ( !? beforeInstructionList )
+    repeat
+    while
+      <template_instruction> !?beforeInstructionList
+      enterTemplateString ( !? beforeInstructionList )
+    end
+  end
+#--- Do block
+  $do$
+  @lstring indexIdentifier
+  select
+    indexIdentifier = @lstring. new { !"" !@location.here}
+  or
+    $index$
+    $identifier$ ? indexIdentifier
+  end
+  var doInstructionList =@templateInstructionListAST.emptyList{}
+  enterTemplateString ( !?doInstructionList )
+  repeat
+  while
+    <template_instruction> !?doInstructionList
+    enterTemplateString ( !?doInstructionList )
+  end
+#--- between block
+  var betweenInstructionList =@templateInstructionListAST.emptyList{}
+  select
+  or
+    $between$
+    enterTemplateString ( !? betweenInstructionList )
+    repeat
+    while
+      <template_instruction> !?betweenInstructionList
+      enterTemplateString ( !?betweenInstructionList )
+    end
+  end
+#--- after block
+  var afterInstructionList =@templateInstructionListAST.emptyList{}
+  select
+  or
+    $after$
+    enterTemplateString ( !?afterInstructionList )
+    repeat
+    while
+      <template_instruction> !?beforeInstructionList
+      enterTemplateString ( !?afterInstructionList )
+    end
+  end
+#---
+  $end$
+  ioResultingInstructionList += !@templateInstructionForeachAST. new {
+   !ascending
+   !expression
+   !foreachPrefix
+   !beforeInstructionList
+   !doInstructionList
+   !indexIdentifier
+   !betweenInstructionList
+   !afterInstructionList}
+}
+
+#---------------------------------------------------------------------------*
+
+rule <template_instruction>
+  ?!@templateInstructionListAST ioResultingInstructionList {
+  $if$
+  var templateInstructionIfBranchList =@templateInstructionIfBranchListAST.emptyList{}
+  repeat
+    @templateExpressionAST expression
+    <expression> ?expression
+    $then$
+    var instructionList =@templateInstructionListAST.emptyList{}
+    enterTemplateString ( !? instructionList )
+    repeat
+    while
+      <template_instruction> !?instructionList
+      enterTemplateString ( !? instructionList )
+    end
+    templateInstructionIfBranchList += !expression !instructionList
+  while
+    $elsif$
+  end
+#--- else
+  var elseInstructionList =@templateInstructionListAST.emptyList{}
+  select
+  or
+    $else$
+    enterTemplateString ( !?elseInstructionList )
+    repeat
+    while
+      <template_instruction> !?elseInstructionList
+      enterTemplateString ( !?elseInstructionList )
+    end
+  end
+#---
+  $end$
+  ioResultingInstructionList += !@templateInstructionIfAST. new {
+    !templateInstructionIfBranchList
+    !elseInstructionList}
+}
+
+#---------------------------------------------------------------------------*
+
+rule <template_instruction>
+  ?!@templateInstructionListAST ioResultingInstructionList {
+  $switch$
+#--- Switch expression
+  <expression> ?let @templateExpressionAST switchExpression
+  let @location endOfSwitchExpression = @location.here
+#--- Loop on "when' clauses
+  var templateInstructionSwitchBranchList =@templateInstructionSwitchBranchListAST.emptyList{}
+  repeat
+  while
+    $case$
+    var constantList =@lstringlist.emptyList{}
+    repeat
+      $identifier$ ?var @lstring constantName
+      constantList += !constantName
+    while
+      $,$
+    end
+    $:$
+    var instructionList =@templateInstructionListAST.emptyList{}
+    enterTemplateString ( !? instructionList )
+    repeat
+    while
+      <template_instruction> !?instructionList
+      enterTemplateString ( !? instructionList )
+    end
+    templateInstructionSwitchBranchList += !constantList !instructionList
+  end
+#---
+  $end$
+  ioResultingInstructionList += !@templateInstructionSwitchAST. new {
+    !switchExpression
+    !endOfSwitchExpression
+    !templateInstructionSwitchBranchList}
+}
+
+#---------------------------------------------------------------------------*
+
+rule <template_parser_start_symbol>
+  !@templateInstructionListAST outResultingInstructionList {
+  outResultingInstructionList = @templateInstructionListAST. emptyList
+  enterTemplateString ( !?outResultingInstructionList )
+  repeat
+  while
+    <template_instruction>
+      !?outResultingInstructionList
+    enterTemplateString ( !?outResultingInstructionList )
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+}

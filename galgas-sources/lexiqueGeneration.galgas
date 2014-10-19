@@ -1,0 +1,418 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  'lexique' component metamodel                                            *
+#                                                                           *
+#  Copyright (C) 2007, ..., 2009 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+
+
+#---------------------------------------------------------------------------*
+#   L E X I C A L    E X P R E S S I O N    C O D E    G E N E R A T I O N  *
+#---------------------------------------------------------------------------*
+
+abstract getter @lexicalExpressionAST generateConditionCode
+  ?context:@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalOrExpressionAST generateConditionCode
+  ?context:@lexiqueAnalysisContext inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = [mLeftOperand generateConditionCode !context:inLexiqueAnalysisContext]
+  outGeneratedCode += " || "
+  outGeneratedCode += [mRightOperand generateConditionCode !context:inLexiqueAnalysisContext]
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalCharacterIntervalMatchAST generateConditionCode
+  ?context:@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = ""
+  outGeneratedCode = "testForInputUTF32CharRange ("
+  outGeneratedCode += [[mLowerBound char] utf32CharConstantRepresentation]
+  outGeneratedCode += ", "
+  outGeneratedCode += [[mUpperBound char] utf32CharConstantRepresentation]
+  outGeneratedCode += ")"
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalStringMatchAST generateConditionCode
+  ?context:@lexiqueAnalysisContext inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "testForInputUTF32String (kUnicodeString_" + [inLexiqueAnalysisContext.mLexiqueName identifierRepresentation] + "_" + [mString identifierRepresentation]
+  outGeneratedCode += ", "
+  outGeneratedCode += [[mString length] string]
+  outGeneratedCode += ", true)"
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalStringNotMatchAST generateConditionCode
+  ?context:@lexiqueAnalysisContext inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "notTestForInputUTF32String (kUnicodeString_" + [inLexiqueAnalysisContext.mLexiqueName identifierRepresentation] + "_"
+  outGeneratedCode += [mString identifierRepresentation]
+  outGeneratedCode += ", "
+  outGeneratedCode += [[mString length] string]
+  outGeneratedCode += ", gLexicalMessage_"
+  outGeneratedCode += [inLexiqueAnalysisContext.mLexiqueName identifierRepresentation] + "_"
+  outGeneratedCode += [mErrorMessage string]
+  outGeneratedCode += " COMMA_LINE_AND_SOURCE_FILE)"
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalCharacterMatchAST generateConditionCode
+  ?context:@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "testForInputUTF32Char ("
+  outGeneratedCode += [[mCharacter char] utf32CharConstantRepresentation]
+  outGeneratedCode += ")"
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalCharacterSetMatchAST generateConditionCode
+  ?context:@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "testForCharWithFunction ("
+  outGeneratedCode += [mCharacterSetName string]
+  outGeneratedCode += ")"
+}
+
+#---------------------------------------------------------------------------*
+#     R O U T I N E    O R    F U N C T I O N    A R G U M E N T            *
+#---------------------------------------------------------------------------*
+
+abstract getter @lexicalRoutineOrFunctionFormalInputArgumentAST generateRoutineOrFunctionArgument
+  -> @string outGeneratedCode
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalAttributeInputArgumentAST generateRoutineOrFunctionArgument
+  -> @string outGeneratedCode {
+  outGeneratedCode = "token.mLexicalAttribute_" + [mAttributeName identifierRepresentation]
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalCharacterInputArgumentAST generateRoutineOrFunctionArgument
+  -> @string outGeneratedCode {
+  outGeneratedCode = [[mCharacter char] utf32CharConstantRepresentation]
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalUnsignedInputArgumentAST generateRoutineOrFunctionArgument
+  -> @string outGeneratedCode {
+  outGeneratedCode = [[mUnsigned uint] string]
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalCurrentCharacterInputArgumentAST generateRoutineOrFunctionArgument
+  -> @string outGeneratedCode {
+  outGeneratedCode = "previousChar ()"
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalFunctionInputArgumentAST generateRoutineOrFunctionArgument
+  -> @string outGeneratedCode {
+  outGeneratedCode = "::scanner_function_" + mFunctionName + " (*this"
+  for () in  mFunctionActualArgumentList do
+    outGeneratedCode += ", " + [mLexicalActualInputArgument generateRoutineOrFunctionArgument]
+  end
+  outGeneratedCode += ")"
+}
+
+#---------------------------------------------------------------------------*
+#                   R O U T I N E    A R G U M E N T                        *
+#---------------------------------------------------------------------------*
+
+abstract getter @abstractLexicalRoutineActualArgumentAST generateRoutineArgument
+  -> @string outGeneratedCode
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalAttributeInputOutputArgumentAST generateRoutineArgument
+  -> @string outGeneratedCode {
+  outGeneratedCode = "token.mLexicalAttribute_" + [mAttributeName identifierRepresentation]
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalFormalInputArgumentAST generateRoutineArgument
+  -> @string outGeneratedCode {
+  outGeneratedCode = [mRoutineOrFunctionFormalInputArgument generateRoutineOrFunctionArgument]
+}
+
+#---------------------------------------------------------------------------*
+#  L E X I C A L    S E N D  I N S T R U C T I O N    D E F A U L T         *
+#---------------------------------------------------------------------------*
+
+abstract getter @lexicalSendDefaultActionAST generateDefaultSendCode
+  ?@string inScannerClassName
+  -> @string outGeneratedCode
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalSendTerminalByDefaultAST generateDefaultSendCode
+  ?@string unused inScannerClassName
+  -> @string outGeneratedCode {
+  outGeneratedCode = "token.mTokenCode = kToken_" + mDefaultSentTerminal + " ;\n"
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalErrorByDefaultAST generateDefaultSendCode
+  ?@string inScannerClassName
+  -> @string outGeneratedCode {
+  outGeneratedCode = "lexicalError (gLexicalMessage_" + [inScannerClassName identifierRepresentation] + "_" + mDefaultErrorMessageName + " COMMA_LINE_AND_SOURCE_FILE) ;\n"
+}
+
+#---------------------------------------------------------------------------*
+#  L E X I C A L    I N S T R U C T I O N    C O D E    G E N E R A T I O N *
+#---------------------------------------------------------------------------*
+
+abstract getter @lexicalInstructionAST generateInstructionCode
+  ?@string inScannerClassName
+  ?@lexiqueAnalysisContext inLexiqueAnalysisContext
+  -> @string outGeneratedCode
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalStructuredSendInstructionAST generateInstructionCode
+  ?@string inScannerClassName
+  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = ""
+  for () in  mLexicalSendSearchList do
+    outGeneratedCode += "if (token.mTokenCode == -1) {\n"
+    outGeneratedCode += "  token.mTokenCode = search_into_" + mSearchListName + " (token.mLexicalAttribute_" + [mAttributeName identifierRepresentation] + ") ;\n"
+    outGeneratedCode += "}\n"
+  end
+  outGeneratedCode += "if (token.mTokenCode == -1) {\n"
+  outGeneratedCode += "  " + [mLexicalSendDefaultAction generateDefaultSendCode !inScannerClassName]
+  outGeneratedCode += "}\n"
+  outGeneratedCode += "enterToken (token) ;\n"
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalSimpleSendInstructionAST generateInstructionCode
+  ?@string unused inScannerClassName
+  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "token.mTokenCode = kToken_" + [mSentTerminal identifierRepresentation] + " ;\n"
+  outGeneratedCode += "enterToken (token) ;\n"
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalRepeatInstructionAST generateInstructionCode
+  ?@string inScannerClassName
+  ?@lexiqueAnalysisContext inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "do {\n"
+  [!?outGeneratedCode incIndentation !2]
+#--- Repeated instruction
+  for () in  mRepeatedInstructionList do
+    outGeneratedCode += [mInstruction generateInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
+  end
+#---
+  for () in  mLexicalWhileBranchList
+  do
+    outGeneratedCode += "if ("
+    outGeneratedCode += [mWhileExpression generateConditionCode !context:inLexiqueAnalysisContext]
+    outGeneratedCode += ") {\n"
+    [!?outGeneratedCode incIndentation !2]
+    for () in  mWhileInstructionList do
+      outGeneratedCode += [mInstruction generateInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
+    end
+    [!?outGeneratedCode decIndentation !2]
+  between
+    outGeneratedCode += "}else "
+  end
+  outGeneratedCode += "}else{\n"
+                      "  mLoop = false ;\n"
+                      "}\n"
+  [!?outGeneratedCode decIndentation !2]
+  outGeneratedCode += "}while (mLoop) ;\n"
+                      "mLoop = true ;\n"
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalSelectInstructionAST generateInstructionCode
+  ?@string inScannerClassName
+  ?@lexiqueAnalysisContext inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = ""
+#---
+  for () in  mLexicalSelectBranchList
+  do
+    outGeneratedCode += "if ("
+    outGeneratedCode += [mSelectExpression generateConditionCode !context:inLexiqueAnalysisContext]
+    outGeneratedCode += ") {\n"
+    [!?outGeneratedCode incIndentation !2]
+    for () in  mSelectInstructionList do
+      outGeneratedCode += [mInstruction generateInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
+    end
+    [!?outGeneratedCode decIndentation !2]
+  between
+    outGeneratedCode += "}else "
+  end
+#--- Default branch
+  if [mDefaultInstructionList length] > 0 then
+    outGeneratedCode += "}else{\n"
+    [!?outGeneratedCode incIndentation !2]
+    for () in  mDefaultInstructionList do
+      outGeneratedCode += [mInstruction generateInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
+    end
+    [!?outGeneratedCode decIndentation !2]
+  end
+  outGeneratedCode += "}\n"
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalRoutineInstructionAST generateInstructionCode
+  ?@string inScannerClassName
+  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "::scanner_routine_" + mRoutineName + " (*this"
+  for () in  mActualArgumentList do
+    outGeneratedCode += ", " + [mLexicalRoutineActualArgument generateRoutineArgument]
+  end
+  for () in  mErrorMessageList do
+    outGeneratedCode += ", gLexicalMessage_" + inScannerClassName + "_" + mValue
+  end
+  outGeneratedCode += ") ;\n"
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalDropInstructionAST generateInstructionCode
+  ?@string unused inScannerClassName
+  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "" # No generated code
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalErrorInstructionAST generateInstructionCode
+  ?@string inScannerClassName
+  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "lexicalError (gLexicalMessage_" + inScannerClassName + "_" + mErrorMessageName + " COMMA_LINE_AND_SOURCE_FILE) ;\n"
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalWarningInstructionAST generateInstructionCode
+  ?@string inScannerClassName
+  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "lexicalWarning (gLexicalMessage_" + inScannerClassName + "_" + mWarningMessageName + " COMMA_LINE_AND_SOURCE_FILE) ;\n"
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalTagInstructionAST generateInstructionCode
+  ?@string unused inScannerClassName
+  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "const C_LocationInSource currentLocationForTag_" + mLexicalTagName + " = mCurrentLocation ;\n"
+                    + "const C_LocationInSource endLocationForTag_" + mLexicalTagName + " = mTokenEndLocation ;\n"
+                    + "const utf32 currentCharForTag_" + mLexicalTagName + " = mCurrentChar ;\n"
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalRewindInstructionAST generateInstructionCode
+  ?@string unused inScannerClassName
+  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "mCurrentLocation = currentLocationForTag_" + mLexicalTagName + " ;\n"
+                    + "mTokenEndLocation = endLocationForTag_" + mLexicalTagName + " ;\n"
+                    + "mCurrentChar = currentCharForTag_" + mLexicalTagName + " ;\n"
+                    + "token.mTokenCode = kToken_" + [mTerminalName identifierRepresentation] + " ;\n"
+                    + "enterToken (token) ;\n"
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalLogInstructionAST generateInstructionCode
+  ?@string unused inScannerClassName
+  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "lexicalLog (LINE_AND_SOURCE_FILE) ;\n"
+}
+
+#---------------------------------------------------------------------------*
+#        L E X I C A L    R U L E    C O D E    G E N E R A T I O N         *
+#---------------------------------------------------------------------------*
+
+abstract getter @abstractLexicalRuleAST generateCode
+  ?@string inScannerClassName
+  ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
+  -> @string outGeneratedCode
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalImplicitRuleAST generateCode
+  ?@string inScannerClassName
+  ?@lexiqueAnalysisContext inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  @tokenSortedlist tokenSortedList
+  [[inLexiqueAnalysisContext mLexicalTokenListMap] searchKey !mListName ?* ?tokenSortedList ?*]
+  outGeneratedCode = ""
+  for > () in  tokenSortedList do
+    outGeneratedCode += "if (testForInputUTF32String (kUnicodeString_" + inScannerClassName + "_"
+    outGeneratedCode += [mName identifierRepresentation]
+    outGeneratedCode += ", "
+    outGeneratedCode += [[mName length] string]
+    outGeneratedCode += ", true)) {\n"
+    outGeneratedCode += "  token.mTokenCode = kToken_" + [mTerminalName identifierRepresentation] + " ;\n"
+    outGeneratedCode += "  enterToken (token) ;\n"
+    outGeneratedCode += "}else "
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @lexicalExplicitRuleAST generateCode
+  ?@string inScannerClassName
+  ?@lexiqueAnalysisContext inLexiqueAnalysisContext
+  -> @string outGeneratedCode {
+  outGeneratedCode = "if ("
+  outGeneratedCode += [mLexicalRuleExpression generateConditionCode !context:inLexiqueAnalysisContext]
+  outGeneratedCode += ") {\n"
+  [!?outGeneratedCode incIndentation !2]
+  for () in  mInstructionList do
+    outGeneratedCode += [mInstruction generateInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
+  end
+  [!?outGeneratedCode decIndentation !2]
+  outGeneratedCode += "}else "
+}
+
+#---------------------------------------------------------------------------*
+

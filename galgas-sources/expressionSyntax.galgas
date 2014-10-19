@@ -1,0 +1,735 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Copyright (C) 2007, ..., 2014 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+syntax expressionSyntax (galgas_scanner) %translate {
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   O U T P U T    E X P R E S S I O N    L I S T                              *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <output_expression_list>
+  !@actualOutputExpressionList outExpressionList {
+  outExpressionList = @actualOutputExpressionList. emptyList
+  repeat
+  while
+    $!$ ?let selector
+    <expression> ?let @semanticExpressionAST expression
+    outExpressionList += !selector !expression !@location.here
+  end
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   E X P R E S S I O N                                                        *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <expression> !@semanticExpressionAST outExpression {
+  <concatenation_term> ? outExpression
+  repeat
+  while
+    @location operatorLocation = @location.here
+    $.$ :> ?@string sep ?*
+    send sep + "+"
+    @semanticExpressionAST leftOperand = outExpression
+    @semanticExpressionAST rightOperand
+    <concatenation_term> ? rightOperand
+    outExpression = @concatExpressionAST. new { !operatorLocation !leftOperand !rightOperand}
+  end
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   C O N C A T E N A T I O N    T E R M                                       *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <concatenation_term> !@semanticExpressionAST outExpression {
+  <relation_term> ? outExpression
+  repeat
+  while
+    @location operatorLocation = @location.here
+    $|$
+    @semanticExpressionAST leftOperand = outExpression
+    @semanticExpressionAST rightOperand
+    <relation_term> ? rightOperand
+    outExpression = @orExpressionAST. new { !operatorLocation !leftOperand !rightOperand}
+  while
+    @location operatorLocation = @location.here
+    $||$
+    @semanticExpressionAST leftOperand = outExpression
+    @semanticExpressionAST rightOperand
+    <relation_term> ? rightOperand
+    outExpression = @orShortExpressionAST. new { !operatorLocation !leftOperand !rightOperand}
+  while
+    @location operatorLocation = @location.here
+    $^$
+    @semanticExpressionAST leftOperand = outExpression
+    @semanticExpressionAST rightOperand
+    <relation_term> ? rightOperand
+    outExpression = @xorExpressionAST. new { !operatorLocation !leftOperand !rightOperand}
+  end
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   R E L A T I O N    T E R M                                                 *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <relation_term> !@semanticExpressionAST outExpression {
+  <relation_factor> ? outExpression
+  repeat
+  while
+    @location operatorLocation = @location.here
+    $&$
+    @semanticExpressionAST leftOperand = outExpression
+    @semanticExpressionAST rightOperand
+    <relation_factor> ? rightOperand
+    outExpression = @andExpressionAST. new { !operatorLocation !leftOperand !rightOperand}
+  while
+    @location operatorLocation = @location.here
+    $&&$
+    @semanticExpressionAST leftOperand = outExpression
+    @semanticExpressionAST rightOperand
+    <relation_factor> ? rightOperand
+    outExpression = @andShortExpressionAST. new { !operatorLocation !leftOperand !rightOperand}
+  end
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   R E L A T I O N    F A C T O R                                             *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <relation_factor> !@semanticExpressionAST outExpression {
+  <simple_expression> ? outExpression
+  repeat
+  while
+    @location operatorLocation = @location.here
+    $==$
+    @semanticExpressionAST leftOperand = outExpression
+    @semanticExpressionAST rightOperand
+    <simple_expression> ? rightOperand
+    outExpression = @equalExpressionAST. new { !operatorLocation !leftOperand !rightOperand}
+  while
+    @location operatorLocation = @location.here
+    $!=$
+    @semanticExpressionAST leftOperand = outExpression
+    @semanticExpressionAST rightOperand
+    <simple_expression> ? rightOperand
+    outExpression = @notEqualExpressionAST. new { !operatorLocation !leftOperand !rightOperand}
+  while
+    @location operatorLocation = @location.here
+    $<=$
+    @semanticExpressionAST leftOperand = outExpression
+    @semanticExpressionAST rightOperand
+    <simple_expression> ? rightOperand
+    outExpression = @lowerOrEqualExpressionAST. new { !operatorLocation !leftOperand !rightOperand}
+  while
+    @location operatorLocation = @location.here
+    $>=$
+    @semanticExpressionAST leftOperand = outExpression
+    @semanticExpressionAST rightOperand
+    <simple_expression> ? rightOperand
+    outExpression = @greaterOrEqualExpressionAST. new { !operatorLocation !leftOperand !rightOperand}
+  while
+    @location operatorLocation = @location.here
+    $>$
+    @semanticExpressionAST leftOperand = outExpression
+    @semanticExpressionAST rightOperand
+    <simple_expression> ? rightOperand
+    outExpression = @strictGreaterExpressionAST. new { !operatorLocation !leftOperand !rightOperand}
+  while
+    @location operatorLocation = @location.here
+    $<$
+    @semanticExpressionAST leftOperand = outExpression
+    @semanticExpressionAST rightOperand
+    <simple_expression> ? rightOperand
+    outExpression = @strictLowerExpressionAST. new { !operatorLocation !leftOperand !rightOperand}
+  end
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   S I M P L E    E X P R E S S I O N                                         *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <simple_expression> !@semanticExpressionAST outExpression {
+  <term> ? outExpression
+  repeat
+  while
+    @location operatorLocation = @location.here
+    $<<$
+    @semanticExpressionAST leftOperand = outExpression
+    @semanticExpressionAST rightOperand
+    <term> ? rightOperand
+    outExpression = @leftShiftExpressionAST. new { !operatorLocation !leftOperand !rightOperand}
+  while
+    @location operatorLocation = @location.here
+    $>>$
+    @semanticExpressionAST leftOperand = outExpression
+    @semanticExpressionAST rightOperand
+    <term> ? rightOperand
+    outExpression = @rightShiftExpressionAST. new { !operatorLocation !leftOperand !rightOperand}
+  while
+    @location operatorLocation = @location.here
+    $+$
+    @semanticExpressionAST leftOperand = outExpression
+    @semanticExpressionAST rightOperand
+    <term> ? rightOperand
+    outExpression = @addExpressionAST. new { !operatorLocation !leftOperand !rightOperand}
+  while
+    @location operatorLocation = @location.here
+    $-$
+    @semanticExpressionAST leftOperand = outExpression
+    @semanticExpressionAST rightOperand
+    <term> ? rightOperand
+    outExpression = @subExpressionAST. new { !operatorLocation !leftOperand !rightOperand}
+  end
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   T E R M                                                                    *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <term> !@semanticExpressionAST outExpression {
+  <factor> ? outExpression
+  repeat
+  while
+    let operatorLocation = @location.here
+    $*$
+    let leftOperand = outExpression
+    <factor> ?let @semanticExpressionAST rightOperand
+    outExpression = @multiplicationExpressionAST. new { !operatorLocation !leftOperand !rightOperand}
+  while
+    @location operatorLocation = @location.here
+    $/$
+    @semanticExpressionAST leftOperand = outExpression
+    @semanticExpressionAST rightOperand
+    <factor> ? rightOperand
+    outExpression = @divisionExpressionAST. new { !operatorLocation !leftOperand !rightOperand}
+  while
+    @location operatorLocation = @location.here
+    $mod$
+    @semanticExpressionAST leftOperand = outExpression
+    @semanticExpressionAST rightOperand
+    <factor> ? rightOperand
+    outExpression = @moduloExpressionAST. new { !operatorLocation !leftOperand !rightOperand}
+  end
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   F A C T O R    :    - factor                                               *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor> !@semanticExpressionAST outExpression {
+  @location operatorLocation = @location.here
+  $-$
+  <factor> ? outExpression
+  outExpression = @unaryMinusExpressionAST. new { !operatorLocation !outExpression}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   F A C T O R    :    not FACTOR                                             *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor> !@semanticExpressionAST outExpression {
+  @location operatorLocation = @location.here
+  $not$
+  <factor> ? outExpression
+  outExpression = @notExpressionAST. new { !operatorLocation !outExpression}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   F A C T O R    :    ~ FACTOR                                               *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor> !@semanticExpressionAST outExpression {
+  @location operatorLocation = @location.here
+  $~$
+  <factor> ? outExpression
+  outExpression = @complementExpressionAST. new { !operatorLocation !outExpression}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   F A C T O R    :    struct field access                                    *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor> !@semanticExpressionAST outExpression {
+  <primary> ? outExpression
+  repeat
+  while
+    $->$ :> ?@string sep ?*
+    send sep + "."
+    $identifier$ ?var  @lstring structFieldName
+    outExpression = @structFieldAccessExpressionAST. new { !structFieldName.location !outExpression !structFieldName}
+  end
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P R I M A R Y    :    <var>                                                *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression {
+  $identifier$ ?var  @lstring identifier
+  outExpression = @varInExpressionAST. new { !identifier}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P R I M A R Y    :    S E L F C O P Y                                      *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression {
+  $selfcopy$ :> ?let @string sep ?*
+  send sep + "self"
+  outExpression = @selfCopyInExpressionAST. new { !@location.here}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P R I M A R Y  :    (EXPRESSION)                                           *
+#                       (cast EXP : @T)                                        *
+#                       (EXP is @T)                                            *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression {
+  $($
+  <expression> ? outExpression
+  $)$
+}
+
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression {
+  $($
+  <expression> ?var @semanticExpressionAST receiverExpression
+  let @location endOfReceiverExpression = @location.here
+  $is$
+  @dynamicTypeComparisonKind kind
+  select
+    $==$ kind = @dynamicTypeComparisonKind. equal
+  or
+    $>=$ kind = @dynamicTypeComparisonKind. inherited
+  or
+    $>$ kind = @dynamicTypeComparisonKind. strictlyInherited
+  end
+  $type_name$ ?var @lstring typeName
+  outExpression = @testDynamicClassInExpressionAST. new {
+    !receiverExpression
+    !endOfReceiverExpression
+    !kind
+    !typeName}
+  $)$
+}
+
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression {
+  $($
+  $cast$ :> ?* ?*
+  <expression> ?var @semanticExpressionAST receiverExpression
+  let @location endOfReceiverExpression = @location.here
+  $:$ :> ?* ?*
+  send " as"
+  $type_name$ ?var @lstring typeName
+  outExpression = @castInExpressionAST. new {
+    !receiverExpression
+    !endOfReceiverExpression
+    !typeName}
+  $)$
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P R I M A R Y    :    true                                                 *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression {
+  $true$
+  outExpression = @trueExpressionAST. new { !@location.here}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P R I M A R Y    :    false                                                *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression {
+  $false$
+  outExpression = @falseExpressionAST. new { !@location.here}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P R I M A R Y    :   literal string sequence "..."  "..."  "..."           *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression {
+  var literalStringList =@stringlist.emptyList{}
+  repeat
+    @lstring literalString
+    $literal_string$ ?literalString
+    literalStringList += ![literalString string]
+  while
+  end
+  outExpression = @literalStringExpressionAST. new { !@location.here !literalStringList}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P R I M A R Y    :    a 32-bit unsigned literal integer value              *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression {
+  @luint literalInt
+  $unsigned_literal_integer$ ?literalInt
+  outExpression = @literalUIntExpressionAST. new { !literalInt}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P R I M A R Y    :    a 32-bit signed literal integer value                *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression {
+  @lsint literalInt
+  $signed_literal_integer$ ?literalInt
+  outExpression = @literalSIntExpressionAST. new { !literalInt}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P R I M A R Y    :    a 64-bit unsigned literal integer value              *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression {
+  @luint64 literalInt
+  $unsigned_literal_integer64$ ?literalInt
+  outExpression = @literalUInt64ExpressionAST. new { !literalInt}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P R I M A R Y    :    a 64-bit signed literal integer value                *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression {
+  @lsint64 literalInt
+  $signed_literal_integer64$ ?literalInt
+  outExpression = @literalSInt64ExpressionAST. new { !literalInt}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P R I M A R Y    :    a literal character value                            *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression {
+  @lchar literalChar
+  $literal_char$ ?literalChar
+  outExpression = @literalCharExpressionAST. new { !literalChar}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P R I M A R Y    :    a double value                                       *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression {
+  @ldouble literalDouble
+  $literal_double$ ? literalDouble ?*
+  outExpression = @literalDoubleExpressionAST. new { !literalDouble}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P R I M A R Y    :    here                                                 *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression {
+  $here$ :> ?let @string sep ?*
+  send sep + "@location.here"
+  outExpression = @hereExpressionAST. new { !@location.here}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P R I M A R Y    :    if exp then exp else exp end                         *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression {
+  $if$
+  @semanticExpressionAST ifExpression
+  <expression> ? ifExpression
+  let @location operatorLocation = @location.here
+  $then$
+  @semanticExpressionAST thenExpression
+  <expression> ? thenExpression
+  $else$
+  @semanticExpressionAST elseExpression
+  <expression> ? elseExpression
+  $end$
+  outExpression = @ifExpressionAST. new {
+    !operatorLocation
+    !ifExpression
+    !thenExpression
+    !elseExpression}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#                         P R I M A R Y                                        *
+#   reader call         :   [expression reader !... ]                          *
+#   constructor call    :   [@class proc_name !... ]                           *
+#   default constructor :   [@class default]                                   *
+#   option value        :   [option option_component_name.option_name]         *
+#   filewrapper object  :   [filewrapper filewrapper_name]                     *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression {
+  $[$
+#--- Get source identity characteristics
+  @semanticExpressionAST receiverExpression
+  <expression> ? receiverExpression
+#--- Get reader name
+  @lstring readerName
+  $identifier$ ? readerName
+#--- Actual parameters
+  <output_expression_list> ?let @actualOutputExpressionList expressionList
+  outExpression = @readerCallExpressionAST. new { !receiverExpression !readerName !expressionList}
+  $]$
+}
+
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression {
+  $[$ :> ?let @string sep ?*
+  send sep
+#--- Class name
+  $type_name$ ?let className indexing typeReferenceInConstructor
+  send "."
+#--- Constructor name
+  $identifier$ ?let constructorName
+#--- Actual arguments
+  <output_expression_list> ?var @actualOutputExpressionList expressionList :> ?let @string strExpressionList
+  outExpression = @constructorExpressionAST. new {
+    !className
+    !constructorName
+    !expressionList}
+  $]$ :> ?* ?*
+  send if [expressionList length] > 0 then " {" + strExpressionList + "}" else "" end
+}
+
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression {
+  $[$ :> ?let @string sep ?*
+  send sep
+  $type_name$ ?var @lstring className indexing typeReferenceInConstructor
+  $default$ :> ?* ?*
+  send ".default"
+  outExpression = @defaultConstructorExpressionAST. new { !className}
+  $]$ :> ?* ?*
+}
+
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression {
+  $[$
+  $option$
+  select
+    $.$
+    $identifier$ ?var @lstring optionName
+    $identifier$ ?var @lstring readerName
+    outExpression = @optionExpressionAST. new { !@lstring. new { !"galgas_builtin_options" !@location.here} !optionName !readerName}
+  or
+    $identifier$ ?var @lstring optionComponentName indexing optionComponentReference
+    $.$
+    $identifier$ ?var @lstring optionName
+    $identifier$ ?var @lstring readerName
+    outExpression = @optionExpressionAST. new { !optionComponentName !optionName !readerName}
+  end
+  $]$
+}
+
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression {
+  $[$
+  $lexique$
+  $identifier$ ?var @lstring lexiqueName
+  $:$
+  $identifier$ ?var @lstring readerName
+  outExpression = @lexiqueIntrospectionExpressionAST. new { !lexiqueName !readerName}
+  $]$
+}
+
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression {
+  $[$
+  $filewrapper$
+  $identifier$ ?var @lstring filewrapperName indexing filewrapperReference
+  select
+    outExpression = @filewrapperObjectInstanciationInExpressionAST. new {
+      !filewrapperName}
+  or
+    $.$
+    select
+      @lstring filePath
+      $literal_string$ ? filePath
+      outExpression = @filewrapperInExpressionAST. new {
+        !filewrapperName
+        !filePath}
+    or
+      @lstring filewrapperTemplateName
+      $identifier$ ? filewrapperTemplateName
+      <output_expression_list> ?let @actualOutputExpressionList expressionList
+      outExpression = @filewrapperTemplateInExpressionAST. new {
+        !filewrapperName
+        !filewrapperTemplateName
+        !expressionList}
+    end
+  end
+  $]$
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#                         P R I M A R Y                                        *
+#                                                                              *
+#   function call        :   function_name [!... ]                             *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression {
+  $identifier$ ?var  @lstring functionName indexing functionCall
+  $[$ :> ?@string sep ?*
+  send sep + "("
+  <output_expression_list> ?let @actualOutputExpressionList expressionList
+  outExpression = @functionCallExpressionAST. new {
+    !functionName
+    !expressionList}
+  $]$ :> ?sep ?*
+  send sep + ")"
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#                         P R I M A R Y                                        *
+#                                                                              *
+#   literal type         :   `@type                                            *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression {
+  $`$
+  $type_name$ ?var  @lstring typeName
+  outExpression = @literalTypeInExpressionAST. new {
+    !typeName}
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#                         P R I M A R Y                                        *
+#                                                                              *
+#   Collection value                                                           *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <collection_value_element> 
+  !@abstractCollectionValueElement outValueElement {
+  var expressionList =@actualOutputExpressionList.emptyList{}
+  repeat
+    $!$ ?let selector
+    <expression> ?let @semanticExpressionAST expression
+    expressionList += !selector !expression !@location.here
+  while
+  end
+  outValueElement = @expressionListCollectionValue. new { !expressionList !@location.here}
+}
+
+#------------------------------------------------------------------------------*
+
+rule <collection_value_element> 
+  !@abstractCollectionValueElement outValueElement {
+  <expression> ?let @semanticExpressionAST expression
+  outValueElement = @expressionCollectionValue. new { !expression !@location.here}
+}
+
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression {
+  @lstring typeName
+  select
+    typeName = @lstring. new { !"" !@location.here}
+  or
+    $type_name$ ?typeName
+  end
+  ${$
+  var elementList = @collectionValueElementList. emptyList
+  select
+  or
+    repeat
+      <collection_value_element> ?let @abstractCollectionValueElement element
+      elementList += !element
+    while
+      $,$
+    end
+  end
+  outExpression = @collectionValueAST. new {
+    !typeName
+    !elementList
+    !@location.here}  
+  $}$
+}
+
+#---------------------------------------------------------------------------*
+
+}

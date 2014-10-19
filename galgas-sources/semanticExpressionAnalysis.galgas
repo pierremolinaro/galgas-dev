@@ -1,0 +1,2158 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Semantic Analysis of expression                                          *
+#                                                                           *
+#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    V A R I A B L E    M A P                                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+sharedmap @variableMap {
+  @unifiedTypeMap-proxy mTypeProxy
+  @string mCppName
+  @string mNameForCheckingFormalParameterUsing
+
+#--- Used local constant
+  state usedLocalConstant {
+    readAccess      -> usedLocalConstant
+    writeAccess     -> usedLocalConstant error "a constant cannot be written"
+    readWriteAccess -> usedLocalConstant error "a constant cannot be written"
+    dropAccess      -> usedLocalConstant error "a constant cannot be drop"
+  }
+
+#--- Local constant
+  state localConstant warning "the '%K' constant value is unused" {
+    readAccess      -> usedLocalConstant
+    writeAccess     -> usedLocalConstant error "a constant cannot be written"
+    readWriteAccess -> usedLocalConstant error "a constant cannot be written"
+    dropAccess      -> usedLocalConstant error "a constant cannot be drop"
+  }
+
+#--- Undefined Local constant
+  state undefinedLocalConstant warning "the '%K' constant value is unused" {
+    readAccess      -> undefinedLocalConstant error "the constant is undefined"
+    writeAccess     -> localConstant
+    readWriteAccess -> undefinedLocalConstant error "the constant is undefined"
+    dropAccess      -> undefinedLocalConstant error "the constant is undefined"
+  }
+
+#--- Local variable
+  state undefinedLocalVariable warning "the '%K' local variable is unused" {
+    readAccess      -> undefinedLocalVariable error "an undefined local variable cannot be read"
+    writeAccess     -> definedLocalVariable
+    readWriteAccess -> undefinedLocalVariable error "an undefined local variable cannot be read"
+    dropAccess      -> undefinedLocalVariable warning "the local variable has no value"
+  }
+  state definedLocalVariable { # warning "the '%K' local variable value is unused" {
+    readAccess      -> usedLocalVariable
+    writeAccess     -> definedLocalVariable # warning "the value has been changed without any read"
+    readWriteAccess -> usedLocalVariable
+    dropAccess      -> droppedLocalVariable warning "the local variable has been dropped without any read"
+  }
+  state usedLocalVariable {
+    readAccess      -> usedLocalVariable
+    writeAccess     -> definedLocalVariable
+    readWriteAccess -> definedLocalVariable
+    dropAccess      -> droppedLocalVariable
+  }
+  state droppedLocalVariable {
+    readAccess      -> droppedLocalVariable error "a dropped local variable cannot be read"
+    writeAccess     -> definedLocalVariable
+    readWriteAccess -> definedLocalVariable error "a dropped local variable cannot be read"
+    dropAccess      -> droppedLocalVariable warning "the local variable is already dropped"
+  }
+
+#--- Output formal parameter
+  state undefinedOutputFormalArgument error "the '%K' output formal parameter is undefined" {
+    readAccess      -> undefinedOutputFormalArgument error "an undefined output formal parameter cannot be read"
+    writeAccess     -> definedOutputFormalArgument
+    readWriteAccess -> undefinedOutputFormalArgument error "an undefined output formal parameter cannot be read"
+    dropAccess      -> undefinedOutputFormalArgument warning "the output formal parameter has no value"
+  }
+  state definedOutputFormalArgument {
+    readAccess      -> definedOutputFormalArgument
+    writeAccess     -> definedOutputFormalArgument
+    readWriteAccess -> definedOutputFormalArgument
+    dropAccess      -> undefinedOutputFormalArgument
+  }
+
+#--- Input/Output formal parameter
+  state unusedInputOutputFormalArgument warning "the '%K' input/output formal parameter is unused" {
+    readAccess      -> usedInputOutputFormalArgument
+    writeAccess     -> usedInputOutputFormalArgument
+    readWriteAccess -> usedInputOutputFormalArgument
+    dropAccess      -> droppedInputOutputFormalArgument
+  }
+  state usedInputOutputFormalArgument {
+    readAccess      -> usedInputOutputFormalArgument
+    writeAccess     -> usedInputOutputFormalArgument
+    readWriteAccess -> usedInputOutputFormalArgument
+    dropAccess      -> droppedInputOutputFormalArgument
+  }
+  state droppedInputOutputFormalArgument error "the '%K' input/ouput formal argument should be valuated at the end of the routine" {
+    readAccess      -> droppedInputOutputFormalArgument error "a dropped input/output formal argument cannot be read"
+    writeAccess     -> usedInputOutputFormalArgument
+    readWriteAccess -> droppedInputOutputFormalArgument error "a dropped input/output formal argument cannot be read"
+    dropAccess      -> droppedInputOutputFormalArgument warning "the input/output formal argument is already dropped"
+  }
+
+#--- Input/Output formal parameter declared as unused
+  state inputOutputFormalArgumentDeclaredAsUnused {
+    readAccess      -> usedInputOutputFormalArgument warning "the input/output formal parameter has been declared as unused"
+    writeAccess     -> usedInputOutputFormalArgument warning "the input/output formal parameter has been declared as unused"
+    readWriteAccess -> usedInputOutputFormalArgument warning "the input/output formal parameter has been declared as unused"
+    dropAccess      -> droppedInputOutputFormalArgument warning "the input/output formal parameter has been declared as unused"
+  }
+
+#--- Constant input formal parameter
+  state constantInputFormalArgument warning "the constant '%K' input formal parameter is not used and is not declared as unused" {
+    readAccess      -> usedConstantInputFormalArgument
+    writeAccess     -> usedConstantInputFormalArgument error "a constant input formal parameter cannot be written"
+    readWriteAccess -> usedConstantInputFormalArgument error "a constant input formal parameter cannot be written"
+    dropAccess      -> usedConstantInputFormalArgument error "a constant input formal parameter cannot be dropped"
+  }
+  state usedConstantInputFormalArgument {
+    readAccess      -> usedConstantInputFormalArgument
+    writeAccess     -> usedConstantInputFormalArgument error "a constant input formal parameter cannot be written"
+    readWriteAccess -> usedConstantInputFormalArgument error "a constant input formal parameter cannot be written"
+    dropAccess      -> usedConstantInputFormalArgument error "a constant input formal parameter cannot be dropped"
+  }
+
+#--- Constant input formal parameter declared as unused
+  state constantInputFormalArgumentDeclaredAsUnused {
+    readAccess      -> usedConstantInputFormalArgument warning "the constant input formal parameter is declared as unused"
+    writeAccess     -> usedConstantInputFormalArgument error "a constant input formal parameter cannot be written"
+    readWriteAccess -> usedConstantInputFormalArgument error "a constant input formal parameter cannot be written"
+    dropAccess      -> usedConstantInputFormalArgument error "a constant input formal parameter cannot be dropped"
+  }
+
+#--- Input formal parameter
+  state inputFormalParameter warning "the '%K' input formal parameter is not used and is not declared as unused" {
+    readAccess      -> usedInputFormalArgument
+    writeAccess     -> usedInputFormalArgument
+    readWriteAccess -> usedInputFormalArgument
+    dropAccess      -> droppedInputFormalArgument
+  }
+  state usedInputFormalArgument {
+    readAccess      -> usedInputFormalArgument
+    writeAccess     -> usedInputFormalArgument
+    readWriteAccess -> usedInputFormalArgument
+    dropAccess      -> droppedInputFormalArgument
+  }
+  state droppedInputFormalArgument {
+    readAccess      -> droppedInputFormalArgument error "a dropped input formal parameter cannot be read"
+    writeAccess     -> usedInputFormalArgument
+    readWriteAccess -> droppedInputFormalArgument error "a dropped input formal parameter cannot be read"
+    dropAccess      -> droppedInputFormalArgument warning "the input formal parameter is already dropped"
+  }
+
+#--- Input formal parameter declared as unused
+  state inputFormalArgumentDeclaredAsUnused {
+    readAccess      -> usedInputFormalArgument warning "the input formal parameter is declared as unused"
+    writeAccess     -> usedInputFormalArgument warning "the input formal parameter is declared as unused"
+    readWriteAccess -> usedInputFormalArgument warning "the input formal parameter is declared as unused"
+    dropAccess      -> droppedInputFormalArgument warning "the input formal parameter is declared as unused"
+  }
+
+#--- Current instance attribute in a method or a reader
+  state currentInstanceAttribute {
+    readAccess      -> currentInstanceAttribute
+    writeAccess     -> currentInstanceAttribute error "an attribute cannot be written within a method or a reader"
+    readWriteAccess -> currentInstanceAttribute error "an attribute cannot be modified within a method or a reader"
+    dropAccess      -> currentInstanceAttribute error "an attribute cannot be dropped within a method or a reader"
+  }
+
+#--- Current instance attribute in a modifier
+  state currentInstanceAttributeInModifier {
+    readAccess      -> currentInstanceAttributeInModifier
+    writeAccess     -> currentInstanceAttributeInModifier
+    readWriteAccess -> currentInstanceAttributeInModifier
+    dropAccess      -> currentInstanceDroppedAttributeInModifier
+  }
+
+  state currentInstanceDroppedAttributeInModifier warning "the '%K' attribute is in the dropped state at the end of the modifier" {
+    readAccess      -> currentInstanceDroppedAttributeInModifier error "the attribute cannot be read, it has been dropped"
+    writeAccess     -> currentInstanceAttributeInModifier
+    readWriteAccess -> currentInstanceDroppedAttributeInModifier error "the attribute cannot be read/written, it has been dropped"
+    dropAccess      -> currentInstanceDroppedAttributeInModifier  warning "the attribute is already dropped"
+  }
+
+#--- Insert methods 
+  insert insertMutableAttribute state currentInstanceAttributeInModifier error message "redefinition of '%K' attribute (previous declaration was in %L)"
+  insert insertNonMutableAttribute state currentInstanceAttribute error message "redefinition of '%K' attribute (previous declaration was in %L)"
+  insert insertUndefinedLocalVariable state undefinedLocalVariable error message "redefinition of '%K' variable (previous declaration was in %L)"
+  insert insertDefinedLocalVariable state definedLocalVariable error message "redefinition of '%K' variable (previous declaration was in %L)"
+  insert insertUndefinedLocalConstant state undefinedLocalConstant error message "redefinition of '%K' variable (previous declaration was in %L)"
+  insert insertLocalConstant state localConstant error message "redefinition of '%K' variable (previous declaration was in %L)"
+  insert insertUsedLocalConstant state usedLocalConstant error message "redefinition of '%K' variable (previous declaration was in %L)"
+  insert insertInputFormalArgument state inputFormalParameter error message "redefinition of '%K' variable (previous declaration was in %L)"
+  insert insertInputFormalArgumentDeclaredAsUnused state inputFormalArgumentDeclaredAsUnused error message "redefinition of '%K' variable (previous declaration was in %L)"
+  insert insertConstantInputFormalArgument state constantInputFormalArgument error message "redefinition of '%K' variable (previous declaration was in %L)"
+  insert insertConstantInputFormalArgumentDeclaredAsUnused state constantInputFormalArgumentDeclaredAsUnused error message "redefinition of '%K' variable (previous declaration was in %L)"
+  insert insertOutputFormalArgument state undefinedOutputFormalArgument error message "redefinition of '%K' variable (previous declaration was in %L)"
+  insert insertInputOutputFormalArgument state unusedInputOutputFormalArgument error message "redefinition of '%K' variable (previous declaration was in %L)"
+  insert insertInputOutputFormalArgumentDeclaredAsUnused state inputOutputFormalArgumentDeclaredAsUnused error message "redefinition of '%K' variable (previous declaration was in %L)"
+
+#--- Search methods
+  search searchForReadAccess do readAccess error message "the '%K' variable is not declared"
+  search searchForWriteAccess do writeAccess error message "the '%K' variable is not declared"
+  search searchForReadWriteAccess do readWriteAccess error message "the '%K' variable is not declared"
+  search searchForDropAccess do dropAccess error message "the '%K' variable is not declared"
+
+#--- 'selectBlock' override definitions
+  override selectBlock {
+    currentInstanceAttributeInModifier:currentInstanceDroppedAttributeInModifier -> currentInstanceDroppedAttributeInModifier
+    currentInstanceDroppedAttributeInModifier:currentInstanceAttributeInModifier -> currentInstanceAttributeInModifier
+    constantInputFormalArgument:usedConstantInputFormalArgument -> usedConstantInputFormalArgument
+    constantInputFormalArgumentDeclaredAsUnused:usedConstantInputFormalArgument -> usedConstantInputFormalArgument
+    definedLocalVariable:droppedLocalVariable -> droppedLocalVariable
+    definedLocalVariable:usedLocalVariable -> usedLocalVariable
+    definedOutputFormalArgument:undefinedOutputFormalArgument -> undefinedOutputFormalArgument
+    droppedInputFormalArgument:usedInputFormalArgument -> usedInputFormalArgument
+    droppedInputOutputFormalArgument:usedInputOutputFormalArgument -> usedInputOutputFormalArgument
+    droppedLocalVariable:definedLocalVariable -> definedLocalVariable
+    inputFormalParameter:droppedInputFormalArgument -> droppedInputFormalArgument
+    inputFormalParameter:usedInputFormalArgument -> usedInputFormalArgument
+    inputFormalArgumentDeclaredAsUnused:droppedInputFormalArgument -> droppedInputFormalArgument
+    inputFormalArgumentDeclaredAsUnused:usedInputFormalArgument -> usedInputFormalArgument
+    inputOutputFormalArgumentDeclaredAsUnused:droppedInputOutputFormalArgument -> droppedInputOutputFormalArgument
+    inputOutputFormalArgumentDeclaredAsUnused:usedInputOutputFormalArgument -> usedInputOutputFormalArgument
+    localConstant:usedLocalConstant -> usedLocalConstant
+    undefinedLocalVariable:definedLocalVariable -> definedLocalVariable
+    undefinedOutputFormalArgument:definedOutputFormalArgument -> definedOutputFormalArgument
+    unusedInputOutputFormalArgument:droppedInputOutputFormalArgument -> droppedInputOutputFormalArgument
+    unusedInputOutputFormalArgument:usedInputOutputFormalArgument -> usedInputOutputFormalArgument
+    usedInputFormalArgument:droppedInputFormalArgument -> droppedInputFormalArgument
+    usedInputOutputFormalArgument:droppedInputOutputFormalArgument -> droppedInputOutputFormalArgument
+    usedLocalVariable:definedLocalVariable -> definedLocalVariable
+    usedLocalVariable:droppedLocalVariable -> droppedLocalVariable
+    droppedLocalVariable:usedLocalVariable -> usedLocalVariable
+    undefinedLocalVariable:droppedLocalVariable -> droppedLocalVariable
+    undefinedLocalVariable:usedLocalVariable -> usedLocalVariable
+    undefinedLocalConstant:localConstant -> undefinedLocalConstant error "this branch defines the '%K' variable, while previous ones let it undefined"
+    undefinedLocalConstant:usedLocalConstant -> undefinedLocalConstant error "this branch defines the '%K' variable, while previous ones let it undefined"
+  }{
+    currentInstanceAttributeInModifier:currentInstanceDroppedAttributeInModifier -> currentInstanceAttributeInModifier error "this branch drops the '%K' attribute, while previous ones let it defined"
+    currentInstanceDroppedAttributeInModifier:currentInstanceAttributeInModifier -> currentInstanceAttributeInModifier error "this branch lets the '%K' attribute defined, while previous ones drop it"
+    constantInputFormalArgument:usedConstantInputFormalArgument -> usedConstantInputFormalArgument
+    constantInputFormalArgumentDeclaredAsUnused:usedConstantInputFormalArgument -> usedConstantInputFormalArgument
+    definedLocalVariable:droppedLocalVariable -> definedLocalVariable error "this branch drops the '%K' variable, while previous ones let it defined"
+    definedLocalVariable:undefinedLocalVariable -> definedLocalVariable error "this branch lets the '%K' variable undefined, while previous ones define it"
+    definedLocalVariable:usedLocalVariable -> usedLocalVariable
+    definedOutputFormalArgument:undefinedOutputFormalArgument -> definedOutputFormalArgument error "this branch lets the '%K' variable undefined, while previous ones define it"
+    droppedInputFormalArgument:inputFormalParameter -> droppedInputFormalArgument error "this branch drops the '%K' input formal argument, while previous ones let it defined"
+    droppedInputFormalArgument:inputFormalArgumentDeclaredAsUnused -> droppedInputFormalArgument
+    droppedInputFormalArgument:usedInputFormalArgument -> usedInputFormalArgument error "this branch defines the '%K' input formal argument, while previous ones let it dropped"
+    droppedInputOutputFormalArgument:inputOutputFormalArgumentDeclaredAsUnused -> inputOutputFormalArgumentDeclaredAsUnused error "this branch lets the '%K' input formal argument defined, while previous ones drop it"
+    droppedInputOutputFormalArgument:unusedInputOutputFormalArgument -> unusedInputOutputFormalArgument error "this branch lets the '%K' input/output formal argument defined, while previous ones drop it"
+    droppedInputOutputFormalArgument:usedInputOutputFormalArgument -> usedInputOutputFormalArgument error "this branch lets the '%K' input/output formal argument defined, while previous ones drop it"
+    droppedLocalVariable:definedLocalVariable -> droppedLocalVariable error "this branch defines the '%K' variable, while previous ones drop it"
+    droppedLocalVariable:usedLocalVariable -> droppedLocalVariable error "this branch defines the '%K' variable, while previous ones drop it"
+    inputFormalParameter:droppedInputFormalArgument ->inputFormalParameter error "this branch drops the '%K' input formal argument, while previous let it defined"
+    inputFormalParameter:usedInputFormalArgument -> usedInputFormalArgument
+    inputFormalArgumentDeclaredAsUnused:usedInputFormalArgument -> usedInputFormalArgument
+    inputOutputFormalArgumentDeclaredAsUnused:droppedInputOutputFormalArgument -> inputOutputFormalArgumentDeclaredAsUnused error "this branch drops the '%K' input formal argument defined, while previous ones let it defined"
+    inputOutputFormalArgumentDeclaredAsUnused:usedInputOutputFormalArgument -> inputOutputFormalArgumentDeclaredAsUnused
+    localConstant:usedLocalConstant -> usedLocalConstant
+    undefinedLocalVariable:definedLocalVariable -> definedLocalVariable error "this branch defines the '%K' variable, while previous ones let it undefined"
+    undefinedOutputFormalArgument:definedOutputFormalArgument -> definedOutputFormalArgument error "this branch defines the '%K' output formal argument, while previous ones let it undefined"
+    unusedInputOutputFormalArgument:droppedInputOutputFormalArgument -> unusedInputOutputFormalArgument error "this branch drops the '%K' input/output formal argument, while previous ones let it undefined"
+    unusedInputOutputFormalArgument:usedInputOutputFormalArgument -> usedInputOutputFormalArgument
+    usedInputFormalArgument:droppedInputFormalArgument -> usedInputFormalArgument error "this branch drops the '%K' input formal argument, while previous ones let it defined"
+    usedInputOutputFormalArgument:droppedInputOutputFormalArgument -> usedInputOutputFormalArgument error "this branch drops the '%K' input/output formal argument, while previous ones let it defined"
+    usedLocalVariable:droppedLocalVariable -> usedLocalVariable error "this branch drops the '%K' variable, while previous ones let it defined"
+    droppedLocalVariable:undefinedLocalVariable -> droppedLocalVariable
+    undefinedLocalVariable:usedLocalVariable -> undefinedLocalVariable error "this branch defines the '%K' variable, while previous ones let it undefined"
+    usedLocalVariable:undefinedLocalVariable -> usedLocalVariable error "this branch lets the '%K' variable undefined, while previous defines let it"
+  }
+
+#--- 'repeatBlock' override definitions
+  override repeatBlock {
+    undefinedLocalConstant:localConstant -> undefinedLocalConstant error "the repeated branch should not define the '%K' variable"
+    undefinedLocalConstant:usedLocalConstant -> undefinedLocalConstant error "the repeated branch should not define the '%K' variable"
+    currentInstanceAttributeInModifier:currentInstanceDroppedAttributeInModifier -> currentInstanceAttributeInModifier error "the repeated branch should not drop the '%K' attribute"
+    currentInstanceDroppedAttributeInModifier:currentInstanceAttributeInModifier -> currentInstanceAttributeInModifier
+    constantInputFormalArgument:usedConstantInputFormalArgument -> usedConstantInputFormalArgument
+    constantInputFormalArgumentDeclaredAsUnused:usedConstantInputFormalArgument -> usedConstantInputFormalArgument
+    definedLocalVariable:droppedLocalVariable -> definedLocalVariable error "the repeated branch should not drop the '%K' variable"
+    definedLocalVariable:usedLocalVariable -> usedLocalVariable
+    definedOutputFormalArgument:undefinedOutputFormalArgument -> definedOutputFormalArgument error "the repeated branch should not drop the '%K' output formal argument"
+    droppedInputFormalArgument:usedInputFormalArgument -> droppedInputFormalArgument error "the repeated branch should not drop the '%K' input formal argument"
+    droppedInputOutputFormalArgument:usedInputOutputFormalArgument -> droppedInputOutputFormalArgument error "the repeated branch should define the '%K' input formal argument"
+    droppedLocalVariable:definedLocalVariable -> droppedLocalVariable error "the repeated branch should not drop the '%K' variable"
+    inputFormalArgumentDeclaredAsUnused:droppedInputFormalArgument -> inputFormalArgumentDeclaredAsUnused error "the repeated branch should not drop the '%K' input formal argument"
+    inputFormalArgumentDeclaredAsUnused:usedInputFormalArgument -> usedInputFormalArgument
+    inputFormalParameter:droppedInputFormalArgument -> inputFormalParameter error "the repeated branch should not drop the '%K' input formal argument"
+    inputFormalParameter:usedInputFormalArgument -> usedInputFormalArgument
+    inputOutputFormalArgumentDeclaredAsUnused:droppedInputOutputFormalArgument -> inputOutputFormalArgumentDeclaredAsUnused error "the repeated branch should not drop the '%K' input/output formal argument"
+    inputOutputFormalArgumentDeclaredAsUnused:usedInputOutputFormalArgument -> usedInputOutputFormalArgument
+    localConstant:usedLocalConstant -> usedLocalConstant
+    undefinedLocalVariable:definedLocalVariable -> undefinedLocalVariable error "the repeated branch should not define the '%K' variable"
+    undefinedOutputFormalArgument:definedOutputFormalArgument -> undefinedOutputFormalArgument error "the repeated branch should not define the '%K' output formal argument"
+    unusedInputOutputFormalArgument:droppedInputOutputFormalArgument -> unusedInputOutputFormalArgument error "the repeated branch should not drop the '%K' input/output formal argument"
+    unusedInputOutputFormalArgument:usedInputOutputFormalArgument -> usedInputOutputFormalArgument
+    usedInputFormalArgument:droppedInputFormalArgument -> usedInputFormalArgument error "the repeated branch should not drop the '%K' input formal argument"
+    usedInputOutputFormalArgument:droppedInputOutputFormalArgument -> usedInputOutputFormalArgument error "the repeated branch should not drop the '%K' input/output formal argument"
+    usedLocalVariable:definedLocalVariable -> definedLocalVariable
+    usedLocalVariable:droppedLocalVariable -> usedLocalVariable error "the repeated branch should not drop the '%K' variable"
+    droppedLocalVariable:usedLocalVariable -> droppedLocalVariable error "the repeated branch should not define the dropped '%K' variable"
+    undefinedLocalVariable:droppedLocalVariable -> droppedLocalVariable
+    undefinedLocalVariable:usedLocalVariable -> undefinedLocalVariable error "the repeated branch should not define the '%K' variable"
+  }{
+    currentInstanceAttributeInModifier:currentInstanceDroppedAttributeInModifier -> currentInstanceAttributeInModifier
+    constantInputFormalArgument:usedConstantInputFormalArgument -> usedConstantInputFormalArgument
+    constantInputFormalArgumentDeclaredAsUnused:usedConstantInputFormalArgument -> usedConstantInputFormalArgument
+    definedLocalVariable:usedLocalVariable -> usedLocalVariable
+    inputFormalArgumentDeclaredAsUnused:usedInputFormalArgument -> usedInputFormalArgument
+    inputFormalParameter:usedInputFormalArgument -> usedInputFormalArgument
+    localConstant:usedLocalConstant -> usedLocalConstant
+    inputOutputFormalArgumentDeclaredAsUnused:usedInputOutputFormalArgument -> usedInputOutputFormalArgument
+    usedInputOutputFormalArgument:unusedInputOutputFormalArgument -> usedInputOutputFormalArgument
+    droppedLocalVariable:undefinedLocalVariable -> droppedLocalVariable
+  }
+}
+
+#---------------------------------------------------------------------------*
+
+proc checkAssignmentTypes
+  ?let @unifiedTypeMap-proxy inTargetType
+  ?let @unifiedTypeMap-proxy inSourceType
+  ?let @location inErrorLocation {
+  @unifiedTypeMap-proxy sourceType = inSourceType
+  @bool ok = inTargetType == inSourceType
+  loop( @uint. max) while (not ok) & (not [[sourceType mSuperType] isNull]) do
+    sourceType = [sourceType mSuperType]
+    ok = inTargetType == sourceType
+  end
+  if not ok then
+    error inErrorLocation : "target object type is '@" + [inTargetType key] + "' and cannot be assigned from an '@" + [inSourceType key] + "' object"
+  end
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    S E M A N T I C    C O N T E X T    F O R    A N A L Y S I S           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+struct @predefinedTypes {
+  @unifiedTypeMap-proxy mLocationType
+  @unifiedTypeMap-proxy mBoolType
+  @unifiedTypeMap-proxy mCharType
+  @unifiedTypeMap-proxy mStringType
+  @unifiedTypeMap-proxy mUIntType
+  @unifiedTypeMap-proxy mSIntType
+  @unifiedTypeMap-proxy mUInt64Type
+  @unifiedTypeMap-proxy mSInt64Type
+  @unifiedTypeMap-proxy mDoubleType
+  @unifiedTypeMap-proxy mLBoolType
+  @unifiedTypeMap-proxy mLCharType
+  @unifiedTypeMap-proxy mLStringType
+  @unifiedTypeMap-proxy mLUIntType
+  @unifiedTypeMap-proxy mLSIntType
+  @unifiedTypeMap-proxy mLUInt64Type
+  @unifiedTypeMap-proxy mLSInt64Type
+  @unifiedTypeMap-proxy mLDoubleType
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    A N A L Y S I S    C O N T E X T                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+struct @analysisContext {
+  @semanticContext mSemanticContext
+  @predefinedTypes mPredefinedTypes
+  @unifiedTypeMap-proxy mSelfCopyTypeProxy # isNull if outside a category
+  @string mSelfObjectCppName
+  @unifiedTypeMap-proxy mSelfTypeProxy # isNull if outside a modifier category
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    E X P R E S S I O N    A N A L Y S I S                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+abstract method @semanticExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+
+#---------------------------------------------------------------------------*
+#! Literal
+
+override method @selfCopyInExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap unused ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+  if [inAnalysisContext.mSelfCopyTypeProxy isNull] then
+    error mSelfLocation: "'selfcopy' cannot be used in this context" : outExpression
+  else
+    let @string selfCppName = inAnalysisContext.mSelfObjectCppName
+    outExpression = @selfCopyInExpressionForGeneration. new { !inAnalysisContext.mSelfCopyTypeProxy !mSelfLocation !selfCppName}
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @hereExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap unused ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+  outExpression = @hereExpressionForGeneration. new { !inAnalysisContext.mPredefinedTypes.mLocationType !mLocation}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @trueExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap unused ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+  outExpression = @trueExpressionForGeneration. new { !inAnalysisContext.mPredefinedTypes.mBoolType !mLocation}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @falseExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap unused ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+  outExpression = @falseExpressionForGeneration. new { !inAnalysisContext.mPredefinedTypes.mBoolType !mLocation}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @literalCharExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap unused ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+  outExpression = @literalCharExpressionForGeneration. new { !inAnalysisContext.mPredefinedTypes.mCharType ![mCharacter location] ![mCharacter char]}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @literalStringExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap unused ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+  @string s = ""
+  for () in  mStringSequence do
+    s += mValue
+  end
+  outExpression = @literalStringExpressionForGeneration. new { !inAnalysisContext.mPredefinedTypes.mStringType !mLocation !s}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @literalDoubleExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap unused ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+  outExpression = @literalDoubleExpressionForGeneration. new { !inAnalysisContext.mPredefinedTypes.mDoubleType ![mValue location] ![mValue double]}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @literalUIntExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap unused ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+  outExpression = @literalUIntExpressionForGeneration. new { !inAnalysisContext.mPredefinedTypes.mUIntType ![mValue location] ![mValue uint]}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @literalUInt64ExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap unused ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+  outExpression = @literalUInt64ExpressionForGeneration. new {
+    !inAnalysisContext.mPredefinedTypes.mUInt64Type
+    ![mValue location]
+    ![mValue uint64]}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @literalSIntExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap unused ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+  outExpression = @literalSIntExpressionForGeneration. new { !inAnalysisContext.mPredefinedTypes.mSIntType ![mValue location] ![mValue sint]}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @literalSInt64ExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap unused ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+  outExpression = @literalSInt64ExpressionForGeneration. new { !inAnalysisContext.mPredefinedTypes.mSInt64Type ![mValue location] ![mValue sint64]}
+}
+
+#---------------------------------------------------------------------------*
+
+proc analyzeConstructorInvocation
+  ?let @unifiedTypeMap-proxy inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  ?let @lstring inTypeName
+  ?let @lstring inConstructorName
+  ?let @actualOutputExpressionList inConstuctorEffectiveParameterExpressions
+  !@unifiedTypeMap-proxy outReturnedType
+  !@unifiedTypeMap-proxy outConstructorType
+  !@semanticExpressionListForGeneration outConstructorEffectiveParameterList
+  !@bool outHasCompilerArgument {
+  outConstructorType = inType
+  if inTypeName.string != "" then
+    outConstructorType = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !inTypeName}
+  end
+  if [outConstructorType isNull] then
+    error inTypeName : "cannot infer type" : outReturnedType, outConstructorType, outConstructorEffectiveParameterList, outHasCompilerArgument
+  else
+  #--- Get constructor map from type map
+    let @constructorMap constructorMap = [outConstructorType mConstructorMap]
+  #--- Search contructor
+    @functionSignature constructorFormalArgumentTypeList
+    with [inConstructorName string] in  constructorMap  do
+      constructorFormalArgumentTypeList = mArgumentTypeList
+      outHasCompilerArgument = mHasCompilerArgument
+      outReturnedType = mReturnedType
+    else
+      if [constructorMap count] == 0 then
+        error inConstructorName
+        : "the '@"+ [outConstructorType key] + "' type does not define any constructor"
+        : constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType
+      else
+        @string s = ""
+        for () in  constructorMap do
+          s += "\n  - " + lkey
+          for () in  mArgumentTypeList do
+            s += " ?" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end + "@" + [mFormalArgumentType key]
+          end
+          s += " -> @" + [mReturnedType key]
+        end
+        error inConstructorName
+        : "the '@"+ inTypeName + "' type does not define the '" + inConstructorName + "' constructor; "
+        + if [constructorMap count] > 1 then "available constructors are" else "available constructor is" end
+        + ":" + s
+        : constructorFormalArgumentTypeList, outHasCompilerArgument, outReturnedType
+      end
+    end
+  #--- Analysis arguments
+    if [inConstuctorEffectiveParameterExpressions length] != [constructorFormalArgumentTypeList length] then
+      error inConstructorName
+      : "calling the '" + inConstructorName + "' constructor of '@" + inTypeName + "' requires "
+      + [[constructorFormalArgumentTypeList length] string] + " parameter(s), while this call has "
+      + [[inConstuctorEffectiveParameterExpressions length] string] + " parameter(s)"
+    end
+    outConstructorEffectiveParameterList = @semanticExpressionListForGeneration. emptyList
+    for () in  inConstuctorEffectiveParameterExpressions, () in  constructorFormalArgumentTypeList do
+      @semanticExpressionForGeneration exp
+      [mExpression analyzeSemanticExpression !mFormalArgumentType !inAnalysisContext !?ioVariableMap ?exp]
+      checkAssignmentTypes ( !mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation )
+      if mFormalSelector.string != mActualSelector.string then
+        error mActualSelector : "the selector should be '!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end + "'"
+      end
+      outConstructorEffectiveParameterList += !exp
+    end
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @defaultConstructorExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap unused ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+  var type = inType
+  if mTypeName.string != "" then
+    type = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
+  end
+  if [type isNull] then
+    error mTypeName : "cannot infer type" : outExpression
+  else
+  #--- Check type accepts default constructor
+    if not [type mIsConcrete] then
+      error mTypeName: "an abstract class does not support the default constructor"
+    elsif [type mDefaultConstructorName] == "" then
+      error mTypeName: "this class does not support the default constructor"
+    end
+  #---
+    outExpression = @defaultConstructorExpressionForGeneration. new {
+      !type
+      !mTypeName.location}
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @constructorExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+  analyzeConstructorInvocation (
+    !inType
+    !inAnalysisContext
+    !?ioVariableMap
+    !mTypeName
+    !mConstructorName
+    !mExpressions
+    ?let @unifiedTypeMap-proxy returnedType
+    ?let @unifiedTypeMap-proxy constructorType
+    ?let @semanticExpressionListForGeneration constructorEffectiveParameterList
+    ?let @bool hasCompilerArgument
+  )
+#---
+  outExpression = @constructorExpressionForGeneration. new {
+    !returnedType
+    ![mConstructorName location]
+    !constructorType
+    ![mConstructorName string]
+    !constructorEffectiveParameterList
+    !hasCompilerArgument}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @readerCallExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Expression analysis
+  @semanticExpressionForGeneration receiverExpression
+  [mReceiver analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?receiverExpression]
+  let @unifiedTypeMap-proxy receiverType = [receiverExpression mResultType]
+#--- Get reader map
+  let @readerMap readerMap = [receiverType mReaderMap]
+#--- Search reader
+  @functionSignature readerFormalArgumentTypeList
+  @methodKind kind
+  @bool hasCompilerArgument
+  @unifiedTypeMap-proxy returnedType
+  var fieldList =@stringlist.emptyList{}
+  with [mReaderName string] in  readerMap  do
+    readerFormalArgumentTypeList = mArgumentTypeList
+    hasCompilerArgument = mHasCompilerArgument
+    returnedType = mReturnedType
+    kind = mKind
+    if mErrorMessage != "" then
+      error mReaderName : mErrorMessage
+    end
+  else
+    @uint matchingReaderCount = 0
+    if [receiverType mTypeKindEnum] == @typeKindEnum. structType then
+      readerFormalArgumentTypeList = {}
+      hasCompilerArgument = true
+      returnedType = @unifiedTypeMap-proxy. null
+      kind = @methodKind. definedAsCategory
+      for () in  [receiverType mCurrentTypedAttributeList] do
+        let attributeType = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !@lstring. new { ![mAttributeTypeProxy key] !@location.here}}
+        let aMap = [attributeType mReaderMap]
+        with [mReaderName string] in  aMap  do
+          matchingReaderCount ++
+          readerFormalArgumentTypeList = mArgumentTypeList
+          hasCompilerArgument = mHasCompilerArgument
+          returnedType = mReturnedType
+          kind = mKind
+          fieldList += ![mAttributeName string]
+          if mErrorMessage != "" then
+            error mReaderName : mErrorMessage
+          end
+        end
+      end
+      if matchingReaderCount == 0 then
+        error mReaderName
+        : "the '@"+ [receiverType key] + "' struct type does not define the '" + [mReaderName string]
+        + "' reader, and none of its fields defines it"
+        : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
+      elsif matchingReaderCount > 1 then
+        @string s = ""
+        for () in  fieldList
+          do s += mValue
+          between s += ", "
+        end
+        error mReaderName
+        : "the '@"+ [receiverType key] + "' struct type does not define the '" + [mReaderName string]
+        + "' reader, and several of its fields defines it:" + s + " (exactly one field should define it)"
+        : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
+      end
+    elsif [readerMap count] == 0 then
+      error mReaderName
+      : "the '@"+ [receiverType key] + "' type does not define any reader"
+      : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
+    else
+      @string s = ""
+      for () in  readerMap do
+        s += "\n  - " + lkey
+        for () in  mArgumentTypeList do
+          s += " ?" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end + "@" + [mFormalArgumentType key]
+        end
+        s += " -> @" + [mReturnedType key]
+      end
+      error mReaderName
+      : "the '@"+ [receiverType key] + "' type does not define the '" + mReaderName + "' reader; available "
+      + if [readerMap count] > 1 then "readers are" else "reader is" end
+      + ":" + s
+      : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
+    end
+  end
+#--- Analysis arguments
+  if [mExpressions length] != [readerFormalArgumentTypeList length] then
+    error mReaderName: "calling the '" + mReaderName + "' reader of '@" + [receiverType key] + "' requires "
+    + [[readerFormalArgumentTypeList length] string] + " parameter(s), while this call has "
+    + [[mExpressions length] string] + " parameter(s)" : outExpression
+  else
+    var constructorEffectiveParameterList =@semanticExpressionListForGeneration.emptyList{}
+    for () in  mExpressions, () in  readerFormalArgumentTypeList do
+      [mExpression analyzeSemanticExpression !mFormalArgumentType !inAnalysisContext !?ioVariableMap ?let @semanticExpressionForGeneration exp]
+      if mFormalSelector.string != mActualSelector.string then
+        error mActualSelector : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
+      end
+      checkAssignmentTypes ( !mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation )
+      constructorEffectiveParameterList += !exp
+    end
+    outExpression = @readerCallExpressionForGeneration. new {
+      !returnedType
+      ![mReaderName location]
+      !kind
+      !receiverExpression
+      !fieldList
+      ![mReaderName string]
+      !constructorEffectiveParameterList
+      !hasCompilerArgument}
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+func checkReaderImplementationInSuperClasses
+  ?let @lstring inReaderName
+  ?let @unifiedTypeMap-proxy inSuperClass
+  -> @string outResult {
+  if [inSuperClass isNull] then
+    outResult = ""
+  else
+    @methodQualifier qualifier
+    [[inSuperClass mReaderMap] searchKey !inReaderName ?5* ?qualifier ?*]
+    switch qualifier
+    case isAbstract :
+      outResult = ""
+    case isBasic, isBasicFinal, isOverriding : # Ok
+      outResult = [inSuperClass key]
+    case isInherited, isOverridingAbstract :
+      outResult = checkReaderImplementationInSuperClasses (!inReaderName ![inSuperClass mSuperType])
+    end
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @optionExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap unused ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+  @commandLineOptionMap boolOptionMap
+  @commandLineOptionMap uintOptionMap
+  @commandLineOptionMap stringOptionMap
+  [inAnalysisContext.mSemanticContext.mOptionComponentMapForSemanticAnalysis searchKey
+    !mOptionComponentName
+    ?let @bool optionComponentIsPredefined
+    ?boolOptionMap
+    ?uintOptionMap
+    ?stringOptionMap
+  ]
+  @bool found = [boolOptionMap hasKey ![mOptionEntryName string]]
+  @unifiedTypeMap-proxy returnedType = inAnalysisContext.mPredefinedTypes.mBoolType
+  if not found then
+    found = [uintOptionMap hasKey ![mOptionEntryName string]]
+    returnedType = inAnalysisContext.mPredefinedTypes.mUIntType
+  end
+  if not found then
+    found = [stringOptionMap hasKey ![mOptionEntryName string]]
+    returnedType = inAnalysisContext.mPredefinedTypes.mStringType
+  end
+  if found then
+    if [mOptionReaderName string] == "value" then
+      outExpression = @optionValueExpressionForGeneration. new {
+        !returnedType
+        ![mOptionComponentName location]
+        !optionComponentIsPredefined
+        ![mOptionComponentName string]
+        ![mOptionEntryName string]}
+    elsif [mOptionReaderName string] == "char" then
+      outExpression = @optionCharExpressionForGeneration. new {
+        !inAnalysisContext.mPredefinedTypes.mCharType
+        ![mOptionComponentName location]
+        !optionComponentIsPredefined
+        ![mOptionComponentName string]
+        ![mOptionEntryName string]}
+    elsif [mOptionReaderName string] == "string" then
+      outExpression = @optionStringExpressionForGeneration. new {
+        !inAnalysisContext.mPredefinedTypes.mStringType
+        ![mOptionComponentName location]
+        !optionComponentIsPredefined
+        ![mOptionComponentName string]
+        ![mOptionEntryName string]}
+    elsif [mOptionReaderName string] == "comment" then
+      outExpression = @optionCommentExpressionForGeneration. new {
+        !inAnalysisContext.mPredefinedTypes.mStringType
+        ![mOptionComponentName location]
+        !optionComponentIsPredefined
+        ![mOptionComponentName string]
+        ![mOptionEntryName string]}
+    else
+      error mOptionReaderName:"only the 'value', 'char', 'string' and 'comment' readers are defined for an option" :outExpression
+    end
+  else
+    @string s = ""
+    for () in  boolOptionMap do
+      s += "\n-  '" + lkey + "' @bool option;"
+    end
+    for () in  uintOptionMap do
+      s += "\n-  '" + lkey + "' @uint option;"
+    end
+    for () in  stringOptionMap do
+      s += "\n-  '" + lkey + "' @string option;"
+    end
+    error mOptionEntryName
+    : "the '" + mOptionComponentName + "' option component does not define the '" + mOptionEntryName + "' option; available options:" + s
+    : outExpression
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+proc checkDiadicOperator
+  ?let @unifiedTypeMap-proxy inLeftType
+  ?let @unifiedTypeMap-proxy inRightType
+  ?let @bool inOperandIsHandled
+  ?let @string inOperatorNameForErrorMessage
+  ?let @location inErrorLocation
+  ?!@semanticExpressionForGeneration ioRightExpression {
+  if not inOperandIsHandled then
+    error inErrorLocation
+    : "left operand type is '@" + [inLeftType key] + "' and does not accept '" + inOperatorNameForErrorMessage + "' operator (right operand type is '@" + [inRightType key] + ")"
+  else
+    @unifiedTypeMap-proxy rightType = inRightType
+    @bool ok = inLeftType == rightType
+    loop( @uint. max) while (not ok) & (not [[rightType mSuperType] isNull]) do
+      rightType = [rightType mSuperType]
+      ok = inLeftType == rightType
+    end
+    
+    if not ok then
+    #--- Check if there is a conversion reader
+      if [[inRightType mReaderMap] hasKey ![inLeftType key]] then
+        @bool hasCompilerArgument
+        @unifiedTypeMap-proxy returnedType
+        @methodKind kind
+        [[inRightType mReaderMap] searchKey
+          ![inLeftType lkey]
+          ?kind
+          ?var @functionSignature argumentTypeList
+          ?*
+          ?hasCompilerArgument
+          ?returnedType
+          ?2*
+        ]
+        ok = ([argumentTypeList length] == 0) & (returnedType == inLeftType)
+     #--- Add conversion expression
+        @semanticExpressionForGeneration conversionExpression = @readerCallExpressionForGeneration. new {
+          !inLeftType
+          !inErrorLocation
+          !kind
+          !ioRightExpression
+          !@stringlist. emptyList
+          ![inLeftType key]
+          !@semanticExpressionListForGeneration. emptyList
+          !hasCompilerArgument}
+        ioRightExpression = conversionExpression
+      end
+      if not ok then
+        error inErrorLocation
+        : "left operand type of '" + inOperatorNameForErrorMessage + "' operator is '@" + [inLeftType key]
+        + "', right operand type is '@" + [inRightType key]
+        + "', it should be either the same, either inherits from left operand type, either have a '"
+        + [inLeftType key] + "' reader without argument that returns a '@" + [inLeftType key] + "' object"
+      end
+    end
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @concatExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Left expression analysis
+  @semanticExpressionForGeneration leftExpression
+  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?leftExpression]
+#--- Right expression analysis
+  @semanticExpressionForGeneration rightExpression
+  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?rightExpression]
+#--- Check operator availability
+  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  checkDiadicOperator (
+    !leftType
+    ![rightExpression mResultType]
+    !([leftType mHandledOperatorFlags] & binaryConcatOperator ()) != 0
+    !"."
+    !mOperatorLocation
+    !?rightExpression
+  )  
+#--- Generate expression
+  outExpression = @concatExpressionForGeneration. new {
+    !leftType
+    !mOperatorLocation
+    !leftExpression
+    !rightExpression}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @orExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Left expression analysis
+  @semanticExpressionForGeneration leftExpression
+  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?leftExpression]
+#--- Right expression analysis
+  @semanticExpressionForGeneration rightExpression
+  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?rightExpression]
+#--- Check operator availability
+  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  checkDiadicOperator (
+    !leftType
+    ![rightExpression mResultType]
+    !([leftType mHandledOperatorFlags] & binaryOrOperator ()) != 0
+    !"|"
+    !mOperatorLocation
+    !?rightExpression
+  )  
+#--- Generate expression
+  outExpression = @orExpressionForGeneration. new {
+    !leftType
+    !mOperatorLocation
+    !leftExpression
+    !rightExpression}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @orShortExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Left expression analysis
+  @semanticExpressionForGeneration leftExpression
+  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?leftExpression]
+#--- Right expression analysis
+  @semanticExpressionForGeneration rightExpression
+  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?rightExpression]
+#--- Check operator availability
+  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  checkDiadicOperator (
+    !leftType
+    ![rightExpression mResultType]
+    !([leftType mHandledOperatorFlags] & binaryOrOperator ()) != 0
+    !"|"
+    !mOperatorLocation
+    !?rightExpression
+  )  
+#--- Generate expression
+  outExpression = @orShortExpressionForGeneration. new {
+    !leftType
+    !mOperatorLocation
+    !leftExpression
+    !rightExpression}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @andExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Left expression analysis
+  @semanticExpressionForGeneration leftExpression
+  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?leftExpression]
+#--- Right expression analysis
+  @semanticExpressionForGeneration rightExpression
+  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?rightExpression]
+#--- Check operator availability
+  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  checkDiadicOperator (
+    !leftType
+    ![rightExpression mResultType]
+    !([leftType mHandledOperatorFlags] & binaryAndOperator ()) != 0
+    !"&"
+    !mOperatorLocation
+    !?rightExpression
+  )  
+#--- Generate expression
+  outExpression = @andExpressionForGeneration. new {
+    !leftType
+    !mOperatorLocation
+    !leftExpression
+    !rightExpression}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @andShortExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Left expression analysis
+  @semanticExpressionForGeneration leftExpression
+  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?leftExpression]
+#--- Right expression analysis
+  @semanticExpressionForGeneration rightExpression
+  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?rightExpression]
+#--- Check operator availability
+  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  checkDiadicOperator (
+    !leftType
+    ![rightExpression mResultType]
+    !([leftType mHandledOperatorFlags] & binaryAndOperator ()) != 0
+    !"&"
+    !mOperatorLocation
+    !?rightExpression
+  )  
+#--- Generate expression
+  outExpression = @andShortExpressionForGeneration. new {
+    !leftType
+    !mOperatorLocation
+    !leftExpression
+    !rightExpression}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @xorExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Left expression analysis
+  @semanticExpressionForGeneration leftExpression
+  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?leftExpression]
+#--- Right expression analysis
+  @semanticExpressionForGeneration rightExpression
+  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?rightExpression]
+#--- Check operator availability
+  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  checkDiadicOperator (
+    !leftType
+    ![rightExpression mResultType]
+    !([leftType mHandledOperatorFlags] & binaryXorOperator ()) != 0
+    !"^"
+    !mOperatorLocation
+    !?rightExpression
+  )  
+#--- Generate expression
+  outExpression = @xorExpressionForGeneration. new {
+    !leftType
+    !mOperatorLocation
+    !leftExpression
+    !rightExpression}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @equalExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Left expression analysis
+  @semanticExpressionForGeneration leftExpression
+  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?leftExpression]
+#--- Right expression analysis
+  @semanticExpressionForGeneration rightExpression
+  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?rightExpression]
+#--- Check operator availability
+  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
+  if [[leftType lkey] string] != [[rightType lkey] string] then
+    error mOperatorLocation
+    : "left operand type is '@" + [leftType lkey] + "', right operand type is '@" + [rightType lkey] + "': '==' operator requires the types are the same"
+    :outExpression
+  else
+  #--- Generate expression
+    outExpression = @equalExpressionForGeneration. new {
+      !inAnalysisContext.mPredefinedTypes.mBoolType
+      !mOperatorLocation
+      !leftExpression
+      !rightExpression}
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @notEqualExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Left expression analysis
+  @semanticExpressionForGeneration leftExpression
+  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?leftExpression]
+#--- Right expression analysis
+  @semanticExpressionForGeneration rightExpression
+  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?rightExpression]
+#--- Check operator availability
+  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
+  if [[leftType lkey] string] != [[rightType lkey] string] then
+    error mOperatorLocation
+    : "left operand type is '@" + [leftType key] + "', right operand type is '@" + [rightType key] + "': '!=' operator requires the types are the same"
+    :outExpression
+  else
+  #--- Generate expression
+    outExpression = @notEqualExpressionForGeneration. new {
+      !inAnalysisContext.mPredefinedTypes.mBoolType
+      !mOperatorLocation
+      !leftExpression
+      !rightExpression}
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @lowerOrEqualExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Left expression analysis
+  @semanticExpressionForGeneration leftExpression
+  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?leftExpression]
+#--- Right expression analysis
+  @semanticExpressionForGeneration rightExpression
+  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?rightExpression]
+#--- Check operator availability
+  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
+  if ([leftType mHandledOperatorFlags] & isComparable ()) == 0 then
+    error mOperatorLocation
+    : "left operand type is '@" + [leftType key] + "' and does not support the '<=' operator"
+    :outExpression
+  elsif [leftType key] != [rightType key] then
+    error mOperatorLocation
+    : "left operand type is '@" + [leftType key] + "', right operand type is '@" + [rightType key] + "': '<=' operator requires the types are the same"
+    :outExpression
+  else
+  #--- Generate expression
+    outExpression = @lowerOrEqualExpressionForGeneration. new {
+      !inAnalysisContext.mPredefinedTypes.mBoolType
+      !mOperatorLocation
+      !leftExpression
+      !rightExpression}
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @greaterOrEqualExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Left expression analysis
+  @semanticExpressionForGeneration leftExpression
+  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?leftExpression]
+#--- Right expression analysis
+  @semanticExpressionForGeneration rightExpression
+  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?rightExpression]
+#--- Check operator availability
+  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
+  if ([leftType mHandledOperatorFlags] & isComparable ()) == 0 then
+    error mOperatorLocation
+    : "left operand type is '@" + [leftType key] + "' and does not support the '>=' operator"
+    :outExpression
+  elsif [leftType key] != [rightType key] then
+    error mOperatorLocation
+    : "left operand type is '@" + [leftType key] + "', right operand type is '@" + [rightType key] + "': '>=' operator requires the types are the same"
+    :outExpression
+  else
+  #--- Generate expression
+    outExpression = @greaterOrEqualExpressionForGeneration. new {
+      !inAnalysisContext.mPredefinedTypes.mBoolType
+      !mOperatorLocation
+      !leftExpression
+      !rightExpression}
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @strictGreaterExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Left expression analysis
+  @semanticExpressionForGeneration leftExpression
+  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?leftExpression]
+#--- Right expression analysis
+  @semanticExpressionForGeneration rightExpression
+  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?rightExpression]
+#--- Check operator availability
+  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
+  if ([leftType mHandledOperatorFlags] & isComparable ()) == 0 then
+    error mOperatorLocation
+    : "left operand type is '@" + [leftType key] + "' and does not support the '>' operator"
+    :outExpression
+  elsif [leftType key] != [rightType key] then
+    error mOperatorLocation
+    : "left operand type is '@" + [leftType key] + "', right operand type is '@" + [rightType key] + "': '>' operator requires the types are the same"
+    :outExpression
+  else
+  #--- Generate expression
+    outExpression = @strictGreaterExpressionForGeneration. new {
+      !inAnalysisContext.mPredefinedTypes.mBoolType
+      !mOperatorLocation
+      !leftExpression
+      !rightExpression}
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @strictLowerExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Left expression analysis
+  @semanticExpressionForGeneration leftExpression
+  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?leftExpression]
+#--- Right expression analysis
+  @semanticExpressionForGeneration rightExpression
+  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?rightExpression]
+#--- Check operator availability
+  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
+  if ([leftType mHandledOperatorFlags] & isComparable ()) == 0 then
+    error mOperatorLocation
+    : "left operand type is '@" + [leftType key] + "' and does not support the '<' operator"
+    :outExpression
+  elsif [leftType key] != [rightType key] then
+    error mOperatorLocation
+    : "left operand type is '@" + [leftType key] + "', right operand type is '@" + [rightType key] + "': '<' operator requires the types are the same"
+    :outExpression
+  else
+  #--- Generate expression
+    outExpression = @strictLowerExpressionForGeneration. new {
+      !inAnalysisContext.mPredefinedTypes.mBoolType
+      !mOperatorLocation
+      !leftExpression
+      !rightExpression}
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @rightShiftExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Left expression analysis
+  @semanticExpressionForGeneration leftExpression
+  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?leftExpression]
+#--- Right expression analysis
+  @semanticExpressionForGeneration rightExpression
+  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?rightExpression]
+#--- Check operator availability
+  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
+  if ([leftType mHandledOperatorFlags] & binaryShiftOperator ()) == 0 then
+    error mOperatorLocation
+    : "left operand type is '@" + [leftType key] + "' and does not support a shift operator"
+    :outExpression
+  elsif [rightType key] != "uint" then
+    error mOperatorLocation
+    : "for a shift operator, right operand type should be '@uint': it is '@" + [rightType key] + "'"
+    :outExpression
+  else
+  #--- Generate expression
+    outExpression = @rightShiftExpressionForGeneration. new {
+      !leftType
+      !mOperatorLocation
+      !leftExpression
+      !rightExpression}
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @leftShiftExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Left expression analysis
+  @semanticExpressionForGeneration leftExpression
+  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?leftExpression]
+#--- Right expression analysis
+  @semanticExpressionForGeneration rightExpression
+  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?rightExpression]
+#--- Check operator availability
+  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
+  if ([leftType mHandledOperatorFlags] & binaryShiftOperator ()) == 0 then
+    error mOperatorLocation
+    : "left operand type is '@" + [leftType key] + "' and does not support a shift operator"
+    :outExpression
+  elsif [rightType key] != "uint" then
+    error mOperatorLocation
+    : "for a shift operator, right operand type should be '@uint': it is '@" + [rightType key] + "'"
+    :outExpression
+  else
+  #--- Generate expression
+    outExpression = @leftShiftExpressionForGeneration. new {
+      !leftType
+      !mOperatorLocation
+      !leftExpression
+      !rightExpression}
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @addExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Left expression analysis
+  @semanticExpressionForGeneration leftExpression
+  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?leftExpression]
+#--- Right expression analysis
+  @semanticExpressionForGeneration rightExpression
+  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?rightExpression]
+#--- Check operator availability
+  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  checkDiadicOperator (
+    !leftType
+    ![rightExpression mResultType]
+    !([leftType mHandledOperatorFlags] & binaryAddOperator ()) != 0
+    !"+"
+    !mOperatorLocation
+    !?rightExpression
+  )  
+#--- Generate expression
+  outExpression = @addExpressionForGeneration. new {
+    !leftType
+    !mOperatorLocation
+    !leftExpression
+    !rightExpression}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @subExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Left expression analysis
+  @semanticExpressionForGeneration leftExpression
+  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?leftExpression]
+#--- Right expression analysis
+  @semanticExpressionForGeneration rightExpression
+  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?rightExpression]
+#--- Check operator availability
+  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  checkDiadicOperator (
+    !leftType
+    ![rightExpression mResultType]
+    !([leftType mHandledOperatorFlags] & binarySubOperator ()) != 0
+    !"-"
+    !mOperatorLocation
+    !?rightExpression
+  )  
+#--- Generate expression
+  outExpression = @subExpressionForGeneration. new {
+    !leftType
+    !mOperatorLocation
+    !leftExpression
+    !rightExpression}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @multiplicationExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Left expression analysis
+  @semanticExpressionForGeneration leftExpression
+  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?leftExpression]
+#--- Right expression analysis
+  @semanticExpressionForGeneration rightExpression
+  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?rightExpression]
+#--- Check operator availability
+  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  checkDiadicOperator (
+    !leftType
+    ![rightExpression mResultType]
+    !([leftType mHandledOperatorFlags] & binaryMulOperator ()) != 0
+    !"*"
+    !mOperatorLocation
+    !?rightExpression
+  )  
+#--- Generate expression
+  outExpression = @multiplicationExpressionForGeneration. new {
+    !leftType
+    !mOperatorLocation
+    !leftExpression
+    !rightExpression}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @divisionExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Left expression analysis
+  @semanticExpressionForGeneration leftExpression
+  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?leftExpression]
+#--- Right expression analysis
+  @semanticExpressionForGeneration rightExpression
+  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?rightExpression]
+#--- Check operator availability
+  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  checkDiadicOperator (
+    !leftType
+    ![rightExpression mResultType]
+    !([leftType mHandledOperatorFlags] & binaryDivOperator ()) != 0
+    !"/"
+    !mOperatorLocation
+    !?rightExpression
+  )  
+#--- Generate expression
+  outExpression = @divisionExpressionForGeneration. new {
+    !leftType
+    !mOperatorLocation
+    !leftExpression
+    !rightExpression}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @moduloExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Left expression analysis
+  @semanticExpressionForGeneration leftExpression
+  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?leftExpression]
+#--- Right expression analysis
+  @semanticExpressionForGeneration rightExpression
+  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?rightExpression]
+#--- Check operator availability
+  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+  checkDiadicOperator (
+    !leftType
+    ![rightExpression mResultType]
+    !([leftType mHandledOperatorFlags] & binaryModOperator ()) != 0
+    !"mod"
+    !mOperatorLocation
+    !?rightExpression
+  )  
+#--- Generate expression
+  outExpression = @moduloExpressionForGeneration. new {
+    !leftType
+    !mOperatorLocation
+    !leftExpression
+    !rightExpression}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @unaryMinusExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Expression analysis
+  @semanticExpressionForGeneration expression
+  [mExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?expression]
+#--- Check operator availability
+  let @unifiedTypeMap-proxy type = [expression mResultType]
+  if ([type mHandledOperatorFlags] & unaryMinusOperator ()) == 0 then
+    error mOperatorLocation
+    : "operand type is '@" + [type key] + "' and does not support the unary minus operator"
+    :outExpression
+  else
+  #--- Generate expression
+    outExpression = @unaryMinusExpressionForGeneration. new {
+      !type
+      !mOperatorLocation
+      !expression}
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @notExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Expression analysis
+  @semanticExpressionForGeneration expression
+  [mExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?expression]
+#--- Check operator availability
+  let @unifiedTypeMap-proxy type = [expression mResultType]
+  if ([type mHandledOperatorFlags] & unaryNotOperator ()) == 0 then
+    error mOperatorLocation
+    : "operand type is '@" + [type key] + "' and does not support the 'not' operator"
+    :outExpression
+  else
+  #--- Generate expression
+    outExpression = @notExpressionForGeneration. new {
+      !type
+      !mOperatorLocation
+      !expression}
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @structFieldAccessExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Expression analysis
+  [mExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration expression
+  ]
+#--- Check field access availability
+  @unifiedTypeMap-proxy type = [expression mResultType]
+  if [type mTypeKindEnum] != @typeKindEnum. structType then
+    error mStructFieldName:"the '.' operator requires the receiver to be a struct"
+  end
+  let @attributeMap attributeMap = [type mAttributeMap]
+  [attributeMap searchKey !mStructFieldName ?var @bool isPrivate ?type]
+#--- Generate expression
+  outExpression = @structFieldAccessExpressionForGeneration. new {
+    !type
+    !mOperatorLocation
+    !expression
+    !mStructFieldName.string}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @complementExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Expression analysis
+  @semanticExpressionForGeneration expression
+  [mExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?expression]
+#--- Check operator availability
+  let @unifiedTypeMap-proxy type = [expression mResultType]
+  if ([type mHandledOperatorFlags] & unaryTildeOperator ()) == 0 then
+    error mOperatorLocation
+    : "operand type is '@" + [type key] + "' and does not support the '~' operator"
+    :outExpression
+  else
+  #--- Generate expression
+    outExpression = @tildeExpressionForGeneration. new {
+      !type
+      !mOperatorLocation
+      !expression}
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @ifExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- 'if' expression analysis
+  @semanticExpressionForGeneration if_expression
+  [mIfExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?if_expression]
+#--- 'then' expression analysis
+  @semanticExpressionForGeneration then_expression
+  [mThenExpression analyzeSemanticExpression !inType !inAnalysisContext !?ioVariableMap ?then_expression]
+#--- 'else' expression analysis
+  @semanticExpressionForGeneration else_expression
+  [mElseExpression analyzeSemanticExpression !inType !inAnalysisContext !?ioVariableMap ?else_expression]
+#--- Check 'if' expression is boolean
+  if [[if_expression mResultType] key] != "bool" then
+    error mOperatorLocation
+    :"the test expression type is '@" + [[if_expression mResultType] key] + "', it should be '@bool'"
+    :outExpression
+  elsif [then_expression mResultType] != [else_expression mResultType] then
+    error mOperatorLocation
+    :"operand expression types are '@" + [[then_expression mResultType] key] + "' and '@"+ [[else_expression mResultType] key] + "': they should be the same"
+    :outExpression
+  else
+  #--- Generate expression
+    outExpression = @ifExpressionForGeneration. new {
+      ![then_expression mResultType]
+      !mOperatorLocation
+      !if_expression
+      !then_expression
+      !else_expression}
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @functionCallExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Retrieve function features
+  [inAnalysisContext.mSemanticContext.mFunctionMap searchKey
+    !mFunctionName
+    ?let @functionSignature functionSignature
+    ?let @unifiedTypeMap-proxy resultType
+    ?let @bool isInternal
+  ]
+#--- Check internal
+  if isInternal then
+    let procDeclarationLocation = [inAnalysisContext.mSemanticContext.mFunctionMap locationForKey !mFunctionName.string]
+    if [mFunctionName.location file] != [procDeclarationLocation file] then
+      error mFunctionName : "this proc is internal to '" + [procDeclarationLocation file] + "' file"
+    end
+  end
+#--- Analyze effective parameters
+  if [functionSignature length] != [mExpressionList length] then
+    error mFunctionName
+    :"the '" + mFunctionName + "' function header declares " + [[functionSignature length] string]
+      + " formal parameter(s), but this function call names " + [[mExpressionList length] string]
+      + " effective argument(s)"
+    : outExpression
+  else
+    var semanticExpressionListForGeneration =@semanticExpressionListForGeneration.emptyList{}
+    for () in  functionSignature, () in  mExpressionList do
+      [mExpression analyzeSemanticExpression
+        !mFormalArgumentType
+        !inAnalysisContext
+        !?ioVariableMap
+        ?let @semanticExpressionForGeneration expression
+      ]
+      checkAssignmentTypes ( !mFormalArgumentType ![expression mResultType] !mEndOfExpressionLocation )
+      if mFormalSelector.string != mActualSelector.string then
+        error mActualSelector : "the selector should be '!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end + "'"
+      end
+      semanticExpressionListForGeneration += !expression
+    end
+    outExpression = @functionCallExpressionForGeneration. new {
+      !resultType
+      ![mFunctionName location]
+      ![mFunctionName string]
+      !semanticExpressionListForGeneration}
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @varInExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext unused inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+  [!?ioVariableMap searchForReadAccess
+    !mVarName
+    ?let @unifiedTypeMap-proxy type
+    ?let @string sourceVariableCppName
+    ?let @string nameForCheckingFormalParameterUsing
+  ]
+  outExpression = @varInExpressionForGeneration. new {
+    !type
+    ![mVarName location]
+    !sourceVariableCppName
+    !nameForCheckingFormalParameterUsing}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @literalTypeInExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap unused ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Get constructor map from type map
+  [inAnalysisContext.mSemanticContext.mTypeMap searchKey !mLiteralTypeName ?26*]
+#---
+  outExpression = @literalTypeInExpressionForGeneration. new {
+    !@unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !@lstring. new { !"type" !@location.here}}
+    ![mLiteralTypeName location]
+    ![mLiteralTypeName string]}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @testDynamicClassInExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Receiver expression analysis
+  @semanticExpressionForGeneration expression
+  [mReceiverExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?expression]
+#--- Get type information
+   let castType = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
+#--- This type is either a class
+  if [[expression mResultType] mTypeKindEnum] == @typeKindEnum. classType then
+  #--- Check expression type is a descendant of named type
+    @unifiedTypeMap-proxy t = castType
+    @bool found = t == [expression mResultType]
+    loop( [inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
+    while (not found) & not [[t mSuperType] isNull] do
+      t = [t mSuperType]
+      found = t == [expression mResultType]
+    end
+    if not found then
+      error mTypeName
+      :"the '@" + mTypeName + "' is not a descendant of the '@" + [[expression mResultType] key] + "' type of the cast expression"
+    end
+  else
+    error [expression mLocation]: "expression should be a class instance: it is an @"
+     +  [[expression mResultType] key] + " instance"
+  end
+#--- Generate expression
+  outExpression = @testDynamicClassInExpressionForGeneration. new {
+    !inAnalysisContext.mPredefinedTypes.mBoolType
+    ![mTypeName location]
+    !expression
+    !mTypeComparisonKind
+    !castType}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @castInExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Receiver expression analysis
+  [mReceiverExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy. null
+    !inAnalysisContext 
+    !?ioVariableMap
+    ?var @semanticExpressionForGeneration expression
+   ]
+#--- Get type information
+   let type = @unifiedTypeMap-proxy. searchKey {
+     !inAnalysisContext.mSemanticContext.mTypeMap
+     !mTypeName}
+#--- This type is an @object type
+  if [[expression mResultType] mTypeKindEnum] == @typeKindEnum. classType then
+  #--- Check expression type is a descendant of named type
+    @unifiedTypeMap-proxy t = type
+    @bool found = t == [expression mResultType]
+    loop( [inAnalysisContext.mSemanticContext.mTypeMap count] + 1)
+    while (not found) & not [[t mSuperType] isNull] do
+      t = [t mSuperType]
+      found = t == [expression mResultType]
+    end
+    if not found then
+      error mTypeName
+      :"the '@" + mTypeName + "' is not a descendant of the '@"
+      + [[expression mResultType] key] + "' type of the cast expression"
+    end
+  elsif [[expression mResultType] key] != "object" then
+#    error [expression mLocation]
+#     : "cast expression should be an @object instance: it is an @"
+#     .  [[expression mResultType] key] . " instance" ;
+#  else
+    error [expression mLocation]:
+      "cast expression should be a class instance or an @object instance: it is an @"
+     +  [[expression mResultType] key] + " instance"
+  end
+#--- Generate expression
+  if [[expression mResultType] key] == "object" then
+    outExpression = @extractObjectInExpressionForGeneration. new {
+      !type
+      !mEndOfReceiverExpression
+      !expression
+      ![mTypeName string]}
+  else
+    outExpression = @castInExpressionForGeneration. new {
+      !type
+      ![mTypeName location]
+      !expression
+      ![mTypeName string]}
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap unused ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Search for filewrapper name in filewrapper map
+  [inAnalysisContext.mSemanticContext.mFilewrapperMap searchKey
+    !mFilewrapperName
+    ?let @lstring filewrapperPath
+    ?4*
+    ?let @bool isInternal
+  ]
+#--- Check internal
+  if isInternal then
+    let filewrapperDeclarationLocation = [inAnalysisContext.mSemanticContext.mFilewrapperMap locationForKey !mFilewrapperName.string]
+    if [mFilewrapperName.location file] != [filewrapperDeclarationLocation file] then
+      error mFilewrapperName : "this filewrapper is internal to '" + [filewrapperDeclarationLocation file] + "' file"
+    end
+  end
+#---
+  outExpression = @filewrapperInExpressionForGeneration. new {
+    !@unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !@lstring. new { !"filewrapper" ![mFilewrapperName location]}}
+    ![mFilewrapperName location]
+    ![mFilewrapperName string]
+    ![filewrapperPath string]}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#---
+  [inAnalysisContext.mSemanticContext.mFilewrapperMap searchKey
+     !mFilewrapperName
+     ?4*
+     ?let @filewrapperTemplateMap filewrapperTemplateMap
+     ?let @bool isInternal
+   ]
+#--- Check internal
+  if isInternal then
+    let filewrapperDeclarationLocation = [inAnalysisContext.mSemanticContext.mFilewrapperMap locationForKey !mFilewrapperName.string]
+    if [mFilewrapperName.location file] != [filewrapperDeclarationLocation file] then
+      error mFilewrapperName : "this filewrapper is internal to '" + [filewrapperDeclarationLocation file] + "' file"
+    end
+  end
+#---
+  [filewrapperTemplateMap searchKey !mFilewrapperTemplateName ?let @functionSignature templateSignature ?*]
+#--- Analysis arguments
+  @semanticExpressionListForGeneration effectiveParameterList
+  if [mExpressions length] != [templateSignature length] then
+    error mFilewrapperTemplateName
+    : "calling the '" + mFilewrapperTemplateName + "' template of '" + mFilewrapperName + "' filewrapper requires "
+    + [[templateSignature length] string] + " parameter(s), while this call has "
+    + [[mExpressions length] string] + " parameter(s)" 
+    : effectiveParameterList
+  else
+    effectiveParameterList = @semanticExpressionListForGeneration. emptyList
+    for () in  mExpressions, () in  templateSignature do
+      if mFormalSelector.string != mActualSelector.string then
+        error mActualSelector : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
+      end
+      [mExpression analyzeSemanticExpression !mFormalArgumentType !inAnalysisContext !?ioVariableMap ?let @semanticExpressionForGeneration exp]
+      checkAssignmentTypes ( !mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation )
+      effectiveParameterList += !exp
+    end
+  end
+#---
+  outExpression = @filewrapperTemplateInExpressionForGeneration. new {
+    !inAnalysisContext.mPredefinedTypes.mStringType
+    ![mFilewrapperName location]
+    ![mFilewrapperName string]
+    ![mFilewrapperTemplateName string]
+    !effectiveParameterList}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @filewrapperInExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap unused ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Parse filewrapper path
+  @stringlist directoryList
+  @string fileName
+  if [mFilewrapperPath length] == 0 then
+    error mFilewrapperPath : "path is empty" : directoryList, fileName
+  elsif [mFilewrapperPath firstCharacterOrNul] == '/' then
+    error mFilewrapperPath : "the path should not begin with '/'" : directoryList, fileName
+  else
+    directoryList = [mFilewrapperPath componentsSeparatedByString !"/"]
+    [!?directoryList popLast ?fileName]
+  end
+#--- Get filewrapper features
+  [inAnalysisContext.mSemanticContext.mFilewrapperMap searchKey
+    !mFilewrapperName
+    ?*
+    ?*
+    ?var @wrapperFileMap filewrapperFileMap
+    ?var @wrapperDirectoryMap filewrapperDirectoryMap
+    ?*
+    ?let @bool isInternal
+  ]
+#--- Check internal
+  if isInternal then
+    let filewrapperDeclarationLocation = [inAnalysisContext.mSemanticContext.mFilewrapperMap locationForKey !mFilewrapperName.string]
+    if [mFilewrapperName.location file] != [filewrapperDeclarationLocation file] then
+      error mFilewrapperName : "this filewrapper is internal to '" + [filewrapperDeclarationLocation file] + "' file"
+    end
+  end
+#--- Search for file
+  @string builtPath = ""
+  loop( [filewrapperDirectoryMap count] + 1)
+  while [directoryList length] > 0 do
+    @string directoryName
+    [!?directoryList popFirst ?directoryName]
+    builtPath += directoryName + "/"
+    if [filewrapperDirectoryMap hasKey !directoryName] then
+      [filewrapperDirectoryMap searchKey
+        !@lstring. new { !directoryName !@location.here}
+        ?filewrapperFileMap
+        ?filewrapperDirectoryMap
+        ?*
+      ]
+    else
+      error mFilewrapperPath : "the '" + builtPath + "' path does not exists for the '" + mFilewrapperName + "' filewrapper" : filewrapperFileMap 
+      directoryList = @stringlist. emptyList # For exiting loop
+    end
+  end
+  @uint fileIndex
+  @bool isTextFile
+  if [filewrapperFileMap hasKey !fileName] then
+    [filewrapperFileMap searchKey !@lstring. new { !fileName !@location.here} ?* ?isTextFile ?* ?fileIndex]
+  else
+    error mFilewrapperPath
+    : "the '" + fileName + "' file does not exist in the '" + builtPath + "' directory of '" + mFilewrapperName + "' filewrapper"
+    : fileIndex, isTextFile
+  end
+#---
+  outExpression = @filewrapperStaticPathInExpressionForGeneration. new {
+    !if isTextFile
+      then inAnalysisContext.mPredefinedTypes.mStringType
+      else @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !@lstring. new { !"data" !@location.here}}
+     end
+    ![mFilewrapperName location]
+    ![mFilewrapperName string]
+    !fileIndex
+    !isTextFile}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @lexiqueIntrospectionExpressionAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy unused inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap unused ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Check  lexique is declared
+  [inAnalysisContext.mSemanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
+    !mLexiqueComponentName
+    ?3*
+  ]
+#--- Check reader name
+  if mLexiqueReaderName.string != "symbols" then
+    error mLexiqueReaderName:"unknown reader"
+  end
+#---
+  outExpression = @lexiqueIntrospectionForGeneration. new {
+    !@unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !["stringlist" nowhere]}
+    !mLexiqueComponentName.location
+    !mLexiqueComponentName.string
+    !mLexiqueReaderName.string}
+}
+
+#---------------------------------------------------------------------------*
+#! Collection value
+#---------------------------------------------------------------------------*
+
+abstract method @abstractCollectionValueElement analyze
+  ?let @analysisContext inAnalysisContext
+  ?let @unifiedTypeMap-proxy inElementType
+  ?!@variableMap ioVariableMap
+  ?!@collectionValueElementListForGeneration ioCollectionValueElementListForGeneration
+
+#---------------------------------------------------------------------------*
+
+override method @expressionCollectionValue analyze
+  ?let @analysisContext inAnalysisContext
+  ?let @unifiedTypeMap-proxy inElementType
+  ?!@variableMap ioVariableMap
+  ?!@collectionValueElementListForGeneration ioCollectionValueElementListForGeneration {
+  [mExpression analyzeSemanticExpression
+    !inElementType
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration expression
+  ]
+#--- Check assignment type compatibility
+  checkAssignmentTypes ( !inElementType ![expression mResultType] !mExpressionLocation )
+#---
+  ioCollectionValueElementListForGeneration += !@expressionCollectionValueForGeneration. new { !mExpressionLocation !expression}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @expressionListCollectionValue analyze
+  ?let @analysisContext inAnalysisContext
+  ?let @unifiedTypeMap-proxy inElementType
+  ?!@variableMap ioVariableMap
+  ?!@collectionValueElementListForGeneration ioCollectionValueElementListForGeneration {
+  let @functionSignature formalParameterTypeList = [inElementType mAddAssignOperatorArguments]
+  @semanticExpressionListForGeneration semanticExpressionListForGeneration
+  if [formalParameterTypeList length] != [mExpressionList length] then
+    error mEndOfExpressionLocation: "element of of '@" + [inElementType key] + "' requires "
+    + [formalParameterTypeList length] + " parameter(s), while this list has "
+    + [mExpressionList length] + " element(s)" : semanticExpressionListForGeneration
+  else
+    semanticExpressionListForGeneration = @semanticExpressionListForGeneration {}
+    for () in  mExpressionList, () in  formalParameterTypeList do
+      [mExpression analyzeSemanticExpression !mFormalArgumentType !inAnalysisContext !?ioVariableMap ?let @semanticExpressionForGeneration exp]
+      if mFormalSelector.string != mActualSelector.string then
+        error mActualSelector : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
+      end
+      checkAssignmentTypes ( !mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation )
+      semanticExpressionListForGeneration += !exp
+    end
+    ioCollectionValueElementListForGeneration += !@expressionListCollectionForGeneration. new {
+      !mEndOfExpressionLocation
+      !semanticExpressionListForGeneration}
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+list @collectionValueElementListForGeneration {
+  @abstractCollectionValueElementForGeneration mElement
+}
+
+#---------------------------------------------------------------------------*
+
+abstract class @abstractCollectionValueElementForGeneration {
+  @location mExpressionLocation
+}
+
+#---------------------------------------------------------------------------*
+
+class @expressionCollectionValueForGeneration : @abstractCollectionValueElementForGeneration {
+  @semanticExpressionForGeneration mExpression
+}
+
+#---------------------------------------------------------------------------*
+
+class @expressionListCollectionForGeneration : @abstractCollectionValueElementForGeneration {
+  @semanticExpressionListForGeneration mExpressionList
+}
+
+#---------------------------------------------------------------------------*
+
+class @expressionCollectionForGeneration : @semanticExpressionForGeneration {
+  @collectionValueElementListForGeneration mElementList
+}
+
+#---------------------------------------------------------------------------*
+
+override method @collectionValueAST analyzeSemanticExpression
+  ?let @unifiedTypeMap-proxy inType
+  ?let @analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression {
+#--- Type
+  @unifiedTypeMap-proxy targetType
+  if mTypeName.string == "" then
+    targetType = inType
+  else
+    targetType = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
+  end
+#---
+  if targetType == @unifiedTypeMap-proxy. null then
+    error mTypeName : "Cannot infer type" : outExpression
+  elsif not [targetType mSupportCollectionValue] then
+    error mTypeName : "the @" + mTypeName + " type does not support collection value" : outExpression
+  else
+    if [mElementList length] == 0 then
+      outExpression = @defaultConstructorExpressionForGeneration. new {
+        !targetType
+        !mTypeName.location}
+    else
+      var collectionValueElementListForGeneration = @collectionValueElementListForGeneration {}
+      for () in mElementList do
+        [mElement analyze
+          !inAnalysisContext
+          !targetType
+          !?ioVariableMap
+          !?collectionValueElementListForGeneration
+        ]
+      end
+      outExpression = @expressionCollectionForGeneration. new {
+        !targetType
+        !mEndOfCollectionValue
+        !collectionValueElementListForGeneration}
+    end
+  end
+}
+
+#---------------------------------------------------------------------------*
+

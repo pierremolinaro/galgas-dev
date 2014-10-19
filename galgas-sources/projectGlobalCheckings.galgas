@@ -1,0 +1,937 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  GALGAS LL1 routines                                                      *
+#                                                                           *
+#  Copyright (C) 2007, ..., 2013 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#        M U L T I - M E T H O D   L I S T M A P                            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+listmap @genericCategoryMethodListMap (@lstringlist)
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  B U I L D    M U L T I - M E T H O D S    L I S M A P S                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+method @semanticDeclarationAST buildCategoryListMaps
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryModifierListMapAST
+  ?!@genericCategoryMethodListMap unused ioCategoryModifierListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryModifierListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryModifierListMap
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryMethodListMapAST
+  ?!@genericCategoryMethodListMap unused ioCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryReaderListMap {
+}
+
+#---------------------------------------------------------------------------*
+
+override method @abstractCategoryModifierAST buildCategoryListMaps
+  ?!@genericCategoryMethodListMap ioAbstractCategoryModifierListMapAST
+  ?!@genericCategoryMethodListMap unused ioCategoryModifierListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryModifierListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryModifierListMap
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryMethodListMapAST
+  ?!@genericCategoryMethodListMap unused ioCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryReaderListMap {
+  ioAbstractCategoryModifierListMapAST +=
+    ![mTypeName string]
+    !mAbstractCategoryModifierName
+}
+
+#---------------------------------------------------------------------------*
+
+override method @categoryModifierAST buildCategoryListMaps
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryModifierListMapAST
+  ?!@genericCategoryMethodListMap ioCategoryModifierListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryModifierListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryModifierListMap
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryMethodListMapAST
+  ?!@genericCategoryMethodListMap unused ioCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryReaderListMap {
+  ioCategoryModifierListMap +=
+    ![mTypeName string]
+    !mCategoryModifierName
+}
+
+#---------------------------------------------------------------------------*
+
+override method @overridingCategoryModifierAST buildCategoryListMaps
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryModifierListMapAST
+  ?!@genericCategoryMethodListMap unused ioCategoryModifierListMap
+  ?!@genericCategoryMethodListMap ioOverridingCategoryModifierListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryModifierListMap
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryMethodListMapAST
+  ?!@genericCategoryMethodListMap unused ioCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryReaderListMap {
+  ioOverridingCategoryModifierListMap +=
+    ![mTypeName string]
+    !mOverridingCategoryModifierName
+}
+
+#---------------------------------------------------------------------------*
+
+override method @overridingAbstractCategoryModifierAST buildCategoryListMaps
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryModifierListMapAST
+  ?!@genericCategoryMethodListMap unused ioCategoryModifierListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryModifierListMap
+  ?!@genericCategoryMethodListMap ioOverridingAbstractCategoryModifierListMap
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryMethodListMapAST
+  ?!@genericCategoryMethodListMap unused ioCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryReaderListMap {
+  ioOverridingAbstractCategoryModifierListMap +=
+    ![mTypeName string]
+    !mOverridingCategoryModifierName
+}
+
+#---------------------------------------------------------------------------*
+
+override method @abstractCategoryMethodAST buildCategoryListMaps
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryModifierListMapAST
+  ?!@genericCategoryMethodListMap unused ioCategoryModifierListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryModifierListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryModifierListMap
+  ?!@genericCategoryMethodListMap ioAbstractCategoryMethodListMapAST
+  ?!@genericCategoryMethodListMap unused ioCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryReaderListMap {
+  ioAbstractCategoryMethodListMapAST +=
+    ![mTypeName string]
+    !mAbstractCategoryMethodName
+}
+
+#---------------------------------------------------------------------------*
+
+override method @categoryMethodAST buildCategoryListMaps
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryModifierListMapAST
+  ?!@genericCategoryMethodListMap unused ioCategoryModifierListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryModifierListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryModifierListMap
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryMethodListMapAST
+  ?!@genericCategoryMethodListMap ioCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryReaderListMap {
+  ioCategoryMethodListMap +=
+    ![mTypeName string]
+    !mCategoryMethodName
+}
+
+#---------------------------------------------------------------------------*
+
+override method @overridingCategoryMethodAST buildCategoryListMaps
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryModifierListMapAST
+  ?!@genericCategoryMethodListMap unused ioCategoryModifierListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryModifierListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryModifierListMap
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryMethodListMapAST
+  ?!@genericCategoryMethodListMap unused ioCategoryMethodListMap
+  ?!@genericCategoryMethodListMap ioOverridingCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryReaderListMap {
+  ioOverridingCategoryMethodListMap +=
+    ![mTypeName string]
+    !mOverridingCategoryMethodName
+}
+
+#---------------------------------------------------------------------------*
+
+override method @overridingAbstractCategoryMethodAST buildCategoryListMaps
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryModifierListMapAST
+  ?!@genericCategoryMethodListMap unused ioCategoryModifierListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryModifierListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryModifierListMap
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryMethodListMapAST
+  ?!@genericCategoryMethodListMap unused ioCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryMethodListMap
+  ?!@genericCategoryMethodListMap ioOverridingAbstractCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryReaderListMap {
+  ioOverridingAbstractCategoryMethodListMap +=
+    ![mTypeName string]
+    !mOverridingCategoryMethodName
+}
+
+#---------------------------------------------------------------------------*
+
+override method @abstractCategoryReaderAST buildCategoryListMaps
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryModifierListMapAST
+  ?!@genericCategoryMethodListMap unused ioCategoryModifierListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryModifierListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryModifierListMap
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryMethodListMapAST
+  ?!@genericCategoryMethodListMap unused ioCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryMethodListMap
+  ?!@genericCategoryMethodListMap ioAbstractCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryReaderListMap {
+  ioAbstractCategoryReaderListMap +=
+    ![mTypeName string]
+    !mAbstractCategoryReaderName
+}
+
+#---------------------------------------------------------------------------*
+
+override method @categoryReaderAST buildCategoryListMaps
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryModifierListMapAST
+  ?!@genericCategoryMethodListMap unused ioCategoryModifierListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryModifierListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryModifierListMap
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryMethodListMapAST
+  ?!@genericCategoryMethodListMap unused ioCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryReaderListMap
+  ?!@genericCategoryMethodListMap ioCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryReaderListMap {
+  ioCategoryReaderListMap +=
+    ![mTypeName string]
+    !mCategoryReaderName
+}
+
+#---------------------------------------------------------------------------*
+
+override method @overridingCategoryReaderAST buildCategoryListMaps
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryModifierListMapAST
+  ?!@genericCategoryMethodListMap unused ioCategoryModifierListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryModifierListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryModifierListMap
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryMethodListMapAST
+  ?!@genericCategoryMethodListMap unused ioCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioCategoryReaderListMap
+  ?!@genericCategoryMethodListMap ioOverridingCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryReaderListMap {
+  ioOverridingCategoryReaderListMap +=
+    ![mTypeName string]
+    !mOverridingCategoryReaderName
+}
+
+#---------------------------------------------------------------------------*
+
+override method @overridingAbstractCategoryReaderAST buildCategoryListMaps
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryModifierListMapAST
+  ?!@genericCategoryMethodListMap unused ioCategoryModifierListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryModifierListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryModifierListMap
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryMethodListMapAST
+  ?!@genericCategoryMethodListMap unused ioCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingAbstractCategoryMethodListMap
+  ?!@genericCategoryMethodListMap unused ioAbstractCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioCategoryReaderListMap
+  ?!@genericCategoryMethodListMap unused ioOverridingCategoryReaderListMap
+  ?!@genericCategoryMethodListMap ioOverridingAbstractCategoryReaderListMap {
+  ioOverridingAbstractCategoryReaderListMap +=
+    ![mTypeName string]
+    !mAbstractCategoryReaderName
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    D E S C E N D A N T    C L A S S    L I S T M A P                      *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+listmap @descendantClassListMap (@unifiedTypeMapProxyList)
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  C A T E G O R Y    M E T H O D    M A P                                  *
+#                                                                           *
+# Used for checking a category-method is defined once for a type            *
+#---------------------------------------------------------------------------*
+
+map @categoryMethodMapForGlobalCheckings {
+  insert insertKey error message "the '%K' category method is already declared in %L"
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  C A T E G O R Y    M O D I F I E R    M A P                              *
+#                                                                           *
+# Used for checking a category-modifier is defined once for a type          *
+#---------------------------------------------------------------------------*
+
+map @categoryModifierMapForGlobalCheckings {
+  insert insertKey error message "the '%K' category modifier is already declared in %L"
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  C A T E G O R Y    R E A D E R    M A P                                  *
+#                                                                           *
+# Used for checking a category-method is defined once for a type            *
+#---------------------------------------------------------------------------*
+
+map @categoryReaderMapForGlobalCheckings {
+  insert insertKey error message "the '%K' category reader is already declared in %L"
+}
+
+#---------------------------------------------------------------------------*
+
+func outputDirectory
+  ?let @lstring inSourceFile
+  ->  @string outOuputDirectory {
+  if [inSourceFile characterAtIndex !0] == '/' then
+    outOuputDirectory = [inSourceFile stringByDeletingLastPathComponent]
+    outOuputDirectory += "/GALGAS_OUTPUT"
+  else
+    outOuputDirectory = "GALGAS_OUTPUT"
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+proc checkCategoryModifierDefinitionForClass
+  ?let @string inClassNameForErrorSignaling
+  ?let @string inClassName
+  ?let @lstring inAbstractCategoryModifierName
+  ?let @descendantClassListMap inDescendantClassListMap
+  ?let @genericCategoryMethodListMap inOverridingCategoryMethodListMap
+  ?let @unifiedTypeMap inUnifiedTypeMap {
+  let @unifiedTypeMapProxyList descendantClasses = [inDescendantClassListMap listForKey !inClassName]
+  for () in  descendantClasses do
+    let @lstring descendantClassName = [mType lkey]
+    @lstringlist overridingMethods = [inOverridingCategoryMethodListMap listForKey ![descendantClassName string]]
+    @bool found = false
+    for () in  overridingMethods while not found do
+      found = [inAbstractCategoryModifierName string] == [mValue string]
+    end
+    if not found then
+      if not [mType mIsConcrete] then
+        checkCategoryModifierDefinitionForClass (
+          !inClassNameForErrorSignaling
+          ![descendantClassName string]
+          !inAbstractCategoryModifierName
+          !inDescendantClassListMap
+          !inOverridingCategoryMethodListMap
+          !inUnifiedTypeMap
+        )
+      else
+        error inAbstractCategoryModifierName: "an abstract category method '" + inAbstractCategoryModifierName + "' is defined for abstract class '@"
+        + inClassNameForErrorSignaling
+        + "', but concrete descendant class '@" + descendantClassName + "' does not implement this method" 
+      end
+    end
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+proc checkCategoryMethodDefinitionForClass
+  ?let @string inClassNameForErrorSignaling
+  ?let @string inClassName
+  ?let @lstring inAbstractCategoryMethodName
+  ?let @descendantClassListMap inDescendantClassListMap
+  ?let @genericCategoryMethodListMap inOverridingCategoryMethodListMap
+  ?let @unifiedTypeMap inUnifiedTypeMap {
+  let @unifiedTypeMapProxyList descendantClasses = [inDescendantClassListMap listForKey !inClassName]
+  for () in  descendantClasses do
+    let @lstring descendantClassName = [mType lkey]
+    @lstringlist overridingMethods = [inOverridingCategoryMethodListMap listForKey ![descendantClassName string]]
+    @bool found = false
+    for () in  overridingMethods while not found do
+      found = [inAbstractCategoryMethodName string] == [mValue string]
+    end
+    if not found then
+      if not [mType mIsConcrete] then
+        checkCategoryMethodDefinitionForClass (
+          !inClassNameForErrorSignaling
+          ![descendantClassName string]
+          !inAbstractCategoryMethodName
+          !inDescendantClassListMap
+          !inOverridingCategoryMethodListMap
+          !inUnifiedTypeMap
+        )
+      else
+        error inAbstractCategoryMethodName: "an abstract category method '" + inAbstractCategoryMethodName + "' is defined for abstract class '@"
+        + inClassNameForErrorSignaling
+        + "', but concrete descendant class '@" + descendantClassName + "' does not implement this method" 
+      end
+    end
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+proc checkCategoryReaderDefinitionForClass
+  ?let @string inClassNameForErrorSignaling
+  ?let @string inClassName
+  ?let @lstring inAbstractCategoryReaderName
+  ?let @descendantClassListMap inDescendantClassListMap
+  ?let @genericCategoryMethodListMap inOverridingCategoryReaderListMap
+  ?let @unifiedTypeMap inUnifiedTypeMap {
+  let @unifiedTypeMapProxyList descendantClasses = [inDescendantClassListMap listForKey !inClassName]
+  for () in  descendantClasses do
+    @lstring descendantClassName = [mType lkey]
+    @lstringlist overridingReaders = [inOverridingCategoryReaderListMap listForKey ![descendantClassName string]]
+    @bool found = false
+    for () in  overridingReaders while not found do
+      found = [inAbstractCategoryReaderName string] == [mValue string]
+    end
+    if not found then
+      if not [mType mIsConcrete] then
+        checkCategoryReaderDefinitionForClass (
+          !inClassNameForErrorSignaling
+          ![descendantClassName string]
+          !inAbstractCategoryReaderName
+          !inDescendantClassListMap
+          !inOverridingCategoryReaderListMap
+          !inUnifiedTypeMap
+        )
+      else
+        error inAbstractCategoryReaderName: "an abstract category reader '" + inAbstractCategoryReaderName + "' is defined for abstract class '@"
+        + inClassNameForErrorSignaling
+        + "', but concrete descendant class '@" + descendantClassName + "' does not implement this reader" 
+      end
+    end
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+proc performProjectGlobalCheckings
+  ?let @parsedComponentStruct inParsedComponentStruct
+  ?let @string inProjectSourceFilePath {
+  var semanticDeclarationList =@semanticDeclarationListAST.emptyList{}
+#------ Add predefined types to semantics declarations
+  appendPredefinedTypesASTs ( !?semanticDeclarationList )
+#--- Build all declaration list
+  for () in  [inParsedComponentStruct mParsedSemanticsComponentMap] do
+    semanticDeclarationList += [mSemanticComponentRoot mSemanticDeclarationList]
+  end
+  for () in  [inParsedComponentStruct mParsedSyntaxComponentMap] do
+    semanticDeclarationList += [mSyntaxComponentRoot mSemanticDeclarationList]
+  end
+  for () in  [inParsedComponentStruct mParsedProgramComponentMap] do
+    semanticDeclarationList += [mProgramComponentAST mSemanticDeclarationList]
+  end
+#------ Generate declarations
+  buildSemanticContext (
+    !semanticDeclarationList
+    ?let @semanticContext semanticContext
+  )
+#------ Build descendant type list map
+# For every type, a list of its directed descendants is associated
+  var descendantClassListMap =@descendantClassListMap.emptyMap{}
+  for () in  semanticContext.mTypeMap do
+     if not [mSuperType isNull] then
+       descendantClassListMap +=
+         ![mSuperType key]
+         !@unifiedTypeMap-proxy. searchKey { !semanticContext.mTypeMap !lkey}
+     end
+  end
+#--- Build Category method listmaps
+  var abstractCategoryMethodListMap =@genericCategoryMethodListMap.emptyMap{}
+  var categoryMethodListMap =@genericCategoryMethodListMap.emptyMap{}
+  var overridingCategoryMethodListMap =@genericCategoryMethodListMap.emptyMap{}
+  var overridingAbstractCategoryMethodListMap =@genericCategoryMethodListMap.emptyMap{}
+  var abstractCategoryReaderListMap =@genericCategoryMethodListMap.emptyMap{}
+  var categoryReaderListMap =@genericCategoryMethodListMap.emptyMap{}
+  var overridingCategoryReaderListMap =@genericCategoryMethodListMap.emptyMap{}
+  var overridingAbstractCategoryReaderListMap =@genericCategoryMethodListMap.emptyMap{}
+  var abstractCategoryModifierListMap =@genericCategoryMethodListMap.emptyMap{}
+  var categoryModifierListMap =@genericCategoryMethodListMap.emptyMap{}
+  var overridingCategoryModifierListMap =@genericCategoryMethodListMap.emptyMap{}
+  var overridingAbstractCategoryModifierListMap =@genericCategoryMethodListMap.emptyMap{}
+  for () in  semanticDeclarationList do
+    [mSemanticDeclaration buildCategoryListMaps
+      !?abstractCategoryModifierListMap
+      !?categoryModifierListMap
+      !?overridingCategoryModifierListMap
+      !?overridingAbstractCategoryModifierListMap
+      !?abstractCategoryMethodListMap
+      !?categoryMethodListMap
+      !?overridingCategoryMethodListMap
+      !?overridingAbstractCategoryMethodListMap
+      !?abstractCategoryReaderListMap
+      !?categoryReaderListMap
+      !?overridingCategoryReaderListMap
+      !?overridingAbstractCategoryReaderListMap
+    ]
+  end
+#------ Check Category
+  if @uint. errorCount == 0 then
+  #--- A given abstract category modifier is defined only once for a class
+    for () in  abstractCategoryModifierListMap do
+      var categoryModifierMap =@categoryModifierMapForGlobalCheckings.emptyMap{}
+      for () in  mList do
+        [!?categoryModifierMap insertKey !mValue]
+      end
+    end  
+  #--- A given base category modifier is defined only once for a class
+    for () in  categoryModifierListMap do
+      var categoryModifierMap =@categoryModifierMapForGlobalCheckings.emptyMap{}
+      for () in  mList do
+        [!?categoryModifierMap insertKey !mValue]
+      end
+    end  
+  #--- A given overriding category modifier is defined only once for a class
+    for () in  overridingCategoryModifierListMap do
+      var categoryModifierMap =@categoryModifierMapForGlobalCheckings.emptyMap{}
+      for () in  mList do
+        [!?categoryModifierMap insertKey !mValue]
+      end
+    end  
+  #--- A given overriding abstract category modifier is defined only once for a class
+    for () in  overridingAbstractCategoryMethodListMap do
+      var categoryModifierMap =@categoryModifierMapForGlobalCheckings.emptyMap{}
+      for () in  mList do
+        [!?categoryModifierMap insertKey !mValue]
+      end
+    end  
+  #------ Check that for every abstract category modifier, an overridden category modifier defined in an concrete subclass
+    for () in  abstractCategoryModifierListMap do
+      for () in  mList do
+        checkCategoryModifierDefinitionForClass (
+          !key
+          !key
+          !mValue
+          !descendantClassListMap
+          !overridingCategoryModifierListMap
+          !semanticContext.mTypeMap
+        )
+      end
+    end
+  #------ Check that for every overriding abstract category modifier, an overridden category modifier defined in an concrete subclass
+    for () in  overridingAbstractCategoryModifierListMap do
+      for () in  mList do
+        checkCategoryModifierDefinitionForClass (
+          !key
+          !key
+          !mValue
+          !descendantClassListMap
+          !overridingCategoryModifierListMap
+          !semanticContext.mTypeMap
+        )
+      end
+    end
+  #--- A given abstract category method is defined only once for a class
+    for () in  abstractCategoryMethodListMap do
+      var categoryMethodMap =@categoryMethodMapForGlobalCheckings.emptyMap{}
+      for () in  mList do
+        [!?categoryMethodMap insertKey !mValue]
+      end
+    end  
+  #--- A given base category method is defined only once for a class
+    for () in  categoryMethodListMap do
+      var categoryMethodMap =@categoryMethodMapForGlobalCheckings.emptyMap{}
+      for () in  mList do
+        [!?categoryMethodMap insertKey !mValue]
+      end
+    end  
+  #--- A given overriding category method is defined only once for a class
+    for () in  overridingCategoryMethodListMap do
+      var categoryMethodMap =@categoryMethodMapForGlobalCheckings.emptyMap{}
+      for () in  mList do
+        [!?categoryMethodMap insertKey !mValue]
+      end
+    end  
+  #--- A given overriding abstract category method is defined only once for a class
+    for () in  overridingAbstractCategoryMethodListMap do
+      var categoryMethodMap =@categoryMethodMapForGlobalCheckings.emptyMap{}
+      for () in  mList do
+        [!?categoryMethodMap insertKey !mValue]
+      end
+    end  
+  #------ Check that for every abstract category method, an overridden category method defined in an concrete subclass
+    for () in  abstractCategoryMethodListMap do
+      for () in  mList do
+        checkCategoryMethodDefinitionForClass (
+          !key
+          !key
+          !mValue
+          !descendantClassListMap
+          !overridingCategoryMethodListMap
+          !semanticContext.mTypeMap
+        )
+      end
+    end
+  #------ Check that for every abstract category method, an overridden category method defined in an concrete subclass
+    for () in  overridingAbstractCategoryMethodListMap do
+      for () in  mList do
+        checkCategoryMethodDefinitionForClass (
+          !key
+          !key
+          !mValue
+          !descendantClassListMap
+          !overridingCategoryMethodListMap
+          !semanticContext.mTypeMap
+        )
+      end
+    end
+  #------ Check Category readers
+##--- Check that for every abstract category reader, an overridden category reader
+##    defined in an concrete subclass
+  #--- A given abstract category reader is defined only once for a class
+    for () in  abstractCategoryReaderListMap do
+      var CategoryReaderMap =@categoryReaderMapForGlobalCheckings.emptyMap{}
+      for () in  mList do
+        [!?CategoryReaderMap insertKey !mValue]
+      end
+    end  
+  #--- A given base category reader is defined only once for a class
+    for () in  categoryReaderListMap do
+      var CategoryReaderMap =@categoryReaderMapForGlobalCheckings.emptyMap{}
+      for () in  mList do
+        [!?CategoryReaderMap insertKey !mValue]
+      end
+    end  
+  #--- A given overriding category reader is defined only once for a class
+    for () in  overridingCategoryReaderListMap do
+      var CategoryReaderMap =@categoryReaderMapForGlobalCheckings.emptyMap{}
+      for () in  mList do
+        [!?CategoryReaderMap insertKey !mValue]
+      end
+    end  
+  #--- Check every abstract category reader is implemented by every inherited concrete type
+    for () in  abstractCategoryReaderListMap do
+      for () in  mList do
+        checkCategoryReaderDefinitionForClass (
+          !key
+          !key
+          !mValue
+          !descendantClassListMap
+          !overridingCategoryReaderListMap
+          !semanticContext.mTypeMap
+        )
+      end
+    end
+  #--- Check every abstract category reader is implemented by every inherited concrete type
+    for () in  overridingAbstractCategoryReaderListMap do
+      for () in  mList do
+        checkCategoryReaderDefinitionForClass (
+          !key
+          !key
+          !mValue
+          !descendantClassListMap
+          !overridingCategoryReaderListMap
+          !semanticContext.mTypeMap
+        )
+      end
+    end
+  end
+#--- Build a text file that contains all declared types
+  let @string typeDumpFilePath = inProjectSourceFilePath + ".html"
+  if [option galgas_cli_options.outputHTMLTypeListFile value] then
+    var firstLetterSet =@stringset.emptySet{}
+    for () in  semanticContext.mTypeMap do
+      firstLetterSet += ![[lkey.string characterAtIndex!0] string]
+    end
+    @string tableOfTypeString = ""
+    @char currentFirstLetter = ' '
+    for () type_ in  semanticContext.mTypeMap do
+      if currentFirstLetter != [type_lkey.string characterAtIndex !0] then
+        currentFirstLetter = [type_lkey.string characterAtIndex !0]
+        tableOfTypeString += "<br><a name=\"" + [currentFirstLetter uint] + "\"><b>" + currentFirstLetter + "</b></a><br>"
+      end
+      tableOfTypeString += linkForType (!type_lkey.string) + "<br>"
+    end
+    let @string typeDumpString = [filewrapper typeDumpGenerationTemplate.typeDump
+      ![inProjectSourceFilePath lastPathComponent]
+      !semanticContext.mTypeMap
+      !firstLetterSet
+      !tableOfTypeString
+    ]
+    [typeDumpString writeToFileWhenDifferentContents !typeDumpFilePath ?*]
+  else
+    [@string deleteFileIfExists !typeDumpFilePath]
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+proc performGalgas3ProjectGlobalCheckings
+  ?let @semanticContext inSemanticContext
+  ?let @semanticDeclarationListAST inSemanticDeclarationList {
+  if [option .verbose_output value] then
+    message "*** Perform global checkings\n"
+  end
+#------ Build descendant type list map
+# For every type, a list of its directed descendants is associated
+  var descendantClassListMap =@descendantClassListMap.emptyMap{}
+  for () in  inSemanticContext.mTypeMap do
+     if not [mSuperType isNull] then
+       descendantClassListMap +=
+         ![mSuperType key]
+         !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !lkey}
+     end
+  end
+#--- Build Category method listmaps
+  var abstractCategoryMethodListMap =@genericCategoryMethodListMap.emptyMap{}
+  var categoryMethodListMap =@genericCategoryMethodListMap.emptyMap{}
+  var overridingCategoryMethodListMap =@genericCategoryMethodListMap.emptyMap{}
+  var overridingAbstractCategoryMethodListMap =@genericCategoryMethodListMap.emptyMap{}
+  var abstractCategoryReaderListMap =@genericCategoryMethodListMap.emptyMap{}
+  var categoryReaderListMap =@genericCategoryMethodListMap.emptyMap{}
+  var overridingCategoryReaderListMap =@genericCategoryMethodListMap.emptyMap{}
+  var overridingAbstractCategoryReaderListMap =@genericCategoryMethodListMap.emptyMap{}
+  var abstractCategoryModifierListMap =@genericCategoryMethodListMap.emptyMap{}
+  var categoryModifierListMap =@genericCategoryMethodListMap.emptyMap{}
+  var overridingCategoryModifierListMap =@genericCategoryMethodListMap.emptyMap{}
+  var overridingAbstractCategoryModifierListMap =@genericCategoryMethodListMap.emptyMap{}
+  for () in  inSemanticDeclarationList do
+    [mSemanticDeclaration buildCategoryListMaps
+      !?abstractCategoryModifierListMap
+      !?categoryModifierListMap
+      !?overridingCategoryModifierListMap
+      !?overridingAbstractCategoryModifierListMap
+      !?abstractCategoryMethodListMap
+      !?categoryMethodListMap
+      !?overridingCategoryMethodListMap
+      !?overridingAbstractCategoryMethodListMap
+      !?abstractCategoryReaderListMap
+      !?categoryReaderListMap
+      !?overridingCategoryReaderListMap
+      !?overridingAbstractCategoryReaderListMap
+    ]
+  end
+#------ Check Category
+  if @uint. errorCount == 0 then
+  #--- A given abstract category modifier is defined only once for a class
+    for () in  abstractCategoryModifierListMap do
+      var categoryModifierMap =@categoryModifierMapForGlobalCheckings.emptyMap{}
+      for () in  mList do
+        [!?categoryModifierMap insertKey !mValue]
+      end
+    end  
+  #--- A given base category modifier is defined only once for a class
+    for () in  categoryModifierListMap do
+      var categoryModifierMap =@categoryModifierMapForGlobalCheckings.emptyMap{}
+      for () in  mList do
+        [!?categoryModifierMap insertKey !mValue]
+      end
+    end  
+  #--- A given overriding category modifier is defined only once for a class
+    for () in  overridingCategoryModifierListMap do
+      var categoryModifierMap =@categoryModifierMapForGlobalCheckings.emptyMap{}
+      for () in  mList do
+        [!?categoryModifierMap insertKey !mValue]
+      end
+    end  
+  #--- A given overriding abstract category modifier is defined only once for a class
+    for () in  overridingAbstractCategoryMethodListMap do
+      var categoryModifierMap =@categoryModifierMapForGlobalCheckings.emptyMap{}
+      for () in  mList do
+        [!?categoryModifierMap insertKey !mValue]
+      end
+    end  
+  #------ Check that for every abstract category modifier, an overridden category modifier defined in an concrete subclass
+    for () in  abstractCategoryModifierListMap do
+      for () in  mList do
+        checkCategoryModifierDefinitionForClass (
+          !key
+          !key
+          !mValue
+          !descendantClassListMap
+          !overridingCategoryModifierListMap
+          !inSemanticContext.mTypeMap
+        )
+      end
+    end
+  #------ Check that for every overriding abstract category modifier, an overridden category modifier defined in an concrete subclass
+    for () in  overridingAbstractCategoryModifierListMap do
+      for () in  mList do
+        checkCategoryModifierDefinitionForClass (
+          !key
+          !key
+          !mValue
+          !descendantClassListMap
+          !overridingCategoryModifierListMap
+          !inSemanticContext.mTypeMap
+        )
+      end
+    end
+  #--- A given abstract category method is defined only once for a class
+    for () in  abstractCategoryMethodListMap do
+      var categoryMethodMap =@categoryMethodMapForGlobalCheckings.emptyMap{}
+      for () in  mList do
+        [!?categoryMethodMap insertKey !mValue]
+      end
+    end  
+  #--- A given base category method is defined only once for a class
+    for () in  categoryMethodListMap do
+      var categoryMethodMap =@categoryMethodMapForGlobalCheckings.emptyMap{}
+      for () in  mList do
+        [!?categoryMethodMap insertKey !mValue]
+      end
+    end  
+  #--- A given overriding category method is defined only once for a class
+    for () in  overridingCategoryMethodListMap do
+      var categoryMethodMap =@categoryMethodMapForGlobalCheckings.emptyMap{}
+      for () in  mList do
+        [!?categoryMethodMap insertKey !mValue]
+      end
+    end  
+  #--- A given overriding abstract category method is defined only once for a class
+    for () in  overridingAbstractCategoryMethodListMap do
+      var categoryMethodMap =@categoryMethodMapForGlobalCheckings.emptyMap{}
+      for () in  mList do
+        [!?categoryMethodMap insertKey !mValue]
+      end
+    end  
+  #------ Check that for every abstract category method, an overridden category method defined in an concrete subclass
+    for () in  abstractCategoryMethodListMap do
+      for () in  mList do
+        checkCategoryMethodDefinitionForClass (
+          !key
+          !key
+          !mValue
+          !descendantClassListMap
+          !overridingCategoryMethodListMap
+          !inSemanticContext.mTypeMap
+        )
+      end
+    end
+  #------ Check that for every abstract category method, an overridden category method defined in an concrete subclass
+    for () in  overridingAbstractCategoryMethodListMap do
+      for () in  mList do
+        checkCategoryMethodDefinitionForClass (
+          !key
+          !key
+          !mValue
+          !descendantClassListMap
+          !overridingCategoryMethodListMap
+          !inSemanticContext.mTypeMap
+        )
+      end
+    end
+  #------ Check Category readers
+##--- Check that for every abstract category reader, an overridden category reader
+##    defined in an concrete subclass
+  #--- A given abstract category reader is defined only once for a class
+    for () in  abstractCategoryReaderListMap do
+      var CategoryReaderMap =@categoryReaderMapForGlobalCheckings.emptyMap{}
+      for () in  mList do
+        [!?CategoryReaderMap insertKey !mValue]
+      end
+    end  
+  #--- A given base category reader is defined only once for a class
+    for () in  categoryReaderListMap do
+      var CategoryReaderMap =@categoryReaderMapForGlobalCheckings.emptyMap{}
+      for () in  mList do
+        [!?CategoryReaderMap insertKey !mValue]
+      end
+    end  
+  #--- A given overriding category reader is defined only once for a class
+    for () in  overridingCategoryReaderListMap do
+      var CategoryReaderMap =@categoryReaderMapForGlobalCheckings.emptyMap{}
+      for () in  mList do
+        [!?CategoryReaderMap insertKey !mValue]
+      end
+    end  
+  #--- Check every abstract category reader is implemented by every inherited concrete type
+    for () in  abstractCategoryReaderListMap do
+      for () in  mList do
+        checkCategoryReaderDefinitionForClass (
+          !key
+          !key
+          !mValue
+          !descendantClassListMap
+          !overridingCategoryReaderListMap
+          !inSemanticContext.mTypeMap
+        )
+      end
+    end
+  #--- Check every abstract category reader is implemented by every inherited concrete type
+    for () in  overridingAbstractCategoryReaderListMap do
+      for () in  mList do
+        checkCategoryReaderDefinitionForClass (
+          !key
+          !key
+          !mValue
+          !descendantClassListMap
+          !overridingCategoryReaderListMap
+          !inSemanticContext.mTypeMap
+        )
+      end
+    end
+  end
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#           G E N E R A T I O N    F I L E W R A P P E R S                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+filewrapper typeDumpGenerationTemplate in "../generation_templates/target_generation" {
+}{
+}{
+  template typeDump "typeDump.html.gTemplate"
+    ?@string PROJECT_NAME
+    ?@unifiedTypeMap UNIFIED_TYPE_MAP
+    ?@stringset FIRST_LETTER_SET
+    ?@string TABLE_OF_TYPES_STRING
+}
+
+#---------------------------------------------------------------------------*
+
+func linkForType ?let @string inTypeName -> @string outResult {
+  outResult = "<a class=\"header_link\" href=\"#" + inTypeName + "\">@" + inTypeName + "</a>"
+}
+
+#---------------------------------------------------------------------------*
+

@@ -1,0 +1,1330 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Generate predefined types                                                *
+#                                                                           *
+#  Copyright (C) 2010, ..., 2014 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+
+
+#---------------------------------------------------------------------------*
+
+override method @outputActualParameterForGeneration generateActualParameter
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@string ioImplementation
+  ?!@stringlist unused ioJokerParametersToReleaseList
+  ?!@stringlist unused ioOutputVariableList
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppName {
+  [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
+  [mOutputActualParameterExpression generateExpression !?ioImplementation !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?outCppName]
+}
+
+#---------------------------------------------------------------------------*
+
+override method @outputInputActualParameterForGeneration generateActualParameter
+  ?!@stringset ioInclusionSet
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@string unused ioImplementation
+  ?!@stringlist unused ioJokerParametersToReleaseList
+  ?!@stringlist unused ioOutputVariableList
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppName {
+  for (t) in mTypeList do
+    [t addHeaderFileName !?ioInclusionSet]
+  end
+  outCppName = mOutputInputVariableCppName
+  for () in  mStructAttributeList do
+    outCppName += ".mAttribute_" + [mValue identifierRepresentation]
+  end
+  [!?ioUnusedVariableCppNameSet removeKey !mOutputInputVariableCppName]
+}
+
+#---------------------------------------------------------------------------*
+
+override method @inputActualParameterForGeneration generateActualParameter
+  ?!@stringset unused ioInclusionSet
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@string unused ioImplementation
+  ?!@stringlist unused ioJokerParametersToReleaseList
+  ?!@stringlist ioOutputVariableList
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppName {
+  outCppName = mInputActualCppName
+  ioOutputVariableList += !mInputActualCppName
+  [!?ioUnusedVariableCppNameSet removeKey !outCppName]
+}
+
+#---------------------------------------------------------------------------*
+
+override method @inputJokerParameterForGeneration generateActualParameter
+  ?!@stringset ioInclusionSet
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@string ioImplementation
+  ?!@stringlist ioJokerParametersToReleaseList
+  ?!@stringlist ioOutputVariableList
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  !@string outCppName {
+  [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
+  outCppName = mInputActualCppName
+  ioImplementation += "GALGAS_" + [mFormalArgumentType identifierRepresentation] + " " + outCppName + " ; // Joker input parameter\n"
+  ioJokerParametersToReleaseList += !mInputActualCppName
+  ioOutputVariableList += !mInputActualCppName
+}
+
+#---------------------------------------------------------------------------*
+
+override method @semanticBlockInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+  ioGeneratedCode += "{\n"
+  generateInstructionList (
+    !?ioInclusionSet
+    !mInstructionList
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    !inGenerateSyntaxDirectedTranslationString
+    !?ioGeneratedCode
+  )
+  ioGeneratedCode += "}\n"
+}
+
+#---------------------------------------------------------------------------*
+
+override method @localVariableOrConstantDeclarationWithSourceExpressionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+  [mTargetType addHeaderFileName !?ioInclusionSet]
+  [mSourceExpression generateExpression
+     !?ioGeneratedCode
+     !?ioInclusionSet
+     !?ioTemporaryVariableIndex
+     !?ioUnusedVariableCppNameSet
+     ?let @string sourceVar
+  ]
+  ioGeneratedCode += "GALGAS_" + [mTargetType identifierRepresentation] + " " + mCppVariableName + " = " + sourceVar + " ;\n"
+}
+
+#---------------------------------------------------------------------------*
+
+override method @localVariableDeclarationForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+  [mVariableType addHeaderFileName !?ioInclusionSet]
+  ioGeneratedCode += "GALGAS_" + [mVariableType identifierRepresentation] + " " + mCppVariableName + " ;\n"
+}
+
+#---------------------------------------------------------------------------*
+
+override method @localVariableOrConstantDeclarationWithDefaultConstructorForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+  [mTargetType addHeaderFileName !?ioInclusionSet]
+  ioGeneratedCode += "GALGAS_" + [mTargetType identifierRepresentation]
+                  + " " + mTargetVariableCppName
+                  + " = GALGAS_"  + [mTargetType identifierRepresentation]
+                  + "::constructor_"
+                  + [[mTargetType mDefaultConstructorName] identifierRepresentation]
+                  + " (" + [mInstructionLocation sourceFile] + ") ;\n"
+}
+
+#---------------------------------------------------------------------------*
+
+override method @localVariableOrConstantDeclarationWithConstructorCallForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+  [mTargetType addHeaderFileName !?ioInclusionSet]
+  var parameterList =@stringlist.emptyList{}
+  for () in  mConstructorArguments do
+    @string parameter
+    [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?parameter]
+    parameterList += !parameter  
+  end
+  ioGeneratedCode += "GALGAS_" + [mTargetType identifierRepresentation]
+                   + " " + mTargetVariableCppName
+                   + " = GALGAS_"  + [mTargetType identifierRepresentation]
+                   + "::constructor_" + [mConstructorName identifierRepresentation]
+                   + " ("
+  for () in  parameterList
+    do ioGeneratedCode += mValue
+    between ioGeneratedCode += ", "
+  end
+  @bool needsComma = [parameterList length] > 0
+  if mHasCompilerArgument then
+    if needsComma then
+      ioGeneratedCode += ", "
+    end
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+    ioGeneratedCode += compilerCppName ()
+    needsComma = true
+  end
+  if needsComma then
+    ioGeneratedCode += [mInstructionLocation commaSourceFile] + ") ;\n"
+  else
+    ioGeneratedCode += [mInstructionLocation sourceFile] + ") ;\n"
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @assignmentInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+  @string sourceVar
+  [mSourceExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?sourceVar]
+  [!?ioUnusedVariableCppNameSet removeKey !mNameForCheckingFormalParameterUsing]
+#---
+  @string receiverCppName = mTargetCppName
+  for () in  mStructAttributeList do
+    receiverCppName += ".mAttribute_" + [[mValue string] identifierRepresentation]
+  end
+  ioGeneratedCode += receiverCppName + " = " + sourceVar + " ;\n"
+  [!?ioUnusedVariableCppNameSet removeKey !mTargetCppName]
+}
+
+#---------------------------------------------------------------------------*
+
+override method @dropInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+  for (t) in mDropTypeList do
+    [t addHeaderFileName !?ioInclusionSet]
+  end
+  for () in  mDropList do
+    ioGeneratedCode += mValue + ".drop () ; // " + mComment + "\n"
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @concatInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+  [mTargetType addHeaderFileName !?ioInclusionSet]
+  [mSourceExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?let @string sourceVar
+  ]
+  [!?ioUnusedVariableCppNameSet removeKey !mNameForCheckingFormalParameterUsing]
+  ioGeneratedCode += mTargetVariableCppName
+  for () in  mStructAttributeList do
+    ioGeneratedCode += ".mAttribute_" + mValue
+  end
+  ioGeneratedCode += ".dotAssign_operation (" + sourceVar + " " + [mInstructionLocation commaSourceFile] + ") ;\n"
+  [!?ioUnusedVariableCppNameSet removeKey !mTargetVariableCppName]
+}
+
+#---------------------------------------------------------------------------*
+#! Grammar
+#---------------------------------------------------------------------------*
+
+override method @grammarInstructionWithSourceFileForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+  ioInclusionSet += !"grammar-" + mGrammarName
+#--- Source string
+  [mSourceFileExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?let @string sourceVar
+  ]
+#--- Parameters
+  var parameterCppNameList =@stringlist.emptyList{}
+  var jokerParametersToReleaseList =@stringlist.emptyList{}
+  var inputVariableList =@stringlist.emptyList{}
+  for () in  mActualParameterList do
+    [mActualParameter generateActualParameter
+      !?ioInclusionSet
+      !?ioTemporaryVariableIndex
+      !?ioGeneratedCode
+      !?jokerParametersToReleaseList
+      !?inputVariableList
+      !?ioUnusedVariableCppNameSet
+      ?let @string parameterCppName
+    ]
+    parameterCppNameList += !parameterCppName
+    if (mActualParameter is >= @inputActualParameterForGeneration) then
+      ioGeneratedCode += parameterCppName + ".drop () ;\n"
+    end
+  end
+  if mGrammarHasTranslateFeature then
+    ioGeneratedCode += "C_String " + mSyntaxDirectedTranslationResultVarName + " ;\n"
+  end
+  ioGeneratedCode += "cGrammar_" + [mGrammarName identifierRepresentation]
+                  +  "::_performSourceFileParsing_" + [mLabelName identifierRepresentation] 
+                  +  " ("
+                  + compilerCppName () + ", "
+                  + if mGrammarHasTranslateFeature then mSyntaxDirectedTranslationResultVarName + ", " else "" end
+                  + sourceVar
+  for () in  parameterCppNameList do
+    ioGeneratedCode += ", " + mValue
+  end
+  ioGeneratedCode += " " + [mInstructionLocation commaSourceFile] + ") ;\n"
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  for s in mAssignementList do
+    ioGeneratedCode += s.mValue + "\n"
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @grammarInstructionWithSourceExpressionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+  ioInclusionSet += !"grammar-" + mGrammarName
+#--- Source string
+  @string sourceVar
+  [mSourceStringExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?sourceVar]
+#--- Parameters
+  var parameterCppNameList =@stringlist.emptyList{}
+  var jokerParametersToReleaseList =@stringlist.emptyList{}
+  var inputVariableList =@stringlist.emptyList{}
+  for () in  mActualParameterList do
+    [mActualParameter generateActualParameter
+       !?ioInclusionSet
+       !?ioTemporaryVariableIndex
+       !?ioGeneratedCode
+       !?jokerParametersToReleaseList
+       !?inputVariableList
+       !?ioUnusedVariableCppNameSet
+       ?let @string parameterCppName
+    ]
+    parameterCppNameList += !parameterCppName
+    if (mActualParameter is >= @inputActualParameterForGeneration) then
+      ioGeneratedCode += parameterCppName + ".drop () ;\n"
+    end
+  end
+  if mGrammarHasTranslateFeature then
+    ioGeneratedCode += "C_String " + mSyntaxDirectedTranslationResultVarName + " ;\n"
+  end
+  ioGeneratedCode += "cGrammar_" + [mGrammarName identifierRepresentation]
+                  +  "::_performSourceStringParsing_" + [mLabelName identifierRepresentation] 
+                  +  " (" + compilerCppName () + ", "
+                  + if mGrammarHasTranslateFeature then mSyntaxDirectedTranslationResultVarName + ", " else "" end
+                  + sourceVar
+  for () in  parameterCppNameList do
+    ioGeneratedCode += ", " + mValue
+  end
+  ioGeneratedCode += " " + [mInstructionLocation commaSourceFile] + ") ;\n"
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  for s in mAssignementList do
+    ioGeneratedCode += s.mValue + "\n"
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @ifInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+#--- Generate test expression
+  @string cppVarName
+  [mIFexpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?cppVarName]
+  let @string testVar = "test_" + [ioTemporaryVariableIndex string] ioTemporaryVariableIndex ++
+  ioGeneratedCode += "const enumGalgasBool " + testVar + " = " + cppVarName + ".boolEnum () ;\n"
+#--- If test expression is not valuated or false, execute 'else' part
+  ioGeneratedCode += "if (kBoolTrue == " + testVar + ") {\n"
+  generateInstructionList (
+    !?ioInclusionSet
+    !m_then_instructionList
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    !inGenerateSyntaxDirectedTranslationString
+    !?ioGeneratedCode
+  )
+  if [m_else_instructionList length] > 0 then
+    ioGeneratedCode += "}else if (kBoolFalse == " + testVar + ") {\n"
+    generateInstructionList (
+      !?ioInclusionSet
+      !m_else_instructionList
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
+      !?ioGeneratedCode
+    )
+  end
+  ioGeneratedCode += "}\n"
+}
+
+#---------------------------------------------------------------------------*
+
+override method @errorInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+#--- Receiver expression
+  @string receiverCppVarName
+  [mReceiverExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?receiverCppVarName]
+#--- Receiver expression
+  @string messageCppVarName
+  [mErrorExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?messageCppVarName]
+#--- Use location reader ?
+  if mUseLocationReader then
+    let @string locationVar = "location_" + [ioTemporaryVariableIndex string] ioTemporaryVariableIndex ++
+    ioGeneratedCode += "GALGAS_location " + locationVar + " (" + receiverCppVarName + ".reader_location (HERE)) ; // Implicit use of 'location' reader\n"
+    receiverCppVarName = locationVar
+  end
+#--- Generate error instruction
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  ioGeneratedCode += compilerCppName () + "->emitSemanticError (" + receiverCppVarName + ", " + messageCppVarName
+                   + " " + [mInstructionLocation commaSourceFile] + ") ;\n"
+#--- Release dropped variables
+  for () in  mBuiltVariableCppNameList do
+    [!?ioUnusedVariableCppNameSet removeKey !mValue]
+    ioGeneratedCode += mValue + ".drop () ; // Release error dropped variable\n"
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @warningInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+#--- Receiver expression
+  @string receiverCppVarName
+  [mReceiverExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?receiverCppVarName]
+#--- Receiver expression
+  @string messageCppVarName
+  [mWarningExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?messageCppVarName]
+#--- Use location reader ?
+  if mUseLocationReader then
+    let @string locationVar = "location_" + [ioTemporaryVariableIndex string] ioTemporaryVariableIndex ++
+    ioGeneratedCode += "GALGAS_location " + locationVar + " (" + receiverCppVarName + ".reader_location (HERE)) ; // Implicit use of 'location' reader\n"
+    receiverCppVarName = locationVar
+  end
+#--- Generate warning instruction
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  ioGeneratedCode += compilerCppName () + "->emitSemanticWarning (" + receiverCppVarName + ", " + messageCppVarName
+                  + " " + [mInstructionLocation commaSourceFile] + ") ;\n"
+}
+
+
+#---------------------------------------------------------------------------*
+#! Calls
+#---------------------------------------------------------------------------*
+
+
+override method @methodCallInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+#--- Receiver expression
+  [mReceiverExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string receiverCppName]
+  [!?ioUnusedVariableCppNameSet removeKey !receiverCppName]
+#---
+  var parameterCppNameList =@stringlist.emptyList{}
+  var jokerParametersToReleaseList =@stringlist.emptyList{}
+  var inputVariableList =@stringlist.emptyList{}
+  for () in  mActualParameterList do
+    @string parameterCppName
+    [mActualParameter generateActualParameter !?ioInclusionSet !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?inputVariableList !?ioUnusedVariableCppNameSet ?parameterCppName]
+    parameterCppNameList += !parameterCppName
+  end
+#--- Generate method call
+  switch mKind
+  case definedAsCategory :
+    ioInclusionSet += !"method-" + [mMethodBaseType key] + "-" + mMethodName
+    if [mReceiverType mTypeKindEnum] == @typeKindEnum. classType then
+      ioGeneratedCode += "callCategoryMethod_" + [mMethodName identifierRepresentation]
+                      + " ((const cPtr_" + [[mReceiverExpression mResultType] identifierRepresentation] + " *) " + receiverCppName + ".ptr (), "
+    else
+      ioGeneratedCode += "categoryMethod_" + [mMethodName identifierRepresentation] + " (" + receiverCppName + ", "
+    end
+  case definedAsMember :
+    ioGeneratedCode += receiverCppName + ".method_" + [mMethodName identifierRepresentation] + " ("
+  end
+  for () in  parameterCppNameList
+    do ioGeneratedCode += mValue
+    between ioGeneratedCode += ", "
+  end
+  if [parameterCppNameList length] == 0 then
+    if mHasCompilerArgument then
+      [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+      ioGeneratedCode += compilerCppName ()
+      ioGeneratedCode += " COMMA_"
+    end
+  elsif mHasCompilerArgument then
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+    ioGeneratedCode += ", " + compilerCppName ()
+    ioGeneratedCode += " COMMA_"
+  else
+    ioGeneratedCode += " COMMA_"
+  end
+  ioGeneratedCode += [mInstructionLocation sourceFile] + ") ;\n"
+}
+
+#---------------------------------------------------------------------------*
+
+override method @routineCallInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+  ioInclusionSet += !"proc-" + mRoutineName
+  ioGeneratedCode += "{\n"
+#--- Parameters
+  var parameterCppNameList =@stringlist.emptyList{}
+  var jokerParametersToReleaseList =@stringlist.emptyList{}
+  var inputVariableList =@stringlist.emptyList{}
+  for () in  mActualParameterList do
+    @string parameterCppName
+    [mActualParameter generateActualParameter !?ioInclusionSet !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?inputVariableList !?ioUnusedVariableCppNameSet ?parameterCppName]
+    parameterCppNameList += !parameterCppName
+  end
+#--- Generate method call
+  ioGeneratedCode += "routine_" + [[mRoutineName string] identifierRepresentation] + " ("
+  for () in  parameterCppNameList do
+    ioGeneratedCode += mValue + ", "
+  end
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  ioGeneratedCode +=  compilerCppName () + " " + [[mRoutineName location] commaSourceFile] + ") ;\n"
+  ioGeneratedCode += "}\n"
+}
+
+#---------------------------------------------------------------------------*
+
+override method @modifierCallInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+  ioGeneratedCode += "{\n"
+  @string receiverCppName = mReceiverCppName
+  for () in  mReceiverStructAttributes do
+    receiverCppName += ".mAttribute_" + [[mValue string] identifierRepresentation]
+  end
+  [!?ioUnusedVariableCppNameSet removeKey !mReceiverBaseName]
+#--- Parameters
+  var parameterCppNameList =@stringlist.emptyList{}
+  var jokerParametersToReleaseList =@stringlist.emptyList{}
+  var inputVariableList =@stringlist.emptyList{}
+  for () in  mActualParameterList do
+    @string parameterCppName
+    [mActualParameter generateActualParameter
+      !?ioInclusionSet
+      !?ioTemporaryVariableIndex
+      !?ioGeneratedCode
+      !?jokerParametersToReleaseList
+      !?inputVariableList
+      !?ioUnusedVariableCppNameSet
+      ?parameterCppName
+    ]
+    parameterCppNameList += !parameterCppName
+  end
+#--- Generate method call
+  switch mKind
+  case definedAsCategory :
+    ioInclusionSet += !"setter-" + [mMethodBaseType key]+ "-" + mModifierName
+    if [mReceiverType mTypeKindEnum] == @typeKindEnum. classType then
+      if ([[mReceiverType mAllTypedAttributeList] length] > 0) & [mReceiverType mIsConcrete] then
+        ioGeneratedCode += receiverCppName + ".insulate (HERE) ;\n"
+      end
+      ioGeneratedCode += "callCategoryModifier_" + [mModifierName identifierRepresentation]
+                      + " ((cPtr_" + [mReceiverType identifierRepresentation] + " *) " + receiverCppName + ".ptr (), "
+    else
+      ioGeneratedCode += "categoryModifier_" + [mModifierName identifierRepresentation] + " (" + receiverCppName + ", "
+    end
+  case definedAsMember :
+    [mReceiverType addHeaderFileName !?ioInclusionSet]
+    ioGeneratedCode += receiverCppName + ".modifier_" + [[mModifierName string] identifierRepresentation] + " ("
+  end
+  for () in  parameterCppNameList
+    do ioGeneratedCode += mValue
+    between ioGeneratedCode += ", "
+  end
+  if mHasCompilerArgument then
+    if [parameterCppNameList length] != 0 then
+      ioGeneratedCode +=  ", "
+    end
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+    ioGeneratedCode +=  compilerCppName ()
+    ioGeneratedCode += " COMMA_"
+  elsif [parameterCppNameList length] != 0 then
+    ioGeneratedCode += " COMMA_"
+  end
+  ioGeneratedCode += [[mModifierName location] sourceFile] + ") ;\n"
+  ioGeneratedCode += "}\n"
+}
+
+#---------------------------------------------------------------------------*
+
+override method @selfModifierCallInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+  ioGeneratedCode += "{\n"
+  [!?ioUnusedVariableCppNameSet removeKey !mSelfCppName]
+#--- Parameters
+  var parameterCppNameList =@stringlist.emptyList{}
+  var jokerParametersToReleaseList =@stringlist.emptyList{}
+  var inputVariableList =@stringlist.emptyList{}
+  for () in  mActualParameterList do
+    [mActualParameter generateActualParameter
+      !?ioInclusionSet
+      !?ioTemporaryVariableIndex
+      !?ioGeneratedCode
+      !?jokerParametersToReleaseList
+      !?inputVariableList
+      !?ioUnusedVariableCppNameSet
+      ?let @string parameterCppName]
+    parameterCppNameList += !parameterCppName
+  end
+#--- Generate modifier call
+  switch mKind
+  case definedAsCategory :
+    ioInclusionSet += !"setter-" + [mReceiverType key]+ "-" + mModifierName
+    if [mReceiverType mTypeKindEnum] == @typeKindEnum. classType then
+      ioGeneratedCode += "callCategoryModifier_" + [mModifierName identifierRepresentation] + " (" + mSelfCppName + ", "
+    else
+      ioGeneratedCode += "categoryModifier_" + [mModifierName identifierRepresentation] + " (" + mSelfCppName + ", "
+    end
+  case definedAsMember :
+    if [mReceiverType mTypeKindEnum] == @typeKindEnum. classType then
+      ioGeneratedCode += mSelfCppName + "->modifier_" + [mModifierName identifierRepresentation] + " ("
+    else
+      ioGeneratedCode += mSelfCppName + ".modifier_" + [mModifierName identifierRepresentation] + " ("
+    end
+  end
+  for () in  parameterCppNameList
+    do ioGeneratedCode += mValue
+    between ioGeneratedCode += ", "
+  end
+  if mHasCompilerArgument then
+    if [parameterCppNameList length] != 0 then
+      ioGeneratedCode +=  ", "
+    end
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+    ioGeneratedCode +=  compilerCppName ()
+    ioGeneratedCode += " COMMA_"
+  elsif [parameterCppNameList length] != 0 then
+    ioGeneratedCode += " COMMA_"
+  end
+  ioGeneratedCode += [[mModifierName location] sourceFile] + ") ;\n"
+  ioGeneratedCode += "}\n"
+}
+
+#---------------------------------------------------------------------------*
+
+override method @typeMethodInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+  ioGeneratedCode += "{\n"
+#--- Parameters
+  var parameterCppNameList =@stringlist.emptyList{}
+  var jokerParametersToReleaseList =@stringlist.emptyList{}
+  var inputVariableList =@stringlist.emptyList{}
+  for () in  mActualParameterList do
+    [mActualParameter generateActualParameter
+      !?ioInclusionSet
+      !?ioTemporaryVariableIndex
+      !?ioGeneratedCode
+      !?jokerParametersToReleaseList
+      !?inputVariableList
+      !?ioUnusedVariableCppNameSet
+      ?let @string parameterCppName]
+    parameterCppNameList += !parameterCppName
+  end
+#--- Generate method call
+  ioGeneratedCode += "GALGAS_" + [[mTypeName string] identifierRepresentation]
+                  + "::class_method_" + [[mMethodName string] identifierRepresentation] + " ("
+  for () in  parameterCppNameList
+    do ioGeneratedCode += mValue
+    between ioGeneratedCode += ", "
+  end
+  if mHasCompilerArgument then
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+    if [parameterCppNameList length] > 0 then
+      ioGeneratedCode += ", "
+    end
+    ioGeneratedCode +=  compilerCppName ()
+  end
+  if mHasCompilerArgument | ([parameterCppNameList length] > 0) then
+    ioGeneratedCode += " COMMA_"
+  end
+  ioGeneratedCode += [[mMethodName location] sourceFile] + ") ;\n"
+  ioGeneratedCode += "}\n"
+}
+
+#---------------------------------------------------------------------------*
+#! Cast
+#---------------------------------------------------------------------------*
+
+override method @structuredCastInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+#--- Cast expression
+  [mExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?let @string castCppVarName
+  ]
+#---
+  ioGeneratedCode += "if (" + castCppVarName + ".isValid ()) {\n"
+  [!?ioGeneratedCode incIndentation !2]
+  for () in  mCastBranchList do
+   [mType addHeaderFileName !?ioInclusionSet]
+    switch mTypeComparisonKind
+    case equal :
+      ioGeneratedCode += "if (" + castCppVarName
+      + ".dynamicTypeDescriptor () == & kTypeDescriptor_GALGAS_"
+      + [mType identifierRepresentation] + ") {\n"
+    case inherited :
+      ioGeneratedCode += "if (NULL != dynamic_cast <const cPtr_"
+      + [mType identifierRepresentation]
+      + " *> (" + castCppVarName + ".ptr ())) {\n"
+    case strictlyInherited :
+      ioGeneratedCode += "if ((" + castCppVarName
+      + ".dynamicTypeDescriptor () != & kTypeDescriptor_GALGAS_"
+      + [mType identifierRepresentation] + ") && (NULL != dynamic_cast <const cPtr_"
+      + [mType identifierRepresentation]
+      + " *> (" + castCppVarName + ".ptr ()))) {\n"
+    end
+    if [mCastedVarCppName length] > 0 then
+      ioGeneratedCode +=
+        "  GALGAS_" + [mType identifierRepresentation]
+      + " " + mCastedVarCppName + " ((cPtr_" + [mType identifierRepresentation]
+      + " *) " + castCppVarName + ".ptr ()) ;\n"
+    end
+    generateInstructionList (
+      !?ioInclusionSet
+      !mInstructionList
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
+      !?ioGeneratedCode
+    )
+  between ioGeneratedCode += "}else "
+  end
+#--- 'else' branch
+  if [mElseInstructionList length] > 0 then
+    ioGeneratedCode += "}else{\n"
+    generateInstructionList (
+      !?ioInclusionSet
+      !mElseInstructionList
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
+      !?ioGeneratedCode
+    )  
+  end
+#---
+  ioGeneratedCode += "}\n"
+  [!?ioGeneratedCode decIndentation !2]
+  ioGeneratedCode += "}\n"
+}
+
+#---------------------------------------------------------------------------*
+
+override method @plusEqualnstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+#--- Parameters
+  [mTargetType addHeaderFileName !?ioInclusionSet]
+  var parameterList =@stringlist.emptyList{}
+  for () in  mExpressionList do
+    [mExpression generateExpression
+      !?ioGeneratedCode
+      !?ioInclusionSet
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      ?let @string parameter
+    ]
+    parameterList += !parameter  
+  end
+#--- Receiver
+  [!?ioUnusedVariableCppNameSet removeKey !mNameForCheckingFormalParameterUsing]
+  ioGeneratedCode += mReceiverCppName
+  for () in  mStructAttributeList do
+    ioGeneratedCode += ".mAttribute_" + [[mValue string] identifierRepresentation]
+  end
+#--- Call add assign (+=) operator
+  ioGeneratedCode += ".addAssign_operation ("
+  [!?ioUnusedVariableCppNameSet removeKey !mReceiverCppName]
+  for () in  parameterList
+    do ioGeneratedCode += mValue
+    between ioGeneratedCode += ", "
+  end
+  if ([mTargetType mHandledOperatorFlags] & plusEqualOperatorWithFieldListNeedsCompilerArg ()) != 0 then
+    ioGeneratedCode  += ", " + compilerCppName ()
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  end
+  ioGeneratedCode += " " + [mInstructionLocation commaSourceFile] + ") ;\n"
+}
+
+#---------------------------------------------------------------------------*
+
+override method @incrementInstructionForGeneration generateInstruction
+  ?!@stringset unused ioInclusionSet
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+#--- Receiver
+  [!?ioUnusedVariableCppNameSet removeKey !mReceiverCppName]
+  @string receiverCppName = mReceiverCppName
+  for () in  mStructAttributeList do
+    receiverCppName += ".mAttribute_" + [[mValue string] identifierRepresentation]
+  end
+#--- Invoke incrementation
+  ioGeneratedCode += receiverCppName + ".increment_operation (" + compilerCppName ()
+                  + " " + [mInstructionLocation commaSourceFile] + ") ;\n"
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+}
+
+#---------------------------------------------------------------------------*
+
+override method @decrementInstructionForGeneration generateInstruction
+  ?!@stringset unused ioInclusionSet
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+#--- Receiver
+  [!?ioUnusedVariableCppNameSet removeKey !mReceiverCppName]
+  @string receiverCppName = mReceiverCppName
+  for () in  mStructAttributeList do
+    receiverCppName += ".mAttribute_" + [[mValue string] identifierRepresentation]
+  end
+#--- Invoke incrementation
+  ioGeneratedCode += receiverCppName + ".decrement_operation (" + compilerCppName ()
+                  + " " + [mInstructionLocation commaSourceFile] + ") ;\n"
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+}
+
+#---------------------------------------------------------------------------*
+
+override method @messageInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+#--- Message expression
+  [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string messageCppVarName]
+#--- Invoke 'printMessage' method of C_Compiler
+  ioGeneratedCode += compilerCppName () + "->printMessage (" + messageCppVarName
+  ioGeneratedCode += " " + [mInstructionLocation commaSourceFile] + ") ;\n"
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+}
+
+#---------------------------------------------------------------------------*
+
+override method @loopInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+#--- Variant expression
+  @string variantCppVarName
+  [mVariantExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?variantCppVarName]
+  ioGeneratedCode += "if (" + variantCppVarName + ".isValid ()) {\n"
+  [!?ioGeneratedCode incIndentation !2]
+  let @string variantVar = "variant_" + [[mInstructionLocation locationIndex] string]
+  ioGeneratedCode += "uint32_t " + variantVar + " = " + variantCppVarName + ".uintValue () ;\n"
+  let @string loopVar = "loop_" + [[mInstructionLocation locationIndex] string]
+  ioGeneratedCode += "bool " + loopVar + " = true ;\n"
+                  + "while (" + loopVar + ") {\n"
+  [!?ioGeneratedCode incIndentation !2]
+  generateInstructionList (
+    !?ioInclusionSet
+    !mFirstInstructions
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    !inGenerateSyntaxDirectedTranslationString
+    !?ioGeneratedCode
+  )
+  @string loopExpressionVar
+  [mLoopExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?loopExpressionVar]
+  ioGeneratedCode += loopVar + " = " + loopExpressionVar + ".isValid () ;\n"
+                   + "if (" + loopVar + ") {\n"
+                   + "  " + loopVar + " = " + loopExpressionVar + ".boolValue () ;\n"
+                   + "}\n"
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  ioGeneratedCode += "if (" + loopVar + " && (0 == " + variantVar + ")) {\n"
+                     "  " + loopVar + " = false ;\n"
+                     "  " + compilerCppName () + "->loopRunTimeVariantError (" + [mInstructionLocation sourceFile] + ") ;\n"
+                     "}\n"
+                   + "if (" + loopVar + ") {\n"
+  ioGeneratedCode += "  " + variantVar + " -- ;\n"
+  generateInstructionList (
+    !?ioInclusionSet
+    !mSecondInstructions
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    !inGenerateSyntaxDirectedTranslationString
+    !?ioGeneratedCode
+  )
+  ioGeneratedCode += "}\n"
+  [!?ioGeneratedCode decIndentation !2]
+  ioGeneratedCode += "}\n"
+  [!?ioGeneratedCode decIndentation !2]
+  ioGeneratedCode += "}\n"
+}
+
+#---------------------------------------------------------------------------*
+#! with
+#---------------------------------------------------------------------------*
+
+override method @readOnlyWithInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+#--- Receiver expression
+  [mReceiverExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string receiverVarCppName]
+  let receiverType = [mReceiverExpression mResultType]
+#--- key expression
+  [mKeyExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string keyVarCppName]
+#---
+  ioGeneratedCode += "const cMapElement_" + [receiverType identifierRepresentation]
+                  + " * " + mObjectArrayCppName + " = (const cMapElement_" + [receiverType identifierRepresentation]
+                  + " *) " + receiverVarCppName + "."
+  if mSearchMethodNameForErrorSignaling == "" then
+    ioGeneratedCode += "readAccessForWithInstruction (" + keyVarCppName + ") ;\n"
+  else
+    ioGeneratedCode += "performSearch (" + keyVarCppName
+                    + ", " + compilerCppName ()
+                    + ", kSearchErrorMessage_" + [receiverType identifierRepresentation] + "_" + mSearchMethodNameForErrorSignaling
+                    + " " + [mInstructionLocation commaSourceFile] + ") ;\n"
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  end
+  ioGeneratedCode +=  "if (NULL != " + mObjectArrayCppName + ") {\n"
+                  +  "    macroValidSharedObject (" + mObjectArrayCppName + ", cMapElement_" + [receiverType identifierRepresentation] + ") ;\n"
+  generateInstructionList (
+    !?ioInclusionSet
+    !mDoBranchInstructions
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    !inGenerateSyntaxDirectedTranslationString
+    !?ioGeneratedCode
+  )
+  if [mElseBranchInstructions length] > 0 then
+    ioGeneratedCode += "}else{\n"
+    generateInstructionList (
+      !?ioInclusionSet
+      !mElseBranchInstructions
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
+      !?ioGeneratedCode
+    )
+  end
+  ioGeneratedCode += "}\n"
+}
+
+#---------------------------------------------------------------------------*
+
+override method @readWriteWithInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+  @string receiverCppName = mReceiverVariableCppName
+  for () in  mStructAttributeList do
+    receiverCppName += ".mAttribute_" + [[mValue string] identifierRepresentation]
+  end
+#--- key expression
+  [mKeyExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string keyVarCppName]
+#---
+  [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+  [!?ioUnusedVariableCppNameSet removeKey !mReceiverVariableCppName]
+  ioGeneratedCode += "cMapElement_" + [mReceiverType identifierRepresentation]
+                  + " * " + mObjectArrayCppName + " = (cMapElement_" + [mReceiverType identifierRepresentation]
+                  + " *) " + receiverCppName + "."
+  if mSearchMethodNameForErrorSignaling == "" then
+    ioGeneratedCode += "readWriteAccessForWithInstruction (" + compilerCppName () +  ", " + keyVarCppName
+  else
+    ioGeneratedCode += "readWriteAccessForWithInstructionWithErrorMessage (" + compilerCppName () +  ", " + keyVarCppName
+    ioGeneratedCode += ", kSearchErrorMessage_" + [mReceiverType identifierRepresentation] + "_" + mSearchMethodNameForErrorSignaling
+  end
+  ioGeneratedCode +=  " " + [mInstructionLocation commaSourceFile] + ") ;\n"
+                  +  "if (NULL != " + mObjectArrayCppName + ") {\n"
+                  +  "    macroValidSharedObject (" + mObjectArrayCppName + ", cMapElement_" + [mReceiverType identifierRepresentation] + ") ;\n"
+  generateInstructionList (
+    !?ioInclusionSet
+    !mDoBranchInstructions
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    !inGenerateSyntaxDirectedTranslationString
+    !?ioGeneratedCode
+  )
+  if [mElseBranchInstructions length] > 0 then
+    ioGeneratedCode += "}else{\n"
+    generateInstructionList (
+      !?ioInclusionSet
+      !mElseBranchInstructions
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
+      !?ioGeneratedCode
+    )
+  end
+  ioGeneratedCode += "}\n"
+}
+
+#---------------------------------------------------------------------------*
+#! foreach
+#---------------------------------------------------------------------------*
+
+override method @foreachInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+  var enumerationVarCppNameList =@stringlist.emptyList{}
+  for () in  mEnumeratedObjectList do
+    @string enumerationVar
+    [mEnumeratedExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?enumerationVar]
+    enumerationVarCppNameList += !enumerationVar
+  end
+  for () in  mEnumeratedObjectList, () in  enumerationVarCppNameList do
+    ioGeneratedCode += "cEnumerator_" + [[mEnumeratedExpression mResultType] identifierRepresentation] + " " + mEnumeratorCppName + " (" + mValue
+                    + ", kEnumeration_" + mEnumerationOrder + ") ;\n"
+  end
+#--- Analyse 'while' expression
+  let @bool whileExpressionIsAllwaysTrue = [mWhileExpression isTrueExpression]
+#--- Has 'before', 'after' or expression ? If yes, generate 'before' instructions
+  if (([mBeforeInstructionList length] + [mAfterInstructionList length]) > 0) | not whileExpressionIsAllwaysTrue then
+  #--- Index
+    if mIndexVariableCppName != "" then
+      ioGeneratedCode += "GALGAS_uint " + mIndexVariableCppName + " ((uint32_t) 0) ;\n"
+    end
+    let @string boolVarCppName = "bool_" + [ioTemporaryVariableIndex string] ioTemporaryVariableIndex ++
+    if whileExpressionIsAllwaysTrue then
+      ioGeneratedCode += "const bool " + boolVarCppName + " = true ;\n"
+    else
+      @string whileVar
+      [mWhileExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?whileVar]
+      ioGeneratedCode += "bool " + boolVarCppName + " = " + whileVar + ".isValidAndTrue () ;\n"
+    end
+    ioGeneratedCode += "if ("
+    for () in  mEnumeratedObjectList do
+      ioGeneratedCode += mEnumeratorCppName + ".hasCurrentObject () && "
+    end
+    ioGeneratedCode += boolVarCppName + ") {\n"
+    generateInstructionList (
+      !?ioInclusionSet
+      !mBeforeInstructionList
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
+      !?ioGeneratedCode
+    )
+    [!?ioGeneratedCode incIndentation !2]
+    ioGeneratedCode += "while ("
+    for () in  mEnumeratedObjectList do
+      ioGeneratedCode += mEnumeratorCppName + ".hasCurrentObject () && "
+    end
+    ioGeneratedCode += boolVarCppName + ") {\n"
+  #--- Generate 'do' instruction
+    generateInstructionList (
+      !?ioInclusionSet
+      !mDoInstructionList
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
+      !?ioGeneratedCode
+    )
+  #--- Goto next object
+    for () in  mEnumeratedObjectList do
+      ioGeneratedCode += "  " + mEnumeratorCppName + ".gotoNextObject () ;\n"
+    end
+    if mIndexVariableCppName != "" then
+      ioGeneratedCode += "  " + mIndexVariableCppName + ".increment () ;\n"
+    end
+  #--- Compute 'while' expression
+    if not whileExpressionIsAllwaysTrue then
+      ioGeneratedCode += "  if ("
+      for () in  mEnumeratedObjectList
+      do  ioGeneratedCode += mEnumeratorCppName + ".hasCurrentObject ()"
+      between ioGeneratedCode += " && "
+      end
+      ioGeneratedCode += ") {\n"
+      @string whileVar
+      [mWhileExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?whileVar]
+      ioGeneratedCode += "    " + boolVarCppName + " = " + whileVar + ".isValidAndTrue () ;\n"
+      ioGeneratedCode += "  }\n"
+    end
+  #--- Generate 'between' instruction
+    if [mBetweenInstructionList length] > 0 then
+      [!?ioGeneratedCode incIndentation !2]
+      ioGeneratedCode += "if ("
+      for () in  mEnumeratedObjectList do
+        ioGeneratedCode += mEnumeratorCppName + ".hasCurrentObject () && "
+      end
+      ioGeneratedCode += boolVarCppName + ") {\n"
+      generateInstructionList (
+        !?ioInclusionSet
+        !mBetweenInstructionList
+        !?ioTemporaryVariableIndex
+        !?ioUnusedVariableCppNameSet
+        !inGenerateSyntaxDirectedTranslationString
+        !?ioGeneratedCode
+      )
+      ioGeneratedCode += "}\n"
+      [!?ioGeneratedCode decIndentation !2]
+    end
+  #--- End of foreach instruction
+    ioGeneratedCode += "}\n"
+  #--- Generate 'after' instruction
+    [!?ioGeneratedCode decIndentation !2]
+    generateInstructionList (
+      !?ioInclusionSet
+      !mAfterInstructionList
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
+      !?ioGeneratedCode
+    )
+    ioGeneratedCode += "}\n"
+  else #----- foreach instruction without 'before', 'after', while expression
+    if mIndexVariableCppName != "" then
+      ioGeneratedCode += "GALGAS_uint " + mIndexVariableCppName + " ((uint32_t) 0) ;\n"
+    end
+    ioGeneratedCode += "while ("
+    for () in  mEnumeratedObjectList
+      do ioGeneratedCode += mEnumeratorCppName + ".hasCurrentObject ()"
+      between ioGeneratedCode += " && "
+    end
+    ioGeneratedCode += ") {\n"
+  #--- Generate 'do' instruction
+    generateInstructionList (
+      !?ioInclusionSet
+      !mDoInstructionList
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
+      !?ioGeneratedCode
+    )
+  #--- Generate 'between' instruction
+    if [mBetweenInstructionList length] > 0 then
+      [!?ioGeneratedCode incIndentation !2]
+      ioGeneratedCode += "if ("
+      for () in  mEnumeratedObjectList
+        do ioGeneratedCode += mEnumeratorCppName + ".hasNextObject ()"
+        between ioGeneratedCode += " && "
+      end
+      ioGeneratedCode += ") {\n"
+      generateInstructionList (
+        !?ioInclusionSet
+        !mBetweenInstructionList
+        !?ioTemporaryVariableIndex
+        !?ioUnusedVariableCppNameSet
+        !inGenerateSyntaxDirectedTranslationString
+        !?ioGeneratedCode
+      )
+      ioGeneratedCode += "}\n"
+      [!?ioGeneratedCode decIndentation !2]
+    end
+  #--- End of foreach instruction
+    for () in  mEnumeratedObjectList do
+      ioGeneratedCode += "  " + mEnumeratorCppName + ".gotoNextObject () ;\n"
+    end
+    if mIndexVariableCppName != "" then
+      [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
+      ioGeneratedCode += "  " + mIndexVariableCppName + ".increment_operation (" + compilerCppName ()
+      + " " + [mInstructionLocation commaSourceFile] + ") ;\n"
+    end
+    ioGeneratedCode += "}\n"
+  end
+}
+
+#---------------------------------------------------------------------------*
+#! Log
+#---------------------------------------------------------------------------*
+
+override method @logInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool unused inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+  [mLogExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string logVar]
+  ioGeneratedCode += logVar + ".log (" + [mLogMessage utf8Representation]
+  + " " + [[mLogMessage location] commaSourceFile] + ") ;\n"
+}
+
+#---------------------------------------------------------------------------*
+#! switch
+#---------------------------------------------------------------------------*
+
+override method @switchInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+#--- Switch expression
+  [mSwitchExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string switchVar]
+  ioGeneratedCode += "if (" + switchVar + ".isValid ()) {\n"
+  [!?ioGeneratedCode incIndentation !2]
+  ioGeneratedCode += "switch (" + switchVar + ".enumValue ()) {\n"
+  ioGeneratedCode += "case GALGAS_" + [[mSwitchExpression mResultType] identifierRepresentation] + "::kNotBuilt:\n"
+  ioGeneratedCode += "  break ;\n"
+  for () in  mBranches do
+    for () in  mSwitchConstantList do
+      ioGeneratedCode += "case GALGAS_" + [[mSwitchExpression mResultType] identifierRepresentation] + "::kEnum_" + [[mValue string] identifierRepresentation] + ": "
+    end
+    ioGeneratedCode += "{\n"
+    if [mExtractedAssociatedValuesForGeneration length] > 0 then
+      let type = "const cEnumAssociatedValues_" + [mEnumType identifierRepresentation] + "_" + [mSwitchConstantList mValueAtIndex!0].string + " *"
+      let varPtr = "extractPtr_" + mLocationIndex
+      ioGeneratedCode += "  " + type + " " + varPtr + " = dynamic_cast<" + type + "> (" + switchVar + ".unsafePointer ()) ;\n"
+      for () in mExtractedAssociatedValuesForGeneration do( idx)
+        ioGeneratedCode += "  const GALGAS_" + [mType identifierRepresentation] + " " + mCppName + " = " + varPtr + "->mAssociatedValue" + idx + " ;\n"
+      end
+    end
+    generateInstructionList (
+      !?ioInclusionSet
+      !mInstructions
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
+      !?ioGeneratedCode
+    )
+    ioGeneratedCode += "  } break ;\n"
+  end
+  ioGeneratedCode += "}\n"
+  [!?ioGeneratedCode decIndentation !2]
+  ioGeneratedCode += "}\n"
+}
+
+#---------------------------------------------------------------------------*
+#! Match
+#---------------------------------------------------------------------------*
+
+override method @matchInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+  var receiverList =@stringlist.emptyList{}
+  for () in  mMatchedExpressionList do
+    [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string variable]
+    receiverList += !variable
+  end
+  ioGeneratedCode += "if ("
+  for () in  receiverList
+    do ioGeneratedCode += mValue + ".isValid ()"
+    between ioGeneratedCode += " && "
+  end
+  ioGeneratedCode += ") {\n"
+  [!?ioGeneratedCode incIndentation !2]
+  for () in  mMatchInstructionBranchList do
+    ioGeneratedCode += "if ("
+    for () in  mMatchListForGeneration, () in  receiverList do
+      if mIsType then
+        ioGeneratedCode += "(NULL != dynamic_cast <const cPtr_" + [mTypeNameOrEnumerationConstantName identifierRepresentation]
+                        + " *> (" + mValue + ".ptr ()))"
+      else
+        ioGeneratedCode += "(" + mValue + ".enumValue () == GALGAS_"
+                        + [mLocalConstantName identifierRepresentation]
+                        + "::kEnum_" + [mTypeNameOrEnumerationConstantName identifierRepresentation] + ")"
+      end
+      between ioGeneratedCode += " && "
+    end
+    ioGeneratedCode += ") {\n"
+    generateInstructionList (
+      !?ioInclusionSet
+      !mMatchBranchInstructionList
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
+      !?ioGeneratedCode
+    )
+  between ioGeneratedCode += "}else "
+  end
+  ioGeneratedCode += "}else{\n"
+  generateInstructionList (
+    !?ioInclusionSet
+    !mElseInstructionList
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    !inGenerateSyntaxDirectedTranslationString
+    !?ioGeneratedCode
+  )
+  ioGeneratedCode += "}\n"
+  [!?ioGeneratedCode decIndentation !2]
+  ioGeneratedCode += "}\n"
+}
+
+#---------------------------------------------------------------------------*
+

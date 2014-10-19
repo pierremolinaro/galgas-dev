@@ -1,0 +1,1184 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  semantic declaracration model builder                                    *
+#                                                                           *
+#  Copyright (C) 2009, ..., 2012 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+syntax semanticDeclarationsSyntax (galgas_scanner)  %translate {
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#          Rules prototypes                                                    *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <formal_parameter_list> !@formalParameterListAST outFormalParameterList
+
+rule <semantic_instruction_list> !@semanticInstructionListAST outInstructionsList
+
+rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    A T T R I B U T E    I N    C O L L E C T I O N                        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <attribute_declaration> ?!@attributeInCollectionListAST ioAttributeInCollectionList {
+  @bool isPrivate
+  select
+    isPrivate = false
+  or
+    $local$ :> ?let @string sep ?*
+    send sep + "private"
+    isPrivate = true
+  end
+  $type_name$ ?var  @lstring mAttributeTypeName
+  $identifier$ ?var  @lstring mAttributeName
+  var featureList =@lstringlist.emptyList{}
+  select
+  or
+    $feature$ :> ?@string sep ?*
+    send sep
+    repeat
+      select
+      $identifier$ ?var  @lstring featureName :> ?* ?*
+      send "%" + featureName
+      featureList += !featureName
+      or
+        $setter$ :> ?* ?*
+        send "%setter"
+        featureList += !@lstring. new { !"setter" !@location.here}
+      end
+    while
+      $,$ :> ?* ?*
+    end
+  end
+  $;$ :> ?* ?*
+  ioAttributeInCollectionList += !isPrivate !mAttributeTypeName !mAttributeName !featureList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    L I S T M A P    D E C L A R A T I O N                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations {
+  $listmap$
+#--- Map type name
+  $type_name$ ?var  @lstring mListmapTypeName indexing listmapDefinition
+  $($
+  $type_name$ ?var  @lstring mAssociatedListTypeName
+  $)$
+  $;$ :> ?* ?*
+  ioSemanticDeclarations += !@listmapDeclarationAST. new {
+    !false # Is not predefined
+    !mListmapTypeName
+    !mAssociatedListTypeName}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    A R R A Y    D E C L A R A T I O N                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations {
+  $array$
+#--- Map type name
+  $type_name$ ?var  @lstring arrayTypeName indexing arrayTypeDefinition
+  $:$
+  $type_name$ ?var  @lstring elementListTypeName indexing arrayElementTypeReference
+  $[$
+  $unsigned_literal_integer$ ?var  @luint dimension
+  $]$
+  $;$ :> ?* ?*
+  ioSemanticDeclarations += !@arrayDeclarationAST. new {
+    !false # Is not predefined
+    !arrayTypeName
+    !elementListTypeName
+    !dimension}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    M A P    D E C L A R A T I O N                                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <insert_method_declaration> ?!@insertMethodListAST ioMapMethodList {
+  $identifier$ ?var  @lstring mMethodName
+  @lstring stateName
+  select
+    stateName = @lstring. new { !"" !@location.here}
+  or
+    $state$
+    $identifier$ ? stateName
+  end
+  $error$
+  $message$
+  $literal_string$ ?var  @lstring mErrorMessage
+  @lstring mShadowErrorMessage
+  select
+    mShadowErrorMessage = @lstring. new { !"" !@location.here}
+  or
+    $,$
+    $literal_string$ ? mShadowErrorMessage
+  end
+  $;$ :> ?* ?*
+  ioMapMethodList +=
+    !mMethodName
+    !mErrorMessage
+    !mShadowErrorMessage
+    !stateName
+}
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations {
+  $map$
+#--- Map type name
+  $type_name$ ?var  @lstring mMapTypeName indexing mapDefinition, structDefinition "-element"
+#--- Map properties
+  ${$
+  var mAttributeList =@attributeInCollectionListAST.emptyList{}
+  var mInsertMethodList =@insertMethodListAST.emptyList{}
+  var mSearchMethodList =@mapSearchMethodListAST.emptyList{}
+  var mRemoveMethodList =@mapRemoveMethodListAST.emptyList{}
+  var insertOrReplaceDeclarationListAST =@insertOrReplaceDeclarationListAST.emptyList{}
+  repeat
+  while
+    <attribute_declaration> !? mAttributeList
+  while
+    $insert$
+    <insert_method_declaration> !? mInsertMethodList
+  while
+    $search$
+    $identifier$ ?var  @lstring mMethodName
+    $error$
+    $message$
+    $literal_string$ ?var  @lstring mErrorMessage
+    $;$ :> ?* ?*
+    mSearchMethodList +=
+      !mMethodName
+      !mErrorMessage
+      !@lstring. new { !"" !@location.here}
+  while
+    $remove$
+    $identifier$ ?var  @lstring mMethodName
+    $error$
+    $message$
+    $literal_string$ ?var  @lstring mErrorMessage
+    $;$ :> ?* ?*
+    mRemoveMethodList +=
+      !mMethodName
+      !mErrorMessage
+  while
+    $insert$
+    $or$
+    $replace$
+    insertOrReplaceDeclarationListAST += !@location.here
+    $;$ :> ?* ?*
+  end
+  $}$
+  ioSemanticDeclarations += !@mapDeclarationAST. new {
+    !false # Is not predefined
+    !mMapTypeName
+    !mAttributeList
+    !mInsertMethodList
+    !mSearchMethodList
+    !mRemoveMethodList
+    !insertOrReplaceDeclarationListAST}
+}
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations {
+  $sharedmap$
+#--- Map type name
+  $type_name$ ?let @lstring mMapTypeName indexing uniquemapDefinition, mapProxyDefinition "-proxy"
+  let mapProxyTypeName = @lstring. new { !mMapTypeName.string + "-proxy" !mMapTypeName.location}
+#--- Map properties
+  ${$
+  var mAttributeList =@attributeInCollectionListAST.emptyList{}
+  var mInsertMethodList =@insertMethodListAST.emptyList{}
+  var mSearchMethodList =@mapSearchMethodListAST.emptyList{}
+  var mapStateList =@mapStateList.emptyList{}
+  var mapOverrideBlockListAST =@mapOverrideBlockListAST.emptyList{}
+  repeat
+  while
+    $state$
+    $identifier$ ?var  @lstring stateName
+    @mapAutomatonMessageKind stateMessageKind
+    @lstring stateMessage
+    select
+      stateMessageKind = @mapAutomatonMessageKind. noMessage
+      stateMessage = @lstring. new { !"" !@location.here}
+    or
+      $warning$
+      $literal_string$ ? stateMessage
+      stateMessageKind = @mapAutomatonMessageKind. warningMessage
+    or
+      $error$
+      $literal_string$ ? stateMessage
+      stateMessageKind = @mapAutomatonMessageKind. errorMessage
+    end
+    ${$
+    var transitionList =@mapStateTransitionList.emptyList{}
+    repeat
+    while
+      $identifier$ ?var  @lstring actionName
+      $->$
+      $identifier$ ?var  @lstring targetStateName
+      @mapAutomatonMessageKind transitionMessageKind
+      @lstring transitionMessage
+      select
+        transitionMessageKind = @mapAutomatonMessageKind. noMessage
+        transitionMessage = @lstring. new { !"" !@location.here}
+      or
+        $warning$
+        $literal_string$ ? transitionMessage
+        transitionMessageKind = @mapAutomatonMessageKind. warningMessage
+      or
+        $error$
+        $literal_string$ ? transitionMessage
+        transitionMessageKind = @mapAutomatonMessageKind. errorMessage
+      end
+      transitionList +=
+        !actionName
+        !targetStateName
+        !transitionMessageKind
+        !transitionMessage
+    end
+    mapStateList +=
+      !stateName
+      !stateMessageKind
+      !stateMessage
+      !transitionList
+    $}$
+  while
+    <attribute_declaration> !? mAttributeList
+  while
+    $insert$
+    <insert_method_declaration> !? mInsertMethodList
+  while
+    $search$
+    $identifier$ ?var  @lstring mMethodName
+    @lstring actionName
+    select
+      actionName = @lstring. new { !"" !@location.here}
+    or
+      $do$
+      $identifier$ ? actionName
+    end
+    $error$
+    $message$
+    $literal_string$ ?var  @lstring mErrorMessage
+    $;$ :> ?* ?*
+    mSearchMethodList +=
+      !mMethodName
+      !mErrorMessage
+      !actionName
+  while
+    $override$
+    $identifier$ ?var  @lstring overrideBlockName
+    var mapOverrideBlockDescriptor1AST =@mapOverrideBlockDescriptorAST.emptyList{}
+    ${$
+    repeat
+    while
+      $identifier$ ?var  @lstring sourceState1
+      $:$
+      $identifier$ ?var  @lstring sourceState2
+      $->$
+      $identifier$ ?var  @lstring targetState
+      @mapAutomatonMessageKind messageKind
+      @lstring messageText
+      select
+        messageKind = @mapAutomatonMessageKind. noMessage
+        messageText = @lstring. new { !"" !@location.here}
+      or
+        $warning$
+        messageKind = @mapAutomatonMessageKind. warningMessage
+        $literal_string$ ? messageText
+      or
+        $error$
+        messageKind = @mapAutomatonMessageKind. errorMessage
+        $literal_string$ ? messageText
+      end
+      mapOverrideBlockDescriptor1AST += !sourceState1 !sourceState2 !targetState !messageKind !messageText
+    end
+    $}$
+    var mapOverrideBlockDescriptor2AST =@mapOverrideBlockDescriptorAST.emptyList{}
+    ${$
+    repeat
+    while
+      $identifier$ ?var  @lstring sourceState1
+      $:$
+      $identifier$ ?var  @lstring sourceState2
+      $->$
+      $identifier$ ?var  @lstring targetState
+      @mapAutomatonMessageKind messageKind
+      @lstring messageText
+      select
+        messageKind = @mapAutomatonMessageKind. noMessage
+        messageText = @lstring. new { !"" !@location.here}
+      or
+        $warning$
+        messageKind = @mapAutomatonMessageKind. warningMessage
+        $literal_string$ ? messageText
+      or
+        $error$
+        messageKind = @mapAutomatonMessageKind. errorMessage
+        $literal_string$ ? messageText
+      end
+      mapOverrideBlockDescriptor2AST += !sourceState1 !sourceState2 !targetState !messageKind !messageText
+    end
+    $}$
+    mapOverrideBlockListAST += !overrideBlockName !mapOverrideBlockDescriptor1AST !mapOverrideBlockDescriptor2AST
+  end
+  $}$
+#--- Declare map
+  ioSemanticDeclarations += !@uniqueMapDeclarationAST. new {
+    !false # Is not predefined
+    !mMapTypeName
+    !mAttributeList
+    !mInsertMethodList
+    !mSearchMethodList
+    !mapStateList
+    !mapOverrideBlockListAST}
+#--- Declare map proxy
+  ioSemanticDeclarations += !@mapProxyDeclarationAST. new {
+    !false # Is not predefined
+    !mapProxyTypeName
+    !mMapTypeName}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    C L A S S    D E C L A R A T I O N                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations {
+  @bool mIsAbstract
+  select
+    mIsAbstract = false
+  or
+    $abstract$
+    mIsAbstract = true
+  end
+  $class$
+  var classNameList =@lstringlist.emptyList{}
+  repeat
+    $type_name$ ?var @lstring className indexing classDefinition
+    classNameList += !className
+  while
+    $,$
+  end
+  @lstring mSuperClassName # Empty if no super class
+  select
+    mSuperClassName = ["" nowhere]
+  or
+    $extends$ :> ?let @string sep ?*
+    send sep + ":"
+    $type_name$ ? mSuperClassName indexing classReferencedAsSuperClass
+  end
+  var classFeatureList =@lstringlist.emptyList{}
+  select
+  or
+    $feature$ :> ?@string sep ?*
+    send sep
+    repeat
+      $identifier$ ?var  @lstring classFeatureName :> ?* ?*
+      send "%" + classFeatureName
+      classFeatureList += !classFeatureName
+    while
+      $,$ :> ?* ?*
+    end
+  end
+  ${$
+  @string mClassMessage = ""
+#--- Class properties
+  var mAttributeList =@attributeInCollectionListAST.emptyList{}
+  repeat
+  while
+    <attribute_declaration> !? mAttributeList
+  end
+  $}$
+  for () in  classNameList do
+    ioSemanticDeclarations += !@classDeclarationAST. new {
+      !false # Is not predefined
+      !mIsAbstract
+      !mValue
+      !mSuperClassName # Empty if no super class
+      !classFeatureList
+      !mAttributeList}
+  end
+}
+
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    S T R U C T    D E C L A R A T I O N                                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations {
+  $struct$
+  $type_name$ ?var @lstring mListTypeName indexing structDefinition
+  ${$
+  var mAttributeList =@attributeInCollectionListAST.emptyList{}
+  repeat
+  while
+    <attribute_declaration> !? mAttributeList
+  end
+  $}$
+  ioSemanticDeclarations += !@structDeclarationAST. new {
+    !false # Is not predefined
+    !mListTypeName
+    !mAttributeList
+    !""}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    L I S T    D E C L A R A T I O N                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations {
+  $list$
+  $type_name$ ?var @lstring mListTypeName indexing listDefinition, structDefinition "-element"
+  ${$
+  var mAttributeList =@attributeInCollectionListAST.emptyList{}
+  repeat
+  while
+    <attribute_declaration> !? mAttributeList
+  end
+  $}$
+  ioSemanticDeclarations += !@listDeclarationAST. new {
+    !false # Is not predefined
+    !mListTypeName
+    !mAttributeList}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    S O R T E D    L I S T    D E C L A R A T I O N                        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+#! Sorted list
+#---------------------------------------------------------------------------*
+
+rule <sortedlist_sort_descriptor> ?!@sortedListSortDescriptorListAST ioSortedListSortDescriptorList {
+  $identifier$ ?var  @lstring mSortedAttributeName
+  @bool mAscending
+  select
+    $<$
+    mAscending = true
+  or
+    $>$
+    mAscending = false
+  end
+  ioSortedListSortDescriptorList += !mSortedAttributeName !mAscending
+}
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations {
+  $sortedlist$
+  $type_name$ ?var @lstring mSortedListTypeName indexing sortedListDefinition, structDefinition "-element"
+  ${$
+  var mAttributeList =@attributeInCollectionListAST.emptyList{}
+  repeat
+  while
+    <attribute_declaration> !? mAttributeList
+  end
+  $}$
+  ${$
+  var mSortDescriptorList =@sortedListSortDescriptorListAST.emptyList{}
+  repeat
+    <sortedlist_sort_descriptor> !? mSortDescriptorList
+  while
+    $,$
+  end
+  $}$
+  ioSemanticDeclarations += !@sortedListDeclarationAST. new {
+    !false # Is not predefined
+    !mSortedListTypeName
+    !mAttributeList
+    !mSortDescriptorList}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    E N U M    D E C L A R A T I O N                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+#! enum
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations {
+  $enum$
+  $type_name$ ?let @lstring mEnumTypeName indexing enumDefinition
+  ${$
+  var mConstantList =@enumConstantList.emptyList{}
+  repeat
+    $identifier$ ?var @lstring constantName :> ?@string sep ?*
+    send sep + "case " + constantName
+    @2lstringlist associatedValueTypeList = {}
+    select
+    or
+      $($
+      repeat
+        $type_name$ ?let @lstring associatedValueType
+        @lstring associatedValueName
+        select
+          associatedValueName = ["" nowhere]
+        or
+          $identifier$ ?associatedValueName
+        end
+        associatedValueTypeList += !associatedValueType !associatedValueName
+      while
+        $,$ :> ?* ?*
+        send " "
+      end
+      $)$
+    end
+    mConstantList += !constantName !associatedValueTypeList
+  while
+    $,$ :>?* ?*
+    send " "
+  end
+  $}$
+  ioSemanticDeclarations += !@enumDeclarationAST. new {
+    !false # Is not predefined
+    !mEnumTypeName
+    !mConstantList}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    F I L E W R A P P E R    D E C L A R A T I O N                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations {
+  @bool isInternal
+  select
+    isInternal = false
+  or
+    $local$ :> ?@string sep ?*
+    send sep + "private"
+    isInternal = true
+  end
+  $filewrapper$
+  $identifier$ ?var  @lstring mFilewrapperName indexing filewrapperDefinition
+  $in$
+  $literal_string$ ?var  @lstring mFilewrapperPath
+  ${$
+  var filewrapperTextFileExtensionList =@lstringlist.emptyList{}
+  select
+  or
+    repeat
+      $literal_string$ ?var @lstring extension
+      filewrapperTextFileExtensionList += !extension
+    while
+      $,$
+    end
+  end
+  $}$
+  ${$
+  var filewrapperBinaryFileExtensionList =@lstringlist.emptyList{}
+  select
+  or
+    repeat
+      $literal_string$ ?var @lstring extension
+      filewrapperBinaryFileExtensionList += !extension
+    while
+      $,$
+    end
+  end
+  $}$
+  ${$
+  var mFilewrapperTemplateList =@filewrapperTemplateListAST.emptyList{}
+  repeat
+  while
+    $template$
+    $identifier$ ?var  @lstring mFilewrapperTemplateName
+    $literal_string$ ?var  @lstring mFilewrapperTemplatePath
+    var filewrapperTemplateFormalInputParameters =@formalTemplateInputParameterListAST.emptyList{}
+    repeat
+    while
+      $?$ ?let selector
+      $type_name$ ?var  @lstring typeName
+      @bool isUnused
+      select
+        isUnused = false
+      or
+        $unused$
+        isUnused = true
+      end
+      $identifier$ ?var  @lstring argumentName
+      filewrapperTemplateFormalInputParameters += !selector !typeName !argumentName !isUnused
+    end
+    $;$ :> ?* ?*
+    mFilewrapperTemplateList +=
+      !mFilewrapperTemplateName
+      !mFilewrapperTemplatePath
+      !filewrapperTemplateFormalInputParameters
+  end
+  $}$
+  ioSemanticDeclarations += !@filewrapperDeclarationAST. new {
+    !false # Is not predefined
+    !isInternal
+    !@string. stringWithSourceFilePath
+    !mFilewrapperName
+    !mFilewrapperPath
+    !filewrapperTextFileExtensionList
+    !filewrapperBinaryFileExtensionList
+    !mFilewrapperTemplateList}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#A B S T R A C T    C A T E G O R Y    M E T H O D    D E C L A R A T I O N *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations {
+  $abstract$
+  $method$
+  $type_name$ ?var  @lstring className indexing typeReferenceAbstractCategoryMethod
+  $identifier$ ?var  @lstring mMethodName indexing abstractCategoryMethodDefinition
+  <formal_parameter_list> ?let @formalParameterListAST formalParameterList
+  $;$ :> ?* ?*
+  ioSemanticDeclarations += !@abstractCategoryMethodAST. new {
+    !false # Is not predefined
+    !className
+    !mMethodName
+    !formalParameterList}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# O V E R R I D E    A B S T R A C T    C A T E G O R Y    M E T H O D      *
+#                       D E C L A R A T I O N                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations {
+  $override$
+  $abstract$
+  $method$
+  $type_name$ ?var  @lstring className indexing typeReferenceOverrideAbstractCategoryMethod
+  $identifier$ ?var  @lstring mMethodName indexing overrideAbstractCategoryMethodDefinition
+  <formal_parameter_list> ?let @formalParameterListAST formalParameterList
+  $;$ :> ?* ?*
+  ioSemanticDeclarations += !@overridingAbstractCategoryMethodAST. new {
+    !false # Is not predefined
+    !className
+    !mMethodName
+    !formalParameterList}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    E X T E N S I O N     M E T H O D    D E C L A R A T I O N             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! Method declaration
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations {
+  $method$
+  $type_name$ ?var  @lstring className indexing typeReferenceCategoryMethod
+  $identifier$ ?var  @lstring mMethodName indexing categoryMethodDefinition
+  <formal_parameter_list> ?let @formalParameterListAST formalParameterList
+  $:$ :> ?* ?*
+  send " {"
+  <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
+  $end$ :> ?@string sep ?*
+  send sep + "}"
+  let endOfMethodLocation = @location.here
+  $method$ :> ?* ?*
+  $;$ :> ?* ?*
+  ioSemanticDeclarations += !@categoryMethodAST. new {
+    !false # Is not predefined
+    !className
+    !mMethodName
+    !formalParameterList
+    !routineInstructionList
+    !endOfMethodLocation}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#O V E R R I D I N G   C A T E G O R Y   M E T H O D   D E C L A R A T I O N*
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! Overriding method
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations {
+  $override$
+  $method$
+  $type_name$ ?var  @lstring className indexing typeReferenceOverrideCategoryMethodDefinition
+  $identifier$ ?var  @lstring mMethodName indexing overrideCategoryMethodDefinition
+  <formal_parameter_list> ?let @formalParameterListAST formalParameterList
+  $:$ :> ?* ?*
+  send " {"
+  <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
+  $end$ :> ?@string sep ?*
+  send sep + "}"
+  let endOfMethodLocation = @location.here
+  $method$ :> ?* ?*
+  $;$ :> ?* ?*
+  ioSemanticDeclarations += !@overridingCategoryMethodAST. new {
+    !false # Is not predefined
+    !className
+    !mMethodName
+    !formalParameterList
+    !routineInstructionList
+    !endOfMethodLocation}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#A B S T R A C T    C A T E G O R Y    R E A D E R    D E C L A R A T I O N *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! Abstract reader
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations {
+  $abstract$
+  $reader$ :> ?@string sep ?*
+  send sep + "getter"
+  $type_name$ ?var  @lstring className
+  $identifier$ ?var  @lstring mReaderName indexing abstractCategoryReaderDefinition
+  <formal_input_parameter_list> ?let @formalInputParameterListAST mFormalInputParameterList
+  $->$
+  $type_name$ ?var  @lstring mReturnedTypeName
+  $identifier$ ? *
+  $;$ :> ?* ?*
+  ioSemanticDeclarations += !@abstractCategoryReaderAST. new {
+    !false # Is not predefined
+    !className
+    !mReaderName
+    !mFormalInputParameterList
+    !mReturnedTypeName}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    C A T E G O R Y    R E A D E R    D E C L A R A T I O N                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! Reader declaration
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations {
+  $reader$ :> ?@string sep ?*
+  send sep + "getter"
+  $type_name$ ?var  @lstring className
+  $identifier$ ?var  @lstring mMethodName indexing categoryReaderDefinition
+  @formalInputParameterListAST mFormalInputParameterList
+  <formal_input_parameter_list> ? mFormalInputParameterList
+  $->$
+  $type_name$ ?var  @lstring mReturnedTypeName
+  $identifier$ ?var  @lstring mReturnedVariableName
+  $:$ :> ?* ?*
+  send " {"
+  <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
+  $end$ :> ?sep ?*
+  send sep + "}"
+  let endOfInstructionList = @location.here
+  $reader$ :> ?* ?*
+  $;$ :> ?* ?*
+  ioSemanticDeclarations += !@categoryReaderAST. new {
+    !false # Is not predefined
+    !className
+    !mMethodName
+    !mFormalInputParameterList
+    !mReturnedTypeName
+    !mReturnedVariableName
+    !routineInstructionList
+    !endOfInstructionList}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#O V E R R I D I N G   C A T E G O R Y   R E A D E R   D E C L A R A T I O N*
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! Overriding reader declaration
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations {
+  $override$
+  $reader$ :> ?@string sep ?*
+  send sep + "getter"
+  $type_name$ ?var  @lstring className
+  $identifier$ ?var  @lstring mMethodName indexing overrideCategoryReaderDefinition
+  @formalInputParameterListAST mFormalInputParameterList
+  <formal_input_parameter_list> ? mFormalInputParameterList
+  $->$
+  $type_name$ ?var  @lstring mReturnedTypeName
+  $identifier$ ?var  @lstring mReturnedVariableName
+  $:$ :> ?* ?*
+  send " {"
+  <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
+  $end$ :> ?sep ?*
+  send sep + "}"
+  let endOfInstructionList = @location.here
+  $reader$ :> ?* ?*
+  $;$ :> ?* ?*
+  ioSemanticDeclarations += !@overridingCategoryReaderAST. new {
+    !false # Is not predefined
+    !className
+    !mMethodName
+    !mFormalInputParameterList
+    !mReturnedTypeName
+    !mReturnedVariableName
+    !routineInstructionList
+    !endOfInstructionList}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# O V E R R I D I N G    A B S T R A C T   C A T E G O R Y    R E A D E R   *
+#                     D E C L A R A T I O N                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! Overriding abstract reader
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations {
+  $override$
+  $abstract$
+  $reader$ :> ?@string sep ?*
+  send sep + "getter"
+  $type_name$ ?var  @lstring className
+  $identifier$ ?var  @lstring mReaderName indexing overrideAbstractCategoryReaderDefinition
+  @formalInputParameterListAST mFormalInputParameterList
+  <formal_input_parameter_list> ? mFormalInputParameterList
+  $->$
+  $type_name$ ?var  @lstring mReturnedTypeName
+  $identifier$ ? *
+  $;$ :> ?* ?*
+  ioSemanticDeclarations += !@overridingAbstractCategoryReaderAST. new {
+    !false # Is not predefined
+    !className
+    !mReaderName
+    !mFormalInputParameterList
+    !mReturnedTypeName}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#A B S T R A C T    C A T E G O R Y    M O D I F I E R    D E C L A R A T I O N *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! Abstract modifier
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations {
+  $abstract$
+  $modifier$ :> ?@string sep ?*
+  send sep + "setter"
+  $type_name$ ?var  @lstring className indexing typeReferenceAbstractCategoryModifier
+  $identifier$ ?var  @lstring modifierName indexing abstractCategoryModifierDefinition
+  <formal_parameter_list> ?let @formalParameterListAST formalParameterList
+  $;$ :> ?* ?*
+  ioSemanticDeclarations += !@abstractCategoryModifierAST. new {
+    !false # Is not predefined
+    !className
+    !modifierName
+    !formalParameterList}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# O V E R R I D E    A B S T R A C T    C A T E G O R Y    M O D I F I E R  *
+#                       D E C L A R A T I O N                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! Overriding abstract modifier
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations {
+  $override$
+  $abstract$
+  $modifier$ :> ?@string sep ?*
+  send sep + "setter"
+  $type_name$ ?var  @lstring className indexing typeReferenceOverrideAbstractCategoryModifier
+  $identifier$ ?var  @lstring modifierName indexing overrideAbstractCategoryModifierDefinition
+  <formal_parameter_list> ?let @formalParameterListAST formalParameterList
+  $;$ :> ?* ?*
+  ioSemanticDeclarations += !@overridingAbstractCategoryModifierAST. new {
+    !false # Is not predefined
+    !className
+    !modifierName
+    !formalParameterList}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    C A T E G O R Y    M O D I F I E R    D E C L A R A T I O N            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! Modifier declaration
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations {
+  $modifier$ :> ?@string sep ?*
+  send sep + "setter"
+  $type_name$ ?var  @lstring className indexing typeReferenceCategoryModifier
+  $identifier$ ?var  @lstring modifierName indexing categoryModifierDefinition
+  <formal_parameter_list> ?let @formalParameterListAST formalParameterList
+  $:$ :> ?* ?*
+  send " {"
+  <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
+  $end$ :> ?sep ?*
+  send sep + "}"
+  let @location endOfModifierLocation = @location.here
+  $modifier$ :> ?* ?*
+  $;$ :> ?* ?*
+  ioSemanticDeclarations += !@categoryModifierAST. new {
+    !false # Is not predefined
+    !className
+    !modifierName
+    !formalParameterList
+    !routineInstructionList
+    !endOfModifierLocation}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#O V E R R I D I N G   C A T E G O R Y   M O D I F I E R   D E C L A R A T I O N*
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! Overriding modifier declaration
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations {
+  $override$
+  $modifier$ :> ?@string sep ?*
+  send sep + "setter"
+  $type_name$ ?var  @lstring className indexing typeReferenceOverrideCategoryModifierDefinition
+  $identifier$ ?var  @lstring modifierName indexing overrideCategoryModifierDefinition
+  <formal_parameter_list> ?let @formalParameterListAST formalParameterList
+  $:$ :> ?* ?*
+  send " {"
+  <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
+  $end$ :> ?sep ?*
+  send sep + "}"
+  let @location endOfModifierLocation = @location.here
+  $modifier$ :> ?* ?*
+  $;$ :> ?* ?*
+  ioSemanticDeclarations += !@overridingCategoryModifierAST. new {
+    !false # Is not predefined
+    !className
+    !modifierName
+    !formalParameterList
+    !routineInstructionList
+    !endOfModifierLocation}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#     G R A P H                                                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! Graph declaration
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations {
+  $graph$
+  $type_name$ ?var  @lstring graphTypeName indexing graphDefinition
+  $($
+  $type_name$ ?var  @lstring associatedListTypeName
+  $)$
+  ${$
+  var graphInsertModifierList =@graphInsertModifierList.emptyList{}
+  repeat
+  while
+    $insert$
+    $identifier$ ?var  @lstring insertName
+    $error$
+    $message$
+    $literal_string$ ?var  @lstring errorMessage
+    graphInsertModifierList += !insertName !errorMessage
+    $;$ :> ?* ?*
+  end
+  $}$
+  ioSemanticDeclarations += !@graphDeclarationAST. new {
+    !false # Is not predefined
+    !graphTypeName
+    !associatedListTypeName
+    !graphInsertModifierList}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#     E X T E R N    T Y P E    D E C L A R A T I O N                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations {
+  $extern$
+  $type_name$ ?var  @lstring externTypeName indexing externTypeDefinition
+  ${$
+    @string cppPredeclarationCode = ""
+    repeat
+    while
+      $literal_string$ ?var  @lstring cppPredeclarationCodeElement
+      cppPredeclarationCode += cppPredeclarationCodeElement.string
+    end
+  $}$
+  ${$
+    @string cppClassCode = ""
+    repeat
+    while
+      $literal_string$ ?var  @lstring cppClassCodeElement
+      cppClassCode += cppClassCodeElement.string
+    end
+  $}$
+  ${$
+  var externTypeConstructorList =@externTypeConstructorList.emptyList{}
+  var externTypeReaderList =@externTypeReaderList.emptyList{}
+  var externTypeModifierList =@externTypeModifierList.emptyList{}
+  var externTypeMethodList =@externTypeMethodList.emptyList{}
+  repeat
+  while
+    $constructor$
+    $identifier$ ?var  @lstring constructorName
+    var argumentTypeList =@typeNameFormalParameterNameList.emptyList{}
+    repeat
+    while
+      $?$ ?let selector
+      $type_name$ ?var  @lstring argumentTypeName
+      $identifier$ ?var  @lstring argumentName
+      argumentTypeList += !selector !argumentTypeName !argumentName
+    end
+    $->$
+    $type_name$ ?var  @lstring resultTypeName
+    $;$ :> ?* ?*
+    externTypeConstructorList +=
+      !constructorName
+      !resultTypeName
+      !argumentTypeList
+  while
+    $reader$ :> ?@string sep ?*
+    send sep + "getter"
+    $identifier$ ?var  @lstring readerName
+    var argumentTypeList =@typeNameFormalParameterNameList.emptyList{}
+    repeat
+    while
+      $?$ ?let selector
+      $type_name$ ?var  @lstring argumentTypeName
+      $identifier$ ?var  @lstring argumentName
+      argumentTypeList += !selector !argumentTypeName !argumentName
+    end
+    $->$
+    $type_name$ ?var  @lstring resultTypeName
+    $;$ :> ?* ?*
+    externTypeReaderList +=
+      !readerName
+      !resultTypeName
+      !argumentTypeList
+  while
+    $modifier$ :> ?@string sep ?*
+    send sep + "setter"
+    $identifier$ ?var  @lstring modifierName
+    <formal_parameter_list> ?var @formalParameterListAST formalParameterList
+    $;$ :> ?* ?*
+    externTypeModifierList +=
+      !modifierName
+      !formalParameterList
+  while
+    $method$
+    $identifier$ ?var  @lstring methodName
+    <formal_parameter_list> ?var @formalParameterListAST formalParameterList
+    externTypeMethodList +=
+      !methodName
+      !formalParameterList
+      !@location.here
+    $;$ :> ?* ?*
+  end
+  $}$
+  ioSemanticDeclarations += !@externTypeDeclarationAST. new {
+    !false # Is not predefined
+    !externTypeName
+    !cppPredeclarationCode
+    !cppClassCode
+    !externTypeConstructorList
+    !externTypeReaderList
+    !externTypeModifierList
+    !externTypeMethodList}
+}
+
+#---------------------------------------------------------------------------*
+
+}

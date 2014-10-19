@@ -1,0 +1,1725 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  metamodel that defines expression                                        *
+#                                                                           *
+#  Copyright (C) 2007, ..., 2012 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#           I N S T R U C T I O N    G E N E R A T I O N                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+proc generateInstructionList
+  ?!@stringset ioInclusionSet
+  ?let @semanticInstructionListForGeneration inInstructionList
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode {
+  [!?ioGeneratedCode incIndentation !2]
+  for element in inInstructionList do
+    [element.mInstruction generateInstruction
+      !?ioInclusionSet
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      !inGenerateSyntaxDirectedTranslationString
+      !?ioGeneratedCode
+    ]
+  end
+  [!?ioGeneratedCode decIndentation !2]
+}
+
+#---------------------------------------------------------------------------*
+
+abstract class @templateInstructionForGeneration {
+}
+
+#---------------------------------------------------------------------------*
+
+list @templateInstructionListForGeneration {
+  @templateInstructionForGeneration mInstruction
+}
+
+#---------------------------------------------------------------------------*
+
+abstract class @semanticExpressionForGeneration {
+  @unifiedTypeMap-proxy mResultType
+  @location mLocation
+}
+
+#---------------------------------------------------------------------------*
+
+abstract method @semanticExpressionForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppExpression
+
+#---------------------------------------------------------------------------*
+
+list @semanticExpressionListForGeneration {
+  @semanticExpressionForGeneration mExpression
+}
+
+#---------------------------------------------------------------------------*
+
+class @selfCopyInExpressionForGeneration : @semanticExpressionForGeneration {
+  @string mSelfCppName
+}
+
+##---------------------------------------------------------------------------*
+
+class @hereExpressionForGeneration : @semanticExpressionForGeneration {
+}
+
+##---------------------------------------------------------------------------*
+
+class @trueExpressionForGeneration : @semanticExpressionForGeneration {
+}
+
+##---------------------------------------------------------------------------*
+
+class @falseExpressionForGeneration : @semanticExpressionForGeneration {
+}
+
+##---------------------------------------------------------------------------*
+
+class @literalCharExpressionForGeneration : @semanticExpressionForGeneration {
+  @char mCharacter
+}
+
+##---------------------------------------------------------------------------*
+
+class @literalStringExpressionForGeneration : @semanticExpressionForGeneration {
+  @string mString
+}
+
+##---------------------------------------------------------------------------*
+
+class @literalDoubleExpressionForGeneration : @semanticExpressionForGeneration {
+  @double mValue
+}
+
+##---------------------------------------------------------------------------*
+
+class @literalUIntExpressionForGeneration : @semanticExpressionForGeneration {
+  @uint mValue
+}
+
+##---------------------------------------------------------------------------*
+
+class @literalUInt64ExpressionForGeneration : @semanticExpressionForGeneration {
+  @uint64 mValue
+}
+
+#---------------------------------------------------------------------------*
+
+class @literalSIntExpressionForGeneration : @semanticExpressionForGeneration {
+  @sint mValue
+}
+
+#---------------------------------------------------------------------------*
+
+class @literalSInt64ExpressionForGeneration : @semanticExpressionForGeneration {
+  @sint64 mValue
+}
+
+#---------------------------------------------------------------------------*
+
+class @defaultConstructorExpressionForGeneration : @semanticExpressionForGeneration {
+}
+
+#---------------------------------------------------------------------------*
+
+class @constructorExpressionForGeneration : @semanticExpressionForGeneration {
+  @unifiedTypeMap-proxy mConstructorType
+  @string mConstructorName
+  @semanticExpressionListForGeneration mEffectiveParameterList
+  @bool mHasCompilerArgument
+}
+
+#---------------------------------------------------------------------------*
+
+class @readerCallExpressionForGeneration : @semanticExpressionForGeneration {
+  @methodKind mKind
+  @semanticExpressionForGeneration mReceiverExpression
+  @stringlist mFieldList
+  @string mReaderName
+  @semanticExpressionListForGeneration mExpressions
+  @bool mHasCompilerArgument
+}
+
+#---------------------------------------------------------------------------*
+
+class @optionValueExpressionForGeneration : @semanticExpressionForGeneration {
+  @bool mOptionComponentIsPredefined
+  @string mOptionComponentName
+  @string mOptionEntryName
+}
+
+#---------------------------------------------------------------------------*
+
+class @optionCharExpressionForGeneration : @semanticExpressionForGeneration {
+  @bool mOptionComponentIsPredefined
+  @string mOptionComponentName
+  @string mOptionEntryName
+}
+
+#---------------------------------------------------------------------------*
+
+class @optionStringExpressionForGeneration : @semanticExpressionForGeneration {
+  @bool mOptionComponentIsPredefined
+  @string mOptionComponentName
+  @string mOptionEntryName
+}
+
+#---------------------------------------------------------------------------*
+
+class @optionCommentExpressionForGeneration : @semanticExpressionForGeneration {
+  @bool mOptionComponentIsPredefined
+  @string mOptionComponentName
+  @string mOptionEntryName
+}
+
+#---------------------------------------------------------------------------*
+
+class @concatExpressionForGeneration,
+      @orShortExpressionForGeneration,
+      @orExpressionForGeneration,
+      @xorExpressionForGeneration,
+      @andExpressionForGeneration,
+      @andShortExpressionForGeneration,
+      @equalExpressionForGeneration,
+      @notEqualExpressionForGeneration,
+      @lowerOrEqualExpressionForGeneration,
+      @greaterOrEqualExpressionForGeneration,
+      @strictGreaterExpressionForGeneration,
+      @strictLowerExpressionForGeneration,
+      @rightShiftExpressionForGeneration,
+      @leftShiftExpressionForGeneration,
+      @addExpressionForGeneration,
+      @subExpressionForGeneration,
+      @multiplicationExpressionForGeneration,
+      @divisionExpressionForGeneration,
+      @moduloExpressionForGeneration : @semanticExpressionForGeneration {
+  @semanticExpressionForGeneration mLeftExpression
+  @semanticExpressionForGeneration mRightExpression
+}
+
+#---------------------------------------------------------------------------*
+
+class @unaryMinusExpressionForGeneration : @semanticExpressionForGeneration {
+  @semanticExpressionForGeneration mExpression
+}
+
+#---------------------------------------------------------------------------*
+
+class @notExpressionForGeneration : @semanticExpressionForGeneration {
+  @semanticExpressionForGeneration mExpression
+}
+
+#---------------------------------------------------------------------------*
+
+class @structFieldAccessExpressionForGeneration : @semanticExpressionForGeneration {
+  @semanticExpressionForGeneration mExpression
+  @string mStructFieldName
+}
+
+#---------------------------------------------------------------------------*
+
+class @tildeExpressionForGeneration : @semanticExpressionForGeneration {
+  @semanticExpressionForGeneration mExpression
+}
+
+#---------------------------------------------------------------------------*
+
+class @ifExpressionForGeneration : @semanticExpressionForGeneration {
+  @semanticExpressionForGeneration mIfExpression
+  @semanticExpressionForGeneration mThenExpression
+  @semanticExpressionForGeneration mElseExpression
+}
+
+#---------------------------------------------------------------------------*
+
+class @functionCallExpressionForGeneration : @semanticExpressionForGeneration {
+  @string mFunctionName
+  @semanticExpressionListForGeneration mExpressions
+}
+
+#---------------------------------------------------------------------------*
+
+class @varInExpressionForGeneration : @semanticExpressionForGeneration {
+  @string mCppVarName
+  @string mNameForCheckingFormalParameterUsing
+}
+
+#---------------------------------------------------------------------------*
+
+class @literalTypeInExpressionForGeneration : @semanticExpressionForGeneration {
+  @string mTypeName
+}
+
+#---------------------------------------------------------------------------*
+
+class @castInExpressionForGeneration : @semanticExpressionForGeneration {
+  @semanticExpressionForGeneration mReceiverExpression
+  @string mTypeName
+}
+
+#---------------------------------------------------------------------------*
+
+class @testDynamicClassInExpressionForGeneration : @semanticExpressionForGeneration {
+  @semanticExpressionForGeneration mReceiverExpression
+  @dynamicTypeComparisonKind mTypeComparisonKind
+  @unifiedTypeMap-proxy mCastType
+}
+
+#---------------------------------------------------------------------------*
+
+class @extractObjectInExpressionForGeneration : @semanticExpressionForGeneration {
+  @semanticExpressionForGeneration mReceiverExpression
+  @string mTypeName
+}
+
+#---------------------------------------------------------------------------*
+
+class @filewrapperInExpressionForGeneration : @semanticExpressionForGeneration {
+  @string mFilewrapperName
+  @string mFilewrapperPath
+}
+
+#---------------------------------------------------------------------------*
+
+class @filewrapperStaticPathInExpressionForGeneration : @semanticExpressionForGeneration {
+  @string mFilewrapperName
+  @uint mFilewrapperFileIndex
+  @bool mIsTextFile
+}
+
+#---------------------------------------------------------------------------*
+
+class @filewrapperTemplateInExpressionForGeneration : @semanticExpressionForGeneration {
+  @string mFilewrapperName
+  @string mFilewrapperTemplateName
+  @semanticExpressionListForGeneration mActualOutputParameterList
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexiqueIntrospectionForGeneration : @semanticExpressionForGeneration {
+  @string mLexiqueComponentName
+  @string mLexiqueReaderName
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  F O R M A L    P A R A M E T E R    L I S T                              *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @formalParameterListForGeneration {
+  @lstring mFormalSelector
+  @formalArgumentPassingModeAST mFormalArgumentPassingMode
+  @unifiedTypeMap-proxy mFormalArgumentType
+  @lstring mFormalArgumentName
+  @string mFormalArgumentCppName
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  F O R M A L    I N P U T    P A R A M E T E R    L I S T                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @formalInputParameterListForGeneration {
+  @lstring mFormalSelector
+  @unifiedTypeMap-proxy mFormalArgumentType
+  @string mFormalArgumentCppName
+  @lstring mFormalArgumentName
+  @bool mIsConstant
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  A C T U A L    P A R A M E T E R                                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+abstract class @actualParameterForGeneration {
+  @unifiedTypeMap-proxy mFormalArgumentType
+}
+
+#---------------------------------------------------------------------------*
+
+abstract method @actualParameterForGeneration generateActualParameter
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@string ioImplementation
+  ?!@stringlist ioJokerParametersToReleaseList
+  ?!@stringlist ioOutputVariableList
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  !@string outCppName
+
+#---------------------------------------------------------------------------*
+
+class @outputActualParameterForGeneration : @actualParameterForGeneration {
+  @semanticExpressionForGeneration mOutputActualParameterExpression
+}
+
+#---------------------------------------------------------------------------*
+
+class @outputInputActualParameterForGeneration : @actualParameterForGeneration {
+  @string mOutputInputVariableCppName
+  @lstringlist mStructAttributeList
+  @unifiedTypeMapProxyList mTypeList
+}
+
+#---------------------------------------------------------------------------*
+
+class @inputActualParameterForGeneration : @actualParameterForGeneration {
+  @string mInputActualCppName
+}
+
+#---------------------------------------------------------------------------*
+
+class @inputJokerParameterForGeneration : @actualParameterForGeneration {
+  @string mInputActualCppName
+}
+
+#---------------------------------------------------------------------------*
+
+list @actualParameterListForGeneration {
+  @actualParameterForGeneration mActualParameter
+}
+
+#---------------------------------------------------------------------------*
+
+abstract class @semanticInstructionForGeneration {
+}
+
+#---------------------------------------------------------------------------*
+
+abstract method @semanticInstructionForGeneration generateInstruction
+  ?!@stringset ioInclusionSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  ?let @bool inGenerateSyntaxDirectedTranslationString
+  ?!@string ioGeneratedCode
+
+#---------------------------------------------------------------------------*
+
+list @semanticInstructionListForGeneration {
+  @semanticInstructionForGeneration mInstruction
+}
+
+#---------------------------------------------------------------------------*
+
+class @semanticBlockInstructionForGeneration : @semanticInstructionForGeneration {
+  @semanticInstructionListForGeneration mInstructionList
+}
+
+#---------------------------------------------------------------------------*
+
+list @listOfSemanticInstructionListForGeneration {
+  @semanticInstructionListForGeneration mInstructionList
+  @location mEndOfInstructionList
+}
+
+#---------------------------------------------------------------------------*
+
+abstract class @semanticDeclarationForGeneration {
+}
+
+#---------------------------------------------------------------------------*
+
+getter @semanticDeclarationForGeneration appendPrimitiveTypeDeclaration -> @string outHeader {
+  outHeader = ""
+}
+
+#---------------------------------------------------------------------------*
+
+abstract getter @semanticDeclarationForGeneration implementationCppFileName -> @string outName
+
+#---------------------------------------------------------------------------*
+
+abstract getter @semanticDeclarationForGeneration hasCppHeaderFile -> @bool outHasHeader
+
+#---------------------------------------------------------------------------*
+
+abstract getter @semanticDeclarationForGeneration isPredefined -> @bool outResult
+
+#---------------------------------------------------------------------------*
+
+abstract getter @semanticDeclarationForGeneration headerKind -> @headerKind outHeaderKind
+
+#---------------------------------------------------------------------------*
+
+sortedlist @semanticDeclarationSortedListForGeneration {
+  @string mMessage
+  @semanticDeclarationForGeneration mDeclaration
+  @string mSortKey
+}{
+  mSortKey <
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    T Y P E    D E C L A R A T I O N                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+abstract class @semanticTypeForGeneration : @semanticDeclarationForGeneration {
+  @unifiedTypeMap-proxy mTypeProxy
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @semanticTypeForGeneration implementationCppFileName -> @string outName {
+  outName = [mTypeProxy mHeaderFileName]
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @semanticTypeForGeneration hasCppHeaderFile -> @bool outHasHeader {
+  outHasHeader = true
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @semanticTypeForGeneration isPredefined -> @bool outResult {
+  outResult = [mTypeProxy mIsPredefined]
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @semanticTypeForGeneration headerKind -> @headerKind outHeaderKind {
+  outHeaderKind = [mTypeProxy mHeaderKind]
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    D E C L A R A T I O N    W I T H   H E A D E R    S P E C              *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+abstract class @semanticDeclarationWithHeaderForGeneration : @semanticDeclarationForGeneration {
+  @bool mHasHeader
+  @string mImplementationCppFileName
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @semanticDeclarationWithHeaderForGeneration implementationCppFileName -> @string outName {
+  outName = mImplementationCppFileName
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @semanticDeclarationWithHeaderForGeneration hasCppHeaderFile -> @bool outHasHeader {
+  outHasHeader = mHasHeader
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @semanticDeclarationWithHeaderForGeneration headerKind -> @headerKind outHeaderKind {
+  outHeaderKind = @headerKind. twoHeaders
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @semanticDeclarationWithHeaderForGeneration isPredefined -> @bool outResult {
+  outResult = false
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    L E X I Q U E    D E C L A R A T I O N                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @lexiqueDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
+  @string mLexiqueName
+  @string mHeaderContents
+  @string mCppContents
+  @string mCocoaHeader
+  @string mCocoaImplementation
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   A C T I O N ,    M E T H O D    S I G N A T U R E                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @signatureForGrammarAnalysis {
+  @formalArgumentPassingModeAST mFormalArgumentPassingModeForGrammarAnalysis
+  @lstring mGalgasTypeNameForGrammarAnalysis
+#--- TODO GALGAS3
+#  Ajouter cet argument ; ceci permettrait de supprimer l'argument
+#     ??@unifiedTypeMap inUnifiedTypeMap
+# des méthodes appendSpecificImplementation de generation
+#  @unifiedTypeMap-proxy mArgumentType ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  N O N    T E R M I N A L    S Y M B O L    M A P                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @nonterminalSymbolLabelMapForGrammarAnalysis {
+  @signatureForGrammarAnalysis mFormalParametersList
+
+  insert insertKey error message "the rule label '%K' has been already declared in %L"
+  search searchKey error message "the rule label '%K' is not declared"
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#             nonterminal symbols map                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @nonTerminalSymbolMapForGrammarAnalysis {
+  @uint mNonTerminalIndex
+  @nonterminalSymbolLabelMapForGrammarAnalysis mNonterminalSymbolParametersMap
+
+  insert insertKey error message "the '<%K>' non terminal symbol has already been declared in %L"
+  search searchKey error message "the '<%K>' non terminal symbol is not declared"
+}
+
+#---------------------------------------------------------------------------*
+
+list @nonTerminalToAddList {
+  @string mSyntaxComponentName
+  @uint mNonTerminalToAddCount
+}
+
+#---------------------------------------------------------------------------*
+
+class @grammarForGeneration : @semanticDeclarationWithHeaderForGeneration {
+  @string mGrammarName
+  @string mLexiqueName
+  @nonTerminalSymbolMapForGrammarAnalysis mNonTerminalMapForGrammarAnalysis
+  @nonTerminalToAddList mNonTerminalToAddList
+  @bool mHasIndexing
+  @lstringlist mSyntaxComponents
+  @string mStartSymbolName
+  @bool mHasTranslateFeature
+  @string mCppFileContents
+  @string mHTLMHelperContents
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    R O U T I N E    D E C L A R A T I O N                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @routinePrototypeDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
+  @string mRoutineName
+  @formalParameterListForGeneration mFormalArgumentList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    R O U T I N E    I M P L E M E N T A T I O N                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @routineImplementationForGeneration : @routinePrototypeDeclarationForGeneration {
+  @bool mGenerateStatic
+  @semanticInstructionListForGeneration mRoutineInstructionList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    F U N C T I O N    D E C L A R A T I O N                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @functionPrototypeDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
+  @string mFunctionName
+  @formalInputParameterListForGeneration mFormalArgumentList
+  @unifiedTypeMap-proxy mReturnType
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    F U N C T I O N    I M P L E M E N T A T I O N                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @functionImplementationForGeneration : @functionPrototypeDeclarationForGeneration {
+  @string mResultVariableCppName
+  @semanticInstructionListForGeneration mFunctionInstructionList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    O N C E    F U N C T I O N    D E C L A R A T I O N                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @onceFunctionDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
+  @string mFunctionName
+  @unifiedTypeMap-proxy mReturnType
+  @string mResultVariableCppName
+  @semanticInstructionListForGeneration mFunctionInstructionList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  L O C A L    V A R I A B L E    D E C L A R A T I O N                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @localVariableDeclarationForGeneration : @semanticInstructionForGeneration {
+  @unifiedTypeMap-proxy mVariableType
+  @string mCppVariableName
+}
+
+#---------------------------------------------------------------------------*
+
+class @localVariableOrConstantDeclarationWithSourceExpressionForGeneration : @semanticInstructionForGeneration {
+  @unifiedTypeMap-proxy mTargetType
+  @bool mIsConstant
+  @string mCppVariableName
+  @semanticExpressionForGeneration mSourceExpression
+}
+
+#---------------------------------------------------------------------------*
+
+class @localVariableOrConstantDeclarationWithDefaultConstructorForGeneration : @semanticInstructionForGeneration {
+  @location mInstructionLocation
+  @unifiedTypeMap-proxy mTargetType
+  @bool mIsConstant
+  @string mTargetVariableCppName
+}
+
+#---------------------------------------------------------------------------*
+
+class @localVariableOrConstantDeclarationWithConstructorCallForGeneration : @semanticInstructionForGeneration {
+  @location mInstructionLocation
+  @unifiedTypeMap-proxy mTargetType
+  @bool mIsConstant
+  @string mTargetVariableCppName
+  @string mConstructorName
+  @semanticExpressionListForGeneration mConstructorArguments
+  @bool mHasCompilerArgument
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  A S S I G N M E N T    I N S T R U C T I O N                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @assignmentInstructionForGeneration : @semanticInstructionForGeneration {
+  @unifiedTypeMap-proxy mTargetType
+  @string mTargetCppName
+  @string mNameForCheckingFormalParameterUsing
+  @lstringlist mStructAttributeList
+  @semanticExpressionForGeneration mSourceExpression
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  D R O P    I N S T R U C T I O N                                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @dropInstructionForGeneration : @semanticInstructionForGeneration {
+  @stringlist mDropList
+  @string mComment
+  @unifiedTypeMapProxyList mDropTypeList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  C O N C A T    I N S T R U C T I O N                                     *
+#                                                                           *
+#  VARIABLE .= EXPRESSION ;                                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @concatInstructionForGeneration : @semanticInstructionForGeneration {
+  @location mInstructionLocation
+  @unifiedTypeMap-proxy mTargetType
+  @string mTargetVariableCppName
+  @string mNameForCheckingFormalParameterUsing
+  @lstringlist mStructAttributeList
+  @semanticExpressionForGeneration mSourceExpression
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  F O R E A C H    I N S T R U C T I O N                                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @foreachInstructionEnumeratedObjectListForGeneration {
+  @string mEnumerationOrder
+  @semanticExpressionForGeneration mEnumeratedExpression
+  @string mEnumeratorCppName
+}
+
+#---------------------------------------------------------------------------*
+
+class @foreachInstructionForGeneration : @semanticInstructionForGeneration {
+  @location mInstructionLocation
+  @foreachInstructionEnumeratedObjectListForGeneration mEnumeratedObjectList
+  @string mIndexVariableCppName  # Empty string if no index
+  @semanticExpressionForGeneration mWhileExpression
+  @semanticInstructionListForGeneration mBeforeInstructionList
+  @semanticInstructionListForGeneration mBetweenInstructionList
+  @semanticInstructionListForGeneration mDoInstructionList
+  @semanticInstructionListForGeneration mAfterInstructionList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  I F    I N S T R U C T I O N                                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @ifInstructionForGeneration : @semanticInstructionForGeneration {
+  @location mInstructionLocation
+  @semanticExpressionForGeneration mIFexpression
+  @semanticInstructionListForGeneration m_then_instructionList
+  @semanticInstructionListForGeneration m_else_instructionList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    E R R O R    I N S T R U C T I O N                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @errorInstructionForGeneration : @semanticInstructionForGeneration {
+  @location mInstructionLocation
+  @semanticExpressionForGeneration mReceiverExpression
+  @bool mUseLocationReader
+  @semanticExpressionForGeneration mErrorExpression
+  @stringlist mBuiltVariableCppNameList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    W A R N I N G    I N S T R U C T I O N                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @warningInstructionForGeneration : @semanticInstructionForGeneration {
+  @location mInstructionLocation
+  @semanticExpressionForGeneration mReceiverExpression
+  @bool mUseLocationReader
+  @semanticExpressionForGeneration mWarningExpression
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    R O U T I N E    C A L L    I N S T R U C T I O N                      *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @routineCallInstructionForGeneration : @semanticInstructionForGeneration {
+  @lstring mRoutineName
+  @actualParameterListForGeneration mActualParameterList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  T Y P E    M E T H O D    C A L L    I N S T R U C T I O N               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @typeMethodInstructionForGeneration : @semanticInstructionForGeneration {
+  @lstring mTypeName
+  @lstring mMethodName
+  @actualParameterListForGeneration mActualParameterList
+  @bool mHasCompilerArgument
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  M E T H O D    C A L L    I N S T R U C T I O N                          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @methodCallInstructionForGeneration : @semanticInstructionForGeneration {
+  @location mInstructionLocation
+  @unifiedTypeMap-proxy mReceiverType
+  @semanticExpressionForGeneration mReceiverExpression
+  @string mMethodName
+  @methodKind mKind
+  @actualParameterListForGeneration mActualParameterList
+  @bool mHasCompilerArgument
+  @unifiedTypeMap-proxy mMethodBaseType
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  M O D I F I E R    C A L L    I N S T R U C T I O N                      *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @modifierCallInstructionForGeneration : @semanticInstructionForGeneration {
+  @string mReceiverCppName
+  @string mReceiverBaseName
+  @lstringlist mReceiverStructAttributes
+  @unifiedTypeMap-proxy mReceiverType
+  @lstring mModifierName
+  @methodKind mKind
+  @actualParameterListForGeneration mActualParameterList
+  @bool mHasCompilerArgument
+  @unifiedTypeMap-proxy mMethodBaseType
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  " S E L F "    M O D I F I E R    C A L L    I N S T R U C T I O N       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @selfModifierCallInstructionForGeneration : @semanticInstructionForGeneration {
+  @string mSelfCppName
+  @unifiedTypeMap-proxy mReceiverType
+  @lstring mModifierName
+  @methodKind mKind
+  @actualParameterListForGeneration mActualParameterList
+  @bool mHasCompilerArgument
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    C A S T    I N S T R U C T I O N                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @castInstructionBranchListForGeneration {
+  @dynamicTypeComparisonKind mTypeComparisonKind
+  @unifiedTypeMap-proxy mType
+  @string mCastedVarCppName # Empty string if no var
+  @semanticInstructionListForGeneration mInstructionList
+}
+
+#---------------------------------------------------------------------------*
+
+class @structuredCastInstructionForGeneration : @semanticInstructionForGeneration {
+  @semanticExpressionForGeneration mExpression
+  @castInstructionBranchListForGeneration mCastBranchList
+  @semanticInstructionListForGeneration mElseInstructionList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    A D D    A S S I G N    I N S T R U C T I O N      + =                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @plusEqualnstructionForGeneration : @semanticInstructionForGeneration {
+  @string mReceiverCppName
+  @unifiedTypeMap-proxy mTargetType
+  @string mNameForCheckingFormalParameterUsing
+  @location mInstructionLocation
+  @lstringlist mStructAttributeList
+  @semanticExpressionListForGeneration mExpressionList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    I N C R E M E N T    I N S T R U C T I O N                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @incrementInstructionForGeneration : @semanticInstructionForGeneration {
+  @location mInstructionLocation
+  @string mReceiverCppName
+  @unifiedTypeMap-proxy mReceiverType
+  @lstringlist mStructAttributeList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    D E C R E M E N T    I N S T R U C T I O N                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @decrementInstructionForGeneration : @semanticInstructionForGeneration {
+  @location mInstructionLocation
+  @string mReceiverCppName
+  @unifiedTypeMap-proxy mReceiverType
+  @lstringlist mStructAttributeList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    L O O P    I N S T R U C T I O N                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @loopInstructionForGeneration : @semanticInstructionForGeneration {
+  @location mInstructionLocation
+  @semanticExpressionForGeneration mVariantExpression
+  @semanticInstructionListForGeneration mFirstInstructions
+  @semanticExpressionForGeneration mLoopExpression
+  @semanticInstructionListForGeneration mSecondInstructions
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  M E S S A G E    I N S T R U C T I O N                                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @messageInstructionForGeneration : @semanticInstructionForGeneration {
+  @semanticExpressionForGeneration mExpression
+  @location mInstructionLocation
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  L O G    I N S T R U C T I O N                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @logInstructionForGeneration : @semanticInstructionForGeneration {
+  @lstring mLogMessage
+  @semanticExpressionForGeneration mLogExpression
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  G R A M M A R    I N S T R U C T I O N S                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @grammarInstructionWithSourceFileForGeneration : @semanticInstructionForGeneration {
+  @location mInstructionLocation
+  @string mGrammarName
+  @string mLabelName
+  @semanticExpressionForGeneration mSourceFileExpression
+  @actualParameterListForGeneration mActualParameterList
+  @bool mGrammarHasTranslateFeature
+  @stringlist mAssignementList
+  @string mSyntaxDirectedTranslationResultVarName
+}
+
+#---------------------------------------------------------------------------*
+
+class @grammarInstructionWithSourceExpressionForGeneration : @semanticInstructionForGeneration {
+  @location mInstructionLocation
+  @string mGrammarName
+  @string mLabelName
+  @semanticExpressionForGeneration mSourceStringExpression
+  @actualParameterListForGeneration mActualParameterList
+  @bool mGrammarHasTranslateFeature
+  @stringlist mAssignementList
+  @string mSyntaxDirectedTranslationResultVarName
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  R E A D  /  W R I T E    ' W I T H '    I N S T R U C T I O N            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @readWriteWithInstructionForGeneration : @semanticInstructionForGeneration {
+  @location mInstructionLocation
+  @string mReceiverVariableCppName
+  @unifiedTypeMap-proxy mReceiverType
+  @lstringlist mStructAttributeList
+  @string mObjectArrayCppName
+  @semanticExpressionForGeneration mKeyExpression
+  @string mSearchMethodNameForErrorSignaling
+  @semanticInstructionListForGeneration mDoBranchInstructions
+  @semanticInstructionListForGeneration mElseBranchInstructions
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  R E A D  O N L Y    ' W I T H '    I N S T R U C T I O N                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @readOnlyWithInstructionForGeneration : @semanticInstructionForGeneration {
+  @location mInstructionLocation
+  @semanticExpressionForGeneration mReceiverExpression
+  @string mObjectArrayCppName
+  @semanticExpressionForGeneration mKeyExpression
+  @string mSearchMethodNameForErrorSignaling
+  @semanticInstructionListForGeneration mDoBranchInstructions
+  @semanticInstructionListForGeneration mElseBranchInstructions
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  T E R M I N A L    C H E C K    I N S T R U C T I O N                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @terminalCheckAssignementList {
+  @string mTypeName # Empty string if no declaration
+  @string mTargetVarCppName
+  @string mSourceLexicalAttributeName
+}
+
+#---------------------------------------------------------------------------*
+
+abstract class @syntaxInstructionForGeneration : @semanticInstructionForGeneration {
+  @location mInstructionLocation
+}
+
+#---------------------------------------------------------------------------*
+
+class @terminalCheckInstructionForGeneration : @syntaxInstructionForGeneration {
+  @lstring mTerminalName
+  @string mLexiqueIdentifier
+  @terminalCheckAssignementList mTerminalCheckAssignementList
+  @2lstringlist mIndexingKeyList
+  @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationPreceedingDelimitor
+  @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationToken
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  N O N    T E R M I N A L    I N S T R U C T I O N                        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @nonterminalInstructionForGeneration : @syntaxInstructionForGeneration {
+  @string mNonterminalName
+  @string mLabelName
+  @actualParameterListForGeneration mActualParameterList
+  @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationResult
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  R E P E A T    I N S T R U C T I O N                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @repeatInstructionForGeneration : @syntaxInstructionForGeneration {
+  @string mSyntaxComponentName
+  @uint mChoiceIndex
+  @semanticInstructionListForGeneration m_repeated_instructionList
+  @location mEndOfRepeatedInstructions
+  @listOfSemanticInstructionListForGeneration mListOfSemanticInstructionListForGeneration
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  S E L E C T    I N S T R U C T I O N                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @selectInstructionForGeneration : @syntaxInstructionForGeneration {
+  @string mSyntaxComponentName
+  @uint mChoiceIndex
+  @listOfSemanticInstructionListForGeneration mListOfSemanticInstructionListForGeneration
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  P A R S E    R E W I N D    I N S T R U C T I O N                        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @parseRewindInstructionForGeneration : @syntaxInstructionForGeneration {
+  @listOfSemanticInstructionListForGeneration mListOfSemanticInstructionListForGeneration
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  P A R S E    L O O P    I N S T R U C T I O N                            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @parseLoopInstructionForGeneration : @syntaxInstructionForGeneration {
+  @semanticExpressionForGeneration mVariantExpression
+  @semanticExpressionForGeneration mWhileExpression
+  @semanticInstructionListForGeneration mInstructionList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  P A R S E    W H E N    I N S T R U C T I O N                            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @parseWhenInstructionForGeneration : @syntaxInstructionForGeneration {
+  @semanticExpressionForGeneration mWhenExpression
+  @semanticInstructionListForGeneration mInstructionList
+  @semanticInstructionListForGeneration mElseInstructionList
+}
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  P A R S E    W H E N    I N S T R U C T I O N                            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @syntaxSendInstructionForGeneration : @syntaxInstructionForGeneration {
+  @semanticExpressionForGeneration mExpression
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  S W I T C H    I N S T R U C T I O N                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! switch
+
+#---------------------------------------------------------------------------*
+
+list @extractedAssociatedValuesForGeneration {
+  @unifiedTypeMap-proxy mType
+  @string mCppName
+}
+
+#---------------------------------------------------------------------------*
+
+list @switchBranchesForGeneration {
+  @lstringlist mSwitchConstantList
+  @extractedAssociatedValuesForGeneration mExtractedAssociatedValuesForGeneration
+  @uint mLocationIndex
+  @semanticInstructionListForGeneration mInstructions
+}
+
+#---------------------------------------------------------------------------*
+
+class @switchInstructionForGeneration : @semanticInstructionForGeneration {
+  @unifiedTypeMap-proxy mEnumType
+  @semanticExpressionForGeneration mSwitchExpression
+  @switchBranchesForGeneration mBranches
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    M A P    D E C L A R A T I O N                                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+sortedlist @mapStateTransitionSortedList {
+  @uint mActionIndex
+  @string mActionName
+  @uint mTargetStateIndex
+  @string mTargetStateName
+  @mapAutomatonMessageKind mTransitionMessageKind
+  @string mTransitionMessage
+}{
+  mActionIndex <
+}
+
+#---------------------------------------------------------------------------*
+
+sortedlist @mapStateSortedList {
+  @uint mStateIndex
+  @string mStateName
+  @mapAutomatonMessageKind mStateMessageKind
+  @string mStateMessage
+  @mapStateTransitionSortedList mTransitionList
+}{
+  mStateIndex <
+}
+
+#---------------------------------------------------------------------------*
+
+map @mapAutomatonStateMap {
+  @uint mStateIndex
+  insert insertKey error message "redefinition of '%K' map automaton state"
+  search searchKey error message "undefined '%K' map automaton state"
+}
+
+#---------------------------------------------------------------------------*
+
+map @mapAutomatonActionMap {
+  @uint mActionIndex
+  insert insertKey error message "redefinition of '%K' map automaton action"
+  search searchKey error message "undefined '%K' map automaton action"
+}
+
+#---------------------------------------------------------------------------*
+
+sortedlist @branchBehaviourSortedListForMapOverride {
+  @uint mStartStateIndex
+  @string mStartStateName
+  @uint mCurrentStateIndex
+  @string mCurrentStateName
+  @uint mFinalStateIndex
+  @string mFinalStateName
+  @mapAutomatonMessageKind mBehaviourMessageKind
+  @string mBehaviourMessage
+}{
+  mStartStateIndex <, mCurrentStateIndex <
+}
+
+#---------------------------------------------------------------------------*
+
+list @mapOverrideList {
+  @string mOverrideName
+  @branchBehaviourSortedListForMapOverride mBranchBehaviourSortedListForMapOverride
+  @branchBehaviourSortedListForMapOverride mBranchCombinationSortedListForMapOverride
+}
+
+#---------------------------------------------------------------------------*
+
+class @mapTypeForGeneration : @semanticTypeForGeneration {
+  @unifiedTypeMap-proxy mElementTypeProxy
+  @lstring mMapTypeName
+  @typedAttributeList mTypedAttributeList
+  @insertMethodListAST mInsertMethodList
+  @mapSearchMethodListAST mSearchMethodList
+  @mapRemoveMethodListAST mRemoveMethodList
+  @bool mHasInsertOrReplaceModifier
+#  @withAccessorMap mWithAccessorMap ; # Method for with accessor
+}
+
+#---------------------------------------------------------------------------*
+
+class @uniqueMapTypeForGeneration : @semanticTypeForGeneration {
+  @lstring mMapTypeName
+  @typedAttributeList mTypedAttributeList
+  @insertMethodListAST mInsertMethodList
+  @mapSearchMethodListAST mSearchMethodList
+#  @withAccessorMap mWithAccessorMap ; # Method for with accessor
+  @mapAutomatonStateMap mMapAutomatonStateMap
+  @mapAutomatonActionMap mMapAutomatonActionMap
+  @mapStateSortedList mMapStateSortedList
+  @mapOverrideList mMapOverrideList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    A R R A Y    D E C L A R A T I O N                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @arrayTypeForGeneration : @semanticTypeForGeneration {
+  @unifiedTypeMap-proxy mElementTypeProxy
+  @uint mDimension
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    M A P    P R O X Y    D E C L A R A T I O N                            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @mapProxyTypeForGeneration : @semanticTypeForGeneration {
+  @unifiedTypeMap-proxy mAssociatedMapTypeProxy
+  @typedAttributeList mAssociatedMapTypedAttributeList
+  @mapSearchMethodListAST mSearchMethodList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    C L A S S    D E C L A R A T I O N                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @abstractMethodDefinitionListForGeneration {
+  @bool mIsOverriding
+  @lstring mMethodName
+  @formalParameterListForGeneration mSignature
+}
+
+#---------------------------------------------------------------------------*
+
+list @methodDefinitionListForGeneration {
+  @bool mIsOverriding
+  @lstring mMethodName
+  @formalParameterListForGeneration mSignature
+  @semanticInstructionListForGeneration mInstructionList
+}
+
+#---------------------------------------------------------------------------*
+
+class @classTypeForGeneration : @semanticTypeForGeneration {
+  @bool mIsAbstract
+  @lstring mClassTypeName
+  @unifiedTypeMap-proxy mSuperClass # Null if no super class
+  @typedAttributeList mAllTypedAttributeList # Inherited followed by current attributes
+  @typedAttributeList mTypedAttributeList
+  @bool mGenerateHeaderInSeparateFile # Significant only for classes
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    L I S T M A P    D E C L A R A T I O N                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @listmapTypeForGeneration : @semanticTypeForGeneration {
+  @unifiedTypeMap-proxy mAssociatedListTypeIndex
+  @typedAttributeList mAssociatedListTypedAttributeList
+  @unifiedTypeMap-proxy mAssociatedListMapElementTypeIndex
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    P R I M I T I V E    T Y P E                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @primitiveTypeForGeneration : @semanticTypeForGeneration {
+  @string mPredefinedTypeName
+  @predefinedTypeKindEnum mKind
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    L I S T    T Y P E    D E C L A R A T I O N                            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @listTypeForGeneration : @semanticTypeForGeneration {
+  @unifiedTypeMap-proxy mListElementTypeIndex
+  @typedAttributeList mTypedAttributeList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    S T R U C T    D E C L A R A T I O N                                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @structTypeForGeneration : @semanticTypeForGeneration {
+  @typedAttributeList mTypedAttributeList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    S O R T E D    L I S T    D E C L A R A T I O N                        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @sortDescriptorListForGeneration {
+  @unifiedTypeMap-proxy mAttributeTypeIndex
+  @string mAttributeName
+  @bool mAscendingOrder
+}
+
+#---------------------------------------------------------------------------*
+
+class @sortedListTypeForGeneration : @semanticTypeForGeneration {
+  @unifiedTypeMap-proxy mListElementTypeIndex
+  @typedAttributeList mTypedAttributeList
+  @sortDescriptorListForGeneration mSortDescriptorList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    E N U M    D E C L A R A T I O N                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @enumConstantListForGeneration {
+  @string mConstantName
+  @unifiedTypeMapProxyList mAssociatedValueTypeList
+}
+
+#---------------------------------------------------------------------------*
+
+class @enumTypeForGeneration : @semanticTypeForGeneration {
+  @enumConstantListForGeneration mConstantList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    G R A P H    D E C L A R A T I O N                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @graphDeclarationForGeneration : @semanticTypeForGeneration {
+  @unifiedTypeMap-proxy mAssociatedListTypeProxy
+  @unifiedTypeMap-proxy mAssociatedListElementTypeProxy
+  @graphInsertModifierList mInsertModifierList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    E X T E R N    T Y P E    D E C L A R A T I O N                        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @externTypeDeclarationForGeneration : @semanticTypeForGeneration {
+  @string mExternTypeName
+  @string mCppPreDeclarationCode
+  @string mCppClassCode
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# A B S T R A C T   C A T E G O R Y    M E T H O D    D E C L A R A T I O N *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @abstractCategoryMethodForGeneration : @semanticDeclarationWithHeaderForGeneration {
+  @unifiedTypeMap-proxy mReceiverType
+  @string mAbstractCategoryMethodName
+  @formalParameterListForGeneration mAbstractCategoryMethodFormalParameterList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# C A T E G O R Y    M E T H O D    D E C L A R A T I O N                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @categoryMethodForGeneration : @semanticDeclarationWithHeaderForGeneration {
+  @unifiedTypeMap-proxy mReceiverType
+  @string mCategoryMethodName
+  @bool mImplementedAsFunction
+  @formalParameterListForGeneration mCategoryMethodFormalParameterList
+  @typedAttributeList mTypedAttributeList
+  @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# O V E R R I D I N G    C A T E G O R Y    M E T H O D    D E C .          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @overridingCategoryMethodForGeneration : @semanticDeclarationWithHeaderForGeneration {
+  @unifiedTypeMap-proxy mReceiverType
+  @string mBaseTypeName
+  @string mCategoryMethodName
+  @formalParameterListForGeneration mCategoryMethodFormalParameterList
+  @typedAttributeList mTypedAttributeList
+  @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# A B S T R A C T   C A T E G O R Y    M O D I F I E R    D E C L A R A T I O N *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @abstractCategoryModifierForGeneration : @semanticDeclarationWithHeaderForGeneration {
+  @unifiedTypeMap-proxy mReceiverType
+  @string mAbstractCategoryModifierName
+  @formalParameterListForGeneration mAbstractCategoryModifierFormalParameterList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# C A T E G O R Y    M O D I F I E R    D E C L A R A T I O N               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @categoryModifierForGeneration : @semanticDeclarationWithHeaderForGeneration {
+  @unifiedTypeMap-proxy mReceiverType
+  @string mCategoryModifierName
+  @bool mImplementedAsFunction
+  @formalParameterListForGeneration mCategoryModifierFormalParameterList
+  @typedAttributeList mTypedAttributeList
+  @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# O V E R R I D I N G    C A T E G O R Y    M O D I F I E R   D E C .       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @overridingCategoryModifierForGeneration : @semanticDeclarationWithHeaderForGeneration {
+  @unifiedTypeMap-proxy mReceiverType
+  @string mBaseTypeName
+  @string mCategoryModifierName
+  @formalParameterListForGeneration mCategoryModifierFormalParameterList
+  @typedAttributeList mTypedAttributeList
+  @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# A B S T R A C T   C A T E G O R Y    R E A D E R    D E C L A R A T I O N *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @abstractCategoryReaderForGeneration : @semanticDeclarationWithHeaderForGeneration {
+  @unifiedTypeMap-proxy mReceiverType
+  @string mAbstractCategoryReaderName
+  @unifiedTypeMap-proxy mResultType
+  @formalInputParameterListForGeneration mAbstractCategoryReaderFormalParameterList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# C A T E G O R Y    R E A D E R    D E C L A R A T I O N                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @categoryReaderForGeneration : @semanticDeclarationWithHeaderForGeneration {
+  @unifiedTypeMap-proxy mReceiverType
+  @string mCategoryReaderName
+  @bool mImplementedAsFunction
+  @unifiedTypeMap-proxy mResultType
+  @string mResultVarCppName
+  @formalInputParameterListForGeneration mCategoryReaderFormalParameterList
+  @typedAttributeList mTypedAttributeList
+  @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# O V E R R I D E    C A T E G O R Y    R E A D E R    D E C L A R A T I O N*
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @overrideCategoryReaderForGeneration : @semanticDeclarationWithHeaderForGeneration {
+  @unifiedTypeMap-proxy mReceiverType
+  @string mBaseTypeName
+  @string mOverridingCategoryReaderName
+  @unifiedTypeMap-proxy mResultType
+  @string mResultVarCppName
+  @formalInputParameterListForGeneration mOverridingCategoryReaderFormalParameterList
+  @typedAttributeList mTypedAttributeList
+  @semanticInstructionListForGeneration mSemanticInstructionListForGeneration
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    F I L E W R A P P E R    D E C L A R A T I O N                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @filewrapperTemplateListForGeneration {
+  @string mFilewrapperTemplateName
+  @formalInputParameterListForGeneration mFilewrapperTemplateFormalInputParameters
+  @templateInstructionListForGeneration mTemplateInstructionListForGeneration
+}
+
+#---------------------------------------------------------------------------*
+
+class @filewrapperDeclarationForGeneration : @semanticDeclarationWithHeaderForGeneration {
+  @string mFilewrapperName
+  @string mFilewrapperAbsolutePath
+  @wrapperFileMap mFilewrapperFileMap
+  @wrapperDirectoryMap mFilewrapperDirectoryMap
+  @filewrapperTemplateListForGeneration mFilewrapperTemplateListForGeneration
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    O P T I O N    D E C L A R A T I O N                                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @optionComponentForGeneration : @semanticDeclarationWithHeaderForGeneration {
+  @bool mIsPredefined
+  @string mOptionComponentName
+  @commandLineOptionMap mBoolOptionMap
+  @commandLineOptionMap mUIntOptionMap
+  @commandLineOptionMap mStringOptionMap
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    P R O G R A M    D E C L A R A T I O N                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @programComponentForGeneration : @semanticDeclarationWithHeaderForGeneration {
+  @stringset mInclusionSet
+  @string mImplementationString
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    M A T C H    I N S T R U C T I O N                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @matchListForGeneration {
+  @bool mIsType
+  @string mTypeNameOrEnumerationConstantName
+  @string mLocalConstantName # Empy string if no variable
+}
+
+#---------------------------------------------------------------------------*
+
+list @matchInstructionBranchListForGeneration {
+  @matchListForGeneration mMatchListForGeneration
+  @semanticInstructionListForGeneration mMatchBranchInstructionList
+}
+
+#---------------------------------------------------------------------------*
+
+class @matchInstructionForGeneration : @semanticInstructionForGeneration {
+  @semanticExpressionListForGeneration mMatchedExpressionList
+  @matchInstructionBranchListForGeneration mMatchInstructionBranchList
+  @semanticInstructionListForGeneration mElseInstructionList
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# A P P E N D    D E C L A R A T I O N    1                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+method @semanticDeclarationForGeneration appendDeclaration1
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader {
+  outHeader = ""
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# A P P E N D    D E C L A R A T I O N    2                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+method @semanticDeclarationForGeneration appendDeclaration2
+  ?let @bool unused inGenerateForGalgas3
+  ?let @string unused inOutputDirectory
+  ?!@stringset unused ioInclusionSet
+  !@string outHeader {
+  outHeader = ""
+}
+
+#---------------------------------------------------------------------------*
+
+getter @semanticDeclarationForGeneration appendTypeGenericImplementation ->@string outImplementation {
+  outImplementation = ""
+}
+
+#---------------------------------------------------------------------------*
+
+method @semanticDeclarationForGeneration appendSpecificImplementation
+  ?let @unifiedTypeMap unused inUnifiedTypeMap
+  ?!@stringset unused  ioInclusionSet
+  !@string outImplementation {
+  outImplementation = ""
+}
+
+#---------------------------------------------------------------------------*
+
+method @semanticDeclarationForGeneration appendSpecificFiles
+  ?let @string unused inProductDirectory
+  ?!@stringset unused ioAllProductFileSet {
+}
+
+#---------------------------------------------------------------------------*
+

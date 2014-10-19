@@ -1,0 +1,303 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Syntax component semantic analysis                                       *
+#                                                                           *
+#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    S Y N T A X    S I G N A T U R E                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+method @semanticInstructionForGeneration appendSyntaxSignature # Capture all semantic instructions
+  ?let @string unused inPosfix
+  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration {
+}
+
+#---------------------------------------------------------------------------*
+
+func syntaxSignatureOfInstructionList
+  ?let @string inPosfix
+  ?let @semanticInstructionListForGeneration inInstructionList
+  ->@semanticInstructionListForGeneration outResult {
+  outResult = @semanticInstructionListForGeneration. emptyList
+  for () in  inInstructionList do
+    [mInstruction appendSyntaxSignature !inPosfix !?outResult]
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override method @nonterminalInstructionForGeneration appendSyntaxSignature
+  ?let @string inPosfix
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration {
+  ioInstructionListForGeneration += !@nonterminalInstructionForGeneration. new {
+    !mInstructionLocation
+    !mNonterminalName
+    !inPosfix
+    !@actualParameterListForGeneration. emptyList
+    !@grammarInstructionSyntaxDirectedTranslationResultNone. new}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @terminalCheckInstructionForGeneration appendSyntaxSignature
+  ?let @string unused inPosfix
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration {
+  ioInstructionListForGeneration += !@terminalCheckInstructionForGeneration. new {
+    !mInstructionLocation
+    !mTerminalName
+    !mLexiqueIdentifier
+    !@terminalCheckAssignementList. emptyList
+    !mIndexingKeyList
+    !@grammarInstructionSyntaxDirectedTranslationResultNone. new
+    !@grammarInstructionSyntaxDirectedTranslationResultNone. new}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @repeatInstructionForGeneration appendSyntaxSignature
+  ?let @string inPosfix
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration {
+  let @semanticInstructionListForGeneration repeated_instructionList = syntaxSignatureOfInstructionList (!inPosfix !m_repeated_instructionList)
+  var listOfSemanticInstructionListForGeneration =@listOfSemanticInstructionListForGeneration.emptyList{}
+  for () in  mListOfSemanticInstructionListForGeneration do
+    listOfSemanticInstructionListForGeneration +=
+      !syntaxSignatureOfInstructionList (!inPosfix !mInstructionList)
+      !mEndOfInstructionList
+  end
+#---
+  ioInstructionListForGeneration += !@repeatInstructionForGeneration. new {
+    !mInstructionLocation
+    !mSyntaxComponentName
+    !mChoiceIndex
+    !repeated_instructionList
+    !mEndOfRepeatedInstructions
+    !listOfSemanticInstructionListForGeneration}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @selectInstructionForGeneration appendSyntaxSignature
+  ?let @string inPosfix
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration {
+  var listOfSemanticInstructionListForGeneration =@listOfSemanticInstructionListForGeneration.emptyList{}
+  for () in  mListOfSemanticInstructionListForGeneration do
+    listOfSemanticInstructionListForGeneration +=
+      !syntaxSignatureOfInstructionList (!inPosfix !mInstructionList)
+      !mEndOfInstructionList
+  end
+  ioInstructionListForGeneration += !@selectInstructionForGeneration. new {
+    !mInstructionLocation
+    !mSyntaxComponentName
+    !mChoiceIndex
+    !listOfSemanticInstructionListForGeneration}
+}
+
+#---------------------------------------------------------------------------*
+
+override method @parseRewindInstructionForGeneration appendSyntaxSignature
+  ?let @string inPosfix
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration {
+  @semanticInstructionListForGeneration instructionList
+  [mListOfSemanticInstructionListForGeneration first ?instructionList ?*]
+  ioInstructionListForGeneration += syntaxSignatureOfInstructionList (!inPosfix !instructionList)
+}
+
+#---------------------------------------------------------------------------*
+
+override method @parseLoopInstructionForGeneration appendSyntaxSignature
+  ?let @string inPosfix
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration {
+  ioInstructionListForGeneration += syntaxSignatureOfInstructionList (!inPosfix !mInstructionList)
+}
+
+#---------------------------------------------------------------------------*
+
+override method @parseWhenInstructionForGeneration appendSyntaxSignature
+  ?let @string inPosfix
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration {
+  ioInstructionListForGeneration += syntaxSignatureOfInstructionList (!inPosfix !mInstructionList)
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    S Y N T A X    S I G N A T U R E    C O M P A R I S O N                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+getter @semanticInstructionForGeneration compareSyntaxInstruction
+  ?let @semanticInstructionForGeneration unused inTestedInstruction
+  ->@bool outOk {
+  outOk = true
+}
+
+#---------------------------------------------------------------------------*
+
+func compareSyntaxSignature
+  ?let @semanticInstructionListForGeneration inReferenceSignature
+  ?let @semanticInstructionListForGeneration inTestedSignature
+  ?let @location inErrorLocation
+  ->@bool outOk {
+  outOk = true
+  for () ref_ in  inReferenceSignature, () test_ in  inTestedSignature while outOk do
+     outOk = [ref_mInstruction compareSyntaxInstruction !test_mInstruction]
+  end
+  if outOk & ([inReferenceSignature length] < [inTestedSignature length]) then
+    @semanticInstructionForGeneration instruction = [inTestedSignature mInstructionAtIndex ![inReferenceSignature length]]
+    cast instruction
+    case >= @syntaxInstructionForGeneration si :
+      error [si mInstructionLocation]
+      :"syntax signature error, exceeding instruction; this branch has more syntax instructions than reference branch"
+    else
+      error inErrorLocation : "internal error"
+    end
+  elsif outOk & ([inReferenceSignature length] > [inTestedSignature length]) then
+    error inErrorLocation
+    :"syntax signature error, missing instruction; this branch has less syntax instructions than reference branch"
+    @semanticInstructionForGeneration instruction = [inReferenceSignature mInstructionAtIndex ![inTestedSignature length]]
+    cast instruction
+    case >= @syntaxInstructionForGeneration si :
+      error [si mInstructionLocation]
+      :"this is the syntax instruction in reference branch that corresponds to the first missing instruction"
+    else
+      error inErrorLocation : "internal error"
+    end
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @terminalCheckInstructionForGeneration compareSyntaxInstruction
+  ?let @semanticInstructionForGeneration inTestedInstruction
+  ->@bool outOk {
+  cast inTestedInstruction
+  case >= @terminalCheckInstructionForGeneration si :
+    outOk = [mTerminalName string] == [[si mTerminalName] string]
+    if not outOk then
+      error [si mInstructionLocation]
+      :"syntax signature error; the expected syntax instruction here is the '$" + mTerminalName + "$' terminal check"
+    end
+  case >= @syntaxInstructionForGeneration si :
+    error [si mInstructionLocation]
+      :"syntax signature error; the expected syntax instruction here is the '$" + mTerminalName + "$' terminal check"
+    outOk = false
+  else
+    error mInstructionLocation : "internal error"
+    outOk = false
+  end
+  if not outOk then
+    error mInstructionLocation
+    :"reference syntax instruction is here"
+  end  
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @nonterminalInstructionForGeneration compareSyntaxInstruction
+  ?let @semanticInstructionForGeneration inTestedInstruction
+  ->@bool outOk {
+  cast inTestedInstruction
+  case >= @nonterminalInstructionForGeneration si :
+    outOk = mNonterminalName == [si mNonterminalName]
+    if not outOk then
+      error [si mInstructionLocation]
+      :"syntax signature error; the expected syntax instruction here is the '<" + mNonterminalName + ">' nonterminal invocation"
+    end
+  case >= @syntaxInstructionForGeneration si :
+    error [si mInstructionLocation]
+      :"syntax signature error; the expected syntax instruction here is the '<" + mNonterminalName + ">' nonterminal invocation"
+    outOk = false
+  else
+    error mInstructionLocation : "internal error"
+    outOk = false
+  end
+  if not outOk then
+    error mInstructionLocation
+    :"reference syntax instruction is here"
+  end  
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @repeatInstructionForGeneration compareSyntaxInstruction
+  ?let @semanticInstructionForGeneration inTestedInstruction
+  ->@bool outOk {
+  cast inTestedInstruction
+  case >= @repeatInstructionForGeneration si :
+    outOk = compareSyntaxSignature (!m_repeated_instructionList ![si m_repeated_instructionList] ![si mEndOfRepeatedInstructions])
+    if outOk & ([mListOfSemanticInstructionListForGeneration length] != [[si mListOfSemanticInstructionListForGeneration] length]) then
+      error [si mInstructionLocation]
+        :"syntax signature error; the reference 'repeat' instruction has "
+        + [[mListOfSemanticInstructionListForGeneration length] string]
+        + " 'while' branche(s), but this instruction has "
+        + [[[si mListOfSemanticInstructionListForGeneration] length] string]
+      outOk = false
+    end
+    for () ref_ in  mListOfSemanticInstructionListForGeneration, () test_ in  [si mListOfSemanticInstructionListForGeneration] while outOk do
+      outOk = compareSyntaxSignature (!ref_mInstructionList !test_mInstructionList !test_mEndOfInstructionList)    
+    end
+  case >= @syntaxInstructionForGeneration si :
+    error [si mInstructionLocation]
+      :"syntax signature error; the expected syntax instruction here is a 'repeat' instruction"
+    outOk = false
+  else
+    error mInstructionLocation : "internal error"
+    outOk = false
+  end
+  if not outOk then
+    error mInstructionLocation
+    :"reference syntax instruction is here"
+  end  
+}
+
+#---------------------------------------------------------------------------*
+
+override getter @selectInstructionForGeneration compareSyntaxInstruction
+  ?let @semanticInstructionForGeneration inTestedInstruction
+  ->@bool outOk {
+  cast inTestedInstruction
+  case >= @selectInstructionForGeneration si :
+    outOk = true
+    if outOk & ([mListOfSemanticInstructionListForGeneration length] != [[si mListOfSemanticInstructionListForGeneration] length]) then
+      error [si mInstructionLocation]
+        :"syntax signature error; the reference 'select' instruction has "
+        + [[mListOfSemanticInstructionListForGeneration length] string]
+        + " 'while' branche(s), but this instruction has "
+        + [[[si mListOfSemanticInstructionListForGeneration] length] string]
+      outOk = false
+    end
+    for () ref_ in  mListOfSemanticInstructionListForGeneration, () test_ in  [si mListOfSemanticInstructionListForGeneration] while outOk do
+      outOk = compareSyntaxSignature (!ref_mInstructionList !test_mInstructionList !test_mEndOfInstructionList)    
+    end
+  case >= @syntaxInstructionForGeneration si :
+    error [si mInstructionLocation]
+      :"syntax signature error; the expected syntax instruction here is a 'select' instruction"
+    outOk = false
+  else
+    error mInstructionLocation : "internal error"
+    outOk = false
+  end
+  if not outOk then
+    error mInstructionLocation
+    :"reference syntax instruction is here"
+  end  
+}
+
+#---------------------------------------------------------------------------*
+

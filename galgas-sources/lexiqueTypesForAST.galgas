@@ -1,0 +1,587 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  'lexique' component metamodel                                            *
+#                                                                           *
+#  Copyright (C) 2007, ..., 2009 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+
+
+#---------------------------------------------------------------------------*
+
+abstract class @semanticDeclarationAST {
+  @bool mIsPredefined
+}
+
+#---------------------------------------------------------------------------*
+
+abstract class @lexicalExpressionAST {
+}
+
+#---------------------------------------------------------------------------*
+
+abstract class @lexicalInstructionAST {
+}
+
+#---------------------------------------------------------------------------*
+
+list @lexicalInstructionListAST {
+  @lexicalInstructionAST mInstruction %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+list @metamodelTemplateDelimitorListAST {
+  @lstring mStartString %nogetter
+  @lstringlist mOptionList %nogetter
+  @lstring mEndString %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+list @templateReplacementListAST {
+  @lstring mMatchString %nogetter
+  @lstring mReplacementString %nogetter
+  @lstring mReplacementFunction %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+abstract class @abstractLexicalRuleAST {
+}
+
+#---------------------------------------------------------------------------*
+
+list @lexicalRuleListAST {
+  @abstractLexicalRuleAST mLexicalRule %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexicalImplicitRuleAST : @abstractLexicalRuleAST {
+  @lstring mListName
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexicalExplicitRuleAST : @abstractLexicalRuleAST {
+  @lexicalExpressionAST mLexicalRuleExpression
+  @lexicalInstructionListAST mInstructionList
+}
+
+#---------------------------------------------------------------------------*
+
+list @lexicalMessageDeclarationListAST {
+  @lstring mMessageName %nogetter
+  @lstring mMessageValue %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+list @lexicalAttributeListAST {
+  @lstring mTypeName %nogetter
+  @lstring mName %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+list @lexicalStyleListAST {
+  @lstring mName %nogetter
+  @lstring mComment %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+list @terminalDeclarationListAST {
+  @lstring mName %nogetter
+  @sentLexicalAttributeListAST mSentAttributeList %nogetter
+  @lstring mSyntaxErrorMessage %nogetter
+  @lstring mStyle %nogetter # Empty string if no style
+  @lstringlist mOptionList %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+list @lexicalListEntryListAST {
+  @lstring mEntrySpelling %nogetter
+  @lstring mTerminalSpelling %nogetter
+  @lstringlist mFeatureList %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+list @sentLexicalAttributeListAST {
+  @lstring mFormalSelector
+  @lstring mAttributeName
+}
+
+#---------------------------------------------------------------------------*
+
+list @lexicalListDeclarationListAST {
+  @lstring mName %nogetter
+  @lstring mStyle %nogetter # Empty string if no style
+  @lstring mSyntaxErrorMessage %nogetter
+  @sentLexicalAttributeListAST mSentAttributeList %nogetter
+  @lexicalListEntryListAST mEntryList %nogetter  
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexicalOrExpressionAST : @lexicalExpressionAST {
+  @lexicalExpressionAST mLeftOperand
+  @lexicalExpressionAST mRightOperand
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexicalCharacterSetMatchAST : @lexicalExpressionAST {
+  @lstring mCharacterSetName
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexicalCharacterMatchAST : @lexicalExpressionAST {
+  @lchar mCharacter
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexicalCharacterIntervalMatchAST : @lexicalExpressionAST {
+  @lchar mLowerBound
+  @lchar mUpperBound
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexicalStringMatchAST : @lexicalExpressionAST {
+  @lstring mString
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexicalStringNotMatchAST : @lexicalExpressionAST {
+  @lstring mString
+  @lstring mErrorMessage
+}
+
+#---------------------------------------------------------------------------*
+
+list @lexicalSendSearchListAST {
+  @lstring mAttributeName %nogetter
+  @lstring mSearchListName %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+abstract class @lexicalSendDefaultActionAST {
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexicalStructuredSendInstructionAST : @lexicalInstructionAST {
+  @lexicalSendSearchListAST mLexicalSendSearchList
+  @lexicalSendDefaultActionAST mLexicalSendDefaultAction
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexicalSimpleSendInstructionAST : @lexicalInstructionAST {
+  @lstring mSentTerminal
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexicalSendTerminalByDefaultAST : @lexicalSendDefaultActionAST {
+  @lstring mDefaultSentTerminal
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexicalErrorByDefaultAST : @lexicalSendDefaultActionAST {
+  @lstring mDefaultErrorMessageName
+}
+
+#---------------------------------------------------------------------------*
+
+list @lexicalWhileBranchListAST {
+  @lexicalExpressionAST mWhileExpression %nogetter
+  @lexicalInstructionListAST mWhileInstructionList %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexicalRepeatInstructionAST : @lexicalInstructionAST {
+  @lexicalInstructionListAST mRepeatedInstructionList
+  @lexicalWhileBranchListAST mLexicalWhileBranchList
+}
+
+#---------------------------------------------------------------------------*
+
+list @lexicalSelectBranchListAST {
+  @lexicalExpressionAST mSelectExpression %nogetter
+  @lexicalInstructionListAST mSelectInstructionList %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexicalSelectInstructionAST : @lexicalInstructionAST {
+  @lexicalSelectBranchListAST mLexicalSelectBranchList
+  @lexicalInstructionListAST mDefaultInstructionList
+}
+
+#---------------------------------------------------------------------------*
+
+abstract class @abstractLexicalRoutineActualArgumentAST {
+  @location mActualPassingModeLocation
+}
+
+#---------------------------------------------------------------------------*
+
+list @lexicalRoutineCallActualArgumentListAST {
+  @abstractLexicalRoutineActualArgumentAST mLexicalRoutineActualArgument %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexicalRoutineInstructionAST : @lexicalInstructionAST {
+  @lstring mRoutineName
+  @lexicalRoutineCallActualArgumentListAST mActualArgumentList
+  @lstringlist mErrorMessageList
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexicalAttributeInputOutputArgumentAST : @abstractLexicalRoutineActualArgumentAST {
+  @lstring mAttributeName
+}
+
+#---------------------------------------------------------------------------*
+
+abstract class @lexicalRoutineOrFunctionFormalInputArgumentAST {
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexicalFormalInputArgumentAST : @abstractLexicalRoutineActualArgumentAST {
+  @lexicalRoutineOrFunctionFormalInputArgumentAST mRoutineOrFunctionFormalInputArgument
+}
+
+#---------------------------------------------------------------------------*
+
+list @lexicalFunctionCallActualArgumentListAST {
+  @lexicalRoutineOrFunctionFormalInputArgumentAST mLexicalActualInputArgument %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexicalAttributeInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
+  @lstring mAttributeName
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexicalCharacterInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
+  @lchar mCharacter
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexicalUnsignedInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
+  @luint mUnsigned
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexicalCurrentCharacterInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
+  @location mLocation
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexicalFunctionInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
+  @lstring mFunctionName
+  @lexicalFunctionCallActualArgumentListAST mFunctionActualArgumentList
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexicalDropInstructionAST : @lexicalInstructionAST {
+  @lstring mTerminalName
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexicalErrorInstructionAST : @lexicalInstructionAST {
+  @lstring mErrorMessageName
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexicalWarningInstructionAST : @lexicalInstructionAST {
+  @lstring mWarningMessageName
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexicalTagInstructionAST : @lexicalInstructionAST {
+  @lstring mLexicalTagName
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexicalRewindInstructionAST : @lexicalInstructionAST {
+  @lstring mLexicalTagName
+  @lstring mTerminalName
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexicalLogInstructionAST : @lexicalInstructionAST {
+}
+
+#---------------------------------------------------------------------------*
+
+enum @lexicalArgumentModeAST {
+  case lexicalInputMode  case lexicalInputOutputMode
+}
+
+getter @lexicalArgumentModeAST lexicalFormalModeName -> @string outResult {
+  switch self
+  case lexicalInputMode       : outResult = "!"
+  case lexicalInputOutputMode : outResult = "?!"
+  end
+}
+
+getter @lexicalArgumentModeAST cppConstInFormalArgument -> @string outResult {
+  switch self
+  case lexicalInputMode       : outResult = "const "
+  case lexicalInputOutputMode : outResult = ""
+  end
+}
+
+getter @lexicalArgumentModeAST cppReferenceInFormalArgument -> @string outResult {
+  switch self
+  case lexicalInputMode       : outResult = ""
+  case lexicalInputOutputMode : outResult = " &"
+  end
+}
+
+getter @lexicalArgumentModeAST cocoaPointerInFormalArgument -> @string outResult {
+  switch self
+  case lexicalInputMode       : outResult = ""
+  case lexicalInputOutputMode : outResult = " *"
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+list @lexicalExternRoutineFormalArgumentListAST {
+  @lexicalArgumentModeAST mPassingMode %nogetter
+  @lstring mLexicalTypeName %nogetter
+  @lstring mFormalArgumentName %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+list @externRoutineListAST {
+  @lstring mRoutineName %nogetter
+  @lexicalExternRoutineFormalArgumentListAST mLexicalRoutineFormalArgumentList %nogetter
+  @stringlist mErrorMessageList %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+list @lexicalExternFunctionFormalArgumentListAST {
+  @lstring mLexicalTypeName %nogetter
+  @lstring mFormalArgumentName %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+list @externFunctionListAST {
+  @lstring mFunctionName %nogetter
+  @lexicalExternFunctionFormalArgumentListAST mLexicalFunctionFormalArgumentList %nogetter
+  @lstring mReturnedTypeName %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+list @indexingListAST {
+  @lstring mIndexName %nogetter
+  @lstring mIndexComment %nogetter
+}
+
+#---------------------------------------------------------------------------*
+
+class @lexiqueComponentAST : @semanticDeclarationAST {
+  @lstring mLexiqueComponentName
+  @bool mIsTemplate
+  @metamodelTemplateDelimitorListAST mTemplateDelimitorList
+  @templateReplacementListAST mTemplateReplacementList
+  @lexicalAttributeListAST mLexicalAttributeList
+  @lexicalStyleListAST mLexicalStyleList
+  @terminalDeclarationListAST mTerminalDeclarationList
+  @lexicalMessageDeclarationListAST mLexicalMessageDeclarationList
+  @lexicalListDeclarationListAST mLexicalListDeclarationList
+  @lexicalRuleListAST mLexicalRuleList
+  @externRoutineListAST mExternRoutineList
+  @externFunctionListAST mExternFunctionList
+  @indexingListAST mIndexingListAST
+  @lstring mIndexingDirectory
+}
+
+list @galgas3LexiqueComponentListAST {
+  @lstring mLexiqueComponentName
+  @bool mIsTemplate
+  @metamodelTemplateDelimitorListAST mTemplateDelimitorList
+  @templateReplacementListAST mTemplateReplacementList
+  @lexicalAttributeListAST mLexicalAttributeList
+  @lexicalStyleListAST mLexicalStyleList
+  @terminalDeclarationListAST mTerminalDeclarationList
+  @lexicalMessageDeclarationListAST mLexicalMessageDeclarationList
+  @lexicalListDeclarationListAST mLexicalListDeclarationList
+  @lexicalRuleListAST mLexicalRuleList
+  @externRoutineListAST mExternRoutineList
+  @externFunctionListAST mExternFunctionList
+  @indexingListAST mIndexingListAST
+  @lstring mIndexingDirectory
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#           B U I L D    T E R M I N A L    M A P                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+enum @lexicalTypeEnum {
+  case lexicalType_string  case lexicalType_char  case lexicalType_uint 
+  case lexicalType_uint64  case lexicalType_sint  case lexicalType_sint64 
+  case lexicalType_double
+}
+
+#---------------------------------------------------------------------------*
+
+list @lexicalSentValueList {
+  @lstring mLexicalFormalSelector
+  @string mLexicalAttributeName
+  @lexicalTypeEnum mLexicalType
+}
+
+#---------------------------------------------------------------------------*
+
+map @terminalMap {
+  @lexicalSentValueList mSentAttributeList
+  insert insertKey error message "the '%K' terminal has been already declared in %L"
+  search searchKey error message "the '%K' terminal is not declared"
+}
+
+#---------------------------------------------------------------------------*
+#          B U I L D    L E X I C A L    T Y P E    M A P                   *
+#---------------------------------------------------------------------------*
+
+map @lexicalTypeMap {
+  @lexicalTypeEnum mLexicalType
+  insert insertKey error message "the '@%K' lexical type is already declared in %L"
+  search searchKey error message "there is no '@%K' lexical type"
+}
+
+#---------------------------------------------------------------------------*
+
+func %once buildLexicalTypeMap
+  ->@lexicalTypeMap outLexicalTypeMap {
+  outLexicalTypeMap = @lexicalTypeMap. emptyMap
+  [!?outLexicalTypeMap insertKey !@lstring. new { !"string" !@location.here} !@lexicalTypeEnum. lexicalType_string]
+  [!?outLexicalTypeMap insertKey !@lstring. new { !"char"   !@location.here} !@lexicalTypeEnum. lexicalType_char]
+  [!?outLexicalTypeMap insertKey !@lstring. new { !"uint"   !@location.here} !@lexicalTypeEnum. lexicalType_uint]
+  [!?outLexicalTypeMap insertKey !@lstring. new { !"uint64" !@location.here} !@lexicalTypeEnum. lexicalType_uint64]
+  [!?outLexicalTypeMap insertKey !@lstring. new { !"sint"   !@location.here} !@lexicalTypeEnum. lexicalType_sint]
+  [!?outLexicalTypeMap insertKey !@lstring. new { !"sint64" !@location.here} !@lexicalTypeEnum. lexicalType_sint64]
+  [!?outLexicalTypeMap insertKey !@lstring. new { !"double" !@location.here} !@lexicalTypeEnum. lexicalType_double]
+}
+
+#---------------------------------------------------------------------------*
+
+map @lexicalAttributeMap {
+  @lexicalTypeEnum mLexicalType
+  insert insertKey error message "the '%K' lexical attribute has been already declared in %L"
+  search searchKey error message "the '%K' lexical attribute is not declared"
+}
+
+#---------------------------------------------------------------------------*
+#   B U I L D    L E X I C A L    A T T R I B U T E    M A P                *
+#---------------------------------------------------------------------------*
+
+proc buildLexicalAttributeMap
+  ?let @lexicalTypeMap inLexicalTypeMap
+  ?let @lexicalAttributeListAST inLexicalAttributeList
+  ?!@lexicalAttributeMap ioLexicalAttributeMap {
+  for () in  inLexicalAttributeList do
+    if [inLexicalTypeMap hasKey ![mTypeName string]] then
+      [inLexicalTypeMap searchKey !mTypeName ?var @lexicalTypeEnum lexicalType]
+      [!?ioLexicalAttributeMap insertKey !mName !lexicalType]
+    else
+      @string m = ""
+      m += "the @" + mTypeName + " type is not a valid lexical attribute type; are allowed:"
+      @bool firstLoop = true
+      for () in  inLexicalTypeMap do
+        m += " @" + lkey
+      between
+        m += ","
+      end
+      error mTypeName: m
+    end
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+proc buildTerminalMap
+  ?let @galgas3LexiqueComponentListAST-element inLexiqueComponentRoot
+  !@terminalMap outTerminalMap {
+#--------------------------------------- Build lexical attribute map
+  let @lexicalTypeMap lexicalTypeMap = buildLexicalTypeMap ()
+  @lexicalAttributeMap lexicalAttributeMap = {}
+  buildLexicalAttributeMap (
+   !lexicalTypeMap
+   !inLexiqueComponentRoot.mLexicalAttributeList
+   !?lexicalAttributeMap
+  )
+#--------------------------------------- 
+  outTerminalMap = @terminalMap. emptyMap
+  for () in  [inLexiqueComponentRoot mTerminalDeclarationList] do
+    var argumentTypeList =@lexicalSentValueList.emptyList{}
+    for () in  mSentAttributeList do
+      @lexicalTypeEnum attributeLexicalType
+      [lexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType]
+      argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
+    end
+    [!?outTerminalMap insertKey !mName !argumentTypeList]
+  end
+#---
+  for () in  [inLexiqueComponentRoot mLexicalListDeclarationList] do
+    var argumentTypeList =@lexicalSentValueList.emptyList{}
+    for () in  mSentAttributeList do
+      @lexicalTypeEnum attributeLexicalType
+      [lexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType]
+      argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
+    end
+    for () in  mEntryList do
+      [!?outTerminalMap insertKey !mTerminalSpelling !argumentTypeList]
+    end
+  end
+}
+
+#---------------------------------------------------------------------------*
+

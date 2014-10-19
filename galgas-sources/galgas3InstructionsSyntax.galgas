@@ -1,0 +1,1664 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  Copyright (C) 2014, ..., 2014 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+syntax galgas3InstructionsSyntax (galgas3Scanner) {
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#          Rules prototypes                                                    *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <expression> !@semanticExpressionAST outExpression
+
+rule <formal_parameter_list> !@formalParameterListAST outFormalParameterList
+
+rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    S E M A N T I C    I N S T R U C T I O N    L I S T                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction_list> !@semanticInstructionListAST outInstructionsList {
+  outInstructionsList = @semanticInstructionListAST. emptyList
+  repeat
+  while
+    $;$
+  while
+    <semantic_instruction> ?let @semanticInstructionAST instruction
+    outInstructionsList += !instruction
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@galgas3DeclarationAST ioDeclarations {
+  @bool isLocal
+  select
+    isLocal = false
+  or
+    $private$
+    isLocal = true
+  end
+  <declaration_with_private> !isLocal !?ioDeclarations
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    E X T E R N    R O U T I N E    D E C L A R A T I O N                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+  ?!@galgas3DeclarationAST ioDeclarations {
+  $extern$
+#  <local_declaration> ??@bool isLocal ;
+  $proc$
+  $identifier$ ?let @lstring mActionName indexing routineDefinition
+  <formal_parameter_list> ?let @formalParameterListAST mFormalParameterList
+  ioDeclarations.mDeclarationList += !@externRoutineDeclarationAST. new {
+    !false # Is not predefined
+    !false # Is not internal
+    !mActionName
+    !mFormalParameterList}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    R O U T I N E    D E C L A R A T I O N                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! Routine declaration
+
+#---------------------------------------------------------------------------*
+
+rule <declaration_with_private>
+  ?let @bool inIsInternal
+  ?!@galgas3DeclarationAST ioDeclarations {
+  $proc$
+  $identifier$ ?var  @lstring mRoutineName indexing routineDefinition
+  <formal_parameter_list> ?var @formalParameterListAST mFormalParameterList
+  ${$
+  <semantic_instruction_list> ?var @semanticInstructionListAST mRoutineInstructionList
+  $}$
+  let endOfInstructionList = @location.here
+  ioDeclarations.mDeclarationList += !@routineDeclarationAST. new {
+    !false # Is not predefined
+    !inIsInternal
+    !mRoutineName
+    !mFormalParameterList
+    !mRoutineInstructionList
+    !endOfInstructionList}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    F U N C T I O N    D E C L A R A T I O N                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! Function declaration
+
+#---------------------------------------------------------------------------*
+
+rule  <declaration_with_private>
+  ?let @bool inIsInternal
+  ?!@galgas3DeclarationAST ioDeclarations {
+  $func$
+  var isOnce = false
+  select
+  or
+    $attribute$ ?let @lstring onceQualifier
+    if onceQualifier.string != "once" then
+      error onceQualifier : "the only attribute allowed here is '%once'"
+    else
+      isOnce = true
+    end
+  end
+  $identifier$ ?var  @lstring functionName indexing functionDefinition
+  <formal_input_parameter_list> ?let @formalInputParameterListAST formalInputParameterList
+  if isOnce & ([formalInputParameterList length] > 0) then
+    error functionName: "an 'once' function should has no argument"
+  end
+  $->$
+  $type_name$ ?var @lstring resultTypeName
+  $identifier$ ?var @lstring resultVariableName
+  ${$
+  <semantic_instruction_list> ?var @semanticInstructionListAST functionInstructionList
+  $}$
+  let endOfFunctionInstructionList = @location.here
+  if isOnce then
+    ioDeclarations.mDeclarationList += !@onceFunctionDeclarationAST. new {
+      !false # Is not predefined
+      !functionName
+      !resultTypeName
+      !resultVariableName
+      !functionInstructionList
+      !endOfFunctionInstructionList
+      !inIsInternal}
+  else
+    ioDeclarations.mDeclarationList += !@functionDeclarationAST. new {
+      !false # Is not predefined
+      !functionName
+      !formalInputParameterList
+      !resultTypeName
+      !resultVariableName
+      !functionInstructionList
+      !endOfFunctionInstructionList
+      !inIsInternal}
+  end
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    E X T E R N    F U N C T I O N    D E C L A R A T I O N                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! extern function declaration
+
+#---------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@galgas3DeclarationAST ioDeclarations {
+  $extern$
+#  <local_declaration> ??@bool isLocal ;
+  $func$
+  $identifier$ ?var  @lstring mActionName indexing functionDefinition
+  @formalInputParameterListAST formalInputParameterList
+  <formal_input_parameter_list> ? formalInputParameterList
+  $->$
+  $type_name$ ?var @lstring resultTypeName
+  $identifier$ ?var @lstring resultVariableName
+  ioDeclarations.mDeclarationList += !@externFunctionDeclarationAST. new {
+    !false # Is not predefined
+    !mActionName
+    !formalInputParameterList
+    !resultTypeName
+    !resultVariableName}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  L O C A L    V A R I A B L E    D E C L A R A T I O N                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! var declaration instruction
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction {
+  $var$
+  $type_name$ ?var @lstring typeName
+  $identifier$ ?var @lstring variableName
+  outInstruction = @localVariableDeclarationAST. new { ![typeName location] !typeName !variableName !false}
+}
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction {
+  $type_name$ ?var @lstring typeName
+  $identifier$ ?var @lstring variableName
+  outInstruction = @localVariableDeclarationAST. new { ![typeName location] !typeName !variableName !false}
+}
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction {
+  $var$
+  $type_name$ ?var @lstring typeName
+  $identifier$ ?var @lstring variableName
+  $=$
+  <expression> ?let @semanticExpressionAST sourceExpression
+  outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST. new {
+    ![typeName location]
+    !false
+    !typeName
+    !variableName
+    !sourceExpression}
+}
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction {
+  $var$
+  $identifier$ ?var @lstring variableName
+  $=$
+  @semanticExpressionAST sourceExpression
+  <expression> ? sourceExpression
+  outInstruction = @localVariableDeclarationWithAssignmentAST. new {
+    ![variableName location]
+    !variableName
+    !sourceExpression}
+}
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction {
+  $type_name$ ?var @lstring typeName
+  $identifier$ ?var @lstring variableName
+  $=$
+  @semanticExpressionAST sourceExpression
+  <expression> ? sourceExpression
+  outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST. new {
+    ![typeName location]
+    !false
+    !typeName
+    !variableName
+    !sourceExpression}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  L O C A L    C O N S T A N T    D E C L A R A T I O N                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! const declaration instruction
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction {
+  $let$
+  $type_name$ ?var @lstring typeName
+  $identifier$ ?var @lstring variableName
+  $=$
+  <expression> ?let @semanticExpressionAST sourceExpression
+  outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST. new {
+    ![typeName location]
+    !true # Is Constant
+    !typeName
+    !variableName
+    !sourceExpression}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  L O C A L    C O N S T A N T    D E C L A R A T I O N                    *
+#  with implicit target type                                                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction {
+  $let$
+  $identifier$ ?var @lstring variableName
+  $=$
+  <expression> ?let @semanticExpressionAST sourceExpression
+  outInstruction = @localConstantDeclarationWithAssignmentAST. new {
+    ![variableName location]
+    !variableName
+    !sourceExpression}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    A S S I G N M E N T    I N S T R U C T I O N                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! assignment instruction
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction {
+  $identifier$ ?var @lstring mTargetVariableName
+  var mStructAttributeList =@lstringlist.emptyList{}
+  repeat
+  while
+    $.$
+    $identifier$ ?var  @lstring attributeName
+    mStructAttributeList += !attributeName
+  end
+  $=$
+  <expression> ?let @semanticExpressionAST mSourceExpression
+  outInstruction = @assignmentInstructionAST. new {
+    ![mTargetVariableName location]
+    !mTargetVariableName
+    !mStructAttributeList
+    !mSourceExpression}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    S E L F    A S S I G N M E N T    I N S T R U C T I O N                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! self assignment instruction
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction {
+  $self$
+  let instructionLocation = @location.here
+  $=$
+  <expression> ?let @semanticExpressionAST mSourceExpression
+  outInstruction = @selfAssignmentInstructionAST. new {
+    !instructionLocation
+    !mSourceExpression}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    D R O P    I N S T R U C T I O N                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! drop instruction
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction {
+  $drop$
+  let instructionLocation = @location.here
+  var dropList =@lstringlist.emptyList{}
+  repeat
+    $identifier$ ?var @lstring variableName
+    dropList += !variableName
+  while
+    $,$
+  end
+  outInstruction = @dropInstructionAST. new { !instructionLocation !dropList}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    I N C R E M E N T    I N S T R U C T I O N                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! ++ instruction
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction {
+  $identifier$ ?var  @lstring mReceiverName
+  var mStructAttributeList =@lstringlist.emptyList{}
+  repeat
+  while
+    $.$
+    $identifier$ ?var  @lstring attributeName
+    mStructAttributeList += !attributeName
+  end
+  $++$
+  outInstruction = @incrementInstructionAST. new {
+    ![mReceiverName location]
+    !mReceiverName
+    !mStructAttributeList}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    S E L F    I N C R E M E N T    I N S T R U C T I O N                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! self ++ instruction
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction {
+  $self$
+  let instructionLocation = @location.here
+  $++$
+  outInstruction = @selfIncrementInstructionAST. new {
+    !instructionLocation}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    D E C R E M E N T    I N S T R U C T I O N                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! -- instruction
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction {
+  $identifier$ ?var @lstring mReceiverName
+  var mStructAttributeList =@lstringlist.emptyList{}
+  repeat
+  while
+    $.$
+    $identifier$ ?var  @lstring attributeName
+    mStructAttributeList += !attributeName
+  end
+  $--$
+  outInstruction = @decrementInstructionAST. new {
+    ![mReceiverName location]
+    !mReceiverName
+    !mStructAttributeList}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    S E L F    D E C R E M E N T    I N S T R U C T I O N                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! self -- instruction
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction {
+  $self$
+  let instructionLocation = @location.here
+  $--$
+  outInstruction = @selfDecrementInstructionAST. new {
+    !instructionLocation}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    F O R    I N S T R U C T I O N                                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! for instruction
+
+#---------------------------------------------------------------------------*
+
+rule <for_instruction_element>
+  ?!@foreachInstructionEnumeratedObjectElementListAST ioElementList {
+  $*$
+  ioElementList += !["" nowhere] !["" nowhere]
+}
+
+#---------------------------------------------------------------------------*
+
+rule <for_instruction_element>
+  ?!@foreachInstructionEnumeratedObjectElementListAST ioElementList {
+  $unsigned_literal_integer$ ?let @luint count
+  $*$
+  var n = [count uint]
+  if n == 0 then
+    error count: "this value should be > 0"
+  end
+  loop( n) while n > 0 do
+    ioElementList += !["" nowhere] !["" nowhere]
+    n --
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+rule <for_instruction_element>
+  ?!@foreachInstructionEnumeratedObjectElementListAST ioElementList {
+  @lstring typeName
+  select
+    typeName = ["" nowhere]
+  or
+    $type_name$ ?typeName
+  end
+  $identifier$ ?let @lstring constantName
+  ioElementList += !typeName !constantName
+}
+
+#---------------------------------------------------------------------------*
+
+rule <for_instruction_enumerated_object>
+  !@abstractEnumeratedCollectionAST outEnumeratedObject {
+  $($
+  var elementList =@foreachInstructionEnumeratedObjectElementListAST.emptyList{}
+  @bool endsWithEllipsis
+  select
+    $...$
+    endsWithEllipsis = true
+  or
+    repeat
+      <for_instruction_element> !?elementList
+    while
+    end
+    select
+      endsWithEllipsis = false
+    or
+      $...$
+      endsWithEllipsis = true
+    end
+  end
+  $)$
+  $in$
+  <expression> ?let @semanticExpressionAST enumeratedExpression
+  outEnumeratedObject = @enumeratedCollectionCstListInExpAST. new {
+    !elementList
+    !endsWithEllipsis
+    !enumeratedExpression
+    !@location.here}
+}
+
+#---------------------------------------------------------------------------*
+
+rule <for_instruction_enumerated_object>
+  !@abstractEnumeratedCollectionAST outEnumeratedObject {
+  @lstring typeName
+  select
+    typeName = ["" nowhere]
+  or
+    $type_name$ ?typeName
+  end
+  $identifier$ ?let @lstring enumerationVariable
+  $in$
+  <expression> ?let @semanticExpressionAST enumeratedExpression
+  outEnumeratedObject = @enumeratedCollectionVarInExpAST. new {
+    !typeName
+    !enumerationVariable
+    !enumeratedExpression
+    !@location.here}
+}
+
+#---------------------------------------------------------------------------*
+
+rule <for_instruction_enumerated_object>
+  !@abstractEnumeratedCollectionAST outEnumeratedObject {
+  $($
+  $)$
+  @lstring prefix
+  select
+    prefix = ["" nowhere]
+  or
+    $identifier$ ?prefix
+  end
+  $in$
+  <expression> ?let @semanticExpressionAST enumeratedExpression
+  outEnumeratedObject = @enumeratedCollectionImplicitVarInExpAST. new {
+    !prefix
+    !enumeratedExpression
+    !@location.here}
+}
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction {
+  $for$
+  let instructionLocation = @location.here
+  var mEnumeratedObjectList =@forInstructionEnumeratedObjectListAST.emptyList{}
+  repeat
+    @bool ascending
+    select
+      ascending = true
+    or
+      $>$
+      ascending = false
+    end
+    <for_instruction_enumerated_object> ?let @abstractEnumeratedCollectionAST enumeratedObject
+    mEnumeratedObjectList += !ascending !enumeratedObject
+  while
+    $,$
+  end
+  @semanticExpressionAST mWhileExpression
+  select
+    mWhileExpression = @trueExpressionAST. new { !@location.here}
+  or
+    $while$
+    <expression> ? mWhileExpression
+  end
+  let endof_while_expression = @location.here
+  @semanticInstructionListAST mBeforeInstructionList
+  select
+    mBeforeInstructionList = @semanticInstructionListAST. emptyList
+  or
+    $before$
+    <semantic_instruction_list> ? mBeforeInstructionList
+  end
+  let endof_before_branch = @location.here
+  $do$
+  @lstring indexVariableName
+  select
+    indexVariableName = @lstring. new { !"" !@location.here}
+  or
+    $($
+    $identifier$ ? indexVariableName
+    $)$
+  end
+  @semanticInstructionListAST mDoInstructionList
+  <semantic_instruction_list> ? mDoInstructionList
+  let endof_do_branch = @location.here
+  @semanticInstructionListAST mBetweenInstructionList
+  select
+    mBetweenInstructionList = @semanticInstructionListAST. emptyList
+  or
+    $between$
+    <semantic_instruction_list> ? mBetweenInstructionList
+  end
+  let endof_between_branch = @location.here
+  @semanticInstructionListAST mAfterInstructionList
+  select
+    mAfterInstructionList = @semanticInstructionListAST. emptyList
+  or
+    $after$
+    <semantic_instruction_list> ? mAfterInstructionList
+  end
+  let endof_after_branch = @location.here
+  $end$
+  select
+  or
+    $attribute$ ?let @lstring terminator
+    if terminator.string != "for" then
+      error terminator : "the terminator attribute should be '%for'"
+    end
+  end
+  let endof_foreach_instruction = @location.here
+  outInstruction = @forInstructionAST. new {
+    !instructionLocation
+    !mEnumeratedObjectList
+    !indexVariableName
+    !mWhileExpression
+    !endof_while_expression
+    !mBeforeInstructionList
+    !endof_before_branch
+    !mBetweenInstructionList
+    !endof_between_branch
+    !mDoInstructionList
+    !endof_do_branch
+    !mAfterInstructionList
+    !endof_after_branch
+    !endof_foreach_instruction}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    I F    I N S T R U C T I O N                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! IF instruction
+
+#---------------------------------------------------------------------------*
+
+rule <if_branch> !@semanticInstructionAST outInstruction {
+  let instructionLocation = @location.here
+  @semanticExpressionAST if_expression
+  <expression> ?if_expression
+  $then$
+  @semanticInstructionListAST then_instructionList
+  <semantic_instruction_list> ? then_instructionList
+  let endOf_then_branchLocation = @location.here
+  @semanticInstructionListAST else_instructionList
+  select
+    else_instructionList = @semanticInstructionListAST. emptyList
+  or
+    $else$
+    <semantic_instruction_list> ? else_instructionList
+  or
+    $elsif$
+    @semanticInstructionAST instruction
+    <if_branch> ? instruction
+    else_instructionList = @semanticInstructionListAST. emptyList
+    else_instructionList += !instruction
+  end
+  outInstruction = @ifInstructionAST. new {
+    !instructionLocation
+    !if_expression
+    !then_instructionList
+    !endOf_then_branchLocation
+    !else_instructionList
+    !@location.here}
+}
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction {
+  $if$
+  <if_branch> ?outInstruction
+  $end$
+  select
+  or
+    $attribute$ ?let @lstring terminator
+    if terminator.string != "if" then
+      error terminator : "the terminator attribute should be '%if'"
+    end
+  end
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    M E T H O D    C A L L    I N S T R U C T I O N                        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#!  Method call instruction
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction {
+  $[$
+  let instructionLocation = @location.here
+  <expression> ?let @semanticExpressionAST mReceiverExpression
+  $identifier$ ?var @lstring mMethodName
+  <actual_parameter_list> ?let @actualParameterListAST actualParameterList
+  $]$
+  outInstruction = @methodCallInstructionAST. new {
+    !instructionLocation
+    !mReceiverExpression
+    !mMethodName
+    !actualParameterList}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    S E T T E R    C A L L    I N S T R U C T I O N                        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! setter call
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction {
+  $[$
+  let instructionLocation = @location.here
+  $!?$ ?let selector
+  if selector.string != "" then
+    error selector : "an empty selector '!?' is required here"
+  end
+  $identifier$ ?var @lstring mReceiverName
+  var mReceiverStructAttributes =@lstringlist.emptyList{}
+  repeat
+  while
+    $.$
+    $identifier$ ?var @lstring structAttribute
+    mReceiverStructAttributes += !structAttribute
+  end
+  $identifier$ ?var @lstring mModifierName
+  <actual_parameter_list> ?let @actualParameterListAST actualParameterList
+  $]$
+  outInstruction = @modifierCallInstructionAST. new {
+    !instructionLocation
+    !mReceiverName
+    !mReceiverStructAttributes
+    !mModifierName
+    !actualParameterList}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    " S E L F "   S E T T E R    C A L L    I N S T R U C T I O N          *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! self setter call
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction {
+  $[$
+  let instructionLocation = @location.here
+  $!?$ ?let selector
+  if selector.string != "" then
+    error selector : "an empty selector '!?' is required here"
+  end
+  $self$
+  $identifier$ ?let mModifierName
+  <actual_parameter_list> ?let @actualParameterListAST actualParameterList
+  $]$
+  outInstruction = @selfModifierCallInstructionAST. new {
+    !instructionLocation
+    !mModifierName
+    !actualParameterList}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    E R R O R    I N S T R U C T I O N                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! error instruction
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction {
+  $error$
+  let instructionLocation = @location.here
+  <expression> ?let @semanticExpressionAST mReceiverExpression
+  $:$
+  <expression> ?let @semanticExpressionAST mErrorExpression
+  var mBuiltVariableList =@lstringlist.emptyList{}
+  select
+  or
+    $:$
+    repeat
+     $identifier$ ?var @lstring builtVariableName
+     mBuiltVariableList += !builtVariableName
+    while
+      $,$
+    end
+  end
+  outInstruction = @errorInstructionAST. new {
+    !instructionLocation
+    !mReceiverExpression
+    !mErrorExpression
+    !mBuiltVariableList}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    W A R N I N G    I N S T R U C T I O N                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! warning instruction
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction {
+  $warning$
+  let instructionLocation = @location.here
+  <expression> ?var @semanticExpressionAST mReceiverExpression
+  $:$
+  <expression> ?let @semanticExpressionAST mWarningExpression
+  outInstruction = @warningInstructionAST. new {
+    !instructionLocation
+    !mReceiverExpression
+    !mWarningExpression}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    R O U T I N E    C A L L    I N S T R U C T I O N                      *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! routine call
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction {
+  $identifier$ ?var @lstring mRoutineName indexing routineCall
+  $($
+  <actual_parameter_list> ?let @actualParameterListAST actualParameterList
+  $)$
+  outInstruction = @routineCallInstructionAST. new {
+    ![mRoutineName location]
+    !mRoutineName
+    !actualParameterList}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    W I T H    I N S T R U C T I O N                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! with
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction {
+  $with$
+  let instructionLocation = @location.here
+  <expression> ?let @semanticExpressionAST keyExpression
+  let endOfKeyExpression = @location.here
+  @lstring withPrefix
+  select
+    withPrefix = @lstring. new { !"" !@location.here}
+  or
+    $:$
+    $identifier$ ? withPrefix
+  end
+  $in$
+  select
+     <expression> ?let @semanticExpressionAST receiverExpression
+    let endOfReceiverExpression = @location.here
+    @lstring searchMethodNameForErrorSignaling
+    select
+      searchMethodNameForErrorSignaling = ["" nowhere]
+    or
+      $error$
+      $message$
+      $identifier$ ?searchMethodNameForErrorSignaling
+    end
+    $do$
+    <semantic_instruction_list> ?let @semanticInstructionListAST mDoBranchInstructions
+    let endOfDoInstructions = @location.here
+    @semanticInstructionListAST mElseBranchInstructions
+    select
+      mElseBranchInstructions = {}
+    or
+      $else$
+      if searchMethodNameForErrorSignaling.string != "" then
+        error searchMethodNameForErrorSignaling : "no 'else' branch if error on search is enabled"
+      end
+      <semantic_instruction_list> ?mElseBranchInstructions
+    end
+    outInstruction = @readAccessWithInstructionAST. new {
+      !instructionLocation
+      !withPrefix
+      !receiverExpression
+      !endOfReceiverExpression
+      !keyExpression
+      !endOfKeyExpression
+      !searchMethodNameForErrorSignaling
+      !mDoBranchInstructions
+      !endOfDoInstructions
+      !mElseBranchInstructions
+      !@location.here}
+  or
+    $!?$ ?let selector
+    if selector.string != "" then
+      error selector : "an empty selector '!?' is required here"
+    end
+    $identifier$ ?var @lstring mTargetObjectName
+    var structAttributeList =@lstringlist.emptyList{}
+    repeat
+    while
+      $.$
+      $identifier$ ?var @lstring mStructFieldName
+      structAttributeList += !mStructFieldName
+    end
+    let endOfReceiverExpression = @location.here
+    @lstring searchMethodNameForErrorSignaling
+    select
+      searchMethodNameForErrorSignaling = ["" nowhere]
+    or
+      $error$
+      $message$
+      $identifier$ ?searchMethodNameForErrorSignaling
+    end
+    $do$
+    <semantic_instruction_list> ?let @semanticInstructionListAST mDoBranchInstructions
+    let endOf_do_instructions = @location.here
+    @semanticInstructionListAST mElseBranchInstructions
+    select
+      mElseBranchInstructions = @semanticInstructionListAST. emptyList
+    or
+      $else$
+      if searchMethodNameForErrorSignaling.string != "" then
+        error searchMethodNameForErrorSignaling : "no 'else' branch if error on search is enabled"
+      end
+      <semantic_instruction_list> ? mElseBranchInstructions
+    end
+    let endOf_else_instructions = @location.here
+    outInstruction = @readWriteAccessWithInstructionAST. new {
+      !instructionLocation
+      !withPrefix
+      !mTargetObjectName
+      !structAttributeList
+      !endOfReceiverExpression
+      !keyExpression
+      !endOfKeyExpression
+      !searchMethodNameForErrorSignaling
+      !mDoBranchInstructions
+      !endOf_do_instructions
+      !mElseBranchInstructions
+      !endOf_else_instructions}
+  end
+  $end$
+  select
+  or
+    $attribute$ ?let @lstring terminator
+    if terminator.string != "with" then
+      error terminator : "the terminator attribute should be '%with'"
+    end
+  end
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    C A S T    I N S T R U C T I O N                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! cast instruction
+
+#---------------------------------------------------------------------------*
+
+rule <cast_instruction_branch> ?!@castInstructionBranchListAST ioCastInstructionBranchList {
+  $case$
+  @dynamicTypeComparisonKind kind
+  select
+    $==$ kind = @dynamicTypeComparisonKind. equal
+  or
+    $>=$ kind = @dynamicTypeComparisonKind. inherited
+  or
+    $>$ kind = @dynamicTypeComparisonKind. strictlyInherited
+  end
+  $type_name$ ?var  @lstring mTypeName
+  @lstring mConstantVarName # Empty string if no constant var
+  select
+    $identifier$ ?mConstantVarName
+  or
+    mConstantVarName = @lstring. new { !"" !@location.here}
+  end
+  $:$
+  <semantic_instruction_list> ?var @semanticInstructionListAST mCastBranchInstructionList
+  ioCastInstructionBranchList +=
+    !mTypeName
+    !mConstantVarName
+    !mCastBranchInstructionList
+    !kind
+    !@location.here
+}
+
+#---------------------------------------------------------------------------*
+
+rule <cast_else_or_default> !@semanticInstructionListAST outElseOrDefault {
+  outElseOrDefault = @semanticInstructionListAST. emptyList
+}
+
+#---------------------------------------------------------------------------*
+
+rule <cast_else_or_default> !@semanticInstructionListAST outElseOrDefault {
+  $else$
+  <semantic_instruction_list> ? outElseOrDefault
+}
+
+#---------------------------------------------------------------------------*
+
+rule <cast_else_or_default> !@semanticInstructionListAST outElseOrDefault {
+  $default$
+  let instructionLocation = @location.here
+  $error$
+  <expression> ?let @semanticExpressionAST errorLocationExpression
+  outElseOrDefault = @semanticInstructionListAST. emptyList
+  outElseOrDefault += !@errorInstructionAST. new {
+    !instructionLocation
+    !errorLocationExpression
+    !@literalStringExpressionAST. new {
+      !instructionLocation
+      !@stringlist. listWithValue { !"cast instruction run-time error"}}
+    !@lstringlist. emptyList}
+}
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction {
+  $cast$
+  let instructionLocation = @location.here
+  <expression> ?let @semanticExpressionAST expression
+  var mCastInstructionBranchList =@castInstructionBranchListAST.emptyList{}
+  repeat
+    <cast_instruction_branch> !? mCastInstructionBranchList
+  while
+  end
+  <cast_else_or_default> ?let @semanticInstructionListAST mElseOrDefault
+  $end$
+  select
+  or
+    $attribute$ ?let @lstring terminator
+    if terminator.string != "cast" then
+      error terminator : "the terminator attribute should be '%cast'"
+    end
+  end
+  let endOfInstructionLocation = @location.here
+  outInstruction = @structuredCastInstructionAST. new {
+    !instructionLocation
+    !expression
+    !mCastInstructionBranchList
+    !mElseOrDefault
+    !endOfInstructionLocation}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    +=    I N S T R U C T I O N                                            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! += instruction
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction {
+  @lstring mReceiverName
+  $identifier$ ? mReceiverName
+  let instructionLocation = @location.here
+  var mStructAttributeList =@lstringlist.emptyList{}
+  repeat
+  while
+    $.$
+    $identifier$ ?var  @lstring attributeName
+    mStructAttributeList += !attributeName
+  end
+  $+=$
+  select
+    <non_empty_output_expression_list> ?let @actualOutputExpressionList expressionList
+    outInstruction = @plusEqualElementsInstructionAST. new {
+      !instructionLocation
+      !mReceiverName
+      !mStructAttributeList
+      !expressionList}
+  or
+    <expression> ?let @semanticExpressionAST expression
+    outInstruction = @plusEqualExpressionInstructionAST. new {
+      !instructionLocation
+      !mReceiverName
+      !mStructAttributeList
+      !expression}
+  end
+}
+
+#------------------------------------------------------------------------------*
+
+rule <non_empty_output_expression_list>
+  !@actualOutputExpressionList outExpressionList {
+  outExpressionList = {}
+  repeat
+    $!$ ?let selector
+    <expression> ?let @semanticExpressionAST expression
+    outExpressionList += !selector !expression !@location.here
+  while
+  end
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    SELF +=    I N S T R U C T I O N                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! self += instruction
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction {
+  $self$
+  let instructionLocation = @location.here
+  $+=$
+  <non_empty_output_expression_list> ?let @actualOutputExpressionList expressionList
+  outInstruction = @selfPlusEqualElementsInstructionAST. new {
+    !instructionLocation
+    !expressionList}
+}
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction {
+  $self$
+  let instructionLocation = @location.here
+  $+=$
+  <expression> ?let @semanticExpressionAST expression
+  outInstruction = @selfPlusEqualExpressionInstructionAST. new {
+    !instructionLocation
+    !expression}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    L O O P    I N S T R U C T I O N                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! loop instruction
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction {
+  $loop$
+  let instructionLocation = @location.here
+#--- Variant
+  $($
+  <expression> ?var @semanticExpressionAST mVariantExpression
+  let mEndOfVariantExpression = @location.here
+  $)$
+#---
+  <semantic_instruction_list> ?var @semanticInstructionListAST mFirstInstructions
+#---
+  let mEndOfFirstInstructions = @location.here
+  $while$
+  <expression> ?let @semanticExpressionAST mLoopExpression
+  let mEndOfLoopExpression = @location.here
+  $do$
+  <semantic_instruction_list> ?let @semanticInstructionListAST mSecondInstructions
+  let mEndOfSecondInstructions = @location.here
+  $end$
+  select
+  or
+    $attribute$ ?let @lstring terminator
+    if terminator.string != "loop" then
+      error terminator : "the terminator attribute should be '%loop'"
+    end
+  end
+  let mEndOfLoopInstruction = @location.here
+  outInstruction = @loopInstructionAST. new {
+    !instructionLocation
+    !mVariantExpression
+    !mEndOfVariantExpression
+    !mFirstInstructions
+    !mEndOfFirstInstructions
+    !mLoopExpression
+    !mEndOfLoopExpression
+    !mSecondInstructions
+    !mEndOfSecondInstructions
+    !mEndOfLoopInstruction}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    M E S S A G E    I N S T R U C T I O N                                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! message instruction
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction {
+  $message$
+  let instructionLocation = @location.here
+  <expression> ?let @semanticExpressionAST expression
+  outInstruction = @messageInstructionAST. new {
+    !instructionLocation
+    !expression}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    L O G    I N S T R U C T I O N                                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! log instruction
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction {
+  $log$
+  let instructionLocation = @location.here
+  var logList =@logListAST.emptyList{}
+  repeat
+    select
+      $identifier$ ?let @lstring loggedVariableName
+      logList += !loggedVariableName !@varInExpressionAST. new { !loggedVariableName}
+    or
+      $literal_string$ ?var  @lstring logMessage
+      $:$
+      <expression> ?let @semanticExpressionAST logExpression
+      logList += !logMessage !logExpression
+    end
+  while
+    $,$
+  end
+  outInstruction = @logInstructionAST. new {
+    !instructionLocation
+    !logList}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  G R A M M A R    I N S T R U C T I O N                                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! grammar instruction
+
+#---------------------------------------------------------------------------*
+
+rule <actual_parameter_list>
+  !@actualParameterListAST outActualParameterList
+
+#---------------------------------------------------------------------------*
+
+rule <syntax_directed_translation_result>
+  !@abstractGrammarInstructionSyntaxDirectedTranslationResult outResult {
+  $?$ ?let selector
+  if selector.string != "" then
+    error selector : "the selector should be '?'"
+  end
+  select
+    $*$
+    outResult = @grammarInstructionSyntaxDirectedTranslationDropResult. new { !@location.here}
+  or
+    $type_name$ ?var @lstring actualParameterTypeName
+    $identifier$ ?var @lstring actualParameterName
+    outResult = @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar. new { !actualParameterTypeName !actualParameterName}
+  or
+    $let$
+    $type_name$ ?var @lstring actualParameterTypeName
+    $identifier$ ?var @lstring actualParameterName
+    outResult = @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst. new { !actualParameterTypeName !actualParameterName}
+  or
+    $identifier$ ?var @lstring actualParameterName
+    outResult = @grammarInstructionSyntaxDirectedTranslationResultInVar. new { !actualParameterName}
+  end
+}
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction {
+  $grammar$
+  let instructionLocation = @location.here
+  $identifier$ ?let @lstring mGrammarComponentName indexing grammarComponentReference
+  @lstring mLabelName
+  select
+    mLabelName = @lstring. new { !"" !@location.here}
+  or
+    $label$
+    $identifier$ ?mLabelName
+  end
+  @bool sourceExpressionIsFile
+  select
+    $in$ sourceExpressionIsFile = true
+  or
+    $on$ sourceExpressionIsFile = false
+  end
+  <expression> ?let @semanticExpressionAST mSourceExpression
+  let endOfSourceExpression = @location.here
+  <actual_parameter_list> ?let @actualParameterListAST actualParameterList
+#--- Get syntax directed translation result string
+  @abstractGrammarInstructionSyntaxDirectedTranslationResult grammarInstructionSyntaxDirectedTranslationResult
+  select
+    grammarInstructionSyntaxDirectedTranslationResult = @grammarInstructionSyntaxDirectedTranslationResultNone. new
+  or
+    $:>$
+    <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationResult
+  end
+  outInstruction = @grammarInstructionAST. new {
+    !instructionLocation
+    !mGrammarComponentName
+    !mLabelName
+    !mSourceExpression
+    !endOfSourceExpression
+    !sourceExpressionIsFile
+    !actualParameterList
+    !grammarInstructionSyntaxDirectedTranslationResult}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  S W I T C H    I N S T R U C T I O N                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! switch instruction
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction {
+  $switch$
+  let instructionLocation = @location.here
+  <expression> ?let @semanticExpressionAST switchExpression
+  let endOfSwitchExpression = @location.here
+  var switchBranches =@switchBranchesAST.emptyList{}
+  repeat
+    $case$
+    var constantNameList =@lstringlist.emptyList{}
+    repeat
+      $identifier$ ?let @lstring constantName
+      constantNameList += !constantName
+    while
+      $,$
+    end
+    @2lstringlist associatedValuesExtraction = {}
+    select
+    or
+      $($
+      repeat
+        select
+          $*$
+          associatedValuesExtraction += !["" nowhere] !["" nowhere]
+         or
+          @lstring typeName
+          select
+            $type_name$ ?typeName
+          or
+            typeName = ["" nowhere]
+          end
+          $identifier$ ?let @lstring constantName
+          associatedValuesExtraction += !typeName !constantName
+        end
+      while
+      end
+      $)$
+    end
+    $:$
+    <semantic_instruction_list> ?let @semanticInstructionListAST instructions
+    switchBranches += !constantNameList !associatedValuesExtraction !instructions !@location.here
+  while
+  end
+  $end$
+  let endOfSwitchInstruction = @location.here
+  select
+  or
+    $attribute$ ?let @lstring terminator
+    if terminator.string != "switch" then
+      error terminator : "the terminator attribute should be '%switch'"
+    end
+  end
+  outInstruction = @switchInstructionAST. new {
+    !instructionLocation
+    !switchExpression
+    !endOfSwitchExpression
+    !switchBranches
+    !endOfSwitchInstruction}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  A C T U A L    I N P U T    P A R A M E T E R    L I S T                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! Input parameter list
+
+#---------------------------------------------------------------------------*
+
+rule <actual_input_parameter>
+  !@lstring outSelector
+  !@abstractInputParameter outActualInputParameter {
+  select
+    $?$ ?outSelector
+    $*$
+    outActualInputParameter = @inputParameterAnonymousVariable. new
+  or
+    $?$ ?outSelector
+    $var$
+    @lstring actualParameterTypeName
+    select
+      actualParameterTypeName = ["" nowhere]
+    or
+      $type_name$ ?actualParameterTypeName
+    end
+    $identifier$ ?var @lstring actualParameterName
+    outActualInputParameter = @inputParameterDeclaredVariable. new { !actualParameterTypeName !actualParameterName}
+  or
+    $?$ ?outSelector
+    $let$
+    @lstring actualParameterTypeName
+    select
+      actualParameterTypeName = ["" nowhere]
+    or
+      $type_name$ ?actualParameterTypeName
+    end
+    $identifier$ ?var @lstring actualParameterName
+    outActualInputParameter = @inputParameterDeclaredConstant. new { !actualParameterTypeName !actualParameterName}
+  or
+    $?$ ?outSelector
+    $identifier$ ?var @lstring actualParameterName
+    outActualInputParameter = @inputParameterVariable. new { !actualParameterName}
+  end
+}  
+
+#---------------------------------------------------------------------------*
+
+rule <actual_input_parameter_list>
+  !@actualInputParameterListAST outActualInputParameterList {
+  outActualInputParameterList = @actualInputParameterListAST. emptyList
+  repeat
+  while
+    <actual_input_parameter> ?let actualSelector ?let @abstractInputParameter actualInputParameter
+    outActualInputParameterList += !actualSelector !actualInputParameter
+  end
+}  
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  T Y P E    M E T H O D    C A L L    I N S T R U C T I O N               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! method call instruction
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction {
+  $[$
+  let instructionLocation = @location.here
+  $type_name$ ?let @lstring mTypeName indexing typeReferenceInTypeMethod
+  $identifier$ ?let @lstring mMethodName
+  <actual_parameter_list> ?let @actualParameterListAST actualParameterList
+  $]$
+  outInstruction = @typeMethodCallInstructionAST. new {
+    !instructionLocation
+    !mTypeName
+    !mMethodName
+    !actualParameterList}
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    M A T C H    I N S T R U C T I O N                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+#! Match instruction
+
+#---------------------------------------------------------------------------*
+
+rule <match_entry> ?!@matchEntryListAST ioMatchEntryList {
+  $identifier$ ?var  @lstring enumerationConstantName
+  ioMatchEntryList +=
+    !false
+    !enumerationConstantName
+    !@lstring. new { !"" !@location.here}
+}
+
+#---------------------------------------------------------------------------*
+
+rule <match_entry> ?!@matchEntryListAST ioMatchEntryList {
+  $type_name$ ?var @lstring className
+  @lstring localConstant
+  select
+    localConstant = @lstring. new { !"" !@location.here}
+  or
+    $identifier$ ?localConstant
+  end
+  ioMatchEntryList +=
+    !true
+    !className
+    !localConstant
+}
+
+#---------------------------------------------------------------------------*
+
+rule <match_instruction_branch> ?!@matchInstructionBranchListAST ioMatchInstructionBranchList {
+  $case$
+  var mMatchEntryList =@matchEntryListAST.emptyList{}
+  repeat
+    <match_entry> !? mMatchEntryList
+  while
+    $,$
+  end
+  let @location endOfMatchEntryList = @location.here
+  $:$
+  @semanticInstructionListAST mMatchBranchInstructionList
+  <semantic_instruction_list> ? mMatchBranchInstructionList
+  ioMatchInstructionBranchList +=
+    !mMatchEntryList
+    !endOfMatchEntryList
+    !mMatchBranchInstructionList
+    !@location.here
+}
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction {
+  $match$
+  var matchedExpressionNameList =@semanticExpressionListAST.emptyList{}
+  let instructionLocation = @location.here
+  <expression> ?let @semanticExpressionAST receiverExpression
+  matchedExpressionNameList += !receiverExpression !@location.here
+  $,$
+  repeat
+    @semanticExpressionAST receiverExpression
+    <expression> ? receiverExpression
+    matchedExpressionNameList += !receiverExpression !@location.here
+  while
+    $,$
+  end
+  var matchInstructionBranchList =@matchInstructionBranchListAST.emptyList{}
+  repeat
+    <match_instruction_branch> !? matchInstructionBranchList
+  while
+  end
+  @semanticInstructionListAST elseInstructionList
+  select
+    elseInstructionList = @semanticInstructionListAST. emptyList
+  or
+    $else$
+    <semantic_instruction_list> ? elseInstructionList
+  end
+  $end$
+  let @location endOf_match_instruction = @location.here
+  select
+  or
+    $attribute$ ?let @lstring terminator
+    if terminator.string != "match" then
+      error terminator : "the terminator attribute should be '%match'"
+    end
+  end
+  outInstruction = @matchInstructionAST. new {
+    !instructionLocation
+    !matchedExpressionNameList
+    !matchInstructionBranchList
+    !elseInstructionList
+    !endOf_match_instruction}
+}
+
+#---------------------------------------------------------------------------*
+
+}
