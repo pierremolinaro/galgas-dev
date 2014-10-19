@@ -40,7 +40,7 @@ PLATFORM_LINKER_OPTIONS :=
 
 #-----------------------------------------------------------------------------*
 
-USER_COMMAND_LINE_OPTIONS :=
+USER_LINK_OPTIONS :=
 SOURCES_DIR :=
 SOURCES :=
 
