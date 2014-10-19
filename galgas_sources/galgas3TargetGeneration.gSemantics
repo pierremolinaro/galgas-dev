@@ -574,16 +574,49 @@ routine updateGalgas3Targets
       !"SDKROOT = " + SDK,
       !"COPY_PHASE_STRIP = NO"
     }] ;
+  #--- Add "Hand coded sources (App)" group
+    @stringlist m_HandCodedSourceFileRefForAppList := {} ;
+    @stringlist m_HandCodedResourceFileRefForAppList := {} ;
+    if [inHandCodedSourceAppFileList length] > 0 then
+      [!?xcodeProject addGroupWithFiles
+        !groupName:"Hand Coded Sources (App)"
+        !groupPath:"../"
+        !fileNames:[@stringset setWithStringList !inHandCodedSourceAppFileList]
+        !?cppFileRefs:*
+        !?mFileRefs:m_HandCodedSourceFileRefForAppList
+        !?mmFileRefs:*
+        !?frameworkFileRefs:*
+        !?resourceFileRefs:m_HandCodedResourceFileRefForAppList
+        ??groupRef:@string groupRef
+      ] ;
+      [!?xcodeProject placeGroupAsMainGroup !groupRef:groupRef] ;
+    end if ;
+  #--- Add "Frameworks for App" group
+    @stringlist appFrameworksFileRefList := {} ;
+    if [inHandCodedLinkAppFileList length] > 0 then
+      [!?xcodeProject addGroupWithFiles
+        !groupName:"Frameworks (App)"
+        !groupPath:"/System/Library/Frameworks"
+        !fileNames:[@stringset setWithStringList !inHandCodedLinkAppFileList]
+        !?cppFileRefs:*
+        !?mFileRefs:*
+        !?mmFileRefs:*
+        !?frameworkFileRefs:appFrameworksFileRefList
+        !?resourceFileRefs:*
+        ??groupRef:@string frameworkGroupRef
+      ] ;
+      [!?xcodeProject placeGroupAsMainGroup !groupRef:frameworkGroupRef] ;
+    end if ;
   #--- Mach O target
     @stringlist buildFileRefListForTool := {} ;
     @stringlist m_FileRefList := {} ;
     @stringlist mm_FileRefList := {} ;
     @stringlist frameworksFileRefList := {} ;
     @stringlist resourceFileBuildRefs := {} ;
-  #--- Add "Hand coded sources" group
+  #--- Add "Hand coded sources (Tool)" group
     if [inHandCodedSourceToolFileList length] > 0 then
       [!?xcodeProject addGroupWithFiles
-        !groupName:"Hand Coded Sources"
+        !groupName:"Hand Coded Sources (Tool)"
         !groupPath:"../"
         !fileNames:[@stringset setWithStringList !inHandCodedSourceToolFileList]
         !?cppFileRefs:buildFileRefListForTool
@@ -599,8 +632,7 @@ routine updateGalgas3Targets
     @stringlist toolFrameworksFileRefList := {} ;
     if [inFrameworkToolFileList length] > 0 then
       [!?xcodeProject addGroupWithFiles
-        !groupName:"Frameworks for Tool"
-#        !groupPath:"/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/" + SDK + ".sdk/System/Library/Frameworks"
+        !groupName:"Frameworks (Tool)"
         !groupPath:"/System/Library/Frameworks"
         !fileNames:[@stringset setWithStringList !inFrameworkToolFileList]
         !?cppFileRefs:*
@@ -1121,9 +1153,9 @@ routine updateGalgas3Targets
     [!?xcodeProject addAppTarget
       !targetName:"Cocoa " + inTargetName
       !productFileName:"Cocoa" + [inTargetName stringByCapitalizingFirstCharacter]
-      !sources:m_FileRefList
-      !frameworkFileRefs:frameworksFileRefList
-      !resourceFileRefs:resourceFileBuildRefs
+      !sources:m_FileRefList + m_HandCodedSourceFileRefForAppList
+      !frameworkFileRefs:frameworksFileRefList + appFrameworksFileRefList
+      !resourceFileRefs:resourceFileBuildRefs + m_HandCodedResourceFileRefForAppList
       !buildConfigurationSettingList:{
         !"GCC_OPTIMIZATION_LEVEL = 0",
         !"GCC_PREPROCESSOR_DEFINITIONS = (\"LIBPM_MULTI_THREADING=0\")"

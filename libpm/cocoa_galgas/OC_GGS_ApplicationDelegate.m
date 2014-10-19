@@ -1,9 +1,9 @@
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
 //                                                                                                                     *
-//  This file is part of libpm library                                         *
+//  This file is part of libpm library                                                                                 *
 //                                                                                                                     *
-//  Copyright (C) 2003, ..., 2014 Pierre Molinaro.                             *
+//  Copyright (C) 2003, ..., 2014 Pierre Molinaro.                                                                     *
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
@@ -62,7 +62,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//   S E T    A P P L I C A T I O N    M E N U    I T E M    T I T L E S       *
+//   S E T    A P P L I C A T I O N    M E N U    I T E M    T I T L E S                                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -209,7 +209,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//       S E T    T E X T    C O L O R S    P R E F E R E N C E S              *
+//       S E T    T E X T    C O L O R S    P R E F E R E N C E S                                                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -571,7 +571,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//       B U I L D    T E X T    M A C R O    M E N U                          *
+//       B U I L D    T E X T    M A C R O    M E N U                                                                  *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -607,7 +607,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//   B U I L D    B O O L    C O M M A N D    L I N E    O P T I O N S         *
+//   B U I L D    B O O L    C O M M A N D    L I N E    O P T I O N S                                                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -645,7 +645,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//   B U I L D    U I N T    C O M M A N D    L I N E    O P T I O N S         *
+//   B U I L D    U I N T    C O M M A N D    L I N E    O P T I O N S                                                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -708,7 +708,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//   B U I L D    U I N T    C O M M A N D    L I N E    O P T I O N S         *
+//   B U I L D    U I N T    C O M M A N D    L I N E    O P T I O N S                                                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -766,7 +766,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//   POPULATE TOOL POPUPBUTTON                                                 *
+//   POPULATE TOOL POPUPBUTTON                                                                                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -805,7 +805,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//       A W A K E    F R O M    N I B                                         *
+//       A W A K E    F R O M    N I B                                                                                 *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -825,6 +825,9 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   [nc addObserver:self selector:@selector(preferencesDidChange:) name:NSUserDefaultsDidChangeNotification object:ud] ;
 //--- Load tool nibs ?
   NSArray * nibArray = nibsAndClasses () ;
+  #ifdef MAC_OS_X_VERSION_10_8
+    mArrayOfNibTopObjects = [NSArray array] ;
+  #endif
   for (NSUInteger i=0 ; i<[nibArray count] ; i++) {
     NSArray * entry = [nibArray objectAtIndex:i] ;
     NSString * nibName = [entry objectAtIndex:0] ;
@@ -833,6 +836,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
     #ifdef MAC_OS_X_VERSION_10_8
       NSArray * objects = nil ;
       [[NSBundle mainBundle] loadNibNamed:nibName owner:owner topLevelObjects:& objects] ;
+      mArrayOfNibTopObjects = [mArrayOfNibTopObjects arrayByAddingObjectsFromArray:objects] ;
     #else
       [NSBundle loadNibNamed:nibName owner:owner] ;
     #endif
@@ -997,7 +1001,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                              windowDidMove:                                 *
+//                              windowDidMove:                                                                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1010,7 +1014,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                             windowDidResize:                                *
+//                             windowDidResize:                                                                        *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1027,8 +1031,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//       O P E N    A N    U N T I T L E D    D O C U M E N T                  *
-//                    A T    S T A R T U P                                     *
+//       O P E N    A N    U N T I T L E D    D O C U M E N T    A T    S T A R T U P                                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1038,7 +1041,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//       A C T I O N    N E W  D O C U M E N T                                 *
+//       A C T I O N    N E W  D O C U M E N T                                                                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
