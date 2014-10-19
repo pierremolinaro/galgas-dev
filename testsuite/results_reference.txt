@@ -356,7 +356,7 @@ LOGGING r: <@uint:5>
   @luintlist
   @luintlist-element
   @maTable
-  @monMapProxy
+  @maTable-proxy
   @myList
   @myList-element
   @myListMap
@@ -401,7 +401,7 @@ LOGGING y: <@uint:2>
 LOGGING result: 
 *************************************** begin of maproxy test
 LOGGING [table count]: <@uint:0>
-LOGGING Proxy: : <@monMapProxy regular (key "abc", unsolved)>
+LOGGING Proxy: : <@maTable-proxy regular (key "abc", unsolved)>
 LOGGING [table unsolvedProxyCount]: <@uint:1>
 *************************************** begin of category reader test
 LOGGING s: <@string:"-3-4-4">
