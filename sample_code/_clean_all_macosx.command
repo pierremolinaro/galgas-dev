@@ -2,37 +2,37 @@
 set -x
 DIR=`dirname $0` &&
 #----------------- Assignment
-${DIR}/assignment_language/makefile_macosx/clean.command &&
-rm -fr ${DIR}/assignment_language/galgas_sources/GALGAS_OUTPUT &&
-cd ${DIR}/assignment_language/project_xcode && rm -fr build
+${DIR}/assignment_language/makefile-macosx/clean.py &&
+rm -fr ${DIR}/assignment_language/build &&
+cd ${DIR}/assignment_language/xcode-project && rm -fr build
 #----------------- Pascal
-${DIR}/pascal/makefile_macosx/clean.command &&
-rm -fr ${DIR}/pascal/galgas_sources/GALGAS_OUTPUT &&
-cd ${DIR}/pascal/project_xcode && rm -fr build
+${DIR}/pascal/makefile-macosx/clean.py &&
+rm -fr ${DIR}/pascal/build &&
+cd ${DIR}/pascal/xcode-project && rm -fr build
 #----------------- class_sample_language
-${DIR}/class_sample_language/makefile_macosx/clean.command &&
-rm -fr ${DIR}/class_sample_language/galgas_sources/GALGAS_OUTPUT &&
-cd ${DIR}/class_sample_language/project_xcode && rm -fr build
+${DIR}/class_sample_language/makefile-macosx/clean.py &&
+rm -fr ${DIR}/class_sample_language/build &&
+cd ${DIR}/class_sample_language/xcode-project && rm -fr build
 rm -f ${DIR}/class_sample_language/samples/*.o &&
 rm -f ${DIR}/class_sample_language/samples/*.cpp &&
 #----------------- dangling_else_solution
-${DIR}/dangling_else_solution/makefile_macosx/clean.command &&
-rm -fr ${DIR}/dangling_else_solution/galgas_sources/GALGAS_OUTPUT &&
-cd ${DIR}/dangling_else_solution/project_xcode && rm -fr build
+${DIR}/dangling_else_solution/makefile-macosx/clean.py &&
+rm -fr ${DIR}/dangling_else_solution/build &&
+cd ${DIR}/dangling_else_solution/xcode-project && rm -fr build
 #----------------- SLR_expression
-${DIR}/SLR_expression/makefile_macosx/clean.command &&
-rm -fr ${DIR}/SLR_expression/galgas_sources/GALGAS_OUTPUT &&
-cd ${DIR}/SLR_expression/project_xcode && rm -fr build
+${DIR}/SLR_expression/makefile-macosx/clean.py &&
+rm -fr ${DIR}/SLR_expression/build &&
+cd ${DIR}/SLR_expression/xcode-project && rm -fr build
 #----------------- LL1_expression
-${DIR}/LL1_expression/makefile_macosx/clean.command &&
-rm -fr ${DIR}/LL1_expression/galgas_sources/GALGAS_OUTPUT &&
-cd ${DIR}/LL1_expression/project_xcode && rm -fr build
+${DIR}/LL1_expression/makefile-macosx/clean.py &&
+rm -fr ${DIR}/LL1_expression/build &&
+cd ${DIR}/LL1_expression/xcode-project && rm -fr build
 #----------------- LR1_grammar
-${DIR}/LR1_grammar/makefile_macosx/clean.command &&
-rm -fr ${DIR}/LR1_grammar/galgas_sources/GALGAS_OUTPUT &&
-cd ${DIR}/LR1_grammar/project_xcode && rm -fr build
+${DIR}/LR1_grammar/makefile-macosx/clean.py &&
+rm -fr ${DIR}/LR1_grammar/build &&
+cd ${DIR}/LR1_grammar/xcode-project && rm -fr build
 #----------------- XML Parsing
-${DIR}/xml_parsing/makefile_macosx/clean.command &&
-rm -fr ${DIR}/xml_parsing/galgas_sources/GALGAS_OUTPUT &&
-cd ${DIR}/xml_parsing/project_xcode && rm -fr build
+${DIR}/xml_parsing/makefile-macosx/clean.py &&
+rm -fr ${DIR}/xml_parsing/build &&
+cd ${DIR}/xml_parsing/xcode-project && rm -fr build
 echo "------------ SUCCESS ----------------------------"
