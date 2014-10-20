@@ -32,11 +32,11 @@ semantics semanticsCompilation :
 filewrapper semanticFileGenerationTemplate in "../generation_templates/semantic_generation" {
 }{
 }{
-  template semanticFileHeader "semantic-file.h.gTemplate"
+  template semanticFileHeader "semantic-file.h.galgasTemplate"
     ?@string COMPONENT_NAME
     ?@stringlist IMPORTED_COMPONENT_LIST
   ;
-  template semanticFileImplementation "semantic-file.cpp.gTemplate"
+  template semanticFileImplementation "semantic-file.cpp.galgasTemplate"
     ?@stringlist IMPORTED_COMPONENT_LIST
   ;
 }

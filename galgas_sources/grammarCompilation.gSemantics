@@ -416,20 +416,20 @@ end routine ;
 filewrapper grammarGenerationTemplate in "../generation_templates/grammar_generation" {
 }{
 }{
-  template grammarZone2Header "grammar-zone2.h.gTemplate"
+  template grammarZone2Header "grammar-zone2.h.galgasTemplate"
     ?@galgas3GrammarComponentListAST-element GRAMMAR_COMPONENT_ROOT
   ;
-  template grammarZone2HeaderGalgas3 "grammar-zone2-galgas3.h.gTemplate"
+  template grammarZone2HeaderGalgas3 "grammar-zone2-galgas3.h.galgasTemplate"
     ?@galgas3GrammarComponentListAST-element GRAMMAR_COMPONENT_ROOT
   ;
-  template grammarZone3Header "grammar-zone3.h.gTemplate"
+  template grammarZone3Header "grammar-zone3.h.galgasTemplate"
     ?@string LEXIQUE_IDENTIFIER
     ?@galgas3GrammarComponentListAST-element GRAMMAR_COMPONENT_ROOT
     ?@nonTerminalSymbolMapForGrammarAnalysis NON_TERMINAL_MAP
     ?@nonTerminalToAddList ADDED_NON_TERMINAL_LIST
     ?@bool HAS_INDEXING
   ;
-  template grammarZone3HeaderGalgas3 "grammar-zone3-galgas3.h.gTemplate"
+  template grammarZone3HeaderGalgas3 "grammar-zone3-galgas3.h.galgasTemplate"
     ?@string LEXIQUE_IDENTIFIER
     ?@nonTerminalSymbolMapForGrammarAnalysis NON_TERMINAL_MAP
     ?@nonTerminalToAddList ADDED_NON_TERMINAL_LIST

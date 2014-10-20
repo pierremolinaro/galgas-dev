@@ -790,7 +790,7 @@ sortedlist @keySortedList {
 filewrapper typeGenerationTemplate in "../generation_templates/type_generation" {
 }{
 }{
-  template unifiedClassBodyForType "unified-class-body-for-type.h.gTemplate"
+  template unifiedClassBodyForType "unified-class-body-for-type.h.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@bool IS_CONCRETE # false if abstract class
@@ -804,27 +804,27 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@functionSignature ADD_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
     ?@unifiedTypeMap-proxy ENUMERATED_OBJECT_TYPE
 
-  template genericTypeImplementation "generic-type.cpp.gTemplate"
+  template genericTypeImplementation "generic-type.cpp.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@unifiedTypeMap-proxy SUPER_TYPE_INDEX
     ?@uint SUPPORTED_OPERATORS
 
 #---------- STRUCTURE
-  template structTypeHeader1 "GALGAS_struct.h1.gTemplate"
+  template structTypeHeader1 "GALGAS_struct.h1.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
     ?@bool HAS_DEFAULT_CONSTRUCTOR
 
-  template structTypeSpecificImplementation "GALGAS_struct.cpp.gTemplate"
+  template structTypeSpecificImplementation "GALGAS_struct.cpp.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
     ?@bool HAS_DEFAULT_CONSTRUCTOR
 
 #---------- Extern Type
-  template externTypeHeader1 "GALGAS_extern_type.h1.gTemplate"
+  template externTypeHeader1 "GALGAS_extern_type.h1.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@string PRE_DECLARATION
@@ -832,24 +832,24 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
 
 
 #---------- Graph
-  template graphTypeHeader1 "GALGAS_graph.h1.gTemplate"
+  template graphTypeHeader1 "GALGAS_graph.h1.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
 
-  template graphTypeSpecificImplementation "GALGAS_graph.cpp.gTemplate"
+  template graphTypeSpecificImplementation "GALGAS_graph.cpp.galgasTemplate"
     ?@unifiedTypeMap-proxy TYPE
     ?@string TYPE_IDENTIFIER
     ?@unifiedTypeMap-proxy ASSOCIATED_LIST_TYPE
     ?@graphInsertModifierList INSERT_MODIFIER_LIST
 
 #---------- Array
-  template arrayTypeHeader1 "GALGAS_array.h1.gTemplate"
+  template arrayTypeHeader1 "GALGAS_array.h1.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@string ELEMENT_TYPE_IDENTIFIER
     ?@uint DIMENSION
 
-  template arrayTypeSpecificImplementation "GALGAS_array.cpp.gTemplate"
+  template arrayTypeSpecificImplementation "GALGAS_array.cpp.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@string ELEMENT_TYPE_IDENTIFIER
@@ -857,62 +857,62 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@stringlist DIMENSION_LIST
 
 #---------- LIST MAP
-  template listmapTypeHeader1 "GALGAS_listmap.h1.gTemplate"
+  template listmapTypeHeader1 "GALGAS_listmap.h1.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
 
-  template listmapTypeSpecificImplementation "GALGAS_listmap.cpp.gTemplate"
+  template listmapTypeSpecificImplementation "GALGAS_listmap.cpp.galgasTemplate"
     ?@string TYPE_IDENTIFIER
     ?@string ASSOCIATED_LIST_TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
 
 #---------- LIST
-  template listTypeHeader1 "GALGAS_list.h1.gTemplate"
+  template listTypeHeader1 "GALGAS_list.h1.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
 
-  template listTypeSpecificImplementation "GALGAS_list.cpp.gTemplate"
+  template listTypeSpecificImplementation "GALGAS_list.cpp.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
 
 #---------- SORTED LIST
-  template sortedlistTypeHeader1 "GALGAS_sortedlist.h1.gTemplate"
+  template sortedlistTypeHeader1 "GALGAS_sortedlist.h1.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
 
-  template sortedlistTypeSpecificImplementation "GALGAS_sortedlist.cpp.gTemplate"
+  template sortedlistTypeSpecificImplementation "GALGAS_sortedlist.cpp.galgasTemplate"
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
     ?@sortDescriptorListForGeneration SORT_ATTRIBUTE_LIST
 
 #---------- ENUM
-  template enumTypeHeader1 "GALGAS_enum.h1.gTemplate"
+  template enumTypeHeader1 "GALGAS_enum.h1.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@enumConstantListForGeneration CONSTANT_LIST
     ?@bool HAS_ASSOCIATED_VALUES
 
-  template enumTypeHeader2 "GALGAS_enum.h2.gTemplate"
+  template enumTypeHeader2 "GALGAS_enum.h2.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@enumConstantListForGeneration CONSTANT_LIST
     ?@bool HAS_ASSOCIATED_VALUES
 
-  template enumTypeSpecificImplementation "GALGAS_enum.cpp.gTemplate"
+  template enumTypeSpecificImplementation "GALGAS_enum.cpp.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@enumConstantListForGeneration CONSTANT_LIST
     ?@bool HAS_ASSOCIATED_VALUES
 
 #---------- MAP PROXY
-  template mapProxyTypeHeader1 "GALGAS_mapproxy.h1.gTemplate"
+  template mapProxyTypeHeader1 "GALGAS_mapproxy.h1.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
 
-  template mapProxyTypeSpecificImplementation "GALGAS_mapproxy.cpp.gTemplate"
+  template mapProxyTypeSpecificImplementation "GALGAS_mapproxy.cpp.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@string ASSOCIATED_MAP_TYPE_IDENTIFIER
@@ -920,18 +920,18 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@mapSearchMethodListAST SEARCH_METHOD_LIST
 
 #---------- MAP
-  template mapTypeHeader1 "GALGAS_map.h1.gTemplate"
+  template mapTypeHeader1 "GALGAS_map.h1.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
     ?@mapSearchMethodListAST SEARCH_METHOD_LIST
 
-  template mapTypeHeader2 "GALGAS_map.h2.gTemplate"
+  template mapTypeHeader2 "GALGAS_map.h2.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
 
-  template mapTypeSpecificImplementation "GALGAS_map.cpp.gTemplate"
+  template mapTypeSpecificImplementation "GALGAS_map.cpp.galgasTemplate"
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
     ?@insertMethodListAST INSERT_METHOD_LIST
@@ -940,18 +940,18 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@bool HAS_INSERT_OR_REPLACE
 
 #---------- UNIQUE MAP
-  template uniqueMapTypeHeader1 "GALGAS_uniqueMap.h1.gTemplate"
+  template uniqueMapTypeHeader1 "GALGAS_uniqueMap.h1.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
     ?@mapSearchMethodListAST SEARCH_METHOD_LIST
 
-  template uniqueMapTypeHeader2 "GALGAS_uniqueMap.h2.gTemplate"
+  template uniqueMapTypeHeader2 "GALGAS_uniqueMap.h2.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
 
-  template uniqueMapTypeSpecificImplementation "GALGAS_uniqueMap.cpp.gTemplate"
+  template uniqueMapTypeSpecificImplementation "GALGAS_uniqueMap.cpp.galgasTemplate"
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
     ?@insertMethodListAST INSERT_METHOD_LIST
@@ -964,7 +964,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@keySortedList MAP_AUTOMATON_STATE_MAP_ORDERED_LIST
 
 #---------- Class
-  template classTypeHeader1 "GALGAS_class.h1.gTemplate"
+  template classTypeHeader1 "GALGAS_class.h1.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@string SUPER_TYPE_IDENTIFIER
@@ -972,7 +972,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@bool IS_ABSTRACT
     ?@bool HAS_DEFAULT_CONSTRUCTOR
 
-  template classTypeHeader2part1 "GALGAS_class.h2-part1.gTemplate"
+  template classTypeHeader2part1 "GALGAS_class.h2-part1.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@string SUPER_TYPE_IDENTIFIER
@@ -980,7 +980,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@typedAttributeList ALL_ATTRIBUTE_LIST
     ?@bool IS_ABSTRACT
 
-  template classTypeHeader2part2 "GALGAS_class.h2-part2.gTemplate"
+  template classTypeHeader2part2 "GALGAS_class.h2-part2.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@string SUPER_TYPE_IDENTIFIER
@@ -988,7 +988,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@typedAttributeList ALL_ATTRIBUTE_LIST
     ?@bool IS_ABSTRACT
 
-  template classTypeSpecificImplementation "GALGAS_class.cpp.gTemplate"
+  template classTypeSpecificImplementation "GALGAS_class.cpp.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@string SUPER_TYPE_IDENTIFIER
@@ -1010,173 +1010,173 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
 }{
 }{
 #------------ Category reader
-  template abstractCategoryReaderDeclaration "abstract-category-reader.h.gTemplate"
+  template abstractCategoryReaderDeclaration "abstract-category-reader.h.galgasTemplate"
     ?@string CLASS_NAME
     ?@string READER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@unifiedTypeMap-proxy RETURN_TYPE
   
-  template abstractCategoryReaderImplementation "abstract-category-reader.cpp.gTemplate"
+  template abstractCategoryReaderImplementation "abstract-category-reader.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string READER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@unifiedTypeMap-proxy RETURN_TYPE
   
-  template categoryReaderDeclaration "category-reader.h.gTemplate"
+  template categoryReaderDeclaration "category-reader.h.galgasTemplate"
     ?@string CLASS_NAME
     ?@string READER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@unifiedTypeMap-proxy RETURN_TYPE
 
-  template categoryReaderImplementation "category-reader.cpp.gTemplate"
+  template categoryReaderImplementation "category-reader.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string READER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@unifiedTypeMap-proxy RETURN_TYPE
     ?@string READER_IMPLEMENTATION
   
-  template overridingCategoryReaderImplementation "overriding-category-reader.cpp.gTemplate"
+  template overridingCategoryReaderImplementation "overriding-category-reader.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string READER_NAME
     ?@unifiedTypeMap-proxy RETURN_TYPE
     ?@string READER_IMPLEMENTATION
   
 #------------ Category modifier
-  template abstractCategoryModifierDeclaration "abstract-category-modifier.h.gTemplate"
+  template abstractCategoryModifierDeclaration "abstract-category-modifier.h.galgasTemplate"
     ?@string CLASS_NAME
     ?@string MODIFIER_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
   
-  template abstractCategoryModifierImplementation "abstract-category-modifier.cpp.gTemplate"
+  template abstractCategoryModifierImplementation "abstract-category-modifier.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string MODIFIER_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
   
-  template categoryModifierDeclaration "category-modifier.h.gTemplate"
+  template categoryModifierDeclaration "category-modifier.h.galgasTemplate"
     ?@string CLASS_NAME
     ?@string MODIFIER_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
 
-  template categoryModifierImplementation "category-modifier.cpp.gTemplate"
+  template categoryModifierImplementation "category-modifier.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string MODIFIER_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@string MODIFIER_IMPLEMENTATION
 
-  template overridingCategoryModifierImplementation "overriding-category-modifier.cpp.gTemplate"
+  template overridingCategoryModifierImplementation "overriding-category-modifier.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string MODIFIER_NAME
     ?@string MODIFIER_IMPLEMENTATION
   
 
 #------------ Category method
-  template abstractCategoryMethodDeclaration "abstract-category-method.h.gTemplate"
+  template abstractCategoryMethodDeclaration "abstract-category-method.h.galgasTemplate"
     ?@string CLASS_NAME
     ?@string METHOD_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
   
-  template abstractCategoryMethodImplementation "abstract-category-method.cpp.gTemplate"
+  template abstractCategoryMethodImplementation "abstract-category-method.cpp.galgasTemplate"
     ?@unifiedTypeMap-proxy RECEIVER_TYPE
     ?@string METHOD_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
   
-  template categoryMethodDeclaration "category-method.h.gTemplate"
+  template categoryMethodDeclaration "category-method.h.galgasTemplate"
     ?@string CLASS_NAME
     ?@string METHOD_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
 
-  template categoryMethodImplementation "category-method.cpp.gTemplate"
+  template categoryMethodImplementation "category-method.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string METHOD_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@string METHOD_IMPLEMENTATION
   
-  template overridingCategoryMethodImplementation "overriding-category-method.cpp.gTemplate"
+  template overridingCategoryMethodImplementation "overriding-category-method.cpp.galgasTemplate"
     ?@string CLASS_NAME
     ?@string METHOD_NAME
     ?@string METHOD_IMPLEMENTATION
   
-  template filewrapperDeclaration "filewrapper-declaration.h.gTemplate"
+  template filewrapperDeclaration "filewrapper-declaration.h.galgasTemplate"
     ?@stringlist FILE_INDEX_STRING_LIST
     ?@stringlist DIRECTORY_INDEX_STRING_LIST
     ?@stringlist TEXT_CONTENT_INDEX_STRING_LIST
     ?@stringlist BINARY_CONTENT_INDEX_STRING_LIST
     ?@string FILEWRAPPER_NAME
   
-  template filewrapperImplementation "filewrapper-implementation.cpp.gTemplate"
+  template filewrapperImplementation "filewrapper-implementation.cpp.galgasTemplate"
     ?@string FILEWRAPPER_NAME
     ?@string FILEWRAPPER_IMPLEMENTATION
   
 #--- Category reader implemented as function
-  template categoryReaderAsFunctionDeclaration "category-reader-as-function-declaration.h.gTemplate"
+  template categoryReaderAsFunctionDeclaration "category-reader-as-function-declaration.h.galgasTemplate"
     ?@string TYPE_NAME
     ?@string READER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@string RETURN_TYPE_IDENTIFIER
 
-  template categoryReaderAsFunctionImplementation "category-reader-as-function-implementation.cpp.gTemplate"
+  template categoryReaderAsFunctionImplementation "category-reader-as-function-implementation.cpp.galgasTemplate"
     ?@string TYPE_NAME
     ?@string READER_NAME
     ?@string FUNCTION_IMPLEMENTATION
 
 #--- Category method implemented as function
-  template categoryMethodAsFunctionDeclaration "category-method-as-function.h.gTemplate"
+  template categoryMethodAsFunctionDeclaration "category-method-as-function.h.galgasTemplate"
     ?@string TYPE_NAME
     ?@string METHOD_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
 
-  template categoryMethodAsFunctionImplementation "category-method-as-function.cpp.gTemplate"
+  template categoryMethodAsFunctionImplementation "category-method-as-function.cpp.galgasTemplate"
     ?@string TYPE_NAME
     ?@string METHOD_NAME
     ?@string METHOD_IMPLEMENTATION
   
 
 #--- Category modifier implemented as function
-  template categoryModifierAsFunctionDeclaration "category-modifier-as-function.h.gTemplate"
+  template categoryModifierAsFunctionDeclaration "category-modifier-as-function.h.galgasTemplate"
     ?@string TYPE_NAME
     ?@string MODIFIER_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
 
-  template categoryMmodifierAsFunctionImplementation "category-modifier-as-function.cpp.gTemplate"
+  template categoryMmodifierAsFunctionImplementation "category-modifier-as-function.cpp.galgasTemplate"
     ?@string TYPE_NAME
     ?@string MODIFIER_NAME
     ?@string MODIFIER_IMPLEMENTATION
   
 
 #--- Function
-  template functionDeclaration "function-declaration.h.gTemplate"
+  template functionDeclaration "function-declaration.h.galgasTemplate"
     ?@string FUNCTION_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@string RETURN_TYPE_IDENTIFIER
 
-  template functionImplementation "function-implementation.cpp.gTemplate"
+  template functionImplementation "function-implementation.cpp.galgasTemplate"
     ?@string FUNCTION_NAME
     ?@string FUNCTION_IMPLEMENTATION
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@string RETURN_TYPE_IDENTIFIER
 
 #--- Routine
-  template routineDeclaration "routine-declaration.h.gTemplate"
+  template routineDeclaration "routine-declaration.h.galgasTemplate"
     ?@string ROUTINE_NAME
     ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
 
-  template routineImplementation "routine-implementation.cpp.gTemplate"
+  template routineImplementation "routine-implementation.cpp.galgasTemplate"
     ?@string ROUTINE_NAME
     ?@string ROUTINE_IMPLEMENTATION
 
 
-  template onceFunctionImplementation "once-function-implementation.cpp.gTemplate"
+  template onceFunctionImplementation "once-function-implementation.cpp.galgasTemplate"
     ?@string FUNCTION_NAME
     ?@string FUNCTION_IMPLEMENTATION
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@string RETURN_TYPE_IDENTIFIER
 
-  template filewrapperTemplateDeclaration "filewrapper-template.h.gTemplate"
+  template filewrapperTemplateDeclaration "filewrapper-template.h.galgasTemplate"
     ?@string FILEWRAPPER_NAME
     ?@string TEMPLATE_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
 
-  template filewrapperTemplateImplementation "filewrapper-template.cpp.gTemplate"
+  template filewrapperTemplateImplementation "filewrapper-template.cpp.galgasTemplate"
     ?@string FILEWRAPPER_NAME
     ?@string TEMPLATE_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
@@ -2946,47 +2946,47 @@ override method @filewrapperDeclarationForGeneration appendSpecificImplementatio
 filewrapper predefinedTypeGenerationTemplate in "../generation_templates/type_generation" {
 }{
 }{
-  template predefinedTypesImplementation "predefined_types.cpp.gTemplate"
+  template predefinedTypesImplementation "predefined_types.cpp.galgasTemplate"
 
 
-  template primitiveTypesHeaderPrologue "predefined-types-file-header.h.gTemplate"
+  template primitiveTypesHeaderPrologue "predefined-types-file-header.h.galgasTemplate"
     ?@stringset TYPE_LIST
 
-  template predefinedTypeSeparation "predefined-types-separation.h.gTemplate"
+  template predefinedTypeSeparation "predefined-types-separation.h.galgasTemplate"
 
-  template sint_type "sint-type.h.gTemplate"
+  template sint_type "sint-type.h.galgasTemplate"
   
-  template sint64_type "sint64-type.h.gTemplate"
+  template sint64_type "sint64-type.h.galgasTemplate"
   
-  template object_type "object-type.h.gTemplate"
+  template object_type "object-type.h.galgasTemplate"
   
-  template uint_type "uint-type.h.gTemplate"
+  template uint_type "uint-type.h.galgasTemplate"
   
-  template uint64_type "uint64-type.h.gTemplate"
+  template uint64_type "uint64-type.h.galgasTemplate"
   
-  template bool_type "bool-type.h.gTemplate"
+  template bool_type "bool-type.h.galgasTemplate"
   
-  template binaryset_type "binaryset-type.h.gTemplate"
+  template binaryset_type "binaryset-type.h.galgasTemplate"
   
-  template function_type "function-type.h.gTemplate"
+  template function_type "function-type.h.galgasTemplate"
   
-  template type_type "type-type.h.gTemplate"
+  template type_type "type-type.h.galgasTemplate"
   
-  template location_type "location-type.h.gTemplate"
+  template location_type "location-type.h.galgasTemplate"
   
-  template data_type "data-type.h.gTemplate"
+  template data_type "data-type.h.galgasTemplate"
   
-  template char_type "char-type.h.gTemplate"
+  template char_type "char-type.h.galgasTemplate"
   
-  template double_type "double-type.h.gTemplate"
+  template double_type "double-type.h.galgasTemplate"
   
-  template string_type "string-type.h.gTemplate"
+  template string_type "string-type.h.galgasTemplate"
   
-  template stringset_type "stringset-type.h.gTemplate"
+  template stringset_type "stringset-type.h.galgasTemplate"
 
-  template filewrapper_type "filewrapper-type.h.gTemplate"
+  template filewrapper_type "filewrapper-type.h.galgasTemplate"
 
-  template application_type "application-type.h.gTemplate"
+  template application_type "application-type.h.galgasTemplate"
 }
 
 #---------------------------------------------------------------------------*

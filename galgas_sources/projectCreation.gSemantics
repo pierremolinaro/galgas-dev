@@ -28,15 +28,15 @@ filewrapper projectCreationFileWrapper in "../generation_templates/project_creat
 }{
 }{
 #--- Project
-  template PROJECT_project "+PROJECT.galgasProject.gTemplate" ?@string PROJECT_NAME ;
-  template PROJECT_cocoa "PROJECT-cocoa.galgas.gTemplate" ?@string PROJECT_NAME ;
-  template PROJECT_grammar "PROJECT-grammar.galgas.gTemplate" ?@string PROJECT_NAME ;
-  template PROJECT_lexique "PROJECT-lexique.galgas.gTemplate" ?@string PROJECT_NAME ;
-  template PROJECT_options "PROJECT-options.galgas.gTemplate" ?@string PROJECT_NAME ;
-  template PROJECT_program "PROJECT-program.galgas.gTemplate" ?@string PROJECT_NAME ;
-  template PROJECT_semantics "PROJECT-semantics.galgas.gTemplate" ?@string PROJECT_NAME ;
-  template PROJECT_syntax "PROJECT-syntax.galgas.gTemplate" ?@string PROJECT_NAME ;
-#  template PROJECT_computations "PROJECT-computations.cpp.gTemplate" ?@string PROJECT_NAME ;
+  template PROJECT_project "+PROJECT.galgasProject.galgasTemplate" ?@string PROJECT_NAME ;
+  template PROJECT_cocoa "PROJECT-cocoa.galgas.galgasTemplate" ?@string PROJECT_NAME ;
+  template PROJECT_grammar "PROJECT-grammar.galgas.galgasTemplate" ?@string PROJECT_NAME ;
+  template PROJECT_lexique "PROJECT-lexique.galgas.galgasTemplate" ?@string PROJECT_NAME ;
+  template PROJECT_options "PROJECT-options.galgas.galgasTemplate" ?@string PROJECT_NAME ;
+  template PROJECT_program "PROJECT-program.galgas.galgasTemplate" ?@string PROJECT_NAME ;
+  template PROJECT_semantics "PROJECT-semantics.galgas.galgasTemplate" ?@string PROJECT_NAME ;
+  template PROJECT_syntax "PROJECT-syntax.galgas.galgasTemplate" ?@string PROJECT_NAME ;
+#  template PROJECT_computations "PROJECT-computations.cpp.galgasTemplate" ?@string PROJECT_NAME ;
 }
 
 

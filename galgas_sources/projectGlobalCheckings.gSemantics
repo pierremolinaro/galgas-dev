@@ -956,7 +956,7 @@ end routine ;
 filewrapper typeDumpGenerationTemplate in "../generation_templates/target_generation" {
 }{
 }{
-  template typeDump "typeDump.html.gTemplate"
+  template typeDump "typeDump.html.galgasTemplate"
     ?@string PROJECT_NAME
     ?@unifiedTypeMap UNIFIED_TYPE_MAP
     ?@stringset FIRST_LETTER_SET

@@ -26,34 +26,34 @@ import "optionLL1grammar.gGrammar" ;
 filewrapper optionGenerationTemplates in "../generation_templates/option_generation" {
 }{
 }{
-  template optionHeaderZone2 "option-header-zone2.gTemplate"
+  template optionHeaderZone2 "option-header-zone2.galgasTemplate"
     ?@string OPTION_COMPONENT_NAME
   ;
-  template optionHeaderZone3 "option-header-zone3.gTemplate"
-    ?@string OPTION_COMPONENT_NAME
-    ?@commandLineOptionMap BOOL_OPTION_MAP
-    ?@commandLineOptionMap UINT_OPTION_MAP
-    ?@commandLineOptionMap STRING_OPTION_MAP
-  ;
-  template optionImplementation "option-implementation.gTemplate"
+  template optionHeaderZone3 "option-header-zone3.galgasTemplate"
     ?@string OPTION_COMPONENT_NAME
     ?@commandLineOptionMap BOOL_OPTION_MAP
     ?@commandLineOptionMap UINT_OPTION_MAP
     ?@commandLineOptionMap STRING_OPTION_MAP
   ;
-  template optionImplementationGalgas3 "option-implementation-galgas3.cpp.gTemplate"
+  template optionImplementation "option-implementation.galgasTemplate"
     ?@string OPTION_COMPONENT_NAME
     ?@commandLineOptionMap BOOL_OPTION_MAP
     ?@commandLineOptionMap UINT_OPTION_MAP
     ?@commandLineOptionMap STRING_OPTION_MAP
   ;
-  template optionHeaderCocoaZone2 "option-header-cocoa-zone2.gTemplate"
+  template optionImplementationGalgas3 "option-implementation-galgas3.cpp.galgasTemplate"
+    ?@string OPTION_COMPONENT_NAME
+    ?@commandLineOptionMap BOOL_OPTION_MAP
+    ?@commandLineOptionMap UINT_OPTION_MAP
+    ?@commandLineOptionMap STRING_OPTION_MAP
+  ;
+  template optionHeaderCocoaZone2 "option-header-cocoa-zone2.galgasTemplate"
     ?@string OPTION_COMPONENT_NAME
   ;
-  template optionHeaderCocoaZone3 "option-header-cocoa-zone3.gTemplate"
+  template optionHeaderCocoaZone3 "option-header-cocoa-zone3.galgasTemplate"
     ?@string OPTION_COMPONENT_NAME
   ;
-  template optionImplementationCocoa "option-implementation-cocoa.gTemplate"
+  template optionImplementationCocoa "option-implementation-cocoa.galgasTemplate"
     ?@string OPTION_HEADER_FILE_NAME
     ?@string OPTION_COMPONENT_NAME
     ?@commandLineOptionMap BOOL_OPTION_MAP

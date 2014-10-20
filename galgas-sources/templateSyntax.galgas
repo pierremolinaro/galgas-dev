@@ -30,19 +30,18 @@ rule <expression>
   <relation_term> ?outExpression
   repeat
   while
-    @location operatorLocation = @location.here
+    let operatorLocation = @location.here
     $|$
-    @templateExpressionAST leftOperand = outExpression
-    @templateExpressionAST rightOperand
-    <relation_term> ?rightOperand
-    outExpression = @templateOrOperationAST. new { !operatorLocation !leftOperand !rightOperand}
+    let leftOperand = outExpression
+    <relation_term> ?let rightOperand
+    outExpression = @templateOrOperationAST.new {!operatorLocation !leftOperand !rightOperand}
   while
     @location operatorLocation = @location.here
     $^$
     @templateExpressionAST leftOperand = outExpression
     @templateExpressionAST rightOperand
     <relation_term> ?rightOperand
-    outExpression = @templateXorOperationAST. new { !operatorLocation !leftOperand !rightOperand}
+    outExpression = @templateXorOperationAST.new {!operatorLocation !leftOperand !rightOperand}
   end
 }
 

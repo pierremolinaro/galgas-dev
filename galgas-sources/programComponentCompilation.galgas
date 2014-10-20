@@ -33,11 +33,11 @@ list @programListForGeneration {
 filewrapper programFileGenerationTemplate in "../generation_templates/program_generation" {
 }{
 }{
-  template programFileHeader "program-file.h.gTemplate"
+  template programFileHeader "program-file.h.galgasTemplate"
     ?@string COMPONENT_NAME
     ?@stringlist IMPORTED_COMPONENT_LIST
 
-  template programFileImplementation "program-file.cpp.gTemplate"
+  template programFileImplementation "program-file.cpp.galgasTemplate"
     ?@string COMPONENT_NAME
     ?@stringlist IMPORTED_COMPONENT_LIST
     ?@string BEFORE_AFTER_RULE_IMPLEMENTATION_STRING

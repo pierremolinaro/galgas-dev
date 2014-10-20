@@ -8178,8 +8178,8 @@ void categoryMethod_generateAtPath (const GALGAS_XcodeProjectDescriptor inObject
   }
   const enumGalgasBool test_2 = test_1.boolEnum () ;
   if (kBoolTrue == test_2) {
-    GALGAS_bool joker_15046 ; // Joker input parameter
-    var_contents.method_writeToFileWhenDifferentContents (constinArgument_inCacheFilePath, joker_15046, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 423)) ;
+    GALGAS_bool joker_15051 ; // Joker input parameter
+    var_contents.method_writeToFileWhenDifferentContents (constinArgument_inCacheFilePath, joker_15051, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 423)) ;
     var_contents.method_makeDirectoryAndWriteToFile (var_projectCoreFile, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 424)) ;
   }
 }

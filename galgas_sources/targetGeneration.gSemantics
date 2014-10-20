@@ -15,8 +15,8 @@ filewrapper updaterApplicationFileWrapper in "../generation_templates/cocoa_appl
  template main_menu_xib "UpdaterAppMainMenu.xib"
    ?@string TARGET_NAME
   ;
- template application_delegate_header "PMUpdaterAppDelegate.h.gTemplate" ;
- template application_delegate_implementation "PMUpdaterAppDelegate.m.gTemplate"
+ template application_delegate_header "PMUpdaterAppDelegate.h.galgasTemplate" ;
+ template application_delegate_implementation "PMUpdaterAppDelegate.m.galgasTemplate"
    ?@string BUNDLE_BASE_NAME
    ?@string TARGET_NAME
   ;
@@ -25,8 +25,8 @@ filewrapper updaterApplicationFileWrapper in "../generation_templates/cocoa_appl
    ?@string TARGET_NAME
    ?@string CODE_SIGNING_IDENTITY
  ;
- template main "updater-app-main.m.gTemplate" ;
- template prefix "updater-app-Prefix.pch.gTemplate" ;
+ template main "updater-app-main.m.galgasTemplate" ;
+ template prefix "updater-app-Prefix.pch.galgasTemplate" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -34,10 +34,10 @@ filewrapper updaterApplicationFileWrapper in "../generation_templates/cocoa_appl
 filewrapper updaterToolFileWrapper in "../generation_templates/cocoa_application_update/updater-tool" {
 }{
 }{
- template updater_object_protocol "PMUpdaterServerProtocol.h.gTemplate" ;
- template updater_object_header "PMUpdaterServerObject.h.gTemplate" ;
- template updater_object_implementation "PMUpdaterServerObject.m.gTemplate";
- template updater_object_main "updater-tool-main.m.gTemplate"
+ template updater_object_protocol "PMUpdaterServerProtocol.h.galgasTemplate" ;
+ template updater_object_header "PMUpdaterServerObject.h.galgasTemplate" ;
+ template updater_object_implementation "PMUpdaterServerObject.m.galgasTemplate";
+ template updater_object_main "updater-tool-main.m.galgasTemplate"
    ?@string BUNDLE_BASE_NAME
    ?@string TARGET_NAME
  ;
@@ -57,20 +57,20 @@ filewrapper updaterToolFileWrapper in "../generation_templates/cocoa_application
 filewrapper applicationUpdateFileWrapper in "../generation_templates/cocoa_application_update/application" {
 }{
 }{
- template application_update_header "PMApplicationUpdate.h.gTemplate" ;
- template application_update_implementation "PMApplicationUpdate.m.gTemplate"
+ template application_update_header "PMApplicationUpdate.h.galgasTemplate" ;
+ template application_update_implementation "PMApplicationUpdate.m.galgasTemplate"
    ?@string PROJECT_NAME
    ?@string REPOSITORY_URL
    ?@string BUNDLE_BASE_NAME
   ;
- template application_update_nib "PMApplicationUpdate.xib.gTemplate"
+ template application_update_nib "PMApplicationUpdate.xib.galgasTemplate"
    ?@string PROJECT_NAME
  ;
- template download_data_header "PMDownloadData.h.gTemplate" ;
- template download_data_implementation "PMDownloadData.m.gTemplate" ;
- template download_file_header "PMDownloadFile.h.gTemplate" ;
- template download_file_implementation "PMDownloadFile.m.gTemplate" ;
- template compatibility_header "PMSnowLeopardLionCompatibility.h.gTemplate" ;
+ template download_data_header "PMDownloadData.h.galgasTemplate" ;
+ template download_data_implementation "PMDownloadData.m.galgasTemplate" ;
+ template download_file_header "PMDownloadFile.h.galgasTemplate" ;
+ template download_file_implementation "PMDownloadFile.m.galgasTemplate" ;
+ template compatibility_header "PMSnowLeopardLionCompatibility.h.galgasTemplate" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -102,7 +102,7 @@ filewrapper targetGenerationFileWrapper in "../generation_templates/target_gener
 
   template makefile_info_plist_strings "project_xcode/English.lproj/InfoPlist.strings" ?@string PROJECT_NAME ;
 
-  template makefile_file_list "makefile-file-list.gTemplate"
+  template makefile_file_list "makefile-file-list.galgasTemplate"
     ?@stringset HAND_CODED_SOURCE_DIR_SET
     ?@stringlist HAND_CODED_SOURCE_FILE_LIST
     ?@stringlist MAKEFILE_FILE_LIST
@@ -110,7 +110,7 @@ filewrapper targetGenerationFileWrapper in "../generation_templates/target_gener
     ?@string MULTI_THREADING_ENABLED
   ;
 
-  template project_header "project.h.gTemplate"
+  template project_header "project.h.galgasTemplate"
     ?@string VERSION_STRING
   ;
 }

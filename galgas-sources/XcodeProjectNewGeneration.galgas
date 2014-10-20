@@ -370,7 +370,7 @@ struct @XcodeProjectDescriptor {
 private filewrapper xcodeProjectGenerationFilewrapper in "../generation_templates/target_generation/project_xcode" {
 }{
 }{
-  template xcodeproj "project.pbxproj.gTemplate"
+  template xcodeproj "project.pbxproj.galgasTemplate"
     ?@string PROJECT_REF
     ?@string MAIN_GROUP_REF
     ?@XCodeGroupList GROUPS

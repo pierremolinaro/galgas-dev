@@ -78,7 +78,7 @@ struct @guiAnalysisContext {
 filewrapper guiGenerationTemplates in "../generation_templates/gui_generation" {
 }{
 }{
-  template gui_implementation "gui-implementation.m.gTemplate"
+  template gui_implementation "gui-implementation.m.galgasTemplate"
     ?galgas3:@bool GENERATE_FOR_GALGAS3
     ?@guiAnalysisContext GUI_CONTEXT
   ;
