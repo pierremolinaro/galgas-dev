@@ -32,14 +32,14 @@ Note that a 32-bit signed integer constant is characterized by the 'S' suffix.
 
 
 
-\section{Readers}
+\section{Getters}
 
 \readerSansArgument{double}
 {sint}
 {1.9.8}
 {double}
 {Returns the receiver's value converted in a \galgas{@double} object.}
-{as a 32-bit integer value can always be converted in a \galgas{@double} value, this reader never fails.}
+{as a 32-bit integer value can always be converted in a \galgas{@double} value, this getter never fails.}
 
 
 
@@ -50,9 +50,9 @@ Note that a 32-bit signed integer constant is characterized by the 'S' suffix.
 {1.6.12}
 {sint64}
 {Returns the receiver's value in an \refTypePredefini{sint64} (64-bit signed integer) object.}
-{as a 32-bit signed value can always be converted in a 64-bit signed value, this reader never fails.}
+{as a 32-bit signed value can always be converted in a 64-bit signed value, this getter never fails.}
 
-This reader is the only way to convert an \refTypePredefini{sint} object into an \refTypePredefini{sint64} object.
+This getter is the only way to convert an \refTypePredefini{sint} object into an \refTypePredefini{sint64} object.
 
 
 
@@ -78,7 +78,7 @@ This reader is the only way to convert an \refTypePredefini{sint} object into an
 {Returns the receiver's value in an \refTypePredefini{uint} (32-bit unsigned integer) object.}
 {an error is raised is receiver's value is negative.}
 
-This reader is the only way to convert an \refTypePredefini{sint} object into an \refTypePredefini{uint} object.
+This getter is the only way to convert an \refTypePredefini{sint} object into an \refTypePredefini{uint} object.
 
 
 
@@ -90,7 +90,7 @@ This reader is the only way to convert an \refTypePredefini{sint} object into an
 {Returns the receiver's value in an \refTypePredefini{uint64} (64-bit unsigned integer) object.}
 {an error is raised is receiver's value is negative.}
 
-This reader is the only way to convert an \refTypePredefini{sint} object into an \refTypePredefini{uint64} object.
+This getter is the only way to convert an \refTypePredefini{sint} object into an \refTypePredefini{uint64} object.
 
 
 

@@ -59,14 +59,14 @@ Note that a 32-bit unsigned integer constant is characterized by no suffix.
 {Returns an \galgas{@uint} object that contains the number of warnings.}
 {The returned value is the cumulative count of warnings from the beginning of execution.}
 
-\section{Readers}
+\section{Getters}
 
 \readerSansArgument{double}
 {uint}
 {1.9.8}
 {@double}
 {Returns the receiver's value converted in a \galgas{@double} object.}
-{as a 32-bit integer value can always be converted in a \galgas{@double} value, this reader never fails.}
+{as a 32-bit integer value can always be converted in a \galgas{@double} value, this getter never fails.}
 
 
 
@@ -147,7 +147,7 @@ The most significant bit of 192 is the 7th bit.
 {Returns the receiver's value in an \refTypePredefini{sint} (32-bit signed integer) object.}
 {an error is raised is receiver's value is greater than $2^{31}-1$.}
 
-This reader is the only way to convert an \refTypePredefini{uint} object into an \refTypePredefini{sint} object.
+This getter is the only way to convert an \refTypePredefini{uint} object into an \refTypePredefini{sint} object.
 
 
 
@@ -157,9 +157,9 @@ This reader is the only way to convert an \refTypePredefini{uint} object into an
 {1.6.12}
 {sint64}
 {Returns the receiver's value in an \refTypePredefini{sint64} (64-bit signed integer) object.}
-{as a 32-bit unsigned value can always be converted in a 64-bit signed value, this reader never fails.}
+{as a 32-bit unsigned value can always be converted in a 64-bit signed value, this getter never fails.}
 
-This reader is the only way to convert an \refTypePredefini{uint} object into an \refTypePredefini{sint64} object.
+This getter is the only way to convert an \refTypePredefini{uint} object into an \refTypePredefini{sint64} object.
 
 
 \readerSansArgument{string}
@@ -177,9 +177,9 @@ This reader is the only way to convert an \refTypePredefini{uint} object into an
 {1.6.12}
 {uint64}
 {Returns the receiver's value in an \refTypePredefini{uint64} (64-bit unsigned integer) object.}
-{as a 32-bit unsigned value can always be converted in a 64-bit unsigned value, this reader never fails.}
+{as a 32-bit unsigned value can always be converted in a 64-bit unsigned value, this getter never fails.}
 
-This reader is the only way to convert an \refTypePredefini{uint} object into an \refTypePredefini{uint64} object.
+This getter is the only way to convert an \refTypePredefini{uint} object into an \refTypePredefini{uint64} object.
 
 
 

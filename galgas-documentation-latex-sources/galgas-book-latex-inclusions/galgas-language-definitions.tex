@@ -95,21 +95,21 @@
 %                                                                                                                       *
 %-----------------------------------------------------------------------------------------------------------------------*
 
-%--- Définition d'un reader sans argument
+%--- Définition d'un getter sans argument
 % Exemple d'appel :
-% \readerSansArgument{line} % Nom du reader
+% \readerSansArgument{line} % Nom du getter
 % {@location} % Nom du type
-% {1.8.2} % Première version GALGAS qui implémente ce reader
+% {1.8.2} % Première version GALGAS qui implémente ce getter
 % {@uint} % Type renvoyé
 % {Returns the line of the receiver's value.} % Description
-% {this reader raises a run-time error if ...} % Discussion
+% {this getter raises a run-time error if ...} % Discussion
 
 %http://compgroups.net/comp.text.tex/Robust-definition-of-a-new-command
 
 \newcommand\labelReaderSansArgument[2]{}
 
 \newcommand\readerSansArgument[6] {
-  \subsection{Getter \texttt{#1}}\label{reader:#2:#1}\index{#1!"@#2 reader}
+  \subsection{Getter \texttt{#1}}\label{getter:#2:#1}\index{#1!"@#2 getter}
   #5
   \newline
   \newline
@@ -136,22 +136,22 @@
 %                                                                                                                       *
 %-----------------------------------------------------------------------------------------------------------------------*
 
-% Exemple d'appel : \refReaderPage{bool}{string} -- affiche --> @bool string reader (page xx)
-\newcommand \refReaderPage[2] {\hyperref[reader:#1:#2]{@#1 #2 reader (page \pageref{reader:#1:#2})}}
+% Exemple d'appel : \refReaderPage{bool}{string} -- affiche --> @bool string getter (page xx)
+\newcommand \refReaderPage[2] {\hyperref[getter:#1:#2]{@#1 #2 getter (page \pageref{getter:#1:#2})}}
 
 %---------------------------------------------------------------------*
 
-%--- Définition d'un reader à 1 argument
+%--- Définition d'un getter à 1 argument
 % Exemple d'appel :
-% \readerUnArgument{line} % Nom du reader
+% \readerUnArgument{line} % Nom du getter
 % {location} % Nom du type
-% {1.8.2} % Première version GALGAS qui implémente ce reader
+% {1.8.2} % Première version GALGAS qui implémente ce getter
 % {uint} % Type renvoyé
 % {Returns the line of the receiver's value.} % Description
-% {this reader raises a run-time error if ...} % Discussion
+% {this getter raises a run-time error if ...} % Discussion
 
 \newcommand \readerUnArgument[7] {
-  \subsection{Getter \texttt{#1}}\label{reader:#2:#1}\index{#1!"@#2 reader}
+  \subsection{Getter \texttt{#1}}\label{getter:#2:#1}\index{#1!"@#2 getter}
   #6
   \newline
   \newline
@@ -176,17 +176,17 @@
 
 %---------------------------------------------------------------------*
 
-%--- Définition d'un reader à 2 arguments
+%--- Définition d'un getter à 2 arguments
 % Exemple d'appel :
-% \readerSansArgument{line} % Nom du reader
+% \readerSansArgument{line} % Nom du getter
 % {location} % Nom du type
-% {1.8.2} % Première version GALGAS qui implémente ce reader
+% {1.8.2} % Première version GALGAS qui implémente ce getter
 % {uint} % Type renvoyé
 % {Returns the line of the receiver's value.} % Description
-% {this reader raises a run-time error if ...} % Discussion
+% {this getter raises a run-time error if ...} % Discussion
 
 \newcommand \readerDeuxArguments[8] {
-  \subsection{Getter \texttt{#1}}\label{reader:#2:#1}\index{#1!"@#2 reader}
+  \subsection{Getter \texttt{#1}}\label{getter:#2:#1}\index{#1!"@#2 getter}
   #7
   \newline
   \newline
@@ -212,10 +212,10 @@
 
 %---------------------------------------------------------------------*
 
-%--- Définition d'un reader à 3 arguments
+%--- Définition d'un getter à 3 arguments
 
 \newcommand \readerTroisArguments[9] {
-  \subsection{Getter \texttt{#1}}\label{reader:#2:#1}\index{#1!"@#2 reader}
+  \subsection{Getter \texttt{#1}}\label{getter:#2:#1}\index{#1!"@#2 getter}
   #8
   \newline
   \newline
@@ -253,7 +253,7 @@
 % {1.8.2} % Première version GALGAS qui implémente ce constructeur
 % {uint} % Type renvoyé
 %{Returns an \nomType{location} that does not points out any location.} % Description
-%{The returned object responds \motCle{true} to the isNowhere reader.} % Discussion
+%{The returned object responds \motCle{true} to the isNowhere getter.} % Discussion
 
 \newcommand \constructeurSansArgument[6] {
   \subsection{Constructeur \texttt{#1}}\label{constructor:#2:#1}\index{#1!"@#2 constructor}
@@ -366,10 +366,10 @@
 
 %---------------------------------------------------------------------*
 
-%--- Définition d'un modifier à 1 argument
+%--- Définition d'un setter à 1 argument
 
 \newcommand \modifierUnArgument[6] {
-  \subsection{Setter \texttt{#1}}\label{modifier:#2:#1}\index{#1!"@#2 modifier}
+  \subsection{Setter \texttt{#1}}\label{setter:#2:#1}\index{#1!"@#2 setter}
   #5
   \newline
   \newline

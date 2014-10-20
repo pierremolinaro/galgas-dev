@@ -34,14 +34,14 @@ La position capturée est la position du premier caractère du token corresponda
 {Returns an \galgas{@location} that does not point out any location.}
 {The returned object responds \galgas{true} to the \refReaderPage{location}{isNowhere}.}
 
-\section{Readers}
+\section{Getters}
 
 \readerSansArgument{column}
 {location}
 {1.8.2}
 {uint}
 {Returns an \galgas{@uint} value containing the column of the receiver's value.}
-{this reader raises a run-time error if the receiver's value responds \galgas{true} to the \refReaderPage{location}{isNowhere}.}
+{this getter raises a run-time error if the receiver's value responds \galgas{true} to the \refReaderPage{location}{isNowhere}.}
 
 
 \readerSansArgument{isNowhere}
@@ -49,7 +49,7 @@ La position capturée est la position du premier caractère du token corresponda
 {2.1.2}
 {bool}
 {Returns an \galgas{@bool} value indicating whether the receiver'value points out a source location or does not.}
-{this reader returns \galgas{true} if the receiver's value does not point out an actual location in a text source (i.e. it has been constructed using the nowhere constructor), and \galgas{false} if the receiver's value points out an actual location in a text source (i.e. it has been constructed using the \galgas{here} keyword.}
+{this getter returns \galgas{true} if the receiver's value does not point out an actual location in a text source (i.e. it has been constructed using the nowhere constructor), and \galgas{false} if the receiver's value points out an actual location in a text source (i.e. it has been constructed using the \galgas{here} keyword.}
 
 
 \readerSansArgument{line}
@@ -57,7 +57,7 @@ La position capturée est la position du premier caractère du token corresponda
 {1.8.2}
 {uint}
 {Returns an \galgas{@uint} value containing the line of the receiver's value.}
-{this reader raises a run-time error if the receiver's value responds \galgas{true} to the \refReaderPage{location}{isNowhere}.}
+{this getter raises a run-time error if the receiver's value responds \galgas{true} to the \refReaderPage{location}{isNowhere}.}
 
 
 \readerSansArgument{locationIndex}
@@ -65,7 +65,7 @@ La position capturée est la position du premier caractère du token corresponda
 {1.8.2}
 {uint}
 {Returns an \galgas{@uint} value containing the the offset from the the beginning of the source of the location defined by receiver's value.}
-{this reader raises a run-time error if the receiver's value responds \galgas{true} to the \refReaderPage{location}{isNowhere}.}
+{this getter raises a run-time error if the receiver's value responds \galgas{true} to the \refReaderPage{location}{isNowhere}.}
 
 
 \readerSansArgument{locationString}
@@ -73,4 +73,4 @@ La position capturée est la position du premier caractère du token corresponda
 {1.8.2}
 {string}
 {returns an \galgas{@string} object that contains a string representation of the location defined by receiver's value.}
-{this reader raises a run-time error if the receiver's value responds \galgas{true} to the \refReaderPage{location}{isNowhere}.}
+{this getter raises a run-time error if the receiver's value responds \galgas{true} to the \refReaderPage{location}{isNowhere}.}

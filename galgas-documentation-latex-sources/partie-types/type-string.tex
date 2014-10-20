@@ -3,13 +3,13 @@
 
 \chapitreTypePredefiniLabelIndex{string}
 
-A \galgas{@string} object value is an Unicode character string value. The @string type defines several constructors, readers constant methods and modifiers, described below.
+A \galgas{@string} object value is an Unicode character string value. The @string type defines several constructors, getters constant methods and setters, described below.
 
 \paragraph{Literal String Constants.}
 
-Characters strings are written enclosed within quotation marks (") characters, as in many languages. For example: "a string". Note that a literal string constant is an actual @string object, so a reader can be used on it. For example: \lstinline[language=galgas]{["ae" uppercaseString]} returns the "AE" string.
+Characters strings are written enclosed within quotation marks (") characters, as in many languages. For example: "a string". Note that a literal string constant is an actual @string object, so a getter can be used on it. For example: \lstinline[language=galgas]{["ae" uppercaseString]} returns the "AE" string.
 
-\section{Readers}
+\section{Getters}
 
 \readerUnArgument{containsCharacter}
 {string}
@@ -75,7 +75,7 @@ Characters strings are written enclosed within quotation marks (") characters, a
 %{1.3.0}
 %{@string inString}
 %{Removes the value of \emph{inString} argument from the receiver's value.}
-%{if the receiver's value does not contain the value of \emph{inString} argument, this modifier leaves the receiver's value unchanged.}
+%{if the receiver's value does not contain the value of \emph{inString} argument, this setter leaves the receiver's value unchanged.}
 %
 %
 %

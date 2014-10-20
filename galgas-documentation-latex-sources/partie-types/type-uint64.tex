@@ -81,14 +81,14 @@ log v ; # Displays <@uint64:5> ;
 \end{galgascode}
 
 
-\section{Readers}
+\section{Getters}
 
 \readerSansArgument{double}
 {uint64}
 {1.9.8}
 {double}
 {Returns the receiver's value converted in a \galgas{@double} object.}
-{as a 64-bit integer value can always be converted in a \galgas{@double} value, this reader never fails.}
+{as a 64-bit integer value can always be converted in a \galgas{@double} value, this getter never fails.}
 
 
 
@@ -110,7 +110,7 @@ log v ; # Displays <@uint64:5> ;
 {Returns the receiver's value in an \refTypePredefini{sint} (32-bit signed integer) object.}
 {an error is raised is receiver's value is greater than $2^{31}-1$.}
 
-This reader is the only way to convert an \refTypePredefini{uint64} object into an \refTypePredefini{sint} object.
+This getter is the only way to convert an \refTypePredefini{uint64} object into an \refTypePredefini{sint} object.
 
 
 
@@ -122,7 +122,7 @@ This reader is the only way to convert an \refTypePredefini{uint64} object into 
 {Returns the receiver's value in an \refTypePredefini{sint64} (64-bit signed integer) object.}
 {an error is raised is receiver's value is greater than $2^{63}-1$.}
 
-This reader is the only way to convert an \refTypePredefini{uint64} object into an \refTypePredefini{sint64} object.
+This getter is the only way to convert an \refTypePredefini{uint64} object into an \refTypePredefini{sint64} object.
 
 
 \readerSansArgument{string}
@@ -141,7 +141,7 @@ This reader is the only way to convert an \refTypePredefini{uint64} object into 
 {Returns the receiver's value in an \refTypePredefini{uint} (32-bit unsigned integer) object.}
 {an error is raised is receiver's value is greater than $2^{32}-1$.}
 
-This reader is the only way to convert an \refTypePredefini{uint64} object into an \refTypePredefini{uint} object.
+This getter is the only way to convert an \refTypePredefini{uint64} object into an \refTypePredefini{uint} object.
 
 
 \readerDeuxArguments{uintSlice}

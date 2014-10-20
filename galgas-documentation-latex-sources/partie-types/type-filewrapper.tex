@@ -7,35 +7,24 @@ Le type \galgas{@filewrapper} permet d'accéder à un \emph{filewrapper}, c'est 
 
 \section{Constructor}
 
-\section{Modifier}
+\section{Setter}
 
-\subsection{Modifier \texttt{setCurrentDirectory}}
+\subsection{Setter \texttt{setCurrentDirectory}}
 
 \begin{galgascode}
-modifier setCurrentDirectory ??@string inDirectory ;
+setter setCurrentDirectory ??@string inDirectory ;
 \end{galgascode}
 
 
-\section{Readers}
+\section{Getters}
 
 
 
 
-\subsection{Reader \texttt{allTextFilePathes}}
-
-\begin{galgascode}
-reader allTextFilePathes -> @stringlist ;
-\end{galgascode}
-
-
-
-
-
-
-\subsection{Reader \texttt{allDirectoryPathes}}
+\subsection{Getter \texttt{allTextFilePathes}}
 
 \begin{galgascode}
-reader allDirectoryPathes -> @stringlist ;
+getter allTextFilePathes -> @stringlist ;
 \end{galgascode}
 
 
@@ -43,10 +32,10 @@ reader allDirectoryPathes -> @stringlist ;
 
 
 
-\subsection{Reader \texttt{currentDirectory}}
+\subsection{Getter \texttt{allDirectoryPathes}}
 
 \begin{galgascode}
-reader currentDirectory -> @string ;
+getter allDirectoryPathes -> @stringlist ;
 \end{galgascode}
 
 
@@ -54,12 +43,10 @@ reader currentDirectory -> @string ;
 
 
 
-
-
-\subsection{Reader \texttt{allFilePathesWithExtension}}
+\subsection{Getter \texttt{currentDirectory}}
 
 \begin{galgascode}
-reader allFilePathesWithExtension ??@string inExtension -> @stringlist ;
+getter currentDirectory -> @string ;
 \end{galgascode}
 
 
@@ -69,12 +56,10 @@ reader allFilePathesWithExtension ??@string inExtension -> @stringlist ;
 
 
 
-
-
-\subsection{Reader \texttt{directoryExistsAtPath}}
+\subsection{Getter \texttt{allFilePathesWithExtension}}
 
 \begin{galgascode}
-reader directoryExistsAtPath ??@string inPath -> @bool ;
+getter allFilePathesWithExtension ??@string inExtension -> @stringlist ;
 \end{galgascode}
 
 
@@ -86,10 +71,10 @@ reader directoryExistsAtPath ??@string inPath -> @bool ;
 
 
 
-\subsection{Reader \texttt{fileExistsAtPath}}
+\subsection{Getter \texttt{directoryExistsAtPath}}
 
 \begin{galgascode}
-reader fileExistsAtPath ??@string inPath -> @bool ;
+getter directoryExistsAtPath ??@string inPath -> @bool ;
 \end{galgascode}
 
 
@@ -101,10 +86,10 @@ reader fileExistsAtPath ??@string inPath -> @bool ;
 
 
 
-\subsection{Reader \texttt{textFileContentsAtPath}}
+\subsection{Getter \texttt{fileExistsAtPath}}
 
 \begin{galgascode}
-reader textFileContentsAtPath ??@string inPath -> @string ;
+getter fileExistsAtPath ??@string inPath -> @bool ;
 \end{galgascode}
 
 
@@ -116,10 +101,10 @@ reader textFileContentsAtPath ??@string inPath -> @string ;
 
 
 
-\subsection{Reader \texttt{binaryFileContentsAtPath}}
+\subsection{Getter \texttt{textFileContentsAtPath}}
 
 \begin{galgascode}
-reader binaryFileContentsAtPath ??@string inPath -> @data ;
+getter textFileContentsAtPath ??@string inPath -> @string ;
 \end{galgascode}
 
 
@@ -131,10 +116,25 @@ reader binaryFileContentsAtPath ??@string inPath -> @data ;
 
 
 
-\subsection{Reader \texttt{absolutePathForPath}}
+\subsection{Getter \texttt{binaryFileContentsAtPath}}
 
 \begin{galgascode}
-reader absolutePathForPath ??@string inPath -> @string ;
+getter binaryFileContentsAtPath ??@string inPath -> @data ;
+\end{galgascode}
+
+
+
+
+
+
+
+
+
+
+\subsection{Getter \texttt{absolutePathForPath}}
+
+\begin{galgascode}
+getter absolutePathForPath ??@string inPath -> @string ;
 \end{galgascode}
 
 
