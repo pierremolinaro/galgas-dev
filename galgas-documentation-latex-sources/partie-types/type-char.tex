@@ -114,7 +114,7 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 {A run-time error is raised if the \emph{inValue} value does not represent an assigned Unicode value. You can check if an \galgas{@uint} value represents an assigned Unicode value with the \refReaderPage{uint}{isUnicodeValueAssigned}.}
 
 
-\section{Readers}
+\section{Getters}
 
 
 \readerSansArgument{isalnum}
@@ -297,7 +297,7 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 {1.8.3}
 {char}
 {Returns the lowercase character corresponding to the receiver's value.}
-{if the receiver's value is an Unicode uppercase character, this reader returns the corresponding lowercase character. Otherwise, it returns the receiver's value.}
+{if the receiver's value is an Unicode uppercase character, this getter returns the corresponding lowercase character. Otherwise, it returns the receiver's value.}
 
 \textbf{Exemple :}
 \begin{galgascode}
@@ -313,7 +313,7 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 {1.8.3}
 {char}
 {Returns the uppercase character corresponding to the receiver's value.}
-{if the receiver's value is an Unicode lowercase character, this reader returns the corresponding uppercase character. Otherwise, it returns the receiver's value.}
+{if the receiver's value is an Unicode lowercase character, this getter returns the corresponding uppercase character. Otherwise, it returns the receiver's value.}
 
 \textbf{Exemple :}
 \begin{galgascode}

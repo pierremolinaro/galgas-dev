@@ -317,7 +317,7 @@ log s; # Affiche <@binaryset: 01X00, 10X0X, 11X0X, 11X10>
 {}
 
 
-\section{Readers}
+\section{Getters}
 
 
 
@@ -687,7 +687,7 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 {@uint inBitCount2}
 {@uint inBitCount3}
 {Returns the transposed \emph{(x, z, y)} relation.}
-{this reader considers that the receiver encodes an \emph{(x, y, z)} relation, where \emph{x} is defined by bits index \emph{0} to \emph{inBitCount1  - 1}, \emph{y} is defined by bits index \emph{inBitCount1} to \emph{inBitCount1 + inBitCount2 - 1} and  \emph{z} is defined by bits index \emph{inBitCount1 + inBitCount2} to \emph{inBitCount1 + inBitCount2 + inBitCount3 - 1}.}
+{this getter considers that the receiver encodes an \emph{(x, y, z)} relation, where \emph{x} is defined by bits index \emph{0} to \emph{inBitCount1  - 1}, \emph{y} is defined by bits index \emph{inBitCount1} to \emph{inBitCount1 + inBitCount2 - 1} and  \emph{z} is defined by bits index \emph{inBitCount1 + inBitCount2} to \emph{inBitCount1 + inBitCount2 + inBitCount3 - 1}.}
 
 
 
@@ -702,7 +702,7 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 {@uint inBitCount1}
 {@uint inBitCount2}
 {Returns the transposed \emph{(y, x)} relation.}
-{this reader considers that the receiver encodes an \emph{(x, y)} relation, where \emph{x} is defined by bits index \emph{0} to \emph{inBitCount1  - 1}, \emph{y} is defined by bits index \emph{inBitCount1} to \emph{inBitCount1 + inBitCount2 - 1}.}
+{this getter considers that the receiver encodes an \emph{(x, y)} relation, where \emph{x} is defined by bits index \emph{0} to \emph{inBitCount1  - 1}, \emph{y} is defined by bits index \emph{inBitCount1} to \emph{inBitCount1 + inBitCount2 - 1}.}
 
 
 
@@ -718,7 +718,7 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 {@uint inBitCount2}
 {@uint inBitCount3}
 {Returns the transposed \emph{(y, x, z)} relation.}
-{this reader considers that the receiver encodes an \emph{(x, y, z)} relation, where \emph{x} is defined by bits index \emph{0} to \emph{inBitCount1  - 1}, \emph{y} is defined by bits index \emph{inBitCount1} to \emph{inBitCount1 + inBitCount2 - 1} and  \emph{z} is defined by bits index \emph{inBitCount1 + inBitCount2} to \emph{inBitCount1 + inBitCount2 + inBitCount3 - 1}.}
+{this getter considers that the receiver encodes an \emph{(x, y, z)} relation, where \emph{x} is defined by bits index \emph{0} to \emph{inBitCount1  - 1}, \emph{y} is defined by bits index \emph{inBitCount1} to \emph{inBitCount1 + inBitCount2 - 1} and  \emph{z} is defined by bits index \emph{inBitCount1 + inBitCount2} to \emph{inBitCount1 + inBitCount2 + inBitCount3 - 1}.}
 
 
 
@@ -734,7 +734,7 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 {@uint inBitCount2}
 {@uint inBitCount3}
 {Returns the transposed \emph{(y, z, x)} relation.}
-{this reader considers that the receiver encodes an \emph{(x, y, z)} relation, where \emph{x} is defined by bits index \emph{0} to \emph{inBitCount1  - 1}, \emph{y} is defined by bits index \emph{inBitCount1} to \emph{inBitCount1 + inBitCount2 - 1} and  \emph{z} is defined by bits index \emph{inBitCount1 + inBitCount2} to \emph{inBitCount1 + inBitCount2 + inBitCount3 - 1}.}
+{this getter considers that the receiver encodes an \emph{(x, y, z)} relation, where \emph{x} is defined by bits index \emph{0} to \emph{inBitCount1  - 1}, \emph{y} is defined by bits index \emph{inBitCount1} to \emph{inBitCount1 + inBitCount2 - 1} and  \emph{z} is defined by bits index \emph{inBitCount1 + inBitCount2} to \emph{inBitCount1 + inBitCount2 + inBitCount3 - 1}.}
 
 
 
@@ -750,7 +750,7 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 {@uint inBitCount2}
 {@uint inBitCount3}
 {Returns the transposed \emph{(z, x, y)} relation.}
-{this reader considers that the receiver encodes an \emph{(x, y, z)} relation, where \emph{x} is defined by bits index \emph{0} to \emph{inBitCount1  - 1}, \emph{y} is defined by bits index \emph{inBitCount1} to \emph{inBitCount1 + inBitCount2 - 1} and  \emph{z} is defined by bits index \emph{inBitCount1 + inBitCount2} to \emph{inBitCount1 + inBitCount2 + inBitCount3 - 1}.}
+{this getter considers that the receiver encodes an \emph{(x, y, z)} relation, where \emph{x} is defined by bits index \emph{0} to \emph{inBitCount1  - 1}, \emph{y} is defined by bits index \emph{inBitCount1} to \emph{inBitCount1 + inBitCount2 - 1} and  \emph{z} is defined by bits index \emph{inBitCount1 + inBitCount2} to \emph{inBitCount1 + inBitCount2 + inBitCount3 - 1}.}
 
 
 
@@ -766,7 +766,7 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 {@uint inBitCount2}
 {@uint inBitCount3}
 {Returns the transposed \emph{(z, y, x)} relation.}
-{this reader considers that the receiver encodes an \emph{(x, y, z)} relation, where \emph{x} is defined by bits index \emph{0} to \emph{inBitCount1  - 1}, \emph{y} is defined by bits index \emph{inBitCount1} to \emph{inBitCount1 + inBitCount2 - 1} and  \emph{z} is defined by bits index \emph{inBitCount1 + inBitCount2} to \emph{inBitCount1 + inBitCount2 + inBitCount3 - 1}.}
+{this getter considers that the receiver encodes an \emph{(x, y, z)} relation, where \emph{x} is defined by bits index \emph{0} to \emph{inBitCount1  - 1}, \emph{y} is defined by bits index \emph{inBitCount1} to \emph{inBitCount1 + inBitCount2 - 1} and  \emph{z} is defined by bits index \emph{inBitCount1 + inBitCount2} to \emph{inBitCount1 + inBitCount2 + inBitCount3 - 1}.}
 
 
 
@@ -781,7 +781,7 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 {binaryset}
 {@uint inBitCount}
 {Returns the transitive closure of the relation encoded by the receiver.}
-{this reader considers that the receiver encodes an \emph{(x, y)} relation, where \emph{x} is defined by bits index \emph{0} to \emph{inBitCount  - 1}, \emph{y} is defined by bits index \emph{inBitCount} to \emph{2 * inBitCount - 1}.}
+{this getter considers that the receiver encodes an \emph{(x, y)} relation, where \emph{x} is defined by bits index \emph{0} to \emph{inBitCount  - 1}, \emph{y} is defined by bits index \emph{inBitCount} to \emph{2 * inBitCount - 1}.}
 
 
 

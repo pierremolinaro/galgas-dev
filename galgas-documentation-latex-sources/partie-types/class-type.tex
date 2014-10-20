@@ -29,7 +29,7 @@ abstract class @D extends @C {
  }
 \end{galgascode}
 
-Une classe non abstraite définit implicitement le constructeur \galgas{new}, et des \emph{readers} pour lire les attributs, et des \emph{modifiers} pour les écrire. On ne peut pas définir explicitement d'autres constructeurs, \emph{readers} ou \emph{modifiers} à l'intérieur de la classe. Cependant,  les extensions (\refChapterPage{extensions}) permettent de définir \emph{readers}, \emph{méthodes} et \emph{modifiers} associés à une classe.
+Une classe non abstraite définit implicitement le constructeur \galgas{new}, et des \emph{getters} pour lire les attributs, et des \emph{setters} pour les écrire. On ne peut pas définir explicitement d'autres constructeurs, \emph{getters} ou \emph{setters} à l'intérieur de la classe. Cependant,  les extensions (\refChapterPage{extensions}) permettent de définir \emph{getters}, \emph{méthodes} et \emph{setters} associés à une classe.
 
 
 
@@ -67,14 +67,14 @@ Le constructeur \galgas{new} est implicitement pour toute classe non abstraite (
 
 \section{Lecture d'un attribut}
 
-Par défaut, la lecture d'un attribut est activée par la définition implicite d'un \emph{reader}, dont le nom est le nom de l'attribut. Ainsi, pour une variable \galgas{b} de type \galgas{@B}, on pourra écrire :
+Par défaut, la lecture d'un attribut est activée par la définition implicite d'un \emph{getter}, dont le nom est le nom de l'attribut. Ainsi, pour une variable \galgas{b} de type \galgas{@B}, on pourra écrire :
 
 \begin{galgascode}
 @uint v := [b mA] ;
 @string s := [b mB] ;
 \end{galgascode}
 
-Il est possible d'inhiber la génération implicite d'un \emph{reader} de lecture d'un attribut en complétant sa déclaration par \galgas{feature nogetter}, comme par exemple :
+Il est possible d'inhiber la génération implicite d'un \emph{getter} de lecture d'un attribut en complétant sa déclaration par \galgas{feature nogetter}, comme par exemple :
 
 \begin{galgascode}
 abstract class @A {
@@ -96,7 +96,7 @@ L'écriture \galgas{[b mA]} sera alors rejetée par le compilateur.
 
 Par défaut, l'écriture d'un attribut n'est pas activée.
 
-Pour activer la génération d'un \emph{modifier} permettant décrire un attribut, compléter la déclaration de cet attribut par \galgas{feature setter}. Un \emph{modifier} est alors engendré, et porte le nom \texttt{set<Attribut>}, c'est à dire le nom de l'attribut avec sa première lettre en majuscule, précédé par \texttt{set}. Par exemple :
+Pour activer la génération d'un \emph{setter} permettant décrire un attribut, compléter la déclaration de cet attribut par \galgas{feature setter}. Un \emph{setter} est alors engendré, et porte le nom \texttt{set<Attribut>}, c'est à dire le nom de l'attribut avec sa première lettre en majuscule, précédé par \texttt{set}. Par exemple :
 
 \begin{galgascode}
 abstract class @A {
@@ -111,7 +111,7 @@ Pour modifier l'attribut \galgas{mA}, on écrira :
 [!?b setMA !12] ;
 \end{galgascode}
 
-Si on veut à la fois inhiber la génération implicite d'un \emph{reader} de lecture d'un attribut et engendrer le \emph{modifier} d'écriture, il suffit de déclarer l'attribut par :
+Si on veut à la fois inhiber la génération implicite d'un \emph{getter} de lecture d'un attribut et engendrer le \emph{setter} d'écriture, il suffit de déclarer l'attribut par :
 
 \begin{galgascode}
   @uint mA feature nogetter, setter ;

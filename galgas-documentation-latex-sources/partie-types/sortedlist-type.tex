@@ -32,9 +32,9 @@ Déclarer une \galgas{sortedlist} définit implicitement :
   \item l'opérateur \galgas{+=} pour ajouter un élément à une liste ordonnée (\refSubsectionPage{operateurSortedListPlusEgal}) ;
   \item l'opérateur \galgas{.=} pour ajouter tous les éléments d'une liste à une liste ordonnée (\refSubsectionPage{operateurSortedListPointEgal}) ;
   \item l'opérateur \galgas{.} pour construire une liste ordonnée à partir de deux listes ordonnées (\refSubsectionPage{operateurSortedListPoint}) ;
-  \item le \emph{reader} \galgas{length}, qui retourne le nombre d'éléments d'une liste (\refSectionPage{readerSortedListLength}) ;
-  \item le \emph{modifier} \galgas{popGreatest}, qui retourne les champs du plus grand élément d'une liste, et retire cet élément de cette liste (\refSubsectionPage{modifierSortedListPopGreatest}) ;
-  \item le \emph{modifier} \galgas{popSmallest}, qui retourne les champs du plus grand élément d'une liste, et retire cet élément de cette liste (\refSubsectionPage{modifierSortedListPopSmallest}) ;
+  \item le \emph{getter} \galgas{length}, qui retourne le nombre d'éléments d'une liste (\refSectionPage{readerSortedListLength}) ;
+  \item le \emph{setter} \galgas{popGreatest}, qui retourne les champs du plus grand élément d'une liste, et retire cet élément de cette liste (\refSubsectionPage{modifierSortedListPopGreatest}) ;
+  \item le \emph{setter} \galgas{popSmallest}, qui retourne les champs du plus grand élément d'une liste, et retire cet élément de cette liste (\refSubsectionPage{modifierSortedListPopSmallest}) ;
   \item la \emph{méthode} \galgas{greatest}, qui retourne les champs du plus grand élément d'une liste sans la modifier (\refSubsectionPage{methodeSortedListGreatest}) ;
   \item la \emph{méthode} \galgas{smallest}, qui retourne les champs du plus petit élément d'une liste sans la modifier (\refSubsectionPage{methodeSortedListSmallest}).
 \end{itemize}
@@ -123,20 +123,20 @@ Exemple :
 
 
 
-\sectionLabel{Le reader \texttt{length}}{readerSortedListLength}
+\sectionLabel{Getter \texttt{length}}{readerSortedListLength}
 
-Le reader \galgas{length} retourne un \galgas{@uint} contenant le nombre d'éléments de la liste ordonnée.
-
-
+Le getter \galgas{length} retourne un \galgas{@uint} contenant le nombre d'éléments de la liste ordonnée.
 
 
 
 
-\section{Modifiers}
 
-\subsectionLabel{Le modifier \texttt{popGreatest}}{modifierSortedListPopGreatest}
 
-Ce \emph{modifier} retourne les champs du plus grand élément de la liste ordonnée, et le retire. Si la liste est vide, un message d'erreur est affiché, et les variables destinées à recevoir les valeurs des champs sont placées dans l'état \emph{invalide}. Par exemple :
+\section{Setters}
+
+\subsectionLabel{Setter \texttt{popGreatest}}{modifierSortedListPopGreatest}
+
+Ce \emph{setter} retourne les champs du plus grand élément de la liste ordonnée, et le retire. Si la liste est vide, un message d'erreur est affiché, et les variables destinées à recevoir les valeurs des champs sont placées dans l'état \emph{invalide}. Par exemple :
 
 \begin{galgascode}
 @MaListeOrdonnee uneListe := ... ;
@@ -150,9 +150,9 @@ Ce \emph{modifier} retourne les champs du plus grand élément de la liste ordon
 Si \galgas{uneListe} est vide, les variables \galgas{c} et \galgas{n} sont placées dans l'état \emph{invalide}.
 
 
-\subsectionLabel{Le modifier \texttt{popSmallest}}{modifierSortedListPopSmallest}
+\subsectionLabel{Setter \texttt{popSmallest}}{modifierSortedListPopSmallest}
 
-Ce \emph{modifier} retourne les champs du plus petit élément de la liste ordonnée, et le retire. Si la liste est vide, un message d'erreur est affiché, et les variables destinées à recevoir les valeurs des champs sont placées dans l'état \emph{invalide}. Par exemple :
+Ce \emph{setter} retourne les champs du plus petit élément de la liste ordonnée, et le retire. Si la liste est vide, un message d'erreur est affiché, et les variables destinées à recevoir les valeurs des champs sont placées dans l'état \emph{invalide}. Par exemple :
 
 \begin{galgascode}
 @MaListeOrdonnee uneListe := ... ;
@@ -178,7 +178,7 @@ Si \galgas{uneListe} est vide, les variables \galgas{c} et \galgas{n} sont plac�
 
 \subsectionLabel{La méthode \texttt{greatest}}{methodeSortedListGreatest}
 
-Ce \emph{modifier} retourne les champs du plus grand élément de la liste ordonnée, sans le retirer. La liste n'est donc pas modifiée. Si elle est vide, un message d'erreur est affiché, et les variables destinées à recevoir les valeurs des champs sont placées dans l'état \emph{invalide}. Par exemple :
+Cette méthode retourne les champs du plus grand élément de la liste ordonnée, sans le retirer. La liste n'est donc pas modifiée. Si elle est vide, un message d'erreur est affiché, et les variables destinées à recevoir les valeurs des champs sont placées dans l'état \emph{invalide}. Par exemple :
 
 \begin{galgascode}
 @MaListeOrdonnee uneListe := ... ;
@@ -194,7 +194,7 @@ Si \galgas{uneListe} est vide, les variables \galgas{c} et \galgas{n} sont plac�
 
 \subsectionLabel{La méthode \texttt{smallest}}{methodeSortedListSmallest}
 
-Ce \emph{modifier} retourne les champs du plus petit élément de la liste ordonnée, sans le retirer. La liste n'est donc pas modifiée. Si elle est vide, un message d'erreur est affiché, et les variables destinées à recevoir les valeurs des champs sont placées dans l'état \emph{invalide}. Par exemple :
+Cette méthode retourne les champs du plus petit élément de la liste ordonnée, sans le retirer. La liste n'est donc pas modifiée. Si elle est vide, un message d'erreur est affiché, et les variables destinées à recevoir les valeurs des champs sont placées dans l'état \emph{invalide}. Par exemple :
 
 \begin{galgascode}
 @MaListeOrdonnee uneListe := ... ;
