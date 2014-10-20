@@ -678,18 +678,18 @@ override method @lexicalExplicitRuleAST checkLexicalRule
 filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_generation" {
 }{
 }{
-  template newHeaderZone2 "lexique_header_template_zone_2.new.h.gTemplate"
+  template newHeaderZone2 "lexique_header_template_zone_2.new.h.galgasTemplate"
     ?@string LEXIQUE_IDENTIFIER
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
     ?@metamodelTemplateDelimitorListAST TEMPLATE_DELIMITOR_LIST
 
-  template newHeaderZone3 "lexique_header_template_zone_3.new.h.gTemplate"
+  template newHeaderZone3 "lexique_header_template_zone_3.new.h.galgasTemplate"
     ?@string LEXIQUE_IDENTIFIER
     ?@lexicalListDeclarationListAST DELIMITOR_LIST_LIST
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
     ?@indexingListAST INDEXING_LIST
 
-  template newImplementationZone2Galgas3 "lexique_implementation-galgas3.cpp.gTemplate"
+  template newImplementationZone2Galgas3 "lexique_implementation-galgas3.cpp.galgasTemplate"
     ?@string LEXIQUE_IDENTIFIER
     ?@lexicalAttributeMap LEXICAL_ATTRIBUTE_MAP
     ?@lexicalMessageMap LEXICAL_MESSAGE_MAP
@@ -703,7 +703,7 @@ filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_gener
     ?@string LEXIQUE_COMPONENT_NAME
     ?@templateReplacementListAST TEMPLATE_REPLACEMENT_LIST
 
-  template newImplementationZone2 "lexique_implementation.new.cpp.gTemplate"
+  template newImplementationZone2 "lexique_implementation.new.cpp.galgasTemplate"
     ?@string LEXIQUE_IDENTIFIER
     ?@lexicalAttributeMap LEXICAL_ATTRIBUTE_MAP
     ?@lexicalMessageMap LEXICAL_MESSAGE_MAP
@@ -714,13 +714,13 @@ filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_gener
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
     ?@galgas3LexiqueComponentListAST-element LEXIQUE_COMPONENT_ROOT
 
-  template cocoaHeaderZone2 "lexique_cocoa_header_template_zone_2.h.gTemplate"
+  template cocoaHeaderZone2 "lexique_cocoa_header_template_zone_2.h.galgasTemplate"
     ?@string LEXIQUE_CLASS_NAME
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
-  template cocoaHeaderZone3 "lexique_cocoa_header_template_zone_3.h.gTemplate"
+  template cocoaHeaderZone3 "lexique_cocoa_header_template_zone_3.h.galgasTemplate"
     ?@string unused LEXIQUE_CLASS_NAME
     ?@lexiqueAnalysisContext unused LEXIQUE_ANALYSIS_CONTEXT
-  template cocoaImplementationZone2 "lexique_cocoa_implementation.m.gTemplate"
+  template cocoaImplementationZone2 "lexique_cocoa_implementation.m.galgasTemplate"
     ?@string LEXIQUE_HEADER_FILE_NAME
     ?@string LEXIQUE_CLASS_NAME
     ?@lexicalAttributeMap LEXICAL_ATTRIBUTE_MAP

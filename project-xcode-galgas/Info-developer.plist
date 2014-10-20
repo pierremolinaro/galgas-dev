@@ -7,6 +7,8 @@
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
+			<key>CFBundlePackageType</key>
+			<string>TEXT</string>
 			<key>CFBundleTypeExtensions</key>
 			<array>
 				<string>gSemantics</string>
@@ -15,20 +17,16 @@
 			<string>galgasDocuments.icns</string>
 			<key>CFBundleTypeName</key>
 			<string>GALGAS semantics Component</string>
-			<key>CFBundleTypeOSTypes</key>
-			<array>
-				<string>TEXT</string>
-			</array>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSTypeIsPackage</key>
 			<false/>
 			<key>NSDocumentClass</key>
 			<string>OC_GGS_Document</string>
-			<key>NSPersistentStoreTypeKey</key>
-			<string>Binary</string>
 		</dict>
 		<dict>
+			<key>CFBundlePackageType</key>
+			<string>TEXT</string>
 			<key>CFBundleTypeExtensions</key>
 			<array>
 				<string>gLexique</string>
@@ -37,20 +35,16 @@
 			<string>galgasDocuments.icns</string>
 			<key>CFBundleTypeName</key>
 			<string>GALGAS lexique Component</string>
-			<key>CFBundleTypeOSTypes</key>
-			<array>
-				<string>TEXT</string>
-			</array>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSTypeIsPackage</key>
 			<false/>
 			<key>NSDocumentClass</key>
 			<string>OC_GGS_Document</string>
-			<key>NSPersistentStoreTypeKey</key>
-			<string>Binary</string>
 		</dict>
 		<dict>
+			<key>CFBundlePackageType</key>
+			<string>TEXT</string>
 			<key>CFBundleTypeExtensions</key>
 			<array>
 				<string>gOption</string>
@@ -59,20 +53,16 @@
 			<string>galgasDocuments.icns</string>
 			<key>CFBundleTypeName</key>
 			<string>GALGAS option Component</string>
-			<key>CFBundleTypeOSTypes</key>
-			<array>
-				<string>TEXT</string>
-			</array>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSTypeIsPackage</key>
 			<false/>
 			<key>NSDocumentClass</key>
 			<string>OC_GGS_Document</string>
-			<key>NSPersistentStoreTypeKey</key>
-			<string>Binary</string>
 		</dict>
 		<dict>
+			<key>CFBundlePackageType</key>
+			<string>TEXT</string>
 			<key>CFBundleTypeExtensions</key>
 			<array>
 				<string>gSyntax</string>
@@ -81,20 +71,16 @@
 			<string>galgasDocuments.icns</string>
 			<key>CFBundleTypeName</key>
 			<string>GALGAS syntax Component</string>
-			<key>CFBundleTypeOSTypes</key>
-			<array>
-				<string>TEXT</string>
-			</array>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSTypeIsPackage</key>
 			<false/>
 			<key>NSDocumentClass</key>
 			<string>OC_GGS_Document</string>
-			<key>NSPersistentStoreTypeKey</key>
-			<string>Binary</string>
 		</dict>
 		<dict>
+			<key>CFBundlePackageType</key>
+			<string>TEXT</string>
 			<key>CFBundleTypeExtensions</key>
 			<array>
 				<string>gGrammar</string>
@@ -103,20 +89,16 @@
 			<string>galgasDocuments.icns</string>
 			<key>CFBundleTypeName</key>
 			<string>GALGAS grammar Component</string>
-			<key>CFBundleTypeOSTypes</key>
-			<array>
-				<string>TEXT</string>
-			</array>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSTypeIsPackage</key>
 			<false/>
 			<key>NSDocumentClass</key>
 			<string>OC_GGS_Document</string>
-			<key>NSPersistentStoreTypeKey</key>
-			<string>Binary</string>
 		</dict>
 		<dict>
+			<key>CFBundlePackageType</key>
+			<string>TEXT</string>
 			<key>CFBundleTypeExtensions</key>
 			<array>
 				<string>gGui</string>
@@ -125,20 +107,16 @@
 			<string>galgasDocuments.icns</string>
 			<key>CFBundleTypeName</key>
 			<string>GALGAS GUI Component</string>
-			<key>CFBundleTypeOSTypes</key>
-			<array>
-				<string>TEXT</string>
-			</array>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSTypeIsPackage</key>
 			<false/>
 			<key>NSDocumentClass</key>
 			<string>OC_GGS_Document</string>
-			<key>NSPersistentStoreTypeKey</key>
-			<string>Binary</string>
 		</dict>
 		<dict>
+			<key>CFBundlePackageType</key>
+			<string>TEXT</string>
 			<key>CFBundleTypeExtensions</key>
 			<array>
 				<string>gProgram</string>
@@ -147,20 +125,16 @@
 			<string>galgasDocuments.icns</string>
 			<key>CFBundleTypeName</key>
 			<string>GALGAS program Component</string>
-			<key>CFBundleTypeOSTypes</key>
-			<array>
-				<string>TEXT</string>
-			</array>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSTypeIsPackage</key>
 			<false/>
 			<key>NSDocumentClass</key>
 			<string>OC_GGS_Document</string>
-			<key>NSPersistentStoreTypeKey</key>
-			<string>Binary</string>
 		</dict>
 		<dict>
+			<key>CFBundlePackageType</key>
+			<string>TEXT</string>
 			<key>CFBundleTypeExtensions</key>
 			<array>
 				<string>gProject</string>
@@ -169,42 +143,34 @@
 			<string>galgasDocuments.icns</string>
 			<key>CFBundleTypeName</key>
 			<string>GALGAS project Component</string>
-			<key>CFBundleTypeOSTypes</key>
-			<array>
-				<string>TEXT</string>
-			</array>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSTypeIsPackage</key>
 			<false/>
 			<key>NSDocumentClass</key>
 			<string>OC_GGS_Document</string>
-			<key>NSPersistentStoreTypeKey</key>
-			<string>Binary</string>
 		</dict>
 		<dict>
+			<key>CFBundlePackageType</key>
+			<string>TEXT</string>
 			<key>CFBundleTypeExtensions</key>
 			<array>
-				<string>gTemplate</string>
+				<string>galgasTemplate</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
 			<string>galgasDocuments.icns</string>
 			<key>CFBundleTypeName</key>
 			<string>GALGAS Template Component</string>
-			<key>CFBundleTypeOSTypes</key>
-			<array>
-				<string>TEXT</string>
-			</array>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>LSTypeIsPackage</key>
 			<false/>
 			<key>NSDocumentClass</key>
 			<string>OC_GGS_Document</string>
-			<key>NSPersistentStoreTypeKey</key>
-			<string>Binary</string>
 		</dict>
 		<dict>
+			<key>CFBundleIdentifier</key>
+			<string>TEXT</string>
 			<key>CFBundleTypeExtensions</key>
 			<array>
 				<string>galgasProject</string>
@@ -221,6 +187,8 @@
 			<string>OC_GGS_Document</string>
 		</dict>
 		<dict>
+			<key>CFBundlePackageType</key>
+			<string>TEXT</string>
 			<key>CFBundleTypeExtensions</key>
 			<array>
 				<string>galgas</string>

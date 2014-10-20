@@ -68,7 +68,7 @@ before {
 #                                                                            *
 #----------------------------------------------------------------------------*
 
-when . "gTemplate"
+when . "galgasTemplate"
 message "a GALGAS Template source file"
 indexing with projectLL1grammar
 ??@lstring inSourceFile {

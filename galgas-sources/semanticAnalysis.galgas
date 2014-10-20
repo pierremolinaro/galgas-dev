@@ -2865,23 +2865,23 @@ class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration {
 filewrapper syntaxFileGenerationTemplate in "../generation_templates/syntax_generation" {
 }{
 }{
-  template syntaxFileHeader "syntax-file.h.gTemplate"
+  template syntaxFileHeader "syntax-file.h.galgasTemplate"
     ?@string COMPONENT_NAME
     ?@string LEXIQUE_NAME
     ?@stringlist IMPORTED_COMPONENT_LIST
 
-  template syntaxFileHeaderGalgas3 "syntax-file-galgas3.h.gTemplate"
+  template syntaxFileHeaderGalgas3 "syntax-file-galgas3.h.galgasTemplate"
     ?@string COMPONENT_NAME
     ?@stringset INCLUSION_SET
 
-  template syntaxFileImplementationGalgas3 "syntax-file-galgas3.cpp.gTemplate"
+  template syntaxFileImplementationGalgas3 "syntax-file-galgas3.cpp.galgasTemplate"
     ?@stringset INCLUSION_SET
 
-  template syntaxFileImplementation "syntax-file.cpp.gTemplate"
+  template syntaxFileImplementation "syntax-file.cpp.galgasTemplate"
     ?@string COMPONENT_NAME
     ?@stringlist IMPORTED_COMPONENT_LIST
 
-  template syntaxAnalyserClassDeclaration "syntax-analyser-class.gTemplate"
+  template syntaxAnalyserClassDeclaration "syntax-analyser-class.galgasTemplate"
     ?@string COMPONENT_NAME
     ?@string LEXIQUE_NAME
     ?@nonterminalMap NONTERMINAL_MAP

@@ -52,7 +52,7 @@ before {
 #                                                                            *
 #----------------------------------------------------------------------------*
 
-case . "gTemplate"
+case . "galgasTemplate"
 message "a GALGAS Template source file"
 indexing with projectLL1grammar
 ?sourceFilePath:@lstring inSourceFile {
