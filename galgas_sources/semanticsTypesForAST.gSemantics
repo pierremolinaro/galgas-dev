@@ -1885,6 +1885,18 @@ list @galgas3SyntaxComponentListAST {
 
 #---------------------------------------------------------------------------*
 
+list @galgas3SyntaxExtensionListAST {
+  @lstring mSyntaxComponentName ;
+  @nonterminalDeclarationListAST mNonterminalDeclarationList ;
+  @syntaxRuleListAST mRuleList ;
+}
+
+#---------------------------------------------------------------------------*
+
+listmap @syntaxExtensions (@galgas3SyntaxExtensionListAST) ;
+
+#---------------------------------------------------------------------------*
+
 list @galgas3GrammarComponentListAST {
   @lbool mHasIndexing ;
   @lstring mGrammarComponentName ;
@@ -1940,7 +1952,7 @@ list @galgas3GUIComponentListAST {
 struct @galgas3DeclarationAST {
   @semanticDeclarationListAST mDeclarationList ;
   @galgas3SyntaxComponentListAST mSyntaxComponentList ;
-#  @galgas3GrammarComponentListAST mGrammarComponentList ;
+  @syntaxExtensions mSyntaxExtensions ;
   @galgas3GUIComponentListAST mGUIComponentList ;
   @prologueEpilogueList mPrologueDeclarationList ;
   @programRuleList mSourceRuleList ;

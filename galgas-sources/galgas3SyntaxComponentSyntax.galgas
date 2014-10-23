@@ -42,8 +42,7 @@ rule <actual_parameter_list>
 rule <declaration>
  ?!@galgas3DeclarationAST ioDeclarations {
   $syntax$
-#--- Semantics Component Name
-  $identifier$ ?let @lstring mSyntaxComponentName
+  $identifier$ ?let @lstring syntaxComponentName
 #--- Imported lexique
   @lstring importedLexiqueReference
   select
@@ -66,25 +65,56 @@ rule <declaration>
   end
   ${$
 #--- Loop on declarations
-  var mNonterminalDeclarationList =@nonterminalDeclarationListAST.emptyList{}
-  var mRuleList =@syntaxRuleListAST.emptyList{}
+  var nonterminalDeclarationList =@nonterminalDeclarationListAST.emptyList{}
+  var ruleList =@syntaxRuleListAST.emptyList{}
   var mSemanticDeclarations =@semanticDeclarationListAST.emptyList{}
   repeat
   while
-    <nonterminal_declaration> !? mNonterminalDeclarationList
+    <nonterminal_declaration> !? nonterminalDeclarationList
   while
-    <syntax_rule_declaration> !? mRuleList
+    <syntax_rule_declaration> !? ruleList
   end
 #--- end
   $}$
   ioDeclarations.mSyntaxComponentList +=
-    !mSyntaxComponentName
+    !syntaxComponentName
     !importedLexiqueReference
     !@lstringlist. emptyList  # inutile GALGAS 3
-    !mNonterminalDeclarationList
-    !mRuleList
+    !nonterminalDeclarationList
+    !ruleList
     !@semanticDeclarationListAST. emptyList # inutile GALGAS 3
     !hasTranslateFeature
+}
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#      S Y N T A X    E X T E N S I O N                                        *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@galgas3DeclarationAST ioDeclarations {
+  $syntax$
+  $extension$
+  $identifier$ ?let @lstring syntaxComponentName
+  ${$
+#--- Loop on declarations
+  var nonterminalDeclarationList =@nonterminalDeclarationListAST.emptyList{}
+  var ruleList =@syntaxRuleListAST.emptyList{}
+  var mSemanticDeclarations =@semanticDeclarationListAST.emptyList{}
+  repeat
+  while
+    <nonterminal_declaration> !? nonterminalDeclarationList
+  while
+    <syntax_rule_declaration> !? ruleList
+  end
+#--- end
+  $}$
+  ioDeclarations.mSyntaxExtensions +=
+    !syntaxComponentName.string
+    !syntaxComponentName
+    !nonterminalDeclarationList
+    !ruleList
 }
 
 #------------------------------------------------------------------------------*

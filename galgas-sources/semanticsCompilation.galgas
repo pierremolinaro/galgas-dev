@@ -82,13 +82,13 @@ proc recursivelyImportSemanticComponent
     let filePath = @lstring. new {
       ![mValue absolutePathFromPath !inDirectory]
       ![mValue location]}
-    let @string extension = [mValue pathExtension]
+    let @string pathExtension = [mValue pathExtension]
     if not [ioParsedFileSet hasKey ![filePath string]] then
       ioParsedFileSet += ![filePath string]
-      if extension == "gOption" then
+      if pathExtension == "gOption" then
         ioOptionComponentFileNameList += !filePath
         ioImplementationIncludeList += ![[filePath lastPathComponent] stringByDeletingPathExtension]
-      elsif extension == "gGrammar" then
+      elsif pathExtension == "gGrammar" then
         @galgas3GrammarComponentListAST-element grammarComponentAST
         parseGrammarComponent (
           !filePath
@@ -97,7 +97,7 @@ proc recursivelyImportSemanticComponent
         )
         ioGrammarComponentASTList += !grammarComponentAST
         ioImplementationIncludeList += !grammarComponentAST.mGrammarComponentName.string
-      elsif extension == "gSemantics" then
+      elsif pathExtension == "gSemantics" then
         [!?ioSemanticImportDependenceGraph addEdge
           !@lstring. new { ![inFilePath lastPathComponent] ![inFilePath location]}
           !@lstring. new { ![mValue lastPathComponent] ![mValue location]}
@@ -129,7 +129,7 @@ proc recursivelyImportSemanticComponent
           !inDirectory
         )
       end
-    elsif extension == "gSemantics" then
+    elsif pathExtension == "gSemantics" then
         [!?ioSemanticImportDependenceGraph addEdge
           !@lstring. new { ![inFilePath lastPathComponent] ![inFilePath location]}
           !@lstring. new { ![mValue lastPathComponent] ![mValue location]}

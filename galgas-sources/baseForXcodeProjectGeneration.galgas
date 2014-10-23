@@ -732,30 +732,30 @@ proc enter_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?let @string inFileName
   ?!@XcodeObjectReferenceList ioFileListForGroup {
-  @string extension = [inFileName pathExtension]
-  if extension == "cpp" then
+  @string pathExtension = [inFileName pathExtension]
+  if pathExtension == "cpp" then
     enter_cpp_file_in_group ( !?ioXcodeProjectDescription !inFileName !?ioFileListForGroup )
-  elsif extension == "h" then
+  elsif pathExtension == "h" then
     enter_h_file_in_group ( !?ioXcodeProjectDescription !inFileName !?ioFileListForGroup )
-  elsif extension == "pch" then
+  elsif pathExtension == "pch" then
     enter_pch_file_in_group ( !?ioXcodeProjectDescription !inFileName !?ioFileListForGroup )
-  elsif extension == "m" then
+  elsif pathExtension == "m" then
     enter_m_file_in_group ( !?ioXcodeProjectDescription !inFileName !?ioFileListForGroup )
-  elsif extension == "mm" then
+  elsif pathExtension == "mm" then
     enter_mm_file_in_group ( !?ioXcodeProjectDescription !inFileName !?ioFileListForGroup )
-  elsif extension == "tiff" then
+  elsif pathExtension == "tiff" then
     enter_tiff_file_in_group ( !?ioXcodeProjectDescription !inFileName !?ioFileListForGroup )
-  elsif extension == "gif" then
+  elsif pathExtension == "gif" then
     enter_gif_file_in_group ( !?ioXcodeProjectDescription !inFileName !?ioFileListForGroup )
-  elsif extension == "png" then
+  elsif pathExtension == "png" then
     enter_png_file_in_group ( !?ioXcodeProjectDescription !inFileName !?ioFileListForGroup )
-  elsif extension == "xib" then
+  elsif pathExtension == "xib" then
     enter_xib_file_in_group ( !?ioXcodeProjectDescription !"." !inFileName !?ioFileListForGroup )
-  elsif extension == "plist" then
+  elsif pathExtension == "plist" then
     enter_plist_file_in_group ( !?ioXcodeProjectDescription !inFileName !?ioFileListForGroup )
-  elsif extension == "framework" then
+  elsif pathExtension == "framework" then
     enter_framework_file_in_group ( !?ioXcodeProjectDescription !inFileName !?ioFileListForGroup )
-  elsif extension == "icns" then
+  elsif pathExtension == "icns" then
     enter_icns_file_in_group ( !?ioXcodeProjectDescription !inFileName !?ioFileListForGroup )
   else
     error @location.here : "cannot enter '" + inFileName + "' file : unknown extension"

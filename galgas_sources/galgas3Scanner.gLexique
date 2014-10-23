@@ -127,6 +127,7 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "enum",
   "error",
 #  "extends",
+  "extension",
   "extern",
   "false",
 #  "feature",

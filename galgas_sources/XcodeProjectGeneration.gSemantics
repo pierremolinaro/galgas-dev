@@ -616,8 +616,8 @@ routine build_HAND_CODED_source_files_for_sources_tool_build_phase
 :
   @stringlist fileList [emptyList] ;
   foreach inExternSourceNameSet do
-    @string extension := [key pathExtension] ;
-    if (extension == "cpp") | (extension == "c") | (extension == "m") | (extension == "mm") then
+    @string pathExtension := [key pathExtension] ;
+    if (pathExtension == "cpp") | (pathExtension == "c") | (pathExtension == "m") | (pathExtension == "mm") then
       fileList += !key ;
     end if ;
   end foreach ;
@@ -638,8 +638,8 @@ routine build_HAND_CODED_source_files_for_sources_cocoa_build_phase
 :
   @stringlist fileList [emptyList] ;
   foreach inExternSourceNameSet do
-    @string extension := [key pathExtension] ;
-    if (extension == "cpp") | (extension == "c") | (extension == "m") | (extension == "mm") | (extension == "xib") then
+    @string pathExtension := [key pathExtension] ;
+    if (pathExtension == "cpp") | (pathExtension == "c") | (pathExtension == "m") | (pathExtension == "mm") | (pathExtension == "xib") then
       fileList += !key ;
     end if ;
   end foreach ;
@@ -660,8 +660,8 @@ routine build_HAND_CODED_SOURCES_group
 :
   @stringlist fileList := {} ;
   foreach inExternSourceNameSet do
-    @string extension := [key pathExtension] ;
-    if (extension == "cpp") | (extension == "c") | (extension == "h") | (extension == "m") | (extension == "mm") | (extension == "xib") then
+    @string pathExtension := [key pathExtension] ;
+    if (pathExtension == "cpp") | (pathExtension == "c") | (pathExtension == "h") | (pathExtension == "m") | (pathExtension == "mm") | (pathExtension == "xib") then
       fileList += !key ;
     end if ;
   end foreach ;

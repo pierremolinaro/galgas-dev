@@ -605,8 +605,8 @@ rule <semantic_declaration>
   select
   or
     repeat
-      $literal_string$ ?var @lstring extension
-      filewrapperTextFileExtensionList += !extension
+      $literal_string$ ?var @lstring pathExtension
+      filewrapperTextFileExtensionList += !pathExtension
     while
       $,$
     end
@@ -617,8 +617,8 @@ rule <semantic_declaration>
   select
   or
     repeat
-      $literal_string$ ?var @lstring extension
-      filewrapperBinaryFileExtensionList += !extension
+      $literal_string$ ?var @lstring pathExtension
+      filewrapperBinaryFileExtensionList += !pathExtension
     while
       $,$
     end
