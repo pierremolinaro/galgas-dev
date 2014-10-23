@@ -282,7 +282,7 @@ func %once generateCopyConstructorAndAssignmentOperator   -> @uint outMask { out
 #---------------------------------------------------------------------------*
 
 map @attributeMap {
-  @bool mIsPrivate
+#  @bool mIsPrivate ;
   @unifiedTypeMap-proxy mAttributeType
   insert insertKey error message "the '%K' attribute has been already declared in %L"
   search searchKey error message "the '%K' attribute is not declared"

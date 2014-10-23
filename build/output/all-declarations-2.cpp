@@ -12500,8 +12500,7 @@ class cCollectionElement_attributeInCollectionListAST : public cCollectionElemen
   public : GALGAS_attributeInCollectionListAST_2D_element mObject ;
 
 //--- Constructor
-  public : cCollectionElement_attributeInCollectionListAST (const GALGAS_bool & in_mIsPrivate,
-                                                            const GALGAS_lstring & in_mAttributeTypeName,
+  public : cCollectionElement_attributeInCollectionListAST (const GALGAS_lstring & in_mAttributeTypeName,
                                                             const GALGAS_lstring & in_mAttributeName,
                                                             const GALGAS_lstringlist & in_mFeatureList
                                                             COMMA_LOCATION_ARGS) ;
@@ -12521,13 +12520,12 @@ class cCollectionElement_attributeInCollectionListAST : public cCollectionElemen
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cCollectionElement_attributeInCollectionListAST::cCollectionElement_attributeInCollectionListAST (const GALGAS_bool & in_mIsPrivate,
-                                                                                                  const GALGAS_lstring & in_mAttributeTypeName,
+cCollectionElement_attributeInCollectionListAST::cCollectionElement_attributeInCollectionListAST (const GALGAS_lstring & in_mAttributeTypeName,
                                                                                                   const GALGAS_lstring & in_mAttributeName,
                                                                                                   const GALGAS_lstringlist & in_mFeatureList
                                                                                                   COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (in_mIsPrivate, in_mAttributeTypeName, in_mAttributeName, in_mFeatureList) {
+mObject (in_mAttributeTypeName, in_mAttributeName, in_mFeatureList) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12540,17 +12538,13 @@ bool cCollectionElement_attributeInCollectionListAST::isValid (void) const {
 
 cCollectionElement * cCollectionElement_attributeInCollectionListAST::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_attributeInCollectionListAST (mObject.mAttribute_mIsPrivate, mObject.mAttribute_mAttributeTypeName, mObject.mAttribute_mAttributeName, mObject.mAttribute_mFeatureList COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_attributeInCollectionListAST (mObject.mAttribute_mAttributeTypeName, mObject.mAttribute_mAttributeName, mObject.mAttribute_mFeatureList COMMA_HERE)) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cCollectionElement_attributeInCollectionListAST::description (C_String & ioString, const int32_t inIndentation) const {
-  ioString << "\n" ;
-  ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mIsPrivate" ":" ;
-  mObject.mAttribute_mIsPrivate.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mAttributeTypeName" ":" ;
@@ -12598,16 +12592,15 @@ GALGAS_attributeInCollectionListAST GALGAS_attributeInCollectionListAST::constru
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_attributeInCollectionListAST GALGAS_attributeInCollectionListAST::constructor_listWithValue (const GALGAS_bool & inOperand0,
+GALGAS_attributeInCollectionListAST GALGAS_attributeInCollectionListAST::constructor_listWithValue (const GALGAS_lstring & inOperand0,
                                                                                                     const GALGAS_lstring & inOperand1,
-                                                                                                    const GALGAS_lstring & inOperand2,
-                                                                                                    const GALGAS_lstringlist & inOperand3
+                                                                                                    const GALGAS_lstringlist & inOperand2
                                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_attributeInCollectionListAST result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
     result.createNewEmptyList (THERE) ;
     capCollectionElement attributes ;
-    GALGAS_attributeInCollectionListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE) ;
+    GALGAS_attributeInCollectionListAST::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
     result.addObject (attributes) ;
   }
   return result ;
@@ -12616,14 +12609,12 @@ GALGAS_attributeInCollectionListAST GALGAS_attributeInCollectionListAST::constru
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_attributeInCollectionListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                                     const GALGAS_bool & in_mIsPrivate,
                                                                      const GALGAS_lstring & in_mAttributeTypeName,
                                                                      const GALGAS_lstring & in_mAttributeName,
                                                                      const GALGAS_lstringlist & in_mFeatureList
                                                                      COMMA_LOCATION_ARGS) {
   cCollectionElement_attributeInCollectionListAST * p = NULL ;
-  macroMyNew (p, cCollectionElement_attributeInCollectionListAST (in_mIsPrivate,
-                                                                  in_mAttributeTypeName,
+  macroMyNew (p, cCollectionElement_attributeInCollectionListAST (in_mAttributeTypeName,
                                                                   in_mAttributeName,
                                                                   in_mFeatureList COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
@@ -12632,14 +12623,13 @@ void GALGAS_attributeInCollectionListAST::makeAttributesFromObjects (capCollecti
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_attributeInCollectionListAST::addAssign_operation (const GALGAS_bool & inOperand0,
+void GALGAS_attributeInCollectionListAST::addAssign_operation (const GALGAS_lstring & inOperand0,
                                                                const GALGAS_lstring & inOperand1,
-                                                               const GALGAS_lstring & inOperand2,
-                                                               const GALGAS_lstringlist & inOperand3
+                                                               const GALGAS_lstringlist & inOperand2
                                                                COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
+  if (isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
     cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_attributeInCollectionListAST (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE)) ;
+    macroMyNew (p, cCollectionElement_attributeInCollectionListAST (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -12649,16 +12639,15 @@ void GALGAS_attributeInCollectionListAST::addAssign_operation (const GALGAS_bool
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_attributeInCollectionListAST::modifier_insertAtIndex (const GALGAS_bool inOperand0,
+void GALGAS_attributeInCollectionListAST::modifier_insertAtIndex (const GALGAS_lstring inOperand0,
                                                                   const GALGAS_lstring inOperand1,
-                                                                  const GALGAS_lstring inOperand2,
-                                                                  const GALGAS_lstringlist inOperand3,
+                                                                  const GALGAS_lstringlist inOperand2,
                                                                   const GALGAS_uint inInsertionIndex,
                                                                   C_Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) {
-  if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
+  if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
     cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_attributeInCollectionListAST (inOperand0, inOperand1, inOperand2, inOperand3 COMMA_THERE)) ;
+    macroMyNew (p, cCollectionElement_attributeInCollectionListAST (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -12668,10 +12657,9 @@ void GALGAS_attributeInCollectionListAST::modifier_insertAtIndex (const GALGAS_b
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_attributeInCollectionListAST::modifier_removeAtIndex (GALGAS_bool & outOperand0,
+void GALGAS_attributeInCollectionListAST::modifier_removeAtIndex (GALGAS_lstring & outOperand0,
                                                                   GALGAS_lstring & outOperand1,
-                                                                  GALGAS_lstring & outOperand2,
-                                                                  GALGAS_lstringlist & outOperand3,
+                                                                  GALGAS_lstringlist & outOperand2,
                                                                   const GALGAS_uint inRemoveIndex,
                                                                   C_Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) {
@@ -12683,23 +12671,20 @@ void GALGAS_attributeInCollectionListAST::modifier_removeAtIndex (GALGAS_bool & 
       outOperand0.drop () ;
       outOperand1.drop () ;
       outOperand2.drop () ;
-      outOperand3.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_attributeInCollectionListAST) ;
-      outOperand0 = p->mObject.mAttribute_mIsPrivate ;
-      outOperand1 = p->mObject.mAttribute_mAttributeTypeName ;
-      outOperand2 = p->mObject.mAttribute_mAttributeName ;
-      outOperand3 = p->mObject.mAttribute_mFeatureList ;
+      outOperand0 = p->mObject.mAttribute_mAttributeTypeName ;
+      outOperand1 = p->mObject.mAttribute_mAttributeName ;
+      outOperand2 = p->mObject.mAttribute_mFeatureList ;
     }
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_attributeInCollectionListAST::modifier_popFirst (GALGAS_bool & outOperand0,
+void GALGAS_attributeInCollectionListAST::modifier_popFirst (GALGAS_lstring & outOperand0,
                                                              GALGAS_lstring & outOperand1,
-                                                             GALGAS_lstring & outOperand2,
-                                                             GALGAS_lstringlist & outOperand3,
+                                                             GALGAS_lstringlist & outOperand2,
                                                              C_Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
@@ -12709,22 +12694,19 @@ void GALGAS_attributeInCollectionListAST::modifier_popFirst (GALGAS_bool & outOp
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
-    outOperand3.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_attributeInCollectionListAST) ;
-    outOperand0 = p->mObject.mAttribute_mIsPrivate ;
-    outOperand1 = p->mObject.mAttribute_mAttributeTypeName ;
-    outOperand2 = p->mObject.mAttribute_mAttributeName ;
-    outOperand3 = p->mObject.mAttribute_mFeatureList ;
+    outOperand0 = p->mObject.mAttribute_mAttributeTypeName ;
+    outOperand1 = p->mObject.mAttribute_mAttributeName ;
+    outOperand2 = p->mObject.mAttribute_mFeatureList ;
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_attributeInCollectionListAST::modifier_popLast (GALGAS_bool & outOperand0,
+void GALGAS_attributeInCollectionListAST::modifier_popLast (GALGAS_lstring & outOperand0,
                                                             GALGAS_lstring & outOperand1,
-                                                            GALGAS_lstring & outOperand2,
-                                                            GALGAS_lstringlist & outOperand3,
+                                                            GALGAS_lstringlist & outOperand2,
                                                             C_Compiler * inCompiler
                                                             COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
@@ -12734,22 +12716,19 @@ void GALGAS_attributeInCollectionListAST::modifier_popLast (GALGAS_bool & outOpe
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
-    outOperand3.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_attributeInCollectionListAST) ;
-    outOperand0 = p->mObject.mAttribute_mIsPrivate ;
-    outOperand1 = p->mObject.mAttribute_mAttributeTypeName ;
-    outOperand2 = p->mObject.mAttribute_mAttributeName ;
-    outOperand3 = p->mObject.mAttribute_mFeatureList ;
+    outOperand0 = p->mObject.mAttribute_mAttributeTypeName ;
+    outOperand1 = p->mObject.mAttribute_mAttributeName ;
+    outOperand2 = p->mObject.mAttribute_mFeatureList ;
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_attributeInCollectionListAST::method_first (GALGAS_bool & outOperand0,
+void GALGAS_attributeInCollectionListAST::method_first (GALGAS_lstring & outOperand0,
                                                         GALGAS_lstring & outOperand1,
-                                                        GALGAS_lstring & outOperand2,
-                                                        GALGAS_lstringlist & outOperand3,
+                                                        GALGAS_lstringlist & outOperand2,
                                                         C_Compiler * inCompiler
                                                         COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
@@ -12759,22 +12738,19 @@ void GALGAS_attributeInCollectionListAST::method_first (GALGAS_bool & outOperand
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
-    outOperand3.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_attributeInCollectionListAST) ;
-    outOperand0 = p->mObject.mAttribute_mIsPrivate ;
-    outOperand1 = p->mObject.mAttribute_mAttributeTypeName ;
-    outOperand2 = p->mObject.mAttribute_mAttributeName ;
-    outOperand3 = p->mObject.mAttribute_mFeatureList ;
+    outOperand0 = p->mObject.mAttribute_mAttributeTypeName ;
+    outOperand1 = p->mObject.mAttribute_mAttributeName ;
+    outOperand2 = p->mObject.mAttribute_mFeatureList ;
   }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-void GALGAS_attributeInCollectionListAST::method_last (GALGAS_bool & outOperand0,
+void GALGAS_attributeInCollectionListAST::method_last (GALGAS_lstring & outOperand0,
                                                        GALGAS_lstring & outOperand1,
-                                                       GALGAS_lstring & outOperand2,
-                                                       GALGAS_lstringlist & outOperand3,
+                                                       GALGAS_lstringlist & outOperand2,
                                                        C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
@@ -12784,13 +12760,11 @@ void GALGAS_attributeInCollectionListAST::method_last (GALGAS_bool & outOperand0
     outOperand0.drop () ;
     outOperand1.drop () ;
     outOperand2.drop () ;
-    outOperand3.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_attributeInCollectionListAST) ;
-    outOperand0 = p->mObject.mAttribute_mIsPrivate ;
-    outOperand1 = p->mObject.mAttribute_mAttributeTypeName ;
-    outOperand2 = p->mObject.mAttribute_mAttributeName ;
-    outOperand3 = p->mObject.mAttribute_mFeatureList ;
+    outOperand0 = p->mObject.mAttribute_mAttributeTypeName ;
+    outOperand1 = p->mObject.mAttribute_mAttributeName ;
+    outOperand2 = p->mObject.mAttribute_mFeatureList ;
   }
 }
 
@@ -12844,21 +12818,6 @@ GALGAS_attributeInCollectionListAST GALGAS_attributeInCollectionListAST::reader_
 void GALGAS_attributeInCollectionListAST::dotAssign_operation (const GALGAS_attributeInCollectionListAST inOperand
                                                                COMMA_UNUSED_LOCATION_ARGS) {
   appendList (inOperand) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_bool GALGAS_attributeInCollectionListAST::reader_mIsPrivateAtIndex (const GALGAS_uint & inIndex,
-                                                                           C_Compiler * inCompiler
-                                                                           COMMA_LOCATION_ARGS) const {
-  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
-  cCollectionElement_attributeInCollectionListAST * p = (cCollectionElement_attributeInCollectionListAST *) attributes.ptr () ;
-  GALGAS_bool result ;
-  if (NULL != p) {
-    macroValidSharedObject (p, cCollectionElement_attributeInCollectionListAST) ;
-    result = p->mObject.mAttribute_mIsPrivate ;
-  }
-  return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -12924,14 +12883,6 @@ GALGAS_attributeInCollectionListAST_2D_element cEnumerator_attributeInCollection
   return p->mObject ;
 }
 
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_bool cEnumerator_attributeInCollectionListAST::current_mIsPrivate (LOCATION_ARGS) const {
-  const cCollectionElement_attributeInCollectionListAST * p = (const cCollectionElement_attributeInCollectionListAST *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cCollectionElement_attributeInCollectionListAST) ;
-  return p->mObject.mAttribute_mIsPrivate ;
-}
 
 //---------------------------------------------------------------------------------------------------------------------*
 

@@ -280,10 +280,14 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
     [!?ioVariableMap searchForReadWriteAccess !mTargetVariableName ?targetType ?targetVariableCppName ?nameForCheckingFormalParameterUsing]
     for () in  mStructAttributeList do
       let attributeMap = [targetType mAttributeMap]
-      [attributeMap searchKey !mValue ?let @bool isPrivate ?targetType]
-      if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue.string] file]) then
-        error mValue : "this field is private"
-      end
+      [attributeMap searchKey 
+        !mValue
+#        ??@bool isPrivate
+        ?targetType
+      ]
+#      if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
+#        error mValue : "this field is private" ;
+#      end if ;
     end
   end
 #--- Analyze source expression
@@ -537,10 +541,14 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
   var typeList = @unifiedTypeMapProxyList. listWithValue { !parameterType}
   for () in  mStructAttributeList do
     let attributeMap = [parameterType mAttributeMap]
-    [attributeMap searchKey !mValue ?let @bool isPrivate ?parameterType]
-    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue.string] file]) then
-      error mValue : "this field is private"
-    end
+    [attributeMap searchKey
+      !mValue
+#      ??@bool isPrivate
+      ?parameterType
+    ]
+#    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
+#      error mValue : "this field is private" ;
+#    end if ;
     typeList += !parameterType
   end
 #--- Check type
@@ -1034,10 +1042,14 @@ override method @modifierCallInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?receiverType ?receiverVariableCppName ?receiverVariableBaseName]
   for () in  mReceiverStructAttributes do
     let attributeMap = [receiverType mAttributeMap]
-    [attributeMap searchKey !mValue ?let @bool isPrivate ?receiverType]
-    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue.string] file]) then
-      error mValue : "this field is private"
-    end
+    [attributeMap searchKey
+      !mValue
+#      ??@bool isPrivate
+      ?receiverType
+    ]
+#    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
+#      error mValue : "this field is private" ;
+#    end if ;
   end
 #--- Get modifier signature
   @formalParameterSignature routineSignature
@@ -1164,10 +1176,14 @@ override method @concatInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap searchForReadWriteAccess !mTargetVariableName ?targetType ?targetVariableCppName ?nameForCheckingFormalParameterUsing]
   for () in  mStructAttributeList do
     let attributeMap = [targetType mAttributeMap]
-    [attributeMap searchKey !mValue ?let @bool isPrivate ?targetType]
-    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue.string] file]) then
-      error mValue : "this field is private"
-    end
+    [attributeMap searchKey
+      !mValue
+#      ??@bool isPrivate
+      ?targetType
+    ]
+#    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
+#      error mValue : "this field is private" ;
+#    end if ;
   end
 #--- Analyze source expression
   @semanticExpressionForGeneration expression
@@ -1251,10 +1267,14 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
   [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName ?nameForCheckingFormalParameterUsing]
   for () in  mStructAttributeList do
     let attributeMap = [targetType mAttributeMap]
-    [attributeMap searchKey !mValue ?let @bool isPrivate ?targetType]
-    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue.string] file]) then
-      error mValue : "this field is private"
-    end
+    [attributeMap searchKey
+      !mValue
+#      ??@bool isPrivate
+      ?targetType
+    ]
+#    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
+#      error mValue : "this field is private" ;
+#    end if ;
   end
 #--- Check target variable type support '+=' operator
   let addAssignOperatorArguments= [targetType mAddAssignOperatorArguments] # Empty list if += operator is not supported
@@ -1306,10 +1326,14 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
   [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName ?nameForCheckingFormalParameterUsing]
   for () in  mStructAttributeList do
     let attributeMap = [targetType mAttributeMap]
-    [attributeMap searchKey !mValue ?let @bool isPrivate ?targetType]
-    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue.string] file]) then
-      error mValue : "this field is private"
-    end
+    [attributeMap searchKey
+      !mValue
+#      ??@bool isPrivate
+      ?targetType
+    ]
+#    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
+#      error mValue : "this field is private" ;
+#    end if ;
   end
 #--- Check target variable type support '+= exp' operator
   if ([targetType mHandledOperatorFlags] & plusEqualOperatorWithExpression ()) == 0 then
@@ -1438,10 +1462,14 @@ override method @incrementInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName ?*]
   for () in  mStructAttributeList do
     let attributeMap = [targetType mAttributeMap]
-    [attributeMap searchKey !mValue ?let @bool isPrivate ?targetType]
-    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue.string] file]) then
-      error mValue : "this field is private"
-    end
+    [attributeMap searchKey
+      !mValue
+#      ??@bool isPrivate
+      ?targetType
+    ]
+#    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
+#      error mValue : "this field is private" ;
+#    end if ;
   end
 #--- Check target type accepts incrementation
   if ([targetType mHandledOperatorFlags] & incDecOperator ()) == 0 then
@@ -1496,10 +1524,14 @@ override method @decrementInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName ?*]
   for () in  mStructAttributeList do
     let attributeMap = [targetType mAttributeMap]
-    [attributeMap searchKey !mValue ?let @bool isPrivate ?targetType]
-    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue.string] file]) then
-      error mValue : "this field is private"
-    end
+    [attributeMap searchKey
+      !mValue
+#      ??@bool isPrivate
+      ?targetType
+    ]
+#    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
+#      error mValue : "this field is private" ;
+#    end if ;
   end
 #--- Check target type accepts incrementation
   if ([targetType mHandledOperatorFlags] & incDecOperator ()) == 0 then
@@ -1626,12 +1658,12 @@ private proc checkExpressionIsBoolean
     if [[expressionType mAttributeMap] hasKey !"bool"] then
       [[expressionType mAttributeMap] searchKey
         !@lstring. new { !"bool" !@location.here}
-        ?let @bool isPrivate
+#        ??@bool isPrivate
         ?let @unifiedTypeMap-proxy attributeType
       ]
-      if isPrivate && ([inErrorLocation file] != [[[expressionType mAttributeMap] locationForKey !"bool"] file]) then
-        error inErrorLocation : "this field is private"
-      end
+#      if isPrivate && ([inErrorLocation file] != [[[expressionType mAttributeMap] locationForKey !"bool"] file]) then
+#        error inErrorLocation : "this field is private" ;
+#      end if ;
       if attributeType == boolType then
         outExpression = @structFieldAccessExpressionForGeneration. new {
           !boolType
@@ -2634,10 +2666,14 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   ]
   for () in  mFieldList do
     let attributeMap = [targetType mAttributeMap]
-    [attributeMap searchKey !mValue ?let @bool isPrivate ?targetType]
-    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue.string] file]) then
-      error mValue : "this field is private"
-    end
+    [attributeMap searchKey
+      !mValue
+#      ??@bool isPrivate
+      ?targetType
+    ]
+#    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
+#      error mValue : "this field is private" ;
+#    end if ;
   end
 #--- Check this type handle 'with' access
   if ([targetType mHandledOperatorFlags] & supportWithAccessor ()) == 0 then

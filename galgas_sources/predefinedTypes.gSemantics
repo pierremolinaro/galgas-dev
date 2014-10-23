@@ -31,7 +31,7 @@ local routine appendPredefinedListTypeAST
   @lstringlist attributeFeatureList [emptyList] ;
   attributeFeatureList += ![@lstring new !"setter" !here] ;
   attributeList +=
-    !false # Is not private
+#    !false # Is not private
     ![@lstring new !inElementTypeName !here]
     ![@lstring new !"mValue" !here]
     !attributeFeatureList
@@ -52,13 +52,13 @@ local routine appendPredefined2StringListTypeAST
   @lstringlist attributeFeatureList [emptyList] ;
   attributeFeatureList += ![@lstring new !"setter" !here] ;
   attributeList +=
-    !false # Is not private
+#    !false # Is not private
     ![@lstring new !"string" !here]
     ![@lstring new !"mValue0" !here]
     !attributeFeatureList
   ;
   attributeList +=
-    !false # Is not private
+#    !false # Is not private
     ![@lstring new !"string" !here]
     ![@lstring new !"mValue1" !here]
     !attributeFeatureList
@@ -80,13 +80,13 @@ local routine appendPredefined2LStringListTypeAST
   @lstringlist attributeFeatureList [emptyList] ;
   attributeFeatureList += ![@lstring new !"setter" !here] ;
   attributeList +=
-    !false # Is not private
+#    !false # Is not private
     ![@lstring new !"lstring" !here]
     ![@lstring new !"mValue0" !here]
     !attributeFeatureList
   ;
   attributeList +=
-    !false # Is not private
+#    !false # Is not private
     ![@lstring new !"lstring" !here]
     ![@lstring new !"mValue1" !here]
     !attributeFeatureList
@@ -108,13 +108,13 @@ local routine appendStructASTForTypeWithLocation
   @lstringlist featureList [emptyList] ;
   @attributeInCollectionListAST attributeList [emptyList] ;
   attributeList += 
-    !false # Is not private
+#    !false # Is not private
     ![@lstring new !inElementTypeName !here]
     ![@lstring new !inElementTypeName !here]
     !featureList
   ;
   attributeList +=
-    !false # Is not private
+#    !false # Is not private
     ![@lstring new !"location" !here]
     ![@lstring new !"location" !here]
     !featureList
@@ -135,13 +135,13 @@ routine appendStructASTForRangeType
   @lstringlist featureList [emptyList] ;
   @attributeInCollectionListAST attributeList [emptyList] ;
   attributeList +=
-    !false # Is not private
+#    !false # Is not private
     ![@lstring new !"uint" !here]
     ![@lstring new !"start" !here]
     !featureList
   ;
   attributeList +=
-    !false # Is not private
+#    !false # Is not private
     ![@lstring new !"uint" !here]
     ![@lstring new !"length" !here]
     !featureList

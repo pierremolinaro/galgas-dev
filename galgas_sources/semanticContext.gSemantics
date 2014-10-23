@@ -2525,7 +2525,11 @@ override method @structDeclarationAST enterInSemanticContext
     @bool hasSetter := false ;
     @bool hasGetter := true ;
     typedAttributeList += !attributeTypeIndex !mAttributeName !hasSetter !hasGetter ;
-    [!?attributeMap insertKey !mAttributeName !mIsPrivate !attributeTypeIndex] ;
+    [!?attributeMap insertKey
+      !mAttributeName
+#      !mIsPrivate
+      !attributeTypeIndex
+    ] ;
   end foreach ;
   [!?constructorMap insertKey
     ![@lstring new !"new" !here]
@@ -2716,7 +2720,11 @@ override method @classDeclarationAST enterInSemanticContext
     @unifiedTypeMap-proxy attributeTypeIndex ;
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext->mTypeMap !mAttributeTypeName ?attributeTypeIndex] ;
     constructorAttributeTypeList += !["" nowhere] !attributeTypeIndex !mAttributeName->string ;
-    [!?attributeMap insertKey !mAttributeName !mIsPrivate !attributeTypeIndex] ;
+    [!?attributeMap insertKey
+      !mAttributeName
+#      !mIsPrivate
+      !attributeTypeIndex
+    ] ;
     if [readerMap hasKey ![mAttributeName string]] then
       error mAttributeName: "'" . mAttributeName . "' is the name of a prefefined or a user defined reader" ;
     end if ;
@@ -3837,14 +3845,14 @@ override method @mapDeclarationAST addAssociatedElement
 :
   @attributeInCollectionListAST structAttributeList [emptyList] ;
   structAttributeList +=
-    !false # Is not private
+#    !false # Is not private
     !["lstring" nowhere]
     !["lkey" nowhere]
     ![@lstringlist emptyList]
   ;
   foreach mAttributeList do
     structAttributeList +=
-      !mIsPrivate
+#      !mIsPrivate
       !mAttributeTypeName
       !mAttributeName
       ![@lstringlist emptyList]
@@ -3866,7 +3874,7 @@ override method @listDeclarationAST addAssociatedElement
   @attributeInCollectionListAST structAttributeList [emptyList] ;
   foreach mAttributeList do
     structAttributeList +=
-      !mIsPrivate
+#      !mIsPrivate
       !mAttributeTypeName
       !mAttributeName
       ![@lstringlist emptyList]
@@ -3888,7 +3896,7 @@ override method @sortedListDeclarationAST addAssociatedElement
   @attributeInCollectionListAST structAttributeList [emptyList] ;
   foreach mAttributeList do
     structAttributeList +=
-      !mIsPrivate
+#      !mIsPrivate
       !mAttributeTypeName
       !mAttributeName
       ![@lstringlist emptyList]
@@ -3909,13 +3917,13 @@ override method @listmapDeclarationAST addAssociatedElement
 :
   @attributeInCollectionListAST structAttributeList [emptyList] ;
   structAttributeList +=
-    !false # Is not private
+#    !false # Is not private
     !["string" nowhere]
     !["key" nowhere]
     ![@lstringlist emptyList]
   ;
   structAttributeList +=
-    !false # Is not private
+#    !false # Is not private
     !mAssociatedListTypeName
     !["mList" nowhere]
     ![@lstringlist emptyList]

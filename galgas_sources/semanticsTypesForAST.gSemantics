@@ -1288,7 +1288,7 @@ class @overridingAbstractCategoryReaderAST extends @semanticDeclarationAST {
 #---------------------------------------------------------------------------*
 
 list @attributeInCollectionListAST {
-  @bool mIsPrivate ;
+#  @bool mIsPrivate ;
   @lstring mAttributeTypeName ;
   @lstring mAttributeName ;
   @lstringlist mFeatureList ;

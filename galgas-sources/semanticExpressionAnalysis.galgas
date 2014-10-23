@@ -1591,7 +1591,11 @@ override method @structFieldAccessExpressionAST analyzeSemanticExpression
     error mStructFieldName:"the '.' operator requires the receiver to be a struct"
   end
   let @attributeMap attributeMap = [type mAttributeMap]
-  [attributeMap searchKey !mStructFieldName ?var @bool isPrivate ?type]
+  [attributeMap searchKey
+    !mStructFieldName
+#    ?@bool isPrivate
+    ?type
+  ]
 #--- Generate expression
   outExpression = @structFieldAccessExpressionForGeneration. new {
     !type

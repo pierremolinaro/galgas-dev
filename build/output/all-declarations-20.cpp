@@ -6570,19 +6570,19 @@ GALGAS_unifiedTypeMap_2D_proxy categoryReader_baseType (const GALGAS_unifiedType
   const GALGAS_unifiedTypeMap_2D_proxy temp_0 = inObject ;
   result_outBaseType = temp_0 ;
   if (GALGAS_uint::constructor_max (SOURCE_FILE ("semanticsTypes.galgas", 348)).isValid ()) {
-    uint32_t variant_15310 = GALGAS_uint::constructor_max (SOURCE_FILE ("semanticsTypes.galgas", 348)).uintValue () ;
-    bool loop_15310 = true ;
-    while (loop_15310) {
-      loop_15310 = result_outBaseType.reader_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 348)).reader_isNull (SOURCE_FILE ("semanticsTypes.galgas", 348)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 348)).isValid () ;
-      if (loop_15310) {
-        loop_15310 = result_outBaseType.reader_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 348)).reader_isNull (SOURCE_FILE ("semanticsTypes.galgas", 348)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 348)).boolValue () ;
+    uint32_t variant_15313 = GALGAS_uint::constructor_max (SOURCE_FILE ("semanticsTypes.galgas", 348)).uintValue () ;
+    bool loop_15313 = true ;
+    while (loop_15313) {
+      loop_15313 = result_outBaseType.reader_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 348)).reader_isNull (SOURCE_FILE ("semanticsTypes.galgas", 348)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 348)).isValid () ;
+      if (loop_15313) {
+        loop_15313 = result_outBaseType.reader_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 348)).reader_isNull (SOURCE_FILE ("semanticsTypes.galgas", 348)).operator_not (SOURCE_FILE ("semanticsTypes.galgas", 348)).boolValue () ;
       }
-      if (loop_15310 && (0 == variant_15310)) {
-        loop_15310 = false ;
+      if (loop_15313 && (0 == variant_15313)) {
+        loop_15313 = false ;
         inCompiler->loopRunTimeVariantError (SOURCE_FILE ("semanticsTypes.galgas", 348)) ;
       }
-      if (loop_15310) {
-        variant_15310 -- ;
+      if (loop_15313) {
+        variant_15313 -- ;
         result_outBaseType = result_outBaseType.reader_mSuperType (inCompiler COMMA_SOURCE_FILE ("semanticsTypes.galgas", 349)) ;
       }
     }
@@ -8404,8 +8404,8 @@ void categoryMethod_generateAtPath (const GALGAS_XcodeProjectDescriptor inObject
   }
   const enumGalgasBool test_2 = test_1.boolEnum () ;
   if (kBoolTrue == test_2) {
-    GALGAS_bool joker_15051 ; // Joker input parameter
-    var_contents.method_writeToFileWhenDifferentContents (constinArgument_inCacheFilePath, joker_15051, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 423)) ;
+    GALGAS_bool joker_14891 ; // Joker input parameter
+    var_contents.method_writeToFileWhenDifferentContents (constinArgument_inCacheFilePath, joker_14891, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 423)) ;
     var_contents.method_makeDirectoryAndWriteToFile (var_projectCoreFile, inCompiler COMMA_SOURCE_FILE ("XcodeProjectNewGeneration.galgas", 424)) ;
   }
 }
@@ -16735,7 +16735,6 @@ GALGAS_logListAST_2D_element GALGAS_logListAST_2D_element::extractObject (const 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_attributeInCollectionListAST_2D_element::GALGAS_attributeInCollectionListAST_2D_element (void) :
-mAttribute_mIsPrivate (),
 mAttribute_mAttributeTypeName (),
 mAttribute_mAttributeName (),
 mAttribute_mFeatureList () {
@@ -16748,35 +16747,31 @@ GALGAS_attributeInCollectionListAST_2D_element::~ GALGAS_attributeInCollectionLi
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_attributeInCollectionListAST_2D_element::GALGAS_attributeInCollectionListAST_2D_element (const GALGAS_bool & inOperand0,
+GALGAS_attributeInCollectionListAST_2D_element::GALGAS_attributeInCollectionListAST_2D_element (const GALGAS_lstring & inOperand0,
                                                                                                 const GALGAS_lstring & inOperand1,
-                                                                                                const GALGAS_lstring & inOperand2,
-                                                                                                const GALGAS_lstringlist & inOperand3) :
-mAttribute_mIsPrivate (inOperand0),
-mAttribute_mAttributeTypeName (inOperand1),
-mAttribute_mAttributeName (inOperand2),
-mAttribute_mFeatureList (inOperand3) {
+                                                                                                const GALGAS_lstringlist & inOperand2) :
+mAttribute_mAttributeTypeName (inOperand0),
+mAttribute_mAttributeName (inOperand1),
+mAttribute_mFeatureList (inOperand2) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_attributeInCollectionListAST_2D_element GALGAS_attributeInCollectionListAST_2D_element::constructor_default (UNUSED_LOCATION_ARGS) {
-  return GALGAS_attributeInCollectionListAST_2D_element (GALGAS_bool::constructor_default (HERE),
-                                                         GALGAS_lstring::constructor_default (HERE),
+  return GALGAS_attributeInCollectionListAST_2D_element (GALGAS_lstring::constructor_default (HERE),
                                                          GALGAS_lstring::constructor_default (HERE),
                                                          GALGAS_lstringlist::constructor_emptyList (HERE)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_attributeInCollectionListAST_2D_element GALGAS_attributeInCollectionListAST_2D_element::constructor_new (const GALGAS_bool & inOperand0,
+GALGAS_attributeInCollectionListAST_2D_element GALGAS_attributeInCollectionListAST_2D_element::constructor_new (const GALGAS_lstring & inOperand0,
                                                                                                                 const GALGAS_lstring & inOperand1,
-                                                                                                                const GALGAS_lstring & inOperand2,
-                                                                                                                const GALGAS_lstringlist & inOperand3 
+                                                                                                                const GALGAS_lstringlist & inOperand2 
                                                                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_attributeInCollectionListAST_2D_element result ;
-  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid () && inOperand3.isValid ()) {
-    result = GALGAS_attributeInCollectionListAST_2D_element (inOperand0, inOperand1, inOperand2, inOperand3) ;
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
+    result = GALGAS_attributeInCollectionListAST_2D_element (inOperand0, inOperand1, inOperand2) ;
   }
   return result ;
 }
@@ -16785,9 +16780,6 @@ GALGAS_attributeInCollectionListAST_2D_element GALGAS_attributeInCollectionListA
 
 typeComparisonResult GALGAS_attributeInCollectionListAST_2D_element::objectCompare (const GALGAS_attributeInCollectionListAST_2D_element & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
-  if (result == kOperandEqual) {
-    result = mAttribute_mIsPrivate.objectCompare (inOperand.mAttribute_mIsPrivate) ;
-  }
   if (result == kOperandEqual) {
     result = mAttribute_mAttributeTypeName.objectCompare (inOperand.mAttribute_mAttributeTypeName) ;
   }
@@ -16803,13 +16795,12 @@ typeComparisonResult GALGAS_attributeInCollectionListAST_2D_element::objectCompa
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool GALGAS_attributeInCollectionListAST_2D_element::isValid (void) const {
-  return mAttribute_mIsPrivate.isValid () && mAttribute_mAttributeTypeName.isValid () && mAttribute_mAttributeName.isValid () && mAttribute_mFeatureList.isValid () ;
+  return mAttribute_mAttributeTypeName.isValid () && mAttribute_mAttributeName.isValid () && mAttribute_mFeatureList.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_attributeInCollectionListAST_2D_element::drop (void) {
-  mAttribute_mIsPrivate.drop () ;
   mAttribute_mAttributeTypeName.drop () ;
   mAttribute_mAttributeName.drop () ;
   mAttribute_mFeatureList.drop () ;
@@ -16823,8 +16814,6 @@ void GALGAS_attributeInCollectionListAST_2D_element::description (C_String & ioS
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
-    mAttribute_mIsPrivate.description (ioString, inIndentation+1) ;
-    ioString << ", " ;
     mAttribute_mAttributeTypeName.description (ioString, inIndentation+1) ;
     ioString << ", " ;
     mAttribute_mAttributeName.description (ioString, inIndentation+1) ;
@@ -16832,12 +16821,6 @@ void GALGAS_attributeInCollectionListAST_2D_element::description (C_String & ioS
     mAttribute_mFeatureList.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_bool GALGAS_attributeInCollectionListAST_2D_element::reader_mIsPrivate (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mIsPrivate ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*

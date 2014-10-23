@@ -922,18 +922,21 @@ override method @structFieldAccessTemplateExpressionAST templateExpressionAnalys
   !@semanticExpressionForGeneration outExpression
 :
 #--- Expression analysis
-  @semanticExpressionForGeneration expression ;
-  [mExpression templateExpressionAnalysis !inAnalysisContext ?expression] ;
+  [mExpression templateExpressionAnalysis !inAnalysisContext ??@semanticExpressionForGeneration expression] ;
 #--- Check field access availability
   @unifiedTypeMap-proxy type := [expression mResultType] ;
   if [type mTypeKindEnum] != [@typeKindEnum structType] then
     error mStructFieldName:"the '.' operator requires the receiver to be a struct" ;
   end if ;
   const @attributeMap attributeMap := [type mAttributeMap] ;
-  [attributeMap searchKey !mStructFieldName ??@bool isPrivate ?type] ;
-  if isPrivate && ([mStructFieldName file] != [[attributeMap locationForKey !mStructFieldName->string] file]) then
-    error mStructFieldName : "this field is private" ;
-  end if ;
+  [attributeMap searchKey
+    !mStructFieldName
+#    ??@bool isPrivate
+    ?type
+  ] ;
+#  if isPrivate && ([mStructFieldName file] != [[attributeMap locationForKey !mStructFieldName->string] file]) then
+#    error mStructFieldName : "this field is private" ;
+#  end if ;
 #--- Generate expression
   outExpression := [@structFieldAccessExpressionForGeneration new
     !type

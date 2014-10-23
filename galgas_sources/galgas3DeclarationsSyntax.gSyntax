@@ -62,13 +62,13 @@ nonterminal <formal_input_parameter_list> !@formalInputParameterListAST outForma
 #---------------------------------------------------------------------------*
 
 rule <attribute_declaration> ?!@attributeInCollectionListAST ioAttributeInCollectionList :
-  @bool isPrivate ;
-  select
-    isPrivate := false ;
-  or
-    $private$ ;
-    isPrivate := true ;
-  end select ;
+#  @bool isPrivate ;
+#  select
+#    isPrivate := false ;
+#  or
+#    $private$ ;
+#    isPrivate := true ;
+#  end select ;
   $type_name$ ? @lstring mAttributeTypeName ;
   $identifier$ ? @lstring mAttributeName ;
   @lstringlist featureList [emptyList] ;
@@ -77,7 +77,12 @@ rule <attribute_declaration> ?!@attributeInCollectionListAST ioAttributeInCollec
     $attribute$ ??@lstring featureName ;
     featureList += !featureName ;
   end repeat ;
-  ioAttributeInCollectionList += !isPrivate !mAttributeTypeName !mAttributeName !featureList ;
+  ioAttributeInCollectionList +=
+#    !isPrivate
+    !mAttributeTypeName
+    !mAttributeName
+    !featureList
+  ;
 end rule ;
 
 #---------------------------------------------------------------------------*
