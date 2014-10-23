@@ -49,15 +49,15 @@ The order of declarations is not significant, but any entity must be declared be
 ==== Lexical Rules Overview ====
 The //lexical rules// define the executable part of a lexical component. Every lexical rule define //matching strings// that are are tested against substring from current location in input string. A matching string has a one character or more.
 
-\section{Fichiers engendrés}
-
-A lexical component description is translated in C++ code; for every lexical component, GALGAS generates a specific C++ class:
-  * the name of the class is the name of the \galgas{lexique} component;
-  * this class is declared in a header file that is named the name of the \galgas{lexique} component with the ''\textquotesingle.h\textquotesingle'' extension;
-  * this class is implemented in a file that is named the name of the \galgas{lexique} component with the ''\textquotesingle.cpp\textquotesingle'' extension;
-  * this class inherits from ''C\_Lexique'' class (declared in ''libpm/galgas/C\_Lexique.h'' and implemented in ''libpm/galgas/C\_Lexique.cpp'').
-
-The two generated files are generated according the [[generated\_files|GALGAS file generation process]].
+%\section{Fichiers engendrés}
+%
+%A lexical component description is translated in C++ code; for every lexical component, GALGAS generates a specific C++ class:
+%  * the name of the class is the name of the \galgas{lexique} component;
+%  * this class is declared in a header file that is named the name of the \galgas{lexique} component with the ''\textquotesingle.h\textquotesingle'' extension;
+%  * this class is implemented in a file that is named the name of the \galgas{lexique} component with the ''\textquotesingle.cpp\textquotesingle'' extension;
+%  * this class inherits from ''C\_Lexique'' class (declared in ''libpm/galgas/C\_Lexique.h'' and implemented in ''libpm/galgas/C\_Lexique.cpp'').
+%
+%The two generated files are generated according the [[generated\_files|GALGAS file generation process]].
 
 
 \section{Comment opère un analyseur lexical}

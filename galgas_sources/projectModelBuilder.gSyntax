@@ -81,17 +81,17 @@ rule <project_component_start_symbol>
       $extern$ :> ??@string sep ?* ;
       send sep ;
       $literal_string$ ?filePath :> ?* ?* ;
-      const extension := [filePath pathExtension] ;
+      const pathExtension := [filePath pathExtension] ;
       @string attribute ;
-      if extension == "cpp" then
+      if pathExtension == "cpp" then
         attribute := "tool-source" ;
-      elsif extension == "m" then
+      elsif pathExtension == "m" then
         attribute := "app-source" ;
-      elsif extension == "mm" then
+      elsif pathExtension == "mm" then
         attribute := "tool-source" ;
-      elsif extension == "framework" then
+      elsif pathExtension == "framework" then
         attribute := "tool-link" ;
-      elsif extension == "xib" then
+      elsif pathExtension == "xib" then
         attribute := "app-source" ;
       else
         error filePath : "unhandled extension" : attribute ;

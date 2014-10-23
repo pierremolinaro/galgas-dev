@@ -46,8 +46,7 @@ rule <declaration>
  ?!@galgas3DeclarationAST ioDeclarations
 :
   $syntax$ ;
-#--- Semantics Component Name
-  $identifier$ ??@lstring mSyntaxComponentName ;
+  $identifier$ ??@lstring syntaxComponentName ;
 #--- Imported lexique
   @lstring importedLexiqueReference ;
   select
@@ -70,25 +69,58 @@ rule <declaration>
   end select ;
   ${$ ;
 #--- Loop on declarations
-  @nonterminalDeclarationListAST mNonterminalDeclarationList [emptyList] ;
-  @syntaxRuleListAST mRuleList [emptyList] ;
+  @nonterminalDeclarationListAST nonterminalDeclarationList [emptyList] ;
+  @syntaxRuleListAST ruleList [emptyList] ;
   @semanticDeclarationListAST mSemanticDeclarations [emptyList] ;
   repeat
   while
-    <nonterminal_declaration> !? mNonterminalDeclarationList ;
+    <nonterminal_declaration> !? nonterminalDeclarationList ;
   while
-    <syntax_rule_declaration> !? mRuleList ;
+    <syntax_rule_declaration> !? ruleList ;
   end repeat ;
 #--- end
   $}$ ;
   ioDeclarations->mSyntaxComponentList +=
-    !mSyntaxComponentName
+    !syntaxComponentName
     !importedLexiqueReference
     ![@lstringlist emptyList]  # inutile GALGAS 3
-    !mNonterminalDeclarationList
-    !mRuleList
+    !nonterminalDeclarationList
+    !ruleList
     ![@semanticDeclarationListAST emptyList] # inutile GALGAS 3
     !hasTranslateFeature
+  ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#      S Y N T A X    E X T E N S I O N                                        *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <declaration>
+ ?!@galgas3DeclarationAST ioDeclarations
+:
+  $syntax$ ;
+  $extension$ ;
+  $identifier$ ??@lstring syntaxComponentName ;
+  ${$ ;
+#--- Loop on declarations
+  @nonterminalDeclarationListAST nonterminalDeclarationList [emptyList] ;
+  @syntaxRuleListAST ruleList [emptyList] ;
+  @semanticDeclarationListAST mSemanticDeclarations [emptyList] ;
+  repeat
+  while
+    <nonterminal_declaration> !? nonterminalDeclarationList ;
+  while
+    <syntax_rule_declaration> !? ruleList ;
+  end repeat ;
+#--- end
+  $}$ ;
+  ioDeclarations->mSyntaxExtensions +=
+    !syntaxComponentName->string
+    !syntaxComponentName
+    !nonterminalDeclarationList
+    !ruleList
   ;
 end rule ;
 

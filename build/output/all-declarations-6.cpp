@@ -14457,25 +14457,25 @@ void cParser_projectModelBuilder::rule_projectModelBuilder_project_5F_component_
         }
         var_filePath = inCompiler->synthetizedAttribute_tokenString () ;
         inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("projectModelBuilder.galgas", 79)) ;
-        GALGAS_string var_extension = var_filePath.mAttribute_string.reader_pathExtension (SOURCE_FILE ("projectModelBuilder.galgas", 80)) ;
+        GALGAS_string var_pathExtension = var_filePath.mAttribute_string.reader_pathExtension (SOURCE_FILE ("projectModelBuilder.galgas", 80)) ;
         GALGAS_string var_attribute ;
-        const enumGalgasBool test_5 = GALGAS_bool (kIsEqual, var_extension.objectCompare (GALGAS_string ("cpp"))).boolEnum () ;
+        const enumGalgasBool test_5 = GALGAS_bool (kIsEqual, var_pathExtension.objectCompare (GALGAS_string ("cpp"))).boolEnum () ;
         if (kBoolTrue == test_5) {
           var_attribute = GALGAS_string ("tool-source") ;
         }else if (kBoolFalse == test_5) {
-          const enumGalgasBool test_6 = GALGAS_bool (kIsEqual, var_extension.objectCompare (GALGAS_string ("m"))).boolEnum () ;
+          const enumGalgasBool test_6 = GALGAS_bool (kIsEqual, var_pathExtension.objectCompare (GALGAS_string ("m"))).boolEnum () ;
           if (kBoolTrue == test_6) {
             var_attribute = GALGAS_string ("app-source") ;
           }else if (kBoolFalse == test_6) {
-            const enumGalgasBool test_7 = GALGAS_bool (kIsEqual, var_extension.objectCompare (GALGAS_string ("mm"))).boolEnum () ;
+            const enumGalgasBool test_7 = GALGAS_bool (kIsEqual, var_pathExtension.objectCompare (GALGAS_string ("mm"))).boolEnum () ;
             if (kBoolTrue == test_7) {
               var_attribute = GALGAS_string ("tool-source") ;
             }else if (kBoolFalse == test_7) {
-              const enumGalgasBool test_8 = GALGAS_bool (kIsEqual, var_extension.objectCompare (GALGAS_string ("framework"))).boolEnum () ;
+              const enumGalgasBool test_8 = GALGAS_bool (kIsEqual, var_pathExtension.objectCompare (GALGAS_string ("framework"))).boolEnum () ;
               if (kBoolTrue == test_8) {
                 var_attribute = GALGAS_string ("tool-link") ;
               }else if (kBoolFalse == test_8) {
-                const enumGalgasBool test_9 = GALGAS_bool (kIsEqual, var_extension.objectCompare (GALGAS_string ("xib"))).boolEnum () ;
+                const enumGalgasBool test_9 = GALGAS_bool (kIsEqual, var_pathExtension.objectCompare (GALGAS_string ("xib"))).boolEnum () ;
                 if (kBoolTrue == test_9) {
                   var_attribute = GALGAS_string ("app-source") ;
                 }else if (kBoolFalse == test_9) {
@@ -17559,6 +17559,34 @@ static const utf32 gSyntaxErrorMessage_galgas_33_Scanner_error [] = {
   TO_UNICODE (0)
 } ;
 
+//--- Syntax error message for terminal '$extension$' :
+static const utf32 gSyntaxErrorMessage_galgas_33_Scanner_extension [] = {
+  TO_UNICODE ('t'),
+  TO_UNICODE ('h'),
+  TO_UNICODE ('e'),
+  TO_UNICODE (' '),
+  TO_UNICODE ('\''),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('x'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('\''),
+  TO_UNICODE (' '),
+  TO_UNICODE ('k'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('y'),
+  TO_UNICODE ('w'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('r'),
+  TO_UNICODE ('d'),
+  TO_UNICODE (0)
+} ;
+
 //--- Syntax error message for terminal '$extern$' :
 static const utf32 gSyntaxErrorMessage_galgas_33_Scanner_extern [] = {
   TO_UNICODE ('t'),
@@ -19784,7 +19812,7 @@ static const utf32 gSyntaxErrorMessage_galgas_33_Scanner__7E_ [] = {
 //---------------------------------------------------------------------------------------------------------------------*
 
 C_String C_Lexique_galgas_33_Scanner::getMessageForTerminal (const int16_t inTerminalIndex) const {
-  static const utf32 * syntaxErrorMessageArray [137] = {kEndOfSourceLexicalErrorMessage,
+  static const utf32 * syntaxErrorMessageArray [138] = {kEndOfSourceLexicalErrorMessage,
     gSyntaxErrorMessage_galgas_33_Scanner_identifier,
     gSyntaxErrorMessage_galgas_33_Scanner_literal_5F_double,
     gSyntaxErrorMessage_galgas_33_Scanner_unsigned_5F_literal_5F_integer,
@@ -19827,6 +19855,7 @@ C_String C_Lexique_galgas_33_Scanner::getMessageForTerminal (const int16_t inTer
     gSyntaxErrorMessage_galgas_33_Scanner_end,
     gSyntaxErrorMessage_galgas_33_Scanner_enum,
     gSyntaxErrorMessage_galgas_33_Scanner_error,
+    gSyntaxErrorMessage_galgas_33_Scanner_extension,
     gSyntaxErrorMessage_galgas_33_Scanner_extern,
     gSyntaxErrorMessage_galgas_33_Scanner_false,
     gSyntaxErrorMessage_galgas_33_Scanner_filewrapper,
@@ -20303,6 +20332,20 @@ static const utf32 kUnicodeString_galgas_33_Scanner_error [] = {
   TO_UNICODE ('r'),
   TO_UNICODE ('o'),
   TO_UNICODE ('r'),
+  TO_UNICODE (0)
+} ;
+
+//--- Unicode string for '$extension$'
+static const utf32 kUnicodeString_galgas_33_Scanner_extension [] = {
+  TO_UNICODE ('e'),
+  TO_UNICODE ('x'),
+  TO_UNICODE ('t'),
+  TO_UNICODE ('e'),
+  TO_UNICODE ('n'),
+  TO_UNICODE ('s'),
+  TO_UNICODE ('i'),
+  TO_UNICODE ('o'),
+  TO_UNICODE ('n'),
   TO_UNICODE (0)
 } ;
 
@@ -21030,7 +21073,7 @@ int16_t C_Lexique_galgas_33_Scanner::search_into_galgasDelimitorsList (const C_S
 //             Key words table 'galgasKeyWordList'                            *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const int32_t ktable_size_galgas_33_Scanner_galgasKeyWordList = 82 ;
+static const int32_t ktable_size_galgas_33_Scanner_galgasKeyWordList = 83 ;
 
 static const C_unicode_lexique_table_entry ktable_for_galgas_33_Scanner_galgasKeyWordList [ktable_size_galgas_33_Scanner_galgasKeyWordList] = {
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_as, 2, C_Lexique_galgas_33_Scanner::kToken_as),
@@ -21111,6 +21154,7 @@ static const C_unicode_lexique_table_entry ktable_for_galgas_33_Scanner_galgasKe
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_operator, 8, C_Lexique_galgas_33_Scanner::kToken_operator),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_override, 8, C_Lexique_galgas_33_Scanner::kToken_override),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_template, 8, C_Lexique_galgas_33_Scanner::kToken_template),
+  C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_extension, 9, C_Lexique_galgas_33_Scanner::kToken_extension),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_sharedmap, 9, C_Lexique_galgas_33_Scanner::kToken_sharedmap),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_sortedlist, 10, C_Lexique_galgas_33_Scanner::kToken_sortedlist),
   C_unicode_lexique_table_entry (kUnicodeString_galgas_33_Scanner_constructor, 11, C_Lexique_galgas_33_Scanner::kToken_constructor),
@@ -21378,6 +21422,11 @@ C_String C_Lexique_galgas_33_Scanner::getCurrentTokenString (const cToken * inTo
     case kToken_error:
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       s.appendCString ("error") ;
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      break ;
+    case kToken_extension:
+      s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
+      s.appendCString ("extension") ;
       s.appendUnicodeCharacter (TO_UNICODE ('$') COMMA_HERE) ;
       break ;
     case kToken_extern:
@@ -22804,6 +22853,7 @@ GALGAS_stringlist C_Lexique_galgas_33_Scanner::symbols (LOCATION_ARGS) {
   result.addAssign_operation (GALGAS_string ("end") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("enum") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("error") COMMA_THERE) ;
+  result.addAssign_operation (GALGAS_string ("extension") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("extern") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("false") COMMA_THERE) ;
   result.addAssign_operation (GALGAS_string ("filewrapper") COMMA_THERE) ;

@@ -2645,7 +2645,8 @@ void routine_compileSyntaxComponentFromSourceFile (const class GALGAS_lstring co
 //---------------------------------------------------------------------------------------------------------------------*
 
 void routine_groupSyntaxComponentsGalgas_33_ (const class GALGAS_galgas_33_SyntaxComponentListAST constinArgument0,
-                                              class GALGAS_semanticDeclarationListAST & ioArgument1,
+                                              const class GALGAS_syntaxExtensions constinArgument1,
+                                              class GALGAS_semanticDeclarationListAST & ioArgument2,
                                               class C_Compiler * inCompiler
                                               COMMA_LOCATION_ARGS) ;
 
@@ -2758,18 +2759,6 @@ class cPtr_galgas_33_SyntaxComponentAST : public cPtr_semanticDeclarationAST {
   public : virtual const C_galgas_type_descriptor * classDescriptor (void) const ;
 
 } ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                       Routine 'compileSyntaxComponentGalgas3'                                       *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-void routine_compileSyntaxComponentGalgas_33_ (const class GALGAS_galgas_33_SyntaxComponentListAST_2D_element constinArgument0,
-                                               const class GALGAS_semanticContext constinArgument1,
-                                               class GALGAS_parsedSyntaxComponentMap & ioArgument2,
-                                               class C_Compiler * inCompiler
-                                               COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *

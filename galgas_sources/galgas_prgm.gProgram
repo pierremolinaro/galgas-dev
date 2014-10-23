@@ -253,7 +253,7 @@ indexing with projectLL1grammar
   ] ;
 #---------------------------------- Parse sources
   foreach [projectComponentAST mProjectSourceList] do
-    const extension := [mFilePath pathExtension] ;
+    const pathExtension := [mFilePath pathExtension] ;
     const componentName := [@lstring new
       ![[mFilePath lastPathComponent] stringByDeletingPathExtension]
       ![mFilePath location]
@@ -265,7 +265,7 @@ indexing with projectLL1grammar
     switch mSourceKind
     when externSourceFile :
     when guiSourceFile :
-      if extension == "gGui" then
+      if pathExtension == "gGui" then
         if [option .verbose_output value] then
           message "*** Parse '" . [fullFilePath lastPathComponent] . "'\n" ;
         end if ;
@@ -282,7 +282,7 @@ indexing with projectLL1grammar
         error mFilePath:"extension of a gui component should be '.gGui'." ;
       end if ;
     when lexiqueSourceFile :
-      if extension == "gLexique" then
+      if pathExtension == "gLexique" then
         if [option .verbose_output value] then
           message "*** Parse '" . [fullFilePath lastPathComponent] . "'\n" ;
         end if ;
@@ -299,7 +299,7 @@ indexing with projectLL1grammar
         error mFilePath:"extension of a lexique component should be '.gLexique'." ;
       end if ;
     when optionSourceFile :
-      if extension == "gOption" then
+      if pathExtension == "gOption" then
         if [option .verbose_output value] then
           message "*** Parse '" . [fullFilePath lastPathComponent] . "'\n" ;
         end if ;
@@ -331,7 +331,7 @@ indexing with projectLL1grammar
         error mFilePath:"extension of an option component should be '.gOption'." ;
       end if ;
     when semanticsSourceFile :
-      if extension == "gSemantics" then
+      if pathExtension == "gSemantics" then
         if [option .verbose_output value] then
           message "*** Parse '" . [fullFilePath lastPathComponent] . "'\n" ;
         end if ;
@@ -348,7 +348,7 @@ indexing with projectLL1grammar
         error mFilePath:"extension of a semantics component should be '.gSemantics'." ;
       end if ;
     when syntaxSourceFile :
-      if extension == "gSyntax" then
+      if pathExtension == "gSyntax" then
         if [option .verbose_output value] then
           message "*** Parse '" . [fullFilePath lastPathComponent] . "'\n" ;
         end if ;
@@ -365,7 +365,7 @@ indexing with projectLL1grammar
         error mFilePath:"extension of a syntax component should be '.gSyntax'." ;
       end if ;
     when grammarSourceFile :
-      if extension == "gGrammar" then
+      if pathExtension == "gGrammar" then
         if [option .verbose_output value] then
           message "*** Parse '" . [fullFilePath lastPathComponent] . "'\n" ;
         end if ;
@@ -382,7 +382,7 @@ indexing with projectLL1grammar
         error mFilePath:"extension of a grammar component should be '.gGrammar'." ;
       end if ;
     when programSourceFile :
-      if extension == "gProgram" then
+      if pathExtension == "gProgram" then
         if [option .verbose_output value] then
           message "*** Parse '" . [fullFilePath lastPathComponent] . "'\n" ;
         end if ;
@@ -602,6 +602,7 @@ routine compileProject
 #---------------------------------- Group syntax components and their extensions
   groupSyntaxComponentsGalgas3
       !declarationAST->mSyntaxComponentList
+      !declarationAST->mSyntaxExtensions
       !?declarationAST->mDeclarationList
   ;
 #---------------------------------- Compile semantic declarations

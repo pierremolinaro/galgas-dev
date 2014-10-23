@@ -228,17 +228,17 @@ proc updateTargets
   var handCodedSourceDirectorySet =@stringset.emptySet{}
   for () in  inProjectSourceList do
     let @string baseName = [[[mFilePath string] lastPathComponent] stringByDeletingPathExtension]
-    let @string extension = [mFilePath pathExtension]
+    let @string pathExtension = [mFilePath pathExtension]
     let @string cppFile = baseName + ".cpp"
   #--- Check base name is unique
-    if [sourceFileSet hasKey !baseName] & (extension != "h") & (extension != "xib") then
+    if [sourceFileSet hasKey !baseName] & (pathExtension != "h") & (pathExtension != "xib") then
       error mFilePath: "there is already a file with '" + baseName + "' as base name in the project"
     end
     sourceFileSet += !baseName
   #---
     switch mSourceKind
     case externSourceFile :
-      if (extension == "cpp") | (extension == "mm") then
+      if (pathExtension == "cpp") | (pathExtension == "mm") then
         externSourceSet_tool += ![mFilePath string]
         handCodedSourceList += ![mFilePath lastPathComponent]
         if [mFilePath stringByDeletingLastPathComponent] == "" then
@@ -246,7 +246,7 @@ proc updateTargets
         else
           handCodedSourceDirectorySet += !"../hand_coded_sources/" + [mFilePath stringByDeletingLastPathComponent]
         end
-      elsif extension == "framework" then
+      elsif pathExtension == "framework" then
         externSourceSet_tool += ![mFilePath string]
         externSourceSet_app += ![mFilePath string]
         if [mFilePath stringByDeletingLastPathComponent] == "" then
@@ -254,21 +254,21 @@ proc updateTargets
         else
           handCodedSourceDirectorySet += !"../hand_coded_sources/" + [mFilePath stringByDeletingLastPathComponent]
         end
-      elsif extension == "m" then
+      elsif pathExtension == "m" then
         externSourceSet_app += ![mFilePath string]
         if [mFilePath stringByDeletingLastPathComponent] == "" then
           handCodedSourceDirectorySet += !"../hand_coded_sources"
         else
           handCodedSourceDirectorySet += !"../hand_coded_sources/" + [mFilePath stringByDeletingLastPathComponent]
         end
-      elsif extension == "h" then
+      elsif pathExtension == "h" then
         externSourceSet_tool += ![mFilePath string]
         if [mFilePath stringByDeletingLastPathComponent] == "" then
           handCodedSourceDirectorySet += !"../hand_coded_sources"
         else
           handCodedSourceDirectorySet += !"../hand_coded_sources/" + [mFilePath stringByDeletingLastPathComponent]
         end
-      elsif extension == "xib" then
+      elsif pathExtension == "xib" then
         externSourceSet_app += ![mFilePath string]
         if [mFilePath stringByDeletingLastPathComponent] == "" then
           handCodedSourceDirectorySet += !"../hand_coded_sources"
