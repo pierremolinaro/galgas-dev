@@ -298,10 +298,14 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
     [!?ioVariableMap searchForReadWriteAccess !mTargetVariableName ?targetType ?targetVariableCppName ?nameForCheckingFormalParameterUsing] ;
     foreach mStructAttributeList do
       const attributeMap := [targetType mAttributeMap] ;
-      [attributeMap searchKey !mValue ??@bool isPrivate ?targetType] ;
-      if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
-        error mValue : "this field is private" ;
-      end if ;
+      [attributeMap searchKey 
+        !mValue
+#        ??@bool isPrivate
+        ?targetType
+      ] ;
+#      if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
+#        error mValue : "this field is private" ;
+#      end if ;
     end foreach ;
   end if ;
 #--- Analyze source expression
@@ -573,10 +577,14 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
   var typeList := [@unifiedTypeMapProxyList listWithValue !parameterType] ;
   foreach mStructAttributeList do
     const attributeMap := [parameterType mAttributeMap] ;
-    [attributeMap searchKey !mValue ??@bool isPrivate ?parameterType] ;
-    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
-      error mValue : "this field is private" ;
-    end if ;
+    [attributeMap searchKey
+      !mValue
+#      ??@bool isPrivate
+      ?parameterType
+    ] ;
+#    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
+#      error mValue : "this field is private" ;
+#    end if ;
     typeList += !parameterType ;
   end foreach ;
 #--- Check type
@@ -1114,10 +1122,14 @@ override method @modifierCallInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?receiverType ?receiverVariableCppName ?receiverVariableBaseName] ;
   foreach mReceiverStructAttributes do
     const attributeMap := [receiverType mAttributeMap] ;
-    [attributeMap searchKey !mValue ??@bool isPrivate ?receiverType] ;
-    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
-      error mValue : "this field is private" ;
-    end if ;
+    [attributeMap searchKey
+      !mValue
+#      ??@bool isPrivate
+      ?receiverType
+    ] ;
+#    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
+#      error mValue : "this field is private" ;
+#    end if ;
   end foreach ;
 #--- Get modifier signature
   @formalParameterSignature routineSignature ;
@@ -1249,10 +1261,14 @@ override method @concatInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap searchForReadWriteAccess !mTargetVariableName ?targetType ?targetVariableCppName ?nameForCheckingFormalParameterUsing] ;
   foreach mStructAttributeList do
     const attributeMap := [targetType mAttributeMap] ;
-    [attributeMap searchKey !mValue ??@bool isPrivate ?targetType] ;
-    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
-      error mValue : "this field is private" ;
-    end if ;
+    [attributeMap searchKey
+      !mValue
+#      ??@bool isPrivate
+      ?targetType
+    ] ;
+#    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
+#      error mValue : "this field is private" ;
+#    end if ;
   end foreach ;
 #--- Analyze source expression
   @semanticExpressionForGeneration expression ;
@@ -1342,10 +1358,14 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
   [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName ?nameForCheckingFormalParameterUsing] ;
   foreach mStructAttributeList do
     const attributeMap := [targetType mAttributeMap] ;
-    [attributeMap searchKey !mValue ??@bool isPrivate ?targetType] ;
-    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
-      error mValue : "this field is private" ;
-    end if ;
+    [attributeMap searchKey
+      !mValue
+#      ??@bool isPrivate
+      ?targetType
+    ] ;
+#    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
+#      error mValue : "this field is private" ;
+#    end if ;
   end foreach ;
 #--- Check target variable type support '+=' operator
   const addAssignOperatorArguments:= [targetType mAddAssignOperatorArguments] ; # Empty list if += operator is not supported
@@ -1401,10 +1421,14 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
   [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName ?nameForCheckingFormalParameterUsing] ;
   foreach mStructAttributeList do
     const attributeMap := [targetType mAttributeMap] ;
-    [attributeMap searchKey !mValue ??@bool isPrivate ?targetType] ;
-    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
-      error mValue : "this field is private" ;
-    end if ;
+    [attributeMap searchKey
+      !mValue
+#      ??@bool isPrivate
+      ?targetType
+    ] ;
+#    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
+#      error mValue : "this field is private" ;
+#    end if ;
   end foreach ;
 #--- Check target variable type support '+= exp' operator
   if ([targetType mHandledOperatorFlags] & plusEqualOperatorWithExpression []) == 0 then
@@ -1543,10 +1567,14 @@ override method @incrementInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName ?*] ;
   foreach mStructAttributeList do
     const attributeMap := [targetType mAttributeMap] ;
-    [attributeMap searchKey !mValue ??@bool isPrivate ?targetType] ;
-    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
-      error mValue : "this field is private" ;
-    end if ;
+    [attributeMap searchKey
+      !mValue
+#      ??@bool isPrivate
+      ?targetType
+    ] ;
+#    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
+#      error mValue : "this field is private" ;
+#    end if ;
   end foreach ;
 #--- Check target type accepts incrementation
   if ([targetType mHandledOperatorFlags] & incDecOperator []) == 0 then
@@ -1607,10 +1635,14 @@ override method @decrementInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName ?*] ;
   foreach mStructAttributeList do
     const attributeMap := [targetType mAttributeMap] ;
-    [attributeMap searchKey !mValue ??@bool isPrivate ?targetType] ;
-    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
-      error mValue : "this field is private" ;
-    end if ;
+    [attributeMap searchKey
+      !mValue
+#      ??@bool isPrivate
+      ?targetType
+    ] ;
+#    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
+#      error mValue : "this field is private" ;
+#    end if ;
   end foreach ;
 #--- Check target type accepts incrementation
   if ([targetType mHandledOperatorFlags] & incDecOperator []) == 0 then
@@ -1750,12 +1782,12 @@ local routine checkExpressionIsBoolean
     if [[expressionType mAttributeMap] hasKey !"bool"] then
       [[expressionType mAttributeMap] searchKey
         ![@lstring new !"bool" !here]
-        ??@bool isPrivate
+#        ??@bool isPrivate
         ??@unifiedTypeMap-proxy attributeType
       ] ;
-      if isPrivate && ([inErrorLocation file] != [[[expressionType mAttributeMap] locationForKey !"bool"] file]) then
-        error inErrorLocation : "this field is private" ;
-      end if ;
+#      if isPrivate && ([inErrorLocation file] != [[[expressionType mAttributeMap] locationForKey !"bool"] file]) then
+#        error inErrorLocation : "this field is private" ;
+#      end if ;
       if attributeType == boolType then
         outExpression := [@structFieldAccessExpressionForGeneration new
           !boolType
@@ -2807,10 +2839,14 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   ] ;
   foreach mFieldList do
     const attributeMap := [targetType mAttributeMap] ;
-    [attributeMap searchKey !mValue ??@bool isPrivate ?targetType] ;
-    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
-      error mValue : "this field is private" ;
-    end if ;
+    [attributeMap searchKey
+      !mValue
+#      ??@bool isPrivate
+      ?targetType
+    ] ;
+#    if isPrivate && ([mValue file] != [[attributeMap locationForKey !mValue->string] file]) then
+#      error mValue : "this field is private" ;
+#    end if ;
   end foreach ;
 #--- Check this type handle 'with' access
   if ([targetType mHandledOperatorFlags] & supportWithAccessor []) == 0 then

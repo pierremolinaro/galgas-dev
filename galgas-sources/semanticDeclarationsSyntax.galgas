@@ -38,14 +38,14 @@ rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputP
 #---------------------------------------------------------------------------*
 
 rule <attribute_declaration> ?!@attributeInCollectionListAST ioAttributeInCollectionList {
-  @bool isPrivate
-  select
-    isPrivate = false
-  or
-    $local$ :> ?let @string sep ?*
-    send sep + "private"
-    isPrivate = true
-  end
+#  @bool isPrivate ;
+#  select
+#    isPrivate := false ;
+#  or
+#    $local$ :> ??@string sep ?* ;
+#    send sep . "private" ;
+#    isPrivate := true ;
+#  end select ;
   $type_name$ ?var  @lstring mAttributeTypeName
   $identifier$ ?var  @lstring mAttributeName
   var featureList =@lstringlist.emptyList{}
@@ -68,7 +68,11 @@ rule <attribute_declaration> ?!@attributeInCollectionListAST ioAttributeInCollec
     end
   end
   $;$ :> ?* ?*
-  ioAttributeInCollectionList += !isPrivate !mAttributeTypeName !mAttributeName !featureList
+  ioAttributeInCollectionList += 
+#    !isPrivate
+    !mAttributeTypeName
+    !mAttributeName
+    !featureList
 }
 
 #---------------------------------------------------------------------------*

@@ -505,8 +505,6 @@ class cParser_semanticDeclarationsSyntax {
 
   protected : virtual int32_t select_semanticDeclarationsSyntax_43 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual int32_t select_semanticDeclarationsSyntax_44 (C_Lexique_galgas_5F_scanner *) = 0 ;
-
 
 } ;
 
@@ -6301,15 +6299,13 @@ class GALGAS_attributeMap : public AC_GALGAS_map {
 
 //--------------------------------- += operator (with list of field expressions)
   public : VIRTUAL_IN_DEBUG void addAssign_operation (const class GALGAS_lstring & inOperand0,
-                                                      const class GALGAS_bool & inOperand1,
-                                                      const class GALGAS_unifiedTypeMap_2D_proxy & inOperand2,
+                                                      const class GALGAS_unifiedTypeMap_2D_proxy & inOperand1,
                                                       C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Setters
   public : VIRTUAL_IN_DEBUG void modifier_insertKey (class GALGAS_lstring constinArgument0,
-                                                     class GALGAS_bool constinArgument1,
-                                                     class GALGAS_unifiedTypeMap_2D_proxy constinArgument2,
+                                                     class GALGAS_unifiedTypeMap_2D_proxy constinArgument1,
                                                      C_Compiler * inCompiler
                                                      COMMA_LOCATION_ARGS) ;
 
@@ -6318,16 +6314,10 @@ class GALGAS_attributeMap : public AC_GALGAS_map {
                                                                    C_Compiler * inCompiler
                                                                    COMMA_LOCATION_ARGS) ;
 
-  public : VIRTUAL_IN_DEBUG void modifier_setMIsPrivateForKey (class GALGAS_bool constinArgument0,
-                                                               class GALGAS_string constinArgument1,
-                                                               C_Compiler * inCompiler
-                                                               COMMA_LOCATION_ARGS) ;
-
 
 //--------------------------------- Instance Methods
   public : VIRTUAL_IN_DEBUG void method_searchKey (class GALGAS_lstring constinArgument0,
-                                                   class GALGAS_bool & outArgument1,
-                                                   class GALGAS_unifiedTypeMap_2D_proxy & outArgument2,
+                                                   class GALGAS_unifiedTypeMap_2D_proxy & outArgument1,
                                                    C_Compiler * inCompiler
                                                    COMMA_LOCATION_ARGS) const ;
 
@@ -6337,10 +6327,6 @@ class GALGAS_attributeMap : public AC_GALGAS_map {
   public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mAttributeTypeForKey (const class GALGAS_string & constinOperand0,
                                                                                               C_Compiler * inCompiler
                                                                                               COMMA_LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_mIsPrivateForKey (const class GALGAS_string & constinOperand0,
-                                                                       C_Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_attributeMap reader_overriddenMap (C_Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) const ;
@@ -6368,7 +6354,6 @@ class cEnumerator_attributeMap : public cGenericAbstractEnumerator {
 
 //--- Current element access
   public : class GALGAS_lstring current_lkey (LOCATION_ARGS) const ;
-  public : class GALGAS_bool current_mIsPrivate (LOCATION_ARGS) const ;
   public : class GALGAS_unifiedTypeMap_2D_proxy current_mAttributeType (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_attributeMap_2D_element current (LOCATION_ARGS) const ;
@@ -6386,12 +6371,10 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_attributeMap ;
 
 class cMapElement_attributeMap : public cMapElement {
 //--- Map attributes
-  public : GALGAS_bool mAttribute_mIsPrivate ;
   public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mAttributeType ;
 
 //--- Constructor
   public : cMapElement_attributeMap (const GALGAS_lstring & inKey,
-                                     const GALGAS_bool & in_mIsPrivate,
                                      const GALGAS_unifiedTypeMap_2D_proxy & in_mAttributeType
                                      COMMA_LOCATION_ARGS) ;
 
@@ -6417,7 +6400,6 @@ class cMapElement_attributeMap : public cMapElement {
 class GALGAS_attributeMap_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
   public : GALGAS_lstring mAttribute_lkey ;
-  public : GALGAS_bool mAttribute_mIsPrivate ;
   public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mAttributeType ;
 
 
@@ -6436,7 +6418,6 @@ class GALGAS_attributeMap_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- Native constructor
   public : GALGAS_attributeMap_2D_element (const GALGAS_lstring & in_lkey,
-                                           const GALGAS_bool & in_mIsPrivate,
                                            const GALGAS_unifiedTypeMap_2D_proxy & in_mAttributeType) ;
 
 //-- Start of generic part --*
@@ -6451,8 +6432,7 @@ class GALGAS_attributeMap_2D_element : public AC_GALGAS_root {
 
 //--------------------------------- GALGAS constructors
   public : static GALGAS_attributeMap_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                  const class GALGAS_bool & inOperand1,
-                                                                  const class GALGAS_unifiedTypeMap_2D_proxy & inOperand2
+                                                                  const class GALGAS_unifiedTypeMap_2D_proxy & inOperand1
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of reader 'description'
@@ -6470,8 +6450,6 @@ class GALGAS_attributeMap_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_lkey (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_unifiedTypeMap_2D_proxy reader_mAttributeType (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_mIsPrivate (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection

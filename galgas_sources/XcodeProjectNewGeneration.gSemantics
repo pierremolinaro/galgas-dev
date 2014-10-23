@@ -360,28 +360,28 @@ end modifier ;
 #---------------------------------------------------------------------------*
 
 struct @XcodeProjectDescriptor {
-  local @uint mSequenceNumber ;
-  local @string mMainGroupReference ;
-  local @stringlist mMainGroupChildrenRefs ;
-  local @string mProjectObjectReference ;
-  local @XCodeGroupList mGroupList ;
-  local @XCodeToolTargetList mToolTargetList ;
-  local @XCodeAppTargetList mAppTargetList ;
-  local @2stringlist mCppFileList ;
-  local @2stringlist m_M_FileList ;
-  local @2stringlist m_MM_FileList ;
-  local @2stringlist mFrameworkFileList ;
-  local @2stringlist mHeaderFileList ;
-  local @BuildFileList mBuildFileList ;
+  @uint mSequenceNumber ;
+  @string mMainGroupReference ;
+  @stringlist mMainGroupChildrenRefs ;
+  @string mProjectObjectReference ;
+  @XCodeGroupList mGroupList ;
+  @XCodeToolTargetList mToolTargetList ;
+  @XCodeAppTargetList mAppTargetList ;
+  @2stringlist mCppFileList ;
+  @2stringlist m_M_FileList ;
+  @2stringlist m_MM_FileList ;
+  @2stringlist mFrameworkFileList ;
+  @2stringlist mHeaderFileList ;
+  @BuildFileList mBuildFileList ;
 #--- Default configuration
-  local @string mDefaultConfigurationRef ;
-  local @stringlist mDefaultConfigurationSettingList ;
-  local @string mProjectBuildConfigurationRef ;
+  @string mDefaultConfigurationRef ;
+  @stringlist mDefaultConfigurationSettingList ;
+  @string mProjectBuildConfigurationRef ;
 #--- Resource files
-  local @2stringlist mInfoPlistFileList ;
-  local @2stringlist mXIB_fileList ;
-  local @2stringlist mTIFF_fileList ;
-  local @2stringlist mICNS_fileList ;
+  @2stringlist mInfoPlistFileList ;
+  @2stringlist mXIB_fileList ;
+  @2stringlist mTIFF_fileList ;
+  @2stringlist mICNS_fileList ;
 }
 
 #---------------------------------------------------------------------------*

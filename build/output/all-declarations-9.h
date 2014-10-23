@@ -858,8 +858,6 @@ class cGrammar_syntaxSLRgrammar : public cParser_syntaxModelBuilder,
   public : virtual int32_t select_semanticDeclarationsSyntax_42 (C_Lexique_galgas_5F_scanner *) ;
 
   public : virtual int32_t select_semanticDeclarationsSyntax_43 (C_Lexique_galgas_5F_scanner *) ;
-
-  public : virtual int32_t select_semanticDeclarationsSyntax_44 (C_Lexique_galgas_5F_scanner *) ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*

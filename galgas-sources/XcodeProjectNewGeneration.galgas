@@ -341,28 +341,28 @@ setter @XcodeProjectDescriptor getReferenceKey
 #---------------------------------------------------------------------------*
 
 struct @XcodeProjectDescriptor {
-  private @uint mSequenceNumber
-  private @string mMainGroupReference
-  private @stringlist mMainGroupChildrenRefs
-  private @string mProjectObjectReference
-  private @XCodeGroupList mGroupList
-  private @XCodeToolTargetList mToolTargetList
-  private @XCodeAppTargetList mAppTargetList
-  private @2stringlist mCppFileList
-  private @2stringlist m_M_FileList
-  private @2stringlist m_MM_FileList
-  private @2stringlist mFrameworkFileList
-  private @2stringlist mHeaderFileList
-  private @BuildFileList mBuildFileList
+  @uint mSequenceNumber
+  @string mMainGroupReference
+  @stringlist mMainGroupChildrenRefs
+  @string mProjectObjectReference
+  @XCodeGroupList mGroupList
+  @XCodeToolTargetList mToolTargetList
+  @XCodeAppTargetList mAppTargetList
+  @2stringlist mCppFileList
+  @2stringlist m_M_FileList
+  @2stringlist m_MM_FileList
+  @2stringlist mFrameworkFileList
+  @2stringlist mHeaderFileList
+  @BuildFileList mBuildFileList
 #--- Default configuration
-  private @string mDefaultConfigurationRef
-  private @stringlist mDefaultConfigurationSettingList
-  private @string mProjectBuildConfigurationRef
+  @string mDefaultConfigurationRef
+  @stringlist mDefaultConfigurationSettingList
+  @string mProjectBuildConfigurationRef
 #--- Resource files
-  private @2stringlist mInfoPlistFileList
-  private @2stringlist mXIB_fileList
-  private @2stringlist mTIFF_fileList
-  private @2stringlist mICNS_fileList
+  @2stringlist mInfoPlistFileList
+  @2stringlist mXIB_fileList
+  @2stringlist mTIFF_fileList
+  @2stringlist mICNS_fileList
 }
 
 #---------------------------------------------------------------------------*
