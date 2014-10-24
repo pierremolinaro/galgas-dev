@@ -1,24 +1,22 @@
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #  Grammar component compilation                                            *
-#                                                                           *
+#                                                                                                                      *
 #  Copyright (C) 2009, ..., 2011 Pierre Molinaro.                           *
-#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
-#                                                                           *
-#  This program is free software; you can redistribute it and/or modify it  *
-#  under the terms of the GNU General Public License as published by the    *
-#  Free Software Foundation.                                                *
-#                                                                           *
-#  This program is distributed in the hope it will be useful, but WITHOUT   *
-#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
-#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
-#   more details.                                                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
+#                                                                                                                      *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
+#  License as published by the Free Software Foundation.                                                               *
+#                                                                                                                      *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  details.                                                                                                            *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 func transformLabelMap
   ?let @nonTerminalLabelListAST inLabels
@@ -38,7 +36,7 @@ func transformLabelMap
 }
 
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc checkLabelMap
   ?let @location inNonTerminalLocation
@@ -90,7 +88,7 @@ proc checkLabelMap
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc handleNonTerminalDeclarations
   ?!@nonTerminalSymbolMapForGrammarAnalysis ioNonTerminalMapForGrammarAnalysis
@@ -113,7 +111,7 @@ proc handleNonTerminalDeclarations
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc handleNonTerminalDeclarationsFromRuleList
   ?!@nonTerminalSymbolMapForGrammarAnalysis ioNonTerminalMapForGrammarAnalysis
@@ -143,9 +141,9 @@ proc handleNonTerminalDeclarationsFromRuleList
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 #                     transformInstructionList                              *
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 abstract method @syntaxInstructionAST transformInstruction
   ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
@@ -153,7 +151,7 @@ abstract method @syntaxInstructionAST transformInstruction
   ?!addedTerminalIndex:@uint ioAddedNonTerminalIndex
   ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @semanticInstructionAST transformInstruction
   ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap
@@ -162,7 +160,7 @@ override method @semanticInstructionAST transformInstruction
   ?!@syntaxInstructionListForGrammarAnalysis unused ioSyntaxInstructionList {
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc transformInstructionList
   ?let @syntaxInstructionList inInstructionList
@@ -180,7 +178,7 @@ proc transformInstructionList
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @syntaxSendInstruction transformInstruction
   ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap
@@ -189,7 +187,7 @@ override method @syntaxSendInstruction transformInstruction
   ?!@syntaxInstructionListForGrammarAnalysis unused ioSyntaxInstructionList {
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @terminalCheckInstruction transformInstruction
   ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
@@ -209,7 +207,7 @@ override method @terminalCheckInstruction transformInstruction
     !terminalSymbolIndex}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @nonterminalCallInstruction transformInstruction
   ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis unused ioActuallyUsedTerminalSymbolMap
@@ -224,7 +222,7 @@ override method @nonterminalCallInstruction transformInstruction
     !nonTerminalSymbolIndex}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @repeatInstruction transformInstruction
   ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
@@ -262,7 +260,7 @@ override method @repeatInstruction transformInstruction
     !addedNonTerminalIndex}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @selectInstruction transformInstruction
   ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
@@ -291,7 +289,7 @@ override method @selectInstruction transformInstruction
     !addedNonTerminalIndex}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @parseRewindInstruction transformInstruction
   ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
@@ -310,7 +308,7 @@ override method @parseRewindInstruction transformInstruction
   )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @parseWhenInstruction transformInstruction
   ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
@@ -326,7 +324,7 @@ override method @parseWhenInstruction transformInstruction
   )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @parseLoopInstruction transformInstruction
   ?!usedTerminalMap:@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
@@ -342,7 +340,7 @@ override method @parseLoopInstruction transformInstruction
   )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc buildRuleList
   ?let @nonTerminalSymbolMapForGrammarAnalysis inNonTerminalMapForGrammarAnalysis
@@ -379,11 +377,11 @@ proc buildRuleList
     !inSyntaxComponentName
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #    G R A M M A R    H E A D E R    F I L E    G E N E R A T I O N         *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 filewrapper grammarGenerationTemplate in "../generation_templates/grammar_generation" {
 }{
@@ -409,11 +407,11 @@ filewrapper grammarGenerationTemplate in "../generation_templates/grammar_genera
     ?@lstringlist SYNTAX_COMPONENTS
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #      C O M P I L E    G R A M M A R    C O M P O N E N T                  *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc parseGrammarComponent
   ?let @lstring inSourceFile
@@ -432,11 +430,11 @@ proc parseGrammarComponent
   end
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #   Extern routine that performs grammar analysis                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 extern proc grammarAnalysisAndGeneration
   ?let @stringset inImplementationFileHeaderSet
@@ -454,11 +452,11 @@ extern proc grammarAnalysisAndGeneration
   !@string outGrammarCppFile
   !@string outGrammarHTMLHelperContents
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #      C O M P I L E    G R A M M A R    C O M P O N E N T                  *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc compileGrammarComponentFromAST
   ?let @lstring inSourceFile
@@ -638,7 +636,7 @@ proc compileGrammarComponentFromAST
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc compileGrammarComponentFromSourceFile
   ?let @lstring inSourceFile
@@ -654,5 +652,5 @@ proc compileGrammarComponentFromSourceFile
   )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 

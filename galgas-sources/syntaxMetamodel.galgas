@@ -1,31 +1,31 @@
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #  'syntax' component metamodel                                             *
-#                                                                           *
+#                                                                                                                      *
 #  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
-#                                                                           *
-#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
-#                                                                           *
+#                                                                                                                      *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
+#                                                                                                                      *
 #  This program is free software; you can redistribute it and/or modify it  *
 #  under the terms of the GNU General Public License as published by the    *
 #  Free Software Foundation.                                                *
-#                                                                           *
+#                                                                                                                      *
 #  This program is distributed in the hope it will be useful, but WITHOUT   *
 #  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
 #  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
 #   more details.                                                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @syntaxInstructionList {
   @syntaxInstructionAST mInstruction feature nogetter ;
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @nonTerminalLabelListAST {
   @lstring mLabelName feature nogetter ;
@@ -33,14 +33,14 @@ list @nonTerminalLabelListAST {
   @location mEndOfArgumentLocation feature nogetter ;
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @nonterminalDeclarationListAST {
   @lstring mNonterminalName feature nogetter ;
   @nonTerminalLabelListAST mLabels feature nogetter ;
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @syntaxRuleLabelListAST {
   @lstring mLabelName feature nogetter ;
@@ -50,18 +50,18 @@ list @syntaxRuleLabelListAST {
   @location mEndOfInstructionList feature nogetter ;
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @syntaxRuleListAST {
   @lstring mNonterminalName feature nogetter ;
   @syntaxRuleLabelListAST mLabelList feature nogetter ;
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #   N O N T E R M I N A L    C A L L    I N S T R U C T I O N               *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @nonterminalCallInstruction : @syntaxInstructionAST {
   @lstring mNonterminalName ;
@@ -70,11 +70,11 @@ class @nonterminalCallInstruction : @syntaxInstructionAST {
   @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationResult ;
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #   T E R M I N A L    C H E C K    I N S T R U C T I O N                   *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @terminalCheckInstruction : @syntaxInstructionAST {
   @lstring mTerminalName ;
@@ -84,18 +84,18 @@ class @terminalCheckInstruction : @syntaxInstructionAST {
   @abstractGrammarInstructionSyntaxDirectedTranslationResult mGrammarInstructionSyntaxDirectedTranslationToken ;
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #   R E P E A T    I N S T R U C T I O N                                    *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @listOfSyntaxInstructionList {
   @syntaxInstructionList mSyntaxInstructionList feature nogetter ;
   @location mEndOf_instructions feature nogetter ;
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @repeatInstruction : @syntaxInstructionAST {
   @syntaxInstructionList mRepeatedInstructionList ;
@@ -104,39 +104,39 @@ class @repeatInstruction : @syntaxInstructionAST {
   @location mEndOf_repeat_instruction ;
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #   S E L E C T    I N S T R U C T I O N                                    *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @selectInstruction : @syntaxInstructionAST {
   @listOfSyntaxInstructionList mSelectBranchList ;
   @location mEndOf_select_instruction ;
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @syntaxSendInstruction : @syntaxInstructionAST {
   @semanticExpressionAST mExpression ;
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #   P A R S E   R E W I N D    I N S T R U C T I O N                        *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @parseRewindInstruction : @syntaxInstructionAST {
   @listOfSyntaxInstructionList mParseRewindBranchList ;
   @location mEndOfParseDoInstruction ;
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #   P A R S E   L O O P    I N S T R U C T I O N                            *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @parseLoopInstruction : @syntaxInstructionAST {
   @semanticExpressionAST mVariantExpression ;
@@ -147,11 +147,11 @@ class @parseLoopInstruction : @syntaxInstructionAST {
   @location mEndOfInstructionList ;
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #   P A R S E   W H E N    I N S T R U C T I O N                            *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @parseWhenInstruction : @syntaxInstructionAST {
   @semanticExpressionAST mWhenExpression ;
@@ -162,11 +162,11 @@ class @parseWhenInstruction : @syntaxInstructionAST {
   @location mEndOfElseInstructionList ;
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #   S Y N T A X    C O M P O N E N T    A S T                               *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 struct @syntaxComponentAST {
   @lstring mSyntaxComponentName ;
@@ -179,5 +179,5 @@ struct @syntaxComponentAST {
   @bool mHasTranslateFeature ;
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 

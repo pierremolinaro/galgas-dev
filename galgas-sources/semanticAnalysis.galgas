@@ -1,29 +1,27 @@
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #  metamodel that defines expression                                        *
-#                                                                           *
+#                                                                                                                      *
 #  Copyright (C) 2007, ..., 2010 Pierre Molinaro.                           *
-#                                                                           *
-#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
-#                                                                           *
-#  This program is free software; you can redistribute it and/or modify it  *
-#  under the terms of the GNU General Public License as published by the    *
-#  Free Software Foundation.                                                *
-#                                                                           *
-#  This program is distributed in the hope it will be useful, but WITHOUT   *
-#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
-#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
-#   more details.                                                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
+#                                                                                                                      *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
+#  License as published by the Free Software Foundation.                                                               *
+#                                                                                                                      *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  details.                                                                                                            *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #    C H E C K    M E T H O D    S I G N A T U R E                          *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc checkMethodSignatures
   ?let @formalParameterListForGeneration inTestedSignature
@@ -55,11 +53,11 @@ proc checkMethodSignatures
   end
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #    C H E C K    R E A D E R    S I G N A T U R E                          *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc checkReaderSignatures
   ?let @formalInputParameterListForGeneration inTestedSignature
@@ -93,11 +91,11 @@ proc checkReaderSignatures
   end
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #    D E C L A R A T I O N    S E M A N T I C    A N A L Y S I S            *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 abstract method @semanticDeclarationAST semanticAnalysis
   ?let @string inProductDirectory
@@ -105,7 +103,7 @@ abstract method @semanticDeclarationAST semanticAnalysis
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration unused ioSemanticDeclarationListForGeneration
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @predefinedTypeAST semanticAnalysis
   ?let @string unused inProductDirectory
@@ -122,7 +120,7 @@ override method @predefinedTypeAST semanticAnalysis
 
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 map @attributeIndexMap {
   @unifiedTypeMap-proxy mAttributeTypeIndex
@@ -130,7 +128,7 @@ map @attributeIndexMap {
   search searchKey error message "the '%K' attribute is not declared"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @listDeclarationAST semanticAnalysis
   ?let @string unused inProductDirectory
@@ -175,7 +173,7 @@ override method @listDeclarationAST semanticAnalysis
   !""
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @sortedListDeclarationAST semanticAnalysis
   ?let @string unused inProductDirectory
@@ -219,7 +217,7 @@ override method @sortedListDeclarationAST semanticAnalysis
 
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 func %once forbiddenKeysForStruct -> @stringset outResult {
   outResult = @stringset. emptySet
@@ -227,7 +225,7 @@ func %once forbiddenKeysForStruct -> @stringset outResult {
   outResult += !"object"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @structDeclarationAST semanticAnalysis
   ?let @string unused inProductDirectory
@@ -269,7 +267,7 @@ override method @structDeclarationAST semanticAnalysis
     !"~"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @graphDeclarationAST semanticAnalysis
   ?let @string unused inProductDirectory
@@ -305,7 +303,7 @@ override method @graphDeclarationAST semanticAnalysis
     !""
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @externTypeDeclarationAST semanticAnalysis
   ?let @string unused inProductDirectory
@@ -324,7 +322,7 @@ override method @externTypeDeclarationAST semanticAnalysis
     !""
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @enumDeclarationAST semanticAnalysis
   ?let @string unused inProductDirectory
@@ -359,7 +357,7 @@ override method @enumDeclarationAST semanticAnalysis
     !""
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @arrayDeclarationAST semanticAnalysis
   ?let @string unused inProductDirectory
@@ -376,9 +374,9 @@ override method @arrayDeclarationAST semanticAnalysis
     !""
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 #! Listmap
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @listmapDeclarationAST semanticAnalysis
   ?let @string unused inProductDirectory
@@ -409,23 +407,23 @@ override method @listmapDeclarationAST semanticAnalysis
     !""
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 #! Map
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 map @insertMethodMap {
   insert insertKey error message "the '%K' insert modifier is already declared"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 map @searchMethodMap {
   insert insertKey error message "the '%K' search method is already declared"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 #         M A P                                                             *
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc check_K_escapeCharacters
  ?@lstring inString {
@@ -444,7 +442,7 @@ proc check_K_escapeCharacters
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc check_K_L_escapeCharacters
  ?@lstring inString {
@@ -463,7 +461,7 @@ proc check_K_L_escapeCharacters
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 func %once forbiddenKeysForMap -> @stringset outResult {
   outResult = @stringset. emptySet
@@ -472,7 +470,7 @@ func %once forbiddenKeysForMap -> @stringset outResult {
   outResult += !"object"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @mapDeclarationAST semanticAnalysis
   ?let @string unused inProductDirectory
@@ -555,7 +553,7 @@ override method @mapDeclarationAST semanticAnalysis
     !""
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @uniqueMapDeclarationAST semanticAnalysis
   ?let @string unused inProductDirectory
@@ -900,7 +898,7 @@ override method @uniqueMapDeclarationAST semanticAnalysis
     !""
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @mapProxyDeclarationAST semanticAnalysis
   ?let @string unused inProductDirectory
@@ -927,13 +925,13 @@ override method @mapProxyDeclarationAST semanticAnalysis
     !""
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 map @declaredMethodMap { # This map is used for checking a method is declared once within a class
   insert insertKey error message "the '%K' method is already declared in %L for this class"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc buildLocalVariableMapAndSignature
   ?let @semanticContext inSemanticContext
@@ -974,7 +972,7 @@ proc buildLocalVariableMapAndSignature
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc analyzeRoutineBody
   ?let @analysisContext inAnalysisContext
@@ -1034,7 +1032,7 @@ proc analyzeRoutineBody
   [variableMap checkAutomatonStates !inEndOfMethodLocation]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @externFunctionDeclarationAST semanticAnalysis
   ?let @string unused inProductDirectory
@@ -1061,7 +1059,7 @@ override method @externFunctionDeclarationAST semanticAnalysis
     !""
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @externRoutineDeclarationAST semanticAnalysis
   ?let @string unused inProductDirectory
@@ -1087,7 +1085,7 @@ override method @externRoutineDeclarationAST semanticAnalysis
     !""
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @routineDeclarationAST semanticAnalysis
   ?let @string unused inProductDirectory
@@ -1128,7 +1126,7 @@ override method @routineDeclarationAST semanticAnalysis
     !""
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @classDeclarationAST semanticAnalysis
   ?let @string unused inProductDirectory
@@ -1223,7 +1221,7 @@ override method @classDeclarationAST semanticAnalysis
     !sortString
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc analyzeFunctionBody
   ?let @analysisContext inAnalysisContext
@@ -1297,7 +1295,7 @@ proc analyzeFunctionBody
   [variableMap checkAutomatonStates !inEndOfFunctionLocation]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @functionDeclarationAST semanticAnalysis
   ?let @string unused inProductDirectory
@@ -1343,7 +1341,7 @@ override method @functionDeclarationAST semanticAnalysis
     !""
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @onceFunctionDeclarationAST semanticAnalysis
   ?let @string unused inProductDirectory
@@ -1387,11 +1385,11 @@ override method @onceFunctionDeclarationAST semanticAnalysis
     !""
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #     F I L E W R A P P E R    A N A L Y S I S                              *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @filewrapperDeclarationAST semanticAnalysis
   ?let @string unused inProductDirectory
@@ -1464,11 +1462,11 @@ override method @filewrapperDeclarationAST semanticAnalysis
   end
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #     O P T I O N    C O M P O N E N T    A N A L Y S I S                   *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @optionComponentDeclarationAST semanticAnalysis
   ?let @string unused inProductDirectory
@@ -1496,7 +1494,7 @@ override method @optionComponentDeclarationAST semanticAnalysis
     !""
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @abstractCategoryMethodAST semanticAnalysis
   ?let @string unused inProductDirectory
@@ -1533,7 +1531,7 @@ override method @abstractCategoryMethodAST semanticAnalysis
     !"~"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @categoryMethodAST semanticAnalysis
   ?let @string unused inProductDirectory
@@ -1594,7 +1592,7 @@ override method @categoryMethodAST semanticAnalysis
     !"~"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @overridingCategoryMethodAST semanticAnalysis
   ?let @string unused inProductDirectory
@@ -1674,7 +1672,7 @@ override method @overridingCategoryMethodAST semanticAnalysis
     !"~"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @overridingAbstractCategoryMethodAST semanticAnalysis
   ?let @string unused inProductDirectory
@@ -1728,7 +1726,7 @@ override method @overridingAbstractCategoryMethodAST semanticAnalysis
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @abstractCategoryModifierAST semanticAnalysis
   ?let @string unused inProductDirectory
@@ -1765,7 +1763,7 @@ override method @abstractCategoryModifierAST semanticAnalysis
     !"~"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @categoryModifierAST semanticAnalysis
   ?let @string unused inProductDirectory
@@ -1823,7 +1821,7 @@ override method @categoryModifierAST semanticAnalysis
     !"~"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @overridingCategoryModifierAST semanticAnalysis
   ?let @string unused inProductDirectory
@@ -1900,7 +1898,7 @@ override method @overridingCategoryModifierAST semanticAnalysis
     !"~"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @overridingAbstractCategoryModifierAST semanticAnalysis
   ?let @string unused inProductDirectory
@@ -1954,7 +1952,7 @@ override method @overridingAbstractCategoryModifierAST semanticAnalysis
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @abstractCategoryReaderAST semanticAnalysis
   ?let @string unused inProductDirectory
@@ -1993,7 +1991,7 @@ override method @abstractCategoryReaderAST semanticAnalysis
 }
 
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @categoryReaderAST semanticAnalysis
   ?let @string unused inProductDirectory
@@ -2061,7 +2059,7 @@ override method @categoryReaderAST semanticAnalysis
     !"~"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @overridingCategoryReaderAST semanticAnalysis
   ?let @string unused inProductDirectory
@@ -2154,7 +2152,7 @@ override method @overridingCategoryReaderAST semanticAnalysis
     !"~"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @overridingAbstractCategoryReaderAST semanticAnalysis
   ?let @string unused inProductDirectory
@@ -2222,7 +2220,7 @@ override method @overridingAbstractCategoryReaderAST semanticAnalysis
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @galgas3SyntaxComponentAST semanticAnalysis
   ?let @string unused inProductDirectory
@@ -2268,7 +2266,7 @@ override method @galgas3SyntaxComponentAST semanticAnalysis
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @galgas3GrammarComponentAST semanticAnalysis
   ?let @string inProductDirectory
@@ -2450,7 +2448,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
 #  end if ;
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @lexiqueComponentAST semanticAnalysis
   ?let @string unused inProductDirectory
@@ -2732,11 +2730,11 @@ override method @lexiqueComponentAST semanticAnalysis
   end
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #    P R E D E F I N E D    T Y P E S                                       *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 func buildPredefinedTypes
   ?let @semanticContext inSemanticContext
@@ -2761,11 +2759,11 @@ func buildPredefinedTypes
     !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring. new { !"ldouble" !@location.here}}}
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #    P E R F O R M     S E M A N T I C     A N A L Y S I S                  *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc performSemanticAnalysis
   ?let @string inProductDirectory
@@ -2796,11 +2794,11 @@ proc performSemanticAnalysis
   end
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #    S Y N T A X    D E C L A R A T I O N S                                 *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 map @nonterminalLabelMap {
   @formalParameterListForGeneration mSignatureForGeneration
@@ -2810,7 +2808,7 @@ map @nonterminalLabelMap {
   search searchKey error message "the '%K' nonterminal label is not declared"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 map @nonterminalMap {
   @nonterminalLabelMap mLabelMap
@@ -2818,7 +2816,7 @@ map @nonterminalMap {
   search searchKey error message "the '%K' nonterminal is not declared"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @ruleLabelImplementationList {
   @lstring mLabelName
@@ -2828,7 +2826,7 @@ list @ruleLabelImplementationList {
   @semanticInstructionListForGeneration mInstructionListForGeneration
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @ruleDeclarationList {
   @string mNonterminalName
@@ -2836,7 +2834,7 @@ list @ruleDeclarationList {
   @ruleLabelImplementationList mLabelImplementationList
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @syntaxListForGeneration {
   @galgas3SyntaxComponentListAST-element mSyntaxComponentRoot
@@ -2844,7 +2842,7 @@ list @syntaxListForGeneration {
   @bool mHasIndexing
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration {
   @string mSyntaxComponentName
@@ -2856,11 +2854,11 @@ class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration {
   @bool mHasTranslateFeature
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #           G E N E R A T I O N    F I L E W R A P P E R S                  *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 filewrapper syntaxFileGenerationTemplate in "../generation_templates/syntax_generation" {
 }{
@@ -2891,11 +2889,11 @@ filewrapper syntaxFileGenerationTemplate in "../generation_templates/syntax_gene
     ?@bool HAS_TRANSLATE_FEATURE
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #           B U I L D    N O N T E R M I N A L    M A P                     *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enterNonterminalNonTerminalInMapAndCheck
   ?let @lstring inNonTerminalName
@@ -2941,7 +2939,7 @@ proc enterNonterminalNonTerminalInMapAndCheck
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc buildNonterminalDeclarationsMap
   ?let @nonterminalDeclarationListAST inNonterminalDeclarationList
@@ -2965,11 +2963,11 @@ proc buildNonterminalDeclarationsMap
   end
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #    S Y N T A X    I N S T R U C T I O N    A N A L Y S I S                *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 abstract method @syntaxInstructionAST analyzeSyntaxInstruction
   ?let @analysisContext inAnalysisContext
@@ -2983,7 +2981,7 @@ abstract method @syntaxInstructionAST analyzeSyntaxInstruction
   ?!@variableMap ioVariableMap
   ?!@uint ioSelectMethodCount
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @semanticInstructionAST analyzeSyntaxInstruction
   ?let @analysisContext inAnalysisContext
@@ -3003,7 +3001,7 @@ override method @semanticInstructionAST analyzeSyntaxInstruction
   ]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @nonterminalCallInstruction analyzeSyntaxInstruction
   ?let @analysisContext inAnalysisContext
@@ -3050,7 +3048,7 @@ override method @nonterminalCallInstruction analyzeSyntaxInstruction
     !mGrammarInstructionSyntaxDirectedTranslationResult}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @nonterminalInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
@@ -3100,11 +3098,11 @@ override method @nonterminalInstructionForGeneration generateInstruction
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 #! Terminal instruction
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 abstract method @abstractInputParameter analyzeInputParameter
   ?let @analysisContext inAnalysisContext
@@ -3113,7 +3111,7 @@ abstract method @abstractInputParameter analyzeInputParameter
   ?!@terminalCheckAssignementList ioTerminalCheckAssignementList
   ?!@variableMap ioVariableMap
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @inputParameterAnonymousVariable analyzeInputParameter
   ?let @analysisContext unused inAnalysisContext
@@ -3123,7 +3121,7 @@ override method @inputParameterAnonymousVariable analyzeInputParameter
   ?!@variableMap unused ioVariableMap {
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @inputParameterVariable analyzeInputParameter
   ?let @analysisContext inAnalysisContext
@@ -3153,7 +3151,7 @@ override method @inputParameterVariable analyzeInputParameter
     !inLexicalAttributeName
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @inputParameterDeclaredVariable analyzeInputParameter
   ?let @analysisContext inAnalysisContext
@@ -3190,7 +3188,7 @@ override method @inputParameterDeclaredVariable analyzeInputParameter
     !inLexicalAttributeName
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @inputParameterDeclaredConstant analyzeInputParameter
   ?let @analysisContext inAnalysisContext
@@ -3228,14 +3226,14 @@ override method @inputParameterDeclaredConstant analyzeInputParameter
     !inLexicalAttributeName
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 abstract method @abstractGrammarInstructionSyntaxDirectedTranslationResult analyzeSDT
   ?let @analysisContext inAnalysisContext
   ?let @bool inHasTranslateFeature
   ?!@variableMap ioVariableMap
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @grammarInstructionSyntaxDirectedTranslationResultNone analyzeSDT
   ?let @analysisContext unused inAnalysisContext
@@ -3243,7 +3241,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultNone analyzeSD
   ?!@variableMap unused ioVariableMap {
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @grammarInstructionSyntaxDirectedTranslationDropResult  analyzeSDT
   ?let @analysisContext unused inAnalysisContext
@@ -3254,7 +3252,7 @@ override method @grammarInstructionSyntaxDirectedTranslationDropResult  analyzeS
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @grammarInstructionSyntaxDirectedTranslationResultInVar  analyzeSDT
   ?let @analysisContext inAnalysisContext
@@ -3272,7 +3270,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInVar  analyze
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar  analyzeSDT
   ?let @analysisContext inAnalysisContext
@@ -3292,7 +3290,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst  analyzeSDT
   ?let @analysisContext inAnalysisContext
@@ -3312,7 +3310,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredCons
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 abstract method @abstractGrammarInstructionSyntaxDirectedTranslationResult generateCode
   ?let @bool inGenerateSyntaxDirectedTranslationString
@@ -3320,7 +3318,7 @@ abstract method @abstractGrammarInstructionSyntaxDirectedTranslationResult gener
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @grammarInstructionSyntaxDirectedTranslationResultNone generateCode
   ?let @bool inGenerateSyntaxDirectedTranslationString
@@ -3333,7 +3331,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultNone generateC
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @grammarInstructionSyntaxDirectedTranslationDropResult  generateCode
   ?let @bool unused inGenerateSyntaxDirectedTranslationString
@@ -3342,7 +3340,7 @@ override method @grammarInstructionSyntaxDirectedTranslationDropResult  generate
   ?!@string unused ioGeneratedCode {
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @grammarInstructionSyntaxDirectedTranslationResultInVar  generateCode
   ?let @bool unused inGenerateSyntaxDirectedTranslationString
@@ -3353,7 +3351,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInVar  generat
   ioGeneratedCode += cppName + " = GALGAS_string (" + inAccessMethodName + ") ;\n" 
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar  generateCode
   ?let @bool unused inGenerateSyntaxDirectedTranslationString
@@ -3364,7 +3362,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
   ioGeneratedCode += "GALGAS_string " + cppName + " (" + inAccessMethodName + ") ;\n" 
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst  generateCode
   ?let @bool unused inGenerateSyntaxDirectedTranslationString
@@ -3375,7 +3373,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredCons
   ioGeneratedCode += "const GALGAS_string " + cppName + " (" + inAccessMethodName + ") ;\n" 
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @terminalCheckInstruction analyzeSyntaxInstruction
   ?let @analysisContext inAnalysisContext
@@ -3445,7 +3443,7 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
     !mGrammarInstructionSyntaxDirectedTranslationToken}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @terminalCheckInstructionForGeneration generateInstruction
   ?!@stringset unused ioInclusionSet
@@ -3489,7 +3487,7 @@ override method @terminalCheckInstructionForGeneration generateInstruction
                   + ")" + [mInstructionLocation commaSourceFile] + ") ;\n"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc analyzeSyntaxInstructionList
   ?let @analysisContext inAnalysisContext
@@ -3526,7 +3524,7 @@ proc analyzeSyntaxInstructionList
   [!?ioVariableMap closeBranch !inEndOfBranchLocation]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @repeatInstruction analyzeSyntaxInstruction
   ?let @analysisContext inAnalysisContext
@@ -3591,7 +3589,7 @@ override method @repeatInstruction analyzeSyntaxInstruction
     !listOfSemanticInstructionListForGeneration}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @repeatInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
@@ -3633,7 +3631,7 @@ override method @repeatInstructionForGeneration generateInstruction
   ioGeneratedCode += "}\n"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @selectInstruction analyzeSyntaxInstruction
   ?let @analysisContext inAnalysisContext
@@ -3679,7 +3677,7 @@ override method @selectInstruction analyzeSyntaxInstruction
     !listOfSemanticInstructionListForGeneration}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @selectInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
@@ -3707,7 +3705,7 @@ override method @selectInstructionForGeneration generateInstruction
   ioGeneratedCode += "}\n"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @parseRewindInstruction analyzeSyntaxInstruction
   ?let @analysisContext inAnalysisContext
@@ -3761,7 +3759,7 @@ override method @parseRewindInstruction analyzeSyntaxInstruction
     !listOfSemanticInstructionListForGeneration}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @parseRewindInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
@@ -3789,7 +3787,7 @@ override method @parseRewindInstructionForGeneration generateInstruction
   ioGeneratedCode += "//-------- END OF @parseRewindInstructionForGeneration\n"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @parseLoopInstruction analyzeSyntaxInstruction
   ?let @analysisContext inAnalysisContext
@@ -3857,7 +3855,7 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
     !instructionList}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @parseLoopInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
@@ -3917,7 +3915,7 @@ override method @parseLoopInstructionForGeneration generateInstruction
   ioGeneratedCode += "//-------- END OF @parseLoopInstructionForGeneration\n"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @parseWhenInstruction analyzeSyntaxInstruction
   ?let @analysisContext inAnalysisContext
@@ -3991,7 +3989,7 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @parseWhenInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
@@ -4023,7 +4021,7 @@ override method @parseWhenInstructionForGeneration generateInstruction
   ioGeneratedCode += "}\n"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @syntaxSendInstruction analyzeSyntaxInstruction
   ?let @analysisContext inAnalysisContext
@@ -4056,7 +4054,7 @@ override method @syntaxSendInstruction analyzeSyntaxInstruction
     !expression}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @syntaxSendInstructionForGeneration generateInstruction
   ?!@stringset ioInclusionSet
@@ -4072,11 +4070,11 @@ override method @syntaxSendInstructionForGeneration generateInstruction
                    + "}\n"
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #           B U I L D    C O N T E X T                                      *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc semanticAnalysisOfRuleLabel
   ?let @formalParameterListAST inFormalArguments
@@ -4126,11 +4124,11 @@ proc semanticAnalysisOfRuleLabel
   [variableMap checkAutomatonStates !inEndOfInstructionList]
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #           S E M A N T I C    A N A L Y S I S                              *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc semanticAnalysisOfSyntaxComponent
   ?let @nonterminalDeclarationListAST inNonterminalDeclarationList
@@ -4228,5 +4226,5 @@ proc semanticAnalysisOfSyntaxComponent
     !inHasTranslateFeature}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 

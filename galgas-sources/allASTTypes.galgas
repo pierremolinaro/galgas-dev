@@ -1,25 +1,19 @@
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #  All Abstract Syntax Tree Types                                           *
-#                                                                           *
+#                                                                                                                      *
 #  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
-#                                                                           *
-#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
-#                                                                           *
-#  This program is free software; you can redistribute it and/or modify it  *
-#  under the terms of the GNU General Public License as published by the    *
-#  Free Software Foundation.                                                *
-#                                                                           *
-#  This program is distributed in the hope it will be useful, but WITHOUT   *
-#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
-#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
-#   more details.                                                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-
-
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
+#                                                                                                                      *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
+#  License as published by the Free Software Foundation.                                                               *
+#                                                                                                                      *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  details.                                                                                                            *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 map @parsedLexiqueComponentMap {
   @galgas3LexiqueComponentListAST-element mLexiqueComponentAST
@@ -27,7 +21,7 @@ map @parsedLexiqueComponentMap {
   search searchKey error message "the '%K' lexique component symbol is not parsed"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 map @parsedOptionComponentMap {
   @commandLineOptionMap mBoolOptionMap
@@ -37,7 +31,7 @@ map @parsedOptionComponentMap {
   search searchKey error message "the '%K' option component symbol is not parsed"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 map @parsedSemanticsComponentMap {
   @lstring mSourceFullFilePath
@@ -46,7 +40,7 @@ map @parsedSemanticsComponentMap {
   search searchKey error message "the '%K' semantics component symbol is not parsed"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 map @parsedGrammarComponentMap {
   @lstring mSourceFullFilePath
@@ -55,7 +49,7 @@ map @parsedGrammarComponentMap {
   search searchKey error message "the '%K' grammar component is not parsed"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 map @parsedSyntaxComponentMap {
   @lstring mSourceFullFilePath
@@ -64,7 +58,7 @@ map @parsedSyntaxComponentMap {
   search searchKey error message "the '%K' syntax component is not parsed"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 map @parsedProgramComponentMap {
   @lstring mSourceFullFilePath
@@ -73,7 +67,7 @@ map @parsedProgramComponentMap {
   search searchKey error message "the '%K' program component is not parsed"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 map @parsedGuiComponentMap {
   @lstring mSourceFullFilePath
@@ -82,7 +76,7 @@ map @parsedGuiComponentMap {
   search searchKey error message "the '%K' GUI component is not parsed"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 struct @parsedComponentStruct {
   @parsedSemanticsComponentMap mParsedSemanticsComponentMap
@@ -94,11 +88,11 @@ struct @parsedComponentStruct {
   @parsedGuiComponentMap mParsedGuiComponentMap
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @grammarComponentASTList {
   @galgas3GrammarComponentListAST-element mGrammarComponentAST
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 

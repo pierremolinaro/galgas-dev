@@ -1,12 +1,12 @@
 
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @lexicalTypeList {
   @lexicalTypeEnum mLexicalType 
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @terminalList {
   @lstring mTerminalName
@@ -17,7 +17,7 @@ list @terminalList {
   @uint mStyleIndex # 0 if default style
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 map @lexicalExplicitTokenListMap {
   @lstring mTerminal
@@ -26,7 +26,7 @@ map @lexicalExplicitTokenListMap {
   search searchKey error message "the '%K' terminal is not declared"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 sortedlist @tokenSortedlist {
   @uint mLength
@@ -36,7 +36,7 @@ sortedlist @tokenSortedlist {
   mLength <, mName <
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 map @lexicalExplicitTokenListMapMap {
   @lexicalExplicitTokenListMap mExplicitTokenListMap
@@ -46,7 +46,7 @@ map @lexicalExplicitTokenListMapMap {
   search searchKey error message "the '%K' token list is not declared"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 map @lexicalMessageMap {
   @lstring mLexicalMessage
@@ -55,7 +55,7 @@ map @lexicalMessageMap {
   search searchKey error message "the '%K' message is not declared"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @lexicalRoutineFormalArgumentList {
   @lexicalArgumentModeAST mLexicalFormalArgumentMode
@@ -63,7 +63,7 @@ list @lexicalRoutineFormalArgumentList {
   @string mArgumentNameForComment
  }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 map @lexicalRoutineMap {
   @lexicalRoutineFormalArgumentList mLexicalRoutineFormalArgumentList
@@ -73,14 +73,14 @@ map @lexicalRoutineMap {
   search searchKey error message "the '%K' lexical routine is not declared"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @lexicalFunctionFormalArgumentList {
   @lexicalTypeEnum mLexicalType
   @string mArgumentNameForComment
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 map @lexicalFunctionMap {
   @lexicalFunctionFormalArgumentList mLexicalTypeList
@@ -92,7 +92,7 @@ map @lexicalFunctionMap {
 }
 
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @templateDelimitorList {
   @lstring mStartString
@@ -119,7 +119,7 @@ map @lexicalTagMap {
   search searchKey error message "the '%K' tag is not declared"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 struct @lexiqueAnalysisContext {
   @string mLexiqueName
@@ -136,5 +136,5 @@ struct @lexiqueAnalysisContext {
   @stringset mExternUnicodeTestFunctions
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 

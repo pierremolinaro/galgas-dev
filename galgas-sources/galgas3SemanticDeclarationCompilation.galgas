@@ -1,23 +1,21 @@
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #  Copyright (C) 2014, ..., 2014 Pierre Molinaro.                           *
-#                                                                           *
-#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
-#                                                                           *
-#  This program is free software; you can redistribute it and/or modify it  *
-#  under the terms of the GNU General Public License as published by the    *
-#  Free Software Foundation.                                                *
-#                                                                           *
-#  This program is distributed in the hope it will be useful, but WITHOUT   *
-#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
-#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
-#   more details.                                                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
+#                                                                                                                      *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
+#  License as published by the Free Software Foundation.                                                               *
+#                                                                                                                      *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  details.                                                                                                            *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc compileSemanticDeclarationsGalgas3
   ?let @string inProductDirectory
@@ -97,11 +95,11 @@ proc compileSemanticDeclarationsGalgas3
   end
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #    B U I L D    S E M A N T I C    C O N T E X T                          *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc buildGalgas3SemanticContext
   ?let @semanticDeclarationListAST inSemanticDeclarationList
@@ -171,15 +169,15 @@ proc buildGalgas3SemanticContext
 #  [graphvizText writeToFileWhenDifferentContents !graphvizFilePath ?*] ;
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 #! Generation
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 private func %once definitionGroupAmount -> @uint outResult {
   outResult = 100
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc generateSemanticDeclarationsGalgas3
   ?let @unifiedTypeMap inUnifiedTypeMap
@@ -266,7 +264,7 @@ proc generateSemanticDeclarationsGalgas3
    end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 private proc generateManyHeaders
   ?let @string inProductDirectory
@@ -379,7 +377,7 @@ private proc generateManyHeaders
   ]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 private proc generateOneBigHeader
   ?let @string inProductDirectory
@@ -415,7 +413,7 @@ private proc generateOneBigHeader
   ]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 map @headerCompositionMap {
   @stringset mInclusion
@@ -424,7 +422,7 @@ map @headerCompositionMap {
   search searchKey error message "there is no '%K' key"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 map @headerRepartitionMap {
   @string mHeaderFileName
@@ -432,7 +430,7 @@ map @headerRepartitionMap {
   search searchKey error message "there is no '%K' key"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 private proc buildHeader
   ?let @headerCompositionMap inHeaderCompositionMap
@@ -466,7 +464,7 @@ private proc buildHeader
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 private proc generateFewImplementationFiles
   ?let @unifiedTypeMap inUnifiedTypeMap
@@ -534,7 +532,7 @@ private proc generateFewImplementationFiles
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 private proc generateFewImplementationFilesWithFewHeaders
   ?let @unifiedTypeMap inUnifiedTypeMap
@@ -672,7 +670,7 @@ private proc generateFewImplementationFilesWithFewHeaders
   ]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 private proc generateManyImplementationFiles
   ?let @unifiedTypeMap inUnifiedTypeMap
@@ -706,5 +704,5 @@ private proc generateManyImplementationFiles
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 

@@ -1,37 +1,35 @@
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #  Semantic decorated types for template generation                         *
-#                                                                           *
+#                                                                                                                      *
 #  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
-#                                                                           *
-#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
-#                                                                           *
-#  This program is free software; you can redistribute it and/or modify it  *
-#  under the terms of the GNU General Public License as published by the    *
-#  Free Software Foundation.                                                *
-#                                                                           *
-#  This program is distributed in the hope it will be useful, but WITHOUT   *
-#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
-#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
-#   more details.                                                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
+#                                                                                                                      *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
+#  License as published by the Free Software Foundation.                                                               *
+#                                                                                                                      *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  details.                                                                                                            *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @templateInstructionStringForGeneration : @templateInstructionForGeneration {
   @string mTemplateString
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @templateInstructionExpressionForGeneration : @templateInstructionForGeneration {
   @semanticExpressionForGeneration mExpression
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @templateBlockInstructionForGeneration : @templateInstructionForGeneration {
   @semanticExpressionForGeneration mExpression
@@ -39,17 +37,17 @@ class @templateBlockInstructionForGeneration : @templateInstructionForGeneration
   @templateInstructionListForGeneration mBlockInstructionList
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @templateInstructionGetColumnLocationForGeneration : @templateInstructionForGeneration {
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @templateInstructionGotoColumnLocationForGeneration : @templateInstructionForGeneration {
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @templateInstructionForeachForGeneration : @templateInstructionForGeneration {
   @bool mIsAscending
@@ -62,33 +60,33 @@ class @templateInstructionForeachForGeneration : @templateInstructionForGenerati
   @templateInstructionListForGeneration mAfterInstructionList
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @templateInstructionIfBranchListForGeneration {
   @semanticExpressionForGeneration mExpression
   @templateInstructionListForGeneration mInstructionList
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @templateInstructionIfForGeneration : @templateInstructionForGeneration {
   @templateInstructionIfBranchListForGeneration mTemplateInstructionIfBranchList
   @templateInstructionListForGeneration mElseInstructionList
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @templateInstructionSwitchBranchListForGeneration {
   @lstringlist mConstantList
   @templateInstructionListForGeneration mInstructionList
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @templateInstructionSwitchForGeneration : @templateInstructionForGeneration {
   @semanticExpressionForGeneration mSwitchExpression
   @templateInstructionSwitchBranchListForGeneration mTemplateInstructionSwitchBranchList
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 

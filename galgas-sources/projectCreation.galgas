@@ -1,28 +1,26 @@
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #  Project Creation                                                         *
-#                                                                           *
+#                                                                                                                      *
 #  Copyright (C) 2008, ..., 2008 Pierre Molinaro.                           *
-#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
-#                                                                           *
-#  This program is free software; you can redistribute it and/or modify it  *
-#  under the terms of the GNU General Public License as published by the    *
-#  Free Software Foundation.                                                *
-#                                                                           *
-#  This program is distributed in the hope it will be useful, but WITHOUT   *
-#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
-#  FITNESS FOR A PARTICULAR PURPOSE.See the GNU General Public License for  *
-#   more details.                                                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
+#                                                                                                                      *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
+#  License as published by the Free Software Foundation.                                                               *
+#                                                                                                                      *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  details.                                                                                                            *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #  F I L E W R A P P E R     T E M P L A T E S                              *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 filewrapper projectCreationFileWrapper in "../generation_templates/project_creation" {
 }{
@@ -40,7 +38,7 @@ filewrapper projectCreationFileWrapper in "../generation_templates/project_creat
 }
 
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc performProjectCreation ?let @string inProjectPath {
   let @string projectName = [inProjectPath lastPathComponent]
@@ -63,7 +61,7 @@ proc performProjectCreation ?let @string inProjectPath {
    message "*** DONE ***\n"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc projectCreation
   ?let @string inProjectPath {
@@ -96,5 +94,5 @@ proc projectCreation
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 

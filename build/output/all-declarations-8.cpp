@@ -14,109 +14,109 @@
 
 void cParser_galgas_33_ProgramDeclarations::rule_galgas_33_ProgramDeclarations_declaration_i0_ (GALGAS_galgas_33_DeclarationAST & ioArgument_ioDeclarations,
                                                                                                 C_Lexique_galgas_33_Scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_before) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 34)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7B_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 35)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_before) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 32)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7B_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 33)) ;
   GALGAS_semanticInstructionListAST var_prologueInstructionList ;
   nt_semantic_5F_instruction_5F_list_ (var_prologueInstructionList, inCompiler) ;
-  GALGAS_location var_endOfPrologue = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 37)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7D_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 38)) ;
-  ioArgument_ioDeclarations.mAttribute_mPrologueDeclarationList.addAssign_operation (var_prologueInstructionList, var_endOfPrologue  COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 39)) ;
+  GALGAS_location var_endOfPrologue = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 35)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7D_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 36)) ;
+  ioArgument_ioDeclarations.mAttribute_mPrologueDeclarationList.addAssign_operation (var_prologueInstructionList, var_endOfPrologue  COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 37)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_galgas_33_ProgramDeclarations::rule_galgas_33_ProgramDeclarations_declaration_i0_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_before) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 34)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7B_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 35)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_before) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 32)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7B_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 33)) ;
   nt_semantic_5F_instruction_5F_list_parse (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7D_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 38)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7D_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 36)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_galgas_33_ProgramDeclarations::rule_galgas_33_ProgramDeclarations_declaration_i0_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_before) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 34)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7B_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 35)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_before) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 32)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7B_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 33)) ;
   nt_semantic_5F_instruction_5F_list_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7D_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 38)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7D_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 36)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_galgas_33_ProgramDeclarations::rule_galgas_33_ProgramDeclarations_declaration_i1_ (GALGAS_galgas_33_DeclarationAST & ioArgument_ioDeclarations,
                                                                                                 C_Lexique_galgas_33_Scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_after) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 52)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7B_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 53)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_after) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 50)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7B_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 51)) ;
   GALGAS_semanticInstructionListAST var_prologueInstructionList ;
   nt_semantic_5F_instruction_5F_list_ (var_prologueInstructionList, inCompiler) ;
-  GALGAS_location var_endOfPrologue = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 55)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7D_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 56)) ;
-  ioArgument_ioDeclarations.mAttribute_mEpilogueDeclarationList.addAssign_operation (var_prologueInstructionList, var_endOfPrologue  COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 57)) ;
+  GALGAS_location var_endOfPrologue = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 53)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7D_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 54)) ;
+  ioArgument_ioDeclarations.mAttribute_mEpilogueDeclarationList.addAssign_operation (var_prologueInstructionList, var_endOfPrologue  COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 55)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_galgas_33_ProgramDeclarations::rule_galgas_33_ProgramDeclarations_declaration_i1_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_after) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 52)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7B_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 53)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_after) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 50)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7B_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 51)) ;
   nt_semantic_5F_instruction_5F_list_parse (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7D_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 56)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7D_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 54)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_galgas_33_ProgramDeclarations::rule_galgas_33_ProgramDeclarations_declaration_i1_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_after) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 52)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7B_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 53)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_after) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 50)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7B_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 51)) ;
   nt_semantic_5F_instruction_5F_list_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7D_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 56)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7D_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 54)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_galgas_33_ProgramDeclarations::rule_galgas_33_ProgramDeclarations_declaration_i2_ (GALGAS_galgas_33_DeclarationAST & ioArgument_ioDeclarations,
                                                                                                 C_Lexique_galgas_33_Scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_case) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 70)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__2E_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 71)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_case) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 68)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__2E_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 69)) ;
   GALGAS_lstring var_mSourceFileExtension = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 72)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_message) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 73)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 70)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_message) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 71)) ;
   GALGAS_lstring var_mSourceFileHelp = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 74)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 72)) ;
   GALGAS_lstring var_indexingGrammar ;
   switch (select_galgas_33_ProgramDeclarations_0 (inCompiler)) {
   case 1: {
-    var_indexingGrammar = GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 78)) ;
+    var_indexingGrammar = GALGAS_string::makeEmptyString ().reader_nowhere (SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 76)) ;
   } break ;
   case 2: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_indexing) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 80)) ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_with) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 81)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_indexing) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 78)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_with) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 79)) ;
     var_indexingGrammar = inCompiler->synthetizedAttribute_tokenString () ;
     inCompiler->enterIndexing (C_Lexique_galgas_33_Scanner::kIndexing_grammarComponentReference, "") ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 82)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 80)) ;
   } break ;
   default:
     break ;
   }
   GALGAS_lstring var_selector = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__3F_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 85)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__3F_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 83)) ;
   const enumGalgasBool test_0 = GALGAS_bool (kIsNotEqual, var_selector.mAttribute_string.objectCompare (GALGAS_string ("sourceFilePath"))).boolEnum () ;
   if (kBoolTrue == test_0) {
     GALGAS_location location_1 (var_selector.reader_location (HERE)) ; // Implicit use of 'location' reader
-    inCompiler->emitSemanticError (location_1, GALGAS_string ("the selector should be '\?sourceFilePath:'")  COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 87)) ;
+    inCompiler->emitSemanticError (location_1, GALGAS_string ("the selector should be '\?sourceFilePath:'")  COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 85)) ;
   }
   switch (select_galgas_33_ProgramDeclarations_1 (inCompiler)) {
   case 1: {
   } break ;
   case 2: {
     GALGAS_lstring var_typeName = inCompiler->synthetizedAttribute_tokenString () ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 91)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 89)) ;
     const enumGalgasBool test_2 = GALGAS_bool (kIsNotEqual, var_typeName.mAttribute_string.objectCompare (GALGAS_string ("lstring"))).boolEnum () ;
     if (kBoolTrue == test_2) {
       GALGAS_location location_3 (var_typeName.reader_location (HERE)) ; // Implicit use of 'location' reader
-      inCompiler->emitSemanticError (location_3, GALGAS_string ("the only type allowed here is '@lstring'")  COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 93)) ;
+      inCompiler->emitSemanticError (location_3, GALGAS_string ("the only type allowed here is '@lstring'")  COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 91)) ;
     }
   } break ;
   default:
@@ -128,48 +128,48 @@ void cParser_galgas_33_ProgramDeclarations::rule_galgas_33_ProgramDeclarations_d
     var_isUnused = GALGAS_bool (false) ;
   } break ;
   case 2: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_unused) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 100)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_unused) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 98)) ;
     var_isUnused = GALGAS_bool (true) ;
   } break ;
   default:
     break ;
   }
   GALGAS_lstring var_mSourceFileVariableName = inCompiler->synthetizedAttribute_tokenString () ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 103)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7B_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 105)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 101)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7B_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 103)) ;
   GALGAS_semanticInstructionListAST var_mInstructionList ;
   nt_semantic_5F_instruction_5F_list_ (var_mInstructionList, inCompiler) ;
-  GALGAS_location var_endOfInstructionList = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 107)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7D_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 108)) ;
-  ioArgument_ioDeclarations.mAttribute_mSourceRuleList.addAssign_operation (var_mSourceFileExtension, var_mSourceFileHelp, var_mSourceFileVariableName, var_isUnused, var_indexingGrammar, var_mInstructionList, var_endOfInstructionList  COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 109)) ;
+  GALGAS_location var_endOfInstructionList = GALGAS_location::constructor_here (inCompiler  COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 105)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7D_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 106)) ;
+  ioArgument_ioDeclarations.mAttribute_mSourceRuleList.addAssign_operation (var_mSourceFileExtension, var_mSourceFileHelp, var_mSourceFileVariableName, var_isUnused, var_indexingGrammar, var_mInstructionList, var_endOfInstructionList  COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 107)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_galgas_33_ProgramDeclarations::rule_galgas_33_ProgramDeclarations_declaration_i2_parse (C_Lexique_galgas_33_Scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_case) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 70)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__2E_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 71)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_case) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 68)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__2E_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 69)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 70)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_message) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 71)) ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 72)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_message) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 73)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 74)) ;
   switch (select_galgas_33_ProgramDeclarations_0 (inCompiler)) {
   case 1: {
   } break ;
   case 2: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_indexing) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 80)) ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_with) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 81)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_indexing) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 78)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_with) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 79)) ;
     inCompiler->enterIndexing (C_Lexique_galgas_33_Scanner::kIndexing_grammarComponentReference, "") ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 82)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 80)) ;
   } break ;
   default:
     break ;
   }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__3F_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 85)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__3F_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 83)) ;
   switch (select_galgas_33_ProgramDeclarations_1 (inCompiler)) {
   case 1: {
   } break ;
   case 2: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 91)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 89)) ;
   } break ;
   default:
     break ;
@@ -178,44 +178,44 @@ void cParser_galgas_33_ProgramDeclarations::rule_galgas_33_ProgramDeclarations_d
   case 1: {
   } break ;
   case 2: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_unused) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 100)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_unused) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 98)) ;
   } break ;
   default:
     break ;
   }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 103)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7B_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 105)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 101)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7B_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 103)) ;
   nt_semantic_5F_instruction_5F_list_parse (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7D_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 108)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7D_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 106)) ;
   inCompiler->resetTemplateString () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void cParser_galgas_33_ProgramDeclarations::rule_galgas_33_ProgramDeclarations_declaration_i2_indexing (C_Lexique_galgas_33_Scanner * inCompiler) {
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_case) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 70)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__2E_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 71)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_case) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 68)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__2E_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 69)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 70)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_message) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 71)) ;
   inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 72)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_message) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 73)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_literal_5F_string) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 74)) ;
   switch (select_galgas_33_ProgramDeclarations_0 (inCompiler)) {
   case 1: {
   } break ;
   case 2: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_indexing) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 80)) ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_with) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 81)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_indexing) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 78)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_with) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 79)) ;
     inCompiler->enterIndexing (C_Lexique_galgas_33_Scanner::kIndexing_grammarComponentReference, "") ;
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 82)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 80)) ;
   } break ;
   default:
     break ;
   }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__3F_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 85)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__3F_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 83)) ;
   switch (select_galgas_33_ProgramDeclarations_1 (inCompiler)) {
   case 1: {
   } break ;
   case 2: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 91)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_type_5F_name) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 89)) ;
   } break ;
   default:
     break ;
@@ -224,15 +224,15 @@ void cParser_galgas_33_ProgramDeclarations::rule_galgas_33_ProgramDeclarations_d
   case 1: {
   } break ;
   case 2: {
-    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_unused) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 100)) ;
+    inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_unused) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 98)) ;
   } break ;
   default:
     break ;
   }
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 103)) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7B_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 105)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken_identifier) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 101)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7B_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 103)) ;
   nt_semantic_5F_instruction_5F_list_indexing (inCompiler) ;
-  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7D_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 108)) ;
+  inCompiler->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7D_) COMMA_SOURCE_FILE ("galgas3ProgramDeclarations.galgas", 106)) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8779,7 +8779,7 @@ GALGAS_unifiedTypeMap_2D_proxy GALGAS_unifiedTypeMap_2D_proxy::extractObject (co
 #define END_PRODUCTION  (0)
 
 static const int16_t gProductions_lexiqueLL1grammar [] = {
-// At index 0 : <lexique_component_start_symbol>, in file 'lexiqueSyntax.ggs', line 24
+// At index 0 : <lexique_component_start_symbol>, in file 'lexiqueSyntax.ggs', line 22
   NONTERMINAL (20) // <select_lexiqueSyntax_0>
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_lexique) // $lexique$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
@@ -8790,7 +8790,7 @@ static const int16_t gProductions_lexiqueLL1grammar [] = {
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_lexique) // $lexique$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) // $;$
 , END_PRODUCTION
-// At index 10 : <template_delimitor>, in file 'lexiqueSyntax.ggs', line 114
+// At index 10 : <template_delimitor>, in file 'lexiqueSyntax.ggs', line 112
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_template) // $template$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) // $literal_string$
 , NONTERMINAL (24) // <select_lexiqueSyntax_4>
@@ -8798,36 +8798,36 @@ static const int16_t gProductions_lexiqueLL1grammar [] = {
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) // $literal_string$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) // $;$
 , END_PRODUCTION
-// At index 17 : <template_replacement>, in file 'lexiqueSyntax.ggs', line 138
+// At index 17 : <template_replacement>, in file 'lexiqueSyntax.ggs', line 136
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_replace) // $replace$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) // $literal_string$
 , NONTERMINAL (26) // <select_lexiqueSyntax_6>
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) // $;$
 , END_PRODUCTION
-// At index 22 : <lexical_message_declaration>, in file 'lexiqueSyntax.ggs', line 159
+// At index 22 : <lexical_message_declaration>, in file 'lexiqueSyntax.ggs', line 157
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_message) // $message$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) // $:$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) // $literal_string$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) // $;$
 , END_PRODUCTION
-// At index 28 : <lexical_implicit_rule>, in file 'lexiqueSyntax.ggs', line 171
+// At index 28 : <lexical_implicit_rule>, in file 'lexiqueSyntax.ggs', line 169
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_list) // $list$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , END_PRODUCTION
-// At index 31 : <lexical_explicit_rule>, in file 'lexiqueSyntax.ggs', line 179
+// At index 31 : <lexical_explicit_rule>, in file 'lexiqueSyntax.ggs', line 177
 , NONTERMINAL (11) // <lexical_expression>
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) // $:$
 , NONTERMINAL (27) // <select_lexiqueSyntax_7>
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_end) // $end$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_rule) // $rule$
 , END_PRODUCTION
-// At index 37 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 196
+// At index 37 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 194
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_send) // $send$
 , NONTERMINAL (7) // <lexical_send_instruction>
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) // $;$
 , END_PRODUCTION
-// At index 41 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 240
+// At index 41 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 238
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_repeat) // $repeat$
 , NONTERMINAL (30) // <select_lexiqueSyntax_10>
 , NONTERMINAL (8) // <repeat_while_branch>
@@ -8836,7 +8836,7 @@ static const int16_t gProductions_lexiqueLL1grammar [] = {
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_repeat) // $repeat$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) // $;$
 , END_PRODUCTION
-// At index 49 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 278
+// At index 49 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 276
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_select) // $select$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_when) // $when$
 , NONTERMINAL (11) // <lexical_expression>
@@ -8849,47 +8849,47 @@ static const int16_t gProductions_lexiqueLL1grammar [] = {
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_select) // $select$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) // $;$
 , END_PRODUCTION
-// At index 61 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 311
+// At index 61 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 309
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (36) // <select_lexiqueSyntax_16>
 , NONTERMINAL (37) // <select_lexiqueSyntax_17>
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) // $;$
 , END_PRODUCTION
-// At index 66 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 417
+// At index 66 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 415
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_error) // $error$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) // $;$
 , END_PRODUCTION
-// At index 70 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 427
+// At index 70 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 425
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_warning) // $warning$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) // $;$
 , END_PRODUCTION
-// At index 74 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 436
+// At index 74 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 434
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_drop) // $drop$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_terminal) // $terminal$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) // $;$
 , END_PRODUCTION
-// At index 78 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 446
+// At index 78 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 444
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_tag) // $tag$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) // $;$
 , END_PRODUCTION
-// At index 82 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 456
+// At index 82 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 454
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_rewind) // $rewind$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_send) // $send$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_terminal) // $terminal$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) // $;$
 , END_PRODUCTION
-// At index 88 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 469
+// At index 88 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 467
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_log) // $log$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) // $;$
 , END_PRODUCTION
-// At index 91 : <lexical_send_instruction>, in file 'lexiqueSyntax.ggs', line 205
+// At index 91 : <lexical_send_instruction>, in file 'lexiqueSyntax.ggs', line 203
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_terminal) // $terminal$
 , END_PRODUCTION
-// At index 93 : <lexical_send_instruction>, in file 'lexiqueSyntax.ggs', line 212
+// At index 93 : <lexical_send_instruction>, in file 'lexiqueSyntax.ggs', line 210
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_search) // $search$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_in) // $in$
@@ -8898,56 +8898,56 @@ static const int16_t gProductions_lexiqueLL1grammar [] = {
 , NONTERMINAL (28) // <select_lexiqueSyntax_8>
 , NONTERMINAL (29) // <select_lexiqueSyntax_9>
 , END_PRODUCTION
-// At index 101 : <repeat_while_branch>, in file 'lexiqueSyntax.ggs', line 263
+// At index 101 : <repeat_while_branch>, in file 'lexiqueSyntax.ggs', line 261
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_while) // $while$
 , NONTERMINAL (11) // <lexical_expression>
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) // $:$
 , NONTERMINAL (32) // <select_lexiqueSyntax_12>
 , END_PRODUCTION
-// At index 106 : <lexical_output_effective_argument>, in file 'lexiqueSyntax.ggs', line 359
+// At index 106 : <lexical_output_effective_argument>, in file 'lexiqueSyntax.ggs', line 357
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_char) // $literal_char$
 , END_PRODUCTION
-// At index 108 : <lexical_output_effective_argument>, in file 'lexiqueSyntax.ggs', line 367
+// At index 108 : <lexical_output_effective_argument>, in file 'lexiqueSyntax.ggs', line 365
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_unsigned_5F_literal_5F_integer) // $unsigned_literal_integer$
 , END_PRODUCTION
-// At index 110 : <lexical_output_effective_argument>, in file 'lexiqueSyntax.ggs', line 375
+// At index 110 : <lexical_output_effective_argument>, in file 'lexiqueSyntax.ggs', line 373
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2A_) // $*$
 , END_PRODUCTION
-// At index 112 : <lexical_output_effective_argument>, in file 'lexiqueSyntax.ggs', line 384
+// At index 112 : <lexical_output_effective_argument>, in file 'lexiqueSyntax.ggs', line 382
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (10) // <function_call_or_attribute>
 , END_PRODUCTION
-// At index 115 : <function_call_or_attribute>, in file 'lexiqueSyntax.ggs', line 392
+// At index 115 : <function_call_or_attribute>, in file 'lexiqueSyntax.ggs', line 390
 , END_PRODUCTION
-// At index 116 : <function_call_or_attribute>, in file 'lexiqueSyntax.ggs', line 398
+// At index 116 : <function_call_or_attribute>, in file 'lexiqueSyntax.ggs', line 396
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__28_) // $($
 , NONTERMINAL (39) // <select_lexiqueSyntax_19>
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__29_) // $)$
 , END_PRODUCTION
-// At index 120 : <lexical_expression>, in file 'lexiqueSyntax.ggs', line 477
+// At index 120 : <lexical_expression>, in file 'lexiqueSyntax.ggs', line 475
 , NONTERMINAL (12) // <lexical_term>
 , END_PRODUCTION
-// At index 122 : <lexical_term>, in file 'lexiqueSyntax.ggs', line 483
+// At index 122 : <lexical_term>, in file 'lexiqueSyntax.ggs', line 481
 , NONTERMINAL (13) // <lexical_factor>
 , NONTERMINAL (40) // <select_lexiqueSyntax_20>
 , END_PRODUCTION
-// At index 125 : <lexical_factor>, in file 'lexiqueSyntax.ggs', line 496
+// At index 125 : <lexical_factor>, in file 'lexiqueSyntax.ggs', line 494
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) // $literal_string$
 , END_PRODUCTION
-// At index 127 : <lexical_factor>, in file 'lexiqueSyntax.ggs', line 503
+// At index 127 : <lexical_factor>, in file 'lexiqueSyntax.ggs', line 501
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__7E_) // $~$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) // $literal_string$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_error) // $error$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , END_PRODUCTION
-// At index 132 : <lexical_factor>, in file 'lexiqueSyntax.ggs', line 513
+// At index 132 : <lexical_factor>, in file 'lexiqueSyntax.ggs', line 511
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_char) // $literal_char$
 , NONTERMINAL (41) // <select_lexiqueSyntax_21>
 , END_PRODUCTION
-// At index 135 : <lexical_factor>, in file 'lexiqueSyntax.ggs', line 526
+// At index 135 : <lexical_factor>, in file 'lexiqueSyntax.ggs', line 524
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , END_PRODUCTION
-// At index 137 : <lexical_list_declaration>, in file 'lexiqueSyntax.ggs', line 533
+// At index 137 : <lexical_list_declaration>, in file 'lexiqueSyntax.ggs', line 531
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_list) // $list$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (42) // <select_lexiqueSyntax_22>
@@ -8960,17 +8960,17 @@ static const int16_t gProductions_lexiqueLL1grammar [] = {
 , NONTERMINAL (44) // <select_lexiqueSyntax_24>
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) // $;$
 , END_PRODUCTION
-// At index 149 : <lexical_list_entry>, in file 'lexiqueSyntax.ggs', line 568
+// At index 149 : <lexical_list_entry>, in file 'lexiqueSyntax.ggs', line 566
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) // $literal_string$
 , NONTERMINAL (45) // <select_lexiqueSyntax_25>
 , NONTERMINAL (46) // <select_lexiqueSyntax_26>
 , END_PRODUCTION
-// At index 153 : <lexical_attribute_declaration>, in file 'lexiqueSyntax.ggs', line 591
+// At index 153 : <lexical_attribute_declaration>, in file 'lexiqueSyntax.ggs', line 589
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) // $type_name$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) // $;$
 , END_PRODUCTION
-// At index 157 : <terminal_declaration>, in file 'lexiqueSyntax.ggs', line 600
+// At index 157 : <terminal_declaration>, in file 'lexiqueSyntax.ggs', line 598
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_terminal) // $terminal$
 , NONTERMINAL (47) // <select_lexiqueSyntax_27>
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_error) // $error$
@@ -8980,71 +8980,71 @@ static const int16_t gProductions_lexiqueLL1grammar [] = {
 , NONTERMINAL (49) // <select_lexiqueSyntax_29>
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) // $;$
 , END_PRODUCTION
-// At index 166 : <style_declaration>, in file 'lexiqueSyntax.ggs', line 640
+// At index 166 : <style_declaration>, in file 'lexiqueSyntax.ggs', line 638
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_style) // $style$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2D__3E_) // $->$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) // $literal_string$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) // $;$
 , END_PRODUCTION
-// At index 172 : <extern_routine_or_function_declaration>, in file 'lexiqueSyntax.ggs', line 651
+// At index 172 : <extern_routine_or_function_declaration>, in file 'lexiqueSyntax.ggs', line 649
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_extern) // $extern$
 , NONTERMINAL (51) // <select_lexiqueSyntax_31>
 , END_PRODUCTION
 //---- Added productions from 'select' and 'repeat' instructions
-// At index 175 : <select_lexiqueSyntax_0>, in file 'lexiqueSyntax.ggs', line 26
+// At index 175 : <select_lexiqueSyntax_0>, in file 'lexiqueSyntax.ggs', line 24
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_template) // $template$
 , END_PRODUCTION
-// At index 177 : <select_lexiqueSyntax_0>, in file 'lexiqueSyntax.ggs', line 26
+// At index 177 : <select_lexiqueSyntax_0>, in file 'lexiqueSyntax.ggs', line 24
 , END_PRODUCTION
-// At index 178 : <select_lexiqueSyntax_1>, in file 'lexiqueSyntax.ggs', line 37
+// At index 178 : <select_lexiqueSyntax_1>, in file 'lexiqueSyntax.ggs', line 35
 , END_PRODUCTION
-// At index 179 : <select_lexiqueSyntax_1>, in file 'lexiqueSyntax.ggs', line 37
+// At index 179 : <select_lexiqueSyntax_1>, in file 'lexiqueSyntax.ggs', line 35
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_indexing) // $indexing$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_in) // $in$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) // $literal_string$
 , END_PRODUCTION
-// At index 183 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 58
+// At index 183 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 56
 , END_PRODUCTION
-// At index 184 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 58
+// At index 184 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 56
 , NONTERMINAL (19) // <extern_routine_or_function_declaration>
 , NONTERMINAL (22) // <select_lexiqueSyntax_2>
 , END_PRODUCTION
-// At index 187 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 58
+// At index 187 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 56
 , NONTERMINAL (1) // <template_delimitor>
 , NONTERMINAL (22) // <select_lexiqueSyntax_2>
 , END_PRODUCTION
-// At index 190 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 58
+// At index 190 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 56
 , NONTERMINAL (2) // <template_replacement>
 , NONTERMINAL (22) // <select_lexiqueSyntax_2>
 , END_PRODUCTION
-// At index 193 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 58
+// At index 193 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 56
 , NONTERMINAL (16) // <lexical_attribute_declaration>
 , NONTERMINAL (22) // <select_lexiqueSyntax_2>
 , END_PRODUCTION
-// At index 196 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 58
+// At index 196 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 56
 , NONTERMINAL (18) // <style_declaration>
 , NONTERMINAL (22) // <select_lexiqueSyntax_2>
 , END_PRODUCTION
-// At index 199 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 58
+// At index 199 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 56
 , NONTERMINAL (17) // <terminal_declaration>
 , NONTERMINAL (22) // <select_lexiqueSyntax_2>
 , END_PRODUCTION
-// At index 202 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 58
+// At index 202 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 56
 , NONTERMINAL (14) // <lexical_list_declaration>
 , NONTERMINAL (22) // <select_lexiqueSyntax_2>
 , END_PRODUCTION
-// At index 205 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 58
+// At index 205 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 56
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_rule) // $rule$
 , NONTERMINAL (23) // <select_lexiqueSyntax_3>
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) // $;$
 , NONTERMINAL (22) // <select_lexiqueSyntax_2>
 , END_PRODUCTION
-// At index 210 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 58
+// At index 210 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 56
 , NONTERMINAL (3) // <lexical_message_declaration>
 , NONTERMINAL (22) // <select_lexiqueSyntax_2>
 , END_PRODUCTION
-// At index 213 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 58
+// At index 213 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 56
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_indexing) // $indexing$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) // $:$
@@ -9052,45 +9052,45 @@ static const int16_t gProductions_lexiqueLL1grammar [] = {
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) // $;$
 , NONTERMINAL (22) // <select_lexiqueSyntax_2>
 , END_PRODUCTION
-// At index 220 : <select_lexiqueSyntax_3>, in file 'lexiqueSyntax.ggs', line 75
+// At index 220 : <select_lexiqueSyntax_3>, in file 'lexiqueSyntax.ggs', line 73
 , NONTERMINAL (5) // <lexical_explicit_rule>
 , END_PRODUCTION
-// At index 222 : <select_lexiqueSyntax_3>, in file 'lexiqueSyntax.ggs', line 75
+// At index 222 : <select_lexiqueSyntax_3>, in file 'lexiqueSyntax.ggs', line 73
 , NONTERMINAL (4) // <lexical_implicit_rule>
 , END_PRODUCTION
-// At index 224 : <select_lexiqueSyntax_4>, in file 'lexiqueSyntax.ggs', line 118
+// At index 224 : <select_lexiqueSyntax_4>, in file 'lexiqueSyntax.ggs', line 116
 , END_PRODUCTION
-// At index 225 : <select_lexiqueSyntax_4>, in file 'lexiqueSyntax.ggs', line 118
+// At index 225 : <select_lexiqueSyntax_4>, in file 'lexiqueSyntax.ggs', line 116
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_feature) // $feature$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (25) // <select_lexiqueSyntax_5>
 , END_PRODUCTION
-// At index 229 : <select_lexiqueSyntax_5>, in file 'lexiqueSyntax.ggs', line 122
+// At index 229 : <select_lexiqueSyntax_5>, in file 'lexiqueSyntax.ggs', line 120
 , END_PRODUCTION
-// At index 230 : <select_lexiqueSyntax_5>, in file 'lexiqueSyntax.ggs', line 122
+// At index 230 : <select_lexiqueSyntax_5>, in file 'lexiqueSyntax.ggs', line 120
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2C_) // $,$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (25) // <select_lexiqueSyntax_5>
 , END_PRODUCTION
-// At index 234 : <select_lexiqueSyntax_6>, in file 'lexiqueSyntax.ggs', line 143
+// At index 234 : <select_lexiqueSyntax_6>, in file 'lexiqueSyntax.ggs', line 141
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2E__2E__2E_) // $...$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) // $literal_string$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) // $:$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , END_PRODUCTION
-// At index 239 : <select_lexiqueSyntax_6>, in file 'lexiqueSyntax.ggs', line 143
+// At index 239 : <select_lexiqueSyntax_6>, in file 'lexiqueSyntax.ggs', line 141
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2D__3E_) // $->$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) // $literal_string$
 , END_PRODUCTION
-// At index 242 : <select_lexiqueSyntax_7>, in file 'lexiqueSyntax.ggs', line 184
+// At index 242 : <select_lexiqueSyntax_7>, in file 'lexiqueSyntax.ggs', line 182
 , END_PRODUCTION
-// At index 243 : <select_lexiqueSyntax_7>, in file 'lexiqueSyntax.ggs', line 184
+// At index 243 : <select_lexiqueSyntax_7>, in file 'lexiqueSyntax.ggs', line 182
 , NONTERMINAL (6) // <lexical_instruction>
 , NONTERMINAL (27) // <select_lexiqueSyntax_7>
 , END_PRODUCTION
-// At index 246 : <select_lexiqueSyntax_8>, in file 'lexiqueSyntax.ggs', line 215
+// At index 246 : <select_lexiqueSyntax_8>, in file 'lexiqueSyntax.ggs', line 213
 , END_PRODUCTION
-// At index 247 : <select_lexiqueSyntax_8>, in file 'lexiqueSyntax.ggs', line 215
+// At index 247 : <select_lexiqueSyntax_8>, in file 'lexiqueSyntax.ggs', line 213
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_search) // $search$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_in) // $in$
@@ -9098,165 +9098,165 @@ static const int16_t gProductions_lexiqueLL1grammar [] = {
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_default) // $default$
 , NONTERMINAL (28) // <select_lexiqueSyntax_8>
 , END_PRODUCTION
-// At index 254 : <select_lexiqueSyntax_9>, in file 'lexiqueSyntax.ggs', line 225
+// At index 254 : <select_lexiqueSyntax_9>, in file 'lexiqueSyntax.ggs', line 223
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_terminal) // $terminal$
 , END_PRODUCTION
-// At index 256 : <select_lexiqueSyntax_9>, in file 'lexiqueSyntax.ggs', line 225
+// At index 256 : <select_lexiqueSyntax_9>, in file 'lexiqueSyntax.ggs', line 223
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_error) // $error$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , END_PRODUCTION
-// At index 259 : <select_lexiqueSyntax_10>, in file 'lexiqueSyntax.ggs', line 243
+// At index 259 : <select_lexiqueSyntax_10>, in file 'lexiqueSyntax.ggs', line 241
 , END_PRODUCTION
-// At index 260 : <select_lexiqueSyntax_10>, in file 'lexiqueSyntax.ggs', line 243
+// At index 260 : <select_lexiqueSyntax_10>, in file 'lexiqueSyntax.ggs', line 241
 , NONTERMINAL (6) // <lexical_instruction>
 , NONTERMINAL (30) // <select_lexiqueSyntax_10>
 , END_PRODUCTION
-// At index 263 : <select_lexiqueSyntax_11>, in file 'lexiqueSyntax.ggs', line 248
+// At index 263 : <select_lexiqueSyntax_11>, in file 'lexiqueSyntax.ggs', line 246
 , END_PRODUCTION
-// At index 264 : <select_lexiqueSyntax_11>, in file 'lexiqueSyntax.ggs', line 248
+// At index 264 : <select_lexiqueSyntax_11>, in file 'lexiqueSyntax.ggs', line 246
 , NONTERMINAL (8) // <repeat_while_branch>
 , NONTERMINAL (31) // <select_lexiqueSyntax_11>
 , END_PRODUCTION
-// At index 267 : <select_lexiqueSyntax_12>, in file 'lexiqueSyntax.ggs', line 269
+// At index 267 : <select_lexiqueSyntax_12>, in file 'lexiqueSyntax.ggs', line 267
 , END_PRODUCTION
-// At index 268 : <select_lexiqueSyntax_12>, in file 'lexiqueSyntax.ggs', line 269
+// At index 268 : <select_lexiqueSyntax_12>, in file 'lexiqueSyntax.ggs', line 267
 , NONTERMINAL (6) // <lexical_instruction>
 , NONTERMINAL (32) // <select_lexiqueSyntax_12>
 , END_PRODUCTION
-// At index 271 : <select_lexiqueSyntax_13>, in file 'lexiqueSyntax.ggs', line 281
+// At index 271 : <select_lexiqueSyntax_13>, in file 'lexiqueSyntax.ggs', line 279
 , END_PRODUCTION
-// At index 272 : <select_lexiqueSyntax_13>, in file 'lexiqueSyntax.ggs', line 281
+// At index 272 : <select_lexiqueSyntax_13>, in file 'lexiqueSyntax.ggs', line 279
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_when) // $when$
 , NONTERMINAL (11) // <lexical_expression>
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) // $:$
 , NONTERMINAL (34) // <select_lexiqueSyntax_14>
 , NONTERMINAL (33) // <select_lexiqueSyntax_13>
 , END_PRODUCTION
-// At index 278 : <select_lexiqueSyntax_14>, in file 'lexiqueSyntax.ggs', line 287
+// At index 278 : <select_lexiqueSyntax_14>, in file 'lexiqueSyntax.ggs', line 285
 , END_PRODUCTION
-// At index 279 : <select_lexiqueSyntax_14>, in file 'lexiqueSyntax.ggs', line 287
+// At index 279 : <select_lexiqueSyntax_14>, in file 'lexiqueSyntax.ggs', line 285
 , NONTERMINAL (6) // <lexical_instruction>
 , NONTERMINAL (34) // <select_lexiqueSyntax_14>
 , END_PRODUCTION
-// At index 282 : <select_lexiqueSyntax_15>, in file 'lexiqueSyntax.ggs', line 296
+// At index 282 : <select_lexiqueSyntax_15>, in file 'lexiqueSyntax.ggs', line 294
 , END_PRODUCTION
-// At index 283 : <select_lexiqueSyntax_15>, in file 'lexiqueSyntax.ggs', line 296
+// At index 283 : <select_lexiqueSyntax_15>, in file 'lexiqueSyntax.ggs', line 294
 , NONTERMINAL (6) // <lexical_instruction>
 , NONTERMINAL (35) // <select_lexiqueSyntax_15>
 , END_PRODUCTION
-// At index 286 : <select_lexiqueSyntax_16>, in file 'lexiqueSyntax.ggs', line 316
+// At index 286 : <select_lexiqueSyntax_16>, in file 'lexiqueSyntax.ggs', line 314
 , END_PRODUCTION
-// At index 287 : <select_lexiqueSyntax_16>, in file 'lexiqueSyntax.ggs', line 316
+// At index 287 : <select_lexiqueSyntax_16>, in file 'lexiqueSyntax.ggs', line 314
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__21_) // $!$
 , NONTERMINAL (9) // <lexical_output_effective_argument>
 , NONTERMINAL (36) // <select_lexiqueSyntax_16>
 , END_PRODUCTION
-// At index 291 : <select_lexiqueSyntax_16>, in file 'lexiqueSyntax.ggs', line 316
+// At index 291 : <select_lexiqueSyntax_16>, in file 'lexiqueSyntax.ggs', line 314
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__21__3F_) // $!?$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (36) // <select_lexiqueSyntax_16>
 , END_PRODUCTION
-// At index 295 : <select_lexiqueSyntax_17>, in file 'lexiqueSyntax.ggs', line 337
+// At index 295 : <select_lexiqueSyntax_17>, in file 'lexiqueSyntax.ggs', line 335
 , END_PRODUCTION
-// At index 296 : <select_lexiqueSyntax_17>, in file 'lexiqueSyntax.ggs', line 337
+// At index 296 : <select_lexiqueSyntax_17>, in file 'lexiqueSyntax.ggs', line 335
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_error) // $error$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (38) // <select_lexiqueSyntax_18>
 , END_PRODUCTION
-// At index 300 : <select_lexiqueSyntax_18>, in file 'lexiqueSyntax.ggs', line 340
+// At index 300 : <select_lexiqueSyntax_18>, in file 'lexiqueSyntax.ggs', line 338
 , END_PRODUCTION
-// At index 301 : <select_lexiqueSyntax_18>, in file 'lexiqueSyntax.ggs', line 340
+// At index 301 : <select_lexiqueSyntax_18>, in file 'lexiqueSyntax.ggs', line 338
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2C_) // $,$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (38) // <select_lexiqueSyntax_18>
 , END_PRODUCTION
-// At index 305 : <select_lexiqueSyntax_19>, in file 'lexiqueSyntax.ggs', line 401
+// At index 305 : <select_lexiqueSyntax_19>, in file 'lexiqueSyntax.ggs', line 399
 , END_PRODUCTION
-// At index 306 : <select_lexiqueSyntax_19>, in file 'lexiqueSyntax.ggs', line 401
+// At index 306 : <select_lexiqueSyntax_19>, in file 'lexiqueSyntax.ggs', line 399
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__21_) // $!$
 , NONTERMINAL (9) // <lexical_output_effective_argument>
 , NONTERMINAL (39) // <select_lexiqueSyntax_19>
 , END_PRODUCTION
-// At index 310 : <select_lexiqueSyntax_20>, in file 'lexiqueSyntax.ggs', line 485
+// At index 310 : <select_lexiqueSyntax_20>, in file 'lexiqueSyntax.ggs', line 483
 , END_PRODUCTION
-// At index 311 : <select_lexiqueSyntax_20>, in file 'lexiqueSyntax.ggs', line 485
+// At index 311 : <select_lexiqueSyntax_20>, in file 'lexiqueSyntax.ggs', line 483
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__7C_) // $|$
 , NONTERMINAL (13) // <lexical_factor>
 , NONTERMINAL (40) // <select_lexiqueSyntax_20>
 , END_PRODUCTION
-// At index 315 : <select_lexiqueSyntax_21>, in file 'lexiqueSyntax.ggs', line 515
+// At index 315 : <select_lexiqueSyntax_21>, in file 'lexiqueSyntax.ggs', line 513
 , END_PRODUCTION
-// At index 316 : <select_lexiqueSyntax_21>, in file 'lexiqueSyntax.ggs', line 515
+// At index 316 : <select_lexiqueSyntax_21>, in file 'lexiqueSyntax.ggs', line 513
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2D__3E_) // $->$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_char) // $literal_char$
 , END_PRODUCTION
-// At index 319 : <select_lexiqueSyntax_22>, in file 'lexiqueSyntax.ggs', line 537
+// At index 319 : <select_lexiqueSyntax_22>, in file 'lexiqueSyntax.ggs', line 535
 , END_PRODUCTION
-// At index 320 : <select_lexiqueSyntax_22>, in file 'lexiqueSyntax.ggs', line 537
+// At index 320 : <select_lexiqueSyntax_22>, in file 'lexiqueSyntax.ggs', line 535
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__21_) // $!$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (42) // <select_lexiqueSyntax_22>
 , END_PRODUCTION
-// At index 324 : <select_lexiqueSyntax_23>, in file 'lexiqueSyntax.ggs', line 547
+// At index 324 : <select_lexiqueSyntax_23>, in file 'lexiqueSyntax.ggs', line 545
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_style) // $style$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , END_PRODUCTION
-// At index 327 : <select_lexiqueSyntax_23>, in file 'lexiqueSyntax.ggs', line 547
+// At index 327 : <select_lexiqueSyntax_23>, in file 'lexiqueSyntax.ggs', line 545
 , END_PRODUCTION
-// At index 328 : <select_lexiqueSyntax_24>, in file 'lexiqueSyntax.ggs', line 556
+// At index 328 : <select_lexiqueSyntax_24>, in file 'lexiqueSyntax.ggs', line 554
 , END_PRODUCTION
-// At index 329 : <select_lexiqueSyntax_24>, in file 'lexiqueSyntax.ggs', line 556
+// At index 329 : <select_lexiqueSyntax_24>, in file 'lexiqueSyntax.ggs', line 554
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2C_) // $,$
 , NONTERMINAL (15) // <lexical_list_entry>
 , NONTERMINAL (44) // <select_lexiqueSyntax_24>
 , END_PRODUCTION
-// At index 333 : <select_lexiqueSyntax_25>, in file 'lexiqueSyntax.ggs', line 571
+// At index 333 : <select_lexiqueSyntax_25>, in file 'lexiqueSyntax.ggs', line 569
 , END_PRODUCTION
-// At index 334 : <select_lexiqueSyntax_25>, in file 'lexiqueSyntax.ggs', line 571
+// At index 334 : <select_lexiqueSyntax_25>, in file 'lexiqueSyntax.ggs', line 569
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_feature) // $feature$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , END_PRODUCTION
-// At index 337 : <select_lexiqueSyntax_26>, in file 'lexiqueSyntax.ggs', line 580
+// At index 337 : <select_lexiqueSyntax_26>, in file 'lexiqueSyntax.ggs', line 578
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2D__3E_) // $->$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_terminal) // $terminal$
 , END_PRODUCTION
-// At index 340 : <select_lexiqueSyntax_26>, in file 'lexiqueSyntax.ggs', line 580
+// At index 340 : <select_lexiqueSyntax_26>, in file 'lexiqueSyntax.ggs', line 578
 , END_PRODUCTION
-// At index 341 : <select_lexiqueSyntax_27>, in file 'lexiqueSyntax.ggs', line 603
+// At index 341 : <select_lexiqueSyntax_27>, in file 'lexiqueSyntax.ggs', line 601
 , END_PRODUCTION
-// At index 342 : <select_lexiqueSyntax_27>, in file 'lexiqueSyntax.ggs', line 603
+// At index 342 : <select_lexiqueSyntax_27>, in file 'lexiqueSyntax.ggs', line 601
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__21_) // $!$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (47) // <select_lexiqueSyntax_27>
 , END_PRODUCTION
-// At index 346 : <select_lexiqueSyntax_28>, in file 'lexiqueSyntax.ggs', line 613
+// At index 346 : <select_lexiqueSyntax_28>, in file 'lexiqueSyntax.ggs', line 611
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_style) // $style$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , END_PRODUCTION
-// At index 349 : <select_lexiqueSyntax_28>, in file 'lexiqueSyntax.ggs', line 613
+// At index 349 : <select_lexiqueSyntax_28>, in file 'lexiqueSyntax.ggs', line 611
 , END_PRODUCTION
-// At index 350 : <select_lexiqueSyntax_29>, in file 'lexiqueSyntax.ggs', line 621
+// At index 350 : <select_lexiqueSyntax_29>, in file 'lexiqueSyntax.ggs', line 619
 , END_PRODUCTION
-// At index 351 : <select_lexiqueSyntax_29>, in file 'lexiqueSyntax.ggs', line 621
+// At index 351 : <select_lexiqueSyntax_29>, in file 'lexiqueSyntax.ggs', line 619
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_feature) // $feature$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (50) // <select_lexiqueSyntax_30>
 , END_PRODUCTION
-// At index 355 : <select_lexiqueSyntax_30>, in file 'lexiqueSyntax.ggs', line 625
+// At index 355 : <select_lexiqueSyntax_30>, in file 'lexiqueSyntax.ggs', line 623
 , END_PRODUCTION
-// At index 356 : <select_lexiqueSyntax_30>, in file 'lexiqueSyntax.ggs', line 625
+// At index 356 : <select_lexiqueSyntax_30>, in file 'lexiqueSyntax.ggs', line 623
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2C_) // $,$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (50) // <select_lexiqueSyntax_30>
 , END_PRODUCTION
-// At index 360 : <select_lexiqueSyntax_31>, in file 'lexiqueSyntax.ggs', line 655
+// At index 360 : <select_lexiqueSyntax_31>, in file 'lexiqueSyntax.ggs', line 653
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_routine) // $routine$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (52) // <select_lexiqueSyntax_32>
 , NONTERMINAL (54) // <select_lexiqueSyntax_34>
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) // $;$
 , END_PRODUCTION
-// At index 366 : <select_lexiqueSyntax_31>, in file 'lexiqueSyntax.ggs', line 655
+// At index 366 : <select_lexiqueSyntax_31>, in file 'lexiqueSyntax.ggs', line 653
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_function) // $function$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (56) // <select_lexiqueSyntax_36>
@@ -9264,37 +9264,37 @@ static const int16_t gProductions_lexiqueLL1grammar [] = {
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) // $type_name$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) // $;$
 , END_PRODUCTION
-// At index 373 : <select_lexiqueSyntax_32>, in file 'lexiqueSyntax.ggs', line 660
+// At index 373 : <select_lexiqueSyntax_32>, in file 'lexiqueSyntax.ggs', line 658
 , END_PRODUCTION
-// At index 374 : <select_lexiqueSyntax_32>, in file 'lexiqueSyntax.ggs', line 660
+// At index 374 : <select_lexiqueSyntax_32>, in file 'lexiqueSyntax.ggs', line 658
 , NONTERMINAL (53) // <select_lexiqueSyntax_33>
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) // $type_name$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (52) // <select_lexiqueSyntax_32>
 , END_PRODUCTION
-// At index 379 : <select_lexiqueSyntax_33>, in file 'lexiqueSyntax.ggs', line 663
+// At index 379 : <select_lexiqueSyntax_33>, in file 'lexiqueSyntax.ggs', line 661
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F__21_) // $?!$
 , END_PRODUCTION
-// At index 381 : <select_lexiqueSyntax_33>, in file 'lexiqueSyntax.ggs', line 663
+// At index 381 : <select_lexiqueSyntax_33>, in file 'lexiqueSyntax.ggs', line 661
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) // $?$
 , END_PRODUCTION
-// At index 383 : <select_lexiqueSyntax_34>, in file 'lexiqueSyntax.ggs', line 681
+// At index 383 : <select_lexiqueSyntax_34>, in file 'lexiqueSyntax.ggs', line 679
 , END_PRODUCTION
-// At index 384 : <select_lexiqueSyntax_34>, in file 'lexiqueSyntax.ggs', line 681
+// At index 384 : <select_lexiqueSyntax_34>, in file 'lexiqueSyntax.ggs', line 679
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_error) // $error$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (55) // <select_lexiqueSyntax_35>
 , END_PRODUCTION
-// At index 388 : <select_lexiqueSyntax_35>, in file 'lexiqueSyntax.ggs', line 684
+// At index 388 : <select_lexiqueSyntax_35>, in file 'lexiqueSyntax.ggs', line 682
 , END_PRODUCTION
-// At index 389 : <select_lexiqueSyntax_35>, in file 'lexiqueSyntax.ggs', line 684
+// At index 389 : <select_lexiqueSyntax_35>, in file 'lexiqueSyntax.ggs', line 682
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2C_) // $,$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (55) // <select_lexiqueSyntax_35>
 , END_PRODUCTION
-// At index 393 : <select_lexiqueSyntax_36>, in file 'lexiqueSyntax.ggs', line 698
+// At index 393 : <select_lexiqueSyntax_36>, in file 'lexiqueSyntax.ggs', line 696
 , END_PRODUCTION
-// At index 394 : <select_lexiqueSyntax_36>, in file 'lexiqueSyntax.ggs', line 698
+// At index 394 : <select_lexiqueSyntax_36>, in file 'lexiqueSyntax.ggs', line 696
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) // $?$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) // $type_name$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
@@ -9443,127 +9443,127 @@ static const cProductionNameDescriptor gProductionNames_lexiqueLL1grammar [122] 
 //---------------------------------------------------------------------------------------------------------------------*
 
 static const int16_t gProductionIndexes_lexiqueLL1grammar [122] = {
-0, // index 0 : <lexique_component_start_symbol>, in file 'lexiqueSyntax.ggs', line 24
-10, // index 1 : <template_delimitor>, in file 'lexiqueSyntax.ggs', line 114
-17, // index 2 : <template_replacement>, in file 'lexiqueSyntax.ggs', line 138
-22, // index 3 : <lexical_message_declaration>, in file 'lexiqueSyntax.ggs', line 159
-28, // index 4 : <lexical_implicit_rule>, in file 'lexiqueSyntax.ggs', line 171
-31, // index 5 : <lexical_explicit_rule>, in file 'lexiqueSyntax.ggs', line 179
-37, // index 6 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 196
-41, // index 7 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 240
-49, // index 8 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 278
-61, // index 9 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 311
-66, // index 10 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 417
-70, // index 11 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 427
-74, // index 12 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 436
-78, // index 13 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 446
-82, // index 14 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 456
-88, // index 15 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 469
-91, // index 16 : <lexical_send_instruction>, in file 'lexiqueSyntax.ggs', line 205
-93, // index 17 : <lexical_send_instruction>, in file 'lexiqueSyntax.ggs', line 212
-101, // index 18 : <repeat_while_branch>, in file 'lexiqueSyntax.ggs', line 263
-106, // index 19 : <lexical_output_effective_argument>, in file 'lexiqueSyntax.ggs', line 359
-108, // index 20 : <lexical_output_effective_argument>, in file 'lexiqueSyntax.ggs', line 367
-110, // index 21 : <lexical_output_effective_argument>, in file 'lexiqueSyntax.ggs', line 375
-112, // index 22 : <lexical_output_effective_argument>, in file 'lexiqueSyntax.ggs', line 384
-115, // index 23 : <function_call_or_attribute>, in file 'lexiqueSyntax.ggs', line 392
-116, // index 24 : <function_call_or_attribute>, in file 'lexiqueSyntax.ggs', line 398
-120, // index 25 : <lexical_expression>, in file 'lexiqueSyntax.ggs', line 477
-122, // index 26 : <lexical_term>, in file 'lexiqueSyntax.ggs', line 483
-125, // index 27 : <lexical_factor>, in file 'lexiqueSyntax.ggs', line 496
-127, // index 28 : <lexical_factor>, in file 'lexiqueSyntax.ggs', line 503
-132, // index 29 : <lexical_factor>, in file 'lexiqueSyntax.ggs', line 513
-135, // index 30 : <lexical_factor>, in file 'lexiqueSyntax.ggs', line 526
-137, // index 31 : <lexical_list_declaration>, in file 'lexiqueSyntax.ggs', line 533
-149, // index 32 : <lexical_list_entry>, in file 'lexiqueSyntax.ggs', line 568
-153, // index 33 : <lexical_attribute_declaration>, in file 'lexiqueSyntax.ggs', line 591
-157, // index 34 : <terminal_declaration>, in file 'lexiqueSyntax.ggs', line 600
-166, // index 35 : <style_declaration>, in file 'lexiqueSyntax.ggs', line 640
-172, // index 36 : <extern_routine_or_function_declaration>, in file 'lexiqueSyntax.ggs', line 651
-175, // index 37 : <select_lexiqueSyntax_0>, in file 'lexiqueSyntax.ggs', line 26
-177, // index 38 : <select_lexiqueSyntax_0>, in file 'lexiqueSyntax.ggs', line 26
-178, // index 39 : <select_lexiqueSyntax_1>, in file 'lexiqueSyntax.ggs', line 37
-179, // index 40 : <select_lexiqueSyntax_1>, in file 'lexiqueSyntax.ggs', line 37
-183, // index 41 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 58
-184, // index 42 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 58
-187, // index 43 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 58
-190, // index 44 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 58
-193, // index 45 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 58
-196, // index 46 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 58
-199, // index 47 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 58
-202, // index 48 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 58
-205, // index 49 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 58
-210, // index 50 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 58
-213, // index 51 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 58
-220, // index 52 : <select_lexiqueSyntax_3>, in file 'lexiqueSyntax.ggs', line 75
-222, // index 53 : <select_lexiqueSyntax_3>, in file 'lexiqueSyntax.ggs', line 75
-224, // index 54 : <select_lexiqueSyntax_4>, in file 'lexiqueSyntax.ggs', line 118
-225, // index 55 : <select_lexiqueSyntax_4>, in file 'lexiqueSyntax.ggs', line 118
-229, // index 56 : <select_lexiqueSyntax_5>, in file 'lexiqueSyntax.ggs', line 122
-230, // index 57 : <select_lexiqueSyntax_5>, in file 'lexiqueSyntax.ggs', line 122
-234, // index 58 : <select_lexiqueSyntax_6>, in file 'lexiqueSyntax.ggs', line 143
-239, // index 59 : <select_lexiqueSyntax_6>, in file 'lexiqueSyntax.ggs', line 143
-242, // index 60 : <select_lexiqueSyntax_7>, in file 'lexiqueSyntax.ggs', line 184
-243, // index 61 : <select_lexiqueSyntax_7>, in file 'lexiqueSyntax.ggs', line 184
-246, // index 62 : <select_lexiqueSyntax_8>, in file 'lexiqueSyntax.ggs', line 215
-247, // index 63 : <select_lexiqueSyntax_8>, in file 'lexiqueSyntax.ggs', line 215
-254, // index 64 : <select_lexiqueSyntax_9>, in file 'lexiqueSyntax.ggs', line 225
-256, // index 65 : <select_lexiqueSyntax_9>, in file 'lexiqueSyntax.ggs', line 225
-259, // index 66 : <select_lexiqueSyntax_10>, in file 'lexiqueSyntax.ggs', line 243
-260, // index 67 : <select_lexiqueSyntax_10>, in file 'lexiqueSyntax.ggs', line 243
-263, // index 68 : <select_lexiqueSyntax_11>, in file 'lexiqueSyntax.ggs', line 248
-264, // index 69 : <select_lexiqueSyntax_11>, in file 'lexiqueSyntax.ggs', line 248
-267, // index 70 : <select_lexiqueSyntax_12>, in file 'lexiqueSyntax.ggs', line 269
-268, // index 71 : <select_lexiqueSyntax_12>, in file 'lexiqueSyntax.ggs', line 269
-271, // index 72 : <select_lexiqueSyntax_13>, in file 'lexiqueSyntax.ggs', line 281
-272, // index 73 : <select_lexiqueSyntax_13>, in file 'lexiqueSyntax.ggs', line 281
-278, // index 74 : <select_lexiqueSyntax_14>, in file 'lexiqueSyntax.ggs', line 287
-279, // index 75 : <select_lexiqueSyntax_14>, in file 'lexiqueSyntax.ggs', line 287
-282, // index 76 : <select_lexiqueSyntax_15>, in file 'lexiqueSyntax.ggs', line 296
-283, // index 77 : <select_lexiqueSyntax_15>, in file 'lexiqueSyntax.ggs', line 296
-286, // index 78 : <select_lexiqueSyntax_16>, in file 'lexiqueSyntax.ggs', line 316
-287, // index 79 : <select_lexiqueSyntax_16>, in file 'lexiqueSyntax.ggs', line 316
-291, // index 80 : <select_lexiqueSyntax_16>, in file 'lexiqueSyntax.ggs', line 316
-295, // index 81 : <select_lexiqueSyntax_17>, in file 'lexiqueSyntax.ggs', line 337
-296, // index 82 : <select_lexiqueSyntax_17>, in file 'lexiqueSyntax.ggs', line 337
-300, // index 83 : <select_lexiqueSyntax_18>, in file 'lexiqueSyntax.ggs', line 340
-301, // index 84 : <select_lexiqueSyntax_18>, in file 'lexiqueSyntax.ggs', line 340
-305, // index 85 : <select_lexiqueSyntax_19>, in file 'lexiqueSyntax.ggs', line 401
-306, // index 86 : <select_lexiqueSyntax_19>, in file 'lexiqueSyntax.ggs', line 401
-310, // index 87 : <select_lexiqueSyntax_20>, in file 'lexiqueSyntax.ggs', line 485
-311, // index 88 : <select_lexiqueSyntax_20>, in file 'lexiqueSyntax.ggs', line 485
-315, // index 89 : <select_lexiqueSyntax_21>, in file 'lexiqueSyntax.ggs', line 515
-316, // index 90 : <select_lexiqueSyntax_21>, in file 'lexiqueSyntax.ggs', line 515
-319, // index 91 : <select_lexiqueSyntax_22>, in file 'lexiqueSyntax.ggs', line 537
-320, // index 92 : <select_lexiqueSyntax_22>, in file 'lexiqueSyntax.ggs', line 537
-324, // index 93 : <select_lexiqueSyntax_23>, in file 'lexiqueSyntax.ggs', line 547
-327, // index 94 : <select_lexiqueSyntax_23>, in file 'lexiqueSyntax.ggs', line 547
-328, // index 95 : <select_lexiqueSyntax_24>, in file 'lexiqueSyntax.ggs', line 556
-329, // index 96 : <select_lexiqueSyntax_24>, in file 'lexiqueSyntax.ggs', line 556
-333, // index 97 : <select_lexiqueSyntax_25>, in file 'lexiqueSyntax.ggs', line 571
-334, // index 98 : <select_lexiqueSyntax_25>, in file 'lexiqueSyntax.ggs', line 571
-337, // index 99 : <select_lexiqueSyntax_26>, in file 'lexiqueSyntax.ggs', line 580
-340, // index 100 : <select_lexiqueSyntax_26>, in file 'lexiqueSyntax.ggs', line 580
-341, // index 101 : <select_lexiqueSyntax_27>, in file 'lexiqueSyntax.ggs', line 603
-342, // index 102 : <select_lexiqueSyntax_27>, in file 'lexiqueSyntax.ggs', line 603
-346, // index 103 : <select_lexiqueSyntax_28>, in file 'lexiqueSyntax.ggs', line 613
-349, // index 104 : <select_lexiqueSyntax_28>, in file 'lexiqueSyntax.ggs', line 613
-350, // index 105 : <select_lexiqueSyntax_29>, in file 'lexiqueSyntax.ggs', line 621
-351, // index 106 : <select_lexiqueSyntax_29>, in file 'lexiqueSyntax.ggs', line 621
-355, // index 107 : <select_lexiqueSyntax_30>, in file 'lexiqueSyntax.ggs', line 625
-356, // index 108 : <select_lexiqueSyntax_30>, in file 'lexiqueSyntax.ggs', line 625
-360, // index 109 : <select_lexiqueSyntax_31>, in file 'lexiqueSyntax.ggs', line 655
-366, // index 110 : <select_lexiqueSyntax_31>, in file 'lexiqueSyntax.ggs', line 655
-373, // index 111 : <select_lexiqueSyntax_32>, in file 'lexiqueSyntax.ggs', line 660
-374, // index 112 : <select_lexiqueSyntax_32>, in file 'lexiqueSyntax.ggs', line 660
-379, // index 113 : <select_lexiqueSyntax_33>, in file 'lexiqueSyntax.ggs', line 663
-381, // index 114 : <select_lexiqueSyntax_33>, in file 'lexiqueSyntax.ggs', line 663
-383, // index 115 : <select_lexiqueSyntax_34>, in file 'lexiqueSyntax.ggs', line 681
-384, // index 116 : <select_lexiqueSyntax_34>, in file 'lexiqueSyntax.ggs', line 681
-388, // index 117 : <select_lexiqueSyntax_35>, in file 'lexiqueSyntax.ggs', line 684
-389, // index 118 : <select_lexiqueSyntax_35>, in file 'lexiqueSyntax.ggs', line 684
-393, // index 119 : <select_lexiqueSyntax_36>, in file 'lexiqueSyntax.ggs', line 698
-394, // index 120 : <select_lexiqueSyntax_36>, in file 'lexiqueSyntax.ggs', line 698
+0, // index 0 : <lexique_component_start_symbol>, in file 'lexiqueSyntax.ggs', line 22
+10, // index 1 : <template_delimitor>, in file 'lexiqueSyntax.ggs', line 112
+17, // index 2 : <template_replacement>, in file 'lexiqueSyntax.ggs', line 136
+22, // index 3 : <lexical_message_declaration>, in file 'lexiqueSyntax.ggs', line 157
+28, // index 4 : <lexical_implicit_rule>, in file 'lexiqueSyntax.ggs', line 169
+31, // index 5 : <lexical_explicit_rule>, in file 'lexiqueSyntax.ggs', line 177
+37, // index 6 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 194
+41, // index 7 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 238
+49, // index 8 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 276
+61, // index 9 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 309
+66, // index 10 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 415
+70, // index 11 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 425
+74, // index 12 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 434
+78, // index 13 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 444
+82, // index 14 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 454
+88, // index 15 : <lexical_instruction>, in file 'lexiqueSyntax.ggs', line 467
+91, // index 16 : <lexical_send_instruction>, in file 'lexiqueSyntax.ggs', line 203
+93, // index 17 : <lexical_send_instruction>, in file 'lexiqueSyntax.ggs', line 210
+101, // index 18 : <repeat_while_branch>, in file 'lexiqueSyntax.ggs', line 261
+106, // index 19 : <lexical_output_effective_argument>, in file 'lexiqueSyntax.ggs', line 357
+108, // index 20 : <lexical_output_effective_argument>, in file 'lexiqueSyntax.ggs', line 365
+110, // index 21 : <lexical_output_effective_argument>, in file 'lexiqueSyntax.ggs', line 373
+112, // index 22 : <lexical_output_effective_argument>, in file 'lexiqueSyntax.ggs', line 382
+115, // index 23 : <function_call_or_attribute>, in file 'lexiqueSyntax.ggs', line 390
+116, // index 24 : <function_call_or_attribute>, in file 'lexiqueSyntax.ggs', line 396
+120, // index 25 : <lexical_expression>, in file 'lexiqueSyntax.ggs', line 475
+122, // index 26 : <lexical_term>, in file 'lexiqueSyntax.ggs', line 481
+125, // index 27 : <lexical_factor>, in file 'lexiqueSyntax.ggs', line 494
+127, // index 28 : <lexical_factor>, in file 'lexiqueSyntax.ggs', line 501
+132, // index 29 : <lexical_factor>, in file 'lexiqueSyntax.ggs', line 511
+135, // index 30 : <lexical_factor>, in file 'lexiqueSyntax.ggs', line 524
+137, // index 31 : <lexical_list_declaration>, in file 'lexiqueSyntax.ggs', line 531
+149, // index 32 : <lexical_list_entry>, in file 'lexiqueSyntax.ggs', line 566
+153, // index 33 : <lexical_attribute_declaration>, in file 'lexiqueSyntax.ggs', line 589
+157, // index 34 : <terminal_declaration>, in file 'lexiqueSyntax.ggs', line 598
+166, // index 35 : <style_declaration>, in file 'lexiqueSyntax.ggs', line 638
+172, // index 36 : <extern_routine_or_function_declaration>, in file 'lexiqueSyntax.ggs', line 649
+175, // index 37 : <select_lexiqueSyntax_0>, in file 'lexiqueSyntax.ggs', line 24
+177, // index 38 : <select_lexiqueSyntax_0>, in file 'lexiqueSyntax.ggs', line 24
+178, // index 39 : <select_lexiqueSyntax_1>, in file 'lexiqueSyntax.ggs', line 35
+179, // index 40 : <select_lexiqueSyntax_1>, in file 'lexiqueSyntax.ggs', line 35
+183, // index 41 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 56
+184, // index 42 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 56
+187, // index 43 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 56
+190, // index 44 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 56
+193, // index 45 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 56
+196, // index 46 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 56
+199, // index 47 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 56
+202, // index 48 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 56
+205, // index 49 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 56
+210, // index 50 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 56
+213, // index 51 : <select_lexiqueSyntax_2>, in file 'lexiqueSyntax.ggs', line 56
+220, // index 52 : <select_lexiqueSyntax_3>, in file 'lexiqueSyntax.ggs', line 73
+222, // index 53 : <select_lexiqueSyntax_3>, in file 'lexiqueSyntax.ggs', line 73
+224, // index 54 : <select_lexiqueSyntax_4>, in file 'lexiqueSyntax.ggs', line 116
+225, // index 55 : <select_lexiqueSyntax_4>, in file 'lexiqueSyntax.ggs', line 116
+229, // index 56 : <select_lexiqueSyntax_5>, in file 'lexiqueSyntax.ggs', line 120
+230, // index 57 : <select_lexiqueSyntax_5>, in file 'lexiqueSyntax.ggs', line 120
+234, // index 58 : <select_lexiqueSyntax_6>, in file 'lexiqueSyntax.ggs', line 141
+239, // index 59 : <select_lexiqueSyntax_6>, in file 'lexiqueSyntax.ggs', line 141
+242, // index 60 : <select_lexiqueSyntax_7>, in file 'lexiqueSyntax.ggs', line 182
+243, // index 61 : <select_lexiqueSyntax_7>, in file 'lexiqueSyntax.ggs', line 182
+246, // index 62 : <select_lexiqueSyntax_8>, in file 'lexiqueSyntax.ggs', line 213
+247, // index 63 : <select_lexiqueSyntax_8>, in file 'lexiqueSyntax.ggs', line 213
+254, // index 64 : <select_lexiqueSyntax_9>, in file 'lexiqueSyntax.ggs', line 223
+256, // index 65 : <select_lexiqueSyntax_9>, in file 'lexiqueSyntax.ggs', line 223
+259, // index 66 : <select_lexiqueSyntax_10>, in file 'lexiqueSyntax.ggs', line 241
+260, // index 67 : <select_lexiqueSyntax_10>, in file 'lexiqueSyntax.ggs', line 241
+263, // index 68 : <select_lexiqueSyntax_11>, in file 'lexiqueSyntax.ggs', line 246
+264, // index 69 : <select_lexiqueSyntax_11>, in file 'lexiqueSyntax.ggs', line 246
+267, // index 70 : <select_lexiqueSyntax_12>, in file 'lexiqueSyntax.ggs', line 267
+268, // index 71 : <select_lexiqueSyntax_12>, in file 'lexiqueSyntax.ggs', line 267
+271, // index 72 : <select_lexiqueSyntax_13>, in file 'lexiqueSyntax.ggs', line 279
+272, // index 73 : <select_lexiqueSyntax_13>, in file 'lexiqueSyntax.ggs', line 279
+278, // index 74 : <select_lexiqueSyntax_14>, in file 'lexiqueSyntax.ggs', line 285
+279, // index 75 : <select_lexiqueSyntax_14>, in file 'lexiqueSyntax.ggs', line 285
+282, // index 76 : <select_lexiqueSyntax_15>, in file 'lexiqueSyntax.ggs', line 294
+283, // index 77 : <select_lexiqueSyntax_15>, in file 'lexiqueSyntax.ggs', line 294
+286, // index 78 : <select_lexiqueSyntax_16>, in file 'lexiqueSyntax.ggs', line 314
+287, // index 79 : <select_lexiqueSyntax_16>, in file 'lexiqueSyntax.ggs', line 314
+291, // index 80 : <select_lexiqueSyntax_16>, in file 'lexiqueSyntax.ggs', line 314
+295, // index 81 : <select_lexiqueSyntax_17>, in file 'lexiqueSyntax.ggs', line 335
+296, // index 82 : <select_lexiqueSyntax_17>, in file 'lexiqueSyntax.ggs', line 335
+300, // index 83 : <select_lexiqueSyntax_18>, in file 'lexiqueSyntax.ggs', line 338
+301, // index 84 : <select_lexiqueSyntax_18>, in file 'lexiqueSyntax.ggs', line 338
+305, // index 85 : <select_lexiqueSyntax_19>, in file 'lexiqueSyntax.ggs', line 399
+306, // index 86 : <select_lexiqueSyntax_19>, in file 'lexiqueSyntax.ggs', line 399
+310, // index 87 : <select_lexiqueSyntax_20>, in file 'lexiqueSyntax.ggs', line 483
+311, // index 88 : <select_lexiqueSyntax_20>, in file 'lexiqueSyntax.ggs', line 483
+315, // index 89 : <select_lexiqueSyntax_21>, in file 'lexiqueSyntax.ggs', line 513
+316, // index 90 : <select_lexiqueSyntax_21>, in file 'lexiqueSyntax.ggs', line 513
+319, // index 91 : <select_lexiqueSyntax_22>, in file 'lexiqueSyntax.ggs', line 535
+320, // index 92 : <select_lexiqueSyntax_22>, in file 'lexiqueSyntax.ggs', line 535
+324, // index 93 : <select_lexiqueSyntax_23>, in file 'lexiqueSyntax.ggs', line 545
+327, // index 94 : <select_lexiqueSyntax_23>, in file 'lexiqueSyntax.ggs', line 545
+328, // index 95 : <select_lexiqueSyntax_24>, in file 'lexiqueSyntax.ggs', line 554
+329, // index 96 : <select_lexiqueSyntax_24>, in file 'lexiqueSyntax.ggs', line 554
+333, // index 97 : <select_lexiqueSyntax_25>, in file 'lexiqueSyntax.ggs', line 569
+334, // index 98 : <select_lexiqueSyntax_25>, in file 'lexiqueSyntax.ggs', line 569
+337, // index 99 : <select_lexiqueSyntax_26>, in file 'lexiqueSyntax.ggs', line 578
+340, // index 100 : <select_lexiqueSyntax_26>, in file 'lexiqueSyntax.ggs', line 578
+341, // index 101 : <select_lexiqueSyntax_27>, in file 'lexiqueSyntax.ggs', line 601
+342, // index 102 : <select_lexiqueSyntax_27>, in file 'lexiqueSyntax.ggs', line 601
+346, // index 103 : <select_lexiqueSyntax_28>, in file 'lexiqueSyntax.ggs', line 611
+349, // index 104 : <select_lexiqueSyntax_28>, in file 'lexiqueSyntax.ggs', line 611
+350, // index 105 : <select_lexiqueSyntax_29>, in file 'lexiqueSyntax.ggs', line 619
+351, // index 106 : <select_lexiqueSyntax_29>, in file 'lexiqueSyntax.ggs', line 619
+355, // index 107 : <select_lexiqueSyntax_30>, in file 'lexiqueSyntax.ggs', line 623
+356, // index 108 : <select_lexiqueSyntax_30>, in file 'lexiqueSyntax.ggs', line 623
+360, // index 109 : <select_lexiqueSyntax_31>, in file 'lexiqueSyntax.ggs', line 653
+366, // index 110 : <select_lexiqueSyntax_31>, in file 'lexiqueSyntax.ggs', line 653
+373, // index 111 : <select_lexiqueSyntax_32>, in file 'lexiqueSyntax.ggs', line 658
+374, // index 112 : <select_lexiqueSyntax_32>, in file 'lexiqueSyntax.ggs', line 658
+379, // index 113 : <select_lexiqueSyntax_33>, in file 'lexiqueSyntax.ggs', line 661
+381, // index 114 : <select_lexiqueSyntax_33>, in file 'lexiqueSyntax.ggs', line 661
+383, // index 115 : <select_lexiqueSyntax_34>, in file 'lexiqueSyntax.ggs', line 679
+384, // index 116 : <select_lexiqueSyntax_34>, in file 'lexiqueSyntax.ggs', line 679
+388, // index 117 : <select_lexiqueSyntax_35>, in file 'lexiqueSyntax.ggs', line 682
+389, // index 118 : <select_lexiqueSyntax_35>, in file 'lexiqueSyntax.ggs', line 682
+393, // index 119 : <select_lexiqueSyntax_36>, in file 'lexiqueSyntax.ggs', line 696
+394, // index 120 : <select_lexiqueSyntax_36>, in file 'lexiqueSyntax.ggs', line 696
 399 // index 121 : <>, in file '.ggs', line 0
 } ;
 
@@ -11053,7 +11053,7 @@ int32_t cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_36 (C_Lexique_galgas
 #define END_PRODUCTION  (0)
 
 static const int16_t gProductions_optionLL1grammar [] = {
-// At index 0 : <option_component_start_symbol>, in file 'optionSyntax.ggs', line 24
+// At index 0 : <option_component_start_symbol>, in file 'optionSyntax.ggs', line 22
   TERMINAL (C_Lexique_galgas_5F_scanner::kToken_option) // $option$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) // $:$
@@ -11062,7 +11062,7 @@ static const int16_t gProductions_optionLL1grammar [] = {
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_option) // $option$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) // $;$
 , END_PRODUCTION
-// At index 8 : <option>, in file 'optionSyntax.ggs', line 48
+// At index 8 : <option>, in file 'optionSyntax.ggs', line 46
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) // $type_name$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) // $:$
@@ -11075,22 +11075,22 @@ static const int16_t gProductions_optionLL1grammar [] = {
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) // $;$
 , END_PRODUCTION
 //---- Added productions from 'select' and 'repeat' instructions
-// At index 19 : <select_optionSyntax_0>, in file 'optionSyntax.ggs', line 33
+// At index 19 : <select_optionSyntax_0>, in file 'optionSyntax.ggs', line 31
 , END_PRODUCTION
-// At index 20 : <select_optionSyntax_0>, in file 'optionSyntax.ggs', line 33
+// At index 20 : <select_optionSyntax_0>, in file 'optionSyntax.ggs', line 31
 , NONTERMINAL (1) // <option>
 , NONTERMINAL (2) // <select_optionSyntax_0>
 , END_PRODUCTION
-// At index 23 : <select_optionSyntax_1>, in file 'optionSyntax.ggs', line 59
+// At index 23 : <select_optionSyntax_1>, in file 'optionSyntax.ggs', line 57
 , END_PRODUCTION
-// At index 24 : <select_optionSyntax_1>, in file 'optionSyntax.ggs', line 59
+// At index 24 : <select_optionSyntax_1>, in file 'optionSyntax.ggs', line 57
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_default) // $default$
 , NONTERMINAL (4) // <select_optionSyntax_2>
 , END_PRODUCTION
-// At index 27 : <select_optionSyntax_2>, in file 'optionSyntax.ggs', line 63
+// At index 27 : <select_optionSyntax_2>, in file 'optionSyntax.ggs', line 61
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) // $literal_string$
 , END_PRODUCTION
-// At index 29 : <select_optionSyntax_2>, in file 'optionSyntax.ggs', line 63
+// At index 29 : <select_optionSyntax_2>, in file 'optionSyntax.ggs', line 61
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_unsigned_5F_literal_5F_integer) // $unsigned_literal_integer$
 , END_PRODUCTION
 // At index 31 : <>, in file '.ggs', line 0
@@ -11123,14 +11123,14 @@ static const cProductionNameDescriptor gProductionNames_optionLL1grammar [9] = {
 //---------------------------------------------------------------------------------------------------------------------*
 
 static const int16_t gProductionIndexes_optionLL1grammar [9] = {
-0, // index 0 : <option_component_start_symbol>, in file 'optionSyntax.ggs', line 24
-8, // index 1 : <option>, in file 'optionSyntax.ggs', line 48
-19, // index 2 : <select_optionSyntax_0>, in file 'optionSyntax.ggs', line 33
-20, // index 3 : <select_optionSyntax_0>, in file 'optionSyntax.ggs', line 33
-23, // index 4 : <select_optionSyntax_1>, in file 'optionSyntax.ggs', line 59
-24, // index 5 : <select_optionSyntax_1>, in file 'optionSyntax.ggs', line 59
-27, // index 6 : <select_optionSyntax_2>, in file 'optionSyntax.ggs', line 63
-29, // index 7 : <select_optionSyntax_2>, in file 'optionSyntax.ggs', line 63
+0, // index 0 : <option_component_start_symbol>, in file 'optionSyntax.ggs', line 22
+8, // index 1 : <option>, in file 'optionSyntax.ggs', line 46
+19, // index 2 : <select_optionSyntax_0>, in file 'optionSyntax.ggs', line 31
+20, // index 3 : <select_optionSyntax_0>, in file 'optionSyntax.ggs', line 31
+23, // index 4 : <select_optionSyntax_1>, in file 'optionSyntax.ggs', line 57
+24, // index 5 : <select_optionSyntax_1>, in file 'optionSyntax.ggs', line 57
+27, // index 6 : <select_optionSyntax_2>, in file 'optionSyntax.ggs', line 61
+29, // index 7 : <select_optionSyntax_2>, in file 'optionSyntax.ggs', line 61
 31 // index 8 : <>, in file '.ggs', line 0
 } ;
 

@@ -1,47 +1,45 @@
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #  Generate predefined types                                                *
-#                                                                           *
+#                                                                                                                      *
 #  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
-#                                                                           *
-#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
-#                                                                           *
-#  This program is free software; you can redistribute it and/or modify it  *
-#  under the terms of the GNU General Public License as published by the    *
-#  Free Software Foundation.                                                *
-#                                                                           *
-#  This program is distributed in the hope it will be useful, but WITHOUT   *
-#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
-#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
-#   more details.                                                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
+#                                                                                                                      *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
+#  License as published by the Free Software Foundation.                                                               *
+#                                                                                                                      *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  details.                                                                                                            *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #           D E T E C T    ' T R U E '    E X P R E S S I O N               *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 getter @semanticExpressionForGeneration isTrueExpression
   ->@bool outResult {
   outResult = false
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @trueExpressionForGeneration isTrueExpression
   ->@bool outResult {
   outResult = true
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #           E X P R E S S I O N    G E N E R A T I O N                      *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @selfCopyInExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -54,7 +52,7 @@ override method @selfCopyInExpressionForGeneration generateExpression
   [!?ioUnusedVariableCppNameSet removeKey !mSelfCppName]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @hereExpressionForGeneration generateExpression
   ?!@string unused ioGeneratedCode
@@ -66,7 +64,7 @@ override method @hereExpressionForGeneration generateExpression
   outCppExpression = compilerCppName () + "->here ()"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @trueExpressionForGeneration generateExpression
   ?!@string unused ioGeneratedCode
@@ -77,7 +75,7 @@ override method @trueExpressionForGeneration generateExpression
   outCppExpression = "GALGAS_bool (true)"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @falseExpressionForGeneration generateExpression
   ?!@string unused ioGeneratedCode
@@ -88,7 +86,7 @@ override method @falseExpressionForGeneration generateExpression
   outCppExpression = "GALGAS_bool (false)"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @literalCharExpressionForGeneration generateExpression
   ?!@string unused ioGeneratedCode
@@ -99,7 +97,7 @@ override method @literalCharExpressionForGeneration generateExpression
   outCppExpression = "GALGAS_char (TO_UNICODE (" + [[mCharacter uint] string] + "))"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @literalStringExpressionForGeneration generateExpression
   ?!@string unused ioGeneratedCode
@@ -114,7 +112,7 @@ override method @literalStringExpressionForGeneration generateExpression
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @literalDoubleExpressionForGeneration generateExpression
   ?!@string unused ioGeneratedCode
@@ -125,7 +123,7 @@ override method @literalDoubleExpressionForGeneration generateExpression
   outCppExpression = "GALGAS_double (" + [mValue string]+ ")"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @literalUIntExpressionForGeneration generateExpression
   ?!@string unused ioGeneratedCode
@@ -136,7 +134,7 @@ override method @literalUIntExpressionForGeneration generateExpression
   outCppExpression = "GALGAS_uint ((uint32_t) " + [mValue string]+ "U)"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @literalUInt64ExpressionForGeneration generateExpression
   ?!@string unused ioGeneratedCode
@@ -147,7 +145,7 @@ override method @literalUInt64ExpressionForGeneration generateExpression
   outCppExpression = "GALGAS_uint_36__34_ ((uint64_t) " + [mValue string]+ "ULL)"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @literalSIntExpressionForGeneration generateExpression
   ?!@string unused ioGeneratedCode
@@ -158,7 +156,7 @@ override method @literalSIntExpressionForGeneration generateExpression
   outCppExpression = "GALGAS_sint ((int32_t) " + [mValue string]+ "L)"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @literalSInt64ExpressionForGeneration generateExpression
   ?!@string unused ioGeneratedCode
@@ -169,7 +167,7 @@ override method @literalSInt64ExpressionForGeneration generateExpression
   outCppExpression = "GALGAS_sint_36__34_ ((int64_t) " + [mValue string]+ "LL)"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @defaultConstructorExpressionForGeneration generateExpression
   ?!@string unused ioGeneratedCode
@@ -185,7 +183,7 @@ override method @defaultConstructorExpressionForGeneration generateExpression
   + " (" + [mLocation sourceFile] + ")"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @constructorExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -223,11 +221,11 @@ override method @constructorExpressionForGeneration generateExpression
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 #! option
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @optionValueExpressionForGeneration generateExpression
   ?!@string unused ioGeneratedCode
@@ -242,7 +240,7 @@ override method @optionValueExpressionForGeneration generateExpression
                    + "_" + [mOptionEntryName identifierRepresentation] + ".reader_value ())"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @optionCharExpressionForGeneration generateExpression
   ?!@string unused ioGeneratedCode
@@ -257,7 +255,7 @@ override method @optionCharExpressionForGeneration generateExpression
                   + "_" + [mOptionEntryName identifierRepresentation] + ".reader_char ())"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @optionStringExpressionForGeneration generateExpression
   ?!@string unused ioGeneratedCode
@@ -272,7 +270,7 @@ override method @optionStringExpressionForGeneration generateExpression
                   + "_" + [mOptionEntryName identifierRepresentation] + ".reader_string ())"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @optionCommentExpressionForGeneration generateExpression
   ?!@string unused ioGeneratedCode
@@ -287,7 +285,7 @@ override method @optionCommentExpressionForGeneration generateExpression
                   + "_" + [mOptionEntryName identifierRepresentation] + ".reader_comment ()"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @concatExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -306,7 +304,7 @@ override method @concatExpressionForGeneration generateExpression
                    + rightTemporaryOperand + " " + [mLocation commaSourceFile] + ")"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @orExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -326,7 +324,7 @@ override method @orExpressionForGeneration generateExpression
                    + rightTemporaryOperand  + [mLocation commaSourceFile] + ")"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @orShortExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -362,7 +360,7 @@ override method @orShortExpressionForGeneration generateExpression
   outCppExpression = testVar
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @xorExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -382,7 +380,7 @@ override method @xorExpressionForGeneration generateExpression
                   +  rightTemporaryOperand + [mLocation commaSourceFile] + ")"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @andExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -412,7 +410,7 @@ override method @andExpressionForGeneration generateExpression
                   + rightTemporaryOperand + [mLocation commaSourceFile] + ")"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @andShortExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -448,7 +446,7 @@ override method @andShortExpressionForGeneration generateExpression
   outCppExpression = testVar
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @equalExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -467,7 +465,7 @@ override method @equalExpressionForGeneration generateExpression
   outCppExpression = "GALGAS_bool (kIsEqual, " + leftTemporaryOperand + ".objectCompare (" + rightTemporaryOperand + "))"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @notEqualExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -486,7 +484,7 @@ override method @notEqualExpressionForGeneration generateExpression
   outCppExpression = "GALGAS_bool (kIsNotEqual, " + leftTemporaryOperand + ".objectCompare (" + rightTemporaryOperand + "))"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @lowerOrEqualExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -505,7 +503,7 @@ override method @lowerOrEqualExpressionForGeneration generateExpression
   outCppExpression = "GALGAS_bool (kIsInfOrEqual, " + leftTemporaryOperand + ".objectCompare (" + rightTemporaryOperand + "))"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @greaterOrEqualExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -524,7 +522,7 @@ override method @greaterOrEqualExpressionForGeneration generateExpression
   outCppExpression = "GALGAS_bool (kIsSupOrEqual, " + leftTemporaryOperand + ".objectCompare (" + rightTemporaryOperand + "))"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @strictGreaterExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -543,7 +541,7 @@ override method @strictGreaterExpressionForGeneration generateExpression
   outCppExpression = "GALGAS_bool (kIsStrictSup, " + leftTemporaryOperand + ".objectCompare (" + rightTemporaryOperand + "))"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @strictLowerExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -562,7 +560,7 @@ override method @strictLowerExpressionForGeneration generateExpression
   outCppExpression = "GALGAS_bool (kIsStrictInf, " + leftTemporaryOperand + ".objectCompare (" + rightTemporaryOperand + "))"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @rightShiftExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -582,7 +580,7 @@ override method @rightShiftExpressionForGeneration generateExpression
                    + rightTemporaryOperand + [mLocation commaSourceFile] + ")"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @leftShiftExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -602,7 +600,7 @@ override method @leftShiftExpressionForGeneration generateExpression
                    +  rightTemporaryOperand + [mLocation commaSourceFile] + ")"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @addExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -623,7 +621,7 @@ override method @addExpressionForGeneration generateExpression
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @subExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -644,7 +642,7 @@ override method @subExpressionForGeneration generateExpression
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @multiplicationExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -665,7 +663,7 @@ override method @multiplicationExpressionForGeneration generateExpression
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @divisionExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -686,7 +684,7 @@ override method @divisionExpressionForGeneration generateExpression
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @moduloExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -707,7 +705,7 @@ override method @moduloExpressionForGeneration generateExpression
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @unaryMinusExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -725,7 +723,7 @@ override method @unaryMinusExpressionForGeneration generateExpression
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @notExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -741,7 +739,7 @@ override method @notExpressionForGeneration generateExpression
   outCppExpression = operand + ".operator_not (" + [mLocation sourceFile] + ")"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @structFieldAccessExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -756,7 +754,7 @@ override method @structFieldAccessExpressionForGeneration generateExpression
   outCppExpression = operand + ".mAttribute_" + [mStructFieldName identifierRepresentation]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @tildeExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -772,7 +770,7 @@ override method @tildeExpressionForGeneration generateExpression
   outCppExpression = operand + ".operator_tilde (" + [mLocation sourceFile] + ")"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @ifExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -805,7 +803,7 @@ override method @ifExpressionForGeneration generateExpression
   ioGeneratedCode += "}\n"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @literalTypeInExpressionForGeneration generateExpression
   ?!@string unused ioGeneratedCode
@@ -817,7 +815,7 @@ override method @literalTypeInExpressionForGeneration generateExpression
                   + [mTypeName identifierRepresentation] + ")"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @extractObjectInExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -842,7 +840,7 @@ override method @extractObjectInExpressionForGeneration generateExpression
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @testDynamicClassInExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -879,7 +877,7 @@ override method @testDynamicClassInExpressionForGeneration generateExpression
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @castInExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -923,7 +921,7 @@ override method @castInExpressionForGeneration generateExpression
   ioGeneratedCode += "}\n"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @varInExpressionForGeneration generateExpression
   ?!@string unused ioGeneratedCode
@@ -936,9 +934,9 @@ override method @varInExpressionForGeneration generateExpression
   [!?ioUnusedVariableCppNameSet removeKey !mNameForCheckingFormalParameterUsing]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 #! Appels
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @readerCallExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -1009,7 +1007,7 @@ override method @readerCallExpressionForGeneration generateExpression
   outCppExpression += [mLocation sourceFile] + ")"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @functionCallExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -1037,9 +1035,9 @@ override method @functionCallExpressionForGeneration generateExpression
   outCppExpression += [mLocation commaSourceFile] + ")"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 #! Filewrapper
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @filewrapperInExpressionForGeneration generateExpression
   ?!@string unused ioGeneratedCode
@@ -1051,7 +1049,7 @@ override method @filewrapperInExpressionForGeneration generateExpression
   outCppExpression = "GALGAS_filewrapper (gWrapperDirectory_0_" + [mFilewrapperName identifierRepresentation] + ")"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @filewrapperTemplateInExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -1082,7 +1080,7 @@ override method @filewrapperTemplateInExpressionForGeneration generateExpression
   outCppExpression += [mLocation commaSourceFile] + "))"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @filewrapperStaticPathInExpressionForGeneration generateExpression
   ?!@string unused ioGeneratedCode
@@ -1096,9 +1094,9 @@ override method @filewrapperStaticPathInExpressionForGeneration generateExpressi
   outCppExpression += " (gWrapperFileContent_" + [mFilewrapperFileIndex string] + "_" + [mFilewrapperName identifierRepresentation] + ")"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 #! Lexique introspection
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @lexiqueIntrospectionForGeneration generateExpression
   ?!@string unused ioGeneratedCode
@@ -1113,9 +1111,9 @@ override method @lexiqueIntrospectionForGeneration generateExpression
   + "(" + [mLocation sourceFile] + ")"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 #! Collection value
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 abstract method @abstractCollectionValueElementForGeneration generateCollectionElementCode
   ?let @unifiedTypeMap-proxy inTargetType
@@ -1125,7 +1123,7 @@ abstract method @abstractCollectionValueElementForGeneration generateCollectionE
   ?!@stringset ioUnusedVariableCppNameSet
   ?let @string inCppTargetVar
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @expressionCollectionValueForGeneration generateCollectionElementCode
   ?let @unifiedTypeMap-proxy unused inTargetType
@@ -1145,7 +1143,7 @@ override method @expressionCollectionValueForGeneration generateCollectionElemen
   ioGeneratedCode += ".dotAssign_operation (" + sourceVar + " " + [mExpressionLocation commaSourceFile] + ") ;\n"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @expressionListCollectionForGeneration generateCollectionElementCode
   ?let @unifiedTypeMap-proxy inTargetType
@@ -1181,7 +1179,7 @@ override method @expressionListCollectionForGeneration generateCollectionElement
   ioGeneratedCode += " " + [mExpressionLocation commaSourceFile] + ") ;\n"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @expressionCollectionForGeneration generateExpression
   ?!@string ioGeneratedCode
@@ -1209,5 +1207,5 @@ override method @expressionCollectionForGeneration generateExpression
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 

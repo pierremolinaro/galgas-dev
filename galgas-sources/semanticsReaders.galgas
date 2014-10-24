@@ -1,25 +1,23 @@
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #  semantics definitions for semantics component                            *
-#                                                                           *
+#                                                                                                                      *
 #  Copyright (C) 2009, ..., 2014 Pierre Molinaro.                           *
-#                                                                           *
-#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
-#                                                                           *
-#  This program is free software; you can redistribute it and/or modify it  *
-#  under the terms of the GNU General Public License as published by the    *
-#  Free Software Foundation.                                                *
-#                                                                           *
-#  This program is distributed in the hope it will be useful, but WITHOUT   *
-#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
-#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
-#   more details.                                                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
+#                                                                                                                      *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
+#  License as published by the Free Software Foundation.                                                               *
+#                                                                                                                      *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  details.                                                                                                            *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enterBaseFinalReaderWithoutArgument
   ?!@readerMap ioReaderMap
@@ -41,7 +39,7 @@ proc enterBaseFinalReaderWithoutArgument
   ]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enterInheritedReaderWithoutArgument
   ?!@readerMap ioReaderMap
@@ -63,7 +61,7 @@ proc enterInheritedReaderWithoutArgument
   ]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enterInheritedReaderWithArgument
   ?!@readerMap ioReaderMap
@@ -91,7 +89,7 @@ proc enterInheritedReaderWithArgument
   ]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enterInheritedReaderWith2Arguments
   ?!@readerMap ioReaderMap
@@ -123,7 +121,7 @@ proc enterInheritedReaderWith2Arguments
   ]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enterBaseReaderWithoutArgument
   ?!@readerMap ioReaderMap
@@ -145,7 +143,7 @@ proc enterBaseReaderWithoutArgument
   ]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enterBaseReaderWithArgument
   ?!@readerMap ioReaderMap
@@ -173,7 +171,7 @@ proc enterBaseReaderWithArgument
   ]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 #routine enterBaseReaderWithArgumentAndMessage
 #  ?!@readerMap ioReaderMap
@@ -203,7 +201,7 @@ proc enterBaseReaderWithArgument
 #  ] ;
 #end routine ;
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enterBaseFinalReaderWithArgument
   ?!@readerMap ioReaderMap
@@ -231,7 +229,7 @@ proc enterBaseFinalReaderWithArgument
   ]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enterBaseReaderWith2Arguments
   ?!@readerMap ioReaderMap
@@ -263,7 +261,7 @@ proc enterBaseReaderWith2Arguments
   ]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 #routine enterBaseReaderWith2ArgumentsAndMessage
 #  ?!@readerMap ioReaderMap
@@ -297,7 +295,7 @@ proc enterBaseReaderWith2Arguments
 #  ] ;
 #end routine ;
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enterBaseFinalReaderWith2Arguments
   ?!@readerMap ioReaderMap
@@ -329,7 +327,7 @@ proc enterBaseFinalReaderWith2Arguments
   ]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enterBaseReaderWith3Arguments
   ?!@readerMap ioReaderMap
@@ -365,7 +363,7 @@ proc enterBaseReaderWith3Arguments
   ]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enterBaseFinalReaderWith3Arguments
   ?!@readerMap ioReaderMap
@@ -401,7 +399,7 @@ proc enterBaseFinalReaderWith3Arguments
   ]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc commonReaderMapForAllTypes
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -413,7 +411,7 @@ proc commonReaderMapForAllTypes
   enterInheritedReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"object" !returnedTypeName:"object" !false )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @locationPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -427,7 +425,7 @@ override method @locationPredefinedTypeAST getReaderMap
   enterBaseReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"isNowhere" !returnedTypeName:"bool" !false )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @stringPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -485,7 +483,7 @@ override method @stringPredefinedTypeAST getReaderMap
   enterBaseReaderWith2Arguments ( !?outMap !?ioUnifiedTypeMap !"regularFilesWithExtensions" !"bool" !"inRecursiveSearch" !"stringlist" !"inExtensionList" !returnedTypeName:"stringlist" !false )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @charPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -513,7 +511,7 @@ override method @charPredefinedTypeAST getReaderMap
   enterBaseFinalReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"unicodeToUpper" !returnedTypeName:"char" !false )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @boolPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -527,7 +525,7 @@ override method @boolPredefinedTypeAST getReaderMap
   enterBaseFinalReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"sint64" !returnedTypeName:"sint64" !false )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @uintPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -547,7 +545,7 @@ override method @uintPredefinedTypeAST getReaderMap
   enterBaseFinalReaderWithArgument ( !?outMap !?ioUnifiedTypeMap !"isInRange" !"range" !"inRange" !returnedTypeName:"bool" !false )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @sintPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -560,7 +558,7 @@ override method @sintPredefinedTypeAST getReaderMap
   enterBaseFinalReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"string" !returnedTypeName:"string" !false )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @uint64PredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -576,7 +574,7 @@ override method @uint64PredefinedTypeAST getReaderMap
   enterBaseFinalReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"xString" !returnedTypeName:"string" !false )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @sint64PredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -589,7 +587,7 @@ override method @sint64PredefinedTypeAST getReaderMap
   enterBaseFinalReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"string" !returnedTypeName:"string" !false )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @doublePredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -615,7 +613,7 @@ override method @doublePredefinedTypeAST getReaderMap
   enterBaseFinalReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"binaryImage" !returnedTypeName:"uint64" !false )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @stringsetPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -627,7 +625,7 @@ override method @stringsetPredefinedTypeAST getReaderMap
   enterBaseFinalReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"stringList" !returnedTypeName:"stringlist" !false )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @binarysetPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -668,7 +666,7 @@ override method @binarysetPredefinedTypeAST getReaderMap
   enterBaseFinalReaderWith2Arguments ( !?outMap !?ioUnifiedTypeMap !"existsOnBitRange" !"uint" !"inFirstBit" !"uint" !"inBitCount" !returnedTypeName:"binaryset" !false )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @typePredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -679,7 +677,7 @@ override method @typePredefinedTypeAST getReaderMap
   enterBaseFinalReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"superclass" !returnedTypeName:"type" !true )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @dataPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -689,7 +687,7 @@ override method @dataPredefinedTypeAST getReaderMap
   enterBaseFinalReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"cStringRepresentation" !returnedTypeName:"string" !false )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @functionPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -701,7 +699,7 @@ override method @functionPredefinedTypeAST getReaderMap
   enterBaseFinalReaderWith2Arguments (  !?outMap !?ioUnifiedTypeMap !"invoke" !"objectlist" !"inParameters" !"location" !"inErrorLocation" !returnedTypeName:"object" !true )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @objectPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -711,7 +709,7 @@ override method @objectPredefinedTypeAST getReaderMap
   enterBaseFinalReaderWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"objectDynamicType" !returnedTypeName:"type" !false )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @filewrapperPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -729,5 +727,5 @@ override method @filewrapperPredefinedTypeAST getReaderMap
   enterBaseFinalReaderWithArgument ( !?outMap !?ioUnifiedTypeMap !"absolutePathForPath" !"string" !"inPath" !returnedTypeName:"string" !true )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 

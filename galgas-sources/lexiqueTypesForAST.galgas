@@ -1,47 +1,45 @@
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #  'lexique' component metamodel                                            *
-#                                                                           *
+#                                                                                                                      *
 #  Copyright (C) 2007, ..., 2009 Pierre Molinaro.                           *
-#                                                                           *
-#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
-#                                                                           *
-#  This program is free software; you can redistribute it and/or modify it  *
-#  under the terms of the GNU General Public License as published by the    *
-#  Free Software Foundation.                                                *
-#                                                                           *
-#  This program is distributed in the hope it will be useful, but WITHOUT   *
-#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
-#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
-#   more details.                                                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
+#                                                                                                                      *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
+#  License as published by the Free Software Foundation.                                                               *
+#                                                                                                                      *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  details.                                                                                                            *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 abstract class @semanticDeclarationAST {
   @bool mIsPredefined
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 abstract class @lexicalExpressionAST {
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 abstract class @lexicalInstructionAST {
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @lexicalInstructionListAST {
   @lexicalInstructionAST mInstruction %nogetter
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @metamodelTemplateDelimitorListAST {
   @lstring mStartString %nogetter
@@ -49,7 +47,7 @@ list @metamodelTemplateDelimitorListAST {
   @lstring mEndString %nogetter
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @templateReplacementListAST {
   @lstring mMatchString %nogetter
@@ -57,52 +55,52 @@ list @templateReplacementListAST {
   @lstring mReplacementFunction %nogetter
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 abstract class @abstractLexicalRuleAST {
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @lexicalRuleListAST {
   @abstractLexicalRuleAST mLexicalRule %nogetter
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @lexicalImplicitRuleAST : @abstractLexicalRuleAST {
   @lstring mListName
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @lexicalExplicitRuleAST : @abstractLexicalRuleAST {
   @lexicalExpressionAST mLexicalRuleExpression
   @lexicalInstructionListAST mInstructionList
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @lexicalMessageDeclarationListAST {
   @lstring mMessageName %nogetter
   @lstring mMessageValue %nogetter
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @lexicalAttributeListAST {
   @lstring mTypeName %nogetter
   @lstring mName %nogetter
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @lexicalStyleListAST {
   @lstring mName %nogetter
   @lstring mComment %nogetter
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @terminalDeclarationListAST {
   @lstring mName %nogetter
@@ -112,7 +110,7 @@ list @terminalDeclarationListAST {
   @lstringlist mOptionList %nogetter
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @lexicalListEntryListAST {
   @lstring mEntrySpelling %nogetter
@@ -120,14 +118,14 @@ list @lexicalListEntryListAST {
   @lstringlist mFeatureList %nogetter
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @sentLexicalAttributeListAST {
   @lstring mFormalSelector
   @lstring mAttributeName
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @lexicalListDeclarationListAST {
   @lstring mName %nogetter
@@ -137,123 +135,123 @@ list @lexicalListDeclarationListAST {
   @lexicalListEntryListAST mEntryList %nogetter  
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @lexicalOrExpressionAST : @lexicalExpressionAST {
   @lexicalExpressionAST mLeftOperand
   @lexicalExpressionAST mRightOperand
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @lexicalCharacterSetMatchAST : @lexicalExpressionAST {
   @lstring mCharacterSetName
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @lexicalCharacterMatchAST : @lexicalExpressionAST {
   @lchar mCharacter
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @lexicalCharacterIntervalMatchAST : @lexicalExpressionAST {
   @lchar mLowerBound
   @lchar mUpperBound
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @lexicalStringMatchAST : @lexicalExpressionAST {
   @lstring mString
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @lexicalStringNotMatchAST : @lexicalExpressionAST {
   @lstring mString
   @lstring mErrorMessage
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @lexicalSendSearchListAST {
   @lstring mAttributeName %nogetter
   @lstring mSearchListName %nogetter
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 abstract class @lexicalSendDefaultActionAST {
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @lexicalStructuredSendInstructionAST : @lexicalInstructionAST {
   @lexicalSendSearchListAST mLexicalSendSearchList
   @lexicalSendDefaultActionAST mLexicalSendDefaultAction
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @lexicalSimpleSendInstructionAST : @lexicalInstructionAST {
   @lstring mSentTerminal
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @lexicalSendTerminalByDefaultAST : @lexicalSendDefaultActionAST {
   @lstring mDefaultSentTerminal
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @lexicalErrorByDefaultAST : @lexicalSendDefaultActionAST {
   @lstring mDefaultErrorMessageName
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @lexicalWhileBranchListAST {
   @lexicalExpressionAST mWhileExpression %nogetter
   @lexicalInstructionListAST mWhileInstructionList %nogetter
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @lexicalRepeatInstructionAST : @lexicalInstructionAST {
   @lexicalInstructionListAST mRepeatedInstructionList
   @lexicalWhileBranchListAST mLexicalWhileBranchList
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @lexicalSelectBranchListAST {
   @lexicalExpressionAST mSelectExpression %nogetter
   @lexicalInstructionListAST mSelectInstructionList %nogetter
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @lexicalSelectInstructionAST : @lexicalInstructionAST {
   @lexicalSelectBranchListAST mLexicalSelectBranchList
   @lexicalInstructionListAST mDefaultInstructionList
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 abstract class @abstractLexicalRoutineActualArgumentAST {
   @location mActualPassingModeLocation
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @lexicalRoutineCallActualArgumentListAST {
   @abstractLexicalRoutineActualArgumentAST mLexicalRoutineActualArgument %nogetter
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @lexicalRoutineInstructionAST : @lexicalInstructionAST {
   @lstring mRoutineName
@@ -261,97 +259,97 @@ class @lexicalRoutineInstructionAST : @lexicalInstructionAST {
   @lstringlist mErrorMessageList
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @lexicalAttributeInputOutputArgumentAST : @abstractLexicalRoutineActualArgumentAST {
   @lstring mAttributeName
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 abstract class @lexicalRoutineOrFunctionFormalInputArgumentAST {
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @lexicalFormalInputArgumentAST : @abstractLexicalRoutineActualArgumentAST {
   @lexicalRoutineOrFunctionFormalInputArgumentAST mRoutineOrFunctionFormalInputArgument
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @lexicalFunctionCallActualArgumentListAST {
   @lexicalRoutineOrFunctionFormalInputArgumentAST mLexicalActualInputArgument %nogetter
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @lexicalAttributeInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
   @lstring mAttributeName
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @lexicalCharacterInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
   @lchar mCharacter
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @lexicalUnsignedInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
   @luint mUnsigned
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @lexicalCurrentCharacterInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
   @location mLocation
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @lexicalFunctionInputArgumentAST : @lexicalRoutineOrFunctionFormalInputArgumentAST {
   @lstring mFunctionName
   @lexicalFunctionCallActualArgumentListAST mFunctionActualArgumentList
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @lexicalDropInstructionAST : @lexicalInstructionAST {
   @lstring mTerminalName
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @lexicalErrorInstructionAST : @lexicalInstructionAST {
   @lstring mErrorMessageName
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @lexicalWarningInstructionAST : @lexicalInstructionAST {
   @lstring mWarningMessageName
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @lexicalTagInstructionAST : @lexicalInstructionAST {
   @lstring mLexicalTagName
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @lexicalRewindInstructionAST : @lexicalInstructionAST {
   @lstring mLexicalTagName
   @lstring mTerminalName
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @lexicalLogInstructionAST : @lexicalInstructionAST {
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 enum @lexicalArgumentModeAST {
   case lexicalInputMode  case lexicalInputOutputMode
@@ -385,7 +383,7 @@ getter @lexicalArgumentModeAST cocoaPointerInFormalArgument -> @string outResult
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @lexicalExternRoutineFormalArgumentListAST {
   @lexicalArgumentModeAST mPassingMode %nogetter
@@ -393,7 +391,7 @@ list @lexicalExternRoutineFormalArgumentListAST {
   @lstring mFormalArgumentName %nogetter
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @externRoutineListAST {
   @lstring mRoutineName %nogetter
@@ -401,14 +399,14 @@ list @externRoutineListAST {
   @stringlist mErrorMessageList %nogetter
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @lexicalExternFunctionFormalArgumentListAST {
   @lstring mLexicalTypeName %nogetter
   @lstring mFormalArgumentName %nogetter
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @externFunctionListAST {
   @lstring mFunctionName %nogetter
@@ -416,14 +414,14 @@ list @externFunctionListAST {
   @lstring mReturnedTypeName %nogetter
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @indexingListAST {
   @lstring mIndexName %nogetter
   @lstring mIndexComment %nogetter
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @lexiqueComponentAST : @semanticDeclarationAST {
   @lstring mLexiqueComponentName
@@ -459,11 +457,11 @@ list @galgas3LexiqueComponentListAST {
   @lstring mIndexingDirectory
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #           B U I L D    T E R M I N A L    M A P                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 enum @lexicalTypeEnum {
   case lexicalType_string  case lexicalType_char  case lexicalType_uint 
@@ -471,7 +469,7 @@ enum @lexicalTypeEnum {
   case lexicalType_double
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @lexicalSentValueList {
   @lstring mLexicalFormalSelector
@@ -479,7 +477,7 @@ list @lexicalSentValueList {
   @lexicalTypeEnum mLexicalType
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 map @terminalMap {
   @lexicalSentValueList mSentAttributeList
@@ -487,9 +485,9 @@ map @terminalMap {
   search searchKey error message "the '%K' terminal is not declared"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 #          B U I L D    L E X I C A L    T Y P E    M A P                   *
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 map @lexicalTypeMap {
   @lexicalTypeEnum mLexicalType
@@ -497,7 +495,7 @@ map @lexicalTypeMap {
   search searchKey error message "there is no '@%K' lexical type"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 func %once buildLexicalTypeMap
   ->@lexicalTypeMap outLexicalTypeMap {
@@ -511,7 +509,7 @@ func %once buildLexicalTypeMap
   [!?outLexicalTypeMap insertKey !@lstring. new { !"double" !@location.here} !@lexicalTypeEnum. lexicalType_double]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 map @lexicalAttributeMap {
   @lexicalTypeEnum mLexicalType
@@ -519,9 +517,9 @@ map @lexicalAttributeMap {
   search searchKey error message "the '%K' lexical attribute is not declared"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 #   B U I L D    L E X I C A L    A T T R I B U T E    M A P                *
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc buildLexicalAttributeMap
   ?let @lexicalTypeMap inLexicalTypeMap
@@ -545,7 +543,7 @@ proc buildLexicalAttributeMap
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc buildTerminalMap
   ?let @galgas3LexiqueComponentListAST-element inLexiqueComponentRoot
@@ -583,5 +581,5 @@ proc buildTerminalMap
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 

@@ -1,25 +1,23 @@
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #  semantics definitions for semantics component                            *
-#                                                                           *
+#                                                                                                                      *
 #  Copyright (C) 2009, ..., 2009 Pierre Molinaro.                           *
-#                                                                           *
-#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
-#                                                                           *
-#  This program is free software; you can redistribute it and/or modify it  *
-#  under the terms of the GNU General Public License as published by the    *
-#  Free Software Foundation.                                                *
-#                                                                           *
-#  This program is distributed in the hope it will be useful, but WITHOUT   *
-#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
-#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
-#   more details.                                                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
+#                                                                                                                      *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
+#  License as published by the Free Software Foundation.                                                               *
+#                                                                                                                      *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  details.                                                                                                            *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enterModifierWithInputArgument
   ?!@modifierMap ioModifierMap
@@ -42,7 +40,7 @@ proc enterModifierWithInputArgument
   ]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enterModifierWithOutputArgument
   ?!@modifierMap ioModifierMap
@@ -65,7 +63,7 @@ proc enterModifierWithOutputArgument
   ]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enterModifierWith2InputArguments
   ?!@modifierMap ioModifierMap
@@ -92,7 +90,7 @@ proc enterModifierWith2InputArguments
   ]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enterModifierWithoutArgument
   ?!@modifierMap ioModifierMap
@@ -108,7 +106,7 @@ proc enterModifierWithoutArgument
   ]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @stringPredefinedTypeAST getModifierMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -121,7 +119,7 @@ override method @stringPredefinedTypeAST getModifierMap
   enterModifierWith2InputArguments ( !?outModifierMap !?ioUnifiedTypeMap !"char" !"inChar" !"uint" !"inIndex" !"setCharacterAtIndex" !true )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @dataPredefinedTypeAST getModifierMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -136,7 +134,7 @@ override method @dataPredefinedTypeAST getModifierMap
   enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"data" !"inValue" !"appendData" !false )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @filewrapperPredefinedTypeAST getModifierMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -145,5 +143,5 @@ override method @filewrapperPredefinedTypeAST getModifierMap
   enterModifierWithInputArgument ( !?outModifierMap !?ioUnifiedTypeMap !"string" !"inDirectoryPath" !"setCurrentDirectory" !true )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 

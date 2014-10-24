@@ -1,34 +1,32 @@
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #  Program component compilation                                            *
-#                                                                           *
+#                                                                                                                      *
 #  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
-#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
-#                                                                           *
-#  This program is free software; you can redistribute it and/or modify it  *
-#  under the terms of the GNU General Public License as published by the    *
-#  Free Software Foundation.                                                *
-#                                                                           *
-#  This program is distributed in the hope it will be useful, but WITHOUT   *
-#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
-#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
-#   more details.                                                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
+#                                                                                                                      *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
+#  License as published by the Free Software Foundation.                                                               *
+#                                                                                                                      *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  details.                                                                                                            *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @programListForGeneration {
   @semanticDeclarationForGeneration mDeclaration
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #           G E N E R A T I O N    F I L E W R A P P E R S                  *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 filewrapper programFileGenerationTemplate in "../generation_templates/program_generation" {
 }{
@@ -45,11 +43,11 @@ filewrapper programFileGenerationTemplate in "../generation_templates/program_ge
     ?@bool HAS_INDEXING
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #           C O M P I L E    ' B E F O R E '                                *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc compileBeforeClause
   ?let @analysisContext inAnalysisContext
@@ -86,7 +84,7 @@ proc compileBeforeClause
     !""
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc compileBeforeClauseGalgas3
   ?let @analysisContext inAnalysisContext
@@ -121,11 +119,11 @@ proc compileBeforeClauseGalgas3
       !semanticInstructionListForGeneration}
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #           C O M P I L E    P R O G R A M    R U L E S                     *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc compileProgramRules
   ?let @analysisContext inAnalysisContext
@@ -176,7 +174,7 @@ proc compileProgramRules
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 private proc compileProgramRulesGalgas3
   ?let @analysisContext inAnalysisContext
@@ -225,11 +223,11 @@ private proc compileProgramRulesGalgas3
   end
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #           C O M P I L E    ' A F T E R '                                  *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc compileAfterClause
   ?let @analysisContext inAnalysisContext
@@ -266,7 +264,7 @@ proc compileAfterClause
     !""
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc compileAfterClauseGalgas3
   ?let @analysisContext inAnalysisContext
@@ -301,11 +299,11 @@ proc compileAfterClauseGalgas3
       !semanticInstructionListForGeneration}
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #           C O M P I L E    P R O G R A M    C O M P O N E N T             *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc compileProgramComponentFromAST
   ?let @lstring inSourceFile
@@ -453,7 +451,7 @@ proc compileProgramComponentFromAST
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc compileProgramComponentFromSourceFile
   ?let @lstring inSourceFile
@@ -478,11 +476,11 @@ proc compileProgramComponentFromSourceFile
   )
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #           C O M P I L E    P R O G R A M    C O M P O N E N T             *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc compileProgramComponentGalgas3
   ?let @prologueEpilogueList inPrologueList
@@ -556,5 +554,5 @@ proc compileProgramComponentGalgas3
     !cppContents}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 

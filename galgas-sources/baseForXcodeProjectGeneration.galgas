@@ -1,34 +1,40 @@
-#---------------------------------------------------------------------------*
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
+#  License as published by the Free Software Foundation.                                                               *
+#                                                                                                                      *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  details.                                                                                                            *
+#----------------------------------------------------------------------------------------------------------------------*
 
 
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #    XcodeObjectReferenceList                                               *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @XcodeObjectReferenceList {
   @string mRefString
   @string mComment
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #    PBXFileReference                                                       *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 abstract class @Xcode_PBXFileReference_abstract {
   @uint mSequenceNumber
   @string mFileName
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 abstract method @Xcode_PBXFileReference_abstract buildXcodeProject ?!@string outString
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 private func getPBXFileReferenceKey
   ?seq:let @uint inSequenceNumber
@@ -36,27 +42,27 @@ private func getPBXFileReferenceKey
   outResult = [[[inSequenceNumber string] md5] rightSubString!24]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 abstract class @Xcode_productFileReference : @Xcode_PBXFileReference_abstract {
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 abstract method @Xcode_productFileReference productExtension !extension:@string outProductExtension
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @Xcode_PBXFileReference_CompiledMachOExecutable : @Xcode_productFileReference {
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @Xcode_PBXFileReference_CompiledMachOExecutable productExtension !extension:@string outProductExtension {
   outProductExtension = "tool"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @Xcode_PBXFileReference_CompiledMachOExecutable buildXcodeProject ?!@string outString {
   outString += "\t\t" + getPBXFileReferenceKey (!seq:mSequenceNumber)
@@ -64,18 +70,18 @@ override method @Xcode_PBXFileReference_CompiledMachOExecutable buildXcodeProjec
   + [mFileName utf8Representation] + "; sourceTree = BUILT_PRODUCTS_DIR; };\n"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @Xcode_PBXFileReference_Application : @Xcode_productFileReference {
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @Xcode_PBXFileReference_Application productExtension !extension:@string outProductExtension {
   outProductExtension = "application"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @Xcode_PBXFileReference_Application buildXcodeProject ?!@string outString {
   outString += "\t\t" + getPBXFileReferenceKey (!seq:mSequenceNumber)
@@ -83,12 +89,12 @@ override method @Xcode_PBXFileReference_Application buildXcodeProject ?!@string 
   + [mFileName utf8Representation] + "; sourceTree = BUILT_PRODUCTS_DIR; };\n"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @Xcode_PBXFileReference_cppSourceFile : @Xcode_PBXFileReference_abstract  {
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @Xcode_PBXFileReference_cppSourceFile buildXcodeProject ?!@string outString {
   outString += "\t\t" + getPBXFileReferenceKey (!seq:mSequenceNumber)
@@ -97,12 +103,12 @@ override method @Xcode_PBXFileReference_cppSourceFile buildXcodeProject ?!@strin
   + [mFileName utf8Representation] + "; sourceTree = \"<group>\"; };\n"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @Xcode_PBXFileReference_hSourceFile : @Xcode_PBXFileReference_abstract  {
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @Xcode_PBXFileReference_hSourceFile buildXcodeProject ?!@string outString {
   outString += "\t\t" + getPBXFileReferenceKey (!seq:mSequenceNumber)
@@ -111,12 +117,12 @@ override method @Xcode_PBXFileReference_hSourceFile buildXcodeProject ?!@string 
   + [mFileName utf8Representation] + "; sourceTree = \"<group>\"; };\n"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @Xcode_PBXFileReference_pchSourceFile : @Xcode_PBXFileReference_abstract  {
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @Xcode_PBXFileReference_pchSourceFile buildXcodeProject ?!@string outString {
   outString += "\t\t" + getPBXFileReferenceKey (!seq:mSequenceNumber)
@@ -125,12 +131,12 @@ override method @Xcode_PBXFileReference_pchSourceFile buildXcodeProject ?!@strin
   + [mFileName utf8Representation] + "; sourceTree = \"<group>\"; };\n"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @Xcode_PBXFileReference_mSourceFile : @Xcode_PBXFileReference_abstract  {
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @Xcode_PBXFileReference_mSourceFile buildXcodeProject ?!@string outString {
   outString += "\t\t" + getPBXFileReferenceKey (!seq:mSequenceNumber)
@@ -139,12 +145,12 @@ override method @Xcode_PBXFileReference_mSourceFile buildXcodeProject ?!@string 
   + [mFileName utf8Representation] + "; sourceTree = \"<group>\"; };\n"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @Xcode_PBXFileReference_mmSourceFile : @Xcode_PBXFileReference_abstract  {
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @Xcode_PBXFileReference_mmSourceFile buildXcodeProject ?!@string outString {
   outString += "\t\t" + getPBXFileReferenceKey (!seq:mSequenceNumber)
@@ -153,12 +159,12 @@ override method @Xcode_PBXFileReference_mmSourceFile buildXcodeProject ?!@string
   + [mFileName utf8Representation] + "; sourceTree = \"<group>\"; };\n"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @Xcode_PBXFileReference_gifFile : @Xcode_PBXFileReference_abstract  {
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @Xcode_PBXFileReference_gifFile buildXcodeProject ?!@string outString {
   outString += "\t\t" + getPBXFileReferenceKey (!seq:mSequenceNumber)
@@ -167,12 +173,12 @@ override method @Xcode_PBXFileReference_gifFile buildXcodeProject ?!@string outS
   + [mFileName utf8Representation] + "; sourceTree = \"<group>\"; };\n"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @Xcode_PBXFileReference_tiffFile : @Xcode_PBXFileReference_abstract  {
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @Xcode_PBXFileReference_tiffFile buildXcodeProject ?!@string outString {
   outString += "\t\t" + getPBXFileReferenceKey (!seq:mSequenceNumber)
@@ -181,12 +187,12 @@ override method @Xcode_PBXFileReference_tiffFile buildXcodeProject ?!@string out
   + [mFileName utf8Representation] + "; sourceTree = \"<group>\"; };\n"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @Xcode_PBXFileReference_pngFile : @Xcode_PBXFileReference_abstract  {
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @Xcode_PBXFileReference_pngFile buildXcodeProject ?!@string outString {
   outString += "\t\t" + getPBXFileReferenceKey (!seq:mSequenceNumber)
@@ -195,12 +201,12 @@ override method @Xcode_PBXFileReference_pngFile buildXcodeProject ?!@string outS
   + [mFileName utf8Representation] + "; sourceTree = \"<group>\"; };\n"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @Xcode_PBXFileReference_plistFile : @Xcode_PBXFileReference_abstract  {
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @Xcode_PBXFileReference_plistFile buildXcodeProject ?!@string outString {
   outString += "\t\t" + getPBXFileReferenceKey (!seq:mSequenceNumber)
@@ -209,12 +215,12 @@ override method @Xcode_PBXFileReference_plistFile buildXcodeProject ?!@string ou
   + [mFileName utf8Representation] + "; sourceTree = \"<group>\"; };\n"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @Xcode_PBXFileReference_frameworkFile : @Xcode_PBXFileReference_abstract  {
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @Xcode_PBXFileReference_frameworkFile buildXcodeProject ?!@string outString {
   outString += "\t\t" + getPBXFileReferenceKey (!seq:mSequenceNumber)
@@ -223,12 +229,12 @@ override method @Xcode_PBXFileReference_frameworkFile buildXcodeProject ?!@strin
   + [mFileName utf8Representation] + "; sourceTree = \"<group>\"; };\n"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @Xcode_PBXFileReference_icnsFile : @Xcode_PBXFileReference_abstract  {
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @Xcode_PBXFileReference_icnsFile buildXcodeProject ?!@string outString {
   outString += "\t\t" + getPBXFileReferenceKey (!seq:mSequenceNumber)
@@ -237,13 +243,13 @@ override method @Xcode_PBXFileReference_icnsFile buildXcodeProject ?!@string out
   + [mFileName utf8Representation] + "; sourceTree = \"<group>\"; };\n"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @Xcode_PBXFileReference_xibFile : @Xcode_PBXFileReference_abstract  {
   @string mFilePath
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @Xcode_PBXFileReference_xibFile buildXcodeProject ?!@string outString {
   outString += "\t\t" + getPBXFileReferenceKey (!seq:mSequenceNumber)
@@ -252,13 +258,13 @@ override method @Xcode_PBXFileReference_xibFile buildXcodeProject ?!@string outS
   + [mFilePath utf8Representation] + "; sourceTree = \"<group>\"; };\n"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @Xcode_PBXFileReference_plistStringFile : @Xcode_PBXFileReference_abstract  {
   @string mFilePath
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @Xcode_PBXFileReference_plistStringFile buildXcodeProject ?!@string outString {
   outString += "\t\t" + getPBXFileReferenceKey (!seq:mSequenceNumber)
@@ -267,7 +273,7 @@ override method @Xcode_PBXFileReference_plistStringFile buildXcodeProject ?!@str
   + [mFilePath utf8Representation] + "; sourceTree = \"<group>\"; };\n"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 map @Xcode_PBXFileReference_map {
   @Xcode_PBXFileReference_abstract mFileReference
@@ -276,18 +282,18 @@ map @Xcode_PBXFileReference_map {
   search searchKey error message "the '%K' reference is not declared"
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #    PBXBuildFile                                                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @Xcode_PBXBuildFile {
   @uint mSequenceNumber
   @Xcode_PBXFileReference_abstract mSourceFile
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 method @Xcode_PBXBuildFile buildXcodeProject ?!@string outString {
   outString += "\t\t" + getPBXFileReferenceKey (!seq:mSequenceNumber) + " /* " + [mSourceFile mFileName] + " */ "
@@ -295,17 +301,17 @@ method @Xcode_PBXBuildFile buildXcodeProject ?!@string outString {
   + " ; settings = {ATTRIBUTES = (); }; };\n"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @Xcode_PBXBuildFile_list {
   @Xcode_PBXBuildFile mFile
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #    PBXSourcesBuildPhase                                                   *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @Xcode_PBXSourcesBuildPhase {
   @uint mSequenceNumber
@@ -313,17 +319,17 @@ class @Xcode_PBXSourcesBuildPhase {
   @Xcode_PBXBuildFile_list mFileReferenceList
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @Xcode_PBXSourcesBuildPhase_list {
   @Xcode_PBXSourcesBuildPhase mBuildPhase
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #    PBXResourcesBuildPhase                                                 *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @Xcode_PBXResourcesBuildPhase {
   @uint mSequenceNumber
@@ -331,17 +337,17 @@ class @Xcode_PBXResourcesBuildPhase {
   @Xcode_PBXBuildFile_list mFileReferenceList
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @Xcode_PBXResourcesBuildPhase_list {
   @Xcode_PBXResourcesBuildPhase mBuildPhase
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #    PBXCopyBuildPhase                                                      *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @Xcode_PBXCopyBuildPhase {
   @uint mSequenceNumber
@@ -351,17 +357,17 @@ class @Xcode_PBXCopyBuildPhase {
   @Xcode_PBXBuildFile_list mFileReferenceList
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @Xcode_PBXCopyBuildPhase_list {
   @Xcode_PBXCopyBuildPhase mBuildPhase
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #    PBXFrameworksBuildPhase                                                *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @Xcode_PBXFrameworksBuildPhase {
   @uint mSequenceNumber
@@ -369,7 +375,7 @@ class @Xcode_PBXFrameworksBuildPhase {
   @Xcode_PBXBuildFile_list mFileReferenceList
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 method @Xcode_PBXFrameworksBuildPhase buildXcodeProject ?!@string outString {
   outString += "\t\t" + getPBXFileReferenceKey (!seq:mSequenceNumber) + " /* Frameworks */ = {\n"
@@ -385,17 +391,17 @@ method @Xcode_PBXFrameworksBuildPhase buildXcodeProject ?!@string outString {
   + "\t\t};\n"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @Xcode_PBXFrameworksBuildPhase_list {
   @Xcode_PBXFrameworksBuildPhase mBuildPhase
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #    PBXGroup                                                               *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @Xcode_PBXGroup {
   @uint mSequenceNumber
@@ -404,17 +410,17 @@ class @Xcode_PBXGroup {
   @XcodeObjectReferenceList mChildrenGroupList
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @Xcode_PBXGroup_list {
   @Xcode_PBXGroup mGroup
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #    XCBuildConfiguration                                                   *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @Xcode_XCBuildConfiguration {
   @uint mSequenceNumber1
@@ -422,17 +428,17 @@ class @Xcode_XCBuildConfiguration {
   @stringlist mSettings
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @Xcode_XCBuildConfiguration_list {
   @Xcode_XCBuildConfiguration mBuildConfig
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #    PBXNativeTarget                                                        *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @Xcode_PBXNativeTarget_list {
   @string mTargetKey
@@ -445,28 +451,28 @@ list @Xcode_PBXNativeTarget_list {
   @stringlist mDependencyKeyList
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #    PBXTargetDependency and PBXContainerItemProxy                          *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 class @Xcode_targetDependencyDescription {
   @uint mSequenceNumber
   @string mDependencyTarget
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @Xcode_targetDependencyDescription_list {
   @Xcode_targetDependencyDescription mDependency
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #    PBXVariantGroup                                                        *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @Xcode_PBXVariantGroup_list {
   @string mPBXVariantKey
@@ -474,11 +480,11 @@ list @Xcode_PBXVariantGroup_list {
   @string mName
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #    Project Description                                                    *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 struct @XcodeProjectDescription {
   @Xcode_PBXFileReference_map mFileReferenceMap
@@ -497,7 +503,7 @@ struct @XcodeProjectDescription {
   @uint mSequenceNumber
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc initXcodeProjectDescription !@XcodeProjectDescription outDescription {
   outDescription = @XcodeProjectDescription. new {
@@ -517,11 +523,11 @@ proc initXcodeProjectDescription !@XcodeProjectDescription outDescription {
     !0}
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #    Group                                                                  *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enter_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -539,11 +545,11 @@ proc enter_group
   ioXcodeProjectDescription.mMainGroupChildrenList += !getPBXFileReferenceKey (!seq:[group mSequenceNumber]) !inGroupName
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #    Sub group                                                              *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enter_subgroup
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -562,28 +568,28 @@ proc enter_subgroup
   ioSuperGroupContentsKeyList += !getPBXFileReferenceKey (!seq:[group mSequenceNumber]) !inSubGroupName
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc append_cpp_h_files ?!@stringlist ioList ?@string inBaseName {
   ioList += !inBaseName + ".cpp"
   ioList += !inBaseName + ".h"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc append_m_h_files ?!@stringlist ioList ?@string inBaseName {
   ioList += !inBaseName + ".m"
   ioList += !inBaseName + ".h"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc append_mm_h_files ?!@stringlist ioList ?@string inBaseName {
   ioList += !inBaseName + ".mm"
   ioList += !inBaseName + ".h"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enter_cpp_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -596,7 +602,7 @@ proc enter_cpp_file_in_group
   ioFileListForGroup += !getPBXFileReferenceKey (!seq:[ref mSequenceNumber]) !inCppFile
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enter_h_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -609,7 +615,7 @@ proc enter_h_file_in_group
   ioFileListForGroup += !getPBXFileReferenceKey (!seq:[ref mSequenceNumber]) !inCppFile
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enter_pch_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -622,7 +628,7 @@ proc enter_pch_file_in_group
   ioFileListForGroup += !getPBXFileReferenceKey (!seq:[ref mSequenceNumber]) !inCppFile
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enter_m_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -635,7 +641,7 @@ proc enter_m_file_in_group
   ioFileListForGroup += !getPBXFileReferenceKey (!seq:[ref mSequenceNumber]) !inCppFile
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enter_mm_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -648,7 +654,7 @@ proc enter_mm_file_in_group
   ioFileListForGroup += !getPBXFileReferenceKey (!seq:[ref mSequenceNumber]) !inCppFile
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enter_gif_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -661,7 +667,7 @@ proc enter_gif_file_in_group
   ioFileListForGroup += !getPBXFileReferenceKey (!seq:[ref mSequenceNumber]) !inFile
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enter_tiff_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -674,7 +680,7 @@ proc enter_tiff_file_in_group
   ioFileListForGroup += !getPBXFileReferenceKey (!seq:[ref mSequenceNumber]) !inCppFile
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enter_png_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -687,7 +693,7 @@ proc enter_png_file_in_group
   ioFileListForGroup += !getPBXFileReferenceKey (!seq:[ref mSequenceNumber]) !inCppFile
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enter_plist_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -700,7 +706,7 @@ proc enter_plist_file_in_group
   ioFileListForGroup += !getPBXFileReferenceKey (!seq:[ref mSequenceNumber]) !inCppFile
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enter_framework_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -713,7 +719,7 @@ proc enter_framework_file_in_group
   ioFileListForGroup += !getPBXFileReferenceKey (!seq:[ref mSequenceNumber]) !inCppFile
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enter_icns_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -726,7 +732,7 @@ proc enter_icns_file_in_group
   ioFileListForGroup += !getPBXFileReferenceKey (!seq:[ref mSequenceNumber]) !inCppFile
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enter_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -762,7 +768,7 @@ proc enter_file_in_group
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enter_files_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -773,7 +779,7 @@ proc enter_files_in_group
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enter_xib_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -797,7 +803,7 @@ proc enter_xib_file_in_group
   ioFileListForGroup += !PBXVariantGroupKey !in_xib_fileName
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enter_plist_strings_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -821,7 +827,7 @@ proc enter_plist_strings_in_group
   ioFileListForGroup += !PBXVariantGroupKey !in_plist_string_fileName
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enter_file_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -836,7 +842,7 @@ proc enter_file_for_sources_build_phase
   ioBuildPhaseList += !build_file
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enter_file_list_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -851,7 +857,7 @@ proc enter_file_list_for_sources_build_phase
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enter_files_for_resources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -868,7 +874,7 @@ proc enter_files_for_resources_build_phase
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enter_files_for_frameworks_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -885,7 +891,7 @@ proc enter_files_for_frameworks_build_phase
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc add_tool_target
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -950,7 +956,7 @@ proc add_tool_target
     !inDirectDependencyList
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc add_app_target
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -1060,7 +1066,7 @@ proc add_app_target
     !targetDependencyKeyList
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enterProjectDefaultSettings
   ?let @stringlist inHeaderSearchPathList
@@ -1114,7 +1120,7 @@ proc enterProjectDefaultSettings
   outProjectDefaultSettings += !"SDKROOT = " + inSDK + " ;"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc buildXcodeProjectString
   ?let @XcodeProjectDescription inXcodeProjectDescription
@@ -1338,7 +1344,7 @@ proc buildXcodeProjectString
   + "}\n"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc generateXCodeFile
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -1394,5 +1400,5 @@ proc generateXCodeFile
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 

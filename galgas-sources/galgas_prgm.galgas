@@ -1,56 +1,52 @@
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  GALGAS main program definition                                           *
-#                                                                           *
-#  Copyright (C) 2007, ..., 2014 Pierre Molinaro.                           *
-#                                                                           *
-#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
-#                                                                           *
-#  This program is free software; you can redistribute it and/or modify it  *
-#  under the terms of the GNU General Public License as published by the    *
-#  Free Software Foundation.                                                *
-#                                                                           *
-#  This program is distributed in the hope it will be useful, but WITHOUT   *
-#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
-#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
-#   more details.                                                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#  GALGAS main program definition                                                                                      *
+#                                                                                                                      *
+#  Copyright (C) 2007, ..., 2014 Pierre Molinaro.                                                                      *
+#                                                                                                                      *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
+#                                                                                                                      *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
+#  License as published by the Free Software Foundation.                                                               *
+#                                                                                                                      *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  details.                                                                                                            *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
-
-
-#---------------------------------------------------------------------------*
-
-before {
-#--- Generate project
+before { #--- Generate project
   let creationProjectName = [option galgas_cli_options.create_project value]
   projectCreation ( !creationProjectName )
 }
 
-before {
-#--- Print predefined lexical action
+#----------------------------------------------------------------------------------------------------------------------*
+
+before { #--- Print predefined lexical action
   if [option galgas_cli_options.printPredefinedLexicalActions value] then
     printPredefinedLexicalActions ( )
   end
 }
 
-before {
-#--- Generate predefined files
+#----------------------------------------------------------------------------------------------------------------------*
+
+before { #--- Generate predefined files
   generatePredefinedTypeFiles ( ![option galgas_cli_options.generatePredefinedTypes value] )
 }
 
-before {
-#--- Extract LIBPM
+#----------------------------------------------------------------------------------------------------------------------*
+
+before { #--- Extract LIBPM
   if [option galgas_cli_options.extractLIBPMOption value] != "" then
     updateLIBPMatPath ( ![option galgas_cli_options.extractLIBPMOption value] )
   end  
 }
 
-#----------------------------------------------------------------------------*
-#                                                                            *
-#          Template                                                          *
-#                                                                            *
-#----------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#          Template                                                                                                    *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 case . "galgasTemplate"
 message "a GALGAS Template source file"
@@ -59,7 +55,7 @@ indexing with projectLL1grammar
   grammar templateGrammar in inSourceFile ?*
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 case . "gOption"
 message "a GALGAS option source file"
@@ -77,7 +73,7 @@ indexing with optionLL1grammar
   compileOptionComponentFromSourceFile ( !inSourceFile !outputDirectory (!inSourceFile) !?parsedComponentStruct )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 case . "gLexique"
 message "a GALGAS lexique source file"
@@ -95,7 +91,7 @@ indexing with lexiqueLL1grammar
   compileLexiqueComponentFromSource ( !inSourceFile !outputDirectory (!inSourceFile) !?parsedComponentStruct )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 case . "gSemantics"
 message "a GALGAS semantics source file"
@@ -113,7 +109,7 @@ indexing with semanticsSLRgrammar
   compileSemanticsComponentFromSourceFile ( !inSourceFile !outputDirectory (!inSourceFile) !?parsedComponentStruct)
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 case . "gSyntax"
 message "a GALGAS syntax source file"
@@ -131,7 +127,7 @@ indexing with syntaxSLRgrammar
   compileSyntaxComponentFromSourceFile ( !inSourceFile !outputDirectory (!inSourceFile) !?parsedComponentStruct)
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 case . "gGrammar"
 message "a GALGAS grammar source file"
@@ -152,7 +148,7 @@ indexing with grammarLL1grammar
     !?parsedComponentStruct)
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 case . "gGui"
 message "a GALGAS GUI source file"
@@ -170,7 +166,7 @@ indexing with guiGrammar
   compileGuiComponentFromSourceFile ( !inSourceFile !outputDirectory (!inSourceFile) !?parsedComponentStruct )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 case . "gProgram"
 message "a GALGAS program source file"
@@ -188,11 +184,11 @@ indexing with programSLRgrammar
   compileProgramComponentFromSourceFile ( !inSourceFile !outputDirectory (!inSourceFile) !?parsedComponentStruct)
 }
 
-#----------------------------------------------------------------------------*
-#                                                                            *
-#          Project                                                           *
-#                                                                            *
-#----------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#          Project                                                                                                     *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 case . "gProject"
 message "a GALGAS project source file"
@@ -498,11 +494,11 @@ indexing with projectLL1grammar
   end
 }
 
-#----------------------------------------------------------------------------*
-#                                                                            *
-#          galgasProject                                                     *
-#                                                                            *
-#----------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#          galgasProject                                                                                               *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 case . "galgasProject"
 message "a GALGAS project source file"
@@ -511,11 +507,11 @@ message "a GALGAS project source file"
   compileProject ( !inProjectSourceFile !"" )
 }
 
-#----------------------------------------------------------------------------*
-#                                                                            *
-#          compileProject                                                    *
-#                                                                            *
-#----------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#          compileProject                                                                                              *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc compileProject
   ?let @lstring inProjectSourceFile
@@ -679,11 +675,11 @@ proc compileProject
   end
 }
 
-#----------------------------------------------------------------------------*
-#                                                                            *
-#          projectGeneration                                                 *
-#                                                                            *
-#----------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#          projectGeneration                                                                                           *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc projectGeneration
   ?let @unifiedTypeMap inTypeMap
@@ -780,11 +776,11 @@ proc projectGeneration
   end
 }
 
-#----------------------------------------------------------------------------*
-#                                                                            *
-#          galgas                                                            *
-#                                                                            *
-#----------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#          galgas                                                                                                      *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 case . "galgas"
 message "a GALGAS source file"
@@ -807,7 +803,4 @@ indexing with galgas3Grammar
   end
 }
 
-#---------------------------------------------------------------------------*
-
-after {
-}
+#----------------------------------------------------------------------------------------------------------------------*
