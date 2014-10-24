@@ -16,7 +16,7 @@ proc generateCfile
 private filewrapper cCodeGeneration in "." {
 }{
 }{
-  template cCodeFile "target-file.c.gTemplate"
+  template cCodeFile "target-file.c.galgasTemplate"
     ?@instructionListForGeneration INSTRUCTION_LIST
 }
 
