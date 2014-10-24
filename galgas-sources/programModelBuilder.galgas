@@ -1,36 +1,34 @@
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #  'program' component parser, as model builder                             *
-#                                                                           *
+#                                                                                                                      *
 #  Copyright (C) 2007, ..., 2007 Pierre Molinaro.                           *
-#                                                                           *
-#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
-#                                                                           *
-#  This program is free software; you can redistribute it and/or modify it  *
-#  under the terms of the GNU General Public License as published by the    *
-#  Free Software Foundation.                                                *
-#                                                                           *
-#  This program is distributed in the hope it will be useful, but WITHOUT   *
-#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
-#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
-#   more details.                                                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
+#                                                                                                                      *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
+#  License as published by the Free Software Foundation.                                                               *
+#                                                                                                                      *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  details.                                                                                                            *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 syntax programModelBuilder (galgas_scanner)  %translate{
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <semantic_instruction_list> !@semanticInstructionListAST outInstructionsList
 
 rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #   P R O G R A M    C O M P O N E N T                                      *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <program_component_start_symbol> !@programComponentAST outProgramComponentRoot {
   $program$ :> ?@string sep ?*
@@ -132,6 +130,6 @@ rule <program_component_start_symbol> !@programComponentAST outProgramComponentR
     !mSemanticDeclarations}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 }

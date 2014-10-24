@@ -1,28 +1,26 @@
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #  Component for compiling a semantics component                            *
-#                                                                           *
+#                                                                                                                      *
 #  Copyright (C) 2007, ..., 2010 Pierre Molinaro.                           *
-#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
-#                                                                           *
-#  This program is free software; you can redistribute it and/or modify it  *
-#  under the terms of the GNU General Public License as published by the    *
-#  Free Software Foundation.                                                *
-#                                                                           *
-#  This program is distributed in the hope it will be useful, but WITHOUT   *
-#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
-#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
-#   more details.                                                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
+#                                                                                                                      *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
+#  License as published by the Free Software Foundation.                                                               *
+#                                                                                                                      *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  details.                                                                                                            *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #           G E N E R A T I O N    F I L E W R A P P E R S                  *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 filewrapper semanticFileGenerationTemplate in "../generation_templates/semantic_generation" {
 }{
@@ -34,11 +32,11 @@ filewrapper semanticFileGenerationTemplate in "../generation_templates/semantic_
     ?@stringlist IMPORTED_COMPONENT_LIST
 }
                             
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #    C O M P I L E    S E M A N T I C S   C O M P O N E N T                 *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc parseSemanticComponent
   ?let @lstring inSourceFile
@@ -54,13 +52,13 @@ proc parseSemanticComponent
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 graph @semanticImportDependenceGraph (@stringlist) {
   insert insertNode error message "-- INTERNAL ERROR --"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc recursivelyImportSemanticComponent
   ?let @lstring inFilePath
@@ -139,7 +137,7 @@ proc recursivelyImportSemanticComponent
 }
 
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc recursivelyImportSemanticComponentAndCheckNoCircularityInImportSemantics
   ?let @lstring inSourceFile
@@ -181,7 +179,7 @@ proc recursivelyImportSemanticComponentAndCheckNoCircularityInImportSemantics
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc buildLexiqueComponentMapForSemanticAnalysis
   ?let @parsedComponentStruct inParsedComponentStruct
@@ -198,7 +196,7 @@ proc buildLexiqueComponentMapForSemanticAnalysis
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc buildOptionComponentMapForSemanticAnalysis
   ?let @lstringlist inOptionComponentFileNameList
@@ -273,7 +271,7 @@ proc buildOptionComponentMapForSemanticAnalysis
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc buildGrammarComponentMapForSemanticAnalysis
   ?let @grammarComponentASTList inGrammarComponentASTList
@@ -307,7 +305,7 @@ proc buildGrammarComponentMapForSemanticAnalysis
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc compileSemanticsComponentAST
   ?let @lstring inSourceFile
@@ -429,7 +427,7 @@ proc compileSemanticsComponentAST
     ]
   end
 }
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc compileSemanticsComponentFromSourceFile
   ?let @lstring inSourceFile
@@ -451,5 +449,5 @@ proc compileSemanticsComponentFromSourceFile
   )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 

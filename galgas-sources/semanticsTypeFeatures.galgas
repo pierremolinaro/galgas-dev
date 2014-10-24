@@ -1,29 +1,27 @@
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #  semantics definitions for semantics component                            *
-#                                                                           *
+#                                                                                                                      *
 #  Copyright (C) 1997, ..., 2010 Pierre Molinaro.                           *
-#                                                                           *
-#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
-#                                                                           *
-#  This program is free software; you can redistribute it and/or modify it  *
-#  under the terms of the GNU General Public License as published by the    *
-#  Free Software Foundation.                                                *
-#                                                                           *
-#  This program is distributed in the hope it will be useful, but WITHOUT   *
-#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
-#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
-#   more details.                                                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
+#                                                                                                                      *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
+#  License as published by the Free Software Foundation.                                                               *
+#                                                                                                                      *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  details.                                                                                                            *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #  G E T    E N U M E R A T I O N    L I S T                                *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @stringsetPredefinedTypeAST getEnumerationList
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -40,7 +38,7 @@ override method @stringsetPredefinedTypeAST getEnumerationList
   outEnumeratedType = "string"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @dataPredefinedTypeAST getEnumerationList
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -57,11 +55,11 @@ override method @dataPredefinedTypeAST getEnumerationList
   outEnumeratedType = "uint"
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #  G E T    M O D I F I E R    M A P                                        *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @stringsetPredefinedTypeAST getModifierMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -79,25 +77,25 @@ override method @stringsetPredefinedTypeAST getModifierMap
   ]
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #  G E T    S U P P O R T E D    O P E R A T O R    F L A G S               *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @applicationPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags {
   outFlags = generateDescriptionReaderUtilityMethod ()
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @objectPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags {
   outFlags = generateDescriptionReaderUtilityMethod ()
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @stringPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags {
@@ -105,14 +103,14 @@ override getter @stringPredefinedTypeAST getSupportedOperatorFlags
     | generateDescriptionReaderUtilityMethod () | isComparable ()
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @charPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags {
   outFlags = generateDescriptionReaderUtilityMethod () | isComparable ()
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @boolPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags {
@@ -120,7 +118,7 @@ override getter @boolPredefinedTypeAST getSupportedOperatorFlags
     | generateDescriptionReaderUtilityMethod () | isComparable ()
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @uintPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags {
@@ -130,7 +128,7 @@ override getter @uintPredefinedTypeAST getSupportedOperatorFlags
     | generateDescriptionReaderUtilityMethod () | incDecOperator () | isComparable ()
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @sintPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags {
@@ -140,7 +138,7 @@ override getter @sintPredefinedTypeAST getSupportedOperatorFlags
     | generateDescriptionReaderUtilityMethod ()  | incDecOperator () | isComparable ()
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @uint64PredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags {
@@ -150,7 +148,7 @@ override getter @uint64PredefinedTypeAST getSupportedOperatorFlags
     | generateDescriptionReaderUtilityMethod () | incDecOperator () | isComparable ()
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @sint64PredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags {
@@ -160,7 +158,7 @@ override getter @sint64PredefinedTypeAST getSupportedOperatorFlags
     | incDecOperator ()  | generateDescriptionReaderUtilityMethod () | isComparable ()
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @doublePredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags {
@@ -169,7 +167,7 @@ override getter @doublePredefinedTypeAST getSupportedOperatorFlags
     | generateDescriptionReaderUtilityMethod () | isComparable ()
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @stringsetPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags {
@@ -180,7 +178,7 @@ override getter @stringsetPredefinedTypeAST getSupportedOperatorFlags
     | generateCopyConstructorAndAssignmentOperator ()
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @binarysetPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags {
@@ -189,14 +187,14 @@ override getter @binarysetPredefinedTypeAST getSupportedOperatorFlags
     | generateDescriptionReaderUtilityMethod ()
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @typePredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags {
   outFlags = generateDescriptionReaderUtilityMethod ()
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @dataPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags {
@@ -204,28 +202,28 @@ override getter @dataPredefinedTypeAST getSupportedOperatorFlags
     | generateEnumerationHelperMethods ()
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @functionPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags {
   outFlags = generateDescriptionReaderUtilityMethod ()
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @locationPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags {
   outFlags = generateDescriptionReaderUtilityMethod ()
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @filewrapperPredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags {
   outFlags = generateDescriptionReaderUtilityMethod ()
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @stringsetPredefinedTypeAST getAddAssignArgumentList
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -234,5 +232,5 @@ override method @stringsetPredefinedTypeAST getAddAssignArgumentList
   outAddAssignArgumentList = {!["" nowhere] !stringTypeIndex !"inString"}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 

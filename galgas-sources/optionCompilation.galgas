@@ -1,24 +1,22 @@
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #  Copyright (C) 2007, ..., 2014 Pierre Molinaro.                           *
-#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
-#                                                                           *
-#  This program is free software; you can redistribute it and/or modify it  *
-#  under the terms of the GNU General Public License as published by the    *
-#  Free Software Foundation.                                                *
-#                                                                           *
-#  This program is distributed in the hope it will be useful, but WITHOUT   *
-#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
-#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
-#   more details.                                                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
+#                                                                                                                      *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
+#  License as published by the Free Software Foundation.                                                               *
+#                                                                                                                      *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  details.                                                                                                            *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 #         G E N E R A T I O N    T E M P L A T E S                          *
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 filewrapper optionGenerationTemplates in "../generation_templates/option_generation" {
 }{
@@ -52,9 +50,9 @@ filewrapper optionGenerationTemplates in "../generation_templates/option_generat
     ?@commandLineOptionMap STRING_OPTION_MAP
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 #                  semanticAnalysisOfOptionComponent                        *
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc semanticAnalysisOfOptionComponent
   ?let @optionComponentAST inOptionComponentRoot
@@ -108,9 +106,9 @@ proc semanticAnalysisOfOptionComponent
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 #                         parseOptionComponent                              *
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc parseOptionComponent
   ?let @lstring inSourceFile
@@ -151,7 +149,7 @@ proc parseOptionComponent
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc compileOptionComponentAST
   ?let @string inOutputDirectory
@@ -231,7 +229,7 @@ proc compileOptionComponentAST
  end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc compileOptionComponentFromSourceFile
   ?let @lstring inSourceFile
@@ -260,5 +258,5 @@ proc compileOptionComponentFromSourceFile
   )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 

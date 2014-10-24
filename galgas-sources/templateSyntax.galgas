@@ -1,21 +1,19 @@
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #  Template parser                                                          *
-#                                                                           *
+#                                                                                                                      *
 #  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
-#                                                                           *
-#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
-#                                                                           *
-#  This program is free software; you can redistribute it and/or modify it  *
-#  under the terms of the GNU General Public License as published by the    *
-#  Free Software Foundation.                                                *
-#                                                                           *
-#  This program is distributed in the hope it will be useful, but WITHOUT   *
-#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
-#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
-#   more details.                                                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
+#                                                                                                                      *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
+#  License as published by the Free Software Foundation.                                                               *
+#                                                                                                                      *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  details.                                                                                                            *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 syntax templateSyntax (galgasTemplateScanner) {
 
@@ -507,11 +505,11 @@ rule <output_expression_list>
   end
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #    I N S T R U C T I O N S                                                *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <template_instruction>
   ?!@templateInstructionListAST ioResultingInstructionList {
@@ -523,7 +521,7 @@ rule <template_instruction>
   ioResultingInstructionList += !@templateInstructionExpressionAST. new { !expression !@location.here}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <template_instruction>
   ?!@templateInstructionListAST ioResultingInstructionList {
@@ -531,7 +529,7 @@ rule <template_instruction>
   ioResultingInstructionList += !@templateInstructionGetColumnLocationAST. new
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <template_instruction>
   ?!@templateInstructionListAST ioResultingInstructionList {
@@ -539,7 +537,7 @@ rule <template_instruction>
   ioResultingInstructionList += !@templateInstructionGotoColumnLocationAST. new
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <template_instruction>
   ?!@templateInstructionListAST ioResultingInstructionList {
@@ -564,7 +562,7 @@ rule <template_instruction>
    !blockInstructionList}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <template_instruction>
   ?!@templateInstructionListAST ioResultingInstructionList {
@@ -656,7 +654,7 @@ rule <template_instruction>
    !afterInstructionList}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <template_instruction>
   ?!@templateInstructionListAST ioResultingInstructionList {
@@ -696,7 +694,7 @@ rule <template_instruction>
     !elseInstructionList}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <template_instruction>
   ?!@templateInstructionListAST ioResultingInstructionList {
@@ -734,7 +732,7 @@ rule <template_instruction>
     !templateInstructionSwitchBranchList}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <template_parser_start_symbol>
   !@templateInstructionListAST outResultingInstructionList {
@@ -748,6 +746,6 @@ rule <template_parser_start_symbol>
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 }

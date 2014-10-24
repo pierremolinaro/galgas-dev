@@ -1,24 +1,22 @@
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #  Type constructors                                                        *
-#                                                                           *
+#                                                                                                                      *
 #  Copyright (C) 2009, ..., 2014 Pierre Molinaro.                           *
-#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
-#                                                                           *
-#  This program is free software; you can redistribute it and/or modify it  *
-#  under the terms of the GNU General Public License as published by the    *
-#  Free Software Foundation.                                                *
-#                                                                           *
-#  This program is distributed in the hope it will be useful, but WITHOUT   *
-#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
-#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
-#   more details.                                                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
+#                                                                                                                      *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
+#  License as published by the Free Software Foundation.                                                               *
+#                                                                                                                      *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  details.                                                                                                            *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enterConstructorWithoutArgument
   ?!@constructorMap ioConstructorMap
@@ -39,7 +37,7 @@ proc enterConstructorWithoutArgument
   ]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enterConstructorWithArgument
   ?!@constructorMap ioConstructorMap
@@ -61,7 +59,7 @@ proc enterConstructorWithArgument
   ]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enterConstructorWith2Arguments
   ?!@constructorMap ioConstructorMap
@@ -89,7 +87,7 @@ proc enterConstructorWith2Arguments
   ]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enterConstructorWith3Arguments
   ?!@constructorMap ioConstructorMap
@@ -121,7 +119,7 @@ proc enterConstructorWith3Arguments
   ]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @locationPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -131,7 +129,7 @@ override method @locationPredefinedTypeAST getConstructorMap
   enterConstructorWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"here" !"location" !true )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @stringPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -155,7 +153,7 @@ override method @stringPredefinedTypeAST getConstructorMap
   enterConstructorWith2Arguments ( !?outMap !?ioUnifiedTypeMap !"stringWithSequenceOfCharacters" !"char" !"inChar" !"uint" !"inCount" !"string" !false )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @applicationPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -178,7 +176,7 @@ override method @applicationPredefinedTypeAST getConstructorMap
   enterConstructorWith2Arguments ( !?outMap !?ioUnifiedTypeMap !"stringOptionCommentString" !"string" !"inOptionComponentName" !"string" !"inOptionName" !"string" !false )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @charPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -188,7 +186,7 @@ override method @charPredefinedTypeAST getConstructorMap
   enterConstructorWithArgument ( !?outMap !?ioUnifiedTypeMap !"unicodeCharacterWithUnsigned" !"uint" !"inValue" !"char" !false )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @uintPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -201,7 +199,7 @@ override method @uintPredefinedTypeAST getConstructorMap
   enterConstructorWith2Arguments ( !?outMap !?ioUnifiedTypeMap !"valueWithMask" !"uint" !"inLowerIndex" !"uint" !"inUpperIndex" !"uint" !true )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @sintPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -211,7 +209,7 @@ override method @sintPredefinedTypeAST getConstructorMap
   enterConstructorWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"min" !"sint" !false )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @uint64PredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -223,7 +221,7 @@ override method @uint64PredefinedTypeAST getConstructorMap
   enterConstructorWithArgument ( !?outMap !?ioUnifiedTypeMap !"uint64WithBitString" !"string" !"inBitString" !"uint64" !true )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @sint64PredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -233,7 +231,7 @@ override method @sint64PredefinedTypeAST getConstructorMap
   enterConstructorWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"min" !"sint64" !false )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @stringsetPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -245,7 +243,7 @@ override method @stringsetPredefinedTypeAST getConstructorMap
   enterConstructorWithArgument ( !?outMap !?ioUnifiedTypeMap !"setWithLStringList" !"lstringlist" !"inLStringList" !"stringset" !false )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @binarysetPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -270,7 +268,7 @@ override method @binarysetPredefinedTypeAST getConstructorMap
 #  enterConstructorWith3Arguments !?outMap !?ioUnifiedTypeMap !"binarySetWithITE" !"binaryset" !"binaryset" !"binaryset" !"binaryset" !false ;
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @typePredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -279,7 +277,7 @@ override method @typePredefinedTypeAST getConstructorMap
   enterConstructorWithoutArgument ( !?outMap !?ioUnifiedTypeMap !"typeList" !"typelist" !false )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @dataPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -289,7 +287,7 @@ override method @dataPredefinedTypeAST getConstructorMap
   enterConstructorWithArgument ( !?outMap !?ioUnifiedTypeMap !"dataWithContentsOfFile" !"string" !"inFilePath" !"data" !true )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @functionPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -300,7 +298,7 @@ override method @functionPredefinedTypeAST getConstructorMap
   enterConstructorWithArgument ( !?outMap !?ioUnifiedTypeMap !"isFunctionDefined" !"string" !"inFunctionName" !"bool" !false )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @doublePredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -310,5 +308,5 @@ override method @doublePredefinedTypeAST getConstructorMap
   enterConstructorWithArgument (    !?outMap !?ioUnifiedTypeMap !"doubleWithBinaryImage" !"uint64" !"inBinaryImage" !"double" !false )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 

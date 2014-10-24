@@ -1,8 +1,14 @@
-#---------------------------------------------------------------------------*
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
+#  License as published by the Free Software Foundation.                                                               *
+#                                                                                                                      *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  details.                                                                                                            *
+#----------------------------------------------------------------------------------------------------------------------*
 
 
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 filewrapper updaterApplicationFileWrapper in "../generation_templates/cocoa_application_update/updater-application" {
 }{
@@ -23,7 +29,7 @@ filewrapper updaterApplicationFileWrapper in "../generation_templates/cocoa_appl
  template prefix "updater-app-Prefix.pch.galgasTemplate"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 filewrapper updaterToolFileWrapper in "../generation_templates/cocoa_application_update/updater-tool" {
 }{
@@ -43,7 +49,7 @@ filewrapper updaterToolFileWrapper in "../generation_templates/cocoa_application
    ?@string TARGET_NAME
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 filewrapper applicationUpdateFileWrapper in "../generation_templates/cocoa_application_update/application" {
 }{
@@ -62,7 +68,7 @@ filewrapper applicationUpdateFileWrapper in "../generation_templates/cocoa_appli
  template compatibility_header "PMSnowLeopardLionCompatibility.h.galgasTemplate"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 filewrapper targetGenerationFileWrapper in "../generation_templates/target_generation" {
  "bat", "command", "rtf"
@@ -101,7 +107,7 @@ filewrapper targetGenerationFileWrapper in "../generation_templates/target_gener
     ?@string VERSION_STRING
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc generateMsysOnWin32Target
   ?let @string inProjectDirectory
@@ -114,7 +120,7 @@ proc generateMsysOnWin32Target
   [[filewrapper targetGenerationFileWrapper.makefile_msys_on_win32_makefile !inProjectName] writeToFileWhenDifferentContents !dir +"/makefile" ?*]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc generateMinGWOnMacOSXTarget
   ?let @string inProjectDirectory
@@ -126,7 +132,7 @@ proc generateMinGWOnMacOSXTarget
   [[filewrapper targetGenerationFileWrapper.makefile_mingw_on_macosx_makefile !inProjectName] writeToFileWhenDifferentContents !dir +"/makefile" ?*]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc generateMakefileMacOSXTarget
   ?let @string inProjectDirectory
@@ -139,7 +145,7 @@ proc generateMakefileMacOSXTarget
   [[filewrapper targetGenerationFileWrapper.makefile_macosx_makefile !inProjectName] writeToFileWhenDifferentContents !dir +"/makefile" ?*]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc generateMakefileUnixTarget
   ?let @string inProjectDirectory
@@ -152,7 +158,7 @@ proc generateMakefileUnixTarget
   [[filewrapper targetGenerationFileWrapper.makefile_unix_makefile !inProjectName] writeToFileWhenDifferentContents !dir +"/makefile" ?*]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc generateI386LinuxOnMacOSXTarget
   ?let @string inProjectDirectory
@@ -164,7 +170,7 @@ proc generateI386LinuxOnMacOSXTarget
   [[filewrapper targetGenerationFileWrapper.makefile_i386_linux_on_macosx_makefile !inProjectName] writeToFileWhenDifferentContents !dir +"/makefile" ?*]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc generateX86_64LinuxOnMacOSXTarget
   ?let @string inProjectDirectory
@@ -176,7 +182,7 @@ proc generateX86_64LinuxOnMacOSXTarget
   [[filewrapper targetGenerationFileWrapper.makefile_x86_64_linux_on_macosx_makefile !inProjectName] writeToFileWhenDifferentContents !dir +"/makefile" ?*]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc updateTargets
   ?let @lstring inProjectSourceFilePath
@@ -569,5 +575,5 @@ proc updateTargets
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 

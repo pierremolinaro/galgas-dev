@@ -1,36 +1,34 @@
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #  metamodel that defines expression                                        *
-#                                                                           *
+#                                                                                                                      *
 #  Copyright (C) 2010, ..., 2012 Pierre Molinaro.                           *
-#                                                                           *
-#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
-#                                                                           *
-#  This program is free software; you can redistribute it and/or modify it  *
-#  under the terms of the GNU General Public License as published by the    *
-#  Free Software Foundation.                                                *
-#                                                                           *
-#  This program is distributed in the hope it will be useful, but WITHOUT   *
-#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
-#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
-#   more details.                                                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
+#                                                                                                                      *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
+#  License as published by the Free Software Foundation.                                                               *
+#                                                                                                                      *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  details.                                                                                                            *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #    I N S T R U C T I O N    A N A L Y S I S                               *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 abstract method @semanticInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @localConstantList {
   @unifiedTypeMap-proxy mType
@@ -39,7 +37,7 @@ list @localConstantList {
   @string mCppName
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 list @localInitializedVariableList {
   @unifiedTypeMap-proxy mType
@@ -47,7 +45,7 @@ list @localInitializedVariableList {
   @string mCppName
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 private proc analyzeSemanticInstructionList
   ?let @analysisContext inAnalysisContext
@@ -84,7 +82,7 @@ private proc analyzeSemanticInstructionList
   [!?ioVariableMap closeBranch !inEndOfBranchLocation]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @localVariableOrConstantDeclarationWithDefaultConstructorAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
@@ -115,7 +113,7 @@ override method @localVariableOrConstantDeclarationWithDefaultConstructorAST ana
     !targetVariableCppName}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @localVariableOrConstantDeclarationWithConstructorCallAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
@@ -158,7 +156,7 @@ override method @localVariableOrConstantDeclarationWithConstructorCallAST analyz
     !hasCompilerArgument}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @localVariableDeclarationWithAssignmentAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
@@ -189,7 +187,7 @@ override method @localVariableDeclarationWithAssignmentAST analyzeSemanticInstru
     !expression}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
@@ -220,7 +218,7 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
     !expression}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @localConstantDeclarationWithAssignmentAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
@@ -244,7 +242,7 @@ override method @localConstantDeclarationWithAssignmentAST analyzeSemanticInstru
     !expression}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @localVariableDeclarationAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
@@ -264,7 +262,7 @@ override method @localVariableDeclarationAST analyzeSemanticInstruction
     !targetVariableCppName}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @assignmentInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
@@ -308,7 +306,7 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
     !expression}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @selfAssignmentInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
@@ -338,7 +336,7 @@ override method @selfAssignmentInstructionAST analyzeSemanticInstruction
     !expression}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 private proc analyzeErrorOrWarningInstruction
   ?let @analysisContext inAnalysisContext
@@ -392,7 +390,7 @@ private proc analyzeErrorOrWarningInstruction
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @errorInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
@@ -429,7 +427,7 @@ override method @errorInstructionAST analyzeSemanticInstruction
     !builtVariableCppNameList}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @warningInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
@@ -458,7 +456,7 @@ override method @warningInstructionAST analyzeSemanticInstruction
     !messageExpression}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 abstract method @actualParameterAST checkAgainstFormalArgument
   ?let @analysisContext inAnalysisContext
@@ -470,7 +468,7 @@ abstract method @actualParameterAST checkAgainstFormalArgument
   ?!@stringset ioExclusiveVariableSet
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 getter @formalArgumentPassingModeAST correspondingEffectiveParameterString -> @string outResult {
   switch self
@@ -482,7 +480,7 @@ getter @formalArgumentPassingModeAST correspondingEffectiveParameterString -> @s
 }
 
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @outputActualParameterAST checkAgainstFormalArgument
   ?let @analysisContext inAnalysisContext
@@ -517,7 +515,7 @@ override method @outputActualParameterAST checkAgainstFormalArgument
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @outputInputActualParameterAST checkAgainstFormalArgument
   ?let @analysisContext unused inAnalysisContext
@@ -571,7 +569,7 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
     !typeList}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @outputInputSingleJokerParameterAST checkAgainstFormalArgument
   ?let @analysisContext unused inAnalysisContext
@@ -607,7 +605,7 @@ override method @outputInputSingleJokerParameterAST checkAgainstFormalArgument
     !@unifiedTypeMapProxyList. listWithValue { !inFormalArgumentType}}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @outputInputJokerParameterAST checkAgainstFormalArgument
   ?let @analysisContext unused inAnalysisContext
@@ -641,7 +639,7 @@ override method @outputInputJokerParameterAST checkAgainstFormalArgument
     !@unifiedTypeMapProxyList. listWithValue { !inFormalArgumentType}}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @inputActualExistingVariableParameterAST checkAgainstFormalArgument
   ?let @analysisContext unused inAnalysisContext
@@ -683,7 +681,7 @@ override method @inputActualExistingVariableParameterAST checkAgainstFormalArgum
     !targetVariableCppName}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @inputActualNewVariableParameterAST checkAgainstFormalArgument
   ?let @analysisContext inAnalysisContext
@@ -736,7 +734,7 @@ override method @inputActualNewVariableParameterAST checkAgainstFormalArgument
     !targetVariableCppName}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @inputActualNewConstantParameterAST checkAgainstFormalArgument
   ?let @analysisContext inAnalysisContext
@@ -789,7 +787,7 @@ override method @inputActualNewConstantParameterAST checkAgainstFormalArgument
     !targetVariableCppName}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @inputSingleJokerActualParameterAST checkAgainstFormalArgument
   ?let @analysisContext unused inAnalysisContext
@@ -815,7 +813,7 @@ override method @inputSingleJokerActualParameterAST checkAgainstFormalArgument
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @inputJokerActualParameterAST checkAgainstFormalArgument
   ?let @analysisContext unused inAnalysisContext
@@ -839,7 +837,7 @@ override method @inputJokerActualParameterAST checkAgainstFormalArgument
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc analyzeRoutineArguments
   ?let @analysisContext inAnalysisContext
@@ -874,7 +872,7 @@ proc analyzeRoutineArguments
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @routineCallInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
@@ -916,7 +914,7 @@ override method @routineCallInstructionAST analyzeSemanticInstruction
     !actualParameterListForGeneration}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @typeMethodCallInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
@@ -947,7 +945,7 @@ override method @typeMethodCallInstructionAST analyzeSemanticInstruction
     !hasCompilerArgument}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @methodCallInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
@@ -1008,7 +1006,7 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
     !baseType}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 func checkMethodImplementationInSuperClasses
   ?let @lstring inMethodName
@@ -1029,7 +1027,7 @@ func checkMethodImplementationInSuperClasses
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @modifierCallInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
@@ -1100,7 +1098,7 @@ override method @modifierCallInstructionAST analyzeSemanticInstruction
     !baseType}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @selfModifierCallInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
@@ -1141,7 +1139,7 @@ override method @selfModifierCallInstructionAST analyzeSemanticInstruction
     !hasCompilerArgument}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 func checkModifierImplementationInSuperClasses
   ?let @lstring inModifierName
@@ -1163,7 +1161,7 @@ func checkModifierImplementationInSuperClasses
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @concatInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
@@ -1210,7 +1208,7 @@ override method @concatInstructionAST analyzeSemanticInstruction
     !expression}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @selfConcatInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
@@ -1250,11 +1248,11 @@ override method @selfConcatInstructionAST analyzeSemanticInstruction
     !expression}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 #! += Instruction
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # += !… !…
   ?let @analysisContext inAnalysisContext
@@ -1313,7 +1311,7 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # += exp
   ?let @analysisContext inAnalysisContext
@@ -1359,7 +1357,7 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
     !expression}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
@@ -1411,7 +1409,7 @@ override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
@@ -1450,7 +1448,7 @@ override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstructio
     !expression}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @incrementInstructionAST analyzeSemanticInstruction
   ?let @analysisContext unused inAnalysisContext
@@ -1484,7 +1482,7 @@ override method @incrementInstructionAST analyzeSemanticInstruction
     !mStructAttributeList}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @selfIncrementInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
@@ -1512,7 +1510,7 @@ override method @selfIncrementInstructionAST analyzeSemanticInstruction
     !@lstringlist. emptyList}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @decrementInstructionAST analyzeSemanticInstruction
   ?let @analysisContext unused inAnalysisContext
@@ -1546,7 +1544,7 @@ override method @decrementInstructionAST analyzeSemanticInstruction
     !mStructAttributeList}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @selfDecrementInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
@@ -1574,7 +1572,7 @@ override method @selfDecrementInstructionAST analyzeSemanticInstruction
     !@lstringlist. emptyList}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @messageInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
@@ -1599,7 +1597,7 @@ override method @messageInstructionAST analyzeSemanticInstruction
     !mInstructionLocation}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @logInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
@@ -1621,7 +1619,7 @@ override method @logInstructionAST analyzeSemanticInstruction
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @dropInstructionAST analyzeSemanticInstruction
   ?let @analysisContext unused inAnalysisContext
@@ -1642,7 +1640,7 @@ override method @dropInstructionAST analyzeSemanticInstruction
      !dropTypeList}  
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 private proc checkExpressionIsBoolean
   ?let @analysisContext inAnalysisContext
@@ -1723,7 +1721,7 @@ private proc checkExpressionIsBoolean
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @ifInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
@@ -1777,11 +1775,11 @@ override method @ifInstructionAST analyzeSemanticInstruction
     !else_instructionList}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 #! For instruction
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 abstract method @abstractEnumeratedCollectionAST analyzeEnumeration
   ?let @analysisContext inAnalysisContext
@@ -1790,7 +1788,7 @@ abstract method @abstractEnumeratedCollectionAST analyzeEnumeration
   !@string outEnumeratorCppName
   !@semanticExpressionForGeneration outEnumerationExpression
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @enumeratedCollectionImplicitVarInExpAST analyzeEnumeration
   ?let @analysisContext inAnalysisContext
@@ -1819,7 +1817,7 @@ override method @enumeratedCollectionImplicitVarInExpAST analyzeEnumeration
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
   ?let @analysisContext inAnalysisContext
@@ -1880,7 +1878,7 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @enumeratedCollectionVarInExpAST analyzeEnumeration
   ?let @analysisContext inAnalysisContext
@@ -1912,7 +1910,7 @@ override method @enumeratedCollectionVarInExpAST analyzeEnumeration
 #---
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @forInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
@@ -2039,7 +2037,7 @@ override method @forInstructionAST analyzeSemanticInstruction
     !after_instructionList}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @foreachInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
@@ -2221,7 +2219,7 @@ override method @foreachInstructionAST analyzeSemanticInstruction
     !after_instructionList}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @loopInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
@@ -2288,7 +2286,7 @@ override method @loopInstructionAST analyzeSemanticInstruction
     !second_instructionList}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @structuredCastInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
@@ -2367,7 +2365,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
     !else_instructionList}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 abstract method @abstractGrammarInstructionSyntaxDirectedTranslationResult analyzeGrammarInstructionSDT
   ?let @analysisContext inAnalysisContext
@@ -2376,7 +2374,7 @@ abstract method @abstractGrammarInstructionSyntaxDirectedTranslationResult analy
   ?!@stringlist ioAssignementList
   ?!@variableMap ioVariableMap
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @grammarInstructionSyntaxDirectedTranslationResultNone analyzeGrammarInstructionSDT
   ?let @analysisContext unused inAnalysisContext
@@ -2386,7 +2384,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultNone analyzeGr
   ?!@variableMap unused ioVariableMap {
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @grammarInstructionSyntaxDirectedTranslationDropResult  analyzeGrammarInstructionSDT
   ?let @analysisContext unused inAnalysisContext
@@ -2399,7 +2397,7 @@ override method @grammarInstructionSyntaxDirectedTranslationDropResult  analyzeG
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @grammarInstructionSyntaxDirectedTranslationResultInVar  analyzeGrammarInstructionSDT
   ?let @analysisContext inAnalysisContext
@@ -2420,7 +2418,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInVar  analyze
   ioAssignementList += !cppName + " = GALGAS_string (" + inSyntaxDirectedTranslationResultVarName + ") ;" 
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar  analyzeGrammarInstructionSDT
   ?let @analysisContext inAnalysisContext
@@ -2443,7 +2441,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar 
   ioAssignementList += !"GALGAS_string " + cppName + " (" + inSyntaxDirectedTranslationResultVarName + ") ;" 
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst  analyzeGrammarInstructionSDT
   ?let @analysisContext inAnalysisContext
@@ -2466,7 +2464,7 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredCons
   ioAssignementList += !"const GALGAS_string " + cppName + " (" + inSyntaxDirectedTranslationResultVarName + ") ;" 
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @grammarInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
@@ -2546,10 +2544,10 @@ override method @grammarInstructionAST analyzeSemanticInstruction
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 #! With instruction
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @readAccessWithInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
@@ -2634,7 +2632,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
     !else_instructionList}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
@@ -2739,9 +2737,9 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
     !else_instructionList}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 #! switch instruction
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @switchInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
@@ -2836,9 +2834,9 @@ override method @switchInstructionAST analyzeSemanticInstruction
     !switchBranchesForGeneration}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 #! Match
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @matchInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
@@ -2948,5 +2946,5 @@ override method @matchInstructionAST analyzeSemanticInstruction
     !elseInstructionList}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 

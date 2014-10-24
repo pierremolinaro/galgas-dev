@@ -1,8 +1,14 @@
-#---------------------------------------------------------------------------*
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
+#  License as published by the Free Software Foundation.                                                               *
+#                                                                                                                      *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  details.                                                                                                            *
+#----------------------------------------------------------------------------------------------------------------------*
 
 
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc build_LIBPM_BDD_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -24,7 +30,7 @@ proc build_LIBPM_BDD_group
   )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc build_LIBPM_BDD_source_files_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -45,7 +51,7 @@ proc build_LIBPM_BDD_source_files_for_sources_build_phase
   )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc getGALGAS_2_source_file_list
   !@stringlist out_fileList {
@@ -131,7 +137,7 @@ proc getGALGAS_2_source_file_list
   out_fileList += !"predefined-types.h"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc build_LIBPM_GALGAS_2_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -146,7 +152,7 @@ proc build_LIBPM_GALGAS_2_group
   )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc build_LIBPM_GALGAS_2_files_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -167,7 +173,7 @@ proc build_LIBPM_GALGAS_2_files_for_sources_build_phase
   )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc build_LIBPM_COCOA_GALGAS_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -227,7 +233,7 @@ proc build_LIBPM_COCOA_GALGAS_group
 }
 
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc build_LIBPM_COCOA_UTILITIES_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -244,7 +250,7 @@ proc build_LIBPM_COCOA_UTILITIES_group
   )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc build_LIBPM_FILES_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -264,7 +270,7 @@ proc build_LIBPM_FILES_group
   )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc build_LIBPM_FILES_files_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -284,7 +290,7 @@ proc build_LIBPM_FILES_files_for_sources_build_phase
   )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc build_LIBPM_COMMAND_LINE_INTERFACE_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -305,7 +311,7 @@ proc build_LIBPM_COMMAND_LINE_INTERFACE_group
   )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc build_LIBPM_COMMAND_LINE_INTERFACE_files_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -326,7 +332,7 @@ proc build_LIBPM_COMMAND_LINE_INTERFACE_files_for_sources_build_phase
   )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc build_LIBPM_COLLECTIONS_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -346,7 +352,7 @@ proc build_LIBPM_COLLECTIONS_group
   )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc build_PROJECT_RESOURCES_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -372,7 +378,7 @@ proc build_PROJECT_RESOURCES_group
   )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc build_LIBPM_STRINGS_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -392,7 +398,7 @@ proc build_LIBPM_STRINGS_group
   )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc build_LIBPM_STRINGS_files_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -410,7 +416,7 @@ proc build_LIBPM_STRINGS_files_for_sources_build_phase
   )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc build_LIBPM_UTILITIES_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -443,7 +449,7 @@ proc build_LIBPM_UTILITIES_group
   )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc build_LIBPM_UTILITIES_files_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -470,7 +476,7 @@ proc build_LIBPM_UTILITIES_files_for_sources_build_phase
   )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc build_LIBPM_STREAMS_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -489,7 +495,7 @@ proc build_LIBPM_STREAMS_group
   )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc build_LIBPM_STREAMS_files_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -508,7 +514,7 @@ proc build_LIBPM_STREAMS_files_for_sources_build_phase
   )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc build_LIBPM_TIME_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -524,7 +530,7 @@ proc build_LIBPM_TIME_group
   )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc build_LIBPM_TIME_files_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -540,7 +546,7 @@ proc build_LIBPM_TIME_files_for_sources_build_phase
   )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc build_GENERATED_BY_GALGAS_files_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -560,7 +566,7 @@ proc build_GENERATED_BY_GALGAS_files_for_sources_build_phase
   )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc build_GENERATED_BY_GALGAS_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -582,7 +588,7 @@ proc build_GENERATED_BY_GALGAS_group
   )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc build_HAND_CODED_source_files_for_sources_tool_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -603,7 +609,7 @@ proc build_HAND_CODED_source_files_for_sources_tool_build_phase
   )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc build_HAND_CODED_source_files_for_sources_cocoa_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -624,7 +630,7 @@ proc build_HAND_CODED_source_files_for_sources_cocoa_build_phase
   )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc build_HAND_CODED_SOURCES_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -645,7 +651,7 @@ proc build_HAND_CODED_SOURCES_group
   )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc build_FRAMEWORKS_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -682,7 +688,7 @@ proc build_FRAMEWORKS_group
   )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc build_FRAMEWORKS_for_frameworks_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -702,7 +708,7 @@ proc build_FRAMEWORKS_for_frameworks_build_phase
   )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc build_RESOURCES_for_resources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -733,7 +739,7 @@ proc build_RESOURCES_for_resources_build_phase
   )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 private proc build_COCOA_APP_files_for_sources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
@@ -795,7 +801,7 @@ private proc build_COCOA_APP_files_for_sources_build_phase
   )
 }
 
-#----------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 map @projectQualifiedFeatureMap {
   @lstring mFeatureValue
@@ -803,7 +809,7 @@ map @projectQualifiedFeatureMap {
   search searchKey error message "the '%K' feature is not declared"  
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc generateXcodeProject
   ?let @stringset inExternSourceNameSet_tool
@@ -1482,5 +1488,5 @@ proc generateXcodeProject
   )
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 

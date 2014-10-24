@@ -29,7 +29,7 @@
 #define END_PRODUCTION  (0)
 
 static const int16_t gProductions_grammarLL1grammar [] = {
-// At index 0 : <grammar_component_start_symbol>, in file 'grammarModelBuilder.ggs', line 28
+// At index 0 : <grammar_component_start_symbol>, in file 'grammarModelBuilder.ggs', line 26
   NONTERMINAL (3) // <select_grammarModelBuilder_0>
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_grammar) // $grammar$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
@@ -50,95 +50,95 @@ static const int16_t gProductions_grammarLL1grammar [] = {
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_grammar) // $grammar$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) // $;$
 , END_PRODUCTION
-// At index 20 : <grammar_start_symbol_label>, in file 'grammarModelBuilder.ggs', line 111
+// At index 20 : <grammar_start_symbol_label>, in file 'grammarModelBuilder.ggs', line 109
 , NONTERMINAL (9) // <select_grammarModelBuilder_6>
 , END_PRODUCTION
-// At index 22 : <label_formal_parameter>, in file 'grammarModelBuilder.ggs', line 130
+// At index 22 : <label_formal_parameter>, in file 'grammarModelBuilder.ggs', line 128
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F_) // $?$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) // $type_name$
 , NONTERMINAL (10) // <select_grammarModelBuilder_7>
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , END_PRODUCTION
-// At index 27 : <label_formal_parameter>, in file 'grammarModelBuilder.ggs', line 150
+// At index 27 : <label_formal_parameter>, in file 'grammarModelBuilder.ggs', line 148
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F__3F_) // $??$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) // $type_name$
 , NONTERMINAL (11) // <select_grammarModelBuilder_8>
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , END_PRODUCTION
-// At index 32 : <label_formal_parameter>, in file 'grammarModelBuilder.ggs', line 171
+// At index 32 : <label_formal_parameter>, in file 'grammarModelBuilder.ggs', line 169
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3F__21_) // $?!$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) // $type_name$
 , NONTERMINAL (12) // <select_grammarModelBuilder_9>
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , END_PRODUCTION
-// At index 37 : <label_formal_parameter>, in file 'grammarModelBuilder.ggs', line 191
+// At index 37 : <label_formal_parameter>, in file 'grammarModelBuilder.ggs', line 189
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__21_) // $!$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_type_5F_name) // $type_name$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , END_PRODUCTION
 //---- Added productions from 'select' and 'repeat' instructions
-// At index 41 : <select_grammarModelBuilder_0>, in file 'grammarModelBuilder.ggs', line 31
+// At index 41 : <select_grammarModelBuilder_0>, in file 'grammarModelBuilder.ggs', line 29
 , END_PRODUCTION
-// At index 42 : <select_grammarModelBuilder_0>, in file 'grammarModelBuilder.ggs', line 31
+// At index 42 : <select_grammarModelBuilder_0>, in file 'grammarModelBuilder.ggs', line 29
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_indexing) // $indexing$
 , END_PRODUCTION
-// At index 44 : <select_grammarModelBuilder_1>, in file 'grammarModelBuilder.ggs', line 42
+// At index 44 : <select_grammarModelBuilder_1>, in file 'grammarModelBuilder.ggs', line 40
 , END_PRODUCTION
-// At index 45 : <select_grammarModelBuilder_1>, in file 'grammarModelBuilder.ggs', line 42
+// At index 45 : <select_grammarModelBuilder_1>, in file 'grammarModelBuilder.ggs', line 40
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_feature) // $feature$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , END_PRODUCTION
-// At index 48 : <select_grammarModelBuilder_2>, in file 'grammarModelBuilder.ggs', line 57
+// At index 48 : <select_grammarModelBuilder_2>, in file 'grammarModelBuilder.ggs', line 55
 , END_PRODUCTION
-// At index 49 : <select_grammarModelBuilder_2>, in file 'grammarModelBuilder.ggs', line 57
+// At index 49 : <select_grammarModelBuilder_2>, in file 'grammarModelBuilder.ggs', line 55
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_with) // $with$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) // $literal_string$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) // $;$
 , NONTERMINAL (5) // <select_grammarModelBuilder_2>
 , END_PRODUCTION
-// At index 54 : <select_grammarModelBuilder_3>, in file 'grammarModelBuilder.ggs', line 72
+// At index 54 : <select_grammarModelBuilder_3>, in file 'grammarModelBuilder.ggs', line 70
 , END_PRODUCTION
-// At index 55 : <select_grammarModelBuilder_3>, in file 'grammarModelBuilder.ggs', line 72
+// At index 55 : <select_grammarModelBuilder_3>, in file 'grammarModelBuilder.ggs', line 70
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_label) // $label$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , NONTERMINAL (1) // <grammar_start_symbol_label>
 , NONTERMINAL (6) // <select_grammarModelBuilder_3>
 , END_PRODUCTION
-// At index 60 : <select_grammarModelBuilder_4>, in file 'grammarModelBuilder.ggs', line 81
+// At index 60 : <select_grammarModelBuilder_4>, in file 'grammarModelBuilder.ggs', line 79
 , END_PRODUCTION
-// At index 61 : <select_grammarModelBuilder_4>, in file 'grammarModelBuilder.ggs', line 81
+// At index 61 : <select_grammarModelBuilder_4>, in file 'grammarModelBuilder.ggs', line 79
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_unused) // $unused$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_non_5F_terminal_5F_symbol) // $non_terminal_symbol$
 , NONTERMINAL (8) // <select_grammarModelBuilder_5>
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) // $;$
 , NONTERMINAL (7) // <select_grammarModelBuilder_4>
 , END_PRODUCTION
-// At index 67 : <select_grammarModelBuilder_5>, in file 'grammarModelBuilder.ggs', line 84
+// At index 67 : <select_grammarModelBuilder_5>, in file 'grammarModelBuilder.ggs', line 82
 , END_PRODUCTION
-// At index 68 : <select_grammarModelBuilder_5>, in file 'grammarModelBuilder.ggs', line 84
+// At index 68 : <select_grammarModelBuilder_5>, in file 'grammarModelBuilder.ggs', line 82
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__2C_) // $,$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_non_5F_terminal_5F_symbol) // $non_terminal_symbol$
 , NONTERMINAL (8) // <select_grammarModelBuilder_5>
 , END_PRODUCTION
-// At index 72 : <select_grammarModelBuilder_6>, in file 'grammarModelBuilder.ggs', line 116
+// At index 72 : <select_grammarModelBuilder_6>, in file 'grammarModelBuilder.ggs', line 114
 , END_PRODUCTION
-// At index 73 : <select_grammarModelBuilder_6>, in file 'grammarModelBuilder.ggs', line 116
+// At index 73 : <select_grammarModelBuilder_6>, in file 'grammarModelBuilder.ggs', line 114
 , NONTERMINAL (2) // <label_formal_parameter>
 , NONTERMINAL (9) // <select_grammarModelBuilder_6>
 , END_PRODUCTION
-// At index 76 : <select_grammarModelBuilder_7>, in file 'grammarModelBuilder.ggs', line 135
+// At index 76 : <select_grammarModelBuilder_7>, in file 'grammarModelBuilder.ggs', line 133
 , END_PRODUCTION
-// At index 77 : <select_grammarModelBuilder_7>, in file 'grammarModelBuilder.ggs', line 135
+// At index 77 : <select_grammarModelBuilder_7>, in file 'grammarModelBuilder.ggs', line 133
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_unused) // $unused$
 , END_PRODUCTION
-// At index 79 : <select_grammarModelBuilder_8>, in file 'grammarModelBuilder.ggs', line 156
+// At index 79 : <select_grammarModelBuilder_8>, in file 'grammarModelBuilder.ggs', line 154
 , END_PRODUCTION
-// At index 80 : <select_grammarModelBuilder_8>, in file 'grammarModelBuilder.ggs', line 156
+// At index 80 : <select_grammarModelBuilder_8>, in file 'grammarModelBuilder.ggs', line 154
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_unused) // $unused$
 , END_PRODUCTION
-// At index 82 : <select_grammarModelBuilder_9>, in file 'grammarModelBuilder.ggs', line 176
+// At index 82 : <select_grammarModelBuilder_9>, in file 'grammarModelBuilder.ggs', line 174
 , END_PRODUCTION
-// At index 83 : <select_grammarModelBuilder_9>, in file 'grammarModelBuilder.ggs', line 176
+// At index 83 : <select_grammarModelBuilder_9>, in file 'grammarModelBuilder.ggs', line 174
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_unused) // $unused$
 , END_PRODUCTION
 // At index 85 : <>, in file '.ggs', line 0
@@ -189,32 +189,32 @@ static const cProductionNameDescriptor gProductionNames_grammarLL1grammar [27] =
 //---------------------------------------------------------------------------------------------------------------------*
 
 static const int16_t gProductionIndexes_grammarLL1grammar [27] = {
-0, // index 0 : <grammar_component_start_symbol>, in file 'grammarModelBuilder.ggs', line 28
-20, // index 1 : <grammar_start_symbol_label>, in file 'grammarModelBuilder.ggs', line 111
-22, // index 2 : <label_formal_parameter>, in file 'grammarModelBuilder.ggs', line 130
-27, // index 3 : <label_formal_parameter>, in file 'grammarModelBuilder.ggs', line 150
-32, // index 4 : <label_formal_parameter>, in file 'grammarModelBuilder.ggs', line 171
-37, // index 5 : <label_formal_parameter>, in file 'grammarModelBuilder.ggs', line 191
-41, // index 6 : <select_grammarModelBuilder_0>, in file 'grammarModelBuilder.ggs', line 31
-42, // index 7 : <select_grammarModelBuilder_0>, in file 'grammarModelBuilder.ggs', line 31
-44, // index 8 : <select_grammarModelBuilder_1>, in file 'grammarModelBuilder.ggs', line 42
-45, // index 9 : <select_grammarModelBuilder_1>, in file 'grammarModelBuilder.ggs', line 42
-48, // index 10 : <select_grammarModelBuilder_2>, in file 'grammarModelBuilder.ggs', line 57
-49, // index 11 : <select_grammarModelBuilder_2>, in file 'grammarModelBuilder.ggs', line 57
-54, // index 12 : <select_grammarModelBuilder_3>, in file 'grammarModelBuilder.ggs', line 72
-55, // index 13 : <select_grammarModelBuilder_3>, in file 'grammarModelBuilder.ggs', line 72
-60, // index 14 : <select_grammarModelBuilder_4>, in file 'grammarModelBuilder.ggs', line 81
-61, // index 15 : <select_grammarModelBuilder_4>, in file 'grammarModelBuilder.ggs', line 81
-67, // index 16 : <select_grammarModelBuilder_5>, in file 'grammarModelBuilder.ggs', line 84
-68, // index 17 : <select_grammarModelBuilder_5>, in file 'grammarModelBuilder.ggs', line 84
-72, // index 18 : <select_grammarModelBuilder_6>, in file 'grammarModelBuilder.ggs', line 116
-73, // index 19 : <select_grammarModelBuilder_6>, in file 'grammarModelBuilder.ggs', line 116
-76, // index 20 : <select_grammarModelBuilder_7>, in file 'grammarModelBuilder.ggs', line 135
-77, // index 21 : <select_grammarModelBuilder_7>, in file 'grammarModelBuilder.ggs', line 135
-79, // index 22 : <select_grammarModelBuilder_8>, in file 'grammarModelBuilder.ggs', line 156
-80, // index 23 : <select_grammarModelBuilder_8>, in file 'grammarModelBuilder.ggs', line 156
-82, // index 24 : <select_grammarModelBuilder_9>, in file 'grammarModelBuilder.ggs', line 176
-83, // index 25 : <select_grammarModelBuilder_9>, in file 'grammarModelBuilder.ggs', line 176
+0, // index 0 : <grammar_component_start_symbol>, in file 'grammarModelBuilder.ggs', line 26
+20, // index 1 : <grammar_start_symbol_label>, in file 'grammarModelBuilder.ggs', line 109
+22, // index 2 : <label_formal_parameter>, in file 'grammarModelBuilder.ggs', line 128
+27, // index 3 : <label_formal_parameter>, in file 'grammarModelBuilder.ggs', line 148
+32, // index 4 : <label_formal_parameter>, in file 'grammarModelBuilder.ggs', line 169
+37, // index 5 : <label_formal_parameter>, in file 'grammarModelBuilder.ggs', line 189
+41, // index 6 : <select_grammarModelBuilder_0>, in file 'grammarModelBuilder.ggs', line 29
+42, // index 7 : <select_grammarModelBuilder_0>, in file 'grammarModelBuilder.ggs', line 29
+44, // index 8 : <select_grammarModelBuilder_1>, in file 'grammarModelBuilder.ggs', line 40
+45, // index 9 : <select_grammarModelBuilder_1>, in file 'grammarModelBuilder.ggs', line 40
+48, // index 10 : <select_grammarModelBuilder_2>, in file 'grammarModelBuilder.ggs', line 55
+49, // index 11 : <select_grammarModelBuilder_2>, in file 'grammarModelBuilder.ggs', line 55
+54, // index 12 : <select_grammarModelBuilder_3>, in file 'grammarModelBuilder.ggs', line 70
+55, // index 13 : <select_grammarModelBuilder_3>, in file 'grammarModelBuilder.ggs', line 70
+60, // index 14 : <select_grammarModelBuilder_4>, in file 'grammarModelBuilder.ggs', line 79
+61, // index 15 : <select_grammarModelBuilder_4>, in file 'grammarModelBuilder.ggs', line 79
+67, // index 16 : <select_grammarModelBuilder_5>, in file 'grammarModelBuilder.ggs', line 82
+68, // index 17 : <select_grammarModelBuilder_5>, in file 'grammarModelBuilder.ggs', line 82
+72, // index 18 : <select_grammarModelBuilder_6>, in file 'grammarModelBuilder.ggs', line 114
+73, // index 19 : <select_grammarModelBuilder_6>, in file 'grammarModelBuilder.ggs', line 114
+76, // index 20 : <select_grammarModelBuilder_7>, in file 'grammarModelBuilder.ggs', line 133
+77, // index 21 : <select_grammarModelBuilder_7>, in file 'grammarModelBuilder.ggs', line 133
+79, // index 22 : <select_grammarModelBuilder_8>, in file 'grammarModelBuilder.ggs', line 154
+80, // index 23 : <select_grammarModelBuilder_8>, in file 'grammarModelBuilder.ggs', line 154
+82, // index 24 : <select_grammarModelBuilder_9>, in file 'grammarModelBuilder.ggs', line 174
+83, // index 25 : <select_grammarModelBuilder_9>, in file 'grammarModelBuilder.ggs', line 174
 85 // index 26 : <>, in file '.ggs', line 0
 } ;
 
@@ -20490,7 +20490,7 @@ int32_t cGrammar_programSLRgrammar::select_semanticDeclarationsSyntax_43 (C_Lexi
 #define END_PRODUCTION  (0)
 
 static const int16_t gProductions_projectLL1grammar [] = {
-// At index 0 : <project_component_start_symbol>, in file 'projectModelBuilder.ggs', line 29
+// At index 0 : <project_component_start_symbol>, in file 'projectModelBuilder.ggs', line 27
   TERMINAL (C_Lexique_galgas_5F_scanner::kToken_project) // $project$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__28_) // $($
@@ -20509,56 +20509,56 @@ static const int16_t gProductions_projectLL1grammar [] = {
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) // $;$
 , END_PRODUCTION
 //---- Added productions from 'select' and 'repeat' instructions
-// At index 17 : <select_projectModelBuilder_0>, in file 'projectModelBuilder.ggs', line 47
+// At index 17 : <select_projectModelBuilder_0>, in file 'projectModelBuilder.ggs', line 45
 , END_PRODUCTION
-// At index 18 : <select_projectModelBuilder_0>, in file 'projectModelBuilder.ggs', line 47
+// At index 18 : <select_projectModelBuilder_0>, in file 'projectModelBuilder.ggs', line 45
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_feature) // $feature$
 , NONTERMINAL (2) // <select_projectModelBuilder_1>
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) // $;$
 , NONTERMINAL (1) // <select_projectModelBuilder_0>
 , END_PRODUCTION
-// At index 23 : <select_projectModelBuilder_0>, in file 'projectModelBuilder.ggs', line 47
+// At index 23 : <select_projectModelBuilder_0>, in file 'projectModelBuilder.ggs', line 45
 , NONTERMINAL (3) // <select_projectModelBuilder_2>
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3B_) // $;$
 , NONTERMINAL (1) // <select_projectModelBuilder_0>
 , END_PRODUCTION
-// At index 27 : <select_projectModelBuilder_1>, in file 'projectModelBuilder.ggs', line 51
+// At index 27 : <select_projectModelBuilder_1>, in file 'projectModelBuilder.ggs', line 49
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken__3A_) // $:$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) // $literal_string$
 , END_PRODUCTION
-// At index 31 : <select_projectModelBuilder_1>, in file 'projectModelBuilder.ggs', line 51
+// At index 31 : <select_projectModelBuilder_1>, in file 'projectModelBuilder.ggs', line 49
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) // $literal_string$
 , END_PRODUCTION
-// At index 33 : <select_projectModelBuilder_2>, in file 'projectModelBuilder.ggs', line 76
+// At index 33 : <select_projectModelBuilder_2>, in file 'projectModelBuilder.ggs', line 74
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_extern) // $extern$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) // $literal_string$
 , END_PRODUCTION
-// At index 36 : <select_projectModelBuilder_2>, in file 'projectModelBuilder.ggs', line 76
+// At index 36 : <select_projectModelBuilder_2>, in file 'projectModelBuilder.ggs', line 74
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_gui) // $gui$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) // $literal_string$
 , END_PRODUCTION
-// At index 39 : <select_projectModelBuilder_2>, in file 'projectModelBuilder.ggs', line 76
+// At index 39 : <select_projectModelBuilder_2>, in file 'projectModelBuilder.ggs', line 74
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_lexique) // $lexique$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) // $literal_string$
 , END_PRODUCTION
-// At index 42 : <select_projectModelBuilder_2>, in file 'projectModelBuilder.ggs', line 76
+// At index 42 : <select_projectModelBuilder_2>, in file 'projectModelBuilder.ggs', line 74
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_option) // $option$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) // $literal_string$
 , END_PRODUCTION
-// At index 45 : <select_projectModelBuilder_2>, in file 'projectModelBuilder.ggs', line 76
+// At index 45 : <select_projectModelBuilder_2>, in file 'projectModelBuilder.ggs', line 74
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_semantics) // $semantics$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) // $literal_string$
 , END_PRODUCTION
-// At index 48 : <select_projectModelBuilder_2>, in file 'projectModelBuilder.ggs', line 76
+// At index 48 : <select_projectModelBuilder_2>, in file 'projectModelBuilder.ggs', line 74
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_syntax) // $syntax$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) // $literal_string$
 , END_PRODUCTION
-// At index 51 : <select_projectModelBuilder_2>, in file 'projectModelBuilder.ggs', line 76
+// At index 51 : <select_projectModelBuilder_2>, in file 'projectModelBuilder.ggs', line 74
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_grammar) // $grammar$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) // $literal_string$
 , END_PRODUCTION
-// At index 54 : <select_projectModelBuilder_2>, in file 'projectModelBuilder.ggs', line 76
+// At index 54 : <select_projectModelBuilder_2>, in file 'projectModelBuilder.ggs', line 74
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_program) // $program$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_literal_5F_string) // $literal_string$
 , END_PRODUCTION
@@ -20598,20 +20598,20 @@ static const cProductionNameDescriptor gProductionNames_projectLL1grammar [15] =
 //---------------------------------------------------------------------------------------------------------------------*
 
 static const int16_t gProductionIndexes_projectLL1grammar [15] = {
-0, // index 0 : <project_component_start_symbol>, in file 'projectModelBuilder.ggs', line 29
-17, // index 1 : <select_projectModelBuilder_0>, in file 'projectModelBuilder.ggs', line 47
-18, // index 2 : <select_projectModelBuilder_0>, in file 'projectModelBuilder.ggs', line 47
-23, // index 3 : <select_projectModelBuilder_0>, in file 'projectModelBuilder.ggs', line 47
-27, // index 4 : <select_projectModelBuilder_1>, in file 'projectModelBuilder.ggs', line 51
-31, // index 5 : <select_projectModelBuilder_1>, in file 'projectModelBuilder.ggs', line 51
-33, // index 6 : <select_projectModelBuilder_2>, in file 'projectModelBuilder.ggs', line 76
-36, // index 7 : <select_projectModelBuilder_2>, in file 'projectModelBuilder.ggs', line 76
-39, // index 8 : <select_projectModelBuilder_2>, in file 'projectModelBuilder.ggs', line 76
-42, // index 9 : <select_projectModelBuilder_2>, in file 'projectModelBuilder.ggs', line 76
-45, // index 10 : <select_projectModelBuilder_2>, in file 'projectModelBuilder.ggs', line 76
-48, // index 11 : <select_projectModelBuilder_2>, in file 'projectModelBuilder.ggs', line 76
-51, // index 12 : <select_projectModelBuilder_2>, in file 'projectModelBuilder.ggs', line 76
-54, // index 13 : <select_projectModelBuilder_2>, in file 'projectModelBuilder.ggs', line 76
+0, // index 0 : <project_component_start_symbol>, in file 'projectModelBuilder.ggs', line 27
+17, // index 1 : <select_projectModelBuilder_0>, in file 'projectModelBuilder.ggs', line 45
+18, // index 2 : <select_projectModelBuilder_0>, in file 'projectModelBuilder.ggs', line 45
+23, // index 3 : <select_projectModelBuilder_0>, in file 'projectModelBuilder.ggs', line 45
+27, // index 4 : <select_projectModelBuilder_1>, in file 'projectModelBuilder.ggs', line 49
+31, // index 5 : <select_projectModelBuilder_1>, in file 'projectModelBuilder.ggs', line 49
+33, // index 6 : <select_projectModelBuilder_2>, in file 'projectModelBuilder.ggs', line 74
+36, // index 7 : <select_projectModelBuilder_2>, in file 'projectModelBuilder.ggs', line 74
+39, // index 8 : <select_projectModelBuilder_2>, in file 'projectModelBuilder.ggs', line 74
+42, // index 9 : <select_projectModelBuilder_2>, in file 'projectModelBuilder.ggs', line 74
+45, // index 10 : <select_projectModelBuilder_2>, in file 'projectModelBuilder.ggs', line 74
+48, // index 11 : <select_projectModelBuilder_2>, in file 'projectModelBuilder.ggs', line 74
+51, // index 12 : <select_projectModelBuilder_2>, in file 'projectModelBuilder.ggs', line 74
+54, // index 13 : <select_projectModelBuilder_2>, in file 'projectModelBuilder.ggs', line 74
 57 // index 14 : <>, in file '.ggs', line 0
 } ;
 
@@ -20831,7 +20831,7 @@ int32_t cGrammar_projectLL_31_grammar::select_projectModelBuilder_2 (C_Lexique_g
 #define END_PRODUCTION  (0)
 
 static const int16_t gProductions_galgas3ProjectGrammar [] = {
-// At index 0 : <project_component_start_symbol>, in file 'galgas3ProjectSyntax.ggs', line 24
+// At index 0 : <project_component_start_symbol>, in file 'galgas3ProjectSyntax.ggs', line 22
   TERMINAL (C_Lexique_galgas_33_Scanner::kToken_project) // $project$
 , TERMINAL (C_Lexique_galgas_33_Scanner::kToken__28_) // $($
 , TERMINAL (C_Lexique_galgas_33_Scanner::kToken_unsigned_5F_literal_5F_integer) // $unsigned_literal_integer$
@@ -20847,22 +20847,22 @@ static const int16_t gProductions_galgas3ProjectGrammar [] = {
 , TERMINAL (C_Lexique_galgas_33_Scanner::kToken__7D_) // $}$
 , END_PRODUCTION
 //---- Added productions from 'select' and 'repeat' instructions
-// At index 14 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 40
+// At index 14 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 38
 , END_PRODUCTION
-// At index 15 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 40
+// At index 15 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 38
 , TERMINAL (C_Lexique_galgas_33_Scanner::kToken_attribute) // $attribute$
 , NONTERMINAL (2) // <select_galgas_33_ProjectSyntax_1>
 , NONTERMINAL (1) // <select_galgas_33_ProjectSyntax_0>
 , END_PRODUCTION
-// At index 19 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 40
+// At index 19 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 38
 , TERMINAL (C_Lexique_galgas_33_Scanner::kToken_literal_5F_string) // $literal_string$
 , NONTERMINAL (1) // <select_galgas_33_ProjectSyntax_0>
 , END_PRODUCTION
-// At index 22 : <select_galgas_33_ProjectSyntax_1>, in file 'galgas3ProjectSyntax.ggs', line 43
+// At index 22 : <select_galgas_33_ProjectSyntax_1>, in file 'galgas3ProjectSyntax.ggs', line 41
 , TERMINAL (C_Lexique_galgas_33_Scanner::kToken__3A_) // $:$
 , TERMINAL (C_Lexique_galgas_33_Scanner::kToken_literal_5F_string) // $literal_string$
 , END_PRODUCTION
-// At index 25 : <select_galgas_33_ProjectSyntax_1>, in file 'galgas3ProjectSyntax.ggs', line 43
+// At index 25 : <select_galgas_33_ProjectSyntax_1>, in file 'galgas3ProjectSyntax.ggs', line 41
 , END_PRODUCTION
 // At index 26 : <>, in file '.ggs', line 0
 , NONTERMINAL (0) // <project_component_start_symbol>
@@ -20892,12 +20892,12 @@ static const cProductionNameDescriptor gProductionNames_galgas3ProjectGrammar [7
 //---------------------------------------------------------------------------------------------------------------------*
 
 static const int16_t gProductionIndexes_galgas3ProjectGrammar [7] = {
-0, // index 0 : <project_component_start_symbol>, in file 'galgas3ProjectSyntax.ggs', line 24
-14, // index 1 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 40
-15, // index 2 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 40
-19, // index 3 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 40
-22, // index 4 : <select_galgas_33_ProjectSyntax_1>, in file 'galgas3ProjectSyntax.ggs', line 43
-25, // index 5 : <select_galgas_33_ProjectSyntax_1>, in file 'galgas3ProjectSyntax.ggs', line 43
+0, // index 0 : <project_component_start_symbol>, in file 'galgas3ProjectSyntax.ggs', line 22
+14, // index 1 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 38
+15, // index 2 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 38
+19, // index 3 : <select_galgas_33_ProjectSyntax_0>, in file 'galgas3ProjectSyntax.ggs', line 38
+22, // index 4 : <select_galgas_33_ProjectSyntax_1>, in file 'galgas3ProjectSyntax.ggs', line 41
+25, // index 5 : <select_galgas_33_ProjectSyntax_1>, in file 'galgas3ProjectSyntax.ggs', line 41
 26 // index 6 : <>, in file '.ggs', line 0
 } ;
 

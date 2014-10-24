@@ -1,8 +1,14 @@
-#---------------------------------------------------------------------------*
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
+#  License as published by the Free Software Foundation.                                                               *
+#                                                                                                                      *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  details.                                                                                                            *
+#----------------------------------------------------------------------------------------------------------------------*
 
 
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 
 filewrapper libpmFileWrapper in "../libpm" {
@@ -12,7 +18,7 @@ filewrapper libpmFileWrapper in "../libpm" {
 }{
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc updateLIBPMatPath ?let @string inLIBPMPath {
 #  message "LIBPM path: '" . inLIBPMPath . "'\n" ;
@@ -52,5 +58,5 @@ proc updateLIBPMatPath ?let @string inLIBPMPath {
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 

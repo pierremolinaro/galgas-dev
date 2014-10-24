@@ -1,27 +1,25 @@
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #  Generate predefined types                                                *
-#                                                                           *
+#                                                                                                                      *
 #  Copyright (C) 2010, ..., 2014 Pierre Molinaro.                           *
-#                                                                           *
-#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
-#                                                                           *
-#  This program is free software; you can redistribute it and/or modify it  *
-#  under the terms of the GNU General Public License as published by the    *
-#  Free Software Foundation.                                                *
-#                                                                           *
-#  This program is distributed in the hope it will be useful, but WITHOUT   *
-#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
-#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
-#   more details.                                                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
+#                                                                                                                      *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
+#  License as published by the Free Software Foundation.                                                               *
+#                                                                                                                      *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  details.                                                                                                            *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 #! Grammar
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @grammarForGeneration appendDeclaration1
   ?!@stringset ioInclusionSet
@@ -41,7 +39,7 @@ override method @grammarForGeneration appendDeclaration1
    ]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @grammarForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap inUnifiedTypeMap
@@ -63,7 +61,7 @@ override method @grammarForGeneration appendSpecificImplementation
   outImplementation = mCppFileContents
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @grammarForGeneration appendSpecificFiles
   ?let @string inProductDirectory
@@ -76,57 +74,57 @@ override method @grammarForGeneration appendSpecificFiles
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @grammarForGeneration implementationCppFileName -> @string outName {
   outName = "grammar-" + mGrammarName
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @grammarForGeneration hasCppHeaderFile -> @bool outHasHeader {
   outHasHeader = false
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @grammarForGeneration headerKind -> @headerKind outHeaderKind {
   outHeaderKind = @headerKind. oneHeader
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @grammarForGeneration isPredefined -> @bool outResult {
   outResult = false
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 #! Syntax
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @syntaxDeclarationForGeneration implementationCppFileName -> @string outName {
   outName = "syntax-" + mSyntaxComponentName
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @syntaxDeclarationForGeneration hasCppHeaderFile -> @bool outHasHeader {
   outHasHeader = false
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @syntaxDeclarationForGeneration headerKind -> @headerKind outHeaderKind {
   outHeaderKind = @headerKind. oneHeader
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @syntaxDeclarationForGeneration isPredefined -> @bool outResult {
   outResult = false
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @syntaxDeclarationForGeneration appendDeclaration1
   ?!@stringset ioInclusionSet
@@ -150,7 +148,7 @@ override method @syntaxDeclarationForGeneration appendDeclaration1
   ] 
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @syntaxDeclarationForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -234,11 +232,11 @@ override method @syntaxDeclarationForGeneration appendSpecificImplementation
   end
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 # P R O C E D U R E    I M P L E M E N A T I O N                            *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc generateProcedure
   ?static:let @bool inGenerateStatic
@@ -354,11 +352,11 @@ proc generateProcedure
   outGeneratedCode += "}\n\n"
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 # F U N C T I O N    I M P L E M E N A T I O N                              *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc generateFunction
   ?let @string inFunctionCppRepresentationName
@@ -438,11 +436,11 @@ proc generateFunction
   outGeneratedCode += "}\n\n"
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 # C A T E G O R Y    M O D I F I E R    I M P L E M E N A T I O N           *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc generateCategoryModifier
   ?let @string inClassName
@@ -534,11 +532,11 @@ proc generateCategoryModifier
   outGeneratedCode += "}"
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 # C A T E G O R Y    M E T H O D    I M P L E M E N A T I O N               *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc generateCategoryMethod
   ?let @unifiedTypeMap-proxy inReceiverType
@@ -650,11 +648,11 @@ proc generateCategoryMethod
   outGeneratedCode += "}"
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 # C A T E G O R Y    R E A D E R    I M P L E M E N A T I O N               *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc generateCategoryReader
   ?let @unifiedTypeMap-proxy inReceiverType
@@ -772,7 +770,7 @@ proc generateCategoryReader
   outGeneratedCode += "}\n\n"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 sortedlist @keySortedList {
   @string mKey
@@ -781,11 +779,11 @@ sortedlist @keySortedList {
   mOrder <
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #           G E N E R A T I O N    F I L E W R A P P E R S                  *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 filewrapper typeGenerationTemplate in "../generation_templates/type_generation" {
 }{
@@ -1000,11 +998,11 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
 
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #           G E N E R A T I O N    F I L E W R A P P E R S                  *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 filewrapper semanticComponentGenerationTemplate in "../generation_templates/semantic_generation" {
 }{
@@ -1185,15 +1183,15 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
     ?@string GENERATED_INSTRUCTION_STRING
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 #! Proc
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @routinePrototypeDeclarationForGeneration headerKind ->@headerKind outResult {
   outResult = @headerKind. oneHeader
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @routinePrototypeDeclarationForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -1204,15 +1202,15 @@ override method @routinePrototypeDeclarationForGeneration appendDeclaration1
   ] 
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 #! func
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @functionPrototypeDeclarationForGeneration headerKind ->@headerKind outResult {
   outResult = @headerKind. oneHeader
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @functionPrototypeDeclarationForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -1224,13 +1222,13 @@ override method @functionPrototypeDeclarationForGeneration appendDeclaration1
   ] 
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @onceFunctionDeclarationForGeneration headerKind ->@headerKind outResult {
   outResult = @headerKind. oneHeader
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @onceFunctionDeclarationForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -1242,9 +1240,9 @@ override method @onceFunctionDeclarationForGeneration appendDeclaration1
   ] 
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 #! Extern type
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @externTypeDeclarationForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -1272,9 +1270,9 @@ override method @externTypeDeclarationForGeneration appendDeclaration1
   ]
  }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 #! Semantic Type
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @semanticTypeForGeneration appendTypeGenericImplementation ->@string outImplementation {
   outImplementation = [filewrapper typeGenerationTemplate.genericTypeImplementation
@@ -1285,9 +1283,9 @@ override getter @semanticTypeForGeneration appendTypeGenericImplementation ->@st
   ]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 #! Array
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @arrayTypeForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -1315,7 +1313,7 @@ override method @arrayTypeForGeneration appendDeclaration1
   ]
  }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @arrayTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -1339,9 +1337,9 @@ override method @arrayTypeForGeneration appendSpecificImplementation
   ]
  }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 #! List map
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @listmapTypeForGeneration appendDeclaration1
   ?!@stringset ioInclusionSet
@@ -1372,7 +1370,7 @@ override method @listmapTypeForGeneration appendDeclaration1
   ]
  }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @listmapTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -1387,9 +1385,9 @@ override method @listmapTypeForGeneration appendSpecificImplementation
   ]
  }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 #! Map
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @mapTypeForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -1422,7 +1420,7 @@ override method @mapTypeForGeneration appendDeclaration1
   ]
  }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @mapTypeForGeneration appendDeclaration2
   ?let @bool unused inGenerateForGalgas3
@@ -1440,7 +1438,7 @@ override method @mapTypeForGeneration appendDeclaration2
   ]
  }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @mapTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -1459,9 +1457,9 @@ override method @mapTypeForGeneration appendSpecificImplementation
   ]
  }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 #! Unique Map
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @uniqueMapTypeForGeneration appendDeclaration1
   ?!@stringset ioInclusionSet
@@ -1494,7 +1492,7 @@ override method @uniqueMapTypeForGeneration appendDeclaration1
   ]
  }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @uniqueMapTypeForGeneration appendDeclaration2
   ?let @bool unused inGenerateForGalgas3
@@ -1508,7 +1506,7 @@ override method @uniqueMapTypeForGeneration appendDeclaration2
   ]
  }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @uniqueMapTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -1533,9 +1531,9 @@ override method @uniqueMapTypeForGeneration appendSpecificImplementation
   ]
  }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 #! Sorted List
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @sortedListTypeForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -1562,7 +1560,7 @@ override method @sortedListTypeForGeneration appendDeclaration1
   ]
  }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @sortedListTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -1580,9 +1578,9 @@ override method @sortedListTypeForGeneration appendSpecificImplementation
   ]
  }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 #! Enum
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @enumTypeForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -1613,7 +1611,7 @@ override method @enumTypeForGeneration appendDeclaration1
   ]
  }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @enumTypeForGeneration appendDeclaration2
   ?let @bool unused inGenerateForGalgas3
@@ -1637,7 +1635,7 @@ override method @enumTypeForGeneration appendDeclaration2
   ]
  }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @enumTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -1656,9 +1654,9 @@ override method @enumTypeForGeneration appendSpecificImplementation
   ]
  }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 #! Map proxy
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @mapProxyTypeForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -1687,7 +1685,7 @@ override method @mapProxyTypeForGeneration appendDeclaration1
   ]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @mapProxyTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -1704,9 +1702,9 @@ override method @mapProxyTypeForGeneration appendSpecificImplementation
   ]
  }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 #! Struct
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @structTypeForGeneration appendDeclaration1
   ?!@stringset ioInclusionSet
@@ -1738,7 +1736,7 @@ override method @structTypeForGeneration appendDeclaration1
   ]
  }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @structTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -1753,9 +1751,9 @@ override method @structTypeForGeneration appendSpecificImplementation
   ]
  }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 #! List
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @listTypeForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -1782,7 +1780,7 @@ override method @listTypeForGeneration appendDeclaration1
   ]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @listTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -1800,9 +1798,9 @@ override method @listTypeForGeneration appendSpecificImplementation
   ]
  }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 #! Graph
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @graphDeclarationForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -1828,7 +1826,7 @@ override method @graphDeclarationForGeneration appendDeclaration1
   ]
  }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @graphDeclarationForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -1845,9 +1843,9 @@ override method @graphDeclarationForGeneration appendSpecificImplementation
   ]
  }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 #! Class
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @classTypeForGeneration appendDeclaration1
   ?!@stringset ioInclusionSet
@@ -1880,7 +1878,7 @@ override method @classTypeForGeneration appendDeclaration1
   ]
  }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @classTypeForGeneration appendDeclaration2
   ?let @bool inGenerateForGalgas3
@@ -1939,7 +1937,7 @@ override method @classTypeForGeneration appendDeclaration2
   end
  }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @classTypeForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -1958,9 +1956,9 @@ override method @classTypeForGeneration appendSpecificImplementation
   ]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 #! Sub programs
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @routineImplementationForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -1988,7 +1986,7 @@ override method @routineImplementationForGeneration appendSpecificImplementation
   ] 
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @functionImplementationForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -2014,7 +2012,7 @@ override method @functionImplementationForGeneration appendSpecificImplementatio
   ] 
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @onceFunctionDeclarationForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -2040,11 +2038,11 @@ override method @onceFunctionDeclarationForGeneration appendSpecificImplementati
   ] 
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 #! Method
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @abstractCategoryMethodForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -2056,13 +2054,13 @@ override method @abstractCategoryMethodForGeneration appendDeclaration1
   ] 
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @abstractCategoryMethodForGeneration headerKind ->@headerKind outResult {
   outResult = @headerKind. oneHeader
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @abstractCategoryMethodForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -2080,13 +2078,13 @@ override method @abstractCategoryMethodForGeneration appendSpecificImplementatio
   ] 
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @categoryMethodForGeneration headerKind ->@headerKind outResult {
   outResult = @headerKind. oneHeader
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @categoryMethodForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -2106,7 +2104,7 @@ override method @categoryMethodForGeneration appendDeclaration1
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @categoryMethodForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -2178,13 +2176,13 @@ override method @categoryMethodForGeneration appendSpecificImplementation
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @overridingCategoryMethodForGeneration headerKind ->@headerKind outResult {
   outResult = @headerKind. noHeader
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @overridingCategoryMethodForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -2206,17 +2204,17 @@ override method @overridingCategoryMethodForGeneration appendSpecificImplementat
   ] 
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 #! Setter
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @abstractCategoryModifierForGeneration headerKind ->@headerKind outResult {
   outResult = @headerKind. oneHeader
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @abstractCategoryModifierForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -2228,7 +2226,7 @@ override method @abstractCategoryModifierForGeneration appendDeclaration1
   ] 
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @abstractCategoryModifierForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -2243,13 +2241,13 @@ override method @abstractCategoryModifierForGeneration appendSpecificImplementat
   ] 
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @categoryModifierForGeneration headerKind ->@headerKind outResult {
   outResult = @headerKind. oneHeader
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @categoryModifierForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -2269,7 +2267,7 @@ override method @categoryModifierForGeneration appendDeclaration1
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @categoryModifierForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -2338,13 +2336,13 @@ override method @categoryModifierForGeneration appendSpecificImplementation
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @overridingCategoryModifierForGeneration headerKind ->@headerKind outResult {
   outResult = @headerKind. noHeader
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @overridingCategoryModifierForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -2381,17 +2379,17 @@ override method @overridingCategoryModifierForGeneration appendSpecificImplement
   ] 
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 #! Getter
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @abstractCategoryReaderForGeneration headerKind ->@headerKind outResult {
   outResult = @headerKind. oneHeader
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @abstractCategoryReaderForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -2404,7 +2402,7 @@ override method @abstractCategoryReaderForGeneration appendDeclaration1
   ] 
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @abstractCategoryReaderForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -2424,13 +2422,13 @@ override method @abstractCategoryReaderForGeneration appendSpecificImplementatio
   ] 
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @categoryReaderForGeneration headerKind ->@headerKind outResult {
   outResult = @headerKind. oneHeader
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @categoryReaderForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -2452,7 +2450,7 @@ override method @categoryReaderForGeneration appendDeclaration1
   end 
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @categoryReaderForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -2527,13 +2525,13 @@ override method @categoryReaderForGeneration appendSpecificImplementation
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @overrideCategoryReaderForGeneration headerKind ->@headerKind outResult {
   outResult = @headerKind. noHeader
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @overrideCategoryReaderForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -2559,23 +2557,23 @@ override method @overrideCategoryReaderForGeneration appendSpecificImplementatio
   ] 
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 #! Option component
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @optionComponentForGeneration isPredefined -> @bool outResult {
   outResult = mIsPredefined
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @optionComponentForGeneration headerKind ->@headerKind outResult {
   outResult = if mIsPredefined then @headerKind. noHeader else @headerKind. oneHeader end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @optionComponentForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -2592,7 +2590,7 @@ override method @optionComponentForGeneration appendDeclaration1
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @optionComponentForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -2611,7 +2609,7 @@ override method @optionComponentForGeneration appendSpecificImplementation
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @optionComponentForGeneration appendSpecificFiles
   ?let @string inProductDirectory
@@ -2652,15 +2650,15 @@ override method @optionComponentForGeneration appendSpecificFiles
  end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 #! Lexique
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @lexiqueDeclarationForGeneration headerKind ->@headerKind outResult {
   outResult = @headerKind. oneHeader
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @lexiqueDeclarationForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -2668,7 +2666,7 @@ override method @lexiqueDeclarationForGeneration appendDeclaration1
   outHeader = mHeaderContents
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @lexiqueDeclarationForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -2678,7 +2676,7 @@ override method @lexiqueDeclarationForGeneration appendSpecificImplementation
   outHeader = mCppContents
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @lexiqueDeclarationForGeneration appendSpecificFiles
   ?let @string inProductDirectory
@@ -2708,15 +2706,15 @@ override method @lexiqueDeclarationForGeneration appendSpecificFiles
   ]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 #! Program
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @programComponentForGeneration headerKind ->@headerKind outResult {
   outResult = @headerKind. noHeader
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @programComponentForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -2726,17 +2724,17 @@ override method @programComponentForGeneration appendSpecificImplementation
   outImplementation = mImplementationString
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 #! Filewrapper
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @filewrapperDeclarationForGeneration headerKind ->@headerKind outResult {
   outResult = @headerKind. oneHeader
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc recursivlyEnumerateRegularFile
   ?let @wrapperFileMap inFilewrapperFileMap
@@ -2766,7 +2764,7 @@ proc recursivlyEnumerateRegularFile
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @filewrapperDeclarationForGeneration appendDeclaration1
   ?!@stringset unused ioInclusionSet
@@ -2800,7 +2798,7 @@ override method @filewrapperDeclarationForGeneration appendDeclaration1
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc generateWrapperContents
   ?let @string inFilewrapperName
@@ -2886,7 +2884,7 @@ proc generateWrapperContents
   + ") ;\n\n"
 }
   
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @filewrapperDeclarationForGeneration appendSpecificImplementation
   ?let @unifiedTypeMap unused inTypeMap
@@ -2937,11 +2935,11 @@ override method @filewrapperDeclarationForGeneration appendSpecificImplementatio
   end
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #           G E N E R A T I O N    F I L E W R A P P E R S                  *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 filewrapper predefinedTypeGenerationTemplate in "../generation_templates/type_generation" {
 }{
@@ -2989,7 +2987,7 @@ filewrapper predefinedTypeGenerationTemplate in "../generation_templates/type_ge
   template application_type "application-type.h.galgasTemplate"
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override getter @primitiveTypeForGeneration appendPrimitiveTypeDeclaration -> @string outHeader {
   switch mKind
@@ -3044,11 +3042,11 @@ override getter @primitiveTypeForGeneration appendPrimitiveTypeDeclaration -> @s
   ]
 }
 
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 # G E N E R A T E    P R E D E F I N E D    T Y P E    F I L E S            *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc generatePredefinedTypeFiles ?let @string inDirectory {
   if inDirectory != "" then
@@ -3123,5 +3121,5 @@ proc generatePredefinedTypeFiles ?let @string inDirectory {
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 

@@ -1,25 +1,23 @@
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #  semantics definitions for semantics component                            *
-#                                                                           *
+#                                                                                                                      *
 #  Copyright (C) 2010, ..., 2012 Pierre Molinaro.                           *
-#                                                                           *
-#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
-#                                                                           *
-#  This program is free software; you can redistribute it and/or modify it  *
-#  under the terms of the GNU General Public License as published by the    *
-#  Free Software Foundation.                                                *
-#                                                                           *
-#  This program is distributed in the hope it will be useful, but WITHOUT   *
-#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
-#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
-#   more details.                                                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
+#                                                                                                                      *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
+#  License as published by the Free Software Foundation.                                                               *
+#                                                                                                                      *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  details.                                                                                                            *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enterInstanceMethodWithoutArgument
   ?!@instanceMethodMap ioInstanceMethodMap
@@ -36,7 +34,7 @@ proc enterInstanceMethodWithoutArgument
   ]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enterInstanceMethodWithInputArgument
   ?!@instanceMethodMap ioInstanceMethodMap
@@ -60,7 +58,7 @@ proc enterInstanceMethodWithInputArgument
   ]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 proc enterInstanceMethodWithOutputArgument
   ?!@instanceMethodMap ioInstanceMethodMap
@@ -84,7 +82,7 @@ proc enterInstanceMethodWithOutputArgument
   ]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @dataPredefinedTypeAST getInstanceMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -109,7 +107,7 @@ override method @dataPredefinedTypeAST getInstanceMethodMap
   ]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @stringPredefinedTypeAST getInstanceMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
@@ -146,5 +144,5 @@ override method @stringPredefinedTypeAST getInstanceMethodMap
   ]
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 

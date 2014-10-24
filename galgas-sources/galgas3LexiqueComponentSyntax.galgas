@@ -1,23 +1,21 @@
-#---------------------------------------------------------------------------*
-#                                                                           *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #  Copyright (C) 2014, ..., 2014 Pierre Molinaro.                           *
-#                                                                           *
-#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
-#                                                                           *
-#  This program is free software; you can redistribute it and/or modify it  *
-#  under the terms of the GNU General Public License as published by the    *
-#  Free Software Foundation.                                                *
-#                                                                           *
-#  This program is distributed in the hope it will be useful, but WITHOUT   *
-#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
-#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
-#   more details.                                                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
+#                                                                                                                      *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
+#                                                                                                                      *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
+#  License as published by the Free Software Foundation.                                                               *
+#                                                                                                                      *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  details.                                                                                                            *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 syntax galgas3LexiqueComponentSyntax (galgas3Scanner) {
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <declaration>
  ?!@galgas3DeclarationAST ioDeclarations {
@@ -105,7 +103,7 @@ rule <declaration>
     !indexingDirectory}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <template_delimitor> ?!@metamodelTemplateDelimitorListAST ioTemplateDelimitorList {
   $template$
@@ -121,7 +119,7 @@ rule <template_delimitor> ?!@metamodelTemplateDelimitorListAST ioTemplateDelimit
   ioTemplateDelimitorList += !startString !optionList !endString
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <template_replacement> ?!@templateReplacementListAST ioTemplateReplacement {
   $replace$
@@ -141,7 +139,7 @@ rule <template_replacement> ?!@templateReplacementListAST ioTemplateReplacement 
   ioTemplateReplacement += !matchString !replacementString !replacementFunction
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <lexical_message_declaration>
   ?!@lexicalMessageDeclarationListAST ioLexicalMessageDeclarationList {
@@ -152,7 +150,7 @@ rule <lexical_message_declaration>
   ioLexicalMessageDeclarationList += !messageName !messageValue
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <lexical_implicit_rule> ?!@lexicalRuleListAST ioLexicalImplicitRuleList {
   $list$
@@ -160,7 +158,7 @@ rule <lexical_implicit_rule> ?!@lexicalRuleListAST ioLexicalImplicitRuleList {
   ioLexicalImplicitRuleList += !@lexicalImplicitRuleAST. new { !listName}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <lexical_explicit_rule> ?!@lexicalRuleListAST ioLexicalExplicitRuleList {
   <lexical_expression> ?let @lexicalExpressionAST lexicalRuleExpression
@@ -174,7 +172,7 @@ rule <lexical_explicit_rule> ?!@lexicalRuleListAST ioLexicalExplicitRuleList {
   ioLexicalExplicitRuleList += !@lexicalExplicitRuleAST. new { !lexicalRuleExpression !instructionList}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
   $send$
@@ -182,14 +180,14 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
   ioInstructionList += !instruction
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction {
   $terminal$ ?let @lstring sentTerminal
   outInstruction = @lexicalSimpleSendInstructionAST. new { !sentTerminal}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction {
   var lexicalSendSearchList =@lexicalSendSearchListAST.emptyList{}
@@ -217,7 +215,7 @@ rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction {
     !lexicalSendDefaultAction}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
   $repeat$
@@ -245,7 +243,7 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
   ioInstructionList += !i
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <repeat_while_branch> ?!@lexicalWhileBranchListAST ioLexicalWhileBranchList {
   $while$
@@ -260,7 +258,7 @@ rule <repeat_while_branch> ?!@lexicalWhileBranchListAST ioLexicalWhileBranchList
   ioLexicalWhileBranchList += !whileExpression !whileInstructionList
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
   $select$
@@ -297,7 +295,7 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
   ioInstructionList += !i
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
   $identifier$ ?let @lstring actionName
@@ -340,7 +338,7 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     !errorMessageList}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <lexical_output_effective_argument>
   !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument {
@@ -348,7 +346,7 @@ rule <lexical_output_effective_argument>
   outEffectiveArgument = @lexicalCharacterInputArgumentAST. new { !character}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <lexical_output_effective_argument>
   !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument {
@@ -356,7 +354,7 @@ rule <lexical_output_effective_argument>
   outEffectiveArgument = @lexicalUnsignedInputArgumentAST. new { !unsignedValue}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <lexical_output_effective_argument>
   !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument {
@@ -365,7 +363,7 @@ rule <lexical_output_effective_argument>
   outEffectiveArgument = @lexicalCurrentCharacterInputArgumentAST. new { !currentLocation}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <lexical_output_effective_argument>
   !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument {
@@ -373,13 +371,13 @@ rule <lexical_output_effective_argument>
   <function_call_or_attribute> !idf ?outEffectiveArgument
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <function_call_or_attribute> ?let @lstring inIdf !@lexicalRoutineOrFunctionFormalInputArgumentAST outArgument {
   outArgument = @lexicalAttributeInputArgumentAST. new { !inIdf}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <function_call_or_attribute> ?let @lstring inIdf !@lexicalRoutineOrFunctionFormalInputArgumentAST outArgument {
   $($
@@ -398,7 +396,7 @@ rule <function_call_or_attribute> ?let @lstring inIdf !@lexicalRoutineOrFunction
   outArgument = @lexicalFunctionInputArgumentAST. new { !inIdf !functionActualArgumentList}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
   $error$
@@ -407,7 +405,7 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
   ioInstructionList += !@lexicalErrorInstructionAST. new { !errorMessageName}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
   $warning$
@@ -415,7 +413,7 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
   ioInstructionList += !@lexicalWarningInstructionAST. new { !warningMessageName}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
   $drop$
@@ -424,7 +422,7 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
   ioInstructionList += !@lexicalDropInstructionAST. new { !terminalName}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
   $tag$
@@ -433,7 +431,7 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
   ioInstructionList += !@lexicalTagInstructionAST. new { !tagName}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
   $rewind$
@@ -445,20 +443,20 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
   ioInstructionList += !@lexicalRewindInstructionAST. new { !tagName !terminalName}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
   $log$
   ioInstructionList += !@lexicalLogInstructionAST. new
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <lexical_expression> !@lexicalExpressionAST outExpression {
   <lexical_term> ?outExpression
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <lexical_term> !@lexicalExpressionAST outExpression {
   <lexical_factor> ?outExpression
@@ -471,14 +469,14 @@ rule <lexical_term> !@lexicalExpressionAST outExpression {
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <lexical_factor>!@lexicalExpressionAST outExpression {
   $literal_string$ ?let @lstring string
   outExpression = @lexicalStringMatchAST. new { !string}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <lexical_factor> !@lexicalExpressionAST outExpression {
   $~$
@@ -488,7 +486,7 @@ rule <lexical_factor> !@lexicalExpressionAST outExpression {
   outExpression = @lexicalStringNotMatchAST. new { !string !errorMessage}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <lexical_factor> !@lexicalExpressionAST outExpression {
   $literal_char$ ?let @lchar character
@@ -501,14 +499,14 @@ rule <lexical_factor> !@lexicalExpressionAST outExpression {
   end
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <lexical_factor> !@lexicalExpressionAST outExpression {
   $identifier$ ?let @lstring characterSet
   outExpression = @lexicalCharacterSetMatchAST. new { !characterSet}
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <lexical_list_declaration> ?!@lexicalListDeclarationListAST ioLexicalListDeclarationList {
   $list$
@@ -541,7 +539,7 @@ rule <lexical_list_declaration> ?!@lexicalListDeclarationListAST ioLexicalListDe
   ioLexicalListDeclarationList += !name !theStyle !errorMessage !sentAttributeList !entryList
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <lexical_list_entry> ?!@lexicalListEntryListAST ioLexicalListEntryList {
   $literal_string$ ?var @lstring entrySpelling
@@ -561,7 +559,7 @@ rule <lexical_list_entry> ?!@lexicalListEntryListAST ioLexicalListEntryList {
   ioLexicalListEntryList += !entrySpelling !terminalSpelling !optionList
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <lexical_attribute_declaration> ?!@lexicalAttributeListAST ioLexicalAttributeList {
   $type_name$ ?let @lstring typeName
@@ -569,7 +567,7 @@ rule <lexical_attribute_declaration> ?!@lexicalAttributeListAST ioLexicalAttribu
   ioLexicalAttributeList += !typeName !name
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <terminal_declaration> ?!@terminalDeclarationListAST ioTerminalDeclarationList {
   $terminal$ ?let @lstring name indexing terminalDeclaration
@@ -599,7 +597,7 @@ rule <terminal_declaration> ?!@terminalDeclarationListAST ioTerminalDeclarationL
   ioTerminalDeclarationList += !name !sentAttributeList !errorMessage !theStyle !optionList
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <style_declaration> ?!@lexicalStyleListAST ioLexicalStyleList {
   $style$
@@ -609,7 +607,7 @@ rule <style_declaration> ?!@lexicalStyleListAST ioLexicalStyleList {
   ioLexicalStyleList += !name !comment
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <extern_routine_declaration>
   ?!@externRoutineListAST ioExternRoutineList {
@@ -651,7 +649,7 @@ rule <extern_routine_declaration>
   ioExternRoutineList += !routineName !lexicalRoutineFormalArgumentList !errorMessageList
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <extern_function_declaration>
   ?!@externFunctionListAST ioExternFunctionList {
@@ -674,6 +672,6 @@ rule <extern_function_declaration>
   ioExternFunctionList += !functionName !lexicalFunctionFormalArgumentList !returnedTypeName
 }
 
-#---------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 }
