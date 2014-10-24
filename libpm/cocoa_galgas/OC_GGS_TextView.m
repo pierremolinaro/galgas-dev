@@ -29,7 +29,7 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//       I N I T                                                               *
+//       I N I T                                                                                                       *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -44,6 +44,7 @@
     noteObjectAllocation (self) ;
     mDocumentUsedForDisplaying = inDocumentUsedForDisplaying ;
     mDisplayDescriptor = inDisplayDescriptor ;
+    mPageGuideColumn = 120 ;
   }
   return self;
 }
@@ -96,6 +97,37 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (void) drawRect: (NSRect) inRect {
+//--- Draw page guide
+  if ((mPageGuideColumn > 0) && (self.string.length > 0)) {
+    NSDictionary * attributes = [self.textStorage fontAttributesInRange:NSMakeRange(0, 0)] ;
+ //   NSLog (@"attributes %@, NSMinX (self.frame) %g", attributes, NSMinX (self.frame)) ;
+    NSMutableString * str = [NSMutableString new] ;
+    for (NSUInteger i=0 ; i<=mPageGuideColumn ; i++) {
+      [str appendString:@"0"] ;
+    }
+    const NSSize s = [str sizeWithAttributes:attributes] ;
+    const double column = rint (s.width) + 0.5 ;
+  //--- Page rect
+    const NSRect pageRect = {{0.0, 0.0}, {column, NSMaxY (self.frame)}} ;
+    const NSRect pageRectToDraw = NSIntersectionRect (inRect, pageRect) ;
+    if (! NSIsEmptyRect (pageRectToDraw)) {
+      [[NSColor whiteColor] setFill] ;
+      NSRectFill (pageRectToDraw) ;
+    }
+    const NSRect outsidePageRect = {{column, 0.0}, {NSMaxX (self.frame) - column, NSMaxY (self.frame)}} ;
+    const NSRect outsidePageRectToDraw = NSIntersectionRect (inRect, outsidePageRect) ;
+    if (! NSIsEmptyRect (outsidePageRectToDraw)) {
+      [[NSColor windowBackgroundColor] setFill] ;
+      NSRectFill (outsidePageRectToDraw) ;
+    }
+    NSBezierPath * bp = [NSBezierPath bezierPath] ;
+    [bp moveToPoint:NSMakePoint (column, NSMinY (inRect))] ;
+    [bp lineToPoint:NSMakePoint (column, NSMaxY (inRect))] ;
+    [bp setLineWidth:0.0] ;
+    [[NSColor windowFrameColor] setStroke] ;
+    [bp stroke] ;
+  }
+//--- Draw text
   [super drawRect:inRect] ;
 //--- Draw issues
   NSBezierPath * errorHiliteBezierPath = [NSBezierPath bezierPath] ;

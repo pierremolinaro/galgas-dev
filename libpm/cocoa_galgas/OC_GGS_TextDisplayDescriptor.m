@@ -100,6 +100,7 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
     [mTextView setAutomaticDashSubstitutionEnabled:NO] ;
     [mTextView.layoutManager setAllowsNonContiguousLayout:YES] ;
     [mTextView.layoutManager setUsesFontLeading:YES] ;
+    mTextView.drawsBackground = NO ;
     if ([mTextView respondsToSelector:@selector(setAutomaticTextReplacementEnabled:)]) {
       [mTextView setValue:[NSNumber numberWithBool:NO] forKey:@"automaticTextReplacementEnabled"] ;
     }

@@ -31,8 +31,8 @@
   @private PMUndoManager * mUndoManager ;
   
 //--- Attributes for syntax coloring
-  @private NSMutableArray * mTokenArray ;
-  @private NSMutableArray * mFontAttributesDictionaryArray ; // Array of OC_Token
+  @private NSMutableArray * mTokenArray ; // Array of OC_Token
+  @private NSMutableArray * mFontAttributesDictionaryArray ; // Array of NSMutableDictionary
   @private NSMutableDictionary * mTemplateTextAttributeDictionary ;
   
 //--- Timer for autosaving
@@ -80,6 +80,8 @@
              textDisplayDescriptor: (OC_GGS_TextDisplayDescriptor *) inTextDisplayDescriptor ;
 
 - (NSUInteger) displayDescriptorCount ;
+
+- (NSDictionary *) textAttributesForStyleIndex0 ;
 
 //--- RESERVED to OC_GGS_TextDisplayDescriptor
 - (void) addDisplayDescriptor: (OC_GGS_TextDisplayDescriptor *) inDisplayDescriptor ;
