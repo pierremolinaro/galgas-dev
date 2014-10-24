@@ -98,11 +98,13 @@
 
 - (void) drawRect: (NSRect) inRect {
 //--- Draw page guide
-  if ((mPageGuideColumn > 0) && (self.string.length > 0)) {
+  NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
+  if ([ud boolForKey:GGS_uses_page_guide] && (self.string.length > 0)) {
     NSDictionary * attributes = [self.textStorage fontAttributesInRange:NSMakeRange(0, 0)] ;
  //   NSLog (@"attributes %@, NSMinX (self.frame) %g", attributes, NSMinX (self.frame)) ;
+    const NSInteger pageGuideColumn = [ud integerForKey:GGS_page_guide_column] ;
     NSMutableString * str = [NSMutableString new] ;
-    for (NSUInteger i=0 ; i<=mPageGuideColumn ; i++) {
+    for (NSInteger i=0 ; i<=pageGuideColumn ; i++) {
       [str appendString:@"0"] ;
     }
     const NSSize s = [str sizeWithAttributes:attributes] ;

@@ -47,6 +47,9 @@
 #define GGS_template_font             @"GGS_template_font"
 #define GGS_template_foreground_color @"GGS_template_foreground_color"
 
+#define GGS_uses_page_guide   @"USE_PAGE_GUIDE"
+#define GGS_page_guide_column @"PAGE_GUIDE_COLUMN"
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 @class OC_GGS_Document ;
@@ -124,6 +127,10 @@ extern OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   #ifdef MAC_OS_X_VERSION_10_8
     @private NSArray * mArrayOfNibTopObjects ;
   #endif
+
+//--- Page guide
+  @private IBOutlet NSButton * mPageGuideCheckbox ;
+  @private IBOutlet NSTextField * mPageGuideColumnTextField ;
 }
 
 - (IBAction) clearSourceDocumentPreferencesEntries: (id) inSender ;
