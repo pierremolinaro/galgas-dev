@@ -44,7 +44,19 @@
     noteObjectAllocation (self) ;
     mDocumentUsedForDisplaying = inDocumentUsedForDisplaying ;
     mDisplayDescriptor = inDisplayDescriptor ;
-    mPageGuideColumn = 120 ;
+    NSUserDefaults * df = [NSUserDefaults standardUserDefaults] ;
+    [df
+      addObserver:self
+      forKeyPath:GGS_uses_page_guide
+      options:0
+      context:NULL
+    ] ;
+    [df
+      addObserver:self
+      forKeyPath:GGS_page_guide_column
+      options:0
+      context:NULL
+    ] ;
   }
   return self;
 }
@@ -52,6 +64,15 @@
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (void) FINALIZE_OR_DEALLOC {
+  NSUserDefaults * df = [NSUserDefaults standardUserDefaults] ;
+  [df
+    removeObserver:self
+    forKeyPath:GGS_uses_page_guide
+  ] ;
+  [df
+    removeObserver:self
+    forKeyPath:GGS_page_guide_column
+  ] ;
   noteObjectDeallocation (self) ;
   macroSuperFinalize ;
 }
@@ -61,6 +82,27 @@
 - (void) detachTextView {
   mDocumentUsedForDisplaying = nil ;
   mDisplayDescriptor = nil ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+- (void) observeValueForKeyPath:(NSString *) inKeyPath
+         ofObject:(id) inObject
+         change:(NSDictionary *) inChange
+         context:(void *) inContext {
+  NSUserDefaults * df = [NSUserDefaults standardUserDefaults] ;
+  if ((inObject == df) && [inKeyPath isEqualToString:GGS_uses_page_guide]) {
+    [self setNeedsDisplay:YES] ;
+  }else if ((inObject == df) && [inKeyPath isEqualToString:GGS_page_guide_column]) {
+    [self setNeedsDisplay:YES] ;
+  }else{
+    [super
+      observeValueForKeyPath:inKeyPath
+      ofObject:inObject
+      change:inChange
+      context:inContext
+    ] ;
+  }
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -101,7 +143,6 @@
   NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
   if ([ud boolForKey:GGS_uses_page_guide] && (self.string.length > 0)) {
     NSDictionary * attributes = [self.textStorage fontAttributesInRange:NSMakeRange(0, 0)] ;
- //   NSLog (@"attributes %@, NSMinX (self.frame) %g", attributes, NSMinX (self.frame)) ;
     const NSInteger pageGuideColumn = [ud integerForKey:GGS_page_guide_column] ;
     NSMutableString * str = [NSMutableString new] ;
     for (NSInteger i=0 ; i<=pageGuideColumn ; i++) {
