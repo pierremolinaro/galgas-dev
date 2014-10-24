@@ -814,6 +814,35 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   NSUserDefaultsController * udc = [NSUserDefaultsController sharedUserDefaultsController] ;
   NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
   NSNotificationCenter  * nc = [NSNotificationCenter defaultCenter] ;
+//--- Page guide
+  if ([ud valueForKey:GGS_uses_page_guide] == nil) {
+    [ud setBool:YES forKey:GGS_uses_page_guide] ;
+  }
+  if ([ud valueForKey:GGS_page_guide_column] == nil) {
+    [ud setInteger:80 forKey:GGS_page_guide_column] ;
+  }
+  [mPageGuideCheckbox
+    bind:@"value"
+    toObject:udc
+    withKeyPath:@"values." GGS_uses_page_guide
+    options:nil
+  ] ;
+  [mPageGuideColumnTextField
+    bind:@"enabled"
+    toObject:udc
+    withKeyPath:@"values." GGS_uses_page_guide
+    options:nil
+  ] ;
+  [mPageGuideColumnTextField
+    bind:@"value"
+    toObject:udc
+    withKeyPath:@"values." GGS_page_guide_column
+    options:nil
+  ] ;
+
+//  @private IBOutlet NSTextField * mPageGuideColumnTextField ;
+
+
 //--- Bind « Prefix by time Utility » checkbox
   [mPrefixByTimeUtilityCheckBox
     bind:@"value"
