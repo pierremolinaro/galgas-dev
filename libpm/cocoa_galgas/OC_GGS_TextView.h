@@ -20,7 +20,6 @@
    @private OC_GGS_Document * mDocumentUsedForDisplaying ;
    @private OC_GGS_TextDisplayDescriptor * mDisplayDescriptor ;
    @private NSArray * mIssueArray ; // Of PMIssueDescriptor
-   @private NSUInteger mPageGuideColumn ; // 0 : no page guide
 }
 
 - (id) initWithFrame:(NSRect)frameRect
