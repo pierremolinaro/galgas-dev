@@ -1,6 +1,6 @@
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  Copyright (C) 2014, ..., 2014 Pierre Molinaro.                           *
+#  Copyright (C) 2014, ..., 2014 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
@@ -13,17 +13,13 @@
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 proc compileSemanticDeclarationsGalgas3
   ?let @string inProductDirectory
   ?let @location inEndOfProjectSourceFile
   ?let @semanticDeclarationListAST inSemanticDeclarationList
   !@semanticContext outSemanticContext
   !@semanticDeclarationSortedListForGeneration outSemanticDeclarationSortedListForGeneration {
-  if [option .verbose_output value] then
+  if [option.verbose_output value] then
     message "*** Building context\n"
   end
 #------ Add predefined types to semantics declarations
@@ -59,12 +55,13 @@ proc compileSemanticDeclarationsGalgas3
       ![@application. boolOptionInvocationString { !mValue0 !mValue1} nowhere]
       ![@application. boolOptionCommentString { !mValue0 !mValue1} nowhere]
       !["" nowhere]
-      !@optionDefaultValueEnumAST. noDefaultValue
+      !@optionDefaultValueEnumAST.noDefaultValue
   end
   semanticDeclarationListWithPredefinedTypes += !@optionComponentDeclarationAST. new {
     !true # Is predefined
     !["galgas_builtin_options" nowhere]
-    !options}
+    !options
+  }
 #------ Build semantic context
   buildGalgas3SemanticContext (
     !semanticDeclarationListWithPredefinedTypes
@@ -97,7 +94,7 @@ proc compileSemanticDeclarationsGalgas3
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    B U I L D    S E M A N T I C    C O N T E X T                          *
+#    B U I L D    S E M A N T I C    C O N T E X T                                                                     *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -115,11 +112,11 @@ proc buildGalgas3SemanticContext
 #  - a class appears after its super class
 #  - a map index appears after its associated map
 #  - a list map appears after its associated list
-  var semanticTypePrecedenceGraph =@semanticTypePrecedenceGraph.emptyGraph{}
-  var categoryMethodMapForBuildingContext =@categoryMethodMapForBuildingContext.emptyMap{}
-  var categoryReaderMapForBuildingContext =@categoryReaderMapForBuildingContext.emptyMap{}
-  var categoryModifierMapForBuildingContext =@categoryModifierMapForBuildingContext.emptyMap{}
-  var categoryOverrideDefinitionList =@semanticDeclarationListAST.emptyList{}
+  var semanticTypePrecedenceGraph = @semanticTypePrecedenceGraph.emptyGraph{}
+  var categoryMethodMapForBuildingContext = @categoryMethodMapForBuildingContext.emptyMap{}
+  var categoryReaderMapForBuildingContext = @categoryReaderMapForBuildingContext.emptyMap{}
+  var categoryModifierMapForBuildingContext = @categoryModifierMapForBuildingContext.emptyMap{}
+  var categoryOverrideDefinitionList = @semanticDeclarationListAST.emptyList{}
   for () in  semanticDeclarationList do
     [mSemanticDeclaration enterDeclarationInGraph
       !?semanticTypePrecedenceGraph

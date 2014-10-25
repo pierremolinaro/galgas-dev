@@ -9,6 +9,56 @@
 		<dict>
 			<key>CFBundleTypeExtensions</key>
 			<array>
+				<string>galgas</string>
+			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>galgasDocuments.icns</string>
+			<key>CFBundleTypeName</key>
+			<string>GALGAS 3 File</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>NSDocumentClass</key>
+			<string>OC_GGS_Document</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>galgasTemplate</string>
+			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>galgasDocuments.icns</string>
+			<key>CFBundleTypeName</key>
+			<string>GALGAS Template Component</string>
+			<key>CFBundleTypeOSTypes</key>
+			<array>
+				<string>TEXT</string>
+			</array>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>LSTypeIsPackage</key>
+			<false/>
+			<key>NSDocumentClass</key>
+			<string>OC_GGS_Document</string>
+			<key>NSPersistentStoreTypeKey</key>
+			<string>Binary</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>galgasProject</string>
+			</array>
+			<key>CFBundleTypeIconFile</key>
+			<string>galgasDocuments.icns</string>
+			<key>CFBundleTypeName</key>
+			<string>GALGAS 3 project File</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>NSDocumentClass</key>
+			<string>OC_GGS_Document</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
 				<string>gSemantics</string>
 			</array>
 			<key>CFBundleTypeIconFile</key>
@@ -181,56 +231,6 @@
 			<string>OC_GGS_Document</string>
 			<key>NSPersistentStoreTypeKey</key>
 			<string>Binary</string>
-		</dict>
-		<dict>
-			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>gTemplate</string>
-			</array>
-			<key>CFBundleTypeIconFile</key>
-			<string>galgasDocuments.icns</string>
-			<key>CFBundleTypeName</key>
-			<string>GALGAS Template Component</string>
-			<key>CFBundleTypeOSTypes</key>
-			<array>
-				<string>TEXT</string>
-			</array>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>LSTypeIsPackage</key>
-			<false/>
-			<key>NSDocumentClass</key>
-			<string>OC_GGS_Document</string>
-			<key>NSPersistentStoreTypeKey</key>
-			<string>Binary</string>
-		</dict>
-		<dict>
-			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>galgasProject</string>
-			</array>
-			<key>CFBundleTypeIconFile</key>
-			<string>galgasDocuments.icns</string>
-			<key>CFBundleTypeName</key>
-			<string>GALGAS 3 project File</string>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>NSDocumentClass</key>
-			<string>OC_GGS_Document</string>
-		</dict>
-		<dict>
-			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>galgas</string>
-			</array>
-			<key>CFBundleTypeIconFile</key>
-			<string>galgasDocuments.icns</string>
-			<key>CFBundleTypeName</key>
-			<string>GALGAS 3 File</string>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>NSDocumentClass</key>
-			<string>OC_GGS_Document</string>
 		</dict>
 	</array>
 	<key>CFBundleExecutable</key>
