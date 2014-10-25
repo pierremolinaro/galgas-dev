@@ -534,21 +534,6 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-/*- (IBAction) duplicateSelectedSourceViewAction: (id) inSender {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0] ;
-  OC_GGS_TextDisplayDescriptor * textDisplayDescriptor = [[OC_GGS_TextDisplayDescriptor alloc]
-    initWithDocumentData:selectedObject.documentData
-    displayDocument:self
-  ] ;
-  [mSourceDisplayArrayController addObject:textDisplayDescriptor] ;
-  [mSourceDisplayArrayController setSelectedObjects:[NSArray arrayWithObject:textDisplayDescriptor]] ;
-}*/
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 - (void) registerConfigurationInPreferences {
   NSMutableArray * configurationArray = [NSMutableArray new] ;
   for (OC_GGS_TextDisplayDescriptor * source in mSourceDisplayArrayController.arrangedObjects) {
@@ -2240,6 +2225,8 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
   }
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+//   DRAG AND DROP                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
 #pragma mark Drag and Drop in source table View
