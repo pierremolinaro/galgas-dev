@@ -6,10 +6,6 @@
 #  details.                                                                                                            *
 #----------------------------------------------------------------------------------------------------------------------*
 
-
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 proc build_LIBPM_BDD_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?!@XcodeObjectReferenceList ioFileListForGroup {
