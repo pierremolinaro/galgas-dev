@@ -44,6 +44,33 @@ before { #--- Extract LIBPM
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
+#          galgas                                                                                                      *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
+
+case . "galgas"
+message "a GALGAS source file"
+indexing with galgas3Grammar
+?sourceFilePath:@lstring inSourceFile {
+#--- Search for a project file in parent directory
+  let parentDirectory = [[inSourceFile.string stringByDeletingLastPathComponent] stringByDeletingLastPathComponent]
+  let candidateProjectFiles = [parentDirectory regularFilesWithExtensions !false !{!"galgasProject"}]
+  if [candidateProjectFiles length] == 0 then
+    error inSourceFile : "no project file in parent directory of source file"
+  elsif [candidateProjectFiles length] > 1 then
+    var s = "several project files in source file parent directory:"
+    for () in candidateProjectFiles do
+      s += "\n  - " + mValue
+    end
+    error inSourceFile : s
+  else
+    let projectFilePath = parentDirectory + "/" + [candidateProjectFiles mValueAtIndex !0]
+    compileProject ( !@lstring. new { !projectFilePath !inSourceFile.location} !inSourceFile.string )
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #          Template                                                                                                    *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
@@ -53,6 +80,19 @@ message "a GALGAS Template source file"
 indexing with projectLL1grammar
 ?sourceFilePath:@lstring inSourceFile {
   grammar templateGrammar in inSourceFile ?*
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#          galgasProject                                                                                               *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
+
+case . "galgasProject"
+message "a GALGAS project source file"
+#indexing with galgas3ProjectGrammar
+?sourceFilePath:@lstring inProjectSourceFile {
+  compileProject ( !inProjectSourceFile !"" )
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -380,7 +420,7 @@ indexing with projectLL1grammar
   end
 #---------------------------------- Compile galgas sources
   var handledExtensionSet =@stringset.emptySet{}
-  if @uint. errorCount == 0 then
+  if @uint.errorCount == 0 then
   #--- Lexique components
     for () in  parsedComponentStruct.mParsedLexiqueComponentMap do
       if [option .verbose_output value] then
@@ -470,7 +510,7 @@ indexing with projectLL1grammar
     end
   end
 #---------------------------------- Perform global checkings
-  if @uint. errorCount == 0 then
+  if @uint.errorCount == 0 then
     if [option .verbose_output value] then
       message "*** Perform global checkings\n"
     end
@@ -480,7 +520,7 @@ indexing with projectLL1grammar
     )
   end
 #--- Update targets
-  if 0 == @uint. errorCount then
+  if 0 == @uint.errorCount then
     updateTargets (
       !inProjectSourceFile
       ![projectComponentAST.mMajorVersion.uint string] + "." + projectComponentAST.mMinorVersion.uint + "." + projectComponentAST.mRevisionVersion.uint
@@ -496,19 +536,6 @@ indexing with projectLL1grammar
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#          galgasProject                                                                                               *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-case . "galgasProject"
-message "a GALGAS project source file"
-#indexing with galgas3ProjectGrammar
-?sourceFilePath:@lstring inProjectSourceFile {
-  compileProject ( !inProjectSourceFile !"" )
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
 #          compileProject                                                                                              *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
@@ -519,13 +546,12 @@ proc compileProject
   if [option .verbose_output value] then
     message "*** Parsing project files\n"
   end
-  grammar galgas3ProjectGrammar in inProjectSourceFile
-    ?let @galgas3ProjectComponentAST projectComponentAST
+  grammar galgas3ProjectGrammar in inProjectSourceFile ?let @galgas3ProjectComponentAST projectComponentAST
   var declarationAST = @galgas3DeclarationAST.default 
   for () in  projectComponentAST.mProjectSourceList do
     if [mValue pathExtension] == "galgas" then
       let absoluteSourcePath = [mValue absolutePathFromPath ![inProjectSourceFile stringByDeletingLastPathComponent]]
-      grammar galgas3Grammar in @lstring. new { !absoluteSourcePath !mValue.location} !?declarationAST
+      grammar galgas3Grammar in @lstring.new {!absoluteSourcePath !mValue.location} !?declarationAST
     else
       error mValue: "only \".galgas\" extension is allowed here"
     end
@@ -586,7 +612,7 @@ proc compileProject
   var appProductFileList = @stringlist. emptyList
   var semanticContext = @semanticContext.default
   @semanticDeclarationSortedListForGeneration semanticDeclarationSortedListForGeneration
-  if @uint. errorCount == 0 then
+  if @uint.errorCount == 0 then
     compileSemanticDeclarationsGalgas3 (
       !productDirectory
       !projectComponentAST.mEndOfSourceFile
@@ -599,7 +625,7 @@ proc compileProject
   end
 #---------------------------------- Compile GUI components
   @optionComponentMapForGeneration optionComponentMapForGeneration
-  if @uint. errorCount == 0 then
+  if @uint.errorCount == 0 then
     compileAllGuiComponentFromASTGalgas3 (
       !declarationAST.mGUIComponentList
       !semanticContext
@@ -609,7 +635,7 @@ proc compileProject
     optionComponentMapForGeneration = {}
   end
 #---------------------------------- Compile program declarations
-  if @uint. errorCount == 0 then
+  if @uint.errorCount == 0 then
     compileProgramComponentGalgas3 (
       !declarationAST.mPrologueDeclarationList
       !declarationAST.mSourceRuleList
@@ -649,14 +675,14 @@ proc compileProject
     [@string deleteFileIfExists !typeDumpFilePath]
   end
 #---------------------------------- Perform global checkings
-  if (0 == @uint. errorCount) & (inSourceToAnalyze == "") then
+  if (0 == @uint.errorCount) & (inSourceToAnalyze == "") then
     performGalgas3ProjectGlobalCheckings (
       !semanticContext
       !declarationAST.mDeclarationList
     )
   end
 #---------------------------------- File generation
-  if (0 == @uint. errorCount) & (inSourceToAnalyze == "") then
+  if (0 == @uint.errorCount) & (inSourceToAnalyze == "") then
     projectGeneration (
       !semanticContext.mTypeMap
       !productDirectory
@@ -703,7 +729,7 @@ proc projectGeneration
   var allProductFileSet = @stringset. emptySet
 #---------------------------------- Generate GUI components
 #  message "*** Generate GUI\n" ;
-  if @uint. errorCount == 0 then
+  if @uint.errorCount == 0 then
     generateAllGuiComponentsGalgas3 (
       !inOptionComponentMapForGeneration
       !inProductDirectory
@@ -725,7 +751,7 @@ proc projectGeneration
   )
 #---------------------------------- Update targets
 #  message "*** update targets\n" ;
-  if 0 == @uint. errorCount then
+  if 0 == @uint.errorCount then
     var handledExtensionSet =@stringset.emptySet{}
     for () in inSourceRuleList do
       handledExtensionSet += !mSourceFileExtension.string
@@ -764,7 +790,7 @@ proc projectGeneration
     )
   end
 #---------------------------------- Remove useless files
-  if 0 == @uint. errorCount then
+  if 0 == @uint.errorCount then
     var allActualFileSet = @stringset. emptySet
     for () in  [inProductDirectory regularFiles !false] do
       allActualFileSet += !mValue
@@ -773,33 +799,6 @@ proc projectGeneration
     for () in  uselessFileSet do
       [@string deleteFile !inProductDirectory + "/" + key]
     end
-  end
-}
-
-#----------------------------------------------------------------------------------------------------------------------*
-#                                                                                                                      *
-#          galgas                                                                                                      *
-#                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-case . "galgas"
-message "a GALGAS source file"
-indexing with galgas3Grammar
-?sourceFilePath:@lstring inSourceFile {
-#--- Search for a project file in parent directory
-  let parentDirectory = [[inSourceFile.string stringByDeletingLastPathComponent] stringByDeletingLastPathComponent]
-  let candidateProjectFiles = [parentDirectory regularFilesWithExtensions !false !{!"galgasProject"}]
-  if [candidateProjectFiles length] == 0 then
-    error inSourceFile : "no project file in parent directory of source file"
-  elsif [candidateProjectFiles length] > 1 then
-    var s = "several project files in source file parent directory:"
-    for () in candidateProjectFiles do
-      s += "\n  - " + mValue
-    end
-    error inSourceFile : s
-  else
-    let projectFilePath = parentDirectory + "/" + [candidateProjectFiles mValueAtIndex !0]
-    compileProject ( !@lstring. new { !projectFilePath !inSourceFile.location} !inSourceFile.string )
   end
 }
 
