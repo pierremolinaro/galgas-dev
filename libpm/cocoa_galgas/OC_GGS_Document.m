@@ -6,17 +6,14 @@
 //                                                                                                                     *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                                                                       *
 //                                                                                                                     *
-//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes                                          *
-//  ECN, École Centrale de Nantes (France)                                                                             *
+//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes, ECN, École Centrale de Nantes (France)  *
 //                                                                                                                     *
-//  This library is free software; you can redistribute it and/or modify it                                            *
-//  under the terms of the GNU Lesser General Public License as published                                              *
-//  by the Free Software Foundation; either version 2 of the License, or                                               *
-//  (at your option) any later version.                                                                                *
+//  This library is free software; you can redistribute it and/or modify it under the terms of the GNU Lesser General  *
+//  Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option)  *
+//  any later version.                                                                                                 *
 //                                                                                                                     *
-//  This program is distributed in the hope it will be useful, but WITHOUT                                             *
-//  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or                                              *
-//  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for                                           *
+//  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied      *
+//  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for            *
 //  more details.                                                                                                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -39,7 +36,7 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-//#define DEBUG_MESSAGES
+// #define DEBUG_MESSAGES
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -274,8 +271,8 @@
 //---
   [mOutputScrollView setVerticalScroller:[OC_GGS_Scroller new]] ;
 //------------------------------------------------------------------- Get selected tab
-  NSString * openedFilePath = self.fileURL.path ;
-  key = [NSString stringWithFormat:@"SELECTED-TAB:%@", openedFilePath] ;
+//  NSString * openedFilePath = self.fileURL.path ;
+  key = [NSString stringWithFormat:@"SELECTED-TAB:%@", mBaseFilePreferenceKey] ;
   const NSUInteger selectedTab = (NSUInteger) [[NSUserDefaults standardUserDefaults] integerForKey:key] ;
 //  NSLog (@"READ selectedTab %lu", selectedTab) ;
 //------------------------------------------------------------------- Install selected tab observer
@@ -299,7 +296,7 @@
   }
 //------------------------------------------------------------------ Open tabs
 //--- Open tabs
-  key = [NSString stringWithFormat:@"CONFIG:%@", openedFilePath] ;
+  key = [NSString stringWithFormat:@"CONFIG:%@", mBaseFilePreferenceKey] ;
   NSArray * tabFiles = [[[NSUserDefaults standardUserDefaults] objectForKey:key] copy] ;
   for (NSString * fileAbsolutePath in tabFiles) {
     [self appendTabForFile:fileAbsolutePath] ;
@@ -557,7 +554,7 @@
   for (OC_GGS_TextDisplayDescriptor * source in mSourceDisplayArrayController.arrangedObjects) {
     [configurationArray addObject:source.sourceURL.path] ;
   }
-  NSString * key = [NSString stringWithFormat:@"CONFIG:%@", [configurationArray objectAtIndex:0]] ;
+  NSString * key = [NSString stringWithFormat:@"CONFIG:%@", mBaseFilePreferenceKey] ;
   [configurationArray removeObjectAtIndex:0] ;
   [[NSUserDefaults standardUserDefaults]
     setObject:configurationArray
@@ -1559,7 +1556,8 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
     const NSUInteger selectedTab = mSourceDisplayArrayController.selectionIndex ;
     // NSLog (@"WRITE selectedTab %lu", selectedTab) ;
     if (selectedTab != NSNotFound) {
-      NSString * key = [NSString stringWithFormat:@"SELECTED-TAB:%@", [[arrangedObjects objectAtIndex:0] sourceURL].path] ;
+  //    NSString * key = [NSString stringWithFormat:@"SELECTED-TAB:%@", [[arrangedObjects objectAtIndex:0] sourceURL].path] ;
+      NSString * key = [NSString stringWithFormat:@"SELECTED-TAB:%@", mBaseFilePreferenceKey] ;
       [ud setInteger:(NSInteger) selectedTab forKey:key] ;
       OC_GGS_TextDisplayDescriptor * object = [arrangedObjects objectAtIndex:selectedTab] ;
       [self setFileURL:object.sourceURL] ;
@@ -2248,16 +2246,19 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
 
 // http://stackoverflow.com/questions/10308008/nstableview-and-drag-and-drop-from-finder
 
+// #define DEBUG_MESSAGES
+
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (BOOL) tableView: (NSTableView *)tv
          writeRowsWithIndexes: (NSIndexSet *) inRowIndexes
          toPasteboard: (NSPasteboard*) inPasteboard {
   #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+    NSLog (@"%s, inRowIndexes %@", __PRETTY_FUNCTION__, inRowIndexes) ;
   #endif
+  [inPasteboard declareTypes:[NSArray arrayWithObject:(NSString *) kPasteboardTypeFileURLPromise] owner:self] ;
   OC_GGS_TextDisplayDescriptor * tdd = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0] ;
-  [inPasteboard declareTypes:[NSArray arrayWithObject:(NSString *)kPasteboardTypeFileURLPromise] owner:self] ;
+  [inPasteboard clearContents] ; // clear pasteboard to take ownership
   [inPasteboard writeObjects:[NSArray arrayWithObject:tdd.sourceURL]] ;
   return YES;
 }
@@ -2283,17 +2284,20 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  NSURL * fileURL = [NSURL URLFromPasteboard:info.draggingPasteboard] ;
+  NSArray * classArray = [NSArray arrayWithObject:[NSURL class]]; // types of objects you are looking for
+  NSArray * arrayOfURLs = [info.draggingPasteboard readObjectsForClasses:classArray options:nil]; // read objects of those classes
 //---
-  OC_GGS_DocumentData * documentData = [self findOrAddDocumentWithPath:fileURL.path] ;
-  if (nil != documentData) { // Find a text display descriptor
-    OC_GGS_TextDisplayDescriptor * tdd = [[OC_GGS_TextDisplayDescriptor alloc]
-      initWithDocumentData:documentData
-      displayDocument:self
-    ] ;
-    [mSourceDisplayArrayController insertObject:tdd atArrangedObjectIndex:(NSUInteger) inRow] ;
-    [mSourceDisplayArrayController setSelectedObjects:[NSArray arrayWithObject:tdd]] ;
-    [self registerConfigurationInPreferences] ;
+  for (NSURL * url in arrayOfURLs) {
+    OC_GGS_DocumentData * documentData = [self findOrAddDocumentWithPath:url.path] ;
+    if (nil != documentData) { // Find a text display descriptor
+      OC_GGS_TextDisplayDescriptor * tdd = [[OC_GGS_TextDisplayDescriptor alloc]
+        initWithDocumentData:documentData
+        displayDocument:self
+      ] ;
+      [mSourceDisplayArrayController insertObject:tdd atArrangedObjectIndex:(NSUInteger) inRow] ;
+      [mSourceDisplayArrayController setSelectedObjects:[NSArray arrayWithObject:tdd]] ;
+      [self registerConfigurationInPreferences] ;
+    }
   }
   return YES ;
 }
