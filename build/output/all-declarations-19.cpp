@@ -10181,13 +10181,13 @@ GALGAS_string categoryReader_sourceFile (const GALGAS_location & inObject,
                                          COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outResult ; // Returned variable
   const GALGAS_location temp_0 = inObject ;
-  const enumGalgasBool test_1 = temp_0.reader_isNowhere (SOURCE_FILE ("semanticContext.galgas", 23)).boolEnum () ;
+  const enumGalgasBool test_1 = temp_0.reader_isNowhere (SOURCE_FILE ("semanticContext.galgas", 19)).boolEnum () ;
   if (kBoolTrue == test_1) {
     result_outResult = GALGAS_string ("SOURCE_FILE (\"\", 0)") ;
   }else if (kBoolFalse == test_1) {
     const GALGAS_location temp_2 = inObject ;
     const GALGAS_location temp_3 = inObject ;
-    result_outResult = GALGAS_string ("SOURCE_FILE (").add_operation (temp_2.reader_file (inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 26)).reader_lastPathComponent (SOURCE_FILE ("semanticContext.galgas", 26)).reader_utf_38_Representation (SOURCE_FILE ("semanticContext.galgas", 26)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 26)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 26)).add_operation (temp_3.reader_line (inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 26)).reader_string (SOURCE_FILE ("semanticContext.galgas", 26)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 26)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 26)) ;
+    result_outResult = GALGAS_string ("SOURCE_FILE (").add_operation (temp_2.reader_file (inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 22)).reader_lastPathComponent (SOURCE_FILE ("semanticContext.galgas", 22)).reader_utf_38_Representation (SOURCE_FILE ("semanticContext.galgas", 22)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 22)).add_operation (GALGAS_string (", "), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 22)).add_operation (temp_3.reader_line (inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 22)).reader_string (SOURCE_FILE ("semanticContext.galgas", 22)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 22)).add_operation (GALGAS_string (")"), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 22)) ;
   }
 //---
   return result_outResult ;
@@ -10207,7 +10207,7 @@ GALGAS_string categoryReader_commaSourceFile (const GALGAS_location & inObject,
                                               COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_string result_outResult ; // Returned variable
   const GALGAS_location temp_0 = inObject ;
-  result_outResult = GALGAS_string (" COMMA_").add_operation (categoryReader_sourceFile (temp_0, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 33)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 33)) ;
+  result_outResult = GALGAS_string (" COMMA_").add_operation (categoryReader_sourceFile (temp_0, inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 29)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 29)) ;
 //---
   return result_outResult ;
 }

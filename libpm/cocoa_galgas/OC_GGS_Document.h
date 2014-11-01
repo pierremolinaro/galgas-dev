@@ -55,10 +55,11 @@
   @private BOOL mBuildTaskHasBeenAborted ;
   @private NSMutableData * mBufferedOutputData ;
 //---  
-  @private NSArrayController * mSourceDisplayArrayController ;
+  @private NSArrayController * mSourceDisplayArrayControllerHigh ;
+  @private IBOutlet NSTableView * mDisplayDescriptorTableViewHigh ;
+  @private NSMutableArray * mDisplayDescriptorArrayHigh ;
+//---  
   @private OC_GGS_DocumentData * mDocumentData ;
-  @private NSArray * mDisplayDescriptorArray ;
-  @private IBOutlet NSTableView * mDisplayDescriptorTableView ;
   @private IBOutlet NSPathControl * mSourceFilePathControl ;
 
 //--- "Goto Line" sheet
