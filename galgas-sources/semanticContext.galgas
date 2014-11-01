@@ -1,8 +1,8 @@
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  semantics definitions for semantics component                            *
+#  semantics definitions for semantics component                                                                       *
 #                                                                                                                      *
-#  Copyright (C) 2010, ..., 2014 Pierre Molinaro.                           *
+#  Copyright (C) 2010, ..., 2014 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
@@ -13,10 +13,6 @@
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
 #  details.                                                                                                            *
 #                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-
-
 #----------------------------------------------------------------------------------------------------------------------*
 
 getter @location sourceFile -> @string outResult {
@@ -47,7 +43,7 @@ func %once syntaxDirectedTranslationResultVarName ->@string outName {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  G R A M M A R   M A P                                                    *
+#  G R A M M A R   M A P                                                                                               *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -69,7 +65,7 @@ map @grammarMap {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  R O U T I N E   M A P                                                    *
+#  R O U T I N E   M A P                                                                                               *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -82,7 +78,7 @@ map @routineMap {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  F U N C T I O N   M A P                                                  *
+#  F U N C T I O N   M A P                                                                                             *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -96,7 +92,7 @@ map @functionMap {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  F I L E W R A P P E R   M A P                                            *
+#  F I L E W R A P P E R   M A P                                                                                       *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -143,7 +139,7 @@ map @filewrapperMap {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  O P T I O N   M A P                                                      *
+#  O P T I O N   M A P                                                                                                 *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -170,7 +166,7 @@ map @optionMapForSemanticAnalysis {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  L E X I Q U E   M A P                                                    *
+#  L E X I Q U E   M A P                                                                                               *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -184,7 +180,7 @@ map @lexiqueComponentMapForSemanticAnalysis {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  S Y N T A X   M A P                                                      *
+#  S Y N T A X   M A P                                                                                                 *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -199,7 +195,7 @@ map @syntaxComponentMap {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    S E M A N T I C    C O N T E X T                                       *
+#    S E M A N T I C    C O N T E X T                                                                                  *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -216,7 +212,7 @@ struct @semanticContext {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    C A T E G O R Y    M E T H O D    M A P                                *
+#    C A T E G O R Y    M E T H O D    M A P                                                                           *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -235,7 +231,7 @@ map @categoryMethodMapForBuildingContext {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    C A T E G O R Y    M O D I F I E R    M A P                            *
+#    C A T E G O R Y    M O D I F I E R    M A P                                                                       *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -254,7 +250,7 @@ map @categoryModifierMapForBuildingContext {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    C A T E G O R Y    R E A D E R    M A P                                *
+#    C A T E G O R Y    R E A D E R    M A P                                                                           *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -274,7 +270,7 @@ map @categoryReaderMapForBuildingContext {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    D I S P L A Y                                                          *
+#    D I S P L A Y                                                                                                     *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -513,7 +509,7 @@ override getter @externRoutineDeclarationAST keyRepresentation
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    E N T E R    T Y P E S                                                 *
+#    E N T E R    T Y P E S                                                                                            *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -546,7 +542,7 @@ proc addCategories
         !formalArgumentList
         ![lkey location]
         !true
-        !@methodQualifier. isBasic
+        !@methodQualifier.isBasic
         !"" # No error message
       ]
     end
@@ -571,7 +567,7 @@ proc addCategories
         ![lkey location]
         !true
         !returnedType
-        !@methodQualifier. isBasic
+        !@methodQualifier.isBasic
         !"" # No Error message
       ]
     end
@@ -592,7 +588,7 @@ proc addCategories
         !@methodKind. definedAsCategory
         !formalArgumentList
         !true
-        !@methodQualifier. isBasic
+        !@methodQualifier.isBasic
         !"" # No Error message
       ]
     end
@@ -894,7 +890,7 @@ override method @mapDeclarationAST enterInSemanticContext
         !@methodKind. definedAsMember
         !insertMethodFormalArgumentList
         !true
-        !@methodQualifier. isBasic
+        !@methodQualifier.isBasic
         !""
       ]
     end
@@ -909,7 +905,7 @@ override method @mapDeclarationAST enterInSemanticContext
         !@methodKind. definedAsMember
         !removeMethodFormalArgumentList
         !true
-        !@methodQualifier. isBasic
+        !@methodQualifier.isBasic
         !""
       ]
     end
@@ -922,7 +918,7 @@ override method @mapDeclarationAST enterInSemanticContext
       !removeMethodFormalArgumentList
       ![mSearchMethodName location]
       !true
-      !@methodQualifier. isBasic
+      !@methodQualifier.isBasic
       !"" # No error message
     ]
   end
@@ -938,7 +934,7 @@ override method @mapDeclarationAST enterInSemanticContext
       !@location.here
       !true
       !attributeTypeIndex
-      !@methodQualifier. isBasic
+      !@methodQualifier.isBasic
       !"" # No Error message
     ]
   end
@@ -951,7 +947,7 @@ override method @mapDeclarationAST enterInSemanticContext
       !@methodKind. definedAsMember
       !insertMethodFormalArgumentList
       !false
-      !@methodQualifier. isBasic
+      !@methodQualifier.isBasic
       !"" # No error message
     ]
   end
@@ -967,7 +963,7 @@ override method @mapDeclarationAST enterInSemanticContext
       !@methodKind. definedAsMember
       !accessorFormalArgumentList
       !true
-      !@methodQualifier. isBasic
+      !@methodQualifier.isBasic
       !"" # No error message
     ]
   end
@@ -1089,7 +1085,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
         !@methodKind. definedAsMember
         !insertMethodFormalArgumentList
         !true
-        !@methodQualifier. isBasic
+        !@methodQualifier.isBasic
         !"" # No error message
       ]
     end
@@ -1128,7 +1124,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
         !removeMethodFormalArgumentList
         ![mSearchMethodName location]
         !true
-        !@methodQualifier. isBasic
+        !@methodQualifier.isBasic
         !"" # No error message
       ]
     end
@@ -1139,7 +1135,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
         !@methodKind. definedAsMember
         !removeMethodFormalArgumentList
         !true
-        !@methodQualifier. isBasic
+        !@methodQualifier.isBasic
         !"" # No error message
       ]
     end
@@ -1161,7 +1157,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
       !@methodKind. definedAsMember
       !@formalParameterSignature. listWithValue { !["" nowhere] !locationTypeIndex !@formalArgumentPassingModeAST. argumentIn !"inErrorLocation"}
       !true
-      !@methodQualifier. isBasic
+      !@methodQualifier.isBasic
       !"" # No error message
     ]
     [!?modifierMap insertKey
@@ -1178,7 +1174,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
       !@formalParameterSignature. listWithValue { !["" nowhere] !locationTypeIndex !@formalArgumentPassingModeAST. argumentIn !"inErrorLocation"}
       !@location.here
       !true
-      !@methodQualifier. isBasic
+      !@methodQualifier.isBasic
       !"" # No error message
     ]
     for () in  mMapOverrideBlockListAST do
@@ -1187,7 +1183,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
         !@methodKind. definedAsMember
         !@formalParameterSignature. emptyList
         !true
-        !@methodQualifier. isBasic
+        !@methodQualifier.isBasic
         !"" # No error message
       ]
     end
@@ -1204,7 +1200,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
       !@location.here
       !true
       !attributeTypeIndex
-      !@methodQualifier. isBasic
+      !@methodQualifier.isBasic
       !"" # No Error message
     ]
   end
@@ -1220,7 +1216,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
       !@methodKind. definedAsMember
       !accessorFormalArgumentList
       !true
-      !@methodQualifier. isBasic
+      !@methodQualifier.isBasic
       !"" # No error message
     ]
   end
@@ -1366,7 +1362,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
         !@location.here
         !true
         !mAttributeTypeProxy
-        !@methodQualifier. isBasic
+        !@methodQualifier.isBasic
         !"" # No Error message
       ]
     end
@@ -1465,7 +1461,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
       !@location.here
       !true #inHasLexiqueAndLocationArguments
       !returnedTypeProxy
-      !@methodQualifier. isBasicFinal
+      !@methodQualifier.isBasicFinal
       !"" # No Error message
     ]
   end
@@ -1486,7 +1482,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
       !@methodKind. definedAsMember
       !routineSignature
       !true #inHasLexiqueAndLocationArguments
-      !@methodQualifier. isBasicFinal
+      !@methodQualifier.isBasicFinal
       !"" # No Error message
     ]
   end
@@ -1509,7 +1505,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
       !routineSignature
       !mDeclarationLocation
       !true #inHasLexiqueAndLocationArguments
-      !@methodQualifier. isBasicFinal
+      !@methodQualifier.isBasicFinal
       !"" # No Error message
     ]
   end
@@ -1580,7 +1576,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !formalParameterList
     !@location.here
     !true # Has Compiler Argument
-    !@methodQualifier. isBasic
+    !@methodQualifier.isBasic
     !"" # No error message
   ]
   [!?instanceMethodMap insertKey
@@ -1589,7 +1585,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !formalParameterList
     !@location.here
     !true # Has Compiler Argument
-    !@methodQualifier. isBasic
+    !@methodQualifier.isBasic
     !"" # No error message
   ]
   drop formalParameterList
@@ -1603,7 +1599,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !formalParameterList
     !@location.here
     !false # No Compiler Argument
-    !@methodQualifier. isBasic
+    !@methodQualifier.isBasic
     !"" # No error message
   ]
   [!?instanceMethodMap insertKey
@@ -1612,7 +1608,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !formalParameterList
     !@location.here
     !false # No Compiler Argument
-    !@methodQualifier. isBasic
+    !@methodQualifier.isBasic
     !"" # No error message
   ]
   drop formalParameterList
@@ -1721,7 +1717,7 @@ override method @graphDeclarationAST enterInSemanticContext
       !@methodKind. definedAsMember
       !formalParameterList
       !true # has compiler argument
-      !@methodQualifier. isBasic
+      !@methodQualifier.isBasic
       !"" # No error message
     ]
   end
@@ -2178,7 +2174,7 @@ override method @listDeclarationAST enterInSemanticContext
         !@location.here
         !true
         !mAttributeTypeProxy
-        !@methodQualifier. isBasic
+        !@methodQualifier.isBasic
         !"" # No Error message
       ]
     end
@@ -2191,7 +2187,7 @@ override method @listDeclarationAST enterInSemanticContext
     !modifierOutputFormalArgumentList
     !@location.here
     !true
-    !@methodQualifier. isBasic
+    !@methodQualifier.isBasic
     !""
   ]
   [!?instanceMethodMap insertKey
@@ -2200,7 +2196,7 @@ override method @listDeclarationAST enterInSemanticContext
     !modifierOutputFormalArgumentList
     !@location.here
     !true
-    !@methodQualifier. isBasic
+    !@methodQualifier.isBasic
     !""
   ]
 #----------------------------------------- Modifiers
@@ -2210,7 +2206,7 @@ override method @listDeclarationAST enterInSemanticContext
     !@methodKind. definedAsMember
     !modifierOutputFormalArgumentList
     !true
-    !@methodQualifier. isBasic
+    !@methodQualifier.isBasic
     !""
   ]
   [!?modifierMap insertOrReplace
@@ -2218,7 +2214,7 @@ override method @listDeclarationAST enterInSemanticContext
     !@methodKind. definedAsMember
     !modifierOutputFormalArgumentList
     !true
-    !@methodQualifier. isBasic
+    !@methodQualifier.isBasic
     !""
   ]
   modifierOutputFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST. argumentConstantIn !"inIndex"
@@ -2227,7 +2223,7 @@ override method @listDeclarationAST enterInSemanticContext
     !@methodKind. definedAsMember
     !modifierOutputFormalArgumentList
     !true
-    !@methodQualifier. isBasic
+    !@methodQualifier.isBasic
     !""
   ]
   drop modifierOutputFormalArgumentList
@@ -2241,7 +2237,7 @@ override method @listDeclarationAST enterInSemanticContext
         !@methodKind. definedAsMember
         !setterFormalArgumentList
         !true
-        !@methodQualifier. isBasic
+        !@methodQualifier.isBasic
         !"" # No error message
       ]
     end
@@ -2253,7 +2249,7 @@ override method @listDeclarationAST enterInSemanticContext
     !@methodKind. definedAsMember
     !modifierInputFormalArgumentList
     !true
-    !@methodQualifier. isBasic
+    !@methodQualifier.isBasic
     !"" # No error message
   ]
   drop modifierInputFormalArgumentList
@@ -2352,7 +2348,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !@methodKind. definedAsMember
     !modifierFormalArgumentList
     !true
-    !@methodQualifier. isBasic
+    !@methodQualifier.isBasic
     !"" # No error message
   ]
   [!?modifierMap insertOrReplace
@@ -2360,7 +2356,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !@methodKind. definedAsMember
     !modifierFormalArgumentList
     !true
-    !@methodQualifier. isBasic
+    !@methodQualifier.isBasic
     !"" # No error message
   ]
 #--- Instance methods
@@ -2371,7 +2367,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !modifierFormalArgumentList
     !@location.here
     !true
-    !@methodQualifier. isBasic
+    !@methodQualifier.isBasic
     !"" # No error message
   ]
   [!?instanceMethodMap insertKey
@@ -2380,7 +2376,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !modifierFormalArgumentList
     !@location.here
     !true
-    !@methodQualifier. isBasic
+    !@methodQualifier.isBasic
     !"" # No error message
   ]
 #--- Enumeration variants
@@ -2699,7 +2695,7 @@ override method @classDeclarationAST enterInSemanticContext
         !@location.here
         !false # No Compiler argument
         !attributeTypeIndex # Returned type
-        !@methodQualifier. isBasic
+        !@methodQualifier.isBasic
         !"" # No Error message
       ]
     end
@@ -2712,7 +2708,7 @@ override method @classDeclarationAST enterInSemanticContext
         !@methodKind. definedAsMember
         !@formalParameterSignature. listWithValue { !["" nowhere] !mAttributeTypeProxy !@formalArgumentPassingModeAST. argumentIn !mAttributeName.string}
         !false # No compiler argument
-        !@methodQualifier. isBasicFinal
+        !@methodQualifier.isBasicFinal
         !"" # No error message
       ]
     end
@@ -2886,7 +2882,7 @@ override method @arrayDeclarationAST enterInSemanticContext
     !@location.here
     !true
     !boolType
-    !@methodQualifier. isBasicFinal
+    !@methodQualifier.isBasicFinal
     !"" # No Error message
   ]
   [!?readerMap insertOrReplace
@@ -2896,7 +2892,7 @@ override method @arrayDeclarationAST enterInSemanticContext
     !@location.here
     !true
     !elementTypeIndex
-    !@methodQualifier. isBasicFinal
+    !@methodQualifier.isBasicFinal
     !"" # No Error message
   ]
 #--- Modifiers
@@ -2912,7 +2908,7 @@ override method @arrayDeclarationAST enterInSemanticContext
     !@methodKind. definedAsMember
     !modifierFormalArgumentList
     !true
-    !@methodQualifier. isBasicFinal
+    !@methodQualifier.isBasicFinal
     !""
   ]
   [!?modifierMap insertKey
@@ -2920,7 +2916,7 @@ override method @arrayDeclarationAST enterInSemanticContext
     !@methodKind. definedAsMember
     !modifierFormalArgumentList
     !true
-    !@methodQualifier. isBasicFinal
+    !@methodQualifier.isBasicFinal
     !""
   ]
   [!?modifierFormalArgumentList popFirst ?4*]
@@ -2929,7 +2925,7 @@ override method @arrayDeclarationAST enterInSemanticContext
     !@methodKind. definedAsMember
     !modifierFormalArgumentList
     !true
-    !@methodQualifier. isBasicFinal
+    !@methodQualifier.isBasicFinal
     !""
   ]
   [!?modifierMap insertKey
@@ -2937,7 +2933,7 @@ override method @arrayDeclarationAST enterInSemanticContext
     !@methodKind. definedAsMember
     !modifierFormalArgumentList
     !true
-    !@methodQualifier. isBasicFinal
+    !@methodQualifier.isBasicFinal
     !""
   ]
   modifierFormalArgumentList = @formalParameterSignature. emptyList
@@ -2948,7 +2944,7 @@ override method @arrayDeclarationAST enterInSemanticContext
     !@methodKind. definedAsMember
     !modifierFormalArgumentList
     !true
-    !@methodQualifier. isBasicFinal
+    !@methodQualifier.isBasicFinal
     !""
   ]
 #--- Enter in semantic context
