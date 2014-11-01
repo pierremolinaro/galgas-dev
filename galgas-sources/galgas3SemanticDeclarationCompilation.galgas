@@ -75,7 +75,7 @@ proc compileSemanticDeclarationsGalgas3
   end
 #------ Check there is no undefined types
   for () in  [outSemanticContext.mTypeMap unsolvedProxyList] do
-    error mValue : "the '" + mValue + "' type is undefined"
+    error mValue : "the '@" + mValue + "' type is undefined"
   end
 #------ Semantic Analysis
   outSemanticDeclarationSortedListForGeneration = @semanticDeclarationSortedListForGeneration. emptySortedList
@@ -105,7 +105,7 @@ proc buildGalgas3SemanticContext
   !@semanticDeclarationListAST outSortedSemanticDeclarationListAST {
 #------ Create associated type (@TYPE-element) for lists, maps, ...
   @semanticDeclarationListAST semanticDeclarationList = inSemanticDeclarationList
-  for () in  inSemanticDeclarationList do
+  for () in inSemanticDeclarationList do
     [mSemanticDeclaration addAssociatedElement !?semanticDeclarationList]
   end
 #------ Build ordered types list, so that
@@ -126,9 +126,17 @@ proc buildGalgas3SemanticContext
       !?categoryOverrideDefinitionList
     ]  
   end
+#--- Add optional declarations
+  for () in  [semanticTypePrecedenceGraph undefinedNodeReferenceList] do
+    log mValue
+    if [mValue lastCharacter] == '?' then
+      message "Optional '" + mValue + "'\n"
+    end
+  end
+#---
   if [semanticTypePrecedenceGraph undefinedNodeCount] > 0 then
     for () in  [semanticTypePrecedenceGraph undefinedNodeReferenceList] do
-      error mValue : "the '" + mValue + "' type is not defined"
+      error mValue : "the '@" + mValue + "' type is not defined"
     end
     error inEndOfProjectSourceFile : "semantic analysis not performed, due to undefined type error(s)" : outSemanticContext, outSortedSemanticDeclarationListAST
   else

@@ -294,10 +294,28 @@ GALGAS_string GALGAS_string::reader_absolutePathFromPath (const GALGAS_string & 
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_string GALGAS_string::reader_relativePathFromPath (const GALGAS_string & inReferencePath
-                                                            COMMA_UNUSED_LOCATION_ARGS) const {
+                                                          COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid () && inReferencePath.isValid ()) {
     result = GALGAS_string (C_FileManager::relativePathFromPath (mString, inReferencePath.mString)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_char GALGAS_string::reader_lastCharacter (C_Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) const {
+  GALGAS_char result ;
+  if (isValid ()) {
+    if (mString.length () == 0) {
+      inCompiler->onTheFlyRunTimeError (
+        "@string lastCharacter getter called on empty string"
+        COMMA_THERE
+      ) ;
+    }else{
+      result = GALGAS_char (mString.lastCharacter (THERE)) ;
+    }
   }
   return result ;
 }
@@ -461,7 +479,7 @@ GALGAS_string GALGAS_string::reader_stringByReplacingStringByString (const GALGA
   if ((inSearchedString.isValid ()) && (inReplacementString.isValid ())) {
     if (inSearchedString.mString.length () == 0) {
       inCompiler->onTheFlyRunTimeError (
-        "@string stringByReplacingStringByString reader called with empty searched string"
+        "@string stringByReplacingStringByString getter called with empty searched string"
         COMMA_THERE
       ) ;
     }else{
@@ -487,7 +505,7 @@ GALGAS_string GALGAS_string::reader_stringByRemovingCharacterAtIndex (const GALG
       result = GALGAS_string (s) ;
     }else{
       inCompiler->onTheFlyRunTimeError (
-        "@string stringByRemovingCharacterAtIndex reader called with index greater or equal to length"
+        "@string stringByRemovingCharacterAtIndex getter called with index greater or equal to length"
         COMMA_THERE
       ) ;
     }

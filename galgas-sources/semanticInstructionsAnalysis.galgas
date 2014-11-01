@@ -1,8 +1,8 @@
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  metamodel that defines expression                                        *
+#  metamodel that defines expression                                                                                   *
 #                                                                                                                      *
-#  Copyright (C) 2010, ..., 2012 Pierre Molinaro.                           *
+#  Copyright (C) 2010, ..., 2012 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
@@ -14,12 +14,8 @@
 #  details.                                                                                                            *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
-
-
-
-#----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    I N S T R U C T I O N    A N A L Y S I S                               *
+#    I N S T R U C T I O N    A N A L Y S I S                                                                          *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -84,6 +80,14 @@ private proc analyzeSemanticInstructionList
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+#override method @localVariableOrConstantDeclarationWithDefaultConstructorAST enterInSemanticContext
+#  ?!@unifiedTypeMap ioTypeMap
+#{
+#  [@unifiedTypeMap-proxy makeProxy !?ioTypeMap !mTypeName ?*]
+#}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @localVariableOrConstantDeclarationWithDefaultConstructorAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
@@ -115,11 +119,21 @@ override method @localVariableOrConstantDeclarationWithDefaultConstructorAST ana
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+#override method @localVariableOrConstantDeclarationWithConstructorCallAST enterInSemanticContext
+#  ?!@unifiedTypeMap ioTypeMap
+#{
+#  if mTypeName.string != "" then
+#    [@unifiedTypeMap-proxy makeProxy !?ioTypeMap !mTypeName ?*]
+#  end
+#}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @localVariableOrConstantDeclarationWithConstructorCallAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap {
-  let targetType = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
+  let targetType = @unifiedTypeMap-proxy.searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
 #--- Analyze constructor call
   analyzeConstructorInvocation (
     !targetType

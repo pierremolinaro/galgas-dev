@@ -22077,6 +22077,9 @@ bool C_Lexique_galgas_33_Scanner::parseLexicalToken (void) {
             }while (mLoop) ;
             mLoop = true ;
           }
+          if (testForInputUTF32Char (TO_UNICODE ('\?'))) {
+            ::scanner_routine_enterCharacterIntoString (*this, token.mLexicalAttribute_tokenString, previousChar ()) ;
+          }
         }else{
           lexicalError (gLexicalMessage_galgas_33_Scanner_incorrectTypeNameError COMMA_LINE_AND_SOURCE_FILE) ;
         }

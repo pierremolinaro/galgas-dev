@@ -1,8 +1,8 @@
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  metamodel that defines expression                                        *
+#  metamodel that defines expression                                                                                   *
 #                                                                                                                      *
-#  Copyright (C) 2007, ..., 2010 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2010 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
@@ -14,12 +14,8 @@
 #  details.                                                                                                            *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
-
-
-
-#----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    C H E C K    M E T H O D    S I G N A T U R E                          *
+#    C H E C K    M E T H O D    S I G N A T U R E                                                                     *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -55,7 +51,7 @@ proc checkMethodSignatures
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    C H E C K    R E A D E R    S I G N A T U R E                          *
+#    C H E C K    R E A D E R    S I G N A T U R E                                                                     *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -93,7 +89,7 @@ proc checkReaderSignatures
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    D E C L A R A T I O N    S E M A N T I C    A N A L Y S I S            *
+#    D E C L A R A T I O N    S E M A N T I C    A N A L Y S I S                                                       *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -2732,7 +2728,7 @@ override method @lexiqueComponentAST semanticAnalysis
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    P R E D E F I N E D    T Y P E S                                       *
+#    P R E D E F I N E D    T Y P E S                                                                                  *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -2761,7 +2757,7 @@ func buildPredefinedTypes
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    P E R F O R M     S E M A N T I C     A N A L Y S I S                  *
+#    P E R F O R M     S E M A N T I C     A N A L Y S I S                                                             *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -2772,7 +2768,7 @@ proc performSemanticAnalysis
   !@semanticDeclarationSortedListForGeneration outDecoratedDeclarationListForGeneration {
 #------ Check there is no undefined types
   for () in  [inSemanticContext.mTypeMap unsolvedProxyList] do
-    error mValue : "the '" + mValue + "' type is undefined"
+    error mValue : "the '@" + mValue + "' type is undefined"
   end
 #------ Create associated type (@TYPE:element) for lists, maps, ...
   @semanticDeclarationListAST semanticDeclarationList = inDeclarationList
@@ -2796,7 +2792,7 @@ proc performSemanticAnalysis
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    S Y N T A X    D E C L A R A T I O N S                                 *
+#    S Y N T A X    D E C L A R A T I O N S                                                                            *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -2856,7 +2852,7 @@ class @syntaxDeclarationForGeneration : @semanticDeclarationForGeneration {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#           G E N E R A T I O N    F I L E W R A P P E R S                  *
+#           G E N E R A T I O N    F I L E W R A P P E R S                                                             *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 

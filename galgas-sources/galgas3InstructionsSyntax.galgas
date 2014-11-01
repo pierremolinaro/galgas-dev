@@ -1,6 +1,6 @@
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  Copyright (C) 2014, ..., 2014 Pierre Molinaro.                           *
+#  Copyright (C) 2014, ..., 2014 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
@@ -15,11 +15,11 @@
 
 syntax galgas3InstructionsSyntax (galgas3Scanner) {
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#          Rules prototypes                                                    *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#          Rules prototypes                                                                                            *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <expression> !@semanticExpressionAST outExpression
 
@@ -29,7 +29,7 @@ rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputP
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    S E M A N T I C    I N S T R U C T I O N    L I S T                    *
+#    S E M A N T I C    I N S T R U C T I O N    L I S T                                                               *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -60,14 +60,13 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    E X T E R N    R O U T I N E    D E C L A R A T I O N                  *
+#    E X T E R N    R O U T I N E    D E C L A R A T I O N                                                             *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <declaration>
   ?!@galgas3DeclarationAST ioDeclarations {
   $extern$
-#  <local_declaration> ??@bool isLocal ;
   $proc$
   $identifier$ ?let @lstring mActionName indexing routineDefinition
   <formal_parameter_list> ?let @formalParameterListAST mFormalParameterList
@@ -80,7 +79,7 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    R O U T I N E    D E C L A R A T I O N                                 *
+#    R O U T I N E    D E C L A R A T I O N                                                                            *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -89,27 +88,29 @@ rule <declaration>
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <declaration_with_private>
-  ?let @bool inIsInternal
-  ?!@galgas3DeclarationAST ioDeclarations {
+  ?let @bool inIsPrivate
+  ?!@galgas3DeclarationAST ioDeclarations
+{
   $proc$
-  $identifier$ ?var  @lstring mRoutineName indexing routineDefinition
+  $identifier$ ?let mRoutineName indexing routineDefinition
   <formal_parameter_list> ?var @formalParameterListAST mFormalParameterList
   ${$
   <semantic_instruction_list> ?var @semanticInstructionListAST mRoutineInstructionList
   $}$
   let endOfInstructionList = @location.here
-  ioDeclarations.mDeclarationList += !@routineDeclarationAST. new {
+  ioDeclarations.mDeclarationList += !@routineDeclarationAST.new {
     !false # Is not predefined
-    !inIsInternal
+    !inIsPrivate
     !mRoutineName
     !mFormalParameterList
     !mRoutineInstructionList
-    !endOfInstructionList}
+    !endOfInstructionList
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    F U N C T I O N    D E C L A R A T I O N                               *
+#    F U N C T I O N    D E C L A R A T I O N                                                                          *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -118,7 +119,7 @@ rule <declaration_with_private>
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule  <declaration_with_private>
-  ?let @bool inIsInternal
+  ?let @bool inIsPrivate
   ?!@galgas3DeclarationAST ioDeclarations {
   $func$
   var isOnce = false
@@ -131,14 +132,14 @@ rule  <declaration_with_private>
       isOnce = true
     end
   end
-  $identifier$ ?var  @lstring functionName indexing functionDefinition
+  $identifier$ ?let functionName indexing functionDefinition
   <formal_input_parameter_list> ?let @formalInputParameterListAST formalInputParameterList
   if isOnce & ([formalInputParameterList length] > 0) then
     error functionName: "an 'once' function should has no argument"
   end
   $->$
-  $type_name$ ?var @lstring resultTypeName
-  $identifier$ ?var @lstring resultVariableName
+  $type_name$ ?let resultTypeName
+  $identifier$ ?let resultVariableName
   ${$
   <semantic_instruction_list> ?var @semanticInstructionListAST functionInstructionList
   $}$
@@ -151,7 +152,7 @@ rule  <declaration_with_private>
       !resultVariableName
       !functionInstructionList
       !endOfFunctionInstructionList
-      !inIsInternal}
+      !inIsPrivate}
   else
     ioDeclarations.mDeclarationList += !@functionDeclarationAST. new {
       !false # Is not predefined
@@ -161,13 +162,13 @@ rule  <declaration_with_private>
       !resultVariableName
       !functionInstructionList
       !endOfFunctionInstructionList
-      !inIsInternal}
+      !inIsPrivate}
   end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    E X T E R N    F U N C T I O N    D E C L A R A T I O N                *
+#    E X T E R N    F U N C T I O N    D E C L A R A T I O N                                                           *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -178,14 +179,13 @@ rule  <declaration_with_private>
 rule <declaration>
  ?!@galgas3DeclarationAST ioDeclarations {
   $extern$
-#  <local_declaration> ??@bool isLocal ;
   $func$
-  $identifier$ ?var  @lstring mActionName indexing functionDefinition
+  $identifier$ ?let mActionName indexing functionDefinition
   @formalInputParameterListAST formalInputParameterList
   <formal_input_parameter_list> ? formalInputParameterList
   $->$
-  $type_name$ ?var @lstring resultTypeName
-  $identifier$ ?var @lstring resultVariableName
+  $type_name$ ?let resultTypeName
+  $identifier$ ?let resultVariableName
   ioDeclarations.mDeclarationList += !@externFunctionDeclarationAST. new {
     !false # Is not predefined
     !mActionName
@@ -196,7 +196,7 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  L O C A L    V A R I A B L E    D E C L A R A T I O N                    *
+#  L O C A L    V A R I A B L E    D E C L A R A T I O N                                                               *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -207,8 +207,8 @@ rule <declaration>
 rule <semantic_instruction>
   !@semanticInstructionAST outInstruction {
   $var$
-  $type_name$ ?var @lstring typeName
-  $identifier$ ?var @lstring variableName
+  $type_name$ ?let typeName
+  $identifier$ ?let variableName
   outInstruction = @localVariableDeclarationAST. new { ![typeName location] !typeName !variableName !false}
 }
 
@@ -216,8 +216,8 @@ rule <semantic_instruction>
 
 rule <semantic_instruction>
   !@semanticInstructionAST outInstruction {
-  $type_name$ ?var @lstring typeName
-  $identifier$ ?var @lstring variableName
+  $type_name$ ?let typeName
+  $identifier$ ?let variableName
   outInstruction = @localVariableDeclarationAST. new { ![typeName location] !typeName !variableName !false}
 }
 
@@ -226,8 +226,8 @@ rule <semantic_instruction>
 rule <semantic_instruction>
   !@semanticInstructionAST outInstruction {
   $var$
-  $type_name$ ?var @lstring typeName
-  $identifier$ ?var @lstring variableName
+  $type_name$ ?let typeName
+  $identifier$ ?let variableName
   $=$
   <expression> ?let @semanticExpressionAST sourceExpression
   outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST. new {
@@ -243,7 +243,7 @@ rule <semantic_instruction>
 rule <semantic_instruction>
   !@semanticInstructionAST outInstruction {
   $var$
-  $identifier$ ?var @lstring variableName
+  $identifier$ ?let variableName
   $=$
   @semanticExpressionAST sourceExpression
   <expression> ? sourceExpression
@@ -257,8 +257,8 @@ rule <semantic_instruction>
 
 rule <semantic_instruction>
   !@semanticInstructionAST outInstruction {
-  $type_name$ ?var @lstring typeName
-  $identifier$ ?var @lstring variableName
+  $type_name$ ?let typeName
+  $identifier$ ?let variableName
   $=$
   @semanticExpressionAST sourceExpression
   <expression> ? sourceExpression
@@ -272,7 +272,7 @@ rule <semantic_instruction>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  L O C A L    C O N S T A N T    D E C L A R A T I O N                    *
+#  L O C A L    C O N S T A N T    D E C L A R A T I O N                                                               *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -283,8 +283,8 @@ rule <semantic_instruction>
 rule <semantic_instruction>
   !@semanticInstructionAST outInstruction {
   $let$
-  $type_name$ ?var @lstring typeName
-  $identifier$ ?var @lstring variableName
+  $type_name$ ?let typeName
+  $identifier$ ?let variableName
   $=$
   <expression> ?let @semanticExpressionAST sourceExpression
   outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST. new {
@@ -297,15 +297,15 @@ rule <semantic_instruction>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  L O C A L    C O N S T A N T    D E C L A R A T I O N                    *
-#  with implicit target type                                                *
+#  L O C A L    C O N S T A N T    D E C L A R A T I O N                                                               *
+#  with implicit target type                                                                                           *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <semantic_instruction>
   !@semanticInstructionAST outInstruction {
   $let$
-  $identifier$ ?var @lstring variableName
+  $identifier$ ?let variableName
   $=$
   <expression> ?let @semanticExpressionAST sourceExpression
   outInstruction = @localConstantDeclarationWithAssignmentAST. new {
@@ -316,7 +316,7 @@ rule <semantic_instruction>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    A S S I G N M E N T    I N S T R U C T I O N                           *
+#    A S S I G N M E N T    I N S T R U C T I O N                                                                      *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -326,12 +326,12 @@ rule <semantic_instruction>
 
 rule <semantic_instruction>
   !@semanticInstructionAST outInstruction {
-  $identifier$ ?var @lstring mTargetVariableName
+  $identifier$ ?let mTargetVariableName
   var mStructAttributeList =@lstringlist.emptyList{}
   repeat
   while
     $.$
-    $identifier$ ?var  @lstring attributeName
+    $identifier$ ?let attributeName
     mStructAttributeList += !attributeName
   end
   $=$
@@ -345,7 +345,7 @@ rule <semantic_instruction>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    S E L F    A S S I G N M E N T    I N S T R U C T I O N                *
+#    S E L F    A S S I G N M E N T    I N S T R U C T I O N                                                           *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -366,7 +366,7 @@ rule <semantic_instruction>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    D R O P    I N S T R U C T I O N                                       *
+#    D R O P    I N S T R U C T I O N                                                                                  *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -380,7 +380,7 @@ rule <semantic_instruction>
   let instructionLocation = @location.here
   var dropList =@lstringlist.emptyList{}
   repeat
-    $identifier$ ?var @lstring variableName
+    $identifier$ ?let variableName
     dropList += !variableName
   while
     $,$
@@ -390,7 +390,7 @@ rule <semantic_instruction>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    I N C R E M E N T    I N S T R U C T I O N                             *
+#    I N C R E M E N T    I N S T R U C T I O N                                                                        *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -400,12 +400,12 @@ rule <semantic_instruction>
 
 rule <semantic_instruction>
   !@semanticInstructionAST outInstruction {
-  $identifier$ ?var  @lstring mReceiverName
+  $identifier$ ?let mReceiverName
   var mStructAttributeList =@lstringlist.emptyList{}
   repeat
   while
     $.$
-    $identifier$ ?var  @lstring attributeName
+    $identifier$ ?let attributeName
     mStructAttributeList += !attributeName
   end
   $++$
@@ -417,7 +417,7 @@ rule <semantic_instruction>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    S E L F    I N C R E M E N T    I N S T R U C T I O N                  *
+#    S E L F    I N C R E M E N T    I N S T R U C T I O N                                                             *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -436,7 +436,7 @@ rule <semantic_instruction>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    D E C R E M E N T    I N S T R U C T I O N                             *
+#    D E C R E M E N T    I N S T R U C T I O N                                                                        *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -446,12 +446,12 @@ rule <semantic_instruction>
 
 rule <semantic_instruction>
   !@semanticInstructionAST outInstruction {
-  $identifier$ ?var @lstring mReceiverName
+  $identifier$ ?let mReceiverName
   var mStructAttributeList =@lstringlist.emptyList{}
   repeat
   while
     $.$
-    $identifier$ ?var  @lstring attributeName
+    $identifier$ ?let attributeName
     mStructAttributeList += !attributeName
   end
   $--$
@@ -463,7 +463,7 @@ rule <semantic_instruction>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    S E L F    D E C R E M E N T    I N S T R U C T I O N                  *
+#    S E L F    D E C R E M E N T    I N S T R U C T I O N                                                             *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -482,7 +482,7 @@ rule <semantic_instruction>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    F O R    I N S T R U C T I O N                                         *
+#    F O R    I N S T R U C T I O N                                                                                    *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -690,7 +690,7 @@ rule <semantic_instruction>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    I F    I N S T R U C T I O N                                           *
+#    I F    I N S T R U C T I O N                                                                                      *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -746,7 +746,7 @@ rule <semantic_instruction>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    M E T H O D    C A L L    I N S T R U C T I O N                        *
+#    M E T H O D    C A L L    I N S T R U C T I O N                                                                   *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -759,7 +759,7 @@ rule <semantic_instruction>
   $[$
   let instructionLocation = @location.here
   <expression> ?let @semanticExpressionAST mReceiverExpression
-  $identifier$ ?var @lstring mMethodName
+  $identifier$ ?let mMethodName
   <actual_parameter_list> ?let @actualParameterListAST actualParameterList
   $]$
   outInstruction = @methodCallInstructionAST. new {
@@ -771,7 +771,7 @@ rule <semantic_instruction>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    S E T T E R    C A L L    I N S T R U C T I O N                        *
+#    S E T T E R    C A L L    I N S T R U C T I O N                                                                   *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -787,15 +787,15 @@ rule <semantic_instruction>
   if selector.string != "" then
     error selector : "an empty selector '!?' is required here"
   end
-  $identifier$ ?var @lstring mReceiverName
+  $identifier$ ?let mReceiverName
   var mReceiverStructAttributes =@lstringlist.emptyList{}
   repeat
   while
     $.$
-    $identifier$ ?var @lstring structAttribute
+    $identifier$ ?let structAttribute
     mReceiverStructAttributes += !structAttribute
   end
-  $identifier$ ?var @lstring mModifierName
+  $identifier$ ?let mModifierName
   <actual_parameter_list> ?let @actualParameterListAST actualParameterList
   $]$
   outInstruction = @modifierCallInstructionAST. new {
@@ -808,7 +808,7 @@ rule <semantic_instruction>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    " S E L F "   S E T T E R    C A L L    I N S T R U C T I O N          *
+#    " S E L F "   S E T T E R    C A L L    I N S T R U C T I O N                                                     *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -836,7 +836,7 @@ rule <semantic_instruction>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    E R R O R    I N S T R U C T I O N                                     *
+#    E R R O R    I N S T R U C T I O N                                                                                *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -856,7 +856,7 @@ rule <semantic_instruction>
   or
     $:$
     repeat
-     $identifier$ ?var @lstring builtVariableName
+     $identifier$ ?let builtVariableName
      mBuiltVariableList += !builtVariableName
     while
       $,$
@@ -871,7 +871,7 @@ rule <semantic_instruction>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    W A R N I N G    I N S T R U C T I O N                                 *
+#    W A R N I N G    I N S T R U C T I O N                                                                            *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -894,7 +894,7 @@ rule <semantic_instruction>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    R O U T I N E    C A L L    I N S T R U C T I O N                      *
+#    R O U T I N E    C A L L    I N S T R U C T I O N                                                                 *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -904,7 +904,7 @@ rule <semantic_instruction>
 
 rule <semantic_instruction>
   !@semanticInstructionAST outInstruction {
-  $identifier$ ?var @lstring mRoutineName indexing routineCall
+  $identifier$ ?let mRoutineName indexing routineCall
   $($
   <actual_parameter_list> ?let @actualParameterListAST actualParameterList
   $)$
@@ -916,7 +916,7 @@ rule <semantic_instruction>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    W I T H    I N S T R U C T I O N                                       *
+#    W I T H    I N S T R U C T I O N                                                                                  *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -979,12 +979,12 @@ rule <semantic_instruction>
     if selector.string != "" then
       error selector : "an empty selector '!?' is required here"
     end
-    $identifier$ ?var @lstring mTargetObjectName
+    $identifier$ ?let mTargetObjectName
     var structAttributeList =@lstringlist.emptyList{}
     repeat
     while
       $.$
-      $identifier$ ?var @lstring mStructFieldName
+      $identifier$ ?let mStructFieldName
       structAttributeList += !mStructFieldName
     end
     let endOfReceiverExpression = @location.here
@@ -1036,7 +1036,7 @@ rule <semantic_instruction>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    C A S T    I N S T R U C T I O N                                       *
+#    C A S T    I N S T R U C T I O N                                                                                  *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -1054,7 +1054,7 @@ rule <cast_instruction_branch> ?!@castInstructionBranchListAST ioCastInstruction
   or
     $>$ kind = @dynamicTypeComparisonKind. strictlyInherited
   end
-  $type_name$ ?var  @lstring mTypeName
+  $type_name$ ?let mTypeName
   @lstring mConstantVarName # Empty string if no constant var
   select
     $identifier$ ?mConstantVarName
@@ -1133,7 +1133,7 @@ rule <semantic_instruction>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    +=    I N S T R U C T I O N                                            *
+#    +=    I N S T R U C T I O N                                                                                       *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -1150,7 +1150,7 @@ rule <semantic_instruction>
   repeat
   while
     $.$
-    $identifier$ ?var  @lstring attributeName
+    $identifier$ ?let attributeName
     mStructAttributeList += !attributeName
   end
   $+=$
@@ -1171,7 +1171,7 @@ rule <semantic_instruction>
   end
 }
 
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <non_empty_output_expression_list>
   !@actualOutputExpressionList outExpressionList {
@@ -1186,7 +1186,7 @@ rule <non_empty_output_expression_list>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    SELF +=    I N S T R U C T I O N                                       *
+#    SELF +=    I N S T R U C T I O N                                                                                  *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -1220,7 +1220,7 @@ rule <semantic_instruction>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    L O O P    I N S T R U C T I O N                                       *
+#    L O O P    I N S T R U C T I O N                                                                                  *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -1271,7 +1271,7 @@ rule <semantic_instruction>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    M E S S A G E    I N S T R U C T I O N                                 *
+#    M E S S A G E    I N S T R U C T I O N                                                                            *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -1291,7 +1291,7 @@ rule <semantic_instruction>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    L O G    I N S T R U C T I O N                                         *
+#    L O G    I N S T R U C T I O N                                                                                    *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -1309,7 +1309,7 @@ rule <semantic_instruction>
       $identifier$ ?let @lstring loggedVariableName
       logList += !loggedVariableName !@varInExpressionAST. new { !loggedVariableName}
     or
-      $literal_string$ ?var  @lstring logMessage
+      $literal_string$ ?let logMessage
       $:$
       <expression> ?let @semanticExpressionAST logExpression
       logList += !logMessage !logExpression
@@ -1324,7 +1324,7 @@ rule <semantic_instruction>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  G R A M M A R    I N S T R U C T I O N                                   *
+#  G R A M M A R    I N S T R U C T I O N                                                                              *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -1347,16 +1347,16 @@ rule <syntax_directed_translation_result>
     $*$
     outResult = @grammarInstructionSyntaxDirectedTranslationDropResult. new { !@location.here}
   or
-    $type_name$ ?var @lstring actualParameterTypeName
-    $identifier$ ?var @lstring actualParameterName
+    $type_name$ ?let actualParameterTypeName
+    $identifier$ ?let actualParameterName
     outResult = @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar. new { !actualParameterTypeName !actualParameterName}
   or
     $let$
-    $type_name$ ?var @lstring actualParameterTypeName
-    $identifier$ ?var @lstring actualParameterName
+    $type_name$ ?let actualParameterTypeName
+    $identifier$ ?let actualParameterName
     outResult = @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst. new { !actualParameterTypeName !actualParameterName}
   or
-    $identifier$ ?var @lstring actualParameterName
+    $identifier$ ?let actualParameterName
     outResult = @grammarInstructionSyntaxDirectedTranslationResultInVar. new { !actualParameterName}
   end
 }
@@ -1405,7 +1405,7 @@ rule <semantic_instruction>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  S W I T C H    I N S T R U C T I O N                                     *
+#  S W I T C H    I N S T R U C T I O N                                                                                *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -1475,7 +1475,7 @@ rule <semantic_instruction>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  A C T U A L    I N P U T    P A R A M E T E R    L I S T                 *
+#  A C T U A L    I N P U T    P A R A M E T E R    L I S T                                                            *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -1499,7 +1499,7 @@ rule <actual_input_parameter>
     or
       $type_name$ ?actualParameterTypeName
     end
-    $identifier$ ?var @lstring actualParameterName
+    $identifier$ ?let actualParameterName
     outActualInputParameter = @inputParameterDeclaredVariable. new { !actualParameterTypeName !actualParameterName}
   or
     $?$ ?outSelector
@@ -1510,11 +1510,11 @@ rule <actual_input_parameter>
     or
       $type_name$ ?actualParameterTypeName
     end
-    $identifier$ ?var @lstring actualParameterName
+    $identifier$ ?let actualParameterName
     outActualInputParameter = @inputParameterDeclaredConstant. new { !actualParameterTypeName !actualParameterName}
   or
     $?$ ?outSelector
-    $identifier$ ?var @lstring actualParameterName
+    $identifier$ ?let actualParameterName
     outActualInputParameter = @inputParameterVariable. new { !actualParameterName}
   end
 }  
@@ -1533,7 +1533,7 @@ rule <actual_input_parameter_list>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  T Y P E    M E T H O D    C A L L    I N S T R U C T I O N               *
+#  T Y P E    M E T H O D    C A L L    I N S T R U C T I O N                                                          *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -1558,7 +1558,7 @@ rule <semantic_instruction>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    M A T C H    I N S T R U C T I O N                                     *
+#    M A T C H    I N S T R U C T I O N                                                                                *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -1567,17 +1567,17 @@ rule <semantic_instruction>
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <match_entry> ?!@matchEntryListAST ioMatchEntryList {
-  $identifier$ ?var  @lstring enumerationConstantName
+  $identifier$ ?let enumerationConstantName
   ioMatchEntryList +=
     !false
     !enumerationConstantName
-    !@lstring. new { !"" !@location.here}
+    !@lstring.new {!"" !@location.here}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <match_entry> ?!@matchEntryListAST ioMatchEntryList {
-  $type_name$ ?var @lstring className
+  $type_name$ ?let className
   @lstring localConstant
   select
     localConstant = @lstring. new { !"" !@location.here}
@@ -1594,13 +1594,13 @@ rule <match_entry> ?!@matchEntryListAST ioMatchEntryList {
 
 rule <match_instruction_branch> ?!@matchInstructionBranchListAST ioMatchInstructionBranchList {
   $case$
-  var mMatchEntryList =@matchEntryListAST.emptyList{}
+  var mMatchEntryList = @matchEntryListAST.emptyList
   repeat
     <match_entry> !? mMatchEntryList
   while
     $,$
   end
-  let @location endOfMatchEntryList = @location.here
+  let endOfMatchEntryList = @location.here
   $:$
   @semanticInstructionListAST mMatchBranchInstructionList
   <semantic_instruction_list> ? mMatchBranchInstructionList
@@ -1649,7 +1649,7 @@ rule <semantic_instruction>
       error terminator : "the terminator attribute should be '%match'"
     end
   end
-  outInstruction = @matchInstructionAST. new {
+  outInstruction = @matchInstructionAST.new {
     !instructionLocation
     !matchedExpressionNameList
     !matchInstructionBranchList

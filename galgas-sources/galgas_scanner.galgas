@@ -1,8 +1,8 @@
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  GALGAS scanner definition                                                *
+#  GALGAS scanner definition                                                                                           *
 #                                                                                                                      *
-#  Copyright (C) 1997, ..., 2009 Pierre Molinaro.                           *
+#  Copyright (C) 1997, ..., 2009 Pierre Molinaro.                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
 #  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
@@ -93,7 +93,7 @@ style integerStyle -> "Integer Constants"
 style float_csts -> "Floating Point Constants" 
 style characterStyle -> "Character Constants"
 style stringStyle -> "String Constants"
-style typeNameStyle -> "Type Names (@...)"
+style typeNameStyle -> "Type Declaration (@...)"
 style commentStyle -> "Comments"
 
 # -------------------------- identifier or key word --------------------
@@ -316,35 +316,44 @@ rule '.' {
   end
 }
 
-
-# -------------------------- Type Name -----------------------------
+#----------------------------------------------------------------------------------------------------------------------*
+# Type Reference, type declaration                                                                                     *
+#----------------------------------------------------------------------------------------------------------------------*
 
 $type_name$ ! tokenString  style typeNameStyle error message "a type name (@...)"
 
-message incorrectTypeNameError : "in a type name, a letter, a digit or the underscore character should follow the '@' character"
+message incorrectTypeNameError : "in a type name, a letter should follow the '@' character"
 
 rule '@' {
   select
   case 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
     repeat
-      enterCharacterIntoString ( !?tokenString !* )
+      enterCharacterIntoString (!?tokenString !*)
     while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
     end
     select
     case '-' :
       repeat
-        enterCharacterIntoString ( !?tokenString !* )
+        enterCharacterIntoString (!?tokenString !*)
       while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
-    end
+      end
     default
     end
+#    select
+#    case '?' :
+#      enterCharacterIntoString (!?tokenString !*)
+#    default
+#    end
   default
     error incorrectTypeNameError
   end
   send $type_name$ 
 }
 
-#--------------------------------- Character constant ------------------------------------
+#----------------------------------------------------------------------------------------------------------------------*
+# Character constant                                                                                                   *
+#----------------------------------------------------------------------------------------------------------------------*
+
 $literal_char$ ! charValue  style characterStyle error message "a character constant"
 
 message incorrectCharConstant : "incorrect literal character"

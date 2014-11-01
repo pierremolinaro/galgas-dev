@@ -387,7 +387,8 @@ rule <semantic_instruction>
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <semantic_instruction>
-  !@semanticInstructionAST outInstruction {
+  !@semanticInstructionAST outInstruction
+{
   $type_name$ ?var @lstring typeName :> ?@string sep ?@string tp
   send sep+ "var"
   $identifier$ ?var @lstring variableName
@@ -411,7 +412,7 @@ rule <semantic_instruction>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  L O C A L    C O N S T A N T    D E C L A R A T I O N                    *
+#  L O C A L    C O N S T A N T    D E C L A R A T I O N                                                               *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
