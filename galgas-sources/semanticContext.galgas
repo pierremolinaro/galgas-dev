@@ -42,6 +42,20 @@ func %once syntaxDirectedTranslationResultVarName ->@string outName {
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
+
+#abstract method @semanticInstructionAST enterInSemanticContext ?!@unifiedTypeMap ioTypeMap
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+#method @semanticInstructionListAST enterInSemanticContext 
+#  ?!@unifiedTypeMap ioTypeMap
+#{
+#  for () in self do
+#    [mInstruction enterInSemanticContext !?ioTypeMap]
+#  end
+#}
+
+#----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
 #  G R A M M A R   M A P                                                                                               *
 #                                                                                                                      *
@@ -2764,22 +2778,21 @@ override method @classDeclarationAST enterInSemanticContext
     !@unifiedTypeMap-proxy. null # Type for enumerated element for "for" instruction
     !defaultConstructorName # Default constructor
     !"class-" + mClassTypeName
-    !@headerKind. twoHeaders
+    !@headerKind.twoHeaders
   ]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-override method @externRoutineDeclarationAST enterInSemanticContext # Handles also routine declaration
+override method @externRoutineDeclarationAST enterInSemanticContext
   ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
   ?let @categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
   ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext {
 #--- Build signature
   var routineSignature =@formalParameterSignature.emptyList{}
-  for () in  mFormalArgumentList do
-    @unifiedTypeMap-proxy parameterTypeIndex
-    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?parameterTypeIndex]
+  for () in mFormalArgumentList do
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let parameterTypeIndex]
     routineSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
   end
 #--- Enter routine in routine map
@@ -2789,6 +2802,29 @@ override method @externRoutineDeclarationAST enterInSemanticContext # Handles al
     !mIsInternal
   ]
 }
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+#override method @routineDeclarationAST enterInSemanticContext
+#  ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
+#  ?let @categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+#  ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
+#  ?!@semanticContext ioSemanticContext {
+##--- Build signature
+#  var routineSignature =@formalParameterSignature.emptyList{}
+#  for () in mFormalArgumentList do
+#    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let parameterTypeIndex]
+#    routineSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
+#  end
+##--- Enter types for instruction list
+#  [mRoutineInstructionList enterInSemanticContext !?ioSemanticContext.mTypeMap]
+##--- Enter routine in routine map
+#  [!?ioSemanticContext.mRoutineMap insertKey
+#    !mRoutineName
+#    !routineSignature
+#    !mIsInternal
+#  ]
+#}
 
 #----------------------------------------------------------------------------------------------------------------------*
 
