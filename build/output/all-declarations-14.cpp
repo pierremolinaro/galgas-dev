@@ -12067,7 +12067,7 @@ void routine_updateGalgas_33_Targets (const GALGAS_string constinArgument_inProj
 
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_Xcode_5F_PBXBuildFile::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -12243,7 +12243,7 @@ GALGAS_Xcode_5F_PBXBuildFile GALGAS_Xcode_5F_PBXBuildFile::extractObject (const 
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_Xcode_5F_PBXCopyBuildPhase::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -12508,7 +12508,7 @@ GALGAS_Xcode_5F_PBXCopyBuildPhase GALGAS_Xcode_5F_PBXCopyBuildPhase::extractObje
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 
@@ -12635,7 +12635,7 @@ GALGAS_Xcode_5F_PBXFileReference_5F_abstract GALGAS_Xcode_5F_PBXFileReference_5F
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_Xcode_5F_PBXFileReference_5F_cppSourceFile::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -12781,7 +12781,7 @@ GALGAS_Xcode_5F_PBXFileReference_5F_cppSourceFile GALGAS_Xcode_5F_PBXFileReferen
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_Xcode_5F_PBXFileReference_5F_frameworkFile::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -12927,7 +12927,7 @@ GALGAS_Xcode_5F_PBXFileReference_5F_frameworkFile GALGAS_Xcode_5F_PBXFileReferen
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_Xcode_5F_PBXFileReference_5F_gifFile::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -13073,7 +13073,7 @@ GALGAS_Xcode_5F_PBXFileReference_5F_gifFile GALGAS_Xcode_5F_PBXFileReference_5F_
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_Xcode_5F_PBXFileReference_5F_hSourceFile::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -13219,7 +13219,7 @@ GALGAS_Xcode_5F_PBXFileReference_5F_hSourceFile GALGAS_Xcode_5F_PBXFileReference
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_Xcode_5F_PBXFileReference_5F_icnsFile::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -13365,7 +13365,7 @@ GALGAS_Xcode_5F_PBXFileReference_5F_icnsFile GALGAS_Xcode_5F_PBXFileReference_5F
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_Xcode_5F_PBXFileReference_5F_mSourceFile::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -13511,7 +13511,7 @@ GALGAS_Xcode_5F_PBXFileReference_5F_mSourceFile GALGAS_Xcode_5F_PBXFileReference
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_Xcode_5F_PBXFileReference_5F_mmSourceFile::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -13657,7 +13657,7 @@ GALGAS_Xcode_5F_PBXFileReference_5F_mmSourceFile GALGAS_Xcode_5F_PBXFileReferenc
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_Xcode_5F_PBXFileReference_5F_pchSourceFile::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -13803,7 +13803,7 @@ GALGAS_Xcode_5F_PBXFileReference_5F_pchSourceFile GALGAS_Xcode_5F_PBXFileReferen
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_Xcode_5F_PBXFileReference_5F_plistFile::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -13949,7 +13949,7 @@ GALGAS_Xcode_5F_PBXFileReference_5F_plistFile GALGAS_Xcode_5F_PBXFileReference_5
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_Xcode_5F_PBXFileReference_5F_plistStringFile::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -14122,7 +14122,7 @@ GALGAS_Xcode_5F_PBXFileReference_5F_plistStringFile GALGAS_Xcode_5F_PBXFileRefer
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_Xcode_5F_PBXFileReference_5F_pngFile::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -14268,7 +14268,7 @@ GALGAS_Xcode_5F_PBXFileReference_5F_pngFile GALGAS_Xcode_5F_PBXFileReference_5F_
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_Xcode_5F_PBXFileReference_5F_tiffFile::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -14414,7 +14414,7 @@ GALGAS_Xcode_5F_PBXFileReference_5F_tiffFile GALGAS_Xcode_5F_PBXFileReference_5F
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_Xcode_5F_PBXFileReference_5F_xibFile::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -14587,7 +14587,7 @@ GALGAS_Xcode_5F_PBXFileReference_5F_xibFile GALGAS_Xcode_5F_PBXFileReference_5F_
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 
@@ -14676,7 +14676,7 @@ GALGAS_Xcode_5F_productFileReference GALGAS_Xcode_5F_productFileReference::extra
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_Xcode_5F_PBXFileReference_5F_Application::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -14822,7 +14822,7 @@ GALGAS_Xcode_5F_PBXFileReference_5F_Application GALGAS_Xcode_5F_PBXFileReference
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_Xcode_5F_PBXFileReference_5F_CompiledMachOExecutable::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -14968,7 +14968,7 @@ GALGAS_Xcode_5F_PBXFileReference_5F_CompiledMachOExecutable GALGAS_Xcode_5F_PBXF
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_Xcode_5F_PBXFrameworksBuildPhase::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -15179,7 +15179,7 @@ GALGAS_Xcode_5F_PBXFrameworksBuildPhase GALGAS_Xcode_5F_PBXFrameworksBuildPhase:
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_Xcode_5F_PBXGroup::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -15417,7 +15417,7 @@ GALGAS_Xcode_5F_PBXGroup GALGAS_Xcode_5F_PBXGroup::extractObject (const GALGAS_o
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_Xcode_5F_PBXResourcesBuildPhase::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -15628,7 +15628,7 @@ GALGAS_Xcode_5F_PBXResourcesBuildPhase GALGAS_Xcode_5F_PBXResourcesBuildPhase::e
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_Xcode_5F_PBXSourcesBuildPhase::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -15839,7 +15839,7 @@ GALGAS_Xcode_5F_PBXSourcesBuildPhase GALGAS_Xcode_5F_PBXSourcesBuildPhase::extra
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_Xcode_5F_XCBuildConfiguration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -16050,7 +16050,7 @@ GALGAS_Xcode_5F_XCBuildConfiguration GALGAS_Xcode_5F_XCBuildConfiguration::extra
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_Xcode_5F_targetDependencyDescription::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -16234,7 +16234,7 @@ GALGAS_Xcode_5F_targetDependencyDescription GALGAS_Xcode_5F_targetDependencyDesc
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 
@@ -16321,7 +16321,7 @@ GALGAS_abstractCollectionValueElement GALGAS_abstractCollectionValueElement::ext
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_expressionCollectionValue::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -16497,7 +16497,7 @@ GALGAS_expressionCollectionValue GALGAS_expressionCollectionValue::extractObject
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_expressionListCollectionValue::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -16681,7 +16681,7 @@ GALGAS_expressionListCollectionValue GALGAS_expressionListCollectionValue::extra
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 

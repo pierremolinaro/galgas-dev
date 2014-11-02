@@ -9,7 +9,7 @@
 
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_orShortExpressionAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -211,7 +211,7 @@ GALGAS_orShortExpressionAST GALGAS_orShortExpressionAST::extractObject (const GA
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_readerCallExpressionAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -413,7 +413,7 @@ GALGAS_readerCallExpressionAST GALGAS_readerCallExpressionAST::extractObject (co
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_rightShiftExpressionAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -615,7 +615,7 @@ GALGAS_rightShiftExpressionAST GALGAS_rightShiftExpressionAST::extractObject (co
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_selfCopyInExpressionAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -772,7 +772,7 @@ GALGAS_selfCopyInExpressionAST GALGAS_selfCopyInExpressionAST::extractObject (co
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_strictGreaterExpressionAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -974,7 +974,7 @@ GALGAS_strictGreaterExpressionAST GALGAS_strictGreaterExpressionAST::extractObje
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_strictLowerExpressionAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -1176,7 +1176,7 @@ GALGAS_strictLowerExpressionAST GALGAS_strictLowerExpressionAST::extractObject (
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_structFieldAccessExpressionAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -1378,7 +1378,7 @@ GALGAS_structFieldAccessExpressionAST GALGAS_structFieldAccessExpressionAST::ext
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_subExpressionAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -1580,7 +1580,7 @@ GALGAS_subExpressionAST GALGAS_subExpressionAST::extractObject (const GALGAS_obj
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_testDynamicClassInExpressionAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -1808,7 +1808,7 @@ GALGAS_testDynamicClassInExpressionAST GALGAS_testDynamicClassInExpressionAST::e
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_trueExpressionAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -1965,7 +1965,7 @@ GALGAS_trueExpressionAST GALGAS_trueExpressionAST::extractObject (const GALGAS_o
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_unaryMinusExpressionAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -2141,7 +2141,7 @@ GALGAS_unaryMinusExpressionAST GALGAS_unaryMinusExpressionAST::extractObject (co
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_varInExpressionAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -2298,7 +2298,7 @@ GALGAS_varInExpressionAST GALGAS_varInExpressionAST::extractObject (const GALGAS
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_xorExpressionAST::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -2500,7 +2500,7 @@ GALGAS_xorExpressionAST GALGAS_xorExpressionAST::extractObject (const GALGAS_obj
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 
@@ -2627,7 +2627,7 @@ GALGAS_semanticExpressionForGeneration GALGAS_semanticExpressionForGeneration::e
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_addExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -2817,7 +2817,7 @@ GALGAS_addExpressionForGeneration GALGAS_addExpressionForGeneration::extractObje
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_andExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -3007,7 +3007,7 @@ GALGAS_andExpressionForGeneration GALGAS_andExpressionForGeneration::extractObje
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_andShortExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -3197,7 +3197,7 @@ GALGAS_andShortExpressionForGeneration GALGAS_andShortExpressionForGeneration::e
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_castInExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -3387,7 +3387,7 @@ GALGAS_castInExpressionForGeneration GALGAS_castInExpressionForGeneration::extra
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_concatExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -3577,7 +3577,7 @@ GALGAS_concatExpressionForGeneration GALGAS_concatExpressionForGeneration::extra
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_constructorExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -3831,7 +3831,7 @@ GALGAS_constructorExpressionForGeneration GALGAS_constructorExpressionForGenerat
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_defaultConstructorExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -3977,7 +3977,7 @@ GALGAS_defaultConstructorExpressionForGeneration GALGAS_defaultConstructorExpres
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_divisionExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -4167,7 +4167,7 @@ GALGAS_divisionExpressionForGeneration GALGAS_divisionExpressionForGeneration::e
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_equalExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -4357,7 +4357,7 @@ GALGAS_equalExpressionForGeneration GALGAS_equalExpressionForGeneration::extract
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_expressionCollectionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -4530,7 +4530,7 @@ GALGAS_expressionCollectionForGeneration GALGAS_expressionCollectionForGeneratio
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_extractObjectInExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -4720,7 +4720,7 @@ GALGAS_extractObjectInExpressionForGeneration GALGAS_extractObjectInExpressionFo
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_falseExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -4866,7 +4866,7 @@ GALGAS_falseExpressionForGeneration GALGAS_falseExpressionForGeneration::extract
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_filewrapperInExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -5066,7 +5066,7 @@ GALGAS_filewrapperInExpressionForGeneration GALGAS_filewrapperInExpressionForGen
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_filewrapperStaticPathInExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -5293,7 +5293,7 @@ GALGAS_filewrapperStaticPathInExpressionForGeneration GALGAS_filewrapperStaticPa
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_filewrapperTemplateInExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -5520,7 +5520,7 @@ GALGAS_filewrapperTemplateInExpressionForGeneration GALGAS_filewrapperTemplateIn
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_functionCallExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -5720,7 +5720,7 @@ GALGAS_functionCallExpressionForGeneration GALGAS_functionCallExpressionForGener
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_greaterOrEqualExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -5910,7 +5910,7 @@ GALGAS_greaterOrEqualExpressionForGeneration GALGAS_greaterOrEqualExpressionForG
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_hereExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -6056,7 +6056,7 @@ GALGAS_hereExpressionForGeneration GALGAS_hereExpressionForGeneration::extractOb
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_ifExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -6272,7 +6272,7 @@ GALGAS_ifExpressionForGeneration GALGAS_ifExpressionForGeneration::extractObject
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_leftShiftExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -6462,7 +6462,7 @@ GALGAS_leftShiftExpressionForGeneration GALGAS_leftShiftExpressionForGeneration:
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_lexiqueIntrospectionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -6662,7 +6662,7 @@ GALGAS_lexiqueIntrospectionForGeneration GALGAS_lexiqueIntrospectionForGeneratio
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_literalCharExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -6835,7 +6835,7 @@ GALGAS_literalCharExpressionForGeneration GALGAS_literalCharExpressionForGenerat
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_literalDoubleExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -7008,7 +7008,7 @@ GALGAS_literalDoubleExpressionForGeneration GALGAS_literalDoubleExpressionForGen
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_literalSInt_36__34_ExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -7181,7 +7181,7 @@ GALGAS_literalSInt_36__34_ExpressionForGeneration GALGAS_literalSInt_36__34_Expr
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_literalSIntExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -7354,7 +7354,7 @@ GALGAS_literalSIntExpressionForGeneration GALGAS_literalSIntExpressionForGenerat
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_literalStringExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -7527,7 +7527,7 @@ GALGAS_literalStringExpressionForGeneration GALGAS_literalStringExpressionForGen
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_literalTypeInExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -7700,7 +7700,7 @@ GALGAS_literalTypeInExpressionForGeneration GALGAS_literalTypeInExpressionForGen
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_literalUInt_36__34_ExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -7873,7 +7873,7 @@ GALGAS_literalUInt_36__34_ExpressionForGeneration GALGAS_literalUInt_36__34_Expr
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_literalUIntExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -8046,7 +8046,7 @@ GALGAS_literalUIntExpressionForGeneration GALGAS_literalUIntExpressionForGenerat
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_lowerOrEqualExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -8236,7 +8236,7 @@ GALGAS_lowerOrEqualExpressionForGeneration GALGAS_lowerOrEqualExpressionForGener
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_moduloExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -8426,7 +8426,7 @@ GALGAS_moduloExpressionForGeneration GALGAS_moduloExpressionForGeneration::extra
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_multiplicationExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -8616,7 +8616,7 @@ GALGAS_multiplicationExpressionForGeneration GALGAS_multiplicationExpressionForG
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_notEqualExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -8806,7 +8806,7 @@ GALGAS_notEqualExpressionForGeneration GALGAS_notEqualExpressionForGeneration::e
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_notExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -8970,7 +8970,7 @@ GALGAS_notExpressionForGeneration GALGAS_notExpressionForGeneration::extractObje
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_optionCharExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -9197,7 +9197,7 @@ GALGAS_optionCharExpressionForGeneration GALGAS_optionCharExpressionForGeneratio
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_optionCommentExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -9424,7 +9424,7 @@ GALGAS_optionCommentExpressionForGeneration GALGAS_optionCommentExpressionForGen
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_optionStringExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -9651,7 +9651,7 @@ GALGAS_optionStringExpressionForGeneration GALGAS_optionStringExpressionForGener
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_optionValueExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -9878,7 +9878,7 @@ GALGAS_optionValueExpressionForGeneration GALGAS_optionValueExpressionForGenerat
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_orExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -10068,7 +10068,7 @@ GALGAS_orExpressionForGeneration GALGAS_orExpressionForGeneration::extractObject
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_orShortExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -10258,7 +10258,7 @@ GALGAS_orShortExpressionForGeneration GALGAS_orShortExpressionForGeneration::ext
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_readerCallExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -10552,7 +10552,7 @@ GALGAS_readerCallExpressionForGeneration GALGAS_readerCallExpressionForGeneratio
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_rightShiftExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -10742,7 +10742,7 @@ GALGAS_rightShiftExpressionForGeneration GALGAS_rightShiftExpressionForGeneratio
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_selfCopyInExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -10915,7 +10915,7 @@ GALGAS_selfCopyInExpressionForGeneration GALGAS_selfCopyInExpressionForGeneratio
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_strictGreaterExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -11105,7 +11105,7 @@ GALGAS_strictGreaterExpressionForGeneration GALGAS_strictGreaterExpressionForGen
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_strictLowerExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -11295,7 +11295,7 @@ GALGAS_strictLowerExpressionForGeneration GALGAS_strictLowerExpressionForGenerat
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_structFieldAccessExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -11485,7 +11485,7 @@ GALGAS_structFieldAccessExpressionForGeneration GALGAS_structFieldAccessExpressi
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_subExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -11675,7 +11675,7 @@ GALGAS_subExpressionForGeneration GALGAS_subExpressionForGeneration::extractObje
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_testDynamicClassInExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -11891,7 +11891,7 @@ GALGAS_testDynamicClassInExpressionForGeneration GALGAS_testDynamicClassInExpres
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_tildeExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -12055,7 +12055,7 @@ GALGAS_tildeExpressionForGeneration GALGAS_tildeExpressionForGeneration::extract
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_trueExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -12201,7 +12201,7 @@ GALGAS_trueExpressionForGeneration GALGAS_trueExpressionForGeneration::extractOb
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_unaryMinusExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -12365,7 +12365,7 @@ GALGAS_unaryMinusExpressionForGeneration GALGAS_unaryMinusExpressionForGeneratio
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_varInExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -12565,7 +12565,7 @@ GALGAS_varInExpressionForGeneration GALGAS_varInExpressionForGeneration::extract
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_xorExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -12755,7 +12755,7 @@ GALGAS_xorExpressionForGeneration GALGAS_xorExpressionForGeneration::extractObje
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 
@@ -12842,7 +12842,7 @@ GALGAS_semanticInstructionForGeneration GALGAS_semanticInstructionForGeneration:
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_assignmentInstructionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -13096,7 +13096,7 @@ GALGAS_assignmentInstructionForGeneration GALGAS_assignmentInstructionForGenerat
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_concatInstructionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -13376,7 +13376,7 @@ GALGAS_concatInstructionForGeneration GALGAS_concatInstructionForGeneration::ext
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_decrementInstructionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -13614,7 +13614,7 @@ GALGAS_decrementInstructionForGeneration GALGAS_decrementInstructionForGeneratio
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_dropInstructionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -13825,7 +13825,7 @@ GALGAS_dropInstructionForGeneration GALGAS_dropInstructionForGeneration::extract
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_errorInstructionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -14079,7 +14079,7 @@ GALGAS_errorInstructionForGeneration GALGAS_errorInstructionForGeneration::extra
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_foreachInstructionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -14411,7 +14411,7 @@ GALGAS_foreachInstructionForGeneration GALGAS_foreachInstructionForGeneration::e
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_grammarInstructionWithSourceExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -14743,7 +14743,7 @@ GALGAS_grammarInstructionWithSourceExpressionForGeneration GALGAS_grammarInstruc
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_grammarInstructionWithSourceFileForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -15075,7 +15075,7 @@ GALGAS_grammarInstructionWithSourceFileForGeneration GALGAS_grammarInstructionWi
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_ifInstructionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -15303,7 +15303,7 @@ GALGAS_ifInstructionForGeneration GALGAS_ifInstructionForGeneration::extractObje
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_incrementInstructionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -15541,7 +15541,7 @@ GALGAS_incrementInstructionForGeneration GALGAS_incrementInstructionForGeneratio
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_localVariableDeclarationForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -15725,7 +15725,7 @@ GALGAS_localVariableDeclarationForGeneration GALGAS_localVariableDeclarationForG
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_localVariableOrConstantDeclarationWithConstructorCallForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -16044,7 +16044,7 @@ GALGAS_localVariableOrConstantDeclarationWithConstructorCallForGeneration GALGAS
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_localVariableOrConstantDeclarationWithDefaultConstructorForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -16282,7 +16282,7 @@ GALGAS_localVariableOrConstantDeclarationWithDefaultConstructorForGeneration GAL
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -16510,7 +16510,7 @@ GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration GALGA
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_logInstructionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -16686,7 +16686,7 @@ GALGAS_logInstructionForGeneration GALGAS_logInstructionForGeneration::extractOb
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_loopInstructionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -16940,7 +16940,7 @@ GALGAS_loopInstructionForGeneration GALGAS_loopInstructionForGeneration::extract
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_matchInstructionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -17151,7 +17151,7 @@ GALGAS_matchInstructionForGeneration GALGAS_matchInstructionForGeneration::extra
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_messageInstructionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -17327,7 +17327,7 @@ GALGAS_messageInstructionForGeneration GALGAS_messageInstructionForGeneration::e
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_methodCallInstructionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -17659,7 +17659,7 @@ GALGAS_methodCallInstructionForGeneration GALGAS_methodCallInstructionForGenerat
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_modifierCallInstructionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -18017,7 +18017,7 @@ GALGAS_modifierCallInstructionForGeneration GALGAS_modifierCallInstructionForGen
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_plusEqualnstructionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
@@ -18309,7 +18309,7 @@ GALGAS_plusEqualnstructionForGeneration GALGAS_plusEqualnstructionForGeneration:
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
-//   Object comparison                                                         *
+//   Object comparison                                                                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
 typeComparisonResult cPtr_readOnlyWithInstructionForGeneration::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {

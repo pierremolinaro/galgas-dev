@@ -80,11 +80,11 @@ private proc analyzeSemanticInstructionList
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-#override method @localVariableOrConstantDeclarationWithDefaultConstructorAST enterInSemanticContext
-#  ?!@unifiedTypeMap ioTypeMap
-#{
-#  [@unifiedTypeMap-proxy makeProxy !?ioTypeMap !mTypeName ?*]
-#}
+override method @localVariableOrConstantDeclarationWithDefaultConstructorAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [@unifiedTypeMap-proxy makeProxy !?ioTypeMap !mTypeName ?*]
+}
 
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -119,13 +119,14 @@ override method @localVariableOrConstantDeclarationWithDefaultConstructorAST ana
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-#override method @localVariableOrConstantDeclarationWithConstructorCallAST enterInSemanticContext
-#  ?!@unifiedTypeMap ioTypeMap
-#{
-#  if mTypeName.string != "" then
-#    [@unifiedTypeMap-proxy makeProxy !?ioTypeMap !mTypeName ?*]
-#  end
-#}
+override method @localVariableOrConstantDeclarationWithConstructorCallAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  if mTypeName.string != "" then
+    [@unifiedTypeMap-proxy makeProxy !?ioTypeMap !mTypeName ?*]
+  end
+  [mConstructorExpressions enterInSemanticContext !?ioTypeMap]
+}
 
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -172,6 +173,14 @@ override method @localVariableOrConstantDeclarationWithConstructorCallAST analyz
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @localVariableDeclarationWithAssignmentAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @localVariableDeclarationWithAssignmentAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
@@ -184,21 +193,26 @@ override method @localVariableDeclarationWithAssignmentAST analyzeSemanticInstru
     ?var @semanticExpressionForGeneration expression
   ]
 #--- Check target variable
-#  const targetType := [@unifiedTypeMap-proxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
   let targetVariableCppName = "var_" + [mVariableName identifierRepresentation]
-#  if mIsConstant then
-#    [!?ioVariableMap insertLocalConstant !mVariableName !targetType !targetVariableCppName !targetVariableCppName] ;
-#  else
-    [!?ioVariableMap insertDefinedLocalVariable !mVariableName ![expression mResultType] !targetVariableCppName !targetVariableCppName]
-#  end if ;
-#--- Check assignment type compatibility
-#  checkAssignmentTypes !targetType ![expression mResultType] !mInstructionLocation ;
+  [!?ioVariableMap insertDefinedLocalVariable !mVariableName ![expression mResultType] !targetVariableCppName !targetVariableCppName]
 #--- Generate instruction
-  ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration. new {
+  ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration.new {
     ![expression mResultType]
     !false
     !targetVariableCppName
-    !expression}
+    !expression
+  }
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @localVariableOrConstantDeclarationWithAssignmentAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  if mTypeName.string != "" then
+    [@unifiedTypeMap-proxy makeProxy !?ioTypeMap !mTypeName ?*]
+  end
+  [mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -207,7 +221,7 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap {
-  let targetType = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
+  let targetType = @unifiedTypeMap-proxy.searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
 #--- Analyze source expression
   [mSourceExpression analyzeSemanticExpression
     !targetType
@@ -230,6 +244,14 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
     !mIsConstant
     !targetVariableCppName
     !expression}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @localConstantDeclarationWithAssignmentAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -258,12 +280,20 @@ override method @localConstantDeclarationWithAssignmentAST analyzeSemanticInstru
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @localVariableDeclarationAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [@unifiedTypeMap-proxy makeProxy !?ioTypeMap !mTypeName ?*]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @localVariableDeclarationAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap {
 #--- Check target variable
-  let targetType = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
+  let targetType = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
   let targetVariableCppName = "var_" + [mVariableName identifierRepresentation]
   if mIsUndefinedConstant then
     [!?ioVariableMap insertUndefinedLocalConstant !mVariableName !targetType !targetVariableCppName !targetVariableCppName]
@@ -271,9 +301,17 @@ override method @localVariableDeclarationAST analyzeSemanticInstruction
     [!?ioVariableMap insertUndefinedLocalVariable !mVariableName !targetType !targetVariableCppName !targetVariableCppName]
   end
 #--- Generate instruction
-  ioInstructionListForGeneration += !@localVariableDeclarationForGeneration. new {
+  ioInstructionListForGeneration += !@localVariableDeclarationForGeneration.new {
     !targetType
     !targetVariableCppName}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @assignmentInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -318,6 +356,14 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
     !nameForCheckingFormalParameterUsing
     !mStructAttributeList
     !expression}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @selfAssignmentInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -406,14 +452,20 @@ private proc analyzeErrorOrWarningInstruction
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @errorInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mLocationExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mMessageExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @errorInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap {
 #---
-  @semanticExpressionForGeneration locationExpression
-  @semanticExpressionForGeneration messageExpression
-  @bool useLocationReader
   analyzeErrorOrWarningInstruction (
     !inAnalysisContext
     !mLocationExpression
@@ -421,9 +473,9 @@ override method @errorInstructionAST analyzeSemanticInstruction
     !mInstructionLocation
     !"error"
     !?ioVariableMap
-    ?locationExpression
-    ?messageExpression
-    ?useLocationReader
+    ?let locationExpression
+    ?let messageExpression
+    ?let useLocationReader
   )
 #--- Handle dropped variables
   var builtVariableCppNameList =@stringlist.emptyList{}
@@ -443,14 +495,20 @@ override method @errorInstructionAST analyzeSemanticInstruction
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @warningInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mLocationExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mMessageExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @warningInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap {
 #---
-  @semanticExpressionForGeneration locationExpression
-  @semanticExpressionForGeneration messageExpression
-  @bool useLocationReader
   analyzeErrorOrWarningInstruction (
     !inAnalysisContext
     !mLocationExpression
@@ -458,9 +516,9 @@ override method @warningInstructionAST analyzeSemanticInstruction
     !mInstructionLocation
     !"warning"
     !?ioVariableMap
-    ?locationExpression
-    ?messageExpression
-    ?useLocationReader
+    ?let locationExpression
+    ?let messageExpression
+    ?let useLocationReader
   )
 #--- Generate instruction
   ioInstructionListForGeneration += !@warningInstructionForGeneration. new {
@@ -853,6 +911,56 @@ override method @inputJokerActualParameterAST checkAgainstFormalArgument
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+abstract method @actualParameterAST enterParameterInSemanticContext ?!@unifiedTypeMap ioTypeMap
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @inputActualExistingVariableParameterAST enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @inputActualNewConstantParameterAST enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @inputActualNewVariableParameterAST enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @inputJokerActualParameterAST enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @inputSingleJokerActualParameterAST enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @outputActualParameterAST enterParameterInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  [mOutputActualParameterExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @outputInputActualParameterAST enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @outputInputJokerParameterAST enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @outputInputSingleJokerParameterAST enterParameterInSemanticContext ?!@unifiedTypeMap unused ioTypeMap {
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 proc analyzeRoutineArguments
   ?let @analysisContext inAnalysisContext
   ?let @lstring inRoutineName
@@ -888,6 +996,16 @@ proc analyzeRoutineArguments
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @routineCallInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  for () in mActualParameterList do
+    [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @routineCallInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
@@ -916,16 +1034,20 @@ override method @routineCallInstructionAST analyzeSemanticInstruction
     !?ioInstructionListForGeneration
     ?let @actualParameterListForGeneration actualParameterListForGeneration
   )
-#--- Generate instructions
-#  for () in localVariableDeclarationList do
-#    ioInstructionListForGeneration += ![@localVariableDeclarationForGeneration new
-#      !mType
-#      !mLocalVariableName
-#    ] ;
-#  end for ;
+#--- Generate instruction
   ioInstructionListForGeneration += !@routineCallInstructionForGeneration. new {
     !mRoutineName
     !actualParameterListForGeneration}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @typeMethodCallInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  for () in mActualParameterList do
+    [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
+  end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -957,6 +1079,17 @@ override method @typeMethodCallInstructionAST analyzeSemanticInstruction
     !mMethodName
     !actualParameterListForGeneration
     !hasCompilerArgument}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @methodCallInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mReceiverExpression enterExpressionInSemanticContext !?ioTypeMap]
+  for () in mActualParameterList do
+    [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
+  end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1043,6 +1176,17 @@ func checkMethodImplementationInSuperClasses
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @modifierCallInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+#  [mReceiverExpression enterExpressionInSemanticContext !?ioTypeMap]
+  for () in mActualParameterList do
+    [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @modifierCallInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
@@ -1114,6 +1258,17 @@ override method @modifierCallInstructionAST analyzeSemanticInstruction
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @selfModifierCallInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+#  [mReceiverExpression enterExpressionInSemanticContext !?ioTypeMap]
+  for () in mActualParameterList do
+    [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @selfModifierCallInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
@@ -1177,6 +1332,14 @@ func checkModifierImplementationInSuperClasses
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @concatInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @concatInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
@@ -1224,6 +1387,14 @@ override method @concatInstructionAST analyzeSemanticInstruction
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @selfConcatInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @selfConcatInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
@@ -1265,6 +1436,14 @@ override method @selfConcatInstructionAST analyzeSemanticInstruction
 #----------------------------------------------------------------------------------------------------------------------*
 
 #! += Instruction
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @plusEqualElementsInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mExpressions enterInSemanticContext !?ioTypeMap]
+}
 
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -1327,6 +1506,14 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @plusEqualExpressionInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # += exp
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
@@ -1369,6 +1556,14 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
     !nameForCheckingFormalParameterUsing
     !mStructAttributeList
     !expression}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @selfPlusEqualElementsInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mExpressions enterInSemanticContext !?ioTypeMap]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1425,6 +1620,14 @@ override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @selfPlusEqualExpressionInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
@@ -1464,6 +1667,13 @@ override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstructio
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @incrementInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @incrementInstructionAST analyzeSemanticInstruction
   ?let @analysisContext unused inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
@@ -1498,6 +1708,13 @@ override method @incrementInstructionAST analyzeSemanticInstruction
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @selfIncrementInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @selfIncrementInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
@@ -1522,6 +1739,13 @@ override method @selfIncrementInstructionAST analyzeSemanticInstruction
     !selfObjectCppName
     !selfTypeProxy
     !@lstringlist. emptyList}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @decrementInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1560,6 +1784,13 @@ override method @decrementInstructionAST analyzeSemanticInstruction
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @selfDecrementInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @selfDecrementInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
@@ -1584,6 +1815,14 @@ override method @selfDecrementInstructionAST analyzeSemanticInstruction
     !selfObjectCppName
     !selfTypeProxy
     !@lstringlist. emptyList}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @messageInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1613,6 +1852,16 @@ override method @messageInstructionAST analyzeSemanticInstruction
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @logInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  for () in  mLogList do
+  [mLogExpression enterExpressionInSemanticContext !?ioTypeMap]
+  end 
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @logInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
@@ -1631,6 +1880,14 @@ override method @logInstructionAST analyzeSemanticInstruction
       !mLogMessage
       !expression}  
   end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @dropInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
+#  [mLogExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1737,6 +1994,16 @@ private proc checkExpressionIsBoolean
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @ifInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [m_if_expression enterExpressionInSemanticContext !?ioTypeMap]
+  [m_then_instructionList enterInstructionListInSemanticContext !?ioTypeMap]
+  [m_else_instructionList enterInstructionListInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @ifInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
@@ -1795,6 +2062,28 @@ override method @ifInstructionAST analyzeSemanticInstruction
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+abstract method @abstractEnumeratedCollectionAST enterInSemanticContext ?!@unifiedTypeMap ioTypeMap
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @enumeratedCollectionImplicitVarInExpAST enterInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  [mEnumeratedExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @enumeratedCollectionCstListInExpAST enterInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  [mEnumeratedExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @enumeratedCollectionVarInExpAST enterInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  [mEnumeratedExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 abstract method @abstractEnumeratedCollectionAST analyzeEnumeration
   ?let @analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
@@ -1823,7 +2112,7 @@ override method @enumeratedCollectionImplicitVarInExpAST analyzeEnumeration
     error mEndOfEnumerationExpression : "an '@" + [[outEnumerationExpression mResultType] key] + "' object cannot be enumerated"
   end
 #--- Declare implicit constants
-  for () in  enumerationDescriptorList do
+  for () in enumerationDescriptorList do
     ioLocalConstantListForDoBranch +=
       !mEnumeratedType
       !@lstring. new { !mPrefix.string + mEnumerationName !mEndOfEnumerationExpression}
@@ -1926,6 +2215,21 @@ override method @enumeratedCollectionVarInExpAST analyzeEnumeration
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @forInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mWhileExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mBeforeInstructionList enterInstructionListInSemanticContext !?ioTypeMap]
+  [mBetweenInstructionList enterInstructionListInSemanticContext !?ioTypeMap]
+  [mDoInstructionList enterInstructionListInSemanticContext !?ioTypeMap]
+  [mAfterInstructionList enterInstructionListInSemanticContext !?ioTypeMap]
+  for () in mEnumeratedObjectList do
+    [mEnumeratedCollection enterInSemanticContext !?ioTypeMap]
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @forInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
@@ -1974,7 +2278,7 @@ override method @forInstructionAST analyzeSemanticInstruction
 #--- Analyze enumerated objects
   var localConstantListForDoBranch =@localInitializedVariableList.emptyList{}
   var enumerationList =@foreachInstructionEnumeratedObjectListForGeneration.emptyList{}
-  for () in  mEnumeratedObjectList do
+  for () in mEnumeratedObjectList do
     [mEnumeratedCollection analyzeEnumeration
       !inAnalysisContext
       !?ioVariableMap
@@ -2049,6 +2353,21 @@ override method @forInstructionAST analyzeSemanticInstruction
     !between_instructionList
     !do_instructionList
     !after_instructionList}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @foreachInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mWhileExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mBeforeInstructionList enterInstructionListInSemanticContext !?ioTypeMap]
+  [mBetweenInstructionList enterInstructionListInSemanticContext !?ioTypeMap]
+  [mDoInstructionList enterInstructionListInSemanticContext !?ioTypeMap]
+  [mAfterInstructionList enterInstructionListInSemanticContext !?ioTypeMap]
+  for () in mEnumeratedObjectList do
+    [mEnumeratedExpression enterExpressionInSemanticContext !?ioTypeMap]
+  end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -2235,6 +2554,17 @@ override method @foreachInstructionAST analyzeSemanticInstruction
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @loopInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mVariantExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mLoopExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mFirstInstructions enterInstructionListInSemanticContext !?ioTypeMap]
+  [mSecondInstructions enterInstructionListInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @loopInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
@@ -2298,6 +2628,18 @@ override method @loopInstructionAST analyzeSemanticInstruction
     !first_instructionList
     !loopExpression
     !second_instructionList}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @structuredCastInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mCastExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mElseInstructionList enterInstructionListInSemanticContext !?ioTypeMap]
+  for () in  mCastInstructionBranchList do
+    [mInstructionList enterInstructionListInSemanticContext !?ioTypeMap]
+  end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -2480,6 +2822,17 @@ override method @grammarInstructionSyntaxDirectedTranslationResultInDeclaredCons
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @grammarInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
+  for () in  mActualParameterList do
+    [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @grammarInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
@@ -2561,6 +2914,18 @@ override method @grammarInstructionAST analyzeSemanticInstruction
 #----------------------------------------------------------------------------------------------------------------------*
 
 #! With instruction
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @readAccessWithInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mReceiverExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mKeyExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mDoBranchInstructions enterInstructionListInSemanticContext !?ioTypeMap]
+  [mElseBranchInstructions enterInstructionListInSemanticContext !?ioTypeMap]
+}
+
 #----------------------------------------------------------------------------------------------------------------------*
 
 override method @readAccessWithInstructionAST analyzeSemanticInstruction
@@ -2644,6 +3009,16 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
     !mSearchMethodNameForErrorSignaling.string
     !do_instructionList
     !else_instructionList}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @readWriteAccessWithInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mKeyExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [m_do_Instructions enterInstructionListInSemanticContext !?ioTypeMap]
+  [m_else_Instructions enterInstructionListInSemanticContext !?ioTypeMap]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -2755,6 +3130,17 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
 #! switch instruction
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @switchInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mSwitchExpression enterExpressionInSemanticContext !?ioTypeMap]
+  for () in  mBranches do
+    [mInstructions enterInstructionListInSemanticContext !?ioTypeMap]
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @switchInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
@@ -2852,19 +3238,31 @@ override method @switchInstructionAST analyzeSemanticInstruction
 #! Match
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @matchInstructionAST enterInstructionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  for () in mMatchedExpressionList do
+    [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+  end
+  for () in mMatchInstructionBranchList do
+    [mMatchBranchInstructionList enterInstructionListInSemanticContext !?ioTypeMap]
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @matchInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap {
   var expressionList =@semanticExpressionListForGeneration.emptyList{}
-  for () in  mMatchedExpressionList do
+  for () in mMatchedExpressionList do
   #--- Analyze expression
-    @semanticExpressionForGeneration matchedExpression
     [mExpression analyzeSemanticExpression
       !@unifiedTypeMap-proxy. null
       !inAnalysisContext
       !?ioVariableMap
-      ?matchedExpression
+      ?let @semanticExpressionForGeneration matchedExpression
     ]
     expressionList += !matchedExpression
   #--- Check expression is an enum or a class instance
@@ -2877,10 +3275,10 @@ override method @matchInstructionAST analyzeSemanticInstruction
 #--- Analyze branches
   [!?ioVariableMap openOverrideForSelectBlock]
   var matchInstructionBranchList =@matchInstructionBranchListForGeneration.emptyList{}
-  for () in  mMatchInstructionBranchList do
+  for () in mMatchInstructionBranchList do
   #--- Match list
     var localConstantList =@localConstantList.emptyList{}
-    var matchListForGeneration =@matchListForGeneration.emptyList{}
+    var matchListForGeneration = @matchListForGeneration.emptyList{}
     if [expressionList length] == [mMatchEntryList length] then
       for () in  expressionList, () in  mMatchEntryList do
         let type = [mExpression mResultType]

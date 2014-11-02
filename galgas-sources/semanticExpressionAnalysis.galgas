@@ -1,8 +1,8 @@
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  Semantic Analysis of expression                                          *
+#  Semantic Analysis of expression                                                                                     *
 #                                                                                                                      *
-#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
+#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
@@ -14,12 +14,8 @@
 #  details.                                                                                                            *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
-
-
-
-#----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    V A R I A B L E    M A P                                               *
+#    V A R I A B L E    M A P                                                                                          *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -347,7 +343,7 @@ proc checkAssignmentTypes
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    S E M A N T I C    C O N T E X T    F O R    A N A L Y S I S           *
+#    S E M A N T I C    C O N T E X T    F O R    A N A L Y S I S                                                      *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -373,7 +369,7 @@ struct @predefinedTypes {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    A N A L Y S I S    C O N T E X T                                       *
+#    A N A L Y S I S    C O N T E X T                                                                                  *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -387,7 +383,7 @@ struct @analysisContext {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    E X P R E S S I O N    A N A L Y S I S                                 *
+#    E X P R E S S I O N    A N A L Y S I S                                                                            *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -399,6 +395,15 @@ abstract method @semanticExpressionAST analyzeSemanticExpression
 
 #----------------------------------------------------------------------------------------------------------------------*
 #! Literal
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @selfCopyInExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
 
 override method @selfCopyInExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
@@ -415,12 +420,26 @@ override method @selfCopyInExpressionAST analyzeSemanticExpression
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @hereExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @hereExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression {
   outExpression = @hereExpressionForGeneration. new { !inAnalysisContext.mPredefinedTypes.mLocationType !mLocation}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @trueExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -435,6 +454,13 @@ override method @trueExpressionAST analyzeSemanticExpression
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @falseExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @falseExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
@@ -445,12 +471,26 @@ override method @falseExpressionAST analyzeSemanticExpression
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @literalCharExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @literalCharExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression {
   outExpression = @literalCharExpressionForGeneration. new { !inAnalysisContext.mPredefinedTypes.mCharType ![mCharacter location] ![mCharacter char]}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @literalStringExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -469,6 +509,13 @@ override method @literalStringExpressionAST analyzeSemanticExpression
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @literalDoubleExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @literalDoubleExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
@@ -479,12 +526,26 @@ override method @literalDoubleExpressionAST analyzeSemanticExpression
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @literalUIntExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @literalUIntExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression {
   outExpression = @literalUIntExpressionForGeneration. new { !inAnalysisContext.mPredefinedTypes.mUIntType ![mValue location] ![mValue uint]}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @literalUInt64ExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -502,12 +563,26 @@ override method @literalUInt64ExpressionAST analyzeSemanticExpression
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @literalSIntExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @literalSIntExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression {
   outExpression = @literalSIntExpressionForGeneration. new { !inAnalysisContext.mPredefinedTypes.mSIntType ![mValue location] ![mValue sint]}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @literalSInt64ExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -591,6 +666,16 @@ proc analyzeConstructorInvocation
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @defaultConstructorExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  if mTypeName.string != "" then
+    [@unifiedTypeMap-proxy makeProxy !?ioTypeMap !mTypeName ?*]
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @defaultConstructorExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy inType
   ?let @analysisContext inAnalysisContext
@@ -614,6 +699,17 @@ override method @defaultConstructorExpressionAST analyzeSemanticExpression
       !type
       !mTypeName.location}
   end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @constructorExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  if mTypeName.string != "" then
+    [@unifiedTypeMap-proxy makeProxy !?ioTypeMap !mTypeName ?*]
+  end
+  [mExpressions enterInSemanticContext !?ioTypeMap]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -643,6 +739,15 @@ override method @constructorExpressionAST analyzeSemanticExpression
     ![mConstructorName string]
     !constructorEffectiveParameterList
     !hasCompilerArgument}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @readerCallExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mReceiver enterExpressionInSemanticContext !?ioTypeMap]
+  [mExpressions enterInSemanticContext !?ioTypeMap]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -777,6 +882,13 @@ func checkReaderImplementationInSuperClasses
       outResult = checkReaderImplementationInSuperClasses (!inReaderName ![inSuperClass mSuperType])
     end
   end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @optionExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -916,6 +1028,15 @@ proc checkDiadicOperator
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @concatExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @concatExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
@@ -943,6 +1064,15 @@ override method @concatExpressionAST analyzeSemanticExpression
     !mOperatorLocation
     !leftExpression
     !rightExpression}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @orExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -978,6 +1108,15 @@ override method @orExpressionAST analyzeSemanticExpression
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @orShortExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @orShortExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
@@ -1005,6 +1144,15 @@ override method @orShortExpressionAST analyzeSemanticExpression
     !mOperatorLocation
     !leftExpression
     !rightExpression}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @andExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1040,6 +1188,15 @@ override method @andExpressionAST analyzeSemanticExpression
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @andShortExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @andShortExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
@@ -1067,6 +1224,15 @@ override method @andShortExpressionAST analyzeSemanticExpression
     !mOperatorLocation
     !leftExpression
     !rightExpression}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @xorExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1102,6 +1268,15 @@ override method @xorExpressionAST analyzeSemanticExpression
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @equalExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @equalExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
@@ -1132,6 +1307,15 @@ override method @equalExpressionAST analyzeSemanticExpression
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @notEqualExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @notEqualExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
@@ -1158,6 +1342,15 @@ override method @notEqualExpressionAST analyzeSemanticExpression
       !leftExpression
       !rightExpression}
   end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @lowerOrEqualExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1196,6 +1389,15 @@ override method @lowerOrEqualExpressionAST analyzeSemanticExpression
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @greaterOrEqualExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @greaterOrEqualExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
@@ -1226,6 +1428,15 @@ override method @greaterOrEqualExpressionAST analyzeSemanticExpression
       !leftExpression
       !rightExpression}
   end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @strictGreaterExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1264,6 +1475,15 @@ override method @strictGreaterExpressionAST analyzeSemanticExpression
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @strictLowerExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @strictLowerExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
@@ -1294,6 +1514,15 @@ override method @strictLowerExpressionAST analyzeSemanticExpression
       !leftExpression
       !rightExpression}
   end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @rightShiftExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1332,6 +1561,15 @@ override method @rightShiftExpressionAST analyzeSemanticExpression
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @leftShiftExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @leftShiftExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
@@ -1362,6 +1600,15 @@ override method @leftShiftExpressionAST analyzeSemanticExpression
       !leftExpression
       !rightExpression}
   end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @addExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1397,6 +1644,15 @@ override method @addExpressionAST analyzeSemanticExpression
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @subExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @subExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
@@ -1424,6 +1680,15 @@ override method @subExpressionAST analyzeSemanticExpression
     !mOperatorLocation
     !leftExpression
     !rightExpression}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @multiplicationExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1459,6 +1724,15 @@ override method @multiplicationExpressionAST analyzeSemanticExpression
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @divisionExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @divisionExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
@@ -1486,6 +1760,15 @@ override method @divisionExpressionAST analyzeSemanticExpression
     !mOperatorLocation
     !leftExpression
     !rightExpression}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @moduloExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mLeftExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mRightExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1521,6 +1804,14 @@ override method @moduloExpressionAST analyzeSemanticExpression
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @unaryMinusExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @unaryMinusExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
@@ -1546,6 +1837,14 @@ override method @unaryMinusExpressionAST analyzeSemanticExpression
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @notExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @notExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
@@ -1567,6 +1866,13 @@ override method @notExpressionAST analyzeSemanticExpression
       !mOperatorLocation
       !expression}
   end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @structFieldAccessExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1604,6 +1910,14 @@ override method @structFieldAccessExpressionAST analyzeSemanticExpression
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @complementExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @complementExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
@@ -1625,6 +1939,16 @@ override method @complementExpressionAST analyzeSemanticExpression
       !mOperatorLocation
       !expression}
   end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @ifExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mIfExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mThenExpression enterExpressionInSemanticContext !?ioTypeMap]
+  [mElseExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1665,6 +1989,16 @@ override method @ifExpressionAST analyzeSemanticExpression
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @functionCallExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  for () in mExpressionList do
+    [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @functionCallExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
@@ -1693,7 +2027,7 @@ override method @functionCallExpressionAST analyzeSemanticExpression
     : outExpression
   else
     var semanticExpressionListForGeneration =@semanticExpressionListForGeneration.emptyList{}
-    for () in  functionSignature, () in  mExpressionList do
+    for () in functionSignature, () in mExpressionList do
       [mExpression analyzeSemanticExpression
         !mFormalArgumentType
         !inAnalysisContext
@@ -1712,6 +2046,13 @@ override method @functionCallExpressionAST analyzeSemanticExpression
       ![mFunctionName string]
       !semanticExpressionListForGeneration}
   end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @varInExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1736,6 +2077,13 @@ override method @varInExpressionAST analyzeSemanticExpression
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @literalTypeInExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @literalTypeInExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
@@ -1748,6 +2096,14 @@ override method @literalTypeInExpressionAST analyzeSemanticExpression
     !@unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !@lstring. new { !"type" !@location.here}}
     ![mLiteralTypeName location]
     ![mLiteralTypeName string]}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @testDynamicClassInExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mReceiverExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1787,6 +2143,14 @@ override method @testDynamicClassInExpressionAST analyzeSemanticExpression
     !expression
     !mTypeComparisonKind
     !castType}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @castInExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  [mReceiverExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1849,6 +2213,13 @@ override method @castInExpressionAST analyzeSemanticExpression
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @filewrapperObjectInstanciationInExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
@@ -1874,6 +2245,16 @@ override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticEx
     ![mFilewrapperName location]
     ![mFilewrapperName string]
     ![filewrapperPath string]}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @filewrapperTemplateInExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  for () in mExpressions do
+    [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+  end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1909,7 +2290,7 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
     : effectiveParameterList
   else
     effectiveParameterList = @semanticExpressionListForGeneration. emptyList
-    for () in  mExpressions, () in  templateSignature do
+    for () in mExpressions, () in templateSignature do
       if mFormalSelector.string != mActualSelector.string then
         error mActualSelector : "the selector should be '!" + mFormalSelector + if mFormalSelector.string != "" then ":" else "" end + "'"
       end
@@ -1925,6 +2306,13 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
     ![mFilewrapperName string]
     ![mFilewrapperTemplateName string]
     !effectiveParameterList}
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @filewrapperInExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -2004,6 +2392,13 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
 
 #----------------------------------------------------------------------------------------------------------------------*
 
+override method @lexiqueIntrospectionExpressionAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap unused ioTypeMap
+{
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
 override method @lexiqueIntrospectionExpressionAST analyzeSemanticExpression
   ?let @unifiedTypeMap-proxy unused inType
   ?let @analysisContext inAnalysisContext
@@ -2028,6 +2423,22 @@ override method @lexiqueIntrospectionExpressionAST analyzeSemanticExpression
 
 #----------------------------------------------------------------------------------------------------------------------*
 #! Collection value
+#----------------------------------------------------------------------------------------------------------------------*
+
+abstract method @abstractCollectionValueElement enterInSemanticContext ?!@unifiedTypeMap ioTypeMap
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @expressionCollectionValue enterInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @expressionListCollectionValue enterInSemanticContext ?!@unifiedTypeMap ioTypeMap {
+  [mExpressionList enterInSemanticContext !?ioTypeMap]
+}
+
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract method @abstractCollectionValueElement analyze
@@ -2112,6 +2523,16 @@ class @expressionListCollectionForGeneration : @abstractCollectionValueElementFo
 
 class @expressionCollectionForGeneration : @semanticExpressionForGeneration {
   @collectionValueElementListForGeneration mElementList
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+override method @collectionValueAST enterExpressionInSemanticContext
+  ?!@unifiedTypeMap ioTypeMap
+{
+  for () in mElementList do
+    [mElement enterInSemanticContext !?ioTypeMap]
+  end
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
