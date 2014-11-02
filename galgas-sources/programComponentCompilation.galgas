@@ -68,13 +68,13 @@ proc compileBeforeClause
       ?let @semanticInstructionListForGeneration blockSemanticInstructionListForGeneration
       ?*
     )
-    semanticInstructionListForGeneration += !@semanticBlockInstructionForGeneration. new {
+    semanticInstructionListForGeneration += !@semanticBlockInstructionForGeneration.new {
       !blockSemanticInstructionListForGeneration}
   end
 #---
   ioDecoratedDeclarationListForGeneration +=
     !"before"
-    !@routineImplementationForGeneration. new {
+    !@routineImplementationForGeneration.new {
       !false # Has no header
       !"proc-before"
       !"before"
@@ -105,12 +105,12 @@ proc compileBeforeClauseGalgas3
       ?let @semanticInstructionListForGeneration blockSemanticInstructionListForGeneration
       ?*
     )
-    semanticInstructionListForGeneration += !@semanticBlockInstructionForGeneration. new {
+    semanticInstructionListForGeneration += !@semanticBlockInstructionForGeneration.new {
       !blockSemanticInstructionListForGeneration}
   end
 #---
   ioDecoratedDeclarationListForGeneration +=
-    !@routineImplementationForGeneration. new {
+    !@routineImplementationForGeneration.new {
       !false # Has no header
       !"proc-before"
       !"before"
@@ -142,7 +142,7 @@ proc compileProgramRules
     let @formalParameterListAST argumentList = {
       !["" nowhere]
       !@formalArgumentPassingModeAST. argumentConstantIn
-      !@lstring. new { !"lstring" !@location.here}
+      !@lstring.new {!"lstring" !@location.here}
       !mSourceFileVariableName
       !mSourceFileVariableNameIsUnused
     }
@@ -162,7 +162,7 @@ proc compileProgramRules
     )
     ioDecoratedDeclarationListForGeneration +=
       !"source rule " + ruleIndex
-      !@routineImplementationForGeneration. new {
+      !@routineImplementationForGeneration.new {
         !false # Has no header
         !"proc-programrule"
         !"programRule_" + [ruleIndex string]
@@ -193,7 +193,7 @@ private proc compileProgramRulesGalgas3
     let @formalParameterListAST argumentList = {
       !["" nowhere]
       !@formalArgumentPassingModeAST. argumentConstantIn
-      !@lstring. new { !"lstring" !@location.here}
+      !@lstring.new {!"lstring" !@location.here}
       !mSourceFileVariableName
       !mSourceFileVariableNameIsUnused
     }
@@ -212,7 +212,7 @@ private proc compileProgramRulesGalgas3
       ?routineSignature
     )
     ioDecoratedDeclarationListForGeneration +=
-      !@routineImplementationForGeneration. new {
+      !@routineImplementationForGeneration.new {
         !false # Has no header
         !"proc-programrule"
         !"programRule_" + [ruleIndex string]
@@ -248,13 +248,13 @@ proc compileAfterClause
       ?let @semanticInstructionListForGeneration blockSemanticInstructionListForGeneration
       ?*
     )
-    semanticInstructionListForGeneration += !@semanticBlockInstructionForGeneration. new {
+    semanticInstructionListForGeneration += !@semanticBlockInstructionForGeneration.new {
       !blockSemanticInstructionListForGeneration}
   end
 #---
   ioDecoratedDeclarationListForGeneration +=
     !"after"
-    !@routineImplementationForGeneration. new {
+    !@routineImplementationForGeneration.new {
       !false # Has no header
       !"proc-after"
       !"after"
@@ -285,12 +285,12 @@ proc compileAfterClauseGalgas3
       ?let @semanticInstructionListForGeneration blockSemanticInstructionListForGeneration
       ?*
     )
-    semanticInstructionListForGeneration += !@semanticBlockInstructionForGeneration. new {
+    semanticInstructionListForGeneration += !@semanticBlockInstructionForGeneration.new {
       !blockSemanticInstructionListForGeneration}
   end
 #---
   ioDecoratedDeclarationListForGeneration +=
-    !@routineImplementationForGeneration. new {
+    !@routineImplementationForGeneration.new {
       !false # Has no header
       !"proc-after"
       !"after"
@@ -371,7 +371,7 @@ proc compileProgramComponentFromAST
     ?decoratedDeclarationListForGeneration
   )
 #--- Analysis context
-  let analysisContext =  @analysisContext. new {
+  let analysisContext =  @analysisContext.new {
     !semanticContext
     !buildPredefinedTypes (!semanticContext)
     !@unifiedTypeMap-proxy. null
@@ -459,7 +459,7 @@ proc compileProgramComponentFromSourceFile
   ?!@parsedComponentStruct ioParsedComponentStruct {
 #--- Parse source file
   let basename = [[inSourceFile lastPathComponent] stringByDeletingPathExtension]
-  let basenameKey = @lstring. new { !basename !@location.here}
+  let basenameKey = @lstring.new {!basename !@location.here}
   @programComponentAST programComponentAST
   if [ioParsedComponentStruct.mParsedProgramComponentMap hasKey !basename] then
     [ioParsedComponentStruct.mParsedProgramComponentMap searchKey !basenameKey ?* ?programComponentAST]
@@ -490,7 +490,7 @@ proc compileProgramComponentGalgas3
   !@programComponentForGeneration outProgramComponentForGeneration {
 #  const useOneHugeHeader := [option galgas_cli_options.generateOneHeader value] ;
 #--- Analysis context
-  let analysisContext = @analysisContext. new {
+  let analysisContext = @analysisContext.new {
     !inSemanticContext
     !buildPredefinedTypes (!inSemanticContext)
     !@unifiedTypeMap-proxy. null
@@ -547,7 +547,7 @@ proc compileProgramComponentGalgas3
     !hasIndexing
   ]
 #---
-  outProgramComponentForGeneration = @programComponentForGeneration. new {
+  outProgramComponentForGeneration = @programComponentForGeneration.new {
     !false # No header
     !"program"
     !inclusionSet

@@ -117,7 +117,7 @@ proc parseOptionComponent
   !@commandLineOptionMap outBoolOptionMap
   !@commandLineOptionMap outUIntOptionMap
   !@commandLineOptionMap outStringOptionMap {
-  outOptionComponentName = @lstring. new { ![[[inSourceFile string] lastPathComponent] stringByDeletingPathExtension] ![inSourceFile location]}
+  outOptionComponentName = @lstring.new {![[[inSourceFile string] lastPathComponent] stringByDeletingPathExtension] ![inSourceFile location]}
   if [[ioParsedComponentStruct mParsedOptionComponentMap] hasKey ! [outOptionComponentName string]] then
     [ioParsedComponentStruct.mParsedOptionComponentMap searchKey !outOptionComponentName ?outBoolOptionMap ?outUIntOptionMap ?outStringOptionMap]
   else

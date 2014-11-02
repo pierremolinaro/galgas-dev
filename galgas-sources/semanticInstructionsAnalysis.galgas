@@ -110,7 +110,7 @@ override method @localVariableOrConstantDeclarationWithDefaultConstructorAST ana
     [!?ioVariableMap insertDefinedLocalVariable !mVariableName !targetType !targetVariableCppName !targetVariableCppName]
   end
 #--- Generate instruction
-  ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithDefaultConstructorForGeneration. new {
+  ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithDefaultConstructorForGeneration.new {
     !mInstructionLocation
     !targetType
     !mIsConstant
@@ -161,7 +161,7 @@ override method @localVariableOrConstantDeclarationWithConstructorCallAST analyz
     [!?ioVariableMap insertDefinedLocalVariable !mVariableName !targetType !targetVariableCppName !targetVariableCppName]
   end
 #--- Generate instruction
-  ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithConstructorCallForGeneration. new {
+  ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithConstructorCallForGeneration.new {
     !mInstructionLocation
     !targetType
     !mIsConstant
@@ -239,7 +239,7 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
 #--- Check assignment type compatibility
   checkAssignmentTypes ( !targetType ![expression mResultType] !mInstructionLocation )
 #--- Generate instruction
-  ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration. new {
+  ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration.new {
     !targetType
     !mIsConstant
     !targetVariableCppName
@@ -271,7 +271,7 @@ override method @localConstantDeclarationWithAssignmentAST analyzeSemanticInstru
   let targetVariableCppName = "var_" + [mVariableName identifierRepresentation]
     [!?ioVariableMap insertLocalConstant !mVariableName ![expression mResultType] !targetVariableCppName !targetVariableCppName]
 #--- Generate instruction
-  ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration. new {
+  ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration.new {
     ![expression mResultType]
     !true
     !targetVariableCppName
@@ -350,7 +350,7 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
 #--- Check assignment type compatibility
   checkAssignmentTypes ( !targetType ![expression mResultType] !mInstructionLocation )
 #--- Generate instruction
-  ioInstructionListForGeneration += !@assignmentInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@assignmentInstructionForGeneration.new {
     !targetType
     !targetVariableCppName
     !nameForCheckingFormalParameterUsing
@@ -388,7 +388,7 @@ override method @selfAssignmentInstructionAST analyzeSemanticInstruction
 #--- Check assignment type compatibility
   checkAssignmentTypes ( !inAnalysisContext.mSelfTypeProxy ![expression mResultType] !mInstructionLocation )
 #--- Generate instruction
-  ioInstructionListForGeneration += !@assignmentInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@assignmentInstructionForGeneration.new {
     !inAnalysisContext.mSelfTypeProxy
     !inAnalysisContext.mSelfObjectCppName
     !inAnalysisContext.mSelfObjectCppName
@@ -485,7 +485,7 @@ override method @errorInstructionAST analyzeSemanticInstruction
     builtVariableCppNameList += !varCppName
   end
 #--- Generate instruction
-  ioInstructionListForGeneration += !@errorInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@errorInstructionForGeneration.new {
     !mInstructionLocation
     !locationExpression
     !useLocationReader
@@ -521,7 +521,7 @@ override method @warningInstructionAST analyzeSemanticInstruction
     ?let useLocationReader
   )
 #--- Generate instruction
-  ioInstructionListForGeneration += !@warningInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@warningInstructionForGeneration.new {
     !mInstructionLocation
     !locationExpression
     !useLocationReader
@@ -581,7 +581,7 @@ override method @outputActualParameterAST checkAgainstFormalArgument
   #--- Check effective expression type against formal argument type
     checkAssignmentTypes ( !inFormalArgumentType ![expression mResultType] !mEndOfExpressionLocation )
   #--- Generate actual parameter
-    ioActualParameterListForGeneration += !@outputActualParameterForGeneration. new {
+    ioActualParameterListForGeneration += !@outputActualParameterForGeneration.new {
       !inFormalArgumentType
       !expression}
   end
@@ -634,7 +634,7 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
   end
   ioExclusiveVariableSet += ![mOutputInputActualParameterName string]
 #--- Generate actual parameter
-  ioActualParameterListForGeneration += !@outputInputActualParameterForGeneration. new {
+  ioActualParameterListForGeneration += !@outputInputActualParameterForGeneration.new {
     !parameterType
     !variableCppName
     !mStructAttributeList
@@ -665,12 +665,12 @@ override method @outputInputSingleJokerParameterAST checkAgainstFormalArgument
   end
 #--- Generate actual parameter
   let cppVarName = "joker_" + [mActualSelector.location locationIndex]
-  ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration. new {
+  ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration.new {
     !inFormalArgumentType
     !false # Is not constant
     !cppVarName
-    !@defaultConstructorExpressionForGeneration. new { !inFormalArgumentType !mActualSelector.location}}
-  ioActualParameterListForGeneration += !@outputInputActualParameterForGeneration. new {
+    !@defaultConstructorExpressionForGeneration.new {!inFormalArgumentType !mActualSelector.location}}
+  ioActualParameterListForGeneration += !@outputInputActualParameterForGeneration.new {
     !inFormalArgumentType
     !cppVarName
     !{}
@@ -699,12 +699,12 @@ override method @outputInputJokerParameterAST checkAgainstFormalArgument
   end
 #--- Generate actual parameter
   let cppVarName = "joker_" + [mQualifierLocation locationIndex] + "_" + mJokerIndex
-  ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration. new {
+  ioInstructionListForGeneration += !@localVariableOrConstantDeclarationWithSourceExpressionForGeneration.new {
     !inFormalArgumentType
     !false # Is not constant
     !cppVarName
-    !@defaultConstructorExpressionForGeneration. new { !inFormalArgumentType !mQualifierLocation}}
-  ioActualParameterListForGeneration += !@outputInputActualParameterForGeneration. new {
+    !@defaultConstructorExpressionForGeneration.new {!inFormalArgumentType !mQualifierLocation}}
+  ioActualParameterListForGeneration += !@outputInputActualParameterForGeneration.new {
     !inFormalArgumentType
     !cppVarName
     !{}
@@ -748,7 +748,7 @@ override method @inputActualExistingVariableParameterAST checkAgainstFormalArgum
   end
   ioExclusiveVariableSet += ![mInputActualParameterName string]
 #--- Generate actual parameter
-  ioActualParameterListForGeneration += !@inputActualParameterForGeneration. new {
+  ioActualParameterListForGeneration += !@inputActualParameterForGeneration.new {
     !parameterType
     !targetVariableCppName}
 }
@@ -791,7 +791,7 @@ override method @inputActualNewVariableParameterAST checkAgainstFormalArgument
     !targetVariableCppName
   ]
 #--- Generate local variable declaration
-  ioInstructionListForGeneration += !@localVariableDeclarationForGeneration. new {
+  ioInstructionListForGeneration += !@localVariableDeclarationForGeneration.new {
     !inFormalArgumentType
     !targetVariableCppName}
 #--- Check for exclusive access
@@ -801,7 +801,7 @@ override method @inputActualNewVariableParameterAST checkAgainstFormalArgument
   end
   ioExclusiveVariableSet += !mInputActualParameterName.string
 #--- Generate actual parameter
-  ioActualParameterListForGeneration += !@inputActualParameterForGeneration. new {
+  ioActualParameterListForGeneration += !@inputActualParameterForGeneration.new {
     !inFormalArgumentType
     !targetVariableCppName}
 }
@@ -844,7 +844,7 @@ override method @inputActualNewConstantParameterAST checkAgainstFormalArgument
     !targetVariableCppName
   ]
 #--- Generate local variable declaration
-  ioInstructionListForGeneration += !@localVariableDeclarationForGeneration. new {
+  ioInstructionListForGeneration += !@localVariableDeclarationForGeneration.new {
     !inFormalArgumentType
     !targetVariableCppName}
 #--- Check for exclusive access
@@ -854,7 +854,7 @@ override method @inputActualNewConstantParameterAST checkAgainstFormalArgument
   end
   ioExclusiveVariableSet += !mInputActualParameterName.string
 #--- Generate actual parameter
-  ioActualParameterListForGeneration += !@inputActualParameterForGeneration. new {
+  ioActualParameterListForGeneration += !@inputActualParameterForGeneration.new {
     !inFormalArgumentType
     !targetVariableCppName}
 }
@@ -879,7 +879,7 @@ override method @inputSingleJokerActualParameterAST checkAgainstFormalArgument
   else
     let cppVarName = "joker_" + [mActualSelector.location locationIndex]
   #--- Generate actual parameter
-    ioActualParameterListForGeneration += !@inputJokerParameterForGeneration. new {
+    ioActualParameterListForGeneration += !@inputJokerParameterForGeneration.new {
       !inFormalArgumentType
       !cppVarName}
   end
@@ -903,7 +903,7 @@ override method @inputJokerActualParameterAST checkAgainstFormalArgument
   else
     let cppVarName = "joker_" + [mQualifierLocation locationIndex] + "_" + mJokerIndex
   #--- Generate actual parameter
-    ioActualParameterListForGeneration += !@inputJokerParameterForGeneration. new {
+    ioActualParameterListForGeneration += !@inputJokerParameterForGeneration.new {
       !inFormalArgumentType
       !cppVarName}
   end
@@ -1035,7 +1035,7 @@ override method @routineCallInstructionAST analyzeSemanticInstruction
     ?let @actualParameterListForGeneration actualParameterListForGeneration
   )
 #--- Generate instruction
-  ioInstructionListForGeneration += !@routineCallInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@routineCallInstructionForGeneration.new {
     !mRoutineName
     !actualParameterListForGeneration}
 }
@@ -1074,7 +1074,7 @@ override method @typeMethodCallInstructionAST analyzeSemanticInstruction
     ?let  @actualParameterListForGeneration actualParameterListForGeneration
   )
 #--- Generate instructions
-  ioInstructionListForGeneration += !@typeMethodInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@typeMethodInstructionForGeneration.new {
     !mTypeName
     !mMethodName
     !actualParameterListForGeneration
@@ -1142,7 +1142,7 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
     end
   end
 #--- Generate instructions
-  ioInstructionListForGeneration += !@methodCallInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@methodCallInstructionForGeneration.new {
     !mInstructionLocation
     ![receiverExpression mResultType]
     !receiverExpression
@@ -1244,7 +1244,7 @@ override method @modifierCallInstructionAST analyzeSemanticInstruction
     end
   end
 #--- Generate instructions
-  ioInstructionListForGeneration += !@modifierCallInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@modifierCallInstructionForGeneration.new {
     !receiverVariableCppName
     !receiverVariableBaseName
     !mReceiverStructAttributes
@@ -1299,7 +1299,7 @@ override method @selfModifierCallInstructionAST analyzeSemanticInstruction
     ?let @actualParameterListForGeneration actualParameterListForGeneration
   )
 #--- Generate instructions
-  ioInstructionListForGeneration += !@selfModifierCallInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@selfModifierCallInstructionForGeneration.new {
     !selfObjectCppName
     !selfTypeProxy
     !mModifierName
@@ -1376,7 +1376,7 @@ override method @concatInstructionAST analyzeSemanticInstruction
 #--- Check assignment type compatibility
   checkAssignmentTypes ( !targetType ![expression mResultType] !mInstructionLocation )
 #--- Generate instruction
-  ioInstructionListForGeneration += !@concatInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@concatInstructionForGeneration.new {
     !mInstructionLocation
     !targetType
     !targetVariableCppName
@@ -1424,7 +1424,7 @@ override method @selfConcatInstructionAST analyzeSemanticInstruction
 #--- Check assignment type compatibility
   checkAssignmentTypes ( !selfTypeProxy ![expression mResultType] !mInstructionLocation )
 #--- Generate instruction
-  ioInstructionListForGeneration += !@concatInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@concatInstructionForGeneration.new {
     !mInstructionLocation
     !selfTypeProxy
     !selfObjectCppName
@@ -1494,7 +1494,7 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
       effectiveParameterList += !exp
     end
   #--- Generate instruction
-    ioInstructionListForGeneration += !@plusEqualnstructionForGeneration. new {
+    ioInstructionListForGeneration += !@plusEqualnstructionForGeneration.new {
       !targetVariableCppName
       !targetType
       !nameForCheckingFormalParameterUsing
@@ -1549,7 +1549,7 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
 #--- Check assignment type compatibility
   checkAssignmentTypes ( !targetType ![expression mResultType] !mInstructionLocation )
 #--- Generate instruction
-  ioInstructionListForGeneration += !@concatInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@concatInstructionForGeneration.new {
     !mInstructionLocation
     !targetType
     !targetVariableCppName
@@ -1608,7 +1608,7 @@ override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
       effectiveParameterList += !exp
     end
   #--- Generate instruction
-    ioInstructionListForGeneration += !@plusEqualnstructionForGeneration. new {
+    ioInstructionListForGeneration += !@plusEqualnstructionForGeneration.new {
       !selfObjectCppName
       !selfTypeProxy
       !""
@@ -1656,7 +1656,7 @@ override method @selfPlusEqualExpressionInstructionAST analyzeSemanticInstructio
 #--- Check assignment type compatibility
   checkAssignmentTypes ( !selfTypeProxy ![expression mResultType] !mInstructionLocation )
 #--- Generate instruction
-  ioInstructionListForGeneration += !@concatInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@concatInstructionForGeneration.new {
     !mInstructionLocation
     !selfTypeProxy
     !selfObjectCppName
@@ -1699,7 +1699,7 @@ override method @incrementInstructionAST analyzeSemanticInstruction
     :"the target object has the '@" + [targetType key] + "' type, but this type does not support the '++' operator"
   end
 #--- Generate instruction
-  ioInstructionListForGeneration += !@incrementInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@incrementInstructionForGeneration.new {
     !mInstructionLocation
     !targetVariableCppName
     !targetType
@@ -1734,7 +1734,7 @@ override method @selfIncrementInstructionAST analyzeSemanticInstruction
     :"the target object has the '@" + [selfTypeProxy key] + "' type, but this type does not support the '++' operator"
   end
 #--- Generate instruction
-  ioInstructionListForGeneration += !@incrementInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@incrementInstructionForGeneration.new {
     !mInstructionLocation
     !selfObjectCppName
     !selfTypeProxy
@@ -1775,7 +1775,7 @@ override method @decrementInstructionAST analyzeSemanticInstruction
     :"the target object has the '@" + [targetType key] + "' type, but this type does not support the '--' operator"
   end
 #--- Generate instruction
-  ioInstructionListForGeneration += !@decrementInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@decrementInstructionForGeneration.new {
     !mInstructionLocation
     !targetVariableCppName
     !targetType
@@ -1810,7 +1810,7 @@ override method @selfDecrementInstructionAST analyzeSemanticInstruction
     :"the target object has the '@" + [selfTypeProxy key] + "' type, but this type does not support the '--' operator"
   end
 #--- Generate instruction
-  ioInstructionListForGeneration += !@decrementInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@decrementInstructionForGeneration.new {
     !mInstructionLocation
     !selfObjectCppName
     !selfTypeProxy
@@ -1845,7 +1845,7 @@ override method @messageInstructionAST analyzeSemanticInstruction
     :"the expression has the '@" + [[expression mResultType] key] + "' type, but the 'message' instruction requires an '@string' expression"
   end
 #--- Generate instruction
-  ioInstructionListForGeneration += !@messageInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@messageInstructionForGeneration.new {
     !expression
     !mInstructionLocation}
 }
@@ -1876,7 +1876,7 @@ override method @logInstructionAST analyzeSemanticInstruction
       ?expression
     ]
   #--- Generate instruction
-    ioInstructionListForGeneration += !@logInstructionForGeneration. new {
+    ioInstructionListForGeneration += !@logInstructionForGeneration.new {
       !mLogMessage
       !expression}  
   end
@@ -1905,7 +1905,7 @@ override method @dropInstructionAST analyzeSemanticInstruction
     dropTypeList += !t
   end
 #--- Generate instruction
-  ioInstructionListForGeneration += !@dropInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@dropInstructionForGeneration.new {
      !cppNameDropList
      !"drop instruction"
      !dropTypeList}  
@@ -1926,7 +1926,7 @@ private proc checkExpressionIsBoolean
   elsif [expressionType mTypeKindEnum] == @typeKindEnum. structType then
     if [[expressionType mAttributeMap] hasKey !"bool"] then
       [[expressionType mAttributeMap] searchKey
-        !@lstring. new { !"bool" !@location.here}
+        !@lstring.new {!"bool" !@location.here}
 #        ??@bool isPrivate
         ?let @unifiedTypeMap-proxy attributeType
       ]
@@ -1934,7 +1934,7 @@ private proc checkExpressionIsBoolean
 #        error inErrorLocation : "this field is private" ;
 #      end if ;
       if attributeType == boolType then
-        outExpression = @structFieldAccessExpressionForGeneration. new {
+        outExpression = @structFieldAccessExpressionForGeneration.new {
           !boolType
           !inErrorLocation
           !inExpression
@@ -1958,7 +1958,7 @@ private proc checkExpressionIsBoolean
       elsif mErrorMessage != "" then
         error inErrorLocation : mErrorMessage : outExpression
       else
-        outExpression = @readerCallExpressionForGeneration. new {
+        outExpression = @readerCallExpressionForGeneration.new {
           !boolType
           !inErrorLocation
           !mKind
@@ -2049,7 +2049,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
   )
   [!?ioVariableMap closeOverride !mEndOf_if_instruction]
 #--- Generate instruction
-  ioInstructionListForGeneration += !@ifInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@ifInstructionForGeneration.new {
     !mEndOf_then_branch
     !if_expression
     !then_instructionList
@@ -2115,7 +2115,7 @@ override method @enumeratedCollectionImplicitVarInExpAST analyzeEnumeration
   for () in enumerationDescriptorList do
     ioLocalConstantListForDoBranch +=
       !mEnumeratedType
-      !@lstring. new { !mPrefix.string + mEnumerationName !mEndOfEnumerationExpression}
+      !@lstring.new {!mPrefix.string + mEnumerationName !mEndOfEnumerationExpression}
       !outEnumeratorCppName + ".current_" + [mEnumerationName identifierRepresentation]+ " (HERE)"
   end
 }
@@ -2145,7 +2145,7 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
       let currentTypedAttributeList = [[outEnumerationExpression mResultType] mEnumerationDescriptor]
       for () in  currentTypedAttributeList do 
        [!?ioVariableMap insertUsedLocalConstant
-         !@lstring. new { !mEnumerationName !mEndOfEnumerationExpression}
+         !@lstring.new {!mEnumerationName !mEndOfEnumerationExpression}
          !mEnumeratedType
          !outEnumeratorCppName +".current_" + [mEnumerationName identifierRepresentation] + " (HERE)"
          !outEnumeratorCppName +".current_" + [mEnumerationName identifierRepresentation] + " (HERE)"
@@ -2344,7 +2344,7 @@ override method @forInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap closeBranch !mEndOf_foreach_instruction]
   [!?ioVariableMap closeOverride !mEndOf_foreach_instruction]
 #--- Generate instruction
-  ioInstructionListForGeneration += !@foreachInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@foreachInstructionForGeneration.new {
     !mInstructionLocation
     !enumerationList
     !indexCppName
@@ -2455,7 +2455,7 @@ override method @foreachInstructionAST analyzeSemanticInstruction
         let currentTypedAttributeList = [[enumerationExpression mResultType] mEnumerationDescriptor]
         for () in  currentTypedAttributeList do 
          [!?ioVariableMap insertUsedLocalConstant
-           !@lstring. new { !mPrefix.string + mEnumerationName !mEndOfEnumerationExpression}
+           !@lstring.new {!mPrefix.string + mEnumerationName !mEndOfEnumerationExpression}
            !mEnumeratedType
            !enumeratorCppName +".current_" + [mEnumerationName identifierRepresentation] + " (HERE)"
            !enumeratorCppName +".current_" + [mEnumerationName identifierRepresentation] + " (HERE)"
@@ -2541,7 +2541,7 @@ override method @foreachInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap closeBranch !mEndOf_foreach_instruction]
   [!?ioVariableMap closeOverride !mEndOf_foreach_instruction]
 #--- Generate instruction
-  ioInstructionListForGeneration += !@foreachInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@foreachInstructionForGeneration.new {
     !mInstructionLocation
     !enumerationList
     !indexCppName
@@ -2622,7 +2622,7 @@ override method @loopInstructionAST analyzeSemanticInstruction
 #--- End override
   [!?ioVariableMap closeOverride !mEndOfLoopInstruction]
 #--- Generate instruction
-  ioInstructionListForGeneration += !@loopInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@loopInstructionForGeneration.new {
     !mInstructionLocation
     !variantExpression
     !first_instructionList
@@ -2715,7 +2715,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
 #--- End override
   [!?ioVariableMap closeOverride !mEndOfCastInstruction]
 #--- Generate instruction
-  ioInstructionListForGeneration += !@structuredCastInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@structuredCastInstructionForGeneration.new {
     !castExpression
     !castBranchList
     !else_instructionList}
@@ -2889,7 +2889,7 @@ override method @grammarInstructionAST analyzeSemanticInstruction
   ]
 #--- Generate instructions
   if mSourceExpressionIsFile then
-    ioInstructionListForGeneration += !@grammarInstructionWithSourceFileForGeneration. new {
+    ioInstructionListForGeneration += !@grammarInstructionWithSourceFileForGeneration.new {
       !mInstructionLocation
       ![mGrammarComponentName string]
       ![mLabelName string]
@@ -2899,7 +2899,7 @@ override method @grammarInstructionAST analyzeSemanticInstruction
       !assignementList
       !syntaxDirectedTranslationResultVarName}
   else
-    ioInstructionListForGeneration += !@grammarInstructionWithSourceExpressionForGeneration. new {
+    ioInstructionListForGeneration += !@grammarInstructionWithSourceExpressionForGeneration.new {
       !mInstructionLocation
       ![mGrammarComponentName string]
       ![mLabelName string]
@@ -2970,14 +2970,14 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
   for () in  [receiverType mCurrentTypedAttributeList] do
     localConstantList +=
       !mAttributeTypeProxy
-      !@lstring. new { !mPrefix.string + mAttributeName !mEndOfReceiverExpression}
+      !@lstring.new {!mPrefix.string + mAttributeName !mEndOfReceiverExpression}
       !true # Do not warn if unused
       !objectArrayCppName + "->mAttribute_" + [mAttributeName identifierRepresentation]
   end
 #--- Add lkey as @lstring constant
   localConstantList +=
     !@unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !["lstring" nowhere]}
-    !@lstring. new { !mPrefix.string + "lkey" !mEndOfReceiverExpression}
+    !@lstring.new {!mPrefix.string + "lkey" !mEndOfReceiverExpression}
     !true # Do not warn if unused
     !objectArrayCppName + "->mAttribute_lkey"
   analyzeSemanticInstructionList (
@@ -3001,7 +3001,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
   )
   [!?ioVariableMap closeOverride !mEndOf_else_instructions]
 #--- Generate instruction
-  ioInstructionListForGeneration += !@readOnlyWithInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@readOnlyWithInstructionForGeneration.new {
     !mInstructionLocation
     !receiverExpression
     !objectArrayCppName
@@ -3083,12 +3083,12 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   for () in  [targetType mCurrentTypedAttributeList] do
     localInitializedVariableList +=
       !mAttributeTypeProxy
-      !@lstring. new { !mPrefix.string + mAttributeName !mEndOfReceiverExpression}
+      !@lstring.new {!mPrefix.string + mAttributeName !mEndOfReceiverExpression}
       !objectArrayCppName + "->mAttribute_" + [mAttributeName identifierRepresentation]
   end
   let localConstantList = @localConstantList {
     !@unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !["lstring" nowhere]}
-    !@lstring. new { !mPrefix.string + "lkey" !mEndOfReceiverExpression}
+    !@lstring.new {!mPrefix.string + "lkey" !mEndOfReceiverExpression}
     !true # Do not warn if unused
     !objectArrayCppName + "->mAttribute_lkey"
   }
@@ -3114,7 +3114,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   )
   [!?ioVariableMap closeOverride !mEndOf_else_instructions]
 #--- Generate instruction
-  ioInstructionListForGeneration += !@readWriteWithInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@readWriteWithInstructionForGeneration.new {
     !mInstructionLocation
     !receiverVariableCppName
     !targetType
@@ -3228,7 +3228,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
     : "the switch instruction should name all enumeration constants; missing constants are:" + s
   end
 #--- Generate instruction
-  ioInstructionListForGeneration += !@switchInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@switchInstructionForGeneration.new {
     ![switchExpression mResultType]
     !switchExpression
     !switchBranchesForGeneration}
@@ -3352,7 +3352,7 @@ override method @matchInstructionAST analyzeSemanticInstruction
 #---
   [!?ioVariableMap closeOverride !mEndOf_match_instruction]
 #--- Generate instruction
-  ioInstructionListForGeneration += !@matchInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@matchInstructionForGeneration.new {
     !expressionList
     !matchInstructionBranchList
     !elseInstructionList}

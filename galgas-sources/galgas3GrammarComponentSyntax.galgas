@@ -25,9 +25,9 @@ rule <declaration>
  ?!@galgas3DeclarationAST ioDeclarations {
   @lbool hasIndexing
   select
-    hasIndexing = @lbool. new { !false !@location.here}
+    hasIndexing = @lbool.new {!false !@location.here}
   or
-    hasIndexing = @lbool. new { !true !@location.here}
+    hasIndexing = @lbool.new {!true !@location.here}
     $indexing$
   end
   $grammar$
@@ -56,7 +56,7 @@ rule <declaration>
 #--- Root symbol
   $non_terminal_symbol$ ?var @lstring  mStartSymbol indexing ruleReference
   var mLabelList =@nonTerminalLabelListAST.emptyList{}
-  <grammar_start_symbol_label> !@lstring. new { !"" !@location.here} !?mLabelList
+  <grammar_start_symbol_label> !@lstring.new {!"" !@location.here} !?mLabelList
   repeat
   while
     $label$
@@ -73,7 +73,7 @@ rule <declaration>
   end
 #---
   $}$
-  ioDeclarations.mDeclarationList += !@galgas3GrammarComponentAST. new {
+  ioDeclarations.mDeclarationList += !@galgas3GrammarComponentAST.new {
     !false # Is not predefined
     !hasIndexing
     !mGrammarName

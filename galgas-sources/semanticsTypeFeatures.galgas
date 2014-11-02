@@ -68,7 +68,7 @@ override method @stringsetPredefinedTypeAST getModifierMap
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?stringType]
   outModifierMap = @modifierMap. emptyMap
   [!?outModifierMap insertKey
-    !@lstring. new { !"removeKey" !@location.here}
+    !@lstring.new {!"removeKey" !@location.here}
     !@methodKind. definedAsMember
     !@formalParameterSignature. listWithValue { !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentIn !"inKey"}
     !false # No Compiler argument

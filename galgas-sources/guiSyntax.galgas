@@ -40,7 +40,7 @@ rule <gui_component_start_symbol>
     var mValue =@lstring.new{ !"" !@location.here}
     repeat
       $literal_string$ ?var @lstring value
-      mValue = @lstring. new { ![mValue string] + [value string] ![value location]}
+      mValue = @lstring.new {![mValue string] + [value string] ![value location]}
     while
     end
     $;$ :> ?* ?*
@@ -107,7 +107,7 @@ rule <gui_component_start_symbol>
         var value =@lstring.new{ !"" !@location.here}
         repeat
           $literal_string$ ?var @lstring v
-          value = @lstring. new { ![value string] + [v string] ![v location]}
+          value = @lstring.new {![value string] + [v string] ![v location]}
         while
         end
         $;$ :> ?* ?*
@@ -132,7 +132,7 @@ rule <gui_component_start_symbol>
   send sep + "}"
   $gui$ :> ?* ?*
   $;$ :> ?* ?*
-  outGuiComponentRoot = @guiComponentAST. new {
+  outGuiComponentRoot = @guiComponentAST.new {
     !mGUIName
     !mGUIClass
     !importedOptionList

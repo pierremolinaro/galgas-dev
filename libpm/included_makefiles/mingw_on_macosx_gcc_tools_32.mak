@@ -1,15 +1,15 @@
-#---------------------------------------------------------------*
-#                                                               *
-# MINGW32 tools on MAC OS X DEFINITION                          *
-#                                                               *
-#---------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+# MINGW32 tools on MAC OS X DEFINITION                                                                                 *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 GCC_VERSION := 4.9.1
 TOOL_CHAIN_ARCHIVE := gcc-$(GCC_VERSION)-qt-4.8.4-for-mingw32
 TOOL_CHAIN_URL := http://crossgcc.rts-software.org/download/gcc-$(GCC_VERSION)-qt-4.8.4-win32/$(TOOL_CHAIN_ARCHIVE).tar.bz2
 TOOL_CHAIN_INSTALL_PATH := /usr/local/$(TOOL_CHAIN_ARCHIVE)
 
-#---------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 MINGW_TOOL_PATH := $(TOOL_CHAIN_INSTALL_PATH)/win32-gcc/bin
 COMPILER_PATH := $(MINGW_TOOL_PATH)/i586-mingw32-gcc
@@ -21,7 +21,7 @@ SUDO_TOOL     := sudo
 COMPILATION_MESSAGE := 32-Bit Compiling for Win32
 LINKING_MESSAGE := 32-Bit Linking for Win32
 
-#---------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 #--- Options for all compilers
 COMPILER_OPTIONS_FOR_THIS_CHAIN := -Wconversion
@@ -45,4 +45,4 @@ OC_COMPILER_OPTIONS_FOR_THIS_CHAIN :=
 #--- Options for Objective-C++ compiling (.mm extension)
 OCPP_COMPILER_OPTIONS_FOR_THIS_CHAIN := 
 
-#---------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*

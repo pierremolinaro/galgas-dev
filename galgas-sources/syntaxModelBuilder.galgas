@@ -1,27 +1,27 @@
-#------------------------------------------------------------------------------*
-#                                                                              *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #  'syntax' component parser                                                   *
-#                                                                              *
+#                                                                                                                      *
 #  Copyright (C) 2007, ..., 2014 Pierre Molinaro.                              *
-#                                                                              *
+#                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                       *
-#                                                                              *
+#                                                                                                                      *
 #  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
 #  License as published by the Free Software Foundation.                                                               *
 #                                                                                                                      *
 #  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
 #  details.                                                                                                            *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 syntax syntaxModelBuilder (galgas_scanner)  %translate {
 
-#------------------------------------------------------------------------------*
-#                                                                              *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #          Rules prototypes                                                    *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <expression> !@semanticExpressionAST outExpression
 
@@ -36,11 +36,11 @@ rule <actual_parameter_list>
 rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 
-#------------------------------------------------------------------------------*
-#                                                                              *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #      S Y N T A X    C O M P O N E N T                                        *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <syntax_component_start_symbol> !@galgas3SyntaxComponentListAST-element outSyntaxComponentRoot {
   $syntax$
@@ -96,7 +96,7 @@ rule <syntax_component_start_symbol> !@galgas3SyntaxComponentListAST-element out
   $syntax$ :> ?* ?*
   $;$  :> ?* ?*
   send semanticDeclarations
-  outSyntaxComponentRoot = @galgas3SyntaxComponentListAST-element. new {
+  outSyntaxComponentRoot = @galgas3SyntaxComponentListAST-element.new {
     !mSyntaxComponentName
     !importedLexiqueReference
     !importedComponentPathList
@@ -106,11 +106,11 @@ rule <syntax_component_start_symbol> !@galgas3SyntaxComponentListAST-element out
     !hasTranslateFeature}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #      N O N T E R M I N A L    D E C L A R A T I O N                          *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <nonterminal_label_declaration> ?let @lstring inLabelName ?!@nonTerminalLabelListAST ioNonTerminalLabelList {
   <formal_parameter_list> ?let @formalParameterListAST mFormalParameters
@@ -120,14 +120,14 @@ rule <nonterminal_label_declaration> ?let @lstring inLabelName ?!@nonTerminalLab
     !@location.here
 }
 
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <nonterminal_declaration> ?!@nonterminalDeclarationListAST ioNonterminalDeclarationList {
   $nonterminal$  :> ?let @string sep ?*
   send sep+ "rule"
   $non_terminal_symbol$ ?let @lstring mNonterminalName indexing ruleDefinition
   var mLabels =@nonTerminalLabelListAST.emptyList{}
-  <nonterminal_label_declaration> !@lstring. new { !"" !@location.here} !?mLabels
+  <nonterminal_label_declaration> !@lstring.new {!"" !@location.here} !?mLabels
   repeat
   while
     $label$
@@ -140,11 +140,11 @@ rule <nonterminal_declaration> ?!@nonterminalDeclarationListAST ioNonterminalDec
     !mLabels
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #      S Y N T A X    R U L E    D E C L A R A T I O N                         *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <syntax_rule_label>
   ?let @lstring inLabelName
@@ -165,7 +165,7 @@ rule <syntax_rule_label>
   send "\n}"
 }
 
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <syntax_rule_declaration> ?!@syntaxRuleListAST ioRuleList {
   $rule$
@@ -186,11 +186,11 @@ rule <syntax_rule_declaration> ?!@syntaxRuleListAST ioRuleList {
     !mLabelList
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #   S Y N T A X    I N S T R U C T I O N    L I S T                            *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <syntax_instruction_list> !@syntaxInstructionList outSyntaxInstructionList {
   outSyntaxInstructionList = @syntaxInstructionList. emptyList
@@ -206,15 +206,15 @@ rule <syntax_instruction_list> !@syntaxInstructionList outSyntaxInstructionList 
   end
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #   N O N T E R M I N A L    C A L L    I N S T R U C T I O N                  *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 #! Non terminal instruction
 
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <syntax_instruction>
   !@syntaxInstructionAST outInstruction {
@@ -222,10 +222,10 @@ rule <syntax_instruction>
   send sep
   @lstring mLabelName # No label : empty string
   select
-    mLabelName = @lstring. new { !"" !@location.here}
+    mLabelName = @lstring.new {!"" !@location.here}
   or
     $parse$
-    mLabelName = @lstring. new { !"parse" !@location.here}
+    mLabelName = @lstring.new {!"parse" !@location.here}
   or
     send "parse "
     $identifier$ ? mLabelName
@@ -241,7 +241,7 @@ rule <syntax_instruction>
     <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationResult
   end
   $;$  :> ?* ?*
-  outInstruction = @nonterminalCallInstruction. new {
+  outInstruction = @nonterminalCallInstruction.new {
     ![mNonterminalName location]
     !mNonterminalName
     !mLabelName
@@ -249,25 +249,25 @@ rule <syntax_instruction>
     !grammarInstructionSyntaxDirectedTranslationResult}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #   T E R M I N A L    C H E C K    I N S T R U C T I O N                      *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 #! Terminal instruction
 
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <actual_input_parameter_list>
   !@actualInputParameterListAST outActualInputParameterList
 
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <syntax_directed_translation_result>
   !@abstractGrammarInstructionSyntaxDirectedTranslationResult outResult
 
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <syntax_instruction>
   !@syntaxInstructionAST outInstruction {
@@ -302,7 +302,7 @@ rule <syntax_instruction>
     <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationPreceedingToken
   end
   $;$ :> ?* ?*
-  outInstruction = @terminalCheckInstruction. new {
+  outInstruction = @terminalCheckInstruction.new {
     ![terminalName location]
     !terminalName
     !actualInputParameterList
@@ -311,15 +311,15 @@ rule <syntax_instruction>
     !grammarInstructionSyntaxDirectedTranslationPreceedingToken}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #   R E P E A T    I N S T R U C T I O N                                       *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 #! Repeat instruction
 
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <syntax_instruction>
   !@syntaxInstructionAST outInstruction {
@@ -339,7 +339,7 @@ rule <syntax_instruction>
   $repeat$ :> ?* ?*
   $;$ :> ?* ?*
   send if generateGalgas3InstructionTerminator () then "%repeat" else "" end
-  outInstruction = @repeatInstruction. new {
+  outInstruction = @repeatInstruction.new {
     !mRepeatInstructionLocation
     !mRepeatedInstructionList
     !endOf_repeated_instructions
@@ -347,15 +347,15 @@ rule <syntax_instruction>
     !endOf_repeat_instruction}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #   S E L E C T    I N S T R U C T I O N                                       *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 #! select instruction
 
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <syntax_instruction>
   !@syntaxInstructionAST outInstruction {
@@ -375,21 +375,21 @@ rule <syntax_instruction>
   $select$ :> ?* ?*
   $;$ :> ?* ?*
   send if generateGalgas3InstructionTerminator () then "%select" else "" end
-  outInstruction = @selectInstruction. new {
+  outInstruction = @selectInstruction.new {
     !mSelectInstructionLocation
     !mSelectBranchList
     !endOf_select_instruction}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #   P A R S E    R E W I N D    I N S T R U C T I O N                          *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 #! parse instruction
 
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <syntax_instruction>
   !@syntaxInstructionAST outInstruction {
@@ -410,24 +410,24 @@ rule <syntax_instruction>
   $parse$ :> ?* ?*
   $;$ :> ?* ?*
   send if generateGalgas3InstructionTerminator () then "%parse" else "" end
-  outInstruction = @parseRewindInstruction. new {
+  outInstruction = @parseRewindInstruction.new {
     !instructionLocation
     !mParseDoBranchList
     !endOfInstruction}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #   P A R S E    W H E N    I N S T R U C T I O N                              *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <branchOfParseWhenInstruction> !@syntaxInstructionList outElseInstructionList {
   $else$
   <syntax_instruction_list> ? outElseInstructionList
 }
 
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <branchOfParseWhenInstruction> !@syntaxInstructionList outElseInstructionList {
   $when$ :> ?let @string sep ?*
@@ -445,7 +445,7 @@ rule <branchOfParseWhenInstruction> !@syntaxInstructionList outElseInstructionLi
   <branchOfParseWhenInstruction> ? elseInstructionList
   let endOfElseInstructions = @location.here
   outElseInstructionList = @syntaxInstructionList. emptyList
-  outElseInstructionList += !@parseWhenInstruction. new {
+  outElseInstructionList += !@parseWhenInstruction.new {
     !instructionLocation
     !whenExpression
     !endOfWhenExpression
@@ -455,7 +455,7 @@ rule <branchOfParseWhenInstruction> !@syntaxInstructionList outElseInstructionLi
     !endOfElseInstructions}
 }
 
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <syntax_instruction>
   !@syntaxInstructionAST outInstruction {
@@ -475,7 +475,7 @@ rule <syntax_instruction>
   $parse$ :> ?* ?*
   $;$ :> ?* ?*
   send if generateGalgas3InstructionTerminator () then "%parse" else "" end
-  outInstruction = @parseWhenInstruction. new {
+  outInstruction = @parseWhenInstruction.new {
     !instructionLocation
     !whenExpression
     !endOfWhenExpression
@@ -485,11 +485,11 @@ rule <syntax_instruction>
     !endOfElseInstructions}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #   P A R S E    L O O P    I N S T R U C T I O N                              *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <syntax_instruction>
   !@syntaxInstructionAST outInstruction {
@@ -508,7 +508,7 @@ rule <syntax_instruction>
   $parse$ :> ?* ?*
   $;$ :> ?* ?*
   send if generateGalgas3InstructionTerminator () then "%parse" else "" end
-  outInstruction = @parseLoopInstruction. new {
+  outInstruction = @parseLoopInstruction.new {
     !instructionLocation
     !variantExpression
     !endOfVariantExpression
@@ -518,15 +518,15 @@ rule <syntax_instruction>
     !endOfInstructionList}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #   P A R S E    R E W I N D    I N S T R U C T I O N                          *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 #! send instruction
 
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <syntax_instruction>
   !@syntaxInstructionAST outInstruction {
@@ -534,11 +534,11 @@ rule <syntax_instruction>
   let instructionLocation = @location.here
   <expression> ?let @semanticExpressionAST sentExpression
   $;$  :> ?* ?*
-  outInstruction = @syntaxSendInstruction. new {
+  outInstruction = @syntaxSendInstruction.new {
     !instructionLocation
     !sentExpression}
 }
 
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 }

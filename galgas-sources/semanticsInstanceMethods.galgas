@@ -97,7 +97,7 @@ override method @dataPredefinedTypeAST getInstanceMethodMap
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"bool" ?t]
   argList += !["" nowhere] !t !@formalArgumentPassingModeAST. argumentOut !"outFileModified"
   [!?outInstanceMethodMap insertKey
-    !@lstring. new { !"writeToFileWhenDifferentContents" !@location.here}
+    !@lstring.new {!"writeToFileWhenDifferentContents" !@location.here}
     !@methodKind. definedAsMember
     !argList
     !@location.here
@@ -113,11 +113,11 @@ override method @stringPredefinedTypeAST getInstanceMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@instanceMethodMap outInstanceMethodMap {
   outInstanceMethodMap = @instanceMethodMap. emptyMap
-  enterInstanceMethodWithInputArgument ( !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" !"inFilePath" !@lstring. new { !"writeToFile" !@location.here} !true )
-  enterInstanceMethodWithInputArgument ( !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" !"inFilePath" !@lstring. new { !"writeToExecutableFile" !@location.here} !true )
-  enterInstanceMethodWithInputArgument ( !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" !"inFilePath" !@lstring. new { !"makeDirectoryAndWriteToFile" !@location.here} !true )
-  enterInstanceMethodWithInputArgument ( !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" !"inFilePath" !@lstring. new { !"makeSymbolicLinkWithPath" !@location.here} !true )
-  enterInstanceMethodWithoutArgument ( !?outInstanceMethodMap !@lstring. new { !"makeDirectory" !@location.here} !true )
+  enterInstanceMethodWithInputArgument ( !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" !"inFilePath" !@lstring.new {!"writeToFile" !@location.here} !true )
+  enterInstanceMethodWithInputArgument ( !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" !"inFilePath" !@lstring.new {!"writeToExecutableFile" !@location.here} !true )
+  enterInstanceMethodWithInputArgument ( !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" !"inFilePath" !@lstring.new {!"makeDirectoryAndWriteToFile" !@location.here} !true )
+  enterInstanceMethodWithInputArgument ( !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" !"inFilePath" !@lstring.new {!"makeSymbolicLinkWithPath" !@location.here} !true )
+  enterInstanceMethodWithoutArgument ( !?outInstanceMethodMap !@lstring.new {!"makeDirectory" !@location.here} !true )
   var argList =@formalParameterSignature.emptyList{}
   @unifiedTypeMap-proxy t
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?t]
@@ -125,7 +125,7 @@ override method @stringPredefinedTypeAST getInstanceMethodMap
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !"bool" ?t]
   argList += !["" nowhere] !t !@formalArgumentPassingModeAST. argumentOut !"outFileModified"
   [!?outInstanceMethodMap insertKey
-    !@lstring. new { !"writeToFileWhenDifferentContents" !@location.here}
+    !@lstring.new {!"writeToFileWhenDifferentContents" !@location.here}
     !@methodKind. definedAsMember
     !argList
     !@location.here
@@ -134,7 +134,7 @@ override method @stringPredefinedTypeAST getInstanceMethodMap
     !"" # No error message
   ]
   [!?outInstanceMethodMap insertKey
-    !@lstring. new { !"writeToExecutableFileWhenDifferentContents" !@location.here}
+    !@lstring.new {!"writeToExecutableFileWhenDifferentContents" !@location.here}
     !@methodKind. definedAsMember
     !argList
     !@location.here

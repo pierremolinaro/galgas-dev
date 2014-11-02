@@ -801,14 +801,14 @@ override method @predefinedTypeAST enterInSemanticContext
     !inCategoryReaderMapForBuildingContext
     !inCategoryModifierMapForBuildingContext
     !?ioSemanticContext
-    !@lstring. new { !mPredefinedTypeName !@location.here}
+    !@lstring.new {!mPredefinedTypeName !@location.here}
     !?readerMap
     !?modifierMap
     !?instanceMethodMap
   )
 #---
   [!?ioSemanticContext.mTypeMap insertKey
-    !@lstring. new { !mPredefinedTypeName !@location.here}
+    !@lstring.new {!mPredefinedTypeName !@location.here}
     !mIsPredefined
     !true # Concrete Type
     !@unifiedTypeMap-proxy. null
@@ -952,7 +952,7 @@ override method @mapDeclarationAST enterInSemanticContext
   end
 #--- Enter "attributeForKey" readers
   for () in  mAttributeList do
-    let accessorName = @lstring. new { ![mAttributeName string] + "ForKey" ![mAttributeName location]}
+    let accessorName = @lstring.new {![mAttributeName string] + "ForKey" ![mAttributeName location]}
     @unifiedTypeMap-proxy attributeTypeIndex
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mAttributeTypeName ?attributeTypeIndex]
     [!?readerMap insertOrReplace
@@ -971,7 +971,7 @@ override method @mapDeclarationAST enterInSemanticContext
     @location insertOrReplaceLocation
     [mInsertOrReplaceDeclarationListAST first ?insertOrReplaceLocation]
     [!?modifierMap insertOrReplace
-      !@lstring. new { !"insertOrReplace" !insertOrReplaceLocation}
+      !@lstring.new {!"insertOrReplace" !insertOrReplaceLocation}
       !@methodKind. definedAsMember
       !insertMethodFormalArgumentList
       !false
@@ -981,7 +981,7 @@ override method @mapDeclarationAST enterInSemanticContext
   end
 #---------- Enter "set...Attribute...forKey" modifiers, and 'with' accessor
   for () in  mAttributeList do
-    let accessorName = @lstring. new { !"set" + [[mAttributeName string] stringByCapitalizingFirstCharacter] + "ForKey" ![mAttributeName location]}
+    let accessorName = @lstring.new {!"set" + [[mAttributeName string] stringByCapitalizingFirstCharacter] + "ForKey" ![mAttributeName location]}
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mAttributeTypeName ?let @unifiedTypeMap-proxy attributeTypeIndex]
     var accessorFormalArgumentList =@formalParameterSignature.emptyList{}
     accessorFormalArgumentList += !["" nowhere] !attributeTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !mAttributeName.string
@@ -1009,7 +1009,7 @@ override method @mapDeclarationAST enterInSemanticContext
 #--- Element type index
   [@unifiedTypeMap-proxy makeProxy
     !?ioSemanticContext.mTypeMap
-    !@lstring. new { !mMapTypeName.string + elementTypeNameSuffix () !mMapTypeName.location}
+    !@lstring.new {!mMapTypeName.string + elementTypeNameSuffix () !mMapTypeName.location}
     ?let @unifiedTypeMap-proxy elementTypeProxy
   ]
 #--- Enter in type map
@@ -1173,7 +1173,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     @unifiedTypeMap-proxy locationTypeIndex
     [@unifiedTypeMap-proxy makeProxyFromString !?ioSemanticContext.mTypeMap !"location" ?locationTypeIndex]
     [!?modifierMap insertKey
-      !@lstring. new { !"openBranch" !@location.here}
+      !@lstring.new {!"openBranch" !@location.here}
       !@methodKind. definedAsMember
       !@formalParameterSignature. emptyList
       !true
@@ -1181,7 +1181,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
       !"" # No error message
     ]
     [!?modifierMap insertKey
-      !@lstring. new { !"closeBranch" !@location.here}
+      !@lstring.new {!"closeBranch" !@location.here}
       !@methodKind. definedAsMember
       !@formalParameterSignature. listWithValue { !["" nowhere] !locationTypeIndex !@formalArgumentPassingModeAST. argumentIn !"inErrorLocation"}
       !true
@@ -1189,7 +1189,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
       !"" # No error message
     ]
     [!?modifierMap insertKey
-      !@lstring. new { !"closeOverride" !@location.here}
+      !@lstring.new {!"closeOverride" !@location.here}
       !@methodKind. definedAsMember
       !@formalParameterSignature. listWithValue { !["" nowhere] !locationTypeIndex !@formalArgumentPassingModeAST. argumentIn !"inErrorLocation"}
       !true
@@ -1197,7 +1197,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
       !"" # No error message
     ]
     [!?instanceMethodMap insertKey
-      !@lstring. new { !"checkAutomatonStates" !@location.here}
+      !@lstring.new {!"checkAutomatonStates" !@location.here}
       !@methodKind. definedAsMember
       !@formalParameterSignature. listWithValue { !["" nowhere] !locationTypeIndex !@formalArgumentPassingModeAST. argumentIn !"inErrorLocation"}
       !@location.here
@@ -1207,7 +1207,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     ]
     for () in  mMapOverrideBlockListAST do
       [!?modifierMap insertKey
-        !@lstring. new { !"openOverrideFor" + [mOverrideBlockName stringByCapitalizingFirstCharacter] !@location.here}
+        !@lstring.new {!"openOverrideFor" + [mOverrideBlockName stringByCapitalizingFirstCharacter] !@location.here}
         !@methodKind. definedAsMember
         !@formalParameterSignature. emptyList
         !true
@@ -1218,7 +1218,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
   end
 #--- Enter "attributeForKey" readers
   for () in  mAttributeList do
-    let accessorName = @lstring. new { ![mAttributeName string] + "ForKey" ![mAttributeName location]}
+    let accessorName = @lstring.new {![mAttributeName string] + "ForKey" ![mAttributeName location]}
     @unifiedTypeMap-proxy attributeTypeIndex
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mAttributeTypeName ?attributeTypeIndex]
     [!?readerMap insertOrReplace
@@ -1234,7 +1234,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
   end
 #---------- Enter "set...Attribute...forKey" modifiers, and 'with' accessor parameter
   for () in  mAttributeList do
-    let accessorName = @lstring. new { !"set" + [[mAttributeName string] stringByCapitalizingFirstCharacter] + "ForKey" ![mAttributeName location]}
+    let accessorName = @lstring.new {!"set" + [[mAttributeName string] stringByCapitalizingFirstCharacter] + "ForKey" ![mAttributeName location]}
     [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mAttributeTypeName ?let @unifiedTypeMap-proxy attributeTypeIndex]
     var accessorFormalArgumentList =@formalParameterSignature.emptyList{}
     accessorFormalArgumentList += !["" nowhere] !attributeTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !mAttributeName.string
@@ -1336,7 +1336,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
   argList += !["" nowhere] !lstringTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !"inLKey"
   argList += !["" nowhere] !mapProxyTypeProxy !@formalArgumentPassingModeAST. argumentOut !"outProxy"
   [!?classMethodMap insertKey
-    !@lstring. new { !"makeProxy" !@location.here}
+    !@lstring.new {!"makeProxy" !@location.here}
     !argList
     !false
   ]
@@ -1346,7 +1346,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
   argList += !["" nowhere] !stringTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn !"inLKey"
   argList += !["" nowhere] !mapProxyTypeProxy !@formalArgumentPassingModeAST. argumentOut !"outProxy"
   [!?classMethodMap insertKey
-    !@lstring. new { !"makeProxyFromString" !@location.here}
+    !@lstring.new {!"makeProxyFromString" !@location.here}
     !argList
     !false
   ]
@@ -1599,7 +1599,7 @@ override method @graphDeclarationAST enterInSemanticContext
   formalParameterList += !["" nowhere] !associatedListTypeProxy !@formalArgumentPassingModeAST. argumentOut !"outUnsortedInformationList"
   formalParameterList += !["" nowhere] !lstringListTypeProxy !@formalArgumentPassingModeAST. argumentOut !"outUnsortedLKeyList"
   [!?instanceMethodMap insertKey
-    !@lstring. new { !"topologicalSort" !@location.here}
+    !@lstring.new {!"topologicalSort" !@location.here}
     !@methodKind. definedAsMember
     !formalParameterList
     !@location.here
@@ -1608,7 +1608,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !"" # No error message
   ]
   [!?instanceMethodMap insertKey
-    !@lstring. new { !"depthFirstTopologicalSort" !@location.here}
+    !@lstring.new {!"depthFirstTopologicalSort" !@location.here}
     !@methodKind. definedAsMember
     !formalParameterList
     !@location.here
@@ -1622,7 +1622,7 @@ override method @graphDeclarationAST enterInSemanticContext
   formalParameterList += !["" nowhere] !associatedListTypeProxy !@formalArgumentPassingModeAST. argumentOut !"outInformationList"
   formalParameterList += !["" nowhere] !lstringListTypeProxy !@formalArgumentPassingModeAST. argumentOut !"outLKeyList"
   [!?instanceMethodMap insertKey
-    !@lstring. new { !"nodesWithNoSuccessor" !@location.here}
+    !@lstring.new {!"nodesWithNoSuccessor" !@location.here}
     !@methodKind. definedAsMember
     !formalParameterList
     !@location.here
@@ -1631,7 +1631,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !"" # No error message
   ]
   [!?instanceMethodMap insertKey
-    !@lstring. new { !"nodesWithNoPredecessor" !@location.here}
+    !@lstring.new {!"nodesWithNoPredecessor" !@location.here}
     !@methodKind. definedAsMember
     !formalParameterList
     !@location.here
@@ -1728,7 +1728,7 @@ override method @graphDeclarationAST enterInSemanticContext
   )
 #--- Constructor 'emptyGraph'
   [!?constructorMap insertKey
-    !@lstring. new { !"emptyGraph" !@location.here}
+    !@lstring.new {!"emptyGraph" !@location.here}
     !@functionSignature. emptyList
     !false # No compiler argument
     !graphTypeProxy
@@ -1752,7 +1752,7 @@ override method @graphDeclarationAST enterInSemanticContext
   drop formalParameterList
 #--- setter 'removeEdgeToDominators'
   [!?modifierMap insertKey
-    !@lstring. new { !"removeEdgesToDominators" !@location.here}
+    !@lstring.new {!"removeEdgesToDominators" !@location.here}
     !@methodKind. definedAsMember
     !@formalParameterSignature. emptyList
     !false # No compiler argument
@@ -1763,7 +1763,7 @@ override method @graphDeclarationAST enterInSemanticContext
   formalParameterList = @formalParameterSignature. emptyList
   formalParameterList += !["" nowhere] !stringTypeProxy !@formalArgumentPassingModeAST. argumentIn !"inNodeName"
   [!?modifierMap insertKey
-    !@lstring. new { !"removeEdgesToNode" !@location.here}
+    !@lstring.new {!"removeEdgesToNode" !@location.here}
     !@methodKind. definedAsMember
     !formalParameterList
     !true # Compiler argument
@@ -1776,7 +1776,7 @@ override method @graphDeclarationAST enterInSemanticContext
   formalParameterList += !["" nowhere] !lstringTypeProxy !@formalArgumentPassingModeAST. argumentIn !"inSourceNodeLKey"
   formalParameterList += !["" nowhere] !lstringTypeProxy !@formalArgumentPassingModeAST. argumentIn !"inTargetNodeLKey"
   [!?modifierMap insertKey
-    !@lstring. new { !"addEdge" !@location.here}
+    !@lstring.new {!"addEdge" !@location.here}
     !@methodKind. definedAsMember
     !formalParameterList
     !false # No compiler argument
@@ -1788,7 +1788,7 @@ override method @graphDeclarationAST enterInSemanticContext
   formalParameterList = @formalParameterSignature. emptyList
   formalParameterList += !["" nowhere] !lstringTypeProxy !@formalArgumentPassingModeAST. argumentIn !"inNodeLKey"
   [!?modifierMap insertKey
-    !@lstring. new { !"noteNode" !@location.here}
+    !@lstring.new {!"noteNode" !@location.here}
     !@methodKind. definedAsMember
     !formalParameterList
     !false # No compiler argument
@@ -1953,7 +1953,7 @@ proc recursivelyEnumerateDirectories
     if [inTextFileExtensionMap hasKey ![mValue pathExtension]] then
       @string absoluteFilePath = inAbsoluteSourcePath + "/" + mValue
       [!?outWrapperFileMap insertKey
-        !@lstring. new { !mValue !@location.here}
+        !@lstring.new {!mValue !@location.here}
         !absoluteFilePath
         !true # Text File
         !currentDirectoryIndex
@@ -1963,7 +1963,7 @@ proc recursivelyEnumerateDirectories
     elsif [inBinaryFileExtensionMap hasKey ![mValue pathExtension]] then
       @string absoluteFilePath = inAbsoluteSourcePath + "/" + mValue
       [!?outWrapperFileMap insertKey
-        !@lstring. new { !mValue !@location.here}
+        !@lstring.new {!mValue !@location.here}
         !absoluteFilePath
         !false # Binary file
         !currentDirectoryIndex
@@ -1990,7 +1990,7 @@ proc recursivelyEnumerateDirectories
       !?ioWrapperDirectoryIndex
     )
     [!?outWrapperDirectoryMap insertKey
-      !@lstring. new { !mValue !@location.here}
+      !@lstring.new {!mValue !@location.here}
       !internalWrapperFileMap
       !internalWrapperDirectoryMap
       !theDirectoryIndex
@@ -2164,7 +2164,7 @@ override method @listDeclarationAST enterInSemanticContext
 #--- Element type index
   [@unifiedTypeMap-proxy makeProxy
     !?ioSemanticContext.mTypeMap
-    !@lstring. new { !mListTypeName.string + elementTypeNameSuffix () !mListTypeName.location}
+    !@lstring.new {!mListTypeName.string + elementTypeNameSuffix () !mListTypeName.location}
     ?let @unifiedTypeMap-proxy listElementTypeIndex
   ]
 #--- Attribute description
@@ -2182,7 +2182,7 @@ override method @listDeclarationAST enterInSemanticContext
   var constructorMap =@constructorMap.emptyMap{}
   enterConstructorWithoutArgument ( !?constructorMap !?ioSemanticContext.mTypeMap !"emptyList" ![mListTypeName string] !false )
   [!?constructorMap insertKey
-    !@lstring. new { !"listWithValue" !@location.here}
+    !@lstring.new {!"listWithValue" !@location.here}
     !constructorAttributeTypeList
     !false
     !listTypeIndex
@@ -2196,7 +2196,7 @@ override method @listDeclarationAST enterInSemanticContext
   for () in  typedAttributeList do
     if mHasGetter then
       [!?readerMap insertOrReplace
-        !@lstring. new { ![mAttributeName string] + "AtIndex" ![mAttributeName location]}
+        !@lstring.new {![mAttributeName string] + "AtIndex" ![mAttributeName location]}
         !@methodKind. definedAsMember
         !@functionSignature {!["" nowhere] !uintType !"inIndex"}
         !@location.here
@@ -2210,7 +2210,7 @@ override method @listDeclarationAST enterInSemanticContext
 #------------------------- Instance methods
   var instanceMethodMap =@instanceMethodMap.emptyMap{}
   [!?instanceMethodMap insertKey
-    !@lstring. new { !"first" !@location.here}
+    !@lstring.new {!"first" !@location.here}
     !@methodKind. definedAsMember
     !modifierOutputFormalArgumentList
     !@location.here
@@ -2219,7 +2219,7 @@ override method @listDeclarationAST enterInSemanticContext
     !""
   ]
   [!?instanceMethodMap insertKey
-    !@lstring. new { !"last" !@location.here}
+    !@lstring.new {!"last" !@location.here}
     !@methodKind. definedAsMember
     !modifierOutputFormalArgumentList
     !@location.here
@@ -2230,7 +2230,7 @@ override method @listDeclarationAST enterInSemanticContext
 #----------------------------------------- Modifiers
   var modifierMap =@modifierMap.emptyMap{}
   [!?modifierMap insertOrReplace
-    !@lstring. new { !"popFirst" !@location.here}
+    !@lstring.new {!"popFirst" !@location.here}
     !@methodKind. definedAsMember
     !modifierOutputFormalArgumentList
     !true
@@ -2238,7 +2238,7 @@ override method @listDeclarationAST enterInSemanticContext
     !""
   ]
   [!?modifierMap insertOrReplace
-    !@lstring. new { !"popLast" !@location.here}
+    !@lstring.new {!"popLast" !@location.here}
     !@methodKind. definedAsMember
     !modifierOutputFormalArgumentList
     !true
@@ -2247,7 +2247,7 @@ override method @listDeclarationAST enterInSemanticContext
   ]
   modifierOutputFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST. argumentConstantIn !"inIndex"
   [!?modifierMap insertOrReplace
-    !@lstring. new { !"removeAtIndex" !@location.here}
+    !@lstring.new {!"removeAtIndex" !@location.here}
     !@methodKind. definedAsMember
     !modifierOutputFormalArgumentList
     !true
@@ -2261,7 +2261,7 @@ override method @listDeclarationAST enterInSemanticContext
       setterFormalArgumentList += !["" nowhere] !mAttributeTypeProxy !@formalArgumentPassingModeAST. argumentConstantIn !mAttributeName.string
       setterFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST. argumentConstantIn !mAttributeName.string
       [!?modifierMap insertOrReplace
-        !@lstring. new { !"set" + [[mAttributeName string] stringByCapitalizingFirstCharacter] + "AtIndex" ![mAttributeName location]}
+        !@lstring.new {!"set" + [[mAttributeName string] stringByCapitalizingFirstCharacter] + "AtIndex" ![mAttributeName location]}
         !@methodKind. definedAsMember
         !setterFormalArgumentList
         !true
@@ -2273,7 +2273,7 @@ override method @listDeclarationAST enterInSemanticContext
 #--- setter 'insertAtIndex'
   modifierInputFormalArgumentList += !["" nowhere] !uintType !@formalArgumentPassingModeAST. argumentConstantIn !"inInsertionIndex"
   [!?modifierMap insertOrReplace
-    !@lstring. new { !"insertAtIndex" !@location.here}
+    !@lstring.new {!"insertAtIndex" !@location.here}
     !@methodKind. definedAsMember
     !modifierInputFormalArgumentList
     !true
@@ -2340,7 +2340,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
 #--- Element type index
   [@unifiedTypeMap-proxy makeProxy
     !?ioSemanticContext.mTypeMap
-    !@lstring. new { !mSortedListTypeName.string + elementTypeNameSuffix () !mSortedListTypeName.location}
+    !@lstring.new {!mSortedListTypeName.string + elementTypeNameSuffix () !mSortedListTypeName.location}
     ?let @unifiedTypeMap-proxy listElementTypeIndex
   ]
 #--- Enumeration description
@@ -2361,7 +2361,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
   var constructorMap =@constructorMap.emptyMap{}
   enterConstructorWithoutArgument ( !?constructorMap !?ioSemanticContext.mTypeMap !"emptySortedList" ![mSortedListTypeName string] !false )
   [!?constructorMap insertKey
-    !@lstring. new { !"sortedListWithValue" !@location.here}
+    !@lstring.new {!"sortedListWithValue" !@location.here}
     !constructorAttributeTypeList
     !false
     !listTypeIndex
@@ -2372,7 +2372,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
 #--- Modifiers
   var modifierMap =@modifierMap.emptyMap{}
   [!?modifierMap insertOrReplace
-    !@lstring. new { !"popGreatest" !@location.here}
+    !@lstring.new {!"popGreatest" !@location.here}
     !@methodKind. definedAsMember
     !modifierFormalArgumentList
     !true
@@ -2380,7 +2380,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !"" # No error message
   ]
   [!?modifierMap insertOrReplace
-    !@lstring. new { !"popSmallest" !@location.here}
+    !@lstring.new {!"popSmallest" !@location.here}
     !@methodKind. definedAsMember
     !modifierFormalArgumentList
     !true
@@ -2390,7 +2390,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
 #--- Instance methods
   var instanceMethodMap =@instanceMethodMap.emptyMap{}
   [!?instanceMethodMap insertKey
-    !@lstring. new { !"greatest" !@location.here}
+    !@lstring.new {!"greatest" !@location.here}
     !@methodKind. definedAsMember
     !modifierFormalArgumentList
     !@location.here
@@ -2399,7 +2399,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !"" # No error message
   ]
   [!?instanceMethodMap insertKey
-    !@lstring. new { !"smallest" !@location.here}
+    !@lstring.new {!"smallest" !@location.here}
     !@methodKind. definedAsMember
     !modifierFormalArgumentList
     !@location.here
@@ -2486,7 +2486,7 @@ override method @structDeclarationAST enterInSemanticContext
     ]
   end
   [!?constructorMap insertKey
-    !@lstring. new { !"new" !@location.here}
+    !@lstring.new {!"new" !@location.here}
     !constructorAttributeTypeList
     !false
     !structTypeIndex
@@ -2692,7 +2692,7 @@ override method @classDeclarationAST enterInSemanticContext
   var constructorMap =@constructorMap.emptyMap{}
   if not mIsAbstract then
     [!?constructorMap insertKey
-      !@lstring. new { !"new" !@location.here}
+      !@lstring.new {!"new" !@location.here}
       !constructorAttributeTypeList
       !false
       !classIndex
@@ -2732,7 +2732,7 @@ override method @classDeclarationAST enterInSemanticContext
   for () in  currentClassTypedAttributeList do
     if mHasSetter then
       [!?modifierMap insertKey
-        !@lstring. new { !"set"+ [[mAttributeName string] stringByCapitalizingFirstCharacter] !@location.here}
+        !@lstring.new {!"set"+ [[mAttributeName string] stringByCapitalizingFirstCharacter] !@location.here}
         !@methodKind. definedAsMember
         !@formalParameterSignature. listWithValue { !["" nowhere] !mAttributeTypeProxy !@formalArgumentPassingModeAST. argumentIn !mAttributeName.string}
         !false # No compiler argument
@@ -2916,7 +2916,7 @@ override method @arrayDeclarationAST enterInSemanticContext
   end
 #--- Constructor
   [!?constructorMap insertKey
-    !@lstring. new { !"new" !@location.here}
+    !@lstring.new {!"new" !@location.here}
     !uintArgs
     !false
     !arrayTypeIndex
@@ -2926,7 +2926,7 @@ override method @arrayDeclarationAST enterInSemanticContext
   enterBaseReaderWithArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"sizeForAxis" !"uint" !"inAxisIndex" !returnedTypeName:"uint" !true )
   enterBaseReaderWithArgument ( !?readerMap !?ioSemanticContext.mTypeMap !"rangeForAxis" !"uint" !"inAxisIndex" !returnedTypeName:"range" !true )
   [!?readerMap insertOrReplace
-    !@lstring. new { !"isValueValidAtIndex" !@location.here}
+    !@lstring.new {!"isValueValidAtIndex" !@location.here}
     !@methodKind. definedAsMember
     !uintArgs
     !@location.here
@@ -2936,7 +2936,7 @@ override method @arrayDeclarationAST enterInSemanticContext
     !"" # No Error message
   ]
   [!?readerMap insertOrReplace
-    !@lstring. new { !"valueAtIndex" !@location.here}
+    !@lstring.new {!"valueAtIndex" !@location.here}
     !@methodKind. definedAsMember
     !uintArgs
     !@location.here
@@ -3093,7 +3093,7 @@ override method @listmapDeclarationAST enterInSemanticContext
 #--- Element type index
   [@unifiedTypeMap-proxy makeProxy
     !?ioSemanticContext.mTypeMap
-    !@lstring. new { !mListmapTypeName.string + elementTypeNameSuffix () !mListmapTypeName.location}
+    !@lstring.new {!mListmapTypeName.string + elementTypeNameSuffix () !mListmapTypeName.location}
     ?let @unifiedTypeMap-proxy listElementTypeIndex
   ]
 #--- Enter type in type map
@@ -3256,7 +3256,7 @@ override method @predefinedTypeAST enterDeclarationInGraph
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
-  let key = @lstring. new { !"@" + mPredefinedTypeName !@location.here}
+  let key = @lstring.new {!"@" + mPredefinedTypeName !@location.here}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
 }
 
@@ -3268,10 +3268,10 @@ override method @galgas3GrammarComponentAST enterDeclarationInGraph
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
-  let key = @lstring. new { !"grammar " + mGrammarComponentName !mGrammarComponentName.location}
+  let key = @lstring.new {!"grammar " + mGrammarComponentName !mGrammarComponentName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   for (s) in mSyntaxComponents do
-    [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring. new { !"syntax " + s !s.location}]
+    [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"syntax " + s !s.location}]
   end
 }
 
@@ -3283,14 +3283,14 @@ override method @galgas3SyntaxComponentAST enterDeclarationInGraph
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
-  let key = @lstring. new { !"syntax " + mSyntaxComponentName !mSyntaxComponentName.location}
+  let key = @lstring.new {!"syntax " + mSyntaxComponentName !mSyntaxComponentName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring. new { !"lexique " + mLexiqueName !mLexiqueName.location}]
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"lexique " + mLexiqueName !mLexiqueName.location}]
   for () in mRuleList do
     for () in mLabelList do
       for () in mFormalArguments do
         switch mFormalArgumentPassingMode
-          case argumentIn : [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring. new { !"@" + mFormalArgumentTypeName !mFormalArgumentTypeName.location}] ;
+          case argumentIn : [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mFormalArgumentTypeName !mFormalArgumentTypeName.location}] ;
           case argumentOut, argumentInOut, argumentConstantIn :
         end
       end
@@ -3306,7 +3306,7 @@ override method @lexiqueComponentAST enterDeclarationInGraph
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
-  let key = @lstring. new { !"lexique " + mLexiqueComponentName !mLexiqueComponentName.location}
+  let key = @lstring.new {!"lexique " + mLexiqueComponentName !mLexiqueComponentName.location}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
 }
 
@@ -3318,13 +3318,13 @@ override method @classDeclarationAST enterDeclarationInGraph
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
-  let key = @lstring. new { !"@" + mClassTypeName ![mClassTypeName location]}
+  let key = @lstring.new {!"@" + mClassTypeName ![mClassTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   if mSuperClassName.string != "" then
-    [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring. new { !"@" + mSuperClassName !mSuperClassName.location}]
+    [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mSuperClassName !mSuperClassName.location}]
   end
   for () in  mAttributeList do
-    [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring. new { !"@" + mAttributeTypeName !mSuperClassName.location}]
+    [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mAttributeTypeName !mSuperClassName.location}]
   end
 }
 
@@ -3336,10 +3336,10 @@ override method @listDeclarationAST enterDeclarationInGraph
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
-  let key = @lstring. new { !"@" + mListTypeName ![mListTypeName location]}
+  let key = @lstring.new {!"@" + mListTypeName ![mListTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   for () in  mAttributeList do
-    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring. new { !"@" + mAttributeTypeName ![mAttributeTypeName location]}]
+    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mAttributeTypeName ![mAttributeTypeName location]}]
   end
 }
 
@@ -3351,10 +3351,10 @@ override method @structDeclarationAST enterDeclarationInGraph
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
-  let key = @lstring. new { !"@" + mStructTypeName ![mStructTypeName location]}
+  let key = @lstring.new {!"@" + mStructTypeName ![mStructTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   for () in  mAttributeList do
-    [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring. new { !"@" + mAttributeTypeName ![mAttributeTypeName location]}]
+    [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mAttributeTypeName ![mAttributeTypeName location]}]
   end
 }
 
@@ -3366,11 +3366,11 @@ override method @enumDeclarationAST enterDeclarationInGraph
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
-  let key = @lstring. new { !"@" + mEnumTypeName ![mEnumTypeName location]}
+  let key = @lstring.new {!"@" + mEnumTypeName ![mEnumTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   for () in mConstantList do
     for () in mAssociatedValueDefinitionList do
-      [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring. new { !"@" + mValue0 ![mValue0 location]}]
+      [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mValue0 ![mValue0 location]}]
     end
   end
 }
@@ -3383,10 +3383,10 @@ override method @sortedListDeclarationAST enterDeclarationInGraph
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
-  let key = @lstring. new { !"@" + mSortedListTypeName ![mSortedListTypeName location]}
+  let key = @lstring.new {!"@" + mSortedListTypeName ![mSortedListTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   for () in  mAttributeList do
-    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring. new { !"@" + mAttributeTypeName ![mAttributeTypeName location]}]
+    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mAttributeTypeName ![mAttributeTypeName location]}]
   end
 }
 
@@ -3398,9 +3398,9 @@ override method @arrayDeclarationAST enterDeclarationInGraph
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
-  let key = @lstring. new { !"@" + mArrayTypeName ![mArrayTypeName location]}
+  let key = @lstring.new {!"@" + mArrayTypeName ![mArrayTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring. new { !"@" + mElementTypeName ![mElementTypeName location]}]
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mElementTypeName ![mElementTypeName location]}]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -3411,9 +3411,9 @@ override method @listmapDeclarationAST enterDeclarationInGraph
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
-  let key = @lstring. new { !"@" + mListmapTypeName ![mListmapTypeName location]}
+  let key = @lstring.new {!"@" + mListmapTypeName ![mListmapTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring. new { !"@" + mAssociatedListTypeName ![mAssociatedListTypeName location]}]
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mAssociatedListTypeName ![mAssociatedListTypeName location]}]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -3424,10 +3424,10 @@ override method @mapDeclarationAST enterDeclarationInGraph
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
-  let key = @lstring. new { !"@" + mMapTypeName ![mMapTypeName location]}
+  let key = @lstring.new {!"@" + mMapTypeName ![mMapTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   for () in  mAttributeList do
-    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring. new { !"@" + mAttributeTypeName ![mAttributeTypeName location]}]
+    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mAttributeTypeName ![mAttributeTypeName location]}]
   end
 }
 
@@ -3439,10 +3439,10 @@ override method @uniqueMapDeclarationAST enterDeclarationInGraph
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
-  let key = @lstring. new { !"@" + mMapTypeName ![mMapTypeName location]}
+  let key = @lstring.new {!"@" + mMapTypeName ![mMapTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
   for () in  mAttributeList do
-    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring. new { !"@" + mAttributeTypeName ![mAttributeTypeName location]}]
+    [!?ioSemanticTypePrecedenceGraph noteNode !@lstring.new {!"@" + mAttributeTypeName ![mAttributeTypeName location]}]
   end
 }
 
@@ -3454,9 +3454,9 @@ override method @mapProxyDeclarationAST enterDeclarationInGraph
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
-  let key = @lstring. new { !"@" + mMapProxyTypeName ![mMapProxyTypeName location]}
+  let key = @lstring.new {!"@" + mMapProxyTypeName ![mMapProxyTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring. new { !"@" + mAssociatedMapTypeName ![mAssociatedMapTypeName location]}]
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mAssociatedMapTypeName ![mAssociatedMapTypeName location]}]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -3467,9 +3467,9 @@ override method @graphDeclarationAST enterDeclarationInGraph
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
-  let key = @lstring. new { !"@" + mGraphTypeName ![mGraphTypeName location]}
+  let key = @lstring.new {!"@" + mGraphTypeName ![mGraphTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring. new { !"@" + mAssociatedListTypeName ![mAssociatedListTypeName location]}]
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mAssociatedListTypeName ![mAssociatedListTypeName location]}]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -3480,7 +3480,7 @@ override method @externTypeDeclarationAST enterDeclarationInGraph
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
-  let key = @lstring. new { !"@" + mExternTypeName ![mExternTypeName location]}
+  let key = @lstring.new {!"@" + mExternTypeName ![mExternTypeName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
 }
 
@@ -3602,9 +3602,9 @@ override method @categoryReaderAST enterDeclarationInGraph
   ?!@categoryReaderMapForBuildingContext ioCategoryReaderMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
-  let key = @lstring. new { !"category reader @" + mTypeName + " " + mCategoryReaderName ![mCategoryReaderName location]}
+  let key = @lstring.new {!"category reader @" + mTypeName + " " + mCategoryReaderName ![mCategoryReaderName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring. new { !"@" + mTypeName ![mTypeName location]}]
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mTypeName ![mTypeName location]}]
 #---
   if not [ioCategoryReaderMapForBuildingContext hasKey ![mTypeName string]] then
     [!?ioCategoryReaderMapForBuildingContext insertKey
@@ -3629,9 +3629,9 @@ override method @categoryMethodAST enterDeclarationInGraph
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
-  let key = @lstring. new { !"category method @" + mTypeName + " " + mCategoryMethodName ![mCategoryMethodName location]}
+  let key = @lstring.new {!"category method @" + mTypeName + " " + mCategoryMethodName ![mCategoryMethodName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring. new { !"@" + mTypeName ![mTypeName location]}]
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mTypeName ![mTypeName location]}]
 #---
   if not [ioCategoryMethodMapForBuildingContext hasKey ![mTypeName string]] then
     [!?ioCategoryMethodMapForBuildingContext insertKey
@@ -3655,9 +3655,9 @@ override method @categoryModifierAST enterDeclarationInGraph
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
-  let key = @lstring. new { !"category setter @" + mTypeName + " " + mCategoryModifierName ![mCategoryModifierName location]}
+  let key = @lstring.new {!"category setter @" + mTypeName + " " + mCategoryModifierName ![mCategoryModifierName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring. new { !"@" + mTypeName ![mTypeName location]}]
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mTypeName ![mTypeName location]}]
 #---
   if not [ioCategoryModifierMapForBuildingContext hasKey ![mTypeName string]] then
     [!?ioCategoryModifierMapForBuildingContext insertKey
@@ -3692,9 +3692,9 @@ override method @abstractCategoryReaderAST enterDeclarationInGraph
   ?!@categoryReaderMapForBuildingContext ioCategoryReaderMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
-  let key = @lstring. new { !"category reader @" + mTypeName + " " + mAbstractCategoryReaderName ![mAbstractCategoryReaderName location]}
+  let key = @lstring.new {!"category reader @" + mTypeName + " " + mAbstractCategoryReaderName ![mAbstractCategoryReaderName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring. new { !"@" + mTypeName ![mTypeName location]}]
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mTypeName ![mTypeName location]}]
 #---
   if not [ioCategoryReaderMapForBuildingContext hasKey ![mTypeName string]] then
     [!?ioCategoryReaderMapForBuildingContext insertKey
@@ -3719,9 +3719,9 @@ override method @abstractCategoryMethodAST enterDeclarationInGraph
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
-  let key = @lstring. new { !"category method @" + mTypeName + " " + mAbstractCategoryMethodName ![mAbstractCategoryMethodName location]}
+  let key = @lstring.new {!"category method @" + mTypeName + " " + mAbstractCategoryMethodName ![mAbstractCategoryMethodName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring. new { !"@" + mTypeName ![mTypeName location]}]
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mTypeName ![mTypeName location]}]
 #---
   if not [ioCategoryMethodMapForBuildingContext hasKey ![mTypeName string]] then
     [!?ioCategoryMethodMapForBuildingContext insertKey
@@ -3745,9 +3745,9 @@ override method @abstractCategoryModifierAST enterDeclarationInGraph
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
   ?!@categoryModifierMapForBuildingContext ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList {
-  let key = @lstring. new { !"category setter @" + mTypeName + " " + mAbstractCategoryModifierName ![mAbstractCategoryModifierName location]}
+  let key = @lstring.new {!"category setter @" + mTypeName + " " + mAbstractCategoryModifierName ![mAbstractCategoryModifierName location]}
   [!?ioSemanticTypePrecedenceGraph addNode !key !self]
-  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring. new { !"@" + mTypeName ![mTypeName location]}]
+  [!?ioSemanticTypePrecedenceGraph addEdge !key !@lstring.new {!"@" + mTypeName ![mTypeName location]}]
 #---
   if not [ioCategoryModifierMapForBuildingContext hasKey ![mTypeName string]] then
     [!?ioCategoryModifierMapForBuildingContext insertKey
@@ -3786,9 +3786,9 @@ override method @mapDeclarationAST addAssociatedElement
       !mAttributeName
       !@lstringlist. emptyList
   end
-  ioSemanticDeclarationList += !@structDeclarationAST. new {
+  ioSemanticDeclarationList += !@structDeclarationAST.new {
     !mIsPredefined
-    !@lstring. new { !mMapTypeName.string + elementTypeNameSuffix () !mMapTypeName.location}
+    !@lstring.new {!mMapTypeName.string + elementTypeNameSuffix () !mMapTypeName.location}
     !structAttributeList
     !""}
 }
@@ -3805,9 +3805,9 @@ override method @listDeclarationAST addAssociatedElement
       !mAttributeName
       !@lstringlist. emptyList
   end
-  ioSemanticDeclarationList += !@structDeclarationAST. new {
+  ioSemanticDeclarationList += !@structDeclarationAST.new {
     !mIsPredefined
-    !@lstring. new { !mListTypeName.string + elementTypeNameSuffix () !mListTypeName.location}
+    !@lstring.new {!mListTypeName.string + elementTypeNameSuffix () !mListTypeName.location}
     !structAttributeList
     !""}
 }
@@ -3824,9 +3824,9 @@ override method @sortedListDeclarationAST addAssociatedElement
       !mAttributeName
       !@lstringlist. emptyList
   end
-  ioSemanticDeclarationList += !@structDeclarationAST. new {
+  ioSemanticDeclarationList += !@structDeclarationAST.new {
     !mIsPredefined
-    !@lstring. new { !mSortedListTypeName.string + elementTypeNameSuffix () !mSortedListTypeName.location}
+    !@lstring.new {!mSortedListTypeName.string + elementTypeNameSuffix () !mSortedListTypeName.location}
     !structAttributeList
     !""}
 }
@@ -3847,9 +3847,9 @@ override method @listmapDeclarationAST addAssociatedElement
     !["mList" nowhere]
     !@lstringlist. emptyList
 #---
-  ioSemanticDeclarationList += !@structDeclarationAST. new {
+  ioSemanticDeclarationList += !@structDeclarationAST.new {
     !mIsPredefined
-    !@lstring. new { !mListmapTypeName.string + elementTypeNameSuffix () !mListmapTypeName.location}
+    !@lstring.new {!mListmapTypeName.string + elementTypeNameSuffix () !mListmapTypeName.location}
     !structAttributeList
     !""}
 }

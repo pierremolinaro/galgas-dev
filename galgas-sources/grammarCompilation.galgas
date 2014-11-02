@@ -1,8 +1,8 @@
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  Grammar component compilation                                            *
+#  Grammar component compilation                                                                                       *
 #                                                                                                                      *
-#  Copyright (C) 2009, ..., 2011 Pierre Molinaro.                           *
+#  Copyright (C) 2009, ..., 2011 Pierre Molinaro.                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
 #  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
@@ -142,7 +142,7 @@ proc handleNonTerminalDeclarationsFromRuleList
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
-#                     transformInstructionList                              *
+#                     transformInstructionList                                                                         *
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract method @syntaxInstructionAST transformInstruction
@@ -201,7 +201,7 @@ override method @terminalCheckInstruction transformInstruction
     terminalSymbolIndex = [ioActuallyUsedTerminalSymbolMap count]
     [!?ioActuallyUsedTerminalSymbolMap insertKey !mTerminalName !terminalSymbolIndex]
   end
-  ioSyntaxInstructionList += !@terminalInstructionForGrammarAnalysis. new {
+  ioSyntaxInstructionList += !@terminalInstructionForGrammarAnalysis.new {
     !mInstructionLocation
     !mTerminalName
     !terminalSymbolIndex}
@@ -216,7 +216,7 @@ override method @nonterminalCallInstruction transformInstruction
   ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList {
   @uint nonTerminalSymbolIndex
   [inNonTerminalSymbolMap searchKey !mNonterminalName ?nonTerminalSymbolIndex ?*]
-  ioSyntaxInstructionList += !@nonTerminalInstructionForGrammarAnalysis. new {
+  ioSyntaxInstructionList += !@nonTerminalInstructionForGrammarAnalysis.new {
     !mInstructionLocation
     !mNonterminalName
     !nonTerminalSymbolIndex}
@@ -254,7 +254,7 @@ override method @repeatInstruction transformInstruction
     repeatBranchList += !syntaxInstructionList
   end
 
-  ioSyntaxInstructionList += !@repeatInstructionForGrammarAnalysis. new {
+  ioSyntaxInstructionList += !@repeatInstructionForGrammarAnalysis.new {
     !mInstructionLocation
     !repeatBranchList
     !addedNonTerminalIndex}
@@ -283,7 +283,7 @@ override method @selectInstruction transformInstruction
     selectBranchList += !syntaxInstructionList
   end
 
-  ioSyntaxInstructionList += !@selectInstructionForGrammarAnalysis. new {
+  ioSyntaxInstructionList += !@selectInstructionForGrammarAnalysis.new {
     !mInstructionLocation
     !selectBranchList
     !addedNonTerminalIndex}
@@ -379,7 +379,7 @@ proc buildRuleList
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    G R A M M A R    H E A D E R    F I L E    G E N E R A T I O N         *
+#    G R A M M A R    H E A D E R    F I L E    G E N E R A T I O N                                                    *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -409,7 +409,7 @@ filewrapper grammarGenerationTemplate in "../generation_templates/grammar_genera
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#      C O M P I L E    G R A M M A R    C O M P O N E N T                  *
+#      C O M P I L E    G R A M M A R    C O M P O N E N T                                                             *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -423,7 +423,7 @@ proc parseGrammarComponent
   else
     grammar grammarLL1grammar in inSourceFile ?outGrammarComponentRoot
     [!?ioParsedComponentStruct.mParsedGrammarComponentMap insertKey
-      !@lstring. new { !basename !@location.here}
+      !@lstring.new {!basename !@location.here}
       !inSourceFile
       !outGrammarComponentRoot
     ]
@@ -432,7 +432,7 @@ proc parseGrammarComponent
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#   Extern routine that performs grammar analysis                           *
+#   Extern routine that performs grammar analysis                                                                      *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -454,7 +454,7 @@ extern proc grammarAnalysisAndGeneration
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#      C O M P I L E    G R A M M A R    C O M P O N E N T                  *
+#      C O M P I L E    G R A M M A R    C O M P O N E N T                                                             *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -488,12 +488,12 @@ proc compileGrammarComponentFromAST
       @string syntaxComponentName = [[mValue lastPathComponent] stringByDeletingPathExtension]
       @galgas3SyntaxComponentListAST-element syntaxComponentRoot
       if [[ioParsedComponentStruct mParsedSyntaxComponentMap] hasKey !syntaxComponentName] then
-        [[ioParsedComponentStruct mParsedSyntaxComponentMap] searchKey !@lstring. new { !syntaxComponentName !@location.here} ?* ?syntaxComponentRoot]
+        [[ioParsedComponentStruct mParsedSyntaxComponentMap] searchKey !@lstring.new {!syntaxComponentName !@location.here} ?* ?syntaxComponentRoot]
       else
         let @string sourceFilePath = [mValue absolutePathFromPath ![inSourceFile stringByDeletingLastPathComponent]]
-        let @lstring lSourceFilePath = @lstring. new { !sourceFilePath ![mValue location]}
+        let @lstring lSourceFilePath = @lstring.new {!sourceFilePath ![mValue location]}
         grammar syntaxSLRgrammar in lSourceFilePath ?syntaxComponentRoot
-        [!?ioParsedComponentStruct.mParsedSyntaxComponentMap insertKey !@lstring. new { !syntaxComponentName ![mValue location]} !lSourceFilePath !syntaxComponentRoot]
+        [!?ioParsedComponentStruct.mParsedSyntaxComponentMap insertKey !@lstring.new {!syntaxComponentName ![mValue location]} !lSourceFilePath !syntaxComponentRoot]
       end
     #--- Check translate feature
       if inGrammarComponentRoot.mHasTranslateFeature & not syntaxComponentRoot.mHasTranslateFeature then
@@ -540,7 +540,7 @@ proc compileGrammarComponentFromAST
 #------------------------ Get lexique component, for knowing if there are "indexing" declaration
   @galgas3LexiqueComponentListAST-element lexiqueComponentAST
   parseLexiqueComponent (
-    !@lstring. new { ![lexiqueComponentPath absolutePathFromPath ![inSourceFile stringByDeletingLastPathComponent]] ![lexiqueComponentPath location]}
+    !@lstring.new {![lexiqueComponentPath absolutePathFromPath ![inSourceFile stringByDeletingLastPathComponent]] ![lexiqueComponentPath location]}
     !?ioParsedComponentStruct
     ?lexiqueComponentAST
   )

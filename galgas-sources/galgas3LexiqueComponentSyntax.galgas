@@ -85,7 +85,7 @@ rule <declaration>
     indexingListAST += !indexName !indexComment
   end
   $}$
-  ioDeclarations.mDeclarationList += !@lexiqueComponentAST. new {
+  ioDeclarations.mDeclarationList += !@lexiqueComponentAST.new {
     !false # Is not predefined
     !lexiqueComponentName
     !isTemplate
@@ -134,7 +134,7 @@ rule <template_replacement> ?!@templateReplacementListAST ioTemplateReplacement 
   or
     $->$
     $literal_string$ ?replacementString
-    replacementFunction = @lstring. new { !"" !@location.here}
+    replacementFunction = @lstring.new {!"" !@location.here}
   end
   ioTemplateReplacement += !matchString !replacementString !replacementFunction
 }
@@ -155,7 +155,7 @@ rule <lexical_message_declaration>
 rule <lexical_implicit_rule> ?!@lexicalRuleListAST ioLexicalImplicitRuleList {
   $list$
   $identifier$ ?let @lstring listName
-  ioLexicalImplicitRuleList += !@lexicalImplicitRuleAST. new { !listName}
+  ioLexicalImplicitRuleList += !@lexicalImplicitRuleAST.new {!listName}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -169,7 +169,7 @@ rule <lexical_explicit_rule> ?!@lexicalRuleListAST ioLexicalExplicitRuleList {
     <lexical_instruction> !?instructionList
   end
   $}$
-  ioLexicalExplicitRuleList += !@lexicalExplicitRuleAST. new { !lexicalRuleExpression !instructionList}
+  ioLexicalExplicitRuleList += !@lexicalExplicitRuleAST.new {!lexicalRuleExpression !instructionList}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -184,7 +184,7 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
 
 rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction {
   $terminal$ ?let @lstring sentTerminal
-  outInstruction = @lexicalSimpleSendInstructionAST. new { !sentTerminal}
+  outInstruction = @lexicalSimpleSendInstructionAST.new {!sentTerminal}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -204,13 +204,13 @@ rule <lexical_send_instruction> !@lexicalInstructionAST outInstruction {
   @lexicalSendDefaultActionAST lexicalSendDefaultAction
   select
     $terminal$ ?let @lstring defaultSentTerminal
-    lexicalSendDefaultAction = @lexicalSendTerminalByDefaultAST. new { !defaultSentTerminal}
+    lexicalSendDefaultAction = @lexicalSendTerminalByDefaultAST.new {!defaultSentTerminal}
   or
     $error$
     $identifier$ ?let @lstring defaultErrorMessageName
-    lexicalSendDefaultAction = @lexicalErrorByDefaultAST. new { !defaultErrorMessageName}
+    lexicalSendDefaultAction = @lexicalErrorByDefaultAST.new {!defaultErrorMessageName}
   end
-  outInstruction = @lexicalStructuredSendInstructionAST. new {
+  outInstruction = @lexicalStructuredSendInstructionAST.new {
     !lexicalSendSearchList
     !lexicalSendDefaultAction}
 }
@@ -237,7 +237,7 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
       error endRepeat : "the attribute should be '%repeat'"
     end
   end
-  @lexicalInstructionAST i = @lexicalRepeatInstructionAST. new {
+  @lexicalInstructionAST i = @lexicalRepeatInstructionAST.new {
     !repeatedInstructionList
     !lexicalWhileBranchList}
   ioInstructionList += !i
@@ -289,7 +289,7 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
       error endSelect : "the attribute should be '%select'"
     end
   end
-  @lexicalInstructionAST i = @lexicalSelectInstructionAST. new {
+  @lexicalInstructionAST i = @lexicalSelectInstructionAST.new {
     !lexicalWhileBranchList
     !defaultInstructionList}
   ioInstructionList += !i
@@ -309,7 +309,7 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     end
     @location passingModeLocation = @location.here
     <lexical_output_effective_argument> ?let @lexicalRoutineOrFunctionFormalInputArgumentAST arg
-    actualArgumentList += !@lexicalFormalInputArgumentAST. new { !passingModeLocation !arg}
+    actualArgumentList += !@lexicalFormalInputArgumentAST.new {!passingModeLocation !arg}
   while
     $!?$ ?let selector
     if selector.string != "" then
@@ -332,7 +332,7 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
     end
   end
   $)$
-  ioInstructionList += !@lexicalRoutineInstructionAST. new {
+  ioInstructionList += !@lexicalRoutineInstructionAST.new {
     !actionName
     !actualArgumentList
     !errorMessageList}
@@ -343,7 +343,7 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
 rule <lexical_output_effective_argument>
   !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument {
   $literal_char$ ?var @lchar character
-  outEffectiveArgument = @lexicalCharacterInputArgumentAST. new { !character}
+  outEffectiveArgument = @lexicalCharacterInputArgumentAST.new {!character}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -351,7 +351,7 @@ rule <lexical_output_effective_argument>
 rule <lexical_output_effective_argument>
   !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument {
   $unsigned_literal_integer$ ?var @luint unsignedValue
-  outEffectiveArgument = @lexicalUnsignedInputArgumentAST. new { !unsignedValue}
+  outEffectiveArgument = @lexicalUnsignedInputArgumentAST.new {!unsignedValue}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -360,7 +360,7 @@ rule <lexical_output_effective_argument>
   !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument {
   @location currentLocation = @location.here
   $*$
-  outEffectiveArgument = @lexicalCurrentCharacterInputArgumentAST. new { !currentLocation}
+  outEffectiveArgument = @lexicalCurrentCharacterInputArgumentAST.new {!currentLocation}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -374,7 +374,7 @@ rule <lexical_output_effective_argument>
 #----------------------------------------------------------------------------------------------------------------------*
 
 rule <function_call_or_attribute> ?let @lstring inIdf !@lexicalRoutineOrFunctionFormalInputArgumentAST outArgument {
-  outArgument = @lexicalAttributeInputArgumentAST. new { !inIdf}
+  outArgument = @lexicalAttributeInputArgumentAST.new {!inIdf}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -393,7 +393,7 @@ rule <function_call_or_attribute> ?let @lstring inIdf !@lexicalRoutineOrFunction
     functionActualArgumentList += !arg
   end
   $)$
-  outArgument = @lexicalFunctionInputArgumentAST. new { !inIdf !functionActualArgumentList}
+  outArgument = @lexicalFunctionInputArgumentAST.new {!inIdf !functionActualArgumentList}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -402,7 +402,7 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
   $error$
   @lstring errorMessageName
   $identifier$ ? errorMessageName
-  ioInstructionList += !@lexicalErrorInstructionAST. new { !errorMessageName}
+  ioInstructionList += !@lexicalErrorInstructionAST.new {!errorMessageName}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -410,7 +410,7 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
 rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
   $warning$
   $identifier$ ?var  @lstring warningMessageName
-  ioInstructionList += !@lexicalWarningInstructionAST. new { !warningMessageName}
+  ioInstructionList += !@lexicalWarningInstructionAST.new {!warningMessageName}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -419,7 +419,7 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
   $drop$
   @lstring terminalName
   $terminal$ ? terminalName
-  ioInstructionList += !@lexicalDropInstructionAST. new { !terminalName}
+  ioInstructionList += !@lexicalDropInstructionAST.new {!terminalName}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -428,7 +428,7 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
   $tag$
   @lstring tagName
   $identifier$ ? tagName
-  ioInstructionList += !@lexicalTagInstructionAST. new { !tagName}
+  ioInstructionList += !@lexicalTagInstructionAST.new {!tagName}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -440,7 +440,7 @@ rule <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList {
   $send$
   @lstring terminalName
   $terminal$ ? terminalName
-  ioInstructionList += !@lexicalRewindInstructionAST. new { !tagName !terminalName}
+  ioInstructionList += !@lexicalRewindInstructionAST.new {!tagName !terminalName}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -465,7 +465,7 @@ rule <lexical_term> !@lexicalExpressionAST outExpression {
     $|$
     @lexicalExpressionAST rightExpression
     <lexical_factor> ?rightExpression
-    outExpression = @lexicalOrExpressionAST. new { !outExpression !rightExpression}
+    outExpression = @lexicalOrExpressionAST.new {!outExpression !rightExpression}
   end
 }
 
@@ -473,7 +473,7 @@ rule <lexical_term> !@lexicalExpressionAST outExpression {
 
 rule <lexical_factor>!@lexicalExpressionAST outExpression {
   $literal_string$ ?let @lstring string
-  outExpression = @lexicalStringMatchAST. new { !string}
+  outExpression = @lexicalStringMatchAST.new {!string}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -483,7 +483,7 @@ rule <lexical_factor> !@lexicalExpressionAST outExpression {
   $literal_string$ ?let @lstring string
   $error$
   $identifier$ ?let @lstring errorMessage
-  outExpression = @lexicalStringNotMatchAST. new { !string !errorMessage}
+  outExpression = @lexicalStringNotMatchAST.new {!string !errorMessage}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -491,11 +491,11 @@ rule <lexical_factor> !@lexicalExpressionAST outExpression {
 rule <lexical_factor> !@lexicalExpressionAST outExpression {
   $literal_char$ ?let @lchar character
   select
-    outExpression = @lexicalCharacterMatchAST. new { !character}
+    outExpression = @lexicalCharacterMatchAST.new {!character}
   or
     $->$
     $literal_char$ ?let @lchar upperBound
-    outExpression = @lexicalCharacterIntervalMatchAST. new { !character !upperBound}
+    outExpression = @lexicalCharacterIntervalMatchAST.new {!character !upperBound}
   end
 }
 
@@ -503,7 +503,7 @@ rule <lexical_factor> !@lexicalExpressionAST outExpression {
 
 rule <lexical_factor> !@lexicalExpressionAST outExpression {
   $identifier$ ?let @lstring characterSet
-  outExpression = @lexicalCharacterSetMatchAST. new { !characterSet}
+  outExpression = @lexicalCharacterSetMatchAST.new {!characterSet}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -523,7 +523,7 @@ rule <lexical_list_declaration> ?!@lexicalListDeclarationListAST ioLexicalListDe
     $style$
     $identifier$ ? theStyle
   or
-    theStyle = @lstring. new { !"" !@location.here}
+    theStyle = @lstring.new {!"" !@location.here}
   end
   $error$
   $message$

@@ -1,8 +1,8 @@
-#---------------------------------------------------------------*
-#                                                               *
-# MAC OS X TOOLS DEFINITION                                     *
-#                                                               *
-#---------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+# MAC OS X TOOLS DEFINITION                                                                                            *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 LEOPARD_SDK := $(shell file /Developer/SDKs/MacOSX10.5.sdk | awk '/directory$$/ { print $$2; }')
 
@@ -10,7 +10,7 @@ LEOPARD_SDK := $(shell file /Developer/SDKs/MacOSX10.5.sdk | awk '/directory$$/ 
 SNOW_LEOPARD_SDK := $(shell file /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.6.sdk | awk '/directory$$/ { print $$2; }')
 
 
-#---------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 ifeq ($(LEOPARD_SDK), directory)
   COMPILER_TOOL := gcc -m64 -isysroot /Developer/SDKs/MacOSX10.5.sdk
@@ -37,7 +37,7 @@ else
   endif
 endif
 
-#---------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 #--- Options for all compilers
 COMPILER_OPTIONS_FOR_THIS_CHAIN := -Wconversion
@@ -61,4 +61,4 @@ OC_COMPILER_OPTIONS_FOR_THIS_CHAIN :=
 #--- Options for Objective-C++ compiling (.mm extension)
 OCPP_COMPILER_OPTIONS_FOR_THIS_CHAIN := 
 
-#---------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*

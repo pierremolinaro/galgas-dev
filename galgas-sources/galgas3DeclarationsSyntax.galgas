@@ -17,17 +17,17 @@
 
 syntax galgas3DeclarationsSyntax (galgas3Scanner) {
 
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <declaration_with_private>
   ?let @bool inIsInternal
   ?!@galgas3DeclarationAST ioDeclarations
 
-#------------------------------------------------------------------------------*
-#                                                                              *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #          Start symbol                                                        *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <start_symbol>
  ?!@galgas3DeclarationAST ioDeclarations {
@@ -39,11 +39,11 @@ rule <start_symbol>
   end
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #          Rules prototypes                                                    *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <formal_parameter_list> !@formalParameterListAST outFormalParameterList
 
@@ -98,7 +98,7 @@ rule <declaration>
   $($
   $type_name$ ?var  @lstring mAssociatedListTypeName
   $)$
-  ioDeclarations.mDeclarationList += !@listmapDeclarationAST. new {
+  ioDeclarations.mDeclarationList += !@listmapDeclarationAST.new {
     !false # Is not predefined
     !mListmapTypeName
     !mAssociatedListTypeName}
@@ -124,7 +124,7 @@ rule <declaration>
   $[$
   $unsigned_literal_integer$ ?var  @luint dimension
   $]$
-  ioDeclarations.mDeclarationList += !@arrayDeclarationAST. new {
+  ioDeclarations.mDeclarationList += !@arrayDeclarationAST.new {
     !false # Is not predefined
     !arrayTypeName
     !elementListTypeName
@@ -145,7 +145,7 @@ rule <insert_method_declaration> ?!@insertMethodListAST ioMapMethodList {
   $identifier$ ?var  @lstring mMethodName
   @lstring stateName
   select
-    stateName = @lstring. new { !"" !@location.here}
+    stateName = @lstring.new {!"" !@location.here}
   or
     $state$
     $identifier$ ? stateName
@@ -155,7 +155,7 @@ rule <insert_method_declaration> ?!@insertMethodListAST ioMapMethodList {
   $literal_string$ ?var  @lstring mErrorMessage
   @lstring mShadowErrorMessage
   select
-    mShadowErrorMessage = @lstring. new { !"" !@location.here}
+    mShadowErrorMessage = @lstring.new {!"" !@location.here}
   or
     $,$
     $literal_string$ ? mShadowErrorMessage
@@ -196,7 +196,7 @@ rule <declaration>
     mSearchMethodList +=
       !mMethodName
       !mErrorMessage
-      !@lstring. new { !"" !@location.here}
+      !@lstring.new {!"" !@location.here}
   while
     $remove$
     $identifier$ ?var  @lstring mMethodName
@@ -213,7 +213,7 @@ rule <declaration>
     insertOrReplaceDeclarationListAST += !@location.here
   end
   $}$
-  ioDeclarations.mDeclarationList += !@mapDeclarationAST. new {
+  ioDeclarations.mDeclarationList += !@mapDeclarationAST.new {
     !false # Is not predefined
     !mMapTypeName
     !mAttributeList
@@ -234,7 +234,7 @@ rule <declaration>
   $sharedmap$
 #--- Map type name
   $type_name$ ?let @lstring mMapTypeName indexing uniquemapDefinition, mapProxyDefinition "-proxy"
-  let mapProxyTypeName = @lstring. new { !mMapTypeName.string + "-proxy" !mMapTypeName.location}
+  let mapProxyTypeName = @lstring.new {!mMapTypeName.string + "-proxy" !mMapTypeName.location}
 #  $type_name$ ??@lstring mapProxyTypeName indexing mapProxyDefinition ;
 #--- Map properties
   ${$
@@ -251,7 +251,7 @@ rule <declaration>
     @lstring stateMessage
     select
       stateMessageKind = @mapAutomatonMessageKind. noMessage
-      stateMessage = @lstring. new { !"" !@location.here}
+      stateMessage = @lstring.new {!"" !@location.here}
     or
       $warning$
       $literal_string$ ? stateMessage
@@ -272,7 +272,7 @@ rule <declaration>
       @lstring transitionMessage
       select
         transitionMessageKind = @mapAutomatonMessageKind. noMessage
-        transitionMessage = @lstring. new { !"" !@location.here}
+        transitionMessage = @lstring.new {!"" !@location.here}
       or
         $warning$
         $literal_string$ ? transitionMessage
@@ -304,7 +304,7 @@ rule <declaration>
     $identifier$ ?var  @lstring mMethodName
     @lstring actionName
     select
-      actionName = @lstring. new { !"" !@location.here}
+      actionName = @lstring.new {!"" !@location.here}
     or
       $do$
       $identifier$ ? actionName
@@ -332,7 +332,7 @@ rule <declaration>
       @lstring messageText
       select
         messageKind = @mapAutomatonMessageKind. noMessage
-        messageText = @lstring. new { !"" !@location.here}
+        messageText = @lstring.new {!"" !@location.here}
       or
         $warning$
         messageKind = @mapAutomatonMessageKind. warningMessage
@@ -358,7 +358,7 @@ rule <declaration>
       @lstring messageText
       select
         messageKind = @mapAutomatonMessageKind. noMessage
-        messageText = @lstring. new { !"" !@location.here}
+        messageText = @lstring.new {!"" !@location.here}
       or
         $warning$
         messageKind = @mapAutomatonMessageKind. warningMessage
@@ -375,7 +375,7 @@ rule <declaration>
   end
   $}$
 #--- Declare map
-  ioDeclarations.mDeclarationList += !@uniqueMapDeclarationAST. new {
+  ioDeclarations.mDeclarationList += !@uniqueMapDeclarationAST.new {
     !false # Is not predefined
     !mMapTypeName
     !mAttributeList
@@ -384,7 +384,7 @@ rule <declaration>
     !mapStateList
     !mapOverrideBlockListAST}
 #--- Declare map proxy
-  ioDeclarations.mDeclarationList += !@mapProxyDeclarationAST. new {
+  ioDeclarations.mDeclarationList += !@mapProxyDeclarationAST.new {
     !false # Is not predefined
     !mapProxyTypeName
     !mMapTypeName}
@@ -440,7 +440,7 @@ rule <declaration>
   end
   $}$
   for () in  classNameList do
-    ioDeclarations.mDeclarationList += !@classDeclarationAST. new {
+    ioDeclarations.mDeclarationList += !@classDeclarationAST.new {
       !false # Is not predefined
       !mIsAbstract
       !mValue
@@ -472,7 +472,7 @@ rule <declaration>
     <attribute_declaration> !?attributeList
   end
   $}$
-  ioDeclarations.mDeclarationList += !@structDeclarationAST. new {
+  ioDeclarations.mDeclarationList += !@structDeclarationAST.new {
     !false # Is not predefined
     !structTypeName
     !attributeList
@@ -500,7 +500,7 @@ rule <declaration>
     <attribute_declaration> !? mAttributeList
   end
   $}$
-  ioDeclarations.mDeclarationList += !@listDeclarationAST. new {
+  ioDeclarations.mDeclarationList += !@listDeclarationAST.new {
     !false # Is not predefined
     !mListTypeName
     !mAttributeList}
@@ -550,7 +550,7 @@ rule <declaration>
     $,$
   end
   $}$
-  ioDeclarations.mDeclarationList += !@sortedListDeclarationAST. new {
+  ioDeclarations.mDeclarationList += !@sortedListDeclarationAST.new {
     !false # Is not predefined
     !mSortedListTypeName
     !mAttributeList
@@ -597,7 +597,7 @@ rule <declaration>
   while
   end
   $}$
-  ioDeclarations.mDeclarationList += !@enumDeclarationAST. new {
+  ioDeclarations.mDeclarationList += !@enumDeclarationAST.new {
     !false # Is not predefined
     !mEnumTypeName
     !mConstantList}
@@ -672,7 +672,7 @@ rule <declaration_with_private>
       !filewrapperTemplateFormalInputParameters
   end
   $}$
-  ioDeclarations.mDeclarationList += !@filewrapperDeclarationAST. new {
+  ioDeclarations.mDeclarationList += !@filewrapperDeclarationAST.new {
     !false # Is not predefined
     !inIsInternal
     !@string. stringWithSourceFilePath
@@ -700,7 +700,7 @@ rule <declaration>
   $type_name$ ?var  @lstring className indexing typeReferenceAbstractCategoryMethod
   $identifier$ ?var  @lstring mMethodName indexing abstractCategoryMethodDefinition
   <formal_parameter_list> ?let @formalParameterListAST formalParameterList
-  ioDeclarations.mDeclarationList += !@abstractCategoryMethodAST. new {
+  ioDeclarations.mDeclarationList += !@abstractCategoryMethodAST.new {
     !false # Is not predefined
     !className
     !mMethodName
@@ -726,7 +726,7 @@ rule <declaration>
   $type_name$ ?var  @lstring className indexing typeReferenceOverrideAbstractCategoryMethod
   $identifier$ ?var  @lstring mMethodName indexing overrideAbstractCategoryMethodDefinition
   <formal_parameter_list> ?let @formalParameterListAST formalParameterList
-  ioDeclarations.mDeclarationList += !@overridingAbstractCategoryMethodAST. new {
+  ioDeclarations.mDeclarationList += !@overridingAbstractCategoryMethodAST.new {
     !false # Is not predefined
     !className
     !mMethodName
@@ -753,7 +753,7 @@ rule <declaration>
   <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
   let endOfMethodLocation = @location.here
   $}$
-  ioDeclarations.mDeclarationList += !@categoryMethodAST. new {
+  ioDeclarations.mDeclarationList += !@categoryMethodAST.new {
     !false # Is not predefined
     !className
     !mMethodName
@@ -783,7 +783,7 @@ rule <declaration>
   <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
   let @location endOfMethodLocation = @location.here
   $}$
-  ioDeclarations.mDeclarationList += !@overridingCategoryMethodAST. new {
+  ioDeclarations.mDeclarationList += !@overridingCategoryMethodAST.new {
     !false # Is not predefined
     !className
     !mMethodName
@@ -813,7 +813,7 @@ rule <declaration>
   $->$
   $type_name$ ?var  @lstring mReturnedTypeName
   $identifier$ ? *
-  ioDeclarations.mDeclarationList += !@abstractCategoryReaderAST. new {
+  ioDeclarations.mDeclarationList += !@abstractCategoryReaderAST.new {
     !false # Is not predefined
     !className
     !mReaderName
@@ -845,7 +845,7 @@ rule <declaration>
   <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
   let @location endOfInstructionList = @location.here
   $}$
-  ioDeclarations.mDeclarationList += !@categoryReaderAST. new {
+  ioDeclarations.mDeclarationList += !@categoryReaderAST.new {
     !false # Is not predefined
     !className
     !mMethodName
@@ -881,7 +881,7 @@ rule <declaration>
   <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
   let @location endOfInstructionList = @location.here
   $}$
-  ioDeclarations.mDeclarationList += !@overridingCategoryReaderAST. new {
+  ioDeclarations.mDeclarationList += !@overridingCategoryReaderAST.new {
     !false # Is not predefined
     !className
     !mMethodName
@@ -915,7 +915,7 @@ rule <declaration>
   $->$
   $type_name$ ?var  @lstring mReturnedTypeName
   $identifier$ ? *
-  ioDeclarations.mDeclarationList += !@overridingAbstractCategoryReaderAST. new {
+  ioDeclarations.mDeclarationList += !@overridingAbstractCategoryReaderAST.new {
     !false # Is not predefined
     !className
     !mReaderName
@@ -940,7 +940,7 @@ rule <declaration>
   $type_name$ ?var  @lstring className indexing typeReferenceAbstractCategoryModifier
   $identifier$ ?var  @lstring modifierName indexing abstractCategoryModifierDefinition
   <formal_parameter_list> ?let @formalParameterListAST formalParameterList
-  ioDeclarations.mDeclarationList += !@abstractCategoryModifierAST. new {
+  ioDeclarations.mDeclarationList += !@abstractCategoryModifierAST.new {
     !false # Is not predefined
     !className
     !modifierName
@@ -966,7 +966,7 @@ rule <declaration>
   $type_name$ ?var  @lstring className indexing typeReferenceOverrideAbstractCategoryModifier
   $identifier$ ?var  @lstring modifierName indexing overrideAbstractCategoryModifierDefinition
   <formal_parameter_list> ?let @formalParameterListAST formalParameterList
-  ioDeclarations.mDeclarationList += !@overridingAbstractCategoryModifierAST. new {
+  ioDeclarations.mDeclarationList += !@overridingAbstractCategoryModifierAST.new {
     !false # Is not predefined
     !className
     !modifierName
@@ -993,7 +993,7 @@ rule <declaration>
   <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
   let @location endOfModifierLocation = @location.here
   $}$
-  ioDeclarations.mDeclarationList += !@categoryModifierAST. new {
+  ioDeclarations.mDeclarationList += !@categoryModifierAST.new {
     !false # Is not predefined
     !className
     !modifierName
@@ -1023,7 +1023,7 @@ rule <declaration>
   <semantic_instruction_list> ?let @semanticInstructionListAST routineInstructionList
   let @location endOfModifierLocation = @location.here
   $}$
-  ioDeclarations.mDeclarationList += !@overridingCategoryModifierAST. new {
+  ioDeclarations.mDeclarationList += !@overridingCategoryModifierAST.new {
     !false # Is not predefined
     !className
     !modifierName
@@ -1061,7 +1061,7 @@ rule <declaration>
     graphInsertModifierList += !insertName !errorMessage
   end
   $}$
-  ioDeclarations.mDeclarationList += !@graphDeclarationAST. new {
+  ioDeclarations.mDeclarationList += !@graphDeclarationAST.new {
     !false # Is not predefined
     !graphTypeName
     !associatedListTypeName
@@ -1155,7 +1155,7 @@ rule <declaration>
       !@location.here
   end
   $}$
-  ioDeclarations.mDeclarationList += !@externTypeDeclarationAST. new {
+  ioDeclarations.mDeclarationList += !@externTypeDeclarationAST.new {
     !false # Is not predefined
     !externTypeName
     !cppPredeclarationCode

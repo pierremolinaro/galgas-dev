@@ -121,7 +121,7 @@ rule <program_component_start_symbol> !@programComponentAST outProgramComponentR
   $end$ :> ?* ?*
   $program$ :> ?* ?*
   $;$ :> ?* ?*
-  outProgramComponentRoot = @programComponentAST. new {
+  outProgramComponentRoot = @programComponentAST.new {
     !mProgramName
     !importedComponentFileNameList
     !prologueList

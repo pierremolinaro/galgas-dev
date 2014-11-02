@@ -65,7 +65,7 @@ indexing with galgas3Grammar
     error inSourceFile : s
   else
     let projectFilePath = parentDirectory + "/" + [candidateProjectFiles mValueAtIndex !0]
-    compileProject ( !@lstring. new { !projectFilePath !inSourceFile.location} !inSourceFile.string )
+    compileProject ( !@lstring.new {!projectFilePath !inSourceFile.location} !inSourceFile.string )
   end
 }
 
@@ -274,10 +274,10 @@ indexing with projectLL1grammar
 #---------------------------------- Parse sources
   for () in  [projectComponentAST mProjectSourceList] do
     let pathExtension = [mFilePath pathExtension]
-    let componentName = @lstring. new {
+    let componentName = @lstring.new {
       ![[mFilePath lastPathComponent] stringByDeletingPathExtension]
       ![mFilePath location]}
-    let fullFilePath = @lstring. new {
+    let fullFilePath = @lstring.new {
       ![inProjectSourceFile stringByDeletingLastPathComponent] + "/" + [mFilePath string]
       ![mFilePath location]}
     switch mSourceKind

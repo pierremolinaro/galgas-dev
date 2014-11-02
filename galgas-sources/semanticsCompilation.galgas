@@ -73,11 +73,11 @@ proc recursivelyImportSemanticComponent
   ?let @lstringlist inListOfFilesToParse
   ?let @string inDirectory {
   [!?ioSemanticImportDependenceGraph insertNode
-    !@lstring. new { ![inFilePath lastPathComponent] ![inFilePath location]}
+    !@lstring.new {![inFilePath lastPathComponent] ![inFilePath location]}
     ![inFilePath lastPathComponent]
   ]
   for () in  inListOfFilesToParse do
-    let filePath = @lstring. new {
+    let filePath = @lstring.new {
       ![mValue absolutePathFromPath !inDirectory]
       ![mValue location]}
     let @string pathExtension = [mValue pathExtension]
@@ -97,8 +97,8 @@ proc recursivelyImportSemanticComponent
         ioImplementationIncludeList += !grammarComponentAST.mGrammarComponentName.string
       elsif pathExtension == "gSemantics" then
         [!?ioSemanticImportDependenceGraph addEdge
-          !@lstring. new { ![inFilePath lastPathComponent] ![inFilePath location]}
-          !@lstring. new { ![mValue lastPathComponent] ![mValue location]}
+          !@lstring.new {![inFilePath lastPathComponent] ![inFilePath location]}
+          !@lstring.new {![mValue lastPathComponent] ![mValue location]}
         ]
       #--- Parse semantic component
         @semanticsComponentAST semanticsComponentRoot
@@ -129,8 +129,8 @@ proc recursivelyImportSemanticComponent
       end
     elsif pathExtension == "gSemantics" then
         [!?ioSemanticImportDependenceGraph addEdge
-          !@lstring. new { ![inFilePath lastPathComponent] ![inFilePath location]}
-          !@lstring. new { ![mValue lastPathComponent] ![mValue location]}
+          !@lstring.new {![inFilePath lastPathComponent] ![inFilePath location]}
+          !@lstring.new {![mValue lastPathComponent] ![mValue location]}
         ]
     end
   end
@@ -229,7 +229,7 @@ proc buildOptionComponentMapForSemanticAnalysis
     var boolOptionMap =@commandLineOptionMap.emptyMap{}
     for () in  optionNameList do
       [!?boolOptionMap insertKey
-        !@lstring. new { !mValue1 !@location.here}
+        !@lstring.new {!mValue1 !@location.here}
         !@application. boolOptionInvocationLetter { !mValue0 !mValue1}
         !@application. boolOptionInvocationString { !mValue0 !mValue1}
         !@application. boolOptionCommentString { !mValue0 !mValue1}
@@ -241,7 +241,7 @@ proc buildOptionComponentMapForSemanticAnalysis
     var uintOptionMap =@commandLineOptionMap.emptyMap{}
     for () in  optionNameList do
       [!?uintOptionMap insertKey
-        !@lstring. new { !mValue1 !@location.here}
+        !@lstring.new {!mValue1 !@location.here}
         !@application. uintOptionInvocationLetter { !mValue0 !mValue1}
         !@application. uintOptionInvocationString { !mValue0 !mValue1}
         !@application. uintOptionCommentString { !mValue0 !mValue1}
@@ -253,7 +253,7 @@ proc buildOptionComponentMapForSemanticAnalysis
     var stringOptionMap =@commandLineOptionMap.emptyMap{}
     for () in  optionNameList do
       [!?stringOptionMap insertKey
-        !@lstring. new { !mValue1 !@location.here}
+        !@lstring.new {!mValue1 !@location.here}
         !@application. stringOptionInvocationLetter { !mValue0 !mValue1}
         !@application. stringOptionInvocationString { !mValue0 !mValue1}
         !@application. stringOptionCommentString { !mValue0 !mValue1}
@@ -262,7 +262,7 @@ proc buildOptionComponentMapForSemanticAnalysis
     end
   #---
     [!?ioOptionComponentMapForSemanticAnalysis insertKey
-      !@lstring. new { !"galgas_builtin_options" !@location.here}
+      !@lstring.new {!"galgas_builtin_options" !@location.here}
       !true # Is predefined
       !boolOptionMap
       !uintOptionMap

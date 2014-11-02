@@ -30,8 +30,8 @@ proc compileSemanticDeclarationsGalgas3
   for () in  @application. boolOptionNameList do
     options +=
       !["bool" nowhere]
-      !@lstring. new { !mValue1 !@location.here}
-      !@lchar. new { !@application. boolOptionInvocationLetter { !mValue0 !mValue1} !@location. nowhere}
+      !@lstring.new {!mValue1 !@location.here}
+      !@lchar.new {!@application. boolOptionInvocationLetter { !mValue0 !mValue1} !@location. nowhere}
       ![@application. boolOptionInvocationString { !mValue0 !mValue1} nowhere]
       ![@application. boolOptionCommentString { !mValue0 !mValue1} nowhere]
       !["" nowhere]
@@ -40,8 +40,8 @@ proc compileSemanticDeclarationsGalgas3
   for () in  @application. uintOptionNameList do
     options +=
       !["uint" nowhere]
-      !@lstring. new { !mValue1 !@location.here}
-      !@lchar. new { !@application. boolOptionInvocationLetter { !mValue0 !mValue1} !@location. nowhere}
+      !@lstring.new {!mValue1 !@location.here}
+      !@lchar.new {!@application. boolOptionInvocationLetter { !mValue0 !mValue1} !@location. nowhere}
       ![@application. boolOptionInvocationString { !mValue0 !mValue1} nowhere]
       ![@application. boolOptionCommentString { !mValue0 !mValue1} nowhere]
       !["" nowhere]
@@ -50,14 +50,14 @@ proc compileSemanticDeclarationsGalgas3
   for () in  @application. stringOptionNameList do
     options +=
       !["string" nowhere]
-      !@lstring. new { !mValue1 !@location.here}
-      !@lchar. new { !@application. boolOptionInvocationLetter { !mValue0 !mValue1} !@location. nowhere}
+      !@lstring.new {!mValue1 !@location.here}
+      !@lchar.new {!@application. boolOptionInvocationLetter { !mValue0 !mValue1} !@location. nowhere}
       ![@application. boolOptionInvocationString { !mValue0 !mValue1} nowhere]
       ![@application. boolOptionCommentString { !mValue0 !mValue1} nowhere]
       !["" nowhere]
       !@optionDefaultValueEnumAST.noDefaultValue
   end
-  semanticDeclarationListWithPredefinedTypes += !@optionComponentDeclarationAST. new {
+  semanticDeclarationListWithPredefinedTypes += !@optionComponentDeclarationAST.new {
     !true # Is predefined
     !["galgas_builtin_options" nowhere]
     !options

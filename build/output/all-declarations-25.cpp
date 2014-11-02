@@ -230,10 +230,10 @@ static void categoryMethod_filewrapperDeclarationForGeneration_appendDeclaration
   routine_recursivlyEnumerateRegularFile (object->mAttribute_mFilewrapperFileMap, object->mAttribute_mFilewrapperDirectoryMap, var_regularFileIndexStringList, var_directoryIndexStringList, var_regularTextContentIndexStringList, var_regularBinaryContentIndexStringList, inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2776)) ;
   }
   outArgument_outHeader = GALGAS_string (filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperDeclaration (inCompiler, var_regularFileIndexStringList, var_directoryIndexStringList, var_regularTextContentIndexStringList, var_regularBinaryContentIndexStringList, object->mAttribute_mFilewrapperName COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2784))) ;
-  cEnumerator_filewrapperTemplateListForGeneration enumerator_107078 (object->mAttribute_mFilewrapperTemplateListForGeneration, kEnumeration_up) ;
-  while (enumerator_107078.hasCurrentObject ()) {
-    outArgument_outHeader.dotAssign_operation (GALGAS_string (filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperTemplateDeclaration (inCompiler, object->mAttribute_mFilewrapperName, enumerator_107078.current_mFilewrapperTemplateName (HERE), enumerator_107078.current_mFilewrapperTemplateFormalInputParameters (HERE) COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2793)))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2793)) ;
-    enumerator_107078.gotoNextObject () ;
+  cEnumerator_filewrapperTemplateListForGeneration enumerator_107070 (object->mAttribute_mFilewrapperTemplateListForGeneration, kEnumeration_up) ;
+  while (enumerator_107070.hasCurrentObject ()) {
+    outArgument_outHeader.dotAssign_operation (GALGAS_string (filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperTemplateDeclaration (inCompiler, object->mAttribute_mFilewrapperName, enumerator_107070.current_mFilewrapperTemplateName (HERE), enumerator_107070.current_mFilewrapperTemplateFormalInputParameters (HERE) COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2793)))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2793)) ;
+    enumerator_107070.gotoNextObject () ;
   }
 }
 //---------------------------------------------------------------------------------------------------------------------*
@@ -267,23 +267,23 @@ static void categoryMethod_filewrapperDeclarationForGeneration_appendSpecificImp
   routine_generateWrapperContents (object->mAttribute_mFilewrapperName, GALGAS_string::makeEmptyString (), GALGAS_uint ((uint32_t) 0U), object->mAttribute_mFilewrapperFileMap, object->mAttribute_mFilewrapperDirectoryMap, var_filewrapperImplementation, inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2895)) ;
   }
   outArgument_outImplementation = GALGAS_string (filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperImplementation (inCompiler, object->mAttribute_mFilewrapperName, var_filewrapperImplementation COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2903))) ;
-  cEnumerator_filewrapperTemplateListForGeneration enumerator_112534 (object->mAttribute_mFilewrapperTemplateListForGeneration, kEnumeration_up) ;
-  while (enumerator_112534.hasCurrentObject ()) {
+  cEnumerator_filewrapperTemplateListForGeneration enumerator_112526 (object->mAttribute_mFilewrapperTemplateListForGeneration, kEnumeration_up) ;
+  while (enumerator_112526.hasCurrentObject ()) {
     GALGAS_string var_generatedCodeForInstructionList = GALGAS_string::makeEmptyString () ;
     GALGAS_uint var_temporaryVariableIndex = GALGAS_uint ((uint32_t) 0U) ;
     GALGAS_stringset var_unusedVariableCppNameSet = GALGAS_stringset::constructor_emptySet (SOURCE_FILE ("semanticGeneration.galgas", 2912)) ;
     var_unusedVariableCppNameSet.addAssign_operation (function_compilerCppName (inCompiler COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2913))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2913)) ;
-    cEnumerator_formalInputParameterListForGeneration enumerator_112837 (enumerator_112534.current_mFilewrapperTemplateFormalInputParameters (HERE), kEnumeration_up) ;
-    while (enumerator_112837.hasCurrentObject ()) {
-      var_unusedVariableCppNameSet.addAssign_operation (enumerator_112837.current_mFormalArgumentCppName (HERE)  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2915)) ;
-      enumerator_112837.gotoNextObject () ;
+    cEnumerator_formalInputParameterListForGeneration enumerator_112829 (enumerator_112526.current_mFilewrapperTemplateFormalInputParameters (HERE), kEnumeration_up) ;
+    while (enumerator_112829.hasCurrentObject ()) {
+      var_unusedVariableCppNameSet.addAssign_operation (enumerator_112829.current_mFormalArgumentCppName (HERE)  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2915)) ;
+      enumerator_112829.gotoNextObject () ;
     }
     GALGAS_bool var_useColumnMarker = GALGAS_bool (false) ;
     {
-    routine_templateCodeGenerationForListInstruction (enumerator_112534.current_mTemplateInstructionListForGeneration (HERE), var_generatedCodeForInstructionList, ioArgument_ioInclusionSet, var_temporaryVariableIndex, var_unusedVariableCppNameSet, var_useColumnMarker, inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2918)) ;
+    routine_templateCodeGenerationForListInstruction (enumerator_112526.current_mTemplateInstructionListForGeneration (HERE), var_generatedCodeForInstructionList, ioArgument_ioInclusionSet, var_temporaryVariableIndex, var_unusedVariableCppNameSet, var_useColumnMarker, inCompiler  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2918)) ;
     }
-    outArgument_outImplementation.dotAssign_operation (GALGAS_string (filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperTemplateImplementation (inCompiler, object->mAttribute_mFilewrapperName, enumerator_112534.current_mFilewrapperTemplateName (HERE), enumerator_112534.current_mFilewrapperTemplateFormalInputParameters (HERE), var_unusedVariableCppNameSet, var_useColumnMarker, var_generatedCodeForInstructionList COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2927)))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2927)) ;
-    enumerator_112534.gotoNextObject () ;
+    outArgument_outImplementation.dotAssign_operation (GALGAS_string (filewrapperTemplate_semanticComponentGenerationTemplate_filewrapperTemplateImplementation (inCompiler, object->mAttribute_mFilewrapperName, enumerator_112526.current_mFilewrapperTemplateName (HERE), enumerator_112526.current_mFilewrapperTemplateFormalInputParameters (HERE), var_unusedVariableCppNameSet, var_useColumnMarker, var_generatedCodeForInstructionList COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2927)))  COMMA_SOURCE_FILE ("semanticGeneration.galgas", 2927)) ;
+    enumerator_112526.gotoNextObject () ;
   }
 }
 //---------------------------------------------------------------------------------------------------------------------*
@@ -450,10 +450,10 @@ static void categoryMethod_repeatInstructionForGeneration_appendSyntaxSignature 
   macroValidSharedObject (object, cPtr_repeatInstructionForGeneration) ;
   GALGAS_semanticInstructionListForGeneration var_repeated_5F_instructionList = function_syntaxSignatureOfInstructionList (constinArgument_inPosfix, object->mAttribute_m_5F_repeated_5F_instructionList, inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 75)) ;
   GALGAS_listOfSemanticInstructionListForGeneration var_listOfSemanticInstructionListForGeneration = GALGAS_listOfSemanticInstructionListForGeneration::constructor_emptyList (SOURCE_FILE ("syntaxSignature.galgas", 76)) ;
-  cEnumerator_listOfSemanticInstructionListForGeneration enumerator_4793 (object->mAttribute_mListOfSemanticInstructionListForGeneration, kEnumeration_up) ;
-  while (enumerator_4793.hasCurrentObject ()) {
-    var_listOfSemanticInstructionListForGeneration.addAssign_operation (function_syntaxSignatureOfInstructionList (constinArgument_inPosfix, enumerator_4793.current_mInstructionList (HERE), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 79)), enumerator_4793.current_mEndOfInstructionList (HERE)  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 78)) ;
-    enumerator_4793.gotoNextObject () ;
+  cEnumerator_listOfSemanticInstructionListForGeneration enumerator_4791 (object->mAttribute_mListOfSemanticInstructionListForGeneration, kEnumeration_up) ;
+  while (enumerator_4791.hasCurrentObject ()) {
+    var_listOfSemanticInstructionListForGeneration.addAssign_operation (function_syntaxSignatureOfInstructionList (constinArgument_inPosfix, enumerator_4791.current_mInstructionList (HERE), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 79)), enumerator_4791.current_mEndOfInstructionList (HERE)  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 78)) ;
+    enumerator_4791.gotoNextObject () ;
   }
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GALGAS_repeatInstructionForGeneration::constructor_new (object->mAttribute_mInstructionLocation, object->mAttribute_mSyntaxComponentName, object->mAttribute_mChoiceIndex, var_repeated_5F_instructionList, object->mAttribute_mEndOfRepeatedInstructions, var_listOfSemanticInstructionListForGeneration  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 83))  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 83)) ;
 }
@@ -482,10 +482,10 @@ static void categoryMethod_selectInstructionForGeneration_appendSyntaxSignature 
   const cPtr_selectInstructionForGeneration * object = (const cPtr_selectInstructionForGeneration *) inObject ;
   macroValidSharedObject (object, cPtr_selectInstructionForGeneration) ;
   GALGAS_listOfSemanticInstructionListForGeneration var_listOfSemanticInstructionListForGeneration = GALGAS_listOfSemanticInstructionListForGeneration::constructor_emptyList (SOURCE_FILE ("syntaxSignature.galgas", 97)) ;
-  cEnumerator_listOfSemanticInstructionListForGeneration enumerator_5670 (object->mAttribute_mListOfSemanticInstructionListForGeneration, kEnumeration_up) ;
-  while (enumerator_5670.hasCurrentObject ()) {
-    var_listOfSemanticInstructionListForGeneration.addAssign_operation (function_syntaxSignatureOfInstructionList (constinArgument_inPosfix, enumerator_5670.current_mInstructionList (HERE), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 100)), enumerator_5670.current_mEndOfInstructionList (HERE)  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 99)) ;
-    enumerator_5670.gotoNextObject () ;
+  cEnumerator_listOfSemanticInstructionListForGeneration enumerator_5667 (object->mAttribute_mListOfSemanticInstructionListForGeneration, kEnumeration_up) ;
+  while (enumerator_5667.hasCurrentObject ()) {
+    var_listOfSemanticInstructionListForGeneration.addAssign_operation (function_syntaxSignatureOfInstructionList (constinArgument_inPosfix, enumerator_5667.current_mInstructionList (HERE), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 100)), enumerator_5667.current_mEndOfInstructionList (HERE)  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 99)) ;
+    enumerator_5667.gotoNextObject () ;
   }
   ioArgument_ioInstructionListForGeneration.addAssign_operation (GALGAS_selectInstructionForGeneration::constructor_new (object->mAttribute_mInstructionLocation, object->mAttribute_mSyntaxComponentName, object->mAttribute_mChoiceIndex, var_listOfSemanticInstructionListForGeneration  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 103))  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 103)) ;
 }
@@ -514,8 +514,8 @@ static void categoryMethod_parseRewindInstructionForGeneration_appendSyntaxSigna
   const cPtr_parseRewindInstructionForGeneration * object = (const cPtr_parseRewindInstructionForGeneration *) inObject ;
   macroValidSharedObject (object, cPtr_parseRewindInstructionForGeneration) ;
   GALGAS_semanticInstructionListForGeneration var_instructionList ;
-  GALGAS_location joker_6450 ; // Joker input parameter
-  object->mAttribute_mListOfSemanticInstructionListForGeneration.method_first (var_instructionList, joker_6450, inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 116)) ;
+  GALGAS_location joker_6446 ; // Joker input parameter
+  object->mAttribute_mListOfSemanticInstructionListForGeneration.method_first (var_instructionList, joker_6446, inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 116)) ;
   ioArgument_ioInstructionListForGeneration.dotAssign_operation (function_syntaxSignatureOfInstructionList (constinArgument_inPosfix, var_instructionList, inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 117))  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 117)) ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
@@ -596,15 +596,15 @@ static GALGAS_bool categoryReader_terminalCheckInstructionForGeneration_compareS
   macroValidSharedObject (object, cPtr_terminalCheckInstructionForGeneration) ;
   if (constinArgument_inTestedInstruction.isValid ()) {
     if (NULL != dynamic_cast <const cPtr_terminalCheckInstructionForGeneration *> (constinArgument_inTestedInstruction.ptr ())) {
-      GALGAS_terminalCheckInstructionForGeneration cast_10081_si ((cPtr_terminalCheckInstructionForGeneration *) constinArgument_inTestedInstruction.ptr ()) ;
-      result_outOk = GALGAS_bool (kIsEqual, object->mAttribute_mTerminalName.reader_string (SOURCE_FILE ("syntaxSignature.galgas", 189)).objectCompare (cast_10081_si.reader_mTerminalName (SOURCE_FILE ("syntaxSignature.galgas", 189)).reader_string (SOURCE_FILE ("syntaxSignature.galgas", 189)))) ;
+      GALGAS_terminalCheckInstructionForGeneration cast_10077_si ((cPtr_terminalCheckInstructionForGeneration *) constinArgument_inTestedInstruction.ptr ()) ;
+      result_outOk = GALGAS_bool (kIsEqual, object->mAttribute_mTerminalName.reader_string (SOURCE_FILE ("syntaxSignature.galgas", 189)).objectCompare (cast_10077_si.reader_mTerminalName (SOURCE_FILE ("syntaxSignature.galgas", 189)).reader_string (SOURCE_FILE ("syntaxSignature.galgas", 189)))) ;
       const enumGalgasBool test_0 = result_outOk.operator_not (SOURCE_FILE ("syntaxSignature.galgas", 190)).boolEnum () ;
       if (kBoolTrue == test_0) {
-        inCompiler->emitSemanticError (cast_10081_si.reader_mInstructionLocation (SOURCE_FILE ("syntaxSignature.galgas", 191)), GALGAS_string ("syntax signature error; the expected syntax instruction here is the '$").add_operation (object->mAttribute_mTerminalName.reader_string (SOURCE_FILE ("syntaxSignature.galgas", 192)), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 192)).add_operation (GALGAS_string ("$' terminal check"), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 192))  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 191)) ;
+        inCompiler->emitSemanticError (cast_10077_si.reader_mInstructionLocation (SOURCE_FILE ("syntaxSignature.galgas", 191)), GALGAS_string ("syntax signature error; the expected syntax instruction here is the '$").add_operation (object->mAttribute_mTerminalName.reader_string (SOURCE_FILE ("syntaxSignature.galgas", 192)), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 192)).add_operation (GALGAS_string ("$' terminal check"), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 192))  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 191)) ;
       }
     }else if (NULL != dynamic_cast <const cPtr_syntaxInstructionForGeneration *> (constinArgument_inTestedInstruction.ptr ())) {
-      GALGAS_syntaxInstructionForGeneration cast_10380_si ((cPtr_syntaxInstructionForGeneration *) constinArgument_inTestedInstruction.ptr ()) ;
-      inCompiler->emitSemanticError (cast_10380_si.reader_mInstructionLocation (SOURCE_FILE ("syntaxSignature.galgas", 195)), GALGAS_string ("syntax signature error; the expected syntax instruction here is the '$").add_operation (object->mAttribute_mTerminalName.reader_string (SOURCE_FILE ("syntaxSignature.galgas", 196)), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 196)).add_operation (GALGAS_string ("$' terminal check"), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 196))  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 195)) ;
+      GALGAS_syntaxInstructionForGeneration cast_10376_si ((cPtr_syntaxInstructionForGeneration *) constinArgument_inTestedInstruction.ptr ()) ;
+      inCompiler->emitSemanticError (cast_10376_si.reader_mInstructionLocation (SOURCE_FILE ("syntaxSignature.galgas", 195)), GALGAS_string ("syntax signature error; the expected syntax instruction here is the '$").add_operation (object->mAttribute_mTerminalName.reader_string (SOURCE_FILE ("syntaxSignature.galgas", 196)), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 196)).add_operation (GALGAS_string ("$' terminal check"), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 196))  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 195)) ;
       result_outOk = GALGAS_bool (false) ;
     }else{
       inCompiler->emitSemanticError (object->mAttribute_mInstructionLocation, GALGAS_string ("internal error")  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 199)) ;
@@ -646,15 +646,15 @@ static GALGAS_bool categoryReader_nonterminalInstructionForGeneration_compareSyn
   macroValidSharedObject (object, cPtr_nonterminalInstructionForGeneration) ;
   if (constinArgument_inTestedInstruction.isValid ()) {
     if (NULL != dynamic_cast <const cPtr_nonterminalInstructionForGeneration *> (constinArgument_inTestedInstruction.ptr ())) {
-      GALGAS_nonterminalInstructionForGeneration cast_11097_si ((cPtr_nonterminalInstructionForGeneration *) constinArgument_inTestedInstruction.ptr ()) ;
-      result_outOk = GALGAS_bool (kIsEqual, object->mAttribute_mNonterminalName.objectCompare (cast_11097_si.reader_mNonterminalName (SOURCE_FILE ("syntaxSignature.galgas", 215)))) ;
+      GALGAS_nonterminalInstructionForGeneration cast_11093_si ((cPtr_nonterminalInstructionForGeneration *) constinArgument_inTestedInstruction.ptr ()) ;
+      result_outOk = GALGAS_bool (kIsEqual, object->mAttribute_mNonterminalName.objectCompare (cast_11093_si.reader_mNonterminalName (SOURCE_FILE ("syntaxSignature.galgas", 215)))) ;
       const enumGalgasBool test_0 = result_outOk.operator_not (SOURCE_FILE ("syntaxSignature.galgas", 216)).boolEnum () ;
       if (kBoolTrue == test_0) {
-        inCompiler->emitSemanticError (cast_11097_si.reader_mInstructionLocation (SOURCE_FILE ("syntaxSignature.galgas", 217)), GALGAS_string ("syntax signature error; the expected syntax instruction here is the '<").add_operation (object->mAttribute_mNonterminalName, inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 218)).add_operation (GALGAS_string (">' nonterminal invocation"), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 218))  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 217)) ;
+        inCompiler->emitSemanticError (cast_11093_si.reader_mInstructionLocation (SOURCE_FILE ("syntaxSignature.galgas", 217)), GALGAS_string ("syntax signature error; the expected syntax instruction here is the '<").add_operation (object->mAttribute_mNonterminalName, inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 218)).add_operation (GALGAS_string (">' nonterminal invocation"), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 218))  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 217)) ;
       }
     }else if (NULL != dynamic_cast <const cPtr_syntaxInstructionForGeneration *> (constinArgument_inTestedInstruction.ptr ())) {
-      GALGAS_syntaxInstructionForGeneration cast_11395_si ((cPtr_syntaxInstructionForGeneration *) constinArgument_inTestedInstruction.ptr ()) ;
-      inCompiler->emitSemanticError (cast_11395_si.reader_mInstructionLocation (SOURCE_FILE ("syntaxSignature.galgas", 221)), GALGAS_string ("syntax signature error; the expected syntax instruction here is the '<").add_operation (object->mAttribute_mNonterminalName, inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 222)).add_operation (GALGAS_string (">' nonterminal invocation"), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 222))  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 221)) ;
+      GALGAS_syntaxInstructionForGeneration cast_11391_si ((cPtr_syntaxInstructionForGeneration *) constinArgument_inTestedInstruction.ptr ()) ;
+      inCompiler->emitSemanticError (cast_11391_si.reader_mInstructionLocation (SOURCE_FILE ("syntaxSignature.galgas", 221)), GALGAS_string ("syntax signature error; the expected syntax instruction here is the '<").add_operation (object->mAttribute_mNonterminalName, inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 222)).add_operation (GALGAS_string (">' nonterminal invocation"), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 222))  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 221)) ;
       result_outOk = GALGAS_bool (false) ;
     }else{
       inCompiler->emitSemanticError (object->mAttribute_mInstructionLocation, GALGAS_string ("internal error")  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 225)) ;
@@ -696,29 +696,29 @@ static GALGAS_bool categoryReader_repeatInstructionForGeneration_compareSyntaxIn
   macroValidSharedObject (object, cPtr_repeatInstructionForGeneration) ;
   if (constinArgument_inTestedInstruction.isValid ()) {
     if (NULL != dynamic_cast <const cPtr_repeatInstructionForGeneration *> (constinArgument_inTestedInstruction.ptr ())) {
-      GALGAS_repeatInstructionForGeneration cast_12113_si ((cPtr_repeatInstructionForGeneration *) constinArgument_inTestedInstruction.ptr ()) ;
-      result_outOk = function_compareSyntaxSignature (object->mAttribute_m_5F_repeated_5F_instructionList, cast_12113_si.reader_m_5F_repeated_5F_instructionList (SOURCE_FILE ("syntaxSignature.galgas", 241)), cast_12113_si.reader_mEndOfRepeatedInstructions (SOURCE_FILE ("syntaxSignature.galgas", 241)), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 241)) ;
-      const enumGalgasBool test_0 = result_outOk.operator_and (GALGAS_bool (kIsNotEqual, object->mAttribute_mListOfSemanticInstructionListForGeneration.reader_length (SOURCE_FILE ("syntaxSignature.galgas", 242)).objectCompare (cast_12113_si.reader_mListOfSemanticInstructionListForGeneration (SOURCE_FILE ("syntaxSignature.galgas", 242)).reader_length (SOURCE_FILE ("syntaxSignature.galgas", 242)))) COMMA_SOURCE_FILE ("syntaxSignature.galgas", 242)).boolEnum () ;
+      GALGAS_repeatInstructionForGeneration cast_12109_si ((cPtr_repeatInstructionForGeneration *) constinArgument_inTestedInstruction.ptr ()) ;
+      result_outOk = function_compareSyntaxSignature (object->mAttribute_m_5F_repeated_5F_instructionList, cast_12109_si.reader_m_5F_repeated_5F_instructionList (SOURCE_FILE ("syntaxSignature.galgas", 241)), cast_12109_si.reader_mEndOfRepeatedInstructions (SOURCE_FILE ("syntaxSignature.galgas", 241)), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 241)) ;
+      const enumGalgasBool test_0 = result_outOk.operator_and (GALGAS_bool (kIsNotEqual, object->mAttribute_mListOfSemanticInstructionListForGeneration.reader_length (SOURCE_FILE ("syntaxSignature.galgas", 242)).objectCompare (cast_12109_si.reader_mListOfSemanticInstructionListForGeneration (SOURCE_FILE ("syntaxSignature.galgas", 242)).reader_length (SOURCE_FILE ("syntaxSignature.galgas", 242)))) COMMA_SOURCE_FILE ("syntaxSignature.galgas", 242)).boolEnum () ;
       if (kBoolTrue == test_0) {
-        inCompiler->emitSemanticError (cast_12113_si.reader_mInstructionLocation (SOURCE_FILE ("syntaxSignature.galgas", 243)), GALGAS_string ("syntax signature error; the reference 'repeat' instruction has ").add_operation (object->mAttribute_mListOfSemanticInstructionListForGeneration.reader_length (SOURCE_FILE ("syntaxSignature.galgas", 245)).reader_string (SOURCE_FILE ("syntaxSignature.galgas", 245)), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 244)).add_operation (GALGAS_string (" 'while' branche(s), but this instruction has "), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 245)).add_operation (cast_12113_si.reader_mListOfSemanticInstructionListForGeneration (SOURCE_FILE ("syntaxSignature.galgas", 247)).reader_length (SOURCE_FILE ("syntaxSignature.galgas", 247)).reader_string (SOURCE_FILE ("syntaxSignature.galgas", 247)), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 246))  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 243)) ;
+        inCompiler->emitSemanticError (cast_12109_si.reader_mInstructionLocation (SOURCE_FILE ("syntaxSignature.galgas", 243)), GALGAS_string ("syntax signature error; the reference 'repeat' instruction has ").add_operation (object->mAttribute_mListOfSemanticInstructionListForGeneration.reader_length (SOURCE_FILE ("syntaxSignature.galgas", 245)).reader_string (SOURCE_FILE ("syntaxSignature.galgas", 245)), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 244)).add_operation (GALGAS_string (" 'while' branche(s), but this instruction has "), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 245)).add_operation (cast_12109_si.reader_mListOfSemanticInstructionListForGeneration (SOURCE_FILE ("syntaxSignature.galgas", 247)).reader_length (SOURCE_FILE ("syntaxSignature.galgas", 247)).reader_string (SOURCE_FILE ("syntaxSignature.galgas", 247)), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 246))  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 243)) ;
         result_outOk = GALGAS_bool (false) ;
       }
-      cEnumerator_listOfSemanticInstructionListForGeneration enumerator_12795 (object->mAttribute_mListOfSemanticInstructionListForGeneration, kEnumeration_up) ;
-      cEnumerator_listOfSemanticInstructionListForGeneration enumerator_12858 (cast_12113_si.reader_mListOfSemanticInstructionListForGeneration (SOURCE_FILE ("syntaxSignature.galgas", 250)), kEnumeration_up) ;
+      cEnumerator_listOfSemanticInstructionListForGeneration enumerator_12791 (object->mAttribute_mListOfSemanticInstructionListForGeneration, kEnumeration_up) ;
+      cEnumerator_listOfSemanticInstructionListForGeneration enumerator_12854 (cast_12109_si.reader_mListOfSemanticInstructionListForGeneration (SOURCE_FILE ("syntaxSignature.galgas", 250)), kEnumeration_up) ;
       bool bool_1 = result_outOk.isValidAndTrue () ;
-      if (enumerator_12795.hasCurrentObject () && enumerator_12858.hasCurrentObject () && bool_1) {
-        while (enumerator_12795.hasCurrentObject () && enumerator_12858.hasCurrentObject () && bool_1) {
-          result_outOk = function_compareSyntaxSignature (enumerator_12795.current_mInstructionList (HERE), enumerator_12858.current_mInstructionList (HERE), enumerator_12858.current_mEndOfInstructionList (HERE), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 251)) ;
-          enumerator_12795.gotoNextObject () ;
-          enumerator_12858.gotoNextObject () ;
-          if (enumerator_12795.hasCurrentObject () && enumerator_12858.hasCurrentObject ()) {
+      if (enumerator_12791.hasCurrentObject () && enumerator_12854.hasCurrentObject () && bool_1) {
+        while (enumerator_12791.hasCurrentObject () && enumerator_12854.hasCurrentObject () && bool_1) {
+          result_outOk = function_compareSyntaxSignature (enumerator_12791.current_mInstructionList (HERE), enumerator_12854.current_mInstructionList (HERE), enumerator_12854.current_mEndOfInstructionList (HERE), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 251)) ;
+          enumerator_12791.gotoNextObject () ;
+          enumerator_12854.gotoNextObject () ;
+          if (enumerator_12791.hasCurrentObject () && enumerator_12854.hasCurrentObject ()) {
             bool_1 = result_outOk.isValidAndTrue () ;
           }
         }
       }
     }else if (NULL != dynamic_cast <const cPtr_syntaxInstructionForGeneration *> (constinArgument_inTestedInstruction.ptr ())) {
-      GALGAS_syntaxInstructionForGeneration cast_13042_si ((cPtr_syntaxInstructionForGeneration *) constinArgument_inTestedInstruction.ptr ()) ;
-      inCompiler->emitSemanticError (cast_13042_si.reader_mInstructionLocation (SOURCE_FILE ("syntaxSignature.galgas", 254)), GALGAS_string ("syntax signature error; the expected syntax instruction here is a 'repeat' instruction")  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 254)) ;
+      GALGAS_syntaxInstructionForGeneration cast_13038_si ((cPtr_syntaxInstructionForGeneration *) constinArgument_inTestedInstruction.ptr ()) ;
+      inCompiler->emitSemanticError (cast_13038_si.reader_mInstructionLocation (SOURCE_FILE ("syntaxSignature.galgas", 254)), GALGAS_string ("syntax signature error; the expected syntax instruction here is a 'repeat' instruction")  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 254)) ;
       result_outOk = GALGAS_bool (false) ;
     }else{
       inCompiler->emitSemanticError (object->mAttribute_mInstructionLocation, GALGAS_string ("internal error")  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 258)) ;
@@ -760,29 +760,29 @@ static GALGAS_bool categoryReader_selectInstructionForGeneration_compareSyntaxIn
   macroValidSharedObject (object, cPtr_selectInstructionForGeneration) ;
   if (constinArgument_inTestedInstruction.isValid ()) {
     if (NULL != dynamic_cast <const cPtr_selectInstructionForGeneration *> (constinArgument_inTestedInstruction.ptr ())) {
-      GALGAS_selectInstructionForGeneration cast_13727_si ((cPtr_selectInstructionForGeneration *) constinArgument_inTestedInstruction.ptr ()) ;
+      GALGAS_selectInstructionForGeneration cast_13723_si ((cPtr_selectInstructionForGeneration *) constinArgument_inTestedInstruction.ptr ()) ;
       result_outOk = GALGAS_bool (true) ;
-      const enumGalgasBool test_0 = result_outOk.operator_and (GALGAS_bool (kIsNotEqual, object->mAttribute_mListOfSemanticInstructionListForGeneration.reader_length (SOURCE_FILE ("syntaxSignature.galgas", 275)).objectCompare (cast_13727_si.reader_mListOfSemanticInstructionListForGeneration (SOURCE_FILE ("syntaxSignature.galgas", 275)).reader_length (SOURCE_FILE ("syntaxSignature.galgas", 275)))) COMMA_SOURCE_FILE ("syntaxSignature.galgas", 275)).boolEnum () ;
+      const enumGalgasBool test_0 = result_outOk.operator_and (GALGAS_bool (kIsNotEqual, object->mAttribute_mListOfSemanticInstructionListForGeneration.reader_length (SOURCE_FILE ("syntaxSignature.galgas", 275)).objectCompare (cast_13723_si.reader_mListOfSemanticInstructionListForGeneration (SOURCE_FILE ("syntaxSignature.galgas", 275)).reader_length (SOURCE_FILE ("syntaxSignature.galgas", 275)))) COMMA_SOURCE_FILE ("syntaxSignature.galgas", 275)).boolEnum () ;
       if (kBoolTrue == test_0) {
-        inCompiler->emitSemanticError (cast_13727_si.reader_mInstructionLocation (SOURCE_FILE ("syntaxSignature.galgas", 276)), GALGAS_string ("syntax signature error; the reference 'select' instruction has ").add_operation (object->mAttribute_mListOfSemanticInstructionListForGeneration.reader_length (SOURCE_FILE ("syntaxSignature.galgas", 278)).reader_string (SOURCE_FILE ("syntaxSignature.galgas", 278)), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 277)).add_operation (GALGAS_string (" 'while' branche(s), but this instruction has "), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 278)).add_operation (cast_13727_si.reader_mListOfSemanticInstructionListForGeneration (SOURCE_FILE ("syntaxSignature.galgas", 280)).reader_length (SOURCE_FILE ("syntaxSignature.galgas", 280)).reader_string (SOURCE_FILE ("syntaxSignature.galgas", 280)), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 279))  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 276)) ;
+        inCompiler->emitSemanticError (cast_13723_si.reader_mInstructionLocation (SOURCE_FILE ("syntaxSignature.galgas", 276)), GALGAS_string ("syntax signature error; the reference 'select' instruction has ").add_operation (object->mAttribute_mListOfSemanticInstructionListForGeneration.reader_length (SOURCE_FILE ("syntaxSignature.galgas", 278)).reader_string (SOURCE_FILE ("syntaxSignature.galgas", 278)), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 277)).add_operation (GALGAS_string (" 'while' branche(s), but this instruction has "), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 278)).add_operation (cast_13723_si.reader_mListOfSemanticInstructionListForGeneration (SOURCE_FILE ("syntaxSignature.galgas", 280)).reader_length (SOURCE_FILE ("syntaxSignature.galgas", 280)).reader_string (SOURCE_FILE ("syntaxSignature.galgas", 280)), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 279))  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 276)) ;
         result_outOk = GALGAS_bool (false) ;
       }
-      cEnumerator_listOfSemanticInstructionListForGeneration enumerator_14295 (object->mAttribute_mListOfSemanticInstructionListForGeneration, kEnumeration_up) ;
-      cEnumerator_listOfSemanticInstructionListForGeneration enumerator_14358 (cast_13727_si.reader_mListOfSemanticInstructionListForGeneration (SOURCE_FILE ("syntaxSignature.galgas", 283)), kEnumeration_up) ;
+      cEnumerator_listOfSemanticInstructionListForGeneration enumerator_14291 (object->mAttribute_mListOfSemanticInstructionListForGeneration, kEnumeration_up) ;
+      cEnumerator_listOfSemanticInstructionListForGeneration enumerator_14354 (cast_13723_si.reader_mListOfSemanticInstructionListForGeneration (SOURCE_FILE ("syntaxSignature.galgas", 283)), kEnumeration_up) ;
       bool bool_1 = result_outOk.isValidAndTrue () ;
-      if (enumerator_14295.hasCurrentObject () && enumerator_14358.hasCurrentObject () && bool_1) {
-        while (enumerator_14295.hasCurrentObject () && enumerator_14358.hasCurrentObject () && bool_1) {
-          result_outOk = function_compareSyntaxSignature (enumerator_14295.current_mInstructionList (HERE), enumerator_14358.current_mInstructionList (HERE), enumerator_14358.current_mEndOfInstructionList (HERE), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 284)) ;
-          enumerator_14295.gotoNextObject () ;
-          enumerator_14358.gotoNextObject () ;
-          if (enumerator_14295.hasCurrentObject () && enumerator_14358.hasCurrentObject ()) {
+      if (enumerator_14291.hasCurrentObject () && enumerator_14354.hasCurrentObject () && bool_1) {
+        while (enumerator_14291.hasCurrentObject () && enumerator_14354.hasCurrentObject () && bool_1) {
+          result_outOk = function_compareSyntaxSignature (enumerator_14291.current_mInstructionList (HERE), enumerator_14354.current_mInstructionList (HERE), enumerator_14354.current_mEndOfInstructionList (HERE), inCompiler COMMA_SOURCE_FILE ("syntaxSignature.galgas", 284)) ;
+          enumerator_14291.gotoNextObject () ;
+          enumerator_14354.gotoNextObject () ;
+          if (enumerator_14291.hasCurrentObject () && enumerator_14354.hasCurrentObject ()) {
             bool_1 = result_outOk.isValidAndTrue () ;
           }
         }
       }
     }else if (NULL != dynamic_cast <const cPtr_syntaxInstructionForGeneration *> (constinArgument_inTestedInstruction.ptr ())) {
-      GALGAS_syntaxInstructionForGeneration cast_14542_si ((cPtr_syntaxInstructionForGeneration *) constinArgument_inTestedInstruction.ptr ()) ;
-      inCompiler->emitSemanticError (cast_14542_si.reader_mInstructionLocation (SOURCE_FILE ("syntaxSignature.galgas", 287)), GALGAS_string ("syntax signature error; the expected syntax instruction here is a 'select' instruction")  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 287)) ;
+      GALGAS_syntaxInstructionForGeneration cast_14538_si ((cPtr_syntaxInstructionForGeneration *) constinArgument_inTestedInstruction.ptr ()) ;
+      inCompiler->emitSemanticError (cast_14538_si.reader_mInstructionLocation (SOURCE_FILE ("syntaxSignature.galgas", 287)), GALGAS_string ("syntax signature error; the expected syntax instruction here is a 'select' instruction")  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 287)) ;
       result_outOk = GALGAS_bool (false) ;
     }else{
       inCompiler->emitSemanticError (object->mAttribute_mInstructionLocation, GALGAS_string ("internal error")  COMMA_SOURCE_FILE ("syntaxSignature.galgas", 291)) ;
@@ -875,10 +875,10 @@ static void categoryMethod_terminalCheckInstruction_transformInstruction (const 
   const cPtr_terminalCheckInstruction * object = (const cPtr_terminalCheckInstruction *) inObject ;
   macroValidSharedObject (object, cPtr_terminalCheckInstruction) ;
   GALGAS_uint var_terminalSymbolIndex ;
-  const cMapElement_terminalSymbolsMapForGrammarAnalysis * objectArray_10078 = (const cMapElement_terminalSymbolsMapForGrammarAnalysis *) ioArgument_ioActuallyUsedTerminalSymbolMap.readAccessForWithInstruction (object->mAttribute_mTerminalName.reader_string (SOURCE_FILE ("grammarCompilation.galgas", 198))) ;
-  if (NULL != objectArray_10078) {
-      macroValidSharedObject (objectArray_10078, cMapElement_terminalSymbolsMapForGrammarAnalysis) ;
-    var_terminalSymbolIndex = objectArray_10078->mAttribute_mTerminalIndex ;
+  const cMapElement_terminalSymbolsMapForGrammarAnalysis * objectArray_10207 = (const cMapElement_terminalSymbolsMapForGrammarAnalysis *) ioArgument_ioActuallyUsedTerminalSymbolMap.readAccessForWithInstruction (object->mAttribute_mTerminalName.reader_string (SOURCE_FILE ("grammarCompilation.galgas", 198))) ;
+  if (NULL != objectArray_10207) {
+      macroValidSharedObject (objectArray_10207, cMapElement_terminalSymbolsMapForGrammarAnalysis) ;
+    var_terminalSymbolIndex = objectArray_10207->mAttribute_mTerminalIndex ;
   }else{
     var_terminalSymbolIndex = ioArgument_ioActuallyUsedTerminalSymbolMap.reader_count (SOURCE_FILE ("grammarCompilation.galgas", 201)) ;
     {
@@ -914,8 +914,8 @@ static void categoryMethod_nonterminalCallInstruction_transformInstruction (cons
   const cPtr_nonterminalCallInstruction * object = (const cPtr_nonterminalCallInstruction *) inObject ;
   macroValidSharedObject (object, cPtr_nonterminalCallInstruction) ;
   GALGAS_uint var_nonTerminalSymbolIndex ;
-  GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis joker_11114 ; // Joker input parameter
-  constinArgument_inNonTerminalSymbolMap.method_searchKey (object->mAttribute_mNonterminalName, var_nonTerminalSymbolIndex, joker_11114, inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas", 218)) ;
+  GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis joker_11242 ; // Joker input parameter
+  constinArgument_inNonTerminalSymbolMap.method_searchKey (object->mAttribute_mNonterminalName, var_nonTerminalSymbolIndex, joker_11242, inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas", 218)) ;
   ioArgument_ioSyntaxInstructionList.addAssign_operation (GALGAS_nonTerminalInstructionForGrammarAnalysis::constructor_new (object->mAttribute_mInstructionLocation, object->mAttribute_mNonterminalName, var_nonTerminalSymbolIndex  COMMA_SOURCE_FILE ("grammarCompilation.galgas", 219))  COMMA_SOURCE_FILE ("grammarCompilation.galgas", 219)) ;
 }
 //---------------------------------------------------------------------------------------------------------------------*
@@ -951,14 +951,14 @@ static void categoryMethod_repeatInstruction_transformInstruction (const cPtr_sy
   routine_transformInstructionList (object->mAttribute_mRepeatedInstructionList, ioArgument_ioActuallyUsedTerminalSymbolMap, constinArgument_inNonTerminalSymbolMap, ioArgument_ioAddedNonTerminalIndex, var_repeatedInstructionList, inCompiler  COMMA_SOURCE_FILE ("grammarCompilation.galgas", 236)) ;
   }
   GALGAS_branchListForGrammarAnalysis var_repeatBranchList = GALGAS_branchListForGrammarAnalysis::constructor_listWithValue (var_repeatedInstructionList  COMMA_SOURCE_FILE ("grammarCompilation.galgas", 243)) ;
-  cEnumerator_listOfSyntaxInstructionList enumerator_12304 (object->mAttribute_mRepeatBranchList, kEnumeration_up) ;
-  while (enumerator_12304.hasCurrentObject ()) {
+  cEnumerator_listOfSyntaxInstructionList enumerator_12431 (object->mAttribute_mRepeatBranchList, kEnumeration_up) ;
+  while (enumerator_12431.hasCurrentObject ()) {
     GALGAS_syntaxInstructionListForGrammarAnalysis var_syntaxInstructionList = GALGAS_syntaxInstructionListForGrammarAnalysis::constructor_emptyList (SOURCE_FILE ("grammarCompilation.galgas", 246)) ;
     {
-    routine_transformInstructionList (enumerator_12304.current_mSyntaxInstructionList (HERE), ioArgument_ioActuallyUsedTerminalSymbolMap, constinArgument_inNonTerminalSymbolMap, ioArgument_ioAddedNonTerminalIndex, var_syntaxInstructionList, inCompiler  COMMA_SOURCE_FILE ("grammarCompilation.galgas", 247)) ;
+    routine_transformInstructionList (enumerator_12431.current_mSyntaxInstructionList (HERE), ioArgument_ioActuallyUsedTerminalSymbolMap, constinArgument_inNonTerminalSymbolMap, ioArgument_ioAddedNonTerminalIndex, var_syntaxInstructionList, inCompiler  COMMA_SOURCE_FILE ("grammarCompilation.galgas", 247)) ;
     }
     var_repeatBranchList.addAssign_operation (var_syntaxInstructionList  COMMA_SOURCE_FILE ("grammarCompilation.galgas", 254)) ;
-    enumerator_12304.gotoNextObject () ;
+    enumerator_12431.gotoNextObject () ;
   }
   ioArgument_ioSyntaxInstructionList.addAssign_operation (GALGAS_repeatInstructionForGrammarAnalysis::constructor_new (object->mAttribute_mInstructionLocation, var_repeatBranchList, var_addedNonTerminalIndex  COMMA_SOURCE_FILE ("grammarCompilation.galgas", 257))  COMMA_SOURCE_FILE ("grammarCompilation.galgas", 257)) ;
 }
@@ -991,14 +991,14 @@ static void categoryMethod_selectInstruction_transformInstruction (const cPtr_sy
   GALGAS_uint var_addedNonTerminalIndex = ioArgument_ioAddedNonTerminalIndex ;
   ioArgument_ioAddedNonTerminalIndex.increment_operation (inCompiler  COMMA_SOURCE_FILE ("grammarCompilation.galgas", 271)) ;
   GALGAS_branchListForGrammarAnalysis var_selectBranchList = GALGAS_branchListForGrammarAnalysis::constructor_emptyList (SOURCE_FILE ("grammarCompilation.galgas", 273)) ;
-  cEnumerator_listOfSyntaxInstructionList enumerator_13523 (object->mAttribute_mSelectBranchList, kEnumeration_up) ;
-  while (enumerator_13523.hasCurrentObject ()) {
+  cEnumerator_listOfSyntaxInstructionList enumerator_13649 (object->mAttribute_mSelectBranchList, kEnumeration_up) ;
+  while (enumerator_13649.hasCurrentObject ()) {
     GALGAS_syntaxInstructionListForGrammarAnalysis var_syntaxInstructionList = GALGAS_syntaxInstructionListForGrammarAnalysis::constructor_emptyList (SOURCE_FILE ("grammarCompilation.galgas", 275)) ;
     {
-    routine_transformInstructionList (enumerator_13523.current_mSyntaxInstructionList (HERE), ioArgument_ioActuallyUsedTerminalSymbolMap, constinArgument_inNonTerminalSymbolMap, ioArgument_ioAddedNonTerminalIndex, var_syntaxInstructionList, inCompiler  COMMA_SOURCE_FILE ("grammarCompilation.galgas", 276)) ;
+    routine_transformInstructionList (enumerator_13649.current_mSyntaxInstructionList (HERE), ioArgument_ioActuallyUsedTerminalSymbolMap, constinArgument_inNonTerminalSymbolMap, ioArgument_ioAddedNonTerminalIndex, var_syntaxInstructionList, inCompiler  COMMA_SOURCE_FILE ("grammarCompilation.galgas", 276)) ;
     }
     var_selectBranchList.addAssign_operation (var_syntaxInstructionList  COMMA_SOURCE_FILE ("grammarCompilation.galgas", 283)) ;
-    enumerator_13523.gotoNextObject () ;
+    enumerator_13649.gotoNextObject () ;
   }
   ioArgument_ioSyntaxInstructionList.addAssign_operation (GALGAS_selectInstructionForGrammarAnalysis::constructor_new (object->mAttribute_mInstructionLocation, var_selectBranchList, var_addedNonTerminalIndex  COMMA_SOURCE_FILE ("grammarCompilation.galgas", 286))  COMMA_SOURCE_FILE ("grammarCompilation.galgas", 286)) ;
 }
@@ -1029,8 +1029,8 @@ static void categoryMethod_parseRewindInstruction_transformInstruction (const cP
   const cPtr_parseRewindInstruction * object = (const cPtr_parseRewindInstruction *) inObject ;
   macroValidSharedObject (object, cPtr_parseRewindInstruction) ;
   GALGAS_syntaxInstructionList var_syntaxInstructionList ;
-  GALGAS_location joker_14664 ; // Joker input parameter
-  object->mAttribute_mParseRewindBranchList.method_first (var_syntaxInstructionList, joker_14664, inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas", 300)) ;
+  GALGAS_location joker_14789 ; // Joker input parameter
+  object->mAttribute_mParseRewindBranchList.method_first (var_syntaxInstructionList, joker_14789, inCompiler COMMA_SOURCE_FILE ("grammarCompilation.galgas", 300)) ;
   {
   routine_transformInstructionList (var_syntaxInstructionList, ioArgument_ioActuallyUsedTerminalSymbolMap, constinArgument_inNonTerminalSymbolMap, ioArgument_ioAddedNonTerminalIndex, ioArgument_ioSyntaxInstructionList, inCompiler  COMMA_SOURCE_FILE ("grammarCompilation.galgas", 302)) ;
   }

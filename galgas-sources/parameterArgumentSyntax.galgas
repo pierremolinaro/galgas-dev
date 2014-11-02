@@ -17,15 +17,15 @@
 
 syntax parameterArgumentSyntax (galgas_scanner)  %translate {
 
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <expression> !@semanticExpressionAST outExpressionAST
 
-#------------------------------------------------------------------------------*
-#                                                                              *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #          F O R M A L    P A R A M E T E R    L I S T                         *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <formal_parameter_list> !@formalParameterListAST outFormalParameterList {
   outFormalParameterList = @formalParameterListAST. emptyList
@@ -79,7 +79,7 @@ rule <actual_parameter_list>
     $?$ ?let selector
     select
       $*$
-      outActualParameterList += !@inputSingleJokerActualParameterAST. new { !selector}
+      outActualParameterList += !@inputSingleJokerActualParameterAST.new {!selector}
     or
       @luint count
       $unsigned_literal_integer$ ? count
@@ -93,7 +93,7 @@ rule <actual_parameter_list>
       else
         loop( n)
         while n > 0 do
-          outActualParameterList += !@inputJokerActualParameterAST. new { !selector.location !n}
+          outActualParameterList += !@inputJokerActualParameterAST.new {!selector.location !n}
           n --
         end
       end
@@ -102,7 +102,7 @@ rule <actual_parameter_list>
     $!$ ?let selector
     <expression> ?let @semanticExpressionAST e
     let @location endOfExpressionLocation = @location.here
-    outActualParameterList += !@outputActualParameterAST. new {
+    outActualParameterList += !@outputActualParameterAST.new {
       !selector
       !e
       !endOfExpressionLocation}
@@ -117,14 +117,14 @@ rule <actual_parameter_list>
       $identifier$ ?var  @lstring structAttributeName
       structAttributeList += !structAttributeName
     end
-    outActualParameterList += !@outputInputActualParameterAST. new { 
+    outActualParameterList += !@outputInputActualParameterAST.new { 
       !selector
       !outputInputActualParameterName
       !structAttributeList}
   while
     $!?$ ?let selector
     $*$
-    outActualParameterList += !@outputInputSingleJokerParameterAST. new { 
+    outActualParameterList += !@outputInputSingleJokerParameterAST.new { 
       !selector}
   while
     $!?$ ?let selector
@@ -139,14 +139,14 @@ rule <actual_parameter_list>
     else
       loop( n)
       while n > 0 do
-        outActualParameterList += !@outputInputJokerParameterAST. new { !selector.location !n}
+        outActualParameterList += !@outputInputJokerParameterAST.new {!selector.location !n}
         n --
       end
     end
   while # Existing var parameter
     $?$ ?let selector
     $identifier$ ?let inputActualParameterName
-    outActualParameterList += !@inputActualExistingVariableParameterAST. new {
+    outActualParameterList += !@inputActualExistingVariableParameterAST.new {
       !selector
       !inputActualParameterName}
   while # New var parameter
@@ -154,7 +154,7 @@ rule <actual_parameter_list>
     $type_name$ ?let declarationTypeName :> ?let @string sep ?*
     send sep + "var @" + declarationTypeName
     $identifier$ ?let inputActualParameterName
-    outActualParameterList += !@inputActualNewVariableParameterAST. new {
+    outActualParameterList += !@inputActualNewVariableParameterAST.new {
       !selector
       !declarationTypeName
       !inputActualParameterName}
@@ -168,7 +168,7 @@ rule <actual_parameter_list>
       $type_name$ ?declarationTypeName
     end
     $identifier$ ?let inputActualParameterName
-    outActualParameterList += !@inputActualNewVariableParameterAST. new {
+    outActualParameterList += !@inputActualNewVariableParameterAST.new {
       !selector
       !declarationTypeName
       !inputActualParameterName}
@@ -182,7 +182,7 @@ rule <actual_parameter_list>
       $type_name$ ?declarationTypeName
     end
     $identifier$ ?var @lstring inputActualParameterName
-    outActualParameterList += !@inputActualNewConstantParameterAST. new {
+    outActualParameterList += !@inputActualNewConstantParameterAST.new {
       !selector
       !declarationTypeName
       !inputActualParameterName}
@@ -196,7 +196,7 @@ rule <actual_parameter_list>
       $type_name$ ?declarationTypeName
     end
     $identifier$ ?var @lstring inputActualParameterName
-    outActualParameterList += !@inputActualNewConstantParameterAST. new {
+    outActualParameterList += !@inputActualNewConstantParameterAST.new {
       !selector
       !declarationTypeName
       !inputActualParameterName}

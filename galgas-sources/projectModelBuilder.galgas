@@ -142,7 +142,7 @@ rule <project_component_start_symbol>
   end
   $end$ :> ?sep ?*
   send sep + "}"
-  outProjectComponentAST = @projectComponentAST. new {
+  outProjectComponentAST = @projectComponentAST.new {
     !projectSourceList
     !majorVersion
     !minorVersion

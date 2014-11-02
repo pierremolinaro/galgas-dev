@@ -27,9 +27,9 @@ rule <grammar_component_start_symbol>
   !@galgas3GrammarComponentListAST-element outGrammarComponentRoot {
   @lbool hasIndexing
   select
-    hasIndexing = @lbool. new { !false !@location.here}
+    hasIndexing = @lbool.new {!false !@location.here}
   or
-    hasIndexing = @lbool. new { !true !@location.here}
+    hasIndexing = @lbool.new {!true !@location.here}
     $indexing$
   end
   $grammar$
@@ -66,7 +66,7 @@ rule <grammar_component_start_symbol>
   send sep
   $non_terminal_symbol$ ?var @lstring  mStartSymbol indexing ruleReference
   var mLabelList =@nonTerminalLabelListAST.emptyList{}
-  <grammar_start_symbol_label> !@lstring. new { !"" !@location.here} !?mLabelList
+  <grammar_start_symbol_label> !@lstring.new {!"" !@location.here} !?mLabelList
   repeat
   while
     $label$
@@ -91,7 +91,7 @@ rule <grammar_component_start_symbol>
 #---
   $end$ :> ?sep ?*
   send sep + "}"
-  outGrammarComponentRoot = @galgas3GrammarComponentListAST-element. new {
+  outGrammarComponentRoot = @galgas3GrammarComponentListAST-element.new {
     !hasIndexing
     !mGrammarName
     !mGrammarClass

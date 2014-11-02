@@ -1,8 +1,8 @@
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  Template parser                                                          *
+#  Template parser                                                                                                     *
 #                                                                                                                      *
-#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
+#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
@@ -17,11 +17,11 @@
 
 syntax templateSyntax (galgasTemplateScanner) {
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   E X P R E S S I O N                                                        *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   E X P R E S S I O N                                                                                                *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <expression>
   !@templateExpressionAST outExpression {
@@ -33,22 +33,22 @@ rule <expression>
     @templateExpressionAST leftOperand = outExpression
     @templateExpressionAST rightOperand
     <relation_term> ?rightOperand
-    outExpression = @templateOrOperationAST. new { !operatorLocation !leftOperand !rightOperand}
+    outExpression = @templateOrOperationAST.new {!operatorLocation !leftOperand !rightOperand}
   while
     @location operatorLocation = @location.here
     $^$
     @templateExpressionAST leftOperand = outExpression
     @templateExpressionAST rightOperand
     <relation_term> ?rightOperand
-    outExpression = @templateXorOperationAST. new { !operatorLocation !leftOperand !rightOperand}
+    outExpression = @templateXorOperationAST.new {!operatorLocation !leftOperand !rightOperand}
   end
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   R E L A T I O N    T E R M                                                 *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   R E L A T I O N    T E R M                                                                                         *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <relation_term>
   !@templateExpressionAST outExpression {
@@ -60,15 +60,15 @@ rule <relation_term>
     @templateExpressionAST leftOperand = outExpression
     @templateExpressionAST rightOperand
     <relation_factor> ?rightOperand
-    outExpression = @templateAndOperationAST. new { !operatorLocation !leftOperand !rightOperand}
+    outExpression = @templateAndOperationAST.new {!operatorLocation !leftOperand !rightOperand}
   end
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   R E L A T I O N    F A C T O R                                             *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   R E L A T I O N    F A C T O R                                                                                     *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <relation_factor>
   !@templateExpressionAST outExpression {
@@ -80,50 +80,50 @@ rule <relation_factor>
     @templateExpressionAST leftExpression = outExpression
     @templateExpressionAST rightExpression
     <simple_expression> ?rightExpression
-    outExpression = @templateEqualTestAST. new { !operatorLocation !leftExpression !rightExpression}
+    outExpression = @templateEqualTestAST.new {!operatorLocation !leftExpression !rightExpression}
   or
     @location operatorLocation = @location.here
     $!=$
     @templateExpressionAST leftExpression = outExpression
     @templateExpressionAST rightExpression
     <simple_expression> ?rightExpression
-    outExpression = @templateNonEqualTestAST. new { !operatorLocation !leftExpression !rightExpression}
+    outExpression = @templateNonEqualTestAST.new {!operatorLocation !leftExpression !rightExpression}
   or
     @location operatorLocation = @location.here
     $<=$
     @templateExpressionAST leftExpression = outExpression
     @templateExpressionAST rightExpression
     <simple_expression> ?rightExpression
-    outExpression = @templateInfOrEqualTestAST. new { !operatorLocation !leftExpression !rightExpression}
+    outExpression = @templateInfOrEqualTestAST.new {!operatorLocation !leftExpression !rightExpression}
   or
     @location operatorLocation = @location.here
     $>=$
     @templateExpressionAST leftExpression = outExpression
     @templateExpressionAST rightExpression
     <simple_expression> ?rightExpression
-    outExpression = @templateSupOrEqualTestAST. new { !operatorLocation !leftExpression !rightExpression}
+    outExpression = @templateSupOrEqualTestAST.new {!operatorLocation !leftExpression !rightExpression}
   or
     @location operatorLocation = @location.here
     $>$
     @templateExpressionAST leftExpression = outExpression
     @templateExpressionAST rightExpression
     <simple_expression> ?rightExpression
-    outExpression = @templateStrictSupTestAST. new { !operatorLocation !leftExpression !rightExpression}
+    outExpression = @templateStrictSupTestAST.new {!operatorLocation !leftExpression !rightExpression}
   or
     @location operatorLocation = @location.here
     $<$
     @templateExpressionAST leftExpression = outExpression
     @templateExpressionAST rightExpression
     <simple_expression> ?rightExpression
-    outExpression = @templateStrictInfTestAST. new { !operatorLocation !leftExpression !rightExpression}
+    outExpression = @templateStrictInfTestAST.new {!operatorLocation !leftExpression !rightExpression}
   end
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   S I M P L E    E X P R E S S I O N                                         *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   S I M P L E    E X P R E S S I O N                                                                                 *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <simple_expression>
   !@templateExpressionAST outExpression {
@@ -135,36 +135,36 @@ rule <simple_expression>
     @templateExpressionAST leftExpression = outExpression
     @templateExpressionAST rightExpression
     <term> ?rightExpression
-    outExpression = @templateLeftShiftOperationAST. new { !operatorLocation !leftExpression !rightExpression}
+    outExpression = @templateLeftShiftOperationAST.new {!operatorLocation !leftExpression !rightExpression}
   while 
     @location operatorLocation = @location.here
     $>>$
     @templateExpressionAST leftExpression = outExpression
     @templateExpressionAST rightExpression
     <term> ?rightExpression
-    outExpression = @templateRightShiftOperationAST. new { !operatorLocation !leftExpression !rightExpression}
+    outExpression = @templateRightShiftOperationAST.new {!operatorLocation !leftExpression !rightExpression}
   while 
     @location operatorLocation = @location.here
     $+$
     @templateExpressionAST leftExpression = outExpression
     @templateExpressionAST rightExpression
     <term> ?rightExpression
-    outExpression = @templateAddOperationAST. new { !operatorLocation !leftExpression !rightExpression}
+    outExpression = @templateAddOperationAST.new {!operatorLocation !leftExpression !rightExpression}
   while 
     @location operatorLocation = @location.here
     $-$
     @templateExpressionAST leftExpression = outExpression
     @templateExpressionAST rightExpression
     <term> ?rightExpression
-    outExpression = @templateSubOperationAST. new { !operatorLocation !leftExpression !rightExpression}
+    outExpression = @templateSubOperationAST.new {!operatorLocation !leftExpression !rightExpression}
   end
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   T E R M                                                                    *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   T E R M                                                                                                            *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <term>
   !@templateExpressionAST outExpression {
@@ -176,29 +176,29 @@ rule <term>
     @templateExpressionAST leftExpression = outExpression
     @templateExpressionAST rightExpression
     <factor> ?rightExpression
-    outExpression = @templateMultiplyOperationAST. new { !operatorLocation !leftExpression !rightExpression}
+    outExpression = @templateMultiplyOperationAST.new {!operatorLocation !leftExpression !rightExpression}
   while 
     @location operatorLocation = @location.here
     $/$
     @templateExpressionAST leftExpression = outExpression
     @templateExpressionAST rightExpression
     <factor> ?rightExpression
-    outExpression = @templateDivideOperationAST. new { !operatorLocation !leftExpression !rightExpression}
+    outExpression = @templateDivideOperationAST.new {!operatorLocation !leftExpression !rightExpression}
   while 
     @location operatorLocation = @location.here
     $mod$
     @templateExpressionAST leftExpression = outExpression
     @templateExpressionAST rightExpression
     <factor> ?rightExpression
-    outExpression = @templateModuloOperationAST. new { !operatorLocation !leftExpression !rightExpression}
+    outExpression = @templateModuloOperationAST.new {!operatorLocation !leftExpression !rightExpression}
   end
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   F A C T O R    :    struct field access                                    *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   F A C T O R    :    struct field access                                                                            *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <factor>
   !@templateExpressionAST outExpression {
@@ -207,15 +207,15 @@ rule <factor>
   while
     $.$
     $identifier$ ?let @lstring structFieldName
-    outExpression = @structFieldAccessTemplateExpressionAST. new { !structFieldName.location !outExpression !structFieldName}
+    outExpression = @structFieldAccessTemplateExpressionAST.new {!structFieldName.location !outExpression !structFieldName}
   end
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   F A C T O R    :    - factor                                               *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   F A C T O R    :    - factor                                                                                       *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <factor>
   !@templateExpressionAST outExpression {
@@ -223,14 +223,14 @@ rule <factor>
   $-$
   @templateExpressionAST expression
   <factor> ?expression
-  outExpression = @templateUnaryMinusOperationAST. new { !operatorLocation !expression}
+  outExpression = @templateUnaryMinusOperationAST.new {!operatorLocation !expression}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   F A C T O R    :    not FACTOR                                             *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   F A C T O R    :    not FACTOR                                                                                     *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <factor>
   !@templateExpressionAST outExpression {
@@ -238,14 +238,14 @@ rule <factor>
   $not$
   @templateExpressionAST ifCondition
   <factor> ?ifCondition
-  outExpression = @templateNotOperatorAST. new { !operatorLocation !ifCondition}
+  outExpression = @templateNotOperatorAST.new {!operatorLocation !ifCondition}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   F A C T O R    :    ~ FACTOR                                               *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   F A C T O R    :    ~ FACTOR                                                                                       *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <factor>
   !@templateExpressionAST outExpression {
@@ -253,26 +253,26 @@ rule <factor>
   $~$
   @templateExpressionAST ifCondition
   <factor> ?ifCondition
-  outExpression = @templateLogicalNegateAST. new { !operatorLocation !ifCondition}
+  outExpression = @templateLogicalNegateAST.new {!operatorLocation !ifCondition}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   P R I M A R Y  :    <var>                                                  *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   P R I M A R Y  :    <var>                                                                                          *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary>
   !@templateExpressionAST outExpression {
   $identifier$ ?var  @lstring identifier
-  outExpression = @templateVarInExpressionAST. new { !identifier}
+  outExpression = @templateVarInExpressionAST.new {!identifier}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   P R I M A R Y  :    ( EXPRESSION )                                         *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   P R I M A R Y  :    ( EXPRESSION )                                                                                 *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary>
   !@templateExpressionAST outExpression {
@@ -281,112 +281,112 @@ rule <primary>
   $)$
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   P R I M A R Y  :    true                                                   *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   P R I M A R Y  :    true                                                                                           *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary>
   !@templateExpressionAST outExpression {
   $true$
-  outExpression = @templateTrueBoolAST. new { !@location.here}
+  outExpression = @templateTrueBoolAST.new {!@location.here}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   P R I M A R Y  :    false                                                  *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   P R I M A R Y  :    false                                                                                          *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary>
   !@templateExpressionAST outExpression {
   $false$
-  outExpression = @templateFalseBoolAST. new { !@location.here}
+  outExpression = @templateFalseBoolAST.new {!@location.here}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   P R I M A R Y  :    a 32-bit unsigned literal integer value                *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   P R I M A R Y  :    a 32-bit unsigned literal integer value                                                        *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary>
   !@templateExpressionAST outExpression {
   @luint literalInt
   $unsigned_literal_integer$ ?literalInt
-  outExpression = @templateLiteralUIntExpressionAST. new { !literalInt}
+  outExpression = @templateLiteralUIntExpressionAST.new {!literalInt}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   P R I M A R Y  :    a 32-bit signed literal integer value                  *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   P R I M A R Y  :    a 32-bit signed literal integer value                                                          *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary>
   !@templateExpressionAST outExpression {
   @lsint literalInt
   $signed_literal_integer$ ?literalInt
-  outExpression = @templateLiteralSIntExpressionAST. new { !literalInt}
+  outExpression = @templateLiteralSIntExpressionAST.new {!literalInt}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   P R I M A R Y  :    a 64-bit unsigned literal integer value                *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   P R I M A R Y  :    a 64-bit unsigned literal integer value                                                        *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary>
   !@templateExpressionAST outExpression {
   @luint64 literalInt
   $unsigned_literal_integer64$ ?literalInt
-  outExpression = @templateLiteralUInt64ExpressionAST. new { !literalInt}
+  outExpression = @templateLiteralUInt64ExpressionAST.new {!literalInt}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   P R I M A R Y  :    a 64-bit signed literal integer value                  *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   P R I M A R Y  :    a 64-bit signed literal integer value                                                          *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary>
   !@templateExpressionAST outExpression {
   @lsint64 literalInt
   $signed_literal_integer64$ ?literalInt
-  outExpression = @templateLiteralSInt64ExpressionAST. new { !literalInt}
+  outExpression = @templateLiteralSInt64ExpressionAST.new {!literalInt}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   P R I M A R Y  :    a double value                                         *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   P R I M A R Y  :    a double value                                                                                 *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary>
   !@templateExpressionAST outExpression {
   @ldouble literalDouble
   $literal_double$ ? literalDouble ?*
-  outExpression = @templateLiteralDoubleExpressionAST. new { !literalDouble}
+  outExpression = @templateLiteralDoubleExpressionAST.new {!literalDouble}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   P R I M A R Y  :    a literal character value                              *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   P R I M A R Y  :    a literal character value                                                                      *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary>
   !@templateExpressionAST outExpression {
   $literal_char$ ?var @lchar literalChar
-  outExpression = @templateLiteralCharExpressionAST. new { !literalChar}
+  outExpression = @templateLiteralCharExpressionAST.new {!literalChar}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   P R I M A R Y  :    a literal character value                              *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   P R I M A R Y  :    a literal character value                                                                      *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary>
   !@templateExpressionAST outExpression {
@@ -397,20 +397,20 @@ rule <primary>
     literalStringList += ![literalString string]
   while
   end
-  outExpression = @templateLiteralStringExpressionAST. new { !literalStringList !@location.here}
+  outExpression = @templateLiteralStringExpressionAST.new {!literalStringList !@location.here}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#                         F A C T O R                                          *
-#   description          :   [expression description]                          *
-#   reader call          :   [expression reader !... ]                         *
-#   constructor call     :   [@class constructor !... ]                        *
-#   option value         :   [option option_component_name.option_name]        *
-#   filewrapper template :   [filewrapper fw.template_name !...]               *
-#   category template    :   [template expression template_name !...]          *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#                         F A C T O R                                                                                  *
+#   description          :   [expression description]                                                                  *
+#   reader call          :   [expression reader !... ]                                                                 *
+#   constructor call     :   [@class constructor !... ]                                                                *
+#   option value         :   [option option_component_name.option_name]                                                *
+#   filewrapper template :   [filewrapper fw.template_name !...]                                                       *
+#   category template    :   [template expression template_name !...]                                                  *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary>
   !@templateExpressionAST outExpression {
@@ -423,7 +423,7 @@ rule <primary>
     $identifier$ ?var  @lstring templateName
     @templateExpressionListAST expressionList
     <output_expression_list> ?expressionList
-    outExpression = @templateCategoryTemplateCallAST. new {
+    outExpression = @templateCategoryTemplateCallAST.new {
       !receiverExpression
       !templateName
       !expressionList}
@@ -431,7 +431,7 @@ rule <primary>
     $type_name$ ?var @lstring typeName
     $identifier$ ?var  @lstring constructorName
     <output_expression_list> ?var @templateExpressionListAST expressionList
-    outExpression = @templateConstructorAST. new {
+    outExpression = @templateConstructorAST.new {
       !typeName
       !constructorName
       !expressionList}
@@ -442,14 +442,14 @@ rule <primary>
     $identifier$ ?var @lstring templateName
     @templateExpressionListAST expressionList
     <output_expression_list> ?expressionList
-    outExpression = @templateFileWrapperTemplateCallAST. new { !filewrapperName !templateName !expressionList}
+    outExpression = @templateFileWrapperTemplateCallAST.new {!filewrapperName !templateName !expressionList}
   or #--------------------------------- Reader call
     @templateExpressionAST receiverExpression
     <expression> ?receiverExpression
     $identifier$ ?var  @lstring readerName
     @templateExpressionListAST expressionList
     <output_expression_list> ?expressionList
-    outExpression = @templateReaderCallInExpressionAST. new {
+    outExpression = @templateReaderCallInExpressionAST.new {
       !receiverExpression
       !readerName
       !expressionList}
@@ -459,24 +459,24 @@ rule <primary>
       $.$
       $identifier$ ?var @lstring optionName
       $identifier$ ?var @lstring readerName
-      outExpression = @templateOptionAccessAST. new { !@lstring. new { !"galgas_builtin_options" !@location.here} !optionName !readerName}
+      outExpression = @templateOptionAccessAST.new {!@lstring.new {!"galgas_builtin_options" !@location.here} !optionName !readerName}
     or
       $identifier$ ?var @lstring optionComponentName
       $.$
       $identifier$ ?var @lstring optionName
       $identifier$ ?var @lstring readerName
-      outExpression = @templateOptionAccessAST. new { !optionComponentName !optionName !readerName}
+      outExpression = @templateOptionAccessAST.new {!optionComponentName !optionName !readerName}
     end
   end
   $]$
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#                         F A C T O R                                          *
-#   function call        :   function_name (!... )                             *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#                         F A C T O R                                                                                  *
+#   function call        :   function_name (!... )                                                                     *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary>
   !@templateExpressionAST outExpression {
@@ -484,14 +484,14 @@ rule <primary>
   $($
   <output_expression_list> ?let @templateExpressionListAST expressionList
   $)$
-  outExpression = @templateFunctionCallAST. new { !functionName !expressionList}
+  outExpression = @templateFunctionCallAST.new {!functionName !expressionList}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   O U T P U T    E X P R E S S I O N    L I S T                              *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   O U T P U T    E X P R E S S I O N    L I S T                                                                      *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <output_expression_list>
   !@templateExpressionListAST outExpressionList {
@@ -507,7 +507,7 @@ rule <output_expression_list>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    I N S T R U C T I O N S                                                *
+#    I N S T R U C T I O N S                                                                                           *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -518,7 +518,7 @@ rule <template_instruction>
     error selector : "the selector should be '!'"
   end
   <expression> ?let @templateExpressionAST expression
-  ioResultingInstructionList += !@templateInstructionExpressionAST. new { !expression !@location.here}
+  ioResultingInstructionList += !@templateInstructionExpressionAST.new {!expression !@location.here}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -556,7 +556,7 @@ rule <template_instruction>
 #---
   $end$
   $block$
-  ioResultingInstructionList += !@templateBlockInstructionAST. new {
+  ioResultingInstructionList += !@templateBlockInstructionAST.new {
    !expression
    !@location.here
    !blockInstructionList}
@@ -605,7 +605,7 @@ rule <template_instruction>
   $do$
   @lstring indexIdentifier
   select
-    indexIdentifier = @lstring. new { !"" !@location.here}
+    indexIdentifier = @lstring.new {!"" !@location.here}
   or
     $index$
     $identifier$ ? indexIdentifier
@@ -643,7 +643,7 @@ rule <template_instruction>
   end
 #---
   $end$
-  ioResultingInstructionList += !@templateInstructionForeachAST. new {
+  ioResultingInstructionList += !@templateInstructionForeachAST.new {
    !ascending
    !expression
    !foreachPrefix
@@ -689,7 +689,7 @@ rule <template_instruction>
   end
 #---
   $end$
-  ioResultingInstructionList += !@templateInstructionIfAST. new {
+  ioResultingInstructionList += !@templateInstructionIfAST.new {
     !templateInstructionIfBranchList
     !elseInstructionList}
 }
@@ -726,7 +726,7 @@ rule <template_instruction>
   end
 #---
   $end$
-  ioResultingInstructionList += !@templateInstructionSwitchAST. new {
+  ioResultingInstructionList += !@templateInstructionSwitchAST.new {
     !switchExpression
     !endOfSwitchExpression
     !templateInstructionSwitchBranchList}

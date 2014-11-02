@@ -108,7 +108,7 @@ proc compileGuiComponentFromAST
       error mValue: "only an option component (path extension '.gOption') can be imported here"
     else
       parseOptionComponent (
-        !@lstring. new {
+        !@lstring.new {
           ![[mValue string] absolutePathFromPath ![[inSourceFile string] stringByDeletingLastPathComponent]]
           ![mValue location]}
         !?ioParsedComponentStruct

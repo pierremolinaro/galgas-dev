@@ -36,7 +36,7 @@ rule <option_component_start_symbol>
   send sep + "}"
   $option$ :> ?* ?*
   $;$ :> ?* ?*
-  outOptionComponentRoot = @optionComponentAST. new {
+  outOptionComponentRoot = @optionComponentAST.new {
     !mOptionComponentName
     !mOptions}
 }
@@ -63,7 +63,7 @@ rule <option> ?!@commandLineOptionListAST ioCommandLineOptionList {
       optionDefaultValueKind = @optionDefaultValueEnumAST. stringDefaultValue
     or
       $unsigned_literal_integer$ ?var  @luint v
-      defaultValue = @lstring. new { ![[v uint] string] ![v location]}
+      defaultValue = @lstring.new {![[v uint] string] ![v location]}
       optionDefaultValueKind = @optionDefaultValueEnumAST. unsignedDefaultValue
     end
   end
