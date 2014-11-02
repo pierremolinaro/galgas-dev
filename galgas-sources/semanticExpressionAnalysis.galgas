@@ -414,7 +414,7 @@ override method @selfCopyInExpressionAST analyzeSemanticExpression
     error mSelfLocation: "'selfcopy' cannot be used in this context" : outExpression
   else
     let @string selfCppName = inAnalysisContext.mSelfObjectCppName
-    outExpression = @selfCopyInExpressionForGeneration. new { !inAnalysisContext.mSelfCopyTypeProxy !mSelfLocation !selfCppName}
+    outExpression = @selfCopyInExpressionForGeneration.new {!inAnalysisContext.mSelfCopyTypeProxy !mSelfLocation !selfCppName}
   end
 }
 
@@ -432,7 +432,7 @@ override method @hereExpressionAST analyzeSemanticExpression
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression {
-  outExpression = @hereExpressionForGeneration. new { !inAnalysisContext.mPredefinedTypes.mLocationType !mLocation}
+  outExpression = @hereExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mLocationType !mLocation}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -449,7 +449,7 @@ override method @trueExpressionAST analyzeSemanticExpression
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression {
-  outExpression = @trueExpressionForGeneration. new { !inAnalysisContext.mPredefinedTypes.mBoolType !mLocation}
+  outExpression = @trueExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mBoolType !mLocation}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -466,7 +466,7 @@ override method @falseExpressionAST analyzeSemanticExpression
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression {
-  outExpression = @falseExpressionForGeneration. new { !inAnalysisContext.mPredefinedTypes.mBoolType !mLocation}
+  outExpression = @falseExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mBoolType !mLocation}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -483,7 +483,7 @@ override method @literalCharExpressionAST analyzeSemanticExpression
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression {
-  outExpression = @literalCharExpressionForGeneration. new { !inAnalysisContext.mPredefinedTypes.mCharType ![mCharacter location] ![mCharacter char]}
+  outExpression = @literalCharExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mCharType ![mCharacter location] ![mCharacter char]}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -504,7 +504,7 @@ override method @literalStringExpressionAST analyzeSemanticExpression
   for () in  mStringSequence do
     s += mValue
   end
-  outExpression = @literalStringExpressionForGeneration. new { !inAnalysisContext.mPredefinedTypes.mStringType !mLocation !s}
+  outExpression = @literalStringExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mStringType !mLocation !s}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -521,7 +521,7 @@ override method @literalDoubleExpressionAST analyzeSemanticExpression
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression {
-  outExpression = @literalDoubleExpressionForGeneration. new { !inAnalysisContext.mPredefinedTypes.mDoubleType ![mValue location] ![mValue double]}
+  outExpression = @literalDoubleExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mDoubleType ![mValue location] ![mValue double]}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -538,7 +538,7 @@ override method @literalUIntExpressionAST analyzeSemanticExpression
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression {
-  outExpression = @literalUIntExpressionForGeneration. new { !inAnalysisContext.mPredefinedTypes.mUIntType ![mValue location] ![mValue uint]}
+  outExpression = @literalUIntExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mUIntType ![mValue location] ![mValue uint]}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -555,7 +555,7 @@ override method @literalUInt64ExpressionAST analyzeSemanticExpression
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression {
-  outExpression = @literalUInt64ExpressionForGeneration. new {
+  outExpression = @literalUInt64ExpressionForGeneration.new {
     !inAnalysisContext.mPredefinedTypes.mUInt64Type
     ![mValue location]
     ![mValue uint64]}
@@ -575,7 +575,7 @@ override method @literalSIntExpressionAST analyzeSemanticExpression
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression {
-  outExpression = @literalSIntExpressionForGeneration. new { !inAnalysisContext.mPredefinedTypes.mSIntType ![mValue location] ![mValue sint]}
+  outExpression = @literalSIntExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mSIntType ![mValue location] ![mValue sint]}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -592,7 +592,7 @@ override method @literalSInt64ExpressionAST analyzeSemanticExpression
   ?let @analysisContext inAnalysisContext
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression {
-  outExpression = @literalSInt64ExpressionForGeneration. new { !inAnalysisContext.mPredefinedTypes.mSInt64Type ![mValue location] ![mValue sint64]}
+  outExpression = @literalSInt64ExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mSInt64Type ![mValue location] ![mValue sint64]}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -695,7 +695,7 @@ override method @defaultConstructorExpressionAST analyzeSemanticExpression
       error mTypeName: "this class does not support the default constructor"
     end
   #---
-    outExpression = @defaultConstructorExpressionForGeneration. new {
+    outExpression = @defaultConstructorExpressionForGeneration.new {
       !type
       !mTypeName.location}
   end
@@ -732,7 +732,7 @@ override method @constructorExpressionAST analyzeSemanticExpression
     ?let @bool hasCompilerArgument
   )
 #---
-  outExpression = @constructorExpressionForGeneration. new {
+  outExpression = @constructorExpressionForGeneration.new {
     !returnedType
     ![mConstructorName location]
     !constructorType
@@ -785,7 +785,7 @@ override method @readerCallExpressionAST analyzeSemanticExpression
       returnedType = @unifiedTypeMap-proxy. null
       kind = @methodKind. definedAsCategory
       for () in  [receiverType mCurrentTypedAttributeList] do
-        let attributeType = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !@lstring. new { ![mAttributeTypeProxy key] !@location.here}}
+        let attributeType = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !@lstring.new {![mAttributeTypeProxy key] !@location.here}}
         let aMap = [attributeType mReaderMap]
         with [mReaderName string] in  aMap  do
           matchingReaderCount ++
@@ -850,7 +850,7 @@ override method @readerCallExpressionAST analyzeSemanticExpression
       checkAssignmentTypes ( !mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation )
       constructorEffectiveParameterList += !exp
     end
-    outExpression = @readerCallExpressionForGeneration. new {
+    outExpression = @readerCallExpressionForGeneration.new {
       !returnedType
       ![mReaderName location]
       !kind
@@ -920,28 +920,28 @@ override method @optionExpressionAST analyzeSemanticExpression
   end
   if found then
     if [mOptionReaderName string] == "value" then
-      outExpression = @optionValueExpressionForGeneration. new {
+      outExpression = @optionValueExpressionForGeneration.new {
         !returnedType
         ![mOptionComponentName location]
         !optionComponentIsPredefined
         ![mOptionComponentName string]
         ![mOptionEntryName string]}
     elsif [mOptionReaderName string] == "char" then
-      outExpression = @optionCharExpressionForGeneration. new {
+      outExpression = @optionCharExpressionForGeneration.new {
         !inAnalysisContext.mPredefinedTypes.mCharType
         ![mOptionComponentName location]
         !optionComponentIsPredefined
         ![mOptionComponentName string]
         ![mOptionEntryName string]}
     elsif [mOptionReaderName string] == "string" then
-      outExpression = @optionStringExpressionForGeneration. new {
+      outExpression = @optionStringExpressionForGeneration.new {
         !inAnalysisContext.mPredefinedTypes.mStringType
         ![mOptionComponentName location]
         !optionComponentIsPredefined
         ![mOptionComponentName string]
         ![mOptionEntryName string]}
     elsif [mOptionReaderName string] == "comment" then
-      outExpression = @optionCommentExpressionForGeneration. new {
+      outExpression = @optionCommentExpressionForGeneration.new {
         !inAnalysisContext.mPredefinedTypes.mStringType
         ![mOptionComponentName location]
         !optionComponentIsPredefined
@@ -1004,7 +1004,7 @@ proc checkDiadicOperator
         ]
         ok = ([argumentTypeList length] == 0) & (returnedType == inLeftType)
      #--- Add conversion expression
-        @semanticExpressionForGeneration conversionExpression = @readerCallExpressionForGeneration. new {
+        @semanticExpressionForGeneration conversionExpression = @readerCallExpressionForGeneration.new {
           !inLeftType
           !inErrorLocation
           !kind
@@ -1059,7 +1059,7 @@ override method @concatExpressionAST analyzeSemanticExpression
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @concatExpressionForGeneration. new {
+  outExpression = @concatExpressionForGeneration.new {
     !leftType
     !mOperatorLocation
     !leftExpression
@@ -1099,7 +1099,7 @@ override method @orExpressionAST analyzeSemanticExpression
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @orExpressionForGeneration. new {
+  outExpression = @orExpressionForGeneration.new {
     !leftType
     !mOperatorLocation
     !leftExpression
@@ -1139,7 +1139,7 @@ override method @orShortExpressionAST analyzeSemanticExpression
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @orShortExpressionForGeneration. new {
+  outExpression = @orShortExpressionForGeneration.new {
     !leftType
     !mOperatorLocation
     !leftExpression
@@ -1179,7 +1179,7 @@ override method @andExpressionAST analyzeSemanticExpression
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @andExpressionForGeneration. new {
+  outExpression = @andExpressionForGeneration.new {
     !leftType
     !mOperatorLocation
     !leftExpression
@@ -1219,7 +1219,7 @@ override method @andShortExpressionAST analyzeSemanticExpression
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @andShortExpressionForGeneration. new {
+  outExpression = @andShortExpressionForGeneration.new {
     !leftType
     !mOperatorLocation
     !leftExpression
@@ -1259,7 +1259,7 @@ override method @xorExpressionAST analyzeSemanticExpression
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @xorExpressionForGeneration. new {
+  outExpression = @xorExpressionForGeneration.new {
     !leftType
     !mOperatorLocation
     !leftExpression
@@ -1297,7 +1297,7 @@ override method @equalExpressionAST analyzeSemanticExpression
     :outExpression
   else
   #--- Generate expression
-    outExpression = @equalExpressionForGeneration. new {
+    outExpression = @equalExpressionForGeneration.new {
       !inAnalysisContext.mPredefinedTypes.mBoolType
       !mOperatorLocation
       !leftExpression
@@ -1336,7 +1336,7 @@ override method @notEqualExpressionAST analyzeSemanticExpression
     :outExpression
   else
   #--- Generate expression
-    outExpression = @notEqualExpressionForGeneration. new {
+    outExpression = @notEqualExpressionForGeneration.new {
       !inAnalysisContext.mPredefinedTypes.mBoolType
       !mOperatorLocation
       !leftExpression
@@ -1379,7 +1379,7 @@ override method @lowerOrEqualExpressionAST analyzeSemanticExpression
     :outExpression
   else
   #--- Generate expression
-    outExpression = @lowerOrEqualExpressionForGeneration. new {
+    outExpression = @lowerOrEqualExpressionForGeneration.new {
       !inAnalysisContext.mPredefinedTypes.mBoolType
       !mOperatorLocation
       !leftExpression
@@ -1422,7 +1422,7 @@ override method @greaterOrEqualExpressionAST analyzeSemanticExpression
     :outExpression
   else
   #--- Generate expression
-    outExpression = @greaterOrEqualExpressionForGeneration. new {
+    outExpression = @greaterOrEqualExpressionForGeneration.new {
       !inAnalysisContext.mPredefinedTypes.mBoolType
       !mOperatorLocation
       !leftExpression
@@ -1465,7 +1465,7 @@ override method @strictGreaterExpressionAST analyzeSemanticExpression
     :outExpression
   else
   #--- Generate expression
-    outExpression = @strictGreaterExpressionForGeneration. new {
+    outExpression = @strictGreaterExpressionForGeneration.new {
       !inAnalysisContext.mPredefinedTypes.mBoolType
       !mOperatorLocation
       !leftExpression
@@ -1508,7 +1508,7 @@ override method @strictLowerExpressionAST analyzeSemanticExpression
     :outExpression
   else
   #--- Generate expression
-    outExpression = @strictLowerExpressionForGeneration. new {
+    outExpression = @strictLowerExpressionForGeneration.new {
       !inAnalysisContext.mPredefinedTypes.mBoolType
       !mOperatorLocation
       !leftExpression
@@ -1551,7 +1551,7 @@ override method @rightShiftExpressionAST analyzeSemanticExpression
     :outExpression
   else
   #--- Generate expression
-    outExpression = @rightShiftExpressionForGeneration. new {
+    outExpression = @rightShiftExpressionForGeneration.new {
       !leftType
       !mOperatorLocation
       !leftExpression
@@ -1594,7 +1594,7 @@ override method @leftShiftExpressionAST analyzeSemanticExpression
     :outExpression
   else
   #--- Generate expression
-    outExpression = @leftShiftExpressionForGeneration. new {
+    outExpression = @leftShiftExpressionForGeneration.new {
       !leftType
       !mOperatorLocation
       !leftExpression
@@ -1635,7 +1635,7 @@ override method @addExpressionAST analyzeSemanticExpression
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @addExpressionForGeneration. new {
+  outExpression = @addExpressionForGeneration.new {
     !leftType
     !mOperatorLocation
     !leftExpression
@@ -1675,7 +1675,7 @@ override method @subExpressionAST analyzeSemanticExpression
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @subExpressionForGeneration. new {
+  outExpression = @subExpressionForGeneration.new {
     !leftType
     !mOperatorLocation
     !leftExpression
@@ -1715,7 +1715,7 @@ override method @multiplicationExpressionAST analyzeSemanticExpression
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @multiplicationExpressionForGeneration. new {
+  outExpression = @multiplicationExpressionForGeneration.new {
     !leftType
     !mOperatorLocation
     !leftExpression
@@ -1755,7 +1755,7 @@ override method @divisionExpressionAST analyzeSemanticExpression
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @divisionExpressionForGeneration. new {
+  outExpression = @divisionExpressionForGeneration.new {
     !leftType
     !mOperatorLocation
     !leftExpression
@@ -1795,7 +1795,7 @@ override method @moduloExpressionAST analyzeSemanticExpression
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @moduloExpressionForGeneration. new {
+  outExpression = @moduloExpressionForGeneration.new {
     !leftType
     !mOperatorLocation
     !leftExpression
@@ -1828,7 +1828,7 @@ override method @unaryMinusExpressionAST analyzeSemanticExpression
     :outExpression
   else
   #--- Generate expression
-    outExpression = @unaryMinusExpressionForGeneration. new {
+    outExpression = @unaryMinusExpressionForGeneration.new {
       !type
       !mOperatorLocation
       !expression}
@@ -1861,7 +1861,7 @@ override method @notExpressionAST analyzeSemanticExpression
     :outExpression
   else
   #--- Generate expression
-    outExpression = @notExpressionForGeneration. new {
+    outExpression = @notExpressionForGeneration.new {
       !type
       !mOperatorLocation
       !expression}
@@ -1901,7 +1901,7 @@ override method @structFieldAccessExpressionAST analyzeSemanticExpression
     ?type
   ]
 #--- Generate expression
-  outExpression = @structFieldAccessExpressionForGeneration. new {
+  outExpression = @structFieldAccessExpressionForGeneration.new {
     !type
     !mOperatorLocation
     !expression
@@ -1934,7 +1934,7 @@ override method @complementExpressionAST analyzeSemanticExpression
     :outExpression
   else
   #--- Generate expression
-    outExpression = @tildeExpressionForGeneration. new {
+    outExpression = @tildeExpressionForGeneration.new {
       !type
       !mOperatorLocation
       !expression}
@@ -1978,7 +1978,7 @@ override method @ifExpressionAST analyzeSemanticExpression
     :outExpression
   else
   #--- Generate expression
-    outExpression = @ifExpressionForGeneration. new {
+    outExpression = @ifExpressionForGeneration.new {
       ![then_expression mResultType]
       !mOperatorLocation
       !if_expression
@@ -2040,7 +2040,7 @@ override method @functionCallExpressionAST analyzeSemanticExpression
       end
       semanticExpressionListForGeneration += !expression
     end
-    outExpression = @functionCallExpressionForGeneration. new {
+    outExpression = @functionCallExpressionForGeneration.new {
       !resultType
       ![mFunctionName location]
       ![mFunctionName string]
@@ -2068,7 +2068,7 @@ override method @varInExpressionAST analyzeSemanticExpression
     ?let @string sourceVariableCppName
     ?let @string nameForCheckingFormalParameterUsing
   ]
-  outExpression = @varInExpressionForGeneration. new {
+  outExpression = @varInExpressionForGeneration.new {
     !type
     ![mVarName location]
     !sourceVariableCppName
@@ -2092,8 +2092,8 @@ override method @literalTypeInExpressionAST analyzeSemanticExpression
 #--- Get constructor map from type map
   [inAnalysisContext.mSemanticContext.mTypeMap searchKey !mLiteralTypeName ?26*]
 #---
-  outExpression = @literalTypeInExpressionForGeneration. new {
-    !@unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !@lstring. new { !"type" !@location.here}}
+  outExpression = @literalTypeInExpressionForGeneration.new {
+    !@unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !@lstring.new {!"type" !@location.here}}
     ![mLiteralTypeName location]
     ![mLiteralTypeName string]}
 }
@@ -2137,7 +2137,7 @@ override method @testDynamicClassInExpressionAST analyzeSemanticExpression
      +  [[expression mResultType] key] + " instance"
   end
 #--- Generate expression
-  outExpression = @testDynamicClassInExpressionForGeneration. new {
+  outExpression = @testDynamicClassInExpressionForGeneration.new {
     !inAnalysisContext.mPredefinedTypes.mBoolType
     ![mTypeName location]
     !expression
@@ -2197,13 +2197,13 @@ override method @castInExpressionAST analyzeSemanticExpression
   end
 #--- Generate expression
   if [[expression mResultType] key] == "object" then
-    outExpression = @extractObjectInExpressionForGeneration. new {
+    outExpression = @extractObjectInExpressionForGeneration.new {
       !type
       !mEndOfReceiverExpression
       !expression
       ![mTypeName string]}
   else
-    outExpression = @castInExpressionForGeneration. new {
+    outExpression = @castInExpressionForGeneration.new {
       !type
       ![mTypeName location]
       !expression
@@ -2240,8 +2240,8 @@ override method @filewrapperObjectInstanciationInExpressionAST analyzeSemanticEx
     end
   end
 #---
-  outExpression = @filewrapperInExpressionForGeneration. new {
-    !@unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !@lstring. new { !"filewrapper" ![mFilewrapperName location]}}
+  outExpression = @filewrapperInExpressionForGeneration.new {
+    !@unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !@lstring.new {!"filewrapper" ![mFilewrapperName location]}}
     ![mFilewrapperName location]
     ![mFilewrapperName string]
     ![filewrapperPath string]}
@@ -2300,7 +2300,7 @@ override method @filewrapperTemplateInExpressionAST analyzeSemanticExpression
     end
   end
 #---
-  outExpression = @filewrapperTemplateInExpressionForGeneration. new {
+  outExpression = @filewrapperTemplateInExpressionForGeneration.new {
     !inAnalysisContext.mPredefinedTypes.mStringType
     ![mFilewrapperName location]
     ![mFilewrapperName string]
@@ -2359,7 +2359,7 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
     builtPath += directoryName + "/"
     if [filewrapperDirectoryMap hasKey !directoryName] then
       [filewrapperDirectoryMap searchKey
-        !@lstring. new { !directoryName !@location.here}
+        !@lstring.new {!directoryName !@location.here}
         ?filewrapperFileMap
         ?filewrapperDirectoryMap
         ?*
@@ -2372,17 +2372,17 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
   @uint fileIndex
   @bool isTextFile
   if [filewrapperFileMap hasKey !fileName] then
-    [filewrapperFileMap searchKey !@lstring. new { !fileName !@location.here} ?* ?isTextFile ?* ?fileIndex]
+    [filewrapperFileMap searchKey !@lstring.new {!fileName !@location.here} ?* ?isTextFile ?* ?fileIndex]
   else
     error mFilewrapperPath
     : "the '" + fileName + "' file does not exist in the '" + builtPath + "' directory of '" + mFilewrapperName + "' filewrapper"
     : fileIndex, isTextFile
   end
 #---
-  outExpression = @filewrapperStaticPathInExpressionForGeneration. new {
+  outExpression = @filewrapperStaticPathInExpressionForGeneration.new {
     !if isTextFile
       then inAnalysisContext.mPredefinedTypes.mStringType
-      else @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !@lstring. new { !"data" !@location.here}}
+      else @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !@lstring.new {!"data" !@location.here}}
      end
     ![mFilewrapperName location]
     ![mFilewrapperName string]
@@ -2414,7 +2414,7 @@ override method @lexiqueIntrospectionExpressionAST analyzeSemanticExpression
     error mLexiqueReaderName:"unknown reader"
   end
 #---
-  outExpression = @lexiqueIntrospectionForGeneration. new {
+  outExpression = @lexiqueIntrospectionForGeneration.new {
     !@unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !["stringlist" nowhere]}
     !mLexiqueComponentName.location
     !mLexiqueComponentName.string
@@ -2463,7 +2463,7 @@ override method @expressionCollectionValue analyze
 #--- Check assignment type compatibility
   checkAssignmentTypes ( !inElementType ![expression mResultType] !mExpressionLocation )
 #---
-  ioCollectionValueElementListForGeneration += !@expressionCollectionValueForGeneration. new { !mExpressionLocation !expression}
+  ioCollectionValueElementListForGeneration += !@expressionCollectionValueForGeneration.new {!mExpressionLocation !expression}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -2489,7 +2489,7 @@ override method @expressionListCollectionValue analyze
       checkAssignmentTypes ( !mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation )
       semanticExpressionListForGeneration += !exp
     end
-    ioCollectionValueElementListForGeneration += !@expressionListCollectionForGeneration. new {
+    ioCollectionValueElementListForGeneration += !@expressionListCollectionForGeneration.new {
       !mEndOfExpressionLocation
       !semanticExpressionListForGeneration}
   end
@@ -2556,7 +2556,7 @@ override method @collectionValueAST analyzeSemanticExpression
     error mTypeName : "the @" + mTypeName + " type does not support collection value" : outExpression
   else
     if [mElementList length] == 0 then
-      outExpression = @defaultConstructorExpressionForGeneration. new {
+      outExpression = @defaultConstructorExpressionForGeneration.new {
         !targetType
         !mTypeName.location}
     else
@@ -2569,7 +2569,7 @@ override method @collectionValueAST analyzeSemanticExpression
           !?collectionValueElementListForGeneration
         ]
       end
-      outExpression = @expressionCollectionForGeneration. new {
+      outExpression = @expressionCollectionForGeneration.new {
         !targetType
         !mEndOfCollectionValue
         !collectionValueElementListForGeneration}

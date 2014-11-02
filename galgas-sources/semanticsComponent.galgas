@@ -17,11 +17,11 @@
 
 syntax semanticsComponent (galgas_scanner) %translate {
 
-#------------------------------------------------------------------------------*
-#                                                                              *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #          Rules prototypes                                                    *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <semantics_component_start_symbol>
   !@semanticsComponentAST outSemanticsComponentRoot
@@ -56,7 +56,7 @@ rule <semantics_component_start_symbol>
   let endOfSourceFile = @location.here
   $semantics$ :> ?* ?*
   $;$ :> ?* ?*
-  outSemanticsComponentRoot = @semanticsComponentAST. new {
+  outSemanticsComponentRoot = @semanticsComponentAST.new {
     !mSemanticsComponentName
     !mImportedComponentFileNameList
     !mSemanticDeclarations

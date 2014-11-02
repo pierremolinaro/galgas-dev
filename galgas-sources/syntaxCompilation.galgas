@@ -80,7 +80,7 @@ proc compileSyntaxComponentFromAST
   )
   semanticContext.mLexiqueComponentMapForSemanticAnalysis = lexiqueMap
 #--- Parse lexique component
-  let lexiqueFilePath = @lstring. new {
+  let lexiqueFilePath = @lstring.new {
     ![[inSyntaxComponentRoot mImportedLexiqueFilePath] absolutePathFromPath ![inSourceFile stringByDeletingLastPathComponent]]
     ![[inSyntaxComponentRoot mImportedLexiqueFilePath] location]}
   @galgas3LexiqueComponentListAST-element lexiqueComponentRoot
@@ -188,7 +188,7 @@ proc compileSyntaxComponentFromSourceFile
   ?!@parsedComponentStruct ioParsedComponentStruct {
 #--- Parse source file
   let basename = [[inSourceFile lastPathComponent] stringByDeletingPathExtension]
-  let basenameKey = @lstring. new { !basename !@location.here}
+  let basenameKey = @lstring.new {!basename !@location.here}
   @galgas3SyntaxComponentListAST-element syntaxComponentRoot
   if [[ioParsedComponentStruct mParsedSyntaxComponentMap] hasKey ! basename] then
     [[ioParsedComponentStruct mParsedSyntaxComponentMap] searchKey !basenameKey ?* ?syntaxComponentRoot]
@@ -225,7 +225,7 @@ proc groupSyntaxComponentsGalgas3
       nonterminalDeclarationList += ext_mNonterminalDeclarationList
       ruleList += ext_mRuleList
     end
-    ioDeclarationList += !@galgas3SyntaxComponentAST. new {
+    ioDeclarationList += !@galgas3SyntaxComponentAST.new {
       !false # Is not predefined
       !component.mSyntaxComponentName
       !component.mImportedLexiqueFilePath

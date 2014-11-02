@@ -38,11 +38,11 @@ struct @templateAnalysisContext {
   @templateVariableMap mTemplateVariableMap
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #   E X P R E S S I O N                                                        *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 abstract method @templateExpressionAST templateExpressionAnalysis
   ?let @templateAnalysisContext inAnalysisContext
@@ -145,7 +145,7 @@ override method @templateReaderCallInExpressionAST templateExpressionAnalysis
       checkAssignmentTypes ( !mFormalArgumentType ![exp mResultType] !mEndOfExpressionLocation )
       constructorEffectiveParameterList += !exp
     end
-    outExpression = @readerCallExpressionForGeneration. new {
+    outExpression = @readerCallExpressionForGeneration.new {
       !returnedType
       ![mReaderName location]
       !kind
@@ -217,7 +217,7 @@ override method @templateConstructorAST templateExpressionAnalysis
     end
   end
 #---
-  outExpression = @constructorExpressionForGeneration. new {
+  outExpression = @constructorExpressionForGeneration.new {
     !returnedType
     ![mConstructorName location]
     !constructorType
@@ -270,7 +270,7 @@ override method @templateAndOperationAST templateExpressionAnalysis
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @andExpressionForGeneration. new {
+  outExpression = @andExpressionForGeneration.new {
     !leftType
     !mOperatorLocation
     !leftExpression
@@ -299,7 +299,7 @@ override method @templateOrOperationAST templateExpressionAnalysis
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @orExpressionForGeneration. new {
+  outExpression = @orExpressionForGeneration.new {
     !leftType
     !mOperatorLocation
     !leftExpression
@@ -328,7 +328,7 @@ override method @templateXorOperationAST templateExpressionAnalysis
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @xorExpressionForGeneration. new {
+  outExpression = @xorExpressionForGeneration.new {
     !leftType
     !mOperatorLocation
     !leftExpression
@@ -340,7 +340,7 @@ override method @templateXorOperationAST templateExpressionAnalysis
 override method @templateTrueBoolAST templateExpressionAnalysis
   ?let @templateAnalysisContext inAnalysisContext
   !@semanticExpressionForGeneration outExpression {
-  outExpression = @trueExpressionForGeneration. new { !inAnalysisContext.mPredefinedTypes.mBoolType !mLocation}
+  outExpression = @trueExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mBoolType !mLocation}
 }
  
 #----------------------------------------------------------------------------------------------------------------------*
@@ -348,7 +348,7 @@ override method @templateTrueBoolAST templateExpressionAnalysis
 override method @templateFalseBoolAST templateExpressionAnalysis
   ?let @templateAnalysisContext inAnalysisContext
   !@semanticExpressionForGeneration outExpression {
-  outExpression = @falseExpressionForGeneration. new { !inAnalysisContext.mPredefinedTypes.mBoolType !mLocation}
+  outExpression = @falseExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mBoolType !mLocation}
 }
  
 #----------------------------------------------------------------------------------------------------------------------*
@@ -360,7 +360,7 @@ override method @templateLiteralStringExpressionAST templateExpressionAnalysis
   for () in  mLiteralStringList do
     s += mValue
   end
-  outExpression = @literalStringExpressionForGeneration. new { !inAnalysisContext.mPredefinedTypes.mStringType !mLocation !s}
+  outExpression = @literalStringExpressionForGeneration.new {!inAnalysisContext.mPredefinedTypes.mStringType !mLocation !s}
 }
  
 #----------------------------------------------------------------------------------------------------------------------*
@@ -368,7 +368,7 @@ override method @templateLiteralStringExpressionAST templateExpressionAnalysis
 override method @templateLiteralUIntExpressionAST templateExpressionAnalysis
   ?let @templateAnalysisContext inAnalysisContext
   !@semanticExpressionForGeneration outExpression {
-  outExpression = @literalUIntExpressionForGeneration. new {
+  outExpression = @literalUIntExpressionForGeneration.new {
     !inAnalysisContext.mPredefinedTypes.mUIntType
     ![mLiteralInt location]
     ![mLiteralInt uint]}
@@ -379,7 +379,7 @@ override method @templateLiteralUIntExpressionAST templateExpressionAnalysis
 override method @templateLiteralSIntExpressionAST templateExpressionAnalysis
   ?let @templateAnalysisContext inAnalysisContext
   !@semanticExpressionForGeneration outExpression {
-  outExpression = @literalSIntExpressionForGeneration. new {
+  outExpression = @literalSIntExpressionForGeneration.new {
     !inAnalysisContext.mPredefinedTypes.mSIntType
     ![mLiteralInt location]
     ![mLiteralInt sint]}
@@ -390,7 +390,7 @@ override method @templateLiteralSIntExpressionAST templateExpressionAnalysis
 override method @templateLiteralUInt64ExpressionAST templateExpressionAnalysis
   ?let @templateAnalysisContext inAnalysisContext
   !@semanticExpressionForGeneration outExpression {
-  outExpression = @literalUInt64ExpressionForGeneration. new {
+  outExpression = @literalUInt64ExpressionForGeneration.new {
     !inAnalysisContext.mPredefinedTypes.mUInt64Type
     ![mLiteralInt location]
     ![mLiteralInt uint64]}
@@ -401,7 +401,7 @@ override method @templateLiteralUInt64ExpressionAST templateExpressionAnalysis
 override method @templateLiteralSInt64ExpressionAST templateExpressionAnalysis
   ?let @templateAnalysisContext inAnalysisContext
   !@semanticExpressionForGeneration outExpression {
-  outExpression = @literalSInt64ExpressionForGeneration. new {
+  outExpression = @literalSInt64ExpressionForGeneration.new {
     !inAnalysisContext.mPredefinedTypes.mSInt64Type
     ![mLiteralInt location]
     ![mLiteralInt sint64]}
@@ -412,7 +412,7 @@ override method @templateLiteralSInt64ExpressionAST templateExpressionAnalysis
 override method @templateLiteralCharExpressionAST templateExpressionAnalysis
   ?let @templateAnalysisContext inAnalysisContext
   !@semanticExpressionForGeneration outExpression {
-  outExpression = @literalCharExpressionForGeneration. new {
+  outExpression = @literalCharExpressionForGeneration.new {
     !inAnalysisContext.mPredefinedTypes.mCharType
     ![mLiteralChar location]
     ![mLiteralChar char]}
@@ -423,7 +423,7 @@ override method @templateLiteralCharExpressionAST templateExpressionAnalysis
 override method @templateLiteralDoubleExpressionAST templateExpressionAnalysis
   ?let @templateAnalysisContext inAnalysisContext
   !@semanticExpressionForGeneration outExpression {
-  outExpression = @literalDoubleExpressionForGeneration. new {
+  outExpression = @literalDoubleExpressionForGeneration.new {
     !inAnalysisContext.mPredefinedTypes.mDoubleType
     ![mLiteralDouble location]
     ![mLiteralDouble double]}
@@ -454,7 +454,7 @@ override method @templateIfThenElseExpressionAST templateExpressionAnalysis
     :outExpression
   else
   #--- Generate expression
-    outExpression = @ifExpressionForGeneration. new {
+    outExpression = @ifExpressionForGeneration.new {
       ![then_expression mResultType]
       !mOperatorLocation
       !if_expression
@@ -479,7 +479,7 @@ override method @templateNotOperatorAST templateExpressionAnalysis
     :outExpression
   else
   #--- Generate expression
-    outExpression = @notExpressionForGeneration. new {
+    outExpression = @notExpressionForGeneration.new {
       !type
       !mOperatorLocation
       !expression}
@@ -502,7 +502,7 @@ override method @templateLogicalNegateAST templateExpressionAnalysis
     :outExpression
   else
   #--- Generate expression
-    outExpression = @tildeExpressionForGeneration. new {
+    outExpression = @tildeExpressionForGeneration.new {
       !type
       !mOperatorLocation
       !expression}
@@ -536,28 +536,28 @@ override method @templateOptionAccessAST templateExpressionAnalysis
   end
   if found then
     if [mReaderName string] == "value" then
-      outExpression = @optionValueExpressionForGeneration. new {
+      outExpression = @optionValueExpressionForGeneration.new {
         !returnedType
         ![mOptionComponentName location]
         !optionComponentIsPredefined
         ![mOptionComponentName string]
         ![mOptionName string]}
     elsif [mReaderName string] == "char" then
-      outExpression = @optionCharExpressionForGeneration. new {
+      outExpression = @optionCharExpressionForGeneration.new {
         !inAnalysisContext.mPredefinedTypes.mCharType
         ![mOptionComponentName location]
         !optionComponentIsPredefined
         ![mOptionComponentName string]
         ![mOptionName string]}
     elsif [mReaderName string] == "string" then
-      outExpression = @optionStringExpressionForGeneration. new {
+      outExpression = @optionStringExpressionForGeneration.new {
         !inAnalysisContext.mPredefinedTypes.mStringType
         ![mOptionComponentName location]
         !optionComponentIsPredefined
         ![mOptionComponentName string]
         ![mOptionName string]}
     elsif [mReaderName string] == "comment" then
-      outExpression = @optionCommentExpressionForGeneration. new {
+      outExpression = @optionCommentExpressionForGeneration.new {
         !inAnalysisContext.mPredefinedTypes.mStringType
         ![mOptionComponentName location]
         !optionComponentIsPredefined
@@ -621,7 +621,7 @@ override method @templateFunctionCallAST templateExpressionAnalysis
         error mActualSelector : "the selector should be '!" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end + "'"
       end
     end
-    outExpression = @functionCallExpressionForGeneration. new {
+    outExpression = @functionCallExpressionForGeneration.new {
       !resultType
       ![mFunctionName location]
       ![mFunctionName string]
@@ -651,7 +651,7 @@ override method @templateVarInExpressionAST templateExpressionAnalysis
   @unifiedTypeMap-proxy type
   @string sourceVariableCppName
   [inAnalysisContext.mTemplateVariableMap searchKey !mVarName ?type ?sourceVariableCppName]
-  outExpression = @varInExpressionForGeneration. new {
+  outExpression = @varInExpressionForGeneration.new {
     !type
     ![mVarName location]
     !sourceVariableCppName
@@ -682,7 +682,7 @@ override method @templateAddOperationAST templateExpressionAnalysis
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @addExpressionForGeneration. new {
+  outExpression = @addExpressionForGeneration.new {
     !leftType
     !mOperatorLocation
     !leftExpression
@@ -713,7 +713,7 @@ override method @templateSubOperationAST templateExpressionAnalysis
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @subExpressionForGeneration. new {
+  outExpression = @subExpressionForGeneration.new {
     !leftType
     !mOperatorLocation
     !leftExpression
@@ -744,7 +744,7 @@ override method @templateMultiplyOperationAST templateExpressionAnalysis
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @multiplicationExpressionForGeneration. new {
+  outExpression = @multiplicationExpressionForGeneration.new {
     !leftType
     !mOperatorLocation
     !leftExpression
@@ -775,7 +775,7 @@ override method @templateDivideOperationAST templateExpressionAnalysis
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @divisionExpressionForGeneration. new {
+  outExpression = @divisionExpressionForGeneration.new {
     !leftType
     !mOperatorLocation
     !leftExpression
@@ -806,7 +806,7 @@ override method @templateModuloOperationAST templateExpressionAnalysis
     !?rightExpression
   )  
 #--- Generate expression
-  outExpression = @moduloExpressionForGeneration. new {
+  outExpression = @moduloExpressionForGeneration.new {
     !leftType
     !mOperatorLocation
     !leftExpression
@@ -831,7 +831,7 @@ override method @templateUnaryMinusOperationAST templateExpressionAnalysis
     :outExpression
   else
   #--- Generate expression
-    outExpression = @unaryMinusExpressionForGeneration. new {
+    outExpression = @unaryMinusExpressionForGeneration.new {
       !type
       !mOperatorLocation
       !expression}
@@ -862,7 +862,7 @@ override method @structFieldAccessTemplateExpressionAST templateExpressionAnalys
 #    error mStructFieldName : "this field is private" ;
 #  end if ;
 #--- Generate expression
-  outExpression = @structFieldAccessExpressionForGeneration. new {
+  outExpression = @structFieldAccessExpressionForGeneration.new {
     !type
     !mOperatorLocation
     !expression
@@ -891,7 +891,7 @@ override method @templateEqualTestAST templateExpressionAnalysis
     :outExpression
   else
   #--- Generate expression
-    outExpression = @equalExpressionForGeneration. new {
+    outExpression = @equalExpressionForGeneration.new {
       !inAnalysisContext.mPredefinedTypes.mBoolType
       !mOperatorLocation
       !leftExpression
@@ -919,7 +919,7 @@ override method @templateNonEqualTestAST templateExpressionAnalysis
     :outExpression
   else
   #--- Generate expression
-    outExpression = @notEqualExpressionForGeneration. new {
+    outExpression = @notEqualExpressionForGeneration.new {
       !inAnalysisContext.mPredefinedTypes.mBoolType
       !mOperatorLocation
       !leftExpression
@@ -951,7 +951,7 @@ override method @templateStrictInfTestAST templateExpressionAnalysis
     :outExpression
   else
   #--- Generate expression
-    outExpression = @strictLowerExpressionForGeneration. new {
+    outExpression = @strictLowerExpressionForGeneration.new {
       !inAnalysisContext.mPredefinedTypes.mBoolType
       !mOperatorLocation
       !leftExpression
@@ -983,7 +983,7 @@ override method @templateInfOrEqualTestAST templateExpressionAnalysis
     :outExpression
   else
   #--- Generate expression
-    outExpression = @lowerOrEqualExpressionForGeneration. new {
+    outExpression = @lowerOrEqualExpressionForGeneration.new {
       !inAnalysisContext.mPredefinedTypes.mBoolType
       !mOperatorLocation
       !leftExpression
@@ -1015,7 +1015,7 @@ override method @templateStrictSupTestAST templateExpressionAnalysis
     :outExpression
   else
   #--- Generate expression
-    outExpression = @strictGreaterExpressionForGeneration. new {
+    outExpression = @strictGreaterExpressionForGeneration.new {
       !inAnalysisContext.mPredefinedTypes.mBoolType
       !mOperatorLocation
       !leftExpression
@@ -1047,7 +1047,7 @@ override method @templateSupOrEqualTestAST templateExpressionAnalysis
     :outExpression
   else
   #--- Generate expression
-    outExpression = @greaterOrEqualExpressionForGeneration. new {
+    outExpression = @greaterOrEqualExpressionForGeneration.new {
       !inAnalysisContext.mPredefinedTypes.mBoolType
       !mOperatorLocation
       !leftExpression
@@ -1079,7 +1079,7 @@ override method @templateLeftShiftOperationAST templateExpressionAnalysis
     :outExpression
   else
   #--- Generate expression
-    outExpression = @leftShiftExpressionForGeneration. new {
+    outExpression = @leftShiftExpressionForGeneration.new {
       !leftType
       !mOperatorLocation
       !leftExpression
@@ -1111,7 +1111,7 @@ override method @templateRightShiftOperationAST templateExpressionAnalysis
     :outExpression
   else
   #--- Generate expression
-    outExpression = @rightShiftExpressionForGeneration. new {
+    outExpression = @rightShiftExpressionForGeneration.new {
       !leftType
       !mOperatorLocation
       !leftExpression
@@ -1127,8 +1127,8 @@ override method @templateClassToTypeOperandAST  templateExpressionAnalysis
 #--- Get constructor map from type map
   [inAnalysisContext.mSemanticContext.mTypeMap searchKey !mTypeName ?26*]
 #---
-  outExpression = @literalTypeInExpressionForGeneration. new {
-    !@unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !@lstring. new { !"type" !@location.here}}
+  outExpression = @literalTypeInExpressionForGeneration.new {
+    !@unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !@lstring.new {!"type" !@location.here}}
     ![mTypeName location]
     ![mTypeName string]}
 }
@@ -1159,7 +1159,7 @@ proc templateInstructionListAnalysis
 override method @templateInstructionStringAST templateInstructionAnalysis
   ?let @templateAnalysisContext unused inAnalysisContext
   ?!@templateInstructionListForGeneration ioInstructionList {
-  ioInstructionList += !@templateInstructionStringForGeneration. new { !mTemplateString}
+  ioInstructionList += !@templateInstructionStringForGeneration.new {!mTemplateString}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1172,7 +1172,7 @@ override method @templateInstructionExpressionAST templateInstructionAnalysis
   if [[expression mResultType] key] != "string" then
     error mLocation:"expression type should be '@string' (it is '@" + [[expression mResultType] key] + "')"
   end
-  ioInstructionList += !@templateInstructionExpressionForGeneration. new { !expression}
+  ioInstructionList += !@templateInstructionExpressionForGeneration.new {!expression}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1187,7 +1187,7 @@ override method @templateBlockInstructionAST templateInstructionAnalysis
   end
   var blockInstructionList =@templateInstructionListForGeneration.emptyList{}
   templateInstructionListAnalysis ( !inAnalysisContext !mBlockInstructionList !?blockInstructionList )
-  ioInstructionList += !@templateBlockInstructionForGeneration. new { !expression !mLocation !blockInstructionList}
+  ioInstructionList += !@templateBlockInstructionForGeneration.new {!expression !mLocation !blockInstructionList}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1231,12 +1231,12 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
   end
   for () in  enumerationDescriptor do
     [!?doVariableMap insertKey
-      !@lstring. new { !mPrefix + mEnumerationName ![expression mLocation]}
+      !@lstring.new {!mPrefix + mEnumerationName ![expression mLocation]}
       !mEnumeratedType
       !enumeratorCppName +".current_" + [mEnumerationName identifierRepresentation] + " (HERE)"
     ]
   end
-  let doAnalysisContext = @templateAnalysisContext. new {
+  let doAnalysisContext = @templateAnalysisContext.new {
     !inAnalysisContext.mSemanticContext
     !inAnalysisContext.mPredefinedTypes
     !doVariableMap}
@@ -1249,7 +1249,7 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
   var afterInstructionList =@templateInstructionListForGeneration.emptyList{}
   templateInstructionListAnalysis ( !inAnalysisContext !mAfterInstructionList !?afterInstructionList )
 #---
-  ioInstructionList += !@templateInstructionForeachForGeneration. new {
+  ioInstructionList += !@templateInstructionForeachForGeneration.new {
     !mIsAscending
     !expression
     !enumeratorCppName
@@ -1280,7 +1280,7 @@ override method @templateInstructionIfAST templateInstructionAnalysis
   var elseInstructionList =@templateInstructionListForGeneration.emptyList{}
   templateInstructionListAnalysis ( !inAnalysisContext !mElseInstructionList !?elseInstructionList )
 #---
-  ioInstructionList += !@templateInstructionIfForGeneration. new {
+  ioInstructionList += !@templateInstructionIfForGeneration.new {
     !templateInstructionIfBranchList
     !elseInstructionList}
 }
@@ -1324,7 +1324,7 @@ override method @templateInstructionSwitchAST templateInstructionAnalysis
     error mSwitchExpressionEndLocation : m
   end
 #---
-  ioInstructionList += !@templateInstructionSwitchForGeneration. new {
+  ioInstructionList += !@templateInstructionSwitchForGeneration.new {
     !switchExpression
     !templateInstructionSwitchBranchList}
 }

@@ -28,11 +28,11 @@ list @templateInstructionListAST {
   @templateInstructionAST mInstruction
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #   E X P R E S S I O N                                                        *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 abstract class @templateExpressionAST {
 }
@@ -445,7 +445,7 @@ proc enterTemplateString
   ?!@templateInstructionListAST outResultingInstructionList {
   let @string s = @string. retrieveAndResetTemplateString
   if [s length] > 0 then
-    outResultingInstructionList += !@templateInstructionStringAST. new { !s}
+    outResultingInstructionList += !@templateInstructionStringAST.new {!s}
   end
 }
 

@@ -24,15 +24,15 @@ private proc appendPredefinedListTypeAST
   ?let @string inElementTypeName {
   var attributeList =@attributeInCollectionListAST.emptyList{}
   var attributeFeatureList =@lstringlist.emptyList{}
-  attributeFeatureList += !@lstring. new { !"setter" !@location.here}
+  attributeFeatureList += !@lstring.new {!"setter" !@location.here}
   attributeList +=
 #    !false # Is not private
-    !@lstring. new { !inElementTypeName !@location.here}
-    !@lstring. new { !"mValue" !@location.here}
+    !@lstring.new {!inElementTypeName !@location.here}
+    !@lstring.new {!"mValue" !@location.here}
     !attributeFeatureList
-  ioDeclarationListASTs += !@listDeclarationAST. new {
+  ioDeclarationListASTs += !@listDeclarationAST.new {
     !true # Is predefined
-    !@lstring. new { !inElementTypeName + "list" !@location.here}
+    !@lstring.new {!inElementTypeName + "list" !@location.here}
     !attributeList}
 }
 
@@ -42,21 +42,21 @@ private proc appendPredefined2StringListTypeAST
   ?!@semanticDeclarationListAST ioDeclarationListASTs {
   var attributeList =@attributeInCollectionListAST.emptyList{}
   var attributeFeatureList =@lstringlist.emptyList{}
-  attributeFeatureList += !@lstring. new { !"setter" !@location.here}
+  attributeFeatureList += !@lstring.new {!"setter" !@location.here}
   attributeList +=
 #    !false # Is not private
-    !@lstring. new { !"string" !@location.here}
-    !@lstring. new { !"mValue0" !@location.here}
+    !@lstring.new {!"string" !@location.here}
+    !@lstring.new {!"mValue0" !@location.here}
     !attributeFeatureList
   attributeList +=
 #    !false # Is not private
-    !@lstring. new { !"string" !@location.here}
-    !@lstring. new { !"mValue1" !@location.here}
+    !@lstring.new {!"string" !@location.here}
+    !@lstring.new {!"mValue1" !@location.here}
     !attributeFeatureList
 
-  ioDeclarationListASTs += !@listDeclarationAST. new {
+  ioDeclarationListASTs += !@listDeclarationAST.new {
     !true # Is predefined
-    !@lstring. new { !"2stringlist" !@location.here}
+    !@lstring.new {!"2stringlist" !@location.here}
     !attributeList}
 }
 
@@ -66,21 +66,21 @@ private proc appendPredefined2LStringListTypeAST
   ?!@semanticDeclarationListAST ioDeclarationListASTs {
   var attributeList =@attributeInCollectionListAST.emptyList{}
   var attributeFeatureList =@lstringlist.emptyList{}
-  attributeFeatureList += !@lstring. new { !"setter" !@location.here}
+  attributeFeatureList += !@lstring.new {!"setter" !@location.here}
   attributeList +=
 #    !false # Is not private
-    !@lstring. new { !"lstring" !@location.here}
-    !@lstring. new { !"mValue0" !@location.here}
+    !@lstring.new {!"lstring" !@location.here}
+    !@lstring.new {!"mValue0" !@location.here}
     !attributeFeatureList
   attributeList +=
 #    !false # Is not private
-    !@lstring. new { !"lstring" !@location.here}
-    !@lstring. new { !"mValue1" !@location.here}
+    !@lstring.new {!"lstring" !@location.here}
+    !@lstring.new {!"mValue1" !@location.here}
     !attributeFeatureList
 
-  ioDeclarationListASTs += !@listDeclarationAST. new {
+  ioDeclarationListASTs += !@listDeclarationAST.new {
     !true # Is predefined
-    !@lstring. new { !"2lstringlist" !@location.here}
+    !@lstring.new {!"2lstringlist" !@location.here}
     !attributeList}
 }
 
@@ -93,17 +93,17 @@ private proc appendStructASTForTypeWithLocation
   var attributeList =@attributeInCollectionListAST.emptyList{}
   attributeList += 
 #    !false # Is not private
-    !@lstring. new { !inElementTypeName !@location.here}
-    !@lstring. new { !inElementTypeName !@location.here}
+    !@lstring.new {!inElementTypeName !@location.here}
+    !@lstring.new {!inElementTypeName !@location.here}
     !featureList
   attributeList +=
 #    !false # Is not private
-    !@lstring. new { !"location" !@location.here}
-    !@lstring. new { !"location" !@location.here}
+    !@lstring.new {!"location" !@location.here}
+    !@lstring.new {!"location" !@location.here}
     !featureList
-  ioDeclarationListASTs += !@structDeclarationAST. new {
+  ioDeclarationListASTs += !@structDeclarationAST.new {
     !true # Is prefined
-    !@lstring. new { !"l" + inElementTypeName !@location.here}
+    !@lstring.new {!"l" + inElementTypeName !@location.here}
     !attributeList
     !""}
 }
@@ -116,17 +116,17 @@ proc appendStructASTForRangeType
   var attributeList =@attributeInCollectionListAST.emptyList{}
   attributeList +=
 #    !false # Is not private
-    !@lstring. new { !"uint" !@location.here}
-    !@lstring. new { !"start" !@location.here}
+    !@lstring.new {!"uint" !@location.here}
+    !@lstring.new {!"start" !@location.here}
     !featureList
   attributeList +=
 #    !false # Is not private
-    !@lstring. new { !"uint" !@location.here}
-    !@lstring. new { !"length" !@location.here}
+    !@lstring.new {!"uint" !@location.here}
+    !@lstring.new {!"length" !@location.here}
     !featureList
-  ioDeclarationListASTs += !@structDeclarationAST. new {
+  ioDeclarationListASTs += !@structDeclarationAST.new {
     !true # Is prefined
-    !@lstring. new { !"range" !@location.here}
+    !@lstring.new {!"range" !@location.here}
     !attributeList
     !"uint"}
 }
@@ -135,23 +135,23 @@ proc appendStructASTForRangeType
 
 proc appendPredefinedTypesASTs
   ?!@semanticDeclarationListAST ioDeclarationListASTs {
-  ioDeclarationListASTs += !@applicationPredefinedTypeAST. new { !true !"application" !@predefinedTypeKindEnum. predefined_application}
-  ioDeclarationListASTs += !@filewrapperPredefinedTypeAST. new { !true !"filewrapper" !@predefinedTypeKindEnum. predefined_filewrapper}
-  ioDeclarationListASTs += !@objectPredefinedTypeAST. new { !true !"object" !@predefinedTypeKindEnum. predefined_object}
-  ioDeclarationListASTs += !@boolPredefinedTypeAST. new { !true !"bool" !@predefinedTypeKindEnum. predefined_bool}
-  ioDeclarationListASTs += !@uintPredefinedTypeAST. new { !true !"uint" !@predefinedTypeKindEnum. predefined_uint}
-  ioDeclarationListASTs += !@uint64PredefinedTypeAST. new { !true !"uint64" !@predefinedTypeKindEnum. predefined_uint64}
-  ioDeclarationListASTs += !@sintPredefinedTypeAST. new { !true !"sint" !@predefinedTypeKindEnum. predefined_sint}
-  ioDeclarationListASTs += !@sint64PredefinedTypeAST. new { !true !"sint64" !@predefinedTypeKindEnum. predefined_sint64}
-  ioDeclarationListASTs += !@charPredefinedTypeAST. new { !true !"char" !@predefinedTypeKindEnum. predefined_char}
-  ioDeclarationListASTs += !@doublePredefinedTypeAST. new { !true !"double" !@predefinedTypeKindEnum. predefined_double}
-  ioDeclarationListASTs += !@stringPredefinedTypeAST. new { !true !"string" !@predefinedTypeKindEnum. predefined_string}
-  ioDeclarationListASTs += !@locationPredefinedTypeAST. new { !true !"location" !@predefinedTypeKindEnum. predefined_location}
-  ioDeclarationListASTs += !@stringsetPredefinedTypeAST. new { !true !"stringset" !@predefinedTypeKindEnum. predefined_stringset}
-  ioDeclarationListASTs += !@functionPredefinedTypeAST. new { !true !"function" !@predefinedTypeKindEnum. predefined_function}
-  ioDeclarationListASTs += !@typePredefinedTypeAST. new { !true !"type" !@predefinedTypeKindEnum. predefined_type}
-  ioDeclarationListASTs += !@binarysetPredefinedTypeAST. new { !true !"binaryset" !@predefinedTypeKindEnum. predefined_binaryset}
-  ioDeclarationListASTs += !@dataPredefinedTypeAST. new { !true !"data" !@predefinedTypeKindEnum. predefined_data}
+  ioDeclarationListASTs += !@applicationPredefinedTypeAST.new {!true !"application" !@predefinedTypeKindEnum. predefined_application}
+  ioDeclarationListASTs += !@filewrapperPredefinedTypeAST.new {!true !"filewrapper" !@predefinedTypeKindEnum. predefined_filewrapper}
+  ioDeclarationListASTs += !@objectPredefinedTypeAST.new {!true !"object" !@predefinedTypeKindEnum. predefined_object}
+  ioDeclarationListASTs += !@boolPredefinedTypeAST.new {!true !"bool" !@predefinedTypeKindEnum. predefined_bool}
+  ioDeclarationListASTs += !@uintPredefinedTypeAST.new {!true !"uint" !@predefinedTypeKindEnum. predefined_uint}
+  ioDeclarationListASTs += !@uint64PredefinedTypeAST.new {!true !"uint64" !@predefinedTypeKindEnum. predefined_uint64}
+  ioDeclarationListASTs += !@sintPredefinedTypeAST.new {!true !"sint" !@predefinedTypeKindEnum. predefined_sint}
+  ioDeclarationListASTs += !@sint64PredefinedTypeAST.new {!true !"sint64" !@predefinedTypeKindEnum. predefined_sint64}
+  ioDeclarationListASTs += !@charPredefinedTypeAST.new {!true !"char" !@predefinedTypeKindEnum. predefined_char}
+  ioDeclarationListASTs += !@doublePredefinedTypeAST.new {!true !"double" !@predefinedTypeKindEnum. predefined_double}
+  ioDeclarationListASTs += !@stringPredefinedTypeAST.new {!true !"string" !@predefinedTypeKindEnum. predefined_string}
+  ioDeclarationListASTs += !@locationPredefinedTypeAST.new {!true !"location" !@predefinedTypeKindEnum. predefined_location}
+  ioDeclarationListASTs += !@stringsetPredefinedTypeAST.new {!true !"stringset" !@predefinedTypeKindEnum. predefined_stringset}
+  ioDeclarationListASTs += !@functionPredefinedTypeAST.new {!true !"function" !@predefinedTypeKindEnum. predefined_function}
+  ioDeclarationListASTs += !@typePredefinedTypeAST.new {!true !"type" !@predefinedTypeKindEnum. predefined_type}
+  ioDeclarationListASTs += !@binarysetPredefinedTypeAST.new {!true !"binaryset" !@predefinedTypeKindEnum. predefined_binaryset}
+  ioDeclarationListASTs += !@dataPredefinedTypeAST.new {!true !"data" !@predefinedTypeKindEnum. predefined_data}
 
   appendPredefinedListTypeAST ( !?ioDeclarationListASTs !"luint" )
   appendPredefinedListTypeAST ( !?ioDeclarationListASTs !"uint" )

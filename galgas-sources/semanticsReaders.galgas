@@ -28,7 +28,7 @@ proc enterBaseFinalReaderWithoutArgument
   @unifiedTypeMap-proxy returnedTypeIndex
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex]
   [!?ioReaderMap insertOrReplace
-    !@lstring. new { !inReaderName !@location.here}
+    !@lstring.new {!inReaderName !@location.here}
     !@methodKind. definedAsMember
     !@functionSignature {}
     !@location.here
@@ -50,7 +50,7 @@ proc enterInheritedReaderWithoutArgument
   @unifiedTypeMap-proxy returnedTypeIndex
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex]
   [!?ioReaderMap insertOrReplace
-    !@lstring. new { !inReaderName !@location.here}
+    !@lstring.new {!inReaderName !@location.here}
     !@methodKind. definedAsMember
     !@functionSignature {}
     !@location.here
@@ -78,7 +78,7 @@ proc enterInheritedReaderWithArgument
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t]
   argList += !["" nowhere] !t !inArgument1Name
   [!?ioReaderMap insertOrReplace
-    !@lstring. new { !inReaderName !@location.here}
+    !@lstring.new {!inReaderName !@location.here}
     !@methodKind. definedAsMember
     !argList
     !@location.here
@@ -110,7 +110,7 @@ proc enterInheritedReaderWith2Arguments
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t]
   argList += !["" nowhere] !t !inArgument2Name
   [!?ioReaderMap insertOrReplace
-    !@lstring. new { !inReaderName !@location.here}
+    !@lstring.new {!inReaderName !@location.here}
     !@methodKind. definedAsMember
     !argList
     !@location.here
@@ -132,7 +132,7 @@ proc enterBaseReaderWithoutArgument
   @unifiedTypeMap-proxy returnedTypeIndex
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex]
   [!?ioReaderMap insertOrReplace
-    !@lstring. new { !inReaderName !@location.here}
+    !@lstring.new {!inReaderName !@location.here}
     !@methodKind. definedAsMember
     !@functionSignature {}
     !@location.here
@@ -160,7 +160,7 @@ proc enterBaseReaderWithArgument
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t]
   argList += !["" nowhere] !t !inArgument1Name
   [!?ioReaderMap insertOrReplace
-    !@lstring. new { !inReaderName !@location.here}
+    !@lstring.new {!inReaderName !@location.here}
     !@methodKind. definedAsMember
     !argList
     !@location.here
@@ -218,7 +218,7 @@ proc enterBaseFinalReaderWithArgument
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t]
   argList += !["" nowhere] !t !inArgument1Name
   [!?ioReaderMap insertOrReplace
-    !@lstring. new { !inReaderName !@location.here}
+    !@lstring.new {!inReaderName !@location.here}
     !@methodKind. definedAsMember
     !argList
     !@location.here
@@ -250,7 +250,7 @@ proc enterBaseReaderWith2Arguments
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t]
   argList += !["" nowhere] !t !inArgument2Name
   [!?ioReaderMap insertOrReplace
-    !@lstring. new { !inReaderName !@location.here}
+    !@lstring.new {!inReaderName !@location.here}
     !@methodKind. definedAsMember
     !argList
     !@location.here
@@ -316,7 +316,7 @@ proc enterBaseFinalReaderWith2Arguments
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t]
   argList += !["" nowhere] !t !inArgument2Name
   [!?ioReaderMap insertOrReplace
-    !@lstring. new { !inReaderName !@location.here}
+    !@lstring.new {!inReaderName !@location.here}
     !@methodKind. definedAsMember
     !argList
     !@location.here
@@ -352,7 +352,7 @@ proc enterBaseReaderWith3Arguments
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument3TypeName ?t]
   argList += !["" nowhere] !t !inArgument3Name
   [!?ioReaderMap insertOrReplace
-    !@lstring. new { !inReaderName !@location.here}
+    !@lstring.new {!inReaderName !@location.here}
     !@methodKind. definedAsMember
     !argList
     !@location.here
@@ -388,7 +388,7 @@ proc enterBaseFinalReaderWith3Arguments
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument3TypeName ?t]
   argList += !["" nowhere] !t !inArgument3Name
   [!?ioReaderMap insertOrReplace
-    !@lstring. new { !inReaderName !@location.here}
+    !@lstring.new {!inReaderName !@location.here}
     !@methodKind. definedAsMember
     !argList
     !@location.here

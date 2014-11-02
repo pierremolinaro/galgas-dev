@@ -108,8 +108,8 @@ override method @predefinedTypeAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
   ioSemanticDeclarationListForGeneration +=
     !"Predefined type " + mPredefinedTypeName
-    !@primitiveTypeForGeneration. new {
-      !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring. new { !mPredefinedTypeName !@location.here}}
+    !@primitiveTypeForGeneration.new {
+      !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring.new {!mPredefinedTypeName !@location.here}}
       !mPredefinedTypeName
       !mKind}
     !""
@@ -162,9 +162,9 @@ override method @listDeclarationAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !"list type " + mListTypeName
-    !@listTypeForGeneration. new {
+    !@listTypeForGeneration.new {
       !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !mListTypeName}
-      !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring. new { !mListTypeName.string + elementTypeNameSuffix () !mListTypeName.location}}
+      !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring.new {!mListTypeName.string + elementTypeNameSuffix () !mListTypeName.location}}
       !typedAttributeList}
   !""
 }
@@ -204,9 +204,9 @@ override method @sortedListDeclarationAST semanticAnalysis
 #--- Generate type
   ioSemanticDeclarationListForGeneration +=
     !"sorted list " + mSortedListTypeName
-    !@sortedListTypeForGeneration. new {
+    !@sortedListTypeForGeneration.new {
       !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !mSortedListTypeName}
-      !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring. new { !mSortedListTypeName.string + elementTypeNameSuffix () !mSortedListTypeName.location}}
+      !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring.new {!mSortedListTypeName.string + elementTypeNameSuffix () !mSortedListTypeName.location}}
       !typedAttributeList
       !sortDescriptorList}
     !""
@@ -257,7 +257,7 @@ override method @structDeclarationAST semanticAnalysis
   end
   ioSemanticDeclarationListForGeneration +=
     !"struct " + mStructTypeName
-    !@structTypeForGeneration. new {
+    !@structTypeForGeneration.new {
       !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !mStructTypeName}
       !typedAttributeList}
     !"~"
@@ -274,7 +274,7 @@ override method @graphDeclarationAST semanticAnalysis
   let associatedListTypeProxy = @unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !mAssociatedListTypeName}
   let associatedListElementTypeProxy = @unifiedTypeMap-proxy. searchKey { 
     !inSemanticContext.mTypeMap
-    !@lstring. new { !mAssociatedListTypeName.string +elementTypeNameSuffix () !mAssociatedListTypeName.location}}
+    !@lstring.new {!mAssociatedListTypeName.string +elementTypeNameSuffix () !mAssociatedListTypeName.location}}
   if [associatedListTypeProxy mTypeKindEnum] != @typeKindEnum. listType then
     error mAssociatedListTypeName: "the '@" + mAssociatedListTypeName + "' type should be a list"
   end
@@ -291,7 +291,7 @@ override method @graphDeclarationAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !"graph " + mGraphTypeName
-    !@graphDeclarationForGeneration. new {
+    !@graphDeclarationForGeneration.new {
       !graphTypeProxy
       !associatedListTypeProxy
       !associatedListElementTypeProxy
@@ -310,7 +310,7 @@ override method @externTypeDeclarationAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !"extern type " + mExternTypeName
-    !@externTypeDeclarationForGeneration. new {
+    !@externTypeDeclarationForGeneration.new {
       !externTypeProxy
       !mExternTypeName.string
       !mCppPreDeclarationCode
@@ -347,7 +347,7 @@ override method @enumDeclarationAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !"enum " + mEnumTypeName
-    !@enumTypeForGeneration. new {
+    !@enumTypeForGeneration.new {
       !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !mEnumTypeName}
       !enumConstantListForGeneration}
     !""
@@ -363,7 +363,7 @@ override method @arrayDeclarationAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !"array " + mArrayTypeName
-    !@arrayTypeForGeneration. new {
+    !@arrayTypeForGeneration.new {
       !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !mArrayTypeName}
       !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !mElementTypeName}
       ![mDimension uint]}
@@ -395,11 +395,11 @@ override method @listmapDeclarationAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !"list map " + mListmapTypeName
-    !@listmapTypeForGeneration. new {
+    !@listmapTypeForGeneration.new {
       !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !mListmapTypeName}
       !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !mAssociatedListTypeName}
       !listTypeAttributeList
-      !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring. new { !mListmapTypeName.string + elementTypeNameSuffix () !mListmapTypeName.location}}}
+      !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring.new {!mListmapTypeName.string + elementTypeNameSuffix () !mListmapTypeName.location}}}
     !""
 }
 
@@ -537,9 +537,9 @@ override method @mapDeclarationAST semanticAnalysis
 #--- Enter map declaration
   ioSemanticDeclarationListForGeneration +=
     !"map " + mMapTypeName
-    !@mapTypeForGeneration. new {
+    !@mapTypeForGeneration.new {
       !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !mMapTypeName}
-      !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring. new { !mMapTypeName.string + elementTypeNameSuffix () !mMapTypeName.location}}
+      !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring.new {!mMapTypeName.string + elementTypeNameSuffix () !mMapTypeName.location}}
       !mMapTypeName
       !typedAttributeList
       !mInsertMethodList
@@ -880,7 +880,7 @@ override method @uniqueMapDeclarationAST semanticAnalysis
 #--- Enter map declaration
   ioSemanticDeclarationListForGeneration +=
     !"unique map " + mMapTypeName
-    !@uniqueMapTypeForGeneration. new {
+    !@uniqueMapTypeForGeneration.new {
       !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !mMapTypeName}
       !mMapTypeName
       !typedAttributeList
@@ -913,7 +913,7 @@ override method @mapProxyDeclarationAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !"map proxy " + mMapProxyTypeName
-    !@mapProxyTypeForGeneration. new {
+    !@mapProxyTypeForGeneration.new {
       !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !mMapProxyTypeName}
       !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !mAssociatedMapTypeName}
       !listTypeAttributeList
@@ -1046,7 +1046,7 @@ override method @externFunctionDeclarationAST semanticAnalysis
   end
   ioSemanticDeclarationListForGeneration +=
     !"extern func " + mFunctionName
-    !@functionPrototypeDeclarationForGeneration. new {
+    !@functionPrototypeDeclarationForGeneration.new {
       !true # Generate Cpp header file
       !"func-" + mFunctionName
       ![mFunctionName string]
@@ -1073,7 +1073,7 @@ override method @externRoutineDeclarationAST semanticAnalysis
   end
   ioSemanticDeclarationListForGeneration +=
     !"extern proc " + mRoutineName
-    !@routinePrototypeDeclarationForGeneration. new {
+    !@routinePrototypeDeclarationForGeneration.new {
       !true # Generate Cpp header file
       !"proc-" + mRoutineName
       ![mRoutineName string]
@@ -1091,7 +1091,7 @@ override method @routineDeclarationAST semanticAnalysis
 #--- Instruction list
   var formalArgumentList =@formalParameterListForGeneration.emptyList{}
   @semanticInstructionListForGeneration instructionList
-  let analysisContext = @analysisContext. new {
+  let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
     !@unifiedTypeMap-proxy. null
@@ -1112,7 +1112,7 @@ override method @routineDeclarationAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !"proc " + mRoutineName
-    !@routineImplementationForGeneration. new {
+    !@routineImplementationForGeneration.new {
       !true # Generate Cpp header file
       !"proc-" + mRoutineName
       ![mRoutineName string]
@@ -1206,7 +1206,7 @@ override method @classDeclarationAST semanticAnalysis
 #------
   ioSemanticDeclarationListForGeneration +=
     !"class " + mClassTypeName
-    !@classTypeForGeneration. new {
+    !@classTypeForGeneration.new {
       !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !mClassTypeName}
       !mIsAbstract
       !mClassTypeName
@@ -1303,7 +1303,7 @@ override method @functionDeclarationAST semanticAnalysis
   @formalInputParameterListForGeneration formalInputParameterList
   @unifiedTypeMap-proxy returnType
   @string resultVariableCppName
-  let analysisContext = @analysisContext. new {
+  let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
     !@unifiedTypeMap-proxy. null
@@ -1326,7 +1326,7 @@ override method @functionDeclarationAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !"function " + mFunctionName
-    !@functionImplementationForGeneration. new {
+    !@functionImplementationForGeneration.new {
       !true # Generate Cpp header file
       !"func-" + mFunctionName
       ![mFunctionName string]
@@ -1348,7 +1348,7 @@ override method @onceFunctionDeclarationAST semanticAnalysis
   @semanticInstructionListForGeneration semanticInstructionListForGeneration
   @unifiedTypeMap-proxy returnType
   @string resultVariableCppName
-  let analysisContext = @analysisContext. new {
+  let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
     !@unifiedTypeMap-proxy. null
@@ -1371,7 +1371,7 @@ override method @onceFunctionDeclarationAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !"once function " + mFunctionName
-    !@onceFunctionDeclarationForGeneration. new {
+    !@onceFunctionDeclarationForGeneration.new {
       !true # Generate Cpp header file
       !"func-" + mFunctionName
       ![mFunctionName string]
@@ -1420,7 +1420,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
       let @string absoluteTemplatePath = absoluteSourcePath + "/" + mFilewrapperTemplatePath
       @templateInstructionListAST resultingInstructionList
     #--- Parse template
-      grammar templateGrammar in @lstring. new { !absoluteTemplatePath ![mFilewrapperTemplatePath location]} ?resultingInstructionList
+      grammar templateGrammar in @lstring.new {!absoluteTemplatePath ![mFilewrapperTemplatePath location]} ?resultingInstructionList
     #--- Build template variable map
       @templateVariableMap templateVariableMap = {}
       var filewrapperTemplateFormalInputParameters =@formalInputParameterListForGeneration.emptyList{}
@@ -1432,7 +1432,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
       end
     #--- Analyze template
       var templateInstructionListForGeneration =@templateInstructionListForGeneration.emptyList{}
-      let templateAnalysisContext = @templateAnalysisContext. new {
+      let templateAnalysisContext = @templateAnalysisContext.new {
         !inSemanticContext
         !inPredefinedTypes
         !templateVariableMap}
@@ -1446,7 +1446,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
   #---- Enter filewrapper in generated list
     ioSemanticDeclarationListForGeneration +=
       !"filewrapper " + mFilewrapperName
-      !@filewrapperDeclarationForGeneration. new {
+      !@filewrapperDeclarationForGeneration.new {
         !true # Generate Cpp header file
         !"filewrapper-" + mFilewrapperName
         ![mFilewrapperName string]
@@ -1479,7 +1479,7 @@ override method @optionComponentDeclarationAST semanticAnalysis
 #---- Enter filewrapper in generated list
   ioSemanticDeclarationListForGeneration +=
     !"option " + mOptionComponentName
-    !@optionComponentForGeneration. new {
+    !@optionComponentForGeneration.new {
       !true # Generate Cpp header file
       !"option-" + mOptionComponentName
       !isPredefined
@@ -1518,7 +1518,7 @@ override method @abstractCategoryMethodAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !"abstract extension method " + mAbstractCategoryMethodName
-    !@abstractCategoryMethodForGeneration. new {
+    !@abstractCategoryMethodForGeneration.new {
       !true # Generate Cpp header file
       !"method-" + [selfType key] + "-" + mAbstractCategoryMethodName
       !selfType
@@ -1552,7 +1552,7 @@ override method @categoryMethodAST semanticAnalysis
 #--- Analyze instruction list
   var formalParameterListForGeneration =@formalParameterListForGeneration.emptyList{}
   @semanticInstructionListForGeneration semanticInstructionListForGeneration
-  let analysisContext = @analysisContext. new {
+  let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
     !selfType
@@ -1576,7 +1576,7 @@ override method @categoryMethodAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !"extension method " + mCategoryMethodName
-    !@categoryMethodForGeneration. new {
+    !@categoryMethodForGeneration.new {
       !true # Generate Cpp header file
       !"method-" + [selfType key] + "-" + mCategoryMethodName
       !selfType
@@ -1623,7 +1623,7 @@ override method @overridingCategoryMethodAST semanticAnalysis
 #--- Analyze instruction list
   var formalParameterListForGeneration =@formalParameterListForGeneration.emptyList{}
   @semanticInstructionListForGeneration semanticInstructionListForGeneration
-  let analysisContext = @analysisContext. new {
+  let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
     !selfType
@@ -1656,7 +1656,7 @@ override method @overridingCategoryMethodAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !"override extension method " + mOverridingCategoryMethodName
-    !@overridingCategoryMethodForGeneration. new {
+    !@overridingCategoryMethodForGeneration.new {
       !false # Do not generate Cpp header file
       !"method-" + [selfType key] + "-" + mOverridingCategoryMethodName
       !selfType
@@ -1750,7 +1750,7 @@ override method @abstractCategoryModifierAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !" abstract extension setter " + mAbstractCategoryModifierName
-    !@abstractCategoryModifierForGeneration. new {
+    !@abstractCategoryModifierForGeneration.new {
       !true # Generate Cpp header file
       !"setter-" + mTypeName + "-" + mAbstractCategoryModifierName
       !selfType
@@ -1784,7 +1784,7 @@ override method @categoryModifierAST semanticAnalysis
 #--- Analyze instruction list
   var formalParameterListForGeneration =@formalParameterListForGeneration.emptyList{}
   @semanticInstructionListForGeneration semanticInstructionListForGeneration
-  let analysisContext = @analysisContext. new {
+  let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
     !selfType
@@ -1805,7 +1805,7 @@ override method @categoryModifierAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !"extension setter " + mCategoryModifierName
-    !@categoryModifierForGeneration. new {
+    !@categoryModifierForGeneration.new {
       !true # Generate Cpp header file
       !"setter-" + [selfType key] + "-" + mCategoryModifierName
       !selfType
@@ -1852,7 +1852,7 @@ override method @overridingCategoryModifierAST semanticAnalysis
 #--- Analyze instruction list
   var formalParameterListForGeneration =@formalParameterListForGeneration.emptyList{}
   @semanticInstructionListForGeneration semanticInstructionListForGeneration
-  let analysisContext = @analysisContext. new {
+  let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
     !selfType
@@ -1882,7 +1882,7 @@ override method @overridingCategoryModifierAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !" overriding extension setter " + mOverridingCategoryModifierName
-    !@overridingCategoryModifierForGeneration. new {
+    !@overridingCategoryModifierForGeneration.new {
       !false # Do not generate Cpp header file
       !"setter-" + mTypeName + "-" + mOverridingCategoryModifierName
       !selfType
@@ -1976,7 +1976,7 @@ override method @abstractCategoryReaderAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !"abstract extension getter " + mAbstractCategoryReaderName
-    !@abstractCategoryReaderForGeneration. new {
+    !@abstractCategoryReaderForGeneration.new {
       !true # Generate Cpp header file
       !"getter-" + mTypeName + "-" + mAbstractCategoryReaderName
       !selfType
@@ -2011,7 +2011,7 @@ override method @categoryReaderAST semanticAnalysis
     implementedAsFunction = true
   end
 #--- Analyze instruction list
-  let analysisContext = @analysisContext. new {
+  let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
     !selfType
@@ -2041,7 +2041,7 @@ override method @categoryReaderAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !"extension getter " + mCategoryReaderName
-    !@categoryReaderForGeneration. new {
+    !@categoryReaderForGeneration.new {
       !true # Generate Cpp header file
       !"getter-" + [selfType key] + "-" + mCategoryReaderName
       !selfType
@@ -2097,7 +2097,7 @@ override method @overridingCategoryReaderAST semanticAnalysis
     error mOverridingCategoryReaderName:"this getter is not declared by a super class"
   end
 #--- Analyze instruction list
-  let analysisContext = @analysisContext. new {
+  let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
     !selfType
@@ -2134,7 +2134,7 @@ override method @overridingCategoryReaderAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !"override extension getter " + mOverridingCategoryReaderName
-    !@overrideCategoryReaderForGeneration. new {
+    !@overrideCategoryReaderForGeneration.new {
       !false # Do not generate Cpp header file
       !"getter-" + mTypeName + "-" + mOverridingCategoryReaderName
       !selfType
@@ -2408,7 +2408,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration +=
     !""   
-    !@grammarForGeneration. new {
+    !@grammarForGeneration.new {
       !true # has header
       !"grammar-" + mGrammarComponentName    
       !mGrammarComponentName.string
@@ -2714,7 +2714,7 @@ override method @lexiqueComponentAST semanticAnalysis
   #---
     ioSemanticDeclarationListForGeneration +=
       !""
-      !@lexiqueDeclarationForGeneration. new {
+      !@lexiqueDeclarationForGeneration.new {
         !true # has header
         !"lexique-" + lexiqueClassName
         !lexiqueClassName
@@ -2735,24 +2735,24 @@ override method @lexiqueComponentAST semanticAnalysis
 func buildPredefinedTypes
   ?let @semanticContext inSemanticContext
   ->@predefinedTypes outPredefinedTypes {
-  outPredefinedTypes = @predefinedTypes. new {
-    !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring. new { !"location" !@location.here}}
-    !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring. new { !"bool" !@location.here}}
-    !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring. new { !"char" !@location.here}}
-    !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring. new { !"string" !@location.here}}
-    !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring. new { !"uint" !@location.here}}
-    !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring. new { !"sint" !@location.here}}
-    !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring. new { !"uint64" !@location.here}}
-    !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring. new { !"sint64" !@location.here}}
-    !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring. new { !"double" !@location.here}}
-    !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring. new { !"lbool" !@location.here}}
-    !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring. new { !"lchar" !@location.here}}
-    !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring. new { !"lstring" !@location.here}}
-    !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring. new { !"luint" !@location.here}}
-    !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring. new { !"lsint" !@location.here}}
-    !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring. new { !"luint64" !@location.here}}
-    !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring. new { !"lsint64" !@location.here}}
-    !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring. new { !"ldouble" !@location.here}}}
+  outPredefinedTypes = @predefinedTypes.new {
+    !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring.new {!"location" !@location.here}}
+    !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring.new {!"bool" !@location.here}}
+    !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring.new {!"char" !@location.here}}
+    !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring.new {!"string" !@location.here}}
+    !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring.new {!"uint" !@location.here}}
+    !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring.new {!"sint" !@location.here}}
+    !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring.new {!"uint64" !@location.here}}
+    !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring.new {!"sint64" !@location.here}}
+    !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring.new {!"double" !@location.here}}
+    !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring.new {!"lbool" !@location.here}}
+    !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring.new {!"lchar" !@location.here}}
+    !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring.new {!"lstring" !@location.here}}
+    !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring.new {!"luint" !@location.here}}
+    !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring.new {!"lsint" !@location.here}}
+    !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring.new {!"luint64" !@location.here}}
+    !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring.new {!"lsint64" !@location.here}}
+    !@unifiedTypeMap-proxy. searchKey { !inSemanticContext.mTypeMap !@lstring.new {!"ldouble" !@location.here}}}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -3036,7 +3036,7 @@ override method @nonterminalCallInstruction analyzeSyntaxInstruction
     !?ioVariableMap
   ]
 #--- Generate instructions
-  ioInstructionListForGeneration += !@nonterminalInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@nonterminalInstructionForGeneration.new {
     !mInstructionLocation
     ![mNonterminalName string]
     ![mLabelName string]
@@ -3429,7 +3429,7 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
     !?ioVariableMap
   ]
 #---
-  ioInstructionListForGeneration += !@terminalCheckInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@terminalCheckInstructionForGeneration.new {
     !mInstructionLocation
     !mTerminalName
     !inLexiqueName
@@ -3576,7 +3576,7 @@ override method @repeatInstruction analyzeSyntaxInstruction
 #--- End block
   [!?ioVariableMap closeOverride !mEndOf_repeat_instruction]
 #---
-  ioInstructionListForGeneration += !@repeatInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@repeatInstructionForGeneration.new {
     !mInstructionLocation
     !inComponentName
     !choiceIndex
@@ -3666,7 +3666,7 @@ override method @selectInstruction analyzeSyntaxInstruction
   end
 #--- End block
   [!?ioVariableMap closeOverride !mEndOf_select_instruction]
-  ioInstructionListForGeneration += !@selectInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@selectInstructionForGeneration.new {
     !mInstructionLocation
     !inComponentName
     !choiceIndex
@@ -3750,7 +3750,7 @@ override method @parseRewindInstruction analyzeSyntaxInstruction
     )
   end
 #--- Generate instruction
-  ioInstructionListForGeneration += !@parseRewindInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@parseRewindInstructionForGeneration.new {
     !mInstructionLocation
     !listOfSemanticInstructionListForGeneration}
 }
@@ -3844,7 +3844,7 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
 #--- End block
   [!?ioVariableMap closeOverride !mEndOfInstructionList]
 #--- Generate instruction
-  ioInstructionListForGeneration += !@parseLoopInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@parseLoopInstructionForGeneration.new {
     !mInstructionLocation
     !variant_expression
     !while_expression
@@ -3977,7 +3977,7 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
   )
 #--- Generate instruction
   if ok then
-    ioInstructionListForGeneration += !@parseWhenInstructionForGeneration. new {
+    ioInstructionListForGeneration += !@parseWhenInstructionForGeneration.new {
       !mInstructionLocation
       !when_expression
       !when_instructionListForGeneration
@@ -4045,7 +4045,7 @@ override method @syntaxSendInstruction analyzeSyntaxInstruction
     error mInstructionLocation: "'send' expresion should be an @string expression"
   end
 #---
-  ioInstructionListForGeneration += !@syntaxSendInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@syntaxSendInstructionForGeneration.new {
     !mInstructionLocation
     !expression}
 }
@@ -4161,7 +4161,7 @@ proc semanticAnalysisOfSyntaxComponent
       enterNonterminalNonTerminalInMapAndCheck ( !mNonterminalName !nonterminalLabelMap !?nonterminalMap )
   end
 #--- Analysis context
-  let analysisContext = @analysisContext. new {
+  let analysisContext = @analysisContext.new {
     !inSemanticContext
     !inPredefinedTypes
     !@unifiedTypeMap-proxy. null
@@ -4212,7 +4212,7 @@ proc semanticAnalysisOfSyntaxComponent
     newRuleIndex ++
   end
 #---
-  outSyntaxDeclarationForGeneration = @syntaxDeclarationForGeneration. new {
+  outSyntaxDeclarationForGeneration = @syntaxDeclarationForGeneration.new {
     !inComponentName
     !inLexiqueName
     !nonterminalMap

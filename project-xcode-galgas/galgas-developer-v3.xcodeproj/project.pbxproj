@@ -435,6 +435,7 @@
 		CF337C9711C3F8C7007E7736 /* capCollectionElementArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = capCollectionElementArray.h; sourceTree = "<group>"; };
 		CF337CB111C3FAAF007E7736 /* cCollectionElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = cCollectionElement.cpp; sourceTree = "<group>"; };
 		CF337CB211C3FAAF007E7736 /* cCollectionElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = cCollectionElement.h; sourceTree = "<group>"; };
+		CF393C641A0681A000153A38 /* all-declarations-25.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "all-declarations-25.h"; sourceTree = "<group>"; };
 		CF3C17A614E97CCC0016A381 /* OC_GGS_BuildTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = OC_GGS_BuildTask.h; sourceTree = "<group>"; };
 		CF3C17A714E97CCC0016A381 /* OC_GGS_BuildTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = OC_GGS_BuildTask.m; sourceTree = "<group>"; };
 		CF3CFB2B0FEBEA6C00CE4488 /* PMFontButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PMFontButton.h; sourceTree = "<group>"; };
@@ -802,7 +803,6 @@
 		CFEE63DE147EA7750012C0A9 /* OC_GGS_TextSyntaxColoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = OC_GGS_TextSyntaxColoring.h; sourceTree = "<group>"; };
 		CFEE63DF147EA7750012C0A9 /* OC_GGS_TextSyntaxColoring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = OC_GGS_TextSyntaxColoring.m; sourceTree = "<group>"; };
 		CFEEE0FA1A064DE800E38AAC /* all-declarations-25.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "all-declarations-25.cpp"; sourceTree = "<group>"; };
-		CFEEE0FB1A064DE800E38AAC /* all-declarations-25.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "all-declarations-25.h"; sourceTree = "<group>"; };
 		CFEF3A7912A04C0F007CA2D8 /* cIndexingDictionary.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = cIndexingDictionary.cpp; sourceTree = "<group>"; };
 		CFEF3A7A12A04C0F007CA2D8 /* cIndexingDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = cIndexingDictionary.h; sourceTree = "<group>"; };
 		CFF8BEFC126614D9001B7E61 /* cPtr_object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = cPtr_object.cpp; sourceTree = "<group>"; };
@@ -958,7 +958,6 @@
 				CFB02C7A19F3FC2F0011D03D /* all-declarations-23.cpp */,
 				CFB02C7B19F3FC2F0011D03D /* all-declarations-24.cpp */,
 				CFEEE0FA1A064DE800E38AAC /* all-declarations-25.cpp */,
-				CFEEE0FB1A064DE800E38AAC /* all-declarations-25.h */,
 			);
 			name = "C++ files";
 			sourceTree = "<group>";
@@ -991,6 +990,7 @@
 				CFB02C9C19F3FC570011D03D /* all-declarations-22.h */,
 				CFB02C9D19F3FC570011D03D /* all-declarations-23.h */,
 				CFB02C9E19F3FC570011D03D /* all-declarations-24.h */,
+				CF393C641A0681A000153A38 /* all-declarations-25.h */,
 				CF2374E319967D5D0061D2D8 /* all-declarations.h */,
 				CF237AE819967E4E0061D2D8 /* project_header.h */,
 			);

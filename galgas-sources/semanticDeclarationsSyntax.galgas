@@ -17,11 +17,11 @@
 
 syntax semanticDeclarationsSyntax (galgas_scanner)  %translate {
 
-#------------------------------------------------------------------------------*
-#                                                                              *
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
 #          Rules prototypes                                                    *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <formal_parameter_list> !@formalParameterListAST outFormalParameterList
 
@@ -59,7 +59,7 @@ rule <attribute_declaration> ?!@attributeInCollectionListAST ioAttributeInCollec
       or
         $setter$ :> ?* ?*
         send "%setter"
-        featureList += !@lstring. new { !"setter" !@location.here}
+        featureList += !@lstring.new {!"setter" !@location.here}
       end
     while
       $,$ :> ?* ?*
@@ -88,7 +88,7 @@ rule <semantic_declaration>
   $type_name$ ?var  @lstring mAssociatedListTypeName
   $)$
   $;$ :> ?* ?*
-  ioSemanticDeclarations += !@listmapDeclarationAST. new {
+  ioSemanticDeclarations += !@listmapDeclarationAST.new {
     !false # Is not predefined
     !mListmapTypeName
     !mAssociatedListTypeName}
@@ -111,7 +111,7 @@ rule <semantic_declaration>
   $unsigned_literal_integer$ ?var  @luint dimension
   $]$
   $;$ :> ?* ?*
-  ioSemanticDeclarations += !@arrayDeclarationAST. new {
+  ioSemanticDeclarations += !@arrayDeclarationAST.new {
     !false # Is not predefined
     !arrayTypeName
     !elementListTypeName
@@ -128,7 +128,7 @@ rule <insert_method_declaration> ?!@insertMethodListAST ioMapMethodList {
   $identifier$ ?var  @lstring mMethodName
   @lstring stateName
   select
-    stateName = @lstring. new { !"" !@location.here}
+    stateName = @lstring.new {!"" !@location.here}
   or
     $state$
     $identifier$ ? stateName
@@ -138,7 +138,7 @@ rule <insert_method_declaration> ?!@insertMethodListAST ioMapMethodList {
   $literal_string$ ?var  @lstring mErrorMessage
   @lstring mShadowErrorMessage
   select
-    mShadowErrorMessage = @lstring. new { !"" !@location.here}
+    mShadowErrorMessage = @lstring.new {!"" !@location.here}
   or
     $,$
     $literal_string$ ? mShadowErrorMessage
@@ -181,7 +181,7 @@ rule <semantic_declaration>
     mSearchMethodList +=
       !mMethodName
       !mErrorMessage
-      !@lstring. new { !"" !@location.here}
+      !@lstring.new {!"" !@location.here}
   while
     $remove$
     $identifier$ ?var  @lstring mMethodName
@@ -200,7 +200,7 @@ rule <semantic_declaration>
     $;$ :> ?* ?*
   end
   $}$
-  ioSemanticDeclarations += !@mapDeclarationAST. new {
+  ioSemanticDeclarations += !@mapDeclarationAST.new {
     !false # Is not predefined
     !mMapTypeName
     !mAttributeList
@@ -217,7 +217,7 @@ rule <semantic_declaration>
   $sharedmap$
 #--- Map type name
   $type_name$ ?let @lstring mMapTypeName indexing uniquemapDefinition, mapProxyDefinition "-proxy"
-  let mapProxyTypeName = @lstring. new { !mMapTypeName.string + "-proxy" !mMapTypeName.location}
+  let mapProxyTypeName = @lstring.new {!mMapTypeName.string + "-proxy" !mMapTypeName.location}
 #--- Map properties
   ${$
   var mAttributeList =@attributeInCollectionListAST.emptyList{}
@@ -233,7 +233,7 @@ rule <semantic_declaration>
     @lstring stateMessage
     select
       stateMessageKind = @mapAutomatonMessageKind. noMessage
-      stateMessage = @lstring. new { !"" !@location.here}
+      stateMessage = @lstring.new {!"" !@location.here}
     or
       $warning$
       $literal_string$ ? stateMessage
@@ -254,7 +254,7 @@ rule <semantic_declaration>
       @lstring transitionMessage
       select
         transitionMessageKind = @mapAutomatonMessageKind. noMessage
-        transitionMessage = @lstring. new { !"" !@location.here}
+        transitionMessage = @lstring.new {!"" !@location.here}
       or
         $warning$
         $literal_string$ ? transitionMessage
@@ -286,7 +286,7 @@ rule <semantic_declaration>
     $identifier$ ?var  @lstring mMethodName
     @lstring actionName
     select
-      actionName = @lstring. new { !"" !@location.here}
+      actionName = @lstring.new {!"" !@location.here}
     or
       $do$
       $identifier$ ? actionName
@@ -315,7 +315,7 @@ rule <semantic_declaration>
       @lstring messageText
       select
         messageKind = @mapAutomatonMessageKind. noMessage
-        messageText = @lstring. new { !"" !@location.here}
+        messageText = @lstring.new {!"" !@location.here}
       or
         $warning$
         messageKind = @mapAutomatonMessageKind. warningMessage
@@ -341,7 +341,7 @@ rule <semantic_declaration>
       @lstring messageText
       select
         messageKind = @mapAutomatonMessageKind. noMessage
-        messageText = @lstring. new { !"" !@location.here}
+        messageText = @lstring.new {!"" !@location.here}
       or
         $warning$
         messageKind = @mapAutomatonMessageKind. warningMessage
@@ -358,7 +358,7 @@ rule <semantic_declaration>
   end
   $}$
 #--- Declare map
-  ioSemanticDeclarations += !@uniqueMapDeclarationAST. new {
+  ioSemanticDeclarations += !@uniqueMapDeclarationAST.new {
     !false # Is not predefined
     !mMapTypeName
     !mAttributeList
@@ -367,7 +367,7 @@ rule <semantic_declaration>
     !mapStateList
     !mapOverrideBlockListAST}
 #--- Declare map proxy
-  ioSemanticDeclarations += !@mapProxyDeclarationAST. new {
+  ioSemanticDeclarations += !@mapProxyDeclarationAST.new {
     !false # Is not predefined
     !mapProxyTypeName
     !mMapTypeName}
@@ -427,7 +427,7 @@ rule <semantic_declaration>
   end
   $}$
   for () in  classNameList do
-    ioSemanticDeclarations += !@classDeclarationAST. new {
+    ioSemanticDeclarations += !@classDeclarationAST.new {
       !false # Is not predefined
       !mIsAbstract
       !mValue
@@ -455,7 +455,7 @@ rule <semantic_declaration>
     <attribute_declaration> !? mAttributeList
   end
   $}$
-  ioSemanticDeclarations += !@structDeclarationAST. new {
+  ioSemanticDeclarations += !@structDeclarationAST.new {
     !false # Is not predefined
     !mListTypeName
     !mAttributeList
@@ -479,7 +479,7 @@ rule <semantic_declaration>
     <attribute_declaration> !? mAttributeList
   end
   $}$
-  ioSemanticDeclarations += !@listDeclarationAST. new {
+  ioSemanticDeclarations += !@listDeclarationAST.new {
     !false # Is not predefined
     !mListTypeName
     !mAttributeList}
@@ -527,7 +527,7 @@ rule <semantic_declaration>
     $,$
   end
   $}$
-  ioSemanticDeclarations += !@sortedListDeclarationAST. new {
+  ioSemanticDeclarations += !@sortedListDeclarationAST.new {
     !false # Is not predefined
     !mSortedListTypeName
     !mAttributeList
@@ -576,7 +576,7 @@ rule <semantic_declaration>
     send " "
   end
   $}$
-  ioSemanticDeclarations += !@enumDeclarationAST. new {
+  ioSemanticDeclarations += !@enumDeclarationAST.new {
     !false # Is not predefined
     !mEnumTypeName
     !mConstantList}
@@ -655,7 +655,7 @@ rule <semantic_declaration>
       !filewrapperTemplateFormalInputParameters
   end
   $}$
-  ioSemanticDeclarations += !@filewrapperDeclarationAST. new {
+  ioSemanticDeclarations += !@filewrapperDeclarationAST.new {
     !false # Is not predefined
     !isInternal
     !@string. stringWithSourceFilePath
@@ -680,7 +680,7 @@ rule <semantic_declaration>
   $identifier$ ?var  @lstring mMethodName indexing abstractCategoryMethodDefinition
   <formal_parameter_list> ?let @formalParameterListAST formalParameterList
   $;$ :> ?* ?*
-  ioSemanticDeclarations += !@abstractCategoryMethodAST. new {
+  ioSemanticDeclarations += !@abstractCategoryMethodAST.new {
     !false # Is not predefined
     !className
     !mMethodName
@@ -703,7 +703,7 @@ rule <semantic_declaration>
   $identifier$ ?var  @lstring mMethodName indexing overrideAbstractCategoryMethodDefinition
   <formal_parameter_list> ?let @formalParameterListAST formalParameterList
   $;$ :> ?* ?*
-  ioSemanticDeclarations += !@overridingAbstractCategoryMethodAST. new {
+  ioSemanticDeclarations += !@overridingAbstractCategoryMethodAST.new {
     !false # Is not predefined
     !className
     !mMethodName
@@ -734,7 +734,7 @@ rule <semantic_declaration>
   let endOfMethodLocation = @location.here
   $method$ :> ?* ?*
   $;$ :> ?* ?*
-  ioSemanticDeclarations += !@categoryMethodAST. new {
+  ioSemanticDeclarations += !@categoryMethodAST.new {
     !false # Is not predefined
     !className
     !mMethodName
@@ -768,7 +768,7 @@ rule <semantic_declaration>
   let endOfMethodLocation = @location.here
   $method$ :> ?* ?*
   $;$ :> ?* ?*
-  ioSemanticDeclarations += !@overridingCategoryMethodAST. new {
+  ioSemanticDeclarations += !@overridingCategoryMethodAST.new {
     !false # Is not predefined
     !className
     !mMethodName
@@ -799,7 +799,7 @@ rule <semantic_declaration>
   $type_name$ ?var  @lstring mReturnedTypeName
   $identifier$ ? *
   $;$ :> ?* ?*
-  ioSemanticDeclarations += !@abstractCategoryReaderAST. new {
+  ioSemanticDeclarations += !@abstractCategoryReaderAST.new {
     !false # Is not predefined
     !className
     !mReaderName
@@ -836,7 +836,7 @@ rule <semantic_declaration>
   let endOfInstructionList = @location.here
   $reader$ :> ?* ?*
   $;$ :> ?* ?*
-  ioSemanticDeclarations += !@categoryReaderAST. new {
+  ioSemanticDeclarations += !@categoryReaderAST.new {
     !false # Is not predefined
     !className
     !mMethodName
@@ -877,7 +877,7 @@ rule <semantic_declaration>
   let endOfInstructionList = @location.here
   $reader$ :> ?* ?*
   $;$ :> ?* ?*
-  ioSemanticDeclarations += !@overridingCategoryReaderAST. new {
+  ioSemanticDeclarations += !@overridingCategoryReaderAST.new {
     !false # Is not predefined
     !className
     !mMethodName
@@ -913,7 +913,7 @@ rule <semantic_declaration>
   $type_name$ ?var  @lstring mReturnedTypeName
   $identifier$ ? *
   $;$ :> ?* ?*
-  ioSemanticDeclarations += !@overridingAbstractCategoryReaderAST. new {
+  ioSemanticDeclarations += !@overridingAbstractCategoryReaderAST.new {
     !false # Is not predefined
     !className
     !mReaderName
@@ -940,7 +940,7 @@ rule <semantic_declaration>
   $identifier$ ?var  @lstring modifierName indexing abstractCategoryModifierDefinition
   <formal_parameter_list> ?let @formalParameterListAST formalParameterList
   $;$ :> ?* ?*
-  ioSemanticDeclarations += !@abstractCategoryModifierAST. new {
+  ioSemanticDeclarations += !@abstractCategoryModifierAST.new {
     !false # Is not predefined
     !className
     !modifierName
@@ -968,7 +968,7 @@ rule <semantic_declaration>
   $identifier$ ?var  @lstring modifierName indexing overrideAbstractCategoryModifierDefinition
   <formal_parameter_list> ?let @formalParameterListAST formalParameterList
   $;$ :> ?* ?*
-  ioSemanticDeclarations += !@overridingAbstractCategoryModifierAST. new {
+  ioSemanticDeclarations += !@overridingAbstractCategoryModifierAST.new {
     !false # Is not predefined
     !className
     !modifierName
@@ -1000,7 +1000,7 @@ rule <semantic_declaration>
   let @location endOfModifierLocation = @location.here
   $modifier$ :> ?* ?*
   $;$ :> ?* ?*
-  ioSemanticDeclarations += !@categoryModifierAST. new {
+  ioSemanticDeclarations += !@categoryModifierAST.new {
     !false # Is not predefined
     !className
     !modifierName
@@ -1035,7 +1035,7 @@ rule <semantic_declaration>
   let @location endOfModifierLocation = @location.here
   $modifier$ :> ?* ?*
   $;$ :> ?* ?*
-  ioSemanticDeclarations += !@overridingCategoryModifierAST. new {
+  ioSemanticDeclarations += !@overridingCategoryModifierAST.new {
     !false # Is not predefined
     !className
     !modifierName
@@ -1074,7 +1074,7 @@ rule <semantic_declaration>
     $;$ :> ?* ?*
   end
   $}$
-  ioSemanticDeclarations += !@graphDeclarationAST. new {
+  ioSemanticDeclarations += !@graphDeclarationAST.new {
     !false # Is not predefined
     !graphTypeName
     !associatedListTypeName
@@ -1170,7 +1170,7 @@ rule <semantic_declaration>
     $;$ :> ?* ?*
   end
   $}$
-  ioSemanticDeclarations += !@externTypeDeclarationAST. new {
+  ioSemanticDeclarations += !@externTypeDeclarationAST.new {
     !false # Is not predefined
     !externTypeName
     !cppPredeclarationCode

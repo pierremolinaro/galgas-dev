@@ -50,7 +50,7 @@ rule <project_component_start_symbol>
     projectSourceList += !filePath
   end
   $}$
-  outProjectComponentAST = @galgas3ProjectComponentAST. new {
+  outProjectComponentAST = @galgas3ProjectComponentAST.new {
     !projectSourceList
     !majorVersion
     !minorVersion

@@ -27,9 +27,15 @@
 #import "F_CocoaWrapperForGalgas.h"
 #import "PMDebug.h"
 
+//---------------------------------------------------------------------------------------------------------------------*
+
 #ifdef PM_HANDLE_UPDATE
   #import "PMApplicationUpdate.h"
 #endif
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+//#define DEBUG_MESSAGES
 
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -42,6 +48,9 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (instancetype) init {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   self = [super init] ;
   if (self) {
     gCocoaApplicationDelegate = self ;
@@ -63,6 +72,9 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (void) setApplicationMenuItemTitles {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
 //--- Get application name
   NSDictionary * bundleDictionary = [[NSBundle mainBundle] localizedInfoDictionary] ;
   NSString * applicationName = [bundleDictionary objectForKey: @"CFBundleName"] ;
@@ -94,18 +106,27 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (NSArray *) commandLineItemArray {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   return mCommandLineItemArray ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (NSTabView *) preferencesTabView {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   return mPreferencesTabView ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (NSString *) compilerToolPath {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   NSString * result = @"?" ; // No compiler by default
   const NSInteger indexOfSelectedItem = [mToolPopUpButton indexOfSelectedItem] ;
   if (indexOfSelectedItem >= 0) {
@@ -119,18 +140,27 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (BOOL) prefixByToolUtility {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   return [[NSUserDefaults standardUserDefaults] boolForKey:GGS_prefix_by_tool_utility] ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (NSString *) toolUtilityPrefix {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   return @"/usr/bin/time" ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (NSString *) commandLineString {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults] ;
   NSMutableArray * arguments = [NSMutableArray new] ;
 //--- Add tool path
@@ -216,6 +246,9 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
          withFontBindingPath: (NSString *) inFontBindingPath
          withForegroundColorBindingPath: (NSString *) inForegroundBindingPath
          withSettingTitle: (NSString *) inTitle {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   NSUserDefaultsController * udc = [NSUserDefaultsController sharedUserDefaultsController] ;
 //--- Add background color well
   ioRect->origin.x = 10.0 ;
@@ -283,6 +316,9 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 
 - (void) setTextColorsAndFontForTokenizer: (OC_Lexique *) inTokenizer
          atIndex: (NSUInteger) inIndex {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   #define kDefaultColorCount 7
   NSColor * defaultColorArray [kDefaultColorCount] = {
     [NSColor blackColor],
@@ -440,6 +476,9 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (void) setFontAction: (id) inSender {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
 //--- Get all preference names
   mCurrentFontArray = [[inSender cell] representedObject] ;
   //NSLog (@"mCurrentFontArray '%@'", mCurrentFontArray) ;
@@ -478,7 +517,9 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (void) changeFont: (id) inSender {
-  // NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
 //--- Get all preference names
   // NSLog (@"mCurrentFontArray '%@'", mCurrentFontArray) ;
 //--- Changing fonts
@@ -506,6 +547,9 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (void) setTextColorsPreferences {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   NSArray * tokenizerArray = tokenizers () ;
   for (NSUInteger t=0 ; t<[tokenizerArray count] ; t++) {
     OC_Lexique * tokenizer = [tokenizerArray objectAtIndex:t] ;
@@ -525,6 +569,9 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 - (void) insertTextMacroWithIndex: (NSUInteger) inIndex
          titleComponents: (NSArray *) inTitleComponents
          intoMenu: (NSMenu *) inMenu {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
  // NSLog (@"[inTitleComponents count] %u, inMenu %@", [inTitleComponents count], inMenu) ;
   if ([inTitleComponents count] == 1) {
     [inMenu
@@ -572,6 +619,9 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (void) buildTextMacroMenu {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   // NSLog (@"mTextMacroMenu %@", mTextMacroMenu) ;
   NSArray * tokenizerArray = tokenizers () ;
   NSUInteger macroCount = 0 ;
@@ -609,6 +659,9 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 
 - (void) buildBooleanCommandLineOptionsInView: (NSView *) inView
          enclosingRect: (NSRect *) ioRect {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   NSUserDefaultsController * udc = [NSUserDefaultsController sharedUserDefaultsController] ;
   NSRect r  ;
   r.origin.x = 10.0 ;
@@ -647,6 +700,9 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 
 - (void) buildUnsignedIntegerCommandLineOptionsInView: (NSView *) inView
          enclosingRect: (NSRect *) ioRect {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   NSUserDefaultsController * udc = [NSUserDefaultsController sharedUserDefaultsController] ;
   NSDictionary * optionDictionary = [NSDictionary
     dictionaryWithObject:[NSNumber numberWithBool:YES]
@@ -710,6 +766,9 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 
 - (void) buildStringCommandLineOptionsInView: (NSView *) inView
          enclosingRect: (NSRect *) ioRect {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   NSUserDefaultsController * udc = [NSUserDefaultsController sharedUserDefaultsController] ;
   NSDictionary * optionDictionary = [NSDictionary
     dictionaryWithObject:[NSNumber numberWithBool:YES]
@@ -767,6 +826,9 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (void) populateToolPopupButtonInView: (NSView *) inView {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
 //--- Get default settings
   NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults] ;
 //--- Populate
@@ -806,6 +868,9 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (void) awakeFromNib {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   // NSLog (@"%s", __PRETTY_FUNCTION__) ;
   NSUserDefaultsController * udc = [NSUserDefaultsController sharedUserDefaultsController] ;
   NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
@@ -835,9 +900,6 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
     withKeyPath:@"values." GGS_page_guide_column
     options:nil
   ] ;
-
-//  @private IBOutlet NSTextField * mPageGuideColumnTextField ;
-
 
 //--- Bind « Prefix by time Utility » checkbox
   [mPrefixByTimeUtilityCheckBox
@@ -995,7 +1057,9 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (void) preferencesDidChange: (id) inUsedArgument {
-//  NSLog (@"preferencesDidChange") ;
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   [self willChangeValueForKey:@"commandLineString"] ;
   [self  didChangeValueForKey:@"commandLineString"] ;
 }
@@ -1003,6 +1067,9 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (NSArray *) toolNameArray {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   return mToolNameArray ;
 }
 
@@ -1013,6 +1080,9 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (IBAction) toolSelectionDidChange: (id) inSender {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   const NSInteger selectedToolIndex = [mToolPopUpButton indexOfSelectedItem] ;
   NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults] ;
   [defaults setObject:[NSNumber numberWithInteger:selectedToolIndex] forKey:GGS_tool_selection_preference] ;
@@ -1031,6 +1101,9 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (void) windowDidMove: (NSNotification *) inNotification {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   NSWindow * window = [inNotification object] ;
   NSString * s = [window stringWithSavedFrame] ;
   NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
@@ -1044,6 +1117,9 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (void) windowDidResize: (NSNotification *) inNotification {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   NSWindow * window = [inNotification object] ;
   NSString * s = [window stringWithSavedFrame] ;
   NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
@@ -1071,6 +1147,9 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (void) changeNewDocumentTypeAction: (id) inSender {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
 //--- Get Info.plist file
   NSDictionary * infoDictionary = [[NSBundle mainBundle] infoDictionary] ;
   // NSLog (@"infoDictionary '%@'", infoDictionary) ;
@@ -1088,6 +1167,9 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (void) newDocument: (id) inSender {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   NSSavePanel * savePanel = [NSSavePanel savePanel] ;
   [mNewDocumentTypePopUpButton removeAllItems] ;
 //--- Get Info.plist file
@@ -1137,6 +1219,9 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (IBAction) showAllocationWindow: (id) inSender {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   showAllocationStatsWindow () ;
 }
 
@@ -1147,6 +1232,9 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (NSApplicationTerminateReply) applicationShouldTerminate:(NSApplication *)sender {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   BOOL canTerminateApplication = YES ;
   for (OC_GGS_Document * doc in [[NSDocumentController sharedDocumentController] documents]) {
     if (doc.mBuildTaskIsRunning) {
@@ -1169,6 +1257,9 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (void) updateSourceTextPreferenceCount {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
   NSBundle * mb = [NSBundle mainBundle] ;
 //  NSLog (@"[mb bundleIdentifier] %@", [mb bundleIdentifier]) ;
@@ -1200,6 +1291,9 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (IBAction) clearSourceDocumentPreferencesEntries: (id) inSender {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   NSBundle * mb = [NSBundle mainBundle] ;
   NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
   NSDictionary * dictionaryRepresentation = [ud persistentDomainForName:[mb bundleIdentifier]] ;

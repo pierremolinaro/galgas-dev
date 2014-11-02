@@ -30,7 +30,7 @@ proc enterConstructorWithoutArgument
     ?let @unifiedTypeMap-proxy returnedTypeIndex
   ]
   [!?ioConstructorMap insertOrReplace
-    !@lstring. new { !inConstructorName !@location.here}
+    !@lstring.new {!inConstructorName !@location.here}
     !@functionSignature {}
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
@@ -52,7 +52,7 @@ proc enterConstructorWithArgument
   @unifiedTypeMap-proxy t
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t]
   [!?ioConstructorMap insertOrReplace
-    !@lstring. new { !inConstructorName !@location.here}
+    !@lstring.new {!inConstructorName !@location.here}
     !@functionSignature {!["" nowhere] !t !inArgument1Name}
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
@@ -80,7 +80,7 @@ proc enterConstructorWith2Arguments
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t]
   argumentTypeList += !["" nowhere] !t !inArgument2Name
   [!?ioConstructorMap insertOrReplace
-    !@lstring. new { !inConstructorName !@location.here}
+    !@lstring.new {!inConstructorName !@location.here}
     !argumentTypeList
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
@@ -112,7 +112,7 @@ proc enterConstructorWith3Arguments
   [@unifiedTypeMap-proxy makeProxyFromString !?ioUnifiedTypeMap !inArgument3TypeName ?t]
   argumentTypeList += !["" nowhere] !t !inArgument3Name
   [!?ioConstructorMap insertOrReplace
-    !@lstring. new { !inConstructorName !@location.here}
+    !@lstring.new {!inConstructorName !@location.here}
     !argumentTypeList
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex

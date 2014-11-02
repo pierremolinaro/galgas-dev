@@ -79,7 +79,7 @@ rule <semantic_declaration>
   @formalParameterListAST mFormalParameterList
   <formal_parameter_list> ? mFormalParameterList
   $;$ :> ?* ?*
-  ioSemanticDeclarations += !@externRoutineDeclarationAST. new {
+  ioSemanticDeclarations += !@externRoutineDeclarationAST.new {
     !false # Is not predefined
     !false #isLocal
     !mActionName
@@ -113,7 +113,7 @@ rule <semantic_declaration>
   $routine$ :> ?* ?*
   let endOfInstructionList = @location.here
   $;$ :> ?* ?*
-  ioSemanticDeclarations += !@routineDeclarationAST. new {
+  ioSemanticDeclarations += !@routineDeclarationAST.new {
     !false # Is not predefined
     !isLocal
     !mRoutineName
@@ -137,7 +137,7 @@ rule <semantic_declaration>
   <semantic_instruction_list> ? mRoutineInstructionList
   let endOfInstructionList = @location.here
   $}$
-  ioSemanticDeclarations += !@routineDeclarationAST. new {
+  ioSemanticDeclarations += !@routineDeclarationAST.new {
     !false # Is not predefined
     !isLocal
     !mRoutineName
@@ -174,7 +174,7 @@ rule <semantic_declaration>
   $function$ :> ?* ?*
   let endOfFunctionInstructionList = @location.here
   $;$ :> ?* ?*
-  ioSemanticDeclarations += !@functionDeclarationAST. new {
+  ioSemanticDeclarations += !@functionDeclarationAST.new {
     !false # Is not predefined
     !mRoutineName
     !formalInputParameterList
@@ -201,7 +201,7 @@ rule <semantic_declaration>
   <semantic_instruction_list> ?var @semanticInstructionListAST functionInstructionList
   let endOfFunctionInstructionList = @location.here
   $}$
-  ioSemanticDeclarations += !@functionDeclarationAST. new {
+  ioSemanticDeclarations += !@functionDeclarationAST.new {
     !false # Is not predefined
     !mRoutineName
     !formalInputParameterList
@@ -239,7 +239,7 @@ rule <semantic_declaration>
   $once$ :> ?* ?*
   let endOfFunctionInstructionList = @location.here
   $;$ :> ?* ?*
-  ioSemanticDeclarations += !@onceFunctionDeclarationAST. new {
+  ioSemanticDeclarations += !@onceFunctionDeclarationAST.new {
     !false # Is not predefined
     !mRoutineName
     !resultTypeName
@@ -271,7 +271,7 @@ rule <semantic_declaration>
   $type_name$ ?var @lstring resultTypeName
   $identifier$ ?var @lstring resultVariableName
   $;$ :> ?* ?*
-  ioSemanticDeclarations += !@externFunctionDeclarationAST. new {
+  ioSemanticDeclarations += !@externFunctionDeclarationAST.new {
     !false # Is not predefined
     !mActionName
     !formalInputParameterList
@@ -294,7 +294,7 @@ rule <semantic_instruction>
   $var$
   $type_name$ ?var @lstring typeName
   $identifier$ ?var @lstring variableName
-  outInstruction = @localVariableDeclarationAST. new { ![typeName location] !typeName !variableName !false}
+  outInstruction = @localVariableDeclarationAST.new {![typeName location] !typeName !variableName !false}
   $;$ :> ?* ?*
 }
 
@@ -304,7 +304,7 @@ rule <semantic_instruction>
   !@semanticInstructionAST outInstruction {
   $type_name$ ?var @lstring typeName
   $identifier$ ?var @lstring variableName
-  outInstruction = @localVariableDeclarationAST. new { ![typeName location] !typeName !variableName !false}
+  outInstruction = @localVariableDeclarationAST.new {![typeName location] !typeName !variableName !false}
   $;$ :> ?* ?*
 }
 
@@ -319,7 +319,7 @@ rule <semantic_instruction>
   send sep + "="
   @semanticExpressionAST sourceExpression
   <expression> ? sourceExpression
-  outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST. new {
+  outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST.new {
     ![typeName location]
     !false
     !typeName
@@ -338,7 +338,7 @@ rule <semantic_instruction>
   send sep + "="
   @semanticExpressionAST sourceExpression
   <expression> ? sourceExpression
-  outInstruction = @localVariableDeclarationWithAssignmentAST. new {
+  outInstruction = @localVariableDeclarationWithAssignmentAST.new {
     ![variableName location]
     !variableName
     !sourceExpression}
@@ -355,7 +355,7 @@ rule <semantic_instruction>
   send sep + "="
   @semanticExpressionAST sourceExpression
   <expression> ? sourceExpression
-  outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST. new {
+  outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST.new {
     ![typeName location]
     !false
     !typeName
@@ -376,7 +376,7 @@ rule <semantic_instruction>
   send tp + "."
   $default$
   $]$ :> ?* ?*
-  outInstruction = @localVariableOrConstantDeclarationWithDefaultConstructorAST. new {
+  outInstruction = @localVariableOrConstantDeclarationWithDefaultConstructorAST.new {
     ![typeName location]
     !false # Is not Constant
     !typeName
@@ -398,7 +398,7 @@ rule <semantic_instruction>
   $identifier$ ?var @lstring constructorName
   send "{"
   <output_expression_list> ?var @actualOutputExpressionList expressionList
-  outInstruction = @localVariableOrConstantDeclarationWithConstructorCallAST. new {
+  outInstruction = @localVariableOrConstantDeclarationWithConstructorCallAST.new {
     ![typeName location]
     !false # Is not Constant
     !typeName
@@ -430,7 +430,7 @@ rule <semantic_instruction>
   send sep + "="
   @semanticExpressionAST sourceExpression
   <expression> ? sourceExpression
-  outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST. new {
+  outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST.new {
     ![typeName location]
     !true # Is Constant
     !typeName
@@ -456,7 +456,7 @@ rule <semantic_instruction>
   <output_expression_list> ?let @actualOutputExpressionList expressionList
   $]$ :> ?sep ?*
   send sep + "}"
-  outInstruction = @localVariableOrConstantDeclarationWithConstructorCallAST. new {
+  outInstruction = @localVariableOrConstantDeclarationWithConstructorCallAST.new {
     ![typeName location]
     !true # is constant
     !typeName
@@ -479,7 +479,7 @@ rule <semantic_instruction>
   send tp + "."
   $default$
   $]$ :> ?* ?*
-  outInstruction = @localVariableOrConstantDeclarationWithDefaultConstructorAST. new {
+  outInstruction = @localVariableOrConstantDeclarationWithDefaultConstructorAST.new {
     ![typeName location]
     !true # Is Constant
     !typeName
@@ -503,7 +503,7 @@ rule <semantic_instruction>
   send sep + "="
   @semanticExpressionAST sourceExpression
   <expression> ? sourceExpression
-  outInstruction = @localConstantDeclarationWithAssignmentAST. new {
+  outInstruction = @localConstantDeclarationWithAssignmentAST.new {
     ![variableName location]
     !variableName
     !sourceExpression}
@@ -536,7 +536,7 @@ rule <semantic_instruction>
   @semanticExpressionAST mSourceExpression
   <expression> ? mSourceExpression
   $;$ :> ?* ?*
-  outInstruction = @assignmentInstructionAST. new {
+  outInstruction = @assignmentInstructionAST.new {
     ![mTargetVariableName location]
     !mTargetVariableName
     !mStructAttributeList
@@ -562,7 +562,7 @@ rule <semantic_instruction>
   @semanticExpressionAST mSourceExpression
   <expression> ? mSourceExpression
   $;$ :> ?* ?*
-  outInstruction = @selfAssignmentInstructionAST. new {
+  outInstruction = @selfAssignmentInstructionAST.new {
     !instructionLocation
     !mSourceExpression}
 }
@@ -589,7 +589,7 @@ rule <semantic_instruction>
     $,$
   end
   $;$ :> ?* ?*
-  outInstruction = @dropInstructionAST. new { !instructionLocation !dropList}
+  outInstruction = @dropInstructionAST.new {!instructionLocation !dropList}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -615,7 +615,7 @@ rule <semantic_instruction>
   end
   $++$
   $;$ :> ?* ?*
-  outInstruction = @incrementInstructionAST. new {
+  outInstruction = @incrementInstructionAST.new {
     ![mReceiverName location]
     !mReceiverName
     !mStructAttributeList}
@@ -637,7 +637,7 @@ rule <semantic_instruction>
   let instructionLocation = @location.here
   $++$
   $;$ :> ?* ?*
-  outInstruction = @selfIncrementInstructionAST. new {
+  outInstruction = @selfIncrementInstructionAST.new {
     !instructionLocation}
 }
 
@@ -664,7 +664,7 @@ rule <semantic_instruction>
   end
   $--$
   $;$ :> ?* ?*
-  outInstruction = @decrementInstructionAST. new {
+  outInstruction = @decrementInstructionAST.new {
     ![mReceiverName location]
     !mReceiverName
     !mStructAttributeList}
@@ -686,7 +686,7 @@ rule <semantic_instruction>
   let instructionLocation = @location.here
   $--$
   $;$ :> ?* ?*
-  outInstruction = @selfDecrementInstructionAST. new {
+  outInstruction = @selfDecrementInstructionAST.new {
     !instructionLocation}
 }
 
@@ -704,13 +704,13 @@ rule <foreach_enumerated_object>
   ?!@foreachInstructionEnumeratedObjectListAST ioForeachInstructionEnumeratedObjectList {
   @lstring enumerationOrder
   select
-    enumerationOrder = @lstring. new { !"" !@location.here} # Default order
+    enumerationOrder = @lstring.new {!"" !@location.here} # Default order
   or
     $<$ :> ?* ?*
-    enumerationOrder = @lstring. new { !"up" !@location.here}
+    enumerationOrder = @lstring.new {!"up" !@location.here}
   or
     $>$
-    enumerationOrder = @lstring. new { !"down" !@location.here}
+    enumerationOrder = @lstring.new {!"down" !@location.here}
   end
   <expression> ?var @semanticExpressionAST mEnumeratedExpression :> ?@string exp
   let endOfEnumerationExpression = @location.here
@@ -719,7 +719,7 @@ rule <foreach_enumerated_object>
   @lstring prefix
   select
     endsWithEllipsis = false
-    prefix = @lstring. new { !"" !@location.here}
+    prefix = @lstring.new {!"" !@location.here}
     send " ()"
   or
     $:$ :> ?* ?*
@@ -727,12 +727,12 @@ rule <foreach_enumerated_object>
     endsWithEllipsis = false
     send " () "
   or
-    prefix = @lstring. new { !"" !@location.here}
+    prefix = @lstring.new {!"" !@location.here}
     $($
     repeat
     while
       $*$
-      mElementList += !@lstring. new { !"" !@location.here} !@lstring. new { !"" !@location.here}
+      mElementList += !@lstring.new {!"" !@location.here} !@lstring.new {!"" !@location.here}
     while
       @luint count
       $unsigned_literal_integer$ ?count
@@ -743,7 +743,7 @@ rule <foreach_enumerated_object>
       end
       loop( n)
       while n > 0 do
-        mElementList += !@lstring. new { !"" !@location.here} !@lstring. new { !"" !@location.here}
+        mElementList += !@lstring.new {!"" !@location.here} !@lstring.new {!"" !@location.here}
         n --
       end
     while
@@ -791,14 +791,14 @@ rule <semantic_instruction>
   end
   @lstring mIndexVariableName
   select
-    mIndexVariableName = @lstring. new { !"" !@location.here}
+    mIndexVariableName = @lstring.new {!"" !@location.here}
   or
     $index$ :> ?* ?*
     $identifier$ ?mIndexVariableName :> ?* ?*
   end
   @semanticExpressionAST mWhileExpression
   select
-    mWhileExpression = @trueExpressionAST. new { !@location.here}
+    mWhileExpression = @trueExpressionAST.new {!@location.here}
   or
     $while$
     <expression> ? mWhileExpression
@@ -838,7 +838,7 @@ rule <semantic_instruction>
   $foreach$ :> ?* ?*
   $;$ :> ?* ?*
   send if generateGalgas3InstructionTerminator () then "%for" else "" end
-  outInstruction = @foreachInstructionAST. new {
+  outInstruction = @foreachInstructionAST.new {
     !instructionLocation
     !mEnumeratedObjectList
     !mIndexVariableName
@@ -927,7 +927,7 @@ rule <for_instruction_enumerated_object>
   $)$
   $in$
   <expression> ?let @semanticExpressionAST enumeratedExpression
-  outEnumeratedObject = @enumeratedCollectionCstListInExpAST. new {
+  outEnumeratedObject = @enumeratedCollectionCstListInExpAST.new {
     !elementList
     !endsWithEllipsis
     !enumeratedExpression
@@ -947,7 +947,7 @@ rule <for_instruction_enumerated_object>
   $identifier$ ?let @lstring enumerationVariable
   $in$
   <expression> ?let @semanticExpressionAST enumeratedExpression
-  outEnumeratedObject = @enumeratedCollectionVarInExpAST. new {
+  outEnumeratedObject = @enumeratedCollectionVarInExpAST.new {
     !typeName
     !enumerationVariable
     !enumeratedExpression
@@ -968,7 +968,7 @@ rule <for_instruction_enumerated_object>
   end
   $in$
   <expression> ?let @semanticExpressionAST enumeratedExpression
-  outEnumeratedObject = @enumeratedCollectionImplicitVarInExpAST. new {
+  outEnumeratedObject = @enumeratedCollectionImplicitVarInExpAST.new {
     !prefix
     !enumeratedExpression
     !@location.here}
@@ -996,7 +996,7 @@ rule <semantic_instruction>
   end
   @semanticExpressionAST mWhileExpression
   select
-    mWhileExpression = @trueExpressionAST. new { !@location.here}
+    mWhileExpression = @trueExpressionAST.new {!@location.here}
   or
     $while$
     <expression> ? mWhileExpression
@@ -1013,7 +1013,7 @@ rule <semantic_instruction>
   $do$
   @lstring indexVariableName
   select
-    indexVariableName = @lstring. new { !"" !@location.here}
+    indexVariableName = @lstring.new {!"" !@location.here}
   or
     $index$ :> ?* ?*
     send "("
@@ -1044,7 +1044,7 @@ rule <semantic_instruction>
   $for$ :> ?* ?*
   $;$ :> ?* ?*
   send if generateGalgas3InstructionTerminator () then "%for" else "" end
-  outInstruction = @forInstructionAST. new {
+  outInstruction = @forInstructionAST.new {
     !instructionLocation
     !mEnumeratedObjectList
     !indexVariableName
@@ -1092,7 +1092,7 @@ rule <if_branch> !@semanticInstructionAST outInstruction {
     else_instructionList = @semanticInstructionListAST. emptyList
     else_instructionList += !instruction
   end
-  outInstruction = @ifInstructionAST. new {
+  outInstruction = @ifInstructionAST.new {
     !instructionLocation
     !if_expression
     !then_instructionList
@@ -1128,7 +1128,7 @@ rule <match_entry> ?!@matchEntryListAST ioMatchEntryList {
   ioMatchEntryList +=
     !false
     !enumerationConstantName
-    !@lstring. new { !"" !@location.here}
+    !@lstring.new {!"" !@location.here}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1137,7 +1137,7 @@ rule <match_entry> ?!@matchEntryListAST ioMatchEntryList {
   $type_name$ ?var @lstring className
   @lstring localConstant
   select
-    localConstant = @lstring. new { !"" !@location.here}
+    localConstant = @lstring.new {!"" !@location.here}
   or
     $identifier$ ?localConstant
   end
@@ -1207,7 +1207,7 @@ rule <semantic_instruction>
   send "%match"
   let @location endOf_match_instruction = @location.here
   $;$ :>?* ?*
-  outInstruction = @matchInstructionAST. new {
+  outInstruction = @matchInstructionAST.new {
     !instructionLocation
     !matchedExpressionNameList
     !matchInstructionBranchList
@@ -1234,7 +1234,7 @@ rule <semantic_instruction>
   <actual_parameter_list> ?let @actualParameterListAST actualParameterList
   $]$
   $;$ :> ?* ?*
-  outInstruction = @methodCallInstructionAST. new {
+  outInstruction = @methodCallInstructionAST.new {
     !instructionLocation
     !mReceiverExpression
     !mMethodName
@@ -1272,7 +1272,7 @@ rule <semantic_instruction>
   <actual_parameter_list> ?let @actualParameterListAST actualParameterList
   $]$
   $;$ :> ?* ?*
-  outInstruction = @modifierCallInstructionAST. new {
+  outInstruction = @modifierCallInstructionAST.new {
     !instructionLocation
     !mReceiverName
     !mReceiverStructAttributes
@@ -1303,7 +1303,7 @@ rule <semantic_instruction>
   <actual_parameter_list> ?let @actualParameterListAST actualParameterList
   $]$
   $;$ :> ?* ?*
-  outInstruction = @selfModifierCallInstructionAST. new {
+  outInstruction = @selfModifierCallInstructionAST.new {
     !instructionLocation
     !mModifierName
     !actualParameterList}
@@ -1338,7 +1338,7 @@ rule <semantic_instruction>
     end
   end
   $;$ :> ?* ?*
-  outInstruction = @errorInstructionAST. new {
+  outInstruction = @errorInstructionAST.new {
     !instructionLocation
     !mReceiverExpression
     !mErrorExpression
@@ -1363,7 +1363,7 @@ rule <semantic_instruction>
   $:$
   <expression> ?let @semanticExpressionAST mWarningExpression
   $;$ :> ?* ?*
-  outInstruction = @warningInstructionAST. new {
+  outInstruction = @warningInstructionAST.new {
     !instructionLocation
     !mReceiverExpression
     !mWarningExpression}
@@ -1386,7 +1386,7 @@ rule <semantic_instruction>
   <actual_parameter_list> ?let @actualParameterListAST actualParameterList
   $;$ :> ?@string sep ?*
   send sep + ")"
-  outInstruction = @routineCallInstructionAST. new {
+  outInstruction = @routineCallInstructionAST.new {
     ![mRoutineName location]
     !mRoutineName
     !actualParameterList}
@@ -1421,7 +1421,7 @@ rule <semantic_instruction>
   let endOfKeyExpression = @location.here
   @lstring withPrefix
   select
-    withPrefix = @lstring. new { !"" !@location.here}
+    withPrefix = @lstring.new {!"" !@location.here}
   or
     $:$
     $identifier$ ? withPrefix
@@ -1441,7 +1441,7 @@ rule <semantic_instruction>
     end
     <semantic_instruction_list> ? mElseBranchInstructions
   end
-  outInstruction = @readAccessWithInstructionAST. new {
+  outInstruction = @readAccessWithInstructionAST.new {
     !instructionLocation
     !withPrefix
     !receiverExpression
@@ -1491,7 +1491,7 @@ rule <semantic_instruction>
   let endOfKeyExpression = @location.here
   @lstring withPrefix
   select
-    withPrefix = @lstring. new { !"" !@location.here}
+    withPrefix = @lstring.new {!"" !@location.here}
   or
     $:$
     $identifier$ ? withPrefix
@@ -1517,7 +1517,7 @@ rule <semantic_instruction>
     <semantic_instruction_list> ? mElseBranchInstructions
   end
   let endOf_else_instructions = @location.here
-  outInstruction = @readWriteAccessWithInstructionAST. new {
+  outInstruction = @readWriteAccessWithInstructionAST.new {
     !instructionLocation
     !withPrefix
     !mTargetObjectName
@@ -1562,7 +1562,7 @@ rule <cast_instruction_branch> ?!@castInstructionBranchListAST ioCastInstruction
   select
     $identifier$ ?mConstantVarName
   or
-    mConstantVarName = @lstring. new { !"" !@location.here}
+    mConstantVarName = @lstring.new {!"" !@location.here}
   end
   $:$
   <semantic_instruction_list> ?var @semanticInstructionListAST mCastBranchInstructionList
@@ -1595,10 +1595,10 @@ rule <cast_else_or_default> !@semanticInstructionListAST outElseOrDefault {
   $error$
   <expression> ?let @semanticExpressionAST errorLocationExpression
   outElseOrDefault = @semanticInstructionListAST. emptyList
-  outElseOrDefault += !@errorInstructionAST. new {
+  outElseOrDefault += !@errorInstructionAST.new {
     !instructionLocation
     !errorLocationExpression
-    !@literalStringExpressionAST. new {
+    !@literalStringExpressionAST.new {
       !instructionLocation
       !@stringlist. listWithValue { !"cast instruction run-time error"}}
     !@lstringlist. emptyList}
@@ -1622,7 +1622,7 @@ rule <semantic_instruction>
   $cast$ :> ?* ?*
   $;$ :> ?* ?*
   send if generateGalgas3InstructionTerminator () then "%cast" else "" end
-  outInstruction = @structuredCastInstructionAST. new {
+  outInstruction = @structuredCastInstructionAST.new {
     !instructionLocation
     !expression
     !mCastInstructionBranchList
@@ -1656,14 +1656,14 @@ rule <semantic_instruction>
   $+=$
   select
     <output_expression_list> ?let @actualOutputExpressionList expressionList
-    outInstruction = @plusEqualElementsInstructionAST. new {
+    outInstruction = @plusEqualElementsInstructionAST.new {
       !instructionLocation
       !mReceiverName
       !mStructAttributeList
       !expressionList}
   or
     <expression> ?let @semanticExpressionAST expression
-    outInstruction = @plusEqualExpressionInstructionAST. new {
+    outInstruction = @plusEqualExpressionInstructionAST.new {
       !instructionLocation
       !mReceiverName
       !mStructAttributeList
@@ -1688,7 +1688,7 @@ rule <semantic_instruction>
   let instructionLocation = @location.here
   $+=$
   <output_expression_list> ?let @actualOutputExpressionList expressionList
-  outInstruction = @selfPlusEqualElementsInstructionAST. new {
+  outInstruction = @selfPlusEqualElementsInstructionAST.new {
     !instructionLocation
     !expressionList}
   $;$ :> ?* ?*
@@ -1702,7 +1702,7 @@ rule <semantic_instruction>
   let instructionLocation = @location.here
   $+=$
   <expression> ?let @semanticExpressionAST expression
-  outInstruction = @selfPlusEqualExpressionInstructionAST. new {
+  outInstruction = @selfPlusEqualExpressionInstructionAST.new {
     !instructionLocation
     !expression}
   $;$ :> ?* ?*
@@ -1734,7 +1734,7 @@ rule <semantic_instruction>
   @semanticExpressionAST mSourceExpression
   <expression> ? mSourceExpression
   $;$ :> ?* ?*
-  outInstruction = @concatInstructionAST. new {
+  outInstruction = @concatInstructionAST.new {
     ![mTargetVariableName location]
     !mTargetVariableName
     !mStructAttributeList
@@ -1760,7 +1760,7 @@ rule <semantic_instruction>
   @semanticExpressionAST mSourceExpression
   <expression> ? mSourceExpression
   $;$ :> ?* ?*
-  outInstruction = @selfConcatInstructionAST. new {
+  outInstruction = @selfConcatInstructionAST.new {
     !instructionLocation
     !mSourceExpression}
 }
@@ -1801,7 +1801,7 @@ rule <semantic_instruction>
   let mEndOfLoopInstruction = @location.here
   $loop$ :> ?* ?*
   $;$ :> ?* ?*
-  outInstruction = @loopInstructionAST. new {
+  outInstruction = @loopInstructionAST.new {
     !instructionLocation
     !mVariantExpression
     !mEndOfVariantExpression
@@ -1830,7 +1830,7 @@ rule <semantic_instruction>
   let instructionLocation = @location.here
   <expression> ?let @semanticExpressionAST expression
   $;$ :> ?* ?*
-  outInstruction = @messageInstructionAST. new {
+  outInstruction = @messageInstructionAST.new {
     !instructionLocation
     !expression}
 }
@@ -1853,7 +1853,7 @@ rule <semantic_instruction>
   repeat
     select
       $identifier$ ?let @lstring loggedVariableName
-      logList += !loggedVariableName !@varInExpressionAST. new { !loggedVariableName}
+      logList += !loggedVariableName !@varInExpressionAST.new {!loggedVariableName}
     or
       $literal_string$ ?var  @lstring logMessage
       $:$
@@ -1864,7 +1864,7 @@ rule <semantic_instruction>
     $,$
   end
   $;$ :> ?* ?*
-  outInstruction = @logInstructionAST. new {
+  outInstruction = @logInstructionAST.new {
     !instructionLocation
     !logList}
 }
@@ -1892,7 +1892,7 @@ rule <syntax_directed_translation_result>
       error selector : "the selector should be '?'"
     end
     $*$
-    outResult = @grammarInstructionSyntaxDirectedTranslationDropResult. new { !@location.here}
+    outResult = @grammarInstructionSyntaxDirectedTranslationDropResult.new {!@location.here}
   or
     $?$ ?let selector
     if selector.string != "" then
@@ -1900,7 +1900,7 @@ rule <syntax_directed_translation_result>
     end
     $type_name$ ?var @lstring actualParameterTypeName
     $identifier$ ?var @lstring actualParameterName
-    outResult = @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar. new { !actualParameterTypeName !actualParameterName}
+    outResult = @grammarInstructionSyntaxDirectedTranslationResultInDeclaredVar.new {!actualParameterTypeName !actualParameterName}
   or
     $??$ ?let selector :> ?let @string sep ?*
     if selector.string != "" then
@@ -1909,14 +1909,14 @@ rule <syntax_directed_translation_result>
     send sep + "?" + if selector.string != "" then selector.string + ":" else "" end + "let "
     $type_name$ ?var @lstring actualParameterTypeName
     $identifier$ ?var @lstring actualParameterName
-    outResult = @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst. new { !actualParameterTypeName !actualParameterName}
+    outResult = @grammarInstructionSyntaxDirectedTranslationResultInDeclaredConst.new {!actualParameterTypeName !actualParameterName}
   or
     $?$ ?let selector
     if selector.string != "" then
       error selector : "the selector should be '?'"
     end
     $identifier$ ?var @lstring actualParameterName
-    outResult = @grammarInstructionSyntaxDirectedTranslationResultInVar. new { !actualParameterName}
+    outResult = @grammarInstructionSyntaxDirectedTranslationResultInVar.new {!actualParameterName}
   end
 }
 
@@ -1929,7 +1929,7 @@ rule <semantic_instruction>
   $identifier$ ?let @lstring mGrammarComponentName indexing grammarComponentReference
   @lstring mLabelName
   select
-    mLabelName = @lstring. new { !"" !@location.here}
+    mLabelName = @lstring.new {!"" !@location.here}
   or
     $label$
     $identifier$ ?mLabelName
@@ -1952,7 +1952,7 @@ rule <semantic_instruction>
     <syntax_directed_translation_result> ?grammarInstructionSyntaxDirectedTranslationResult
   end
   $;$ :> ?* ?*
-  outInstruction = @grammarInstructionAST. new {
+  outInstruction = @grammarInstructionAST.new {
     !instructionLocation
     !mGrammarComponentName
     !mLabelName
@@ -2022,7 +2022,7 @@ rule <semantic_instruction>
   let endOfSwitchInstruction = @location.here
   $;$ :> ?* ?*
   send if generateGalgas3InstructionTerminator () then "%switch" else "" end
-  outInstruction = @switchInstructionAST. new {
+  outInstruction = @switchInstructionAST.new {
     !instructionLocation
     !switchExpression
     !endOfSwitchExpression
@@ -2052,7 +2052,7 @@ rule <actual_input_parameter>
     send "var "
     $type_name$ ?let actualParameterTypeName
     $identifier$ ?let @lstring actualParameterName
-    outActualInputParameter = @inputParameterDeclaredVariable. new { !actualParameterTypeName !actualParameterName}
+    outActualInputParameter = @inputParameterDeclaredVariable.new {!actualParameterTypeName !actualParameterName}
   or
     $?$ ?outSelector
     $var$
@@ -2063,7 +2063,7 @@ rule <actual_input_parameter>
       $type_name$ ?actualParameterTypeName
     end
     $identifier$ ?let @lstring actualParameterName
-    outActualInputParameter = @inputParameterDeclaredVariable. new { !actualParameterTypeName !actualParameterName}
+    outActualInputParameter = @inputParameterDeclaredVariable.new {!actualParameterTypeName !actualParameterName}
   or
     $??$ ?outSelector :> ?let @string sep ?*
     send sep + "?" + if outSelector.string != "" then outSelector.string + ":" else "" end + "let "
@@ -2074,7 +2074,7 @@ rule <actual_input_parameter>
       $type_name$ ?actualParameterTypeName
     end
     $identifier$ ?var @lstring actualParameterName
-    outActualInputParameter = @inputParameterDeclaredConstant. new { !actualParameterTypeName !actualParameterName}
+    outActualInputParameter = @inputParameterDeclaredConstant.new {!actualParameterTypeName !actualParameterName}
   or
     $?$ ?outSelector
     $const$ :> ?let @string sep ?*
@@ -2086,11 +2086,11 @@ rule <actual_input_parameter>
       $type_name$ ?actualParameterTypeName
     end
     $identifier$ ?var @lstring actualParameterName
-    outActualInputParameter = @inputParameterDeclaredConstant. new { !actualParameterTypeName !actualParameterName}
+    outActualInputParameter = @inputParameterDeclaredConstant.new {!actualParameterTypeName !actualParameterName}
   or
     $?$ ?outSelector
     $identifier$ ?var @lstring actualParameterName
-    outActualInputParameter = @inputParameterVariable. new { !actualParameterName}
+    outActualInputParameter = @inputParameterVariable.new {!actualParameterName}
   end
 }  
 
@@ -2125,7 +2125,7 @@ rule <semantic_instruction>
   <actual_parameter_list> ?let @actualParameterListAST actualParameterList
   $]$
   $;$ :> ?* ?*
-  outInstruction = @typeMethodCallInstructionAST. new {
+  outInstruction = @typeMethodCallInstructionAST.new {
     !instructionLocation
     !mTypeName
     !mMethodName

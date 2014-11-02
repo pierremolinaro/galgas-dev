@@ -1,8 +1,8 @@
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  'expression' syntax                                                      *
+#  'expression' syntax                                                                                                 *
 #                                                                                                                      *
-#  Copyright (C) 2014, ..., 2014 Pierre Molinaro.                           *
+#  Copyright (C) 2014, ..., 2014 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
@@ -17,11 +17,11 @@
 
 syntax galgas3ExpressionSyntax (galgas3Scanner) {
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   O U T P U T    E X P R E S S I O N    L I S T                              *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   O U T P U T    E X P R E S S I O N    L I S T                                                                      *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <output_expression_list>
   !@actualOutputExpressionList outExpressionList {
@@ -34,11 +34,11 @@ rule <output_expression_list>
   end
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   C A S T                                                                    *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   C A S T                                                                                                            *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <expression> !@semanticExpressionAST outExpression {
   <casted_expression> ?outExpression
@@ -55,7 +55,7 @@ rule <expression> !@semanticExpressionAST outExpression {
       $>$ kind = @dynamicTypeComparisonKind. strictlyInherited
     end
     $type_name$ ?let @lstring typeName
-    outExpression = @testDynamicClassInExpressionAST. new {
+    outExpression = @testDynamicClassInExpressionAST.new {
       !outExpression
       !endOfReceiverExpression
       !kind
@@ -63,19 +63,19 @@ rule <expression> !@semanticExpressionAST outExpression {
   or
     let @location endOfReceiverExpression = @location.here
     $as$
-    $type_name$ ?var @lstring typeName
-    outExpression = @castInExpressionAST. new {
+    $type_name$ ?let typeName
+    outExpression = @castInExpressionAST.new {
       !outExpression
       !endOfReceiverExpression
       !typeName}
   end
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   C O N C A T E N A T I O N    T E R M                                       *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   C O N C A T E N A T I O N    T E R M                                                                               *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <casted_expression> !@semanticExpressionAST outExpression {
   <relation_term> ? outExpression
@@ -86,29 +86,29 @@ rule <casted_expression> !@semanticExpressionAST outExpression {
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand
     <relation_term> ? rightOperand
-    outExpression = @orExpressionAST. new { !operatorLocation !leftOperand !rightOperand}
+    outExpression = @orExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
   while
     @location operatorLocation = @location.here
     $||$
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand
     <relation_term> ? rightOperand
-    outExpression = @orShortExpressionAST. new { !operatorLocation !leftOperand !rightOperand}
+    outExpression = @orShortExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
   while
     @location operatorLocation = @location.here
     $^$
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand
     <relation_term> ? rightOperand
-    outExpression = @xorExpressionAST. new { !operatorLocation !leftOperand !rightOperand}
+    outExpression = @xorExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
   end
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   R E L A T I O N    T E R M                                                 *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   R E L A T I O N    T E R M                                                                                         *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <relation_term> !@semanticExpressionAST outExpression {
   <relation_factor> ? outExpression
@@ -119,22 +119,22 @@ rule <relation_term> !@semanticExpressionAST outExpression {
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand
     <relation_factor> ? rightOperand
-    outExpression = @andExpressionAST. new { !operatorLocation !leftOperand !rightOperand}
+    outExpression = @andExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
   while
     @location operatorLocation = @location.here
     $&&$
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand
     <relation_factor> ? rightOperand
-    outExpression = @andShortExpressionAST. new { !operatorLocation !leftOperand !rightOperand}
+    outExpression = @andShortExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
   end
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   R E L A T I O N    F A C T O R                                             *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   R E L A T I O N    F A C T O R                                                                                     *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <relation_factor> !@semanticExpressionAST outExpression {
   <simple_expression> ? outExpression
@@ -145,50 +145,50 @@ rule <relation_factor> !@semanticExpressionAST outExpression {
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand
     <simple_expression> ? rightOperand
-    outExpression = @equalExpressionAST. new { !operatorLocation !leftOperand !rightOperand}
+    outExpression = @equalExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
   while
     @location operatorLocation = @location.here
     $!=$
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand
     <simple_expression> ? rightOperand
-    outExpression = @notEqualExpressionAST. new { !operatorLocation !leftOperand !rightOperand}
+    outExpression = @notEqualExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
   while
     @location operatorLocation = @location.here
     $<=$
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand
     <simple_expression> ? rightOperand
-    outExpression = @lowerOrEqualExpressionAST. new { !operatorLocation !leftOperand !rightOperand}
+    outExpression = @lowerOrEqualExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
   while
     @location operatorLocation = @location.here
     $>=$
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand
     <simple_expression> ? rightOperand
-    outExpression = @greaterOrEqualExpressionAST. new { !operatorLocation !leftOperand !rightOperand}
+    outExpression = @greaterOrEqualExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
   while
     @location operatorLocation = @location.here
     $>$
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand
     <simple_expression> ? rightOperand
-    outExpression = @strictGreaterExpressionAST. new { !operatorLocation !leftOperand !rightOperand}
+    outExpression = @strictGreaterExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
   while
     @location operatorLocation = @location.here
     $<$
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand
     <simple_expression> ? rightOperand
-    outExpression = @strictLowerExpressionAST. new { !operatorLocation !leftOperand !rightOperand}
+    outExpression = @strictLowerExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
   end
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   S I M P L E    E X P R E S S I O N                                         *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   S I M P L E    E X P R E S S I O N                                                                                 *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <simple_expression> !@semanticExpressionAST outExpression {
   <term> ? outExpression
@@ -199,36 +199,36 @@ rule <simple_expression> !@semanticExpressionAST outExpression {
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand
     <term> ? rightOperand
-    outExpression = @leftShiftExpressionAST. new { !operatorLocation !leftOperand !rightOperand}
+    outExpression = @leftShiftExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
   while
     @location operatorLocation = @location.here
     $>>$
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand
     <term> ? rightOperand
-    outExpression = @rightShiftExpressionAST. new { !operatorLocation !leftOperand !rightOperand}
+    outExpression = @rightShiftExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
   while
     @location operatorLocation = @location.here
     $+$
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand
     <term> ? rightOperand
-    outExpression = @addExpressionAST. new { !operatorLocation !leftOperand !rightOperand}
+    outExpression = @addExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
   while
     @location operatorLocation = @location.here
     $-$
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand
     <term> ? rightOperand
-    outExpression = @subExpressionAST. new { !operatorLocation !leftOperand !rightOperand}
+    outExpression = @subExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
   end
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   T E R M                                                                    *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   T E R M                                                                                                            *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <term> !@semanticExpressionAST outExpression {
   <factor> ? outExpression
@@ -238,106 +238,106 @@ rule <term> !@semanticExpressionAST outExpression {
     $*$
     let leftOperand = outExpression
     <factor> ?let @semanticExpressionAST rightOperand
-    outExpression = @multiplicationExpressionAST. new { !operatorLocation !leftOperand !rightOperand}
+    outExpression = @multiplicationExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
   while
     @location operatorLocation = @location.here
     $/$
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand
     <factor> ? rightOperand
-    outExpression = @divisionExpressionAST. new { !operatorLocation !leftOperand !rightOperand}
+    outExpression = @divisionExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
   while
     @location operatorLocation = @location.here
     $mod$
     @semanticExpressionAST leftOperand = outExpression
     @semanticExpressionAST rightOperand
     <factor> ? rightOperand
-    outExpression = @moduloExpressionAST. new { !operatorLocation !leftOperand !rightOperand}
+    outExpression = @moduloExpressionAST.new {!operatorLocation !leftOperand !rightOperand}
   end
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   F A C T O R    :    - factor                                               *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   F A C T O R    :    - factor                                                                                       *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <factor> !@semanticExpressionAST outExpression {
   @location operatorLocation = @location.here
   $-$
   <factor> ? outExpression
-  outExpression = @unaryMinusExpressionAST. new { !operatorLocation !outExpression}
+  outExpression = @unaryMinusExpressionAST.new {!operatorLocation !outExpression}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   F A C T O R    :    not FACTOR                                             *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   F A C T O R    :    not FACTOR                                                                                     *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <factor> !@semanticExpressionAST outExpression {
   @location operatorLocation = @location.here
   $not$
   <factor> ? outExpression
-  outExpression = @notExpressionAST. new { !operatorLocation !outExpression}
+  outExpression = @notExpressionAST.new {!operatorLocation !outExpression}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   F A C T O R    :    ~ FACTOR                                               *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   F A C T O R    :    ~ FACTOR                                                                                       *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <factor> !@semanticExpressionAST outExpression {
   @location operatorLocation = @location.here
   $~$
   <factor> ? outExpression
-  outExpression = @complementExpressionAST. new { !operatorLocation !outExpression}
+  outExpression = @complementExpressionAST.new {!operatorLocation !outExpression}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   F A C T O R    :    struct field access                                    *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   F A C T O R    :    struct field access                                                                            *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <factor> !@semanticExpressionAST outExpression {
   <primary> ? outExpression
   repeat
   while
     $.$
-    $identifier$ ?var  @lstring structFieldName
-    outExpression = @structFieldAccessExpressionAST. new { !structFieldName.location !outExpression !structFieldName}
+    $identifier$ ?let structFieldName
+    outExpression = @structFieldAccessExpressionAST.new {!structFieldName.location !outExpression !structFieldName}
   end
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   P R I M A R Y    :    <var>                                                *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   P R I M A R Y    :    <var>                                                                                        *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression {
-  $identifier$ ?var  @lstring identifier
-  outExpression = @varInExpressionAST. new { !identifier}
+  $identifier$ ?let identifier
+  outExpression = @varInExpressionAST.new {!identifier}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   P R I M A R Y    :    S E L F C O P Y                                      *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   P R I M A R Y    :    S E L F C O P Y                                                                              *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression {
   $self$
-  outExpression = @selfCopyInExpressionAST. new { !@location.here}
+  outExpression = @selfCopyInExpressionAST.new {!@location.here}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   P R I M A R Y  :    (EXPRESSION)                                           *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   P R I M A R Y  :    (EXPRESSION)                                                                                   *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression {
   $($
@@ -345,33 +345,33 @@ rule <primary> !@semanticExpressionAST outExpression {
   $)$
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   P R I M A R Y    :    true                                                 *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   P R I M A R Y    :    true                                                                                         *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression {
   $true$
-  outExpression = @trueExpressionAST. new { !@location.here}
+  outExpression = @trueExpressionAST.new {!@location.here}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   P R I M A R Y    :    false                                                *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   P R I M A R Y    :    false                                                                                        *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression {
   $false$
-  outExpression = @falseExpressionAST. new { !@location.here}
+  outExpression = @falseExpressionAST.new {!@location.here}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   P R I M A R Y    :   literal string sequence "..."  "..."  "..."           *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   P R I M A R Y    :   literal string sequence "..."  "..."  "..."                                                   *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression {
   var literalStringList =@stringlist.emptyList{}
@@ -381,86 +381,86 @@ rule <primary> !@semanticExpressionAST outExpression {
     literalStringList += ![literalString string]
   while
   end
-  outExpression = @literalStringExpressionAST. new { !@location.here !literalStringList}
+  outExpression = @literalStringExpressionAST.new {!@location.here !literalStringList}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   P R I M A R Y    :    a 32-bit unsigned literal integer value              *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   P R I M A R Y    :    a 32-bit unsigned literal integer value                                                      *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression {
   @luint literalInt
   $unsigned_literal_integer$ ?literalInt
-  outExpression = @literalUIntExpressionAST. new { !literalInt}
+  outExpression = @literalUIntExpressionAST.new {!literalInt}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   P R I M A R Y    :    a 32-bit signed literal integer value                *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   P R I M A R Y    :    a 32-bit signed literal integer value                                                        *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression {
   @lsint literalInt
   $signed_literal_integer$ ?literalInt
-  outExpression = @literalSIntExpressionAST. new { !literalInt}
+  outExpression = @literalSIntExpressionAST.new {!literalInt}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   P R I M A R Y    :    a 64-bit unsigned literal integer value              *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   P R I M A R Y    :    a 64-bit unsigned literal integer value                                                      *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression {
   @luint64 literalInt
   $unsigned_literal_integer64$ ?literalInt
-  outExpression = @literalUInt64ExpressionAST. new { !literalInt}
+  outExpression = @literalUInt64ExpressionAST.new {!literalInt}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   P R I M A R Y    :    a 64-bit signed literal integer value                *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   P R I M A R Y    :    a 64-bit signed literal integer value                                                        *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression {
   @lsint64 literalInt
   $signed_literal_integer64$ ?literalInt
-  outExpression = @literalSInt64ExpressionAST. new { !literalInt}
+  outExpression = @literalSInt64ExpressionAST.new {!literalInt}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   P R I M A R Y    :    a literal character value                            *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   P R I M A R Y    :    a literal character value                                                                    *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression {
   @lchar literalChar
   $literal_char$ ?literalChar
-  outExpression = @literalCharExpressionAST. new { !literalChar}
+  outExpression = @literalCharExpressionAST.new {!literalChar}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   P R I M A R Y    :    a double value                                       *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   P R I M A R Y    :    a double value                                                                               *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression {
   @ldouble literalDouble
   $literal_double$ ? literalDouble ?*
-  outExpression = @literalDoubleExpressionAST. new { !literalDouble}
+  outExpression = @literalDoubleExpressionAST.new {!literalDouble}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   P R I M A R Y    :    if exp then exp else exp end                         *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#   P R I M A R Y    :    if exp then exp else exp end                                                                 *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression {
   $if$
@@ -474,24 +474,24 @@ rule <primary> !@semanticExpressionAST outExpression {
   @semanticExpressionAST elseExpression
   <expression> ? elseExpression
   $end$
-  outExpression = @ifExpressionAST. new {
+  outExpression = @ifExpressionAST.new {
     !operatorLocation
     !ifExpression
     !thenExpression
     !elseExpression}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#                         P R I M A R Y                                        *
-#   reader call           :   [expression reader !... ]                        *
-#   constructor call      :   [@class constructor !... ]                       *
-#   default constructor   :   [@class default]                                 *
-#   lexique introspection :   [lexique lexique_component_name.name]            *
-#   option value          :   [option option_component_name.option_name]       *
-#   filewrapper object    :   [filewrapper filewrapper_name]                   *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#                         P R I M A R Y                                                                                *
+#   reader call           :   [expression reader !... ]                                                                *
+#   constructor call      :   [@class constructor !... ]                                                               *
+#   default constructor   :   [@class default]                                                                         *
+#   lexique introspection :   [lexique lexique_component_name.name]                                                    *
+#   option value          :   [option option_component_name.option_name]                                               *
+#   filewrapper object    :   [filewrapper filewrapper_name]                                                           *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression {
   $[$
@@ -499,7 +499,7 @@ rule <primary> !@semanticExpressionAST outExpression {
   $]$
 }
 
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary_entre_crochets> !@semanticExpressionAST outExpression {
 #--- Get source identity characteristics
@@ -508,56 +508,56 @@ rule <primary_entre_crochets> !@semanticExpressionAST outExpression {
   $identifier$ ?let @lstring readerName
 #--- Actual parameters
   <output_expression_list> ?let @actualOutputExpressionList expressionList
-  outExpression = @readerCallExpressionAST. new { !receiverExpression !readerName !expressionList}
+  outExpression = @readerCallExpressionAST.new {!receiverExpression !readerName !expressionList}
 }
 
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary_entre_crochets> !@semanticExpressionAST outExpression {
   $option$
   select
     $.$
-    $identifier$ ?var @lstring optionName
-    $identifier$ ?var @lstring readerName
-    outExpression = @optionExpressionAST. new { !@lstring. new { !"galgas_builtin_options" !@location.here} !optionName !readerName}
+    $identifier$ ?let optionName
+    $identifier$ ?let readerName
+    outExpression = @optionExpressionAST.new {!.new {!"galgas_builtin_options" !.here} !optionName !readerName}
   or
-    $identifier$ ?var @lstring optionComponentName indexing optionComponentReference
+    $identifier$ ?let optionComponentName indexing optionComponentReference
     $.$
-    $identifier$ ?var @lstring optionName
-    $identifier$ ?var @lstring readerName
-    outExpression = @optionExpressionAST. new { !optionComponentName !optionName !readerName}
+    $identifier$ ?let optionName
+    $identifier$ ?let readerName
+    outExpression = @optionExpressionAST.new {!optionComponentName !optionName !readerName}
   end
 }
 
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary_entre_crochets> !@semanticExpressionAST outExpression {
   $lexique$
-  $identifier$ ?var @lstring lexiqueName
+  $identifier$ ?let lexiqueName
   $:$
-  $identifier$ ?var @lstring readerName
-  outExpression = @lexiqueIntrospectionExpressionAST. new { !lexiqueName !readerName}
+  $identifier$ ?let readerName
+  outExpression = @lexiqueIntrospectionExpressionAST.new {!lexiqueName !readerName}
 }
 
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary_entre_crochets> !@semanticExpressionAST outExpression {
   $filewrapper$
-  $identifier$ ?var @lstring filewrapperName indexing filewrapperReference
+  $identifier$ ?let filewrapperName indexing filewrapperReference
   select
-    outExpression = @filewrapperObjectInstanciationInExpressionAST. new {
+    outExpression = @filewrapperObjectInstanciationInExpressionAST.new {
       !filewrapperName}
   or
     $.$
     select
       $literal_string$ ?let @lstring filePath
-      outExpression = @filewrapperInExpressionAST. new {
+      outExpression = @filewrapperInExpressionAST.new {
         !filewrapperName
         !filePath}
     or
       $identifier$ ?let @lstring filewrapperTemplateName
       <output_expression_list> ?let @actualOutputExpressionList expressionList
-      outExpression = @filewrapperTemplateInExpressionAST. new {
+      outExpression = @filewrapperTemplateInExpressionAST.new {
         !filewrapperName
         !filewrapperTemplateName
         !expressionList}
@@ -565,20 +565,21 @@ rule <primary_entre_crochets> !@semanticExpressionAST outExpression {
   end
 }
 
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 #! Constructor
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <optional_type> !@lstring outTypeName {
-  outTypeName = @lstring. new { !"" !@location.here}
+  outTypeName = @lstring.new {!"" !@location.here}
 }
 
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+
 rule <optional_type> !@lstring outTypeName {
   $type_name$ ?outTypeName indexing typeReferenceInConstructor
 }
 
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression {
 #--- Type name
@@ -595,24 +596,24 @@ rule <primary> !@semanticExpressionAST outExpression {
     <output_expression_list> ?expressionList
     $}$
   end
-  outExpression = @constructorExpressionAST. new {
+  outExpression = @constructorExpressionAST.new {
     !typeName
     !constructorName
     !expressionList}
 }
 
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression {
   <optional_type> ?let @lstring typeName
   $.$
   $default$
-  outExpression = @defaultConstructorExpressionAST. new { !typeName}
+  outExpression = @defaultConstructorExpressionAST.new {!typeName}
 }
 
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 #! Collection value
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression {
   <optional_type> ?let @lstring typeName
@@ -627,14 +628,14 @@ rule <primary> !@semanticExpressionAST outExpression {
       $,$
     end
   end
-  outExpression = @collectionValueAST. new {
+  outExpression = @collectionValueAST.new {
     !typeName
     !elementList
     !@location.here}  
   $}$
 }
 
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <collection_value_element> 
   !@abstractCollectionValueElement outValueElement {
@@ -645,50 +646,49 @@ rule <collection_value_element>
     expressionList += !selector !expression !@location.here
   while
   end
-  outValueElement = @expressionListCollectionValue. new { !expressionList !@location.here}
+  outValueElement = @expressionListCollectionValue.new {!expressionList !@location.here}
 }
 
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <collection_value_element> 
   !@abstractCollectionValueElement outValueElement {
   <expression> ?let @semanticExpressionAST expression
-  outValueElement = @expressionCollectionValue. new { !expression !@location.here}
+  outValueElement = @expressionCollectionValue.new {!expression !@location.here}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#                         P R I M A R Y                                        *
-#                                                                              *
-#   function call        :   function_name (!... )                             *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#                         P R I M A R Y                                                                                *
+#                                                                                                                      *
+#   function call        :   function_name (!... )                                                                     *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 #! Function call
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression {
   $identifier$ ?let @lstring functionName indexing functionCall
   $($
   <output_expression_list> ?let @actualOutputExpressionList expressionList
   $)$
-  outExpression = @functionCallExpressionAST. new {
+  outExpression = @functionCallExpressionAST.new {
     !functionName
     !expressionList}
 }
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#                         P R I M A R Y                                        *
-#                                                                              *
-#   literal type         :   `@type                                            *
-#                                                                              *
-#------------------------------------------------------------------------------*
+#----------------------------------------------------------------------------------------------------------------------*
+#                                                                                                                      *
+#                         P R I M A R Y                                                                                *
+#                                                                                                                      *
+#   literal type         :   `@type                                                                                    *
+#                                                                                                                      *
+#----------------------------------------------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression {
   $`$
   $type_name$ ?let @lstring typeName
-  outExpression = @literalTypeInExpressionAST. new {
-    !typeName}
+  outExpression = @literalTypeInExpressionAST.new {!typeName}
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

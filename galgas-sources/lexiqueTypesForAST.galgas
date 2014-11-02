@@ -500,13 +500,13 @@ map @lexicalTypeMap {
 func %once buildLexicalTypeMap
   ->@lexicalTypeMap outLexicalTypeMap {
   outLexicalTypeMap = @lexicalTypeMap. emptyMap
-  [!?outLexicalTypeMap insertKey !@lstring. new { !"string" !@location.here} !@lexicalTypeEnum. lexicalType_string]
-  [!?outLexicalTypeMap insertKey !@lstring. new { !"char"   !@location.here} !@lexicalTypeEnum. lexicalType_char]
-  [!?outLexicalTypeMap insertKey !@lstring. new { !"uint"   !@location.here} !@lexicalTypeEnum. lexicalType_uint]
-  [!?outLexicalTypeMap insertKey !@lstring. new { !"uint64" !@location.here} !@lexicalTypeEnum. lexicalType_uint64]
-  [!?outLexicalTypeMap insertKey !@lstring. new { !"sint"   !@location.here} !@lexicalTypeEnum. lexicalType_sint]
-  [!?outLexicalTypeMap insertKey !@lstring. new { !"sint64" !@location.here} !@lexicalTypeEnum. lexicalType_sint64]
-  [!?outLexicalTypeMap insertKey !@lstring. new { !"double" !@location.here} !@lexicalTypeEnum. lexicalType_double]
+  [!?outLexicalTypeMap insertKey !@lstring.new {!"string" !@location.here} !@lexicalTypeEnum. lexicalType_string]
+  [!?outLexicalTypeMap insertKey !@lstring.new {!"char"   !@location.here} !@lexicalTypeEnum. lexicalType_char]
+  [!?outLexicalTypeMap insertKey !@lstring.new {!"uint"   !@location.here} !@lexicalTypeEnum. lexicalType_uint]
+  [!?outLexicalTypeMap insertKey !@lstring.new {!"uint64" !@location.here} !@lexicalTypeEnum. lexicalType_uint64]
+  [!?outLexicalTypeMap insertKey !@lstring.new {!"sint"   !@location.here} !@lexicalTypeEnum. lexicalType_sint]
+  [!?outLexicalTypeMap insertKey !@lstring.new {!"sint64" !@location.here} !@lexicalTypeEnum. lexicalType_sint64]
+  [!?outLexicalTypeMap insertKey !@lstring.new {!"double" !@location.here} !@lexicalTypeEnum. lexicalType_double]
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

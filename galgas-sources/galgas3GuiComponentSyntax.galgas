@@ -36,7 +36,7 @@ rule <declaration>
     var mValue =@lstring.new{ !"" !@location.here}
     repeat
       $literal_string$ ?var @lstring value
-      mValue = @lstring. new { ![mValue string] + [value string] ![value location]}
+      mValue = @lstring.new {![mValue string] + [value string] ![value location]}
     while
     end
     simpleGlobalAttributes += !mKey !mValue
@@ -98,7 +98,7 @@ rule <declaration>
         var value =@lstring.new{ !"" !@location.here}
         repeat
           $literal_string$ ?var @lstring v
-          value = @lstring. new { ![value string] + [v string] ![v location]}
+          value = @lstring.new {![value string] + [v string] ![v location]}
         while
         end
         compoundAttributes += !key !name !value

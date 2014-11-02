@@ -30,7 +30,7 @@ proc enterClassMethodWithStringInputArgument
   var argList =@formalParameterSignature.emptyList{}
   argList += !["" nowhere] !argumentTypeIndex !@formalArgumentPassingModeAST. argumentConstantIn ! inStringArgumentName
   [!?ioClassMethodMap insertOrReplace
-    !@lstring. new { !inClassMethodName !@location.here}
+    !@lstring.new {!inClassMethodName !@location.here}
     !argList
     !inHasCompilerArgument
   ]
@@ -53,7 +53,7 @@ override method @stringPredefinedTypeAST getClassMethodMap
   argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inFileName"
   argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inContents"
   [!?outClassMethodMap insertOrReplace
-    !@lstring. new { !"generateFile" !@location.here}
+    !@lstring.new {!"generateFile" !@location.here}
     !argList
     !true
   ]
@@ -66,7 +66,7 @@ override method @stringPredefinedTypeAST getClassMethodMap
   argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inDefaultUserZone2"
   argList += !["" nowhere] !stringType !@formalArgumentPassingModeAST. argumentConstantIn !"inGeneratedZone3"
   [!?outClassMethodMap insertOrReplace
-    !@lstring. new { !"generateFileWithPattern" !@location.here}
+    !@lstring.new {!"generateFileWithPattern" !@location.here}
     !argList
     !true
   ]

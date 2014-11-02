@@ -44,7 +44,7 @@ func syntaxSignatureOfInstructionList
 override method @nonterminalInstructionForGeneration appendSyntaxSignature
   ?let @string inPosfix
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration {
-  ioInstructionListForGeneration += !@nonterminalInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@nonterminalInstructionForGeneration.new {
     !mInstructionLocation
     !mNonterminalName
     !inPosfix
@@ -57,7 +57,7 @@ override method @nonterminalInstructionForGeneration appendSyntaxSignature
 override method @terminalCheckInstructionForGeneration appendSyntaxSignature
   ?let @string unused inPosfix
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration {
-  ioInstructionListForGeneration += !@terminalCheckInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@terminalCheckInstructionForGeneration.new {
     !mInstructionLocation
     !mTerminalName
     !mLexiqueIdentifier
@@ -80,7 +80,7 @@ override method @repeatInstructionForGeneration appendSyntaxSignature
       !mEndOfInstructionList
   end
 #---
-  ioInstructionListForGeneration += !@repeatInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@repeatInstructionForGeneration.new {
     !mInstructionLocation
     !mSyntaxComponentName
     !mChoiceIndex
@@ -100,7 +100,7 @@ override method @selectInstructionForGeneration appendSyntaxSignature
       !syntaxSignatureOfInstructionList (!inPosfix !mInstructionList)
       !mEndOfInstructionList
   end
-  ioInstructionListForGeneration += !@selectInstructionForGeneration. new {
+  ioInstructionListForGeneration += !@selectInstructionForGeneration.new {
     !mInstructionLocation
     !mSyntaxComponentName
     !mChoiceIndex

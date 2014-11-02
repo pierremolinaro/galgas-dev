@@ -30,7 +30,7 @@ rule <declaration>
     <option> !?options
   end
   $}$
-  ioDeclarations.mDeclarationList += !@optionComponentDeclarationAST. new {
+  ioDeclarations.mDeclarationList += !@optionComponentDeclarationAST.new {
     !false
     !optionComponentName
     !options}
@@ -58,7 +58,7 @@ rule <option> ?!@commandLineOptionListAST ioCommandLineOptionList {
       optionDefaultValueKind = @optionDefaultValueEnumAST. stringDefaultValue
     or
       $unsigned_literal_integer$ ?var  @luint v
-      defaultValue = @lstring. new { ![[v uint] string] ![v location]}
+      defaultValue = @lstring.new {![[v uint] string] ![v location]}
       optionDefaultValueKind = @optionDefaultValueEnumAST. unsignedDefaultValue
     end
   end

@@ -1950,7 +1950,7 @@ override method @classTypeForGeneration appendSpecificImplementation
     !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
     !mTypedAttributeList
     !mAllTypedAttributeList
-    ![mAllTypedAttributeList subListWithRange !@range. new { !0 ![mAllTypedAttributeList length] - [mTypedAttributeList length]}]
+    ![mAllTypedAttributeList subListWithRange !@range.new {!0 ![mAllTypedAttributeList length] - [mTypedAttributeList length]}]
     !mIsAbstract
     ![mTypeProxy mDefaultConstructorName] != ""
   ]
@@ -2116,7 +2116,7 @@ override method @categoryMethodForGeneration appendSpecificImplementation
       !["" nowhere]
       !@formalArgumentPassingModeAST. argumentConstantIn
       !mReceiverType
-      !@lstring. new { !"self" !@location.here}
+      !@lstring.new {!"self" !@location.here}
       !"inObject"
       !0
     ]
@@ -2279,7 +2279,7 @@ override method @categoryModifierForGeneration appendSpecificImplementation
       !["" nowhere]
       !@formalArgumentPassingModeAST. argumentInOut
       !mReceiverType
-      !@lstring. new { !"self" !@location.here}
+      !@lstring.new {!"self" !@location.here}
       !"ioObject"
       !0
     ]
@@ -2462,7 +2462,7 @@ override method @categoryReaderForGeneration appendSpecificImplementation
       !["" nowhere]
       !mReceiverType
       !"inObject"
-      !@lstring. new { !"self" !@location.here}
+      !@lstring.new {!"self" !@location.here}
       !true  
       !0    
     ]
