@@ -43,17 +43,31 @@ func %once syntaxDirectedTranslationResultVarName ->@string outName {
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-#abstract method @semanticInstructionAST enterInSemanticContext ?!@unifiedTypeMap ioTypeMap
+abstract method @semanticInstructionAST enterInstructionInSemanticContext ?!@unifiedTypeMap ioTypeMap
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-#method @semanticInstructionListAST enterInSemanticContext 
-#  ?!@unifiedTypeMap ioTypeMap
-#{
-#  for () in self do
-#    [mInstruction enterInSemanticContext !?ioTypeMap]
-#  end
-#}
+abstract method @semanticExpressionAST enterExpressionInSemanticContext ?!@unifiedTypeMap ioTypeMap
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+method @semanticInstructionListAST enterInstructionListInSemanticContext 
+  ?!@unifiedTypeMap ioTypeMap
+{
+  for () in self do
+    [mInstruction enterInstructionInSemanticContext !?ioTypeMap]
+  end
+}
+
+#----------------------------------------------------------------------------------------------------------------------*
+
+method @actualOutputExpressionList enterInSemanticContext 
+  ?!@unifiedTypeMap ioTypeMap
+{
+  for () in self do
+    [mExpression enterExpressionInSemanticContext !?ioTypeMap]
+  end
+}
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
@@ -2805,26 +2819,26 @@ override method @externRoutineDeclarationAST enterInSemanticContext
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-#override method @routineDeclarationAST enterInSemanticContext
-#  ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
-#  ?let @categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
-#  ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
-#  ?!@semanticContext ioSemanticContext {
-##--- Build signature
-#  var routineSignature =@formalParameterSignature.emptyList{}
-#  for () in mFormalArgumentList do
-#    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let parameterTypeIndex]
-#    routineSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
-#  end
-##--- Enter types for instruction list
-#  [mRoutineInstructionList enterInSemanticContext !?ioSemanticContext.mTypeMap]
-##--- Enter routine in routine map
-#  [!?ioSemanticContext.mRoutineMap insertKey
-#    !mRoutineName
-#    !routineSignature
-#    !mIsInternal
-#  ]
-#}
+override method @routineDeclarationAST enterInSemanticContext
+  ?let @categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
+  ?let @categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?let @categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
+  ?!@semanticContext ioSemanticContext {
+#--- Build signature
+  var routineSignature =@formalParameterSignature.emptyList{}
+  for () in mFormalArgumentList do
+    [@unifiedTypeMap-proxy makeProxy !?ioSemanticContext.mTypeMap !mFormalArgumentTypeName ?let parameterTypeIndex]
+    routineSignature += !mFormalSelector !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName.string
+  end
+#--- Enter types for instruction list
+  [mRoutineInstructionList enterInstructionListInSemanticContext !?ioSemanticContext.mTypeMap]
+#--- Enter routine in routine map
+  [!?ioSemanticContext.mRoutineMap insertKey
+    !mRoutineName
+    !routineSignature
+    !mIsInternal
+  ]
+}
 
 #----------------------------------------------------------------------------------------------------------------------*
 

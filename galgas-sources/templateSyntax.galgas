@@ -390,7 +390,7 @@ rule <primary>
 
 rule <primary>
   !@templateExpressionAST outExpression {
-  var literalStringList =@stringlist.emptyList{}
+  @stringlist literalStringList = {}
   repeat
     @lstring literalString
     $literal_string$ ?literalString
