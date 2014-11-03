@@ -1233,14 +1233,4 @@ static NSInteger numericSort (NSString * inOperand1,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-- (NSDictionary *) textAttributesForStyleIndex0 {
-  NSDictionary * result = nil ;
-  if (mFontAttributesDictionaryArray.count > 0) {
-    result = mFontAttributesDictionaryArray [0] ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
 @end

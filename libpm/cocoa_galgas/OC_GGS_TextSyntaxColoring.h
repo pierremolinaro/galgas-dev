@@ -93,8 +93,6 @@
 
 - (NSUInteger) displayDescriptorCount ;
 
-- (NSDictionary *) textAttributesForStyleIndex0 ;
-
 //--- RESERVED to OC_GGS_TextDisplayDescriptor
 - (void) addDisplayDescriptor: (OC_GGS_TextDisplayDescriptor *) inDisplayDescriptor ;
 - (void) removeDisplayDescriptor: (OC_GGS_TextDisplayDescriptor *) inDisplayDescriptor ;
