@@ -43,8 +43,8 @@
 #define GGS_template_font             @"GGS_template_font"
 #define GGS_template_foreground_color @"GGS_template_foreground_color"
 
-#define GGS_uses_page_guide   @"USE_PAGE_GUIDE"
-#define GGS_page_guide_column @"PAGE_GUIDE_COLUMN"
+#define GGS_uses_page_guide           @"GGS_USE_PAGE_GUIDE"
+#define GGS_page_guide_column         @"GGS_PAGE_GUIDE_COLUMN"
 
 //---------------------------------------------------------------------------------------------------------------------*
 
