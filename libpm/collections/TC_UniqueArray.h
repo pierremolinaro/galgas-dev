@@ -983,7 +983,7 @@ subArrayUsingFunction (bool (* inFunction) (const TYPE & inObject),
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//   Sort array with >= and <= operators                                                                               *
+//   Sort array using >= and <= operators                                                                              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1021,7 +1021,7 @@ void TC_UniqueArray<TYPE>::sortArrayUsingComparisonOperators (void) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//   Reverse sort array with >= and <= operators                                                                       *
+//   Reverse sort array using >= and <= operators                                                                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1059,7 +1059,7 @@ void TC_UniqueArray<TYPE>::reverseSortArrayUsingComparisonOperators (void) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//   Sort array with >= and <= operators                                                                               *
+//   Sort array using comare method                                                                                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1097,7 +1097,7 @@ void TC_UniqueArray<TYPE>::sortArrayUsingCompareMethod (void) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//   Reverse sort array with >= and <= operators                                                                       *
+//   Reverse sort array using compare method                                                                           *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1135,7 +1135,7 @@ void TC_UniqueArray<TYPE>::reverseSortArrayUsingCompareMethod (void) {
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//   Sort array with comparison function                                                                               *
+//   Sort array using comparison function                                                                              *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1143,19 +1143,16 @@ template <typename TYPE>
 void TC_UniqueArray<TYPE>::
 internalSortArrayUsingFunction (const int32_t inFirst,
                                 const int32_t inLast,
-                                int32_t (* inSortFunction) (const TYPE & inOperand1,
-                                                           const TYPE & inOperand2)) {
+                                int32_t (* inSortFunction) (const TYPE & inOperand1, const TYPE & inOperand2)) {
 //--- Sort using 'quick sort' algorithm
   if (inFirst < inLast) {
     int32_t i = inFirst ;
     int32_t j = inLast ;
     while (i < j) {
-      while ((i < inLast) &&
-             (inSortFunction (mArray [i], mArray [inFirst]) <= 0)) {
+      while ((i < inLast) && (inSortFunction (mArray [i], mArray [inFirst]) <= 0)) {
         i ++ ;
       }
-      while ((j > inFirst) &&
-             (inSortFunction (mArray [j], mArray [inFirst]) >= 0)) {
+      while ((j > inFirst) && (inSortFunction (mArray [j], mArray [inFirst]) >= 0)) {
         j -- ;
       }
       if (i < j) {
@@ -1172,8 +1169,7 @@ internalSortArrayUsingFunction (const int32_t inFirst,
 
 template <typename TYPE>
 void TC_UniqueArray<TYPE>::
-sortArrayUsingFunction (int32_t (* inSortFunction) (const TYPE & inOperand1,
-                                                const TYPE & inOperand2)) {
+sortArrayUsingFunction (int32_t (* inSortFunction) (const TYPE & inOperand1, const TYPE & inOperand2)) {
   if (inSortFunction != NULL) {
     internalSortArrayUsingFunction (0, mCount - 1, inSortFunction) ;
   }
@@ -1181,7 +1177,7 @@ sortArrayUsingFunction (int32_t (* inSortFunction) (const TYPE & inOperand1,
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//   Reverse sort array with comparison function                                                                       *
+//   Reverse sort array using comparison function                                                                      *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
@@ -1189,19 +1185,16 @@ template <typename TYPE>
 void TC_UniqueArray<TYPE>::
 internalReverseSortArrayUsingFunction (const int32_t inFirst,
                                        const int32_t inLast,
-                                       int32_t (* inSortFunction) (const TYPE & inOperand1,
-                                                                  const TYPE & inOperand2)) {
+                                       int32_t (* inSortFunction) (const TYPE & inOperand1, const TYPE & inOperand2)) {
 //--- Reverse sort using 'quick sort' algorithm
   if (inFirst < inLast) {
     int32_t i = inFirst ;
     int32_t j = inLast ;
     while (i < j) {
-      while ((i < inLast) &&
-             (inSortFunction (mArray [i], mArray [inFirst]) >= 0)) {
+      while ((i < inLast) && (inSortFunction (mArray [i], mArray [inFirst]) >= 0)) {
         i ++ ;
       }
-      while ((j > inFirst) &&
-             (inSortFunction (mArray [j], mArray [inFirst]) <= 0)) {
+      while ((j > inFirst) && (inSortFunction (mArray [j], mArray [inFirst]) <= 0)) {
         j -- ;
       }
       if (i < j) {
@@ -1218,8 +1211,7 @@ internalReverseSortArrayUsingFunction (const int32_t inFirst,
 
 template <typename TYPE>
 void TC_UniqueArray <TYPE>::
-reverseSortArrayUsingFunction (int32_t (* inSortFunction) (const TYPE & inOperand1,
-                                                          const TYPE & inOperand2)) {
+reverseSortArrayUsingFunction (int32_t (* inSortFunction) (const TYPE & inOperand1, const TYPE & inOperand2)) {
   if (inSortFunction != NULL) {
     internalReverseSortArrayUsingFunction (0, mCount - 1, inSortFunction) ;
   }
