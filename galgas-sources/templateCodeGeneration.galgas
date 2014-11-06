@@ -1,8 +1,8 @@
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  Semantic decorated types for template generation                         *
+#  Semantic decorated types for template generation                                                                    *
 #                                                                                                                      *
-#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
+#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
@@ -13,10 +13,6 @@
 #  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
 #  details.                                                                                                            *
 #                                                                                                                      *
-#----------------------------------------------------------------------------------------------------------------------*
-
-
-
 #----------------------------------------------------------------------------------------------------------------------*
 
 abstract method @templateInstructionForGeneration templateCodeGeneration
@@ -271,23 +267,29 @@ override method @templateInstructionSwitchForGeneration templateCodeGeneration
 #---
   ioGeneratedCode += "switch (" + switchVarCppName + ".enumValue ()) {\n"
   ioGeneratedCode += "case GALGAS_" + [[mSwitchExpression mResultType] identifierRepresentation] + "::kNotBuilt :\n"
-  ioGeneratedCode += "break ;\n"
+  ioGeneratedCode += "  break ;\n"
 #---
   for () in  mTemplateInstructionSwitchBranchList do
     for () in  mConstantList do
-      ioGeneratedCode += "case GALGAS_" + [[mSwitchExpression mResultType] identifierRepresentation] + "::kEnum_" + [[mValue string] identifierRepresentation] + " : {\n"
+      ioGeneratedCode += "case GALGAS_" + [[mSwitchExpression mResultType] identifierRepresentation] + "::kEnum_" + [[mValue string] identifierRepresentation] + " :\n"
     end
     [!?ioGeneratedCode incIndentation !2]
-    templateCodeGenerationForListInstruction (
-      !mInstructionList
-      !?ioGeneratedCode
-      !?ioInclusionSet
-      !?ioTemporaryVariableIndex
-      !?ioUnusedVariableCppNameSet
-      !?ioUseColumnMarker
-    )
+    if [mInstructionList length] > 0 then
+      ioGeneratedCode += "{\n"
+      [!?ioGeneratedCode incIndentation !2]
+      templateCodeGenerationForListInstruction (
+        !mInstructionList
+        !?ioGeneratedCode
+        !?ioInclusionSet
+        !?ioTemporaryVariableIndex
+        !?ioUnusedVariableCppNameSet
+        !?ioUseColumnMarker
+      )
+      [!?ioGeneratedCode decIndentation !2]
+      ioGeneratedCode += "}\n"
+    end
+    ioGeneratedCode += "break ;\n"
     [!?ioGeneratedCode decIndentation !2]
-    ioGeneratedCode += "} break ;\n"
   end
 #---
   ioGeneratedCode += "}\n"

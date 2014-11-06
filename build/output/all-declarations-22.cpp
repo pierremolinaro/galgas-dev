@@ -10,77 +10,6 @@
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                 Overriding category reader '@lexicalRoutineInstructionAST generateInstructionCode'                  *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static GALGAS_string categoryReader_lexicalRoutineInstructionAST_generateInstructionCode (const cPtr_lexicalInstructionAST * inObject,
-                                                                                          GALGAS_string inArgument_inScannerClassName,
-                                                                                          GALGAS_lexiqueAnalysisContext /* inArgument_inLexiqueAnalysisContext */,
-                                                                                          C_Compiler * inCompiler
-                                                                                          COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outGeneratedCode ; // Returned variable
-  const cPtr_lexicalRoutineInstructionAST * object = (const cPtr_lexicalRoutineInstructionAST *) inObject ;
-  macroValidSharedObject (object, cPtr_lexicalRoutineInstructionAST) ;
-  result_outGeneratedCode = GALGAS_string ("::scanner_routine_").add_operation (object->mAttribute_mRoutineName.reader_string (SOURCE_FILE ("lexiqueGeneration.galgas", 298)), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 298)).add_operation (GALGAS_string (" (*this"), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 298)) ;
-  cEnumerator_lexicalRoutineCallActualArgumentListAST enumerator_14835 (object->mAttribute_mActualArgumentList, kEnumeration_up) ;
-  while (enumerator_14835.hasCurrentObject ()) {
-    result_outGeneratedCode.dotAssign_operation (GALGAS_string (", ").add_operation (callCategoryReader_generateRoutineArgument ((const cPtr_abstractLexicalRoutineActualArgumentAST *) enumerator_14835.current_mLexicalRoutineActualArgument (HERE).ptr (), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 300)), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 300))  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 300)) ;
-    enumerator_14835.gotoNextObject () ;
-  }
-  cEnumerator_lstringlist enumerator_14962 (object->mAttribute_mErrorMessageList, kEnumeration_up) ;
-  while (enumerator_14962.hasCurrentObject ()) {
-    result_outGeneratedCode.dotAssign_operation (GALGAS_string (", gLexicalMessage_").add_operation (inArgument_inScannerClassName, inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 303)).add_operation (GALGAS_string ("_"), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 303)).add_operation (enumerator_14962.current_mValue (HERE).reader_string (SOURCE_FILE ("lexiqueGeneration.galgas", 303)), inCompiler COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 303))  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 303)) ;
-    enumerator_14962.gotoNextObject () ;
-  }
-  result_outGeneratedCode.dotAssign_operation (GALGAS_string (") ;\n")  COMMA_SOURCE_FILE ("lexiqueGeneration.galgas", 305)) ;
-//---
-  return result_outGeneratedCode ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineCategoryReader_lexicalRoutineInstructionAST_generateInstructionCode (void) {
-  enterCategoryReader_generateInstructionCode (kTypeDescriptor_GALGAS_lexicalRoutineInstructionAST.mSlotID,
-                                               categoryReader_lexicalRoutineInstructionAST_generateInstructionCode) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gReader_lexicalRoutineInstructionAST_generateInstructionCode (defineCategoryReader_lexicalRoutineInstructionAST_generateInstructionCode, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                   Overriding category reader '@lexicalDropInstructionAST generateInstructionCode'                   *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-static GALGAS_string categoryReader_lexicalDropInstructionAST_generateInstructionCode (const cPtr_lexicalInstructionAST * /* inObject */,
-                                                                                       GALGAS_string /* inArgument_inScannerClassName */,
-                                                                                       GALGAS_lexiqueAnalysisContext /* inArgument_inLexiqueAnalysisContext */,
-                                                                                       C_Compiler * /* inCompiler */
-                                                                                       COMMA_UNUSED_LOCATION_ARGS) {
-  GALGAS_string result_outGeneratedCode ; // Returned variable
-  result_outGeneratedCode = GALGAS_string::makeEmptyString () ;
-//---
-  return result_outGeneratedCode ;
-}
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-static void defineCategoryReader_lexicalDropInstructionAST_generateInstructionCode (void) {
-  enterCategoryReader_generateInstructionCode (kTypeDescriptor_GALGAS_lexicalDropInstructionAST.mSlotID,
-                                               categoryReader_lexicalDropInstructionAST_generateInstructionCode) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-C_PrologueEpilogue gReader_lexicalDropInstructionAST_generateInstructionCode (defineCategoryReader_lexicalDropInstructionAST_generateInstructionCode, NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
 //                  Overriding category reader '@lexicalErrorInstructionAST generateInstructionCode'                   *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8401,18 +8330,22 @@ static void categoryMethod_galgas_33_SyntaxComponentAST_enterDeclarationInGraph 
     while (enumerator_140467.hasCurrentObject ()) {
       cEnumerator_formalParameterListAST enumerator_140503 (enumerator_140467.current_mFormalArguments (HERE), kEnumeration_up) ;
       while (enumerator_140503.hasCurrentObject ()) {
-        if (enumerator_140503.current_mFormalArgumentPassingMode (HERE).isValid ()) {
-          switch (enumerator_140503.current_mFormalArgumentPassingMode (HERE).enumValue ()) {
-          case GALGAS_formalArgumentPassingModeAST::kNotBuilt:
-            break ;
-          case GALGAS_formalArgumentPassingModeAST::kEnum_argumentIn: {
+        switch (enumerator_140503.current_mFormalArgumentPassingMode (HERE).enumValue ()) {
+        case GALGAS_formalArgumentPassingModeAST::kNotBuilt:
+          break ;
+        case GALGAS_formalArgumentPassingModeAST::kEnum_argumentIn:
+          {
             {
             ioArgument_ioSemanticTypePrecedenceGraph.modifier_addEdge (var_key, GALGAS_lstring::constructor_new (GALGAS_string ("@").add_operation (enumerator_140503.current_mFormalArgumentTypeName (HERE).reader_string (SOURCE_FILE ("semanticContext.galgas", 3293)), inCompiler COMMA_SOURCE_FILE ("semanticContext.galgas", 3293)), enumerator_140503.current_mFormalArgumentTypeName (HERE).mAttribute_location  COMMA_SOURCE_FILE ("semanticContext.galgas", 3293)) COMMA_SOURCE_FILE ("semanticContext.galgas", 3293)) ;
             }
-            } break ;
-          case GALGAS_formalArgumentPassingModeAST::kEnum_argumentOut: case GALGAS_formalArgumentPassingModeAST::kEnum_argumentInOut: case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn: {
-            } break ;
           }
+          break ;
+        case GALGAS_formalArgumentPassingModeAST::kEnum_argumentOut:
+        case GALGAS_formalArgumentPassingModeAST::kEnum_argumentInOut:
+        case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn:
+          {
+          }
+          break ;
         }
         enumerator_140503.gotoNextObject () ;
       }

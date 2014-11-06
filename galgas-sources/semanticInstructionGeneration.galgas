@@ -15,10 +15,6 @@
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-
-
-#----------------------------------------------------------------------------------------------------------------------*
-
 override method @outputActualParameterForGeneration generateActualParameter
   ?!@stringset ioInclusionSet
   ?!@uint ioTemporaryVariableIndex
@@ -1230,16 +1226,21 @@ override method @switchInstructionForGeneration generateInstruction
   ?let @bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode {
 #--- Switch expression
-  [mSwitchExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string switchVar]
-  ioGeneratedCode += "if (" + switchVar + ".isValid ()) {\n"
-  [!?ioGeneratedCode incIndentation !2]
+  [mSwitchExpression generateExpression
+    !?ioGeneratedCode
+    !?ioInclusionSet
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?let @string switchVar
+  ]
   ioGeneratedCode += "switch (" + switchVar + ".enumValue ()) {\n"
   ioGeneratedCode += "case GALGAS_" + [[mSwitchExpression mResultType] identifierRepresentation] + "::kNotBuilt:\n"
   ioGeneratedCode += "  break ;\n"
   for () in  mBranches do
     for () in  mSwitchConstantList do
-      ioGeneratedCode += "case GALGAS_" + [[mSwitchExpression mResultType] identifierRepresentation] + "::kEnum_" + [[mValue string] identifierRepresentation] + ": "
+      ioGeneratedCode += "case GALGAS_" + [[mSwitchExpression mResultType] identifierRepresentation] + "::kEnum_" + [[mValue string] identifierRepresentation] + ":\n"
     end
+    [!?ioGeneratedCode incIndentation !2]
     ioGeneratedCode += "{\n"
     if [mExtractedAssociatedValuesForGeneration length] > 0 then
       let type = "const cEnumAssociatedValues_" + [mEnumType identifierRepresentation] + "_" + [mSwitchConstantList mValueAtIndex!0].string + " *"
@@ -1257,10 +1258,10 @@ override method @switchInstructionForGeneration generateInstruction
       !inGenerateSyntaxDirectedTranslationString
       !?ioGeneratedCode
     )
-    ioGeneratedCode += "  } break ;\n"
+    ioGeneratedCode += "}\n"
+    ioGeneratedCode += "break ;\n"
+    [!?ioGeneratedCode decIndentation !2]
   end
-  ioGeneratedCode += "}\n"
-  [!?ioGeneratedCode decIndentation !2]
   ioGeneratedCode += "}\n"
 }
 
