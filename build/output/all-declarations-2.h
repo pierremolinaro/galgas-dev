@@ -6911,8 +6911,8 @@ class GALGAS_foreachInstructionEnumeratedObjectElementListAST : public AC_GALGAS
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                  const class GALGAS_lstring & in_mTypeName,
-                                                  const class GALGAS_lstring & in_mConstantName
+                                                  const class GALGAS_lstring & in_mOptionalTypeName,
+                                                  const class GALGAS_lstring & in_mOptionalConstantName
                                                   COMMA_LOCATION_ARGS) ;
 
 //-- Start of generic part --*
@@ -7014,8 +7014,8 @@ class cEnumerator_foreachInstructionEnumeratedObjectElementListAST : public cGen
                                                                          const typeEnumerationOrder inOrder) ;
 
 //--- Current element access
-  public : class GALGAS_lstring current_mTypeName (LOCATION_ARGS) const ;
-  public : class GALGAS_lstring current_mConstantName (LOCATION_ARGS) const ;
+  public : class GALGAS_lstring current_mOptionalTypeName (LOCATION_ARGS) const ;
+  public : class GALGAS_lstring current_mOptionalConstantName (LOCATION_ARGS) const ;
 //--- Current element access
   public : class GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element current (LOCATION_ARGS) const ;
 } ;
@@ -7032,8 +7032,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_foreachInstructionE
 
 class GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_mTypeName ;
-  public : GALGAS_lstring mAttribute_mConstantName ;
+  public : GALGAS_lstring mAttribute_mOptionalTypeName ;
+  public : GALGAS_lstring mAttribute_mOptionalConstantName ;
 
 
 //--------------------------------- Accessors
@@ -7050,8 +7050,8 @@ class GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element : publi
   public : VIRTUAL_IN_DEBUG ~ GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element (const GALGAS_lstring & in_mTypeName,
-                                                                               const GALGAS_lstring & in_mConstantName) ;
+  public : GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element (const GALGAS_lstring & in_mOptionalTypeName,
+                                                                               const GALGAS_lstring & in_mOptionalConstantName) ;
 
 //-- Start of generic part --*
 
@@ -7080,9 +7080,9 @@ class GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element : publi
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mConstantName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mOptionalConstantName (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mTypeName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mOptionalTypeName (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection

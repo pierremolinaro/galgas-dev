@@ -8978,7 +8978,7 @@ class GALGAS_inputActualNewConstantParameterAST : public GALGAS_actualParameterA
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mInputActualParameterName (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mInputActualTypeName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mInputOptionalActualTypeName (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
@@ -9000,12 +9000,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualNewConst
 class cPtr_inputActualNewConstantParameterAST : public cPtr_actualParameterAST {
 //--- Attributes
   public : GALGAS_lstring mAttribute_mActualSelector ;
-  public : GALGAS_lstring mAttribute_mInputActualTypeName ;
+  public : GALGAS_lstring mAttribute_mInputOptionalActualTypeName ;
   public : GALGAS_lstring mAttribute_mInputActualParameterName ;
 
 //--- Constructor
   public : cPtr_inputActualNewConstantParameterAST (const GALGAS_lstring & in_mActualSelector,
-                                                    const GALGAS_lstring & in_mInputActualTypeName,
+                                                    const GALGAS_lstring & in_mInputOptionalActualTypeName,
                                                     const GALGAS_lstring & in_mInputActualParameterName
                                                     COMMA_LOCATION_ARGS) ;
 
@@ -9014,7 +9014,7 @@ class cPtr_inputActualNewConstantParameterAST : public cPtr_actualParameterAST {
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mActualSelector (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mInputActualTypeName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mInputOptionalActualTypeName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mInputActualParameterName (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
@@ -9074,7 +9074,7 @@ class GALGAS_inputActualNewVariableParameterAST : public GALGAS_actualParameterA
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mInputActualParameterName (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mInputActualTypeName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mInputOptionalActualTypeName (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
@@ -9096,12 +9096,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_inputActualNewVaria
 class cPtr_inputActualNewVariableParameterAST : public cPtr_actualParameterAST {
 //--- Attributes
   public : GALGAS_lstring mAttribute_mActualSelector ;
-  public : GALGAS_lstring mAttribute_mInputActualTypeName ;
+  public : GALGAS_lstring mAttribute_mInputOptionalActualTypeName ;
   public : GALGAS_lstring mAttribute_mInputActualParameterName ;
 
 //--- Constructor
   public : cPtr_inputActualNewVariableParameterAST (const GALGAS_lstring & in_mActualSelector,
-                                                    const GALGAS_lstring & in_mInputActualTypeName,
+                                                    const GALGAS_lstring & in_mInputOptionalActualTypeName,
                                                     const GALGAS_lstring & in_mInputActualParameterName
                                                     COMMA_LOCATION_ARGS) ;
 
@@ -9110,7 +9110,7 @@ class cPtr_inputActualNewVariableParameterAST : public cPtr_actualParameterAST {
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mActualSelector (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mInputActualTypeName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mInputOptionalActualTypeName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mInputActualParameterName (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
@@ -11290,7 +11290,7 @@ class GALGAS_enumeratedCollectionVarInExpAST : public GALGAS_abstractEnumeratedC
 
   public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionAST reader_mEnumeratedExpression (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mEnumerationTypeName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mEnumerationOptionalTypeName (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mEnumerationVariable (LOCATION_ARGS) const ;
 
@@ -11313,13 +11313,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumeratedCollectio
 
 class cPtr_enumeratedCollectionVarInExpAST : public cPtr_abstractEnumeratedCollectionAST {
 //--- Attributes
-  public : GALGAS_lstring mAttribute_mEnumerationTypeName ;
+  public : GALGAS_lstring mAttribute_mEnumerationOptionalTypeName ;
   public : GALGAS_lstring mAttribute_mEnumerationVariable ;
   public : GALGAS_semanticExpressionAST mAttribute_mEnumeratedExpression ;
   public : GALGAS_location mAttribute_mEndOfEnumerationExpression ;
 
 //--- Constructor
-  public : cPtr_enumeratedCollectionVarInExpAST (const GALGAS_lstring & in_mEnumerationTypeName,
+  public : cPtr_enumeratedCollectionVarInExpAST (const GALGAS_lstring & in_mEnumerationOptionalTypeName,
                                                  const GALGAS_lstring & in_mEnumerationVariable,
                                                  const GALGAS_semanticExpressionAST & in_mEnumeratedExpression,
                                                  const GALGAS_location & in_mEndOfEnumerationExpression
@@ -11329,7 +11329,7 @@ class cPtr_enumeratedCollectionVarInExpAST : public cPtr_abstractEnumeratedColle
   public : virtual acPtr_class * duplicate (LOCATION_ARGS) const ;
 
 //--- Attribute accessors
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mEnumerationTypeName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mEnumerationOptionalTypeName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mEnumerationVariable (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionAST reader_mEnumeratedExpression (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_location reader_mEndOfEnumerationExpression (LOCATION_ARGS) const ;
@@ -13463,9 +13463,9 @@ class GALGAS_localVariableOrConstantDeclarationWithAssignmentAST : public GALGAS
 //--------------------------------- Getters
   public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_mIsConstant (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionAST reader_mSourceExpression (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mOptionalTypeName (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mTypeName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_semanticExpressionAST reader_mSourceExpression (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mVariableName (LOCATION_ARGS) const ;
 
@@ -13489,14 +13489,14 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localVariableOrCons
 class cPtr_localVariableOrConstantDeclarationWithAssignmentAST : public cPtr_semanticInstructionAST {
 //--- Attributes
   public : GALGAS_bool mAttribute_mIsConstant ;
-  public : GALGAS_lstring mAttribute_mTypeName ;
+  public : GALGAS_lstring mAttribute_mOptionalTypeName ;
   public : GALGAS_lstring mAttribute_mVariableName ;
   public : GALGAS_semanticExpressionAST mAttribute_mSourceExpression ;
 
 //--- Constructor
   public : cPtr_localVariableOrConstantDeclarationWithAssignmentAST (const GALGAS_location & in_mInstructionLocation,
                                                                      const GALGAS_bool & in_mIsConstant,
-                                                                     const GALGAS_lstring & in_mTypeName,
+                                                                     const GALGAS_lstring & in_mOptionalTypeName,
                                                                      const GALGAS_lstring & in_mVariableName,
                                                                      const GALGAS_semanticExpressionAST & in_mSourceExpression
                                                                      COMMA_LOCATION_ARGS) ;
@@ -13506,7 +13506,7 @@ class cPtr_localVariableOrConstantDeclarationWithAssignmentAST : public cPtr_sem
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_bool reader_mIsConstant (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mTypeName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mOptionalTypeName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mVariableName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_semanticExpressionAST reader_mSourceExpression (LOCATION_ARGS) const ;
 //--- Description
@@ -13572,7 +13572,7 @@ class GALGAS_localVariableOrConstantDeclarationWithConstructorCallAST : public G
 
   public : VIRTUAL_IN_DEBUG class GALGAS_bool reader_mIsConstant (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mTypeName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mOptionalTypeName (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mVariableName (LOCATION_ARGS) const ;
 
@@ -13596,7 +13596,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_localVariableOrCons
 class cPtr_localVariableOrConstantDeclarationWithConstructorCallAST : public cPtr_semanticInstructionAST {
 //--- Attributes
   public : GALGAS_bool mAttribute_mIsConstant ;
-  public : GALGAS_lstring mAttribute_mTypeName ;
+  public : GALGAS_lstring mAttribute_mOptionalTypeName ;
   public : GALGAS_lstring mAttribute_mVariableName ;
   public : GALGAS_lstring mAttribute_mConstructorName ;
   public : GALGAS_actualOutputExpressionList mAttribute_mConstructorExpressions ;
@@ -13604,7 +13604,7 @@ class cPtr_localVariableOrConstantDeclarationWithConstructorCallAST : public cPt
 //--- Constructor
   public : cPtr_localVariableOrConstantDeclarationWithConstructorCallAST (const GALGAS_location & in_mInstructionLocation,
                                                                           const GALGAS_bool & in_mIsConstant,
-                                                                          const GALGAS_lstring & in_mTypeName,
+                                                                          const GALGAS_lstring & in_mOptionalTypeName,
                                                                           const GALGAS_lstring & in_mVariableName,
                                                                           const GALGAS_lstring & in_mConstructorName,
                                                                           const GALGAS_actualOutputExpressionList & in_mConstructorExpressions
@@ -13615,7 +13615,7 @@ class cPtr_localVariableOrConstantDeclarationWithConstructorCallAST : public cPt
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_bool reader_mIsConstant (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mTypeName (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mOptionalTypeName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mVariableName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mConstructorName (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_actualOutputExpressionList reader_mConstructorExpressions (LOCATION_ARGS) const ;

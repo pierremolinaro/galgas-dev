@@ -102,6 +102,8 @@
   @private IBOutlet NSButton * mRemoveExplicitSearchDirectoryButton ;
 
   @private NSString * mBaseFilePreferenceKey ;
+  
+  @private BOOL mHasSpoken ;
 }
 
 @property (assign PROPERTY_COMMA_ATOMIC) BOOL mBuildTaskIsRunning ;
