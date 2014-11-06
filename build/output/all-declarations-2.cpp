@@ -9655,8 +9655,8 @@ class cCollectionElement_foreachInstructionEnumeratedObjectElementListAST : publ
   public : GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element mObject ;
 
 //--- Constructor
-  public : cCollectionElement_foreachInstructionEnumeratedObjectElementListAST (const GALGAS_lstring & in_mTypeName,
-                                                                                const GALGAS_lstring & in_mConstantName
+  public : cCollectionElement_foreachInstructionEnumeratedObjectElementListAST (const GALGAS_lstring & in_mOptionalTypeName,
+                                                                                const GALGAS_lstring & in_mOptionalConstantName
                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
@@ -9674,11 +9674,11 @@ class cCollectionElement_foreachInstructionEnumeratedObjectElementListAST : publ
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-cCollectionElement_foreachInstructionEnumeratedObjectElementListAST::cCollectionElement_foreachInstructionEnumeratedObjectElementListAST (const GALGAS_lstring & in_mTypeName,
-                                                                                                                                          const GALGAS_lstring & in_mConstantName
+cCollectionElement_foreachInstructionEnumeratedObjectElementListAST::cCollectionElement_foreachInstructionEnumeratedObjectElementListAST (const GALGAS_lstring & in_mOptionalTypeName,
+                                                                                                                                          const GALGAS_lstring & in_mOptionalConstantName
                                                                                                                                           COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (in_mTypeName, in_mConstantName) {
+mObject (in_mOptionalTypeName, in_mOptionalConstantName) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9691,7 +9691,7 @@ bool cCollectionElement_foreachInstructionEnumeratedObjectElementListAST::isVali
 
 cCollectionElement * cCollectionElement_foreachInstructionEnumeratedObjectElementListAST::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_foreachInstructionEnumeratedObjectElementListAST (mObject.mAttribute_mTypeName, mObject.mAttribute_mConstantName COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_foreachInstructionEnumeratedObjectElementListAST (mObject.mAttribute_mOptionalTypeName, mObject.mAttribute_mOptionalConstantName COMMA_HERE)) ;
   return result ;
 }
 
@@ -9700,12 +9700,12 @@ cCollectionElement * cCollectionElement_foreachInstructionEnumeratedObjectElemen
 void cCollectionElement_foreachInstructionEnumeratedObjectElementListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mTypeName" ":" ;
-  mObject.mAttribute_mTypeName.description (ioString, inIndentation) ;
+  ioString << "mOptionalTypeName" ":" ;
+  mObject.mAttribute_mOptionalTypeName.description (ioString, inIndentation) ;
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
-  ioString << "mConstantName" ":" ;
-  mObject.mAttribute_mConstantName.description (ioString, inIndentation) ;
+  ioString << "mOptionalConstantName" ":" ;
+  mObject.mAttribute_mOptionalConstantName.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9757,12 +9757,12 @@ GALGAS_foreachInstructionEnumeratedObjectElementListAST GALGAS_foreachInstructio
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_foreachInstructionEnumeratedObjectElementListAST::makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                                                         const GALGAS_lstring & in_mTypeName,
-                                                                                         const GALGAS_lstring & in_mConstantName
+                                                                                         const GALGAS_lstring & in_mOptionalTypeName,
+                                                                                         const GALGAS_lstring & in_mOptionalConstantName
                                                                                          COMMA_LOCATION_ARGS) {
   cCollectionElement_foreachInstructionEnumeratedObjectElementListAST * p = NULL ;
-  macroMyNew (p, cCollectionElement_foreachInstructionEnumeratedObjectElementListAST (in_mTypeName,
-                                                                                      in_mConstantName COMMA_THERE)) ;
+  macroMyNew (p, cCollectionElement_foreachInstructionEnumeratedObjectElementListAST (in_mOptionalTypeName,
+                                                                                      in_mOptionalConstantName COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -9815,8 +9815,8 @@ void GALGAS_foreachInstructionEnumeratedObjectElementListAST::modifier_removeAtI
       outOperand1.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_foreachInstructionEnumeratedObjectElementListAST) ;
-      outOperand0 = p->mObject.mAttribute_mTypeName ;
-      outOperand1 = p->mObject.mAttribute_mConstantName ;
+      outOperand0 = p->mObject.mAttribute_mOptionalTypeName ;
+      outOperand1 = p->mObject.mAttribute_mOptionalConstantName ;
     }
   }
 }
@@ -9835,8 +9835,8 @@ void GALGAS_foreachInstructionEnumeratedObjectElementListAST::modifier_popFirst 
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_foreachInstructionEnumeratedObjectElementListAST) ;
-    outOperand0 = p->mObject.mAttribute_mTypeName ;
-    outOperand1 = p->mObject.mAttribute_mConstantName ;
+    outOperand0 = p->mObject.mAttribute_mOptionalTypeName ;
+    outOperand1 = p->mObject.mAttribute_mOptionalConstantName ;
   }
 }
 
@@ -9854,8 +9854,8 @@ void GALGAS_foreachInstructionEnumeratedObjectElementListAST::modifier_popLast (
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_foreachInstructionEnumeratedObjectElementListAST) ;
-    outOperand0 = p->mObject.mAttribute_mTypeName ;
-    outOperand1 = p->mObject.mAttribute_mConstantName ;
+    outOperand0 = p->mObject.mAttribute_mOptionalTypeName ;
+    outOperand1 = p->mObject.mAttribute_mOptionalConstantName ;
   }
 }
 
@@ -9873,8 +9873,8 @@ void GALGAS_foreachInstructionEnumeratedObjectElementListAST::method_first (GALG
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_foreachInstructionEnumeratedObjectElementListAST) ;
-    outOperand0 = p->mObject.mAttribute_mTypeName ;
-    outOperand1 = p->mObject.mAttribute_mConstantName ;
+    outOperand0 = p->mObject.mAttribute_mOptionalTypeName ;
+    outOperand1 = p->mObject.mAttribute_mOptionalConstantName ;
   }
 }
 
@@ -9892,8 +9892,8 @@ void GALGAS_foreachInstructionEnumeratedObjectElementListAST::method_last (GALGA
     outOperand1.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_foreachInstructionEnumeratedObjectElementListAST) ;
-    outOperand0 = p->mObject.mAttribute_mTypeName ;
-    outOperand1 = p->mObject.mAttribute_mConstantName ;
+    outOperand0 = p->mObject.mAttribute_mOptionalTypeName ;
+    outOperand1 = p->mObject.mAttribute_mOptionalConstantName ;
   }
 }
 
@@ -9970,18 +9970,18 @@ GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element cEnumerator_f
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cEnumerator_foreachInstructionEnumeratedObjectElementListAST::current_mTypeName (LOCATION_ARGS) const {
+GALGAS_lstring cEnumerator_foreachInstructionEnumeratedObjectElementListAST::current_mOptionalTypeName (LOCATION_ARGS) const {
   const cCollectionElement_foreachInstructionEnumeratedObjectElementListAST * p = (const cCollectionElement_foreachInstructionEnumeratedObjectElementListAST *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_foreachInstructionEnumeratedObjectElementListAST) ;
-  return p->mObject.mAttribute_mTypeName ;
+  return p->mObject.mAttribute_mOptionalTypeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cEnumerator_foreachInstructionEnumeratedObjectElementListAST::current_mConstantName (LOCATION_ARGS) const {
+GALGAS_lstring cEnumerator_foreachInstructionEnumeratedObjectElementListAST::current_mOptionalConstantName (LOCATION_ARGS) const {
   const cCollectionElement_foreachInstructionEnumeratedObjectElementListAST * p = (const cCollectionElement_foreachInstructionEnumeratedObjectElementListAST *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_foreachInstructionEnumeratedObjectElementListAST) ;
-  return p->mObject.mAttribute_mConstantName ;
+  return p->mObject.mAttribute_mOptionalConstantName ;
 }
 
 

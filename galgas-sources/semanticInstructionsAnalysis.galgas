@@ -122,8 +122,8 @@ override method @localVariableOrConstantDeclarationWithDefaultConstructorAST ana
 override method @localVariableOrConstantDeclarationWithConstructorCallAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  if mTypeName.string != "" then
-    [@unifiedTypeMap-proxy makeProxy !?ioTypeMap !mTypeName ?*]
+  if mOptionalTypeName.string != "" then
+    [@unifiedTypeMap-proxy makeProxy !?ioTypeMap !mOptionalTypeName ?*]
   end
   [mConstructorExpressions enterInSemanticContext !?ioTypeMap]
 }
@@ -134,13 +134,13 @@ override method @localVariableOrConstantDeclarationWithConstructorCallAST analyz
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap {
-  let targetType = @unifiedTypeMap-proxy.searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
+  let targetType = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mOptionalTypeName}
 #--- Analyze constructor call
   analyzeConstructorInvocation (
     !targetType
     !inAnalysisContext
     !?ioVariableMap
-    !mTypeName
+    !mOptionalTypeName
     !mConstructorName
     !mConstructorExpressions
     ?var @unifiedTypeMap-proxy returnedType
@@ -151,7 +151,7 @@ override method @localVariableOrConstantDeclarationWithConstructorCallAST analyz
 #--- Check variable type
   if targetType != returnedType then
     error mConstructorName
-    :"this constructor returns an '@" + [returnedType key] +"' object, you should use a constructor that return an '@" + mTypeName + "' object"
+    :"this constructor returns an '@" + [returnedType key] +"' object, you should use a constructor that return an '@" + mOptionalTypeName + "' object"
   end
 #--- Declare variable (or constant)
   let targetVariableCppName = "var_" + [mVariableName identifierRepresentation]
@@ -209,8 +209,8 @@ override method @localVariableDeclarationWithAssignmentAST analyzeSemanticInstru
 override method @localVariableOrConstantDeclarationWithAssignmentAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  if mTypeName.string != "" then
-    [@unifiedTypeMap-proxy makeProxy !?ioTypeMap !mTypeName ?*]
+  if mOptionalTypeName.string != "" then
+    [@unifiedTypeMap-proxy makeProxy !?ioTypeMap !mOptionalTypeName ?*]
   end
   [mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
 }
@@ -221,7 +221,7 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap {
-  let targetType = @unifiedTypeMap-proxy.searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
+  let targetType = @unifiedTypeMap-proxy.searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mOptionalTypeName}
 #--- Analyze source expression
   [mSourceExpression analyzeSemanticExpression
     !targetType
@@ -774,8 +774,11 @@ override method @inputActualNewVariableParameterAST checkAgainstFormalArgument
   end
 #--- Analyze or infer type
 
-  if mInputActualTypeName.string != "" then
-    let parameterType = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mInputActualTypeName}
+  if mInputOptionalActualTypeName.string != "" then
+    let parameterType = @unifiedTypeMap-proxy.searchKey {
+      !inAnalysisContext.mSemanticContext.mTypeMap
+      !mInputOptionalActualTypeName
+    }
     if inFormalArgumentType != parameterType then
       error mInputActualParameterName
       :"the parameter object has the '@" + [parameterType key]
@@ -826,9 +829,11 @@ override method @inputActualNewConstantParameterAST checkAgainstFormalArgument
      error mActualSelector : "the selector should be '?" + inFormalSelector + if inFormalSelector.string != "" then ":" else "" end + "'"
   end
 #--- Analyze or infer type
-
-  if mInputActualTypeName.string != "" then
-    let parameterType = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mInputActualTypeName}
+  if mInputOptionalActualTypeName.string != "" then
+    let parameterType = @unifiedTypeMap-proxy.searchKey {
+      !inAnalysisContext.mSemanticContext.mTypeMap
+      !mInputOptionalActualTypeName
+    }
     if inFormalArgumentType != parameterType then
       error mInputActualParameterName
       :"the parameter object has the '@" + [parameterType key]
@@ -2167,14 +2172,17 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
       + [[mElementList length] string]
     else
       for () in  mElementList, () in  enumerationDescriptorList do
-        if [mConstantName string] != "" then # Empty string if joker
-          if mTypeName.string != "" then
-            let foundType = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
+        if [mOptionalConstantName string] != "" then # Empty string if joker
+          if mOptionalTypeName.string != "" then
+            let foundType = @unifiedTypeMap-proxy.searchKey {
+              !inAnalysisContext.mSemanticContext.mTypeMap
+              !mOptionalTypeName
+            }
             if foundType != mEnumeratedType then
-              error mTypeName : "incorrect '@" + [foundType key] + "' type: '@" + [mEnumeratedType key] + "' type required here"
+              error mOptionalTypeName : "incorrect '@" + [foundType key] + "' type: '@" + [mEnumeratedType key] + "' type required here"
             end
           end
-          ioLocalConstantListForDoBranch += !mEnumeratedType !mConstantName !outEnumeratorCppName + ".current_" + [mEnumerationName identifierRepresentation]+ " (HERE)"
+          ioLocalConstantListForDoBranch += !mEnumeratedType !mOptionalConstantName !outEnumeratorCppName + ".current_" + [mEnumerationName identifierRepresentation]+ " (HERE)"
         end
       end
     end
@@ -2204,10 +2212,13 @@ override method @enumeratedCollectionVarInExpAST analyzeEnumeration
     ioLocalConstantListForDoBranch += !enumeratedElementType !mEnumerationVariable !outEnumeratorCppName + ".current (HERE)"
   end
 #--- Check enumeration type
-  if mEnumerationTypeName.string != "" then
-    let explicitType = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mEnumerationTypeName}
+  if mEnumerationOptionalTypeName.string != "" then
+    let explicitType = @unifiedTypeMap-proxy.searchKey {
+      !inAnalysisContext.mSemanticContext.mTypeMap
+      !mEnumerationOptionalTypeName
+    }
     if [enumeratedElementType key] != [explicitType key] then
-      error mEnumerationTypeName: "the '@" + [enumeratedElementType key] + "' type is expected here"
+      error mEnumerationOptionalTypeName: "the '@" + [enumeratedElementType key] + "' type is expected here"
     end
   end
 #---
@@ -2477,15 +2488,18 @@ override method @foreachInstructionAST analyzeSemanticInstruction
         + [[mElementList length] string]
       else
         for () in  mElementList, () in  enumerationDescriptorList do
-          if [mConstantName string] != "" then # Empty string if joker
-            if mTypeName.string != "" then
-              let foundType = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
+          if [mOptionalConstantName string] != "" then # Empty string if joker
+            if mOptionalTypeName.string != "" then
+              let foundType = @unifiedTypeMap-proxy.searchKey {
+                !inAnalysisContext.mSemanticContext.mTypeMap
+                !mOptionalTypeName
+              }
               if foundType != mEnumeratedType then
-                error mTypeName : "incorrect '@" + [foundType key] + "' type: '@" + [mEnumeratedType key] + "' type required here"
+                error mOptionalTypeName : "incorrect '@" + [foundType key] + "' type: '@" + [mEnumeratedType key] + "' type required here"
               end
             end
             [!?ioVariableMap insertUsedLocalConstant
-              !mConstantName
+              !mOptionalConstantName
               !mEnumeratedType
               !enumeratorCppName +".current_" + [mEnumerationName identifierRepresentation]+ " (HERE)"
               !enumeratorCppName +".current_" + [mEnumerationName identifierRepresentation]+ " (HERE)"

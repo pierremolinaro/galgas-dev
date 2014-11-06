@@ -382,7 +382,7 @@ class @inputActualExistingVariableParameterAST : @actualParameterAST {
 
 class @inputActualNewVariableParameterAST : @actualParameterAST {
   @lstring mActualSelector
-  @lstring mInputActualTypeName
+  @lstring mInputOptionalActualTypeName
   @lstring mInputActualParameterName
 }
 
@@ -390,7 +390,7 @@ class @inputActualNewVariableParameterAST : @actualParameterAST {
 
 class @inputActualNewConstantParameterAST : @actualParameterAST {
   @lstring mActualSelector
-  @lstring mInputActualTypeName
+  @lstring mInputOptionalActualTypeName
   @lstring mInputActualParameterName
 }
 
@@ -556,7 +556,7 @@ class @localVariableDeclarationAST : @semanticInstructionAST {
 
 class @localVariableOrConstantDeclarationWithConstructorCallAST : @semanticInstructionAST {
   @bool mIsConstant
-  @lstring mTypeName
+  @lstring mOptionalTypeName
   @lstring mVariableName
   @lstring mConstructorName
   @actualOutputExpressionList mConstructorExpressions
@@ -574,7 +574,7 @@ class @localVariableOrConstantDeclarationWithDefaultConstructorAST : @semanticIn
 
 class @localVariableOrConstantDeclarationWithAssignmentAST : @semanticInstructionAST {
   @bool mIsConstant
-  @lstring mTypeName
+  @lstring mOptionalTypeName
   @lstring mVariableName
   @semanticExpressionAST mSourceExpression
 }
@@ -631,9 +631,9 @@ class @concatInstructionAST : @semanticInstructionAST {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  S E L F    C O N C A T    I N S T R U C T I O N                          *
+#  S E L F    C O N C A T    I N S T R U C T I O N                                                                     *
 #                                                                                                                      *
-#  SELF .= EXPRESSION ;                                                     *
+#  SELF .= EXPRESSION ;                                                                                                *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -643,13 +643,13 @@ class @selfConcatInstructionAST : @semanticInstructionAST {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  ( O L D )    F O R E A C H    I N S T R U C T I O N                      *
+#  ( O L D )    F O R E A C H    I N S T R U C T I O N                                                                 *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
 list @foreachInstructionEnumeratedObjectElementListAST {
-  @lstring mTypeName %nogetter # Empty string if joker
-  @lstring mConstantName %nogetter  # Empty string if joker
+  @lstring mOptionalTypeName %nogetter # Empty string if joker
+  @lstring mOptionalConstantName %nogetter  # Empty string if joker
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -706,7 +706,7 @@ class @enumeratedCollectionImplicitVarInExpAST : @abstractEnumeratedCollectionAS
 #----------------------------------------------------------------------------------------------------------------------*
 
 class @enumeratedCollectionVarInExpAST : @abstractEnumeratedCollectionAST {
-  @lstring mEnumerationTypeName # Empty string if implicit
+  @lstring mEnumerationOptionalTypeName # Empty string if implicit
   @lstring mEnumerationVariable
   @semanticExpressionAST mEnumeratedExpression
   @location mEndOfEnumerationExpression

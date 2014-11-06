@@ -8878,7 +8878,7 @@ typeComparisonResult cPtr_localVariableOrConstantDeclarationWithAssignmentAST::d
     result = mAttribute_mIsConstant.objectCompare (p->mAttribute_mIsConstant) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mTypeName.objectCompare (p->mAttribute_mTypeName) ;
+    result = mAttribute_mOptionalTypeName.objectCompare (p->mAttribute_mOptionalTypeName) ;
   }
   if (kOperandEqual == result) {
     result = mAttribute_mVariableName.objectCompare (p->mAttribute_mVariableName) ;
@@ -8925,13 +8925,13 @@ GALGAS_semanticInstructionAST (inSourcePtr) {
 
 GALGAS_localVariableOrConstantDeclarationWithAssignmentAST GALGAS_localVariableOrConstantDeclarationWithAssignmentAST::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
                                                                                                                                         const GALGAS_bool & inAttribute_mIsConstant,
-                                                                                                                                        const GALGAS_lstring & inAttribute_mTypeName,
+                                                                                                                                        const GALGAS_lstring & inAttribute_mOptionalTypeName,
                                                                                                                                         const GALGAS_lstring & inAttribute_mVariableName,
                                                                                                                                         const GALGAS_semanticExpressionAST & inAttribute_mSourceExpression
                                                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_localVariableOrConstantDeclarationWithAssignmentAST result ;
-  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mIsConstant.isValid () && inAttribute_mTypeName.isValid () && inAttribute_mVariableName.isValid () && inAttribute_mSourceExpression.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_localVariableOrConstantDeclarationWithAssignmentAST (inAttribute_mInstructionLocation, inAttribute_mIsConstant, inAttribute_mTypeName, inAttribute_mVariableName, inAttribute_mSourceExpression COMMA_THERE)) ;
+  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mIsConstant.isValid () && inAttribute_mOptionalTypeName.isValid () && inAttribute_mVariableName.isValid () && inAttribute_mSourceExpression.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_localVariableOrConstantDeclarationWithAssignmentAST (inAttribute_mInstructionLocation, inAttribute_mIsConstant, inAttribute_mOptionalTypeName, inAttribute_mVariableName, inAttribute_mSourceExpression COMMA_THERE)) ;
   }
   return result ;
 }
@@ -8956,20 +8956,20 @@ GALGAS_bool cPtr_localVariableOrConstantDeclarationWithAssignmentAST::reader_mIs
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_localVariableOrConstantDeclarationWithAssignmentAST::reader_mTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_localVariableOrConstantDeclarationWithAssignmentAST::reader_mOptionalTypeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_localVariableOrConstantDeclarationWithAssignmentAST * p = (const cPtr_localVariableOrConstantDeclarationWithAssignmentAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_localVariableOrConstantDeclarationWithAssignmentAST) ;
-    result = p->mAttribute_mTypeName ;
+    result = p->mAttribute_mOptionalTypeName ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_localVariableOrConstantDeclarationWithAssignmentAST::reader_mTypeName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mTypeName ;
+GALGAS_lstring cPtr_localVariableOrConstantDeclarationWithAssignmentAST::reader_mOptionalTypeName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mOptionalTypeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9014,13 +9014,13 @@ GALGAS_semanticExpressionAST cPtr_localVariableOrConstantDeclarationWithAssignme
 
 cPtr_localVariableOrConstantDeclarationWithAssignmentAST::cPtr_localVariableOrConstantDeclarationWithAssignmentAST (const GALGAS_location & in_mInstructionLocation,
                                                                                                                     const GALGAS_bool & in_mIsConstant,
-                                                                                                                    const GALGAS_lstring & in_mTypeName,
+                                                                                                                    const GALGAS_lstring & in_mOptionalTypeName,
                                                                                                                     const GALGAS_lstring & in_mVariableName,
                                                                                                                     const GALGAS_semanticExpressionAST & in_mSourceExpression
                                                                                                                     COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionAST (in_mInstructionLocation COMMA_THERE),
 mAttribute_mIsConstant (in_mIsConstant),
-mAttribute_mTypeName (in_mTypeName),
+mAttribute_mOptionalTypeName (in_mOptionalTypeName),
 mAttribute_mVariableName (in_mVariableName),
 mAttribute_mSourceExpression (in_mSourceExpression) {
 }
@@ -9038,7 +9038,7 @@ void cPtr_localVariableOrConstantDeclarationWithAssignmentAST::description (C_St
   ioString << ", " ;
   mAttribute_mIsConstant.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mTypeName.description (ioString, inIndentation+1) ;
+  mAttribute_mOptionalTypeName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mVariableName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -9050,7 +9050,7 @@ void cPtr_localVariableOrConstantDeclarationWithAssignmentAST::description (C_St
 
 acPtr_class * cPtr_localVariableOrConstantDeclarationWithAssignmentAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_localVariableOrConstantDeclarationWithAssignmentAST (mAttribute_mInstructionLocation, mAttribute_mIsConstant, mAttribute_mTypeName, mAttribute_mVariableName, mAttribute_mSourceExpression COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_localVariableOrConstantDeclarationWithAssignmentAST (mAttribute_mInstructionLocation, mAttribute_mIsConstant, mAttribute_mOptionalTypeName, mAttribute_mVariableName, mAttribute_mSourceExpression COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -9113,7 +9113,7 @@ typeComparisonResult cPtr_localVariableOrConstantDeclarationWithConstructorCallA
     result = mAttribute_mIsConstant.objectCompare (p->mAttribute_mIsConstant) ;
   }
   if (kOperandEqual == result) {
-    result = mAttribute_mTypeName.objectCompare (p->mAttribute_mTypeName) ;
+    result = mAttribute_mOptionalTypeName.objectCompare (p->mAttribute_mOptionalTypeName) ;
   }
   if (kOperandEqual == result) {
     result = mAttribute_mVariableName.objectCompare (p->mAttribute_mVariableName) ;
@@ -9175,14 +9175,14 @@ GALGAS_semanticInstructionAST (inSourcePtr) {
 
 GALGAS_localVariableOrConstantDeclarationWithConstructorCallAST GALGAS_localVariableOrConstantDeclarationWithConstructorCallAST::constructor_new (const GALGAS_location & inAttribute_mInstructionLocation,
                                                                                                                                                   const GALGAS_bool & inAttribute_mIsConstant,
-                                                                                                                                                  const GALGAS_lstring & inAttribute_mTypeName,
+                                                                                                                                                  const GALGAS_lstring & inAttribute_mOptionalTypeName,
                                                                                                                                                   const GALGAS_lstring & inAttribute_mVariableName,
                                                                                                                                                   const GALGAS_lstring & inAttribute_mConstructorName,
                                                                                                                                                   const GALGAS_actualOutputExpressionList & inAttribute_mConstructorExpressions
                                                                                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_localVariableOrConstantDeclarationWithConstructorCallAST result ;
-  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mIsConstant.isValid () && inAttribute_mTypeName.isValid () && inAttribute_mVariableName.isValid () && inAttribute_mConstructorName.isValid () && inAttribute_mConstructorExpressions.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_localVariableOrConstantDeclarationWithConstructorCallAST (inAttribute_mInstructionLocation, inAttribute_mIsConstant, inAttribute_mTypeName, inAttribute_mVariableName, inAttribute_mConstructorName, inAttribute_mConstructorExpressions COMMA_THERE)) ;
+  if (inAttribute_mInstructionLocation.isValid () && inAttribute_mIsConstant.isValid () && inAttribute_mOptionalTypeName.isValid () && inAttribute_mVariableName.isValid () && inAttribute_mConstructorName.isValid () && inAttribute_mConstructorExpressions.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_localVariableOrConstantDeclarationWithConstructorCallAST (inAttribute_mInstructionLocation, inAttribute_mIsConstant, inAttribute_mOptionalTypeName, inAttribute_mVariableName, inAttribute_mConstructorName, inAttribute_mConstructorExpressions COMMA_THERE)) ;
   }
   return result ;
 }
@@ -9207,20 +9207,20 @@ GALGAS_bool cPtr_localVariableOrConstantDeclarationWithConstructorCallAST::reade
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_localVariableOrConstantDeclarationWithConstructorCallAST::reader_mTypeName (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstring GALGAS_localVariableOrConstantDeclarationWithConstructorCallAST::reader_mOptionalTypeName (UNUSED_LOCATION_ARGS) const {
   GALGAS_lstring result ;
   if (NULL != mObjectPtr) {
     const cPtr_localVariableOrConstantDeclarationWithConstructorCallAST * p = (const cPtr_localVariableOrConstantDeclarationWithConstructorCallAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_localVariableOrConstantDeclarationWithConstructorCallAST) ;
-    result = p->mAttribute_mTypeName ;
+    result = p->mAttribute_mOptionalTypeName ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring cPtr_localVariableOrConstantDeclarationWithConstructorCallAST::reader_mTypeName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mTypeName ;
+GALGAS_lstring cPtr_localVariableOrConstantDeclarationWithConstructorCallAST::reader_mOptionalTypeName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mOptionalTypeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -9283,14 +9283,14 @@ GALGAS_actualOutputExpressionList cPtr_localVariableOrConstantDeclarationWithCon
 
 cPtr_localVariableOrConstantDeclarationWithConstructorCallAST::cPtr_localVariableOrConstantDeclarationWithConstructorCallAST (const GALGAS_location & in_mInstructionLocation,
                                                                                                                               const GALGAS_bool & in_mIsConstant,
-                                                                                                                              const GALGAS_lstring & in_mTypeName,
+                                                                                                                              const GALGAS_lstring & in_mOptionalTypeName,
                                                                                                                               const GALGAS_lstring & in_mVariableName,
                                                                                                                               const GALGAS_lstring & in_mConstructorName,
                                                                                                                               const GALGAS_actualOutputExpressionList & in_mConstructorExpressions
                                                                                                                               COMMA_LOCATION_ARGS) :
 cPtr_semanticInstructionAST (in_mInstructionLocation COMMA_THERE),
 mAttribute_mIsConstant (in_mIsConstant),
-mAttribute_mTypeName (in_mTypeName),
+mAttribute_mOptionalTypeName (in_mOptionalTypeName),
 mAttribute_mVariableName (in_mVariableName),
 mAttribute_mConstructorName (in_mConstructorName),
 mAttribute_mConstructorExpressions (in_mConstructorExpressions) {
@@ -9309,7 +9309,7 @@ void cPtr_localVariableOrConstantDeclarationWithConstructorCallAST::description 
   ioString << ", " ;
   mAttribute_mIsConstant.description (ioString, inIndentation+1) ;
   ioString << ", " ;
-  mAttribute_mTypeName.description (ioString, inIndentation+1) ;
+  mAttribute_mOptionalTypeName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mVariableName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -9323,7 +9323,7 @@ void cPtr_localVariableOrConstantDeclarationWithConstructorCallAST::description 
 
 acPtr_class * cPtr_localVariableOrConstantDeclarationWithConstructorCallAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_localVariableOrConstantDeclarationWithConstructorCallAST (mAttribute_mInstructionLocation, mAttribute_mIsConstant, mAttribute_mTypeName, mAttribute_mVariableName, mAttribute_mConstructorName, mAttribute_mConstructorExpressions COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_localVariableOrConstantDeclarationWithConstructorCallAST (mAttribute_mInstructionLocation, mAttribute_mIsConstant, mAttribute_mOptionalTypeName, mAttribute_mVariableName, mAttribute_mConstructorName, mAttribute_mConstructorExpressions COMMA_THERE)) ;
   return ptr ;
 }
 

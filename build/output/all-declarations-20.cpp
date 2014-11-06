@@ -17197,8 +17197,8 @@ GALGAS_actualInputParameterListAST_2D_element GALGAS_actualInputParameterListAST
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element::GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element (void) :
-mAttribute_mTypeName (),
-mAttribute_mConstantName () {
+mAttribute_mOptionalTypeName (),
+mAttribute_mOptionalConstantName () {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -17210,8 +17210,8 @@ GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element::~ GALGAS_for
 
 GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element::GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element (const GALGAS_lstring & inOperand0,
                                                                                                                                         const GALGAS_lstring & inOperand1) :
-mAttribute_mTypeName (inOperand0),
-mAttribute_mConstantName (inOperand1) {
+mAttribute_mOptionalTypeName (inOperand0),
+mAttribute_mOptionalConstantName (inOperand1) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -17238,10 +17238,10 @@ GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element GALGAS_foreac
 typeComparisonResult GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element::objectCompare (const GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
-    result = mAttribute_mTypeName.objectCompare (inOperand.mAttribute_mTypeName) ;
+    result = mAttribute_mOptionalTypeName.objectCompare (inOperand.mAttribute_mOptionalTypeName) ;
   }
   if (result == kOperandEqual) {
-    result = mAttribute_mConstantName.objectCompare (inOperand.mAttribute_mConstantName) ;
+    result = mAttribute_mOptionalConstantName.objectCompare (inOperand.mAttribute_mOptionalConstantName) ;
   }
   return result ;
 }
@@ -17249,14 +17249,14 @@ typeComparisonResult GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_
 //---------------------------------------------------------------------------------------------------------------------*
 
 bool GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element::isValid (void) const {
-  return mAttribute_mTypeName.isValid () && mAttribute_mConstantName.isValid () ;
+  return mAttribute_mOptionalTypeName.isValid () && mAttribute_mOptionalConstantName.isValid () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element::drop (void) {
-  mAttribute_mTypeName.drop () ;
-  mAttribute_mConstantName.drop () ;
+  mAttribute_mOptionalTypeName.drop () ;
+  mAttribute_mOptionalConstantName.drop () ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -17267,23 +17267,23 @@ void GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element::descrip
   if (! isValid ()) {
     ioString << " not built" ;
   }else{
-    mAttribute_mTypeName.description (ioString, inIndentation+1) ;
+    mAttribute_mOptionalTypeName.description (ioString, inIndentation+1) ;
     ioString << ", " ;
-    mAttribute_mConstantName.description (ioString, inIndentation+1) ;
+    mAttribute_mOptionalConstantName.description (ioString, inIndentation+1) ;
   }
   ioString << ">" ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element::reader_mTypeName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mTypeName ;
+GALGAS_lstring GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element::reader_mOptionalTypeName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mOptionalTypeName ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_lstring GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element::reader_mConstantName (UNUSED_LOCATION_ARGS) const {
-  return mAttribute_mConstantName ;
+GALGAS_lstring GALGAS_foreachInstructionEnumeratedObjectElementListAST_2D_element::reader_mOptionalConstantName (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mOptionalConstantName ;
 }
 
 
