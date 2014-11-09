@@ -1272,13 +1272,14 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
 //---------------------------------------------------------------------------------------------------------------------*
 
 - (void) pmReleaseBuildTask {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   mBuildTask = nil ;
-//---
   [NSApp requestUserAttention:NSInformationalRequest] ;
-//---
   if ((! mHasSpoken) && (mErrorCount >= 40)) {
     mHasSpoken = YES ;
-    NSString * thePhrase = [NSString stringWithFormat:@"\"Oh! %@ made %lu errors\"", NSFullUserName (), mErrorCount] ;
+    NSString * thePhrase = [NSString stringWithFormat:@"Oh! %@ made %lu errors", NSFullUserName (), mErrorCount] ;
     NSSpeechSynthesizer * speech = [[NSSpeechSynthesizer alloc] initWithVoice:nil] ;
     [speech startSpeakingString:thePhrase] ;
   }

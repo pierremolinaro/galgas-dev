@@ -252,7 +252,7 @@ bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
     for () in LEXICAL_RULE_LIST do
       ![mLexicalRule generateCode !LEXIQUE_IDENTIFIER !LEXIQUE_ANALYSIS_CONTEXT]
     end
-  end block
+  end
 %if (testForInputUTF32Char (TO_UNICODE ('\0'))) { // End of source text ? 
           token.mTokenCode = kToken_ ; // Empty string code
         }else{ // Unknown input character
@@ -277,7 +277,7 @@ bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
     for () in LEXICAL_RULE_LIST do
       ![mLexicalRule generateCode !LEXIQUE_IDENTIFIER !LEXIQUE_ANALYSIS_CONTEXT]
     end
-  end block
+  end
 %if (testForInputUTF32Char (TO_UNICODE ('\0'))) { // End of source text ? 
         token.mTokenCode = kToken_ ; // Empty string code
       }else{ // Unknown input character

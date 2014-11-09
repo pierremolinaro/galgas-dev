@@ -26,7 +26,7 @@ GALGAS_string filewrapperTemplate_%![FILEWRAPPER_NAME identifierRepresentation]%
  end
  block 2 :
  !GENERATED_INSTRUCTION_STRING
- end block
+ end
 %  return GALGAS_string (result) ;
 }
 

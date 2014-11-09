@@ -176,7 +176,7 @@ end%
     for () in LEXICAL_RULE_LIST do
       ![mLexicalRule generateCocoaCode !LEXIQUE_CLASS_NAME !LEXIQUE_ANALYSIS_CONTEXT]
     end
-  end block
+  end
 %if ([self testForInputChar:'\0']) { // End of source text ? 
         mTokenCode = %!LEXIQUE_CLASS_NAME%_1_ ; // Empty string code
       }else{ // Unknown input character
@@ -200,7 +200,7 @@ end%
     for () in LEXICAL_RULE_LIST do
       ![mLexicalRule generateCocoaCode !LEXIQUE_CLASS_NAME !LEXIQUE_ANALYSIS_CONTEXT]
     end
-  end block
+  end
 %if ([self testForInputChar:'\0']) { // End of source text ? 
       mTokenCode = %!LEXIQUE_CLASS_NAME%_1_ ; // Empty string code
     }else{ // Unknown input character
