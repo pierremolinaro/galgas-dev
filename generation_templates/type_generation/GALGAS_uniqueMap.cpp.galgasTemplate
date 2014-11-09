@@ -328,7 +328,7 @@ end
                       kShadowErrorMessage
                       COMMA_THERE) ;\n%
     end
-  end block
+  end
   %}\n\n%
 end
 
@@ -377,7 +377,7 @@ for () in SEARCH_METHOD_LIST do
       %  outArgument%![IDX string]% = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
     end
     %}\n%
-  end block
+  end
   %}\n\n%
 end
 

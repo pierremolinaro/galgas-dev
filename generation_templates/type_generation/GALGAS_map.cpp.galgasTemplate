@@ -129,7 +129,7 @@ block 2 :
   %const char * kInsertErrorMessage = "@%!TYPE_IDENTIFIER% insert error: '\%K' already in map" ;\n%
   %const char * kShadowErrorMessage = "" ;\n%
   %performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;\n%
-end block
+end
 %}
 
 %for () in INSERT_METHOD_LIST do
@@ -153,7 +153,7 @@ end block
     %const char * kInsertErrorMessage = %![mErrorMessage utf8Representation]% ;\n%
     %const char * kShadowErrorMessage = %![mShadowErrorMessage utf8Representation]% ;\n%
     %performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;\n%
-  end block
+  end
   %}\n\n%
 end
 
@@ -182,7 +182,7 @@ for () in SEARCH_METHOD_LIST do
       %  outArgument%![IDX string]% = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
     end
     %}\n%
-  end block
+  end
   %}\n\n%
 end
 
@@ -206,7 +206,7 @@ for () in REMOVE_METHOD_LIST do
       %  outArgument%![IDX string]% = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
     end
     %}\n%
-  end block
+  end
   %}\n\n%
 end
 

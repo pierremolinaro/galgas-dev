@@ -1,17 +1,15 @@
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  Copyright (C) 2014, ..., 2014 Pierre Molinaro.                           *
+#  Copyright (C) 2014, ..., 2014 Pierre Molinaro.                                                                      *
 #                                                                                                                      *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                                                               *
 #                                                                                                                      *
-#  This program is free software; you can redistribute it and/or modify it  *
-#  under the terms of the GNU General Public License as published by the    *
-#  Free Software Foundation.                                                *
+#  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public   *
+#  License as published by the Free Software Foundation.                                                               *
 #                                                                                                                      *
-#  This program is distributed in the hope it will be useful, but WITHOUT   *
-#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
-#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
-#   more details.                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT ANY WARRANTY; without even the implied       *
+#  warranty of MERCHANDIBILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more        *
+#  details.                                                                                                            *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -25,7 +23,7 @@ rule <declaration_with_private>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#          Start symbol                                                        *
+#          Start symbol                                                                                                *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -41,7 +39,7 @@ rule <start_symbol>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#          Rules prototypes                                                    *
+#          Rules prototypes                                                                                            *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -53,7 +51,7 @@ rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputP
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    A T T R I B U T E    I N    C O L L E C T I O N                        *
+#    A T T R I B U T E    I N    C O L L E C T I O N                                                                   *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -82,7 +80,7 @@ rule <attribute_declaration> ?!@attributeInCollectionListAST ioAttributeInCollec
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    L I S T M A P    D E C L A R A T I O N                                 *
+#    L I S T M A P    D E C L A R A T I O N                                                                            *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -106,7 +104,7 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    A R R A Y    D E C L A R A T I O N                                     *
+#    A R R A Y    D E C L A R A T I O N                                                                                *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -133,7 +131,7 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    M A P    D E C L A R A T I O N                                         *
+#    M A P    D E C L A R A T I O N                                                                                    *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -211,6 +209,8 @@ rule <declaration>
     $or$
     $replace$
     insertOrReplaceDeclarationListAST += !@location.here
+  while
+    $;$
   end
   $}$
   ioDeclarations.mDeclarationList += !@mapDeclarationAST.new {
@@ -372,6 +372,8 @@ rule <declaration>
     end
     $}$
     mapOverrideBlockListAST += !overrideBlockName !mapOverrideBlockDescriptor1AST !mapOverrideBlockDescriptor2AST
+  while
+    $;$
   end
   $}$
 #--- Declare map
@@ -392,7 +394,7 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    C L A S S    D E C L A R A T I O N                                     *
+#    C L A S S    D E C L A R A T I O N                                                                                *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -437,23 +439,26 @@ rule <declaration>
   repeat
   while
     <attribute_declaration> !? mAttributeList
+  while
+    $;$
   end
   $}$
-  for () in  classNameList do
+  for () in classNameList do
     ioDeclarations.mDeclarationList += !@classDeclarationAST.new {
       !false # Is not predefined
       !mIsAbstract
       !mValue
       !mSuperClassName # Empty if no super class
       !classFeatureList
-      !mAttributeList}
+      !mAttributeList
+    }
   end
 }
 
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    S T R U C T    D E C L A R A T I O N                                   *
+#    S T R U C T    D E C L A R A T I O N                                                                              *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -470,6 +475,8 @@ rule <declaration>
   repeat
   while
     <attribute_declaration> !?attributeList
+  while
+    $;$
   end
   $}$
   ioDeclarations.mDeclarationList += !@structDeclarationAST.new {
@@ -481,7 +488,7 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    L I S T    D E C L A R A T I O N                                       *
+#    L I S T    D E C L A R A T I O N                                                                                  *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -498,6 +505,8 @@ rule <declaration>
   repeat
   while
     <attribute_declaration> !? mAttributeList
+  while
+    $;$
   end
   $}$
   ioDeclarations.mDeclarationList += !@listDeclarationAST.new {
@@ -508,7 +517,7 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    S O R T E D    L I S T    D E C L A R A T I O N                        *
+#    S O R T E D    L I S T    D E C L A R A T I O N                                                                   *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -540,6 +549,8 @@ rule <declaration>
   repeat
   while
     <attribute_declaration> !? mAttributeList
+  while
+    $;$
   end
   $}$
   ${$
@@ -559,7 +570,7 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    E N U M    D E C L A R A T I O N                                       *
+#    E N U M    D E C L A R A T I O N                                                                                  *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -605,7 +616,7 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    F I L E W R A P P E R    D E C L A R A T I O N                         *
+#    F I L E W R A P P E R    D E C L A R A T I O N                                                                    *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -685,7 +696,7 @@ rule <declaration_with_private>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#A B S T R A C T    C A T E G O R Y    M E T H O D    D E C L A R A T I O N *
+#A B S T R A C T    C A T E G O R Y    M E T H O D    D E C L A R A T I O N                                            *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -709,8 +720,7 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-# O V E R R I D E    A B S T R A C T    C A T E G O R Y    M E T H O D      *
-#                       D E C L A R A T I O N                               *
+#    O V E R R I D E    A B S T R A C T    C A T E G O R Y    M E T H O D   D E C L A R A T I O N                      *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -735,7 +745,7 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    E X T E N S I O N     M E T H O D    D E C L A R A T I O N             *
+#    E X T E N S I O N     M E T H O D    D E C L A R A T I O N                                                        *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -764,7 +774,7 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#O V E R R I D I N G   C A T E G O R Y   M E T H O D   D E C L A R A T I O N*
+#O V E R R I D I N G   C A T E G O R Y   M E T H O D   D E C L A R A T I O N                                           *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -794,7 +804,7 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#A B S T R A C T    C A T E G O R Y    R E A D E R    D E C L A R A T I O N *
+#A B S T R A C T    C A T E G O R Y    R E A D E R    D E C L A R A T I O N                                            *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -823,7 +833,7 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    C A T E G O R Y    R E A D E R    D E C L A R A T I O N                *
+#    C A T E G O R Y    R E A D E R    D E C L A R A T I O N                                                           *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -858,7 +868,7 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#O V E R R I D I N G   C A T E G O R Y   R E A D E R   D E C L A R A T I O N*
+#O V E R R I D I N G   C A T E G O R Y   R E A D E R   D E C L A R A T I O N                                           *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -894,8 +904,7 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-# O V E R R I D I N G    A B S T R A C T   C A T E G O R Y    R E A D E R   *
-#                     D E C L A R A T I O N                                 *
+#   O V E R R I D I N G    A B S T R A C T   C A T E G O R Y    R E A D E R    D E C L A R A T I O N                   *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -925,7 +934,7 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#A B S T R A C T    C A T E G O R Y    M O D I F I E R    D E C L A R A T I O N *
+#    A B S T R A C T    C A T E G O R Y    M O D I F I E R    D E C L A R A T I O N                                    *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -949,8 +958,7 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-# O V E R R I D E    A B S T R A C T    C A T E G O R Y    M O D I F I E R  *
-#                       D E C L A R A T I O N                               *
+#    O V E R R I D E    A B S T R A C T    C A T E G O R Y    M O D I F I E R    D E C L A R A T I O N                 *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -975,7 +983,7 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    C A T E G O R Y    M O D I F I E R    D E C L A R A T I O N            *
+#    C A T E G O R Y    M O D I F I E R    D E C L A R A T I O N                                                       *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -1004,7 +1012,7 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#O V E R R I D I N G   C A T E G O R Y   M O D I F I E R   D E C L A R A T I O N*
+#   O V E R R I D I N G   C A T E G O R Y   M O D I F I E R   D E C L A R A T I O N                                    *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -1034,7 +1042,7 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#     G R A P H                                                             *
+#     G R A P H                                                                                                        *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -1070,7 +1078,7 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#     E X T E R N    T Y P E    D E C L A R A T I O N                       *
+#     E X T E R N    T Y P E    D E C L A R A T I O N                                                                  *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 

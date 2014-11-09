@@ -555,7 +555,6 @@ rule <template_instruction>
   end
 #---
   $end$
-  $block$
   ioResultingInstructionList += !@templateBlockInstructionAST.new {
    !expression
    !@location.here

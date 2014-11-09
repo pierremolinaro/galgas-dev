@@ -221,7 +221,7 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap {
-  let targetType = @unifiedTypeMap-proxy.searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mOptionalTypeName}
+  let targetType = @unifiedTypeMap-proxy.searchKey {!inAnalysisContext.mSemanticContext.mTypeMap !mOptionalTypeName}
 #--- Analyze source expression
   [mSourceExpression analyzeSemanticExpression
     !targetType
@@ -303,7 +303,8 @@ override method @localVariableDeclarationAST analyzeSemanticInstruction
 #--- Generate instruction
   ioInstructionListForGeneration += !@localVariableDeclarationForGeneration.new {
     !targetType
-    !targetVariableCppName}
+    !targetVariableCppName
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
