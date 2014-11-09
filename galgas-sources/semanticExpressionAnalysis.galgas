@@ -1325,7 +1325,8 @@ override method @equalExpressionAST analyzeSemanticExpression
       !inAnalysisContext.mPredefinedTypes.mBoolType
       !mOperatorLocation
       !leftExpression
-      !rightExpression}
+      !rightExpression
+    }
   end
 }
 
