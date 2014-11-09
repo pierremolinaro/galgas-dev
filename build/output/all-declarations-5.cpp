@@ -14244,8 +14244,9 @@ static const char * kMapStateNames_variableMap [23] = {
 //  Map automaton actions                                                    *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const uint32_t kMapActionCount_variableMap = 4 ;
+static const uint32_t kMapActionCount_variableMap = 5 ;
 static const uint32_t kMapAction_variableMap_dropAccess = 3 ;
+static const uint32_t kMapAction_variableMap_neutralAccess = 4 ;
 static const uint32_t kMapAction_variableMap_readAccess = 0 ;
 static const uint32_t kMapAction_variableMap_readWriteAccess = 2 ;
 static const uint32_t kMapAction_variableMap_writeAccess = 1 ;
@@ -14254,8 +14255,9 @@ static const uint32_t kMapAction_variableMap_writeAccess = 1 ;
 //  Map automaton action names                                                 *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const char * kMapActionNames_variableMap [4] = {
+static const char * kMapActionNames_variableMap [5] = {
   "dropAccess",
+  "neutralAccess",
   "readAccess",
   "readWriteAccess",
   "writeAccess"
@@ -14265,122 +14267,145 @@ static const char * kMapActionNames_variableMap [4] = {
 //  Map automaton transitions                                                  *
 //---------------------------------------------------------------------------------------------------------------------*
 
-static const cMapAutomatonTransition kMapTransitions_variableMap [23 * 4] = {
+static const cMapAutomatonTransition kMapTransitions_variableMap [23 * 5] = {
 // State 'usedLocalConstant', index 0 
   {kMapState_variableMap_usedLocalConstant /* 0 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
   {kMapState_variableMap_usedLocalConstant /* 0 */, kMapAutomatonIssueError, "a constant cannot be written"}, // for action 'writeAccess', (index 1)
   {kMapState_variableMap_usedLocalConstant /* 0 */, kMapAutomatonIssueError, "a constant cannot be written"}, // for action 'readWriteAccess', (index 2)
   {kMapState_variableMap_usedLocalConstant /* 0 */, kMapAutomatonIssueError, "a constant cannot be drop"}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_usedLocalConstant /* 0 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
 // State 'localConstant', index 1 
   {kMapState_variableMap_usedLocalConstant /* 0 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
   {kMapState_variableMap_usedLocalConstant /* 0 */, kMapAutomatonIssueError, "a constant cannot be written"}, // for action 'writeAccess', (index 1)
   {kMapState_variableMap_usedLocalConstant /* 0 */, kMapAutomatonIssueError, "a constant cannot be written"}, // for action 'readWriteAccess', (index 2)
   {kMapState_variableMap_usedLocalConstant /* 0 */, kMapAutomatonIssueError, "a constant cannot be drop"}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_localConstant /* 1 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
 // State 'undefinedLocalConstant', index 2 
   {kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapAutomatonIssueError, "the constant is undefined"}, // for action 'readAccess', (index 0)
   {kMapState_variableMap_localConstant /* 1 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
   {kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapAutomatonIssueError, "the constant is undefined"}, // for action 'readWriteAccess', (index 2)
   {kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapAutomatonIssueError, "the constant is undefined"}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_undefinedLocalConstant /* 2 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
 // State 'undefinedLocalVariable', index 3 
   {kMapState_variableMap_undefinedLocalVariable /* 3 */, kMapAutomatonIssueError, "an undefined local variable cannot be read"}, // for action 'readAccess', (index 0)
   {kMapState_variableMap_definedLocalVariable /* 4 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
   {kMapState_variableMap_undefinedLocalVariable /* 3 */, kMapAutomatonIssueError, "an undefined local variable cannot be read"}, // for action 'readWriteAccess', (index 2)
   {kMapState_variableMap_undefinedLocalVariable /* 3 */, kMapAutomatonIssueWarning, "the local variable has no value"}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_undefinedLocalVariable /* 3 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
 // State 'definedLocalVariable', index 4 
   {kMapState_variableMap_usedLocalVariable /* 5 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
   {kMapState_variableMap_definedLocalVariable /* 4 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
   {kMapState_variableMap_usedLocalVariable /* 5 */, kMapAutomatonNoIssue, ""}, // for action 'readWriteAccess', (index 2)
   {kMapState_variableMap_droppedLocalVariable /* 6 */, kMapAutomatonIssueWarning, "the local variable has been dropped without any read"}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_definedLocalVariable /* 4 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
 // State 'usedLocalVariable', index 5 
   {kMapState_variableMap_usedLocalVariable /* 5 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
   {kMapState_variableMap_definedLocalVariable /* 4 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
   {kMapState_variableMap_definedLocalVariable /* 4 */, kMapAutomatonNoIssue, ""}, // for action 'readWriteAccess', (index 2)
   {kMapState_variableMap_droppedLocalVariable /* 6 */, kMapAutomatonNoIssue, ""}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_usedLocalVariable /* 5 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
 // State 'droppedLocalVariable', index 6 
   {kMapState_variableMap_droppedLocalVariable /* 6 */, kMapAutomatonIssueError, "a dropped local variable cannot be read"}, // for action 'readAccess', (index 0)
   {kMapState_variableMap_definedLocalVariable /* 4 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
   {kMapState_variableMap_definedLocalVariable /* 4 */, kMapAutomatonIssueError, "a dropped local variable cannot be read"}, // for action 'readWriteAccess', (index 2)
   {kMapState_variableMap_droppedLocalVariable /* 6 */, kMapAutomatonIssueWarning, "the local variable is already dropped"}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_droppedLocalVariable /* 6 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
 // State 'undefinedOutputFormalArgument', index 7 
   {kMapState_variableMap_undefinedOutputFormalArgument /* 7 */, kMapAutomatonIssueError, "an undefined output formal parameter cannot be read"}, // for action 'readAccess', (index 0)
   {kMapState_variableMap_definedOutputFormalArgument /* 8 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
   {kMapState_variableMap_undefinedOutputFormalArgument /* 7 */, kMapAutomatonIssueError, "an undefined output formal parameter cannot be read"}, // for action 'readWriteAccess', (index 2)
   {kMapState_variableMap_undefinedOutputFormalArgument /* 7 */, kMapAutomatonIssueWarning, "the output formal parameter has no value"}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_undefinedOutputFormalArgument /* 7 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
 // State 'definedOutputFormalArgument', index 8 
   {kMapState_variableMap_definedOutputFormalArgument /* 8 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
   {kMapState_variableMap_definedOutputFormalArgument /* 8 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
   {kMapState_variableMap_definedOutputFormalArgument /* 8 */, kMapAutomatonNoIssue, ""}, // for action 'readWriteAccess', (index 2)
   {kMapState_variableMap_undefinedOutputFormalArgument /* 7 */, kMapAutomatonNoIssue, ""}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_definedOutputFormalArgument /* 8 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
 // State 'unusedInputOutputFormalArgument', index 9 
   {kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
   {kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
   {kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapAutomatonNoIssue, ""}, // for action 'readWriteAccess', (index 2)
   {kMapState_variableMap_droppedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_unusedInputOutputFormalArgument /* 9 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
 // State 'usedInputOutputFormalArgument', index 10 
   {kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
   {kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
   {kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapAutomatonNoIssue, ""}, // for action 'readWriteAccess', (index 2)
   {kMapState_variableMap_droppedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
 // State 'droppedInputOutputFormalArgument', index 11 
   {kMapState_variableMap_droppedInputOutputFormalArgument /* 11 */, kMapAutomatonIssueError, "a dropped input/output formal argument cannot be read"}, // for action 'readAccess', (index 0)
   {kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
   {kMapState_variableMap_droppedInputOutputFormalArgument /* 11 */, kMapAutomatonIssueError, "a dropped input/output formal argument cannot be read"}, // for action 'readWriteAccess', (index 2)
   {kMapState_variableMap_droppedInputOutputFormalArgument /* 11 */, kMapAutomatonIssueWarning, "the input/output formal argument is already dropped"}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_droppedInputOutputFormalArgument /* 11 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
 // State 'inputOutputFormalArgumentDeclaredAsUnused', index 12 
   {kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapAutomatonIssueWarning, "the input/output formal parameter has been declared as unused"}, // for action 'readAccess', (index 0)
   {kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapAutomatonIssueWarning, "the input/output formal parameter has been declared as unused"}, // for action 'writeAccess', (index 1)
   {kMapState_variableMap_usedInputOutputFormalArgument /* 10 */, kMapAutomatonIssueWarning, "the input/output formal parameter has been declared as unused"}, // for action 'readWriteAccess', (index 2)
   {kMapState_variableMap_droppedInputOutputFormalArgument /* 11 */, kMapAutomatonIssueWarning, "the input/output formal parameter has been declared as unused"}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_inputOutputFormalArgumentDeclaredAsUnused /* 12 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
 // State 'constantInputFormalArgument', index 13 
   {kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
   {kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapAutomatonIssueError, "a constant input formal parameter cannot be written"}, // for action 'writeAccess', (index 1)
   {kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapAutomatonIssueError, "a constant input formal parameter cannot be written"}, // for action 'readWriteAccess', (index 2)
   {kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapAutomatonIssueError, "a constant input formal parameter cannot be dropped"}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_constantInputFormalArgument /* 13 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
 // State 'usedConstantInputFormalArgument', index 14 
   {kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
   {kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapAutomatonIssueError, "a constant input formal parameter cannot be written"}, // for action 'writeAccess', (index 1)
   {kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapAutomatonIssueError, "a constant input formal parameter cannot be written"}, // for action 'readWriteAccess', (index 2)
   {kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapAutomatonIssueError, "a constant input formal parameter cannot be dropped"}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
 // State 'constantInputFormalArgumentDeclaredAsUnused', index 15 
   {kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapAutomatonIssueWarning, "the constant input formal parameter is declared as unused"}, // for action 'readAccess', (index 0)
   {kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapAutomatonIssueError, "a constant input formal parameter cannot be written"}, // for action 'writeAccess', (index 1)
   {kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapAutomatonIssueError, "a constant input formal parameter cannot be written"}, // for action 'readWriteAccess', (index 2)
   {kMapState_variableMap_usedConstantInputFormalArgument /* 14 */, kMapAutomatonIssueError, "a constant input formal parameter cannot be dropped"}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_constantInputFormalArgumentDeclaredAsUnused /* 15 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
 // State 'inputFormalParameter', index 16 
   {kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
   {kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
   {kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapAutomatonNoIssue, ""}, // for action 'readWriteAccess', (index 2)
   {kMapState_variableMap_droppedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_inputFormalParameter /* 16 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
 // State 'usedInputFormalArgument', index 17 
   {kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
   {kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
   {kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapAutomatonNoIssue, ""}, // for action 'readWriteAccess', (index 2)
   {kMapState_variableMap_droppedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
 // State 'droppedInputFormalArgument', index 18 
   {kMapState_variableMap_droppedInputFormalArgument /* 18 */, kMapAutomatonIssueError, "a dropped input formal parameter cannot be read"}, // for action 'readAccess', (index 0)
   {kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
   {kMapState_variableMap_droppedInputFormalArgument /* 18 */, kMapAutomatonIssueError, "a dropped input formal parameter cannot be read"}, // for action 'readWriteAccess', (index 2)
   {kMapState_variableMap_droppedInputFormalArgument /* 18 */, kMapAutomatonIssueWarning, "the input formal parameter is already dropped"}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_droppedInputFormalArgument /* 18 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
 // State 'inputFormalArgumentDeclaredAsUnused', index 19 
   {kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapAutomatonIssueWarning, "the input formal parameter is declared as unused"}, // for action 'readAccess', (index 0)
   {kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapAutomatonIssueWarning, "the input formal parameter is declared as unused"}, // for action 'writeAccess', (index 1)
   {kMapState_variableMap_usedInputFormalArgument /* 17 */, kMapAutomatonIssueWarning, "the input formal parameter is declared as unused"}, // for action 'readWriteAccess', (index 2)
   {kMapState_variableMap_droppedInputFormalArgument /* 18 */, kMapAutomatonIssueWarning, "the input formal parameter is declared as unused"}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_inputFormalArgumentDeclaredAsUnused /* 19 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
 // State 'currentInstanceAttribute', index 20 
   {kMapState_variableMap_currentInstanceAttribute /* 20 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
   {kMapState_variableMap_currentInstanceAttribute /* 20 */, kMapAutomatonIssueError, "an attribute cannot be written within a method or a reader"}, // for action 'writeAccess', (index 1)
   {kMapState_variableMap_currentInstanceAttribute /* 20 */, kMapAutomatonIssueError, "an attribute cannot be modified within a method or a reader"}, // for action 'readWriteAccess', (index 2)
   {kMapState_variableMap_currentInstanceAttribute /* 20 */, kMapAutomatonIssueError, "an attribute cannot be dropped within a method or a reader"}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_currentInstanceAttribute /* 20 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
 // State 'currentInstanceAttributeInModifier', index 21 
   {kMapState_variableMap_currentInstanceAttributeInModifier /* 21 */, kMapAutomatonNoIssue, ""}, // for action 'readAccess', (index 0)
   {kMapState_variableMap_currentInstanceAttributeInModifier /* 21 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
   {kMapState_variableMap_currentInstanceAttributeInModifier /* 21 */, kMapAutomatonNoIssue, ""}, // for action 'readWriteAccess', (index 2)
   {kMapState_variableMap_currentInstanceDroppedAttributeInModifier /* 22 */, kMapAutomatonNoIssue, ""}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_currentInstanceAttributeInModifier /* 21 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
 // State 'currentInstanceDroppedAttributeInModifier', index 22 
   {kMapState_variableMap_currentInstanceDroppedAttributeInModifier /* 22 */, kMapAutomatonIssueError, "the attribute cannot be read, it has been dropped"}, // for action 'readAccess', (index 0)
   {kMapState_variableMap_currentInstanceAttributeInModifier /* 21 */, kMapAutomatonNoIssue, ""}, // for action 'writeAccess', (index 1)
   {kMapState_variableMap_currentInstanceDroppedAttributeInModifier /* 22 */, kMapAutomatonIssueError, "the attribute cannot be read/written, it has been dropped"}, // for action 'readWriteAccess', (index 2)
   {kMapState_variableMap_currentInstanceDroppedAttributeInModifier /* 22 */, kMapAutomatonIssueWarning, "the attribute is already dropped"}, // for action 'dropAccess', (index 3)
+  {kMapState_variableMap_currentInstanceDroppedAttributeInModifier /* 22 */, kMapAutomatonNoIssue, ""}, // for action 'neutralAccess', (index 4)
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -15084,6 +15109,42 @@ void GALGAS_variableMap::modifier_searchForDropAccess (GALGAS_lstring inKey,
 
 //---------------------------------------------------------------------------------------------------------------------*
 
+const char * kSearchErrorMessage_variableMap_neutralAccess = "the '%K' variable is not declared" ;
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+void GALGAS_variableMap::modifier_neutralAccess (GALGAS_lstring inKey,
+                                                 GALGAS_unifiedTypeMap_2D_proxy & outArgument0,
+                                                 GALGAS_string & outArgument1,
+                                                 GALGAS_string & outArgument2,
+                                                 C_Compiler * inCompiler
+                                                 COMMA_LOCATION_ARGS) {
+  const cMapElement_variableMap * p = (const cMapElement_variableMap *) performSearch (inKey,
+                                                                                         inCompiler,
+                                                                                         kMapAction_variableMap_neutralAccess,
+                                                                                         kMapTransitions_variableMap,
+                                                                                         kMapActionCount_variableMap,
+                                                                                         kMapStateNames_variableMap,
+                                                                                         kMapActionNames_variableMap,
+                                                                                         #ifndef DO_NOT_GENERATE_CHECKINGS
+                                                                                           kMapStateCount_variableMap,
+                                                                                         #endif
+                                                                                         kSearchErrorMessage_variableMap_neutralAccess
+                                                                                         COMMA_THERE) ;
+  if (NULL == p) {
+    outArgument0.drop () ;
+    outArgument1.drop () ;
+    outArgument2.drop () ;
+  }else{
+    macroValidSharedObject (p, cMapElement_variableMap) ;
+    outArgument0 = p->mAttribute_mTypeProxy ;
+    outArgument1 = p->mAttribute_mCppName ;
+    outArgument2 = p->mAttribute_mNameForCheckingFormalParameterUsing ;
+  }
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
 GALGAS_unifiedTypeMap_2D_proxy GALGAS_variableMap::reader_mTypeProxyForKey (const GALGAS_string & inKey,
                                                                             C_Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) const {
@@ -15376,6 +15437,17 @@ GALGAS_variableMap_2D_proxy GALGAS_variableMap_2D_proxy::constructor_searchForDr
                                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_variableMap_2D_proxy result ;
   result.internalMakeRegularProxyBySearchingKey (inMap, inKey, kSearchErrorMessage_variableMap_searchForDropAccess, inCompiler COMMA_THERE) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_variableMap_2D_proxy GALGAS_variableMap_2D_proxy::constructor_neutralAccess (const GALGAS_variableMap & inMap,
+                                                                                    const GALGAS_lstring & inKey,
+                                                                                    C_Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) {
+  GALGAS_variableMap_2D_proxy result ;
+  result.internalMakeRegularProxyBySearchingKey (inMap, inKey, kSearchErrorMessage_variableMap_neutralAccess, inCompiler COMMA_THERE) ;
   return result ;
 }
 
@@ -17395,194 +17467,6 @@ GALGAS_searchMethodMap GALGAS_searchMethodMap::extractObject (const GALGAS_objec
       result = *p ;
     }else{
       inCompiler->castError ("searchMethodMap", p->dynamicTypeDescriptor () COMMA_THERE) ;
-    }  
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cMapElement_declaredMethodMap::cMapElement_declaredMethodMap (const GALGAS_lstring & inKey
-                                                              COMMA_LOCATION_ARGS) :
-cMapElement (inKey COMMA_THERE) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-bool cMapElement_declaredMethodMap::isValid (void) const {
-  return mAttribute_lkey.isValid () ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cMapElement * cMapElement_declaredMethodMap::copy (void) {
-  cMapElement * result = NULL ;
-  macroMyNew (result, cMapElement_declaredMethodMap (mAttribute_lkey COMMA_HERE)) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void cMapElement_declaredMethodMap::description (C_String & /* ioString */, const int32_t /* inIndentation */) const {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-typeComparisonResult cMapElement_declaredMethodMap::compare (const cCollectionElement * inOperand) const {
-  cMapElement_declaredMethodMap * operand = (cMapElement_declaredMethodMap *) inOperand ;
-  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_declaredMethodMap::GALGAS_declaredMethodMap (void) :
-AC_GALGAS_map () {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_declaredMethodMap::GALGAS_declaredMethodMap (const GALGAS_declaredMethodMap & inSource) :
-AC_GALGAS_map (inSource) {
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_declaredMethodMap & GALGAS_declaredMethodMap::operator = (const GALGAS_declaredMethodMap & inSource) {
-  * ((AC_GALGAS_map *) this) = inSource ;
-  return * this ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_declaredMethodMap GALGAS_declaredMethodMap::constructor_emptyMap (LOCATION_ARGS) {
-  GALGAS_declaredMethodMap result ;
-  result.makeNewEmptyMap (THERE) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_declaredMethodMap GALGAS_declaredMethodMap::constructor_mapWithMapToOverride (const GALGAS_declaredMethodMap & inMapToOverride
-                                                                                     COMMA_LOCATION_ARGS) {
-  GALGAS_declaredMethodMap result ;
-  result.makeNewEmptyMapWithMapToOverride (inMapToOverride COMMA_THERE) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_declaredMethodMap GALGAS_declaredMethodMap::reader_overriddenMap (C_Compiler * inCompiler
-                                                                         COMMA_LOCATION_ARGS) const {
-  GALGAS_declaredMethodMap result ;
-  getOverridenMap (result, inCompiler COMMA_THERE) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_declaredMethodMap::addAssign_operation (const GALGAS_lstring & inKey,
-                                                    C_Compiler * inCompiler
-                                                    COMMA_LOCATION_ARGS) {
-  cMapElement_declaredMethodMap * p = NULL ;
-  macroMyNew (p, cMapElement_declaredMethodMap (inKey COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "@declaredMethodMap insert error: '%K' already in map" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-void GALGAS_declaredMethodMap::modifier_insertKey (GALGAS_lstring inKey,
-                                                   C_Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) {
-  cMapElement_declaredMethodMap * p = NULL ;
-  macroMyNew (p, cMapElement_declaredMethodMap (inKey COMMA_HERE)) ;
-  capCollectionElement attributes ;
-  attributes.setPointer (p) ;
-  macroDetachSharedObject (p) ;
-  const char * kInsertErrorMessage = "the '%K' method is already declared in %L for this class" ;
-  const char * kShadowErrorMessage = "" ;
-  performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cMapElement_declaredMethodMap * GALGAS_declaredMethodMap::readWriteAccessForWithInstruction (C_Compiler * inCompiler,
-                                                                                             const GALGAS_string & inKey
-                                                                                             COMMA_LOCATION_ARGS) {
-  cMapElement_declaredMethodMap * result = (cMapElement_declaredMethodMap *) searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
-  macroNullOrValidSharedObject (result, cMapElement_declaredMethodMap) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-cEnumerator_declaredMethodMap::cEnumerator_declaredMethodMap (const GALGAS_declaredMethodMap & inEnumeratedObject,
-                                                              const typeEnumerationOrder inOrder) :
-cGenericAbstractEnumerator () {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_declaredMethodMap_2D_element cEnumerator_declaredMethodMap::current (LOCATION_ARGS) const {
-  const cMapElement_declaredMethodMap * p = (const cMapElement_declaredMethodMap *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement_declaredMethodMap) ;
-  return GALGAS_declaredMethodMap_2D_element (p->mAttribute_lkey) ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_lstring cEnumerator_declaredMethodMap::current_lkey (LOCATION_ARGS) const {
-  const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, cMapElement) ;
-  return p->mAttribute_lkey ;
-}
-
-
-
-//---------------------------------------------------------------------------------------------------------------------*
-//                                                                                                                     *
-//                                               @declaredMethodMap type                                               *
-//                                                                                                                     *
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor
-kTypeDescriptor_GALGAS_declaredMethodMap ("declaredMethodMap",
-                                          NULL) ;
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-const C_galgas_type_descriptor * GALGAS_declaredMethodMap::staticTypeDescriptor (void) const {
-  return & kTypeDescriptor_GALGAS_declaredMethodMap ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-AC_GALGAS_root * GALGAS_declaredMethodMap::clonedObject (void) const {
-  AC_GALGAS_root * result = NULL ;
-  if (isValid ()) {
-    macroMyNew (result, GALGAS_declaredMethodMap (*this)) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------------------------------------------------*
-
-GALGAS_declaredMethodMap GALGAS_declaredMethodMap::extractObject (const GALGAS_object & inObject,
-                                                                  C_Compiler * inCompiler
-                                                                  COMMA_LOCATION_ARGS) {
-  GALGAS_declaredMethodMap result ;
-  const GALGAS_declaredMethodMap * p = (const GALGAS_declaredMethodMap *) inObject.embeddedObject () ;
-  if (NULL != p) {
-    if (NULL != dynamic_cast <const GALGAS_declaredMethodMap *> (p)) {
-      result = *p ;
-    }else{
-      inCompiler->castError ("declaredMethodMap", p->dynamicTypeDescriptor () COMMA_THERE) ;
     }  
   }
   return result ;

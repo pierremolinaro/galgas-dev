@@ -320,15 +320,24 @@ override method @assignmentInstructionAST enterInstructionInSemanticContext
 override method @assignmentInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap {
-#--- Get target variable
+  ?!@variableMap ioVariableMap
+{
+#--- Get target variable type
   @unifiedTypeMap-proxy targetType
-  @string targetVariableCppName
-  @string nameForCheckingFormalParameterUsing
   if [mStructAttributeList length] == 0 then
-    [!?ioVariableMap searchForWriteAccess !mTargetVariableName ?targetType ?targetVariableCppName ?nameForCheckingFormalParameterUsing]
+    [!?ioVariableMap neutralAccess
+      !mTargetVariableName
+      ?targetType
+      ?*
+      ?*
+    ]
   else
-    [!?ioVariableMap searchForReadWriteAccess !mTargetVariableName ?targetType ?targetVariableCppName ?nameForCheckingFormalParameterUsing]
+    [!?ioVariableMap neutralAccess
+      !mTargetVariableName
+      ?targetType
+      ?*
+      ?*
+    ]
     for () in  mStructAttributeList do
       let attributeMap = [targetType mAttributeMap]
       [attributeMap searchKey 
@@ -349,14 +358,33 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
     ?let @semanticExpressionForGeneration expression
   ]
 #--- Check assignment type compatibility
-  checkAssignmentTypes ( !targetType ![expression mResultType] !mInstructionLocation )
+  checkAssignmentTypes (!targetType ![expression mResultType] !mInstructionLocation )
+#--- Get target variable
+  @string targetVariableCppName
+  @string nameForCheckingFormalParameterUsing
+  if [mStructAttributeList length] == 0 then
+    [!?ioVariableMap searchForWriteAccess
+      !mTargetVariableName
+      ?*
+      ?targetVariableCppName
+      ?nameForCheckingFormalParameterUsing
+    ]
+  else
+    [!?ioVariableMap searchForReadWriteAccess
+      !mTargetVariableName
+      ?*
+      ?targetVariableCppName
+      ?nameForCheckingFormalParameterUsing
+    ]
+  end
 #--- Generate instruction
   ioInstructionListForGeneration += !@assignmentInstructionForGeneration.new {
     !targetType
     !targetVariableCppName
     !nameForCheckingFormalParameterUsing
     !mStructAttributeList
-    !expression}
+    !expression
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*

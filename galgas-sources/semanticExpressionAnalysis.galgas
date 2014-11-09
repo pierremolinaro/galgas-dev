@@ -26,6 +26,7 @@ sharedmap @variableMap {
 
 #--- Used local constant
   state usedLocalConstant {
+    neutralAccess   -> usedLocalConstant
     readAccess      -> usedLocalConstant
     writeAccess     -> usedLocalConstant error "a constant cannot be written"
     readWriteAccess -> usedLocalConstant error "a constant cannot be written"
@@ -34,6 +35,7 @@ sharedmap @variableMap {
 
 #--- Local constant
   state localConstant warning "the '%K' constant value is unused" {
+    neutralAccess   -> localConstant
     readAccess      -> usedLocalConstant
     writeAccess     -> usedLocalConstant error "a constant cannot be written"
     readWriteAccess -> usedLocalConstant error "a constant cannot be written"
@@ -42,6 +44,7 @@ sharedmap @variableMap {
 
 #--- Undefined Local constant
   state undefinedLocalConstant warning "the '%K' constant value is unused" {
+    neutralAccess   -> undefinedLocalConstant
     readAccess      -> undefinedLocalConstant error "the constant is undefined"
     writeAccess     -> localConstant
     readWriteAccess -> undefinedLocalConstant error "the constant is undefined"
@@ -50,24 +53,28 @@ sharedmap @variableMap {
 
 #--- Local variable
   state undefinedLocalVariable warning "the '%K' local variable is unused" {
+    neutralAccess   -> undefinedLocalVariable
     readAccess      -> undefinedLocalVariable error "an undefined local variable cannot be read"
     writeAccess     -> definedLocalVariable
     readWriteAccess -> undefinedLocalVariable error "an undefined local variable cannot be read"
     dropAccess      -> undefinedLocalVariable warning "the local variable has no value"
   }
   state definedLocalVariable { # warning "the '%K' local variable value is unused" {
+    neutralAccess   -> definedLocalVariable
     readAccess      -> usedLocalVariable
     writeAccess     -> definedLocalVariable # warning "the value has been changed without any read"
     readWriteAccess -> usedLocalVariable
     dropAccess      -> droppedLocalVariable warning "the local variable has been dropped without any read"
   }
   state usedLocalVariable {
+    neutralAccess   -> usedLocalVariable
     readAccess      -> usedLocalVariable
     writeAccess     -> definedLocalVariable
     readWriteAccess -> definedLocalVariable
     dropAccess      -> droppedLocalVariable
   }
   state droppedLocalVariable {
+    neutralAccess   -> droppedLocalVariable
     readAccess      -> droppedLocalVariable error "a dropped local variable cannot be read"
     writeAccess     -> definedLocalVariable
     readWriteAccess -> definedLocalVariable error "a dropped local variable cannot be read"
@@ -76,12 +83,14 @@ sharedmap @variableMap {
 
 #--- Output formal parameter
   state undefinedOutputFormalArgument error "the '%K' output formal parameter is undefined" {
+    neutralAccess   -> undefinedOutputFormalArgument
     readAccess      -> undefinedOutputFormalArgument error "an undefined output formal parameter cannot be read"
     writeAccess     -> definedOutputFormalArgument
     readWriteAccess -> undefinedOutputFormalArgument error "an undefined output formal parameter cannot be read"
     dropAccess      -> undefinedOutputFormalArgument warning "the output formal parameter has no value"
   }
   state definedOutputFormalArgument {
+    neutralAccess   -> definedOutputFormalArgument
     readAccess      -> definedOutputFormalArgument
     writeAccess     -> definedOutputFormalArgument
     readWriteAccess -> definedOutputFormalArgument
@@ -90,18 +99,21 @@ sharedmap @variableMap {
 
 #--- Input/Output formal parameter
   state unusedInputOutputFormalArgument warning "the '%K' input/output formal parameter is unused" {
+    neutralAccess   -> unusedInputOutputFormalArgument
     readAccess      -> usedInputOutputFormalArgument
     writeAccess     -> usedInputOutputFormalArgument
     readWriteAccess -> usedInputOutputFormalArgument
     dropAccess      -> droppedInputOutputFormalArgument
   }
   state usedInputOutputFormalArgument {
+    neutralAccess   -> usedInputOutputFormalArgument
     readAccess      -> usedInputOutputFormalArgument
     writeAccess     -> usedInputOutputFormalArgument
     readWriteAccess -> usedInputOutputFormalArgument
     dropAccess      -> droppedInputOutputFormalArgument
   }
   state droppedInputOutputFormalArgument error "the '%K' input/ouput formal argument should be valuated at the end of the routine" {
+    neutralAccess   -> droppedInputOutputFormalArgument
     readAccess      -> droppedInputOutputFormalArgument error "a dropped input/output formal argument cannot be read"
     writeAccess     -> usedInputOutputFormalArgument
     readWriteAccess -> droppedInputOutputFormalArgument error "a dropped input/output formal argument cannot be read"
@@ -110,6 +122,7 @@ sharedmap @variableMap {
 
 #--- Input/Output formal parameter declared as unused
   state inputOutputFormalArgumentDeclaredAsUnused {
+    neutralAccess   -> inputOutputFormalArgumentDeclaredAsUnused
     readAccess      -> usedInputOutputFormalArgument warning "the input/output formal parameter has been declared as unused"
     writeAccess     -> usedInputOutputFormalArgument warning "the input/output formal parameter has been declared as unused"
     readWriteAccess -> usedInputOutputFormalArgument warning "the input/output formal parameter has been declared as unused"
@@ -118,12 +131,14 @@ sharedmap @variableMap {
 
 #--- Constant input formal parameter
   state constantInputFormalArgument warning "the constant '%K' input formal parameter is not used and is not declared as unused" {
+    neutralAccess   -> constantInputFormalArgument
     readAccess      -> usedConstantInputFormalArgument
     writeAccess     -> usedConstantInputFormalArgument error "a constant input formal parameter cannot be written"
     readWriteAccess -> usedConstantInputFormalArgument error "a constant input formal parameter cannot be written"
     dropAccess      -> usedConstantInputFormalArgument error "a constant input formal parameter cannot be dropped"
   }
   state usedConstantInputFormalArgument {
+    neutralAccess   -> usedConstantInputFormalArgument
     readAccess      -> usedConstantInputFormalArgument
     writeAccess     -> usedConstantInputFormalArgument error "a constant input formal parameter cannot be written"
     readWriteAccess -> usedConstantInputFormalArgument error "a constant input formal parameter cannot be written"
@@ -132,6 +147,7 @@ sharedmap @variableMap {
 
 #--- Constant input formal parameter declared as unused
   state constantInputFormalArgumentDeclaredAsUnused {
+    neutralAccess   -> constantInputFormalArgumentDeclaredAsUnused
     readAccess      -> usedConstantInputFormalArgument warning "the constant input formal parameter is declared as unused"
     writeAccess     -> usedConstantInputFormalArgument error "a constant input formal parameter cannot be written"
     readWriteAccess -> usedConstantInputFormalArgument error "a constant input formal parameter cannot be written"
@@ -140,18 +156,21 @@ sharedmap @variableMap {
 
 #--- Input formal parameter
   state inputFormalParameter warning "the '%K' input formal parameter is not used and is not declared as unused" {
+    neutralAccess   -> inputFormalParameter
     readAccess      -> usedInputFormalArgument
     writeAccess     -> usedInputFormalArgument
     readWriteAccess -> usedInputFormalArgument
     dropAccess      -> droppedInputFormalArgument
   }
   state usedInputFormalArgument {
+    neutralAccess   -> usedInputFormalArgument
     readAccess      -> usedInputFormalArgument
     writeAccess     -> usedInputFormalArgument
     readWriteAccess -> usedInputFormalArgument
     dropAccess      -> droppedInputFormalArgument
   }
   state droppedInputFormalArgument {
+    neutralAccess   -> droppedInputFormalArgument
     readAccess      -> droppedInputFormalArgument error "a dropped input formal parameter cannot be read"
     writeAccess     -> usedInputFormalArgument
     readWriteAccess -> droppedInputFormalArgument error "a dropped input formal parameter cannot be read"
@@ -160,6 +179,7 @@ sharedmap @variableMap {
 
 #--- Input formal parameter declared as unused
   state inputFormalArgumentDeclaredAsUnused {
+    neutralAccess   -> inputFormalArgumentDeclaredAsUnused
     readAccess      -> usedInputFormalArgument warning "the input formal parameter is declared as unused"
     writeAccess     -> usedInputFormalArgument warning "the input formal parameter is declared as unused"
     readWriteAccess -> usedInputFormalArgument warning "the input formal parameter is declared as unused"
@@ -168,6 +188,7 @@ sharedmap @variableMap {
 
 #--- Current instance attribute in a method or a reader
   state currentInstanceAttribute {
+    neutralAccess   -> currentInstanceAttribute
     readAccess      -> currentInstanceAttribute
     writeAccess     -> currentInstanceAttribute error "an attribute cannot be written within a method or a reader"
     readWriteAccess -> currentInstanceAttribute error "an attribute cannot be modified within a method or a reader"
@@ -176,6 +197,7 @@ sharedmap @variableMap {
 
 #--- Current instance attribute in a modifier
   state currentInstanceAttributeInModifier {
+    neutralAccess   -> currentInstanceAttributeInModifier
     readAccess      -> currentInstanceAttributeInModifier
     writeAccess     -> currentInstanceAttributeInModifier
     readWriteAccess -> currentInstanceAttributeInModifier
@@ -183,6 +205,7 @@ sharedmap @variableMap {
   }
 
   state currentInstanceDroppedAttributeInModifier warning "the '%K' attribute is in the dropped state at the end of the modifier" {
+    neutralAccess   -> currentInstanceDroppedAttributeInModifier
     readAccess      -> currentInstanceDroppedAttributeInModifier error "the attribute cannot be read, it has been dropped"
     writeAccess     -> currentInstanceAttributeInModifier
     readWriteAccess -> currentInstanceDroppedAttributeInModifier error "the attribute cannot be read/written, it has been dropped"
@@ -210,6 +233,7 @@ sharedmap @variableMap {
   search searchForWriteAccess do writeAccess error message "the '%K' variable is not declared"
   search searchForReadWriteAccess do readWriteAccess error message "the '%K' variable is not declared"
   search searchForDropAccess do dropAccess error message "the '%K' variable is not declared"
+  search neutralAccess do neutralAccess error message "the '%K' variable is not declared"
 
 #--- 'selectBlock' override definitions
   override selectBlock {
