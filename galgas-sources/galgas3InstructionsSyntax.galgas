@@ -204,8 +204,7 @@ rule <declaration>
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <semantic_instruction>
-  !@semanticInstructionAST outInstruction {
+rule <semantic_instruction> !@semanticInstructionAST outInstruction {
   $var$
   $type_name$ ?let typeName
   $identifier$ ?let variableName
@@ -214,8 +213,7 @@ rule <semantic_instruction>
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <semantic_instruction>
-  !@semanticInstructionAST outInstruction {
+rule <semantic_instruction> !@semanticInstructionAST outInstruction {
   $type_name$ ?let typeName
   $identifier$ ?let variableName
   outInstruction = @localVariableDeclarationAST.new {![typeName location] !typeName !variableName !false}
@@ -223,8 +221,7 @@ rule <semantic_instruction>
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <semantic_instruction>
-  !@semanticInstructionAST outInstruction {
+rule <semantic_instruction> !@semanticInstructionAST outInstruction {
   $var$
   $type_name$ ?let typeName
   $identifier$ ?let variableName
@@ -235,39 +232,38 @@ rule <semantic_instruction>
     !false
     !typeName
     !variableName
-    !sourceExpression}
+    !sourceExpression
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <semantic_instruction>
-  !@semanticInstructionAST outInstruction {
+rule <semantic_instruction> !@semanticInstructionAST outInstruction {
   $var$
   $identifier$ ?let variableName
   $=$
-  @semanticExpressionAST sourceExpression
-  <expression> ? sourceExpression
+  <expression> ?let @semanticExpressionAST sourceExpression
   outInstruction = @localVariableDeclarationWithAssignmentAST.new {
     ![variableName location]
     !variableName
-    !sourceExpression}
+    !sourceExpression
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <semantic_instruction>
-  !@semanticInstructionAST outInstruction {
+rule <semantic_instruction> !@semanticInstructionAST outInstruction {
   $type_name$ ?let typeName
   $identifier$ ?let variableName
   $=$
-  @semanticExpressionAST sourceExpression
-  <expression> ? sourceExpression
+  <expression> ?let @semanticExpressionAST sourceExpression
   outInstruction = @localVariableOrConstantDeclarationWithAssignmentAST.new {
     ![typeName location]
     !false
     !typeName
     !variableName
-    !sourceExpression}
+    !sourceExpression
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
