@@ -3946,6 +3946,7 @@
       isa = XCBuildConfiguration;
       buildSettings = {
       GCC_OPTIMIZATION_LEVEL = 0 ;
+      GCC_GENERATE_DEBUGGING_SYMBOLS = YES ;
       GCC_PREPROCESSOR_DEFINITIONS = ("LIBPM_MULTI_THREADING=0") ;
       GCC_WARN_UNUSED_PARAMETER = YES ;
       PRODUCT_NAME = "asl-debug" ;
