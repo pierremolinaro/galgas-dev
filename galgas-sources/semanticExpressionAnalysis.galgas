@@ -1068,10 +1068,10 @@ override method @concatExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
   @semanticExpressionForGeneration leftExpression
-  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?leftExpression]
+  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy.null !inAnalysisContext !?ioVariableMap ?leftExpression]
 #--- Right expression analysis
   @semanticExpressionForGeneration rightExpression
-  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?rightExpression]
+  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy.null !inAnalysisContext !?ioVariableMap ?rightExpression]
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   checkDiadicOperator (
@@ -1107,11 +1107,19 @@ override method @orExpressionAST analyzeSemanticExpression
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
-  @semanticExpressionForGeneration leftExpression
-  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?leftExpression]
+  [mLeftExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
 #--- Right expression analysis
-  @semanticExpressionForGeneration rightExpression
-  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?rightExpression]
+  [mRightExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?@semanticExpressionForGeneration rightExpression
+  ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   checkDiadicOperator (
@@ -1147,11 +1155,19 @@ override method @orShortExpressionAST analyzeSemanticExpression
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
-  @semanticExpressionForGeneration leftExpression
-  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?leftExpression]
+  [mLeftExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
 #--- Right expression analysis
-  @semanticExpressionForGeneration rightExpression
-  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?rightExpression]
+  [mRightExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?@semanticExpressionForGeneration rightExpression
+  ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   checkDiadicOperator (
@@ -1187,11 +1203,19 @@ override method @andExpressionAST analyzeSemanticExpression
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
-  @semanticExpressionForGeneration leftExpression
-  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?leftExpression]
+  [mLeftExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
 #--- Right expression analysis
-  @semanticExpressionForGeneration rightExpression
-  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?rightExpression]
+  [mRightExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?@semanticExpressionForGeneration rightExpression
+  ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   checkDiadicOperator (
@@ -1227,11 +1251,19 @@ override method @andShortExpressionAST analyzeSemanticExpression
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
-  @semanticExpressionForGeneration leftExpression
-  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?leftExpression]
+  [mLeftExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
 #--- Right expression analysis
-  @semanticExpressionForGeneration rightExpression
-  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?rightExpression]
+  [mRightExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?@semanticExpressionForGeneration rightExpression
+  ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   checkDiadicOperator (
@@ -1267,11 +1299,19 @@ override method @xorExpressionAST analyzeSemanticExpression
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
-  @semanticExpressionForGeneration leftExpression
-  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?leftExpression]
+  [mLeftExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
 #--- Right expression analysis
-  @semanticExpressionForGeneration rightExpression
-  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?rightExpression]
+  [mRightExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?@semanticExpressionForGeneration rightExpression
+  ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   checkDiadicOperator (
@@ -1308,12 +1348,12 @@ override method @equalExpressionAST analyzeSemanticExpression
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
   @semanticExpressionForGeneration leftExpression
-  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?leftExpression]
+  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy.null !inAnalysisContext !?ioVariableMap ?leftExpression]
+  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
 #--- Right expression analysis
   @semanticExpressionForGeneration rightExpression
-  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?rightExpression]
+  [mRightExpression analyzeSemanticExpression !leftType !inAnalysisContext !?ioVariableMap ?rightExpression]
 #--- Check operator availability
-  let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
   if [[leftType lkey] string] != [[rightType lkey] string] then
     error mOperatorLocation
@@ -1347,13 +1387,21 @@ override method @notEqualExpressionAST analyzeSemanticExpression
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
-  @semanticExpressionForGeneration leftExpression
-  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?leftExpression]
-#--- Right expression analysis
-  @semanticExpressionForGeneration rightExpression
-  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?rightExpression]
-#--- Check operator availability
+  [mLeftExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+#--- Right expression analysis
+  [mRightExpression analyzeSemanticExpression
+    !leftType
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration rightExpression
+  ]
+#--- Check operator availability
   let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
   if [[leftType lkey] string] != [[rightType lkey] string] then
     error mOperatorLocation
@@ -1386,11 +1434,19 @@ override method @lowerOrEqualExpressionAST analyzeSemanticExpression
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
-  @semanticExpressionForGeneration leftExpression
-  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?leftExpression]
+  [mLeftExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
 #--- Right expression analysis
-  @semanticExpressionForGeneration rightExpression
-  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?rightExpression]
+  [mRightExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration rightExpression
+  ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
@@ -1429,13 +1485,21 @@ override method @greaterOrEqualExpressionAST analyzeSemanticExpression
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
-  @semanticExpressionForGeneration leftExpression
-  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?leftExpression]
-#--- Right expression analysis
-  @semanticExpressionForGeneration rightExpression
-  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?rightExpression]
-#--- Check operator availability
+  [mLeftExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+#--- Right expression analysis
+  [mRightExpression analyzeSemanticExpression
+    !leftType
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration rightExpression
+  ]
+#--- Check operator availability
   let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
   if ([leftType mHandledOperatorFlags] & isComparable ()) == 0 then
     error mOperatorLocation
@@ -1472,13 +1536,21 @@ override method @strictGreaterExpressionAST analyzeSemanticExpression
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
-  @semanticExpressionForGeneration leftExpression
-  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?leftExpression]
-#--- Right expression analysis
-  @semanticExpressionForGeneration rightExpression
-  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?rightExpression]
-#--- Check operator availability
+  [mLeftExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+#--- Right expression analysis
+  [mRightExpression analyzeSemanticExpression
+    !leftType
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration rightExpression
+  ]
+#--- Check operator availability
   let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
   if ([leftType mHandledOperatorFlags] & isComparable ()) == 0 then
     error mOperatorLocation
@@ -1515,13 +1587,21 @@ override method @strictLowerExpressionAST analyzeSemanticExpression
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
-  @semanticExpressionForGeneration leftExpression
-  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?leftExpression]
-#--- Right expression analysis
-  @semanticExpressionForGeneration rightExpression
-  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?rightExpression]
-#--- Check operator availability
+  [mLeftExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
+#--- Right expression analysis
+  [mRightExpression analyzeSemanticExpression
+    !leftType
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration rightExpression
+  ]
+#--- Check operator availability
   let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
   if ([leftType mHandledOperatorFlags] & isComparable ()) == 0 then
     error mOperatorLocation
@@ -1558,11 +1638,19 @@ override method @rightShiftExpressionAST analyzeSemanticExpression
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
-  @semanticExpressionForGeneration leftExpression
-  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?leftExpression]
+  [mLeftExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
 #--- Right expression analysis
-  @semanticExpressionForGeneration rightExpression
-  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?rightExpression]
+  [mRightExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration rightExpression
+  ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
@@ -1601,11 +1689,19 @@ override method @leftShiftExpressionAST analyzeSemanticExpression
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
-  @semanticExpressionForGeneration leftExpression
-  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?leftExpression]
+  [mLeftExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
 #--- Right expression analysis
-  @semanticExpressionForGeneration rightExpression
-  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?rightExpression]
+  [mRightExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration rightExpression
+  ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   let @unifiedTypeMap-proxy rightType = [rightExpression mResultType]
@@ -1644,11 +1740,19 @@ override method @addExpressionAST analyzeSemanticExpression
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
-  @semanticExpressionForGeneration leftExpression
-  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?leftExpression]
+  [mLeftExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
 #--- Right expression analysis
-  @semanticExpressionForGeneration rightExpression
-  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?rightExpression]
+  [mRightExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?@semanticExpressionForGeneration rightExpression
+  ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   checkDiadicOperator (
@@ -1684,11 +1788,19 @@ override method @subExpressionAST analyzeSemanticExpression
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
-  @semanticExpressionForGeneration leftExpression
-  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?leftExpression]
+  [mLeftExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
 #--- Right expression analysis
-  @semanticExpressionForGeneration rightExpression
-  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?rightExpression]
+  [mRightExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?@semanticExpressionForGeneration rightExpression
+  ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   checkDiadicOperator (
@@ -1724,11 +1836,19 @@ override method @multiplicationExpressionAST analyzeSemanticExpression
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
-  @semanticExpressionForGeneration leftExpression
-  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?leftExpression]
+  [mLeftExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
 #--- Right expression analysis
-  @semanticExpressionForGeneration rightExpression
-  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?rightExpression]
+  [mRightExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?@semanticExpressionForGeneration rightExpression
+  ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   checkDiadicOperator (
@@ -1764,11 +1884,19 @@ override method @divisionExpressionAST analyzeSemanticExpression
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
-  @semanticExpressionForGeneration leftExpression
-  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?leftExpression]
+  [mLeftExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
 #--- Right expression analysis
-  @semanticExpressionForGeneration rightExpression
-  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?rightExpression]
+  [mRightExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?@semanticExpressionForGeneration rightExpression
+  ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   checkDiadicOperator (
@@ -1804,11 +1932,19 @@ override method @moduloExpressionAST analyzeSemanticExpression
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression {
 #--- Left expression analysis
-  @semanticExpressionForGeneration leftExpression
-  [mLeftExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?leftExpression]
+  [mLeftExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?let @semanticExpressionForGeneration leftExpression
+  ]
 #--- Right expression analysis
-  @semanticExpressionForGeneration rightExpression
-  [mRightExpression analyzeSemanticExpression !@unifiedTypeMap-proxy. null !inAnalysisContext !?ioVariableMap ?rightExpression]
+  [mRightExpression analyzeSemanticExpression
+    !@unifiedTypeMap-proxy.null
+    !inAnalysisContext
+    !?ioVariableMap
+    ?@semanticExpressionForGeneration rightExpression
+  ]
 #--- Check operator availability
   let @unifiedTypeMap-proxy leftType = [leftExpression mResultType]
   checkDiadicOperator (
@@ -1889,7 +2025,8 @@ override method @notExpressionAST analyzeSemanticExpression
     outExpression = @notExpressionForGeneration.new {
       !type
       !mOperatorLocation
-      !expression}
+      !expression
+    }
   end
 }
 
@@ -1930,7 +2067,8 @@ override method @structFieldAccessExpressionAST analyzeSemanticExpression
     !type
     !mOperatorLocation
     !expression
-    !mStructFieldName.string}
+    !mStructFieldName.string
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -2008,7 +2146,8 @@ override method @ifExpressionAST analyzeSemanticExpression
       !mOperatorLocation
       !if_expression
       !then_expression
-      !else_expression}
+      !else_expression
+    }
   end
 }
 
