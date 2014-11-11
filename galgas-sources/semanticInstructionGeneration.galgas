@@ -1245,7 +1245,7 @@ override method @switchInstructionForGeneration generateInstruction
     if [mExtractedAssociatedValuesForGeneration length] > 0 then
       let type = "const cEnumAssociatedValues_" + [mEnumType identifierRepresentation] + "_" + [mSwitchConstantList mValueAtIndex!0].string + " *"
       let varPtr = "extractPtr_" + mLocationIndex
-      ioGeneratedCode += "  " + type + " " + varPtr + " = dynamic_cast<" + type + "> (" + switchVar + ".unsafePointer ()) ;\n"
+      ioGeneratedCode += "  " + type + " " + varPtr + " = (" + type + ") (" + switchVar + ".unsafePointer ()) ;\n"
       for () in mExtractedAssociatedValuesForGeneration do( idx)
         ioGeneratedCode += "  const GALGAS_" + [mType identifierRepresentation] + " " + mCppName + " = " + varPtr + "->mAssociatedValue" + idx + " ;\n"
       end
