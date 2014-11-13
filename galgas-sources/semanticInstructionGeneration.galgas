@@ -1243,11 +1243,13 @@ override method @switchInstructionForGeneration generateInstruction
     [!?ioGeneratedCode incIndentation !2]
     ioGeneratedCode += "{\n"
     if [mExtractedAssociatedValuesForGeneration length] > 0 then
-      let type = "const cEnumAssociatedValues_" + [mEnumType identifierRepresentation] + "_" + [mSwitchConstantList mValueAtIndex!0].string + " *"
+      let type = "const cEnumAssociatedValues_" + [mEnumType identifierRepresentation]
+        + "_" + [mSwitchConstantList mValueAtIndex!0].string + " *"
       let varPtr = "extractPtr_" + mLocationIndex
       ioGeneratedCode += "  " + type + " " + varPtr + " = (" + type + ") (" + switchVar + ".unsafePointer ()) ;\n"
-      for () in mExtractedAssociatedValuesForGeneration do( idx)
-        ioGeneratedCode += "  const GALGAS_" + [mType identifierRepresentation] + " " + mCppName + " = " + varPtr + "->mAssociatedValue" + idx + " ;\n"
+      for () in mExtractedAssociatedValuesForGeneration do
+        ioGeneratedCode += "  const GALGAS_" + [mType identifierRepresentation] + " " + mCppName
+          + " = " + varPtr + "->mAssociatedValue" + mIndex + " ;\n"
       end
     end
     generateInstructionList (
