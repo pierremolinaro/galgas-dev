@@ -7713,7 +7713,8 @@ class cCollectionElement_extractedAssociatedValuesForGeneration : public cCollec
 
 //--- Constructor
   public : cCollectionElement_extractedAssociatedValuesForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mType,
-                                                                      const GALGAS_string & in_mCppName
+                                                                      const GALGAS_string & in_mCppName,
+                                                                      const GALGAS_uint & in_mIndex
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
@@ -7732,10 +7733,11 @@ class cCollectionElement_extractedAssociatedValuesForGeneration : public cCollec
 //---------------------------------------------------------------------------------------------------------------------*
 
 cCollectionElement_extractedAssociatedValuesForGeneration::cCollectionElement_extractedAssociatedValuesForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mType,
-                                                                                                                      const GALGAS_string & in_mCppName
+                                                                                                                      const GALGAS_string & in_mCppName,
+                                                                                                                      const GALGAS_uint & in_mIndex
                                                                                                                       COMMA_LOCATION_ARGS) :
 cCollectionElement (THERE),
-mObject (in_mType, in_mCppName) {
+mObject (in_mType, in_mCppName, in_mIndex) {
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7748,7 +7750,7 @@ bool cCollectionElement_extractedAssociatedValuesForGeneration::isValid (void) c
 
 cCollectionElement * cCollectionElement_extractedAssociatedValuesForGeneration::copy (void) {
   cCollectionElement * result = NULL ;
-  macroMyNew (result, cCollectionElement_extractedAssociatedValuesForGeneration (mObject.mAttribute_mType, mObject.mAttribute_mCppName COMMA_HERE)) ;
+  macroMyNew (result, cCollectionElement_extractedAssociatedValuesForGeneration (mObject.mAttribute_mType, mObject.mAttribute_mCppName, mObject.mAttribute_mIndex COMMA_HERE)) ;
   return result ;
 }
 
@@ -7763,6 +7765,10 @@ void cCollectionElement_extractedAssociatedValuesForGeneration::description (C_S
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mCppName" ":" ;
   mObject.mAttribute_mCppName.description (ioString, inIndentation) ;
+  ioString << "\n" ;
+  ioString.writeStringMultiple ("| ", inIndentation) ;
+  ioString << "mIndex" ":" ;
+  mObject.mAttribute_mIndex.description (ioString, inIndentation) ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -7799,13 +7805,14 @@ GALGAS_extractedAssociatedValuesForGeneration GALGAS_extractedAssociatedValuesFo
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_extractedAssociatedValuesForGeneration GALGAS_extractedAssociatedValuesForGeneration::constructor_listWithValue (const GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
-                                                                                                                        const GALGAS_string & inOperand1
+                                                                                                                        const GALGAS_string & inOperand1,
+                                                                                                                        const GALGAS_uint & inOperand2
                                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_extractedAssociatedValuesForGeneration result ;
-  if (inOperand0.isValid () && inOperand1.isValid ()) {
+  if (inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
     result.createNewEmptyList (THERE) ;
     capCollectionElement attributes ;
-    GALGAS_extractedAssociatedValuesForGeneration::makeAttributesFromObjects (attributes, inOperand0, inOperand1 COMMA_THERE) ;
+    GALGAS_extractedAssociatedValuesForGeneration::makeAttributesFromObjects (attributes, inOperand0, inOperand1, inOperand2 COMMA_THERE) ;
     result.addObject (attributes) ;
   }
   return result ;
@@ -7815,11 +7822,13 @@ GALGAS_extractedAssociatedValuesForGeneration GALGAS_extractedAssociatedValuesFo
 
 void GALGAS_extractedAssociatedValuesForGeneration::makeAttributesFromObjects (capCollectionElement & outAttributes,
                                                                                const GALGAS_unifiedTypeMap_2D_proxy & in_mType,
-                                                                               const GALGAS_string & in_mCppName
+                                                                               const GALGAS_string & in_mCppName,
+                                                                               const GALGAS_uint & in_mIndex
                                                                                COMMA_LOCATION_ARGS) {
   cCollectionElement_extractedAssociatedValuesForGeneration * p = NULL ;
   macroMyNew (p, cCollectionElement_extractedAssociatedValuesForGeneration (in_mType,
-                                                                            in_mCppName COMMA_THERE)) ;
+                                                                            in_mCppName,
+                                                                            in_mIndex COMMA_THERE)) ;
   outAttributes.setPointer (p) ;
   macroDetachSharedObject (p) ;
 }
@@ -7827,11 +7836,12 @@ void GALGAS_extractedAssociatedValuesForGeneration::makeAttributesFromObjects (c
 //---------------------------------------------------------------------------------------------------------------------*
 
 void GALGAS_extractedAssociatedValuesForGeneration::addAssign_operation (const GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
-                                                                         const GALGAS_string & inOperand1
+                                                                         const GALGAS_string & inOperand1,
+                                                                         const GALGAS_uint & inOperand2
                                                                          COMMA_LOCATION_ARGS) {
-  if (isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
+  if (isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
     cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_extractedAssociatedValuesForGeneration (inOperand0, inOperand1 COMMA_THERE)) ;
+    macroMyNew (p, cCollectionElement_extractedAssociatedValuesForGeneration (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -7843,12 +7853,13 @@ void GALGAS_extractedAssociatedValuesForGeneration::addAssign_operation (const G
 
 void GALGAS_extractedAssociatedValuesForGeneration::modifier_insertAtIndex (const GALGAS_unifiedTypeMap_2D_proxy inOperand0,
                                                                             const GALGAS_string inOperand1,
+                                                                            const GALGAS_uint inOperand2,
                                                                             const GALGAS_uint inInsertionIndex,
                                                                             C_Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) {
-  if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid ()) {
+  if (isValid () && inInsertionIndex.isValid () && inOperand0.isValid () && inOperand1.isValid () && inOperand2.isValid ()) {
     cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_extractedAssociatedValuesForGeneration (inOperand0, inOperand1 COMMA_THERE)) ;
+    macroMyNew (p, cCollectionElement_extractedAssociatedValuesForGeneration (inOperand0, inOperand1, inOperand2 COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
     macroDetachSharedObject (p) ;
@@ -7860,6 +7871,7 @@ void GALGAS_extractedAssociatedValuesForGeneration::modifier_insertAtIndex (cons
 
 void GALGAS_extractedAssociatedValuesForGeneration::modifier_removeAtIndex (GALGAS_unifiedTypeMap_2D_proxy & outOperand0,
                                                                             GALGAS_string & outOperand1,
+                                                                            GALGAS_uint & outOperand2,
                                                                             const GALGAS_uint inRemoveIndex,
                                                                             C_Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) {
@@ -7870,10 +7882,12 @@ void GALGAS_extractedAssociatedValuesForGeneration::modifier_removeAtIndex (GALG
     if (NULL == p) {
       outOperand0.drop () ;
       outOperand1.drop () ;
+      outOperand2.drop () ;
     }else{
       macroValidSharedObject (p, cCollectionElement_extractedAssociatedValuesForGeneration) ;
       outOperand0 = p->mObject.mAttribute_mType ;
       outOperand1 = p->mObject.mAttribute_mCppName ;
+      outOperand2 = p->mObject.mAttribute_mIndex ;
     }
   }
 }
@@ -7882,6 +7896,7 @@ void GALGAS_extractedAssociatedValuesForGeneration::modifier_removeAtIndex (GALG
 
 void GALGAS_extractedAssociatedValuesForGeneration::modifier_popFirst (GALGAS_unifiedTypeMap_2D_proxy & outOperand0,
                                                                        GALGAS_string & outOperand1,
+                                                                       GALGAS_uint & outOperand2,
                                                                        C_Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
@@ -7890,10 +7905,12 @@ void GALGAS_extractedAssociatedValuesForGeneration::modifier_popFirst (GALGAS_un
   if (NULL == p) {
     outOperand0.drop () ;
     outOperand1.drop () ;
+    outOperand2.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_extractedAssociatedValuesForGeneration) ;
     outOperand0 = p->mObject.mAttribute_mType ;
     outOperand1 = p->mObject.mAttribute_mCppName ;
+    outOperand2 = p->mObject.mAttribute_mIndex ;
   }
 }
 
@@ -7901,6 +7918,7 @@ void GALGAS_extractedAssociatedValuesForGeneration::modifier_popFirst (GALGAS_un
 
 void GALGAS_extractedAssociatedValuesForGeneration::modifier_popLast (GALGAS_unifiedTypeMap_2D_proxy & outOperand0,
                                                                       GALGAS_string & outOperand1,
+                                                                      GALGAS_uint & outOperand2,
                                                                       C_Compiler * inCompiler
                                                                       COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
@@ -7909,10 +7927,12 @@ void GALGAS_extractedAssociatedValuesForGeneration::modifier_popLast (GALGAS_uni
   if (NULL == p) {
     outOperand0.drop () ;
     outOperand1.drop () ;
+    outOperand2.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_extractedAssociatedValuesForGeneration) ;
     outOperand0 = p->mObject.mAttribute_mType ;
     outOperand1 = p->mObject.mAttribute_mCppName ;
+    outOperand2 = p->mObject.mAttribute_mIndex ;
   }
 }
 
@@ -7920,6 +7940,7 @@ void GALGAS_extractedAssociatedValuesForGeneration::modifier_popLast (GALGAS_uni
 
 void GALGAS_extractedAssociatedValuesForGeneration::method_first (GALGAS_unifiedTypeMap_2D_proxy & outOperand0,
                                                                   GALGAS_string & outOperand1,
+                                                                  GALGAS_uint & outOperand2,
                                                                   C_Compiler * inCompiler
                                                                   COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
@@ -7928,10 +7949,12 @@ void GALGAS_extractedAssociatedValuesForGeneration::method_first (GALGAS_unified
   if (NULL == p) {
     outOperand0.drop () ;
     outOperand1.drop () ;
+    outOperand2.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_extractedAssociatedValuesForGeneration) ;
     outOperand0 = p->mObject.mAttribute_mType ;
     outOperand1 = p->mObject.mAttribute_mCppName ;
+    outOperand2 = p->mObject.mAttribute_mIndex ;
   }
 }
 
@@ -7939,6 +7962,7 @@ void GALGAS_extractedAssociatedValuesForGeneration::method_first (GALGAS_unified
 
 void GALGAS_extractedAssociatedValuesForGeneration::method_last (GALGAS_unifiedTypeMap_2D_proxy & outOperand0,
                                                                  GALGAS_string & outOperand1,
+                                                                 GALGAS_uint & outOperand2,
                                                                  C_Compiler * inCompiler
                                                                  COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
@@ -7947,10 +7971,12 @@ void GALGAS_extractedAssociatedValuesForGeneration::method_last (GALGAS_unifiedT
   if (NULL == p) {
     outOperand0.drop () ;
     outOperand1.drop () ;
+    outOperand2.drop () ;
   }else{
     macroValidSharedObject (p, cCollectionElement_extractedAssociatedValuesForGeneration) ;
     outOperand0 = p->mObject.mAttribute_mType ;
     outOperand1 = p->mObject.mAttribute_mCppName ;
+    outOperand2 = p->mObject.mAttribute_mIndex ;
   }
 }
 
@@ -8036,6 +8062,21 @@ GALGAS_string GALGAS_extractedAssociatedValuesForGeneration::reader_mCppNameAtIn
   return result ;
 }
 
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uint GALGAS_extractedAssociatedValuesForGeneration::reader_mIndexAtIndex (const GALGAS_uint & inIndex,
+                                                                                 C_Compiler * inCompiler
+                                                                                 COMMA_LOCATION_ARGS) const {
+  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
+  cCollectionElement_extractedAssociatedValuesForGeneration * p = (cCollectionElement_extractedAssociatedValuesForGeneration *) attributes.ptr () ;
+  GALGAS_uint result ;
+  if (NULL != p) {
+    macroValidSharedObject (p, cCollectionElement_extractedAssociatedValuesForGeneration) ;
+    result = p->mObject.mAttribute_mIndex ;
+  }
+  return result ;
+}
+
 
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -8069,6 +8110,14 @@ GALGAS_string cEnumerator_extractedAssociatedValuesForGeneration::current_mCppNa
   const cCollectionElement_extractedAssociatedValuesForGeneration * p = (const cCollectionElement_extractedAssociatedValuesForGeneration *) currentObjectPtr (THERE) ;
   macroValidSharedObject (p, cCollectionElement_extractedAssociatedValuesForGeneration) ;
   return p->mObject.mAttribute_mCppName ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_uint cEnumerator_extractedAssociatedValuesForGeneration::current_mIndex (LOCATION_ARGS) const {
+  const cCollectionElement_extractedAssociatedValuesForGeneration * p = (const cCollectionElement_extractedAssociatedValuesForGeneration *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, cCollectionElement_extractedAssociatedValuesForGeneration) ;
+  return p->mObject.mAttribute_mIndex ;
 }
 
 

@@ -1181,7 +1181,7 @@ class @syntaxSendInstructionForGeneration : @syntaxInstructionForGeneration {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  S W I T C H    I N S T R U C T I O N                                     *
+#  S W I T C H    I N S T R U C T I O N                                                                                *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -1192,6 +1192,7 @@ class @syntaxSendInstructionForGeneration : @syntaxInstructionForGeneration {
 list @extractedAssociatedValuesForGeneration {
   @unifiedTypeMap-proxy mType
   @string mCppName
+  @uint mIndex
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1213,7 +1214,7 @@ class @switchInstructionForGeneration : @semanticInstructionForGeneration {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    M A P    D E C L A R A T I O N                                         *
+#    M A P    D E C L A R A T I O N                                                                                    *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 

@@ -3199,7 +3199,8 @@ override method @switchInstructionAST analyzeSemanticInstruction
 #--- Check switch expression type is and enum instance
   if [[switchExpression mResultType] mTypeKindEnum] != @typeKindEnum. enumType then
     error mEndOfSwitchExpression
-    : "the switch expression type should be an instance of an enumeration type (the '@" + [[switchExpression mResultType] key] + "' type is not an enumeration type)"
+    : "the switch expression type should be an instance of an enumeration type (the '@"
+      + [[switchExpression mResultType] key] + "' type is not an enumeration type)"
   end
 #--- Enum constant map
   let enumConstantMap = [[switchExpression mResultType] mEnumConstantMap]
@@ -3229,6 +3230,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
             :"the '" + mValue + "' constant requires " + [associatedTypeList length] + "  associated value"
             + if [associatedTypeList length] > 1 then "s" else "" end
         else
+          var associatedValueIndex = 0
           for () in associatedTypeList, () in mAssociatedValuesExtraction do
             if mValue0.string != "" then # Explicit type ?
               if [mType key] != mValue0.string then
@@ -3237,10 +3239,11 @@ override method @switchInstructionAST analyzeSemanticInstruction
             end
             if firstConstant & (mValue1.string != "") then
               let cppName = "extractedValue_" + mValue1
-              extractedAssociatedValuesForGeneration += !mType !cppName
+              extractedAssociatedValuesForGeneration += !mType !cppName !associatedValueIndex
               [!?ioVariableMap insertLocalConstant !mValue1 !mType !cppName !cppName]
             end
-          end
+            associatedValueIndex ++
+          end%for
         end
       else
         error mValue
