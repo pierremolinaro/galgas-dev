@@ -94,7 +94,7 @@ proc compileSyntaxComponentFromAST
   buildTerminalMap ( !lexiqueComponentRoot ?terminalMap )
 #--------------------------------------- Build "indexing" set
   var indexNameSet =@stringset.emptySet{}
-  for () in  [lexiqueComponentRoot mIndexingListAST] do
+  for () in [lexiqueComponentRoot mIndexingListAST] do
     indexNameSet += ![mIndexName string]
   end
   let @bool hasIndexing = not [[lexiqueComponentRoot mIndexingDirectory] isNowhere]
@@ -135,12 +135,12 @@ proc compileSyntaxComponentFromAST
         !lexiqueName
         !headerIncludeList
       ]
-      for () in  decoratedDeclarationListForGeneration do
+      for () in decoratedDeclarationListForGeneration do
         var unusedInclusionSet = @stringset. emptySet
         [mDeclaration appendDeclaration1 !?unusedInclusionSet ?let @string code]
         headerString += code
       end
-      for () in  decoratedDeclarationListForGeneration do
+      for () in decoratedDeclarationListForGeneration do
       var inclusionSet2 = @stringset. emptySet
       [mDeclaration appendDeclaration2 !false !inOutputDirectory !?inclusionSet2 ?let @string headerString2]
       headerString += headerString2
@@ -160,7 +160,7 @@ proc compileSyntaxComponentFromAST
           ![componentName string]
           !implementationIncludeList
         ]
-        for () in  decoratedDeclarationListForGeneration do
+        for () in decoratedDeclarationListForGeneration do
           implementationString += [mDeclaration appendTypeGenericImplementation]
           var unusedInclusionSet = @stringset. emptySet
           [mDeclaration appendSpecificImplementation !@unifiedTypeMap. emptyMap !?unusedInclusionSet ?let @string code]

@@ -8351,21 +8351,21 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_switchBranchesAST_2
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                         @attributeInCollectionListAST list                                          *
+//                                          @propertyInCollectionListAST list                                          *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_attributeInCollectionListAST : public AC_GALGAS_list {
+class GALGAS_propertyInCollectionListAST : public AC_GALGAS_list {
 //--------------------------------- Default constructor
-  public : GALGAS_attributeInCollectionListAST (void) ;
+  public : GALGAS_propertyInCollectionListAST (void) ;
 
 //--------------------------------- List constructor used by listmap
-  public : GALGAS_attributeInCollectionListAST (cSharedList * inSharedListPtr) ;
+  public : GALGAS_propertyInCollectionListAST (cSharedList * inSharedListPtr) ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
-                                                  const class GALGAS_lstring & in_mAttributeTypeName,
-                                                  const class GALGAS_lstring & in_mAttributeName,
+                                                  const class GALGAS_lstring & in_mPropertyTypeName,
+                                                  const class GALGAS_lstring & in_mPropertyName,
                                                   const class GALGAS_lstringlist & in_mFeatureList
                                                   COMMA_LOCATION_ARGS) ;
 
@@ -8375,20 +8375,20 @@ class GALGAS_attributeInCollectionListAST : public AC_GALGAS_list {
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_attributeInCollectionListAST extractObject (const GALGAS_object & inObject,
-                                                                     C_Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_propertyInCollectionListAST extractObject (const GALGAS_object & inObject,
+                                                                    C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_attributeInCollectionListAST constructor_emptyList (LOCATION_ARGS) ;
+  public : static GALGAS_propertyInCollectionListAST constructor_emptyList (LOCATION_ARGS) ;
 
-  public : static GALGAS_attributeInCollectionListAST constructor_listWithValue (const class GALGAS_lstring & inOperand0,
-                                                                                 const class GALGAS_lstring & inOperand1,
-                                                                                 const class GALGAS_lstringlist & inOperand2
-                                                                                 COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_propertyInCollectionListAST constructor_listWithValue (const class GALGAS_lstring & inOperand0,
+                                                                                const class GALGAS_lstring & inOperand1,
+                                                                                const class GALGAS_lstringlist & inOperand2
+                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
-  public : VIRTUAL_IN_DEBUG void dotAssign_operation (const GALGAS_attributeInCollectionListAST inOperand
+  public : VIRTUAL_IN_DEBUG void dotAssign_operation (const GALGAS_propertyInCollectionListAST inOperand
                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
@@ -8397,13 +8397,13 @@ class GALGAS_attributeInCollectionListAST : public AC_GALGAS_list {
                                                       const class GALGAS_lstringlist & inOperand2
                                                       COMMA_LOCATION_ARGS) ;
 //--------------------------------- . (concat) operator
-  public : VIRTUAL_IN_DEBUG GALGAS_attributeInCollectionListAST operator_concat (const GALGAS_attributeInCollectionListAST & inOperand
-                                                                                 COMMA_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_propertyInCollectionListAST operator_concat (const GALGAS_propertyInCollectionListAST & inOperand
+                                                                                COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- + operator
-  public : VIRTUAL_IN_DEBUG GALGAS_attributeInCollectionListAST add_operation (const GALGAS_attributeInCollectionListAST & inOperand,
-                                                                               C_Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_propertyInCollectionListAST add_operation (const GALGAS_propertyInCollectionListAST & inOperand,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Setters
@@ -8450,65 +8450,65 @@ class GALGAS_attributeInCollectionListAST : public AC_GALGAS_list {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mAttributeNameAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                               C_Compiler * inCompiler
-                                                                               COMMA_LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mAttributeTypeNameAtIndex (const class GALGAS_uint & constinOperand0,
-                                                                                   C_Compiler * inCompiler
-                                                                                   COMMA_LOCATION_ARGS) const ;
-
   public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist reader_mFeatureListAtIndex (const class GALGAS_uint & constinOperand0,
                                                                                  C_Compiler * inCompiler
                                                                                  COMMA_LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_attributeInCollectionListAST reader_subListFromIndex (const class GALGAS_uint & constinOperand0,
-                                                                                               C_Compiler * inCompiler
-                                                                                               COMMA_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mPropertyNameAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_attributeInCollectionListAST reader_subListWithRange (const class GALGAS_range & constinOperand0,
-                                                                                               C_Compiler * inCompiler
-                                                                                               COMMA_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mPropertyTypeNameAtIndex (const class GALGAS_uint & constinOperand0,
+                                                                                  C_Compiler * inCompiler
+                                                                                  COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_propertyInCollectionListAST reader_subListFromIndex (const class GALGAS_uint & constinOperand0,
+                                                                                              C_Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_propertyInCollectionListAST reader_subListWithRange (const class GALGAS_range & constinOperand0,
+                                                                                              C_Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
 //--------------------------------- Friend
 
-  friend class cEnumerator_attributeInCollectionListAST ;
+  friend class cEnumerator_propertyInCollectionListAST ;
  
-} ; // End of GALGAS_attributeInCollectionListAST class
+} ; // End of GALGAS_propertyInCollectionListAST class
 
 //---------------------------------------------------------------------------------------------------------------------*
 //   Enumerator declaration                                                    *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_attributeInCollectionListAST : public cGenericAbstractEnumerator {
-  public : cEnumerator_attributeInCollectionListAST (const GALGAS_attributeInCollectionListAST & inEnumeratedObject,
-                                                     const typeEnumerationOrder inOrder) ;
+class cEnumerator_propertyInCollectionListAST : public cGenericAbstractEnumerator {
+  public : cEnumerator_propertyInCollectionListAST (const GALGAS_propertyInCollectionListAST & inEnumeratedObject,
+                                                    const typeEnumerationOrder inOrder) ;
 
 //--- Current element access
-  public : class GALGAS_lstring current_mAttributeTypeName (LOCATION_ARGS) const ;
-  public : class GALGAS_lstring current_mAttributeName (LOCATION_ARGS) const ;
+  public : class GALGAS_lstring current_mPropertyTypeName (LOCATION_ARGS) const ;
+  public : class GALGAS_lstring current_mPropertyName (LOCATION_ARGS) const ;
   public : class GALGAS_lstringlist current_mFeatureList (LOCATION_ARGS) const ;
 //--- Current element access
-  public : class GALGAS_attributeInCollectionListAST_2D_element current (LOCATION_ARGS) const ;
+  public : class GALGAS_propertyInCollectionListAST_2D_element current (LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_attributeInCollectionListAST ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyInCollectionListAST ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                   @attributeInCollectionListAST_2D_element struct                                   *
+//                                   @propertyInCollectionListAST_2D_element struct                                    *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_attributeInCollectionListAST_2D_element : public AC_GALGAS_root {
+class GALGAS_propertyInCollectionListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
-  public : GALGAS_lstring mAttribute_mAttributeTypeName ;
-  public : GALGAS_lstring mAttribute_mAttributeName ;
+  public : GALGAS_lstring mAttribute_mPropertyTypeName ;
+  public : GALGAS_lstring mAttribute_mPropertyName ;
   public : GALGAS_lstringlist mAttribute_mFeatureList ;
 
 
@@ -8517,18 +8517,18 @@ class GALGAS_attributeInCollectionListAST_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG void drop (void) ;
 
 //--------------------------------- Default GALGAS constructor
-  public : static GALGAS_attributeInCollectionListAST_2D_element constructor_default (LOCATION_ARGS) ;
+  public : static GALGAS_propertyInCollectionListAST_2D_element constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_attributeInCollectionListAST_2D_element (void) ;
+  public : GALGAS_propertyInCollectionListAST_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_attributeInCollectionListAST_2D_element (void) ;
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_propertyInCollectionListAST_2D_element (void) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_attributeInCollectionListAST_2D_element (const GALGAS_lstring & in_mAttributeTypeName,
-                                                           const GALGAS_lstring & in_mAttributeName,
-                                                           const GALGAS_lstringlist & in_mFeatureList) ;
+  public : GALGAS_propertyInCollectionListAST_2D_element (const GALGAS_lstring & in_mPropertyTypeName,
+                                                          const GALGAS_lstring & in_mPropertyName,
+                                                          const GALGAS_lstringlist & in_mFeatureList) ;
 
 //-- Start of generic part --*
 
@@ -8536,21 +8536,21 @@ class GALGAS_attributeInCollectionListAST_2D_element : public AC_GALGAS_root {
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_attributeInCollectionListAST_2D_element extractObject (const GALGAS_object & inObject,
-                                                                                C_Compiler * inCompiler
-                                                                                COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_propertyInCollectionListAST_2D_element extractObject (const GALGAS_object & inObject,
+                                                                               C_Compiler * inCompiler
+                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_attributeInCollectionListAST_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
-                                                                                  const class GALGAS_lstring & inOperand1,
-                                                                                  const class GALGAS_lstringlist & inOperand2
-                                                                                  COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_propertyInCollectionListAST_2D_element constructor_new (const class GALGAS_lstring & inOperand0,
+                                                                                 const class GALGAS_lstring & inOperand1,
+                                                                                 const class GALGAS_lstringlist & inOperand2
+                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_attributeInCollectionListAST_2D_element & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_propertyInCollectionListAST_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -8558,22 +8558,22 @@ class GALGAS_attributeInCollectionListAST_2D_element : public AC_GALGAS_root {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mAttributeName (LOCATION_ARGS) const ;
-
-  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mAttributeTypeName (LOCATION_ARGS) const ;
-
   public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist reader_mFeatureList (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mPropertyName (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mPropertyTypeName (LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_attributeInCollectionListAST_2D_element class
+} ; // End of GALGAS_propertyInCollectionListAST_2D_element class
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_attributeInCollectionListAST_2D_element ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_propertyInCollectionListAST_2D_element ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *

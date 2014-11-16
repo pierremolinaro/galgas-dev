@@ -55,7 +55,7 @@ private proc analyzeSemanticInstructionList
 #--- Begin branch
   [!?ioVariableMap openBranch]
 #--- Declare local constants
-  for () in  inLocalConstantList do
+  for () in inLocalConstantList do
     if mNoWarningIfUnused then
       [!?ioVariableMap insertUsedLocalConstant !mName !mType !mCppName !mCppName]
     else
@@ -63,11 +63,11 @@ private proc analyzeSemanticInstructionList
     end
   end
 #--- Declare local variables
-  for () in  inLocalInitializedVariableList do
+  for () in inLocalInitializedVariableList do
     [!?ioVariableMap insertDefinedLocalVariable !mName !mType !mCppName !mCppName]
   end
 #--- Instruction list
-  for () in  inSemanticInstructionListAST do
+  for () in inSemanticInstructionListAST do
     [mInstruction analyzeSemanticInstruction
       !inAnalysisContext
       !?outInstructionListForGeneration
@@ -338,7 +338,7 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
       ?*
       ?*
     ]
-    for () in  mStructAttributeList do
+    for () in mStructAttributeList do
       let attributeMap = [targetType mAttributeMap]
       [attributeMap searchKey 
         !mValue
@@ -448,7 +448,7 @@ private proc analyzeErrorOrWarningInstruction
   outUseLocationReader = [outLocationExpression mResultType] != inAnalysisContext.mPredefinedTypes.mLocationType
   if outUseLocationReader then
     let readerMap = [[outLocationExpression mResultType] mReaderMap]
-    with "location" in  readerMap  do
+    with "location" in readerMap  do
       if [mArgumentTypeList length] != 0 then
         error inErrorLocation
         :"the " + inErrorOrWarningString + " location expression type is '@" + [[outLocationExpression mResultType] key]
@@ -508,7 +508,7 @@ override method @errorInstructionAST analyzeSemanticInstruction
   )
 #--- Handle dropped variables
   var builtVariableCppNameList =@stringlist.emptyList{}
-  for () in  mBuiltVariableList do
+  for () in mBuiltVariableList do
     @string varCppName
     [!?ioVariableMap searchForWriteAccess !mValue ?* ?varCppName ?*]
     builtVariableCppNameList += !varCppName
@@ -638,7 +638,7 @@ override method @outputInputActualParameterAST checkAgainstFormalArgument
   @string variableCppName
   [!?ioVariableMap searchForReadWriteAccess !mOutputInputActualParameterName ?var @unifiedTypeMap-proxy parameterType ?variableCppName ?*]
   var typeList = @unifiedTypeMapProxyList. listWithValue { !parameterType}
-  for () in  mStructAttributeList do
+  for () in mStructAttributeList do
     let attributeMap = [parameterType mAttributeMap]
     [attributeMap searchKey
       !mValue
@@ -1013,7 +1013,7 @@ proc analyzeRoutineArguments
   else
     outActualParameterListForGeneration = @actualParameterListForGeneration. emptyList
     var exclusiveVariableSet =@stringset.emptySet{}
-    for () in  inRoutineSignature, () in  inActualParameterList do
+    for () in inRoutineSignature, () in inActualParameterList do
       [mActualParameter checkAgainstFormalArgument
         !inAnalysisContext
         !mFormalSelector
@@ -1230,7 +1230,7 @@ override method @modifierCallInstructionAST analyzeSemanticInstruction
   @string receiverVariableCppName
   @string receiverVariableBaseName
   [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?receiverType ?receiverVariableCppName ?receiverVariableBaseName]
-  for () in  mReceiverStructAttributes do
+  for () in mReceiverStructAttributes do
     let attributeMap = [receiverType mAttributeMap]
     [attributeMap searchKey
       !mValue
@@ -1383,7 +1383,7 @@ override method @concatInstructionAST analyzeSemanticInstruction
   @string targetVariableCppName
   @string nameForCheckingFormalParameterUsing
   [!?ioVariableMap searchForReadWriteAccess !mTargetVariableName ?targetType ?targetVariableCppName ?nameForCheckingFormalParameterUsing]
-  for () in  mStructAttributeList do
+  for () in mStructAttributeList do
     let attributeMap = [targetType mAttributeMap]
     [attributeMap searchKey
       !mValue
@@ -1490,7 +1490,7 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
   @string targetVariableCppName
   @string nameForCheckingFormalParameterUsing
   [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName ?nameForCheckingFormalParameterUsing]
-  for () in  mStructAttributeList do
+  for () in mStructAttributeList do
     let attributeMap = [targetType mAttributeMap]
     [attributeMap searchKey
       !mValue
@@ -1514,7 +1514,7 @@ override method @plusEqualElementsInstructionAST analyzeSemanticInstruction # +=
     + [[mExpressions length] string] + " parameter(s)"
   else
     var effectiveParameterList =@semanticExpressionListForGeneration.emptyList{}
-    for () in  mExpressions, () in  addAssignOperatorArguments do
+    for () in mExpressions, () in addAssignOperatorArguments do
       [mExpression analyzeSemanticExpression
         !mFormalArgumentType
         !inAnalysisContext
@@ -1557,7 +1557,7 @@ override method @plusEqualExpressionInstructionAST analyzeSemanticInstruction # 
   @string targetVariableCppName
   @string nameForCheckingFormalParameterUsing
   [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName ?nameForCheckingFormalParameterUsing]
-  for () in  mStructAttributeList do
+  for () in mStructAttributeList do
     let attributeMap = [targetType mAttributeMap]
     [attributeMap searchKey
       !mValue
@@ -1628,7 +1628,7 @@ override method @selfPlusEqualElementsInstructionAST analyzeSemanticInstruction
     + [[mExpressions length] string] + " parameter(s)"
   else
     var effectiveParameterList =@semanticExpressionListForGeneration.emptyList{}
-    for () in  mExpressions, () in  addAssignOperatorArguments do
+    for () in mExpressions, () in addAssignOperatorArguments do
       [mExpression analyzeSemanticExpression
         !mFormalArgumentType
         !inAnalysisContext
@@ -1716,7 +1716,7 @@ override method @incrementInstructionAST analyzeSemanticInstruction
   @unifiedTypeMap-proxy targetType
   @string targetVariableCppName
   [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName ?*]
-  for () in  mStructAttributeList do
+  for () in mStructAttributeList do
     let attributeMap = [targetType mAttributeMap]
     [attributeMap searchKey
       !mValue
@@ -1792,7 +1792,7 @@ override method @decrementInstructionAST analyzeSemanticInstruction
   @unifiedTypeMap-proxy targetType
   @string targetVariableCppName
   [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName ?*]
-  for () in  mStructAttributeList do
+  for () in mStructAttributeList do
     let attributeMap = [targetType mAttributeMap]
     [attributeMap searchKey
       !mValue
@@ -1889,7 +1889,7 @@ override method @messageInstructionAST analyzeSemanticInstruction
 override method @logInstructionAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
-  for () in  mLogList do
+  for () in mLogList do
   [mLogExpression enterExpressionInSemanticContext !?ioTypeMap]
   end 
 }
@@ -1900,7 +1900,7 @@ override method @logInstructionAST analyzeSemanticInstruction
   ?let @analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap {
-  for () in  mLogList do
+  for () in mLogList do
   #--- Analyze source expression
     @semanticExpressionForGeneration expression
     [mLogExpression analyzeSemanticExpression
@@ -1932,7 +1932,7 @@ override method @dropInstructionAST analyzeSemanticInstruction
   ?!@variableMap ioVariableMap {
   var cppNameDropList =@stringlist.emptyList{}
   var dropTypeList = @unifiedTypeMapProxyList. emptyList
-  for () in  mDropList do
+  for () in mDropList do
     @string variableCppName
     [!?ioVariableMap searchForDropAccess !mValue ?let @unifiedTypeMap-proxy t ?variableCppName ?*]
     cppNameDropList += !variableCppName
@@ -1984,7 +1984,7 @@ private proc checkExpressionIsBoolean
       : outExpression
     end
   else
-    with "bool" in  [expressionType mReaderMap]  do
+    with "bool" in [expressionType mReaderMap]  do
       if mReturnedType != boolType then
         error inErrorLocation: "the expression type is not @bool, it handles a 'bool' reader, but it does not return a '@bool' value" : outExpression
       elsif [mArgumentTypeList length] > 0 then
@@ -2009,9 +2009,9 @@ private proc checkExpressionIsBoolean
         : outExpression
       else
         @string s = ""
-        for () in  [expressionType mReaderMap] do
+        for () in [expressionType mReaderMap] do
           s += "\n  - " + lkey
-          for () in  mArgumentTypeList do
+          for () in mArgumentTypeList do
             s += " ?" + if mFormalSelector.string != "" then mFormalSelector.string + ":" else "" end + "@" + [mFormalArgumentType key]
           end
           s += " -> @" + [mReturnedType key]
@@ -2177,7 +2177,7 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
 #--- Arguments
     if ([mElementList length] == 0) & not mEndsWithEllipsis then
       let currentTypedAttributeList = [[outEnumerationExpression mResultType] mEnumerationDescriptor]
-      for () in  currentTypedAttributeList do 
+      for () in currentTypedAttributeList do 
        [!?ioVariableMap insertUsedLocalConstant
          !@lstring.new {!mEnumerationName !mEndOfEnumerationExpression}
          !mEnumeratedType
@@ -2200,7 +2200,7 @@ override method @enumeratedCollectionCstListInExpAST analyzeEnumeration
       + " or less for enumeration: this list provides "
       + [[mElementList length] string]
     else
-      for () in  mElementList, () in  enumerationDescriptorList do
+      for () in mElementList, () in enumerationDescriptorList do
         if [mOptionalConstantName string] != "" then # Empty string if joker
           if mOptionalTypeName.string != "" then
             let foundType = @unifiedTypeMap-proxy.searchKey {
@@ -2336,7 +2336,7 @@ override method @forInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap openOverrideForRepeatBlock]
   [!?ioVariableMap openBranch]
 #--- Declare local constants
-  for () in  localConstantListForDoBranch do
+  for () in localConstantListForDoBranch do
    [!?ioVariableMap insertUsedLocalConstant !mName !mType !mCppName !mCppName]
   end
 #---
@@ -2460,7 +2460,7 @@ override method @foreachInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap closeOverride !mEndOf_after_branch]
 #--- Analyze enumerated objects
   var enumerationList =@foreachInstructionEnumeratedObjectListForGeneration.emptyList{}
-  for () in  mEnumeratedObjectList do
+  for () in mEnumeratedObjectList do
   #--- Enumeration expression
     @semanticExpressionForGeneration enumerationExpression
     [mEnumeratedExpression analyzeSemanticExpression
@@ -2482,7 +2482,7 @@ override method @foreachInstructionAST analyzeSemanticInstruction
       else
         @bool found = false
         @string s = ""
-        for () in  [[enumerationExpression mResultType] mEnumeratorVariants] while not found do
+        for () in [[enumerationExpression mResultType] mEnumeratorVariants] while not found do
           found = enumerationOrder == mValue
           s += "\n  \\" + mValue
         end
@@ -2493,7 +2493,7 @@ override method @foreachInstructionAST analyzeSemanticInstruction
   #--- Arguments
       if ([mElementList length] == 0) & not mEndsWithEllipsis then
         let currentTypedAttributeList = [[enumerationExpression mResultType] mEnumerationDescriptor]
-        for () in  currentTypedAttributeList do 
+        for () in currentTypedAttributeList do 
          [!?ioVariableMap insertUsedLocalConstant
            !@lstring.new {!mPrefix.string + mEnumerationName !mEndOfEnumerationExpression}
            !mEnumeratedType
@@ -2516,7 +2516,7 @@ override method @foreachInstructionAST analyzeSemanticInstruction
         + " or less for enumeration: this list provides "
         + [[mElementList length] string]
       else
-        for () in  mElementList, () in  enumerationDescriptorList do
+        for () in mElementList, () in enumerationDescriptorList do
           if [mOptionalConstantName string] != "" then # Empty string if joker
             if mOptionalTypeName.string != "" then
               let foundType = @unifiedTypeMap-proxy.searchKey {
@@ -2680,7 +2680,7 @@ override method @structuredCastInstructionAST enterInstructionInSemanticContext
 {
   [mCastExpression enterExpressionInSemanticContext !?ioTypeMap]
   [mElseInstructionList enterInstructionListInSemanticContext !?ioTypeMap]
-  for () in  mCastInstructionBranchList do
+  for () in mCastInstructionBranchList do
     [mInstructionList enterInstructionListInSemanticContext !?ioTypeMap]
   end
 }
@@ -2703,7 +2703,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap openOverrideForSelectBlock]
 #--- Branches
   var castBranchList =@castInstructionBranchListForGeneration.emptyList{}
-  for () in  mCastInstructionBranchList do
+  for () in mCastInstructionBranchList do
   #--- Get named type
     let type = @unifiedTypeMap-proxy. searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mTypeName}
   #--- Check named type is a descendant of receiver type
@@ -2869,7 +2869,7 @@ override method @grammarInstructionAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
   [mSourceExpression enterExpressionInSemanticContext !?ioTypeMap]
-  for () in  mActualParameterList do
+  for () in mActualParameterList do
     [mActualParameter enterParameterInSemanticContext !?ioTypeMap]
   end
 }
@@ -3010,7 +3010,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap openOverrideForSelectBlock]
 #--- 'do' branch : add attributes as constant
   var localConstantList =@localConstantList.emptyList{}
-  for () in  [receiverType mCurrentTypedAttributeList] do
+  for () in [receiverType mCurrentTypedAttributeList] do
     localConstantList +=
       !mAttributeTypeProxy
       !@lstring.new {!mPrefix.string + mAttributeName !mEndOfReceiverExpression}
@@ -3094,7 +3094,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
     ?let @string receiverVariableCppName
     ?*
   ]
-  for () in  mFieldList do
+  for () in mFieldList do
     let attributeMap = [targetType mAttributeMap]
     [attributeMap searchKey
       !mValue
@@ -3123,7 +3123,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap openOverrideForSelectBlock]
 #--- 'do' branch
   @localInitializedVariableList localInitializedVariableList = {}
-  for () in  [targetType mCurrentTypedAttributeList] do
+  for () in [targetType mCurrentTypedAttributeList] do
     localInitializedVariableList +=
       !mAttributeTypeProxy
       !@lstring.new {!mPrefix.string + mAttributeName !mEndOfReceiverExpression}
@@ -3177,7 +3177,7 @@ override method @switchInstructionAST enterInstructionInSemanticContext
   ?!@unifiedTypeMap ioTypeMap
 {
   [mSwitchExpression enterExpressionInSemanticContext !?ioTypeMap]
-  for () in  mBranches do
+  for () in mBranches do
     [mInstructions enterInstructionListInSemanticContext !?ioTypeMap]
   end
 }
@@ -3208,10 +3208,10 @@ override method @switchInstructionAST analyzeSemanticInstruction
 #--- Analyze branches
   [!?ioVariableMap openOverrideForSelectBlock]
   var switchBranchesForGeneration =@switchBranchesForGeneration.emptyList{}
-  for () in  mBranches do
+  for () in mBranches do
     @extractedAssociatedValuesForGeneration extractedAssociatedValuesForGeneration = {}
     @bool firstConstant = true
-    for () in  mSwitchConstantList do
+    for () in mSwitchConstantList do
       if [enumConstantMap hasKey ![mValue string]] then
         if [constantsNamedInSwitchInstruction hasKey ![mValue string]] then
           error mValue
@@ -3267,7 +3267,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
   let forgottenConstants = [enumConstantMap keySet] - constantsNamedInSwitchInstruction
   if [forgottenConstants count] > 0 then
     @string s = ""
-    for () in  forgottenConstants do
+    for () in forgottenConstants do
       s += "\n  - " + key
     end
     error mEndOf_switch_instruction
@@ -3326,7 +3326,7 @@ override method @matchInstructionAST analyzeSemanticInstruction
     var localConstantList =@localConstantList.emptyList{}
     var matchListForGeneration = @matchListForGeneration.emptyList{}
     if [expressionList length] == [mMatchEntryList length] then
-      for () in  expressionList, () in  mMatchEntryList do
+      for () in expressionList, () in mMatchEntryList do
         let type = [mExpression mResultType]
         if [type mTypeKindEnum] == @typeKindEnum. classType then
           if mIsType then

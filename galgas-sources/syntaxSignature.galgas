@@ -34,7 +34,7 @@ func syntaxSignatureOfInstructionList
   ?let @semanticInstructionListForGeneration inInstructionList
   ->@semanticInstructionListForGeneration outResult {
   outResult = @semanticInstructionListForGeneration. emptyList
-  for () in  inInstructionList do
+  for () in inInstructionList do
     [mInstruction appendSyntaxSignature !inPosfix !?outResult]
   end
 }
@@ -74,7 +74,7 @@ override method @repeatInstructionForGeneration appendSyntaxSignature
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration {
   let @semanticInstructionListForGeneration repeated_instructionList = syntaxSignatureOfInstructionList (!inPosfix !m_repeated_instructionList)
   var listOfSemanticInstructionListForGeneration =@listOfSemanticInstructionListForGeneration.emptyList{}
-  for () in  mListOfSemanticInstructionListForGeneration do
+  for () in mListOfSemanticInstructionListForGeneration do
     listOfSemanticInstructionListForGeneration +=
       !syntaxSignatureOfInstructionList (!inPosfix !mInstructionList)
       !mEndOfInstructionList
@@ -95,7 +95,7 @@ override method @selectInstructionForGeneration appendSyntaxSignature
   ?let @string inPosfix
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration {
   var listOfSemanticInstructionListForGeneration =@listOfSemanticInstructionListForGeneration.emptyList{}
-  for () in  mListOfSemanticInstructionListForGeneration do
+  for () in mListOfSemanticInstructionListForGeneration do
     listOfSemanticInstructionListForGeneration +=
       !syntaxSignatureOfInstructionList (!inPosfix !mInstructionList)
       !mEndOfInstructionList
@@ -153,7 +153,7 @@ func compareSyntaxSignature
   ?let @location inErrorLocation
   ->@bool outOk {
   outOk = true
-  for () ref_ in  inReferenceSignature, () test_ in  inTestedSignature while outOk do
+  for () ref_ in inReferenceSignature, () test_ in inTestedSignature while outOk do
      outOk = [ref_mInstruction compareSyntaxInstruction !test_mInstruction]
   end
   if outOk & ([inReferenceSignature length] < [inTestedSignature length]) then
@@ -247,7 +247,7 @@ override getter @repeatInstructionForGeneration compareSyntaxInstruction
         + [[[si mListOfSemanticInstructionListForGeneration] length] string]
       outOk = false
     end
-    for () ref_ in  mListOfSemanticInstructionListForGeneration, () test_ in  [si mListOfSemanticInstructionListForGeneration] while outOk do
+    for () ref_ in mListOfSemanticInstructionListForGeneration, () test_ in [si mListOfSemanticInstructionListForGeneration] while outOk do
       outOk = compareSyntaxSignature (!ref_mInstructionList !test_mInstructionList !test_mEndOfInstructionList)    
     end
   case >= @syntaxInstructionForGeneration si :
@@ -280,7 +280,7 @@ override getter @selectInstructionForGeneration compareSyntaxInstruction
         + [[[si mListOfSemanticInstructionListForGeneration] length] string]
       outOk = false
     end
-    for () ref_ in  mListOfSemanticInstructionListForGeneration, () test_ in  [si mListOfSemanticInstructionListForGeneration] while outOk do
+    for () ref_ in mListOfSemanticInstructionListForGeneration, () test_ in [si mListOfSemanticInstructionListForGeneration] while outOk do
       outOk = compareSyntaxSignature (!ref_mInstructionList !test_mInstructionList !test_mEndOfInstructionList)    
     end
   case >= @syntaxInstructionForGeneration si :

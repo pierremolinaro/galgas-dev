@@ -127,7 +127,7 @@ override getter @lexicalCurrentCharacterInputArgumentAST generateCocoaRoutineOrF
 override getter @lexicalFunctionInputArgumentAST generateCocoaRoutineOrFunctionArgument
   -> @string outGeneratedCode {
   outGeneratedCode = "scanner_cocoa_function_" + mFunctionName + " ("
-  for () in  mFunctionActualArgumentList
+  for () in mFunctionActualArgumentList
   do outGeneratedCode += [mLexicalActualInputArgument generateCocoaRoutineOrFunctionArgument]
   between outGeneratedCode += ", "
   end
@@ -204,7 +204,7 @@ override getter @lexicalStructuredSendInstructionAST generateCocoaInstructionCod
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   outGeneratedCode = ""
-  for () in  mLexicalSendSearchList do
+  for () in mLexicalSendSearchList do
     outGeneratedCode += "if (mTokenCode == 0) {\n"
     outGeneratedCode += "  mTokenCode = search_into_" + [inScannerClassName identifierRepresentation] + "_" + mSearchListName + " (mLexicalAttribute_" + mAttributeName + ") ;\n"
     outGeneratedCode += "}\n"
@@ -232,17 +232,17 @@ override getter @lexicalRepeatInstructionAST generateCocoaInstructionCode
   outGeneratedCode = "do {\n"
   [!?outGeneratedCode incIndentation !2]
 #--- Repeated instruction
-  for () in  mRepeatedInstructionList do
+  for () in mRepeatedInstructionList do
     outGeneratedCode += [mInstruction generateCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
   end
 #---
-  for () in  mLexicalWhileBranchList
+  for () in mLexicalWhileBranchList
   do
     outGeneratedCode += "if (scanningOk && ("
     outGeneratedCode += [mWhileExpression generateCocoaConditionCode !inLexiqueAnalysisContext]
     outGeneratedCode += ")) {\n"
     [!?outGeneratedCode incIndentation !2]
-    for () in  mWhileInstructionList do
+    for () in mWhileInstructionList do
       outGeneratedCode += [mInstruction generateCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
     end
     [!?outGeneratedCode decIndentation !2]
@@ -265,13 +265,13 @@ override getter @lexicalSelectInstructionAST generateCocoaInstructionCode
   -> @string outGeneratedCode {
   outGeneratedCode = ""
 #---
-  for () in  mLexicalSelectBranchList
+  for () in mLexicalSelectBranchList
   do
     outGeneratedCode += "if (scanningOk && ("
     outGeneratedCode += [mSelectExpression generateCocoaConditionCode !inLexiqueAnalysisContext]
     outGeneratedCode += ")) {\n"
     [!?outGeneratedCode incIndentation !2]
-    for () in  mSelectInstructionList do
+    for () in mSelectInstructionList do
       outGeneratedCode += [mInstruction generateCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
     end
     [!?outGeneratedCode decIndentation !2]
@@ -282,7 +282,7 @@ override getter @lexicalSelectInstructionAST generateCocoaInstructionCode
   if [mDefaultInstructionList length] > 0 then
     outGeneratedCode += "}else{\n"
     [!?outGeneratedCode incIndentation !2]
-    for () in  mDefaultInstructionList do
+    for () in mDefaultInstructionList do
       outGeneratedCode += [mInstruction generateCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
     end
     [!?outGeneratedCode decIndentation !2]
@@ -297,7 +297,7 @@ override getter @lexicalRoutineInstructionAST generateCocoaInstructionCode
   ?@lexiqueAnalysisContext inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   outGeneratedCode = "scanner_cocoa_routine_" + mRoutineName + " (& scanningOk"
-  for () in  mActualArgumentList do
+  for () in mActualArgumentList do
     outGeneratedCode += ", " + [mLexicalRoutineActualArgument generateCocoaRoutineArgument !inLexiqueAnalysisContext]
   end
   outGeneratedCode += ") ;\n"
@@ -377,7 +377,7 @@ override getter @lexicalImplicitRuleAST generateCocoaCode
   @tokenSortedlist tokenSortedList
   [[inLexiqueAnalysisContext mLexicalTokenListMap] searchKey !mListName ?* ?tokenSortedList ?*]
   outGeneratedCode = ""
-  for > () in  tokenSortedList do
+  for > () in tokenSortedList do
     outGeneratedCode += "if (scanningOk && [self testForInputString:@"
     outGeneratedCode += [mName utf8Representation]
     outGeneratedCode += " advance:YES]) {\n"
@@ -396,7 +396,7 @@ override getter @lexicalExplicitRuleAST generateCocoaCode
   outGeneratedCode += [mLexicalRuleExpression generateCocoaConditionCode !inLexiqueAnalysisContext]
   outGeneratedCode += ")) {\n"
   [!?outGeneratedCode incIndentation !2]
-  for () in  mInstructionList do
+  for () in mInstructionList do
     outGeneratedCode += [mInstruction generateCocoaInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
   end
   [!?outGeneratedCode decIndentation !2]

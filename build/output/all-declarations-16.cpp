@@ -2981,7 +2981,7 @@ GALGAS_semanticDeclarationAST () {
 GALGAS_sortedListDeclarationAST GALGAS_sortedListDeclarationAST::constructor_default (LOCATION_ARGS) {
   return GALGAS_sortedListDeclarationAST::constructor_new (GALGAS_bool::constructor_default (HERE),
                                                            GALGAS_lstring::constructor_default (HERE),
-                                                           GALGAS_attributeInCollectionListAST::constructor_emptyList (HERE),
+                                                           GALGAS_propertyInCollectionListAST::constructor_emptyList (HERE),
                                                            GALGAS_sortedListSortDescriptorListAST::constructor_emptyList (HERE)
                                                            COMMA_THERE) ;
 }
@@ -2997,7 +2997,7 @@ GALGAS_semanticDeclarationAST (inSourcePtr) {
 
 GALGAS_sortedListDeclarationAST GALGAS_sortedListDeclarationAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                                   const GALGAS_lstring & inAttribute_mSortedListTypeName,
-                                                                                  const GALGAS_attributeInCollectionListAST & inAttribute_mAttributeList,
+                                                                                  const GALGAS_propertyInCollectionListAST & inAttribute_mAttributeList,
                                                                                   const GALGAS_sortedListSortDescriptorListAST & inAttribute_mSortDescriptorList
                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_sortedListDeclarationAST result ;
@@ -3027,8 +3027,8 @@ GALGAS_lstring cPtr_sortedListDeclarationAST::reader_mSortedListTypeName (UNUSED
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_attributeInCollectionListAST GALGAS_sortedListDeclarationAST::reader_mAttributeList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_attributeInCollectionListAST result ;
+GALGAS_propertyInCollectionListAST GALGAS_sortedListDeclarationAST::reader_mAttributeList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_propertyInCollectionListAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_sortedListDeclarationAST * p = (const cPtr_sortedListDeclarationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_sortedListDeclarationAST) ;
@@ -3039,7 +3039,7 @@ GALGAS_attributeInCollectionListAST GALGAS_sortedListDeclarationAST::reader_mAtt
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_attributeInCollectionListAST cPtr_sortedListDeclarationAST::reader_mAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_propertyInCollectionListAST cPtr_sortedListDeclarationAST::reader_mAttributeList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mAttributeList ;
 }
 
@@ -3067,7 +3067,7 @@ GALGAS_sortedListSortDescriptorListAST cPtr_sortedListDeclarationAST::reader_mSo
 
 cPtr_sortedListDeclarationAST::cPtr_sortedListDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                                               const GALGAS_lstring & in_mSortedListTypeName,
-                                                              const GALGAS_attributeInCollectionListAST & in_mAttributeList,
+                                                              const GALGAS_propertyInCollectionListAST & in_mAttributeList,
                                                               const GALGAS_sortedListSortDescriptorListAST & in_mSortDescriptorList
                                                               COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
@@ -3200,7 +3200,7 @@ GALGAS_semanticDeclarationAST () {
 GALGAS_structDeclarationAST GALGAS_structDeclarationAST::constructor_default (LOCATION_ARGS) {
   return GALGAS_structDeclarationAST::constructor_new (GALGAS_bool::constructor_default (HERE),
                                                        GALGAS_lstring::constructor_default (HERE),
-                                                       GALGAS_attributeInCollectionListAST::constructor_emptyList (HERE),
+                                                       GALGAS_propertyInCollectionListAST::constructor_emptyList (HERE),
                                                        GALGAS_string::constructor_default (HERE)
                                                        COMMA_THERE) ;
 }
@@ -3216,7 +3216,7 @@ GALGAS_semanticDeclarationAST (inSourcePtr) {
 
 GALGAS_structDeclarationAST GALGAS_structDeclarationAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                           const GALGAS_lstring & inAttribute_mStructTypeName,
-                                                                          const GALGAS_attributeInCollectionListAST & inAttribute_mAttributeList,
+                                                                          const GALGAS_propertyInCollectionListAST & inAttribute_mAttributeList,
                                                                           const GALGAS_string & inAttribute_mEnumeratedElementTypeName
                                                                           COMMA_LOCATION_ARGS) {
   GALGAS_structDeclarationAST result ;
@@ -3246,8 +3246,8 @@ GALGAS_lstring cPtr_structDeclarationAST::reader_mStructTypeName (UNUSED_LOCATIO
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_attributeInCollectionListAST GALGAS_structDeclarationAST::reader_mAttributeList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_attributeInCollectionListAST result ;
+GALGAS_propertyInCollectionListAST GALGAS_structDeclarationAST::reader_mAttributeList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_propertyInCollectionListAST result ;
   if (NULL != mObjectPtr) {
     const cPtr_structDeclarationAST * p = (const cPtr_structDeclarationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_structDeclarationAST) ;
@@ -3258,7 +3258,7 @@ GALGAS_attributeInCollectionListAST GALGAS_structDeclarationAST::reader_mAttribu
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_attributeInCollectionListAST cPtr_structDeclarationAST::reader_mAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_propertyInCollectionListAST cPtr_structDeclarationAST::reader_mAttributeList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mAttributeList ;
 }
 
@@ -3286,7 +3286,7 @@ GALGAS_string cPtr_structDeclarationAST::reader_mEnumeratedElementTypeName (UNUS
 
 cPtr_structDeclarationAST::cPtr_structDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                                       const GALGAS_lstring & in_mStructTypeName,
-                                                      const GALGAS_attributeInCollectionListAST & in_mAttributeList,
+                                                      const GALGAS_propertyInCollectionListAST & in_mAttributeList,
                                                       const GALGAS_string & in_mEnumeratedElementTypeName
                                                       COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
@@ -3384,6 +3384,9 @@ typeComparisonResult cPtr_uniqueMapDeclarationAST::dynamicObjectCompare (const a
     result = mAttribute_mAttributeList.objectCompare (p->mAttribute_mAttributeList) ;
   }
   if (kOperandEqual == result) {
+    result = mAttribute_mPropertyList.objectCompare (p->mAttribute_mPropertyList) ;
+  }
+  if (kOperandEqual == result) {
     result = mAttribute_mInsertMethodList.objectCompare (p->mAttribute_mInsertMethodList) ;
   }
   if (kOperandEqual == result) {
@@ -3428,7 +3431,8 @@ GALGAS_semanticDeclarationAST () {
 GALGAS_uniqueMapDeclarationAST GALGAS_uniqueMapDeclarationAST::constructor_default (LOCATION_ARGS) {
   return GALGAS_uniqueMapDeclarationAST::constructor_new (GALGAS_bool::constructor_default (HERE),
                                                           GALGAS_lstring::constructor_default (HERE),
-                                                          GALGAS_attributeInCollectionListAST::constructor_emptyList (HERE),
+                                                          GALGAS_lstringlist::constructor_emptyList (HERE),
+                                                          GALGAS_propertyInCollectionListAST::constructor_emptyList (HERE),
                                                           GALGAS_insertMethodListAST::constructor_emptyList (HERE),
                                                           GALGAS_mapSearchMethodListAST::constructor_emptyList (HERE),
                                                           GALGAS_mapStateList::constructor_emptyList (HERE),
@@ -3447,15 +3451,16 @@ GALGAS_semanticDeclarationAST (inSourcePtr) {
 
 GALGAS_uniqueMapDeclarationAST GALGAS_uniqueMapDeclarationAST::constructor_new (const GALGAS_bool & inAttribute_mIsPredefined,
                                                                                 const GALGAS_lstring & inAttribute_mMapTypeName,
-                                                                                const GALGAS_attributeInCollectionListAST & inAttribute_mAttributeList,
+                                                                                const GALGAS_lstringlist & inAttribute_mAttributeList,
+                                                                                const GALGAS_propertyInCollectionListAST & inAttribute_mPropertyList,
                                                                                 const GALGAS_insertMethodListAST & inAttribute_mInsertMethodList,
                                                                                 const GALGAS_mapSearchMethodListAST & inAttribute_mSearchMethodList,
                                                                                 const GALGAS_mapStateList & inAttribute_mMapStateList,
                                                                                 const GALGAS_mapOverrideBlockListAST & inAttribute_mMapOverrideBlockListAST
                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_uniqueMapDeclarationAST result ;
-  if (inAttribute_mIsPredefined.isValid () && inAttribute_mMapTypeName.isValid () && inAttribute_mAttributeList.isValid () && inAttribute_mInsertMethodList.isValid () && inAttribute_mSearchMethodList.isValid () && inAttribute_mMapStateList.isValid () && inAttribute_mMapOverrideBlockListAST.isValid ()) {
-    macroMyNew (result.mObjectPtr, cPtr_uniqueMapDeclarationAST (inAttribute_mIsPredefined, inAttribute_mMapTypeName, inAttribute_mAttributeList, inAttribute_mInsertMethodList, inAttribute_mSearchMethodList, inAttribute_mMapStateList, inAttribute_mMapOverrideBlockListAST COMMA_THERE)) ;
+  if (inAttribute_mIsPredefined.isValid () && inAttribute_mMapTypeName.isValid () && inAttribute_mAttributeList.isValid () && inAttribute_mPropertyList.isValid () && inAttribute_mInsertMethodList.isValid () && inAttribute_mSearchMethodList.isValid () && inAttribute_mMapStateList.isValid () && inAttribute_mMapOverrideBlockListAST.isValid ()) {
+    macroMyNew (result.mObjectPtr, cPtr_uniqueMapDeclarationAST (inAttribute_mIsPredefined, inAttribute_mMapTypeName, inAttribute_mAttributeList, inAttribute_mPropertyList, inAttribute_mInsertMethodList, inAttribute_mSearchMethodList, inAttribute_mMapStateList, inAttribute_mMapOverrideBlockListAST COMMA_THERE)) ;
   }
   return result ;
 }
@@ -3480,8 +3485,8 @@ GALGAS_lstring cPtr_uniqueMapDeclarationAST::reader_mMapTypeName (UNUSED_LOCATIO
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_attributeInCollectionListAST GALGAS_uniqueMapDeclarationAST::reader_mAttributeList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_attributeInCollectionListAST result ;
+GALGAS_lstringlist GALGAS_uniqueMapDeclarationAST::reader_mAttributeList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_lstringlist result ;
   if (NULL != mObjectPtr) {
     const cPtr_uniqueMapDeclarationAST * p = (const cPtr_uniqueMapDeclarationAST *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_uniqueMapDeclarationAST) ;
@@ -3492,8 +3497,26 @@ GALGAS_attributeInCollectionListAST GALGAS_uniqueMapDeclarationAST::reader_mAttr
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_attributeInCollectionListAST cPtr_uniqueMapDeclarationAST::reader_mAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_lstringlist cPtr_uniqueMapDeclarationAST::reader_mAttributeList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mAttributeList ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_propertyInCollectionListAST GALGAS_uniqueMapDeclarationAST::reader_mPropertyList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_propertyInCollectionListAST result ;
+  if (NULL != mObjectPtr) {
+    const cPtr_uniqueMapDeclarationAST * p = (const cPtr_uniqueMapDeclarationAST *) mObjectPtr ;
+    macroValidSharedObject (p, cPtr_uniqueMapDeclarationAST) ;
+    result = p->mAttribute_mPropertyList ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------------------------------------------------*
+
+GALGAS_propertyInCollectionListAST cPtr_uniqueMapDeclarationAST::reader_mPropertyList (UNUSED_LOCATION_ARGS) const {
+  return mAttribute_mPropertyList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
@@ -3574,7 +3597,8 @@ GALGAS_mapOverrideBlockListAST cPtr_uniqueMapDeclarationAST::reader_mMapOverride
 
 cPtr_uniqueMapDeclarationAST::cPtr_uniqueMapDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                                             const GALGAS_lstring & in_mMapTypeName,
-                                                            const GALGAS_attributeInCollectionListAST & in_mAttributeList,
+                                                            const GALGAS_lstringlist & in_mAttributeList,
+                                                            const GALGAS_propertyInCollectionListAST & in_mPropertyList,
                                                             const GALGAS_insertMethodListAST & in_mInsertMethodList,
                                                             const GALGAS_mapSearchMethodListAST & in_mSearchMethodList,
                                                             const GALGAS_mapStateList & in_mMapStateList,
@@ -3583,6 +3607,7 @@ cPtr_uniqueMapDeclarationAST::cPtr_uniqueMapDeclarationAST (const GALGAS_bool & 
 cPtr_semanticDeclarationAST (in_mIsPredefined COMMA_THERE),
 mAttribute_mMapTypeName (in_mMapTypeName),
 mAttribute_mAttributeList (in_mAttributeList),
+mAttribute_mPropertyList (in_mPropertyList),
 mAttribute_mInsertMethodList (in_mInsertMethodList),
 mAttribute_mSearchMethodList (in_mSearchMethodList),
 mAttribute_mMapStateList (in_mMapStateList),
@@ -3604,6 +3629,8 @@ void cPtr_uniqueMapDeclarationAST::description (C_String & ioString,
   ioString << ", " ;
   mAttribute_mAttributeList.description (ioString, inIndentation+1) ;
   ioString << ", " ;
+  mAttribute_mPropertyList.description (ioString, inIndentation+1) ;
+  ioString << ", " ;
   mAttribute_mInsertMethodList.description (ioString, inIndentation+1) ;
   ioString << ", " ;
   mAttribute_mSearchMethodList.description (ioString, inIndentation+1) ;
@@ -3618,7 +3645,7 @@ void cPtr_uniqueMapDeclarationAST::description (C_String & ioString,
 
 acPtr_class * cPtr_uniqueMapDeclarationAST::duplicate (LOCATION_ARGS) const {
   acPtr_class * ptr = NULL ;
-  macroMyNew (ptr, cPtr_uniqueMapDeclarationAST (mAttribute_mIsPredefined, mAttribute_mMapTypeName, mAttribute_mAttributeList, mAttribute_mInsertMethodList, mAttribute_mSearchMethodList, mAttribute_mMapStateList, mAttribute_mMapOverrideBlockListAST COMMA_THERE)) ;
+  macroMyNew (ptr, cPtr_uniqueMapDeclarationAST (mAttribute_mIsPredefined, mAttribute_mMapTypeName, mAttribute_mAttributeList, mAttribute_mPropertyList, mAttribute_mInsertMethodList, mAttribute_mSearchMethodList, mAttribute_mMapStateList, mAttribute_mMapOverrideBlockListAST COMMA_THERE)) ;
   return ptr ;
 }
 
@@ -4657,7 +4684,7 @@ GALGAS_categoryMethodForGeneration GALGAS_categoryMethodForGeneration::construct
                                                               GALGAS_string::constructor_default (HERE),
                                                               GALGAS_bool::constructor_default (HERE),
                                                               GALGAS_formalParameterListForGeneration::constructor_emptyList (HERE),
-                                                              GALGAS_typedAttributeList::constructor_emptyList (HERE),
+                                                              GALGAS_typedPropertyList::constructor_emptyList (HERE),
                                                               GALGAS_semanticInstructionListForGeneration::constructor_emptyList (HERE)
                                                               COMMA_THERE) ;
 }
@@ -4677,7 +4704,7 @@ GALGAS_categoryMethodForGeneration GALGAS_categoryMethodForGeneration::construct
                                                                                         const GALGAS_string & inAttribute_mCategoryMethodName,
                                                                                         const GALGAS_bool & inAttribute_mImplementedAsFunction,
                                                                                         const GALGAS_formalParameterListForGeneration & inAttribute_mCategoryMethodFormalParameterList,
-                                                                                        const GALGAS_typedAttributeList & inAttribute_mTypedAttributeList,
+                                                                                        const GALGAS_typedPropertyList & inAttribute_mTypedAttributeList,
                                                                                         const GALGAS_semanticInstructionListForGeneration & inAttribute_mSemanticInstructionListForGeneration
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_categoryMethodForGeneration result ;
@@ -4761,8 +4788,8 @@ GALGAS_formalParameterListForGeneration cPtr_categoryMethodForGeneration::reader
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedAttributeList GALGAS_categoryMethodForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_typedAttributeList result ;
+GALGAS_typedPropertyList GALGAS_categoryMethodForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_typedPropertyList result ;
   if (NULL != mObjectPtr) {
     const cPtr_categoryMethodForGeneration * p = (const cPtr_categoryMethodForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_categoryMethodForGeneration) ;
@@ -4773,7 +4800,7 @@ GALGAS_typedAttributeList GALGAS_categoryMethodForGeneration::reader_mTypedAttri
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedAttributeList cPtr_categoryMethodForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList cPtr_categoryMethodForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTypedAttributeList ;
 }
 
@@ -4805,7 +4832,7 @@ cPtr_categoryMethodForGeneration::cPtr_categoryMethodForGeneration (const GALGAS
                                                                     const GALGAS_string & in_mCategoryMethodName,
                                                                     const GALGAS_bool & in_mImplementedAsFunction,
                                                                     const GALGAS_formalParameterListForGeneration & in_mCategoryMethodFormalParameterList,
-                                                                    const GALGAS_typedAttributeList & in_mTypedAttributeList,
+                                                                    const GALGAS_typedPropertyList & in_mTypedAttributeList,
                                                                     const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration
                                                                     COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationWithHeaderForGeneration (in_mHasHeader, in_mImplementationCppFileName COMMA_THERE),
@@ -4965,7 +4992,7 @@ GALGAS_categoryModifierForGeneration GALGAS_categoryModifierForGeneration::const
                                                                 GALGAS_string::constructor_default (HERE),
                                                                 GALGAS_bool::constructor_default (HERE),
                                                                 GALGAS_formalParameterListForGeneration::constructor_emptyList (HERE),
-                                                                GALGAS_typedAttributeList::constructor_emptyList (HERE),
+                                                                GALGAS_typedPropertyList::constructor_emptyList (HERE),
                                                                 GALGAS_semanticInstructionListForGeneration::constructor_emptyList (HERE)
                                                                 COMMA_THERE) ;
 }
@@ -4985,7 +5012,7 @@ GALGAS_categoryModifierForGeneration GALGAS_categoryModifierForGeneration::const
                                                                                             const GALGAS_string & inAttribute_mCategoryModifierName,
                                                                                             const GALGAS_bool & inAttribute_mImplementedAsFunction,
                                                                                             const GALGAS_formalParameterListForGeneration & inAttribute_mCategoryModifierFormalParameterList,
-                                                                                            const GALGAS_typedAttributeList & inAttribute_mTypedAttributeList,
+                                                                                            const GALGAS_typedPropertyList & inAttribute_mTypedAttributeList,
                                                                                             const GALGAS_semanticInstructionListForGeneration & inAttribute_mSemanticInstructionListForGeneration
                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_categoryModifierForGeneration result ;
@@ -5069,8 +5096,8 @@ GALGAS_formalParameterListForGeneration cPtr_categoryModifierForGeneration::read
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedAttributeList GALGAS_categoryModifierForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_typedAttributeList result ;
+GALGAS_typedPropertyList GALGAS_categoryModifierForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_typedPropertyList result ;
   if (NULL != mObjectPtr) {
     const cPtr_categoryModifierForGeneration * p = (const cPtr_categoryModifierForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_categoryModifierForGeneration) ;
@@ -5081,7 +5108,7 @@ GALGAS_typedAttributeList GALGAS_categoryModifierForGeneration::reader_mTypedAtt
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedAttributeList cPtr_categoryModifierForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList cPtr_categoryModifierForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTypedAttributeList ;
 }
 
@@ -5113,7 +5140,7 @@ cPtr_categoryModifierForGeneration::cPtr_categoryModifierForGeneration (const GA
                                                                         const GALGAS_string & in_mCategoryModifierName,
                                                                         const GALGAS_bool & in_mImplementedAsFunction,
                                                                         const GALGAS_formalParameterListForGeneration & in_mCategoryModifierFormalParameterList,
-                                                                        const GALGAS_typedAttributeList & in_mTypedAttributeList,
+                                                                        const GALGAS_typedPropertyList & in_mTypedAttributeList,
                                                                         const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration
                                                                         COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationWithHeaderForGeneration (in_mHasHeader, in_mImplementationCppFileName COMMA_THERE),
@@ -5281,7 +5308,7 @@ GALGAS_categoryReaderForGeneration GALGAS_categoryReaderForGeneration::construct
                                                               GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                               GALGAS_string::constructor_default (HERE),
                                                               GALGAS_formalInputParameterListForGeneration::constructor_emptyList (HERE),
-                                                              GALGAS_typedAttributeList::constructor_emptyList (HERE),
+                                                              GALGAS_typedPropertyList::constructor_emptyList (HERE),
                                                               GALGAS_semanticInstructionListForGeneration::constructor_emptyList (HERE)
                                                               COMMA_THERE) ;
 }
@@ -5303,7 +5330,7 @@ GALGAS_categoryReaderForGeneration GALGAS_categoryReaderForGeneration::construct
                                                                                         const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                         const GALGAS_string & inAttribute_mResultVarCppName,
                                                                                         const GALGAS_formalInputParameterListForGeneration & inAttribute_mCategoryReaderFormalParameterList,
-                                                                                        const GALGAS_typedAttributeList & inAttribute_mTypedAttributeList,
+                                                                                        const GALGAS_typedPropertyList & inAttribute_mTypedAttributeList,
                                                                                         const GALGAS_semanticInstructionListForGeneration & inAttribute_mSemanticInstructionListForGeneration
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_categoryReaderForGeneration result ;
@@ -5423,8 +5450,8 @@ GALGAS_formalInputParameterListForGeneration cPtr_categoryReaderForGeneration::r
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedAttributeList GALGAS_categoryReaderForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_typedAttributeList result ;
+GALGAS_typedPropertyList GALGAS_categoryReaderForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_typedPropertyList result ;
   if (NULL != mObjectPtr) {
     const cPtr_categoryReaderForGeneration * p = (const cPtr_categoryReaderForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_categoryReaderForGeneration) ;
@@ -5435,7 +5462,7 @@ GALGAS_typedAttributeList GALGAS_categoryReaderForGeneration::reader_mTypedAttri
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedAttributeList cPtr_categoryReaderForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList cPtr_categoryReaderForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTypedAttributeList ;
 }
 
@@ -5469,7 +5496,7 @@ cPtr_categoryReaderForGeneration::cPtr_categoryReaderForGeneration (const GALGAS
                                                                     const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                     const GALGAS_string & in_mResultVarCppName,
                                                                     const GALGAS_formalInputParameterListForGeneration & in_mCategoryReaderFormalParameterList,
-                                                                    const GALGAS_typedAttributeList & in_mTypedAttributeList,
+                                                                    const GALGAS_typedPropertyList & in_mTypedAttributeList,
                                                                     const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration
                                                                     COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationWithHeaderForGeneration (in_mHasHeader, in_mImplementationCppFileName COMMA_THERE),
@@ -7607,7 +7634,7 @@ GALGAS_overrideCategoryReaderForGeneration GALGAS_overrideCategoryReaderForGener
                                                                       GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                                       GALGAS_string::constructor_default (HERE),
                                                                       GALGAS_formalInputParameterListForGeneration::constructor_emptyList (HERE),
-                                                                      GALGAS_typedAttributeList::constructor_emptyList (HERE),
+                                                                      GALGAS_typedPropertyList::constructor_emptyList (HERE),
                                                                       GALGAS_semanticInstructionListForGeneration::constructor_emptyList (HERE)
                                                                       COMMA_THERE) ;
 }
@@ -7629,7 +7656,7 @@ GALGAS_overrideCategoryReaderForGeneration GALGAS_overrideCategoryReaderForGener
                                                                                                         const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mResultType,
                                                                                                         const GALGAS_string & inAttribute_mResultVarCppName,
                                                                                                         const GALGAS_formalInputParameterListForGeneration & inAttribute_mOverridingCategoryReaderFormalParameterList,
-                                                                                                        const GALGAS_typedAttributeList & inAttribute_mTypedAttributeList,
+                                                                                                        const GALGAS_typedPropertyList & inAttribute_mTypedAttributeList,
                                                                                                         const GALGAS_semanticInstructionListForGeneration & inAttribute_mSemanticInstructionListForGeneration
                                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_overrideCategoryReaderForGeneration result ;
@@ -7749,8 +7776,8 @@ GALGAS_formalInputParameterListForGeneration cPtr_overrideCategoryReaderForGener
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedAttributeList GALGAS_overrideCategoryReaderForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_typedAttributeList result ;
+GALGAS_typedPropertyList GALGAS_overrideCategoryReaderForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_typedPropertyList result ;
   if (NULL != mObjectPtr) {
     const cPtr_overrideCategoryReaderForGeneration * p = (const cPtr_overrideCategoryReaderForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_overrideCategoryReaderForGeneration) ;
@@ -7761,7 +7788,7 @@ GALGAS_typedAttributeList GALGAS_overrideCategoryReaderForGeneration::reader_mTy
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedAttributeList cPtr_overrideCategoryReaderForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList cPtr_overrideCategoryReaderForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTypedAttributeList ;
 }
 
@@ -7795,7 +7822,7 @@ cPtr_overrideCategoryReaderForGeneration::cPtr_overrideCategoryReaderForGenerati
                                                                                     const GALGAS_unifiedTypeMap_2D_proxy & in_mResultType,
                                                                                     const GALGAS_string & in_mResultVarCppName,
                                                                                     const GALGAS_formalInputParameterListForGeneration & in_mOverridingCategoryReaderFormalParameterList,
-                                                                                    const GALGAS_typedAttributeList & in_mTypedAttributeList,
+                                                                                    const GALGAS_typedPropertyList & in_mTypedAttributeList,
                                                                                     const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration
                                                                                     COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationWithHeaderForGeneration (in_mHasHeader, in_mImplementationCppFileName COMMA_THERE),
@@ -7961,7 +7988,7 @@ GALGAS_overridingCategoryMethodForGeneration GALGAS_overridingCategoryMethodForG
                                                                         GALGAS_string::constructor_default (HERE),
                                                                         GALGAS_string::constructor_default (HERE),
                                                                         GALGAS_formalParameterListForGeneration::constructor_emptyList (HERE),
-                                                                        GALGAS_typedAttributeList::constructor_emptyList (HERE),
+                                                                        GALGAS_typedPropertyList::constructor_emptyList (HERE),
                                                                         GALGAS_semanticInstructionListForGeneration::constructor_emptyList (HERE)
                                                                         COMMA_THERE) ;
 }
@@ -7981,7 +8008,7 @@ GALGAS_overridingCategoryMethodForGeneration GALGAS_overridingCategoryMethodForG
                                                                                                             const GALGAS_string & inAttribute_mBaseTypeName,
                                                                                                             const GALGAS_string & inAttribute_mCategoryMethodName,
                                                                                                             const GALGAS_formalParameterListForGeneration & inAttribute_mCategoryMethodFormalParameterList,
-                                                                                                            const GALGAS_typedAttributeList & inAttribute_mTypedAttributeList,
+                                                                                                            const GALGAS_typedPropertyList & inAttribute_mTypedAttributeList,
                                                                                                             const GALGAS_semanticInstructionListForGeneration & inAttribute_mSemanticInstructionListForGeneration
                                                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_overridingCategoryMethodForGeneration result ;
@@ -8065,8 +8092,8 @@ GALGAS_formalParameterListForGeneration cPtr_overridingCategoryMethodForGenerati
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedAttributeList GALGAS_overridingCategoryMethodForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_typedAttributeList result ;
+GALGAS_typedPropertyList GALGAS_overridingCategoryMethodForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_typedPropertyList result ;
   if (NULL != mObjectPtr) {
     const cPtr_overridingCategoryMethodForGeneration * p = (const cPtr_overridingCategoryMethodForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_overridingCategoryMethodForGeneration) ;
@@ -8077,7 +8104,7 @@ GALGAS_typedAttributeList GALGAS_overridingCategoryMethodForGeneration::reader_m
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedAttributeList cPtr_overridingCategoryMethodForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList cPtr_overridingCategoryMethodForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTypedAttributeList ;
 }
 
@@ -8109,7 +8136,7 @@ cPtr_overridingCategoryMethodForGeneration::cPtr_overridingCategoryMethodForGene
                                                                                         const GALGAS_string & in_mBaseTypeName,
                                                                                         const GALGAS_string & in_mCategoryMethodName,
                                                                                         const GALGAS_formalParameterListForGeneration & in_mCategoryMethodFormalParameterList,
-                                                                                        const GALGAS_typedAttributeList & in_mTypedAttributeList,
+                                                                                        const GALGAS_typedPropertyList & in_mTypedAttributeList,
                                                                                         const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration
                                                                                         COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationWithHeaderForGeneration (in_mHasHeader, in_mImplementationCppFileName COMMA_THERE),
@@ -8269,7 +8296,7 @@ GALGAS_overridingCategoryModifierForGeneration GALGAS_overridingCategoryModifier
                                                                           GALGAS_string::constructor_default (HERE),
                                                                           GALGAS_string::constructor_default (HERE),
                                                                           GALGAS_formalParameterListForGeneration::constructor_emptyList (HERE),
-                                                                          GALGAS_typedAttributeList::constructor_emptyList (HERE),
+                                                                          GALGAS_typedPropertyList::constructor_emptyList (HERE),
                                                                           GALGAS_semanticInstructionListForGeneration::constructor_emptyList (HERE)
                                                                           COMMA_THERE) ;
 }
@@ -8289,7 +8316,7 @@ GALGAS_overridingCategoryModifierForGeneration GALGAS_overridingCategoryModifier
                                                                                                                 const GALGAS_string & inAttribute_mBaseTypeName,
                                                                                                                 const GALGAS_string & inAttribute_mCategoryModifierName,
                                                                                                                 const GALGAS_formalParameterListForGeneration & inAttribute_mCategoryModifierFormalParameterList,
-                                                                                                                const GALGAS_typedAttributeList & inAttribute_mTypedAttributeList,
+                                                                                                                const GALGAS_typedPropertyList & inAttribute_mTypedAttributeList,
                                                                                                                 const GALGAS_semanticInstructionListForGeneration & inAttribute_mSemanticInstructionListForGeneration
                                                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_overridingCategoryModifierForGeneration result ;
@@ -8373,8 +8400,8 @@ GALGAS_formalParameterListForGeneration cPtr_overridingCategoryModifierForGenera
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedAttributeList GALGAS_overridingCategoryModifierForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_typedAttributeList result ;
+GALGAS_typedPropertyList GALGAS_overridingCategoryModifierForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_typedPropertyList result ;
   if (NULL != mObjectPtr) {
     const cPtr_overridingCategoryModifierForGeneration * p = (const cPtr_overridingCategoryModifierForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_overridingCategoryModifierForGeneration) ;
@@ -8385,7 +8412,7 @@ GALGAS_typedAttributeList GALGAS_overridingCategoryModifierForGeneration::reader
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedAttributeList cPtr_overridingCategoryModifierForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList cPtr_overridingCategoryModifierForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTypedAttributeList ;
 }
 
@@ -8417,7 +8444,7 @@ cPtr_overridingCategoryModifierForGeneration::cPtr_overridingCategoryModifierFor
                                                                                             const GALGAS_string & in_mBaseTypeName,
                                                                                             const GALGAS_string & in_mCategoryModifierName,
                                                                                             const GALGAS_formalParameterListForGeneration & in_mCategoryModifierFormalParameterList,
-                                                                                            const GALGAS_typedAttributeList & in_mTypedAttributeList,
+                                                                                            const GALGAS_typedPropertyList & in_mTypedAttributeList,
                                                                                             const GALGAS_semanticInstructionListForGeneration & in_mSemanticInstructionListForGeneration
                                                                                             COMMA_LOCATION_ARGS) :
 cPtr_semanticDeclarationWithHeaderForGeneration (in_mHasHeader, in_mImplementationCppFileName COMMA_THERE),
@@ -9487,8 +9514,8 @@ GALGAS_classTypeForGeneration GALGAS_classTypeForGeneration::constructor_default
                                                          GALGAS_bool::constructor_default (HERE),
                                                          GALGAS_lstring::constructor_default (HERE),
                                                          GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
-                                                         GALGAS_typedAttributeList::constructor_emptyList (HERE),
-                                                         GALGAS_typedAttributeList::constructor_emptyList (HERE),
+                                                         GALGAS_typedPropertyList::constructor_emptyList (HERE),
+                                                         GALGAS_typedPropertyList::constructor_emptyList (HERE),
                                                          GALGAS_bool::constructor_default (HERE)
                                                          COMMA_THERE) ;
 }
@@ -9506,8 +9533,8 @@ GALGAS_classTypeForGeneration GALGAS_classTypeForGeneration::constructor_new (co
                                                                               const GALGAS_bool & inAttribute_mIsAbstract,
                                                                               const GALGAS_lstring & inAttribute_mClassTypeName,
                                                                               const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mSuperClass,
-                                                                              const GALGAS_typedAttributeList & inAttribute_mAllTypedAttributeList,
-                                                                              const GALGAS_typedAttributeList & inAttribute_mTypedAttributeList,
+                                                                              const GALGAS_typedPropertyList & inAttribute_mAllTypedAttributeList,
+                                                                              const GALGAS_typedPropertyList & inAttribute_mTypedAttributeList,
                                                                               const GALGAS_bool & inAttribute_mGenerateHeaderInSeparateFile
                                                                               COMMA_LOCATION_ARGS) {
   GALGAS_classTypeForGeneration result ;
@@ -9573,8 +9600,8 @@ GALGAS_unifiedTypeMap_2D_proxy cPtr_classTypeForGeneration::reader_mSuperClass (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedAttributeList GALGAS_classTypeForGeneration::reader_mAllTypedAttributeList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_typedAttributeList result ;
+GALGAS_typedPropertyList GALGAS_classTypeForGeneration::reader_mAllTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_typedPropertyList result ;
   if (NULL != mObjectPtr) {
     const cPtr_classTypeForGeneration * p = (const cPtr_classTypeForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_classTypeForGeneration) ;
@@ -9585,14 +9612,14 @@ GALGAS_typedAttributeList GALGAS_classTypeForGeneration::reader_mAllTypedAttribu
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedAttributeList cPtr_classTypeForGeneration::reader_mAllTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList cPtr_classTypeForGeneration::reader_mAllTypedAttributeList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mAllTypedAttributeList ;
 }
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedAttributeList GALGAS_classTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_typedAttributeList result ;
+GALGAS_typedPropertyList GALGAS_classTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_typedPropertyList result ;
   if (NULL != mObjectPtr) {
     const cPtr_classTypeForGeneration * p = (const cPtr_classTypeForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_classTypeForGeneration) ;
@@ -9603,7 +9630,7 @@ GALGAS_typedAttributeList GALGAS_classTypeForGeneration::reader_mTypedAttributeL
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedAttributeList cPtr_classTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList cPtr_classTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTypedAttributeList ;
 }
 
@@ -9633,8 +9660,8 @@ cPtr_classTypeForGeneration::cPtr_classTypeForGeneration (const GALGAS_unifiedTy
                                                           const GALGAS_bool & in_mIsAbstract,
                                                           const GALGAS_lstring & in_mClassTypeName,
                                                           const GALGAS_unifiedTypeMap_2D_proxy & in_mSuperClass,
-                                                          const GALGAS_typedAttributeList & in_mAllTypedAttributeList,
-                                                          const GALGAS_typedAttributeList & in_mTypedAttributeList,
+                                                          const GALGAS_typedPropertyList & in_mAllTypedAttributeList,
+                                                          const GALGAS_typedPropertyList & in_mTypedAttributeList,
                                                           const GALGAS_bool & in_mGenerateHeaderInSeparateFile
                                                           COMMA_LOCATION_ARGS) :
 cPtr_semanticTypeForGeneration (in_mTypeProxy COMMA_THERE),
@@ -10376,7 +10403,7 @@ GALGAS_semanticTypeForGeneration () {
 GALGAS_listTypeForGeneration GALGAS_listTypeForGeneration::constructor_default (LOCATION_ARGS) {
   return GALGAS_listTypeForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                         GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
-                                                        GALGAS_typedAttributeList::constructor_emptyList (HERE)
+                                                        GALGAS_typedPropertyList::constructor_emptyList (HERE)
                                                         COMMA_THERE) ;
 }
 
@@ -10391,7 +10418,7 @@ GALGAS_semanticTypeForGeneration (inSourcePtr) {
 
 GALGAS_listTypeForGeneration GALGAS_listTypeForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mTypeProxy,
                                                                             const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mListElementTypeIndex,
-                                                                            const GALGAS_typedAttributeList & inAttribute_mTypedAttributeList
+                                                                            const GALGAS_typedPropertyList & inAttribute_mTypedAttributeList
                                                                             COMMA_LOCATION_ARGS) {
   GALGAS_listTypeForGeneration result ;
   if (inAttribute_mTypeProxy.isValid () && inAttribute_mListElementTypeIndex.isValid () && inAttribute_mTypedAttributeList.isValid ()) {
@@ -10420,8 +10447,8 @@ GALGAS_unifiedTypeMap_2D_proxy cPtr_listTypeForGeneration::reader_mListElementTy
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedAttributeList GALGAS_listTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_typedAttributeList result ;
+GALGAS_typedPropertyList GALGAS_listTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_typedPropertyList result ;
   if (NULL != mObjectPtr) {
     const cPtr_listTypeForGeneration * p = (const cPtr_listTypeForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_listTypeForGeneration) ;
@@ -10432,7 +10459,7 @@ GALGAS_typedAttributeList GALGAS_listTypeForGeneration::reader_mTypedAttributeLi
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedAttributeList cPtr_listTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList cPtr_listTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTypedAttributeList ;
 }
 
@@ -10442,7 +10469,7 @@ GALGAS_typedAttributeList cPtr_listTypeForGeneration::reader_mTypedAttributeList
 
 cPtr_listTypeForGeneration::cPtr_listTypeForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mTypeProxy,
                                                         const GALGAS_unifiedTypeMap_2D_proxy & in_mListElementTypeIndex,
-                                                        const GALGAS_typedAttributeList & in_mTypedAttributeList
+                                                        const GALGAS_typedPropertyList & in_mTypedAttributeList
                                                         COMMA_LOCATION_ARGS) :
 cPtr_semanticTypeForGeneration (in_mTypeProxy COMMA_THERE),
 mAttribute_mListElementTypeIndex (in_mListElementTypeIndex),
@@ -10571,7 +10598,7 @@ GALGAS_semanticTypeForGeneration () {
 GALGAS_listmapTypeForGeneration GALGAS_listmapTypeForGeneration::constructor_default (LOCATION_ARGS) {
   return GALGAS_listmapTypeForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                            GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
-                                                           GALGAS_typedAttributeList::constructor_emptyList (HERE),
+                                                           GALGAS_typedPropertyList::constructor_emptyList (HERE),
                                                            GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE)
                                                            COMMA_THERE) ;
 }
@@ -10587,7 +10614,7 @@ GALGAS_semanticTypeForGeneration (inSourcePtr) {
 
 GALGAS_listmapTypeForGeneration GALGAS_listmapTypeForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mTypeProxy,
                                                                                   const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mAssociatedListTypeIndex,
-                                                                                  const GALGAS_typedAttributeList & inAttribute_mAssociatedListTypedAttributeList,
+                                                                                  const GALGAS_typedPropertyList & inAttribute_mAssociatedListTypedAttributeList,
                                                                                   const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mAssociatedListMapElementTypeIndex
                                                                                   COMMA_LOCATION_ARGS) {
   GALGAS_listmapTypeForGeneration result ;
@@ -10617,8 +10644,8 @@ GALGAS_unifiedTypeMap_2D_proxy cPtr_listmapTypeForGeneration::reader_mAssociated
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedAttributeList GALGAS_listmapTypeForGeneration::reader_mAssociatedListTypedAttributeList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_typedAttributeList result ;
+GALGAS_typedPropertyList GALGAS_listmapTypeForGeneration::reader_mAssociatedListTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_typedPropertyList result ;
   if (NULL != mObjectPtr) {
     const cPtr_listmapTypeForGeneration * p = (const cPtr_listmapTypeForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_listmapTypeForGeneration) ;
@@ -10629,7 +10656,7 @@ GALGAS_typedAttributeList GALGAS_listmapTypeForGeneration::reader_mAssociatedLis
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedAttributeList cPtr_listmapTypeForGeneration::reader_mAssociatedListTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList cPtr_listmapTypeForGeneration::reader_mAssociatedListTypedAttributeList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mAssociatedListTypedAttributeList ;
 }
 
@@ -10657,7 +10684,7 @@ GALGAS_unifiedTypeMap_2D_proxy cPtr_listmapTypeForGeneration::reader_mAssociated
 
 cPtr_listmapTypeForGeneration::cPtr_listmapTypeForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mTypeProxy,
                                                               const GALGAS_unifiedTypeMap_2D_proxy & in_mAssociatedListTypeIndex,
-                                                              const GALGAS_typedAttributeList & in_mAssociatedListTypedAttributeList,
+                                                              const GALGAS_typedPropertyList & in_mAssociatedListTypedAttributeList,
                                                               const GALGAS_unifiedTypeMap_2D_proxy & in_mAssociatedListMapElementTypeIndex
                                                               COMMA_LOCATION_ARGS) :
 cPtr_semanticTypeForGeneration (in_mTypeProxy COMMA_THERE),
@@ -10790,7 +10817,7 @@ GALGAS_semanticTypeForGeneration () {
 GALGAS_mapProxyTypeForGeneration GALGAS_mapProxyTypeForGeneration::constructor_default (LOCATION_ARGS) {
   return GALGAS_mapProxyTypeForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                             GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
-                                                            GALGAS_typedAttributeList::constructor_emptyList (HERE),
+                                                            GALGAS_typedPropertyList::constructor_emptyList (HERE),
                                                             GALGAS_mapSearchMethodListAST::constructor_emptyList (HERE)
                                                             COMMA_THERE) ;
 }
@@ -10806,7 +10833,7 @@ GALGAS_semanticTypeForGeneration (inSourcePtr) {
 
 GALGAS_mapProxyTypeForGeneration GALGAS_mapProxyTypeForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mTypeProxy,
                                                                                     const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mAssociatedMapTypeProxy,
-                                                                                    const GALGAS_typedAttributeList & inAttribute_mAssociatedMapTypedAttributeList,
+                                                                                    const GALGAS_typedPropertyList & inAttribute_mAssociatedMapTypedAttributeList,
                                                                                     const GALGAS_mapSearchMethodListAST & inAttribute_mSearchMethodList
                                                                                     COMMA_LOCATION_ARGS) {
   GALGAS_mapProxyTypeForGeneration result ;
@@ -10836,8 +10863,8 @@ GALGAS_unifiedTypeMap_2D_proxy cPtr_mapProxyTypeForGeneration::reader_mAssociate
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedAttributeList GALGAS_mapProxyTypeForGeneration::reader_mAssociatedMapTypedAttributeList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_typedAttributeList result ;
+GALGAS_typedPropertyList GALGAS_mapProxyTypeForGeneration::reader_mAssociatedMapTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_typedPropertyList result ;
   if (NULL != mObjectPtr) {
     const cPtr_mapProxyTypeForGeneration * p = (const cPtr_mapProxyTypeForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_mapProxyTypeForGeneration) ;
@@ -10848,7 +10875,7 @@ GALGAS_typedAttributeList GALGAS_mapProxyTypeForGeneration::reader_mAssociatedMa
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedAttributeList cPtr_mapProxyTypeForGeneration::reader_mAssociatedMapTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList cPtr_mapProxyTypeForGeneration::reader_mAssociatedMapTypedAttributeList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mAssociatedMapTypedAttributeList ;
 }
 
@@ -10876,7 +10903,7 @@ GALGAS_mapSearchMethodListAST cPtr_mapProxyTypeForGeneration::reader_mSearchMeth
 
 cPtr_mapProxyTypeForGeneration::cPtr_mapProxyTypeForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mTypeProxy,
                                                                 const GALGAS_unifiedTypeMap_2D_proxy & in_mAssociatedMapTypeProxy,
-                                                                const GALGAS_typedAttributeList & in_mAssociatedMapTypedAttributeList,
+                                                                const GALGAS_typedPropertyList & in_mAssociatedMapTypedAttributeList,
                                                                 const GALGAS_mapSearchMethodListAST & in_mSearchMethodList
                                                                 COMMA_LOCATION_ARGS) :
 cPtr_semanticTypeForGeneration (in_mTypeProxy COMMA_THERE),
@@ -11022,7 +11049,7 @@ GALGAS_mapTypeForGeneration GALGAS_mapTypeForGeneration::constructor_default (LO
   return GALGAS_mapTypeForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                        GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                        GALGAS_lstring::constructor_default (HERE),
-                                                       GALGAS_typedAttributeList::constructor_emptyList (HERE),
+                                                       GALGAS_typedPropertyList::constructor_emptyList (HERE),
                                                        GALGAS_insertMethodListAST::constructor_emptyList (HERE),
                                                        GALGAS_mapSearchMethodListAST::constructor_emptyList (HERE),
                                                        GALGAS_mapRemoveMethodListAST::constructor_emptyList (HERE),
@@ -11042,7 +11069,7 @@ GALGAS_semanticTypeForGeneration (inSourcePtr) {
 GALGAS_mapTypeForGeneration GALGAS_mapTypeForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mTypeProxy,
                                                                           const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mElementTypeProxy,
                                                                           const GALGAS_lstring & inAttribute_mMapTypeName,
-                                                                          const GALGAS_typedAttributeList & inAttribute_mTypedAttributeList,
+                                                                          const GALGAS_typedPropertyList & inAttribute_mTypedAttributeList,
                                                                           const GALGAS_insertMethodListAST & inAttribute_mInsertMethodList,
                                                                           const GALGAS_mapSearchMethodListAST & inAttribute_mSearchMethodList,
                                                                           const GALGAS_mapRemoveMethodListAST & inAttribute_mRemoveMethodList,
@@ -11093,8 +11120,8 @@ GALGAS_lstring cPtr_mapTypeForGeneration::reader_mMapTypeName (UNUSED_LOCATION_A
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedAttributeList GALGAS_mapTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_typedAttributeList result ;
+GALGAS_typedPropertyList GALGAS_mapTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_typedPropertyList result ;
   if (NULL != mObjectPtr) {
     const cPtr_mapTypeForGeneration * p = (const cPtr_mapTypeForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_mapTypeForGeneration) ;
@@ -11105,7 +11132,7 @@ GALGAS_typedAttributeList GALGAS_mapTypeForGeneration::reader_mTypedAttributeLis
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedAttributeList cPtr_mapTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList cPtr_mapTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTypedAttributeList ;
 }
 
@@ -11188,7 +11215,7 @@ GALGAS_bool cPtr_mapTypeForGeneration::reader_mHasInsertOrReplaceModifier (UNUSE
 cPtr_mapTypeForGeneration::cPtr_mapTypeForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mTypeProxy,
                                                       const GALGAS_unifiedTypeMap_2D_proxy & in_mElementTypeProxy,
                                                       const GALGAS_lstring & in_mMapTypeName,
-                                                      const GALGAS_typedAttributeList & in_mTypedAttributeList,
+                                                      const GALGAS_typedPropertyList & in_mTypedAttributeList,
                                                       const GALGAS_insertMethodListAST & in_mInsertMethodList,
                                                       const GALGAS_mapSearchMethodListAST & in_mSearchMethodList,
                                                       const GALGAS_mapRemoveMethodListAST & in_mRemoveMethodList,
@@ -11519,7 +11546,7 @@ GALGAS_semanticTypeForGeneration () {
 GALGAS_sortedListTypeForGeneration GALGAS_sortedListTypeForGeneration::constructor_default (LOCATION_ARGS) {
   return GALGAS_sortedListTypeForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                               GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
-                                                              GALGAS_typedAttributeList::constructor_emptyList (HERE),
+                                                              GALGAS_typedPropertyList::constructor_emptyList (HERE),
                                                               GALGAS_sortDescriptorListForGeneration::constructor_emptyList (HERE)
                                                               COMMA_THERE) ;
 }
@@ -11535,7 +11562,7 @@ GALGAS_semanticTypeForGeneration (inSourcePtr) {
 
 GALGAS_sortedListTypeForGeneration GALGAS_sortedListTypeForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mTypeProxy,
                                                                                         const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mListElementTypeIndex,
-                                                                                        const GALGAS_typedAttributeList & inAttribute_mTypedAttributeList,
+                                                                                        const GALGAS_typedPropertyList & inAttribute_mTypedAttributeList,
                                                                                         const GALGAS_sortDescriptorListForGeneration & inAttribute_mSortDescriptorList
                                                                                         COMMA_LOCATION_ARGS) {
   GALGAS_sortedListTypeForGeneration result ;
@@ -11565,8 +11592,8 @@ GALGAS_unifiedTypeMap_2D_proxy cPtr_sortedListTypeForGeneration::reader_mListEle
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedAttributeList GALGAS_sortedListTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_typedAttributeList result ;
+GALGAS_typedPropertyList GALGAS_sortedListTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_typedPropertyList result ;
   if (NULL != mObjectPtr) {
     const cPtr_sortedListTypeForGeneration * p = (const cPtr_sortedListTypeForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_sortedListTypeForGeneration) ;
@@ -11577,7 +11604,7 @@ GALGAS_typedAttributeList GALGAS_sortedListTypeForGeneration::reader_mTypedAttri
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedAttributeList cPtr_sortedListTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList cPtr_sortedListTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTypedAttributeList ;
 }
 
@@ -11605,7 +11632,7 @@ GALGAS_sortDescriptorListForGeneration cPtr_sortedListTypeForGeneration::reader_
 
 cPtr_sortedListTypeForGeneration::cPtr_sortedListTypeForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mTypeProxy,
                                                                     const GALGAS_unifiedTypeMap_2D_proxy & in_mListElementTypeIndex,
-                                                                    const GALGAS_typedAttributeList & in_mTypedAttributeList,
+                                                                    const GALGAS_typedPropertyList & in_mTypedAttributeList,
                                                                     const GALGAS_sortDescriptorListForGeneration & in_mSortDescriptorList
                                                                     COMMA_LOCATION_ARGS) :
 cPtr_semanticTypeForGeneration (in_mTypeProxy COMMA_THERE),
@@ -11731,7 +11758,7 @@ GALGAS_semanticTypeForGeneration () {
 
 GALGAS_structTypeForGeneration GALGAS_structTypeForGeneration::constructor_default (LOCATION_ARGS) {
   return GALGAS_structTypeForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
-                                                          GALGAS_typedAttributeList::constructor_emptyList (HERE)
+                                                          GALGAS_typedPropertyList::constructor_emptyList (HERE)
                                                           COMMA_THERE) ;
 }
 
@@ -11745,7 +11772,7 @@ GALGAS_semanticTypeForGeneration (inSourcePtr) {
 //---------------------------------------------------------------------------------------------------------------------*
 
 GALGAS_structTypeForGeneration GALGAS_structTypeForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mTypeProxy,
-                                                                                const GALGAS_typedAttributeList & inAttribute_mTypedAttributeList
+                                                                                const GALGAS_typedPropertyList & inAttribute_mTypedAttributeList
                                                                                 COMMA_LOCATION_ARGS) {
   GALGAS_structTypeForGeneration result ;
   if (inAttribute_mTypeProxy.isValid () && inAttribute_mTypedAttributeList.isValid ()) {
@@ -11756,8 +11783,8 @@ GALGAS_structTypeForGeneration GALGAS_structTypeForGeneration::constructor_new (
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedAttributeList GALGAS_structTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_typedAttributeList result ;
+GALGAS_typedPropertyList GALGAS_structTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_typedPropertyList result ;
   if (NULL != mObjectPtr) {
     const cPtr_structTypeForGeneration * p = (const cPtr_structTypeForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_structTypeForGeneration) ;
@@ -11768,7 +11795,7 @@ GALGAS_typedAttributeList GALGAS_structTypeForGeneration::reader_mTypedAttribute
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedAttributeList cPtr_structTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList cPtr_structTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTypedAttributeList ;
 }
 
@@ -11777,7 +11804,7 @@ GALGAS_typedAttributeList cPtr_structTypeForGeneration::reader_mTypedAttributeLi
 //---------------------------------------------------------------------------------------------------------------------*
 
 cPtr_structTypeForGeneration::cPtr_structTypeForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mTypeProxy,
-                                                            const GALGAS_typedAttributeList & in_mTypedAttributeList
+                                                            const GALGAS_typedPropertyList & in_mTypedAttributeList
                                                             COMMA_LOCATION_ARGS) :
 cPtr_semanticTypeForGeneration (in_mTypeProxy COMMA_THERE),
 mAttribute_mTypedAttributeList (in_mTypedAttributeList) {
@@ -11918,7 +11945,7 @@ GALGAS_semanticTypeForGeneration () {
 GALGAS_uniqueMapTypeForGeneration GALGAS_uniqueMapTypeForGeneration::constructor_default (LOCATION_ARGS) {
   return GALGAS_uniqueMapTypeForGeneration::constructor_new (GALGAS_unifiedTypeMap_2D_proxy::constructor_null (HERE),
                                                              GALGAS_lstring::constructor_default (HERE),
-                                                             GALGAS_typedAttributeList::constructor_emptyList (HERE),
+                                                             GALGAS_typedPropertyList::constructor_emptyList (HERE),
                                                              GALGAS_insertMethodListAST::constructor_emptyList (HERE),
                                                              GALGAS_mapSearchMethodListAST::constructor_emptyList (HERE),
                                                              GALGAS_mapAutomatonStateMap::constructor_emptyMap (HERE),
@@ -11939,7 +11966,7 @@ GALGAS_semanticTypeForGeneration (inSourcePtr) {
 
 GALGAS_uniqueMapTypeForGeneration GALGAS_uniqueMapTypeForGeneration::constructor_new (const GALGAS_unifiedTypeMap_2D_proxy & inAttribute_mTypeProxy,
                                                                                       const GALGAS_lstring & inAttribute_mMapTypeName,
-                                                                                      const GALGAS_typedAttributeList & inAttribute_mTypedAttributeList,
+                                                                                      const GALGAS_typedPropertyList & inAttribute_mTypedAttributeList,
                                                                                       const GALGAS_insertMethodListAST & inAttribute_mInsertMethodList,
                                                                                       const GALGAS_mapSearchMethodListAST & inAttribute_mSearchMethodList,
                                                                                       const GALGAS_mapAutomatonStateMap & inAttribute_mMapAutomatonStateMap,
@@ -11974,8 +12001,8 @@ GALGAS_lstring cPtr_uniqueMapTypeForGeneration::reader_mMapTypeName (UNUSED_LOCA
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedAttributeList GALGAS_uniqueMapTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_typedAttributeList result ;
+GALGAS_typedPropertyList GALGAS_uniqueMapTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_typedPropertyList result ;
   if (NULL != mObjectPtr) {
     const cPtr_uniqueMapTypeForGeneration * p = (const cPtr_uniqueMapTypeForGeneration *) mObjectPtr ;
     macroValidSharedObject (p, cPtr_uniqueMapTypeForGeneration) ;
@@ -11986,7 +12013,7 @@ GALGAS_typedAttributeList GALGAS_uniqueMapTypeForGeneration::reader_mTypedAttrib
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedAttributeList cPtr_uniqueMapTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
+GALGAS_typedPropertyList cPtr_uniqueMapTypeForGeneration::reader_mTypedAttributeList (UNUSED_LOCATION_ARGS) const {
   return mAttribute_mTypedAttributeList ;
 }
 
@@ -12104,7 +12131,7 @@ GALGAS_mapOverrideList cPtr_uniqueMapTypeForGeneration::reader_mMapOverrideList 
 
 cPtr_uniqueMapTypeForGeneration::cPtr_uniqueMapTypeForGeneration (const GALGAS_unifiedTypeMap_2D_proxy & in_mTypeProxy,
                                                                   const GALGAS_lstring & in_mMapTypeName,
-                                                                  const GALGAS_typedAttributeList & in_mTypedAttributeList,
+                                                                  const GALGAS_typedPropertyList & in_mTypedAttributeList,
                                                                   const GALGAS_insertMethodListAST & in_mInsertMethodList,
                                                                   const GALGAS_mapSearchMethodListAST & in_mSearchMethodList,
                                                                   const GALGAS_mapAutomatonStateMap & in_mMapAutomatonStateMap,

@@ -103,7 +103,7 @@ proc compileGuiComponentFromAST
     !@importedLexiqueList. emptyList
   }
 #--- Check imported options components
-  for () in  [inGuiComponentRoot mImportedOptionList] do 
+  for () in [inGuiComponentRoot mImportedOptionList] do 
     if [[mValue string] pathExtension] != "gOption" then
       error mValue: "only an option component (path extension '.gOption') can be imported here"
     else
@@ -118,17 +118,17 @@ proc compileGuiComponentFromAST
     end
   end
 #--- Nib and main classes
-  for () in  [inGuiComponentRoot mGlobalSimpleAttributeList] do
+  for () in [inGuiComponentRoot mGlobalSimpleAttributeList] do
     if [mKey string] != "nibAndMainClass" then
       warning mKey:"the '" + mKey + "' key is invalid and has no effect"
     else
-      for () in  [mValue.string componentsSeparatedByString !"."] do
+      for () in [mValue.string componentsSeparatedByString !"."] do
         context.mNibAndClassList += !mValue
       end
     end
   end
 #--- 'with lexique' construct analysis
-  for () in  [inGuiComponentRoot mWithLexiqueList] do
+  for () in [inGuiComponentRoot mWithLexiqueList] do
   #--- Check lexique
     @galgas3LexiqueComponentListAST-element lexiqueComponentRoot
     if [[mLexiqueFileName string] pathExtension] != "gLexique" then
@@ -146,17 +146,17 @@ proc compileGuiComponentFromAST
     end
   #--- Build terminal symbol set
     var terminalSymbolSet =@stringset.emptySet{}
-    for () in  [lexiqueComponentRoot mTerminalDeclarationList] do
+    for () in [lexiqueComponentRoot mTerminalDeclarationList] do
       terminalSymbolSet += ![mName string]
     end
-    for () in  [lexiqueComponentRoot mLexicalListDeclarationList] do
-      for () in  mEntryList do
+    for () in [lexiqueComponentRoot mLexicalListDeclarationList] do
+      for () in mEntryList do
         terminalSymbolSet += ![mTerminalSpelling string]
       end
     end
   #--- Check labels
-    for () in  mLabels do
-      for () in  mTerminalList do
+    for () in mLabels do
+      for () in mTerminalList do
         if not [terminalSymbolSet hasKey ![mTerminal string]] then
           error mTerminal: "the '$"
             + mTerminal
@@ -168,7 +168,7 @@ proc compileGuiComponentFromAST
     end
   #--- Compound attributes
     var textMacroList =@textMacroList.emptyList{}
-    for () in  mCompoundAttributes do
+    for () in mCompoundAttributes do
       if [mKey string] != "textMacro" then
         error mKey: "for a compound attribute, only the 'textMacro' key is valid"
       else
@@ -181,7 +181,7 @@ proc compileGuiComponentFromAST
     @bool hasBlockComment = false
     @string tabViewTitle = ""
     @string blockComment = ""
-    for () in  mSimpleAttributes do
+    for () in mSimpleAttributes do
       if [mKey string] == "fileExtension" then
         [!?context.mExtensionMap insertKey !mValue ![[[mLexiqueFileName string] lastPathComponent] stringByDeletingPathExtension]]
         hasAssociatedExtension = true
@@ -294,7 +294,7 @@ private proc compileGuiComponentGalgas3
     !@importedLexiqueList. emptyList
   }
 #--- Check imported options components
-  for () in  inGUIComponentAST.mImportedOptionList do
+  for () in inGUIComponentAST.mImportedOptionList do
     [inSemanticContext.mOptionComponentMapForSemanticAnalysis searchKey
       !mValue
       ?4*
@@ -318,17 +318,17 @@ private proc compileGuiComponentGalgas3
 #    end if ;
   end
 #--- Nib and main classes
-  for () in  inGUIComponentAST.mGlobalSimpleAttributeList do
+  for () in inGUIComponentAST.mGlobalSimpleAttributeList do
     if [mKey string] != "nibAndMainClass" then
       warning mKey:"the '" + mKey + "' key is invalid and has no effect"
     else
-      for () in  [mValue.string componentsSeparatedByString !"."] do
+      for () in [mValue.string componentsSeparatedByString !"."] do
         context.mNibAndClassList += !mValue
       end
     end
   end
 #--- 'with lexique' construct analysis
-  for () in  inGUIComponentAST.mWithLexiqueList do
+  for () in inGUIComponentAST.mWithLexiqueList do
   #--- Check lexique
     [inSemanticContext.mLexiqueComponentMapForSemanticAnalysis searchKey
       !mLexiqueFileName
@@ -360,8 +360,8 @@ private proc compileGuiComponentGalgas3
 #      end foreach ;
 #    end foreach ;
   #--- Check labels
-    for () in  mLabels do
-      for () in  mTerminalList do
+    for () in mLabels do
+      for () in mTerminalList do
         if not [terminalSymbolSet hasKey ![mTerminal string]] then
           error mTerminal: "the '$"
             + mTerminal
@@ -373,7 +373,7 @@ private proc compileGuiComponentGalgas3
     end
   #--- Compound attributes
     var textMacroList =@textMacroList.emptyList{}
-    for () in  mCompoundAttributes do
+    for () in mCompoundAttributes do
       if [mKey string] != "textMacro" then
         error mKey: "for a compound attribute, only the 'textMacro' key is valid"
       else
@@ -386,7 +386,7 @@ private proc compileGuiComponentGalgas3
     @bool hasBlockComment = false
     @string tabViewTitle = ""
     @string blockComment = ""
-    for () in  mSimpleAttributes do
+    for () in mSimpleAttributes do
       if [mKey string] == "fileExtension" then
         [!?context.mExtensionMap insertKey !mValue !mLexiqueFileName.string]
         hasAssociatedExtension = true

@@ -29,7 +29,7 @@ proc checkMethodSignatures
     + " formal parameter(s), but overriden method declares " + [[inReferenceSignature length] string]
     error inReferenceLocation:"overriden method is declared here"
   else
-    for () ref_ in  inReferenceSignature, () in  inTestedSignature do
+    for () ref_ in inReferenceSignature, () in inTestedSignature do
       if ref_mFormalArgumentPassingMode != mFormalArgumentPassingMode then
         error mFormalArgumentName : "the '" + mFormalArgumentName + "' formal parameter is declared as "
         + [mFormalArgumentPassingMode formalArgumentMessage] + ", but overriden method declares it as " 
@@ -73,7 +73,7 @@ proc checkReaderSignatures
     + " formal parameter(s), but overriden getter declares " + [[inReferenceSignature length] string]
     error inReferenceLocation:"overriden getter is declared here"
   else
-    for () ref_ in  inReferenceSignature, () in  inTestedSignature do
+    for () ref_ in inReferenceSignature, () in inTestedSignature do
       if mFormalSelector.string != ref_mFormalSelector.string then
         error mFormalSelector : "the selector should be '?" + ref_mFormalSelector + if ref_mFormalSelector.string != "" then ":" else "" end + "'"
       end
@@ -131,13 +131,13 @@ override method @listDeclarationAST semanticAnalysis
   ?let @semanticContext inSemanticContext
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
-  var typedAttributeList =@typedAttributeList.emptyList{}
+  var typedAttributeList =@typedPropertyList.emptyList{}
   var attributeMap =@attributeIndexMap.emptyMap{}
-  for () in  mAttributeList do
-    let t = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mAttributeTypeName}
+  for () in mAttributeList do
+    let t = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mPropertyTypeName}
     var hasGetter = true
     var hasSetter = false
-    for () in  mFeatureList do
+    for () in mFeatureList do
       if mValue.string == "nogetter" then
         if not hasGetter then
           error mValue:"duplicate feature"
@@ -154,10 +154,10 @@ override method @listDeclarationAST semanticAnalysis
     end
     typedAttributeList +=
       !t
-      !mAttributeName
+      !mPropertyName
       !hasSetter
       !hasGetter
-    [!?attributeMap insertKey !mAttributeName !t]
+    [!?attributeMap insertKey !mPropertyName !t]
   end
 #---
   ioSemanticDeclarationListForGeneration +=
@@ -177,23 +177,23 @@ override method @sortedListDeclarationAST semanticAnalysis
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
 #--- Attribute
-  var typedAttributeList =@typedAttributeList.emptyList{}
+  var typedAttributeList =@typedPropertyList.emptyList{}
   var attributeMap =@attributeIndexMap.emptyMap{}
-  for () in  mAttributeList do
-    let t = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mAttributeTypeName}
+  for () in mAttributeList do
+    let t = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mPropertyTypeName}
     @bool hasSetter = true
     @bool hasGetter = true
     typedAttributeList +=
       !t
-      !mAttributeName
+      !mPropertyName
       !hasSetter
       !hasGetter
-    [!?attributeMap insertKey !mAttributeName !t]
+    [!?attributeMap insertKey !mPropertyName !t]
   end
 #--- Sort descriptor
   var attributesUsedForSorting =@stringset.emptySet{}
   var sortDescriptorList =@sortDescriptorListForGeneration.emptyList{}
-  for () in  mSortDescriptorList do
+  for () in mSortDescriptorList do
     [attributeMap searchKey !mSortedAttributeName ?let @unifiedTypeMap-proxy type]
     sortDescriptorList += !type ![mSortedAttributeName string] !mAscending
     if [attributesUsedForSorting hasKey ![mSortedAttributeName string]] then
@@ -231,29 +231,29 @@ override method @structDeclarationAST semanticAnalysis
   if [mAttributeList length] == 0 then
     error mStructTypeName: "a structure cannot be empty: it must have at least one field" 
   end
-  var typedAttributeList =@typedAttributeList.emptyList{}
+  var typedAttributeList =@typedPropertyList.emptyList{}
   var attributeMap =@attributeIndexMap.emptyMap{}
-  for () in  mAttributeList do
-    let t = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mAttributeTypeName}
-    for () in  mFeatureList do
+  for () in mAttributeList do
+    let t = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mPropertyTypeName}
+    for () in mFeatureList do
       error mValue : "a struct attribute does not accept any feature"
     end
     let @bool hasSetter = false
     let @bool hasGetter = false
     typedAttributeList +=
       !t
-      !mAttributeName
+      !mPropertyName
       !hasSetter
       !hasGetter
-    if [forbiddenKeysForStruct () hasKey !mAttributeName.string] then
+    if [forbiddenKeysForStruct () hasKey !mPropertyName.string] then
       @string m = "an attribute cannot be named:"
       for s in forbiddenKeysForStruct () do
         m+= " " + s
       end
       m += "; theses names are reserved"
-      error mAttributeName: m
+      error mPropertyName: m
     end
-    [!?attributeMap insertKey !mAttributeName !t]
+    [!?attributeMap insertKey !mPropertyName !t]
   end
   ioSemanticDeclarationListForGeneration +=
     !"struct " + mStructTypeName
@@ -282,7 +282,7 @@ override method @graphDeclarationAST semanticAnalysis
   var reservedModifierNames =@stringset.emptySet{}
   reservedModifierNames += !"noteNode"
   reservedModifierNames += !"addArc"
-  for () in  mInsertModifierList do
+  for () in mInsertModifierList do
     if [reservedModifierNames hasKey ![mInsertModifierName string]] then
       error mInsertModifierName : "the '" + mInsertModifierName + "' modifier name is reserved for a graph type"
     end
@@ -329,7 +329,7 @@ override method @enumDeclarationAST semanticAnalysis
   var constantList =@stringlist.emptyList{}
   @enumConstantListForGeneration enumConstantListForGeneration = {}
   var constantMap =@constantIndexMap.emptyMap{}
-  for () in  mConstantList do
+  for () in mConstantList do
     constantList += !mConstantName.string
     @unifiedTypeMapProxyList associatedTypeList = {}
     @stringset associatedValueNameSet = {}
@@ -385,7 +385,7 @@ override method @listmapDeclarationAST semanticAnalysis
     ?3*
     ?let @typeKindEnum typeKindEnum
     ?*
-    ?let @typedAttributeList listTypeAttributeList
+    ?let @typedPropertyList listTypeAttributeList
     ?20*
   ]
 #---
@@ -424,10 +424,10 @@ map @searchMethodMap {
 proc check_K_escapeCharacters
  ?@lstring inString {
 #--- Check escape sequences : only %K or %%
-  for () in  [[inString string] componentsSeparatedByString !"%%"] do
+  for () in [[inString string] componentsSeparatedByString !"%%"] do
     @stringlist explodedArray = [mValue componentsSeparatedByString !"%"]
     [!?explodedArray popFirst ?*]
-    for () in  explodedArray do
+    for () in explodedArray do
       if [mValue length] > 0 then
         let @char c = [mValue characterAtIndex !0]
         if c != 'K' then
@@ -443,10 +443,10 @@ proc check_K_escapeCharacters
 proc check_K_L_escapeCharacters
  ?@lstring inString {
 #--- Check escape sequences : only %K, %L or %%
-  for () in  [[inString string] componentsSeparatedByString !"%%"] do
+  for () in [[inString string] componentsSeparatedByString !"%%"] do
     @stringlist explodedArray = [mValue componentsSeparatedByString !"%"]
     [!?explodedArray popFirst ?*]
-    for () in  explodedArray do
+    for () in explodedArray do
       if [mValue length] > 0 then
         let @char c = [mValue characterAtIndex !0]
         if (c != 'K') & (c != 'L') then
@@ -474,47 +474,47 @@ override method @mapDeclarationAST semanticAnalysis
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
 #------ Enter attributes
-  var typedAttributeList =@typedAttributeList.emptyList{}
+  var typedAttributeList =@typedPropertyList.emptyList{}
   var attributeMap =@attributeIndexMap.emptyMap{}
-  for () in  mAttributeList do
-    var t =@unifiedTypeMap-proxy.searchKey{ !inSemanticContext.mTypeMap !mAttributeTypeName}
+  for () in mPropertyList do
+    var t =@unifiedTypeMap-proxy.searchKey{ !inSemanticContext.mTypeMap !mPropertyTypeName}
     @bool hasSetter = true
     @bool hasGetter = true
     typedAttributeList +=
       !t
-      !mAttributeName
+      !mPropertyName
       !hasSetter
       !hasGetter
-    if [forbiddenKeysForMap () hasKey !mAttributeName.string] then
+    if [forbiddenKeysForMap () hasKey !mPropertyName.string] then
       @string m = "an attribute cannot be named:"
       for s in forbiddenKeysForMap () do
         m+= " " + s
       end
       m += "; theses names are reserved"
-      error mAttributeName: m
+      error mPropertyName: m
     end
-    [!?attributeMap insertKey !mAttributeName !t]
+    [!?attributeMap insertKey !mPropertyName !t]
   end
 #--- Enter insert modifiers
   var insertMethodMap =@insertMethodMap.emptyMap{}
-  for () in  mInsertMethodList do
+  for () in mInsertMethodList do
     [!?insertMethodMap insertKey !mInsertMethodName]
     check_K_L_escapeCharacters ( !mErrorMessage )
     check_K_L_escapeCharacters ( !mShadowErrorMessage )
   end
 #--- Enter search methods
   var searchMethodMap =@searchMethodMap.emptyMap{}
-  for () in  mSearchMethodList do
+  for () in mSearchMethodList do
     [!?searchMethodMap insertKey !mSearchMethodName]
     check_K_escapeCharacters ( !mErrorMessage )
   end
 #--- Enter remove methods
-  for () in  mRemoveMethodList do
+  for () in mRemoveMethodList do
     [!?insertMethodMap insertKey !mMethodName]
     check_K_escapeCharacters ( !mErrorMessage )
   end
 #--- Warn for duplicated declarations or 'insertOrReplace' modifier
-  for () in  mInsertOrReplaceDeclarationListAST do(IDX)
+  for () in mInsertOrReplaceDeclarationListAST do(IDX)
     if IDX > 0 then
       warning mInsertOrReplaceDeclarationLocation: "the 'insertOrReplace' modifier is already declared"
     end
@@ -558,7 +558,7 @@ override method @uniqueMapDeclarationAST semanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
 #--- Compute initial state set
   var initialStateSet =@stringset.emptySet{}
-  for () in  mInsertMethodList do
+  for () in mInsertMethodList do
     if [mMapStateList length] > 0 then
       if [mInitialStateName string] == "" then
         error mInsertMethodName: "the '" + mInsertMethodName + "' insert method should name an automaton state"
@@ -571,7 +571,7 @@ override method @uniqueMapDeclarationAST semanticAnalysis
   end
 #--- Analyze map automation actions
   var mapAutomatonActionMap =@mapAutomatonActionMap.emptyMap{}
-  for () in  mSearchMethodList do
+  for () in mSearchMethodList do
     if [mMapStateList length] > 0 then
       if [mActionName string] == "" then
         error mSearchMethodName: "the '" + mSearchMethodName + "' search method should name an automaton action"
@@ -587,21 +587,21 @@ override method @uniqueMapDeclarationAST semanticAnalysis
   end
 #--- Analyze map automaton
   var mapAutomatonStateMap =@mapAutomatonStateMap.emptyMap{}
-  for () in  mMapStateList do
+  for () in mMapStateList do
     [!?mapAutomatonStateMap insertKey !mStateName ![mapAutomatonStateMap count]]
   end
-  for () in  mMapStateList do
-    for () in  mTransitionList do
+  for () in mMapStateList do
+    for () in mTransitionList do
       [mapAutomatonStateMap searchKey !mTargetStateName ?*]
     end
   end
 #--- Check automaton actions are all defined
   let @stringset allActions = [mapAutomatonActionMap keySet]
   var mapStateSortedList =@mapStateSortedList.emptySortedList{}
-  for () in  mMapStateList do
+  for () in mMapStateList do
     var actionsForCurrentState =@stringset.emptySet{}
     var mapStateTransitionSortedList =@mapStateTransitionSortedList.emptySortedList{}
-    for () in  mTransitionList do
+    for () in mTransitionList do
       @uint actionIndex
       [mapAutomatonActionMap searchKey !mActionName ?actionIndex]
       if [actionsForCurrentState hasKey ![mActionName string]] then
@@ -629,7 +629,7 @@ override method @uniqueMapDeclarationAST semanticAnalysis
     @stringset missingActions = allActions - actionsForCurrentState
     if [missingActions count] > 0 then
       @string s = ""
-      for () in  missingActions
+      for () in missingActions
         do s += "'" + key + "'"
         between s += ", "
       end
@@ -641,9 +641,9 @@ override method @uniqueMapDeclarationAST semanticAnalysis
   @bool progress = true
   loop( [mMapStateList length] + 1) while progress do
     progress = false
-    for () in  mMapStateList do
+    for () in mMapStateList do
       if [accessibleStates hasKey ![mStateName string]] then
-        for () in  mTransitionList do
+        for () in mTransitionList do
           if not [accessibleStates hasKey ![mTargetStateName string]] then
             accessibleStates += ![mTargetStateName string]
             progress = true
@@ -655,7 +655,7 @@ override method @uniqueMapDeclarationAST semanticAnalysis
   let @stringset uselessStates = [mapAutomatonStateMap keySet] - accessibleStates
   if [uselessStates count] > 0 then
     @string s = ""
-    for () in  uselessStates
+    for () in uselessStates
       do s += "'" + key + "'"
       between s += ", "
     end
@@ -665,15 +665,15 @@ override method @uniqueMapDeclarationAST semanticAnalysis
 #--- Compute needed associations
   var neededAssociations =@stringset.emptySet{}
   var accessibilityGraph =@stringset.emptySet{}
-  for () in  mapAutomatonStateMap do
+  for () in mapAutomatonStateMap do
     var reachableStates =@stringset.emptySet{}
     reachableStates += ![lkey string]
     @bool progress = true
     loop( [mapAutomatonStateMap count] + 1) while progress do
       progress = false
-      for () in  mMapStateList do
+      for () in mMapStateList do
         if [reachableStates hasKey ![mStateName string]] then
-          for () in  mTransitionList do
+          for () in mTransitionList do
             if not [reachableStates hasKey ![mTargetStateName string]] then
               reachableStates += ![mTargetStateName string]
               accessibilityGraph += ![lkey string] + ":" + [mTargetStateName string]
@@ -683,7 +683,7 @@ override method @uniqueMapDeclarationAST semanticAnalysis
         end
       end
     end
-    for () in  reachableStates do
+    for () in reachableStates do
       if [lkey string] != key then
         neededAssociations += ![lkey string] + ":" + key
       end
@@ -691,11 +691,11 @@ override method @uniqueMapDeclarationAST semanticAnalysis
   end
 #---
   var mapOverrideList =@mapOverrideList.emptyList{}
-  for () in  mMapOverrideBlockListAST do
+  for () in mMapOverrideBlockListAST do
     var handledAssociations =@stringset.emptySet{}
     var neededCombinaisons =@stringset.emptySet{}
     var branchBehaviourSortedListForMapOverride1 =@branchBehaviourSortedListForMapOverride.emptySortedList{}
-    for () in  mMapOverrideBlockDescriptor1AST do
+    for () in mMapOverrideBlockDescriptor1AST do
       @uint startStateNameIndex
       [mapAutomatonStateMap searchKey !mLeftState ?startStateNameIndex]
       @uint currentStateNameIndex
@@ -733,14 +733,14 @@ override method @uniqueMapDeclarationAST semanticAnalysis
     @stringset forgottenAssociations = neededAssociations - handledAssociations
     if [forgottenAssociations count] > 0 then
       @string s = ""
-      for () in  forgottenAssociations do
+      for () in forgottenAssociations do
         s += "\n  - " + key
       end
       error @location.here: [[forgottenAssociations count] string] + " associations should be defined:" + s
     end
     var definedCombinaisons =@stringset.emptySet{}
     var branchBehaviourSortedListForMapOverride2 =@branchBehaviourSortedListForMapOverride.emptySortedList{}
-    for () in  mMapOverrideBlockDescriptor2AST do
+    for () in mMapOverrideBlockDescriptor2AST do
       @uint leftStateIndex
       [mapAutomatonStateMap searchKey !mLeftState ?leftStateIndex]
       @uint rightStateIndex
@@ -790,7 +790,7 @@ override method @uniqueMapDeclarationAST semanticAnalysis
       @stringset forgottenCombinaisons = neededCombinaisons - definedCombinaisons
       if [forgottenCombinaisons count] > 0 then
         @string s = ""
-        for () in  forgottenCombinaisons do
+        for () in forgottenCombinaisons do
           s += "\n  - " + key
         end
         error @location.here: [[forgottenCombinaisons count] string] + " combinaisons are forgotten:" + s
@@ -802,28 +802,28 @@ override method @uniqueMapDeclarationAST semanticAnalysis
       !branchBehaviourSortedListForMapOverride2
   end
 #------ Enter attributes
-  var typedAttributeList =@typedAttributeList.emptyList{}
+  var typedAttributeList =@typedPropertyList.emptyList{}
   var attributeMap =@attributeIndexMap.emptyMap{}
-  for () in  mAttributeList do
-    var t =@unifiedTypeMap-proxy.searchKey{ !inSemanticContext.mTypeMap !mAttributeTypeName}
+  for () in mPropertyList do
+    let t =@unifiedTypeMap-proxy.searchKey{ !inSemanticContext.mTypeMap !mPropertyTypeName}
     @bool hasSetter = true
     @bool hasGetter = true
     typedAttributeList +=
       !t
-      !mAttributeName
+      !mPropertyName
       !hasSetter
       !hasGetter
-    [!?attributeMap insertKey !mAttributeName !t]
+    [!?attributeMap insertKey !mPropertyName !t]
   end
 #--- Enter insert modifiers
   var insertMethodMap =@insertMethodMap.emptyMap{}
-  for () in  mInsertMethodList do
+  for () in mInsertMethodList do
     [!?insertMethodMap insertKey !mInsertMethodName]
   #--- Check error message escape sequences : only %K, %L or %%
-    for () in  [[mErrorMessage string] componentsSeparatedByString !"%%"] do
+    for () in [[mErrorMessage string] componentsSeparatedByString !"%%"] do
       @stringlist explodedArray = [mValue componentsSeparatedByString !"%"]
       [!?explodedArray popFirst ?*]
-      for () in  explodedArray do
+      for () in explodedArray do
         if [mValue length] > 0 then
           let @char c = [mValue characterAtIndex !0]
           if (c != 'K') & (c != 'L') then
@@ -833,10 +833,10 @@ override method @uniqueMapDeclarationAST semanticAnalysis
       end
     end
   #--- Check shadow error message escape sequences : only %K, %L or %%
-    for () in  [[mShadowErrorMessage string] componentsSeparatedByString !"%%"] do
+    for () in [[mShadowErrorMessage string] componentsSeparatedByString !"%%"] do
       @stringlist explodedArray = [mValue componentsSeparatedByString !"%"]
       [!?explodedArray popFirst ?*]
-      for () in  explodedArray do
+      for () in explodedArray do
         if [mValue length] > 0 then
           let @char c = [mValue characterAtIndex !0]
           if (c != 'K') & (c != 'L') then
@@ -848,17 +848,17 @@ override method @uniqueMapDeclarationAST semanticAnalysis
   end
 #--- Enter search methods
   var searchMethodMap =@searchMethodMap.emptyMap{}
-  for () in  mSearchMethodList do
+  for () in mSearchMethodList do
     if [mMapStateList length] == 0 then # §
       [!?searchMethodMap insertKey !mSearchMethodName]
     else
       [!?searchMethodMap insertKey !mSearchMethodName]
     end
   #--- Check error message escape sequences : only %K or %%
-    for () in  [[mErrorMessage string] componentsSeparatedByString !"%%"] do
+    for () in [[mErrorMessage string] componentsSeparatedByString !"%%"] do
       @stringlist explodedArray = [mValue componentsSeparatedByString !"%"]
       [!?explodedArray popFirst ?*]
-      for () in  explodedArray do
+      for () in explodedArray do
         if [mValue length] > 0 then
           let @char c = [mValue characterAtIndex !0]
           if c != 'K' then
@@ -905,7 +905,7 @@ override method @mapProxyDeclarationAST semanticAnalysis
   [inSemanticContext.mTypeMap searchKey
     !mAssociatedMapTypeName
     ?7*
-    ?let @typedAttributeList listTypeAttributeList
+    ?let @typedPropertyList listTypeAttributeList
     ?11*
     ?let @mapSearchMethodListAST searchMethodList
     ?6*
@@ -935,7 +935,7 @@ proc buildLocalVariableMapAndSignature
   ?!@variableMap ioVariableMap
   !@formalParameterListForGeneration outRoutineSignature {
   outRoutineSignature = @formalParameterListForGeneration. emptyList
-  for () in  inRoutineSignatureAST do
+  for () in inRoutineSignatureAST do
     let type = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mFormalArgumentTypeName}
     @string formalArgumentCppName
     switch mFormalArgumentPassingMode
@@ -974,8 +974,8 @@ proc analyzeRoutineBody
   ?let @analysisContext inAnalysisContext
   ?let @formalParameterListAST inRoutineSignatureAST
   ?let @localConstantList inLocalConstantList
-  ?let @typedAttributeList inNonMutableTypedAttributeList
-  ?let @typedAttributeList inMutableTypedAttributeList
+  ?let @typedPropertyList inNonMutableTypedAttributeList
+  ?let @typedPropertyList inMutableTypedAttributeList
   ?let @string inAttributeVariableNamePrefix
   ?let @semanticInstructionListAST inInstructionList
   ?let @location inEndOfMethodLocation
@@ -983,7 +983,7 @@ proc analyzeRoutineBody
   !@formalParameterListForGeneration outRoutineSignature {
   var variableMap =@variableMap.emptyMap{}
 #--- Declare local constants
-  for () in  inLocalConstantList do
+  for () in inLocalConstantList do
     if mNoWarningIfUnused then
       [!?variableMap insertUsedLocalConstant !mName !mType !mCppName !inAnalysisContext.mSelfObjectCppName]
     else
@@ -991,7 +991,7 @@ proc analyzeRoutineBody
     end
   end
 #--- Enter non mutable instance attributes
-  for () in  inNonMutableTypedAttributeList do
+  for () in inNonMutableTypedAttributeList do
     [!?variableMap insertNonMutableAttribute
       !mAttributeName
       !mAttributeTypeProxy
@@ -1000,7 +1000,7 @@ proc analyzeRoutineBody
     ]
   end
 #--- Enter mutable instance attributes
-  for () in  inMutableTypedAttributeList do
+  for () in inMutableTypedAttributeList do
     [!?variableMap insertMutableAttribute
       !mAttributeName
       !mAttributeTypeProxy
@@ -1017,7 +1017,7 @@ proc analyzeRoutineBody
   )
 #---  Analyze instruction list
   outSemanticInstructionListForGeneration = @semanticInstructionListForGeneration. emptyList
-  for () in  inInstructionList do
+  for () in inInstructionList do
     [mInstruction analyzeSemanticInstruction
       !inAnalysisContext
       !?outSemanticInstructionListForGeneration
@@ -1036,7 +1036,7 @@ override method @externFunctionDeclarationAST semanticAnalysis
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
   var formalArgumentList =@formalInputParameterListForGeneration.emptyList{}
-  for () in  mFormalArgumentList do
+  for () in mFormalArgumentList do
     formalArgumentList +=
       !mFormalSelector
       !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mFormalArgumentTypeName}
@@ -1063,7 +1063,7 @@ override method @externRoutineDeclarationAST semanticAnalysis
   ?let @predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration {
   var formalArgumentList =@formalParameterListForGeneration.emptyList{}
-  for () in  mFormalArgumentList do
+  for () in mFormalArgumentList do
     formalArgumentList +=
       !mFormalSelector
       !mFormalArgumentPassingMode
@@ -1101,8 +1101,8 @@ override method @routineDeclarationAST semanticAnalysis
     !analysisContext
     !mFormalArgumentList
     !@localConstantList. emptyList
-    !@typedAttributeList. emptyList
-    !@typedAttributeList. emptyList
+    !@typedPropertyList. emptyList
+    !@typedPropertyList. emptyList
     !""
     !mRoutineInstructionList
     !mEndOfRoutineInstructionList
@@ -1135,13 +1135,13 @@ override method @classDeclarationAST semanticAnalysis
 # A class that has a super may not have any feature
 # A class without a super class admits the 'generatedInSeparateFile' feature
   @unifiedTypeMap-proxy superClassProxy
-  @typedAttributeList allAttributeList
+  @typedPropertyList allAttributeList
   if [mSuperClassName string] == "" then
     superClassProxy = @unifiedTypeMap-proxy. null
-    allAttributeList = @typedAttributeList. emptyList
+    allAttributeList = @typedPropertyList. emptyList
     @bool generatedInSeparateFileFeature = false
     if [mClassFeatureList length] > 0 then
-      for () in  mClassFeatureList do
+      for () in mClassFeatureList do
         if [mValue string] == "generatedInSeparateFile" then
           if generatedInSeparateFileFeature then
             error mValue:"the 'generatedInSeparateFile' is already named"
@@ -1156,19 +1156,19 @@ override method @classDeclarationAST semanticAnalysis
     superClassProxy = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mSuperClassName}
     allAttributeList = [superClassProxy mAllTypedAttributeList]
     if [mClassFeatureList length] > 0 then
-      for () in  mClassFeatureList do
+      for () in mClassFeatureList do
         error mValue:"a class that has a super class does not accept any feature"
       end
     end
   end
 #------ Enter attributes
-  var typedAttributeList =@typedAttributeList.emptyList{}
+  var typedAttributeList =@typedPropertyList.emptyList{}
   var attributeMap =@attributeIndexMap.emptyMap{}
-  for () in  mAttributeList do
-    let t = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mAttributeTypeName}
+  for () in mAttributeList do
+    let t = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mPropertyTypeName}
     @bool hasSetter = false
     @bool hasGetter = true
-    for () in  mFeatureList do
+    for () in mFeatureList do
       if [mValue string] == "setter" then
         if hasSetter then
           error mValue : "the 'setter' feature is already named"
@@ -1185,15 +1185,15 @@ override method @classDeclarationAST semanticAnalysis
     end
     typedAttributeList +=
       !t
-      !mAttributeName
+      !mPropertyName
       !hasSetter
       !hasGetter
     allAttributeList +=
       !t
-      !mAttributeName
+      !mPropertyName
       !hasSetter
       !hasGetter
-    [!?attributeMap insertKey !mAttributeName !t]
+    [!?attributeMap insertKey !mPropertyName !t]
   end
 #------ Compute sort string (used for sorting generated code)
   @string sortString = [selfType key]
@@ -1222,7 +1222,7 @@ override method @classDeclarationAST semanticAnalysis
 proc analyzeFunctionBody
   ?let @analysisContext inAnalysisContext
   ?let @formalInputParameterListAST inFunctionSignature
-  ?let @typedAttributeList inTypedAttributeList
+  ?let @typedPropertyList inTypedAttributeList
   ?let @string inAttributeVariableNamePrefix
   ?let @semanticInstructionListAST inInstructionList
   ?let @lstring inReturnVariableName
@@ -1234,7 +1234,7 @@ proc analyzeFunctionBody
   !@semanticInstructionListForGeneration outSemanticInstructionListForGeneration {
   var variableMap =@variableMap.emptyMap{}
 #--- Enter instance attributes
-  for () in  inTypedAttributeList do
+  for () in inTypedAttributeList do
     [!?variableMap insertNonMutableAttribute
       !mAttributeName
       !mAttributeTypeProxy
@@ -1244,7 +1244,7 @@ proc analyzeFunctionBody
   end
 #--- Enter formal parameters
   outSignatureForGeneration = @formalInputParameterListForGeneration. emptyList
-  for () in  inFunctionSignature do
+  for () in inFunctionSignature do
     let parameterType = @unifiedTypeMap-proxy.searchKey { !inAnalysisContext.mSemanticContext.mTypeMap !mFormalArgumentTypeName}
     if mIsConstant then
       let @string cppName = "constinArgument_" + [[mFormalArgumentName string] identifierRepresentation]
@@ -1280,7 +1280,7 @@ proc analyzeFunctionBody
   [!?variableMap insertOutputFormalArgument !inReturnVariableName !outReturnedType !outResultVariableCppName !outResultVariableCppName]
 #---  Analyze instruction list
   outSemanticInstructionListForGeneration = @semanticInstructionListForGeneration. emptyList
-  for () in  inInstructionList do
+  for () in inInstructionList do
     [mInstruction analyzeSemanticInstruction
       !inAnalysisContext
       !?outSemanticInstructionListForGeneration
@@ -1312,7 +1312,7 @@ override method @functionDeclarationAST semanticAnalysis
   analyzeFunctionBody (
     !analysisContext
     !mFormalArgumentList
-    !@typedAttributeList. emptyList
+    !@typedPropertyList. emptyList
     !""
     !mFunctionInstructionList
     !mResultVariableName
@@ -1357,7 +1357,7 @@ override method @onceFunctionDeclarationAST semanticAnalysis
   analyzeFunctionBody (
     !analysisContext
     !@formalInputParameterListAST. emptyList
-    !@typedAttributeList. emptyList
+    !@typedPropertyList. emptyList
     !""
     !mFunctionInstructionList
     !mResultVariableName
@@ -1413,7 +1413,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
   else
   #---- Analyze filewrapper templates
     var filewrapperTemplateListForGeneration =@filewrapperTemplateListForGeneration.emptyList{}
-    for () in  mFilewrapperTemplateList do
+    for () in mFilewrapperTemplateList do
       if [[mFilewrapperTemplatePath string] firstCharacterOrNul] == '/' then
         error mFilewrapperTemplatePath : "the path should not begin with a '/'; it is relative to filewrapper path '" + absoluteSourcePath + "'"
       end
@@ -1424,7 +1424,7 @@ override method @filewrapperDeclarationAST semanticAnalysis
     #--- Build template variable map
       @templateVariableMap templateVariableMap = {}
       var filewrapperTemplateFormalInputParameters =@formalInputParameterListForGeneration.emptyList{}
-      for () in  mFilewrapperTemplateFormalInputParameters do
+      for () in mFilewrapperTemplateFormalInputParameters do
         var type =@unifiedTypeMap-proxy.searchKey{ !inSemanticContext.mTypeMap !mFormalArgumentTypeName}
         let @string cppVarName = "in_" + [[mFormalArgumentName string] identifierRepresentation]
         [!?templateVariableMap insertKey !mFormalArgumentName !type !cppVarName]
@@ -1507,7 +1507,7 @@ override method @abstractCategoryMethodAST semanticAnalysis
   end
 #--- Compute method signature
   var formalParameterListForGeneration =@formalParameterListForGeneration.emptyList{}
-  for () in  mAbstractCategoryMethodFormalParameterList do
+  for () in mAbstractCategoryMethodFormalParameterList do
     formalParameterListForGeneration +=
       !mFormalSelector
       !mFormalArgumentPassingMode
@@ -1564,9 +1564,9 @@ override method @categoryMethodAST semanticAnalysis
     !@localConstantList. emptyList
     !if ([selfType mTypeKindEnum] == @typeKindEnum. classType) | ([selfType mTypeKindEnum] == @typeKindEnum. structType)
        then [selfType mAllTypedAttributeList]
-       else @typedAttributeList. emptyList
+       else @typedPropertyList. emptyList
      end
-    !@typedAttributeList. emptyList
+    !@typedPropertyList. emptyList
     !selfObjectAccessor
     !mCategoryMethodInstructionList
     !mEndOfMethodLocation
@@ -1635,9 +1635,9 @@ override method @overridingCategoryMethodAST semanticAnalysis
     !@localConstantList. emptyList
     !if ([selfType mTypeKindEnum] == @typeKindEnum. classType) | ([selfType mTypeKindEnum] == @typeKindEnum. structType)
        then [selfType mAllTypedAttributeList]
-       else @typedAttributeList. emptyList
+       else @typedPropertyList. emptyList
      end
-    !@typedAttributeList. emptyList
+    !@typedPropertyList. emptyList
     !"object->"
     !mOverridingCategoryMethodInstructionList
     !mEndOfMethodLocation
@@ -1739,7 +1739,7 @@ override method @abstractCategoryModifierAST semanticAnalysis
   end
 #--- Compute modifier signature
   var formalParameterListForGeneration =@formalParameterListForGeneration.emptyList{}
-  for () in  mAbstractCategoryModifierFormalParameterList do
+  for () in mAbstractCategoryModifierFormalParameterList do
     formalParameterListForGeneration +=
       !mFormalSelector
       !mFormalArgumentPassingMode
@@ -1794,7 +1794,7 @@ override method @categoryModifierAST semanticAnalysis
     !analysisContext
     !mCategoryModifierFormalParameterList
     !@localConstantList. emptyList
-    !@typedAttributeList. emptyList
+    !@typedPropertyList. emptyList
     ![selfType mAllTypedAttributeList]
     !selfObjectAccessor
     !mCategoryModifierInstructionList
@@ -1862,7 +1862,7 @@ override method @overridingCategoryModifierAST semanticAnalysis
     !analysisContext
     !mOverridingCategoryModifierFormalParameterList
     !@localConstantList. emptyList
-    !@typedAttributeList. emptyList
+    !@typedPropertyList. emptyList
     ![selfType mAllTypedAttributeList]
     !"object->"
     !mOverridingCategoryModifierInstructionList
@@ -1965,7 +1965,7 @@ override method @abstractCategoryReaderAST semanticAnalysis
   end
 #--- Compute method signature
   var formalParameterListForGeneration =@formalInputParameterListForGeneration.emptyList{}
-  for () in  mAbstractCategoryReaderFormalInputParameterList do
+  for () in mAbstractCategoryReaderFormalInputParameterList do
     formalParameterListForGeneration +=
       !mFormalSelector
       !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mFormalArgumentTypeName}
@@ -2026,7 +2026,7 @@ override method @categoryReaderAST semanticAnalysis
     !mCategoryReaderFormalInputParameterList
     !if ([selfType mTypeKindEnum] == @typeKindEnum. classType) | ([selfType mTypeKindEnum] == @typeKindEnum. structType) | ([selfType mTypeKindEnum] == @typeKindEnum. mapProxyType)
        then [selfType mAllTypedAttributeList]
-       else @typedAttributeList. emptyList
+       else @typedPropertyList. emptyList
      end
     !selfObjectAccessor
     !mCategoryReaderInstructionList
@@ -2108,7 +2108,7 @@ override method @overridingCategoryReaderAST semanticAnalysis
     !mOverridingCategoryReaderFormalInputParameterList
     !if ([selfType mTypeKindEnum] == @typeKindEnum. classType) | ([selfType mTypeKindEnum] == @typeKindEnum. structType)
        then [selfType mAllTypedAttributeList]
-       else @typedAttributeList. emptyList
+       else @typedPropertyList. emptyList
      end
     !"object->"
     !mOverridingCategoryReaderInstructionList
@@ -2197,7 +2197,7 @@ override method @overridingAbstractCategoryReaderAST semanticAnalysis
 #--- Check Signature
   if baseTypeName != "" then
     var formalParameterListForGeneration =@formalInputParameterListForGeneration.emptyList{}
-    for () in  mAbstractCategoryReaderFormalInputParameterList do
+    for () in mAbstractCategoryReaderFormalInputParameterList do
       formalParameterListForGeneration +=
         !mFormalSelector
         !@unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mFormalArgumentTypeName}
@@ -2233,7 +2233,7 @@ override method @galgas3SyntaxComponentAST semanticAnalysis
   ]
 #--------------------------------------- Build "indexing" set
   var indexNameSet =@stringset.emptySet{}
-  for () in  indexingListAST do
+  for () in indexingListAST do
     indexNameSet += !mIndexName.string
   end
   let @bool hasIndexing = not [indexingDirectory isNowhere]
@@ -2279,7 +2279,7 @@ override method @galgas3GrammarComponentAST semanticAnalysis
   var syntaxComponentListForGrammarAnalysis =@syntaxComponentListForGrammarAnalysis.emptyList{}
   var nonTerminalToAddList =@nonTerminalToAddList.emptyList{}
   @uint addedNonTerminalCount = 0
-  for () in  mSyntaxComponents do
+  for () in mSyntaxComponents do
     let @uint addedNonTerminalCountRef = addedNonTerminalCount
     let syntaxComponentName = mValue.string
     [inSemanticContext.mSyntaxComponentMapForSemanticAnalysis searchKey
@@ -2356,14 +2356,14 @@ override method @galgas3GrammarComponentAST semanticAnalysis
   )
 #---------------------------------------------------------- Unused Non Terminal Symbols
   var unusedNonTerminalSymbolsForGrammar =@unusedNonTerminalSymbolMapForGrammarAnalysis.emptyMap{}
-  for () in  mUnusedNonterminalList do
+  for () in mUnusedNonterminalList do
     @uint nonterminalIndex
     [nonTerminalMapForGrammarAnalysis searchKey !mValue ?nonterminalIndex ?*]
     [!?unusedNonTerminalSymbolsForGrammar insertKey !mValue !nonterminalIndex]
   end
 #---------------------------------------------------------- Non terminal symbols, sorted by index
   var nonTerminalSymbolSortedListForGrammarAnalysis =@nonTerminalSymbolSortedListForGrammarAnalysis.emptySortedList{}
-  for () in  nonTerminalMapForGrammarAnalysis do
+  for () in nonTerminalMapForGrammarAnalysis do
     nonTerminalSymbolSortedListForGrammarAnalysis += !lkey !mNonTerminalIndex !mNonterminalSymbolParametersMap
   end
 #---------------------------------------------------------- Header of implementation file
@@ -2437,9 +2437,9 @@ override method @lexiqueComponentAST semanticAnalysis
   @lexicalRoutineMap lexicalRoutineMap
   buildLexicalRoutineMap ( ?lexicalRoutineMap )
 #--------------------------------------- Add extern routines
-  for () in  mExternRoutineList do
+  for () in mExternRoutineList do
     var lexicalRoutineFormalArgumentList =@lexicalRoutineFormalArgumentList.emptyList{}
-    for () in  mLexicalRoutineFormalArgumentList do
+    for () in mLexicalRoutineFormalArgumentList do
       @lexicalTypeEnum lexicalFormalArgumentType
       [lexicalTypeMap searchKey !mLexicalTypeName ?lexicalFormalArgumentType]
       lexicalRoutineFormalArgumentList += !mPassingMode !lexicalFormalArgumentType ![mFormalArgumentName string]
@@ -2450,9 +2450,9 @@ override method @lexiqueComponentAST semanticAnalysis
   @lexicalFunctionMap lexicalFunctionMap
   buildLexicalFunctionMap ( ?lexicalFunctionMap )
 #--------------------------------------- Add extern functions
-  for () in  mExternFunctionList do
+  for () in mExternFunctionList do
     var lexicalFunctionFormalArgumentList =@lexicalFunctionFormalArgumentList.emptyList{}
-    for () in  mLexicalFunctionFormalArgumentList do
+    for () in mLexicalFunctionFormalArgumentList do
       @lexicalTypeEnum lexicalFormalArgumentType
       [lexicalTypeMap searchKey !mLexicalTypeName ?lexicalFormalArgumentType]
       lexicalFunctionFormalArgumentList += !lexicalFormalArgumentType ![mFormalArgumentName string]
@@ -2493,7 +2493,7 @@ override method @lexiqueComponentAST semanticAnalysis
   }
 #--------------------------------------- Build style map
   @uint styleIndex = 1
-  for () in  mLexicalStyleList do
+  for () in mLexicalStyleList do
     [!?lexiqueAnalysisContext.mStyleMap insertKey !mName !mComment !styleIndex]
     styleIndex ++
   end
@@ -2504,13 +2504,13 @@ override method @lexiqueComponentAST semanticAnalysis
    !?lexiqueAnalysisContext.mLexicalAttributeMap
   )
 #--------------------------------------- Build terminal map
-  for () in  mTerminalDeclarationList do
+  for () in mTerminalDeclarationList do
     @uint terminalStyleIndex = 0
     if [[mStyle string] length] > 0 then
       [[lexiqueAnalysisContext mStyleMap] searchKey !mStyle ?* ?terminalStyleIndex]
     end
     var argumentTypeList =@lexicalSentValueList.emptyList{}
-    for () in  mSentAttributeList do
+    for () in mSentAttributeList do
       @lexicalTypeEnum attributeLexicalType
       [lexiqueAnalysisContext.mLexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType]
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
@@ -2518,7 +2518,7 @@ override method @lexiqueComponentAST semanticAnalysis
     [!?lexiqueAnalysisContext.mTerminalMap insertKey !mName !argumentTypeList]
     @bool isEndOfTemplateMark = false
     @bool atomicSelection = true
-    for () in  mOptionList do
+    for () in mOptionList do
       if [mValue string] == "nonAtomicSelection" then
         if atomicSelection then
           atomicSelection = false
@@ -2541,24 +2541,24 @@ override method @lexiqueComponentAST semanticAnalysis
       !atomicSelection
       !terminalStyleIndex
   end
-  for () in  mLexicalListDeclarationList do
+  for () in mLexicalListDeclarationList do
     @uint terminalStyleIndex = 0
     if [[mStyle string] length] > 0 then
       [[lexiqueAnalysisContext mStyleMap] searchKey !mStyle ?* ?terminalStyleIndex]
     end
     var argumentTypeList =@lexicalSentValueList.emptyList{}
-    for () in  mSentAttributeList do
+    for () in mSentAttributeList do
       @lexicalTypeEnum attributeLexicalType
       [lexiqueAnalysisContext.mLexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType]
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
     end
     var lexicalTokenListMap =@lexicalExplicitTokenListMap.emptyMap{}
     var tokenSortedlist =@tokenSortedlist.emptySortedList{}
-    for () in  mEntryList do
+    for () in mEntryList do
       @string syntaxErrorMessage = [[mSyntaxErrorMessage string] stringByReplacingStringByString !"%K" ![mTerminalSpelling string]]
       @bool isEndOfTemplateMark = false
       @bool atomicSelection = true
-      for () in  mFeatureList do
+      for () in mFeatureList do
         if [mValue string] == "nonAtomicSelection" then
           if atomicSelection then
             atomicSelection = false
@@ -2588,25 +2588,25 @@ override method @lexiqueComponentAST semanticAnalysis
     [!?lexiqueAnalysisContext.mLexicalTokenListMap insertKey !mName !lexicalTokenListMap !tokenSortedlist !false]
   end
 #--------------------------------------- Build Message map
-  for () in  mLexicalMessageDeclarationList do
+  for () in mLexicalMessageDeclarationList do
     [!?lexiqueAnalysisContext.mLexicalMessageMap insertKey !mMessageName !mMessageValue !false]
   end
 #--------------------------------------- Check rules
-  for () in  mLexicalRuleList do
+  for () in mLexicalRuleList do
     [mLexicalRule checkLexicalRule !?lexiqueAnalysisContext]
   end
 #--------------------------------------- Warn for unused messages
-  for () in  [lexiqueAnalysisContext mLexicalMessageMap] do
+  for () in [lexiqueAnalysisContext mLexicalMessageMap] do
     if not mMessageIsUsed then
       warning lkey:"unused message"
     end
   end
 #--------------------------------------- Template delimiters
-  for () in  mTemplateDelimitorList do
+  for () in mTemplateDelimitorList do
    lexiqueAnalysisContext.mUnicodeStringToGenerate += ![mStartString string]
    lexiqueAnalysisContext.mUnicodeStringToGenerate += ![mEndString string]
    @bool preservesStartDelimiter = false
-   for () in  mOptionList do
+   for () in mOptionList do
      if [mValue string] != "preserved" then
        error mValue:"only the 'preserved' feature is allowed here"
      elsif preservesStartDelimiter then
@@ -2619,19 +2619,19 @@ override method @lexiqueComponentAST semanticAnalysis
   end
 #--------------------------------------- Check "indexing" declarations
   if [mIndexingDirectory isNowhere] then
-    for () in  mIndexingListAST do
+    for () in mIndexingListAST do
       error mIndexName : "indexing declaration requires one 'indexing in \"path\";' declaration"
     end
   end
   var indexNameSet =@stringset.emptySet{}
-  for () in  mIndexingListAST do
+  for () in mIndexingListAST do
     if [indexNameSet hasKey ![mIndexName string]] then
       error mIndexName : "the '" + mIndexName + "' index is already declared"
     end
     indexNameSet += ![mIndexName string]
   end
 #--------------------------------------- Template replacements
-  for () in  mTemplateReplacementList do
+  for () in mTemplateReplacementList do
    lexiqueAnalysisContext.mUnicodeStringToGenerate += ![mMatchString string]
    lexiqueAnalysisContext.mUnicodeStringToGenerate += ![mReplacementString string]
    # § TODO Check replacement function
@@ -2747,19 +2747,19 @@ proc performSemanticAnalysis
   ?let @semanticContext inSemanticContext
   !@semanticDeclarationSortedListForGeneration outDecoratedDeclarationListForGeneration {
 #------ Check there is no undefined types
-  for () in  [inSemanticContext.mTypeMap unsolvedProxyList] do
+  for () in [inSemanticContext.mTypeMap unsolvedProxyList] do
     error mValue : "the '@" + mValue + "' type is undefined"
   end
 #------ Create associated type (@TYPE:element) for lists, maps, ...
   @semanticDeclarationListAST semanticDeclarationList = inDeclarationList
-  for () in  inDeclarationList do
+  for () in inDeclarationList do
     [mSemanticDeclaration addAssociatedElement !?semanticDeclarationList]
   end
 #---
   outDecoratedDeclarationListForGeneration = @semanticDeclarationSortedListForGeneration. emptySortedList
   if @uint. errorCount == 0 then
     let @predefinedTypes predefinedTypes = buildPredefinedTypes (!inSemanticContext)
-    for () in  semanticDeclarationList do
+    for () in semanticDeclarationList do
       [mSemanticDeclaration semanticAnalysis
         !inProductDirectory
         !inSemanticContext
@@ -2875,13 +2875,13 @@ proc enterNonterminalNonTerminalInMapAndCheck
   ?let @lstring inNonTerminalName
   ?let @nonterminalLabelMap inNonterminalLabelMap
   ?!@nonterminalMap ioNonterminalDeclarationMap {
-  with [inNonTerminalName string] in  ioNonterminalDeclarationMap  do
+  with [inNonTerminalName string] in ioNonterminalDeclarationMap  do
     let @stringset firstDeclarationLabelSet = [mLabelMap keySet]
     let @stringset reDeclarationLabelSet = [inNonterminalLabelMap keySet]
     let @stringset missingLabelSet = firstDeclarationLabelSet - reDeclarationLabelSet
     if [missingLabelSet count] > 0 then
       @string s = ""
-      for () in  missingLabelSet do
+      for () in missingLabelSet do
         s += "\n-  " + key
       end
       error inNonTerminalName
@@ -2890,16 +2890,16 @@ proc enterNonterminalNonTerminalInMapAndCheck
     let @stringset newLabelSet = reDeclarationLabelSet - firstDeclarationLabelSet
     if [newLabelSet count] > 0 then
       @string s = ""
-      for () in  newLabelSet do
+      for () in newLabelSet do
         s += "\n-  " + key
       end
       error inNonTerminalName
       : "the '" + inNonTerminalName + "' nonterminal is redeclared with the new label(s):" + s
     end
     if ([missingLabelSet count] == 0) & ([newLabelSet count] == 0) then
-      for () in  mLabelMap, () new_ in  inNonterminalLabelMap do
+      for () in mLabelMap, () new_ in inNonterminalLabelMap do
         var newSignature =@formalParameterSignature.emptyList{}
-        for () in  new_mSignature do
+        for () in new_mSignature do
           newSignature += !mFormalSelector !mFormalArgumentType !mFormalArgumentPassingMode !mFormalArgumentName
         end
         checkMethodSignatures (
@@ -2923,12 +2923,12 @@ proc buildNonterminalDeclarationsMap
   !@nonterminalMap outNonterminalDeclarationMap {
   outNonterminalDeclarationMap = @nonterminalMap. emptyMap
 #--- Nonterminal declaration list
-  for () in  inNonterminalDeclarationList do
+  for () in inNonterminalDeclarationList do
     var nonterminalLabelMap =@nonterminalLabelMap.emptyMap{}
-    for () in  mLabels do
+    for () in mLabels do
       var signatureForGeneration =@formalParameterListForGeneration.emptyList{}
       var signature =@formalParameterSignature.emptyList{}
-      for () in  mFormalArgumentList do
+      for () in mFormalArgumentList do
         let t = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mFormalArgumentTypeName}
         signatureForGeneration += !mFormalSelector !mFormalArgumentPassingMode !t !mFormalArgumentName ![mFormalArgumentName string]
         signature += !mFormalSelector !t !mFormalArgumentPassingMode !mFormalArgumentName.string
@@ -3036,7 +3036,7 @@ override method @nonterminalInstructionForGeneration generateInstruction
   var parameterCppNameList =@stringlist.emptyList{}
   var jokerParametersToReleaseList =@stringlist.emptyList{}
   var inputVariableList =@stringlist.emptyList{}
-  for () in  mActualParameterList do
+  for () in mActualParameterList do
     [mActualParameter generateActualParameter
       !?ioInclusionSet
       !?ioTemporaryVariableIndex
@@ -3054,7 +3054,7 @@ override method @nonterminalInstructionForGeneration generateInstruction
     ioGeneratedCode += "C_String " + sdtResultVarName + " ;\n"
   end
   ioGeneratedCode += "nt_" + [mNonterminalName identifierRepresentation] + "_" + [mLabelName identifierRepresentation] + " ("
-  for () in  parameterCppNameList do
+  for () in parameterCppNameList do
     ioGeneratedCode += mValue + ", "
   end
   if inGenerateSyntaxDirectedTranslationString then
@@ -3069,7 +3069,7 @@ override method @nonterminalInstructionForGeneration generateInstruction
     !?ioGeneratedCode
   ]
 #--- Release temporary variables
-  for () in  jokerParametersToReleaseList do
+  for () in jokerParametersToReleaseList do
     ioGeneratedCode += mValue + ".drop () ; // Release temporary input variables (joker in source)\n"
   end
 }
@@ -3374,7 +3374,7 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
   end
 #---
   var terminalCheckAssignementList =@terminalCheckAssignementList.emptyList{}
-  for () in  mActualInputParameterList, () in  sentAttributeList do
+  for () in mActualInputParameterList, () in sentAttributeList do
     [mInputParameter analyzeInputParameter
       !inAnalysisContext
       !mLexicalType
@@ -3388,10 +3388,10 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
     end
   end
 #---
-  for () in  mIndexingKeyList do
+  for () in mIndexingKeyList do
     if not [inIndexNameSet hasKey ![mValue0 string]] then
       var s = ""
-      for () in  inIndexNameSet do
+      for () in inIndexNameSet do
         s += "\n  - " + key
       end
       error mValue0 : "the '" + mValue0 + "' indexing name is not declared by the lexique; available names are:" + s
@@ -3428,7 +3428,7 @@ override method @terminalCheckInstructionForGeneration generateInstruction
   ?let @bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode {
 #--- Get synthetized attributes
-  for () in  mTerminalCheckAssignementList do
+  for () in mTerminalCheckAssignementList do
     if mTypeName != "" then
       ioGeneratedCode += "GALGAS_" + [mTypeName identifierRepresentation] + " "
     else
@@ -3438,7 +3438,7 @@ override method @terminalCheckInstructionForGeneration generateInstruction
                     + " () ;\n"
   end
 #--- Indexing
-  for () in  mIndexingKeyList do
+  for () in mIndexingKeyList do
     ioGeneratedCode += compilerCppName ()
                     + "->enterIndexing (C_Lexique_" + mLexiqueIdentifier + "::kIndexing_" + [mValue0 identifierRepresentation]
                     + ", " + [mValue1 utf8Representation] + ") ;\n"
@@ -3482,7 +3482,7 @@ proc analyzeSyntaxInstructionList
 #--- Begin branch
   [!?ioVariableMap openBranch]
 #--- Instruction list
-  for () in  inSyntaxInstructionListAST do
+  for () in inSyntaxInstructionListAST do
     [mInstruction analyzeSyntaxInstruction
       !inAnalysisContext
       !inHasTranslateFeature
@@ -3535,7 +3535,7 @@ override method @repeatInstruction analyzeSyntaxInstruction
   )
 #--- 'while' blocks
   var listOfSemanticInstructionListForGeneration =@listOfSemanticInstructionListForGeneration.emptyList{}
-  for () in  mRepeatBranchList do
+  for () in mRepeatBranchList do
     @semanticInstructionListForGeneration instructionList
     analyzeSyntaxInstructionList (
       !inAnalysisContext
@@ -3587,7 +3587,7 @@ override method @repeatInstructionForGeneration generateInstruction
   )
   [!?ioGeneratedCode incIndentation !2]
   ioGeneratedCode += "switch (select_" + [mSyntaxComponentName identifierRepresentation] + "_" + [mChoiceIndex string] + " (" + compilerCppName () + ")) {\n"
-  for () in  mListOfSemanticInstructionListForGeneration do(IDX)
+  for () in mListOfSemanticInstructionListForGeneration do(IDX)
     ioGeneratedCode += "case " + [IDX + 2 string] + ": {\n"
     generateInstructionList (
       !?ioInclusionSet
@@ -3626,7 +3626,7 @@ override method @selectInstruction analyzeSyntaxInstruction
   [!?ioVariableMap openOverrideForSelectBlock]
 #--- 'or' blocks
   var listOfSemanticInstructionListForGeneration =@listOfSemanticInstructionListForGeneration.emptyList{}
-  for () in  mSelectBranchList do
+  for () in mSelectBranchList do
     @semanticInstructionListForGeneration instructionList
     analyzeSyntaxInstructionList (
       !inAnalysisContext
@@ -3664,7 +3664,7 @@ override method @selectInstructionForGeneration generateInstruction
 #  ioGeneratedCode .= "//-------- @selectInstructionForGeneration\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   ioGeneratedCode += "switch (select_" + [mSyntaxComponentName identifierRepresentation] + "_" + [mChoiceIndex string] + " (" + compilerCppName () + ")) {\n"
-  for () in  mListOfSemanticInstructionListForGeneration do(IDX)
+  for () in mListOfSemanticInstructionListForGeneration do(IDX)
     ioGeneratedCode += "case " + [IDX + 1 string] + ": {\n"
     generateInstructionList (
       !?ioInclusionSet
@@ -3697,10 +3697,10 @@ override method @parseRewindInstruction analyzeSyntaxInstruction
 #--- 'Rewind' blocks
   var listOfSemanticInstructionListForGeneration =@listOfSemanticInstructionListForGeneration.emptyList{}
   let @uint referenceSelectMethodCount = ioSelectMethodCount
-  for () in  mParseRewindBranchList do
+  for () in mParseRewindBranchList do
     ioSelectMethodCount = referenceSelectMethodCount
     var instructionList =@semanticInstructionListForGeneration.emptyList{}
-    for () in  mSyntaxInstructionList do
+    for () in mSyntaxInstructionList do
       [mInstruction analyzeSyntaxInstruction
         !inAnalysisContext
         !inHasTranslateFeature
@@ -3722,7 +3722,7 @@ override method @parseRewindInstruction analyzeSyntaxInstruction
   [!?tempListOfBranches popFirst ?instructionList ?*]
   let @semanticInstructionListForGeneration referenceSignature = syntaxSignatureOfInstructionList (!"parse" !instructionList)
   @bool ok = true
-  for () in  tempListOfBranches while ok do
+  for () in tempListOfBranches while ok do
     ok = compareSyntaxSignature (
       !referenceSignature
       !syntaxSignatureOfInstructionList (!"parse" !mInstructionList)
@@ -3747,7 +3747,7 @@ override method @parseRewindInstructionForGeneration generateInstruction
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
   let @string parsingContextVar = "parsingContext_" + [ioTemporaryVariableIndex string] ioTemporaryVariableIndex ++
   ioGeneratedCode += "const C_parsingContext " + parsingContextVar + " = " + compilerCppName () + "->parsingContext () ;\n"
-  for () in  mListOfSemanticInstructionListForGeneration
+  for () in mListOfSemanticInstructionListForGeneration
   do
     generateInstructionList (
       !?ioInclusionSet
@@ -4076,13 +4076,13 @@ proc semanticAnalysisOfRuleLabel
   )
 #---
   outSignature = @formalParameterSignature. emptyList
-  for () in  outSignatureForGeneration do
+  for () in outSignatureForGeneration do
     outSignature += !mFormalSelector !mFormalArgumentType !mFormalArgumentPassingMode !mFormalArgumentName.string
   end
 #--- Semantic analysis of instruction list
   outInstructionListForGeneration = @semanticInstructionListForGeneration. emptyList
   var localVariableCppNameList =@stringlist.emptyList{}
-  for () in  inSyntaxInstructionList do
+  for () in inSyntaxInstructionList do
     [mInstruction analyzeSyntaxInstruction
       !inAnalysisContext
       !inHasTranslateFeature
@@ -4126,12 +4126,12 @@ proc semanticAnalysisOfSyntaxComponent
     ?nonterminalMap
   )
 #------------ Build nonterminal map from rule headers
-  for () in  inRuleList do
+  for () in inRuleList do
     var nonterminalLabelMap =@nonterminalLabelMap.emptyMap{}
-    for () in  mLabelList do
+    for () in mLabelList do
       var signatureForGeneration =@formalParameterListForGeneration.emptyList{}
       var signature =@formalParameterSignature.emptyList{}
-      for () in  mFormalArguments do
+      for () in mFormalArguments do
         let type = @unifiedTypeMap-proxy.searchKey { !inSemanticContext.mTypeMap !mFormalArgumentTypeName}
         signatureForGeneration += !mFormalSelector !mFormalArgumentPassingMode !type !mFormalArgumentName !"argument_" + mFormalArgumentName
         signature += !mFormalSelector !type !mFormalArgumentPassingMode !mFormalArgumentName.string
@@ -4151,11 +4151,11 @@ proc semanticAnalysisOfSyntaxComponent
   @uint selectMethodCount = 0
   var ruleDeclarationList =@ruleDeclarationList.emptyList{}
   @uint newRuleIndex = 0
-  for () in  inRuleList do
+  for () in inRuleList do
     var ruleLabelImplementationList =@ruleLabelImplementationList.emptyList{}
     @uint localSelectMethodCount = selectMethodCount
     [nonterminalMap searchKey !mNonterminalName ?*]
-    for () in  mLabelList do
+    for () in mLabelList do
       localSelectMethodCount = selectMethodCount
       @formalParameterListForGeneration signatureForGeneration
       @formalParameterSignature signature

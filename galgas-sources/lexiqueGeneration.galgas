@@ -134,7 +134,7 @@ override getter @lexicalCurrentCharacterInputArgumentAST generateRoutineOrFuncti
 override getter @lexicalFunctionInputArgumentAST generateRoutineOrFunctionArgument
   -> @string outGeneratedCode {
   outGeneratedCode = "::scanner_function_" + mFunctionName + " (*this"
-  for () in  mFunctionActualArgumentList do
+  for () in mFunctionActualArgumentList do
     outGeneratedCode += ", " + [mLexicalActualInputArgument generateRoutineOrFunctionArgument]
   end
   outGeneratedCode += ")"
@@ -201,7 +201,7 @@ override getter @lexicalStructuredSendInstructionAST generateInstructionCode
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   outGeneratedCode = ""
-  for () in  mLexicalSendSearchList do
+  for () in mLexicalSendSearchList do
     outGeneratedCode += "if (token.mTokenCode == -1) {\n"
     outGeneratedCode += "  token.mTokenCode = search_into_" + mSearchListName + " (token.mLexicalAttribute_" + [mAttributeName identifierRepresentation] + ") ;\n"
     outGeneratedCode += "}\n"
@@ -231,17 +231,17 @@ override getter @lexicalRepeatInstructionAST generateInstructionCode
   outGeneratedCode = "do {\n"
   [!?outGeneratedCode incIndentation !2]
 #--- Repeated instruction
-  for () in  mRepeatedInstructionList do
+  for () in mRepeatedInstructionList do
     outGeneratedCode += [mInstruction generateInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
   end
 #---
-  for () in  mLexicalWhileBranchList
+  for () in mLexicalWhileBranchList
   do
     outGeneratedCode += "if ("
     outGeneratedCode += [mWhileExpression generateConditionCode !context:inLexiqueAnalysisContext]
     outGeneratedCode += ") {\n"
     [!?outGeneratedCode incIndentation !2]
-    for () in  mWhileInstructionList do
+    for () in mWhileInstructionList do
       outGeneratedCode += [mInstruction generateInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
     end
     [!?outGeneratedCode decIndentation !2]
@@ -264,13 +264,13 @@ override getter @lexicalSelectInstructionAST generateInstructionCode
   -> @string outGeneratedCode {
   outGeneratedCode = ""
 #---
-  for () in  mLexicalSelectBranchList
+  for () in mLexicalSelectBranchList
   do
     outGeneratedCode += "if ("
     outGeneratedCode += [mSelectExpression generateConditionCode !context:inLexiqueAnalysisContext]
     outGeneratedCode += ") {\n"
     [!?outGeneratedCode incIndentation !2]
-    for () in  mSelectInstructionList do
+    for () in mSelectInstructionList do
       outGeneratedCode += [mInstruction generateInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
     end
     [!?outGeneratedCode decIndentation !2]
@@ -281,7 +281,7 @@ override getter @lexicalSelectInstructionAST generateInstructionCode
   if [mDefaultInstructionList length] > 0 then
     outGeneratedCode += "}else{\n"
     [!?outGeneratedCode incIndentation !2]
-    for () in  mDefaultInstructionList do
+    for () in mDefaultInstructionList do
       outGeneratedCode += [mInstruction generateInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
     end
     [!?outGeneratedCode decIndentation !2]
@@ -296,10 +296,10 @@ override getter @lexicalRoutineInstructionAST generateInstructionCode
   ?@lexiqueAnalysisContext unused inLexiqueAnalysisContext
   -> @string outGeneratedCode {
   outGeneratedCode = "::scanner_routine_" + mRoutineName + " (*this"
-  for () in  mActualArgumentList do
+  for () in mActualArgumentList do
     outGeneratedCode += ", " + [mLexicalRoutineActualArgument generateRoutineArgument]
   end
-  for () in  mErrorMessageList do
+  for () in mErrorMessageList do
     outGeneratedCode += ", gLexicalMessage_" + inScannerClassName + "_" + mValue
   end
   outGeneratedCode += ") ;\n"
@@ -383,7 +383,7 @@ override getter @lexicalImplicitRuleAST generateCode
   @tokenSortedlist tokenSortedList
   [[inLexiqueAnalysisContext mLexicalTokenListMap] searchKey !mListName ?* ?tokenSortedList ?*]
   outGeneratedCode = ""
-  for > () in  tokenSortedList do
+  for > () in tokenSortedList do
     outGeneratedCode += "if (testForInputUTF32String (kUnicodeString_" + inScannerClassName + "_"
     outGeneratedCode += [mName identifierRepresentation]
     outGeneratedCode += ", "
@@ -405,7 +405,7 @@ override getter @lexicalExplicitRuleAST generateCode
   outGeneratedCode += [mLexicalRuleExpression generateConditionCode !context:inLexiqueAnalysisContext]
   outGeneratedCode += ") {\n"
   [!?outGeneratedCode incIndentation !2]
-  for () in  mInstructionList do
+  for () in mInstructionList do
     outGeneratedCode += [mInstruction generateInstructionCode !inScannerClassName !inLexiqueAnalysisContext]
   end
   [!?outGeneratedCode decIndentation !2]

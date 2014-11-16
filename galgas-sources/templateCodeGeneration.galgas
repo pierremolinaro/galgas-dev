@@ -31,7 +31,7 @@ proc templateCodeGenerationForListInstruction
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@bool ioUseColumnMarker {
-  for () in  inInstructionList do
+  for () in inInstructionList do
     [mInstruction templateCodeGeneration
       !?ioGeneratedCode
       !?ioInclusionSet
@@ -218,7 +218,7 @@ override method @templateInstructionIfForGeneration templateCodeGeneration
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@bool ioUseColumnMarker {
-  for () in  mTemplateInstructionIfBranchList do
+  for () in mTemplateInstructionIfBranchList do
   #--- IF expression
     @string ifVarCppName
     [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?ifVarCppName]
@@ -247,7 +247,7 @@ override method @templateInstructionIfForGeneration templateCodeGeneration
     !?ioUnusedVariableCppNameSet
     !?ioUseColumnMarker
   )
-  for () in  mTemplateInstructionIfBranchList do
+  for () in mTemplateInstructionIfBranchList do
     [!?ioGeneratedCode decIndentation !2]
     ioGeneratedCode += "}\n"
   end
@@ -269,8 +269,8 @@ override method @templateInstructionSwitchForGeneration templateCodeGeneration
   ioGeneratedCode += "case GALGAS_" + [[mSwitchExpression mResultType] identifierRepresentation] + "::kNotBuilt :\n"
   ioGeneratedCode += "  break ;\n"
 #---
-  for () in  mTemplateInstructionSwitchBranchList do
-    for () in  mConstantList do
+  for () in mTemplateInstructionSwitchBranchList do
+    for () in mConstantList do
       ioGeneratedCode += "case GALGAS_" + [[mSwitchExpression mResultType] identifierRepresentation] + "::kEnum_" + [[mValue string] identifierRepresentation] + " :\n"
     end
     [!?ioGeneratedCode incIndentation !2]

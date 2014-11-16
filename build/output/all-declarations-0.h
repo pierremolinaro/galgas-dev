@@ -6258,8 +6258,8 @@ class GALGAS_unifiedTypeMap_2D_proxy : public AC_GALGAS_uniqueMapProxy {
   public : VIRTUAL_IN_DEBUG class GALGAS_functionSignature reader_mAddAssignOperatorArguments (C_Compiler * inCompiler
                                                                                                COMMA_LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_typedAttributeList reader_mAllTypedAttributeList (C_Compiler * inCompiler
-                                                                                           COMMA_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_typedPropertyList reader_mAllTypedAttributeList (C_Compiler * inCompiler
+                                                                                          COMMA_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_attributeMap reader_mAttributeMap (C_Compiler * inCompiler
                                                                             COMMA_LOCATION_ARGS) const ;
@@ -6270,8 +6270,8 @@ class GALGAS_unifiedTypeMap_2D_proxy : public AC_GALGAS_uniqueMapProxy {
   public : VIRTUAL_IN_DEBUG class GALGAS_constructorMap reader_mConstructorMap (C_Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_typedAttributeList reader_mCurrentTypedAttributeList (C_Compiler * inCompiler
-                                                                                               COMMA_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_typedPropertyList reader_mCurrentTypedAttributeList (C_Compiler * inCompiler
+                                                                                              COMMA_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mDefaultConstructorName (C_Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) const ;

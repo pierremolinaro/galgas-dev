@@ -163,11 +163,11 @@ list @enumerationDescriptorList {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#  T Y P E D    A T T R I B U T E    L I S T                                                                           *
+#  T Y P E D    P R O P E R T Y    L I S T                                                                             *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-list @typedAttributeList {
+list @typedPropertyList {
   @unifiedTypeMap-proxy mAttributeTypeProxy
   @lstring mAttributeName
   @bool mHasSetter
@@ -313,9 +313,9 @@ sharedmap @unifiedTypeMap {
   @unifiedTypeMap-proxy mSuperType
   @typeKindEnum mTypeKindEnum
   @bool mSupportCollectionValue
-  @typedAttributeList mAllTypedAttributeList
+  @typedPropertyList mAllTypedAttributeList
   @attributeMap mAttributeMap # struct, class
-  @typedAttributeList mCurrentTypedAttributeList
+  @typedPropertyList mCurrentTypedAttributeList
   @constructorMap mConstructorMap
   @readerMap mReaderMap
   @modifierMap mModifierMap

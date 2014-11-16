@@ -178,7 +178,7 @@ override method @lexicalCharacterSetMatchAST checkLexicalExpression
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext {
   if not [ioLexiqueAnalysisContext.mExternUnicodeTestFunctions hasKey ![mCharacterSetName string]] then
     @string s = "undefined test function; available functions are:"
-    for () in  ioLexiqueAnalysisContext.mExternUnicodeTestFunctions do
+    for () in ioLexiqueAnalysisContext.mExternUnicodeTestFunctions do
       s += "\n-  " + key
     end
     error mCharacterSetName : s
@@ -313,7 +313,7 @@ override method @lexicalFunctionInputArgumentAST checkLexicalFunctionCallArgumen
     + [[lexicalFormalTypeList length] string] + " actual argument(s)"
   end
 #--- Check actual argument against formal parameters
-  for () in  lexicalFormalTypeList, () in  mFunctionActualArgumentList do
+  for () in lexicalFormalTypeList, () in mFunctionActualArgumentList do
     [mLexicalActualInputArgument checkLexicalFunctionCallArgument
       !?ioLexiqueAnalysisContext
       !mLexicalType
@@ -428,7 +428,7 @@ override method @lexicalFunctionInputArgumentAST checkLexicalRoutineCallArgument
     + [[lexicalFormalTypeList length] string] + " actual argument(s)"
   end
 #--- Check actual argument against formal parameters
-  for () in  lexicalFormalTypeList, () in  mFunctionActualArgumentList do
+  for () in lexicalFormalTypeList, () in mFunctionActualArgumentList do
     [mLexicalActualInputArgument checkLexicalFunctionCallArgument
       !?ioLexiqueAnalysisContext
       !mLexicalType
@@ -501,7 +501,7 @@ abstract method @lexicalInstructionAST checkLexicalInstruction
 override method @lexicalStructuredSendInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?!@lexicalTagMap unused ioTagMap {
-  for () in  mLexicalSendSearchList do
+  for () in mLexicalSendSearchList do
     [!?ioLexiqueAnalysisContext.mLexicalTokenListMap setMShouldBeGeneratedForKey !true !mSearchListName.string]
     [[ioLexiqueAnalysisContext mLexicalAttributeMap] searchKey !mAttributeName ?*]
   end
@@ -521,15 +521,15 @@ override method @lexicalSimpleSendInstructionAST checkLexicalInstruction
 override method @lexicalRepeatInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?!@lexicalTagMap ioTagMap {
-  for () in  mLexicalWhileBranchList do
+  for () in mLexicalWhileBranchList do
     [mWhileExpression checkLexicalExpression !?ioLexiqueAnalysisContext]
     var tagMap =@lexicalTagMap.mapWithMapToOverride{ !ioTagMap}
-    for () in  mWhileInstructionList do
+    for () in mWhileInstructionList do
       [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext !?tagMap]
     end
   end
   var tagMap =@lexicalTagMap.mapWithMapToOverride{ !ioTagMap}
-  for () in  mRepeatedInstructionList do
+  for () in mRepeatedInstructionList do
     [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext !?tagMap]
   end
 }
@@ -539,15 +539,15 @@ override method @lexicalRepeatInstructionAST checkLexicalInstruction
 override method @lexicalSelectInstructionAST checkLexicalInstruction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
   ?!@lexicalTagMap  ioTagMap {
-  for () in  mLexicalSelectBranchList do
+  for () in mLexicalSelectBranchList do
     [mSelectExpression checkLexicalExpression !?ioLexiqueAnalysisContext]
     var tagMap =@lexicalTagMap.mapWithMapToOverride{ !ioTagMap}
-    for () in  mSelectInstructionList do
+    for () in mSelectInstructionList do
       [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext !?tagMap]
     end
   end
   var tagMap =@lexicalTagMap.mapWithMapToOverride{ !ioTagMap}
-  for () in  mDefaultInstructionList do
+  for () in mDefaultInstructionList do
     [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext !?tagMap]
   end
 }
@@ -573,7 +573,7 @@ override method @lexicalRoutineInstructionAST checkLexicalInstruction
     + [[lexicalRoutineFormalArgumentList length] string] + " actual argument(s)"
   end
 #--- Check actual argument against formal parameters
-  for () in  lexicalRoutineFormalArgumentList, () in  mActualArgumentList do
+  for () in lexicalRoutineFormalArgumentList, () in mActualArgumentList do
     [mLexicalRoutineActualArgument checkLexicalRoutineCallArgument
       !?ioLexiqueAnalysisContext
       !mLexicalFormalArgumentMode
@@ -588,7 +588,7 @@ override method @lexicalRoutineInstructionAST checkLexicalInstruction
     + [[routineErrorMessageList length] string] + " error message(s)"
   end
 #--- Check error messages are actually defined
-  for () in  mErrorMessageList do
+  for () in mErrorMessageList do
 #    with !?ioLexiqueAnalysisContext->mLexicalMessageMap searchKey !mValue : xyz_ do
 #      xyz_mMessageIsUsed := true ;
 #    end with ;
@@ -664,7 +664,7 @@ override method @lexicalExplicitRuleAST checkLexicalRule
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext {
   [mLexicalRuleExpression checkLexicalExpression !?ioLexiqueAnalysisContext]
   var tagMap =@lexicalTagMap.emptyMap{}
-  for () in  mInstructionList do
+  for () in mInstructionList do
     [mInstruction checkLexicalInstruction !?ioLexiqueAnalysisContext !?tagMap]
   end
 }
@@ -772,9 +772,9 @@ proc compileLexiqueComponentFromAST
   @lexicalRoutineMap lexicalRoutineMap
   buildLexicalRoutineMap ( ?lexicalRoutineMap )
 #--------------------------------------- Add extern routines
-  for () in  [inLexiqueComponentRoot mExternRoutineList] do
+  for () in [inLexiqueComponentRoot mExternRoutineList] do
     var lexicalRoutineFormalArgumentList =@lexicalRoutineFormalArgumentList.emptyList{}
-    for () in  mLexicalRoutineFormalArgumentList do
+    for () in mLexicalRoutineFormalArgumentList do
       @lexicalTypeEnum lexicalFormalArgumentType
       [lexicalTypeMap searchKey !mLexicalTypeName ?lexicalFormalArgumentType]
       lexicalRoutineFormalArgumentList += !mPassingMode !lexicalFormalArgumentType ![mFormalArgumentName string]
@@ -785,9 +785,9 @@ proc compileLexiqueComponentFromAST
   @lexicalFunctionMap lexicalFunctionMap
   buildLexicalFunctionMap ( ?lexicalFunctionMap )
 #--------------------------------------- Add extern functions
-  for () in  [inLexiqueComponentRoot mExternFunctionList] do
+  for () in [inLexiqueComponentRoot mExternFunctionList] do
     var lexicalFunctionFormalArgumentList =@lexicalFunctionFormalArgumentList.emptyList{}
-    for () in  mLexicalFunctionFormalArgumentList do
+    for () in mLexicalFunctionFormalArgumentList do
       @lexicalTypeEnum lexicalFormalArgumentType
       [lexicalTypeMap searchKey !mLexicalTypeName ?lexicalFormalArgumentType]
       lexicalFunctionFormalArgumentList += !lexicalFormalArgumentType ![mFormalArgumentName string]
@@ -828,7 +828,7 @@ proc compileLexiqueComponentFromAST
   }
 #--------------------------------------- Build style map
   @uint styleIndex = 1
-  for () in  [inLexiqueComponentRoot mLexicalStyleList] do
+  for () in [inLexiqueComponentRoot mLexicalStyleList] do
     [!?lexiqueAnalysisContext.mStyleMap insertKey !mName !mComment !styleIndex]
     styleIndex ++
   end
@@ -839,13 +839,13 @@ proc compileLexiqueComponentFromAST
    !?lexiqueAnalysisContext.mLexicalAttributeMap
   )
 #--------------------------------------- Build terminal map
-  for () in  [inLexiqueComponentRoot mTerminalDeclarationList] do
+  for () in [inLexiqueComponentRoot mTerminalDeclarationList] do
     @uint terminalStyleIndex = 0
     if [[mStyle string] length] > 0 then
       [[lexiqueAnalysisContext mStyleMap] searchKey !mStyle ?* ?terminalStyleIndex]
     end
     var argumentTypeList =@lexicalSentValueList.emptyList{}
-    for () in  mSentAttributeList do
+    for () in mSentAttributeList do
       @lexicalTypeEnum attributeLexicalType
       [lexiqueAnalysisContext.mLexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType]
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
@@ -853,7 +853,7 @@ proc compileLexiqueComponentFromAST
     [!?lexiqueAnalysisContext.mTerminalMap insertKey !mName !argumentTypeList]
     @bool isEndOfTemplateMark = false
     @bool atomicSelection = true
-    for () in  mOptionList do
+    for () in mOptionList do
       if [mValue string] == "nonAtomicSelection" then
         if atomicSelection then
           atomicSelection = false
@@ -876,24 +876,24 @@ proc compileLexiqueComponentFromAST
       !atomicSelection
       !terminalStyleIndex
   end
-  for () in  [inLexiqueComponentRoot mLexicalListDeclarationList] do
+  for () in [inLexiqueComponentRoot mLexicalListDeclarationList] do
     @uint terminalStyleIndex = 0
     if [[mStyle string] length] > 0 then
       [[lexiqueAnalysisContext mStyleMap] searchKey !mStyle ?* ?terminalStyleIndex]
     end
     var argumentTypeList =@lexicalSentValueList.emptyList{}
-    for () in  mSentAttributeList do
+    for () in mSentAttributeList do
       @lexicalTypeEnum attributeLexicalType
       [lexiqueAnalysisContext.mLexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType]
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
     end
     var lexicalTokenListMap =@lexicalExplicitTokenListMap.emptyMap{}
     var tokenSortedlist =@tokenSortedlist.emptySortedList{}
-    for () in  mEntryList do
+    for () in mEntryList do
       @string syntaxErrorMessage = [[mSyntaxErrorMessage string] stringByReplacingStringByString !"%K" ![mTerminalSpelling string]]
       @bool isEndOfTemplateMark = false
       @bool atomicSelection = true
-      for () in  mFeatureList do
+      for () in mFeatureList do
         if [mValue string] == "nonAtomicSelection" then
           if atomicSelection then
             atomicSelection = false
@@ -923,25 +923,25 @@ proc compileLexiqueComponentFromAST
     [!?lexiqueAnalysisContext.mLexicalTokenListMap insertKey !mName !lexicalTokenListMap !tokenSortedlist !false]
   end
 #--------------------------------------- Build Message map
-  for () in  [inLexiqueComponentRoot mLexicalMessageDeclarationList] do
+  for () in [inLexiqueComponentRoot mLexicalMessageDeclarationList] do
     [!?lexiqueAnalysisContext.mLexicalMessageMap insertKey !mMessageName !mMessageValue !false]
   end
 #--------------------------------------- Check rules
-  for () in  [inLexiqueComponentRoot mLexicalRuleList] do
+  for () in [inLexiqueComponentRoot mLexicalRuleList] do
     [mLexicalRule checkLexicalRule !?lexiqueAnalysisContext]
   end
 #--------------------------------------- Warn for unused messages
-  for () in  [lexiqueAnalysisContext mLexicalMessageMap] do
+  for () in [lexiqueAnalysisContext mLexicalMessageMap] do
     if not mMessageIsUsed then
       warning lkey:"unused message"
     end
   end
 #--------------------------------------- Template delimiters
-  for () in  [inLexiqueComponentRoot mTemplateDelimitorList] do
+  for () in [inLexiqueComponentRoot mTemplateDelimitorList] do
    lexiqueAnalysisContext.mUnicodeStringToGenerate += ![mStartString string]
    lexiqueAnalysisContext.mUnicodeStringToGenerate += ![mEndString string]
    @bool preservesStartDelimiter = false
-   for () in  mOptionList do
+   for () in mOptionList do
      if [mValue string] != "preserved" then
        error mValue:"only the 'preserved' feature is allowed here"
      elsif preservesStartDelimiter then
@@ -954,19 +954,19 @@ proc compileLexiqueComponentFromAST
   end
 #--------------------------------------- Check "indexing" declarations
   if [[inLexiqueComponentRoot mIndexingDirectory] isNowhere] then
-    for () in  [inLexiqueComponentRoot mIndexingListAST] do
+    for () in [inLexiqueComponentRoot mIndexingListAST] do
       error mIndexName : "indexing declaration requires one 'indexing in \"path\";' declaration"
     end
   end
   var indexNameSet =@stringset.emptySet{}
-  for () in  [inLexiqueComponentRoot mIndexingListAST] do
+  for () in [inLexiqueComponentRoot mIndexingListAST] do
     if [indexNameSet hasKey ![mIndexName string]] then
       error mIndexName : "the '" + mIndexName + "' index is already declared"
     end
     indexNameSet += ![mIndexName string]
   end
 #--------------------------------------- Template replacements
-  for () in  [inLexiqueComponentRoot mTemplateReplacementList] do
+  for () in [inLexiqueComponentRoot mTemplateReplacementList] do
    lexiqueAnalysisContext.mUnicodeStringToGenerate += ![mMatchString string]
    lexiqueAnalysisContext.mUnicodeStringToGenerate += ![mReplacementString string]
    # § TODO Check replacement function

@@ -2482,7 +2482,7 @@ class cGrammar_semanticsSLRgrammar : public cParser_expressionSyntax,
   public : virtual void nt_attribute_5F_declaration_indexing (C_Lexique_galgas_5F_scanner * inCompiler) ;
 
 //----------- '' label
-  public : virtual void nt_attribute_5F_declaration_ (GALGAS_attributeInCollectionListAST & ioArgument0,
+  public : virtual void nt_attribute_5F_declaration_ (GALGAS_propertyInCollectionListAST & ioArgument0,
                                                       C_String & ioSyntaxDirectedTranslationResult,
                                                       C_Lexique_galgas_5F_scanner * inCompiler) ;
 

@@ -24,13 +24,13 @@ proc updateLIBPMatPath ?let @string inLIBPMPath {
 #  message "LIBPM path: '" . inLIBPMPath . "'\n" ;
   let @filewrapper fw = [filewrapper libpmFileWrapper]
 #--- Create directories
-  for () in  [fw allDirectoryPathes] do
+  for () in [fw allDirectoryPathes] do
     let @string actualDirectory = inLIBPMPath + mValue
     [actualDirectory makeDirectory]
   end
 #--- Update text files
   var allNeededFileSet =@stringset.emptySet{}
-  for () in  [fw allTextFilePathes] do
+  for () in [fw allTextFilePathes] do
     let @string contents = [fw textFileContentsAtPath !mValue]
     let @string actualFilePath = inLIBPMPath + mValue
     if [actualFilePath pathExtension] == "py" then
@@ -41,7 +41,7 @@ proc updateLIBPMatPath ?let @string inLIBPMPath {
     allNeededFileSet += !mValue
   end
 #--- Update binary files
-  for () in  [fw allBinaryFilePathes] do
+  for () in [fw allBinaryFilePathes] do
     let @data contents = [fw binaryFileContentsAtPath !mValue]
     let @string actualFilePath = inLIBPMPath + mValue
     [contents writeToFileWhenDifferentContents !actualFilePath ?*]
@@ -49,11 +49,11 @@ proc updateLIBPMatPath ?let @string inLIBPMPath {
   end
 #--- Remove useless files
   var allActualFileSet =@stringset.emptySet{}
-  for () in  [inLIBPMPath regularFiles !true] do
+  for () in [inLIBPMPath regularFiles !true] do
     allActualFileSet += !"/" + mValue
   end
   let uselessFileSet = allActualFileSet - allNeededFileSet
-  for () in  uselessFileSet do
+  for () in uselessFileSet do
     [@string deleteFile !inLIBPMPath + key]
   end
 }

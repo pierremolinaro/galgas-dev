@@ -8427,9 +8427,9 @@ GALGAS_bool GALGAS_unifiedTypeMap_2D_proxy::reader_mSupportCollectionValue (C_Co
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedAttributeList GALGAS_unifiedTypeMap_2D_proxy::reader_mAllTypedAttributeList (C_Compiler * inCompiler
-                                                                                         COMMA_LOCATION_ARGS) const {
-  GALGAS_typedAttributeList result ;
+GALGAS_typedPropertyList GALGAS_unifiedTypeMap_2D_proxy::reader_mAllTypedAttributeList (C_Compiler * inCompiler
+                                                                                        COMMA_LOCATION_ARGS) const {
+  GALGAS_typedPropertyList result ;
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) getAttributeListPointer (inCompiler, "mAllTypedAttributeList" COMMA_THERE) ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
@@ -8453,9 +8453,9 @@ GALGAS_attributeMap GALGAS_unifiedTypeMap_2D_proxy::reader_mAttributeMap (C_Comp
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-GALGAS_typedAttributeList GALGAS_unifiedTypeMap_2D_proxy::reader_mCurrentTypedAttributeList (C_Compiler * inCompiler
-                                                                                             COMMA_LOCATION_ARGS) const {
-  GALGAS_typedAttributeList result ;
+GALGAS_typedPropertyList GALGAS_unifiedTypeMap_2D_proxy::reader_mCurrentTypedAttributeList (C_Compiler * inCompiler
+                                                                                            COMMA_LOCATION_ARGS) const {
+  GALGAS_typedPropertyList result ;
   const cMapElement_unifiedTypeMap * p = (const cMapElement_unifiedTypeMap *) getAttributeListPointer (inCompiler, "mCurrentTypedAttributeList" COMMA_THERE) ;
   if (NULL != p) {
     macroValidSharedObject (p, cMapElement_unifiedTypeMap) ;
@@ -29696,7 +29696,7 @@ void cGrammar_semanticsSLRgrammar::nt_attribute_5F_declaration_indexing (C_Lexiq
   }
 }
 
-void cGrammar_semanticsSLRgrammar::nt_attribute_5F_declaration_ (GALGAS_attributeInCollectionListAST &  parameter_1,
+void cGrammar_semanticsSLRgrammar::nt_attribute_5F_declaration_ (GALGAS_propertyInCollectionListAST &  parameter_1,
                                 C_String & ioSyntaxDirectedTranslationResult,
                                 C_Lexique_galgas_5F_scanner * inLexique) {
   switch (inLexique->nextProductionIndex ()) {

@@ -106,7 +106,7 @@ class cParser_semanticDeclarationsSyntax {
   public : virtual ~ cParser_semanticDeclarationsSyntax (void) {}
 
 //--- Non terminal declarations
-  protected : virtual void nt_attribute_5F_declaration_ (class GALGAS_attributeInCollectionListAST & ioArgument0,
+  protected : virtual void nt_attribute_5F_declaration_ (class GALGAS_propertyInCollectionListAST & ioArgument0,
                                                          class C_String & ioSyntaxDirectedTranslationResult,
                                                          class C_Lexique_galgas_5F_scanner * inLexique) = 0 ;
 
@@ -171,7 +171,7 @@ class cParser_semanticDeclarationsSyntax {
 
 
 //--- Rule declarations
-  protected : void rule_semanticDeclarationsSyntax_attribute_5F_declaration_i0_ (GALGAS_attributeInCollectionListAST & ioArgument0,
+  protected : void rule_semanticDeclarationsSyntax_attribute_5F_declaration_i0_ (GALGAS_propertyInCollectionListAST & ioArgument0,
                                                                                  C_String & ioSyntaxDirectedTranslationResult,
                                                                                  C_Lexique_galgas_5F_scanner * inLexique) ;
 
@@ -1283,7 +1283,7 @@ class GALGAS_classDeclarationAST : public GALGAS_semanticDeclarationAST {
                                                               const class GALGAS_lstring & inOperand2,
                                                               const class GALGAS_lstring & inOperand3,
                                                               const class GALGAS_lstringlist & inOperand4,
-                                                              const class GALGAS_attributeInCollectionListAST & inOperand5
+                                                              const class GALGAS_propertyInCollectionListAST & inOperand5
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -1318,7 +1318,7 @@ class cPtr_classDeclarationAST : public cPtr_semanticDeclarationAST {
   public : GALGAS_lstring mAttribute_mClassTypeName ;
   public : GALGAS_lstring mAttribute_mSuperClassName ;
   public : GALGAS_lstringlist mAttribute_mClassFeatureList ;
-  public : GALGAS_attributeInCollectionListAST mAttribute_mAttributeList ;
+  public : GALGAS_propertyInCollectionListAST mAttribute_mAttributeList ;
 
 //--- Constructor
   public : cPtr_classDeclarationAST (const GALGAS_bool & in_mIsPredefined,
@@ -1326,7 +1326,7 @@ class cPtr_classDeclarationAST : public cPtr_semanticDeclarationAST {
                                      const GALGAS_lstring & in_mClassTypeName,
                                      const GALGAS_lstring & in_mSuperClassName,
                                      const GALGAS_lstringlist & in_mClassFeatureList,
-                                     const GALGAS_attributeInCollectionListAST & in_mAttributeList
+                                     const GALGAS_propertyInCollectionListAST & in_mAttributeList
                                      COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -1809,7 +1809,7 @@ class GALGAS_listDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- GALGAS constructors
   public : static GALGAS_listDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
                                                              const class GALGAS_lstring & inOperand1,
-                                                             const class GALGAS_attributeInCollectionListAST & inOperand2
+                                                             const class GALGAS_propertyInCollectionListAST & inOperand2
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -1841,12 +1841,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_listDeclarationAST 
 class cPtr_listDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Attributes
   public : GALGAS_lstring mAttribute_mListTypeName ;
-  public : GALGAS_attributeInCollectionListAST mAttribute_mAttributeList ;
+  public : GALGAS_propertyInCollectionListAST mAttribute_mAttributeList ;
 
 //--- Constructor
   public : cPtr_listDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                     const GALGAS_lstring & in_mListTypeName,
-                                    const GALGAS_attributeInCollectionListAST & in_mAttributeList
+                                    const GALGAS_propertyInCollectionListAST & in_mAttributeList
                                     COMMA_LOCATION_ARGS) ;
 
 //--- Duplication
@@ -1987,11 +1987,12 @@ class GALGAS_mapDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- GALGAS constructors
   public : static GALGAS_mapDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
                                                             const class GALGAS_lstring & inOperand1,
-                                                            const class GALGAS_attributeInCollectionListAST & inOperand2,
-                                                            const class GALGAS_insertMethodListAST & inOperand3,
-                                                            const class GALGAS_mapSearchMethodListAST & inOperand4,
-                                                            const class GALGAS_mapRemoveMethodListAST & inOperand5,
-                                                            const class GALGAS_insertOrReplaceDeclarationListAST & inOperand6
+                                                            const class GALGAS_lstringlist & inOperand2,
+                                                            const class GALGAS_propertyInCollectionListAST & inOperand3,
+                                                            const class GALGAS_insertMethodListAST & inOperand4,
+                                                            const class GALGAS_mapSearchMethodListAST & inOperand5,
+                                                            const class GALGAS_mapRemoveMethodListAST & inOperand6,
+                                                            const class GALGAS_insertOrReplaceDeclarationListAST & inOperand7
                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -2003,13 +2004,15 @@ class GALGAS_mapDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_attributeInCollectionListAST reader_mAttributeList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist reader_mAttributeList (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_insertMethodListAST reader_mInsertMethodList (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_insertOrReplaceDeclarationListAST reader_mInsertOrReplaceDeclarationListAST (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mMapTypeName (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_propertyInCollectionListAST reader_mPropertyList (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_mapRemoveMethodListAST reader_mRemoveMethodList (LOCATION_ARGS) const ;
 
@@ -2035,7 +2038,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_mapDeclarationAST ;
 class cPtr_mapDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Attributes
   public : GALGAS_lstring mAttribute_mMapTypeName ;
-  public : GALGAS_attributeInCollectionListAST mAttribute_mAttributeList ;
+  public : GALGAS_lstringlist mAttribute_mAttributeList ;
+  public : GALGAS_propertyInCollectionListAST mAttribute_mPropertyList ;
   public : GALGAS_insertMethodListAST mAttribute_mInsertMethodList ;
   public : GALGAS_mapSearchMethodListAST mAttribute_mSearchMethodList ;
   public : GALGAS_mapRemoveMethodListAST mAttribute_mRemoveMethodList ;
@@ -2044,7 +2048,8 @@ class cPtr_mapDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Constructor
   public : cPtr_mapDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                    const GALGAS_lstring & in_mMapTypeName,
-                                   const GALGAS_attributeInCollectionListAST & in_mAttributeList,
+                                   const GALGAS_lstringlist & in_mAttributeList,
+                                   const GALGAS_propertyInCollectionListAST & in_mPropertyList,
                                    const GALGAS_insertMethodListAST & in_mInsertMethodList,
                                    const GALGAS_mapSearchMethodListAST & in_mSearchMethodList,
                                    const GALGAS_mapRemoveMethodListAST & in_mRemoveMethodList,
@@ -2056,7 +2061,8 @@ class cPtr_mapDeclarationAST : public cPtr_semanticDeclarationAST {
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mMapTypeName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_attributeInCollectionListAST reader_mAttributeList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstringlist reader_mAttributeList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_propertyInCollectionListAST reader_mPropertyList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_insertMethodListAST reader_mInsertMethodList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_mapSearchMethodListAST reader_mSearchMethodList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_mapRemoveMethodListAST reader_mRemoveMethodList (LOCATION_ARGS) const ;
@@ -2837,7 +2843,7 @@ class GALGAS_sortedListDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- GALGAS constructors
   public : static GALGAS_sortedListDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
                                                                    const class GALGAS_lstring & inOperand1,
-                                                                   const class GALGAS_attributeInCollectionListAST & inOperand2,
+                                                                   const class GALGAS_propertyInCollectionListAST & inOperand2,
                                                                    const class GALGAS_sortedListSortDescriptorListAST & inOperand3
                                                                    COMMA_LOCATION_ARGS) ;
 
@@ -2850,7 +2856,7 @@ class GALGAS_sortedListDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_attributeInCollectionListAST reader_mAttributeList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_propertyInCollectionListAST reader_mAttributeList (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_sortedListSortDescriptorListAST reader_mSortDescriptorList (LOCATION_ARGS) const ;
 
@@ -2876,13 +2882,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sortedListDeclarati
 class cPtr_sortedListDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Attributes
   public : GALGAS_lstring mAttribute_mSortedListTypeName ;
-  public : GALGAS_attributeInCollectionListAST mAttribute_mAttributeList ;
+  public : GALGAS_propertyInCollectionListAST mAttribute_mAttributeList ;
   public : GALGAS_sortedListSortDescriptorListAST mAttribute_mSortDescriptorList ;
 
 //--- Constructor
   public : cPtr_sortedListDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                           const GALGAS_lstring & in_mSortedListTypeName,
-                                          const GALGAS_attributeInCollectionListAST & in_mAttributeList,
+                                          const GALGAS_propertyInCollectionListAST & in_mAttributeList,
                                           const GALGAS_sortedListSortDescriptorListAST & in_mSortDescriptorList
                                           COMMA_LOCATION_ARGS) ;
 
@@ -2891,7 +2897,7 @@ class cPtr_sortedListDeclarationAST : public cPtr_semanticDeclarationAST {
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mSortedListTypeName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_attributeInCollectionListAST reader_mAttributeList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_propertyInCollectionListAST reader_mAttributeList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_sortedListSortDescriptorListAST reader_mSortDescriptorList (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
@@ -2935,7 +2941,7 @@ class GALGAS_structDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- GALGAS constructors
   public : static GALGAS_structDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
                                                                const class GALGAS_lstring & inOperand1,
-                                                               const class GALGAS_attributeInCollectionListAST & inOperand2,
+                                                               const class GALGAS_propertyInCollectionListAST & inOperand2,
                                                                const class GALGAS_string & inOperand3
                                                                COMMA_LOCATION_ARGS) ;
 
@@ -2948,7 +2954,7 @@ class GALGAS_structDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_attributeInCollectionListAST reader_mAttributeList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_propertyInCollectionListAST reader_mAttributeList (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mEnumeratedElementTypeName (LOCATION_ARGS) const ;
 
@@ -2974,13 +2980,13 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_structDeclarationAS
 class cPtr_structDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Attributes
   public : GALGAS_lstring mAttribute_mStructTypeName ;
-  public : GALGAS_attributeInCollectionListAST mAttribute_mAttributeList ;
+  public : GALGAS_propertyInCollectionListAST mAttribute_mAttributeList ;
   public : GALGAS_string mAttribute_mEnumeratedElementTypeName ;
 
 //--- Constructor
   public : cPtr_structDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                       const GALGAS_lstring & in_mStructTypeName,
-                                      const GALGAS_attributeInCollectionListAST & in_mAttributeList,
+                                      const GALGAS_propertyInCollectionListAST & in_mAttributeList,
                                       const GALGAS_string & in_mEnumeratedElementTypeName
                                       COMMA_LOCATION_ARGS) ;
 
@@ -2989,7 +2995,7 @@ class cPtr_structDeclarationAST : public cPtr_semanticDeclarationAST {
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mStructTypeName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_attributeInCollectionListAST reader_mAttributeList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_propertyInCollectionListAST reader_mAttributeList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_string reader_mEnumeratedElementTypeName (LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
@@ -3033,11 +3039,12 @@ class GALGAS_uniqueMapDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- GALGAS constructors
   public : static GALGAS_uniqueMapDeclarationAST constructor_new (const class GALGAS_bool & inOperand0,
                                                                   const class GALGAS_lstring & inOperand1,
-                                                                  const class GALGAS_attributeInCollectionListAST & inOperand2,
-                                                                  const class GALGAS_insertMethodListAST & inOperand3,
-                                                                  const class GALGAS_mapSearchMethodListAST & inOperand4,
-                                                                  const class GALGAS_mapStateList & inOperand5,
-                                                                  const class GALGAS_mapOverrideBlockListAST & inOperand6
+                                                                  const class GALGAS_lstringlist & inOperand2,
+                                                                  const class GALGAS_propertyInCollectionListAST & inOperand3,
+                                                                  const class GALGAS_insertMethodListAST & inOperand4,
+                                                                  const class GALGAS_mapSearchMethodListAST & inOperand5,
+                                                                  const class GALGAS_mapStateList & inOperand6,
+                                                                  const class GALGAS_mapOverrideBlockListAST & inOperand7
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
@@ -3049,7 +3056,7 @@ class GALGAS_uniqueMapDeclarationAST : public GALGAS_semanticDeclarationAST {
 //--------------------------------- Class Methods
 
 //--------------------------------- Getters
-  public : VIRTUAL_IN_DEBUG class GALGAS_attributeInCollectionListAST reader_mAttributeList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_lstringlist reader_mAttributeList (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_insertMethodListAST reader_mInsertMethodList (LOCATION_ARGS) const ;
 
@@ -3058,6 +3065,8 @@ class GALGAS_uniqueMapDeclarationAST : public GALGAS_semanticDeclarationAST {
   public : VIRTUAL_IN_DEBUG class GALGAS_mapStateList reader_mMapStateList (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_lstring reader_mMapTypeName (LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG class GALGAS_propertyInCollectionListAST reader_mPropertyList (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_mapSearchMethodListAST reader_mSearchMethodList (LOCATION_ARGS) const ;
 
@@ -3081,7 +3090,8 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uniqueMapDeclaratio
 class cPtr_uniqueMapDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Attributes
   public : GALGAS_lstring mAttribute_mMapTypeName ;
-  public : GALGAS_attributeInCollectionListAST mAttribute_mAttributeList ;
+  public : GALGAS_lstringlist mAttribute_mAttributeList ;
+  public : GALGAS_propertyInCollectionListAST mAttribute_mPropertyList ;
   public : GALGAS_insertMethodListAST mAttribute_mInsertMethodList ;
   public : GALGAS_mapSearchMethodListAST mAttribute_mSearchMethodList ;
   public : GALGAS_mapStateList mAttribute_mMapStateList ;
@@ -3090,7 +3100,8 @@ class cPtr_uniqueMapDeclarationAST : public cPtr_semanticDeclarationAST {
 //--- Constructor
   public : cPtr_uniqueMapDeclarationAST (const GALGAS_bool & in_mIsPredefined,
                                          const GALGAS_lstring & in_mMapTypeName,
-                                         const GALGAS_attributeInCollectionListAST & in_mAttributeList,
+                                         const GALGAS_lstringlist & in_mAttributeList,
+                                         const GALGAS_propertyInCollectionListAST & in_mPropertyList,
                                          const GALGAS_insertMethodListAST & in_mInsertMethodList,
                                          const GALGAS_mapSearchMethodListAST & in_mSearchMethodList,
                                          const GALGAS_mapStateList & in_mMapStateList,
@@ -3102,7 +3113,8 @@ class cPtr_uniqueMapDeclarationAST : public cPtr_semanticDeclarationAST {
 
 //--- Attribute accessors
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mMapTypeName (LOCATION_ARGS) const ;
-  public : VIRTUAL_IN_DEBUG GALGAS_attributeInCollectionListAST reader_mAttributeList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_lstringlist reader_mAttributeList (LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_propertyInCollectionListAST reader_mPropertyList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_insertMethodListAST reader_mInsertMethodList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_mapSearchMethodListAST reader_mSearchMethodList (LOCATION_ARGS) const ;
   public : VIRTUAL_IN_DEBUG GALGAS_mapStateList reader_mMapStateList (LOCATION_ARGS) const ;
@@ -5752,16 +5764,16 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_enumerationDescript
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                              @typedAttributeList list                                               *
+//                                               @typedPropertyList list                                               *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_typedAttributeList : public AC_GALGAS_list {
+class GALGAS_typedPropertyList : public AC_GALGAS_list {
 //--------------------------------- Default constructor
-  public : GALGAS_typedAttributeList (void) ;
+  public : GALGAS_typedPropertyList (void) ;
 
 //--------------------------------- List constructor used by listmap
-  public : GALGAS_typedAttributeList (cSharedList * inSharedListPtr) ;
+  public : GALGAS_typedPropertyList (cSharedList * inSharedListPtr) ;
 
 //--------------------------------- Element constructor used by listmap
   public : static void makeAttributesFromObjects (capCollectionElement & outAttributes,
@@ -5777,21 +5789,21 @@ class GALGAS_typedAttributeList : public AC_GALGAS_list {
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_typedAttributeList extractObject (const GALGAS_object & inObject,
-                                                           C_Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_typedPropertyList extractObject (const GALGAS_object & inObject,
+                                                          C_Compiler * inCompiler
+                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_typedAttributeList constructor_emptyList (LOCATION_ARGS) ;
+  public : static GALGAS_typedPropertyList constructor_emptyList (LOCATION_ARGS) ;
 
-  public : static GALGAS_typedAttributeList constructor_listWithValue (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
-                                                                       const class GALGAS_lstring & inOperand1,
-                                                                       const class GALGAS_bool & inOperand2,
-                                                                       const class GALGAS_bool & inOperand3
-                                                                       COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_typedPropertyList constructor_listWithValue (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
+                                                                      const class GALGAS_lstring & inOperand1,
+                                                                      const class GALGAS_bool & inOperand2,
+                                                                      const class GALGAS_bool & inOperand3
+                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with expression)
-  public : VIRTUAL_IN_DEBUG void dotAssign_operation (const GALGAS_typedAttributeList inOperand
+  public : VIRTUAL_IN_DEBUG void dotAssign_operation (const GALGAS_typedPropertyList inOperand
                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- += operator (with list of field expressions)
@@ -5801,13 +5813,13 @@ class GALGAS_typedAttributeList : public AC_GALGAS_list {
                                                       const class GALGAS_bool & inOperand3
                                                       COMMA_LOCATION_ARGS) ;
 //--------------------------------- . (concat) operator
-  public : VIRTUAL_IN_DEBUG GALGAS_typedAttributeList operator_concat (const GALGAS_typedAttributeList & inOperand
-                                                                       COMMA_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_typedPropertyList operator_concat (const GALGAS_typedPropertyList & inOperand
+                                                                      COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- + operator
-  public : VIRTUAL_IN_DEBUG GALGAS_typedAttributeList add_operation (const GALGAS_typedAttributeList & inOperand,
-                                                                     C_Compiler * inCompiler
-                                                                     COMMA_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG GALGAS_typedPropertyList add_operation (const GALGAS_typedPropertyList & inOperand,
+                                                                    C_Compiler * inCompiler
+                                                                    COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Setters
@@ -5876,30 +5888,30 @@ class GALGAS_typedAttributeList : public AC_GALGAS_list {
                                                                         C_Compiler * inCompiler
                                                                         COMMA_LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_typedAttributeList reader_subListFromIndex (const class GALGAS_uint & constinOperand0,
-                                                                                     C_Compiler * inCompiler
-                                                                                     COMMA_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_typedPropertyList reader_subListFromIndex (const class GALGAS_uint & constinOperand0,
+                                                                                    C_Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_typedAttributeList reader_subListWithRange (const class GALGAS_range & constinOperand0,
-                                                                                     C_Compiler * inCompiler
-                                                                                     COMMA_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_typedPropertyList reader_subListWithRange (const class GALGAS_range & constinOperand0,
+                                                                                    C_Compiler * inCompiler
+                                                                                    COMMA_LOCATION_ARGS) const ;
 
 
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
 //--------------------------------- Friend
 
-  friend class cEnumerator_typedAttributeList ;
+  friend class cEnumerator_typedPropertyList ;
  
-} ; // End of GALGAS_typedAttributeList class
+} ; // End of GALGAS_typedPropertyList class
 
 //---------------------------------------------------------------------------------------------------------------------*
 //   Enumerator declaration                                                    *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class cEnumerator_typedAttributeList : public cGenericAbstractEnumerator {
-  public : cEnumerator_typedAttributeList (const GALGAS_typedAttributeList & inEnumeratedObject,
-                                           const typeEnumerationOrder inOrder) ;
+class cEnumerator_typedPropertyList : public cGenericAbstractEnumerator {
+  public : cEnumerator_typedPropertyList (const GALGAS_typedPropertyList & inEnumeratedObject,
+                                          const typeEnumerationOrder inOrder) ;
 
 //--- Current element access
   public : class GALGAS_unifiedTypeMap_2D_proxy current_mAttributeTypeProxy (LOCATION_ARGS) const ;
@@ -5907,20 +5919,20 @@ class cEnumerator_typedAttributeList : public cGenericAbstractEnumerator {
   public : class GALGAS_bool current_mHasSetter (LOCATION_ARGS) const ;
   public : class GALGAS_bool current_mHasGetter (LOCATION_ARGS) const ;
 //--- Current element access
-  public : class GALGAS_typedAttributeList_2D_element current (LOCATION_ARGS) const ;
+  public : class GALGAS_typedPropertyList_2D_element current (LOCATION_ARGS) const ;
 } ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typedAttributeList ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typedPropertyList ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
-//                                        @typedAttributeList_2D_element struct                                        *
+//                                        @typedPropertyList_2D_element struct                                         *
 //                                                                                                                     *
 //---------------------------------------------------------------------------------------------------------------------*
 
-class GALGAS_typedAttributeList_2D_element : public AC_GALGAS_root {
+class GALGAS_typedPropertyList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Public data members
   public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mAttributeTypeProxy ;
   public : GALGAS_lstring mAttribute_mAttributeName ;
@@ -5933,19 +5945,19 @@ class GALGAS_typedAttributeList_2D_element : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG void drop (void) ;
 
 //--------------------------------- Default GALGAS constructor
-  public : static GALGAS_typedAttributeList_2D_element constructor_default (LOCATION_ARGS) ;
+  public : static GALGAS_typedPropertyList_2D_element constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Default constructor
-  public : GALGAS_typedAttributeList_2D_element (void) ;
+  public : GALGAS_typedPropertyList_2D_element (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)
-  public : VIRTUAL_IN_DEBUG ~ GALGAS_typedAttributeList_2D_element (void) ;
+  public : VIRTUAL_IN_DEBUG ~ GALGAS_typedPropertyList_2D_element (void) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_typedAttributeList_2D_element (const GALGAS_unifiedTypeMap_2D_proxy & in_mAttributeTypeProxy,
-                                                 const GALGAS_lstring & in_mAttributeName,
-                                                 const GALGAS_bool & in_mHasSetter,
-                                                 const GALGAS_bool & in_mHasGetter) ;
+  public : GALGAS_typedPropertyList_2D_element (const GALGAS_unifiedTypeMap_2D_proxy & in_mAttributeTypeProxy,
+                                                const GALGAS_lstring & in_mAttributeName,
+                                                const GALGAS_bool & in_mHasSetter,
+                                                const GALGAS_bool & in_mHasGetter) ;
 
 //-- Start of generic part --*
 
@@ -5953,22 +5965,22 @@ class GALGAS_typedAttributeList_2D_element : public AC_GALGAS_root {
   protected : virtual AC_GALGAS_root * clonedObject (void) const ;
 
 //--------------------------------- Object extraction
-  public : static GALGAS_typedAttributeList_2D_element extractObject (const GALGAS_object & inObject,
-                                                                      C_Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_typedPropertyList_2D_element extractObject (const GALGAS_object & inObject,
+                                                                     C_Compiler * inCompiler
+                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_typedAttributeList_2D_element constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
-                                                                        const class GALGAS_lstring & inOperand1,
-                                                                        const class GALGAS_bool & inOperand2,
-                                                                        const class GALGAS_bool & inOperand3
-                                                                        COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_typedPropertyList_2D_element constructor_new (const class GALGAS_unifiedTypeMap_2D_proxy & inOperand0,
+                                                                       const class GALGAS_lstring & inOperand1,
+                                                                       const class GALGAS_bool & inOperand2,
+                                                                       const class GALGAS_bool & inOperand3
+                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const int32_t inIndentation) const ;
 //--------------------------------- Comparison
-  public : typeComparisonResult objectCompare (const GALGAS_typedAttributeList_2D_element & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_typedPropertyList_2D_element & inOperand) const ;
 
 //--------------------------------- Setters
 
@@ -5988,12 +6000,12 @@ class GALGAS_typedAttributeList_2D_element : public AC_GALGAS_root {
 //--------------------------------- Introspection
   public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * staticTypeDescriptor (void) const ;
  
-} ; // End of GALGAS_typedAttributeList_2D_element class
+} ; // End of GALGAS_typedPropertyList_2D_element class
 
 
 //---------------------------------------------------------------------------------------------------------------------*
 
-extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typedAttributeList_2D_element ;
+extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_typedPropertyList_2D_element ;
 
 //---------------------------------------------------------------------------------------------------------------------*
 //                                                                                                                     *
@@ -6800,9 +6812,9 @@ class GALGAS_unifiedTypeMap : public AC_GALGAS_uniqueMap {
                                                      class GALGAS_unifiedTypeMap_2D_proxy constinArgument3,
                                                      class GALGAS_typeKindEnum constinArgument4,
                                                      class GALGAS_bool constinArgument5,
-                                                     class GALGAS_typedAttributeList constinArgument6,
+                                                     class GALGAS_typedPropertyList constinArgument6,
                                                      class GALGAS_attributeMap constinArgument7,
-                                                     class GALGAS_typedAttributeList constinArgument8,
+                                                     class GALGAS_typedPropertyList constinArgument8,
                                                      class GALGAS_constructorMap constinArgument9,
                                                      class GALGAS_readerMap constinArgument10,
                                                      class GALGAS_modifierMap constinArgument11,
@@ -6829,7 +6841,7 @@ class GALGAS_unifiedTypeMap : public AC_GALGAS_uniqueMap {
                                                                                 C_Compiler * inCompiler
                                                                                 COMMA_LOCATION_ARGS) ;
 
-  public : VIRTUAL_IN_DEBUG void modifier_setMAllTypedAttributeListForKey (class GALGAS_typedAttributeList constinArgument0,
+  public : VIRTUAL_IN_DEBUG void modifier_setMAllTypedAttributeListForKey (class GALGAS_typedPropertyList constinArgument0,
                                                                            class GALGAS_string constinArgument1,
                                                                            C_Compiler * inCompiler
                                                                            COMMA_LOCATION_ARGS) ;
@@ -6849,7 +6861,7 @@ class GALGAS_unifiedTypeMap : public AC_GALGAS_uniqueMap {
                                                                     C_Compiler * inCompiler
                                                                     COMMA_LOCATION_ARGS) ;
 
-  public : VIRTUAL_IN_DEBUG void modifier_setMCurrentTypedAttributeListForKey (class GALGAS_typedAttributeList constinArgument0,
+  public : VIRTUAL_IN_DEBUG void modifier_setMCurrentTypedAttributeListForKey (class GALGAS_typedPropertyList constinArgument0,
                                                                                class GALGAS_string constinArgument1,
                                                                                C_Compiler * inCompiler
                                                                                COMMA_LOCATION_ARGS) ;
@@ -6962,9 +6974,9 @@ class GALGAS_unifiedTypeMap : public AC_GALGAS_uniqueMap {
                                                    class GALGAS_unifiedTypeMap_2D_proxy & outArgument3,
                                                    class GALGAS_typeKindEnum & outArgument4,
                                                    class GALGAS_bool & outArgument5,
-                                                   class GALGAS_typedAttributeList & outArgument6,
+                                                   class GALGAS_typedPropertyList & outArgument6,
                                                    class GALGAS_attributeMap & outArgument7,
-                                                   class GALGAS_typedAttributeList & outArgument8,
+                                                   class GALGAS_typedPropertyList & outArgument8,
                                                    class GALGAS_constructorMap & outArgument9,
                                                    class GALGAS_readerMap & outArgument10,
                                                    class GALGAS_modifierMap & outArgument11,
@@ -6993,9 +7005,9 @@ class GALGAS_unifiedTypeMap : public AC_GALGAS_uniqueMap {
                                                                                                      C_Compiler * inCompiler
                                                                                                      COMMA_LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_typedAttributeList reader_mAllTypedAttributeListForKey (const class GALGAS_string & constinOperand0,
-                                                                                                 C_Compiler * inCompiler
-                                                                                                 COMMA_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_typedPropertyList reader_mAllTypedAttributeListForKey (const class GALGAS_string & constinOperand0,
+                                                                                                C_Compiler * inCompiler
+                                                                                                COMMA_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_attributeMap reader_mAttributeMapForKey (const class GALGAS_string & constinOperand0,
                                                                                   C_Compiler * inCompiler
@@ -7009,9 +7021,9 @@ class GALGAS_unifiedTypeMap : public AC_GALGAS_uniqueMap {
                                                                                       C_Compiler * inCompiler
                                                                                       COMMA_LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG class GALGAS_typedAttributeList reader_mCurrentTypedAttributeListForKey (const class GALGAS_string & constinOperand0,
-                                                                                                     C_Compiler * inCompiler
-                                                                                                     COMMA_LOCATION_ARGS) const ;
+  public : VIRTUAL_IN_DEBUG class GALGAS_typedPropertyList reader_mCurrentTypedAttributeListForKey (const class GALGAS_string & constinOperand0,
+                                                                                                    C_Compiler * inCompiler
+                                                                                                    COMMA_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG class GALGAS_string reader_mDefaultConstructorNameForKey (const class GALGAS_string & constinOperand0,
                                                                                       C_Compiler * inCompiler
@@ -7121,9 +7133,9 @@ class cEnumerator_unifiedTypeMap : public cGenericAbstractEnumerator {
   public : class GALGAS_unifiedTypeMap_2D_proxy current_mSuperType (LOCATION_ARGS) const ;
   public : class GALGAS_typeKindEnum current_mTypeKindEnum (LOCATION_ARGS) const ;
   public : class GALGAS_bool current_mSupportCollectionValue (LOCATION_ARGS) const ;
-  public : class GALGAS_typedAttributeList current_mAllTypedAttributeList (LOCATION_ARGS) const ;
+  public : class GALGAS_typedPropertyList current_mAllTypedAttributeList (LOCATION_ARGS) const ;
   public : class GALGAS_attributeMap current_mAttributeMap (LOCATION_ARGS) const ;
-  public : class GALGAS_typedAttributeList current_mCurrentTypedAttributeList (LOCATION_ARGS) const ;
+  public : class GALGAS_typedPropertyList current_mCurrentTypedAttributeList (LOCATION_ARGS) const ;
   public : class GALGAS_constructorMap current_mConstructorMap (LOCATION_ARGS) const ;
   public : class GALGAS_readerMap current_mReaderMap (LOCATION_ARGS) const ;
   public : class GALGAS_modifierMap current_mModifierMap (LOCATION_ARGS) const ;
@@ -7161,9 +7173,9 @@ class cMapElement_unifiedTypeMap : public cMapElement {
   public : GALGAS_unifiedTypeMap_2D_proxy mAttribute_mSuperType ;
   public : GALGAS_typeKindEnum mAttribute_mTypeKindEnum ;
   public : GALGAS_bool mAttribute_mSupportCollectionValue ;
-  public : GALGAS_typedAttributeList mAttribute_mAllTypedAttributeList ;
+  public : GALGAS_typedPropertyList mAttribute_mAllTypedAttributeList ;
   public : GALGAS_attributeMap mAttribute_mAttributeMap ;
-  public : GALGAS_typedAttributeList mAttribute_mCurrentTypedAttributeList ;
+  public : GALGAS_typedPropertyList mAttribute_mCurrentTypedAttributeList ;
   public : GALGAS_constructorMap mAttribute_mConstructorMap ;
   public : GALGAS_readerMap mAttribute_mReaderMap ;
   public : GALGAS_modifierMap mAttribute_mModifierMap ;
@@ -7190,9 +7202,9 @@ class cMapElement_unifiedTypeMap : public cMapElement {
                                        const GALGAS_unifiedTypeMap_2D_proxy & in_mSuperType,
                                        const GALGAS_typeKindEnum & in_mTypeKindEnum,
                                        const GALGAS_bool & in_mSupportCollectionValue,
-                                       const GALGAS_typedAttributeList & in_mAllTypedAttributeList,
+                                       const GALGAS_typedPropertyList & in_mAllTypedAttributeList,
                                        const GALGAS_attributeMap & in_mAttributeMap,
-                                       const GALGAS_typedAttributeList & in_mCurrentTypedAttributeList,
+                                       const GALGAS_typedPropertyList & in_mCurrentTypedAttributeList,
                                        const GALGAS_constructorMap & in_mConstructorMap,
                                        const GALGAS_readerMap & in_mReaderMap,
                                        const GALGAS_modifierMap & in_mModifierMap,

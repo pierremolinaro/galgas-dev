@@ -525,7 +525,7 @@ proc buildLexicalAttributeMap
   ?let @lexicalTypeMap inLexicalTypeMap
   ?let @lexicalAttributeListAST inLexicalAttributeList
   ?!@lexicalAttributeMap ioLexicalAttributeMap {
-  for () in  inLexicalAttributeList do
+  for () in inLexicalAttributeList do
     if [inLexicalTypeMap hasKey ![mTypeName string]] then
       [inLexicalTypeMap searchKey !mTypeName ?var @lexicalTypeEnum lexicalType]
       [!?ioLexicalAttributeMap insertKey !mName !lexicalType]
@@ -533,7 +533,7 @@ proc buildLexicalAttributeMap
       @string m = ""
       m += "the @" + mTypeName + " type is not a valid lexical attribute type; are allowed:"
       @bool firstLoop = true
-      for () in  inLexicalTypeMap do
+      for () in inLexicalTypeMap do
         m += " @" + lkey
       between
         m += ","
@@ -558,9 +558,9 @@ proc buildTerminalMap
   )
 #--------------------------------------- 
   outTerminalMap = @terminalMap. emptyMap
-  for () in  [inLexiqueComponentRoot mTerminalDeclarationList] do
+  for () in [inLexiqueComponentRoot mTerminalDeclarationList] do
     var argumentTypeList =@lexicalSentValueList.emptyList{}
-    for () in  mSentAttributeList do
+    for () in mSentAttributeList do
       @lexicalTypeEnum attributeLexicalType
       [lexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType]
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
@@ -568,14 +568,14 @@ proc buildTerminalMap
     [!?outTerminalMap insertKey !mName !argumentTypeList]
   end
 #---
-  for () in  [inLexiqueComponentRoot mLexicalListDeclarationList] do
+  for () in [inLexiqueComponentRoot mLexicalListDeclarationList] do
     var argumentTypeList =@lexicalSentValueList.emptyList{}
-    for () in  mSentAttributeList do
+    for () in mSentAttributeList do
       @lexicalTypeEnum attributeLexicalType
       [lexicalAttributeMap searchKey !mAttributeName ?attributeLexicalType]
       argumentTypeList += !mFormalSelector !mAttributeName.string !attributeLexicalType
     end
-    for () in  mEntryList do
+    for () in mEntryList do
       [!?outTerminalMap insertKey !mTerminalSpelling !argumentTypeList]
     end
   end

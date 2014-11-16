@@ -1647,7 +1647,7 @@ class cParser_galgas_33_DeclarationsSyntax {
   public : virtual ~ cParser_galgas_33_DeclarationsSyntax (void) {}
 
 //--- Non terminal declarations
-  protected : virtual void nt_attribute_5F_declaration_ (class GALGAS_attributeInCollectionListAST & ioArgument0,
+  protected : virtual void nt_attribute_5F_declaration_ (class GALGAS_propertyInCollectionListAST & ioArgument0,
                                                          class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
 
   protected : virtual void nt_attribute_5F_declaration_parse (class C_Lexique_galgas_33_Scanner * inLexique) = 0 ;
@@ -1720,7 +1720,7 @@ class cParser_galgas_33_DeclarationsSyntax {
 
   protected : void rule_galgas_33_DeclarationsSyntax_start_5F_symbol_i0_indexing (C_Lexique_galgas_33_Scanner * inLexique) ;
 
-  protected : void rule_galgas_33_DeclarationsSyntax_attribute_5F_declaration_i1_ (GALGAS_attributeInCollectionListAST & ioArgument0,
+  protected : void rule_galgas_33_DeclarationsSyntax_attribute_5F_declaration_i1_ (GALGAS_propertyInCollectionListAST & ioArgument0,
                                                                                    C_Lexique_galgas_33_Scanner * inLexique) ;
 
   protected : void rule_galgas_33_DeclarationsSyntax_attribute_5F_declaration_i1_parse (C_Lexique_galgas_33_Scanner * inLexique) ;
@@ -1994,6 +1994,10 @@ class cParser_galgas_33_DeclarationsSyntax {
   protected : virtual int32_t select_galgas_33_DeclarationsSyntax_39 (C_Lexique_galgas_33_Scanner *) = 0 ;
 
   protected : virtual int32_t select_galgas_33_DeclarationsSyntax_40 (C_Lexique_galgas_33_Scanner *) = 0 ;
+
+  protected : virtual int32_t select_galgas_33_DeclarationsSyntax_41 (C_Lexique_galgas_33_Scanner *) = 0 ;
+
+  protected : virtual int32_t select_galgas_33_DeclarationsSyntax_42 (C_Lexique_galgas_33_Scanner *) = 0 ;
 
 
 } ;

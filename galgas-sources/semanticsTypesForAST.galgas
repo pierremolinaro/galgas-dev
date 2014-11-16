@@ -1264,8 +1264,7 @@ class @overridingCategoryReaderAST : @semanticDeclarationAST {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-# O V E R R I D I N G    A B S T R A C T   C A T E G O R Y    R E A D E R   *
-#                     D E C L A R A T I O N                                 *
+# O V E R R I D I N G    A B S T R A C T   C A T E G O R Y    R E A D E R    D E C L A R A T I O N                     *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -1278,20 +1277,20 @@ class @overridingAbstractCategoryReaderAST : @semanticDeclarationAST {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    Common Rules                                                           *
+#    Common Rules                                                                                                      *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-list @attributeInCollectionListAST {
+list @propertyInCollectionListAST {
 #  @bool mIsPrivate ;
-  @lstring mAttributeTypeName
-  @lstring mAttributeName
+  @lstring mPropertyTypeName
+  @lstring mPropertyName
   @lstringlist mFeatureList
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    A R R A Y    D E C L A R A T I O N                                     *
+#    A R R A Y    D E C L A R A T I O N                                                                                *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -1303,7 +1302,7 @@ class @arrayDeclarationAST : @semanticDeclarationAST {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    L I S T M A P    D E C L A R A T I O N                                 *
+#    L I S T M A P    D E C L A R A T I O N                                                                            *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -1378,7 +1377,8 @@ list @insertOrReplaceDeclarationListAST {
 
 class @mapDeclarationAST : @semanticDeclarationAST {
   @lstring mMapTypeName
-  @attributeInCollectionListAST mAttributeList
+  @lstringlist mAttributeList
+  @propertyInCollectionListAST mPropertyList
   @insertMethodListAST mInsertMethodList
   @mapSearchMethodListAST mSearchMethodList
   @mapRemoveMethodListAST mRemoveMethodList
@@ -1407,7 +1407,8 @@ list @mapOverrideBlockListAST {
 
 class @uniqueMapDeclarationAST : @semanticDeclarationAST {
   @lstring mMapTypeName
-  @attributeInCollectionListAST mAttributeList
+  @lstringlist mAttributeList
+  @propertyInCollectionListAST mPropertyList
   @insertMethodListAST mInsertMethodList
   @mapSearchMethodListAST mSearchMethodList
   @mapStateList mMapStateList
@@ -1416,7 +1417,7 @@ class @uniqueMapDeclarationAST : @semanticDeclarationAST {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    M A P    P R O X Y    D E C L A R A T I O N                            *
+#    M A P    P R O X Y    D E C L A R A T I O N                                                                       *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -1427,7 +1428,7 @@ class @mapProxyDeclarationAST : @semanticDeclarationAST {
 
 #----------------------------------------------------------------------------------------------------------------------*
 #                                                                                                                      *
-#    C L A S S    D E C L A R A T I O N                                     *
+#    C L A S S    D E C L A R A T I O N                                                                                *
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
@@ -1436,7 +1437,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
   @lstring mClassTypeName %nogetter
   @lstring mSuperClassName %nogetter # Empty if no super class
   @lstringlist mClassFeatureList %nogetter
-  @attributeInCollectionListAST mAttributeList %nogetter
+  @propertyInCollectionListAST mAttributeList %nogetter
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1447,7 +1448,7 @@ class @classDeclarationAST : @semanticDeclarationAST {
 
 class @listDeclarationAST : @semanticDeclarationAST {
   @lstring mListTypeName %nogetter
-  @attributeInCollectionListAST mAttributeList %nogetter
+  @propertyInCollectionListAST mAttributeList %nogetter
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -1458,7 +1459,7 @@ class @listDeclarationAST : @semanticDeclarationAST {
 
 class @structDeclarationAST : @semanticDeclarationAST {
   @lstring mStructTypeName
-  @attributeInCollectionListAST mAttributeList
+  @propertyInCollectionListAST mAttributeList
   @string mEnumeratedElementTypeName # Empty string if not enumerable
 }
 
@@ -1477,7 +1478,7 @@ list @sortedListSortDescriptorListAST {
 
 class @sortedListDeclarationAST : @semanticDeclarationAST {
   @lstring mSortedListTypeName
-  @attributeInCollectionListAST mAttributeList
+  @propertyInCollectionListAST mAttributeList
   @sortedListSortDescriptorListAST mSortDescriptorList
 }
 

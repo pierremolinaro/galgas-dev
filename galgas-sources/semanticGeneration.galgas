@@ -160,9 +160,9 @@ override method @syntaxDeclarationForGeneration appendSpecificImplementation
   ]
 #---
   let lexiqueCppName = "C_Lexique_" + [mLexiqueName identifierRepresentation]
-  for () in  mRuleDeclarationList do
+  for () in mRuleDeclarationList do
   #--- Generate rule label implementation
-    for () in  mLabelImplementationList do
+    for () in mLabelImplementationList do
       let @string ruleName = "cParser_" + [mSyntaxComponentName identifierRepresentation]
         + "::rule_" + [mSyntaxComponentName identifierRepresentation] + "_"
         + [mNonterminalName identifierRepresentation]
@@ -258,7 +258,7 @@ proc generateProcedure
   if not inGenerateResetTemplateString then
     unusedVariableCppNameSet += !compilerCppName ()
   end
-  for () in  inFormalArgumentList do
+  for () in inFormalArgumentList do
     if mFormalArgumentPassingMode != @formalArgumentPassingModeAST. argumentOut then
       unusedVariableCppNameSet += !mFormalArgumentCppName
     end
@@ -267,7 +267,7 @@ proc generateProcedure
   var temporaryVariableIndex = 0
   var routineBody = ""
   [!?routineBody incIndentation !2]
-  for () in  inInstructionList do
+  for () in inInstructionList do
     [mInstruction generateInstruction
       !?ioInclusionSet
       !?temporaryVariableIndex
@@ -278,7 +278,7 @@ proc generateProcedure
   end
   [!?routineBody decIndentation !2]
 #--- Generate inclusions
-  for () in  inFormalArgumentList do
+  for () in inFormalArgumentList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
   end
 #--- Generate header
@@ -289,7 +289,7 @@ proc generateProcedure
   outGeneratedCode += "void " + inProcedureName + " ("
   let @uint colRef = [outGeneratedCode currentColumn]
 #---
-  for () in  inFormalArgumentList do
+  for () in inFormalArgumentList do
     switch mFormalArgumentPassingMode 
     case argumentConstantIn :
       outGeneratedCode += "const GALGAS_" + [mFormalArgumentType identifierRepresentation] + " "
@@ -335,7 +335,7 @@ proc generateProcedure
   end
   outGeneratedCode += " {\n"
 #--- Release 'out' arguments
-  for () in  inFormalArgumentList do
+  for () in inFormalArgumentList do
     switch mFormalArgumentPassingMode 
     case argumentOut :
       outGeneratedCode += "  " + mFormalArgumentCppName + ".drop () ; // Release 'out' argument\n"
@@ -374,7 +374,7 @@ proc generateFunction
   var unusedVariableCppNameSet =@stringset.emptySet{}
   unusedVariableCppNameSet += !compilerCppName ()
 #--- Release 'in' and 'const in' arguments at the end of the routine
-  for () in  inFormalArgumentList do
+  for () in inFormalArgumentList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
     unusedVariableCppNameSet += !mFormalArgumentCppName
   end
@@ -382,7 +382,7 @@ proc generateFunction
   @uint temporaryVariableIndex = 0
   @string routineBody = ""
   [!?routineBody incIndentation !2]
-  for () in  inInstructionList do
+  for () in inInstructionList do
     [mInstruction generateInstruction
       !?ioInclusionSet
       !?temporaryVariableIndex
@@ -399,7 +399,7 @@ proc generateFunction
   outGeneratedCode += inFunctionCppRepresentationName + " ("
   let @uint colRef = [outGeneratedCode currentColumn]
 #---
-  for () in  inFormalArgumentList do
+  for () in inFormalArgumentList do
     if mIsConstant then
       outGeneratedCode += "const GALGAS_" + [mFormalArgumentType identifierRepresentation] + " & "
     else
@@ -454,14 +454,14 @@ proc generateCategoryModifier
   var unusedVariableCppNameSet =@stringset.emptySet{}
   unusedVariableCppNameSet += !compilerCppName ()
   unusedVariableCppNameSet += !"object"
-  for () in  inFormalArgumentList do
+  for () in inFormalArgumentList do
     unusedVariableCppNameSet += !mFormalArgumentCppName
   end
 #--- Generate body
   var temporaryVariableIndex = 0
   var routineBody = ""
   [!?routineBody incIndentation !2]
-  for () in  inInstructionList do
+  for () in inInstructionList do
     [mInstruction generateInstruction
       !?ioInclusionSet
       !?temporaryVariableIndex
@@ -486,7 +486,7 @@ proc generateCategoryModifier
     outGeneratedCode += "inObject"
   end
 #---
-  for () in  inFormalArgumentList do
+  for () in inFormalArgumentList do
     outGeneratedCode += ",\n"
     [!?outGeneratedCode appendSpacesUntilColumn !colRef]
     switch mFormalArgumentPassingMode 
@@ -551,14 +551,14 @@ proc generateCategoryMethod
   var unusedVariableCppNameSet =@stringset.emptySet{}
   unusedVariableCppNameSet += !compilerCppName ()
   unusedVariableCppNameSet += !"object"
-  for () in  inFormalArgumentList do
+  for () in inFormalArgumentList do
     unusedVariableCppNameSet += !mFormalArgumentCppName
   end
 #--- Generate body
   @uint temporaryVariableIndex = 0
   @string routineBody = ""
   [!?routineBody incIndentation !2]
-  for () in  inInstructionList do
+  for () in inInstructionList do
     [mInstruction generateInstruction
       !?ioInclusionSet
       !?temporaryVariableIndex
@@ -584,7 +584,7 @@ proc generateCategoryMethod
   end
   ioInclusionSet += !"method-" + [baseType key] + "-" + inMethodName
   [inReceiverType addHeaderFileName !?ioInclusionSet]
-  for () in  inFormalArgumentList do
+  for () in inFormalArgumentList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
   end
 #--- Generate header
@@ -602,7 +602,7 @@ proc generateCategoryMethod
     outGeneratedCode += "inObject"
   end
 #---
-  for () in  inFormalArgumentList do
+  for () in inFormalArgumentList do
     outGeneratedCode += ",\n"
     [!?outGeneratedCode appendSpacesUntilColumn !colRef]
     switch mFormalArgumentPassingMode 
@@ -670,14 +670,14 @@ proc generateCategoryReader
   var unusedVariableCppNameSet =@stringset.emptySet{}
   unusedVariableCppNameSet += !compilerCppName ()
   unusedVariableCppNameSet += !"object"
-  for () in  inFormalArgumentList do
+  for () in inFormalArgumentList do
     unusedVariableCppNameSet += !mFormalArgumentCppName
   end
 #--- Generate body
   @uint temporaryVariableIndex = 0
   @string routineBody = ""
   [!?routineBody incIndentation !2]
-  for () in  inInstructionList do
+  for () in inInstructionList do
     [mInstruction generateInstruction
       !?ioInclusionSet
       !?temporaryVariableIndex
@@ -704,7 +704,7 @@ proc generateCategoryReader
   end
   ioInclusionSet += !"getter-" + [baseType key] + "-" + inReaderName
   [inReceiverType addHeaderFileName !?ioInclusionSet]
-  for () in  inFormalArgumentList do
+  for () in inFormalArgumentList do
     [mFormalArgumentType addHeaderFileName !?ioInclusionSet]
   end
 #--- Generate header
@@ -725,7 +725,7 @@ proc generateCategoryReader
   outGeneratedCode += ",\n"
   [!?outGeneratedCode appendSpacesUntilColumn !colRef]
 #---
-  for () in  inFormalArgumentList do
+  for () in inFormalArgumentList do
     if mIsConstant then
       outGeneratedCode += "const GALGAS_" + [mFormalArgumentType identifierRepresentation] + " & "
     else
@@ -812,13 +812,13 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
   template structTypeHeader1 "GALGAS_struct.h1.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
-    ?@typedAttributeList ATTRIBUTE_LIST
+    ?@typedPropertyList ATTRIBUTE_LIST
     ?@bool HAS_DEFAULT_CONSTRUCTOR
 
   template structTypeSpecificImplementation "GALGAS_struct.cpp.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
-    ?@typedAttributeList ATTRIBUTE_LIST
+    ?@typedPropertyList ATTRIBUTE_LIST
     ?@bool HAS_DEFAULT_CONSTRUCTOR
 
 #---------- Extern Type
@@ -862,28 +862,28 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
   template listmapTypeSpecificImplementation "GALGAS_listmap.cpp.galgasTemplate"
     ?@string TYPE_IDENTIFIER
     ?@string ASSOCIATED_LIST_TYPE_IDENTIFIER
-    ?@typedAttributeList ATTRIBUTE_LIST
+    ?@typedPropertyList ATTRIBUTE_LIST
 
 #---------- LIST
   template listTypeHeader1 "GALGAS_list.h1.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
-    ?@typedAttributeList ATTRIBUTE_LIST
+    ?@typedPropertyList ATTRIBUTE_LIST
 
   template listTypeSpecificImplementation "GALGAS_list.cpp.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
-    ?@typedAttributeList ATTRIBUTE_LIST
+    ?@typedPropertyList ATTRIBUTE_LIST
 
 #---------- SORTED LIST
   template sortedlistTypeHeader1 "GALGAS_sortedlist.h1.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
-    ?@typedAttributeList ATTRIBUTE_LIST
+    ?@typedPropertyList ATTRIBUTE_LIST
 
   template sortedlistTypeSpecificImplementation "GALGAS_sortedlist.cpp.galgasTemplate"
     ?@string TYPE_IDENTIFIER
-    ?@typedAttributeList ATTRIBUTE_LIST
+    ?@typedPropertyList ATTRIBUTE_LIST
     ?@sortDescriptorListForGeneration SORT_ATTRIBUTE_LIST
 
 #---------- ENUM
@@ -914,24 +914,24 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@string ASSOCIATED_MAP_TYPE_IDENTIFIER
-    ?@typedAttributeList ATTRIBUTE_LIST
+    ?@typedPropertyList ATTRIBUTE_LIST
     ?@mapSearchMethodListAST SEARCH_METHOD_LIST
 
 #---------- MAP
   template mapTypeHeader1 "GALGAS_map.h1.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
-    ?@typedAttributeList ATTRIBUTE_LIST
+    ?@typedPropertyList ATTRIBUTE_LIST
     ?@mapSearchMethodListAST SEARCH_METHOD_LIST
 
   template mapTypeHeader2 "GALGAS_map.h2.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
-    ?@typedAttributeList ATTRIBUTE_LIST
+    ?@typedPropertyList ATTRIBUTE_LIST
 
   template mapTypeSpecificImplementation "GALGAS_map.cpp.galgasTemplate"
     ?@string TYPE_IDENTIFIER
-    ?@typedAttributeList ATTRIBUTE_LIST
+    ?@typedPropertyList ATTRIBUTE_LIST
     ?@insertMethodListAST INSERT_METHOD_LIST
     ?@mapSearchMethodListAST SEARCH_METHOD_LIST
     ?@mapRemoveMethodListAST REMOVE_METHOD_LIST
@@ -941,17 +941,17 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
   template uniqueMapTypeHeader1 "GALGAS_uniqueMap.h1.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
-    ?@typedAttributeList ATTRIBUTE_LIST
+    ?@typedPropertyList ATTRIBUTE_LIST
     ?@mapSearchMethodListAST SEARCH_METHOD_LIST
 
   template uniqueMapTypeHeader2 "GALGAS_uniqueMap.h2.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
-    ?@typedAttributeList ATTRIBUTE_LIST
+    ?@typedPropertyList ATTRIBUTE_LIST
 
   template uniqueMapTypeSpecificImplementation "GALGAS_uniqueMap.cpp.galgasTemplate"
     ?@string TYPE_IDENTIFIER
-    ?@typedAttributeList ATTRIBUTE_LIST
+    ?@typedPropertyList ATTRIBUTE_LIST
     ?@insertMethodListAST INSERT_METHOD_LIST
     ?@mapSearchMethodListAST SEARCH_METHOD_LIST
 #    ?@withAccessorMap WITH_ACCESSOR_MAP
@@ -966,7 +966,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@string SUPER_TYPE_IDENTIFIER
-    ?@typedAttributeList ALL_ATTRIBUTE_LIST
+    ?@typedPropertyList ALL_ATTRIBUTE_LIST
     ?@bool IS_ABSTRACT
     ?@bool HAS_DEFAULT_CONSTRUCTOR
 
@@ -974,25 +974,25 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@string SUPER_TYPE_IDENTIFIER
-    ?@typedAttributeList CURRENT_ATTRIBUTE_LIST
-    ?@typedAttributeList ALL_ATTRIBUTE_LIST
+    ?@typedPropertyList CURRENT_ATTRIBUTE_LIST
+    ?@typedPropertyList ALL_ATTRIBUTE_LIST
     ?@bool IS_ABSTRACT
 
   template classTypeHeader2part2 "GALGAS_class.h2-part2.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@string SUPER_TYPE_IDENTIFIER
-    ?@typedAttributeList CURRENT_ATTRIBUTE_LIST
-    ?@typedAttributeList ALL_ATTRIBUTE_LIST
+    ?@typedPropertyList CURRENT_ATTRIBUTE_LIST
+    ?@typedPropertyList ALL_ATTRIBUTE_LIST
     ?@bool IS_ABSTRACT
 
   template classTypeSpecificImplementation "GALGAS_class.cpp.galgasTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@string SUPER_TYPE_IDENTIFIER
-    ?@typedAttributeList CURRENT_ATTRIBUTE_LIST
-    ?@typedAttributeList ALL_ATTRIBUTE_LIST
-    ?@typedAttributeList INHERITED_ATTRIBUTE_LIST
+    ?@typedPropertyList CURRENT_ATTRIBUTE_LIST
+    ?@typedPropertyList ALL_ATTRIBUTE_LIST
+    ?@typedPropertyList INHERITED_ATTRIBUTE_LIST
     ?@bool IS_ABSTRACT
     ?@bool HAS_DEFAULT_CONSTRUCTOR
 
@@ -1514,7 +1514,7 @@ override method @uniqueMapTypeForGeneration appendSpecificImplementation
   !@string outImplementation {
   [mTypeProxy addHeaderFileName !?ioInclusionSet]
   var keySortedList =@keySortedList.emptySortedList{}
-  for () in  mMapAutomatonStateMap do
+  for () in mMapAutomatonStateMap do
     keySortedList += !lkey.string !mStateIndex
   end
   outImplementation = [filewrapper typeGenerationTemplate.uniqueMapTypeSpecificImplementation
@@ -2744,7 +2744,7 @@ proc recursivlyEnumerateRegularFile
   ?!@stringlist ioRegularTextContentIndexStringList
   ?!@stringlist ioRegularBinaryContentIndexStringList {
   ioDirectoryIndexStringList += ![[ioDirectoryIndexStringList length] string]
-  for () in  inFilewrapperFileMap do
+  for () in inFilewrapperFileMap do
     ioRegularFileIndexStringList += ![[ioRegularFileIndexStringList length] string]
     if mIsTextFile then
       ioRegularTextContentIndexStringList += ![mWrapperFileIndex string]
@@ -2789,7 +2789,7 @@ override method @filewrapperDeclarationForGeneration appendDeclaration1
     !mFilewrapperName
   ] 
 #--- template generation
-  for () in  mFilewrapperTemplateListForGeneration do
+  for () in mFilewrapperTemplateListForGeneration do
     outHeader += [filewrapper semanticComponentGenerationTemplate.filewrapperTemplateDeclaration
       !mFilewrapperName
       !mFilewrapperTemplateName
@@ -2808,7 +2808,7 @@ proc generateWrapperContents
   ?let @wrapperDirectoryMap inFilewrapperDirectoryMap
   ?!@string ioImplementation {
 #--- Generate regular files
-  for () in  inFilewrapperRegularFileMap do
+  for () in inFilewrapperRegularFileMap do
     if mIsTextFile then
       let @string contents = @string. stringWithContentsOfFile { !mAbsoluteFilePath}
       ioImplementation += "//--- File '" + inFilewrapperDirectory + "/" + lkey + "'\n\n"
@@ -2842,7 +2842,7 @@ proc generateWrapperContents
     end
   end
 #--- Generate sub-directories
-  for () in  inFilewrapperDirectoryMap do
+  for () in inFilewrapperDirectoryMap do
     generateWrapperContents (
       !inFilewrapperName
       ![lkey string]
@@ -2857,7 +2857,7 @@ proc generateWrapperContents
   + "static const cRegularFileWrapper * gWrapperAllFiles_"
   + [inFilewrapperName identifierRepresentation] + "_" + [inFilewrapperDirectoryIndex string]
   + " [" + [[inFilewrapperRegularFileMap count] + 1 string] + "] = {\n"
-  for () in  inFilewrapperRegularFileMap do
+  for () in inFilewrapperRegularFileMap do
     ioImplementation += "  & gWrapperFile_" + [mWrapperFileIndex string] + "_" + [inFilewrapperName identifierRepresentation] + ",\n"
   end  
   ioImplementation += "  NULL\n"
@@ -2867,7 +2867,7 @@ proc generateWrapperContents
   + "static const cDirectoryWrapper * gWrapperAllDirectories_"
   + [inFilewrapperName identifierRepresentation] + "_" + [inFilewrapperDirectoryIndex string]
   + " [" + [[inFilewrapperDirectoryMap count] + 1 string] + "] = {\n"
-  for () in  inFilewrapperDirectoryMap do
+  for () in inFilewrapperDirectoryMap do
     ioImplementation += "  & gWrapperDirectory_" + [mWrapperDirectoryIndex string] + "_" + [inFilewrapperName identifierRepresentation] + ",\n"
   end
   ioImplementation += "  NULL\n"
@@ -2905,13 +2905,13 @@ override method @filewrapperDeclarationForGeneration appendSpecificImplementatio
     !filewrapperImplementation
   ]
 #--- template generation
-  for () in  mFilewrapperTemplateListForGeneration do
+  for () in mFilewrapperTemplateListForGeneration do
   #--- Build generated code for instruction list
     @string generatedCodeForInstructionList = ""
     @uint temporaryVariableIndex = 0
     var unusedVariableCppNameSet =@stringset.emptySet{}
     unusedVariableCppNameSet += !compilerCppName ()
-    for () in  mFilewrapperTemplateFormalInputParameters do
+    for () in mFilewrapperTemplateFormalInputParameters do
       unusedVariableCppNameSet += !mFormalArgumentCppName
     end
     @bool useColumnMarker = false
@@ -3073,16 +3073,16 @@ proc generatePredefinedTypeFiles ?let @string inDirectory {
       @string generatedCode = [filewrapper predefinedTypeGenerationTemplate.primitiveTypesHeaderPrologue
         ![semanticContext.mTypeMap allKeys]
       ]
-      for () in  decoratedDeclarationListForGeneration do
+      for () in decoratedDeclarationListForGeneration do
         generatedCode += [mDeclaration appendPrimitiveTypeDeclaration]
       end
-      for () in  decoratedDeclarationListForGeneration do
+      for () in decoratedDeclarationListForGeneration do
         var unusedInclusionSet = @stringset. emptySet
         [mDeclaration appendDeclaration1 !?unusedInclusionSet ?let @string code]
         generatedCode += code
       end
       generatedCode += [filewrapper predefinedTypeGenerationTemplate.predefinedTypeSeparation]
-      for () in  decoratedDeclarationListForGeneration do
+      for () in decoratedDeclarationListForGeneration do
         var inclusionSet2 = @stringset. emptySet
         [mDeclaration appendDeclaration2 !false !inDirectory !?inclusionSet2 ?let @string headerString2]
         generatedCode += headerString2
@@ -3100,7 +3100,7 @@ proc generatePredefinedTypeFiles ?let @string inDirectory {
       end
     #------ Generate predefined types implementation
       generatedCode = [filewrapper predefinedTypeGenerationTemplate.predefinedTypesImplementation]
-      for () in  decoratedDeclarationListForGeneration do
+      for () in decoratedDeclarationListForGeneration do
         generatedCode += [mDeclaration appendTypeGenericImplementation]
         var unusedInclusionSet = @stringset. emptySet
         [mDeclaration appendSpecificImplementation !@unifiedTypeMap. emptyMap !?unusedInclusionSet ?let @string code]

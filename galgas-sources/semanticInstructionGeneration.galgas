@@ -41,7 +41,7 @@ override method @outputInputActualParameterForGeneration generateActualParameter
     [t addHeaderFileName !?ioInclusionSet]
   end
   outCppName = mOutputInputVariableCppName
-  for () in  mStructAttributeList do
+  for () in mStructAttributeList do
     outCppName += ".mAttribute_" + [mValue identifierRepresentation]
   end
   [!?ioUnusedVariableCppNameSet removeKey !mOutputInputVariableCppName]
@@ -157,7 +157,7 @@ override method @localVariableOrConstantDeclarationWithConstructorCallForGenerat
   ?!@string ioGeneratedCode {
   [mTargetType addHeaderFileName !?ioInclusionSet]
   var parameterList =@stringlist.emptyList{}
-  for () in  mConstructorArguments do
+  for () in mConstructorArguments do
     @string parameter
     [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?parameter]
     parameterList += !parameter  
@@ -167,7 +167,7 @@ override method @localVariableOrConstantDeclarationWithConstructorCallForGenerat
                    + " = GALGAS_"  + [mTargetType identifierRepresentation]
                    + "::constructor_" + [mConstructorName identifierRepresentation]
                    + " ("
-  for () in  parameterList
+  for () in parameterList
     do ioGeneratedCode += mValue
     between ioGeneratedCode += ", "
   end
@@ -200,7 +200,7 @@ override method @assignmentInstructionForGeneration generateInstruction
   [!?ioUnusedVariableCppNameSet removeKey !mNameForCheckingFormalParameterUsing]
 #---
   @string receiverCppName = mTargetCppName
-  for () in  mStructAttributeList do
+  for () in mStructAttributeList do
     receiverCppName += ".mAttribute_" + [[mValue string] identifierRepresentation]
   end
   ioGeneratedCode += receiverCppName + " = " + sourceVar + " ;\n"
@@ -218,7 +218,7 @@ override method @dropInstructionForGeneration generateInstruction
   for (t) in mDropTypeList do
     [t addHeaderFileName !?ioInclusionSet]
   end
-  for () in  mDropList do
+  for () in mDropList do
     ioGeneratedCode += mValue + ".drop () ; // " + mComment + "\n"
   end
 }
@@ -241,7 +241,7 @@ override method @concatInstructionForGeneration generateInstruction
   ]
   [!?ioUnusedVariableCppNameSet removeKey !mNameForCheckingFormalParameterUsing]
   ioGeneratedCode += mTargetVariableCppName
-  for () in  mStructAttributeList do
+  for () in mStructAttributeList do
     ioGeneratedCode += ".mAttribute_" + mValue
   end
   ioGeneratedCode += ".dotAssign_operation (" + sourceVar + " " + [mInstructionLocation commaSourceFile] + ") ;\n"
@@ -271,7 +271,7 @@ override method @grammarInstructionWithSourceFileForGeneration generateInstructi
   var parameterCppNameList =@stringlist.emptyList{}
   var jokerParametersToReleaseList =@stringlist.emptyList{}
   var inputVariableList =@stringlist.emptyList{}
-  for () in  mActualParameterList do
+  for () in mActualParameterList do
     [mActualParameter generateActualParameter
       !?ioInclusionSet
       !?ioTemporaryVariableIndex
@@ -295,7 +295,7 @@ override method @grammarInstructionWithSourceFileForGeneration generateInstructi
                   + compilerCppName () + ", "
                   + if mGrammarHasTranslateFeature then mSyntaxDirectedTranslationResultVarName + ", " else "" end
                   + sourceVar
-  for () in  parameterCppNameList do
+  for () in parameterCppNameList do
     ioGeneratedCode += ", " + mValue
   end
   ioGeneratedCode += " " + [mInstructionLocation commaSourceFile] + ") ;\n"
@@ -321,7 +321,7 @@ override method @grammarInstructionWithSourceExpressionForGeneration generateIns
   var parameterCppNameList =@stringlist.emptyList{}
   var jokerParametersToReleaseList =@stringlist.emptyList{}
   var inputVariableList =@stringlist.emptyList{}
-  for () in  mActualParameterList do
+  for () in mActualParameterList do
     [mActualParameter generateActualParameter
        !?ioInclusionSet
        !?ioTemporaryVariableIndex
@@ -344,7 +344,7 @@ override method @grammarInstructionWithSourceExpressionForGeneration generateIns
                   +  " (" + compilerCppName () + ", "
                   + if mGrammarHasTranslateFeature then mSyntaxDirectedTranslationResultVarName + ", " else "" end
                   + sourceVar
-  for () in  parameterCppNameList do
+  for () in parameterCppNameList do
     ioGeneratedCode += ", " + mValue
   end
   ioGeneratedCode += " " + [mInstructionLocation commaSourceFile] + ") ;\n"
@@ -416,7 +416,7 @@ override method @errorInstructionForGeneration generateInstruction
   ioGeneratedCode += compilerCppName () + "->emitSemanticError (" + receiverCppVarName + ", " + messageCppVarName
                    + " " + [mInstructionLocation commaSourceFile] + ") ;\n"
 #--- Release dropped variables
-  for () in  mBuiltVariableCppNameList do
+  for () in mBuiltVariableCppNameList do
     [!?ioUnusedVariableCppNameSet removeKey !mValue]
     ioGeneratedCode += mValue + ".drop () ; // Release error dropped variable\n"
   end
@@ -467,7 +467,7 @@ override method @methodCallInstructionForGeneration generateInstruction
   var parameterCppNameList =@stringlist.emptyList{}
   var jokerParametersToReleaseList =@stringlist.emptyList{}
   var inputVariableList =@stringlist.emptyList{}
-  for () in  mActualParameterList do
+  for () in mActualParameterList do
     @string parameterCppName
     [mActualParameter generateActualParameter !?ioInclusionSet !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?inputVariableList !?ioUnusedVariableCppNameSet ?parameterCppName]
     parameterCppNameList += !parameterCppName
@@ -485,7 +485,7 @@ override method @methodCallInstructionForGeneration generateInstruction
   case definedAsMember :
     ioGeneratedCode += receiverCppName + ".method_" + [mMethodName identifierRepresentation] + " ("
   end
-  for () in  parameterCppNameList
+  for () in parameterCppNameList
     do ioGeneratedCode += mValue
     between ioGeneratedCode += ", "
   end
@@ -519,14 +519,14 @@ override method @routineCallInstructionForGeneration generateInstruction
   var parameterCppNameList =@stringlist.emptyList{}
   var jokerParametersToReleaseList =@stringlist.emptyList{}
   var inputVariableList =@stringlist.emptyList{}
-  for () in  mActualParameterList do
+  for () in mActualParameterList do
     @string parameterCppName
     [mActualParameter generateActualParameter !?ioInclusionSet !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?inputVariableList !?ioUnusedVariableCppNameSet ?parameterCppName]
     parameterCppNameList += !parameterCppName
   end
 #--- Generate method call
   ioGeneratedCode += "routine_" + [[mRoutineName string] identifierRepresentation] + " ("
-  for () in  parameterCppNameList do
+  for () in parameterCppNameList do
     ioGeneratedCode += mValue + ", "
   end
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName ()]
@@ -544,7 +544,7 @@ override method @modifierCallInstructionForGeneration generateInstruction
   ?!@string ioGeneratedCode {
   ioGeneratedCode += "{\n"
   @string receiverCppName = mReceiverCppName
-  for () in  mReceiverStructAttributes do
+  for () in mReceiverStructAttributes do
     receiverCppName += ".mAttribute_" + [[mValue string] identifierRepresentation]
   end
   [!?ioUnusedVariableCppNameSet removeKey !mReceiverBaseName]
@@ -552,7 +552,7 @@ override method @modifierCallInstructionForGeneration generateInstruction
   var parameterCppNameList =@stringlist.emptyList{}
   var jokerParametersToReleaseList =@stringlist.emptyList{}
   var inputVariableList =@stringlist.emptyList{}
-  for () in  mActualParameterList do
+  for () in mActualParameterList do
     @string parameterCppName
     [mActualParameter generateActualParameter
       !?ioInclusionSet
@@ -582,7 +582,7 @@ override method @modifierCallInstructionForGeneration generateInstruction
     [mReceiverType addHeaderFileName !?ioInclusionSet]
     ioGeneratedCode += receiverCppName + ".modifier_" + [[mModifierName string] identifierRepresentation] + " ("
   end
-  for () in  parameterCppNameList
+  for () in parameterCppNameList
     do ioGeneratedCode += mValue
     between ioGeneratedCode += ", "
   end
@@ -614,7 +614,7 @@ override method @selfModifierCallInstructionForGeneration generateInstruction
   var parameterCppNameList =@stringlist.emptyList{}
   var jokerParametersToReleaseList =@stringlist.emptyList{}
   var inputVariableList =@stringlist.emptyList{}
-  for () in  mActualParameterList do
+  for () in mActualParameterList do
     [mActualParameter generateActualParameter
       !?ioInclusionSet
       !?ioTemporaryVariableIndex
@@ -641,7 +641,7 @@ override method @selfModifierCallInstructionForGeneration generateInstruction
       ioGeneratedCode += mSelfCppName + ".modifier_" + [mModifierName identifierRepresentation] + " ("
     end
   end
-  for () in  parameterCppNameList
+  for () in parameterCppNameList
     do ioGeneratedCode += mValue
     between ioGeneratedCode += ", "
   end
@@ -672,7 +672,7 @@ override method @typeMethodInstructionForGeneration generateInstruction
   var parameterCppNameList =@stringlist.emptyList{}
   var jokerParametersToReleaseList =@stringlist.emptyList{}
   var inputVariableList =@stringlist.emptyList{}
-  for () in  mActualParameterList do
+  for () in mActualParameterList do
     [mActualParameter generateActualParameter
       !?ioInclusionSet
       !?ioTemporaryVariableIndex
@@ -686,7 +686,7 @@ override method @typeMethodInstructionForGeneration generateInstruction
 #--- Generate method call
   ioGeneratedCode += "GALGAS_" + [[mTypeName string] identifierRepresentation]
                   + "::class_method_" + [[mMethodName string] identifierRepresentation] + " ("
-  for () in  parameterCppNameList
+  for () in parameterCppNameList
     do ioGeneratedCode += mValue
     between ioGeneratedCode += ", "
   end
@@ -725,7 +725,7 @@ override method @structuredCastInstructionForGeneration generateInstruction
 #---
   ioGeneratedCode += "if (" + castCppVarName + ".isValid ()) {\n"
   [!?ioGeneratedCode incIndentation !2]
-  for () in  mCastBranchList do
+  for () in mCastBranchList do
    [mType addHeaderFileName !?ioInclusionSet]
     switch mTypeComparisonKind
     case equal :
@@ -788,7 +788,7 @@ override method @plusEqualnstructionForGeneration generateInstruction
 #--- Parameters
   [mTargetType addHeaderFileName !?ioInclusionSet]
   var parameterList =@stringlist.emptyList{}
-  for () in  mExpressionList do
+  for () in mExpressionList do
     [mExpression generateExpression
       !?ioGeneratedCode
       !?ioInclusionSet
@@ -801,13 +801,13 @@ override method @plusEqualnstructionForGeneration generateInstruction
 #--- Receiver
   [!?ioUnusedVariableCppNameSet removeKey !mNameForCheckingFormalParameterUsing]
   ioGeneratedCode += mReceiverCppName
-  for () in  mStructAttributeList do
+  for () in mStructAttributeList do
     ioGeneratedCode += ".mAttribute_" + [[mValue string] identifierRepresentation]
   end
 #--- Call add assign (+=) operator
   ioGeneratedCode += ".addAssign_operation ("
   [!?ioUnusedVariableCppNameSet removeKey !mReceiverCppName]
-  for () in  parameterList
+  for () in parameterList
     do ioGeneratedCode += mValue
     between ioGeneratedCode += ", "
   end
@@ -829,7 +829,7 @@ override method @incrementInstructionForGeneration generateInstruction
 #--- Receiver
   [!?ioUnusedVariableCppNameSet removeKey !mReceiverCppName]
   @string receiverCppName = mReceiverCppName
-  for () in  mStructAttributeList do
+  for () in mStructAttributeList do
     receiverCppName += ".mAttribute_" + [[mValue string] identifierRepresentation]
   end
 #--- Invoke incrementation
@@ -849,7 +849,7 @@ override method @decrementInstructionForGeneration generateInstruction
 #--- Receiver
   [!?ioUnusedVariableCppNameSet removeKey !mReceiverCppName]
   @string receiverCppName = mReceiverCppName
-  for () in  mStructAttributeList do
+  for () in mStructAttributeList do
     receiverCppName += ".mAttribute_" + [[mValue string] identifierRepresentation]
   end
 #--- Invoke incrementation
@@ -990,7 +990,7 @@ override method @readWriteWithInstructionForGeneration generateInstruction
   ?let @bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode {
   @string receiverCppName = mReceiverVariableCppName
-  for () in  mStructAttributeList do
+  for () in mStructAttributeList do
     receiverCppName += ".mAttribute_" + [[mValue string] identifierRepresentation]
   end
 #--- key expression
@@ -1043,12 +1043,12 @@ override method @foreachInstructionForGeneration generateInstruction
   ?let @bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode {
   var enumerationVarCppNameList =@stringlist.emptyList{}
-  for () in  mEnumeratedObjectList do
+  for () in mEnumeratedObjectList do
     @string enumerationVar
     [mEnumeratedExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?enumerationVar]
     enumerationVarCppNameList += !enumerationVar
   end
-  for () in  mEnumeratedObjectList, () in  enumerationVarCppNameList do
+  for () in mEnumeratedObjectList, () in enumerationVarCppNameList do
     ioGeneratedCode += "cEnumerator_" + [[mEnumeratedExpression mResultType] identifierRepresentation] + " " + mEnumeratorCppName + " (" + mValue
                     + ", kEnumeration_" + mEnumerationOrder + ") ;\n"
   end
@@ -1069,7 +1069,7 @@ override method @foreachInstructionForGeneration generateInstruction
       ioGeneratedCode += "bool " + boolVarCppName + " = " + whileVar + ".isValidAndTrue () ;\n"
     end
     ioGeneratedCode += "if ("
-    for () in  mEnumeratedObjectList do
+    for () in mEnumeratedObjectList do
       ioGeneratedCode += mEnumeratorCppName + ".hasCurrentObject () && "
     end
     ioGeneratedCode += boolVarCppName + ") {\n"
@@ -1083,7 +1083,7 @@ override method @foreachInstructionForGeneration generateInstruction
     )
     [!?ioGeneratedCode incIndentation !2]
     ioGeneratedCode += "while ("
-    for () in  mEnumeratedObjectList do
+    for () in mEnumeratedObjectList do
       ioGeneratedCode += mEnumeratorCppName + ".hasCurrentObject () && "
     end
     ioGeneratedCode += boolVarCppName + ") {\n"
@@ -1097,7 +1097,7 @@ override method @foreachInstructionForGeneration generateInstruction
       !?ioGeneratedCode
     )
   #--- Goto next object
-    for () in  mEnumeratedObjectList do
+    for () in mEnumeratedObjectList do
       ioGeneratedCode += "  " + mEnumeratorCppName + ".gotoNextObject () ;\n"
     end
     if mIndexVariableCppName != "" then
@@ -1106,7 +1106,7 @@ override method @foreachInstructionForGeneration generateInstruction
   #--- Compute 'while' expression
     if not whileExpressionIsAllwaysTrue then
       ioGeneratedCode += "  if ("
-      for () in  mEnumeratedObjectList
+      for () in mEnumeratedObjectList
       do  ioGeneratedCode += mEnumeratorCppName + ".hasCurrentObject ()"
       between ioGeneratedCode += " && "
       end
@@ -1120,7 +1120,7 @@ override method @foreachInstructionForGeneration generateInstruction
     if [mBetweenInstructionList length] > 0 then
       [!?ioGeneratedCode incIndentation !2]
       ioGeneratedCode += "if ("
-      for () in  mEnumeratedObjectList do
+      for () in mEnumeratedObjectList do
         ioGeneratedCode += mEnumeratorCppName + ".hasCurrentObject () && "
       end
       ioGeneratedCode += boolVarCppName + ") {\n"
@@ -1153,7 +1153,7 @@ override method @foreachInstructionForGeneration generateInstruction
       ioGeneratedCode += "GALGAS_uint " + mIndexVariableCppName + " ((uint32_t) 0) ;\n"
     end
     ioGeneratedCode += "while ("
-    for () in  mEnumeratedObjectList
+    for () in mEnumeratedObjectList
       do ioGeneratedCode += mEnumeratorCppName + ".hasCurrentObject ()"
       between ioGeneratedCode += " && "
     end
@@ -1171,7 +1171,7 @@ override method @foreachInstructionForGeneration generateInstruction
     if [mBetweenInstructionList length] > 0 then
       [!?ioGeneratedCode incIndentation !2]
       ioGeneratedCode += "if ("
-      for () in  mEnumeratedObjectList
+      for () in mEnumeratedObjectList
         do ioGeneratedCode += mEnumeratorCppName + ".hasNextObject ()"
         between ioGeneratedCode += " && "
       end
@@ -1188,7 +1188,7 @@ override method @foreachInstructionForGeneration generateInstruction
       [!?ioGeneratedCode decIndentation !2]
     end
   #--- End of foreach instruction
-    for () in  mEnumeratedObjectList do
+    for () in mEnumeratedObjectList do
       ioGeneratedCode += "  " + mEnumeratorCppName + ".gotoNextObject () ;\n"
     end
     if mIndexVariableCppName != "" then
@@ -1236,8 +1236,8 @@ override method @switchInstructionForGeneration generateInstruction
   ioGeneratedCode += "switch (" + switchVar + ".enumValue ()) {\n"
   ioGeneratedCode += "case GALGAS_" + [[mSwitchExpression mResultType] identifierRepresentation] + "::kNotBuilt:\n"
   ioGeneratedCode += "  break ;\n"
-  for () in  mBranches do
-    for () in  mSwitchConstantList do
+  for () in mBranches do
+    for () in mSwitchConstantList do
       ioGeneratedCode += "case GALGAS_" + [[mSwitchExpression mResultType] identifierRepresentation] + "::kEnum_" + [[mValue string] identifierRepresentation] + ":\n"
     end
     [!?ioGeneratedCode incIndentation !2]
@@ -1278,20 +1278,20 @@ override method @matchInstructionForGeneration generateInstruction
   ?let @bool inGenerateSyntaxDirectedTranslationString
   ?!@string ioGeneratedCode {
   var receiverList =@stringlist.emptyList{}
-  for () in  mMatchedExpressionList do
+  for () in mMatchedExpressionList do
     [mExpression generateExpression !?ioGeneratedCode !?ioInclusionSet !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?let @string variable]
     receiverList += !variable
   end
   ioGeneratedCode += "if ("
-  for () in  receiverList
+  for () in receiverList
     do ioGeneratedCode += mValue + ".isValid ()"
     between ioGeneratedCode += " && "
   end
   ioGeneratedCode += ") {\n"
   [!?ioGeneratedCode incIndentation !2]
-  for () in  mMatchInstructionBranchList do
+  for () in mMatchInstructionBranchList do
     ioGeneratedCode += "if ("
-    for () in  mMatchListForGeneration, () in  receiverList do
+    for () in mMatchListForGeneration, () in receiverList do
       if mIsType then
         ioGeneratedCode += "(NULL != dynamic_cast <const cPtr_" + [mTypeNameOrEnumerationConstantName identifierRepresentation]
                         + " *> (" + mValue + ".ptr ()))"

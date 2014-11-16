@@ -55,7 +55,7 @@ rule <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputP
 #                                                                                                                      *
 #----------------------------------------------------------------------------------------------------------------------*
 
-rule <attribute_declaration> ?!@attributeInCollectionListAST ioAttributeInCollectionList {
+rule <attribute_declaration> ?!@propertyInCollectionListAST ioAttributeInCollectionList {
 #  @bool isPrivate ;
 #  select
 #    isPrivate := false ;
@@ -172,16 +172,23 @@ rule <declaration>
   $map$
 #--- Map type name
   $type_name$ ?var  @lstring mMapTypeName indexing mapDefinition, structDefinition "-element"
+#--- Map attributes
+  @lstringlist mapAttributeList = {}
+  repeat
+  while
+    $attribute$ ?let attribute
+    mapAttributeList += !attribute
+  end
 #--- Map properties
   ${$
-  var mAttributeList =@attributeInCollectionListAST.emptyList{}
+  var propertyList =@propertyInCollectionListAST.emptyList{}
   var mInsertMethodList =@insertMethodListAST.emptyList{}
   var mSearchMethodList =@mapSearchMethodListAST.emptyList{}
   var mRemoveMethodList =@mapRemoveMethodListAST.emptyList{}
   var insertOrReplaceDeclarationListAST =@insertOrReplaceDeclarationListAST.emptyList{}
   repeat
   while
-    <attribute_declaration> !? mAttributeList
+    <attribute_declaration> !? propertyList
   while
     $insert$
     <insert_method_declaration> !? mInsertMethodList
@@ -216,11 +223,13 @@ rule <declaration>
   ioDeclarations.mDeclarationList += !@mapDeclarationAST.new {
     !false # Is not predefined
     !mMapTypeName
-    !mAttributeList
+    !mapAttributeList
+    !propertyList
     !mInsertMethodList
     !mSearchMethodList
     !mRemoveMethodList
-    !insertOrReplaceDeclarationListAST}
+    !insertOrReplaceDeclarationListAST
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -235,10 +244,16 @@ rule <declaration>
 #--- Map type name
   $type_name$ ?let @lstring mMapTypeName indexing uniquemapDefinition, mapProxyDefinition "-proxy"
   let mapProxyTypeName = @lstring.new {!mMapTypeName.string + "-proxy" !mMapTypeName.location}
-#  $type_name$ ??@lstring mapProxyTypeName indexing mapProxyDefinition ;
+#--- Map attributes
+  @lstringlist mapAttributeList = {}
+  repeat
+  while
+    $attribute$ ?let attribute
+    mapAttributeList += !attribute
+  end
 #--- Map properties
   ${$
-  var mAttributeList =@attributeInCollectionListAST.emptyList{}
+  var propertyList =@propertyInCollectionListAST.emptyList{}
   var mInsertMethodList =@insertMethodListAST.emptyList{}
   var mSearchMethodList =@mapSearchMethodListAST.emptyList{}
   var mapStateList =@mapStateList.emptyList{}
@@ -295,7 +310,7 @@ rule <declaration>
       !transitionList
     $}$
   while
-    <attribute_declaration> !? mAttributeList
+    <attribute_declaration> !? propertyList
   while
     $insert$
     <insert_method_declaration> !? mInsertMethodList
@@ -380,16 +395,19 @@ rule <declaration>
   ioDeclarations.mDeclarationList += !@uniqueMapDeclarationAST.new {
     !false # Is not predefined
     !mMapTypeName
-    !mAttributeList
+    !mapAttributeList
+    !propertyList
     !mInsertMethodList
     !mSearchMethodList
     !mapStateList
-    !mapOverrideBlockListAST}
+    !mapOverrideBlockListAST
+  }
 #--- Declare map proxy
   ioDeclarations.mDeclarationList += !@mapProxyDeclarationAST.new {
     !false # Is not predefined
     !mapProxyTypeName
-    !mMapTypeName}
+    !mMapTypeName
+  }
 }
 
 #----------------------------------------------------------------------------------------------------------------------*
@@ -435,7 +453,7 @@ rule <declaration>
   ${$
   @string mClassMessage = ""
 #--- Class properties
-  var mAttributeList =@attributeInCollectionListAST.emptyList{}
+  var mAttributeList =@propertyInCollectionListAST.emptyList{}
   repeat
   while
     <attribute_declaration> !? mAttributeList
@@ -471,7 +489,7 @@ rule <declaration>
   $struct$
   $type_name$ ?let @lstring structTypeName indexing structDefinition
   ${$
-  var attributeList =@attributeInCollectionListAST.emptyList{}
+  var attributeList =@propertyInCollectionListAST.emptyList{}
   repeat
   while
     <attribute_declaration> !?attributeList
@@ -501,7 +519,7 @@ rule <declaration>
   $list$
   $type_name$ ?var @lstring mListTypeName indexing listDefinition, structDefinition "-element"
   ${$
-  var mAttributeList =@attributeInCollectionListAST.emptyList{}
+  var mAttributeList =@propertyInCollectionListAST.emptyList{}
   repeat
   while
     <attribute_declaration> !? mAttributeList
@@ -545,7 +563,7 @@ rule <declaration>
   $sortedlist$
   $type_name$ ?var @lstring mSortedListTypeName indexing sortedListDefinition, structDefinition "-element"
   ${$
-  var mAttributeList =@attributeInCollectionListAST.emptyList{}
+  var mAttributeList =@propertyInCollectionListAST.emptyList{}
   repeat
   while
     <attribute_declaration> !? mAttributeList
